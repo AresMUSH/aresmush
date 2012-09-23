@@ -6,8 +6,9 @@ module AresMUSH
       # TODO - create config reader
       config = { 'server' => { 'port' => 7207 } }
 
-      # TODO - should use TCPServer.new instead of TCPServer.open
-      server_controller = AresMUSH::ServerController.new(TCPServer, config)
+      server = TCPServer.open config['server']['port']
+      client_listener = ClientListener.new
+      server_controller = AresMUSH::ServerController.new(server, config, client_listener)
       @client = AresMUSH::Client.new(server_controller)
     end
 

@@ -1,11 +1,12 @@
 require 'socket'
 
 module AresMUSH
-    
+
   class ServerController
 
-    def initialize(server, config)
+    def initialize(server, config, client_listener)
       @server = server
+      @client_listener = client_listener
       @config = config
       @is_started = false
     end
@@ -13,30 +14,26 @@ module AresMUSH
     def started?
       return @is_started
     end
-    
+
     def start      
       if (started?)
         raise "The server is already running."
       end
+      @is_started = true
       port = @config['server']['port']
       puts "Listening for messages on port #{port}."
-      @server.open(port) 
-      @is_started = true
-
-      #loop {                          # Servers run forever
-      #  Thread.start(server.accept) do |client|
-      #      client.puts("Welcome #{Time.now.ctime}") # Send the time to the client
-      #      while line = client.gets # Read lines from socket
-      #        puts line         # and print them
-      #        client.puts("You typed: #{line}")
-      #      end
-      #      
-      #  end
-      #}
-
+      @client_listener.start(@server, self)
     end
-    
 
+    def client_connected(client)
+      # TODO      
+    end
+
+    def client_input(client, line)
+      # TODO
+      puts line         
+      client.puts("You typed: #{line}")
+    end
 
   end
 end

@@ -9,7 +9,8 @@ module AresMUSH
     before do
       @good_config = { 'server' => { 'port' => 7207 } }
       @server = double(TCPServer)
-      @controller = ServerController.new(@server, @good_config)
+      @listener = double(ClientListener)
+      @controller = ServerController.new(@server, @good_config, @listener)
     end
 
     describe :initialize do
@@ -19,19 +20,20 @@ module AresMUSH
     end
 
     describe :start do
-      it "opens the server on the right port" do
-        @server.should_receive(:open).with(7207)
+      it "starts accepting connections" do
+        @listener.should_receive(:start).with(@server, @controller)
         @controller.start
       end
 
       it "sets the state to started" do
-        @server.should_receive(:open).with(7207)
+        @listener.should_receive(:start).with(@server, @controller)
         @controller.start
         @controller.started?.should be_true
       end
 
       it "raises an error if the server is already running" do
-        @server.should_receive(:open).with(7207)
+        # We start it once and then try to start it a second time.
+        @listener.should_receive(:start).with(@server, @controller)
         @controller.start
         expect {@controller.start}.to raise_error("The server is already running.")
       end
