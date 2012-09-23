@@ -6,11 +6,10 @@ module AresMUSH
 
   describe Client, "#start" do
 
-    it "starts the server" do
-      server = double(ServerController)
-      server.stub(:started?) { false }
-      client = Client.new(server)
-      server.should_receive(:start)
+    it "starts the controller" do
+      controller = double(ServerController)
+      client = Client.new(controller)
+      controller.should_receive(:start)
       client.start
     end
   end
