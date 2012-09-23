@@ -9,40 +9,31 @@ module AresMUSH
     before do
       @good_config = { 'server' => { 'port' => 7207 } }
       @server = double(TCPServer)
+      @controller = ServerController.new(@server, @good_config)
     end
 
-    context "sets the state to not started" do
-      it do
-        @controller = ServerController.new(@server, @good_config)
+    describe :initialize do
+      it "sets the state to not started" do
         @controller.started?.should be_false
       end
     end
 
     describe :start do
-      context "opens the server on the right port" do
-        it do
-          @controller = ServerController.new(@server, @good_config)
-          @server.should_receive(:open).with(7207)
-          @controller.start
-        end
+      it "opens the server on the right port" do
+        @server.should_receive(:open).with(7207)
+        @controller.start
       end
 
-      context "sets the state to started" do
-        it do
-          @controller = ServerController.new(@server, @good_config)
-          @server.should_receive(:open).with(7207)
-          @controller.start
-          @controller.started?.should be_true
-        end
+      it "sets the state to started" do
+        @server.should_receive(:open).with(7207)
+        @controller.start
+        @controller.started?.should be_true
       end
 
-      context "raises an error if the server is already running" do
-        it do
-          @controller = ServerController.new(@server, @good_config)
-          @server.should_receive(:open).with(7207)
-          @controller.start
-          expect {@controller.start}.to raise_error("The server is already running.")
-        end
+      it "raises an error if the server is already running" do
+        @server.should_receive(:open).with(7207)
+        @controller.start
+        expect {@controller.start}.to raise_error("The server is already running.")
       end
     end
   end
