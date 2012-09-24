@@ -28,10 +28,19 @@ module AresMUSH
 
     def client_connected(client)
       # TODO
-      client.puts ANSI.red  + @config_reader.config['connect']['welcome_text'] + ANSI.reset
-      client.puts @config_reader.txt['connect']
+      puts client.addr
+      client.puts ANSI.red  + @config_reader.config['connect']['welcome_text'] + ANSI.reset + "Hello"
+      connect_text = @config_reader.txt['connect']
+      connect_text = connect_text.gsub(/%cr/, ANSI.red)
+      connect_text = connect_text.gsub(/%cn/, ANSI.reset)
+      client.puts connect_text
     end
 
+    def client_disconnected(client)
+      puts "Client disconnected " + client.addr
+      # TODO
+    end
+    
     def client_input(client, line)
       # TODO
       puts line         
