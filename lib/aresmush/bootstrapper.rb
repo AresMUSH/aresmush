@@ -8,7 +8,7 @@ module AresMUSH
       
       server = TCPServer.open config_reader.config['server']['port']
       client_listener = ClientListener.new
-      server_controller = AresMUSH::ServerController.new(server, config_reader.config, client_listener)
+      server_controller = AresMUSH::ServerController.new(server, config_reader, client_listener)
       @client = AresMUSH::Client.new(server_controller)
     end
 

@@ -10,7 +10,9 @@ module AresMUSH
       @good_config = { 'server' => { 'port' => 7207 } }
       @server = double(TCPServer)
       @listener = double(ClientListener)
-      @controller = ServerController.new(@server, @good_config, @listener)
+      @config_reader = double(ConfigReader)
+      @config_reader.stub(:config) { @good_config }
+      @controller = ServerController.new(@server, @config_reader, @listener)
     end
 
     describe :initialize do

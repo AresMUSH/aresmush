@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.files       = Dir.glob("{bin,lib,spec}/**/*")
   s.homepage    = 'http://github.com/lynnfaraday/aresmush'
   s.platform    = Gem::Platform::RUBY
-#  s.add_runtime_dependency "yaml", '~> 0.9'
+  s.add_runtime_dependency "ansi", '~> 1.4.3'
   s.executables = "aresmush"
 end

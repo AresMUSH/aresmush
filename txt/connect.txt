@@ -1,0 +1,24 @@
+          7Z+$$7Z$ZZIIO
+      .ZOZZZZ7OIZZZZZZ
+    .ZZZZZZZ$7OZZZZZ7.
+   ZZZZZOZZZZZZZZZZ$O.                 \
+  ZZZZZOZZZ$OOZOOOO7Z                 _ \    __| _ \  __|
+ ZZO7ZO:?:..,,7...,                  ___ \  |    __/\__ \
+.ZO7O+.:..=I7,+???+?++I            _/    _\_|  \___|____/
+ZO$O+I7II=+I7II?I+.?I~?I
+OOO7:?+:~II?+I???++???,:+ .:         \  | |   |  ___|  |   |
+OOO,,==~~I7~III???++?,?:~,::        |\/ | |   |\___ \  |   |
+ZO7.,==:~Z+++8Z$77I7?7,:~::$        |   | |   |      | ___ |
+OOO.:===:$IZZ$Z7:77++$??::?$       _|  _|\___/ _____/ _|  _|
+  =,:==:I$Z8OOOOOZ7I7$+~:,7=.
+  ,,=,,77?Z$$IZ  $$I.
+  ,.:: I$$$Z$~$  877$      +-------------------------------+
+  ~,,~+?7I$Z7$$ OI7OI      |create <char> <password>       |
+  ,?,==7Z$$$Z$  +$=IZ      |connect <char> <password>      |
+ ::,:??O$=ZO7$ .Z$?=O      |help                           |
+.,~+?==7$$Z$77  ZO$IO      |who                            |
+I+...  7:$$Z$$  8Z7$+      |                               |
+       I7$77$=  Z~=I.      |                               |
+       77OZ$Z. OOO.        |http://www.aresmush.com        |
+      +Z8Z$O.              +-------------------------------+
+      $OZO.

@@ -1,13 +1,14 @@
 require 'socket'
+require "ansi"
 
 module AresMUSH
 
   class ServerController
 
-    def initialize(server, config, client_listener)
+    def initialize(server, config_reader, client_listener)
       @server = server
       @client_listener = client_listener
-      @config = config
+      @config_reader = config_reader
       @is_started = false
     end
 
@@ -20,13 +21,15 @@ module AresMUSH
         raise "The server is already running."
       end
       @is_started = true
-      port = @config['server']['port']
+      port = @config_reader.config['server']['port']
       puts "Listening for messages on port #{port}."
       @client_listener.start(@server, self)
     end
 
     def client_connected(client)
-      # TODO      
+      # TODO
+      client.puts ANSI.red  + @config_reader.config['connect']['welcome_text'] + ANSI.reset
+      client.puts @config_reader.txt['connect']
     end
 
     def client_input(client, line)
