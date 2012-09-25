@@ -23,29 +23,7 @@ module AresMUSH
       @is_started = true
       port = @config_reader.config['server']['port']
       puts "Listening for messages on port #{port}."
-      @client_listener.start(@server, self)
+      @client_listener.start(@server)
     end
-
-    def client_connected(client)
-      # TODO
-      puts client.addr
-      client.puts ANSI.red  + @config_reader.config['connect']['welcome_text'] + ANSI.reset + "Hello"
-      connect_text = @config_reader.txt['connect']
-      connect_text = connect_text.gsub(/%cr/, ANSI.red)
-      connect_text = connect_text.gsub(/%cn/, ANSI.reset)
-      client.puts connect_text
-    end
-
-    def client_disconnected(client)
-      puts "Client disconnected " + client.addr
-      # TODO
-    end
-    
-    def client_input(client, line)
-      # TODO
-      puts line         
-      client.puts("You typed: #{line}")
-    end
-
   end
 end

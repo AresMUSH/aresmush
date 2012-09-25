@@ -23,19 +23,19 @@ module AresMUSH
 
     describe :start do
       it "starts accepting connections" do
-        @listener.should_receive(:start).with(@server, @controller)
+        @listener.should_receive(:start).with(@server)
         @controller.start
       end
 
       it "sets the state to started" do
-        @listener.should_receive(:start).with(@server, @controller)
+        @listener.should_receive(:start).with(@server)
         @controller.start
         @controller.started?.should be_true
       end
 
       it "raises an error if the server is already running" do
         # We start it once and then try to start it a second time.
-        @listener.should_receive(:start).with(@server, @controller)
+        @listener.should_receive(:start).with(@server)
         @controller.start
         expect {@controller.start}.to raise_error("The server is already running.")
       end
