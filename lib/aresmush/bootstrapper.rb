@@ -3,7 +3,7 @@ module AresMUSH
   class Bootstrapper 
 
     def initialize
-      config_reader = AresMUSH::ConfigReader.new(Dir.pwd)
+      config_reader = AresMUSH::ConfigReader.new(Dir.pwd + "/game")
       config_reader.read
       
       connection_monitor = AresMUSH::ConnectionMonitor.new(config_reader)

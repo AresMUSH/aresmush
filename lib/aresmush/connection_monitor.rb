@@ -9,7 +9,7 @@ module AresMUSH
     def client_connected(client)
       # TODO
       puts client.addr
-      client.puts ANSI.red  + @config_reader.config['connect']['welcome_text'] + ANSI.reset
+      client.puts ANSI.green + @config_reader.config['connect']['welcome_text'] + ANSI.reset
       connect_text = @config_reader.txt['connect']
       client.puts connect_text.to_ansi
     end
