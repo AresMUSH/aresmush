@@ -10,11 +10,11 @@ module AresMUSH
       server = TCPServer.open config_reader.config['server']['port']
       client_listener = ClientListener.new(connection_monitor)
       server_controller = AresMUSH::ServerController.new(server, config_reader, client_listener)
-      @client = AresMUSH::Client.new(server_controller)
+      @command_line = AresMUSH::CommandLine.new(server_controller)
     end
 
-    def client
-      @client
+    def command_line
+      @command_line
     end
   end
 

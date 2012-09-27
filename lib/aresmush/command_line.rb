@@ -2,7 +2,7 @@ require 'socket'
 
 module AresMUSH
 
-  class Client
+  class CommandLine
 
     def initialize(server)
       @server = server

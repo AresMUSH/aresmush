@@ -10,9 +10,9 @@ module AresMUSH
 
   case ARGV[0]
   when "setup"
-    bootstrapper.client.setup
+    bootstrapper.command_line.setup
   when "start"
-    bootstrapper.client.start
+    bootstrapper.command_line.start
   else
     puts "Usage: aresmush <command> <options>\n"
     puts "\nAvailable commands:"

@@ -4,13 +4,13 @@ require "aresmush"
 
 module AresMUSH
 
-  describe Client, "#start" do
+  describe CommandLine, "#start" do
 
     it "starts the controller" do
       controller = double(ServerController)
-      client = Client.new(controller)
+      command_line = CommandLine.new(controller)
       controller.should_receive(:start)
-      client.start
+      command_line.start
     end
   end
 end
