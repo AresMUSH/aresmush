@@ -4,10 +4,14 @@ module AresMUSH
     
     def initialize(config_reader)
       @config_reader = config_reader
+      @clients = []
+      @next_id = 1
     end
-    
+       
     def client_connected(client)
       # TODO
+      @clients << client
+      
       puts client.addr
       client.puts ANSI.green + @config_reader.config['connect']['welcome_text'] + ANSI.reset
       connect_text = @config_reader.txt['connect']

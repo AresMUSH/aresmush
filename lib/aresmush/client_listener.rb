@@ -3,19 +3,22 @@ module AresMUSH
   # This class exists to offload the thread-centric stuff so the controller can be more testable.
   class ClientListener
 
-    def initialize(connection_monitor)
+    def initialize(connection_monitor, client_factory)
       @connection_monitor = connection_monitor
+      @client_factory = client_factory
     end
     
     def start(server)
       # TODO - handle exceptions
       loop {
-        @thread = Thread.start(server.accept) do |client|
+        @thread = Thread.start(server.accept) do |session|
+          client = @client_factory.new_client(session)
           @connection_monitor.client_connected(client)
-          while line = client.gets 
-            @connection_monitor.client_input(client, line)
+          
+          while line = session.gets 
+            client.input(line)
           end
-          @connection_monitor.client_disconnected(client)
+          client.disconnect
         end   
       }   
     end
