@@ -8,12 +8,12 @@
 ZO$O+I7II=+I7II?I+.?I~?I
 OOO7:?+:~II?+I???++???,:+ .:         \  | |   |  ___|  |   |
 OOO,,==~~I7~III???++?,?:~,::        |\/ | |   |\___ \  |   |
-ZO7.,==:~%cRZ+++%cn8Z$77I7?7,:~::$        |   | |   |      | ___ |
+ZO7.,==:~%xRZ+++%xn8Z$77I7?7,:~::$        |   | |   |      | ___ |
 OOO.:===:$IZZ$Z7:77++$??::?$       _|  _|\___/ _____/ _|  _|
-  =,:==:%cuI$Z8OOOOOZ7I7$%cn+~:,7=.
+  =,:==:%xuI$Z8OOOOOZ7I7$%xn+~:,7=.
   ,,=,,77?Z$$IZ  $$I.
   ,.:: I$$$Z$~$  877$      +-------------------------------+
-  ~,,~+?7I$Z7$$ OI7OI      |%crcreate <char> <password>%cn       |
+  ~,,~+?7I$Z7$$ OI7OI      |%xrcreate <char> <password>%xn       |
   ,?,==7Z$$$Z$  +$=IZ      |connect <char> <password>      |
  ::,:??O$=ZO7$ .Z$?=O      |help                           |
 .,~+?==7$$Z$77  ZO$IO      |who                            |

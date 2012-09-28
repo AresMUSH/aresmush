@@ -8,19 +8,35 @@ module AresMUSH
 
     describe :to_ansi do
       it "replaces ansi codes" do
-        str = "A%crB%cnC"
+        str = "A%xrB%xnC"
         str.to_ansi.should eq "A" + ANSI.red + "B" + ANSI.reset + "C"
       end
       
       it "replaces nested codes" do
-        str = "A%cc%cGB%cnC"
+        str = "A%xc%xGB%xnC"
         str.to_ansi.should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C"
       end
       
-      it "doesn't replace an escaped code" do
-        str = "A\\%cc%cGB%cnC"
-        str.to_ansi.should eq "A\\%cc" + ANSI.on_green + "B" + ANSI.reset + "C"
+      it "doesn't replace a code preceeded by a single backslash" do
+        str = "A\\%xcB"
+        str.to_ansi.should eq "A\\%xcB"
       end
+      
+      it "replaces a code preceeded by two backslashes" do
+        str = "A\\\\%xcB"
+        str.to_ansi.should eq "A\\\\" + ANSI.cyan + "B"
+      end
+
+      it "doesn't replace a code preceeded by three backslashes" do
+        str = "A\\\\\\%xcB"
+        str.to_ansi.should eq "A\\\\\\%xcB"
+      end
+
+      it "replaces a code preceeded by four backslashes" do
+          str = "A\\\\\\\\%xcB"
+          str.to_ansi.should eq "A\\\\\\\\" + ANSI.cyan + "B"
+      end
+
     end
   end
 end

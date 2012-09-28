@@ -1,7 +1,7 @@
 String.class_eval do
   def to_ansi
     str = self
-        
+
     code_map = { 
       # TODO - See if there's a gray
       "x" => ANSI.black,
@@ -12,7 +12,7 @@ String.class_eval do
       "m" => ANSI.magenta,
       "c" => ANSI.cyan,
       "w" => ANSI.white,
-      
+
       "X" => ANSI.on_black,
       "R" => ANSI.on_red,
       "G" => ANSI.on_green,
@@ -21,21 +21,22 @@ String.class_eval do
       "M" => ANSI.on_magenta,
       "C" => ANSI.on_cyan,
       "W" => ANSI.on_white,
-      
+
       "u" => ANSI.underline,
       "n" => ANSI.reset      
-      }
+    }
+
+    code_map.each_key do |code|
+      str = str.gsub(/
+      (?<!\\)           # Not preceded by a single backslash
+      ((?:\\\\)*)       # Eat up any sets of double backslashes - match group 1  
+      (%c#{code})       # Match the code itself - match group 2
+      /x, 
       
-      code_map.each_key do |code|
-        str = str.gsub(/
-            (?<!\\)      # Not escaped by a \
-            (?:\\\\)*    # Unless the \ itself is part of an escaped \ seq
-            \%c          # %c
-            #{code}      # the code itself
-            /x, 
-            "#{code_map[code]}")    # Replace with the code's ansi value
-      end
-    
+      # Keep the double backslashes (group 1) then put in the code's ANSI value
+      "\\1#{code_map[code]}")  
+    end
+
     str
   end
 end
