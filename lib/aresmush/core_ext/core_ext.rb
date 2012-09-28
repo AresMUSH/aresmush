@@ -30,7 +30,7 @@ String.class_eval do
       str = str.gsub(/
       (?<!\\)           # Not preceded by a single backslash
       ((?:\\\\)*)       # Eat up any sets of double backslashes - match group 1  
-      (%c#{code})       # Match the code itself - match group 2
+      (%x#{code})       # Match the code itself - match group 2
       /x, 
       
       # Keep the double backslashes (group 1) then put in the code's ANSI value
