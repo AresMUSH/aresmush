@@ -23,7 +23,17 @@ String.class_eval do
       "W" => ANSI.on_white,
 
       "u" => ANSI.underline,
-      "n" => ANSI.reset      
+      "h" => ANSI.bold,
+      "i" => ANSI.inverse,
+      
+      "U" => ANSI.underline_off,
+      "I" => ANSI.inverse_off,
+      "H" => ANSI.bold_off,
+
+      "n" => ANSI.reset
+
+      # No, I did not forget 'blink'.  Blink is evil. :)
+
     }
 
     code_map.each_key do |code|

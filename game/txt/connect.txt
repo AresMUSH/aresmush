@@ -13,7 +13,7 @@ OOO.:===:$IZZ$Z7:77++$??::?$       _|  _|\___/ _____/ _|  _|
   =,:==:%xuI$Z8OOOOOZ7I7$%xn+~:,7=.
   ,,=,,77?Z$$IZ  $$I.
   ,.:: I$$$Z$~$  877$      +-------------------------------+
-  ~,,~+?7I$Z7$$ OI7OI      |%xrcreate <char> <password>%xn       |
+  ~,,~+?7I$Z7$$ OI7OI      |%xh%xxcreate <char> <password>%xn       |
   ,?,==7Z$$$Z$  +$=IZ      |connect <char> <password>      |
  ::,:??O$=ZO7$ .Z$?=O      |help                           |
 .,~+?==7$$Z$77  ZO$IO      |who                            |
