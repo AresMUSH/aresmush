@@ -12,10 +12,11 @@ module AresMUSH
       # TODO
       @clients << client
       
-      puts client.addr
-      client.puts ANSI.green + @config_reader.config['connect']['welcome_text'] + ANSI.reset
+      puts client.ip
+      puts client.host
+      client.emit ANSI.green + @config_reader.config['connect']['welcome_text'] + ANSI.reset
       connect_text = @config_reader.txt['connect']
-      client.puts connect_text.to_ansi
+      client.emit connect_text.to_ansi
     end
 
     def client_disconnected(client)

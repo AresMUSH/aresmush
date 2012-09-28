@@ -36,6 +36,8 @@ String.class_eval do
 
     }
 
+    # Ugly regex to find/replace ansi codes.  Will replace %x?, except when escaped (\%x?)
+    # unless of course the escaping backslash is part of a larger escape sequence (\\%x?)
     code_map.each_key do |code|
       str = str.gsub(/
       (?<!\\)           # Not preceded by a single backslash
@@ -43,7 +45,7 @@ String.class_eval do
       (%x#{code})       # Match the code itself - match group 2
       /x, 
       
-      # Keep the double backslashes (group 1) then put in the code's ANSI value
+      # Keep the double backslashes (match group 1) then put in the code's ANSI value
       "\\1#{code_map[code]}")  
     end
 
