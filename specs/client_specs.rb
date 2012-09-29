@@ -1,37 +1,36 @@
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require "aresmush"
+require "ansi"
 
 module AresMUSH
 
   describe Client do
 
-    describe :ip do
-      it "returns the session's IP address" do
-        session = double(TCPSocket)
-        client = Client.new(1, session)
-        session.stub(:addr) { [0, 0, 0, "1.2.3.4"] }
-        client.ip.should eq "1.2.3.4"
-      end
-    end
-
-    describe :host do
-      it "returns the session's host address" do
-        session = double(TCPSocket)
-        client = Client.new(1, session)
-        session.stub(:addr) { [0, 0, "hostname", 0] }
-        client.host.should eq "hostname"
+    describe :next_id do
+      it "increments the id with each new client" do
+        Client.next_id.should eq 1
+        Client.next_id.should eq 2
       end
     end
     
-    describe :emit do
-      it "sends the string to the session" do
-        session = double(TCPSocket)
-        client = Client.new(1, session)
-        session.should_receive(:puts).with("hello")
-        client.emit("hello")
+    describe :format_msg do
+      it "adds a \n to the end if not already there" do
+        msg = Client.format_msg("msg")
+        msg.should eq "msg\n"
+      end
+
+      it "doesn't add another \n if there's already one on the end" do
+        msg = Client.format_msg("msg\n")
+        msg.should eq "msg\n"
+      end
+
+      it "expands ansi codes" do
+        msg = Client.format_msg("my %xcansi%xn message\n")
+        msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message\n"
       end
     end
+    
 
   end
 end
