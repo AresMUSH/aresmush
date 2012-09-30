@@ -1,44 +1,46 @@
 module AresMUSH
 
-  class Client < EventMachine::Connection
+  class Client 
 
-    def self.next_id
-      @@next_id ||= 0
-      @@next_id = @@next_id + 1
+    attr_reader :ip_addr, :id
+    
+    def initialize(id, client_monitor, config_reader, connection)
+      @id = id
+      @client_monitor = client_monitor
+      @connection = connection
+      @config_reader = config_reader
     end
-
-    def self.format_msg(msg)
+    
+    def format_msg(msg)
       # Add \n to end if not already there
       if (!msg.end_with?("\n"))
         msg = msg + "\n"
       end
-      
       # Ansify
       msg.to_ansi
     end
     
+    def connected
+      connect_text = @config_reader.txt['connect']
+      emit connect_text
+      emit @config_reader.config['connect']['welcome_text']
+    end
+    
     def emit(msg)
-      send_data Client.format_msg(msg)
+      @connection.send_data format_msg(msg)
     end 
-
-    attr_reader :id, :ip_addr
-
-    def post_init
-      @id = Client.next_id
-      @port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
-      Bootstrapper.client_monitor.add_client(self)
-    end
-
-    def receive_data data
+    
+    def handle_input(data)
+      # TODO - pass on to command modules.
       if data =~ /quit/i
-        close_connection 
-      else
-        Bootstrapper.client_monitor.tell_all "Client #{id} says #{data}"
-      end
+         @connection.close_connection 
+       else
+         @client_monitor.tell_all "Client #{id} says #{data}"
+       end
     end
 
-    def unbind
-      Bootstrapper.client_monitor.rm_client self
+    def connection_closed
+      @client_monitor.connection_closed self
     end
 
   end

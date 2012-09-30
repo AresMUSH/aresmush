@@ -4,7 +4,8 @@ module AresMUSH
   class ClientMonitor
     def initialize(config_reader)
       @clients = []
-      @config_reader = config_reader      
+      @client_id = 0
+      @config_reader = config_reader
     end
 
     def tell_all(msg)
@@ -13,15 +14,16 @@ module AresMUSH
       end
     end
 
-    def add_client(client)
+    def connection_established(connection)
+      @client_id = @client_id + 1   
+      client = Client.new(@client_id, self, @config_reader, connection)       
+      connection.client = client
+      client.connected
       @clients << client
-      client.emit ANSI.green + @config_reader.config['connect']['welcome_text'] + ANSI.reset
-      connect_text = @config_reader.txt['connect']
-      client.emit connect_text.to_ansi
       tell_all "Client #{client.id} connected"
     end
 
-    def rm_client(client)
+    def connection_closed(client)
       @clients.delete client
       tell_all "Client #{client.id} disconnected"
     end
