@@ -8,6 +8,8 @@ module AresMUSH
       @config_reader = config_reader
     end
 
+    attr_reader :clients, :client_id
+    
     def tell_all(msg)
       @clients.each do |c|
         c.emit msg
@@ -20,11 +22,15 @@ module AresMUSH
       connection.client = client
       client.connected
       @clients << client
+      
+      # TODO - raise system event
       tell_all "Client #{client.id} connected"
     end
 
     def connection_closed(client)
       @clients.delete client
+      
+      # TODO - raise system event
       tell_all "Client #{client.id} disconnected"
     end
   end

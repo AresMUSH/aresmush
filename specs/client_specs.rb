@@ -11,7 +11,7 @@ module AresMUSH
       before do
         @client = Client.new(1, nil, nil, nil)
       end
-      
+
       it "adds a \n to the end if not already there" do
         msg = @client.format_msg("msg")
         msg.should eq "msg\n"
@@ -27,30 +27,34 @@ module AresMUSH
         msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message\n"
       end
     end
-    
+
     describe :connected do
       before do
         config_reader = double(ConfigReader)
         config_reader.stub(:config) { { 'connect' => { 'welcome_text' => "Hi" } } }
         config_reader.stub(:txt) { { 'connect' => "Ascii Art"} }
-        @connection = double(EventMachine::Connection)
+        @connection = double(EventMachine::Connection).as_null_object
         @client = Client.new(1, nil, config_reader, @connection)
       end
-      
-      it "sends the welcome screen and welcome message" do
+
+      it "sends the welcome screen" do
         @connection.should_receive(:send_data).with("Ascii Art\n")
+        @client.connected
+      end
+
+      it "sends the welcome text" do
         @connection.should_receive(:send_data).with("Hi\n")
         @client.connected
       end
-     
+
     end
-    
+
     describe :emit do
       before do
         @connection = double(EventMachine::Connection)
         @client = Client.new(1, nil, nil, @connection)
       end
-      
+
       it "sends the message to the connection" do
         @connection.should_receive(:send_data).with("Hi\n")
         @client.emit "Hi"
@@ -60,13 +64,13 @@ module AresMUSH
         @connection.should_receive(:send_data).with(ANSI.cyan + "Hi" + ANSI.reset + "\n")
         @client.emit "%xcHi%xn"
       end
-     
+
     end
-    
+
     describe :handle_input do
       # TODO - pass on to command modules
     end
-    
+
     describe :connection_closed do
       it "should notify the client monitor that the connection closed" do
         client_monitor = double(ClientMonitor)
