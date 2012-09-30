@@ -1,5 +1,18 @@
 Simple use case:
 
-http://www.websequencediagrams.com/cgi-bin/cdraw?lz=RXZlbnQgTWFjaGluZS0-Q2xpAAsFb25pdG9yOiBuZXcgY29ubmVjdGlvbgoAEQ4AJwg6IGNyZWF0ZSBjADkFAAwaAEMGZWQAQQctPkMAUgk6IHNlbmQgd2VsY29tZSB0ZXh0CgAUCgBgCmlucHV0ICdzYXkgaGVsbG8nAEIKAIEsD3RlbGwgZXZlcnlvbmUgIlBsYXllciBzYXlzIGhpIgCBMhllbWl0ABYYAIEeEwBGEgCBGxpxdWl0AIElCwCBcQtjbG9zZQCCVxIAghUMAIMKCmRpcwCCQAoKCgo&s=rose
+Put into http://www.websequencediagrams.com/
 
-http://www.websequencediagrams.com/?lz=RXZlbnQgTWFjaGluZS0-Q2xpAAsFb25pdG9yOiBuZXcgY29ubmVjdGlvbgoAEQ4AJwg6IGNyZWF0ZSBjADkFAAwaAEMGZWQAQQctPkMAUgk6IHNlbmQgd2VsY29tZSB0ZXh0CgAUCgBgCmlucHV0ICdzYXkgaGVsbG8nAEIKAIEsD3RlbGwgZXZlcnlvbmUgIlBsYXllciBzYXlzIGhpIgCBMhllbWl0ABYYAIEeEwBGEgCBGxpxdWl0AIElCwCBcQtjbG9zZQCCVxIAghUMAIMKCmRpcwCCQAoKCgo&s=rose
+Event Machine->Client Monitor: new connection
+Client Monitor->Client: create client
+Client Monitor->Client: connected
+Client->EM Connection: send welcome text
+EM Connection->Client: input 'say hello'
+Client->Client Monitor: tell everyone "Player says hi"
+Client Monitor->Client: emit "Player says hi"
+Client->EM Connection: send "Player says hi"
+EM Connection->Client: input 'quit'
+Client->EM Connection: close connection
+Client->Connection Monitor: disconnected
+
+
+
