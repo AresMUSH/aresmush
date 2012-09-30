@@ -11,15 +11,6 @@ module AresMUSH
       @config_reader = config_reader
     end
     
-    def format_msg(msg)
-      # Add \n to end if not already there
-      if (!msg.end_with?("\n"))
-        msg = msg + "\n"
-      end
-      # Ansify
-      msg.to_ansi
-    end
-    
     def connected
       connect_text = @config_reader.txt['connect']
       emit connect_text
@@ -27,7 +18,7 @@ module AresMUSH
     end
     
     def emit(msg)
-      @connection.send_data format_msg(msg)
+      @connection.send_data msg
     end 
     
     def handle_input(data)

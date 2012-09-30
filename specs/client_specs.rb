@@ -7,27 +7,6 @@ module AresMUSH
 
   describe Client do
 
-    describe :format_msg do
-      before do
-        @client = Client.new(1, nil, nil, nil)
-      end
-
-      it "adds a \n to the end if not already there" do
-        msg = @client.format_msg("msg")
-        msg.should eq "msg\n"
-      end
-
-      it "doesn't add another \n if there's already one on the end" do
-        msg = @client.format_msg("msg\n")
-        msg.should eq "msg\n"
-      end
-
-      it "expands ansi codes" do
-        msg = @client.format_msg("my %xcansi%xn message\n")
-        msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message\n"
-      end
-    end
-
     describe :connected do
       before do
         config_reader = double(ConfigReader)
@@ -38,12 +17,12 @@ module AresMUSH
       end
 
       it "sends the welcome screen" do
-        @connection.should_receive(:send_data).with("Ascii Art\n")
+        @connection.should_receive(:send_data).with("Ascii Art")
         @client.connected
       end
 
       it "sends the welcome text" do
-        @connection.should_receive(:send_data).with("Hi\n")
+        @connection.should_receive(:send_data).with("Hi")
         @client.connected
       end
 
@@ -56,15 +35,9 @@ module AresMUSH
       end
 
       it "sends the message to the connection" do
-        @connection.should_receive(:send_data).with("Hi\n")
+        @connection.should_receive(:send_data).with("Hi")
         @client.emit "Hi"
       end
-
-      it "formats the message" do
-        @connection.should_receive(:send_data).with(ANSI.cyan + "Hi" + ANSI.reset + "\n")
-        @client.emit "%xcHi%xn"
-      end
-
     end
 
     describe :handle_input do

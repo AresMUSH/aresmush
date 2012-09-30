@@ -49,6 +49,7 @@ String.class_eval do
       "\\1#{code_map[code]}")  
     end
 
-    str
+    # Do an ANSI reset at the end to prevent ansi "bleeding" in case there's a non-terminated code.
+    str + ANSI.reset
   end
 end
