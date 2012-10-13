@@ -16,6 +16,18 @@ module AresMUSH
       FileUtils.rm_rf @temp_config_dir
     end
 
+    it "clears any previous config" do
+      @reader.config['x'] = 'y'
+      @reader.read
+      @reader.config.has_key?('x').should be_false
+    end
+    
+    it "clears any previous txt" do
+      @reader.txt['x'] = 'y'
+      @reader.read
+      @reader.txt.has_key?('x').should be_false
+    end
+    
     it "reads the server config" do
       @reader.read
       @reader.config['server'].should eq @server_config['server']

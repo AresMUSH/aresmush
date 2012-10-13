@@ -1,0 +1,3 @@
+de:
+    server_start: "Server gestarten bei %{host}:%{port}..."
+    welcome: Wilkommen bei AresMUSH!

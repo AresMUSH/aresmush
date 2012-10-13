@@ -21,10 +21,16 @@ module AresMUSH
         @client.connected
       end
 
-      it "sends the welcome text" do
+      it "sends the game welcome text" do
         @connection.should_receive(:send_data).with("Hi")
         @client.connected
       end
+      
+       it "sends the server welcome text" do
+          @client.should_receive(:_t).with('welcome') { "welcome" }
+          @connection.should_receive(:send_data).with("%xgwelcome%xn")
+          @client.connected
+        end
 
     end
 
@@ -44,6 +50,15 @@ module AresMUSH
       # TODO - pass on to command modules
     end
 
+    describe :disconnect do
+      it "should close the connection" do
+        @connection = double(EventMachine::Connection)
+        @client = Client.new(1, nil, nil, @connection)
+        @connection.should_receive(:close_connection)
+        @client.disconnect
+      end
+    end
+        
     describe :connection_closed do
       it "should notify the client monitor that the connection closed" do
         client_monitor = double(ClientMonitor)

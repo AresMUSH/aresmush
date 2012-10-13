@@ -1,2 +1,2 @@
 connect:
-    welcome_text: "%xgWelcome to AresMUSH!%xn\nJust type something and you'll say it."
+    welcome_text: "Just type something and you'll say it.\nUnicode test: α 而"

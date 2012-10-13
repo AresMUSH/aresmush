@@ -13,21 +13,23 @@ module AresMUSH
     
     def connected
       connect_text = @config_reader.txt['connect']
+      server_welcome_text = _t('welcome')
+      game_welcome_text = @config_reader.config['connect']['welcome_text']
       emit connect_text
-      emit @config_reader.config['connect']['welcome_text']
+      emit "%xg#{server_welcome_text}%xn"
+      emit game_welcome_text
     end
     
     def emit(msg)
       @connection.send_data msg
     end 
     
+    def disconnect
+      @connection.close_connection 
+    end
+    
     def handle_input(data)
-      # TODO - pass on to command modules.
-      if data =~ /quit/i
-         @connection.close_connection 
-       else
-         @client_monitor.tell_all "Client #{id} says #{data}"
-       end
+      @client_monitor.handle(self, data)
     end
 
     def connection_closed

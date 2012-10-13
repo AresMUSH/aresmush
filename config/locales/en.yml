@@ -1,0 +1,3 @@
+en:
+    server_start: "Server started on %{host}:%{port}..."
+    welcome: Welcome to AresMUSH!

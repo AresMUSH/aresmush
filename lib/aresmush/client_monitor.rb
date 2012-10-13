@@ -6,6 +6,9 @@ module AresMUSH
       @clients = []
       @client_id = 0
       @config_reader = config_reader
+      
+      # TODO: Doesn't belong here
+      @widgets = []
     end
 
     attr_reader :clients, :client_id
@@ -32,6 +35,16 @@ module AresMUSH
       
       # TODO - raise system event
       tell_all "Client #{client.id} disconnected"
+    end
+    
+    # TODO: Doesn't belong here
+    def register(widget)
+      @widgets << widget
+    end
+    
+    # TODO: Doesn't belong here either
+    def handle(client, cmd)
+      @widgets.each { |w| w.handle(client, cmd) }
     end
   end
 end

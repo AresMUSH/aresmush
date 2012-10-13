@@ -4,11 +4,18 @@ module AresMUSH
   class ConfigReader    
     def initialize(path)
       @path = path
+      clear_config
+    end
+
+    attr_accessor :txt, :config
+
+    def clear_config
       @config = {}
       @txt = {}
     end
     
     def read
+      clear_config
       Dir.foreach("#{@path}/config") do |f| 
         file_path = "#{@path}/config/#{f}"
         next if (File.directory?(file_path))
@@ -22,14 +29,6 @@ module AresMUSH
         file_txt = File.read( file_path ) 
         @txt[File.basename(f, ".*")] = file_txt
       end      
-    end
-    
-    def config
-      @config
-    end
-    
-    def txt
-      @txt
     end
   end
 end
