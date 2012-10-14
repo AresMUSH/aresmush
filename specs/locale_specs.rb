@@ -25,6 +25,21 @@ module AresMUSH
       end
     end
     
+    describe :t do
+      it "should call the i18n translate with no args" do
+        I18n.should_receive(:t).with('hello world')
+        @locale.setup
+        _t('hello world')
+      end
+
+      it "should call the i18n translate with args" do
+        I18n.should_receive(:t).with('hello world', :a => "a", :b => "b")
+        @locale.setup
+        _t('hello world', :a => "a", :b => "b")
+      end
+
+    end
+    
     def create_temp_locale_files
       @temp_locale_dir = "#{Dir.pwd}/tmp_locale"
       FileUtils.rm_rf @temp_locale_dir
