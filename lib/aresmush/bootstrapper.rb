@@ -10,7 +10,7 @@ module AresMUSH
       port = config_reader.config['server']['port']
 
       client_monitor = ClientMonitor.new(config_reader)
-      locale = Locale.new(config_reader, Dir.pwd + "/config/locales")
+      locale = Locale.new(config_reader, Dir.pwd + "/locales")
       server = Server.new(config_reader, client_monitor)
       @command_line = AresMUSH::CommandLine.new(server)
       locale.setup

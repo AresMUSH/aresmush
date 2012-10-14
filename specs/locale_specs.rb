@@ -19,8 +19,8 @@ module AresMUSH
       end
     
       it "should load the locale files" do
-        I18n.load_path.should_receive(:<<).with("#{Dir.pwd}/tmp_locale/de.yaml")
-        I18n.load_path.should_receive(:<<).with("#{Dir.pwd}/tmp_locale/en.yaml")
+        I18n.load_path.should_receive(:<<).with("#{Dir.pwd}/tmp_locale/de.yml")
+        I18n.load_path.should_receive(:<<).with("#{Dir.pwd}/tmp_locale/en.yml")
         @locale.setup
       end
     end
@@ -46,10 +46,10 @@ module AresMUSH
       Dir.mkdir @temp_locale_dir
       
       @en = { 'a' => 'English' }
-      write_yaml_file("en.yaml", @en)
+      write_yaml_file("en.yml", @en)
 
       @de = { 'a' => 'Deutsch' }
-      write_yaml_file("de.yaml", @de)      
+      write_yaml_file("de.yml", @de)      
     end
     
     def write_yaml_file(filename, contents)

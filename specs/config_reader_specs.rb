@@ -56,10 +56,10 @@ module AresMUSH
       Dir.mkdir "#{@temp_config_dir}/txt"
       
       @server_config = { 'server' => { 'port' => 9999, 'foo' => "Test" } }
-      write_yaml_file("server.yaml", @server_config)
+      write_yaml_file("server.yml", @server_config)
       
       @connect_config = { 'connect' => { 'welcome_text' => "Hi there!" }}
-      write_yaml_file("connect.yaml", @connect_config)
+      write_yaml_file("connect.yml", @connect_config)
       
       @txt1 = "A\nB"
       @txt2 = "C\nD"
