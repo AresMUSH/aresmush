@@ -29,13 +29,13 @@ module AresMUSH
       it "should call the i18n translate with no args" do
         I18n.should_receive(:t).with('hello world')
         @locale.setup
-        _t('hello world')
+        t('hello world')
       end
 
       it "should call the i18n translate with args" do
         I18n.should_receive(:t).with('hello world', :a => "a", :b => "b")
         @locale.setup
-        _t('hello world', :a => "a", :b => "b")
+        t('hello world', :a => "a", :b => "b")
       end
 
     end

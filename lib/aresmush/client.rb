@@ -13,7 +13,7 @@ module AresMUSH
     
     def connected
       connect_text = @config_reader.txt['connect']
-      server_welcome_text = _t('welcome')
+      server_welcome_text = t('welcome')
       game_welcome_text = @config_reader.config['connect']['welcome_text']
       emit connect_text
       emit "%xg#{server_welcome_text}%xn"

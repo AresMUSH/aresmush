@@ -27,7 +27,7 @@ module AresMUSH
       end
       
        it "sends the server welcome text" do
-          @client.should_receive(:_t).with('welcome') { "welcome" }
+          @client.should_receive(:t).with('welcome') { "welcome" }
           @connection.should_receive(:send_data).with("%xgwelcome%xn")
           @client.connected
         end

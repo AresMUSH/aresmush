@@ -1,6 +1,7 @@
 require "i18n"
 
-def _t(str, *args)
+# Short global alias for i18N.t
+def t(str, *args)
   I18n.t(str, *args)
 end
   

@@ -12,7 +12,7 @@ module AresMUSH
         EventMachine::start_server(host, port, Connection) do |connection|
           @client_monitor.connection_established(connection)
         end
-        puts _t('server_start', :host => host, :port => port)
+        puts t('server_start', :host => host, :port => port)
       end
     end   
   end
