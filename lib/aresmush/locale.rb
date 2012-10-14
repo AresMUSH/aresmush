@@ -16,6 +16,7 @@ module AresMUSH
       set_locale
     end
     
+    private
     def set_load_path
       Dir.foreach("#{@path}") do |f| 
         file_path = "#{@path}/#{f}"

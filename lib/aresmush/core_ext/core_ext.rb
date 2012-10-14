@@ -3,7 +3,6 @@ String.class_eval do
     str = self
 
     code_map = { 
-      # TODO - See if there's a gray
       "x" => ANSI.black,
       "r" => ANSI.red,
       "g" => ANSI.green,
