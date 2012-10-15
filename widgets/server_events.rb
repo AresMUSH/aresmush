@@ -10,6 +10,8 @@ module AresMUSH
       def handle(client, cmd)
         if cmd =~ /quit/i
           client.disconnect
+        elsif cmd =~ /who/i
+          client.emit t('players_connected', :count => @client_monitor.clients.count)
         elsif cmd =~ /readconfig/
           @config_reader.read
           client.emit "%% You reload the config files."

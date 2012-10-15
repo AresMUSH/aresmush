@@ -1,3 +1,38 @@
 de:
+    players_connected:
+        zero: "Keine spieler angeschlossen."
+        one: "Ein spieler angeschlossen."
+        other: "%{count} spieler angeschlossen."
     server_start: "Server gestarten bei %{host}:%{port}..."
-    welcome: Wilkommen bei AresMUSH!
+    welcome: "Wilkommen bei AresMUSH!"
+
+
+    date:
+      formats:
+        # Use the strftime parameters for formats.
+        # When no format has been given, it uses default.
+        # You can provide other formats here if you like!
+        default: "%d-%m-%Y"
+        short: "%d %b"
+        long: "%d %B, %Y"
+
+      day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+      abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+
+      # Don't forget the nil at the beginning; there's no such thing as a 0th month
+      month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+      abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+      # Used in date_select and datime_select.
+      order: [ :day, :month, :year ]
+
+    time:
+      formats:
+          default: "%A, %d. %B %Y, %H:%M Uhr"
+          short: "%A, %d. %B %Y, %H:%M Uhr"
+          long: "%d. %B, %H:%M Uhr"
+      am: "vormittags"
+      pm: "nachmittags"
+      
+    number:
+        format:
+            separator: ','            

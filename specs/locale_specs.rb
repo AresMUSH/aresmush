@@ -10,6 +10,11 @@ module AresMUSH
       @config_reader.stub(:config) { { 'server' => { 'locale' => "de" } } }
       create_temp_locale_files
       @locale = Locale.new(@config_reader, @temp_locale_dir)
+      @test_date = Date.parse("2012-10-15")
+    end
+
+    after do
+        FileUtils.rm_rf @temp_locale_dir
     end
     
     describe :setup do
@@ -19,36 +24,57 @@ module AresMUSH
       end
     
       it "should load the locale files" do
-        I18n.load_path.should_receive(:<<).with("#{Dir.pwd}/tmp_locale/de.yml")
-        I18n.load_path.should_receive(:<<).with("#{Dir.pwd}/tmp_locale/en.yml")
         @locale.setup
+        I18n.load_path.should include "#{Dir.pwd}/tmp_locale/de.yml"
+        I18n.load_path.should include "#{Dir.pwd}/tmp_locale/en.yml"
       end
     end
     
     describe :t do
-      it "should call the i18n translate with no args" do
+      it "should call i18n translate with no args" do
         I18n.should_receive(:t).with('hello world')
         @locale.setup
         t('hello world')
       end
 
-      it "should call the i18n translate with args" do
+      it "should call i18n translate with args" do
         I18n.should_receive(:t).with('hello world', :a => "a", :b => "b")
         @locale.setup
         t('hello world', :a => "a", :b => "b")
       end
+    end
+    
+    describe :l do
+      it "should call i18n localize with no args" do
+        I18n.should_receive(:l).with(@test_date, {})
+        @locale.setup
+        l(@test_date)
+      end
 
+      it "should call i18n localize with args" do
+        I18n.should_receive(:l).with(@test_date, :format => "short")
+        @locale.setup
+        l(@test_date, :format => "short")
+      end
+    end
+    
+    describe :enable_fallbacks do
+      it "should set the default locale to english" do
+        I18n.should_receive(:default_locale=).with("en")
+        @locale.setup
+      end
     end
     
     def create_temp_locale_files
       @temp_locale_dir = "#{Dir.pwd}/tmp_locale"
+      
       FileUtils.rm_rf @temp_locale_dir
       Dir.mkdir @temp_locale_dir
       
-      @en = { 'a' => 'English' }
+      @en = { 'en' => { 'a' => 'English' }}
       write_yaml_file("en.yml", @en)
 
-      @de = { 'a' => 'Deutsch' }
+      @de = { 'de' => { 'a' => 'Deutsch' }}
       write_yaml_file("de.yml", @de)      
     end
     
