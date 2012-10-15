@@ -7,6 +7,10 @@ en:
     welcome: Welcome to AresMUSH!
     test: Yay
 
+    number:
+        format:
+            separator: '.'
+
     date:
       formats:
         # Use the strftime parameters for formats.
@@ -32,8 +36,4 @@ en:
         long: "%B %d, %Y %H:%M"
       am: "am"
       pm: "pm"
-      
-    number:
-        format:
-            separator: '.'
       

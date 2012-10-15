@@ -6,7 +6,10 @@ de:
     server_start: "Server gestarten bei %{host}:%{port}..."
     welcome: "Wilkommen bei AresMUSH!"
 
-
+    number:
+        format:
+            separator: ','
+            
     date:
       formats:
         # Use the strftime parameters for formats.
@@ -33,6 +36,3 @@ de:
       am: "vormittags"
       pm: "nachmittags"
       
-    number:
-        format:
-            separator: ','            

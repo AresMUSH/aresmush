@@ -10,7 +10,6 @@ module AresMUSH
       @config_reader.stub(:config) { { 'server' => { 'locale' => "de" } } }
       create_temp_locale_files
       @locale = Locale.new(@config_reader, @temp_locale_dir)
-      @test_date = Date.parse("2012-10-15")
     end
 
     after do
@@ -45,18 +44,49 @@ module AresMUSH
     end
     
     describe :l do
-      it "should call i18n localize with no args" do
-        I18n.should_receive(:l).with(@test_date, {})
+      it "should call i18n localize for a date with no args " do
+        test_date = Date.parse("2012-10-15")
+        I18n.should_receive(:l).with(test_date, {})
         @locale.setup
-        l(@test_date)
+        l(test_date)
       end
 
-      it "should call i18n localize with args" do
-        I18n.should_receive(:l).with(@test_date, :format => "short")
+      it "should call i18n localize for a date with args " do
+        test_date = Date.parse("2012-10-15")
+        I18n.should_receive(:l).with(test_date, :format => "short")
         @locale.setup
-        l(@test_date, :format => "short")
+        l(test_date, :format => "short")
+      end
+      
+      it "should call i18n localize for a time with args" do
+        test_time = Time.parse("12:23 am")
+        I18n.should_receive(:l).with(test_time, :format => "short")
+        @locale.setup
+        l(test_time, :format => "short")
+      end
+      
+      it "should call i18n localize for a time with no args" do
+        test_time = Time.parse("12:23 am")
+        I18n.should_receive(:l).with(test_time, {})
+        @locale.setup
+        l(test_time)
+      end
+      
+      it "should localize a number" do
+        I18n.should_receive(:t).with('number.format.separator') { "," }
+        @locale.setup
+        l("100.3").should eq "100,3"  
       end
     end
+    
+    describe :delocalize do
+      it "should delocalize a number" do
+        I18n.should_receive(:t).with('number.format.separator') { "," }
+        @locale.setup
+        Locale.delocalize("100,23").should eq "100.23"
+      end
+    end
+        
     
     describe :enable_fallbacks do
       it "should set the default locale to english" do
@@ -71,10 +101,10 @@ module AresMUSH
       FileUtils.rm_rf @temp_locale_dir
       Dir.mkdir @temp_locale_dir
       
-      @en = { 'en' => { 'a' => 'English' }}
+      @en = { 'en' => { 'a' => 'English' } }
       write_yaml_file("en.yml", @en)
 
-      @de = { 'de' => { 'a' => 'Deutsch' }}
+      @de = { 'de' => { 'a' => 'Deutsch' } }
       write_yaml_file("de.yml", @de)      
     end
     
