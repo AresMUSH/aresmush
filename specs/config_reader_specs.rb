@@ -28,14 +28,11 @@ module AresMUSH
       @reader.txt.has_key?('x').should be_false
     end
     
-    it "reads the server config" do
-      @reader.read
-      @reader.config['server'].should eq @server_config['server']
-    end
-    
-    it "reads the connect config" do
-      @reader.read
-      @reader.config['connect'].should eq @connect_config['connect']
+    it "builds the one true yaml for the config options" do
+      YamlExtensions.should_receive(:one_yaml_to_rule_them_all).with(@temp_config_dir + "/config") { { 'server' => { 'port' => 9999, 'foo' => "Test" } } }
+      @reader.read  
+      @reader.config['server']['port'].should eq 9999
+      @reader.config['server']['foo'].should eq "Test"
     end
     
     it "reads the first txt file" do
@@ -55,22 +52,10 @@ module AresMUSH
       Dir.mkdir "#{@temp_config_dir}/config"
       Dir.mkdir "#{@temp_config_dir}/txt"
       
-      @server_config = { 'server' => { 'port' => 9999, 'foo' => "Test" } }
-      write_yaml_file("server.yml", @server_config)
-      
-      @connect_config = { 'connect' => { 'welcome_text' => "Hi there!" }}
-      write_yaml_file("connect.yml", @connect_config)
-      
       @txt1 = "A\nB"
       @txt2 = "C\nD"
       File.open("#{@temp_config_dir}/txt/test1.txt", "w") { |f| f.write(@txt1)}
       File.open("#{@temp_config_dir}/txt/test2.txt", "w") { |f| f.write(@txt2)}
-    end
-    
-    def write_yaml_file(filename, contents)
-      File.open("#{@temp_config_dir}/config/#{filename}", "w") do |f|
-        f.write(contents.to_yaml)
-      end
     end
   end
 end

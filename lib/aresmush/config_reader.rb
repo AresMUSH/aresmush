@@ -16,12 +16,7 @@ module AresMUSH
     
     def read
       clear_config
-      Dir.foreach("#{@path}/config") do |f| 
-        file_path = "#{@path}/config/#{f}"
-        next if (File.directory?(file_path))
-        file_config = YAML::load( File.open( file_path ) )
-        @config = @config.merge(file_config)
-      end
+      @config = YamlExtensions.one_yaml_to_rule_them_all("#{@path}/config") 
 
       Dir.foreach("#{@path}/txt") do |f| 
         file_path = "#{@path}/txt/#{f}"

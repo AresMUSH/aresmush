@@ -6,74 +6,65 @@ module AresMUSH
 
   describe Locale do
     before do
+      @temp_dir = Dir.pwd + "/tmp_locale"
+      Dir.mkdir @temp_dir
       @config_reader = double(ConfigReader)
-      @config_reader.stub(:config) { { 'server' => { 'locale' => "de" } } }
-      create_temp_locale_files
-      @locale = Locale.new(@config_reader, @temp_locale_dir)
+      @config_reader.stub(:config) { { 'server' => { 'locale' => "de", "fallback_locale" => "en" } } }
+      @locale = Locale.new(@config_reader, @temp_dir)
     end
 
     after do
-        FileUtils.rm_rf @temp_locale_dir
+      FileUtils.rm_rf @temp_dir
     end
     
     describe :setup do
       it "should set the locale from the config file" do
-        I18n.should_receive(:locale=).with("de")
         @locale.setup
+        @locale.locale.should eq "de"
       end
-    
-      it "should load the locale files" do
+      
+      it "should set the fallback locale from the config file" do
         @locale.setup
-        I18n.load_path.should include "#{Dir.pwd}/tmp_locale/de.yml"
-        I18n.load_path.should include "#{Dir.pwd}/tmp_locale/en.yml"
+        @locale.fallback_locale.should eq "en"
+      end
+      
+      it "should load the locale files" do
+        YamlExtensions.should_receive(:one_yaml_to_rule_them_all).with(@temp_dir)
+        @locale.setup
       end
     end
     
     describe :t do
-      it "should call i18n translate with no args" do
-        I18n.should_receive(:t).with('hello world')
+      it "should translate a string to the current locale" do
+        YamlExtensions.stub(:one_yaml_to_rule_them_all) { {"de" => { "hello world" => "Hello World!" }} }
         @locale.setup
-        t('hello world')
+        t('hello world').should eq "Hello World!"
       end
 
-      it "should call i18n translate with args" do
-        I18n.should_receive(:t).with('hello world', :a => "a", :b => "b")
+      it "should fall back to the default locale if the string isn't found" do
+        YamlExtensions.stub(:one_yaml_to_rule_them_all) { {"en" => { "hello world" => "Hello World!" }} }
         @locale.setup
-        t('hello world', :a => "a", :b => "b")
+        t('hello world').should eq "Hello World!"
       end
+      
+      it "should give the original string if not found in the default locale" do
+        YamlExtensions.stub(:one_yaml_to_rule_them_all) { {"en" => { "hello world" => "Hello World!" }} }
+        @locale.setup
+        t('goodbye world').should eq "goodbye world"
+      end
+      
+      it "should expand variables into the string" do
+        YamlExtensions.stub(:one_yaml_to_rule_them_all) { {"de" => { "hello world" => "Hello %{arg} World!" }} }
+        @locale.setup
+        t('hello world', :arg => "my" ).should eq "Hello my World!"
+      end
+      
     end
     
     describe :l do
-      it "should call i18n localize for a date with no args " do
-        test_date = Date.parse("2012-10-15")
-        I18n.should_receive(:l).with(test_date, {})
-        @locale.setup
-        l(test_date)
-      end
-
-      it "should call i18n localize for a date with args " do
-        test_date = Date.parse("2012-10-15")
-        I18n.should_receive(:l).with(test_date, :format => "short")
-        @locale.setup
-        l(test_date, :format => "short")
-      end
-      
-      it "should call i18n localize for a time with args" do
-        test_time = Time.parse("12:23 am")
-        I18n.should_receive(:l).with(test_time, :format => "short")
-        @locale.setup
-        l(test_time, :format => "short")
-      end
-      
-      it "should call i18n localize for a time with no args" do
-        test_time = Time.parse("12:23 am")
-        I18n.should_receive(:l).with(test_time, {})
-        @locale.setup
-        l(test_time)
-      end
-      
       it "should localize a number" do
-        I18n.should_receive(:t).with('number.format.separator') { "," }
+        config = { 'de' => { 'number' => { 'separator' => ',' } } }
+        YamlExtensions.stub(:one_yaml_to_rule_them_all) { config }
         @locale.setup
         l("100.3").should eq "100,3"  
       end
@@ -81,38 +72,13 @@ module AresMUSH
     
     describe :delocalize do
       it "should delocalize a number" do
-        I18n.should_receive(:t).with('number.format.separator') { "," }
+        config = { 'de' => { 'number' => { 'separator' => ',' } } }
+        YamlExtensions.stub(:one_yaml_to_rule_them_all) { config }
         @locale.setup
-        Locale.delocalize("100,23").should eq "100.23"
+        @locale.delocalize("100,23").should eq "100.23"
       end
     end
         
-    
-    describe :enable_fallbacks do
-      it "should set the default locale to english" do
-        I18n.should_receive(:default_locale=).with("en")
-        @locale.setup
-      end
-    end
-    
-    def create_temp_locale_files
-      @temp_locale_dir = "#{Dir.pwd}/tmp_locale"
-      
-      FileUtils.rm_rf @temp_locale_dir
-      Dir.mkdir @temp_locale_dir
-      
-      @en = { 'en' => { 'a' => 'English' } }
-      write_yaml_file("en.yml", @en)
-
-      @de = { 'de' => { 'a' => 'Deutsch' } }
-      write_yaml_file("de.yml", @de)      
-    end
-    
-    def write_yaml_file(filename, contents)
-      File.open("#{@temp_locale_dir}/#{filename}", "w") do |f|
-        f.write(contents.to_yaml)
-      end
-    end
   end
 end
 

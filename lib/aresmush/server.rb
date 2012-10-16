@@ -13,8 +13,6 @@ module AresMUSH
           @client_monitor.connection_established(connection)
         end
         puts t('server_start', :host => host, :port => port)
-        puts l(Date.today, :format => :short)  
-        puts l(1000.23)
       end
     end   
   end
