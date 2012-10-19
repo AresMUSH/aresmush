@@ -1,12 +1,13 @@
-# This class is inspired by the Ruby i18N library, but I had slightly different needs.
+require 'I18n'
+require "i18n/backend/fallbacks" 
   
 # Short global alias for translate and localize
 def t(str, *args)
-  AresMUSH::Locale.instance.translate(str, *args)
+  AresMUSH::Locale.translate(str, *args)
 end
 
 def l(object, options = {})
-  AresMUSH::Locale.instance.localize(object)
+  AresMUSH::Locale.localize(object, options)
 end
   
 module AresMUSH  
@@ -15,20 +16,15 @@ module AresMUSH
   class Locale
     def initialize(config_reader, path)
       @path = path
-      @config_reader = config_reader
-      @locale = "en"
-      @fallback_locale = "en"
-      @translations = {}
-      @@instance = self
+      @config_reader = config_reader     
+    end
+        
+    def locale
+      I18n.locale
     end
     
-    attr_reader :locale, :fallback_locale
-    
-    # Default locale instance - for test purposes
-    @@instance =  Locale.new(nil, "")
-
-    def self.instance
-      @@instance
+    def default_locale
+      I18n.default_locale
     end
     
     def setup
@@ -36,11 +32,15 @@ module AresMUSH
       set_locale
     end
     
-    def localize(object, options = {})
+    def self.translate(str, *args)  
+      I18n.t(str, *args)
+    end
+    
+    def self.localize(object, options = {})
       if (object.is_a?(Date) || object.is_a?(Time))
-        raise "Localizing dates and times is not currently supported."
+        I18n.l(object, options)
       else
-        sep = t('number.separator')
+        sep = t('number.format.separator')
         object.to_s.gsub(/\./, sep)
       end
     end
@@ -49,58 +49,25 @@ module AresMUSH
       if (object.is_a?(Date) || object.is_a?(Time))
         raise "Delocalizing dates and times is not currently supported."
       else
-        sep = t('number.separator')
+        sep = t('number.format.separator')
         object.to_s.gsub(/#{sep}/, ".")
       end
     end
     
-    def translate(str, *args)
-      
-      translation = lookup_translation(@locale, str)
-      
-      if (translation.nil?)
-       translation = lookup_translation(@fallback_locale, str) 
-      end
-      
-      if (translation.nil?)
-       translation = str
-      end
-      
-      substitute_vars(translation, *args)
-    end
-    
     private
     
-    def lookup_translation(locale, key)
-      return nil if !@translations.has_key?(locale)
-      keys = key.to_s.split('.')
-      tmp_hash = @translations[locale]
-      while (k = keys.shift)
-        if (tmp_hash.has_key?(k))
-          tmp_hash = tmp_hash[k]
-        else
-          return nil
-        end
-      end
-      tmp_hash
-    end
-    
-    def substitute_vars(str, *args)
-      str.gsub(/%{.*?}/) do |key|
-         key = key.gsub('%', '')
-         key = key.gsub('{', '')
-         key = key.gsub('}', '')
-         args[0][:"#{key}"]
-      end
-    end
-
     def load_translations
-      @translations = YamlExtensions.one_yaml_to_rule_them_all("#{@path}")
+      I18n.load_path = []
+      Dir.foreach("#{@path}") do |f| 
+        next if (File.directory?(f))
+        I18n.load_path << "#{@path}/#{f}"
+      end
     end
     
     def set_locale
-      @locale =  @config_reader.config['server']['locale']
-      @fallback_locale =  @config_reader.config['server']['fallback_locale']
+      I18n.locale =  @config_reader.config['server']['locale']
+      I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
+      I18n.default_locale = :en
     end
   end
 end

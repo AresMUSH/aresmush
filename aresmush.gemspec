@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/lynnfaraday/aresmush'
   s.platform    = Gem::Platform::RUBY
   s.add_runtime_dependency "ansi", '~> 1.4.3'
+  s.add_runtime_dependency "i18n", '~> 0.6.1'
   s.add_runtime_dependency "eventmachine", '~> 1.0.0'
   s.executables = "aresmush"
 end

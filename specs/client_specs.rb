@@ -12,25 +12,28 @@ module AresMUSH
         config_reader = double(ConfigReader)
         config_reader.stub(:config) { { 'connect' => { 'welcome_text' => "Hi" } } }
         config_reader.stub(:txt) { { 'connect' => "Ascii Art"} }
+        I18n.default_locale = "en"
         @connection = double(EventMachine::Connection).as_null_object
         @client = Client.new(1, nil, config_reader, @connection)
       end
 
       it "sends the welcome screen" do
-        @connection.should_receive(:send_data).with("Ascii Art")
-        @client.connected
+         @connection.should_receive(:send_data).with("Ascii Art")
+         AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
+         @client.connected
       end
 
       it "sends the game welcome text" do
-        @connection.should_receive(:send_data).with("Hi")
-        @client.connected
+         @connection.should_receive(:send_data).with("Hi")
+         AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
+         @client.connected
       end
       
-       it "sends the server welcome text" do
-          @client.should_receive(:t).with('welcome') { "welcome" }
-          @connection.should_receive(:send_data).with("%xgwelcome%xn")
-          @client.connected
-        end
+      it "sends the server welcome text" do
+         AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
+         @connection.should_receive(:send_data).with("%xgwelcome%xn")
+         @client.connected
+      end
 
     end
 
