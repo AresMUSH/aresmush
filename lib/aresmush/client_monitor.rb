@@ -8,7 +8,7 @@ module AresMUSH
       @config_reader = config_reader
       
       # TODO: Doesn't belong here
-      @widgets = []
+      @systems = []
     end
 
     attr_reader :clients, :client_id
@@ -38,13 +38,13 @@ module AresMUSH
     end
     
     # TODO: Doesn't belong here
-    def register(widget)
-      @widgets << widget
+    def register(system)
+      @systems << system
     end
     
     # TODO: Doesn't belong here either
     def handle(client, cmd)
-      @widgets.each { |w| w.handle(client, cmd) }
+      @systems.each { |w| w.handle(client, cmd) }
     end
   end
 end

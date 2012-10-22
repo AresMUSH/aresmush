@@ -18,13 +18,16 @@ module AresMUSH
       locale.setup
       
       puts Dir.pwd
-      widgets = Dir[File.join(Dir.pwd + "/widgets/**/*.rb")]
-      widgets.each do |f| 
+      systems = Dir[File.join(Dir.pwd + "/systems/**/*.rb")]
+      systems.each do |f| 
         puts "Including" + f
         require f
-      end unless widgets.empty?
+      end unless systems.empty?
 
-      w1 = ServerEvents::ServerEvents.new(config_reader, client_monitor)
+      w1 = ServerEvents::Quit.new(config_reader, client_monitor)
+      w2 = ServerEvents::ServerConfig.new(config_reader, client_monitor)
+      w3 = ServerEvents::Say.new(config_reader, client_monitor)
+      w4 = ServerEvents::Who.new(config_reader, client_monitor)
     end    
   end
 

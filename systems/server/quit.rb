@@ -1,6 +1,6 @@
 module AresMUSH
   module ServerEvents
-    class ServerEvents
+    class Quit
       def initialize(config_reader, client_monitor)
         @config_reader = config_reader
         @client_monitor = client_monitor
@@ -8,15 +8,9 @@ module AresMUSH
       end
 
       def handle(client, cmd)
+        puts "Quit handling"
         if cmd =~ /quit/i
           client.disconnect
-        elsif cmd =~ /who/i
-          client.emit t('players_connected', :count => @client_monitor.clients.count)
-        elsif cmd =~ /readconfig/
-          @config_reader.read
-          client.emit "%% You reload the config files."
-        else
-          @client_monitor.tell_all "Client #{client.id} says #{cmd}"
         end      
       end
     end
