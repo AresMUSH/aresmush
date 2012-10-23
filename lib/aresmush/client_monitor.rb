@@ -45,7 +45,14 @@ module AresMUSH
     # TODO: Doesn't belong here either
     def handle(client, cmd)
       begin
-         @systems.each { |w| w.handle(client, cmd) }
+         @systems.each do |s|
+           s.handles.each do |regex|
+              match = /^#{regex}/.match(cmd)
+              if (!match.nil?)
+                s.handle(client, match)
+              end
+           end
+         end 
       rescue Exception => e
         # TODO: log
         tell_all "Bad code did badness! #{e}"

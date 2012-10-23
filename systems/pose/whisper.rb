@@ -1,18 +1,18 @@
 module AresMUSH
   module Commands
-    class Quit
+    class Whisper
       def initialize(config_reader, client_monitor)
         @config_reader = config_reader
         @client_monitor = client_monitor
         @client_monitor.register(self)
       end
-
+      
       def handles
-        ["quit"]
+        ["whisper  (?<target>[^=]+)=(?<msg>.+)"]
       end
       
       def handle(client, cmd)
-        client.disconnect
+        @client_monitor.tell_all "You whisper #{cmd[:msg]} to #{cmd[:target]}"
       end
     end
   end

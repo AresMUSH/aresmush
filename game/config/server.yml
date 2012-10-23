@@ -1,4 +1,4 @@
 server:
     hostname: localhost
     port: 7207
-    locale: de
+    locale: en

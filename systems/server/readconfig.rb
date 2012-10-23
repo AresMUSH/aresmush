@@ -7,15 +7,13 @@ module AresMUSH
         @client_monitor.register(self)
       end
 
-      def self.name
-        "ReadConfig"
+      def handles
+        ["readconfig"]
       end
-      
+
       def handle(client, cmd)
-        if cmd =~ /^readconfig/
-          @config_reader.read
-          client.emit "%% You reload the config files."
-        end      
+        @config_reader.read
+        client.emit "%% You reload the config files."
       end
     end
   end

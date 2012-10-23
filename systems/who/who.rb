@@ -1,6 +1,6 @@
 module AresMUSH
   module Commands
-    class Quit
+    class Who
       def initialize(config_reader, client_monitor)
         @config_reader = config_reader
         @client_monitor = client_monitor
@@ -8,11 +8,11 @@ module AresMUSH
       end
 
       def handles
-        ["quit"]
+        ["who", "where"]
       end
       
       def handle(client, cmd)
-        client.disconnect
+        client.emit t('players_connected', :count => @client_monitor.clients.count)
       end
     end
   end
