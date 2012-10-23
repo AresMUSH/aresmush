@@ -48,6 +48,25 @@ module AresMUSH
         @client.emit "Hi"
       end
     end
+    
+    
+    describe :emit_success do
+      it "sends the message with green ansi tags" do
+        @connection = double(EventMachine::Connection)
+        @client = Client.new(1, nil, nil, @connection)
+        @connection.should_receive(:send_data).with("%xgYay%xn")
+        @client.emit_success "Yay"
+      end
+    end
+    
+    describe :emit_failure do
+      it "sends the message with green ansi tags" do
+        @connection = double(EventMachine::Connection)
+        @client = Client.new(1, nil, nil, @connection)
+        @connection.should_receive(:send_data).with("%xrBoo%xn")
+        @client.emit_failure "Boo"
+      end
+    end
 
     describe :handle_input do
       # TODO - pass on to command modules

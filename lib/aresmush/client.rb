@@ -24,6 +24,14 @@ module AresMUSH
       @connection.send_data msg
     end 
     
+    def emit_success(msg)
+      @connection.send_data "%xg#{msg}%xn"
+    end
+    
+    def emit_failure(msg)
+      @connection.send_data "%xr#{msg}%xn"
+    end
+    
     def disconnect
       @connection.close_connection 
     end

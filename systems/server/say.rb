@@ -1,5 +1,5 @@
 module AresMUSH
-  module ServerEvents
+  module Commands
     class Say
       def initialize(config_reader, client_monitor)
         @config_reader = config_reader
@@ -7,10 +7,15 @@ module AresMUSH
         @client_monitor.register(self)
       end
 
+      def self.name
+        "Say"
+      end
+      
       def handle(client, cmd)
-        puts "Say handling"        
-        if cmd =~ /say/i
-          @client_monitor.tell_all "Client #{client.id} says #{cmd}"
+        if cmd =~ /^say (?<msg>.+)/i
+          msg = $~[:msg]
+          puts "Say handling #{msg}"        
+          @client_monitor.tell_all "Client #{client.id} says \"#{msg}\""
         end      
       end
     end

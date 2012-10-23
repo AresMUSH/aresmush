@@ -44,7 +44,12 @@ module AresMUSH
     
     # TODO: Doesn't belong here either
     def handle(client, cmd)
-      @systems.each { |w| w.handle(client, cmd) }
+      begin
+         @systems.each { |w| w.handle(client, cmd) }
+      rescue Exception => e
+        # TODO: log
+        tell_all "Bad code did badness! #{e}"
+      end
     end
   end
 end

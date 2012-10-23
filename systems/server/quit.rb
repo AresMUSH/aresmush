@@ -1,5 +1,5 @@
 module AresMUSH
-  module ServerEvents
+  module Commands
     class Quit
       def initialize(config_reader, client_monitor)
         @config_reader = config_reader
@@ -7,6 +7,10 @@ module AresMUSH
         @client_monitor.register(self)
       end
 
+      def self.name
+        "Quit"
+      end
+      
       def handle(client, cmd)
         puts "Quit handling"
         if cmd =~ /quit/i

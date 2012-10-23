@@ -1,5 +1,5 @@
 module AresMUSH
-  module ServerEvents
+  module Commands
     class Who
       def initialize(config_reader, client_monitor)
         @config_reader = config_reader
@@ -7,6 +7,10 @@ module AresMUSH
         @client_monitor.register(self)
       end
 
+      def self.name
+        "Who"
+      end
+      
       def handle(client, cmd)
         if cmd =~ /who/i
           client.emit t('players_connected', :count => @client_monitor.clients.count)

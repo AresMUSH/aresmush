@@ -21,13 +21,15 @@ module AresMUSH
       systems = Dir[File.join(Dir.pwd + "/systems/**/*.rb")]
       systems.each do |f| 
         puts "Including" + f
-        require f
+        #require f
+        load f
       end unless systems.empty?
 
-      w1 = ServerEvents::Quit.new(config_reader, client_monitor)
-      w2 = ServerEvents::ServerConfig.new(config_reader, client_monitor)
-      w3 = ServerEvents::Say.new(config_reader, client_monitor)
-      w4 = ServerEvents::Who.new(config_reader, client_monitor)
+      systems = AresMUSH::Commands.constants.select {|c| Class === AresMUSH::Commands.const_get(c).new(config_reader, client_monitor)}
+      systems.each do |s|
+        puts s.name
+      end
+      
     end    
   end
 
