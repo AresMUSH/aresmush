@@ -69,7 +69,12 @@ module AresMUSH
     end
 
     describe :handle_input do
-      # TODO - pass on to command modules
+      it "should pass the input along to the client monitor" do
+        client_monitor = double(ClientMonitor)
+        client = Client.new(1, client_monitor, nil, nil)
+        client_monitor.should_receive(:handle_client_input).with(client, "Yay")
+        client.handle_input "Yay"
+      end
     end
 
     describe :disconnect do

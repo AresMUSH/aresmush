@@ -37,7 +37,7 @@ module AresMUSH
     end
     
     def handle_input(data)
-      @client_monitor.handle(self, data)
+      @client_monitor.handle_client_input(self, data)
     end
 
     def connection_closed

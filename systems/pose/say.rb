@@ -1,19 +1,16 @@
 module AresMUSH
   module Commands
     class Say
-      def initialize(config_reader, client_monitor)
-        @config_reader = config_reader
-        @client_monitor = client_monitor
-        @client_monitor.register(self)
+      def initialize(container)
+        @client_monitor = container.client_monitor
       end
       
-      def handles
+      def commands
         ["say (?<msg>.+)", "\"(?<msg>.+)"]
       end
       
       def handle(client, cmd)
-        msg = cmd[:msg]
-        @client_monitor.tell_all "Client #{client.id} says \"#{msg}\""
+        @client_monitor.tell_all "Client #{client.id} says \"#{cmd[:msg]}\""
       end
     end
   end

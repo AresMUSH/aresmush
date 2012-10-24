@@ -8,7 +8,8 @@ module AresMUSH
 
     before do
       @config_reader = double(ConfigReader)
-      @client_monitor = ClientMonitor.new(@config_reader)
+      @dispatcher = double(Dispatcher)
+      @client_monitor = ClientMonitor.new(@config_reader, @dispatcher)
       setup_a_couple_clients
     end
 
@@ -24,6 +25,13 @@ module AresMUSH
       it "should remove the client from the list" do
         @client_monitor.connection_closed(@client1)
         @client_monitor.clients.should eq [@client2]
+      end
+    end
+    
+    describe :handle_client_input do
+      it "should notify the dispatcher" do
+        @dispatcher.should_receive(:dispatch).with(@client1, "test")
+        @client_monitor.handle_client_input(@client1, "test")
       end
     end
 

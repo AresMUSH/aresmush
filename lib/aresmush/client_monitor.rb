@@ -2,13 +2,11 @@ require 'ansi'
 
 module AresMUSH
   class ClientMonitor
-    def initialize(config_reader)
+    def initialize(config_reader, dispatcher)
       @clients = []
       @client_id = 0
       @config_reader = config_reader
-      
-      # TODO: Doesn't belong here
-      @systems = []
+      @dispatcher = dispatcher
     end
 
     attr_reader :clients, :client_id
@@ -37,26 +35,8 @@ module AresMUSH
       tell_all "Client #{client.id} disconnected"
     end
     
-    # TODO: Doesn't belong here
-    def register(system)
-      @systems << system
-    end
-    
-    # TODO: Doesn't belong here either
-    def handle(client, cmd)
-      begin
-         @systems.each do |s|
-           s.handles.each do |regex|
-              match = /^#{regex}/.match(cmd)
-              if (!match.nil?)
-                s.handle(client, match)
-              end
-           end
-         end 
-      rescue Exception => e
-        # TODO: log
-        tell_all "Bad code did badness! #{e}"
-      end
+    def handle_client_input(client, input)
+      @dispatcher.dispatch(client, input)
     end
   end
 end

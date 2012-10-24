@@ -2,27 +2,28 @@ require 'ansi'
 
 module AresMUSH
   class SystemManager
-    def initialize(config_reader, client_monitor)
-      @config_reader = config_reader
-      @client_monitor = client_monitor
+    def initialize(system_factory)
+      @system_factory = system_factory
       @systems = []
     end
+    
+    attr_reader :systems
 
     def load_all
       system_files = Dir[File.join(Dir.pwd + "/systems/**/*.rb")]
-      SystemManager.load_system_code(system_files)
-      create_system_classes
+      load_system_code(system_files)
+      @systems = @system_factory.create_system_classes
     end
     
 
     # TODO!!!  This doesn't handle a new module properly
-    def self.reload(name)
+    def reload(name)
       system_files = Dir[File.join(Dir.pwd + "/systems/#{name}/**/*.rb")]
       load_system_code(system_files)
     end
       
     
-    def self.load_system_code(files)
+    def load_system_code(files)
       files.each do |f| 
         puts "Including" + f
         begin
@@ -32,15 +33,5 @@ module AresMUSH
         end
       end
     end 
-    
-    def create_system_classes
-      systems = AresMUSH::Commands.constants.select {|c| Class === AresMUSH::Commands.const_get(c).new(@config_reader, @client_monitor)}
-      puts systems.count
-      systems.each do |s|
-        puts "foo"
-        #puts "Loading #{s.to_s}"
-      end
-    end
-    
   end
 end

@@ -1,13 +1,11 @@
 module AresMUSH
   module Commands
     class Who
-      def initialize(config_reader, client_monitor)
-        @config_reader = config_reader
-        @client_monitor = client_monitor
-        @client_monitor.register(self)
+      def initialize(container)
+        @client_monitor = container.client_monitor
       end
 
-      def handles
+      def commands
         ["who", "where"]
       end
       

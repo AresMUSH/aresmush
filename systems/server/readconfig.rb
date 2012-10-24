@@ -1,13 +1,12 @@
 module AresMUSH
   module Commands
     class ReadConfig
-      def initialize(config_reader, client_monitor)
-        @config_reader = config_reader
-        @client_monitor = client_monitor
-        @client_monitor.register(self)
+      def initialize(container)
+        @client_monitor = container.client_monitor
+        @config_reader = container.config_reader
       end
 
-      def handles
+      def commands
         ["readconfig"]
       end
 
