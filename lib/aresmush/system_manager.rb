@@ -15,13 +15,13 @@ module AresMUSH
     attr_reader :systems
 
     def load_all
-      system_files = Dir[File.join(@game_dir, "**", "*.rb")]
+      system_files = Dir[File.join(@systems_path, "**", "*.rb")]
       load_system_code(system_files)
       @systems = @system_factory.create_system_classes
     end
     
     def load_system(name)
-      system_files = Dir[File.join(@game_dir, name, "**", "*.rb")]
+      system_files = Dir[File.join(@systems_path, name, "**", "*.rb")]
       raise SystemNotFoundException if system_files.empty?
       load_system_code(system_files)
       @systems = @system_factory.create_system_classes
