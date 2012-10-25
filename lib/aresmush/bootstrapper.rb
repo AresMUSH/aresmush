@@ -5,10 +5,11 @@ module AresMUSH
     attr_reader :command_line
     
     def initialize
-      config_reader = ConfigReader.new(Dir.pwd + "/game")
-      locale = Locale.new(config_reader, Dir.pwd + "/locales")
+      game_dir = File.join(Dir.pwd, "game")
+      config_reader = ConfigReader.new(game_dir)
+      locale = Locale.new(config_reader, File.join(Dir.pwd, "locales"))
       system_factory = SystemFactory.new
-      system_manager = SystemManager.new(system_factory)
+      system_manager = SystemManager.new(system_factory, game_dir)
       dispatcher = Dispatcher.new(system_manager)
       client_monitor = ClientMonitor.new(config_reader, dispatcher)
       server = Server.new(config_reader, client_monitor)

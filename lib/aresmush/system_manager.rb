@@ -6,7 +6,8 @@ module AresMUSH
   end
   
   class SystemManager
-    def initialize(system_factory)
+    def initialize(system_factory, game_dir)
+      @systems_path = File.join(game_dir, "systems")
       @system_factory = system_factory
       @systems = []
     end
@@ -14,13 +15,13 @@ module AresMUSH
     attr_reader :systems
 
     def load_all
-      system_files = Dir[File.join(Dir.pwd + "/systems/**/*.rb")]
+      system_files = Dir[File.join(@game_dir, "**", "*.rb")]
       load_system_code(system_files)
       @systems = @system_factory.create_system_classes
     end
     
     def load_system(name)
-      system_files = Dir[File.join(Dir.pwd + "/systems/#{name}/**/*.rb")]
+      system_files = Dir[File.join(@game_dir, name, "**", "*.rb")]
       raise SystemNotFoundException if system_files.empty?
       load_system_code(system_files)
       @systems = @system_factory.create_system_classes
