@@ -21,7 +21,6 @@ module AresMUSH
     
     def load_system(name)
       system_files = Dir[File.join(Dir.pwd + "/systems/#{name}/**/*.rb")]
-      puts "Got here"
       raise SystemNotFoundException if system_files.empty?
       load_system_code(system_files)
       @systems = @system_factory.create_system_classes
@@ -30,10 +29,12 @@ module AresMUSH
     private    
     def load_system_code(files)
       files.each do |f| 
-        puts "Including" + f
+        # TODO : Log
+        #puts "Including" + f
         begin
            load f
         rescue 
+          # TODO - allow to bubble up and handle where it's used.
            puts "Error loading " + f
         end
       end
