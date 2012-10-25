@@ -7,32 +7,32 @@ module AresMUSH
 
   describe Client do
 
+    before do
+      AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
+    end
+
     describe :connected do
       before do
         config_reader = double(ConfigReader)
         config_reader.stub(:config) { { 'connect' => { 'welcome_text' => "Hi" } } }
         config_reader.stub(:txt) { { 'connect' => "Ascii Art"} }
-        I18n.default_locale = "en"
         @connection = double(EventMachine::Connection).as_null_object
         @client = Client.new(1, nil, config_reader, @connection)
       end
 
       it "sends the welcome screen" do
-         @connection.should_receive(:send_data).with("Ascii Art")
-         AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
-         @client.connected
+        @connection.should_receive(:send_data).with("Ascii Art")
+        @client.connected
       end
 
       it "sends the game welcome text" do
-         @connection.should_receive(:send_data).with("Hi")
-         AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
-         @client.connected
+        @connection.should_receive(:send_data).with("Hi")
+        @client.connected
       end
-      
+
       it "sends the server welcome text" do
-         AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
-         @connection.should_receive(:send_data).with("%xgwelcome%xn")
-         @client.connected
+        @connection.should_receive(:send_data).with("%xc%% welcome%xn")
+        @client.connected
       end
 
     end
@@ -48,22 +48,30 @@ module AresMUSH
         @client.emit "Hi"
       end
     end
-    
-    
-    describe :emit_success do
-      it "sends the message with green ansi tags" do
+
+    describe :emit_ooc do
+      it "sends the message with yellow ansi tags and %% prefix" do
         @connection = double(EventMachine::Connection)
         @client = Client.new(1, nil, nil, @connection)
-        @connection.should_receive(:send_data).with("%xgYay%xn")
+        @connection.should_receive(:send_data).with("%xc%% OOC%xn")
+        @client.emit_ooc "OOC"
+      end
+    end
+
+    describe :emit_success do
+      it "sends the message with green ansi tags and %% prefix" do
+        @connection = double(EventMachine::Connection)
+        @client = Client.new(1, nil, nil, @connection)
+        @connection.should_receive(:send_data).with("%xg%% Yay%xn")
         @client.emit_success "Yay"
       end
     end
-    
+
     describe :emit_failure do
-      it "sends the message with green ansi tags" do
+      it "sends the message with green ansi tags and %% prefix" do
         @connection = double(EventMachine::Connection)
         @client = Client.new(1, nil, nil, @connection)
-        @connection.should_receive(:send_data).with("%xrBoo%xn")
+        @connection.should_receive(:send_data).with("%xr%% Boo%xn")
         @client.emit_failure "Boo"
       end
     end
@@ -85,7 +93,7 @@ module AresMUSH
         @client.disconnect
       end
     end
-        
+
     describe :connection_closed do
       it "should notify the client monitor that the connection closed" do
         client_monitor = double(ClientMonitor)

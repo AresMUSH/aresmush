@@ -47,6 +47,7 @@ module AresMUSH
     
     def delocalize(object, options = {})
       if (object.is_a?(Date) || object.is_a?(Time))
+        # TODO - Support this
         raise "Delocalizing dates and times is not currently supported."
       else
         sep = t('number.format.separator')
@@ -67,7 +68,7 @@ module AresMUSH
     def set_locale
       I18n.locale =  @config_reader.config['server']['locale']
       I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-      I18n.default_locale = :en
+      I18n.default_locale = @config_reader.config['server']['default_locale']
     end
   end
 end

@@ -1,4 +1,5 @@
 en:
+    huh: "Huh? Unrecognized command."
     players_connected:
         zero: "No players connected."
         one: "One player connected."

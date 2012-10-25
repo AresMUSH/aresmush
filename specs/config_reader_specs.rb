@@ -40,7 +40,7 @@ module AresMUSH
       @reader.txt['test1'].should eq @txt1
     end
 
-    it "reads the first txt file" do
+    it "reads the second txt file" do
       @reader.read
       @reader.txt['test2'].should eq @txt2
     end

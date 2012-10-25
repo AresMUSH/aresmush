@@ -9,13 +9,27 @@ module AresMUSH
       @temp_dir = Dir.pwd + "/tmp_locale"
       create_temp_locale_files
       @config_reader = double(ConfigReader)
-      @config_reader.stub(:config) { { 'server' => { 'locale' => "de", "fallback_locale" => "en" } } }
+      @config_reader.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }
       @locale = Locale.new(@config_reader, @temp_dir)
       @locale.setup
     end
 
     after do
       FileUtils.rm_rf @temp_dir
+    end
+    
+    describe :locale do
+      it "should return the I18 locale" do
+        I18n.stub(:locale) { 'hu' }
+        @locale.locale.should eq 'hu'
+      end
+    end
+    
+    describe :default_locale do
+      it "should return the I18 default locale" do
+        I18n.stub(:default_locale) { 'hu' }
+        @locale.default_locale.should eq 'hu'
+      end
     end
     
     describe :setup do
@@ -47,7 +61,7 @@ module AresMUSH
       end
       
       it "should expand variables into the string" do
-        t('hello arg', :arg => "my" ).should eq "Hallo my Erde!"
+        t('hello arg', :arg => "mein" ).should eq "Hallo mein Erde!"
       end
       
     end
@@ -62,6 +76,15 @@ module AresMUSH
      it "should delocalize a number" do
         @locale.delocalize("100,23").should eq "100.23"
       end
+      
+      it "should fail to delocalize a date" do
+        expect { @locale.delocalize(Date.new) }.to raise_error(RuntimeError)
+      end
+
+      it "should fail to delocalize a time" do
+        expect { @locale.delocalize(Time.new) }.to raise_error(RuntimeError)
+      end
+      
     end
 
     def create_temp_locale_files

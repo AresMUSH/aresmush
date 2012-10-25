@@ -12,7 +12,7 @@ module AresMUSH
 
       def handle(client, cmd)
         @config_reader.read
-        client.emit "%% You reload the config files."
+        client.emit_success "You reload the config files."
       end
     end
   end

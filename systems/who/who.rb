@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def handle(client, cmd)
-        client.emit t('players_connected', :count => @client_monitor.clients.count)
+        client.emit_ooc t('players_connected', :count => @client_monitor.clients.count)
       end
     end
   end

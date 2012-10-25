@@ -12,24 +12,30 @@ module AresMUSH
     end
     
     def connected
-      connect_text = @config_reader.txt['connect']
-      server_welcome_text = t('welcome')
-      game_welcome_text = @config_reader.config['connect']['welcome_text']
-      emit connect_text
-      emit "%xg#{server_welcome_text}%xn"
-      emit game_welcome_text
+      # Connect screen ansi
+      emit @config_reader.txt['connect']
+      
+      # Ares welcome text
+      emit_ooc t('welcome')
+      
+      # Game welcome text.
+      emit @config_reader.config['connect']['welcome_text']
     end
     
     def emit(msg)
       @connection.send_data msg
     end 
     
+    def emit_ooc(msg)
+      @connection.send_data "%xc%% #{msg}%xn"
+    end
+    
     def emit_success(msg)
-      @connection.send_data "%xg#{msg}%xn"
+      @connection.send_data "%xg%% #{msg}%xn"
     end
     
     def emit_failure(msg)
-      @connection.send_data "%xr#{msg}%xn"
+      @connection.send_data "%xr%% #{msg}%xn"
     end
     
     def disconnect
