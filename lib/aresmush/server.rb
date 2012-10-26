@@ -12,7 +12,7 @@ module AresMUSH
         EventMachine::start_server(host, port, Connection) do |connection|
           @client_monitor.connection_established(connection)
         end
-        puts t('server_start', :host => host, :port => port)
+        logger.info "Server started on #{host}:#{port}."
       end
     end   
   end

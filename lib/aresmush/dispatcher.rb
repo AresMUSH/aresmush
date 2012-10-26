@@ -18,7 +18,7 @@ module AresMUSH
            end
          end 
       rescue Exception => e
-        # TODO: log
+        logger.warn("Error executing command: cmd=#{cmd} error=#{e}")
         client.emit_failure "Bad code did badness! #{e}"
       end
       if (!handled)

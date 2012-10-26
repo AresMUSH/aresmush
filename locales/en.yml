@@ -4,7 +4,6 @@ en:
         zero: "No players connected."
         one: "One player connected."
         other: "%{count} players connected."
-    server_start: "Server started on %{host}:%{port}..."
     welcome: Welcome to AresMUSH!
     test: Yay
 

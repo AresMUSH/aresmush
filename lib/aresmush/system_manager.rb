@@ -30,14 +30,8 @@ module AresMUSH
     private    
     def load_system_code(files)
       files.each do |f| 
-        # TODO : Log
-        #puts "Including" + f
-        begin
-           load f
-        rescue 
-          # TODO - allow to bubble up and handle where it's used.
-           puts "Error loading " + f
-        end
+        logger.info "Loading system #{f}."
+        load f
       end
     end 
   end

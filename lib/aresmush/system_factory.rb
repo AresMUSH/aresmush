@@ -8,8 +8,7 @@ module AresMUSH
       systems = []
       consts.each do |c|
         instance = AresMUSH::Commands.const_get(c).new(@container)
-        # TODO - log
-        #puts "Loading " + instance.class.name
+        logger.debug "Loaded " + instance.class.name
         systems << instance
       end
       systems
