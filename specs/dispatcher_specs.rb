@@ -100,6 +100,15 @@ module AresMUSH
         @client.should_receive(:emit_failure).with("Bad code did badness! an error")
         @dispatcher.on_player_command(@client, "test")
       end
+      
+      it "allows a system exit exception to bubble up" do
+        system1 = PlayerCommandHandlingTestClass.new
+        @system_manager.stub(:systems) { [ system1 ] }
+        system1.stub(:commands) { ["test"] }
+        system1.stub(:on_player_command).and_raise(SystemExit)
+        
+        expect {@dispatcher.on_player_command(@client, "test")}.to raise_error(SystemExit)
+      end
     end
 
     describe :on_event do

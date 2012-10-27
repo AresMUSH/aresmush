@@ -23,27 +23,23 @@ module AresMUSH
     end
 
     def emit(msg)
-      send_data msg
+      @connection.send_data msg
     end 
 
     def emit_ooc(msg)
-      send_data "%xc%% #{msg}%xn"
+      @connection.send_data "%xc%% #{msg}%xn"
     end
 
     def emit_success(msg)
-      send_data "%xg%% #{msg}%xn"
+      @connection.send_data "%xg%% #{msg}%xn"
     end
 
     def emit_failure(msg)
-      send_data "%xr%% #{msg}%xn"
+      @connection.send_data "%xr%% #{msg}%xn"
     end
 
     def disconnect
-      begin
-        @connection.close_connection 
-      rescue Exception => e
-        logger.debug "Couldn't close connection: #{e}."
-      end
+      @connection.close_connection
     end
 
     def handle_input(data)
@@ -52,15 +48,6 @@ module AresMUSH
 
     def connection_closed
       @client_monitor.connection_closed self
-    end
-
-    private 
-    def send_data(msg)
-      begin
-        @connection.send_data msg
-      rescue Exception => e
-        logger.debug "Couldn't send to connection: #{e}."
-      end
     end
   end
 end

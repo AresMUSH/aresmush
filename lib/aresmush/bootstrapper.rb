@@ -7,7 +7,7 @@ module AresMUSH
     def initialize
       game_dir = File.join(Dir.pwd, "game")
       config_reader = ConfigReader.new(game_dir)
-      logger = AresLogger.new(config_reader)
+      ares_logger = AresLogger.new(config_reader)
       locale = Locale.new(config_reader, File.join(Dir.pwd, "locales"))
       system_factory = SystemFactory.new
       system_manager = SystemManager.new(system_factory, game_dir)
@@ -19,15 +19,28 @@ module AresMUSH
       # objects so that it can pass those along to the individual systems
       system_factory.container = Container.new(config_reader, client_monitor, system_manager, dispatcher)
 
-      # Make sure logger is first!!
+      # Configure a trap for exiting.
+      at_exit do
+        if ($!.kind_of?(SystemExit))
+          logger.info "Normal shutdown."
+        else
+          logger.error "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[1,10]}"
+        end
+      end
+            
+      # Order here is important!
       config_reader.read
-      logger.start
+      ares_logger.start
       locale.setup
       system_manager.load_all
+      
+      logger.debug config_reader.config
 
       @command_line = AresMUSH::CommandLine.new(server)
       
     end   
+    
+    
     
   end
 

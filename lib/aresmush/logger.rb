@@ -17,7 +17,6 @@ module AresMUSH
     
     def start
       config = @config_reader.config['log4r_config']
-      puts config
       configurator = Log4r::YamlConfigurator
       configurator.decode_yaml config
     end

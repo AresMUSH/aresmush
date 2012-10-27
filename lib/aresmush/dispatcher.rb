@@ -20,6 +20,9 @@ module AresMUSH
             end
           end
         end 
+      # Allow system exit to bubble up so it shuts the system down.
+      rescue SystemExit
+        raise SystemExit
       rescue Exception => e
         # TODO - Clean up message
         logger.warn("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e}")
