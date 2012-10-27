@@ -1,4 +1,5 @@
 require 'log4r'
+require 'log4r/yamlconfigurator'
 include Log4r
 
 def logger
@@ -10,19 +11,15 @@ end
 
 module AresMUSH
   class AresLogger
-    def initialize(game_dir)
-      @log_dir = File.join(game_dir, "logs")
-      @logger = Log4r::Logger.new('ares')
+    def initialize(config_reader)
+      @config_reader = config_reader
     end
     
     def start
-      Dir.mkdir @log_dir if !Dir.exists?(@log_dir)
-
-      formatter = Log4r::PatternFormatter.new(:pattern => "%d %l - %M")
-      file_outputter = FileOutputter.new('fileOutputter', :filename => File.join(@log_dir, "log.txt"), :formatter => formatter)
-      @logger.outputters << Log4r::StdoutOutputter.new('stdoutOutputter', :formatter => formatter)
-      @logger.outputters << file_outputter      
+      config = @config_reader.config['log4r_config']
+      puts config
+      configurator = Log4r::YamlConfigurator
+      configurator.decode_yaml config
     end
-    
   end
 end

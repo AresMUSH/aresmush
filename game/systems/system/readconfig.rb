@@ -1,5 +1,5 @@
 module AresMUSH
-  module Commands
+  module EventHandlers
     class ReadConfig
       def initialize(container)
         @client_monitor = container.client_monitor
@@ -10,7 +10,7 @@ module AresMUSH
         ["readconfig"]
       end
 
-      def handle(client, cmd)
+      def on_player_command(client, cmd)
         @config_reader.read
         client.emit_success "You reload the config files."
       end

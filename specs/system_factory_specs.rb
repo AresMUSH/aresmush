@@ -3,7 +3,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require "aresmush"
 
 module AresMUSH
-  module Commands
+  module EventHandlers
     class TestCommand
       def initialize(container)
         @container = container
@@ -22,7 +22,7 @@ module AresMUSH
         factory = SystemFactory.new
         systems = factory.create_system_classes
         systems.count.should eq 1
-        systems[0].should be_a(AresMUSH::Commands::TestCommand)
+        systems[0].should be_a(AresMUSH::EventHandlers::TestCommand)
       end
       
       it "sets the system instance container" do

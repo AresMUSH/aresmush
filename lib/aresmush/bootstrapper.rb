@@ -6,8 +6,8 @@ module AresMUSH
     
     def initialize
       game_dir = File.join(Dir.pwd, "game")
-      logger = AresLogger.new(game_dir)
       config_reader = ConfigReader.new(game_dir)
+      logger = AresLogger.new(config_reader)
       locale = Locale.new(config_reader, File.join(Dir.pwd, "locales"))
       system_factory = SystemFactory.new
       system_manager = SystemManager.new(system_factory, game_dir)
@@ -20,9 +20,8 @@ module AresMUSH
       system_factory.container = Container.new(config_reader, client_monitor, system_manager, dispatcher)
 
       # Make sure logger is first!!
-      logger.start
-      
       config_reader.read
+      logger.start
       locale.setup
       system_manager.load_all
 

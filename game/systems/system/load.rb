@@ -1,5 +1,5 @@
 module AresMUSH
-  module Commands
+  module EventHandlers
     class Load
       def initialize(container)
         @system_manager = container.system_manager
@@ -9,7 +9,7 @@ module AresMUSH
         ["load (?<system_name>.+)"]
       end
 
-      def handle(client, cmd)
+      def on_player_command(client, cmd)
         system_name = cmd[:system_name]
         begin
           @system_manager.load_system(system_name)

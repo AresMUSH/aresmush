@@ -1,5 +1,7 @@
 en:
     huh: "Huh? Unrecognized command."
+    player_has_connected: "%{name} has connected."
+    player_has_disconnected: "%{name} has disconnected."
     players_connected:
         zero: "No players connected."
         one: "One player connected."

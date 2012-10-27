@@ -1,0 +1,28 @@
+log4r_config:
+
+  # define all loggers ...
+  loggers:
+    - name      : ares
+      level     : INFO
+      trace     : 'true'
+      outputters:
+        - stdout
+        - file
+
+  # define all outputters (incl. formatters)      
+  outputters:
+      - type     : StdoutOutputter
+        name     : stdout
+        formatter:
+          date_pattern: '%Y-%m-%d %H:%M:%S'
+          pattern     : '%d %l - %M '
+          type        : PatternFormatter
+      - type     : RollingFileOutputter
+        name     : file
+        max_backups : '5'
+        maxtime : '86400'
+        filename : 'game/logs/log.txt'
+        formatter:
+          date_pattern: '%Y-%m-%d %H:%M:%S'
+          pattern     : '%d %l - %M '
+          type        : PatternFormatter      

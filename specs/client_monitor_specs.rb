@@ -8,7 +8,7 @@ module AresMUSH
 
     before do
       @config_reader = double(ConfigReader)
-      @dispatcher = double(Dispatcher)
+      @dispatcher = double(Dispatcher).as_null_object
       @client_monitor = ClientMonitor.new(@config_reader, @dispatcher)
       setup_a_couple_clients
     end
@@ -26,11 +26,19 @@ module AresMUSH
         @client_monitor.connection_closed(@client1)
         @client_monitor.clients.should eq [@client2]
       end
+      
+      it "should notify the dispatcher" do
+        @dispatcher.should_receive(:on_event) do |type, args|
+          type.should eq :player_disconnected
+          args[:client].should eq @client1
+        end
+        @client_monitor.connection_closed(@client1)
+      end
     end
     
     describe :handle_client_input do
       it "should notify the dispatcher" do
-        @dispatcher.should_receive(:dispatch).with(@client1, "test")
+        @dispatcher.should_receive(:on_player_command).with(@client1, "test")
         @client_monitor.handle_client_input(@client1, "test")
       end
     end
@@ -72,6 +80,15 @@ module AresMUSH
       it "tells the client it has connected" do
         Client.should_receive(:new) { @client3 }
         @client3.should_receive(:connected)
+        @client_monitor.connection_established(@connection)
+      end
+
+      it "should notify the dispatcher" do
+        Client.should_receive(:new).with(anything, @client_monitor, @config_reader, @connection) { @client3 }
+        @dispatcher.should_receive(:on_event) do |type, args|
+          type.should eq :player_connected
+          args[:client].should eq @client3
+        end
         @client_monitor.connection_established(@connection)
       end
     end

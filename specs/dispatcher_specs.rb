@@ -5,6 +5,16 @@ require "ansi"
 
 module AresMUSH
 
+  class PlayerCommandHandlingTestClass
+    def on_player_command
+    end
+  end
+  
+  class ArbitraryEventHandlingTestClass
+    def on_arbitrary(args)
+    end
+  end
+  
   describe Client do
 
     before do
@@ -14,77 +24,101 @@ module AresMUSH
       AresMUSH::Locale.stub(:translate).with("huh") { "huh" }
     end
 
-    describe :dispatch do
-
+    describe :on_player_command do
       it "gets the list of systems from the system manager" do
         @system_manager.should_receive(:systems) { [] }
-        @dispatcher.dispatch(@client, "test")
+        @dispatcher.on_player_command(@client, "test")
+      end
+      
+      it "won't dispatch to a class that doesn't handle player commands" do
+        system1 = Object.new
+        @system_manager.stub(:systems) { [ system1, system2 ] }
+        system1.should_not_receive(:commands) { [] }
+        system1.should_not_receive(:on_player_command) { [] }
+        @dispatcher.on_player_command(@client, "test")
       end
 
-      it "asks each system for its commands" do
-        system1 = Object.new
-        system2 = Object.new
+      it "asks each system that handles player commands for its commands" do
+        system1 = PlayerCommandHandlingTestClass.new
+        system2 = PlayerCommandHandlingTestClass.new
         @system_manager.stub(:systems) { [ system1, system2 ] }
         system1.should_receive(:commands) { [] }
         system2.should_receive(:commands) { [] }
-        @dispatcher.dispatch(@client, "test")
+        @dispatcher.on_player_command(@client, "test")
       end
 
       it "calls handle on any system that matches the regex" do
-        system1 = Object.new
-        system2 = Object.new
-        system3 = Object.new
+        system1 = PlayerCommandHandlingTestClass.new
+        system2 = PlayerCommandHandlingTestClass.new
+        system3 = PlayerCommandHandlingTestClass.new
         @system_manager.stub(:systems) { [ system1, system2, system3 ] }
         system1.stub(:commands) { ["test"] }
         system2.stub(:commands) { ["x", "test"] }
         system3.stub(:commands) { ["foo"] }
-        system1.should_receive(:handle).with(@client, an_instance_of(MatchData))
-        system2.should_receive(:handle).with(@client, an_instance_of(MatchData))
-        @dispatcher.dispatch(@client, "test")
+        system1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        system2.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        @dispatcher.on_player_command(@client, "test")
       end
       
       it "passes along the command" do
-        system1 = Object.new
+        system1 = PlayerCommandHandlingTestClass.new
         @system_manager.stub(:systems) { [ system1 ] }
         system1.stub(:commands) { ["test .+"] }
-        system1.should_receive(:handle) do |client, cmd|
+        system1.should_receive(:on_player_command) do |client, cmd|
           client.should eq @client
           cmd.should eq "test 1=2"
         end
-        @dispatcher.dispatch(@client, "test 1=2")
+        @dispatcher.on_player_command(@client, "test 1=2")
       end
 
       it "parses the command args" do
-        system1 = Object.new
+        system1 = PlayerCommandHandlingTestClass.new
         @system_manager.stub(:systems) { [ system1 ] }
         system1.stub(:commands) { ["test (?<arg1>.+)=(?<arg2>.+)"] }
-        system1.should_receive(:handle) do |client, cmd|
+        system1.should_receive(:on_player_command) do |client, cmd|
           client.should eq @client
           cmd[:arg1].should eq "1"
           cmd[:arg2].should eq "2"
         end
-        @dispatcher.dispatch(@client, "test 1=2")
+        @dispatcher.on_player_command(@client, "test 1=2")
       end
 
       it "sends huh message if nobody handles the command" do
-        system1 = Object.new
+        system1 = PlayerCommandHandlingTestClass.new
         system1.stub(:commands) { ["x"] }
         @system_manager.stub(:systems) { [ system1 ] }
         @client.should_receive(:emit_ooc).with("huh")
-        @dispatcher.dispatch(@client, "test")
+        @dispatcher.on_player_command(@client, "test")
       end
       
       it "catches exceptions from within the command handling" do
-        system1 = Object.new
+        system1 = PlayerCommandHandlingTestClass.new
         @system_manager.stub(:systems) { [ system1 ] }
         system1.stub(:commands) { ["test"] }
-        system1.stub(:handle).and_raise("an error")
+        system1.stub(:on_player_command).and_raise("an error")
         # TODO - fix message, translate
         @client.should_receive(:emit_failure).with("Bad code did badness! an error")
-        @dispatcher.dispatch(@client, "test")
+        @dispatcher.on_player_command(@client, "test")
       end
     end
 
+    describe :on_event do
+      it "should send the event to any class that handles it" do
+        system1 = ArbitraryEventHandlingTestClass.new
+        system2 = ArbitraryEventHandlingTestClass.new
+        @system_manager.stub(:systems) { [ system1, system2 ] }
+        args = { :arg1 => "1" }
+        system1.should_receive(:on_arbitrary).with(args)
+        system2.should_receive(:on_arbitrary).with(args)
+        @dispatcher.on_event("arbitrary", args)
+      end
 
+      it "won't send the event to a class that doesn't handle it" do
+        system1 = Object.new
+        @system_manager.stub(:systems) { [ system1 ] }
+        system1.should_not_receive(:on_arbitrary)
+        @dispatcher.on_event("arbitrary")
+      end
+    end
   end
 end

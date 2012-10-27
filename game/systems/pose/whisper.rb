@@ -1,5 +1,5 @@
 module AresMUSH
-  module Commands
+  module EventHandlers
     class Whisper
       def initialize(container)
         @client_monitor = container.client_monitor
@@ -9,7 +9,7 @@ module AresMUSH
         ["whisper (?<msg>.+)", "\\\\(?<msg>.+)"]
       end
       
-      def handle(client, cmd)
+      def on_player_command(client, cmd)
         @client_monitor.tell_all "whisper #{cmd[:msg]}"
       end
     end

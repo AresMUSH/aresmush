@@ -10,7 +10,7 @@ module AresMUSH
     end
 
     attr_reader :clients, :client_id
-    
+
     def tell_all(msg)
       @clients.each do |c|
         c.emit msg
@@ -18,25 +18,26 @@ module AresMUSH
     end
 
     def connection_established(connection)
-      @client_id = @client_id + 1   
-      client = Client.new(@client_id, self, @config_reader, connection)       
-      connection.client = client
-      client.connected
-      @clients << client
-      
-      # TODO - raise system event
-      tell_all "Client #{client.id} connected"
+      begin
+        @client_id = @client_id + 1   
+        client = Client.new(@client_id, self, @config_reader, connection)       
+        connection.client = client
+        client.connected
+        @clients << client
+        logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
+        @dispatcher.on_event(:player_connected, :client => client)
+      rescue Exception => e
+        logger.debug "Error establishing connection #{e}."
+      end
     end
 
     def connection_closed(client)
       @clients.delete client
-      
-      # TODO - raise system event
-      tell_all "Client #{client.id} disconnected"
+      @dispatcher.on_event(:player_disconnected, :client => client)
     end
-    
+
     def handle_client_input(client, input)
-      @dispatcher.dispatch(client, input)
+      @dispatcher.on_player_command(client, input)
     end
   end
 end

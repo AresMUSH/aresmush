@@ -4,10 +4,10 @@ module AresMUSH
     attr_accessor :container
     
     def create_system_classes
-      consts = AresMUSH::Commands.constants
+      consts = AresMUSH::EventHandlers.constants
       systems = []
       consts.each do |c|
-        instance = AresMUSH::Commands.const_get(c).new(@container)
+        instance = AresMUSH::EventHandlers.const_get(c).new(@container)
         logger.debug "Loaded " + instance.class.name
         systems << instance
       end
