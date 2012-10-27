@@ -1,11 +1,16 @@
 en:
+    command_exception: |
+       Sorry! Something bad happened while executing this command.
+       Please send staff this error information and tell them what you were doing:
+       Command: %{cmd}
+       Error: %{error_info}
     huh: "Huh? Unrecognized command."
     player_has_connected: "%{name} has connected."
     player_has_disconnected: "%{name} has disconnected."
     players_connected:
         zero: "No players connected."
         one: "One player connected."
-        other: "%{count} players connected."
+        other: "%{count} players connected."    
     welcome: Welcome to AresMUSH!
     test: Yay
 

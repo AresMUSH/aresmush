@@ -22,6 +22,7 @@ module AresMUSH
       @client = double(Client).as_null_object
       @dispatcher = Dispatcher.new(@system_manager)
       AresMUSH::Locale.stub(:translate).with("huh") { "huh" }
+      AresMUSH::Locale.stub(:translate).with("command_exception", anything()) { "error" }
     end
 
     describe :on_player_command do
@@ -96,8 +97,7 @@ module AresMUSH
         @system_manager.stub(:systems) { [ system1 ] }
         system1.stub(:commands) { ["test"] }
         system1.stub(:on_player_command).and_raise("an error")
-        # TODO - fix message, translate
-        @client.should_receive(:emit_failure).with("Bad code did badness! an error")
+        @client.should_receive(:emit_failure).with("error")
         @dispatcher.on_player_command(@client, "test")
       end
       

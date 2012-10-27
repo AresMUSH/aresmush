@@ -24,7 +24,7 @@ module AresMUSH
         if ($!.kind_of?(SystemExit))
           logger.info "Normal shutdown."
         else
-          logger.error "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[1,10]}"
+          logger.fatal "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[1,10]}"
         end
       end
             

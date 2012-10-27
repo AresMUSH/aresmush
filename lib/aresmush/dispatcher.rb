@@ -24,9 +24,9 @@ module AresMUSH
       rescue SystemExit
         raise SystemExit
       rescue Exception => e
-        # TODO - Clean up message
-        logger.warn("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e}")
-        client.emit_failure "Bad code did badness! #{e}"
+        handled = true
+        logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e}")
+        client.emit_failure t('command_exception', :cmd => cmd, :error_info => e)
       end
       if (!handled)
         client.emit_ooc t('huh')
@@ -42,7 +42,7 @@ module AresMUSH
         end
       rescue Exception => e
         # TODO - Clean up message
-        logger.warn("Error handling event: event=#{type} error=#{e} args=#{args}")
+        logger.error("Error handling event: event=#{type} error=#{e} args=#{args}")
       end
     end
   end
