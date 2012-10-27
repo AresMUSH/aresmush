@@ -11,6 +11,7 @@ module AresMUSH
         logger.debug "Loaded " + instance.class.name
         systems << instance
       end
+      logger.info "System load complete."
       systems
     end
   end

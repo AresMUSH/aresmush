@@ -30,7 +30,7 @@ module AresMUSH
     private    
     def load_system_code(files)
       files.each do |f| 
-        logger.info "Loading system #{f}."
+        logger.info "Loading #{f}."
         load f
       end
     end 
