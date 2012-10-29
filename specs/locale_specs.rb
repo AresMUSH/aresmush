@@ -77,12 +77,14 @@ module AresMUSH
         @locale.delocalize("100,23").should eq "100.23"
       end
       
-      it "should fail to delocalize a date" do
-        expect { @locale.delocalize(Date.new) }.to raise_error(RuntimeError)
+      it "should delocalize a date to the same value" do
+        date = Date.new
+        @locale.delocalize(date).should eq date.to_s
       end
 
-      it "should fail to delocalize a time" do
-        expect { @locale.delocalize(Time.new) }.to raise_error(RuntimeError)
+      it "should delocalize a time to the same value" do
+        time = Time.new
+        @locale.delocalize(time).should eq time.to_s
       end
       
     end

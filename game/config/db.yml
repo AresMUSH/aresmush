@@ -1,0 +1,7 @@
+db:
+    adapter: postgres
+    host: localhost
+    database: aresmush
+    username: postgres
+    password: bluebloods2
+    

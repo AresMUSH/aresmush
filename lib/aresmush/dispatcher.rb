@@ -8,7 +8,7 @@ module AresMUSH
     def on_player_command(client, cmd)
       handled = false
       begin
-        logger.debug("Player command: client=#{client.id} cmd=#{cmd}")
+        logger.debug("Player command: client=#{client.id} cmd=#{cmd.chomp}")
         @system_manager.systems.each do |s|
           if (s.respond_to?(:on_player_command))
             s.commands.each do |cmd_regex|
@@ -25,11 +25,11 @@ module AresMUSH
         raise SystemExit
       rescue Exception => e
         handled = true
-        logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e}")
-        client.emit_failure t('command_exception', :cmd => cmd, :error_info => e)
+        logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[1,10]}")
+        client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd, :error_info => e)
       end
       if (!handled)
-        client.emit_ooc t('huh')
+        client.emit_ooc t('dispatcher.huh')
       end
     end
 
@@ -41,7 +41,6 @@ module AresMUSH
           end
         end
       rescue Exception => e
-        # TODO - Clean up message
         logger.error("Error handling event: event=#{type} error=#{e} args=#{args}")
       end
     end

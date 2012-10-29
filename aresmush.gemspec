@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "ansi", '~> 1.4.3'
   s.add_runtime_dependency "i18n", '~> 0.6.1'
   s.add_runtime_dependency "eventmachine", '~> 1.0.0'
-  s.add_runtime_dependency "log4r", '~> 1.1.10'  
+  s.add_runtime_dependency "log4r", '~> 1.1.10'
+  s.add_runtime_dependency "sequel", '~> 3.40.0'  
   s.executables = "aresmush"
 end

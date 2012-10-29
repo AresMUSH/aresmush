@@ -14,7 +14,8 @@ module AresMUSH
       dispatcher = Dispatcher.new(system_manager)
       client_monitor = ClientMonitor.new(config_reader, dispatcher)
       server = Server.new(config_reader, client_monitor)
-
+      db = Database.new(config_reader, Dir.pwd)
+      
       # Now that everything's created, give the factory a container of the main system 
       # objects so that it can pass those along to the individual systems
       system_factory.container = Container.new(config_reader, client_monitor, system_manager, dispatcher)
@@ -23,6 +24,8 @@ module AresMUSH
       at_exit do
         if ($!.kind_of?(SystemExit))
           logger.info "Normal shutdown."
+        elsif ($!.nil?)
+          logger.info "Shutting down."
         else
           logger.fatal "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[1,10]}"
         end
@@ -31,6 +34,7 @@ module AresMUSH
       # Order here is important!
       config_reader.read
       ares_logger.start
+      db.connect
       locale.setup
       system_manager.load_all
       

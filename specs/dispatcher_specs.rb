@@ -21,8 +21,8 @@ module AresMUSH
       @system_manager = double(SystemManager)
       @client = double(Client).as_null_object
       @dispatcher = Dispatcher.new(@system_manager)
-      AresMUSH::Locale.stub(:translate).with("huh") { "huh" }
-      AresMUSH::Locale.stub(:translate).with("command_exception", anything()) { "error" }
+      AresMUSH::Locale.stub(:translate).with("dispatcher.huh") { "huh" }
+      AresMUSH::Locale.stub(:translate).with("dispatcher.error_executing_command", anything()) { "error" }
     end
 
     describe :on_player_command do

@@ -47,8 +47,8 @@ module AresMUSH
     
     def delocalize(object, options = {})
       if (object.is_a?(Date) || object.is_a?(Time))
-        # TODO - Support this
-        raise "Delocalizing dates and times is not currently supported."
+        # Not current supported
+        object.to_s
       else
         sep = t('number.format.separator')
         object.to_s.gsub(/#{sep}/, ".")

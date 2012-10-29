@@ -11,6 +11,8 @@ module AresMUSH
   case ARGV[0]
   when "setup"
     bootstrapper.command_line.setup
+  when "migrate"
+    bootstrapper.command_line.migrate
   when "start"
     bootstrapper.command_line.start
   else

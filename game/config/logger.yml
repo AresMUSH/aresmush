@@ -1,4 +1,4 @@
-log4r_config:
+logger:
 
   # define all loggers ...
   loggers:
