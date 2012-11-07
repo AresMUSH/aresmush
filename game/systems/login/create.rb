@@ -12,20 +12,13 @@ module AresMUSH
         name = cmd[:name]
         password = cmd[:password]
 
-        existing_player = db[:players].where(:name => name)
-        if (!existing_player.empty?)
+        existing_player = Players.find(name)
+        if (!existing_player.nil?)
           client.emit_failure(t('login.player_name_taken'))
         else
           # TODO: Encrypt password
           # TODO: Specs
-          db.transaction do
-             dbref = Dbref.create(:type => :player)
-             player = Player.new
-             player.name = name
-             player.password = password
-             player.dbref = dbref
-             player.save
-          end
+          Players.create(name, password)
           client.emit_success(t('login.player_created', :name => name))
         end
       end

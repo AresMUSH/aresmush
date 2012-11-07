@@ -1,5 +1,3 @@
-require 'eventmachine'
-
 module AresMUSH
 
   class CommandLine
@@ -12,11 +10,5 @@ module AresMUSH
     def start
       @server.start
     end
-    
-    def migrate
-     Sequel.extension :migration, :core_extensions
-     Sequel::Migrator.apply(db, File.join(Dir.pwd, "db"))
-    end
-    
   end
 end

@@ -1,4 +1,4 @@
-require 'sequel'
+require 'mongo'
 
 def db
   AresMUSH::Database.db
@@ -8,38 +8,39 @@ module AresMUSH
   class Database
     def initialize(config_reader, root_dir)
       @config_reader = config_reader
-      @models_dir = File.join(root_dir, "models")
     end
 
     def self.db
       @@db
     end
 
-    def connect
-      db_config = @config_reader.config['db']
-
-      logger.info("Connection to database: adapter=#{db_config['adapter']} host=#{db_config['host']}")
-
-      begin
-        @@db = Sequel.connect(
-        :adapter => db_config['adapter'], 
-        :host => db_config['host'], 
-        :database => db_config['database'], 
-        :user => db_config['username'], 
-        :password => db_config['password'])
-      rescue Exception => e
-        logger.fatal("Error connecting to database.  Please check your dabase configuration and Sequel installation requirements: #{e}.")      
-        raise e
-      end
-      
-      load_models
+    def self.players
+      @@db[:players]
     end
     
-    def load_models
-      models = Dir[File.join(@models_dir, "**", "*.rb")]
-      models.each do |f| 
-         require f
-       end
+    def connect
+      db_config = @config_reader.config['db']
+      host = db_config['host']
+      port = db_config['port']
+      host = db_config['host']
+      db_name = db_config['database']      
+      logger.info("Connection to database: host=#{host} port=#{port} db=#{db_name}")
+
+      begin
+        connection = Mongo::Connection.new(host, port)
+        @@db = connection.db(db_name)
+        authenticate
+      rescue Exception => e
+        logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
+        raise e
+      end      
+    end
+    
+    private
+    
+    def authenticate
+      auth_successful = @@db.authenticate(db_config['username'], db_config['password'])
+      raise SystemException("Database authentication failed.") if !auth_successful
     end
   end
 end

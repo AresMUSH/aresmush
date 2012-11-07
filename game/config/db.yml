@@ -1,7 +1,6 @@
 db:
-    adapter: postgres
     host: localhost
+    port: '7210'
     database: aresmush
-    username: postgres
+    username: ares
     password: bluebloods2
-    

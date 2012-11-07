@@ -1,3 +1,5 @@
+require 'eventmachine'
+
 module AresMUSH
   class Server
     def initialize(config_reader, client_monitor)
@@ -17,3 +19,5 @@ module AresMUSH
     end   
   end
 end
+
+# TODO - Specs

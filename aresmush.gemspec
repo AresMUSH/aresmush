@@ -11,6 +11,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "i18n", '~> 0.6.1'
   s.add_runtime_dependency "eventmachine", '~> 1.0.0'
   s.add_runtime_dependency "log4r", '~> 1.1.10'
-  s.add_runtime_dependency "sequel", '~> 3.40.0'  
+  s.add_runtime_dependency "bson_ext", '~> 1.7.0'
+  s.add_runtime_dependency "bson", '~> 1.7.0'
+  s.add_runtime_dependency "mongo", '~> 1.7.0'
+#  s.add_runtime_dependency "sequel", '~> 3.40.0'  
   s.executables = "aresmush"
 end

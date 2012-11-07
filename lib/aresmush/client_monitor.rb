@@ -19,11 +19,9 @@ module AresMUSH
 
     def connection_established(connection)
       begin
-        @client_id = @client_id + 1   
-        client = Client.new(@client_id, self, @config_reader, connection)       
-        connection.client = client
-        client.connected
+        client = create_client(connection)
         @clients << client
+        client.connected
         logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
         @dispatcher.on_event(:player_connected, :client => client)
       rescue Exception => e
@@ -39,6 +37,14 @@ module AresMUSH
 
     def handle_client_input(client, input)
       @dispatcher.on_player_command(client, input)
+    end
+    
+    private
+    def create_client(connection)
+      @client_id = @client_id + 1   
+      client = Client.new(@client_id, self, @config_reader, connection)       
+      connection.client = client
+      client
     end
   end
 end

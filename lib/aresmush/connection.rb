@@ -1,3 +1,5 @@
+require 'eventmachine'
+
 module AresMUSH
 
   class Connection < EventMachine::Connection
