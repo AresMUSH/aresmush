@@ -29,7 +29,7 @@ module AresMUSH
       begin
         connection = Mongo::Connection.new(host, port)
         @@db = connection.db(db_name)
-        authenticate
+        authenticate(db_config['username'], db_config['password'])
       rescue Exception => e
         logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e
@@ -38,8 +38,8 @@ module AresMUSH
     
     private
     
-    def authenticate
-      auth_successful = @@db.authenticate(db_config['username'], db_config['password'])
+    def authenticate(username, password)
+      auth_successful = @@db.authenticate(username, password)
       raise SystemException("Database authentication failed.") if !auth_successful
     end
   end

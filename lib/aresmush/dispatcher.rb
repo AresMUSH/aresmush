@@ -1,15 +1,15 @@
 module AresMUSH
   class Dispatcher
 
-    def initialize(system_manager)
-      @system_manager = system_manager
+    def initialize(addon_manager)
+      @addon_manager = addon_manager
     end
 
     def on_player_command(client, cmd)
       handled = false
       begin
         logger.debug("Player command: client=#{client.id} cmd=#{cmd.chomp}")
-        @system_manager.systems.each do |s|
+        @addon_manager.addons.each do |s|
           if (s.respond_to?(:on_player_command))
             s.commands.each do |cmd_regex|
               match = /^#{cmd_regex}/.match(cmd)
@@ -20,7 +20,7 @@ module AresMUSH
             end
           end
         end 
-      # Allow system exit to bubble up so it shuts the system down.
+      # Allow addon exit to bubble up so it shuts the addon down.
       rescue SystemExit
         raise SystemExit
       rescue Exception => e
@@ -35,7 +35,7 @@ module AresMUSH
 
     def on_event(type, *args)
       begin
-        @system_manager.systems.each do |s|
+        @addon_manager.addons.each do |s|
           if (s.respond_to?(:"on_#{type}"))
             s.send(:"on_#{type}", *args)
           end
