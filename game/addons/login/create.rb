@@ -1,11 +1,10 @@
 module AresMUSH
-  module EventHandlers
+  module Login
     class Create
-      def initialize(container)
-      end
+      include AresMUSH::Addon
 
       def commands
-        ["create (?<name>\\S+) (?<password>\\S+)"]
+        { "create" => " (?<name>\\S+) (?<password>\\S+)" } 
       end
 
       def on_player_command(client, cmd)

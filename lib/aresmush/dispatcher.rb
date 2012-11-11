@@ -9,14 +9,18 @@ module AresMUSH
       handled = false
       begin
         logger.debug("Player command: client=#{client.id} cmd=#{cmd.chomp}")
+        cmd_root = cmd.split(" ")[0].split("/")[0]
+
         @addon_manager.addons.each do |a|
           if (a.respond_to?(:on_player_command))
-            a.commands.each do |cmd_regex|
-              match = /^#{cmd_regex}/.match(cmd)
-              if (!match.nil?)
-                a.on_player_command(client, match)
-                handled = true
-              end
+            matched_cmd = a.commands[cmd_root]
+            if (matched_cmd.nil?)
+               matched_cmd = a.commands[:all]
+            end
+            if (!matched_cmd.nil?)  
+              match = /^#{cmd_root}#{matched_cmd}/.match(cmd)
+              a.on_player_command(client, match)
+              handled = true
             end
           end
         end 

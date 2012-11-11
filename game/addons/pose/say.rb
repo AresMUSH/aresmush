@@ -1,12 +1,17 @@
 module AresMUSH
-  module EventHandlers
+  module Pose
     class Say
-      def initialize(container)
+      include AresMUSH::Addon
+
+      def after_initialize
         @client_monitor = container.client_monitor
       end
       
-      def commands
-        ["say (?<msg>.+)", "\"(?<msg>.+)"]
+      def commands       
+        {
+          "say" => " (?<msg>.+)", 
+          "\""   => "(?<msg>.+)"
+        }
       end
       
       def on_player_command(client, cmd)

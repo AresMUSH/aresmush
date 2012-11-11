@@ -5,11 +5,7 @@ require "aresmush"
 module AresMUSH
   module EventHandlers
     class TestCommand
-      def initialize(container)
-        @container = container
-      end
-      
-      attr_reader :container
+      include AresMUSH::Addon
     end
   end
 end
@@ -25,14 +21,13 @@ module AresMUSH
         addons[0].should be_a(AresMUSH::EventHandlers::TestCommand)
       end
       
-      it "sets the addon instance container" do
+      it "sets the addon's container" do
         factory = AddonFactory.new
         container = double(Container)
         factory.container = container
         addons = factory.create_addon_classes
         addons[0].container.should eq container
-      end
-      
+      end      
     end
     
   end

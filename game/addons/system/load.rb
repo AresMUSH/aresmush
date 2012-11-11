@@ -1,12 +1,14 @@
 module AresMUSH
-  module EventHandlers
+  module System
     class Load
-      def initialize(container)
+      include AresMUSH::Addon
+
+      def after_initialize
         @addon_manager = container.addon_manager
       end
 
       def commands
-        ["load (?<addon_name>.+)"]
+        { "load" => " (?<addon_name>.+)" }
       end
 
       def on_player_command(client, cmd)

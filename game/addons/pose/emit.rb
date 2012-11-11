@@ -1,12 +1,17 @@
 module AresMUSH
-  module EventHandlers
+  module Pase
     class Emit
-      def initialize(container)
+      include AresMUSH::Addon
+
+      def after_initialize
         @client_monitor = container.client_monitor
       end
       
       def commands
-        ["emit (?<msg>.+)", "\\\\(?<msg>.+)"]
+        {
+          "emit" => " (?<msg>.+)", 
+          "\\\\" => "(?<msg>.+)"
+        }
       end
       
       def on_player_command(client, cmd)

@@ -1,12 +1,16 @@
 module AresMUSH
-  module EventHandlers
+  module Pose
     class Whisper
-      def initialize(container)
+      include AresMUSH::Addon
+
+      def after_initialize
         @client_monitor = container.client_monitor
       end
       
       def commands
-        ["whisper (?<msg>.+)", "\\\\(?<msg>.+)"]
+        {
+          "whisper" => " (?<msg>.+)"
+        }
       end
       
       def on_player_command(client, cmd)

@@ -33,9 +33,10 @@ module AresMUSH
       
       it "won't dispatch to a class that doesn't handle player commands" do
         addon1 = Object.new
-        @addon_manager.stub(:addons) { [ addon1, addon2 ] }
-        addon1.should_not_receive(:commands) { [] }
-        addon1.should_not_receive(:on_player_command) { [] }
+        @addon_manager.stub(:addons) { [ addon1 ] }
+        addon1.should_not_receive(:commands) { nil }
+        # Can't mock that on_player_command isn't received because the act of mocking it
+        # causes the addon to respond to commands!
         @dispatcher.on_player_command(@client, "test")
       end
 
@@ -43,31 +44,61 @@ module AresMUSH
         addon1 = PlayerCommandHandlingTestClass.new
         addon2 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1, addon2 ] }
-        addon1.should_receive(:commands) { [] }
-        addon2.should_receive(:commands) { [] }
-        @dispatcher.on_player_command(@client, "test")
-      end
-
-      it "calls handle on any addon that matches the regex" do
-        addon1 = PlayerCommandHandlingTestClass.new
-        addon2 = PlayerCommandHandlingTestClass.new
-        addon3 = PlayerCommandHandlingTestClass.new
-        @addon_manager.stub(:addons) { [ addon1, addon2, addon3 ] }
-        addon1.stub(:commands) { ["test"] }
-        addon2.stub(:commands) { ["x", "test"] }
-        addon3.stub(:commands) { ["foo"] }
-        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
-        addon2.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        addon1.should_receive(:commands).twice { {} }
+        addon2.should_receive(:commands).twice { {} }
         @dispatcher.on_player_command(@client, "test")
       end
       
+      it "calls handle on an addon that handles the root command" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        @addon_manager.stub(:addons) { [ addon1 ] }
+        addon1.stub(:commands) { { "test" => "" } }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        @dispatcher.on_player_command(@client, "test/sw arg")
+      end
+      
+      it "can handle a root command with no arg" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        @addon_manager.stub(:addons) { [ addon1 ] }
+        addon1.stub(:commands) { { "test" => "" } }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        @dispatcher.on_player_command(@client, "test/sw")
+      end
+
+      it "calls handle even when there are multiple commands handled" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        @addon_manager.stub(:addons) { [ addon1 ] }
+        addon1.stub(:commands) { { "foo" => "", "test" => "" } }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        @dispatcher.on_player_command(@client, "test")
+      end
+
+      it "calls handle on multiple addons that match the root command" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        addon2 = PlayerCommandHandlingTestClass.new
+        @addon_manager.stub(:addons) { [ addon1, addon2 ] }
+        addon1.stub(:commands) { { "test" => "" } }
+        addon2.stub(:commands) { { "test" => "" } }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        addon2.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        @dispatcher.on_player_command(@client, "test/sw arg")
+      end
+
+      it "doesn't call handle when there's no match" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        @addon_manager.stub(:addons) { [ addon1 ] }
+        addon1.stub(:commands) { { "foo" => "" } }
+        addon1.should_not_receive(:on_player_command)
+        @dispatcher.on_player_command(@client, "test/sw arg")
+      end
+            
       it "passes along the command" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { ["test .+"] }
+        addon1.stub(:commands) { { "test" => " .+" } }
         addon1.should_receive(:on_player_command) do |client, cmd|
           client.should eq @client
-          cmd.should eq "test 1=2"
+          cmd.to_s.should eq "test 1=2"
         end
         @dispatcher.on_player_command(@client, "test 1=2")
       end
@@ -75,7 +106,7 @@ module AresMUSH
       it "parses the command args" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { ["test (?<arg1>.+)=(?<arg2>.+)"] }
+        addon1.stub(:commands) { { "test" => " (?<arg1>.+)=(?<arg2>.+)" } }
         addon1.should_receive(:on_player_command) do |client, cmd|
           client.should eq @client
           cmd[:arg1].should eq "1"
@@ -86,7 +117,7 @@ module AresMUSH
 
       it "sends huh message if nobody handles the command" do
         addon1 = PlayerCommandHandlingTestClass.new
-        addon1.stub(:commands) { ["x"] }
+        addon1.stub(:commands) { { "x" => "" } }
         @addon_manager.stub(:addons) { [ addon1 ] }
         @client.should_receive(:emit_ooc).with("huh")
         @dispatcher.on_player_command(@client, "test")
@@ -95,7 +126,7 @@ module AresMUSH
       it "catches exceptions from within the command handling" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { ["test"] }
+        addon1.stub(:commands) { { "test" => "" } }
         addon1.stub(:on_player_command).and_raise("an error")
         @client.should_receive(:emit_failure).with("error")
         @dispatcher.on_player_command(@client, "test")
@@ -104,7 +135,7 @@ module AresMUSH
       it "allows a addon exit exception to bubble up" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { ["test"] }
+        addon1.stub(:commands) { { "test" => "" } }
         addon1.stub(:on_player_command).and_raise(SystemExit)
         
         expect {@dispatcher.on_player_command(@client, "test")}.to raise_error(SystemExit)

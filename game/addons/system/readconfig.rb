@@ -1,13 +1,15 @@
 module AresMUSH
-  module EventHandlers
+  module System
     class ReadConfig
-      def initialize(container)
+      include AresMUSH::Addon
+
+      def after_initialize
         @client_monitor = container.client_monitor
         @config_reader = container.config_reader
       end
 
       def commands
-        ["readconfig"]
+        { "readconfig" => "" }
       end
 
       def on_player_command(client, cmd)

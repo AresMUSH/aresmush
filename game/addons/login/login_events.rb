@@ -1,7 +1,9 @@
 module AresMUSH
-  module EventHandlers
+  module Login
     class LoginEvents
-      def initialize(container)
+      include AresMUSH::Addon
+
+      def after_initialize
         @client_monitor = container.client_monitor
       end
       
