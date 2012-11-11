@@ -22,5 +22,3 @@ module AresMUSH
     end
   end
 end
-
-# TODO - Specs

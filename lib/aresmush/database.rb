@@ -6,20 +6,16 @@ end
 
 module AresMUSH
   class Database
-    def initialize(config_reader, root_dir)
+    def initialize(config_reader)
       @config_reader = config_reader
     end
 
     def self.db
       @@db
     end
-
-    def self.players
-      @@db[:players]
-    end
     
     def connect
-      db_config = @config_reader.config['db']
+      db_config = @config_reader.config['database']
       host = db_config['host']
       port = db_config['port']
       host = db_config['host']
@@ -40,7 +36,7 @@ module AresMUSH
     
     def authenticate(username, password)
       auth_successful = @@db.authenticate(username, password)
-      raise SystemException("Database authentication failed.") if !auth_successful
+      raise StandardError("Database authentication failed.") if !auth_successful
     end
   end
 end

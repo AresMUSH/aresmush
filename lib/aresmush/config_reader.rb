@@ -15,6 +15,10 @@ module AresMUSH
       @txt = {}
     end
 
+    def puts
+       @config
+    end
+    
     def read
       clear_config
       read_config_files

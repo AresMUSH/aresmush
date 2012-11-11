@@ -6,7 +6,6 @@ module AresMUSH
       @server = server
     end
     
-    # TODO: Add specs
     def start
       @server.start
     end

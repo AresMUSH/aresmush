@@ -1,4 +1,4 @@
-db:
+database:
     host: localhost
     port: '7210'
     database: aresmush
