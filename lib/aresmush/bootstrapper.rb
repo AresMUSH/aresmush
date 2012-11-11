@@ -14,7 +14,7 @@ module AresMUSH
       dispatcher = Dispatcher.new(addon_manager)
       client_monitor = ClientMonitor.new(config_reader, dispatcher)
       server = Server.new(config_reader, client_monitor)
-      db = Database.new(config_reader, Dir.pwd)
+      db = Database.new(config_reader)
       
       # Now that everything's created, give the factory a container of the main addon 
       # objects so that it can pass those along to the individual addons
