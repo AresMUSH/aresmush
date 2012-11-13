@@ -101,7 +101,6 @@ module AresMUSH
         client_monitor.should_receive(:connection_closed).with(client)
         client.connection_closed
       end
-    end
-
+    end    
   end
 end

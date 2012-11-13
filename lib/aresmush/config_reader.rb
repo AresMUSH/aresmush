@@ -15,7 +15,7 @@ module AresMUSH
       @txt = {}
     end
 
-    def puts
+    def to_str
        @config
     end
     

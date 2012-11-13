@@ -1,4 +1,16 @@
 String.class_eval do
+  
+  def first(sep)
+    parts = self.partition(sep)  # Returns [head, sep, tail]
+    return parts[0]
+  end
+
+  def rest(sep)
+      parts = self.partition(sep)        # Returns [head, sep, tail]
+      return parts[0] if parts[1] == ""  # sep empty if not found
+      return parts[2]
+  end
+  
   def to_ansi
     str = self
 

@@ -3,7 +3,8 @@ module AresMUSH
   class Client 
 
     attr_reader :ip_addr, :id
-
+    attr_accessor :player
+    
     def initialize(id, client_monitor, config_reader, connection)
       @id = id
       @client_monitor = client_monitor

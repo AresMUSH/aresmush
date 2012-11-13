@@ -1,6 +1,6 @@
 module AresMUSH
-  module Pose
-    class Whisper
+  module Pase
+    class PoseCatcher
       include AresMUSH::Addon
 
       def after_initialize
@@ -8,13 +8,11 @@ module AresMUSH
       end
       
       def commands
-        {
-          "whisper" => " (?<msg>.+)"
-        }
+        { :all => "" }
       end
       
       def on_player_command(client, cmd)
-        @client_monitor.tell_all "whisper #{cmd[:msg]}"
+        @client_monitor.tell_all client.player.parse_pose(cmd.to_s)
       end
     end
   end

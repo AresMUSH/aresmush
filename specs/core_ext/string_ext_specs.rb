@@ -6,6 +6,42 @@ module AresMUSH
 
   describe String do
 
+    describe :first do
+      it "returns the first part if there is a separator" do
+        "A:B".first(":").should eq "A"
+      end
+
+      it "returns the whole string if there is no separator" do
+        "AB-C".first(":").should eq "AB-C"
+      end
+
+      it "returns an empty string if the separator is at the front" do
+        ":AB".first(":").should eq ""
+      end
+    end
+    
+    describe :rest do
+      it "returns the first part if there is a separator" do
+        "A:B:C:D".rest(":").should eq "B:C:D"
+      end
+
+      it "returns the whole string if there is no separator" do
+        "AB-C".rest(":").should eq "AB-C"
+      end
+      
+      it "returns the rest of the string even if the separator is at the front" do
+        ":AB".rest(":").should eq "AB"
+      end
+
+      it "returns an empty string if the only separator is at the end" do
+        "AB:".rest(":").should eq ""
+      end
+
+      it "returns a properly joined string an extra seprator is at the end" do
+        "AB:C:".rest(":").should eq "C:"
+      end
+    end
+    
     describe :to_ansi do
       it "replaces ansi codes" do
         str = "A%xrB%xnC"

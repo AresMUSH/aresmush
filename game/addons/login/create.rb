@@ -11,14 +11,18 @@ module AresMUSH
         name = cmd[:name]
         password = cmd[:password]
 
-        existing_player = Players.find(name)
+        # TODO: Find by alias too
+        existing_player = Player.find_by_name(name)
         if (!existing_player.nil?)
           client.emit_failure(t('login.player_name_taken'))
+          # TODO: Connect command
+          client.player = existing_player[0]
         else
           # TODO: Encrypt password
           # TODO: Specs
-          Players.create(name, password)
+          player = Player.create(name, password)
           client.emit_success(t('login.player_created', :name => name))
+          client.player = player
         end
       end
     end

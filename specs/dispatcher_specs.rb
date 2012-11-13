@@ -64,7 +64,7 @@ module AresMUSH
         addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
         @dispatcher.on_player_command(@client, "test/sw")
       end
-
+      
       it "calls handle even when there are multiple commands handled" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
