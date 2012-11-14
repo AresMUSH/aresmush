@@ -25,8 +25,5 @@ module AresMUSH
       cmd_hash[:enactor] = client.player
       cmd_hash
     end
-
-# TODO ! Specs on crack
-    
   end
 end
