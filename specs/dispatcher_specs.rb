@@ -67,7 +67,7 @@ module AresMUSH
         @dispatcher.on_player_command(@client, "test")
       end
 
-      it "calls handle on multiple addons that match the root command" do
+      it "stops after finding one addon to handle the command" do
         addon1 = PlayerCommandHandlingTestClass.new
         addon2 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1, addon2 ] }
@@ -75,7 +75,20 @@ module AresMUSH
         addon1.stub(:crack) { {} }
         addon2.stub(:commands) { { "test" => ".+" } }
         addon2.stub(:crack) { {} }
-        addon1.should_receive(:on_player_command).with(@client, an_instance_of(Hash))
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(Hash)) { true }
+        addon2.should_not_receive(:on_player_command).with(@client, an_instance_of(Hash))
+        @dispatcher.on_player_command(@client, "test/sw arg")
+      end
+      
+      it "continues processing if the first matching addon doesn't handle the command" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        addon2 = PlayerCommandHandlingTestClass.new
+        @addon_manager.stub(:addons) { [ addon1, addon2 ] }
+        addon1.stub(:commands) { { "test" => ".+" } }
+        addon1.stub(:crack) { {} }
+        addon2.stub(:commands) { { "test" => ".+" } }
+        addon2.stub(:crack) { {} }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(Hash)) { false }
         addon2.should_receive(:on_player_command).with(@client, an_instance_of(Hash))
         @dispatcher.on_player_command(@client, "test/sw arg")
       end
@@ -111,6 +124,15 @@ module AresMUSH
         addon1.stub(:commands) { { "x" => "" } }
         @addon_manager.stub(:addons) { [ addon1 ] }
         @client.should_receive(:emit_ooc).with("huh")
+        @dispatcher.on_player_command(@client, "test")
+      end
+      
+      it "sends huh message even if there's a match but no handling" do
+        addon1 = PlayerCommandHandlingTestClass.new
+        addon1.stub(:commands) { { "test" => "" } }
+        @addon_manager.stub(:addons) { [ addon1 ] }
+        @client.should_receive(:emit_ooc).with("huh")
+        addon1.stub(:on_player_command).with(@client, an_instance_of(Hash)) { false }
         @dispatcher.on_player_command(@client, "test")
       end
       
