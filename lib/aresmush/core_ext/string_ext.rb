@@ -1,5 +1,5 @@
-String.class_eval do
-  
+class String
+    
   def first(sep)
     parts = self.partition(sep)  # Returns [head, sep, tail]
     return parts[0]

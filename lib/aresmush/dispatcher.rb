@@ -8,22 +8,20 @@ module AresMUSH
     def on_player_command(client, cmd)
       handled = false
       with_cmd_error_handling(client, cmd) do
-        cmd_root = cmd.split(" ")[0].split("/")[0]
-
         @addon_manager.addons.each do |a|
           if (a.respond_to?(:on_player_command))
-            matched_cmd = a.commands[cmd_root]
-            if (matched_cmd.nil?)
-               matched_cmd = a.commands[:all]
-            end
-            if (!matched_cmd.nil?)  
-              match = /^#{cmd_root}#{matched_cmd}/.match(cmd)
-              a.on_player_command(client, match)
-              handled = true
+            a.commands.each do |cmd_key, cmd_regex|
+              if (cmd.start_with?(cmd_key))
+                cmd_hash = a.crack(client, cmd, cmd_regex)
+                handled = a.on_player_command(client, cmd_hash)
+              end
+              break if handled
             end
           end
-        end 
+          break if handled
+        end
       end
+      
       if (!handled)
         client.emit_ooc t('dispatcher.huh')
       end

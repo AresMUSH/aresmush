@@ -18,5 +18,15 @@ module AresMUSH
       nil
     end
 
+    # Default crack will do matches according to the command argument regex
+    def crack(client, cmd, regex)
+      cmd_hash = /#{regex}/.match(cmd).names_hash
+      cmd_hash[:raw] = cmd
+      cmd_hash[:enactor] = client.player
+      cmd_hash
+    end
+
+# TODO ! Specs on crack
+    
   end
 end

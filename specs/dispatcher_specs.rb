@@ -44,32 +44,26 @@ module AresMUSH
         addon1 = PlayerCommandHandlingTestClass.new
         addon2 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1, addon2 ] }
-        addon1.should_receive(:commands).twice { {} }
-        addon2.should_receive(:commands).twice { {} }
+        addon1.should_receive(:commands) { {} }
+        addon2.should_receive(:commands) { {} }
         @dispatcher.on_player_command(@client, "test")
       end
       
-      it "calls handle on an addon that handles the root command" do
+      it "calls handle on an addon that handles the command" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { { "test" => "" } }
-        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        addon1.stub(:commands) { { "test" => ".+" } }
+        addon1.stub(:crack) { {} }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(Hash))
         @dispatcher.on_player_command(@client, "test/sw arg")
       end
-      
-      it "can handle a root command with no arg" do
+            
+      it "calls handle even when there are multiple commands in the list" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { { "test" => "" } }
-        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
-        @dispatcher.on_player_command(@client, "test/sw")
-      end
-      
-      it "calls handle even when there are multiple commands handled" do
-        addon1 = PlayerCommandHandlingTestClass.new
-        @addon_manager.stub(:addons) { [ addon1 ] }
+        addon1.stub(:crack) { {} }
         addon1.stub(:commands) { { "foo" => "", "test" => "" } }
-        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(Hash))
         @dispatcher.on_player_command(@client, "test")
       end
 
@@ -77,41 +71,38 @@ module AresMUSH
         addon1 = PlayerCommandHandlingTestClass.new
         addon2 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1, addon2 ] }
-        addon1.stub(:commands) { { "test" => "" } }
-        addon2.stub(:commands) { { "test" => "" } }
-        addon1.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
-        addon2.should_receive(:on_player_command).with(@client, an_instance_of(MatchData))
+        addon1.stub(:commands) { { "test" => ".+" } }
+        addon1.stub(:crack) { {} }
+        addon2.stub(:commands) { { "test" => ".+" } }
+        addon2.stub(:crack) { {} }
+        addon1.should_receive(:on_player_command).with(@client, an_instance_of(Hash))
+        addon2.should_receive(:on_player_command).with(@client, an_instance_of(Hash))
         @dispatcher.on_player_command(@client, "test/sw arg")
       end
 
       it "doesn't call handle when there's no match" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { { "foo" => "" } }
+        addon1.stub(:commands) { { "foo" => ".+" } }
         addon1.should_not_receive(:on_player_command)
         @dispatcher.on_player_command(@client, "test/sw arg")
       end
             
-      it "passes along the command" do
+      it "cracks the command args" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { { "test" => " .+" } }
-        addon1.should_receive(:on_player_command) do |client, cmd|
-          client.should eq @client
-          cmd.to_s.should eq "test 1=2"
-        end
+        addon1.stub(:commands) { { "test" => ".+" } }
+        addon1.should_receive(:crack).with(@client, "test 1=2", ".+")
         @dispatcher.on_player_command(@client, "test 1=2")
       end
-
-      it "parses the command args" do
+      
+      it "passes along the cracked command args" do
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
-        addon1.stub(:commands) { { "test" => " (?<arg1>.+)=(?<arg2>.+)" } }
-        addon1.should_receive(:on_player_command) do |client, cmd|
-          client.should eq @client
-          cmd[:arg1].should eq "1"
-          cmd[:arg2].should eq "2"
-        end
+        addon1.stub(:commands) { { "test" => ".+" } }
+        data = {}
+        addon1.stub(:crack) { data }
+        addon1.should_receive(:on_player_command).with(@client, data)
         @dispatcher.on_player_command(@client, "test 1=2")
       end
 
@@ -136,6 +127,7 @@ module AresMUSH
         addon1 = PlayerCommandHandlingTestClass.new
         @addon_manager.stub(:addons) { [ addon1 ] }
         addon1.stub(:commands) { { "test" => "" } }
+        addon1.stub(:crack) { {} }
         addon1.stub(:on_player_command).and_raise(SystemExit)
         
         expect {@dispatcher.on_player_command(@client, "test")}.to raise_error(SystemExit)

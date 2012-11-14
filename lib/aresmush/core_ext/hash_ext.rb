@@ -1,4 +1,4 @@
-Hash.class_eval do
+class Hash
   
   def parse_pose(msg)
     name = self["name"]
@@ -13,6 +13,5 @@ Hash.class_eval do
     else
       msg
     end
-  end
-  
+  end  
 end

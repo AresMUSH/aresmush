@@ -15,7 +15,7 @@ module AresMUSH
         existing_player = Player.find_by_name(name)
         if (!existing_player.nil?)
           client.emit_failure(t('login.player_name_taken'))
-          # TODO: Connect command
+          # TODO: This is just temp until the connect command is done
           client.player = existing_player[0]
         else
           # TODO: Encrypt password
