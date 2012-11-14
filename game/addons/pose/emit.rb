@@ -8,7 +8,7 @@ module AresMUSH
       end
       
       def commands
-        { "emit" => " (?<msg>.+)" }
+        { "emit" => "emit (?<msg>.+)" }
       end
       
       def on_player_command(client, cmd)

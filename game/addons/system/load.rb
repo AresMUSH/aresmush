@@ -8,7 +8,7 @@ module AresMUSH
       end
 
       def commands
-        { "load" => " (?<addon_name>.+)" }
+        { "load" => "load (?<addon_name>.+)" }
       end
 
       def on_player_command(client, cmd)

@@ -8,7 +8,7 @@ module AresMUSH
       end
       
       def commands
-        { "pose" => " (?<msg>.+)" }
+        { "pose" => "pose (?<msg>.+)" }
       end
       
       def on_player_command(client, cmd)

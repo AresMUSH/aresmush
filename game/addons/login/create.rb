@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Addon
 
       def commands
-        { "create" => " (?<name>\\S+) (?<password>\\S+)" } 
+        { "create" => "create (?<name>\\S+) (?<password>\\S+)" } 
       end
 
       def on_player_command(client, cmd)

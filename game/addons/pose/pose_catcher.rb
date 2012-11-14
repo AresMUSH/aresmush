@@ -8,11 +8,14 @@ module AresMUSH
       end
       
       def commands
-        { :all => "" }
+        { "\"" => "(?<msg>.+)", 
+          "\\" => "(?<msg>.+)",
+          ":" => "(?<msg>.+)",
+          ";" => "(?<msg>.+)" }
       end
       
       def on_player_command(client, cmd)
-        @client_monitor.tell_all client.player.parse_pose(cmd.to_s)
+        @client_monitor.tell_all client.player.parse_pose(cmd[:msg])
       end
     end
   end

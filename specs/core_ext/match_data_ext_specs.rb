@@ -9,7 +9,7 @@ module AresMUSH
       it "should make a hash of the names and arg values" do
         str = "a b"
         m = /(?<foo>.+) (?<bar>.+)/.match(str)
-        data = { "foo" => "a", "bar" => "b" }
+        data = { :foo => "a", :bar => "b" }
         m.names_hash.should eq data
       end
     end
