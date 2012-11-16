@@ -38,8 +38,7 @@ module AresMUSH
     
     describe :handle_client_input do
       it "should notify the dispatcher" do
-        @dispatcher.should_receive(:on_command).with(kind_of(Command)) do |cmd|
-          cmd.client.should eq @client1
+        @dispatcher.should_receive(:on_command).with(@client1, kind_of(Command)) do |client, cmd|
           cmd.raw.should eq "test"
         end
         @client_monitor.handle_client_input(@client1, "test")

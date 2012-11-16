@@ -14,8 +14,8 @@ module AresMUSH
         cmd.raw.start_with?(";")
       end
       
-      def on_command(cmd)
-        @client_monitor.tell_all cmd.client.parse_pose(cmd.raw)
+      def on_command(client, cmd)
+        @client_monitor.tell_all client.parse_pose(cmd.raw)
       end
     end
   end

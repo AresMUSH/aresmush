@@ -15,6 +15,7 @@ module AresMUSH
     before do
       @addon_manager = double(AddonManager)
       @client = double(Client)
+      @client.stub(:id) { "1" }
       @command = double(Command)
       @command.stub(:client) { @client }
       @command.stub(:logged_in?) { true }
@@ -29,7 +30,7 @@ module AresMUSH
       it "gets the list of addons from the addon manager" do
         @addon_manager.should_receive(:addons) { [] }
         @client.should_receive(:emit_ooc).with("huh")
-        @dispatcher.on_command(@command)
+        @dispatcher.on_command(@client, @command)
       end
       
       it "asks each addon if it wants the command" do
@@ -37,7 +38,7 @@ module AresMUSH
         @addon1.should_receive(:want_command?).with(@command) { false }
         @addon2.should_receive(:want_command?).with(@command) { false }
         @client.should_receive(:emit_ooc).with("huh")
-        @dispatcher.on_command(@command)
+        @dispatcher.on_command(@client, @command)
       end      
       
       it "won't dispatch to a class that doesn't want the command" do
@@ -45,39 +46,39 @@ module AresMUSH
         @addon1.stub(:want_command?) { false }
         @addon1.should_not_receive(:on_command) 
         @client.should_receive(:emit_ooc).with("huh")
-        @dispatcher.on_command(@command)
+        @dispatcher.on_command(@client, @command)
       end
       
       it "will dispatch to an addon that wants the command" do
         @addon_manager.stub(:addons) { [ @addon1 ] }
         @addon1.stub(:want_command?) { true }
-        @addon1.should_receive(:on_command).with(@command)
-        @dispatcher.on_command(@command)
+        @addon1.should_receive(:on_command).with(@client, @command)
+        @dispatcher.on_command(@client, @command)
       end
       
       it "will dispatch to the anon command handler if not logged in" do
         @command.stub(:logged_in?) { false }
         @addon_manager.stub(:addons) { [ @addon1 ] }
         @addon1.stub(:want_command?) { true }
-        @addon1.should_receive(:on_anon_command).with(@command)
-        @dispatcher.on_command(@command)
+        @addon1.should_receive(:on_anon_command).with(@client, @command)
+        @dispatcher.on_command(@client, @command)
       end
             
       it "stops after finding one addon to handle the command" do
         @addon_manager.stub(:addons) { [ @addon1, @addon2 ] }
         @addon1.stub(:want_command?) { true }
         @addon2.stub(:want_command?) { true }
-        @addon1.should_receive(:on_command).with(@command)
-        @addon2.should_not_receive(:on_command).with(@command)
-        @dispatcher.on_command(@command)
+        @addon1.should_receive(:on_command).with(@client, @command)
+        @addon2.should_not_receive(:on_command)
+        @dispatcher.on_command(@client, @command)
       end
       
       it "continues processing if the first addon doesn't want the command" do
         @addon_manager.stub(:addons) { [ @addon1, @addon2 ] }
         @addon1.stub(:want_command?) { false }
         @addon2.stub(:want_command?) { true }
-        @addon2.should_receive(:on_command).with(@command)
-        @dispatcher.on_command(@command)
+        @addon2.should_receive(:on_command).with(@client, @command)
+        @dispatcher.on_command(@client, @command)
       end
 
       it "sends huh message if nobody handles the command" do
@@ -85,7 +86,7 @@ module AresMUSH
         @addon1.stub(:want_command?) { false }
         @addon2.stub(:want_command?) { false }
         @client.should_receive(:emit_ooc).with("huh")
-        @dispatcher.on_command(@command)
+        @dispatcher.on_command(@client, @command)
       end      
       
       it "catches exceptions from within the command handling" do
@@ -94,14 +95,14 @@ module AresMUSH
         @addon1.stub(:on_command).and_raise("an error")
         @command.stub(:raw) { "raw" }
         @client.should_receive(:emit_failure).with("error")
-        @dispatcher.on_command(@command)
+        @dispatcher.on_command(@client, @command)
       end
       
       it "allows a addon exit exception to bubble up" do
         @addon_manager.stub(:addons) { [ @addon1 ] }
         @addon1.stub(:want_command?) { true }
         @addon1.stub(:on_command).and_raise(SystemExit)
-        expect {@dispatcher.on_command(@command)}.to raise_error(SystemExit)
+        expect {@dispatcher.on_command(@client, @command)}.to raise_error(SystemExit)
       end
     end
 

@@ -7,12 +7,12 @@ module AresMUSH
         cmd.root_is?("quit")
       end
       
-      def on_anon_command(cmd)
-        cmd.client.disconnect
+      def on_anon_command(client, cmd)
+        client.disconnect
       end
       
-      def on_command(cmd)
-        cmd.client.disconnect
+      def on_command(client, cmd)
+        client.disconnect
       end
     end
   end

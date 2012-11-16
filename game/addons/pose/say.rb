@@ -11,8 +11,8 @@ module AresMUSH
         cmd.root_is?("say")
       end
       
-      def on_command(cmd)
-        @client_monitor.tell_all cmd.client.parse_pose("\"#{cmd.args}")
+      def on_command(client, cmd)
+        @client_monitor.tell_all client.parse_pose("\"#{cmd.args}")
       end
     end
   end

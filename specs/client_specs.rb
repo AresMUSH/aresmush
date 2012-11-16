@@ -106,7 +106,7 @@ module AresMUSH
     describe :parse_pose do
       before do
         @client = Client.new(1, nil, nil, nil)
-        @client.player = { :name => "Bob" }
+        @client.player = { "name" => "Bob" }
       end
 
       it "should parse a say for a string starting with a quote" do

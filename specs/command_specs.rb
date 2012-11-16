@@ -19,11 +19,7 @@ module AresMUSH
       
       it "sets the root" do
         @cmd.root.should eq "test"
-      end
-      
-      it "sets the client" do
-        @cmd.client.should eq @client
-      end
+      end      
       
       it "sets the enactor" do
         @cmd.enactor.should eq @player

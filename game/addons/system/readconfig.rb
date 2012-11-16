@@ -12,7 +12,7 @@ module AresMUSH
         cmd.root_is?("readconfig")
       end
 
-      def on_command(cmd)
+      def on_command(client, cmd)
         @config_reader.read
         client.emit_success "You reload the config files."
       end

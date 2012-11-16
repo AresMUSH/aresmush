@@ -24,8 +24,8 @@ module AresMUSH
     end
     
     describe :find_by_name do
-      it "should pass on the name to the other find method" do
-        Player.should_receive(:find).with("name" => "Bob")
+      it "should pass on the name in uppercase to the other find method" do
+        Player.should_receive(:find).with("name_upcase" => "BOB")
         Player.find_by_name("Bob")
       end
     end

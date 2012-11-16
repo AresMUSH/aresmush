@@ -1,17 +1,16 @@
 module AresMUSH
   class Command
     
-    attr_accessor :client, :enactor, :raw, :root, :switch, :args
+    attr_accessor :enactor, :raw, :root, :switch, :args
     
     def initialize(client, input)
-      @client = client
       @enactor = client.player
       @raw = input.chomp
       crack(input)
     end
     
     def to_s
-      "client=#{@client.id} raw=#{@raw} enactor=#{@enactor.nil? ? "nil" : @enactor["name"]}"
+      "raw=#{@raw} enactor=#{@enactor.nil? ? "nil" : @enactor["name"]}"
     end
     
     def root_is?(root)
