@@ -8,11 +8,11 @@ module AresMUSH
       end
       
       def on_anon_command(cmd)
-        client.disconnect
+        cmd.client.disconnect
       end
       
       def on_command(cmd)
-        client.disconnect
+        cmd.client.disconnect
       end
     end
   end

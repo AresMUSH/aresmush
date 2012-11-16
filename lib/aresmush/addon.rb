@@ -6,7 +6,7 @@ module AresMUSH
     end
     
     attr_reader :container
-    
+        
     # Override this with any custom initialization
     def after_initialize
     end
@@ -35,6 +35,7 @@ module AresMUSH
     # See the Command class for a whole bunch of useful fields you can access.
     def on_anon_command(cmd)
       logger.debug("#{self} ignored an anonymous command.")
-    end    
+    end   
+    
   end
 end

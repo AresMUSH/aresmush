@@ -6,16 +6,16 @@ module AresMUSH
       player.empty? ? nil : player
     end
     
-    # Should be case insensitive (Bob bob)
     def self.find_by_name(name)
-      find("name" => name)
+      find("name_upcase" => name.upcase)
     end
     
     def self.create(name, password)
       player = 
        {
-         "name"     => name,
-         "password" => password,
+         "name"       => name,
+         "name_upase" => name.upcase,
+         "password"   => password,
        }
        player["id"] = db[:players].insert(player)
        player 
