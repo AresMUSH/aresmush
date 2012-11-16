@@ -88,6 +88,13 @@ module AresMUSH
       end
       
     end
+    
+    describe :reload! do
+      it "should tell the backend to reload" do
+        I18n.should_receive(:reload!)
+        Locale.reload!
+      end
+    end
 
     def create_temp_locale_files
            Dir.mkdir @temp_dir

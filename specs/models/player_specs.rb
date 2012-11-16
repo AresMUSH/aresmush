@@ -6,9 +6,9 @@ module AresMUSH
 
   describe Player do
     describe :find do
-      it "should return nil if no player found" do
+      it "should return empty if no player found" do
         AresMUSH::Database.db.stub(:find) { nil }
-        Player.find("name" => "Bob").should eq nil
+        Player.find("name" => "Bob").should be_empty
       end
 
       it "should return a player if found" do

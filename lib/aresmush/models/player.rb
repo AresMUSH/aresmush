@@ -2,8 +2,7 @@ module AresMUSH
   class Player
     
     def self.find(*args)
-      player = db[:players].find(*args).to_a
-      player.empty? ? nil : player
+      db[:players].find(*args).to_a
     end
     
     def self.find_by_name(name)
@@ -14,7 +13,7 @@ module AresMUSH
       player = 
        {
          "name"       => name,
-         "name_upase" => name.upcase,
+         "name_upcase" => name.upcase,
          "password"   => password,
        }
        player["id"] = db[:players].insert(player)

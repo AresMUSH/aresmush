@@ -102,36 +102,6 @@ module AresMUSH
         client.connection_closed
       end
     end 
-    
-    describe :parse_pose do
-      before do
-        @client = Client.new(1, nil, nil, nil)
-        @client.player = { "name" => "Bob" }
-      end
-
-      it "should parse a say for a string starting with a quote" do
-        AresMUSH::Locale.stub(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
-        @client.parse_pose("\"Hello.").should eq "hi"
-      end
-
-      it "should parse a pose for a string starting with a colon" do
-        AresMUSH::Locale.stub(:translate).with("object.pose", :name => "Bob", :msg => "waves.") { "waves" }
-        @client.parse_pose(":waves.").should eq "waves"
-      end
-
-      it "should parse a semipose for a string starting with a semicolon" do
-        AresMUSH::Locale.stub(:translate).with("object.semipose", :name => "Bob", :msg => "'s cat.") { "cat" }
-        @client.parse_pose(";'s cat.").should eq "cat"
-      end
-
-      it "should parse an emit for a string starting with a backslash" do
-        @client.parse_pose("\\Whee").should eq "Whee"
-      end
-
-      it "should parse an emit for an unadorned string" do
-        @client.parse_pose("Whee").should eq "Whee"
-      end
-
-    end   
+     
   end
 end

@@ -133,5 +133,20 @@ module AresMUSH
         cmd.args[:c].should eq "harvey"
       end
     end
+    
+      describe :enactor_name do 
+        
+        it "returns the enactor's name when available" do
+          @client.stub(:player) { {"name" => "Bob" } }
+          cmd = Command.new(@client, "test")
+          cmd.enactor_name.should eq "Bob"
+        end      
+
+        it "returns an empty string if there's no enactor" do
+          @client.stub(:player) { nil }
+          cmd = Command.new(@client, "test")
+          cmd.enactor_name.should eq ""
+        end
+      end
   end
 end

@@ -27,7 +27,7 @@ module AresMUSH
     describe :on_command do
       it "should log a warning if someone fails to provide a command handler" do
         Log4r::Logger.root.should_receive(:warn)
-        @addon.on_command(nil)
+        @addon.on_command(nil, nil)
       end
     end    
   end

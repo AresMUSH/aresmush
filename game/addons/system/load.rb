@@ -21,6 +21,7 @@ module AresMUSH
         rescue Exception => e
           client.emit_failure "Error loading '#{addon_name}' addon: #{e.to_s}"
         end
+        Locale.reload!
       end
     end
   end

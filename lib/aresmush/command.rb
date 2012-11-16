@@ -10,7 +10,11 @@ module AresMUSH
     end
     
     def to_s
-      "raw=#{@raw} enactor=#{@enactor.nil? ? "nil" : @enactor["name"]}"
+      "raw=#{@raw} enactor=#{enactor_name}"
+    end
+    
+    def enactor_name
+      @enactor.nil? ? "" : @enactor["name"]
     end
     
     def root_is?(root)

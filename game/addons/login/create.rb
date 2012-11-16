@@ -8,7 +8,7 @@ module AresMUSH
       end
 
       def on_command(client, cmd)
-        client.emit_ooc t('create.already_logged_in')
+        client.emit_ooc t('login.already_logged_in')
       end
       
       def on_anon_command(client, cmd)
@@ -17,9 +17,9 @@ module AresMUSH
         name = args[:name]
         password = args[:password]
 
-        # TODO: Find by alias too
+        # TODO: Find by alias too once alias system is implemented
         existing_player = Player.find_by_name(name)
-        if (!existing_player.nil?)
+        if (!existing_player.empty?)
           client.emit_failure(t('login.player_name_taken'))
           # TODO: This is just temp until the connect command is done
           client.player = existing_player[0]

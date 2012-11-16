@@ -55,6 +55,10 @@ module AresMUSH
       end
     end
     
+    def self.reload!
+      I18n.reload!
+    end
+    
     private
     
     def load_translations

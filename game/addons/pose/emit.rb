@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        @client_monitor.tell_all client.parse_pose("\\#{cmd.args}")
+        @client_monitor.tell_all Formatters.parse_pose(cmd.enactor_name, "\\#{cmd.args}")
       end
     end
   end
