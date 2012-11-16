@@ -7,15 +7,15 @@ module AresMUSH
         @client_monitor = container.client_monitor
       end
       
-      def commands
-        { "\"" => "(?<msg>.+)", 
-          "\\" => "(?<msg>.+)",
-          ":" => "(?<msg>.+)",
-          ";" => "(?<msg>.+)" }
+      def want_command?(cmd)
+        cmd.raw.start_with?("\"") ||
+        cmd.raw.start_with?("\\") ||
+        cmd.raw.start_with?(":") ||
+        cmd.raw.start_with?(";")
       end
       
-      def on_command(client, cmd)
-        @client_monitor.tell_all client.player.parse_pose(cmd[:msg])
+      def on_command(cmd)
+        @client_monitor.tell_all cmd.client.parse_pose(cmd.raw)
       end
     end
   end

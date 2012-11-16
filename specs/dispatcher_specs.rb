@@ -10,13 +10,14 @@ module AresMUSH
     end
   end
   
-  describe Client do
+  describe Dispatcher do
 
     before do
       @addon_manager = double(AddonManager)
       @client = double(Client)
       @command = double(Command)
       @command.stub(:client) { @client }
+      @command.stub(:logged_in?) { true }
       @dispatcher = Dispatcher.new(@addon_manager)
       @addon1 = Object.new
       @addon2 = Object.new
@@ -51,6 +52,14 @@ module AresMUSH
         @addon_manager.stub(:addons) { [ @addon1 ] }
         @addon1.stub(:want_command?) { true }
         @addon1.should_receive(:on_command).with(@command)
+        @dispatcher.on_command(@command)
+      end
+      
+      it "will dispatch to the anon command handler if not logged in" do
+        @command.stub(:logged_in?) { false }
+        @addon_manager.stub(:addons) { [ @addon1 ] }
+        @addon1.stub(:want_command?) { true }
+        @addon1.should_receive(:on_anon_command).with(@command)
         @dispatcher.on_command(@command)
       end
             

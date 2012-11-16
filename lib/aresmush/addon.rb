@@ -25,10 +25,16 @@ module AresMUSH
       false
     end
     
-    # Override this with the details of your command handling.  See the Command class for
-    # a whole bunch of useful fields you can access.
+    # Override this with the details of your command handling when a player is logged in.  
+    # See the Command class for a whole bunch of useful fields you can access.
     def on_command(cmd)
       logger.warn("#{self} said it wanted a command and didn't handle it!")
     end
+    
+    # Override this with the details of your command handling when a player is sitting at the login screen.
+    # See the Command class for a whole bunch of useful fields you can access.
+    def on_anon_command(cmd)
+      logger.debug("#{self} ignored an anonymous command.")
+    end    
   end
 end

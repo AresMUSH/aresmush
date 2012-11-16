@@ -8,7 +8,11 @@ module AresMUSH
       end
 
       def on_command(cmd)
-        args = cmd.crack_args("(?<name>\\S+) (?<password>\\S+)")
+        cmd.client.emit_ooc t('create.already_logged_in')
+      end
+      
+      def on_anon_command(cmd)
+        args = cmd.crack_args(/(?<name>\S+) (?<password>\S+)/)
         
         name = args[:name]
         password = args[:password]
@@ -16,15 +20,16 @@ module AresMUSH
         # TODO: Find by alias too
         existing_player = Player.find_by_name(name)
         if (!existing_player.nil?)
-          client.emit_failure(t('login.player_name_taken'))
+          cmd.client.emit_failure(t('login.player_name_taken'))
           # TODO: This is just temp until the connect command is done
-          client.player = existing_player[0]
+          cmd.client.player = existing_player[0]
+          puts existing_player[0]
         else
           # TODO: Encrypt password
           # TODO: Specs
           player = Player.create(name, password)
-          client.emit_success(t('login.player_created', :name => name))
-          client.player = player
+          cmd.client.emit_success(t('login.player_created', :name => name))
+          cmd.client.player = player
         end
       end
     end

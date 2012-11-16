@@ -127,5 +127,15 @@ module AresMUSH
         cmd.root_is?("foo").should be_false
       end
     end
+    
+    describe :crack_args do
+      it "expands the args string into a more meaningful hash" do
+        cmd = Command.new(@client, "test/foo bar=baz+harvey")
+        cmd.crack_args(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/)
+        cmd.args[:a].should eq "bar"
+        cmd.args[:b].should eq "baz"
+        cmd.args[:c].should eq "harvey"
+      end
+    end
   end
 end

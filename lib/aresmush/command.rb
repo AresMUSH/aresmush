@@ -6,8 +6,12 @@ module AresMUSH
     def initialize(client, input)
       @client = client
       @enactor = client.player
-      @raw = input
+      @raw = input.chomp
       crack(input)
+    end
+    
+    def to_s
+      "client=#{@client.id} raw=#{@raw} enactor=#{@enactor.nil? ? "nil" : @enactor["name"]}"
     end
     
     def root_is?(root)
@@ -16,6 +20,10 @@ module AresMUSH
     
     def logged_in?
       @enactor != nil
+    end
+    
+    def crack_args(regex)
+      @args = regex.match(@args).names_hash
     end
     
     private

@@ -10,7 +10,11 @@ module AresMUSH
       with_error_handling(cmd) do
         @addon_manager.addons.each do |a|
           if (a.want_command?(cmd))
-            a.on_command(cmd)
+            if (cmd.logged_in?)
+              a.on_command(cmd)
+            else
+              a.on_anon_command(cmd)
+            end
             handled = true
             break
           end # if

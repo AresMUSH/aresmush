@@ -3,11 +3,15 @@ module AresMUSH
     class Quit
       include AresMUSH::Addon
 
-      def commands
-        { "quit" => "" }
+      def want_command?(cmd)
+        cmd.root_is?("quit")
       end
       
-      def on_command(client, cmd)
+      def on_anon_command(cmd)
+        client.disconnect
+      end
+      
+      def on_command(cmd)
         client.disconnect
       end
     end

@@ -50,5 +50,20 @@ module AresMUSH
     def connection_closed
       @client_monitor.connection_closed self
     end
+    
+    def parse_pose(msg)
+      name = @player.nil? ? "" : @player["name"]
+      if msg.start_with?("\"")
+        t('object.say', :name => name, :msg => msg.rest("\""))
+      elsif msg.start_with?(":")
+        t('object.pose', :name => name, :msg => msg.rest(":"))
+      elsif msg.start_with?(";")
+        t('object.semipose', :name => name, :msg => msg.rest(";"))
+      elsif msg.start_with?("\\")
+        msg.rest("\\")
+      else
+        msg
+      end
+    end
   end
 end

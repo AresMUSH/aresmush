@@ -8,11 +8,11 @@ module AresMUSH
         @config_reader = container.config_reader
       end
 
-      def commands
-        { "readconfig" => "" }
+      def want_command?(cmd)
+        cmd.root_is?("readconfig")
       end
 
-      def on_command(client, cmd)
+      def on_command(cmd)
         @config_reader.read
         client.emit_success "You reload the config files."
       end
