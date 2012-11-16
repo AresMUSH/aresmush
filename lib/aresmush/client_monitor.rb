@@ -36,7 +36,7 @@ module AresMUSH
     end
 
     def handle_client_input(client, input)
-      @dispatcher.on_player_command(client, input)
+      @dispatcher.on_command(Command.new(client, input))
     end
     
     private

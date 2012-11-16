@@ -11,19 +11,24 @@ module AresMUSH
     def after_initialize
     end
     
-    # Override this with an hash of  command => argument regex
-    #    TODO: Better docs
-    #    "create (?<name>\\S+) (?<password>\\S+)"
-    def commands
-      nil
+    # Override this with the processing needed to tell if you want a particular command.
+    #
+    # You can do basic operations:
+    #    cmd.raw.start_with?(":")
+    #
+    # Or use some of the handy helper methods:
+    #    cmd.root_is?("finger")
+    #    cmd.logged_in?
+    #
+    # You can even do more complex and/or combinations.
+    def want_command?(cmd)
+      false
     end
-
-    # Default crack will do matches according to the command argument regex
-    def crack(client, cmd, regex)
-      cmd_hash = /#{regex}/.match(cmd).names_hash
-      cmd_hash[:raw] = cmd
-      cmd_hash[:enactor] = client.player
-      cmd_hash
+    
+    # Override this with the details of your command handling.  See the Command class for
+    # a whole bunch of useful fields you can access.
+    def on_command(cmd)
+      logger.warn("#{self} said it wanted a command and didn't handle it!")
     end
   end
 end

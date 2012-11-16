@@ -7,12 +7,13 @@ module AresMUSH
         @client_monitor = container.client_monitor
       end
       
-      def commands
-        { "emit" => "emit (?<msg>.+)" }
+      def want_command?(client, cmd)
+        logged_in?(client) && cmd.cmd_root_is?("emit")
       end
       
-      def on_player_command(client, cmd)
-        @client_monitor.tell_all client.player.parse_pose("\\#{cmd[:msg]}")
+      def on_command(client, cmd)
+        args = crack(client, cmd)
+        @client_monitor.tell_all client.player.parse_pose("\\#{args[:msg]}")
       end
     end
   end

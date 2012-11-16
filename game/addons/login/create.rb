@@ -3,13 +3,15 @@ module AresMUSH
     class Create
       include AresMUSH::Addon
 
-      def commands
-        { "create" => "create (?<name>\\S+) (?<password>\\S+)" } 
+      def want_command?(cmd)
+        cmd.root_is?("create")
       end
 
-      def on_player_command(client, cmd)
-        name = cmd[:name]
-        password = cmd[:password]
+      def on_command(cmd)
+        args = cmd.crack_args("(?<name>\\S+) (?<password>\\S+)")
+        
+        name = args[:name]
+        password = args[:password]
 
         # TODO: Find by alias too
         existing_player = Player.find_by_name(name)

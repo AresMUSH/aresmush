@@ -11,31 +11,24 @@ module AresMUSH
       class AddonSpecTest
         include Addon
       end
-      addon = AddonSpecTest.new(nil)
-      client = double(Client)
-      @player = { "name" => "Bob"}
-      client.stub(:player) { @player }
-      @results = addon.crack(client, "test 1=2", "test (?<arg1>.+)=(?<arg2>.+)")
+      @addon = AddonSpecTest.new(nil)      
     end
     
     after do
       AresMUSH.send(:remove_const, :AddonSpecTest)
     end
+
+    describe :want_command? do
+      it "should return false by default" do
+        @addon.want_command?(nil).should be_false
+      end
+    end
     
-    describe :crack do
-      it "should return a hash of the command args" do
-        @results[:arg1].should eq "1"
-        @results[:arg2].should eq "2"
+    describe :on_command do
+      it "should log a warning if someone fails to provide a command handler" do
+        Log4r::Logger.root.should_receive(:warn)
+        @addon.on_command(nil)
       end
-
-      it "should return the original command in the hash" do
-        @results[:raw].should eq "test 1=2"
-      end
-
-      it "should return the enactor in the hash" do        
-        @results[:enactor].should eq @player
-      end
-      
     end    
   end
 end

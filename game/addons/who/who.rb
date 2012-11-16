@@ -14,7 +14,7 @@ module AresMUSH
         }
       end
       
-      def on_player_command(client, cmd)
+      def on_command(client, cmd)
         client.emit_ooc t('players_connected', :count => @client_monitor.clients.count)
       end
     end

@@ -5,26 +5,20 @@ module AresMUSH
       @addon_manager = addon_manager
     end
 
-    def on_player_command(client, cmd)
+    def on_command(cmd)
       handled = false
-      with_cmd_error_handling(client, cmd) do
+      with_error_handling(cmd) do
         @addon_manager.addons.each do |a|
-          if (a.respond_to?(:on_player_command))
-            a.commands.each do |cmd_key, cmd_regex|
-              if (cmd.start_with?(cmd_key))
-                cmd_hash = a.crack(client, cmd, cmd_regex)
-                handled = a.on_player_command(client, cmd_hash)
-              end
-              break if handled
-            end
-          end
-          break if handled
+          if (a.want_command?(cmd))
+            a.on_command(cmd)
+            handled = true
+            break
+          end # if
+        end # each
+        if (!handled)
+          cmd.client.emit_ooc t('dispatcher.huh')
         end
-      end
-      
-      if (!handled)
-        client.emit_ooc t('dispatcher.huh')
-      end
+      end # with error handling
     end
 
     def on_event(type, *args)
@@ -41,17 +35,17 @@ module AresMUSH
     
     private
     
-    def with_cmd_error_handling(client, cmd, &block)
+    def with_error_handling(cmd, &block)
       begin
-        logger.debug("Player command: client=#{client.id} cmd=#{cmd.chomp}")
+        logger.debug("Player command: #{cmd}")
         yield block
       # Allow addon exit to bubble up so it shuts the addon down.
       rescue SystemExit
         raise SystemExit
       rescue Exception => e
         handled = true
-        logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[1,10]}")
-        client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd, :error_info => e)
+        logger.error("Error handling command: cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[1,10]}")
+        cmd.client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd.raw, :error_info => e)
       end
     end
   end

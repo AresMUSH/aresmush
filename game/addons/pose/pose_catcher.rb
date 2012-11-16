@@ -14,7 +14,7 @@ module AresMUSH
           ";" => "(?<msg>.+)" }
       end
       
-      def on_player_command(client, cmd)
+      def on_command(client, cmd)
         @client_monitor.tell_all client.player.parse_pose(cmd[:msg])
       end
     end

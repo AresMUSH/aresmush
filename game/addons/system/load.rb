@@ -11,7 +11,7 @@ module AresMUSH
         { "load" => "load (?<addon_name>.+)" }
       end
 
-      def on_player_command(client, cmd)
+      def on_command(client, cmd)
         addon_name = cmd[:addon_name]
         begin
           @addon_manager.load_addon(addon_name)

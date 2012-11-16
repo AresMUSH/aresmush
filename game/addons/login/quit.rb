@@ -7,7 +7,7 @@ module AresMUSH
         { "quit" => "" }
       end
       
-      def on_player_command(client, cmd)
+      def on_command(client, cmd)
         client.disconnect
       end
     end
