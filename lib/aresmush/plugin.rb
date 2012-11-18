@@ -1,5 +1,5 @@
 module AresMUSH
-  module Addon
+  module Plugin
     def initialize(container)
       @container = container
       after_initialize

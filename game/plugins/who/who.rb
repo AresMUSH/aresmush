@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     class Who
-      include AresMUSH::Addon
+      include AresMUSH::Plugin
 
       def after_initialize
         @client_monitor = container.client_monitor

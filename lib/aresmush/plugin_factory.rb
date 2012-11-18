@@ -1,26 +1,26 @@
 module AresMUSH
-  class AddonFactory
+  class PluginFactory
     
     attr_accessor :container
     
-    def create_addon_classes
-      addons = []
-      find_and_instantiate(AresMUSH, addons)
+    def create_plugin_classes
+      plugins = []
+      find_and_instantiate(AresMUSH, plugins)
       logger.info "System load complete."
-      addons
+      plugins
     end
     
-    def find_and_instantiate(mod, addons)
+    def find_and_instantiate(mod, plugins)
       consts = mod.constants
       logger.debug "Searching #{mod}."
       consts.each do |c|
         sym = mod.const_get(c)
         if (sym.class == Module)
-          find_and_instantiate(sym, addons)
+          find_and_instantiate(sym, plugins)
         else
-          if (sym.class == Class && sym.include?(AresMUSH::Addon))
+          if (sym.class == Class && sym.include?(AresMUSH::Plugin))
             logger.debug "Creating #{sym}."
-            addons << sym.new(@container)            
+            plugins << sym.new(@container)            
           end
         end        
       end

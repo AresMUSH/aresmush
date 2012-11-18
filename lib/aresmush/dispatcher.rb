@@ -1,14 +1,14 @@
 module AresMUSH
   class Dispatcher
 
-    def initialize(addon_manager)
-      @addon_manager = addon_manager
+    def initialize(plugin_manager)
+      @plugin_manager = plugin_manager
     end
 
     def on_command(client, cmd)
       handled = false
       with_error_handling(client, cmd) do
-        @addon_manager.addons.each do |a|
+        @plugin_manager.plugins.each do |a|
           if (a.want_command?(cmd))
             if (cmd.logged_in?)
               a.on_command(client, cmd)
@@ -27,7 +27,7 @@ module AresMUSH
 
     def on_event(type, *args)
       begin
-        @addon_manager.addons.each do |s|
+        @plugin_manager.plugins.each do |s|
           if (s.respond_to?(:"on_#{type}"))
             s.send(:"on_#{type}", *args)
           end
@@ -43,7 +43,7 @@ module AresMUSH
       begin
         logger.debug("Player command: #{client.id} #{cmd}")
         yield block
-      # Allow addon exit to bubble up so it shuts the addon down.
+      # Allow plugin exit to bubble up so it shuts the plugin down.
       rescue SystemExit
         raise SystemExit
       rescue Exception => e

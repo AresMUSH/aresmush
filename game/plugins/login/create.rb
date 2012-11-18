@@ -1,7 +1,7 @@
 module AresMUSH
   module Login
     class Create
-      include AresMUSH::Addon
+      include AresMUSH::Plugin
 
       def want_command?(cmd)
         cmd.root_is?("create")

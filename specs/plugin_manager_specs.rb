@@ -4,18 +4,18 @@ require "aresmush"
 
 module AresMUSH
 
-  describe AddonManager do
+  describe PluginManager do
 
     before do
-      @temp_dir = "#{Dir.pwd}/tmp_addon"
+      @temp_dir = "#{Dir.pwd}/tmp_plugin"
       FileUtils.rm_rf @temp_dir
       Dir.mkdir @temp_dir
-      Dir.mkdir File.join(@temp_dir, "addons")
+      Dir.mkdir File.join(@temp_dir, "plugins")
       create_fake_class("a", "\"foo\"")
       create_fake_class("b", "\"bar\"")
 
-      @factory = double(AddonFactory)
-      @manager = AddonManager.new(@factory, @temp_dir)
+      @factory = double(PluginFactory)
+      @manager = PluginManager.new(@factory, @temp_dir)
     end
 
     after do
@@ -23,22 +23,22 @@ module AresMUSH
     end
 
     describe :load_all do
-      it "loads addon A" do
-        @factory.should_receive(:create_addon_classes)
+      it "loads plugin A" do
+        @factory.should_receive(:create_plugin_classes)
         @manager.load_all
         a = SystemTest_a.new
         a.test.should eq "foo"
       end
 
-      it "loads addon B" do
-        @factory.should_receive(:create_addon_classes)
+      it "loads plugin B" do
+        @factory.should_receive(:create_plugin_classes)
         @manager.load_all
         b = SystemTest_b.new
         b.test.should eq "bar"
       end
       
-      it "can reload a addon that's changed" do
-        @factory.should_receive(:create_addon_classes).twice
+      it "can reload a plugin that's changed" do
+        @factory.should_receive(:create_plugin_classes).twice
         @manager.load_all
         # Now change the class
         create_fake_class("a", "\"baz\"")
@@ -48,39 +48,39 @@ module AresMUSH
       end
     end
 
-    describe :load_addon do
-      it "loads a single addon" do
-        @factory.should_receive(:create_addon_classes)
-        @manager.load_addon("a")
+    describe :load_plugin do
+      it "loads a single plugin" do
+        @factory.should_receive(:create_plugin_classes)
+        @manager.load_plugin("a")
         a = SystemTest_a.new
         a.test.should eq "foo"
       end
 
-      it "raises an error if the addon is not found" do
-        expect{@manager.load_addon("x")}.to raise_error(SystemNotFoundException)
+      it "raises an error if the plugin is not found" do
+        expect{@manager.load_plugin("x")}.to raise_error(SystemNotFoundException)
       end
 
       it "catches syntax errors" do 
         create_fake_class("a", "end")
-        expect{@manager.load_addon("a")}.to raise_error(SyntaxError)
+        expect{@manager.load_plugin("a")}.to raise_error(SyntaxError)
       end
       
-      it "can reload a addon that's changed" do
-        @factory.should_receive(:create_addon_classes).twice
-        @manager.load_addon("a")
+      it "can reload a plugin that's changed" do
+        @factory.should_receive(:create_plugin_classes).twice
+        @manager.load_plugin("a")
         # Now change the class
         create_fake_class("a", "\"baz\"")
-        @manager.load_addon("a")
+        @manager.load_plugin("a")
         a = SystemTest_a.new
         a.test.should eq "baz"
       end
     end
 
     def create_fake_class(name, ret_val)
-      addon_dir = File.join(@temp_dir, "addons", name)
-      FileUtils.rm_rf addon_dir
-      Dir.mkdir addon_dir
-      File.open("#{@temp_dir}/addons/#{name}/#{name}.rb", "w") do |f| 
+      plugin_dir = File.join(@temp_dir, "plugins", name)
+      FileUtils.rm_rf plugin_dir
+      Dir.mkdir plugin_dir
+      File.open("#{@temp_dir}/plugins/#{name}/#{name}.rb", "w") do |f| 
         f.write "module AresMUSH\n"
         f.write "class SystemTest_#{name}\n"
         f.write "def test\n"
