@@ -7,18 +7,18 @@ module AresMUSH
   describe Player do
     describe :find do
       it "should return empty if no player found" do
-        AresMUSH::Database.db.stub(:find) { nil }
+        Database.db.stub(:find) { nil }
         Player.find("name" => "Bob").should be_empty
       end
 
       it "should return a player if found" do
         data = { "name" => "Bob", "password" => "test" }
-        AresMUSH::Database.db.stub(:find) { [data] }
+        Database.db.stub(:find) { [data] }
         Player.find("name" => "Bob").should eq [data]
       end
 
       it "should pass on search params to the db" do
-        AresMUSH::Database.db.should_receive(:find).with({ "name" => "Bob", "password" => "test" })
+        Database.db.should_receive(:find).with({ "name" => "Bob", "password" => "test" })
         Player.find("name" => "Bob", "password" => "test")
       end
     end
@@ -31,17 +31,29 @@ module AresMUSH
     end
     
     describe :create do
-      it "should raise an error if the player already exists" do
-        # TODO
-      end
-
-      it "should create the player if it doesn't already exist" do
-        # TODO
+      before do
+        @tmpdb = double(Object)
+        Database.db.stub(:[]).with(:players) { @tmpdb }
       end
       
-      it "should assign a database id" do
-        # TODO
+      it "should create the player" do
+        @tmpdb.should_receive(:insert) do |player|
+          player["name"].should eq "Bob"
+          player["password"].should eq "test"
+          player["name_upcase"].should eq "BOB"
+        end
+        Player.create("Bob", "test")
       end
+      
+      it "should store the fields, including the database id, on the returned object" do
+        @tmpdb.stub(:insert) { 123 }
+        Player.create("Bob", "test") do |player|
+          player["name"].should eq "Bob"
+          player["password"].should eq "test"
+          player["name_upcase"].should eq "BOB"
+          player["id"].should eq 123
+        end        
+      end      
     end    
   end
 end
