@@ -8,7 +8,7 @@ module AresMUSH
       game_dir = File.join(Dir.pwd, "game")
       config_reader = ConfigReader.new(game_dir)
       ares_logger = AresLogger.new(config_reader)
-      locale = Locale.new(config_reader, File.join(Dir.pwd, "locales"))
+      locale = Locale.new(config_reader, game_dir)
       plugin_factory = PluginFactory.new
       plugin_manager = PluginManager.new(plugin_factory, game_dir)
       dispatcher = Dispatcher.new(plugin_manager)
@@ -18,7 +18,7 @@ module AresMUSH
       
       # Now that everything's created, give the factory a container of the main plugin 
       # objects so that it can pass those along to the individual plugins
-      plugin_factory.container = Container.new(config_reader, client_monitor, plugin_manager, dispatcher)
+      plugin_factory.container = Container.new(config_reader, client_monitor, plugin_manager, dispatcher, locale)
 
       # Configure a trap for exiting.
       at_exit do

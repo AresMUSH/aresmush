@@ -6,18 +6,10 @@ module AresMUSH
 
   describe Locale do
     before do
-      @temp_dir = Dir.pwd + "/tmp_locale"
-      create_temp_locale_files
       @config_reader = double(ConfigReader)
-      @config_reader.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }
-      @locale = Locale.new(@config_reader, @temp_dir)
-      @locale.setup
+      @locale = Locale.new(@config_reader, Dir.pwd)
     end
 
-    after do
-      FileUtils.rm_rf @temp_dir
-    end
-    
     describe :locale do
       it "should return the I18 locale" do
         I18n.stub(:locale) { 'hu' }
@@ -33,47 +25,67 @@ module AresMUSH
     end
     
     describe :setup do
+      before do
+        @config_reader.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }        
+      end
+
+      it "should trigger a load" do
+        @locale.should_receive(:load!)
+        @locale.setup
+      end
+      
       it "should set the locale from the config file" do
-        @locale.locale.should eq :de
+        I18n.should_receive(:locale=).with("de")
+        @locale.setup
       end
       
       it "should set the fallback locale from the config file" do
-        @locale.default_locale.should eq :en
+        I18n.should_receive(:default_locale=).with("en")
+        @locale.setup
+      end   
+      
+      it "should extend the I18n library with the fallback code" do
+        I18n::Backend::Simple.should_receive(:send).with(:include, I18n::Backend::Fallbacks)
+        @locale.setup
       end
       
-      it "should load the locale files" do
-        I18n.available_locales.should include :en
-        I18n.available_locales.should include :de
-      end
     end
     
     describe :t do
-      it "should translate a string to the current locale" do
-        t('hello world').should eq "Hallo Erde!"
-      end
-
-      it "should fall back to the default locale if the string isn't found" do
-        t('goodbye').should eq "Goodbye world!"
+      it "should return the backend's translation" do
+        I18n.should_receive(:t).with('hello world') { "Hello World!" }
+        t('hello world').should eq "Hello World!"
       end
       
-      it "should give an error string if not found in the default locale" do
-        t('foo').should eq "translation missing: de.foo"
-      end
-      
-      it "should expand variables into the string" do
-        t('hello arg', :arg => "mein" ).should eq "Hallo mein Erde!"
-      end
-      
+      it "should pass along variables in the string" do
+        args = { :arg => "the arg" }
+        I18n.should_receive(:t).with('hello arg', args) { "Hello World with the arg!" }
+        t('hello arg', args )
+      end      
     end
     
     describe :l do
-      it "should localize a number" do
+      it "should replace . with the number format separator" do
+        I18n.should_receive(:t).with('number.format.separator') { "," }
         l("100.3").should eq "100,3"  
+      end
+      
+      it "should return the I18n localization of a date" do
+        date = Date.new
+        I18n.should_receive(:l).with(date, {}) { "abc" }
+        l(date).should eq "abc"
+      end
+      
+      it "should return the I18n localization of a time" do
+        time = Time.new
+        I18n.should_receive(:l).with(time, {}) { "abc" }
+        l(time).should eq "abc"
       end
     end
     
     describe :delocalize do
      it "should delocalize a number" do
+        I18n.should_receive(:t).with('number.format.separator') { "," }
         @locale.delocalize("100,23").should eq "100.23"
       end
       
@@ -89,44 +101,27 @@ module AresMUSH
       
     end
     
-    describe :reload! do
+    describe :load! do
+      it "should tell the backend to clear the load path" do
+        I18n.should_receive(:load_path=).with([])
+        @locale.load!
+      end
+
+      it "should tell the loader to load the main locale" do
+        LocaleLoader.should_receive(:load_dir).with(File.join(Dir.pwd, "locales"))
+        @locale.load!
+      end
+      
+      it "should tell the loader to load the plugin locales" do
+        LocaleLoader.should_receive(:load_plugin_locales).with(File.join(Dir.pwd, "plugins"))
+        @locale.load!
+      end
+      
       it "should tell the backend to reload" do
         I18n.should_receive(:reload!)
-        Locale.reload!
+        @locale.load!
       end
     end
-
-    def create_temp_locale_files
-           Dir.mkdir @temp_dir
-           y = 
-           { "en" => 
-              { 
-               "hello world" => "Hello world!", 
-               "goodbye" => "Goodbye world!" 
-               } 
-           }
-           File.open(@temp_dir + "/en.yml", 'w') {|f| f.write(y.to_yaml) }
-
-           y = 
-           { 
-             "de" =>
-              { 
-                "hello world" => "Hallo Erde!", 
-                "hello arg" => "Hallo %{arg} Erde!",
-                "number" =>
-                    {
-                     "format" =>
-                       {
-                         "separator" => ","
-                       }
-                    } 
-              } 
-           }
-           File.open(@temp_dir + "/de.yml", 'w') {|f| f.write(y.to_yaml) }
-      
-        
-    end
-    
   end
 end
 

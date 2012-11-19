@@ -1,0 +1,7 @@
+en:
+    login:
+       player_has_connected: "%{name} has connected."
+       player_has_disconnected: "%{name} has disconnected."
+       player_name_taken: "Sorry, that name is already taken."
+       player_created: "Congratulations!  You are now named %{name}."
+       already_logged_in: "You are already logged in."

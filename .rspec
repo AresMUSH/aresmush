@@ -1,1 +1,1 @@
---default_path specs/ --pattern **/*.rb
+--default_path . --pattern **/*_spec*.rb

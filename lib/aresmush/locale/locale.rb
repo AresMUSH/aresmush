@@ -12,10 +12,10 @@ end
   
 module AresMUSH  
   
-  
   class Locale
-    def initialize(config_reader, path)
-      @path = path
+    def initialize(config_reader, game_dir)
+      @main_locale_path = File.join(game_dir, "locales")
+      @plugin_path = File.join(game_dir, "plugins")
       @config_reader = config_reader     
     end
         
@@ -28,7 +28,7 @@ module AresMUSH
     end
     
     def setup
-      load_translations
+      load!
       set_locale
     end
     
@@ -36,9 +36,9 @@ module AresMUSH
       I18n.t(str, *args)
     end
     
-    def self.localize(object, options = {})
+    def self.localize(object, *args)
       if (object.is_a?(Date) || object.is_a?(Time))
-        I18n.l(object, options)
+        I18n.l(object, *args)
       else
         sep = t('number.format.separator')
         object.to_s.gsub(/\./, sep)
@@ -55,24 +55,19 @@ module AresMUSH
       end
     end
     
-    def self.reload!
-      I18n.reload!
+    def load!
+      I18n.load_path = []
+      LocaleLoader::load_dir(@main_locale_path)
+      LocaleLoader::load_plugin_locales(@plugin_path)
+      I18n.reload!      
     end
     
     private
-    
-    def load_translations
-      I18n.load_path = []
-      Dir.foreach("#{@path}") do |f| 
-        next if (File.directory?(f))
-        I18n.load_path << "#{@path}/#{f}"
-      end
-    end
-    
+        
     def set_locale
       I18n.locale =  @config_reader.config['server']['locale']
       I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
       I18n.default_locale = @config_reader.config['server']['default_locale']
-    end
+    end    
   end
 end

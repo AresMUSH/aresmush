@@ -80,7 +80,9 @@ module AresMUSH
       plugin_dir = File.join(@temp_dir, "plugins", name)
       FileUtils.rm_rf plugin_dir
       Dir.mkdir plugin_dir
-      File.open("#{@temp_dir}/plugins/#{name}/#{name}.rb", "w") do |f| 
+      plugin_dir = File.join(plugin_dir, "lib")
+      Dir.mkdir plugin_dir
+      File.open(File.join(plugin_dir, "#{name}.rb"), "w") do |f| 
         f.write "module AresMUSH\n"
         f.write "class SystemTest_#{name}\n"
         f.write "def test\n"

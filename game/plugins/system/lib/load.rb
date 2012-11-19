@@ -21,7 +21,7 @@ module AresMUSH
         rescue Exception => e
           client.emit_failure "Error loading '#{plugin_name}' plugin: #{e.to_s}"
         end
-        Locale.reload!
+        container.locale.load!
       end
     end
   end
