@@ -15,13 +15,13 @@ module AresMUSH
     attr_reader :plugins
     
     def load_all
-      plugin_files = Dir[File.join(@plugins_path, "*", "lib", "**", "*.rb")]
+      plugin_files = Dir[File.join(@plugins_path, "*", "lib", "*.rb")]
       load_plugin_code(plugin_files)
       @plugins = @plugin_factory.create_plugin_classes
     end
     
     def load_plugin(name)
-      plugin_files = Dir[File.join(@plugins_path, name, "lib", "**", "*.rb")]
+      plugin_files = Dir[File.join(@plugins_path, name, "lib", "*.rb")]
       raise SystemNotFoundException if plugin_files.empty?
       load_plugin_code(plugin_files)
       @plugins = @plugin_factory.create_plugin_classes
