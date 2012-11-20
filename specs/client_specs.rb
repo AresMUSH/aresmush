@@ -14,8 +14,7 @@ module AresMUSH
     describe :connected do
       before do
         config_reader = double(ConfigReader)
-        config_reader.stub(:config) { { 'connect' => { 'welcome_text' => "Hi" } } }
-        config_reader.stub(:txt) { { 'connect' => "Ascii Art"} }
+        config_reader.stub(:config) { { 'connect' => { 'welcome_text' => "Hi", 'welcome_screen' => "Ascii Art" } } }
         @connection = double(EventMachine::Connection).as_null_object
         @client = Client.new(1, nil, config_reader, @connection)
       end

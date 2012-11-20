@@ -14,7 +14,7 @@ module AresMUSH
 
     def connected
       # Connect screen ansi
-      emit @config_reader.txt['connect']
+      emit @config_reader.config['connect']['welcome_screen']
 
       # Ares welcome text
       emit_ooc t('welcome')
