@@ -11,8 +11,9 @@ module AresMUSH
 
       before do
         @temp_config_dir = "foo"
-        @reader = ConfigReader.new(@temp_config_dir)
-        Dir.stub(:foreach).with(File.join(@temp_config_dir, "config")).and_yield("a").and_yield("b")        
+        AresMUSH.stub(:game_dir) { @temp_config_dir }
+        @reader = ConfigReader.new
+        Dir.stub(:regular_files) { ["a", "b"] }
       end
 
       it "clears any previous config" do
@@ -22,11 +23,12 @@ module AresMUSH
         @reader.config.has_key?('x').should be_false
       end
 
-      it "builds the one true yaml for the config options" do
+      it "reads the individual config files" do
         YamlExtensions.should_receive(:yaml_hash).with("a") { { 'server' => { 'foo' => "Test" } } }
         YamlExtensions.should_receive(:yaml_hash).with("b") { { 'server' => { 'port' => 9999 } } }
         
-        @reader.read  
+        @reader.read 
+        puts @reader.config 
         @reader.config['server']['port'].should eq 9999
         @reader.config['server']['foo'].should eq "Test"
       end

@@ -2,9 +2,8 @@ require 'yaml'
 
 module AresMUSH
   class ConfigReader    
-    def initialize(game_dir)
-      @config_path = File.join(game_dir, "config") 
-      @plugin_path = File.join(game_dir, "plugin") 
+    def initialize
+      @config_path = File.join(AresMUSH.game_dir, "config") 
       clear_config
     end
 
@@ -24,11 +23,6 @@ module AresMUSH
       config_files.each do |f|
         @config = @config.merge_yaml(f)
       end
-    end
-    
-    private
-    def read_config_files
-      
-    end
+    end    
   end
 end

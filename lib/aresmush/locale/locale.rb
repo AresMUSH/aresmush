@@ -13,9 +13,8 @@ end
 module AresMUSH  
   
   class Locale
-    def initialize(config_reader, game_dir)
-      @main_locale_path = File.join(game_dir, "locales")
-      @plugin_path = File.join(game_dir, "plugins")
+    def initialize(config_reader)
+      @main_locale_path = File.join(AresMUSH.game_dir, "locales")
       @config_reader = config_reader     
     end
         
@@ -57,8 +56,7 @@ module AresMUSH
     
     def load!
       I18n.load_path = []
-      LocaleLoader::load_dir(@main_locale_path)
-      LocaleLoader::load_plugin_locales(@plugin_path)
+      LocaleLoader.load_dir(@main_locale_path)
       I18n.reload!      
     end
     

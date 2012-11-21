@@ -1,16 +1,19 @@
 module AresMUSH
 
+  def self.game_dir
+    File.join(File.dirname(__FILE__), "game")
+  end
+  
   class Bootstrapper 
 
     attr_reader :command_line
     
     def initialize
-      game_dir = File.join(Dir.pwd, "game")
-      config_reader = ConfigReader.new(game_dir)
+      config_reader = ConfigReader.new
       ares_logger = AresLogger.new(config_reader)
-      locale = Locale.new(config_reader, game_dir)
+      locale = Locale.new(config_reader)
       plugin_factory = PluginFactory.new
-      plugin_manager = PluginManager.new(plugin_factory, game_dir)
+      plugin_manager = PluginManager.new(plugin_factory)
       dispatcher = Dispatcher.new(plugin_manager)
       client_monitor = ClientMonitor.new(config_reader, dispatcher)
       server = Server.new(config_reader, client_monitor)

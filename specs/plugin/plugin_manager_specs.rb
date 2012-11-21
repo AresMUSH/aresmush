@@ -7,7 +7,7 @@ module AresMUSH
   describe PluginManager do
 
     before do
-      @temp_dir = "#{Dir.pwd}/tmp_plugin"
+      @temp_dir = "#{Dir.pwd}/tmp_plugin"      
       FileUtils.rm_rf @temp_dir
       Dir.mkdir @temp_dir
       Dir.mkdir File.join(@temp_dir, "plugins")
@@ -15,7 +15,8 @@ module AresMUSH
       create_fake_class("b", "\"bar\"")
 
       @factory = double(PluginFactory)
-      @manager = PluginManager.new(@factory, @temp_dir)
+      AresMUSH.stub(:game_dir) { @temp_dir }
+      @manager = PluginManager.new(@factory)
     end
 
     after do

@@ -6,8 +6,8 @@ module AresMUSH
   end
   
   class PluginManager
-    def initialize(plugin_factory, game_dir)
-      @plugins_path = File.join(game_dir, "plugins")
+    def initialize(plugin_factory)
+      @plugins_path = File.join(AresMUSH.game_dir, "plugins")
       @plugin_factory = plugin_factory
       @plugins = []
     end
@@ -25,6 +25,10 @@ module AresMUSH
       raise SystemNotFoundException if plugin_files.empty?
       load_plugin_code(plugin_files)
       @plugins = @plugin_factory.create_plugin_classes
+    end
+    
+    def self.locale_files
+      plugin_files = Dir[File.join(@plugins_path, "*", "lib", "*.rb")]      
     end
       
     private    

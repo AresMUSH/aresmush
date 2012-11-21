@@ -7,7 +7,9 @@ module AresMUSH
   describe Locale do
     before do
       @config_reader = double(ConfigReader)
-      @locale = Locale.new(@config_reader, Dir.pwd)
+      @temp_dir = Dir.pwd
+      AresMUSH.stub(:game_dir) { @temp_dir }
+      @locale = Locale.new(@config_reader)
     end
 
     describe :locale do
@@ -108,12 +110,12 @@ module AresMUSH
       end
 
       it "should tell the loader to load the main locale" do
-        LocaleLoader.should_receive(:load_dir).with(File.join(Dir.pwd, "locales"))
+        LocaleLoader.should_receive(:load_dir).with(File.join(@temp_dir, "locales"))
         @locale.load!
       end
       
       it "should tell the loader to load the plugin locales" do
-        LocaleLoader.should_receive(:load_plugin_locales).with(File.join(Dir.pwd, "plugins"))
+        LocaleLoader.should_receive(:load_plugin_locales).with(File.join(@temp_dir, "plugins"))
         @locale.load!
       end
       
