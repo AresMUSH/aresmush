@@ -4,15 +4,11 @@ module AresMUSH
   module LocaleLoader
 
     def self.load_plugin_locales(plugin_path)
-      plugin_dirs = find_plugin_dirs(plugin_path)
+      plugin_dirs = Dir.regular_dirs(plugin_path)
       plugin_dirs.each do |d|
         locale_dir = File.join(d, "locales")
         load_dir(locale_dir)
       end
-    end
-    
-    def self.find_plugin_dirs(plugin_path)
-      Dir.glob(File.join(plugin_path, "*")).select {|f| File.directory? f}
     end
     
     def self.load_dir(dir)

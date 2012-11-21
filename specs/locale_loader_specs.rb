@@ -8,29 +8,15 @@ module AresMUSH
 
     describe :load_plugin_locales do
       it "should find all the plugin dirs" do
-        LocaleLoader.should_receive(:find_plugin_dirs).with("path") { [] }
+        Dir.should_receive(:regular_dirs).with("path") { [] }
         LocaleLoader.load_plugin_locales("path")
       end
       
       it "should load the locales dir from each plugin" do
-        LocaleLoader.stub(:find_plugin_dirs).with("path") { [ "a", "b" ] }
+        Dir.stub(:regular_dirs).with("path") { [ "a", "b" ] }
         LocaleLoader.should_receive(:load_dir).with(File.join("a", "locales"))
         LocaleLoader.should_receive(:load_dir).with(File.join("b", "locales"))
         LocaleLoader.load_plugin_locales("path")
-      end
-    end
-    
-    describe :find_plugin_dirs do
-      it "should find all files in the path" do
-        Dir.should_receive(:glob).with(File.join("path", "*")) { [] }
-        LocaleLoader.find_plugin_dirs("path")
-      end
-
-      it "should return the files that are directories" do
-        Dir.stub(:glob).with(File.join("path", "*")) { ["a", "b"] }
-        File.stub(:directory?).with("a") { false }
-        File.stub(:directory?).with("b") { true }
-        LocaleLoader.find_plugin_dirs("path").should eq [ "b" ]
       end
     end
     

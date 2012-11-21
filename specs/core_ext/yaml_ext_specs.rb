@@ -5,49 +5,25 @@ require "aresmush"
 module AresMUSH
 
   describe YamlExtensions do
-    before do
-      @temp_dir = "#{Dir.pwd}/tmp_yaml"
-      create_temp_files
-      @yaml = YamlExtensions.one_yaml_to_rule_them_all(@temp_dir)
-    end
-
-    after do
-      FileUtils.rm_rf @temp_dir
-    end
     
-    describe :one_yaml_to_rule_them_all do
-      it "should include the contents of the yaml file" do
-        @yaml['a'].should include('b' => 9999, 'c' => "Test")
-        @yaml.should include('z' => 1)
+    describe :yaml_hash do
+      before do
+         @io = double(IO)        
+         @h = {}
+         @yaml = {}        
       end
-
-      it "should include the contents of the yaml file" do
-        @yaml['a'].should include('d' => "Hi there!")
+      
+      it "should read in the contents of the file" do
+        YAML.stub(:load) { @yaml }
+        File.should_receive(:open).with("file.yml") { @io }
+        YamlExtensions.yaml_hash("file.yml")
       end
-
-      it "should skip non-yaml files" do
-        @yaml['a'].should_not include('e')
+      
+      it "should load the YAML from the file" do
+        File.stub(:open).with("file.yml") { @io }
+        YAML.should_receive(:load).with(@io) { @yaml }
+        YamlExtensions.yaml_hash("file.yml").should eq @yaml
       end
-
-      def create_temp_files
-        FileUtils.rm_rf @temp_dir
-        Dir.mkdir @temp_dir
-
-        y1 = { 'a' => { 'b' => 9999, 'c' => "Test" }, "z" => 1 }
-        write_yaml_file("test1.yml", y1)
-
-        y2 = { 'a' => { 'd' => "Hi there!" }}
-        write_yaml_file("test2.yaml", y2)
-
-        y3 = { 'a' => { 'e' => "Shouldn't find me." }}
-        write_yaml_file("test3.txt", y3)
-      end
-
-      def write_yaml_file(filename, contents)
-        File.open("#{@temp_dir}/#{filename}", "w") do |f|
-          f.write(contents.to_yaml)
-        end
-      end          
     end
   end
 end
