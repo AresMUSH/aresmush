@@ -9,7 +9,7 @@ module AresMUSH
     attr_accessor :config
 
     def self.config_path
-      File.join(AresMUSH.game_dir, "config") 
+      File.join(AresMUSH.game_path, "config") 
     end
     
     def self.config_files

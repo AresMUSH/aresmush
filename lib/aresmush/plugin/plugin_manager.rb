@@ -14,7 +14,7 @@ module AresMUSH
     attr_reader :plugins
     
     def self.plugin_path
-      File.join(AresMUSH.game_dir, "plugins")
+      File.join(AresMUSH.game_path, "plugins")
     end
     
     def self.locale_files

@@ -15,7 +15,7 @@ module AresMUSH
       create_fake_class("b", "\"bar\"")
 
       @factory = double(PluginFactory)
-      AresMUSH.stub(:game_dir) { @temp_dir }
+      AresMUSH.stub(:game_path) { @temp_dir }
       @manager = PluginManager.new(@factory)
     end
 
@@ -25,7 +25,7 @@ module AresMUSH
 
     describe :plugin_path do
       it "should be the game dir plus the plugin dir" do
-       AresMUSH.stub(:game_dir) { "game" }
+       AresMUSH.stub(:game_path) { "game" }
        PluginManager.plugin_path.should eq File.join("game", "plugins")
       end
     end

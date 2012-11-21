@@ -9,14 +9,14 @@ module AresMUSH
 
     describe :config_path do 
       it "should be the game dir plus the config dir" do
-        AresMUSH.stub(:game_dir) { "game" }
+        AresMUSH.stub(:game_path) { "game" }
         ConfigReader.config_path.should eq File.join("game", "config")
       end
     end
 
     describe :config_files do 
       it "searches for files in the config dir" do
-        AresMUSH.stub(:game_dir) { "game" }
+        AresMUSH.stub(:game_path) { "game" }
         Dir.should_receive(:[]).with(File.join("game", "config", "**")) { ["a", "b"]}
         ConfigReader.config_files.should eq ["a", "b"]
       end

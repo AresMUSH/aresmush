@@ -1,5 +1,5 @@
 module AresMUSH
-  def self.game_dir
+  def self.game_path
     File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
   end
 end
