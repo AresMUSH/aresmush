@@ -9,13 +9,12 @@ module AresMUSH
       
       def on_player_connected(args)
         client = args[:client]
-        @client_monitor.tell_all t('login.player_has_connected', :name => client.id)
-        client.tell("HI #{container.config_reader.config['login']['test']}")
+        @client_monitor.emit_all t('login.player_has_connected', :name => client.id)
       end
 
       def on_player_disconnected(args)
         client = args[:client]
-        @client_monitor.tell_all t('login.player_has_disconnected', :name => client.id)
+        @client_monitor.emit_all t('login.player_has_disconnected', :name => client.id)
       end
     end
   end

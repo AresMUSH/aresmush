@@ -1,8 +1,4 @@
 module AresMUSH
-
-  def self.game_dir
-    File.join(File.dirname(__FILE__), "game")
-  end
   
   class Bootstrapper 
 

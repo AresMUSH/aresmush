@@ -23,6 +23,51 @@ module AresMUSH
       FileUtils.rm_rf @temp_dir
     end
 
+    describe :plugin_path do
+      it "should be the game dir plus the plugin dir" do
+       AresMUSH.stub(:game_dir) { "game" }
+       PluginManager.plugin_path.should eq File.join("game", "plugins")
+      end
+    end
+    
+    describe :locale_files do
+      it "should find all the locale files in the plugin locale dirs" do
+       PluginManager.stub(:plugin_path) { "plugins" }
+       search = File.join("plugins", "*", "locales", "**")
+       files = []
+       Dir.should_receive(:[]).with(search) { files}
+       PluginManager.locale_files.should eq files
+      end
+    end
+    
+    describe :config_files do
+      it "should find all the config files in the plugin config dirs" do
+       PluginManager.stub(:plugin_path) { "plugins" }
+       search = File.join("plugins", "*", "config", "**")
+       files = []
+       Dir.should_receive(:[]).with(search) { files}
+       PluginManager.config_files.should eq files
+      end
+    end
+    
+    describe :plugin_files do
+      it "should find all the ruby files in the plugin lib dirs" do
+       PluginManager.stub(:plugin_path) { "plugins" }
+       search = File.join("plugins", "*", "lib", "**", "*.rb")
+       files = []
+       Dir.should_receive(:[]).with(search) { files}
+       PluginManager.plugin_files.should eq files
+      end
+      
+      it "should find all the ruby files in a specific plugin's lib dir" do
+        PluginManager.stub(:plugin_path) { "plugins" }
+        search = File.join("plugins", "foo", "lib", "**", "*.rb")
+        files = []
+        Dir.should_receive(:[]).with(search) { files}
+        PluginManager.plugin_files("foo").should eq files
+      end
+    end
+    
     describe :load_all do
       it "loads plugin A" do
         @factory.should_receive(:create_plugin_classes)

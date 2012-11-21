@@ -13,11 +13,11 @@ module AresMUSH
       setup_a_couple_clients
     end
 
-    describe :tell_all do
+    describe :emit_all do
       it "should notify all the clients" do
         @client1.should_receive(:emit).with("Hi")
         @client2.should_receive(:emit).with("Hi")
-        @client_monitor.tell_all "Hi"
+        @client_monitor.emit_all "Hi"
       end
     end
 

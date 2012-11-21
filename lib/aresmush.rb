@@ -1,3 +1,9 @@
+module AresMUSH
+  def self.game_dir
+    File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
+  end
+end
+
 require 'aresmush/command_line'
 require 'aresmush/bootstrapper'
 require 'aresmush/config_reader'
@@ -7,7 +13,6 @@ require 'aresmush/core_ext/string_ext.rb'
 require 'aresmush/core_ext/yaml_ext.rb'
 require 'aresmush/core_ext/hash_ext.rb'
 require 'aresmush/core_ext/match_data_ext.rb'
-require 'aresmush/core_ext/dir_ext.rb'
 require 'aresmush/client.rb'
 require 'aresmush/connection.rb'
 require 'aresmush/server.rb'

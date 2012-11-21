@@ -5,21 +5,6 @@ require "aresmush"
 module AresMUSH
 
   describe LocaleLoader do
-
-    describe :load_plugin_locales do
-      it "should find all the plugin dirs" do
-        Dir.should_receive(:regular_dirs).with("path") { [] }
-        LocaleLoader.load_plugin_locales("path")
-      end
-      
-      it "should load the locales dir from each plugin" do
-        Dir.stub(:regular_dirs).with("path") { [ "a", "b" ] }
-        LocaleLoader.should_receive(:load_dir).with(File.join("a", "locales"))
-        LocaleLoader.should_receive(:load_dir).with(File.join("b", "locales"))
-        LocaleLoader.load_plugin_locales("path")
-      end
-    end
-    
     describe :load_dir do
       it "should do nothing if the dir doesn't exist" do
         Dir.stub(:exist?).with("dir") { false }
@@ -33,6 +18,14 @@ module AresMUSH
         LocaleLoader.should_receive(:load_file).with(File.join("dir", "a"))
         LocaleLoader.should_receive(:load_file).with(File.join("dir", "b"))
         LocaleLoader.load_dir("dir")
+      end
+    end
+    
+    describe :load_files do
+      it "should load each file" do
+        LocaleLoader.should_receive(:load_file).with("f1")
+        LocaleLoader.should_receive(:load_file).with("f2")        
+        LocaleLoader.load_files(["f1", "f2"])
       end
     end
     

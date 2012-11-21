@@ -11,7 +11,7 @@ module AresMUSH
 
     attr_reader :clients, :client_id
 
-    def tell_all(msg)
+    def emit_all(msg)
       @clients.each do |c|
         c.emit msg
       end
