@@ -33,7 +33,7 @@ module AresMUSH
     describe :locale_files do
       it "should find all the locale files in the plugin locale dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "locales", "**")
+       search = File.join("plugins", "*", "locales", "**", "*.yml")
        files = []
        Dir.should_receive(:[]).with(search) { files}
        PluginManager.locale_files.should eq files
@@ -43,7 +43,7 @@ module AresMUSH
     describe :config_files do
       it "should find all the config files in the plugin config dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "config", "**")
+       search = File.join("plugins", "*", "config", "**", "*.yml")
        files = []
        Dir.should_receive(:[]).with(search) { files}
        PluginManager.config_files.should eq files

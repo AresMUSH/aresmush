@@ -1,5 +1,5 @@
 server:
     hostname: localhost
     port: 7207
-    locale: en
+    locale: de
     default_locale: en

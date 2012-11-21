@@ -18,11 +18,11 @@ module AresMUSH
     end
     
     def self.locale_files
-      Dir[File.join(PluginManager.plugin_path, "*", "locales", "**")]
+      Dir[File.join(PluginManager.plugin_path, "*", "locales", "**", "*.yml")]
     end
     
     def self.config_files
-      Dir[File.join(PluginManager.plugin_path, "*", "config", "**")]
+      Dir[File.join(PluginManager.plugin_path, "*", "config", "**", "*.yml")]
     end
     
     def self.plugin_files(name = "*")

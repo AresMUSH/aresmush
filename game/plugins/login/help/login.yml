@@ -1,0 +1,21 @@
+index:
+    "getting started": |5
+      Hey test
+      Another test
+      
+      Whee test
+      
+     "something else": |5
+      Whee another        
+
+create: |1
+  Here is some help on the create command.
+    
+    %xcUsage: create <name> <password>%xn
+    
+  Note: Name can only have one word.
+  
+quit: |1
+  Here is some help for the quit command.
+  
+     %xcUsage: quit%xn
