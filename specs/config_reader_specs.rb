@@ -21,6 +21,14 @@ module AresMUSH
         ConfigReader.config_files.should eq ["a", "b"]
       end
     end
+    
+    describe :line do
+      it "is an alias to the theme line" do
+        reader = ConfigReader.new
+        reader.config = {"theme" => {"line" => "---"}}
+        reader.line.should eq "---"
+      end
+    end
 
     describe :clear_config do
       it "clears any previous config" do

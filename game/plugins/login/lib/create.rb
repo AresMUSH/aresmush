@@ -8,7 +8,6 @@ module AresMUSH
       end
 
       def on_command(client, cmd)
-        client.emit_ooc("WHEE")
         client.emit_ooc t('login.already_logged_in')
       end
       

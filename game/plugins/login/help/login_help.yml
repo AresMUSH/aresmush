@@ -1,12 +1,14 @@
 index:
-    "getting started": |5
-      Hey test
-      Another test
-      
-      Whee test
-      
-     "something else": |5
-      Whee another        
+    getting started: Logging in n'at
+    foo: Something else
+
+getting started: |1
+        Hey a test
+        Whee
+        More help
+
+foo: |1
+        And still more
 
 create: |1
   Here is some help on the create command.

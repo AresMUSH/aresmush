@@ -1,0 +1,9 @@
+index:
+    posing: Talking
+
+posing: Whee
+
+say: |1
+  Here's how you talk.
+    
+    %xcUsage: say <msg>%xn    

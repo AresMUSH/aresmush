@@ -31,6 +31,11 @@ module AresMUSH
       read_config_from_files(plugin_config)
     end    
     
+    # Shortcut method since it's used all over creation
+    def line
+       @config['theme']['line']
+    end
+    
     private 
     def read_config_from_files(files)
       files.each do |f|

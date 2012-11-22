@@ -56,6 +56,17 @@ module AresMUSH
         @client.emit_ooc "OOC"
       end
     end
+    
+    describe :emit_with_lines do
+      it "sends the message between the lines" do
+          config_reader = double(ConfigReader)
+          config_reader.stub(:line) { "---" }
+          @connection = double(EventMachine::Connection).as_null_object
+          @client = Client.new(1, nil, config_reader, @connection)
+          @connection.should_receive(:send_data).with("---\ntest\n---")
+          @client.emit_with_lines "test"
+      end
+    end
 
     describe :emit_success do
       it "sends the message with green ansi tags and %% prefix" do
