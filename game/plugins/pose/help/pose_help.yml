@@ -1,9 +1,10 @@
-index:
-    posing: Talking
+main:
+    index:
+        posing: Talking
 
-posing: Whee
+    posing: Whee
 
-say: |1
-  Here's how you talk.
+    say: |1
+     Here's how you talk.
     
-    %xcUsage: say <msg>%xn    
+     %xcUsage: say <msg>%xn    

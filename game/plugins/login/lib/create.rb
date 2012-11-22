@@ -27,6 +27,7 @@ module AresMUSH
         else
           # TODO: Encrypt password
           # TODO: Specs
+          # TODO: Localize this and other login classes
           player = Player.create(name, password)
           client.emit_success(t('login.player_created', :name => name))
           client.player = player

@@ -1,0 +1,13 @@
+help:
+    indices:
+        - 
+            index: main
+            prefix: 
+            lock: 
+            title: "Help"
+        - 
+            index: staff
+            prefix: s
+            lock:  staff
+            title: "Staff Help"
+            

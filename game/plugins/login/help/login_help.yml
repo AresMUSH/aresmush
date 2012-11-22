@@ -1,23 +1,29 @@
-index:
-    getting started: Logging in n'at
-    foo: Something else
+main:
+    index:
+        getting started: Logging in n'at
+        foo: Something else
 
-getting started: |1
-        Hey a test
-        Whee
-        More help
+    getting started: |1
+     Hey a test
+     Whee
+     More help
 
-foo: |1
-        And still more
+    foo: |1
+     And still more
 
-create: |1
-  Here is some help on the create command.
+    create: |1
+     Here is some help on the create command.
+     
+     %xcUsage: create <name> <password>%xn
     
-    %xcUsage: create <name> <password>%xn
-    
-  Note: Name can only have one word.
+     Note: Name can only have one word.
   
-quit: |1
-  Here is some help for the quit command.
+    quit: |1
+     Here is some help for the quit command.
   
      %xcUsage: quit%xn
+
+staff:
+    index:
+        bar: A test
+    bar: Test data
