@@ -32,8 +32,17 @@ module AresMUSH
     end    
     
     # Shortcut method since it's used all over creation
-    def line
-       @config['theme']['line']
+    def line      
+      "%x#{line_color}#{@config['theme']['line']}%xn"
+    end
+
+    # Randomly rotates between line colors in a list, based on the seconds value of the current time.
+    def line_color
+      colors = @config['theme']['line_colors']
+      return "n" if colors.nil? || colors.empty?
+      bracket_width = 60 / colors.count
+      index = Time.now.sec / bracket_width
+      colors[index]
     end
     
     private 

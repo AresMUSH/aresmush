@@ -33,7 +33,7 @@ module AresMUSH
           end
         end
       rescue Exception => e
-        logger.error("Error handling event: event=#{type} error=#{e} backtrace=#{e.backtrace[1,10]}")
+        logger.error("Error handling event: event=#{type} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
     end
     

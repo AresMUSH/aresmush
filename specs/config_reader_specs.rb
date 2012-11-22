@@ -25,8 +25,32 @@ module AresMUSH
     describe :line do
       it "is an alias to the theme line" do
         reader = ConfigReader.new
+        reader.stub(:line_color) { "c" }
         reader.config = {"theme" => {"line" => "---"}}
-        reader.line.should eq "---"
+        reader.line.should eq "%xc---%xn"
+      end
+    end
+
+    describe :line_color do
+      it "picks the first color for the first bracket of time" do
+        reader = ConfigReader.new
+        reader.config = {"theme" => {"line_colors" => ["c", "b"] }}
+        Time.stub(:now) { Time.new(2007,11,1,15,25,20) }
+        reader.line_color.should eq "c"
+      end
+      
+      it "picks the second color for the second bracket of time" do
+        reader = ConfigReader.new
+        reader.config = {"theme" => {"line_colors" => ["c", "b"] }}
+        Time.stub(:now) { Time.new(2007,11,1,15,25,40) }
+        reader.line_color.should eq "b"
+      end
+      
+      it "returns normal if there are no colors specified" do
+        reader = ConfigReader.new
+        reader.config = { "theme" => "a" }
+        Time.stub(:now) { Time.new(2007,11,1,15,25,40) }
+        reader.line_color.should eq "n"
       end
     end
 

@@ -1,12 +1,12 @@
 help:
     indices:
         - 
-            index: main
+            name: main
             prefix: 
             lock: 
             title: "Help"
         - 
-            index: staff
+            name: staff
             prefix: s
             lock:  staff
             title: "Staff Help"

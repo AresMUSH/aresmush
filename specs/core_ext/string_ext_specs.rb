@@ -73,5 +73,11 @@ module AresMUSH
         str.to_ansi.should eq "A\\\\\\\\" + ANSI.cyan + "B" + ANSI.reset
       end      
     end
+    
+    describe :titleize do
+      it "should capitalize every word in the title" do
+        "a very long engagement".titleize.should eq "A Very Long Engagement"
+      end
+    end
   end
 end

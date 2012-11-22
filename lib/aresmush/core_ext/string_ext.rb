@@ -63,4 +63,9 @@ class String
     # Do an ANSI reset at the end to prevent ansi "bleeding" in case there's a non-terminated code.
     str + ANSI.reset
   end
+  
+  # Fairly crude - doesn't worry about helper words or anything.  Should suffice for MUSH purposes.
+  def titlecase
+    self.gsub(/\b('?[a-z])/) { $1.capitalize }
+  end      
 end

@@ -1,5 +1,5 @@
 main:
-    index:
+    toc:
         getting started: Logging in n'at
         foo: Something else
 
@@ -16,7 +16,7 @@ main:
      
      %xcUsage: create <name> <password>%xn
     
-     Note: Name can only have one word.
+     Note: Name can only have one word. 2
   
     quit: |1
      Here is some help for the quit command.
@@ -24,6 +24,6 @@ main:
      %xcUsage: quit%xn
 
 staff:
-    index:
+    toc:
         bar: A test
     bar: Test data
