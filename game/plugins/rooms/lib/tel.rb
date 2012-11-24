@@ -9,7 +9,7 @@ module AresMUSH
       
       def on_command(client, cmd)
         dest = cmd.args
-        room = Room.find_match(dest)
+        room = Room.find_by_name_or_id(dest)
         if (room.empty?)
           client.emit_failure("Can't find that room.")
           return

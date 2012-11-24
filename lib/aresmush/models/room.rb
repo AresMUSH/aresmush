@@ -1,38 +1,14 @@
 module AresMUSH
-  class Room
+  module Room
+    extend AresModel
     
-    def self.find(*args)
-      db[:rooms].find(*args).to_a
+    def self.coll
+      :rooms
     end
-    
-    def self.find_by_id(id)
-      if (id.class == BSON::ObjectId)
-        find("_id" => id)
-      elsif (BSON::ObjectId.legal?(id))
-        find("_id" => BSON::ObjectId(id))
-      else
-        []
-      end
-    end
-    
-    def self.find_match(name_or_id)
-      room = find_by_id(name_or_id)
-      room = find("name_upcase" => name_or_id.upcase) if room.empty?
-      room
-    end
-    
-    def self.update(room)
-      db[:rooms].update( { "_id" => room["_id"] }, room)
-    end
-    
-    def self.create(name)
-      room = 
-       {
-         "name"       => name,
-         "name_upcase" => name.upcase
-       }
-       db[:rooms].insert(room)
-       room 
+        
+    def self.set_model_fields(model)
+      model["name_upcase"] = model["name"].upcase
+      model
     end
   end
 end

@@ -5,71 +5,22 @@ require "aresmush"
 module AresMUSH
 
   describe Player do
-    describe :find do
-      it "should return empty if no player found" do
-        Database.db.stub(:find) { nil }
-        Player.find("name" => "Bob").should be_empty
-      end
-
-      it "should return a player if found" do
-        data = { "name" => "Bob", "password" => "test" }
-        Database.db.stub(:find) { [data] }
-        Player.find("name" => "Bob").should eq [data]
-      end
-
-      it "should pass on search params to the db" do
-        Database.db.should_receive(:find).with({ "name" => "Bob", "password" => "test" })
-        Player.find("name" => "Bob", "password" => "test")
+    it "should extend AresModel" do
+      Player.kind_of?(AresModel).should be_true
+    end
+    
+    describe :coll do 
+      it "should return the players collection" do
+        Player.coll.should eq :players
       end
     end
     
-    describe :find_by_name do
-      it "should pass on the name in uppercase to the other find method" do
-        Player.should_receive(:find).with("name_upcase" => "BOB")
-        Player.find_by_name("Bob")
+    describe :set_model_fields do
+      it "should set the uppercase name" do
+        model = {"name" => "Bob", "foo" => "test"}
+        model = Player.set_model_fields(model)
+        model.should include( "name_upcase" => "BOB" )
       end
     end
-    
-    describe :create do
-      before do
-        @tmpdb = double(Object)
-        Database.db.stub(:[]).with(:players) { @tmpdb }
-      end
-      
-      it "should create the player" do
-        @tmpdb.should_receive(:insert) do |player|
-          player["name"].should eq "Bob"
-          player["password"].should eq "test"
-          player["name_upcase"].should eq "BOB"
-        end
-        Player.create("Bob", "test")
-      end
-      
-      it "should return the inserted object" do
-        @tmpdb.stub(:insert)
-        Player.create("Bob", "test") do |player|
-          player["name"].should eq "Bob"
-          player["password"].should eq "test"
-          player["name_upcase"].should eq "BOB"
-        end        
-      end      
-    end  
-    
-    describe :update do
-      before do
-        @tmpdb = double(Object)
-        Database.db.stub(:[]).with(:players) { @tmpdb }
-      end
-      
-      it "should update by id" do
-        p = { "_id" => "123", "name" => "Bob" }
-        @tmpdb.should_receive(:update) do |search, player|
-          search["_id"].should eq "123"
-          player.should eq p
-        end
-        Player.update(p)
-      end
-    end
-      
   end
 end
