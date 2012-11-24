@@ -45,15 +45,31 @@ module AresMUSH
         Player.create("Bob", "test")
       end
       
-      it "should store the fields, including the database id, on the returned object" do
-        @tmpdb.stub(:insert) { 123 }
+      it "should return the inserted object" do
+        @tmpdb.stub(:insert)
         Player.create("Bob", "test") do |player|
           player["name"].should eq "Bob"
           player["password"].should eq "test"
           player["name_upcase"].should eq "BOB"
-          player["id"].should eq 123
         end        
       end      
-    end    
+    end  
+    
+    describe :update do
+      before do
+        @tmpdb = double(Object)
+        Database.db.stub(:[]).with(:players) { @tmpdb }
+      end
+      
+      it "should update by id" do
+        p = { "_id" => "123", "name" => "Bob" }
+        @tmpdb.should_receive(:update) do |search, player|
+          search["_id"].should eq "123"
+          player.should eq p
+        end
+        Player.update(p)
+      end
+    end
+      
   end
 end

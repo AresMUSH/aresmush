@@ -19,7 +19,6 @@ module AresMUSH
           room = cmd.location                  
           room["desc"] = desc
           Room.update(room)
-          puts room
           client.emit_success("You set the room description.")
         end
       end

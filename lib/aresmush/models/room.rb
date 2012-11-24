@@ -31,7 +31,7 @@ module AresMUSH
          "name"       => name,
          "name_upcase" => name.upcase
        }
-       room["id"] = db[:rooms].insert(room)
+       db[:rooms].insert(room)
        room 
     end
   end

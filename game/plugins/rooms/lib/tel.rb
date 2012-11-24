@@ -16,7 +16,6 @@ module AresMUSH
         end
         
         if (room.count > 1)
-          puts room
           matches = room.map { |m| "- #{m["name"]} (#{m["_id"]})" }.join("\n")
           client.emit_failure("Not sure which room you mean:\n#{matches}")
           return

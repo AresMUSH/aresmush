@@ -1,5 +1,25 @@
 module AresMUSH
-  class Player
+  
+  module MongoModel
+    def self.find(*args)
+      db[coll].find(*args).to_a
+    end
+    
+    def self.coll
+      raise "Define me!"
+    end
+    
+    
+    
+  end
+  
+  module Player
+    
+    include MongoModel
+    
+    def self.coll
+      :players
+    end
     
     def self.find(*args)
       db[:players].find(*args).to_a
@@ -16,7 +36,7 @@ module AresMUSH
          "name_upcase" => name.upcase,
          "password"   => password,
        }
-       player["id"] = db[:players].insert(player)
+       db[:players].insert(player)
        player 
     end
     
