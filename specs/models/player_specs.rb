@@ -15,10 +15,10 @@ module AresMUSH
       end
     end
     
-    describe :set_model_fields do
+    describe :custom_model_fields do
       it "should set the uppercase name" do
         model = {"name" => "Bob", "foo" => "test"}
-        model = Player.set_model_fields(model)
+        model = Player.custom_model_fields(model)
         model.should include( "name_upcase" => "BOB" )
       end
     end

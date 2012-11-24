@@ -4,12 +4,12 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(cmd)
-        cmd.root_is?("build") || cmd.root_is?("dig")
+        cmd.root_is?("build")
       end
       
       def on_command(client, cmd)
         name = cmd.args
-        room = Room.create(name)
+        room = Room.create("name" => name)
         client.emit_success("You build a room named #{name}.  ID: #{room["id"]}")
       end
     end

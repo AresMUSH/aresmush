@@ -11,7 +11,7 @@ module AresMUSH
       :test
     end
     
-    def self.set_model_fields(model)
+    def self.custom_model_fields(model)
       model["name_upcase"] = model["name"].upcase
       model
     end
@@ -86,7 +86,7 @@ module AresMUSH
         model = {"name" => "Bob", "password" => "test"}
         model2 = mock
         @tmpdb.should_receive(:insert) { model }
-        TestModel.should_receive(:set_model_fields).with(model) { model2 }
+        TestModel.should_receive(:custom_model_fields).with(model) { model2 }
         TestModel.create(model).should eq model2
       end
     end  

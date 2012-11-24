@@ -4,13 +4,13 @@ module AresMUSH
     # Define this with the mongo collection your model uses.  
     # For example: :players
     def coll
-      raise "Define me!"
+      raise "Collection not defined!"
     end
 
     # Define this with any special fields your model needs to set at create time.
-    # For example, the Player model sets name_upcase => model_fields["name"].upcase
-    def set_model_fields(model, model_fields)
-      raise "Define me!"
+    # For example, the Player model sets name_upcase
+    def custom_model_fields(model) 
+      model     
     end
     
     def find(*args)
@@ -43,7 +43,7 @@ module AresMUSH
 
     def create(*args)
       model = args[0]
-      model = set_model_fields(model)
+      model = custom_model_fields(model)
       db[coll].insert(model)
       model
     end
