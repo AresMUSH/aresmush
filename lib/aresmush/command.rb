@@ -34,6 +34,10 @@ module AresMUSH
       @args = match.nil? ? nil : match.names_hash
     end
     
+    def can_crack_args?(regex)
+      return regex.match(@args)
+    end
+    
     private
     
     # This cracks the two basic command formats

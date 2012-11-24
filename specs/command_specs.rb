@@ -132,8 +132,26 @@ module AresMUSH
         cmd.args[:b].should eq "baz"
         cmd.args[:c].should eq "harvey"
       end
+      
+      it "sets the args to nil if it can't crack them" do 
+        cmd = Command.new(@client, "test/foo bar=baz+harvey")
+        cmd.crack_args!(/(?<a>.+)\/(?<b>.+)/)
+        cmd.args.should be_nil
+      end
     end
 
+    describe :can_crack_args? do
+      it "is true if it can crack the args" do
+        cmd = Command.new(@client, "test/foo bar=baz+harvey")
+        cmd.can_crack_args?(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/).should be_true
+      end
+      
+      it "is false if it can't crack the args" do
+        cmd = Command.new(@client, "test/foo bar=baz+harvey")
+        cmd.can_crack_args?(/(?<a>.+)\/(?<b>.+)/).should be_false
+      end
+    end
+    
     describe :enactor_name do 
       it "returns the enactor's name when available" do
         @client.stub(:player) { {"name" => "Bob" } }
