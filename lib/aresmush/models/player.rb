@@ -19,6 +19,10 @@ module AresMUSH
        player["id"] = db[:players].insert(player)
        player 
     end
+    
+    def self.update(player)
+      db[:players].update( { "_id" => player["_id"] }, player)
+    end
   end
 end
     

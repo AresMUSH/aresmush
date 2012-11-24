@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pase
+  module Pose
     class Emit
       include AresMUSH::Plugin
 

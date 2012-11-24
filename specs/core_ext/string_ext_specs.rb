@@ -74,9 +74,9 @@ module AresMUSH
       end      
     end
     
-    describe :titleize do
+    describe :titlecase do
       it "should capitalize every word in the title" do
-        "a very long engagement".titleize.should eq "A Very Long Engagement"
+        "a very long engagement".titlecase.should eq "A Very Long Engagement"
       end
     end
   end

@@ -17,6 +17,10 @@ module AresMUSH
       @enactor.nil? ? "" : @enactor["name"]
     end
     
+    def location
+      @enactor.nil? ? nil : Room.find_by_id(@enactor["loc"])[0] 
+    end
+    
     def root_is?(root)
       @root == root
     end
@@ -25,8 +29,9 @@ module AresMUSH
       @enactor != nil
     end
     
-    def crack_args(regex)
-      @args = regex.match(@args).names_hash
+    def crack_args!(regex)
+      match = regex.match(@args)
+      @args = match.nil? ? nil : match.names_hash
     end
     
     private

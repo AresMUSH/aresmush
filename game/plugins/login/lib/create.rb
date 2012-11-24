@@ -12,8 +12,9 @@ module AresMUSH
       end
       
       def on_anon_command(client, cmd)
-        args = cmd.crack_args(/(?<name>\S+) (?<password>\S+)/)
+        args = cmd.crack_args!(/(?<name>\S+) (?<password>\S+)/)
         
+        # TODO - Check args nil
         name = args[:name]
         password = args[:password]
 
