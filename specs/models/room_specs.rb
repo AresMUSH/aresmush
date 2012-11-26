@@ -6,7 +6,7 @@ module AresMUSH
 
   describe Room do
     describe :coll do 
-      it "should return the players collection" do
+      it "should return the rooms collection" do
         Room.coll.should eq :rooms
       end
     end

@@ -48,7 +48,7 @@ module AresMUSH
         raise SystemExit
       rescue Exception => e
         handled = true
-        logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[1,10]}")
+        logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[0,10]}")
         client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd.raw, :error_info => e)
       end
     end

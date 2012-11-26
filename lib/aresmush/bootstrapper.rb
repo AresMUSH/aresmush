@@ -26,7 +26,7 @@ module AresMUSH
         elsif ($!.nil?)
           logger.info "Shutting down."
         else
-          logger.fatal "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[1,10]}"
+          logger.fatal "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[0,10]}"
         end
       end
             
