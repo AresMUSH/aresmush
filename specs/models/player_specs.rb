@@ -21,6 +21,12 @@ module AresMUSH
         model = Player.custom_model_fields(model)
         model.should include( "name_upcase" => "BOB" )
       end
+      
+       it "should set the object type" do
+          model = {"name" => "Bob", "foo" => "test"}
+          model = Player.custom_model_fields(model)
+          model.should include( "type" => "Player" )
+        end
     end
   end
 end

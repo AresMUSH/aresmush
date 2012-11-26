@@ -1,4 +1,5 @@
 module AresMUSH
+  
   module Describe
     class Desc
       include AresMUSH::Plugin
@@ -15,11 +16,19 @@ module AresMUSH
         target = args[:target]
         desc = args[:desc]
         
-        if (target == "here")  
-          room = cmd.location                  
-          room["desc"] = desc
-          Room.update(room)
-          client.emit_success("You set the room description.")
+        model = Room.find_visible(target, cmd.enactor) 
+        if (model.empty?)
+          # TODO FAIL
+          client.emit_failure("Can't find #{model["name"]}.")
+        elsif (model.count > 1)
+          # TODO FAIL
+          client.emit_failure("Can't well which #{model["name"]} you mean.")
+        else
+          model = model[0]
+          model["desc"] = desc
+          model_mod = AresMUSH.const_get(model["type"])
+          model_mod.update(model)
+          client.emit_success("You set the description on #{model["name"]}.")
         end
       end
     end

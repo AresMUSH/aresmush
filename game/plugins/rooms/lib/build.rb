@@ -10,7 +10,7 @@ module AresMUSH
       def on_command(client, cmd)
         name = cmd.args
         room = Room.create("name" => name)
-        client.emit_success("You build a room named #{name}.  ID: #{room["id"]}")
+        client.emit_success("You build a room named #{name}.  ID: #{room["_id"]}")
       end
     end
   end

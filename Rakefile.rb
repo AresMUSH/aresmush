@@ -12,4 +12,11 @@ task :start do
   bootstrapper.command_line.start
 end
 
+task :dbreset do
+  bootstrapper = AresMUSH::Bootstrapper.new
+  db[:players].drop
+  db[:exits].drop
+  db[:rooms].drop
+end
+
 task :default => :start

@@ -31,6 +31,9 @@ module AresMUSH
           player = Player.create("name" => name, "password" => password)
           client.emit_success(t('login.player_created', :name => name))
           client.player = player
+          
+          # TODO - Set location and emit description
+          # TODO - Raise player_created event
         end
       end
     end

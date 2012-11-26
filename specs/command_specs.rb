@@ -168,7 +168,7 @@ module AresMUSH
     
     describe :location do 
       it "returns the enactor's location when available" do
-        @client.stub(:player) { {"loc" => "123" } }
+        @client.stub(:player) { {"location" => "123" } }
         room = mock
         Room.should_receive(:find_by_id).with("123") { [room] }
         cmd = Command.new(@client, "test")

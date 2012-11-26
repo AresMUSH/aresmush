@@ -23,7 +23,7 @@ module AresMUSH
         
         room = room[0]
         client.emit_success("You teleport to #{room["name"]}.")
-        client.player["loc"] = room["_id"]
+        client.player["location"] = room["_id"]
         Player.update(client.player)
         client.emit_with_lines Describe.room_desc(room)
       end

@@ -18,7 +18,7 @@ module AresMUSH
     end
     
     def location
-      @enactor.nil? ? nil : Room.find_by_id(@enactor["loc"])[0] 
+      @enactor.nil? ? nil : Room.find_by_id(@enactor["location"])[0] 
     end
     
     def root_is?(root)

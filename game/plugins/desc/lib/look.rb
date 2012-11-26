@@ -12,6 +12,8 @@ module AresMUSH
           room = cmd.location
           desc = Describe.room_desc(room)
           client.emit_with_lines desc
+        else 
+          
         end
       end
     end
