@@ -18,19 +18,20 @@ module AresMUSH
     end
     
     def self.locale_files
-      Dir[File.join(PluginManager.plugin_path, "*", "locales", "**", "*.yml")]
+      Dir[File.join(PluginManager.plugin_path, "**", "locale*.yml")]
     end
 
     def self.help_files
-      Dir[File.join(PluginManager.plugin_path, "*", "help", "**", "*.yml")]
+      Dir[File.join(PluginManager.plugin_path, "**", "help*.yml")]
     end
     
     def self.config_files
-      Dir[File.join(PluginManager.plugin_path, "*", "config", "**", "*.yml")]
+      Dir[File.join(PluginManager.plugin_path, "**", "config*.yml")]
     end
     
     def self.plugin_files(name = "*")
-      Dir[File.join(PluginManager.plugin_path, name, "lib", "**", "*.rb")]
+      all_files = Dir[File.join(PluginManager.plugin_path, name, "**", "*.rb")]
+      all_files.select { |f| !/_spec[s]*.rb*/.match(f) }
     end
     
     def load_all

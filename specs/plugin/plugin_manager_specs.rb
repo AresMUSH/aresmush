@@ -33,7 +33,7 @@ module AresMUSH
     describe :locale_files do
       it "should find all the locale files in the plugin locale dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "locales", "**", "*.yml")
+       search = File.join("plugins", "**", "locale*.yml")
        files = []
        Dir.should_receive(:[]).with(search) { files}
        PluginManager.locale_files.should eq files
@@ -43,7 +43,7 @@ module AresMUSH
     describe :help_files do
       it "should find all the help files in the plugin help dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "help", "**", "*.yml")
+       search = File.join("plugins", "**", "help*.yml")
        files = []
        Dir.should_receive(:[]).with(search) { files}
        PluginManager.help_files.should eq files
@@ -53,7 +53,7 @@ module AresMUSH
     describe :config_files do
       it "should find all the config files in the plugin config dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "config", "**", "*.yml")
+       search = File.join("plugins", "**", "config*.yml")
        files = []
        Dir.should_receive(:[]).with(search) { files}
        PluginManager.config_files.should eq files
@@ -63,18 +63,18 @@ module AresMUSH
     describe :plugin_files do
       it "should find all the ruby files in the plugin lib dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "lib", "**", "*.rb")
-       files = []
+       search = File.join("plugins", "*", "**", "*.rb")
+       files = ["a.rb", "b.rb", "c_spec.rb", "d_specs.rb"]
        Dir.should_receive(:[]).with(search) { files}
-       PluginManager.plugin_files.should eq files
+       PluginManager.plugin_files.should eq ["a.rb", "b.rb"]
       end
       
       it "should find all the ruby files in a specific plugin's lib dir" do
         PluginManager.stub(:plugin_path) { "plugins" }
-        search = File.join("plugins", "foo", "lib", "**", "*.rb")
-        files = []
+        search = File.join("plugins", "foo", "**", "*.rb")
+        files = ["a.rb", "b.rb", "c_spec.rb", "d_specs.rb"]
         Dir.should_receive(:[]).with(search) { files}
-        PluginManager.plugin_files("foo").should eq files
+        PluginManager.plugin_files("foo").should eq ["a.rb", "b.rb"]
       end
     end
     
