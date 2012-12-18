@@ -28,7 +28,7 @@ module AresMUSH
     describe :find_visible do
       it "should return the player for the me keword" do
         player = mock
-        Room.find_visible("me", player).should eq player
+        Room.find_visible("me", player).should eq [player]
       end
       
       it "should return the player's location for the here keyword" do

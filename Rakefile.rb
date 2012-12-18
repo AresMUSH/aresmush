@@ -12,11 +12,33 @@ task :start do
   bootstrapper.command_line.start
 end
 
-task :dbreset do
+task :install do
   bootstrapper = AresMUSH::Bootstrapper.new
   db[:players].drop
   db[:exits].drop
   db[:rooms].drop
+  db[:game].drop
+  AresMUSH::Room.drop_all
+  AresMUSH::Exit.drop_all
+  AresMUSH::Player.drop_all
+  AresMUSH::Game.drop_all
+  
+  welcome = AresMUSH::Room.create("name" => "Welcome Room")
+  ic = AresMUSH::Room.create("name" => "IC Start")
+  idle = AresMUSH::Room.create("name" => "Idle Lounge")
+  
+  AresMUSH::Game.create
+  game = AresMUSH::Game.get
+  game['rooms'] = 
+  {
+    'welcome' => welcome,
+    'ic start' => ic,
+    'idle' => idle
+  }
+  AresMUSH::Game.update(game)
+
+  headwiz = AresMUSH::Player.create("name" => "Headwiz", "password" => "wizb00ts", "location" => welcome[:_id])
+  puts "Install complete."
 end
 
 task :default => :start

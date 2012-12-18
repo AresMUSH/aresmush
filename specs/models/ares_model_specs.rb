@@ -74,6 +74,13 @@ module AresMUSH
         end        
       end      
       
+      it "should create the model with extra fields" do
+        @tmpdb.stub(:insert)
+        TestModel.create("name" => "bob", "foo" => "bar") do |model|
+          model["foo"].should eq "bar"
+        end        
+      end
+      
       it "should insert the model into the DB" do
         @tmpdb.should_receive(:insert) do |model|
           model["name"].should eq "Bob"
@@ -90,6 +97,15 @@ module AresMUSH
         TestModel.create(model).should eq model2
       end
     end  
+    
+    describe :drop_all do
+      it "should drop the database" do
+        @tmpdb = double(Object)
+        Database.db.stub(:[]).with(:test) { @tmpdb }
+        @tmpdb.should_receive(:drop)
+        TestModel.drop_all
+      end
+    end
     
     describe :update do
       before do

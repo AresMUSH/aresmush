@@ -47,6 +47,10 @@ module AresMUSH
       db[coll].insert(model)
       model
     end
+    
+    def drop_all
+      db[coll].drop
+    end
   end
 
 end

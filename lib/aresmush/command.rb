@@ -18,6 +18,7 @@ module AresMUSH
     end
     
     def location
+      puts @enactor
       @enactor.nil? ? nil : Room.find_by_id(@enactor["location"])[0] 
     end
     
