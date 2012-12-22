@@ -17,12 +17,16 @@ module AresMUSH
       emit @config_reader.config['connect']['welcome_screen']
 
       # Ares welcome text
-      emit_ooc t('welcome')
+      emit_ooc t('client.welcome')
 
       # Game welcome text.
       emit @config_reader.config['connect']['welcome_text']
     end
 
+    def disconnected
+      emit_ooc t('client.goodbye')
+    end
+    
     def emit(msg)
       @connection.send_data msg
     end 
@@ -54,6 +58,10 @@ module AresMUSH
 
     def connection_closed
       @client_monitor.connection_closed self
+    end
+    
+    def name
+      @player.nil? ? t('client.anonymous'): @player['name']
     end
         
   end

@@ -26,7 +26,6 @@ module AresMUSH
           "dest" => dest.nil? ? nil : dest["_id"]  # may be nil
         }
         
-        puts exit_info
         e = Exit.create(exit_info)
         client.emit_success("You open an exit to #{dest.nil? ? "Nowhere" : dest["name"]}")
       end

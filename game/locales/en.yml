@@ -15,8 +15,12 @@ en:
     players_connected:
         zero: "No players connected."
         one: "One player connected."
-        other: "%{count} players connected."    
-    welcome: Welcome to AresMUSH!
+        other: "%{count} players connected." 
+        
+    client:   
+        welcome: Welcome to AresMUSH!
+        goodbye: Goodbye!
+        anonymous: Anonymous
 
     number:
         separator: '.'

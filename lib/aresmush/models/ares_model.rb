@@ -1,3 +1,5 @@
+require 'date'
+
 module AresMUSH
   module AresModel
     
@@ -18,7 +20,8 @@ module AresMUSH
     end
 
     def update(model)
-      db[coll].update( { "_id" => model["_id"] }, model)
+      id = model[:id].nil? ? model["_id"] : model[:id]
+      db[coll].update( { :id => id }, model)
     end
 
     def find_by_id(id)
@@ -43,6 +46,7 @@ module AresMUSH
 
     def create(*args)
       model = args[0]
+      model["create date"] = Time.now
       model = custom_model_fields(model)
       db[coll].insert(model)
       model

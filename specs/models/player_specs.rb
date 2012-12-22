@@ -28,5 +28,24 @@ module AresMUSH
           model.should include( "type" => "Player" )
         end
     end
+    
+    describe :hash_password do
+      it "should use bcrypt to hash the password" do
+        password = double(BCrypt::Password)
+        BCrypt::Password.should_receive(:create).with("test") { password }
+        Player.hash_password("test").should eq password
+      end
+    end
+    
+    describe :compare_password do
+      it "should use the bcrypt compare" do
+        password = double(BCrypt::Password)
+        BCrypt::Password.should_receive(:new).with("existing_pw") { password }
+        password.should_receive(:==).with("test_pw")
+        player = { "password" => "existing_pw" }
+        Player.compare_password(player, "test_pw")
+      end
+    end
+    
   end
 end

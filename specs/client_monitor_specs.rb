@@ -88,7 +88,7 @@ module AresMUSH
       it "should notify the dispatcher" do
         Client.should_receive(:new).with(anything, @client_monitor, @config_reader, @connection) { @client3 }
         @dispatcher.should_receive(:on_event) do |type, args|
-          type.should eq :player_connected
+          type.should eq :connection_established
           args[:client].should eq @client3
         end
         @client_monitor.connection_established(@connection)

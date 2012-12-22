@@ -22,8 +22,8 @@ module AresMUSH
         client = create_client(connection)
         @clients << client
         client.connected
+        @dispatcher.on_event(:connection_established, :client => client)
         logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
-        @dispatcher.on_event(:player_connected, :client => client)
       rescue Exception => e
         logger.debug "Error establishing connection #{e}."
       end

@@ -36,8 +36,14 @@ task :install do
     'idle' => idle
   }
   AresMUSH::Game.update(game)
-
-  headwiz = AresMUSH::Player.create("name" => "Headwiz", "password" => "wizb00ts", "location" => welcome[:_id])
+  
+  headwiz = AresMUSH::Player.create(
+  {
+   "name" => "Headwiz", 
+   "location" => welcome[:_id],
+   "password" => AresMUSH::Player.hash_password("wizb00ts"),
+  })
+  
   puts "Install complete."
 end
 

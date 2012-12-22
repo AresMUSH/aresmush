@@ -5,3 +5,8 @@ en:
        player_name_taken: "Sorry, that name is already taken."
        player_created: "Congratulations!  You are now named %{name}."
        already_logged_in: "You are already logged in."
+       unrecognized_player:  "No such player."
+       ambiguous_player:  "That name is ambiguous."
+       invalid_password: "Password incorrect."
+       welcome: "Welcome to AresMUSH!"
+       invalid_connect_syntax: "Please try 'connect <player> <password>'."

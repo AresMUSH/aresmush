@@ -8,7 +8,9 @@ module AresMUSH
   describe Client do
 
     before do
-      AresMUSH::Locale.stub(:translate).with("welcome") { "welcome" }
+      AresMUSH::Locale.stub(:translate).with("client.welcome") { "welcome" }
+      AresMUSH::Locale.stub(:translate).with("client.anonymous") { "anon" }
+      AresMUSH::Locale.stub(:translate).with("client.goodbye") { "bye" }
     end
 
     describe :connected do
@@ -36,6 +38,15 @@ module AresMUSH
 
     end
 
+    describe :disconnected do
+      it "should send the bye text" do
+        connection = double(EventMachine::Connection).as_null_object
+        client = Client.new(1, nil, nil, connection)
+        connection.should_receive(:send_data).with("%xc%% bye%xn")
+        client.disconnected
+      end
+    end
+    
     describe :emit do
       before do
         @connection = double(EventMachine::Connection)
@@ -112,6 +123,20 @@ module AresMUSH
         client.connection_closed
       end
     end 
+    
+    describe :name do
+      it "should use the player name if available" do
+        client = Client.new(1, nil, nil, nil)
+        client.player = { "name" => "Bob" }
+        client.name.should eq "Bob"
+      end
+      
+      it "should use anonymous if there's no player" do
+        client = Client.new(1, nil, nil, nil)
+        client.name.should eq "anon"
+      end
+      
+    end
      
   end
 end
