@@ -3,15 +3,11 @@ module AresMUSH
     class Create
       include AresMUSH::Plugin
 
-      def want_command?(cmd)
+      def want_anon_command?(cmd)
         cmd.root_is?("create")
       end
 
-      def on_command(client, cmd)
-        client.emit_ooc t('login.already_logged_in')
-      end
-      
-      def on_anon_command(client, cmd)
+      def on_command(client, cmd)      
         args = cmd.crack_args!(/(?<name>\S+) (?<password>\S+)/)
         
         # TODO - Check args nil

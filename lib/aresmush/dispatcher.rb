@@ -9,12 +9,14 @@ module AresMUSH
       handled = false
       with_error_handling(client, cmd) do
         @plugin_manager.plugins.each do |a|
-          if (a.want_command?(cmd))
-            if (cmd.logged_in?)
-              a.on_command(client, cmd)
-            else
-              a.on_anon_command(client, cmd)
-            end
+          if (cmd.logged_in?)
+            wants_cmd = a.want_command?(cmd)
+          else
+            wants_cmd = a.want_anon_command?(cmd)
+          end
+
+          if (wants_cmd)
+            a.on_command(client, cmd)
             handled = true
             break
           end # if
