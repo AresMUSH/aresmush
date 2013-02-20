@@ -31,9 +31,9 @@ task :install do
   game = AresMUSH::Game.get
   game['rooms'] = 
   {
-    'welcome' => welcome,
-    'ic start' => ic,
-    'idle' => idle
+    'welcome_id' => welcome[:_id],
+    'ic start_id' => ic[:_id],
+    'idle_id' => idle[:_id]
   }
   AresMUSH::Game.update(game)
   
