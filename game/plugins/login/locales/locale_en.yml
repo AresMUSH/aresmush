@@ -12,3 +12,4 @@ en:
        invalid_connect_syntax: "Please try 'connect <name> <password>'."
        invalid_create_syntax: "Please try 'create <name> <password>'."
        announce_player_created: "%{name} has been created."
+       password_too_short: "Passwords must be at least 5 characters long."
