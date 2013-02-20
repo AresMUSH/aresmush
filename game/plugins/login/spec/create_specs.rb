@@ -10,7 +10,7 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("login.invalid_create_syntax") { "invalid_create_syntax" }
         AresMUSH::Locale.stub(:translate).with("login.player_name_taken") { "player_name_taken" }
         AresMUSH::Locale.stub(:translate).with("login.password_too_short") { "password_too_short" }
-        AresMUSH::Locale.stub(:translate).with("login.player_created", { :name => "foo" }) { "player_created" }
+        AresMUSH::Locale.stub(:translate).with("login.player_created", { :name => "playername" }) { "player_created" }
       end
       
       describe :want_anon_command? do
@@ -46,15 +46,25 @@ module AresMUSH
 
           @client = double(Client).as_null_object
           @player = mock
-          Player.stub(:find_by_name).with("foo") { [] }
+          Player.stub(:find_by_name).with("playername") { [] }
           Player.stub(:create) { @player }
-
-          @cmd = Command.new(@client, "create foo password")
+          
+          @cmd = Command.new(@client, "create playername password")
           @create = Create.new(container)
         end
         
-        it "should create the player" do
-          Player.should_receive(:create).with({ "name" => "foo", "password" => "password" }) { @player }
+        it "should create the player with the provided name" do          
+          Player.should_receive(:create) do |args|
+            args["name"].should eq "playername"
+          end
+          @create.on_command(@client, @cmd)                  
+        end
+        
+        it "should hash the password" do
+          Player.should_receive(:hash_password).with("password") { "pwhash" }
+          Player.should_receive(:create) do |args|
+            args["password"].should eq "pwhash"
+          end
           @create.on_command(@client, @cmd)                  
         end
         
@@ -92,20 +102,20 @@ module AresMUSH
         end
 
         it "should fail if password isn't specified" do
-          cmd = Command.new(@client, "create foo")
+          cmd = Command.new(@client, "create playername")
           @client.should_receive(:emit_failure).with("invalid_create_syntax")
           @create.on_command(@client, cmd)        
         end
         
         it "should fail if password is too short" do
-          cmd = Command.new(@client, "create foo bar")
+          cmd = Command.new(@client, "create playername bar")
           @client.should_receive(:emit_failure).with("password_too_short")
           @create.on_command(@client, cmd)        
         end
         
         it "should fail if the player already exists" do
-          cmd = Command.new(@client, "create foo password")
-          Player.stub(:find_by_name).with("foo") { [mock] }
+          cmd = Command.new(@client, "create playername password")
+          Player.stub(:find_by_name).with("playername") { [mock] }
           @client.should_receive(:emit_failure).with("player_name_taken")
           @create.on_command(@client, cmd)                  
         end

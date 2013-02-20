@@ -29,7 +29,7 @@ module AresMUSH
           return
         end
           
-        player = Player.create("name" => name, "password" => password)
+        player = Player.create("name" => name, "password" => Player.hash_password(password))
         client.emit_success(t('login.player_created', :name => name))
         client.player = player
         container.dispatcher.on_event(:player_created, :client => client)

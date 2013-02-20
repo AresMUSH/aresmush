@@ -19,7 +19,7 @@ module AresMUSH
 
       def foo(client)
         room = Room.find_by_id(client.player["location"])
-        // TODO - nil
+        # TODO - nil
         if (room.empty?)
           client.emit_failure("Can't find that room.")
           return
