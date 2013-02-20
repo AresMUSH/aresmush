@@ -10,7 +10,13 @@ module AresMUSH
     end
     
     def to_s
-      "raw=#{@raw} enactor=#{enactor_name}"
+      sanitized_raw = @raw
+      if (sanitized_raw.start_with?("create"))
+        sanitized_raw = "create (args deleted for privacy)"
+      elsif (sanitized_raw.start_with?("connect"))
+        sanitized_raw = "connect (args deleted for privacy)"
+      end
+      "raw=#{sanitized_raw} enactor=#{enactor_name}"
     end
     
     def enactor_name
