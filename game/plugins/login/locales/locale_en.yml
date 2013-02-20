@@ -9,4 +9,6 @@ en:
        ambiguous_player:  "That name is ambiguous."
        invalid_password: "Password incorrect."
        welcome: "Welcome to AresMUSH!"
-       invalid_connect_syntax: "Please try 'connect <player> <password>'."
+       invalid_connect_syntax: "Please try 'connect <name> <password>'."
+       invalid_create_syntax: "Please try 'create <name> <password>'."
+       announce_player_created: "%{name} has been created."

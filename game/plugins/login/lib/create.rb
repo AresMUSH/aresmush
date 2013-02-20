@@ -10,25 +10,24 @@ module AresMUSH
       def on_command(client, cmd)      
         args = cmd.crack_args!(/(?<name>\S+) (?<password>\S+)/)
         
-        # TODO - Check args nil
+        if (args.nil?)
+          client.emit_failure(t('login.invalid_create_syntax'))
+          return
+        end
+        
         name = args[:name]
         password = args[:password]
-
-        # TODO: Find by alias too once alias system is implemented
+        
         existing_player = Player.find_by_name(name)
         if (!existing_player.empty?)
           client.emit_failure(t('login.player_name_taken'))
-        else
-          # TODO: Encrypt password
-          # TODO: Specs
-          # TODO: Localize this and other login classes
+          return
+        end
+          
           player = Player.create("name" => name, "password" => password)
           client.emit_success(t('login.player_created', :name => name))
           client.player = player
-          
-          # TODO - Set location and emit description
-          # TODO - Raise player_created event
-        end
+          container.dispatcher.on_event(:player_created, :client => client)
       end
     end
   end
