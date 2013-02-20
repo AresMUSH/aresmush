@@ -22,7 +22,7 @@ module AresMUSH
     end
     
     def root_is?(root)
-      @root == root
+      @root.upcase == root.upcase
     end
     
     def logged_in?

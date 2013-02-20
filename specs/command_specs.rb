@@ -119,9 +119,14 @@ module AresMUSH
       end
 
       it "doesn't match a different root" do
-        cmd = Command.new(@client, "test/foo bar")
-        cmd.root_is?("foo").should be_false
-      end
+          cmd = Command.new(@client, "test/foo bar")
+          cmd.root_is?("foo").should be_false
+        end
+      
+      it "ignores case" do
+          cmd = Command.new(@client, "TEST/foo bar")
+          cmd.root_is?("test").should be_true
+      end        
     end
 
     describe :crack_args! do
