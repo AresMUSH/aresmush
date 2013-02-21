@@ -1,7 +1,8 @@
 en:
     login:
-       player_has_connected: "%{name} has connected."
-       player_has_disconnected: "%{name} has disconnected."
+       announce_player_connected: "%{name} has connected."
+       announce_player_disconnected: "%{name} has disconnected."
+       announce_player_created: "%{name} has been created."
        player_name_taken: "Sorry, that name is already taken."
        player_created: "Congratulations!  You are now named %{name}."
        already_logged_in: "You are already logged in."
@@ -11,5 +12,4 @@ en:
        welcome: "Welcome to AresMUSH!"
        invalid_connect_syntax: "Please try 'connect <name> <password>'."
        invalid_create_syntax: "Please try 'create <name> <password>'."
-       announce_player_created: "%{name} has been created."
        password_too_short: "Passwords must be at least 5 characters long."
