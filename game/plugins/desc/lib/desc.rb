@@ -16,13 +16,9 @@ module AresMUSH
         target = args[:target]
         desc = args[:desc]
         
-        model = Room.find_visible(target, cmd.enactor) 
-        if (model.empty?)
-          # TODO FAIL
-          client.emit_failure("Can't find #{model["name"]}.")
-        elsif (model.count > 1)
-          # TODO FAIL
-          client.emit_failure("Can't well which #{model["name"]} you mean.")
+        model = Room.find_one_visible(target, client) 
+        if (model.nil?)
+          return
         else
           model = model[0]
           model["desc"] = desc

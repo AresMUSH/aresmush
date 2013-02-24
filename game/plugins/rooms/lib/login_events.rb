@@ -8,26 +8,28 @@ module AresMUSH
       end
       
       def on_player_connected(args)
-        foo(args[:client])
+        client = args[:client]
+        emit_room_desc(client)
       end
       
       def on_player_created(args)
+        client = args[:client]
+        
+        # Set their starting location
         game = Game.get
         welcome_room = game['rooms']['welcome_id']
-        foo(args[:client])
-      end
-
-      def foo(client)
-        room = Room.find_by_id(client.player["location"])
-        # TODO - nil
-        if (room.empty?)
-          client.emit_failure("Can't find that room.")
-          return
-        end
+        client.player["location"] = welcome_room
+        Player.update(client.player)
         
-        room = room[0]
-        client.emit_with_lines Describe.room_desc(room)
+        emit_room_desc(client)
       end
+      
+      def emit_room_desc(client)
+        loc = client.player["location"]
+        room = Room.find_by_id(loc)
+        client.emit_with_lines Describe.room_desc(room[0])
+      end
+      
     end
   end
 end

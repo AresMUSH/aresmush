@@ -4,14 +4,10 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(cmd)
-        is_quit_command?(cmd)
+        cmd.root_is?("quit")
       end
       
       def want_anon_command?(cmd)
-        is_quit_command?(cmd)
-      end
-      
-      def is_quit_command?(cmd)
         cmd.root_is?("quit")
       end
             

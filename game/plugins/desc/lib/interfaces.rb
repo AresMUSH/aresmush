@@ -1,5 +1,5 @@
 module AresMUSH
-  module Describe
+  module Describe     
     def self.room_desc(room)
       desc = "#{room["name"]}(#{room["_id"]})\n#{room["desc"]}"
       Exit.exits_from(room).each do |e|

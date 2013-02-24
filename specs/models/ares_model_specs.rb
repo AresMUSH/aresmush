@@ -119,23 +119,37 @@ module AresMUSH
         Database.db.stub(:[]).with(:test) { @tmpdb }
       end
 
-      it "should update by _id" do
-        p = { "_id" => "123", "name" => "Bob" }
+      it "should update the model" do
+        p = { :_id => "123", "name" => "Bob" }
+        AresModel.stub(:id_to_update).with(p) { "123" }
         @tmpdb.should_receive(:update) do |search, model|
-          search[:id].should eq "123"
+          search[:_id].should eq "123"
           model.should eq p
         end
         TestModel.update(p)
+      end
+    end
+    
+    describe :id_to_update do
+      it "should find :_id" do
+        p = { :_id => "123", "name" => "Bob" }
+        TestModel.id_to_update(p).should eq "123"
       end
 
-      it "should update by :id" do
+      it "should find :id" do
         p = { :id => "123", "name" => "Bob" }
-        @tmpdb.should_receive(:update) do |search, model|
-          search[:id].should eq "123"
-          model.should eq p
-        end
-        TestModel.update(p)
+        TestModel.id_to_update(p).should eq "123"
       end
+
+      it "should find 'id'" do
+        p = { "id" => "123", "name" => "Bob" }
+        TestModel.id_to_update(p).should eq "123"
+      end
+      
+      it "should find '_id'" do
+        p = { "_id" => "123", "name" => "Bob" }
+        TestModel.id_to_update(p).should eq "123"
+      end      
     end
 
   end

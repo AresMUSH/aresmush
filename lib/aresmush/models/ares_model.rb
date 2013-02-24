@@ -20,10 +20,18 @@ module AresMUSH
     end
 
     def update(model)
-      id = model[:id].nil? ? model["_id"] : model[:id]
-      db[coll].update( { :id => id }, model)
+      id = id_to_update(model)
+      db[coll].update( { :_id => id }, model)
     end
 
+    def id_to_update(model)
+      return model[:_id] if !model[:_id].nil?
+      return model["_id"] if !model["_id"].nil?
+      return model[:id] if !model[:id].nil?
+      return model["id"] if !model["id"].nil?
+      return nil
+    end
+    
     def find_by_id(id)
       if (id.class == BSON::ObjectId)
         find("_id" => id)

@@ -24,19 +24,5 @@ module AresMUSH
         model.should include( "type" => "Room" )
       end
     end
-    
-    describe :find_visible do
-      it "should return the player for the me keword" do
-        player = mock
-        Room.find_visible("me", player).should eq [player]
-      end
-      
-      it "should return the player's location for the here keyword" do
-        player = { "location" => "1" }
-        location = mock
-        Room.should_receive(:find_by_id).with("1") { location }
-        Room.find_visible("here", player).should eq location
-      end
-    end
   end
 end
