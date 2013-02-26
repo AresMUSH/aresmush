@@ -1,10 +1,3 @@
-# No args - error and return
-# No player - error
-# Ambiguous players - error
-# Invalid password - error
-# Send connected event
-
-
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require "aresmush"
@@ -15,8 +8,14 @@ module AresMUSH
   
     describe Connect do
       before do
-        @contianer = Container.new(nil, nil, nil, nil, nil)
+        @container = double(Container)
         @connect = Connect.new(@container)
+        @client = double(Client)
+        
+        AresMUSH::Locale.stub(:translate).with("login.invalid_connect_syntax") { "invalid_connect_syntax" }
+        AresMUSH::Locale.stub(:translate).with("login.unrecognized_player") { "unrecognized_player" }
+        AresMUSH::Locale.stub(:translate).with("login.ambiguous_player") { "ambiguous_player" }
+        AresMUSH::Locale.stub(:translate).with("login.invalid_password") { "invalid_password" }
       end
       
       describe :want_command? do
@@ -40,7 +39,87 @@ module AresMUSH
         end
       end
       
+      # FAILURE
+      describe :on_command do
+        
+        it "should fail if there's no password" do
+          cmd = Command.new(@client, "connect Bob")
+          @client.should_receive(:emit_failure).with("invalid_connect_syntax")
+          @connect.on_command(@client, cmd)          
+        end
+
+        it "should fail if there's no name and password" do
+          cmd = Command.new(@client, "connect")
+          @client.should_receive(:emit_failure).with("invalid_connect_syntax")
+          @connect.on_command(@client, cmd)          
+        end
+
+        it "should fail if there's no matching player" do
+          cmd = Command.new(@client, "connect Bob password")
+          Player.stub(:find_by_name).with("Bob") { [] }
+          
+          @client.should_receive(:emit_failure).with("unrecognized_player")
+          @connect.on_command(@client, cmd)          
+        end
+        
+        it "should fail if there's more than one matching player" do
+          cmd = Command.new(@client, "connect Bob password")
+          Player.stub(:find_by_name).with("Bob") { [mock, mock] }
+          
+          @client.should_receive(:emit_failure).with("ambiguous_player")
+          @connect.on_command(@client, cmd)          
+        end
+        
+        it "should fail if the passwords don't match" do
+          cmd = Command.new(@client, "connect Bob password")
+          found_player = mock
+          Player.stub(:find_by_name).with("Bob") { [found_player] }
+          Player.stub(:compare_password).with(found_player, "password") { false }
+          @client.should_receive(:emit_failure).with("invalid_password")
+          @connect.on_command(@client, cmd)          
+        end        
+      end
       
+      # SUCCESS
+      describe :on_command do
+        before do
+          @found_player = mock
+          @dispatcher = double(Dispatcher)
+          @container.stub(:dispatcher) { @dispatcher }
+          
+          Player.stub(:find_by_name).with("Bob") { [@found_player] }
+          Player.stub(:compare_password).with(@found_player, "password") { true }  
+          @dispatcher.stub(:on_event)  
+          @client.stub(:player=)      
+        end
+        
+        it "should compare passwords" do
+          cmd = Command.new(@client, "connect Bob password")
+          Player.should_receive(:compare_password).with(@found_player, "password")
+          @connect.on_command(@client, cmd)          
+        end
+        
+        it "should accept a multi-word password" do
+          cmd = Command.new(@client, "connect Bob bob's password")
+          Player.should_receive(:compare_password).with(@found_player, "bob's password")
+          @connect.on_command(@client, cmd)          
+        end
+        
+        it "should set the player on the client" do
+          cmd = Command.new(@client, "connect Bob password")
+          @client.should_receive(:player=).with(@found_player)
+          @connect.on_command(@client, cmd)
+        end
+
+        it "should announce the player connected event" do
+           cmd = Command.new(@client, "connect Bob password")
+           @dispatcher.should_receive(:on_event) do |type, args|
+             type.should eq :player_connected
+             args[:client].should eq @client
+           end
+           @connect.on_command(@client, cmd)
+        end
+      end      
     end
   end
 end

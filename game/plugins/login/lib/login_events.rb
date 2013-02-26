@@ -9,6 +9,7 @@ module AresMUSH
       
       def on_player_connected(args)
         client = args[:client]
+        client.emit_success(t('login.welcome'))        
         @client_monitor.emit_all t('login.announce_player_connected', :name => client.name)
       end
       

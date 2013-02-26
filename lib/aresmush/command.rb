@@ -1,10 +1,10 @@
 module AresMUSH
   class Command
     
-    attr_accessor :enactor, :raw, :root, :switch, :args
+    attr_accessor :raw, :root, :switch, :args
     
     def initialize(client, input)
-      @enactor = client.player
+      @client = client
       @raw = input.chomp
       crack(input)
     end
@@ -19,12 +19,16 @@ module AresMUSH
       "raw=#{sanitized_raw} enactor=#{enactor_name}"
     end
     
+    def enactor
+      @client.player
+    end
+    
     def enactor_name
-      @enactor.nil? ? "" : @enactor["name"]
+      enactor.nil? ? "" : enactor["name"]
     end
     
     def location
-      @enactor.nil? ? nil : Room.find_by_id(@enactor["location"])[0] 
+      enactor.nil? ? nil : Room.find_by_id(enactor["location"])[0] 
     end
     
     def root_is?(root)
@@ -32,7 +36,7 @@ module AresMUSH
     end
     
     def logged_in?
-      @enactor != nil
+      enactor != nil
     end
     
     def crack_args!(regex)

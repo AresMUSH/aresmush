@@ -67,6 +67,12 @@ module AresMUSH
           end
           @create.on_command(@client, @cmd)                  
         end
+                
+        it "should accept a multi-word password" do
+          cmd = Command.new(@client, "create playername bob's password")
+          Player.should_receive(:hash_password).with("bob's password") { "pwhash" }
+          @create.on_command(@client, cmd)          
+        end
         
         it "should tell the player they're created" do
           @client.should_receive(:emit_success).with("player_created")

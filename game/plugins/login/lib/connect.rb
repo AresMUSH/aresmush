@@ -36,7 +36,6 @@ module AresMUSH
         end
 
         client.player = player
-        client.emit_success(t('login.welcome'))
         container.dispatcher.on_event(:player_connected, :client => client)
       end
     end
