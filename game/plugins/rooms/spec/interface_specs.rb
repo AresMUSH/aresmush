@@ -1,7 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
-
-require "aresmush"
-require "interfaces"
+require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Rooms

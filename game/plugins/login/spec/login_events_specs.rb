@@ -1,7 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
-
-require "aresmush"
-require "login_events"
+require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Login

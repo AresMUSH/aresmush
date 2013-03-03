@@ -18,5 +18,15 @@ module AresMUSH
       end
     end
 
+    def self.desc_for_id(room_id)
+      room = Room.find_by_id(room_id)
+      room.empty? ? "" : Describe.room_desc(room[0])
+    end
+    
+    def self.emit_current_desc(client)
+      loc = client.player["location"]  
+      desc = Rooms.desc_from_id(loc)     
+      client.emit_lines(desc)
+    end
   end
 end
