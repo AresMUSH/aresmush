@@ -16,7 +16,7 @@ module AresMUSH
         target = args[:target]
         desc = args[:desc]
         
-        model = Room.find_one_visible(target, client) 
+        model = Rooms.find_visible_object(target, client) 
         if (model.nil?)
           return
         else

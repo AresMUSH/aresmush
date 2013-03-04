@@ -1,3 +1,5 @@
 en:
     rooms:
        announce_player_arrived: "%{name} has arrived."
+       me: me
+       here: here

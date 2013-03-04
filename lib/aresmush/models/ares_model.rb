@@ -67,7 +67,7 @@ module AresMUSH
     def find_one_and_notify(name_or_id, client)
       notify_if_not_exatly_one(client) { find_by_name_or_id(name_or_id) }
     end
-
+    
     def notify_if_not_exatly_one(client, &block)
       results = yield block
       begin

@@ -18,13 +18,13 @@ module AresMUSH
       
       describe :on_player_connected do
         it "should emit the desc of the player's last location" do
-          Rooms.should_receive(:emit_current_desc).with(@client)
+          Describe.should_receive(:emit_here_desc).with(@client)
           @client.stub(:emit_to_location)
           @login.on_player_connected( { :client => @client } )
         end
 
         it "should announce the player's connection to the room" do
-          Rooms.stub(:emit_current_desc)
+          Describe.stub(:emit_here_desc)
           @client.should_receive(:emit_to_location).with("announce_player_arrived")
           @login.on_player_connected( { :client => @client } )
         end
@@ -33,7 +33,7 @@ module AresMUSH
       describe :on_player_created do
         before do
           @login.stub(:set_starting_location) {}
-          Rooms.stub(:emit_current_desc)
+          Describe.stub(:emit_here_desc)
           @client.stub(:emit_to_location)
         end
         
@@ -43,7 +43,7 @@ module AresMUSH
         end
         
         it "should emit the desc of the player's last location" do
-          Rooms.should_receive(:emit_current_desc).with(@client)
+          Describe.should_receive(:emit_here_desc).with(@client)
           @login.on_player_created( { :client => @client } )
         end
 
