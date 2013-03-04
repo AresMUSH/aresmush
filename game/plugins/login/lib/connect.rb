@@ -17,19 +17,11 @@ module AresMUSH
 
         name = args[:name]
         password = args[:password]
-        existing_players = Player.find_by_name(name)
+        player = Player.ensure_only_one(client) { Player.find_by_name(name) }
 
-        if (existing_players.empty?)
-          client.emit_failure(t('login.unrecognized_player')) 
-          return 
-        end
+        # ensure_only_one already did the emits on failure.
+        return if player.nil?
         
-        if (existing_players.count != 1)
-          client.emit_failure(t('login.ambiguous_player')) 
-          return
-        end
-
-        player = existing_players[0]
         if (!Player.compare_password(player, password))
           client.emit_failure(t('login.invalid_password'))
           return 

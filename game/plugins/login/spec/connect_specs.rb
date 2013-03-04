@@ -10,8 +10,6 @@ module AresMUSH
         @client = double(Client)
         
         AresMUSH::Locale.stub(:translate).with("login.invalid_connect_syntax") { "invalid_connect_syntax" }
-        AresMUSH::Locale.stub(:translate).with("login.unrecognized_player") { "unrecognized_player" }
-        AresMUSH::Locale.stub(:translate).with("login.ambiguous_player") { "ambiguous_player" }
         AresMUSH::Locale.stub(:translate).with("login.invalid_password") { "invalid_password" }
       end
       
@@ -51,26 +49,20 @@ module AresMUSH
           @connect.on_command(@client, cmd)          
         end
 
-        it "should fail if there's no matching player" do
+        it "should ensure only one player was found" do
           cmd = Command.new(@client, "connect Bob password")
-          Player.stub(:find_by_name).with("Bob") { [] }
-          
-          @client.should_receive(:emit_failure).with("unrecognized_player")
+          Player.should_receive(:find_by_name).with("Bob") { nil }
+          Player.should_receive(:ensure_only_one) do |client, &block|
+            client.should eq @client
+            block.call
+          end
           @connect.on_command(@client, cmd)          
         end
-        
-        it "should fail if there's more than one matching player" do
-          cmd = Command.new(@client, "connect Bob password")
-          Player.stub(:find_by_name).with("Bob") { [mock, mock] }
-          
-          @client.should_receive(:emit_failure).with("ambiguous_player")
-          @connect.on_command(@client, cmd)          
-        end
-        
+                          
         it "should fail if the passwords don't match" do
           cmd = Command.new(@client, "connect Bob password")
           found_player = mock
-          Player.stub(:find_by_name).with("Bob") { [found_player] }
+          Player.stub(:ensure_only_one) { found_player }
           Player.stub(:compare_password).with(found_player, "password") { false }
           @client.should_receive(:emit_failure).with("invalid_password")
           @connect.on_command(@client, cmd)          
@@ -84,7 +76,7 @@ module AresMUSH
           @dispatcher = double(Dispatcher)
           @container.stub(:dispatcher) { @dispatcher }
           
-          Player.stub(:find_by_name).with("Bob") { [@found_player] }
+          Player.stub(:ensure_only_one){ @found_player }
           Player.stub(:compare_password).with(@found_player, "password") { true }  
           @dispatcher.stub(:on_event)  
           @client.stub(:player=)      
