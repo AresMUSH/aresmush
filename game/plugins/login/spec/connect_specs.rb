@@ -49,20 +49,16 @@ module AresMUSH
           @connect.on_command(@client, cmd)          
         end
 
-        it "should ensure only one player was found" do
+        it "should find only a single matching player" do
           cmd = Command.new(@client, "connect Bob password")
-          Player.should_receive(:find_by_name).with("Bob") { nil }
-          Player.should_receive(:ensure_only_one) do |client, &block|
-            client.should eq @client
-            block.call
-          end
+          Player.should_receive(:find_one_and_notify).with("Bob", @client) { nil }
           @connect.on_command(@client, cmd)          
         end
                           
         it "should fail if the passwords don't match" do
           cmd = Command.new(@client, "connect Bob password")
           found_player = mock
-          Player.stub(:ensure_only_one) { found_player }
+          Player.stub(:find_one_and_notify) { found_player }
           Player.stub(:compare_password).with(found_player, "password") { false }
           @client.should_receive(:emit_failure).with("invalid_password")
           @connect.on_command(@client, cmd)          
@@ -76,7 +72,7 @@ module AresMUSH
           @dispatcher = double(Dispatcher)
           @container.stub(:dispatcher) { @dispatcher }
           
-          Player.stub(:ensure_only_one){ @found_player }
+          Player.stub(:find_one_and_notify){ @found_player }
           Player.stub(:compare_password).with(@found_player, "password") { true }  
           @dispatcher.stub(:on_event)  
           @client.stub(:player=)      

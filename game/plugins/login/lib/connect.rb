@@ -17,9 +17,9 @@ module AresMUSH
 
         name = args[:name]
         password = args[:password]
-        player = Player.ensure_only_one(client) { Player.find_by_name(name) }
+        player = Player.find_one_and_notify(name, client)
 
-        # ensure_only_one already did the emits on failure.
+        # find_one_and_notify already did the emits on failure.
         return if player.nil?
         
         if (!Player.compare_password(player, password))

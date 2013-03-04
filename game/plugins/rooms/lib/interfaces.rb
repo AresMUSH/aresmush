@@ -2,7 +2,7 @@ module AresMUSH
   module Rooms
     # TODO: Specs
     def self.find_one_visible(name, client)
-      Room.ensure_only_one(client) { Room.find_all_visible(name, client) }
+      Room.find_one_and_notify(name, client)
     end
 
     def self.find_all_visible(name, client)

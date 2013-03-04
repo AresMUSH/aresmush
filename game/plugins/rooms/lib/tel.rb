@@ -9,11 +9,8 @@ module AresMUSH
       
       def on_command(client, cmd)
         dest = cmd.args
-        room = Room.find_by_name_or_id(dest)
-        if (room.empty?)
-          client.emit_failure("Can't find that room.")
-          return
-        end
+        room = Room.find_one_and_notify(dest, client)
+        return if room.nil?
         
         if (room.count > 1)
           matches = room.map { |m| "- #{m["name"]} (#{m["_id"]})" }.join("\n")

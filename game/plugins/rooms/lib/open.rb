@@ -11,9 +11,8 @@ module AresMUSH
         regex_with_dest = /(?<name>.+)=(?<dest>.+)/
         if (cmd.can_crack_args?(regex_with_dest))
           cmd.crack_args!(regex_with_dest)
-          dest = Room.find_by_name_or_id(cmd.args[:dest])
-          # TODO - check for nil or more than one
-          dest = dest.nil? ? nil : dest[0]
+          dest = Room.find_one_and_notify(cmd.args[:dest], client)
+          return if dest.nil?
         else
           cmd.crack_args!(/(?<name>.+)/)
           dest = nil
