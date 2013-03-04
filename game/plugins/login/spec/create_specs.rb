@@ -41,33 +41,25 @@ module AresMUSH
           container = double(Container)
           container.stub(:dispatcher) { @dispatcher }
 
-          @client = double(Client).as_null_object
+          @client = double(Client)
           @player = mock
-          Player.stub(:find_by_name).with("playername") { [] }
-          Player.stub(:create) { @player }
+          Player.stub(:exists?).with("playername") { false }
+          Player.stub(:create_player) { @player }
+          @client.stub(:emit_success)
+          @client.stub(:player=)
           
           @cmd = Command.new(@client, "create playername password")
           @create = Create.new(container)
         end
         
-        it "should create the player with the provided name" do          
-          Player.should_receive(:create) do |args|
-            args["name"].should eq "playername"
-          end
+        it "should create the player" do          
+          Player.should_receive(:create_player).with("playername", "password")
           @create.on_command(@client, @cmd)                  
         end
         
-        it "should hash the password" do
-          Player.should_receive(:hash_password).with("password") { "pwhash" }
-          Player.should_receive(:create) do |args|
-            args["password"].should eq "pwhash"
-          end
-          @create.on_command(@client, @cmd)                  
-        end
-                
         it "should accept a multi-word password" do
           cmd = Command.new(@client, "create playername bob's password")
-          Player.should_receive(:hash_password).with("bob's password") { "pwhash" }
+          Player.should_receive(:create_player).with("playername", "bob's password")
           @create.on_command(@client, cmd)          
         end
         
@@ -118,7 +110,7 @@ module AresMUSH
         
         it "should fail if the player already exists" do
           cmd = Command.new(@client, "create playername password")
-          Player.stub(:find_by_name).with("playername") { [mock] }
+          Player.stub(:exists?).with("playername") { true }
           @client.should_receive(:emit_failure).with("player_name_taken")
           @create.on_command(@client, cmd)                  
         end

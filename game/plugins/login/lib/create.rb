@@ -23,13 +23,12 @@ module AresMUSH
           return
         end
         
-        existing_player = Player.find_by_name(name)
-        if (!existing_player.empty?)
+        if (Player.exists?(name))
           client.emit_failure(t('login.player_name_taken'))
           return
         end
-          
-        player = Player.create("name" => name, "password" => Player.hash_password(password))
+        
+        player = Player.create_player(name, password)
         client.emit_success(t('login.player_created', :name => name))
         client.player = player
         container.dispatcher.on_event(:player_created, :client => client)

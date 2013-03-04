@@ -47,5 +47,33 @@ module AresMUSH
       end
     end
     
+    describe :exists? do
+      it "should return true if there is an existing player" do
+        Player.stub(:find_by_name).with("Bob") { [mock] }
+        Player.exists?("Bob").should be_true
+      end
+      
+      it "should return false if no player exists" do
+        Player.stub(:find_by_name).with("Bob") { [] }
+        Player.exists?("Bob").should be_false
+      end
+    end
+    
+    describe :create_player do
+      it "should set the name" do
+        Player.should_receive(:create) do |args|
+          args["name"].should eq "Bob"
+        end
+        Player.create_player("Bob", "bobs_password")
+      end
+      
+      it "should hash the password" do
+        Player.should_receive(:hash_password).with("bobs_password") { "hashed_password" }
+        Player.should_receive(:create) do |args|
+          args["password"].should eq "hashed_password"
+        end
+        Player.create_player("Bob", "bobs_password")
+      end
+    end
   end
 end
