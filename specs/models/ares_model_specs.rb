@@ -151,6 +151,48 @@ module AresMUSH
         TestModel.id_to_update(p).should eq "123"
       end      
     end
+    
+    describe :ensure_only_one do
+      before do
+        @client = mock
+        AresMUSH::Locale.stub(:translate).with("db.object_ambiguous") { "object_ambiguous" }
+        AresMUSH::Locale.stub(:translate).with("db.object_not_found") { "object_not_found" }
+      end
+      
+      it "should return false and emit failure if given something that doesn't support array indexing" do
+        @client.should_receive(:emit_failure).with("object_not_found")
+        result = TestModel.ensure_only_one(@client) { "123" }
+        result.should be_nil
+      end
 
+      it "should return false and emit failure if given something that doesn't support empty/count" do
+        @client.should_receive(:emit_failure).with("object_not_found")
+        result = TestModel.ensure_only_one(@client) { 123 }
+        result.should be_nil
+      end
+      
+      it "should return false and emit failure for an ambiguous result" do
+        @client.should_receive(:emit_failure).with("object_ambiguous")
+        result = TestModel.ensure_only_one(@client) { [1, 2, 3].select { |a| a > 1 } }
+        result.should be_nil
+      end
+      
+      it "should return false and emit failure for an empty result" do
+        @client.should_receive(:emit_failure).with("object_not_found")
+        result = TestModel.ensure_only_one(@client) { [1, 2, 3].select { |a| a == 7 } }
+        result.should be_nil
+      end
+      
+      it "should return false and emit failure for a nil result" do
+        @client.should_receive(:emit_failure).with("object_not_found")
+        result = TestModel.ensure_only_one(@client) { nil }
+        result.should be_nil
+      end
+      
+      it "should return a singular result" do
+        result = TestModel.ensure_only_one(@client) { [1, 2, 3].select { |a| a == 2 } }
+        result.should eq 2
+      end
+    end    
   end
 end

@@ -20,7 +20,6 @@ module AresMUSH
         if (model.nil?)
           return
         else
-          model = model[0]
           model["desc"] = desc
           model_mod = AresMUSH.const_get(model["type"])
           model_mod.update(model)

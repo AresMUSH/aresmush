@@ -2,7 +2,7 @@ require 'date'
 
 module AresMUSH
   module AresModel
-    
+
     # Define this with the mongo collection your model uses.  
     # For example: :players
     def coll
@@ -14,7 +14,7 @@ module AresMUSH
     def custom_model_fields(model) 
       model     
     end
-    
+
     def find(*args)
       db[coll].find(*args).to_a
     end
@@ -31,7 +31,7 @@ module AresMUSH
       return model["id"] if !model["id"].nil?
       return nil
     end
-    
+
     def find_by_id(id)
       if (id.class == BSON::ObjectId)
         find("_id" => id)
@@ -59,9 +59,27 @@ module AresMUSH
       db[coll].insert(model)
       model
     end
-    
+
     def drop_all
       db[coll].drop
+    end
+
+    def ensure_only_one(client, &block)
+      results = yield block
+      begin
+        if (results.nil? || results.empty?)
+          client.emit_failure(t("db.object_not_found"))
+          return nil
+        elsif (results.count > 1)
+          client.emit_failure(t("db.object_ambiguous"))
+          return nil
+        else
+          return results[0]
+        end
+      rescue ArgumentError, NoMethodError
+        client.emit_failure(t("db.object_not_found"))        
+        return nil
+      end
     end
   end
 

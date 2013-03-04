@@ -1,10 +1,8 @@
 module AresMUSH
   module Rooms
+    # TODO: Specs
     def self.find_one_visible(name, client)
-      all_visible = Room.find_all_visible(name, client)
-      client.emit_failure("TODO-I don't see that here") and return nil if all_visible.empty?
-      client.emit_failure("TODO-I can't tell which one you mean") and return nil if all_visible.count > 1
-      return all_visible[0]
+      Room.ensure_only_one(client) { Room.find_all_visible(name, client) }
     end
 
     def self.find_all_visible(name, client)
