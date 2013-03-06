@@ -24,9 +24,13 @@ The first time you run mongo, you'll need to set up the authentication.  This is
 4. Execute the following commands to add the necessary users (passwords are obviously just examples, but the ares password must match databse.yml).
 
 > use admin
+
 > db.addUser("admin","admin")
+
 > use aresmush
+
 > db.addUser("ares", "bluebloods2")
+
 > db.auth("ares", "bluebloods2")
 
 5. Stop the server.
