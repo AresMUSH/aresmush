@@ -12,13 +12,6 @@ module AresMUSH
         room = Room.find_one_and_notify(dest, client)
         return if room.nil?
         
-        if (room.count > 1)
-          matches = room.map { |m| "- #{m["name"]} (#{m["_id"]})" }.join("\n")
-          client.emit_failure("Not sure which room you mean:\n#{matches}")
-          return
-        end
-        
-        room = room[0]
         client.emit_success("You teleport to #{room["name"]}.")
         client.player["location"] = room["_id"]
         Player.update(client.player)
