@@ -64,6 +64,13 @@ module AresMUSH
       db[coll].drop
     end
 
+    def find_one(name_or_id)
+      results = find_by_name_or_id(name_or_id)
+      return nil if results.empty?
+      return nil if results.count > 1
+      results[0]
+    end
+    
     def find_one_and_notify(name_or_id, client)
       notify_if_not_exatly_one(client) { find_by_name_or_id(name_or_id) }
     end

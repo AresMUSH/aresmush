@@ -8,10 +8,15 @@ module AresMUSH
         
         container = double(Container)
         @client_monitor = double(ClientMonitor)
-        @client = double(Client)
-
         container.stub(:client_monitor) { @client_monitor }
+        
+        @client = double(Client)
         @client.stub(:name) { "Bob" }
+        @client.stub(:location) { "1" }
+        
+        @client_monitor.stub(:clients)
+        Describe.stub(:emit_here_desc)
+        Rooms.stub(:room_emit)
 
         @login = LoginEvents.new(container)
       end
@@ -19,13 +24,13 @@ module AresMUSH
       describe :on_player_connected do
         it "should emit the desc of the player's last location" do
           Describe.should_receive(:emit_here_desc).with(@client)
-          @client.stub(:emit_to_location)
           @login.on_player_connected( { :client => @client } )
         end
 
         it "should announce the player's connection to the room" do
-          Describe.stub(:emit_here_desc)
-          @client.should_receive(:emit_to_location).with("announce_player_arrived")
+          clients = mock
+          @client_monitor.stub(:clients) { clients }
+          Rooms.should_receive(:room_emit).with("1", "announce_player_arrived", clients)
           @login.on_player_connected( { :client => @client } )
         end
       end
@@ -33,8 +38,6 @@ module AresMUSH
       describe :on_player_created do
         before do
           @login.stub(:set_starting_location) {}
-          Describe.stub(:emit_here_desc)
-          @client.stub(:emit_to_location)
         end
         
         it "should set the starting location" do
@@ -48,7 +51,9 @@ module AresMUSH
         end
 
         it "should announce the player's connection to the room" do
-          @client.should_receive(:emit_to_location).with("announce_player_arrived")
+          clients = mock
+          @client_monitor.stub(:clients) { clients }
+          Rooms.should_receive(:room_emit).with("1", "announce_player_arrived", clients)
           @login.on_player_created( { :client => @client } )
         end
       end

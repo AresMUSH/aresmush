@@ -63,6 +63,10 @@ module AresMUSH
     def name
       @player.nil? ? t('client.anonymous'): @player['name']
     end
-        
+    
+    def location
+      @player.nil? ? nil : @player['location']
+    end
+    
   end
 end

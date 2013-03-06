@@ -137,6 +137,20 @@ module AresMUSH
       end
       
     end
+    
+    describe :location do
+      it "should use the player location if available" do
+        client = Client.new(1, nil, nil, nil)
+        client.player = { "location" => "111" }
+        client.location.should eq "111"
+      end
+      
+      it "should use nil if there's no player" do
+        client = Client.new(1, nil, nil, nil)
+        client.location.should eq nil
+      end
+      
+    end
      
   end
 end

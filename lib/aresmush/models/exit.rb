@@ -10,11 +10,6 @@ module AresMUSH
       model["name_upcase"] = model["name"].upcase
       model["type"] = "Exit"
       model
-    end
-    
-    # TODO Spec
-    def self.exits_from(room)
-      find("source" => room["_id"])
-    end        
+    end    
   end
 end

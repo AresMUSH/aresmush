@@ -10,14 +10,14 @@ module AresMUSH
       def on_player_connected(args)
         client = args[:client]
         Describe.emit_here_desc(client)
-        client.emit_to_location(t('rooms.announce_player_arrived', :name => client.name))
+        Rooms.room_emit(client.location, t('rooms.announce_player_arrived', :name => client.name), @client_monitor.clients)
       end
       
       def on_player_created(args)
         client = args[:client]
         set_starting_location(client)
         Describe.emit_here_desc(client)
-        client.emit_to_location(t('rooms.announce_player_arrived', :name => client.name))
+        Rooms.room_emit(client.location, t('rooms.announce_player_arrived', :name => client.name), @client_monitor.clients)
       end
       
       def set_starting_location(client)
