@@ -1,4 +1,4 @@
-require 'I18n'
+require 'i18n'
 require "i18n/backend/fallbacks" 
   
 # Short global alias for translate and localize
