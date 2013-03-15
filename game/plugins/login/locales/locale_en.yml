@@ -4,7 +4,7 @@ en:
        announce_player_disconnected: "%{name} has disconnected."
        announce_player_created: "%{name} has been created."
        player_name_taken: "Sorry, that name is already taken."
-       player_created: "You have created %{name}."
+       player_created: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."
        invalid_password: "Password incorrect."
        welcome: "Welcome to AresMUSH!"
