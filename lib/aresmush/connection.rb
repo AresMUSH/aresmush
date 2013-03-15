@@ -5,7 +5,7 @@ module AresMUSH
   class Connection < EventMachine::Connection
     attr_accessor :client
     attr_reader :ip_addr
-
+    
     def self.format_msg(msg)
       # Add \n to end if not already there
       if (!msg.end_with?("\n"))

@@ -5,9 +5,6 @@ module AresMUSH
     describe Create do
       before do
         AresMUSH::Locale.stub(:translate).with("login.invalid_create_syntax") { "invalid_create_syntax" }
-        AresMUSH::Locale.stub(:translate).with("login.player_name_taken") { "player_name_taken" }
-        AresMUSH::Locale.stub(:translate).with("login.password_too_short") { "password_too_short" }
-        AresMUSH::Locale.stub(:translate).with("login.player_created", { :name => "playername" }) { "player_created" }
       end
       
       describe :want_anon_command? do
@@ -34,60 +31,14 @@ module AresMUSH
         end
       end
       
-      # SUCCESS
-      describe :on_command do
-        before do
-          @dispatcher = double(Dispatcher).as_null_object
-          container = double(Container)
-          container.stub(:dispatcher) { @dispatcher }
-
-          @client = double(Client)
-          @player = mock
-          Player.stub(:exists?).with("playername") { false }
-          Player.stub(:create_player) { @player }
-          @client.stub(:emit_success)
-          @client.stub(:player=)
-          
-          @cmd = Command.new(@client, "create playername password")
-          @create = Create.new(container)
-        end
-        
-        it "should create the player" do          
-          Player.should_receive(:create_player).with("playername", "password")
-          @create.on_command(@client, @cmd)                  
-        end
-        
-        it "should accept a multi-word password" do
-          cmd = Command.new(@client, "create playername bob's password")
-          Player.should_receive(:create_player).with("playername", "bob's password")
-          @create.on_command(@client, cmd)          
-        end
-        
-        it "should tell the player they're created" do
-          @client.should_receive(:emit_success).with("player_created")
-          @create.on_command(@client, @cmd)                  
-        end
-        
-        it "should set the player on the client" do
-          @client.should_receive(:player=).with(@player)
-          @create.on_command(@client, @cmd)                  
-        end
-        
-        it "should dispatch the created event" do
-          @dispatcher.should_receive(:on_event) do |type, args|
-            type.should eq :player_created
-            args[:client].should eq @client
-          end
-          @create.on_command(@client, @cmd)                  
-        end
-      end
-      
-      # FAILURE
       describe :on_command do
         before do
           @client = double(Client)
           @client.stub(:player) { }
-          @create = Create.new(nil)
+          @dispatcher = mock
+          container = mock
+          container.stub(:dispatcher) { @dispatcher }
+          @create = Create.new(container)
         end
         
         it "should fail if user/password isn't specified" do
@@ -102,18 +53,18 @@ module AresMUSH
           @create.on_command(@client, cmd)        
         end
         
-        it "should fail if password is too short" do
+        it "should try to create the player" do
           cmd = Command.new(@client, "create playername bar")
-          @client.should_receive(:emit_failure).with("password_too_short")
+          Login.should_receive(:create_player).with(@client, "playername", "bar", @dispatcher)
           @create.on_command(@client, cmd)        
         end
         
-        it "should fail if the player already exists" do
-          cmd = Command.new(@client, "create playername password")
-          Player.stub(:exists?).with("playername") { true }
-          @client.should_receive(:emit_failure).with("player_name_taken")
-          @create.on_command(@client, cmd)                  
+        it "should accept a multi-word password" do
+          cmd = Command.new(@client, "create playername bob's password")
+          Login.should_receive(:create_player).with(@client, "playername", "bob's password", @dispatcher)
+          Login.create_player(@client, "playername", "bob's password", @dispatcher)
         end
+        
       end
     end
   end

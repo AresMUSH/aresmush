@@ -18,20 +18,7 @@ module AresMUSH
         name = args[:name]
         password = args[:password]
         
-        if (password.length < 5)
-          client.emit_failure(t('login.password_too_short'))
-          return
-        end
-        
-        if (Player.exists?(name))
-          client.emit_failure(t('login.player_name_taken'))
-          return
-        end
-        
-        player = Player.create_player(name, password)
-        client.emit_success(t('login.player_created', :name => name))
-        client.player = player
-        container.dispatcher.on_event(:player_created, :client => client)
+        Login.create_player(client, name, password, container.dispatcher)
       end
     end
   end
