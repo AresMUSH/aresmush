@@ -223,6 +223,34 @@ module AresMUSH
         result = TestModel.notify_if_not_exatly_one(@client) { [1, 2, 3].select { |a| a == 2 } }
         result.should eq 2
       end
-    end    
+    end   
+    
+    describe :model_class do
+      it "should return exit for an exit object" do
+        model = { "type" => "Exit" }
+        AresModel.model_class(model).should eq Exit
+      end
+      
+      it "should return player for an player object" do
+        model = { "type" => "Player" }
+        AresModel.model_class(model).should eq Player
+      end
+      
+      it "should return room for an room object" do
+        model = { "type" => "Room" }
+        AresModel.model_class(model).should eq Room
+      end
+      
+      it "should return nil if there's no type specified" do
+        model = { "fpp" => "Exit" }
+        AresModel.model_class(model).should eq nil
+      end
+      
+      it "should return nil if it's not a valid type" do
+        model = { "type" => "Foo" }
+        AresModel.model_class(model).should eq nil
+      end
+    end
+     
   end
 end

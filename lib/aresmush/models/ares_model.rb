@@ -92,6 +92,16 @@ module AresMUSH
         return nil
       end
     end
+    
+    
+    def self.model_class(model)
+      begin
+        AresMUSH.const_get(model["type"])
+      rescue TypeError, NameError
+        nil
+      end
+    end
+
   end
 
 end
