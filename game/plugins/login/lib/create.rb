@@ -21,12 +21,12 @@ module AresMUSH
         return if !Login.validate_player_name(client, name)
         return if !Login.validate_player_password(client, password)
         
-        create_player(client, name, password)
+        create_player_and_login(client, name, password)
       end
       
-      def create_player(client, name, password)
+      def create_player_and_login(client, name, password)
         player = Player.create_player(name, password)
-        client.emit_success(t('login.player_created', :name => name))
+        client.emit_success(t('login.created_and_logged_in', :name => name))
         client.player = player
         container.dispatcher.on_event(:player_created, :client => client)        
       end
