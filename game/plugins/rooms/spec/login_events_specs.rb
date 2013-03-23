@@ -13,17 +13,19 @@ module AresMUSH
         @client = double(Client)
         @client.stub(:name) { "Bob" }
         @client.stub(:location) { "1" }
+        @client.stub(:emit_with_lines)
         
         @client_monitor.stub(:clients)
-        Describe.stub(:emit_here_desc)
         Rooms.stub(:room_emit)
+        Room.stub(:find_by_id) { [] }
+        Describe.stub(:room_desc)
 
         @login = LoginEvents.new(container)
       end
       
       describe :on_player_connected do
         it "should emit the desc of the player's last location" do
-          Describe.should_receive(:emit_here_desc).with(@client)
+          @login.should_receive(:emit_here_desc).with(@client)
           @login.on_player_connected( { :client => @client } )
         end
 
@@ -46,7 +48,7 @@ module AresMUSH
         end
         
         it "should emit the desc of the player's last location" do
-          Describe.should_receive(:emit_here_desc).with(@client)
+          @login.should_receive(:emit_here_desc).with(@client)
           @login.on_player_created( { :client => @client } )
         end
 
@@ -75,6 +77,29 @@ module AresMUSH
         it "should save the player" do
           Player.should_receive(:update).with(@player)
           @login.set_starting_location(@client)
+        end
+      end
+      
+      describe :emit_here_desc do
+        it "should find the client's location" do
+          @client.should_receive(:location) { "1" }
+          Room.should_receive(:find_by_id).with("1")
+          @login.emit_here_desc(@client)
+        end
+        
+        it "should get the room desc for the client's location" do
+          model = mock
+          Room.stub(:find_by_id) { [model] }
+          Describe.should_receive(:get_desc).with(model)
+          @login.emit_here_desc(@client)
+        end
+        
+        it "should emit to the client" do
+          model = mock
+          Room.stub(:find_by_id) { [model] }
+          Describe.stub(:get_desc) { "desc" }
+          @client.should_receive(:emit_with_lines).with("desc")
+          @login.emit_here_desc(@client)
         end
       end      
     end

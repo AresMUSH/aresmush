@@ -20,7 +20,7 @@ module AresMUSH
       return client.player if (name == t("rooms.me"))
 
       loc_id = client.location
-      return Room.find_one(loc_id, client) if (name == t("rooms.here"))
+      return Room.find_one(loc_id) if (name == t("rooms.here"))
       
       contents = contents(loc_id)
       Room.notify_if_not_exatly_one(client) { contents.select { |c| c["name"] == name } }      

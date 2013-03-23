@@ -1,0 +1,4 @@
+en:
+    describe:
+       invalid_desc_syntax: "You didn't supply a description."
+       desc_set: "You set the description on %{name}."

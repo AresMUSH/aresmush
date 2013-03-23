@@ -10,10 +10,16 @@ module AresMUSH
       def on_command(client, cmd)
         if (cmd.args.nil?)
           room = cmd.location
-          desc = Describe.room_desc(room)
+          desc = Describe.format_room_desc(room)
           client.emit_with_lines desc
         else 
-          
+          args = cmd.crack_args!(/(?<target>.+)/)
+          target = args[:target]
+          model = Rooms.find_visible_object(target, client) 
+          return if (model.nil?)
+
+          desc = Describe.get_desc(model)
+          client.emit_with_lines(desc)
         end
       end
     end

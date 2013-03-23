@@ -1,5 +1,5 @@
 module AresMUSH
-  
+
   module Describe
     class Desc
       include AresMUSH::Plugin
@@ -7,24 +7,22 @@ module AresMUSH
       def want_command?(cmd)
         cmd.root_is?("desc")
       end
-      
+
       def on_command(client, cmd)
-        args = cmd.crack_args!(/(?<target>\S+)\=(?<desc>.+)/)
-        
-        (client.emit("You didn't supply a description!") and return) if args.nil?
-        
+        args = cmd.crack_args!(/(?<target>[^\=]+)\=(?<desc>.+)/)
+
+        if args.nil?
+          client.emit_failure(t('describe.invalid_desc_syntax'))
+          return
+        end
+
         target = args[:target]
         desc = args[:desc]
-        
+
         model = Rooms.find_visible_object(target, client) 
-        if (model.nil?)
-          return
-        else
-          model["desc"] = desc
-          model_mod = AresMUSH.const_get(model["type"])
-          model_mod.update(model)
-          client.emit_success("You set the description on #{model["name"]}.")
-        end
+        return if (model.nil?)
+        
+        Describe.set_desc(client, model, desc)
       end
     end
   end

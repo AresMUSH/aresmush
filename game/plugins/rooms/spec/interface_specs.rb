@@ -17,7 +17,7 @@ module AresMUSH
 
       it "should return the player's location for the here keyword" do
         location = mock
-        Room.should_receive(:find_one).with("1", @client) { location }
+        Room.should_receive(:find_one).with("1") { location }
         Rooms.find_visible_object("here", @client).should eq location
       end
       
