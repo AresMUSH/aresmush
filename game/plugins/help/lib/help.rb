@@ -83,14 +83,14 @@ module AresMUSH
           end
           msg = ""
           toc.each { |k, v| msg << "\n    #{k.ljust(15)} -- #{v}" }
-          client.emit_with_lines("#{title.center(78)}\n#{msg}")
+          client.emit("#{title.center(78)}\n#{msg}")
         elsif topics.has_key?(topic)
-          client.emit_with_lines("#{title.center(78)}\n#{topics[topic]}")
+          client.emit("#{title.center(78)}\n#{topics[topic]}")
         else
           possible_topics = topics.deep_match(/#{topic}/i)
           topics_string = ""
           possible_topics.map { |k, v| topics_string << k << " "}
-          client.emit_with_lines("Maybe you meant one of these: #{topics_string}")
+          client.emit("Maybe you meant one of these: #{topics_string}")
         end
       end
       

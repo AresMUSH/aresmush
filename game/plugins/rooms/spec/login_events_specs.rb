@@ -13,7 +13,7 @@ module AresMUSH
         @client = double(Client)
         @client.stub(:name) { "Bob" }
         @client.stub(:location) { "1" }
-        @client.stub(:emit_with_lines)
+        @client.stub(:emit)
         
         @client_monitor.stub(:clients)
         Rooms.stub(:room_emit)
@@ -98,7 +98,7 @@ module AresMUSH
           model = mock
           Room.stub(:find_by_id) { [model] }
           Describe.stub(:get_desc) { "desc" }
-          @client.should_receive(:emit_with_lines).with("desc")
+          @client.should_receive(:emit).with("desc")
           @login.emit_here_desc(@client)
         end
       end      

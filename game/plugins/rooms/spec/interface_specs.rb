@@ -4,8 +4,8 @@ module AresMUSH
   module Rooms
     describe :find_visible_object do
       before do
-        AresMUSH::Locale.stub(:translate).with("rooms.me") { "me" }
-        AresMUSH::Locale.stub(:translate).with("rooms.here") { "here" }
+        AresMUSH::Locale.stub(:translate).with("object.me") { "me" }
+        AresMUSH::Locale.stub(:translate).with("object.here") { "here" }
         @client = mock
         @client.stub(:location) { "1" }        
       end

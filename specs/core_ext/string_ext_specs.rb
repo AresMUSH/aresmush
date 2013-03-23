@@ -53,25 +53,20 @@ module AresMUSH
         str.to_ansi.should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" + ANSI.reset
       end
 
-      it "doesn't replace a code preceeded by a single backslash" do
+      it "puts in the raw code when preceeded by a single backslash" do
         str = "A\\%xcB" 
+        str.to_ansi.should eq "A%xcB" + ANSI.reset
+      end
+
+      it "puts in the raw code when preceeded by two backslashes" do
+        str = "A\\\\%xcB"
         str.to_ansi.should eq "A\\%xcB" + ANSI.reset
       end
 
-      it "replaces a code preceeded by two backslashes" do
-        str = "A\\\\%xcB"
-        str.to_ansi.should eq "A\\\\" + ANSI.cyan + "B" + ANSI.reset
+      it "replaces an escaped %" do
+        str = "A\\%c"
+        str.to_ansi.should eq "A%c"+ ANSI.reset
       end
-
-      it "doesn't replace a code preceeded by three backslashes" do
-        str = "A\\\\\\%xcB"
-        str.to_ansi.should eq "A\\\\\\%xcB" + ANSI.reset
-      end
-
-      it "replaces a code preceeded by four backslashes" do
-        str = "A\\\\\\\\%xcB"
-        str.to_ansi.should eq "A\\\\\\\\" + ANSI.cyan + "B" + ANSI.reset
-      end      
     end
     
     describe :titlecase do

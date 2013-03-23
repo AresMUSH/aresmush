@@ -30,11 +30,6 @@ module AresMUSH
     def emit(msg)
       @connection.send_data msg
     end 
-
-    def emit_with_lines(msg)
-      line = @config_reader.line
-      @connection.send_data "#{line}\n#{msg.chomp}\n#{line}"
-    end
     
     def emit_ooc(msg)
       @connection.send_data "%xc%% #{msg}%xn"

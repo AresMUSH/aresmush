@@ -12,7 +12,7 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("describe.invalid_desc_syntax") { "invalid_desc_syntax" }
       end
       
-      describe :want_anon_ommand? do
+      describe :want_anon_command? do
         it "doesn't want any commands" do
           cmd = mock
           @desc.want_anon_command?(cmd).should be_false

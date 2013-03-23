@@ -31,7 +31,7 @@ module AresMUSH
         loc = client.location
         room = Room.find_by_id(loc)
         desc = room.empty? ? "" : Describe.get_desc(room[0])
-        client.emit_with_lines(desc)
+        client.emit(desc)
       end
     end
   end

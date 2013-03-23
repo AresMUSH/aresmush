@@ -15,6 +15,8 @@ en:
        say: %{name} says, "%{msg}"
        pose: %{name} %{msg}
        semipose: %{name}%{msg}
+       me: me
+       here: here
 
     players_connected:
         zero: "No players connected."

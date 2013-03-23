@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        @client_monitor.emit_all Formatters.parse_pose(cmd.enactor_name, cmd.raw)
+        @client_monitor.emit_all Formatter.parse_pose(cmd.enactor_name, cmd.raw)
       end
     end
   end

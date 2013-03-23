@@ -17,10 +17,10 @@ module AresMUSH
     end
     
     def self.find_visible_object(name, client)
-      return client.player if (name == t("rooms.me"))
+      return client.player if (name == t("object.me"))
 
       loc_id = client.location
-      return Room.find_one(loc_id) if (name == t("rooms.here"))
+      return Room.find_one(loc_id) if (name == t("object.here"))
       
       contents = contents(loc_id)
       Room.notify_if_not_exatly_one(client) { contents.select { |c| c["name"] == name } }      

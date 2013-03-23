@@ -50,7 +50,9 @@ class String
     code_map.each_key do |code|
       str = str.code_gsub("%[xX]#{code}", code_map[code])
     end
-
+    
+    str = str.gsub("\\%", "%")
+    
     # Do an ANSI reset at the end to prevent ansi "bleeding" in case there's a non-terminated code.
     str + ANSI.reset
   end
@@ -64,15 +66,12 @@ class String
     str = self
     
     # Ugly regex to find/replace special codes.  Will replace the 'find' value (example, %r), 
-    # except when escaped (\%r) unless of course the escaping backslash is part of a larger 
-    # escape sequence (\\%r)
+    # except when escaped (\%r) 
     str.gsub(/
       (?<!\\)           # Not preceded by a single backslash
-      ((?:\\\\)*)       # Eat up any sets of double backslashes - match group 1  
-      (#{find})         # Match the code itself - match group 2
+      (#{find})
       /x, 
       
-      # Keep the double backslashes (match group 1) then put in the code's ANSI value
-      "\\1#{replace}")  
+      "#{replace}")  
   end       
 end
