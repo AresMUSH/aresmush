@@ -260,6 +260,10 @@ module AresMUSH
        it "should replace %r and %R with linebreaks" do
          AresModel.perform_subs("Test%rline%Rline2", nil).should eq "Test\nline\nline2"
        end
+
+       it "should replace %t and %T with 5 spaces" do
+         AresModel.perform_subs("Test%tTest2%TTest3", nil).should eq "Test     Test2     Test3"
+       end
      end
   end
 end

@@ -19,8 +19,8 @@ module AresMUSH
       desc = ""
       desc << player["name"]
       desc << "\n"
-      desc << player["desc"]
-      desc.perform_subs(player)
+      desc << "#{player["desc"]}"
+      AresModel.perform_subs(desc, player)
     end
     
     def self.format_room_desc(room)
@@ -39,7 +39,7 @@ module AresMUSH
       Rooms.players(room_id).each do |p|
         desc << "\n   #{p["name"]}"
       end
-      desc.perform_subs(room)
+      AresModel.perform_subs(desc, room)
     end
   end
 end

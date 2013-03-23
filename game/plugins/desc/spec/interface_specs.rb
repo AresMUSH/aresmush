@@ -51,5 +51,13 @@ module AresMUSH
         end     
       end
     end
+    
+    describe :format_player_desc do
+      # TODO
+    end
+
+    describe :format_room_desc do
+      # TODO
+    end
   end
 end
