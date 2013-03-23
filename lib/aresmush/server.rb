@@ -11,6 +11,10 @@ module AresMUSH
       EventMachine::run do
         host = @config_reader.config['server']['hostname']
         port = @config_reader.config['server']['port']
+        EventMachine::add_periodic_timer(30) do
+          @client_monitor.clients.each { |c| c.ping }
+        end
+        
         EventMachine::start_server(host, port, Connection) do |connection|
           @client_monitor.connection_established(connection)
         end

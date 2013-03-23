@@ -22,17 +22,17 @@ module AresMUSH
       end
 
       it "sends the welcome screen" do
-        @connection.should_receive(:send_data).with("Ascii Art")
+        @connection.should_receive(:send).with("Ascii Art")
         @client.connected
       end
 
       it "sends the game welcome text" do
-        @connection.should_receive(:send_data).with("Hi")
+        @connection.should_receive(:send).with("Hi")
         @client.connected
       end
 
       it "sends the server welcome text" do
-        @connection.should_receive(:send_data).with("%xc%% welcome%xn")
+        @connection.should_receive(:send).with("%xc%% welcome%xn")
         @client.connected
       end
 
@@ -42,7 +42,7 @@ module AresMUSH
       it "should send the bye text" do
         connection = double(EventMachine::Connection).as_null_object
         client = Client.new(1, nil, nil, connection)
-        connection.should_receive(:send_data).with("%xc%% bye%xn")
+        connection.should_receive(:send).with("%xc%% bye%xn")
         client.disconnected
       end
     end
@@ -54,7 +54,7 @@ module AresMUSH
       end
 
       it "sends the message to the connection" do
-        @connection.should_receive(:send_data).with("Hi")
+        @connection.should_receive(:send).with("Hi")
         @client.emit "Hi"
       end
     end
@@ -63,8 +63,17 @@ module AresMUSH
       it "sends the message with yellow ansi tags and %% prefix" do
         @connection = double(EventMachine::Connection)
         @client = Client.new(1, nil, nil, @connection)
-        @connection.should_receive(:send_data).with("%xc%% OOC%xn")
+        @connection.should_receive(:send).with("%xc%% OOC%xn")
         @client.emit_ooc "OOC"
+      end
+    end
+    
+    describe :ping do
+      it "should ping the connection" do
+        @connection = double(EventMachine::Connection)
+        @client = Client.new(1, nil, nil, @connection)
+        @connection.should_receive(:ping)
+        @client.ping
       end
     end
     
@@ -72,7 +81,7 @@ module AresMUSH
       it "sends the message with green ansi tags and %% prefix" do
         @connection = double(EventMachine::Connection)
         @client = Client.new(1, nil, nil, @connection)
-        @connection.should_receive(:send_data).with("%xg%% Yay%xn")
+        @connection.should_receive(:send).with("%xg%% Yay%xn")
         @client.emit_success "Yay"
       end
     end
@@ -81,7 +90,7 @@ module AresMUSH
       it "sends the message with green ansi tags and %% prefix" do
         @connection = double(EventMachine::Connection)
         @client = Client.new(1, nil, nil, @connection)
-        @connection.should_receive(:send_data).with("%xr%% Boo%xn")
+        @connection.should_receive(:send).with("%xr%% Boo%xn")
         @client.emit_failure "Boo"
       end
     end

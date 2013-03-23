@@ -23,24 +23,28 @@ module AresMUSH
       emit @config_reader.config['connect']['welcome_text']
     end
 
+    def ping
+      @connection.ping
+    end
+    
     def disconnected
       emit_ooc t('client.goodbye')
     end
     
     def emit(msg)
-      @connection.send_data msg
+      @connection.send msg
     end 
     
     def emit_ooc(msg)
-      @connection.send_data "%xc%% #{msg}%xn"
+      @connection.send "%xc%% #{msg}%xn"
     end
 
     def emit_success(msg)
-      @connection.send_data "%xg%% #{msg}%xn"
+      @connection.send "%xg%% #{msg}%xn"
     end
 
     def emit_failure(msg)
-      @connection.send_data "%xr%% #{msg}%xn"
+      @connection.send "%xr%% #{msg}%xn"
     end
 
     def disconnect

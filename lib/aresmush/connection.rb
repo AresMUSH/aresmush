@@ -24,12 +24,20 @@ module AresMUSH
       end
     end
 
+    def ping
+      send_data "\0"
+    end
+    
     def send_data(msg)
       begin
-        super Connection.format_msg(msg)
+        super msg
       rescue Exception => e
         logger.warn "Could not send to connection: #{e}."
       end
+    end
+    
+    def send(msg)
+      send_data Connection.format_msg(msg)
     end
     
     def close_connection
@@ -40,7 +48,7 @@ module AresMUSH
       end
     end
     
-    def receive_data data
+    def receive_data(data)
       @client.handle_input(data)
     end
 

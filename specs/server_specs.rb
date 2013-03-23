@@ -13,6 +13,13 @@ module AresMUSH
         @server = Server.new(@config_reader, @client_monitor)
       end
       
+      it "should start a timer for the pings" do
+        EventMachine.should_receive(:run).and_yield
+        EventMachine.should_receive(:add_periodic_timer)
+        EventMachine.stub(:start_server)
+        @server.start
+      end
+      
       it "should start the event machine" do
         EventMachine.should_receive(:run)
         @server.start
@@ -20,6 +27,7 @@ module AresMUSH
       
       it "should start the server" do
         EventMachine.should_receive(:run).and_yield
+        EventMachine.stub(:add_periodic_timer)
         EventMachine.should_receive(:start_server).with('host', 123, Connection)
         @server.start
       end
@@ -27,6 +35,7 @@ module AresMUSH
       it "should notify the client monitor of new connections" do
         connection = double(Connection)
         EventMachine.should_receive(:run).and_yield
+        EventMachine.stub(:add_periodic_timer)
         EventMachine.should_receive(:start_server).and_yield(connection)
         @client_monitor.should_receive(:connection_established).with(connection)
         @server.start

@@ -22,6 +22,42 @@ module AresMUSH
         msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message\n" + ANSI.reset
       end
     end
-
+    
+    describe :ping do
+      it "should send a null char" do
+        connection = Connection.new(nil)
+        connection.should_receive(:send_data).with("\0")
+        connection.ping
+      end
+    end
+    
+    describe :send do
+      it "should format the message before sending" do
+        connection = Connection.new(nil)
+        connection.should_receive(:send_data).with("TEST")
+        Connection.should_receive(:format_msg).with("test") { "TEST" }
+        connection.send("test")
+      end
+    end
+    
+    describe :receive_data do
+      it "should send data to the client" do
+        client = mock
+        connection = Connection.new(nil)
+        connection.client = client
+        client.should_receive(:handle_input).with("test")
+        connection.receive_data("test")        
+      end
+    end
+    
+    describe :unbind do
+      it "should notify the client that it disconnected" do
+        client = mock
+        connection = Connection.new(nil)
+        connection.client = client
+        client.should_receive(:connection_closed)
+        connection.unbind
+      end
+    end
   end
 end
