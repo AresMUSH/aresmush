@@ -26,7 +26,7 @@ module AresMUSH
     
     def self.format_room_desc(room)
       room_id = room["_id"]
-      desc = "%l1%r"
+      desc = "%l3%r"
       desc << room["name"]
       desc << "\n#{room_id}"
       desc << "\n---------------------------"
@@ -40,7 +40,7 @@ module AresMUSH
       Rooms.players(room_id).each do |p|
         desc << "\n   #{p["name"]}"
       end
-      desc << "%r%l2"
+      desc << "%r%l4"
       Formatter.perform_subs(desc, room)
     end
   end

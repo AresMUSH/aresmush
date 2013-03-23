@@ -37,7 +37,7 @@ module AresMUSH
         reader.line("_top").should eq "---"
       end
       
-      it "should default to a standard line if the specified one doesn't exist" do
+      it "should default to a blank line if the specified one doesn't exist" do
         reader = ConfigReader.new
         reader.stub(:line_color) { "c" }
         reader.config = {"theme" => {"line2" => "---"}}
