@@ -3,11 +3,9 @@ module AresMUSH
     def self.get_desc(model)
       format_method = "format_#{model["type"]}_desc".downcase
       if (self.respond_to?(format_method))
-        desc = self.send(format_method,model)
-      else
-        desc = model["desc"]
+        return self.send(format_method,model)
       end
-      desc
+      model["desc"]
     end
     
     def self.set_desc(client, model, desc)  
@@ -22,7 +20,7 @@ module AresMUSH
       desc << player["name"]
       desc << "\n"
       desc << player["desc"]
-      desc
+      desc.perform_subs(player)
     end
     
     def self.format_room_desc(room)
@@ -41,7 +39,7 @@ module AresMUSH
       Rooms.players(room_id).each do |p|
         desc << "\n   #{p["name"]}"
       end
-      desc
+      desc.perform_subs(room)
     end
   end
 end

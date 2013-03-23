@@ -5,7 +5,7 @@ module AresMUSH
   
     describe Desc do
       before do
-        @client = double(Client)        
+        @client = double(Client)
         @client.stub(:emit_success)        
         Player.stub(:update)
         AresModel.stub(:model_class) { Player }
@@ -48,7 +48,7 @@ module AresMUSH
         it "should just return the desc if there's no format method" do
           model = { "type" => "Foo", "desc" => "foo desc" }
           Describe.get_desc(model).should eq "foo desc"
-        end        
+        end     
       end
     end
   end

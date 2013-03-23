@@ -252,5 +252,14 @@ module AresMUSH
       end
     end
      
+     describe :perform_subs do
+       before do
+         @enactor = { "name" => "Bob" }
+       end
+
+       it "should replace %r and %R with linebreaks" do
+         AresModel.perform_subs("Test%rline%Rline2", nil).should eq "Test\nline\nline2"
+       end
+     end
   end
 end

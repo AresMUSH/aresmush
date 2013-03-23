@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(cmd)
-        cmd.root_is?("look") || cmd.root_is?("l")
+        cmd.root_is?("look")
       end
       
       def on_command(client, cmd)

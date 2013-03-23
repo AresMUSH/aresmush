@@ -102,6 +102,10 @@ module AresMUSH
       end
     end
 
+    def self.perform_subs(str, model)
+      str.code_gsub("%[rR]", "\n")
+    end
+
   end
 
 end

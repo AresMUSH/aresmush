@@ -47,17 +47,8 @@ class String
 
     }
 
-    # Ugly regex to find/replace ansi codes.  Will replace %x?, except when escaped (\%x?)
-    # unless of course the escaping backslash is part of a larger escape sequence (\\%x?)
     code_map.each_key do |code|
-      str = str.gsub(/
-      (?<!\\)           # Not preceded by a single backslash
-      ((?:\\\\)*)       # Eat up any sets of double backslashes - match group 1  
-      (%x#{code})       # Match the code itself - match group 2
-      /x, 
-      
-      # Keep the double backslashes (match group 1) then put in the code's ANSI value
-      "\\1#{code_map[code]}")  
+      str = str.code_gsub("%[xX]#{code}", code_map[code])
     end
 
     # Do an ANSI reset at the end to prevent ansi "bleeding" in case there's a non-terminated code.
@@ -67,5 +58,21 @@ class String
   # Fairly crude - doesn't worry about helper words or anything.  Should suffice for MUSH purposes.
   def titlecase
     self.gsub(/\b('?[a-z])/) { $1.capitalize }
-  end      
+  end   
+  
+  def code_gsub(find, replace)
+    str = self
+    
+    # Ugly regex to find/replace special codes.  Will replace the 'find' value (example, %r), 
+    # except when escaped (\%r) unless of course the escaping backslash is part of a larger 
+    # escape sequence (\\%r)
+    str.gsub(/
+      (?<!\\)           # Not preceded by a single backslash
+      ((?:\\\\)*)       # Eat up any sets of double backslashes - match group 1  
+      (#{find})         # Match the code itself - match group 2
+      /x, 
+      
+      # Keep the double backslashes (match group 1) then put in the code's ANSI value
+      "\\1#{replace}")  
+  end       
 end

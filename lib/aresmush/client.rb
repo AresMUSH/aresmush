@@ -67,6 +67,5 @@ module AresMUSH
     def location
       @player.nil? ? nil : @player['location']
     end
-    
   end
 end

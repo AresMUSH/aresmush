@@ -44,7 +44,7 @@ module AresMUSH
 
     describe :to_ansi do
       it "replaces ansi codes" do
-        str = "A%xrB%xnC"
+        str = "A%xrB%XnC"
         str.to_ansi.should eq "A" + ANSI.red + "B" + ANSI.reset + "C" + ANSI.reset
       end
 
@@ -79,5 +79,9 @@ module AresMUSH
         "a very long engagement".titlecase.should eq "A Very Long Engagement"
       end
     end
+    
+    describe :code_gsub do
+      # Covered by the ANSI tests
+    end    
   end
 end
