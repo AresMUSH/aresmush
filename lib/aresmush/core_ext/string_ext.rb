@@ -51,6 +51,7 @@ class String
       str = str.code_gsub("%[xX]#{code}", code_map[code])
     end
     
+    str = str.code_gsub("%x!", code_map[AresMUSH::Formatter.random_color])
     str = str.gsub("\\%", "%")
     
     # Do an ANSI reset at the end to prevent ansi "bleeding" in case there's a non-terminated code.

@@ -1,5 +1,6 @@
 module AresMUSH
   module Describe
+
     def self.get_desc(model)
       format_method = "format_#{model["type"]}_desc".downcase
       if (self.respond_to?(format_method))
@@ -25,7 +26,7 @@ module AresMUSH
     
     def self.format_room_desc(room)
       room_id = room["_id"]
-      desc = ""
+      desc = "%l1%r"
       desc << room["name"]
       desc << "\n#{room_id}"
       desc << "\n---------------------------"
@@ -39,6 +40,7 @@ module AresMUSH
       Rooms.players(room_id).each do |p|
         desc << "\n   #{p["name"]}"
       end
+      desc << "%r%l2"
       Formatter.perform_subs(desc, room)
     end
   end

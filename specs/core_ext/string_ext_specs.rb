@@ -47,7 +47,7 @@ module AresMUSH
         str = "A%xrB%XnC"
         str.to_ansi.should eq "A" + ANSI.red + "B" + ANSI.reset + "C" + ANSI.reset
       end
-
+      
       it "replaces nested codes" do
         str = "A%xc%xGB%xnC"
         str.to_ansi.should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" + ANSI.reset
@@ -67,6 +67,13 @@ module AresMUSH
         str = "A\\%c"
         str.to_ansi.should eq "A%c"+ ANSI.reset
       end
+
+      it "picks a random color for %x!" do
+        str = "A%x!B"
+        AresMUSH::Formatter.should_receive(:random_color) { "b" }
+        str.to_ansi.should eq "A" + ANSI.blue + "B" + ANSI.reset
+      end
+
     end
     
     describe :titlecase do

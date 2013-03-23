@@ -14,6 +14,7 @@ module AresMUSH
       client_monitor = ClientMonitor.new(config_reader, dispatcher)
       server = Server.new(config_reader, client_monitor)
       db = Database.new(config_reader)
+      Formatter.config_reader = config_reader
       
       # Now that everything's created, give the factory a container of the main plugin 
       # objects so that it can pass those along to the individual plugins
