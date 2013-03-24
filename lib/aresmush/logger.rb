@@ -3,10 +3,7 @@ require 'log4r/yamlconfigurator'
 include Log4r
 
 def logger
-  logger = Log4r::Logger['ares']
-  # For tests - use a dummy logger if one's not there already
-  logger = Log4r::Logger.root if logger.nil?
-  logger
+   l = AresMUSH::AresLogger.logger
 end
 
 module AresMUSH
@@ -19,6 +16,13 @@ module AresMUSH
       config = @config_reader.config['logger']
       configurator = Log4r::YamlConfigurator
       configurator.decode_yaml config
+    end
+    
+    def self.logger
+      logger = Log4r::Logger['ares']
+      # For tests - use a dummy logger if one's not there already
+      logger = Log4r::Logger.root if logger.nil?
+      logger
     end
   end
 end

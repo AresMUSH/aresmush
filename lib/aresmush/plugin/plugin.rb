@@ -31,6 +31,13 @@ module AresMUSH
     def want_anon_command?(cmd)
       false
     end
+
+    # Override this if you don't want logging at all, or don't want to log the full command - 
+    # for instance to avoid logging a connect command for privacy of passwords.
+    def log_command(client, cmd)
+      logger.debug("#{self.class.name}: #{cmd}")
+    end
+    
     
     # Override this with the details of your command handling.
     # See the Command class for a whole bunch of useful fields you can access.

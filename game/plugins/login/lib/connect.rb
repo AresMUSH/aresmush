@@ -30,6 +30,11 @@ module AresMUSH
         client.player = player
         container.dispatcher.on_event(:player_connected, :client => client)
       end
+      
+      def log_command(client, cmd)
+        # Don't log full command for privacy
+        logger.debug("#{self.class.name} #{client}")
+      end
     end
   end
 end

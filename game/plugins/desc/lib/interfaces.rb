@@ -10,6 +10,8 @@ module AresMUSH
     end
     
     def self.set_desc(client, model, desc)  
+      logger.debug("Setting desc: #{client} #{model["name"]} #{desc}")
+      
       model["desc"] = desc
       model_class = AresModel.model_class(model)
       model_class.update(model)

@@ -16,12 +16,14 @@ module AresMUSH
           end
 
           if (wants_cmd)
+            a.log_command(client, cmd)
             a.on_command(client, cmd)
             handled = true
             break
           end # if
         end # each
         if (!handled)
+          logger.info("Unrecognized command: #{cmd}")
           client.emit_ooc t('dispatcher.huh')
         end
       end # with error handling
@@ -43,7 +45,6 @@ module AresMUSH
     
     def with_error_handling(client, cmd, &block)
       begin
-        logger.debug("Player command: #{client.id} #{cmd}")
         yield block
       # Allow plugin exit to bubble up so it shuts the plugin down.
       rescue SystemExit

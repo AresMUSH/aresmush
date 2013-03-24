@@ -22,6 +22,8 @@ module AresMUSH
       @dispatcher = Dispatcher.new(@plugin_manager)
       @plugin1 = Object.new
       @plugin2 = Object.new
+      @plugin1.stub(:log_command)
+      @plugin2.stub(:log_command)
       AresMUSH::Locale.stub(:translate).with("dispatcher.huh") { "huh" }
       AresMUSH::Locale.stub(:translate).with("dispatcher.error_executing_command", anything()) { "error" }
     end
@@ -62,6 +64,13 @@ module AresMUSH
         @plugin_manager.stub(:plugins) { [ @plugin1 ] }
         @plugin1.stub(:want_command?) { true }
         @plugin1.should_receive(:on_command).with(@client, @command)
+        @dispatcher.on_command(@client, @command)
+      end
+      
+      it "will log the command for an plugin that wants the command" do
+        @plugin_manager.stub(:plugins) { [ @plugin1 ] }
+        @plugin1.stub(:want_command?) { true }
+        @plugin1.should_receive(:log_command).with(@client, @command)
         @dispatcher.on_command(@client, @command)
       end
       

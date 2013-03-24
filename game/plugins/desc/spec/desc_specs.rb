@@ -8,7 +8,6 @@ module AresMUSH
         @container = double(Container)
         @desc = Desc.new(@container)
         @client = double(Client)
-        
         AresMUSH::Locale.stub(:translate).with("describe.invalid_desc_syntax") { "invalid_desc_syntax" }
       end
       

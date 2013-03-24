@@ -8,7 +8,6 @@ module AresMUSH
         @container = double(Container)
         @look = Look.new(@container)
         @client = double(Client)
-        
         AresMUSH::Locale.stub(:translate).with("object.here") { "here" }        
       end
       

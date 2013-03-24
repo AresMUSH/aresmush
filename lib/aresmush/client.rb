@@ -11,7 +11,11 @@ module AresMUSH
       @connection = connection
       @config_reader = config_reader
     end
-
+    
+    def to_s
+      "Name=#{name} ID=#{id}"
+    end
+    
     def connected
       # Connect screen ansi
       emit @config_reader.config['connect']['welcome_screen']
