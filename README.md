@@ -1,11 +1,36 @@
 AresMUSH
 ========
 
-AresMUSH is a brand new MUSH server in development.  For more information see:  www.aresmush.com
+AresMUSH is a brand new MUSH server in development.  
 
-***STATUS***:  Connect and create commands are done.
+What's a MUSH server?
+=====================
+MUSHes are a kind of text-based online gaming.  They are a rather unique mix of tabletop roleplaying games, creative writing, and improvisational acting.  For more information see:  [MUSHing 101](http://www.aresmush.com/mushing-101).
 
-To play around with it:
+Why AresMUSH?
+===============================
+The premiere MUSH servers in existence, such as PennMUSH and TinyMUX, work really well but have two fatal flaws:  First, you essentially need to be a programmer to set one up.  MUSH players come from all walks of life, and often the people who have really great creative ideas for a game are stymied by the high barrier to entry.   
+
+Second, the existing MUSH servers are deeply entrenched in their 1980's roots, with interfaces that just don't resonate with modern audiences.  (For example:  Having the profile command named "+finger" was intuitive when people were used to the Unix finger command.  Nowadays?  It just gets puzzled looks.)  Folks who have been MUSHing for a long time accept the status quo, but these counter-intuitive interfaces prove a barrier to entry.
+
+The driving goal behind AresMUSH is to reduce these barriers of entry, to get more games out there and more people playing them.
+
+For more information see:  [http://www.aresmush.com](http://www.aresmush.com)
+
+How's it Going?
+===============================
+So far so good.  
+
+* Server up and running -- DONE
+* Dynamic plugin framework -- DONE
+* Localization framework -- DONE
+* Database layer -- DONE
+* Events system -- DONE
+* Basic player create and connect commands -- DONE
+* Rooms system -- IN PROGRESS
+
+Take it for a Spin?
+===============================
 
 # One Time Setup
 
