@@ -15,7 +15,7 @@ Second, the existing MUSH servers are deeply entrenched in their 1980's roots, w
 
 The driving goal behind AresMUSH is to reduce these barriers of entry, to get more games out there and more people playing them.
 
-For more information see:  [http://www.aresmush.com](http://www.aresmush.com)
+For more information see:  [http://www.aresmush.com](http://www.aresmush.com/aresmush)
 
 How's it Going?
 ===============================
