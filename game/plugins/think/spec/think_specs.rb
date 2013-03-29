@@ -27,12 +27,27 @@ module AresMUSH
       end
 
       describe :on_command do
-        it "should echo back to the client" do
-          client = double(Client)
-          client.should_receive(:emit).with("happy thoughts")
-          cmd = Command.new(@client, "think happy thoughts")
-          @think.on_command(client, cmd)
+        before do
+          @client = double(Client)
+          @client.stub(:emit)
+          @enactor = mock
+          @client.stub(:player) { @enactor }
         end
+        
+        it "should echo back to the client" do
+          Formatter.stub(:perform_subs) { "happy thoughts" }
+          @client.should_receive(:emit).with("happy thoughts")
+          cmd = Command.new(@client, "think happy thoughts")
+          @think.on_command(@client, cmd)
+        end
+        
+        it "should perform subs on the echoed message" do
+          Formatter.should_receive(:perform_subs).with("happy thoughts", @enactor) { "whee" }
+          @client.should_receive(:emit).with("whee")
+          cmd = Command.new(@client, "think happy thoughts")
+          @think.on_command(@client, cmd)
+        end
+        
       end
     end
   end

@@ -8,8 +8,7 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        msg = cmd.args
-        client.emit msg
+        client.emit Formatter.perform_subs(cmd.args, cmd.enactor)
       end
     end
   end
