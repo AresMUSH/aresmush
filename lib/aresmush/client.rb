@@ -25,19 +25,19 @@ module AresMUSH
     end
     
     def emit(msg)
-      @connection.send_data msg
+      @connection.send_formatted msg
     end 
     
     def emit_ooc(msg)
-      @connection.send_data "%xc%% #{msg}%xn"
+      @connection.send_formatted "%xc%% #{msg}%xn"
     end
 
     def emit_success(msg)
-      @connection.send_data "%xg%% #{msg}%xn"
+      @connection.send_formatted "%xg%% #{msg}%xn"
     end
 
     def emit_failure(msg)
-      @connection.send_data "%xr%% #{msg}%xn"
+      @connection.send_formatted "%xr%% #{msg}%xn"
     end
 
     # Initiates a disconnect on purpose

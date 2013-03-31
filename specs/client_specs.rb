@@ -35,28 +35,28 @@ module AresMUSH
     
     describe :emit do
       it "should send the message to the connection" do
-        @connection.should_receive(:send_data).with("Hi")
+        @connection.should_receive(:send_formatted).with("Hi")
         @client.emit "Hi"
       end
     end
 
     describe :emit_ooc do
       it "should send the message with yellow ansi tags and %% prefix" do
-        @connection.should_receive(:send_data).with("%xc%% OOC%xn")
+        @connection.should_receive(:send_formatted).with("%xc%% OOC%xn")
         @client.emit_ooc "OOC"
       end
     end    
     
     describe :emit_success do
       it "should send the message with green ansi tags and %% prefix" do
-        @connection.should_receive(:send_data).with("%xg%% Yay%xn")
+        @connection.should_receive(:send_formatted).with("%xg%% Yay%xn")
         @client.emit_success "Yay"
       end
     end
 
     describe :emit_failure do
       it "sends the message with green ansi tags and %% prefix" do
-        @connection.should_receive(:send_data).with("%xr%% Boo%xn")
+        @connection.should_receive(:send_formatted).with("%xr%% Boo%xn")
         @client.emit_failure "Boo"
       end
     end

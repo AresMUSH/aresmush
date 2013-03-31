@@ -36,7 +36,7 @@ module AresMUSH
       end
     end
     
-    def send(msg)
+    def send_formatted(msg)
       send_data Connection.format_msg(msg)
     end
     

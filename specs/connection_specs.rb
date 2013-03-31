@@ -36,7 +36,7 @@ module AresMUSH
         connection = Connection.new(nil)
         connection.should_receive(:send_data).with("TEST")
         Connection.should_receive(:format_msg).with("test") { "TEST" }
-        connection.send("test")
+        connection.send_formatted("test")
       end
     end
     
