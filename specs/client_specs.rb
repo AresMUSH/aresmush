@@ -69,7 +69,8 @@ module AresMUSH
     end
 
     describe :disconnect do
-      it "should close the connection" do
+      it "should close the connection on the next tick" do
+        EM.should_receive(:next_tick).and_yield
         @connection.should_receive(:close_connection)
         @client.disconnect
       end

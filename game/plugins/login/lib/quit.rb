@@ -12,6 +12,7 @@ module AresMUSH
       end
             
       def on_command(client, cmd)
+        client.emit_ooc(t("login.goodbye"))
         client.disconnect
       end
     end

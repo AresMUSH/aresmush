@@ -3,6 +3,7 @@ en:
        announce_player_connected: "%{name} has connected."
        announce_player_disconnected: "%{name} has disconnected."
        announce_player_created: "%{name} has been created."
+       goodbye: "Goodbye!"
        player_name_taken: "Sorry, that name is already taken."
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."

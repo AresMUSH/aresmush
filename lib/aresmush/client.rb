@@ -40,9 +40,10 @@ module AresMUSH
       @connection.send_formatted "%xr%% #{msg}%xn"
     end
 
-    # Initiates a disconnect on purpose
+    # Initiates a disconnect on purpose.  Wait a tick
+    # to give any pending messages a chance to flush.
     def disconnect
-      @connection.close_connection
+      EM.next_tick { @connection.close_connection }
     end
     
     def handle_input(data)
