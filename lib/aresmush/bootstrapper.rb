@@ -22,15 +22,9 @@ module AresMUSH
 
       # Configure a trap for exiting.
       at_exit do
-        if ($!.kind_of?(SystemExit))
-          logger.info "Normal shutdown."
-        elsif ($!.nil?)
-          logger.info "Shutting down."
-        else
-          logger.fatal "Abnormal shutdown.  \nLast exception: (#{$!.inspect})\nBacktrace: \n#{$!.backtrace[0,10]}"
-        end
+        handle_exit($!)
       end
-            
+      
       # Order here is important!
       config_reader.read
       ares_logger.start
@@ -41,10 +35,17 @@ module AresMUSH
       logger.debug config_reader.config
 
       @command_line = AresMUSH::CommandLine.new(server)
-      
-    end   
+    end
     
-    
+    def handle_exit(exception)
+      if (exception.kind_of?(SystemExit))
+        logger.info "Normal shutdown."
+      elsif (exception.nil?)
+        logger.info "Shutting down."
+      else
+        logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
+      end
+    end
     
   end
 
