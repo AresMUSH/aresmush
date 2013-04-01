@@ -42,48 +42,25 @@ module AresMUSH
       end
     end
 
-    describe :to_ansi do
-      it "replaces ansi codes" do
-        str = "A%xrB%XnC"
-        str.to_ansi.should eq "A" + ANSI.red + "B" + ANSI.reset + "C" + ANSI.reset
-      end
-      
-      it "replaces nested codes" do
-        str = "A%xc%xGB%xnC"
-        str.to_ansi.should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" + ANSI.reset
-      end
-
-      it "puts in the raw code when preceeded by a single backslash" do
-        str = "A\\%xcB" 
-        str.to_ansi.should eq "A%xcB" + ANSI.reset
-      end
-
-      it "puts in the raw code when preceeded by two backslashes" do
-        str = "A\\\\%xcB"
-        str.to_ansi.should eq "A\\%xcB" + ANSI.reset
-      end
-
-      it "replaces an escaped %" do
-        str = "A\\%c"
-        str.to_ansi.should eq "A%c"+ ANSI.reset
-      end
-
-      it "picks a random color for %x!" do
-        str = "A%x!B"
-        AresMUSH::Formatter.should_receive(:random_color) { "b" }
-        str.to_ansi.should eq "A" + ANSI.blue + "B" + ANSI.reset
-      end
-
-    end
-    
     describe :titlecase do
       it "should capitalize every word in the title" do
         "a very long engagement".titlecase.should eq "A Very Long Engagement"
       end
     end
-    
+
+
     describe :code_gsub do
-      # Covered by the ANSI tests
-    end    
+      it "should replace a code" do
+        "A%rB".code_gsub("%r", "A").should eq "AAB"
+      end
+      
+      it "should put in the raw code when preceeded by a single backslash" do
+        "A\\%rB".code_gsub("%r", "A").should eq "A\\%rB"
+      end
+
+      it "should put in the raw code when preceeded by two backslashes" do
+        "A\\\\%rB".code_gsub("%r", "Z").should eq "A\\\\%rB" 
+      end
+    end
   end
 end

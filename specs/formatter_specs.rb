@@ -12,19 +12,24 @@ module AresMUSH
     end
     
     describe :format_client_output do
-      it "should add a \n to the end if not already there" do
+      it "should add an ANSI reset and linebreak to the end" do
         msg = Formatter.format_client_output("msg")
-        msg.should eq "msg\n" + ANSI.reset
+        msg.should eq "msg" + ANSI.reset + "\n"
       end
 
       it "should not add another \n if there's already one on the end" do
         msg = Formatter.format_client_output("msg\n")
-        msg.should eq "msg\n" + ANSI.reset
+        msg.should eq "msg" + ANSI.reset + "\n"
       end
 
       it "should expand ansi codes" do
         msg = Formatter.format_client_output("my %xcansi%xn message\n")
-        msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message\n" + ANSI.reset
+        msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message" + ANSI.reset + "\n"
+      end
+
+      it "should replace an escaped %" do
+        msg = Formatter.format_client_output("A\\%c")
+        msg.should eq "A%c"+ ANSI.reset + "\n"
       end
     end
         
@@ -92,28 +97,48 @@ module AresMUSH
         @config_reader.stub(:line).with("4") { "---" }
         Formatter.perform_subs("Test%l4Test", nil).should eq "Test---Test"
       end    
+      
+      it "should replace %x! with a random color" do
+        AresMUSH::Formatter.should_receive(:random_color) { "b" }
+        Formatter.perform_subs("A%x!B", nil).should eq "A%xbB"
+      end
+
     end
     
     describe :random_color do
-      it "picks the first color for the first bracket of time" do
+      it "should pick the first color for the first bracket of time" do
         Time.stub(:now) { Time.new(2007,11,1,15,25,10) }
         Formatter.random_color.should eq "c"
       end
       
-      it "picks the second color for the second bracket of time" do
+      it "should pick the second color for the second bracket of time" do
         Time.stub(:now) { Time.new(2007,11,1,15,25,20) }
         Formatter.random_color.should eq "b"
       end
       
-      it "picks the third color for the second bracket of time" do
+      it "should pick the third color for the second bracket of time" do
         Time.stub(:now) { Time.new(2007,11,1,15,25,40) }
         Formatter.random_color.should eq "g"
       end
       
-      it "picks the last color for the fourth bracket of time" do
+      it "should pick the last color for the fourth bracket of time" do
         Time.stub(:now) { Time.new(2007,11,1,15,25,55) }
         Formatter.random_color.should eq "r"
       end      
+    end
+    
+    describe :to_ansi do
+      it "should replace ansi codes" do
+        Formatter.to_ansi("A%xrB%XnC").should eq "A" + ANSI.red + "B" + ANSI.reset + "C" 
+      end
+      
+      it "should replace nested codes" do
+        Formatter.to_ansi("A%xc%xGB%xnC").should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" 
+      end
+
+      it "should not replace a code preceeded by a backslash" do
+        Formatter.to_ansi("A\\%xcB").should eq "A\\%xcB" 
+      end
     end
   end
 end

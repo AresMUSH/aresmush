@@ -10,12 +10,13 @@ module AresMUSH
     end
     
     def self.format_client_output(msg)
-      # Add \n to end if not already there
-      if (!msg.end_with?("\n"))
-        msg = msg + "\n"
-      end
       # Ansify
-      msg.to_ansi
+      msg = to_ansi(msg)
+      # Unescape %'s
+      msg = msg.gsub("\\%", "%")
+      # Always end with ANSI reset & linebreak to flush output
+      msg.chomp!
+      msg = msg + ANSI.reset + "\n"
     end
     
     def self.parse_pose(name, msg)
@@ -37,7 +38,8 @@ module AresMUSH
     # %~ = omit block marker
     # %l1 - %l4 - line1 through line4
     def self.perform_subs(str, model)
-      # Do the lines first in case they themselves have special chars in them      
+      # Do the lines first in case they themselves have special chars in them
+      # TODO! This is UGLY!        
       str = str.code_gsub("%l1", config_reader.line("1"))
       str = str.code_gsub("%l2", config_reader.line("2"))
       str = str.code_gsub("%l3", config_reader.line("3"))
@@ -46,6 +48,7 @@ module AresMUSH
       str = str.code_gsub("%[rR]", "\n")
       str = str.code_gsub("%[tT]", "     ")
       str = str.code_gsub("%~", "\u2682")
+      str = str.code_gsub("%x!", "%x#{random_color}")
       str
     end
     
@@ -55,6 +58,48 @@ module AresMUSH
       bracket_width = 60 / colors.count
       index = Time.now.sec / bracket_width
       colors[index]
-    end    
+    end 
+    
+    
+    def self.to_ansi(str)
+      code_map = { 
+        "x" => ANSI.black,
+        "r" => ANSI.red,
+        "g" => ANSI.green,
+        "y" => ANSI.yellow,
+        "b" => ANSI.blue,
+        "m" => ANSI.magenta,
+        "c" => ANSI.cyan,
+        "w" => ANSI.white,
+
+        "X" => ANSI.on_black,
+        "R" => ANSI.on_red,
+        "G" => ANSI.on_green,
+        "Y" => ANSI.on_yellow,
+        "B" => ANSI.on_blue,
+        "M" => ANSI.on_magenta,
+        "C" => ANSI.on_cyan,
+        "W" => ANSI.on_white,
+
+        "u" => ANSI.underline,
+        "h" => ANSI.bold,
+        "i" => ANSI.inverse,
+
+        "U" => ANSI.underline_off,
+        "I" => ANSI.inverse_off,
+        "H" => ANSI.bold_off,
+
+        "n" => ANSI.reset
+
+        # No, I did not forget 'blink'.  Blink is evil. :)
+
+      }
+
+      code_map.each_key do |code|
+        str = str.code_gsub("%[xX]#{code}", code_map[code])
+      end
+      
+      str
+    end   
   end
 end
