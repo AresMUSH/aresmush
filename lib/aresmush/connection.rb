@@ -6,15 +6,6 @@ module AresMUSH
     attr_accessor :client
     attr_reader :ip_addr
     
-    def self.format_msg(msg)
-      # Add \n to end if not already there
-      if (!msg.end_with?("\n"))
-        msg = msg + "\n"
-      end
-      # Ansify
-      msg.to_ansi
-    end
-
     def post_init
       begin
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
@@ -37,7 +28,7 @@ module AresMUSH
     end
     
     def send_formatted(msg)
-      send_data Connection.format_msg(msg)
+      send_data Formatter.format_client_output(msg)
     end
     
     def close_connection

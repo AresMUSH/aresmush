@@ -9,6 +9,15 @@ module AresMUSH
       @@config_reader
     end
     
+    def self.format_client_output(msg)
+      # Add \n to end if not already there
+      if (!msg.end_with?("\n"))
+        msg = msg + "\n"
+      end
+      # Ansify
+      msg.to_ansi
+    end
+    
     def self.parse_pose(name, msg)
       if msg.start_with?("\"")
         t('object.say', :name => name, :msg => msg.rest("\""))

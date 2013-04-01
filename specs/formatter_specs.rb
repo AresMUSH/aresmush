@@ -10,6 +10,24 @@ module AresMUSH
       Formatter.config_reader = @config_reader
       @config_reader.stub(:line) { "" }
     end
+    
+    describe :format_client_output do
+      it "should add a \n to the end if not already there" do
+        msg = Formatter.format_client_output("msg")
+        msg.should eq "msg\n" + ANSI.reset
+      end
+
+      it "should not add another \n if there's already one on the end" do
+        msg = Formatter.format_client_output("msg\n")
+        msg.should eq "msg\n" + ANSI.reset
+      end
+
+      it "should expand ansi codes" do
+        msg = Formatter.format_client_output("my %xcansi%xn message\n")
+        msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message\n" + ANSI.reset
+      end
+    end
+        
     describe :parse_pose do
 
       it "should parse a say for a string starting with a quote" do
