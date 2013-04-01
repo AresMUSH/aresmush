@@ -51,11 +51,19 @@ module AresMUSH
 
     describe :code_gsub do
       it "should replace a code" do
-        "A%rB".code_gsub("%r", "A").should eq "AAB"
+        "A%rB".code_gsub("%r", "Z").should eq "AZB"
       end
       
+       it "should replace multiple instances of a code" do
+          "A%rB%r".code_gsub("%r", "Z").should eq "AZBZ"
+        end
+        
+      it "should be case-sensitive in its replacements" do
+          "A%R".code_gsub("%r", "Z").should eq "A%R"
+       end
+      
       it "should put in the raw code when preceeded by a single backslash" do
-        "A\\%rB".code_gsub("%r", "A").should eq "A\\%rB"
+        "A\\%rB".code_gsub("%r", "Z").should eq "A\\%rB"
       end
 
       it "should put in the raw code when preceeded by two backslashes" do
