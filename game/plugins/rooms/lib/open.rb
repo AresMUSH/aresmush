@@ -21,7 +21,7 @@ module AresMUSH
         exit_info = 
         { 
           "name" => cmd.args[:name], 
-          "source" => cmd.location["_id"],
+          "source" => client.location["_id"],
           "dest" => dest.nil? ? nil : dest["_id"]  # may be nil
         }
         

@@ -1,6 +1,10 @@
 module AresMUSH
   class Command
     
+    # The command class will automatically cracks the two basic command formats:
+    #   root[/switch][ args]
+    #   root[args, when args starts with a number]
+    # Anything not found will be nil
     attr_accessor :raw, :root, :switch, :args
     
     def initialize(client, input)
@@ -13,24 +17,12 @@ module AresMUSH
       "Raw=#{@raw} #{@client}"
     end
     
-    def enactor
-      @client.player
-    end
-    
-    def enactor_name
-      enactor.nil? ? "" : enactor["name"]
-    end
-    
-    def location
-      enactor.nil? ? nil : Room.find_by_id(enactor["location"])[0] 
-    end
-    
     def root_is?(root)
       @root.upcase == root.upcase
     end
     
     def logged_in?
-      enactor != nil
+      @client.player != nil
     end
     
     def crack_args!(regex)
@@ -44,10 +36,6 @@ module AresMUSH
     
     private
     
-    # This cracks the two basic command formats
-    #   root[/switch][ args]
-    #   root[args, when args starts with a number]
-    # Anything not found will be nil
     def crack(input)
       cracked = /^(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
       @root = cracked[:root].nil? ? nil : cracked[:root].strip
