@@ -9,10 +9,16 @@ module AresMUSH
     before do
       @config_reader = double(ConfigReader)
       @dispatcher = double(Dispatcher).as_null_object
-      @client_monitor = ClientMonitor.new(@config_reader, @dispatcher)
-      setup_a_couple_clients
-    end
+      @factory = double(ClientFactory).as_null_object
+      @client_monitor = ClientMonitor.new(@config_reader, @dispatcher, @factory)
 
+      # Set up a couple of test clients
+      @client1 = double(Client).as_null_object
+      @client2 = double(Client).as_null_object
+      @client_monitor.clients << @client1
+      @client_monitor.clients << @client2
+    end
+    
     describe :emit_all do
       it "should notify all the clients" do
         @client1.should_receive(:emit).with("Hi")
@@ -38,9 +44,9 @@ module AresMUSH
     
     describe :handle_client_input do
       it "should notify the dispatcher" do
-        @dispatcher.should_receive(:on_command).with(@client1, kind_of(Command)) do |client, cmd|
-          cmd.raw.should eq "test"
-        end
+        cmd = mock
+        Command.should_receive(:new).with(@client1, "test") { cmd }
+        @dispatcher.should_receive(:on_command).with(@client1, cmd)
         @client_monitor.handle_client_input(@client1, "test")
       end
     end
@@ -51,55 +57,31 @@ module AresMUSH
         @connection = double(Connection).as_null_object
       end
 
-      it "creates a client" do
-        Client.should_receive(:new).with(anything, @client_monitor, @config_reader, @connection) { @client3 }
+      it "should create a client" do
+        @factory.should_receive(:create_client).with(@connection) { @client3 }
         @client_monitor.connection_established(@connection)
       end
 
-      it "increments the next client id" do
-        Client.should_receive(:new).with(anything, @client_monitor, @config_reader, @connection) { @client3 }
-        @client_monitor.connection_established(@connection)
-        @client_monitor.client_id.should eq 1
-      end
-
-      it "assigns the client the next id" do
-        Client.should_receive(:new).with(1, @client_monitor, @config_reader, @connection) { @client3 }
-        @client_monitor.connection_established(@connection)
-      end 
-
-      it "tells the connection what its client is" do
-        Client.should_receive(:new) { @client3 }
-        @connection.should_receive(:client=).with(@client3)
-        @client_monitor.connection_established(@connection)
-      end
-
-      it "adds the client to the list" do
-        Client.should_receive(:new) { @client3 }
+      it "should add the client to the list" do
+        @factory.stub(:create_client) { @client3 }
         @client_monitor.connection_established(@connection)
         @client_monitor.clients.should include @client3
       end
 
-      it "tells the client it has connected" do
-        Client.should_receive(:new) { @client3 }
+      it "should tell the client it has connected" do
+        @factory.stub(:create_client) { @client3 }
         @client3.should_receive(:connected)
         @client_monitor.connection_established(@connection)
       end
 
       it "should notify the dispatcher" do
-        Client.should_receive(:new).with(anything, @client_monitor, @config_reader, @connection) { @client3 }
+        @factory.stub(:create_client) { @client3 }
         @dispatcher.should_receive(:on_event) do |type, args|
           type.should eq :connection_established
           args[:client].should eq @client3
         end
         @client_monitor.connection_established(@connection)
       end
-    end
-
-    def setup_a_couple_clients
-      @client1 = double(Client).as_null_object
-      @client2 = double(Client).as_null_object
-      @client_monitor.clients << @client1
-      @client_monitor.clients << @client2
     end
   end
 end

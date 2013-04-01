@@ -2,11 +2,11 @@ require 'ansi'
 
 module AresMUSH
   class ClientMonitor
-    def initialize(config_reader, dispatcher)
+    def initialize(config_reader, dispatcher, client_factory)
       @clients = []
-      @client_id = 0
       @config_reader = config_reader
       @dispatcher = dispatcher
+      @client_factory = client_factory
     end
 
     attr_reader :clients, :client_id
@@ -19,7 +19,7 @@ module AresMUSH
 
     def connection_established(connection)
       begin
-        client = create_client(connection)
+        client = @client_factory.create_client(connection)
         @clients << client
         client.connected
         @dispatcher.on_event(:connection_established, :client => client)
@@ -39,12 +39,5 @@ module AresMUSH
       @dispatcher.on_command(client, Command.new(client, input))
     end
     
-    private
-    def create_client(connection)
-      @client_id = @client_id + 1   
-      client = Client.new(@client_id, self, @config_reader, connection)       
-      connection.client = client
-      client
-    end
   end
 end
