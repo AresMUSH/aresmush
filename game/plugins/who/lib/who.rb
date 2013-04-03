@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class WhoCmd
+    class Who
       include AresMUSH::Plugin
 
       def after_initialize
@@ -11,12 +11,22 @@ module AresMUSH
         cmd.root_is?("who")
       end
       
+      def want_anon_command?(cmd)
+        cmd.root_is?("who")
+      end
+      
       def on_command(client, cmd)
-        client.emit_ooc t('players_connected', :count => @client_monitor.clients.count)
+        show_who(client)
       end
       
       def on_anon_command(client, cmd)
-        client.emit_ooc t('players_connected', :count => @client_monitor.clients.count)
+        show_who(client)
+      end
+      
+      def show_who(client)
+        logged_in = @client_monitor.clients.select { |c| c.logged_in? }
+        who_list = WhoFormatter.format(logged_in)
+        client.emit Formatter.perform_subs(who_list, nil)
       end
     end
   end

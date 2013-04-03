@@ -40,6 +40,11 @@ module AresMUSH
       @connection.send_formatted "%xr%% #{msg}%xn"
     end
 
+    def idle
+      # TODO - Implement idle command
+      "3m"
+    end
+    
     # Initiates a disconnect on purpose.  Wait a tick
     # to give any pending messages a chance to flush.
     def disconnect
@@ -61,6 +66,10 @@ module AresMUSH
     
     def location
       @player.nil? ? nil : @player['location']
+    end
+    
+    def logged_in?
+      !@player.nil?
     end
   end
 end
