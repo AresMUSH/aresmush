@@ -1,8 +1,8 @@
 module AresMUSH
   module Who
     class WhoFormatterFactory
+      # TOOD - get the class to use from config
       def self.build_char_formatter(client, container)
-        # TOOD - get the class to use from config
         WhoCharFormatter.new(client, container)
       end
       
