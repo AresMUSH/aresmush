@@ -42,7 +42,7 @@ module AresMUSH
         end
         
         it "should perform subs on the echoed message" do
-          Formatter.should_receive(:perform_subs).with("happy thoughts", @enactor) { "whee" }
+          Formatter.should_receive(:perform_subs).with("happy thoughts") { "whee" }
           @client.should_receive(:emit).with("whee")
           cmd = Command.new(@client, "think happy thoughts")
           @think.on_command(@client, cmd)

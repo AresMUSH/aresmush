@@ -37,7 +37,7 @@ module AresMUSH
     # %t = 5 spaces
     # %~ = omit block marker
     # %l1 - %l4 - line1 through line4
-    def self.perform_subs(str, model)
+    def self.perform_subs(str)
       # Do the lines first in case they themselves have special chars in them
       # TODO! This is UGLY!        
       str = str.code_gsub("%l1", config_reader.line("1"))

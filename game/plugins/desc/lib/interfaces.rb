@@ -23,7 +23,7 @@ module AresMUSH
       desc << player["name"]
       desc << "\n"
       desc << "#{player["desc"]}"
-      Formatter.perform_subs(desc, player)
+      Formatter.perform_subs(desc)
     end
     
     def self.format_room_desc(room)
@@ -43,7 +43,7 @@ module AresMUSH
         desc << "\n   #{p["name"]}"
       end
       desc << "%r%l4"
-      Formatter.perform_subs(desc, room)
+      Formatter.perform_subs(desc)
     end
   end
 end

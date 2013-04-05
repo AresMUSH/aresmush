@@ -67,40 +67,40 @@ module AresMUSH
       end
 
       it "should replace %r and %R with linebreaks" do
-        Formatter.perform_subs("Test%rline%Rline2", nil).should eq "Test\nline\nline2"
+        Formatter.perform_subs("Test%rline%Rline2").should eq "Test\nline\nline2"
       end
 
       it "should replace %t and %T with 5 spaces" do
-        Formatter.perform_subs("Test%tTest2%TTest3", nil).should eq "Test     Test2     Test3"
+        Formatter.perform_subs("Test%tTest2%TTest3").should eq "Test     Test2     Test3"
       end
 
       it "should replace %~ with the unicode marker" do
-        Formatter.perform_subs("Test%~Test", nil).should eq "Test\u2682Test"
+        Formatter.perform_subs("Test%~Test").should eq "Test\u2682Test"
       end  
       
       it "should replace %l1 with line1" do
         @config_reader.stub(:line).with("1") { "---" }
-        Formatter.perform_subs("Test%l1Test", nil).should eq "Test---Test"
+        Formatter.perform_subs("Test%l1Test").should eq "Test---Test"
       end    
 
       it "should replace %l2 with line2" do
         @config_reader.stub(:line).with("2") { "---" }
-        Formatter.perform_subs("Test%l2Test", nil).should eq "Test---Test"
+        Formatter.perform_subs("Test%l2Test").should eq "Test---Test"
       end    
 
       it "should replace %l3 with line3" do
         @config_reader.stub(:line).with("3") { "---" }
-        Formatter.perform_subs("Test%l3Test", nil).should eq "Test---Test"
+        Formatter.perform_subs("Test%l3Test").should eq "Test---Test"
       end    
 
       it "should replace %l4 with line4" do
         @config_reader.stub(:line).with("4") { "---" }
-        Formatter.perform_subs("Test%l4Test", nil).should eq "Test---Test"
+        Formatter.perform_subs("Test%l4Test").should eq "Test---Test"
       end    
       
       it "should replace %x! with a random color" do
         AresMUSH::Formatter.should_receive(:random_color) { "b" }
-        Formatter.perform_subs("A%x!B", nil).should eq "A%xbB"
+        Formatter.perform_subs("A%x!B").should eq "A%xbB"
       end
 
     end
