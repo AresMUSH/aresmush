@@ -3,7 +3,7 @@ module AresMUSH
   class Client 
 
     attr_reader :ip_addr, :id
-    attr_accessor :player
+    attr_accessor :char
     
     def initialize(id, client_monitor, config_reader, connection)
       @id = id
@@ -61,15 +61,15 @@ module AresMUSH
     end
     
     def name
-      @player.nil? ? t('client.anonymous'): @player['name']
+      @char.nil? ? t('client.anonymous'): @char['name']
     end
     
     def location
-      @player.nil? ? nil : @player['location']
+      @char.nil? ? nil : @char['location']
     end
     
     def logged_in?
-      !@player.nil?
+      !@char.nil?
     end
   end
 end

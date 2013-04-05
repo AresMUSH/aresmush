@@ -4,13 +4,13 @@ module AresMUSH
   module AresModel
 
     # Define this with the mongo collection your model uses.  
-    # For example: :players
+    # For example: :chars
     def coll
       raise "Collection not defined!"
     end
 
     # Define this with any special fields your model needs to set at create time.
-    # For example, the Player model sets name_upcase
+    # For example, the Character model sets name_upcase
     def custom_model_fields(model) 
       model     
     end

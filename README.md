@@ -9,7 +9,7 @@ MUSHes are a kind of text-based online gaming.  They are a rather unique mix of 
 
 Why AresMUSH?
 ===============================
-The premiere MUSH servers in existence, such as PennMUSH and TinyMUX, work really well but have two big barriers to entry:  First, you essentially need to be a programmer to set one up.  MUSH players come from all walks of life, and often the people who have really great creative ideas for a game are stymied by this. 
+The premiere MUSH servers in existence, such as PennMUSH and TinyMUX, work really well but have two big barriers to entry:  First, you essentially need to be a programmer to set one up.  MUSH chars come from all walks of life, and often the people who have really great creative ideas for a game are stymied by this. 
 
 Second, the existing MUSH servers are deeply entrenched in their 1980's roots, with interfaces that just don't resonate with modern audiences.  (For example:  Having the profile command named "+finger" was intuitive when people were used to the Unix finger command.  Nowadays?  It just gets puzzled looks.)  Folks who have been MUSHing for a long time accept the status quo, but these counter-intuitive interfaces prove a barrier to entry.
 
@@ -26,7 +26,7 @@ So far so good.
 * Localization framework -- DONE
 * Database layer -- DONE
 * Events system -- DONE
-* Basic player create and connect commands -- DONE
+* Basic char create and connect commands -- DONE
 * Rooms system -- IN PROGRESS
 
 Take it for a Spin?

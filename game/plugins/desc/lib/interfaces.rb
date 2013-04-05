@@ -18,11 +18,11 @@ module AresMUSH
       client.emit_success(t('describe.desc_set', :name => model["name"]))
     end
     
-    def self.format_player_desc(player)      
+    def self.format_character_desc(char)      
       desc = ""
-      desc << player["name"]
+      desc << char["name"]
       desc << "\n"
-      desc << "#{player["desc"]}"
+      desc << "#{char["desc"]}"
       Formatter.perform_subs(desc)
     end
     
@@ -38,8 +38,8 @@ module AresMUSH
         dest = e["dest"].nil? ? "Nowhere" : Room.find_by_id(e["dest"])[0]["name"]
         desc << "\n   <#{e["name"]}> #{dest}"
       end
-      desc << "\n\nPlayers:"
-      Rooms.players(room_id).each do |p|
+      desc << "\n\nCharacters:"
+      Rooms.chars(room_id).each do |p|
         desc << "\n   #{p["name"]}"
       end
       desc << "%r%l4"

@@ -84,26 +84,26 @@ module AresMUSH
     end 
     
     describe :name do
-      it "should use the player name if available" do
-        @client.player = {"name" => "Bob"}
+      it "should use the char name if available" do
+        @client.char = {"name" => "Bob"}
         @client.name.should eq "Bob"
       end
       
-      it "should use anonymous if there's no player" do
-        @client.player = nil
+      it "should use anonymous if there's no char" do
+        @client.char = nil
         @client.name.should eq "anon"
       end
       
     end
     
     describe :location do
-      it "should use the player location if available" do
-        @client.player = {"location" => "111"}
+      it "should use the char location if available" do
+        @client.char = {"location" => "111"}
         @client.location.should eq "111"
       end
       
-      it "should use nil if there's no player" do
-        @client.player = nil
+      it "should use nil if there's no char" do
+        @client.char = nil
         @client.location.should eq nil
       end
     end

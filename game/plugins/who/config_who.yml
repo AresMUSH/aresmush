@@ -1,4 +1,4 @@
 who:
     header_format: "%l1%r{{mush_name}}%r%xgStatus Name                Idle%xn"
-    player_format: "%r{{status}}  {{name}} {{idle}}"
+    char_format: "%r{{status}}  {{name}} {{idle}}"
     footer_format: "%r{{online_total}} Online  {{ic_total}} IC%R%l1"

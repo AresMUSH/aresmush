@@ -35,7 +35,7 @@ module AresMUSH
       
       it "should notify the dispatcher" do
         @dispatcher.should_receive(:on_event) do |type, args|
-          type.should eq :player_disconnected
+          type.should eq :char_disconnected
           args[:client].should eq @client1
         end
         @client_monitor.connection_closed(@client1)

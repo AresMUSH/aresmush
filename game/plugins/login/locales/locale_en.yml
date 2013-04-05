@@ -1,10 +1,10 @@
 en:
     login:
-       announce_player_connected: "%{name} has connected."
-       announce_player_disconnected: "%{name} has disconnected."
-       announce_player_created: "%{name} has been created."
+       announce_char_connected: "%{name} has connected."
+       announce_char_disconnected: "%{name} has disconnected."
+       announce_char_created: "%{name} has been created."
        goodbye: "Goodbye!"
-       player_name_taken: "Sorry, that name is already taken."
+       char_name_taken: "Sorry, that name is already taken."
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."
        invalid_password: "Password incorrect."

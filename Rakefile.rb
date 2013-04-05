@@ -14,13 +14,13 @@ end
 
 task :install do
   bootstrapper = AresMUSH::Bootstrapper.new
-  db[:players].drop
+  db[:chars].drop
   db[:exits].drop
   db[:rooms].drop
   db[:game].drop
   AresMUSH::Room.drop_all
   AresMUSH::Exit.drop_all
-  AresMUSH::Player.drop_all
+  AresMUSH::Character.drop_all
   AresMUSH::Game.drop_all
   
   welcome = AresMUSH::Room.create("name" => "Welcome Room")
@@ -37,11 +37,11 @@ task :install do
   }
   AresMUSH::Game.update(game)
   
-  headwiz = AresMUSH::Player.create(
+  headwiz = AresMUSH::Character.create(
   {
    "name" => "Headwiz", 
    "location" => welcome[:_id],
-   "password" => AresMUSH::Player.hash_password("wizb00ts"),
+   "password" => AresMUSH::Character.hash_password("wizb00ts"),
   })
   
   puts "Install complete."

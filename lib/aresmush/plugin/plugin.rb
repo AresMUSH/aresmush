@@ -12,7 +12,7 @@ module AresMUSH
     end
     
     # Override this with the processing needed to tell if you want a particular command
-    # *from a player who is logged in*.
+    # *from a char who is logged in*.
     #
     # You can do basic operations:
     #    cmd.raw.start_with?(":")
@@ -27,7 +27,7 @@ module AresMUSH
     end
     
     # Override this with the processing needed to tell if you want a particular command
-    # *from a player sitting at the login screen.*
+    # *from a char sitting at the login screen.*
     def want_anon_command?(cmd)
       false
     end

@@ -2,5 +2,5 @@ connection_established(client)
 - When an anonymous client connects
 
 
-player_connected(client)
-- When a player logs in (no longer anonymous)
+char_connected(client)
+- When a char logs in (no longer anonymous)

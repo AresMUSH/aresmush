@@ -13,8 +13,8 @@ module AresMUSH
         return if room.nil?
         
         client.emit_success("You teleport to #{room["name"]}.")
-        client.player["location"] = room["_id"]
-        Player.update(client.player)
+        client.char["location"] = room["_id"]
+        Character.update(client.char)
         client.emit Describe.format_room_desc(room)
       end
     end

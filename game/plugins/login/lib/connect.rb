@@ -17,18 +17,18 @@ module AresMUSH
 
         name = args[:name]
         password = args[:password]
-        player = Player.find_one_and_notify(name, client)
+        char = Character.find_one_and_notify(name, client)
 
         # find_one_and_notify already did the emits on failure.
-        return if player.nil?
+        return if char.nil?
         
-        if (!Player.compare_password(player, password))
+        if (!Character.compare_password(char, password))
           client.emit_failure(t('login.invalid_password'))
           return 
         end
 
-        client.player = player
-        container.dispatcher.on_event(:player_connected, :client => client)
+        client.char = char
+        container.dispatcher.on_event(:char_connected, :client => client)
       end
       
       def log_command(client, cmd)

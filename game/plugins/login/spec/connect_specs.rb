@@ -49,17 +49,17 @@ module AresMUSH
           @connect.on_command(@client, cmd)          
         end
 
-        it "should find only a single matching player" do
+        it "should find only a single matching char" do
           cmd = Command.new(@client, "connect Bob password")
-          Player.should_receive(:find_one_and_notify).with("Bob", @client) { nil }
+          Character.should_receive(:find_one_and_notify).with("Bob", @client) { nil }
           @connect.on_command(@client, cmd)          
         end
                           
         it "should fail if the passwords don't match" do
           cmd = Command.new(@client, "connect Bob password")
-          found_player = mock
-          Player.stub(:find_one_and_notify) { found_player }
-          Player.stub(:compare_password).with(found_player, "password") { false }
+          found_char = mock
+          Character.stub(:find_one_and_notify) { found_char }
+          Character.stub(:compare_password).with(found_char, "password") { false }
           @client.should_receive(:emit_failure).with("invalid_password")
           @connect.on_command(@client, cmd)          
         end        
@@ -68,38 +68,38 @@ module AresMUSH
       # SUCCESS
       describe :on_command do
         before do
-          @found_player = mock
+          @found_char = mock
           @dispatcher = double(Dispatcher)
           @container.stub(:dispatcher) { @dispatcher }
           
-          Player.stub(:find_one_and_notify){ @found_player }
-          Player.stub(:compare_password).with(@found_player, "password") { true }  
+          Character.stub(:find_one_and_notify){ @found_char }
+          Character.stub(:compare_password).with(@found_char, "password") { true }  
           @dispatcher.stub(:on_event)  
-          @client.stub(:player=)      
+          @client.stub(:char=)      
         end
         
         it "should compare passwords" do
           cmd = Command.new(@client, "connect Bob password")
-          Player.should_receive(:compare_password).with(@found_player, "password")
+          Character.should_receive(:compare_password).with(@found_char, "password")
           @connect.on_command(@client, cmd)          
         end
         
         it "should accept a multi-word password" do
           cmd = Command.new(@client, "connect Bob bob's password")
-          Player.should_receive(:compare_password).with(@found_player, "bob's password")
+          Character.should_receive(:compare_password).with(@found_char, "bob's password")
           @connect.on_command(@client, cmd)          
         end
         
-        it "should set the player on the client" do
+        it "should set the char on the client" do
           cmd = Command.new(@client, "connect Bob password")
-          @client.should_receive(:player=).with(@found_player)
+          @client.should_receive(:char=).with(@found_char)
           @connect.on_command(@client, cmd)
         end
 
-        it "should announce the player connected event" do
+        it "should announce the char connected event" do
            cmd = Command.new(@client, "connect Bob password")
            @dispatcher.should_receive(:on_event) do |type, args|
-             type.should eq :player_connected
+             type.should eq :char_connected
              args[:client].should eq @client
            end
            @connect.on_command(@client, cmd)

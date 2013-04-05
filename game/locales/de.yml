@@ -1,5 +1,5 @@
 de:
-    players_connected:
+    chars_connected:
         zero: "Keine spieler angeschlossen."
         one: "Ein spieler angeschlossen."
         other: "%{count} spieler angeschlossen."

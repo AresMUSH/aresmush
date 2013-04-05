@@ -31,7 +31,7 @@ module AresMUSH
           @client = double(Client)
           @client.stub(:emit)
           @enactor = mock
-          @client.stub(:player) { @enactor }
+          @client.stub(:char) { @enactor }
         end
         
         it "should echo back to the client" do

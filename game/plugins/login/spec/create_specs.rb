@@ -36,8 +36,8 @@ module AresMUSH
           @client = double(Client)
           @create = Create.new(nil)
           
-          Login.stub(:validate_player_name) { true }
-          Login.stub(:validate_player_password) { true }
+          Login.stub(:validate_char_name) { true }
+          Login.stub(:validate_char_password) { true }
         end
         
         it "should fail if user/password isn't specified" do
@@ -47,78 +47,78 @@ module AresMUSH
         end
 
         it "should fail if password isn't specified" do
-          cmd = Command.new(@client, "create playername")
+          cmd = Command.new(@client, "create charname")
           @client.should_receive(:emit_failure).with("invalid_create_syntax")
           @create.on_command(@client, cmd)        
         end
         
         it "should accept a multi-word password" do
-          cmd = Command.new(@client, "create playername bob's password")
-          @create.should_receive(:create_player_and_login).with(@client, "playername", "bob's password")
+          cmd = Command.new(@client, "create charname bob's password")
+          @create.should_receive(:create_char_and_login).with(@client, "charname", "bob's password")
           @create.on_command(@client, cmd)
         end    
         
         it "should make sure the name is valid" do
-          cmd = Command.new(@client, "create playername password")
-          Login.should_receive(:validate_player_name).with(@client, "playername") { false }
-          @create.should_not_receive(:create_player_and_login)
+          cmd = Command.new(@client, "create charname password")
+          Login.should_receive(:validate_char_name).with(@client, "charname") { false }
+          @create.should_not_receive(:create_char_and_login)
           @create.on_command(@client, cmd)        
         end
 
         it "should make sure the password is valid" do
-          cmd = Command.new(@client, "create playername password")
-          Login.should_receive(:validate_player_password).with(@client, "password") { false }
-          @create.should_not_receive(:create_player_and_login)
+          cmd = Command.new(@client, "create charname password")
+          Login.should_receive(:validate_char_password).with(@client, "password") { false }
+          @create.should_not_receive(:create_char_and_login)
           @create.on_command(@client, cmd)        
         end
         
-        it "should create the player" do
-          cmd = Command.new(@client, "create playername password")
-          @create.should_receive(:create_player_and_login).with(@client, "playername", "password")
+        it "should create the char" do
+          cmd = Command.new(@client, "create charname password")
+          @create.should_receive(:create_char_and_login).with(@client, "charname", "password")
           @create.on_command(@client, cmd)        
         end
         
             
       end
       
-       describe :create_player do
+       describe :create_char do
           before do
-            AresMUSH::Locale.stub(:translate).with("login.created_and_logged_in", { :name => "playername" }) { "created_and_logged_in" }
+            AresMUSH::Locale.stub(:translate).with("login.created_and_logged_in", { :name => "charname" }) { "created_and_logged_in" }
             @client = double(Client)
             @dispatcher = mock
             container = mock
             container.stub(:dispatcher) { @dispatcher }
             @create = Create.new(container)
 
-            Player.stub(:create_player)
+            Character.stub(:create_char)
             @client.stub(:emit_success)
-            @client.stub(:player=)
+            @client.stub(:char=)
             @dispatcher.stub(:on_event)
           end
 
-          it "should create the player" do          
-            Player.should_receive(:create_player).with("playername", "password")
-            @create.create_player_and_login(@client, "playername", "password")
+          it "should create the char" do          
+            Character.should_receive(:create_char).with("charname", "password")
+            @create.create_char_and_login(@client, "charname", "password")
           end
 
-          it "should tell the player they're created" do
+          it "should tell the char they're created" do
             @client.should_receive(:emit_success).with("created_and_logged_in")
-            @create.create_player_and_login(@client, "playername", "password")
+            @create.create_char_and_login(@client, "charname", "password")
           end
 
-          it "should set the player on the client" do
-            player = mock
-            Player.stub(:create_player).with("playername", "password") { player }
-            @client.should_receive(:player=).with(player)
-            @create.create_player_and_login(@client, "playername", "password")
+          it "should set the char on the client" do
+            char = mock
+            Character.stub(:create_char).with("charname", "password") { char }
+            @client.should_receive(:char=).with(char)
+            @create.create_char_and_login(@client, "charname", "password")
           end
 
           it "should dispatch the created event" do
             @dispatcher.should_receive(:on_event) do |type, args|
-              type.should eq :player_created
+              type.should eq :char_created
               args[:client].should eq @client
             end
-            @create.create_player_and_login(@client, "playername", "password")
+            @create.create_char_and_login(@client, "charname", "password")
           end
         end
     end

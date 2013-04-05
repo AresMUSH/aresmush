@@ -91,13 +91,13 @@ module AresMUSH
         @cmd = Command.new(@client, "test/sw foo")
       end
 
-      it "returns true if the player is set" do
-        @client.stub(:player) { { "name" => "Bob"} }
+      it "returns true if the char is set" do
+        @client.stub(:char) { { "name" => "Bob"} }
         @cmd.logged_in?.should be_true
       end
 
-      it "returns false if the player is not set" do
-        @client.stub(:player) { nil }
+      it "returns false if the char is not set" do
+        @client.stub(:char) { nil }
         @cmd.logged_in?.should be_false
       end
     end

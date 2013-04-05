@@ -32,7 +32,7 @@ module AresMUSH
     def connection_closed(client)
       logger.info("Client #{client.id} disconnected.")
       @clients.delete client
-      @dispatcher.on_event(:player_disconnected, :client => client)
+      @dispatcher.on_event(:char_disconnected, :client => client)
     end
 
     def handle_client_input(client, input)

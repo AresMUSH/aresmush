@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def format
-        @config_reader.config["who"]["player_format"]
+        @config_reader.config["who"]["char_format"]
       end
 
       def render_default
@@ -33,7 +33,7 @@ module AresMUSH
       end
       
       def status
-        @client.player["status"].ljust(status_width)
+        @client.char["status"].ljust(status_width)
       end
       
       def status_width

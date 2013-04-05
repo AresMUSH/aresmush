@@ -7,23 +7,23 @@ module AresMUSH
         @client_monitor = container.client_monitor
       end
       
-      def on_player_connected(args)
+      def on_char_connected(args)
         client = args[:client]
-        logger.info("Player Connected: #{client}")
+        logger.info("Character Connected: #{client}")
         client.emit_success(t('login.welcome'))
-        @client_monitor.emit_all t('login.announce_player_connected', :name => client.name)
+        @client_monitor.emit_all t('login.announce_char_connected', :name => client.name)
       end
       
-      def on_player_created(args)
+      def on_char_created(args)
         client = args[:client]
-        logger.info("Player Created: #{client}")
-        @client_monitor.emit_all t('login.announce_player_created', :name => client.name)
+        logger.info("Character Created: #{client}")
+        @client_monitor.emit_all t('login.announce_char_created', :name => client.name)
       end
 
-      def on_player_disconnected(args)
+      def on_char_disconnected(args)
         client = args[:client]
-        logger.info("Player Disconnected: #{client}")
-        @client_monitor.emit_all t('login.announce_player_disconnected', :name => client.name)
+        logger.info("Character Disconnected: #{client}")
+        @client_monitor.emit_all t('login.announce_char_disconnected', :name => client.name)
       end
     end
   end

@@ -7,9 +7,9 @@ module AresMUSH
       before do
         @client = double(Client)
         @client.stub(:emit_success)        
-        Player.stub(:update)
-        AresModel.stub(:model_class) { Player }
-        @model = { "name" => "Bob", "type" => "player" }          
+        Character.stub(:update)
+        AresModel.stub(:model_class) { Character }
+        @model = { "name" => "Bob", "type" => "char" }          
         
         AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }
       end
@@ -21,8 +21,8 @@ module AresMUSH
         end
 
         it "should save the model" do
-          AresModel.should_receive(:model_class).with(@model) { Player }
-          Player.should_receive(:update).with(@model)
+          AresModel.should_receive(:model_class).with(@model) { Character }
+          Character.should_receive(:update).with(@model)
           Describe.set_desc(@client, @model, "New desc")          
         end
         
@@ -39,10 +39,10 @@ module AresMUSH
           Describe.get_desc(model).should eq "room desc"
         end
 
-        it "should call the player format method for a player" do
-          model = { "type" => "Player" }
-          Describe.should_receive(:format_player_desc).with(model) { "player desc" }
-          Describe.get_desc(model).should eq "player desc"
+        it "should call the char format method for a char" do
+          model = { "type" => "Character" }
+          Describe.should_receive(:format_character_desc).with(model) { "char desc" }
+          Describe.get_desc(model).should eq "char desc"
         end
 
         it "should just return the desc if there's no format method" do
@@ -52,7 +52,7 @@ module AresMUSH
       end
     end
     
-    describe :format_player_desc do
+    describe :format_character_desc do
       # TODO
     end
 

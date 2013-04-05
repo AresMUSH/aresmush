@@ -231,9 +231,9 @@ module AresMUSH
         AresModel.model_class(model).should eq Exit
       end
 
-      it "should return player for an player object" do
-        model = { "type" => "Player" }
-        AresModel.model_class(model).should eq Player
+      it "should return char for an char object" do
+        model = { "type" => "Character" }
+        AresModel.model_class(model).should eq Character
       end
 
       it "should return room for an room object" do

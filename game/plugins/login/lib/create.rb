@@ -18,17 +18,17 @@ module AresMUSH
         name = args[:name]
         password = args[:password]
         
-        return if !Login.validate_player_name(client, name)
-        return if !Login.validate_player_password(client, password)
+        return if !Login.validate_char_name(client, name)
+        return if !Login.validate_char_password(client, password)
         
-        create_player_and_login(client, name, password)
+        create_char_and_login(client, name, password)
       end
       
-      def create_player_and_login(client, name, password)
-        player = Player.create_player(name, password)
+      def create_char_and_login(client, name, password)
+        char = Character.create_char(name, password)
         client.emit_success(t('login.created_and_logged_in', :name => name))
-        client.player = player
-        container.dispatcher.on_event(:player_created, :client => client)        
+        client.char = char
+        container.dispatcher.on_event(:char_created, :client => client)        
       end
       
       def log_command(client, cmd)

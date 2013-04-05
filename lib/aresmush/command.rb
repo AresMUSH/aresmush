@@ -22,7 +22,7 @@ module AresMUSH
     end
     
     def logged_in?
-      @client.player != nil
+      @client.char != nil
     end
     
     def crack_args!(regex)

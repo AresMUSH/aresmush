@@ -10,12 +10,12 @@ module AresMUSH
         @client.stub(:location) { "1" }        
       end
       
-      it "should return the player for the me keword" do
-        @client.stub(:player) { @player }
-        Rooms.find_visible_object("me", @client).should eq @player
+      it "should return the char for the me keword" do
+        @client.stub(:char) { @char }
+        Rooms.find_visible_object("me", @client).should eq @char
       end
 
-      it "should return the player's location for the here keyword" do
+      it "should return the char's location for the here keyword" do
         location = mock
         Room.should_receive(:find_one).with("1") { location }
         Rooms.find_visible_object("here", @client).should eq location
@@ -42,11 +42,11 @@ module AresMUSH
       end
     end
     
-    describe :players do
-      it "should return the list of players in the room" do
-        players = ["A", "B"]
-        Player.should_receive(:find).with({ "location" => "123" }) { players }
-        Rooms.players("123").should eq players
+    describe :chars do
+      it "should return the list of chars in the room" do
+        chars = ["A", "B"]
+        Character.should_receive(:find).with({ "location" => "123" }) { chars }
+        Rooms.chars("123").should eq chars
       end
     end
     
@@ -59,10 +59,10 @@ module AresMUSH
     end
     
     describe :contents do
-      it "should return both the players and the exits" do
-        players = ["A", "B"]
+      it "should return both the chars and the exits" do
+        chars = ["A", "B"]
         exits = ["C", "D"]
-        Rooms.should_receive(:players).with("123") { players }
+        Rooms.should_receive(:chars).with("123") { chars }
         Rooms.should_receive(:exits_from).with("123") { exits }
         Rooms.contents("123").should eq ["A", "B", "C", "D"]
       end

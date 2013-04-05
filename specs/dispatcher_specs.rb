@@ -35,7 +35,7 @@ module AresMUSH
         @dispatcher.on_command(@client, @command)
       end
       
-      it "asks each plugin if it wants a command when the player is logged in" do
+      it "asks each plugin if it wants a command when the char is logged in" do
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
         @plugin1.should_receive(:want_command?).with(@command) { false }
         @plugin2.should_receive(:want_command?).with(@command) { false }
@@ -43,7 +43,7 @@ module AresMUSH
         @dispatcher.on_command(@client, @command)
       end
       
-      it "asks each plugin if it wants a command when the player is not logged in" do
+      it "asks each plugin if it wants a command when the char is not logged in" do
         @command.stub(:logged_in?) { false }
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
         @plugin1.should_receive(:want_anon_command?).with(@command) { false }

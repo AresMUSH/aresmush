@@ -64,7 +64,7 @@ module AresMUSH
           WhoFormatter.stub(:format)
         end
 
-        it "should call the formatter with the logged in players" do
+        it "should call the formatter with the logged in chars" do
           @client_monitor.should_receive(:clients) { [@client1, @client2] }
           @client1.should_receive(:logged_in?) { false }
           @client2.should_receive(:logged_in?) { true }

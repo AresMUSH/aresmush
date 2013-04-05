@@ -18,10 +18,10 @@ en:
        me: me
        here: here
 
-    players_connected:
-        zero: "No players connected."
-        one: "One player connected."
-        other: "%{count} players connected." 
+    chars_connected:
+        zero: "No characters connected."
+        one: "One character connected."
+        other: "%{count} characters connected." 
         
     client:   
         welcome: Welcome to AresMUSH!
