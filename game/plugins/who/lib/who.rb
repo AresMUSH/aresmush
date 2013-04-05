@@ -25,8 +25,8 @@ module AresMUSH
       
       def show_who(client)
         logged_in = @client_monitor.clients.select { |c| c.logged_in? }
-        who_list = WhoFormatter.format(logged_in)
-        client.emit Formatter.perform_subs(who_list, nil)
+        who_list = WhoFormatter.format(logged_in, container)
+        client.emit Formatter.perform_subs(who_list)
       end
     end
   end
