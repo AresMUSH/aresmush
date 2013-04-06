@@ -26,14 +26,6 @@ module AresMUSH
         end
       end
       
-      describe :widths do
-        it "should define the default field widths" do
-          @formatter.name_width.should eq 20
-          @formatter.status_width.should eq 5
-          @formatter.idle_width.should eq 5
-        end        
-      end
-      
       describe :fields do
         it "should define the default fields" do
           @client.stub(:name) { "NAME" }

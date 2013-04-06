@@ -11,27 +11,15 @@ module AresMUSH
       end
 
       def name
-        @client.name.ljust(name_width)
+        @client.name.ljust(20)
       end
       
-      def name_width
-        20
-      end
-
       def idle
-        @client.idle.ljust(idle_width)
-      end
-      
-      def idle_width
-        5
+        @client.idle.ljust(5)
       end
       
       def status
-        "#{@client.char["status"]}".ljust(status_width)
-      end
-      
-      def status_width
-        5
+        "#{@client.char["status"]}".ljust(5)
       end
     end
   end
