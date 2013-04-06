@@ -21,12 +21,12 @@ module AresMUSH
 
       describe :build_header do
         before do
-          @formatter = mock(WhoHeaderFormatter).as_null_object
-          WhoFormatterFactory.stub(:build_header_formatter) { @formatter }
+          @formatter = mock(WhoHeader).as_null_object
+          WhoFormatterFactory.stub(:build_header) { @formatter }
         end
 
         it "should build a header formatter" do          
-          WhoFormatterFactory.should_receive(:build_header_formatter).with(@clients, @container) { @formatter }
+          WhoFormatterFactory.should_receive(:build_header).with(@clients, @container) { @formatter }
           WhoFormatter.build_header(@clients, @container)
         end
 
@@ -38,12 +38,12 @@ module AresMUSH
       
       describe :build_footer do
         before do
-          @formatter = mock(WhoFooterFormatter).as_null_object
-          WhoFormatterFactory.stub(:build_footer_formatter) { @formatter }
+          @formatter = mock(WhoFooter).as_null_object
+          WhoFormatterFactory.stub(:build_footer) { @formatter }
         end
 
         it "should build a footer formatter" do          
-          WhoFormatterFactory.should_receive(:build_footer_formatter).with(@clients, @container) { @formatter }
+          WhoFormatterFactory.should_receive(:build_footer).with(@clients, @container) { @formatter }
           WhoFormatter.build_footer(@clients, @container)
         end
 
@@ -55,15 +55,15 @@ module AresMUSH
       
       describe :build_chars do
         before do
-          @formatter1 = mock(WhoCharFormatter).as_null_object
-          @formatter2 = mock(WhoCharFormatter).as_null_object
-          WhoFormatterFactory.stub(:build_char_formatter).with(@client1, @container) { @formatter1 }
-          WhoFormatterFactory.stub(:build_char_formatter).with(@client2, @container) { @formatter2 }
+          @formatter1 = mock(WhoChar).as_null_object
+          @formatter2 = mock(WhoChar).as_null_object
+          WhoFormatterFactory.stub(:build_char).with(@client1, @container) { @formatter1 }
+          WhoFormatterFactory.stub(:build_char).with(@client2, @container) { @formatter2 }
         end
 
         it "should build a formatter for each char" do
-          WhoFormatterFactory.should_receive(:build_char_formatter).with(@client1, @container) { @formatter1 }
-          WhoFormatterFactory.should_receive(:build_char_formatter).with(@client2, @container) { @formatter2 }
+          WhoFormatterFactory.should_receive(:build_char).with(@client1, @container) { @formatter1 }
+          WhoFormatterFactory.should_receive(:build_char).with(@client2, @container) { @formatter2 }
           WhoFormatter.build_chars(@clients, @container)
         end
 

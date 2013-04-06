@@ -8,12 +8,12 @@ module AresMUSH
       end
       
       def self.build_header(clients, container)
-        header = WhoFormatterFactory.build_header_formatter(clients, container)
+        header = WhoFormatterFactory.build_header(clients, container)
         header.render_default
       end
       
       def self.build_footer(clients, container)
-        footer = WhoFormatterFactory.build_footer_formatter(clients, container)        
+        footer = WhoFormatterFactory.build_footer(clients, container)        
         footer.render_default
       end
             
@@ -21,7 +21,7 @@ module AresMUSH
         chars = []
         who_list = ""
         clients.each do |c| 
-          formatter = WhoFormatterFactory.build_char_formatter(c, container)
+          formatter = WhoFormatterFactory.build_char(c, container)
           who_list << formatter.render_default
         end  
         who_list            

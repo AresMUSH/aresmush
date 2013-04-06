@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     
-    class WhoHeaderFormatter < MustacheFormatter
+    class WhoHeader < MustacheFormatter
       def initialize(clients, container)
         @config_reader = container.config_reader
       end

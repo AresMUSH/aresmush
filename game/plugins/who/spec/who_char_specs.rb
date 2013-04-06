@@ -2,13 +2,13 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Who
-    describe WhoCharFormatter do
+    describe WhoChar do
       before do
         container = mock(Container)
         @client = mock(Client)
         @config_reader = mock(ConfigReader)
         container.stub(:config_reader) { @config_reader }
-        @formatter = WhoCharFormatter.new(@client, container)
+        @formatter = WhoChar.new(@client, container)
       end
 
       describe :template do
