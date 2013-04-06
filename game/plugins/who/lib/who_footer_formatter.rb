@@ -21,7 +21,7 @@ module AresMUSH
       end
 
       def ic_total
-        ic_people = @clients.select { |client| AresMUSH::Who.is_ic?(client.char) }
+        ic_people = @clients.select { |client| Who.is_ic?(client.char) }
         ic_people.count
       end
     end

@@ -33,7 +33,7 @@ module AresMUSH
       end
       
       def status
-        @client.char["status"].ljust(status_width)
+        "#{@client.char["status"]}".ljust(status_width)
       end
       
       def status_width

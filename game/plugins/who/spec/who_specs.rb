@@ -9,7 +9,7 @@ module AresMUSH
         @client = mock(Client).as_null_object
         @container = mock(Container)
         @container.stub(:client_monitor) { @client_monitor }
-        @who = Who.new(@container)
+        @who = WhoCmd.new(@container)
       end
 
       describe :want_command do

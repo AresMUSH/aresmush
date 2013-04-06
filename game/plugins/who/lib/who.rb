@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class Who
+    class WhoCmd
       include AresMUSH::Plugin
 
       def after_initialize

@@ -17,7 +17,7 @@ module AresMUSH
 
       def mush_name
         @config_reader.config["theme"]["mush_name"]
-      end
+      end      
     end
   end
 end
