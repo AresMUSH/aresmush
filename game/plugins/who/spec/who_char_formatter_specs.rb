@@ -11,17 +11,17 @@ module AresMUSH
         @formatter = WhoCharFormatter.new(@client, container)
       end
 
-      describe :format do
-        it "should use the char format" do
-          @config_reader.stub(:config) {{ "who" => { "char_format" => "mycharformat"} }}
-          @formatter.format.should eq "mycharformat"
+      describe :template do
+        it "should use the char template" do
+          @config_reader.stub(:config) {{ "who" => { "char_template" => "template"} }}
+          @formatter.template.should eq "template"
         end
       end
 
       describe :render_default do
         it "should render with the format string" do
-          @config_reader.stub(:config) {{ "who" => { "char_format" => "mycharformat"} }}
-          @formatter.should_receive(:render).with("mycharformat")
+          @config_reader.stub(:config) {{ "who" => { "char_template" => "template"} }}
+          @formatter.should_receive(:render).with("template")
           @formatter.render_default
         end
       end

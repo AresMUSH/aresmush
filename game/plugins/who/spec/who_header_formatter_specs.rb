@@ -10,17 +10,17 @@ module AresMUSH
         @formatter = WhoHeaderFormatter.new([], container)
       end
 
-      describe :format do
-        it "should use the header format" do
-          @config_reader.stub(:config) {{ "who" => { "header_format" => "myheaderformat"} }}
-          @formatter.format.should eq "myheaderformat"
+      describe :template do
+        it "should use the header template" do
+          @config_reader.stub(:config) {{ "who" => { "header_template" => "template"} }}
+          @formatter.template.should eq "template"
         end
       end
 
       describe :render_default do
         it "should render with the format string" do
-          @config_reader.stub(:config) {{ "who" => { "header_format" => "myheaderformat"} }}
-          @formatter.should_receive(:render).with("myheaderformat")
+          @config_reader.stub(:config) {{ "who" => { "header_template" => "template"} }}
+          @formatter.should_receive(:render).with("template")
           @formatter.render_default
         end
       end

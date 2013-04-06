@@ -1,18 +1,13 @@
-require 'mustache'
-
 module AresMUSH
   module Who
-    class WhoHeaderFormatter < Mustache
+    
+    class WhoHeaderFormatter < MustacheFormatter
       def initialize(clients, container)
         @config_reader = container.config_reader
       end
 
-      def format
-        @config_reader.config["who"]["header_format"]
-      end
-
-      def render_default
-        render(format)
+      def template
+        @config_reader.config["who"]["header_template"]
       end
 
       def mush_name

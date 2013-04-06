@@ -1,4 +1,4 @@
 who:
-    header_format: "%l1%r{{mush_name}}%r%xgStatus Name                Idle%xn"
-    char_format: "%r{{status}}  {{name}} {{idle}}"
-    footer_format: "%r{{online_total}} Online  {{ic_total}} IC%R%l1"
+    header_template: "%l1%r{{mush_name}}%r%xgStatus Name                Idle%xn"
+    char_template: "%r{{status}}  {{name}} {{idle}}"
+    footer_template: "%r{{online_total}} Online  {{ic_total}} IC%R%l1"

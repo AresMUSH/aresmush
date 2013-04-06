@@ -1,19 +1,13 @@
-require 'mustache'
-
 module AresMUSH
   module Who
-    class WhoCharFormatter < Mustache
+    class WhoCharFormatter < MustacheFormatter
       def initialize(client, container)
         @client = client        
         @config_reader = container.config_reader
       end
 
-      def format
-        @config_reader.config["who"]["char_format"]
-      end
-
-      def render_default
-        render(format)
+      def template
+        @config_reader.config["who"]["char_template"]
       end
 
       def name

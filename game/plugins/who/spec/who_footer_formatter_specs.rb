@@ -12,17 +12,17 @@ module AresMUSH
         @formatter = WhoFooterFormatter.new([@client1, @client2], container)
       end
 
-      describe :format do
-        it "should use the footer format" do
-          @config_reader.stub(:config) {{ "who" => { "footer_format" => "myfooterformat"} }}
-          @formatter.format.should eq "myfooterformat"
+      describe :template do
+        it "should use the footer template" do
+          @config_reader.stub(:config) {{ "who" => { "footer_template" => "template"} }}
+          @formatter.template.should eq "template"
         end
       end
 
       describe :render_default do
         it "should render with the format string" do
-          @config_reader.stub(:config) {{ "who" => { "footer_format" => "myfooterformat"} }}
-          @formatter.should_receive(:render).with("myfooterformat")
+          @config_reader.stub(:config) {{ "who" => { "footer_template" => "template"} }}
+          @formatter.should_receive(:render).with("template")
           @formatter.render_default
         end
       end      

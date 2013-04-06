@@ -1,19 +1,13 @@
-require 'mustache'
-
 module AresMUSH
   module Who
-    class WhoFooterFormatter < Mustache
+    class WhoFooterFormatter < MustacheFormatter
       def initialize(clients, container)
         @clients = clients
         @config_reader = container.config_reader
       end
 
-      def format
-        @config_reader.config["who"]["footer_format"]
-      end
-
-      def render_default
-        render(format)
+      def template
+        @config_reader.config["who"]["footer_template"]
       end
 
       def online_total
