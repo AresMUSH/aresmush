@@ -1,4 +1,44 @@
 who:
-    header_template: "%l1%r{{mush_name}}%r%xgStatus Name                Idle%xn"
+    header:
+        -
+            type: text
+            value: %l1%r
+        -
+            type: field
+            value: mush_name
+        -
+            type: text
+            value: %r%xgStatus Name                Idle%xn
+    char:
+        -
+            type: field
+            value: status
+            justify: left
+            width: 5
+        -
+            type: field
+            value: name
+            justify: left
+            width: 20
+        -
+            type: field
+            value: idle
+            justify: left
+            width: 5
+    footer:
+        -
+            type: field
+            value: online_total
+        -
+            type: text
+            value: " Online "
+        -
+            type: field
+            value: ic_total
+        -
+            type: text
+            value: " IC%r%l1"
+            
+    header_template: "%l1%r{{mush_name}}%r%xgStatus Name"
     char_template: "%r{{status}}  {{name}} {{idle}}"
     footer_template: "%r{{online_total}} Online  {{ic_total}} IC%R%l1"
