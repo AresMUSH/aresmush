@@ -22,7 +22,7 @@ module AresMUSH
         it "should use the char template" do
           @config_reader.stub(:config) {{ "who" => { "each_char" => "template"} }}
           @formatter.template.should eq "template"
-        end
+        end        
       end
       
       describe :fields do

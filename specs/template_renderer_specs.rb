@@ -43,7 +43,7 @@ module AresMUSH
         @data.should_receive(:bar) { "bar" }
         @renderer.render.should eq "bar"
       end
-      
+
       it "should treat an unhandled field as text" do
         @renderer.template = 
         [
@@ -73,37 +73,96 @@ module AresMUSH
         ]
         @renderer.render.should eq "foo%rbar%l1"      
       end    
+
+      it "should respond to nested field calls" do
+        @renderer.template = 
+        [
+          { "field" => "bar.baz" },
+        ]
+        bar = mock
+        @data.should_receive(:bar) { bar }
+        bar.should_receive(:baz) { "baz" }
+        @renderer.render.should eq "baz"      
+      end
+    end
+
+    describe :recursive_send do
+      it "should send recursively if methods are available" do
+        bar = mock
+        @data.should_receive(:bar) { bar }
+        bar.should_receive(:baz) { "baz" }
+        @renderer.recursive_send("bar.baz").should eq "baz"
+      end
+
+      it "should return the raw value when the end of a method chain is reached" do
+        bar = mock
+        baz = mock
+        @data.should_receive(:bar) { bar }
+        bar.should_receive(:baz) { baz }
+        @renderer.recursive_send("bar.baz.foo").should eq "foo"
+      end
+
     end
 
     describe :format_field do
-      it "should default to no justification" do
+
+      it "should default to the raw unadorned string" do
         config = {}
         @renderer.format_field("test", config).should eq "test"
       end
-      
-      it "should default to a width of 10" do
-        config = { "justify" => "left" }
-        @renderer.format_field("test", config).should eq "test      "
-      end
-      
-      it "should default to a padding space" do
-        config = { "justify" => "left", "width" => 5 }
-        @renderer.format_field("test", config).should eq "test "
+
+      describe :justify_field do
+
+        it "should default to the width of the string" do
+          config = { "justify" => "left" }
+          @renderer.format_field("test", config).should eq "test"
+        end
+
+        it "should default to a padding space" do
+          config = { "justify" => "left", "width" => 5 }
+          @renderer.format_field("test", config).should eq "test "
+        end
+
+        it "should justify right" do
+          config = { "justify" => "right", "width" => 5 }
+          @renderer.format_field("test", config).should eq " test"
+        end
+
+        it "should justify center" do
+          config = { "justify" => "center", "width" => 6 }
+          @renderer.format_field("test", config).should eq " test "
+        end
+
+        it "should justify with a padding char" do
+          config = { "justify" => "right", "width" => 5, "padding" => "." }
+          @renderer.format_field("test", config).should eq ".test"
+        end
       end
 
-      it "should justify right" do
-        config = { "justify" => "right", "width" => 5 }
-        @renderer.format_field("test", config).should eq " test"
+      describe :color_field do
+        it "should support color" do
+          config = { "color" => "g" }
+          @renderer.format_field("test", config).should eq "%xgtest%xn"
+        end
+
+        it "should support multiple colors" do
+          config = { "color" => "hg" }
+          @renderer.format_field("test", config).should eq "%xh%xgtest%xn"
+        end
       end
 
-      it "should justify center" do
-        config = { "justify" => "center", "width" => 6 }
-        @renderer.format_field("test", config).should eq " test "
-      end
+      describe :trim_field do
 
-      it "should justify with a padding char" do
-        config = { "justify" => "right", "width" => 5, "padding" => "." }
-        @renderer.format_field("test", config).should eq ".test"
+        it "should trim a string to 1 less than pad width" do
+          config = { "width" => "3" }
+          @renderer.format_field("test", config).should eq "te"
+        end
+
+        it "should handle a string that's too short to trim" do
+          config = { "width" => "10" }
+          @renderer.format_field("test", config).should eq "test"
+        end
+
       end
     end
 

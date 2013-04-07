@@ -11,6 +11,7 @@ who:
             field: status
             justify: left
             width: 7
+            color: hg
         -
             field: name
             justify: left
