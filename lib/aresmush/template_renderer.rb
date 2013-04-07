@@ -13,7 +13,6 @@ module AresMUSH
       # the following params:
       #    {
       #       "field"   => method name or raw text       # Required
-      #       "type"    => text or variable              # Optional - defaults to variable
       #       "justify" =>  left, right, center or none  # Optional - defaults to none
       #       "width"   =>  justify width                # Optional - defaults to 10
       #       "padding" =>  padding char for justifying  # Optional - defaults to space
@@ -29,15 +28,22 @@ module AresMUSH
       super
     end   
     
+    def respond_to?(method)
+      if (!@data.nil? && @data.respond_to?(method))
+        return true
+      end
+      super
+    end
+    
     def render
       txt = ""
       template.each do |f|
         type = f["type"]
         field = f["field"]
-        if (type == "text")
-          field = format_field(field, f)
-        else
+        if (self.respond_to?(field))
           field = format_field(self.send(field), f)
+        else
+          field = format_field(field, f)
         end
         txt << field.to_s
       end      

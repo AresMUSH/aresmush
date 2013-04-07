@@ -43,6 +43,16 @@ module AresMUSH
         @data.should_receive(:bar) { "bar" }
         @renderer.render.should eq "bar"
       end
+      
+      it "should treat an unhandled field as text" do
+        @renderer.template = 
+        [
+          {
+            "field" => "boo"
+          }
+        ]
+        @renderer.render.should eq "boo"
+      end
 
       it "should string multiple fields together" do
         @renderer.template = 
@@ -56,13 +66,12 @@ module AresMUSH
         @renderer.render.should eq "foobarbaz"
       end
 
-      it "should handle a raw text field" do
+      it "should respond to a raw text field wich funny characters" do
         @renderer.template = 
         [
-          { "field" => "foo" },
-          { "field" => "test", "type" => "text" },
+          { "field" => "foo%rbar%l1" },
         ]
-        @renderer.render.should eq "footest"      
+        @renderer.render.should eq "foo%rbar%l1"      
       end    
     end
 

@@ -2,13 +2,15 @@ who:
     header:
         -
             field: %l1%r
-            type: text
         -
             field: mush_name
         -
-            field: %r%xgName                Idle%xn
-            type: text
+            field: %r%xgStatus Name                Idle%xn
     each_char:
+        -
+            field: status
+            justify: left
+            width: 7
         -
             field: name
             justify: left
@@ -22,10 +24,7 @@ who:
             field: online_total
         -
             field: " Online "
-            type: text
         -
             field: ic_total
         -
             field: " IC%r%l1"
-            type: text
-            
