@@ -12,23 +12,14 @@ module AresMUSH
 
       describe :template do
         it "should use the header template" do
-          @config_reader.stub(:config) {{ "who" => { "header_template" => "template"} }}
+          @config_reader.stub(:config) {{ "who" => { "header" => "template"} }}
           @formatter.template.should eq "template"
         end
       end
-
-      describe :render_default do
-        it "should render with the format string" do
-          @config_reader.stub(:config) {{ "who" => { "header_template" => "template"} }}
-          @formatter.should_receive(:render).with("template")
-          @formatter.render_default
-        end
-      end
       
-      describe :fields do
-        it "should define the default fields" do
-          @config_reader.stub(:config) {{ "theme" => { "mush_name" => "mymushname"} }}
-          
+      describe :mush_name do
+        it "should provide the mush name" do
+          @config_reader.stub(:config) {{ "theme" => { "mush_name" => "mymushname"} }}          
           @formatter.mush_name.should eq "mymushname"
         end
       end

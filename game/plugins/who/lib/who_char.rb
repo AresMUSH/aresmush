@@ -1,26 +1,23 @@
 module AresMUSH
   module Who
-    class WhoChar < MustacheFormatter
+    class WhoChar < TemplateRenderer
       def initialize(client, container)
         @client = client        
         @config_reader = container.config_reader
+        @data = HashReader.new(@client.char)
       end
-
+      
       def template
-        @config_reader.config["who"]["char_template"]
+        @config_reader.config["who"]["each_char"]
       end
 
       def name
-        @client.name.ljust(20)
+        @client.name
       end
       
       def idle
-        @client.idle.ljust(5)
-      end
-      
-      def status
-        "#{@client.char["status"]}".ljust(5)
-      end
+        @client.idle
+      end   
     end
   end
 end

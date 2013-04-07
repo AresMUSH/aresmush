@@ -13,6 +13,6 @@ module AresMUSH
       def self.build_footer(clients, container)
         WhoFooter.new(clients, container)
       end
-    end
+    end    
   end
 end

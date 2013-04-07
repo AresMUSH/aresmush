@@ -1,44 +1,31 @@
 who:
     header:
         -
+            field: %l1%r
             type: text
-            value: %l1%r
         -
-            type: field
-            value: mush_name
+            field: mush_name
         -
+            field: %r%xgName                Idle%xn
             type: text
-            value: %r%xgStatus Name                Idle%xn
-    char:
+    each_char:
         -
-            type: field
-            value: status
-            justify: left
-            width: 5
-        -
-            type: field
-            value: name
+            field: name
             justify: left
             width: 20
         -
-            type: field
-            value: idle
+            field: idle
             justify: left
             width: 5
     footer:
         -
-            type: field
-            value: online_total
+            field: online_total
         -
+            field: " Online "
             type: text
-            value: " Online "
         -
-            type: field
-            value: ic_total
+            field: ic_total
         -
+            field: " IC%r%l1"
             type: text
-            value: " IC%r%l1"
             
-    header_template: "%l1%r{{mush_name}}%r%xgStatus Name"
-    char_template: "%r{{status}}  {{name}} {{idle}}"
-    footer_template: "%r{{online_total}} Online  {{ic_total}} IC%R%l1"

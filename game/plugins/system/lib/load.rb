@@ -14,6 +14,7 @@ module AresMUSH
       def on_command(client, cmd)
         plugin_name = cmd.args
         begin
+          AresMUSH.send(:remove_const,plugin_name.titlecase)
           @plugin_manager.load_plugin(plugin_name)
           client.emit_success "Reloading '#{plugin_name}' plugin."
         rescue SystemNotFoundException => e

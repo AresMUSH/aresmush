@@ -14,24 +14,18 @@ module AresMUSH
 
       describe :template do
         it "should use the footer template" do
-          @config_reader.stub(:config) {{ "who" => { "footer_template" => "template"} }}
+          @config_reader.stub(:config) {{ "who" => { "footer" => "template"} }}
           @formatter.template.should eq "template"
         end
       end
-
-      describe :render_default do
-        it "should render with the format string" do
-          @config_reader.stub(:config) {{ "who" => { "footer_template" => "template"} }}
-          @formatter.should_receive(:render).with("template")
-          @formatter.render_default
-        end
-      end      
       
       describe :online_total do
         it "should count the players online" do
           @formatter.online_total.should eq 2
         end
-        
+      end
+      
+      describe :ic_total do
         it "should count the number of IC players" do
           char1 = mock("Char1")
           char2 = mock("Char2")

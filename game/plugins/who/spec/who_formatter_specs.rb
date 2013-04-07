@@ -12,10 +12,10 @@ module AresMUSH
 
       describe :format do
         it "should string together the three component formats" do
-          WhoFormatter.should_receive(:build_header).with(@clients, @container) { "HEADER-"}
-          WhoFormatter.should_receive(:build_chars).with(@clients, @container) { "CHARS-" }
+          WhoFormatter.should_receive(:build_header).with(@clients, @container) { "HEADER"}
+          WhoFormatter.should_receive(:build_chars).with(@clients, @container) { "CHARS" }
           WhoFormatter.should_receive(:build_footer).with(@clients, @container) { "FOOTER" }
-          WhoFormatter.format(@clients, @container).should eq "HEADER-CHARS-FOOTER"
+          WhoFormatter.format(@clients, @container).should eq "HEADER\nCHARS\nFOOTER"
         end
       end
 
@@ -31,7 +31,7 @@ module AresMUSH
         end
 
         it "should return the rendered output" do
-          @formatter.should_receive(:render_default) { "ABC" }
+          @formatter.should_receive(:render) { "ABC" }
           WhoFormatter.build_header(@clients, @container).should eq "ABC"
         end
       end
@@ -48,7 +48,7 @@ module AresMUSH
         end
 
         it "should return the rendered output" do
-          @formatter.should_receive(:render_default) { "ABC" }
+          @formatter.should_receive(:render) { "ABC" }
           WhoFormatter.build_footer(@clients, @container).should eq "ABC"
         end
       end
@@ -68,8 +68,8 @@ module AresMUSH
         end
 
         it "should return the rendered output" do
-          @formatter1.should_receive(:render_default) { "ABC-" }
-          @formatter2.should_receive(:render_default) { "DEF" }
+          @formatter1.should_receive(:render) { "ABC-" }
+          @formatter2.should_receive(:render) { "DEF" }
           WhoFormatter.build_chars(@clients, @container).should eq "ABC-DEF"
         end
       end
