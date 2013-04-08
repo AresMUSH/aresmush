@@ -132,6 +132,10 @@ module AresMUSH
         Formatter.to_ansi("A%xrB%XnC").should eq "A" + ANSI.red + "B" + ANSI.reset + "C" 
       end
       
+      it "should replace ansi c as well as x" do
+        Formatter.to_ansi("A%crB%CnC").should eq "A" + ANSI.red + "B" + ANSI.reset + "C" 
+      end
+      
       it "should replace nested codes" do
         Formatter.to_ansi("A%xc%xGB%xnC").should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" 
       end
