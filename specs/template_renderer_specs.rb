@@ -26,7 +26,7 @@ module AresMUSH
         @renderer.template = 
         [
           {
-            "field" => "foo"
+            "variable" => "foo"
           }
         ]
         @data.should_not_receive(:foo)
@@ -37,7 +37,7 @@ module AresMUSH
         @renderer.template = 
         [
           {
-            "field" => "bar"
+            "variable" => "bar"
           }
         ]
         @data.should_receive(:bar) { "bar" }
@@ -48,7 +48,7 @@ module AresMUSH
         @renderer.template = 
         [
           {
-            "field" => "boo"
+            "variable" => "boo"
           }
         ]
         @renderer.render.should eq "boo"
@@ -57,9 +57,9 @@ module AresMUSH
       it "should string multiple fields together" do
         @renderer.template = 
         [
-          { "field" => "foo" },
-          { "field" => "bar" },
-          { "field" => "baz" },
+          { "variable" => "foo" },
+          { "variable" => "bar" },
+          { "variable" => "baz" },
         ]
         @data.should_receive(:bar) { "bar" }
         @data.should_receive(:baz) { "baz" }
@@ -69,7 +69,7 @@ module AresMUSH
       it "should respond to a raw text field wich funny characters" do
         @renderer.template = 
         [
-          { "field" => "foo%rbar%l1" },
+          { "text" => "foo%rbar%l1" },
         ]
         @renderer.render.should eq "foo%rbar%l1"      
       end    
@@ -77,13 +77,40 @@ module AresMUSH
       it "should respond to nested field calls" do
         @renderer.template = 
         [
-          { "field" => "bar.baz" },
+          { "variable" => "bar.baz" },
         ]
         bar = mock
         @data.should_receive(:bar) { bar }
         bar.should_receive(:baz) { "baz" }
         @renderer.render.should eq "baz"      
       end
+      
+      it "should respond to nested field calls to a non-existent param" do
+        @renderer.template = 
+        [
+          { "variable" => "bar.baz" },
+        ]
+        bar = mock
+        @data.should_receive(:bar) { bar }
+        @renderer.render.should eq "baz"      
+      end
+
+      it "should respond to a line" do
+        @renderer.template = 
+        [
+          { "line" => 2 },
+        ]
+        @renderer.render.should eq "%l2"      
+      end
+
+      it "should respond to a newline" do
+        @renderer.template = 
+        [
+          { "new_line" => "" },
+        ]
+        @renderer.render.should eq "%r"      
+      end
+
     end
 
     describe :recursive_send do
@@ -111,30 +138,30 @@ module AresMUSH
         @renderer.format_field("test", config).should eq "test"
       end
 
-      describe :justify_field do
+      describe :align_field do
 
         it "should default to the width of the string" do
-          config = { "justify" => "left" }
+          config = { "align" => "left" }
           @renderer.format_field("test", config).should eq "test"
         end
 
         it "should default to a padding space" do
-          config = { "justify" => "left", "width" => 5 }
+          config = { "align" => "left", "width" => 5 }
           @renderer.format_field("test", config).should eq "test "
         end
 
-        it "should justify right" do
-          config = { "justify" => "right", "width" => 5 }
+        it "should align right" do
+          config = { "align" => "right", "width" => 5 }
           @renderer.format_field("test", config).should eq " test"
         end
 
-        it "should justify center" do
-          config = { "justify" => "center", "width" => 6 }
+        it "should align center" do
+          config = { "align" => "center", "width" => 6 }
           @renderer.format_field("test", config).should eq " test "
         end
 
-        it "should justify with a padding char" do
-          config = { "justify" => "right", "width" => 5, "padding" => "." }
+        it "should align with a padding char" do
+          config = { "align" => "right", "width" => 5, "padding" => "." }
           @renderer.format_field("test", config).should eq ".test"
         end
       end

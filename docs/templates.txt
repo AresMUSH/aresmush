@@ -1,0 +1,16 @@
+# TODO - document templates
+
+#     ONE of the following is required:
+#       "variable"  => method name, on either the main object or data object 
+#       "text"      => raw text
+#       "line"      => line number
+#       "new_line"  => line break
+#
+#     Additional formatting params:
+#       "justify"  =>  left, right, center or none  # Optional - defaults to none
+#       "width"    =>  justify width                # Optional - defaults to none
+#       "padding " =>  padding char for justifying  # Optional - defaults to space
+#       "color"    =>  ansi code or color name      # Optional - defaults to none
+
+
+How to customize / add new fields

@@ -12,10 +12,17 @@ module AresMUSH
       # Override with field config.  This should be an array of field hashes.  Each field may have
       # the following params:
       #    {
-      #       "field"   => method name or raw text       # Required
-      #       "justify" =>  left, right, center or none  # Optional - defaults to none
-      #       "width"   =>  justify width                # Optional - defaults to 10
-      #       "padding" =>  padding char for justifying  # Optional - defaults to space
+      #     ONE of the following is required:
+      #       "variable"  => method name, on either the main object or data object 
+      #       "text"      => raw text
+      #       "line"      => line number
+      #       "new_line"  => line break
+      #
+      #     Additional formatting params:
+      #       "align"  =>  left, right, center or none  # Optional - defaults to none
+      #       "width"    =>  align width                # Optional - defaults to none
+      #       "padding " =>  padding char for aligning  # Optional - defaults to space
+      #       "color"    =>  ansi code or color name      # Optional - defaults to none
       #    }
       #
       []
@@ -36,18 +43,29 @@ module AresMUSH
     end
 
     def render
-      txt = ""
+      render_str = ""
       template.each do |f|
-        type = f["type"]
-        field = f["field"]
-        if (self.respond_to?(field.first(".")))
-          field = format_field(self.recursive_send(field), f)
+        var = f["variable"]
+        txt = f["text"]
+        line = f["line"]
+        new_line = f["new_line"]
+        
+        if (!var.nil?)
+          if (self.respond_to?(var.first(".")))
+            field = format_field(self.recursive_send(var), f)
+          else
+            field = format_field(var, f)
+          end
+        elsif (!line.nil?)
+          field = "%l#{line}"
+        elsif (!new_line.nil?)
+          field = "%r"
         else
-          field = format_field(field, f)
+          field = format_field(txt, f)
         end
-        txt << field.to_s
+        render_str << field.to_s
       end      
-      txt
+      render_str
     end
 
     def recursive_send(method)
@@ -64,32 +82,32 @@ module AresMUSH
     end
 
     def format_field(field, options)
-      justify = options["justify"] || "none"
+      align = options["align"] || "none"
       pad = options["padding"] || " "
       width = options["width"] || 0
       width = width.to_i
       color = options["color"] || nil
 
       field = trim_field(field, width)
-      field = justify_field(field, justify, width, pad)
+      field = align_field(field, align, width, pad)
       field = color_field(field, color)
       field
     end
 
     def trim_field(field, width)
       if (width > 0)
-        # Trim to 1 less than the justify to allow a space between fields.
+        # Trim to 1 less than the align width to allow a space between fields.
         return field[0, width - 1]
       end
       field
     end
 
-    def justify_field(field, justify, width, pad)
-      if (justify.downcase == "left")
+    def align_field(field, align, width, pad)
+      if (align.downcase == "left")
         return field.ljust(width, pad)
-      elsif (justify.downcase == "right")
+      elsif (align.downcase == "right")
         return field.rjust(width, pad)
-      elsif (justify.downcase == "center")
+      elsif (align.downcase == "center")
         return field.center(width, pad)  
       end
       field
