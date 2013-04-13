@@ -24,6 +24,32 @@ module AresMUSH
         end
       end
     end
+    
+    describe DescModelFinder do
+      it "should find the room model" do
+        model = mock
+        client = double(Client)
+        Rooms.should_receive(:find_visible_object).with("Bob", client) { model }
+        DescModelFinder.find("Bob", client)
+      end
+    end
+    
+    describe DescValidator do
+      before do
+        @client = double(Client)
+        AresMUSH::Locale.stub(:translate).with("describe.invalid_desc_syntax") { "invalid_desc_syntax" }
+      end
+      
+      it "should emit failure if args are nil" do
+        @client.should_receive(:emit_failure).with("invalid_desc_syntax")
+        DescValidator.validate(nil, @client).should be_false
+      end
+      
+      it "should return success if args are not nil" do
+        DescValidator.validate("", @client).should be_true        
+      end      
+    end
+    
   
     describe Desc do
       before do
@@ -57,45 +83,48 @@ module AresMUSH
       
       describe :on_command do
         before do
-          @model = { "name" => "Bob" }         
+          @model = { "name" => "Bob" }    
+          @client = double(Client)     
         end
         
-        it "should fail if no desc is specified" do
-          Describe.should_not_receive(:set_desc)
-          @client.should_receive(:emit_failure).with('invalid_desc_syntax')
-          cmd = Command.new(@client, "desc Bob")
-          @desc.on_command(@client, cmd)
-        end
-        
-        it "should fail if nothing is visible with the name" do
-          Rooms.should_receive(:find_visible_object).with("Bob", @client) { nil }
-          Describe.should_not_receive(:set_desc)
-
+        it "should fail if the args were invalid" do
+          DescCommandHandler.should_not_receive(:execute)
+          DescValidator.should_receive(:validate)
           cmd = Command.new(@client, "desc Bob=New desc")
           @desc.on_command(@client, cmd)
         end
         
-        it "should set the desc if visible" do          
-          Rooms.should_receive(:find_visible_object).with("Bob", @client) { @model }
-          Describe.should_receive(:set_desc).with(@model, "New desc")
-          cmd = Command.new(@client, "desc Bob=New desc")
-          @desc.on_command(@client, cmd)
-        end
-        
-        it "should notify the client" do
-          Rooms.stub(:find_visible_object).with("Bob", @client) { @model }
-          Describe.stub(:set_desc).with(@model, "New desc")
-          
-          @client.should_receive(:emit_success).with("desc_set")
+        it "should fail if nothing is found with the name" do
+          DescModelFinder.stub(:find).with("Bob", @client) { nil }
+          DescCommandHandler.should_not_receive(:execute)
 
           cmd = Command.new(@client, "desc Bob=New desc")
           @desc.on_command(@client, cmd)
         end
         
         it "should let you desc a multi-word object name" do
-          Rooms.should_receive(:find_visible_object).with("Bob's Room", @client) { @model }
-          Describe.should_receive(:set_desc).with(@model, "New desc")
+          # Return nil because we don't care about actually executing the handler, just about
+          # whether we can find the room.
+          DescModelFinder.should_receive(:find).with("Bob's Room", @client) { nil }
           cmd = Command.new(@client, "desc Bob's Room=New desc")
+          @desc.on_command(@client, cmd)
+        end
+        
+        it "should find the model" do
+          model = mock
+          DescModelFinder.should_receive(:find).with("Bob", @client) { model }
+          DescCommandHandler.stub(:execute)
+
+          cmd = Command.new(@client, "desc Bob=New desc")
+          @desc.on_command(@client, cmd)
+        end
+        
+        it "should call the command handler" do
+          model = mock
+          DescModelFinder.stub(:find).with("Bob", @client) { model }
+          DescCommandHandler.should_receive(:execute).with(model, "New desc", @client)
+
+          cmd = Command.new(@client, "desc Bob=New desc")
           @desc.on_command(@client, cmd)
         end
       end

@@ -23,6 +23,7 @@ module AresMUSH
         DescCommandHandler.execute(model, desc, client)        
       end
     end
+  
     
     class DescModelFinder
       def self.find(target, client)
