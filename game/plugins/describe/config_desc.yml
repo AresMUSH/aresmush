@@ -1,0 +1,33 @@
+desc:
+    room:
+        header:
+            -
+                line: 1
+            -
+                new_line: ""
+            -
+                variable: name
+            -
+                new_line: ""
+            -
+                variable: date                
+        desc:
+            -
+                variable: desc
+        each_char:
+            -
+                variable: name
+        each_exit:
+            -
+                variable: name
+            -
+                text: <
+            -
+                variable: destination
+            -
+                text: >
+        footer:
+            -
+                new_line: ""
+            -
+                line: 1

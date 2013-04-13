@@ -39,7 +39,7 @@ module AresMUSH
     # %l1 - %l4 - line1 through line4
     def self.perform_subs(str)
       # Do the lines first in case they themselves have special chars in them
-      # TODO! This is UGLY!        
+      # TODO! This is UGLY!              
       str = str.code_gsub("%l1", config_reader.line("1"))
       str = str.code_gsub("%l2", config_reader.line("2"))
       str = str.code_gsub("%l3", config_reader.line("3"))
@@ -58,11 +58,10 @@ module AresMUSH
       bracket_width = 60 / colors.count
       index = Time.now.sec / bracket_width
       colors[index]
-    end 
-
-
+    end     
+    
     def self.to_ansi(str)
-      code_map = { 
+      ansi_code_map = { 
         "x" => ANSI.black,
         "r" => ANSI.red,
         "g" => ANSI.green,
@@ -92,13 +91,11 @@ module AresMUSH
         "n" => ANSI.reset
 
         # No, I did not forget 'blink'.  Blink is evil. :)
-
       }
-
       if (str.index("%x") || str.index("%c"))
-        code_map.each_key do |code|
-          str = str.code_gsub("%[xX]#{code}", code_map[code])
-          str = str.code_gsub("%[cC]#{code}", code_map[code])
+        ansi_code_map.each_key do |code|
+          str = str.code_gsub("%[xX]#{code}", ansi_code_map[code])
+          str = str.code_gsub("%[cC]#{code}", ansi_code_map[code])
         end
       end
       str

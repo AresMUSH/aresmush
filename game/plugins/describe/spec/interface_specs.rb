@@ -33,31 +33,28 @@ module AresMUSH
       end
       
       describe :get_desc do
-        it "should call the room format method for a room" do
+        before do
+          @container = mock(Container)
+          @renderer = mock.as_null_object
+          @interface = DescFunctions.new(@container)
+          Formatter.stub(:perform_subs) { "DESC" }
+        end
+        
+        it "should build the proper renderer" do
           model = { "type" => "Room" }
-          Describe.should_receive(:format_room_desc).with(model) { "room desc" }
-          Describe.get_desc(model).should eq "room desc"
+          DescFactory.should_receive(:build).with(model, @container) { @renderer }
+          @interface.get_desc(model)
         end
 
-        it "should call the char format method for a char" do
+        it "should return the results of the render" do
           model = { "type" => "Character" }
-          Describe.should_receive(:format_character_desc).with(model) { "char desc" }
-          Describe.get_desc(model).should eq "char desc"
+          DescFactory.stub(:build) { @renderer }
+          @renderer.should_receive(:render) { "DESC" }
+          Formatter.should_receive(:perform_subs).with("DESC") { "SUBDESC" }
+          @interface.get_desc(model).should eq "SUBDESC"
         end
-
-        it "should just return the desc if there's no format method" do
-          model = { "type" => "Foo", "desc" => "foo desc" }
-          Describe.get_desc(model).should eq "foo desc"
-        end     
       end
     end
     
-    describe :format_character_desc do
-      # TODO
-    end
-
-    describe :format_room_desc do
-      # TODO
-    end
   end
 end

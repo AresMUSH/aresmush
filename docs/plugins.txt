@@ -1,0 +1,8 @@
+~~
+plugin
+- config*.yml
+- help*.yml
+- locale*.yml
+- *.rb (unless it ends in _spec.rb or _specs.rb)
+
+Traditional is to have lib/spec/locale sub-dirs with config/help at the top.

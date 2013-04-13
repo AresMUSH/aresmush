@@ -5,9 +5,11 @@ module AresMUSH
   
     describe Look do
       before do
-        @container = double(Container)
-        @look = Look.new(@container)
+        container = double(Container)
+        container.stub(:plugin_manager) { @plugin_manager }
+        @plugin_manager = double(PluginManager)
         @client = double(Client)
+        @look = Look.new(container)
         AresMUSH::Locale.stub(:translate).with("object.here") { "here" }        
       end
       
@@ -35,6 +37,7 @@ module AresMUSH
       describe :on_command do
         before do
           @client.stub(:emit)
+          @desc_interface = mock(DescFunctions)
         end
         
         it "should default to here if nothing specified" do
@@ -64,16 +67,18 @@ module AresMUSH
                 
         it "should get the desc if visible" do
           model = mock
+          Describe.should_receive(:interface).with(@plugin_manager) { @desc_interface }
           Rooms.stub(:find_visible_object).with("Bob", @client) { model }
-          Describe.should_receive(:get_desc).with(model) { "desc" }
+          @desc_interface.should_receive(:get_desc).with(model) { "desc" }
           cmd = Command.new(@client, "look Bob")
           @look.on_command(@client, cmd)
         end
         
         it "should emit the desc to the client" do
           model = mock
+          Describe.should_receive(:interface).with(@plugin_manager) { @desc_interface }
           Rooms.stub(:find_visible_object).with("Bob", @client) { model }
-          Describe.stub(:get_desc).with(model) { "desc" }
+          @desc_interface.stub(:get_desc).with(model) { "desc" }
           @client.should_receive(:emit).with("desc")
           cmd = Command.new(@client, "look Bob")
           @look.on_command(@client, cmd)

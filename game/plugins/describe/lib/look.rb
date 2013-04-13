@@ -2,6 +2,10 @@ module AresMUSH
   module Describe
     class Look
       include AresMUSH::Plugin
+      
+      def after_initialize
+        @plugin_manager = container.plugin_manager
+      end
 
       def want_command?(cmd)
         cmd.root_is?("look")
@@ -18,7 +22,8 @@ module AresMUSH
         model = Rooms.find_visible_object(target, client) 
         return if (model.nil?)
         
-        desc = Describe.get_desc(model)
+        interface = Describe.interface(@plugin_manager)
+        desc = interface.get_desc(model)
         client.emit(desc)
       end
     end
