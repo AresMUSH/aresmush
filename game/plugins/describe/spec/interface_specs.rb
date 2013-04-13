@@ -4,32 +4,23 @@ module AresMUSH
   module Describe
   
     describe Desc do
-      before do
-        @client = double(Client)
-        @client.stub(:emit_success)        
-        Character.stub(:update)
-        AresModel.stub(:model_class) { Character }
-        @model = { "name" => "Bob", "type" => "char" }          
-        
-        AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }
-      end
-      
       describe :set_desc do
+        before do
+          Character.stub(:update)
+          AresModel.stub(:model_class) { Character }
+          @model = { "name" => "Bob", "type" => "char" }          
+        end
+        
         it "should set the desc on the model" do
-          Describe.set_desc(@client, @model, "New desc")
+          Describe.set_desc(@model, "New desc")
           @model["desc"].should eq "New desc"
         end
 
         it "should save the model" do
           AresModel.should_receive(:model_class).with(@model) { Character }
           Character.should_receive(:update).with(@model)
-          Describe.set_desc(@client, @model, "New desc")          
-        end
-        
-        it "should emit success to the client" do
-          @client.should_receive(:emit_success).with("desc_set")
-          Describe.set_desc(@client, @model, "New desc")          
-        end
+          Describe.set_desc(@model, "New desc")          
+        end        
       end
       
       describe :get_desc do

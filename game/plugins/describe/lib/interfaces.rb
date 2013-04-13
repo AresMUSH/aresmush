@@ -18,13 +18,12 @@ module AresMUSH
       
     end
     
-    def self.set_desc(client, model, desc)  
-      logger.debug("Setting desc: #{client} #{model["name"]} #{desc}")
+    def self.set_desc(model, desc)  
+      logger.debug("Setting desc: #{model["name"]} #{desc}")
       
       model["desc"] = desc
       model_class = AresModel.model_class(model)
       model_class.update(model)
-      client.emit_success(t('describe.desc_set', :name => model["name"]))
     end
     
   end

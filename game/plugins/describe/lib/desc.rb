@@ -22,7 +22,8 @@ module AresMUSH
         model = Rooms.find_visible_object(target, client) 
         return if (model.nil?)
         
-        Describe.set_desc(client, model, desc)
+        Describe.set_desc(model, desc)
+        client.emit_success(t('describe.desc_set', :name => model["name"]))
       end
     end
   end

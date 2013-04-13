@@ -7,8 +7,9 @@ module AresMUSH
       before do
         @container = double(Container)
         @desc = Desc.new(@container)
-        @client = double(Client)
+        @client = double(Client).as_null_object
         AresMUSH::Locale.stub(:translate).with("describe.invalid_desc_syntax") { "invalid_desc_syntax" }
+        AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }
       end
       
       describe :want_anon_command? do
@@ -33,6 +34,10 @@ module AresMUSH
       end
       
       describe :on_command do
+        before do
+          @model = { "name" => "Bob" }         
+        end
+        
         it "should fail if no desc is specified" do
           Describe.should_not_receive(:set_desc)
           @client.should_receive(:emit_failure).with('invalid_desc_syntax')
@@ -48,18 +53,26 @@ module AresMUSH
           @desc.on_command(@client, cmd)
         end
         
-        it "should set the desc if visible" do
-          model = mock
-          Rooms.should_receive(:find_visible_object).with("Bob", @client) { model }
-          Describe.should_receive(:set_desc).with(@client, model, "New desc")
+        it "should set the desc if visible" do          
+          Rooms.should_receive(:find_visible_object).with("Bob", @client) { @model }
+          Describe.should_receive(:set_desc).with(@model, "New desc")
+          cmd = Command.new(@client, "desc Bob=New desc")
+          @desc.on_command(@client, cmd)
+        end
+        
+        it "should notify the client" do
+          Rooms.stub(:find_visible_object).with("Bob", @client) { @model }
+          Describe.stub(:set_desc).with(@model, "New desc")
+          
+          @client.should_receive(:emit_success).with("desc_set")
+
           cmd = Command.new(@client, "desc Bob=New desc")
           @desc.on_command(@client, cmd)
         end
         
         it "should let you desc a multi-word object name" do
-          model = mock
-          Rooms.should_receive(:find_visible_object).with("Bob's Room", @client) { model }
-          Describe.should_receive(:set_desc).with(@client, model, "New desc")
+          Rooms.should_receive(:find_visible_object).with("Bob's Room", @client) { @model }
+          Describe.should_receive(:set_desc).with(@model, "New desc")
           cmd = Command.new(@client, "desc Bob's Room=New desc")
           @desc.on_command(@client, cmd)
         end
