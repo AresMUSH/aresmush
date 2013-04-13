@@ -3,13 +3,35 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Describe
   
+    describe DescCommandHandler do
+      before do
+        @model = { "name" => "Bob" }
+        @client = double(Client)
+        AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }        
+      end
+
+      describe :execute do
+        it "should set the desc" do
+          @client.stub(:emit_success)
+          Describe.should_receive(:set_desc).with(@model, "My desc")
+          DescCommandHandler.execute(@model, "My desc", @client)
+        end
+        
+        it "should emit success" do
+          Describe.stub(:set_desc)
+          @client.should_receive(:emit_success).with("desc_set")
+          DescCommandHandler.execute(@model, "My desc", @client)
+        end
+      end
+    end
+  
     describe Desc do
       before do
         @container = double(Container)
         @desc = Desc.new(@container)
         @client = double(Client).as_null_object
         AresMUSH::Locale.stub(:translate).with("describe.invalid_desc_syntax") { "invalid_desc_syntax" }
-        AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }
+        AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }        
       end
       
       describe :want_anon_command? do
@@ -78,5 +100,6 @@ module AresMUSH
         end
       end
     end
+        
   end
 end
