@@ -12,19 +12,14 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        if (cmd.args.nil?)
-          target = t("object.here")
-        else 
-          args = cmd.crack_args!(/(?<target>.+)/)
-          target = args[:target]
-        end
+        args = LookCmdCracker.crack(cmd)
         
-        model = Rooms.find_visible_object(target, client) 
+        model = LookTargetFinder.find(args, client)
         return if (model.nil?)
         
-        interface = Describe.interface(@plugin_manager)
-        desc = interface.get_desc(model)
-        client.emit(desc)
+        desc_iface = Describe.interface(@plugin_manager)
+
+        LookCmdHandler.handle(desc_iface, model, client)
       end
     end
   end

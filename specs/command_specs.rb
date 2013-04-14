@@ -124,9 +124,9 @@ module AresMUSH
       it "should expand the args string into a more meaningful hash" do
         cmd = Command.new(@client, "test/foo bar=baz+harvey")
         cmd.crack_args!(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/)
-        cmd.args[:a].should eq "bar"
-        cmd.args[:b].should eq "baz"
-        cmd.args[:c].should eq "harvey"
+        cmd.args.a.should eq "bar"
+        cmd.args.b.should eq "baz"
+        cmd.args.c.should eq "harvey"
       end
       
       it "should set the args to nil if it can't crack them" do 

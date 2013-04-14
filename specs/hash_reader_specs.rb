@@ -35,6 +35,17 @@ module AresMUSH
       reader.b.should eq "2"
     end
     
+    it "should return nil if the accessor is not found" do
+      reader = HashReader.new({"a" => "b"})
+      reader.x.should eq nil
+    end
     
+    describe :raw_hash do
+      it "should provide access to the raw hash" do
+        hash = {"a" => "b"}
+        reader = HashReader.new(hash)
+        reader.raw_hash.should eq hash
+      end
+    end
   end
 end

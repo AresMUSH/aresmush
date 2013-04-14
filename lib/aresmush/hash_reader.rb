@@ -11,5 +11,13 @@ module AresMUSH
         end
       end
     end
+    
+    def raw_hash
+      @hash
+    end
+    
+    def method_missing(method, *args, &block)
+     return nil
+    end
   end
 end
