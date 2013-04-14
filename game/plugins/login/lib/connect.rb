@@ -15,8 +15,8 @@ module AresMUSH
           return
         end
 
-        name = args[:name]
-        password = args[:password]
+        name = args.name
+        password = args.password
         char = Character.find_one_and_notify(name, client)
 
         # find_one_and_notify already did the emits on failure.

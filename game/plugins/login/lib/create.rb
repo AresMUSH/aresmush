@@ -15,8 +15,8 @@ module AresMUSH
           return
         end
         
-        name = args[:name]
-        password = args[:password]
+        name = args.name
+        password = args.password
         
         return if !Login.validate_char_name(client, name)
         return if !Login.validate_char_password(client, password)
