@@ -51,14 +51,14 @@ module AresMUSH
 
         it "should find only a single matching char" do
           cmd = Command.new(@client, "connect Bob password")
-          Character.should_receive(:find_one_and_notify).with("Bob", @client) { nil }
+          SingleTargetFinder.should_receive(:find).with("Bob", Character, @client) { nil }
           @connect.on_command(@client, cmd)          
         end
                           
         it "should fail if the passwords don't match" do
           cmd = Command.new(@client, "connect Bob password")
           found_char = mock
-          Character.stub(:find_one_and_notify) { found_char }
+          SingleTargetFinder.stub(:find) { found_char }
           Character.stub(:compare_password).with(found_char, "password") { false }
           @client.should_receive(:emit_failure).with("invalid_password")
           @connect.on_command(@client, cmd)          
@@ -72,7 +72,7 @@ module AresMUSH
           @dispatcher = double(Dispatcher)
           @container.stub(:dispatcher) { @dispatcher }
           
-          Character.stub(:find_one_and_notify){ @found_char }
+          SingleTargetFinder.stub(:find){ @found_char }
           Character.stub(:compare_password).with(@found_char, "password") { true }  
           @dispatcher.stub(:on_event)  
           @client.stub(:char=)      

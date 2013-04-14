@@ -9,7 +9,7 @@ module AresMUSH
       
       def on_command(client, cmd)
         dest = cmd.args
-        room = Room.find_one_and_notify(dest, client)
+        room = SingleTargetFinder.find(dest, Room, client)
         return if room.nil?
         
         client.emit_success("You teleport to #{room["name"]}.")

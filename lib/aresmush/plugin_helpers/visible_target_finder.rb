@@ -10,8 +10,9 @@ module AresMUSH
       loc_id = client.location
       return Room.find_one(loc_id) if (name.downcase == t("object.here"))
 
-      contents = AresModel.contents(loc_id)
-      Room.notify_if_not_exatly_one(client) { contents.select { |c| c["name_upcase"] == name.upcase } }
+      contents = ContentsFinder.find(loc_id)
+      contents = contents.select { |c| c["name_upcase"] == name.upcase }
+      SingleResultSelector.select(contents, client)
     end
   end
 end

@@ -159,18 +159,6 @@ module AresMUSH
       end      
     end
 
-    describe :find_one_and_notify do
-      it "should ensure there's only one match by name or id" do
-        @client = mock
-        TestModel.should_receive(:find_by_name_or_id).with("foo")
-        TestModel.should_receive(:notify_if_not_exatly_one) do |client, &block|
-          client.should eq @client
-          block.call
-        end
-        TestModel.find_one_and_notify("foo", @client)
-      end
-    end
-
     describe :find_one do
       it "should return nil if there are no items" do
         TestModel.should_receive(:find_by_name_or_id).with("foo") { [] }        
@@ -188,49 +176,6 @@ module AresMUSH
         TestModel.find_one("foo").should eq result
       end
     end
-
-    describe :notify_if_not_exatly_one do
-      before do
-        @client = mock
-        AresMUSH::Locale.stub(:translate).with("db.object_ambiguous") { "object_ambiguous" }
-        AresMUSH::Locale.stub(:translate).with("db.object_not_found") { "object_not_found" }
-      end
-
-      it "should return false and emit failure if given something that doesn't support array indexing" do
-        @client.should_receive(:emit_failure).with("object_not_found")
-        result = TestModel.notify_if_not_exatly_one(@client) { "123" }
-        result.should be_nil
-      end
-
-      it "should return false and emit failure if given something that doesn't support empty/count" do
-        @client.should_receive(:emit_failure).with("object_not_found")
-        result = TestModel.notify_if_not_exatly_one(@client) { 123 }
-        result.should be_nil
-      end
-
-      it "should return false and emit failure for an ambiguous result" do
-        @client.should_receive(:emit_failure).with("object_ambiguous")
-        result = TestModel.notify_if_not_exatly_one(@client) { [1, 2, 3].select { |a| a > 1 } }
-        result.should be_nil
-      end
-
-      it "should return false and emit failure for an empty result" do
-        @client.should_receive(:emit_failure).with("object_not_found")
-        result = TestModel.notify_if_not_exatly_one(@client) { [1, 2, 3].select { |a| a == 7 } }
-        result.should be_nil
-      end
-
-      it "should return false and emit failure for a nil result" do
-        @client.should_receive(:emit_failure).with("object_not_found")
-        result = TestModel.notify_if_not_exatly_one(@client) { nil }
-        result.should be_nil
-      end
-
-      it "should return a singular result" do
-        result = TestModel.notify_if_not_exatly_one(@client) { [1, 2, 3].select { |a| a == 2 } }
-        result.should eq 2
-      end
-    end   
 
     describe :model_class do
       it "should return exit for an exit object" do
@@ -257,15 +202,6 @@ module AresMUSH
         model = { "type" => "Foo" }
         AresModel.model_class(model).should eq nil
       end
-    end
-    
-    describe :contents do
-      it "should aggregate the rooms exits and chars matching the location" do
-        Character.should_receive(:find_by_location).with("123") { [ "a", "b" ] }
-        Room.should_receive(:find_by_location).with("123") { [ "c", "d" ] }
-        Exit.should_receive(:find_by_location).with("123"){ [ "e", "f" ] }
-        AresModel.contents("123").should eq ["a", "b", "c", "d", "e", "f"]
-      end
-    end
+    end    
   end
 end

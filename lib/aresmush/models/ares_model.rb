@@ -75,28 +75,6 @@ module AresMUSH
       results[0]
     end
     
-    def find_one_and_notify(name_or_id, client)
-      notify_if_not_exatly_one(client) { find_by_name_or_id(name_or_id) }
-    end
-    
-    def notify_if_not_exatly_one(client, &block)
-      results = yield block
-      begin
-        if (results.nil? || results.empty?)
-          client.emit_failure(t("db.object_not_found"))
-          return nil
-        elsif (results.count > 1)
-          client.emit_failure(t("db.object_ambiguous"))
-          return nil
-        else
-          return results[0]
-        end
-      rescue ArgumentError, NoMethodError
-        client.emit_failure(t("db.object_not_found"))        
-        return nil
-      end
-    end
-    
     def self.model_class(model)
       begin
         AresMUSH.const_get(model["type"])
@@ -104,13 +82,5 @@ module AresMUSH
         nil
       end
     end
-
-    def self.contents(loc_id)
-      chars = Character.find_by_location(loc_id)
-      rooms = Room.find_by_location(loc_id)
-      exits = Exit.find_by_location(loc_id)
-      [chars, rooms, exits].flatten(1)
-    end
   end
-
 end

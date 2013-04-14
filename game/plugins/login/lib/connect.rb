@@ -17,7 +17,7 @@ module AresMUSH
 
         name = args.name
         password = args.password
-        char = Character.find_one_and_notify(name, client)
+        char = SingleTargetFinder.find(name, Character, client)
 
         # find_one_and_notify already did the emits on failure.
         return if char.nil?
