@@ -14,8 +14,8 @@ module AresMUSH
       def on_command(client, cmd)
         args = LookCmdCracker.crack(cmd)
         
-        model = LookTargetFinder.find(args, client)
-        return if (model.nil?)
+        model = VisibleTargetFinder.find(args, client, t('object.here'))
+        return if model.nil?
         
         desc_iface = Describe.interface(@plugin_manager)
 

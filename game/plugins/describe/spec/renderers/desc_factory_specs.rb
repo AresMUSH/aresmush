@@ -17,7 +17,7 @@ module AresMUSH
         end
 
         it "should create a renderer for a character" do
-          model = { "type" => "Char" }
+          model = { "type" => "Character" }
           CharRenderer.should_receive(:new).with(model, @container) { @renderer }
           DescFactory.build(model, @container).should eq @renderer
         end

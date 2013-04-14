@@ -14,7 +14,7 @@ module AresMUSH
         valid = DescCmdValidator.validate(args, client)
         return if !valid
 
-        model = Rooms.find_visible_object(args.target, client) 
+        model = VisibleTargetFinder.find(args.target, client) 
         return if model.nil?
 
         DescCmdHandler.handle(model, args.desc, client)        

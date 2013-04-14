@@ -43,6 +43,13 @@ module AresMUSH
       end
     end
 
+    describe :find_by_location do
+      it "should pass the location to the other find method" do
+        TestModel.should_receive(:find).with("location" => "LOC")
+        TestModel.find_by_location("LOC")
+      end
+    end
+
     describe :find_by_id do
       it "should pass on a BSON object id" do
         id = BSON::ObjectId.new("123")
@@ -249,6 +256,15 @@ module AresMUSH
       it "should return nil if it's not a valid type" do
         model = { "type" => "Foo" }
         AresModel.model_class(model).should eq nil
+      end
+    end
+    
+    describe :contents do
+      it "should aggregate the rooms exits and chars matching the location" do
+        Character.should_receive(:find_by_location).with("123") { [ "a", "b" ] }
+        Room.should_receive(:find_by_location).with("123") { [ "c", "d" ] }
+        Exit.should_receive(:find_by_location).with("123"){ [ "e", "f" ] }
+        AresModel.contents("123").should eq ["a", "b", "c", "d", "e", "f"]
       end
     end
   end

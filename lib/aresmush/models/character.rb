@@ -32,7 +32,6 @@ module AresMUSH
       hash = BCrypt::Password.new(char["password"])
       hash == password
     end
-    
   end
 end
     

@@ -46,6 +46,10 @@ module AresMUSH
       find("name_upcase" => name.upcase)
     end
 
+    def find_by_location(loc_id)
+      find("location" => loc_id)
+    end
+
     def find_by_name_or_id(name_or_id)
       model = find_by_id(name_or_id)
       model = find_by_name(name_or_id) if model.empty?
@@ -101,6 +105,12 @@ module AresMUSH
       end
     end
 
+    def self.contents(loc_id)
+      chars = Character.find_by_location(loc_id)
+      rooms = Room.find_by_location(loc_id)
+      exits = Exit.find_by_location(loc_id)
+      [chars, rooms, exits].flatten(1)
+    end
   end
 
 end

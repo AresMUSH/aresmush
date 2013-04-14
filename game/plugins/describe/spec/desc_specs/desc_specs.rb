@@ -57,7 +57,7 @@ module AresMUSH
         
         it "should fail if nothing is found with the name" do
           DescCmdValidator.stub(:validate) { true }
-          Rooms.should_receive(:find_visible_object).with("Bob", @client) { nil }
+          VisibleTargetFinder.should_receive(:find).with("Bob", @client) { nil }
           DescCmdHandler.should_not_receive(:handle)
           @desc.on_command(@client, @cmd)
         end        
@@ -65,7 +65,7 @@ module AresMUSH
         it "should call the command handler" do
           model = mock
           DescCmdValidator.stub(:validate) { true }
-          Rooms.should_receive(:find_visible_object).with("Bob", @client) { model }
+          VisibleTargetFinder.should_receive(:find).with("Bob", @client) { model }
           DescCmdHandler.should_receive(:handle).with(model, "New desc", @client)
           @desc.on_command(@client, @cmd)
         end
