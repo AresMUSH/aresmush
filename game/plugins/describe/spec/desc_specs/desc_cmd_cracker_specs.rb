@@ -4,10 +4,11 @@ module AresMUSH
   module Describe
   
     describe DescCmdCracker do
-      it "should return nil if args are missing" do
+      it "should return nil for args that are missing" do
         cmd = Command.new(@client, "desc bob")
         args = DescCmdCracker.crack(cmd)
-        args.should eq nil
+        args.target.should be_nil
+        args.desc.should be_nil
       end
       
       it "should be able to crack the target - even multi words" do

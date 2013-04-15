@@ -10,7 +10,7 @@ module AresMUSH
       def on_command(client, cmd)      
         args = cmd.crack_args!(/(?<name>\S+) (?<password>.+)/)
 
-        if (args.nil?)
+        if (args.name.nil? || args.password.nil?)
           client.emit_failure(t('login.invalid_connect_syntax')) 
           return
         end

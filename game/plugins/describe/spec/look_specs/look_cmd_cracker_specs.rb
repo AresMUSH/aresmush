@@ -15,7 +15,7 @@ module AresMUSH
         it "should handle a missing target" do
           cmd = Command.new(@client, "look")
           args = LookCmdCracker.crack(cmd)
-          args.should eq nil
+          args.target.should be_nil
         end        
       end
     end

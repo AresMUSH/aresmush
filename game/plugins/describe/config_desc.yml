@@ -1,4 +1,11 @@
 desc:
+    char:
+        - 
+            variable: name
+        - 
+            new_line: ""
+        - 
+            variable: description
     room:
         header:
             -
@@ -13,7 +20,7 @@ desc:
                 variable: date                
         desc:
             -
-                variable: desc
+                variable: description
         each_char:
             -
                 variable: name

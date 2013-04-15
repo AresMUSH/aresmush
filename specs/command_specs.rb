@@ -129,10 +129,11 @@ module AresMUSH
         cmd.args.c.should eq "harvey"
       end
       
-      it "should set the args to nil if it can't crack them" do 
+      it "should still return a hash reader it can't crack the args" do 
         cmd = Command.new(@client, "test/foo bar=baz+harvey")
         cmd.crack_args!(/(?<a>.+)\/(?<b>.+)/)
-        cmd.args.should be_nil
+        cmd.args.a.should be_nil
+        cmd.args.b.should be_nil
       end
     end
 

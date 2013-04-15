@@ -27,7 +27,7 @@ module AresMUSH
     
     def crack_args!(regex)
       match = regex.match(@args)
-      @args = match.nil? ? nil : HashReader.new(match.names_hash)
+      @args = match.nil? ? HashReader.new({}) : HashReader.new(match.names_hash)
     end
     
     def can_crack_args?(regex)

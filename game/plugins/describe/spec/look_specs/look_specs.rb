@@ -38,6 +38,7 @@ module AresMUSH
         before do
           @cmd = double(Command)
           @args = mock
+          @args.stub(:target) { "target" }
           LookCmdCracker.stub(:crack) { @args }
         end
         
@@ -49,7 +50,7 @@ module AresMUSH
         end
         
         it "should look for the target or here by default" do
-          VisibleTargetFinder.should_receive(:find).with(@args, @client, "here") { nil }
+          VisibleTargetFinder.should_receive(:find).with("target", @client, "here") { nil }
           @look.on_command(@client, @cmd)
         end
         
