@@ -61,24 +61,24 @@ module AresMUSH
           @client2.stub(:logged_in?) { false }
 
           Formatter.stub(:perform_subs) { "" }
-          WhoFormatter.stub(:format)
+          WhoRenderer.stub(:format)
         end
 
-        it "should call the formatter with the logged in chars" do
+        it "should call the renderer with the logged in chars" do
           @client_monitor.should_receive(:clients) { [@client1, @client2] }
           @client1.should_receive(:logged_in?) { false }
           @client2.should_receive(:logged_in?) { true }
-          WhoFormatter.should_receive(:format).with([@client2], @container) { "" }
+          WhoRenderer.should_receive(:render).with([@client2], @container) { "" }
           @who.show_who(@client)
         end
 
-        it "should call the formatter" do
-          WhoFormatter.should_receive(:format).with([@client1], @container) { "ABC" }
+        it "should call the renderer" do
+          WhoRenderer.should_receive(:render).with([@client1], @container) { "ABC" }
           @who.show_who(@client)
         end
         
-        it "should emit the results of the formatting methods" do
-          WhoFormatter.stub(:format).with([@client1], @container) { "ABC" }
+        it "should emit the results of the render methods" do
+          WhoRenderer.stub(:render).with([@client1], @container) { "ABC" }
           Formatter.should_receive(:perform_subs).with("ABC") { "DEF" }
           @client.should_receive(:emit).with("DEF")
           @who.show_who(@client)

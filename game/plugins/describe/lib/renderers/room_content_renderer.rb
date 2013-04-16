@@ -8,7 +8,7 @@ module AresMUSH
       end
 
       def template
-        @config_reader.config["desc"]["room"]["each_char"]
+        @config_reader.config["desc"]["room"]["contents"]
       end
     end
   end

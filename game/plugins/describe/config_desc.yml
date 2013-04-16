@@ -18,13 +18,40 @@ desc:
                 new_line: ""
             -
                 variable: date                
-        desc:
+            -
+                new_line: ""
+            - 
+                line: 4
+            -
+                new_line: ""
             -
                 variable: description
+            -
+                new_line: ""
+            - 
+                line: 4
+        contents:
+            -
+                new_line: ""
+            -
+                text: "Characters:"
+                color: h
         each_char:
             -
+                new_line: ""
+            -
                 variable: name
+        exits:
+            -
+                new_line: ""
+            -
+                new_line: ""
+            -
+                text: "Exits:"
+                color: h
         each_exit:
+            -
+                new_line: ""
             -
                 variable: name
             -

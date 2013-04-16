@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class WhoFormatterFactory
+    class WhoRendererFactory
       # TOOD - get the class to use from config
       def self.build_char(client, container)
         WhoChar.new(client, container)

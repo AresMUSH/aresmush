@@ -13,7 +13,7 @@ module AresMUSH
         
         it "should set the desc on the model" do
           Describe.set_desc(@model, "New desc")
-          @model["desc"].should eq "New desc"
+          @model["description"].should eq "New desc"
         end
 
         it "should save the model" do
