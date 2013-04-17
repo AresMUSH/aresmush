@@ -25,7 +25,7 @@ module AresMUSH
         @dispatcher.on_event(:connection_established, :client => client)
         logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
       rescue Exception => e
-        logger.debug "Error establishing connection #{e}."
+        logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
     end
 

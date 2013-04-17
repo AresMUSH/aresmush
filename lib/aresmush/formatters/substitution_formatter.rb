@@ -1,18 +1,10 @@
 module AresMUSH
   class SubstitutionFormatter
-    def self.config_reader=(reader)
-      @@config_reader = reader
-    end
-    
-    def self.config_reader
-      @@config_reader
-    end
-    
     # %r = linebreak
     # %t = 5 spaces
     # %~ = omit block marker
     # %l1 - %l4 - line1 through line4
-    def self.format(str)
+    def self.format(str, config_reader)
       # Do the lines first in case they themselves have special chars in them
       # TODO! This is UGLY!              
       str = str.code_gsub("%l1", config_reader.line("1"))

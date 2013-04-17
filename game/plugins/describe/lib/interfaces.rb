@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def get_desc(model)
-        renderer = @desc_factory.build(model, container)
+        renderer = @desc_factory.build(model)
         renderer.render
       end
       

@@ -9,7 +9,7 @@ module AresMUSH
       
       def build(model)
         if (model["type"] == "Room")
-          RoomRenderer.new(model)
+          RoomRenderer.new(model, @container)
         elsif (model["type"] == "Character")
           TemplateRenderer.new(char_config, model)
         elsif (model["type"] == "Exit")
@@ -56,10 +56,6 @@ module AresMUSH
       end  
 
       def build_room_header(room)
-        TemplateRenderer.new(room_config["footer"], hash_reader(room))
-      end  
-
-      def build_room_footer(room)
         TemplateRenderer.new(room_config["header"], hash_reader(room))
       end  
         

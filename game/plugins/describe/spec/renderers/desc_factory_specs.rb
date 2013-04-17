@@ -20,7 +20,7 @@ module AresMUSH
         end
         it "should create a renderer for a room" do
           model = { "type" => "Room" }
-          RoomRenderer.should_receive(:new).with(model) { @renderer }
+          RoomRenderer.should_receive(:new).with(model, @container) { @renderer }
           @factory.build(model).should eq @renderer
         end
 
