@@ -2,31 +2,29 @@ module AresMUSH
 
   class TemplateRenderer  
 
-    def initialize
-      # Override with an alternative data source.  The template will check the object itself, then
-      # the data source, for methods that correspond to the field names.
-      @data = nil
+    # The template should be an array of field hashes.  Each field may have
+    # the following params:
+    #    {
+    #     ONE of the following is required:
+    #       "variable"  => method name, on either the main object or data object 
+    #       "text"      => raw text
+    #       "line"      => line number
+    #       "new_line"  => line break
+    #
+    #     Additional formatting params:
+    #       "align"  =>  left, right, center or none  # Optional - defaults to none
+    #       "width"    =>  align width                # Optional - defaults to none
+    #       "padding " =>  padding char for aligning  # Optional - defaults to space
+    #       "color"    =>  ansi code or color name      # Optional - defaults to none
+    #    }
+    #
+
+    def initialize(template, data = nil)
+      @data = data
+      @template = template
     end
 
-    def template
-      # Override with field config.  This should be an array of field hashes.  Each field may have
-      # the following params:
-      #    {
-      #     ONE of the following is required:
-      #       "variable"  => method name, on either the main object or data object 
-      #       "text"      => raw text
-      #       "line"      => line number
-      #       "new_line"  => line break
-      #
-      #     Additional formatting params:
-      #       "align"  =>  left, right, center or none  # Optional - defaults to none
-      #       "width"    =>  align width                # Optional - defaults to none
-      #       "padding " =>  padding char for aligning  # Optional - defaults to space
-      #       "color"    =>  ansi code or color name      # Optional - defaults to none
-      #    }
-      #
-      []
-    end
+    attr_accessor :template, :data
 
     def method_missing(method, *args, &block)
       if (!@data.nil? && @data.respond_to?(method))

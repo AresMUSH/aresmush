@@ -26,21 +26,33 @@ module AresMUSH
       describe :get_desc do
         before do
           @container = mock(Container)
-          @renderer = mock.as_null_object
+          @desc_factory = mock(DescFactory)
+          DescFactory.stub(:new) { @desc_factory }
+          
           @interface = DescFunctions.new(@container)
           Formatter.stub(:perform_subs) { "DESC" }
         end
         
         it "should build the proper renderer" do
           model = { "type" => "Room" }
-          DescFactory.should_receive(:build).with(model, @container) { @renderer }
+          renderer = mock.as_null_object
+          @desc_factory.should_receive(:build).with(model, @container) { renderer }
           @interface.get_desc(model)
         end
 
-        it "should return the results of the render" do
+        it "should call the renderer" do
           model = { "type" => "Character" }
-          DescFactory.stub(:build) { @renderer }
-          @renderer.should_receive(:render) { "DESC" }
+          renderer = mock
+          @desc_factory.stub(:build) { renderer }
+          renderer.should_receive(:render)
+          @interface.get_desc(model)
+        end
+        
+        it "should return the formatted results of the render" do
+          model = { "type" => "Character" }
+          renderer = mock
+          @desc_factory.stub(:build) { renderer }
+          renderer.stub(:render) { "DESC" }
           Formatter.should_receive(:perform_subs).with("DESC") { "SUBDESC" }
           @interface.get_desc(model).should eq "SUBDESC"
         end

@@ -8,16 +8,13 @@ module AresMUSH
     def foo
       "foo"
     end  
-
-    attr_accessor :data
-    attr_accessor :template
   end
 
 
   describe TemplateRenderer do
     before do
-      @renderer = TestRenderer.new
       @data = mock
+      @renderer = TestRenderer.new([], @data)
       @renderer.data = @data
     end
 

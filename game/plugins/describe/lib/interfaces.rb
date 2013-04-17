@@ -10,8 +10,12 @@ module AresMUSH
     class DescFunctions 
       include AresMUSH::Plugin
       
+      def after_initialize
+        @desc_factory = DescFactory.new(container)
+      end
+      
       def get_desc(model)
-        renderer = DescFactory.build(model, container)
+        renderer = @desc_factory.build(model, container)
         desc = renderer.render
         Formatter.perform_subs(desc)
       end

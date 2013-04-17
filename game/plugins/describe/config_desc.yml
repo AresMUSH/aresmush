@@ -30,7 +30,7 @@ desc:
                 new_line: ""
             - 
                 line: 4
-        contents:
+        char_header:
             -
                 new_line: ""
             -
@@ -41,7 +41,7 @@ desc:
                 new_line: ""
             -
                 variable: name
-        exits:
+        exit_header:
             -
                 new_line: ""
             -

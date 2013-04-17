@@ -27,6 +27,11 @@ module AresMUSH
         msg.should eq "my " + ANSI.cyan + "ansi" + ANSI.reset + " message" + ANSI.reset + "\n"
       end
 
+      it "should perform substitutions" do
+        msg = Formatter.format_client_output("my %rtest\n")
+        msg.should eq "my \ntest" + ANSI.reset + "\n"
+      end
+
       it "should replace an escaped %" do
         msg = Formatter.format_client_output("A\\%c")
         msg.should eq "A%c"+ ANSI.reset + "\n"

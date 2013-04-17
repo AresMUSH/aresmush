@@ -10,6 +10,8 @@ module AresMUSH
     end
 
     def self.format_client_output(msg)
+      # Do substitutions
+      msg = perform_subs(msg)      
       # Ansify
       msg = to_ansi(msg)
       # Unescape %'s
