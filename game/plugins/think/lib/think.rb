@@ -8,7 +8,7 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        client.emit Formatter.perform_subs(cmd.args)
+        client.emit cmd.args
       end
     end
   end

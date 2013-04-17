@@ -28,7 +28,7 @@ module AresMUSH
     end
     
     def send_formatted(msg)
-      send_data Formatter.format_client_output(msg)
+      send_data ClientFormatter.format(msg)
     end
     
     def close_connection

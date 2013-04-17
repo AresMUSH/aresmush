@@ -19,7 +19,7 @@ module AresMUSH
     
     describe :send_formatted do
       it "should format the message before sending" do
-        Formatter.should_receive(:format_client_output).with("test") { "TEST" }
+        ClientFormatter.should_receive(:format).with("test") { "TEST" }
         @connection.should_receive(:send_data).with("TEST")
         @connection.send_formatted("test")
       end

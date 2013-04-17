@@ -30,7 +30,6 @@ module AresMUSH
           DescFactory.stub(:new) { @desc_factory }
           
           @interface = DescFunctions.new(@container)
-          Formatter.stub(:perform_subs) { "DESC" }
         end
         
         it "should build the proper renderer" do
@@ -53,8 +52,7 @@ module AresMUSH
           renderer = mock
           @desc_factory.stub(:build) { renderer }
           renderer.stub(:render) { "DESC" }
-          Formatter.should_receive(:perform_subs).with("DESC") { "SUBDESC" }
-          @interface.get_desc(model).should eq "SUBDESC"
+          @interface.get_desc(model).should eq "DESC"
         end
       end
     end

@@ -16,8 +16,7 @@ module AresMUSH
       
       def get_desc(model)
         renderer = @desc_factory.build(model, container)
-        desc = renderer.render
-        Formatter.perform_subs(desc)
+        renderer.render
       end
       
     end

@@ -60,7 +60,6 @@ module AresMUSH
           @client1.stub(:logged_in?) { true }
           @client2.stub(:logged_in?) { false }
 
-          Formatter.stub(:perform_subs) { "" }
           WhoRenderer.stub(:format)
         end
 
@@ -79,8 +78,7 @@ module AresMUSH
         
         it "should emit the results of the render methods" do
           WhoRenderer.stub(:render).with([@client1], @container) { "ABC" }
-          Formatter.should_receive(:perform_subs).with("ABC") { "DEF" }
-          @client.should_receive(:emit).with("DEF")
+          @client.should_receive(:emit).with("ABC")
           @who.show_who(@client)
         end
       end

@@ -35,19 +35,10 @@ module AresMUSH
         end
         
         it "should echo back to the client" do
-          Formatter.stub(:perform_subs) { "happy thoughts" }
           @client.should_receive(:emit).with("happy thoughts")
           cmd = Command.new(@client, "think happy thoughts")
           @think.on_command(@client, cmd)
-        end
-        
-        it "should perform subs on the echoed message" do
-          Formatter.should_receive(:perform_subs).with("happy thoughts") { "whee" }
-          @client.should_receive(:emit).with("whee")
-          cmd = Command.new(@client, "think happy thoughts")
-          @think.on_command(@client, cmd)
-        end
-        
+        end        
       end
     end
   end
