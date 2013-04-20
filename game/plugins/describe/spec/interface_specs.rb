@@ -35,7 +35,7 @@ module AresMUSH
         it "should build the proper renderer" do
           model = { "type" => "Room" }
           renderer = mock.as_null_object
-          @desc_factory.should_receive(:build).with(model, @container) { renderer }
+          @desc_factory.should_receive(:build).with(model) { renderer }
           @interface.get_desc(model)
         end
 

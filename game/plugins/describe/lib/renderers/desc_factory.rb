@@ -19,35 +19,35 @@ module AresMUSH
         end
       end 
       
-      def char_config
-        @config_reader.config["desc"]["char"]
+      def hash_reader(model)
+        HashReader.new(model)
       end
       
-      def room_config
-        @config_reader.config["desc"]["room"]
+      def char_config
+        @config_reader.config["desc"]["char"]
       end
       
       def exit_config
         @config_reader.config["desc"]["exit"]
       end
       
-      def hash_reader(model)
-        HashReader.new(model)
+      def room_config
+        @config_reader.config["desc"]["room"]
       end
       
-      def build_exit_header
-        TemplateRenderer.new(room_config["exit_header"])
+      def build_room_exit_header(room)
+        TemplateRenderer.new(room_config["exit_header"], hash_reader(room))
       end
       
-      def build_each_exit(exit)
+      def build_room_each_exit(exit)
         TemplateRenderer.new(room_config["each_exit"], hash_reader(exit))
       end
 
-      def build_chars_header
-        TemplateRenderer.new(room_config["chars_header"])
+      def build_room_char_header(room)
+        TemplateRenderer.new(room_config["char_header"], hash_reader(room))
       end
       
-      def build_each_char(exit)
+      def build_room_each_char(exit)
         TemplateRenderer.new(room_config["each_char"], hash_reader(exit))
       end
       

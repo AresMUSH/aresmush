@@ -8,16 +8,33 @@ module AresMUSH
         @container = double(Container)
         @config_reader = double(ConfigReader)
         @container.stub(:config_reader) { @config_reader }
+        @hash_reader = mock
         @renderer = mock
+        
+        @config_reader.stub(:config) {
+          {
+            "desc" =>
+            {
+              "exit" => "EXIT_CONFIG",
+              "char" => "CHAR_CONFIG",
+              "room" =>
+              {
+                "header" => "ROOM_HEADER",
+                "footer" => "ROOM_FOOTER",
+                "each_char" => "ROOM_EACH_CHAR",
+                "char_header" => "ROOM_CHAR_HEADER",
+                "each_exit" => "ROOM_EACH_EXIT",
+                "exit_header" => "ROOM_EXIT_HEADER"
+              }
+            }
+          }
+        }
+        
         @factory = DescFactory.new(@container)
+
       end
 
       describe :build do
-        before do
-          @factory.stub(:exit_config) { "EXIT_CONFIG" }
-          @factory.stub(:room_config) { "ROOM_CONFIG" }
-          @factory.stub(:char_config) { "CHAR_CONFIG" }
-        end
         it "should create a renderer for a room" do
           model = { "type" => "Room" }
           RoomRenderer.should_receive(:new).with(model, @container) { @renderer }
@@ -36,6 +53,61 @@ module AresMUSH
           @factory.build(model).should eq @renderer
         end
       end
+      
+      describe :build_room_exit_header do
+        it "should build a renderer with the expected config and a hash reader" do
+          model = mock
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("ROOM_EXIT_HEADER", @hash_reader) { @renderer }
+          @factory.build_room_exit_header(model).should eq @renderer
+        end
+      end
+
+      describe :build_room_each_exit do
+        it "should build a renderer with the expected config and a hash reader" do
+          model = mock
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("ROOM_EACH_EXIT", @hash_reader) { @renderer }
+          @factory.build_room_each_exit(model).should eq @renderer
+        end
+      end
+
+      describe :build_room_char_header do
+        it "should build a renderer with the expected config and a hash reader" do
+          model = mock
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("ROOM_CHAR_HEADER", @hash_reader) { @renderer }
+          @factory.build_room_char_header(model).should eq @renderer
+        end
+      end
+
+      describe :build_room_each_char do
+        it "should build a renderer with the expected config and a hash reader" do
+          model = mock
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("ROOM_EACH_CHAR", @hash_reader) { @renderer }
+          @factory.build_room_each_char(model).should eq @renderer
+        end
+      end
+
+      describe :build_room_footer do
+        it "should build a renderer with the expected config and a hash reader" do
+          model = mock
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("ROOM_FOOTER", @hash_reader) { @renderer }
+          @factory.build_room_footer(model).should eq @renderer
+        end
+      end
+
+      describe :build_room_header do
+        it "should build a renderer with the expected config and a hash reader" do
+          model = mock
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("ROOM_HEADER", @hash_reader) { @renderer }
+          @factory.build_room_header(model).should eq @renderer
+        end
+      end
+                  
     end
   end
 end

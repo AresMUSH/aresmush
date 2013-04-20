@@ -11,7 +11,7 @@ module AresMUSH
     #       "line"      => line number
     #       "new_line"  => line break
     #
-    #     Additional formatting params:
+    #     Additional formatting params are optional:
     #       "align"  =>  left, right, center or none  # Optional - defaults to none
     #       "width"    =>  align width                # Optional - defaults to none
     #       "padding " =>  padding char for aligning  # Optional - defaults to space
@@ -42,6 +42,9 @@ module AresMUSH
 
     def render
       render_str = ""
+      
+      logger.warn("Template not specified for #{self}.") and return "" if template.nil?
+      
       template.each do |f|
         var = f["variable"]
         txt = f["text"]
