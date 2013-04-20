@@ -2,8 +2,9 @@ module AresMUSH
 
   module Describe
     class RoomRenderer
-      def initialize(room, desc_factory)
+      def initialize(room, desc_factory, container)
         @desc_factory = desc_factory
+        @client_monitor = container.client_monitor
         @room = room
       end
 
@@ -15,6 +16,8 @@ module AresMUSH
         desc << build_exits
         desc << build_footer
       end
+      
+      # TODO - Need to refactor this so it's overrideable with custom renderers.
       
       def build_header
         renderer = @desc_factory.build_room_header(@room)
@@ -32,10 +35,10 @@ module AresMUSH
       end
       
       def build_chars
-        contents = Character.find_by_location(@room["_id"])
+        contents = @client_monitor.clients.select { |c| c.logged_in? && c.location == @room["_id"] }
         contents_str = ""
         contents.each do |c|
-          renderer = @desc_factory.build_room_each_char(c)
+          renderer = @desc_factory.build_room_each_char(c.char)
           contents_str << renderer.render
         end
         contents_str

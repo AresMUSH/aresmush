@@ -12,6 +12,10 @@ module AresMUSH
       end
     end
     
+    def to_s
+      raw_hash.nil? ? "" : raw_hash.to_s
+    end
+    
     def raw_hash
       @hash
     end

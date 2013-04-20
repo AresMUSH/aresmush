@@ -22,12 +22,14 @@ module AresMUSH
     def initialize(template, data = nil)
       @data = data
       @template = template
+      logger.debug("Initializing template renderer with temp: #{template}, data: #{data}")
     end
 
     attr_accessor :template, :data
 
     def method_missing(method, *args, &block)
       if (!@data.nil? && @data.respond_to?(method))
+        logger.debug("Reading data member #{method} for template.")
         return @data.send(method)
       end
       super
@@ -44,6 +46,8 @@ module AresMUSH
       render_str = ""
       
       logger.warn("Template not specified for #{self}.") and return "" if template.nil?
+      
+      logger.info("Rendering template #{self}.")
       
       template.each do |f|
         var = f["variable"]

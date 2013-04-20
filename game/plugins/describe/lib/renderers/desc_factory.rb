@@ -9,11 +9,11 @@ module AresMUSH
       
       def build(model)
         if (model["type"] == "Room")
-          RoomRenderer.new(model, @container)
+          RoomRenderer.new(model, self, @container)
         elsif (model["type"] == "Character")
-          TemplateRenderer.new(char_config, model)
+          TemplateRenderer.new(char_config, hash_reader(model))
         elsif (model["type"] == "Exit")
-          TemplateRenderer.new(exit_config, model)
+          TemplateRenderer.new(exit_config, hash_reader(model))
         else
           raise "Invalid model type: #{model["type"]}"
         end
@@ -56,7 +56,7 @@ module AresMUSH
       end  
 
       def build_room_header(room)
-        TemplateRenderer.new(room_config["header"], hash_reader(room))
+        RoomHeaderRenderer.new(room_config["header"], hash_reader(room))
       end  
         
     end

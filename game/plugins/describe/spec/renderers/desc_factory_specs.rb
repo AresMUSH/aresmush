@@ -37,19 +37,21 @@ module AresMUSH
       describe :build do
         it "should create a renderer for a room" do
           model = { "type" => "Room" }
-          RoomRenderer.should_receive(:new).with(model, @container) { @renderer }
+          RoomRenderer.should_receive(:new).with(model, @factory, @container) { @renderer }
           @factory.build(model).should eq @renderer
         end
 
         it "should create a renderer for a character" do
           model = { "type" => "Character" }
-          TemplateRenderer.should_receive(:new).with("CHAR_CONFIG", model) { @renderer }
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("CHAR_CONFIG", @hash_reader) { @renderer }
           @factory.build(model).should eq @renderer
         end
 
         it "should create a renderer for an exit" do
           model = { "type" => "Exit" }
-          TemplateRenderer.should_receive(:new).with("EXIT_CONFIG", model) { @renderer }
+          HashReader.should_receive(:new).with(model) { @hash_reader }
+          TemplateRenderer.should_receive(:new).with("EXIT_CONFIG", @hash_reader) { @renderer }
           @factory.build(model).should eq @renderer
         end
       end
