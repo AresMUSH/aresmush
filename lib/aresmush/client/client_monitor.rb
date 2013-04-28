@@ -1,5 +1,3 @@
-require 'ansi'
-
 module AresMUSH
   class ClientMonitor
     def initialize(config_reader, dispatcher, client_factory)

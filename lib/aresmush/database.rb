@@ -1,5 +1,3 @@
-require 'mongo'
-
 def db
   AresMUSH::Database.db
 end

@@ -1,8 +1,27 @@
 module AresMUSH
   def self.game_path
-    File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
+    game_path = File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
+    puts game_path
+    game_path
   end
 end
+
+# Require this before all other items
+require 'bundler/setup'
+
+require 'ansi'
+require 'yaml'
+require 'eventmachine'
+require 'mongo'
+require 'i18n'
+require "i18n/backend/fallbacks" 
+require 'log4r'
+require 'log4r/yamlconfigurator'
+include Log4r
+require 'date'
+require 'bcrypt'
+require 'rake'
+require 'rspec/core/rake_task'
 
 require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'

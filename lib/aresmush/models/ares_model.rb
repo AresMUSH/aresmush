@@ -1,5 +1,3 @@
-require 'date'
-
 module AresMUSH
   module AresModel
 

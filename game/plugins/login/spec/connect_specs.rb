@@ -86,7 +86,7 @@ module AresMUSH
         
         it "should accept a multi-word password" do
           cmd = Command.new(@client, "connect Bob bob's password")
-          Character.should_receive(:compare_password).with(@found_char, "bob's password")
+          Character.should_receive(:compare_password).with(@found_char, "bob's password") { true }
           @connect.on_command(@client, cmd)          
         end
         

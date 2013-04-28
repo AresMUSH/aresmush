@@ -1,5 +1,3 @@
-require 'yaml'
-
 module AresMUSH
   class ConfigReader    
     def initialize

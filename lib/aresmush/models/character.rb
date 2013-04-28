@@ -1,5 +1,3 @@
-require 'bcrypt'
-
 module AresMUSH
     module Character
     

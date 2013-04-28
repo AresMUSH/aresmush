@@ -1,6 +1,3 @@
-require 'i18n'
-require "i18n/backend/fallbacks" 
-  
 # Short global alias for translate and localize
 def t(str, *args)
   AresMUSH::Locale.translate(str, *args)

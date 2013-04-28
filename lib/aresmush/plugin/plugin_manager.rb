@@ -1,5 +1,3 @@
-require 'ansi'
-
 module AresMUSH
   
   class SystemNotFoundException < Exception

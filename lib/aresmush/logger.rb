@@ -1,7 +1,3 @@
-require 'log4r'
-require 'log4r/yamlconfigurator'
-include Log4r
-
 def logger
    l = AresMUSH::AresLogger.logger
 end

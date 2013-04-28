@@ -1,7 +1,5 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
-require 'rubygems'
-require 'rake'
-require 'rspec/core/rake_task'
+
 require 'aresmush'
 task :dbstart do
   sh "mongod --config mongo.conf"
