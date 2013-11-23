@@ -9,8 +9,12 @@ module AresMUSH
     
     def initialize(client, input)
       @client = client
-      @raw = input.chomp
-      crack(input)
+      @raw = input
+      
+      cracked_args = Cracker.crack(input)
+      @root = cracked_args[:root]
+      @switch = cracked_args[:switch]
+      @args = cracked_args[:args]
     end
     
     def to_s
@@ -34,13 +38,5 @@ module AresMUSH
       return regex.match(@args)
     end
     
-    private
-    
-    def crack(input)
-      cracked = /^(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
-      @root = cracked[:root].nil? ? nil : cracked[:root].strip
-      @switch = cracked[:switch].nil? ? nil : cracked[:switch].rest("/")
-      @args = cracked[:args].nil? ? nil : cracked[:args].strip
-    end
   end
 end

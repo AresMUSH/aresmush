@@ -22,67 +22,20 @@ module AresMUSH
         cmd.raw.should eq "test/sw foo"
       end
 
-      it "should be able to crack a root-only command" do
-        cmd = Command.new(@client, "test")
-        cmd.root.should eq "test"
-        cmd.switch.should eq nil
-        cmd.args.should eq nil
-      end
-
-      it "should be able to crack a root followed by a number" do
-        cmd = Command.new(@client, "test1")
-        cmd.root.should eq "test"
-        cmd.switch.should eq nil
-        cmd.args.should eq "1"
-      end
-
-      it "should be able to crack a root followed by a space and arg" do
-        cmd = Command.new(@client, "test abc")
-        cmd.root.should eq "test"
-        cmd.switch.should eq nil
-        cmd.args.should eq "abc"        
-      end
-
-      it "should be able to crack a root followed by a space and number" do
-        cmd = Command.new(@client, "test 2")
-        cmd.root.should eq "test"
-        cmd.switch.should eq nil
-        cmd.args.should eq "2"
-      end
-
-      it "should be able to crack a root followed by a slash and switch" do
-        cmd = Command.new(@client, "test/sw")
-        cmd.root.should eq "test"
-        cmd.switch.should eq "sw"
-        cmd.args.should eq nil        
-      end
-
-      it "should be able to crack a root followed by a slash and switch and arg" do
-        cmd = Command.new(@client, "test/sw arg")
-        cmd.root.should eq "test"
-        cmd.switch.should eq "sw"
-        cmd.args.should eq "arg"        
+      it "should use the command cracker to parse the command" do
+        Cracker.should_receive(:crack).with("test 123") { { :root => "r", :switch => "s", :args => "a" }}
+        cmd = Command.new(@client, "test 123")
+        cmd.root.should eq "r"
+        cmd.switch.should eq "s"
+        cmd.args.should eq "a"
       end
       
-      it "should be able to crack a root followed by a space and switch and number" do
-        cmd = Command.new(@client, "test/sw 2")
-        cmd.root.should eq "test"
-        cmd.switch.should eq "sw"
-        cmd.args.should eq "2"
-      end
-
-      it "should be able to strip off crazy spaces" do
-        cmd = Command.new(@client, "   test/sw    2   ")
-        cmd.root.should eq "test"
-        cmd.switch.should eq "sw"
-        cmd.args.should eq "2"
-      end
-
-      it "should not recognize a switch that's spaced out" do
-        cmd = Command.new(@client, "   test  /  sw    2   ")
-        cmd.root.should eq "test"
+      it "should save the results from cracker even if they're nil" do
+        Cracker.should_receive(:crack).with("test 123") { { :root => nil, :switch => nil, :args => nil }}
+        cmd = Command.new(@client, "test 123")
+        cmd.root.should eq nil
         cmd.switch.should eq nil
-        cmd.args.should eq "/  sw    2"
+        cmd.args.should eq nil
       end
     end
 
