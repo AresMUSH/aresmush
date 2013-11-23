@@ -85,8 +85,8 @@ module AresMUSH
           before do
             AresMUSH::Locale.stub(:translate).with("login.created_and_logged_in", { :name => "charname" }) { "created_and_logged_in" }
             @client = double(Client)
-            @dispatcher = mock
-            container = mock
+            @dispatcher = double
+            container = double
             container.stub(:dispatcher) { @dispatcher }
             @create = Create.new(container)
 
@@ -107,7 +107,7 @@ module AresMUSH
           end
 
           it "should set the char on the client" do
-            char = mock
+            char = double
             Character.stub(:create_char).with("charname", "password") { char }
             @client.should_receive(:char=).with(char)
             @create.create_char_and_login(@client, "charname", "password")

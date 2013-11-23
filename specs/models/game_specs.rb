@@ -7,7 +7,7 @@ module AresMUSH
   describe Game do
     describe :get do
       it "should return the game object" do
-        model = mock
+        model = double
         Database.db.stub(:find) { [model] }
         Game.get.should eq model
       end
@@ -15,7 +15,7 @@ module AresMUSH
 
     describe :create do
       it "should create and return the game object" do
-        tmpdb = mock
+        tmpdb = double
         Database.db.stub(:[]).with(:game) { tmpdb }
         tmpdb.stub(:insert)
         Game.create do |model|
@@ -27,7 +27,7 @@ module AresMUSH
 
     describe :update do
       it "should update by id" do
-        tmpdb = mock
+        tmpdb = double
         Database.db.stub(:[]).with(:game) { tmpdb }
         p = { "_id" => "123", "name" => "Bob" }
         tmpdb.should_receive(:update) do |search, model|
@@ -40,7 +40,7 @@ module AresMUSH
 
     describe :drop_all do
       it "should drop the DB" do
-        tmpdb = mock
+        tmpdb = double
         Database.db.stub(:[]).with(:game) { tmpdb }
         tmpdb.should_receive(:drop) 
         Game.drop_all

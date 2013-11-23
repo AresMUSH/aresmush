@@ -52,7 +52,7 @@ module AresMUSH
 
     describe :find_by_id do
       it "should pass on a BSON object id" do
-        id = BSON::ObjectId.new("123")
+        id = BSON::ObjectId.new([0x4c,0x52,0x8d,0xa0,0x1d,0x41,0xc8,0x5e,0xcf,0x00,0x02,0x11])
         TestModel.should_receive(:find).with("_id" => id)
         TestModel.find_by_id(id)
       end
@@ -104,7 +104,7 @@ module AresMUSH
 
       it "should call the set fields method" do
         model = {"name" => "Bob", "password" => "test"}
-        model2 = mock
+        model2 = double
         @tmpdb.should_receive(:insert) { model }
         TestModel.should_receive(:custom_model_fields).with(model) { model2 }
         TestModel.create(model).should eq model2
@@ -166,12 +166,12 @@ module AresMUSH
       end
 
       it "should return nil if there are more than one item" do
-        TestModel.should_receive(:find_by_name_or_id).with("foo") { [mock, mock] }        
+        TestModel.should_receive(:find_by_name_or_id).with("foo") { [double, double] }        
         TestModel.find_one("foo").should be_nil
       end
 
       it "should return the single item when there is only one" do
-        result = mock
+        result = double
         TestModel.should_receive(:find_by_name_or_id).with("foo") { [result] }        
         TestModel.find_one("foo").should eq result
       end

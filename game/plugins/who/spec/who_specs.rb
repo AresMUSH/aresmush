@@ -4,10 +4,10 @@ module AresMUSH
   module Who
     describe Who do
       before do
-        @cmd = mock
-        @client_monitor = mock(ClientMonitor)
-        @client = mock(Client).as_null_object
-        @container = mock(Container)
+        @cmd = double
+        @client_monitor = double(ClientMonitor)
+        @client = double(Client).as_null_object
+        @container = double(Container)
         @container.stub(:client_monitor) { @client_monitor }
         @who = WhoCmd.new(@container)
       end
@@ -52,8 +52,8 @@ module AresMUSH
 
       describe :show_who do
         before do
-          @client1 = mock("Client1")
-          @client2 = mock("Client2")
+          @client1 = double("Client1")
+          @client2 = double("Client2")
 
           # Stub some people logged in
           @client_monitor.stub(:clients) { [@client1, @client2] }

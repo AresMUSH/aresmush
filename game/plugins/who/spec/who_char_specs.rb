@@ -4,18 +4,18 @@ module AresMUSH
   module Who
     describe WhoChar do
       before do
-        container = mock(Container)
-        @client = mock(Client)
-        @config_reader = mock(ConfigReader)
+        container = double(Container)
+        @client = double(Client)
+        @config_reader = double(ConfigReader)
         container.stub(:config_reader) { @config_reader }
         setup_character
         @formatter = WhoChar.new(@client, container)
       end
       
       def setup_character
-        @char = mock("Char")
+        @char = double("Char")
         @client.stub(:char) { @char }
-        HashReader.stub(:new) { mock }
+        HashReader.stub(:new) { double }
       end  
 
       describe :template do

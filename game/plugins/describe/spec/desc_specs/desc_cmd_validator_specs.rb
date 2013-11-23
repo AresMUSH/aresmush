@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       it "should emit failure if target is nil" do
-        args = mock
+        args = double
         args.stub(:desc) { "desc" }
         args.stub(:target) { nil }
         @client.should_receive(:emit_failure).with("invalid_desc_syntax")
@@ -23,7 +23,7 @@ module AresMUSH
       end
 
       it "should emit failure if desc is nil" do
-        args = mock
+        args = double
         args.stub(:target) { "target" }
         args.stub(:desc) { nil }
         @client.should_receive(:emit_failure).with("invalid_desc_syntax")
@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       it "should return true if args are valid" do
-        args = mock
+        args = double
         args.stub(:target) { "target" }
         args.stub(:desc) { "desc" }
         DescCmdValidator.validate(args, @client).should be_true

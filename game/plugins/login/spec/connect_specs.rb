@@ -15,20 +15,20 @@ module AresMUSH
       
       describe :want_command? do
         it "doesn't want any commands" do
-          cmd = mock
+          cmd = double
           @connect.want_command?(cmd).should be_false
         end
       end
 
       describe :want_anon_command? do
         it "wants the connect command" do
-          cmd = mock
+          cmd = double
           cmd.stub(:root_is?).with("connect") { true }
           @connect.want_anon_command?(cmd).should be_true
         end
 
         it "doesn't want another command" do
-          cmd = mock
+          cmd = double
           cmd.stub(:root_is?).with("connect") { false }
           @connect.want_anon_command?(cmd).should be_false
         end
@@ -57,7 +57,7 @@ module AresMUSH
                           
         it "should fail if the passwords don't match" do
           cmd = Command.new(@client, "connect Bob password")
-          found_char = mock
+          found_char = double
           SingleTargetFinder.stub(:find) { found_char }
           Character.stub(:compare_password).with(found_char, "password") { false }
           @client.should_receive(:emit_failure).with("invalid_password")
@@ -68,7 +68,7 @@ module AresMUSH
       # SUCCESS
       describe :on_command do
         before do
-          @found_char = mock
+          @found_char = double
           @dispatcher = double(Dispatcher)
           @container.stub(:dispatcher) { @dispatcher }
           

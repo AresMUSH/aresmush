@@ -12,20 +12,20 @@ module AresMUSH
       
       describe :want_anon_command? do
         it "doesn't want any commands" do
-          cmd = mock
+          cmd = double
           @desc.want_anon_command?(cmd).should be_false
         end
       end
 
       describe :want_command? do
         it "wants the desc command" do
-          cmd = mock
+          cmd = double
           cmd.stub(:root_is?).with("desc") { true }
           @desc.want_command?(cmd).should be_true
         end
 
         it "doesn't want another command" do
-          cmd = mock
+          cmd = double
           cmd.stub(:root_is?).with("desc") { false }
           @desc.want_command?(cmd).should be_false
         end
@@ -63,7 +63,7 @@ module AresMUSH
         end        
         
         it "should call the command handler" do
-          model = mock
+          model = double
           DescCmdValidator.stub(:validate) { true }
           VisibleTargetFinder.should_receive(:find).with("Bob", @client) { model }
           DescCmdHandler.should_receive(:handle).with(model, "New desc", @client)

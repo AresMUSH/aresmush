@@ -7,7 +7,7 @@ module AresMUSH
   describe SingleResultSelector do
     describe :select do
       before do
-        @client = mock
+        @client = double
         AresMUSH::Locale.stub(:translate).with("db.object_ambiguous") { "object_ambiguous" }
         AresMUSH::Locale.stub(:translate).with("db.object_not_found") { "object_not_found" }
       end

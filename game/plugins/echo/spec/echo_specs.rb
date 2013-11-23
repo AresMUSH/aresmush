@@ -30,7 +30,7 @@ module AresMUSH
         before do
           @client = double(Client)
           @client.stub(:emit)
-          @enactor = mock
+          @enactor = double
           @client.stub(:char) { @enactor }
         end
         

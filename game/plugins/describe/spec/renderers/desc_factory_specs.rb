@@ -8,8 +8,8 @@ module AresMUSH
         @container = double(Container)
         @config_reader = double(ConfigReader)
         @container.stub(:config_reader) { @config_reader }
-        @hash_reader = mock
-        @renderer = mock
+        @hash_reader = double
+        @renderer = double
         
         @config_reader.stub(:config) {
           {
@@ -58,7 +58,7 @@ module AresMUSH
       
       describe :build_room_exit_header do
         it "should build a renderer with the expected config and a hash reader" do
-          model = mock
+          model = double
           HashReader.should_receive(:new).with(model) { @hash_reader }
           TemplateRenderer.should_receive(:new).with("ROOM_EXIT_HEADER", @hash_reader) { @renderer }
           @factory.build_room_exit_header(model).should eq @renderer
@@ -67,7 +67,7 @@ module AresMUSH
 
       describe :build_room_each_exit do
         it "should build a renderer with the expected config and a hash reader" do
-          model = mock
+          model = double
           HashReader.should_receive(:new).with(model) { @hash_reader }
           TemplateRenderer.should_receive(:new).with("ROOM_EACH_EXIT", @hash_reader) { @renderer }
           @factory.build_room_each_exit(model).should eq @renderer
@@ -76,7 +76,7 @@ module AresMUSH
 
       describe :build_room_char_header do
         it "should build a renderer with the expected config and a hash reader" do
-          model = mock
+          model = double
           HashReader.should_receive(:new).with(model) { @hash_reader }
           TemplateRenderer.should_receive(:new).with("ROOM_CHAR_HEADER", @hash_reader) { @renderer }
           @factory.build_room_char_header(model).should eq @renderer
@@ -85,7 +85,7 @@ module AresMUSH
 
       describe :build_room_each_char do
         it "should build a renderer with the expected config and a hash reader" do
-          model = mock
+          model = double
           HashReader.should_receive(:new).with(model) { @hash_reader }
           TemplateRenderer.should_receive(:new).with("ROOM_EACH_CHAR", @hash_reader) { @renderer }
           @factory.build_room_each_char(model).should eq @renderer
@@ -94,7 +94,7 @@ module AresMUSH
 
       describe :build_room_footer do
         it "should build a renderer with the expected config and a hash reader" do
-          model = mock
+          model = double
           HashReader.should_receive(:new).with(model) { @hash_reader }
           TemplateRenderer.should_receive(:new).with("ROOM_FOOTER", @hash_reader) { @renderer }
           @factory.build_room_footer(model).should eq @renderer
@@ -103,7 +103,7 @@ module AresMUSH
 
       describe :build_room_header do
         it "should build a renderer with the expected config and a hash reader" do
-          model = mock
+          model = double
           HashReader.should_receive(:new).with(model) { @hash_reader }
           TemplateRenderer.should_receive(:new).with("ROOM_HEADER", @hash_reader) { @renderer }
           @factory.build_room_header(model).should eq @renderer

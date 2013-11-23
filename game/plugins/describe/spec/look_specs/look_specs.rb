@@ -15,20 +15,20 @@ module AresMUSH
       
       describe :want_anon_command? do
         it "doesn't want any commands" do
-          cmd = mock
+          cmd = double
           @look.want_anon_command?(cmd).should be_false
         end
       end
 
       describe :want_command? do
         it "wants the look command" do
-          cmd = mock
+          cmd = double
           cmd.stub(:root_is?).with("look") { true }
           @look.want_command?(cmd).should be_true
         end
 
         it "doesn't want another command" do
-          cmd = mock
+          cmd = double
           cmd.stub(:root_is?).with("look") { false }
           @look.want_command?(cmd).should be_false
         end
@@ -37,7 +37,7 @@ module AresMUSH
       describe :on_command do
         before do
           @cmd = double(Command)
-          @args = mock
+          @args = double
           @args.stub(:target) { "target" }
           LookCmdCracker.stub(:crack) { @args }
         end
@@ -61,7 +61,7 @@ module AresMUSH
         end
         
         it "should call the command handler" do
-          model = mock
+          model = double
           iface = double(DescFunctions)
           VisibleTargetFinder.stub(:find) { model }
           Describe.stub(:interface) { iface }

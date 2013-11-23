@@ -44,7 +44,7 @@ module AresMUSH
     
     describe :handle_client_input do
       it "should notify the dispatcher" do
-        cmd = mock
+        cmd = double
         Command.should_receive(:new).with(@client1, "test") { cmd }
         @dispatcher.should_receive(:on_command).with(@client1, cmd)
         @client_monitor.handle_client_input(@client1, "test")

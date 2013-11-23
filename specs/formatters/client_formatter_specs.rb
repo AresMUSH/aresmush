@@ -11,8 +11,8 @@ module AresMUSH
    
     describe :format do
       before do
-        @config_reader = mock
-        SubstitutionFormatter.stub!(:format) do |msg, config_reader|
+        @config_reader = double
+        SubstitutionFormatter.stub(:format) do |msg, config_reader|
           msg
         end
       end

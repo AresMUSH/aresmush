@@ -30,7 +30,7 @@ module AresMUSH
         end
 
         it "should announce the char's connection to the room" do
-          clients = mock
+          clients = double
           @client_monitor.stub(:clients) { clients }
           Rooms.should_receive(:room_emit).with("1", "announce_char_arrived", clients)
           @login.on_char_connected( { :client => @client } )
@@ -53,7 +53,7 @@ module AresMUSH
         end
 
         it "should announce the char's connection to the room" do
-          clients = mock
+          clients = double
           @client_monitor.stub(:clients) { clients }
           Rooms.should_receive(:room_emit).with("1", "announce_char_arrived", clients)
           @login.on_char_created( { :client => @client } )
@@ -88,14 +88,14 @@ module AresMUSH
         end
         
         it "should get the room desc for the client's location" do
-          model = mock
+          model = double
           Room.stub(:find_by_id) { [model] }
           Describe.should_receive(:get_desc).with(model)
           @login.emit_here_desc(@client)
         end
         
         it "should emit to the client" do
-          model = mock
+          model = double
           Room.stub(:find_by_id) { [model] }
           Describe.stub(:get_desc) { "desc" }
           @client.should_receive(:emit).with("desc")

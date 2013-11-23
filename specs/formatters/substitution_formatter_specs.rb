@@ -6,7 +6,7 @@ module AresMUSH
 
   describe SubstitutionFormatter do
     before do
-      @config_reader = mock
+      @config_reader = double
       @config_reader.stub(:line) { "" }
     end
     

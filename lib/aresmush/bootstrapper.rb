@@ -31,11 +31,6 @@ module AresMUSH
       config_reader.read
       ares_logger.start
 
-      if (config_reader.config["database"]["start_db_automatically"])
-        db.start
-        sleep(5)
-      end
-
       db.connect
       
       locale.setup
@@ -54,7 +49,6 @@ module AresMUSH
       else
         logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
       end
-      db.stop
     end
     
   end

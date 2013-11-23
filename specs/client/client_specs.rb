@@ -10,9 +10,9 @@ module AresMUSH
       AresMUSH::Locale.stub(:translate).with("client.welcome") { "welcome" }
       AresMUSH::Locale.stub(:translate).with("client.anonymous") { "anon" }
 
-      @config_reader = mock
-      @connection = mock
-      @client_monitor = mock
+      @config_reader = double
+      @connection = double
+      @client_monitor = double
       @client = Client.new(1, @client_monitor, @config_reader, @connection)
     end
 

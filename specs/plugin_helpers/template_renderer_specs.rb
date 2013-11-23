@@ -13,7 +13,7 @@ module AresMUSH
 
   describe TemplateRenderer do
     before do
-      @data = mock
+      @data = double
       @renderer = TestRenderer.new([], @data)
       @renderer.data = @data
     end
@@ -76,7 +76,7 @@ module AresMUSH
         [
           { "variable" => "bar.baz" },
         ]
-        bar = mock
+        bar = double
         @data.should_receive(:bar) { bar }
         bar.should_receive(:baz) { "baz" }
         @renderer.render.should eq "baz"      
@@ -87,7 +87,7 @@ module AresMUSH
         [
           { "variable" => "bar.baz" },
         ]
-        bar = mock
+        bar = double
         @data.should_receive(:bar) { bar }
         @renderer.render.should eq "baz"      
       end
@@ -112,15 +112,15 @@ module AresMUSH
 
     describe :recursive_send do
       it "should send recursively if methods are available" do
-        bar = mock
+        bar = double
         @data.should_receive(:bar) { bar }
         bar.should_receive(:baz) { "baz" }
         @renderer.recursive_send("bar.baz").should eq "baz"
       end
 
       it "should return the raw value when the end of a method chain is reached" do
-        bar = mock
-        baz = mock
+        bar = double
+        baz = double
         @data.should_receive(:bar) { bar }
         bar.should_receive(:baz) { baz }
         @renderer.recursive_send("bar.baz.foo").should eq "foo"

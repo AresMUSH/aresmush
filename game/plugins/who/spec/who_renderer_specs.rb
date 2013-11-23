@@ -4,9 +4,9 @@ module AresMUSH
   module Who
     describe WhoRenderer do
       before do
-        @container = mock(Container)
-        @client1 = mock(Client)
-        @client2 = mock(Client)
+        @container = double(Container)
+        @client1 = double(Client)
+        @client2 = double(Client)
         @clients = [@client1, @client2]
       end
 
@@ -21,7 +21,7 @@ module AresMUSH
 
       describe :build_header do
         before do
-          @renderer = mock(WhoHeader).as_null_object
+          @renderer = double(WhoHeader).as_null_object
           WhoRendererFactory.stub(:build_header) { @renderer }
         end
 
@@ -38,7 +38,7 @@ module AresMUSH
       
       describe :build_footer do
         before do
-          @renderer = mock(WhoFooter).as_null_object
+          @renderer = double(WhoFooter).as_null_object
           WhoRendererFactory.stub(:build_footer) { @renderer }
         end
 
@@ -55,8 +55,8 @@ module AresMUSH
       
       describe :build_chars do
         before do
-          @renderer1 = mock(WhoChar).as_null_object
-          @renderer2 = mock(WhoChar).as_null_object
+          @renderer1 = double(WhoChar).as_null_object
+          @renderer2 = double(WhoChar).as_null_object
           WhoRendererFactory.stub(:build_char).with(@client1, @container) { @renderer1 }
           WhoRendererFactory.stub(:build_char).with(@client2, @container) { @renderer2 }
         end

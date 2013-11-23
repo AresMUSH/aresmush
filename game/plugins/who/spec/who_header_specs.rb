@@ -4,8 +4,8 @@ module AresMUSH
   module Who
     describe WhoHeader do
       before do
-        container = mock(Container)
-        @config_reader = mock(ConfigReader)
+        container = double(Container)
+        @config_reader = double(ConfigReader)
         container.stub(:config_reader) { @config_reader }
         @formatter = WhoHeader.new([], container)
       end

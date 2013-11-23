@@ -49,7 +49,7 @@ module AresMUSH
     
     describe :exists? do
       it "should return true if there is an existing char" do
-        Character.stub(:find_by_name).with("Bob") { [mock] }
+        Character.stub(:find_by_name).with("Bob") { [double] }
         Character.exists?("Bob").should be_true
       end
       

@@ -6,8 +6,8 @@ module AresMUSH
   describe SingleTargetFinder
   describe :find do
     before do
-      @client = mock
-      @test_class = mock
+      @client = double
+      @test_class = double
     end
 
     it "should search the specified class by name or ID" do

@@ -6,8 +6,8 @@ module AresMUSH
     describe LookCmdHandler do
       before do
         @client = double(Client)
-        @desc_iface = mock    
-        @model = mock
+        @desc_iface = double    
+        @model = double
       end
       
       describe :handle do

@@ -19,7 +19,7 @@ module AresMUSH
     
     describe :send_formatted do
       it "should format the message before sending" do
-        config_reader = mock
+        config_reader = double
         @connection.config_reader = config_reader
         ClientFormatter.should_receive(:format).with("test", config_reader) { "TEST" }
         @connection.should_receive(:send_data).with("TEST")
@@ -29,7 +29,7 @@ module AresMUSH
     
     describe :receive_data do
       it "should send data to the client" do
-        client = mock
+        client = double
         @connection.client = client
         client.should_receive(:handle_input).with("test")
         @connection.receive_data("test")        
@@ -38,7 +38,7 @@ module AresMUSH
     
     describe :unbind do
       it "should notify the client that it disconnected" do
-        client = mock
+        client = double
         @connection.client = client
         client.should_receive(:connection_closed)
         @connection.unbind

@@ -8,7 +8,7 @@ module AresMUSH
       before do
         AresMUSH::Locale.stub(:translate).with("object.me") { "me" }
         AresMUSH::Locale.stub(:translate).with("object.here") { "here" }
-        @client = mock
+        @client = double
         @client.stub(:location) { "1" }        
       end
 
@@ -23,7 +23,7 @@ module AresMUSH
       end
 
       it "should return the char's location for the here keyword" do
-        location = mock
+        location = double
         Room.should_receive(:find_one).with("1") { location }
         VisibleTargetFinder.find("here", @client).should eq location
       end

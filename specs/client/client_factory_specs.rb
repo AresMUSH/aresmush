@@ -8,15 +8,15 @@ module AresMUSH
 
     before do
       @factory = ClientFactory.new
-      @connection = mock.as_null_object
-      @container = mock.as_null_object
+      @connection = double.as_null_object
+      @container = double.as_null_object
       @factory.container = @container
     end
       
     it "should initialize and return a client" do
-      client = mock
-      config_reader = mock
-      client_monitor = mock
+      client = double
+      config_reader = double
+      client_monitor = double
       @container.stub(:config_reader) { config_reader }
       @container.stub(:client_monitor) { client_monitor }
       Client.should_receive(:new).with(1, client_monitor, config_reader, @connection) { client }
@@ -31,7 +31,7 @@ module AresMUSH
     end 
 
     it "should tell the connection what its client is" do
-      client = mock
+      client = double
       Client.stub(:new) { client }
       @connection.should_receive(:client=).with(client)
       @factory.create_client(@connection)

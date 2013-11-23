@@ -4,10 +4,10 @@ module AresMUSH
   module Who
     describe WhoFooter do
       before do
-        container = mock(Container)
-        @config_reader = mock(ConfigReader)
-        @client1 = mock("Client1")
-        @client2 = mock("Client2")
+        container = double(Container)
+        @config_reader = double(ConfigReader)
+        @client1 = double("Client1")
+        @client2 = double("Client2")
         container.stub(:config_reader) { @config_reader }
         @formatter = WhoFooter.new([@client1, @client2], container)
       end
@@ -27,8 +27,8 @@ module AresMUSH
       
       describe :ic_total do
         it "should count the number of IC players" do
-          char1 = mock("Char1")
-          char2 = mock("Char2")
+          char1 = double("Char1")
+          char2 = double("Char2")
           @client1.stub(:char) { char1 }
           @client2.stub(:char) { char2 }
           Who.should_receive(:is_ic?).with(char1) { false }

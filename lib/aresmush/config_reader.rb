@@ -37,6 +37,8 @@ module AresMUSH
     private 
     def read_config_from_files(files)
       files.each do |f|
+        # Use puts here because logger isn't initialized yet
+        puts "Reading config from #{f}"
         @config = @config.merge_yaml(f)
       end
     end

@@ -25,8 +25,8 @@ module AresMUSH
       
       describe :get_desc do
         before do
-          @container = mock(Container)
-          @desc_factory = mock(DescFactory)
+          @container = double(Container)
+          @desc_factory = double(DescFactory)
           DescFactory.stub(:new) { @desc_factory }
           
           @interface = DescFunctions.new(@container)
@@ -34,14 +34,14 @@ module AresMUSH
         
         it "should build the proper renderer" do
           model = { "type" => "Room" }
-          renderer = mock.as_null_object
+          renderer = double.as_null_object
           @desc_factory.should_receive(:build).with(model) { renderer }
           @interface.get_desc(model)
         end
 
         it "should call the renderer" do
           model = { "type" => "Character" }
-          renderer = mock
+          renderer = double
           @desc_factory.stub(:build) { renderer }
           renderer.should_receive(:render)
           @interface.get_desc(model)
@@ -49,7 +49,7 @@ module AresMUSH
         
         it "should return the formatted results of the render" do
           model = { "type" => "Character" }
-          renderer = mock
+          renderer = double
           @desc_factory.stub(:build) { renderer }
           renderer.stub(:render) { "DESC" }
           @interface.get_desc(model).should eq "DESC"

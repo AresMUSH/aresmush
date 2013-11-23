@@ -32,7 +32,7 @@ module AresMUSH
     
     describe :interface do
       before do
-        @plugin = mock("Plugin")
+        @plugin = double("Plugin")
         @factory.should_receive(:create_plugin_classes) { [@plugin] }
         @manager.load_all        
       end
