@@ -1,4 +1,3 @@
-# TODO - document templates
 
 #     ONE of the following is required:
 #       "variable"  => method name, on either the main object or data object 

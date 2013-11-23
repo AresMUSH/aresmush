@@ -1,9 +1,6 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'aresmush'
-task :dbstart do
-  sh "mongod --config mongo.conf"
-end
 
 task :start do
   bootstrapper = AresMUSH::Bootstrapper.new

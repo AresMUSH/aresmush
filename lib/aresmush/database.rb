@@ -28,8 +28,8 @@ module AresMUSH
         logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e
       end      
-    end
-    
+    end       
+        
     private
     
     def authenticate(username, password)

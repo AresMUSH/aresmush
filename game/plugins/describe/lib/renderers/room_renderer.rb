@@ -16,9 +16,7 @@ module AresMUSH
         desc << build_exits
         desc << build_footer
       end
-      
-      # TODO - Need to refactor this so it's overrideable with custom renderers.
-      
+            
       def build_header
         renderer = @desc_factory.build_room_header(@room)
         renderer.render

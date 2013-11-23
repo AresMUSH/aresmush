@@ -30,10 +30,17 @@ module AresMUSH
       # Order here is important!
       config_reader.read
       ares_logger.start
+
+      if (config_reader.config["database"]["start_db_automatically"])
+        db.start
+        sleep(5)
+      end
+
       db.connect
+      
       locale.setup
       plugin_manager.load_all
-      
+    
       logger.debug config_reader.config
 
       @command_line = AresMUSH::CommandLine.new(server)
@@ -47,6 +54,7 @@ module AresMUSH
       else
         logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
       end
+      db.stop
     end
     
   end

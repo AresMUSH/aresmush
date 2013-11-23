@@ -1,5 +1,5 @@
 module AresMUSH
-  module System
+  module Manage
     class Load
       include AresMUSH::Plugin
 
@@ -11,6 +11,7 @@ module AresMUSH
         cmd.root_is?("load")
       end
 
+      # TODO - Just a prototype
       def on_command(client, cmd)
         plugin_name = cmd.args
         begin

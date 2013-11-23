@@ -54,10 +54,10 @@ module AresMUSH
       end
             
       def show_help(client, cmd)
+        # This is just a prototype!
         # TODO - Clean up ugly method
         # TODO - write specs
         # TODO - localize
-        # TODO - implement locking
         prefix = index_prefix(cmd)
         index = find_index(prefix)
         topics = get_topics(index)

@@ -1,28 +1,28 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module Think
-    describe Think do
+  module Echo
+    describe Echo do
       before do
         @cmd = double(Command)
-        @think = Think.new(nil)
+        @echo = Echo.new(nil)
       end
 
       describe :want_command do
-        it "should want the think command" do
-          @cmd.stub(:root_is?).with("think") { true }
-          @think.want_command?(@cmd).should be_true
+        it "should want the echo command" do
+          @cmd.stub(:root_is?).with("echo") { true }
+          @echo.want_command?(@cmd).should be_true
         end
 
         it "should not want another command" do
-          @cmd.stub(:root_is?).with("think") { false }
-          @think.want_command?(@cmd).should be_false
+          @cmd.stub(:root_is?).with("echo") { false }
+          @echo.want_command?(@cmd).should be_false
         end        
       end
 
       describe :want_anon_command do
         it "should not want any commands" do
-          @think.want_anon_command?(@cmd).should be_false
+          @echo.want_anon_command?(@cmd).should be_false
         end
       end
 
@@ -36,8 +36,8 @@ module AresMUSH
         
         it "should echo back to the client" do
           @client.should_receive(:emit).with("happy thoughts")
-          cmd = Command.new(@client, "think happy thoughts")
-          @think.on_command(@client, cmd)
+          cmd = Command.new(@client, "echo happy thoughts")
+          @echo.on_command(@client, cmd)
         end        
       end
     end
