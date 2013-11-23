@@ -10,11 +10,11 @@ module AresMUSH
       def on_command(client, cmd)
         regex_with_dest = /(?<name>.+)=(?<dest>.+)/
         if (cmd.can_crack_args?(regex_with_dest))
-          cmd.crack_args!(regex_with_dest)
+          cmd.crack!(regex_with_dest)
           dest = SingleTargetFinder.find(cmd.args[:dest], Room, client)
           return if dest.nil?
         else
-          cmd.crack_args!(/(?<name>.+)/)
+          cmd.crack!(/(?<name>.+)/)
           dest = nil
         end
         

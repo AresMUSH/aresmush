@@ -9,18 +9,22 @@ module AresMUSH
     
     def initialize(client, input)
       @client = client
-      @raw = input
+      @raw = input   
       
-      # TODO - Move to crack method, trigger externally
-      cracked = CommandCracker.crack(input)
+      # TODO - Trigger externally         
+      crack!(nil)
+    end    
+    
+    def crack!(args_regex = nil)
+      cracked = CommandCracker.crack(@raw)
       @root = cracked[:root]
       @switch = cracked[:switch]
-      @args = cracked[:args]
-    end
-    
-    # TODO - Move to crack method
-    def crack_args!(regex)
-      @args = ArgCracker.crack(regex, @args)
+
+      if (args_regex.nil?)
+        @args = cracked[:args]
+      else
+        @args = ArgCracker.crack(args_regex, cracked[:args])        
+      end
     end
     
     def to_s

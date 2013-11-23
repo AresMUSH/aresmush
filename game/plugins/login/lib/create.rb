@@ -8,15 +8,15 @@ module AresMUSH
       end
 
       def on_command(client, cmd)      
-        args = cmd.crack_args!(/(?<name>\S+) (?<password>.+)/)
+        cmd.crack!(/(?<name>\S+) (?<password>.+)/)
         
-        if (args.name.nil? || args.password.nil?)
+        if (cmd.args.name.nil? || cmd.args.password.nil?)
           client.emit_failure(t('login.invalid_create_syntax'))
           return
         end
         
-        name = args.name
-        password = args.password
+        name = cmd.args.name
+        password = cmd.args.password
         
         return if !Login.validate_char_name(client, name)
         return if !Login.validate_char_password(client, password)

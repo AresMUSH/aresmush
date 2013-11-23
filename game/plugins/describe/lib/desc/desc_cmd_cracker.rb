@@ -2,7 +2,7 @@ module AresMUSH
   module Describe
     class DescCmdCracker
       def self.crack(cmd)
-        cmd.crack_args!(/(?<target>[^\=]+)\=(?<desc>.+)/)
+        cmd.crack!(/(?<target>[^\=]+)\=(?<desc>.+)/)
       end
     end 
   end

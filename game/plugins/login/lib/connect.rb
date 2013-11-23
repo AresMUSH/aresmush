@@ -8,15 +8,15 @@ module AresMUSH
       end
 
       def on_command(client, cmd)      
-        args = cmd.crack_args!(/(?<name>\S+) (?<password>.+)/)
-
-        if (args.name.nil? || args.password.nil?)
+        cmd.crack!(/(?<name>\S+) (?<password>.+)/)
+        
+        if (cmd.args.name.nil? || cmd.args.password.nil?)
           client.emit_failure(t('login.invalid_connect_syntax')) 
           return
         end
 
-        name = args.name
-        password = args.password
+        name = cmd.args.name
+        password = cmd.args.password
         char = SingleTargetFinder.find(name, Character, client)
 
         # find_one_and_notify already did the emits on failure.
