@@ -1,5 +1,5 @@
 module AresMUSH
-  class Cracker
+  class CommandCracker
     
     # Decodes commands in the standard form:
     #   root[/switch][ args]
@@ -18,5 +18,6 @@ module AresMUSH
         :args => args
       }
     end
+    
   end
 end

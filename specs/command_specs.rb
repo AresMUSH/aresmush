@@ -23,7 +23,7 @@ module AresMUSH
       end
 
       it "should use the command cracker to parse the command" do
-        Cracker.should_receive(:crack).with("test 123") { { :root => "r", :switch => "s", :args => "a" }}
+        CommandCracker.should_receive(:crack).with("test 123") { { :root => "r", :switch => "s", :args => "a" }}
         cmd = Command.new(@client, "test 123")
         cmd.root.should eq "r"
         cmd.switch.should eq "s"
@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       it "should save the results from cracker even if they're nil" do
-        Cracker.should_receive(:crack).with("test 123") { { :root => nil, :switch => nil, :args => nil }}
+        CommandCracker.should_receive(:crack).with("test 123") { { :root => nil, :switch => nil, :args => nil }}
         cmd = Command.new(@client, "test 123")
         cmd.root.should eq nil
         cmd.switch.should eq nil
@@ -72,34 +72,5 @@ module AresMUSH
           cmd.root_is?("test").should be_true
       end        
     end
-
-    describe :crack_args! do
-      it "should expand the args string into a more meaningful hash" do
-        cmd = Command.new(@client, "test/foo bar=baz+harvey")
-        cmd.crack_args!(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/)
-        cmd.args.a.should eq "bar"
-        cmd.args.b.should eq "baz"
-        cmd.args.c.should eq "harvey"
-      end
-      
-      it "should still return a hash reader it can't crack the args" do 
-        cmd = Command.new(@client, "test/foo bar=baz+harvey")
-        cmd.crack_args!(/(?<a>.+)\/(?<b>.+)/)
-        cmd.args.a.should be_nil
-        cmd.args.b.should be_nil
-      end
-    end
-
-    describe :can_crack_args? do
-      it "should be true if it can crack the args" do
-        cmd = Command.new(@client, "test/foo bar=baz+harvey")
-        cmd.can_crack_args?(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/).should be_true
-      end
-      
-      it "should be false if it can't crack the args" do
-        cmd = Command.new(@client, "test/foo bar=baz+harvey")
-        cmd.can_crack_args?(/(?<a>.+)\/(?<b>.+)/).should be_false
-      end
-    end    
   end
 end

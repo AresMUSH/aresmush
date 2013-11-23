@@ -11,10 +11,16 @@ module AresMUSH
       @client = client
       @raw = input
       
-      cracked_args = Cracker.crack(input)
-      @root = cracked_args[:root]
-      @switch = cracked_args[:switch]
-      @args = cracked_args[:args]
+      # TODO - Move to crack method, trigger externally
+      cracked = CommandCracker.crack(input)
+      @root = cracked[:root]
+      @switch = cracked[:switch]
+      @args = cracked[:args]
+    end
+    
+    # TODO - Move to crack method
+    def crack_args!(regex)
+      @args = ArgCracker.crack(regex, @args)
     end
     
     def to_s
@@ -28,15 +34,6 @@ module AresMUSH
     def logged_in?
       @client.char != nil
     end
-    
-    def crack_args!(regex)
-      match = regex.match(@args)
-      @args = match.nil? ? HashReader.new({}) : HashReader.new(match.names_hash)
-    end
-    
-    def can_crack_args?(regex)
-      return regex.match(@args)
-    end
-    
+  
   end
 end
