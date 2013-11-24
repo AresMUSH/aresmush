@@ -10,7 +10,7 @@ module AresMUSH
       @factory = ClientFactory.new
       @connection = double.as_null_object
       @container = double.as_null_object
-      @factory.container = @container
+      Global.container = @container
     end
       
     it "should initialize and return a client" do

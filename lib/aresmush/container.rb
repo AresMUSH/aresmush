@@ -1,25 +1,13 @@
 module AresMUSH
   class Container
-    def config_reader
-      Global.config_reader
+    def initialize(config_reader, client_monitor, plugin_manager, dispatcher, locale)
+      @config_reader = config_reader
+      @client_monitor = client_monitor
+      @plugin_manager = plugin_manager
+      @dispatcher = dispatcher
+      @locale = locale
     end
-    
-    def client_monitor
-      Global.client_monitor
-    end
-    
-    def plugin_manager
-      Global.plugin_manager
-    end
-    
-    def dispatcher
-      Global.dispatcher
-    end
-    
-    def locale
-      Global.locale
-    end
+      
+    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
   end
 end
-
-    

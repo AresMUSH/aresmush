@@ -4,11 +4,9 @@ module AresMUSH
       @client_id = 0
     end
     
-    attr_accessor :container
-
     def create_client(connection)
       @client_id = @client_id + 1   
-      client = Client.new(@client_id, container.client_monitor, container.config_reader, connection)       
+      client = Client.new(@client_id, Global.container.client_monitor, Global.container.config_reader, connection)       
       connection.client = client
       client
     end
