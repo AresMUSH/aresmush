@@ -12,7 +12,7 @@ en:
         object_ambiguous: I don't know which one you mean.
     
     object:
-       say: "%{name} says, "%{msg}""
+       say: '%{name} says, "%{msg}"'
        pose: "%{name} %{msg}"
        semipose: "%{name}%{msg}"
        me: me

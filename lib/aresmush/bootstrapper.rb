@@ -18,7 +18,13 @@ module AresMUSH
             
       # Now that everything's created, give the factory a container of the main plugin 
       # objects so that it can pass those along to the individual plugins
-      container = Container.new(config_reader, client_monitor, plugin_manager, dispatcher, locale)
+      container = Container.new
+      Global.config_reader = config_reader
+      Global.client_monitor = client_monitor
+      Global.plugin_manager = plugin_manager
+      Global.dispatcher = dispatcher
+      Global.locale = locale
+      
       plugin_factory.container = container
       client_factory.container = container
 
