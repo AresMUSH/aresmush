@@ -1,14 +1,10 @@
 module AresMUSH
   module Describe
     class DescFactory
-      
-      def initialize(container)
-        @container = container
-      end
-      
+            
       def build(model)
         if (model["type"] == "Room")
-          RoomRenderer.new(model, self, @container)
+          RoomRenderer.new(model, self)
         elsif (model["type"] == "Character")
           TemplateRenderer.new(char_config, hash_reader(model))
         elsif (model["type"] == "Exit")

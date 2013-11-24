@@ -16,11 +16,14 @@ module AresMUSH
       server = Server.new(client_monitor)
       db = Database.new
             
-      # Now that everything's created, give the factory a container of the main plugin 
-      # objects so that it can pass those along to the individual plugins
-      container = Container.new(config_reader, client_monitor, plugin_manager, dispatcher, locale)
-      plugin_factory.container = container
-      
+      # Set up global access to the system objects - primarily so that the plugins can 
+      # tell them to do things.
+      Global.config_reader = config_reader
+      Global.client_monitor = client_monitor
+      Global.plugin_manager = plugin_manager
+      Global.dispatcher = dispatcher
+      Global.locale = locale
+            
       # Configure a trap for exiting.
       at_exit do
         handle_exit($!)

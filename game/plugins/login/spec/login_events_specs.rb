@@ -10,11 +10,10 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("login.welcome") { "welcome" }
         
         @client_monitor = double(ClientMonitor)
-        container = double(Container)
-        container.stub(:client_monitor) { @client_monitor }
+        Global.stub(:client_monitor) { @client_monitor }
         @client = double(Client)
         @client.stub(:name) { "Bob" }
-        @login_events = LoginEvents.new(container)
+        @login_events = LoginEvents.new
       end
       
       describe :on_char_connected do

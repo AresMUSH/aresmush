@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def after_initialize
-        @client_monitor = container.client_monitor
+        @client_monitor = Global.client_monitor
       end
       
       def on_char_connected(args)

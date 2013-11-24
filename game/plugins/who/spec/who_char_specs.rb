@@ -4,10 +4,9 @@ module AresMUSH
   module Who
     describe WhoChar do
       before do
-        container = double(Container)
         @client = double(Client)
         setup_character
-        @formatter = WhoChar.new(@client, container)
+        @formatter = WhoChar.new(@client)
       end
       
       def setup_character

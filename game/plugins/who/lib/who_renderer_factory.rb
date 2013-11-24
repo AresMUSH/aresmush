@@ -2,16 +2,16 @@ module AresMUSH
   module Who
     class WhoRendererFactory
       # TOOD - get the class to use from config
-      def self.build_char(client, container)
-        WhoChar.new(client, container)
+      def self.build_char(client)
+        WhoChar.new(client)
       end
       
-      def self.build_header(clients, container)
-        WhoHeader.new(clients, container)
+      def self.build_header(clients)
+        WhoHeader.new(clients)
       end
       
-      def self.build_footer(clients, container)
-        WhoFooter.new(clients, container)
+      def self.build_footer(clients)
+        WhoFooter.new(clients)
       end
     end    
   end

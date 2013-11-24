@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     class WhoHeader < TemplateRenderer
-      def initialize(clients, container)
+      def initialize(clients)
       end
 
       def template

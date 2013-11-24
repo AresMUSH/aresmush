@@ -8,7 +8,7 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("login.goodbye") { "bye" }        
         @cmd = double(Command)
         @client = double(Client).as_null_object      
-        @quit = Quit.new(nil)
+        @quit = Quit.new
       end
 
       describe :want_command do

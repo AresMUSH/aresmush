@@ -11,14 +11,14 @@ module AresMUSH
         it "should want an anon command if the root is 'create'" do
           cmd = double(Command)
           cmd.stub(:root_is?).with("create") { true }
-          create = Create.new(nil)
+          create = Create.new
           create.want_anon_command?(cmd).should eq true
         end
 
         it "should not want an anon command if the root something else" do
           cmd = double(Command)
           cmd.stub(:root_is?).with("create") { false }
-          create = Create.new(nil)
+          create = Create.new
           create.want_anon_command?(cmd).should eq false
         end
       end
@@ -26,7 +26,7 @@ module AresMUSH
       describe :want_command? do
         it "should not want logged in commands" do
           cmd = double(Command)
-          create = Create.new(nil)
+          create = Create.new
           create.want_command?(cmd).should eq false
         end
       end
@@ -34,7 +34,7 @@ module AresMUSH
       describe :on_command do
         before do
           @client = double(Client)
-          @create = Create.new(nil)
+          @create = Create.new
           
           Login.stub(:validate_char_name) { true }
           Login.stub(:validate_char_password) { true }
@@ -86,9 +86,8 @@ module AresMUSH
             AresMUSH::Locale.stub(:translate).with("login.created_and_logged_in", { :name => "charname" }) { "created_and_logged_in" }
             @client = double(Client)
             @dispatcher = double
-            container = double
-            container.stub(:dispatcher) { @dispatcher }
-            @create = Create.new(container)
+            Global.stub(:dispatcher) { @dispatcher }
+            @create = Create.new
 
             Character.stub(:create_char)
             @client.stub(:emit_success)

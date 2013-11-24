@@ -7,9 +7,8 @@ module AresMUSH
         @cmd = double
         @client_monitor = double(ClientMonitor)
         @client = double(Client).as_null_object
-        @container = double(Container)
-        @container.stub(:client_monitor) { @client_monitor }
-        @who = WhoCmd.new(@container)
+        Global.stub(:client_monitor) { @client_monitor }
+        @who = WhoCmd.new
       end
 
       describe :want_command do
@@ -67,17 +66,17 @@ module AresMUSH
           @client_monitor.should_receive(:clients) { [@client1, @client2] }
           @client1.should_receive(:logged_in?) { false }
           @client2.should_receive(:logged_in?) { true }
-          WhoRenderer.should_receive(:render).with([@client2], @container) { "" }
+          WhoRenderer.should_receive(:render).with([@client2]) { "" }
           @who.show_who(@client)
         end
 
         it "should call the renderer" do
-          WhoRenderer.should_receive(:render).with([@client1], @container) { "ABC" }
+          WhoRenderer.should_receive(:render).with([@client1]) { "ABC" }
           @who.show_who(@client)
         end
         
         it "should emit the results of the render methods" do
-          WhoRenderer.stub(:render).with([@client1], @container) { "ABC" }
+          WhoRenderer.stub(:render).with([@client1]) { "ABC" }
           @client.should_receive(:emit).with("ABC")
           @who.show_who(@client)
         end

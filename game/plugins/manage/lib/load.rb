@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def after_initialize
-        @plugin_manager = container.plugin_manager
+        @plugin_manager = Global.plugin_manager
       end
 
       def want_command?(cmd)
@@ -23,7 +23,7 @@ module AresMUSH
         rescue Exception => e
           client.emit_failure "Error loading '#{plugin_name}' plugin: #{e.to_s}"
         end
-        container.locale.load!
+        Global.locale.load!
       end
     end
   end

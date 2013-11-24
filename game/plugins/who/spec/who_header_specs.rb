@@ -4,8 +4,7 @@ module AresMUSH
   module Who
     describe WhoHeader do
       before do
-        container = double(Container)
-        @formatter = WhoHeader.new([], container)
+        @formatter = WhoHeader.new([])
       end
 
       describe :template do

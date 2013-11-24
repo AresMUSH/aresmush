@@ -6,9 +6,8 @@ module AresMUSH
       before do
         AresMUSH::Locale.stub(:translate).with("rooms.announce_char_arrived", { :name => "Bob" }) { "announce_char_arrived" }
         
-        container = double(Container)
         @client_monitor = double(ClientMonitor)
-        container.stub(:client_monitor) { @client_monitor }
+        Global.stub(:client_monitor) { @client_monitor }
         
         @client = double(Client)
         @client.stub(:name) { "Bob" }
@@ -20,7 +19,7 @@ module AresMUSH
         Room.stub(:find_by_id) { [] }
         Describe.stub(:room_desc)
 
-        @login = LoginEvents.new(container)
+        @login = LoginEvents.new
       end
       
       describe :on_char_connected do

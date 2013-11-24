@@ -25,11 +25,10 @@ module AresMUSH
       
       describe :get_desc do
         before do
-          @container = double(Container)
           @desc_factory = double(DescFactory)
           DescFactory.stub(:new) { @desc_factory }
           
-          @interface = DescFunctions.new(@container)
+          @interface = DescFunctions.new
         end
         
         it "should build the proper renderer" do

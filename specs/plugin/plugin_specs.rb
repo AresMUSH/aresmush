@@ -9,7 +9,7 @@ module AresMUSH
       class PluginSpecTest
         include Plugin
       end
-      @plugin = PluginSpecTest.new(nil)      
+      @plugin = PluginSpecTest.new    
     end
     
     after do

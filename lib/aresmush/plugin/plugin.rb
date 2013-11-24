@@ -1,12 +1,11 @@
 module AresMUSH
   module Plugin
-    def initialize(container)
-      @container = container
+
+    def initialize
+      # Reserved for common plugin init
       after_initialize
     end
-    
-    attr_reader :container
-        
+            
     # Override this with any custom initialization
     def after_initialize
     end

@@ -28,7 +28,7 @@ module AresMUSH
         end
 
         client.char = char
-        container.dispatcher.on_event(:char_connected, :client => client)
+        Global.dispatcher.on_event(:char_connected, :client => client)
       end
       
       def log_command(client, cmd)

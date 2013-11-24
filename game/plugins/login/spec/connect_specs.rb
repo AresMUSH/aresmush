@@ -5,8 +5,7 @@ module AresMUSH
   
     describe Connect do
       before do
-        @container = double(Container)
-        @connect = Connect.new(@container)
+        @connect = Connect.new
         @client = double(Client)
         
         AresMUSH::Locale.stub(:translate).with("login.invalid_connect_syntax") { "invalid_connect_syntax" }
@@ -70,7 +69,7 @@ module AresMUSH
         before do
           @found_char = double
           @dispatcher = double(Dispatcher)
-          @container.stub(:dispatcher) { @dispatcher }
+          Global.stub(:dispatcher) { @dispatcher }
           
           SingleTargetFinder.stub(:find){ @found_char }
           Character.stub(:compare_password).with(@found_char, "password") { true }  

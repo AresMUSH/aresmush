@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def after_initialize
-        @client_monitor = container.client_monitor
+        @client_monitor = Global.client_monitor
       end
 
       def want_command?(cmd)
@@ -25,7 +25,7 @@ module AresMUSH
       
       def show_who(client)
         logged_in = @client_monitor.clients.select { |c| c.logged_in? }
-        who_list = WhoRenderer.render(logged_in, container)
+        who_list = WhoRenderer.render(logged_in)
         client.emit who_list
       end
     end

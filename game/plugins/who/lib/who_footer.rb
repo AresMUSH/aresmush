@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     class WhoFooter < TemplateRenderer
-      def initialize(clients, container)
+      def initialize(clients)
         @clients = clients
       end
 

@@ -11,7 +11,7 @@ module AresMUSH
       include AresMUSH::Plugin
       
       def after_initialize
-        @desc_factory = DescFactory.new(container)
+        @desc_factory = DescFactory.new
       end
       
       def get_desc(model)

@@ -2,9 +2,9 @@ module AresMUSH
 
   module Describe
     class RoomRenderer
-      def initialize(room, desc_factory, container)
+      def initialize(room, desc_factory)
         @desc_factory = desc_factory
-        @client_monitor = container.client_monitor
+        @client_monitor = Global.client_monitor
         @room = room
       end
 

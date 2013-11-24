@@ -4,8 +4,7 @@ module AresMUSH
   module Describe
     describe Desc do
       before do
-        @container = double(Container)
-        @desc = Desc.new(@container)
+        @desc = Desc.new()
         @client = double(Client).as_null_object
         AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }        
       end

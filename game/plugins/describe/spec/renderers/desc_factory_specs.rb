@@ -5,7 +5,6 @@ module AresMUSH
 
     describe DescFactory do
       before do
-        @container = double(Container)
         @hash_reader = double
         @renderer = double
         
@@ -28,14 +27,14 @@ module AresMUSH
           }
         }
         
-        @factory = DescFactory.new(@container)
+        @factory = DescFactory.new
 
       end
 
       describe :build do
         it "should create a renderer for a room" do
           model = { "type" => "Room" }
-          RoomRenderer.should_receive(:new).with(model, @factory, @container) { @renderer }
+          RoomRenderer.should_receive(:new).with(model, @factory) { @renderer }
           @factory.build(model).should eq @renderer
         end
 

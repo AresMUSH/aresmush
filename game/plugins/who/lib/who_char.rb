@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     class WhoChar < TemplateRenderer
-      def initialize(client, container)
+      def initialize(client)
         @client = client        
         @data = HashReader.new(@client.char)
       end

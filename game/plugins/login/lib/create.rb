@@ -28,7 +28,7 @@ module AresMUSH
         char = Character.create_char(name, password)
         client.emit_success(t('login.created_and_logged_in', :name => name))
         client.char = char
-        container.dispatcher.on_event(:char_created, :client => client)        
+        Global.dispatcher.on_event(:char_created, :client => client)        
       end
       
       def log_command(client, cmd)

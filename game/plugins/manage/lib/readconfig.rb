@@ -4,8 +4,8 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def after_initialize
-        @client_monitor = container.client_monitor
-        @config_reader = container.config_reader
+        @client_monitor = Global.client_monitor
+        @config_reader = Global.config_reader
       end
 
       def want_command?(cmd)

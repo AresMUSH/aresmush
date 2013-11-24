@@ -5,11 +5,10 @@ module AresMUSH
   
     describe Look do
       before do
-        container = double(Container)
-        container.stub(:plugin_manager) { @plugin_manager }
         @plugin_manager = double(PluginManager)
+        Global.stub(:plugin_manager) { @plugin_manager }
         @client = double(Client)
-        @look = Look.new(container)
+        @look = Look.new
         AresMUSH::Locale.stub(:translate).with("object.here") { "here" }        
       end
       

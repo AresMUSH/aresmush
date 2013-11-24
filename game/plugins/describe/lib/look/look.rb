@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
       
       def after_initialize
-        @plugin_manager = container.plugin_manager
+        @plugin_manager = Global.plugin_manager
       end
 
       def want_command?(cmd)

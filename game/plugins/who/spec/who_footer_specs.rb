@@ -4,10 +4,9 @@ module AresMUSH
   module Who
     describe WhoFooter do
       before do
-        container = double(Container)
         @client1 = double("Client1")
         @client2 = double("Client2")
-        @formatter = WhoFooter.new([@client1, @client2], container)
+        @formatter = WhoFooter.new([@client1, @client2])
       end
 
       describe :template do

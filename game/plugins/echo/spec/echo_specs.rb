@@ -5,7 +5,7 @@ module AresMUSH
     describe Echo do
       before do
         @cmd = double(Command)
-        @echo = Echo.new(nil)
+        @echo = Echo.new
       end
 
       describe :want_command do
