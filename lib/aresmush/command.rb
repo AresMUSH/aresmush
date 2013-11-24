@@ -5,14 +5,12 @@ module AresMUSH
     #   root[/switch][ args]
     #   root[args, when args starts with a number]
     # Anything not found will be nil
-    attr_accessor :raw, :root, :switch, :args
+    attr_accessor :raw, :root, :switch, :args, :client
     
     def initialize(client, input)
       @client = client
-      @raw = input   
-      
-      # TODO - Trigger externally         
-      crack!(nil)
+      @raw = input
+      crack!         
     end    
     
     def crack!(args_regex = nil)
@@ -24,7 +22,7 @@ module AresMUSH
         @args = cracked[:args]
       else
         @args = ArgCracker.crack(args_regex, cracked[:args])        
-      end
+      end      
     end
     
     def to_s

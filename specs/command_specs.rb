@@ -10,7 +10,24 @@ module AresMUSH
       @client = double(Client)
     end
 
-    describe :initialize do 
+    describe :initialize do
+      it "should initialize the client" do
+        cmd = Command.new(@client, "test/sw foo")
+        cmd.client.should eq @client
+      end
+      
+      it "should initialize the raw input" do
+        cmd = Command.new(@client, "test/sw foo")
+        cmd.raw.should eq "test/sw foo"
+      end
+      
+      it "should crack the command" do
+        CommandCracker.should_receive(:crack).with("test 123") { { :root => "r", :switch => "s", :args => "a" }}
+        cmd = Command.new(@client, "test 123")        
+      end
+    end
+    
+    describe :crack! do 
      
       it "should set the root" do
         cmd = Command.new(@client, "test/sw foo")
@@ -37,6 +54,15 @@ module AresMUSH
         cmd.switch.should eq nil
         cmd.args.should eq nil
       end
+      
+      it "should crack the args if the optional regex is provided" do
+        regex = /.+/
+        ArgCracker.should_receive(:crack).with(regex, "123") { HashReader.new({ :a => "a" }) }
+        cmd = Command.new(@client, "test 123")
+        cmd.crack!(regex)
+        cmd.args.a.should eq "a"
+      end
+      
     end
 
     describe :logged_in? do  
@@ -56,20 +82,19 @@ module AresMUSH
     end
 
     describe :root_is? do      
-      # Note - more in-depth testing in :cmd_root
       it "should match the specified root" do
         cmd = Command.new(@client, "test/foo bar")
         cmd.root_is?("test").should be_true
       end
 
       it "should not match a different root" do
-          cmd = Command.new(@client, "test/foo bar")
-          cmd.root_is?("foo").should be_false
-        end
+        cmd = Command.new(@client, "test/foo bar")
+        cmd.root_is?("foo").should be_false
+      end
       
       it "should ignore case in the root" do
-          cmd = Command.new(@client, "TesT/foo bar")
-          cmd.root_is?("test").should be_true
+        cmd = Command.new(@client, "TesT/foo bar")
+        cmd.root_is?("test").should be_true
       end        
     end
   end
