@@ -23,24 +23,16 @@ module AresMUSH
     end
 
     def read
-      clear_config
-      read_config_from_files(ConfigReader.config_files)
       plugin_config = PluginManager.config_files
-      read_config_from_files(plugin_config)
+      @config = ConfigFileParser.read(ConfigReader.config_files, {} )
+      @config = ConfigFileParser.read(plugin_config, @config)
     end    
 
     # Shortcut method since it's used all over creation
+    # TODO MOVE
     def line(id)    
       "#{@config['theme']["line" + id]}"
     end
 
-    private 
-    def read_config_from_files(files)
-      files.each do |f|
-        # Use puts here because logger isn't initialized yet
-        puts "Reading config from #{f}"
-        @config = @config.merge_yaml(f)
-      end
-    end
   end
 end

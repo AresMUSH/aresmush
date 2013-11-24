@@ -56,43 +56,28 @@ module AresMUSH
     describe :read do 
       before do
         @reader = ConfigReader.new
-        ConfigReader.stub(:config_files) { [] }
-        PluginManager.stub(:config_files) { [] }
-      end
-
-      it "clears any previous config" do
-        @reader.should_receive(:clear_config)
-        @reader.read
-      end
-
-      it "reads the main config files" do
         ConfigReader.stub(:config_files) { ["a", "b"] }
-        YamlExtensions.should_receive(:yaml_hash).with("a") { {} }
-        YamlExtensions.should_receive(:yaml_hash).with("b") { {} }
-        @reader.read 
+        PluginManager.should_receive(:config_files) { [ "c", "d" ]}        
       end
       
-       it "reads the plugin config files" do
-          ConfigReader.stub(:config_files) { [] }
-          PluginManager.should_receive(:config_files) { [ "a", "b" ]}
-          YamlExtensions.should_receive(:yaml_hash).with("a") { {} }
-          YamlExtensions.should_receive(:yaml_hash).with("b") { {} }
-          @reader.read 
-        end
-      
-      it "merges all the configs together" do
-        ConfigReader.stub(:config_files) { ["a", "b"] }
-        PluginManager.should_receive(:config_files) { [ "c", "d" ]}
-        YamlExtensions.should_receive(:yaml_hash).with("a") { { 'test' => { 'a' => 1 } } }
-        YamlExtensions.should_receive(:yaml_hash).with("b") { { 'test' => { 'b' => 2 } } }
-        YamlExtensions.should_receive(:yaml_hash).with("c") { { 'test' => { 'c' => 3 } } }
-        YamlExtensions.should_receive(:yaml_hash).with("d") { { 'test' => { 'd' => 4 } } }
-
+      it "should read the main and plugin config" do        
+        parsed1 = { "c" => "d" }
+        parsed2 = { "e" => "f" }
+        
+        ConfigFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed1 }
+        ConfigFileParser.should_receive(:read).with( ["c", "d"],  parsed1 ) { parsed2 }
         @reader.read 
-        @reader.config['test']['a'].should eq 1
-        @reader.config['test']['b'].should eq 2
-        @reader.config['test']['c'].should eq 3
-        @reader.config['test']['d'].should eq 4
+        @reader.config.should eq parsed2
+      end
+      
+      it "should erase prior config" do
+        @reader.config = { "a" => "b" }
+        parsed = { "c" => "d" }
+        
+        ConfigFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed }
+        ConfigFileParser.should_receive(:read).with( ["c", "d"],  parsed ) { parsed }
+        @reader.read 
+        @reader.config.has_key?("a").should be_false
       end
     end
   end
