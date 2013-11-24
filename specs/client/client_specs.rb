@@ -12,7 +12,8 @@ module AresMUSH
 
       @connection = double
       @client_monitor = double
-      @client = Client.new(1, @client_monitor, @connection)
+      @dispatcher = double
+      @client = Client.new(1, @client_monitor, @connection, @dispatcher)
     end
 
     describe :connected do
@@ -59,9 +60,11 @@ module AresMUSH
     end
 
     describe :handle_input do
-      it "should pass the input along to the client monitor" do
-        @client_monitor.should_receive(:handle_client_input).with(@client, "Yay")
-        @client.handle_input "Yay"
+      it "should create a command and notify the dispatcher" do
+        cmd = double
+        Command.should_receive(:new).with(@client, "Yay") { cmd }
+        @dispatcher.should_receive(:on_command).with(@client, cmd)
+        @client.handle_input "Yay"        
       end
     end
 

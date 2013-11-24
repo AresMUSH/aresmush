@@ -5,10 +5,11 @@ module AresMUSH
     attr_reader :ip_addr, :id
     attr_accessor :char
     
-    def initialize(id, client_monitor, connection)
+    def initialize(id, client_monitor, connection, dispatcher)
       @id = id
       @client_monitor = client_monitor
       @connection = connection
+      @dispatcher = dispatcher
     end
     
     def to_s
@@ -50,8 +51,8 @@ module AresMUSH
       EM.next_tick { @connection.close_connection }
     end
     
-    def handle_input(data)
-      @client_monitor.handle_client_input(self, data)
+    def handle_input(input)
+      @dispatcher.on_command(self, Command.new(self, input))
     end
 
     # Responds to a disconnect from any sort of source - socket error, client-initated, etc.

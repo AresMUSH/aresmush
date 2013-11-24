@@ -6,7 +6,6 @@ module AresMUSH
     # %l1 - %l4 - line1 through line4
     def self.format(str)
       # Do the lines first in case they themselves have special chars in them
-      # TODO! This is UGLY!              
       str = str.code_gsub("%l1", Line.show("1"))
       str = str.code_gsub("%l2", Line.show("2"))
       str = str.code_gsub("%l3", Line.show("3"))

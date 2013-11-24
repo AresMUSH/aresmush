@@ -7,14 +7,15 @@ module AresMUSH
   describe ClientFactory do
 
     before do
-      @factory = ClientFactory.new
+      @dispatcher = double
+      @factory = ClientFactory.new(@dispatcher)
       @connection = double.as_null_object
     end
       
     it "should initialize and return a client" do
       client = double
       client_monitor = double
-      Client.should_receive(:new).with(1, client_monitor, @connection) { client }
+      Client.should_receive(:new).with(1, client_monitor, @connection, @dispatcher) { client }
       @factory.create_client(@connection, client_monitor).should eq client
     end
     

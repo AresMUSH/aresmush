@@ -31,10 +31,5 @@ module AresMUSH
       @clients.delete client
       @dispatcher.on_event(:char_disconnected, :client => client)
     end
-
-    def handle_client_input(client, input)
-      @dispatcher.on_command(client, Command.new(client, input))
-    end
-    
   end
 end

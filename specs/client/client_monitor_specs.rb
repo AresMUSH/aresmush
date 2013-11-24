@@ -41,15 +41,6 @@ module AresMUSH
       end
     end
     
-    describe :handle_client_input do
-      it "should notify the dispatcher" do
-        cmd = double
-        Command.should_receive(:new).with(@client1, "test") { cmd }
-        @dispatcher.should_receive(:on_command).with(@client1, cmd)
-        @client_monitor.handle_client_input(@client1, "test")
-      end
-    end
-
     describe :connection_established do
       before do
         @client3 = double(Client).as_null_object
