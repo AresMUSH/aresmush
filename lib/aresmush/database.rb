@@ -1,8 +1,4 @@
-def db
-  AresMUSH::Database.db
-end
-
-module AresMUSH
+module AresMUSH  
   class Database
     def initialize(config_reader)
       @config_reader = config_reader
@@ -18,14 +14,14 @@ module AresMUSH
       port = db_config['port']
       host = db_config['host']
       db_name = db_config['database']      
-      logger.info("Connection to database: host=#{host} port=#{port} db=#{db_name}")
+      Global.logger.info("Connection to database: host=#{host} port=#{port} db=#{db_name}")
 
       begin
         connection = Mongo::Connection.new(host, port)
         @@db = connection.db(db_name)
         authenticate(db_config['username'], db_config['password'])
       rescue Exception => e
-        logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
+        Global.logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e
       end      
     end       

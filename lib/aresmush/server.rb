@@ -19,7 +19,7 @@ module AresMUSH
           connection.config_reader = @config_reader
           @client_monitor.connection_established(connection)
         end
-        logger.info "Server started on #{host}:#{port}."
+        Global.logger.info "Server started on #{host}:#{port}."
       end
     end   
   end

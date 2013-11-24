@@ -21,14 +21,14 @@ module AresMUSH
         @clients << client
         client.connected
         @dispatcher.on_event(:connection_established, :client => client)
-        logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
+        Global.logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
       rescue Exception => e
-        logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
+        Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
     end
 
     def connection_closed(client)
-      logger.info("Client #{client.id} disconnected.")
+      Global.logger.info("Client #{client.id} disconnected.")
       @clients.delete client
       @dispatcher.on_event(:char_disconnected, :client => client)
     end

@@ -33,7 +33,7 @@ module AresMUSH
       
       def log_command(client, cmd)
         # Don't log full command for privacy
-        logger.debug("#{self.class.name} #{client}")
+        Global.logger.debug("#{self.class.name} #{client}")
       end      
     end
   end

@@ -22,7 +22,7 @@ module AresMUSH
     end
     
     def self.set_desc(model, desc)  
-      logger.debug("Setting desc: #{model["name"]} #{desc}")
+      Global.logger.debug("Setting desc: #{model["name"]} #{desc}")
       
       model["description"] = desc
       model_class = AresModel.model_class(model)

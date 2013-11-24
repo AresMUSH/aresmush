@@ -51,7 +51,7 @@ module AresMUSH
     private    
     def load_plugin_code(files)
       files.each do |f| 
-        logger.info "Loading #{f}."
+        Global.logger.info "Loading #{f}."
         load f
       end
       @plugins = @plugin_factory.create_plugin_classes

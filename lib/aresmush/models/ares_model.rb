@@ -14,12 +14,12 @@ module AresMUSH
     end
 
     def find(*args)
-      db[coll].find(*args).to_a
+      Global.db[coll].find(*args).to_a
     end
 
     def update(model)
       id = id_to_update(model)
-      db[coll].update( { :_id => id }, model)
+      Global.db[coll].update( { :_id => id }, model)
     end
 
     def id_to_update(model)
@@ -58,12 +58,12 @@ module AresMUSH
       model = args[0]
       model["create date"] = Time.now
       model = custom_model_fields(model)
-      db[coll].insert(model)
+      Global.db[coll].insert(model)
       model
     end
 
     def drop_all
-      db[coll].drop
+      Global.db[coll].drop
     end
 
     def find_one(name_or_id)

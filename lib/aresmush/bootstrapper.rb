@@ -1,4 +1,4 @@
-module AresMUSH
+module AresMUSH  
   
   class Bootstrapper 
 
@@ -36,18 +36,18 @@ module AresMUSH
       locale.setup
       plugin_manager.load_all
     
-      logger.debug config_reader.config
+      Global.logger.debug config_reader.config
 
       @command_line = AresMUSH::CommandLine.new(server)
     end
     
     def handle_exit(exception)
       if (exception.kind_of?(SystemExit))
-        logger.info "Normal shutdown."
+        Global.logger.info "Normal shutdown."
       elsif (exception.nil?)
-        logger.info "Shutting down."
+        Global.logger.info "Shutting down."
       else
-        logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
+        Global.logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
       end
     end
     

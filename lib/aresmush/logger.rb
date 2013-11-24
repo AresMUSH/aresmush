@@ -1,7 +1,3 @@
-def logger
-   l = AresMUSH::AresLogger.logger
-end
-
 module AresMUSH
   class AresLogger
     def initialize(config_reader)

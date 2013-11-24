@@ -6,20 +6,20 @@ module AresMUSH
     def create_plugin_classes
       plugins = []
       find_and_instantiate(AresMUSH, plugins)
-      logger.info "System load complete."
+      Global.logger.info "System load complete."
       plugins
     end
     
     def find_and_instantiate(mod, plugins)
       consts = mod.constants
-      logger.debug "Searching #{mod}."
+      Global.logger.debug "Searching #{mod}."
       consts.each do |c|
         sym = mod.const_get(c)
         if (sym.class == Module)
           find_and_instantiate(sym, plugins)
         else
           if (sym.class == Class && sym.include?(AresMUSH::Plugin))
-            logger.debug "Creating #{sym}."
+            Global.logger.debug "Creating #{sym}."
             plugins << sym.new(@container)            
           end
         end        

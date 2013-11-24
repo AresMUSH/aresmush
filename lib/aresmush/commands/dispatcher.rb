@@ -23,7 +23,7 @@ module AresMUSH
           end # if
         end # each
         if (!handled)
-          logger.info("Unrecognized command: #{cmd}")
+          Global.logger.info("Unrecognized command: #{cmd}")
           client.emit_ooc t('dispatcher.huh')
         end
       end # with error handling
@@ -37,7 +37,7 @@ module AresMUSH
           end
         end
       rescue Exception => e
-        logger.error("Error handling event: event=#{type} error=#{e} backtrace=#{e.backtrace[0,10]}")
+        Global.logger.error("Error handling event: event=#{type} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
     end
     
@@ -52,10 +52,10 @@ module AresMUSH
       rescue Exception => e
         begin
            handled = true
-           logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[0,10]}")
+           Global.logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[0,10]}")
            client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd.raw, :error_info => e)
         rescue Exception => e2
-          logger.error("Error inside of command error handling: error=#{e2} backtrace=#{e2.backtrace[0,10]}")
+          Global.logger.error("Error inside of command error handling: error=#{e2} backtrace=#{e2.backtrace[0,10]}")
         end
       end
     end

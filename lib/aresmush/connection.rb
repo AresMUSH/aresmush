@@ -8,7 +8,7 @@ module AresMUSH
       begin
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
       rescue Exception => e
-        logger.warn "Could not decode IP address."
+        Global.logger.warn "Could not decode IP address."
         @ip_addr = "0.0.0.0"
       end
     end
@@ -21,7 +21,7 @@ module AresMUSH
       begin
         super msg
       rescue Exception => e
-        logger.warn "Could not send to connection: #{e}."
+        Global.logger.warn "Could not send to connection: #{e}."
       end
     end
     
@@ -33,7 +33,7 @@ module AresMUSH
       begin
         super
       rescue Exception => e
-        logger.debug "Couldn't close connection: #{e}."
+        Global.logger.debug "Couldn't close connection: #{e}."
       end
     end
     

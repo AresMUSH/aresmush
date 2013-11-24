@@ -19,20 +19,20 @@ module AresMUSH
     describe :logger do
       it "should ask for the ares logger" do
         Log4r::Logger.should_receive(:[]).with('ares')
-        logger
+        Global.logger
       end
       
       it "should return the ares logger if it's set" do
         dummy_logger = double(AresLogger)
         Log4r::Logger.stub(:[]).with('ares') { dummy_logger }
-        logger.should eq dummy_logger
+        Global.logger.should eq dummy_logger
       end
       
       it "should return the root logger if the ares logger is not set" do
         dummy_logger = Object.new
         Log4r::Logger.stub(:[]).with('ares') { nil }
         Log4r::Logger.stub(:root) { dummy_logger }
-        logger.should eq dummy_logger
+        Global.logger.should eq dummy_logger
       end
       
     end

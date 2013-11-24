@@ -9,10 +9,10 @@ end
 
 task :install do
   bootstrapper = AresMUSH::Bootstrapper.new
-  db[:chars].drop
-  db[:exits].drop
-  db[:rooms].drop
-  db[:game].drop
+  AresMUSH.db[:chars].drop
+  AresMUSH.db[:exits].drop
+  AresMUSH.db[:rooms].drop
+  AresMUSH.db[:game].drop
   AresMUSH::Room.drop_all
   AresMUSH::Exit.drop_all
   AresMUSH::Character.drop_all

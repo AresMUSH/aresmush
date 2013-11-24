@@ -18,7 +18,7 @@ module AresMUSH
     
     def self.load_file(file_path)
       return if File.directory?(file_path)
-      logger.debug("Loading translations from #{file_path}.")
+      Global.logger.debug("Loading translations from #{file_path}.")
       I18n.load_path << file_path
     end
   end
