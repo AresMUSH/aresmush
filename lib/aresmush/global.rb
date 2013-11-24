@@ -8,14 +8,5 @@ module AresMUSH
     def self.logger
       AresLogger.logger
     end
-    
-    def self.container
-      @@container
-    end
-    
-    def self.container=(container)
-      @@container = container
-    end
-    
   end
 end

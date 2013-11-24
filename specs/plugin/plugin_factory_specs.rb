@@ -17,7 +17,7 @@ module AresMUSH
       before do
         @factory = PluginFactory.new
         @container = double(Container).as_null_object
-        Global.container = @container        
+        @factory.container = @container        
       end
       
       it "creates instances of each plugin class" do
@@ -26,6 +26,10 @@ module AresMUSH
         test_plugin.should_not be_nil
       end
       
+      it "sets the plugin's container" do
+        plugins = @factory.create_plugin_classes
+        plugins[0].container.should eq @container
+      end      
     end
     
   end

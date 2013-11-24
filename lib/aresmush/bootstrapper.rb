@@ -8,7 +8,7 @@ module AresMUSH
       config_reader = ConfigReader.new
       ares_logger = AresLogger.new(config_reader)
       locale = Locale.new(config_reader)
-      client_factory = ClientFactory.new
+      client_factory = ClientFactory.new(config_reader)
       plugin_factory = PluginFactory.new
       plugin_manager = PluginManager.new(plugin_factory)
       dispatcher = Dispatcher.new(plugin_manager)
@@ -18,10 +18,9 @@ module AresMUSH
             
       # Now that everything's created, give the factory a container of the main plugin 
       # objects so that it can pass those along to the individual plugins
-      Global.container = Container.new(config_reader, client_monitor, plugin_manager, dispatcher, locale)
+      container = Container.new(config_reader, client_monitor, plugin_manager, dispatcher, locale)
+      plugin_factory.container = container
       
-      client_factory.container = container
-
       # Configure a trap for exiting.
       at_exit do
         handle_exit($!)

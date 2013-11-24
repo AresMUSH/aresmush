@@ -1,6 +1,8 @@
 module AresMUSH
   class PluginFactory
         
+    attr_accessor :container
+    
     def create_plugin_classes
       plugins = []
       find_and_instantiate(AresMUSH, plugins)
@@ -18,7 +20,7 @@ module AresMUSH
         else
           if (sym.class == Class && sym.include?(AresMUSH::Plugin))
             Global.logger.debug "Creating #{sym}."
-            plugins << sym.new(Global.container)            
+            plugins << sym.new(container)            
           end
         end        
       end

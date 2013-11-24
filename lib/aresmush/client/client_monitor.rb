@@ -17,7 +17,7 @@ module AresMUSH
 
     def connection_established(connection)
       begin
-        client = @client_factory.create_client(connection)
+        client = @client_factory.create_client(connection, self)
         @clients << client
         client.connected
         @dispatcher.on_event(:connection_established, :client => client)

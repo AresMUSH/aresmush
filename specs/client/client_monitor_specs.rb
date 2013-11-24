@@ -58,7 +58,7 @@ module AresMUSH
       end
 
       it "should create a client" do
-        @factory.should_receive(:create_client).with(@connection) { @client3 }
+        @factory.should_receive(:create_client).with(@connection, @client_monitor) { @client3 }
         @client_monitor.connection_established(@connection)
       end
 
