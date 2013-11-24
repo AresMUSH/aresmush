@@ -1,8 +1,7 @@
 module AresMUSH
   class ClientMonitor
-    def initialize(config_reader, dispatcher, client_factory)
+    def initialize(dispatcher, client_factory)
       @clients = []
-      @config_reader = config_reader
       @dispatcher = dispatcher
       @client_factory = client_factory
     end

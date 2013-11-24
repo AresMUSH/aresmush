@@ -1,7 +1,9 @@
 module AresMUSH
 
   class ClientGreeter    
-    def self.greet(client, connect_config)
+    def self.greet(client)
+      connect_config = Global.config['connect']
+      
       # Connect screen ansi
       client.emit connect_config['welcome_screen']
 

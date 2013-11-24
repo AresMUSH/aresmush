@@ -10,9 +10,6 @@ end
 module AresMUSH  
   
   class Locale
-    def initialize(config_reader)
-      @config_reader = config_reader     
-    end
         
     def self.locale_path
       File.join(AresMUSH.game_path, "locales")
@@ -65,9 +62,9 @@ module AresMUSH
     private
         
     def set_locale
-      I18n.locale =  @config_reader.config['server']['locale']
+      I18n.locale =  Global.config['server']['locale']
       I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-      I18n.default_locale = @config_reader.config['server']['default_locale']
+      I18n.default_locale = Global.config['server']['default_locale']
     end    
   end
 end

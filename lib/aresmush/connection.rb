@@ -1,7 +1,7 @@
 module AresMUSH
 
   class Connection < EventMachine::Connection
-    attr_accessor :client, :config_reader
+    attr_accessor :client
     attr_reader :ip_addr
     
     def post_init
@@ -26,7 +26,7 @@ module AresMUSH
     end
     
     def send_formatted(msg)
-      send_data ClientFormatter.format(msg, @config_reader)
+      send_data ClientFormatter.format(msg)
     end
     
     def close_connection

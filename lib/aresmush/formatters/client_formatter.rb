@@ -2,9 +2,9 @@ module AresMUSH
 
   class ClientFormatter
 
-    def self.format(msg, config_reader)
+    def self.format(msg)
       # Do substitutions
-      msg = SubstitutionFormatter.format(msg, config_reader)      
+      msg = SubstitutionFormatter.format(msg)      
       # Ansify
       msg = AnsiFormatter.format(msg)
       # Unescape %'s

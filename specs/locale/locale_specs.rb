@@ -6,10 +6,9 @@ module AresMUSH
 
   describe Locale do
     before do
-      @config_reader = double(ConfigReader)
       @game_path = Dir.pwd
       AresMUSH.stub(:game_path) { @game_path }
-      @locale = Locale.new(@config_reader)
+      @locale = Locale.new
     end
     
     describe :locale_path do
@@ -34,7 +33,7 @@ module AresMUSH
     
     describe :setup do
       before do
-        @config_reader.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }        
+        Global.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }        
       end
 
       it "should trigger a load" do

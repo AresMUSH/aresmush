@@ -32,8 +32,8 @@ module AresMUSH
 
     # Shortcut method since it's used all over creation
     # TODO MOVE
-    def line(id)    
-      "#{@@config['theme']["line" + id]}"
+    def self.line(id)    
+      "#{Global.config['theme']["line" + id]}"
     end
 
   end

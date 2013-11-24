@@ -10,17 +10,15 @@ module AresMUSH
       AresMUSH::Locale.stub(:translate).with("client.welcome") { "welcome" }
       AresMUSH::Locale.stub(:translate).with("client.anonymous") { "anon" }
 
-      @config_reader = double
       @connection = double
       @client_monitor = double
-      @client = Client.new(1, @client_monitor, @config_reader, @connection)
+      @client = Client.new(1, @client_monitor, @connection)
     end
 
     describe :connected do
       it "should greet the client with the connect config" do
         connect_config = { 'welcome_text' => "Hi", 'welcome_screen' => "Ascii Art" }
-        @config_reader.should_receive(:config) { {'connect' => @connect_config } }
-        ClientGreeter.should_receive(:greet).with(@client, @connect_config)
+        ClientGreeter.should_receive(:greet).with(@client)
         @client.connected
       end
     end

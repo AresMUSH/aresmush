@@ -6,15 +6,15 @@ module AresMUSH
     
     def initialize
       config_reader = ConfigReader.new
-      ares_logger = AresLogger.new(config_reader)
-      locale = Locale.new(config_reader)
-      client_factory = ClientFactory.new(config_reader)
+      ares_logger = AresLogger.new
+      locale = Locale.new
+      client_factory = ClientFactory.new
       plugin_factory = PluginFactory.new
       plugin_manager = PluginManager.new(plugin_factory)
       dispatcher = Dispatcher.new(plugin_manager)
-      client_monitor = ClientMonitor.new(config_reader, dispatcher, client_factory)
-      server = Server.new(config_reader, client_monitor)
-      db = Database.new(config_reader)
+      client_monitor = ClientMonitor.new(dispatcher, client_factory)
+      server = Server.new(client_monitor)
+      db = Database.new
             
       # Now that everything's created, give the factory a container of the main plugin 
       # objects so that it can pass those along to the individual plugins

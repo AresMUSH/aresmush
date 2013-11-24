@@ -5,11 +5,10 @@ module AresMUSH
     attr_reader :ip_addr, :id
     attr_accessor :char
     
-    def initialize(id, client_monitor, config_reader, connection)
+    def initialize(id, client_monitor, connection)
       @id = id
       @client_monitor = client_monitor
       @connection = connection
-      @config_reader = config_reader
     end
     
     def to_s
@@ -17,7 +16,7 @@ module AresMUSH
     end
     
     def connected
-      ClientGreeter.greet(self, @config_reader.config['connect'])
+      ClientGreeter.greet(self)
     end
 
     def ping

@@ -7,10 +7,9 @@ module AresMUSH
   describe ClientMonitor do
 
     before do
-      @config_reader = double(ConfigReader)
       @dispatcher = double(Dispatcher).as_null_object
       @factory = double(ClientFactory).as_null_object
-      @client_monitor = ClientMonitor.new(@config_reader, @dispatcher, @factory)
+      @client_monitor = ClientMonitor.new(@dispatcher, @factory)
 
       # Set up a couple of test clients
       @client1 = double(Client).as_null_object

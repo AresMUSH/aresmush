@@ -7,10 +7,9 @@ module AresMUSH
   describe AresLogger do
     describe :start do
       it "should start the logger with the logger config" do
-        config_reader = double(ConfigReader)
         logger_config = { "a" => "b", "c" => "d" }
-        config_reader.stub(:config) { {"logger" => logger_config}  }
-        logger = AresLogger.new(config_reader)
+        Global.stub(:config) { {"logger" => logger_config}  }
+        logger = AresLogger.new
         Log4r::YamlConfigurator.should_receive(:decode_yaml).with(logger_config)
         logger.start
       end

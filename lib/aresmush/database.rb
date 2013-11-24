@@ -1,15 +1,12 @@
 module AresMUSH  
   class Database
-    def initialize(config_reader)
-      @config_reader = config_reader
-    end
 
     def self.db
       @@db
     end
     
     def connect
-      db_config = @config_reader.config['database']
+      db_config = Global.config['database']
       host = db_config['host']
       port = db_config['port']
       host = db_config['host']

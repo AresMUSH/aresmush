@@ -16,9 +16,8 @@ module AresMUSH
             'username' => 'user',
             'password' => 'pw'
         }
-        config_reader = double(ConfigReader)
-        config_reader.stub(:config) { {'database' => db_config } }
-        @db = Database.new(config_reader)
+        Global.stub(:config) { {'database' => db_config } }
+        @db = Database.new
       end
       
       it "should connect on the configured host and port" do

@@ -7,10 +7,9 @@ module AresMUSH
   describe Server do
     describe :start do
       before do
-        @config_reader = double(ConfigReader)
         @client_monitor = double(ClientMonitor)
-        @config_reader.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
-        @server = Server.new(@config_reader, @client_monitor)
+        Global.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
+        @server = Server.new(@client_monitor)
       end
       
       it "should start a timer for the pings" do
@@ -39,17 +38,7 @@ module AresMUSH
         EventMachine.should_receive(:start_server).and_yield(connection)
         @client_monitor.should_receive(:connection_established).with(connection)
         @server.start
-      end
-      
-      it "should pass on the config reader to the connection" do
-        connection = double(Connection)
-        EventMachine.should_receive(:run).and_yield
-        EventMachine.stub(:add_periodic_timer)
-        EventMachine.stub(:start_server).and_yield(connection)
-        @client_monitor.stub(:connection_established)
-        connection.should_receive(:config_reader=).with(@config_reader)
-        @server.start
-      end
+      end      
     end    
   end
 end
