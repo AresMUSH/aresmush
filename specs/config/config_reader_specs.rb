@@ -21,37 +21,6 @@ module AresMUSH
       end
     end
     
-    describe :line do
-      it "is an alias to the theme line" do
-        reader = ConfigReader.new
-        reader.stub(:line_color) { "c" }
-        reader.config = {"theme" => {"line1" => "---"}}
-        reader.line("1").should eq "---"
-      end
-      
-      it "can read any arbitrary line" do
-        reader = ConfigReader.new
-        reader.stub(:line_color) { "c" }
-        reader.config = {"theme" => {"line_top" => "---"}}
-        reader.line("_top").should eq "---"
-      end
-      
-      it "should default to a blank line if the specified one doesn't exist" do
-        reader = ConfigReader.new
-        reader.stub(:line_color) { "c" }
-        reader.config = {"theme" => {"line2" => "---"}}
-        reader.line("xxx").should eq  ""
-      end
-    end
-
-    describe :clear_config do
-      it "clears any previous config" do
-        @reader = ConfigReader.new
-        @reader.config['x'] = 'y'
-        @reader.clear_config
-        @reader.config.has_key?('x').should be_false
-      end
-    end
 
     describe :read do 
       before do
@@ -64,21 +33,12 @@ module AresMUSH
         parsed1 = { "c" => "d" }
         parsed2 = { "e" => "f" }
         
+        # The first {} is what makes sure the prior config was erased
         ConfigFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed1 }
         ConfigFileParser.should_receive(:read).with( ["c", "d"],  parsed1 ) { parsed2 }
         @reader.read 
         @reader.config.should eq parsed2
-      end
-      
-      it "should erase prior config" do
-        @reader.config = { "a" => "b" }
-        parsed = { "c" => "d" }
-        
-        ConfigFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed }
-        ConfigFileParser.should_receive(:read).with( ["c", "d"],  parsed ) { parsed }
-        @reader.read 
-        @reader.config.has_key?("a").should be_false
-      end
+      end      
     end
   end
 end

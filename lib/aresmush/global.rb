@@ -8,5 +8,9 @@ module AresMUSH
     def self.logger
       AresLogger.logger
     end
+    
+    def self.config
+      ConfigReader.config
+    end
   end
 end
