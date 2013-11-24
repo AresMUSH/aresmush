@@ -6,7 +6,7 @@ module AresMUSH
 
   describe SubstitutionFormatter do
     before do
-      ConfigReader.stub(:line) { "" }
+      Line.stub(:show) { "" }
     end
     
     describe :perform_subs do
@@ -27,22 +27,22 @@ module AresMUSH
       end  
       
       it "should replace %l1 with line1" do
-        ConfigReader.stub(:line).with("1") { "---" }
+        Line.stub(:show).with("1") { "---" }
         SubstitutionFormatter.format("Test%l1Test").should eq "Test---Test"
       end    
 
       it "should replace %l2 with line2" do
-        ConfigReader.stub(:line).with("2") { "---" }
+        Line.stub(:show).with("2") { "---" }
         SubstitutionFormatter.format("Test%l2Test").should eq "Test---Test"
       end    
 
       it "should replace %l3 with line3" do
-        ConfigReader.stub(:line).with("3") { "---" }
+        Line.stub(:show).with("3") { "---" }
         SubstitutionFormatter.format("Test%l3Test").should eq "Test---Test"
       end    
 
       it "should replace %l4 with line4" do
-        ConfigReader.stub(:line).with("4") { "---" }
+        Line.stub(:show).with("4") { "---" }
         SubstitutionFormatter.format("Test%l4Test").should eq "Test---Test"
       end    
       

@@ -29,12 +29,5 @@ module AresMUSH
       @@config = ConfigFileParser.read(ConfigReader.config_files, {} )
       @@config = ConfigFileParser.read(plugin_config, @@config)
     end    
-
-    # Shortcut method since it's used all over creation
-    # TODO MOVE
-    def self.line(id)    
-      "#{Global.config['theme']["line" + id]}"
-    end
-
   end
 end

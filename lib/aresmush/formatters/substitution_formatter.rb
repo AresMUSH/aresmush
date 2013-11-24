@@ -7,10 +7,10 @@ module AresMUSH
     def self.format(str)
       # Do the lines first in case they themselves have special chars in them
       # TODO! This is UGLY!              
-      str = str.code_gsub("%l1", ConfigReader.line("1"))
-      str = str.code_gsub("%l2", ConfigReader.line("2"))
-      str = str.code_gsub("%l3", ConfigReader.line("3"))
-      str = str.code_gsub("%l4", ConfigReader.line("4"))
+      str = str.code_gsub("%l1", Line.show("1"))
+      str = str.code_gsub("%l2", Line.show("2"))
+      str = str.code_gsub("%l3", Line.show("3"))
+      str = str.code_gsub("%l4", Line.show("4"))
 
       str = str.code_gsub("%[rR]", "\n")
       str = str.code_gsub("%[tT]", "     ")
