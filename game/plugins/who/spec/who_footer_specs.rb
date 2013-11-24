@@ -5,16 +5,14 @@ module AresMUSH
     describe WhoFooter do
       before do
         container = double(Container)
-        @config_reader = double(ConfigReader)
         @client1 = double("Client1")
         @client2 = double("Client2")
-        container.stub(:config_reader) { @config_reader }
         @formatter = WhoFooter.new([@client1, @client2], container)
       end
 
       describe :template do
         it "should use the footer template" do
-          @config_reader.stub(:config) {{ "who" => { "footer" => "template"} }}
+          Global.stub(:config) {{ "who" => { "footer" => "template"} }}
           @formatter.template.should eq "template"
         end
       end

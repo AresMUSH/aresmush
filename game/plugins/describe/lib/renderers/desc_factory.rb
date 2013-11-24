@@ -4,7 +4,6 @@ module AresMUSH
       
       def initialize(container)
         @container = container
-        @config_reader = container.config_reader
       end
       
       def build(model)
@@ -24,15 +23,15 @@ module AresMUSH
       end
       
       def char_config
-        @config_reader.config["desc"]["char"]
+        Global.config["desc"]["char"]
       end
       
       def exit_config
-        @config_reader.config["desc"]["exit"]
+        Global.config["desc"]["exit"]
       end
       
       def room_config
-        @config_reader.config["desc"]["room"]
+        Global.config["desc"]["room"]
       end
       
       def build_room_exit_header(room)

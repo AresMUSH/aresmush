@@ -3,11 +3,10 @@ module AresMUSH
     class WhoFooter < TemplateRenderer
       def initialize(clients, container)
         @clients = clients
-        @config_reader = container.config_reader
       end
 
       def template
-        @config_reader.config["who"]["footer"]
+        Global.config["who"]["footer"]
       end
 
       def online_total

@@ -6,8 +6,6 @@ module AresMUSH
       before do
         container = double(Container)
         @client = double(Client)
-        @config_reader = double(ConfigReader)
-        container.stub(:config_reader) { @config_reader }
         setup_character
         @formatter = WhoChar.new(@client, container)
       end
@@ -20,7 +18,7 @@ module AresMUSH
 
       describe :template do
         it "should use the char template" do
-          @config_reader.stub(:config) {{ "who" => { "each_char" => "template"} }}
+          Global.stub(:config) {{ "who" => { "each_char" => "template"} }}
           @formatter.template.should eq "template"
         end        
       end

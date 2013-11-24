@@ -5,21 +5,19 @@ module AresMUSH
     describe WhoHeader do
       before do
         container = double(Container)
-        @config_reader = double(ConfigReader)
-        container.stub(:config_reader) { @config_reader }
         @formatter = WhoHeader.new([], container)
       end
 
       describe :template do
         it "should use the header template" do
-          @config_reader.stub(:config) {{ "who" => { "header" => "template"} }}
+          Global.stub(:config) {{ "who" => { "header" => "template"} }}
           @formatter.template.should eq "template"
         end
       end
       
       describe :mush_name do
         it "should provide the mush name" do
-          @config_reader.stub(:config) {{ "theme" => { "mush_name" => "mymushname"} }}          
+          Global.stub(:config) {{ "theme" => { "mush_name" => "mymushname"} }}          
           @formatter.mush_name.should eq "mymushname"
         end
       end

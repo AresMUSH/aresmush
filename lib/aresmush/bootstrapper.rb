@@ -35,7 +35,7 @@ module AresMUSH
       locale.setup
       plugin_manager.load_all
     
-      Global.logger.debug config_reader.config
+      Global.logger.debug Global.config
 
       @command_line = AresMUSH::CommandLine.new(server)
     end

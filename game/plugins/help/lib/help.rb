@@ -3,9 +3,6 @@ module AresMUSH
     class Help
       include AresMUSH::Plugin
 
-      def after_initialize
-        @config_reader = container.config_reader
-      end
       
       def want_command?(cmd)
         cmd.root.end_with?("help")
@@ -31,7 +28,7 @@ module AresMUSH
       end
       
       def help_indices
-        @config_reader.config['help']['indices']
+        Global.config['help']['indices']
       end
       
       def find_index(prefix)

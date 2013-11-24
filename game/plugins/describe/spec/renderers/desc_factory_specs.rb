@@ -6,12 +6,10 @@ module AresMUSH
     describe DescFactory do
       before do
         @container = double(Container)
-        @config_reader = double(ConfigReader)
-        @container.stub(:config_reader) { @config_reader }
         @hash_reader = double
         @renderer = double
         
-        @config_reader.stub(:config) {
+        Global.stub(:config) {
           {
             "desc" =>
             {
