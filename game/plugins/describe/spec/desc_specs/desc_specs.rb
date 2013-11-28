@@ -4,7 +4,7 @@ module AresMUSH
   module Describe
     describe Desc do
       before do
-        @desc = Desc.new()
+        @desc = Desc.new
         @client = double(Client).as_null_object
         AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }        
       end
@@ -40,37 +40,37 @@ module AresMUSH
 
           @args.stub(:target) { "Bob" }
           @args.stub(:desc) { "New desc" }
-          DescCmdCracker.stub(:crack) { @args }
+          @desc.stub(:crack) { @args }
         end
         
         it "should crack the args" do
-          DescCmdCracker.should_receive(:crack).with(@cmd) { @args }
+          @desc.should_receive(:crack).with(@cmd) { @args }
           # Short-circuit the rest of the command.
-          DescCmdValidator.stub(:validate) { false }
+          @desc.stub(:validate) { false }
           @desc.on_command(@client, @cmd)          
         end
         
         it "should not handle the cmd if the args were invalid" do
-          DescCmdValidator.should_receive(:validate).with(@args, @client) { false }
-          DescCmdHandler.should_not_receive(:handle)
+          @desc.should_receive(:validate).with(@args, @client) { false }
+          @desc.should_not_receive(:handle)
           @desc.on_command(@client, @cmd)
         end
         
         it "should fail if nothing is found with the name" do
-          DescCmdValidator.stub(:validate) { true }
+          @desc.stub(:validate) { true }
           VisibleTargetFinder.should_receive(:find).with("Bob", @client) { nil }
-          DescCmdHandler.should_not_receive(:handle)
+          @desc.should_not_receive(:handle)
           @desc.on_command(@client, @cmd)
         end        
         
         it "should call the command handler" do
           model = double
-          DescCmdValidator.stub(:validate) { true }
+          @desc.stub(:validate) { true }
           VisibleTargetFinder.should_receive(:find).with("Bob", @client) { model }
-          DescCmdHandler.should_receive(:handle).with(model, "New desc", @client)
+          @desc.should_receive(:handle).with(model, "New desc", @client)
           @desc.on_command(@client, @cmd)
         end
-      end
+      end            
     end
         
   end
