@@ -37,11 +37,11 @@ module AresMUSH
         before do
           @args = double
           @args.stub(:target) { "target" }
-          LookCmdCracker.stub(:crack) { @args }
+          @look.stub(:crack) { @args }
         end
         
         it "should crack the args" do
-          LookCmdCracker.should_receive(:crack).with(@cmd)
+          @look.should_receive(:crack).with(@cmd)
           # Short-circuit the rest of the command
           VisibleTargetFinder.stub(:find) { nil }
           @look.on_command(@client, @cmd)
@@ -54,7 +54,7 @@ module AresMUSH
         
         it "should not handle the command if the target is not found" do
           VisibleTargetFinder.stub(:find) { nil }
-          LookCmdHandler.should_not_receive(:handle)
+          @look.should_not_receive(:handle)
           @look.on_command(@client, @cmd)
         end
         
@@ -63,7 +63,7 @@ module AresMUSH
           iface = double(DescFunctions)
           VisibleTargetFinder.stub(:find) { model }
           Describe.stub(:interface) { iface }
-          LookCmdHandler.should_receive(:handle).with(iface, model, @client)
+          @look.should_receive(:handle).with(iface, model, @client)
           @look.on_command(@client, @cmd)
         end
       end
