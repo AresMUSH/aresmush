@@ -11,19 +11,7 @@ module AresMUSH
         cmd.root_is?("who")
       end
       
-      def want_anon_command?(cmd)
-        cmd.root_is?("who")
-      end
-      
       def on_command(client, cmd)
-        show_who(client)
-      end
-      
-      def on_anon_command(client, cmd)
-        show_who(client)
-      end
-      
-      def show_who(client)
         logged_in = @client_monitor.clients.select { |c| c.logged_in? }
         who_list = WhoRenderer.render(logged_in)
         client.emit who_list

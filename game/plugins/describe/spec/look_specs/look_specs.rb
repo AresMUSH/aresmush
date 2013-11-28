@@ -8,34 +8,33 @@ module AresMUSH
         @plugin_manager = double(PluginManager)
         Global.stub(:plugin_manager) { @plugin_manager }
         @client = double(Client)
+        @cmd = double(Command)
         @look = Look.new
         AresMUSH::Locale.stub(:translate).with("object.here") { "here" }        
       end
-      
-      describe :want_anon_command? do
-        it "doesn't want any commands" do
-          cmd = double
-          @look.want_anon_command?(cmd).should be_false
-        end
-      end
 
       describe :want_command? do
-        it "wants the look command" do
-          cmd = double
-          cmd.stub(:root_is?).with("look") { true }
-          @look.want_command?(cmd).should be_true
+        it "wants the look command if logged in" do
+          @cmd.stub(:root_is?).with("look") { true }
+          @cmd.stub(:logged_in?) { true }
+          @look.want_command?(@cmd).should be_true
+        end
+        
+        it "doesn't want the look command if not logged in" do
+          @cmd.stub(:root_is?).with("look") { true }
+          @cmd.stub(:logged_in?) { false }
+          @look.want_command?(@cmd).should be_false
         end
 
         it "doesn't want another command" do
-          cmd = double
-          cmd.stub(:root_is?).with("look") { false }
-          @look.want_command?(cmd).should be_false
+          @cmd.stub(:root_is?).with("look") { false }
+          @cmd.stub(:logged_in?) { true }
+          @look.want_command?(@cmd).should be_false
         end
       end
       
       describe :on_command do
         before do
-          @cmd = double(Command)
           @args = double
           @args.stub(:target) { "target" }
           LookCmdCracker.stub(:crack) { @args }

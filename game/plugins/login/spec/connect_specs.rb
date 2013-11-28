@@ -12,24 +12,27 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("login.invalid_password") { "invalid_password" }
       end
       
-      describe :want_command? do
-        it "doesn't want any commands" do
-          cmd = double
-          @connect.want_command?(cmd).should be_false
-        end
-      end
 
-      describe :want_anon_command? do
-        it "wants the connect command" do
+      describe :want_command? do
+        it "wants the connect command if not logged in " do
           cmd = double
           cmd.stub(:root_is?).with("connect") { true }
-          @connect.want_anon_command?(cmd).should be_true
+          cmd.stub(:logged_in?) { false }
+          @connect.want_command?(cmd).should be_true
+        end
+        
+        it "doesn't want the connect command if logged in " do
+          cmd = double
+          cmd.stub(:root_is?).with("connect") { true }
+          cmd.stub(:logged_in?) { true }
+          @connect.want_command?(cmd).should be_false
         end
 
         it "doesn't want another command" do
           cmd = double
           cmd.stub(:root_is?).with("connect") { false }
-          @connect.want_anon_command?(cmd).should be_false
+          cmd.stub(:logged_in?) { false }
+          @connect.want_command?(cmd).should be_false
         end
       end
       

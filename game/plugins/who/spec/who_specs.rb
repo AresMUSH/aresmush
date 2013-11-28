@@ -12,44 +12,26 @@ module AresMUSH
       end
 
       describe :want_command do
-        it "should want the who command" do
+        it "should want the who command if logged in " do
           @cmd.stub(:root_is?).with("who") { true }
+          @cmd.stub(:logged_in?) { true }
+          @who.want_command?(@cmd).should be_true
+        end
+        
+        it "should want the who command if not logged in" do
+          @cmd.stub(:root_is?).with("who") { true }
+          @cmd.stub(:logged_in?) { true }
           @who.want_command?(@cmd).should be_true
         end
 
         it "should not want another command" do
           @cmd.stub(:root_is?).with("who") { false }
+          @cmd.stub(:logged_in?) { true }
           @who.want_command?(@cmd).should be_false
         end        
       end
 
-      describe :want_anon_command do
-        it "should want the who command" do
-          @cmd.stub(:root_is?).with("who") { true }
-          @who.want_command?(@cmd).should be_true
-        end
-
-        it "should not want another command" do
-          @cmd.stub(:root_is?).with("who") { false }
-          @who.want_command?(@cmd).should be_false
-        end
-      end
-
-      describe :on_anon_command do
-        it "should call show who" do
-          @who.should_receive(:show_who).with(@client)
-          @who.on_command(@client, double(Command))
-        end
-      end
-
-      describe :on_command do
-        it "should call show who" do
-          @who.should_receive(:show_who).with(@client)
-          @who.on_command(@client, double(Command))
-        end
-      end
-
-      describe :show_who do
+      describe :on_command do        
         before do
           @client1 = double("Client1")
           @client2 = double("Client2")
@@ -67,18 +49,18 @@ module AresMUSH
           @client1.should_receive(:logged_in?) { false }
           @client2.should_receive(:logged_in?) { true }
           WhoRenderer.should_receive(:render).with([@client2]) { "" }
-          @who.show_who(@client)
+          @who.on_command(@client, @cmd)
         end
 
         it "should call the renderer" do
           WhoRenderer.should_receive(:render).with([@client1]) { "ABC" }
-          @who.show_who(@client)
+          @who.on_command(@client, @cmd)
         end
         
         it "should emit the results of the render methods" do
           WhoRenderer.stub(:render).with([@client1]) { "ABC" }
           @client.should_receive(:emit).with("ABC")
-          @who.show_who(@client)
+          @who.on_command(@client, @cmd)
         end
       end
     end

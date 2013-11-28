@@ -8,15 +8,7 @@ module AresMUSH
         cmd.root.end_with?("help")
       end
 
-      def on_command(client, cmd)
-        handle_help(client, cmd)
-      end
-      
-      def on_anon_command(client, cmd) 
-        handle_help(client, cmd)   
-      end
-      
-      def handle_help(client, cmd)
+      def on_command(client, cmd)        
         if (!cmd.switch)
           show_help(client, cmd)
         elsif (cmd.switch == "load")

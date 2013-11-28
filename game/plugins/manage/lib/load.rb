@@ -8,7 +8,7 @@ module AresMUSH
       end
 
       def want_command?(cmd)
-        cmd.root_is?("load")
+        cmd.logged_in? && cmd.root_is?("load")
       end
 
       # TODO - Just a prototype

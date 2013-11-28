@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def want_command?(cmd)
-        cmd.root_is?("readconfig")
+        cmd.logged_in? && cmd.root_is?("readconfig")
       end
 
       # TODO - Just a prototype

@@ -23,13 +23,7 @@ module AresMUSH
     # You can even do more complex and/or combinations.
     def want_command?(cmd)
       false
-    end
-    
-    # Override this with the processing needed to tell if you want a particular command
-    # *from a char sitting at the login screen.*
-    def want_anon_command?(cmd)
-      false
-    end
+    end    
 
     # Override this if you don't want logging at all, or don't want to log the full command - 
     # for instance to avoid logging a connect command for privacy of passwords.

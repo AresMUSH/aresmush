@@ -7,25 +7,27 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("login.invalid_create_syntax") { "invalid_create_syntax" }
       end
       
-      describe :want_anon_command? do
-        it "should want an anon command if the root is 'create'" do
+      describe :want_command? do
+        it "should want the create command if not logged in" do
           cmd = double(Command)
           cmd.stub(:root_is?).with("create") { true }
+          cmd.stub(:logged_in?) { false }
           create = Create.new
-          create.want_anon_command?(cmd).should eq true
+          create.want_command?(cmd).should eq true
+        end
+        
+        it "should not want the create command if logged in" do
+          cmd = double(Command)
+          cmd.stub(:root_is?).with("create") { true }
+          cmd.stub(:logged_in?) { true }
+          create = Create.new
+          create.want_command?(cmd).should eq false
         end
 
-        it "should not want an anon command if the root something else" do
+        it "should not want a different command" do
           cmd = double(Command)
           cmd.stub(:root_is?).with("create") { false }
-          create = Create.new
-          create.want_anon_command?(cmd).should eq false
-        end
-      end
-
-      describe :want_command? do
-        it "should not want logged in commands" do
-          cmd = double(Command)
+          cmd.stub(:logged_in?) { false }
           create = Create.new
           create.want_command?(cmd).should eq false
         end

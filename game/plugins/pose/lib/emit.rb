@@ -8,7 +8,7 @@ module AresMUSH
       end
       
       def want_command?(cmd)
-        cmd.root_is?("emit")
+        cmd.logged_in? && cmd.root_is?("emit")
       end
       
       def on_command(client, cmd)

@@ -8,10 +8,11 @@ module AresMUSH
       end
       
       def want_command?(cmd)
-        cmd.raw.start_with?("\"") ||
-        cmd.raw.start_with?("\\") ||
-        cmd.raw.start_with?(":") ||
-        cmd.raw.start_with?(";")
+        cmd.logged_in? && 
+        (cmd.raw.start_with?("\"") ||
+         cmd.raw.start_with?("\\") ||
+         cmd.raw.start_with?(":") ||
+         cmd.raw.start_with?(";"))
       end
       
       def on_command(client, cmd)

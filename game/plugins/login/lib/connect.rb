@@ -3,8 +3,8 @@ module AresMUSH
     class Connect
       include AresMUSH::Plugin
 
-      def want_anon_command?(cmd)
-        cmd.root_is?("connect")
+      def want_command?(cmd)
+        !cmd.logged_in? && cmd.root_is?("connect")
       end
 
       def on_command(client, cmd)      

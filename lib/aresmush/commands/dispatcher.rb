@@ -8,16 +8,10 @@ module AresMUSH
     def on_command(client, cmd)
       handled = false
       with_error_handling(client, cmd) do
-        @plugin_manager.plugins.each do |a|
-          if (cmd.logged_in?)
-            wants_cmd = a.want_command?(cmd)
-          else
-            wants_cmd = a.want_anon_command?(cmd)
-          end
-
-          if (wants_cmd)
-            a.log_command(client, cmd)
-            a.on_command(client, cmd)
+        @plugin_manager.plugins.each do |p|
+          if (p.want_command?(cmd))
+            p.log_command(client, cmd)
+            p.on_command(client, cmd)
             handled = true
             break
           end # if
@@ -46,14 +40,14 @@ module AresMUSH
     def with_error_handling(client, cmd, &block)
       begin
         yield block
-      # Allow plugin exit to bubble up so it shuts the plugin down.
+        # Allow plugin exit to bubble up so it shuts the plugin down.
       rescue SystemExit
         raise SystemExit
       rescue Exception => e
         begin
-           handled = true
-           Global.logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[0,10]}")
-           client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd.raw, :error_info => e)
+          handled = true
+          Global.logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[0,10]}")
+          client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd.raw, :error_info => e)
         rescue Exception => e2
           Global.logger.error("Error inside of command error handling: error=#{e2} backtrace=#{e2.backtrace[0,10]}")
         end

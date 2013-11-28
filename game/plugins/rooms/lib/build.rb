@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(cmd)
-        cmd.root_is?("build")
+        cmd.logged_in? && cmd.root_is?("build")
       end
       
       def on_command(client, cmd)

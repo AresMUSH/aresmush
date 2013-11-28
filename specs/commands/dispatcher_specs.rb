@@ -34,19 +34,10 @@ module AresMUSH
         @dispatcher.on_command(@client, @command)
       end
       
-      it "asks each plugin if it wants a command when the char is logged in" do
+      it "asks each plugin if it wants a command" do
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
         @plugin1.should_receive(:want_command?).with(@command) { false }
         @plugin2.should_receive(:want_command?).with(@command) { false }
-        @client.should_receive(:emit_ooc).with("huh")
-        @dispatcher.on_command(@client, @command)
-      end
-      
-      it "asks each plugin if it wants a command when the char is not logged in" do
-        @command.stub(:logged_in?) { false }
-        @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-        @plugin1.should_receive(:want_anon_command?).with(@command) { false }
-        @plugin2.should_receive(:want_anon_command?).with(@command) { false }
         @client.should_receive(:emit_ooc).with("huh")
         @dispatcher.on_command(@client, @command)
       end
@@ -70,14 +61,6 @@ module AresMUSH
         @plugin_manager.stub(:plugins) { [ @plugin1 ] }
         @plugin1.stub(:want_command?) { true }
         @plugin1.should_receive(:log_command).with(@client, @command)
-        @dispatcher.on_command(@client, @command)
-      end
-      
-      it "will dispatch to a plugin that wants an anon command" do
-        @command.stub(:logged_in?) { false }
-        @plugin_manager.stub(:plugins) { [ @plugin1 ] }
-        @plugin1.stub(:want_anon_command?) { true }
-        @plugin1.should_receive(:on_command).with(@client, @command)
         @dispatcher.on_command(@client, @command)
       end
             

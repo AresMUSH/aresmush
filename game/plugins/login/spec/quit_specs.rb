@@ -12,26 +12,22 @@ module AresMUSH
       end
 
       describe :want_command do
-        it "should want the quit command" do
+        it "should want the quit command if logged in" do
           @cmd.stub(:root_is?).with("quit") { true }
+          @cmd.stub(:logged_in?) { true }
+          @quit.want_command?(@cmd).should be_true
+        end
+
+        it "should want the quit command if not logged in" do
+          @cmd.stub(:root_is?).with("quit") { true }
+          @cmd.stub(:logged_in?) { false }
           @quit.want_command?(@cmd).should be_true
         end
 
         it "should not want another command" do
           @cmd.stub(:root_is?).with("quit") { false }
+          @cmd.stub(:logged_in?) { true }
           @quit.want_command?(@cmd).should be_false
-        end        
-      end
-
-      describe :want_anon_command do
-        it "should want the quit command" do
-          @cmd.stub(:root_is?).with("quit") { true }
-          @quit.want_anon_command?(@cmd).should be_true
-        end
-
-        it "should not want another command" do
-          @cmd.stub(:root_is?).with("quit") { false }
-          @quit.want_anon_command?(@cmd).should be_false
         end        
       end
 
