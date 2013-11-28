@@ -8,10 +8,7 @@ module AresMUSH
         @desc = Desc.new
         @client = double(Client)
         @desc.client = @client
-        @args = double
-        @desc.stub(:args) { @args }
-        @args.stub(:target) { "target" }
-        @args.stub(:desc) { "desc" }
+        @desc.stub(:args) { HashReader.new( { "target" => "Bob", "desc" => "My desc" } ) }
         @model = { "name" => "Bob" }
         VisibleTargetFinder.stub(:find) { @model }
         AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "desc_set" }        
@@ -20,7 +17,7 @@ module AresMUSH
       describe :handle do
         it "should set the desc" do
           @client.stub(:emit_success)
-          Describe.should_receive(:set_desc).with(@model, "desc")
+          Describe.should_receive(:set_desc).with(@model, "My desc")
           @desc.handle
         end
         
@@ -32,7 +29,7 @@ module AresMUSH
         
         it "should fail if nothing is found with the name" do
           @desc.stub(:validate) { true }
-          VisibleTargetFinder.should_receive(:find).with("target", @client) { nil }
+          VisibleTargetFinder.should_receive(:find).with("Bob", @client) { nil }
           Describe.should_not_receive(:set_desc)
           @desc.handle
         end       
