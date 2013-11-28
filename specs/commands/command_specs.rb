@@ -95,7 +95,8 @@ module AresMUSH
       it "should ignore case in the root" do
         cmd = Command.new(@client, "TesT/foo bar")
         cmd.root_is?("test").should be_true
-      end        
+      end            
     end
+    
   end
 end

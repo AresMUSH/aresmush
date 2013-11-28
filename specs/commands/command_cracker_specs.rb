@@ -70,6 +70,43 @@ module AresMUSH
         cracked[:switch].should eq nil
         cracked[:args].should eq "/  sw    2"
       end
+      
+    
+      it "should handle a + prefix" do
+        cracked = CommandCracker.crack("+test/foo bar")
+        cracked[:prefix].should eq "+"
+        cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+      end  
+      
+      it "should handle a / prefix" do
+        cracked = CommandCracker.crack("/test/foo bar")
+        cracked[:prefix].should eq "/"
+        cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+      end
+      
+      it "should handle an @ prefix" do
+        cracked = CommandCracker.crack("@test/foo bar")
+        cracked[:prefix].should eq "@"
+        cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+      end
+      
+      it "should handle an = prefix" do
+        cracked = CommandCracker.crack("=test/foo bar")
+        cracked[:prefix].should eq "="
+        cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+      end
+
+      it "should handle no prefix" do
+        cracked = CommandCracker.crack("test/foo bar")
+        cracked[:prefix].should eq nil
+        cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+      end
+            
     end
   
   end

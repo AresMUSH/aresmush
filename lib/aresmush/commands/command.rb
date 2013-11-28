@@ -5,7 +5,7 @@ module AresMUSH
     #   root[/switch][ args]
     #   root[args, when args starts with a number]
     # Anything not found will be nil
-    attr_accessor :raw, :root, :switch, :args, :client
+    attr_accessor :raw, :prefix, :root, :switch, :args, :client
     
     def initialize(client, input)
       @client = client
@@ -15,6 +15,7 @@ module AresMUSH
     
     def crack!(args_regex = nil)
       cracked = CommandCracker.crack(@raw)
+      @prefix = cracked[:prefix]
       @root = cracked[:root]
       @switch = cracked[:switch]
 
