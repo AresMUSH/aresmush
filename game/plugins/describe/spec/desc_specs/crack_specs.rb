@@ -8,26 +8,29 @@ module AresMUSH
       describe :crack do
         before do
           @desc = Desc.new
-        end
+        end        
 
-        it "should return nil for args that are missing" do
+        it "should crack a command missing a desc" do
           cmd = Command.new(@client, "desc bob")
-          args = @desc.crack(cmd)
-          args.target.should be_nil
-          args.desc.should be_nil
+          @desc.cmd = cmd
+          @desc.crack!
+          @desc.args.target.should be_nil
+          @desc.args.desc.should be_nil
         end
       
         it "should be able to crack the target - even multi words" do
           cmd = Command.new(@client, "desc Bob's Room=new desc")
-          args = @desc.crack(cmd)
-          args.target.should eq "Bob's Room"
+          @desc.cmd = cmd
+          @desc.crack!
+          @desc.args.target.should eq "Bob's Room"
         end
       
         it "should crack the desc - even with fancy characters" do
           cmd = Command.new(@client, "desc Bob=new desc%R%xcTest%xn")
-          args = @desc.crack(cmd)
-          args.target.should eq "Bob"
-          args.desc.should eq "new desc%R%xcTest%xn"
+          @desc.cmd = cmd
+          @desc.crack!
+          @desc.args.target.should eq "Bob"
+          @desc.args.desc.should eq "new desc%R%xcTest%xn"
         end
       end
     end

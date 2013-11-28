@@ -5,35 +5,25 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("desc")
+        cmd.root_is?("desc")
       end
 
-      def on_command(client, cmd)
-        args = crack(cmd)
-        
-        valid = validate(args, client)
-        return if !valid
-
+      def crack!
+        @cmd.crack!(/(?<target>[^\=]+)\=(?<desc>.+)/)
+      end
+      
+      def validate
+        return t('dispatcher.must_be_logged_in') if !@cmd.logged_in?
+        return t('describe.invalid_desc_syntax') if (args.nil? || args.target.nil? || args.desc.nil?)
+        return nil
+      end
+      
+      def handle
+        # TODO - this should be in the validate method but needs refactoring of visible target finder
         model = VisibleTargetFinder.find(args.target, client) 
         return if model.nil?
 
-        handle(model, args.desc, client)        
-      end
-      
-      def crack(cmd)
-        cmd.crack!(/(?<target>[^\=]+)\=(?<desc>.+)/)
-      end
-      
-      def validate(args, client)
-        if (args.nil? || args.target.nil? || args.desc.nil?)
-          client.emit_failure(t('describe.invalid_desc_syntax'))
-          return false
-        end
-        return true
-      end
-      
-      def handle(model, desc, client)
-        Describe.set_desc(model, desc)
+        Describe.set_desc(model, args.desc)
         client.emit_success(t('describe.desc_set', :name => model["name"]))
       end
         
