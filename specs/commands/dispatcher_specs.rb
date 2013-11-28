@@ -19,8 +19,8 @@ module AresMUSH
       @command.stub(:client) { @client }
       @command.stub(:logged_in?) { true }
       @dispatcher = Dispatcher.new(@plugin_manager)
-      @plugin1 = Object.new
-      @plugin2 = Object.new
+      @plugin1 = double
+      @plugin2 = double
       @plugin1.stub(:log_command)
       @plugin2.stub(:log_command)
       AresMUSH::Locale.stub(:translate).with("dispatcher.huh") { "huh" }
@@ -49,7 +49,7 @@ module AresMUSH
         @client.should_receive(:emit_ooc).with("huh")
         @dispatcher.on_command(@client, @command)
       end
-      
+
       it "will dispatch to an plugin that wants the command" do
         @plugin_manager.stub(:plugins) { [ @plugin1 ] }
         @plugin1.stub(:want_command?) { true }
@@ -60,6 +60,7 @@ module AresMUSH
       it "will log the command for an plugin that wants the command" do
         @plugin_manager.stub(:plugins) { [ @plugin1 ] }
         @plugin1.stub(:want_command?) { true }
+        @plugin1.stub(:on_command)
         @plugin1.should_receive(:log_command).with(@client, @command)
         @dispatcher.on_command(@client, @command)
       end

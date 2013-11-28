@@ -6,6 +6,7 @@ en:
           Command: "%{cmd}"
           Error: "%{error_info}"
         huh: "Huh? Unrecognized command."
+		permission_denied: "Permission denied."
     
     db:
         object_not_found: I don't see that here.
