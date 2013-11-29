@@ -15,7 +15,7 @@ who:
             color: g
     each_char:
         -
-            field_type: variable			
+            field_type: variable
             value: status
             align: left
             width: 7
