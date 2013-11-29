@@ -6,12 +6,12 @@ who:
             field_type: new_line
         -
             field_type: variable
-			value: mush_name
+            value: mush_name
         -
             field_type: new_line
         -
             field_type: text
-			value: "Status Name                Idle"
+            value: "Status Name                Idle"
             color: g
     each_char:
         -
