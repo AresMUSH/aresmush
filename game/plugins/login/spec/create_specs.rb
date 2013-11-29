@@ -4,7 +4,7 @@ module AresMUSH
   module Login
     describe Create do
       before do
-        AresMUSH::Locale.stub(:translate).with("login.invalid_create_syntax") { "invalid_create_syntax" }
+        SpecHelpers.stub_translate_for_testing
       end
       
       describe :want_command? do
@@ -44,13 +44,13 @@ module AresMUSH
         
         it "should fail if user/password isn't specified" do
           cmd = Command.new(@client, "create")
-          @client.should_receive(:emit_failure).with("invalid_create_syntax")
+          @client.should_receive(:emit_failure).with("login.invalid_create_syntax")
           @create.on_command(@client, cmd)        
         end
 
         it "should fail if password isn't specified" do
           cmd = Command.new(@client, "create charname")
-          @client.should_receive(:emit_failure).with("invalid_create_syntax")
+          @client.should_receive(:emit_failure).with("login.invalid_create_syntax")
           @create.on_command(@client, cmd)        
         end
         

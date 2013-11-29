@@ -5,10 +5,10 @@ module AresMUSH
     describe Quit do
 
       before do
-        AresMUSH::Locale.stub(:translate).with("login.goodbye") { "bye" }        
         @cmd = double(Command)
         @client = double(Client).as_null_object      
         @quit = Quit.new
+        SpecHelpers.stub_translate_for_testing
       end
 
       describe :want_command do
@@ -38,7 +38,7 @@ module AresMUSH
         end
         
         it "should send the bye text" do
-          @client.should_receive(:emit_ooc).with("bye")
+          @client.should_receive(:emit_ooc).with("login.goodbye")
           @quit.on_command(@client, @cmd)
         end
       end

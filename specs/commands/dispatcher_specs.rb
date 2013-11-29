@@ -13,7 +13,7 @@ module AresMUSH
 
     before do
       @plugin_manager = double(PluginManager)
-      @client = double(Client)
+      @client = double(Client).as_null_object
       @client.stub(:id) { "1" }
       @command = double(Command)
       @command.stub(:client) { @client }
@@ -23,14 +23,12 @@ module AresMUSH
       @plugin2 = double
       @plugin1.stub(:log_command)
       @plugin2.stub(:log_command)
-      AresMUSH::Locale.stub(:translate).with("dispatcher.huh") { "huh" }
-      AresMUSH::Locale.stub(:translate).with("dispatcher.error_executing_command", anything()) { "error" }
+      SpecHelpers.stub_translate_for_testing
     end
 
     describe :on_command do
       it "gets the list of plugins from the plugin manager" do
         @plugin_manager.should_receive(:plugins) { [] }
-        @client.should_receive(:emit_ooc).with("huh")
         @dispatcher.on_command(@client, @command)
       end
       
@@ -38,7 +36,6 @@ module AresMUSH
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
         @plugin1.should_receive(:want_command?).with(@command) { false }
         @plugin2.should_receive(:want_command?).with(@command) { false }
-        @client.should_receive(:emit_ooc).with("huh")
         @dispatcher.on_command(@client, @command)
       end
       
@@ -46,7 +43,6 @@ module AresMUSH
         @plugin_manager.stub(:plugins) { [ @plugin1 ] }
         @plugin1.stub(:want_command?) { false }
         @plugin1.should_not_receive(:on_command) 
-        @client.should_receive(:emit_ooc).with("huh")
         @dispatcher.on_command(@client, @command)
       end
 
@@ -86,7 +82,7 @@ module AresMUSH
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
         @plugin1.stub(:want_command?) { false }
         @plugin2.stub(:want_command?) { false }
-        @client.should_receive(:emit_ooc).with("huh")
+        @client.should_receive(:emit_ooc).with("dispatcher.huh")
         @dispatcher.on_command(@client, @command)
       end      
       
@@ -95,7 +91,7 @@ module AresMUSH
         @plugin1.stub(:want_command?) { true }
         @plugin1.stub(:on_command).and_raise("an error")
         @command.stub(:raw) { "raw" }
-        @client.should_receive(:emit_failure).with("error")
+        @client.should_receive(:emit_failure).with("dispatcher.error_executing_command")
         @dispatcher.on_command(@client, @command)
       end
       

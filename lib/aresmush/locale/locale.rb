@@ -57,7 +57,7 @@ module AresMUSH
       plugin_locales = PluginManager.locale_files
       LocaleLoader.load_files(plugin_locales)
       I18n.reload!      
-    end
+    end    
     
     private
         

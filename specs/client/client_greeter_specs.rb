@@ -7,9 +7,9 @@ module AresMUSH
   describe ClientGreeter do
 
     before do
-      AresMUSH::Locale.stub(:translate).with("client.welcome") { "welcome" }
       Global.stub(:config) { { "connect" => { "welcome_text" => "game welcome", "welcome_screen" => "Ascii Art"} } }
       @client = double.as_null_object
+      SpecHelpers.stub_translate_for_testing
     end
 
     describe :connected do
@@ -22,7 +22,7 @@ module AresMUSH
       end
 
       it "should send the game welcome text" do
-        @client.should_receive(:emit_ooc).with("welcome")
+        @client.should_receive(:emit_ooc).with("client.welcome")
       end
 
       it "should send the server welcome text" do

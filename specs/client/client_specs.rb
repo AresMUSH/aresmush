@@ -7,13 +7,11 @@ module AresMUSH
   describe Client do
 
     before do
-      AresMUSH::Locale.stub(:translate).with("client.welcome") { "welcome" }
-      AresMUSH::Locale.stub(:translate).with("client.anonymous") { "anon" }
-
       @connection = double
       @client_monitor = double
       @dispatcher = double
       @client = Client.new(1, @client_monitor, @connection, @dispatcher)
+      SpecHelpers.stub_translate_for_testing
     end
 
     describe :connected do
@@ -91,7 +89,7 @@ module AresMUSH
       
       it "should use anonymous if there's no char" do
         @client.char = nil
-        @client.name.should eq "anon"
+        @client.name.should eq "client.anonymous"
       end
       
     end

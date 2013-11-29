@@ -7,9 +7,7 @@ module AresMUSH
       before do
         @connect = Connect.new
         @client = double(Client)
-        
-        AresMUSH::Locale.stub(:translate).with("login.invalid_connect_syntax") { "invalid_connect_syntax" }
-        AresMUSH::Locale.stub(:translate).with("login.invalid_password") { "invalid_password" }
+        SpecHelpers.stub_translate_for_testing
       end
       
 
@@ -41,13 +39,13 @@ module AresMUSH
         
         it "should fail if there's no password" do
           cmd = Command.new(@client, "connect Bob")
-          @client.should_receive(:emit_failure).with("invalid_connect_syntax")
+          @client.should_receive(:emit_failure).with("login.invalid_connect_syntax")
           @connect.on_command(@client, cmd)          
         end
 
         it "should fail if there's no name and password" do
           cmd = Command.new(@client, "connect")
-          @client.should_receive(:emit_failure).with("invalid_connect_syntax")
+          @client.should_receive(:emit_failure).with("login.invalid_connect_syntax")
           @connect.on_command(@client, cmd)          
         end
 
@@ -62,7 +60,7 @@ module AresMUSH
           found_char = double
           SingleTargetFinder.stub(:find) { found_char }
           Character.stub(:compare_password).with(found_char, "password") { false }
-          @client.should_receive(:emit_failure).with("invalid_password")
+          @client.should_receive(:emit_failure).with("login.invalid_password")
           @connect.on_command(@client, cmd)          
         end        
       end

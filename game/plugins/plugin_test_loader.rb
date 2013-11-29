@@ -9,3 +9,8 @@ end
 plugin_files.each do |f|
   load f
 end
+
+RSpec.configure do |c|
+  c.include AresMUSH::SpecHelpers
+end
+

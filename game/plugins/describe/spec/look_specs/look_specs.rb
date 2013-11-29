@@ -10,7 +10,7 @@ module AresMUSH
         @client = double(Client)
         @cmd = double(Command)
         @look = Look.new
-        AresMUSH::Locale.stub(:translate).with("object.here") { "here" }        
+        SpecHelpers.stub_translate_for_testing
       end
 
       describe :want_command? do
@@ -48,7 +48,7 @@ module AresMUSH
         end
         
         it "should look for the target or here by default" do
-          VisibleTargetFinder.should_receive(:find).with("target", @client, "here") { nil }
+          VisibleTargetFinder.should_receive(:find).with("target", @client, "object.here") { nil }
           @look.on_command(@client, @cmd)
         end
         
