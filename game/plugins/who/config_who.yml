@@ -1,40 +1,43 @@
 who:
     header:
         -
-            line: 1
+            field_type: line
         -
-            new_line: ""
+            field_type: new_line
         -
-            variable: mush_name
+            field_type: variable
+			value: mush_name
         -
-            new_line: ""
+            field_type: new_line
         -
-            text: Status Name                Idle
+            field_type: text
+			value: "Status Name                Idle"
             color: g
     each_char:
         -
-            variable: status
+            field_type: variable			
+            value: status
             align: left
             width: 7
             color: g
         -
-            variable: name
+            field_type: variable
+            value: name
             align: left
             width: 20
         -
-            variable: idle
+            field_type: variable
+            value: idle
             align: left
             width: 5
     footer:
         -
-            variable: online_total
+            field_type: variable
+            value: online_total
         -
-            text: " Online "
+            field_type: variable
+            value: ic_total
         -
-            variable: ic_total
+            field_type: new_line
         -
-            text: " IC"
-        -
-            new_line: ""
-        -
-            line: 1
+            field_type: line
