@@ -1,0 +1,4 @@
+{% line %}
+{% center 78 %}{{mush_name}}{% endcenter %}
+{% line 2 %}
+%xgStatus Name            Faction    Position       Idle%xn

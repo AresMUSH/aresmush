@@ -1,5 +1,24 @@
+require 'liquid'
+
 module AresMUSH  
 
+  class Template2
+    def initialize(template)
+      @template = Liquid::Template.parse(template)
+    end
+    
+    def render(data)
+      methods = data.methods
+      common_methods = Object.instance_methods
+      methods = methods.reject{|m| common_methods.include?(m)}
+      vars = {}
+      methods.each do |m|
+        vars["#{m}"] = data.send(m)
+      end
+      @template.render(vars)
+    end
+  end
+  
   class TemplateRenderer  
 
     # The template should be an array of field hashes.  Each field may have

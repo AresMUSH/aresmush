@@ -1,0 +1,5 @@
+%l2
+%xr{{online_total}}%xn %xg{{ic_total}}%xn %xb{{online_record}}%xn
+%l1
+{% strip %}
+{% endstrip %}

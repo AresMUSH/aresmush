@@ -1,30 +1,36 @@
 module AresMUSH
   module Who
     class WhoRenderer
-      def self.render(clients)
-        who_list = build_header(clients)
-        who_list << "\n" << build_chars(clients)
-        who_list << "\n" << build_footer(clients)
+      def initialize(clients, header_template, char_template, footer_template)
+        @clients = clients
+        @header_template = header_template
+        @char_template = char_template
+        @footer_template = footer_template
+        @data = WhoData.new(clients)
       end
       
-      def self.build_header(clients)
-        header = WhoRendererFactory.build_header(clients)
-        header.render
+      def render
+        who_list = build_header
+        who_list << build_chars
+        who_list << build_footer
       end
       
-      def self.build_footer(clients)
-        footer = WhoRendererFactory.build_footer(clients)        
-        footer.render
+      def build_header
+        @header_template.render(@data)
+      end
+      
+      def build_footer
+        @footer_template.render(@data)
       end
             
-      def self.build_chars(clients)
-        chars = []
-        who_list = ""
-        clients.each do |c| 
-          formatter = WhoRendererFactory.build_char(c)
-          who_list << formatter.render
-        end  
-        who_list            
+      def build_chars
+        char_text = ""
+        @clients.each do |c| 
+          data = WhoCharData.new(c)
+          char_text << "\n" << @char_template.render(data)
+        end
+        char_text << "\n"
+        char_text     
       end
     end
   end
