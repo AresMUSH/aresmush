@@ -7,14 +7,18 @@ module AresMUSH
         @client1 = double(Client)
         @client2 = double(Client)
         @clients = [@client1, @client2]
+        header_template = double
+        footer_template = double
+        char_template = double
+        @who = WhoRenderer.new(header_template, char_template, footer_template)
       end
 
       describe :render do
         it "should string together the three component formats" do
-          WhoRenderer.should_receive(:build_header).with(@clients) { "HEADER"}
-          WhoRenderer.should_receive(:build_chars).with(@clients) { "CHARS" }
-          WhoRenderer.should_receive(:build_footer).with(@clients) { "FOOTER" }
-          WhoRenderer.render(@clients).should eq "HEADER\nCHARS\nFOOTER"
+          @who.should_receive(:build_header).with(@clients) { "HEADER"}
+          @who.should_receive(:build_chars).with(@clients) { "CHARS" }
+          @who.should_receive(:build_footer).with(@clients) { "FOOTER" }
+          @who.render(@clients).should eq "HEADERCHARSFOOTER"
         end
       end
 

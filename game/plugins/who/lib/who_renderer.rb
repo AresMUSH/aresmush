@@ -1,15 +1,15 @@
 module AresMUSH
   module Who
     class WhoRenderer
-      def initialize(clients, header_template, char_template, footer_template)
-        @clients = clients
+      def initialize(header_template, char_template, footer_template)
         @header_template = header_template
         @char_template = char_template
         @footer_template = footer_template
-        @data = WhoData.new(clients)
       end
       
-      def render
+      def render(clients)
+        @clients = clients
+        @data = WhoData.new(clients)
         who_list = build_header
         who_list << build_chars
         who_list << build_footer
