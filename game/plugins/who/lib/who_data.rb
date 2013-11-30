@@ -4,6 +4,8 @@ module AresMUSH
       @clients = clients
     end
     
+    attr_reader :clients
+    
     def online_total
       count = @clients.count
       "#{count} Online"
