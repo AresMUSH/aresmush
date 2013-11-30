@@ -15,7 +15,7 @@ module AresMUSH
       create_fake_class("b", "\"bar\"")
 
       @factory = double(PluginFactory)
-      AresMUSH.stub(:game_path) { @temp_dir }
+      AresMUSH.stub(:game_path) { @temp_dir }      
       @manager = PluginManager.new(@factory)
     end
 

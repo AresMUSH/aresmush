@@ -70,5 +70,19 @@ module AresMUSH
         "A\\\\%rB".code_gsub("%r", "Z").should eq "A\\\\%rB" 
       end
     end
+    
+    describe :truncate do
+      it "should truncate a string that is too long" do
+        "FOOBARBAZ".truncate(4).should eq "FOOB"
+      end
+      
+      it "should do nothing to a string that is not too long" do
+        "FOOBARBAZ".truncate(10).should eq "FOOBARBAZ"
+      end
+      
+      it "should return empty if the string is empty" do
+        "".truncate(10).should eq ""
+      end      
+    end
   end
 end

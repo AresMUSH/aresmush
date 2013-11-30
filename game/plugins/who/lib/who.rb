@@ -23,7 +23,7 @@ module AresMUSH
       
       def read_template(name)
         template = File.read(File.dirname(__FILE__) + "/../templates/#{name}")
-        Template2.new(template)
+        TemplateRenderer.new(template)
       end
         
     end

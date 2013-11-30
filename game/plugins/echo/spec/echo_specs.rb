@@ -9,20 +9,21 @@ module AresMUSH
       end
 
       describe :want_command do
-        it "should want the echo command if logged in" do
+        it "should want the echo command" do
           @cmd.stub(:root_is?).with("echo") { true }
-          @cmd.stub(:logged_in?) { true }
+          @cmd.stub(:root_is?).with("think") { false }
           @echo.want_command?(@cmd).should be_true
         end
 
-        it "should not want the echo command if not logged in" do
-          @cmd.stub(:root_is?).with("echo") { true }
-          @cmd.stub(:logged_in?) { false }
-          @echo.want_command?(@cmd).should be_false
+        it "should want the think command" do
+          @cmd.stub(:root_is?).with("think") { true }
+          @cmd.stub(:root_is?).with("echo") { false }
+          @echo.want_command?(@cmd).should be_true
         end
 
         it "should not want another command" do
           @cmd.stub(:root_is?).with("echo") { false }
+          @cmd.stub(:root_is?).with("think") { false }
           @cmd.stub(:logged_in?) { true }          
           @echo.want_command?(@cmd).should be_false
         end        

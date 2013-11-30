@@ -15,7 +15,9 @@ module AresMUSH
   describe PluginFactory do
     describe :create_plugin_classes do
       before do
-        @factory = PluginFactory.new      end
+        TagExtensions.register
+        @factory = PluginFactory.new      
+      end
       
       it "creates instances of each plugin class" do
         plugins = @factory.create_plugin_classes
