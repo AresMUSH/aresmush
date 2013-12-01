@@ -27,8 +27,7 @@ module AresMUSH
         cmd = double
         client = double
         cmd.should_receive(:to_s) { "Cmd" }
-        client.should_receive(:to_s) { "Foo" }
-        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: Cmd from Foo")
+        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: Cmd")
         @plugin.log_command(client, cmd)
       end
     end

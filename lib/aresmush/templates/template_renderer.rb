@@ -5,7 +5,12 @@ module AresMUSH
     end
     
     def render(data)
-      @template.render(data)
+      return "" if data.nil?
+      if (data.respond_to?(:to_liquid))
+        @template.render(data.to_liquid)
+      else
+        @template.render(data)
+      end
     end
     
     def self.create_from_file(file_path)

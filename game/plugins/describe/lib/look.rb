@@ -8,12 +8,20 @@ module AresMUSH
       end
 
       def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("look")
+        cmd.root_is?("look")
       end
       
-      def on_command(client, cmd)
-        args = crack(cmd)
-        
+      def validate
+        return t('dispatcher.must_be_logged_in') if !@cmd.logged_in?
+        return nil
+      end
+      
+      def crack!
+        cmd.crack!(/(?<target>.+)/)
+      end
+      
+      def handle
+
         # Default to 'here' if no args are specified.
         target = args.target || t('object.here')
 
@@ -26,18 +34,9 @@ module AresMUSH
         model = find_result.target
         desc_iface = Describe.interface(@plugin_manager)
 
-        handle(desc_iface, model, client)
-      end
-      
-      def crack(cmd)
-        cmd.crack!(/(?<target>.+)/)
-        cmd.args
-      end
-      
-      def handle(desc_iface, model, client)
         desc = desc_iface.get_desc(model)
         client.emit(desc)
-      end
+      end      
     end
   end
 end

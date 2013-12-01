@@ -8,6 +8,7 @@ module AresMUSH
     
     
     class DescFunctions 
+      # TODO - This is crappy; this isn't a plugin!
       include AresMUSH::Plugin
       
       def after_initialize

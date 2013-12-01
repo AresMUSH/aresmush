@@ -77,7 +77,7 @@ module AresMUSH
     # Override this if you don't want logging at all, or don't want to log the full command - 
     # for instance to avoid logging a connect command for privacy of passwords.
     def log_command(client, cmd)
-      Global.logger.debug("#{self.class.name}: #{cmd} from #{client}")
+      Global.logger.debug("#{self.class.name}: #{cmd}")
     end
   end
 end

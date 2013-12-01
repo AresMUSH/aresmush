@@ -27,7 +27,7 @@ module AresMUSH
     end
     
     def to_s
-      "Raw=#{@raw} #{@client}"
+      "Raw=#{@raw.chomp} #{@client}"
     end
     
     def root_is?(root)

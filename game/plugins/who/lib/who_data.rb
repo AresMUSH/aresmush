@@ -1,5 +1,7 @@
 module AresMUSH
   class WhoData
+    include ToLiquidHelper
+    
     def initialize(clients)
       @clients = clients
     end
@@ -26,6 +28,8 @@ module AresMUSH
   end
   
   class WhoCharData
+    include ToLiquidHelper
+    
     def initialize(client)
       @client = client
       @char = client.char
