@@ -2,9 +2,9 @@ module AresMUSH
   module Login
     class Create
       include AresMUSH::Plugin
-
+      
       def want_command?(cmd)
-        !cmd.logged_in? && cmd.root_is?("create")
+        cmd.root_is?("create")
       end
 
       def on_command(client, cmd)      
