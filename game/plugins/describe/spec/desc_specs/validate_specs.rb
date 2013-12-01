@@ -17,11 +17,6 @@ module AresMUSH
         @desc.validate.should eq "dispatcher.must_be_logged_in"
       end
       
-      it "should fail if args are nil" do
-        @desc.stub(:args) { nil }
-        @desc.validate.should eq "describe.invalid_desc_syntax"
-      end
-      
       it "should fail if target is nil" do
         @desc.stub(:args) { HashReader.new( { "target" => nil, "desc" => "My desc" } ) }
         @desc.validate.should eq "describe.invalid_desc_syntax"

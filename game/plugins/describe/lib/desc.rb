@@ -14,7 +14,7 @@ module AresMUSH
       
       def validate
         return t('dispatcher.must_be_logged_in') if !@cmd.logged_in?
-        return t('describe.invalid_desc_syntax') if (args.nil? || args.target.nil? || args.desc.nil?)
+        return t('describe.invalid_desc_syntax') if (args.target.nil? || args.desc.nil?)
         return nil
       end
       

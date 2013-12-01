@@ -7,6 +7,7 @@ module AresMUSH
       before do
         @connect = Connect.new
         @client = double(Client)
+        @connect.client = @client
         SpecHelpers.stub_translate_for_testing
       end
       
@@ -25,46 +26,95 @@ module AresMUSH
         end
       end
       
-      # FAILURE
-      describe :on_command do
+      describe :crack do
+        it "should crack the arguments" do
+          cmd = Command.new(@client, "connect Bob password")
+          @connect.cmd = cmd
+          @connect.crack!
+          @connect.args.name.should eq "Bob"
+          @connect.args.password.should eq "password"
+        end
         
-        it "should fail if there's no password" do
+        it "should handle no args" do
+          cmd = Command.new(@client, "connect")
+          @connect.cmd = cmd
+          @connect.crack!
+          @connect.args.name.should be_nil
+          @connect.args.password.should be_nil
+        end
+        
+        it "should handle a missing password" do
           cmd = Command.new(@client, "connect Bob")
-          @client.should_receive(:emit_failure).with("login.invalid_connect_syntax")
-          Global.should_not_receive(:on_event)
-          @connect.on_command(@client, cmd)          
+          @connect.cmd = cmd
+          @connect.crack!
+          @connect.args.name.should be_nil
+          @connect.args.password.should be_nil
         end
 
-        it "should fail if there's no name and password" do
-          cmd = Command.new(@client, "connect")
-          @client.should_receive(:emit_failure).with("login.invalid_connect_syntax")
-          Global.should_not_receive(:on_event)
-          @connect.on_command(@client, cmd)          
+        it "should accept a multi-word password" do
+          cmd = Command.new(@client, "connect Bob bob's password")
+          @connect.cmd = cmd
+          @connect.crack!
+          @connect.args.name.should eq "Bob"
+          @connect.args.password.should eq "bob's password"
+        end        
+      end
+      
+      
+      describe :validate do
+        before do
+          @cmd = double
+          @cmd.stub(:logged_in?) { false }
+          @connect.cmd = @cmd
+        end
+        
+        it "should fail if already logged in" do
+          @cmd.stub(:logged_in?) { true }
+          @connect.validate.should eq "login.already_logged_in"
+        end
+        
+        it "should fail if no name provided" do
+          @connect.stub(:args) { HashReader.new( { "name" => nil, "password" => "foo" })}
+          @connect.validate.should eq "login.invalid_connect_syntax"
+        end
+
+        it "should fail if no password provided" do
+          @connect.stub(:args) { HashReader.new( { "name" => "Bob", "password" => nil })}
+          @connect.validate.should eq "login.invalid_connect_syntax"
+        end
+        
+        it "should pass if arguments are valid" do
+          @connect.stub(:args) { HashReader.new( { "name" => "Bob", "password" => "foo" })}
+          @connect.validate.should be_nil          
+        end        
+      end
+      
+      # FAILURE
+      describe :handle do
+        before do
+          @connect.stub(:args) { HashReader.new( { "name" => "Bob", "password" => "password" } )}
         end
 
         it "should fail if there isn't a single matching char" do
-          cmd = Command.new(@client, "connect Bob password")
           find_result = FindResult.new(nil, "Not found")
           SingleTargetFinder.should_receive(:find).with("Bob", Character) { find_result }
           Global.should_not_receive(:on_event)
           @client.should_receive(:emit_failure).with("Not found")
-          @connect.on_command(@client, cmd)          
+          @connect.handle
         end
                           
         it "should fail if the passwords don't match" do
-          cmd = Command.new(@client, "connect Bob password")
           found_char = double
-          find_result = FindResult.new(found_char, "Not found")
-          SingleTargetFinder.stub(:find) { find_result }
+          SingleTargetFinder.stub(:find) { FindResult.new(found_char, nil) }
           Character.stub(:compare_password).with(found_char, "password") { false }
           @client.should_receive(:emit_failure).with("login.invalid_password")
           Global.should_not_receive(:on_event)
-          @connect.on_command(@client, cmd)          
+          @connect.handle
         end        
       end
       
       # SUCCESS
-      describe :on_command do
+      describe :handle do
         before do
           @found_char = double
           @dispatcher = double(Dispatcher)
@@ -74,35 +124,28 @@ module AresMUSH
           SingleTargetFinder.stub(:find) { find_result }
           
           Character.stub(:compare_password).with(@found_char, "password") { true }  
+          @connect.stub(:args) { HashReader.new( { "name" => "Bob", "password" => "password" } )}
+          
           @dispatcher.stub(:on_event)  
           @client.stub(:char=)      
         end
         
         it "should compare passwords" do
-          cmd = Command.new(@client, "connect Bob password")
           Character.should_receive(:compare_password).with(@found_char, "password")
-          @connect.on_command(@client, cmd)          
-        end
-        
-        it "should accept a multi-word password" do
-          cmd = Command.new(@client, "connect Bob bob's password")
-          Character.should_receive(:compare_password).with(@found_char, "bob's password") { true }
-          @connect.on_command(@client, cmd)          
-        end
+          @connect.handle
+        end        
         
         it "should set the char on the client" do
-          cmd = Command.new(@client, "connect Bob password")
           @client.should_receive(:char=).with(@found_char)
-          @connect.on_command(@client, cmd)
+          @connect.handle
         end
 
         it "should announce the char connected event" do
-           cmd = Command.new(@client, "connect Bob password")
            @dispatcher.should_receive(:on_event) do |type, args|
              type.should eq :char_connected
              args[:client].should eq @client
            end
-           @connect.on_command(@client, cmd)
+           @connect.handle
         end
       end      
     end
