@@ -12,14 +12,14 @@ module AresMUSH
         end
         
         it "should crack the target" do
-          cmd = Command.new(@client, "look Bob's Room")
+          cmd = Command.new(nil, "look Bob's Room")
           @look.cmd = cmd
           @look.crack!
           cmd.args.target.should eq "Bob's Room"
         end
         
         it "should handle a missing target" do
-          cmd = Command.new(@client, "look")
+          cmd = Command.new(nil, "look")
           @look.cmd = cmd
           @look.crack!
           cmd.args.target.should be_nil

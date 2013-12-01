@@ -11,7 +11,7 @@ module AresMUSH
         end        
 
         it "should crack a command missing a desc" do
-          cmd = Command.new(@client, "desc bob")
+          cmd = Command.new(nil, "desc bob")
           @desc.cmd = cmd
           @desc.crack!
           @desc.args.target.should be_nil
@@ -19,14 +19,14 @@ module AresMUSH
         end
       
         it "should be able to crack the target - even multi words" do
-          cmd = Command.new(@client, "desc Bob's Room=new desc")
+          cmd = Command.new(nil, "desc Bob's Room=new desc")
           @desc.cmd = cmd
           @desc.crack!
           @desc.args.target.should eq "Bob's Room"
         end
       
         it "should crack the desc - even with fancy characters" do
-          cmd = Command.new(@client, "desc Bob=new desc%R%xcTest%xn")
+          cmd = Command.new(nil, "desc Bob=new desc%R%xcTest%xn")
           @desc.cmd = cmd
           @desc.crack!
           @desc.args.target.should eq "Bob"

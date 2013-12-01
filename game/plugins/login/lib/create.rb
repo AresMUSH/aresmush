@@ -7,28 +7,31 @@ module AresMUSH
         cmd.root_is?("create")
       end
 
-      def on_command(client, cmd)      
+      def crack!
         cmd.crack!(/(?<name>\S+) (?<password>.+)/)
-        
-        if (cmd.args.name.nil? || cmd.args.password.nil?)
-          client.emit_failure(t('login.invalid_create_syntax'))
-          return
-        end
-        
-        name = cmd.args.name
-        password = cmd.args.password
-        
-        return if !Login.validate_char_name(client, name)
-        return if !Login.validate_char_password(client, password)
-        
-        create_char_and_login(client, name, password)
       end
       
-      def create_char_and_login(client, name, password)
+      def validate
+        return t('dispatcher.already_logged_in') if cmd.logged_in?
+        return t('login.invalid_create_syntax') if (args.name.nil? || args.password.nil?)
+        
+        check_name = Login.validate_char_name(args.name)
+        return check_name if !check_name.nil?
+        
+        check_password = Login.validate_char_password(args.password)
+        return check_password if !check_password.nil?
+        
+        return nil
+      end
+      
+      def handle        
+        name = args.name
+        password = args.password
+                
         char = Character.create_char(name, password)
-        client.emit_success(t('login.created_and_logged_in', :name => name))
-        client.char = char
-        Global.dispatcher.on_event(:char_created, :client => client)        
+        @client.emit_success(t('login.created_and_logged_in', :name => name))
+        @client.char = char
+        Global.dispatcher.on_event(:char_created, :client => @client)
       end
       
       def log_command(client, cmd)
