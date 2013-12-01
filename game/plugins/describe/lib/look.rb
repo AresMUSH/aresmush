@@ -15,9 +15,15 @@ module AresMUSH
         args = crack(cmd)
         
         # Default to 'here' if no args are specified.
-        model = VisibleTargetFinder.find(args.target, client, t('object.here'))
-        return if model.nil?
-        
+        target = args.target || t('object.here')
+
+        find_result = VisibleTargetFinder.find(target, client)
+        if (!find_result.found?)
+          client.emit_failure(find_result.error)
+          return
+        end
+
+        model = find_result.target
         desc_iface = Describe.interface(@plugin_manager)
 
         handle(desc_iface, model, client)

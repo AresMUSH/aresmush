@@ -19,10 +19,12 @@ module AresMUSH
       end
       
       def handle
-        # TODO - this should be in the validate method but needs refactoring of visible target finder
-        model = VisibleTargetFinder.find(args.target, client) 
-        return if model.nil?
-
+        find_result = VisibleTargetFinder.find(args.target, client) 
+        if (!find_result.found?)
+          client.emit_failure(find_result.error)
+          return
+        end
+        model = find_result.target
         Describe.set_desc(model, args.desc)
         client.emit_success(t('describe.desc_set', :name => model["name"]))
       end

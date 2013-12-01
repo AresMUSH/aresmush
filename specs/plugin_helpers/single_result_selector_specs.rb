@@ -7,43 +7,43 @@ module AresMUSH
   describe SingleResultSelector do
     describe :select do
       before do
-        @client = double
         SpecHelpers.stub_translate_for_testing
       end
 
-      it "should return false and emit failure if given something that doesn't support array indexing" do
-        @client.should_receive(:emit_failure).with("db.object_not_found")
-        result = SingleResultSelector.select("123", @client) 
-        result.should be_nil
+      it "should return a failure if given something that doesn't support array indexing" do
+        result = SingleResultSelector.select("123") 
+        result.target.should be_nil
+        result.error.should eq("db.object_not_found")
       end
 
       it "should return false and emit failure if given something that doesn't support empty/count" do
-        @client.should_receive(:emit_failure).with("db.object_not_found")
-        result = SingleResultSelector.select(123, @client)
-        result.should be_nil
+        result = SingleResultSelector.select(123)
+        result.target.should be_nil
+        result.error.should eq("db.object_not_found")
       end
 
       it "should return false and emit failure for an ambiguous result" do
-        @client.should_receive(:emit_failure).with("db.object_ambiguous")
-        result = SingleResultSelector.select([1, 2], @client) 
-        result.should be_nil
+        result = SingleResultSelector.select([1, 2]) 
+        result.target.should be_nil
+        result.error.should eq("db.object_ambiguous")
       end
 
       it "should return false and emit failure for an empty result" do
-        @client.should_receive(:emit_failure).with("db.object_not_found")
-        result = SingleResultSelector.select([], @client)
-        result.should be_nil
+        result = SingleResultSelector.select([])
+        result.target.should be_nil
+        result.error.should eq("db.object_not_found")
       end
 
       it "should return false and emit failure for a nil result" do
-        @client.should_receive(:emit_failure).with("db.object_not_found")
-        result = SingleResultSelector.select(nil, @client)
-        result.should be_nil
+        result = SingleResultSelector.select(nil)
+        result.target.should be_nil
+        result.error.should eq("db.object_not_found")
       end
 
       it "should return a singular result" do
-        result = SingleResultSelector.select([2], @client)
-        result.should eq 2
+        result = SingleResultSelector.select([2])
+        result.target.should eq 2
+        result.error.should be_nil
       end
     end
   end

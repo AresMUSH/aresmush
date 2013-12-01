@@ -11,8 +11,12 @@ module AresMUSH
         regex_with_dest = /(?<name>.+)=(?<dest>.+)/
         if (cmd.can_crack_args?(regex_with_dest))
           cmd.crack!(regex_with_dest)
-          dest = SingleTargetFinder.find(cmd.args[:dest], Room, client)
-          return if dest.nil?
+          find_result = SingleTargetFinder.find(cmd.args[:dest], Room)
+          if (!find_result.found?)
+            client.emit_failure(find_result.error)
+            return
+          end
+          dest = find_result.target
         else
           cmd.crack!(/(?<name>.+)/)
           dest = nil

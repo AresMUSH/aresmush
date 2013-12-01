@@ -4,8 +4,10 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(cmd)
-        !cmd.logged_in? && cmd.root_is?("connect")
+         cmd.root_is?("connect")
       end
+      
+      # TODO _ Validate if not logged in
 
       def on_command(client, cmd)      
         cmd.crack!(/(?<name>\S+) (?<password>.+)/)
@@ -17,11 +19,14 @@ module AresMUSH
 
         name = cmd.args.name
         password = cmd.args.password
-        char = SingleTargetFinder.find(name, Character, client)
-
-        # find_one_and_notify already did the emits on failure.
-        return if char.nil?
+        find_result = SingleTargetFinder.find(name, Character)
         
+        if (!find_result.found?)
+          client.emit_failure(find_result.error)
+          return
+        end
+        
+        char = find_result.target
         if (!Character.compare_password(char, password))
           client.emit_failure(t('login.invalid_password'))
           return 

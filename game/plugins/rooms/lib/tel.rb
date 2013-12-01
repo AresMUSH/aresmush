@@ -9,9 +9,12 @@ module AresMUSH
       
       def on_command(client, cmd)
         dest = cmd.args
-        room = SingleTargetFinder.find(dest, Room, client)
-        return if room.nil?
-        
+        find_result = SingleTargetFinder.find(dest, Room)
+        if (!find_result.found?)
+          client.emit_failure(find_result.error)
+          return
+        end
+        room = find_result.target        
         client.emit_success("You teleport to #{room["name"]}.")
         client.char["location"] = room["_id"]
         Character.update(client.char)

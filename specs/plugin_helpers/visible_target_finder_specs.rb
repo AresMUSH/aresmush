@@ -14,18 +14,17 @@ module AresMUSH
 
       it "should return the char for the me keword" do
         @client.stub(:char) { @char }
-        VisibleTargetFinder.find("me", @client).should eq @char
-      end
-
-      it "should use the default when no target is specified" do
-        @client.stub(:char) { @char }
-        VisibleTargetFinder.find(nil, @client, "me").should eq @char
+        result = VisibleTargetFinder.find("me", @client)
+        result.target.should eq @char
+        result.error.should be_nil
       end
 
       it "should return the char's location for the here keyword" do
         location = double
         Room.should_receive(:find_one).with("1") { location }
-        VisibleTargetFinder.find("here", @client).should eq location
+        result = VisibleTargetFinder.find("here", @client)
+        result.target.should eq location
+        result.error.should be_nil
       end
 
       it "should find a single item matching the name" do
@@ -35,19 +34,23 @@ module AresMUSH
           { "name_upcase" => "B" }
         ]
         ContentsFinder.should_receive(:find).with("1") { contents }
-        SingleResultSelector.should_receive(:select).with([contents[0]], @client) { contents[0] }
-        VisibleTargetFinder.find("A", @client).should eq contents[0]
+        SingleResultSelector.should_receive(:select).with([contents[0]]) { FindResult.new(contents[0], nil) }
+        result = VisibleTargetFinder.find("A", @client)
+        result.target.should eq contents[0]
+        result.error.should be_nil
       end
 
-      it "should return nil if there are no matches" do
+      it "should fail if there are no matches" do
         contents = 
         [
           { "name_upcase" => "A" },
           { "name_upcase" => "B" }
         ]
         ContentsFinder.should_receive(:find).with("1") { contents }
-        SingleResultSelector.should_receive(:select).with([], @client) { nil }
-        VisibleTargetFinder.find("C", @client).should eq nil
+        SingleResultSelector.should_receive(:select).with([]) { FindResult.new(nil, "Not found") }
+        result = VisibleTargetFinder.find("C", @client)
+        result.target.should eq nil
+        result.error.should eq "Not found"
       end
     end
   end

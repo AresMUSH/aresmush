@@ -12,24 +12,15 @@ module AresMUSH
       
 
       describe :want_command? do
-        it "wants the connect command if not logged in " do
+        it "wants the connect command" do
           cmd = double
           cmd.stub(:root_is?).with("connect") { true }
-          cmd.stub(:logged_in?) { false }
           @connect.want_command?(cmd).should be_true
-        end
-        
-        it "doesn't want the connect command if logged in " do
-          cmd = double
-          cmd.stub(:root_is?).with("connect") { true }
-          cmd.stub(:logged_in?) { true }
-          @connect.want_command?(cmd).should be_false
         end
 
         it "doesn't want another command" do
           cmd = double
           cmd.stub(:root_is?).with("connect") { false }
-          cmd.stub(:logged_in?) { false }
           @connect.want_command?(cmd).should be_false
         end
       end
@@ -40,27 +31,34 @@ module AresMUSH
         it "should fail if there's no password" do
           cmd = Command.new(@client, "connect Bob")
           @client.should_receive(:emit_failure).with("login.invalid_connect_syntax")
+          Global.should_not_receive(:on_event)
           @connect.on_command(@client, cmd)          
         end
 
         it "should fail if there's no name and password" do
           cmd = Command.new(@client, "connect")
           @client.should_receive(:emit_failure).with("login.invalid_connect_syntax")
+          Global.should_not_receive(:on_event)
           @connect.on_command(@client, cmd)          
         end
 
-        it "should find only a single matching char" do
+        it "should fail if there isn't a single matching char" do
           cmd = Command.new(@client, "connect Bob password")
-          SingleTargetFinder.should_receive(:find).with("Bob", Character, @client) { nil }
+          find_result = FindResult.new(nil, "Not found")
+          SingleTargetFinder.should_receive(:find).with("Bob", Character) { find_result }
+          Global.should_not_receive(:on_event)
+          @client.should_receive(:emit_failure).with("Not found")
           @connect.on_command(@client, cmd)          
         end
                           
         it "should fail if the passwords don't match" do
           cmd = Command.new(@client, "connect Bob password")
           found_char = double
-          SingleTargetFinder.stub(:find) { found_char }
+          find_result = FindResult.new(found_char, "Not found")
+          SingleTargetFinder.stub(:find) { find_result }
           Character.stub(:compare_password).with(found_char, "password") { false }
           @client.should_receive(:emit_failure).with("login.invalid_password")
+          Global.should_not_receive(:on_event)
           @connect.on_command(@client, cmd)          
         end        
       end
@@ -72,7 +70,9 @@ module AresMUSH
           @dispatcher = double(Dispatcher)
           Global.stub(:dispatcher) { @dispatcher }
           
-          SingleTargetFinder.stub(:find){ @found_char }
+          find_result = FindResult.new(@found_char, nil)
+          SingleTargetFinder.stub(:find) { find_result }
+          
           Character.stub(:compare_password).with(@found_char, "password") { true }  
           @dispatcher.stub(:on_event)  
           @client.stub(:char=)      
