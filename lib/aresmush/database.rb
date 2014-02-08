@@ -17,6 +17,10 @@ module AresMUSH
         connection = Mongo::Connection.new(host, port)
         @@db = connection.db(db_name)
         authenticate(db_config['username'], db_config['password'])
+        
+        MongoMapper.connection = connection
+        MongoMapper.database = db_name
+        
       rescue Exception => e
         Global.logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e

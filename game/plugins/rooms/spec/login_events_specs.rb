@@ -64,11 +64,14 @@ module AresMUSH
           @char = {}
           @client.stub(:char) { @char }
           Character.stub(:update)
-          Game.stub(:get) {{"rooms" => { "welcome_id" => "123" }}}
+          @game = double
+          @game.stub(:welcome_room_id) { "123" }
+          Game.stub(:master) { @game }
         end
         
         it "should set the char's location to the welcome room" do
-          Game.should_receive(:get) 
+          Game.should_receive(:master)
+          @game.should_receive(:welcome_room_id)
           @login.set_starting_location(@client)
           @char["location"].should eq "123"
         end

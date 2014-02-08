@@ -8,29 +8,30 @@ task :start do
 end
 
 task :install do
+ 
+  # TODO - Plugins need some way to install themselves?  What about upgrade?
+  # TODO - Break up wipe and install
+  
   bootstrapper = AresMUSH::Bootstrapper.new
   AresMUSH::Global.db[:chars].drop
   AresMUSH::Global.db[:exits].drop
   AresMUSH::Global.db[:rooms].drop
-  AresMUSH::Global.db[:game].drop
   AresMUSH::Room.drop_all
   AresMUSH::Exit.drop_all
   AresMUSH::Character.drop_all
-  AresMUSH::Game.drop_all
-  
+
+  AresMUSH::Game.delete_all  
+  game = AresMUSH::Game.new
+
   welcome = AresMUSH::Room.create("name" => "Welcome Room")
   ic = AresMUSH::Room.create("name" => "IC Start")
   idle = AresMUSH::Room.create("name" => "Idle Lounge")
-  
-  AresMUSH::Game.create
-  game = AresMUSH::Game.get
-  game['rooms'] = 
-  {
-    'welcome_id' => welcome[:_id],
-    'ic start_id' => ic[:_id],
-    'idle_id' => idle[:_id]
-  }
-  AresMUSH::Game.update(game)
+    
+  game.welcome_room_id = welcome[:_id]
+  game.ic_start_room_id = ic[:_id]
+  game.idle_room_id = idle[:_id]
+  game.save!
+
   
   headwiz = AresMUSH::Character.create(
   {

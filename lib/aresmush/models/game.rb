@@ -1,25 +1,11 @@
 module AresMUSH
-  module Game
-    def self.coll
-      :game
-    end
-        
-    def self.create
-      model = {}
-      Global.db[coll].insert(model)
-      model
-    end    
+  class Game
     
-    def self.get
-      Global.db[coll].find().to_a[0]
-    end
+    include MongoMapper::Document
     
-    def self.update(model)
-      Global.db[coll].update( { "_id" => model["_id"] }, model)
-    end
-    
-    def self.drop_all
-      Global.db[coll].drop
+    # There's only one game document and this is it!
+    def self.master
+      Game.all.first
     end
   end
 end

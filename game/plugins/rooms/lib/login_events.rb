@@ -21,9 +21,8 @@ module AresMUSH
       end
       
       def set_starting_location(client)
-        game = Game.get
-        welcome_room = game['rooms']['welcome_id']
-        client.char["location"] = welcome_room
+        game = Game.master
+        client.char["location"] = game.welcome_room_id
         Character.update(client.char)
       end
       

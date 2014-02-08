@@ -21,6 +21,7 @@ require 'date'
 require 'bcrypt'
 require 'rake'
 require 'rspec/core/rake_task'
+require 'mongo_mapper'
 
 require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'
