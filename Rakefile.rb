@@ -20,9 +20,10 @@ task :install do
 
   AresMUSH::Character.delete_all
   AresMUSH::Game.delete_all  
-  game = AresMUSH::Game.new  
-  game.save!
   
+  game = AresMUSH::Game.create
+  game.save!
+
   headwiz = AresMUSH::Character.new()
   headwiz.change_password("wizb00ts")
   headwiz.name = "Headwiz"

@@ -49,9 +49,14 @@ module AresMUSH
           @create.handle
         end
 
-        it "should dispatch the created event" do
+        it "should dispatch the created and connected event" do
           @dispatcher.should_receive(:on_event) do |type, args|
             type.should eq :char_created
+            args[:client].should eq @client
+          end
+         
+          @dispatcher.should_receive(:on_event) do |type, args|
+            type.should eq :char_connected
             args[:client].should eq @client
           end
           @create.handle

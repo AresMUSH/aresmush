@@ -5,6 +5,7 @@ module AresMUSH
     after_create :initialize_who_record
       
     def initialize_who_record
+      Global.logger.debug "Initializing who record."
       @online_record = 0
     end
   end

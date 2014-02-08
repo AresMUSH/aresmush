@@ -25,7 +25,7 @@ module AresMUSH
 
     def self.exists?(name)
       existing_char = Character.find_by_name(name)
-      return !existing_char.empty?
+      return !existing_char.nil?
     end    
     
     def self.hash_password(password)

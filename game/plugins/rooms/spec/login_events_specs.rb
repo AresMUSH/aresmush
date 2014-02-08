@@ -36,20 +36,6 @@ module AresMUSH
         end
       end
       
-      describe :on_char_created do        
-        it "should emit the desc of the char's last location" do
-          @login.should_receive(:emit_here_desc).with(@client)
-          @login.on_char_created( { :client => @client } )
-        end
-
-        it "should announce the char's connection to the room" do
-          clients = double
-          @client_monitor.stub(:clients) { clients }
-          Rooms.should_receive(:room_emit).with("1", "announce_char_arrived", clients)
-          @login.on_char_created( { :client => @client } )
-        end
-      end
-      
       describe :emit_here_desc do
         it "should find the client's location" do
           @client.should_receive(:location) { "1" }

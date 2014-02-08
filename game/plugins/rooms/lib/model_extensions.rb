@@ -8,6 +8,8 @@ module AresMUSH
     after_create :create_starting_rooms
     
     def create_starting_rooms  
+      Global.logger.debug "Creating start rooms."
+      
       welcome = AresMUSH::Room.create("name" => "Welcome Room")
       ic = AresMUSH::Room.create("name" => "IC Start")
       idle = AresMUSH::Room.create("name" => "Idle Lounge")
