@@ -2,19 +2,18 @@ module AresMUSH
 
   module Describe
     class RoomRenderer
-      def initialize(room, desc_factory)
-        @desc_factory = desc_factory
+      def initialize(room)
         @client_monitor = Global.client_monitor
         @room = room
       end
 
       def render
-        desc = build_header
-        desc << build_room_char_header
-        desc << build_chars
-        desc << build_room_exit_header
-        desc << build_exits
-        desc << build_footer
+        "Room Desc Here"
+        #desc = build_header
+        #desc << build_main
+        #desc << build_chars
+        #desc << build_exits
+        #desc << build_footer
       end
             
       def build_header
@@ -22,13 +21,8 @@ module AresMUSH
         renderer.render
       end
       
-      def build_room_char_header
-        renderer = @desc_factory.build_room_char_header(@room)
-        renderer.render
-      end
-      
-      def build_room_exit_header
-        renderer = @desc_factory.build_room_exit_header(@room)
+      def build_main
+        renderer = @desc_factory.build_room_header(@room)
         renderer.render
       end
       

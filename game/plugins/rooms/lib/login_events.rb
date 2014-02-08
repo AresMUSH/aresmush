@@ -27,9 +27,9 @@ module AresMUSH
         Character.update(client.char)
       end
       
-      def emit_here_desc(client)
+      def emit_here_desc(client)        
         loc = client.location
-        room = Room.find_by_id(loc)
+        room = AresMUSH::Room.find_by_id(loc)
         desc = room.empty? ? "" : Describe.get_desc(room[0])
         client.emit(desc)
       end

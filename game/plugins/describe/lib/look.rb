@@ -3,9 +3,6 @@ module AresMUSH
     class Look
       include AresMUSH::Plugin
       
-      def after_initialize
-        @plugin_manager = Global.plugin_manager
-      end
 
       def want_command?(cmd)
         cmd.root_is?("look")
@@ -32,9 +29,7 @@ module AresMUSH
         end
 
         model = find_result.target
-        desc_iface = Describe.interface(@plugin_manager)
-
-        desc = desc_iface.get_desc(model)
+        desc = Describe.get_desc(model)
         client.emit(desc)
       end      
     end

@@ -3,3 +3,4 @@ server:
     port: 7207
     locale: en
     default_locale: en
+    mush_name: AresMUSH

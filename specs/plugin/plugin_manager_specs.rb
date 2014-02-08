@@ -30,24 +30,6 @@ module AresMUSH
       end
     end
     
-    describe :interface do
-      before do
-        @plugin = double("Plugin")
-        @factory.should_receive(:create_plugin_classes) { [@plugin] }
-        @manager.load_all        
-      end
-      
-      it "should find a plugin interface by name" do
-        @plugin.stub(:class) { "AresMUSH::Test" }
-        @manager.interface("Test").should eq @plugin
-      end
-      
-      it "should return nil if no plugin interface found" do
-        @manager.interface("Foo").should eq nil        
-      end
-      
-    end
-    
     describe :locale_files do
       it "should find all the locale files in the plugin locale dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }

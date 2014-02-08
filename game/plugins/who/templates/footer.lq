@@ -1,5 +1,7 @@
-%l2
-%xr{{online_total}}%xn %xg{{ic_total}}%xn %xb{{online_record}}%xn
-%l1
-{% strip %}
-{% endstrip %}
+{% line 2 %}
+{% squish %}
+%xr{% c 25 %}{{online_total}}{% endc %}%xn 
+%xg{% c 25 %}{{ic_total}}{% endc %}%xn 
+%xb{% c 25 %}{{online_record}}{% endc %}%xn
+{% endsquish %}
+{% line %}

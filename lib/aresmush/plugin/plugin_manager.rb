@@ -36,12 +36,6 @@ module AresMUSH
       load_plugin_code(PluginManager.plugin_files)
     end
     
-    def interface(name)
-      found = plugins.select { |p| p.class.to_s == "AresMUSH::#{name}" }
-      return nil if found.empty?
-      return found[0]      
-    end
-    
     def load_plugin(name)
       plugin_files = PluginManager.plugin_files(name)
       raise SystemNotFoundException if plugin_files.empty?

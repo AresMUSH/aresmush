@@ -25,33 +25,28 @@ module AresMUSH
       
       describe :get_desc do
         before do
-          @desc_factory = double(DescFactory)
-          DescFactory.stub(:new) { @desc_factory }
-          
-          @interface = DescFunctions.new
+          @renderer = double
         end
         
-        it "should build the proper renderer" do
+        it "should create a renderer for a room" do
           model = { "type" => "Room" }
-          renderer = double.as_null_object
-          @desc_factory.should_receive(:build).with(model) { renderer }
-          @interface.get_desc(model)
+          RoomRenderer.should_receive(:new).with(model) { @renderer }
+          @renderer.should_receive(:render)
+          Describe.get_desc(model) 
         end
 
-        it "should call the renderer" do
+        it "should create a renderer for a character" do
           model = { "type" => "Character" }
-          renderer = double
-          @desc_factory.stub(:build) { renderer }
-          renderer.should_receive(:render)
-          @interface.get_desc(model)
+          CharRenderer.should_receive(:new).with(model) { @renderer }
+          @renderer.should_receive(:render)
+          @factory.build(model)
         end
-        
-        it "should return the formatted results of the render" do
-          model = { "type" => "Character" }
-          renderer = double
-          @desc_factory.stub(:build) { renderer }
-          renderer.stub(:render) { "DESC" }
-          @interface.get_desc(model).should eq "DESC"
+
+        it "should create a renderer for an exit" do
+          model = { "type" => "Exit" }
+          ExitRenderer.should_receive(:new).with(model) { @renderer }
+          @renderer.should_receive(:render)
+          @factory.build(model)
         end
       end
     end

@@ -1,27 +1,19 @@
 module AresMUSH
   module Describe
-
-    def self.interface(plugin_manager)
-      plugin_manager.interface("Describe::DescFunctions")
-    end
     
-    
-    
-    class DescFunctions 
-      # TODO - This is crappy; this isn't a plugin!
-      include AresMUSH::Plugin
-      
-      def after_initialize
-        @desc_factory = DescFactory.new
+    def self.get_desc(model)
+      if (model["type"] == "Room")
+        renderer = RoomRenderer.new(model)
+      elsif (model["type"] == "Character")
+        renderer = CharRenderer.new(model)
+      elsif (model["type"] == "Exit")
+        renderer = ExitRenderer.new(model)
+      else
+        raise "Invalid model type: #{model["type"]}"
       end
-      
-      def get_desc(model)
-        renderer = @desc_factory.build(model)
-        renderer.render
-      end
-      
+      return renderer.render
     end
-    
+          
     def self.set_desc(model, desc)  
       Global.logger.debug("Setting desc: #{model["name"]} #{desc}")
       

@@ -10,20 +10,20 @@ module AresMUSH
     
     def online_total
       count = @clients.count
-      "#{count} Online"
+      t('who.players_online', :count => count)
     end
     
     def ic_total
       count = @clients.count == 0 ? 0 : @clients.count / 2
-      "#{count} IC"
+       t('who.players_ic', :count => count)
     end
     
     def online_record
-      "25 Record"
+      t('who.online_record', :count => Who.online_record)
     end
     
     def mush_name
-      "AresMUSH"
+      Global.config['server']['mush_name']
     end
   end
   
@@ -40,15 +40,15 @@ module AresMUSH
     end
     
     def position
-      "Coder"
+      @char["position"]
     end
     
     def status
-      "IC"
+      @char["status"]
     end
     
     def faction
-      "Blue"
+      @char["faction"]
     end
     
     def idle

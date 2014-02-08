@@ -1,0 +1,6 @@
+en:
+    who:
+       new_online_record: "New Online Record: %{count}"
+       online_record: "%{count} Record"
+       players_ic: "%{count} IC"
+       players_online: "%{count} Online"

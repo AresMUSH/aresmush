@@ -1,1 +1,7 @@
-{{status}} {{name}} {{faction}} {{position}} {{idle}}
+{% squish %}
+{% l 6 %}{{status}}{% endl %} 
+{% l 20 %}{{name}}{% endl %} 
+{% l 15 %}{{faction}}{% endl %} 
+{% l 25 %}{{position}}{% endl %} 
+{% l 10 %}{{idle}}{% endl %} 
+{% endsquish %}
