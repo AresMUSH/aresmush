@@ -9,9 +9,8 @@ module AresMUSH
       
       def on_char_connected(args)
         count = @client_monitor.clients.count
-        old_record = Who.online_record || 0
         
-        if (old_record < count)
+        if (Who.online_record < count)
           Who.online_record = count
           Global.logger.info("Online Record Now: #{count}")
           @client_monitor.emit_all t('who.new_online_record', :count => count)

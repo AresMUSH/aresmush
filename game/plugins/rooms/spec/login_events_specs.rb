@@ -36,16 +36,7 @@ module AresMUSH
         end
       end
       
-      describe :on_char_created do
-        before do
-          @login.stub(:set_starting_location) {}
-        end
-        
-        it "should set the starting location" do
-          @login.should_receive(:set_starting_location).with(@client)
-          @login.on_char_created( { :client => @client } )
-        end
-        
+      describe :on_char_created do        
         it "should emit the desc of the char's last location" do
           @login.should_receive(:emit_here_desc).with(@client)
           @login.on_char_created( { :client => @client } )
@@ -56,29 +47,6 @@ module AresMUSH
           @client_monitor.stub(:clients) { clients }
           Rooms.should_receive(:room_emit).with("1", "announce_char_arrived", clients)
           @login.on_char_created( { :client => @client } )
-        end
-      end
-      
-      describe :set_starting_location do
-        before do
-          @char = {}
-          @client.stub(:char) { @char }
-          Character.stub(:update)
-          @game = double
-          @game.stub(:welcome_room_id) { "123" }
-          Game.stub(:master) { @game }
-        end
-        
-        it "should set the char's location to the welcome room" do
-          Game.should_receive(:master)
-          @game.should_receive(:welcome_room_id)
-          @login.set_starting_location(@client)
-          @char["location"].should eq "123"
-        end
-        
-        it "should save the char" do
-          Character.should_receive(:update).with(@char)
-          @login.set_starting_location(@client)
         end
       end
       

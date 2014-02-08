@@ -21,22 +21,13 @@ task :install do
   AresMUSH::Character.drop_all
 
   AresMUSH::Game.delete_all  
-  game = AresMUSH::Game.new
-
-  welcome = AresMUSH::Room.create("name" => "Welcome Room")
-  ic = AresMUSH::Room.create("name" => "IC Start")
-  idle = AresMUSH::Room.create("name" => "Idle Lounge")
-    
-  game.welcome_room_id = welcome[:_id]
-  game.ic_start_room_id = ic[:_id]
-  game.idle_room_id = idle[:_id]
+  game = AresMUSH::Game.new  
   game.save!
-
   
   headwiz = AresMUSH::Character.create(
   {
    "name" => "Headwiz", 
-   "location" => welcome[:_id],
+   "location" => game.welcome_room_id,
    "password" => AresMUSH::Character.hash_password("wizb00ts"),
   })
   

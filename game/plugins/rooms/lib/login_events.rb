@@ -15,16 +15,9 @@ module AresMUSH
       
       def on_char_created(args)
         client = args[:client]
-        set_starting_location(client)
         emit_here_desc(client)
         Rooms.room_emit(client.location, t('rooms.announce_char_arrived', :name => client.name), @client_monitor.clients)
-      end
-      
-      def set_starting_location(client)
-        game = Game.master
-        client.char["location"] = game.welcome_room_id
-        Character.update(client.char)
-      end
+      end      
       
       def emit_here_desc(client)        
         loc = client.location
