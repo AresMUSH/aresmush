@@ -13,24 +13,21 @@ task :install do
   # TODO - Break up wipe and install
   
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.db[:chars].drop
   AresMUSH::Global.db[:exits].drop
   AresMUSH::Global.db[:rooms].drop
   AresMUSH::Room.drop_all
   AresMUSH::Exit.drop_all
-  AresMUSH::Character.drop_all
 
+  AresMUSH::Character.delete_all
   AresMUSH::Game.delete_all  
   game = AresMUSH::Game.new  
   game.save!
   
-  headwiz = AresMUSH::Character.create(
-  {
-   "name" => "Headwiz", 
-   "location" => game.welcome_room_id,
-   "password" => AresMUSH::Character.hash_password("wizb00ts"),
-  })
-  
+  headwiz = AresMUSH::Character.new()
+  headwiz.change_password("wizb00ts")
+  headwiz.name = "Headwiz"
+  headwiz.save!
+
   puts "Install complete."
 end
 

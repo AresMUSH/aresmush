@@ -14,18 +14,17 @@ module AresMUSH
       
       # FAILURE
       describe :handle do        
-        it "should fail if there isn't a single matching char" do
-          find_result = FindResult.new(nil, "Not found")
-          SingleTargetFinder.should_receive(:find).with("Bob", Character) { find_result }
+        it "should fail if there isn't a matching char" do
+          Character.should_receive(:find_by_name).with("Bob") { nil }
           Global.should_not_receive(:on_event)
-          @client.should_receive(:emit_failure).with("Not found")
+          @client.should_receive(:emit_failure).with("login.char_not_found")
           @connect.handle
         end
                           
         it "should fail if the passwords don't match" do
           found_char = double
-          SingleTargetFinder.stub(:find) { FindResult.new(found_char, nil) }
-          Character.stub(:compare_password).with(found_char, "password") { false }
+          found_char.should_receive(:compare_password).with("password") { false }
+          Character.should_receive(:find_by_name).with("Bob") { found_char }
           @client.should_receive(:emit_failure).with("login.invalid_password")
           Global.should_not_receive(:on_event)
           @connect.handle
@@ -38,18 +37,15 @@ module AresMUSH
           @found_char = double
           @dispatcher = double(Dispatcher)
           Global.stub(:dispatcher) { @dispatcher }
-          
-          find_result = FindResult.new(@found_char, nil)
-          SingleTargetFinder.stub(:find) { find_result }
-          
-          Character.stub(:compare_password).with(@found_char, "password") { true }  
+          Character.should_receive(:find_by_name) { @found_char }
+          @found_char.stub(:compare_password).with("password") { true }  
           
           @dispatcher.stub(:on_event)  
           @client.stub(:char=)      
         end
         
         it "should compare passwords" do
-          Character.should_receive(:compare_password).with(@found_char, "password")
+          @found_char.should_receive(:compare_password).with("password")
           @connect.handle
         end        
         

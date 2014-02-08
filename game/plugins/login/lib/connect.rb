@@ -20,15 +20,15 @@ module AresMUSH
       def handle
         name = args.name
         password = args.password
-        find_result = SingleTargetFinder.find(name, Character)
+
+        char = Character.find_by_name(name)
         
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
+        if (char.nil?)
+          client.emit_failure(t("login.char_not_found"))
           return
         end
         
-        char = find_result.target
-        if (!Character.compare_password(char, password))
+        if (!char.compare_password(password))
           client.emit_failure(t('login.invalid_password'))
           return 
         end

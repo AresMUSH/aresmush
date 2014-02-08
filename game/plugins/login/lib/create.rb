@@ -28,7 +28,11 @@ module AresMUSH
         name = args.name
         password = args.password
                 
-        char = Character.create_char(name, password)
+        char = Character.new
+        char.name = name
+        char.change_password(password)
+        char.save!
+        
         @client.emit_success(t('login.created_and_logged_in', :name => name))
         @client.char = char
         Global.dispatcher.on_event(:char_created, :client => @client)

@@ -5,6 +5,7 @@ en:
        announce_char_created: "%{name} has been created."
        goodbye: "Goodbye!"
        char_name_taken: "Sorry, that name is already taken."
+       char_not_found: "Sorry, cannot find a character by that name."
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."
        invalid_password: "Password incorrect."

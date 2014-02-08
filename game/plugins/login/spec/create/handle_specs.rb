@@ -12,7 +12,11 @@ module AresMUSH
 
         @dispatcher = double
         Global.stub(:dispatcher) { @dispatcher }
-        Character.stub(:create_char)
+        Character.stub(:save!)
+
+        @char = double.as_null_object
+        Character.should_receive(:new) { @char }
+
         @client.stub(:emit_success)
         @client.stub(:char=)
         @dispatcher.stub(:on_event)
@@ -20,8 +24,18 @@ module AresMUSH
       
       describe :handle do
 
-        it "should create the char" do          
-          Character.should_receive(:create_char).with("charname", "password")
+        it "should set the character's name" do          
+          @char.should_receive(:name=).with("charname")
+          @create.handle
+        end
+
+        it "should set the character's password" do          
+          @char.should_receive(:change_password).with("password")
+          @create.handle
+        end
+
+        it "should save the character" do          
+          @char.should_receive(:save!)
           @create.handle
         end
 
@@ -31,9 +45,7 @@ module AresMUSH
         end
 
         it "should set the char on the client" do
-          char = double
-          Character.stub(:create_char).with("charname", "password") { char }
-          @client.should_receive(:char=).with(char)
+          @client.should_receive(:char=).with(@char)
           @create.handle
         end
 

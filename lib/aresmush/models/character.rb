@@ -1,34 +1,40 @@
 module AresMUSH
-    module Character
+    class Character
     
-    extend AresModel
+    include MongoMapper::Document
     
-    def self.coll
-      :chars
-    end    
-
-    def self.create_char(name, raw_password)
-      Character.create("name" => name, "password" => Character.hash_password(raw_password))      
+    key :name, String
+    key :name_upcase, String
+    key :password_hash, String
+    
+    before_save :save_upcase_name
+    before_update :save_upcase_name
+    
+    def change_password(raw_password)
+      @password_hash = Character.hash_password(raw_password)
     end
     
+    def compare_password(entered_password)
+      hash = BCrypt::Password.new(@password_hash)
+      hash == entered_password
+    end
+    
+    def self.find_by_name(name)
+      find_by_name_upcase(name.upcase)
+    end
+
     def self.exists?(name)
       existing_char = Character.find_by_name(name)
       return !existing_char.empty?
-    end
-    
-    def self.custom_model_fields(model)
-      model["name_upcase"] = model["name"].upcase
-      model["type"] = "Character"
-      model
-    end
+    end    
     
     def self.hash_password(password)
       BCrypt::Password.create(password)
     end
     
-    def self.compare_password(char, password)
-      hash = BCrypt::Password.new(char["password"])
-      hash == password
+    
+    def save_upcase_name
+      @name_upcase = @name.upcase
     end
   end
 end
