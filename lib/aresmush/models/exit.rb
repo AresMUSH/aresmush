@@ -1,15 +1,14 @@
 module AresMUSH
-  module Exit
-    extend AresModel
+  class Exit
+    include MongoMapper::Document
     
-    def self.coll
-      :exits
-    end
-
-    def self.custom_model_fields(model)
-      model["name_upcase"] = model["name"].upcase
-      model["type"] = "Exit"
-      model
-    end    
+    key :name
+        
+    key :source_id, ObjectId
+    belongs_to :source, :class => Room
+    
+    key :dest_id, ObjectId
+    belongs_to :dest, :class => Room
+    
   end
 end

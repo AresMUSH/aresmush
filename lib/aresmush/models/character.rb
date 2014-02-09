@@ -6,9 +6,10 @@ module AresMUSH
     key :name, String
     key :name_upcase, String
     key :password_hash, String
+        
+    belongs_to :room, :class_name => 'AresMUSH::Room'
     
-    before_save :save_upcase_name
-    before_update :save_upcase_name
+    before_validation :save_upcase_name
     
     def change_password(raw_password)
       @password_hash = Character.hash_password(raw_password)
@@ -31,10 +32,9 @@ module AresMUSH
     def self.hash_password(password)
       BCrypt::Password.create(password)
     end
-    
-    
-    def save_upcase_name
-      @name_upcase = @name.upcase
+        
+    def save_upcase_name      
+      @name_upcase = @name.nil? ? "" : @name.upcase
     end
   end
 end

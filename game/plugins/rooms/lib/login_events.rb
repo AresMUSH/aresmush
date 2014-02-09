@@ -10,13 +10,12 @@ module AresMUSH
       def on_char_connected(args)
         client = args[:client]
         emit_here_desc(client)
-        Rooms.room_emit(client.location, t('rooms.announce_char_arrived', :name => client.name), @client_monitor.clients)
+        Rooms.room_emit(client.room, t('rooms.announce_char_arrived', :name => client.name), @client_monitor.clients)
       end
       
       def emit_here_desc(client)        
-        loc = client.location
-        room = AresMUSH::Room.find_by_id(loc)
-        desc = room.empty? ? "" : Describe.get_desc(room[0])
+        room = client.char.room
+        desc = room.nil? ? "" : Describe.get_desc(room)
         client.emit(desc)
       end
     end

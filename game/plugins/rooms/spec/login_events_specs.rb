@@ -11,7 +11,7 @@ module AresMUSH
         
         @client = double(Client)
         @client.stub(:name) { "Bob" }
-        @client.stub(:location) { "1" }
+        @client.stub(:room) { "1" }
         @client.stub(:emit)
         
         @client_monitor.stub(:clients)

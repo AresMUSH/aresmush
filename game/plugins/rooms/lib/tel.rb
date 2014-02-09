@@ -16,7 +16,7 @@ module AresMUSH
         end
         room = find_result.target        
         client.emit_success("You teleport to #{room["name"]}.")
-        client.char.location_id = room["_id"]
+        client.char.room = room
         client.char.save!
         client.emit Describe.format_room_desc(room)
       end

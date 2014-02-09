@@ -27,7 +27,7 @@ module AresMUSH
       end
       
       def build_chars
-        contents = @client_monitor.clients.select { |c| c.logged_in? && c.location == @room["_id"] }
+        contents = @client_monitor.clients.select { |c| c.logged_in? && c.room == @room }
         contents_str = ""
         contents.each do |c|
           renderer = @desc_factory.build_room_each_char(c.char)

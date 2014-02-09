@@ -2,7 +2,7 @@ module AresMUSH
   class Game
     key :online_record, Integer    
     
-    after_create :initialize_who_record
+    before_create :initialize_who_record
       
     def initialize_who_record
       Global.logger.debug "Initializing who record."

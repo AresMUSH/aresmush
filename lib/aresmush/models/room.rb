@@ -1,15 +1,9 @@
 module AresMUSH
-  module Room
-    extend AresModel
+  class Room    
+    include MongoMapper::Document
     
-    def self.coll
-      :rooms
-    end
-        
-    def self.custom_model_fields(model)
-      model["name_upcase"] = model["name"].upcase
-      model["type"] = "Room"
-      model
-    end
+    key :name
+    has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id
+    has_many :characters, :class_name => 'AresMUSH::Character'
   end
 end

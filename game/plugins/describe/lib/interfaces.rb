@@ -2,6 +2,8 @@ module AresMUSH
   module Describe
     
     def self.get_desc(model)
+      # TODO - Nerfed
+      return "DESC FOR #{model.name}"
       if (model["type"] == "Room")
         renderer = RoomRenderer.new(model)
       elsif (model["type"] == "Character")

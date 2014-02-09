@@ -9,26 +9,25 @@ end
 
 task :install do
  
-  # TODO - Plugins need some way to install themselves?  What about upgrade?
-  # TODO - Break up wipe and install
+  # TODO - What about upgrade?  Break up wipe and install, make plugins smarter
   
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.db[:exits].drop
-  AresMUSH::Global.db[:rooms].drop
-  AresMUSH::Room.drop_all
-  AresMUSH::Exit.drop_all
 
   AresMUSH::Character.delete_all
   AresMUSH::Game.delete_all  
+  AresMUSH::Room.delete_all
+  AresMUSH::Exit.delete_all
   
   game = AresMUSH::Game.create
-  game.save!
-
-  headwiz = AresMUSH::Character.new()
+  
+  headwiz = AresMUSH::Character.create
   headwiz.change_password("wizb00ts")
   headwiz.name = "Headwiz"
   headwiz.save!
 
+  puts "GAME: #{AresMUSH::Game.master.inspect}"
+  puts "CHAR: #{headwiz.room.inspect}"
+  puts "ROOM #{AresMUSH::Game.master.welcome_room.characters.inspect}"
   puts "Install complete."
 end
 

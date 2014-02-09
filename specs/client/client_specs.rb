@@ -94,15 +94,17 @@ module AresMUSH
       
     end
     
-    describe :location do
+    describe :room do
       it "should use the char location if available" do
-        @client.char = {"location" => "111"}
-        @client.location.should eq "111"
+        char = double
+        @client.char = char
+        char.should_receive(:room) { "111" }
+        @client.room.should eq "111"
       end
       
       it "should use nil if there's no char" do
         @client.char = nil
-        @client.location.should eq nil
+        @client.room.should eq nil
       end
     end
   end

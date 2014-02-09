@@ -1,4 +1,5 @@
 module AresMUSH
+  # TODO - REDO
   class VisibleTargetFinder
     def self.find(name, client)
       return FindResult.new(client.char, nil) if (name.downcase == t("object.me"))

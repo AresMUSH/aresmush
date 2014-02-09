@@ -64,8 +64,8 @@ module AresMUSH
       @char.nil? ? t('client.anonymous'): @char['name']
     end
     
-    def location
-      @char.nil? ? nil : @char['location']
+    def room
+      @char.nil? ? nil : @char.room
     end
     
     def logged_in?
