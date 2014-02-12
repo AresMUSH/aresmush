@@ -40,8 +40,15 @@ module AresMUSH
           @who.want_command?(@cmd).should be_true
         end
 
+        it "should want the where command" do
+          @cmd.stub(:root_is?).with("who") { false }
+          @cmd.stub(:root_is?).with("where") { true }
+          @who.want_command?(@cmd).should be_true
+        end 
+        
         it "should not want another command" do
           @cmd.stub(:root_is?).with("who") { false }
+          @cmd.stub(:root_is?).with("where") { false }
           @who.want_command?(@cmd).should be_false
         end        
       end
