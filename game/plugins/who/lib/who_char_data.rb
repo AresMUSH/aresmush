@@ -5,7 +5,6 @@ module AresMUSH
     def initialize(client)
       @client = client
       @char = client.char
-      puts WhoCharData.instance_methods
     end
     
     def name
@@ -29,14 +28,11 @@ module AresMUSH
     end   
     
     def room
-      @client.room.name
-    end
-    
-    def location
-    end
+      @char.who_location
+    end    
     
     def self.sort(clients)
-      clients.sort_by{ |c| [c.char.room.name, c.char.name] }
+      clients.sort_by{ |c| [c.char.who_location, c.char.name] }
     end 
   end
 end

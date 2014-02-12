@@ -2,7 +2,7 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Who
-    describe Who do
+    describe WhoCmd do
 
       describe :initialize do
         it "should read the templates" do

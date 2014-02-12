@@ -1,6 +1,9 @@
 en:
     who:
-       new_online_record: "New Online Record: %{count}"
-       online_record: "%{count} Record"
-       players_ic: "%{count} IC"
-       players_online: "%{count} Online"
+        hidden: Somewhere
+        hide_enabled: "Your location is now hidden from the who list."
+        hide_disabled: "Your location is no longer hidden on the who list."
+        new_online_record: "New Online Record: %{count}"
+        online_record: "%{count} Record"
+        players_ic: "%{count} IC"
+        players_online: "%{count} Online"

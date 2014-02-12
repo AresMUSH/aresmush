@@ -16,7 +16,7 @@ module AresMUSH
           before do 
             Game.stub(:online_record) { 2 }
             @client_monitor.stub(:logged_in_clients) { [double, double, double] }            
-            @client_monitor.stub(:emit_all) {} 
+            @client_monitor.stub(:emit_all_ooc) {} 
             AresMUSH::Locale.stub(:translate).with("who.new_online_record", { :count => 3 }) { "record 3" }            
           end
           
@@ -26,7 +26,7 @@ module AresMUSH
           end
           
           it "should emit the new record" do
-            @client_monitor.should_receive(:emit_all).with("record 3")
+            @client_monitor.should_receive(:emit_all_ooc).with("record 3")
             @events.on_char_connected(nil)            
           end
         end
@@ -43,7 +43,7 @@ module AresMUSH
           end
           
           it "should not emit a new record" do
-            @client_monitor.should_not_receive(:emit_all).with("record 3")
+            @client_monitor.should_not_receive(:emit_all_ooc)
             @events.on_char_connected(nil)            
           end
         end

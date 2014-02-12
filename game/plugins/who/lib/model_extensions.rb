@@ -23,9 +23,16 @@ module AresMUSH
   # TODO: All of this stuff belongs somewhere else.  Here just for testing.
   class Character
     key :status, String
-
+    key :hidden, Boolean
+    
+    before_create :initialize_char
+    
+    def initialize_char
+      @status = "NEW"
+    end
+    
     def is_ic?
-      :status == "IC"
+      @status == "IC"
     end
 
     def faction
@@ -34,6 +41,10 @@ module AresMUSH
     
     def position
       "Up"
+    end
+    
+    def who_location
+      @hidden ? t('who.hidden') : self.room.name
     end
   end
   

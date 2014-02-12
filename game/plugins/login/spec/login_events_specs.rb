@@ -19,12 +19,12 @@ module AresMUSH
       describe :on_char_connected do
         it "should announce the char" do
           @client.stub(:emit_success) {}
-          @client_monitor.should_receive(:emit_all).with("announce_char_connected")
+          @client_monitor.should_receive(:emit_all_ooc).with("announce_char_connected")
           @login_events.on_char_connected(:client => @client)
         end
         
         it "should send the welcome text to the connecting char" do
-          @client_monitor.stub(:emit_all) {}
+          @client_monitor.stub(:emit_all_ooc) {}
           @client.should_receive(:emit_success).with("welcome")
           @login_events.on_char_connected(:client => @client)          
         end        
@@ -32,14 +32,14 @@ module AresMUSH
       
       describe :on_char_created do
         it "should announce the char" do
-          @client_monitor.should_receive(:emit_all).with("announce_char_created")
+          @client_monitor.should_receive(:emit_all_ooc).with("announce_char_created")
           @login_events.on_char_created(:client => @client)
         end
       end
       
       describe :on_char_disconnected do
         it "should announce the char" do
-          @client_monitor.should_receive(:emit_all).with("announce_char_disconnected")
+          @client_monitor.should_receive(:emit_all_ooc).with("announce_char_disconnected")
           @login_events.on_char_disconnected(:client => @client)
         end
       end

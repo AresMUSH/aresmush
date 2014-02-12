@@ -11,19 +11,19 @@ module AresMUSH
         client = args[:client]
         Global.logger.info("Character Connected: #{client}")
         client.emit_success(t('login.welcome'))
-        @client_monitor.emit_all t('login.announce_char_connected', :name => client.name)
+        @client_monitor.emit_all_ooc t('login.announce_char_connected', :name => client.name)
       end
       
       def on_char_created(args)
         client = args[:client]
         Global.logger.info("Character Created: #{client}")
-        @client_monitor.emit_all t('login.announce_char_created', :name => client.name)
+        @client_monitor.emit_all_ooc t('login.announce_char_created', :name => client.name)
       end
 
       def on_char_disconnected(args)
         client = args[:client]
         Global.logger.info("Character Disconnected: #{client}")
-        @client_monitor.emit_all t('login.announce_char_disconnected', :name => client.name)
+        @client_monitor.emit_all_ooc t('login.announce_char_disconnected', :name => client.name)
       end
     end
   end

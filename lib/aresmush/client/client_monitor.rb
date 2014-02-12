@@ -13,6 +13,12 @@ module AresMUSH
         c.emit msg
       end
     end
+    
+    def emit_all_ooc(msg)
+      @clients.each do |c|
+        c.emit_ooc msg
+      end
+    end
 
     def connection_established(connection)
       begin

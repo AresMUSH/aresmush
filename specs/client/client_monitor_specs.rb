@@ -25,6 +25,14 @@ module AresMUSH
         @client_monitor.emit_all "Hi"
       end
     end
+    
+    describe :emit_all_ooc do
+      it "should emit ooc to all the clients" do
+        @client1.should_receive(:emit_ooc).with("Hi")
+        @client2.should_receive(:emit_ooc).with("Hi")
+        @client_monitor.emit_all_ooc "Hi"
+      end
+    end
 
     describe :connection_closed do
       it "should remove the client from the list" do
