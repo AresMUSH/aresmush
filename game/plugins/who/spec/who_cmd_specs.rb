@@ -3,12 +3,6 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Who
     describe Who do
-      before do
-        @cmd = double
-        @client_monitor = double(ClientMonitor)
-        @client = double(Client).as_null_object
-        Global.stub(:client_monitor) { @client_monitor }
-      end
 
       describe :initialize do
         it "should read the templates" do
@@ -38,6 +32,7 @@ module AresMUSH
       describe :want_command do
         before do
           @who = WhoCmd.new
+          @cmd = double
         end
         
         it "should want the who command" do
@@ -53,6 +48,10 @@ module AresMUSH
 
       describe :on_command do        
         before do
+          @client_monitor = double(ClientMonitor)
+          Global.stub(:client_monitor) { @client_monitor }
+          @client = double
+          
           @client1 = double("Client1")
           @client2 = double("Client2")
           @client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
@@ -63,6 +62,7 @@ module AresMUSH
         end
 
         it "should call the renderer with the clients" do
+          @client.stub(:emit)
           @renderer.should_receive(:render).with([@client1, @client2]) { "" }
           @who.on_command(@client, @cmd)
         end

@@ -25,9 +25,6 @@ task :install do
   headwiz.name = "Headwiz"
   headwiz.save!
 
-  puts "GAME: #{AresMUSH::Game.master.inspect}"
-  puts "CHAR: #{headwiz.room.inspect}"
-  puts "ROOM #{AresMUSH::Game.master.welcome_room.characters.inspect}"
   puts "Install complete."
 end
 

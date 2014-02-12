@@ -24,7 +24,7 @@ module AresMUSH
             
       def build_chars(data)
         char_text = ""
-        data.clients.each do |c| 
+        WhoCharData.sort(data.clients).each do |c| 
           data = WhoCharData.new(c)
           char_text << "\n" << @char_template.render(data)
         end

@@ -50,14 +50,16 @@ module AresMUSH
     end
   end  
   
-  module ClientBuilder
-    def make_dummy_client(logged_in, is_ic)
+  module MockClient
+    def build_mock_client
       client = double
       char = double
       client.stub(:char) { char }
-      char.stub(:is_ic?) { is_ic }
-      client.stub(:logged_in?) { logged_in }
-      client
+      {
+        :client => client,
+        :char => char
+      }
     end
   end
+    
 end

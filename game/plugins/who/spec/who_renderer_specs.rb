@@ -54,6 +54,7 @@ module AresMUSH
 
           char1 = { "name" => "1" }
           char2 = { "name" => "2" }
+          WhoCharData.should_receive(:sort).with(@clients) { @clients }
           WhoCharData.should_receive(:new).with(@client1) { char1 }
           WhoCharData.should_receive(:new).with(@client2) { char2 }
 

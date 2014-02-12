@@ -5,13 +5,13 @@ module AresMUSH
   module Who
     describe WhoEvents do
       
-      before do
-        @client_monitor = double
-        Global.stub(:client_monitor) { @client_monitor }
-        @events = WhoEvents.new
-      end
-      
       describe :on_char_connected do
+        before do
+          @client_monitor = double
+          Global.stub(:client_monitor) { @client_monitor }
+          @events = WhoEvents.new
+        end
+
         context "online record set" do
           before do 
             Game.stub(:online_record) { 2 }

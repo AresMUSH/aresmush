@@ -18,7 +18,7 @@ module AresMUSH
     end
     
     def online_record
-      t('who.online_record', :count => Who.online_record)
+      t('who.online_record', :count => Game.online_record)
     end
     
     def mush_name

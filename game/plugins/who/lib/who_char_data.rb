@@ -25,6 +25,10 @@ module AresMUSH
     
     def idle
       @client.idle
-    end    
+    end   
+    
+    def self.sort(clients)
+      clients.sort_by{ |c| [c.char.position, c.char.name] }
+    end 
   end
 end
