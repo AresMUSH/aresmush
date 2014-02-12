@@ -2,8 +2,7 @@ module AresMUSH
   module Who
         
     def self.online_record
-      game = Game.master
-      game.online_record
+      Game.master.online_record
     end
     
     def self.online_record=(value)

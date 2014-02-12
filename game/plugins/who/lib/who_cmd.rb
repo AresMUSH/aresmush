@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        logged_in = @client_monitor.clients.select { |c| c.logged_in? }
+        logged_in = @client_monitor.logged_in_clients
         client.emit @renderer.render(logged_in)
       end      
     end

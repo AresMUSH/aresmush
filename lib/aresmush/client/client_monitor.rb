@@ -31,5 +31,9 @@ module AresMUSH
       @clients.delete client
       @dispatcher.on_event(:char_disconnected, :client => client)
     end
+    
+    def logged_in_clients
+      @clients.select { |c| c.logged_in? }
+    end
   end
 end

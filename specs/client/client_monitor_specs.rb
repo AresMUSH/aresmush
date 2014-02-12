@@ -5,7 +5,7 @@ require "aresmush"
 module AresMUSH
 
   describe ClientMonitor do
-
+   
     before do
       @dispatcher = double(Dispatcher).as_null_object
       @factory = double(ClientFactory).as_null_object
@@ -71,6 +71,17 @@ module AresMUSH
           args[:client].should eq @client3
         end
         @client_monitor.connection_established(@connection)
+      end
+    end
+    
+    describe :logged_in_clients do
+      it "should count logged in people" do
+        client3 = double
+        @client1.stub(:logged_in?) { false }
+        @client2.stub(:logged_in?) { true }
+        client3.stub(:logged_in?) { true }
+        @client_monitor.clients << client3
+        @client_monitor.logged_in_clients.should eq [@client2, client3]
       end
     end
   end

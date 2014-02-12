@@ -9,13 +9,12 @@ module AresMUSH
     attr_reader :clients
     
     def online_total
-      count = @clients.count
-      t('who.players_online', :count => count)
+      t('who.players_online', :count => @clients.count)
     end
     
     def ic_total
-      count = @clients.count == 0 ? 0 : @clients.count / 2
-       t('who.players_ic', :count => count)
+      ic = @clients.select { |c| c.char.is_ic? }
+      t('who.players_ic', :count => ic.count)
     end
     
     def online_record
@@ -25,34 +24,5 @@ module AresMUSH
     def mush_name
       Global.config['server']['mush_name']
     end
-  end
-  
-  class WhoCharData
-    include ToLiquidHelper
-    
-    def initialize(client)
-      @client = client
-      @char = client.char
-    end
-    
-    def name
-      @char["name"]
-    end
-    
-    def position
-      @char["position"]
-    end
-    
-    def status
-      @char["status"]
-    end
-    
-    def faction
-      @char["faction"]
-    end
-    
-    def idle
-      @client.idle
-    end    
-  end
+  end  
 end

@@ -10,13 +10,21 @@ module AresMUSH
     end
   end
   
-  # TODO: Really belongs somewhere else - status module maybe?
-  #class Character
-  #  key :status, String
-  #  
-  #  def is_ic?
-  #    :status == "IC"
-  #  end
-  #end
+  # TODO: All of this stuff belongs somewhere else.  Here just for testing.
+  class Character
+    key :status, String
+
+    def is_ic?
+      :status == "IC"
+    end
+
+    def faction
+      "A Faction"
+    end
+    
+    def position
+      "Up"
+    end
+  end
   
 end

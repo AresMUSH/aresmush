@@ -55,22 +55,15 @@ module AresMUSH
         before do
           @client1 = double("Client1")
           @client2 = double("Client2")
-          
-          # Stub some people logged in
-          @client_monitor.stub(:clients) { [@client1, @client2] }
-          @client1.stub(:logged_in?) { true }
-          @client2.stub(:logged_in?) { false }
+          @client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
           
           @renderer = double
           WhoRenderer.stub(:new) { @renderer }
           @who = WhoCmd.new
         end
 
-        it "should call the renderer with the logged in chars" do
-          @client_monitor.should_receive(:clients) { [@client1, @client2] }
-          @client1.should_receive(:logged_in?) { false }
-          @client2.should_receive(:logged_in?) { true }
-          @renderer.should_receive(:render).with([@client2]) { "" }
+        it "should call the renderer with the clients" do
+          @renderer.should_receive(:render).with([@client1, @client2]) { "" }
           @who.on_command(@client, @cmd)
         end
         
