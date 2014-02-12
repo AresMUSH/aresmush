@@ -3,7 +3,8 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   describe Game do
     before do
-      MongoMapper::Plugins::Querying.stub(:save_to_collection) {}
+      @game = double
+      Game.stub(:master) { @game }
     end
 
     describe :initialize_who_record do
@@ -11,6 +12,21 @@ module AresMUSH
         SpecHelpers.connect_to_test_db
         game = Game.create
         game.online_record.should eq 0
+      end
+    end
+    
+    describe :online_record do
+      it "should return the online record" do
+        @game.stub(:online_record) { 22 }
+        Game.online_record.should eq 22
+      end
+    end
+    
+    describe :online_record= do        
+      it "should set the online record" do
+        @game.should_receive(:online_record=).with(22)
+        @game.should_receive(:save!)
+        Game.online_record = 22
       end
     end
   end
