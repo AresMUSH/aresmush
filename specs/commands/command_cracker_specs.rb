@@ -124,7 +124,7 @@ module AresMUSH
       it "should be able to crack an empty string" do
         cracked = CommandCracker.crack("")
         cracked[:prefix].should eq nil
-        cracked[:root].should eq nil
+        cracked[:root].should eq ""
         cracked[:switch].should eq nil
         cracked[:args].should eq nil
       end

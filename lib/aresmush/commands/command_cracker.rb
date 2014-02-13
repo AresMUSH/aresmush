@@ -10,11 +10,12 @@ module AresMUSH
       cracked = /^(?<prefix>[\/\+\=\@]?)(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
 
       if (cracked.nil?)      
-        return { :prefix => nil, :root => nil, :switch => nil, :args => nil }
+        # Never allow root to be nil
+        return { :prefix => nil, :root => "", :switch => nil, :args => nil }
       end
 
       prefix = cracked[:prefix].empty? ? nil : cracked[:prefix].strip
-      root = cracked[:root].nil? ? nil : cracked[:root].strip
+      root = cracked[:root].nil? ? "" : cracked[:root].strip
       switch = cracked[:switch].nil? ? nil : cracked[:switch].rest("/")
       args = cracked[:args].nil? ? nil : cracked[:args].strip
       
