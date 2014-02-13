@@ -4,6 +4,10 @@ module AresMUSH
   module Who
     describe WhoCmd do
 
+      before do        
+        SpecHelpers.stub_translate_for_testing
+      end
+      
       describe :initialize do
         it "should read the templates" do
           TemplateRenderer.should_receive(:create_from_file) do |file|
@@ -31,8 +35,8 @@ module AresMUSH
       
       describe :want_command do
         before do
+          @cmd = double          
           @who = WhoCmd.new
-          @cmd = double
         end
         
         it "should want the who command" do
@@ -52,32 +56,56 @@ module AresMUSH
           @who.want_command?(@cmd).should be_false
         end        
       end
-
-      describe :on_command do        
+      
+      describe :validate do
         before do
-          @client_monitor = double(ClientMonitor)
-          Global.stub(:client_monitor) { @client_monitor }
-          @client = double
-          
+          @cmd = double          
+          @who = WhoCmd.new
+          @who.cmd = @cmd          
+        end
+        
+        it "should be valid if there are no args" do
+          @cmd.stub(:root_only?) { true }
+          @who.validate.should be_nil
+        end
+        
+        it "should be invalid if there are args" do
+          @cmd.stub(:root_only?) { false }
+          @who.validate.should eq 'who.invalid_who_syntax'
+        end
+      end
+      
+      describe :handle do        
+        before do
           @client1 = double("Client1")
           @client2 = double("Client2")
-          @client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
           
           @renderer = double
+          @renderer.stub(:render) { "ABC" }
+          
           WhoRenderer.stub(:new) { @renderer }
+          
+          @client_monitor = double
+          Global.stub(:client_monitor) { @client_monitor }
+          @client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
+          
+          @client = double
+          @cmd = double
+          
           @who = WhoCmd.new
+          @who.client = @client        
+          @who.cmd = @cmd          
         end
 
         it "should call the renderer with the clients" do
           @client.stub(:emit)
           @renderer.should_receive(:render).with([@client1, @client2]) { "" }
-          @who.on_command(@client, @cmd)
+          @who.handle
         end
         
         it "should emit the results of the render methods" do
-          @renderer.stub(:render) { "ABC" }
           @client.should_receive(:emit).with("ABC")
-          @who.on_command(@client, @cmd)
+          @who.handle
         end
       end
     end

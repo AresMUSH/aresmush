@@ -98,5 +98,26 @@ module AresMUSH
       end            
     end
     
+    describe :root_only? do
+      it "should return true if there's no switch and no args" do
+        cmd = Command.new(@client, "test")
+        cmd.root_only?.should be_true
+      end
+      
+      it "should return false if there's a switch" do
+        cmd = Command.new(@client, "test/foo")
+        cmd.root_only?.should be_false
+      end
+
+      it "should return false if there's an arg" do
+        cmd = Command.new(@client, "test foo")
+        cmd.root_only?.should be_false
+      end
+      
+      it "should return false if there's both a switch and arg" do
+        cmd = Command.new(@client, "test/foo bar")
+        cmd.root_only?.should be_false
+      end        
+    end
   end
 end

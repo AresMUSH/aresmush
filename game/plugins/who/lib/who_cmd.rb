@@ -12,11 +12,16 @@ module AresMUSH
         @renderer = WhoRenderer.new(header_template, char_template, footer_template)
       end
 
+      def validate
+        return t('who.invalid_who_syntax') if !@cmd.root_only?
+        nil
+      end
+      
       def want_command?(cmd)
         cmd.root_is?("who") || cmd.root_is?("where")
       end
       
-      def on_command(client, cmd)
+      def handle
         logged_in = @client_monitor.logged_in_clients
         client.emit @renderer.render(logged_in)
       end      

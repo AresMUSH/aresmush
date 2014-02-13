@@ -34,6 +34,10 @@ module AresMUSH
       @root.upcase == root.upcase
     end
     
+    def root_only?
+      @switch.nil? && @args.nil?
+    end
+    
     def logged_in?
       @client.char != nil
     end

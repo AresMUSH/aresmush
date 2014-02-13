@@ -7,7 +7,12 @@ module AresMUSH
          cmd.logged_in? && cmd.root_is?("hide")
       end
       
-      def on_command(client, cmd)
+      def validate
+        return t('who.invalid_hide_syntax') if !@cmd.root_only?
+        nil
+      end
+      
+      def handle
         if (client.char.hidden)
           client.emit_success(t('who.hide_disabled'))
           client.char.hidden = false

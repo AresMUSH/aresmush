@@ -5,12 +5,14 @@ module AresMUSH
     describe HideCmd do
       include MockClient
 
+      before do
+        @hide = HideCmd.new
+        @cmd = double
+        @hide.cmd = @cmd
+        SpecHelpers.stub_translate_for_testing        
+      end
+      
       describe :want_command do
-        before do
-          @hide = HideCmd.new
-          @cmd = double
-        end
-        
         it "should want the hide command from a logged in player" do
           @cmd.stub(:root_is?).with("hide") { true }
           @cmd.stub(:logged_in?) { true }
@@ -29,11 +31,23 @@ module AresMUSH
           @hide.want_command?(@cmd).should be_false
         end
       end
+      
+      describe :validate do
+        it "should be valid if there are no args" do
+          @cmd.stub(:root_only?) { true }
+          @hide.validate.should be_nil
+        end
+        
+        it "should be invalid if there are args" do
+          @cmd.stub(:root_only?) { false }
+          @hide.validate.should eq 'who.invalid_hide_syntax'
+        end
+      end
 
-      describe :on_command do        
+      describe :handle do        
         before do
           @mock_client = build_mock_client
-          @hide = HideCmd.new
+          @hide.client = @mock_client[:client]
           SpecHelpers.stub_translate_for_testing
         end
 
@@ -41,14 +55,14 @@ module AresMUSH
           @mock_client[:char].should_receive(:hidden) { false }
           @mock_client[:char].should_receive(:hidden=).with(true)
           @mock_client[:client].should_receive(:emit_success).with('who.hide_enabled')
-          @hide.on_command(@mock_client[:client], nil)
+          @hide.handle
         end
         
         it "should toggle the hidden flag off" do
           @mock_client[:char].should_receive(:hidden) { true }
           @mock_client[:char].should_receive(:hidden=).with(false)
           @mock_client[:client].should_receive(:emit_success).with('who.hide_disabled')
-          @hide.on_command(@mock_client[:client], nil)
+          @hide.handle
         end
       end
     end
