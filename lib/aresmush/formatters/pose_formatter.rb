@@ -2,6 +2,7 @@ module AresMUSH
   module PoseFormatter
 
     def self.format(name, msg)
+      msg = msg.chomp
       if msg.start_with?("\"")
         t('object.say', :name => name, :msg => msg.rest("\""))
       elsif msg.start_with?(":")

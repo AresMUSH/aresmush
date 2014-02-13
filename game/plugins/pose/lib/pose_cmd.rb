@@ -1,6 +1,6 @@
 module AresMUSH
   module Pose
-    class Emit
+    class Pose
       include AresMUSH::Plugin
 
       def after_initialize
@@ -8,11 +8,12 @@ module AresMUSH
       end
       
       def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("emit")
+        cmd.logged_in? && cmd.root_is?("pose")
       end
       
       def on_command(client, cmd)
-        @client_monitor.emit_all Formatter.parse_pose(client.name, "\\#{cmd.args}")
+        room = client.room
+        room.emit PoseFormatter.format(client.name, ":#{cmd.args}")
       end
     end
   end

@@ -12,8 +12,8 @@ module AresMUSH
       end
       
       def on_command(client, cmd)
-        pose = Formatter.parse_pose(client.name, "\"#{cmd.args}")
-        @client_monitor.emit_all pose
+        room = client.room
+        room.emit PoseFormatter.format(client.name, "\"#{cmd.args}")
       end
     end
   end

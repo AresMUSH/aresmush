@@ -10,6 +10,7 @@ module AresMUSH
       
       it "should be able to crack a root-only command" do
         cracked = CommandCracker.crack("test")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq nil
         cracked[:args].should eq nil
@@ -17,6 +18,7 @@ module AresMUSH
 
       it "should be able to crack a root followed by a number" do
         cracked = CommandCracker.crack("test1")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq nil
         cracked[:args].should eq "1"
@@ -24,6 +26,7 @@ module AresMUSH
 
       it "should be able to crack a root followed by a space and arg" do
         cracked = CommandCracker.crack("test abc")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq nil
         cracked[:args].should eq "abc"        
@@ -31,6 +34,7 @@ module AresMUSH
 
       it "should be able to crack a root followed by a space and number" do
         cracked = CommandCracker.crack("test 2")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq nil
         cracked[:args].should eq "2"
@@ -38,6 +42,7 @@ module AresMUSH
 
       it "should be able to crack a root followed by a slash and switch" do
         cracked = CommandCracker.crack("test/sw")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq "sw"
         cracked[:args].should eq nil        
@@ -45,6 +50,7 @@ module AresMUSH
 
       it "should be able to crack a root followed by a slash and switch and arg" do
         cracked = CommandCracker.crack("test/sw arg")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq "sw"
         cracked[:args].should eq "arg"        
@@ -52,6 +58,7 @@ module AresMUSH
       
       it "should be able to crack a root followed by a space and switch and number" do
         cracked = CommandCracker.crack("test/sw 2")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq "sw"
         cracked[:args].should eq "2"
@@ -59,6 +66,7 @@ module AresMUSH
 
       it "should be able to strip off crazy spaces" do
         cracked = CommandCracker.crack("   test/sw    2   ")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq "sw"
         cracked[:args].should eq "2"
@@ -66,6 +74,7 @@ module AresMUSH
 
       it "should not recognize a switch that's spaced out" do
         cracked = CommandCracker.crack("   test  /  sw    2   ")
+        cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq nil
         cracked[:args].should eq "/  sw    2"
@@ -77,6 +86,7 @@ module AresMUSH
         cracked[:prefix].should eq "+"
         cracked[:root].should eq "test"
         cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
       end  
       
       it "should handle a / prefix" do
@@ -84,6 +94,7 @@ module AresMUSH
         cracked[:prefix].should eq "/"
         cracked[:root].should eq "test"
         cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
       end
       
       it "should handle an @ prefix" do
@@ -91,6 +102,7 @@ module AresMUSH
         cracked[:prefix].should eq "@"
         cracked[:root].should eq "test"
         cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
       end
       
       it "should handle an = prefix" do
@@ -98,6 +110,7 @@ module AresMUSH
         cracked[:prefix].should eq "="
         cracked[:root].should eq "test"
         cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
       end
 
       it "should handle no prefix" do
@@ -105,6 +118,15 @@ module AresMUSH
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
         cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
+      end
+      
+      it "should be able to crack an empty string" do
+        cracked = CommandCracker.crack("")
+        cracked[:prefix].should eq nil
+        cracked[:root].should eq nil
+        cracked[:switch].should eq nil
+        cracked[:args].should eq nil
       end
             
     end

@@ -8,6 +8,11 @@ module AresMUSH
     
     def self.crack(input)
       cracked = /^(?<prefix>[\/\+\=\@]?)(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
+
+      if (cracked.nil?)      
+        return { :prefix => nil, :root => nil, :switch => nil, :args => nil }
+      end
+
       prefix = cracked[:prefix].empty? ? nil : cracked[:prefix].strip
       root = cracked[:root].nil? ? nil : cracked[:root].strip
       switch = cracked[:switch].nil? ? nil : cracked[:switch].rest("/")

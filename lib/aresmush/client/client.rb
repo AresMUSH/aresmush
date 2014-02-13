@@ -52,7 +52,11 @@ module AresMUSH
     end
     
     def handle_input(input)
-      @dispatcher.on_command(self, Command.new(self, input))
+      begin
+        @dispatcher.on_command(self, Command.new(self, input))
+      rescue Exception => e
+        Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")
+      end
     end
 
     # Responds to a disconnect from any sort of source - socket error, client-initated, etc.

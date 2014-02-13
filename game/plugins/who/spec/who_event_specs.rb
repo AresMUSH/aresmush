@@ -15,6 +15,7 @@ module AresMUSH
         context "online record set" do
           before do 
             Game.stub(:online_record) { 2 }
+            Game.stub(:online_record=) {}
             @client_monitor.stub(:logged_in_clients) { [double, double, double] }            
             @client_monitor.stub(:emit_all_ooc) {} 
             AresMUSH::Locale.stub(:translate).with("who.new_online_record", { :count => 3 }) { "record 3" }            
