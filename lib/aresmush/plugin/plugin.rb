@@ -33,6 +33,7 @@ module AresMUSH
     def on_command(client, cmd)
       @client = client
       @cmd = cmd
+      log_command
       crack!
       error = validate
       if (error)
@@ -76,7 +77,7 @@ module AresMUSH
  
     # Override this if you don't want logging at all, or don't want to log the full command - 
     # for instance to avoid logging a connect command for privacy of passwords.
-    def log_command(client, cmd)
+    def log_command
       Global.logger.debug("#{self.class.name}: #{cmd}")
     end
   end

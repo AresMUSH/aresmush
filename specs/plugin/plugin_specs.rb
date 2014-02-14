@@ -27,8 +27,9 @@ module AresMUSH
         cmd = double
         client = double
         cmd.should_receive(:to_s) { "Cmd" }
+        @plugin.cmd = cmd
         Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: Cmd")
-        @plugin.log_command(client, cmd)
+        @plugin.log_command
       end
     end
     
@@ -47,6 +48,12 @@ module AresMUSH
       
       it "should crack the args" do
         @plugin.should_receive(:crack!)
+        @plugin.on_command(@client, @cmd)
+      end
+      
+      it "should log the command" do
+        @plugin.stub(:validate) { nil }
+        @plugin.should_receive(:log_command)
         @plugin.on_command(@client, @cmd)
       end
         

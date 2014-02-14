@@ -28,17 +28,22 @@ module AresMUSH
         end        
       end
 
-      describe :on_command do
+      describe :handle do
+        before do
+          @quit.cmd = @cmd
+          @quit.client = @client
+        end
+        
         it "should disconnect the client" do
           @client.should_receive(:disconnect)
           @client.stub(:emit_ooc)
-          @quit.on_command(@client, @cmd)
+          @quit.handle
         end
         
         it "should send the bye text" do
           @client.stub(:disconnect)
           @client.should_receive(:emit_ooc).with("login.goodbye")
-          @quit.on_command(@client, @cmd)
+          @quit.handle
         end
       end
     end

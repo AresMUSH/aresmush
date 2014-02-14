@@ -37,7 +37,7 @@ module AresMUSH
         Global.dispatcher.on_event(:char_connected, :client => client)
       end
       
-      def log_command(client, cmd)
+      def log_command
         # Don't log full command for password privacy
         Global.logger.debug("#{self.class.name} #{client}")
       end

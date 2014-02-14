@@ -7,7 +7,7 @@ module AresMUSH
         cmd.root_is?("quit")
       end
             
-      def on_command(client, cmd)
+      def handle
         client.emit_ooc(t("login.goodbye"))
         client.disconnect
       end

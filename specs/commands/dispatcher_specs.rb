@@ -51,15 +51,7 @@ module AresMUSH
         @plugin1.stub(:want_command?) { true }
         @plugin1.should_receive(:on_command).with(@client, @command)
         @dispatcher.on_command(@client, @command)
-      end
-      
-      it "will log the command for an plugin that wants the command" do
-        @plugin_manager.stub(:plugins) { [ @plugin1 ] }
-        @plugin1.stub(:want_command?) { true }
-        @plugin1.stub(:on_command)
-        @plugin1.should_receive(:log_command).with(@client, @command)
-        @dispatcher.on_command(@client, @command)
-      end
+      end      
             
       it "stops after finding one plugin to handle the command" do
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }

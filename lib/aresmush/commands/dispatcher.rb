@@ -10,7 +10,6 @@ module AresMUSH
       with_error_handling(client, cmd) do
         @plugin_manager.plugins.each do |p|
           if (p.want_command?(cmd))
-            p.log_command(client, cmd)
             p.on_command(client, cmd)
             handled = true
             break
