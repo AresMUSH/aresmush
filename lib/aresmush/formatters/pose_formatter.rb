@@ -12,7 +12,7 @@ module AresMUSH
       elsif msg.start_with?("\\")
         msg.rest("\\")
       else
-        msg
+        t('object.say', :name => name, :msg => msg.rest("\""))
       end
     end
   end

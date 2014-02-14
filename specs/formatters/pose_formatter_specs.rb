@@ -26,9 +26,10 @@ module AresMUSH
       it "should parse an emit for a string starting with a backslash" do
         PoseFormatter.format("Bob", "\\Whee").should eq "Whee"
       end
-
-      it "should parse an emit for an unadorned string" do
-        PoseFormatter.format("Bob", "Whee").should eq "Whee"
+      
+      it "should default to a say" do
+        Locale.stub(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
+        PoseFormatter.format("Bob", "Hello.").should eq "hi"
       end
 
     end

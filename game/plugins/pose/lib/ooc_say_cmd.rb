@@ -13,7 +13,8 @@ module AresMUSH
       
       def on_command(client, cmd)
         room = client.room
-        room.emit_ooc PoseFormatter.format(client.name, "#{cmd.args}")
+        pose = PoseFormatter.format(client.name, "#{cmd.args}")
+        room.emit "%xc<OOC>%xn #{pose}"
       end
     end
   end
