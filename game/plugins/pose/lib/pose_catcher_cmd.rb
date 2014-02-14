@@ -15,10 +15,14 @@ module AresMUSH
          cmd.raw.start_with?(";"))
       end
       
-      def on_command(client, cmd)
+      def handle
         room = client.room
         room.emit PoseFormatter.format(client.name, cmd.raw)
       end
+
+      def log_command
+        # Don't log poses
+      end      
     end
   end
 end

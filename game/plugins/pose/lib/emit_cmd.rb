@@ -11,10 +11,14 @@ module AresMUSH
         cmd.logged_in? && cmd.root_is?("emit")
       end
       
-      def on_command(client, cmd)
+      def handle
         room = client.location
         room.emit PoseFormatter.format(client.name, "\\#{cmd.args}")
       end
+      
+      def log_command
+        # Don't log poses
+      end      
     end
   end
 end
