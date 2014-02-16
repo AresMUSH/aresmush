@@ -31,11 +31,6 @@ module AresMUSH
       @handler = handler_class.new
       @handler.client = @client
       @handler.cmd = @cmd
-    end
-    
-    def switch_command(cmd_text)
-      @cmd = Command.new(cmd_text)
-      @handler.cmd = @cmd
-    end
+    end    
   end
 end

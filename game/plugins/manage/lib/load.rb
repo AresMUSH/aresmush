@@ -1,12 +1,13 @@
 module AresMUSH
   module Manage
-    class Load
+    class LoadCmd
       include AresMUSH::Plugin
-
+      
       def after_initialize
         @plugin_manager = Global.plugin_manager
+        @config_reader = Global.config_reader
       end
-
+      
       def want_command?(client, cmd)
         cmd.root_is?("load")
       end
@@ -21,14 +22,14 @@ module AresMUSH
       
       def handle
         name = cmd.args
-        if (load_name == 'config')
+        if (name == 'config')
           load_config
         else
           load_plugin(name)
         end
-      end
+      end      
       
-      def load_plugin(plugin_name)        
+      def load_plugin(plugin_name)
         begin
           AresMUSH.send(:remove_const, plugin_name.titlecase)
           @plugin_manager.load_plugin(plugin_name)
