@@ -1,6 +1,6 @@
 module AresMUSH
   module Pose
-    class Say
+    class SayCmd
       include AresMUSH::Plugin
 
       def after_initialize

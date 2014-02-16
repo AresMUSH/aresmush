@@ -1,26 +1,27 @@
-require_relative "../../plugin_test_loader"
-
 module AresMUSH
   module Pose
-    describe EmitCmd do
+    shared_examples "a pose command" do
       include CommandTestHelper
-      
+    
       before do
-        init_handler(EmitCmd, "emit")
-        SpecHelpers.stub_translate_for_testing        
+        init_handler(cmd_class, cmd_name)
+        Locale.stub(:translate).with("object.pose", :name => "Bob", :msg => "test") { "Bob test" }
+        Locale.stub(:translate).with("object.say", :name => "Bob", :msg => "test") { "Bob says test" }
+        Locale.stub(:translate).with("dispatcher.must_be_logged_in") { "dispatcher.must_be_logged_in" }
+        Locale.stub(:translate).with("pose.invalid_pose_syntax") { "pose.invalid_pose_syntax" }
       end
-      
+    
       describe :want_command? do
         it "should not want another command" do
-          cmd.stub(:root_is?).with("emit") { false }
+          cmd.stub(:root_is?).with(cmd_name) { false }
           handler.want_command?(client, cmd).should eq false
         end
 
-        it "should want the emit command" do
+        it "should want the pose command" do
           handler.want_command?(client, cmd).should eq true
         end
       end
-      
+    
       describe :validate do
         it "should reject the command if a switch is specified" do
           cmd.stub(:switch) { "sw" }
@@ -40,18 +41,17 @@ module AresMUSH
           handler.validate.should eq nil
         end
       end
-        
+      
       describe :handle do
         it "should emit to the room" do
           room = double
           client.stub(:room) { room }
-          client.stub(:name) { "name" }
-          cmd.stub(:args) { "test emit" }
-          room.should_receive(:emit).with("test emit")
+          client.stub(:name) { "Bob" }
+          cmd.stub(:args) { "test" }
+          room.should_receive(:emit).with(expected_emit)
           handler.handle
         end
       end
-
     end
   end
 end

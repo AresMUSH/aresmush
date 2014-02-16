@@ -16,7 +16,6 @@ module AresMUSH
       
       def validate
         return t('dispatcher.must_be_logged_in') if !client.logged_in?
-        return t('pose.invalid_pose_syntax') if !cmd.switch.nil?
         return nil
       end
       
