@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def validate
-        return t("login.already_logged_in") if cmd.logged_in?
+        return t("login.already_logged_in") if client.logged_in?
         return t('login.invalid_connect_syntax') if (args.name.nil? || args.password.nil?)
         return nil
       end

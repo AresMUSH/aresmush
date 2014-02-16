@@ -8,11 +8,16 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        client.logged_in? && 
-        (cmd.raw.start_with?("\"") ||
-         cmd.raw.start_with?("\\") ||
-         cmd.raw.start_with?(":") ||
-         cmd.raw.start_with?(";"))
+        cmd.raw.start_with?("\"") ||
+        cmd.raw.start_with?("\\") ||
+        cmd.raw.start_with?(":") ||
+        cmd.raw.start_with?(";")
+      end
+      
+      def validate
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
+        return t('pose.invalid_pose_syntax') if !cmd.switch.nil?
+        return nil
       end
       
       def handle

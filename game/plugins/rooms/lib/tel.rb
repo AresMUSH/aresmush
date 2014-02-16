@@ -4,7 +4,13 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(client, cmd)
-        client.logged_in? && cmd.root_is?("tel")
+        cmd.root_is?("tel")
+      end
+      
+      def validate
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
+        # TODO - validate args
+        return nil
       end
       
       def on_command(client, cmd)

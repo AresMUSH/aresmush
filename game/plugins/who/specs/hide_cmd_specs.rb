@@ -10,38 +10,39 @@ module AresMUSH
         @cmd = double
         @client = double
         @hide.cmd = @cmd
+        @hide.client = @client
         SpecHelpers.stub_translate_for_testing        
       end
       
       describe :want_command do
-        it "should want the hide command from a logged in player" do
+        it "should want the hide command" do
           @cmd.stub(:root_is?).with("hide") { true }
-          @client.stub(:logged_in?) { true }
           @hide.want_command?(@client, @cmd).should be_true
-        end
-
-        it "should not want the hide command from a player who isn't logged in" do
-          @cmd.stub(:root_is?).with("hide") { true }
-          @client.stub(:logged_in?) { false }
-          @hide.want_command?(@client, @cmd).should be_false
         end
 
         it "should not want another command" do
           @cmd.stub(:root_is?).with("hide") { false }
-          @client.stub(:logged_in?) { true }
           @hide.want_command?(@client, @cmd).should be_false
         end
       end
       
       describe :validate do
-        it "should be valid if there are no args" do
-          @cmd.stub(:root_only?) { true }
-          @hide.validate.should be_nil
-        end
-        
-        it "should be invalid if there are args" do
+        it "should reject the command if there are args" do
+          @client.stub(:logged_in?) { true }
           @cmd.stub(:root_only?) { false }
           @hide.validate.should eq 'who.invalid_hide_syntax'
+        end
+        
+        it "should reject the command if not logged in" do
+          @cmd.stub(:root_only?) { true }
+          @client.stub(:logged_in?) { false }            
+          @hide.validate.should eq 'dispatcher.must_be_logged_in'
+        end
+        
+        it "should accept the command otherwise" do
+          @client.stub(:logged_in?) { true }
+          @cmd.stub(:root_only?) { true }
+          @hide.validate.should be_nil 
         end
       end
 

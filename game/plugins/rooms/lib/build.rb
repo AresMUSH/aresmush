@@ -4,10 +4,16 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(client, cmd)
-        client.logged_in? && cmd.root_is?("build")
+        cmd.root_is?("build")
       end
       
-      def on_command(client, cmd)
+      def validate
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
+        # TODO - validate args
+        return nil
+      end
+      
+      def handle
         name = cmd.args
         room = Room.create("name" => name)
         client.emit_success("You build a room named #{name}.  ID: #{room["_id"]}")

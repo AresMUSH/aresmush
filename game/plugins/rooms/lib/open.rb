@@ -4,10 +4,16 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(client, cmd)
-        client.logged_in? && cmd.root_is?("open")
+        cmd.root_is?("open")
       end
       
-      def on_command(client, cmd)
+      def validate
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
+        # TODO - validate args
+        return nil
+      end
+      
+      def handle
         regex_with_dest = /(?<name>.+)=(?<dest>.+)/
         if (cmd.can_crack_args?(regex_with_dest))
           cmd.crack!(regex_with_dest)

@@ -8,11 +8,12 @@ module AresMUSH
       end
 
       def want_command?(client, cmd)
-        client.logged_in? && cmd.root_is?("load")
+        cmd.root_is?("load")
       end
 
       def validate
         # TODO - validate permissions
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
         return t('manage.invalid_load_syntax') if !cmd.switch.nil?
         return t('manage.invalid_load_syntax') if cmd.args.nil?
         return nil

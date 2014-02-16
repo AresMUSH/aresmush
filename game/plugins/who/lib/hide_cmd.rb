@@ -4,11 +4,12 @@ module AresMUSH
       include AresMUSH::Plugin
 
       def want_command?(client, cmd)
-         client.logged_in? && cmd.root_is?("hide")
+         cmd.root_is?("hide")
       end
-      
+
       def validate
-        return t('who.invalid_hide_syntax') if !@cmd.root_only?
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
+        return t('who.invalid_hide_syntax') if !cmd.root_only?
         nil
       end
       

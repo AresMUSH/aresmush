@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def validate
-        return t('dispatcher.must_be_logged_in') if !@cmd.logged_in?
+        return t('dispatcher.must_be_logged_in') if !client.logged_in?
         return nil
       end
       
