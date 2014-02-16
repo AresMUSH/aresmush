@@ -14,21 +14,21 @@ module AresMUSH
       
       describe :want_command? do
         it "should not want the command if not logged in" do
-          @cmd.stub(:logged_in?) { false }
+          @client.stub(:logged_in?) { false }
           @cmd.stub(:root_is?).with("emit") { true }
-          @emit.want_command?(@cmd).should eq false
+          @emit.want_command?(@client, @cmd).should eq false
         end
 
         it "should not want another command" do
-          @cmd.stub(:logged_in?) { true }
+          @client.stub(:logged_in?) { true }
           @cmd.stub(:root_is?).with("emit") { false }
-          @emit.want_command?(@cmd).should eq false
+          @emit.want_command?(@client, @cmd).should eq false
         end
 
         it "should want the emit command when logged in" do
-          @cmd.stub(:logged_in?) { true }
+          @client.stub(:logged_in?) { true }
           @cmd.stub(:root_is?).with("emit") { true }
-          @emit.want_command?(@cmd).should eq true
+          @emit.want_command?(@client, @cmd).should eq true
         end
       end
       

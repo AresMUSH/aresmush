@@ -3,8 +3,8 @@ module AresMUSH
     class HideCmd
       include AresMUSH::Plugin
 
-      def want_command?(cmd)
-         cmd.logged_in? && cmd.root_is?("hide")
+      def want_command?(client, cmd)
+         client.logged_in? && cmd.root_is?("hide")
       end
       
       def validate

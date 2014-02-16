@@ -5,10 +5,9 @@ module AresMUSH
     #   root[/switch][ args]
     #   root[args, when args starts with a number]
     # Anything not found will be nil
-    attr_accessor :raw, :prefix, :root, :switch, :args, :client
+    attr_accessor :raw, :prefix, :root, :switch, :args
     
-    def initialize(client, input)
-      @client = client
+    def initialize(input)
       @raw = input
       crack!         
     end    
@@ -36,10 +35,6 @@ module AresMUSH
     
     def root_only?
       @switch.nil? && @args.nil?
-    end
-    
-    def logged_in?
-      @client.char != nil
     end
   
   end

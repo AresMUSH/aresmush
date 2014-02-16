@@ -3,7 +3,7 @@ module AresMUSH
     class Quit
       include AresMUSH::Plugin
 
-      def want_command?(cmd)
+      def want_command?(client, cmd)
         cmd.root_is?("quit")
       end
             

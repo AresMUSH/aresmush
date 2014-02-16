@@ -16,8 +16,6 @@ module AresMUSH
       @client = double(Client).as_null_object
       @client.stub(:id) { "1" }
       @command = double(Command)
-      @command.stub(:client) { @client }
-      @command.stub(:logged_in?) { true }
       @dispatcher = Dispatcher.new(@plugin_manager)
       @plugin1 = double
       @plugin2 = double
@@ -34,8 +32,8 @@ module AresMUSH
       
       it "asks each plugin if it wants a command" do
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-        @plugin1.should_receive(:want_command?).with(@command) { false }
-        @plugin2.should_receive(:want_command?).with(@command) { false }
+        @plugin1.should_receive(:want_command?).with(@client, @command) { false }
+        @plugin2.should_receive(:want_command?).with(@client, @command) { false }
         @dispatcher.on_command(@client, @command)
       end
       

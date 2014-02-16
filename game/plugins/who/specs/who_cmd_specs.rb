@@ -35,25 +35,26 @@ module AresMUSH
       
       describe :want_command do
         before do
-          @cmd = double          
+          @cmd = double
+          @client = double          
           @who = WhoCmd.new
         end
         
         it "should want the who command" do
           @cmd.stub(:root_is?).with("who") { true }
-          @who.want_command?(@cmd).should be_true
+          @who.want_command?(@client, @cmd).should be_true
         end
 
         it "should want the where command" do
           @cmd.stub(:root_is?).with("who") { false }
           @cmd.stub(:root_is?).with("where") { true }
-          @who.want_command?(@cmd).should be_true
+          @who.want_command?(@client, @cmd).should be_true
         end 
         
         it "should not want another command" do
           @cmd.stub(:root_is?).with("who") { false }
           @cmd.stub(:root_is?).with("where") { false }
-          @who.want_command?(@cmd).should be_false
+          @who.want_command?(@client, @cmd).should be_false
         end        
       end
       

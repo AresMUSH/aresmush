@@ -7,8 +7,8 @@ module AresMUSH
         @client_monitor = Global.client_monitor
       end
       
-      def want_command?(cmd)
-        cmd.logged_in? && 
+      def want_command?(client, cmd)
+        client.logged_in? && 
         (cmd.raw.start_with?("\"") ||
          cmd.raw.start_with?("\\") ||
          cmd.raw.start_with?(":") ||

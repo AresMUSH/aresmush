@@ -14,17 +14,17 @@ module AresMUSH
       describe :want_command do
         it "should want the quit command" do
           @cmd.stub(:root_is?).with("quit") { true }
-          @quit.want_command?(@cmd).should be_true
+          @quit.want_command?(@client, @cmd).should be_true
         end
 
         it "should want the quit command" do
           @cmd.stub(:root_is?).with("quit") { true }
-          @quit.want_command?(@cmd).should be_true
+          @quit.want_command?(@client, @cmd).should be_true
         end
 
         it "should not want another command" do
           @cmd.stub(:root_is?).with("quit") { false }
-          @quit.want_command?(@cmd).should be_false
+          @quit.want_command?(@client, @cmd).should be_false
         end        
       end
 

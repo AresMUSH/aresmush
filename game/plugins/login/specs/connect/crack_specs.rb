@@ -10,35 +10,35 @@ module AresMUSH
       
       describe :crack do
         it "should crack the arguments" do
-          cmd = Command.new(nil, "connect Bob password")
+          cmd = Command.new("connect Bob password")
           @connect.cmd = cmd
           @connect.crack!
-          @connect.args.name.should eq "Bob"
-          @connect.args.password.should eq "password"
+          @connect.cmd.args.name.should eq "Bob"
+          @connect.cmd.args.password.should eq "password"
         end
         
         it "should handle no args" do
-          cmd = Command.new(nil, "connect")
+          cmd = Command.new("connect")
           @connect.cmd = cmd
           @connect.crack!
-          @connect.args.name.should be_nil
-          @connect.args.password.should be_nil
+          @connect.cmd.args.name.should be_nil
+          @connect.cmd.args.password.should be_nil
         end
         
         it "should handle a missing password" do
-          cmd = Command.new(nil, "connect Bob")
+          cmd = Command.new("connect Bob")
           @connect.cmd = cmd
           @connect.crack!
-          @connect.args.name.should be_nil
-          @connect.args.password.should be_nil
+          @connect.cmd.args.name.should be_nil
+          @connect.cmd.args.password.should be_nil
         end
 
         it "should accept a multi-word password" do
-          cmd = Command.new(nil, "connect Bob bob's password")
+          cmd = Command.new("connect Bob bob's password")
           @connect.cmd = cmd
           @connect.crack!
-          @connect.args.name.should eq "Bob"
-          @connect.args.password.should eq "bob's password"
+          @connect.cmd.args.name.should eq "Bob"
+          @connect.cmd.args.password.should eq "bob's password"
         end        
       end      
     end

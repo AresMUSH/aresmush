@@ -7,8 +7,8 @@ module AresMUSH
         @client_monitor = Global.client_monitor
       end
       
-      def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("pose")
+      def want_command?(client, cmd)
+        client.logged_in? && cmd.root_is?("pose")
       end
       
       def handle

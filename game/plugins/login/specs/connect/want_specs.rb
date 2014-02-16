@@ -6,19 +6,19 @@ module AresMUSH
     describe Connect do
       before do
         @connect = Connect.new
+        @cmd = double
+        @client = double
       end
       
       describe :want_command? do
         it "wants the connect command" do
-          cmd = double
-          cmd.stub(:root_is?).with("connect") { true }
-          @connect.want_command?(cmd).should be_true
+          @cmd.stub(:root_is?).with("connect") { true }
+          @connect.want_command?(@client, @cmd).should be_true
         end
 
         it "doesn't want another command" do
-          cmd = double
-          cmd.stub(:root_is?).with("connect") { false }
-          @connect.want_command?(cmd).should be_false
+          @cmd.stub(:root_is?).with("connect") { false }
+          @connect.want_command?(@client, @cmd).should be_false
         end
       end
      end

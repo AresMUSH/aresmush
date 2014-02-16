@@ -3,7 +3,7 @@ module AresMUSH
     class Echo
       include AresMUSH::Plugin
 
-      def want_command?(cmd)
+      def want_command?(client, cmd)
         cmd.root_is?("echo") || cmd.root_is?("think")
       end
       

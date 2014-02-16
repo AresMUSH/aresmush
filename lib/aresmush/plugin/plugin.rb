@@ -20,10 +20,10 @@ module AresMUSH
     #
     # Or use some of the handy helper methods:
     #    cmd.root_is?("finger")
-    #    cmd.logged_in?
+    #    client.logged_in?
     #
     # You can even do more complex and/or combinations.
-    def want_command?(cmd)
+    def want_command?(client, cmd)
       false
     end    
 
@@ -43,17 +43,8 @@ module AresMUSH
       handle
     end
     
-    # Handy shortcut for accessing the command arguments
-    def args
-      @cmd.args
-    end
-    
-    def switch
-      @cmd.switch
-    end
-    
     # Override this to perform any advanced argument processing.  For example, if your 
-    # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 easily by 
+    # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
     # doing:
     #    def crack!
     #       @cmd.crack!(/(?<arg1>[^\=]+)=(?<arg2>.+)/)
@@ -67,7 +58,7 @@ module AresMUSH
     # (remember to translate!) or nil if there are no errors.
     # For example, to restrict the command to only logged in players, you can do:
     #    def validate
-    #     return t(dispatcher.must_be_logged_in) if !@cmd.logged_in?
+    #     return t(your_plugin.invalid_syntax) if !@cmd.switch.nil?
     #     return nil
     #   end
     def validate

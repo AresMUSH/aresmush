@@ -3,8 +3,8 @@ module AresMUSH
     class Open
       include AresMUSH::Plugin
 
-      def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("open")
+      def want_command?(client, cmd)
+        client.logged_in? && cmd.root_is?("open")
       end
       
       def on_command(client, cmd)

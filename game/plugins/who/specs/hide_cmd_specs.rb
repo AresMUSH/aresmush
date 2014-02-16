@@ -8,6 +8,7 @@ module AresMUSH
       before do
         @hide = HideCmd.new
         @cmd = double
+        @client = double
         @hide.cmd = @cmd
         SpecHelpers.stub_translate_for_testing        
       end
@@ -15,20 +16,20 @@ module AresMUSH
       describe :want_command do
         it "should want the hide command from a logged in player" do
           @cmd.stub(:root_is?).with("hide") { true }
-          @cmd.stub(:logged_in?) { true }
-          @hide.want_command?(@cmd).should be_true
+          @client.stub(:logged_in?) { true }
+          @hide.want_command?(@client, @cmd).should be_true
         end
 
         it "should not want the hide command from a player who isn't logged in" do
           @cmd.stub(:root_is?).with("hide") { true }
-          @cmd.stub(:logged_in?) { false }
-          @hide.want_command?(@cmd).should be_false
+          @client.stub(:logged_in?) { false }
+          @hide.want_command?(@client, @cmd).should be_false
         end
 
         it "should not want another command" do
           @cmd.stub(:root_is?).with("hide") { false }
-          @cmd.stub(:logged_in?) { true }
-          @hide.want_command?(@cmd).should be_false
+          @client.stub(:logged_in?) { true }
+          @hide.want_command?(@client, @cmd).should be_false
         end
       end
       

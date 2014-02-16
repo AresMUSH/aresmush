@@ -3,8 +3,8 @@ module AresMUSH
     class Tel
       include AresMUSH::Plugin
 
-      def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("tel")
+      def want_command?(client, cmd)
+        client.logged_in? && cmd.root_is?("tel")
       end
       
       def on_command(client, cmd)

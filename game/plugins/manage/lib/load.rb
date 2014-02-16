@@ -7,8 +7,8 @@ module AresMUSH
         @plugin_manager = Global.plugin_manager
       end
 
-      def want_command?(cmd)
-        cmd.logged_in? && cmd.root_is?("load")
+      def want_command?(client, cmd)
+        client.logged_in? && cmd.root_is?("load")
       end
 
       def validate

@@ -9,31 +9,31 @@ module AresMUSH
       
       describe :crack! do
         it "should be able to crack correct args" do
-          @create.cmd = Command.new(nil, "create Bob foo")
+          @create.cmd = Command.new("create Bob foo")
           @create.crack!
-          @create.args.name.should eq "Bob"
-          @create.args.password.should eq "foo"
+          @create.cmd.args.name.should eq "Bob"
+          @create.cmd.args.password.should eq "foo"
         end
 
         it "should be able to crack if args are missing" do
-          @create.cmd = Command.new(nil, "create")
+          @create.cmd = Command.new("create")
           @create.crack!
-          @create.args.name.should be_nil
-          @create.args.password.should be_nil
+          @create.cmd.args.name.should be_nil
+          @create.cmd.args.password.should be_nil
         end
         
         it "should be able to crack a multi-word password" do
-          @create.cmd = Command.new(nil, "create Bob bob's passwd")
+          @create.cmd = Command.new("create Bob bob's passwd")
           @create.crack!
-          @create.args.name.should eq "Bob"
-          @create.args.password.should eq "bob's passwd"
+          @create.cmd.args.name.should eq "Bob"
+          @create.cmd.args.password.should eq "bob's passwd"
         end
         
         it "should be able to crack a missing password" do
-          @create.cmd = Command.new(nil, "create Bob")
+          @create.cmd = Command.new("create Bob")
           @create.crack!
-          @create.args.name.should be_nil
-          @create.args.password.should be_nil
+          @create.cmd.args.name.should be_nil
+          @create.cmd.args.password.should be_nil
         end
       end
     end
