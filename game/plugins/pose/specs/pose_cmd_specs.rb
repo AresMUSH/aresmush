@@ -12,30 +12,27 @@ module AresMUSH
       
       describe :want_command? do
         it "should not want another command" do
-          cmd.stub(:root_is?).with("pose") { false }
-          cmd.stub(:root_is?).with("say") { false }
-          cmd.stub(:root_is?).with("emit") { false }
-          cmd.stub(:root_is?).with("ooc") { false }
+          set_root({ :pose => false, :say => false, :emit => false, :ooc => false }) 
           handler.want_command?(client, cmd).should eq false
         end
 
         it "should want the pose command" do
-          set_root_to_pose
+          set_root({ :pose => true, :say => false, :emit => false, :ooc => false }) 
           handler.want_command?(client, cmd).should eq true
         end
 
         it "should want the say command" do
-          set_root_to_say
+          set_root({ :pose => false, :say => true, :emit => false, :ooc => false }) 
           handler.want_command?(client, cmd).should eq true
         end
       
         it "should want the emit command" do
-          set_root_to_emit
+          set_root({ :pose => false, :say => false, :emit => true, :ooc => false }) 
           handler.want_command?(client, cmd).should eq true
         end      
       
         it "should want the ooc say command" do
-          set_root_to_ooc_say
+          set_root({ :pose => false, :say => false, :emit => false, :ooc => true }) 
           handler.want_command?(client, cmd).should eq true
         end      
       end
@@ -77,61 +74,39 @@ module AresMUSH
         
         it "should format an emit message" do
           cmd.stub(:args) { "test" }
-          set_root_to_emit
+          set_root({ :pose => false, :say => false, :emit => true, :ooc => false }) 
           PoseFormatter.should_receive(:format).with("Bob", "\\test") { "formatted msg" }
           handler.message.should eq "formatted msg"
         end
 
         it "should format a say message" do
           cmd.stub(:args) { "test" }
-          set_root_to_say
+          set_root({ :pose => false, :say => true, :emit => false, :ooc => false }) 
           PoseFormatter.should_receive(:format).with("Bob", "\"test") { "formatted msg" }
           handler.message.should eq "formatted msg"
         end
 
         it "should format a pose message" do
           cmd.stub(:args) { "test" }
-          set_root_to_pose
+          set_root({ :pose => true, :say => false, :emit => false, :ooc => false }) 
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "formatted msg" }
           handler.message.should eq "formatted msg"
         end
 
         it "should format an ooc say message" do
           cmd.stub(:args) { "test" }
-          set_root_to_ooc_say
+          set_root({ :pose => false, :say => false, :emit => false, :ooc => true }) 
           PoseFormatter.should_receive(:format).with("Bob", "test") { "formatted msg" }
           handler.message.should eq "%xc<OOC>%xn formatted msg"
         end
       end
-      
   
-      def set_root_to_pose
-        cmd.stub(:root_is?).with("pose") { true }
-        cmd.stub(:root_is?).with("say") { false }
-        cmd.stub(:root_is?).with("emit") { false }
-        cmd.stub(:root_is?).with("ooc") { false }
-      end
-        
-      def set_root_to_say
-        cmd.stub(:root_is?).with("pose") { false }
-        cmd.stub(:root_is?).with("say") { true }
-        cmd.stub(:root_is?).with("emit") { false }
-        cmd.stub(:root_is?).with("ooc") { false }
-      end
-        
-      def set_root_to_emit
-        cmd.stub(:root_is?).with("pose") { false }
-        cmd.stub(:root_is?).with("say") { false }
-        cmd.stub(:root_is?).with("emit") { true }
-        cmd.stub(:root_is?).with("ooc") { false }
-      end
-        
-      def set_root_to_ooc_say
-        cmd.stub(:root_is?).with("pose") { false }
-        cmd.stub(:root_is?).with("say") { false }
-        cmd.stub(:root_is?).with("emit") { false }
-        cmd.stub(:root_is?).with("ooc") { true }
-      end
+      def set_root(args)
+        cmd.stub(:root_is?).with("pose") { args[:pose] }
+        cmd.stub(:root_is?).with("say") { args[:say] }
+        cmd.stub(:root_is?).with("emit") { args[:emit] }
+        cmd.stub(:root_is?).with("ooc") { args[:ooc] }
+      end        
     end
   end
 end
