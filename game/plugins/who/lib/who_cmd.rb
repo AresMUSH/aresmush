@@ -12,13 +12,13 @@ module AresMUSH
         @renderer = WhoRenderer.new(header_template, char_template, footer_template)
       end
 
-      def validate
-        return t('who.invalid_who_syntax') if !@cmd.root_only?
-        nil
-      end
-      
       def want_command?(client, cmd)
         cmd.root_is?("who") || cmd.root_is?("where")
+      end
+
+      def validate
+        return t('who.invalid_who_syntax') if !cmd.root_only?
+        nil
       end
       
       def handle

@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        room = client.location
+        room = client.room
         room.emit PoseFormatter.format(client.name, "\\#{cmd.args}")
       end
       
