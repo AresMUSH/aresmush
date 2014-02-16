@@ -33,7 +33,8 @@ module AresMUSH
     end    
     
     def self.connect_to_test_db
-      config = YAML::load(File.open("game/config/database.yml"))
+      filename = File.join(AresMUSH.game_path, "config/database.yml")
+      config = YAML::load(File.open(filename))
       host = config['testdb']['host']
       port = config['testdb']['port']
       username = config['testdb']['username']

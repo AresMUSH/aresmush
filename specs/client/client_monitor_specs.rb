@@ -71,13 +71,14 @@ module AresMUSH
         @client3.should_receive(:connected)
         @client_monitor.connection_established(@connection)
       end
-
+      
       it "should notify the dispatcher" do
         @factory.stub(:create_client) { @client3 }
         @dispatcher.should_receive(:on_event) do |type, args|
           type.should eq :connection_established
           args[:client].should eq @client3
         end
+        Global.logger.should_not_receive(:debug)
         @client_monitor.connection_established(@connection)
       end
     end

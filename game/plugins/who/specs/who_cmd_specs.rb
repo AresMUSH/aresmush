@@ -3,8 +3,10 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Who
     describe WhoCmd do
+      include CommandTestHelper
 
       before do        
+        init_handler(WhoCmd, "who")
         SpecHelpers.stub_translate_for_testing
       end
       
@@ -34,45 +36,31 @@ module AresMUSH
       end
       
       describe :want_command do
-        before do
-          @cmd = double
-          @client = double          
-          @who = WhoCmd.new
-        end
-        
         it "should want the who command" do
-          @cmd.stub(:root_is?).with("who") { true }
-          @who.want_command?(@client, @cmd).should be_true
+          handler.want_command?(client, cmd).should be_true
         end
 
         it "should want the where command" do
-          @cmd.stub(:root_is?).with("who") { false }
-          @cmd.stub(:root_is?).with("where") { true }
-          @who.want_command?(@client, @cmd).should be_true
+          cmd.stub(:root_is?).with("who") { false }
+          cmd.stub(:root_is?).with("where") { true }
+          handler.want_command?(client, cmd).should be_true
         end 
         
         it "should not want another command" do
-          @cmd.stub(:root_is?).with("who") { false }
-          @cmd.stub(:root_is?).with("where") { false }
-          @who.want_command?(@client, @cmd).should be_false
+          cmd.stub(:root_is?).with("who") { false }
+          cmd.stub(:root_is?).with("where") { false }
+          handler.want_command?(client, cmd).should be_false
         end        
       end
       
       describe :validate do
-        before do
-          @cmd = double          
-          @who = WhoCmd.new
-          @who.cmd = @cmd          
-        end
-        
         it "should be valid if there are no args" do
-          @cmd.stub(:root_only?) { true }
-          @who.validate.should be_nil
+          handler.validate.should be_nil
         end
         
         it "should be invalid if there are args" do
-          @cmd.stub(:root_only?) { false }
-          @who.validate.should eq 'who.invalid_who_syntax'
+          cmd.stub(:root_only?) { false }
+          handler.validate.should eq 'who.invalid_who_syntax'
         end
       end
       
@@ -86,27 +74,23 @@ module AresMUSH
           
           WhoRenderer.stub(:new) { @renderer }
           
-          @client_monitor = double
-          Global.stub(:client_monitor) { @client_monitor }
-          @client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
+          client_monitor = double
+          Global.stub(:client_monitor) { client_monitor }
+          client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
           
-          @client = double
-          @cmd = double
-          
-          @who = WhoCmd.new
-          @who.client = @client        
-          @who.cmd = @cmd          
+          # Need to do this again now that we've stubbed out the client monitor.
+          init_handler(WhoCmd, "who")                 
         end
 
         it "should call the renderer with the clients" do
-          @client.stub(:emit)
+          client.stub(:emit)
           @renderer.should_receive(:render).with([@client1, @client2]) { "" }
-          @who.handle
+          handler.handle
         end
         
         it "should emit the results of the render methods" do
-          @client.should_receive(:emit).with("ABC")
-          @who.handle
+          client.should_receive(:emit).with("ABC")
+          handler.handle
         end
       end
     end

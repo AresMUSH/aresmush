@@ -21,15 +21,20 @@ module AresMUSH
     
     attr_accessor :client, :char, :cmd, :handler
     
-    def init_handler(handler_class, cmd)
+    def init_handler(handler_class, cmd_text)
       mock_client = build_mock_client
       @client = mock_client[:client]
       @char = mock_client[:char]
       
-      @cmd = Command.new(cmd)
+      @cmd = Command.new(cmd_text)
       
       @handler = handler_class.new
       @handler.client = @client
+      @handler.cmd = @cmd
+    end
+    
+    def switch_command(cmd_text)
+      @cmd = Command.new(cmd_text)
       @handler.cmd = @cmd
     end
   end
