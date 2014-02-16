@@ -1,0 +1,4 @@
+en:
+    pose:
+        invalid_pose_syntax: "Pose commands do not accept any options."
+        

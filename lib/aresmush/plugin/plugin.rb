@@ -48,6 +48,10 @@ module AresMUSH
       @cmd.args
     end
     
+    def switch
+      @cmd.switch
+    end
+    
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 easily by 
     # doing:

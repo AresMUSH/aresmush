@@ -1,6 +1,6 @@
 module AresMUSH
   module Pose
-    class Emit
+    class EmitCmd
       include AresMUSH::Plugin
 
       def after_initialize
@@ -9,6 +9,10 @@ module AresMUSH
       
       def want_command?(cmd)
         cmd.logged_in? && cmd.root_is?("emit")
+      end
+      
+      def validate
+        return t('pose.invalid_pose_syntax') if !cmd.switch.nil?
       end
       
       def handle

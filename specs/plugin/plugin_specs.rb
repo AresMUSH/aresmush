@@ -69,8 +69,25 @@ module AresMUSH
         @client.should_not_receive(:emit_failure)
         @plugin.should_receive(:handle)
         @plugin.on_command(@client, @cmd)
+      end    
+    end
+    
+    describe :args do
+      it "should return the command args" do
+        cmd = double
+        cmd.should_receive(:args) { "arg" }
+        @plugin.cmd = cmd
+        @plugin.args.should eq "arg"
       end
-      
+    end
+    
+    describe :switch do
+      it "should return the command switch" do
+        cmd = double
+        cmd.should_receive(:switch) { "sw" }
+        @plugin.cmd = cmd
+        @plugin.switch.should eq "sw"
+      end
     end
     
   end

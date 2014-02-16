@@ -1,0 +1,9 @@
+en:
+    manage:
+        invalid_load_syntax: "Please specify a plugin name or 'config'."
+        plugin_loaded: "Plugin '%{name}' reloaded."
+        plugin_not_found: "Plugin '%{name}' not found.  Please check your spelling."
+        error_loading_plugin: "Problem loading plugin '%{name}': %{error}"
+        config_loaded: "Configuration reloaded."
+        error_loading_config: "Problem loading configuration: %{error}"
+        
