@@ -36,15 +36,7 @@ module AresMUSH
       log_command
       crack!
       
-      error = nil
-      
-      self.methods.grep(/^validate/).each do |m|
-        puts "Calling #{m} with #{client} -- #{cmd}"
-        error = send(m,client,cmd)
-        if (!error.nil?)
-          break
-        end
-      end
+      error = validate
              
       if (error)
         client.emit_failure(error)
@@ -58,12 +50,33 @@ module AresMUSH
     # doing:
     #    def crack!
     #       @cmd.crack!(/(?<arg1>[^\=]+)=(?<arg2>.+)/)
+    #       self.arg1 = @cmd.args.arg1
+    #       self.arg2 = @cmd.args.arg2
     #    end
-    # After that, you will be able to access your command arguments by name by doing:
-    #      @cmd.args.arg1  or  @cmd.args.arg2
+    # After that, you will be able to access your command arguments by name by using
+    # the attribute accessors self.arg1 and self.arg2
     def crack!
     end
 
+    # This defines basic validation (aka error-handling) for commands.  You can 
+    # override this method entirely if you want more advanced processing. By default,
+    # it will call any methods you define whose names start with 'validate_'.  These
+    # methods must return an error string if there's a problem, or nil if everything
+    # is OK. For example:  
+    #     def validate_can_see_target
+    #        return t('myplugin.cant_see_target') if cant_see_target(self.target)
+    #        return nil
+    #     end
+    def validate
+      self.methods.grep(/^validate_/).each do |m|
+        error = send m
+        if (!error.nil?)
+          return error
+        end
+      end
+      return nil
+    end
+    
     # Define validation methods for any error checks your command needs to perform
     # Return 'nil' if everything's ok, otherwise 
     # return an error string (remember to translate!)

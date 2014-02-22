@@ -12,28 +12,28 @@ module AresMUSH
       end
       
       describe :validate do
-        it "should reject command if not logged in" do
-          client.stub(:logged_in?) { false }
-          handler.validate.should eq 'dispatcher.must_be_logged_in'
+        it "should incorporate the login check" do
+          handler.methods.should include :validate_check_for_login
         end
         
+        it "should incorporate the no switch check" do
+          handler.methods.should include :validate_check_for_allowed_switches
+          handler.allowed_switches.should eq []
+        end
+      end
+      
+      describe :validate_load_target do
         it "should reject command if no args specified" do
-          client.stub(:logged_in?) { true }
           handler.stub(:load_target) { nil }
-          handler.validate.should eq 'manage.invalid_load_syntax'
-        end
-        
-        it "should reject command if a switch is specified" do
-          client.stub(:logged_in?) { true }
-          cmd.stub(:switch) { "sw" }
-          handler.validate.should eq 'manage.invalid_load_syntax'
+          handler.validate_load_target.should eq 'manage.invalid_load_syntax'
         end
         
         it "should accept command otherwise" do
           client.stub(:logged_in?) { true }
-          handler.validate.should eq nil
+          handler.validate_load_target.should eq nil
         end
       end
+      
     end
   end
 end

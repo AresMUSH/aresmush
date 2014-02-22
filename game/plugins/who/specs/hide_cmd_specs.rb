@@ -22,20 +22,12 @@ module AresMUSH
       end
       
       describe :validate do
-        it "should reject the command if there are args" do
-          cmd.stub(:root_only?) { false }
-          client.stub(:logged_in?) { true }
-          handler.validate.should eq 'who.invalid_hide_syntax'
+        it "should incorporate the login check" do
+          handler.methods.should include :validate_check_for_login
         end
         
-        it "should reject the command if not logged in" do
-          client.stub(:logged_in?) { false }            
-          handler.validate.should eq 'dispatcher.must_be_logged_in'
-        end
-        
-        it "should accept the command otherwise" do
-          client.stub(:logged_in?) { true }
-          handler.validate.should be_nil 
+        it "should incorporate the no args check" do
+          handler.methods.should include :validate_check_for_root_only
         end
       end
 

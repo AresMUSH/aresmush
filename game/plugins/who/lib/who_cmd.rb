@@ -3,6 +3,9 @@ module AresMUSH
     class WhoCmd
       include AresMUSH::Plugin
 
+      # Validators
+      no_switches_or_args
+      
       def after_initialize
         @client_monitor = Global.client_monitor
 
@@ -14,11 +17,6 @@ module AresMUSH
 
       def want_command?(client, cmd)
         cmd.root_is?("who") || cmd.root_is?("where")
-      end
-
-      def validate
-        return t('who.invalid_who_syntax') if !cmd.root_only?
-        nil
       end
       
       def handle

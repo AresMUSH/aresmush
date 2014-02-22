@@ -54,15 +54,14 @@ module AresMUSH
       end
       
       describe :validate do
-        it "should be valid if there are no args" do
-          handler.validate.should be_nil
+        it "should not incorporate the login check" do
+          handler.methods.should_not include :validate_check_for_login
         end
         
-        it "should be invalid if there are args" do
-          cmd.stub(:root_only?) { false }
-          handler.validate.should eq 'who.invalid_who_syntax'
+        it "should incorporate the no args check" do
+          handler.methods.should include :validate_check_for_root_only
         end
-      end
+      end      
       
       describe :handle do        
         before do

@@ -2,6 +2,10 @@ module AresMUSH
   module Manage
     class LoadCmd
       include AresMUSH::Plugin
+
+      # Validators
+      must_be_logged_in
+      no_switches
       
       attr_accessor :load_target
       
@@ -18,10 +22,9 @@ module AresMUSH
         cmd.root_is?("load")
       end
 
-      def validate
-        # TODO - validate permissions
-        return t('dispatcher.must_be_logged_in') if !client.logged_in?
-        return t('manage.invalid_load_syntax') if !cmd.switch.nil?
+      # TODO - validate permissions
+      
+      def validate_load_target
         return t('manage.invalid_load_syntax') if load_target.nil?
         return nil
       end

@@ -8,17 +8,19 @@ module AresMUSH
     before do
       class PluginSpecTest
         include Plugin
-        def validate_x(client, cmd)
+        
+        def validate_x
           return "error_x" if cmd.raw == "x marks the spot"
           return nil
         end
         
-        def validate(client, cmd)
+        def validate_y
           return "error_y" if cmd.raw == "y marks the spot"
           return nil
         end
       end
-      @plugin = PluginSpecTest.new    
+      @plugin = PluginSpecTest.new   
+      SpecHelpers.stub_translate_for_testing 
     end
     
     after do
@@ -68,9 +70,8 @@ module AresMUSH
       end
         
       it "should call all validate methods" do
-        @plugin.should_receive(:validate_x).with(@client, @cmd) { nil }
-        @plugin.should_receive(:validate_y).with(@client, @cmd) { nil }
-        @plugin.should_receive(:validate).with(@client, @cmd) { nil }
+        @plugin.should_receive(:validate_x) { nil }
+        @plugin.should_receive(:validate_y) { nil }
         @plugin.on_command(@client, @cmd)
       end
       
@@ -81,12 +82,19 @@ module AresMUSH
         @plugin.on_command(@client, @cmd)
       end
       
+      it "should emit an error and stop if any validator fails" do
+        @cmd.stub(:raw) { "y marks the spot" }
+        @client.should_receive(:emit_failure).with("error_y")
+        @plugin.should_not_receive(:handle)
+        @plugin.on_command(@client, @cmd)
+      end
+      
       it "should handle the command if it's valid" do
         @plugin.stub(:validate) { nil }
         @client.should_not_receive(:emit_failure)
         @plugin.should_receive(:handle)
         @plugin.on_command(@client, @cmd)
       end    
-    end    
+    end      
   end
 end

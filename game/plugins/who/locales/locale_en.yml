@@ -3,8 +3,6 @@ en:
         hidden: Somewhere
         hide_enabled: "Your location is now hidden from the who list."
         hide_disabled: "Your location is no longer hidden on the who list."
-        invalid_who_syntax: "Please use just 'who' or 'where'."
-        invalid_hide_syntax: "Please use just 'hide'."
         new_online_record: "New Online Record: %{count}"
         online_record: "%{count} Record"
         players_ic: "%{count} IC"
