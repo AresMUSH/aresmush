@@ -35,14 +35,24 @@ module AresMUSH
       @cmd = cmd
       log_command
       crack!
-      error = validate
+      
+      error = nil
+      
+      self.methods.grep(/^validate/).each do |m|
+        puts "Calling #{m} with #{client} -- #{cmd}"
+        error = send(m,client,cmd)
+        if (!error.nil?)
+          break
+        end
+      end
+             
       if (error)
         client.emit_failure(error)
         return
       end
       handle
     end
-    
+        
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
     # doing:
@@ -54,16 +64,14 @@ module AresMUSH
     def crack!
     end
 
-    # Override this for any preliminary error checking for your command.  Return an error string
-    # (remember to translate!) or nil if there are no errors.
-    # For example, to restrict the command to only logged in players, you can do:
-    #    def validate
-    #     return t(your_plugin.invalid_syntax) if !@cmd.switch.nil?
+    # Define validation methods for any error checks your command needs to perform
+    # Return 'nil' if everything's ok, otherwise 
+    # return an error string (remember to translate!)
+    # For example:
+    #    def validate_foo
+    #     return t(your_plugin.invalid_syntax) if self.foo.nil?
     #     return nil
     #   end
-    def validate
-      return nil
-    end
     
     # Override this with the details of your command handling.
     def handle

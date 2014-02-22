@@ -20,7 +20,7 @@ module AresMUSH
       def handle
 
         # Default to 'here' if no args are specified.
-        target = args.target || t('object.here')
+        target = cmd.args.target || t('object.here')
 
         find_result = VisibleTargetFinder.find(target, client)
         if (!find_result.found?)

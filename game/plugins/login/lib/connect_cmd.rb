@@ -13,13 +13,13 @@ module AresMUSH
       
       def validate
         return t("login.already_logged_in") if client.logged_in?
-        return t('login.invalid_connect_syntax') if (args.name.nil? || args.password.nil?)
+        return t('login.invalid_connect_syntax') if (cmd.args.name.nil? || cmd.args.password.nil?)
         return nil
       end
 
       def handle
-        name = args.name
-        password = args.password
+        name = cmd.args.name
+        password = cmd.args.password
 
         char = Character.find_by_name(name)
         

@@ -53,7 +53,7 @@ module AresMUSH
     
     def handle_input(input)
       begin
-        @dispatcher.on_command(self, Command.new(self, input))
+        @dispatcher.on_command(self, Command.new(input))
       rescue Exception => e
         Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end

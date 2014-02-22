@@ -6,7 +6,8 @@ module AresMUSH
       include CommandTestHelper
   
       before do
-        init_handler(LoadCmd, "load foo")
+        init_handler(LoadCmd, "load")
+        handler.load_target = "foo"
         SpecHelpers.stub_translate_for_testing
       end
       
@@ -18,7 +19,7 @@ module AresMUSH
         
         it "should reject command if no args specified" do
           client.stub(:logged_in?) { true }
-          cmd.stub(:args) { nil }
+          handler.stub(:load_target) { nil }
           handler.validate.should eq 'manage.invalid_load_syntax'
         end
         

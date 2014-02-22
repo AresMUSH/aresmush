@@ -15,7 +15,8 @@ module AresMUSH
           before do
             @config_reader = double
             Global.stub(:config_reader) { @config_reader }
-            init_handler(LoadCmd, "load config")
+            init_handler(LoadCmd, "load")
+            handler.load_target = "config"
           end
 
           it "should load config and notify client" do           
@@ -38,7 +39,8 @@ module AresMUSH
             Global.stub(:plugin_manager) { @plugin_manager }
             Global.stub(:locale) { @locale }
             
-            init_handler(LoadCmd, "load foo")
+            init_handler(LoadCmd, "load")
+            handler.load_target = "foo"
             
             AresMUSH.stub(:remove_const) {}
             client.stub(:emit_success)

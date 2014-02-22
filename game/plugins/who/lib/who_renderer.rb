@@ -9,6 +9,7 @@ module AresMUSH
       
       def render(clients)
         data = WhoData.new(clients)
+      
         who_list = build_header(data)
         who_list << build_chars(data)
         who_list << build_footer(data)

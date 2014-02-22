@@ -60,7 +60,7 @@ module AresMUSH
     describe :handle_input do
       it "should create a command and notify the dispatcher" do
         cmd = double
-        Command.should_receive(:new).with(@client, "Yay") { cmd }
+        Command.should_receive(:new).with("Yay") { cmd }
         @dispatcher.should_receive(:on_command).with(@client, cmd)
         @client.handle_input "Yay"        
       end

@@ -8,6 +8,15 @@ module AresMUSH
     before do
       class PluginSpecTest
         include Plugin
+        def validate_x(client, cmd)
+          return "error_x" if cmd.raw == "x marks the spot"
+          return nil
+        end
+        
+        def validate(client, cmd)
+          return "error_y" if cmd.raw == "y marks the spot"
+          return nil
+        end
       end
       @plugin = PluginSpecTest.new    
     end
@@ -36,7 +45,7 @@ module AresMUSH
     describe :handle do
       it "should log a warning if someone fails to provide a command handler" do
         Log4r::Logger.root.should_receive(:warn)
-        @plugin.on_command(nil, nil)
+        @plugin.on_command(nil, Command.new("test"))
       end
     end    
     
@@ -44,6 +53,7 @@ module AresMUSH
       before do
         @client = double
         @cmd = double
+        @cmd.stub(:raw) { "raw" }
       end
       
       it "should crack the args" do
@@ -57,9 +67,16 @@ module AresMUSH
         @plugin.on_command(@client, @cmd)
       end
         
-      it "should emit an error and stop if the command is invalid" do
-        @plugin.should_receive(:validate) { "fail" }
-        @client.should_receive(:emit_failure).with("fail")
+      it "should call all validate methods" do
+        @plugin.should_receive(:validate_x).with(@client, @cmd) { nil }
+        @plugin.should_receive(:validate_y).with(@client, @cmd) { nil }
+        @plugin.should_receive(:validate).with(@client, @cmd) { nil }
+        @plugin.on_command(@client, @cmd)
+      end
+      
+      it "should emit an error and stop if any validator fails" do
+        @cmd.stub(:raw) { "x marks the spot" }
+        @client.should_receive(:emit_failure).with("error_x")
         @plugin.should_not_receive(:handle)
         @plugin.on_command(@client, @cmd)
       end

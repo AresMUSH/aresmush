@@ -13,7 +13,7 @@ module AresMUSH
       
       def validate
         return t('dispatcher.already_logged_in') if client.logged_in?
-        return t('login.invalid_create_syntax') if (args.name.nil? || args.password.nil?)
+        return t('login.invalid_create_syntax') if (cmd.args.name.nil? || cmd.args.password.nil?)
         
         check_name = Login.validate_char_name(args.name)
         return check_name if !check_name.nil?
@@ -25,8 +25,8 @@ module AresMUSH
       end
       
       def handle        
-        name = args.name
-        password = args.password
+        name = cmd.args.name
+        password = cmd.args.password
                 
         char = Character.new
         char.name = name
