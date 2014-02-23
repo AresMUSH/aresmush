@@ -1,21 +1,21 @@
 module AresMUSH
   module Help
-    class Help
+    class HelpCmd
       include AresMUSH::Plugin
-
+      
+      allow_switch 'load'
       
       def want_command?(client, cmd)
         cmd.root.end_with?("help")
       end
 
-      def on_command(client, cmd)        
+      # TODO - Validate 
+      def handle
         if (!cmd.switch)
           show_help(client, cmd)
-        elsif (cmd.switch == "load")
-          client.emit_success("You reload the help files.")
-          load_help
         else
-          client.emit_failure("Unrecognized help command.")
+          client.emit_success("You reload the help files.")
+          load_help        
         end
       end
       

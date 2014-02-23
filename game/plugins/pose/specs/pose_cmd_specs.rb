@@ -38,22 +38,12 @@ module AresMUSH
       end
   
       describe :validate do
-        it "should reject the command if a switch is specified" do
-          cmd.stub(:switch) { "sw" }
-          client.stub(:logged_in?) { true }
-          handler.validate.should eq 'pose.invalid_pose_syntax'
+        it "should incorporate the login check" do
+          handler.methods.should include :validate_check_for_login
         end
-
-        it "should reject the command if not logged in" do
-          client.stub(:logged_in?) { false }
-          cmd.stub(:switch) { nil }
-          handler.validate.should eq 'dispatcher.must_be_logged_in'
-        end
-
-        it "should accept the command otherwise" do
-          client.stub(:logged_in?) { true }
-          cmd.stub(:switch) { nil }
-          handler.validate.should eq nil
+        
+        it "should not have any switches" do
+          handler.allowed_switches.should be_nil
         end
       end
     

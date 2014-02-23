@@ -3,7 +3,7 @@ require_relative "../../../plugin_test_loader"
 module AresMUSH
   module Describe
   
-    describe Look do
+    describe LookCmd do
       before do
         @client = double(Client)
         @desc_iface = double    

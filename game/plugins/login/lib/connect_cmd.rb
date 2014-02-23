@@ -1,27 +1,32 @@
 module AresMUSH
   module Login
-    class Connect
+    class ConnectCmd
       include AresMUSH::Plugin
 
+      attr_accessor :charname, :password
+      
       def want_command?(client, cmd)
          cmd.root_is?("connect")
       end
       
       def crack!
         cmd.crack!(/(?<name>\S+) (?<password>.+)/)
+        self.charname = cmd.args.name
+        self.password = cmd.args.password
       end
       
-      def validate
+      def validate_not_already_logged_in
         return t("login.already_logged_in") if client.logged_in?
-        return t('login.invalid_connect_syntax') if (cmd.args.name.nil? || cmd.args.password.nil?)
+        return nil
+      end
+      
+      def validate_name_and_password
+        return t('login.invalid_connect_syntax') if (charname.nil? || password.nil?)
         return nil
       end
 
       def handle
-        name = cmd.args.name
-        password = cmd.args.password
-
-        char = Character.find_by_name(name)
+        char = Character.find_by_name(charname)
         
         if (char.nil?)
           client.emit_failure(t("login.char_not_found"))

@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Describe
   
-    describe Desc do
+    describe Describe do
       describe :set_desc do
         before do
           Character.stub(:update)

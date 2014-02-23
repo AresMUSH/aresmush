@@ -3,34 +3,41 @@ require_relative "../../../plugin_test_loader"
 module AresMUSH
   module Describe
     
-    describe Desc do
+    describe DescCmd do
+      include CommandTestHelper
+      
+      before do
+        init_handler(DescCmd, "desc name=description")
+        SpecHelpers.stub_translate_for_testing        
+      end
       
       describe :crack do
-        before do
-          @desc = Desc.new
-        end        
+        it "should crack a command missing args" do
+          init_handler(DescCmd, "desc")
+          handler.crack!
+          handler.target.should be_nil
+          handler.desc.should be_nil
+        end
 
         it "should crack a command missing a desc" do
-          cmd = Command.new(nil, "desc bob")
-          @desc.cmd = cmd
-          @desc.crack!
-          @desc.args.target.should be_nil
-          @desc.args.desc.should be_nil
+          init_handler(DescCmd, "desc name")
+          handler.crack!
+          handler.target.should be_nil
+          handler.desc.should be_nil
         end
       
         it "should be able to crack the target - even multi words" do
-          cmd = Command.new(nil, "desc Bob's Room=new desc")
-          @desc.cmd = cmd
-          @desc.crack!
-          @desc.args.target.should eq "Bob's Room"
+          init_handler(DescCmd, "desc Bob's Room=new desc")
+          handler.crack!
+          handler.target.should eq "Bob's Room"
+          handler.desc.should eq "new desc"
         end
       
         it "should crack the desc - even with fancy characters" do
-          cmd = Command.new(nil, "desc Bob=new desc%R%xcTest%xn")
-          @desc.cmd = cmd
-          @desc.crack!
-          @desc.args.target.should eq "Bob"
-          @desc.args.desc.should eq "new desc%R%xcTest%xn"
+          init_handler(DescCmd, "desc Bob=new desc%R%xcTest%xn")
+          handler.crack!
+          handler.target.should eq "Bob"
+          handler.desc.should eq "new desc%R%xcTest%xn"
         end
       end
     end

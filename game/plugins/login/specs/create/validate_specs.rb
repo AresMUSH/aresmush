@@ -2,61 +2,64 @@ require_relative "../../../plugin_test_loader"
 
 module AresMUSH
   module Login
-    describe Create do
+    describe CreateCmd do
+      include CommandTestHelper
+      
       before do
-        @create = Create.new
-        @cmd = double
-        @client = double
-        @create.cmd = @cmd
-        @create.client = @client
-        Login.stub(:validate_char_name) { nil }
-        Login.stub(:validate_char_password) { nil }        
+        init_handler(CreateCmd, "create Bob bobpassword")
         SpecHelpers.stub_translate_for_testing        
       end
       
-      describe :validate do
-        context "logged in" do
-          it "should fail if already logged in" do
-            @client.stub(:logged_in?) { true }
-            @create.validate.should eq "dispatcher.already_logged_in"
-          end
+      describe :validate_not_already_logged_in do
+        it "should reject command if already logged in" do
+          client.stub(:logged_in?) { true }
+          handler.validate_not_already_logged_in .should eq "login.already_logged_in"
         end
+
+        it "should allow command if not logged in" do
+          client.stub(:logged_in?) { false }
+          handler.validate_not_already_logged_in .should be_nil
+        end
+      end
       
-        context "not logged in" do
-          before do
-            @client.stub(:logged_in?) { false }
-          end
+      describe :validate_name do
+        
+        it "should fail if the name is missing" do
+          handler.stub(:charname) { nil }
+          handler.validate_name.should eq "login.invalid_create_syntax"
+        end
+
+        it "should fail if the name is invalid" do
+          handler.stub(:charname) { "Bob" }
+          Login.should_receive(:validate_char_name).with("Bob") { "invalid name"}
+          handler.validate_name.should eq "invalid name"          
+        end
           
+        it "should allow the comand if the name is ok" do
+          handler.stub(:charname) { "Bob" }
+          Login.should_receive(:validate_char_name) { nil }
+          handler.validate_name.should be_nil
+        end
+      end
         
-          it "should fail if the name is missing" do
-            @create.stub(:args) { HashReader.new( { "name" => nil, "password" => "passwd" })}
-            @create.validate.should eq "login.invalid_create_syntax"
-          end
+      describe :validate_password do
+        it "should fail if the password is missing" do
+          handler.stub(:password) { nil }
+          handler.validate_password.should eq "login.invalid_create_syntax"
+        end
 
-          it "should fail if the password is missing" do
-            @create.stub(:args) { HashReader.new( { "name" => "name", "password" => nil })}
-            @create.validate.should eq "login.invalid_create_syntax"
-          end
-
-          it "should fail if the name is invalid" do
-            @create.stub(:args) { HashReader.new( { "name" => "Bob", "password" => "passwd" })}
-            Login.should_receive(:validate_char_name).with("Bob") { "invalid name"}
-            @create.validate.should eq "invalid name"          
-          end
-        
-          it "should fail if the password is invalid" do
-            @create.stub(:args) { HashReader.new( { "name" => "Bob", "password" => "passwd" })}
-            Login.should_receive(:validate_char_password).with("passwd") { "invalid password"}
-            @create.validate.should eq "invalid password"          
-          end
-        
-          it "should pass if everything's oK" do
-            @create.stub(:args) { HashReader.new( { "name" => "Bob", "password" => "passwd" })}
-            @create.validate.should be_nil
-          end
+        it "should fail if the password is invalid" do
+          handler.stub(:password) { "passwd" }
+          Login.should_receive(:validate_char_password).with("passwd") { "invalid password"}
+          handler.validate_password.should eq "invalid password"          
+        end
+          
+        it "should allow the comand if the name is ok" do
+          handler.stub(:password) { "passwd" }
+          Login.should_receive(:validate_char_password) { nil }
+          handler.validate_password.should be_nil
         end
       end
     end
   end
 end
-

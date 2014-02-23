@@ -32,6 +32,20 @@ module AresMUSH
           end          
         end
         
+        context "load locale" do
+          before do
+            @locale = double
+            Global.stub(:locale) { @locale }
+            init_handler(LoadCmd, "load")
+            handler.load_target = "locale"
+          end
+          
+          it "should reload the locale" do
+            @locale.should_receive(:load!)
+            handler.handle
+          end     
+        end
+        
         context "load plugin" do
           before do
             @plugin_manager = double

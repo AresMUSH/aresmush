@@ -1,27 +1,23 @@
 module AresMUSH
   module Describe
-    class Look
+    class LookCmd
       include AresMUSH::Plugin
       
-
+      attr_accessor :target
+      
+      # Validators
+      must_be_logged_in
+      
       def want_command?(client, cmd)
         cmd.root_is?("look")
       end
       
-      def validate
-        return t('dispatcher.must_be_logged_in') if !client.logged_in?
-        return nil
-      end
-      
       def crack!
         cmd.crack!(/(?<target>.+)/)
+        self.target = cmd.args.target || 'here'
       end
       
       def handle
-
-        # Default to 'here' if no args are specified.
-        target = cmd.args.target || t('object.here')
-
         find_result = VisibleTargetFinder.find(target, client)
         if (!find_result.found?)
           client.emit_failure(find_result.error)

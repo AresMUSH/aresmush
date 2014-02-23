@@ -7,8 +7,8 @@ en:
           Error: "%{error_info}"
         huh: "Huh? Unrecognized command."
         permission_denied: "Permission denied."
-        must_be_logged_in: "You must be logged in."
-        cmd_root_only: "This command does not take any switches (/whatever) or arguments."
+        must_be_logged_in: "You must be logged in to use this command."
+        cmd_no_switches_or_args: "This command does not take any switches (/whatever) or arguments."
         cmd_no_switches: "This command does not take any switches (/whatever)."
         cmd_invalid_switch: "That is not a valid switch (/whatever) for this command."
     

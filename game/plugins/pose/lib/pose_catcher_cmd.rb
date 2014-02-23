@@ -3,6 +3,9 @@ module AresMUSH
     class PoseCatcher
       include AresMUSH::Plugin
 
+      # Validators
+      must_be_logged_in
+      
       def after_initialize
         @client_monitor = Global.client_monitor
       end
@@ -14,11 +17,6 @@ module AresMUSH
         cmd.raw.start_with?(";")
       end
       
-      def validate
-        return t('dispatcher.must_be_logged_in') if !client.logged_in?
-        return nil
-      end
-      
       def handle
         room = client.room
         room.emit PoseFormatter.format(client.name, cmd.raw)
@@ -26,7 +24,12 @@ module AresMUSH
 
       def log_command
         # Don't log poses
-      end      
+      end 
+
+      # It will get mixed up and think that "who/bar" has a switch      
+      def validate_check_for_allowed_switches
+        nil
+      end     
     end
   end
 end

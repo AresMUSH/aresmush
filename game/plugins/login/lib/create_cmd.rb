@@ -1,7 +1,9 @@
 module AresMUSH
   module Login
-    class Create
+    class CreateCmd
       include AresMUSH::Plugin
+      
+      attr_accessor :charname, :password
       
       def want_command?(client, cmd)
         cmd.root_is?("create")
@@ -9,34 +11,35 @@ module AresMUSH
 
       def crack!
         cmd.crack!(/(?<name>\S+) (?<password>.+)/)
+        self.charname = cmd.args.name
+        self.password = cmd.args.password
       end
       
-      def validate
-        return t('dispatcher.already_logged_in') if client.logged_in?
-        return t('login.invalid_create_syntax') if (cmd.args.name.nil? || cmd.args.password.nil?)
-        
-        check_name = Login.validate_char_name(args.name)
-        return check_name if !check_name.nil?
-        
-        check_password = Login.validate_char_password(args.password)
-        return check_password if !check_password.nil?
-        
+      def validate_not_already_logged_in
+        return t("login.already_logged_in") if client.logged_in?
         return nil
+      end      
+      
+      def validate_name
+        return t('login.invalid_create_syntax') if charname.nil?
+        return Login.validate_char_name(charname)
+      end
+      
+      def validate_password
+        return t('login.invalid_create_syntax') if password.nil?
+        return Login.validate_char_password(password)
       end
       
       def handle        
-        name = cmd.args.name
-        password = cmd.args.password
-                
         char = Character.new
-        char.name = name
+        char.name = charname
         char.change_password(password)
         char.save!
         
-        @client.emit_success(t('login.created_and_logged_in', :name => name))
-        @client.char = char
-        Global.dispatcher.on_event(:char_created, :client => @client)
-        Global.dispatcher.on_event(:char_connected, :client => @client)        
+        client.emit_success(t('login.created_and_logged_in', :name => charname))
+        client.char = char
+        Global.dispatcher.on_event(:char_created, :client => client)
+        Global.dispatcher.on_event(:char_connected, :client => client)        
       end
       
       def log_command

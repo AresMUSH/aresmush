@@ -31,6 +31,8 @@ module AresMUSH
       def handle
         if (load_target == 'config')
           load_config
+        elsif (load_target == 'locale')
+          load_locale
         else
           load_plugin
         end
@@ -46,9 +48,13 @@ module AresMUSH
         rescue Exception => e
           client.emit_failure t('manage.error_loading_plugin', :name => load_target, :error => e.to_s)
         end
-        Global.locale.load!
+        load_locale
       end
       
+      def load_locale
+        Global.locale.load!
+      end
+        
       def load_config
         begin
           @config_reader.read

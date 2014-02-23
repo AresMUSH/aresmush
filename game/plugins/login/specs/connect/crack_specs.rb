@@ -2,43 +2,44 @@ require_relative "../../../plugin_test_loader"
 
 module AresMUSH
   module Login
-  
-    describe Connect do
+    describe ConnectCmd do
+      include CommandTestHelper
+      
       before do
-        @connect = Connect.new
+        init_handler(ConnectCmd, "connect Bob bobpassword")
+        SpecHelpers.stub_translate_for_testing        
       end
       
       describe :crack do
         it "should crack the arguments" do
-          cmd = Command.new("connect Bob password")
-          @connect.cmd = cmd
-          @connect.crack!
-          @connect.cmd.args.name.should eq "Bob"
-          @connect.cmd.args.password.should eq "password"
+          init_handler(ConnectCmd, "connect Bob password")
+          handler.crack!
+          handler.charname.should eq "Bob"
+          handler.password.should eq "password"
         end
         
         it "should handle no args" do
-          cmd = Command.new("connect")
-          @connect.cmd = cmd
-          @connect.crack!
-          @connect.cmd.args.name.should be_nil
-          @connect.cmd.args.password.should be_nil
+          init_handler(ConnectCmd, "connect")
+          handler.cmd = cmd
+          handler.crack!
+          handler.charname.should be_nil
+          handler.password.should be_nil
         end
         
         it "should handle a missing password" do
-          cmd = Command.new("connect Bob")
-          @connect.cmd = cmd
-          @connect.crack!
-          @connect.cmd.args.name.should be_nil
-          @connect.cmd.args.password.should be_nil
+          init_handler(ConnectCmd, "connect Bob")
+          handler.cmd = cmd
+          handler.crack!
+          handler.charname.should be_nil
+          handler.password.should be_nil
         end
 
         it "should accept a multi-word password" do
-          cmd = Command.new("connect Bob bob's password")
-          @connect.cmd = cmd
-          @connect.crack!
-          @connect.cmd.args.name.should eq "Bob"
-          @connect.cmd.args.password.should eq "bob's password"
+          init_handler(ConnectCmd, "connect Bob bob's password")
+          handler.cmd = cmd
+          handler.crack!
+          handler.charname.should eq "Bob"
+          handler.password.should eq "bob's password"
         end        
       end      
     end
