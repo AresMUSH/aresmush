@@ -4,7 +4,7 @@ module AresMUSH
       include AresMUSH::Plugin
 
       # Validators
-      no_switches_or_args
+      dont_allow_switches_or_args
       
       def after_initialize
         @client_monitor = Global.client_monitor

@@ -37,13 +37,13 @@ module AresMUSH
       end
     end
     
-    describe :validate_check_for_root_only do
+    describe :validate_no_switches_or_args do
       before do
         @client = double
         @cmd = double
         class PluginValidateRootOnlyTest
           include Plugin
-          no_switches_or_args
+          dont_allow_switches_or_args
         end
         @plugin = PluginValidateRootOnlyTest.new 
         @plugin.client = @client
@@ -57,21 +57,21 @@ module AresMUSH
       it "should reject command if there are arguments" do
         @cmd.stub(:switch) { nil }
         @cmd.stub(:args) { "foo" }
-        @plugin.validate_check_for_root_only.should eq "dispatcher.cmd_no_switches_or_args"
+        @plugin.validate_no_switches_or_args.should eq "dispatcher.cmd_no_switches_or_args"
       end
       
       it "should reject command if there is a switch" do
         @cmd.stub(:args) { :nil }
         @cmd.stub(:switch) { "foo" }
-        @plugin.validate_check_for_root_only.should eq "dispatcher.cmd_no_switches_or_args"
+        @plugin.validate_no_switches_or_args.should eq "dispatcher.cmd_no_switches_or_args"
       end
       
       it "should accept command if there is just the root" do
         @cmd.stub(:args) { nil }
         @cmd.stub(:switch) { nil }
-        @plugin.validate_check_for_root_only.should eq nil
+        @plugin.validate_no_switches_or_args.should eq nil
       end
-    end
+    end    
       
     describe :validate_check_for_allowed_switches do
       context "with allowed switches" do
@@ -118,7 +118,6 @@ module AresMUSH
           @cmd = double
           class PluginValidateNoSwitchTest
             include Plugin
-            no_switches
           end
           @plugin = PluginValidateNoSwitchTest.new 
           @plugin.client = @client

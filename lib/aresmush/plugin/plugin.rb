@@ -12,6 +12,11 @@ module AresMUSH
     
     attr_accessor :client, :cmd
     
+    # No switches are enabled by default.
+    # You can override this by specifying either:
+    #   allow_switch 'switchname' or
+    #   allow_switches [ 'switch1', 'switch2' ]
+    
     # Override this with the processing needed to tell if you want a particular command
     # *from a char who is logged in*.
     #
@@ -25,7 +30,7 @@ module AresMUSH
     # You can even do more complex and/or combinations.
     def want_command?(client, cmd)
       false
-    end    
+    end
 
     # This defines basic processing suitable for many commands.  You can override this 
     # method entirely if you need advanced processing, or just override the helper methods

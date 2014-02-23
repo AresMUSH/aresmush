@@ -4,6 +4,19 @@ module AresMUSH
       base.send :extend, PluginValidators
     end
 
+    # This one is always on.
+    
+    def allowed_switches
+      nil
+    end
+    
+    def validate_check_for_allowed_switches
+      return nil if cmd.switch.nil?
+      return t('dispatcher.cmd_no_switches') if self.allowed_switches.nil? || self.allowed_switches.empty?
+      return t('dispatcher.cmd_invalid_switch') if !self.allowed_switches.include?(cmd.switch)
+      return nil
+    end
+    
     module PluginValidators
       def must_be_logged_in
         send :define_method, "validate_check_for_login" do
@@ -12,30 +25,21 @@ module AresMUSH
         end
       end
       
-      def no_switches_or_args
-        send :define_method, "validate_check_for_root_only" do
+      def dont_allow_switches_or_args
+        send :define_method, "validate_no_switches_or_args" do
           return t('dispatcher.cmd_no_switches_or_args') if !cmd.args.nil?
           return t('dispatcher.cmd_no_switches_or_args') if !cmd.switch.nil?
           return nil
         end
       end
-      
+
+      # Shortcut for allowing switches.
       def allow_switches(switches)
         send :define_method, "allowed_switches" do
           switches
         end
-        send :define_method, "validate_check_for_allowed_switches" do
-          return nil if cmd.switch.nil?
-          return t('dispatcher.cmd_no_switches') if self.allowed_switches.nil? || self.allowed_switches.empty?
-          return t('dispatcher.cmd_invalid_switch') if !self.allowed_switches.include?(cmd.switch)
-          return nil
-        end
       end
-      
-      def no_switches
-        allow_switches([])
-      end
-      
+            
       def allow_switch(switch)
         allow_switches([switch])
       end

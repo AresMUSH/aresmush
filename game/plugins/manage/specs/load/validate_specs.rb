@@ -16,9 +16,8 @@ module AresMUSH
           handler.methods.should include :validate_check_for_login
         end
         
-        it "should incorporate the no switch check" do
-          handler.methods.should include :validate_check_for_allowed_switches
-          handler.allowed_switches.should eq []
+        it "should not have any switches" do
+          handler.allowed_switches.should be_nil
         end
       end
       

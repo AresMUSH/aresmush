@@ -56,6 +56,7 @@ module AresMUSH
         @client = double
         @cmd = double
         @cmd.stub(:raw) { "raw" }
+        @cmd.stub(:switch) { nil }
       end
       
       it "should crack the args" do

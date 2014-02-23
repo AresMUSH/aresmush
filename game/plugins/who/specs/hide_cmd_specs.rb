@@ -27,7 +27,7 @@ module AresMUSH
         end
         
         it "should incorporate the no args check" do
-          handler.methods.should include :validate_check_for_root_only
+          handler.methods.should include :validate_no_switches_or_args
         end
       end
 
