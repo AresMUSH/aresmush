@@ -6,16 +6,15 @@ module AresMUSH
   describe VisibleTargetFinder do
     describe :find do
       before do
-        AresMUSH::Locale.stub(:translate).with("object.me") { "me" }
-        AresMUSH::Locale.stub(:translate).with("object.here") { "here" }
         @client = double
         @client.stub(:location) { "1" }        
       end
 
       it "should return the char for the me keword" do
-        @client.stub(:char) { @char }
+        char = double
+        @client.stub(:char) { char }
         result = VisibleTargetFinder.find("me", @client)
-        result.target.should eq @char
+        result.target.should eq char
         result.error.should be_nil
       end
 

@@ -2,10 +2,10 @@ module AresMUSH
   # TODO - REDO
   class VisibleTargetFinder
     def self.find(name, client)
-      return FindResult.new(client.char, nil) if (name.downcase == t("object.me"))
+      return FindResult.new(client.char, nil) if (name.downcase == "me")
 
       loc_id = client.location
-      if (name.downcase == t("object.here"))
+      if (name.downcase == "here")
         room = Room.find_one(loc_id)
         return FindResult.new(room, nil)
       end
