@@ -2,55 +2,54 @@ module AresMUSH
 
   module Describe
     class RoomRenderer
-      def initialize(room)
-        @client_monitor = Global.client_monitor
-        @room = room
+      def initialize(header_template, char_template, exit_template, footer_template)
+        @header_template = header_template
+        @char_template = char_template
+        @exit_template = exit_template
+        @footer_template = footer_template
       end
 
-      def render
-        "Room Desc Here"
-        #desc = build_header
-        #desc << build_main
-        #desc << build_chars
-        #desc << build_exits
-        #desc << build_footer
+      def render(room)
+        @room = room
+        @data = RoomData.new(room)
+        desc = build_header
+        desc  << "\n"
+        desc << build_chars
+        desc  << "\n"
+        desc << build_exits
+        desc  << "\n"
+        desc << build_footer
       end
             
       def build_header
-        renderer = @desc_factory.build_room_header(@room)
-        renderer.render
-      end
-      
-      def build_main
-        renderer = @desc_factory.build_room_header(@room)
-        renderer.render
+        @header_template.render(@data)
       end
       
       def build_chars
-        contents = @client_monitor.clients.select { |c| c.logged_in? && c.room == @room }
+        return t('describe.empty') if @room.clients.nil? || @room.clients.empty?
+        
         contents_str = ""
-        contents.each do |c|
-          renderer = @desc_factory.build_room_each_char(c.char)
-          contents_str << renderer.render
+        @room.clients.each do |c|
+          char_data = CharData.new(c.char)
+          contents_str << @char_template.render(char_data)
         end
         contents_str
       end
 
       def build_exits
-        contents = Exit.find_by_location(@room["_id"])
+        return t('describe.no_exits') if @room.exits.nil? || @room.exits.empty?
+
         contents_str = ""
-        contents.each do |e|
-          renderer = @desc_factory.build_room_each_exit(c)
-          contents_str << renderer.render
+        @room.exits.each do |e|
+          exit_data = ExitData.new(e)
+          contents_str << @char_template.render(exit_data)
         end
         contents_str
       end
 
       def build_footer
-        renderer = @desc_factory.build_room_footer(@room)
-        renderer.render
-      end
-      
+        @footer_template.render(@data)
+      end      
     end
   end
 end

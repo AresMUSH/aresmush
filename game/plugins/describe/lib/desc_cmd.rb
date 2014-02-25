@@ -32,7 +32,7 @@ module AresMUSH
         end
         model = find_result.target
         Describe.set_desc(model, desc)
-        client.emit_success(t('describe.desc_set', :name => model["name"]))
+        client.emit_success(t('describe.desc_set', :name => model.name))
       end
         
     end

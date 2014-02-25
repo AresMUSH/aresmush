@@ -2,7 +2,6 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Describe
-  
     describe Describe do
       describe :set_desc do
         before do
@@ -29,21 +28,21 @@ module AresMUSH
         end
         
         it "should create a renderer for a room" do
-          model = { "type" => "Room" }
+          model = Room.new
           RoomRenderer.should_receive(:new).with(model) { @renderer }
           @renderer.should_receive(:render)
           Describe.get_desc(model) 
         end
 
         it "should create a renderer for a character" do
-          model = { "type" => "Character" }
+          model = Character.new
           CharRenderer.should_receive(:new).with(model) { @renderer }
           @renderer.should_receive(:render)
           @factory.build(model)
         end
 
         it "should create a renderer for an exit" do
-          model = { "type" => "Exit" }
+          model = Exit.new
           ExitRenderer.should_receive(:new).with(model) { @renderer }
           @renderer.should_receive(:render)
           @factory.build(model)
