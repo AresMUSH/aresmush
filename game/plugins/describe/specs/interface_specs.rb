@@ -5,20 +5,17 @@ module AresMUSH
     describe Describe do
       describe :set_desc do
         before do
-          Character.stub(:update)
-          AresModel.stub(:model_class) { Character }
-          @model = { "name" => "Bob", "type" => "char" }          
+          @model = double.as_null_object  
         end
         
         it "should set the desc on the model" do
+          @model.should_receive(:description=).with("New desc")
           Describe.set_desc(@model, "New desc")
-          @model["description"].should eq "New desc"
         end
 
         it "should save the model" do
-          AresModel.should_receive(:model_class).with(@model) { Character }
-          Character.should_receive(:update).with(@model)
-          Describe.set_desc(@model, "New desc")          
+          @model.should_receive(:save!)    
+          Describe.set_desc(@model, "New desc")
         end        
       end
       
@@ -27,25 +24,25 @@ module AresMUSH
           @renderer = double
         end
         
-        it "should create a renderer for a room" do
+        it "should render a room" do
           model = Room.new
-          RoomRenderer.should_receive(:new).with(model) { @renderer }
-          @renderer.should_receive(:render)
+          RendererFactory.stub(:room_renderer) { @renderer }
+          @renderer.should_receive(:render).with(model)
           Describe.get_desc(model) 
         end
 
-        it "should create a renderer for a character" do
+        it "should render a character" do
           model = Character.new
-          CharRenderer.should_receive(:new).with(model) { @renderer }
-          @renderer.should_receive(:render)
-          @factory.build(model)
+          RendererFactory.stub(:char_renderer) { @renderer }
+          @renderer.should_receive(:render).with(model)
+          Describe.get_desc(model) 
         end
-
-        it "should create a renderer for an exit" do
+        
+        it "should render an exit" do
           model = Exit.new
-          ExitRenderer.should_receive(:new).with(model) { @renderer }
-          @renderer.should_receive(:render)
-          @factory.build(model)
+          RendererFactory.stub(:exit_renderer) { @renderer }
+          @renderer.should_receive(:render).with(model)
+          Describe.get_desc(model) 
         end
       end
     end

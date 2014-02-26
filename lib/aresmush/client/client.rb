@@ -64,8 +64,10 @@ module AresMUSH
       @client_monitor.connection_closed self
     end
     
+    # In general, we want to avoid duplicating character interfaces on the client, but 
+    # these two (name and room) are used so ubiquitously that they're an exception.
     def name
-      @char.nil? ? t('client.anonymous'): @char['name']
+      @char.nil? ? t('client.anonymous'): @char.name
     end
     
     def room

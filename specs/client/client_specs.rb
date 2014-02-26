@@ -83,7 +83,9 @@ module AresMUSH
     
     describe :name do
       it "should use the char name if available" do
-        @client.char = {"name" => "Bob"}
+        char = double
+        @client.char = char
+        char.should_receive(:name) { "Bob" }
         @client.name.should eq "Bob"
       end
       

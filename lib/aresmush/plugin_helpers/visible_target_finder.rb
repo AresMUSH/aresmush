@@ -9,8 +9,10 @@ module AresMUSH
         return FindResult.new(room, nil)
       end
 
-      contents = room.clients.select { |c| c.char.name_upcase == name.upcase }
-      # TODO - Returns a client, should it return the char instead?
+      chars = Character.find_by_room_id_and_name(room.id, name)
+      exits = Exit.find_by_source_id_and_name(room.id, name)
+      contents = [chars, exits].flatten(1).select { |c| !c.nil? }   
+            
       SingleResultSelector.select(contents)
     end
   end

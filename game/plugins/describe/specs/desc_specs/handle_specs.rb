@@ -14,7 +14,8 @@ module AresMUSH
       describe :handle do
         context "success" do
           before do
-            @model = { "name" => "Bob" }
+            @model = double
+            @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
             VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
