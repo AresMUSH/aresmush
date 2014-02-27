@@ -1,8 +1,7 @@
 module AresMUSH
   class ClientMonitor
-    def initialize(dispatcher, client_factory)
+    def initialize(client_factory)
       @clients = []
-      @dispatcher = dispatcher
       @client_factory = client_factory
     end
 
@@ -22,10 +21,10 @@ module AresMUSH
 
     def connection_established(connection)
       begin
-        client = @client_factory.create_client(connection, self)
+        client = @client_factory.create_client(connection)
         @clients << client
         client.connected
-        @dispatcher.on_event(:connection_established, :client => client)
+        Global.dispatcher.on_event(:connection_established, :client => client)
         Global.logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
       rescue Exception => e
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
@@ -35,7 +34,7 @@ module AresMUSH
     def connection_closed(client)
       Global.logger.info("Client #{client.id} disconnected.")
       @clients.delete client
-      @dispatcher.on_event(:char_disconnected, :client => client)
+      Global.dispatcher.on_event(:char_disconnected, :client => client)
     end
     
     def logged_in_clients

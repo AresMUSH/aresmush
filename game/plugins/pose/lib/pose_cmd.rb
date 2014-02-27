@@ -5,10 +5,6 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
-
-      def after_initialize
-        @client_monitor = Global.client_monitor
-      end
       
       def want_command?(client, cmd)
         cmd.root_is?("emit") ||

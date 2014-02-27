@@ -1,13 +1,12 @@
 module AresMUSH
   class ClientFactory
-    def initialize(dispatcher)
+    def initialize
       @client_id = 0
-      @dispatcher = dispatcher
     end
     
-    def create_client(connection, client_monitor)
+    def create_client(connection)
       @client_id = @client_id + 1   
-      client = Client.new(@client_id, client_monitor, connection, @dispatcher)       
+      client = Client.new(@client_id, connection)       
       connection.client = client
       client
     end

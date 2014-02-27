@@ -1,14 +1,10 @@
 module AresMUSH
   class Dispatcher
 
-    def initialize(plugin_manager)
-      @plugin_manager = plugin_manager
-    end
-
     def on_command(client, cmd)
       handled = false
       with_error_handling(client, cmd) do
-        @plugin_manager.plugins.each do |p|
+        Global.plugin_manager.plugins.each do |p|
           if (p.want_command?(client, cmd))
             p.on_command(client, cmd)
             handled = true
@@ -24,7 +20,7 @@ module AresMUSH
 
     def on_event(type, *args)
       begin
-        @plugin_manager.plugins.each do |s|
+        Global.plugin_manager.plugins.each do |s|
           if (s.respond_to?(:"on_#{type}"))
             s.send(:"on_#{type}", *args)
           end

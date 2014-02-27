@@ -10,10 +10,10 @@ module AresMUSH
       locale = Locale.new
       plugin_factory = PluginFactory.new
       plugin_manager = PluginManager.new(plugin_factory)
-      dispatcher = Dispatcher.new(plugin_manager)
-      client_factory = ClientFactory.new(dispatcher)
-      client_monitor = ClientMonitor.new(dispatcher, client_factory)
-      server = Server.new(client_monitor)
+      dispatcher = Dispatcher.new
+      client_factory = ClientFactory.new
+      client_monitor = ClientMonitor.new(client_factory)
+      server = Server.new
       db = Database.new
             
       # Set up global access to the system objects - primarily so that the plugins can 

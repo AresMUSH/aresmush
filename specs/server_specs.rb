@@ -8,8 +8,9 @@ module AresMUSH
     describe :start do
       before do
         @client_monitor = double(ClientMonitor)
+        Global.stub(:client_monitor) { @client_monitor }
         Global.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
-        @server = Server.new(@client_monitor)
+        @server = Server.new
       end
       
       it "should start a timer for the pings" do

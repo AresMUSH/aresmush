@@ -8,8 +8,9 @@ module AresMUSH
    
     before do
       @dispatcher = double(Dispatcher).as_null_object
+      Global.stub(:dispatcher) { @dispatcher }
       @factory = double(ClientFactory).as_null_object
-      @client_monitor = ClientMonitor.new(@dispatcher, @factory)
+      @client_monitor = ClientMonitor.new(@factory)
 
       # Set up a couple of test clients
       @client1 = double(Client).as_null_object
@@ -56,7 +57,7 @@ module AresMUSH
       end
 
       it "should create a client" do
-        @factory.should_receive(:create_client).with(@connection, @client_monitor) { @client3 }
+        @factory.should_receive(:create_client).with(@connection) { @client3 }
         @client_monitor.connection_established(@connection)
       end
 

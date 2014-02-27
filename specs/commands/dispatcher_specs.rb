@@ -13,10 +13,11 @@ module AresMUSH
 
     before do
       @plugin_manager = double(PluginManager)
+      Global.stub(:plugin_manager) { @plugin_manager }
       @client = double(Client).as_null_object
       @client.stub(:id) { "1" }
       @command = double(Command)
-      @dispatcher = Dispatcher.new(@plugin_manager)
+      @dispatcher = Dispatcher.new
       @plugin1 = double
       @plugin2 = double
       @plugin1.stub(:log_command)

@@ -10,7 +10,9 @@ module AresMUSH
       @connection = double
       @client_monitor = double
       @dispatcher = double
-      @client = Client.new(1, @client_monitor, @connection, @dispatcher)
+      Global.stub(:client_monitor) { @client_monitor }
+      Global.stub(:dispatcher) { @dispatcher }
+      @client = Client.new(1, @connection)
       SpecHelpers.stub_translate_for_testing
     end
 

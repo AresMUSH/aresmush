@@ -5,11 +5,9 @@ module AresMUSH
     attr_reader :ip_addr, :id
     attr_accessor :char
     
-    def initialize(id, client_monitor, connection, dispatcher)
+    def initialize(id, connection)
       @id = id
-      @client_monitor = client_monitor
       @connection = connection
-      @dispatcher = dispatcher
     end
     
     def to_s
@@ -53,7 +51,7 @@ module AresMUSH
     
     def handle_input(input)
       begin
-        @dispatcher.on_command(self, Command.new(input))
+        Global.dispatcher.on_command(self, Command.new(input))
       rescue Exception => e
         Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
@@ -61,7 +59,7 @@ module AresMUSH
 
     # Responds to a disconnect from any sort of source - socket error, client-initated, etc.
     def connection_closed
-      @client_monitor.connection_closed self
+      Global.client_monitor.connection_closed self
     end
     
     # In general, we want to avoid duplicating character interfaces on the client, but 

@@ -7,8 +7,6 @@ module AresMUSH
       dont_allow_switches_or_args
       
       def after_initialize
-        @client_monitor = Global.client_monitor
-
         header_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/header.lq")
         char_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/character.lq")
         footer_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/footer.lq")
@@ -20,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        logged_in = @client_monitor.logged_in_clients
+        logged_in = Global.client_monitor.logged_in_clients
         client.emit @renderer.render(logged_in)
       end      
     end
