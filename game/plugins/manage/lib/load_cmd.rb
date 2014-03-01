@@ -5,6 +5,7 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
+      no_switches
       
       attr_accessor :load_target
       

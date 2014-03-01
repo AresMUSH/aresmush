@@ -3,12 +3,14 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Echo
     describe EchoCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
     
       before do
         init_handler(EchoCmd, "echo happy thoughts")
         SpecHelpers.stub_translate_for_testing        
       end
+      
+      it_behaves_like "a plugin that doesn't allow switches"
 
       describe :want_command do
         it "should want the echo command" do

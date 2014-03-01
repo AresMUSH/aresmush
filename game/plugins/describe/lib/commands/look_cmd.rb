@@ -7,7 +7,8 @@ module AresMUSH
       
       # Validators
       must_be_logged_in
-      
+      no_switches
+            
       def after_initialize
         RendererFactory.build_renderers
       end

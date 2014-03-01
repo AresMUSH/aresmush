@@ -37,13 +37,13 @@ module AresMUSH
       end
     end
     
-    describe :validate_no_switches_or_args do
+    describe :validate_no_args do
       before do
         @client = double
         @cmd = double
         class PluginValidateRootOnlyTest
           include Plugin
-          dont_allow_switches_or_args
+          no_args
         end
         @plugin = PluginValidateRootOnlyTest.new 
         @plugin.client = @client
@@ -57,23 +57,23 @@ module AresMUSH
       it "should reject command if there are arguments" do
         @cmd.stub(:switch) { nil }
         @cmd.stub(:args) { "foo" }
-        @plugin.validate_no_switches_or_args.should eq "dispatcher.cmd_no_switches_or_args"
+        @plugin.validate_no_args.should eq "dispatcher.cmd_no_switches_or_args"
       end
       
-      it "should reject command if there is a switch" do
-        @cmd.stub(:args) { :nil }
-        @cmd.stub(:switch) { "foo" }
-        @plugin.validate_no_switches_or_args.should eq "dispatcher.cmd_no_switches_or_args"
-      end
-      
-      it "should accept command if there is just the root" do
+      it "should accept command if there are no arguments" do
         @cmd.stub(:args) { nil }
         @cmd.stub(:switch) { nil }
-        @plugin.validate_no_switches_or_args.should eq nil
+        @plugin.validate_no_args.should eq nil
+      end
+      
+      it "should accept command with a switch and no arguments" do
+        @cmd.stub(:args) { nil }
+        @cmd.stub(:switch) { nil }
+        @plugin.validate_no_args.should eq nil
       end
     end    
       
-    describe :validate_check_for_allowed_switches do
+    describe :validate_allowed_switches do
       context "with allowed switches" do
         before do
           @client = double
@@ -93,26 +93,54 @@ module AresMUSH
       
         it "should reject command if the switch doesn't match" do
           @cmd.stub(:switch) { "foo" }
-          @plugin.validate_check_for_allowed_switches.should eq "dispatcher.cmd_invalid_switch"
+          @plugin.validate_allowed_switches.should eq "dispatcher.cmd_invalid_switch"
         end
       
         it "should allow command if there is no switch" do
           @cmd.stub(:switch) { nil }
-          @plugin.validate_check_for_allowed_switches.should eq nil
+          @plugin.validate_allowed_switches.should eq nil
         end
 
         it "should allow command if it matches an allowed switch" do
           @cmd.stub(:switch) { "test1" }
-          @plugin.validate_check_for_allowed_switches.should eq nil
+          @plugin.validate_allowed_switches.should eq nil
         end
 
         it "should allow command if it matches another allowed switch" do
           @cmd.stub(:switch) { "test2" }
-          @plugin.validate_check_for_allowed_switches.should eq nil
+          @plugin.validate_allowed_switches.should eq nil
         end
       end
       
-      context "with no switches" do
+      context "with no switches allowed" do
+        before do
+          @client = double
+          @cmd = double
+          class PluginValidateNoSwitchTest
+            include Plugin
+            no_switches
+          end
+          @plugin = PluginValidateNoSwitchTest.new 
+          @plugin.client = @client
+          @plugin.cmd = @cmd
+        end
+    
+        after do
+          AresMUSH.send(:remove_const, :PluginValidateNoSwitchTest)
+        end
+      
+        it "should reject command if there is a switch" do
+          @cmd.stub(:switch) { "foo" }
+          @plugin.validate_allowed_switches.should eq "dispatcher.cmd_no_switches"
+        end
+      
+        it "should allow command if there is no switch" do
+          @cmd.stub(:switch) { nil }
+          @plugin.validate_allowed_switches.should eq nil
+        end
+      end
+      
+      context "with no switches specified" do
         before do
           @client = double
           @cmd = double
@@ -128,14 +156,14 @@ module AresMUSH
           AresMUSH.send(:remove_const, :PluginValidateNoSwitchTest)
         end
       
-        it "should reject command if there is a switch" do
+        it "should allow command if there is a switch" do
           @cmd.stub(:switch) { "foo" }
-          @plugin.validate_check_for_allowed_switches.should eq "dispatcher.cmd_no_switches"
+          @plugin.validate_allowed_switches.should eq nil
         end
       
         it "should allow command if there is no switch" do
           @cmd.stub(:switch) { nil }
-          @plugin.validate_check_for_allowed_switches.should eq nil
+          @plugin.validate_allowed_switches.should eq nil
         end
       end
     end

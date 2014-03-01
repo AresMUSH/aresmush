@@ -4,7 +4,7 @@ module AresMUSH
   module Describe
   
     describe LookCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
       
       before do
         init_handler(LookCmd, "look something")

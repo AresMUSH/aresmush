@@ -4,7 +4,7 @@ module AresMUSH
   module Login
 
     describe ConnectCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
     
       before do
         init_handler(ConnectCmd, "connect Bob password")

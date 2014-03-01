@@ -3,12 +3,14 @@ require_relative "../../../plugin_test_loader"
 module AresMUSH
   module Login  
     describe ConnectCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
       
       before do
         init_handler(ConnectCmd, "connect Bob bobpassword")
         SpecHelpers.stub_translate_for_testing        
       end
+      
+      it_behaves_like "a plugin that doesn't allow switches"
       
       describe :validate_not_already_logged_in do
         it "should reject command if already logged in" do

@@ -3,12 +3,15 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Who
     describe WhoCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
 
       before do        
         init_handler(WhoCmd, "who")
         SpecHelpers.stub_translate_for_testing
       end
+      
+      it_behaves_like "a plugin that doesn't allow switches"
+      it_behaves_like "a plugin that doesn't allow args"
       
       describe :initialize do
         it "should read the templates" do
@@ -52,16 +55,6 @@ module AresMUSH
           handler.want_command?(client, cmd).should be_false
         end        
       end
-      
-      describe :validate do
-        it "should not incorporate the login check" do
-          handler.methods.should_not include :validate_check_for_login
-        end
-        
-        it "should incorporate the no args check" do
-          handler.methods.should include :validate_no_switches_or_args
-        end
-      end      
       
       describe :handle do        
         before do

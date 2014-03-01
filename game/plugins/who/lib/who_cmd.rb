@@ -4,7 +4,8 @@ module AresMUSH
       include AresMUSH::Plugin
 
       # Validators
-      dont_allow_switches_or_args
+      no_args
+      no_switches
       
       def after_initialize
         header_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/header.lq")

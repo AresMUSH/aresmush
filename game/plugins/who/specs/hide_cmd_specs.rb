@@ -3,12 +3,16 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Who
     describe HideCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
       
       before do
         init_handler(HideCmd, "hide")
         SpecHelpers.stub_translate_for_testing        
       end
+      
+      it_behaves_like "a plugin that doesn't allow switches"
+      it_behaves_like "a plugin that doesn't allow args"
+      it_behaves_like "a plugin that requires login"
       
       describe :want_command do
         it "should want the hide command" do
@@ -18,16 +22,6 @@ module AresMUSH
         it "should not want another command" do
           cmd.stub(:root_is?).with("hide") { false }
           handler.want_command?(client, cmd).should be_false
-        end
-      end
-      
-      describe :validate do
-        it "should incorporate the login check" do
-          handler.methods.should include :validate_check_for_login
-        end
-        
-        it "should incorporate the no args check" do
-          handler.methods.should include :validate_no_switches_or_args
         end
       end
 

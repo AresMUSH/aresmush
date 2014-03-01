@@ -16,7 +16,7 @@ RSpec.configure do |c|
 end
 
 module AresMUSH
-  module CommandTestHelper
+  module PluginCmdTestHelper
     include MockClient
     
     attr_accessor :client, :char, :cmd, :handler
@@ -31,6 +31,25 @@ module AresMUSH
       @handler = handler_class.new
       @handler.client = @client
       @handler.cmd = @cmd
-    end    
-  end
+    end  
+    
+    shared_examples "a plugin that doesn't allow switches" do
+      it "should include the no switch validator" do
+        handler.allowed_switches.should eq []
+        handler.methods.should include :validate_allowed_switches
+      end
+    end
+
+    shared_examples "a plugin that doesn't allow args" do
+      it "should include the no switch validator" do
+        handler.methods.should include :validate_no_args
+      end
+    end
+      
+    shared_examples "a plugin that requires login" do
+      it "should include the login validator" do
+        handler.methods.should include :validate_check_for_login
+      end
+    end
+  end  
 end

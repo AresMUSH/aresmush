@@ -4,7 +4,8 @@ module AresMUSH
       include AresMUSH::Plugin
 
       # Validators
-      dont_allow_switches_or_args
+      no_args
+      no_switches
       must_be_logged_in
       
       def want_command?(client, cmd)

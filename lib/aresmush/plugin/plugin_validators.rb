@@ -10,9 +10,9 @@ module AresMUSH
       nil
     end
     
-    def validate_check_for_allowed_switches
-      return nil if cmd.switch.nil?
-      return t('dispatcher.cmd_no_switches') if self.allowed_switches.nil? || self.allowed_switches.empty?
+    def validate_allowed_switches
+      return nil if cmd.switch.nil? || self.allowed_switches.nil?
+      return t('dispatcher.cmd_no_switches') if self.allowed_switches.empty?
       return t('dispatcher.cmd_invalid_switch') if !self.allowed_switches.include?(cmd.switch)
       return nil
     end
@@ -25,10 +25,9 @@ module AresMUSH
         end
       end
       
-      def dont_allow_switches_or_args
-        send :define_method, "validate_no_switches_or_args" do
+      def no_args
+        send :define_method, "validate_no_args" do
           return t('dispatcher.cmd_no_switches_or_args') if !cmd.args.nil?
-          return t('dispatcher.cmd_no_switches_or_args') if !cmd.switch.nil?
           return nil
         end
       end
@@ -42,6 +41,10 @@ module AresMUSH
             
       def allow_switch(switch)
         allow_switches([switch])
+      end
+      
+      def no_switches
+        allow_switches([])
       end
     end
     

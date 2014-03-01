@@ -4,13 +4,16 @@ module AresMUSH
   module Describe
 
     describe DescCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
       
       before do
         init_handler(DescCmd, "desc name=description")
         SpecHelpers.stub_translate_for_testing        
-      end  
-    
+      end
+      
+      it_behaves_like "a plugin that doesn't allow switches"
+      it_behaves_like "a plugin that requires login"
+      
       describe :validate_syntax do
         it "should make sure the target is specified" do
           handler.stub(:target) { nil }

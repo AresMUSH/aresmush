@@ -3,7 +3,7 @@ require_relative "../../../plugin_test_loader"
 module AresMUSH
   module Login
     describe ConnectCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
       
       before do
         init_handler(ConnectCmd, "connect Bob bobpassword")

@@ -3,7 +3,7 @@ require_relative "../../../plugin_test_loader"
 module AresMUSH
   module Manage
     describe LoadCmd do
-      include CommandTestHelper
+      include PluginCmdTestHelper
   
       before do
         init_handler(LoadCmd, "load")
@@ -11,16 +11,9 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
-      describe :validate do
-        it "should incorporate the login check" do
-          handler.methods.should include :validate_check_for_login
-        end
-        
-        it "should not have any switches" do
-          handler.allowed_switches.should be_nil
-        end
-      end
-      
+      it_behaves_like "a plugin that doesn't allow switches"
+      it_behaves_like "a plugin that requires login"
+            
       describe :validate_load_target do
         it "should reject command if no args specified" do
           handler.stub(:load_target) { nil }

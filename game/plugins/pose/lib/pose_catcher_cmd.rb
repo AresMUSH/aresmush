@@ -5,6 +5,7 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
+      no_switches
       
       def want_command?(client, cmd)
         cmd.raw.start_with?("\"") ||
@@ -23,7 +24,7 @@ module AresMUSH
       end 
 
       # It will get mixed up and think that "who/bar" has a switch      
-      def validate_check_for_allowed_switches
+      def validate_allowed_switches
         nil
       end     
     end

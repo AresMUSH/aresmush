@@ -4,6 +4,9 @@ module AresMUSH
       include AresMUSH::Plugin
       
       attr_accessor :charname, :password
+
+      # Validators
+      no_switches
       
       def want_command?(client, cmd)
         cmd.root_is?("create")

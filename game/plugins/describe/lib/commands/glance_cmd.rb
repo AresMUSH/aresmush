@@ -8,9 +8,10 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
-      
+      no_switches
+            
       def want_command?(client, cmd)
-        cmd.root_is?("glance")
+        cmd.root_is?("glance") || cmd.root_is?("shortdesc")
       end
 
       def crack!
