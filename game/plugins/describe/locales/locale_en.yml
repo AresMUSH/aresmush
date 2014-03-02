@@ -4,6 +4,15 @@ en:
        invalid_glance_syntax: "You must specify a description."
        desc_set: "You set the description on %{name}."
        glance_set: "You set your description at a glance."
+       
        nowhere: Nowhere
        empty: "Empty!"
        no_exits: "No exits!"
+       
+       outfit_does_not_exist: "Outfit %{name} does not exist."
+       outfit_created: "Outfit created."
+       outfit_deleted: "Outfit deleted."
+       outfit: "Outfit %{name}"
+       outfits: "Outfits"
+       invalid_wear_syntax: "You must specify a list of outfits to wear."
+       outfits_worn: "You wear the outfits."

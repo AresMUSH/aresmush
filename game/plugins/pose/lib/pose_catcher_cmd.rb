@@ -22,11 +22,6 @@ module AresMUSH
       def log_command
         # Don't log poses
       end 
-
-      # It will get mixed up and think that "who/bar" has a switch      
-      def validate_allowed_switches
-        nil
-      end     
     end
   end
 end

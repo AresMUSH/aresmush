@@ -2,9 +2,7 @@ module AresMUSH
   module Help
     class HelpCmd
       include AresMUSH::Plugin
-      
-      allow_switch 'load'
-      
+            
       def want_command?(client, cmd)
         cmd.root.end_with?("help")
       end

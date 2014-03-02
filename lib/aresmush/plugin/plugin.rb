@@ -11,12 +11,7 @@ module AresMUSH
     end
     
     attr_accessor :client, :cmd
-    
-    # No switches are enabled by default.
-    # You can override this by specifying either:
-    #   allow_switch 'switchname' or
-    #   allow_switches [ 'switch1', 'switch2' ]
-    
+        
     # Override this with the processing needed to tell if you want a particular command
     # *from a char who is logged in*.
     #
@@ -90,6 +85,11 @@ module AresMUSH
     #     return t(your_plugin.invalid_syntax) if self.foo.nil?
     #     return nil
     #   end
+    # 
+    # Several common validators are defined.
+    #   - must_be_logged_in
+    #   - no_switches
+    #   - no_args
     
     # Override this with the details of your command handling.
     def handle

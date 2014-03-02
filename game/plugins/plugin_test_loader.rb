@@ -35,8 +35,7 @@ module AresMUSH
     
     shared_examples "a plugin that doesn't allow switches" do
       it "should include the no switch validator" do
-        handler.allowed_switches.should eq []
-        handler.methods.should include :validate_allowed_switches
+        handler.methods.should include :validate_no_switches
       end
     end
 

@@ -16,6 +16,10 @@ class String
     self.gsub(/\b('?[a-z])/) { $1.capitalize }
   end   
   
+  def normalize
+    self.downcase.strip.titlecase
+  end
+    
   def code_gsub(find, replace)
     str = self
     

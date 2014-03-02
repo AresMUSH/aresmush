@@ -48,6 +48,11 @@ module AresMUSH
       end
     end
 
+    describe :normalize do
+      it "should clean up funky spacing and capitalization" do
+        "    a VERY long ENgagEMent    ".normalize.should eq "A Very Long Engagement"
+      end
+    end
 
     describe :code_gsub do
       it "should replace a code" do
