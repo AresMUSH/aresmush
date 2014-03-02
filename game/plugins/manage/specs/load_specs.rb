@@ -10,6 +10,39 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
+      it_behaves_like "a plugin that doesn't allow switches"
+      it_behaves_like "a plugin that requires login"
+            
+      describe :want_command do
+        it "should want the load command" do
+          handler.want_command?(client, cmd).should be_true
+        end
+        
+        it "should not want another command" do
+          cmd.stub(:root_is?).with("load") { false }
+          handler.want_command?(client, cmd).should be_false
+        end
+      end
+      
+      describe :crack! do
+        it "should set the load target" do          
+          handler.crack!
+          handler.load_target.should eq 'foo'
+        end
+      end
+      
+      describe :validate_load_target do
+        it "should reject command if no args specified" do
+          handler.stub(:load_target) { nil }
+          handler.validate_load_target.should eq 'manage.invalid_load_syntax'
+        end
+        
+        it "should accept command otherwise" do
+          client.stub(:logged_in?) { true }
+          handler.validate_load_target.should eq nil
+        end
+      end
+      
       describe :handle do
         context "load config" do
           before do
