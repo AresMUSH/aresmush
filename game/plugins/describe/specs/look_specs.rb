@@ -1,18 +1,49 @@
-require_relative "../../../plugin_test_loader"
+require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module Describe
-  
+  module Describe  
     describe LookCmd do
       include PluginCmdTestHelper
       
       before do
         init_handler(LookCmd, "look something")
-        handler.crack!
         SpecHelpers.stub_translate_for_testing        
       end
       
+      it_behaves_like "a plugin that doesn't allow switches"
+      it_behaves_like "a plugin that requires login"
+      
+      describe :want_command? do
+        it "wants the look command" do
+          cmd.stub(:root_is?).with("look") { true }
+          handler.want_command?(client, cmd).should be_true
+        end
+        
+        it "doesn't want another command" do
+          cmd.stub(:root_is?).with("look") { false }
+          handler.want_command?(client, cmd).should be_false
+        end
+      end
+      
+      describe :crack do
+        it "should set the target" do
+          init_handler(LookCmd, "look Bob's Room")
+          handler.crack!
+          handler.target.should eq "Bob's Room"
+        end
+        
+        it "should use here if there's no target" do
+          init_handler(LookCmd, "look")
+          handler.crack!
+          handler.target.should eq "here"
+        end
+      end
+      
       describe :handle do
+        before do
+          handler.crack!
+        end
+        
         context "target found" do
           before do
             @model = double
