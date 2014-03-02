@@ -7,6 +7,12 @@ module AresMUSH
       
       before do
         init_handler(WearCmd, "wear something")
+        
+        char.stub(:outfit).with("a") { "a desc" }
+        char.stub(:outfit).with("b") { "b desc" }
+        Describe.stub(:outfit).with("a") { "a desc" }
+        Describe.stub(:outfit).with("b") { "b desc" }
+        
         SpecHelpers.stub_translate_for_testing        
       end        
 
@@ -45,32 +51,32 @@ module AresMUSH
         end
         
         it "should be OK if all the descs exist" do
-          char.stub(:outfits) { { "a" => "a desc", "b" => "b desc" } }
           handler.stub(:names) { [ "a", "b" ] }
           handler.validate_outfits_exist.should be_nil
         end
 
         it "should fail if one of the descs doesn't exist" do
-          char.stub(:outfits) { { "a" => "a desc", "b" => "b desc" } }
-          handler.stub(:names) { [ "a", "c", "b" ] }
+          char.stub(:outfit).with("c") { nil }
+          Describe.stub(:outfit).with("c") { nil }
+          
+          handler.stub(:names) { [ "a", "c" ] }
           handler.validate_outfits_exist.should eq "describe.outfit_does_not_exist"
         end
       end
       
       describe :handle do
         before do
-          char.stub(:outfits) { { "a" => "a desc", "b" => " b desc" } }
           handler.stub(:names) { [ "a", "b" ] }
         end
         
         it "should set the character description to all the outfits" do
-          char.should_receive(:description=).with("a desc b desc")
+          Describe.should_receive(:set_desc).with(char, "a descb desc")
           client.stub(:emit_success)
           handler.handle
         end
         
         it "should emit success" do
-          char.stub(:description=)
+          Describe.stub(:set_desc)
           client.should_receive(:emit_success).with('describe.outfits_worn')
           handler.handle
         end

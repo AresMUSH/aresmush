@@ -17,15 +17,20 @@ module AresMUSH
       end
       
       def validate_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if !client.char.outfits.has_key?(self.name)
+        valid_outfit = !client.char.outfit(self.name).nil? || !Describe.outfit(self.name).nil?
+        return t('describe.outfit_does_not_exist', :name => self.name) if !valid_outfit
         return nil
       end
       
       def handle
         output = "%l1"
         output << "%r%xh" << t('describe.outfit', :name => self.name) << "%xn"
-        output << "%r" << client.char.outfits[self.name]
-        output << "%r%l1"
+        output << "%r" 
+        outfit = client.char.outfit(self.name)
+        if (outfit.nil?)
+          outfit = Describe.outfit(self.name)
+        end
+        output << outfit << "%r%l1"
         client.emit output
       end
     end    

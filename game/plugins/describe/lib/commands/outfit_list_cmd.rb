@@ -12,11 +12,21 @@ module AresMUSH
       
       def handle
         output = "%l1" << "%r"
-        output << "%xh" << t('describe.outfits') << "%xn"
+        
+        output << "%xh" << t('describe.your_outfits') << "%xn"
         client.char.outfits.keys.each do |k|
           output << "%r" << k
         end
+
+        output << "%r%r"
+        
+        output << "%xh" << t('describe.game_outfits') << "%xn"
+        Global.config['describe']['outfits'].keys.each do |k|
+          output << "%r" << k
+        end
+
         output << "%r%l1"
+        
         client.emit output
       end
     end

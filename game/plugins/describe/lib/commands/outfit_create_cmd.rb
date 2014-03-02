@@ -21,6 +21,7 @@ module AresMUSH
       
       def handle
         client.char.outfits[self.name] = self.desc
+        client.char.save!
         client.emit_success t('describe.outfit_created')
       end
     end

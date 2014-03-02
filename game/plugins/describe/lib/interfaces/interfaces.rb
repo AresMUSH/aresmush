@@ -13,12 +13,5 @@ module AresMUSH
       end
       return renderer.render(model)
     end
-          
-    def self.set_desc(model, desc)  
-      Global.logger.debug("Setting desc: #{model.name} #{desc}")
-      
-      model.description = desc
-      model.save!
-    end
   end
 end

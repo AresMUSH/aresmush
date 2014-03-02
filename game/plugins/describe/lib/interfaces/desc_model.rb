@@ -6,8 +6,12 @@ module AresMUSH
     
     before_create :initialize_char
     
-    def initialize_char
-      @outfits = {}
+    def has_outfit?(name)
+      outfits.has_key?(name)
+    end
+    
+    def outfit(name)
+     outfits[name]
     end
   end
   
@@ -17,5 +21,5 @@ module AresMUSH
   
   class Exit
     key :description, String
-  end  
+  end    
 end

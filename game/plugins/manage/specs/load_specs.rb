@@ -1,4 +1,4 @@
-require_relative "../../../plugin_test_loader"
+require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Manage
@@ -38,7 +38,7 @@ module AresMUSH
         end
         
         it "should accept command otherwise" do
-          client.stub(:logged_in?) { true }
+          handler.stub(:load_target) { "foo" }
           handler.validate_load_target.should eq nil
         end
       end
