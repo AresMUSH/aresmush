@@ -7,7 +7,7 @@ module AresMUSH
       no_switches
       
       def want_command?(client, cmd)
-        cmd.root_is?("echo") || cmd.root_is?("think")
+        cmd.root_is?("echo")
       end
       
       def handle
