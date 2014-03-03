@@ -11,12 +11,11 @@ module AresMUSH
       no_switches
             
       def want_command?(client, cmd)
-        cmd.root_is?("glance") || cmd.root_is?("shortdesc")
+        cmd.root_is?("glance")
       end
 
       def crack!
-        cmd.crack!(/(?<desc>.+)/)
-        self.desc = cmd.args.desc
+        self.desc = cmd.args
       end
       
       def validate_syntax
