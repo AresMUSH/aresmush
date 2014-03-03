@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     key :description, String
-    key :glance, String
+    key :shortdesc, String
     key :outfits, Hash
     
     before_create :initialize_char

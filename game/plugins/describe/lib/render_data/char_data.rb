@@ -15,8 +15,8 @@ module AresMUSH
         @char.description
       end
       
-      def glance
-        @char.glance.nil? ? "" : "- #{@char.glance}"
+      def shortdesc
+        @char.shortdesc.nil? ? "" : "- #{@char.shortdesc}"
       end
     end
   end

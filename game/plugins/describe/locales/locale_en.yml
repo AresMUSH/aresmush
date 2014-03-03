@@ -1,9 +1,9 @@
 en:
     describe:
        invalid_desc_syntax: "You must supply a target and description."
-       invalid_glance_syntax: "You must specify a description."
+       invalid_shortdesc_syntax: "You must specify a description."
        desc_set: "You set the description on %{name}."
-       glance_set: "You set your description at a glance."
+       shortdesc_set: "You set your short description."
        
        nowhere: Nowhere
        empty: "Empty!"

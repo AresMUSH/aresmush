@@ -1,7 +1,7 @@
 module AresMUSH
 
   module Describe
-    class GlanceCmd
+    class ShortdescCmd
       include AresMUSH::Plugin
       
       attr_accessor :desc
@@ -11,7 +11,7 @@ module AresMUSH
       no_switches
             
       def want_command?(client, cmd)
-        cmd.root_is?("glance")
+        cmd.root_is?("shortdesc")
       end
 
       def crack!
@@ -19,14 +19,14 @@ module AresMUSH
       end
       
       def validate_syntax
-        return t('describe.invalid_glance_syntax') if desc.nil?
+        return t('describe.invalid_shortdesc_syntax') if desc.nil?
         return nil
       end
       
       def handle
-        client.char.glance = desc
+        client.char.shortdesc = desc
         client.char.save!
-        client.emit_success(t('describe.glance_set'))
+        client.emit_success(t('describe.shortdesc_set'))
       end
         
     end
