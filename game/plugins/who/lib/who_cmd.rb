@@ -15,7 +15,7 @@ module AresMUSH
       end
 
       def want_command?(client, cmd)
-        cmd.root_is?("who") || cmd.root_is?("where")
+        cmd.root_is?("who")
       end
       
       def handle

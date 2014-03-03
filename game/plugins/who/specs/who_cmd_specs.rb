@@ -12,6 +12,9 @@ module AresMUSH
       
       it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that doesn't allow args"
+      it_behaves_like "a plugin that expects a single root" do
+        let(:expected_root) { "who" }
+      end
       
       describe :initialize do
         it "should read the templates" do
@@ -36,24 +39,6 @@ module AresMUSH
           WhoRenderer.should_receive(:new).with(1, 2, 3)
           WhoCmd.new
         end
-      end
-      
-      describe :want_command do
-        it "should want the who command" do
-          handler.want_command?(client, cmd).should be_true
-        end
-
-        it "should want the where command" do
-          cmd.stub(:root_is?).with("who") { false }
-          cmd.stub(:root_is?).with("where") { true }
-          handler.want_command?(client, cmd).should be_true
-        end 
-        
-        it "should not want another command" do
-          cmd.stub(:root_is?).with("who") { false }
-          cmd.stub(:root_is?).with("where") { false }
-          handler.want_command?(client, cmd).should be_false
-        end        
       end
       
       describe :handle do        

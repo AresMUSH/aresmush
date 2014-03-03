@@ -14,19 +14,9 @@ module AresMUSH
       
       it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-      
-      describe :want_command? do
-        it "wants the desc command" do
-          cmd.stub(:root_is?).with("desc") { true }
-          handler.want_command?(client, cmd).should be_true
-        end
-
-        it "doesn't want another command" do
-          cmd.stub(:root_is?).with("desc") { false }
-          cmd.stub(:logged_in?) { true }
-          handler.want_command?(client, cmd).should be_false
-        end
-      end            
+      it_behaves_like "a plugin that expects a single root" do
+        let(:expected_root) { "desc" }
+      end
       
       describe :crack do
         it "should crack a command missing args" do
