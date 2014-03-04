@@ -7,7 +7,7 @@ module AresMUSH
       must_be_logged_in
       
       def want_command?(client, cmd)
-        cmd.root_is?("load") && cmd.switch == "locale"
+        cmd.root_is?("load") && cmd.args == "locale"
       end
 
       # TODO - validate permissions

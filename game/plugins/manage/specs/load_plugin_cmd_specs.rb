@@ -15,19 +15,19 @@ module AresMUSH
       describe :want_command? do
         it "should want the load plugin cmd" do
           cmd.stub(:root_is?).with("load") { true }
-          cmd.stub(:args) { "config" }
+          cmd.stub(:args) { "plugin" }
           handler.want_command?(client, cmd).should be_true
         end
 
         it "should not want another cmd" do
           cmd.stub(:root_is?).with("load") { false }
-          cmd.stub(:args) { "config" }
+          cmd.stub(:args) { "plugin" }
           handler.want_command?(client, cmd).should be_false
         end
 
         it "should not want a different load type" do
           cmd.stub(:root_is?).with("load") { true }
-          cmd.stub(:args) { "plugin" }
+          cmd.stub(:args) { "config" }
           handler.want_command?(client, cmd).should be_false
         end
       end
