@@ -10,8 +10,6 @@ module AresMUSH
         
         char.stub(:outfit).with("a") { "a desc" }
         char.stub(:outfit).with("b") { "b desc" }
-        Describe.stub(:outfit).with("a") { "a desc" }
-        Describe.stub(:outfit).with("b") { "b desc" }
         
         SpecHelpers.stub_translate_for_testing        
       end        
@@ -49,7 +47,6 @@ module AresMUSH
 
         it "should fail if one of the descs doesn't exist" do
           char.stub(:outfit).with("c") { nil }
-          Describe.stub(:outfit).with("c") { nil }
           
           handler.stub(:names) { [ "a", "c" ] }
           handler.validate_outfits_exist.should eq "describe.outfit_does_not_exist"

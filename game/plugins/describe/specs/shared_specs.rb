@@ -19,27 +19,5 @@ module AresMUSH
         end        
       end
     end
-    
-    describe :outfits do
-      it "should get the outfits from the config" do
-        outfits = { 'foo' => 'foo desc', 'bar' => 'bar desc' }
-        Global.stub(:config) { { 'describe' => { 'outfits' => outfits } } }
-        Describe.outfits.should eq outfits
-      end
-    end
-    
-    describe :outfit do
-      before do
-        Describe.stub(:outfits) { { 'foo' => 'foo desc', 'bar' => 'bar desc' } }
-      end
-      
-      it "should return nil if the outfit doesn't exist" do
-        Describe.outfit("zzz").should eq nil
-      end
-
-      it "should get the outfit by name" do
-        Describe.outfit('foo').should eq 'foo desc'
-      end
-    end
   end
 end

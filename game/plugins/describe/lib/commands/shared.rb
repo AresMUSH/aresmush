@@ -6,13 +6,5 @@ module AresMUSH
       model.description = desc
       model.save!
     end
-  
-    def self.outfits
-      Global.config['describe']['outfits']
-    end
-  
-    def self.outfit(name)
-      outfits[name]
-    end
   end
 end
