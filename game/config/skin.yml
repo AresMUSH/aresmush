@@ -1,4 +1,4 @@
-theme:
+skin:
     # Note:  line1 through line4 have shortcuts defined in the formatter %l1 - %l4
     # However you can define any extra lines you wish.
     line1: "%x!+==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+%xn"

@@ -1,9 +1,13 @@
 en:
     manage:
-        invalid_load_syntax: "Please specify a plugin name or 'config' of 'locale'."
-        plugin_loaded: "Plugin '%{name}' reloaded."
+        invalid_plugin_load_syntax: "Please specify a plugin name."
+        plugin_loaded: "Plugin '%{name}' (including config and locale) reloaded."
         plugin_not_found: "Plugin '%{name}' not found.  Please check your spelling."
         error_loading_plugin: "Problem loading plugin '%{name}': %{error}"
         config_loaded: "Configuration reloaded."
         error_loading_config: "Problem loading configuration: %{error}"
-        
+        locale_loaded: "Locale reloaded."
+        error_loading_locale: "Problem loading locale: %{error}"
+        config_sections: "Config Sections"
+        config_section: "Config Section: %{name}"
+        invalid_config_section: "That config section does not exist."
