@@ -9,8 +9,8 @@ module AresMUSH
         return FindResult.new(room, nil)
       end
 
-      chars = Character.find_by_room_id_and_name(room.id, name)
-      exits = Exit.find_by_source_id_and_name(room.id, name)
+      chars = Character.find_by_room_id_and_name_upcase(room.id, name.upcase)
+      exits = Exit.find_by_source_id_and_name_upcase(room.id, name.upcase)
       contents = [chars, exits].flatten(1).select { |c| !c.nil? }   
             
       SingleResultSelector.select(contents)

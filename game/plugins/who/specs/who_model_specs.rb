@@ -36,16 +36,10 @@ module AresMUSH
   describe Character do 
     describe :who_location do
       before do 
-        SpecHelpers.stub_translate_for_testing
         @char = Character.new
       end
-    
-      it "should hide a hidden char" do
-        @char.hidden = true
-        @char.who_location.should eq "who.hidden"
-      end
       
-      it "should return the location of a visible char" do
+      it "should return the locationr" do
         room = double
         @char.stub(:room) { room }
         room.should_receive(:name) { "Room Name" }

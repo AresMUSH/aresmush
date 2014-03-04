@@ -45,6 +45,11 @@ module AresMUSH
         before do
           @client1 = double("Client1")
           @client2 = double("Client2")
+          @client3 = double("Client3")
+          
+          @client1.stub(:hidden) { false }
+          @client2.stub(:hidden) { true }
+          @client3.stub(:hidden) { false }
           
           @renderer = double
           @renderer.stub(:render) { "ABC" }
@@ -53,15 +58,15 @@ module AresMUSH
           
           client_monitor = double
           Global.stub(:client_monitor) { client_monitor }
-          client_monitor.stub(:logged_in_clients) { [@client1, @client2] }
+          client_monitor.stub(:logged_in_clients) { [@client1, @client2, @client3] }
           
           # Need to do this again now that we've stubbed out the client monitor.
           init_handler(WhoCmd, "who")                 
         end
 
-        it "should call the renderer with the clients" do
+        it "should call the renderer with visible clients" do
           client.stub(:emit)
-          @renderer.should_receive(:render).with([@client1, @client2]) { "" }
+          @renderer.should_receive(:render).with([@client1, @client3]) { "" }
           handler.handle
         end
         

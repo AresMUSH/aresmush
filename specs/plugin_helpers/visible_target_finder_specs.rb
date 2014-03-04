@@ -29,8 +29,8 @@ module AresMUSH
         room = double
         room.stub(:id) { 1 }
         @client.stub(:room) { room }
-        Character.should_receive(:find_by_room_id_and_name).with(1, "A") { [double] }
-        Exit.stub(:find_by_source_id_and_name) { [] }
+        Character.should_receive(:find_by_room_id_and_name_upcase).with(1, "A") { [double] }
+        Exit.stub(:find_by_source_id_and_name_upcase) { [] }
         VisibleTargetFinder.find("A", @client)
       end
       
@@ -38,8 +38,8 @@ module AresMUSH
         room = double
         room.stub(:id) { 1 }
         @client.stub(:room) { room }
-        Character.stub(:find_by_room_id_and_name) { [] }
-        Exit.should_receive(:find_by_source_id_and_name).with(1, "A") { [double] }
+        Character.stub(:find_by_room_id_and_name_upcase) { [] }
+        Exit.should_receive(:find_by_source_id_and_name_upcase).with(1, "A") { [double] }
         VisibleTargetFinder.find("A", @client)
       end
       
@@ -50,8 +50,8 @@ module AresMUSH
         char1 = double
         char2 = double
         exit = double
-        Character.stub(:find_by_room_id_and_name) { [char1, char2] }
-        Exit.stub(:find_by_source_id_and_name) { [exit] }
+        Character.stub(:find_by_room_id_and_name_upcase) { [char1, char2] }
+        Exit.stub(:find_by_source_id_and_name_upcase) { [exit] }
         result = FindResult.new(nil, "an error")
         SingleResultSelector.should_receive(:select).with([char1, char2, exit]) { result }
         VisibleTargetFinder.find("A", @client).should eq result      
@@ -62,8 +62,8 @@ module AresMUSH
         room.stub(:id) { 1 }
         @client.stub(:room) { room }
         char = double
-        Character.stub(:find_by_room_id_and_name) { [char] }
-        Exit.stub(:find_by_source_id_and_name) { [nil] }
+        Character.stub(:find_by_room_id_and_name_upcase) { [char] }
+        Exit.stub(:find_by_source_id_and_name_upcase) { [nil] }
         result = FindResult.new(char, nil)
         SingleResultSelector.should_receive(:select).with([char]) { result }
         VisibleTargetFinder.find("A", @client).should eq result      
