@@ -11,23 +11,7 @@ module AresMUSH
       end
       
       def handle
-        output = "%l1" << "%r"
-        
-        output << "%xh" << t('describe.your_outfits') << "%xn"
-        client.char.outfits.keys.each do |k|
-          output << "%r" << k
-        end
-
-        output << "%r%r"
-        
-        output << "%xh" << t('describe.game_outfits') << "%xn"
-        Global.config['describe']['outfits'].keys.each do |k|
-          output << "%r" << k
-        end
-
-        output << "%r%l1"
-        
-        client.emit output
+        client.emit BorderedDisplay.list(client.char.outfits.keys, t('describe.your_outfits'))
       end
     end
   end

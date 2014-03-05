@@ -9,7 +9,11 @@ class String
     parts = self.partition(sep)        # Returns [head, sep, tail]
     return parts[0] if parts[1] == ""  # sep empty if not found
     return parts[2]
-  end  
+  end
+  
+  def after(sep)
+    self.rest(sep)  # Just an alias
+  end
   
   # Fairly crude - doesn't worry about helper words or anything.  Should suffice for MUSH purposes.
   def titlecase
@@ -18,8 +22,8 @@ class String
   
   def normalize
     self.downcase.strip.titlecase
-  end
-    
+  end    
+  
   def code_gsub(find, replace)
     str = self
     

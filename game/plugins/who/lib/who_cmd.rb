@@ -21,7 +21,7 @@ module AresMUSH
       def handle
         logged_in = Global.client_monitor.logged_in_clients
         # TODO - Don't hide hidden people to staff
-        visible = logged_in.select { |c| !c.hidden }
+        visible = logged_in.select { |c| !c.char.hidden }
         client.emit @renderer.render(visible)
       end      
     end

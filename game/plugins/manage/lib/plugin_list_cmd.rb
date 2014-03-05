@@ -8,13 +8,14 @@ module AresMUSH
       no_args
       
       def want_command?(client, cmd)
-        cmd.root_is?("plugin") && cmd.switch.nil?
+        cmd.root_is?("plugins")
       end
 
       # TODO - validate permissions
       
       def handle
-        client.emit Global.plugin_manager.plugins
+        list = Global.plugin_manager.plugins.map { |p| p.class.name.rest("AresMUSH::") }
+        client.emit BorderedDisplay.table(list, 25, t('manage.plugins'))
       end
     end
   end

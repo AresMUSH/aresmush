@@ -4,6 +4,7 @@ module AresMUSH
   module Who
     describe WhoCmd do
       include PluginCmdTestHelper
+      include MockClient
 
       before do        
         init_handler(WhoCmd, "who")
@@ -43,13 +44,13 @@ module AresMUSH
       
       describe :handle do        
         before do
-          @client1 = double("Client1")
-          @client2 = double("Client2")
-          @client3 = double("Client3")
+          @client1 = build_mock_client
+          @client2 = build_mock_client
+          @client3 = build_mock_client
           
-          @client1.stub(:hidden) { false }
-          @client2.stub(:hidden) { true }
-          @client3.stub(:hidden) { false }
+          @client1[:char].stub(:hidden) { false }
+          @client2[:char].stub(:hidden) { true }
+          @client3[:char].stub(:hidden) { false }
           
           @renderer = double
           @renderer.stub(:render) { "ABC" }
@@ -58,7 +59,7 @@ module AresMUSH
           
           client_monitor = double
           Global.stub(:client_monitor) { client_monitor }
-          client_monitor.stub(:logged_in_clients) { [@client1, @client2, @client3] }
+          client_monitor.stub(:logged_in_clients) { [@client1[:client], @client2[:client], @client3[:client]] }
           
           # Need to do this again now that we've stubbed out the client monitor.
           init_handler(WhoCmd, "who")                 
@@ -66,7 +67,7 @@ module AresMUSH
 
         it "should call the renderer with visible clients" do
           client.stub(:emit)
-          @renderer.should_receive(:render).with([@client1, @client3]) { "" }
+          @renderer.should_receive(:render).with([@client1[:client], @client3[:client]]) { "" }
           handler.handle
         end
         

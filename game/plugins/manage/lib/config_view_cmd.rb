@@ -24,12 +24,9 @@ module AresMUSH
       # TODO - validate permissions
       
       def handle
-        output = "%l1"
-        output << "%r%xh#{t('manage.config_section', :name => self.section)}%xn"
-        output << "%r"
-        output << PP.pp(Global.config[self.section], "")
-        output << "%R%l1"
-        client.emit output
+        title = t('manage.config_section', :name => self.section)
+        text = PP.pp(Global.config[self.section], "")
+        client.emit BorderedDisplay.text(text, title)
       end
     end
   end

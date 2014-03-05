@@ -13,13 +13,7 @@ module AresMUSH
       # TODO - validate permissions
       
       def handle
-        output = "%l1"
-        output << "%r%xh#{t('manage.config_sections')}%xn"
-        Global.config.keys.each do |k|
-          output << "%r#{k}"
-        end
-        output << "%R%l1"
-        client.emit output
+        client.emit BorderedDisplay.table(Global.config.keys, 25, t('manage.config_sections'))
       end
     end
   end

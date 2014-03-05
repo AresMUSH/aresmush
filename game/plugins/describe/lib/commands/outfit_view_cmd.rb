@@ -23,15 +23,8 @@ module AresMUSH
       end
       
       def handle
-        output = "%l1"
-        output << "%r%xh" << t('describe.outfit', :name => self.name) << "%xn"
-        output << "%r" 
         outfit = client.char.outfit(self.name)
-        if (outfit.nil?)
-          outfit = Describe.outfit(self.name)
-        end
-        output << outfit << "%r%l1"
-        client.emit output
+        client.emit BorderedDisplay.text(outfit, t('describe.outfit', :name => self.name))
       end
     end    
   end
