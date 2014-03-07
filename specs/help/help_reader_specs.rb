@@ -4,32 +4,32 @@ require "aresmush"
 
 module AresMUSH
 
-  describe ConfigReader do
+  describe HelpReader do
 
-    describe :config_path do 
-      it "should be the game dir plus the config dir" do
+    describe :help_path do 
+      it "should be the game dir plus the help dir" do
         AresMUSH.stub(:game_path) { "game" }
-        ConfigReader.config_path.should eq File.join("game", "config")
+        HelpReader.help_path.should eq File.join("game", "help")
       end
     end
 
-    describe :config_files do 
+    describe :help_files do 
       it "searches for files in the config dir" do
         AresMUSH.stub(:game_path) { "game" }
-        Dir.should_receive(:[]).with(File.join("game", "config", "**")) { ["a", "b"]}
-        ConfigReader.config_files.should eq ["a", "b"]
+        Dir.should_receive(:[]).with(File.join("game", "help", "**")) { ["a", "b"]}
+        HelpReader.help_files.should eq ["a", "b"]
       end
     end
     
 
     describe :read do 
       before do
-        @reader = ConfigReader.new
-        ConfigReader.stub(:config_files) { ["a", "b"] }
-        PluginManager.should_receive(:config_files) { [ "c", "d" ]}        
+        @reader = HelpReader.new
+        HelpReader.stub(:help_files) { ["a", "b"] }
+        PluginManager.should_receive(:help_files) { [ "c", "d" ]}        
       end
       
-      it "should read the main and plugin config" do        
+      it "should read the main and plugin help" do        
         parsed1 = { "c" => "d" }
         parsed2 = { "e" => "f" }
         
@@ -37,7 +37,7 @@ module AresMUSH
         YamlFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed1 }
         YamlFileParser.should_receive(:read).with( ["c", "d"],  parsed1 ) { parsed2 }
         @reader.read 
-        @reader.config.should eq parsed2
+        @reader.help.should eq parsed2
       end      
     end
   end

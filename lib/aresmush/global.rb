@@ -13,6 +13,10 @@ module AresMUSH
       ConfigReader.config
     end
     
-    mattr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
+    def self.help
+      HelpReader.help
+    end
+    
+    mattr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :help_reader
   end
 end

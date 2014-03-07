@@ -26,8 +26,8 @@ module AresMUSH
 
     def read
       plugin_config = PluginManager.config_files
-      @@config = ConfigFileParser.read(ConfigReader.config_files, {} )
-      @@config = ConfigFileParser.read(plugin_config, @@config)
+      @@config = YamlFileParser.read(ConfigReader.config_files, {} )
+      @@config = YamlFileParser.read(plugin_config, @@config)
     end    
   end
 end

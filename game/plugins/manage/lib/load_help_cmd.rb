@@ -1,13 +1,13 @@
 module AresMUSH
   module Manage
-    class LoadConfigCmd
+    class LoadHelpCmd
       include AresMUSH::Plugin
 
       # Validators
       must_be_logged_in
       
       def want_command?(client, cmd)
-        cmd.root_is?("load") && cmd.args == "config"
+        cmd.root_is?("load") && cmd.args == "help"
       end
 
       # TODO - validate permissions
