@@ -17,8 +17,7 @@ module AresMUSH
       end
       
       def validate_outfit_exists
-        valid_outfit = !client.char.outfit(self.name).nil? || !Describe.outfit(self.name).nil?
-        return t('describe.outfit_does_not_exist', :name => self.name) if !valid_outfit
+        return t('describe.outfit_does_not_exist', :name => self.name) if client.char.outfit(self.name).nil?
         return nil
       end
       
