@@ -1,0 +1,4 @@
+en:
+    help:
+        toc: "%{category} Topics"
+        topic: "%{category}: %{topic}"

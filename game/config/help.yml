@@ -1,0 +1,9 @@
+help:
+    categories:
+        main:
+            command: help
+            title: "Player Help"
+        staff:
+            command: shelp
+            title: "Staff Help"
+            

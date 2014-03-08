@@ -16,7 +16,7 @@ main:
      
      %xcUsage: create <name> <password>%xn
     
-     Note: Name can only have one word. 2
+     Note: Name can only have one word.
   
     quit: |1
      Here is some help for the quit command.

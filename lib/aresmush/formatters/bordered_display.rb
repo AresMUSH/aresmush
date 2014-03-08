@@ -1,10 +1,11 @@
 module AresMUSH
   module BorderedDisplay
-    def self.text(text, title = nil)
+    def self.text(text, title = nil, leading_newline = true)
       output = "%l1"
       if (!title.nil?)
-        output << "%r%xh#{title}%xn"
+        output << "%r%xh#{title}%xn%r"
       end
+      output << "%r" if leading_newline
       output << text
       output << "%r%l1"
       return output
@@ -17,7 +18,7 @@ module AresMUSH
           output << "%r" << i
         end
       end
-      return BorderedDisplay.text(output, title)
+      return BorderedDisplay.text(output, title, false)
     end
   
     def self.table(items, column_width = 20, title = nil)
@@ -33,7 +34,7 @@ module AresMUSH
           count = count + 1
         end
       end
-      return BorderedDisplay.text(output, title)
+      return BorderedDisplay.text(output, title, false)
     end
   end
 end

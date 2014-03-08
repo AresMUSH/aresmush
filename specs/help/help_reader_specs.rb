@@ -40,5 +40,14 @@ module AresMUSH
         @reader.help.should eq parsed2
       end      
     end
+    
+    describe :categories do
+      it "should read the categories from the config mgr" do
+        Global.stub(:config) { {"help" => { "categories" => [ "a", "b" ] } } }
+        @reader = HelpReader.new
+        @reader.categories.should eq [ "a", "b" ]
+      end
+    end
+    
   end
 end

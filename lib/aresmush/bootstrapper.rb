@@ -15,6 +15,7 @@ module AresMUSH
       client_monitor = ClientMonitor.new(client_factory)
       server = Server.new
       db = Database.new
+      help_reader = HelpReader.new
             
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.
@@ -23,6 +24,7 @@ module AresMUSH
       Global.plugin_manager = plugin_manager
       Global.dispatcher = dispatcher
       Global.locale = locale
+      Global.help_reader = help_reader
             
       # Configure a trap for exiting.
       at_exit do
@@ -37,6 +39,7 @@ module AresMUSH
       
       locale.setup
       plugin_manager.load_all
+      help_reader.read
     
       Global.logger.debug Global.config
 

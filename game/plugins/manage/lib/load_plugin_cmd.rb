@@ -26,7 +26,10 @@ module AresMUSH
       
       def handle
         begin
-          AresMUSH.send(:remove_const, load_target.titlecase)
+          plugin_module_name = load_target.titlecase
+          if (AresMUSH.const_defined?(plugin_module_name))
+            AresMUSH.send(:remove_const, plugin_module_name)
+          end
           Global.plugin_manager.load_plugin(load_target)
           Global.locale.load!
           Global.config_reader.read

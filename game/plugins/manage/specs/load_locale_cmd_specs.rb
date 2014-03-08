@@ -6,31 +6,11 @@ module AresMUSH
       include PluginCmdTestHelper
   
       before do
-        init_handler(LoadLocaleCmd, "locale/load")
+        init_handler(LoadLocaleCmd, "load locale")
         SpecHelpers.stub_translate_for_testing
       end
       
       it_behaves_like "a plugin that requires login"
-      
-      describe :want_command? do
-        it "should want the load locale cmd" do
-          cmd.stub(:root_is?).with("load") { true }
-          cmd.stub(:args) { "locale" }
-          handler.want_command?(client, cmd).should be_true
-        end
-
-        it "should not want another cmd" do
-          cmd.stub(:root_is?).with("load") { false }
-          cmd.stub(:args) { "config" }
-          handler.want_command?(client, cmd).should be_false
-        end
-
-        it "should not want a different load type" do
-          cmd.stub(:root_is?).with("load") { true }
-          cmd.stub(:args) { "config" }
-          handler.want_command?(client, cmd).should be_false
-        end
-      end
       
       describe :handle do        
         before do

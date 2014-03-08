@@ -14,10 +14,10 @@ module AresMUSH
       
       def handle
         begin
-          Global.config_reader.read
-          client.emit_success t('manage.config_loaded')
+          Global.help_reader.read
+          client.emit_success t('manage.help_loaded')
         rescue Exception => e
-          client.emit_failure t('manage.error_loading_config', :error => e.to_s)
+          client.emit_failure t('manage.error_loading_help', :error => e.to_s)
         end
       end
       

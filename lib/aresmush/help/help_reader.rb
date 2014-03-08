@@ -16,6 +16,10 @@ module AresMUSH
       Dir[File.join(HelpReader.help_path, "**")]
     end
     
+    def categories
+      Global.config['help']['categories']
+    end
+    
     def help
       @@help
     end

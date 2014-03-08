@@ -1,46 +1,32 @@
 module AresMUSH
   module Help
+    
     class HelpCmd
       include AresMUSH::Plugin
+
+      attr_accessor :category
+      attr_accessor :topic
             
       def want_command?(client, cmd)
-        cmd.root.end_with?("help")
+        Help.valid_commands.include?(cmd.root) && !cmd.args.nil?
       end
-
-      # TODO - Validate 
+      
+      def crack!
+        self.category = Help.category_for_command(cmd.root)
+        self.topic = cmd.args
+      end
+      
+      # TODO - Validate permissions
+      # TODO - Validate topic exists and show alternatives
+      
       def handle
-        if (!cmd.switch)
-          show_help(client, cmd)
-        else
-          client.emit_success("You reload the help files.")
-          load_help        
-        end
+        text = Global.help[self.category][self.topic].chomp
+        category_title = Help.category_title(self.category)
+        title = t('help.topic', :category => category_title, :topic => self.topic.titlecase)
+        client.emit BorderedDisplay.text(text, title.center(78))
       end
       
-      def help_indices
-        Global.config['help']['indices']
-      end
-      
-      def find_index(prefix)
-        indices = help_indices
-        return indices[0] if prefix.nil?
-        indices.each do |i|
-           return i if i['prefix'] == prefix
-        end
-        return nil
-      end
-
-      def index_prefix(cmd)
-        match = /(?<prefix>\S+)*help/.match(cmd.root)
-        match[:prefix]
-      end
-      
-      def get_topics(index)
-        @help ||= load_help
-        @help[index['name']]
-      end
-            
-      def show_help(client, cmd)
+      def old_handle
         # This is just a prototype!
         # TODO - Clean up ugly method
         # TODO - write specs
@@ -80,14 +66,7 @@ module AresMUSH
           client.emit("Maybe you meant one of these: #{topics_string}")
         end
       end
-      
-      def load_help        
-        help = {}
-        PluginManager.help_files.each do |f|
-          help = help.merge_yaml(f)
-        end      
-        help  
-      end
+
     end
   end
 end
