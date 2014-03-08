@@ -2,3 +2,4 @@ en:
     help:
         toc: "%{category} Topics"
         topic: "%{category}: %{topic}"
+        not_found: "No topic found for '%{topic}'.  Maybe you meant one of these?"
