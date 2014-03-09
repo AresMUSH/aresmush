@@ -2,4 +2,5 @@ en:
     help:
         toc: "%{category} Topics"
         topic: "%{category}: %{topic}"
-        not_found: "No topic found for '%{topic}'.  Maybe you meant one of these?"
+        not_found_alternatives: "No topic found for '%{topic}'.  Maybe you meant one of these?"
+        not_found: "No help found for '%{topic}."

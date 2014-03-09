@@ -1,5 +1,5 @@
 module AresMUSH
-  module Help
+  module HelpSystem
     
     def self.valid_commands
       Global.help_reader.categories.values.map { |h| h["command"] }
@@ -26,7 +26,7 @@ module AresMUSH
       Global.help[category][title_match]
     end
     
-    def self.find_possible_topics(category, topic)
+    def self.search_topics(category, topic)
       possible_topics = Global.help[category].deep_match(/#{topic}/i)
       possible_topics.keys.map { |k| k.titlecase }
     end

@@ -10,6 +10,8 @@ module AresMUSH
       must_be_logged_in
       no_switches
       
+      # TODO - Permissions
+      
       def want_command?(client, cmd)
         cmd.root_is?("desc")
       end

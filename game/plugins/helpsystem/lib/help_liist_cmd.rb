@@ -1,28 +1,31 @@
 module AresMUSH
-  module Help
+  module HelpSystem
     
     class HelpListCmd
       include AresMUSH::Plugin
       attr_accessor :category
       
+      no_switches
+      
       def want_command?(client, cmd)
-        Help.valid_commands.include?(cmd.root) && cmd.args.nil?
+        HelpSystem.valid_commands.include?(cmd.root) && cmd.args.nil?
       end
 
       def crack!
-        self.category = Help.category_for_command(cmd.root)
+        self.category = HelpSystem.category_for_command(cmd.root)
       end
       
       # TODO - Validate permissions
       
       def handle
         toc = Global.help[self.category]["toc"]
+        raise IndexError, "Category #{self.category} does not have a table of contents." if toc.nil?
         topics = []
         toc.keys.each do |key|
           topics << "     %xh#{key.titlecase}%xn - #{toc[key]}"
         end
-        title = t('help.toc', :category => Help.category_title(self.category))
-        client.emit BorderedDisplay.list(topics, title.center(78))
+        title = t('help.toc', :category => HelpSystem.category_title(self.category))
+        client.emit BorderedDisplay.list(topics, title)
       end
     end
   end
