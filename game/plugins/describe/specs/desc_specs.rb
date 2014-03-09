@@ -14,9 +14,6 @@ module AresMUSH
       
       it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-      it_behaves_like "a plugin that expects a single root" do
-        let(:expected_root) { "desc" }
-      end
       
       describe :crack do
         it "should crack a command missing args" do

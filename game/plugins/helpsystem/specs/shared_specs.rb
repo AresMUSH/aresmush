@@ -1,13 +1,38 @@
 module AresMUSH
   module HelpSystem
-    describe Help do
+    describe HelpSystem do
       
       before do
         @reader = double
-        Global.stub(:help_reader) { @reader }
-        @reader.stub(:categories) { { "a" => { "title" => "a help", "command" => "help" }, "b" => { "title" => "b help", "command" => "bhelp" } } }
+        HelpSystem.stub(:categories) { 
+          { 
+                "a" => 
+                { "title" => "a help", 
+                  "command" => "help",
+                  "topics" => { "a topic" => "a.txt", "b topic" => "b.txt" }
+                },
+                "b" => 
+                { "title" => "b help", 
+                  "command" => "bhelp"
+                },
+              }
+        } # end stub
       end
     
+      describe :category do
+        it "should return a category by name" do
+          hash = { "title" => "b help", "command" => "bhelp" }
+          HelpSystem.category("b").should eq hash
+        end
+      end
+      
+      describe :topics do
+        it "should return a topic by name" do
+          hash = { "a topic" => "a.txt", "b topic" => "b.txt" }
+          HelpSystem.topics("a").should eq hash
+        end
+      end
+      
       describe :valid_commands do
         it "should enumerate the help indices with their prefixes" do
           HelpSystem.valid_commands.should eq [ "help", "bhelp" ]
@@ -35,11 +60,8 @@ module AresMUSH
       end
       
       describe :find_help do
-        before do
-          Global.stub(:help) {{ "a" => { "a topic" => "a topic text", "b topic" => "b topic text" }}}
-        end
-        
-        it "should search the help ignoring case" do
+        it "should search the help ignoring case and read the file" do
+          File.should_receive(:read).with("a.txt") { "a topic text" }
           HelpSystem.find_help("a", "A TOPic").should eq "a topic text"
         end
         
@@ -49,11 +71,7 @@ module AresMUSH
       end
       
       describe :search_topics do
-        before do
-          Global.stub(:help) {{ "a" => { "a topic" => "a topic text", "b topic" => "b topic text" }}}
-        end
-        
-        it "should return topics containing the keyword" do
+        it "should return topic names matching the keyword" do
           HelpSystem.search_topics("a", "topic").should eq [ "A Topic", "B Topic" ]
         end
         

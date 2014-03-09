@@ -14,7 +14,7 @@ module AresMUSH
       
       def want_command?(client, cmd)
         cmd.root_is?("load") && 
-        cmd.args != "locale" && cmd.args != "config" && cmd.args != "help"
+        cmd.args != "locale" && cmd.args != "config"
       end
 
       # TODO - validate permissions

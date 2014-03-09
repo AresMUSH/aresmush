@@ -34,8 +34,8 @@ module AresMUSH
           handler.stub(:category) { "cat" }
           handler.stub(:topic) { "topic" }
           AresMUSH::Locale.stub(:translate).with("help.topic", { :topic => "topic", :category => "cat title"}) { "topic title" }
-          AresMUSH::Locale.stub(:translate).with("help.not_found_alternatives", { :topic => "topic" }) { "not found" }
-                    AresMUSH::Locale.stub(:translate).with("help.not_found_alternatives", { :topic => "topic" }) { "not found alternatives" }
+          AresMUSH::Locale.stub(:translate).with("help.not_found_alternatives", { :topic => "topic" }) { "not found alternatives" }
+          AresMUSH::Locale.stub(:translate).with("help.not_found", { :topic => "topic" }) { "not found" }
         end
         
         it "should display the topic if found" do

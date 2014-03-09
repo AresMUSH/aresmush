@@ -17,9 +17,11 @@ module AresMUSH
   
   class Room
     key :description, String
+    key :shortdesc, String
   end
   
   class Exit
     key :description, String
+    key :shortdesc, String
   end    
 end

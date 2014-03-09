@@ -5,11 +5,13 @@ module AresMUSH
       handled = false
       with_error_handling(client, cmd) do
         Global.plugin_manager.plugins.each do |p|
-          if (p.want_command?(client, cmd))
-            p.on_command(client, cmd)
-            handled = true
-            break
-          end # if
+          with_error_handling(client, cmd) do
+            if (p.want_command?(client, cmd))
+              p.on_command(client, cmd)
+              handled = true
+              break
+            end # if
+          end # with error handling
         end # each
         if (!handled)
           Global.logger.info("Unrecognized command: #{cmd}")

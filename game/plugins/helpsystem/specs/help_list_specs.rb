@@ -23,7 +23,7 @@ module AresMUSH
       describe :handle do  
         before do
           handler.stub(:category) { "cat" }
-          Global.stub(:help) { { "cat" => { "toc" => { "a" => "a topic", "b" => "b topic" } } } }
+          HelpSystem.stub(:category).with("cat") { { "toc" => { "a" => "a topic", "b" => "b topic" } } }
           AresMUSH::Locale.stub(:translate).with("help.toc", { :category => "cat title" }) { "title" }        
         end
         
@@ -36,7 +36,7 @@ module AresMUSH
         end
         
         it "should raise an error if the toc is undefined" do
-          Global.stub(:help) { { "cat" => { "foo" => "x" }} }
+          HelpSystem.stub(:category).with("cat") { { "topics" => { "a" => "a topic", "b" => "b topic" } } }
           expect{handler.handle}.to raise_error(IndexError)
         end
       end

@@ -1,0 +1,15 @@
+help:
+    categories:
+        main:
+            toc:
+                getting started: Logging in n'at
+            topics:
+                getting started: 'game/plugins/login/help/getting started.txt'
+                connect: 'game/plugins/login/help/connect.txt'
+                create: 'game/plugins/login/help/create.txt'
+
+        staff:
+            toc:
+                bar: A test
+            topics:
+                bar: 'game/plugins/login/help/staff test.txt'

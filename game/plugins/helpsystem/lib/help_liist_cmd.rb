@@ -18,7 +18,7 @@ module AresMUSH
       # TODO - Validate permissions
       
       def handle
-        toc = Global.help[self.category]["toc"]
+        toc = HelpSystem.category(self.category)["toc"]
         raise IndexError, "Category #{self.category} does not have a table of contents." if toc.nil?
         topics = []
         toc.keys.each do |key|

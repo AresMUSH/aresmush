@@ -13,7 +13,7 @@ module AresMUSH
       # TODO - Permissions
       
       def want_command?(client, cmd)
-        cmd.root_is?("desc")
+        cmd.root_is?("desc") || cmd.root_is?("shortdesc")
       end
 
       def crack!
@@ -34,7 +34,11 @@ module AresMUSH
           return
         end
         model = find_result.target
-        Describe.set_desc(model, desc)
+        if (cmd.root_is?("shortdesc"))
+          model.shortdesc = desc
+        else
+          Describe.set_desc(model, desc)
+        end
         client.emit_success(t('describe.desc_set', :name => model.name))
       end
         

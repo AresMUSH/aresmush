@@ -1,0 +1,5 @@
+TODO Here is some help on the create command.
+     
+%xcUsage: create <name> <password>%xn
+    
+Note: Name can only have one word.

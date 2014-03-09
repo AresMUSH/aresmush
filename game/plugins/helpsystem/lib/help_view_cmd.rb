@@ -21,7 +21,13 @@ module AresMUSH
       # TODO - Validate permissions
       
       def handle
-        text = HelpSystem.find_help(self.category, self.topic)
+        begin
+          text = HelpSystem.find_help(self.category, self.topic)
+        rescue Exception => e
+          client.emit_failure t('help.error_loading_help', :topic => topic, :error => e)
+          return
+        end
+        
         if text.nil?
           possible_matches = HelpSystem.search_topics(self.category, self.topic)
           if (possible_matches.empty?)

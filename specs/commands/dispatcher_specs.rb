@@ -61,6 +61,14 @@ module AresMUSH
         @dispatcher.on_command(@client, @command)
       end
       
+      it "keeps asking plugins if they want the command after an error" do
+        @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
+        @plugin1.stub(:want_command?) { raise }
+        @plugin2.stub(:want_command?) { true }
+        @plugin2.should_receive(:on_command).with(@client, @command)
+        @dispatcher.on_command(@client, @command)
+      end
+      
       it "continues processing if the first plugin doesn't want the command" do
         @plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
         @plugin1.stub(:want_command?) { false }
