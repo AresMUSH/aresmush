@@ -2,11 +2,13 @@ help:
     categories:
         main:
             toc:
-                getting started: Logging in n'at
+                login: 'Creating, connecting and managing passwords.'
+                
             topics:
-                getting started: 'game/plugins/login/help/getting started.txt'
+                login: 'game/plugins/login/help/login.txt'
                 connect: 'game/plugins/login/help/connect.txt'
                 create: 'game/plugins/login/help/create.txt'
+                quit: 'game/plugins/login/help/quit.txt'
 
         staff:
             toc:

@@ -1,0 +1,8 @@
+You can reset someone's password and name:
+
+    %xcnewpassword <name>=<new password>%xn
+    %xcrename <old name>=<new name>%xn
+    
+You can also view someone's email:
+
+    %xcemail <name>%xn

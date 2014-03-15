@@ -1,0 +1,6 @@
+help:
+    categories:
+        main:
+            topics:
+                echo: 'game/plugins/echo/help/echo.txt'
+                think: 'game/plugins/echo/help/echo.txt'

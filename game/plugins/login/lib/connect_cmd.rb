@@ -32,7 +32,7 @@ module AresMUSH
         char = Character.find_by_name(charname)
         
         if (char.nil?)
-          client.emit_failure(t("login.char_not_found"))
+          client.emit_failure(t("db.no_char_found"))
           return
         end
         

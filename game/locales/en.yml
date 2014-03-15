@@ -15,6 +15,7 @@ en:
     db:
         object_not_found: I don't see that here.
         object_ambiguous: I don't know which one you mean.
+        no_char_found: There is no character with that name.
     
     object:
        say: '%{name} says, "%{msg}"'

@@ -98,7 +98,7 @@ module AresMUSH
           it "should fail if there isn't a matching char" do
             Character.should_receive(:find_by_name).with("Bob") { nil }
             Global.should_not_receive(:on_event)
-            client.should_receive(:emit_failure).with("login.char_not_found")
+            client.should_receive(:emit_failure).with("db.no_char_found")
             handler.handle
           end
                          

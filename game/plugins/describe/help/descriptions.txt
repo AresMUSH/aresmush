@@ -1,9 +1,14 @@
-Every character, room and exit has a %xhDescription%xn that tells you what you see when you look at it.
+Every character, room and exit has a description that tells you what you see when you look at it.  You can set this using the %xhdesc%n command.
 
-Description commands:
+   %xcdesc <name>=<description>%xn
 
-   %xhLook%xn - Look around you.
-   %xhDesc%xn - Set a description.
-   %xhShortdesc%xn - A shorter description used for at-a-glance viewing.
-   %xhOutfit%xn - Manage multiple outfits for your character's description.
-   %xhWear%xn - Wear your outfits.
+You can set a shorter description that is used whenever an at-a-glance description is needed.
+
+   %xcshortdesc <name>=<description>%xn
+
+You can also have multiple outfits for your character, managed using the %xhoutfits%xn command.  See %xchelp outfits%xn for more information.
+
+The %xhlook%xn command is used to look around.
+
+   %xclook <name>%xn
+   %xclook%xn  (shortcut for looking at 'here')

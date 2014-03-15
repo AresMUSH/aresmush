@@ -5,7 +5,6 @@ en:
        announce_char_created: "%{name} has been created."
        goodbye: "Goodbye!"
        char_name_taken: "Sorry, that name is already taken."
-       char_not_found: "Sorry, cannot find a character by that name."
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."
        invalid_password: "Password incorrect."
@@ -13,3 +12,5 @@ en:
        invalid_connect_syntax: "Please try 'connect <name> <password>'."
        invalid_create_syntax: "Please try 'create <name> <password>'."
        password_too_short: "Passwords must be at least 5 characters long."
+       no_email_is_registered: "There is no email registered for %{name}."
+       email_registered_is: "The email registered for %{name} is %{email}."

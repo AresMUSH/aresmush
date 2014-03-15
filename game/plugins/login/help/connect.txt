@@ -1,3 +1,0 @@
-TODO Here is some help on the connect command.
-     
-%xcUsage: connect <name> <password>%xn

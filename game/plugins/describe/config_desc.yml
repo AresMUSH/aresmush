@@ -6,15 +6,9 @@ help:
 
             topics:
                 descriptions: 'game/plugins/describe/help/descriptions.txt'
-                desc: 'game/plugins/describe/help/desc.txt'
-                look: 'game/plugins/describe/help/desc.txt'
-                shortdesc: 'game/plugins/describe/help/desc.txt'
+                desc: 'game/plugins/describe/help/descriptions.txt'
+                look: 'game/plugins/describe/help/descriptions.txt'
+                shortdesc: 'game/plugins/describe/help/descriptions.txt'
                 wear: 'game/plugins/describe/help/outfit.txt'
                 outfit: 'game/plugins/describe/help/outfit.txt'
                 outfits: 'game/plugins/describe/help/outfit.txt'
-
-        staff:
-            toc:
-                baz: A test
-            topics:
-                baz: 'help/staff test.txt'

@@ -1,0 +1,20 @@
+To get past the login screen, you need a character.  There are a number of 'guest' characters available that you can borrow just to log in and look around.  You can connect to one by typing:
+
+   %xcconnect guest guest%xn
+
+Also from the login screen, you can create a new character or connect to an existing one.  If you ever forget your password, log in as a guest and contact staff.
+
+    %xccreate <name> <password>%xn
+    %xcconnect <name> <password>%xn
+
+Names can only be one word, and will normally be your character's first or last name.  You should take care to consider the game's theme when choosing your name.
+
+You can associate an email address with your account, to enable staff to contact you.
+
+    %xcemail%xn - Views your registered email
+    %xcemail/set <email>%xn - Changes the email registered with your account.
+    
+Other login-related commands:
+
+    %xcquit%xn - Disconnects from the game.
+    %xcpassword <oldpassword> <newpassword>%xn - Changes your password.
