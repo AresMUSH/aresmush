@@ -36,6 +36,11 @@ module AresMUSH
     def root_only?
       @switch.nil? && @args.nil?
     end
+    
+    def switch_is?(switch)
+      return false if @switch.nil?
+      @switch.upcase == switch.upcase
+    end
   
   end
 end

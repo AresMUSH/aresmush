@@ -7,10 +7,9 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
-      character_must_exist self.name
 
       def want_command?(client, cmd)
-        cmd.root_is?("email")
+        cmd.root_is?("email") && cmd.switch.nil?
       end
 
       def crack!
@@ -20,6 +19,13 @@ module AresMUSH
       # TODO - validate permissions if viewing someone else's email
       
       def handle
+        char = Character.find_by_name(self.name)
+        
+        if (char.nil?)
+          client.emit_failure(t("db.no_char_found"))
+          return
+        end
+        
         if (char.email.nil?)
           client.emit_ooc(t('login.no_email_is_registered', :name => self.name))
         else

@@ -9,7 +9,7 @@ module AresMUSH
       must_be_logged_in
       
       def want_command?(client, cmd)
-        cmd.root_is?("outfit") && cmd.switch == "delete"
+        cmd.root_is?("outfit") && cmd.switch_is?("delete")
       end
       
       def crack!
