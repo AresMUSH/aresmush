@@ -13,12 +13,12 @@ module AresMUSH
       # TODO - Permissions
       
       def want_command?(client, cmd)
-        cmd.root_is?("desc") || cmd.root_is?("shortdesc")
+        cmd.root_is?("describe") || cmd.root_is?("shortdesc")
       end
 
       def crack!
         cmd.crack!(/(?<target>[^\=]+)\=(?<desc>.+)/)
-        self.target = cmd.args.target
+        self.target = trim_input(cmd.args.target)
         self.desc = cmd.args.desc
       end
       

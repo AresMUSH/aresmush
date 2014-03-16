@@ -17,12 +17,12 @@ module AresMUSH
 
       def crack!
         cmd.crack!(/(?<name>[^\=]+)\=(?<password>.+)/)
-        self.name = cmd.args.name
+        self.name = trim_input(cmd.args.name)
         self.new_password = cmd.args.password
       end
       
       def validate_old_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if self.name_or_old_password.nil?
+        return t('dispatcher.invalid_syntax', :command => 'passsword') if self.name.nil?
       end
       
       def validate_new_password
@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       def handle
-        char = Character.find_by_name(self.name.normalize)
+        char = Character.find_by_name(self.name)
         
         if (char.nil?)
           client.emit_failure(t("db.no_char_found"))

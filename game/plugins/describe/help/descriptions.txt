@@ -1,6 +1,6 @@
 Every character, room and exit has a description that tells you what you see when you look at it.  You can set this using the %xhdesc%n command.
 
-   %xcdesc <name>=<description>%xn
+   %xcdescribe <name>=<description>%xn
 
 You can set a shorter description that is used whenever an at-a-glance description is needed.
 

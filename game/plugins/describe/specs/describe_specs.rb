@@ -7,7 +7,7 @@ module AresMUSH
       include PluginCmdTestHelper
       
       before do
-        init_handler(DescCmd, "desc name=description")
+        init_handler(DescCmd, "describe name=description")
         SpecHelpers.stub_translate_for_testing
         AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "bob desc set" }        
       end
@@ -17,28 +17,28 @@ module AresMUSH
       
       describe :crack do
         it "should crack a command missing args" do
-          init_handler(DescCmd, "desc")
+          init_handler(DescCmd, "describe")
           handler.crack!
           handler.target.should be_nil
           handler.desc.should be_nil
         end
 
         it "should crack a command missing a desc" do
-          init_handler(DescCmd, "desc name")
+          init_handler(DescCmd, "describe name")
           handler.crack!
           handler.target.should be_nil
           handler.desc.should be_nil
         end
       
         it "should be able to crack the target - even multi words" do
-          init_handler(DescCmd, "desc Bob's Room=new desc")
+          init_handler(DescCmd, "describe Bob's Room=new desc")
           handler.crack!
           handler.target.should eq "Bob's Room"
           handler.desc.should eq "new desc"
         end
       
         it "should crack the desc - even with fancy characters" do
-          init_handler(DescCmd, "desc Bob=new desc%R%xcTest%xn")
+          init_handler(DescCmd, "describe Bob=new desc%R%xcTest%xn")
           handler.crack!
           handler.target.should eq "Bob"
           handler.desc.should eq "new desc%R%xcTest%xn"

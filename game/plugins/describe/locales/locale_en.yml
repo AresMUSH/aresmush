@@ -8,7 +8,7 @@ en:
        no_exits: "No exits!"
        
        outfit_does_not_exist: "Outfit %{name} does not exist."
-       outfit_created: "Outfit created."
+       outfit_set: "Outfit set."
        outfit_deleted: "Outfit deleted."
        outfit: "Outfit %{name}"
        your_outfits: "Your Outfits"

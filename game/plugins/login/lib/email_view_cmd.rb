@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def crack!
-        self.name = cmd.args.nil? ? client.name : cmd.args
+        self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
 
       # TODO - validate permissions if viewing someone else's email

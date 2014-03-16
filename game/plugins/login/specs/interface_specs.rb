@@ -8,17 +8,21 @@ module AresMUSH
 
     describe :validate_char_name do
       it "should fail if name is too short" do
-        Login.validate_char_name("ab").should eq "login.name_too_short"
+        Login.validate_char_name("Ab").should eq "login.name_too_short"
       end
       
       it "should fail if the char already exists" do
-        Character.stub(:exists?).with("charname") { true }
-        Login.validate_char_name("charname").should eq "login.char_name_taken"
+        Character.stub(:exists?).with("Charname") { true }
+        Login.validate_char_name("Charname").should eq "login.char_name_taken"
+      end
+      
+      it "should fail if the char name starts with a lowercase letter" do
+        Login.validate_char_name("charname").should eq "login.name_must_be_capitalized"        
       end
 
       it "should return true if everything's ok" do
-        Character.stub(:exists?).with("charname") { false }
-        Login.validate_char_name("charname").should be_nil
+        Character.stub(:exists?).with("Charname") { false }
+        Login.validate_char_name("Charname").should be_nil
       end
     end
     

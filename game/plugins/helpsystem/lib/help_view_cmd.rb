@@ -15,7 +15,7 @@ module AresMUSH
       
       def crack!
         self.category = HelpSystem.category_for_command(cmd.root)
-        self.topic = cmd.args.normalize.titlecase
+        self.topic = titleize_input(cmd.args)
       end
       
       # TODO - Validate permissions

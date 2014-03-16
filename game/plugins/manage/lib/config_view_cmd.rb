@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def crack!
-        self.section = cmd.args
+        self.section = trim_input(cmd.args)
       end
       
       def validate_section_exists

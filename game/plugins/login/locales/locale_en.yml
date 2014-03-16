@@ -5,6 +5,8 @@ en:
        announce_char_created: "%{name} has been created."
        goodbye: "Goodbye!"
        char_name_taken: "Sorry, that name is already taken."
+       name_too_short: "Names must be at least 3 characters long."
+       name_must_be_capitalized: "Names must be capitalized."
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."
        password_incorrect: "Password incorrect."

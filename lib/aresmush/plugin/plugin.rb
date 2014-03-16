@@ -101,5 +101,15 @@ module AresMUSH
     def log_command
       Global.logger.debug("#{self.class.name}: #{cmd}")
     end
+    
+    def trim_input(arg)
+      return nil if arg.nil?
+      return arg.strip
+    end
+    
+    def titleize_input(arg)
+      return nil if arg.nil?
+      return arg.titleize
+    end
   end
 end

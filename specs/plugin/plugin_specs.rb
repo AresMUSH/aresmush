@@ -96,6 +96,26 @@ module AresMUSH
         @plugin.should_receive(:handle)
         @plugin.on_command(@client, @cmd)
       end    
-    end      
+    end  
+    
+    describe :trim_input do
+      it "should return nil for nil" do
+        @plugin.trim_input(nil).should eq nil
+      end
+      
+      it "should return a titleized string" do
+        @plugin.trim_input("   someTHING   ").should eq "someTHING"
+      end
+    end
+    
+    describe :titleize_input do
+      it "should return nil for nil" do
+        @plugin.titleize_input(nil).should eq nil
+      end
+      
+      it "should return a titleized string" do
+        @plugin.titleize_input("   someTHING   ").should eq "Something"
+      end
+    end
   end
 end

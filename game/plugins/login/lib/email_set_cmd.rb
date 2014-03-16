@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def crack!
-        self.email = cmd.args
+        self.email = trim_input(cmd.args)
       end
 
       def validate_email_format

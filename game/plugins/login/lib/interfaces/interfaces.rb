@@ -9,6 +9,7 @@ module AresMUSH
     
     def self.validate_char_name(name)
       return t('login.name_too_short') if (name.length < 3)
+      return t('login.name_must_be_capitalized') if (name[0].downcase == name[0])
       return t('login.char_name_taken') if (Character.exists?(name))
       return nil
     end

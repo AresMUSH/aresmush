@@ -19,7 +19,7 @@ module AresMUSH
       
       def crack!
         cmd.crack!(/(?<target>.+)/)
-        self.target = cmd.args.target || 'here'
+        self.target = trim_input(cmd.args.target) || 'here'
       end
       
       def handle

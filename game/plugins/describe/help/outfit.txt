@@ -2,7 +2,7 @@ The %xhoutfit%xn command lets you manage multiple outfits for your character.  T
 
    %xcoutfits%xn - Lists outfits
    %xcoutfit <name>%xn - Views an outfit.
-   %xcoutfit/create <name>=<description>%xn - Creates a new outfit, or replaces an old one.
+   %xcoutfit/set <name>=<description>%xn - Creates a new outfit, or replaces an old one.
    %xcoutfit/delete <name>%xn - Deletes an outfit.
 
 You can wear a combination of outfits using the %xhwear%xn command.  This will set your description to the selected outfits.

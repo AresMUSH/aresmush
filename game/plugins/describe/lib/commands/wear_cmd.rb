@@ -19,7 +19,7 @@ module AresMUSH
           return
         end
         
-        self.names = cmd.args.split(',').map { |n| n.normalize }
+        self.names = cmd.args.split(',').map { |n| titleize_input(n) }
       end
       
       def validate_outfits_exist

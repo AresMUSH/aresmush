@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def crack!
-        self.name = cmd.args.normalize
+        self.name = titleize_input(cmd.args)
       end
       
       def validate_outfit_exists

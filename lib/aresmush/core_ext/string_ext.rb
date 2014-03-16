@@ -20,7 +20,7 @@ class String
     self.gsub(/\b('?[a-z])/) { $1.capitalize }
   end   
   
-  def normalize
+  def titleize
     self.downcase.strip.titlecase
   end    
   

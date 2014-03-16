@@ -2,11 +2,11 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Describe  
-    describe OutfitCreateCmd do
+    describe OutfitSetCmd do
       include PluginCmdTestHelper
       
       before do
-        init_handler(OutfitCreateCmd, "outfit/create name=desc")
+        init_handler(OutfitSetCmd, "outfit/set name=desc")
         SpecHelpers.stub_translate_for_testing        
       end        
 
@@ -19,7 +19,7 @@ module AresMUSH
         end
 
         it "should set and titlecase the name" do
-          init_handler(OutfitCreateCmd, "outfit/create   bBbC   =desc")
+          init_handler(OutfitSetCmd, "outfit/set   bBbC   =desc")
           handler.crack!
           handler.name.should eq "Bbbc"
         end
@@ -32,7 +32,7 @@ module AresMUSH
           char.stub(:outfits) { @outfits }
         end
         
-        it "should create the outfit" do
+        it "should set the outfit" do
           @outfits.should_receive(:[]=).with("Name", "desc")
           char.should_receive(:save!)
           client.stub(:emit_success)
@@ -42,7 +42,7 @@ module AresMUSH
         it "should emit success" do
           @outfits.stub(:[]=)
           char.stub(:save!)
-          client.should_receive(:emit_success).with('describe.outfit_created')
+          client.should_receive(:emit_success).with('describe.outfit_set')
           handler.handle
         end
       end
