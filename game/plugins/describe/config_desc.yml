@@ -1,14 +1,14 @@
 help:
     categories:
         main:
-            toc:
-                descriptions: What you see around you.
-
             topics:
-                descriptions: 'game/plugins/describe/help/descriptions.txt'
-                desc: 'game/plugins/describe/help/descriptions.txt'
-                look: 'game/plugins/describe/help/descriptions.txt'
-                shortdesc: 'game/plugins/describe/help/descriptions.txt'
-                wear: 'game/plugins/describe/help/outfit.txt'
-                outfit: 'game/plugins/describe/help/outfit.txt'
-                outfits: 'game/plugins/describe/help/outfit.txt'
+                descriptions: 
+                    toc_topic: Essential
+                    file: 'game/plugins/describe/help/descriptions.txt'
+                    summary: "Looking around."
+                    aliases: [ 'desc', 'describe', 'look', 'shortdesc' ]
+                outfits:
+                    toc_topic: Misc
+                    file: 'game/plugins/describe/help/descriptions.txt'
+                    summary: "Your character's wardrobe."
+                    aliases: [ 'wear', 'outfit']

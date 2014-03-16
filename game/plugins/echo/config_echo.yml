@@ -2,5 +2,8 @@ help:
     categories:
         main:
             topics:
-                echo: 'game/plugins/echo/help/echo.txt'
-                think: 'game/plugins/echo/help/echo.txt'
+                echo: 
+                    toc_topic: Misc
+                    file: 'game/plugins/echo/help/echo.txt'
+                    summary: "Asides to yourself."
+                    aliases: [ 'think' ]

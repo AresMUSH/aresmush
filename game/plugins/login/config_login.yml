@@ -1,17 +1,16 @@
 help:
     categories:
         main:
-            toc:
-                login: 'Creating, connecting and managing passwords.'
-                
             topics:
-                login: 'game/plugins/login/help/login.txt'
-                connect: 'game/plugins/login/help/connect.txt'
-                create: 'game/plugins/login/help/create.txt'
-                quit: 'game/plugins/login/help/quit.txt'
-
+                login: 
+                    toc_topic: 'Essential'
+                    file: 'game/plugins/login/help/login.txt'
+                    summary: 'Creating, connecting and managing passwords.'
+                    aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit' ]
         staff:
-            toc:
-                bar: A test
             topics:
-                bar: 'game/plugins/login/help/staff test.txt'
+                login: 
+                    toc_topic: 'Player Management'
+                    file: 'game/plugins/login/help/staff test.txt'
+                    summary: 'Managing player login info.'
+                    aliases: [ 'password', 'name', 'login' ]

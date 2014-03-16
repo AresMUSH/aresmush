@@ -18,14 +18,18 @@ module AresMUSH
       # TODO - Validate permissions
       
       def handle
-        toc = HelpSystem.category(self.category)["toc"]
-        raise IndexError, "Category #{self.category} does not have a table of contents." if toc.nil?
-        topics = []
-        toc.keys.each do |key|
-          topics << "     %xh#{key.titlecase}%xn - #{toc[key]}"
+        toc = HelpSystem.category_toc(self.category)
+        text = ""
+        toc.sort.each do |toc_key|
+          text << "%r%xg#{toc_key.titleize}%xn"
+          entries = HelpSystem.topics_for_toc(self.category, toc_key).sort
+          entries.each do |entry_key|
+            entry = HelpSystem.topic(self.category, entry_key)
+            text << "%r     %xh#{entry_key.titleize}%xn - #{entry["summary"]}"
+          end
         end
         title = t('help.toc', :category => HelpSystem.category_title(self.category))
-        client.emit BorderedDisplay.list(topics, title)
+        client.emit BorderedDisplay.text(text, title, false)
       end
     end
   end

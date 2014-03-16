@@ -33,13 +33,15 @@ module AresMUSH
         before do
           handler.stub(:category) { "cat" }
           handler.stub(:topic) { "topic" }
-          AresMUSH::Locale.stub(:translate).with("help.topic", { :topic => "topic", :category => "cat title"}) { "topic title" }
+          HelpSystem.stub(:lookup_alias).with("cat", "topic") { nil }
+          AresMUSH::Locale.stub(:translate).with("help.topic", { :topic => "Topic", :category => "cat title"}) { "topic title" }
           AresMUSH::Locale.stub(:translate).with("help.not_found_alternatives", { :topic => "topic" }) { "not found alternatives" }
           AresMUSH::Locale.stub(:translate).with("help.not_found", { :topic => "topic" }) { "not found" }
         end
         
         it "should display the topic if found" do
-          HelpSystem.should_receive(:find_help).with("cat", "topic") { "help text"}
+          HelpSystem.should_receive(:search_help).with("cat", "topic") { [ "a" ] }
+          HelpSystem.should_receive(:load_help).with("cat", "a") { "help text" }
           HelpSystem.should_receive(:category_title).with("cat") { "cat title" }
           BorderedDisplay.should_receive(:text).with("help text", "topic title") { "output" }
           client.should_receive(:emit).with("output")
@@ -47,16 +49,14 @@ module AresMUSH
         end
         
         it "should display possible alternatives if the topic is not found" do
-          HelpSystem.should_receive(:find_help).with("cat", "topic") { nil }
-          HelpSystem.should_receive(:search_topics).with("cat", "topic") { [ "A", "B" ]}
+          HelpSystem.should_receive(:search_help).with("cat", "topic") { [ "A", "B" ]}
           BorderedDisplay.should_receive(:list).with([ "A", "B" ], "not found alternatives") { "output" }
           client.should_receive(:emit).with("output")
           handler.handle
         end
 
         it "should display error if no topic or alternatives found" do
-          HelpSystem.should_receive(:find_help).with("cat", "topic") { nil }
-          HelpSystem.should_receive(:search_topics).with("cat", "topic") { [] }
+          HelpSystem.should_receive(:search_help).with("cat", "topic") { [] }
           client.should_receive(:emit_failure).with("not found")
           handler.handle
         end

@@ -4,11 +4,7 @@ module AresMUSH
     def self.categories
       Global.config["help"]["categories"]
     end
-    
-    def self.category(name)
-      categories[name]
-    end
-    
+        
     def self.topics(category)
       HelpSystem.category(category)["topics"]
     end
@@ -21,24 +17,54 @@ module AresMUSH
       HelpSystem.categories.keys.find { |k| categories[k]["command"].upcase == command_root.upcase }
     end
     
-    def self.category_title(name)
-      category = HelpSystem.category(name)
-      category.nil? ? "" : category["title"]
+    def self.category_toc(name)
+      topics = HelpSystem.topics(name)
+      toc = topics.values.map { |t| t["toc_topic"] }
+      toc.uniq
     end
     
-    def self.find_help(category, topic)
+    def self.topics_for_toc(category, toc)
+      topics = HelpSystem.topics(category)
+      topics.keys.select { |t| topics[t]["toc_topic"] == toc }
+    end
+    
+    def self.category_title(name)
+      category = HelpSystem.category(name)
+      title = category.nil? ? "" : category["title"]
+      title
+    end
+    
+    def self.lookup_alias(category, topic)
+      topics = HelpSystem.topics(category)
+      return nil if topics.nil?
+      topics.keys.find { |t| !topics[t]['aliases'].nil? && topics[t]['aliases'].include?(topic.downcase) }
+    end
+
+    def self.search_help(category, topic)
       topics = HelpSystem.topics(category)
       return [] if topics.nil?
-      title_match = topics.keys.find { |k| k.upcase == topic.upcase }
-      filename = HelpSystem.category(category)["topics"][title_match]
+      downcased_topic_keys = topics.keys.map(&:downcase)
+      downcased_topic = topic.downcase
+      matching_topics = downcased_topic_keys.select { |k| k =~ /#{downcased_topic}/ }
+      matching_topics.map { |k| k.titlecase }
+    end
+    
+    def self.load_help(category, topic_key)
+      topic = HelpSystem.topic(category, topic_key)
+      return nil if topic.nil?
+      filename = topic["file"]
       filename.nil? ? nil : File.read(filename)
     end
     
-    def self.search_topics(category, topic)
-      topics = HelpSystem.topics(category)
-      return [] if topics.nil?
-      possible_topics = topics.keys.select { |k| k.upcase =~ /#{topic.upcase}/ }
-      possible_topics.map { |k| k.titlecase }
+    # Careful with this one - name must be pre-stripped if user input
+    def self.category(name)
+      categories[name.downcase]
     end
+
+    # Careful with this one - name must be pre-stripped if user input
+    def self.topic(category, topic)
+      HelpSystem.category(category)["topics"][topic.downcase]
+    end
+    
   end
 end

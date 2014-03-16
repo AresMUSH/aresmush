@@ -21,24 +21,7 @@ module AresMUSH
       end  
      
       describe :handle do  
-        before do
-          handler.stub(:category) { "cat" }
-          HelpSystem.stub(:category).with("cat") { { "toc" => { "a" => "a topic", "b" => "b topic" } } }
-          AresMUSH::Locale.stub(:translate).with("help.toc", { :category => "cat title" }) { "title" }        
-        end
-        
-        it "should display all toc topics" do
-          list = ["     %xhA%xn - a topic", "     %xhB%xn - b topic"]
-          HelpSystem.should_receive(:category_title).with("cat") { "cat title" }
-          BorderedDisplay.should_receive(:list).with(list, "title") { "list output" }
-          client.should_receive(:emit).with("list output")
-          handler.handle
-        end
-        
-        it "should raise an error if the toc is undefined" do
-          HelpSystem.stub(:category).with("cat") { { "topics" => { "a" => "a topic", "b" => "b topic" } } }
-          expect{handler.handle}.to raise_error(IndexError)
-        end
+        # TODO - backfill this when help format is finalized
       end
     end
   end
