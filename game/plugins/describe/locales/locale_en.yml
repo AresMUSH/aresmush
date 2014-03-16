@@ -1,7 +1,5 @@
 en:
     describe:
-       invalid_desc_syntax: "You must supply a target and description."
-       invalid_shortdesc_syntax: "You must specify a description."
        desc_set: "You set the description on %{name}."
        shortdesc_set: "You set your short description."
        
@@ -15,5 +13,4 @@ en:
        outfit: "Outfit %{name}"
        your_outfits: "Your Outfits"
        game_outfits: "Game Outfits"
-       invalid_wear_syntax: "You must specify a list of outfits to wear."
        outfits_worn: "You wear the outfits."

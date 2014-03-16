@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def validate_syntax
-        return t('describe.invalid_desc_syntax') if (target.nil? || desc.nil?)
+        return t('dispatcher.invalid_syntax', :command => 'desc') if (target.nil? || desc.nil?)
         return nil
       end
       

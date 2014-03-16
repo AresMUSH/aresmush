@@ -49,13 +49,13 @@ module AresMUSH
         it "should make sure the target is specified" do
           handler.stub(:target) { nil }
           handler.stub(:desc) { "a desc" }
-          handler.validate_syntax.should eq 'describe.invalid_desc_syntax'
+          handler.validate_syntax.should eq 'dispatcher.invalid_syntax'
         end
         
         it "should make sure the desc is specified" do
           handler.stub(:target) { "something" }
           handler.stub(:desc) { nil }
-          handler.validate_syntax.should eq 'describe.invalid_desc_syntax'
+          handler.validate_syntax.should eq 'dispatcher.invalid_syntax'
         end
         
         it "should accept the command if everything is ok" do

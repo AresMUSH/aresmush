@@ -73,13 +73,13 @@ module AresMUSH
         it "should fail if no name provided" do
           handler.stub(:password) { "password" }
           handler.stub(:charname) { nil }
-          handler.validate_name_and_password.should eq "login.invalid_connect_syntax"
+          handler.validate_name_and_password.should eq "dispatcher.invalid_syntax"
         end
 
         it "should fail if no password provided" do
           handler.stub(:password) { nil }
           handler.stub(:charname) { "password" }
-          handler.validate_name_and_password.should eq "login.invalid_connect_syntax"
+          handler.validate_name_and_password.should eq "dispatcher.invalid_syntax"
         end
        
         it "should pass if arguments are valid" do

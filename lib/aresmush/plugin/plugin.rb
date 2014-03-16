@@ -82,7 +82,7 @@ module AresMUSH
     # return an error string (remember to translate!)
     # For example:
     #    def validate_foo
-    #     return t(your_plugin.invalid_syntax) if self.foo.nil?
+    #     return t(dispatcher.invalid_syntax) if self.foo.nil?
     #     return nil
     #   end
     # 

@@ -1,6 +1,5 @@
 en:
     manage:
-        invalid_plugin_load_syntax: "Please specify a plugin name."
         plugin_loaded: "Plugin '%{name}' (including config and locale) reloaded."
         plugin_not_found: "Plugin '%{name}' not found.  Please check your spelling."
         error_loading_plugin: "Problem loading plugin '%{name}': %{error}"

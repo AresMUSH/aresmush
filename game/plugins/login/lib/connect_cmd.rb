@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def validate_name_and_password
-        return t('login.invalid_connect_syntax') if (charname.nil? || password.nil?)
+        return t('dispatcher.invalid_syntax', :command => 'connect') if (charname.nil? || password.nil?)
         return nil
       end
 

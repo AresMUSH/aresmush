@@ -24,12 +24,12 @@ module AresMUSH
       end      
       
       def validate_name
-        return t('login.invalid_create_syntax') if charname.nil?
+        return t('dispatcher.invalid_syntax', :command => 'create') if charname.nil?
         return Login.validate_char_name(charname)
       end
       
       def validate_password
-        return t('login.invalid_create_syntax') if password.nil?
+        return t('dispatcher.invalid_syntax', :command => 'passsword') if password.nil?
         return Login.validate_char_password(password)
       end
       

@@ -7,8 +7,8 @@ module AresMUSH
     end
 
     describe :validate_char_name do
-      it "should fail if name is empty" do
-        Login.validate_char_name("").should eq "login.invalid_create_syntax"
+      it "should fail if name is too short" do
+        Login.validate_char_name("ab").should eq "login.name_too_short"
       end
       
       it "should fail if the char already exists" do

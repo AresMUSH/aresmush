@@ -20,7 +20,7 @@ module AresMUSH
       # TODO - validate permissions
       
       def validate_load_target
-        return t('manage.invalid_load_syntax') if load_target.nil?
+        return t('dispatcher.invalid_syntax', :command => 'load') if load_target.nil?
         return nil
       end
       

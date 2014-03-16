@@ -69,7 +69,7 @@ module AresMUSH
       describe :validate_name do
         it "should fail if the name is missing" do
           handler.stub(:charname) { nil }
-          handler.validate_name.should eq "login.invalid_create_syntax"
+          handler.validate_name.should eq "dispatcher.invalid_syntax"
         end
 
         it "should fail if the name is invalid" do
@@ -88,7 +88,7 @@ module AresMUSH
       describe :validate_password do
         it "should fail if the password is missing" do
           handler.stub(:password) { nil }
-          handler.validate_password.should eq "login.invalid_create_syntax"
+          handler.validate_password.should eq "dispatcher.invalid_syntax"
         end
 
         it "should fail if the password is invalid" do

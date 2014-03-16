@@ -37,7 +37,7 @@ module AresMUSH
       describe :validate_outfits_exist do
         it "should make sure some descs are specified" do
           handler.stub(:names) { nil }
-          handler.validate_outfits_exist.should eq 'describe.invalid_wear_syntax'
+          handler.validate_outfits_exist.should eq 'dispatcher.invalid_syntax'
         end
         
         it "should be OK if all the descs exist" do

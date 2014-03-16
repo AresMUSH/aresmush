@@ -22,7 +22,7 @@ module AresMUSH
       describe :validate_load_target do
         it "should reject command if no args specified" do
           handler.stub(:load_target) { nil }
-          handler.validate_load_target.should eq 'manage.invalid_load_syntax'
+          handler.validate_load_target.should eq 'dispatcher.invalid_syntax'
         end
         
         it "should accept command otherwise" do

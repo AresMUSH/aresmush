@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def validate_outfits_exist
-        return t('describe.invalid_wear_syntax') if self.names.nil? || self.names.empty?
+        return t('dispatcher.invalid_syntax', :command => 'wear') if self.names.nil? || self.names.empty?
         self.names.each do |n|
           return t('describe.outfit_does_not_exist', :name => n) if client.char.outfit(n).nil?
         end
