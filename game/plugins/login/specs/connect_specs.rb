@@ -106,7 +106,7 @@ module AresMUSH
             found_char = double
             found_char.should_receive(:compare_password).with("password") { false }
             Character.should_receive(:find_by_name).with("Bob") { found_char }
-            client.should_receive(:emit_failure).with("login.invalid_password")
+            client.should_receive(:emit_failure).with("login.password_incorrect")
             Global.should_not_receive(:on_event)
             handler.handle
           end

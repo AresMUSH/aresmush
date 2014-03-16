@@ -26,6 +26,10 @@ module AresMUSH
       it "should fail if password is too short" do
         Login.validate_char_password("bar").should eq "login.password_too_short"
       end
+      
+      it "should fail if the password has an equal sign" do
+        Login.validate_char_password("bar=foo").should eq "login.password_cant_have_equals"
+      end
 
       it "should return true if everything's ok" do
         Login.validate_char_password("password").should be_nil

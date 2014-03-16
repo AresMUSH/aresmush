@@ -37,7 +37,7 @@ module AresMUSH
         end
         
         if (!char.compare_password(password))
-          client.emit_failure(t('login.invalid_password'))
+          client.emit_failure(t('login.password_incorrect'))
           return 
         end
 

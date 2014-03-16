@@ -3,6 +3,7 @@ module AresMUSH
     
     def self.validate_char_password(password)
       return t('login.password_too_short') if (password.length < 5)
+      return t('login.password_cant_have_equals') if (password.include?("="))
       return nil
     end
     
