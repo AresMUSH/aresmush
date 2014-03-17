@@ -21,7 +21,7 @@ module AresMUSH
       end  
      
       describe :handle do  
-        # TODO - backfill this when help format is finalized
+        # Entirely too much of a pain to test, and easy enough to visualize.
       end
     end
   end

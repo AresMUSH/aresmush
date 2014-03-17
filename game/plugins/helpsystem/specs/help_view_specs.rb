@@ -33,13 +33,12 @@ module AresMUSH
         before do
           handler.stub(:category) { "cat" }
           handler.stub(:topic) { "topic" }
-          HelpSystem.stub(:lookup_alias).with("cat", "topic") { nil }
           AresMUSH::Locale.stub(:translate).with("help.topic", { :topic => "Topic", :category => "cat title"}) { "topic title" }
           AresMUSH::Locale.stub(:translate).with("help.not_found_alternatives", { :topic => "topic" }) { "not found alternatives" }
           AresMUSH::Locale.stub(:translate).with("help.not_found", { :topic => "topic" }) { "not found" }
         end
         
-        it "should display the topic if found" do
+        it "should display the topic if a single one is found" do
           HelpSystem.should_receive(:search_help).with("cat", "topic") { [ "a" ] }
           HelpSystem.should_receive(:load_help).with("cat", "a") { "help text" }
           HelpSystem.should_receive(:category_title).with("cat") { "cat title" }

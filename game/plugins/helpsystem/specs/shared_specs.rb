@@ -74,17 +74,21 @@ module AresMUSH
           end
         end
       
-        describe :lookup_alias do
-          it "should return nil if no alias found" do
-            HelpSystem.lookup_alias("a", "y").should be_nil
+        describe :is_alias? do
+          it "should return false if no alias entries are found" do
+            HelpSystem.is_alias?(@categories["a"]["topics"]["b topic"], "y").should be_false
           end
         
-          it "should return the topic with a matching alias" do
-            HelpSystem.lookup_alias("a", "x").should eq "a topic"
+          it "should return true if there's a matching alias" do
+            HelpSystem.is_alias?(@categories["a"]["topics"]["a topic"], "x").should be_true
           end
 
           it "should match aliases irrespective of case" do
-            HelpSystem.lookup_alias("a", "X").should eq "a topic"
+            HelpSystem.is_alias?(@categories["a"]["topics"]["a topic"], "X").should be_true
+          end
+          
+          it "should return false if no matching alias is found" do
+            HelpSystem.is_alias?(@categories["a"]["topics"]["a topic"], "xyz").should be_false
           end
         end
       
@@ -95,6 +99,20 @@ module AresMUSH
           
           it "should return empty if no matches" do
             HelpSystem.search_help("a", "xyz").should eq []
+          end
+        end
+        
+        describe :strip_prefix do
+          it "should strip off a prefix if there is one" do
+            HelpSystem.strip_prefix("+help").should eq "help"
+          end
+          
+          it "should return the string if there's no prefix" do
+            HelpSystem.strip_prefix("help").should eq "help"
+          end
+          
+          it "should return nil for nil string" do
+            HelpSystem.strip_prefix(nil).should eq nil
           end
         end
         

@@ -10,6 +10,11 @@ module AresMUSH
         cmd.root_is?("echo")
       end
       
+      def validate_syntax
+        return t('dispatcher.invalid_syntax', :command => 'echo') if cmd.args.nil?
+        return nil
+      end
+        
       def handle
         client.emit cmd.args
       end

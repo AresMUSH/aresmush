@@ -15,6 +15,10 @@ module AresMUSH
         self.category = HelpSystem.category_for_command(cmd.root)
       end
       
+      def validate_category
+        return t('dispatcher.invalid_syntax', :command => 'help') if self.category.nil?
+      end
+      
       # TODO - Validate permissions
       
       def handle

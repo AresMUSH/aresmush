@@ -34,15 +34,25 @@ module AresMUSH
       title
     end
     
-    def self.lookup_alias(category, topic)
-      topics = HelpSystem.topics(category)
-      return nil if topics.nil?
-      topics.keys.find { |t| !topics[t]['aliases'].nil? && topics[t]['aliases'].include?(topic.downcase) }
+    def self.is_alias?(entry_to_search, topic)
+      aliases = entry_to_search['aliases']
+      return false if aliases.nil?
+      downcased_aliases = aliases.map(&:downcase)
+      downcased_aliases.include?(topic.downcase)
     end
 
+    def self.strip_prefix(topic)
+      cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(topic)
+      cracked.nil? ? nil : cracked[:rest]
+    end
+    
     def self.search_help(category, topic)
       topics = HelpSystem.topics(category)
       return [] if topics.nil?
+
+      matching_alias = topics.keys.find { |t| HelpSystem.is_alias?(topics[t], topic) }
+      return matching_alias if !matching_alias.nil?
+      
       downcased_topic_keys = topics.keys.map(&:downcase)
       downcased_topic = topic.downcase
       matching_topics = downcased_topic_keys.select { |k| k =~ /#{downcased_topic}/ }
