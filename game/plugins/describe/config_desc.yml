@@ -9,6 +9,6 @@ help:
                     aliases: [ 'desc', 'describe', 'look', 'shortdesc' ]
                 outfits:
                     toc_topic: Misc
-                    file: 'game/plugins/describe/help/descriptions.txt'
+                    file: 'game/plugins/describe/help/outfit.txt'
                     summary: "Your character's wardrobe."
                     aliases: [ 'wear', 'outfit']

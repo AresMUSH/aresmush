@@ -100,6 +100,10 @@ module AresMUSH
           it "should return empty if no matches" do
             HelpSystem.search_help("a", "xyz").should eq []
           end
+          
+          it "should find a matching topic by alias" do
+            HelpSystem.search_help("a", "x").should eq [ "A Topic" ]
+          end  
         end
         
         describe :strip_prefix do

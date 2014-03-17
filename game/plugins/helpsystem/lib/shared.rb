@@ -51,7 +51,7 @@ module AresMUSH
       return [] if topics.nil?
 
       matching_alias = topics.keys.find { |t| HelpSystem.is_alias?(topics[t], topic) }
-      return matching_alias if !matching_alias.nil?
+      return [matching_alias.titlecase] if !matching_alias.nil?
       
       downcased_topic_keys = topics.keys.map(&:downcase)
       downcased_topic = topic.downcase
