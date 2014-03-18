@@ -1,0 +1,9 @@
+The MUSH help system is here to help you learn how to play.  
+
+Typing %xchelp%xn by itself will view a list of all available help topics, as well as additional help libraries that may be available.
+
+Each library has its own command to view individual topics.  For the main player help library it is simply %xchelp <topic>%xn.  The command to access each library is listed on the main help display.
+
+For more information on MUSH commands, see %xchelp commands%xn.
+
+Note: AresMUSH does not distinguish between +help and help.  In fact, commands usually have no prefix at all.  You can type @desc, +desc or just 'desc' and it's all the same to the MUSH.

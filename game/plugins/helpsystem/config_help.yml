@@ -1,0 +1,11 @@
+help:
+    categories:
+        main:
+            topics:
+                help: 
+                    toc_topic: 1 - Getting Started
+                    file: 'game/plugins/helpsystem/help/help.txt'
+                    summary: "Getting help."
+                commands: 
+                    file: 'game/plugins/helpsystem/help/commands.txt'
+                    summary: "Telling the game what to do."

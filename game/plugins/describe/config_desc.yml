@@ -3,7 +3,7 @@ help:
         main:
             topics:
                 descriptions: 
-                    toc_topic: Essential
+                    toc_topic: Getting Around
                     file: 'game/plugins/describe/help/descriptions.txt'
                     summary: "Looking around."
                     aliases: [ 'desc', 'describe', 'look', 'shortdesc' ]

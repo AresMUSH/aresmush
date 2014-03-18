@@ -17,6 +17,7 @@ module AresMUSH
       
       def validate_category
         return t('dispatcher.invalid_syntax', :command => 'help') if self.category.nil?
+        return nil
       end
       
       # TODO - Validate permissions
@@ -30,6 +31,17 @@ module AresMUSH
           entries.each do |entry_key|
             entry = HelpSystem.topic(self.category, entry_key)
             text << "%r     %xh#{entry_key.titleize}%xn - #{entry["summary"]}"
+          end
+        end
+        text << "%r"
+        categories = HelpSystem.categories.select { |c| c != self.category }
+        
+        if (!categories.empty?)
+          text << "%l2%r"
+          text << "%xh#{t('help.other_help_libraries')}%xn"
+          
+          categories.keys.each do |category|
+            text << " \[#{categories[category]['command']}\] #{categories[category]['title']}"
           end
         end
         title = t('help.toc', :category => HelpSystem.category_title(self.category))

@@ -20,12 +20,14 @@ module AresMUSH
     def self.category_toc(name)
       topics = HelpSystem.topics(name)
       toc = topics.values.map { |t| t["toc_topic"] }
-      toc.uniq
+      toc = toc.uniq
+      toc.delete(nil)
+      toc
     end
     
     def self.topics_for_toc(category, toc)
       topics = HelpSystem.topics(category)
-      topics.keys.select { |t| topics[t]["toc_topic"] == toc }
+      topics.keys.select { |t| !topics[t]["toc_topic"].nil? && topics[t]["toc_topic"] == toc }
     end
     
     def self.category_title(name)
