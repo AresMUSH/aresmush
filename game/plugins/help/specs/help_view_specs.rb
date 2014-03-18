@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module HelpSystem
+  module Help
     describe HelpViewCmd do
       include PluginCmdTestHelper
       
@@ -14,7 +14,7 @@ module AresMUSH
       
       describe :crack! do
         before do
-          HelpSystem.stub(:category_for_command).with("help") { "cat" }
+          Help.stub(:category_for_command).with("help") { "cat" }
         end
         
         it "should find the category based on the root" do
@@ -39,23 +39,23 @@ module AresMUSH
         end
         
         it "should display the topic if a single one is found" do
-          HelpSystem.should_receive(:search_help).with("cat", "topic") { [ "a" ] }
-          HelpSystem.should_receive(:load_help).with("cat", "a") { "help text" }
-          HelpSystem.should_receive(:category_title).with("cat") { "cat title" }
+          Help.should_receive(:search_help).with("cat", "topic") { [ "a" ] }
+          Help.should_receive(:load_help).with("cat", "a") { "help text" }
+          Help.should_receive(:category_title).with("cat") { "cat title" }
           BorderedDisplay.should_receive(:text).with("help text", "topic title") { "output" }
           client.should_receive(:emit).with("output")
           handler.handle
         end
         
         it "should display possible alternatives if the topic is not found" do
-          HelpSystem.should_receive(:search_help).with("cat", "topic") { [ "A", "B" ]}
+          Help.should_receive(:search_help).with("cat", "topic") { [ "A", "B" ]}
           BorderedDisplay.should_receive(:list).with([ "A", "B" ], "not found alternatives") { "output" }
           client.should_receive(:emit).with("output")
           handler.handle
         end
 
         it "should display error if no topic or alternatives found" do
-          HelpSystem.should_receive(:search_help).with("cat", "topic") { [] }
+          Help.should_receive(:search_help).with("cat", "topic") { [] }
           client.should_receive(:emit_failure).with("not found")
           handler.handle
         end

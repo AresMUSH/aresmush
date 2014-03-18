@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module HelpSystem
+  module Help
     describe HelpListCmd do
       include PluginCmdTestHelper
       
@@ -14,7 +14,7 @@ module AresMUSH
       
       describe :crack! do
         it "should find the category based on the root" do
-          HelpSystem.stub(:category_for_command).with("help") { "cat" }
+          Help.stub(:category_for_command).with("help") { "cat" }
           handler.crack!
           handler.category.should eq "cat"
         end        

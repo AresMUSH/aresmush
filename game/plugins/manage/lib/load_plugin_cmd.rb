@@ -26,9 +26,10 @@ module AresMUSH
       
       def handle
         begin
-          plugin_module_name = load_target.titlecase
-          if (AresMUSH.const_defined?(plugin_module_name))
-            AresMUSH.send(:remove_const, plugin_module_name)
+          begin
+            Global.plugin_manager.unload_plugin(load_target)
+          rescue SystemNotFoundException
+            # Swallow this error.  Just means you're loading a plugin for the very first time.
           end
           Global.plugin_manager.load_plugin(load_target)
           Global.locale.load!

@@ -1,5 +1,5 @@
 module AresMUSH
-  module HelpSystem
+  module Help
     
     class HelpListCmd
       include AresMUSH::Plugin
@@ -8,11 +8,11 @@ module AresMUSH
       no_switches
       
       def want_command?(client, cmd)
-        HelpSystem.valid_commands.include?(cmd.root) && cmd.args.nil?
+        Help.valid_commands.include?(cmd.root) && cmd.args.nil?
       end
 
       def crack!
-        self.category = HelpSystem.category_for_command(cmd.root)
+        self.category = Help.category_for_command(cmd.root)
       end
       
       def validate_category
@@ -23,18 +23,18 @@ module AresMUSH
       # TODO - Validate permissions
       
       def handle
-        toc = HelpSystem.category_toc(self.category)
+        toc = Help.category_toc(self.category)
         text = ""
         toc.sort.each do |toc_key|
           text << "%r%xg#{toc_key.titleize}%xn"
-          entries = HelpSystem.topics_for_toc(self.category, toc_key).sort
+          entries = Help.topics_for_toc(self.category, toc_key).sort
           entries.each do |entry_key|
-            entry = HelpSystem.topic(self.category, entry_key)
+            entry = Help.topic(self.category, entry_key)
             text << "%r     %xh#{entry_key.titleize}%xn - #{entry["summary"]}"
           end
         end
         text << "%r"
-        categories = HelpSystem.categories.select { |c| c != self.category }
+        categories = Help.categories.select { |c| c != self.category }
         
         if (!categories.empty?)
           text << "%l2%r"
@@ -44,7 +44,7 @@ module AresMUSH
             text << " \[#{categories[category]['command']}\] #{categories[category]['title']}"
           end
         end
-        title = t('help.toc', :category => HelpSystem.category_title(self.category))
+        title = t('help.toc', :category => Help.category_title(self.category))
         client.emit BorderedDisplay.text(text, title, false)
       end
     end

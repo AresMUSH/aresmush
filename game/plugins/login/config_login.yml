@@ -11,6 +11,6 @@ help:
             topics:
                 login: 
                     toc_topic: 'Player Management'
-                    file: 'game/plugins/login/help/staff test.txt'
+                    file: 'game/plugins/login/help/staff_login.txt'
                     summary: 'Managing player login info.'
                     aliases: [ 'password', 'name', 'login' ]

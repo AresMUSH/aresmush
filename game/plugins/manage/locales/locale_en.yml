@@ -1,8 +1,10 @@
 en:
     manage:
         plugin_loaded: "Plugin '%{name}' (including config and locale) reloaded."
+        plugin_unloaded: "Plugin '%{name}' unloaded.  Archive/move files on disk and then reload help."
         plugin_not_found: "Plugin '%{name}' not found.  Please check your spelling."
         error_loading_plugin: "Problem loading plugin '%{name}': %{error}"
+        error_unloading_plugin: "Problem unloading plugin '%{name}': %{error}"
         config_loaded: "Configuration reloaded."
         error_loading_config: "Problem loading configuration: %{error}"
         locale_loaded: "Locale reloaded."
@@ -11,3 +13,4 @@ en:
         config_section: "Config Section: %{name}"
         invalid_config_section: "That config section does not exist."
         plugins: "Plugins"
+

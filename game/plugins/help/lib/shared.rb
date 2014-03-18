@@ -1,24 +1,24 @@
 module AresMUSH
-  module HelpSystem
+  module Help
     
     def self.categories
       Global.config["help"]["categories"]
     end
         
     def self.topics(category)
-      HelpSystem.category(category)["topics"]
+      Help.category(category)["topics"]
     end
     
     def self.valid_commands
-      HelpSystem.categories.values.map { |c| c["command"] }
+      Help.categories.values.map { |c| c["command"] }
     end
     
     def self.category_for_command(command_root)
-      HelpSystem.categories.keys.find { |k| categories[k]["command"].upcase == command_root.upcase }
+      Help.categories.keys.find { |k| categories[k]["command"].upcase == command_root.upcase }
     end
     
     def self.category_toc(name)
-      topics = HelpSystem.topics(name)
+      topics = Help.topics(name)
       toc = topics.values.map { |t| t["toc_topic"] }
       toc = toc.uniq
       toc.delete(nil)
@@ -26,12 +26,12 @@ module AresMUSH
     end
     
     def self.topics_for_toc(category, toc)
-      topics = HelpSystem.topics(category)
+      topics = Help.topics(category)
       topics.keys.select { |t| !topics[t]["toc_topic"].nil? && topics[t]["toc_topic"] == toc }
     end
     
     def self.category_title(name)
-      category = HelpSystem.category(name)
+      category = Help.category(name)
       title = category.nil? ? "" : category["title"]
       title
     end
@@ -49,10 +49,10 @@ module AresMUSH
     end
     
     def self.search_help(category, topic)
-      topics = HelpSystem.topics(category)
+      topics = Help.topics(category)
       return [] if topics.nil?
 
-      matching_alias = topics.keys.find { |t| HelpSystem.is_alias?(topics[t], topic) }
+      matching_alias = topics.keys.find { |t| Help.is_alias?(topics[t], topic) }
       return [matching_alias.titlecase] if !matching_alias.nil?
       
       downcased_topic_keys = topics.keys.map(&:downcase)
@@ -62,7 +62,7 @@ module AresMUSH
     end
     
     def self.load_help(category, topic_key)
-      topic = HelpSystem.topic(category, topic_key)
+      topic = Help.topic(category, topic_key)
       return nil if topic.nil?
       filename = topic["file"]
       filename.nil? ? nil : File.read(filename)
@@ -75,7 +75,7 @@ module AresMUSH
 
     # Careful with this one - name must be pre-stripped if user input
     def self.topic(category, topic)
-      HelpSystem.category(category)["topics"][topic.downcase]
+      Help.category(category)["topics"][topic.downcase]
     end
     
   end

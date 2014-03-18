@@ -2,11 +2,11 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Manage
-    describe LoadPluginCmd do
+    describe UnloadPluginCmd do
       include PluginCmdTestHelper
   
       before do
-        init_handler(LoadPluginCmd, "load foo")
+        init_handler(UnloadPluginCmd, "unload foo")
         SpecHelpers.stub_translate_for_testing
       end
       
@@ -35,24 +35,12 @@ module AresMUSH
         
         before do
           @plugin_manager = double
-          @locale = double
-          @config_reader = double
           Global.stub(:plugin_manager) { @plugin_manager }
-          Global.stub(:locale) { @locale }
-          Global.stub(:config_reader) { @config_reader }
             
           handler.crack!
             
           client.stub(:emit_success)
-          @plugin_manager.stub(:load_plugin)
           @plugin_manager.stub(:unload_plugin)
-          @locale.stub(:load!)
-          @config_reader.stub(:read)
-        end
-          
-        it "should load the plugin" do
-          @plugin_manager.should_receive(:load_plugin).with("foo")
-          handler.handle
         end
           
         it "should unload the plugin" do
@@ -61,35 +49,19 @@ module AresMUSH
         end
           
         it "should notify the client" do
-          client.should_receive(:emit_success).with('manage.plugin_loaded')
+          client.should_receive(:emit_success).with('manage.plugin_unloaded')
           handler.handle
         end
-          
-        it "should reload the locale" do
-          @locale.should_receive(:load!)
-          handler.handle
-        end
-        
-        it "should reload the config" do
-          @config_reader.should_receive(:read)
-          handler.handle
-        end
-          
+
         it "should notify client if plugin not found" do
-          @plugin_manager.stub(:load_plugin) { raise SystemNotFoundException }
+          @plugin_manager.stub(:unload_plugin) { raise SystemNotFoundException }
           client.should_receive(:emit_failure).with('manage.plugin_not_found')
           handler.handle
         end
           
-        it "should notify client if plugin load has an error" do
-          @plugin_manager.stub(:load_plugin) { raise "Error" }
-          client.should_receive(:emit_failure).with('manage.error_loading_plugin')
-          handler.handle
-        end
-        
-        it "should still load even if the unload failed" do
-          @plugin_manager.stub(:unload_plugin) { raise SystemNotFoundException }
-          @plugin_manager.should_receive(:load_plugin).with("foo")
+        it "should notify client if plugin unload has an error" do
+          @plugin_manager.stub(:unload_plugin) { raise "Error" }
+          client.should_receive(:emit_failure).with('manage.error_unloading_plugin')
           handler.handle
         end
       end

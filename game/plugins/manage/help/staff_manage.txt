@@ -1,0 +1,20 @@
+Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server.  To make changes to these things, you need to edit them on disk and then tell the game to reload them using one of these management commands.
+
+%xhPlugin Management%xn
+   %xcplugins%xn - Lists plugins.
+   %xcload <plugin directory name>%xn - Loads/reloads a plugin from disk.
+       Loading a plugin automatically also reloads config, locale and help
+   %xcunload <plugin module name>%xn - Unloads a plugin.
+       Unloading is normally not necessary unless you end up with some stray code.
+       Unloading does not affect configuration or help.  If you are completely removing
+       a plugin, you will want to first move/archive the plugin's files to a location    
+       outside the plugin directory, and then reload config and help.
+       
+%xhConfig Management%xn
+   %xcconfig%xn - Lists config sections
+   %xcconfig <section>%xn - Views config variables for a section.
+   %xcload config%xn - Reloads configuration from disk.
+   
+%xhOther Commands%xn
+   %xcload help%xn - Reloads help files from disk.
+   %xcload locale%xn - Reloads translation files (locale) from disk.

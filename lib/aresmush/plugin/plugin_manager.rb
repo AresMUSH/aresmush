@@ -41,6 +41,28 @@ module AresMUSH
       raise SystemNotFoundException if plugin_files.empty?
       load_plugin_code(plugin_files)
     end
+    
+    def unload_plugin(name)
+      plugin_module_name = name.titlecase
+      
+      if (AresMUSH.const_defined?(plugin_module_name))
+        AresMUSH.send(:remove_const, plugin_module_name)
+      else
+        raise SystemNotFoundException
+      end
+
+      plugins_to_delete = []
+      @plugins.each do |p|
+        if (p.class.name.starts_with?("AresMUSH::#{plugin_module_name}"))
+          plugins_to_delete << p
+        else
+        end
+      end
+      plugins_to_delete.each do |p|
+        @plugins.delete(p)
+        Global.logger.info "Unloading #{p}."
+      end
+    end
       
     private    
     def load_plugin_code(files)

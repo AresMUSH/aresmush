@@ -82,14 +82,14 @@ module AresMUSH
       it "loads plugin A" do
         @factory.should_receive(:create_plugin_classes)
         @manager.load_all
-        a = SystemTest_a.new
+        a = SystemTestModule_a::SystemTest_a.new
         a.test.should eq "foo"
       end
 
       it "loads plugin B" do
         @factory.should_receive(:create_plugin_classes)
         @manager.load_all
-        b = SystemTest_b.new
+        b = SystemTestModule_b::SystemTest_b.new
         b.test.should eq "bar"
       end
       
@@ -99,7 +99,7 @@ module AresMUSH
         # Now change the class
         create_fake_class("a", "\"baz\"")
         @manager.load_all
-        a = SystemTest_a.new
+        a = SystemTestModule_a::SystemTest_a.new
         a.test.should eq "baz"
       end
     end
@@ -108,7 +108,7 @@ module AresMUSH
       it "loads a single plugin" do
         @factory.should_receive(:create_plugin_classes)
         @manager.load_plugin("a")
-        a = SystemTest_a.new
+        a = SystemTestModule_a::SystemTest_a.new
         a.test.should eq "foo"
       end
 
@@ -127,10 +127,35 @@ module AresMUSH
         # Now change the class
         create_fake_class("a", "\"baz\"")
         @manager.load_plugin("a")
-        a = SystemTest_a.new
+        a = SystemTestModule_a::SystemTest_a.new
         a.test.should eq "baz"
       end
     end
+    
+    describe :unload_plugin do
+      before do
+        @factory.stub(:create_plugin_classes) { [@aplugin, @bplugin] }
+        @manager.load_all
+        @aplugin = SystemTestModule_a::SystemTest_a.new
+        @bplugin = SystemTestModule_b::SystemTest_b.new
+        @manager.plugins << [ @aplugin, @bplugin ]
+      end
+      
+      it "should remove any matching plugin from the loaded list" do
+        @manager.unload_plugin("SystemTestModule_a")
+        @manager.plugins.should_not include @aplugin
+      end
+      
+      it "should unload the plugin module" do
+        @manager.unload_plugin("SystemTestModule_a")
+        AresMUSH.constants.should_not include :SystemTestModule_a
+      end
+      
+      it "should throw an error if the plugin doesn't exist" do
+        expect{@manager.unload_plugin("x")}.to raise_error(SystemNotFoundException)
+      end
+    end
+        
 
     def create_fake_class(name, ret_val)
       plugin_dir = File.join(@temp_dir, "plugins", name)
@@ -140,9 +165,11 @@ module AresMUSH
       Dir.mkdir plugin_dir
       File.open(File.join(plugin_dir, "#{name}.rb"), "w") do |f| 
         f.write "module AresMUSH\n"
+        f.write "module SystemTestModule_#{name}\n"
         f.write "class SystemTest_#{name}\n"
         f.write "def test\n"
         f.write "#{ret_val}\n"
+        f.write "end\n"
         f.write "end\n"
         f.write "end\n"
         f.write "end\n"
