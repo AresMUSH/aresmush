@@ -6,7 +6,7 @@ module AresMUSH
       include PluginCmdTestHelper
       
       before do
-        init_handler(ConnectCmd, "connect Bob=password")
+        init_handler(ConnectCmd, "connect Bob password")
         SpecHelpers.stub_translate_for_testing        
       end
       
@@ -26,7 +26,7 @@ module AresMUSH
       
       describe :crack do
         it "should crack the arguments" do
-          init_handler(ConnectCmd, "connect Bob=password")
+          init_handler(ConnectCmd, "connect Bob password")
           handler.crack!
           handler.charname.should eq "Bob"
           handler.password.should eq "password"
@@ -47,18 +47,11 @@ module AresMUSH
         end
 
         it "should accept a multi-word password" do
-          init_handler(ConnectCmd, "connect Bob=bob's password")
+          init_handler(ConnectCmd, "connect Bob bob's password")
           handler.crack!
           handler.charname.should eq "Bob"
           handler.password.should eq "bob's password"
         end
-        
-        it "should accept a multi-word name" do
-          init_handler(ConnectCmd, "connect Bob Smith=bob")
-          handler.crack!
-          handler.charname.should eq "Bob Smith"
-          handler.password.should eq "bob"
-        end 
       end  
      
       describe :validate_not_already_logged_in do

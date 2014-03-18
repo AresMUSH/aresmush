@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(/(?<name>[^\=]+)\=(?<password>.+)/)
+        cmd.crack!(/(?<name>[\S]+) (?<password>.+)/)
         self.charname = trim_input(cmd.args.name)
         self.password = cmd.args.password
       end

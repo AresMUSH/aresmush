@@ -6,7 +6,7 @@ module AresMUSH
       include PluginCmdTestHelper
       
       before do
-        init_handler(CreateCmd, "create Bob=bobpassword")
+        init_handler(CreateCmd, "create Bob bobpassword")
         SpecHelpers.stub_translate_for_testing        
       end
       
@@ -26,7 +26,7 @@ module AresMUSH
       
       describe :crack! do
         it "should be able to crack correct args" do
-          init_handler(CreateCmd, "create Bob=foo")
+          init_handler(CreateCmd, "create Bob foo")
           handler.crack!
           handler.charname.should eq "Bob"
           handler.password.should eq "foo"
@@ -40,17 +40,10 @@ module AresMUSH
         end
         
         it "should be able to crack a multi-word password" do
-          init_handler(CreateCmd, "create Bob=bob's passwd")
+          init_handler(CreateCmd, "create Bob bob's passwd")
           handler.crack!
           handler.charname.should eq "Bob"
           handler.password.should eq "bob's passwd"
-        end
-        
-        it "should be able to crack a multi-word name" do
-          init_handler(CreateCmd, "create Bob Smith=passwd")
-          handler.crack!
-          handler.charname.should eq "Bob Smith"
-          handler.password.should eq "passwd"
         end
                 
         it "should be able to crack a missing password" do
@@ -114,7 +107,7 @@ module AresMUSH
       describe :handle do
         
         before do
-          init_handler(CreateCmd, "create charname=password")
+          init_handler(CreateCmd, "create charname password")
           handler.crack!
 
           @dispatcher = double.as_null_object
