@@ -48,10 +48,6 @@ module AresMUSH
           @client2 = build_mock_client
           @client3 = build_mock_client
           
-          @client1[:char].stub(:hidden) { false }
-          @client2[:char].stub(:hidden) { true }
-          @client3[:char].stub(:hidden) { false }
-          
           @renderer = double
           @renderer.stub(:render) { "ABC" }
           
@@ -67,7 +63,7 @@ module AresMUSH
 
         it "should call the renderer with visible clients" do
           client.stub(:emit)
-          @renderer.should_receive(:render).with([@client1[:client], @client3[:client]]) { "" }
+          @renderer.should_receive(:render).with([@client1[:client], @client2[:client], @client3[:client]]) { "" }
           handler.handle
         end
         

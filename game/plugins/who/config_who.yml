@@ -1,0 +1,9 @@
+help:
+    categories:
+        main:
+            topics:
+                who: 
+                    toc_topic: 'Community'
+                    file: 'game/plugins/who/help/who.txt'
+                    summary: "Seeing who's online."
+                    aliases: [ 'who', 'where' ]

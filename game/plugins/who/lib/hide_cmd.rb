@@ -9,11 +9,11 @@ module AresMUSH
       must_be_logged_in
       
       def want_command?(client, cmd)
-         cmd.root_is?("hide")
+         cmd.root_is?("hide") || cmd.root_is?("unhide")
       end
       
       def handle
-        if (client.char.hidden)
+        if cmd.root_is?("unhide")
           client.emit_success(t('who.hide_disabled'))
           client.char.hidden = false
         else

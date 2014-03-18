@@ -1,0 +1,11 @@
+%xhPosing%xn is the term for communication that happens between characters who occupy the same MUSH room.  This is the 'meat' of the game, the descriptions of character speech and actions that make up the story. There are several commands for posing, some of which add your character's name and other text to the message automatically as a convenience.
+
+    %xcsay Hello!%xn or %xc"Hello!%xn - Bob says, "Hello!"
+    %xcpose waves.%xn or %xc:waves.%xn - Bob waves.
+    %xc;'s hair is black.%xn - Bob's hair is black.
+    %xcemit Go Bob!%xn or %xc\Go Bob!%xn - Go Bob!
+
+You can also make out-of-character (OOC) asides to the other room occupants.  The same shortcuts (", :, etc.) apply with OOC asides.  It defaults to a 'say' if you don't specify anything.
+
+   %xcooc Hi!%xn - <OOC> Bob says, "Hi!"
+   %xcooc :waves.%xn - <OOC> Bob waves.

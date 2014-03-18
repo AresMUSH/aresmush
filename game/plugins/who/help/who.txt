@@ -1,0 +1,6 @@
+The %xhwho%xn command shows you which other players are connected to the game and information about them.  The exact information is customizable, so it will vary from one game to another.  Typically it will tell you their status (Away From Keyboard, Out of Character, In Character, New), how long they've been idle, and their location.
+
+   %xcwho%xn - Shows the who list.
+   %xchide%xn and %xcunhide%xn - Controls whether your location shows up on the who list.
+      There is no way in Ares to completely hide yourself from the who list or room
+      descriptions (i.e. no dark/hidden power.)

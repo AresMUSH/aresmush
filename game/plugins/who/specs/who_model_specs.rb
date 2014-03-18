@@ -37,13 +37,20 @@ module AresMUSH
     describe :who_location do
       before do 
         @char = Character.new
+        SpecHelpers.stub_translate_for_testing
       end
       
-      it "should return the locationr" do
+      it "should return the location if visible" do
         room = double
+        @char.stub(:hidden) { false }
         @char.stub(:room) { room }
         room.should_receive(:name) { "Room Name" }
         @char.who_location.should eq "Room Name"
+      end
+      
+      it "should return unfindable if hidden" do
+        @char.stub(:hidden) { true }
+        @char.who_location.should eq "who.hidden"
       end
     end    
   end

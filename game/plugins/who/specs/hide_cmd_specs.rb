@@ -13,20 +13,17 @@ module AresMUSH
       it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that doesn't allow args"
       it_behaves_like "a plugin that requires login"
-      it_behaves_like "a plugin that expects a single root" do
-        let(:expected_root) { "hide" }
-      end
 
       describe :handle do
         it "should toggle the hidden flag on" do
-          char.should_receive(:hidden) { false }
+          init_handler(HideCmd, "hide")
           char.should_receive(:hidden=).with(true)
           client.should_receive(:emit_success).with('who.hide_enabled')
           handler.handle
         end
         
         it "should toggle the hidden flag off" do
-          char.should_receive(:hidden) { true }
+          init_handler(HideCmd, "unhide")
           char.should_receive(:hidden=).with(false)
           client.should_receive(:emit_success).with('who.hide_disabled')
           handler.handle
