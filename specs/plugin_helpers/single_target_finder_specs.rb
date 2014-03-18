@@ -5,24 +5,46 @@ require "aresmush"
 module AresMUSH
   describe SingleTargetFinder
   describe :find do
+
     before do
-      @client = double
-      @test_class = double
+      SpecHelpers.stub_translate_for_testing
+    end
+    
+    it "should find the specified class by name" do
+      using_test_db do
+        room = Room.create(:name => "foo")      
+        result = SingleTargetFinder.find("foo", Room)
+        result.target.should eq room
+        result.error.should be_nil
+      end
+    end
+    
+    it "should find the specified class by ID" do
+      using_test_db do
+        room = Room.create(:name => "foo")
+        result = SingleTargetFinder.find(room.id, Room)
+        result.target.should eq room
+        result.error.should be_nil
+      end
     end
 
-    it "should search the specified class by name or ID" do
-      @test_class.should_receive(:find_by_name_or_id).with("foo")
-      SingleResultSelector.stub(:select)
-      SingleTargetFinder.find("foo", @test_class)
+    it "should return ambiguous if multiple results" do
+      using_test_db do
+        room1 = Room.create(:name => "foo")      
+        room2 = Room.create(:name => "foo")      
+        result = SingleTargetFinder.find("foo", Room)
+        result.target.should eq nil
+        result.error.should eq 'db.object_ambiguous'
+      end
     end
-    
-    it "should call the single object selector with the find results" do
-      result = double
-      @test_class.stub(:find_by_name_or_id).with("foo") { [ "a", "b"] }
-      SingleResultSelector.should_receive(:select).with([ "a", "b"]) { result }
-      SingleTargetFinder.find("foo", @test_class).should eq result
+
+    it "should return not found if no results" do
+      using_test_db do
+        result = SingleTargetFinder.find("bar", Room)
+        result.target.should eq nil
+        result.error.should eq 'db.object_not_found'
+      end
     end
-    
   end
 end
 

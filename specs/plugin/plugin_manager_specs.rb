@@ -138,10 +138,11 @@ module AresMUSH
         @manager.load_all
         @aplugin = SystemTestModule_a::SystemTest_a.new
         @bplugin = SystemTestModule_b::SystemTest_b.new
-        @manager.plugins << [ @aplugin, @bplugin ]
+        @manager.plugins << @aplugin
+        @manager.plugins << @bplugin
       end
       
-      it "should remove any matching plugin from the loaded list" do
+      it "should remove a matching plugin from the loaded list" do
         @manager.unload_plugin("SystemTestModule_a")
         @manager.plugins.should_not include @aplugin
       end

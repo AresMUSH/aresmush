@@ -1,22 +1,34 @@
 module AresMUSH
   module Rooms
-    class Build
+    class BuildCmd
       include AresMUSH::Plugin
 
+      attr_accessor :name
+      
+      # Validators
+      must_be_logged_in
+      no_switches
+      
       def want_command?(client, cmd)
         cmd.root_is?("build")
       end
       
-      def validate
-        return t('dispatcher.must_be_logged_in') if !client.logged_in?
-        # TODO - validate args
+      def crack!
+        self.name = cmd.args
+      end
+
+      # TODO - Validate permissions
+      
+      def validate_name_set
+        return t('dispatcher.invalid_syntax') if self.name.nil?
         return nil
       end
       
       def handle
-        name = cmd.args
-        room = Room.create("name" => name)
+        room = AresMUSH::Room.create(:name => name)
         client.emit_success("You build a room named #{name}.  ID: #{room["_id"]}")
+        Rooms.move_to(client, room)
+        
       end
     end
   end

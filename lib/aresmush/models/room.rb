@@ -17,7 +17,6 @@ module AresMUSH
     
     def emit_ooc(msg)
       clients.each { |c| c.emit_ooc(msg) }
-    end
-      
+    end      
   end
 end

@@ -7,6 +7,7 @@ module AresMUSH
         SpecHelpers.connect_to_test_db
         game = Game.create
         game.online_record.should eq 0
+        SpecHelpers.erase_test_db
       end
     end
     

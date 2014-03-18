@@ -44,20 +44,24 @@ module AresMUSH
     
     def unload_plugin(name)
       plugin_module_name = name.titlecase
+      plugins_to_delete = []
+      @plugins.each do |p|
+        if (p.class.name.starts_with?("AresMUSH::#{plugin_module_name}::"))
+          plugins_to_delete << p
+        end
+      end
+
+      if plugins_to_delete.empty?
+        raise SystemNotFoundException
+      end
       
       if (AresMUSH.const_defined?(plugin_module_name))
+        Global.logger.debug "Deleting #{plugin_module_name}."
         AresMUSH.send(:remove_const, plugin_module_name)
       else
         raise SystemNotFoundException
       end
 
-      plugins_to_delete = []
-      @plugins.each do |p|
-        if (p.class.name.starts_with?("AresMUSH::#{plugin_module_name}"))
-          plugins_to_delete << p
-        else
-        end
-      end
       plugins_to_delete.each do |p|
         @plugins.delete(p)
         Global.logger.info "Unloading #{p}."

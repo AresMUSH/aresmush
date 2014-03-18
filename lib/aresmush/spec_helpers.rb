@@ -32,6 +32,13 @@ module AresMUSH
       end
     end    
     
+    def using_test_db(&block)
+      SpecHelpers.connect_to_test_db
+      yield block
+      SpecHelpers.erase_test_db
+    end
+      
+    # Use with the using_test_db helper whenever possible
     def self.connect_to_test_db
       filename = File.join(AresMUSH.game_path, "config/database.yml")
       config = YAML::load(File.open(filename))
@@ -48,6 +55,14 @@ module AresMUSH
       MongoMapper.connection = connection
       MongoMapper.database = db_name
       db
+    end
+    
+    # Use with the using_test_db helper whenever possible
+    def self.erase_test_db
+      AresMUSH::Character.delete_all
+      AresMUSH::Game.delete_all  
+      AresMUSH::Room.delete_all
+      AresMUSH::Exit.delete_all
     end
   end  
   
