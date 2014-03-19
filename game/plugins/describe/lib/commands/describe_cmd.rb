@@ -9,6 +9,8 @@ module AresMUSH
       # Validators
       must_be_logged_in
       no_switches
+      argument_must_be_present "target", "desc"
+      argument_must_be_present "desc", "desc"
       
       # TODO - Permissions
       
@@ -20,11 +22,6 @@ module AresMUSH
         cmd.crack!(/(?<target>[^\=]+)\=(?<desc>.+)/)
         self.target = trim_input(cmd.args.target)
         self.desc = cmd.args.desc
-      end
-      
-      def validate_syntax
-        return t('dispatcher.invalid_syntax', :command => 'desc') if (target.nil? || desc.nil?)
-        return nil
       end
       
       def handle

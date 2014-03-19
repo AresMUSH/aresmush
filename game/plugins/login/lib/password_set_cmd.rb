@@ -8,6 +8,7 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
+      argument_must_be_present "old_password", "password"
 
       def want_command?(client, cmd)
         cmd.root_is?("password") && cmd.switch_is?("set")
@@ -17,10 +18,6 @@ module AresMUSH
         cmd.crack!(/(?<old_password>[^\=]+)\=(?<new_password>.+)/)
         self.old_password = cmd.args.old_password
         self.new_password = cmd.args.new_password
-      end
-      
-      def validate_old_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if self.old_password.nil?
       end
       
       def validate_new_password

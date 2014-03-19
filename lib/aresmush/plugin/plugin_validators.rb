@@ -25,6 +25,13 @@ module AresMUSH
           return nil
         end
       end
+      
+      def argument_must_be_present(name, command_name)
+        send :define_method, "validate_#{name}_argument_present" do
+          return t('dispatcher.invalid_syntax', :command => command_name) if self.send("#{name}").to_s.strip.length == 0
+          return nil
+        end
+      end
     end
   end
 end

@@ -6,6 +6,7 @@ module AresMUSH
       attr_accessor :category
       
       no_switches
+      argument_must_be_present "category", "help"
       
       def want_command?(client, cmd)
         Help.valid_commands.include?(cmd.root) && cmd.args.nil?
@@ -13,11 +14,6 @@ module AresMUSH
 
       def crack!
         self.category = Help.category_for_command(cmd.root)
-      end
-      
-      def validate_category
-        return t('dispatcher.invalid_syntax', :command => 'help') if self.category.nil?
-        return nil
       end
       
       # TODO - Validate permissions

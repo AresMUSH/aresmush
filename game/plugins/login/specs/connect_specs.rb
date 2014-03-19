@@ -66,26 +66,6 @@ module AresMUSH
         end
       end
      
-      describe :validate_name_and_password do
-        it "should fail if no name provided" do
-          handler.stub(:password) { "password" }
-          handler.stub(:charname) { nil }
-          handler.validate_name_and_password.should eq "dispatcher.invalid_syntax"
-        end
-
-        it "should fail if no password provided" do
-          handler.stub(:password) { nil }
-          handler.stub(:charname) { "password" }
-          handler.validate_name_and_password.should eq "dispatcher.invalid_syntax"
-        end
-       
-        it "should pass if arguments are valid" do
-          handler.stub(:password) { "password" }
-          handler.stub(:charname) { "name" }
-          handler.validate_name_and_password.should be_nil          
-        end  
-      end 
-     
       describe :handle do  
         before do
           handler.crack!

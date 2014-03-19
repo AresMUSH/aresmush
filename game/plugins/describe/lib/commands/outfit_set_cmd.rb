@@ -8,6 +8,8 @@ module AresMUSH
       
       # Validators
       must_be_logged_in
+      argument_must_be_present "name", "outfit"
+      argument_must_be_present "desc", "outfit"
       
       def want_command?(client, cmd)
         cmd.root_is?("outfit") && cmd.switch_is?("set")
@@ -17,11 +19,6 @@ module AresMUSH
         cmd.crack!(/(?<name>[^\=]+)\=(?<desc>.+)/)
         self.name = titleize_input(cmd.args.name)
         self.desc = cmd.args.desc
-      end
-      
-      def validate_args
-        return t('dispatcher.invalid_syntax', :command => 'outfit') if self.name.nil? || self.desc.nil?
-        return nil
       end
       
       def handle

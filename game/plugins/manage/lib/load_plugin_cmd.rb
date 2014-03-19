@@ -5,6 +5,7 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
+      argument_must_be_present "load_target", "load"
       
       attr_accessor :load_target
       
@@ -18,11 +19,6 @@ module AresMUSH
       end
 
       # TODO - validate permissions
-      
-      def validate_load_target
-        return t('dispatcher.invalid_syntax', :command => 'load') if load_target.nil?
-        return nil
-      end
       
       def handle
         begin

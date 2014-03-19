@@ -8,6 +8,7 @@ module AresMUSH
       # Validators
       must_be_logged_in
       no_switches
+      argument_must_be_present "name", "build"
       
       def want_command?(client, cmd)
         cmd.root_is?("build")
@@ -18,11 +19,6 @@ module AresMUSH
       end
 
       # TODO - Validate permissions
-      
-      def validate_name_set
-        return t('dispatcher.invalid_syntax') if self.name.nil?
-        return nil
-      end
       
       def handle
         room = AresMUSH::Room.create(:name => name)

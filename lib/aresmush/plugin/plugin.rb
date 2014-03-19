@@ -82,7 +82,7 @@ module AresMUSH
     # return an error string (remember to translate!)
     # For example:
     #    def validate_foo
-    #     return t(dispatcher.invalid_syntax) if self.foo.nil?
+    #     return t(your_plugin.some_error_message) if something_is_wrong
     #     return nil
     #   end
     # 
@@ -90,6 +90,7 @@ module AresMUSH
     #   - must_be_logged_in
     #   - no_switches
     #   - no_args
+    #   - argument_must_be_present "<argument variable name>", "<help file name>"
     
     # Override this with the details of your command handling.
     def handle

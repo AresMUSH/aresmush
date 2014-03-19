@@ -27,6 +27,7 @@ module AresMUSH
 
       describe :handle do
         it "should echo back to the client" do
+          handler.crack!
           client.should_receive(:emit).with("happy thoughts")
           handler.handle
         end        

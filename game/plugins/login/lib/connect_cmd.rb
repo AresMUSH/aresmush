@@ -7,6 +7,8 @@ module AresMUSH
       
       # Validators
       no_switches
+      argument_must_be_present "charname", "connect"
+      argument_must_be_present "password", "connect"
       
       def want_command?(client, cmd)
          cmd.root_is?("connect")
@@ -20,11 +22,6 @@ module AresMUSH
       
       def validate_not_already_logged_in
         return t("login.already_logged_in") if client.logged_in?
-        return nil
-      end
-      
-      def validate_name_and_password
-        return t('dispatcher.invalid_syntax', :command => 'connect') if (charname.nil? || password.nil?)
         return nil
       end
 

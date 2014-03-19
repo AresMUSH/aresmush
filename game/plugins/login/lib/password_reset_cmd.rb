@@ -8,6 +8,7 @@ module AresMUSH
 
       # Validators
       must_be_logged_in
+      argument_must_be_present "name", "password"
       
       # TODO - validate permission
 
@@ -19,10 +20,6 @@ module AresMUSH
         cmd.crack!(/(?<name>[^\=]+)\=(?<password>.+)/)
         self.name = trim_input(cmd.args.name)
         self.new_password = cmd.args.password
-      end
-      
-      def validate_old_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if self.name.nil?
       end
       
       def validate_new_password

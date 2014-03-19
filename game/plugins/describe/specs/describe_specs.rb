@@ -44,26 +44,6 @@ module AresMUSH
           handler.desc.should eq "new desc%R%xcTest%xn"
         end
       end
-            
-      describe :validate_syntax do
-        it "should make sure the target is specified" do
-          handler.stub(:target) { nil }
-          handler.stub(:desc) { "a desc" }
-          handler.validate_syntax.should eq 'dispatcher.invalid_syntax'
-        end
-        
-        it "should make sure the desc is specified" do
-          handler.stub(:target) { "something" }
-          handler.stub(:desc) { nil }
-          handler.validate_syntax.should eq 'dispatcher.invalid_syntax'
-        end
-        
-        it "should accept the command if everything is ok" do
-          handler.stub(:target) { "something" }
-          handler.stub(:desc) { "a desc" }
-          handler.validate_syntax.should be_nil
-        end
-      end
       
       describe :handle do
         before do

@@ -8,6 +8,8 @@ module AresMUSH
       attr_accessor :topic
       
       no_switches
+      argument_must_be_present "category", "help"
+      argument_must_be_present "topic", "help"
             
       def want_command?(client, cmd)
         Help.valid_commands.include?(cmd.root) && !cmd.args.nil?
@@ -16,11 +18,6 @@ module AresMUSH
       def crack!
         self.category = Help.category_for_command(cmd.root)
         self.topic = Help.strip_prefix(titleize_input(cmd.args))
-      end
-      
-      def validate_syntax
-        return t('dispatcher.invalid_syntax', :command => 'help') if self.category.nil? || self.topic.nil?
-        return nil
       end
       
       # TODO - Validate permissions

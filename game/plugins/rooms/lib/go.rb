@@ -8,6 +8,7 @@ module AresMUSH
       # Validators
       must_be_logged_in
       no_switches
+      argument_must_be_present "destination", "go"
       
       def want_command?(client, cmd)
         cmd.root_is?("go")
@@ -15,11 +16,6 @@ module AresMUSH
       
       def crack!
         self.destination = trim_input(cmd.args)
-      end
-      
-      def validate_destination
-        return t('dispatcher.invalid_syntax') if self.destination.nil?
-        return nil
       end
       
       # TODO - Permissions

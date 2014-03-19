@@ -100,5 +100,40 @@ module AresMUSH
         @plugin.validate_no_switches.should eq nil
       end
     end      
+    
+    describe :validate_argument_present do
+      before do
+        @client = double
+        @cmd = double
+        class PluginValidateArgumentPresentTest
+          include Plugin
+          attr_accessor :foo
+          argument_must_be_present "foo", "test"
+        end
+        @plugin = PluginValidateArgumentPresentTest.new 
+        @plugin.client = @client
+        @plugin.cmd = @cmd
+        AresMUSH::Locale.stub(:translate).with("dispatcher.invalid_syntax", { :command => "test" }) { "invalid syntax" }        
+      end
+    
+      after do
+        AresMUSH.send(:remove_const, :PluginValidateArgumentPresentTest)
+      end
+      
+      it "should reject command if the required argument is nil" do
+        @plugin.stub(:foo) { nil }
+        @plugin.validate_foo_argument_present.should eq "invalid syntax"
+      end
+      
+      it "should reject command if the required argument is blank" do
+        @plugin.stub(:foo) { "   " }
+        @plugin.validate_foo_argument_present.should eq "invalid syntax"
+      end
+      
+      it "should allow command if the argument is present" do
+        @plugin.stub(:foo) { "valid" }
+        @plugin.validate_foo_argument_present.should eq nil
+      end
+    end   
   end
 end

@@ -19,18 +19,6 @@ module AresMUSH
         end
       end
       
-      describe :validate_load_target do
-        it "should reject command if no args specified" do
-          handler.stub(:load_target) { nil }
-          handler.validate_load_target.should eq 'dispatcher.invalid_syntax'
-        end
-        
-        it "should accept command otherwise" do
-          handler.stub(:load_target) { "foo" }
-          handler.validate_load_target.should eq nil
-        end
-      end
-      
       describe :handle do
         
         before do
