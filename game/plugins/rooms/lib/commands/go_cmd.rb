@@ -1,6 +1,6 @@
 module AresMUSH
   module Rooms
-    class GoCommand
+    class GoCmd
       include AresMUSH::Plugin
 
       attr_accessor :destination
@@ -21,12 +21,14 @@ module AresMUSH
       # TODO - Permissions
       
       def handle
-        find_result = SingleTargetFinder.find(self.destination, Room)
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
+        exit = client.room.exits.find_by_name_upcase(self.destination.upcase)
+        
+        if (exit.nil? || exit.dest.nil?)
+          client.emit_failure(t("rooms.cant_go_that_way"))
           return
         end
-        Rooms.move_to(client, find_result.target)
+        
+        Rooms.move_to(client, exit.dest)
       end
     end
   end

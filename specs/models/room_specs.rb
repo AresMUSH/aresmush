@@ -42,7 +42,26 @@ module AresMUSH
         @room.emit_ooc("Test")        
       end
     end    
+    
+    describe :has_exit? do
+      it "should return true if exit exists - case-insensitive" do
+        using_test_db do 
+          exit = Exit.new(:name => "A")
+          @room.exits << exit
+          @room.save!
+          @room.has_exit?("a").should be_true
+        end
+      end
       
+      it "should return false if exit doesn't exist" do
+        using_test_db do 
+          exit = Exit.new(:name => "A")
+          @room.exits << exit
+          @room.save!
+          @room.has_exit?("b").should be_false
+        end
+      end
+    end
       
   end
 end

@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def destination
-        @model.destination.nil? ? t('describe.nowhere') : @model.destination.name
+        @model.dest.nil? ? t('describe.nowhere') : @model.dest.name
       end
     end
   end

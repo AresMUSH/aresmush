@@ -40,9 +40,14 @@ module AresMUSH
         return t('describe.no_exits') if @room.exits.nil? || @room.exits.empty?
 
         contents_str = ""
+        counter = 0
         @room.exits.each do |e|
           exit_data = ExitData.new(e)
-          contents_str << @char_template.render(exit_data)
+          if (counter % 2 == 0)
+            contents_str << "\n"
+          end
+          contents_str << @exit_template.render(exit_data).chomp
+          counter = counter + 1
         end
         contents_str
       end

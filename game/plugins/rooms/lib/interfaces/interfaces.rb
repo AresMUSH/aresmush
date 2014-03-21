@@ -1,12 +1,11 @@
 module AresMUSH
   module Rooms
     def self.move_to(client, room)
-      client.room.emit_ooc "#{client.name} has left."
-      room.emit_ooc "#{client.name} has arrived."
+      client.room.emit_ooc t('rooms.char_has_left', :name => client.name)
+      room.emit_ooc t('rooms.char_has_arrived', :name => client.name)
       client.char.room = room
       client.char.save!
-      client.emit_ooc "You go to #{room.name}."
-      client.emit Describe.get_desc(room)
+      Rooms.emit_here_desc(client)
     end
   end
 end

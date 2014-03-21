@@ -41,7 +41,5 @@ module AresMUSH
       
       self.room = Game.master.welcome_room
     end
-    
   end
-  
 end

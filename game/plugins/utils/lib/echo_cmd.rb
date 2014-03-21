@@ -1,5 +1,5 @@
 module AresMUSH
-  module Echo
+  module Utils
     class EchoCmd
       include AresMUSH::Plugin
       

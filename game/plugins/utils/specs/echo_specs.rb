@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module Echo
+  module Utils
     describe EchoCmd do
       include PluginCmdTestHelper
     
