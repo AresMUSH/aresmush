@@ -7,3 +7,4 @@ en:
        exit_already_exists: "An exit with that name already exists."
        nowhere: "Nowhere"
        cant_go_that_way: "You can't go that way."
+       room_directory: "Room Directory"
