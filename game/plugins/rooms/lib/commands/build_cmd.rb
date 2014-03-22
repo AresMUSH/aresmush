@@ -36,7 +36,7 @@ module AresMUSH
           Rooms.open_exit(self.return_exit, room, client.room)
         end
         
-        Rooms.move_to(client, room)
+        Rooms.move_to(client, client.char, room)
       end
     end
   end

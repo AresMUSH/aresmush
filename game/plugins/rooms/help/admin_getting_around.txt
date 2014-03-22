@@ -1,7 +1,8 @@
 Admin have some extra commands for getting around the grid without using the normal exits.
 
-    %xcteleport <name>%xn - Teleports directly to a location.  
-        'name' can be a room name, room database ID, or player name
+    %xcteleport <destination>%xn - Teleports directly to a location.  
+    %xcteleport <name>=<destination>%xn - Sends a character directly to a location.
+        'destination' can be a room name, room database ID, or player name
 
 If you're not sure of the room name or ID, you can use the rooms directory command.
     

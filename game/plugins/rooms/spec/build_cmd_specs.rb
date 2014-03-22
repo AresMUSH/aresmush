@@ -66,7 +66,7 @@ module AresMUSH
           end
         
           it "should move the client to the new room" do
-            Rooms.should_receive(:move_to).with(client, @room)
+            Rooms.should_receive(:move_to).with(client, char, @room)
             handler.handle
           end
         end

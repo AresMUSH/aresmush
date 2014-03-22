@@ -51,7 +51,7 @@ module AresMUSH
           it "should go to the exit destination if there is one" do
             other_room = double
             @exit.stub(:dest) { other_room }
-            Rooms.should_receive(:move_to).with(client, other_room)
+            Rooms.should_receive(:move_to).with(client, char, other_room)
             handler.handle
           end
           
