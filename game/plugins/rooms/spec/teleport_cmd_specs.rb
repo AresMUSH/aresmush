@@ -19,10 +19,21 @@ module AresMUSH
           handler.stub(:destination) { "Somewhere" }
         end
         
+        context "player found" do
+          it "should go to the player's room" do
+            dest = double
+            char.stub(:room) { dest }
+            SingleTargetFinder.should_receive(:find).with("Somewhere", Character) { FindResult.new(char, nil) }
+            SingleTargetFinder.stub(:find) { result }
+            Rooms.should_receive(:move_to).with(client, dest)
+            handler.handle
+          end
+        end
+        
         context "destination not found" do
           before do
-            result = FindResult.new(nil, "error")
-            SingleTargetFinder.should_receive(:find).with("Somewhere", Room) { result }
+            SingleTargetFinder.should_receive(:find).with("Somewhere", Character) { FindResult.new(nil, "error") }
+            SingleTargetFinder.should_receive(:find).with("Somewhere", Room) { FindResult.new(nil, "error") }
             client.stub(:emit_failure)
           end  
           
@@ -40,8 +51,8 @@ module AresMUSH
         context "destination found" do          
           it "should go to the destination" do
             dest = double
-            result = FindResult.new(dest, "error")
-            SingleTargetFinder.stub(:find) { result }
+            SingleTargetFinder.should_receive(:find).with("Somewhere", Character) { FindResult.new(nil, "error") }
+            SingleTargetFinder.should_receive(:find).with("Somewhere", Room) { FindResult.new(dest, "error") }
             Rooms.should_receive(:move_to).with(client, dest)
             handler.handle
           end

@@ -1,0 +1,26 @@
+help:
+    categories:
+        main:
+            topics:
+                meetme:
+                    toc_topic: "Getting Around"
+                    file: 'game/plugins/rooms/help/meetme.txt'
+                    summary: 'Meeting up for roleplay.'
+                    aliases: [ 'meetme' ]
+                getting around:
+                    toc_topic: "Getting Around"
+                    file: 'game/plugins/rooms/help/moving_around.txt'
+                    summary: 'Getting around the grid.'
+                    aliases: [ 'go', 'move', 'rooms', 'exit', 'home' ]                
+        staff:
+            topics:
+                building: 
+                    toc_topic: 'Manage'
+                    file: 'game/plugins/manage/help/building.txt'
+                    summary: 'Building the grid.'
+                    aliases: [ 'build', 'open', 'rooms' ]
+                getting around: 
+                    toc_topic: 'Getting Around'
+                    file: 'game/plugins/manage/help/admin_getting_around.txt'
+                    summary: 'Getting around the grid.'
+                    aliases: [ 'teleport', 'join' ]

@@ -4,6 +4,6 @@ help:
             topics:
                 manage: 
                     toc_topic: 'Code Management'
-                    file: 'game/plugins/manage/help/staff_manage.txt'
+                    file: 'game/plugins/manage/help/manage.txt'
                     summary: 'Managing plugins and config.'
                     aliases: [ 'load', 'unload', 'plugin', 'config' ]

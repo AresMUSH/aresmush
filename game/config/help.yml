@@ -3,7 +3,7 @@ help:
         main:
             command: help
             title: "Player Help"
-        staff:
-            command: shelp
-            title: "Staff Help"
+        admin:
+            command: ahelp
+            title: "Admin Help"
             

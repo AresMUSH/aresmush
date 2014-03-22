@@ -7,10 +7,10 @@ help:
                     file: 'game/plugins/login/help/login.txt'
                     summary: 'Creating, connecting and managing passwords.'
                     aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit' ]
-        staff:
+        admin:
             topics:
                 login: 
                     toc_topic: 'Player Management'
-                    file: 'game/plugins/login/help/staff_login.txt'
+                    file: 'game/plugins/login/help/admin_login.txt'
                     summary: 'Managing player login info.'
                     aliases: [ 'password', 'name', 'login' ]

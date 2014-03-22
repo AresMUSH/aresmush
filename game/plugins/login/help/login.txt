@@ -9,7 +9,7 @@ Also from the login screen, you can create a new character or connect to an exis
 
 Names will normally be your character's first or last name, and can only be a single word.  You should take care to consider the game's theme when choosing your name.
 
-You can associate an email address with your account, to enable staff to contact you.
+You can associate an email address with your account, to enable admin to contact you.
 
     %xcemail%xn - Views your registered email
     %xcemail/set <email>%xn - Changes the email registered with your account.
