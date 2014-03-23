@@ -10,6 +10,10 @@ module AresMUSH
     
     before_validation :save_upcase_name
     
+    def self.find_all_by_name_or_id(name_or_id)
+      where( { :$or => [ { :name_upcase => name_or_id.upcase }, { :id => name_or_id } ] } ).all
+    end
+
     def clients
       clients = Global.client_monitor.logged_in_clients
       clients.select { |c| c.room == self }

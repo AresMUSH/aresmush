@@ -3,7 +3,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require "aresmush"
 
 module AresMUSH
-  describe SingleTargetFinder
+  describe ClassTargetFinder
   describe :find do
 
     before do
@@ -13,7 +13,7 @@ module AresMUSH
     it "should find the specified class by name" do
       using_test_db do
         room = Room.create(:name => "foo")      
-        result = SingleTargetFinder.find("foo", Room)
+        result = ClassTargetFinder.find("foo", Room)
         result.target.should eq room
         result.error.should be_nil
       end
@@ -22,7 +22,7 @@ module AresMUSH
     it "should find the specified class by ID" do
       using_test_db do
         room = Room.create(:name => "foo")
-        result = SingleTargetFinder.find(room.id.to_s, Room)
+        result = ClassTargetFinder.find(room.id.to_s, Room)
         result.target.should eq room
         result.error.should be_nil
       end
@@ -32,7 +32,7 @@ module AresMUSH
       using_test_db do
         room1 = Room.create(:name => "foo")      
         room2 = Room.create(:name => "foo")      
-        result = SingleTargetFinder.find("foo", Room)
+        result = ClassTargetFinder.find("foo", Room)
         result.target.should eq nil
         result.error.should eq 'db.object_ambiguous'
       end
@@ -40,7 +40,7 @@ module AresMUSH
 
     it "should return not found if no results" do
       using_test_db do
-        result = SingleTargetFinder.find("bar", Room)
+        result = ClassTargetFinder.find("bar", Room)
         result.target.should eq nil
         result.error.should eq 'db.object_not_found'
       end

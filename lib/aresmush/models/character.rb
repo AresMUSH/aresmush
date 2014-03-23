@@ -21,6 +21,10 @@ module AresMUSH
       hash == entered_password
     end
     
+    def self.find_all_by_name_or_id(name_or_id)
+      where( { :$or => [ { :name_upcase => name_or_id.upcase }, { :id => name_or_id } ] } ).all
+    end
+    
     def self.find_by_name(name)
       find_by_name_upcase(name.upcase)
     end

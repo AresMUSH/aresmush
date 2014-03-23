@@ -27,7 +27,7 @@ module AresMUSH
         
         dest = nil
         if (!self.dest.empty?)
-          find_result = SingleTargetFinder.find(self.dest, Room)
+          find_result = ClassTargetFinder.find(self.dest, Room)
           if (!find_result.found?)
             client.emit_failure(find_result.error)
             return
