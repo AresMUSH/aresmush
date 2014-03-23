@@ -22,7 +22,7 @@ module AresMUSH
     it "should find the specified class by ID" do
       using_test_db do
         room = Room.create(:name => "foo")
-        result = SingleTargetFinder.find(room.id, Room)
+        result = SingleTargetFinder.find(room.id.to_s, Room)
         result.target.should eq room
         result.error.should be_nil
       end
