@@ -89,17 +89,47 @@ module AresMUSH
           handler.stub(:destination) { "Somewhere" }
         end
         
-        context "all ok" do
+        context "teleporting self" do
+          before do
+            @dest = double
+            handler.stub(:find_destination) { @dest }
+            handler.stub(:find_targets) { {:client => client, :char => char } }
+          end
+          
           it "should go to the room" do
-            dest = double
-            other_char = double
-            other_client = double
-            handler.stub(:find_destination) { dest }
-            handler.stub(:find_targets) { {:client => other_client, :char => other_char } }
-            Rooms.should_receive(:move_to).with(other_client, other_char, dest)
+            Rooms.should_receive(:move_to).with(client, char, @dest)
             handler.handle
           end
-        end
+          
+          it "should not emit to the client" do
+            Rooms.stub(:move_to)
+            client.should_not_receive(:emit_ooc)
+            handler.handle
+          end
+        end  
+        
+        context "teleporting someone else" do
+          before do
+            @dest = double
+            @other_char = double
+            @other_client = double
+            client.stub(:name) { "Bob" }
+            handler.stub(:find_destination) { @dest }
+            handler.stub(:find_targets) { {:client => @other_client, :char => @other_char } }
+          end
+          
+          it "should go to the room" do
+            Rooms.should_receive(:move_to).with(@other_client, @other_char, @dest)
+            @other_client.stub(:emit_ooc)
+            handler.handle
+          end
+          
+          it "should tell the person they're being teleported" do
+            Rooms.stub(:move_to)
+            @other_client.should_receive(:emit_ooc).with('rooms.you_are_teleported')
+            handler.handle
+          end
+        end        
         
         context "destination not found" do
           before do

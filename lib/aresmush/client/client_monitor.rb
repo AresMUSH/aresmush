@@ -40,5 +40,9 @@ module AresMUSH
     def logged_in_clients
       @clients.select { |c| c.logged_in? }
     end
+    
+    def find_client(char)
+      @clients.find { |c| c.char == char }
+    end
   end
 end

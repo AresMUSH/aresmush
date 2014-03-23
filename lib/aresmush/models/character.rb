@@ -10,6 +10,7 @@ module AresMUSH
     belongs_to :room, :class_name => 'AresMUSH::Room'
     
     before_validation :save_upcase_name
+    after_save :reload_client_cache
     
     def change_password(raw_password)
       @password_hash = Character.hash_password(raw_password)
@@ -35,6 +36,13 @@ module AresMUSH
         
     def save_upcase_name      
       @name_upcase = @name.nil? ? "" : @name.upcase
+    end
+    
+    def reload_client_cache
+      client = Global.client_monitor.find_client(self)
+      if (!client.nil?)
+        client.char.reload
+      end
     end
   end
 end

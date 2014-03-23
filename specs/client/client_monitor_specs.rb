@@ -94,5 +94,19 @@ module AresMUSH
         @client_monitor.logged_in_clients.should eq [@client2, client3]
       end
     end
+    
+    describe :find_client do
+      it "should find a client with a matching character" do
+        char = double
+        @client1.stub(:char) { char }
+        @client_monitor.find_client(char).should eq @client1
+      end
+      
+      it "should return nil if no client found" do
+        char = double
+        @client_monitor.find_client(char).should eq nil
+      end
+    end
+    
   end
 end

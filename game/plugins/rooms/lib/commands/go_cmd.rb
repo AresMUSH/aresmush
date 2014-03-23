@@ -27,7 +27,6 @@ module AresMUSH
           client.emit_failure(t("rooms.cant_go_that_way"))
           return
         end
-        
         Rooms.move_to(client, client.char, exit.dest)
       end
     end

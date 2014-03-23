@@ -41,6 +41,10 @@ module AresMUSH
           return
         end
         
+        if (targets[:client] != client)
+          targets[:client].emit_ooc(t('rooms.you_are_teleported', :name => client.name))
+        end
+        
         Rooms.move_to(targets[:client], targets[:char], room)
       end
       

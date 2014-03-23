@@ -2,10 +2,11 @@ en:
     rooms:
        char_has_arrived: "%{name} has arrived."
        char_has_left: "%{name} has left."
-       room_created: "You build a room named #{name}."
-       exit_created: "You open an exit from #{source_name} to #{dest_name}."
+       room_created: "You build a room named %{name}."
+       exit_created: "You open an exit from %{source_name} to %{dest_name}."
        exit_already_exists: "An exit with that name already exists."
        nowhere: "Nowhere"
        cant_go_that_way: "You can't go that way."
        room_directory: "Room Directory"
        invalid_teleport_destination: "That is not a valid teleport destination."
+       you_are_teleported: "%{name} is teleporting you to a new location."
