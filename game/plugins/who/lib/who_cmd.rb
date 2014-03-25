@@ -1,3 +1,5 @@
+require 'erubis'
+
 module AresMUSH
   module Who
     class WhoCmd
@@ -8,10 +10,7 @@ module AresMUSH
       no_switches
       
       def after_initialize
-        header_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/header.lq")
-        char_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/character.lq")
-        footer_template = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/footer.lq")
-        @renderer = WhoRenderer.new(header_template, char_template, footer_template)
+        @renderer =  TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/who.erb")
       end
 
       def want_command?(client, cmd)
@@ -20,7 +19,9 @@ module AresMUSH
       
       def handle
         logged_in = Global.client_monitor.logged_in_clients
-        client.emit @renderer.render(logged_in)
+        chars = logged_in.map { |c| WhoClientData.new(c) }
+        data = WhoData.new(chars)
+        client.emit @renderer.render(data)
       end      
     end
   end

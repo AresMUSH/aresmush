@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   
   module Who
-    describe WhoCharData do
+    describe WhoClientData do
       include MockClient
       
       describe :sort do
@@ -21,7 +21,7 @@ module AresMUSH
           c3[:char].stub(:who_location) { "B Room" }
           c3[:char].stub(:name) { "Hotel" }
           
-          WhoCharData.sort([c1[:client], c2[:client], c3[:client]]).should eq [c2[:client], c3[:client], c1[:client]]
+          WhoClientData.sort([c1[:client], c2[:client], c3[:client]]).should eq [c2[:client], c3[:client], c1[:client]]
         end
       end
     end

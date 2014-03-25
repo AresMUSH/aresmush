@@ -1,13 +1,15 @@
 module AresMUSH  
   module Who
-    class WhoCharData
-      include ToLiquidHelper
-    
+    class WhoClientData
       def initialize(client)
         @client = client
         @char = client.char
       end
     
+      def char
+        @char
+      end
+      
       def name
         @char.name
       end

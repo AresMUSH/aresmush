@@ -18,26 +18,10 @@ module AresMUSH
       end
       
       describe :initialize do
-        it "should read the templates" do
+        it "should read the template" do
           TemplateRenderer.should_receive(:create_from_file) do |file|
-            file.end_with?("header.lq").should be_true
+            file.end_with?("who.erb").should be_true
           end
-
-          TemplateRenderer.should_receive(:create_from_file) do |file|
-            file.end_with?("character.lq").should be_true
-          end
-
-          TemplateRenderer.should_receive(:create_from_file) do |file|
-            file.end_with?("footer.lq").should be_true
-          end
-          WhoCmd.new
-        end
-        
-        it "should initialize the renderer" do
-          TemplateRenderer.should_receive(:create_from_file) { 1 }
-          TemplateRenderer.should_receive(:create_from_file) { 2 }
-          TemplateRenderer.should_receive(:create_from_file) { 3 }
-          WhoRenderer.should_receive(:new).with(1, 2, 3)
           WhoCmd.new
         end
       end
@@ -51,7 +35,7 @@ module AresMUSH
           @renderer = double
           @renderer.stub(:render) { "ABC" }
           
-          WhoRenderer.stub(:new) { @renderer }
+          TemplateRenderer.stub(:new) { @renderer }
           
           client_monitor = double
           Global.stub(:client_monitor) { client_monitor }
@@ -61,9 +45,17 @@ module AresMUSH
           init_handler(WhoCmd, "who")                 
         end
 
-        it "should call the renderer with visible clients" do
+        it "should create who client data and pass it along" do
           client.stub(:emit)
-          @renderer.should_receive(:render).with([@client1[:client], @client2[:client], @client3[:client]]) { "" }
+          data1 = double
+          data2 = double
+          data3 = double
+          data4 = double
+          WhoClientData.should_receive(:new).with(@client1[:client]) { data1 }
+          WhoClientData.should_receive(:new).with(@client2[:client]) { data2 }
+          WhoClientData.should_receive(:new).with(@client3[:client]) { data3 }
+          WhoData.should_receive(:new).with([data1, data2, data3]) { data4 }
+          @renderer.should_receive(:render).with(data4)
           handler.handle
         end
         

@@ -1,7 +1,8 @@
 module AresMUSH
+  
   module Who
     class WhoData
-      include ToLiquidHelper
+      include TemplateFormatters
     
       def initialize(clients)
         @clients = clients
@@ -24,6 +25,10 @@ module AresMUSH
     
       def mush_name
         Global.config['server']['mush_name']
+      end
+      
+      def get_binding
+        binding()
       end
     end  
   end

@@ -1,7 +1,7 @@
 module AresMUSH
   module Describe
     class CharData
-      include ToLiquidHelper
+      include TemplateFormatters
       
       def initialize(char)
         @char = char

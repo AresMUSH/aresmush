@@ -1,16 +1,12 @@
 module AresMUSH  
   class TemplateRenderer
     def initialize(template)
-      @template = Liquid::Template.parse(template)
+      @template = Erubis::Eruby.new(template, :bufvar=>'@output')
     end
     
     def render(data)
       return "" if data.nil?
-      if (data.respond_to?(:to_liquid))
-        @template.render(data.to_liquid)
-      else
-        @template.render(data)
-      end
+      @template.evaluate(data)
     end
     
     def self.create_from_file(file_path)

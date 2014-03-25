@@ -1,7 +1,7 @@
 module AresMUSH
   module Describe
     class RoomData
-      include ToLiquidHelper
+      include TemplateFormatters
       
       def initialize(model)
         @model = model

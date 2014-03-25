@@ -12,7 +12,6 @@ end
 
 RSpec.configure do |c|
   c.include AresMUSH::SpecHelpers
-  AresMUSH::TagExtensions.register  
 end
 
 module AresMUSH
