@@ -1,10 +1,11 @@
 module AresMUSH
   module Describe
-    class CharData
+    class ClientData
       include TemplateFormatters
       
-      def initialize(char)
-        @char = char
+      def initialize(client)
+        @client = client
+        @char = client.char
       end
       
       def name
@@ -16,7 +17,7 @@ module AresMUSH
       end
       
       def shortdesc
-        @char.shortdesc.nil? ? "" : "- #{@char.shortdesc}"
+        @char.shortdesc
       end
     end
   end

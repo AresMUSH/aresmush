@@ -1,5 +1,0 @@
-{% line %}
-%xg{{name}}%xn
-{{description}}
-Leads to: {{destination}}
-{% line %}

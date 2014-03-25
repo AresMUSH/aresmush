@@ -2,9 +2,13 @@ module AresMUSH
   module Describe
     class RoomData
       include TemplateFormatters
-      
-      def initialize(model)
+    
+      attr_accessor :clients, :exits
+            
+      def initialize(model, clients, exits)
         @model = model
+        @clients = clients
+        @exits = exits
       end
       
       def name

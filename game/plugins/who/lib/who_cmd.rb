@@ -19,8 +19,8 @@ module AresMUSH
       
       def handle
         logged_in = Global.client_monitor.logged_in_clients
-        chars = logged_in.map { |c| WhoClientData.new(c) }
-        data = WhoData.new(chars)
+        clients = logged_in.map { |c| WhoClientData.new(c) }
+        data = WhoData.new(clients)
         client.emit @renderer.render(data)
       end      
     end

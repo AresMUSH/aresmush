@@ -1,0 +1,22 @@
+<% line %>
+<%= name %>
+<%= ooc_time %>
+<% line 2 %>
+<%= description %>
+<% line 2 %>
+%xgPlayers:%xn
+<% clients.each do |c| -%>
+%xh<%= c.name %>%xn<% if !c.shortdesc.nil? %> - <%= c.shortdesc %><%end%>
+<% end %> 
+
+%xgExits:%xn
+<% count = 0 %>
+<% first = true %>
+<% exits.each do |e| %>
+<% one_line do %>
+<% if (count % 2 == 0 && !first) %>%r<% end %>
+<% count = count + 1 %><% first = false%>
+%xh<%= left("[#{e.name}]", 5) %>%xn <%= left(e.destination, 30) %>
+<% end %>
+<% end %>
+%r<% line %>

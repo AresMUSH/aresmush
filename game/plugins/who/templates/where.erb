@@ -1,17 +1,17 @@
-%l1
+<% line %>
 <%= mush_name.center(78) %>
-%l2
+<% line 2 %>
 %xgStatus Name                 Position        Location                  Idle%xn
 <% clients.each do |c| -%> 
-<%= ljust(c.status, 6) -%>
- <%= ljust(c.name, 20) -%> 
- <%= ljust(c.room,35) -%> 
- <%= ljust(c.idle, 10) -%>
+<%= left(c.status, 6) -%>
+ <%= left(c.name, 20) -%> 
+ <%= left(c.room,35) -%> 
+ <%= left(c.idle, 10) -%>
 <% end %>
-%l2
+<% line 2 %>
 <% one_line do %>
 %xr<%= center(online_total, 25) %>%xn 
 %xg<%= center(ic_total, 25) -%>%xn 
 %xb<%= center(online_record, 25)%>%xn
 <% end %>
-%l1
+<% line %>

@@ -4,7 +4,6 @@ module AresMUSH
     attr_reader :command_line
     
     def initialize
-      TagExtensions.register
       config_reader = ConfigReader.new
       ares_logger = AresLogger.new
       locale = Locale.new

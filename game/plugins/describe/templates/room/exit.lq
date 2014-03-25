@@ -1,1 +1,0 @@
-{% l 5 %}[{{name}}]{% endl %} {% l 30 %}{{destination}}{% endl %}
