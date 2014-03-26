@@ -1,14 +1,10 @@
 module AresMUSH
   module Describe
-    class RoomData
+    class ExitTemplate
       include TemplateFormatters
-    
-      attr_accessor :clients, :exits
-            
-      def initialize(model, clients, exits)
+      
+      def initialize(model)
         @model = model
-        @clients = clients
-        @exits = exits
       end
       
       def name
@@ -19,8 +15,8 @@ module AresMUSH
         @model.description
       end
       
-      def ooc_time
-        DateTime.now
+      def destination
+        @model.dest.nil? ? t('describe.nowhere') : @model.dest.name
       end
     end
   end

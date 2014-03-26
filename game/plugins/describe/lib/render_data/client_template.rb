@@ -1,6 +1,6 @@
 module AresMUSH
   module Describe
-    class ClientData
+    class ClientTemplate
       include TemplateFormatters
       
       def initialize(client)
@@ -18,6 +18,16 @@ module AresMUSH
       
       def shortdesc
         @char.shortdesc
+      end
+      
+      def fullname
+        # TODO @char.fullname
+        "Full Name"
+      end
+      
+      def actor
+        # TODO @char.actor
+        "Cool Actor"
       end
     end
   end

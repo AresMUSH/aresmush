@@ -1,6 +1,6 @@
 module AresMUSH  
   module Who
-    class WhoClientData
+    class WhoClientTemplate
       def initialize(client)
         @client = client
         @char = client.char
@@ -26,7 +26,7 @@ module AresMUSH
         @char.faction
       end
     
-      def idle_time
+      def idle
         "#{@client.idle_secs}m"
       end   
     

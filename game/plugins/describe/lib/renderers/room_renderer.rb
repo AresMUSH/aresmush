@@ -7,9 +7,9 @@ module AresMUSH
       
       def render(model)
         logged_in = Global.client_monitor.logged_in_clients
-        clients = logged_in.map { |c| ClientData.new(c) }
-        exits = model.exits.map { |e| ExitData.new(e) }
-        data = RoomData.new(model, clients, exits)
+        clients = logged_in.map { |c| ClientTemplate.new(c) }
+        exits = model.exits.map { |e| ExitTemplate.new(e) }
+        data = RoomTemplate.new(model, clients, exits)
         @renderer.render(data)
       end
     end

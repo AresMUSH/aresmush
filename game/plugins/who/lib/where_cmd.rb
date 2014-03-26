@@ -10,7 +10,7 @@ module AresMUSH
       no_switches
       
       def after_initialize
-        @renderer =  TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/where.erb")
+        @renderer =  WhoRenderer.new("where.erb")
       end
 
       def want_command?(client, cmd)
@@ -18,10 +18,7 @@ module AresMUSH
       end
       
       def handle
-        logged_in = Global.client_monitor.logged_in_clients
-        clients = logged_in.map { |c| WhoClientData.new(c) }
-        data = WhoData.new(clients)
-        client.emit @renderer.render(data)
+        client.emit @renderer.render
       end      
     end
   end

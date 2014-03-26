@@ -1,7 +1,7 @@
 module AresMUSH
   
   module Who
-    class WhoData
+    class WhoTemplate
       include TemplateFormatters
     
       def initialize(clients)

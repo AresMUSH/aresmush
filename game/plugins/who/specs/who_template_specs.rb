@@ -3,11 +3,11 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   
   module Who
-    describe WhoData do
+    describe WhoTemplate do
       include MockClient
       describe :online_record do
         it "should read online record" do
-          data = WhoData.new(@clients)
+          data = WhoTemplate.new(@clients)
           AresMUSH::Locale.stub(:translate).with("who.online_record", { :count => 22 }) { "record 22" }
           Game.should_receive(:online_record) { 22 }
           data.online_record.should eq "record 22"
@@ -18,7 +18,7 @@ module AresMUSH
         it "should count the people" do
           AresMUSH::Locale.stub(:translate).with("who.players_online", { :count => 2 }) { "online 2" }
           clients = [double, double]
-          data = WhoData.new(clients)
+          data = WhoTemplate.new(clients)
           data.online_total.should eq "online 2"
         end
       end
@@ -35,7 +35,7 @@ module AresMUSH
           mock_client3 = build_mock_client
           mock_client3[:char].stub(:is_ic?) { true }
                     
-          data = WhoData.new([mock_client1[:client], mock_client2[:client], mock_client3[:client]])
+          data = WhoTemplate.new([mock_client1[:client], mock_client2[:client], mock_client3[:client]])
           data.ic_total.should eq "ic 2"
         end
       end
@@ -55,7 +55,7 @@ module AresMUSH
           c3[:char].stub(:who_location) { "B Room" }
           c3[:char].stub(:name) { "Hotel" }
           
-          data = WhoData.new([c1[:client], c2[:client], c3[:client]])
+          data = WhoTemplate.new([c1[:client], c2[:client], c3[:client]])
           data.clients.should eq [c2[:client], c3[:client], c1[:client]]
         end
       end

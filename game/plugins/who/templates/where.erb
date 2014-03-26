@@ -1,7 +1,7 @@
 <%= line %>
 <%= center(mush_name,78) %>
 <%= line 2 %>
-%xgStatus Name                 Position        Location                  Idle%xn
+%xgStatus Name                 Location                            Idle%xn
 <% clients.each do |c| -%> 
 <%= left(c.status, 6) -%>
  <%= left(c.name, 20) -%> 

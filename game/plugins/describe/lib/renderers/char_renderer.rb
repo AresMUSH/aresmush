@@ -10,7 +10,7 @@ module AresMUSH
         if (client.nil?)
           return t('db.object_not_found')
         end
-        data = ClientData.new(client)
+        data = ClientTemplate.new(client)
         @renderer.render(data)
       end
     end

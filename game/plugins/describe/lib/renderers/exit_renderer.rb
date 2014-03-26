@@ -6,7 +6,7 @@ module AresMUSH
       end
       
       def render(model)
-        data = ExitData.new(model)
+        data = ExitTemplate.new(model)
         @renderer.render(data)
       end
     end
