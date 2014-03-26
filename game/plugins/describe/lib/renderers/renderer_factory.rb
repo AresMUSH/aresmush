@@ -26,21 +26,9 @@ module AresMUSH
       end
       
       def self.build_renderers
-        self.room_renderer = build_room_renderer
-        self.exit_renderer = build_exit_renderer
-        self.char_renderer = build_char_renderer
-      end
-      
-      def self.build_room_renderer
-        TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/room.erb")
-      end
-      
-      def self.build_exit_renderer
-        TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/exit.erb")
-      end
-      
-      def self.build_char_renderer
-        TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/character.erb")
+        self.room_renderer = RoomRenderer.new
+        self.exit_renderer = ExitRenderer.new
+        self.char_renderer = CharRenderer.new
       end
     end
   end

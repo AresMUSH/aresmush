@@ -7,9 +7,7 @@ module AresMUSH
       def initialize(clients)
         @clients = clients
       end
-    
-      attr_reader :clients
-    
+        
       def online_total
         t('who.players_online', :count => @clients.count)
       end
@@ -27,9 +25,9 @@ module AresMUSH
         Global.config['server']['mush_name']
       end
       
-      def get_binding
-        binding()
-      end
+      def clients
+        @clients.sort_by{ |c| [c.char.who_location, c.char.name] }
+      end 
     end  
   end
 end

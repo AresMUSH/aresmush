@@ -40,6 +40,26 @@ module AresMUSH
         end
       end
     
+      describe :clients do
+        it "should return the list of clients sorted by location then name" do
+          
+          c1 = build_mock_client
+          c1[:char].stub(:who_location) { "B Room" }
+          c1[:char].stub(:name) { "Zulu" }
+          
+          c2 = build_mock_client
+          c2[:char].stub(:who_location) { "A Room" }
+          c2[:char].stub(:name) { "Tango" }
+          
+          c3 = build_mock_client
+          c3[:char].stub(:who_location) { "B Room" }
+          c3[:char].stub(:name) { "Hotel" }
+          
+          data = WhoData.new([c1[:client], c2[:client], c3[:client]])
+          data.clients.should eq [c2[:client], c3[:client], c1[:client]]
+        end
+      end
+      
     end
   end
 end

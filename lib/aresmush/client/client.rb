@@ -3,11 +3,12 @@ module AresMUSH
   class Client 
 
     attr_reader :ip_addr, :id
-    attr_accessor :char
+    attr_accessor :char, :last_activity
     
     def initialize(id, connection)
       @id = id
       @connection = connection
+      self.last_activity = Time.now
     end
     
     def to_s
@@ -38,9 +39,8 @@ module AresMUSH
       @connection.send_formatted "%xr%% #{msg}%xn"
     end
 
-    def idle
-      # TODO - Implement idle command
-      "3m"
+    def idle_secs
+      (Time.now - self.last_activity).to_i
     end
     
     # Initiates a disconnect on purpose.  Wait a tick
@@ -51,6 +51,7 @@ module AresMUSH
     
     def handle_input(input)
       begin
+        self.last_activity = Time.now
         Global.dispatcher.on_command(self, Command.new(input))
       rescue Exception => e
         Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")

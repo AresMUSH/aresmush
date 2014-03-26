@@ -36,5 +36,11 @@ en:
 
     number:
         separator: '.'
+    
+    time:
+        time_seconds: "%{time}s"
+        time_minutes: "%{time}m"
+        time_hours: "%{time}h"
+        
 
       

@@ -111,5 +111,15 @@ module AresMUSH
         @client.room.should eq nil
       end
     end
+    
+    describe :idle_secs do
+      it "should track the time since last activity" do
+        @client.last_activity = Time.parse("2011-1-2 10:59:01")
+        fake_now = Time.parse("2011-1-2 11:00:00")
+        Time.stub(:now) { fake_now }
+        @client.idle_secs.should eq 59
+      end
+    end
+    
   end
 end

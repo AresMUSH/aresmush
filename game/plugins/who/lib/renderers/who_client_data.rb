@@ -26,16 +26,12 @@ module AresMUSH
         @char.faction
       end
     
-      def idle
-        @client.idle
+      def idle_time
+        "#{@client.idle_secs}m"
       end   
     
       def room
         @char.who_location
-      end    
-    
-      def self.sort(clients)
-        clients.sort_by{ |c| [c.char.who_location, c.char.name] }
       end 
     end
   end

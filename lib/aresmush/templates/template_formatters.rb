@@ -16,7 +16,7 @@ module AresMUSH
     end
   
     def line(number = 1)
-      @output << "%l#{number}%r"
+      @output << "%l#{number}"
     end
     
     def one_line(&block)
