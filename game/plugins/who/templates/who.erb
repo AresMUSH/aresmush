@@ -1,18 +1,18 @@
 <%= line %>
-<%= center(mush_name,78) %>
+<%= mush_name %>
 <%= line 2 %>
-%xgStatus Name                 Position        Location                  Idle%xn
+%xgStatus Name                 Position             Faction              Idle%xn
 <% clients.each do |c| -%> 
-<%= left(c.status, 6) -%>
- <%= left(c.name, 20) -%> 
- <%= left(c.faction,15) -%> 
- <%= left(c.position,25) -%> 
- <%= left(c.idle, 10) %>
+<%= c.status -%>
+ <%= c.name -%> 
+ <%= c.position -%> 
+ <%= c.faction -%> 
+ <%= c.idle %>
 <% end %>
 <%= line 2 %>
 <% one_line do %>
-%xr<%= center(online_total, 25) %>%xn 
-%xg<%= center(ic_total, 25) -%>%xn 
-%xb<%= center(online_record, 25)%>%xn
+%xr<%= online_total %>%xn 
+%xg<%= ic_total %>%xn 
+%xb<%= online_record %>%xn
 <% end %>
 <%= line %>

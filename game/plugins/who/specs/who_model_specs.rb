@@ -35,7 +35,7 @@ module AresMUSH
   end
   
   describe Character do 
-    describe :who_location do
+    describe :who_room_name do
       before do 
         @char = Character.new
         SpecHelpers.stub_translate_for_testing
@@ -46,12 +46,12 @@ module AresMUSH
         @char.stub(:hidden) { false }
         @char.stub(:room) { room }
         room.should_receive(:name) { "Room Name" }
-        @char.who_location.should eq "Room Name"
+        @char.who_room_name.should eq "Room Name"
       end
       
       it "should return unfindable if hidden" do
         @char.stub(:hidden) { true }
-        @char.who_location.should eq "who.hidden"
+        @char.who_room_name.should eq "who.hidden"
       end
     end    
   end

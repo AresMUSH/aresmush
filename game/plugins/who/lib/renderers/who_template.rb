@@ -9,24 +9,24 @@ module AresMUSH
       end
         
       def online_total
-        t('who.players_online', :count => @clients.count)
+        center(t('who.players_online', :count => @clients.count), 25)
       end
     
       def ic_total
         ic = @clients.select { |c| c.char.is_ic? }
-        t('who.players_ic', :count => ic.count)
+        center(t('who.players_ic', :count => ic.count), 25)
       end
     
       def online_record
-        t('who.online_record', :count => Game.online_record)
+        center(t('who.online_record', :count => Game.online_record), 25)
       end
     
       def mush_name
-        Global.config['server']['mush_name']
+        center(Global.config['server']['mush_name'], 78)
       end
       
       def clients
-        @clients.sort_by{ |c| [c.char.who_location, c.char.name] }
+        @clients.sort_by{ |c| [c.char.who_room_name, c.char.name] }
       end 
     end  
   end

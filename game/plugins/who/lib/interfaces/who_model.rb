@@ -43,7 +43,7 @@ module AresMUSH
       "Up"
     end
     
-    def who_location
+    def who_room_name
       self.hidden ? t('who.hidden') : self.room.name
     end
   end

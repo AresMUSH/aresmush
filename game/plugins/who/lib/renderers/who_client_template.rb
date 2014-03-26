@@ -1,6 +1,8 @@
 module AresMUSH  
   module Who
     class WhoClientTemplate
+      include TemplateFormatters
+      
       def initialize(client)
         @client = client
         @char = client.char
@@ -11,27 +13,27 @@ module AresMUSH
       end
       
       def name
-        @char.name
+        left(@char.name, 20)
       end
     
       def position
-        @char.position
+        left(@char.position, 20)
       end
     
       def status
-        @char.status
+        left(@char.status, 6)
       end
     
       def faction
-        @char.faction
+        left(@char.faction, 20)
       end
     
       def idle
-        "#{@client.idle_secs}m"
+        left("#{@client.idle_secs}m", 5)
       end   
     
       def room
-        @char.who_location
+        left(@char.who_room_name, 35)
       end 
     end
   end
