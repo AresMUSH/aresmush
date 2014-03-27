@@ -53,7 +53,6 @@ module AresMUSH
       describe "#render" do
 
         before do
-          puts ConfigReader.config_path
           Global.config_reader = ConfigReader.new
           Global.config_reader.read
           Global.config
@@ -68,6 +67,7 @@ module AresMUSH
           who_renderer = WhoRenderer.new("who.erb")
           output       = who_renderer.render.to_str
           output.should_not be_nil
+          output.scan(/#{Global.config['server']['mush_name']}/).size.should be 1
         end
       end
 
