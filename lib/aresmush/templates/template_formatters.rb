@@ -17,11 +17,14 @@ module AresMUSH
   
     def line(number = 1)
       @output << "%l#{number}"
+      return
     end
     
     def one_line(&block)
       str = capture(&block)
       @output << str.gsub(/\n/, "")
+      @output << "\n" if str.ends_with? "\n"
+      return
     end
   
     def capture(*args)
