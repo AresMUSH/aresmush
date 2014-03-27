@@ -44,8 +44,9 @@ module AresMUSH
     end    
     
     describe :has_exit? do
+      include SpecHelpers
       it "should return true if exit exists - case-insensitive" do
-        using_test_db do 
+        using_test_db do
           exit = Exit.new(:name => "A")
           @room.exits << exit
           @room.save!
@@ -54,7 +55,7 @@ module AresMUSH
       end
       
       it "should return false if exit doesn't exist" do
-        using_test_db do 
+        using_test_db do
           exit = Exit.new(:name => "A")
           @room.exits << exit
           @room.save!

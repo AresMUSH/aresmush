@@ -1,6 +1,8 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'aresmush'
+require 'rspec/core/rake_task'
+
 
 task :start do
   bootstrapper = AresMUSH::Bootstrapper.new
@@ -28,4 +30,16 @@ task :install do
   puts "Install complete."
 end
 
+namespace :unit do
+  RSpec::Core::RakeTask.new do |t|
+    t.pattern = FileList["specs/**/*_spec?.rb"]
+  end
+end
+namespace :plugin do
+  RSpec::Core::RakeTask.new do |t|
+    t.pattern = FileList["game/*/spec?/**/*_spec?.rb"]
+  end
+end
+
 task :default => :start
+
