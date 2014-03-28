@@ -37,39 +37,32 @@ Take it for a Spin?
 
 * Get latest code.
 * Make sure you have the necessary modules (listed in the gemspec, even though it's not a gem yet!)
+	> bundle install
 * Edit the configuration files in game/config.
 * Execute the Mongo database setup shown below.
 
 # Mongo Setup
 
-The first time you run mongo, you'll need to set up the authentication.  This is not currently automated.
+If you're going to run mongo locally a few things need to be done to prepare, the steps below handle the appropriate
+bootstrapping.
 
-1. Edit the mongo.conf file in the root directory to set auth = false
-2. Run 'rake dbstart' to start the database.
-3. Connect to the database using mongo localhost:7210  (use your host/port)
-4. Execute the following commands to add the necessary users (passwords are obviously just examples, but the ares password must match databse.yml).
-
-> use admin
-
-> db.addUser("admin","admin")
-
-> use aresmush
-
-> db.addUser("ares", "bluebloods2")
-
-> db.auth("ares", "bluebloods2")
-
-5. Stop the server.
-6. Edit the mongo.conf file again to change auth = true
-7. Run 'rake dbstart' to start the database.
-8. Run 'rake install' to install the default data.
+1. Ensure that the passwords in game/config/database.yml are what you want to use.
+2. Run 'rake db:local:bootstrap' to setup the database authentication
+3. Run 'rake db:local:start' to start the database.
+4. Run 'rake install' to install the default data.
 
 Your database is now ready to go.
 
-# Starting the Server
+# Starting the Server #
 
-* Run 'rake dbstart' to start the database.
+* Run 'rake db:local:start' to start the database.
 * Run 'rake start' to start the server.
+
+# Stopping the Server #
+
+* Either control-c / control-break the server or send it the kill signal
+ *  TODO: add a shutdown command inside the system and a 'rake stop' command
+* Run 'rake db:local:stop' to stop the database.
 
 # Playing
 
