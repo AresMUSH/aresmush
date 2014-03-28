@@ -7,6 +7,7 @@ module AresMUSH
     end
     
     def start
+      raise "Game DB not initialized!" if Game.master.nil?
       @server.start
     end
   end

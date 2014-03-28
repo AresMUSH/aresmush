@@ -6,8 +6,6 @@ module AresMUSH
 
     belongs_to :room, :class_name => 'AresMUSH::Room'
 
-    before_create :ensure_in_room
-    before_save :ensure_in_room
     after_save :reload_client_cache
 
     def change_password(raw_password)
@@ -43,13 +41,6 @@ module AresMUSH
       end
     end
 
-    private
-    def ensure_in_room
-      if room.nil?
-        Global.logger.warn("client was not in a room, sent to 'WELCOME ROOM': #{name}")
-        self.room = Room.find_by_name_upcase!("WELCOME ROOM")
-      end
-    end
   end
 end
     
