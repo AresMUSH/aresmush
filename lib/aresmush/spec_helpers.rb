@@ -42,11 +42,11 @@ module AresMUSH
     def self.connect_to_test_db
       filename = File.join(AresMUSH.game_path, "config/database.yml")
       config = YAML::load(File.open(filename))
-      host = config['testdb']['host']
-      port = config['testdb']['port']
-      username = config['testdb']['username']
-      password = config['testdb']['password']
-      db_name = 'arestest'
+      host = config['database']['host']
+      port = config['database']['port']
+      username = "#{config['database']['username']}_test"
+      password = config['database']['password']
+      db_name = 'aresmush_test'
     
       connection = Mongo::Connection.new(host, port)
       db = connection.db(db_name)
