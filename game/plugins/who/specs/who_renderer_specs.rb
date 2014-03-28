@@ -39,38 +39,6 @@ module AresMUSH
         end
       end
 
-      describe "#initialize" do
-        it "should load and compile and existing template" do
-          who_renderer = WhoRenderer.new("who.erb")
-        end
-        it "should fail with a missing template" do
-          expect {
-            who_renderer = WhoRenderer.new("DOESNOTEXIST.erb")
-          }.to raise_error(/No such file or directory/)
-        end
-      end
-
-      describe "#render" do
-
-        before do
-          Global.config_reader = ConfigReader.new
-          Global.config_reader.read
-          Global.config
-          @client_monitor = double("client_monitor")
-          Global.stub(:client_monitor) { @client_monitor }
-
-        end
-
-        it "should render output only once" do
-          Game.stub(:online_record) { 0 }
-          @client_monitor.stub(:logged_in_clients) { [] }
-          who_renderer = WhoRenderer.new("who.erb")
-          output       = who_renderer.render.to_str
-          output.should_not be_nil
-          output.scan(/#{Global.config['server']['mush_name']}/).size.should be 1
-        end
-      end
-
     end
   end
 end

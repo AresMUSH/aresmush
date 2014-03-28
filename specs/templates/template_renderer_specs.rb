@@ -34,5 +34,22 @@ module AresMUSH
         renderer = TemplateRenderer.new("TEST")
       end
     end
+
+    describe :create_from_file do
+      require 'tempfile'
+
+      it "should load and compile and existing template" do
+        temp_template = Tempfile.new(['test_template','.erb'])
+        renderer = TemplateRenderer.create_from_file(temp_template.path)
+        renderer.should_not be_nil
+      end
+
+      it "should fail with a missing template" do
+        expect {
+          TemplateRenderer.create_from_file("DOESNOTEXIST.erb")
+        }.to raise_error(/No such file or directory/)
+      end
+
+    end
   end
 end
