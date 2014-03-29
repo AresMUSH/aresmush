@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    include BaseModel
+    include ObjectModel
 
     key :password_hash, String
     key :roles, Array
@@ -28,14 +28,6 @@ module AresMUSH
       else
         names.any? { |n| self.roles.include?(n) }
       end
-    end
-        
-    def self.find_all_by_name_or_id(name_or_id)
-      where({ :$or => [{ :name_upcase => name_or_id.upcase }, { :id => name_or_id }] }).all
-    end
-
-    def self.find_by_name(name)
-      find_by_name_upcase(name.upcase)
     end
 
     def self.exists?(name)

@@ -16,7 +16,7 @@
 <% one_line do %>
 <% if (count % 2 == 0 && !first) %>%r<% end %>
 <% count = count + 1 %><% first = false%>
-%xh<%= left("[#{e.name}]", 5) %>%xn <%= left(e.destination, 30) %>
+%xh<%= left("[#{e.name}]", 5) %>%xn <%= left(e.destination, 30) -%>
 <% end %>
 <% end %>
 <% if exits.count == 0 %>No way out!<% end %>

@@ -1,14 +1,10 @@
 module AresMUSH
   class Room
-    include BaseModel
+    include ObjectModel
 
     has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id
     has_many :characters, :class_name => 'AresMUSH::Character'
     
-    def self.find_all_by_name_or_id(name_or_id)
-      where( { :$or => [ { :name_upcase => name_or_id.upcase }, { :id => name_or_id } ] } ).all
-    end
-
     def clients
       clients = Global.client_monitor.logged_in_clients
       clients.select { |c| c.room == self }
