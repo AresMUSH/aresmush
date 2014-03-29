@@ -20,7 +20,7 @@ module AresMUSH
       def handle
         find_result = VisibleTargetFinder.find(self.target, client)
         if (find_result.found?)
-          client.emit "%l1%r#{find_result.target.inspect}%r%l1"
+          client.emit "%l1%r#{find_result.target.to_json}%r%l1"
           return
         end
         
@@ -29,7 +29,7 @@ module AresMUSH
           client.emit_failure(find_result.error)
           return
         end
-        client.emit "%l1%r#{find_result.target.inspect}%r%l1"
+        client.emit "%l1%r#{find_result.target.to_json}%r%l1"
       end
     end
   end

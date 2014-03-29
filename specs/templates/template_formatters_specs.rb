@@ -64,6 +64,13 @@ module AresMUSH
         renderer = TemplateRenderer.new("<% one_line do %>FOO\n\nBAR<% end %>")
         renderer.render(@data).should eq "FOOBAR"
       end
+
+      it "should end with a new line if it had one" do
+        renderer = TemplateRenderer.new("<% one_line do %>FOO\n\nBAR<% end %>\n")
+        renderer.render(@data).should match /\n$/
+        renderer = TemplateRenderer.new("<% one_line do %>FOO\n\nBAR<% end %>")
+        renderer.render(@data).should_not match /\n$/
+      end
     end
   end
 end

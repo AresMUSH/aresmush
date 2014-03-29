@@ -2,12 +2,15 @@
 <%= mush_name %>
 <%= line 2 %>
 %xgStatus Name                 Position             Faction              Idle%xn
+<% if !clients.nil? && clients.size > 0 %>
 <% clients.each do |c| -%> 
 <%= c.status -%>
  <%= c.name -%> 
  <%= c.position -%> 
  <%= c.faction -%> 
  <%= c.idle %>
+<% end %>
+<% else %>
 <% end %>
 <%= line 2 %>
 <% one_line do %>

@@ -23,6 +23,7 @@ module AresMUSH
     def one_line(&block)
       str = capture(&block)
       @output << str.gsub(/\n/, "")
+      @output << "\n" if str.ends_with? "\n"
       return ""
     end
   
