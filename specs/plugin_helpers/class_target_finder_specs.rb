@@ -6,6 +6,8 @@ module AresMUSH
   describe ClassTargetFinder
   describe :find do
 
+    include SpecHelpers
+
     before do
       SpecHelpers.stub_translate_for_testing
     end

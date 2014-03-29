@@ -8,6 +8,7 @@ module AresMUSH
     describe :start do
       it "should start the server" do
         server = double(Server)
+        Game.stub(:master) { double(Game) }
         command_line = CommandLine.new(server)
         server.should_receive(:start)
         command_line.start
