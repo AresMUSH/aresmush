@@ -13,11 +13,11 @@ module AresMUSH
       end
       
       def name
-        left(@char.name, 20)
+        left(@char.name, 22)
       end
     
       def position
-        left(@char.position, 20)
+        left(@char.position, 19)
       end
     
       def status
@@ -25,11 +25,15 @@ module AresMUSH
       end
     
       def faction
-        left(@char.faction, 20)
+        left(@char.faction, 15)
       end
     
       def idle
-        left("#{@client.idle_secs}m", 5)
+        left("#{TimeFormatter.format(@client.idle_secs)}", 6)
+      end   
+
+      def connected
+        left("#{TimeFormatter.format(@client.connected_secs)}", 6)
       end   
     
       def room

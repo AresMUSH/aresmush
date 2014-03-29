@@ -121,5 +121,14 @@ module AresMUSH
       end
     end
     
+    describe :connected_secs do
+      it "should track the time since last connect" do
+        @client.last_connect = Time.parse("2011-1-2 10:59:01")
+        fake_now = Time.parse("2011-1-2 11:00:00")
+        Time.stub(:now) { fake_now }
+        @client.connected_secs.should eq 59
+      end
+    end
+    
   end
 end

@@ -1,11 +1,12 @@
 <%= line %>
 <%= mush_name %>
 <%= line 2 %>
-%xgStatus Name                 Location                            Idle%xn
+%xh<%= t('who.where_header') %> %xn
 <% clients.each do |c| -%> 
 <%= c.status -%>
  <%= c.name -%> 
  <%= c.room -%> 
+ <%= c.connected -%>
  <%= c.idle %>
 <% end %>
 <%= line 2 %>

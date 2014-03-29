@@ -38,9 +38,9 @@ en:
         separator: '.'
     
     time:
-        time_seconds: "%{time}s"
-        time_minutes: "%{time}m"
-        time_hours: "%{time}h"
+        seconds: "%{time}s"
+        minutes: "%{time}m"
+        hours: "%{time}h"
         
 
       
