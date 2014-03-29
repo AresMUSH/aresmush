@@ -6,6 +6,7 @@ module AresMUSH
     key :name, String
     key :name_upcase, String
     key :password_hash, String
+    key :roles, Array
         
     belongs_to :room, :class_name => 'AresMUSH::Room'
     
@@ -21,6 +22,18 @@ module AresMUSH
       hash == entered_password
     end
     
+    def has_role?(name)
+      self.roles.include?(name)
+    end
+
+    def has_any_role?(names)
+      if (!names.respond_to?(:any?))
+        has_role?(names)
+      else
+        names.any? { |n| self.roles.include?(n) }
+      end
+    end
+        
     def self.find_all_by_name_or_id(name_or_id)
       where( { :$or => [ { :name_upcase => name_or_id.upcase }, { :id => name_or_id } ] } ).all
     end
@@ -37,7 +50,7 @@ module AresMUSH
     def self.hash_password(password)
       BCrypt::Password.create(password)
     end
-        
+
     def save_upcase_name      
       @name_upcase = @name.nil? ? "" : @name.upcase
     end

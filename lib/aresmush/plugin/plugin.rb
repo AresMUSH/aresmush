@@ -1,6 +1,5 @@
 module AresMUSH
   module Plugin
-
     def initialize
       # Reserved for common plugin init
       after_initialize

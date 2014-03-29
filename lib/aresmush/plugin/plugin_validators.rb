@@ -32,6 +32,13 @@ module AresMUSH
           return nil
         end
       end
+      
+      def must_have_role(roles)
+        send :define_method, "validate_has_role" do
+          return t('roles.permission_denied') if !client.char.has_any_role?(roles)
+          return nil
+        end
+      end
     end
   end
 end

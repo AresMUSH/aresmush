@@ -1,0 +1,5 @@
+en:
+    roles:
+        permission_denied: "You do not have permission to do that."
+        role_does_not_exist: "That is not a valid role."
+        assigned_roles: "Roles: %{roles}."

@@ -17,11 +17,13 @@ module AresMUSH
   
     def line(number = 1)
       @output << "%l#{number}"
+      return ""
     end
     
     def one_line(&block)
       str = capture(&block)
       @output << str.gsub(/\n/, "")
+      return ""
     end
   
     def capture(*args)

@@ -1,0 +1,16 @@
+help:
+    categories:
+        staff:
+            topics:
+                roles: 
+                    toc_topic: 'Roles'
+                    file: 'game/plugins/roles/help/roles.txt'
+                    summary: 'Assigning permissions.'
+                    aliases: [ 'role', 'permission', 'power' ]
+                    
+roles:
+    roles:
+        - admin
+        - builder
+        - guest
+    role_lock: admin
