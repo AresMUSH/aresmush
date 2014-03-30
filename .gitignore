@@ -19,3 +19,7 @@ logs/
 .yardoc
 _yardoc
 doc/
+game/db/mongo.conf
+game/db/data
+game/db/*.log
+game/db/*.pid

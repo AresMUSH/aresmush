@@ -1,0 +1,12 @@
+
+adminDB = db.getSiblingDB("admin");
+adminDB.addUser("admin","<%=@db_admin_password%>");
+
+aresDB = db.getSiblingDB("<%=@db_name%>");
+aresDB.addUser("<%=@db_username%>","<%=@db_password%>");
+aresDB.auth("<%=@db_username%>","<%=@db_password%>");
+
+aresTestDB = db.getSiblingDB("<%=@db_name%>_test");
+aresTestDB.addUser("<%=@db_username%>_test","<%=@db_password%>");
+aresTestDB.auth("<%=@db_username%>_test","<%=@db_password%>");
+quit();

@@ -4,3 +4,4 @@ database:
     database: aresmush
     username: ares
     password: bluebloods2
+    admin_password: bluebloods2^admin$@@_ironic
