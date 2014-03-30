@@ -9,6 +9,7 @@ module AresMUSH
       # Validators
       must_be_logged_in
       argument_must_be_present "name", "password"
+      argument_must_be_present "new_password", "password"
       
       # TODO - validate permission
 

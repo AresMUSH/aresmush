@@ -2,6 +2,7 @@ Some commands are restricted so that only characters with certain roles can acce
 
 Roles are defined in the configuration files.  You can assign and remove roles from individual characters using the role command.  This, of course, requires its own permissions.
 
+    %xcroles%xn - Show the available roles and those assigned to you.
     %xcroles <name>%xn - Show the roles assigned to a character.
     %xcrole/add <name>=<role>%xn - Add a role to a character.
     %xcrole/remove <name>=<role>%xn - Removes a role from a character.

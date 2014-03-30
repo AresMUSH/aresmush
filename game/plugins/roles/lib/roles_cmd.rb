@@ -7,23 +7,15 @@ module AresMUSH
       
       # Validators
       must_be_logged_in
-      argument_must_be_present "name", "roles"
 
       def want_command?(client, cmd)
         cmd.root_is?("roles")
       end
 
       def crack!
-        self.name = trim_input(cmd.args)
+        self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
 
-      def validate_name
-        if self.email !~ /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-          return t('login.invalid_email_format')
-        end
-        return nil
-      end
-      
       def handle        
         char = Character.find_by_name(self.name)
         
@@ -32,7 +24,8 @@ module AresMUSH
           return
         end
         
-        client.emit_ooc t('roles.assigned_roles', :roles => char.roles)
+        list = Roles.all_roles.map { |r| "#{char.has_role?(r) ? '(+)' : '(-)'} #{r}"}
+        client.emit BorderedDisplay.list(list, t('roles.assigned_roles', :name => char.name))
       end
     end
   end
