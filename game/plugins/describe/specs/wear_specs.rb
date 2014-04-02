@@ -34,22 +34,22 @@ module AresMUSH
         end
       end
       
-      describe :validate_outfits_exist do
+      describe :check_outfits_exist do
         it "should make sure some descs are specified" do
           handler.stub(:names) { nil }
-          handler.validate_outfits_exist.should eq 'dispatcher.invalid_syntax'
+          handler.check_outfits_exist.should eq 'dispatcher.invalid_syntax'
         end
         
         it "should be OK if all the descs exist" do
           handler.stub(:names) { [ "a", "b" ] }
-          handler.validate_outfits_exist.should be_nil
+          handler.check_outfits_exist.should be_nil
         end
 
         it "should fail if one of the descs doesn't exist" do
           char.stub(:outfit).with("c") { nil }
           
           handler.stub(:names) { [ "a", "c" ] }
-          handler.validate_outfits_exist.should eq "describe.outfit_does_not_exist"
+          handler.check_outfits_exist.should eq "describe.outfit_does_not_exist"
         end
       end
       

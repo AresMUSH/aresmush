@@ -18,7 +18,7 @@ module AresMUSH
         cmd.args != "locale" && cmd.args != "config"
       end
 
-      # TODO - validate permissions
+      # TODO - check permissions
       
       def handle
         begin

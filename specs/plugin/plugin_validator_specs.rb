@@ -11,7 +11,7 @@ module AresMUSH
       SpecHelpers.stub_translate_for_testing 
     end
     
-    describe :validate_check_for_login do
+    describe :check_for_login do
       before do
         @client = double
         @cmd = double
@@ -30,16 +30,16 @@ module AresMUSH
       
       it "should reject command if not logged in" do
         @client.should_receive(:logged_in?) { false }
-        @plugin.validate_check_for_login.should eq 'dispatcher.must_be_logged_in'
+        @plugin.check_for_login.should eq 'dispatcher.must_be_logged_in'
       end
       
       it "should accept command if logged in" do
         @client.should_receive(:logged_in?) { true }
-        @plugin.validate_check_for_login.should eq nil
+        @plugin.check_for_login.should eq nil
       end
     end
     
-    describe :validate_no_args do
+    describe :check_no_args do
       before do
         @client = double
         @cmd = double
@@ -59,23 +59,23 @@ module AresMUSH
       it "should reject command if there are arguments" do
         @cmd.stub(:switch) { nil }
         @cmd.stub(:args) { "foo" }
-        @plugin.validate_no_args.should eq "dispatcher.cmd_no_switches_or_args"
+        @plugin.check_no_args.should eq "dispatcher.cmd_no_switches_or_args"
       end
       
       it "should accept command if there are no arguments" do
         @cmd.stub(:args) { nil }
         @cmd.stub(:switch) { nil }
-        @plugin.validate_no_args.should eq nil
+        @plugin.check_no_args.should eq nil
       end
       
       it "should accept command with a switch and no arguments" do
         @cmd.stub(:args) { nil }
         @cmd.stub(:switch) { nil }
-        @plugin.validate_no_args.should eq nil
+        @plugin.check_no_args.should eq nil
       end
     end    
       
-    describe :validate_no_switches do
+    describe :check_no_switches do
       before do
         @client = double
         @cmd = double
@@ -94,16 +94,16 @@ module AresMUSH
       
       it "should reject command if there is a switch" do
         @cmd.stub(:switch) { "foo" }
-        @plugin.validate_no_switches.should eq "dispatcher.cmd_no_switches"
+        @plugin.check_no_switches.should eq "dispatcher.cmd_no_switches"
       end
       
       it "should allow command if there is no switch" do
         @cmd.stub(:switch) { nil }
-        @plugin.validate_no_switches.should eq nil
+        @plugin.check_no_switches.should eq nil
       end
     end      
     
-    describe :validate_argument_present do
+    describe :check_argument_present do
       before do
         @client = double
         @cmd = double
@@ -124,21 +124,21 @@ module AresMUSH
       
       it "should reject command if the required argument is nil" do
         @plugin.stub(:foo) { nil }
-        @plugin.validate_foo_argument_present.should eq "invalid syntax"
+        @plugin.check_foo_argument_present.should eq "invalid syntax"
       end
       
       it "should reject command if the required argument is blank" do
         @plugin.stub(:foo) { "   " }
-        @plugin.validate_foo_argument_present.should eq "invalid syntax"
+        @plugin.check_foo_argument_present.should eq "invalid syntax"
       end
       
       it "should allow command if the argument is present" do
         @plugin.stub(:foo) { "valid" }
-        @plugin.validate_foo_argument_present.should eq nil
+        @plugin.check_foo_argument_present.should eq nil
       end
     end   
     
-    describe :validate_has_role do
+    describe :check_has_role do
       before do
         @mock_client = build_mock_client
         @cmd = double
@@ -157,12 +157,12 @@ module AresMUSH
       
       it "should reject command if character doesn't have the role" do
         @mock_client[:char].should_receive(:has_any_role?).with("foo") { false }        
-        @plugin.validate_has_role.should eq 'dispatcher.permission_denied'
+        @plugin.check_has_role.should eq 'dispatcher.permission_denied'
       end
       
       it "should accept command if character has the role" do
         @mock_client[:char].should_receive(:has_any_role?).with("foo") { true }        
-        @plugin.validate_has_role.should eq nil
+        @plugin.check_has_role.should eq nil
       end
     end
   end

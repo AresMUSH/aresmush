@@ -18,19 +18,19 @@ module AresMUSH
         self.password = cmd.args.password
       end
       
-      def validate_not_already_logged_in
+      def check_not_already_logged_in
         return t("login.already_logged_in") if client.logged_in?
         return nil
       end      
       
-      def validate_name
+      def check_name
         return t('dispatcher.invalid_syntax', :command => 'create') if charname.nil?
-        return Login.validate_char_name(charname)
+        return Login.check_char_name(charname)
       end
       
-      def validate_password
+      def check_password
         return t('dispatcher.invalid_syntax', :command => 'passsword') if password.nil?
-        return Login.validate_char_password(password)
+        return Login.check_char_password(password)
       end
       
       def handle        

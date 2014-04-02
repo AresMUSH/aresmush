@@ -16,7 +16,7 @@ module AresMUSH
         self.email = trim_input(cmd.args)
       end
 
-      def validate_email_format
+      def check_email_format
         if self.email !~ /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
           return t('login.invalid_email_format')
         end

@@ -20,7 +20,7 @@ module AresMUSH
         self.password = cmd.args.password
       end
       
-      def validate_not_already_logged_in
+      def check_not_already_logged_in
         return t("login.already_logged_in") if client.logged_in?
         return nil
       end

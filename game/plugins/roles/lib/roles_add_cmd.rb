@@ -22,7 +22,7 @@ module AresMUSH
         self.role = trim_input(cmd.args.role)
       end
 
-      def validate_role_exists
+      def check_role_exists
         return t('roles.role_does_not_exist') if !Roles.valid_role?(self.role)
         return nil
       end

@@ -12,19 +12,19 @@ module AresMUSH
 
       it_behaves_like "a plugin that requires login"
       
-      describe :validate_outfit_exists do
+      describe :check_outfit_exists do
         before do
           handler.stub(:name) { "name" }
         end
           
         it "should return OK if the outfit exists" do
           char.stub(:outfit).with("name") { "outfit" }
-          handler.validate_outfit_exists.should be_nil
+          handler.check_outfit_exists.should be_nil
         end
         
         it "should return an error if the outfit doesn't exist" do
           char.stub(:outfit).with("name") { nil }
-          handler.validate_outfit_exists.should eq 'describe.outfit_does_not_exist'
+          handler.check_outfit_exists.should eq 'describe.outfit_does_not_exist'
         end
       end
       

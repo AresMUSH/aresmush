@@ -17,7 +17,7 @@ module AresMUSH
         cmd.root_is?("unload")
       end
 
-      # TODO - validate permissions
+      # TODO - check permissions
       
       def handle
         begin

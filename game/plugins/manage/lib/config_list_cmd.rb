@@ -10,7 +10,7 @@ module AresMUSH
         cmd.root_is?("config") && cmd.switch.nil? && cmd.args.nil?
       end
 
-      # TODO - validate permissions
+      # TODO - check permissions
       
       def handle
         client.emit BorderedDisplay.table(Global.config.keys, 25, t('manage.config_sections'))

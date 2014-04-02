@@ -22,7 +22,7 @@ module AresMUSH
         self.names = cmd.args.split(',').map { |n| titleize_input(n) }
       end
       
-      def validate_outfits_exist
+      def check_outfits_exist
         return t('dispatcher.invalid_syntax', :command => 'wear') if self.names.nil? || self.names.empty?
         self.names.each do |n|
           return t('describe.outfit_does_not_exist', :name => n) if client.char.outfit(n).nil?

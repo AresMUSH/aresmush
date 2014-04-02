@@ -54,15 +54,15 @@ module AresMUSH
         end
       end  
      
-      describe :validate_not_already_logged_in do
+      describe :check_not_already_logged_in do
         it "should reject command if already logged in" do
           client.stub(:logged_in?) { true }
-          handler.validate_not_already_logged_in.should eq "login.already_logged_in"
+          handler.check_not_already_logged_in.should eq "login.already_logged_in"
         end
        
         it "should accept command if not already logged in" do
           client.stub(:logged_in?) { false }
-          handler.validate_not_already_logged_in.should eq nil
+          handler.check_not_already_logged_in.should eq nil
         end
       end
      

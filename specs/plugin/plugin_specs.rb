@@ -9,12 +9,12 @@ module AresMUSH
       class PluginSpecTest
         include Plugin
         
-        def validate_x
+        def check_x
           return "error_x" if cmd.raw == "x marks the spot"
           return nil
         end
         
-        def validate_y
+        def check_y
           return "error_y" if cmd.raw == "y marks the spot"
           return nil
         end
@@ -65,14 +65,14 @@ module AresMUSH
       end
       
       it "should log the command" do
-        @plugin.stub(:validate) { nil }
+        @plugin.stub(:check) { nil }
         @plugin.should_receive(:log_command)
         @plugin.on_command(@client, @cmd)
       end
         
-      it "should call all validate methods" do
-        @plugin.should_receive(:validate_x) { nil }
-        @plugin.should_receive(:validate_y) { nil }
+      it "should call all check methods" do
+        @plugin.should_receive(:check_x) { nil }
+        @plugin.should_receive(:check_y) { nil }
         @plugin.on_command(@client, @cmd)
       end
       
@@ -91,7 +91,7 @@ module AresMUSH
       end
       
       it "should handle the command if it's valid" do
-        @plugin.stub(:validate) { nil }
+        @plugin.stub(:check) { nil }
         @client.should_not_receive(:emit_failure)
         @plugin.should_receive(:handle)
         @plugin.on_command(@client, @cmd)

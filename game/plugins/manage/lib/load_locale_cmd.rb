@@ -10,7 +10,7 @@ module AresMUSH
         cmd.root_is?("load") && cmd.args == "locale"
       end
 
-      # TODO - validate permissions
+      # TODO - check permissions
       
       def handle
         begin

@@ -28,14 +28,14 @@ module AresMUSH
 
     # This defines basic processing suitable for many commands.  You can override this 
     # method entirely if you need advanced processing, or just override the helper methods
-    # as needed.  See the documentation on crack!, validate and handle for more info.
+    # as needed.  See the documentation on crack!, check and handle for more info.
     def on_command(client, cmd)
       @client = client
       @cmd = cmd
       log_command
       crack!
       
-      error = validate
+      error = error_check
              
       if (error)
         client.emit_failure(error)
@@ -57,17 +57,17 @@ module AresMUSH
     def crack!
     end
 
-    # This defines basic validation (aka error-handling) for commands.  You can 
+    # This defines basic error checking for commands.  You can 
     # override this method entirely if you want more advanced processing. By default,
-    # it will call any methods you define whose names start with 'validate_'.  These
+    # it will call any methods you define whose names start with 'check_'.  These
     # methods must return an error string if there's a problem, or nil if everything
     # is OK. For example:  
-    #     def validate_can_see_target
+    #     def check_can_see_target
     #        return t('myplugin.cant_see_target') if cant_see_target(self.target)
     #        return nil
     #     end
-    def validate
-      self.methods.grep(/^validate_/).each do |m|
+    def error_check
+      self.methods.grep(/^check_/).each do |m|
         error = send m
         if (!error.nil?)
           return error
@@ -80,7 +80,7 @@ module AresMUSH
     # Return 'nil' if everything's ok, otherwise 
     # return an error string (remember to translate!)
     # For example:
-    #    def validate_foo
+    #    def check_foo
     #     return t(your_plugin.some_error_message) if something_is_wrong
     #     return nil
     #   end

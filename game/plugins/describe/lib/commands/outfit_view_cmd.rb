@@ -16,7 +16,7 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
-      def validate_outfit_exists
+      def check_outfit_exists
         return t('describe.outfit_does_not_exist', :name => self.name) if client.char.outfit(self.name).nil?
         return nil
       end

@@ -11,7 +11,7 @@ module AresMUSH
       argument_must_be_present "name", "password"
       argument_must_be_present "new_password", "password"
       
-      # TODO - validate permission
+      # TODO - check permission
 
       def want_command?(client, cmd)
         cmd.root_is?("password") && cmd.switch_is?("reset")
@@ -23,9 +23,9 @@ module AresMUSH
         self.new_password = cmd.args.password
       end
       
-      def validate_new_password
+      def check_new_password
         return t('dispatcher.invalid_syntax', :command => 'passsword') if self.new_password.nil?
-        return Login.validate_char_password(self.new_password)
+        return Login.check_char_password(self.new_password)
       end
       
       def handle

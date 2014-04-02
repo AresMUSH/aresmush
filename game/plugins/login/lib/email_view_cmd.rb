@@ -16,7 +16,7 @@ module AresMUSH
         self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
 
-      # TODO - validate permissions if viewing someone else's email
+      # TODO - check permissions if viewing someone else's email
       
       def handle
         char = Character.find_by_name(self.name)

@@ -11,7 +11,7 @@ module AresMUSH
         cmd.root_is?("plugins")
       end
 
-      # TODO - validate permissions
+      # TODO - check permissions
       
       def handle
         list = Global.plugin_manager.plugins.map { |p| p.class.name.rest("AresMUSH::") }

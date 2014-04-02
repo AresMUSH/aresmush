@@ -73,19 +73,19 @@ module AresMUSH
     
     shared_examples "a plugin that doesn't allow switches" do
       it "should include the no switch validator" do
-        handler.methods.should include :validate_no_switches
+        handler.methods.should include :check_no_switches
       end
     end
 
     shared_examples "a plugin that doesn't allow args" do
       it "should include the no switch validator" do
-        handler.methods.should include :validate_no_args
+        handler.methods.should include :check_no_args
       end
     end
       
     shared_examples "a plugin that requires login" do
       it "should include the login validator" do
-        handler.methods.should include :validate_check_for_login
+        handler.methods.should include :check_for_login
       end
     end
   end  

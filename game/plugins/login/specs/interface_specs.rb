@@ -6,37 +6,37 @@ module AresMUSH
       SpecHelpers.stub_translate_for_testing
     end
 
-    describe :validate_char_name do
+    describe :check_char_name do
       it "should fail if name is too short" do
-        Login.validate_char_name("Ab").should eq "login.name_too_short"
+        Login.check_char_name("Ab").should eq "login.name_too_short"
       end
       
       it "should fail if the char already exists" do
         Character.stub(:exists?).with("Charname") { true }
-        Login.validate_char_name("Charname").should eq "login.char_name_taken"
+        Login.check_char_name("Charname").should eq "login.char_name_taken"
       end
       
       it "should fail if the char name starts with a lowercase letter" do
-        Login.validate_char_name("charname").should eq "login.name_must_be_capitalized"        
+        Login.check_char_name("charname").should eq "login.name_must_be_capitalized"        
       end
 
       it "should return true if everything's ok" do
         Character.stub(:exists?).with("Charname") { false }
-        Login.validate_char_name("Charname").should be_nil
+        Login.check_char_name("Charname").should be_nil
       end
     end
     
-    describe :validate_char_password do
+    describe :check_char_password do
       it "should fail if password is too short" do
-        Login.validate_char_password("bar").should eq "login.password_too_short"
+        Login.check_char_password("bar").should eq "login.password_too_short"
       end
       
       it "should fail if the password has an equal sign" do
-        Login.validate_char_password("bar=foo").should eq "login.password_cant_have_equals"
+        Login.check_char_password("bar=foo").should eq "login.password_cant_have_equals"
       end
 
       it "should return true if everything's ok" do
-        Login.validate_char_password("password").should be_nil
+        Login.check_char_password("password").should be_nil
       end
     end
   end

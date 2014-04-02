@@ -16,12 +16,12 @@ module AresMUSH
         self.section = trim_input(cmd.args)
       end
       
-      def validate_section_exists
+      def check_section_exists
         return t('manage.invalid_config_section') if !Global.config.has_key?(self.section)
         return nil
       end
       
-      # TODO - validate permissions
+      # TODO - check permissions
       
       def handle
         title = t('manage.config_section', :name => self.section)

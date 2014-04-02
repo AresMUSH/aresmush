@@ -20,9 +20,9 @@ module AresMUSH
         self.new_password = cmd.args.new_password
       end
       
-      def validate_new_password
+      def check_new_password
         return t('dispatcher.invalid_syntax', :command => 'passsword') if self.new_password.nil?
-        return Login.validate_char_password(self.new_password)
+        return Login.check_char_password(self.new_password)
       end
       
       def handle

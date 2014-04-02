@@ -18,7 +18,7 @@ module AresMUSH
         end
       end
       
-      describe :validate do
+      describe :check do
         it "should xyz" do
         end
       end
