@@ -10,5 +10,16 @@ module AresMUSH
             
       SingleResultSelector.select(contents)
     end
+    
+    def self.with_something_visible(name, client, &block)
+      result = VisibleTargetFinder.find(name, client)
+      
+      if (!result.found?)
+        client.emit_failure(result.error)
+        return
+      end
+      
+      yield result.target
+    end
   end
 end

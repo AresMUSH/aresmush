@@ -25,18 +25,14 @@ module AresMUSH
       end
       
       def handle
-        find_result = VisibleTargetFinder.find(target, client) 
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
-          return
+        VisibleTargetFinder.with_something_visible(target, client) do |model|
+          if (cmd.root_is?("shortdesc"))
+            model.shortdesc = desc
+          else
+            Describe.set_desc(model, desc)
+          end
+          client.emit_success(t('describe.desc_set', :name => model.name))
         end
-        model = find_result.target
-        if (cmd.root_is?("shortdesc"))
-          model.shortdesc = desc
-        else
-          Describe.set_desc(model, desc)
-        end
-        client.emit_success(t('describe.desc_set', :name => model.name))
       end
         
     end

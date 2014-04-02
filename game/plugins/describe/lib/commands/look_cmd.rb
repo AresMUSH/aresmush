@@ -23,15 +23,10 @@ module AresMUSH
       end
       
       def handle
-        find_result = VisibleTargetFinder.find(target, client)
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
-          return
+        VisibleTargetFinder.with_something_visible(target, client) do |model|
+          desc = Describe.get_desc(model)
+          client.emit(desc)
         end
-
-        model = find_result.target
-        desc = Describe.get_desc(model)
-        client.emit(desc)
       end      
     end
   end

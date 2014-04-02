@@ -50,7 +50,7 @@ module AresMUSH
       end
     end
 
-    describe :with_character do
+    describe :with_a_character do
       before do
         @client = double
         @char = double
@@ -62,6 +62,7 @@ module AresMUSH
         ClassTargetFinder.should_receive(:find).with("name", Character) { result }
         @client.should_receive(:emit_failure).with("error msg")
         ClassTargetFinder.with_a_character("name", @client) do |char|
+          raise "Should not get here."
         end
       end
       

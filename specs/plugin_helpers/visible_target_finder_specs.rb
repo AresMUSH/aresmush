@@ -53,5 +53,37 @@ module AresMUSH
         VisibleTargetFinder.find("A", @client).should eq result      
       end
     end
+    
+    describe :with_something_visible do
+      before do
+        @client = double
+        @object = double
+        @object.stub(:name) { "obj name" }
+      end
+      
+      it "should emit failure if the object isn't visible" do
+        result = FindResult.new(nil, "error msg")
+        VisibleTargetFinder.should_receive(:find).with("name", @client) { result }
+        @client.should_receive(:emit_failure).with("error msg")
+        VisibleTargetFinder.with_something_visible("name", @client) do |obj|
+          raise "Should not get here."
+        end
+      end
+      
+      it "should not call the block with the object if it doesn't exist" do
+        VisibleTargetFinder.stub(:find) { FindResult.new(nil, nil) }
+        @client.stub(:emit_failure)
+        VisibleTargetFinder.with_something_visible("name", @client) do |obj|
+          raise "Should not get here."
+        end
+      end
+            
+      it "should call the block with the char if it exists" do
+        VisibleTargetFinder.stub(:find) { FindResult.new(@object, nil) }
+        VisibleTargetFinder.with_something_visible("name", @client) do |obj|
+          @object.name.should eq "obj name"
+        end
+      end
+    end
   end
 end
