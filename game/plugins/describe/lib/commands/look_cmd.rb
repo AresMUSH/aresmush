@@ -9,7 +9,7 @@ module AresMUSH
       must_be_logged_in
       no_switches
             
-      def after_initialize
+      def initialize
         RendererFactory.build_renderers
       end
       

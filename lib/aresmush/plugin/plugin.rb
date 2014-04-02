@@ -1,13 +1,5 @@
 module AresMUSH
   module Plugin
-    def initialize
-      # Reserved for common plugin init
-      after_initialize
-    end
-            
-    # Override this with any custom initialization
-    def after_initialize
-    end
     
     attr_accessor :client, :cmd
         
@@ -59,13 +51,24 @@ module AresMUSH
 
     # This defines basic error checking for commands.  You can 
     # override this method entirely if you want more advanced processing. By default,
-    # it will call any methods you define whose names start with 'check_'.  These
-    # methods must return an error string if there's a problem, or nil if everything
-    # is OK. For example:  
-    #     def check_can_see_target
-    #        return t('myplugin.cant_see_target') if cant_see_target(self.target)
-    #        return nil
-    #     end
+    # it will call any methods you define whose names start with 'check_'.
+    #
+    # Your custom error-checking methods should return 'nil' if everything's ok, otherwise 
+    # return an error string (remember to translate!)
+    # For example:
+    #    def check_foo
+    #     return t(your_plugin.some_error_message) if something_is_wrong
+    #     return nil
+    #   end
+    # 
+    # Several common error checking methods are defined, and you can include them
+    # in your plugin just by putting their name near the top of your plugin file.
+    #
+    #   - must_be_logged_in
+    #   - no_switches
+    #   - no_args
+    #   - argument_must_be_present "<argument variable name>", "<help file name>"
+    #   - must_have_role <role name>
     def error_check
       self.methods.grep(/^check_/).each do |m|
         error = send m
@@ -75,21 +78,6 @@ module AresMUSH
       end
       return nil
     end
-    
-    # Define validation methods for any error checks your command needs to perform
-    # Return 'nil' if everything's ok, otherwise 
-    # return an error string (remember to translate!)
-    # For example:
-    #    def check_foo
-    #     return t(your_plugin.some_error_message) if something_is_wrong
-    #     return nil
-    #   end
-    # 
-    # Several common validators are defined.
-    #   - must_be_logged_in
-    #   - no_switches
-    #   - no_args
-    #   - argument_must_be_present "<argument variable name>", "<help file name>"
     
     # Override this with the details of your command handling.
     def handle
@@ -102,11 +90,15 @@ module AresMUSH
       Global.logger.debug("#{self.class.name}: #{cmd}")
     end
     
+    # A handy function for stripping off leading and trailing spaces.  Safe to call
+    # even if 'arg' is nil.
     def trim_input(arg)
       return nil if arg.nil?
       return arg.strip
     end
     
+    # A handy function for stripping off leading/trailing spaces and capitalizing
+    # its words (like a title).  Safe to call even if 'arg' is nil.
     def titleize_input(arg)
       return nil if arg.nil?
       return arg.titleize

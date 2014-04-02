@@ -9,7 +9,7 @@ module AresMUSH
       no_args
       no_switches
       
-      def after_initialize
+      def initialize
         @renderer =  WhoRenderer.new("where.erb")
       end
 
