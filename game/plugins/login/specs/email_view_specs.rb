@@ -32,8 +32,8 @@ module AresMUSH
         context "failure" do
           it "should fail if there isn't a matching char" do
             handler.stub(:name) { "Bob" }
-            Character.should_receive(:find_by_name).with("Bob") { nil }
-            client.should_receive(:emit_failure).with("db.no_char_found")
+            Character.should_receive(:find_all_by_name_or_id).with("Bob") { nil }
+            client.should_receive(:emit_failure).with("db.object_not_found")
             handler.handle
           end
         end
@@ -42,7 +42,7 @@ module AresMUSH
           before do
             handler.stub(:name) { "Bob" }
             @found_char = double
-            Character.should_receive(:find_by_name).with("Bob") { @found_char }
+            Character.should_receive(:find_all_by_name_or_id).with("Bob") { [@found_char] }
             AresMUSH::Locale.stub(:translate).with("login.email_registered_is", { :name => "Bob", :email => "foo@bar.com" }) { "email_is" }
             AresMUSH::Locale.stub(:translate).with("login.no_email_is_registered", { :name => "Bob" }) { "no_email_registered" }
           end

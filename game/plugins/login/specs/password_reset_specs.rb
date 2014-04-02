@@ -19,7 +19,7 @@ module AresMUSH
           @found_char.stub(:change_password)
           @found_char.stub(:save!)
           client.stub(:emit_success)
-          Character.stub(:find_by_name).with("name") { @found_char }
+          Character.stub(:find_all_by_name_or_id).with("name") { [@found_char] }
           AresMUSH::Locale.stub(:translate).with("login.password_reset", { :name => "name" }) { "password_reset" }
         end
                 

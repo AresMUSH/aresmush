@@ -11,7 +11,7 @@ module AresMUSH
       argument_must_be_present "password", "connect"
       
       def want_command?(client, cmd)
-         cmd.root_is?("connect")
+        cmd.root_is?("connect")
       end
       
       def crack!
@@ -26,20 +26,15 @@ module AresMUSH
       end
 
       def handle
-        char = Character.find_by_name(charname)
-        
-        if (char.nil?)
-          client.emit_failure(t("db.no_char_found"))
-          return
-        end
-        
-        if (!char.compare_password(password))
-          client.emit_failure(t('login.password_incorrect'))
-          return 
-        end
+        ClassTargetFinder.with_a_character(self.charname, client) do |char|
+          if (!char.compare_password(password))
+            client.emit_failure(t('login.password_incorrect'))
+            return 
+          end
 
-        client.char = char
-        Global.dispatcher.on_event(:char_connected, :client => client)
+          client.char = char
+          Global.dispatcher.on_event(:char_connected, :client => client)
+        end
       end
       
       def log_command

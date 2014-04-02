@@ -29,16 +29,11 @@ module AresMUSH
       end
       
       def handle
-        char = Character.find_by_name(self.name)
-        
-        if (char.nil?)
-          client.emit_failure(t("db.no_char_found"))
-          return
+        ClassTargetFinder.with_a_character(self.name, client) do |char|
+          char.change_password(self.new_password)
+          char.save!
+          client.emit_success t('login.password_reset', :name => self.name)
         end
-
-        char.change_password(self.new_password)
-        char.save!
-        client.emit_success t('login.password_reset', :name => self.name)
       end
     end
   end

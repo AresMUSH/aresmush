@@ -14,9 +14,8 @@ en:
         invalid_syntax: "That is not the right command format.  Please see 'help %{command}'."
     
     db:
-        object_not_found: Nothing found with that name
+        object_not_found: Nothing found with that name.
         object_ambiguous: Multiple results found with that name.
-        no_char_found: There is no character with that name.
     
     object:
        say: '%{name} says, "%{msg}"'

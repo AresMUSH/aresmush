@@ -28,19 +28,13 @@ module AresMUSH
       end
       
       def handle        
-        char = Character.find_by_name(self.name)
-        
-        if (char.nil?)
-          client.emit_failure(t("db.no_char_found"))
-          return
+        ClassTargetFinder.with_a_character(self.name, client) do |char|
+          if (!char.has_role?(self.role))          
+            char.roles << self.role.downcase
+            char.save!
+          end
+          client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role)
         end
-        
-        if (!char.has_role?(self.role))          
-          char.roles << self.role.downcase
-          char.save!
-        end
-        client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role)
-        
       end
     end
   end
