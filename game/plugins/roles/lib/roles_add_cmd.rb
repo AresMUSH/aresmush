@@ -10,7 +10,7 @@ module AresMUSH
       must_be_logged_in
       argument_must_be_present "name", "role"
       argument_must_be_present "role", "role"
-      must_have_role "admin"
+      must_have_role Roles.can_assign_roles
 
       def want_command?(client, cmd)
         cmd.root_is?("role") && cmd.switch_is?("add")
