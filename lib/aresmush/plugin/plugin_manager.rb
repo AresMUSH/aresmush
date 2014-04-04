@@ -19,10 +19,6 @@ module AresMUSH
       Dir[File.join(PluginManager.plugin_path, "**", "locale*.yml")]
     end
 
-    def self.help_files
-      Dir[File.join(PluginManager.plugin_path, "**", "help*.yml")]
-    end
-    
     def self.config_files
       Dir[File.join(PluginManager.plugin_path, "**", "config*.yml")]
     end

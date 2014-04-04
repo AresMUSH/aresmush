@@ -40,16 +40,6 @@ module AresMUSH
       end
     end
     
-    describe :help_files do
-      it "should find all the help files in the plugin help dirs" do
-       PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "**", "help*.yml")
-       files = []
-       Dir.should_receive(:[]).with(search) { files}
-       PluginManager.help_files.should eq files
-      end
-    end
-    
     describe :config_files do
       it "should find all the config files in the plugin config dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
