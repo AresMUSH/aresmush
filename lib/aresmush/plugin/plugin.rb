@@ -68,7 +68,6 @@ module AresMUSH
     #   - no_switches
     #   - no_args
     #   - argument_must_be_present "<argument variable name>", "<help file name>"
-    #   - must_have_role <role name>
     def error_check
       self.methods.grep(/^check_/).each do |m|
         error = send m

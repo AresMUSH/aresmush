@@ -32,13 +32,6 @@ module AresMUSH
           return nil
         end
       end
-      
-      def must_have_role(roles)
-        send :define_method, "check_has_role" do
-          return t('dispatcher.command_requires_role', :roles => [roles].join(",") ) if !client.char.has_any_role?(roles)
-          return nil
-        end
-      end
     end
   end
 end
