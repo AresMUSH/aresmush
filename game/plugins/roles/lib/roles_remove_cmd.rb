@@ -1,16 +1,19 @@
 module AresMUSH
   module Roles
     class RoleRemoveCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :name
       attr_accessor :role
       
-      # Validators
-      must_be_logged_in
-      argument_must_be_present "name", "role"
-      argument_must_be_present "role", "role"
-
+      def initialize
+        self.required_args = ['name', 'role']
+        self.help_topic = 'role'
+        super
+      end
+      
       def want_command?(client, cmd)
         cmd.root_is?("role") && cmd.switch_is?("remove")
       end

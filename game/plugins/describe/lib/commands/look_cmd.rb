@@ -1,13 +1,11 @@
 module AresMUSH
   module Describe
     class LookCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
       
       attr_accessor :target
-      
-      # Validators
-      must_be_logged_in
-      no_switches
             
       def initialize
         RendererFactory.build_renderers

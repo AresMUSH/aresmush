@@ -1,15 +1,19 @@
 module AresMUSH
   module Rooms
     class TeleportCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
 
       attr_accessor :destination
       attr_accessor :name
       
-      # Validators
-      must_be_logged_in
-      no_switches
-      argument_must_be_present "destination", "teleport"
+      def initialize
+        self.required_args = ['destination']
+        self.help_topic = 'teleport'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("teleport")

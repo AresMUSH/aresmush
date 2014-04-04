@@ -1,10 +1,8 @@
 module AresMUSH
   module Manage
     class LoadConfigCmd
-      include AresMUSH::Plugin
-
-      # Validators
-      must_be_logged_in
+      include Plugin
+      include PluginRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("load") && cmd.args == "config"

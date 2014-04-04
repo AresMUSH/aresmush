@@ -81,7 +81,7 @@ module AresMUSH
           end
           
           it "should emit failure" do
-            client.should_receive(:emit_failure).with("describe.not_allowed")
+            client.should_receive(:emit_failure).with("dispatcher.not_allowed")
             handler.handle
           end
           

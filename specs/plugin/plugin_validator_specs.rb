@@ -17,7 +17,7 @@ module AresMUSH
         @cmd = double
         class PluginValidateLoginTest
           include Plugin
-          must_be_logged_in        
+          include PluginRequiresLogin
         end
         @plugin = PluginValidateLoginTest.new 
         @plugin.client = @client
@@ -45,7 +45,7 @@ module AresMUSH
         @cmd = double
         class PluginValidateRootOnlyTest
           include Plugin
-          no_args
+          include PluginWithoutArgs
         end
         @plugin = PluginValidateRootOnlyTest.new 
         @plugin.client = @client
@@ -81,7 +81,7 @@ module AresMUSH
         @cmd = double
         class PluginValidateNoSwitchTest
           include Plugin
-          no_switches
+          include PluginWithoutSwitches
         end
         @plugin = PluginValidateNoSwitchTest.new 
         @plugin.client = @client
@@ -109,8 +109,13 @@ module AresMUSH
         @cmd = double
         class PluginValidateArgumentPresentTest
           include Plugin
-          attr_accessor :foo
-          argument_must_be_present "foo", "test"
+          include PluginRequiresArgs
+          attr_accessor :foo, :bar
+          def initialize
+            self.required_args = [ 'foo', 'bar' ]
+            self.help_topic = 'test'
+            super
+          end
         end
         @plugin = PluginValidateArgumentPresentTest.new 
         @plugin.client = @client
@@ -122,19 +127,60 @@ module AresMUSH
         AresMUSH.send(:remove_const, :PluginValidateArgumentPresentTest)
       end
       
-      it "should reject command if the required argument is nil" do
+      it "should reject command if a required argument is nil" do
         @plugin.stub(:foo) { nil }
-        @plugin.check_foo_argument_present.should eq "invalid syntax"
+        @plugin.stub(:bar) { "bar" }
+        @plugin.check_arguments_present.should eq "invalid syntax"
+      end
+
+      it "should reject command if the other required argument is nil" do
+        @plugin.stub(:foo) { "foo" }
+        @plugin.stub(:bar) { nil }
+        @plugin.check_arguments_present.should eq "invalid syntax"
       end
       
       it "should reject command if the required argument is blank" do
         @plugin.stub(:foo) { "   " }
-        @plugin.check_foo_argument_present.should eq "invalid syntax"
+        @plugin.stub(:bar) { "bar" }
+        @plugin.check_arguments_present.should eq "invalid syntax"
       end
       
       it "should allow command if the argument is present" do
-        @plugin.stub(:foo) { "valid" }
-        @plugin.check_foo_argument_present.should eq nil
+        @plugin.stub(:foo) { "foo" }
+        @plugin.stub(:bar) { "bar" }
+        @plugin.check_arguments_present.should eq nil
+      end
+    end
+    
+    
+    describe :check_has_role do
+      before do
+        @mock_client = build_mock_client
+        @cmd = double
+        class PluginValidateRoleTest
+          include Plugin
+          include PluginRequiresRole
+          def initialize
+            self.required_roles = ['foo']
+          end
+        end
+        @plugin = PluginValidateRoleTest.new 
+        @plugin.client = @mock_client[:client]
+        @plugin.cmd = @cmd
+      end
+    
+      after do
+        AresMUSH.send(:remove_const, :PluginValidateRoleTest)
+      end
+      
+      it "should reject command if character doesn't have the role" do
+        @mock_client[:char].should_receive(:has_any_role?).with(["foo"]) { false }        
+        @plugin.check_role_present.should eq 'dispatcher.command_requires_role'
+      end
+      
+      it "should accept command if character has the role" do
+        @mock_client[:char].should_receive(:has_any_role?).with(["foo"]) { true }        
+        @plugin.check_role_present.should eq nil
       end
     end
   end

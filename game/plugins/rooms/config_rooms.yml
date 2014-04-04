@@ -15,7 +15,7 @@ help:
         admin:
             topics:
                 building: 
-                    toc_topic: 'Manage'
+                    toc_topic: 'Game Management'
                     file: 'game/plugins/manage/help/building.txt'
                     summary: 'Building the grid.'
                     aliases: [ 'build', 'open', 'rooms' ]

@@ -1,13 +1,17 @@
 module AresMUSH
   module Manage
     class UnloadPluginCmd
-      include AresMUSH::Plugin
-
-      # Validators
-      must_be_logged_in
-      argument_must_be_present "load_target", "unload"
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :load_target
+
+      def initialize
+        self.required_args = ['load_target']
+        self.help_topic = 'unload'
+        super
+      end
       
       def crack!
         self.load_target = cmd.args

@@ -1,16 +1,19 @@
 module AresMUSH
   module Login
     class PasswordResetCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :name
       attr_accessor :new_password
 
-      # Validators
-      must_be_logged_in
-      argument_must_be_present "name", "password"
-      argument_must_be_present "new_password", "password"
-      
+      def initialize
+        self.required_args = ['name', 'new_password']
+        self.help_topic = 'password'
+        super
+      end
+
       # TODO - check permission
 
       def want_command?(client, cmd)

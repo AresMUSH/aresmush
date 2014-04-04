@@ -1,13 +1,11 @@
 module AresMUSH
   module Describe
     class WearCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
       
       attr_accessor :names
-      
-      # Validators
-      must_be_logged_in
-      no_switches
       
       def want_command?(client, cmd)
         cmd.root_is?("wear")

@@ -1,16 +1,20 @@
 module AresMUSH
   module Rooms
     class BuildCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
 
       attr_accessor :name
       attr_accessor :exit
       attr_accessor :return_exit
       
-      # Validators
-      must_be_logged_in
-      no_switches
-      argument_must_be_present "name", "build"
+      def initialize
+        self.required_args = ['name']
+        self.help_topic = 'build'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("build")

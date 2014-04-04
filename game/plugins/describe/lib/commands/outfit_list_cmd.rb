@@ -1,10 +1,8 @@
 module AresMUSH
   module Describe
     class OutfitListCmd
-      include AresMUSH::Plugin
-           
-      # Validators
-      must_be_logged_in
+      include Plugin
+      include PluginRequiresLogin
       
       def want_command?(client, cmd)
         (cmd.root_is?("outfit") || cmd.root_is?("outfits")) && cmd.switch.nil? && cmd.args.nil?

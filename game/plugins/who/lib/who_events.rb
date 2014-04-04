@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     class WhoEvents
-      include AresMUSH::Plugin
+      include Plugin
 
       
       def on_char_connected(args)

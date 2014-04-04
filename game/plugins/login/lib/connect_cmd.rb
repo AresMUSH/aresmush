@@ -1,14 +1,17 @@
 module AresMUSH
   module Login
     class ConnectCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
 
       attr_accessor :charname, :password
       
-      # Validators
-      no_switches
-      argument_must_be_present "charname", "connect"
-      argument_must_be_present "password", "connect"
+      def initialize
+        self.required_args = ['charname', 'password']
+        self.help_topic = 'connect'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("connect")

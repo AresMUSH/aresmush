@@ -2,15 +2,18 @@ module AresMUSH
 
   module Describe
     class DescCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
       
       attr_accessor :target, :desc
 
-      # Validators
-      must_be_logged_in
-      no_switches
-      argument_must_be_present "target", "desc"
-      argument_must_be_present "desc", "desc"
+      def initialize
+        self.required_args = ['target', 'desc']
+        self.help_topic = 'describe'
+        super
+      end
             
       def want_command?(client, cmd)
         cmd.root_is?("describe") || cmd.root_is?("shortdesc")

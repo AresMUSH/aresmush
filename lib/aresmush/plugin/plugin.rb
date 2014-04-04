@@ -62,12 +62,9 @@ module AresMUSH
     #   end
     # 
     # Several common error checking methods are defined, and you can include them
-    # in your plugin just by putting their name near the top of your plugin file.
-    #
-    #   - must_be_logged_in
-    #   - no_switches
-    #   - no_args
-    #   - argument_must_be_present "<argument variable name>", "<help file name>"
+    # in your plugin just by including them in your plugin file.  TODO Better Docs!
+    # For example:
+    #       include PluginRequiresLogin
     def error_check
       self.methods.grep(/^check_/).each do |m|
         error = send m

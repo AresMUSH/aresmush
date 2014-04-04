@@ -2,12 +2,18 @@ module AresMUSH
   module Help
     
     class HelpListCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
+
       attr_accessor :category
       
-      no_switches
-      argument_must_be_present "category", "help"
-      
+      def initialize
+        self.required_args = ['category']
+        self.help_topic = 'help'
+        super
+      end
+            
       def want_command?(client, cmd)
         Help.valid_commands.include?(cmd.root) && cmd.args.nil?
       end

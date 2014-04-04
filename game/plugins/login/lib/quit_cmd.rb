@@ -1,10 +1,8 @@
 module AresMUSH
   module Login
     class QuitCmd
-      include AresMUSH::Plugin
-
-      # Validators
-      no_switches
+      include Plugin
+      include PluginWithoutSwitches
 
       def want_command?(client, cmd)
         cmd.root_is?("quit")

@@ -1,7 +1,7 @@
 module AresMUSH
   module Login
     class LoginEvents
-      include AresMUSH::Plugin
+      include Plugin
       
       def on_char_connected(args)
         client = args[:client]

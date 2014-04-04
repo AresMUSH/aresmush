@@ -1,14 +1,18 @@
 module AresMUSH
   module Login
     class PasswordSetCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :old_password
       attr_accessor :new_password
 
-      # Validators
-      must_be_logged_in
-      argument_must_be_present "old_password", "password"
+      def initialize
+        self.required_args = ['old_password']
+        self.help_topic = 'password'
+        super
+      end
 
       def want_command?(client, cmd)
         cmd.root_is?("password") && cmd.switch_is?("set")

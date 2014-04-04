@@ -3,11 +3,9 @@ require 'erubis'
 module AresMUSH
   module Who
     class WhereCmd
-      include AresMUSH::Plugin
-
-      # Validators
-      no_args
-      no_switches
+      include Plugin
+      include PluginWithoutArgs
+      include PluginWithoutSwitches
       
       def initialize
         @renderer =  WhoRenderer.new("where.erb")

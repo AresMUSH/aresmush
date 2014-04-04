@@ -1,13 +1,11 @@
 module AresMUSH
   module Roles
     class RolesCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
       
       attr_accessor :name
       
-      # Validators
-      must_be_logged_in
-
       def want_command?(client, cmd)
         cmd.root_is?("roles")
       end

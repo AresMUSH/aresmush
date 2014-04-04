@@ -1,37 +1,41 @@
 module AresMUSH
-  module Plugin
-    def self.included(base)
-      base.send :extend, PluginValidators
+  module PluginRequiresLogin
+    def check_for_login
+      return t('dispatcher.must_be_logged_in') if !client.logged_in?
+      return nil
     end
-
-    module PluginValidators
-      def must_be_logged_in
-        send :define_method, "check_for_login" do
-          return t('dispatcher.must_be_logged_in') if !client.logged_in?
-          return nil
-        end
+  end
+    
+  module PluginWithoutArgs
+    def check_no_args
+      return t('dispatcher.cmd_no_switches_or_args') if !cmd.args.nil?
+      return nil
+    end
+  end
+    
+  module PluginWithoutSwitches
+    def check_no_switches
+      return t('dispatcher.cmd_no_switches') if !cmd.switch.nil?
+      return nil
+    end
+  end
+    
+  module PluginRequiresArgs
+    attr_accessor :required_args
+    attr_accessor :help_topic
+    def check_arguments_present
+      self.required_args.each do |arg|
+        return t('dispatcher.invalid_syntax', :command => self.help_topic) if self.send("#{arg}").to_s.strip.length == 0
       end
-      
-      def no_args
-        send :define_method, "check_no_args" do
-          return t('dispatcher.cmd_no_switches_or_args') if !cmd.args.nil?
-          return nil
-        end
-      end
-
-      def no_switches
-        send :define_method, "check_no_switches" do
-          return t('dispatcher.cmd_no_switches') if !cmd.switch.nil?
-          return nil
-        end
-      end
-      
-      def argument_must_be_present(name, command_name)
-        send :define_method, "check_#{name}_argument_present" do
-          return t('dispatcher.invalid_syntax', :command => command_name) if self.send("#{name}").to_s.strip.length == 0
-          return nil
-        end
-      end
+      return nil
+    end
+  end
+    
+  module PluginRequiresRole
+    attr_accessor :required_roles
+    def check_role_present
+      return t('dispatcher.command_requires_role', :roles => [self.required_roles].join(",") ) if !client.char.has_any_role?(self.required_roles)
+      return nil
     end
   end
 end

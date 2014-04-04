@@ -1,13 +1,11 @@
 module AresMUSH
   module Manage
     class ConfigViewCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
 
       attr_accessor :section
-      
-      # Validators
-      must_be_logged_in
-      
+            
       def want_command?(client, cmd)
         cmd.root_is?("config") && cmd.switch.nil? && !cmd.args.nil?
       end

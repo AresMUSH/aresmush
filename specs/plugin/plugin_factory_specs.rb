@@ -5,7 +5,7 @@ require "aresmush"
 module AresMUSH
   module EventHandlers
     class TestCommand
-      include AresMUSH::Plugin
+      include Plugin
     end
   end
 end

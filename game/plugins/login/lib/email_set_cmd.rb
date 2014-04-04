@@ -1,12 +1,10 @@
 module AresMUSH
   module Login
     class EmailSetCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
       
       attr_accessor :email
-
-      # Validators
-      must_be_logged_in
 
       def want_command?(client, cmd)
         cmd.root_is?("email") && cmd.switch_is?("set")

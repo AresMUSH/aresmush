@@ -1,12 +1,10 @@
 module AresMUSH
   module Login
     class CreateCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginWithoutSwitches
       
       attr_accessor :charname, :password
-
-      # Validators
-      no_switches
       
       def want_command?(client, cmd)
         cmd.root_is?("create")

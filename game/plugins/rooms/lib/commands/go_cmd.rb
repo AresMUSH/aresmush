@@ -1,14 +1,18 @@
 module AresMUSH
   module Rooms
     class GoCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
 
       attr_accessor :destination
       
-      # Validators
-      must_be_logged_in
-      no_switches
-      argument_must_be_present "destination", "go"
+      def initialize
+        self.required_args = ['destination']
+        self.help_topic = 'go'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("go")

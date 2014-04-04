@@ -1,14 +1,18 @@
 module AresMUSH
   module Utils
     class EchoCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
       
       attr_accessor :message
       
-      # Validators
-      no_switches
-      argument_must_be_present "message", "echo"
-      
+      def initialize
+        self.required_args = ['message']
+        self.help_topic = 'echo'
+        super
+      end
+            
       def want_command?(client, cmd)
         cmd.root_is?("echo")
       end

@@ -2,14 +2,17 @@ module AresMUSH
 
   module Describe
     class OutfitSetCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :name, :desc
-      
-      # Validators
-      must_be_logged_in
-      argument_must_be_present "name", "outfit"
-      argument_must_be_present "desc", "outfit"
+
+      def initialize
+        self.required_args = ['name', 'desc']
+        self.help_topic = 'outfit'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("outfit") && cmd.switch_is?("set")

@@ -1,12 +1,10 @@
 module AresMUSH
   module Pose
     class PoseCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
 
-      # Validators
-      must_be_logged_in
-      no_switches
-      
       def want_command?(client, cmd)
         cmd.root_is?("emit") ||
         cmd.root_is?("pose") || 

@@ -1,11 +1,9 @@
 module AresMUSH
   module Manage
     class PluginListCmd
-      include AresMUSH::Plugin
-
-      # Validators
-      must_be_logged_in
-      no_args
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("plugins")

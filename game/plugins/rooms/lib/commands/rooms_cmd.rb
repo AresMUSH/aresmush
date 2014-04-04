@@ -1,13 +1,11 @@
 module AresMUSH
   module Rooms
     class RoomsCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
 
       attr_accessor :name
-      
-      # Validators
-      must_be_logged_in
-      no_switches
       
       def want_command?(client, cmd)
         cmd.root_is?("rooms")

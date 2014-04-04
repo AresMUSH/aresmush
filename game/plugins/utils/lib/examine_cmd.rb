@@ -1,13 +1,17 @@
 module AresMUSH
   module Utils
     class ExamineCmd
-      include AresMUSH::Plugin
+      include Plugin
+      include PluginWithoutSwitches
+      include PluginRequiresArgs
       
       attr_accessor :target
       
-      # Validators
-      no_switches
-      argument_must_be_present "target", "examine"
+      def initialize
+        self.required_args = ['target']
+        self.help_topic = 'examine'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("examine")
