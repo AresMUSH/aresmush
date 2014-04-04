@@ -8,11 +8,12 @@ module AresMUSH
             "a" => 
             { "title" => "a help", 
               "command" => "help",
+              "roles" => [ "admin" ],
               "topics" => { 
                 "a topic" => 
                 {
                   "file" => "a.txt",
-                  "aliases" => [ "x" ]
+                  "aliases" => [ "x" ],
                 }, 
                 "b topic" => 
                 {
@@ -128,6 +129,26 @@ module AresMUSH
         
           it "should return nil if no topic found" do
             Help.load_help("a", "xyz").should be_nil
+          end
+        end
+        
+        describe :can_access_help? do
+          before do
+            @char = double
+          end
+          
+          it "should return true if there is no role restriction" do
+            Help.can_access_help?(@char, "b").should be_true
+          end
+          
+          it "should return true if the char has permission" do
+            @char.stub(:has_any_role?).with(["admin"]) { true }
+            Help.can_access_help?(@char, "a").should be_true
+          end
+          
+          it "should return false if the char doesn't have permission" do
+            @char.stub(:has_any_role?).with(["admin"]) { false }
+            Help.can_access_help?(@char, "a").should be_false
           end
         end
       end

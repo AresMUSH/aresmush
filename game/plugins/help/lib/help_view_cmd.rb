@@ -20,7 +20,10 @@ module AresMUSH
         self.topic = Help.strip_prefix(titleize_input(cmd.args))
       end
       
-      # TODO - Validate permissions
+      def check_can_view_help
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return nil
+      end
       
       def handle
         possible_matches = Help.search_help(self.category, self.topic)

@@ -1,6 +1,6 @@
 help:
     categories:
-        staff:
+        admin:
             topics:
                 manage: 
                     toc_topic: 'Code Management'

@@ -16,7 +16,10 @@ module AresMUSH
         self.category = Help.category_for_command(cmd.root)
       end
       
-      # TODO - Validate permissions
+      def check_can_view_help
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return nil
+      end
       
       def handle
         toc = Help.category_toc(self.category)

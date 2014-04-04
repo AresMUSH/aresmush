@@ -1,6 +1,6 @@
 help:
     categories:
-        staff:
+        admin:
             topics:
                 roles: 
                     toc_topic: 'Roles'

@@ -2,7 +2,7 @@ en:
     dispatcher:
         error_executing_command: |
           Sorry! Something bad happened while executing this command.
-          Please send staff this error information and tell them what you were doing:
+          Please send this error information to the admins and tell them what you were doing:
           Command: "%{cmd}"
           Error: "%{error_info}"
         huh: "Huh? Unrecognized command."

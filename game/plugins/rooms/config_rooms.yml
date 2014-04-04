@@ -12,7 +12,7 @@ help:
                     file: 'game/plugins/rooms/help/moving_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'go', 'move', 'rooms', 'exit', 'home' ]                
-        staff:
+        admin:
             topics:
                 building: 
                     toc_topic: 'Manage'

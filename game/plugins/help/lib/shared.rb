@@ -78,5 +78,10 @@ module AresMUSH
       Help.category(category)["topics"][topic.downcase]
     end
     
+    def self.can_access_help?(client, category)
+      roles = Help.category(category)["roles"]
+      return true if roles.nil?
+      return client.has_any_role?(roles)
+    end
   end
 end

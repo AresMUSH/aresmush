@@ -6,4 +6,5 @@ help:
         admin:
             command: ahelp
             title: "Admin Help"
+            roles: ["admin"]
             
