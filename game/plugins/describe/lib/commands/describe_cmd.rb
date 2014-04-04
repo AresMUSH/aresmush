@@ -26,6 +26,12 @@ module AresMUSH
       
       def handle
         VisibleTargetFinder.with_something_visible(target, client) do |model|
+
+          if (!Describe.can_describe(client, model))
+            client.emit_failure(t('dispatcher.not_allowed'))
+            return
+          end
+          
           if (cmd.root_is?("shortdesc"))
             model.shortdesc = desc
           else

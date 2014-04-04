@@ -35,7 +35,7 @@ module AresMUSH
       
       def must_have_role(roles)
         send :define_method, "check_has_role" do
-          return t('dispatcher.permission_denied', :roles => [roles].join(",") ) if !client.char.has_any_role?(roles)
+          return t('dispatcher.command_requires_role', :roles => [roles].join(",") ) if !client.char.has_any_role?(roles)
           return nil
         end
       end

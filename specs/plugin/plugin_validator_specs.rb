@@ -157,7 +157,7 @@ module AresMUSH
       
       it "should reject command if character doesn't have the role" do
         @mock_client[:char].should_receive(:has_any_role?).with("foo") { false }        
-        @plugin.check_has_role.should eq 'dispatcher.permission_denied'
+        @plugin.check_has_role.should eq 'dispatcher.command_requires_role'
       end
       
       it "should accept command if character has the role" do

@@ -1,3 +1,10 @@
+describe:
+    roles:
+        can_desc_places: 
+            - builder
+        can_desc_anything:
+            - admin
+
 help:
     categories:
         main:
