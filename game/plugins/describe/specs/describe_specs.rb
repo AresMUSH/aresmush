@@ -54,7 +54,7 @@ module AresMUSH
             @model = double
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
-            Describe.stub(:can_describe).with(client, @model) { true }
+            Describe.stub(:can_describe?).with(client, @model) { true }
             VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
           
@@ -76,7 +76,7 @@ module AresMUSH
             @model = double
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
-            Describe.should_receive(:can_describe).with(client, @model) { false }
+            Describe.should_receive(:can_describe?).with(client, @model) { false }
             VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
           

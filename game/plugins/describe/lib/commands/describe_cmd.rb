@@ -11,9 +11,7 @@ module AresMUSH
       no_switches
       argument_must_be_present "target", "desc"
       argument_must_be_present "desc", "desc"
-      
-      # TODO - Permissions
-      
+            
       def want_command?(client, cmd)
         cmd.root_is?("describe") || cmd.root_is?("shortdesc")
       end
@@ -27,7 +25,7 @@ module AresMUSH
       def handle
         VisibleTargetFinder.with_something_visible(target, client) do |model|
 
-          if (!Describe.can_describe(client, model))
+          if (!Describe.can_describe?(client, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end

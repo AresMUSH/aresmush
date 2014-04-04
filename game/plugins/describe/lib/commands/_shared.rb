@@ -7,7 +7,7 @@ module AresMUSH
       model.save!
     end
     
-    def self.can_describe(client, model)
+    def self.can_describe?(client, model)
       actor = client.char
       if (actor == model)
         return true
