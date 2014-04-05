@@ -13,11 +13,15 @@ module AresMUSH
       def crack!
         self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
-
-      # TODO - check permissions if viewing someone else's email
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
+          
+          if !Login.can_access_email?(client.char, char)
+            client.emit_failure t('dispatcher.not_allowed') 
+            return
+          end
+          
           if (char.email.nil?)
             client.emit_ooc(t('login.no_email_is_registered', :name => self.name))
           else

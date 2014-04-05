@@ -29,7 +29,7 @@ module AresMUSH
      
       describe :handle do  
         
-        context "failure" do
+        context "not found" do
           it "should fail if there isn't a matching char" do
             handler.stub(:name) { "Bob" }
             Character.should_receive(:find_all_by_name_or_id).with("Bob") { nil }
@@ -37,12 +37,23 @@ module AresMUSH
             handler.handle
           end
         end
-     
+
+        context "not allowed" do
+          it "should fail if the actor doesn't have permission" do
+            @found_char = double
+            Character.stub(:find_all_by_name_or_id) { [@found_char] }
+            Login.stub(:can_access_email?).with(char, @found_char) { false }
+            client.should_receive(:emit_failure).with("dispatcher.not_allowed")
+            handler.handle
+          end
+        end
+        
         context "success" do
           before do
             handler.stub(:name) { "Bob" }
             @found_char = double
             Character.should_receive(:find_all_by_name_or_id).with("Bob") { [@found_char] }
+            Login.stub(:can_access_email?).with(char, @found_char) { true }
             AresMUSH::Locale.stub(:translate).with("login.email_registered_is", { :name => "Bob", :email => "foo@bar.com" }) { "email_is" }
             AresMUSH::Locale.stub(:translate).with("login.no_email_is_registered", { :name => "Bob" }) { "no_email_registered" }
           end
@@ -58,7 +69,7 @@ module AresMUSH
             client.should_receive(:emit_ooc).with("no_email_registered")
             handler.handle
           end
-        end      
+        end
       end
     end
   end

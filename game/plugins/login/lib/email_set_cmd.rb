@@ -21,7 +21,7 @@ module AresMUSH
         return nil
       end
       
-      def handle        
+      def handle      
         client.char.email = self.email
         client.char.save!
         client.emit_success t('login.email_set')
