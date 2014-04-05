@@ -3,7 +3,7 @@ module AresMUSH
     class EmailViewCmd
       include Plugin
       include PluginRequiresLogin
-      
+
       attr_accessor :name
 
       def want_command?(client, cmd)

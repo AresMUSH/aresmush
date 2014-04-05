@@ -28,7 +28,7 @@ module AresMUSH
       def handle
         VisibleTargetFinder.with_something_visible(target, client) do |model|
 
-          if (!Describe.can_describe?(client, model))
+          if (!Describe.can_describe?(client.char, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end
