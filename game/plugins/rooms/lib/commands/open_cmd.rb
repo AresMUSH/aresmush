@@ -40,7 +40,7 @@ module AresMUSH
           end
           dest = find_result.target
         end
-        Rooms.open_exit(self.name, client.room, dest)
+        client.emit_ooc Rooms.open_exit(self.name, client.room, dest)
       end
     end
   end

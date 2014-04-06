@@ -29,6 +29,29 @@ module AresMUSH
           @login.on_char_connected( { :client => @client } )
         end
       end
+      
+      describe :on_char_disconnected do   
+        before do
+          @char = double
+          @client.stub(:char) { @char }
+          @welcome_room = double
+          game = double
+          Game.stub(:master) { game }
+          game.stub(:welcome_room) { @welcome_room }
+        end
+           
+        it "should send guests home to the welcome room" do
+          @char.stub(:has_role?).with("guest") { true }
+          Rooms.should_receive(:move_to).with(@client, @char, @welcome_room)
+          @login.on_char_disconnected( { :client => @client } )
+        end
+
+        it "should not move around regular characters" do
+          @char.stub(:has_role?).with("guest") { false }
+          Rooms.should_not_receive(:move_to)
+          @login.on_char_disconnected( { :client => @client } )
+        end
+      end
     end
   end
 end

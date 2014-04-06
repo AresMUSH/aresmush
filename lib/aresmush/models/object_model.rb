@@ -2,12 +2,13 @@ module AresMUSH
   module ObjectModel
     def self.included(base)
       base.send :extend, ClassMethods   
-      base.register_data_members     
+      base.register_data_members
     end
  
     module ClassMethods
       def register_data_members
         send :include, MongoMapper::Document
+        plugin MongoMapper::Plugins::IdentityMap
         key :name, String
         key :name_upcase, String
         timestamps!

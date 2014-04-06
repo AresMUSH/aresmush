@@ -21,11 +21,6 @@ module AresMUSH
       def crack!
         self.destination = trim_input(cmd.args)
       end
-
-      def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
-        return nil
-      end
       
       def handle
         exit = client.room.exits.find_by_name_upcase(self.destination.upcase)

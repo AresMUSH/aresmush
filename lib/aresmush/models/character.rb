@@ -7,8 +7,6 @@ module AresMUSH
         
     belongs_to :room, :class_name => 'AresMUSH::Room'
 
-    after_save :reload_client_cache
-
     def change_password(raw_password)
       @password_hash = Character.hash_password(raw_password)
     end
@@ -38,14 +36,6 @@ module AresMUSH
     def self.hash_password(password)
       BCrypt::Password.create(password)
     end
-
-    def reload_client_cache
-      client = Global.client_monitor.find_client(self)
-      if (!client.nil?)
-        client.char.reload
-      end
-    end
-
   end
 end
     

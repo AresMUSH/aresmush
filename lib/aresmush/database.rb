@@ -20,6 +20,7 @@ module AresMUSH
         
         MongoMapper.connection = connection
         MongoMapper.database = db_name
+        MongoMapper::Plugins::IdentityMap.enabled = true
         
       rescue Exception => e
         Global.logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      

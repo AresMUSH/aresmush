@@ -27,8 +27,21 @@ task :install do
   headwiz.name = "Headwiz"
   headwiz.roles << "admin"
   headwiz.save!
-
+  
+  4.times do |n|
+    guest = AresMUSH::Character.create
+    guest.change_password("guest")
+    guest.name = "Guest-#{n+1}"
+    guest.roles << "guest"
+    guest.save!
+  end
+  
   puts "Install complete."
+end
+
+task :upgrade do
+  bootstrapper = AresMUSH::Bootstrapper.new
+
 end
 
 namespace :unit do
