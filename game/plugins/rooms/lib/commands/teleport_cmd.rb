@@ -30,7 +30,10 @@ module AresMUSH
         end
       end
       
-      # TODO - Permissions
+      def check_can_teleport
+        return t('dispatcher.not_allowed') if !Rooms.can_teleport?(client.char)
+        return nil
+      end
       
       def handle
         targets = find_targets

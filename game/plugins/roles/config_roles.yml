@@ -17,5 +17,5 @@ roles:
         - builder
         - guest
     # These roles have the power to assign other roles.
-    can_assign_roles: 
+    can_assign_role: 
         - admin

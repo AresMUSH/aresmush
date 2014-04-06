@@ -1,3 +1,10 @@
+rooms:
+    roles:
+        can_build: 
+            - 'admin'
+            - 'builder'
+        can_teleport:
+            - 'builder'
 help:
     categories:
         main:

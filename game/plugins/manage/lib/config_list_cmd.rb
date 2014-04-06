@@ -8,7 +8,10 @@ module AresMUSH
         cmd.root_is?("config") && cmd.switch.nil? && cmd.args.nil?
       end
 
-      # TODO - check permissions
+      def check_can_manage
+        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
+        return nil
+      end
       
       def handle
         client.emit BorderedDisplay.table(Global.config.keys, 25, t('manage.config_sections'))

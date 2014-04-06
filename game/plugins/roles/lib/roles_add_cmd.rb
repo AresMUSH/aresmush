@@ -13,8 +13,6 @@ module AresMUSH
         self.help_topic = 'role'
         super
       end
-
-      # TODO permission
       
       def want_command?(client, cmd)
         cmd.root_is?("role") && cmd.switch_is?("add")
@@ -26,6 +24,11 @@ module AresMUSH
         self.role = trim_input(cmd.args.role)
       end
 
+      def check_can_assign_role
+        return t('dispatcher.not_allowed') if !Roles.can_assign_role?(client.char)
+        return nil
+      end
+      
       def check_role_exists
         return t('roles.role_does_not_exist') if !Roles.valid_role?(self.role)
         return nil

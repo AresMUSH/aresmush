@@ -12,5 +12,13 @@ module AresMUSH
       desc = Describe.get_desc(client.room)
       client.emit(desc)
     end
+    
+    def self.can_build?(actor)
+      actor.has_any_role?(Global.config["rooms"]["roles"]["can_build"])
+    end
+
+    def self.can_teleport?(actor)
+      actor.has_any_role?(Global.config["rooms"]["roles"]["can_teleport"])
+    end
   end
 end

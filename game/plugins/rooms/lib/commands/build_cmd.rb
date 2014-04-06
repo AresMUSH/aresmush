@@ -27,7 +27,10 @@ module AresMUSH
         self.return_exit = cmd.args.return_exit
       end
 
-      # TODO - Validate permissions
+      def check_can_build
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return nil
+      end
       
       def handle
         room = AresMUSH::Room.create(:name => name)

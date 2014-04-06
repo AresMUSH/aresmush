@@ -14,8 +14,6 @@ module AresMUSH
         super
       end
 
-      # TODO - check permission
-
       def want_command?(client, cmd)
         cmd.root_is?("password") && cmd.switch_is?("reset")
       end
@@ -33,6 +31,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
+          
+          if !Login.can_reset_password?(client.char)
+            client.emit_failure t('dispatcher.not_allowed') 
+            return
+          end
+          
           char.change_password(self.new_password)
           char.save!
           client.emit_success t('login.password_reset', :name => self.name)

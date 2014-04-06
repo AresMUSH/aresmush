@@ -22,7 +22,10 @@ module AresMUSH
         cmd.args != "locale" && cmd.args != "config"
       end
 
-      # TODO - check permissions
+      def check_can_manage
+        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
+        return nil
+      end
       
       def handle
         begin

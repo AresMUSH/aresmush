@@ -20,9 +20,12 @@ module AresMUSH
       def want_command?(client, cmd)
         cmd.root_is?("unload")
       end
-
-      # TODO - check permissions
       
+      def check_can_manage
+        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
+        return nil
+      end
+
       def handle
         begin
           Global.plugin_manager.unload_plugin(load_target)

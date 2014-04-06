@@ -23,6 +23,11 @@ module AresMUSH
         self.name = trim_input(cmd.args.name)
         self.role = trim_input(cmd.args.role)
       end
+
+      def check_can_assign_role
+        return t('dispatcher.not_allowed') if !Roles.can_assign_role?(client.char)
+        return nil
+      end
       
       def handle        
         ClassTargetFinder.with_a_character(self.name, client) do |char|

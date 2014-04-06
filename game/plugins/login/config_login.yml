@@ -1,6 +1,9 @@
 login:
     roles:
-        can_access_email: ['admin']
+        can_access_email: 
+            - 'admin'
+        can_reset_password: 
+            - 'admin'
             
 help:
     categories:

@@ -8,8 +8,8 @@ module AresMUSH
       all_roles.include?(name.downcase)
     end
     
-    def self.can_assign_roles
-      Global.config['roles']['can_assign_roles']
+    def self.can_assign_role?(actor)
+      actor.has_any_role?(Global.config["roles"]["can_assign_role"])
     end
   end
 end
