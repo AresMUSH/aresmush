@@ -35,9 +35,21 @@ module AresMUSH
             return 
           end
 
+          # Handle reconnect
+          existing_client = Global.client_monitor.find_client(char)
           client.char = char
-          Global.dispatcher.on_event(:char_connected, :client => client)
+          
+          if (!existing_client.nil?)
+            existing_client.disconnect
+            EM.add_timer(1) { announce_connection }
+          else
+            announce_connection
+          end
         end
+      end
+      
+      def announce_connection
+        Global.dispatcher.on_event(:char_connected, :client => client)
       end
       
       def log_command

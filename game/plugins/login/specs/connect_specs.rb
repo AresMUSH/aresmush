@@ -94,13 +94,24 @@ module AresMUSH
             @found_char = double
             @dispatcher = double(Dispatcher)
             Global.stub(:dispatcher) { @dispatcher }
+            @client_monitor = double
+            Global.stub(:client_monitor) { @client_monitor }
+            @client_monitor.stub(:find_client) { nil }
             Character.should_receive(:find_all_by_name_or_id) { [ @found_char ] }
             @found_char.stub(:compare_password).with("password") { true }  
          
             @dispatcher.stub(:on_event)  
             client.stub(:char=)      
           end
-       
+          
+          it "should disconnect an existing client" do
+            other_client = double
+            @client_monitor.stub(:find_client).with(@found_char) { other_client }
+            other_client.should_receive(:disconnect)
+            EM.stub(:add_timer)
+            handler.handle            
+          end
+          
           it "should compare passwords" do
             @found_char.should_receive(:compare_password).with("password")
             handler.handle
