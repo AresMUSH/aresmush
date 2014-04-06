@@ -1,8 +1,8 @@
 module AresMUSH
   class ClassTargetFinder
     def self.find(name_or_id, search_klass, client)
-      return FindResult.new(client.char, nil) if (name_or_id.downcase == "me")
-      return FindResult.new(client.room, nil) if (name_or_id.downcase == "here")
+      return FindResult.new(client.char, nil) if (name_or_id.downcase == "me") && search_klass == Character
+      return FindResult.new(client.room, nil) if (name_or_id.downcase == "here") && search_klass == Room
 
       results = search_klass.find_all_by_name_or_id(name_or_id)
       SingleResultSelector.select(results)

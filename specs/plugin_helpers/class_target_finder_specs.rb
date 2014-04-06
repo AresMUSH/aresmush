@@ -61,13 +61,30 @@ module AresMUSH
         result.error.should be_nil
       end
 
+      it "should not find me for another kind of object" do
+        using_test_db do
+          result = ClassTargetFinder.find("me", Room, @client)
+          result.target.should eq nil
+          result.error.should eq 'db.object_not_found'
+        end
+      end
+      
       it "should return the char's location for the here keyword" do
         room = double
         @client.stub(:room) { room }
-        result = ClassTargetFinder.find("here", Character, @client)
+        result = ClassTargetFinder.find("here", Room, @client)
         result.target.should eq room
         result.error.should be_nil
       end
+      
+      it "should not find here for another kind of object" do
+        using_test_db do
+          result = ClassTargetFinder.find("here", Character, @client)
+          result.target.should eq nil
+          result.error.should eq 'db.object_not_found'
+        end
+      end
+      
     end
 
     describe :with_a_character do
