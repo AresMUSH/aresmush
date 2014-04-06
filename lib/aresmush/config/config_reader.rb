@@ -1,5 +1,7 @@
 module AresMUSH
-  class ConfigReader    
+  class ConfigReader
+    @@config = {}
+    
     def initialize
       clear_config
     end

@@ -1,0 +1,13 @@
+help:
+    categories:
+        admin:
+            topics:
+                examine: 
+                    toc_topic: Game Management
+                    file: 'game/plugins/utils/help/examine.txt'
+                    summary: "Looking into the database."
+
+alias:
+    e: examine
+    ex: examine
+    

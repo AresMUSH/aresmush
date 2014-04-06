@@ -24,11 +24,16 @@ help:
             topics:
                 building: 
                     toc_topic: 'Game Management'
-                    file: 'game/plugins/manage/help/building.txt'
+                    file: 'game/plugins/rooms/help/building.txt'
                     summary: 'Building the grid.'
-                    aliases: [ 'build', 'open', 'rooms' ]
+                    aliases: [ 'build', 'open', 'rooms', 'dig' ]
                 getting around: 
                     toc_topic: 'Getting Around'
                     file: 'game/plugins/manage/help/admin_getting_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'teleport', 'join' ]
+                    
+alias:
+    move: go
+    tel: teleport
+    dig: build

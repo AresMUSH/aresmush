@@ -4,6 +4,10 @@ help:
             topics:
                 echo: 
                     toc_topic: Misc
-                    file: 'game/plugins/echo/help/echo.txt'
+                    file: 'game/plugins/utils/help/echo.txt'
                     summary: "Asides to yourself."
                     aliases: [ 'think' ]
+
+alias:
+    think: echo
+    

@@ -1,6 +1,6 @@
 To get past the login screen, you need a character.  There are a number of 'guest' characters available that you can borrow just to log in and look around.  You can connect to one by typing:
 
-    %xctour%xn
+    %xcconnect guest%xn
 
 Also from the login screen, you can create a new character or connect to an existing one.  If you ever forget your password, use the 'tour' command and contact staff.
 

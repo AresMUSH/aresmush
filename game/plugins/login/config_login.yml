@@ -21,3 +21,6 @@ help:
                     file: 'game/plugins/login/help/admin_login.txt'
                     summary: 'Managing player login info.'
                     aliases: [ 'password', 'name', 'login' ]
+                    
+alias:
+    c: connect

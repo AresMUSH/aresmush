@@ -129,6 +129,14 @@ module AresMUSH
         cracked[:args].should eq nil
       end
             
+      it "should substitute roots if the root is an alias" do
+        Global.stub(:config) { { "alias" => { "a" => "b", "test" => "c" } } }
+        cracked = CommandCracker.crack("test/foo bar")
+        cracked[:prefix].should eq nil
+        cracked[:root].should eq "c"
+        cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
+      end
     end
   
   end

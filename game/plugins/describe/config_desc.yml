@@ -19,3 +19,8 @@ help:
                     file: 'game/plugins/describe/help/outfit.txt'
                     summary: "Your character's wardrobe."
                     aliases: [ 'wear', 'outfit']
+                    
+alias:
+    l: look
+    desc: describe
+    
