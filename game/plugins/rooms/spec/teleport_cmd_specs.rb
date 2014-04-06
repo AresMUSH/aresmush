@@ -36,23 +36,23 @@ module AresMUSH
           other_char = double
           room = double
           other_char.stub(:room) { room }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character) { FindResult.new(other_char, nil) }
-          ClassTargetFinder.should_not_receive(:find).with("somewhere", Room)
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(other_char, nil) }
+          ClassTargetFinder.should_not_receive(:find).with("somewhere", Room, client)
           handler.find_destination.should eq room
         end
         
         it "should find the room when the destination is a room" do
           handler.stub(:destination) { "somewhere" }
           room = double
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room) { FindResult.new(room, nil) }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Room, client) { FindResult.new(room, nil) }
           handler.find_destination.should eq room
         end
         
         it "should return nil if nothing found" do
           handler.stub(:destination) { "somewhere" }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Room, client) { FindResult.new(nil, "error") }
           handler.find_destination.should eq nil
         end
       end
@@ -69,7 +69,7 @@ module AresMUSH
           other_char = double
           other_client = double
           client_monitor = double
-          ClassTargetFinder.should_receive(:find).with("someone", Character) { FindResult.new(other_char, nil) }
+          ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(other_char, nil) }
           Global.stub(:client_monitor) { client_monitor }
           client_monitor.stub(:find_client).with(other_char) { other_client }
           result = { :client => other_client, :char => other_char }
@@ -78,7 +78,7 @@ module AresMUSH
 
         it "should return nil if nothing found" do
           handler.stub(:name) { "someone" }
-          ClassTargetFinder.should_receive(:find).with("someone", Character) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(nil, "error") }
           result = { :client => nil, :char => nil }
           handler.find_targets.should eq result
         end

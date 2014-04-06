@@ -48,7 +48,7 @@ module AresMUSH
           before do
             handler.stub(:dest) { "Room" }
             @find_result = FindResult.new(nil, "error")
-            ClassTargetFinder.should_receive(:find).with("Room", Room) { @find_result }            
+            ClassTargetFinder.should_receive(:find).with("Room", Room, client) { @find_result }            
           end
           
           it "should emit the failure message" do
@@ -87,7 +87,7 @@ module AresMUSH
           end
           
           it "should find the room" do
-            ClassTargetFinder.should_receive(:find).with("Room", Room)
+            ClassTargetFinder.should_receive(:find).with("Room", Room, client)
             handler.handle
           end
           

@@ -33,14 +33,14 @@ module AresMUSH
       def handle
         dest = nil
         if (!self.dest.empty?)
-          find_result = ClassTargetFinder.find(self.dest, Room)
+          find_result = ClassTargetFinder.find(self.dest, Room, client)
           if (!find_result.found?)
             client.emit_failure(find_result.error)
             return
           end
           dest = find_result.target
         end
-        client.emit_ooc Rooms.open_exit(self.name, client.room, dest)
+        client.emit_success Rooms.open_exit(self.name, client.room, dest)
       end
     end
   end

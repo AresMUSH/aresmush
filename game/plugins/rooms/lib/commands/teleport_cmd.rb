@@ -56,11 +56,11 @@ module AresMUSH
       end
       
       def find_destination
-        find_result = ClassTargetFinder.find(self.destination, Character)
+        find_result = ClassTargetFinder.find(self.destination, Character, client)
         if (find_result.found?)
           return find_result.target.room
         end
-        find_result = ClassTargetFinder.find(self.destination, Room)
+        find_result = ClassTargetFinder.find(self.destination, Room, client)
         if (find_result.found?)
           return find_result.target
         end
@@ -71,7 +71,7 @@ module AresMUSH
         if (self.name.nil?)
           return { :client => client, :char => client.char }
         else
-          find_result = ClassTargetFinder.find(self.name, Character)
+          find_result = ClassTargetFinder.find(self.name, Character, client)
           if (find_result.found?)
             return { :char => find_result.target, :client => Global.client_monitor.find_client(find_result.target) }
           else

@@ -13,10 +13,14 @@ module AresMUSH
     end
     
     describe :find do
+      before do
+        @client = double
+      end
+        
       it "should find the specified class by name" do
         using_test_db do
           room = Room.create(:name => "foo")      
-          result = ClassTargetFinder.find("foo", Room)
+          result = ClassTargetFinder.find("foo", Room, @client)
           result.target.should eq room
           result.error.should be_nil
         end
@@ -25,7 +29,7 @@ module AresMUSH
       it "should find the specified class by ID" do
         using_test_db do
           room = Room.create(:name => "foo")
-          result = ClassTargetFinder.find(room.id.to_s, Room)
+          result = ClassTargetFinder.find(room.id.to_s, Room, @client)
           result.target.should eq room
           result.error.should be_nil
         end
@@ -35,7 +39,7 @@ module AresMUSH
         using_test_db do
           room1 = Room.create(:name => "foo")      
           room2 = Room.create(:name => "foo")      
-          result = ClassTargetFinder.find("foo", Room)
+          result = ClassTargetFinder.find("foo", Room, @client)
           result.target.should eq nil
           result.error.should eq 'db.object_ambiguous'
         end
@@ -43,10 +47,26 @@ module AresMUSH
 
       it "should return not found if no results" do
         using_test_db do
-          result = ClassTargetFinder.find("bar", Room)
+          result = ClassTargetFinder.find("bar", Room, @client)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
         end
+      end
+      
+      it "should return the char for the me keword" do
+        char = double
+        @client.stub(:char) { char }
+        result = ClassTargetFinder.find("me", Character, @client)
+        result.target.should eq char
+        result.error.should be_nil
+      end
+
+      it "should return the char's location for the here keyword" do
+        room = double
+        @client.stub(:room) { room }
+        result = ClassTargetFinder.find("here", Character, @client)
+        result.target.should eq room
+        result.error.should be_nil
       end
     end
 
@@ -59,7 +79,7 @@ module AresMUSH
       
       it "should emit failure if the char doesn't exist" do
         result = FindResult.new(nil, "error msg")
-        ClassTargetFinder.should_receive(:find).with("name", Character) { result }
+        ClassTargetFinder.should_receive(:find).with("name", Character, @client) { result }
         @client.should_receive(:emit_failure).with("error msg")
         ClassTargetFinder.with_a_character("name", @client) do |char|
           raise "Should not get here."
