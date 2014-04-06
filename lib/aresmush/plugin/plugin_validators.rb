@@ -30,12 +30,4 @@ module AresMUSH
       return nil
     end
   end
-    
-  module PluginRequiresRole
-    attr_accessor :required_roles
-    def check_role_present
-      return t('dispatcher.command_requires_role', :roles => [self.required_roles].join(",") ) if !client.char.has_any_role?(self.required_roles)
-      return nil
-    end
-  end
 end

@@ -151,37 +151,5 @@ module AresMUSH
         @plugin.check_arguments_present.should eq nil
       end
     end
-    
-    
-    describe :check_has_role do
-      before do
-        @mock_client = build_mock_client
-        @cmd = double
-        class PluginValidateRoleTest
-          include Plugin
-          include PluginRequiresRole
-          def initialize
-            self.required_roles = ['foo']
-          end
-        end
-        @plugin = PluginValidateRoleTest.new 
-        @plugin.client = @mock_client[:client]
-        @plugin.cmd = @cmd
-      end
-    
-      after do
-        AresMUSH.send(:remove_const, :PluginValidateRoleTest)
-      end
-      
-      it "should reject command if character doesn't have the role" do
-        @mock_client[:char].should_receive(:has_any_role?).with(["foo"]) { false }        
-        @plugin.check_role_present.should eq 'dispatcher.command_requires_role'
-      end
-      
-      it "should accept command if character has the role" do
-        @mock_client[:char].should_receive(:has_any_role?).with(["foo"]) { true }        
-        @plugin.check_role_present.should eq nil
-      end
-    end
   end
 end
