@@ -25,6 +25,7 @@ task :install do
   headwiz = AresMUSH::Character.create
   headwiz.change_password("wizb00ts")
   headwiz.name = "Headwiz"
+  headwiz.roles << "admin"
   headwiz.save!
 
   puts "Install complete."
