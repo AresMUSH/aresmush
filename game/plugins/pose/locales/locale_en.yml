@@ -1,0 +1,7 @@
+en:
+    pose:
+        page_target_missing: "Who do you want to page?"
+        page_target_not_found: "%{name} is not someone you can page."
+        page_to_sender: "Long distance to %{recipients}: %{message}"
+        page_to_recipient: "Long distance to %{recipients}: %{message}"
+        
