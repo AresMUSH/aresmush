@@ -2,6 +2,8 @@ The MUSH grid consists of %xhRooms%xn connected by %xhExits%xn.  Admin with appr
 
     %xcbuild <name>[=<outgoing exit name>,<return exit name>]%xn - Creates a room.
     %xcopen <exit>[=<destination>]%xn - Creates an exit.
+    %xclink <exit>=<destination>%xn - Links an exit to a room.
+    %xcunlink <exit>%xn - Unlinks an exit from its destination.
 
 Note: In Ares, exits have only a single name so there is no exit;alias;alias syntax.  Any exit named "O" is automatically aliased to "Out".
 

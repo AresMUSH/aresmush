@@ -12,7 +12,9 @@ module AresMUSH
       end
       
       def crack!
-        if (cmd.args.include?("="))
+        if (cmd.args.nil?)
+          self.names = []
+        elsif (cmd.args.include?("="))
           cmd.crack!(/(?<names>[^\=]+)\=(?<message>.+)/)
           self.names = cmd.args.names.split(" ")
           self.message = cmd.args.message
@@ -38,7 +40,7 @@ module AresMUSH
           chars << result.target
         end
         message = PoseFormatter.format(client.name, self.message)
-        receipients = self.names.join(",")
+        receipients = chars.map { |r| r.name }.join(", ")
         client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
         chars.each do |c|
           to_client = Global.client_monitor.find_client(c)
