@@ -13,4 +13,5 @@ en:
         config_section: "Config Section: %{name}"
         invalid_config_section: "That config section does not exist."
         plugins: "Plugins"
+        shutdown: "Shutdown by %{name}."
 
