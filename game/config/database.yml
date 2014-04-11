@@ -1,6 +1,30 @@
+# See MongoId configuration information for details about these settings: 
+# http://mongoid.org/en/mongoid/docs/installation.html#configuration
 database:
-    host: localhost
-    port: '7210'
-    database: aresmush
-    username: ares
-    password: bluebloods2
+    production:
+        sessions:
+            default:
+                hosts:
+                    - localhost:7210
+                database: aresmush
+                username: ares
+                password: make_a_good_password
+        options:
+            # These two options are critical for proper Ares operation.  You may experiment with other options
+            # at your own discretion.
+            identity_map_enabled: true
+            raise_not_found_error: false
+
+    test:
+        sessions:
+            default:
+                hosts:
+                    - localhost:7210
+                database: arestest
+                username: ares
+                password: make_a_good_password
+        options:
+            # These two options are critical for proper Ares operation.  You may experiment with other options
+            # at your own discretion.
+            identity_map_enabled: true     
+            raise_not_found_error: false
