@@ -7,8 +7,8 @@ module AresMUSH
     describe :find do
       before do
         @client = double
-        Exit.stub(:find_by_room_id_and_name_upcase) { [] }
-        Character.stub(:find_by_room_id_and_name_upcase) { [] }
+        Exit.stub(:where) { [] }
+        Character.stub(:where) { [] }
       end
 
       it "should return the char for the me keword" do
@@ -34,8 +34,8 @@ module AresMUSH
         char1 = double
         char2 = double
         exit = double
-        Character.should_receive(:find_by_room_id_and_name_upcase).with(1, "A") { [char1, char2] }
-        Exit.should_receive(:find_by_source_id_and_name_upcase).with(1, "A") { [exit] }
+        Character.should_receive(:where).with({:room => room, :name_upcase => "A"}) { [char1, char2] }
+        Exit.should_receive(:where).with({:source => room, :name_upcase => "A"}) { [exit] }
         result = FindResult.new(nil, "an error")
         SingleResultSelector.should_receive(:select).with([char1, char2, exit]) { result }
         VisibleTargetFinder.find("A", @client).should eq result      
@@ -46,8 +46,8 @@ module AresMUSH
         room.stub(:id) { 1 }
         @client.stub(:room) { room }
         char = double
-        Character.stub(:find_by_room_id_and_name_upcase) { [char] }
-        Exit.stub(:find_by_source_id_and_name_upcase) { [nil] }
+        Character.stub(:where) { [char] }
+        Exit.stub(:where) { [nil] }
         result = FindResult.new(char, nil)
         SingleResultSelector.should_receive(:select).with([char]) { result }
         VisibleTargetFinder.find("A", @client).should eq result      

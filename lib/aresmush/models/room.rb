@@ -2,7 +2,7 @@ module AresMUSH
   class Room
     include ObjectModel
 
-    has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id
+    has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id, :inverse_of => "source_id"
     has_many :characters, :class_name => 'AresMUSH::Character'
     
     def clients

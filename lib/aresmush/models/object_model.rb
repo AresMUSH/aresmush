@@ -7,11 +7,10 @@ module AresMUSH
  
     module ClassMethods
       def register_data_members
-        send :include, MongoMapper::Document
-        plugin MongoMapper::Plugins::IdentityMap
-        key :name, String
-        key :name_upcase, String
-        timestamps!
+        send :include, Mongoid::Document
+        send :include, Mongoid::Timestamps
+        field :name, :type => String
+        field :name_upcase, :type => String
         before_validation :save_upcase_name
       end
 
@@ -20,11 +19,11 @@ module AresMUSH
       end
 
       def find_by_name(name)
-        find_by_name_upcase(name.upcase)
+        find(:name_upcase => name.upcase)
       end
 
       def find_all_by_name(name)
-        find_all_by_name_upcase(name.upcase)
+        where(:name_upcase => name.upcase)
       end
     end
     
@@ -34,7 +33,7 @@ module AresMUSH
 
     private
     def save_upcase_name
-      @name_upcase = @name.nil? ? "" : @name.upcase
+      self.name_upcase = self.name.nil? ? "" : self.name.upcase
     end
   end
 end

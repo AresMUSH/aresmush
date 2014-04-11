@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    key :last_paged, Array
+    field :last_paged, :type => Array, :default => []
   end
 end

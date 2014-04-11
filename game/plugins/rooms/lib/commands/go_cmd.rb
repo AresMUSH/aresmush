@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        exit = client.room.exits.find_by_name_upcase(self.destination.upcase)
+        exit = client.room.exits.select { |e| e.name_upcase == self.destination.upcase }.first
         
         if (exit.nil? || exit.dest.nil?)
           client.emit_failure(t("rooms.cant_go_that_way"))

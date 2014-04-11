@@ -1,12 +1,12 @@
 module AresMUSH
   class Game
-    key :online_record, Integer    
+    field :online_record, :type => Integer    
     
     before_create :initialize_who_record
       
     def initialize_who_record
       Global.logger.debug "Initializing who record."
-      @online_record = 0
+      self.online_record = 0
     end
     
     def self.online_record
@@ -22,17 +22,17 @@ module AresMUSH
   
   # TODO: All of this stuff belongs somewhere else.  Here just for testing.
   class Character
-    key :status, String
-    key :hidden, Boolean
+    field :status, :type => String
+    field :hidden, :type => Boolean
     
     before_create :initialize_char
     
     def initialize_char
-      @status = "NEW"
+      self.status = "NEW"
     end
     
     def is_ic?
-      @status == "IC"
+      self.status == "IC"
     end
 
     def faction

@@ -1,11 +1,9 @@
 module AresMUSH
   class Character
-    key :description, String
-    key :shortdesc, String
-    key :outfits, Hash
-    
-    before_create :initialize_char
-    
+    field :description, :type => String
+    field :shortdesc, :type => String
+    field :outfits, :type => Hash, :default => {}
+        
     def has_outfit?(name)
       outfits.has_key?(name)
     end
@@ -16,12 +14,12 @@ module AresMUSH
   end
   
   class Room
-    key :description, String
-    key :shortdesc, String
+    field :description, :type => String
+    field :shortdesc, :type => String
   end
   
   class Exit
-    key :description, String
-    key :shortdesc, String
+    field :description, :type => String
+    field :shortdesc, :type => String
   end    
 end

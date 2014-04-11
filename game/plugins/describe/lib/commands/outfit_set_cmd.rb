@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("outfit") && cmd.switch_is?("set")
+        cmd.root_is?("outfit") && (cmd.switch_is?("set") || cmd.switch_is?("create"))
       end
       
       def crack!

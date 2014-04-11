@@ -12,12 +12,6 @@ module AresMUSH
       
       it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-    
-      describe :handle do
-        it "should send the message" do
-          handler.handle
-        end
-      end
       
       describe :crack! do
         it "should crack a name and message" do

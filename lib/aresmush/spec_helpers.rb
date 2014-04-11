@@ -42,19 +42,19 @@ module AresMUSH
     def self.connect_to_test_db
       filename = File.join(AresMUSH.game_path, "config/database.yml")
       config = YAML::load(File.open(filename))
-      host = config['testdb']['host']
-      port = config['testdb']['port']
-      username = config['testdb']['username']
-      password = config['testdb']['password']
-      db_name = 'arestest'
+      db_config = config['database']['test']
+      host = db_config['host']
+      port = db_config['port']
+      db_name = db_config['database']  
+      username = db_config['username']  
+      password = db_config['password']      
     
-      connection = Mongo::Connection.new(host, port)
-      db = connection.db(db_name)
-      auth_successful = db.authenticate(username, password)
-      raise StandardError("Database authentication failed.") if !auth_successful    
-      MongoMapper.connection = connection
-      MongoMapper.database = db_name
-      db
+      mongoid = Mongoid.load_configuration(db_config)
+        #db = mongoid.database
+      
+      #auth_successful = db.authenticate(username, password)
+     # raise StandardError("Database authentication failed.") if !auth_successful    
+    #  db
     end
     
     # Use with the using_test_db helper whenever possible

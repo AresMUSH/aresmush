@@ -1,22 +1,22 @@
 module AresMUSH
   
   class Game
-    key :welcome_room_id, ObjectId
-    key :ic_start_room_id, ObjectId
-    key :idle_room_id, ObjectId
+    field :welcome_room_id, :type => Moped::BSON::ObjectId
+    field :ic_start_room_id, :type => Moped::BSON::ObjectId
+    field :idle_room_id, :type => Moped::BSON::ObjectId
         
     before_create :create_starting_rooms
     
     def welcome_room
-      Room.find(@welcome_room_id)
+      Room.find(self.welcome_room_id)
     end
     
     def ic_start_room
-      Room.find(@ic_start_room_id)
+      Room.find(self.ic_start_room_id)
     end
     
     def idle_room
-      Room.find(@idle_room_id)
+      Room.find(self.idle_room_id)
     end
     
     def create_starting_rooms  

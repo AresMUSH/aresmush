@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    key :email, String
+    field :email, :type => String
   end  
 end

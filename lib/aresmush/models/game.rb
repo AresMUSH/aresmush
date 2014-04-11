@@ -1,7 +1,7 @@
 module AresMUSH
   class Game
     
-    include MongoMapper::Document
+    include Mongoid::Document
     
     # There's only one game document and this is it!
     def self.master

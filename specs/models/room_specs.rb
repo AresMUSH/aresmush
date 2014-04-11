@@ -63,6 +63,16 @@ module AresMUSH
         end
       end
     end
+    
+    describe :set_upcase_name do
+      it "should set the uppercase name on save" do
+        using_test_db do
+          @room.name = "test"
+          @room.save!
+          @room.name_upcase.should eq "TEST"
+        end
+      end
+    end
       
   end
 end

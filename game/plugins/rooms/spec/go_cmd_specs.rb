@@ -23,9 +23,8 @@ module AresMUSH
         
         context "exit not found" do
           before do
-            exits = double
+            exits = [ ]
             @room.stub(:exits) { exits }
-            exits.should_receive(:find_by_name_upcase).with("S") { nil }
             client.stub(:emit_failure)
           end  
           
@@ -42,10 +41,9 @@ module AresMUSH
         
         context "exit found" do          
           before do
-            @exit = double
-            exits = double
+            @exit = Exit.new(name_upcase: "S")
+            exits = [ @exit ]
             @room.stub(:exits) { exits }
-            exits.should_receive(:find_by_name_upcase).with("S") { @exit }
           end
 
           it "should go to the exit destination if there is one" do

@@ -21,7 +21,7 @@ require 'date'
 require 'bcrypt'
 require 'rake'
 require 'rspec/core/rake_task'
-require 'mongo_mapper'
+require 'mongoid'
 require 'pp'
 #require 'json'
 

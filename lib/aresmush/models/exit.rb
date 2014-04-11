@@ -2,10 +2,10 @@ module AresMUSH
   class Exit
     include ObjectModel
 
-    key :source_id, ObjectId
-    belongs_to :source, :class => Room
+    field :source_id, :type => Moped::BSON::ObjectId
+    belongs_to :source, :class_name => 'AresMUSH::Room', :inverse_of => 'exits'
     
-    key :dest_id, ObjectId
-    belongs_to :dest, :class => Room
+    field :dest_id, :type => Moped::BSON::ObjectId
+    belongs_to :dest, :class_name => 'AresMUSH::Room',  :inverse_of => nil
   end
 end

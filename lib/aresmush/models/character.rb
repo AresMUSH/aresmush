@@ -2,17 +2,17 @@ module AresMUSH
   class Character
     include ObjectModel
 
-    key :password_hash, String
-    key :roles, Array
+    field :password_hash, :type => String
+    field :roles, :type => Array, :default => []
         
     belongs_to :room, :class_name => 'AresMUSH::Room'
 
     def change_password(raw_password)
-      @password_hash = Character.hash_password(raw_password)
+      self.password_hash = Character.hash_password(raw_password)
     end
 
     def compare_password(entered_password)
-      hash = BCrypt::Password.new(@password_hash)
+      hash = BCrypt::Password.new(self.password_hash)
       hash == entered_password
     end
     
