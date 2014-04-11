@@ -39,6 +39,11 @@ module AresMUSH
         char.save!
         client.emit_success t('login.password_changed')
       end
+      
+      def log_command
+        # Don't log full command for password privacy
+        Global.logger.debug("#{self.class.name} #{client}")
+      end
     end
   end
 end

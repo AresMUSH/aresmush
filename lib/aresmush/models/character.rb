@@ -36,6 +36,12 @@ module AresMUSH
     def self.hash_password(password)
       BCrypt::Password.create(password)
     end
+    
+    def serializable_hash(options={})
+      hash = super(options)
+      hash[:room] = self.room_id
+      hash
+    end  
   end
 end
     

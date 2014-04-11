@@ -12,3 +12,12 @@ help:
                     file: 'game/plugins/manage/help/manage.txt'
                     summary: 'Managing plugins and config.'
                     aliases: [ 'load', 'unload', 'plugin', 'config' ]
+                database: 
+                    toc_topic: Code Management
+                    file: 'game/plugins/utils/help/database.txt'
+                    summary: "Examining and manipulating the database."   
+                    aliases: [ 'examine', 'rename', 'destroy' ]
+                    
+alias:
+    e: examine
+    ex: examine

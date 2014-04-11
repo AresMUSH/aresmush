@@ -22,5 +22,10 @@ module AresMUSH
       exits.any? { |e| e.name_upcase == name.upcase }
     end
     
+    def serializable_hash(options={})
+      hash = super(options)
+      hash[:exits] = exits.map { |e| e.id }
+      hash
+    end  
   end
 end

@@ -14,4 +14,5 @@ en:
         invalid_config_section: "That config section does not exist."
         plugins: "Plugins"
         shutdown: "Shutdown by %{name}."
+        object_renamed: "Object renamed."
 

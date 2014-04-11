@@ -1,4 +1,0 @@
-The examine command lets you see the contents of the database for a given object.
-
-    %xcexamine <object>%xn - Examines an object.  You do not need to be in the same
-       room as the object, and can use either the object's name or database ID.

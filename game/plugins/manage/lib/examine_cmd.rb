@@ -20,20 +20,26 @@ module AresMUSH
       def crack!
         self.target = trim_input(cmd.args)
       end
-        
+
+      def check_can_manage
+        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
+        return nil
+      end
+
       def handle
         find_result = VisibleTargetFinder.find(self.target, client)
-        if (find_result.found?)
-          client.emit "%l1%r#{find_result.target.to_json}%r%l1"
-          return
+        
+        if (!find_result.found?)
+          find_result = AnyTargetFinder.find(self.target, client)
         end
         
-        find_result = AnyTargetFinder.find(self.target, client)
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return
         end
-        client.emit "%l1%r#{find_result.target.to_json}%r%l1"
+        
+        target = find_result.target
+        client.emit "%l1%r#{target.to_json}%r%l1"
       end
     end
   end

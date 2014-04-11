@@ -42,6 +42,12 @@ module AresMUSH
           client.emit_success t('login.password_reset', :name => self.name)
         end
       end
+      
+      def log_command
+        # Don't log full command for password privacy
+        name = cmd.args.nil? ? "" : cmd.args.first("=")
+        Global.logger.debug("#{self.class.name} #{client} #{name}")
+      end
     end
   end
 end

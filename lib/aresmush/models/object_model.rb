@@ -12,6 +12,7 @@ module AresMUSH
         field :name, :type => String
         field :name_upcase, :type => String
         before_validation :save_upcase_name
+        after_save :reload_clients
       end
 
       def find_all_by_name_or_id(name_or_id)
@@ -34,6 +35,12 @@ module AresMUSH
     private
     def save_upcase_name
       self.name_upcase = self.name.nil? ? "" : self.name.upcase
+    end
+    
+    def reload_clients
+      Global.client_monitor.clients.each do |c|
+        c.char.reload
+      end
     end
   end
 end

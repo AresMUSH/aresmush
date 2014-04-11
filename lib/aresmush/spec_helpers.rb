@@ -33,6 +33,9 @@ module AresMUSH
     end    
     
     def using_test_db(&block)
+      client_monitor = double
+      Global.stub(:client_monitor) { client_monitor }
+      client_monitor.stub(:clients) { [] }
       SpecHelpers.connect_to_test_db
       yield block
       SpecHelpers.erase_test_db
