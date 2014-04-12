@@ -14,7 +14,7 @@ help:
                     aliases: [ 'load', 'unload', 'plugin', 'config' ]
                 database: 
                     toc_topic: Code Management
-                    file: 'game/plugins/utils/help/database.txt'
+                    file: 'game/plugins/manage/help/database.txt'
                     summary: "Examining and manipulating the database."   
                     aliases: [ 'examine', 'rename', 'destroy' ]
                     

@@ -20,11 +20,11 @@ module AresMUSH
       end
 
       def find_by_name(name)
-        find(:name_upcase => name.upcase)
+        self.find_by(name_upcase: name.upcase)
       end
 
       def find_all_by_name(name)
-        where(:name_upcase => name.upcase)
+        self.where(:name_upcase => name.upcase).all
       end
     end
     

@@ -15,4 +15,7 @@ en:
         plugins: "Plugins"
         shutdown: "Shutdown by %{name}."
         object_renamed: "Object renamed."
+        exit_already_exists: "An exit with that name already exists in that room."
+        find_results: "Find Results:"
+        invalid_search_class: "That is not a database object type."
 

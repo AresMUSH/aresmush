@@ -7,9 +7,4 @@ The MUSH grid consists of %xhRooms%xn connected by %xhExits%xn.  Admin with appr
 
 Note: In Ares, exits have only a single name so there is no exit;alias;alias syntax.  Any exit named "O" is automatically aliased to "Out".
 
-If you create rooms without exits, you may need to use the room directory command to find them again.
-
-    %xcrooms%xn - Shows all rooms and their database IDs.
-    %xcrooms <name>%xn - Searches for a room matching the given name.
-
-You can destroy rooms and exits using the %xcdestroy%xn command.
+If you create rooms without exits, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  See the help files on %xcdestroy%xn and %xcfind%xn.

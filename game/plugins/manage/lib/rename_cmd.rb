@@ -21,8 +21,8 @@ module AresMUSH
       
       def crack!
         cmd.crack!(/(?<target>[^\=]+)\=(?<name>.+)/)
-        self.target = cmd.args.target
-        self.name = cmd.args.name
+        self.target = trim_input(cmd.args.target)
+        self.name = trim_input(cmd.args.name)
       end
 
       def check_can_manage
@@ -41,11 +41,26 @@ module AresMUSH
           client.emit_failure(find_result.error)
           return
         end
-        
         target = find_result.target
+        
+        if (target.class == Character)
+          name_validation_msg = Login.check_char_name(self.name)
+          if (!name_validation_msg.nil?)
+            client.emit_failure(name_validation_msg)
+            return
+          end
+        end
+        
+        if (target.class == Exit)
+          if (target.source.has_exit?(self.name))
+            client.emit_failure(t('manage.exit_already_exists'))
+            return
+          end
+        end
+          
         target.name = self.name
         target.save!
-        client.emit t('manage.object_renamed', :name => self.name)
+        client.emit_success t('manage.object_renamed', :name => self.name)
       end
     end
   end

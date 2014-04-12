@@ -73,5 +73,29 @@ module AresMUSH
         end
       end
     end
+    
+    describe :find_by_name do
+      it "should find by name upcase" do
+        using_test_db do
+          @room.name = "test"
+          @room.save!
+          Room.find_by_name("TeSt").should eq @room
+        end
+      end
+    end
+    
+    describe :find_all_by_name do
+      it "should find many by name upcase" do
+        using_test_db do
+          @room.name = "test"
+          @room.save!
+          
+          room2 = Room.create(name: "test")
+          
+          Room.find_all_by_name("TeSt").should eq [ @room, room2 ]
+        end
+      end
+    end
+    
   end
 end
