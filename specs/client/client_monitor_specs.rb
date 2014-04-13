@@ -108,5 +108,22 @@ module AresMUSH
       end
     end
     
+    describe :reload_clients do
+      before do
+        @char = double
+        @client1.stub(:char) { nil }
+        @client2.stub(:char) { @char }
+      end
+      
+      it "should trigger a reload on a logged-in client" do
+        @char.should_receive(:reload)
+        @client_monitor.reload_clients
+      end
+      
+      it "should do nothing if the client is not logged in" do
+        @char.stub(:reload)
+        @client_monitor.reload_clients
+      end
+    end
   end
 end

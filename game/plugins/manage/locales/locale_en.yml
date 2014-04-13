@@ -9,13 +9,25 @@ en:
         error_loading_config: "Problem loading configuration: %{error}"
         locale_loaded: "Locale reloaded."
         error_loading_locale: "Problem loading locale: %{error}"
+        
         config_sections: "Config Sections"
         config_section: "Config Section: %{name}"
         invalid_config_section: "That config section does not exist."
+        
         plugins: "Plugins"
+        
         shutdown: "Shutdown by %{name}."
-        object_renamed: "Object renamed."
+        
+        object_renamed: "Object renamed to %{name}."
         exit_already_exists: "An exit with that name already exists in that room."
+        
         find_results: "Find Results:"
         invalid_search_class: "That is not a database object type."
-
+        
+        objects_reloaded: "Database objects refreshed."
+        
+        object_destroyed: "%{name} destroyed."
+        confirm_object_destroy: "%l1%RYou want to delete %{type} %xg%{name}.%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm %{id}%xn%r%l1"
+        cannot_destroy_online: You can't destroy someone when they're online.
+        room_being_destroyed: "This room is being destroyed.  Moving you to a safer spot."
+        cannot_destroy_special_rooms: "You can't destroy that room.  It's special."

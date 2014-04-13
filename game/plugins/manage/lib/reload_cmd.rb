@@ -1,12 +1,13 @@
 module AresMUSH
   module Manage
-    class ShutdownCmd
+    class ReloadCmd
       include Plugin
       include PluginRequiresLogin
       include PluginWithoutArgs
+      include PluginWithoutSwitches
       
       def want_command?(client, cmd)
-        cmd.root_is?("shutdown")
+        cmd.root_is?("reload")
       end
       
       def check_can_manage
@@ -15,14 +16,8 @@ module AresMUSH
       end
 
       def handle
-        Global.client_monitor.clients.each do |c|
-          c.emit_ooc t('manage.shutdown', :name => client.name)
-          c.disconnect
-        end
-        
-        EM.add_timer(1) do
-          EM.stop_event_loop
-        end
+        Global.client_monitor.reload_clients
+        client.emit_success t('manage.objects_reloaded')
       end
     end
   end

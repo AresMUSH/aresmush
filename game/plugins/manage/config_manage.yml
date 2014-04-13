@@ -16,7 +16,7 @@ help:
                     toc_topic: Code Management
                     file: 'game/plugins/manage/help/database.txt'
                     summary: "Examining and manipulating the database."   
-                    aliases: [ 'examine', 'rename', 'destroy' ]
+                    aliases: [ 'examine', 'rename', 'destroy', 'nuke', 'reload', 'find', 'search' ]
                     
 alias:
     e: examine

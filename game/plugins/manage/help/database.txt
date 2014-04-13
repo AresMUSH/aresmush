@@ -2,8 +2,10 @@ There are several commands that let you view and manipulate objects in the datab
 
     %xcrename <name or database ID>=<new name>%xn - Renames an object.
     %xcexamine <name or database ID>%xn - Examines an object. 
+    %xcdestroy <name or database ID>%xn - Deletes an item from the database.  
+        %xrTHIS CANNOT BE UNDONE%xn.
 
-The %xhfind%xn command lists objects.  You can search by object type:  Room, Character, Exit.  For instance to find all rooms you would use:   find Room
+The %xhfind%xn command lists objects.  You can search by object type:  Room, Character, Exit.  For instance to find all rooms you would use:   find Room. 
 
     %xcfind <object type>[=<name, optional>]%xn
     

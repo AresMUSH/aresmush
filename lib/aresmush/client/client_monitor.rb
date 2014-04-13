@@ -44,5 +44,12 @@ module AresMUSH
     def find_client(char)
       @clients.find { |c| c.char == char }
     end
+    
+    def reload_clients
+      clients_with_chars = clients.select { |client| !client.char.nil? }
+      clients_with_chars.each do |c|
+        c.char.reload
+      end
+    end
   end
 end

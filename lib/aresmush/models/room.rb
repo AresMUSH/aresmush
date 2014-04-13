@@ -2,8 +2,10 @@ module AresMUSH
   class Room
     include ObjectModel
 
-    has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id, :inverse_of => "source_id"
+    has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id, :inverse_of => "source_id", :dependent => :delete
     has_many :characters, :class_name => 'AresMUSH::Character'
+
+    before_destroy :null_out_sources
     
     def clients
       clients = Global.client_monitor.logged_in_clients
@@ -26,6 +28,14 @@ module AresMUSH
       hash = super(options)
       hash[:exits] = exits.map { |e| e.id }
       hash
-    end  
+    end
+    
+    def null_out_sources
+      sources = Exit.where(:dest_id => self.id)
+      sources.each do |s|
+        s.dest = nil
+        s.save!
+      end
+    end
   end
 end

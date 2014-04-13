@@ -97,5 +97,26 @@ module AresMUSH
       end
     end
     
+    describe :destroy do
+      it "should delete all exits leading out of the room" do
+        using_test_db do
+          room = Room.create
+          leading_out = Exit.create(:source => room)
+          room.destroy
+          Exit.find(leading_out.id).should be_nil
+        end
+      end
+      
+      it "should null all exits leading into the room" do
+        using_test_db do
+          room = Room.create
+          leading_in = Exit.create(:dest => room)
+          room.destroy
+          exit = Exit.find(leading_in.id)
+          exit.dest.should be_nil
+        end
+      end
+    end
+    
   end
 end
