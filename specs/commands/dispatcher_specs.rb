@@ -16,7 +16,8 @@ module AresMUSH
       Global.stub(:plugin_manager) { @plugin_manager }
       @client = double(Client).as_null_object
       @client.stub(:id) { "1" }
-      @command = double(Command)
+      @client.stub(:room) { nil }
+      @command = Command.new("x")
       @dispatcher = Dispatcher.new
       @plugin1 = double
       @plugin2 = double
@@ -119,6 +120,43 @@ module AresMUSH
         plugin1.should_not_receive(:on_arbitrary)
         @dispatcher.on_event("arbitrary")
       end
+    end
+    
+    describe :perform_alias_subs do
+      before do
+        Global.stub(:config) { { "alias" => { "a" => "b", "test" => "c" } } }
+      end
+        
+      it "should substitute roots if the root is an alias" do
+        cmd = Command.new("test/foo bar")
+        @dispatcher.perform_alias_subs(@client, cmd)
+        cmd.root.should eq "c"
+        cmd.args.should eq "bar"
+        cmd.switch.should eq "foo"
+      end
+      
+      it "should substitute the go command if an exit is matched and there are no args" do
+        cmd = Command.new("E")
+        room = double
+        room.stub(:has_exit?).with("E") { true }
+        @client.stub(:room) { room }
+        @dispatcher.perform_alias_subs(@client, cmd)
+        cmd.root.should eq "go"
+        cmd.args.should eq "E"
+        cmd.switch.should be_nil
+      end
+      
+      it "should not substitute exit names if there are other args" do
+        cmd = Command.new("E foo")
+        room = double
+        room.stub(:has_exit?).with("E") { true }
+        @client.stub(:room) { room }
+        @dispatcher.perform_alias_subs(@client, cmd)
+        cmd.root.should eq "E"
+        cmd.args.should eq "foo"
+        cmd.switch.should be_nil
+      end
+      
     end
   end
 end

@@ -70,7 +70,6 @@ module AresMUSH
           end
         end
         
-        
         context "target not found" do
           before do
             VisibleTargetFinder.stub(:find) { FindResult.new(nil, "an error") }

@@ -19,11 +19,6 @@ module AresMUSH
       switch = cracked[:switch].nil? ? nil : cracked[:switch].rest("/")
       args = cracked[:args].nil? ? nil : cracked[:args].strip
 
-      aliases = Global.config['alias']
-      if (!aliases.nil? && aliases.has_key?(root))
-        root = aliases[root]
-      end
-      
       {
         :prefix => prefix,
         :root => root,
