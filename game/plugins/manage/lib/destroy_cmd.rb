@@ -26,16 +26,13 @@ module AresMUSH
       end
 
       def handle
-        find_result = VisibleTargetFinder.find(self.target, client)
-        
-        if (!find_result.found?)
-          find_result = AnyTargetFinder.find(self.target, client)
-        end
+        find_result = AnyTargetFinder.find(self.target, client)
         
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return
         end
+        
         target = find_result.target
         
         if (target.class == Character)
@@ -46,8 +43,7 @@ module AresMUSH
           end
         end
         
-        if (target == Game.master.welcome_room || target == Game.master.ic_start_room ||
-          target == Game.master.idle_room)
+        if (Game.master.is_special_room?(target))
           client.emit_failure(t('manage.cannot_destroy_special_rooms'))
           return
         end

@@ -18,7 +18,7 @@ en:
         
         shutdown: "Shutdown by %{name}."
         
-        object_renamed: "Object renamed to %{name}."
+        object_renamed: "%{type} %{old_name} renamed to %{new_name}."
         exit_already_exists: "An exit with that name already exists in that room."
         
         find_results: "Find Results:"

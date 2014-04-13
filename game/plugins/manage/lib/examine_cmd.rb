@@ -27,11 +27,7 @@ module AresMUSH
       end
 
       def handle
-        find_result = VisibleTargetFinder.find(self.target, client)
-        
-        if (!find_result.found?)
-          find_result = AnyTargetFinder.find(self.target, client)
-        end
+        find_result = AnyTargetFinder.find(self.target, client)
         
         if (!find_result.found?)
           client.emit_failure(find_result.error)

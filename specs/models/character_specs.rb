@@ -5,6 +5,9 @@ require "aresmush"
 module AresMUSH
 
   describe Character do
+    before do
+      SpecHelpers.stub_translate_for_testing
+    end
     
     describe :hash_password do
       it "should use bcrypt to hash the password" do
@@ -71,6 +74,40 @@ module AresMUSH
         Character.stub(:find_by_name).with("Bob") { nil }
         Character.exists?("Bob").should be_false
       end
-    end    
+    end  
+    
+    describe :check_name do
+      it "should fail if name is too short" do
+        Character.check_name("Ab").should eq "validation.name_too_short"
+      end
+      
+      it "should fail if the char already exists" do
+        Character.stub(:exists?).with("Charname") { true }
+        Character.check_name("Charname").should eq "validation.char_name_taken"
+      end
+      
+      it "should fail if the char name starts with a lowercase letter" do
+        Character.check_name("charname").should eq "validation.name_must_be_capitalized"        
+      end
+
+      it "should return true if everything's ok" do
+        Character.stub(:exists?).with("Charname") { false }
+        Character.check_name("Charname").should be_nil
+      end
+    end
+    
+    describe :check_password do
+      it "should fail if password is too short" do
+        Character.check_password("bar").should eq "validation.password_too_short"
+      end
+      
+      it "should fail if the password has an equal sign" do
+        Character.check_password("bar=foo").should eq "validation.password_cant_have_equals"
+      end
+
+      it "should return true if everything's ok" do
+        Character.check_password("password").should be_nil
+      end
+    end  
   end
 end

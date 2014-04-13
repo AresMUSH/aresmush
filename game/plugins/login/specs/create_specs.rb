@@ -74,13 +74,13 @@ module AresMUSH
 
         it "should fail if the name is invalid" do
           handler.stub(:charname) { "Bob" }
-          Login.should_receive(:check_char_name).with("Bob") { "invalid name"}
+          Character.should_receive(:check_name).with("Bob") { "invalid name"}
           handler.check_name.should eq "invalid name"          
         end
           
         it "should allow the comand if the name is ok" do
           handler.stub(:charname) { "Bob" }
-          Login.should_receive(:check_char_name) { nil }
+          Character.should_receive(:check_name) { nil }
           handler.check_name.should be_nil
         end
       end
@@ -93,13 +93,13 @@ module AresMUSH
 
         it "should fail if the password is invalid" do
           handler.stub(:password) { "passwd" }
-          Login.should_receive(:check_char_password).with("passwd") { "invalid password"}
+          Character.should_receive(:check_password).with("passwd") { "invalid password"}
           handler.check_password.should eq "invalid password"          
         end
           
-        it "should allow the comand if the name is ok" do
+        it "should allow the comand if the password is ok" do
           handler.stub(:password) { "passwd" }
-          Login.should_receive(:check_char_password) { nil }
+          Character.should_receive(:check_password) { nil }
           handler.check_password.should be_nil
         end
       end

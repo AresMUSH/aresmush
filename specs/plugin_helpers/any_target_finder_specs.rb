@@ -10,22 +10,13 @@ module AresMUSH
         Exit.stub(:find_all_by_name_or_id) { [] }
         Room.stub(:find_all_by_name_or_id) { [] }
         Character.stub(:find_all_by_name_or_id) { [] }
+        VisibleTargetFinder.stub(:find) { FindResult.new(nil, "Error") }
       end
 
-      it "should return the char for the me keword" do
-        char = double
-        @client.stub(:char) { char }
-        result = AnyTargetFinder.find("me", @client)
-        result.target.should eq char
-        result.error.should be_nil
-      end
-
-      it "should return the char's location for the here keyword" do
-        room = double
-        @client.stub(:room) { room }
-        result = AnyTargetFinder.find("here", @client)
-        result.target.should eq room
-        result.error.should be_nil
+      it "should give preference to visible targets" do
+        result = FindResult.new(double, nil)
+        VisibleTargetFinder.should_receive(:find).with("A", @client) { result }
+        AnyTargetFinder.find("A", @client).should eq result
       end
       
       it "should ensure only a single result" do

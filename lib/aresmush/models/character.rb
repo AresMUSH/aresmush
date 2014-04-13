@@ -27,7 +27,20 @@ module AresMUSH
         names.any? { |n| self.roles.include?(n) }
       end
     end
-
+    
+    def self.check_password(password)
+      return t('validation.password_too_short') if (password.length < 5)
+      return t('validation.password_cant_have_equals') if (password.include?("="))
+      return nil
+    end
+    
+    def self.check_name(name)
+      return t('validation.name_too_short') if (name.length < 3)
+      return t('validation.name_must_be_capitalized') if (name[0].downcase == name[0])
+      return t('validation.char_name_taken') if (Character.exists?(name))
+      return nil
+    end
+    
     def self.exists?(name)
       existing_char = Character.find_by_name(name)
       return !existing_char.nil?

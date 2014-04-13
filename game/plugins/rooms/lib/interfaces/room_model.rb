@@ -30,6 +30,13 @@ module AresMUSH
       self.ic_start_room_id = ic_start_room.id
       self.idle_room_id = idle_room.id
     end
+    
+    def is_special_room?(room)
+      return true if target == welcome_room
+      return true if target == ic_start_room
+      return true if target == idle_room
+      return false
+    end
   end
   
   class Character

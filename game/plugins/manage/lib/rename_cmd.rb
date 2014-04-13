@@ -31,11 +31,7 @@ module AresMUSH
       end
 
       def handle
-        find_result = VisibleTargetFinder.find(self.target, client)
-        
-        if (!find_result.found?)
-          find_result = AnyTargetFinder.find(self.target, client)
-        end
+        find_result = AnyTargetFinder.find(self.target, client)
         
         if (!find_result.found?)
           client.emit_failure(find_result.error)
@@ -43,12 +39,10 @@ module AresMUSH
         end
         target = find_result.target
         
-        if (target.class == Character)
-          name_validation_msg = Login.check_char_name(self.name)
-          if (!name_validation_msg.nil?)
-            client.emit_failure(name_validation_msg)
-            return
-          end
+        name_validation_msg = target.class.check_name(self.name)
+        if (!name_validation_msg.nil?)
+          client.emit_failure(name_validation_msg)
+          return
         end
         
         if (target.class == Exit)
@@ -57,10 +51,11 @@ module AresMUSH
             return
           end
         end
-          
+        
+        old_name = target.name
         target.name = self.name
         target.save!
-        client.emit_success t('manage.object_renamed', :name => self.name)
+        client.emit_success t('manage.object_renamed', :type => target.class.name.rest("::"), :old_name => old_name, :new_name => self.name)
       end
     end
   end

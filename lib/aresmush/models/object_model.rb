@@ -21,12 +21,18 @@ module AresMUSH
       end
 
       def find_by_name(name)
-        self.find_by(name_upcase: name.upcase)
+        find_by(name_upcase: name.upcase)
       end
 
       def find_all_by_name(name)
-        self.where(:name_upcase => name.upcase).all
+        where(:name_upcase => name.upcase).all
       end
+      
+      # Derived classes may implement name checking
+      def check_name(name)
+        nil
+      end
+      
     end
     
     def to_json

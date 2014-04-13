@@ -1,9 +1,12 @@
 module AresMUSH
   class AnyTargetFinder
     def self.find(name_or_id, client)
-      return FindResult.new(client.char, nil) if (name_or_id.downcase == "me")
-      return FindResult.new(client.room, nil) if (name_or_id.downcase == "here")
-
+      find_result = VisibleTargetFinder.find(name_or_id, client)
+      
+      if (find_result.found?)
+        return find_result
+      end
+      
       chars = Character.find_all_by_name_or_id(name_or_id)
       exits = Exit.find_all_by_name_or_id(name_or_id)
       rooms = Room.find_all_by_name_or_id(name_or_id)
