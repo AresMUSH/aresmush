@@ -56,8 +56,20 @@ module AresMUSH
           it "should emit the desc to the client" do
             client.should_receive(:emit).with("a desc")
             handler.handle
-          end    
+          end  
+          
+          it "should tell them they're being looked at" do
+            @model = Character.new
+            client.stub(:name) { "Bob" }
+            client_monitor = double
+            other_client = double
+            Global.stub(:client_monitor) { client_monitor }
+            client_monitor.should_receive(:find_client).with(@model) { other_client }
+            other_client.should_receive(:emit_ooc).with('describe.looked_at_you')
+            handler.handle
+          end
         end
+        
         
         context "target not found" do
           before do

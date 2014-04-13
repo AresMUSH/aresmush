@@ -24,6 +24,12 @@ module AresMUSH
         VisibleTargetFinder.with_something_visible(target, client) do |model|
           desc = Describe.get_desc(model)
           client.emit(desc)
+          if (model.class == Character)
+            looked_at = Global.client_monitor.find_client(model)
+            if (!looked_at.nil?)
+              looked_at.emit_ooc t('describe.looked_at_you', :name => client.name)
+            end
+          end
         end
       end      
     end

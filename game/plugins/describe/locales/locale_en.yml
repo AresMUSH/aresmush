@@ -13,3 +13,5 @@ en:
        outfit: "Outfit %{name}"
        your_outfits: "Your Outfits"
        outfits_worn: "You wear the outfits."
+       
+       looked_at_you: "%{name} looked at you."
