@@ -32,9 +32,9 @@ module AresMUSH
     end
     
     def is_special_room?(room)
-      return true if target == welcome_room
-      return true if target == ic_start_room
-      return true if target == idle_room
+      return true if room == welcome_room
+      return true if room == ic_start_room
+      return true if room == idle_room
       return false
     end
   end
