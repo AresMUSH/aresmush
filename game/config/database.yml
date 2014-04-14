@@ -10,9 +10,8 @@ database:
                 username: ares
                 password: make_a_good_password
         options:
-            # These two options are critical for proper Ares operation.  You may experiment with other options
-            # at your own discretion.
-            identity_map_enabled: true
+            # These options are critical for proper Ares operation.  
+            # You may experiment with other options at your own discretion.
             raise_not_found_error: false
 
     test:
@@ -24,7 +23,6 @@ database:
                 username: ares
                 password: make_a_good_password
         options:
-            # These two options are critical for proper Ares operation.  You may experiment with other options
-            # at your own discretion.
-            identity_map_enabled: true     
+            # These options are critical for proper Ares operation. 
+            # You may experiment with other options at your own discretion.
             raise_not_found_error: false
