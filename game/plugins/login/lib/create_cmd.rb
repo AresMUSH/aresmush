@@ -44,6 +44,9 @@ module AresMUSH
         char = Character.new
         char.name = charname
         char.change_password(password)
+        if (!terms_of_service.nil?)
+          char.terms_of_service_acknowledged = Time.now
+        end
         char.save!
         
         client.emit_success(t('login.created_and_logged_in', :name => charname))
