@@ -15,5 +15,6 @@ en:
        password_reset: "You change %{name}'s password."
        tos_agreement_not_pending: "You aren't looking at the terms of service."
        tos_agree: "Type %xctos/agree%xn to agree to tese terms of service."
-
+       maybe_you_meant_tour: "%xcIf you're trying to connect to a guest character, please use the 'tour' command.%xn"
+       all_guests_taken:  "We're so sorry - all the guest characters are currently taken.  Please try again later."
        

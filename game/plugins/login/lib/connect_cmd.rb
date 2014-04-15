@@ -7,12 +7,6 @@ module AresMUSH
 
       attr_accessor :charname, :password
       
-      def initialize
-        self.required_args = ['charname', 'password']
-        self.help_topic = 'connect'
-        super
-      end
-      
       def want_command?(client, cmd)
         cmd.root_is?("connect")
       end
@@ -21,6 +15,12 @@ module AresMUSH
         cmd.crack!(/(?<name>[\S]+) (?<password>.+)/)
         self.charname = trim_input(cmd.args.name)
         self.password = cmd.args.password
+      end
+      
+      def check_for_guest_or_password
+        return t('login.maybe_you_meant_tour') if cmd.raw.downcase.chomp == "connect guest"
+        return t('dispatcher.invalid_syntax', :command => 'connect') if self.password.nil? || self.charname.nil?
+        return nil
       end
       
       def check_not_already_logged_in
@@ -43,13 +43,9 @@ module AresMUSH
             existing_client.disconnect
             EM.add_timer(1) { announce_connection }
           else
-            announce_connection
+            Global.dispatcher.on_event(:char_connected, :client => client)
           end
         end
-      end
-      
-      def announce_connection
-        Global.dispatcher.on_event(:char_connected, :client => client)
       end
       
       def log_command
