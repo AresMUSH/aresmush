@@ -27,7 +27,8 @@ en:
         objects_reloaded: "Database objects refreshed."
         
         object_destroyed: "%{name} destroyed."
-        confirm_object_destroy: "%l1%RYou want to delete %{type} %xg%{name}.%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm %{id}%xn%r%l1"
+        confirm_object_destroy: "%l1%RYou want to delete %{type} %xg%{name}.%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn%r%l1"
         cannot_destroy_online: You can't destroy someone when they're online.
         room_being_destroyed: "This room is being destroyed.  Moving you to a safer spot."
         cannot_destroy_special_rooms: "You can't destroy that room.  It's special."
+        no_destroy_in_progress: "You weren't trying to destroy anything."
