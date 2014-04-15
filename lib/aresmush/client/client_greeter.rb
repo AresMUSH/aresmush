@@ -5,7 +5,8 @@ module AresMUSH
       connect_config = Global.config['connect']
       
       # Connect screen ansi
-      client.emit connect_config['welcome_screen']
+      filename = connect_config['welcome_screen']
+      client.emit filename.nil? ? nil : File.read(filename)
 
       # Ares welcome text
       client.emit_ooc t('client.welcome')

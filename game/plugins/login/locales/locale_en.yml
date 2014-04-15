@@ -7,11 +7,13 @@ en:
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."
        password_incorrect: "Password incorrect."
-       welcome: "Welcome to AresMUSH!"
        no_email_is_registered: "There is no email set for %{name}."
        email_registered_is: "The email set for %{name} is %{email}."
        email_set: "You set your email."
        invalid_email_format:  "That is not a valid email format."
        password_changed: "You change your password."
        password_reset: "You change %{name}'s password."
+       tos_agreement_not_pending: "You aren't looking at the terms of service."
+       tos_agree: "Type %xctos/agree%xn to agree to tese terms of service."
+
        

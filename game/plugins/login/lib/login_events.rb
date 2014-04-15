@@ -6,7 +6,6 @@ module AresMUSH
       def on_char_connected(args)
         client = args[:client]
         Global.logger.info("Character Connected: #{client}")
-        client.emit_success(t('login.welcome'))
         Global.client_monitor.emit_all_ooc t('login.announce_char_connected', :name => client.name)
       end
       

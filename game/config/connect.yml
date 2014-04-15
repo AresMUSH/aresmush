@@ -1,24 +1,4 @@
 connect:
     welcome_text: "Still under development."
-    
-    # The |1 tells it that what follows is multi-line raw text, starting at an indent of 1.
-    welcome_screen: |1
-           |\                     /)
-         /\_\\__               (_//
-         |   `>\-`     _._       //`)  %xr     \ %xn
-          \ /` \\  _.-`   `-._  //     %xr    _ \    __| _ \  __|%xn
-           `    \|\     \     /|/      %xr   ___ \  |    __/\__ \ %xn
-                 |     / \\    |       %xr _/    _\_|  \___|____/%xn
-                 |   //----\   |
-                 | //--    -\\ |       %xr  \  | |   |  ___|  |   |%xn
-                 */-          \*       %xr |\/ | |   |\___ \  |   |%xn
-                 \             /       %xr |   | |   |      | ___ |%xn
-                  \           /        %xr_|  _|\___/ _____/ _|  _|%xn
-                   `-.     .-'
-                    //`:::`\\          +-------------------------+
-                   //   '   \\         | Still in Development    |
-                  |/         \\        |          å              |
-                                       |                         |
-                                       |                         |
-                                       | http://www.aresmush.com |
-          %xx%xhASCII Art modified from jgs%xn  +-------------------------+
+    welcome_screen: "game/files/connect.txt"
+    terms_of_service: "game/files/tos.txt"

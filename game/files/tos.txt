@@ -1,0 +1,7 @@
+%l1
+You must acknowledge the terms of service to continue.
+ 
+Here they are:
+    - Oops there actually aren't any. 
+Please customize your terms of service.
+%l1

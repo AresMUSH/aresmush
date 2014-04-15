@@ -31,7 +31,16 @@ module AresMUSH
         return Character.check_password(password)
       end
       
-      def handle        
+      def handle
+        tos_filename = Global.config['connect']['terms_of_service']
+        if (!tos_filename.nil? && client.program[:tos_accepted].nil?)
+          client.program = { :create_cmd => cmd }
+          client.emit File.read(tos_filename)
+          return
+        end
+        
+        client.reset_program
+        
         char = Character.new
         char.name = charname
         char.change_password(password)

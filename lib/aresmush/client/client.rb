@@ -3,13 +3,14 @@ module AresMUSH
   class Client 
 
     attr_reader :ip_addr, :id
-    attr_accessor :char, :last_activity, :last_connect
+    attr_accessor :char, :last_activity, :last_connect, :program
     
     def initialize(id, connection)
       @id = id
       @connection = connection
       self.last_activity = Time.now
       self.last_connect = Time.now
+      @program = {}
     end
     
     def to_s
@@ -80,6 +81,10 @@ module AresMUSH
     
     def logged_in?
       !@char.nil?
+    end
+    
+    def reset_program
+      @program = {}
     end
   end
 end
