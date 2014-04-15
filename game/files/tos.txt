@@ -1,7 +1,4 @@
-%l1
-You must acknowledge the terms of service to continue.
- 
-Here they are:
+By playing here, you must adhere to these terms of service:
     - Oops there actually aren't any. 
-Please customize your terms of service.
-%l1
+Please customize your terms of service, or remove the terms_of_service
+entry from your connect.yml configuration file.

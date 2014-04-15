@@ -2,7 +2,7 @@ en:
     login:
        announce_char_connected: "%{name} has connected."
        announce_char_disconnected: "%{name} has disconnected."
-       announce_char_created: "%{name} has been created."
+       announce_char_created: "Please welcome our newest player: %{name}!"
        goodbye: "Goodbye!"
        created_and_logged_in: "Congrats!  Your name is now %{name}."
        already_logged_in: "You are already logged in."

@@ -32,10 +32,10 @@ module AresMUSH
       end
       
       def handle
-        tos_filename = Global.config['connect']['terms_of_service']
-        if (!tos_filename.nil? && client.program[:tos_accepted].nil?)
+        terms_of_service = Login.terms_of_service
+        if (!terms_of_service.nil? && client.program[:tos_accepted].nil?)
           client.program = { :create_cmd => cmd }
-          client.emit File.read(tos_filename)
+          client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
           return
         end
         

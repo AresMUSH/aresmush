@@ -16,9 +16,23 @@ module AresMUSH
       end
       
       describe :on_char_connected do
+        before do
+          @char = double
+          @client.stub(:char) { @char }
+          @char.stub(:has_role?) { false }
+          @client_monitor.stub(:emit_all_ooc)
+          Login.stub(:terms_of_service) { nil }
+        end
+        
         it "should announce the char" do
-          @client.stub(:emit_success) {}
           @client_monitor.should_receive(:emit_all_ooc).with("announce_char_connected")
+          @login_events.on_char_connected(:client => @client)
+        end
+        
+        it "should emit terms of service to guests" do
+          @char.stub(:has_role?).with("guest") { true }
+          Login.stub(:terms_of_service) { "tos" }
+          @client.should_receive(:emit).with("%l1%rtos%r%l1")
           @login_events.on_char_connected(:client => @client)
         end
       end
