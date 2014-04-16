@@ -84,6 +84,11 @@ task :install do
 
   bootstrapper = AresMUSH::Bootstrapper.new
 
+  AresMUSH::ObjectModel.models.each do |m|
+    m.remove_indexes
+    puts "Indexes created for: #{m}: #{m.create_indexes}"
+  end
+
   AresMUSH::Character.delete_all
   AresMUSH::Game.delete_all
   AresMUSH::Room.delete_all

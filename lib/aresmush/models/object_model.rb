@@ -1,8 +1,13 @@
 module AresMUSH
   module ObjectModel
+
+    mattr_reader :models
+    @@models = Set.new
+
     def self.included(base)
       base.send :extend, ClassMethods   
-      base.register_data_members
+      base.send :register_data_members
+      @@models << base
     end
  
     module ClassMethods
@@ -11,6 +16,7 @@ module AresMUSH
         send :include, Mongoid::Timestamps
         field :name, :type => String
         field :name_upcase, :type => String
+        field :model_version, :type => Integer, default: 1
         before_validation :save_upcase_name
         after_save :reload_clients
         after_destroy :reload_clients
@@ -31,6 +37,11 @@ module AresMUSH
       # Derived classes may implement name checking
       def check_name(name)
         nil
+      end
+
+      def register_default_indexes(with_unique_name: false)
+        index({ name: 1 }, { unique: with_unique_name, name: 'name_idx' })
+        index({ name_upcase: 1 }, { unique: with_unique_name, name: 'name_upcase_idx' })
       end
       
     end

@@ -5,6 +5,8 @@ module AresMUSH
     has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id, :inverse_of => "source_id", :dependent => :delete
     has_many :characters, :class_name => 'AresMUSH::Character'
 
+    register_default_indexes
+
     before_destroy :null_out_sources
     
     def clients
