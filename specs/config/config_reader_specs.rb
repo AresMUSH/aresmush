@@ -21,6 +21,25 @@ module AresMUSH
       end
     end
     
+    describe :config do
+      before do
+        @config_reader = ConfigReader.new
+        @config_reader.config = { "a" => { "b" => "c" } }
+      end
+      
+      it "should return the section if specified" do
+        hash = { "b" => "c" }
+        @config_reader.get_config("a").should eq hash 
+      end
+      
+      it "should return the subsection if specified and the section exists" do
+        @config_reader.get_config("a", "b").should eq "c"
+      end
+      
+      it "should return nil if the section for the requested subsection doesn't exist" do
+        @config_reader.get_config("d", "e").should be_nil
+      end
+    end
 
     describe :read do 
       before do
