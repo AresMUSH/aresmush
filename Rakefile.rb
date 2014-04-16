@@ -113,15 +113,8 @@ task :upgrade do
 
 end
 
-namespace :unit do
-  RSpec::Core::RakeTask.new do |t|
-    t.pattern = FileList["specs/**/*_spec?.rb"]
-  end
-end
-namespace :plugin do
-  RSpec::Core::RakeTask.new do |t|
-    t.pattern = FileList["game/*/spec?/**/*_spec?.rb"]
-  end
+RSpec::Core::RakeTask.new do |t|
+  t.pattern = FileList["./**/*_spec?.rb"]
 end
 
 task :default => :start
