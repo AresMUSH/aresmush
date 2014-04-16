@@ -1,8 +1,9 @@
 module AresMUSH
-  module Utils
+  module Manage
     class DestroyConfirmCmd
       include Plugin
       include PluginWithoutArgs
+      include PluginRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("destroy") && cmd.switch_is?("confirm")
@@ -34,13 +35,13 @@ module AresMUSH
             connected_client = Global.client_monitor.find_client(c)
             if (!connected_client.nil?)
               connected_client.emit_ooc t('manage.room_being_destroyed')
-              Rooms.move_to(connected_client, c, Game.master.welcome_room)
             end
+            Rooms.move_to(connected_client, c, Game.master.welcome_room)
           end
         end
         target.destroy
         client.emit_success t('manage.object_destroyed', :name => target.name)
-        client.reset_program
+        client.program.delete(:destroy_target)
       end
     end
   end

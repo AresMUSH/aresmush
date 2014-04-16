@@ -121,7 +121,7 @@ module AresMUSH
 
           client.stub(:emit_success)
           client.stub(:char=) 
-          client.stub(:reset_program)       
+          client.stub(:program) { {} }       
         
           SpecHelpers.stub_translate_for_testing        
         end

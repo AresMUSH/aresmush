@@ -31,7 +31,7 @@ module AresMUSH
       @handler.client = @client
       @handler.cmd = @cmd
     end  
-    
+        
     shared_examples "a plugin that expects a single root" do
       # let(:expected_root) { "cmd name" }
       describe :want_command? do

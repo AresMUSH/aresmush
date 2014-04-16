@@ -1,8 +1,9 @@
 module AresMUSH
-  module Utils
+  module Manage
     class DestroyCmd
       include Plugin
       include PluginRequiresArgs
+      include PluginRequiresLogin
       
       attr_accessor :target
             
@@ -41,7 +42,7 @@ module AresMUSH
         end
         
         client.program = { :destroy_target => target }
-        client.emit(t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.to_json))
+        client.emit t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.to_json)
       end
     end
   end

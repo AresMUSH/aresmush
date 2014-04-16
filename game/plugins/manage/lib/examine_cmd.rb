@@ -1,9 +1,10 @@
 module AresMUSH
-  module Utils
+  module Manage
     class ExamineCmd
       include Plugin
       include PluginWithoutSwitches
       include PluginRequiresArgs
+      include PluginRequiresLogin
       
       attr_accessor :target
       

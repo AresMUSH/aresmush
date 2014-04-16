@@ -39,7 +39,7 @@ module AresMUSH
           return
         end
         
-        client.reset_program
+        client.program.delete(:create_cmd)
         
         char = Character.new
         char.name = charname
