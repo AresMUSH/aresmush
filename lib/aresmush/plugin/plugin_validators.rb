@@ -24,6 +24,10 @@ module AresMUSH
     attr_accessor :required_args
     attr_accessor :help_topic
     def check_arguments_present
+      if (self.required_args.nil?)
+        raise "Plugin #{self.class} says it requires args but has none listed"
+      end
+      
       self.required_args.each do |arg|
         return t('dispatcher.invalid_syntax', :command => self.help_topic) if self.send("#{arg}").to_s.strip.length == 0
       end

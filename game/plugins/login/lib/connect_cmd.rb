@@ -3,7 +3,6 @@ module AresMUSH
     class ConnectCmd
       include Plugin
       include PluginWithoutSwitches
-      include PluginRequiresArgs
 
       attr_accessor :charname, :password
       
