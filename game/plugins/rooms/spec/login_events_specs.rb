@@ -3,6 +3,8 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Rooms
     describe LoginEvents do
+      include GameTestHelper
+
       before do
         @client = double(Client)
         @client.stub(:name) { "Bob" }
@@ -15,6 +17,7 @@ module AresMUSH
         
         @login = LoginEvents.new
         AresMUSH::Locale.stub(:translate).with("rooms.char_has_arrived", { :name => "Bob" }) { "char_has_arrived" }
+        stub_game_master
       end
       
       describe :on_char_connected do      
@@ -35,8 +38,6 @@ module AresMUSH
           @char = double
           @client.stub(:char) { @char }
           @welcome_room = double
-          game = double
-          Game.stub(:master) { game }
           game.stub(:welcome_room) { @welcome_room }
         end
            

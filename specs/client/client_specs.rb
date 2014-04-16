@@ -5,15 +5,13 @@ require "aresmush"
 module AresMUSH
 
   describe Client do
+    include GlobalTestHelper
 
     before do
       @connection = double
-      @client_monitor = double
-      @dispatcher = double
-      Global.stub(:client_monitor) { @client_monitor }
-      Global.stub(:dispatcher) { @dispatcher }
       @client = Client.new(1, @connection)
       SpecHelpers.stub_translate_for_testing
+      stub_global_objects
     end
 
     describe :connected do

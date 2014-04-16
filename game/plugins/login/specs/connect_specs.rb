@@ -4,10 +4,12 @@ module AresMUSH
   module Login  
     describe ConnectCmd do
       include PluginCmdTestHelper
+      include GlobalTestHelper
       
       before do
         init_handler(ConnectCmd, "connect Bob password")
-        SpecHelpers.stub_translate_for_testing        
+        SpecHelpers.stub_translate_for_testing  
+        stub_global_objects      
       end
       
       it_behaves_like "a plugin that doesn't allow switches"
@@ -92,21 +94,17 @@ module AresMUSH
         context "success" do
           before do
             @found_char = double
-            @dispatcher = double(Dispatcher)
-            Global.stub(:dispatcher) { @dispatcher }
-            @client_monitor = double
-            Global.stub(:client_monitor) { @client_monitor }
-            @client_monitor.stub(:find_client) { nil }
+            client_monitor.stub(:find_client) { nil }
             Character.should_receive(:find_all_by_name_or_id) { [ @found_char ] }
             @found_char.stub(:compare_password).with("password") { true }  
          
-            @dispatcher.stub(:on_event)  
+            dispatcher.stub(:on_event)  
             client.stub(:char=)      
           end
           
           it "should disconnect an existing client" do
             other_client = double
-            @client_monitor.stub(:find_client).with(@found_char) { other_client }
+            client_monitor.stub(:find_client).with(@found_char) { other_client }
             other_client.should_receive(:disconnect)
             EM.stub(:add_timer)
             handler.handle            
@@ -123,7 +121,7 @@ module AresMUSH
           end
 
           it "should announce the char connected event" do
-            @dispatcher.should_receive(:on_event) do |type, args|
+            dispatcher.should_receive(:on_event) do |type, args|
               type.should eq :char_connected
               args[:client].should eq client
             end

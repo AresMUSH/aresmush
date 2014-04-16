@@ -2,10 +2,12 @@ module AresMUSH
   module Rooms
     describe TeleportCmd do
       include PluginCmdTestHelper
+      include GlobalTestHelper
       
       before do
         init_handler(TeleportCmd, "teleport somewhere")
-        SpecHelpers.stub_translate_for_testing        
+        SpecHelpers.stub_translate_for_testing  
+        stub_global_objects      
       end
       
       it_behaves_like "a plugin that doesn't allow switches"
@@ -68,9 +70,7 @@ module AresMUSH
           handler.stub(:name) { "someone" }
           other_char = double
           other_client = double
-          client_monitor = double
           ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(other_char, nil) }
-          Global.stub(:client_monitor) { client_monitor }
           client_monitor.stub(:find_client).with(other_char) { other_client }
           result = { :client => other_client, :char => other_char }
           handler.find_targets.should eq result

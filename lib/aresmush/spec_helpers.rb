@@ -80,5 +80,32 @@ module AresMUSH
       }
     end
   end
+
+  module GlobalTestHelper
+    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
+    
+    def stub_global_objects
+      @config_reader = double
+      @client_monitor = double
+      @plugin_manager = double
+      @dispatcher = double
+      @locale = double
+      
+      Global.stub(:config_reader) { @config_reader }
+      Global.stub(:client_monitor) { @client_monitor }
+      Global.stub(:plugin_manager) { @plugin_manager }
+      Global.stub(:dispatcher) { @dispatcher }
+      Global.stub(:locale) { @locale }
+    end
+  end
+  
+  module GameTestHelper
+    attr_accessor :game
+    
+    def stub_game_master
+      @game = double
+      Game.stub(:master) { @game }
+    end
+  end
     
 end

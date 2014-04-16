@@ -10,10 +10,11 @@ module AresMUSH
   end
   
   describe Dispatcher do
+    include GlobalTestHelper
 
     before do
-      @plugin_manager = double(PluginManager)
-      Global.stub(:plugin_manager) { @plugin_manager }
+      stub_global_objects
+      
       @client = double(Client).as_null_object
       @client.stub(:id) { "1" }
       @client.stub(:room) { nil }

@@ -5,15 +5,15 @@ require "aresmush"
 module AresMUSH
 
   describe Room do
+    include GlobalTestHelper
     
     before do
       @room = Room.new
       @client1 = double
       @client2 = double
       @client3 = double
-      @client_monitor = double
-      Global.stub(:client_monitor) { @client_monitor }
-      @client_monitor.stub(:logged_in_clients) { [ @client1, @client2, @client3 ] }
+      stub_global_objects
+      client_monitor.stub(:logged_in_clients) { [ @client1, @client2, @client3 ] }
       @client1.stub(:room) { @room }
       @client2.stub(:room) { @room }
       @client3.stub(:room) { double }

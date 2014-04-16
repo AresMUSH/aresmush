@@ -6,6 +6,11 @@ module AresMUSH
     describe WhoRenderer do
 
       include MockClient
+      include GlobalTestHelper
+
+      before do
+        stub_global_objects
+      end
 
       describe "client data handling" do
         before do
@@ -17,9 +22,6 @@ module AresMUSH
           @renderer.stub(:render) { "ABC" }
 
           TemplateRenderer.stub(:new) { @renderer }
-
-          client_monitor = double
-          Global.stub(:client_monitor) { client_monitor }
           client_monitor.stub(:logged_in_clients) { [@client1[:client], @client2[:client], @client3[:client]] }
 
           @handler = WhoRenderer.new("who.erb")

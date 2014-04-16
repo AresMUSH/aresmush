@@ -5,10 +5,14 @@ require "aresmush"
 module AresMUSH
 
   describe Server do
+    include GlobalTestHelper
+    
+    before do
+      stub_global_objects
+    end
+    
     describe :start do
       before do
-        @client_monitor = double(ClientMonitor)
-        Global.stub(:client_monitor) { @client_monitor }
         Global.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
         @server = Server.new
       end
@@ -37,7 +41,7 @@ module AresMUSH
         EventMachine.should_receive(:run).and_yield
         EventMachine.stub(:add_periodic_timer)
         EventMachine.should_receive(:start_server).and_yield(connection)
-        @client_monitor.should_receive(:connection_established).with(connection)
+        client_monitor.should_receive(:connection_established).with(connection)
         @server.start
       end      
     end    

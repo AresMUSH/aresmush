@@ -4,10 +4,12 @@ module AresMUSH
   module Login
     describe CreateCmd do
       include PluginCmdTestHelper
+      include GlobalTestHelper
       
       before do
         init_handler(CreateCmd, "create Bob bobpassword")
-        SpecHelpers.stub_translate_for_testing        
+        SpecHelpers.stub_translate_for_testing    
+        stub_global_objects    
       end
       
       it_behaves_like "a plugin that doesn't allow switches"
@@ -110,9 +112,7 @@ module AresMUSH
           init_handler(CreateCmd, "create charname password")
           handler.crack!
 
-          @dispatcher = double.as_null_object
-          Global.stub(:dispatcher) { @dispatcher }
-          @dispatcher.stub(:on_event)
+          dispatcher.stub(:on_event)
 
           Login.stub(:terms_of_service) { nil }
           
@@ -152,12 +152,12 @@ module AresMUSH
         end
 
         it "should dispatch the created and connected event" do
-          @dispatcher.should_receive(:on_event) do |type, args|
+          dispatcher.should_receive(:on_event) do |type, args|
             type.should eq :char_created
             args[:client].should eq client
           end
          
-          @dispatcher.should_receive(:on_event) do |type, args|
+          dispatcher.should_receive(:on_event) do |type, args|
             type.should eq :char_connected
             args[:client].should eq client
           end

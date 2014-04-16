@@ -4,10 +4,14 @@ module AresMUSH
   module Manage
     describe DestroyConfirmCmd do
       include PluginCmdTestHelper
+      include GameTestHelper
+      include GlobalTestHelper
   
       before do
         init_handler(DestroyConfirmCmd, "destroy/confirm")
         SpecHelpers.stub_translate_for_testing
+        stub_game_master
+        stub_global_objects
       end
       
       it_behaves_like "a plugin that requires login"
@@ -15,8 +19,6 @@ module AresMUSH
       describe :handle do
         before do
           @target = double
-          @client_monitor = double
-          Global.stub(:client_monitor) { @client_monitor }
           client.stub(:program) { { :destroy_target => @target, :something_else => "x" } }
           handler.crack!
         end
@@ -30,7 +32,7 @@ module AresMUSH
 
           it "should emit failure if trying to destroy a char who's online" do
             @target.stub(:class) { Character }
-            @client_monitor.stub(:find_client).with(@target) { double }
+            client_monitor.stub(:find_client).with(@target) { double }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_online")
             handler.handle
           end
@@ -38,7 +40,7 @@ module AresMUSH
         
         context "success" do
           before do
-            @client_monitor.stub(:find_client) { nil }
+            client_monitor.stub(:find_client) { nil }
             client.stub(:emit_success)
             @target.stub(:destroy)
             @target.stub(:name) { "name" }
@@ -64,8 +66,6 @@ module AresMUSH
             before do
               # Stub out welcome room
               @welcome_room = double
-              game = double
-              Game.stub(:master) { game }
               game.stub(:welcome_room) { @welcome_room }
 
               # Pretend the target is a room
@@ -77,7 +77,7 @@ module AresMUSH
             it "should tell an online char they're being moved and move them" do
               # Match up a client to the character
               client_in_room = double
-              @client_monitor.stub(:find_client).with(@char_in_room) { client_in_room }
+              client_monitor.stub(:find_client).with(@char_in_room) { client_in_room }
               client_in_room.should_receive(:emit_ooc).with("manage.room_being_destroyed")
               Rooms.should_receive(:move_to).with(client_in_room, @char_in_room, @welcome_room)
               handler.handle

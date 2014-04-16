@@ -4,10 +4,12 @@ module AresMUSH
   module Manage
     describe DestroyCmd do
       include PluginCmdTestHelper
+      include GameTestHelper
   
       before do
         init_handler(DestroyCmd, "destroy foo")
         SpecHelpers.stub_translate_for_testing
+        stub_game_master
       end
       
       it_behaves_like "a plugin that requires login"
@@ -21,8 +23,6 @@ module AresMUSH
       
       describe :handle do
         before do
-          game = double
-          Game.stub(:master) { game }
           game.stub(:is_special_room?) { false }
           handler.crack!
         end
@@ -38,9 +38,7 @@ module AresMUSH
         context "special room" do
           it "should emit failure if trying to destroy a special room" do
             target = double
-            game = double
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
-            Game.stub(:master) { game }
             game.stub(:is_special_room?).with(target) { true }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_special_rooms")
             handler.handle

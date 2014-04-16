@@ -5,10 +5,11 @@ require "aresmush"
 module AresMUSH
 
   describe ClientMonitor do
+    include GlobalTestHelper
    
     before do
-      @dispatcher = double(Dispatcher).as_null_object
-      Global.stub(:dispatcher) { @dispatcher }
+      stub_global_objects
+      
       @factory = double(ClientFactory).as_null_object
       @client_monitor = ClientMonitor.new(@factory)
 
@@ -37,12 +38,13 @@ module AresMUSH
 
     describe :connection_closed do
       it "should remove the client from the list" do
+        dispatcher.stub(:on_event)
         @client_monitor.connection_closed(@client1)
         @client_monitor.clients.should eq [@client2]
       end
       
       it "should notify the dispatcher" do
-        @dispatcher.should_receive(:on_event) do |type, args|
+        dispatcher.should_receive(:on_event) do |type, args|
           type.should eq :char_disconnected
           args[:client].should eq @client1
         end
@@ -75,7 +77,7 @@ module AresMUSH
       
       it "should notify the dispatcher" do
         @factory.stub(:create_client) { @client3 }
-        @dispatcher.should_receive(:on_event) do |type, args|
+        dispatcher.should_receive(:on_event) do |type, args|
           type.should eq :connection_established
           args[:client].should eq @client3
         end

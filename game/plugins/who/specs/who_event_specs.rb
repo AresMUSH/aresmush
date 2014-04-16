@@ -4,11 +4,14 @@ module AresMUSH
 
   module Who
     describe WhoEvents do
+      include GlobalTestHelper
+      
+      before do
+        stub_global_objects
+      end
       
       describe :on_char_connected do
         before do
-          @client_monitor = double
-          Global.stub(:client_monitor) { @client_monitor }
           @events = WhoEvents.new
         end
 
@@ -16,8 +19,8 @@ module AresMUSH
           before do 
             Game.stub(:online_record) { 2 }
             Game.stub(:online_record=) {}
-            @client_monitor.stub(:logged_in_clients) { [double, double, double] }            
-            @client_monitor.stub(:emit_all_ooc) {} 
+            client_monitor.stub(:logged_in_clients) { [double, double, double] }            
+            client_monitor.stub(:emit_all_ooc) {} 
             AresMUSH::Locale.stub(:translate).with("who.new_online_record", { :count => 3 }) { "record 3" }            
           end
           
@@ -27,7 +30,7 @@ module AresMUSH
           end
           
           it "should emit the new record" do
-            @client_monitor.should_receive(:emit_all_ooc).with("record 3")
+            client_monitor.should_receive(:emit_all_ooc).with("record 3")
             @events.on_char_connected(nil)            
           end
         end
@@ -35,7 +38,7 @@ module AresMUSH
         context "online record not set" do
           before do
             Game.stub(:online_record) { 2 }
-            @client_monitor.stub(:logged_in_clients) { [double, double] }                        
+            client_monitor.stub(:logged_in_clients) { [double, double] }                        
           end
           
           it "should not update the online record" do
@@ -44,7 +47,7 @@ module AresMUSH
           end
           
           it "should not emit a new record" do
-            @client_monitor.should_not_receive(:emit_all_ooc)
+            client_monitor.should_not_receive(:emit_all_ooc)
             @events.on_char_connected(nil)            
           end
         end

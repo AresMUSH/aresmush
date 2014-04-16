@@ -4,10 +4,12 @@ module AresMUSH
   module Describe  
     describe LookCmd do
       include PluginCmdTestHelper
+      include GlobalTestHelper
       
       before do
         init_handler(LookCmd, "look something")
         SpecHelpers.stub_translate_for_testing        
+        stub_global_objects
       end
       
       it_behaves_like "a plugin that doesn't allow switches"
@@ -61,9 +63,7 @@ module AresMUSH
           it "should tell them they're being looked at" do
             @model = Character.new
             client.stub(:name) { "Bob" }
-            client_monitor = double
             other_client = double
-            Global.stub(:client_monitor) { client_monitor }
             client_monitor.should_receive(:find_client).with(@model) { other_client }
             other_client.should_receive(:emit_ooc).with('describe.looked_at_you')
             handler.handle
