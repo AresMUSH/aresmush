@@ -7,6 +7,8 @@ module AresMUSH
         
     belongs_to :room, :class_name => 'AresMUSH::Room'
 
+    register_default_indexes with_unique_name: true
+
     def change_password(raw_password)
       self.password_hash = Character.hash_password(raw_password)
     end

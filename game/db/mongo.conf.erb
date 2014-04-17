@@ -1,0 +1,16 @@
+##
+# This file was generated from mongo.conf.erb, do not edit
+##
+dbpath = <%= @db_path %>/data
+port = <%= @db_port %>
+auth = <%= @db_auth_enabled %>
+logpath = <%= @db_path %>/mongodb.log
+pidfilepath = <%= @db_path %>/mongodb.pid
+fork = true
+logappend = true
+directoryperdb = true
+journal = true
+nohttpinterface = true
+profile = 1
+smallfiles = true
+

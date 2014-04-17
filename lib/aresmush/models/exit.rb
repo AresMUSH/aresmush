@@ -7,5 +7,7 @@ module AresMUSH
     
     field :dest_id, :type => Moped::BSON::ObjectId
     belongs_to :dest, :class_name => 'AresMUSH::Room',  :inverse_of => nil
+
+    register_default_indexes
   end
 end
