@@ -34,10 +34,12 @@ module AresMUSH
     describe :setup do
       before do
         Global.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }        
+        I18n.stub(:locale=)
+        I18n.stub(:default_locale=)
       end
 
       it "should trigger a load" do
-        @locale.should_receive(:load!)
+        I18n.should_receive(:reload!)
         @locale.setup
       end
       
