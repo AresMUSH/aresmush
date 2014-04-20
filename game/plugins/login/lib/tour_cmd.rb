@@ -16,7 +16,6 @@ module AresMUSH
 
       def handle
         guests = Character.where(:roles.in => [ "guest" ]).all
-        puts guests.inspect
         
         guest = guests.select { |g| Global.client_monitor.find_client(g).nil? }
         if (guest.empty?)

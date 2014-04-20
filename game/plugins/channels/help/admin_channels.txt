@@ -1,0 +1,9 @@
+channel/create <channel>
+channel/delete <channel>
+channel/describe <channel>=<description>
+channel/ansi <channel>=<ansi prefix>
+    Use full ansi code(s) not just the color name.  For example: \%xc
+channel/roles <channel>=<roles>
+    Use "none" to clear existing roles.
+
+    

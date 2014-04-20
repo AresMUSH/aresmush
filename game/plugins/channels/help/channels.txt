@@ -1,0 +1,10 @@
+channels
+channel/join <channel>[=<alias>]
+    Alias defaults to +xxx (first three letters of the channel name)
+channel/leave <channel>
+<channelalias> <message> - Talks on channel
+
+channel/who <channel>
+channel/title <channel>=<title>
+channel/gag <channel>
+   Gag will be removed when you disconnect, or with the channel/ungag command.

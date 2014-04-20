@@ -1,0 +1,36 @@
+en:
+    channels:
+        channel_already_exists: "Channel %{name} already exists."
+        channel_doesnt_exist: "Channel %{name} does not exist."
+
+        channel_created: "Channel created."
+        channel_renamed: "Channel renamed."
+        channel_being_renamed: "This channel is being renamed to %{new_name} by %{name}.%R  Your channel alias has been reset to %{alias}."
+        channel_deleted: "Channel deleted."
+        channel_being_deleted: "This channel is being deleted by %{name}."
+
+        desc_set: "Channel description set."
+        ansi_set: "The channel will now be displayed like so: %{name}."
+        roles_set: "Channel roles updated.  This does not remove existing people from the channel."
+        invalid_channel_role: "%{name} is not a valid channel role."
+        title_set: "Channel title set."
+        
+        channels: Channels
+        channels_title: "Channel        On?    Description                        Roles"
+        channel_who: "On channel %{name}: %{chars}." 
+        
+        joined_channel: "%{name} has joined this channel."
+        already_on_channel: "You are already on that channel."
+        not_on_channel: "You are not on that channel."
+        left_channel: "%{name} has left this channel."
+        has_disconnected: "%{name} has disconnected."
+        has_connected: "%{name} has connected."
+        
+        channel_gagged: "You will no longer hear messages on channel %{name}."
+        channel_ungagged: "You will now hear messages on channel %{name}."
+        gagging: " (gagging)"
+
+        alias_in_use: "The alias %{channel_alias} is already in use for another channel."
+        channel_alias_set: "The channel alias for %{name} is now %{channel_alias}."
+        
+        cant_use_channel: "You do not have permission to use that channel."

@@ -39,15 +39,10 @@ module AresMUSH
     def self.check_name(name)
       return t('validation.name_too_short') if (name.length < 3)
       return t('validation.name_must_be_capitalized') if (name[0].downcase == name[0])
-      return t('validation.char_name_taken') if (Character.exists?(name))
+      return t('validation.char_name_taken') if (Character.found?(name))
       return nil
     end
     
-    def self.exists?(name)
-      existing_char = Character.find_by_name(name)
-      return !existing_char.nil?
-    end
-
     def self.hash_password(password)
       BCrypt::Password.create(password)
     end

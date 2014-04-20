@@ -64,15 +64,15 @@ module AresMUSH
       end
     end
     
-    describe :exists? do
+    describe :found? do
       it "should return true if there is an existing char" do
         Character.stub(:find_by_name).with("Bob") { double }
-        Character.exists?("Bob").should be_true
+        Character.found?("Bob").should be_true
       end
       
       it "should return false if no char exists" do
         Character.stub(:find_by_name).with("Bob") { nil }
-        Character.exists?("Bob").should be_false
+        Character.found?("Bob").should be_false
       end
     end  
     
@@ -82,7 +82,7 @@ module AresMUSH
       end
       
       it "should fail if the char already exists" do
-        Character.stub(:exists?).with("Charname") { true }
+        Character.stub(:found?).with("Charname") { true }
         Character.check_name("Charname").should eq "validation.char_name_taken"
       end
       
@@ -91,7 +91,7 @@ module AresMUSH
       end
 
       it "should return true if everything's ok" do
-        Character.stub(:exists?).with("Charname") { false }
+        Character.stub(:found?).with("Charname") { false }
         Character.check_name("Charname").should be_nil
       end
     end

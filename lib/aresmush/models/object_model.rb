@@ -33,6 +33,11 @@ module AresMUSH
       def find_all_by_name(name)
         where(:name_upcase => name.upcase).all
       end
+    
+      def found?(name)
+        existing = find_by_name(name)
+        return !existing.nil?
+      end
       
       # Derived classes may implement name checking
       def check_name(name)
