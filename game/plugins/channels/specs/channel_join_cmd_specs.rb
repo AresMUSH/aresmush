@@ -1,0 +1,102 @@
+require_relative "../../plugin_test_loader"
+
+module AresMUSH
+  module Channels
+    
+    describe ChannelJoinCmd do
+      include PluginCmdTestHelper
+      
+      before do
+        @channel = double
+        Channel.stub(:find_by_name).with("Public") { @channel }
+
+        init_handler(ChannelJoinCmd, "channel/join public")
+        SpecHelpers.stub_translate_for_testing
+      end
+      
+      it_behaves_like "a plugin that requires login"
+      
+      describe :handle do
+        before do
+          handler.crack!
+        end
+        
+        context "failure" do
+          before do
+            @channel.stub(:characters) { [] }
+            Channels.stub(:can_use_channel) { true }
+          end
+          
+          it "should fail if the channel is not found" do
+            Channel.stub(:find_by_name).with("Public") { nil }
+            client.should_receive(:emit_failure).with("channels.channel_doesnt_exist")
+            handler.handle
+          end
+          
+          it "should fail if the char is already on that channel" do
+            @channel.stub(:characters) { [char] }
+            client.should_receive(:emit_failure).with("channels.already_on_channel") 
+            handler.handle
+          end
+          
+          it "should fail if the char doesn't have permissions" do
+            Channels.stub(:can_use_channel).with(char, @channel) { false }
+            client.should_receive(:emit_failure).with("channels.cant_use_channel") 
+            handler.handle
+          end
+          
+          it "should fail if the alias is already in use" do
+            char.stub(:channel_options) { { "Other" => { "alias" => "+pub" } } }
+            Channel.stub(:find_by_name).with("Other") { double }
+            client.should_receive(:emit_failure).with("channels.alias_in_use") 
+            handler.handle
+          end
+        end
+
+        context "success" do
+          before do
+            @channel.stub(:name) { "Public" }
+            Channels.stub(:can_use_channel) { true }
+            @chars = []
+            @channel.stub(:save!)
+            @channel.stub(:emit)
+            @channel.stub(:characters) { @chars }
+            char.stub(:channel_options) { {} }
+            char.stub(:save!)
+            client.stub(:name) { "Bob" }
+            client.stub(:emit_ooc)
+          end
+          
+          it "should announce the channel join" do
+            @channel.should_receive(:emit).with('channels.joined_channel')
+            handler.handle
+          end
+          
+          it "should set the channel alias to the default if none specified" do
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "+pub")
+            char.should_receive(:save!)
+            handler.handle
+          end
+
+          it "should set the channel alias to a user-selected value if specified" do
+            handler.stub(:alias) { "=pub" }
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "=pub")
+            char.should_receive(:save!)
+            handler.handle
+          end
+
+          it "should tell the character the channel alias" do
+            client.should_receive(:emit_ooc).with('channels.channel_alias_set')
+            handler.handle
+          end
+                    
+          it "should add the char to the channel" do
+            @channel.should_receive(:save!)
+            handler.handle
+            @channel.characters.should eq [char]
+          end
+        end
+      end
+    end
+  end
+end

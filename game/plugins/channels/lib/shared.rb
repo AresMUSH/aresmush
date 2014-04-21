@@ -4,10 +4,6 @@ module AresMUSH
       return actor.has_any_role?(Global.config["channels"]["roles"]["can_manage_channels"])
     end
 
-    def self.can_change_channels?(actor)
-      return actor.has_any_role?(Global.config["channels"]["roles"]["can_change_channels"])
-    end
-    
     def self.set_channel_option(char, channel, option, value)
       channel_options = char.channel_options[channel.name]
       if (channel_options.nil?)

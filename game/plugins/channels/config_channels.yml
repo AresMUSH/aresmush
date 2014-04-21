@@ -2,9 +2,6 @@ channels:
     roles:
         can_manage_channels: 
             - 'admin'
-        can_change_channels:
-            - 'approved'
-            - 'admin'
     start_marker: '<'
     end_marker: '>'
 
