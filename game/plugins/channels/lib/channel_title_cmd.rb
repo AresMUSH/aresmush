@@ -24,22 +24,11 @@ module AresMUSH
       end
       
       def handle
-        channel = Channel.find_by_name(self.name)
-        
-        if (channel.nil?)
-          client.emit_failure t('channels.channel_doesnt_exist', :name => self.name) 
-          return
+        Channels.with_an_enabled_channel(self.name, client) do |channel|
+          Channels.set_channel_option(client.char, channel, "title", self.title)
+          client.char.save!
+          client.emit_success t('channels.title_set')
         end
-        
-        if (!channel.characters.include?(client.char))
-          client.emit_failure t('channels.not_on_channel')
-          return
-        end
-        
-        Channels.set_channel_option(client.char, channel, "title", self.title)
-        client.char.save!
-        
-        client.emit_success t('channels.title_set')
       end
     end  
   end

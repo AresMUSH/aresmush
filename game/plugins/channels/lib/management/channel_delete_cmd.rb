@@ -27,16 +27,11 @@ module AresMUSH
       end
       
       def handle
-        channel = Channel.find_by_name(self.name)
-        
-        if (channel.nil?)
-          client.emit_failure t('channels.channel_doesnt_exist', :name => self.name) 
-          return
+        Channels.with_a_channel(name, client) do |channel|
+          channel.emit t('channels.channel_being_deleted', :name => client.name)
+          channel.destroy
+          client.emit_success t('channels.channel_deleted')
         end
-        
-        channel.emit t('channels.channel_being_deleted', :name => client.name)
-        channel.destroy
-        client.emit_success t('channels.channel_deleted')
       end
     end
   end

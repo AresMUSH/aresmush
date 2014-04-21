@@ -23,7 +23,7 @@ module AresMUSH
           client.emit_failure t('channels.not_on_channel')
           return
         end
-
+        
         title = Channels.get_channel_option(client.char, channel, "title")
         name = title.nil? ? client.name : "#{title} #{client.name}"
         self.channel.pose(name, self.msg)

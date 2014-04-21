@@ -65,5 +65,32 @@ module AresMUSH
       return true if channel.roles.empty?
       return char.has_any_role?(channel.roles)
     end
+    
+    def self.with_an_enabled_channel(name, client, &block)
+      channel = Channel.find_by_name(name)
+      
+      if (channel.nil?)
+        client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
+        return
+      end
+
+      if (!channel.characters.include?(client.char))
+        client.emit_failure t('channels.not_on_channel')
+        return
+      end
+      
+      yield channel
+    end
+    
+    def self.with_a_channel(name, client, &block)
+      channel = Channel.find_by_name(name)
+      
+      if (channel.nil?)
+        client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
+        return
+      end
+      
+      yield channel
+    end
   end
 end

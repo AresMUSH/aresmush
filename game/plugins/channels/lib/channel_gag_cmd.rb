@@ -22,26 +22,16 @@ module AresMUSH
       end
       
       def handle
-        channel = Channel.find_by_name(self.name)
-
-        if (channel.nil?)
-          client.emit_failure t('channels.channel_doesnt_exist', :name => self.name) 
-          return
+        Channels.with_an_enabled_channel(self.name, client) do |channel|
+          if (cmd.switch_is?("gag"))
+            Channels.set_gagging(client.char, channel, true)
+            client.emit_success t('channels.channel_gagged', :name => self.name)
+          else
+            Channels.set_gagging(client.char, channel, false)
+            client.emit_success t('channels.channel_ungagged', :name => self.name)
+          end
+          client.char.save!
         end
-                
-        if (!channel.characters.include?(client.char))
-          client.emit_failure t('channels.not_on_channel')
-          return
-        end
-        
-        if (cmd.switch_is?("gag"))
-          Channels.set_gagging(client.char, channel, true)
-          client.emit_success t('channels.channel_gagged', :name => self.name)
-        else
-          Channels.set_gagging(client.char, channel, false)
-          client.emit_success t('channels.channel_ungagged', :name => self.name)
-        end
-        client.char.save!
       end
     end  
   end

@@ -33,16 +33,11 @@ module AresMUSH
       end
     
       def handle
-        channel = Channel.find_by_name(self.name)
-        
-        if (channel.nil?)
-          client.emit_failure t('channels.channel_doesnt_exist', :name => self.name) 
-          return
+        Channels.with_a_channel(name, client) do |channel|
+          channel.ansi = self.attribute
+          channel.save!
+          client.emit_success t('channels.ansi_set', :name => channel.display_name)
         end
-        
-        channel.ansi = self.attribute
-        channel.save!
-        client.emit_success t('channels.ansi_set', :name => channel.display_name)
       end
     end
   
@@ -54,16 +49,11 @@ module AresMUSH
       end
     
       def handle
-        channel = Channel.find_by_name(self.name)
-        
-        if (channel.nil?)
-          client.emit_failure t('channels.channel_doesnt_exist', :name => self.name) 
-          return
+        Channels.with_a_channel(name, client) do |channel|        
+          channel.description = self.attribute
+          channel.save!
+          client.emit_success t('channels.desc_set')
         end
-        
-        channel.description = self.attribute
-        channel.save!
-        client.emit_success t('channels.desc_set')
       end
     end
     
@@ -85,28 +75,24 @@ module AresMUSH
       end
     
       def handle
-        channel = Channel.find_by_name(self.name)
+        Channels.with_a_channel(name, client) do |channel|
         
-        if (channel.nil?)
-          client.emit_failure t('channels.channel_doesnt_exist', :name => self.name) 
-          return
-        end
-        
-        if (self.attribute == "none")
-          channel.roles = []
-        else
-          channel.roles = self.attribute.split(",")
-        end
-        
-        channel.emit t('channels.roles_changed_by', :name => client.name)
-        
-        channel.characters.each do |c|
-          if (!Channels.can_use_channel(c, channel))
-            Channels.leave_channel(c, channel)
+          if (self.attribute == "none")
+            channel.roles = []
+          else
+            channel.roles = self.attribute.split(",")
           end
+        
+          channel.emit t('channels.roles_changed_by', :name => client.name)
+        
+          channel.characters.each do |c|
+            if (!Channels.can_use_channel(c, channel))
+              Channels.leave_channel(c, channel)
+            end
+          end
+          channel.save!
+          client.emit_success t('channels.roles_set')
         end
-        channel.save!
-        client.emit_success t('channels.roles_set')
       end
     end
   end

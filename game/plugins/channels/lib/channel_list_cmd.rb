@@ -26,12 +26,12 @@ module AresMUSH
         if (channel.characters.include?(client.char))
           status = "+"
         else
-          status = ""
+          status = "-"
         end
         channel_alias = Channels.get_channel_option(client.char, channel, 'alias')
-        channel_alias = "#{channel_alias}".ljust(8)
+        channel_alias = "#{channel_alias}".ljust(6)
         status = status.ljust(4)
-        desc = left(channel.description,26)
+        desc = left(channel.description,28)
         roles = channel.roles.join(" ")
         "#{name} #{status} #{channel_alias} #{desc} #{roles}"
       end
