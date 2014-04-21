@@ -3,8 +3,7 @@ module AresMUSH
     class WhoEvents
       include Plugin
 
-      
-      def on_char_connected(args)
+      def on_char_connected_event(event)
         count = Global.client_monitor.logged_in_clients.count
         
         if (count > Game.online_record)

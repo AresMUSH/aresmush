@@ -152,14 +152,14 @@ module AresMUSH
         end
 
         it "should dispatch the created and connected event" do
-          dispatcher.should_receive(:on_event) do |type, args|
-            type.should eq :char_created
-            args[:client].should eq client
+          dispatcher.should_receive(:on_event) do |event|
+            event.class.should eq CharCreatedEvent
+            event.client.should eq client
           end
          
-          dispatcher.should_receive(:on_event) do |type, args|
-            type.should eq :char_connected
-            args[:client].should eq client
+          dispatcher.should_receive(:on_event) do |event|
+            event.class.should eq CharConnectedEvent
+            event.client.should eq client
           end
           handler.handle
         end

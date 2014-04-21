@@ -42,7 +42,7 @@ module AresMUSH
             existing_client.disconnect
             EM.add_timer(1) { announce_connection }
           else
-            Global.dispatcher.on_event(:char_connected, :client => client)
+            Global.dispatcher.on_event CharConnectedEvent.new(client)
           end
         end
       end

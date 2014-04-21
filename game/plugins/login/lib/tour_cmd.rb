@@ -28,7 +28,7 @@ module AresMUSH
         if (!terms_of_service.nil?)
           client.emit "%l1%r#{terms_of_service}%r%l1"
         end
-        Global.dispatcher.on_event(:char_connected, :client => client)
+        Global.dispatcher.on_event CharConnectedEvent.new(client)
       end
     end
   end

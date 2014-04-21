@@ -20,20 +20,20 @@ module AresMUSH
         stub_game_master
       end
       
-      describe :on_char_connected do      
+      describe :on_char_connected_event do      
         it "should emit the desc of the char's last location" do
           Rooms.should_receive(:emit_here_desc).with(@client)
-          @login.on_char_connected( { :client => @client } )
+          @login.on_char_connected_event CharConnectedEvent.new(@client)
         end
 
         it "should announce the char's connection to the room" do
           @room.should_receive(:emit_ooc).with("char_has_arrived")
           Rooms.stub(:emit_here_desc)
-          @login.on_char_connected( { :client => @client } )
+          @login.on_char_connected_event CharConnectedEvent.new(@client)
         end
       end
       
-      describe :on_char_disconnected do   
+      describe :on_char_disconnected_event do   
         before do
           @char = double
           @client.stub(:char) { @char }
@@ -44,13 +44,13 @@ module AresMUSH
         it "should send guests home to the welcome room" do
           @char.stub(:has_role?).with("guest") { true }
           Rooms.should_receive(:move_to).with(@client, @char, @welcome_room)
-          @login.on_char_disconnected( { :client => @client } )
+          @login.on_char_disconnected_event CharDisconnectedEvent.new(@client)
         end
 
         it "should not move around regular characters" do
           @char.stub(:has_role?).with("guest") { false }
           Rooms.should_not_receive(:move_to)
-          @login.on_char_disconnected( { :client => @client } )
+          @login.on_char_disconnected_event CharDisconnectedEvent.new(@client)
         end
       end
     end

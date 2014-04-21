@@ -16,7 +16,7 @@ module AresMUSH
         @login_events = LoginEvents.new
       end
       
-      describe :on_char_connected do
+      describe :on_char_connected_event do
         before do
           @char = double
           @client.stub(:char) { @char }
@@ -26,21 +26,21 @@ module AresMUSH
         
         it "should announce the char" do
           client_monitor.should_receive(:emit_all_ooc).with("announce_char_connected")
-          @login_events.on_char_connected(:client => @client)
+          @login_events.on_char_connected_event CharConnectedEvent.new(@client)
         end
       end
       
-      describe :on_char_created do
+      describe :on_char_created_event do
         it "should announce the char" do
           client_monitor.should_receive(:emit_all_ooc).with("announce_char_created")
-          @login_events.on_char_created(:client => @client)
+          @login_events.on_char_created_event CharCreatedEvent.new(@client)
         end
       end
       
-      describe :on_char_disconnected do
+      describe :on_char_disconnected_event do
         it "should announce the char" do
           client_monitor.should_receive(:emit_all_ooc).with("announce_char_disconnected")
-          @login_events.on_char_disconnected(:client => @client)
+          @login_events.on_char_disconnected_event CharDisconnectedEvent.new(@client)
         end
       end
     end

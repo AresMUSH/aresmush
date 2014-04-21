@@ -5,8 +5,12 @@ require "aresmush"
 module AresMUSH
 
   class ArbitraryEventHandlingTestClass
-    def on_arbitrary(args)
+    def on_arbitrary_event(args)
+      puts "GOT FOO"
     end
+  end
+  
+  class ArbitraryEvent
   end
   
   describe Dispatcher do
@@ -110,16 +114,18 @@ module AresMUSH
         plugin2 = ArbitraryEventHandlingTestClass.new
         plugin_manager.stub(:plugins) { [ plugin1, plugin2 ] }
         args = { :arg1 => "1" }
-        plugin1.should_receive(:on_arbitrary).with(args)
-        plugin2.should_receive(:on_arbitrary).with(args)
-        @dispatcher.on_event("arbitrary", args)
+        event = ArbitraryEvent.new
+        plugin1.should_receive(:on_arbitrary_event).with(event)
+        plugin2.should_receive(:on_arbitrary_event).with(event)
+        @dispatcher.on_event event
       end
 
       it "won't send the event to a class that doesn't handle it" do
         plugin1 = Object.new
         plugin_manager.stub(:plugins) { [ plugin1 ] }
-        plugin1.should_not_receive(:on_arbitrary)
-        @dispatcher.on_event("arbitrary")
+        plugin1.should_not_receive(:on_arbitrary_event)
+        event = ArbitraryEvent.new
+        @dispatcher.on_event event
       end
     end
     

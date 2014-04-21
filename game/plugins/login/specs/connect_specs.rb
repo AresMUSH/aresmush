@@ -121,9 +121,9 @@ module AresMUSH
           end
 
           it "should announce the char connected event" do
-            dispatcher.should_receive(:on_event) do |type, args|
-              type.should eq :char_connected
-              args[:client].should eq client
+            dispatcher.should_receive(:on_event) do |event|
+              event.class.should eq CharConnectedEvent
+              event.client.should eq client
             end
             handler.handle
           end

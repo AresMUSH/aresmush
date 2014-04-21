@@ -2,9 +2,9 @@ module AresMUSH
   module Channels
     class LoginEvents
       include Plugin
-    
-      def on_char_connected(args)
-        client = args[:client]
+      
+      def on_char_connected_event(event)
+        client = event.client
         channels = client.char.channels
         Global.client_monitor.clients.each do |other_client|
           common_channels = find_common_channels(channels, other_client)
@@ -12,8 +12,8 @@ module AresMUSH
         end
       end
       
-      def on_char_disconnected(args)
-        client = args[:client]
+      def on_char_disconnected_event(event)
+        client = event.client
         channels = client.char.channels
         
         Global.client_monitor.clients.each do |other_client|

@@ -89,5 +89,11 @@ module AresMUSH
         "".truncate(10).should eq ""
       end      
     end
+    
+    describe :underscore do
+      it "should translate CamelCase into undescores" do
+        "CamelCase".underscore.should eq "camel_case"
+      end
+    end
   end
 end

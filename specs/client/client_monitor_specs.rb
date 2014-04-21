@@ -43,10 +43,24 @@ module AresMUSH
         @client_monitor.clients.should eq [@client2]
       end
       
-      it "should notify the dispatcher" do
-        dispatcher.should_receive(:on_event) do |type, args|
-          type.should eq :char_disconnected
-          args[:client].should eq @client1
+      it "should notify the dispatcher of an anonymous client disconnected" do
+        @client1.stub(:char) { nil }
+        dispatcher.should_receive(:on_event) do |event|
+          event.class.should eq ConnectionClosedEvent
+          event.client.should eq @client1
+        end
+        @client_monitor.connection_closed(@client1)
+      end
+
+      it "should notify the dispatcher of a client disconnected with a char logged in" do
+        @client1.stub(:char) { double }
+        dispatcher.should_receive(:on_event) do |event|
+          event.class.should eq ConnectionClosedEvent
+          event.client.should eq @client1
+        end
+        dispatcher.should_receive(:on_event) do |event|
+          event.class.should eq CharDisconnectedEvent
+          event.client.should eq @client1
         end
         @client_monitor.connection_closed(@client1)
       end
@@ -77,9 +91,9 @@ module AresMUSH
       
       it "should notify the dispatcher" do
         @factory.stub(:create_client) { @client3 }
-        dispatcher.should_receive(:on_event) do |type, args|
-          type.should eq :connection_established
-          args[:client].should eq @client3
+        dispatcher.should_receive(:on_event) do |event|
+          event.class.should eq ConnectionEstablishedEvent
+          event.client.should eq @client3
         end
         Global.logger.should_not_receive(:debug)
         @client_monitor.connection_established(@connection)

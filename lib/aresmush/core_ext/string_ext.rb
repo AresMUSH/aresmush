@@ -30,14 +30,23 @@ class String
     # Ugly regex to find/replace special codes.  Will replace the 'find' value (example, %r), 
     # except when escaped (\%r) 
     str.gsub(/
-      (?<!\\)           # Not preceded by a single backslash
-      (#{find})
-      /x, 
+    (?<!\\)           # Not preceded by a single backslash
+    (#{find})
+    /x, 
       
-      "#{replace}")  
+    "#{replace}")  
   end    
   
   def truncate(length)
-     self[0..length - 1]    
-  end   
+    self[0..length - 1]    
+  end  
+  
+  # From ActiveRecord
+  def underscore
+    self.gsub(/::/, '/').
+    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+    gsub(/([a-z\d])([A-Z])/,'\1_\2').
+    tr("-", "_").
+    downcase
+  end 
 end

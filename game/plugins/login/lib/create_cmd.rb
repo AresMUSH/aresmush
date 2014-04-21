@@ -51,8 +51,8 @@ module AresMUSH
         
         client.emit_success(t('login.created_and_logged_in', :name => charname))
         client.char = char
-        Global.dispatcher.on_event(:char_created, :client => client)
-        Global.dispatcher.on_event(:char_connected, :client => client)        
+        Global.dispatcher.on_event CharCreatedEvent.new(client)
+        Global.dispatcher.on_event CharConnectedEvent.new(client)
       end
       
       def log_command
