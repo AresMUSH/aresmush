@@ -27,6 +27,15 @@ module AresMUSH
         client.char.save!        
       end
       
+      def on_roles_changed_event(event)
+        char = event.char
+        char.channels.each do |channel|
+          if (!Channels.can_use_channel(char, channel))        
+            Channels.leave_channel(char, channel)
+          end
+        end
+      end
+      
       def find_common_channels(channels, other_client)
         their_channels = other_client.char.nil? ? [] : other_client.char.channels
         intersection = channels & their_channels
