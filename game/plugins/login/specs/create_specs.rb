@@ -112,7 +112,7 @@ module AresMUSH
           init_handler(CreateCmd, "create charname password")
           handler.crack!
 
-          dispatcher.stub(:on_event)
+          dispatcher.stub(:queue_event)
 
           Login.stub(:terms_of_service) { nil }
           
@@ -152,12 +152,12 @@ module AresMUSH
         end
 
         it "should dispatch the created and connected event" do
-          dispatcher.should_receive(:on_event) do |event|
+          dispatcher.should_receive(:queue_event) do |event|
             event.class.should eq CharCreatedEvent
             event.client.should eq client
           end
          
-          dispatcher.should_receive(:on_event) do |event|
+          dispatcher.should_receive(:queue_event) do |event|
             event.class.should eq CharConnectedEvent
             event.client.should eq client
           end

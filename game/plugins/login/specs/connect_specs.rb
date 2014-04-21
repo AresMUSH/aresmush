@@ -76,7 +76,7 @@ module AresMUSH
         context "failure" do
           it "should fail if there isn't a matching char" do
             Character.should_receive(:find_all_by_name_or_id).with("Bob") { [] }
-            Global.should_not_receive(:on_event)
+            Global.should_not_receive(:queue_event)
             client.should_receive(:emit_failure).with("db.object_not_found")
             handler.handle
           end
@@ -86,7 +86,7 @@ module AresMUSH
             found_char.should_receive(:compare_password).with("password") { false }
             Character.should_receive(:find_all_by_name_or_id).with("Bob") { [found_char] }
             client.should_receive(:emit_failure).with("login.password_incorrect")
-            Global.should_not_receive(:on_event)
+            Global.should_not_receive(:queue_event)
             handler.handle
           end
         end
@@ -98,7 +98,7 @@ module AresMUSH
             Character.should_receive(:find_all_by_name_or_id) { [ @found_char ] }
             @found_char.stub(:compare_password).with("password") { true }  
          
-            dispatcher.stub(:on_event)  
+            dispatcher.stub(:queue_event)  
             client.stub(:char=)      
           end
           
@@ -121,7 +121,7 @@ module AresMUSH
           end
 
           it "should announce the char connected event" do
-            dispatcher.should_receive(:on_event) do |event|
+            dispatcher.should_receive(:queue_event) do |event|
               event.class.should eq CharConnectedEvent
               event.client.should eq client
             end

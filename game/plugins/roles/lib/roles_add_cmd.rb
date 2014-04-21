@@ -41,7 +41,7 @@ module AresMUSH
             char.save!
           end
           client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role)
-          Global.dispatcher.on_event RolesChangedEvent.new(char)
+          Global.dispatcher.queue_event RolesChangedEvent.new(char)
         end
       end
     end

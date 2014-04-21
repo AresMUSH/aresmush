@@ -1,6 +1,16 @@
 module AresMUSH
   class Dispatcher
 
+    def queue_command(client, cmd)
+      EventMachine.next_tick { on_command(client, cmd) } 
+    end
+    
+    def queue_event(event)
+      EventMachine.next_tick { on_event(event) } 
+    end
+    
+    ### IMPORTANT!!!  Do not call from outside of EventMachine
+    ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
       handled = false
       with_error_handling(client, cmd) do
@@ -21,6 +31,8 @@ module AresMUSH
       end # with error handling
     end
 
+    ### IMPORTANT!!!  Do not call from outside of EventMachine
+    ### Use queue_event if you need to queue up an event
     def on_event(event)
       begin
         event_handler_name = "on_#{event.class.name.split('::').last.underscore}"

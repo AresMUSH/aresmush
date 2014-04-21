@@ -24,7 +24,7 @@ module AresMUSH
         client = @client_factory.create_client(connection)
         @clients << client
         client.connected
-        Global.dispatcher.on_event ConnectionEstablishedEvent.new(client)
+        Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
         Global.logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
       rescue Exception => e
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
@@ -34,9 +34,9 @@ module AresMUSH
     def connection_closed(client)
       Global.logger.info("Client #{client.id} disconnected.")
       @clients.delete client
-      Global.dispatcher.on_event ConnectionClosedEvent.new(client)
+      Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (!client.char.nil?)
-        Global.dispatcher.on_event CharDisconnectedEvent.new(client)
+        Global.dispatcher.queue_event CharDisconnectedEvent.new(client)
       end        
     end
     
