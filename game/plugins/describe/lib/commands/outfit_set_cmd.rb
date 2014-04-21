@@ -15,13 +15,13 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("outfit") && (cmd.switch_is?("set") || cmd.switch_is?("create"))
+        cmd.root_is?("outfit") && cmd.switch_is?("set")
       end
       
       def crack!
-        cmd.crack!(/(?<name>[^\=]+)\=(?<desc>.+)/)
-        self.name = titleize_input(cmd.args.name)
-        self.desc = cmd.args.desc
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.name = titleize_input(cmd.args.arg1)
+        self.desc = cmd.args.arg2
       end
       
       def handle

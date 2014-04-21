@@ -19,9 +19,9 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack!(/(?<old_password>[^\=]+)\=(?<new_password>.+)/)
-        self.old_password = cmd.args.old_password
-        self.new_password = cmd.args.new_password
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.old_password = cmd.args.arg1
+        self.new_password = cmd.args.arg2
       end
       
       def check_new_password

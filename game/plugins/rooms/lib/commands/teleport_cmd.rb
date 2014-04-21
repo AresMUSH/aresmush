@@ -20,13 +20,13 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(/(?<name_or_dest>[^\=]*)=?(?<dest>.*)/)
-        if (cmd.args.dest.empty?)
+        cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
+        if (cmd.args.arg2.nil?)
           self.name = nil
-          self.destination = trim_input(cmd.args.name_or_dest)
+          self.destination = trim_input(cmd.args.arg1)
         else
-          self.name = trim_input(cmd.args.name_or_dest)
-          self.destination = trim_input(cmd.args.dest)
+          self.name = trim_input(cmd.args.arg1)
+          self.destination = trim_input(cmd.args.arg2)
         end
       end
       
@@ -48,7 +48,7 @@ module AresMUSH
           return
         end
         
-        if (targets[:client] != client)
+        if (targets[:client] != client && targets[:client] != nil)
           targets[:client].emit_ooc(t('rooms.you_are_teleported', :name => client.name))
         end
         

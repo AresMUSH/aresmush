@@ -18,9 +18,9 @@ module AresMUSH
       end
             
       def crack!
-        cmd.crack!(/(?<name>[^\=]*)=?(?<title>.*)/)
-        self.name = titleize_input(cmd.args.name)
-        self.title = trim_input(cmd.args.title)
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.name = titleize_input(cmd.args.arg1)
+        self.title = trim_input(cmd.args.arg2)
       end
       
       def handle

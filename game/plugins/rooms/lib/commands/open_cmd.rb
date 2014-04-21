@@ -20,9 +20,9 @@ module AresMUSH
       end
             
       def crack!
-        cmd.crack!(/(?<name>[^\=]*)=?(?<dest>.*)/)
-        self.name = cmd.args.name
-        self.dest = cmd.args.dest
+        cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
+        self.name = cmd.args.arg1
+        self.dest = cmd.args.arg2
       end
 
       def check_can_build
@@ -32,7 +32,7 @@ module AresMUSH
       
       def handle
         dest = nil
-        if (!self.dest.empty?)
+        if (!self.dest.nil?)
           find_result = ClassTargetFinder.find(self.dest, Room, client)
           if (!find_result.found?)
             client.emit_failure(find_result.error)

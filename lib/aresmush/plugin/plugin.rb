@@ -46,6 +46,8 @@ module AresMUSH
     #    end
     # After that, you will be able to access your command arguments by name by using
     # the attribute accessors self.arg1 and self.arg2
+    #
+    # Several common regular expressions are defined in CommonCracks.rb for your use.
     def crack!
     end
 

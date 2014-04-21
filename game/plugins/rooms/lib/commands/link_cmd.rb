@@ -20,9 +20,9 @@ module AresMUSH
       end
             
       def crack!
-        cmd.crack!(/(?<name>[^\=]*)=?(?<dest>.*)/)
-        self.name = trim_input(cmd.args.name)
-        self.dest = trim_input(cmd.args.dest)
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.name = trim_input(cmd.args.arg1)
+        self.dest = trim_input(cmd.args.arg2)
       end
 
       def check_can_build

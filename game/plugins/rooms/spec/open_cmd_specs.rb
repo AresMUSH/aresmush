@@ -21,7 +21,7 @@ module AresMUSH
           init_handler(OpenCmd, "open N")
           handler.crack!
           handler.name.should eq "N"
-          handler.dest.should eq ""
+          handler.dest.should be_nil
         end
         
         it "should crack a name and destination" do
@@ -65,7 +65,7 @@ module AresMUSH
         context "exit only" do
           before do
             handler.stub(:name) { "Exit" }
-            handler.stub(:dest) { "" }
+            handler.stub(:dest) { nil }
           end
           
           it "should not look for the room" do

@@ -21,9 +21,9 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(/(?<target>[^\=]+)\=(?<name>.+)/)
-        self.target = trim_input(cmd.args.target)
-        self.name = trim_input(cmd.args.name)
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.target = trim_input(cmd.args.arg1)
+        self.name = trim_input(cmd.args.arg2)
       end
 
       def check_can_manage

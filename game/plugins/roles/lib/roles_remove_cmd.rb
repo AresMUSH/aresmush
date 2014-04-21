@@ -19,9 +19,9 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack!(/(?<name>[^\=]+)\=(?<role>.+)/)
-        self.name = trim_input(cmd.args.name)
-        self.role = trim_input(cmd.args.role)
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.name = trim_input(cmd.args.arg1)
+        self.role = trim_input(cmd.args.arg2)
       end
 
       def check_can_assign_role

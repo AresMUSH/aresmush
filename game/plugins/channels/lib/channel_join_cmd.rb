@@ -18,9 +18,9 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(/(?<name>[^\=]*)=?(?<alias>.*)/)
-        self.name = titleize_input(cmd.args.name)
-        self.alias = trim_input(cmd.args.alias)
+        cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
+        self.name = titleize_input(cmd.args.arg1)
+        self.alias = trim_input(cmd.args.arg2)
       end
             
       def handle
@@ -36,7 +36,7 @@ module AresMUSH
             return
           end
         
-          if (self.alias.empty?)
+          if (self.alias.nil?)
             self.alias = "+#{self.name[0..2].downcase}"
           end
             

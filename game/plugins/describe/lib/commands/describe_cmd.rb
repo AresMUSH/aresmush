@@ -20,9 +20,9 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack!(/(?<target>[^\=]+)\=(?<desc>.+)/)
-        self.target = trim_input(cmd.args.target)
-        self.desc = cmd.args.desc
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.target = trim_input(cmd.args.arg1)
+        self.desc = cmd.args.arg2
       end
       
       def handle

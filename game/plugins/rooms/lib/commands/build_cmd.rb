@@ -21,6 +21,9 @@ module AresMUSH
       end
       
       def crack!
+        # build <name>
+        # build <name>=<outgoing exit>
+        # build <name>=<outgoing exit>,<return exit>
         cmd.crack!(/(?<name>[^\=]+)\=?(?<exit>[^\,]*),?(?<return_exit>[^\,]*)/)
         self.name = cmd.args.name
         self.exit = cmd.args.exit

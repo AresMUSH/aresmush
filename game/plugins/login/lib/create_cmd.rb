@@ -11,9 +11,9 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack!(/(?<name>[\S]+) (?<password>.+)/)
-        self.charname = trim_input(cmd.args.name)
-        self.password = cmd.args.password
+        cmd.crack!(CommonCracks.arg1_space_arg2)
+        self.charname = trim_input(cmd.args.arg1)
+        self.password = cmd.args.arg2
       end
       
       def check_not_already_logged_in

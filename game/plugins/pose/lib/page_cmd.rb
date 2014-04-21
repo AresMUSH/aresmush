@@ -15,9 +15,9 @@ module AresMUSH
         if (cmd.args.nil?)
           self.names = []
         elsif (cmd.args.include?("="))
-          cmd.crack!(/(?<names>[^\=]+)\=(?<message>.+)/)
-          self.names = cmd.args.names.split(" ")
-          self.message = cmd.args.message
+          cmd.crack!(CommonCracks.arg1_equals_arg2)
+          self.names = cmd.args.arg1.split(" ")
+          self.message = cmd.args.arg2
         else
           self.names = client.char.last_paged
           self.message = cmd.args

@@ -12,10 +12,10 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(/(?<search_class>[^\=]+)\=?(?<name>.+)?/)
+        cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
         
-        self.search_class = trim_input(cmd.args.search_class).titleize
-        self.name = trim_input(cmd.args.name)
+        self.search_class = trim_input(cmd.args.arg1).titleize
+        self.name = trim_input(cmd.args.arg2)
       end
 
       def check_can_build
