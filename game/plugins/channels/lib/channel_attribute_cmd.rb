@@ -97,6 +97,14 @@ module AresMUSH
         else
           channel.roles = self.attribute.split(",")
         end
+        
+        channel.emit t('channels.roles_changed_by', :name => client.name)
+        
+        channel.characters.each do |c|
+          if (!Channels.can_use_channel(c, channel))
+            Channels.leave_channel(c, channel)
+          end
+        end
         channel.save!
         client.emit_success t('channels.roles_set')
       end

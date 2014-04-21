@@ -45,8 +45,8 @@ module AresMUSH
           self.alias = "+#{self.name[0..2].downcase}"
         end
                 
-        if (!Channels.channel_for_alias(client.char, self.alias).nil?)
-          client.emit_failure t('channels.alias_in_use', self.alias)
+        if (Channels.channel_for_alias(client.char, self.alias) != channel)
+          client.emit_failure t('channels.alias_in_use', :channel_alias => self.alias)
           return
         end
 

@@ -11,12 +11,13 @@ en:
 
         desc_set: "Channel description set."
         ansi_set: "The channel will now be displayed like so: %{name}."
-        roles_set: "Channel roles updated.  This does not remove existing people from the channel."
+        roles_set: "Channel roles updated."
         invalid_channel_role: "%{name} is not a valid channel role."
         title_set: "Channel title set."
+        roles_changed_by: "%{name} has changed the permissions on this channel."
         
         channels: Channels
-        channels_title: "Channel        On?    Description                        Roles"
+        channels_title: "Channel        On?  Alias    Description                Roles"
         channel_who: "On channel %{name}: %{chars}." 
         
         joined_channel: "%{name} has joined this channel."

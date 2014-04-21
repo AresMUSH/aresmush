@@ -23,11 +23,17 @@ module AresMUSH
       
       def channel_list_entry(channel)
         name = left(channel.display_name(false),20)
-        status = channel.characters.include?(client.char) ? "+" : " "
-        status = status.ljust(6)
-        desc = left(channel.description,34)
+        if (channel.characters.include?(client.char))
+          status = "+"
+        else
+          status = ""
+        end
+        channel_alias = Channels.get_channel_option(client.char, channel, 'alias')
+        channel_alias = "#{channel_alias}".ljust(8)
+        status = status.ljust(4)
+        desc = left(channel.description,26)
         roles = channel.roles.join(" ")
-        "#{name} #{status} #{desc} #{roles}"
+        "#{name} #{status} #{channel_alias} #{desc} #{roles}"
       end
     end
   end

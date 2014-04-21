@@ -21,9 +21,11 @@ module AresMUSH
     
     def emit(msg)
       characters.each do |c|
-        client = Global.client_monitor.find_client(c)
-        if (!client.nil?)
-          client.emit "#{display_name} #{msg}"
+        if (!Channels.is_gagging?(c, self))
+          client = Global.client_monitor.find_client(c)
+          if (!client.nil?)
+            client.emit "#{display_name} #{msg}"
+          end
         end
       end
     end
