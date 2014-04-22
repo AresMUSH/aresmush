@@ -30,21 +30,27 @@ module AresMUSH
       end
       
       def handle
-        chars = []
+        to_clients = []
         self.names.each do |name|
           result = ClassTargetFinder.find(name, Character, client)
           if (!result.found?)
             client.emit_failure(t('pose.page_target_not_found', :name => name))
             return
           end
-          chars << result.target
+          
+          to_client = Global.client_monitor.find_client(result.target)
+          if (to_client.nil?)
+            client.emit_failure t('pose.recipient_not_online', :name => name)
+            return
+          end
+
+          to_clients << to_client
         end
         message = PoseFormatter.format(client.name, self.message)
-        receipients = chars.map { |r| r.name }.join(", ")
+        receipients = to_clients.map { |r| r.name }.join(", ")
         client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
-        chars.each do |c|
-          to_client = Global.client_monitor.find_client(c)
-          to_client.emit_ooc t('pose.page_to_recipient', :name => client.name, :recipients => receipients, :message => message)
+        to_clients.each do |c|
+          c.emit_ooc t('pose.page_to_recipient', :name => client.name, :recipients => receipients, :message => message)
         end
         client.char.last_paged = self.names
         client.char.save!
