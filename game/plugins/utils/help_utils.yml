@@ -7,7 +7,3 @@ help:
                     file: 'game/plugins/utils/help/echo.txt'
                     summary: "Asides to yourself."
                     aliases: [ 'think' ]
-
-alias:
-    think: echo
-    

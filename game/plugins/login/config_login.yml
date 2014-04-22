@@ -1,26 +1,11 @@
 login:
     roles:
+        # List roles that are allowed to see other character's email.
         can_access_email: 
-            - 'admin'
+            - admin
+            # - another_role
+
+        # List roles that are allowed to reset passwords.
         can_reset_password: 
-            - 'admin'
-            
-help:
-    categories:
-        main:
-            topics:
-                login: 
-                    toc_topic: '1 - Getting Started'
-                    file: 'game/plugins/login/help/login.txt'
-                    summary: 'Creating, connecting and managing passwords.'
-                    aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit' ]
-        admin:
-            topics:
-                login: 
-                    toc_topic: 'Player Management'
-                    file: 'game/plugins/login/help/admin_login.txt'
-                    summary: 'Managing player login info.'
-                    aliases: [ 'password', 'name', 'login' ]
-                    
-alias:
-    c: connect
+            - admin
+            # - another_role

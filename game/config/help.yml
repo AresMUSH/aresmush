@@ -1,10 +1,16 @@
 help:
     categories:
+        # You can have as many help categories as you wish.  The format is:
+        #      category_name: 
+        #          command: command_name
+        #          title:  Text shown at the top of the help topic
+        #          roles:  Optional list of roles that are allowed to use this command.
         main:
             command: help
             title: "Player Help"
         admin:
             command: ahelp
             title: "Admin Help"
-            roles: ["admin"]
+            roles: 
+                - admin
             

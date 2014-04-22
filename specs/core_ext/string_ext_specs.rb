@@ -25,8 +25,8 @@ module AresMUSH
         "A:B:C:D".rest(":").should eq "B:C:D"
       end
 
-      it "returns the whole string if there is no separator" do
-        "AB-C".rest(":").should eq "AB-C"
+      it "returns empty if there is no separator" do
+        "AB-C".rest(":").should eq ""
       end
 
       it "returns the rest of the string even if the separator is at the front" do

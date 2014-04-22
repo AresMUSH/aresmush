@@ -1,0 +1,11 @@
+shortcuts:
+    roots:
+        "chan": "channel"
+    
+    full:
+        "channel/add" : "channel/create"
+        "channel/on" : "channel/join"
+        "channel/off" : "channel/leave"
+        "addcom": "channel/join"
+        "delcom": "channel/leave"
+        "comtitle": "channel/title"

@@ -1,10 +1,19 @@
-channels
-channel/join <channel>[=<alias>]
-    Alias defaults to +xxx (first three letters of the channel name)
-channel/leave <channel>
-<channelalias> <message> - Talks on channel
+Channels are public forums for out-of-character communication.  Each game will have a variety of channels available for use.  Some will be locked so that only people with certain roles may use them.
 
-channel/who <channel>
-channel/title <channel>=<title>
-channel/gag <channel>
-   Gag will be removed when you disconnect, or with the channel/ungag command.
+    %xcchannels%xn - Lists channels and their descriptions and roles.  Also shows at
+        a glance which channels you're monitoring and the command to talk on them.
+
+You will only see messages on channels you have chosen to join, and you may leave those channels at any time.  When you join a channel, you can specify an alias or nickname.  This becomes the command you use to talk on the channel.  If you don't specify anything, the alias defaults to a "+" and the first three characters of the channel name.  For example, the Public channel would be +pub, and to talk on it you would use %xh+pub Hi!%xn
+
+    %xcchannel/join <channel>[=<alias>]%xn
+    %xcchannel/leave <channel>%xn
+    %xc<channelalias> <message>%xn - Talks on channel
+
+You can also use MUX-style channel commands, by using the keywords "on", "off", "who", "gag", and "ungag" with the channel alias.  For example:  %xh+pub who%xn.
+
+Other handy channel commands:
+    %xcchannel/who <channel>%xn - Shows who's on the channel
+    %xcchannel/title <channel>=<title>%xn - Sets a title displayed before your name.
+        You can use ansi codes in this title.
+    %xcchannel/gag <channel> or channel/ungag <channel>%xn - Despams for awhile.
+        Gagging is cleared when you disconnect.

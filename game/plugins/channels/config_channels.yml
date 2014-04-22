@@ -1,25 +1,11 @@
 channels:
     roles:
+        # List roles that are allowed to manage channels.
         can_manage_channels: 
-            - 'admin'
+            - admin
+            # - another_role
+            
+    # Configure the markers that appear around a channel name.
+    # Typically this would be brackets for [Mux Style] or <MUSH Style>
     start_marker: '<'
     end_marker: '>'
-
-help:
-    categories:
-        main:
-            topics:
-                channels: 
-                    toc_topic: 'Channels'
-                    file: 'game/plugins/channels/help/channels.txt'
-                    summary: 'Public chat channels.'
-                    aliases: [ 'channel', 'chat', 'comsys' ]
-        admin:
-            topics:
-                channels: 
-                    toc_topic: 'Game Management'
-                    file: 'game/plugins/channels/help/admin_channels.txt'
-                    summary: 'Managing channels.'
-
-alias:
-    chan: channel

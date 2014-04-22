@@ -7,7 +7,7 @@ class String
 
   def rest(sep)
     parts = self.partition(sep)        # Returns [head, sep, tail]
-    return parts[0] if parts[1] == ""  # sep empty if not found
+    return "" if parts[1] == ""  # sep empty if not found
     return parts[2]
   end
   

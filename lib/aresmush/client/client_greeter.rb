@@ -12,7 +12,10 @@ module AresMUSH
       client.emit_ooc t('client.welcome')
 
       # Game welcome text.
-      client.emit_ooc connect_config['welcome_text']
+      welcome_text = connect_config['welcome_text']
+      if (!welcome_text.nil?)
+        client.emit_ooc welcome_text
+      end
     end
   end
 end

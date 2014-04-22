@@ -14,7 +14,7 @@ module AresMUSH
     def on_command(client, cmd)
       handled = false
       with_error_handling(client, cmd) do
-        perform_alias_subs(client, cmd)
+        CommandAliasParser.substitute_aliases(client, cmd)
         Global.plugin_manager.plugins.each do |p|
           with_error_handling(client, cmd) do
             if (p.want_command?(client, cmd))
@@ -43,19 +43,6 @@ module AresMUSH
         end
       rescue Exception => e
         Global.logger.error("Error handling event: event=#{event} error=#{e} backtrace=#{e.backtrace[0,10]}")
-      end
-    end
-    
-    def perform_alias_subs(client, cmd)
-      if (cmd.args.nil? && cmd.switch.nil? && !client.room.nil? && client.room.has_exit?(cmd.root))
-        cmd.args = cmd.root
-        cmd.root = "go"
-        return
-      end
-
-      aliases = Global.config['alias']
-      if (!aliases.nil? && aliases.has_key?(cmd.root))
-        cmd.root = aliases[cmd.root]
       end
     end
     

@@ -6,7 +6,6 @@ module AresMUSH
 
   class ArbitraryEventHandlingTestClass
     def on_arbitrary_event(args)
-      puts "GOT FOO"
     end
   end
   
@@ -32,6 +31,11 @@ module AresMUSH
     end
 
     describe :on_command do
+      it "performs alias substitutions" do
+        CommandAliasParser.should_receive(:substitute_aliases).with(@client, @command)
+        @dispatcher.on_command(@client, @command)
+      end
+      
       it "gets the list of plugins from the plugin manager" do
         plugin_manager.should_receive(:plugins) { [] }
         @dispatcher.on_command(@client, @command)
@@ -127,43 +131,6 @@ module AresMUSH
         event = ArbitraryEvent.new
         @dispatcher.on_event event
       end
-    end
-    
-    describe :perform_alias_subs do
-      before do
-        Global.stub(:config) { { "alias" => { "a" => "b", "test" => "c" } } }
-      end
-        
-      it "should substitute roots if the root is an alias" do
-        cmd = Command.new("test/foo bar")
-        @dispatcher.perform_alias_subs(@client, cmd)
-        cmd.root.should eq "c"
-        cmd.args.should eq "bar"
-        cmd.switch.should eq "foo"
-      end
-      
-      it "should substitute the go command if an exit is matched and there are no args" do
-        cmd = Command.new("E")
-        room = double
-        room.stub(:has_exit?).with("E") { true }
-        @client.stub(:room) { room }
-        @dispatcher.perform_alias_subs(@client, cmd)
-        cmd.root.should eq "go"
-        cmd.args.should eq "E"
-        cmd.switch.should be_nil
-      end
-      
-      it "should not substitute exit names if there are other args" do
-        cmd = Command.new("E foo")
-        room = double
-        room.stub(:has_exit?).with("E") { true }
-        @client.stub(:room) { room }
-        @dispatcher.perform_alias_subs(@client, cmd)
-        cmd.root.should eq "E"
-        cmd.args.should eq "foo"
-        cmd.switch.should be_nil
-      end
-      
     end
   end
 end

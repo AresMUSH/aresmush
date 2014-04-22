@@ -1,0 +1,18 @@
+help:
+    categories:
+        main:
+            topics:
+                channels: 
+                    toc_topic: 'Channels'
+                    file: 'game/plugins/channels/help/channels.txt'
+                    summary: 'Public chat channels.'
+                    aliases: [ 'channel', 'chat', 'comsys' ]
+        admin:
+            topics:
+                channels: 
+                    toc_topic: 'Game Management'
+                    file: 'game/plugins/channels/help/admin_channels.txt'
+                    summary: 'Managing channels.'
+                    aliases: [ 'channel', 'chat', 'comsys' ]
+
+    

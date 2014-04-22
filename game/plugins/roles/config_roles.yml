@@ -1,21 +1,14 @@
-help:
-    categories:
-        admin:
-            topics:
-                roles: 
-                    toc_topic: 'Roles'
-                    file: 'game/plugins/roles/help/roles.txt'
-                    summary: 'Assigning permissions.'
-                    aliases: [ 'role', 'permission', 'power' ]
-                    
 roles:
     # List available roles.
     # Use caution when deleting or renaming roles, because unless you also update
     # the plugins and database, you can end up with commands that nobody can use.
     roles:
+        - everyone
         - admin
         - builder
         - guest
-    # These roles have the power to assign other roles.
+        # - another role
+    # List roles have the power to assign other roles.
     can_assign_role: 
         - admin
+        # - another role

@@ -25,18 +25,18 @@ module AresMUSH
       end
     end
   
-    class ChannelAnsiCmd
+    class ChannelColorCmd
       include ChannelAttributeCmd
     
       def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("ansi")
+        cmd.root_is?("channel") && cmd.switch_is?("color")
       end
     
       def handle
         Channels.with_a_channel(name, client) do |channel|
-          channel.ansi = self.attribute
+          channel.color = self.attribute
           channel.save!
-          client.emit_success t('channels.ansi_set', :name => channel.display_name)
+          client.emit_success t('channels.color_set', :name => channel.display_name)
         end
       end
     end

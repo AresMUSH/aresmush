@@ -1,23 +1,6 @@
 manage:
     roles:
+        # List roles that are allowed to use game management commands.
         can_manage: 
-            - "admin"
-
-help:
-    categories:
-        admin:
-            topics:
-                manage: 
-                    toc_topic: 'Code Management'
-                    file: 'game/plugins/manage/help/manage.txt'
-                    summary: 'Managing plugins and config.'
-                    aliases: [ 'load', 'unload', 'plugin', 'config' ]
-                database: 
-                    toc_topic: Code Management
-                    file: 'game/plugins/manage/help/database.txt'
-                    summary: "Examining and manipulating the database."   
-                    aliases: [ 'examine', 'rename', 'destroy', 'nuke', 'reload', 'find', 'search' ]
-                    
-alias:
-    e: examine
-    ex: examine
+            - admin
+            # - another_role

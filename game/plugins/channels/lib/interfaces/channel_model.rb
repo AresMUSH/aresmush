@@ -8,14 +8,14 @@ module AresMUSH
     
     include ObjectModel
     
-    field :ansi, :type => String
+    field :color, :type => String
     field :description, :type => String
     field :roles, :type => Array, :default => []
     
     has_and_belongs_to_many :characters
     
     def display_name(include_markers = true)
-      display = "#{self.ansi}#{self.name}%xn"
+      display = "#{self.color}#{self.name}%xn"
       include_markers ? Channels.name_with_markers(display) : display
     end
     

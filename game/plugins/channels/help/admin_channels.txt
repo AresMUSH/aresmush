@@ -1,9 +1,12 @@
-channel/create <channel>
-channel/delete <channel>
-channel/describe <channel>=<description>
-channel/ansi <channel>=<ansi prefix>
-    Use full ansi code(s) not just the color name.  For example: \%xc
-channel/roles <channel>=<roles>
-    Use "none" to clear existing roles.
+The channel administration commands are used to create, delete, and describe channels.
 
-    
+    %xcchannel/create <channel>%xn
+    %xcchannel/delete <channel>%xn
+    %xcchannel/describe <channel>=<description>%xn
+    %xcchannel/color <channel>=<ansi prefix>%xn - Sets a channel's color.
+        Use full ansi code(s) not just the color name.  For example: \%xc
+        You can use multiple codes.  For example:  \%xh\%xr
+    %xcchannel/roles <channel>=<roles>%xn
+        Use "none" to clear existing roles.  
+        Changing roles will remove anyone who is on the channel but doesn't 
+        have the appropriate roles.

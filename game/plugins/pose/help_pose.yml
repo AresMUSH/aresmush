@@ -7,5 +7,3 @@ help:
                     file: 'game/plugins/pose/help/posing.txt'
                     summary: 'Talking to the people around you.'
                     aliases: [ 'pose', 'say', 'emit', 'ooc' ]
-alias:
-    p: page

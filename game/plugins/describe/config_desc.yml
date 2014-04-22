@@ -1,26 +1,10 @@
 describe:
     roles:
+        # List roles that are allowed to describe places (exits and rooms).
         can_desc_places: 
             - builder
+            # - another_role
+        # List roles that are allowed to describe anything.
         can_desc_anything:
             - admin
-
-help:
-    categories:
-        main:
-            topics:
-                descriptions: 
-                    toc_topic: Getting Around
-                    file: 'game/plugins/describe/help/descriptions.txt'
-                    summary: "Looking around."
-                    aliases: [ 'desc', 'describe', 'look', 'shortdesc' ]
-                outfits:
-                    toc_topic: Misc
-                    file: 'game/plugins/describe/help/outfit.txt'
-                    summary: "Your character's wardrobe."
-                    aliases: [ 'wear', 'outfit']
-                    
-alias:
-    l: look
-    desc: describe
-    
+            # - another_role

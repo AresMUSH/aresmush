@@ -1,6 +1,17 @@
 server:
+    # The host name where your game is running (typically localhost)
     hostname: localhost
+
+    # The port number your game will listen on
     port: 7207
+
+    # Main language (aka locale).  en for English.
     locale: en
+
+    # Backup language (aka locale) if text is not available in the main language.
+    # For instance if you're running a game in Spanish, and a plugin is not 
+    # translated, it will use the English (en) text as a backup.
     default_locale: en
+    
+    # Name of your game.
     mush_name: AresMUSH
