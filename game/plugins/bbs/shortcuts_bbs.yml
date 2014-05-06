@@ -1,0 +1,17 @@
+shortcuts:
+    roots:
+        "bbread": "bbs"
+        "bbpost" : "bbs"
+    
+    full:
+        "bbnext": "bbs/new"
+        "bbnew": "bbs/new"
+        "bbscan" : "bbs/scan"
+        "bbcatchup" : "bbs/markread"
+        "bbedit" : "bbs/edit"
+        "bbreply" : "bbs/reply"
+        "bbremove" : "bbs/delete"
+        "bbmove" : "bbs/move"
+        "bbnewgroup" : "bbs/createboard"
+        "bbcleargroup" : "bbs/deleteboard"
+        

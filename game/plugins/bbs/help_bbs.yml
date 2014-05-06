@@ -1,0 +1,16 @@
+help:
+    categories:
+        main:
+            topics:
+                bbs: 
+                    toc_topic: 'Communicating'
+                    file: 'game/plugins/bbs/help/bbs.txt'
+                    summary: 'Bulletin boards.'
+                    aliases: [ 'bbs', 'bbread', 'bbpost', 'bbmisc' ]
+        admin:
+            topics:
+                bbs: 
+                    toc_topic: 'Game Management'
+                    file: 'game/plugins/bbs/help/admin_bbs.txt'
+                    summary: 'Managing bulletin boards.'
+                    aliases: [ 'bbs', 'bbread', 'bbpost', 'bbwiz' ]

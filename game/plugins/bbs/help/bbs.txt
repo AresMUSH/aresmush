@@ -1,0 +1,15 @@
+bbs
+bbs <board name or #>
+bbs <board name or #>/<post #>
+bbs <board name or #>=<subject>/<body>
+bbs/reply <board name or #>/<post #>=<reply>
+
+bbs/scan
+bbs/new
+bbs/markread <board name or #, or 'all'>
+
+bbs/edit <board name or #>/<text to find>=<text to replace>
+bbs/delete <board name or #>/<post #>
+bbs/move <board name or #>/<post #>=<new board name or #>
+
+
