@@ -3,7 +3,7 @@ help:
         main:
             topics:
                 channels: 
-                    toc_topic: 'Channels'
+                    toc_topic: 'Communicating'
                     file: 'game/plugins/channels/help/channels.txt'
                     summary: 'Public chat channels.'
                     aliases: [ 'channel', 'chat', 'comsys' ]

@@ -8,7 +8,7 @@ module AresMUSH
     
   module PluginWithoutArgs
     def check_no_args
-      return t('dispatcher.cmd_no_switches_or_args') if !cmd.args.nil?
+      return t('dispatcher.cmd_no_args') if !cmd.args.nil?
       return nil
     end
   end

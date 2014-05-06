@@ -59,7 +59,7 @@ module AresMUSH
       it "should reject command if there are arguments" do
         @cmd.stub(:switch) { nil }
         @cmd.stub(:args) { "foo" }
-        @plugin.check_no_args.should eq "dispatcher.cmd_no_switches_or_args"
+        @plugin.check_no_args.should eq "dispatcher.cmd_no_args"
       end
       
       it "should accept command if there are no arguments" do

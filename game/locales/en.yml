@@ -8,7 +8,7 @@ en:
         huh: "Huh? Unrecognized command."
         not_allowed: "You are not allowed to do that."
         must_be_logged_in: "You must be logged in to use this command."
-        cmd_no_switches_or_args: "This command does not take any switches (/whatever) or arguments."
+        cmd_no_args: "This command does not take any arguments."
         cmd_no_switches: "This command does not take any switches (/whatever)."
         cmd_invalid_switch: "That is not a valid switch (/whatever) for this command."
         invalid_syntax: "That is not the right command format.  Please see 'help %{command}'."
