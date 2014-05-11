@@ -23,12 +23,14 @@ module AresMUSH
       
       def board_list_entry(board, i)
         num = "#{i+1}".rjust(2)
-        name = left(board.name,20)
-        desc = left(board.description,37)
+        name = left(board.name,27)
+        desc = left(board.description,34)
         read_status = Bbs.can_read_board?(client.char, board) ? "r" : "-"
         write_status = Bbs.can_write_board?(client.char, board) ? "w" : "-"
+        permission = center("#{read_status}#{write_status}", 5)
         unread_status = board.has_unread?(client.char) ? t('bbs.unread_marker') : " "
-        "#{num}      #{name} #{desc} #{read_status}#{write_status}    #{unread_status}"
+        unread_status = center(unread_status, 5)
+        "#{num} #{unread_status} #{name} #{desc} #{permission}"
       end
     end
   end

@@ -28,5 +28,30 @@ module AresMUSH
       
       yield board
     end
+    
+    def self.with_a_post(name, num, client, &block)
+      with_a_board(name, client) do |board|
+        if (num !~ /^[\d]+$/)
+          client.emit_failure t('bbs.invalid_post_number')
+          return
+        end
+         
+        index = num.to_i - 1
+        if (index < 0) 
+          client.emit_failure t('bbs.invalid_post_number')
+          return
+        end
+        
+        if (board.bbs_posts.count < index)
+          client.emit_failure t('bbs.invalid_post_number')
+          return
+        end
+        
+        post = board.bbs_posts[index]
+        
+        yield board, post
+      end
+    end
   end
 end
+  

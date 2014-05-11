@@ -28,20 +28,17 @@ module AresMUSH
         else
           cmd.crack!(/(?<name>[^\/]+)\/(?<subject>[^\=]+)\=(?<message>.+)/)
         end
-        self.subject = cmd.args.subject
+        self.subject = trim_input(cmd.args.subject)
         self.message = cmd.args.message
         self.name = cmd.args.name
       end
       
       def handle        
         Bbs.with_a_board(self.name, client) do |board|
-          client.emit "Posted #{board.name} #{self.subject} --- #{self.message}!"
           post = BbsPost.create(bbs_board: board, 
             subject: self.subject, 
             message: self.message, author: client.char)
-#          post.author = client.char
-#          post.save!
-          Global.client_monitor.emit_all "New message #{self.subject} posted to #{board.name} by #{client.name}"
+          Global.client_monitor.emit_all "New message %xh#{self.subject}%xn posted to %xh#{board.name}%xn by %xh#{client.name}%xn"
         end
       end
     end

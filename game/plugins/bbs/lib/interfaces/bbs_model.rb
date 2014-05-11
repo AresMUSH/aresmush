@@ -13,7 +13,7 @@ module AresMUSH
     field :read_roles, :type => Array, :default => []
     field :write_roles, :type => Array, :default => []
     
-    has_many :bbs_posts
+    has_many :bbs_posts, order: :created_at.asc
     
     def has_unread?(char)
       # TODO TODO
@@ -27,6 +27,7 @@ module AresMUSH
   
   class BbsPost
     include Mongoid::Document
+    include Mongoid::Timestamps
     
     field :subject, :type => String
     field :message, :type => String

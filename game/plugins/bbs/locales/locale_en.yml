@@ -1,12 +1,16 @@
 en:
     bbs:
         boards_list: "Bulletin Boards"
-        boards_list_title: " #      Name                 Description                          Allow  New"
+        boards_list_title: " #       Name                        Description                        Allow"
+        board_title: " #       Subject                        Author                    Posted"
         board_already_exists: "That board already exists."
         board_created: "Board created."
         roles_set: "Board roles set."
         desc_set: "Board description set."
         invalid_board_role: "%{name} is not a valid board role."
         board_doesnt_exist: "That board does not exist."
-        unread_marker: "%xh(U)%xn"
+        unread_marker: "(U)"
+        invalid_post_number: "Invalid post number."
+        post_deleted: "Post %{num} deleted from %{name}."
+        board_roles: "read=%{read} write=%{write}"
         

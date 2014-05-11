@@ -28,19 +28,34 @@ module AresMUSH
       
       def handle
         Bbs.with_a_board(self.name, client) do |board|
-          title ="BBS #{board.name}%r#{board.description}%rwrite: #{board.write_roles.join(", ")} read: #{board.read_roles.join(", ")}"
+          title = board_title(board)
           posts = board.bbs_posts.each_with_index.map { |p, i| board_post_entry(p, i) }
-          client.emit BorderedDisplay.list(posts, title)
+          output = posts.join("%r")          
+          client.emit BorderedDisplay.text(output, title, nil)
         end
+      end
+      
+      def board_title(board)
+        write_roles = board.write_roles.join(", ")
+        read_roles = board.read_roles.join(", ")
+        roles = right(t('bbs.board_roles', :read => read_roles, :write => write_roles),48)
+        name = left(board.name, 30)        
+        "%xh#{name}%xn#{roles}%r" +
+        board.description +
+        "%r%l2%r" +
+        t('bbs.board_title') +
+        "%r%l2"
       end
       
       def board_post_entry(post, index)
         client.emit t('bbs.unread_marker')
         num = "#{index+1}".rjust(2)
-        unread = post.is_unread?(client.char) ? t('bbs.unread_marker') : "   "
-        name = left(post.subject,20)
-        author = post.author.name
-        "#{num} #{unread} #{name} #{author}"
+        unread = post.is_unread?(client.char) ? t('bbs.unread_marker') : " "
+        unread = center(unread, 5)
+        name = left(post.subject,30)
+        author = left(post.author.name,25)
+        date = post.created_at.strftime("%Y-%m-%d")
+        "#{num} #{unread} #{name} #{author} #{date}"
       end
     end
   end
