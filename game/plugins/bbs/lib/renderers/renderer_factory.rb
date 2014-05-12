@@ -17,9 +17,18 @@ module AresMUSH
         @@board_renderer
       end
     
+      def self.post_renderer=(renderer)
+        @@post_renderer = renderer
+      end
+    
+      def self.post_renderer
+        @@post_renderer
+      end
+    
       def self.build_renderers
         self.board_list_renderer = BoardListRenderer.new
         self.board_renderer = BoardRenderer.new
+        self.post_renderer = PostRenderer.new
       end
     end
   end

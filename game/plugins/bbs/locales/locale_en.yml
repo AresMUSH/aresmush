@@ -1,6 +1,6 @@
 en:
     bbs:
-        boards_list_title: " #       Name                        Description                        Allow"
+        boards_list_title: " #       Name                        Description                         R/W"
         board_title: " #       Subject                        Author                    Posted"
         board_already_exists: "That board already exists."
         board_created: "Board created."

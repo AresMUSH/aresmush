@@ -2,10 +2,10 @@
 %xh<%= t('bbs.boards_list_title') %>%xn
 <%= line 2 %>
 <% boards.each_with_index do |b, i| -%> 
-<%= b.num(i) -%>
- <%= b.unread_status -%>
- <%= b.name -%> 
- <%= b.desc -%> 
- <%= b.permission %> 
+<%= board_num(i) -%>
+ <%= board_unread_status(b) -%>
+ <%= board_name(b) -%> 
+ <%= board_desc(b) -%> 
+ <%= board_permission(b) %> 
 <% end %>
 <%= line %>

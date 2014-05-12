@@ -3,11 +3,11 @@
 <%= desc %>
 <%= line 2 %>
 <% posts.each_with_index do |p, i| -%> 
-<%= p.num(i) -%>
- <%= p.unread_status -%>
- <%= p.subject -%>
- <%= p.author -%> 
- <%= p.date %> 
+<%= post_num(i) -%>
+ <%= post_unread_status(p) -%>
+ <%= post_subject(p) -%>
+ <%= post_author(p) -%> 
+ <%= post_date(p) %> 
 <% end %>
 <%= line 2 %>
 <%= can_read %>   <%= can_post %>

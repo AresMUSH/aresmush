@@ -25,19 +25,10 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_post(self.name, self.num, client) do |board, post|          
-          title = post_title(board, post)
-          client.emit BorderedDisplay.text(post.message, title, nil)
+        Bbs.with_a_post(self.name, self.num, client) do |board, post|      
+          client.emit RendererFactory.post_renderer.render(board, post, client)
         end
-      end
-      
-      def post_title(board, post)
-        name = left(board.name, 30)
-        author = right(post.author.name, 47)
-        subject = left(post.subject, 30)
-        date = right(post.created_at.strftime("%Y-%m-%d"), 47)
-        "#{name} #{author}%r#{subject} #{date}%r%l2"
-      end
+      end      
     end
   end
 end

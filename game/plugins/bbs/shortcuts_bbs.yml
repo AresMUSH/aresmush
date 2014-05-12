@@ -1,9 +1,9 @@
 shortcuts:
     roots:
         "bbread": "bbs"
-        "bbpost" : "bbs"
     
     full:
+        "bbpost" : "bbs/post"
         "bbnext": "bbs/new"
         "bbnew": "bbs/new"
         "bbscan" : "bbs/scan"
