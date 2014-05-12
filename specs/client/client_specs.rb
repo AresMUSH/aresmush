@@ -56,6 +56,28 @@ module AresMUSH
         @client.emit_failure "Boo"
       end
     end
+    
+    describe :emit_raw do
+      it "sends the raw text without formatting" do
+        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r")
+        @client.emit_raw "%xr%%Boo%xn%r"
+      end
+    end
+    
+    describe :grab do
+      it "sends the raw text without formatting with the grab password" do
+        char = double
+        char.stub(:grab_password) { "SimpleMUUser" }
+        @connection.should_receive(:send_data).with("SimpleMUUser %xr%%Boo%xn%r\n")
+        @client.stub(:char) { char }
+        @client.grab "%xr%%Boo%xn%r"
+      end
+      
+      it "sends the raw text without formatting if not logged in" do
+        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r\n")
+        @client.grab "%xr%%Boo%xn%r"
+      end
+    end
 
     describe :handle_input do
       it "should create a command and notify the dispatcher" do

@@ -7,7 +7,7 @@ module AresMUSH
     # Anything not found will be nil
     
     def self.crack(input)
-      cracked = /^(?<prefix>[\/\+\=\@]?)(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
+      cracked = /^(?<prefix>[\/\+\=\@\&]?)(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
 
       if (cracked.nil?)      
         # Never allow root to be nil

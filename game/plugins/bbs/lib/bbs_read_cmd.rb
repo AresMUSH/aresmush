@@ -6,10 +6,10 @@ module AresMUSH
       include PluginRequiresArgs
       include TemplateFormatters
       
-      attr_accessor :name, :num
+      attr_accessor :board_name, :num
 
       def initialize
-        self.required_args = ['name', 'num']
+        self.required_args = ['board_name', 'num']
         self.help_topic = 'bbs'
         super
       end
@@ -20,12 +20,12 @@ module AresMUSH
       
       def crack!
         cmd.crack!( /(?<name>[^\=]+)\/(?<num>.+)/)
-        self.name = titleize_input(cmd.args.name)
+        self.board_name = titleize_input(cmd.args.name)
         self.num = trim_input(cmd.args.num)
       end
       
       def handle
-        Bbs.with_a_post(self.name, self.num, client) do |board, post|      
+        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|      
           client.emit RendererFactory.post_renderer.render(board, post, client)
         end
       end      

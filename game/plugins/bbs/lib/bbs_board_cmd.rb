@@ -5,10 +5,10 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginRequiresArgs
       
-      attr_accessor :name
+      attr_accessor :board_name
 
       def initialize
-        self.required_args = ['name']
+        self.required_args = ['board_name']
         self.help_topic = 'bbs'
         super
       end
@@ -22,11 +22,11 @@ module AresMUSH
       end
       
       def crack!
-        self.name = titleize_input(cmd.args)
+        self.board_name = titleize_input(cmd.args)
       end
       
       def handle
-        Bbs.with_a_board(self.name, client) do |board|  
+        Bbs.with_a_board(self.board_name, client) do |board|  
           client.emit RendererFactory.board_renderer.render(board, client)
         end
       end

@@ -1,15 +1,17 @@
 bbs
-bbs <board name or #>
-bbs <board name or #>/<post #>
-bbs/post <board name or #>=<subject>/<body>
-bbs/reply <board name or #>/<post #>=<reply>
+bbs <board>
+bbs <board>/<post #>
+bbs/post <board>=<subject>/<body>
+bbs/reply <board>/<post #>=<reply>
 
-bbs/scan
 bbs/new
-bbs/markread <board name or #, or 'all'>
+bbs/catchup <board, or 'all'>
 
-bbs/edit <board name or #>/<text to find>=<text to replace>
-bbs/delete <board name or #>/<post #>
-bbs/move <board name or #>/<post #>=<new board name or #>
+bbs/edit <board>/<post #> - Grabs the existing post text.
+bbs/edit <board>/<post #>=<new text> - Replaces post text with the new text.
+bbs/delete <board>/<post #>
+bbs/move <board>/<post #>=<new board>
+
+In all cases, <board> means the board name or number.
 
 

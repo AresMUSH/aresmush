@@ -6,12 +6,13 @@ en:
         board_created: "Board created."
         roles_set: "Board roles set."
         desc_set: "Board description set."
-        invalid_board_role: "%{name} is not a valid board role."
+        invalid_board_role: "%{board} is not a valid board role."
         board_doesnt_exist: "That board does not exist."
         unread_marker: "(U)"
         invalid_post_number: "Invalid post number."
-        post_deleted: "Post %{num} deleted from %{name}."
+        post_deleted: "Post %{num} deleted from %{board}."
         can_read: "Can read:" 
         can_post: "Can post:"
         everyone: Everyone
-        
+        post_updated: "Post updated."
+        new_post: "New post %xh%{subject}%xn posted to %xh%{board}%xn by %xh%{author}%xn"        

@@ -113,10 +113,26 @@ module AresMUSH
         cracked[:args].should eq "bar"
       end
 
+      it "should handle an & prefix" do
+        cracked = CommandCracker.crack("&test/foo bar")
+        cracked[:prefix].should eq "&"
+        cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
+      end
+      
       it "should handle no prefix" do
         cracked = CommandCracker.crack("test/foo bar")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
+        cracked[:switch].should eq "foo"
+        cracked[:args].should eq "bar"
+      end
+      
+      it "should handle a weird prefix" do
+        cracked = CommandCracker.crack("~test/foo bar")
+        cracked[:prefix].should eq nil
+        cracked[:root].should eq "~test"
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end

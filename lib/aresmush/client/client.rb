@@ -40,7 +40,16 @@ module AresMUSH
     def emit_failure(msg)
       @connection.send_formatted "%xr%% #{msg}%xn"
     end
+    
+    def emit_raw(msg)
+      @connection.send_data "#{msg}"
+    end
 
+    def grab(msg)
+      grab_password = char.nil? ? "" : "#{char.grab_password} "
+      @connection.send_data "#{grab_password}#{msg}\n"
+    end
+    
     def idle_secs
       (Time.now - self.last_activity).to_i
     end

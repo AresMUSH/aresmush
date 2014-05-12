@@ -14,23 +14,23 @@ module AresMUSH
       return char.has_any_role?(board.read_roles)
     end
     
-    def self.with_a_board(name, client, &block)
-      if (name =~ /\A[\d]+\z/)
-        board = BbsBoard.all_sorted[Integer(name) - 1] rescue nil
+    def self.with_a_board(board_name, client, &block)
+      if (board_name =~ /\A[\d]+\z/)
+        board = BbsBoard.all_sorted[Integer(board_name) - 1] rescue nil
       else
-        board = BbsBoard.find_by_name(name)
+        board = BbsBoard.find_by_name(board_name)
       end
       
       if (board.nil?)
-        client.emit_failure t('bbs.board_doesnt_exist', :name => name) 
+        client.emit_failure t('bbs.board_doesnt_exist', :board => board_name) 
         return
       end
       
       yield board
     end
     
-    def self.with_a_post(name, num, client, &block)
-      with_a_board(name, client) do |board|
+    def self.with_a_post(board_name, num, client, &block)
+      with_a_board(board_name, client) do |board|
         if (num !~ /^[\d]+$/)
           client.emit_failure t('bbs.invalid_post_number')
           return
@@ -42,7 +42,7 @@ module AresMUSH
           return
         end
         
-        if (board.bbs_posts.count < index)
+        if (board.bbs_posts.count <= index)
           client.emit_failure t('bbs.invalid_post_number')
           return
         end
