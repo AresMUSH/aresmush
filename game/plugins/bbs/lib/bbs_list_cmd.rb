@@ -3,8 +3,6 @@ module AresMUSH
     class BbsListCmd
       include Plugin
       include PluginRequiresLogin
-      include PluginWithoutArgs
-      include PluginWithoutSwitches
            
       def initialize
         RendererFactory.build_renderers

@@ -14,14 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        # TODO - Make this simpler by requiring /post switch
-        # TODO - Clean up other want_command matches as a result.
-        return false if !cmd.root_is?("bbs")
-        return false if !cmd.switch.nil?
-        return false if cmd.args.nil?
-        return true if cmd.args =~ /.+=.+\/.+/
-        return true if cmd.args =~ /.+\/.+=.+/
-        false
+        cmd.root_is?("bbs") && cmd.switch_is?("post")
       end
       
       def crack!

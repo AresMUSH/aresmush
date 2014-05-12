@@ -4,7 +4,6 @@ module AresMUSH
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
-      include TemplateFormatters
       
       attr_accessor :name
 

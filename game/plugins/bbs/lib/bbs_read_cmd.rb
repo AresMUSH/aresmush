@@ -9,20 +9,13 @@ module AresMUSH
       attr_accessor :name, :num
 
       def initialize
-        self.required_args = ['name']
-        self.required_args = ['num']
+        self.required_args = ['name', 'num']
         self.help_topic = 'bbs'
         super
       end
       
       def want_command?(client, cmd)
-        # TODO TODO - There's got to be a better way to do this.
-        return false if !cmd.root_is?("bbs")
-        return false if !cmd.switch.nil?
-        return false if cmd.args.nil?
-        return false if cmd.args !~ /[\/]/
-        return false if cmd.args =~ /[\=]/
-        true
+        cmd.root_is?("bbs") && cmd.switch.nil? && cmd.args =~ /[\/]/
       end
       
       def crack!

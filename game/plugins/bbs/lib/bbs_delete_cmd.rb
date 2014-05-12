@@ -4,23 +4,17 @@ module AresMUSH
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
-      include TemplateFormatters
       
       attr_accessor :name, :num
 
       def initialize
-        self.required_args = ['name']
-        self.required_args = ['num']
+        self.required_args = ['name', 'num']
         self.help_topic = 'bbs'
         super
       end
       
       def want_command?(client, cmd)
-        return false if !cmd.root_is?("bbs")
-        return false if !cmd.switch_is?("delete")
-        return false if cmd.args.nil?
-        return false if cmd.args !~ /[\/]/
-        true
+        cmd.root_is?("bbs") && cmd.switch_is?("delete")
       end
       
       # TODO - Check Permissions
