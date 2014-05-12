@@ -1,0 +1,14 @@
+<%= line %>
+%xh<%= name %>%xn
+<%= desc %>
+<%= line 2 %>
+<% posts.each_with_index do |p, i| -%> 
+<%= p.num(i) -%>
+ <%= p.unread_status -%>
+ <%= p.subject -%>
+ <%= p.author -%> 
+ <%= p.date %> 
+<% end %>
+<%= line 2 %>
+<%= can_read %>   <%= can_post %>
+<%= line %>

@@ -1,7 +1,7 @@
 bbs
 bbs <board name or #>
 bbs <board name or #>/<post #>
-bbs <board name or #>=<subject>/<body>
+bbs/post <board name or #>=<subject>/<body>
 bbs/reply <board name or #>/<post #>=<reply>
 
 bbs/scan

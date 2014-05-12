@@ -16,10 +16,12 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
+        # TODO TODO - There's got to be a better way to do this.
         return false if !cmd.root_is?("bbs")
         return false if !cmd.switch.nil?
         return false if cmd.args.nil?
         return false if cmd.args !~ /[\/]/
+        return false if cmd.args =~ /[\=]/
         true
       end
       

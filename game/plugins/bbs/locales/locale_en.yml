@@ -1,6 +1,5 @@
 en:
     bbs:
-        boards_list: "Bulletin Boards"
         boards_list_title: " #       Name                        Description                        Allow"
         board_title: " #       Subject                        Author                    Posted"
         board_already_exists: "That board already exists."
@@ -12,5 +11,7 @@ en:
         unread_marker: "(U)"
         invalid_post_number: "Invalid post number."
         post_deleted: "Post %{num} deleted from %{name}."
-        board_roles: "read=%{read} write=%{write}"
+        can_read: "Can read:" 
+        can_post: "Can post:"
+        everyone: Everyone
         

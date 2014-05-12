@@ -23,6 +23,8 @@ module AresMUSH
         true
       end
       
+      # TODO - Check Permissions
+      
       def crack!
         cmd.crack!( /(?<name>[^\=]+)\/(?<num>.+)/)
         self.name = titleize_input(cmd.args.name)
