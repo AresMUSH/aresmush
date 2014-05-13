@@ -42,7 +42,7 @@ module AresMUSH
             
           post.mark_read(client.char)
                     
-          Global.client_monitor.emit_all t('bbs.new_post', :subject => self.subject, :board => board.name, :author => client.name)
+          Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => self.subject, :board => board.name, :author => client.name)
         end
       end
     end

@@ -36,7 +36,7 @@ module AresMUSH
         end
         
         target = find_result.target
-        client.emit "%l1%r#{target.to_json}%r%l1"
+        client.emit BorderedDisplay.text("#{target.to_json}")
       end
     end
   end

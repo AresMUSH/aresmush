@@ -19,6 +19,7 @@ module AresMUSH
         Bbs.with_a_board(board.name, client) do |board|
           board.delete
           client.emit_success t('bbs.board_deleted', :board => board.name)
+          client.program.delete(:delete_bbs)          
         end
       end
     end

@@ -29,7 +29,7 @@ module AresMUSH
       def handle
         Bbs.with_a_board(self.name, client) do |board|
           client.program = { :delete_bbs => board }
-          client.emit t('bbs.board_confirm_delete', :board => board.name)
+          client.emit BorderedDisplay.text(t('bbs.board_confirm_delete', :board => board.name))
         end
       end
     end

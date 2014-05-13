@@ -40,7 +40,7 @@ module AresMUSH
             post.message = self.new_text
             post.mark_unread
             post.save!
-            Global.client_monitor.emit_all t('bbs.new_edit', :subject => post.subject, :board => board.name, :author => client.name)
+            Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, :board => board.name, :author => client.name)
           end
         end
       end
