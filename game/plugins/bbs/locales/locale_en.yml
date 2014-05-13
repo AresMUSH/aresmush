@@ -25,4 +25,9 @@ en:
         post_deleted: "Post %{num} deleted from %{board}."
         post_updated: "Post updated."
         post_moved: "Post moved."
-        new_post: "New post %xh%{subject}%xn posted to %xh%{board}%xn by %xh%{author}%xn"        
+
+        new_post: "New BBS post %xh%{subject}%xn posted to %xh%{board}%xn by %xh%{author}%xn"        
+        new_reply: "%xh%{author} replied to BBS post %xh%{subject}%xn on %xh%{board}%xn%xn"        
+        caught_up: "All posts on %{board} marked as read."
+        no_new_posts: "There are no new posts to read."
+        reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"

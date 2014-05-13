@@ -1,17 +1,22 @@
-bbs
-bbs <board>
-bbs <board>/<post #>
-bbs/post <board>=<subject>/<body>
-bbs/reply <board>/<post #>=<reply>
+The bulletin board system lets you stay posted on game news and events.  There are various %xhboards%xn available, each with a different purpose.  Some boards are restricted, and the system will tell you which boards you can read and which ones you can write (aka post) to.
 
-bbs/new
-bbs/catchup <board, or 'all'>
+Those familiar with %xh%xbMyrddin's BBS%xn from other MUSH systems should find that the commands you're used to (bbread, bbpost, etc.) also work here.
 
-bbs/edit <board>/<post #> - Grabs the existing post text.
-bbs/edit <board>/<post #>=<new text> - Replaces post text with the new text.
-bbs/delete <board>/<post #>
-bbs/move <board>/<post #>=<new board>
+For all of the bbs commands, you can specify either the board name or number.
 
-In all cases, <board> means the board name or number.
+    %xcbbs%xn - Lists available boards.
+    %xcbbs <board>%xn - Lists posts on the selected board.
+    %xcbbs <board>/<post #>%xn - Reads the selected post.
 
+    %xcbbs/post <board>=<subject>/<body>%xn - Writes a new post.
+    %xcbbs/reply <board>/<post #>=<reply>%xn - Writes a comment as a reply to a post.
 
+    %xcbbs/new%xn - Reads the first unread message.
+    %xcbbs/catchup <board>%xn - Marks all unread messages as read.
+
+You can also edit or delete your own posts.
+
+    %xcbbs/edit <board>/<post #>%xn - Grabs the existing post text.
+    %xcbbs/edit <board>/<post #>=<new text>%xn - Replaces post text with the new text.
+    %xcbbs/delete <board>/<post #>%xn - Deletes a post
+    %xcbbs/move <board>/<post #>=<new board>%xn - Moves a post from one board to another.

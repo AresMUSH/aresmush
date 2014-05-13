@@ -31,7 +31,7 @@ module AresMUSH
       def handle        
         Bbs.with_a_board(self.board_name, client) do |board|
           
-          if (!Bbs.can_write_board(client.char, board))
+          if (!Bbs.can_write_board?(client.char, board))
             client.emit_failure(t('bbs.cannot_post'))
             return
           end
@@ -39,7 +39,11 @@ module AresMUSH
           post = BbsPost.create(bbs_board: board, 
             subject: self.subject, 
             message: self.message, author: client.char)
-          Global.client_monitor.emit_all t('bbs.new_post', :subject => self.subject, :board => self.board_name, :author => client.name)
+            
+          post.mark_read(client.char)
+          client.char.save!
+          
+          Global.client_monitor.emit_all t('bbs.new_post', :subject => self.subject, :board => board.name, :author => client.name)
         end
       end
     end

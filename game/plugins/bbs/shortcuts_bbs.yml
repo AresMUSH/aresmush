@@ -7,7 +7,7 @@ shortcuts:
         "bbnext": "bbs/new"
         "bbnew": "bbs/new"
         "bbscan" : "bbs/scan"
-        "bbcatchup" : "bbs/markread"
+        "bbcatchup" : "bbs/catchup"
         "bbedit" : "bbs/edit"
         "bbreply" : "bbs/reply"
         "bbremove" : "bbs/delete"
