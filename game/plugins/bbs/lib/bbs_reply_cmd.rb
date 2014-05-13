@@ -34,6 +34,7 @@ module AresMUSH
 
           date = DateTime.now.strftime("%Y-%m-%d")
           post.message = post.message + "%r%r" + t('bbs.reply', :author => client.char.name, :reply => self.reply, :date => date)
+          post.mark_unread
           post.save!
           Global.client_monitor.emit_all t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
         end

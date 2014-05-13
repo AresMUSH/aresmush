@@ -1,8 +1,8 @@
 module AresMUSH
   class Character
-    field :read_posts, :type => Array, :default => []
-
     has_many :authored_posts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'author'
+
+#    has_and_belongs_to_many :read_posts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'readers'
   end
   
   class BbsBoard
@@ -34,14 +34,20 @@ module AresMUSH
     belongs_to :bbs_board
     belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_posts'
     
+    has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
+    
     def is_unread?(char)
-      !char.read_posts.include?(self.id)
+      !readers.include?(char)
     end
     
-    # Don't forget to save afterward!
     def mark_read(char)
-      char.read_posts << self.id
+      readers << char
+      save!
     end
-
+    
+    def mark_unread
+      readers.clear
+      save!
+    end
   end
 end

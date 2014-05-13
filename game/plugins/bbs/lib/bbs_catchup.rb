@@ -27,7 +27,6 @@ module AresMUSH
           unread_posts.each do |p|
             p.mark_read(client.char)
           end
-          client.char.save!
           client.emit_success t('bbs.caught_up', :board => board.name)
         end
       end

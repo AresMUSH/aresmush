@@ -38,8 +38,9 @@ module AresMUSH
             client.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
             post.message = self.new_text
+            post.mark_unread
             post.save!
-            client.emit_success t('bbs.post_updated')
+            Global.client_monitor.emit_all t('bbs.new_edit', :subject => post.subject, :board => board.name, :author => client.name)
           end
         end
       end

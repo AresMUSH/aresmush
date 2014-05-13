@@ -41,8 +41,7 @@ module AresMUSH
             message: self.message, author: client.char)
             
           post.mark_read(client.char)
-          client.char.save!
-          
+                    
           Global.client_monitor.emit_all t('bbs.new_post', :subject => self.subject, :board => board.name, :author => client.name)
         end
       end
