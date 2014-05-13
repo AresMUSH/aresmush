@@ -16,3 +16,6 @@ en:
         everyone: Everyone
         post_updated: "Post updated."
         new_post: "New post %xh%{subject}%xn posted to %xh%{board}%xn by %xh%{author}%xn"        
+        post_moved: "Post moved."
+        cannot_access_board: "You are not allowed to access that board."
+        cannot_post: "You are not allowed to post to that board."

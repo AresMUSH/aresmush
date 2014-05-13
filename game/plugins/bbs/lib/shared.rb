@@ -5,13 +5,11 @@ module AresMUSH
     end
 
     def self.can_write_board?(char, board)
-      return true if board.write_roles.empty?
-      return char.has_any_role?(board.write_roles)
+      board.write_roles.empty? || char.has_any_role?(board.write_roles) || can_manage_bbs?(char)
     end
     
     def self.can_read_board?(char, board)
-      return true if board.read_roles.empty?
-      return char.has_any_role?(board.read_roles)
+      board.read_roles.empty? || char.has_any_role?(board.read_roles) || can_manage_bbs?(char)
     end
     
     def self.with_a_board(board_name, client, &block)
@@ -23,6 +21,11 @@ module AresMUSH
       
       if (board.nil?)
         client.emit_failure t('bbs.board_doesnt_exist', :board => board_name) 
+        return
+      end
+      
+      if (!can_read_board?(client.char, board))
+        client.emit_failure t('bbs.cannot_access_board')
         return
       end
       
@@ -51,6 +54,10 @@ module AresMUSH
         
         yield board, post
       end
+    end
+    
+    def self.can_edit_post(char, post)
+      char.authored_posts.include?(post) || can_manage_bbs?(char)
     end
   end
 end

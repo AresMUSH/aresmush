@@ -1,7 +1,7 @@
 bbs/createboard <name>
 bbs/deleteboard <board name or #>
 bbs/describe <board name or #>=<description>
-bbs/readroles <board name or #>=<roles that can read it, or 'none'>
-bbs/writeroles <board name or #>=<roles that can write to it, or 'none'>
+bbs/readroles <board name or #>=<roles that can read it, or 'everyone'>
+bbs/writeroles <board name or #>=<roles that can write to it, or 'everyone'>
 bbs/delete <board name or #>/<post # or a list of numbers like 1-14>
 

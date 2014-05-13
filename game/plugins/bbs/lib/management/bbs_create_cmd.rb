@@ -1,6 +1,6 @@
 module AresMUSH
   module Bbs
-    class ChannelCreateCmd
+    class BbsCreateCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs

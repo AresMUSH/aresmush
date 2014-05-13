@@ -69,9 +69,9 @@ module AresMUSH
           end
           
           if (cmd.switch_is?("readroles"))
-            board.read_roles = roles
+            board.read_roles = roles.map { |r| r.capitalize }
           else
-            board.write_roles = roles
+            board.write_roles = roles.map  { |r| r.capitalize }
           end
           board.save!
           client.emit_success t('bbs.roles_set')

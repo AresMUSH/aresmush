@@ -26,7 +26,13 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|          
+        Bbs.with_a_post(self.board_name, self.num, client) do |board, post| 
+          
+          if (!Bbs.can_edit_post(client.char, post))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+                             
           post.delete
           client.emit_success(t('bbs.post_deleted', :board => board.name, :num => self.num))
         end

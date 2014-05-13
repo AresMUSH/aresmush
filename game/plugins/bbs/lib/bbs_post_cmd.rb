@@ -30,6 +30,12 @@ module AresMUSH
       
       def handle        
         Bbs.with_a_board(self.board_name, client) do |board|
+          
+          if (!Bbs.can_write_board(client.char, board))
+            client.emit_failure(t('bbs.cannot_post'))
+            return
+          end
+          
           post = BbsPost.create(bbs_board: board, 
             subject: self.subject, 
             message: self.message, author: client.char)
