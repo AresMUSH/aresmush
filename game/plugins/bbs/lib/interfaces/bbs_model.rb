@@ -13,7 +13,7 @@ module AresMUSH
     field :read_roles, :type => Array, :default => []
     field :write_roles, :type => Array, :default => []
     
-    has_many :bbs_posts, order: :created_at.asc
+    has_many :bbs_posts, order: :created_at.asc, :dependent => :delete
     
     def has_unread?(char)
       # TODO TODO

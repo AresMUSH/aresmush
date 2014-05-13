@@ -1,6 +1,6 @@
 module AresMUSH
   module Bbs
-    class BbsCreateCmd
+    class BbsCreateBoardCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("create")
+        cmd.root_is?("bbs") && cmd.switch_is?("createboard")
       end
       
       def crack!

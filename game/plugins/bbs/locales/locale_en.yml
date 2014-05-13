@@ -2,20 +2,27 @@ en:
     bbs:
         boards_list_title: " #       Name                        Description                         R/W"
         board_title: " #       Subject                        Author                    Posted"
+        unread_marker: "(U)"
+
         board_already_exists: "That board already exists."
-        board_created: "Board created."
+        board_doesnt_exist: "That board does not exist."
+        invalid_post_number: "Invalid post number."
+
         roles_set: "Board roles set."
         desc_set: "Board description set."
         invalid_board_role: "%{board} is not a valid board role."
-        board_doesnt_exist: "That board does not exist."
-        unread_marker: "(U)"
-        invalid_post_number: "Invalid post number."
-        post_deleted: "Post %{num} deleted from %{board}."
+
         can_read: "Can read:" 
         can_post: "Can post:"
         everyone: Everyone
-        post_updated: "Post updated."
-        new_post: "New post %xh%{subject}%xn posted to %xh%{board}%xn by %xh%{author}%xn"        
-        post_moved: "Post moved."
+
         cannot_access_board: "You are not allowed to access that board."
         cannot_post: "You are not allowed to post to that board."
+
+        board_created: "Board created."
+        board_deleted: "Board %{board} deleted."
+        board_confirm_delete: "%l1%rDeleting the %{board} board will also delete all posts and other data.%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhbbs/confirmdelete%xn%r%l1"
+        post_deleted: "Post %{num} deleted from %{board}."
+        post_updated: "Post updated."
+        post_moved: "Post moved."
+        new_post: "New post %xh%{subject}%xn posted to %xh%{board}%xn by %xh%{author}%xn"        
