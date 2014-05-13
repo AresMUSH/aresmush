@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :board_name, :num, :reply
 
       def initialize
-        self.required_args = ['board_name', 'num', 'reply']
+        self.required_args = ['reply']
         self.help_topic = 'bbs'
         super
       end
@@ -18,26 +18,45 @@ module AresMUSH
       end
             
       def crack!
-        cmd.crack!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=?(?<reply>[^\=]+)?/)
-        self.board_name = titleize_input(cmd.args.name)
-        self.num = trim_input(cmd.args.num)
-        self.reply = cmd.args.reply
+        puts cmd.args.inspect
+        if (cmd.args !~ /.+\/.+\=/)
+          self.reply = cmd.args
+        else
+          cmd.crack!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
+          self.board_name = titleize_input(cmd.args.name)
+          self.num = trim_input(cmd.args.num)
+          self.reply = cmd.args.reply
+        end
       end
       
       def handle
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
-          
-          if (!Bbs.can_write_board?(client.char, board))
-            client.emit_failure(t('bbs.cannot_post'))
+        post = client.program[:last_bbs_post]
+        if (!post.nil?)
+          post = client.program[:last_bbs_post]
+          board = post.bbs_board
+          save_reply(board, post)
+        else
+          if (self.board_name.nil? || self.num.nil?)
+            client.emit_failure t('dispatcher.invalid_syntax', :command => 'bbs')
             return
           end
-
-          date = DateTime.now.strftime("%Y-%m-%d")
-          post.message = post.message + "%r%r" + t('bbs.reply', :author => client.char.name, :reply => self.reply, :date => date)
-          post.mark_unread
-          post.save!
-          Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
+          Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
+            save_reply(board, post)
+          end
         end
+      end
+      
+      def save_reply(board, post)
+        if (!Bbs.can_write_board?(client.char, board))
+          client.emit_failure(t('bbs.cannot_post'))
+          return
+        end
+
+        date = DateTime.now.strftime("%Y-%m-%d")
+        post.message = post.message + "%r%r" + t('bbs.reply', :author => client.char.name, :reply => self.reply, :date => date)
+        post.mark_unread
+        Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
+        client.program.delete(:last_bbs_post)
       end
     end
   end

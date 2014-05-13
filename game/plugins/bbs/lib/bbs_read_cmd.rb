@@ -28,6 +28,7 @@ module AresMUSH
         Bbs.with_a_post(self.board_name, self.num, client) do |board, post|      
           client.emit RendererFactory.post_renderer.render(board, post, client)
           post.mark_read(client.char)
+          client.program = { :last_bbs_post => post }
         end
       end      
     end
