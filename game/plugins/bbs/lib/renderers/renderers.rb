@@ -6,7 +6,8 @@ module AresMUSH
       end
       
       def render(client)
-        data = BoardListTemplate.new(client)
+        boards = BbsBoard.all_sorted.map { |b| BoardListBoardTemplate.new(b, client.char) }
+        data = BoardListTemplate.new(client.char, boards)
         @renderer.render(data)
       end
     end
@@ -17,7 +18,8 @@ module AresMUSH
       end
       
       def render(board, client)
-        data = BoardTemplate.new(board, client)
+        posts = board.bbs_posts.map { |p| BoardPostTemplate.new(p, client.char) }        
+        data = BoardTemplate.new(board, client.char, posts)
         @renderer.render(data)
       end
     end
@@ -29,7 +31,7 @@ module AresMUSH
       
       def render(board, post, client)
         replies = post.bbs_replies.map { |r| ReplyTemplate.new(r) }
-        data = PostTemplate.new(board, post, client, replies)
+        data = PostTemplate.new(board, post, replies)
         @renderer.render(data)
       end
     end

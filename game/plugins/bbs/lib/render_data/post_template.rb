@@ -5,10 +5,9 @@ module AresMUSH
             
       attr_accessor :replies
       
-      def initialize(board, post, client, replies)
+      def initialize(board, post, replies)
         @board = board
         @post = post
-        @client = client
         @replies = replies
       end
       

@@ -5,10 +5,10 @@ module AresMUSH
       
       attr_accessor :posts
       
-      def initialize(board, client)
+      def initialize(board, char, posts)
         @board = board
-        @posts = board.bbs_posts.all
-        @client = client
+        @posts = posts
+        @char = char
       end
       
       def can_read
@@ -28,27 +28,36 @@ module AresMUSH
       def desc
         @board.description
       end
+    end
     
-      def post_num(i)
+    class BoardPostTemplate
+      include TemplateFormatters
+      
+      def initialize(post, char)
+        @post = post
+        @char = char
+      end
+      
+      def num(i)
         "#{i+1}".rjust(2)
       end
       
-      def post_unread_status(post)
-        unread = post.is_unread?(@client.char) ? t('bbs.unread_marker') : " "
+      def unread_status
+        unread = @post.is_unread?(@char) ? t('bbs.unread_marker') : " "
         center(unread, 5)
       end
       
-      def post_subject(post)
-        left(post.subject,30)
+      def subject
+        left(@post.subject,30)
       end
       
-      def post_author(post)
-        name = post.author.nil? ? t('bbs.deleted_author') : post.author.name
+      def author
+        name = @post.author.nil? ? t('bbs.deleted_author') : @post.author.name
         left(name,25)
       end
       
-      def post_date(post)
-        post.created_at.strftime("%Y-%m-%d")
+      def date
+        @post.created_at.strftime("%Y-%m-%d")
       end
     end
   end

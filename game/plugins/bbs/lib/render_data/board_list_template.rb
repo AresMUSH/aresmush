@@ -5,31 +5,40 @@ module AresMUSH
       
       attr_accessor :boards
       
-      def initialize(client)
-        self.boards = BbsBoard.all_sorted
-        @client = client
+      def initialize(char, boards)
+        @char = char
+        self.boards = boards
+      end
+    end
+    
+    class BoardListBoardTemplate
+      include TemplateFormatters
+      
+      def initialize(board, char)
+        @board = board
+        @char = char
       end
       
-      def board_num(i)
+      def num(i)
         "#{i+1}".rjust(2)
       end
       
-      def board_name(board)
-        left(board.name,27)
+      def name
+        left(@board.name,27)
       end
       
-      def board_desc(board)
-        left(board.description,34)
+      def desc
+        left(@board.description,34)
       end
       
-      def board_permission(board)
-        read_status = Bbs.can_read_board?(@client.char, board) ? "r" : "-"
-        write_status = Bbs.can_write_board?(@client.char, board) ? "w" : "-"
+      def permission
+        read_status = Bbs.can_read_board?(@char, @board) ? "r" : "-"
+        write_status = Bbs.can_write_board?(@char, @board) ? "w" : "-"
         center("#{read_status}#{write_status}", 5)
       end
       
-      def board_unread_status(board)
-        unread_status = board.has_unread?(@client.char) ? t('bbs.unread_marker') : " "
+      def unread_status
+        unread_status = @board.has_unread?(@char) ? t('bbs.unread_marker') : " "
         unread_status = center(unread_status, 5)
       end
     end
