@@ -57,7 +57,7 @@ module AresMUSH
     end
     
     def self.can_edit_post(char, post)
-      char.authored_posts.include?(post) || can_manage_bbs?(char)
+      char.authored_bbposts.include?(post) || can_manage_bbs?(char)
     end
   end
 end

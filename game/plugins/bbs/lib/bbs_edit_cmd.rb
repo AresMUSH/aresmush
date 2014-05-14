@@ -16,9 +16,7 @@ module AresMUSH
       def want_command?(client, cmd)
         cmd.root_is?("bbs") && cmd.switch_is?("edit")
       end
-      
-      # TODO - Check Permissions
-      
+            
       def crack!
         cmd.crack!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=?(?<new_text>[^\=]+)?/)
         self.board_name = titleize_input(cmd.args.name)

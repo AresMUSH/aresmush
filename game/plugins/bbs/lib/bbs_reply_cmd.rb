@@ -18,7 +18,6 @@ module AresMUSH
       end
             
       def crack!
-        puts cmd.args.inspect
         if (cmd.args !~ /.+\/.+\=/)
           self.reply = cmd.args
         else
@@ -52,8 +51,7 @@ module AresMUSH
           return
         end
 
-        date = DateTime.now.strftime("%Y-%m-%d")
-        post.message = post.message + "%r%r" + t('bbs.reply', :author => client.char.name, :reply => self.reply, :date => date)
+        BbsReply.create(author: client.char, bbs_post: post, message: self.reply)
         post.mark_unread
         Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
         client.program.delete(:last_bbs_post)

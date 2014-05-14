@@ -25,7 +25,6 @@ module AresMUSH
       end
     end
   
-  
     class BbsDescCmd
       include BbsAttributeCmd
     

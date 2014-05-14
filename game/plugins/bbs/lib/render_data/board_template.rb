@@ -43,7 +43,8 @@ module AresMUSH
       end
       
       def post_author(post)
-        left(post.author.name,25)
+        name = post.author.nil? ? t('bbs.deleted_author') : post.author.name
+        left(name,25)
       end
       
       def post_date(post)

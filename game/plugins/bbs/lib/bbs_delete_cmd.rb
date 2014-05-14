@@ -17,12 +17,10 @@ module AresMUSH
         cmd.root_is?("bbs") && cmd.switch_is?("delete")
       end
       
-      # TODO - Check Permissions
-      
       def crack!
-        cmd.crack!( /(?<name>[^\=]+)\/(?<num>.+)/)
-        self.board_name = titleize_input(cmd.args.name)
-        self.num = trim_input(cmd.args.num)
+        cmd.crack!(CommonCracks.arg1_equals_arg2)
+        self.board_name = titleize_input(cmd.args.arg1)
+        self.num = trim_input(cmd.args.arg2)
       end
       
       def handle

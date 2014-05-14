@@ -28,7 +28,8 @@ module AresMUSH
       end
       
       def render(board, post, client)
-        data = PostTemplate.new(board, post, client)
+        replies = post.bbs_replies.map { |r| ReplyTemplate.new(r) }
+        data = PostTemplate.new(board, post, client, replies)
         @renderer.render(data)
       end
     end

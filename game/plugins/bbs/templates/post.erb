@@ -3,4 +3,10 @@
 <%= subject %> <%= date %>
 <%= line 2 %>
 <%= message %>
+<% replies.each do |r| %>
+
+<%= line 2 %>
+%xh<%= r.author %>%xn replied on <%= r.date %>
+<%= r.message %>
+<% end %>
 <%= line %>

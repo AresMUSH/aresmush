@@ -22,6 +22,7 @@ en:
         board_created: "Board created."
         board_deleted: "Board %{board} deleted."
         board_confirm_delete: "Deleting the %{board} board will also delete all posts and other data.%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhbbs/confirmdelete%xn"
+        no_delete_in_progress: "You were not trying to delete a board."
         post_deleted: "Post %{num} deleted from %{board}."
         post_moved: "Post moved."
 
@@ -31,3 +32,5 @@ en:
         caught_up: "All posts on %{board} marked as read."
         no_new_posts: "There are no new posts to read."
         reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"
+        
+        deleted_author: "(Author Deleted)"

@@ -14,11 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        return false if !cmd.root_is?("bbs")
-        return false if !cmd.switch.nil?
-        return false if cmd.args.nil?
-        return false if cmd.args =~ /[=\/]/
-        true
+        cmd.root_is?("bbs") && cmd.switch.nil? && (cmd.args !~ /[=\/]/)        
       end
       
       def crack!
@@ -30,8 +26,6 @@ module AresMUSH
           client.emit RendererFactory.board_renderer.render(board, client)
         end
       end
-      
-      
     end
   end
 end

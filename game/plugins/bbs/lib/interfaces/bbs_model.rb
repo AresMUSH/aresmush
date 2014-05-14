@@ -1,8 +1,7 @@
 module AresMUSH
   class Character
-    has_many :authored_posts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'author'
-
-#    has_and_belongs_to_many :read_posts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'readers'
+    has_many :authored_bbposts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'author'
+    has_many :bbs_replies
   end
   
   class BbsBoard
@@ -29,12 +28,12 @@ module AresMUSH
     
     field :subject, :type => String
     field :message, :type => String
-    field :replies, :type => Array
     
     belongs_to :bbs_board
-    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_posts'
+    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_bbposts'
     
     has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
+    has_many :bbs_replies, order: :created_at.asc, :dependent => :delete
     
     def is_unread?(char)
       !readers.include?(char)
@@ -49,5 +48,15 @@ module AresMUSH
       readers.clear
       save!
     end
+  end
+  
+  class BbsReply
+    include Mongoid::Document
+    include Mongoid::Timestamps
+    
+    belongs_to :bbs_post
+    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_replies'
+    
+    field :message, :type => String
   end
 end

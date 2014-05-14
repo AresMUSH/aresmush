@@ -3,10 +3,13 @@ module AresMUSH
     class PostTemplate
       include TemplateFormatters
             
-      def initialize(board, post, client)
+      attr_accessor :replies
+      
+      def initialize(board, post, client, replies)
         @board = board
         @post = post
         @client = client
+        @replies = replies
       end
       
       def name
@@ -18,7 +21,8 @@ module AresMUSH
       end
       
       def author
-        right(@post.author.name, 46)
+        name = @post.author.nil? ? t('bbs.deleted_author') : @post.author.name
+        right(name, 46)
       end
       
       def date

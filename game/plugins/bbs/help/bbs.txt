@@ -1,21 +1,25 @@
-The bulletin board system lets you stay posted on game news and events.  There are various %xhboards%xn available, each with a different purpose.  Some boards are restricted, and the system will tell you which boards you can read and which ones you can write (aka post) to.
+The bulletin board system lets you stay posted on game news and events.  There are various %xhboards%xn available, each with a different purpose.
 
-Those familiar with %xh%xbMyrddin's BBS%xn from other MUSH systems should find that the commands you're used to (bbread, bbpost, etc.) also work here.
+Those familiar with %xh%xrMyrddin's BBS%xn from other MUSH systems should find that the commands you're used to (bbread, bbpost, etc.) also work here.
 
-For all of the bbs commands, you can specify either the board name or number.
+NOTE: For all of the bbs commands, you can specify either the board name or number.
 
     %xcbbs%xn - Lists available boards.
     %xcbbs <board>%xn - Lists posts on the selected board.
     %xcbbs <board>/<post #>%xn - Reads the selected post.
 
-    %xcbbs/post <board>=<subject>/<body>%xn - Writes a new post.
-    %xcbbs/reply <reply>%xn - Replies to the last post you read.
-    %xcbbs/reply <board>/<post #>=<reply>%xn - Writes a comment as a reply to a post.
+To quickly read new posts and replies, you can use the bbs/new command.
 
     %xcbbs/new%xn - Reads the first unread message.
     %xcbbs/catchup <board>%xn - Marks all unread messages as read.
 
-You can also edit or delete your own posts.
+On boards that you are allowed to write to, you can post a new message or reply to an existing message.
+
+    %xcbbs/post <board>=<subject>/<body>%xn - Writes a new post.
+    %xcbbs/reply <reply>%xn - Replies to the last post you read.
+    %xcbbs/reply <board>/<post #>=<reply>%xn - Writes a comment as a reply to a post.
+
+You can also edit or delete your own posts.  Currently there is no way to edit or delete replies.
 
     %xcbbs/edit <board>/<post #>%xn - Grabs the existing post text.
     %xcbbs/edit <board>/<post #>=<new text>%xn - Replaces post text with the new text.
