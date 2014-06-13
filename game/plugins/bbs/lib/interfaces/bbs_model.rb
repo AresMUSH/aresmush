@@ -14,7 +14,7 @@ module AresMUSH
     has_many :bbs_posts, order: :created_at.asc, :dependent => :delete
     
     def has_unread?(char)
-      bbs_posts.each.any? { |p| p.is_unread?(char) }
+      bbs_posts.any? { |p| p.is_unread?(char) }
     end
     
     def self.all_sorted

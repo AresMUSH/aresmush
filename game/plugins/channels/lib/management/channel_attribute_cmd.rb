@@ -36,7 +36,7 @@ module AresMUSH
         Channels.with_a_channel(name, client) do |channel|
           channel.color = self.attribute
           channel.save!
-          client.emit_success t('channels.color_set', :name => channel.display_name)
+          client.emit_success "%xn#{t('channels.color_set', :name => channel.display_name)}"
         end
       end
     end

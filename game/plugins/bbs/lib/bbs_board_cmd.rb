@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch.nil? && (cmd.args !~ /[=\/]/)        
+        cmd.root_is?("bbs") && cmd.switch.nil? && !cmd.args.nil? && (cmd.args !~ /[=\/]/)        
       end
       
       def crack!
