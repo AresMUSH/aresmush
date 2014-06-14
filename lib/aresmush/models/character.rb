@@ -37,7 +37,7 @@ module AresMUSH
     end
     
     def self.check_name(name)
-      return t('validation.name_too_short') if (name.length < 3)
+      return t('validation.name_too_short') if (name.length < 2)
       return t('validation.name_must_be_capitalized') if (name[0].downcase == name[0])
       return t('validation.char_name_taken') if (Character.found?(name))
       return nil

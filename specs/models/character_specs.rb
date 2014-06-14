@@ -78,7 +78,7 @@ module AresMUSH
     
     describe :check_name do
       it "should fail if name is too short" do
-        Character.check_name("Ab").should eq "validation.name_too_short"
+        Character.check_name("A").should eq "validation.name_too_short"
       end
       
       it "should fail if the char already exists" do
