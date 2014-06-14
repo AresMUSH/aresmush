@@ -86,6 +86,17 @@ module AresMUSH
         @dispatcher.should_receive(:on_command).with(@client, cmd)
         @client.handle_input "Yay"        
       end
+      
+      it "should ignore null input" do
+        @dispatcher.should_not_receive(:on_command)
+        @client.handle_input nil
+      end
+      
+      it "should ignore empty input" do
+        @dispatcher.should_not_receive(:on_command)
+        @client.handle_input ""
+        @client.handle_input "\n"
+      end
     end
 
     describe :disconnect do

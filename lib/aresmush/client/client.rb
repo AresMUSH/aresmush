@@ -67,6 +67,7 @@ module AresMUSH
     def handle_input(input)
       begin
         self.last_activity = Time.now
+        return if input.nil? || input.chomp.empty?
         Global.dispatcher.on_command(self, Command.new(input))
       rescue Exception => e
         Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")

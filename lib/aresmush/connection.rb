@@ -38,11 +38,19 @@ module AresMUSH
     end
     
     def receive_data(data)
-      @client.handle_input(data)
+      input = strip_control_chars(data)
+      @client.handle_input(input)
     end
 
     def unbind
       @client.connection_closed
-    end     
+    end  
+    
+    private 
+    
+    def strip_control_chars(data)
+      stripped = data.gsub(/\^M/,"\n")
+      stripped.gsub(/\^@/,"")
+    end   
   end
 end

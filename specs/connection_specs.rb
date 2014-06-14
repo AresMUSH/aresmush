@@ -32,6 +32,20 @@ module AresMUSH
         client.should_receive(:handle_input).with("test")
         @connection.receive_data("test")        
       end
+      
+      it "should strip null control codes" do
+        client = double
+        @connection.client = client
+        client.should_receive(:handle_input).with("test")
+        @connection.receive_data("test^@")    
+      end
+      
+      it "should convert control code newline to newline" do
+        client = double
+        @connection.client = client
+        client.should_receive(:handle_input).with("test\n")
+        @connection.receive_data("test^M")    
+      end
     end
     
     describe :unbind do
