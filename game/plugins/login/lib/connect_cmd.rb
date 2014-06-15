@@ -42,9 +42,13 @@ module AresMUSH
             existing_client.disconnect
             EM.add_timer(1) { announce_connection }
           else
-            Global.dispatcher.queue_event CharConnectedEvent.new(client)
+            announce_connection
           end
         end
+      end
+      
+      def announce_connection
+        Global.dispatcher.queue_event CharConnectedEvent.new(client)
       end
       
       def log_command
