@@ -12,19 +12,18 @@ module AresMUSH
     ### IMPORTANT!!!  Do not call from outside of EventMachine
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
-      handled = false
+      @handled = false
       with_error_handling(client, cmd) do
         CommandAliasParser.substitute_aliases(client, cmd)
         Global.plugin_manager.plugins.each do |p|
           with_error_handling(client, cmd) do
             if (p.want_command?(client, cmd))
               p.on_command(client, cmd)
-              handled = true
-              break
+              return
             end # if
           end # with error handling
         end # each
-        if (!handled)
+        if (!@handled)
           Global.logger.info("Unrecognized command: #{cmd}")
           client.emit_ooc t('dispatcher.huh')
         end
@@ -56,7 +55,7 @@ module AresMUSH
         raise SystemExit
       rescue Exception => e
         begin
-          handled = true
+          @handled = true
           Global.logger.error("Error handling command: client=#{client.id} cmd=#{cmd} error=#{e} backtrace=#{e.backtrace[0,10]}")
           client.emit_failure t('dispatcher.error_executing_command', :cmd => cmd.raw, :error_info => e)
         rescue Exception => e2
