@@ -80,6 +80,12 @@ module AresMUSH
     end
 
     describe :handle_input do
+      before do 
+        Global.logger.stub(:error) do |msg| 
+          raise msg
+        end
+      end
+      
       it "should create a command and notify the dispatcher" do
         cmd = double
         Command.should_receive(:new).with("Yay") { cmd }
@@ -94,8 +100,10 @@ module AresMUSH
       
       it "should ignore empty input" do
         @dispatcher.should_not_receive(:on_command)
-        @client.handle_input ""
         @client.handle_input "\n"
+        @client.handle_input "\r\n"
+        @client.handle_input "\n\n"
+        @client.handle_input "      "
       end
     end
 
