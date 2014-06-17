@@ -11,7 +11,7 @@ module AresMUSH
       msg = msg.gsub("\\%", "%")
       # Always end with ANSI reset & linebreak to flush output
       msg.chomp!
-      msg = msg + ANSI.reset + "\n"
+      msg = msg + ANSI.reset + "\r\n"
     end
     
   end

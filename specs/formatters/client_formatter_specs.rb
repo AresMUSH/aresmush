@@ -6,7 +6,7 @@ module AresMUSH
 
   describe ClientFormatter do
    def expect_msg(expected, actual)
-     actual.should eq expected + ANSI.reset + "\n"
+     actual.should eq expected + ANSI.reset + "\r\n"
    end
    
     describe :format do
