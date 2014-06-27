@@ -9,10 +9,13 @@ You will only see messages on channels you have chosen to join, and you may leav
     %xcchannel/leave <channel>%xn
     %xc<channelalias> <message>%xn - Talks on channel
 
+NOTE: Take care to avoid channel aliases that overlap with other commands, like 'n' for north or 'p' for page.  Remember that AresMUSH ignores prefixes like '+' on commands to (so +p is out too).
+
 You can also use MUX-style channel commands, by using the keywords "on", "off", "who", "gag", and "ungag" with the channel alias.  For example:  %xh+pub who%xn.
 
 Other handy channel commands:
     %xcchannel/who <channel>%xn - Shows who's on the channel
+    %xcchannel/alias <channel>=<alias>%xn - Changes the alias used to talk on the channel.
     %xcchannel/title <channel>=<title>%xn - Sets a title displayed before your name.
         You can use ansi codes in this title.
     %xcchannel/gag <channel> or channel/ungag <channel>%xn - Despams for awhile.
