@@ -6,7 +6,13 @@ help:
                     toc_topic: '1 - Getting Started'
                     file: 'game/plugins/login/help/login.txt'
                     summary: 'Creating, connecting and managing passwords.'
-                    aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit', 'guest', 'announce' ]
+                    aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit', 'guest' ]
+
+                announce: 
+                    toc_topic: 'Misc'
+                    file: 'game/plugins/login/help/announce.txt'
+                    summary: 'Configure what connection messages you see.'
+                    aliases: [ ]
         admin:
             topics:
                 login: 

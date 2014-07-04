@@ -12,10 +12,6 @@ You can associate an email address with your account, to enable admin to contact
     %xcemail%xn - Views your registered email
     %xcemail/set <email>%xn - Changes the email registered with your account.
 
-You can customize which "SoAndSo has connected." messages you see. See %xchelp friends%xn for more info on managing your friends list.
-
-    %xcannounce <all, none, friends>%xn - Whose connect messages do you see.
-        
 Other login-related commands:
 
     %xcquit%xn - Disconnects from the game.
