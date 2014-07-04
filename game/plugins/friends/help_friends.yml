@@ -1,0 +1,9 @@
+help:
+    categories:
+        main:
+            topics:
+                friends: 
+                    toc_topic: 'Community'
+                    file: 'game/plugins/friends/help/friends.txt'
+                    summary: 'Interacting with your friends.'
+                    aliases: [ 'announce', 'friend', 'spam' ]

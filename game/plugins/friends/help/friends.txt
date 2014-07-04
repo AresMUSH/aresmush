@@ -1,0 +1,5 @@
+The Friends system helps you to interact with people you have designated as your friends.
+
+    %xcfriends%xn - Shows your friends list.
+    %xcfriend/add <name>%xn - Adds a friend.
+    %xcfriend/remove <name>%xn - Removes a friend.

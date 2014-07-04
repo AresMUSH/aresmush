@@ -1,0 +1,7 @@
+en:
+    friends:
+        friends_title: "Friends"
+        already_friend: "%{name} is already on your friends list."
+        not_friend: "%{name} is not on your friends list."
+        friend_added: "%{name} has been added to your friends list."
+        friend_removed: "%{name} has been removed from your friends list."
