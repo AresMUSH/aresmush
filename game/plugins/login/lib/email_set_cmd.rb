@@ -3,9 +3,16 @@ module AresMUSH
     class EmailSetCmd
       include Plugin
       include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :email
 
+      def initialize
+        self.required_args = ['email']
+        self.help_topic = 'email'
+        super
+      end
+            
       def want_command?(client, cmd)
         cmd.root_is?("email") && cmd.switch_is?("set")
       end
