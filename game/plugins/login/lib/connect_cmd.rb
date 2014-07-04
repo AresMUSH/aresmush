@@ -18,6 +18,7 @@ module AresMUSH
       
       def check_for_guest_or_password
         return t('login.maybe_you_meant_tour') if cmd.raw.downcase.chomp == "connect guest"
+        return t('login.maybe_you_meant_tour') if cmd.raw.downcase.chomp == "connect guest guest"
         return t('dispatcher.invalid_syntax', :command => 'connect') if self.password.nil? || self.charname.nil?
         return nil
       end
