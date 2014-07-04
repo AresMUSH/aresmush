@@ -11,7 +11,7 @@ module AresMUSH
     field :read_roles, :type => Array, :default => []
     field :write_roles, :type => Array, :default => []
     
-    has_many :bbs_posts, order: :created_at.asc, :dependent => :delete
+    has_many :bbs_posts, order: :created_at.asc, :dependent => :destroy
     
     def has_unread?(char)
       bbs_posts.any? { |p| p.is_unread?(char) }
@@ -33,7 +33,7 @@ module AresMUSH
     belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_bbposts'
     
     has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
-    has_many :bbs_replies, order: :created_at.asc, :dependent => :delete
+    has_many :bbs_replies, order: :created_at.asc, :dependent => :destroy
     
     def is_unread?(char)
       !readers.include?(char)
