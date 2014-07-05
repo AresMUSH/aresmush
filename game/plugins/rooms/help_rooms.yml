@@ -7,9 +7,9 @@ help:
                     file: 'game/plugins/rooms/help/meetme.txt'
                     summary: 'Meeting up for roleplay.'
                     aliases: [ 'meetme' ]
-                getting around:
+                moving:
                     toc_topic: "Getting Around"
-                    file: 'game/plugins/rooms/help/moving_around.txt'
+                    file: 'game/plugins/rooms/help/getting_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'go', 'move', 'rooms', 'exit', 'home' ]                
         admin:

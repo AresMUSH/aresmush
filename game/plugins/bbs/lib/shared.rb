@@ -34,6 +34,7 @@ module AresMUSH
     
     def self.with_a_post(board_name, num, client, &block)
       with_a_board(board_name, client) do |board|
+        
         if (num !~ /^[\d]+$/)
           client.emit_failure t('bbs.invalid_post_number')
           return

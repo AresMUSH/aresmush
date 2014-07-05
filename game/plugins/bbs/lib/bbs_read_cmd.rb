@@ -25,6 +25,11 @@ module AresMUSH
       end
       
       def handle
+        if (self.num.downcase == 'u')
+          Global.dispatcher.queue_command(client, Command.new("bbs/new #{self.board_name}"))
+          return
+        end
+        
         Bbs.with_a_post(self.board_name, self.num, client) do |board, post|      
           client.emit RendererFactory.post_renderer.render(board, post, client)
           post.mark_read(client.char)

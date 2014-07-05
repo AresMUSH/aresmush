@@ -11,8 +11,8 @@ module AresMUSH
     end
       
     describe :ping do
-      it "should send a null char" do
-        @connection.should_receive(:send_data).with("\0")
+      it "should send an empty string" do
+        @connection.should_receive(:send_data).with("")
         @connection.ping
       end
     end

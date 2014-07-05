@@ -13,19 +13,27 @@ module AresMUSH
         
         @client = double(Client)
         @client.stub(:name) { "Bob" }
+        @char = double
+        @client.stub(:char) { @char }
+        client_monitor.stub(:clients) { [@client] }
         @login_events = LoginEvents.new
       end
       
       describe :on_char_connected_event do
         before do
-          @char = double
-          @client.stub(:char) { @char }
-          @char.stub(:has_role?) { false }
-          client_monitor.stub(:emit_all_ooc)
+#          @char.stub(:has_role?) { false }
+          #client_monitor.stub(:emit_all_ooc)
         end
         
-        it "should announce the char" do
-          client_monitor.should_receive(:emit_all_ooc).with("announce_char_connected")
+        it "should announce the char if the client wants it" do
+          Login.stub(:wants_announce) { true }
+          @client.should_receive(:emit_ooc).with("announce_char_connected")
+          @login_events.on_char_connected_event CharConnectedEvent.new(@client)
+        end
+
+        it "should not announce the char if the client doesn't want it" do
+          Login.stub(:wants_announce) { false }
+          @client.should_not_receive(:emit_ooc)
           @login_events.on_char_connected_event CharConnectedEvent.new(@client)
         end
       end
@@ -38,8 +46,15 @@ module AresMUSH
       end
       
       describe :on_char_disconnected_event do
-        it "should announce the char" do
-          client_monitor.should_receive(:emit_all_ooc).with("announce_char_disconnected")
+        it "should announce the char if the client wants it" do
+          Login.stub(:wants_announce) { true }
+          @client.should_receive(:emit_ooc).with("announce_char_disconnected")
+          @login_events.on_char_disconnected_event CharDisconnectedEvent.new(@client)
+        end
+        
+        it "should not announce the char if the client doesn't want it" do
+          Login.stub(:wants_announce) { false }
+          @client.should_not_receive(:emit_ooc)
           @login_events.on_char_disconnected_event CharDisconnectedEvent.new(@client)
         end
       end

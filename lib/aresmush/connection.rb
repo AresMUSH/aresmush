@@ -14,7 +14,7 @@ module AresMUSH
     end
 
     def ping
-      send_data "\0"
+      send_data ""
     end
     
     def send_data(msg)

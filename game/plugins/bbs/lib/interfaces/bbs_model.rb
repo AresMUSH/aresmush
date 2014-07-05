@@ -20,6 +20,11 @@ module AresMUSH
     def self.all_sorted
       BbsBoard.all.sort { |b1, b2| b1.name <=> b2.name }
     end
+    
+    def first_unread(char)
+      all_unread = bbs_posts.select { |p| p.is_unread?(char) }
+      all_unread.first
+    end
   end
   
   class BbsPost

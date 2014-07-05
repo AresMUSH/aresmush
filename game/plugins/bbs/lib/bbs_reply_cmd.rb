@@ -53,6 +53,8 @@ module AresMUSH
 
         BbsReply.create(author: client.char, bbs_post: post, message: self.reply)
         post.mark_unread
+        post.mark_read(client.char)
+        
         Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
         client.program.delete(:last_bbs_post)
       end
