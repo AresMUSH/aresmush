@@ -11,6 +11,7 @@ module AresMUSH
       str = str.code_gsub("%l3", Line.show("3"))
       str = str.code_gsub("%l4", Line.show("4"))
 
+      str = str.code_gsub("%[bB]", " ")
       str = str.code_gsub("%[rR]", "\n")
       str = str.code_gsub("%[tT]", "     ")
       str = str.code_gsub("%~", "\u2682")

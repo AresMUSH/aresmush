@@ -17,6 +17,10 @@ module AresMUSH
       it "should replace %r and %R with linebreaks" do
         SubstitutionFormatter.format("Test%rline%Rline2").should eq "Test\nline\nline2"
       end
+      
+      it "should replace %b and %B with blank space" do
+        SubstitutionFormatter.format("Test%bblank%Bspace").should eq "Test blank space"
+      end
 
       it "should replace %t and %T with 5 spaces" do
         SubstitutionFormatter.format("Test%tTest2%TTest3").should eq "Test     Test2     Test3"
