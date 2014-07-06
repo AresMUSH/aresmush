@@ -8,6 +8,7 @@ module AresMUSH
       attr_accessor :names, :message
       
       def want_command?(client, cmd)
+        return false if !cmd.prefix.nil?
         cmd.root_is?("page")
       end
       

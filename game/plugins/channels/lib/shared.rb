@@ -50,7 +50,9 @@ module AresMUSH
     
     def self.channel_for_alias(char, channel_alias)
       char.channel_options.keys.each do |k|
-        if (char.channel_options[k]["alias"] == channel_alias)
+        a1 = CommandCracker.strip_prefix(char.channel_options[k]["alias"])
+        a2 = CommandCracker.strip_prefix(channel_alias)
+        if (a1 == a2)
           return Channel.find_by_name(k)
         end
       end

@@ -18,9 +18,8 @@ module AresMUSH
       
       describe :want_command? do
         before do
-          Channels.stub(:channel_for_alias).with(char, "+pub") { @channel }
-          Channels.stub(:channel_for_alias).with(char, "+oth") { nil }
-          Channels.stub(:channel_for_alias).with(char, "=pub") { nil }
+          Channels.stub(:channel_for_alias).with(char, "pub") { @channel }
+          Channels.stub(:channel_for_alias).with(char, "oth") { nil }
           client.stub(:logged_in?) { true }
         end
         
@@ -37,11 +36,6 @@ module AresMUSH
         
         it "should not want the cmd if no matching alias found" do
           cmd = Command.new("+oth Hi.")
-          handler.want_command?(client, cmd).should be_false
-        end
-        
-        it "should include the prefix in the match" do
-          cmd = Command.new("=pub Hi.")
           handler.want_command?(client, cmd).should be_false
         end
         

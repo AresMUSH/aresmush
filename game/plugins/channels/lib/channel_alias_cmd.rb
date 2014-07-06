@@ -23,6 +23,7 @@ module AresMUSH
         self.alias = trim_input(cmd.args.arg2)
       end
       
+      
       def handle
         Channels.with_an_enabled_channel(self.name, client) do |channel|
           if (!Channels.channel_for_alias(client.char, self.alias).nil?)
@@ -33,6 +34,11 @@ module AresMUSH
           Channels.set_channel_option(client.char, channel, "alias", self.alias)
           client.emit_success t('channels.channel_alias_set', :name => self.name, :channel_alias => self.alias)
           client.char.save!
+          
+          trimmed_alias = CommandCracker.strip_prefix(self.alias)
+          if (trimmed_alias.nil? || trimmed_alias.length < 2)
+            client.emit_success t('channels.short_alias_warning')
+          end
         end
       end
     end  

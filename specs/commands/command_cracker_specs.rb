@@ -146,5 +146,15 @@ module AresMUSH
       end
     end
   
+    describe :strip_prefix do
+      it "should remove prefixes" do
+        CommandCracker.strip_prefix("+xyz").should eq "xyz"
+        CommandCracker.strip_prefix("@xyz").should eq "xyz"
+        CommandCracker.strip_prefix("=xyz").should eq "xyz"
+        CommandCracker.strip_prefix("&xyz").should eq "xyz"
+        CommandCracker.strip_prefix("xyz").should eq "xyz"
+      end
+    end
+    
   end
 end

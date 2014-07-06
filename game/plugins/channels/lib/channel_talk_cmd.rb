@@ -9,7 +9,7 @@ module AresMUSH
 
       def want_command?(client, cmd)
         return false if !client.logged_in?
-        self.alias = "#{cmd.prefix}#{cmd.root}"
+        self.alias = cmd.root
         self.channel = Channels.channel_for_alias(client.char, self.alias)
         !self.channel.nil?
       end

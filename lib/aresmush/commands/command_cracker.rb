@@ -27,5 +27,9 @@ module AresMUSH
       }
     end
     
+    def self.strip_prefix(str)
+      str.nil? ? nil : str.sub(/^[\/\+\=\@\&]/, '')
+    end
+    
   end
 end
