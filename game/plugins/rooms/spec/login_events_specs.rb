@@ -25,12 +25,6 @@ module AresMUSH
           Rooms.should_receive(:emit_here_desc).with(@client)
           @login.on_char_connected_event CharConnectedEvent.new(@client)
         end
-
-        it "should announce the char's connection to the room" do
-          @room.should_receive(:emit_ooc).with("char_has_arrived")
-          Rooms.stub(:emit_here_desc)
-          @login.on_char_connected_event CharConnectedEvent.new(@client)
-        end
       end
       
       describe :on_char_disconnected_event do   

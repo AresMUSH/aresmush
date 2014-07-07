@@ -16,6 +16,7 @@ module AresMUSH
     
     def self.wants_announce(listener, connector)
       return true if listener.announce == "all"
+      return true if listener.room == connector.room
       return false if listener.announce == "none"
       listener.friends.include?(connector)
     end
