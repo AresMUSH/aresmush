@@ -43,6 +43,7 @@ module AresMUSH
       def find_common_channels(channels, other_client)
         their_channels = other_client.char.nil? ? [] : other_client.char.channels
         intersection = channels & their_channels
+        intersection = intersection.select { |c| c.announce }
         if (intersection.empty?)
           return nil
         end

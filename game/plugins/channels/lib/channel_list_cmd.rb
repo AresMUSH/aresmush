@@ -31,9 +31,10 @@ module AresMUSH
         channel_alias = Channels.get_channel_option(client.char, channel, 'alias')
         channel_alias = "#{channel_alias}".ljust(6)
         status = status.ljust(4)
+        announce = channel.announce ? " " : "q"
         desc = left(channel.description,28)
         roles = channel.roles.join(" ")
-        "#{name} #{status} #{channel_alias} #{desc} #{roles}"
+        "#{name} #{status} #{channel_alias} #{desc} #{announce} #{roles}"
       end
     end
   end

@@ -40,6 +40,34 @@ module AresMUSH
         end
       end
     end
+    
+    class ChannelAnnounceCmd
+      include ChannelAttributeCmd
+    
+      def want_command?(client, cmd)
+        cmd.root_is?("channel") && cmd.switch_is?("announce")
+      end
+    
+      def check_option
+        return nil if self.attribute == 'on'
+        return nil if self.attribute == 'off'
+        t('channels.invalid_announce_option') 
+      end
+      
+      def handle
+        Channels.with_a_channel(name, client) do |channel|
+          if (self.attribute == 'on')
+            channel.announce = true
+            channel.save!
+            client.emit_success "%xn#{t('channels.announce_enabled', :name => channel.display_name)}"
+          else
+            channel.announce = false
+            channel.save!
+            client.emit_success "%xn#{t('channels.announce_disabled', :name => channel.display_name)}"
+          end          
+        end
+      end
+    end
   
     class ChannelDescCmd
       include ChannelAttributeCmd

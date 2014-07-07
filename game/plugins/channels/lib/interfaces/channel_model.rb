@@ -8,8 +8,9 @@ module AresMUSH
     
     include ObjectModel
     
-    field :color, :type => String
+    field :color, :type => String, :default => "%xh"
     field :description, :type => String
+    field :announce, :type => Boolean, :default => true
     field :roles, :type => Array, :default => []
     
     has_and_belongs_to_many :characters
