@@ -14,5 +14,10 @@ module AresMUSH
     
     belongs_to :character, :inverse_of => :friendships
     belongs_to :friend, :class_name => 'AresMUSH::Character', :foreign_key =>'friend_id', :inverse_of => :friends_of
+    after_save :reload_clients
+    
+    def reload_clients
+      Global.client_monitor.reload_clients
+    end
   end
 end
