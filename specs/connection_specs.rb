@@ -12,7 +12,7 @@ module AresMUSH
       
     describe :ping do
       it "should send an empty string" do
-        @connection.should_receive(:send_data).with("")
+        @connection.should_receive(:send_data).with("\e[0m")
         @connection.ping
       end
     end
@@ -37,7 +37,7 @@ module AresMUSH
         client = double
         @connection.client = client
         client.should_receive(:handle_input).with("test")
-        @connection.receive_data("test^@")    
+        @connection.receive_data("test^@\0")    
       end
       
       it "should convert control code newline to newline" do

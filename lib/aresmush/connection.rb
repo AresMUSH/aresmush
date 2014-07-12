@@ -14,7 +14,7 @@ module AresMUSH
     end
 
     def ping
-      send_data ""
+      send_data ANSI.reset
     end
     
     def send_data(msg)
@@ -50,6 +50,7 @@ module AresMUSH
     
     def strip_control_chars(data)
       stripped = data.gsub(/\^M/,"\n")
+      stripped = stripped.gsub(/\0/,"")
       stripped.gsub(/\^@/,"")
     end   
   end
