@@ -37,9 +37,11 @@ module AresMUSH
       it "should log the client and command by default" do
         cmd = double
         client = double
+        client.should_receive(:to_s) { "client" }
         cmd.should_receive(:to_s) { "Cmd" }
         @plugin.cmd = cmd
-        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: Cmd")
+        @plugin.client = client
+        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: client Cmd=Cmd")
         @plugin.log_command
       end
     end

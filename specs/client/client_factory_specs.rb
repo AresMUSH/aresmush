@@ -9,6 +9,7 @@ module AresMUSH
     before do
       @factory = ClientFactory.new
       @connection = double.as_null_object
+      Resolv.stub(:getname) { "fakehost" }
     end
       
     it "should initialize and return a client" do

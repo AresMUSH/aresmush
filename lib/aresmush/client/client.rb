@@ -2,7 +2,7 @@ module AresMUSH
 
   class Client 
 
-    attr_reader :ip_addr, :id
+    attr_reader :ip_addr, :id, :hostname
     attr_accessor :char, :last_activity, :last_connect, :program
     
     def initialize(id, connection)
@@ -10,6 +10,8 @@ module AresMUSH
       @connection = connection
       self.last_activity = Time.now
       self.last_connect = Time.now
+      @ip_addr = @connection.ip_addr
+      @hostname = Resolv.getname @ip_addr
       @program = {}
     end
     

@@ -9,6 +9,8 @@ module AresMUSH
 
     before do
       @connection = double
+      @connection.stub(:ip_addr) { "1.2.3.4" }
+      Resolv.stub("getname").with("1.2.3.4") { "fake host" }
       @client = Client.new(1, @connection)
       SpecHelpers.stub_translate_for_testing
       stub_global_objects
@@ -169,5 +171,16 @@ module AresMUSH
       end
     end
     
+    describe :ip_addr do
+      it "should return the IP of the connection" do
+        @client.ip_addr.should eq "1.2.3.4"
+      end
+    end
+    
+    describe :hostname do
+      it "should resolve the IP address" do
+        @client.hostname.should eq "fake host"
+      end
+   end 
   end
 end

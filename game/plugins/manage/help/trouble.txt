@@ -1,0 +1,6 @@
+Unfortunately, you will sometimes have to deal with troublesome players.  These commands will help.
+
+     %xcboot <name>%xn - Forcibly disconnects someone from the game.
+     %xcfindsite <name, host or IP>%xn - Shows someone's IP address and any similar 
+         ones on other chars. Be aware, though, that many internet providers share blocks 
+         of addresses, so even similar-looking ones may in fact be different people.
