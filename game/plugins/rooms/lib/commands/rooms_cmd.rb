@@ -1,0 +1,36 @@
+module AresMUSH
+  module Rooms
+    class RoomsCmd
+      include Plugin
+      include PluginRequiresLogin
+      include PluginWithoutSwitches
+
+      attr_accessor :name
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("rooms")
+      end
+      
+      def crack!
+        self.name = trim_input(cmd.args)
+      end
+
+      def check_can_build
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return nil
+      end
+      
+      def handle
+        if (self.name.nil?)
+          objects = Room.all
+        else
+          objects = Room.find_all_by_name(self.name)
+        end
+        
+        objects = objects.sort { |a,b| a.name_upcase <=> b.name_upcase}
+        objects = objects.map { |r| "#{r.id} #{r.name}"}
+        client.emit BorderedDisplay.list(objects, t('rooms.room_directory'))
+      end
+    end
+  end
+end

@@ -21,6 +21,19 @@ help:
                     aliases: [ 'build', 'open', 'rooms', 'dig', 'link', 'unlink' ]
                 getting around: 
                     toc_topic: 'Getting Around'
-                    file: 'game/plugins/manage/help/admin_getting_around.txt'
+                    file: 'game/plugins/rooms/help/admin_getting_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'teleport', 'join' ]
+        builder:
+            topics:
+                building: 
+                    toc_topic: 'Building'
+                    file: 'game/plugins/rooms/help/building.txt'
+                    summary: 'Building the grid.'
+                    aliases: [ 'build', 'open', 'rooms', 'dig', 'link', 'unlink' ]
+                getting around: 
+                    toc_topic: 'Building'
+                    file: 'game/plugins/rooms/help/admin_getting_around.txt'
+                    summary: 'Getting around the grid.'
+                    aliases: [ 'teleport', 'join' ]
+            

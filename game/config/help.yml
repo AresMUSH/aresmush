@@ -13,4 +13,11 @@ help:
             title: "Admin Help"
             roles: 
                 - admin
+        builder:
+            command: bhelp
+            title: "Builder Help"
+            roles: 
+                - builder
+                - admin
+                
             

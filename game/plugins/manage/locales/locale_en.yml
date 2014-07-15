@@ -38,3 +38,5 @@ en:
         
         findsite_title: "Possible site matches for %{search}"
         findsite_player_info: "Hostname: %{hostname} IP: %{ip}"
+        
+        room_directory: "Room Directory"
