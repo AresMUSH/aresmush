@@ -7,3 +7,8 @@ help:
                     file: 'game/plugins/utils/help/echo.txt'
                     summary: "Asides to yourself."
                     aliases: [ 'think' ]
+                sweep: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/sweep.txt'
+                    summary: "Ensure room privacy."
+                    aliases: [ ]
