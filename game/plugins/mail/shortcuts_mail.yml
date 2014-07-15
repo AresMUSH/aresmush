@@ -1,0 +1,5 @@
+shortcuts:
+    full:
+        "mail/clear": "mail/delete"
+        "mail/unclear" : "mail/undelete"
+        "mail/purge" : "mail/emptytrash"

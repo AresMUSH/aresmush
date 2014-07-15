@@ -1,0 +1,9 @@
+help:
+    categories:
+        main:
+            topics:
+                mail: 
+                    toc_topic: 'Communicating'
+                    file: 'game/plugins/mail/help/mail.txt'
+                    summary: 'Send messages to people who are offline.'
+                    aliases: []

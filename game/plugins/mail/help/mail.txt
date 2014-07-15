@@ -1,0 +1,18 @@
+The %xhMail System%xn lets you send messages to players who are not online, similiar to email.
+
+    %xcmail%xn - Shows your inbox.
+    %xcmail <#>%xn - Reads a message in your inbox.
+    %xcmail/new%xn - Reads your first unread message.
+    
+Sending mail is easy. The "to" field can include any number of player names, separated by spaces. You can also forward a message from your inbox to someone else.
+
+    %xcmail <to>=<subject>/<message>%xn - Sends a message.
+    %xcmail/fwd <#>=<to>/<comment>%xn or - Forwards a message, along with an optional comment.
+
+You can also delete a message.  Technically this doesn't delete it right away, but tags it as trash.  Messages tagged as trash are deleted when you log out.
+
+    %xcmail/delete <#>%xn - Sends a message to the trash.
+    %xcmail/undelete <#>%xn - Recovers a message from the trash.
+    %xcmail/emptytrash%xn - Permanently deletes messages in the trash.
+
+

@@ -1,0 +1,12 @@
+<%= line %>
+%xh%x![ <%= folder %> ]%xn
+%xh<%= t('mail.inbox_title') %>%xn
+<%= line 2 %>
+<% messages.each_with_index do |m, i| -%> 
+<%= m.num(i) -%>
+ <%= m.tags -%>
+ <%= m.author -%> 
+ <%= m.subject -%>
+ <%= m.date %> 
+<% end %>
+<%= line %>
