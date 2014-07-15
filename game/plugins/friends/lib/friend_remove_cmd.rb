@@ -29,7 +29,7 @@ module AresMUSH
             return
           end
           
-          friendship.delete
+          friendship.destroy
 
           client.emit_success t('friends.friend_removed', :name => self.name)
         end
