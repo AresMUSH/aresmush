@@ -1,7 +1,7 @@
 en:
     bbs:
-        boards_list_title: " #       Name                        Description                         R/W"
-        board_title: " #       Subject                        Author                    Posted"
+        boards_list_title: "  #       Name                        Description                         R/W"
+        board_title: "  #       Subject                        Author                    Posted"
         unread_marker: "(U)"
 
         board_already_exists: "That board already exists."

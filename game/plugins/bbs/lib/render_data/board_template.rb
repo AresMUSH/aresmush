@@ -39,7 +39,7 @@ module AresMUSH
       end
       
       def num(i)
-        "#{i+1}".rjust(2)
+        "#{i+1}".rjust(3)
       end
       
       def unread_status

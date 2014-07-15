@@ -5,8 +5,9 @@ module AresMUSH
   end
   
   class BbsBoard
-    include ObjectModel
-    
+    include Mongoid::Document
+    include Mongoid::Timestamps
+        
     field :description, :type => String
     field :read_roles, :type => Array, :default => []
     field :write_roles, :type => Array, :default => []

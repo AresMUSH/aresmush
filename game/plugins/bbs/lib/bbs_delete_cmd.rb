@@ -31,7 +31,7 @@ module AresMUSH
             return
           end
                              
-          post.delete
+          post.destroy
           client.emit_success(t('bbs.post_deleted', :board => board.name, :num => self.num))
         end
       end
