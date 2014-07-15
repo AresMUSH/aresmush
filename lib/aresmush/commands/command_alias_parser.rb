@@ -11,13 +11,14 @@ module AresMUSH
       return if shortcut_config.nil?
       
       roots_config = shortcut_config['roots']
-      if (!roots_config.nil? && roots_config.has_key?(cmd.root))
-        cmd.root = roots_config[cmd.root]
+      root = cmd.root.downcase
+      if (!roots_config.nil? && roots_config.has_key?(root))
+        cmd.root = roots_config[root]
       end
       
       full_config = shortcut_config['full']
       separator = cmd.switch.nil? ? "" : "/" 
-      root_plus_switch = "#{cmd.root}#{separator}#{cmd.switch}"
+      root_plus_switch = "#{cmd.root}#{separator}#{cmd.switch}".downcase
       if (!full_config.nil? && full_config.has_key?(root_plus_switch))
         new_cmd = full_config[root_plus_switch]
         cmd.root = new_cmd.first("/")
