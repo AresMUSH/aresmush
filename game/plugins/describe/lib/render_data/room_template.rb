@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def ooc_time
-        DateTime.now
+        DateTime.now.strftime("%a %b %m, %Y %l:%M%P EST")
       end
     end
   end
