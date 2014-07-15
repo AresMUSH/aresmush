@@ -1,0 +1,3 @@
+The sweep command can be used to clear disconnected players out of a room, to keep them from connecting into the middle of a private scene.
+
+   %sweep%xn

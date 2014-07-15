@@ -1,0 +1,4 @@
+en:
+    sweep:
+        cant_find_exit: "There doesn't seem to be an exit out of this room."
+        sweep_complete: "Disconnected players have been swept out of the room."
