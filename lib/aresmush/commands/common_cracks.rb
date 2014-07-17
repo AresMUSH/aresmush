@@ -1,5 +1,9 @@
 module AresMUSH
   module CommonCracks
+    def self.arg1_slash_arg2
+      /(?<arg1>[^\/]+)\/(?<arg2>.+)/
+    end
+
     def self.arg1_equals_arg2
       /(?<arg1>[^\=]+)\=(?<arg2>.+)/
     end

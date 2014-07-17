@@ -11,7 +11,11 @@ module AresMUSH
       self.last_activity = Time.now
       self.last_connect = Time.now
       @ip_addr = @connection.ip_addr
-      @hostname = Resolv.getname @ip_addr
+      begin
+        @hostname = Resolv.getname @ip_addr
+      rescue
+        @hostname = ""
+      end
       @program = {}
     end
     

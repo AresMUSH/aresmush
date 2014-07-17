@@ -14,5 +14,3 @@ You can also delete a message.  Technically this doesn't delete it right away, b
     %xcmail/delete <#>%xn - Sends a message to the trash.
     %xcmail/undelete <#>%xn - Recovers a message from the trash.
     %xcmail/emptytrash%xn - Permanently deletes messages in the trash.
-
-

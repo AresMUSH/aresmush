@@ -5,6 +5,20 @@ require "aresmush"
 module AresMUSH
 
   describe CommonCracks do
+    describe "arg1_slash_arg2" do
+      it "should crack a matching command" do
+        args = ArgCracker.crack(CommonCracks.arg1_slash_arg2, "a/b")
+        args.arg1.should eq "a"
+        args.arg2.should eq "b"
+      end
+      
+      it "should set values to nil if not matched" do
+        args = ArgCracker.crack(CommonCracks.arg1_slash_arg2, "a b")
+        args.arg1.should be_nil
+        args.arg2.should be_nil
+      end
+    end
+    
     describe "arg1_equals_arg2" do
       it "should crack a matching command" do
         args = ArgCracker.crack(CommonCracks.arg1_equals_arg2, "a=b")

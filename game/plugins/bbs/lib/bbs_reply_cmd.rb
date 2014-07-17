@@ -18,7 +18,7 @@ module AresMUSH
       end
             
       def crack!
-        if (cmd.args !~ /.+\/.+\=/)
+        if (cmd.args !~ /.+\/.+\=.+/)
           self.reply = cmd.args
         else
           cmd.crack!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
