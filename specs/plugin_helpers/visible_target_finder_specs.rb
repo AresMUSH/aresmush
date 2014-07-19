@@ -34,8 +34,11 @@ module AresMUSH
         char1 = double
         char2 = double
         exit = double
-        Character.should_receive(:where).with({:room => room, :name_upcase => "A"}) { [char1, char2] }
-        Exit.should_receive(:where).with({:source => room, :name_upcase => "A"}) { [exit] }
+        char1.stub(:room) { room }
+        char2.stub(:room) { room }
+        exit.stub(:source) { room }
+        Character.should_receive(:find_all_by_name).with("A") { [char1, char2] }
+        Exit.should_receive(:find_all_by_name).with("A") { [exit] }
         result = FindResult.new(nil, "an error")
         SingleResultSelector.should_receive(:select).with([char1, char2, exit]) { result }
         VisibleTargetFinder.find("A", @client).should eq result      
@@ -46,8 +49,9 @@ module AresMUSH
         room.stub(:id) { 1 }
         @client.stub(:room) { room }
         char = double
-        Character.stub(:where) { [char] }
-        Exit.stub(:where) { [nil] }
+        char.stub(:room) { room }
+        Character.stub(:find_all_by_name) { [char] }
+        Exit.stub(:find_all_by_name) { [] }
         result = FindResult.new(char, nil)
         SingleResultSelector.should_receive(:select).with([char]) { result }
         VisibleTargetFinder.find("A", @client).should eq result      

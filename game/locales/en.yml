@@ -28,7 +28,7 @@ en:
         password_too_short: "Passwords must be at least 5 characters long."
         password_cant_have_equals: "Passwords cannot contain the = character."
         char_name_taken: "That name is already taken."
-        name_too_short: "Names must be at least 3 characters long."
+        name_too_short: "Names must be at least 2 characters long."
         name_must_be_capitalized: "Names must be capitalized."
 
     chars_connected:

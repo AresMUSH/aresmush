@@ -16,6 +16,8 @@ module AresMUSH
         send :include, Mongoid::Timestamps
         field :name, :type => String
         field :name_upcase, :type => String
+        field :alias, :type => String
+        field :alias_upcase, :type => String
         field :model_version, :type => Integer, default: 1
         before_validation :save_upcase_name
         after_save :reload_clients
@@ -23,15 +25,15 @@ module AresMUSH
       end
 
       def find_all_by_name_or_id(name_or_id)
-        where({ :$or => [{ :name_upcase => name_or_id.upcase }, { :id => name_or_id }] }).all
+        where({ :$or => [{ :name_upcase => name_or_id.upcase }, { :alias_upcase => name_or_id.upcase }, { :id => name_or_id }] }).all
       end
 
       def find_by_name(name)
-        find_by(name_upcase: name.upcase)
+        where({ :$or => [{ :name_upcase => name.upcase }, { :alias_upcase => name.upcase }] }).first
       end
 
       def find_all_by_name(name)
-        where(:name_upcase => name.upcase).all
+        where({ :$or => [{ :name_upcase => name.upcase }, { :alias_upcase => name.upcase }] }).all
       end
     
       def found?(name)
@@ -47,6 +49,8 @@ module AresMUSH
       def register_default_indexes(with_unique_name: false)
         index({ name: 1 }, { unique: with_unique_name, name: 'name_idx' })
         index({ name_upcase: 1 }, { unique: with_unique_name, name: 'name_upcase_idx' })
+        index({ alias: 1 }, { unique: with_unique_name, name: 'alias_idx' })
+        index({ alias_upcase: 1 }, { unique: with_unique_name, name: 'alias_upcase_idx' })
       end
       
     end
@@ -58,6 +62,7 @@ module AresMUSH
     private
     def save_upcase_name
       self.name_upcase = self.name.nil? ? "" : self.name.upcase
+      self.alias_upcase = self.alias.nil? ? "" : self.alias.upcase
     end
     
     def reload_clients

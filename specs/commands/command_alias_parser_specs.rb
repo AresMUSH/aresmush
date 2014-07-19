@@ -47,12 +47,12 @@ module AresMUSH
           end
       
           it "should not substitute exit names if there are other args" do
-            cmd = Command.new("E foo")
+            cmd = Command.new("X foo")
             room = double
-            room.stub(:has_exit?).with("E") { true }
+            room.stub(:has_exit?).with("X") { true }
             @client.stub(:room) { room }
             CommandAliasParser.substitute_aliases(@client, cmd)
-            cmd.root.should eq "E"
+            cmd.root.should eq "X"
             cmd.args.should eq "foo"
             cmd.switch.should be_nil
           end

@@ -2,3 +2,6 @@ en:
     sweep:
         cant_find_exit: "There doesn't seem to be an exit out of this room."
         sweep_complete: "Disconnected players have been swept out of the room."
+    alias:
+        alias_set: "Your alias is now %{alias}."
+        alias_cleared: "You have removed your alias."

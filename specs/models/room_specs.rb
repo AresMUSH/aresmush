@@ -72,6 +72,14 @@ module AresMUSH
           @room.name_upcase.should eq "TEST"
         end
       end
+      
+      it "should set the uppercase alias on save" do
+        using_test_db do
+          @room.alias = "test"
+          @room.save!
+          @room.alias_upcase.should eq "TEST"
+        end
+      end
     end
     
     describe :find_by_name do
