@@ -1,35 +1,12 @@
 module AresMUSH
   module Mail
-    module RendererFactory
-      def self.inbox_renderer=(renderer)
-        @@inbox_renderer = renderer
-      end
     
-      def self.inbox_renderer
-        @@inbox_renderer
-      end
-    
-      def self.message_renderer=(renderer)
-        @@message_renderer = renderer
-      end
-    
-      def self.message_renderer
-        @@message_renderer
-      end
-    
-      def self.forwarded_renderer=(renderer)
-        @@forwarded_renderer = renderer
-      end
-    
-      def self.forwarded_renderer
-        @@forwarded_renderer
-      end
-      
-      def self.build_renderers
+    mattr_accessor :inbox_renderer, :message_renderer, :forwarded_renderer
+        
+    def self.build_renderers
         self.inbox_renderer = InboxRenderer.new
         self.message_renderer = MessageRenderer.new
         self.forwarded_renderer = ForwardedRenderer.new
-      end
     end
     
     class InboxRenderer
@@ -38,8 +15,7 @@ module AresMUSH
       end
       
       def render(client)
-        messages = client.char.mail.map { |m| InboxMessageTemplate.new(client.char, m) }
-        data = InboxTemplate.new(client.char, messages)
+        data = InboxTemplate.new(client.char)
         @renderer.render(data)
       end
     end

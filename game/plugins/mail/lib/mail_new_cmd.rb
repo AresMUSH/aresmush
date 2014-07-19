@@ -14,7 +14,7 @@ module AresMUSH
         if (unread.nil?)
           client.emit_ooc t('mail.no_unread_messages')
         else
-          client.emit RendererFactory.message_renderer.render(client, unread)
+          client.emit Mail.message_renderer.render(client, unread)
           unread.read = true
           unread.save
         end

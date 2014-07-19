@@ -5,7 +5,7 @@ module AresMUSH
       include PluginRequiresLogin
            
       def initialize
-        RendererFactory.build_renderers
+        Mail.build_renderers
       end
       
       def want_command?(client, cmd)
@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def handle        
-        client.emit RendererFactory.inbox_renderer.render(client)
+        client.emit Mail.inbox_renderer.render(client)
       end
     end
   end

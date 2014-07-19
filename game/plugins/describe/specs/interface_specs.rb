@@ -26,21 +26,21 @@ module AresMUSH
         
         it "should render a room" do
           model = Room.new
-          RendererFactory.stub(:room_renderer) { @renderer }
+          Describe.stub(:room_renderer) { @renderer }
           @renderer.should_receive(:render).with(model)
           Describe.get_desc(model) 
         end
 
         it "should render a character" do
           model = Character.new
-          RendererFactory.stub(:char_renderer) { @renderer }
+          Describe.stub(:char_renderer) { @renderer }
           @renderer.should_receive(:render).with(model)
           Describe.get_desc(model) 
         end
         
         it "should render an exit" do
           model = Exit.new
-          RendererFactory.stub(:exit_renderer) { @renderer }
+          Describe.stub(:exit_renderer) { @renderer }
           @renderer.should_receive(:render).with(model)
           Describe.get_desc(model) 
         end

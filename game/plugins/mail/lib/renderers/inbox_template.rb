@@ -3,48 +3,38 @@ module AresMUSH
     class InboxTemplate
       include TemplateFormatters
       
-      attr_accessor :messages
+      attr_accessor :deliveries
       
-      def initialize(char, messages)
+      def initialize(char)
         @char = char
-        @messages = messages
+        @deliveries = char.mail
       end
       
       def folder
         "Inbox"
       end
       
-    end
-    
-    class InboxMessageTemplate
-      include TemplateFormatters
-      
-      def initialize(char, delivery)
-        @char = char
-        @delivery = delivery
-        @message = delivery.message
-      end
-      
-      def num(index)
+      def message_num(index)
         "#{index+1}".rjust(3)
       end
       
-      def subject
-        @message.subject.ljust(31)
+      def message_subject(delivery)
+        delivery.message.subject.ljust(31)
       end
       
-      def date
-        @message.created_at.strftime("%m %b %Y")
+      def message_date(delivery)
+        delivery.message.created_at.strftime("%m %b %Y")
       end
       
-      def author
-        a = @message.author.nil? ? t('mail.deleted_author') : @message.author.name
+      def message_author(delivery)
+        message = delivery.message
+        a = message.author.nil? ? t('mail.deleted_author') : message.author.name
         a.ljust(22)
       end
       
-      def tags
-        unread = @delivery.read ? "-" : t('mail.unread_marker')
-        trashed = @delivery.trashed ? t('mail.trashed_marker') : "-"
+      def message_tags(delivery)
+        unread = delivery.read ? "-" : t('mail.unread_marker')
+        trashed = delivery.trashed ? t('mail.trashed_marker') : "-"
         " [#{unread}#{trashed}]  "
       end
     end

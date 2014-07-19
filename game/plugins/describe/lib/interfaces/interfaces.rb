@@ -2,11 +2,11 @@ module AresMUSH
   module Describe
     def self.get_desc(model)     
       if (model.class == Room)
-        renderer = RendererFactory.room_renderer
+        renderer = Describe.room_renderer
       elsif (model.class == Character)
-        renderer = RendererFactory.char_renderer
+        renderer = Describe.char_renderer
       elsif (model.class == Exit)
-       renderer = RendererFactory.exit_renderer
+       renderer = Describe.exit_renderer
       else
         raise "Invalid model type: #{model}"
       end

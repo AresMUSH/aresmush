@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :target
             
       def initialize
-        RendererFactory.build_renderers
+        Describe.build_renderers
       end
       
       def want_command?(client, cmd)
