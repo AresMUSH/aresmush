@@ -40,6 +40,7 @@ module AresMUSH
           client.char = char
           
           if (!existing_client.nil?)
+            existing_client.emit_ooc t('login.disconnected_by_reconnect')
             existing_client.disconnect
             EM.add_timer(1) { announce_connection }
           else

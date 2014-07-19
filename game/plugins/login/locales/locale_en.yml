@@ -21,3 +21,4 @@ en:
        watch_all: "You will now see connect/disconnect messages for all characters."
        watch_none: "You will not see any connect/disconnect messages."
        watch_friends: "You will now see connect/disconnect messages for just your friends."
+       disconnected_by_reconnect: "You are being disconnected because you connected from another location."

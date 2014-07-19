@@ -40,3 +40,5 @@ en:
         findsite_player_info: "Hostname: %{hostname} IP: %{ip}"
         
         room_directory: "Room Directory"
+        
+        announce: "%xh%xg%%%% Game Announcement from %{name}:%xn %{message}"

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def crack!
-        self.load_target = cmd.args
+        self.load_target = trim_input(cmd.args)
       end
       
       def want_command?(client, cmd)
