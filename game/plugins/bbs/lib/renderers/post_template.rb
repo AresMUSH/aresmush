@@ -5,10 +5,10 @@ module AresMUSH
             
       attr_accessor :replies
       
-      def initialize(board, post, replies)
+      def initialize(board, post)
         @board = board
         @post = post
-        @replies = replies
+        @replies = post.bbs_replies
       end
       
       def name
@@ -30,6 +30,18 @@ module AresMUSH
       
       def message
         @post.message
+      end
+      
+      def reply_author(reply)
+        name = reply.author.nil? ? t('bbs.deleted_author') : reply.author.name
+      end
+      
+      def reply_date(reply)
+        reply.created_at.strftime("%Y-%m-%d")
+      end
+      
+      def reply_message(reply)
+        reply.message
       end
     end
   end

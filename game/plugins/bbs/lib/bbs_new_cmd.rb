@@ -37,7 +37,7 @@ module AresMUSH
           return
         end
 
-        client.emit RendererFactory.post_renderer.render(board, first_unread, client)
+        client.emit Bbs.post_renderer.render(board, first_unread, client)
         first_unread.mark_read(client.char)
         client.program = { :last_bbs_post => first_unread }
       end

@@ -5,7 +5,7 @@ module AresMUSH
       include PluginRequiresLogin
            
       def initialize
-        RendererFactory.build_renderers
+        Bbs.build_renderers
       end
       
       def want_command?(client, cmd)
@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def handle        
-        client.emit RendererFactory.board_list_renderer.render(client)
+        client.emit Bbs.board_list_renderer.render(client)
       end
     end
   end
