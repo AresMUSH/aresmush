@@ -47,11 +47,12 @@ module AresMUSH
 
           to_clients << to_client
         end
-        message = PoseFormatter.format(client.name, self.message)
+        name = client.char.name_and_alias
+        message = PoseFormatter.format(name, self.message)
         receipients = to_clients.map { |r| r.name }.join(", ")
         client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
         to_clients.each do |c|
-          c.emit_ooc t('pose.page_to_recipient', :name => client.name, :recipients => receipients, :message => message)
+          c.emit_ooc t('pose.page_to_recipient', :recipients => receipients, :message => message)
         end
         client.char.last_paged = self.names
         client.char.save!

@@ -18,6 +18,10 @@ module AresMUSH
       hash == entered_password
     end
     
+    def name_and_alias
+      self.alias.nil? ? self.name : t('object.name_with_alias', :name => self.name, :alias => self.alias)
+    end
+    
     def has_role?(name)
       self.roles.include?(name)
     end

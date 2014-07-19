@@ -8,11 +8,11 @@ help:
                     summary: 'Creating, connecting and managing passwords.'
                     aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit', 'guest' ]
 
-                announce: 
+                watch: 
                     toc_topic: 'Misc'
-                    file: 'game/plugins/login/help/announce.txt'
+                    file: 'game/plugins/login/help/watch.txt'
                     summary: 'Configure what connection messages you see.'
-                    aliases: [ ]
+                    aliases: [ 'spam' ]
         admin:
             topics:
                 login: 

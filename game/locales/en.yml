@@ -23,6 +23,7 @@ en:
        semipose: "%{name}%{msg}"
        me: me
        here: here
+       name_with_alias: "%{name} (%{alias})"
        
     validation:
         password_too_short: "Passwords must be at least 5 characters long."

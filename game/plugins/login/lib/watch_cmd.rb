@@ -1,6 +1,6 @@
 module AresMUSH
   module Friends
-    class AnnounceCmd
+    class WatchCmd
       include Plugin
       include PluginRequiresLogin
       include PluginWithoutSwitches
@@ -10,12 +10,12 @@ module AresMUSH
       
       def initialize
         self.required_args = ['option']
-        self.help_topic = 'announce'
+        self.help_topic = 'watch'
         super
       end
                   
       def want_command?(client, cmd)
-        cmd.root_is?("announce")
+        cmd.root_is?("watch")
       end
       
       def crack!
@@ -24,18 +24,18 @@ module AresMUSH
       
       def check_option
         return nil if self.option == 'all' || self.option == 'none' || self.option == 'friends'
-        t('login.invalid_announce_option')
+        t('login.invalid_watch_option')
       end
       
       def handle
-        client.char.announce = self.option
+        client.char.watch = self.option
         client.char.save!
         if (self.option == "all")
-          client.emit_success t('login.announce_all')
+          client.emit_success t('login.watch_all')
         elsif (self.option == "none")
-          client.emit_success t('login.announce_none')
+          client.emit_success t('login.watch_none')
         elsif (self.option == "friends")
-          client.emit_success t('login.announce_friends')
+          client.emit_success t('login.watch_friends')
         end
       end
     end
