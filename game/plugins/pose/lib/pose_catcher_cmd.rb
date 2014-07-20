@@ -13,8 +13,8 @@ module AresMUSH
       end
       
       def handle
-        room = client.room
-        room.emit PoseFormatter.format(client.name, cmd.raw)
+        message = PoseFormatter.format(client.name, cmd.raw)
+        Pose.emit_pose(client.room, message)
       end
 
       def log_command

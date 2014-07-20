@@ -5,3 +5,6 @@ en:
     alias:
         alias_set: "Your alias is now %{alias}."
         alias_cleared: "You have removed your alias."
+    autospace:
+        autospace_set: "Poses will now look like this:%RA pose.%r%{option}Another pose."
+        autospace_cleared: "You will no longer see anything between poses."
