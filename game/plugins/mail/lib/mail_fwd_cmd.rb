@@ -27,11 +27,12 @@ module AresMUSH
       end
       
       def handle
-        Mail.with_a_message(client, self.num) do |msg|
+        Mail.with_a_delivery(client, self.num) do |delivery|
+          msg = delivery.message
           Global.logger.debug("#{self.class.name} #{client} forwding message #{self.num} (#{msg.subject}) to #{self.names}.")
 
           subject = t('mail.forwarded_subject', :subject => msg.subject)
-          body = Mail.forwarded_renderer.render(client, msg, self.comment)
+          body = Mail.forwarded_renderer.render(client, delivery, self.comment)
 
           if (Mail.send_mail(self.names, subject, body, client))
             client.emit_ooc t('mail.message_forwarded')
