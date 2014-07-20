@@ -18,14 +18,14 @@ module AresMUSH
       def handle
         if (self.option.nil?)
           client.char.autospace = nil
-          client.char.save!
-          client.emit_success t('autospace.autospace_cleared')
-          return
+          message = t('autospace.autospace_cleared')
+        else
+          client.char.autospace = self.option
+          message = t('autospace.autospace_set', :option => self.option)
         end
         
-        client.char.autospace = self.option
         client.char.save!
-        client.emit_success t('autospace.autospace_set', :option => self.option)
+        client.emit_success message
       end
     end
   end
