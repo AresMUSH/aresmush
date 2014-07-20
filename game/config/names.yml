@@ -1,0 +1,5 @@
+names:
+    # Use ALL LOWERCASE names.
+    restricted:
+        - me
+        - here

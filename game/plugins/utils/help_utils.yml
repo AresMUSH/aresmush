@@ -12,3 +12,8 @@ help:
                     file: 'game/plugins/utils/help/sweep.txt'
                     summary: "Ensure room privacy."
                     aliases: [ ]
+                names: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/names.txt'
+                    summary: "Character names and aliases."
+                    aliases: [ 'alias', 'nickname' ]

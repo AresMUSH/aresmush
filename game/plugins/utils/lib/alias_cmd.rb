@@ -17,12 +17,17 @@ module AresMUSH
 
       def handle
         if (self.alias.nil?)
-          client.char.alias = self.alias
+          client.char.alias = nil
           client.char.save!
           client.emit_success t('alias.alias_cleared')
           return
         end
-          
+        
+        # Catch the old-school alias me=whatever
+        if (self.alias.include?("="))
+          self.alias = self.alias.rest("=")
+        end
+        
         name_validation_msg = Character.check_name(self.alias)
         if (!name_validation_msg.nil?)
           client.emit_failure(name_validation_msg)

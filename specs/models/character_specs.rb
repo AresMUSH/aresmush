@@ -77,6 +77,10 @@ module AresMUSH
     end  
     
     describe :check_name do
+      before do
+        Global.stub(:config) { { "names" => { "restricted" => ["barney"] } } }
+      end
+      
       it "should fail if name is too short" do
         Character.check_name("A").should eq "validation.name_too_short"
       end
@@ -93,6 +97,11 @@ module AresMUSH
       it "should return true if everything's ok" do
         Character.stub(:found?).with("Charname") { false }
         Character.check_name("Charname").should be_nil
+      end
+      
+      it "should disallow a restricted name" do
+        Character.stub(:found?).with("Barney") { false }
+        Character.check_name("Barney").should eq "validation.name_is_restricted"
       end
     end
     

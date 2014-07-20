@@ -33,6 +33,7 @@ en:
         char_name_taken: "That name is already taken."
         name_too_short: "Names must be at least 2 characters long."
         name_must_be_capitalized: "Names must be capitalized."
+        name_is_restricted: "That name is not allowed."
 
     chars_connected:
         zero: "No characters connected."
