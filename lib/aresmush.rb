@@ -2,6 +2,10 @@ module AresMUSH
   def self.game_path
     File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
   end
+  
+  def self.version
+    File.read(File.join(game_path, "version.txt"))
+  end
 end
 
 # Require this before all other items
@@ -80,4 +84,5 @@ require 'aresmush/templates/template_formatters.rb'
 require 'aresmush/server.rb'
 require 'aresmush/spec_helpers.rb'
 require 'aresmush/yaml_file_parser.rb'
+
 

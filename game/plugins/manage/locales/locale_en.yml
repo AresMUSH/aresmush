@@ -42,3 +42,5 @@ en:
         room_directory: "Room Directory"
         
         announce: "%xh%xg%%%% Game Announcement from %{name}:%xn %{message}"
+        
+        version: "AresMUSH version %{version}%rhttp://www.aresmush.com"
