@@ -1,0 +1,7 @@
+en:
+    notices:
+        notices_title: "Notices"
+        unread_mail: "- You have %xhunread mail%xn messages.  %xh%xx(mail/new)%xn"
+        no_unread_mail: "- No unread mail."
+        unread_bbs: "- There are %xhnew bbs%xn posts.  %xh%xx(bbs/new)%xn"
+        no_unread_bbs: "- No new bbs posts."

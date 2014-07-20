@@ -2,6 +2,10 @@ module AresMUSH
   class Character
     has_many :authored_bbposts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'author'
     has_many :bbs_replies
+    
+    def has_unread_bbs?
+      BbsBoard.all.any? { |b| b.has_unread?(self) }
+    end
   end
   
   class BbsBoard

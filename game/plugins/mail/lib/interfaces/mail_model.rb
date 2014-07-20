@@ -6,6 +6,10 @@ module AresMUSH
     def unread_mail
       mail.select { |m| !m.read }
     end
+    
+    def has_unread_mail?
+      mail.any? { |m| !m.read }
+    end
   end
     
   class MailMessage
