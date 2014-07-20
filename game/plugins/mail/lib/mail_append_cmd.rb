@@ -27,7 +27,12 @@ module AresMUSH
       end
       
       def handle
-        client.char.mail_compose_body =  "#{client.char.mail_compose_body}#{self.body}"
+        body_so_far = client.char.mail_compose_body
+        if (body_so_far.nil?)
+          client.char.mail_compose_body = self.body
+        else
+          client.char.mail_compose_body =  "#{body_so_far}%R%R#{self.body}%R"
+        end
         client.char.save
         
         client.emit_ooc t('mail.mail_added')
