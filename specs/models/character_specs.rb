@@ -90,10 +90,6 @@ module AresMUSH
         Character.check_name("Charname").should eq "validation.char_name_taken"
       end
       
-      it "should fail if the char name starts with a lowercase letter" do
-        Character.check_name("charname").should eq "validation.name_must_be_capitalized"        
-      end
-
       it "should return true if everything's ok" do
         Character.stub(:found?).with("Charname") { false }
         Character.check_name("Charname").should be_nil
