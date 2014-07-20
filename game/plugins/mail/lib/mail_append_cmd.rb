@@ -31,7 +31,7 @@ module AresMUSH
         if (body_so_far.nil?)
           client.char.mail_compose_body = self.body
         else
-          client.char.mail_compose_body =  "#{body_so_far}%R%R#{self.body}%R"
+          client.char.mail_compose_body = "#{body_so_far}%R%R#{self.body}"
         end
         client.char.save
         
