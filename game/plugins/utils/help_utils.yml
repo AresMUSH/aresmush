@@ -17,3 +17,8 @@ help:
                     file: 'game/plugins/utils/help/names.txt'
                     summary: "Character names and aliases."
                     aliases: [ 'alias', 'nickname' ]
+                autospace: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/autospace.txt'
+                    summary: "Making poses and emits more readable."
+                    aliases: [  ]
