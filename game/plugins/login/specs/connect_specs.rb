@@ -105,6 +105,7 @@ module AresMUSH
           it "should disconnect an existing client" do
             other_client = double
             client_monitor.stub(:find_client).with(@found_char) { other_client }
+            other_client.should_receive(:emit_ooc).with('login.disconnected_by_reconnect')
             other_client.should_receive(:disconnect)
             EM.stub(:add_timer)
             handler.handle            

@@ -33,19 +33,12 @@ module AresMUSH
       def handle
         to_clients = []
         self.names.each do |name|
-          result = ClassTargetFinder.find(name, Character, client)
+          result = OnlineCharFinder.find(name, client)
           if (!result.found?)
-            client.emit_failure(t('pose.page_target_not_found', :name => name))
+            client.emit_failure(result.error)
             return
           end
-          
-          to_client = Global.client_monitor.find_client(result.target)
-          if (to_client.nil?)
-            client.emit_failure t('pose.recipient_not_online', :name => name)
-            return
-          end
-
-          to_clients << to_client
+          to_clients << result.target
         end
         name = client.char.name_and_alias
         message = PoseFormatter.format(name, self.message)
