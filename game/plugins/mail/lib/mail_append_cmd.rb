@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root.starts_with?("-")
+        cmd.root.starts_with?("-") && cmd.root != "--"
       end
       
       def check_composing_mail

@@ -5,7 +5,7 @@ module AresMUSH
       include PluginRequiresLogin
            
       def want_command?(client, cmd)
-        (cmd.root_is?("mail") && cmd.switch_is?("send")) || cmd.raw == "--"
+        (cmd.root_is?("mail") && cmd.switch_is?("send")) || cmd.root == "--"
       end
       
       def check_composing_mail
