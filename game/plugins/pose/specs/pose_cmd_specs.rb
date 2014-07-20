@@ -45,7 +45,7 @@ module AresMUSH
           room = double
           client.stub(:room) { room }
           handler.stub(:message) { "a message" }
-          room.should_receive(:emit).with("a message")
+          Pose.should_receive(:emit_pose).with(room, "a message")
           handler.handle
         end
       end

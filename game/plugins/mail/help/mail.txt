@@ -9,6 +9,14 @@ Sending mail is easy. The "to" field can include any number of player names, sep
     %xcmail <to>=<subject>/<message>%xn - Sends a message.
     %xcmail/fwd <#>=<to>/<comment>%xn or - Forwards a message, along with an optional comment.
 
+Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
+
+    %xcmail <to>=<subject>%xn - Starts a mail.
+    %xc-<message>%xn - Adds to a message
+    %xcmail/proof%xn - Shows your mail so far.
+    %xcmail/send%xn or %xc--%xn - Sends the mail.
+    %xcmail/toss%xn - Throws away the message you were drafting.
+    
 You can also delete a message.  Technically this doesn't delete it right away, but tags it as trash.  Messages tagged as trash are deleted when you log out.
 
     %xcmail/delete <#>%xn - Sends a message to the trash.
