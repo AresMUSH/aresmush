@@ -1,6 +1,6 @@
 module AresMUSH
   module Utils
-    class AliasCmd
+    class AutospaceCmd
       include Plugin
       include PluginWithoutSwitches
       include PluginRequiresLogin
