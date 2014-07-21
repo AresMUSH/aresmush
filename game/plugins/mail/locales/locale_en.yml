@@ -6,7 +6,7 @@ en:
         message_sent: "Mail sent."
         message_forwarded: "Mail forwarded."
         inbox_title: "  #        From                    Subject                         Date"
-        new_mail: "New mail from %{from}: %xh%{subject}%xn."
+        new_mail: "New mail from %{from}: %xh%{subject}%xn. %xh%xx(mail/new)%xn"
         invalid_message_number: "That is not a valid message number."
         forwarded_subject: "Fwd: %{subject}"
         invalid_recipient: "%{name} is not a valid recipient."
