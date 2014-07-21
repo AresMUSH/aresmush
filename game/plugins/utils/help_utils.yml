@@ -22,3 +22,8 @@ help:
                     file: 'game/plugins/utils/help/autospace.txt'
                     summary: "Making poses and emits more readable."
                     aliases: [  ]
+                edit: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/edit.txt'
+                    summary: "Easily grab and edit text from the game."
+                    aliases: [ 'grab', 'FugueEdit', '@dec/tf' ]

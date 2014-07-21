@@ -52,8 +52,8 @@ module AresMUSH
     end
 
     def grab(msg)
-      grab_password = char.nil? ? "" : "#{char.grab_password} "
-      @connection.send_data "#{grab_password}#{msg}\n"
+      edit_password = char.nil? ? "" : "#{char.edit_password} "
+      @connection.send_data "#{edit_password}#{msg}\n"
     end
     
     def idle_secs

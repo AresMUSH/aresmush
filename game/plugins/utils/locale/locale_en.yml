@@ -8,3 +8,6 @@ en:
     autospace:
         autospace_set: "Poses will now look like this:%RA pose.%r%{option}Another pose."
         autospace_cleared: "You will no longer see anything between poses."
+    edit:
+        password_cleared: "Edit password cleared."
+        password_set: "Edit password set."
