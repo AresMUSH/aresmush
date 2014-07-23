@@ -18,3 +18,4 @@ Plugin code, help files, configuration files and translation (locale) files are 
 %xhOther Commands%xn
    %xcload help%xn - Reloads help files from disk.
    %xcload locale%xn - Reloads translation files (locale) from disk.
+   %xcannounce <message>%xn - Announces something to all logged-in characters.
