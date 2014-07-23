@@ -4,7 +4,6 @@ module AresMUSH
     class DescCmd
       include Plugin
       include PluginRequiresLogin
-      include PluginWithoutSwitches
       include PluginRequiresArgs
       
       attr_accessor :target, :desc
@@ -16,7 +15,7 @@ module AresMUSH
       end
             
       def want_command?(client, cmd)
-        cmd.root_is?("describe") || cmd.root_is?("shortdesc")
+        (cmd.root_is?("describe") || cmd.root_is?("shortdesc")) && cmd.switch.nil?
       end
 
       def crack!
