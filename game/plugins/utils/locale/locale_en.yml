@@ -9,5 +9,9 @@ en:
         autospace_set: "Poses will now look like this:%RA pose.%r%{option}Another pose."
         autospace_cleared: "You will no longer see anything between poses."
     edit:
-        password_cleared: "Edit password cleared."
-        password_set: "Edit password set."
+        prefix_cleared: "Edit prefix cleared."
+        prefix_set: "Edit prefix set."
+    save:
+        text_saved: "You have saved that text for later."
+        recall_title: "Saved Text"
+        invalid_recall_number: "That is not a valid number."

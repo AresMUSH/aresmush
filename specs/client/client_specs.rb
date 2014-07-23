@@ -69,7 +69,7 @@ module AresMUSH
     describe :grab do
       it "sends the raw text without formatting with the grab password" do
         char = double
-        char.stub(:edit_password) { "SimpleMUUser" }
+        char.stub(:edit_prefix) { "SimpleMUUser" }
         @connection.should_receive(:send_data).with("SimpleMUUser %xr%%Boo%xn%r\n")
         @client.stub(:char) { char }
         @client.grab "%xr%%Boo%xn%r"
