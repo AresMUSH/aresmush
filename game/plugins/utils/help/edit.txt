@@ -4,7 +4,7 @@ This feature takes only works if your MU client supports grab/FugueEdit function
 
 Different clients expect different prefixes, and some let you set a custom one (sometimes called a 'grab password').  You can tell Ares what prefix to use for the edit commands.
 
-    %xcedit/prefix <prefix>%xh - Sets your grab/edit prefix.
+    %xcedit/prefix <prefix>%xn - Sets your grab/edit prefix.
     
 Below are instructions for configuring your client.  If your client is not listed and you figure out how to do it, kindly send a note to faraday@aresmush.com so it can be added here.
 
