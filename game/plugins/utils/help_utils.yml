@@ -27,3 +27,8 @@ help:
                     file: 'game/plugins/utils/help/edit.txt'
                     summary: "Easily grab and edit text from the game."
                     aliases: [ 'grab', 'FugueEdit', '@dec/tf' ]
+                save: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/save.txt'
+                    summary: "Save text and recall it later."
+                    aliases: [ 'recall' ]
