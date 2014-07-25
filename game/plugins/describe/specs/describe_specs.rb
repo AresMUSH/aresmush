@@ -12,7 +12,6 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("describe.desc_set", { :name => "Bob" }) { "bob desc set" }        
       end
       
-      it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
       
       describe :crack do

@@ -2,7 +2,10 @@ module AresMUSH
   class OnlineCharFinder
     def self.find(name, client)
       return FindResult.new(client, nil) if (name.downcase == "me")
-      online = Global.client_monitor.clients.select { |c| name_matches?(c, name)}
+      online = Global.client_monitor.clients.select { |c| exact_match?(c, name)}
+      if (online.count == 0)
+        online = Global.client_monitor.clients.select { |c| partial_match?(c, name)}
+      end
       
       if (online.count == 0)
         return FindResult.new(nil, t('db.no_char_online_found', :name => name))
@@ -14,7 +17,16 @@ module AresMUSH
     
     private
     
-    def self.name_matches?(client, name)
+    def self.exact_match?(client, name)
+      name = name.upcase
+      char = client.char
+      return false if char.nil?
+      return true if char.name_upcase == name
+      return true if char.alias_upcase == name
+      return false
+    end
+    
+    def self.partial_match?(client, name)
       name = name.upcase
       char = client.char
       return false if char.nil?

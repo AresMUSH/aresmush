@@ -61,6 +61,17 @@ module AresMUSH
         result.error.should eq "db.ambiguous_char_online"
       end
       
+      it "should match someone's actual name even if a partial name also exists" do
+        @char1.stub(:name_upcase) { "ANN" }
+        @char2.stub(:name_upcase) { "ANNA" }
+        @char1.stub(:alias_upcase) { nil }
+        @char2.stub(:alias_upcase) { nil }
+        @client_monitor.stub(:clients) { [@client1, @client2 ]}
+        result = OnlineCharFinder.find("Ann", @client)
+        result.target.should eq @client1
+        result.error.should be_nil
+      end
+      
       it "should return failure result if nothing found" do
         @char1.stub(:name_upcase) { "ANNE" }
         @char1.stub(:alias_upcase) { nil }
