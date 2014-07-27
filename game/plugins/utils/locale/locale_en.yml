@@ -15,3 +15,6 @@ en:
         text_saved: "You have saved that text for later."
         recall_title: "Saved Text"
         invalid_recall_number: "That is not a valid number."
+    last:
+        currently_online: "%{name} is currently online."
+        last_online: "%{name} was last online at %{time}."

@@ -1,0 +1,12 @@
+# The IC time system mirrors the OOC server time at a 1:1 ratio.  You can adjust the
+# year and day.
+ictime:
+
+    # Set this to a positive or negative number to add or subtract years from the current
+    # OOC server time.
+    year_offset: -150
+    # After the year offset is taken into account, this number of days will be added to 
+    # or subtracted from the new date.   An example of when you might want to do this is
+    # if you launch your game in Janurary but want the game to ICly start in summer.  You
+    # could set this offset to be around 180 days to shift the time by 6 months.
+    day_offset: 0

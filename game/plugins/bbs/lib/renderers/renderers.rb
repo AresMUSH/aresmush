@@ -25,7 +25,7 @@ module AresMUSH
       end
 
       def render(board, client)
-        data = BoardTemplate.new(board, client.char)
+        data = BoardTemplate.new(board, client)
         @renderer.render(data)
       end
     end
@@ -36,7 +36,7 @@ module AresMUSH
       end
 
       def render(board, post, client)
-        data = PostTemplate.new(board, post)
+        data = PostTemplate.new(board, post, client)
         @renderer.render(data)
       end
     end

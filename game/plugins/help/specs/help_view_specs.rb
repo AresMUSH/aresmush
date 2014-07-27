@@ -47,6 +47,15 @@ module AresMUSH
           handler.handle
         end
         
+        it "should display the topic even if it matches part of another" do
+          Help.should_receive(:search_help).with("cat", "topic") { [ "topic", "topical" ] }
+          Help.should_receive(:load_help).with("cat", "topic") { "help text" }
+          Help.should_receive(:category_title).with("cat") { "cat title" }
+          BorderedDisplay.should_receive(:text).with("help text", "topic title") { "output" }
+          client.should_receive(:emit).with("output")
+          handler.handle
+        end
+        
         it "should display possible alternatives if the topic is not found" do
           Help.should_receive(:search_help).with("cat", "topic") { [ "A", "B" ]}
           BorderedDisplay.should_receive(:list).with([ "A", "B" ], "not found alternatives") { "output" }

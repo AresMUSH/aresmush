@@ -5,10 +5,11 @@ module AresMUSH
       
       attr_accessor :posts
       
-      def initialize(board, char)
+      def initialize(board, client)
         @board = board
         @posts = board.bbs_posts
-        @char = char
+        @client = client
+        @char = client.char
       end
       
       def can_read
@@ -48,7 +49,7 @@ module AresMUSH
       end
       
       def post_date(post)
-        post.created_at.strftime("%Y-%m-%d")
+        OOCTime.local_month_str(@client, post.created_at)
       end
     end
     

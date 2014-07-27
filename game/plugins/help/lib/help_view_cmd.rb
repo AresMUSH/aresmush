@@ -31,21 +31,29 @@ module AresMUSH
       
       def handle
         possible_matches = Help.search_help(self.category, self.topic)
-        if (possible_matches.count == 0)
-          client.emit_failure t('help.not_found', :topic => self.topic)
-        elsif (possible_matches.count != 1)
+        exact_matches = possible_matches.select { |h| h == self.topic }
+
+        if (exact_matches.count == 1)
+          display_help(exact_matches[0])
+        elsif (possible_matches.count == 1)
+          display_help(possible_matches[0])
+        elsif (possible_matches.count > 1)
           client.emit BorderedDisplay.list(possible_matches, t('help.not_found_alternatives', :topic => self.topic))
         else
-          category_title = Help.category_title(self.category)
-          title = t('help.topic', :category => category_title, :topic => self.topic.titlecase)
-          begin
-            text = Help.load_help(self.category, possible_matches[0])
-          rescue Exception => e
-            client.emit_failure t('help.error_loading_help', :topic => topic, :error => e)
-            return
-          end
-          client.emit BorderedDisplay.text(text.chomp, title)
+          client.emit_failure t('help.not_found', :topic => self.topic)
         end
+      end
+      
+      def display_help(match)
+        category_title = Help.category_title(self.category)
+        title = t('help.topic', :category => category_title, :topic => self.topic.titlecase)
+        begin
+          text = Help.load_help(self.category, match)
+        rescue Exception => e
+          client.emit_failure t('help.error_loading_help', :topic => topic, :error => e)
+          return
+        end
+        client.emit BorderedDisplay.text(text.chomp, title)
       end
     end
   end

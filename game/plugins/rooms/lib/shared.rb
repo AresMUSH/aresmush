@@ -9,7 +9,7 @@ module AresMUSH
     end
     
     def self.emit_here_desc(client)        
-      desc = Describe.get_desc(client.room)
+      desc = Describe.get_desc(client.room, client)
       client.emit(desc)
     end
     

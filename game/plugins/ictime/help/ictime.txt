@@ -1,0 +1,1 @@
+%xhIC Time%xn is the date and time in the game world.  This is displayed for easy reference in the room descriptions, and you can also view it by typing %xcictime%xn.

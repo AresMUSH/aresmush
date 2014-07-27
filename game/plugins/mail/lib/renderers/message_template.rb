@@ -3,8 +3,9 @@ module AresMUSH
     class MessageTemplate
       include TemplateFormatters
       
-      def initialize(char, delivery)
-        @char = char
+      def initialize(client, delivery)
+        @client = client
+        @char = client.char
         @delivery = delivery
         @message = delivery.message
       end
@@ -14,7 +15,7 @@ module AresMUSH
       end
       
       def date
-        @message.created_at
+        OOCTime.local_time_str(@client, @message.created_at)
       end
       
       def body

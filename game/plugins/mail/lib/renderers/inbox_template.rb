@@ -5,9 +5,10 @@ module AresMUSH
       
       attr_accessor :deliveries
       
-      def initialize(char)
-        @char = char
-        @deliveries = char.mail
+      def initialize(client)
+        @client = client
+        @char = client.char
+        @deliveries = @char.mail
       end
       
       def folder
@@ -23,7 +24,7 @@ module AresMUSH
       end
       
       def message_date(delivery)
-        delivery.message.created_at.strftime("%m %b %Y")
+        OOCTime.local_month_str(@client, delivery.message.created_at)
       end
       
       def message_author(delivery)

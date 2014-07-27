@@ -5,10 +5,11 @@ module AresMUSH
             
       attr_accessor :replies
       
-      def initialize(board, post)
+      def initialize(board, post, client)
         @board = board
         @post = post
         @replies = post.bbs_replies
+        @client = client
       end
       
       def name
@@ -25,7 +26,8 @@ module AresMUSH
       end
       
       def date
-        right(@post.created_at.strftime("%Y-%m-%d"), 46)
+        localdate = OOCTime.local_time_str(@client, @post.created_at)
+        right(localdate, 46)
       end
       
       def message
@@ -37,7 +39,7 @@ module AresMUSH
       end
       
       def reply_date(reply)
-        reply.created_at.strftime("%Y-%m-%d")
+        OOCTime.local_time_str(@client, reply.created_at)
       end
       
       def reply_message(reply)

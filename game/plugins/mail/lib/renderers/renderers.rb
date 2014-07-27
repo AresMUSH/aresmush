@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def render(client)
-        data = InboxTemplate.new(client.char)
+        data = InboxTemplate.new(client)
         @renderer.render(data)
       end
     end
@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def render(client, delivery)
-        data = MessageTemplate.new(client.char, delivery)
+        data = MessageTemplate.new(client, delivery)
         @renderer.render(data)
       end
     end

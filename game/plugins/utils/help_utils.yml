@@ -32,3 +32,7 @@ help:
                     file: 'game/plugins/utils/help/save.txt'
                     summary: "Save text and recall it later."
                     aliases: [ 'recall' ]
+                last: 
+                    toc_topic: Community
+                    file: 'game/plugins/utils/help/last.txt'
+                    summary: "See when someone was last online."

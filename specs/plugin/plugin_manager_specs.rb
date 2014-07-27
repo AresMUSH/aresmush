@@ -148,6 +148,17 @@ module AresMUSH
         AresMUSH.constants.should_not include :SystemTestModule_a
       end
       
+      it "should remove a plugin regardless of case" do
+        @manager.unload_plugin("systemtestmodule_A")
+        @manager.plugins.should_not include @aplugin
+      end
+      
+      it "should unload a plugin module regardless of case" do
+        @manager.unload_plugin("SYSTEMTESTMODULE_a")
+        AresMUSH.constants.should_not include :SystemTestModule_a
+      end
+      
+      
       it "should throw an error if the plugin doesn't exist" do
         expect{@manager.unload_plugin("x")}.to raise_error(SystemNotFoundException)
       end

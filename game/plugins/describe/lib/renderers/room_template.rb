@@ -3,12 +3,13 @@ module AresMUSH
     class RoomTemplate
       include TemplateFormatters
     
-      attr_accessor :clients, :exits
+      attr_accessor :clients, :exits, :client
             
-      def initialize(model, clients, exits)
+      def initialize(model, clients, exits, client)
         @model = model
         @clients = clients
         @exits = exits
+        @client = client
       end
       
       def name
@@ -19,8 +20,12 @@ module AresMUSH
         @model.description
       end
       
+      def ic_time
+        ICTime.ictime
+      end
+      
       def ooc_time
-        DateTime.now.strftime("%a %b %m, %Y %l:%M%P EST")
+        OOCTime.local_time_str(@client, Time.now)
       end
     end
   end

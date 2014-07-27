@@ -1,6 +1,6 @@
 module AresMUSH
   module Describe
-    def self.get_desc(model)     
+    def self.get_desc(model, client)     
       if (model.class == Room)
         renderer = Describe.room_renderer
       elsif (model.class == Character)
@@ -10,7 +10,7 @@ module AresMUSH
       else
         raise "Invalid model type: #{model}"
       end
-      renderer.render(model)
+      renderer.render(model, client)
     end
   end
 end
