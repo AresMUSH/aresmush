@@ -1,0 +1,6 @@
+en:
+    actors:
+        actor_not_found: No character with that name has an actor.
+        actor_deleted: Actor deleted.
+        actor_set: Actor set.
+        actors_title: Actors

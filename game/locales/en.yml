@@ -46,6 +46,11 @@ en:
 
     number:
         separator: '.'
+
+    pages:
+        page_x_of_y: "(page %{x} of %{y})"
+        not_that_many_pages: "There aren't that many pages."
+        
     
     time:
         seconds: "%{time}s"

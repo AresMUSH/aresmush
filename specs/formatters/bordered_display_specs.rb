@@ -9,6 +9,29 @@ module AresMUSH
       end
     end
     
+    describe :paged_list do
+      it "should show items when there is not a full page" do
+        Locale.stub(:translate).with("pages.page_x_of_y", :x => 1, :y => 1) { "title" }
+        BorderedDisplay.should_receive(:list).with(["a", "b"], "Foo title") { "test" }
+        output = BorderedDisplay.paged_list([ "a", "b" ], 1, 20, "Foo")
+        output.should eq "test"
+      end
+      
+      it "should show items when there is more than one page" do
+        Locale.stub(:translate).with("pages.page_x_of_y", :x => 2, :y => 3) { "title" }
+        BorderedDisplay.should_receive(:list).with(["c", "d"], "Foo title") { "test" }
+        output = BorderedDisplay.paged_list([ "a", "b", "c", "d", "e"], 2, 2, "Foo")
+        output.should eq "test"
+      end
+      
+      it "should display an error if beyond page boundary" do
+        Locale.stub(:translate).with("pages.not_that_many_pages") { "not_that_many_pages" }
+        BorderedDisplay.should_receive(:text).with("not_that_many_pages") { "test" }
+        output = BorderedDisplay.paged_list([ "a", "b", "c", "d", "e"], 4, 2, "Foo")
+        output.should eq "test"
+      end
+    end
+    
     describe :table do
       it "should display items several per line" do
         expected_result = "%ra                        " + 
