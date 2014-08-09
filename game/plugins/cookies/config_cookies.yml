@@ -1,0 +1,13 @@
+cookies:
+    # Set up when you want the cookie cron job to run.  See the 'cron' plugin for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    cron:
+        #date: 1
+        day_of_week: Sat
+        hour: 21
+        minute: 00
+    
+    # If you want cookie notices posted to the bbs, set up a bulletin board where they will 
+    # go and put its name here.  If you're not using the BBS, comment this line out.
+    cookie_board: "Cookie Awards"
+    

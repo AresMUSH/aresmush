@@ -27,7 +27,9 @@ module AresMUSH
       end
       
       def check_board_exists
-        return t('bbs.board_already_exists', :name => self.name) if BbsBoard.found?(self.name.upcase)
+        return nil if self.name.nil?
+        board = BbsBoard.all_sorted.find { |b| b.name.upcase == self.name.upcase }
+        return t('bbs.board_already_exists', :name => self.name) if !board.nil?
         return nil
       end
       

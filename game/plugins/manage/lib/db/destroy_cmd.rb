@@ -41,6 +41,11 @@ module AresMUSH
           return
         end
         
+        if (Game.master.is_special_char?(target))
+          client.emit_failure(t('manage.cannot_destroy_special_chars'))
+          return
+        end
+        
         client.program = { :destroy_target => target }
         client.emit BorderedDisplay.text(t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.to_json))
       end

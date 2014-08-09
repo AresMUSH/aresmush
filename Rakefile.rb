@@ -101,6 +101,14 @@ task :install do
   headwiz.name = "Headwiz"
   headwiz.roles << "admin"
   headwiz.save!
+  game.master_admin_id = headwiz
+
+  systemchar = AresMUSH::Character.create
+  systemchar.change_password("wizb00ts")
+  systemchar.name = "System"
+  systemchar.roles << "admin"
+  systemchar.save!
+  game.system_character_id = systemchar
 
   4.times do |n|
     guest = AresMUSH::Character.create
@@ -110,12 +118,12 @@ task :install do
     guest.save!
   end
 
+  game.save
   puts "Install complete."
 end
 
 task :upgrade do
   bootstrapper = AresMUSH::Bootstrapper.new
-
 end
 
 RSpec::Core::RakeTask.new do |t|

@@ -12,21 +12,28 @@ module AresMUSH
       board.read_roles.empty? || char.has_any_role?(board.read_roles) || can_manage_bbs?(char)
     end
     
+    # Important: Client may actually be nil here for a system-initiated bbpost.
     def self.with_a_board(board_name, client, &block)
       if (board_name =~ /\A[\d]+\z/)
         board = BbsBoard.all_sorted[Integer(board_name) - 1] rescue nil
       else
-        board = BbsBoard.find_by_name(board_name)
+        board = BbsBoard.all_sorted.find { |b| b.name.upcase == board_name.upcase }
       end
-      
+
       if (board.nil?)
-        client.emit_failure t('bbs.board_doesnt_exist', :board => board_name) 
+        if (client.nil?)
+          Global.logger.warn "System tried to post to #{board_name}, which does not exist."
+        else
+          client.emit_failure t('bbs.board_doesnt_exist', :board => board_name) 
+        end
         return
       end
       
-      if (!can_read_board?(client.char, board))
-        client.emit_failure t('bbs.cannot_access_board')
-        return
+      if (!client.nil?)
+        if (!can_read_board?(client.char, board))
+          client.emit_failure t('bbs.cannot_access_board')
+          return
+        end
       end
       
       yield board

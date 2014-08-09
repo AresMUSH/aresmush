@@ -34,3 +34,4 @@ en:
         reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"
         
         deleted_author: "(Author Deleted)"
+        system_author: "AresMUSH"

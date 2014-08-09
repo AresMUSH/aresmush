@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    has_many :authored_bbposts, :class_name => 'AresMUSH::BbsPost', :inverse_of => 'author'
+    has_many :authored_bbposts, :class_name => 'AresMUSH::BbsPost', :inverse_of => :author
     has_many :bbs_replies
     
     def has_unread_bbs?
@@ -40,7 +40,7 @@ module AresMUSH
     field :message, :type => String
     
     belongs_to :bbs_board
-    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_bbposts'
+    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => :authored_bbposts
     
     has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
     has_many :bbs_replies, order: :created_at.asc, :dependent => :destroy

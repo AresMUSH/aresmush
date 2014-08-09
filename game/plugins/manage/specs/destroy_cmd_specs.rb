@@ -24,6 +24,7 @@ module AresMUSH
       describe :handle do
         before do
           game.stub(:is_special_room?) { false }
+          game.stub(:is_special_char?) { false }
           handler.crack!
         end
         
@@ -41,6 +42,16 @@ module AresMUSH
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
             game.stub(:is_special_room?).with(target) { true }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_special_rooms")
+            handler.handle
+          end
+        end
+        
+        context "special char" do
+          it "should emit failure if trying to destroy a special char" do
+            target = double
+            AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
+            game.stub(:is_special_char?).with(target) { true }
+            client.should_receive(:emit_failure).with("manage.cannot_destroy_special_chars")
             handler.handle
           end
         end

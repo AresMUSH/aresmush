@@ -1,0 +1,12 @@
+en:
+    cookies:
+        invalid_recipient: "%{name} not found."
+        cookie_given: "You give %{name} a cookie."
+        cookie_already_given: "You have already given %{name} a cookie this week."
+        cookies_given_this_week: "This week you have given cookies to: %{cookies}."
+        cookies_not_given_this_week: "You have not given out any cookies yet this week."
+        cookies_total: "You have received %xh%{cookies}%xn total cookies."
+        cant_cookie_yourself: "You cannot give yourself a cookie."
+        giving_cookies_here: "You give cookies to everyone here."
+        cookie_received: "%{name} has given you a cookie."
+        weekly_award_title: "Top Cookie Earners"

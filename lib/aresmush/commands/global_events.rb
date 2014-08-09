@@ -30,4 +30,12 @@ module AresMUSH
       self.client = client
     end
   end
+  
+  class CronEvent
+    attr_accessor :time
+    
+    def initialize(time)
+      self.time = time
+    end
+  end
 end
