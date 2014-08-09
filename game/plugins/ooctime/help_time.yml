@@ -6,3 +6,4 @@ help:
                     toc_topic: Misc
                     file: 'game/plugins/ooctime/help/time.txt'
                     summary: "Set up OOC time information."
+                    aliases: [ 'ooctime' ]

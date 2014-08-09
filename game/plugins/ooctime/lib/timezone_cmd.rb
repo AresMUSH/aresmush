@@ -24,7 +24,7 @@ module AresMUSH
       end
 
       def handle_timezone_aliases
-        case self.zone
+        case self.zone.upcase
         when "EST"
           self.zone = "America/New_York"
         when "CST"
