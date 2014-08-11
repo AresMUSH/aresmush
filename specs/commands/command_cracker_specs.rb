@@ -16,6 +16,14 @@ module AresMUSH
         cracked[:args].should eq nil
       end
 
+      it "should be able to crack a root that's just a number" do
+        cracked = CommandCracker.crack("1")
+        cracked[:prefix].should eq nil
+        cracked[:root].should eq "1"
+        cracked[:switch].should eq nil
+        cracked[:args].should eq nil
+      end
+      
       it "should be able to crack a root followed by a number" do
         cracked = CommandCracker.crack("test1")
         cracked[:prefix].should eq nil

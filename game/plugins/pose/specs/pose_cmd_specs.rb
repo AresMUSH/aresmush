@@ -35,6 +35,7 @@ module AresMUSH
         end      
       
         it "should want the ooc say command" do
+          cmd.stub(:args) { "test" }
           set_root({ :pose => false, :say => false, :emit => false, :ooc => true }) 
           handler.want_command?(client, cmd).should eq true
         end      

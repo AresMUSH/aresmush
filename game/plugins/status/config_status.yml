@@ -1,0 +1,14 @@
+status:
+    roles:
+        can_be_on_duty:
+            # List roles that are allowed to set themselves as admin on/off-duty
+            - admin
+            # - another role
+            
+    colors:
+        # Provide full ansi codes for the colors you want for each status.
+        IC: "%xr"
+        OOC: "%xh"
+        AFK: "%xy"
+        NEW: "%xg"
+        STF: "%xb"

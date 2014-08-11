@@ -46,6 +46,13 @@ module AresMUSH
         client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
         to_clients.each do |c|
           c.emit_ooc t('pose.page_to_recipient', :recipients => receipients, :message => message)
+          if (c.char.status == "AFK")
+            afk_message = ""
+            if (c.char.afk_message)
+              afk_message = "(#{c.char.afk_message})"
+            end
+            client.emit_ooc t('pose.recipient_is_afk', :name => c.name, :message => afk_message)
+          end
         end
         client.char.last_paged = self.names
         client.char.save!

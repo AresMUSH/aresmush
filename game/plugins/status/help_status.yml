@@ -1,0 +1,14 @@
+help:
+    categories:
+        main:
+            topics:
+                status: 
+                    toc_topic: Community
+                    file: 'game/plugins/status/help/status.txt'
+                    summary: "Letting others know if you're IC or OOC."
+                    aliases: [ 'ic', 'afk', 'set', 'idle', 'stuck' ]
+                ooc: 
+                    #toc_topic: Community
+                    file: 'game/plugins/status/help/ooc.txt'
+                    #summary: "Letting others know if you're IC or OOC."
+                    #aliases: [ 'ic', 'afk', 'set', 'idle' ]

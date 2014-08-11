@@ -22,7 +22,6 @@ module AresMUSH
   
   # TODO: All of this stuff belongs somewhere else.  Here just for testing.
   class Character
-    field :status, :type => String
     field :hidden, :type => Boolean
     
     before_create :initialize_char

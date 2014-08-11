@@ -6,10 +6,10 @@ module AresMUSH
       include PluginWithoutSwitches
 
       def want_command?(client, cmd)
+        (cmd.root_is?("ooc") && !cmd.args.nil?) ||
         cmd.root_is?("emit") ||
         cmd.root_is?("pose") || 
-        cmd.root_is?("say") || 
-        cmd.root_is?("ooc")
+        cmd.root_is?("say")
       end
       
       def handle

@@ -21,7 +21,7 @@ module AresMUSH
       end
     
       def status
-        left(@char.status, 6)
+        left("#{Status.status_color(@char.status)}#{@char.status}%xn", 12)
       end
     
       def faction

@@ -1,0 +1,9 @@
+en:
+    status:
+        cannot_set_on_duty: "You are not allowed to give yourself admin status."
+        newbies_cant_change_status: "You may not change your status until you've been approved."
+        status_change: "%{name} changes %{pronoun} status to %{status}."
+        invalid_status: "That is not a valid status code."
+        go_ic: "%{name} goes IC."
+        go_ooc: "%{name} goes OOC."
+        go_afk: "%{name} goes AFK.  %{message}"

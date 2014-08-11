@@ -20,6 +20,15 @@ module AresMUSH
         @char.shortdesc
       end
       
+      def afk_message
+        return "" if @char.status != "AFK"
+        msg = "%xy%xh<#{t('describe.afk')}>%xn"
+        if (@char.afk_message)
+          msg = "#{msg} %xy#{@char.afk_message}%xn"
+        end
+        msg
+      end
+      
       def fullname
         # TODO @char.fullname
         "Full Name"

@@ -3,7 +3,7 @@ module AresMUSH
   class Game
     field :welcome_room_id, :type => Moped::BSON::ObjectId
     field :ic_start_room_id, :type => Moped::BSON::ObjectId
-    field :idle_room_id, :type => Moped::BSON::ObjectId
+    field :ooc_room_id, :type => Moped::BSON::ObjectId
         
     before_create :create_starting_rooms
     
@@ -15,8 +15,8 @@ module AresMUSH
       Room.find(self.ic_start_room_id)
     end
     
-    def idle_room
-      Room.find(self.idle_room_id)
+    def ooc_room
+      Room.find(self.ooc_room_id)
     end
     
     def create_starting_rooms  
@@ -24,17 +24,17 @@ module AresMUSH
       
       welcome_room = AresMUSH::Room.create(:name => "Welcome Room")
       ic_start_room = AresMUSH::Room.create(:name => "IC Start")
-      idle_room = AresMUSH::Room.create(:name => "Idle Lounge")
+      ooc_room = AresMUSH::Room.create(:name => "OOC Center")
       
       self.welcome_room_id = welcome_room.id
       self.ic_start_room_id = ic_start_room.id
-      self.idle_room_id = idle_room.id
+      self.ooc_room_id = ooc_room.id
     end
     
     def is_special_room?(room)
       return true if room == welcome_room
       return true if room == ic_start_room
-      return true if room == idle_room
+      return true if room == ooc_room
       return false
     end
   end

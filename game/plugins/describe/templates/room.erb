@@ -6,7 +6,7 @@
 <%= line 2 %>
 %xgPlayers:%xn
 <% clients.each do |c| -%>
-%xh<%= c.name %>%xn<% if !c.shortdesc.nil? %> - <%= c.shortdesc %><%end%>
+%xh<%= c.name %>%xn<% if !c.shortdesc.nil? %> - <%= c.shortdesc %> <%= c.afk_message %><%end%>
 <% end %> 
 
 %xgExits:%xn

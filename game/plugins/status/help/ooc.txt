@@ -1,0 +1,5 @@
+There are two versions of the %xcooc%xn command.
+
+By itself, it is a shortcut to set your status to OOC.  See %xhhelp status%xn.
+
+With a message, it is used to make OOC remarks to people in your room.  See %xhhelp poase%xn.

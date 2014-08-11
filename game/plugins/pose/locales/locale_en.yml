@@ -5,3 +5,4 @@ en:
         page_to_sender: "%xh(to %{recipients}):%xn %{message}"
         page_to_recipient: "%xh(to %{recipients}):%xn %{message}"
         recipient_not_online: "%{name} is not online."
+        recipient_is_afk: "%{name} is AFK and may not respond right away. %{message}"
