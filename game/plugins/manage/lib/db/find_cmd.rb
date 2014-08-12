@@ -29,7 +29,7 @@ module AresMUSH
           if (self.name.nil?)
             objects = c.all
           else
-            objects = c.find_all_by_name(self.name)
+            objects = c.all.select { |o| o.name =~ /#{self.name}/ }
           end
         rescue
           client.emit_failure t('manage.invalid_search_class')
