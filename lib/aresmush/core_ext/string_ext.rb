@@ -39,7 +39,11 @@ class String
   
   def truncate(length)
     self[0..length - 1]    
-  end  
+  end 
+  
+  def is_integer?
+    self =~ /^\d+$/
+  end
   
   # From ActiveRecord
   def underscore

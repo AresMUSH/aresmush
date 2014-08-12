@@ -17,6 +17,7 @@ module AresMUSH
       
       client.emit_success t('cookies.cookie_given', :name => char.name)
       notify_cookie_recipient(char, client)
+      Global.logger.info "#{client.name} gave #{char.name} a cookie."
     end
     
     def self.notify_cookie_recipient(char, client)

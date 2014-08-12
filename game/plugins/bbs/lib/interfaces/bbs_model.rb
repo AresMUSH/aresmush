@@ -15,6 +15,7 @@ module AresMUSH
     field :description, :type => String
     field :read_roles, :type => Array, :default => []
     field :write_roles, :type => Array, :default => []
+    field :order, :type => Integer
     
     has_many :bbs_posts, order: :created_at.asc, :dependent => :destroy
     
@@ -23,7 +24,7 @@ module AresMUSH
     end
     
     def self.all_sorted
-      BbsBoard.all.sort { |b1, b2| b1.name <=> b2.name }
+      BbsBoard.all.sort_by { |b| b.order }
     end
     
     def first_unread(char)

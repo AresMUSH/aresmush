@@ -26,15 +26,6 @@ en:
        me: me
        here: here
        name_with_alias: "%{name} (%{alias})"
-       male_possessive: his
-       female_possessive: her
-       neutral_possessive: its
-       male_objective: him
-       female_objective: her
-       neutral_objective: it
-       male_subjective: he
-       female_subjective: her
-       neutral_subjective: it
        
     validation:
         password_too_short: "Passwords must be at least 5 characters long."

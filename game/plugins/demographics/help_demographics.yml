@@ -1,0 +1,9 @@
+help:
+    categories:
+        main:
+            topics:
+                demographics: 
+                    toc_topic: Chargen
+                    file: 'game/plugins/demo/help/demographics.txt'
+                    summary: "Setting basic character info."
+                    aliases: [ 'fullname', 'gender', 'birthdate' ]

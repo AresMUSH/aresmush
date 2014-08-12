@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def check_can_set_status
-        return t('status.newbies_cant_change_status') if (client.char.status == "NEW") 
+        return t('status.newbies_cant_change_status') if !client.char.is_approved?
         return nil
       end
       

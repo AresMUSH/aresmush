@@ -8,7 +8,7 @@ module AresMUSH
       def initialize(model, clients, exits, client)
         @model = model
         @clients = clients
-        @exits = exits
+        @exits = exits.sort_by { |e| e.name }
         @client = client
       end
       

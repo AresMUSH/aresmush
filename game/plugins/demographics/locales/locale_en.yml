@@ -1,0 +1,18 @@
+en:
+    demographics:
+        property_set: "You set your %{property} to %{value}."
+        invalid_gender: "Please pick: male, female, other."
+        invalid_age: "Please enter a number of years."
+        age_outside_limits: "The minimum age is %{min} and the maximum age is %{max}."
+        birthdate_set: "Your birthdate has been set to %{birthdate}, making you %{age} years old."
+        invalid_birthdate: "Please specify a date in yyyy-mm-dd format."
+        
+        male_possessive: his
+        female_possessive: her
+        other_possessive: their
+        male_objective: him
+        female_objective: her
+        other_objective: them
+        male_subjective: he
+        female_subjective: her
+        other_subjective: they

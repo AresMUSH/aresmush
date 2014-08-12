@@ -14,8 +14,8 @@ module AresMUSH
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
     def self.with_a_board(board_name, client, &block)
-      if (board_name =~ /\A[\d]+\z/)
-        board = BbsBoard.all_sorted[Integer(board_name) - 1] rescue nil
+      if (board_name.is_integer?)
+        board = BbsBoard.all_sorted[board_name.to_i - 1] rescue nil
       else
         board = BbsBoard.all_sorted.find { |b| b.name.upcase == board_name.upcase }
       end
@@ -42,7 +42,7 @@ module AresMUSH
     def self.with_a_post(board_name, num, client, &block)
       with_a_board(board_name, client) do |board|
         
-        if (num !~ /^[\d]+$/)
+        if (!num.is_integer?)
           client.emit_failure t('bbs.invalid_post_number')
           return
         end

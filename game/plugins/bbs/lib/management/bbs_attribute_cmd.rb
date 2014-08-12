@@ -41,6 +41,26 @@ module AresMUSH
       end
     end
     
+    class BbsOrderCmd
+      include BbsAttributeCmd
+    
+      def want_command?(client, cmd)
+        cmd.root_is?("bbs") && cmd.switch_is?("order")
+      end
+    
+      def check_number
+        
+      end
+      
+      def handle
+        Bbs.with_a_board(name, client) do |board|        
+          board.order = self.attribute
+          board.save!
+          client.emit_success t('bbs.desc_set')
+        end
+      end
+    end
+    
     class BbsRolesCmd
       include BbsAttributeCmd
     

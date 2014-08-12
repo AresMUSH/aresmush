@@ -26,10 +26,6 @@ module AresMUSH
     
     before_create :initialize_char
     
-    def initialize_char
-      self.status = "NEW"
-    end
-    
     def is_ic?
       self.status == "IC"
     end

@@ -1,9 +1,7 @@
 module AresMUSH
   module Mail
-    
-
     def self.with_a_delivery(client, num, &block)
-      if (num !~ /^[\d]+$/)
+      if (!num.is_integer?)
         client.emit_failure t('mail.invalid_message_number')
         return
       end
