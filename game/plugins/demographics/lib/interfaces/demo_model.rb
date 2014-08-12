@@ -6,6 +6,7 @@ module AresMUSH
     field :gender, :type => String
     field :hair, :type => String
     field :eyes, :type => String
+    field :reputation, :type => String
     field :birthdate, :type => Date
     
     def age
@@ -18,7 +19,7 @@ module AresMUSH
     end
 
     # He/She/They
-    def subjective_pronounkjm
+    def subjective_pronoun
       t("demographics.#{self.gender}_subjective")
     end
 

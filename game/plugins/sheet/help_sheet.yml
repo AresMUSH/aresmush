@@ -1,0 +1,14 @@
+help:
+    categories:
+        main:
+            topics:
+                sheet: 
+                    toc_topic: Character Creation
+                    file: 'game/plugins/sheet/help/sheet.txt'
+                    summary: "Character sheets."
+                    #aliases: [  ]
+                finger: 
+                    #toc_topic: Character Creation
+                    file: 'game/plugins/sheet/help/finger.txt'
+                    #summary: "Character sheets."
+                    #aliases: [  ]

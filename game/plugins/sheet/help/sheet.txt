@@ -1,0 +1,6 @@
+The %xhsheet%xn command lets you view your character sheet.  This contains your character profile, abilities and background.
+
+You may also view other character's sheets, but the game settings will determine how much information you are allowed to see.
+
+    %xcsheet%xn - Views your own sheet.
+    %xcsheet <name>%xn - Views someone else's sheet.

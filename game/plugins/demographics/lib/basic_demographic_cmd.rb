@@ -76,6 +76,13 @@ module AresMUSH
       end
     end
     
+    class Reputation
+      include BasicDemographicCmd
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("reputation")
+      end
+    end
     
     class GenderCmd
       include BasicDemographicCmd

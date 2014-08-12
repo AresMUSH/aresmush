@@ -22,13 +22,15 @@ module AresMUSH
         self.status = cmd.args.nil? ? nil : trim_input(cmd.args.upcase)
       end
       
+# TODO: Disabled temporarily for testing
 #      def check_can_set_status
 #        return t('status.newbies_cant_change_status') if !client.char.is_approved?
 #        return nil
 #      end
       
       def check_status
-        status_vals = [ "ADM", "IC", "OOC", "AFK"]
+# TODO: 'NEW' should not be in this list.  Added temporarily for testing.        
+        status_vals = [ "ADM", "IC", "OOC", "AFK", "NEW" ]
         return t('status.invalid_status') if !status_vals.include?(self.status)
         return nil
       end

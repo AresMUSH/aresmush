@@ -1,18 +1,18 @@
 module AresMUSH
   module TemplateFormatters
-    def left(str, width)
+    def left(str, width, pad_char = " ")
       return "".ljust(width) if str.nil?
-      str.truncate(width).ljust(width)
+      str.truncate(width).ljust(width, pad_char)
     end
 
-    def center(str, width)
+    def center(str, width, pad_char = " ")
       return "".ljust(width) if str.nil?
-      str.truncate(width).center(width)
+      str.truncate(width).center(width, pad_char)
     end
 
-    def right(str, width)
+    def right(str, width, pad_char = " ")
       return "".rjust(width) if str.nil?
-      str.truncate(width).rjust(width)
+      str.truncate(width).rjust(width, pad_char)
     end
   
     def line(number = 1)

@@ -1,0 +1,20 @@
+en:
+    sheet:
+        no_permission_to_view_page: "You are not allowed to view that page."
+        invalid_page_number: "That is not a valid page number."
+        not_that_many_pages: "There aren't that many character sheet pages."
+        
+        page1_title: "Profile - Page 1/3"
+        page2_title: "Abilities - Page 2/3"
+        page3_title: "Background - Page 3/3"
+        
+        fullname_title: "Fullname:"
+        gender_title: "Gender:"
+        height_title: "Height:"
+        build_title: "Build:"
+        hair_title: "Hair:" 
+        eyes_title: "Eyes:"
+        age_title: "Age:"
+        birthdate_title: "Birthdate:"
+        reputation_title: "Reputation"
+        reputation_subtitle: "(common knowledge ICly)"
