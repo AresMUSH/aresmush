@@ -34,6 +34,11 @@ module AresMUSH
         return nil
       end
       
+      def check_approval
+        return t('demographics.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+      
       def handle
         bday = Date.new self.year.to_i, self.month.to_i, self.day.to_i
         age = Demographics.calculate_age(bday)

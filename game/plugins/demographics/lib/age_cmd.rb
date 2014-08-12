@@ -23,6 +23,11 @@ module AresMUSH
         return Demographics.check_age(self.age.to_i)
       end
       
+      def check_approval
+        return t('demographics.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+      
       def crack!
         self.age = trim_input(cmd.args)
       end

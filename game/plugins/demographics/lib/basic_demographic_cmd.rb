@@ -29,6 +29,11 @@ module AresMUSH
     class HeightCmd
       include BasicDemographicCmd
       
+      def check_approval
+        return t('demographics.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+      
       def want_command?(client, cmd)
         cmd.root_is?("height")
       end
@@ -44,7 +49,12 @@ module AresMUSH
     
     class EyesCmd
       include BasicDemographicCmd
-      
+
+      def check_approval
+        return t('demographics.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+
       def want_command?(client, cmd)
         cmd.root_is?("eyes")
       end
@@ -66,16 +76,14 @@ module AresMUSH
       end
     end
     
-    class FullnameCmd
-      include BasicDemographicCmd
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("fullname")
-      end
-    end
     
     class GenderCmd
       include BasicDemographicCmd
+      
+      def check_approval
+        return t('demographics.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("gender")
