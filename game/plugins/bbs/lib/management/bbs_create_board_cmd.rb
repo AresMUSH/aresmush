@@ -34,7 +34,7 @@ module AresMUSH
       end
       
       def handle
-        BbsBoard.create(name: self.name)
+        BbsBoard.create(name: self.name, order: BbsBoard.all.count + 1)
         client.emit_success t('bbs.board_created')
       end
     end

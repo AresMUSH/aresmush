@@ -49,14 +49,15 @@ module AresMUSH
       end
     
       def check_number
-        
+        return t('bbs.invalid_board_number') if !self.attribute.is_integer?
+        return nil
       end
       
       def handle
         Bbs.with_a_board(name, client) do |board|        
-          board.order = self.attribute
+          board.order = self.attribute.to_i
           board.save!
-          client.emit_success t('bbs.desc_set')
+          client.emit_success t('bbs.order_set')
         end
       end
     end

@@ -7,9 +7,11 @@ en:
         board_already_exists: "That board already exists."
         board_doesnt_exist: "That board does not exist."
         invalid_post_number: "Invalid post number."
-
+        invalid_board_number: "That is not a valid board number."
+        
         roles_set: "Board roles set."
         desc_set: "Board description set."
+        order_set: "Board order set."
         invalid_board_role: "%{board} is not a valid board role."
 
         can_read: "Can read:" 

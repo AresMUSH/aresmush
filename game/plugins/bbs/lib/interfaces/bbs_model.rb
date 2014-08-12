@@ -24,7 +24,7 @@ module AresMUSH
     end
     
     def self.all_sorted
-      BbsBoard.all.sort_by { |b| b.order }
+      BbsBoard.all.sort { |a, b| [a.order, a.name] <=> [b.order, b.name] }
     end
     
     def first_unread(char)
