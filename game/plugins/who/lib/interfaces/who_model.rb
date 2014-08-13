@@ -23,9 +23,7 @@ module AresMUSH
   # TODO: All of this stuff belongs somewhere else.  Here just for testing.
   class Character
     field :hidden, :type => Boolean
-    
-    before_create :initialize_char
-    
+        
     def is_ic?
       self.status == "IC"
     end
