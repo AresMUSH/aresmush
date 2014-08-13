@@ -3,7 +3,7 @@ module AresMUSH
     field :height, :type => String
     field :build, :type => String
     field :fullname, :type => String
-    field :gender, :type => String
+    field :gender, :type => String, :default => "other"
     field :hair, :type => String
     field :eyes, :type => String
     field :reputation, :type => String
