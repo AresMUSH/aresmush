@@ -92,14 +92,18 @@ module AresMUSH
         return nil
       end
       
+      def crack!
+        self.value = titleize_input(trim_input(cmd.args))
+        self.property = cmd.root.downcase
+      end
+      
       def want_command?(client, cmd)
         cmd.root_is?("gender")
       end
       
       def check_gender
-        return nil if self.value == "male"
-        return nil if self.value == "female"
-        return nil if self.value == "other"
+        genders = [ "Male", "Female", "Other" ]
+        return nil if genders.include?(self.value)
         return t('demographics.invalid_gender')
       end
     end
