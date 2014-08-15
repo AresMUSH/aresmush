@@ -9,13 +9,23 @@ class Hash
   end
   
   def merge_yaml(file_path)
-    file_data = AresMUSH::YamlExtensions.yaml_hash(file_path)
-    self.merge_recursively(file_data)
+    begin 
+      file_data = AresMUSH::YamlExtensions.yaml_hash(file_path)
+      self.merge_recursively(file_data)
+    rescue Exception => ex
+      # Turn mysterious YAML errors into something a little more useful.
+      raise "Error merging YAML from #{file_path}: #{ex}"
+    end
   end
   
   def merge_yaml!(file_path)
-    file_data = AresMUSH::YamlExtensions.yaml_hash(file_path)
-    self.merge_recursively!(file_data)
+    begin 
+      file_data = AresMUSH::YamlExtensions.yaml_hash(file_path)
+      self.merge_recursively!(file_data)
+    rescue Exception => ex
+      # Turn mysterious YAML errors into something a little more useful.
+      raise "Error merging YAML from #{file_path}: #{ex}"
+    end
   end
   
   def deep_match(regex)

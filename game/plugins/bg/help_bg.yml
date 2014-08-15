@@ -1,0 +1,14 @@
+help:
+    categories:
+        main:
+            topics:
+                bg: 
+                    toc_topic: 'Character Creation'
+                    file: 'game/plugins/bg/help/bg.txt'
+                    summary: 'Character backstories.'
+        admin:
+            topics:
+                bg: 
+                    toc_topic: 'Approvals'
+                    file: 'game/plugins/bg/help/admin_bg.txt'
+                    summary: 'Managing backgrounds.'

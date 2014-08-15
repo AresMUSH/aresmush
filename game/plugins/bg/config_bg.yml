@@ -1,0 +1,6 @@
+bg:
+    roles:
+        # List roles that are allowed to manage other peoples' backgrounds.
+        can_manage_bgs: 
+            - admin
+            # - another_role

@@ -11,6 +11,10 @@ class String
     return parts[2]
   end
   
+  def before(sep)
+    self.first(sep) # Just an alias
+  end
+  
   def after(sep)
     self.rest(sep)  # Just an alias
   end
