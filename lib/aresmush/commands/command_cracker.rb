@@ -7,14 +7,15 @@ module AresMUSH
     # Anything not found will be nil
     
     def self.crack(input)
-      cracked = /^(?<prefix>[\/\+\=\@\&]?)(?<root>[^\d\s\/]+)(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
+      cracked = /^(?<prefix>[\/\+\=\@\&]?)(?<root>[^\d\s\/]+)(?<page>[\d]*)?(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
 
       if (cracked.nil?)      
         # Never allow root to be nil
-        return { :prefix => nil, :root => input.chomp, :switch => nil, :args => nil }
+        return { :prefix => nil, :root => input.chomp, :page => nil, :switch => nil, :args => nil }
       end
 
       prefix = cracked[:prefix].empty? ? nil : cracked[:prefix].strip
+      page = cracked[:page].empty? ? nil : cracked[:page].strip
       root = cracked[:root].nil? ? input.chomp : cracked[:root].strip
       switch = cracked[:switch].nil? ? nil : cracked[:switch].rest("/")
       args = cracked[:args].nil? ? nil : cracked[:args].strip
@@ -22,6 +23,7 @@ module AresMUSH
       {
         :prefix => prefix,
         :root => root,
+        :page => page,
         :switch => switch,
         :args => args
       }

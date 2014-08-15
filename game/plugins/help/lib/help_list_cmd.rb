@@ -6,7 +6,7 @@ module AresMUSH
       include PluginWithoutSwitches
       include PluginRequiresArgs
 
-      attr_accessor :category
+      attr_accessor :category, :page
       
       def initialize
         self.required_args = ['category']
@@ -20,6 +20,7 @@ module AresMUSH
 
       def crack!
         self.category = Help.category_for_command(cmd.root)
+        self.page = cmd.page.nil? ? 1 : cmd.page.to_i
       end
       
       def check_can_view_help
@@ -29,28 +30,27 @@ module AresMUSH
       
       def handle
         toc = Help.category_toc(self.category)
-        text = ""
+        text = []
         toc.sort.each do |toc_key|
-          text << "%r%xg#{toc_key.titleize}%xn"
+          text << "%xg#{toc_key.titleize}%xn"
           entries = Help.topics_for_toc(self.category, toc_key).sort
           entries.each do |entry_key|
             entry = Help.topic(self.category, entry_key)
-            text << "%r     %xh#{entry_key.titleize}%xn - #{entry["summary"]}"
+            text << "     %xh#{entry_key.titleize}%xn - #{entry["summary"]}"
           end
         end
-        text << "%r"
         categories = Help.categories.select { |c| c != self.category }
         
+        title = t('help.toc', :category => Help.category_title(self.category))
+        footer = ""
         if (!categories.empty?)
-          text << "%l2%r"
-          text << "%xh#{t('help.other_help_libraries')}%xn"
-          
+          footer << "%l2%r"
+          footer << "%xh#{t('help.other_help_libraries')}%xn"
           categories.keys.each do |category|
-            text << " \[#{categories[category]['command']}\] #{categories[category]['title']}"
+            footer << " \[#{categories[category]['command']}\] #{categories[category]['title']}"
           end
         end
-        title = t('help.toc', :category => Help.category_title(self.category))
-        client.emit BorderedDisplay.text(text, title, false)
+        client.emit BorderedDisplay.paged_list(text, self.page, 20, title, footer)
       end
     end
   end

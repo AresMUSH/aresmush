@@ -16,9 +16,8 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack!(/(?<page>[\d]*)?(?<target>.+)?/)
-        self.target = cmd.args.target.nil? ? client.name : trim_input(cmd.args.target)
-        self.page = (cmd.args.page.nil? || cmd.args.page.empty?) ? 1 : trim_input(cmd.args.page).to_i
+        self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
+        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
       end
       
       def check_permission

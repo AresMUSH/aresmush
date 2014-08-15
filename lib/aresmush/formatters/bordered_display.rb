@@ -11,18 +11,19 @@ module AresMUSH
       return output
     end
   
-    def self.list(items, title = nil)
+    def self.list(items, title = nil, footer = nil)
       output = ""
       if (!items.nil?)
         items.each do |i|
           output << "%r" << i
         end
       end
+      output << "%r#{footer}"
       return BorderedDisplay.text(output, title, false)
     end
     
-    def self.paged_list(items, page, items_per_page = 20, title = nil)
-      page_index = page.to_i - 1
+    def self.paged_list(items, page, items_per_page = 20, title = nil, footer = nil)
+      page_index = page - 1
       if (page_index < 0)
         page_index = 0
       end
@@ -38,7 +39,9 @@ module AresMUSH
         return BorderedDisplay.text(t('pages.not_that_many_pages'))
       else
         page_marker = t('pages.page_x_of_y', :x => page_index + 1, :y => total_pages)
-        return BorderedDisplay.list(page_batch, "#{title} #{page_marker}")
+        page_marker = "%x!#{page_marker.center(78, '-')}%xn"
+        footer = footer.nil? ? page_marker : "#{page_marker}%r#{footer}"
+        return BorderedDisplay.list(page_batch, title, footer)
       end
     end
   

@@ -12,7 +12,7 @@ module AresMUSH
       end
 
       def crack!
-        self.page = cmd.args.nil? ? "1" : trim_input(cmd.args)
+        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
       end
       
       def handle
