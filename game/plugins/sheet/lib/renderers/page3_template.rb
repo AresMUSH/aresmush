@@ -10,12 +10,22 @@ module AresMUSH
       end
       
       def name
-        @char.name
+        left(@char.name, 25)
+      end
+      
+      def approval_status
+        status = @char.is_approved? ? 
+        "%xg%xh#{t('sheet.approved')}%xn" : 
+        "%xr%xh#{t('sheet.unapproved')}%xn"
+        center(status, 32)
+      end
+      
+      def page_title
+        right(t('sheet.page3_title'), 28)
       end
       
       def background
-        # TODO
-        "My%rvery%rlong%rbackground"
+        @char.background
       end
     end
   end

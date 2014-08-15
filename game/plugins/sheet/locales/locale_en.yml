@@ -6,7 +6,7 @@ en:
         
         page1_title: "Profile - Page 1 of 3"
         page2_title: "Abilities - Page 2 of 3"
-        page3_title: "Background - Page 3 sof 3"
+        page3_title: "Background - Page 3 of 3"
         
         fullname_title: "Fullname:"
         gender_title: "Gender:"
@@ -18,3 +18,6 @@ en:
         birthdate_title: "Birthdate:"
         reputation_title: "Reputation"
         reputation_subtitle: "(common knowledge ICly)"
+        
+        approved: "Approved"
+        unapproved: "Not Yet Approved"
