@@ -29,9 +29,8 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_request(client, self.number) do |request|          
-          replies = request.job_replies.map { |j| j.message }
-          client.emit BorderedDisplay.text("#{request.title} #{request.description} #{replies}")
+        Jobs.with_a_request(client, self.number) do |request|
+          client.emit Jobs.job_renderer.render(client, request)
         end
       end
     end

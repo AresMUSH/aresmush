@@ -6,7 +6,7 @@
 <% replies.each do |r| %>
 
 <%= line 2 %>
-%xh<%= reply_author(r) %>%xn replied on <%= reply_date(r) %>
+<%= reply_title(r) %>
 <%= reply_message(r) %>
 <% end %>
 <%= line %>

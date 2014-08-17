@@ -34,12 +34,10 @@ module AresMUSH
         @post.message
       end
       
-      def reply_author(reply)
+      def reply_title(reply)
         name = reply.author.nil? ? t('bbs.deleted_author') : reply.author.name
-      end
-      
-      def reply_date(reply)
-        OOCTime.local_time_str(@client, reply.created_at)
+        date = OOCTime.local_time_str(@client, reply.created_at)
+        t('bbs.reply_title', :name => name, :date => date)
       end
       
       def reply_message(reply)

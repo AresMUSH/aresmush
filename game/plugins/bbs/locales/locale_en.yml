@@ -34,6 +34,7 @@ en:
         caught_up: "All posts on %{board} marked as read."
         no_new_posts: "There are no new posts to read."
         reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"
+        reply_title: "%xh%{name}%xn replied on %{date}"
         
         deleted_author: "(Author Deleted)"
         system_author: "AresMUSH"

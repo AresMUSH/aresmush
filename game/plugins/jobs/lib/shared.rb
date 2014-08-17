@@ -1,6 +1,6 @@
 module AresMUSH
   module Jobs
-    def self.can_accses_jobs?(actor)
+    def self.can_access_jobs?(actor)
       return actor.has_any_role?(Global.config["jobs"]["roles"]["can_access_jobs"])
     end
     
@@ -27,9 +27,8 @@ module AresMUSH
     end
     
     def self.with_a_request(client, number, &block)
-      job = Job.find_by(number: number.to_i)
-      
-      if (job.nil? || !client.char.submitted_requests.include?(job))
+      job = client.char.submitted_requests.where(number: number.to_i).first
+      if (job.nil?)
         client.emit_failure t('jobs.invalid_request_number')
         return
       end

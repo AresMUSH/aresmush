@@ -1,0 +1,12 @@
+<%= line %>
+%xh<%= t('jobs.jobs_list_title') %>%xn
+<%= line 2 %>
+<% jobs.each do |j| -%> 
+<%= job_num(j) %><%= job_unread_status(j) -%>
+  <%= job_status(j) -%> 
+ <%= job_title(j) -%> 
+ <%= job_submitter(j) -%> 
+ <%= job_handler(j) -%> 
+  <%= job_category(j) %> 
+<% end %>
+<%= line %>
