@@ -1,0 +1,6 @@
+en:
+    jobs:
+        request_submitted: "Request submitted.  Use the requests command to check its status."
+        invalid_category: "That is not a valid category.  Try one of these: %{categories}"
+        invalid_request_number: "That is not a valid request number."
+        commented_on_request: "You comment on request '%{title}'."

@@ -1,0 +1,17 @@
+help:
+    categories:
+        main:
+            topics:
+                chargen: 
+                    toc_topic: '1 - Getting Started'
+                    file: 'game/plugins/chargen/help/chargen.txt'
+                    order: 3
+                    summary: 'Character creation walkthrough.'
+                    aliases: [ 'submit', 'approve', 'approval', 'app', 'apps' ]
+        admin:
+            topics:
+                chargen: 
+                    toc_topic: 'Approvals'
+                    file: 'game/plugins/chargen/help/admin_chargen.txt'
+                    summary: 'Approving and rejecting characters.'
+                    aliases: [ 'submit', 'approve', 'approval', 'app', 'apps' ]

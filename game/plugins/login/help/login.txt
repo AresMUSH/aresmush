@@ -2,7 +2,7 @@ To get past the login screen, you need a character.  There are a number of 'gues
 
     %xctour%xn
 
-Also from the login screen, you can create a new character or connect to an existing one.  Names will normally be your character's first or last name, and can only be a single word.  You should take care to consider the game's theme when choosing your name.  If you ever forget your password, use the 'tour' command and contact staff.
+Also from the login screen, you can create a new character or connect to an existing one.  Names will normally be your character's first or last name, and can only be a single word.  You should take care to consider the game's theme when choosing your name.  If you ever forget your password, use the 'tour' command and contact the admins.
 
     %xccreate <name> <password>%xn
     %xcconnect <name> <password>%xn

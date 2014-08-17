@@ -1,0 +1,29 @@
+The Jobs system allows you to track admin work assignments.
+
+    %xcjobs%xn - Lists jobs.
+    %xcjob <#>%xn - Views a job.
+
+Jobs can be created by players using the %xhrequest%xn command, or by automated systems through code (like when a character app is submitted).  Admin can also create jobs manually.
+
+    %xcjob/create <category>=<title>/<description>%xn - Creates a new job
+       also %xc+job/create <category>/<title>=<description>%xn
+       also %xc+job/create <title>=<description>%xn (defaults to REQ type)
+
+It's good to assign jobs to individual staff members so that nothing falls through the cracks, and people know who to contact if they have questions.
+
+    %xcjob/assign <#>=<player>%xn - Assigns a job
+    %xcjob/handle <#>%xn - Assigns a job to yourself
+    
+There are two ways for admins to comment upon a job.  A %xhdiscussion%xn comment is for admin eyes only, and will not ever be seen by the original submitter.  A %xhrespond%xn comment is viewable by the submitter.
+
+    %xcjob/discuss <#>=<comment>%xn - Comments on a job (only admins may view)
+    %xcjob/respond <#>=<message>%xn - Comments on a job (admins and submitter may view)
+    
+When you're done with the job, close it and it will be archived.
+
+    %xcjob/close <#>%xn - Closes a job
+    %xcjob/close <#>=<message>%xn - Closes a job with a comment to the original submitter.
+
+You can also change the status of a job:  NEW jobs are freshly opened and unhandled.  OPEN jobs are in progress.  HOLD jobs are on hold, waiting for something.  DONE jobs are, well, done!
+    
+    %xcjob/status <#>=<status>%xn - Changes job status

@@ -1,0 +1,16 @@
+help:
+    categories:
+        main:
+            topics:
+                requests: 
+                    toc_topic: 'Communicating'
+                    file: 'game/plugins/jobs/help/requests.txt'
+                    summary: 'Asking for help from the admin.'
+                    aliases: [ 'request' ]
+        admin:
+            topics:
+                jobs: 
+                    toc_topic: 'Player Management'
+                    file: 'game/plugins/jobs/help/admin_jobs.txt'
+                    summary: 'Managing jobs and requests.'
+                    aliases: [ 'job', 'requests', 'request' ]

@@ -18,7 +18,9 @@ module AresMUSH
           output << "%r" << i
         end
       end
-      output << "%r#{footer}"
+      if (!footer.nil?)
+        output << "%r#{footer}"
+      end
       return BorderedDisplay.text(output, title, false)
     end
     

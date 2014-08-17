@@ -1,0 +1,4 @@
+Admins with appropriate permissions can approve and reject character applications.
+
+    %xcapp/approve <name>%xn
+    %xcapp/reject <name>=<message>%xn

@@ -1,0 +1,13 @@
+chargen:
+    roles:
+        # List roles that are allowed to approve and reject characters.
+        can_approve: 
+            - admin
+            # - another_role
+    messages:
+        # This message is sent when a character is approved.
+        approval: "Congratulations!  Your application has been approved.  Type %xhic%xn to go forth and RP."
+        # This message is sent when a character is rejected.
+        rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp chargen%xn for help making changes and resubmitting, and contact the staff member handling your application if you have any questions.%R%l2%R"
+        
+    

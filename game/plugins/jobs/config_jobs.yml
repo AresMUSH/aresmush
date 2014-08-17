@@ -1,0 +1,17 @@
+jobs:
+    roles:
+        # List roles that are allowed to see jobs.
+        can_access_jobs: 
+            - admin
+            # - another_role
+
+    # List the categories you want to support.
+    categories:
+        - APP  # This is used by the apps system.  Do not remove.
+        - BUILD
+        - CODE
+        - MISC
+        - REQ # This is used by the requests system.  Do not remove.
+        - RP
+
+        

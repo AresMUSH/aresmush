@@ -1,0 +1,18 @@
+Creating your character is a multi-step process.  First you need to create a character from the login screen, if you haven't already (help login).   You will arrive in the Welcome Room, and from there may proceed to the OOC Center.
+
+In the OOC Center is an exit marked Chargen (short for character generation).  Through here are a series of rooms that will guide you step-by-step through the character creation process.
+
+If you prefer, though, you can access the chargen commands and help files from anywhere.  See the help files under the "Character Creation" topic for more information.
+
+At any point, you can check the progress of your character application:
+
+    %xcapp/progress%xn - Shows your points remaining, things you haven't set, and 
+       any problems.
+     
+Once you are done, submit your application for approval.  Staff will review it and get back to you soon.  Once your app is submitted, you cannot make further changes using the chargen commands.
+
+    %xcapp/submit%xn - Submits your application.
+
+If you realize you need to change something, you can withdraw your application.  Make the necessary changes using the chargen commands, and submit again when you're ready.
+
+    %xcapp/withdraw%xn - Withdraw your application.
