@@ -2,7 +2,6 @@ en:
     jobs:
         request_submitted: "Request submitted.  Use the requests command to check its status."
         invalid_category: "That is not a valid category.  Try one of these: %{categories}"
-        invalid_request_number: "That is not a valid request number."
         commented_on_request: "%{name} has commented on request #%{number} '%{title}'."
         unread_marker: "*"
         deleted_author: "(Author Deleted)"
@@ -19,7 +18,7 @@ en:
         
         job_created: "Job created."
         announce_new_job:  "New Job! #%{number} \"%{title}\" submitted by %{name}."
-        invalid_job_number: "That is not a valid job number."
+        invalid_job_number: "That is not a valid request or job number."
         discussed_job: "%{name} has added an admin-only comment to job #%{number} \"%{title}\".  This will not be seen by the submitter.  To respond to them, use the job/respond command."
         responded_to_job: "%{name} has responded to job #%{number} \"%{title}\"."
         

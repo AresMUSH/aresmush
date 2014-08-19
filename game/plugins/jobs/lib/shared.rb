@@ -39,7 +39,7 @@ module AresMUSH
     def self.with_a_request(client, number, &block)
       job = client.char.submitted_requests.where(number: number.to_i).first
       if (job.nil?)
-        client.emit_failure t('jobs.invalid_request_number')
+        client.emit_failure t('jobs.invalid_job_number')
         return
       end
       
