@@ -10,16 +10,20 @@ module AresMUSH
     end
     
     describe :paged_list do
+      before do
+        @title_line = "%x!------------------------------------title-------------------------------------%xn"
+      end
+      
       it "should show items when there is not a full page" do
         Locale.stub(:translate).with("pages.page_x_of_y", :x => 1, :y => 1) { "title" }
-        BorderedDisplay.should_receive(:list).with(["a", "b"], "Foo title") { "test" }
+        BorderedDisplay.should_receive(:list).with(["a", "b"], "Foo",  @title_line) { "test" }
         output = BorderedDisplay.paged_list([ "a", "b" ], 1, 20, "Foo")
         output.should eq "test"
       end
       
       it "should show items when there is more than one page" do
         Locale.stub(:translate).with("pages.page_x_of_y", :x => 2, :y => 3) { "title" }
-        BorderedDisplay.should_receive(:list).with(["c", "d"], "Foo title") { "test" }
+        BorderedDisplay.should_receive(:list).with(["c", "d"], "Foo",  @title_line) { "test" }
         output = BorderedDisplay.paged_list([ "a", "b", "c", "d", "e"], 2, 2, "Foo")
         output.should eq "test"
       end

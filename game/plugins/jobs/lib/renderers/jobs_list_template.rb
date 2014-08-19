@@ -23,8 +23,8 @@ module AresMUSH
       end
       
       def job_handler(job)
-        name = job.author.nil? ? t('jobs.unhandled') : job.author.name
-        left(name, 17)
+        name = job.assigned_to.nil? ? t('jobs.unhandled') : job.assigned_to.name
+        left(name, 16)
       end
       
       def job_submitter(job)

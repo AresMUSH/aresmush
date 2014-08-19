@@ -6,7 +6,7 @@ module AresMUSH
       def on_char_connected_event(event)
         client = event.client
         channels = client.char.channels
-        Global.client_monitor.clients.each do |other_client|
+        Global.client_monitor.logged_in_clients.each do |other_client|
           common_channels = find_common_channels(channels, other_client)
           if (!common_channels.nil?)
             other_client.emit "#{common_channels} #{t('channels.has_connected', :name => client.name)}"
@@ -18,7 +18,7 @@ module AresMUSH
         client = event.client
         channels = client.char.channels
         
-        Global.client_monitor.clients.each do |other_client|
+        Global.client_monitor.logged_in_clients.each do |other_client|
           common_channels = find_common_channels(channels, other_client)
           if (!common_channels.nil?)
             other_client.emit "#{common_channels} #{t('channels.has_disconnected', :name => client.name)}"
@@ -41,7 +41,7 @@ module AresMUSH
       end
       
       def find_common_channels(channels, other_client)
-        their_channels = other_client.char.nil? ? [] : other_client.char.channels
+        their_channels = other_client.char.channels
         intersection = channels & their_channels
         intersection = intersection.select { |c| c.announce }
         if (intersection.empty?)

@@ -12,9 +12,13 @@ module AresMUSH
         :number => Game.master.next_job_number,
         :status => Jobs.status_vals[0])
         
-        game = Game.master
-        game.next_job_number = game.next_job_number + 1
-        game.save
+      game = Game.master
+      game.next_job_number = game.next_job_number + 1
+      game.save
+      
+      message = t('jobs.announce_new_job', :number => job.number, :title => job.title, :name => author.name)
+      Jobs.notify(job, message, false)
+
       return { :job => job, :error => nil }
     end
   end

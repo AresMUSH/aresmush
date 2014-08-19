@@ -57,8 +57,7 @@ module AresMUSH
       end
       
       def handled_by
-        #name = @job.author.nil? ? t('jobs.unhandled') : job.author.name
-        name = t('jobs.unhandled')
+        name = @job.assigned_to.nil? ? t('jobs.unhandled') : @job.assigned_to.name
         left(name, 17)
       end
       

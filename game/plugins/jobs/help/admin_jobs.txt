@@ -1,6 +1,7 @@
 The Jobs system allows you to track admin work assignments.
 
-    %xcjobs%xn - Lists jobs.
+    %xcjobs%xn - Lists active jobs.
+    %xcjobs/all%xn - Lists all jobs, even closed ones.
     %xcjob <#>%xn - Views a job.
 
 Jobs can be created by players using the %xhrequest%xn command, or by automated systems through code (like when a character app is submitted).  Admin can also create jobs manually.

@@ -9,7 +9,7 @@ module AresMUSH
       
       def initialize
         self.required_args = ['number', 'message']
-        self.help_topic = 'request'
+        self.help_topic = 'requests'
         super
       end
       
@@ -35,7 +35,8 @@ module AresMUSH
             :job => request,
             :admin_only => false,
             :message => self.message)
-          client.emit_success t('jobs.commented_on_request', :title => request.title)
+          notification = t('jobs.commented_on_request', :name => client.name, :number => request.number, :title => request.title)
+          Jobs.notify(job, notification, false)
         end
       end
     end

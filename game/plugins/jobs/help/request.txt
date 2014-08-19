@@ -4,6 +4,6 @@ The Request system is used to submit requests to the admins. You can track the s
     %xcrequest <#>%xn - Views details of a request.
     %xcrequest/comment <#>=<comment>%xn - Adds a comment to a +request.
     
-    %xcrequests%xn - Views your open requests
+    %xcrequests%xn - Views your active requests
     %xcrequests/all%xn - Views all of your requests, even closed ones.
     

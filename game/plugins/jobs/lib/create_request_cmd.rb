@@ -10,7 +10,7 @@ module AresMUSH
       
       def initialize
         self.required_args = ['title', 'description']
-        self.help_topic = 'request'
+        self.help_topic = 'requests'
         super
       end
       

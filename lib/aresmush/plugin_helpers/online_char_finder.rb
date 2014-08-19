@@ -2,9 +2,9 @@ module AresMUSH
   class OnlineCharFinder
     def self.find(name, client)
       return FindResult.new(client, nil) if (name.downcase == "me")
-      online = Global.client_monitor.clients.select { |c| exact_match?(c, name)}
+      online = Global.client_monitor.logged_in_clients.select { |c| exact_match?(c, name)}
       if (online.count == 0)
-        online = Global.client_monitor.clients.select { |c| partial_match?(c, name)}
+        online = Global.client_monitor.logged_in_clients.select { |c| partial_match?(c, name)}
       end
       
       if (online.count == 0)

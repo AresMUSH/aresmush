@@ -26,6 +26,16 @@ module AresMUSH
       end
     end
     
+    def self.with_a_job(client, number, &block)
+      job = Job.where(number: number.to_i).first
+      if (job.nil?)
+        client.emit_failure t('jobs.invalid_job_number')
+        return
+      end
+      
+      yield job
+    end
+    
     def self.with_a_request(client, number, &block)
       job = client.char.submitted_requests.where(number: number.to_i).first
       if (job.nil?)
@@ -34,6 +44,14 @@ module AresMUSH
       end
       
       yield job
+    end
+    
+    def self.notify(job, message, notify_submitter = true)
+      Global.client_monitor.logged_in_clients.each do |c|
+        if (Jobs.can_access_jobs?(c.char) || (notify_submitter && (c.char == job.author)))
+          c.emit_ooc message
+        end
+      end
     end
   end
 end

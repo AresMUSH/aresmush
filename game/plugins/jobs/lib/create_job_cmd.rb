@@ -1,0 +1,53 @@
+module AresMUSH
+  module Jobs
+    class CreateJobCmd
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
+
+      attr_accessor :title, :description, :category
+      
+      def initialize
+        self.required_args = ['title', 'description', 'category']
+        self.help_topic = 'jobs'
+        super
+      end
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("job") && cmd.switch_is?("create")
+      end
+      
+      def crack!
+        if (cmd.args !~ /\//)
+          cmd.crack!(CommonCracks.arg1_equals_arg2)
+          self.title = trim_input(cmd.args.arg1)
+          self.description = cmd.args.arg2
+          self.category = "REQ"
+        else          
+          if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
+            cmd.crack!(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
+          else
+            cmd.crack!(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
+          end
+          self.category = cmd.args.category
+          self.title = cmd.args.title
+          self.description = cmd.args.description
+        end        
+      end
+      
+      def check_can_access
+        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(client.char)
+        return nil
+      end
+      
+      def handle
+        result = Jobs.create_job(client, self.category, self.title, self.description, client.char)
+        if (result[:error].nil?)
+          client.emit_success t('jobs.job_created')
+        else
+          client.emit_failure result[:error]
+        end
+      end
+    end
+  end
+end

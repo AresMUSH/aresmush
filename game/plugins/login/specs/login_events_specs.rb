@@ -15,7 +15,7 @@ module AresMUSH
         @client.stub(:name) { "Bob" }
         @char = double
         @client.stub(:char) { @char }
-        client_monitor.stub(:clients) { [@client] }
+        client_monitor.stub(:logged_in_clients) { [@client] }
         @login_events = LoginEvents.new
       end
       
