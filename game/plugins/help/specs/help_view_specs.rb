@@ -35,7 +35,6 @@ module AresMUSH
           handler.stub(:topic) { "topic" }
           AresMUSH::Locale.stub(:translate).with("help.topic", { :topic => "Topic", :category => "cat title"}) { "topic title" }
           AresMUSH::Locale.stub(:translate).with("help.not_found_alternatives", { :topic => "topic" }) { "not found alternatives" }
-          AresMUSH::Locale.stub(:translate).with("help.not_found", { :topic => "topic" }) { "not found" }
         end
         
         it "should display the topic if a single one is found" do
@@ -64,6 +63,8 @@ module AresMUSH
         end
 
         it "should display error if no topic or alternatives found" do
+          AresMUSH::Locale.stub(:translate).with("help.not_found", { :topic => "topic", :libraries => "admin" }) { "not found" }
+          Help.stub(:valid_commands) { ["admin"] }
           Help.should_receive(:search_help).with("cat", "topic") { [] }
           client.should_receive(:emit_failure).with("not found")
           handler.handle

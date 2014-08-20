@@ -31,6 +31,7 @@ module AresMUSH
       def handle
         Jobs.with_a_request(client, self.number) do |request|
           client.emit Jobs.job_renderer.render(client, request)
+          Jobs.mark_read(request, client.char)
         end
       end
     end

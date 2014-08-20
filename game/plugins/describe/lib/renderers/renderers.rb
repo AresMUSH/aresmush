@@ -13,7 +13,7 @@ module AresMUSH
         @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/character.erb")
       end
       
-      def render(model)
+      def render(model, client)
         client = Global.client_monitor.find_client(model)
         if (client.nil?)
           return t('db.object_not_found')
@@ -28,7 +28,7 @@ module AresMUSH
         @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/exit.erb")
       end
       
-      def render(model)
+      def render(model, client)
         data = ExitTemplate.new(model)
         @renderer.render(data)
       end

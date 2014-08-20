@@ -1,10 +1,6 @@
 module AresMUSH
   module Jobs
     class JobCommentCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
-
       include SingleJobCmd
 
       attr_accessor :message, :admin_only
@@ -30,17 +26,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|     
-          JobReply.create(:author => client.char, 
-            :job => job,
-            :admin_only => self.admin_only,
-            :message => self.message)
-          if (self.admin_only)
-            notification = t('jobs.discussed_job', :name => client. name, :number => job.number, :title => job.title)
-            Jobs.notify(job, notification, false)
-          else
-            notification = t('jobs.responded_to_job', :name => client. name, :number => job.number, :title => job.title)
-            Jobs.notify(job, notification)
-          end
+          Jobs.comment(job, client.char, self.message, self.admin_only)
         end
       end
     end

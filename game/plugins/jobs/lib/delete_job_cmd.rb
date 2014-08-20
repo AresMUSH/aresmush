@@ -1,10 +1,6 @@
 module AresMUSH
   module Jobs
     class DeleteJobCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
-
       include SingleJobCmd
       
       def want_command?(client, cmd)
@@ -17,8 +13,9 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|
+          notification = t('jobs.job_deleted', :title => job.title, :name => client.name)
+          Jobs.notify(job, notification, client.char)
           job.destroy
-          Jobs.notify(job, t('jobs.job_deleted', :title => job.title, :name => client.name))
         end
       end
     end

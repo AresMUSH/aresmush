@@ -1,11 +1,6 @@
 module AresMUSH
   module Jobs
     class ViewJobCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
-
       include SingleJobCmd
       
       def want_command?(client, cmd)
@@ -19,6 +14,7 @@ module AresMUSH
       def handle
         Jobs.with_a_job(client, self.number) do |job|
           client.emit Jobs.job_renderer.render(client, job)
+          Jobs.mark_read(job, client.char)
         end
       end
     end

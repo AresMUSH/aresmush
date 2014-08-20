@@ -25,25 +25,14 @@ module AresMUSH
     end
     
     def self.paged_list(items, page, items_per_page = 20, title = nil, footer = nil)
-      page_index = page - 1
-      if (page_index < 0)
-        page_index = 0
-      end
-      
-      offset = page_index * items_per_page
-      page_batch = items[offset, items_per_page]
-      total_pages = (items.count / items_per_page)
-      if (items.count % items_per_page != 0)
-        total_pages = total_pages + 1
-      end
-      
-      if (page_index >= total_pages)
+      pagination = Paginator.paginate(items, page, items_per_page)
+      if (pagination.out_of_bounds?)
         return BorderedDisplay.text(t('pages.not_that_many_pages'))
       else
-        page_marker = t('pages.page_x_of_y', :x => page_index + 1, :y => total_pages)
+        page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
         page_marker = "%x!#{page_marker.center(78, '-')}%xn"
         footer = footer.nil? ? page_marker : "#{page_marker}%r#{footer}"
-        return BorderedDisplay.list(page_batch, title, footer)
+        return BorderedDisplay.list(pagination.page_items, title, footer)
       end
     end
   

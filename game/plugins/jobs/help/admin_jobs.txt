@@ -1,7 +1,6 @@
 The Jobs system allows you to track admin work assignments.
 
     %xcjobs%xn - Lists active jobs.
-    %xcjobs/all%xn - Lists all jobs, even closed ones.
     %xcjob <#>%xn - Views a job.
 
 Jobs can be created by players using the %xhrequest%xn command, or by automated systems through code (like when a character app is submitted).  Admin can also create jobs manually.
@@ -25,6 +24,13 @@ When you're done with the job, close it and it will be archived.
     %xcjob/close <#>%xn - Closes a job
     %xcjob/close <#>=<message>%xn - Closes a job with a comment to the original submitter.
 
-You can also change the status of a job:  NEW jobs are freshly opened and unhandled.  OPEN jobs are in progress.  HOLD jobs are on hold, waiting for something.  DONE jobs are, well, done!
+Once a job is closed, you will only see it if it has new activity or you use the /all option:
+
+    %xcjobs/all%xn - Lists all jobs, even closed ones.  Note: When doing multiple pages, you
+        put the number before the slash, like jobs2/all
+
+You can change various attributes about the job.
     
-    %xcjob/status <#>=<status>%xn - Changes job status
+    %xcjob/status <#>=<status>%xn - Changes job status.
+    %xcjob/cat <#>=<category>%xn - Changes job category.
+    %xcjob/title <#>=<title>%xn - Changes job title.

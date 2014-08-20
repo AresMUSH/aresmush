@@ -31,12 +31,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_request(client, self.number) do |request|     
-          JobReply.create(:author => client.char, 
-            :job => request,
-            :admin_only => false,
-            :message => self.message)
-          notification = t('jobs.commented_on_request', :name => client.name, :number => request.number, :title => request.title)
-          Jobs.notify(job, notification, false)
+          Jobs.comment(request, client.char, self.message, false)
         end
       end
     end

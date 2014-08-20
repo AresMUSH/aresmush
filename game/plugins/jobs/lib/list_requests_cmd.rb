@@ -5,6 +5,8 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginWithoutArgs
 
+      attr_accessor :page
+      
       def initialize
         Jobs.build_renderers
       end
@@ -13,13 +15,23 @@ module AresMUSH
         cmd.root_is?("requests")
       end
       
+      def crack!
+        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
+      end
+      
       def handle
         requests = cmd.switch_is?("all") ? 
           client.char.submitted_requests : 
-          client.char.submitted_requests.select { |r| r.is_open? }
+          client.char.submitted_requests.select { |r| r.is_open? || r.is_unread?(client.char) }
 
         requests = requests.sort_by { |r| r.number }
-        client.emit Jobs.jobs_list_renderer.render(client, requests)
+        pagination = Paginator.paginate(requests, self.page, 20)
+        puts pagination.inspect
+        if (pagination.out_of_bounds?)
+          client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
+        else
+          client.emit Jobs.jobs_list_renderer.render(client, pagination.page_items, self.page, pagination.total_pages)
+        end
       end
     end
   end

@@ -40,7 +40,7 @@ module AresMUSH
         elsif (possible_matches.count > 1)
           client.emit BorderedDisplay.list(possible_matches, t('help.not_found_alternatives', :topic => self.topic))
         else
-          client.emit_failure t('help.not_found', :topic => self.topic)
+          client.emit_failure t('help.not_found', :topic => self.topic, :libraries => Help.valid_commands.join(" "))
         end
       end
       

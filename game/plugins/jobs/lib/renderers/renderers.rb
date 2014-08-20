@@ -12,8 +12,8 @@ module AresMUSH
         @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/jobs_list.erb")
       end
 
-      def render(client, jobs)
-        data = JobsListTemplate.new(client.char, jobs)
+      def render(client, jobs, current_page, total_pages)
+        data = JobsListTemplate.new(client.char, jobs, current_page, total_pages)
         @renderer.render(data)
       end
     end

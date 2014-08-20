@@ -2,10 +2,11 @@ en:
     jobs:
         request_submitted: "Request submitted.  Use the requests command to check its status."
         invalid_category: "That is not a valid category.  Try one of these: %{categories}"
+        invalid_status: "That is not a valid status.  Try one of these: %{statuses}"
         commented_on_request: "%{name} has commented on request #%{number} '%{title}'."
-        unread_marker: "*"
+        unread_marker: "(U)"
         deleted_author: "(Author Deleted)"
-        jobs_list_title: "   #   Status  Title                 Submitter         Handled By        Cat"
+        jobs_list_title: "   #       Status  Title              Submitter        Handled By        Cat"
         unhandled: "-----"
         reply_title: "%xh%{name}%xn replied on %{date}:"
         admin_only: "(Admins Only)"
@@ -21,6 +22,8 @@ en:
         invalid_job_number: "That is not a valid request or job number."
         discussed_job: "%{name} has added an admin-only comment to job #%{number} \"%{title}\".  This will not be seen by the submitter.  To respond to them, use the job/respond command."
         responded_to_job: "%{name} has responded to job #%{number} \"%{title}\"."
+        closed_job: "%{name} has closed job #%{number} \"%{title}\"."
+        updated_job: "%{name} has updated job #%{number} \"%{title}\"."
         
         cannot_handle_jobs: "That person cannot be assigned jobs."
         job_assigned: "%{assigner} has assigned job #%{number} \"%{title}\" to %{assignee}."

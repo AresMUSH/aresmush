@@ -1,6 +1,6 @@
 module AresMUSH
   module Jobs
-    def self.create_job(client, category, title, description, author)
+    def self.create_job(category, title, description, author)
       if (!Jobs.categories.include?(category))
         return { :job => nil, :error => t('jobs.invalid_category', :categories => Jobs.categories.join(" ")) }
       end
@@ -17,7 +17,7 @@ module AresMUSH
       game.save
       
       message = t('jobs.announce_new_job', :number => job.number, :title => job.title, :name => author.name)
-      Jobs.notify(job, message, false)
+      Jobs.notify(job, message, author, false)
 
       return { :job => job, :error => nil }
     end

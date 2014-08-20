@@ -1,10 +1,6 @@
 module AresMUSH
   module Jobs
     class HandleJobCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
-
       include SingleJobCmd
       
       attr_accessor :assignee
@@ -41,7 +37,7 @@ module AresMUSH
             job.status = "OPEN"
             job.save
             notification = t('jobs.job_assigned', :number => job.number, :title => job.title, :assigner => client.name, :assignee => target.name)
-            Jobs.notify(job, notification)
+            Jobs.notify(job, notification, client.char)
           end
         end
       end

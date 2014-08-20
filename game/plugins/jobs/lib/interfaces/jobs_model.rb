@@ -11,9 +11,8 @@ module AresMUSH
   end
   
   class Job
-    include Mongoid::Document
-    include Mongoid::Timestamps
-        
+    include SupportingObjectModel
+    
     field :title, :type => String
     field :description, :type => String
     field :category, :type => String
@@ -24,7 +23,12 @@ module AresMUSH
     belongs_to :assigned_to, :class_name => "AresMUSH::Character", :inverse_of => :assigned_jobs
 
     has_many :job_replies, order: :created_at.asc, :dependent => :destroy
+    has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
     
+    def is_unread?(char)
+      !readers.include?(char)
+    end
+      
     def is_open?
       self.status != "DONE"
     end

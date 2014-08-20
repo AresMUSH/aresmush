@@ -1,6 +1,10 @@
 module AresMUSH
   module Jobs
     module SingleJobCmd
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
+
       attr_accessor :number
       
       def initialize
