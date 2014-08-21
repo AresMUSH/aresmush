@@ -39,7 +39,7 @@ module AresMUSH
 
         client.emit Bbs.post_renderer.render(board, first_unread, client)
         first_unread.mark_read(client.char)
-        client.program = { :last_bbs_post => first_unread }
+        client.program[:last_bbs_post] = first_unread
       end
     end
   end

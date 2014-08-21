@@ -6,3 +6,5 @@ shortcuts:
     full:
         "dig/teleport" : "build"
         "dig/tel" : "build"
+        "mjoin" : "meetme/join"
+        "msummon" : "meetme/bring"

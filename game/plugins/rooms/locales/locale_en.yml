@@ -13,3 +13,9 @@ en:
        can_only_link_exits: You can only link exits.
        exit_linked: "Exit linked to %{dest}."
        exit_unlinked: "Exit unlinked."
+       
+       meetme_target_missing: "You didn't invite anyone!"
+       no_meetme_invite: "Nobody has asked you to meet them."
+       receive_meetme_invite: "%{name} has invited you to meet them for RP. %xh%xx(help meetme)%xn"
+       send_meetme_invite: "You invite %{name} for RP."
+       cant_meetme_self: "You can't meetme yourself!"
