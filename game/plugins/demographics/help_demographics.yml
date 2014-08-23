@@ -6,4 +6,4 @@ help:
                     toc_topic: Character Creation
                     file: 'game/plugins/demographics/help/demographics.txt'
                     summary: "Setting basic character info."
-                    aliases: [ 'fullname', 'gender', 'birthdate' ]
+                    aliases: [ 'fullname', 'gender', 'birthdate', 'height', 'physique', 'eyes', 'hair', 'age', 'reputation']
