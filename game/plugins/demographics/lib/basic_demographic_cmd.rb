@@ -39,11 +39,11 @@ module AresMUSH
       end
     end
     
-    class BuildCmd
+    class PhysiqueCmd
       include BasicDemographicCmd
       
       def want_command?(client, cmd)
-        cmd.root_is?("build")
+        cmd.root_is?("physique")
       end
     end
     

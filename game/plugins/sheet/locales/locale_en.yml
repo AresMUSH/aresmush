@@ -11,7 +11,7 @@ en:
         fullname_title: "Fullname:"
         gender_title: "Gender:"
         height_title: "Height:"
-        build_title: "Build:"
+        physique_title: "Physique:"
         hair_title: "Hair:" 
         eyes_title: "Eyes:"
         age_title: "Age:"

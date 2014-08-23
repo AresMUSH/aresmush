@@ -36,8 +36,8 @@ module AresMUSH
         format_field_title(t('sheet.height_title'))
       end
 
-      def build_title
-        format_field_title(t('sheet.build_title'))
+      def physique_title
+        format_field_title(t('sheet.physique_title'))
       end
 
       def hair_title
@@ -80,8 +80,8 @@ module AresMUSH
         format_field @char.height
       end
       
-      def build
-        format_field @char.build
+      def physique
+        format_field @char.physique
       end
       
       def hair

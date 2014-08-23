@@ -49,4 +49,12 @@ module AresMUSH
       self.room = Game.master.welcome_room
     end
   end
+  
+  class Room    
+    field :area, :type => String
+    field :grid_x, :type => String
+    field :grid_y, :type => String
+    field :room_type, :type => String, :default => "IC"
+  end
+
 end

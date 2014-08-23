@@ -20,5 +20,9 @@ module AresMUSH
     def self.can_teleport?(actor)
       actor.has_any_role?(Global.config["rooms"]["roles"]["can_teleport"])
     end
+    
+    def self.room_types
+      [ 'IC', 'OOC', 'RPR' ]
+    end
   end
 end

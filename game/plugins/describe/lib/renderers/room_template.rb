@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def name
-        @model.name
+        left(@model.name, 40)
       end
       
       def description
@@ -22,6 +22,14 @@ module AresMUSH
       
       def ic_time
         ICTime.ictime
+      end
+      
+      def area
+        right(@model.area, 37)
+      end
+      
+      def grid
+        "(#{@model.grid_x},#{@model.grid_y})"
       end
       
       def ooc_time

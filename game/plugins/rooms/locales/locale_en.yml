@@ -2,7 +2,7 @@ en:
     rooms:
        char_has_arrived: "%{name} has arrived."
        char_has_left: "%{name} has left."
-       room_created: "You build a room named %{name}."
+       room_created: "You build a room named %{name}.  It is an %xhIC%xn room. %xh%xx(help roomtype)%xn"
        exit_created: "You open an exit from %{source_name} to %{dest_name}."
        exit_already_exists: "An exit with that name already exists."
        nowhere: "Nowhere"
@@ -19,3 +19,11 @@ en:
        receive_meetme_invite: "%{name} has invited you to meet them for RP. %xh%xx(help meetme)%xn"
        send_meetme_invite: "You invite %{name} for RP."
        cant_meetme_self: "You can't meetme yourself!"
+       
+       area_set: "You set the room's area."
+       area_cleared: "You clear the room's area."
+       grid_set: "You set the room's grid coordinates."
+       grid_cleared: "You clear the room's grid coordinates."
+       
+       invalid_room_type: "Invalid room type. Try one of these: %{types}."
+       room_type_set: "You set the room type."

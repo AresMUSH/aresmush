@@ -3,7 +3,7 @@ Demographics commands are used to set your basic character info.  Some items may
     %xcfullname <name>%xn
     %xcgender <male/female/other>%xn
     %xcheight <height>%xn
-    %xcbuild <build - athletic, wiry, slim, pudgy, etc.>%xn
+    %xcphysique <build/body type - athletic, wiry, slim, pudgy, etc.>%xn
     %xchair <hair color>%xn
     %xceyes <eye color>%xn
     %xcbirthdate <yyyy-mm-dd>%xn or %xcage <years>%xn
