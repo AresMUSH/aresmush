@@ -30,7 +30,7 @@ help:
                     toc_topic: 'Building'
                     file: 'game/plugins/rooms/help/building.txt'
                     summary: 'Building the grid.'
-                    aliases: [ 'build', 'open', 'rooms', 'dig', 'link', 'unlink' ]
+                    aliases: [ 'build', 'open', 'rooms', 'dig', 'link', 'unlink', 'area', 'grid', 'roomtype', 'zone' ]
                 getting around: 
                     toc_topic: 'Building'
                     file: 'game/plugins/rooms/help/admin_getting_around.txt'

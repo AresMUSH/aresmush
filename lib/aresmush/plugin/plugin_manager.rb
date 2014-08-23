@@ -72,7 +72,7 @@ module AresMUSH
       
     private    
     def load_plugin_code(files)
-      files.each do |f| 
+      files.sort.each do |f| 
         Global.logger.info "Loading #{f}."
         load f
       end
