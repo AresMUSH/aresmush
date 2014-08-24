@@ -45,7 +45,7 @@ module AresMUSH
       end
       
       def title
-        center(@job.title, 78)
+        center("##{@job.number} - #{@job.title}", 78)
       end
       
       def category

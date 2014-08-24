@@ -9,6 +9,16 @@ module AresMUSH
       EventMachine.next_tick { on_event(event) } 
     end
     
+    def queue_timer(time, description, &block)
+      EventMachine.add_timer(time) do 
+        begin
+          yield block
+        rescue Exception => e
+          Global.logger.error("Error with timer '#{description}': error=#{e} backtrace=#{e.backtrace[0,10]}")
+        end
+      end
+    end
+    
     ### IMPORTANT!!!  Do not call from outside of EventMachine
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)

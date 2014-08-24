@@ -3,33 +3,19 @@ module AresMUSH
     class BbsNewCmd
       include Plugin
       include PluginRequiresLogin
-      
-      attr_accessor :board_name
+      include PluginWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("bbs") && cmd.switch_is?("new")
       end
       
-      def crack!
-        self.board_name = cmd.args
-      end
-      
       def handle
-        
         first_unread = nil
         board = nil
-        
-        if (!self.board_name.nil?)
-          Bbs.with_a_board(self.board_name, client) do |b|
-            board = b
-            first_unread = b.first_unread(client.char)
-          end
-        else
-          BbsBoard.all_sorted.each do |b|
-            board = b
-            first_unread = b.first_unread(client.char)
-            break if !first_unread.nil?
-          end
+        BbsBoard.all_sorted.each do |b|
+          board = b
+          first_unread = b.first_unread(client.char)
+          break if !first_unread.nil?
         end
           
         if (first_unread.nil?)

@@ -5,3 +5,6 @@ en:
         no_unread_mail: "- No unread mail."
         unread_bbs: "- There are %xhnew bbs%xn posts.  %xh%xx(bbs/new)%xn"
         no_unread_bbs: "- No new bbs posts."
+        unread_requests: "- There is new activity on your %xhrequests%xn. %xh%xx(requests)%xn"
+        unread_jobs: "- There are %xhunread jobs%xn. %xh%xx(jobs/new)%xn"
+        no_unread_requests: "- No unread requests or jobs."

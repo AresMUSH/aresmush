@@ -34,8 +34,14 @@ module AresMUSH
     
     def self.channel_who(channel)
       chars = channel.characters.sort { |c1, c2| c1.name <=> c2.name }
-      chars = chars.map { |c| "#{c.name}#{gag_text(c, channel)}" }
-      t('channels.channel_who', :name => channel.display_name, :chars => chars.join(", "))
+      online_chars = []
+      chars.each do |c|
+        client = Global.client_monitor.find_client(c)
+        next if client.nil?
+        online_chars << c
+      end
+      online_chars = online_chars.map { |c| "#{c.name}#{gag_text(c, channel)}" }
+      t('channels.channel_who', :name => channel.display_name, :chars => online_chars.join(", "))
     end
     
     def self.gag_text(char, channel)

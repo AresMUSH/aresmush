@@ -8,6 +8,8 @@ module AresMUSH
       attr_accessor :names, :message
       
       def want_command?(client, cmd)
+        # It's a common mistake to type 'p' when you meant '+p' for a channel, but
+        # never vice-versa.  So ignore any command that has a prefix. 
         return false if !cmd.prefix.nil?
         cmd.root_is?("page")
       end

@@ -10,6 +10,7 @@ en:
         unhandled: "-----"
         reply_title: "%xh%{name}%xn replied on %{date}:"
         admin_only: "(Admins Only)"
+        no_new_jobs: "There are no new jobs to read."
         
         category_title: "Category:"
         status_title: "Status:"
