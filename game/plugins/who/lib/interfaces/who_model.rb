@@ -25,7 +25,7 @@ module AresMUSH
     field :hidden, :type => Boolean
         
     def is_ic?
-      self.status == "IC"
+      self.room.room_type == "IC"
     end
 
     def faction

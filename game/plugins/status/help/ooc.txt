@@ -1,5 +1,5 @@
-There are two versions of the %xcooc%xn command.
+The OOC command is used when you need to take a break from RPing.
 
-By itself, it is a shortcut to set your status to OOC.  See %xhhelp status%xn.
+    %xcooc%xn - Travels to the OOC area.
 
-With a message, it is used to make OOC remarks to people in your room.  See %xhhelp poase%xn.
+Note: This command can also be used with a message to make OOC remarks to people in your room.  See %xhhelp poase%xn.

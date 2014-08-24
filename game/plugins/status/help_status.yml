@@ -5,10 +5,22 @@ help:
                 status: 
                     toc_topic: Community
                     file: 'game/plugins/status/help/status.txt'
-                    summary: "Letting others know if you're IC or OOC."
-                    aliases: [ 'ic', 'afk', 'set', 'idle', 'stuck' ]
+                    summary: "Character status and going IC/OOC/AFK."
+                ic:
+                    file: 'game/plugins/status/help/ic.txt'
+                    aliases: [ 'ic', 'stuck' ]
+                afk:
+                    file: 'game/plugins/status/help/afk.txt'
+                    aliases: [ 'idle', 'away' ]
+                afk:
+                    file: 'game/plugins/status/help/afk.txt'
+                    aliases: [ 'idle', 'away' ]
                 ooc: 
-                    #toc_topic: Community
                     file: 'game/plugins/status/help/ooc.txt'
-                    #summary: "Letting others know if you're IC or OOC."
-                    #aliases: [ 'ic', 'afk', 'set', 'idle' ]
+        admin:
+            topics:
+                status: 
+                    toc_topic: Player Management
+                    file: 'game/plugins/status/help/admin_duty.txt'
+                    summary: "Going on and off duty."
+                    aliases: [ 'duty' ]

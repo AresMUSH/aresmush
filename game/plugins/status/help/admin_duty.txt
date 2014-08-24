@@ -1,0 +1,5 @@
+The duty command lets you mark yourself as on or off duty.
+
+    %xcduty <on or off>%xn - Marks yourself on or off duty.
+    
+While off duty, admins are always marked OOC regardless of which zone they're in.

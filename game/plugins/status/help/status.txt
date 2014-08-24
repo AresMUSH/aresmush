@@ -1,22 +1,13 @@
-Your character status is a general reflection of what you're doing on the game, and can be one of:
+Your character status is a general reflection of what you're doing on the game.
 
-    IC (in character)
-    OOC (out of character)
-    AFK (away from keyboard)
-    NEW (a new character who has not been approved - cannot be set directly)
-    ADM (admin on duty - admins only)
+    AFK (Away from the Keyboard)
+    IC (In an In Character area)
+    OOC (In an Out of Character area)
+    NEW (A new character who has not been approved)
+    ADM (Admin on duty)
 
-You can set your status directly using the status command.
+See the following help files for more information about the various commands that affect your status:
 
-    %xcstatus <status>%xn - Sets your status.
-
-The game has IC and OOC zones of the grid, but your status is independent of what zone you're in.  You can be OOC in an IC zone (NPCing or watching), or IC in an OOC zone (typically in a RP Room).  There are some shortcut commands to adjust your status and hop between zones.
-
-    %xcic%xn - Sets your status to IC and travels to the IC zone.
-    %xcooc%xn - Sets your status to OOC and travels to the OOC zone.
-    %xcafk [<note>]%xn - Sets your status to AFK (does not move you).  The optional note
-       could be something like 'Getting dinner, BRB.', and is displayed in the room and when
-       someone pages you.  This afk note is reset as soon as you change your status.
-
-%xrHelp, I'm Stuck OOC%xn 
-In unusual circumstances, the various movement commands can cause the game to think your last IC location was in the OOC zone.  You'll be stuck there, unable to return IC.  If this happens, simply use:  %xcic/reset%xn.
+* help afk
+* help ic
+* help ooc

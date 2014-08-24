@@ -22,7 +22,7 @@ module AresMUSH
     end
     
     def self.room_types
-      [ 'IC', 'OOC', 'RPR' ]
+      [ 'IC', 'OOC' ]
     end
   end
 end

@@ -1,7 +1,8 @@
 status:
     roles:
-        can_be_on_duty:
+        can_manage_status:
             # List roles that are allowed to set themselves as admin on/off-duty
+            # and use the status commands irrespective of whether they've been approved.
             - admin
             # - another role
             

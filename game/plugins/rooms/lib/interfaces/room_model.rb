@@ -22,9 +22,9 @@ module AresMUSH
     def create_starting_rooms  
       Global.logger.debug "Creating start rooms."
       
-      welcome_room = AresMUSH::Room.create(:name => "Welcome Room")
-      ic_start_room = AresMUSH::Room.create(:name => "IC Start")
-      ooc_room = AresMUSH::Room.create(:name => "OOC Center")
+      welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC")
+      ic_start_room = AresMUSH::Room.create(:name => "IC Start", :room_type => "IC")
+      ooc_room = AresMUSH::Room.create(:name => "OOC Center", :room_type => "OOC")
       
       self.welcome_room_id = welcome_room.id
       self.ic_start_room_id = ic_start_room.id

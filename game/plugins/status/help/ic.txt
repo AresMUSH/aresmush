@@ -1,0 +1,5 @@
+The IC command is used to travel to the IC zone of the grid for RP.
+
+    %xcic%xn - Travels to the IC area.
+    
+It will always go back to your last IC position.  If the game is mis-configured and you can't get back ot the IC area, you can always reset yourself using %xcic/reset%xn.

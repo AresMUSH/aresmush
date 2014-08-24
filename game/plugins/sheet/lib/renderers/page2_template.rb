@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def approval_status
-        status = @char.is_approved? ? 
+        status = @char.is_approved ? 
         "%xg%xh#{t('sheet.approved')}%xn" : 
         "%xr%xh#{t('sheet.unapproved')}%xn"
         center(status, 32)

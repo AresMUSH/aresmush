@@ -30,6 +30,12 @@ module AresMUSH
         return nil
       end
       
+      def check_approved
+        return nil if Rooms.can_teleport?(client.char)
+        return t('rooms.cant_meetme_if_newbie') if !client.char.is_approved
+        return nil
+      end
+      
       def handle
         to_clients = []
         self.names.each do |name|
@@ -38,11 +44,16 @@ module AresMUSH
             client.emit_failure(result.error)
             return
           end
-          if (result.target == client)
+          target = result.target
+          if (target == client)
             client.emit_failure t('rooms.cant_meetme_self')
             return
           end
-          to_clients << result.target
+          if (!target.char.is_approved && !Rooms.can_teleport?(target.char))
+            client.emit_failure t('rooms.cant_meetme_newbie', :name => target.name)
+            return
+          end
+          to_clients << target
         end
         
         to_clients.each do |c|

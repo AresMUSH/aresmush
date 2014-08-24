@@ -10,16 +10,18 @@ module AresMUSH
       end
       
       def check_can_set_status
-        return t('status.newbies_cant_change_status') if !client.char.is_approved?
+        return nil if Status.can_manage_status?(client.char)
+        return t('status.newbies_cant_go_ic') if !client.char.is_approved
         return nil
       end
       
       def handle        
         char = client.char
         icloc = get_icloc(char)
+        char.is_afk = false
+        # No need to save because move will do it.
         char.room.emit_ooc t('status.go_ic', :name => char.name)
         icloc.emit_ooc t('status.go_ic', :name => char.name)
-        Status.set_status(char, "IC")
         Rooms.move_to(client, client.char, icloc)
       end
       

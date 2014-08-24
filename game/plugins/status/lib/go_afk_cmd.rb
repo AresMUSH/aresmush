@@ -15,17 +15,15 @@ module AresMUSH
         self.message = cmd.args
       end
       
-      def check_can_set_status
-        return t('status.newbies_cant_change_status') if !client.char.is_approved?
-        return nil
-      end
-      
       def handle        
         char = client.char
-        char.room.emit_ooc t('status.go_afk', :name => char.name, :message => self.message)
         char.afk_message = self.message  
-        # No need to double save; status set will do it.
-        Status.set_status(char, "AFK")        
+        char.is_afk = true
+        if (char.room.room_type == "IC")
+          char.last_ic_location_id = char.room.id
+        end
+        char.save     
+        char.room.emit_ooc t('status.go_afk', :name => char.name, :message => self.message)
       end
     end
   end
