@@ -37,8 +37,12 @@ module AresMUSH
     end
     
     def who_room_name
+      if (self.hidden)
+        return t('who.hidden')
+      end
+      
       area = self.room.area.nil? ? "" : "#{self.room.area} - "
-      self.hidden ? t('who.hidden') : "#{area}#{self.room.name}"
+      "#{area}#{self.room.name}"
     end
   end
   

@@ -81,5 +81,30 @@ module AresMUSH
         result.error.should eq "db.no_char_online_found"
       end
     end
+    
+    describe :with_online_chars do
+      before do
+        @client = double
+      end
+      
+      it "should emit failure if a char doesn't exist" do
+        result = FindResult.new(nil, "error msg")
+        OnlineCharFinder.should_receive(:find).with("n1", @client) { result }
+        @client.should_receive(:emit_failure).with("error msg")
+        OnlineCharFinder.with_online_chars(["n1", "n2"], @client) do |clients|
+          raise "Should not get here."
+        end
+      end
+      
+      it "should call the block with the clients if they exist" do
+        client1 = double
+        client2 = double
+        OnlineCharFinder.should_receive(:find).with("n1", @client) { FindResult.new(client1, nil) }
+        OnlineCharFinder.should_receive(:find).with("n2", @client) { FindResult.new(client2, nil) }
+        OnlineCharFinder.with_online_chars(["n1", "n2"], @client) do |clients|
+          clients.should eq [client1, client2]
+        end
+      end
+    end
   end
 end

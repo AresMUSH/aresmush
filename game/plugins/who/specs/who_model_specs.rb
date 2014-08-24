@@ -34,6 +34,7 @@ module AresMUSH
       
       it "should return the location if visible" do
         room = double
+        room.stub(:area) { nil }
         @char.stub(:hidden) { false }
         @char.stub(:room) { room }
         room.should_receive(:name) { "Room Name" }

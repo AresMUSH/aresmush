@@ -14,6 +14,6 @@ Rooms have several properties that you can set.  The %xharea%xn and %xhgrid%xn p
     %xcarea <name>%xn - Sets the room area.  Leave name blank to clear.
     %xcgrid <x>=<y>%xn - Sets the grid coordinates.  Leave blank to clear.
         You can use letters or numbers (1,1) or (B,2)
-    %xcroomtype <IC, OOC, or RPR> - Sets a room as part of the IC or OOC zone.
+    %xcroomtype <IC or OOC> - Sets a room as part of the IC or OOC zone.
         Note:  For RP Rooms, we recommend setting them "IC" so that people in them 
         show up as RPing rather than showing up as OOC.  But it's your choice.

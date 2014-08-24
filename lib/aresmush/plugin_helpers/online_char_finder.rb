@@ -15,6 +15,19 @@ module AresMUSH
       FindResult.new(nil, t('db.ambiguous_char_online', :name => name))
     end
     
+    def self.with_online_chars(names, client, &block)
+      to_clients = []
+      names.each do |name|
+        result = self.find(name, client)
+        if (!result.found?)
+          client.emit_failure(result.error)
+          return
+        end
+        to_clients << result.target
+      end
+      yield to_clients
+    end
+    
     private
     
     def self.exact_match?(client, name)

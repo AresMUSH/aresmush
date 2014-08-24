@@ -166,9 +166,7 @@ module AresMUSH
         
         it "should prompt with the terms of service if defined" do
           Login.stub(:terms_of_service) { "tos text" }
-          client.stub(:program) { {} }
           client.should_receive(:emit).with("%l1%rtos text%rlogin.tos_agree%r%l1")
-          client.should_receive(:program=).with( { :create_cmd => cmd })
           client.should_not_receive(:char=)
           handler.handle
         end

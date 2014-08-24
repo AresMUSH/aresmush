@@ -31,31 +31,30 @@ module AresMUSH
       end
       
       def handle
-        to_clients = []
-        self.names.each do |name|
-          result = OnlineCharFinder.find(name, client)
-          if (!result.found?)
-            client.emit_failure(result.error)
-            return
+        OnlineCharFinder.with_online_chars(self.names, client) do |clients|
+          name = client.char.name_and_alias
+          message = PoseFormatter.format(name, self.message)
+          receipients = clients.map { |r| r.name }.join(", ")
+        
+          client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
+          clients.each do |c|
+            c.emit_ooc t('pose.page_to_recipient', :recipients => receipients, :message => message)
+            send_afk_message(c.char)
           end
-          to_clients << result.target
+        
+          client.char.last_paged = self.names
+          client.char.save!
         end
-        name = client.char.name_and_alias
-        message = PoseFormatter.format(name, self.message)
-        receipients = to_clients.map { |r| r.name }.join(", ")
-        client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
-        to_clients.each do |c|
-          c.emit_ooc t('pose.page_to_recipient', :recipients => receipients, :message => message)
-          if (c.char.is_afk)
-            afk_message = ""
-            if (c.char.afk_message)
-              afk_message = "(#{c.char.afk_message})"
-            end
-            client.emit_ooc t('pose.recipient_is_afk', :name => c.name, :message => afk_message)
+      end
+      
+      def send_afk_message(char)
+        if (char.is_afk)
+          afk_message = ""
+          if (char.afk_message)
+            afk_message = "(#{char.afk_message})"
           end
+          client.emit_ooc t('pose.recipient_is_afk', :name => char.name, :message => afk_message)
         end
-        client.char.last_paged = self.names
-        client.char.save!
       end
       
       def log_command
