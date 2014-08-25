@@ -13,6 +13,7 @@ module AresMUSH
         char = client.char
         oocloc = Game.master.ooc_room
         
+        char.is_afk = false
         if (char.room.room_type == "IC")
           char.last_ic_location_id = char.room.id
           # No need to save because we're going to do it when we move them

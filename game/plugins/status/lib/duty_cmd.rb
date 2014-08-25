@@ -29,10 +29,11 @@ module AresMUSH
       
       def check_status
         values = ['on', 'off']
-        return t('status.invalid_duty_status') if !values.include?(self.status)
+        return t('dispatcher.invalid_on_off_option') if !values.include?(self.status)
       end
       
       def handle        
+        client.char.is_afk = false
         client.char.is_on_duty = (self.status == "on")
         client.char.save
         client.emit_ooc t('status.set_duty', :value => self.status)

@@ -28,6 +28,7 @@ require 'rspec/core/rake_task'
 require 'mongoid'
 require 'pp'
 require 'timezone'
+require 'dentaku'
 #require 'json'
 
 require 'aresmush/bootstrapper'

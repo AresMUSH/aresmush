@@ -22,6 +22,11 @@ help:
                     file: 'game/plugins/utils/help/autospace.txt'
                     summary: "Making poses and emits more readable."
                     aliases: [  ]
+                math: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/math.txt'
+                    summary: "Using the MUSH as a calculator."
+                    aliases: [  ]
                 edit: 
                     toc_topic: Misc
                     file: 'game/plugins/utils/help/edit.txt'

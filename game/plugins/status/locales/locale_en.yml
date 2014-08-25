@@ -3,8 +3,10 @@ en:
         cannot_set_on_duty: "You are not allowed to give yourself admin status."
         newbies_cant_go_ic: "You may not go IC until you've been approved."
         status_change: "%{name} changes %{pronoun} status to %{status}."
-        invalid_duty: "That is not a valid duty value.  Try on or off."
         go_ic: "%{name} goes IC."
         go_ooc: "%{name} goes OOC."
         go_afk: "%{name} goes AFK.  %{message}"
         set_duty: "You mark yourself %{value} duty."
+        auto_afk: "You have been idle a long time so you've been marked AFK."
+        afk_disconnect:  "You've been idle so long we're guessing you're not there any more.  Please come back soon."
+        

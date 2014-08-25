@@ -1,11 +1,18 @@
 module AresMUSH
   module Utils
-    class AutospaceCmd
+    class LastCmd
       include Plugin
       include PluginWithoutSwitches
       include PluginRequiresLogin
+      include PluginRequiresArgs
       
       attr_accessor :name
+      
+      def initialize
+        self.required_args = ['name']
+        self.help_topic = 'last'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("last")

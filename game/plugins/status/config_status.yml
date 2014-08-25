@@ -13,3 +13,20 @@ status:
         AFK: "%xy"
         NEW: "%xg"
         ADM: "%xb"
+        
+    afk:
+        # How many minutes before someone is automatically marked AFK.  Comment out
+        # to disable this feature.
+        #minutes_before_afk: 2 #60
+        
+        # How many minutes before someone is automatically logged out for inactivity.
+        # Comment out to disable this feature.
+        #minutes_before_idle_disconnect: 10 #600
+        
+        # Set up when you want the AFK cron job to run.  See the 'cron' plugin for details.
+        # Comment out any items you aren't using; don't just leave them blank.
+        cron:
+            #date: 1
+            #day_of_week: Sat
+            #hour: 21
+            minute: 20

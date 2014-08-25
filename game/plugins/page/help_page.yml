@@ -1,0 +1,9 @@
+help:
+    categories:
+        main:
+            topics:
+                page: 
+                    toc_topic: 'Communicating'
+                    file: 'game/plugins/page/help/page.txt'
+                    summary: 'Private chat messages.'
+                    aliases: [ 'tell' ]

@@ -21,7 +21,6 @@ module AresMUSH
     end
     
     def has_unread_requests?
-      puts "THERE"
       if (Jobs.can_access_jobs?(self))
         return false
       end

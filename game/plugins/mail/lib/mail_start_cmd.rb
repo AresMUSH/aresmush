@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def handle
-        if (!Mail.validate_receipients(self.names, client))
+        if (!Mail.validate_recipients(self.names, client))
           return
         end
         

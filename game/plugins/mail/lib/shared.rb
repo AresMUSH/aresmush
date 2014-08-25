@@ -26,7 +26,7 @@ module AresMUSH
       end
     end
     
-    def self.validate_receipients(names, client)
+    def self.validate_recipients(names, client)
       names.each do |name|
         result = ClassTargetFinder.find(name, Character, client)
         if (!result.found?)

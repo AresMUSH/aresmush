@@ -26,7 +26,6 @@ module AresMUSH
 
         requests = requests.sort_by { |r| r.number }
         pagination = Paginator.paginate(requests, self.page, 20)
-        puts pagination.inspect
         if (pagination.out_of_bounds?)
           client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
         else

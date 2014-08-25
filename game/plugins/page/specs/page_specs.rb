@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module Pose
+  module Page
     describe PageCmd do
       include PluginCmdTestHelper
   

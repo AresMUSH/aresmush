@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Page
     class PageCmd
       include Plugin
       include PluginRequiresLogin
@@ -11,7 +11,7 @@ module AresMUSH
         # It's a common mistake to type 'p' when you meant '+p' for a channel, but
         # never vice-versa.  So ignore any command that has a prefix. 
         return false if !cmd.prefix.nil?
-        cmd.root_is?("page")
+        cmd.root_is?("page") && cmd.switch.nil?
       end
       
       def crack!
@@ -28,7 +28,7 @@ module AresMUSH
       end
       
       def check_page_target
-        return t('pose.page_target_missing') if self.names.empty?
+        return t('page.target_missing') if self.names.empty?
         return nil
       end
       
@@ -36,16 +36,28 @@ module AresMUSH
         OnlineCharFinder.with_online_chars(self.names, client) do |clients|
           name = client.char.name_and_alias
           message = PoseFormatter.format(name, self.message)
-          receipients = clients.map { |r| r.name }.join(", ")
+          recipients = clients.map { |r| r.name }.join(", ")
         
-          client.emit_ooc t('pose.page_to_sender', :recipients => receipients, :message => message)
+          client.emit_ooc t('page.to_sender', :recipients => recipients, :message => message)
           clients.each do |c|
-            c.emit_ooc t('pose.page_to_recipient', :recipients => receipients, :message => message)
-            send_afk_message(c.char)
+            page_recipient(c, recipients, message)
           end
         
           client.char.last_paged = self.names
           client.char.save!
+        end
+      end
+      
+      def page_recipient(other_client, recipients, message)
+        if (other_client.char.do_not_disturb)
+          client.emit_ooc t('page.recipient_do_not_disturb', :name => other_client.name)
+          Mail.send_mail([other_client.name], 
+              t('page.missed_page_subject', :name => client.name), 
+              t('page.missed_page_body', :name => client.name, :message => message), 
+              client)
+        else          
+          other_client.emit_ooc t('page.to_recipient', :recipients => recipients, :message => message)
+          send_afk_message(client.char)
         end
       end
       
@@ -55,7 +67,7 @@ module AresMUSH
           if (char.afk_message)
             afk_message = "(#{char.afk_message})"
           end
-          client.emit_ooc t('pose.recipient_is_afk', :name => char.name, :message => afk_message)
+          client.emit_ooc t('page.recipient_is_afk', :name => char.name, :message => afk_message)
         end
       end
       
