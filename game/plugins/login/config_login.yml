@@ -9,3 +9,7 @@ login:
         can_reset_password: 
             - admin
             # - another_role
+            
+    # Channels you want to make sure guests are on when they log in.
+    guest_channels:
+        - Questions
