@@ -18,7 +18,7 @@ module AresMUSH
       def handle
         list = ActorRegistry.all.sort { |a,b| a.charname <=> b.charname }
         list = list.map { |a| "#{a.charname.ljust(25)} #{a.actor}" }
-        client.emit BorderedDisplay.paged_list(list, self.page, 3, t('actors.actors_title'))
+        client.emit BorderedDisplay.paged_list(list, self.page, 15, t('actors.actors_title'))
       end
     end
   end

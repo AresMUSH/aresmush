@@ -17,7 +17,7 @@ module AresMUSH
         status = @char.is_approved ? 
         "%xg%xh#{t('sheet.approved')}%xn" : 
         "%xr%xh#{t('sheet.unapproved')}%xn"
-        center(status, 32)
+        center(status, 23)
       end
       
       def page_title

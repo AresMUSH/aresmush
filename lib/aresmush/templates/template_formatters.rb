@@ -2,19 +2,19 @@ module AresMUSH
   module TemplateFormatters
     def left(str, width, pad_char = " ")
       return "".ljust(width) if str.nil?
-      str.truncate(width).ljust(width, pad_char)
+      AnsiFormatter.left(str, width, pad_char)
     end
 
     def center(str, width, pad_char = " ")
       return "".ljust(width) if str.nil?
-      str.truncate(width).center(width, pad_char)
+      AnsiFormatter.center(str, width, pad_char)
     end
 
     def right(str, width, pad_char = " ")
       return "".rjust(width) if str.nil?
-      str.truncate(width).rjust(width, pad_char)
+      AnsiFormatter.right(str, width, pad_char)
     end
-  
+    
     def line(number = 1)
       @output << "%l#{number}"
       return ""

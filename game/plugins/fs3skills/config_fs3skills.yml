@@ -1,0 +1,96 @@
+fs3skills:
+    roles:
+        can_manage_abilities:
+            # List roles that are allowed to modify character abilities.
+            - admin
+            # - another role
+            
+    attributes:
+        -  
+            name: Mind
+            desc: "Mental fitness - Intelligence and Creativity"
+        -   
+            name: Body
+            desc: "Physical fitness - Strength, Constitution and Agility"
+        -   
+            name: Reaction
+            desc: "Reflexes - Dexterity, Hand-Eye Coordination and Wits"
+        -   
+            name: Presence
+            desc: "Personality - Charisma and Will"
+    
+    action_skills:
+        -
+            name: Alertness
+            desc: "Noticing things and being aware of your surroundings."
+            rulingattr: Reaction
+        -
+            name: Demolitions
+            desc: "Blowing stuff up."
+            rulingattr: Mind
+        -
+            name: Comms
+            desc: "Ship sensors, countermeasures and communications (ECO and CIC type duties)."
+            rulingattr: Mind
+        -   
+            name: Firearms
+            desc: "Shooting guns."
+            rulingattr: Reaction
+        -
+            name: First Aid
+            desc: "Patching people up outside of a hospital.  Docs should have a medical bg skill."
+            rulingattr: Mind
+        -
+            name: Gunnery
+            desc: "Ship and vehicle weapons."
+            rulingattr: Reaction
+        - 
+            name: Melee
+            desc: "Fighting with fists, knives, and hand-to-hand weapons."
+            rulingattr: Body
+        -
+            name: Piloting
+            desc: "Flying Vipers, Raptors and other airborne vehicles."
+            rulingattr: Reaction
+        - 
+            name: Stealth
+            desc: "Being sneaky."
+            rulingattr: Body
+        -
+            name: Technician
+            desc: "General mechanics/electronics and fixing things."
+            rulingattr: Mind
+
+    background_skills:
+        - "A science - astronomy, biology, chemistry, geology, mathematics, physics, etc."
+        - "A humanity - history, literature, psychology, philosophy, poetry, etc."
+        - "A profession or trade	- cook, waitress, bartender, accountant, programmer, carpenter, brewer, blacksmith, etc."
+        - "A game - chess, roleplaying, poker, etc."
+        - "An art - sculpting, painting, sketching, photography, etc."
+        - "A form of expression - acting, singing, dancing, playing an instrument, writing"
+        - "A sport - baseball, football, gymnastics, etc."
+        - "A craft or hobby - gardening, basketweaving, knitting, etc."
+        - "An unusual interest - detective novels, game show hosts, etc."
+        
+    languages:
+        - "Standard - Spoken across the colonies."
+        - "Gemenese - Official language of Gemenon."
+        - "Old Gemenese - Dead language known by academics and religious scholars."
+        - "Leonese - Official language of Leonis, also spoken in parts of Sagittaron and Scorpia."
+        - "Scorpian - Official language of parts of Scorpia."
+        - "Tauran - Official language of Tauron."
+        - "Sagittaran - Tribal language of Sagittaron.  There are actually dozens of dialects."
+        - "Celtan - Language of the ethnic Celtan people on Virgon's moon, Hibernia."
+
+    starting_languages:
+        - Standard
+        
+    max_high_abilities: 3
+    max_points_in_action_skills: 32
+    max_points_in_attributes: 12
+    starting_points: 60
+    high_ability_level: 7
+    max_quirks: 4
+    min_quirks: 2
+    min_background_skills: 4
+    

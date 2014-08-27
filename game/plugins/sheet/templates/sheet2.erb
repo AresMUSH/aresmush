@@ -1,5 +1,14 @@
 %l1
 %xh<%= name %>%xn <%= approval_status%> <%= page_title %>
 %l2
-Abilities n'at
+<%= attributes_title%>
+<% attributes.each do |a| -%>
+<%= a -%>
+<% end %> 
+
+<%= action_skills_title %>
+<% action_skills.each do |a| -%>
+<%= a -%>
+<% end %> 
+
 %l1

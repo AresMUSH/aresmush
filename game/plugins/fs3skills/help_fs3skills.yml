@@ -1,0 +1,13 @@
+help:
+    categories:
+        main:
+            topics:
+                roll: 
+                    toc_topic: 'Conflict Resolution'
+                    file: 'game/plugins/fs3skills/help/roll.txt'
+                    summary: 'Ability rolls.'
+                    alias: [ 'rolls', 'opposed', 'fs3', 'skill', 'ability' ]
+                skills:
+                    toc_topic: 'FS3'
+                    file: 'game/plugins/fs3skills/help/fs3skills.txt'
+                    summary: 'Skills System.'
