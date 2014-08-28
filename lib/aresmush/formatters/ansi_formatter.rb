@@ -34,13 +34,21 @@ module AresMUSH
       }
     end
     
+    def self.has_ansi?(str)
+      str =~ code_regex
+    end
+    
+    def self.starts_with_ansi?(str)
+      str =~ /^%[xXcC][\w]/
+    end
+    
     def self.format(str)
       return nil if str.nil?
-      return str if str !~ code_regex
+      return str if !has_ansi?(str)
       formatted_str = ""
       groups = ansi_groups(str)
       groups.each do |g|
-        if (g.start_with?("%x") || g.start_with?("%c"))
+        if (starts_with_ansi?(g))
           code = g.gsub(/%[xXcC]/, "")
           formatted_str << ansi_code_map[code]
         else
@@ -51,15 +59,16 @@ module AresMUSH
     end
 
     def self.truncate(str, width)
+      return nil if str.nil?
+      return str.truncate(width) if !has_ansi?(str)
       groups = ansi_groups(str)
-      return str.truncate(width) if str !~ code_regex
       keep = keep_groups_up_to_width(groups, width)
       keep[:groups].join
     end
         
     def self.center(str, width, pad_char = " ")
       return nil if str.nil?
-      return str.truncate(width).center(width, pad_char) if str !~ code_regex
+      return str.truncate(width).center(width, pad_char) if !has_ansi?(str)
       groups = ansi_groups(str)
       keep = keep_groups_up_to_width(groups, width)
       length = keep[:length]
@@ -70,7 +79,7 @@ module AresMUSH
     
     def self.left(str, width, pad_char = " ")
       return nil if str.nil?
-      return str.truncate(width).ljust(width, pad_char) if str !~ code_regex
+      return str.truncate(width).ljust(width, pad_char) if !has_ansi?(str)
       groups = ansi_groups(str)
       keep = keep_groups_up_to_width(groups, width)
       length = keep[:length]
@@ -82,7 +91,7 @@ module AresMUSH
     
     def self.right(str, width, pad_char = " ")
       return nil if str.nil?
-      return str.truncate(width).rjust(width, pad_char) if str !~ code_regex
+      return str.truncate(width).rjust(width, pad_char) if !has_ansi?(str)
       groups = ansi_groups(str)
       keep = keep_groups_up_to_width(groups, width)
       length = keep[:length]

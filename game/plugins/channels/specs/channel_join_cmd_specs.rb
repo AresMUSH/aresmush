@@ -63,7 +63,7 @@ module AresMUSH
             @channel.stub(:characters) { @chars }
             char.stub(:channel_options) { {} }
             char.stub(:save!)
-            client.stub(:name) { "Bob" }
+            char.stub(:name) { "Bob" }
             client.stub(:emit_ooc)
           end
           

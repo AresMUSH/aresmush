@@ -26,10 +26,6 @@ module AresMUSH
         SubstitutionFormatter.format("Test%tTest2%TTest3").should eq "Test     Test2     Test3"
       end
 
-      it "should replace %~ with the unicode marker" do
-        SubstitutionFormatter.format("Test%~Test").should eq "Test\u2682Test"
-      end  
-      
       it "should replace %l1 with line1" do
         Line.stub(:show).with("1") { "---" }
         SubstitutionFormatter.format("Test%l1Test").should eq "Test---Test"
@@ -55,6 +51,13 @@ module AresMUSH
         SubstitutionFormatter.format("A%x!B").should eq "A%xbB"
       end
 
+      it "should replace space() with spaces" do
+        SubstitutionFormatter.format("A[space(1)]B[space(10)]").should eq "A%BB%B%B%B%B%B%B%B%B%B%B"
+      end
+      
+      it "should not replace escaped space()" do
+        SubstitutionFormatter.format("A[space(1)]B\\[space(10)]").should eq "A%BB\\[space(10)]"
+      end
     end
     
   end

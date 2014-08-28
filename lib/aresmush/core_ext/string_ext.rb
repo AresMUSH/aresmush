@@ -40,7 +40,7 @@ class String
       
     "#{replace}")  
   end    
-  
+
   def truncate(length)
     self[0..length - 1]    
   end 
