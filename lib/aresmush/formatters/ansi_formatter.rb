@@ -38,24 +38,40 @@ module AresMUSH
       str =~ code_regex
     end
     
-    def self.starts_with_ansi?(str)
-      str =~ /^%[xXcC][\w]/
-    end
-    
     def self.format(str)
       return nil if str.nil?
       return str if !has_ansi?(str)
       formatted_str = ""
       groups = ansi_groups(str)
       groups.each do |g|
-        if (starts_with_ansi?(g))
-          code = g.gsub(/%[xXcC]/, "")
-          formatted_str << ansi_code_map[code]
+        if (g.start_with?("%"))
+          formatted_str << get_code(g)
         else
           formatted_str << g
         end
       end
       formatted_str
+    end
+    
+    # Given a string like %xb or %c102, returns the appropriate ansified string
+    def self.get_code(ansi_str)
+      matches = /^%(?<control>[XxCc])(?<code>.+)/.match(ansi_str)
+      return ansi_str if matches.nil?
+      
+      control = matches[:control]
+      code = matches[:code]
+      
+      if (ansi_code_map.has_key?(code))
+        return ansi_code_map[code]
+      elsif (code.to_i > 0 && code.to_i < 257)
+        if (control == "X" || control == "C")
+          return "\e[48;5;#{code}m"
+        else
+          return "\e[38;5;#{code}m"
+        end
+      else
+        return ansi_str
+      end
     end
 
     def self.truncate(str, width)
@@ -141,7 +157,7 @@ module AresMUSH
     
     # Funky regex to look for codes not preceded by a single backlash.
     def self.code_regex
-      /((?<!\\)%[xXcC][\w])/
+      /((?<!\\)%[xXcC]\w?\d{0,3})/
     end
     
   end

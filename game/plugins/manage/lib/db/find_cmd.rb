@@ -18,14 +18,17 @@ module AresMUSH
         self.name = trim_input(cmd.args.arg2)
       end
 
-      def check_can_build
-        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
-        return nil
-      end
-      
       def handle
         begin
+          
+          client.emit t('chars_connected', :count => 0)
           c = get_search_class
+          
+          if (!Manage.can_manage_object?(client.char, c.new))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+          
           if (self.name.nil?)
             objects = c.all
           else

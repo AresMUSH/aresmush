@@ -103,6 +103,12 @@ task :install do
   headwiz.save!
   game.master_admin_id = headwiz
 
+  builder = AresMUSH::Character.create
+  builder.change_password("buildme")
+  builder.name = "Builder"
+  builder.roles << "builder"
+  builder.save!
+  
   systemchar = AresMUSH::Character.create
   systemchar.change_password("wizb00ts")
   systemchar.name = "System"

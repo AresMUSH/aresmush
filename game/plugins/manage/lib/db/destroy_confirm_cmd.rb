@@ -9,13 +9,13 @@ module AresMUSH
         cmd.root_is?("destroy") && cmd.switch_is?("confirm")
       end
 
-      def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
-        return nil
-      end
-
       def handle
         target = client.program[:destroy_target]
+        
+        if (!Manage.can_manage_object?(client.char, target))
+          client.emit_failure t('dispatcher.not_allowed')
+          return
+        end
         
         if (target.nil?)
           client.emit_failure t('manage.no_destroy_in_progress')

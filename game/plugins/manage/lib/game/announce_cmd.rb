@@ -22,7 +22,7 @@ module AresMUSH
       end
 
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
+        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
         return nil
       end
       

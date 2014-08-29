@@ -1,20 +1,45 @@
 module AresMUSH
   module Manage
     describe Manage do
-      describe :can_manage? do
+      describe :can_manage_object? do
         before do
-          @actor = double
-          Global.stub(:config) {{ "manage" => { "roles" => { "can_manage" => ['admin'] }}}}
+          @admin = double
+          @admin.stub(:has_any_role?).with(["admin"]) { true }
+          @admin.stub(:has_any_role?).with(["builder"]) { false }
+
+          @builder = double
+          @builder.stub(:has_any_role?).with(["admin"]) { false }
+          @builder.stub(:has_any_role?).with(["builder"]) { true }
+
+          @room = Room.new
+          @exit = Exit.new
+          @char = Character.new
+
+          Global.stub(:config) {{ "manage" => { "roles" => { "can_manage_players" => ['admin'], "can_manage_rooms" => ['builder'] }}}}
         end
           
-        it "should allow someone with the required role to reset a password" do
-          @actor.stub(:has_any_role?).with(["admin"]) { true }
-          Manage.can_manage?(@actor).should be_true
+        it "should allow someone with room permissions to manage a room" do
+          Manage.can_manage_object?(@builder, @room).should be_true
         end
-        
-        it "should not allow you to access someone else's email" do
-          @actor.stub(:has_any_role?).with(["admin"]) { false }
-          Manage.can_manage?(@actor).should be_false
+
+        it "should not allow someone without room permissions to manage a room" do
+          Manage.can_manage_object?(@admin, @room).should be_false
+        end
+
+        it "should allow someone with room permissions to manage an exit" do
+          Manage.can_manage_object?(@builder, @exit).should be_true
+        end
+
+        it "should not allow someone with room permissions to manage an exit" do
+          Manage.can_manage_object?(@admin, @exit).should be_false
+        end
+
+        it "should allow someone with char permissions to manage a character" do
+          Manage.can_manage_object?(@admin, @char).should be_true
+        end
+
+        it "should not allow someone with char permissions to manage a character" do
+          Manage.can_manage_object?(@builder, @char).should be_false
         end
       end
     end

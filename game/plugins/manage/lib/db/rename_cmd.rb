@@ -26,11 +26,6 @@ module AresMUSH
         self.name = trim_input(cmd.args.arg2)
       end
 
-      def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage?(client.char)
-        return nil
-      end
-
       def handle
         find_result = AnyTargetFinder.find(self.target, client)
         
@@ -39,6 +34,11 @@ module AresMUSH
           return
         end
         target = find_result.target
+
+        if (!Manage.can_manage_object?(client.char, target))
+          client.emit_failure t('dispatcher.not_allowed')
+          return
+        end
         
         name_validation_msg = target.class.check_name(self.name)
         if (!name_validation_msg.nil?)

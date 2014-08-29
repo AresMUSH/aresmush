@@ -22,6 +22,14 @@ module AresMUSH
       it "should not replace a code preceeded by a backslash" do
         AnsiFormatter.format("A\\%xcB").should eq "A\\%xcB" 
       end
+      
+      it "should handle a numeric code for foreground" do
+        AnsiFormatter.format("A%x102B").should eq "A\e[38;5;102mB" 
+      end
+      
+      it "should handle a numeric code for background" do
+        AnsiFormatter.format("A%C102B").should eq "A\e[48;5;102mB" 
+      end
     end
     
     describe :strip_ansi do
