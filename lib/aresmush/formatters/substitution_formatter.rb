@@ -10,11 +10,11 @@ module AresMUSH
       str = str.code_gsub("%[lL]3", Line.show("3"))
       str = str.code_gsub("%[lL]4", Line.show("4"))
 
+      str = str.gsub(/(?<!\\)\[space\(([\d]+)\)\]/) { |num| Regexp.last_match[1].to_i.times.collect { '%B' }.join }
       str = str.code_gsub("%[bB]", " ")
       str = str.code_gsub("%[rR]", "\n")
       str = str.code_gsub("%[tT]", "     ")
       str = str.code_gsub("%x!", "%x#{RandomColorizer.random_color}")
-      str = str.gsub(/(?<!\\)\[space\(([\d]+)\)\]/) { |num| Regexp.last_match[1].to_i.times.collect { '%B' }.join }
       str
     end
   end
