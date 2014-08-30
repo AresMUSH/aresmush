@@ -30,7 +30,7 @@ module AresMUSH
         end
         
         target = find_result.target
-        
+
         if (!Manage.can_manage_object?(client.char, target))
           client.emit_failure t('dispatcher.not_allowed')
           return

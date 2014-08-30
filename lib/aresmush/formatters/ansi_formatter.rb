@@ -154,9 +154,14 @@ module AresMUSH
       str.split(code_regex)
     end
     
-    # Funky regex to look for codes not preceded by a single backlash.
     def self.code_regex
-      /((?<!\\)%[xXcC]\w?\d{0,3})/
+      /((?<!\\)   # Not preceeded by backslash
+      %[xXcC]     # Ansi code
+      (?:         # Non-capturing group
+        [A-Za-z]{1}|[\d]{1,3} # one letter, or 1-3 numbers
+      )
+      )  
+      /x
     end
     
   end

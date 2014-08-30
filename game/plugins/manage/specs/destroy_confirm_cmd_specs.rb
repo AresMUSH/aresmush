@@ -20,6 +20,7 @@ module AresMUSH
         before do
           @target = double
           client.stub(:program) { { :destroy_target => @target, :something_else => "x" } }
+          Manage.stub(:can_manage_object?) { true }
           handler.crack!
         end
         
@@ -34,6 +35,12 @@ module AresMUSH
             @target.stub(:class) { Character }
             client_monitor.stub(:find_client).with(@target) { double }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_online")
+            handler.handle
+          end
+          
+          it "should emit failure if the char doesn't have permission" do
+            Manage.should_receive(:can_manage_object?).with(char, @target) { false }
+            client.should_receive(:emit_failure).with("dispatcher.not_allowed")
             handler.handle
           end
         end

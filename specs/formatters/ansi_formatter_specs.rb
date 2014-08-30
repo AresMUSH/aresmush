@@ -30,6 +30,10 @@ module AresMUSH
       it "should handle a numeric code for background" do
         AnsiFormatter.format("A%C102B").should eq "A\e[48;5;102mB" 
       end
+      
+      it "should handle a color code followed by a number" do
+        AnsiFormatter.format("A%Cg123B").should eq "A" + ANSI.green + "123B" 
+      end
     end
     
     describe :center do
