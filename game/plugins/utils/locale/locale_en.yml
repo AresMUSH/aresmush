@@ -18,3 +18,6 @@ en:
     last:
         currently_online: "%{name} is currently online."
         last_online: "%{name} was last online at %{time}."
+    ansi:
+        colors_title: "ANSI Colors"
+        x_or_c: "See 'help ansi' for help using colors."

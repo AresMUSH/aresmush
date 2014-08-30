@@ -2,6 +2,16 @@ help:
     categories:
         main:
             topics:
+                ansi: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/ansi.txt'
+                    summary: "Ansi colors."
+                    aliases: [ 'color', 'colors' ]
+                substitutions: 
+                    toc_topic: Misc
+                    file: 'game/plugins/utils/help/substitutions.txt'
+                    summary: "Formatting codes."
+                    aliases: [ 'subs', 'formatting' ]
                 echo: 
                     toc_topic: Misc
                     file: 'game/plugins/utils/help/echo.txt'

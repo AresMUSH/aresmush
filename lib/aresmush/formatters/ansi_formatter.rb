@@ -28,7 +28,8 @@ module AresMUSH
         "I" => ANSI.inverse_off,
         "H" => ANSI.bold_off,
 
-        "n" => ANSI.reset
+        "n" => ANSI.reset,
+        "N" => ANSI.reset
 
         # No, I did not forget 'blink'.  Blink is evil. :)
       }
