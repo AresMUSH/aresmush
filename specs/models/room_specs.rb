@@ -43,24 +43,72 @@ module AresMUSH
       end
     end    
     
-    describe :has_exit? do
+    describe :get_exit? do
       include SpecHelpers
-      it "should return true if exit exists - case-insensitive" do
+      it "should return exit if exit exists - case-insensitive" do
         using_test_db do
           exit = Exit.new(:name => "A")
           @room.exits << exit
           @room.save!
-          @room.has_exit?("a").should be_true
+          @room.get_exit("a").should eq exit
         end
       end
       
-      it "should return false if exit doesn't exist" do
+      it "should return nil if exit doesn't exist" do
         using_test_db do
           exit = Exit.new(:name => "A")
           @room.exits << exit
           @room.save!
-          @room.has_exit?("b").should be_false
+          @room.get_exit("b").should be_nil
         end
+      end
+      
+      it "should return nil if out exit doesn't exist" do
+        using_test_db do
+          @room.get_exit("O").should be_nil
+        end
+      end
+
+      it "should match the out exit if one exists" do
+        using_test_db do
+          exit1 = Exit.new(:name => "A")
+          exit2 = Exit.new(:name => "O")
+          @room.exits << exit1
+          @room.exits << exit2
+          @room.save!
+          @room.get_exit("O").should eq exit2
+        end
+      end
+      
+      it "should return first exit if 'O' specified and not matched" do
+        using_test_db do
+          exit1 = Exit.new(:name => "A")
+          exit2 = Exit.new(:name => "B")
+          @room.exits << exit1
+          @room.exits << exit2
+          @room.save!
+          @room.get_exit("O").should eq exit1
+        end
+      end
+    end
+    
+    describe :has_exit? do
+      it "should return false if get_exit is nil" do
+        @room.stub(:get_exit).with("a") { nil }
+        @room.has_exit?("a").should be_false
+      end
+
+      it "should return false if get_exit is not nil" do
+        @room.stub(:get_exit).with("a") { double }
+        @room.has_exit?("a").should be_true
+      end
+    end
+    
+    describe :out_exit do 
+      it "should return the exit with name 'O'" do
+        exit = double
+        @room.stub(:get_exit).with("O") { exit }
+        @room.out_exit.should eq exit
       end
     end
     

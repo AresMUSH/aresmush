@@ -121,12 +121,10 @@ module AresMUSH
     
     private
     
-    def self.ansi_length(groups)
-      groups.select { |g| !g.start_with?("%") }.join.length
-    end
-    
     def self.keep_groups_up_to_width(groups, width)
-      real_length = ansi_length(groups)
+      # Not perfect (will count A%B as three chars), but close enough for the 
+      # expected use cases.
+      real_length = groups.select { |g| !g.start_with?("%") }.join.length
       return { :groups => groups, :length => real_length } if real_length <= width
 
       keep = []

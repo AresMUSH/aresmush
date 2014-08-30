@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def handle
-        outside = client.room.exits.select { |e| e.name == 'O' }
-        if (outside.empty?)
-          outside = client.room.exits.first
-        end
+        outside = client.room.out_exit
         
         if (outside.nil?)
           client.emit_failure t('sweep.cant_find_exit')
