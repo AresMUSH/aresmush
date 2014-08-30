@@ -3,13 +3,14 @@ module AresMUSH
   class Client 
 
     attr_reader :ip_addr, :id, :hostname
-    attr_accessor :char, :last_activity, :last_connect, :program
+    attr_accessor :char, :last_activity, :last_connect, :program, :input_buffer
     
     def initialize(id, connection)
       @id = id
       @connection = connection
       self.last_activity = Time.now
       self.last_connect = Time.now
+      self.input_buffer = ""
       @ip_addr = @connection.ip_addr
       begin
         @hostname = Resolv.getname @ip_addr
@@ -74,7 +75,10 @@ module AresMUSH
       begin
         self.last_activity = Time.now
         return if input !~ /\S/
-        Global.dispatcher.on_command(self, Command.new(input))
+        self.input_buffer = self.input_buffer + input
+        return if (!self.input_buffer.end_with?("\r") && !self.input_buffer.end_with?("\n"))
+        Global.dispatcher.on_command(self, Command.new(self.input_buffer))
+        self.input_buffer = ""
       rescue Exception => e
          Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
