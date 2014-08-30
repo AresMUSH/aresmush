@@ -72,6 +72,12 @@ module AresMUSH
       end
 
       it "should put in the raw code when preceeded by two backslashes" do
+        x = "A\\\\%rB".code_gsub("%r", "Z")
+        x.should eq "A\\\\%rB" 
+        puts x
+      end
+
+      it "should put in the raw code when preceeded by two backslashes" do
         "A\\\\%rB".code_gsub("%r", "Z").should eq "A\\\\%rB" 
       end
     end

@@ -116,10 +116,6 @@ module AresMUSH
       formatted_str.gsub(fake_str, keep[:groups].join)
     end
     
-    def self.strip_ansi(str)
-      str.gsub(code_regex, "")
-    end
-    
     private
     
     def self.ansi_length(groups)

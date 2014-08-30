@@ -51,12 +51,16 @@ module AresMUSH
         SubstitutionFormatter.format("A%x!B").should eq "A%xbB"
       end
 
-      it "should replace space() with spaces" do
-        SubstitutionFormatter.format("A[space(1)]B[space(10)]").should eq "A%BB%B%B%B%B%B%B%B%B%B%B"
+      it "should replace %\\ with a \\" do
+        SubstitutionFormatter.format("A%\\B").should eq "A\\B"
       end
       
-      it "should not replace escaped space()" do
-        SubstitutionFormatter.format("A[space(1)]B\\[space(10)]").should eq "A%BB\\[space(10)]"
+      it "should replace space() with spaces" do
+        SubstitutionFormatter.format("A[space(1)]B[space(10)]").should eq "A B          "
+      end
+      
+      it "should not replace an escaped linebreak or space" do
+        SubstitutionFormatter.format("Test\\%bblank\\%Rline").should eq "Test\\%bblank\\%Rline"
       end
     end
     
