@@ -7,12 +7,12 @@ module AresMUSH
     
     def self.local_month_str(client, datetime)
       lt = localtime(client, datetime)
-      lt.strftime("%Y-%m-%d")
+      lt.strftime Global.config["server"]["short_date_format"]
     end
 
     def self.local_time_str(client, datetime)
       lt = localtime(client, datetime)
-      lt.strftime("%a %b %d, %Y %l:%M%P")
+      lt.strftime Global.config["server"]["long_date_format"]
     end
     
   end

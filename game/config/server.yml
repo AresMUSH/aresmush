@@ -15,4 +15,21 @@ server:
     
     # Name of your game.
     mush_name: AresMUSH
+
+    # Configure the way dates are displayed in their short form
+    # %d is the date, %m is the month, %Y is the year
+    short_date_format: "%m/%d/%Y"
+    # European style:
+    # short_date_format: "%d-%m-%Y"
     
+    # Configure the way dates are displayed in their long form
+    # %a is the day of week
+    # %b is the month name
+    # %d is the date
+    # %Y is the year
+    # %l is the hour in 12-hour form
+    # %M is the minute
+    # %P is am/pm
+    long_date_format: "%a %b %d, %Y %l:%M%P"
+    # European style:
+    #long_date_format: "%d-%m-%Y %l:%M%P"
