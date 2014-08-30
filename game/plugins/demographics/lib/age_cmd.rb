@@ -37,7 +37,9 @@ module AresMUSH
         bday = bday - rand(364)
         client.char.birthdate = bday
         client.char.save
-        client.emit_success t('demographics.birthdate_set', :birthdate => bday, :age => client.char.age)
+        client.emit_success t('demographics.birthdate_set', 
+          :birthdate => ICTime.ic_month_str(bday), 
+          :age => client.char.age)
       end
         
     end

@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def ic_time
-        ICTime.month_str
+        ICTime.ic_month_str ICTime.ictime
       end
       
       def area

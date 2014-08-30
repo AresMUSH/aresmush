@@ -6,10 +6,10 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginRequiresArgs
       
-      attr_accessor :month, :day, :year
+      attr_accessor :date_str
 
       def initialize
-        self.required_args = ['month', 'day', 'year']
+        self.required_args = ['date_str']
         self.help_topic = 'demographics'
         super
       end
@@ -19,28 +19,23 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack!(/^(?<year>[\d]{4})\-(?<month>[\d]{2})\-(?<day>[\d]{2})$/)
-        self.month = cmd.args.month
-        self.day = cmd.args.day
-        self.year = cmd.args.year
+        self.date_str = cmd.args
       end
-      
-      def check_dates
-        return nil if self.month.nil?
-        return t('demographics.invalid_birthdate') if !self.month.is_integer?
-        return t('demographics.invalid_birthdate') if !self.day.is_integer?
-        return t('demographics.invalid_birthdate') if !self.year.is_integer?
-        return t('demographics.invalid_birthdate') if !Date.valid_date? self.year.to_i, self.month.to_i, self.day.to_i
-        return nil
-      end
-      
+            
       def check_approval
         return t('demographics.cant_be_changed') if client.char.is_approved?
         return nil
       end
       
       def handle
-        bday = Date.new self.year.to_i, self.month.to_i, self.day.to_i
+        begin
+          bday = Date.strptime(self.date_str, Global.config['server']['short_date_format'])
+        rescue
+          client.emit_failure t('demographics.invalid_birthdate', 
+            :format_str => Global.config['server']['date_entry_format_help'])
+          return
+        end
+        
         age = Demographics.calculate_age(bday)
         age_error = Demographics.check_age(age)
         
@@ -51,7 +46,9 @@ module AresMUSH
         
         client.char.birthdate = bday
         client.char.save
-        client.emit_success t('demographics.birthdate_set', :birthdate => bday, :age => client.char.age)
+        client.emit_success t('demographics.birthdate_set', 
+          :birthdate => ICTime.ic_month_str(bday), 
+          :age => client.char.age)
       end
         
     end

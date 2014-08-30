@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       it_behaves_like "a plugin that requires login"
-      
+            
       describe :crack do
         it "should crack a command missing args" do
           init_handler(DescCmd, "describe")

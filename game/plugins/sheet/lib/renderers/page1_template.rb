@@ -97,7 +97,7 @@ module AresMUSH
       end
       
       def birthdate
-        format_field @char.birthdate.nil? ? "" : @char.birthdate
+        format_field @char.birthdate.nil? ? "" : ICTime.ic_month_str(@char.birthdate)
       end
       
       def reputation

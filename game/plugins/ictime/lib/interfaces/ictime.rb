@@ -6,8 +6,8 @@ module AresMUSH
       Date.new(year, t.month, t.day) +  Global.config['ictime']['day_offset']
     end
     
-    def self.month_str
-      ictime.strftime Global.config["server"]["short_date_format"]
+    def self.ic_month_str(time)
+      time.strftime Global.config["server"]["short_date_format"]
     end
   end
 end
