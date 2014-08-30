@@ -4,6 +4,7 @@ help:
             topics:
                 page: 
                     toc_topic: 'Communicating'
-                    file: 'game/plugins/page/help/page.txt'
+                    dir: 'game/plugins/page/help/'
+                    file: 'page.txt'
                     summary: 'Private chat messages.'
                     aliases: [ 'tell' ]

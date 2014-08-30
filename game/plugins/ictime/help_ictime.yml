@@ -4,5 +4,6 @@ help:
             topics:
                 ictime: 
                     toc_topic: "Game Info"
-                    file: 'game/plugins/ictime/help/ictime.txt'
+                    dir: 'game/plugins/ictime/help/'
+                    file: 'ictime.txt'
                     summary: "IC date and time information."

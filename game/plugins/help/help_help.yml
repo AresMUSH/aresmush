@@ -4,8 +4,10 @@ help:
             topics:
                 help: 
                     toc_topic: 1 - Getting Started
-                    file: 'game/plugins/help/help/help.txt'
+                    dir: 'game/plugins/help/help/'
+                    file: 'help.txt'
                     summary: "Getting help."
                 commands: 
-                    file: 'game/plugins/help/help/commands.txt'
+                    dir: 'game/plugins/help/help/'
+                    file: 'commands.txt'
                     summary: "Telling the game what to do."

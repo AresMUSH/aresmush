@@ -4,6 +4,7 @@ help:
             topics:
                 friends: 
                     toc_topic: 'Community'
-                    file: 'game/plugins/friends/help/friends.txt'
+                    dir: 'game/plugins/friends/help/'
+                    file: 'friends.txt'
                     summary: 'Interacting with your friends.'
                     aliases: [ 'friend' ]

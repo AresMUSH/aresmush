@@ -4,36 +4,42 @@ help:
             topics:
                 meetme:
                     toc_topic: "Getting Around"
-                    file: 'game/plugins/rooms/help/meetme.txt'
+                    dir: 'game/plugins/rooms/help/'
+                    file: 'meetme.txt'
                     summary: 'Meeting up for roleplay.'
                     aliases: [ 'meetme' ]
                 moving:
                     toc_topic: "Getting Around"
-                    file: 'game/plugins/rooms/help/getting_around.txt'
+                    dir: 'game/plugins/rooms/help/'
+                    file: 'getting_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'go', 'move', 'rooms', 'exit', 'home' ]                
         admin:
             topics:
                 building: 
                     toc_topic: 'Game Management'
-                    file: 'game/plugins/rooms/help/building.txt'
+                    dir: 'game/plugins/rooms/help/'
+                    file: 'building.txt'
                     summary: 'Building the grid.'
                     aliases: [ 'build', 'open', 'rooms', 'dig', 'link', 'unlink', 'area', 'grid', 'roomtype', 'zone' ]
                 getting around: 
                     toc_topic: 'Getting Around'
-                    file: 'game/plugins/rooms/help/admin_getting_around.txt'
+                    dir: 'game/plugins/rooms/help/'
+                    file: 'admin_getting_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'teleport', 'join' ]
         builder:
             topics:
                 building: 
                     toc_topic: 'Building'
-                    file: 'game/plugins/rooms/help/building.txt'
+                    dir: 'game/plugins/rooms/help/'
+                    file: 'building.txt'
                     summary: 'Building the grid.'
                     aliases: [ 'build', 'open', 'rooms', 'dig', 'link', 'unlink', 'area', 'grid', 'roomtype', 'zone' ]
                 getting around: 
                     toc_topic: 'Building'
-                    file: 'game/plugins/rooms/help/admin_getting_around.txt'
+                    dir: 'game/plugins/rooms/help/'
+                    file: 'admin_getting_around.txt'
                     summary: 'Getting around the grid.'
                     aliases: [ 'teleport', 'join' ]
             

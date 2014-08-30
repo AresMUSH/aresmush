@@ -4,6 +4,7 @@ help:
             topics:
                 who: 
                     toc_topic: 'Community'
-                    file: 'game/plugins/who/help/who.txt'
+                    dir: 'game/plugins/who/help/'
+                    #file: 'who.txt'
                     summary: "Seeing who's online."
                     aliases: [ 'who', 'where' ]

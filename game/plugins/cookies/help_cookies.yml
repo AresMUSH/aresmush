@@ -4,6 +4,7 @@ help:
             topics:
                 cookies: 
                     toc_topic: 'Community'
-                    file: 'game/plugins/cookies/help/cookies.txt'
+                    dir: 'game/plugins/cookies/help/'
+                    file: 'cookies.txt'
                     summary: 'Rewarding your fellow players.'
                     aliases: [ 'cookie', 'nom', 'noms' ]

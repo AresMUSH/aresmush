@@ -4,14 +4,16 @@ help:
             topics:
                 channels: 
                     toc_topic: 'Communicating'
-                    file: 'game/plugins/channels/help/channels.txt'
+                    dir: 'game/plugins/channels/help/'
+                    file: 'channels.txt'
                     summary: 'Public chat channels.'
                     aliases: [ 'channel', 'chat', 'comsys' ]
         admin:
             topics:
                 channels: 
                     toc_topic: 'Game Management'
-                    file: 'game/plugins/channels/help/admin_channels.txt'
+                    dir: 'game/plugins/channels/help/'
+                    file: 'admin_channels.txt'
                     summary: 'Managing channels.'
                     aliases: [ 'channel', 'chat', 'comsys' ]
 

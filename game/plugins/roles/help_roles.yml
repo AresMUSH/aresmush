@@ -4,6 +4,7 @@ help:
             topics:
                 roles: 
                     toc_topic: 'Roles'
-                    file: 'game/plugins/roles/help/roles.txt'
+                    dir: 'game/plugins/roles/help/'
+                    file: 'roles.txt'
                     summary: 'Assigning permissions.'
                     aliases: [ 'role', 'permission', 'power' ]

@@ -4,13 +4,15 @@ help:
             topics:
                 actors: 
                     toc_topic: Game Info
-                    file: 'game/plugins/actors/help/actors.txt'
+                    dir: 'game/plugins/actors/help/'
+                    file: 'actors.txt'
                     summary: "Picking the game's dream cast."
                     aliases: [ 'actor', 'PB', 'playedby' ]
         admin:
             topics:
                 actors: 
                     toc_topic: Game Management
-                    file: 'game/plugins/actors/help/admin_actors.txt'
+                    dir: 'game/plugins/actors/help/'
+                    file: 'admin_actors.txt'
                     summary: "Managing actors."
                     aliases: [ 'actor', 'PB', 'playedby' ]

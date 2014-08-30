@@ -4,6 +4,10 @@ module AresMUSH
       
       before do
         @reader = double
+        locale = double
+        Global.stub(:locale) { locale }
+        locale.stub(:locale) { "en" }
+        locale.stub(:default_locale) { "en" }
         @categories = { 
             "a" => 
             { "title" => "a help", 
@@ -12,11 +16,13 @@ module AresMUSH
               "topics" => { 
                 "a topic" => 
                 {
+                  "dir" => "foo",
                   "file" => "a.txt",
                   "aliases" => [ "x" ],
                 }, 
                 "b topic" => 
                 {
+                  "dir" => "foo",
                   "file" => "b.txt"
                 },
               }
@@ -123,12 +129,12 @@ module AresMUSH
         
         describe :load_help do
           it "should read the file" do
-            File.should_receive(:read).with("a.txt") { "a topic text" }
+            File.should_receive(:read).with("foo/en/a.txt") { "a topic text" }
             Help.load_help("a", "a topic").should eq "a topic text"
           end
         
-          it "should return nil if no topic found" do
-            Help.load_help("a", "xyz").should be_nil
+          it "should raise exception if no topic found" do
+            expect { Help.load_help("a", "xyz") }.to raise_error
           end
         end
         

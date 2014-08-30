@@ -4,6 +4,7 @@ help:
             topics:
                 posing: 
                     toc_topic: 'Communicating'
-                    file: 'game/plugins/pose/help/posing.txt'
+                    dir: 'game/plugins/pose/help/'
+                    file: 'posing.txt'
                     summary: 'Talking to the people around you.'
                     aliases: [ 'pose', 'say', 'emit' ]

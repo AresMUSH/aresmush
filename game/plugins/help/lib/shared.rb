@@ -63,9 +63,14 @@ module AresMUSH
     
     def self.load_help(category, topic_key)
       topic = Help.topic(category, topic_key)
-      return nil if topic.nil?
-      filename = topic["file"]
-      filename.nil? ? nil : File.read(filename)
+      raise "Topic not found" if topic.nil?
+      raise "Help topic misconfigured" if topic["file"].nil? || topic["dir"].nil?
+      filename = File.join(topic["dir"], Global.locale.locale.to_s, topic["file"])
+      # If current locale not found, try the default locale
+      if (!File.exists?(filename))
+        filename = File.join(topic["dir"], Global.locale.default_locale.to_s, topic["file"])
+      end
+      File.read(filename)
     end
     
     # Careful with this one - name must be pre-stripped if user input
