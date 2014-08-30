@@ -22,9 +22,6 @@ module AresMUSH
       
       str = str.gsub(/\[space\(([\d]+)\)\]/) { |num| Regexp.last_match[1].to_i.times.collect { ' ' }.join }
 
-      # Take escaped backslashes out of the equation for a moment.
-      str = str.gsub(/%\\\\/, "~ESCBS~")
-
       # Same kind of crazy regex as before, for efficiency.
       str = str.gsub(/
         ((?<!\\)%[bB])|
@@ -45,8 +42,6 @@ module AresMUSH
         },
         )
 
-      # Put the escaped backslashes back in.
-      str = str.gsub("~ESCBS~", "\\")
       str
     end
   end

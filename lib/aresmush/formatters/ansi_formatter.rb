@@ -41,6 +41,7 @@ module AresMUSH
     def self.format(str)
       return nil if str.nil?
       return str if !has_ansi?(str)
+
       formatted_str = ""
       groups = ansi_groups(str)
       groups.each do |g|
@@ -50,6 +51,7 @@ module AresMUSH
           formatted_str << g
         end
       end
+      
       formatted_str
     end
     
