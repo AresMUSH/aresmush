@@ -34,6 +34,7 @@ module AresMUSH
       end
       
       def handle
+        client.emit "#{AnsiFormatter.has_ansi?('%xhMind:%xn')}"
         ClassTargetFinder.with_a_character(self.target, client) do |model|
           renderer = Sheet.sheet_renderers[self.page - 1]
           client.emit renderer.render(model)

@@ -1,14 +1,28 @@
 %l1
 %xh<%= name %>%xn <%= approval_status%> <%= page_title %>
 %l2
-<%= attributes_title%>
+<%= attributes_title -%>
 <% attributes.each do |a| -%>
 <%= a -%>
 <% end %> 
 
-<%= action_skills_title %>
+
+<%= action_skills_title -%>
 <% action_skills.each do |a| -%>
 <%= a -%>
 <% end %> 
+
+
+<%= background_skills_title -%>
+<% background_skills.each do |b| -%>
+<%= b -%>
+<% end %> 
+
+
+<%= languages_title %>
+<%= languages %>
+
+<%= quirks_title %>
+<%= quirks %>
 
 %l1

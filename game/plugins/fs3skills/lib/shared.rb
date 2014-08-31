@@ -39,14 +39,20 @@ module AresMUSH
       if (ability_type == :attribute)
         char.fs3_attributes
       elsif (ability_type == :action)
-        char.action_skills
+        char.fs3_action_skills
       else
-        char.background_skills
+        char.fs3_background_skills
       end
     end
     
     def self.get_max_rating(ability_type)
       ability_type == :attribute ? 4 : 12
+    end
+    
+    def self.get_ability(char, ability)
+      ability_type = get_ability_type(ability)
+      ability_hash = get_ability_hash(char, ability_type)
+      ability_hash[ability]
     end
     
     # Expects titleized ability name and numeric rating
@@ -60,6 +66,11 @@ module AresMUSH
         return
       end
       
+      if (rating < 0)
+        client.emit_failure t('fs3skills.min_rating_is_0')
+        return
+      end
+      
       update_hash(ability_hash, ability, rating)
       char.save
       client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
@@ -69,8 +80,21 @@ module AresMUSH
       if (rating == 0)
         hash.delete name
       else
-        hash[name] = rating
+        if (hash.has_key?(name))
+          hash[name]["rating"] = rating
+        else
+          hash[name] = { "rating" => rating }
+        end
       end
+    end
+    
+    def self.parse_roll_params(str)
+      if (str !~ /[\+\-]/)
+        return str
+      end
+      
+      params = str.split(/([\+\-])/)
+
     end
   end
 end

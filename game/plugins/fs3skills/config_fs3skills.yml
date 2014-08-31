@@ -23,43 +23,43 @@ fs3skills:
         -
             name: Alertness
             desc: "Noticing things and being aware of your surroundings."
-            rulingattr: Reaction
+            ruling_attr: Reaction
         -
             name: Demolitions
             desc: "Blowing stuff up."
-            rulingattr: Mind
+            ruling_attr: Mind
         -
             name: Comms
             desc: "Ship sensors, countermeasures and communications (ECO and CIC type duties)."
-            rulingattr: Mind
+            ruling_attr: Mind
         -   
             name: Firearms
             desc: "Shooting guns."
-            rulingattr: Reaction
+            ruling_attr: Reaction
         -
             name: First Aid
             desc: "Patching people up outside of a hospital.  Docs should have a medical bg skill."
-            rulingattr: Mind
+            ruling_attr: Mind
         -
             name: Gunnery
             desc: "Ship and vehicle weapons."
-            rulingattr: Reaction
+            ruling_attr: Reaction
         - 
             name: Melee
             desc: "Fighting with fists, knives, and hand-to-hand weapons."
-            rulingattr: Body
+            ruling_attr: Body
         -
             name: Piloting
             desc: "Flying Vipers, Raptors and other airborne vehicles."
-            rulingattr: Reaction
+            ruling_attr: Reaction
         - 
             name: Stealth
             desc: "Being sneaky."
-            rulingattr: Body
+            ruling_attr: Body
         -
             name: Technician
             desc: "General mechanics/electronics and fixing things."
-            rulingattr: Mind
+            ruling_attr: Mind
 
     background_skills:
         - "A science - astronomy, biology, chemistry, geology, mathematics, physics, etc."
@@ -85,6 +85,8 @@ fs3skills:
     starting_languages:
         - Standard
         
+    default_ruling_attr: Mind
+    
     max_high_abilities: 3
     max_points_in_action_skills: 32
     max_points_in_attributes: 12

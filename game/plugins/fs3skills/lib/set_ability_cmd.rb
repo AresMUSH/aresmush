@@ -21,14 +21,13 @@ module AresMUSH
 
       def crack!
         cmd.crack!(CommonCracks.arg1_equals_arg2)
-        self.name = cmd.args.arg1.nil? ? nil : trim_input(titleize_input(cmd.args.arg1))
+        self.name = trim_input(titleize_input(cmd.args.arg1))
         self.rating = trim_input(cmd.args.arg2)
       end
       
       def check_valid_rating
         return nil if self.rating.nil?
         return t('fs3skills.invalid_rating') if !self.rating.is_integer?
-        return t('fs3skills.invalid_rating') if self.rating.to_i < 0
         return nil
       end
       

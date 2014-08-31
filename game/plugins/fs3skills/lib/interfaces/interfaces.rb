@@ -1,12 +1,63 @@
 module AresMUSH
   module FS3Skills
     # Expects titleized ability name
-    def self.roll_ability(char, ability, modifier)
-      
+    def self.roll_ability(char, ability, modifier = 0, ruling_attr = nil)
+      skill = FS3Skills.ability_rating(char, ability)
+      if (ruling_attr.nil?)
+        ruling_attr = FS3Skills.get_ruling_attr(char, ability)
+      end
+      attr_rating = FS3Skills.ability_rating(char, ruling_attr)
+      dice = skill + attr_rating + modifier
+      Global.logger.info "#{char.name} rolling #{ability} with #{modifier}: attr #{ruling_attr} (#{attr_rating}) dice=#{dice}"
+      roll_dice(dice)
+    end
+    
+    def self.roll_dice(dice)
+      dice.times.collect { 1 + rand(8) }
+    end
+    
+    def self.get_success_level(die_result)
+      successes = die_result.count { |d| d > 6 }
+      botches = die_result.count { |d| d == 1 }
+      return successes if (successes > 0)
+      return -1 if (botches > 2)
+      return 0
+    end
+    
+    def self.get_success_title(success_level)
+      case success_level
+      when -1
+        t('fs3skills.embarrassing_failure')
+      when 0
+        t('fs3skills.failure')
+      when 1
+        t('fs3skills.success')
+      when 2, 3
+        t('fs3skills.good_success')
+      when 4, 5
+        t('fs3skills.great_success')
+      else
+        t('fs3skills.amazing_success')
+      end
     end
     
     # Expects titleized ability name
     def self.ability_rating(char, ability)
+      hash = FS3Skills.get_ability(char, ability)
+      hash.nil? ? 0 : hash["rating"]
+    end
+    
+    def self.get_ruling_attr(char, ability)
+      ability_type = FS3Skills.get_ability_type(ability)
+      default = Global.config['fs3skills']['default_ruling_attr']
+      if (ability_type == :action)
+        return FS3Skills.action_skills.find { |s| s["name"] == ability }["ruling_attr"]
+      end
+      
+      hash = FS3Skills.get_ability(char, ability)
+      return default if hash.nil?
+      return default if hash['ruling_attr'].nil?
+      return hash["ruling_attr"]
     end
     
     def self.print_skill_rating(rating)

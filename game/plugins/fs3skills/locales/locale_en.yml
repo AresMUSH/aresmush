@@ -4,10 +4,37 @@ en:
         action_skills_title: "Action Skills"
         background_skills_title: "Background Skills"
         languages_title: "Languages"
+        quirks_title: "Quirks"
         
         attribute_set: "Attribute '%{name}' is now %{rating}."
         action_set: "Action Skill '%{name}' is now %{rating}."
         background_set: "Background Skill '%{name}' is now %{rating}."
         
         max_rating_is: "The highest rating for that ability is %{rating}."
+        min_rating_is_0: "You can't lower an ability below 0."
         invalid_rating: That is not a valid ability rating.
+        
+        language_already_selected: "You already have that language."
+        language_selected: "You add language %{name}."
+        language_not_selected:  "You don't have that language."
+        language_removed: "You remove language %{name}."
+        
+        quirk_already_selected: "You already have that quirk."
+        quirk_selected: "You add quirk %{name}."
+        quirk_not_selected:  "You don't have that quirk."
+        quirk_removed: "You remove quirk %{name}."
+        
+        invalid_attr: "That is not a valid attribute."
+        no_such_bg_skill: "You do not have that background skill."
+        ruling_attr_set: "You set the ruling attribute for %{ability} to %{ruling_attr}."
+        
+        reset_complete: "You reset your skills and attributes back to default values.  Note that nothing comes for free, so even default items cost character points."
+        
+        embarrassing_failure: "%xREmbarassing Failure%xn"
+        failure: "%xrFailure%xn"
+        success: "%xgSuccess%xn"
+        good_success: "%xh%xgGood Success%xn"
+        great_success: "%xh%xGGreat Success%xn"
+        amazing_success: "%xh%xyAmazing Success%xn"
+        
+        simple_roll_result: "<FS3> %{name} rolls %{roll}: %{success} (%{dice})"

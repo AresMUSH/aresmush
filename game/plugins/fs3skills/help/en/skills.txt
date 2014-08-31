@@ -18,11 +18,10 @@ To set your abilities.
     %xcraise <name>%xn and %xclower <name>%xn - Raise or lower an ability by 1 level.
     %xcability <name>=<level>%xn - Sets an ability rating directly
     
-    %xclang/add <language>%xn and %xclang/remove <language>%xn
+    %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
     
     %xcquirk/add <quirk>%xn and %xcquirk/remove <quirk>%xn
     
-You can set a 'ruling attribute' for each of your background skills.  This is the attribute that gets rolled when you make an ability roll using one of your background skills.  The default is 'Mind'.
+You can set a 'ruling attribute' for each of your background skills.  This is the attribute that gets rolled when you make an ability roll using one of your background skills.  Rulling attributes are shown on your character sheet.
 
-     %xcrulingattr%xn - Lists ruling attributes for each of your skills.
      %xcrulingattr <skill>=<attribute>%xn - Sets the ruling attribute
