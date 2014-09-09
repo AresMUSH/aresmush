@@ -34,6 +34,14 @@ module AresMUSH
             cmd.switch.should eq "foo"
             cmd.args.should eq "bar"
           end
+          
+          it "should NOT substitute roots if only part of the root is an alias" do
+            cmd = Command.new("cab bar")
+            CommandAliasParser.substitute_aliases(@client, cmd)
+            cmd.root.should eq "cab"
+            cmd.switch.should be_nil
+            cmd.args.should eq "bar"
+          end
       
           it "should substitute the go command if an exit is matched and there are no args" do
             cmd = Command.new("E")

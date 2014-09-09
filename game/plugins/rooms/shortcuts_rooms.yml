@@ -3,6 +3,7 @@ shortcuts:
         "tel": "teleport"
         "move": "go"
         "dig": "build"
+        "o" : "out"
     full:
         "dig/teleport" : "build"
         "dig/tel" : "build"

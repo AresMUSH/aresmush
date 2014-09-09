@@ -27,15 +27,14 @@ module AresMUSH
     end
     
     def get_exit(name)
-      match = exits.select { |e| e.name_upcase == name.upcase }
-      return match.first if !match.empty?
-      return nil if name.upcase != "O"
-      return nil if exits.empty?
-      return exits.first
+      match = exits.select { |e| e.name_upcase == name.upcase }.first
     end
     
     def out_exit
-      get_exit("O")
+      out = get_exit("O")
+      return out if !out.nil?
+      return nil if exits.empty?
+      return exits.first
     end
     
     def serializable_hash(options={})

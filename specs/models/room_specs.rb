@@ -63,12 +63,6 @@ module AresMUSH
         end
       end
       
-      it "should return nil if out exit doesn't exist" do
-        using_test_db do
-          @room.get_exit("O").should be_nil
-        end
-      end
-
       it "should match the out exit if one exists" do
         using_test_db do
           exit1 = Exit.new(:name => "A")
@@ -80,16 +74,6 @@ module AresMUSH
         end
       end
       
-      it "should return first exit if 'O' specified and not matched" do
-        using_test_db do
-          exit1 = Exit.new(:name => "A")
-          exit2 = Exit.new(:name => "B")
-          @room.exits << exit1
-          @room.exits << exit2
-          @room.save!
-          @room.get_exit("O").should eq exit1
-        end
-      end
     end
     
     describe :has_exit? do
@@ -105,10 +89,21 @@ module AresMUSH
     end
     
     describe :out_exit do 
-      it "should return the exit with name 'O'" do
+      it "should return the exit with name 'O' if it exists" do
         exit = double
         @room.stub(:get_exit).with("O") { exit }
         @room.out_exit.should eq exit
+      end
+      
+      it "should return first exit if 'O' doesn't exist" do
+        using_test_db do
+          exit1 = Exit.new(:name => "A")
+          exit2 = Exit.new(:name => "B")
+          @room.exits << exit1
+          @room.exits << exit2
+          @room.save!
+          @room.out_exit.should eq exit1
+        end
       end
     end
     
