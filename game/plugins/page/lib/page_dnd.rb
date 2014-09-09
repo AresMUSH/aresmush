@@ -28,6 +28,7 @@ module AresMUSH
       
       def handle
         client.char.do_not_disturb = (self.value == "on")
+        client.char.save
         client.emit_success t('page.do_not_disturb_set', :status => self.value)
       end
     end

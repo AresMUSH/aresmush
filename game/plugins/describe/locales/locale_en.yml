@@ -17,3 +17,4 @@ en:
        looked_at_you: "%{name} looked at you."
        
        afk: AFK
+       idle: Idle

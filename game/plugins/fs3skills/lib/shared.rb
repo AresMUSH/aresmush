@@ -61,6 +61,11 @@ module AresMUSH
       ability_hash = get_ability_hash(char, ability_type)
       max_rating = get_max_rating(ability_type)
       
+      if (ability =~ /[\+\-]/)
+        client.emit_failure t('fs3skills.no_plus_minus')
+        return
+      end
+      
       if (rating > max_rating)
         client.emit_failure t('fs3skills.max_rating_is', :rating => max_rating)
         return
@@ -89,12 +94,14 @@ module AresMUSH
     end
     
     def self.parse_roll_params(str)
-      if (str !~ /[\+\-]/)
-        return str
-      end
+      match = /^(?<ability>[^\+\-]+)\s*(?<ruling_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
+      return nil if match.nil?
       
-      params = str.split(/([\+\-])/)
-
+      {
+        :ability => match[:ability].strip,
+        :modifier => match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i,
+        :ruling_attr => match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
+      }
     end
   end
 end

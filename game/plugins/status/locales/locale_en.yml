@@ -6,6 +6,7 @@ en:
         go_ic: "%{name} goes IC."
         go_ooc: "%{name} goes OOC."
         go_afk: "%{name} goes AFK.  %{message}"
+        no_longer_afk: "%{name} returns from AFK."
         set_duty: "You mark yourself %{value} duty."
         auto_afk: "You have been idle a long time so you've been marked AFK."
         afk_disconnect:  "You've been idle so long we're guessing you're not there any more.  Please come back soon."

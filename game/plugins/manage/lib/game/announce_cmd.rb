@@ -27,7 +27,8 @@ module AresMUSH
       end
       
       def handle
-        Global.client_monitor.emit_all t('manage.announce', :name => client.name, :message => self.message)
+        msg = PoseFormatter.format(client.name, self.message)
+        Global.client_monitor.emit_all t('manage.announce', :message => msg)
       end
     end
   end

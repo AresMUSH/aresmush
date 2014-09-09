@@ -1,3 +1,4 @@
 The AFK command is used to mark yourself "away from the keyboard", in cases where you need to dash off to take care of something in real life.  You can specify an optional message (like "grabbing dinner, back at 9 EST" or something like that), which will be shown in room descs and displayed when someone pages you.  AFK status (and the AFK message) can be cleared by returning IC or OOC.
 
     %xcafk [<note>]%xn - Marks yourself away from the keyboard, with an optional message.
+    %xcafk off%xn - Cancels your AFK.  Going IC or OOC will also do this.

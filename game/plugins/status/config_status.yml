@@ -15,13 +15,15 @@ status:
         ADM: "%xb"
         
     afk:
-        # How many minutes before someone is automatically marked AFK.  Comment out
-        # to disable this feature.
-        minutes_before_afk: 60
+        # How many minutes before someone is considered idle.  Unlike AFK, this is not
+        # a deliberate setting, but just a way certain systems can warn that someone has
+        # been idle awhile.
+        # Comment out to disable this feature.
+        minutes_before_idle: 5 #60
         
         # How many minutes before someone is automatically logged out for inactivity.
         # Comment out to disable this feature.
-        minutes_before_idle_disconnect: 600
+        minutes_before_idle_disconnect: 720
         
         # Set up when you want the AFK cron job to run.  See the 'cron' plugin for details.
         # Comment out any items you aren't using; don't just leave them blank.

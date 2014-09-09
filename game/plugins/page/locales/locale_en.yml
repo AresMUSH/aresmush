@@ -6,6 +6,7 @@ en:
         to_recipient: "%xh(to %{recipients}):%xn %{message}"
         recipient_not_online: "%{name} is not online."
         recipient_is_afk: "%{name} is AFK and may not respond right away. %{message}"
+        recipient_is_idle: "%{name} is %{time} idle and may be AFK."
         do_not_disturb_set: "You turn your 'do not disturb' status %{status}."
         recipient_do_not_disturb: "%{name} is set 'do not disturb'.  Your page has been converted to a mail message."
         missed_page_subject: "Missed Page From %{name}"

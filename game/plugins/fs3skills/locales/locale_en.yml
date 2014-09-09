@@ -13,6 +13,7 @@ en:
         max_rating_is: "The highest rating for that ability is %{rating}."
         min_rating_is_0: "You can't lower an ability below 0."
         invalid_rating: That is not a valid ability rating.
+        no_plus_minus: "Ability names may not contain + or -."
         
         language_already_selected: "You already have that language."
         language_selected: "You add language %{name}."

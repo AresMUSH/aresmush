@@ -6,5 +6,11 @@ module AresMUSH
       return config[status] if config.has_key?(status)
       return ""
     end
+    
+    def self.is_idle?(client)
+      minutes_before_idle = Global.config['status']['afk']['minutes_before_idle']
+      return false if minutes_before_idle.nil?
+      return client.idle_secs > minutes_before_idle * 60
+    end
   end
 end

@@ -17,8 +17,13 @@ module AresMUSH
       end
       
       it "should show a time greater than 60m as hours" do
-        Locale.stub(:translate).with('time.hours', :time => 61)  { "61h" }
-        TimeFormatter.format(61 * 60 * 60).should eq "61h"
+        Locale.stub(:translate).with('time.hours', :time => 2)  { "2h" }
+        TimeFormatter.format(2 * 60 * 60).should eq "2h"
+      end
+      
+      it "should show a time greater than 24h as days" do
+        Locale.stub(:translate).with('time.days', :time => 2)  { "2d" }
+        TimeFormatter.format(24 * 2 * 60 * 60).should eq "2d"
       end
     end
   end

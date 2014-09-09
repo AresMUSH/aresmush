@@ -57,6 +57,7 @@ en:
         seconds: "%{time}s"
         minutes: "%{time}m"
         hours: "%{time}h"
+        days: "%{time}d"
         
 
       

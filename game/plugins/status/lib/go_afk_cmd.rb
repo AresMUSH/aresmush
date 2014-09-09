@@ -15,8 +15,17 @@ module AresMUSH
         self.message = cmd.args
       end
       
-      def handle        
+      def handle      
         char = client.char
+
+        if (self.message == "off")
+          char.afk_message = ""
+          char.is_afk = false
+          char.save
+          char.room.emit_ooc t('status.no_longer_afk', :name => char.name)
+          return
+        end
+          
         char.afk_message = self.message  
         char.is_afk = true
         if (char.room.room_type == "IC")

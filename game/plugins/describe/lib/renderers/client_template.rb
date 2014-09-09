@@ -21,22 +21,29 @@ module AresMUSH
       end
       
       def afk_message
-        return "" if !@char.is_afk
+        if (@char.is_afk)
+          format_afk_message
+        elsif (Status.is_idle?(@client))
+          "%xy%xh<#{t('describe.idle')}>%xn"
+        else
+          ""
+        end
+      end
+      
+      def fullname
+        @char.fullname
+      end
+      
+      def actor
+        @char.actor_registry.nil? ? "" : @char.actor_registry.actor
+      end
+
+      def format_afk_message
         msg = "%xy%xh<#{t('describe.afk')}>%xn"
         if (@char.afk_message)
           msg = "#{msg} %xy#{@char.afk_message}%xn"
         end
         msg
-      end
-      
-      def fullname
-        # TODO @char.fullname
-        "Full Name"
-      end
-      
-      def actor
-        # TODO @char.actor
-        "Cool Actor"
       end
     end
   end
