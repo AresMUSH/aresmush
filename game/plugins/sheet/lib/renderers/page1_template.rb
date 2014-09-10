@@ -60,6 +60,22 @@ module AresMUSH
         "%xh#{t('sheet.reputation_title')}%xn #{t('sheet.reputation_subtitle')}"
       end
       
+      def faction_title
+        format_field_title(t('sheet.faction_title'))
+      end
+      
+      def department_title
+        format_field_title(t('sheet.department_title'))
+      end
+      
+      def position_title
+        format_field_title(t('sheet.position_title'))
+      end
+      
+      def colony_title
+        format_field_title(t('sheet.colony_title'))
+      end
+      
       def format_field_title(title)
         "%xh#{left(title, 12)}%xn"
       end
@@ -98,6 +114,22 @@ module AresMUSH
       
       def birthdate
         format_field @char.birthdate.nil? ? "" : ICTime.ic_month_str(@char.birthdate)
+      end
+      
+      def faction
+        format_field @char.groups['Faction']
+      end
+      
+      def position
+        format_field @char.groups['Position']
+      end
+      
+      def colony
+        format_field @char.groups['Colony']
+      end
+      
+      def department
+        format_field @char.groups['Department']
       end
       
       def reputation

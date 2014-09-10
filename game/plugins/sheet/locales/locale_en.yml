@@ -18,6 +18,10 @@ en:
         birthdate_title: "Birthdate:"
         reputation_title: "Reputation"
         reputation_subtitle: "(common knowledge ICly)"
+        colony_title: "Colony:"
+        position_title: "Position:"
+        department_title: "Department:"
+        faction_title: "Faction:"
         
         approved: "Approved"
         unapproved: "Not Yet Approved"
