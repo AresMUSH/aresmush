@@ -21,7 +21,7 @@ module AresMUSH
 
       def crack!
         cmd.crack!(CommonCracks.arg1_equals_arg2)
-        self.name = trim_input(titleize_input(cmd.args.arg1))
+        self.name = titleize_input(cmd.args.arg1)
         self.rating = trim_input(cmd.args.arg2)
       end
       

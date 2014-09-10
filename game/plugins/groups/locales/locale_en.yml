@@ -1,0 +1,12 @@
+en:
+    groups:
+        group_types_title: "Group Types"
+        invalid_group_type: "Not a valid group type.  See 'groups'."
+        group_title: "Group Type '%{name}'"
+        open_ended_group: "This group type does not have a fixed list of values."
+        group_set: "You set %{name}'s %{group} to %{value}."
+        group_cleared: "You clear %{name}'s %{group}."
+        invalid_group_value: "That is not a valid %{group} value."
+        census_title_top_10: "%{name} Census (Top 10)"
+        census_title: "%{name} Census"
+        census_groups: "Census Groups Available"

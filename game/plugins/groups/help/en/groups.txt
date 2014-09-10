@@ -1,0 +1,13 @@
+The Groups system organizes players into different groups based on things like factions, departments, positions, etc.  The exact groups will vary on each game, so use the 'groups' command to see the list.  
+
+    %xcgroups%xn - Lists groups.
+    %xcgroup <name>%xn - Describes a group and shows valid values.
+
+Instead of having separate commands to set each group affiliation, everything is done through a single command.  For example:  group/set position=Cowboy   or  group/set faction=Red
+    
+    %xcgroup/set <group>=<value>%xn - Sets your affiliation for a given group.
+        Leave the vaule blank to clear it.
+
+You can use the census command to find out how many characters there are from each group.
+
+    %xccensus <group>%xn - Counts characters from the group.

@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def crack!
-        self.name = trim_input(titleize_input(cmd.args))
+        self.name = titleize_input(cmd.args)
         self.private_roll = cmd.switch_is?("private")
       end
       

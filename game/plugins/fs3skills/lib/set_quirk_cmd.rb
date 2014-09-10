@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def crack!
-        self.name = trim_input(titleize_input(cmd.args))
+        self.name = titleize_input(cmd.args)
         self.add_quirk = cmd.switch_is?("add")
       end
       

@@ -1,0 +1,8 @@
+shortcuts:
+    roots:
+        "faction": "group"
+        "position": "group"
+        "org": "group"
+        "factions": "groups"
+        "positions": "groups"
+        "orgs": "groups"

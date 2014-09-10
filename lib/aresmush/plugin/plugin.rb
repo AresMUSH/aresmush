@@ -99,7 +99,7 @@ module AresMUSH
     # its words (like a title).  Safe to call even if 'arg' is nil.
     def titleize_input(arg)
       return nil if arg.nil?
-      return arg.titleize
+      return arg.strip.titleize
     end
   end
 end

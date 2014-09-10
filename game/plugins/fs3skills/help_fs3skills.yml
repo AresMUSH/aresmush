@@ -7,7 +7,7 @@ help:
                     dir: 'game/plugins/fs3skills/help/'
                     file: 'roll.txt'
                     summary: 'Ability rolls.'
-                    alias: [ 'rolls', 'opposed', 'fs3', 'skill', 'ability' ]
+                    aliases: [ 'rolls', 'opposed', 'fs3', 'skill', 'ability' ]
                 skills:
                     toc_topic: 'FS3'
                     dir: 'game/plugins/fs3skills/help/'

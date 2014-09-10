@@ -93,7 +93,7 @@ module AresMUSH
       end
       
       def crack!
-        self.value = titleize_input(trim_input(cmd.args))
+        self.value = titleize_input(cmd.args)
         self.property = cmd.root.downcase
       end
       

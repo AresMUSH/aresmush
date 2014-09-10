@@ -1,0 +1,66 @@
+module AresMUSH
+  module Groups
+    class GroupSetCmd
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
+      
+      attr_accessor :name, :value, :group_name
+
+      def initialize
+        self.required_args = ['name', 'group_name']
+        self.help_topic = 'groups'
+        super
+      end
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("group") && cmd.switch_is?("set")
+      end
+      
+      def crack!
+        if (cmd.args =~ /\//)
+          cmd.crack!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
+          self.name = titleize_input(cmd.args.arg1)
+          self.group_name = titleize_input(cmd.args.arg2)
+          self.value = titleize_input(cmd.args.arg3)
+        else
+          cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
+          self.name = client.name
+          self.group_name = titleize_input(cmd.args.arg1)
+          self.value = titleize_input(cmd.args.arg2)
+        end
+      end
+      
+      def handle        
+        if ((self.name != client.name) && !Groups.can_set_group?(client.char))
+          client.emit_failure(t('dispatcher.not_allowed'))
+          return
+        end
+        
+        group = Groups.get_group(self.group_name)
+        
+        if (group.nil?)
+          client.emit_failure t('groups.invalid_group_type')
+          return
+        end
+        
+        values = group['values']
+        if (!self.value.nil? && !values.nil? && !values.keys.find { |v| v.downcase == self.value.downcase })
+          client.emit_failure t('groups.invalid_group_value', :group => self.group_name)
+          return
+        end
+        
+        ClassTargetFinder.with_a_character(self.name, client) do |model|
+          model.groups[self.group_name] = self.value
+          model.save
+          
+          if (self.value.nil?)
+            client.emit_success t('groups.group_cleared', :name => self.name, :group => self.group_name)
+          else
+            client.emit_success t('groups.group_set', :name => self.name, :group => self.group_name, :value => self.value)
+          end
+        end
+      end
+    end
+  end
+end
