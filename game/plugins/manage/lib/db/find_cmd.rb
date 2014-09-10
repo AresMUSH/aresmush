@@ -32,7 +32,7 @@ module AresMUSH
           if (self.name.nil?)
             objects = c.all
           else
-            objects = c.all.select { |o| o.name =~ /#{self.name}/ }
+            objects = c.all.select { |o| o.name_upcase =~ /#{self.name.upcase}/ }
           end
         rescue
           client.emit_failure t('manage.invalid_search_class')

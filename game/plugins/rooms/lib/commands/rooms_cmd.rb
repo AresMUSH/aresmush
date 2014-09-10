@@ -24,7 +24,7 @@ module AresMUSH
         if (self.name.nil?)
           objects = Room.all
         else
-          objects = Room.all.select { |o| o.name =~ /#{self.name}/ }
+          objects = Room.all.select { |o| o.name_upcase =~ /#{self.name.upcase}/ }
         end
         
         objects = objects.sort { |a,b| a.name_upcase <=> b.name_upcase}
