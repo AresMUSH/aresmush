@@ -109,7 +109,8 @@ module AresMUSH
       end
       
       def age
-        format_field @char.age
+        age = @char.age
+        format_field age == 0 ? "" : age
       end
       
       def birthdate

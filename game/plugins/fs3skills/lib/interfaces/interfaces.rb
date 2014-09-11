@@ -1,11 +1,17 @@
 module AresMUSH
   module FS3Skills
     # Expects titleized ability name
-    def self.roll_ability(char, ability, modifier = 0, ruling_attr = nil)
+    def self.roll_ability(client, char, roll_params)
+      ability = roll_params[:ability]
+      ruling_attr = roll_params[:ruling_attr] || FS3Skills.get_ruling_attr(char, ability)
+      modifier = roll_params[:modifier] || 0
+      
       skill = FS3Skills.ability_rating(char, ability)
-      if (ruling_attr.nil?)
-        ruling_attr = FS3Skills.get_ruling_attr(char, ability)
+      
+      if (skill == 0 && !client.nil?)
+        client.emit_ooc t('fs3skills.confirm_zero_skill', :name => char.name, :ability => ability)
       end
+
       attr_rating = FS3Skills.ability_rating(char, ruling_attr)
       dice = skill + attr_rating + modifier
       Global.logger.info "#{char.name} rolling #{ability} with #{modifier}: attr #{ruling_attr} (#{attr_rating}) dice=#{dice}"
@@ -36,8 +42,37 @@ module AresMUSH
         t('fs3skills.good_success')
       when 4, 5
         t('fs3skills.great_success')
-      else
+      when 6..99
         t('fs3skills.amazing_success')
+      else
+        raise "Unexpected roll result: #{success_level}"
+      end
+    end
+    
+    def self.opposed_result_title(name1, successes1, name2, successes2)
+      delta = successes1 - successes2
+      
+      if (successes1 <=0 && successes2 <= 0)
+        return t('fs3skills.opposed_both_fail')
+      end
+      
+      case delta
+      when 4..99
+        return t('fs3skills.opposed_crushing_victory', :name => name1)
+      when 2, 3
+        return t('fs3skills.opposed_victory', :name => name1)
+      when 1
+        return t('fs3skills.opposed_marginal_victory', :name => name1)
+      when 0
+        return t('fs3skills.opposed_draw')
+      when -1
+        return t('fs3skills.opposed_marginal_victory', :name => name2)
+      when -2
+        return t('fs3skills.opposed_victory', :name => name2)
+      when -99..-3
+        return t('fs3skills.opposed_crushing_victory', :name => name2)
+      else
+        raise "Unexpected opposed roll result: #{successes1} #{successes2}"
       end
     end
     
@@ -52,6 +87,8 @@ module AresMUSH
       default = Global.config['fs3skills']['default_ruling_attr']
       if (ability_type == :action)
         return FS3Skills.action_skills.find { |s| s["name"] == ability }["ruling_attr"]
+      elsif (ability_type == :attribute)
+        return ability
       end
       
       hash = FS3Skills.get_ability(char, ability)

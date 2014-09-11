@@ -1,5 +1,9 @@
 module AresMUSH
   module FS3Skills
+    def self.receives_roll_results?(char)
+      char.has_any_role?(Global.config['fs3skills']['roles']['receives_roll_results'])
+    end
+
     def self.attributes
       Global.config['fs3skills']['attributes']
     end
@@ -49,6 +53,8 @@ module AresMUSH
       ability_type == :attribute ? 4 : 12
     end
     
+    # Expects titleized ability name.  Returns a hash containing the ability properties
+    # like rating and (if applicable) ruling attr.
     def self.get_ability(char, ability)
       ability_type = get_ability_type(ability)
       ability_hash = get_ability_hash(char, ability_type)
@@ -61,8 +67,8 @@ module AresMUSH
       ability_hash = get_ability_hash(char, ability_type)
       max_rating = get_max_rating(ability_type)
       
-      if (ability =~ /[\+\-]/)
-        client.emit_failure t('fs3skills.no_plus_minus')
+      if (ability !~ /^[\w\s]+$/)
+        client.emit_failure t('fs3skills.no_special_characters')
         return
       end
       
@@ -81,6 +87,36 @@ module AresMUSH
       client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
     end
     
+    def self.parse_roll_params(str)
+      match = /^(?<ability>[^\+\-]+)\s*(?<ruling_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
+      return nil if match.nil?
+      
+      {
+        :ability => match[:ability].strip,
+        :modifier => match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i,
+        :ruling_attr => match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
+      }
+    end
+    
+    def self.emit_results(message, client, room, is_private)
+      if (is_private)
+        client.emit message
+      else
+        room.emit message
+      end
+      Global.client_monitor.logged_in_clients.each do |c|
+        next if c == client
+        if (FS3Skills.receives_roll_results?(c.char) && (c.room != room || is_private))
+          c.emit message
+        end
+      end
+      Global.logger.info "FS3 roll results: #{message}"
+    end
+    
+    def self.print_dice(dice)
+      dice.sort.reverse.map { |d| d > 6 ? "%xg#{d}%xn" : d}.join(" ")
+    end
+      
     def self.update_hash(hash, name, rating)
       if (rating == 0)
         hash.delete name
@@ -93,15 +129,5 @@ module AresMUSH
       end
     end
     
-    def self.parse_roll_params(str)
-      match = /^(?<ability>[^\+\-]+)\s*(?<ruling_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
-      return nil if match.nil?
-      
-      {
-        :ability => match[:ability].strip,
-        :modifier => match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i,
-        :ruling_attr => match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
-      }
-    end
   end
 end

@@ -4,6 +4,11 @@ fs3skills:
             # List roles that are allowed to modify character abilities.
             - admin
             # - another role
+        receives_roll_results:
+            # List roles that receive all roll results.  If your admins don't like
+            # spam, comment out all values but you'll have to be in the same room
+            # as someone then to see their roll results.
+            - admin
             
     attributes:
         -  
