@@ -6,7 +6,6 @@ shortcuts:
         "bbpost" : "bbs/post"
         "bbnext": "bbs/new"
         "bbnew": "bbs/new"
-        "bbscan" : "bbs/scan"
         "bbcatchup" : "bbs/catchup"
         "bbedit" : "bbs/edit"
         "bbreply" : "bbs/reply"

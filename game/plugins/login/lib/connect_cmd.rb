@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(CommonCracks.arg1_space_arg2)
+        cmd.crack_args!(CommonCracks.arg1_space_arg2)
         self.charname = trim_input(cmd.args.arg1)
         self.password = cmd.args.arg2
       end

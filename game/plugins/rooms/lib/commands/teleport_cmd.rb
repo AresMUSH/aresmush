@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
+        cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         if (cmd.args.arg2.nil?)
           self.name = nil
           self.destination = trim_input(cmd.args.arg1)

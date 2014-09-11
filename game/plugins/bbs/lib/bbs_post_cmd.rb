@@ -19,9 +19,9 @@ module AresMUSH
       
       def crack!
         if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
-          cmd.crack!(/(?<name>[^\=]+)=(?<subject>[^\/]+)\/(?<message>.+)/)
+          cmd.crack_args!(/(?<name>[^\=]+)=(?<subject>[^\/]+)\/(?<message>.+)/)
         else
-          cmd.crack!(/(?<name>[^\/]+)\/(?<subject>[^\=]+)\=(?<message>.+)/)
+          cmd.crack_args!(/(?<name>[^\/]+)\/(?<subject>[^\=]+)\=(?<message>.+)/)
         end
         self.board_name = trim_input(cmd.args.name)
         self.subject = trim_input(cmd.args.subject)

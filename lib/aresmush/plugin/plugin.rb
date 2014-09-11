@@ -40,7 +40,7 @@ module AresMUSH
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
     # doing:
     #    def crack!
-    #       @cmd.crack!(/(?<arg1>[^\=]+)=(?<arg2>.+)/)
+    #       @cmd.crack_args!(/(?<arg1>[^\=]+)=(?<arg2>.+)/)
     #       self.arg1 = @cmd.args.arg1
     #       self.arg2 = @cmd.args.arg2
     #    end

@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
+        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
         self.num = trim_input(cmd.args.arg1)
         self.names = cmd.args.arg2.nil? ? [] : cmd.args.arg2.split(" ")
         self.comment = cmd.args.arg3

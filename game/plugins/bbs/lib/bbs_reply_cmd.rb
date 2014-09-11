@@ -21,7 +21,7 @@ module AresMUSH
         if (cmd.args !~ /.+\/.+\=.+/)
           self.reply = cmd.args
         else
-          cmd.crack!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
+          cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
           self.board_name = titleize_input(cmd.args.name)
           self.num = trim_input(cmd.args.num)
           self.reply = cmd.args.reply

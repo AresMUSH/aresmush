@@ -19,15 +19,15 @@ module AresMUSH
       
       def crack!
         if (cmd.args !~ /\//)
-          cmd.crack!(CommonCracks.arg1_equals_arg2)
+          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           self.title = trim_input(cmd.args.arg1)
           self.description = cmd.args.arg2
           self.category = "REQ"
         else          
           if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
-            cmd.crack!(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
+            cmd.crack_args!(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
           else
-            cmd.crack!(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
+            cmd.crack_args!(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
           end
           self.category = cmd.args.category
           self.title = cmd.args.title

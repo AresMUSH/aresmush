@@ -19,7 +19,7 @@ en:
         announce_disabled: "%{name} will no longer show connection messages."
         
         channels: Channels
-        channels_title: "Channel        On?  Alias  Description                  Roles"
+        channels_title: "Channel        On?  Alias  Description              Announce Roles"
         channel_who: "On channel %{name}: %{chars}." 
         
         joined_channel: "%{name} has joined this channel."

@@ -19,12 +19,12 @@ module AresMUSH
       
       def crack!
         if (cmd.args =~ /\//)
-          cmd.crack!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
+          cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
           self.name = titleize_input(cmd.args.arg1)
           self.group_name = titleize_input(cmd.args.arg2)
           self.value = titleize_input(cmd.args.arg3)
         else
-          cmd.crack!(CommonCracks.arg1_equals_optional_arg2)
+          cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
           self.name = client.name
           self.group_name = titleize_input(cmd.args.arg1)
           self.value = titleize_input(cmd.args.arg2)

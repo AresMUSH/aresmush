@@ -12,18 +12,17 @@ module AresMUSH
       crack!         
     end    
     
-    def crack!(args_regex = nil)
+    def crack!
       cracked = CommandCracker.crack(@raw)
       @prefix = cracked[:prefix]
       @root = cracked[:root]
       @page = cracked[:page]
       @switch = cracked[:switch]
-
-      if (args_regex.nil?)
-        @args = cracked[:args]
-      else
-        @args = ArgCracker.crack(args_regex, cracked[:args])        
-      end      
+      @args = cracked[:args]
+    end
+    
+    def crack_args!(args_regex)
+      @args = ArgCracker.crack(args_regex, @args)        
     end
     
     def to_s

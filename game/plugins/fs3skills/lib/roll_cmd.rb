@@ -20,7 +20,7 @@ module AresMUSH
 
       def crack!
         if (cmd.args =~ /\//)
-          cmd.crack!(CommonCracks.arg1_slash_arg2)          
+          cmd.crack_args!(CommonCracks.arg1_slash_arg2)          
           self.name = cmd.args.arg1
           self.roll_str = titleize_input(cmd.args.arg2)
         else

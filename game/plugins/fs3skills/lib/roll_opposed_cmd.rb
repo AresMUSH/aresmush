@@ -20,7 +20,7 @@ module AresMUSH
 
       def crack!
         
-        cmd.crack!( /(?<name1>[^\/]+)\/(?<str1>.+) vs (?<name2>[^\/]+)\/(?<str2>.+)/ )
+        cmd.crack_args!( /(?<name1>[^\/]+)\/(?<str1>.+) vs (?<name2>[^\/]+)\/(?<str2>.+)/ )
         self.roll_str1 = titleize_input(cmd.args.str1)
         self.roll_str2 = titleize_input(cmd.args.str2)
         self.name1 = cmd.args.name1

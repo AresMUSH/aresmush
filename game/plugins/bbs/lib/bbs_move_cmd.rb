@@ -18,7 +18,7 @@ module AresMUSH
       end
             
       def crack!
-        cmd.crack!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<new_board>[^\=]+)/)
+        cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<new_board>[^\=]+)/)
         self.board_name = titleize_input(cmd.args.name)
         self.num = trim_input(cmd.args.num)
         self.new_board_name = cmd.args.new_board

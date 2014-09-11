@@ -45,17 +45,18 @@ module AresMUSH
         cmd.switch.should eq nil
         cmd.args.should eq nil
       end
-      
-      it "should crack the args if the optional regex is provided" do
+    end
+
+    describe :crack_args! do
+      it "should crack the args" do
         regex = /.+/
         ArgCracker.should_receive(:crack).with(regex, "123") { HashReader.new({ :a => "a" }) }
         cmd = Command.new("test 123")
-        cmd.crack!(regex)
+        cmd.crack_args!(regex)
         cmd.args.a.should eq "a"
       end
-      
     end
-
+    
     describe :root_is? do      
       it "should match the specified root" do
         cmd = Command.new("test/foo bar")
