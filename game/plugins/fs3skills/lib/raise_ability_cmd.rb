@@ -27,6 +27,7 @@ module AresMUSH
         current_rating = FS3Skills.ability_rating(client.char, self.name)
         mod = cmd.root_is?("raise") ? 1 : -1
         FS3Skills.set_ability(client, client.char, self.name, current_rating + mod)
+        client.char.save
       end
     end
   end

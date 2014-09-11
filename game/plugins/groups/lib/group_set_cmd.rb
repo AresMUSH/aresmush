@@ -45,9 +45,12 @@ module AresMUSH
         end
         
         values = group['values']
-        if (!self.value.nil? && !values.nil? && !values.keys.find { |v| v.downcase == self.value.downcase })
-          client.emit_failure t('groups.invalid_group_value', :group => self.group_name)
-          return
+        if (!self.value.nil? && !values.nil?)
+          self.value = values.keys.find { |v| v.downcase == self.value.downcase }
+          if (self.value.nil?)
+            client.emit_failure t('groups.invalid_group_value', :group => self.group_name)
+            return
+          end
         end
         
         ClassTargetFinder.with_a_character(self.name, client) do |model|
@@ -55,9 +58,9 @@ module AresMUSH
           model.save
           
           if (self.value.nil?)
-            client.emit_success t('groups.group_cleared', :name => self.name, :group => self.group_name)
+            client.emit_success t('groups.group_cleared', :group => self.group_name)
           else
-            client.emit_success t('groups.group_set', :name => self.name, :group => self.group_name, :value => self.value)
+            client.emit_success t('groups.group_set', :group => self.group_name, :value => self.value)
           end
         end
       end

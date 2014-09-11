@@ -86,9 +86,6 @@ fs3skills:
         - "Tauran - Official language of Tauron."
         - "Sagittaran - Tribal language of Sagittaron.  There are actually dozens of dialects."
         - "Celtan - Language of the ethnic Celtan people on Virgon's moon, Hibernia."
-
-    starting_languages:
-        - Standard
         
     default_ruling_attr: Mind
     
@@ -101,3 +98,77 @@ fs3skills:
     min_quirks: 2
     min_background_skills: 4
     
+    starting_languages:
+        - Standard
+        
+    # Here is where you can assign starting skills based on some group value - position,
+    # faction, department, etc.  
+    # Nothing will stop the player from dropping these skills, or later changing
+    # their group, but it's at least a starting point.  It is also used in app review.
+    # If you don't want to use this feature, simply comment out the values.
+    starting_skills:
+        # You can set starting skills for everyone using the special "everyone" group.
+        # Comment this out if it's not applicable.
+        Everyone:
+            skills:
+                Alertness: 2
+                Firearms: 2
+                First Aid: 1
+                Melee: 1
+        # This is the group type.
+        Position:
+            # This is the group value.
+            Viper Pilot:
+                # You can set some notes to show.  Comment out if there are none.
+                # notes: ""
+                
+                skills: 
+                    # List the skills and ratings they should get.
+                    Piloting: 4
+                    Gunnery: 4
+            Raptor Pilot:
+                skills:
+                    Piloting: 4
+                    Gunnery: 4
+            Raptor ECO:
+                skills:
+                    Piloting: 3
+                    Gunnery: 3
+                    Comms: 4
+            Rifleman:
+                skills:
+                    Firearms: 4
+                    Melee: 3
+            Combat Engineer:
+                notes: "A combat engineer should take a 4 or higher in either Demo or Tech."
+                skills:
+                    Demolitions: 3
+                    Firearms: 3
+                    Melee: 2
+                    Technician: 3
+            Recon:
+                skills:
+                    Firearms: 4
+                    Stealth: 4
+            Combat Medic:
+                skills:
+                    First Aid: 4
+            Doctor:
+                notes: "A doctor does not necessarily need first aid. They should have a background skill corresponding to their specialty (e.g. Surgery or Emergency Medicine.)"
+            
+            Nurse:
+                skills:
+                    Nursing: 4
+    
+            Corpsman:
+                skills:
+                    First Aid: 4
+            
+            Deckhand:
+                skills:
+                    Technician: 4
+
+        Faction:
+            Marines:
+                skills:
+                    Semper Fi: 3

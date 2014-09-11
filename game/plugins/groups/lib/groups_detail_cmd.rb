@@ -21,7 +21,7 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
-      def handle        
+      def handle
         group = Groups.get_group(self.name)
         
         if (group.nil?)

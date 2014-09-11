@@ -83,7 +83,6 @@ module AresMUSH
       end
       
       update_hash(ability_hash, ability, rating)
-      char.save
       client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
     end
     

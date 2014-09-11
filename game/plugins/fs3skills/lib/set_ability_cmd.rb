@@ -33,6 +33,7 @@ module AresMUSH
       
       def handle
         FS3Skills.set_ability(client, client.char, self.name, self.rating.to_i)
+        client.char.save
       end
     end
   end

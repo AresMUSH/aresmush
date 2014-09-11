@@ -1,8 +1,9 @@
 shortcuts:
-    roots:
-        "faction": "group"
-        "position": "group"
-        "org": "group"
-        "factions": "groups"
-        "positions": "groups"
-        "orgs": "groups"
+    full:
+        "faction": "group/set faction="
+        "position": "group/set position="
+        "department": "group/set department="
+        "factions": "group faction"
+        "positions": "group position"
+        "departments": "group department"
+        "colonies": "group colony"

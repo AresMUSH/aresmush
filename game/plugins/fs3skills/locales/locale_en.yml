@@ -16,9 +16,9 @@ en:
         no_special_characters: "Ability names may not contain special characters."
         
         language_already_selected: "You already have that language."
-        language_selected: "You add language %{name}."
+        language_selected: "Language '%{name}' added."
         language_not_selected:  "You don't have that language."
-        language_removed: "You remove language %{name}."
+        language_removed: "Language '%{name}' removed."
         
         quirk_already_selected: "You already have that quirk."
         quirk_selected: "You add quirk %{name}."
@@ -29,7 +29,11 @@ en:
         no_such_bg_skill: "You do not have that background skill."
         ruling_attr_set: "You set the ruling attribute for %{ability} to %{ruling_attr}."
         
-        reset_complete: "You reset your skills and attributes back to default values.  Note that nothing comes for free, so even default items cost character points."
+        reset_complete: "Reset complete.  Note that nothing comes for free, so even default items cost character points."
+        reset_for_group: "Setting default skills for %{group}."
+        reset_languages: "Setting default languages."
+        reset_group_notes: "Notes for %{group}: %{notes}"
+        reset_attributes: "Setting attributes to default values."
         
         embarrassing_failure: "%xREmbarassing Failure%xn"
         failure: "%xrFailure%xn"

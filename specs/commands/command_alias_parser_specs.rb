@@ -19,7 +19,8 @@ module AresMUSH
           { 
             "b/c" => "d/e", 
             "b/d" => "f", 
-            "e" => "f/g"
+            "e" => "f/g",
+            "m" => "n/o foo"
           } 
           } } }
           SpecHelpers.stub_translate_for_testing
@@ -87,6 +88,14 @@ module AresMUSH
             cmd.root.should eq "d"
             cmd.switch.should eq "e"
             cmd.args.should eq "xyz"
+          end
+          
+          it "should substitute a full commmand with args" do
+            cmd = Command.new("m bar")
+            CommandAliasParser.substitute_aliases(@client, cmd)
+            cmd.root.should eq "n"
+            cmd.switch.should eq "o"
+            cmd.args.should eq "foo bar"
           end
       
         end
