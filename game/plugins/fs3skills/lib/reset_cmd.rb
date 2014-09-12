@@ -33,22 +33,14 @@ module AresMUSH
           FS3Skills.set_ability(client, client.char, a, 2)
         end
         
-        config = Global.config['fs3skills']['starting_skills']
-        config.each do |k, v|
-          group_config = get_group_config(k, v)
-          set_starting_skills(k, group_config)
+        starting_skills = StartingSkills.get_groups_for_char(client.char)
+        
+        starting_skills.each do |k, v|
+          set_starting_skills(k, v)
         end
         
         char.save
         client.emit_ooc t('fs3skills.reset_complete')
-      end
-      
-      def get_group_config(group, config)
-        return config if group == "Everyone" 
-        group_val = client.char.groups[group]
-        return nil if group_val.nil?
-        key = config.keys.find { |k| k.downcase == group_val.downcase }
-        config[key]
       end
       
       def set_starting_skills(group, skill_config)

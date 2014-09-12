@@ -168,7 +168,9 @@ fs3skills:
                 skills:
                     Technician: 4
 
-        Faction:
-            Marines:
-                skills:
-                    Semper Fi: 3
+        # Example of how you can use factions or other groups to set additional skills.
+        #Faction:
+        #    Marines:
+        #        skills:
+        #            Semper Fi: 3
+        #            Alertness: 1

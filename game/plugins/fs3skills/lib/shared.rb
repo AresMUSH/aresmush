@@ -53,6 +53,10 @@ module AresMUSH
       ability_type == :attribute ? 4 : 12
     end
     
+    def self.get_min_rating(ability_type)
+      ability_type == :attribute ? 1 : 0
+    end
+    
     # Expects titleized ability name.  Returns a hash containing the ability properties
     # like rating and (if applicable) ruling attr.
     def self.get_ability(char, ability)
@@ -66,6 +70,7 @@ module AresMUSH
       ability_type = get_ability_type(ability)
       ability_hash = get_ability_hash(char, ability_type)
       max_rating = get_max_rating(ability_type)
+      min_rating = get_min_rating(ability_type)
       
       if (ability !~ /^[\w\s]+$/)
         client.emit_failure t('fs3skills.no_special_characters')
@@ -77,8 +82,8 @@ module AresMUSH
         return
       end
       
-      if (rating < 0)
-        client.emit_failure t('fs3skills.min_rating_is_0')
+      if (rating < min_rating)
+        client.emit_failure t('fs3skills.min_rating_is', :rating => min_rating)
         return
       end
       
@@ -127,6 +132,5 @@ module AresMUSH
         end
       end
     end
-    
   end
 end

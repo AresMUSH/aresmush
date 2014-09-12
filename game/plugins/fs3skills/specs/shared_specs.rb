@@ -37,15 +37,14 @@ module AresMUSH
             @char.fs3_attributes["Mind"]["rating"].should eq 3
           end
         
-          it "should clear an ability" do
-            FS3Skills.set_ability(@client, @char, "Mind", 2)
-            FS3Skills.set_ability(@client, @char, "Mind", 0)
-            @char.fs3_attributes["Mind"].should be_nil            
-          end
-        
           it "should fail if rating too high" do
             @client.should_receive(:emit_failure).with('fs3skills.max_rating_is')
             FS3Skills.set_ability(@client, @char, "Mind", 5)
+          end
+          
+          it "should fail if rating too low" do
+            @client.should_receive(:emit_failure).with('fs3skills.min_rating_is')
+            FS3Skills.set_ability(@client, @char, "Mind", 0)
           end
         end
       
@@ -71,6 +70,11 @@ module AresMUSH
             @client.should_receive(:emit_failure).with('fs3skills.max_rating_is')
             FS3Skills.set_ability(@client, @char, "Firearms", 13)
           end
+          
+          it "should fail if rating too low" do
+            @client.should_receive(:emit_failure).with('fs3skills.min_rating_is')
+            FS3Skills.set_ability(@client, @char, "Firearms", -1)
+          end
         end
       
         context "bg skills" do
@@ -95,11 +99,11 @@ module AresMUSH
             @client.should_receive(:emit_failure).with('fs3skills.max_rating_is')
             FS3Skills.set_ability(@client, @char, "Basketweaving", 13)
           end
-        end
-        
-        it "should fail if rating is below zero" do
-          @client.should_receive(:emit_failure).with('fs3skills.min_rating_is_0')
-          FS3Skills.set_ability(@client, @char, "Basketweaving", -1)
+          
+          it "should fail if rating too low" do
+            @client.should_receive(:emit_failure).with('fs3skills.min_rating_is')
+            FS3Skills.set_ability(@client, @char, "Basketweaving", -1)
+          end
         end
                 
         it "should fail if + in skill name" do

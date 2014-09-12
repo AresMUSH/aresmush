@@ -137,5 +137,30 @@ module AresMUSH
       dots = number.times.collect { "@" }.join
       "#{color}#{dots}%xn"
     end
+    
+    def self.app_review(char)
+      list = []
+      
+      attrs = FS3Skills.points_on_abilities(char, :attribute)
+      action = FS3Skills.points_on_abilities(char, :action)
+      bg = FS3Skills.points_on_abilities(char, :background)
+      
+      num_languages = char.fs3_languages.count
+      
+      list << FS3Skills.attr_review(attrs)
+      list << FS3Skills.action_skill_review(action)
+      list << FS3Skills.total_point_review(attrs + action + bg + (num_languages * 2))
+      list << ""
+      list << FS3Skills.bg_skill_review(char)
+      list << FS3Skills.high_ability_review(char)
+      list << FS3Skills.quirk_review(char)
+      list << ""
+      list << FS3Skills.min_attr_review(char)
+      list << FS3Skills.starting_language_review(char)
+      list << FS3Skills.starting_skills_check(char)
+      list << ""
+      list << t('fs3skills.review_summary')
+      list
+    end
   end
 end
