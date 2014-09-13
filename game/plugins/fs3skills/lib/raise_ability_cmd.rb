@@ -23,6 +23,11 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
+      def check_approval
+        return t('fs3skills.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+      
       def handle
         current_rating = FS3Skills.ability_rating(client.char, self.name)
         mod = cmd.root_is?("raise") ? 1 : -1

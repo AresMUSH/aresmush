@@ -17,3 +17,6 @@ en:
         male_subjective: he
         female_subjective: her
         other_subjective: they
+        
+        demo_review: Checking all demographics are set.
+        gender_set_to_other: "< Gender is set to 'Other'.  Is that correct? >"

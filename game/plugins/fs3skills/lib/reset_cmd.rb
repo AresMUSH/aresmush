@@ -10,6 +10,11 @@ module AresMUSH
       def want_command?(client, cmd)
         cmd.root_is?("reset")
       end
+      
+      def check_approval
+        return t('fs3skills.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
 
       def handle
         char = client.char

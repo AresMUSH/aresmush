@@ -3,6 +3,10 @@ module AresMUSH
     def self.receives_roll_results?(char)
       char.has_any_role?(Global.config['fs3skills']['roles']['receives_roll_results'])
     end
+    
+    def self.can_manage_abilities?(actor)
+      actor.has_any_role?(Global.config['fs3skills']['roles']['can_manage_abilities'])
+    end
 
     def self.attributes
       Global.config['fs3skills']['attributes']
@@ -88,7 +92,11 @@ module AresMUSH
       end
       
       update_hash(ability_hash, ability, rating)
-      client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
+      if (client.char == char)
+        client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
+      else
+        client.emit_success t("fs3skills.admin_ability_set", :name => char.name, :ability_type => ability_type, :ability_name => ability, :rating => rating)
+      end
     end
     
     def self.parse_and_roll(client, char, roll_str)

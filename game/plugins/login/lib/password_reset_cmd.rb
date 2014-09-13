@@ -29,14 +29,13 @@ module AresMUSH
         return Character.check_password(self.new_password)
       end
       
+      def check_can_reset
+        return t('dispatcher.not_allowed')  if !Login.can_reset_password?(client.char)
+        return nil
+      end
+      
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
-          
-          if !Login.can_reset_password?(client.char)
-            client.emit_failure t('dispatcher.not_allowed') 
-            return
-          end
-          
           char.change_password(self.new_password)
           char.save!
           client.emit_success t('login.password_reset', :name => self.name)

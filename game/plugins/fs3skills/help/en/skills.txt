@@ -1,27 +1,8 @@
-This game uses the FS3 skills system.  Complete documentation can be found on the game wiki.  This is a quick reference for the commands used to set your character's abilities in chargen.  
+This game uses the FS3 skills system.  Complete documentation can be found on the game wiki. This is a quick reference for the commands for setting and using your character's abilities.
 
 Related help files:  
 
+    %xhhelp abilities%xn - Set up your abilities.
     %xhhelp roll%xn - Use your abilities.
     %xhhelp sheet%xn - View your character sheet.
-    %xhhelp app%xn - View the progress of your character application, including how many
-        character points you have left and any problems with your character.
-
-To get started, or at any point you wish to reset yourself, use the reset command.
-
-    %xcreset%xn - Resets your abilities, erasing any current ones and setting 
-        default values based on your position. %xh%xrDo this first!%xn
-
-To set your abilities.
-
-    %xcabilities%xn - Views a list of abilities.
-    %xcraise <name>%xn and %xclower <name>%xn - Raise or lower an ability by 1 level.
-    %xcability <name>=<level>%xn - Sets an ability rating directly
-    
-    %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
-    
-    %xcquirk/add <quirk>%xn and %xcquirk/remove <quirk>%xn
-    
-You can set a 'ruling attribute' for each of your background skills.  This is the attribute that gets rolled when you make an ability roll using one of your background skills.  Rulling attributes are shown on your character sheet.
-
-     %xcrulingattr <skill>=<attribute>%xn - Sets the ruling attribute
+    %xhhelp app%xn - View the progress of your character application.

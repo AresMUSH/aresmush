@@ -152,20 +152,24 @@ module AresMUSH
       
       num_languages = char.fs3_languages.count
       
-      list << FS3Skills.attr_review(attrs)
-      list << FS3Skills.action_skill_review(action)
-      list << FS3Skills.total_point_review(attrs + action + bg + (num_languages * 2))
-      list << ""
-      list << FS3Skills.bg_skill_review(char)
-      list << FS3Skills.high_ability_review(char)
-      list << FS3Skills.quirk_review(char)
-      list << ""
-      list << FS3Skills.min_attr_review(char)
-      list << FS3Skills.starting_language_review(char)
-      list << FS3Skills.starting_skills_check(char)
-      list << ""
-      list << t('fs3skills.review_summary')
-      list
+      text = FS3Skills.total_point_review(attrs + action + bg + (num_languages * 2))
+      text << "%r"
+      text << FS3Skills.attr_review(attrs)
+      text << "%r"
+      text << FS3Skills.action_skill_review(action)
+      text << "%r%r"
+      text << FS3Skills.bg_skill_review(char)
+      text << "%r"
+      text << FS3Skills.high_ability_review(char)
+      text << "%r"
+      text << FS3Skills.quirk_review(char)
+      text << "%r%r"
+      text << FS3Skills.min_attr_review(char)
+      text << "%r"
+      text << FS3Skills.starting_language_review(char)
+      text << "%r"
+      text << FS3Skills.starting_skills_check(char)
+      text
     end
   end
 end

@@ -23,6 +23,7 @@ module AresMUSH
           @char = Character.new
           @char.stub(:save)
           @client.stub(:emit_success)
+          @client.stub(:char) { @char }
         end
         
         context "attributes" do

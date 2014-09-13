@@ -9,7 +9,7 @@ en:
         attribute_set: "Attribute '%{name}' is now %{rating}."
         action_set: "Action Skill '%{name}' is now %{rating}."
         background_set: "Background Skill '%{name}' is now %{rating}."
-        
+        admin_ability_set: "You set %{name}'s %{ability_name} ability (%{ability_type}) to %{rating}."
         max_rating_is: "The highest rating for that ability is %{rating}."
         min_rating_is: "You can't lower that ability below %{rating}."
         invalid_rating: That is not a valid ability rating.
@@ -60,17 +60,13 @@ en:
         bg_skills_added: "%{num} background skills added. (%{min} min)"
         quirks_added: "%{num} quirks added. (%{min} min, %{max} max)"
         high_abilities: "%{num} abilities over rating %{high_rating}.  (%{max} max)"
-        not_enough: "%xh%xr< Not Enough! >%xn"
-        too_many: "%xh%xr< Too Many! >%xn"
-        oops_missing: "%xh%xr< Oops! Missing %{missing} >%xn"
-        ok: "%xh%xg< OK! >%xn"
-        are_you_sure: "%xh%xy< Missing %{missing} >%xn"
         attrs_min_rating_check: "Checking attributes all have a rating."
         language_check: "Checking for starting languages."
         starting_skills_check: "Checking for starting skills."
-        review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if there's a good reason."
         missing_starting_skill: "%xh%xy< Missing %{skill} at rating %{rating} or higher. >%xn"
         
         npc: "%{name} (a NPC)"
         numbers_only_for_npc_skills: "Use a number for a NPC skill, like Henchman/3."
+
+        cant_be_changed: "That cannot be changed once you've been approved."
         

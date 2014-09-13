@@ -23,6 +23,11 @@ module AresMUSH
         self.add_lang = cmd.switch_is?("add")
       end
       
+      def check_approval
+        return t('fs3skills.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+      
       def handle
         if (self.add_lang)
           if (client.char.fs3_languages.include?(self.name))

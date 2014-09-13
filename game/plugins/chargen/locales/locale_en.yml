@@ -2,3 +2,18 @@ en:
     chargen:
         already_approved: "That character is already approved."
         app_title: "App Review for %{name}"
+        
+        not_set: "%xh%xr< Not set! >%xn"
+        not_enough: "%xh%xr< Not Enough! >%xn"
+        too_many: "%xh%xr< Too Many! >%xn"
+        oops_missing: "%xh%xr< Oops! Missing %{missing} >%xn"
+        ok: "%xh%xg< OK! >%xn"
+        are_you_sure: "%xh%xy< Missing %{missing} >%xn"
+        
+        review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if there's a good reason."
+        
+        abilities_review_title:  "Abilities (help abilities)"
+        demographics_review_title: "Demographics (help demographics)"
+        misc_review_title: "Miscellaneous (help bg, help desc)"
+        groups_review_title: "Groups (help groups)"
+        

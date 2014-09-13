@@ -31,12 +31,19 @@ module AresMUSH
         end
       end
       
+      def check_can_set
+        return nil if self.name == client.name
+        return nil if Groups.can_set_group?(client.char)
+        return t('dispatcher.not_allowed')
+      end
+      
+      def check_approval
+        return nil if Groups.can_set_group?(client.char)
+        return t('groups.cant_be_changed') if client.char.is_approved?
+        return nil
+      end
+      
       def handle        
-        if ((self.name != client.name) && !Groups.can_set_group?(client.char))
-          client.emit_failure(t('dispatcher.not_allowed'))
-          return
-        end
-        
         group = Groups.get_group(self.group_name)
         
         if (group.nil?)

@@ -6,8 +6,13 @@ help:
                     toc_topic: '1 - Getting Started'
                     dir: 'game/plugins/chargen/help/'
                     file: 'chargen.txt'
-                    order: 3
                     summary: 'Character creation walkthrough.'
+                    aliases: [ 'submit', 'approve', 'approval', 'app', 'apps', 'character creation']
+                apps: 
+                    toc_topic: 'Character Creation'
+                    dir: 'game/plugins/chargen/help/'
+                    file: 'app.txt'
+                    summary: 'Submitting your character for approval.'
                     aliases: [ 'submit', 'approve', 'approval', 'app', 'apps' ]
         admin:
             topics:

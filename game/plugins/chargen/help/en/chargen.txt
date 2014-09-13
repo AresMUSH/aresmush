@@ -1,18 +1,23 @@
-Creating your character is a multi-step process.  First you need to create a character from the login screen, if you haven't already (help login).   You will arrive in the Welcome Room, and from there may proceed to the OOC Center.
+Character creation (aka chargen) here works a little differently than what you might be used to from other games.  Instead of being a series of rooms, it is a more free-form process.  You can access the chargen commands from anywhere.
 
-In the OOC Center is an exit marked Chargen (short for character generation).  Through here are a series of rooms that will guide you step-by-step through the character creation process.
+Throughout the process, you will want to check your progress and the things you've set:
 
-If you prefer, though, you can access the chargen commands and help files from anywhere.  See the help files under the "Character Creation" topic for more information.
+    %xhhelp sheet%xn - Character sheet.
+    %xhhelp app%xn - Check your progress.
+    
+Here is the recommended flow for chargen, but you can do them in any order and skip around to your heart's content:
 
-At any point, you can check the progress of your character application:
+1. %xgDemographics%xn - Setting your basic information like full name, height, age, etc.  (%xhhelp demographics%xn)
 
-    %xcapp/progress%xn - Shows your points remaining, things you haven't set, and 
-       any problems.
-     
-Once you are done, submit your application for approval.  Staff will review it and get back to you soon.  Once your app is submitted, you cannot make further changes using the chargen commands.
+2. %xgGroups%xn - Setting your affiliations for things like factions, organizations, positions, etc.  (%xhhelp groups%xn) 
 
-    %xcapp/submit%xn - Submits your application.
+3. %xgBackground%xn - Your character's backstory, or biography.  (%xhhelp bg%xn)
 
-If you realize you need to change something, you can withdraw your application.  Make the necessary changes using the chargen commands, and submit again when you're ready.
+4. %xgAbilities%xn - Attributes, skills and more.  (%xhhelp abilities%xn)
+    Note:  It is recommended that you do your groups before your ablities, because then the system can set you up with initial recommended skills.
 
-    %xcapp/withdraw%xn - Withdraw your application.
+5. %xgDescription%xn - You'll want to describe yourself.  (%xhhelp describe%xn)
+
+6. %xgActor%xn - You may want to pick an actor to represent your character.  (%xhhelp actor%xn)
+
+7. %xgReview%xn - Submit your character application for review by staff.  (%xhhelp app%xn)
