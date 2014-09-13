@@ -91,6 +91,20 @@ module AresMUSH
       client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
     end
     
+    def self.parse_and_roll(client, char, roll_str)
+      if (roll_str.is_integer?)
+        die_result = FS3Skills.roll_dice(roll_str.to_i)
+      else
+        roll_params = FS3Skills.parse_roll_params roll_str
+        if (roll_params.nil?)
+          client.emit_failure t('fs3skills.unknown_roll_params')
+          return nil
+        end
+        die_result = FS3Skills.roll_ability(client, char, roll_params)
+      end
+      die_result
+    end
+    
     def self.parse_roll_params(str)
       match = /^(?<ability>[^\+\-]+)\s*(?<ruling_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
       return nil if match.nil?

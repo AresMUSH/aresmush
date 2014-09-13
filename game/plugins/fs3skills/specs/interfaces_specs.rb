@@ -76,6 +76,14 @@ module AresMUSH
         it "should roll the specified number of dice" do
           FS3Skills.roll_dice(4).should eq [ 6, 5, 5, 1 ]
         end
+        
+        it "should always roll 1 die even if asked for 0 or less" do
+          FS3Skills.roll_dice(0).should eq [6]
+        end
+        
+        it "should not allow giant die rolls" do
+          FS3Skills.roll_dice(99).should eq [1]
+        end
       end
     
       describe :get_success_level do

@@ -14,11 +14,16 @@ module AresMUSH
 
       attr_rating = FS3Skills.ability_rating(char, ruling_attr)
       dice = skill + attr_rating + modifier
-      Global.logger.info "#{char.name} rolling #{ability} with #{modifier}: attr #{ruling_attr} (#{attr_rating}) dice=#{dice}"
+      Global.logger.info "#{char.name} rolling #{ability} (#{skill}) mod #{modifier} attr #{ruling_attr} (#{attr_rating}) dice=#{dice}"
       roll_dice(dice)
     end
     
     def self.roll_dice(dice)
+      if (dice > 20)
+        Global.logger.warn "Attempt to roll #{dice} dice."
+        return [1]
+      end
+      dice = [dice, 1].max
       dice.times.collect { 1 + rand(8) }
     end
     

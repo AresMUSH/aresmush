@@ -32,14 +32,9 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          roll_params = FS3Skills.parse_roll_params self.roll_str
+          die_result = FS3Skills.parse_and_roll(client, model, self.roll_str)
+          return if die_result.nil?
           
-          if (roll_params.nil?)
-            client.emit_failure t('fs3skills.unknown_roll_params')
-            return
-          end
-          
-          die_result = FS3Skills.roll_ability(client, model, roll_params)
           success_level = FS3Skills.get_success_level(die_result)
           success_title = FS3Skills.get_success_title(success_level)
           message = t('fs3skills.simple_roll_result', 

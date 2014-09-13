@@ -128,6 +128,30 @@ module AresMUSH
         
       end
       
+      describe :parse_and_roll do
+        before do
+          @client = double
+          @char = double
+        end
+        
+        it "should emit failure and return nil if it can't parse the roll" do
+          FS3Skills.stub(:parse_roll_params) { nil }
+          @client.should_receive(:emit_failure).with 'fs3skills.unknown_roll_params'
+          FS3Skills.parse_and_roll(@client, @char, "x").should be_nil
+        end
+        
+        it "should return a die result for a plain number" do
+          FS3Skills.stub(:roll_dice).with(2) { [1, 2] }
+          FS3Skills.parse_and_roll(@client, @char, "2").should eq [1, 2]
+        end
+        
+        it "should parse results and roll the ability for any other string" do
+          FS3Skills.stub(:parse_roll_params) { "x" }
+          FS3Skills.stub(:roll_ability).with(@client, @char, "x") { [1, 2, 3]}
+          FS3Skills.parse_and_roll(@client, @char, "abc").should eq [1, 2, 3]
+        end
+      end
+      
       describe :emit_results do
         before do
           @client = build_mock_client

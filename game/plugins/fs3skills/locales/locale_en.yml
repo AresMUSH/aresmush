@@ -71,3 +71,6 @@ en:
         review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if there's a good reason."
         missing_starting_skill: "%xh%xy< Missing %{skill} at rating %{rating} or higher. >%xn"
         
+        npc: "%{name} (a NPC)"
+        numbers_only_for_npc_skills: "Use a number for a NPC skill, like Henchman/3."
+        
