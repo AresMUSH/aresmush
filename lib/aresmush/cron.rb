@@ -1,7 +1,13 @@
 module AresMUSH
   module Cron
+    mattr_accessor :last_tick
+    
     def self.raise_event
-      Global.dispatcher.on_event CronEvent.new(Time.now)
+      tick = Time.now
+      if (Cron.last_tick.nil? || Cron.last_tick.min != tick.min)
+        Global.dispatcher.on_event CronEvent.new(tick)
+        Cron.last_tick = tick
+      end
     end
     
     def self.is_cron_match?(cron_spec, time)

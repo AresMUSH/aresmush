@@ -9,21 +9,15 @@ module AresMUSH
     end
     
     def self.status_vals
-      [ 'NEW', 'OPEN', 'HOLD', 'DONE' ]
+      Global.config["jobs"]["status"].keys
     end
     
     def self.status_color(status)
       return "" if status.nil?
-      case status.upcase
-      when "NEW"
-        "%xg"
-      when "OPEN"
-        "%xb"
-      when "HOLD"
-        "%xr"
-      when "DONE"
-        "%xy"
-      end
+      config = Global.config["jobs"]["status"]
+      key = config.keys.find { |k| k.downcase == status.downcase }
+      return "%xc" if key.nil?
+      return config[key]["color"]
     end
     
     def self.with_a_job(client, number, &block)
@@ -57,17 +51,6 @@ module AresMUSH
       else
         notification = t('jobs.responded_to_job', :name => author.name, :number => job.number, :title => job.title)
         Jobs.notify(job, notification, author)
-      end
-    end
-    
-    def self.notify(job, message, author, notify_submitter = true)
-      Global.client_monitor.logged_in_clients.each do |c|
-        job.readers = [ author ]
-        job.save
-        
-        if (Jobs.can_access_jobs?(c.char) || (notify_submitter && (c.char == job.author)))
-          c.emit_ooc message
-        end
       end
     end
     

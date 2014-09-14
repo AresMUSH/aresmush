@@ -17,15 +17,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|
-
-          if (self.message)
-            Jobs.comment(job, client.char, self.message, false)
-          end
-          job.status = "DONE"
-          job.save
-          
-          notification = t('jobs.closed_job', :number => job.number, :title => job.title, :name => client.name)
-          Jobs.notify(job, notification, client.char)
+          Jobs.close_job(client, job, self.message)
         end
       end
     end

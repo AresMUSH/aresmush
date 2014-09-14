@@ -13,17 +13,6 @@ module AresMUSH
       it_behaves_like "a plugin that requires login"
            
       describe :handle do
-
-        context "not allowed" do
-          it "should fail if the actor doesn't have permission" do
-            handler.stub(:name) { "Bob" }
-            @found_char = double
-            Character.stub(:find_all_by_name_or_id) { [@found_char] }
-            Login.stub(:can_reset_password?).with(char) { false }
-            client.should_receive(:emit_failure).with("dispatcher.not_allowed")
-            handler.handle
-          end
-        end
         
         context "success" do
         before do

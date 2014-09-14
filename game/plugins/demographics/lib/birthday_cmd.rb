@@ -23,7 +23,7 @@ module AresMUSH
       end
             
       def check_approval
-        return t('demographics.cant_be_changed') if client.char.is_approved?
+        return t('demographics.cant_be_changed') if client.char.is_approved
         return nil
       end
       

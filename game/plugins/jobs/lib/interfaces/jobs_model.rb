@@ -40,6 +40,7 @@ module AresMUSH
     
     belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => :submitted_requests
     belongs_to :assigned_to, :class_name => "AresMUSH::Character", :inverse_of => :assigned_jobs
+    belongs_to :approval_char, :class_name => "AresMUSH::Character", :inverse_of => :approval_job
 
     has_many :job_replies, order: :created_at.asc, :dependent => :destroy
     has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil

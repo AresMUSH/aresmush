@@ -39,7 +39,7 @@ module AresMUSH
       
       def check_approval
         return nil if Groups.can_set_group?(client.char)
-        return t('groups.cant_be_changed') if client.char.is_approved?
+        return t('groups.cant_be_changed') if client.char.is_approved
         return nil
       end
       

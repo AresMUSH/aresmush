@@ -6,6 +6,6 @@ After you submit your character for approvals, app staff will review it and get 
 
     %xcapp/submit%xn - Submits your application.
 
-If you realize you need to change something, you can withdraw your application.  Make the necessary changes using the chargen commands, and submit again when you're ready.
+If you realize you need to change something, you can withdraw or un-submit your application.  Make the necessary changes using the chargen commands.  The app will be on hold while you do this, and you can use the submit command again when you're done.
 
-    %xcapp/withdraw%xn - Withdraw your application.
+    %xcapp/unsubmit%xn - Un-submit your application.

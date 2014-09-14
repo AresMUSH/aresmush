@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :name
 
       def want_command?(client, cmd)
-        cmd.root_is?("app")
+        cmd.root_is?("app") && cmd.switch.nil?
       end
 
       def crack!
@@ -22,8 +22,12 @@ module AresMUSH
       
       def handle        
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          if (model.is_approved?)
-            client.emit_failure t('chargen.already_approved')
+          if (model.is_approved)
+            if (model == client.char)
+              client.emit_failure t('chargen.you_are_already_approved')
+            else
+              client.emit_failure t('chargen.already_approved', :name => model.name)
+            end
             return
           end
           
@@ -43,10 +47,21 @@ module AresMUSH
           text << "%r"
           text << Describe.app_review(model)
           text << "%r%r"
+          text << section_title(t('chargen.app_review_title'))
+          
+          if (model.approval_job)
+            number = model.approval_job.number
+            if (client.name == self.name)
+              text << t('chargen.app_request', :job => number)
+            else
+              text <<  t('chargen.app_job', :job => number)
+            end
+          else
+              text <<  t('chargen.app_not_started')
+          end
+
+          text << "%r%r"
           text << t('chargen.review_summary')
-          
-          #client.emit list.inspect
-          
           client.emit BorderedDisplay.text text, title
         end
       end

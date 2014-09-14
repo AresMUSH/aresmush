@@ -47,7 +47,7 @@ module AresMUSH
       
       def check_approval
         return nil if FS3Skills.can_manage_abilities?(client.char)
-        return t('fs3skills.cant_be_changed') if client.char.is_approved?
+        return t('fs3skills.cant_be_changed') if client.char.is_approved
         return nil
       end
       

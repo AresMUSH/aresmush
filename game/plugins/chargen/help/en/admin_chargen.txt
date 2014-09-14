@@ -3,3 +3,4 @@ Admins with appropriate permissions can approve and reject character application
     %xcapp <name>%xn - Reviews someone's application, showing any chargen errors or warnings.
     %xcapp/approve <name>%xn
     %xcapp/reject <name>=<message>%xn - Unlocks them so they can make changes.
+    %xcapp/unapprove <name>%xn - Unapproves someone who was accidentally approved.

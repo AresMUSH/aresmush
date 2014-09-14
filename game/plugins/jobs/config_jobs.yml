@@ -7,11 +7,26 @@ jobs:
 
     # List the categories you want to support.
     categories:
-        - APP  # This is used by the apps system.  If you remove or change it, you must also update that code.
+        - APP  # This is used by the chargen system.  If you remove or change it, you must also update that code.
         - BUILD
         - CODE
         - MISC
         - REQ # This is used by the requests system. If you remove or change it, you must also update that code.
         - RP
 
-        
+    # Define your job status values and their colors.
+    status:
+        NEW: 
+            color: "%xg"
+        OPEN:
+            color: "%xb"
+        HOLD:
+            color: "%xr"
+        DONE:
+            color: "%xy"
+    
+    # Status for new jobs.
+    default_status:  "NEW"
+    
+    # Status for closed jobs.
+    closed_status: "DONE"

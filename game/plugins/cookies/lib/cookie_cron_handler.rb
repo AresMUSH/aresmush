@@ -7,6 +7,7 @@ module AresMUSH
         config = Global.config['cookies']['cron']
         return if !Cron.is_cron_match?(config, event.time)
         
+        
         awards = ""
         cookie_recipients = Character.all.select { |c| c.cookies_received.any? }
         cookie_recipients = cookie_recipients.sort_by { |c| c.cookies_received.count }.reverse
