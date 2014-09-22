@@ -1,0 +1,5 @@
+You interact with the game using %xhcommands%xn, such as the 'help' command you typed to view this.  Some commands are one-word commands like 'who' or 'help'.  Others require additional information.  
+
+That extra information can be a %xhswitch%xn.  A switch changes the command mode.  For example, 'email' to view an email, but 'email/set' to change one.  '/set' is a switch.
+
+The extra info can also be %xharguments%xn, aka parameters, to tell the command what to act on or what to do with it.  'say <some message>' is an example of a command that takes an argument, the message.  The <> brackets indicate that you can put any message you want there, such as 'say Hello world.'  Many commands accept multiple arguments.  For example:  'page <name>=<message>'.
