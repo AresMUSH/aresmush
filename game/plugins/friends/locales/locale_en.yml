@@ -1,7 +1,9 @@
 en:
     friends:
         friends_title: "Friends"
+        friends_header: "Name                      Last On"
         already_friend: "%{name} is already on your friends list."
         not_friend: "%{name} is not on your friends list."
         friend_added: "%{name} has been added to your friends list."
         friend_removed: "%{name} has been removed from your friends list."
+        connected: "-CONNECTED-"

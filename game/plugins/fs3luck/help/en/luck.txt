@@ -1,10 +1,10 @@
-Luck Points in FS3 can be used to generate various lucky effects.  You can use luck for combat, ability rolls, and other lucky breaks at the storyteller's discretion.  Luck points are earned through cookies (see %xhhelp cookies%xn).  You can view your available luck points on your character sheet.
+Luck Points in FS3 can be used to generate various lucky breaks.  Luck points are earned through cookies (see %xhhelp cookies%xn).  You can view your available luck points on your character sheet.
 
     %xcluck/spend <points>%xn - Spends luck
 
-The luck commands for combat are part of the combat system (see %xhhelp combat%xn).
+You can use luck points for combat (see %xhhelp combat%xn), ability rolls, or other plot points at the storyteller's discretion.
 
-With an ability roll, you can use a luck point in different ways.  These effects are not automated; you should spend the luck point and then apply the appropriate modifier (or re-roll) manually using the roll commands (%xhhelp roll%xn):
+For ability rolls, you can use a luck point in different ways.  These effects are not automated; you should spend the luck point and then apply the appropriate modifier (or re-roll) manually using the roll commands (%xhhelp roll%xn):
 
 * Before your own roll, spend a point to receive a +5 modifier.
 

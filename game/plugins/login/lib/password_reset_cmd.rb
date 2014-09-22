@@ -38,7 +38,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.name, client) do |char|
           char.change_password(self.new_password)
           char.save!
-          client.emit_success t('login.password_reset', :name => self.name)
+          client.emit_success t('login.password_reset', :name => char.name)
         end
       end
       

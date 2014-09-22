@@ -9,13 +9,13 @@ module AresMUSH
       attr_accessor :new_password
 
       def initialize
-        self.required_args = ['old_password']
+        self.required_args = ['old_password', 'new_password']
         self.help_topic = 'password'
         super
       end
 
       def want_command?(client, cmd)
-        cmd.root_is?("password") && cmd.switch_is?("set")
+        cmd.root_is?("password") && cmd.switch.nil?
       end
 
       def crack!

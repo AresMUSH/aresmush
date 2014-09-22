@@ -5,10 +5,9 @@ Plugin code, help files, configuration files and translation (locale) files are 
    %xcload <plugin directory name>%xn - Loads/reloads a plugin from disk.
        Loading a plugin automatically also reloads config, locale and help
    %xcunload <plugin module name>%xn - Unloads a plugin.
-       Unloading is normally not necessary unless you end up with some stray code.
-       Unloading does not affect configuration or help.  If you are completely removing
-       a plugin, you will want to first move/archive the plugin's files to a location    
-       outside the plugin directory, and then reload config and help.
+       Unloading is normally not necessary unless you have trouble loading a plugin 
+       or wish to remove it completely.  Unloading does not affect configuration or
+       help, so you may want to reload them when you're done.
        
 %xhConfig Management%xn
    %xcconfig%xn - Lists config sections

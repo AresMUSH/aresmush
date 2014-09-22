@@ -1,6 +1,6 @@
 It's fun to imagine the characters on a game like characters in a movie, and to pick actors to play them.  The %xhactors%xn system lets you keep track of who's picked which actors, and pick one for yourself.
 
-You can ask an admin to set actors for NPCs as well, but please limit this to prominent, recurring NPCs.  Otherwise you might take an actor that someone else might like to use for their PC.
+You can ask an admin to set actors for NPCs as well, but please limit this to prominent, recurring NPCs.
 
     %xcactors%xn - List actors.
     %xcactors/search <actor>%xn - Search for an actor to see if they're taken.

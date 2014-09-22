@@ -2,22 +2,22 @@ Character creation (aka chargen) here works a little differently than what you m
 
 Throughout the process, you will want to check your progress and the things you've set:
 
-    %xhhelp sheet%xn - Character sheet.
+    %xhhelp sheet%xn - View your character sheet.
     %xhhelp app%xn - Check your progress.
     
 Here is the recommended flow for chargen, but you can do them in any order and skip around to your heart's content:
 
-1. %xgDemographics%xn - Setting your basic information like full name, height, age, etc.  (%xhhelp demographics%xn)
+1. %xcDemographics%xn - Setting your basic information like full name, height, age, etc.  (%xhhelp demographics%xn)
 
-2. %xgGroups%xn - Setting your affiliations for things like factions, organizations, positions, etc.  (%xhhelp groups%xn) 
+2. %xcGroups%xn - Setting your affiliations for things like factions, organizations, positions, etc.  (%xhhelp groups%xn) 
 
-3. %xgBackground%xn - Your character's backstory, or biography.  (%xhhelp bg%xn)
+3. %xcBackground%xn - Your character's backstory, or biography.  (%xhhelp bg%xn)
 
-4. %xgAbilities%xn - Attributes, skills and more.  (%xhhelp abilities%xn)
+4. %xcAbilities%xn - Attributes, skills and more.  (%xhhelp abilities%xn)
     Note:  It is recommended that you do your groups before your ablities, because then the system can set you up with initial recommended skills.
 
-5. %xgDescription%xn - You'll want to describe yourself.  (%xhhelp describe%xn)
+5. %xcDescription%xn - You'll want to describe yourself.  (%xhhelp describe%xn)
 
-6. %xgActor%xn - You may want to pick an actor to represent your character.  (%xhhelp actor%xn)
+6. %xcActor%xn - You may want to pick an actor to represent your character.  (%xhhelp actor%xn)
 
-7. %xgReview%xn - Submit your character application for review by staff.  (%xhhelp app%xn)
+7. %xcReview%xn - Submit your character application for review by staff.  (%xhhelp app%xn)

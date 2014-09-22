@@ -6,4 +6,4 @@ If you don't want to be bothered by pages, you can mark yourself as 'do not dist
 
     %xcpage/dnd <on or off>%xn
     
-If you are marked Away From the Keyboard, people paging you will be notified that you may not respond right away.  You can control the specific message they receive using the 'afk' command.
+If you are very idle or marked Away From the Keyboard, people paging you will be notified that you may not respond right away.  You can control the specific message they receive using the 'afk' command.

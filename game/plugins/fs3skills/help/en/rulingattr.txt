@@ -4,12 +4,12 @@ All skills are "Ruled" by a certain attribute, which is the default attribute ad
 
 With action skills, the ruling attribute is set by the game admin.  With background skills, you can pick which attribute is used.
 
-     %xcrulingattr <skill>=<attribute>%xn - Sets the ruling attribute
+     %xcrulingattr <skill>=<attribute>%xn
      
 Ruling attributes are shown on your character sheet next to the skill rating.  For example, the (R) next to Firearms shows that its ruling attribute is Reaction:
 
      Firearms:          (R) @@
      
-Note that no matter what the skill's ruling attribute is, you can always override it during a particular roll.  To remember the effective range of a particular sniper rifle, you might want to do:
+Note that no matter what the skill's ruling attribute is, you can always override it during a particular roll.  For example, even though Firearms is normally ruled by Reaction, to remember the effective range of a particular sniper rifle, you might want to do:
 
     roll Firearms+Mind

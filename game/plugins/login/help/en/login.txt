@@ -15,4 +15,4 @@ You can associate an email address with your account, to enable admin to contact
 Other login-related commands:
 
     %xcquit%xn - Disconnects from the game.
-    %xcpassword/set <oldpassword>=<newpassword>%xn - Changes your password.
+    %xcpassword <oldpassword>=<newpassword>%xn - Changes your password.

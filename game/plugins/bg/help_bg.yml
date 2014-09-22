@@ -12,5 +12,5 @@ help:
                 bg: 
                     toc_topic: 'Approvals'
                     dir: 'game/plugins/bg/help/'
-                    help: 'admin_bg.txt'
+                    file: 'admin_bg.txt'
                     summary: 'Managing backgrounds.'

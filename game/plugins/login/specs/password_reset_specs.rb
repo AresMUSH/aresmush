@@ -19,6 +19,7 @@ module AresMUSH
           handler.crack!
           @found_char = double
           @found_char.stub(:change_password)
+          @found_char.stub(:name) { "name" }
           @found_char.stub(:save!)
           client.stub(:emit_success)
           Login.stub(:can_reset_password?).with(char) { true }          

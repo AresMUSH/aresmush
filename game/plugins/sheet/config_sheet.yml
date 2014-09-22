@@ -1,8 +1,8 @@
 sheet:
     # List which pages of a character sheet are allowed to be public.  
     # Comment out (with a # in front) the ones you wish to remain private.  You can
-    # make them all private if you wish.  The default configuration allows page 1 (profile)
-    # and page 2 (abilities) to be public, but hides the background page.
+    # make them all private if you wish.  The default configuration allows page 1 (abilities)
+    # and page 2 (profile) to be public, but hides the background page.
     public_pages:
         - 1
         - 2

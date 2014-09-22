@@ -22,4 +22,3 @@ Additional ansi codes include:
     \%xI - End inverse
     \%xh - Highlight color (bold)
     \%xH - End bold (but doesn't end any colors)
-

@@ -1,8 +1,6 @@
 The bulletin board system lets you stay posted on game news and events.  There are various %xhboards%xn available, each with a different purpose.
 
-Those familiar with %xh%xrMyrddin's BBS%xn from other MUSH systems should find that the commands you're used to (bbread, bbpost, etc.) also work here.
-
-NOTE: For all of the bbs commands, you can specify either the board name or number.
+For all of the bbs commands, you can specify either the board name or number.  Those familiar with %xh%xcMyrddin's BBS%xn from other MUSH systems should find that the commands you're used to (bbread, bbpost, etc.) also work here.
 
     %xcbbs%xn - Lists available boards.
     %xcbbs <board>%xn - Lists posts on the selected board.

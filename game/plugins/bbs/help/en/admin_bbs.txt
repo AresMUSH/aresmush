@@ -1,16 +1,19 @@
-Those with board admin privileges are able to edit and delete other peoples' posts as well as their own.
+Those with board admin privileges are able to edit and delete other peoples' posts as well as their own.  You can also mass delete posts to clean up boards.
+
+    %xcbbs/delete <board>/<#>-<#>%xn
 
 Board admins can also create and delete boards:
 
     %xcbbs/createboard <name>%xn
-    %xcbbs/deleteboard <board name or #>%xn
+    %xcbbs/deleteboard <board>%xn
     
-And set their descriptions as well as who can read or write(post) to them:
+And set their descriptions as well as who can read or write (post) to them:
 
-    %xcbbs/describe <board name or #>=<description>%xn
-    %xcbbs/readroles <board name or #>=<roles that can read it, or 'everyone'>%xn
-    %xcbbs/writeroles <board name or #>=<roles that can write to it, or 'everyone'>%xn
+    %xcbbs/describe <board>=<description>%xn
+    %xcbbs/readroles <board>=<roles that can read it, or 'everyone'>%xn
+    %xcbbs/writeroles <board>=<roles that can write to it, or 'everyone'>%xn
     
 You can also change the order that the boards are displayed in by assigning each an order number:
 
-    %xcbbs/order <board name or #>=<order #>
+    %xcbbs/order <board>=<order #>%xn
+    
