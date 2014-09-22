@@ -3,7 +3,7 @@ help:
         main:
             topics:
                 roll: 
-                    toc_topic: 'Conflict Resolution'
+                    toc_topic: 'FS3'
                     dir: 'game/plugins/fs3skills/help/'
                     file: 'roll.txt'
                     summary: 'Ability rolls.'

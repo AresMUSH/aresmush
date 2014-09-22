@@ -30,14 +30,9 @@ module AresMUSH
       
       def handle
         if (self.add_lang)
-          if (client.char.fs3_languages.include?(self.name))
-            client.emit_failure t('fs3skills.language_already_selected')
-            return
+          if (FS3Skills.add_language(client, client.char, self.name))
+            client.char.save
           end
-          
-          client.char.fs3_languages << self.name
-          client.char.save
-          client.emit_success t('fs3skills.language_selected', :name => self.name)
         else
           if (!client.char.fs3_languages.include?(self.name))
             client.emit_failure t('fs3skills.language_not_selected')

@@ -1,0 +1,1 @@
+%xcxp/award <name>=<# of XP>/<reason>%xn - Awards XP.

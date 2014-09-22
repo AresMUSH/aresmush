@@ -1,6 +1,6 @@
 The FS3 Abilities commands are used to set yourself up during character creation.  See %xhhelp chargen%xn for more information.
 
-NNote:  It is recommended that you do your groups (help groups) before your ablities, because then the system can set you up with initial recommended skills.
+Note:  It is recommended that you do your groups (help groups) before your ablities, because then the system can set you up with initial recommended skills.
 
 To get started, or at any point you wish to reset yourself, use the reset command.
 

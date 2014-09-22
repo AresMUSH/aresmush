@@ -33,12 +33,16 @@ module AresMUSH
     end    
     
     def using_test_db(&block)
-      client_monitor = double
-      Global.stub(:client_monitor) { client_monitor }
-      client_monitor.stub(:reload_clients) { }
+      stub_client_reload
       SpecHelpers.connect_to_test_db
       yield block
       SpecHelpers.erase_test_db
+    end
+    
+    def stub_client_reload
+      client_monitor = double
+      Global.stub(:client_monitor) { client_monitor }
+      client_monitor.stub(:reload_clients) { }
     end
       
     # Use with the using_test_db helper whenever possible
@@ -53,11 +57,6 @@ module AresMUSH
       password = db_config['password']      
     
       mongoid = Mongoid.load_configuration(db_config)
-        #db = mongoid.database
-      
-      #auth_successful = db.authenticate(username, password)
-     # raise StandardError("Database authentication failed.") if !auth_successful    
-    #  db
     end
     
     # Use with the using_test_db helper whenever possible

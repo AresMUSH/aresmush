@@ -59,5 +59,9 @@ module AresMUSH
       job.save
     end
     
+    def self.closed_status
+      Global.config["jobs"]["closed_status"]
+    end
+    
   end
 end

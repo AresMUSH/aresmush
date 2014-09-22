@@ -1,0 +1,9 @@
+Experience Points (XP) are used to improve your character after chargen.  FS3 uses a very simple XP system.  Players each receive XP each week.  XP is an IC award, not an OOC one, and reflects your character's time learning/practicing/gaining experience.
+
+You can spend XP to raise skills and languages, but not attributes.  Attributes reflect natural innate ability so you can't intentionally change them.
+
+There are limits to how many XP you can save up, and how fast you can spend them.  This prevents people from making significant leaps overnight.
+
+    %xcxp/costs%xn - Shows the general cost table and limits on XP spending.
+    %xcxp/raise <skill>%xn - Spends XP to raise a skill.
+    %xcxp/lang <language>%xn - Spends XP to learn a language.

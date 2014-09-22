@@ -22,6 +22,14 @@ en:
         position_title: "Position:"
         department_title: "Department:"
         faction_title: "Faction:"
+        xp_title: "XP:"
+        
+        attributes_title: "Attributes"
+        action_skills_title: "Action Skills"
+        background_skills_title: "Background Skills"
+        languages_title: "Languages"
+        quirks_title: "Quirks"
+        
         
         approved: "Approved"
         unapproved: "Not Yet Approved"

@@ -68,7 +68,7 @@ module AresMUSH
     # For example:
     #       include PluginRequiresLogin
     def error_check
-      self.methods.grep(/^check_/).each do |m|
+      self.methods.grep(/^check_/).sort.each do |m|
         error = send m
         if (!error.nil?)
           return error

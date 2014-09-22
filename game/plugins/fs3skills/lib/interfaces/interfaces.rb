@@ -18,6 +18,45 @@ module AresMUSH
       roll_dice(dice)
     end
     
+    # Expects titleized ability name and numeric rating
+    # Don't forget to save afterward!
+    def self.set_ability(client, char, ability, rating)
+      ability_type = get_ability_type(ability)
+      ability_hash = get_ability_hash(char, ability_type)
+      
+      error = FS3Skills.check_ability_name(ability)
+      if (!error.nil?)
+        client.emit_failure error
+        return false
+      end
+      
+      error = FS3Skills.check_rating(ability_type, rating)
+      if (!error.nil?)
+        client.emit_failure error
+        return false
+      end
+      
+      update_hash(ability_hash, ability, rating)
+      if (client.char == char)
+        client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
+      else
+        client.emit_success t("fs3skills.admin_ability_set", :name => char.name, :ability_type => ability_type, :ability_name => ability, :rating => rating)
+      end
+      return true
+    end
+    
+    # Don't forget to save afterward!
+    def self.add_language(client, char, language)
+      if (char.fs3_languages.include?(language))
+        client.emit_failure t('fs3skills.language_already_selected')
+        return false
+      end
+      
+      char.fs3_languages << language
+      client.emit_success t('fs3skills.language_selected', :name => language)
+      return true
+    end
+    
     def self.roll_dice(dice)
       if (dice > 20)
         Global.logger.warn "Attempt to roll #{dice} dice."

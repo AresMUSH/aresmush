@@ -69,36 +69,6 @@ module AresMUSH
       ability_hash[ability]
     end
     
-    # Expects titleized ability name and numeric rating
-    def self.set_ability(client, char, ability, rating)
-      ability_type = get_ability_type(ability)
-      ability_hash = get_ability_hash(char, ability_type)
-      max_rating = get_max_rating(ability_type)
-      min_rating = get_min_rating(ability_type)
-      
-      if (ability !~ /^[\w\s]+$/)
-        client.emit_failure t('fs3skills.no_special_characters')
-        return
-      end
-      
-      if (rating > max_rating)
-        client.emit_failure t('fs3skills.max_rating_is', :rating => max_rating)
-        return
-      end
-      
-      if (rating < min_rating)
-        client.emit_failure t('fs3skills.min_rating_is', :rating => min_rating)
-        return
-      end
-      
-      update_hash(ability_hash, ability, rating)
-      if (client.char == char)
-        client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
-      else
-        client.emit_success t("fs3skills.admin_ability_set", :name => char.name, :ability_type => ability_type, :ability_name => ability, :rating => rating)
-      end
-    end
-    
     def self.parse_and_roll(client, char, roll_str)
       if (roll_str.is_integer?)
         die_result = FS3Skills.roll_dice(roll_str.to_i)
@@ -154,5 +124,20 @@ module AresMUSH
         end
       end
     end
+    
+    def self.check_ability_name(ability)
+      return t('fs3skills.no_special_characters') if (ability !~ /^[\w\s]+$/)
+      return nil
+    end
+    
+    def self.check_rating(ability_type, rating)
+      max_rating = get_max_rating(ability_type)
+      min_rating = get_min_rating(ability_type)
+
+      return t('fs3skills.max_rating_is', :rating => max_rating) if (rating > max_rating)
+      return t('fs3skills.min_rating_is', :rating => min_rating) if (rating < min_rating)
+      return nil
+    end
+    
   end
 end

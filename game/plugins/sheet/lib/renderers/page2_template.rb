@@ -47,24 +47,32 @@ module AresMUSH
         @char.fs3_quirks.join(", ")
       end
       
+      def xp
+        @char.xp
+      end
+      
       def attributes_title
-        format_section_title t('fs3skills.attributes_title')
+        format_section_title t('sheet.attributes_title')
       end
 
       def action_skills_title
-        format_section_title t('fs3skills.action_skills_title')
+        format_section_title t('sheet.action_skills_title')
       end
       
       def background_skills_title
-        format_section_title t('fs3skills.background_skills_title')
+        format_section_title t('sheet.background_skills_title')
       end
       
       def languages_title
-        format_section_title t('fs3skills.languages_title')
+        format_section_title t('sheet.languages_title')
       end
       
       def quirks_title
-        format_section_title t('fs3skills.quirks_title')
+        format_section_title t('sheet.quirks_title')
+      end
+      
+      def xp_title
+        "%xh#{t('sheet.xp_title')}%xn"
       end
       
       def format_attr(a, i)

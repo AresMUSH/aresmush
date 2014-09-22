@@ -11,7 +11,7 @@ module AresMUSH
       SpecHelpers.stub_translate_for_testing 
     end
     
-    describe :check_for_login do
+    describe :check_1_for_login do
       before do
         @client = double
         @cmd = double
@@ -30,16 +30,16 @@ module AresMUSH
       
       it "should reject command if not logged in" do
         @client.should_receive(:logged_in?) { false }
-        @plugin.check_for_login.should eq 'dispatcher.must_be_logged_in'
+        @plugin.check_1_for_login.should eq 'dispatcher.must_be_logged_in'
       end
       
       it "should accept command if logged in" do
         @client.should_receive(:logged_in?) { true }
-        @plugin.check_for_login.should eq nil
+        @plugin.check_1_for_login.should eq nil
       end
     end
     
-    describe :check_no_args do
+    describe :check_2_no_args do
       before do
         @client = double
         @cmd = double
@@ -59,23 +59,23 @@ module AresMUSH
       it "should reject command if there are arguments" do
         @cmd.stub(:switch) { nil }
         @cmd.stub(:args) { "foo" }
-        @plugin.check_no_args.should eq "dispatcher.cmd_no_args"
+        @plugin.check_2_no_args.should eq "dispatcher.cmd_no_args"
       end
       
       it "should accept command if there are no arguments" do
         @cmd.stub(:args) { nil }
         @cmd.stub(:switch) { nil }
-        @plugin.check_no_args.should eq nil
+        @plugin.check_2_no_args.should eq nil
       end
       
       it "should accept command with a switch and no arguments" do
         @cmd.stub(:args) { nil }
         @cmd.stub(:switch) { nil }
-        @plugin.check_no_args.should eq nil
+        @plugin.check_2_no_args.should eq nil
       end
     end    
       
-    describe :check_no_switches do
+    describe :check_2_no_switches do
       before do
         @client = double
         @cmd = double
@@ -94,16 +94,16 @@ module AresMUSH
       
       it "should reject command if there is a switch" do
         @cmd.stub(:switch) { "foo" }
-        @plugin.check_no_switches.should eq "dispatcher.cmd_no_switches"
+        @plugin.check_2_no_switches.should eq "dispatcher.cmd_no_switches"
       end
       
       it "should allow command if there is no switch" do
         @cmd.stub(:switch) { nil }
-        @plugin.check_no_switches.should eq nil
+        @plugin.check_2_no_switches.should eq nil
       end
     end      
     
-    describe :check_argument_present do
+    describe :check_2_arguments_present do
       before do
         @client = double
         @cmd = double
@@ -130,25 +130,25 @@ module AresMUSH
       it "should reject command if a required argument is nil" do
         @plugin.stub(:foo) { nil }
         @plugin.stub(:bar) { "bar" }
-        @plugin.check_arguments_present.should eq "invalid syntax"
+        @plugin.check_2_arguments_present.should eq "invalid syntax"
       end
 
       it "should reject command if the other required argument is nil" do
         @plugin.stub(:foo) { "foo" }
         @plugin.stub(:bar) { nil }
-        @plugin.check_arguments_present.should eq "invalid syntax"
+        @plugin.check_2_arguments_present.should eq "invalid syntax"
       end
       
       it "should reject command if the required argument is blank" do
         @plugin.stub(:foo) { "   " }
         @plugin.stub(:bar) { "bar" }
-        @plugin.check_arguments_present.should eq "invalid syntax"
+        @plugin.check_2_arguments_present.should eq "invalid syntax"
       end
       
       it "should allow command if the argument is present" do
         @plugin.stub(:foo) { "foo" }
         @plugin.stub(:bar) { "bar" }
-        @plugin.check_arguments_present.should eq nil
+        @plugin.check_2_arguments_present.should eq nil
       end
     end
   end

@@ -29,7 +29,7 @@ module AresMUSH
       job.status = status
       job.save
       
-      if (status == Global.config["jobs"]["closed_status"])
+      if (status == Jobs.closed_status)
         notification = t('jobs.closed_job', :number => job.number, :title => job.title, :name => client.name)
       else
         notification = t('jobs.updated_job', :number => job.number, :title => job.title, :name => client.name)
@@ -39,7 +39,7 @@ module AresMUSH
     end
     
     def self.close_job(client, job, message = nil)
-      Jobs.change_job_status(client, job, Global.config["jobs"]["closed_status"], message)
+      Jobs.change_job_status(client, job, Jobs.closed_status, message)
     end
     
     def self.notify(job, message, author, notify_submitter = true)

@@ -6,6 +6,10 @@ module AresMUSH
     field :is_approved, :type => Boolean
     field :is_on_duty, :type => Boolean
     
+    def is_approved?
+      is_approved
+    end
+    
     def status
       # AFK trumps all
       return "AFK" if self.is_afk

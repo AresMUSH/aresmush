@@ -1,0 +1,17 @@
+help:
+    categories:
+        main:
+            topics:
+                xp: 
+                    toc_topic: 'FS3'
+                    dir: 'game/plugins/fs3xp/help/'
+                    file: 'xp.txt'
+                    summary: 'Experience points.'
+                    aliases: [ 'experience', 'improvement' ]
+        admin:
+            topics:
+                xp:
+                    toc_topic: 'FS3'
+                    dir: 'game/plugins/fs3xp/help/'
+                    file: 'admin_xp.txt'
+                    summary: 'Experience points.'
