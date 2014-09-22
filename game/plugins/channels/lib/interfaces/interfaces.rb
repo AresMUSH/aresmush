@@ -3,7 +3,7 @@ module AresMUSH
     def self.join_channel(name, client, char, chan_alias)
       Channels.with_a_channel(name, client) do |channel|
                 
-        if (channel.characters.include?(char))
+        if (Channels.is_on_channel?(char, channel))
           client.emit_failure t('channels.already_on_channel')
           return
         end

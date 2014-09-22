@@ -78,7 +78,7 @@ module AresMUSH
         return
       end
 
-      if (!channel.characters.include?(client.char))
+      if (!Channel.is_on_channel?(client.char, channel))
         client.emit_failure t('channels.not_on_channel')
         return
       end
@@ -95,6 +95,21 @@ module AresMUSH
       end
       
       yield channel
+    end
+    
+    def self.is_on_channel?(char, channel)
+      channel.characters.include?(char)
+    end
+    
+    def self.add_to_default_channels(client, char)
+      channels = Global.config['channels']['default_channels']
+      channels.each do |name|
+        Channels.with_a_channel(name, client) do |c|
+          if (!Channels.is_on_channel?(char, c))
+            Channels.join_channel(name, client, char, nil)
+          end
+        end
+      end
     end
   end
 end

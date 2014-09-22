@@ -15,17 +15,10 @@ module AresMUSH
       end
 
       def handle
-        guests = Character.where(:roles.in => [ "guest" ]).all
-        
-        guest = guests.sort_by{ |g| g.name }.select { |g| Global.client_monitor.find_client(g).nil? }
+        guest = Login.guests.sort_by{ |g| g.name }.select { |g| Global.client_monitor.find_client(g).nil? }
         if (guest.empty?)
           client.emit_ooc t('login.all_guests_taken')
           return
-        end
-        
-        channels = Global.config['login']['guest_channels']
-        channels.each do |c|
-          Channels.join_channel(c, client, guest.first, nil)
         end
         
         client.char = guest.first

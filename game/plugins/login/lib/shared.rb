@@ -20,5 +20,17 @@ module AresMUSH
       return false if listener.watch == "none"
       listener.friends.include?(connector)
     end
+    
+    def self.guest_role
+      Global.config['login']['guest_role']
+    end
+    
+    def self.is_guest?(char)
+      char.has_any_role?(Login.guest_role)
+    end
+    
+    def self.guests
+      Character.where(:roles.in => [ Login.guest_role ]).all
+    end
   end
 end

@@ -3,14 +3,26 @@ module AresMUSH
     class LoginEvents
       include Plugin
       
+      def on_char_created_event(event)
+        client = event.client
+        char = client.char
+        Channels.add_to_default_channels(client, char)
+      end
+        
       def on_char_connected_event(event)
         client = event.client
+        char = client.char
+
         channels = client.char.channels
         Global.client_monitor.logged_in_clients.each do |other_client|
           common_channels = find_common_channels(channels, other_client)
           if (!common_channels.nil?)
             other_client.emit "#{common_channels} #{t('channels.has_connected', :name => client.name)}"
           end
+        end
+
+        if (char.is_guest?)
+          Channels.add_to_default_channels(client, char)
         end
       end
       

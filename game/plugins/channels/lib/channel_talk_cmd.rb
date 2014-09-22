@@ -40,7 +40,7 @@ module AresMUSH
           return
         end
 
-        if (!self.channel.characters.include?(client.char))
+        if (!Channels.is_on_channel?(client.char, self.channel))
           client.emit_failure t('channels.not_on_channel')
           return
         end

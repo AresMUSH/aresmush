@@ -30,8 +30,6 @@ module AresMUSH
       
       describe :on_char_connected_event do
         before do
-#          @char.stub(:has_role?) { false }
-          #client_monitor.stub(:emit_all_ooc)
         end
         
         it "should announce the char if the client wants it" do

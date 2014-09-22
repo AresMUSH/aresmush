@@ -9,3 +9,8 @@ channels:
     # Typically this would be brackets for [Mux Style] or <MUSH Style>
     start_marker: '<'
     end_marker: '>'
+
+    # Channels you want to make sure guests and new players are on when they log in.
+    default_channels:
+        - Questions
+        - Public
