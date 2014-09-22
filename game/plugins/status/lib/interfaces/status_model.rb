@@ -10,6 +10,10 @@ module AresMUSH
       is_approved
     end
     
+    def is_ic?
+      self.room.room_type == "IC"
+    end
+    
     def status
       # AFK trumps all
       return "AFK" if self.is_afk

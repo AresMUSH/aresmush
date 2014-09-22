@@ -11,7 +11,10 @@ module AresMUSH
       end
 
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_space_arg2)
+        # After agreeing to TOS, this is already cracked.
+        if (cmd.args.class != AresMUSH::HashReader)
+          cmd.crack_args!(CommonCracks.arg1_space_arg2)
+        end
         self.charname = trim_input(cmd.args.arg1)
         self.password = cmd.args.arg2
       end
