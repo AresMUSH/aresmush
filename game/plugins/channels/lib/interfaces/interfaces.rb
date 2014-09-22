@@ -14,7 +14,7 @@ module AresMUSH
         end
         
         if (chan_alias.nil?)
-          chan_alias = "+#{name[0..2].downcase}"
+          chan_alias = "#{name[0..2].downcase}"
         end
             
         existing_alias = Channels.channel_for_alias(char, chan_alias)   
