@@ -17,7 +17,7 @@ module AresMUSH
       end
     
       def position
-        left(@char.position, 19)
+        left(@char.groups["Position"], 19)
       end
     
       def status
@@ -25,7 +25,7 @@ module AresMUSH
       end
     
       def faction
-        left(@char.faction, 15)
+        left(@char.groups["Faction"], 15)
       end
     
       def idle

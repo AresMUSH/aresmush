@@ -4,9 +4,9 @@ en:
         invalid_page_number: "That is not a valid page number."
         not_that_many_pages: "There aren't that many character sheet pages."
         
-        page1_title: "Profile - Page 1 of 3"
-        page2_title: "Abilities - Page 2 of 3"
-        page3_title: "Background - Page 3 of 3"
+        abilities_page_title: "Abilities - Page 1 of 3"
+        profile_page_title: "Profile - Page 2 of 3"
+        bg_page_title: "Background - Page 3 of 3"
         
         fullname_title: "Fullname:"
         gender_title: "Gender:"
@@ -23,6 +23,7 @@ en:
         department_title: "Department:"
         faction_title: "Faction:"
         xp_title: "XP:"
+        luck_title: "Luck Points:"
         
         attributes_title: "Attributes"
         action_skills_title: "Action Skills"

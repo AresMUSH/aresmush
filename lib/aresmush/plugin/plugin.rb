@@ -64,7 +64,7 @@ module AresMUSH
     #   end
     # 
     # Several common error checking methods are defined, and you can include them
-    # in your plugin just by including them in your plugin file.  TODO Better Docs!
+    # in your plugin just by including them in your plugin file.
     # For example:
     #       include PluginRequiresLogin
     def error_check

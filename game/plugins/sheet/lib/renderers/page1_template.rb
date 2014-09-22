@@ -21,120 +21,87 @@ module AresMUSH
       end
       
       def page_title
-        right(t('sheet.page1_title'), 28)
+        right(t('sheet.abilities_page_title'), 28)
       end
       
-      def fullname_title
-        format_field_title(t('sheet.fullname_title'))
+      def attributes
+        attrs = @char.fs3_attributes
+        attrs.keys.each_with_index.map { |a, i| format_attr(a, i)}
       end
 
-      def gender_title
-        format_field_title(t('sheet.gender_title'))
+      def action_skills
+        skills = @char.fs3_action_skills
+        skills.keys.each_with_index.map { |s, i| format_skill(s, i)}
+      end
+      
+      def background_skills
+        skills = @char.fs3_background_skills
+        skills.keys.each_with_index.map { |s, i| format_skill(s, i)}
+      end
+      
+      def languages
+        @char.fs3_languages.join(", ")
+      end
+      
+      def quirks
+        @char.fs3_quirks.join(", ")
+      end
+      
+      def xp
+        @char.xp.to_s.ljust(40)
+      end
+      
+      def luck
+        @char.luck
+      end
+      
+      def attributes_title
+        format_section_title t('sheet.attributes_title')
       end
 
-      def height_title
-        format_field_title(t('sheet.height_title'))
-      end
-
-      def physique_title
-        format_field_title(t('sheet.physique_title'))
-      end
-
-      def hair_title
-        format_field_title(t('sheet.hair_title'))
-      end
-
-      def eyes_title
-        format_field_title(t('sheet.eyes_title'))
-      end
-
-      def age_title
-        format_field_title(t('sheet.age_title'))
-      end
-
-      def birthdate_title
-        format_field_title(t('sheet.birthdate_title'))
+      def action_skills_title
+        format_section_title t('sheet.action_skills_title')
       end
       
-      def reputation_title
-        "%xh#{t('sheet.reputation_title')}%xn #{t('sheet.reputation_subtitle')}"
+      def background_skills_title
+        format_section_title t('sheet.background_skills_title')
       end
       
-      def faction_title
-        format_field_title(t('sheet.faction_title'))
+      def languages_title
+        format_section_title t('sheet.languages_title')
       end
       
-      def department_title
-        format_field_title(t('sheet.department_title'))
+      def quirks_title
+        format_section_title t('sheet.quirks_title')
       end
       
-      def position_title
-        format_field_title(t('sheet.position_title'))
+      def xp_title
+        "%xh#{t('sheet.xp_title')}%xn"
       end
       
-      def colony_title
-        format_field_title(t('sheet.colony_title'))
+      def luck_title
+        "%xh#{t('sheet.luck_title')}%xn"
       end
       
-      def format_field_title(title)
-        "%xh#{left(title, 12)}%xn"
+      def format_attr(a, i)
+        name = "%xh#{a}:%xn"
+        rating = FS3Skills.ability_rating(@char, a)
+        dots = FS3Skills.print_attribute_rating(rating)
+        linebreak = i % 2 == 1 ? "" : "%r"
+        "#{linebreak}#{left(name, 18)} #{left(dots,18)}"
       end
       
-      def format_field(field)
-        left("#{field}", 25)
+      def format_skill(s, i)
+        name = "%xh#{s}:%xn"
+        rating = FS3Skills.ability_rating(@char, s)
+        dots = FS3Skills.print_skill_rating(rating)
+        ruling_attr = FS3Skills.get_ruling_attr(@char, s)[0]
+        linebreak = i % 2 == 1 ? "" : "%r"
+        "#{linebreak}#{left(name, 18)} (#{ruling_attr}) #{left(dots,18)}"
       end
       
-      def fullname
-        format_field @char.fullname
-      end
-      
-      def gender
-        format_field @char.gender
-      end
-      
-      def height
-        format_field @char.height
-      end
-      
-      def physique
-        format_field @char.physique
-      end
-      
-      def hair
-        format_field @char.hair
-      end
-      
-      def eyes
-        format_field @char.eyes
-      end
-      
-      def age
-        age = @char.age
-        format_field age == 0 ? "" : age
-      end
-      
-      def birthdate
-        format_field @char.birthdate.nil? ? "" : ICTime.ic_month_str(@char.birthdate)
-      end
-      
-      def faction
-        format_field @char.groups['Faction']
-      end
-      
-      def position
-        format_field @char.groups['Position']
-      end
-      
-      def colony
-        format_field @char.groups['Colony']
-      end
-      
-      def department
-        format_field @char.groups['Department']
-      end
-      
-      def reputation
-        @char.reputation
+      def format_section_title(title)
+        center(" %xh#{title}%xn ", 78, '-')
       end
     end
   end

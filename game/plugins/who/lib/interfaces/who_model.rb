@@ -20,22 +20,9 @@ module AresMUSH
     end    
   end
   
-  # TODO: All of this stuff belongs somewhere else.  Here just for testing.
   class Character
     field :hidden, :type => Boolean
-        
-    def is_ic?
-      self.room.room_type == "IC"
-    end
-
-    def faction
-      "A Faction"
-    end
-    
-    def position
-      "Up"
-    end
-    
+            
     def who_room_name
       if (self.hidden)
         return t('who.hidden')

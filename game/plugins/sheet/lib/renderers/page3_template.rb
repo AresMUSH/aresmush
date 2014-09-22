@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def page_title
-        right(t('sheet.page3_title'), 28)
+        right(t('sheet.bg_page_title'), 28)
       end
       
       def background
