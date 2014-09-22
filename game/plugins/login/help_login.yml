@@ -6,6 +6,7 @@ help:
                     toc_topic: '1 - Getting Started'
                     dir: 'game/plugins/login/help/'
                     file: 'login.txt'
+                    order: 2
                     summary: 'Creating, connecting and managing passwords.'
                     aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit', 'guest' ]
 

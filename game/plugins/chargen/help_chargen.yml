@@ -7,6 +7,7 @@ help:
                     dir: 'game/plugins/chargen/help/'
                     file: 'chargen.txt'
                     summary: 'Character creation walkthrough.'
+                    order: 3
                     aliases: [ 'submit', 'approve', 'approval', 'app', 'apps', 'character creation']
                 apps: 
                     toc_topic: 'Character Creation'

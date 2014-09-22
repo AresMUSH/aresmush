@@ -33,10 +33,9 @@ module AresMUSH
         text = []
         toc.sort.each do |toc_key|
           text << "%xg#{toc_key.titleize}%xn"
-          entries = Help.topics_for_toc(self.category, toc_key).sort
-          entries.each do |entry_key|
-            entry = Help.topic(self.category, entry_key)
-            text << "     %xh#{entry_key.titleize}%xn - #{entry["summary"]}"
+          entries = Help.topics_for_toc(self.category, toc_key)
+          entries.each do |entry_key, entry_value|
+            text << "     %xh#{entry_key.titleize}%xn - #{entry_value["summary"]}"
           end
         end
         categories = Help.categories.select { |c| c != self.category }
