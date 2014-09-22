@@ -11,4 +11,3 @@ en:
         census_title: "%{name} Census"
         census_groups: "Census Groups Available"
         app_review: "Checking groups are set."
-        cant_be_changed: "That cannot be changed once you've been approved."

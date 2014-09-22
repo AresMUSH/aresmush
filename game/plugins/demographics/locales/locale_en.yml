@@ -6,7 +6,6 @@ en:
         age_outside_limits: "The minimum age is %{min} and the maximum age is %{max}."
         birthdate_set: "Your birthdate has been set to %{birthdate}, making you %{age} years old."
         invalid_birthdate: "Please specify a date in %{format_str} format."
-        cant_be_changed: "That cannot be changed once you've been approved."
         
         male_possessive: his
         female_possessive: her

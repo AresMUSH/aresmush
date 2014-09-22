@@ -40,6 +40,9 @@ module AresMUSH
             return
           end
           
+          model.chargen_locked = false
+          model.save
+          
           Jobs.change_job_status(client,
             model.approval_job,
             Global.config["chargen"]["jobs"]["app_hold_status"],

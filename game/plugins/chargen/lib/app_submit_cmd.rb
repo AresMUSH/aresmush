@@ -19,6 +19,9 @@ module AresMUSH
         else
           update_job
         end
+      
+        client.char.chargen_locked = true
+        client.char.save
       end
       
       def check_approval

@@ -33,6 +33,7 @@ module AresMUSH
             return
           end
 
+          model.chargen_locked = false
           model.is_approved = false
           model.approval_job = nil
           model.save

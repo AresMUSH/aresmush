@@ -43,12 +43,11 @@ module AresMUSH
         return nil if client.name == self.name
         return nil if FS3Skills.can_manage_abilities?(client.char)
         return t('dispatcher.not_allowed')
-      end
+      end      
       
-      def check_approval
+      def check_chargen_locked
         return nil if FS3Skills.can_manage_abilities?(client.char)
-        return t('fs3skills.cant_be_changed') if client.char.is_approved
-        return nil
+        Chargen.check_chargen_locked(client.char)
       end
       
       def handle

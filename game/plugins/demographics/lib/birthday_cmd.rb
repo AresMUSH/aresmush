@@ -22,9 +22,8 @@ module AresMUSH
         self.date_str = cmd.args
       end
             
-      def check_approval
-        return t('demographics.cant_be_changed') if client.char.is_approved
-        return nil
+      def check_chargen_locked
+        Chargen.check_chargen_locked(client.char)
       end
       
       def handle

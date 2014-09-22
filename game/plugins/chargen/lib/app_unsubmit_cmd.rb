@@ -24,6 +24,10 @@ module AresMUSH
           client.char.approval_job,
           Global.config["chargen"]["jobs"]["app_hold_status"],
           t('chargen.app_job_unsubmitted'))
+          
+        client.char.chargen_locked = false
+        client.char.save
+          
         client.emit_success t('chargen.app_unsubmitted')
       end
     end

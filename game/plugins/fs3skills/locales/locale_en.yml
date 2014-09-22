@@ -68,5 +68,3 @@ en:
         npc: "%{name} (a NPC)"
         numbers_only_for_npc_skills: "Use a number for a NPC skill, like Henchman/3."
 
-        cant_be_changed: "That cannot be changed once you've been approved."
-        

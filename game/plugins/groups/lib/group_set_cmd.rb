@@ -37,10 +37,9 @@ module AresMUSH
         return t('dispatcher.not_allowed')
       end
       
-      def check_approval
+      def check_chargen_locked
         return nil if Groups.can_set_group?(client.char)
-        return t('groups.cant_be_changed') if client.char.is_approved
-        return nil
+        Chargen.check_chargen_locked(client.char)
       end
       
       def handle        
