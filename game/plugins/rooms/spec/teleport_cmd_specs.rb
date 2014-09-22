@@ -20,14 +20,21 @@ module AresMUSH
         it "should crack a destination only" do
           init_handler(TeleportCmd, "teleport somewhere")
           handler.crack!
-          handler.name.should be_nil
+          handler.names.should eq []
           handler.destination.should eq "somewhere"
         end
         
         it "should crack a name plus destination" do
           init_handler(TeleportCmd, "teleport someone=somewhere")
           handler.crack!
-          handler.name.should eq "someone"
+          handler.names.should eq [ "someone" ]
+          handler.destination.should eq "somewhere"
+        end
+        
+        it "should crack multiple names plus destination" do
+          init_handler(TeleportCmd, "teleport someone another=somewhere")
+          handler.crack!
+          handler.names.should eq [ "someone", "another" ]
           handler.destination.should eq "somewhere"
         end
       end
@@ -61,26 +68,33 @@ module AresMUSH
       
       describe :find_targets do
         it "should return the client if there's no name" do
-          handler.stub(:name) { nil }
+          handler.stub(:names) { [] }
           result = { :client => client, :char => char }
-          handler.find_targets.should eq result
+          targets = handler.find_targets
+          targets.should eq [ result ]
         end
 
         it "should return the matching char if there is one" do
-          handler.stub(:name) { "someone" }
-          other_char = double
-          other_client = double
-          ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(other_char, nil) }
-          client_monitor.stub(:find_client).with(other_char) { other_client }
-          result = { :client => other_client, :char => other_char }
+          handler.stub(:names) { [ "someone", "someone else" ] }
+          other_char1 = double
+          other_client1 = double
+          other_char2 = double
+          other_client2 = nil
+          ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(other_char1, nil) }
+          ClassTargetFinder.should_receive(:find).with("someone else", Character, client) { FindResult.new(other_char2, nil) }
+          client_monitor.stub(:find_client).with(other_char1) { other_client1 }
+          client_monitor.stub(:find_client).with(other_char2) { nil }
+          result =  
+            [ { :client => other_client1, :char => other_char1 },
+              { :client => nil, :char => other_char2 } ]
           handler.find_targets.should eq result
         end
 
         it "should return nil if nothing found" do
-          handler.stub(:name) { "someone" }
+          handler.stub(:names) { [ "someone" ] }
           ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(nil, "error") }
-          result = { :client => nil, :char => nil }
-          handler.find_targets.should eq result
+          client.should_receive(:emit_failure).with('rooms.cant_find_that_to_teleport')
+          handler.find_targets.should eq []
         end
       end
       
@@ -93,7 +107,7 @@ module AresMUSH
           before do
             @dest = double
             handler.stub(:find_destination) { @dest }
-            handler.stub(:find_targets) { {:client => client, :char => char } }
+            handler.stub(:find_targets) { [ {:client => client, :char => char } ] }
           end
           
           it "should go to the room" do
@@ -115,7 +129,7 @@ module AresMUSH
             @other_client = double
             client.stub(:name) { "Bob" }
             handler.stub(:find_destination) { @dest }
-            handler.stub(:find_targets) { {:client => @other_client, :char => @other_char } }
+            handler.stub(:find_targets) { [ {:client => @other_client, :char => @other_char } ] }
           end
           
           it "should go to the room" do
@@ -136,7 +150,7 @@ module AresMUSH
             other_char = double
             other_client = double
             handler.stub(:find_destination) { nil }
-            handler.stub(:find_targets) { {:client => other_client, :char => other_char } }
+            handler.stub(:find_targets) { [ {:client => other_client, :char => other_char } ] }
             client.stub(:emit_failure)
           end  
           
@@ -153,14 +167,10 @@ module AresMUSH
         
         context "targets not found" do          
           before do
-            handler.stub(:find_targets) { {:client => nil, :char => nil } }
+            handler.stub(:find_targets) { [] }
+            handler.stub(:find_destination) { double }
             client.stub(:emit_failure)
           end  
-          
-          it "should emit failure" do
-            client.should_receive(:emit_failure).with("db.object_not_found")          
-            handler.handle
-          end
           
           it "should not go anywhere" do
             Rooms.should_not_receive(:move_to)

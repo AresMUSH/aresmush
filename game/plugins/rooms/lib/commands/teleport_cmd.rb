@@ -7,7 +7,7 @@ module AresMUSH
       include PluginRequiresArgs
 
       attr_accessor :destination
-      attr_accessor :name
+      attr_accessor :names
       
       def initialize
         self.required_args = ['destination']
@@ -22,10 +22,10 @@ module AresMUSH
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         if (cmd.args.arg2.nil?)
-          self.name = nil
+          self.names = []
           self.destination = trim_input(cmd.args.arg1)
         else
-          self.name = trim_input(cmd.args.arg1)
+          self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
           self.destination = trim_input(cmd.args.arg2)
         end
       end
@@ -36,23 +36,22 @@ module AresMUSH
       end
       
       def handle
-        targets = find_targets
-        if (targets[:char].nil?)
-          client.emit_failure(t('db.object_not_found'))
-          return
-        end
-        
         room = find_destination
         if (room.nil?)
           client.emit_failure(t('rooms.invalid_teleport_destination'))
           return
         end
         
-        if (targets[:client] != client && targets[:client] != nil)
-          targets[:client].emit_ooc(t('rooms.you_are_teleported', :name => client.name))
-        end
+        targets = find_targets
+        return if targets.empty?
+
+        targets.each do |t|
+          if (t[:client] != client && t[:client] != nil)
+            t[:client].emit_ooc(t('rooms.you_are_teleported', :name => client.name))
+          end
         
-        Rooms.move_to(targets[:client], targets[:char], room)
+          Rooms.move_to(t[:client], t[:char], room)
+        end
       end
       
       def find_destination
@@ -68,16 +67,22 @@ module AresMUSH
       end
       
       def find_targets
-        if (self.name.nil?)
-          return { :client => client, :char => client.char }
+        if (self.names.empty?)
+          target = { :client => client, :char => client.char }
+          targets = [ target ]
         else
-          find_result = ClassTargetFinder.find(self.name, Character, client)
-          if (find_result.found?)
-            return { :char => find_result.target, :client => Global.client_monitor.find_client(find_result.target) }
-          else
-            return { :char => nil, :client => nil }
+          targets = []
+          self.names.each do |n|
+            find_result = ClassTargetFinder.find(n, Character, client)
+            if (!find_result.found?)
+              client.emit_failure t('rooms.cant_find_that_to_teleport', :name => n)
+              return []
+            end
+            target = { :char => find_result.target, :client => Global.client_monitor.find_client(find_result.target) }
+            targets << target
           end
         end
+        targets
       end
     end
   end
