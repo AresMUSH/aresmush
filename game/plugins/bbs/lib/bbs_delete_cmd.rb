@@ -24,7 +24,30 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post| 
+        if (self.num =~ /\-/)
+          splits = self.num.split("-")
+          if (splits.count != 2)
+            client.emit_failure t('bbs.invalid_post_number')
+            return
+          end
+          start_post = splits[0].to_i
+          end_post = splits[1].to_i
+          
+          if (start_post <= 0 || end_post <= 0 || start_post > end_post)
+            client.emit_failure t('bbs.invalid_post_number')
+            return
+          end
+          posts_to_delete = (start_post..end_post).to_a.reverse
+          posts_to_delete.each do |p|
+            delete_post(p.to_s)
+          end
+        else
+          delete_post(self.num)
+        end
+      end
+      
+      def delete_post(num)
+        Bbs.with_a_post(self.board_name, num, client) do |board, post| 
           
           if (!Bbs.can_edit_post(client.char, post))
             client.emit_failure t('dispatcher.not_allowed')
@@ -32,7 +55,7 @@ module AresMUSH
           end
                              
           post.destroy
-          client.emit_success(t('bbs.post_deleted', :board => board.name, :num => self.num))
+          client.emit_success(t('bbs.post_deleted', :board => board.name, :num => num))
         end
       end
     end
