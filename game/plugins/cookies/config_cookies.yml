@@ -11,3 +11,11 @@ cookies:
     # go and put its name here.  If you're not using the BBS, comment this line out.
     cookie_board: "Cookie Awards"
     
+    # How many cookies does it take to get a luck point?  You can have fractional luck
+    # points, so they'll accumulate week to week.
+    # Set this to 0 to disable luck awards from cookies.
+    cookies_per_luck: 10
+    
+    # Maximum luck points you can achieve through cookies.
+    max_luck: 5
+    

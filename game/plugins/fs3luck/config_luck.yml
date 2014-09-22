@@ -1,0 +1,6 @@
+fs3luck:
+    roles:
+        can_manage_luck:
+            # List roles that are allowed to award luck points.
+            - admin
+            # - another role

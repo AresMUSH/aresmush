@@ -7,6 +7,8 @@ module AresMUSH
         config = Global.config['cookies']['cron']
         return if !Cron.is_cron_match?(config, event.time)
         
+        cookies_per_luck = Global.config['cookies']['cookies_per_luck']
+        max_luck = Global.config['cookies']['max_luck']
         
         awards = ""
         cookie_recipients = Character.all.select { |c| c.cookies_received.any? }
@@ -16,7 +18,15 @@ module AresMUSH
           index = i+1
           awards << "#{index}. #{c.name.ljust(20)}#{count}\n"
           c.cookie_count = c.cookie_count + count
-          c.cookies_received = []
+          
+          if (cookies_per_luck != 0)
+            luck = count.to_f / cookies_per_luck
+            c.luck = [max_luck, c.luck + luck].min
+          end
+
+          Global.logger.info "#{c.name} got #{count} cookies from #{c.cookies_received.map{|a| a.name}.join(",")}"
+
+          c.cookies_received = []          
           c.save
         end
         
