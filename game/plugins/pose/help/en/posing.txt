@@ -9,3 +9,11 @@ You can also make out-of-character (OOC) asides to the other room occupants.  Th
 
    %xcooc Hi!%xn - <OOC> Bob says, "Hi!"
    %xcooc :waves.%xn - <OOC> Bob waves.
+   
+Lastly, the %xhpemit%xn command lets you make a private emit to certain characters.
+
+    %xcpemit <list of names>=<message>%xn
+    
+Emit poses are normally anonymous to maintain the flow of the RP text.  Unfortunately, that means they can be abused by spammers.  If you're getting rogue messages, you can turn on your "nospoof" setting to identify emits and report the offender to the admin.
+
+    %xcnospoof <on or off>%xn

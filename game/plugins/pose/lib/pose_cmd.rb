@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def handle
-        Pose.emit_pose(client.room, message)
+        Pose.emit_pose(client, message, cmd.root_is?("emit"))
       end
       
       def log_command

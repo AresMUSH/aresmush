@@ -14,7 +14,7 @@ module AresMUSH
       
       def handle
         message = PoseFormatter.format(client.name, cmd.raw)
-        Pose.emit_pose(client.room, message)
+        Pose.emit_pose(client, message, cmd.raw.start_with?("\\"))
       end
 
       def log_command
