@@ -19,7 +19,7 @@ status:
         # a deliberate setting, but just a way certain systems can warn that someone has
         # been idle awhile.
         # Comment out to disable this feature.
-        minutes_before_idle: 60
+        minutes_before_idle: 120
         
         # How many minutes before someone is automatically logged out for inactivity.
         # Comment out to disable this feature.

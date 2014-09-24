@@ -19,6 +19,7 @@ en:
         reputation_title: "Reputation"
         reputation_subtitle: "(common knowledge ICly)"
         colony_title: "Colony:"
+        rank_title: "Rank:"
         position_title: "Position:"
         department_title: "Department:"
         faction_title: "Faction:"

@@ -15,7 +15,7 @@ en:
         ok: "%xh%xg< OK! >%xn"
         are_you_sure: "%xh%xy< Missing %{missing} >%xn"
         
-        review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if there's a good reason."
+        review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if it suits your character."
         
         abilities_review_title:  "Abilities (help abilities)"
         demographics_review_title: "Demographics (help demographics)"

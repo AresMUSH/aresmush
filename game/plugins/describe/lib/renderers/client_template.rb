@@ -20,6 +20,10 @@ module AresMUSH
         @char.shortdesc
       end
       
+      def fullname_and_rank
+        "#{@char.rank} #{@char.fullname}"
+      end
+      
       def afk_message
         if (@char.is_afk)
           format_afk_message

@@ -46,6 +46,8 @@ module AresMUSH
           text << Bg.app_review(model)
           text << "%r"
           text << Describe.app_review(model)
+          text << "%r"
+          text << Ranks.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.app_review_title'))
           

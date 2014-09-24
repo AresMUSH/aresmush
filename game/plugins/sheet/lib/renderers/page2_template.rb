@@ -76,6 +76,10 @@ module AresMUSH
         format_field_title(t('sheet.colony_title'))
       end
       
+      def rank_title
+        format_field_title(t('sheet.rank_title'))
+      end
+      
       def format_field_title(title)
         "%xh#{left(title, 12)}%xn"
       end
@@ -132,7 +136,11 @@ module AresMUSH
       def department
         format_field @char.groups['Department']
       end
-      
+
+      def rank
+        format_field @char.rank
+      end
+            
       def reputation
         @char.reputation
       end

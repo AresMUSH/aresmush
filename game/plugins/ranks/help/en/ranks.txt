@@ -1,0 +1,8 @@
+Ranks are used in military or paramiltary organizations.  The Ares ranks system differentiates ranks by groups (see help groups).
+
+    %xcranks%xn - Shows groups with ranks
+    %xcranks <group>%xn - Shows ranks for a given group. 
+
+As part of character creation, you can set your rank.
+
+    %xcrank <rank>%xn - Sets your rank  (leave rank blank to clear it)

@@ -1,0 +1,14 @@
+en:
+    ranks:
+        all_ranks_title: "%{group} Ranks"
+        ranks_title: "Ranks for %{group}"
+        ranks_footer: "Note: %xh%xxGray%xn ranks are not allowed in chargen."
+        invalid_rank_for_group: "That is not an allowed rank for %{group}."
+        no_ranks_for_group: "There are no ranks for %{group}."
+        rank_set: "Rank set to %{rank}."
+        rank_cleared: "Rank cleared."
+        app_review: "Checking for valid rank."
+        review_rank_missing: "Rank"
+        review_rank_invalid: "%xh%xr< Invalid Rank >%xn"
+        rank_group_not_set: "Your %{group} is not set."
+        
