@@ -1,0 +1,34 @@
+help:
+    categories:
+        main:
+            topics:
+                handles: 
+                    toc_topic: 'Community'
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handles.txt'
+                    summary: 'Player Identity.'
+                handle creation:
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handle_creation.txt'
+                handle link:
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handle_link.txt'
+                handle privacy:
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handle_privacy.txt'
+                handle identity:
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handle_identity.txt'
+                handle prefs:
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handle_prefs.txt'
+                handle use:
+                    dir: 'game/plugins/handles/help/'
+                    file: 'handle_use.txt'
+        admin:
+            topics:
+                handles:
+                    toc_topic: 'Player Management'
+                    dir: 'game/plugins/handles/help/'
+                    file: 'admin_handles.txt'
+                    summary: 'Player Identity.'

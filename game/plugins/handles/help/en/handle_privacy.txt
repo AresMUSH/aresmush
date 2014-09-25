@@ -1,0 +1,17 @@
+The handles system includes a number of privacy settings, which tie into the AresMUSH friends system.
+
+Handles are completely optional. The most extreme privacy setting is simply to avoid the system altogether.
+
+Even if you have a handle, you get to choose which characters to link to it. So if you don’t want anyone knowing you’re playing on KinkyMUSH, just leave that character unlinked.
+
+Even if you link characters to your handle, you get to choose who can see that link. This setting is per-character.
+
+* %xhPublic%xn - Everyone can see this character linked to your handle.
+* %xhFriends-Only%xn - Only people on your friends list will see this character linked to your handle.
+* %xhAdmin-Only%xn - Only game admin will see this character linked to your handle. AresCentral admin(s) are bound by our Privacy Policy and will not misuse your handle information. Game admins are not, so remember - the only truly private character is one who is not linked to your handle at all.
+
+Links default to admin-only.  You can change it at any time on AresCentral. (%xhhandle/chars%xn shows a list of characters linked to your handle.)
+
+    %xghandle/privacy <character id>=<privacy setting>%xn
+    
+Next topic:  %xhhelp handle identity%xn

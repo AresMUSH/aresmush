@@ -1,0 +1,9 @@
+There are a number of ways you can use handles.  However, your use is limited by the other person's privacy settings (%xhhelp handle privacy%xn).
+
+You can add a handle to your friends list (%xhhelp friends%xn).  IF you pass their privacy settings, you will see their connection status and connection messages on all their characters.
+
+    friend/add @Faraday
+
+If someone's handle is public, you can use their handle to contact them via pages.
+
+    p @Faraday=Hi there!

@@ -1,0 +1,9 @@
+Handles are created and managed through AresCentral, a social MU devoted to all things AresMUSH.  This server is the central authority for handles, ensuring that handles are unique (even across different games).  
+
+To create a handle, connect to AresCentral and make yourself a character with the name you want to use as your handle. AresCentral is the only game where your character name and handle name need to be the same.  You may create more than one character on AresCentral, and thus multiple handles.
+
+To find the current MUSH address for AresCentral, visit http://www.aresmush.com or type:
+
+    %xcarescentral%xn
+
+Next Topic:  %xhhelp handle link%xn
