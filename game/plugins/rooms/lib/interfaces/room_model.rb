@@ -40,7 +40,6 @@ module AresMUSH
   end
   
   class Character
-        
     before_create :set_starting_room
     
     def set_starting_room
@@ -55,6 +54,43 @@ module AresMUSH
     field :grid_x, :type => String
     field :grid_y, :type => String
     field :room_type, :type => String, :default => "IC"
-  end
 
+    before_destroy :null_out_sources
+    
+    def clients
+      clients = Global.client_monitor.logged_in_clients
+      clients.select { |c| c.room == self }
+    end
+    
+    def emit(msg)
+      clients.each { |c| c.emit(msg) }
+    end
+    
+    def emit_ooc(msg)
+      clients.each { |c| c.emit_ooc(msg) }
+    end
+    
+    def has_exit?(name)
+      !get_exit(name).nil?
+    end
+    
+    def get_exit(name)
+      match = exits.select { |e| e.name_upcase == name.upcase }.first
+    end
+    
+    def out_exit
+      out = get_exit("O")
+      return out if !out.nil?
+      return nil if exits.empty?
+      return exits.first
+    end
+    
+    def null_out_sources
+      sources = Exit.where(:dest_id => self.id)
+      sources.each do |s|
+        s.dest = nil
+        s.save!
+      end
+    end
+  end
 end
