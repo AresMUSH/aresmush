@@ -73,7 +73,7 @@ module AresMUSH
           end
           
           it "should set the channel alias to the default if none specified" do
-            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "+pub")
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "pub")
             char.should_receive(:save!)
             handler.handle
           end

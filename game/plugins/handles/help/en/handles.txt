@@ -1,7 +1,7 @@
 Handles are an experiment in social media for MUSHing. A handle is your OOC identity. It represents you, the player. You can link characters to your handle - even across multiple games - so that other players know who you are.
 
 %xhBut what if I don’t want people to know who I am?%xn
-Handles are completely optional. If you don't have one, you'll still have access to all the basic MUSH features, same as on Penn/Tiny.  It doesn’t have to be all or nothing, though. There are privacy settings.
+Handles are completely optional. If you don't have one, you'll still have access to all the basic MUSH features, same as on Penn/Tiny.  It doesn’t have to be all or nothing, though. There are privacy settings to put your mind at ease.
 
 Check out the following additional help files to learn more about handles.
 
