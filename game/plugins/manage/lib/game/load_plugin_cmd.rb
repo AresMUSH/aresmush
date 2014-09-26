@@ -21,13 +21,18 @@ module AresMUSH
         cmd.root_is?("load") && 
         cmd.args != "locale" && cmd.args != "config"
       end
-
-      def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
-        return nil
-      end
       
       def handle
+        begin
+          can_manage = Manage.can_manage_game?(client.char)
+          if (!can_manage)
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+        rescue
+          client.emit_failure t('manage.management_config_messed_up')
+        end
+        
         begin
           begin
             Global.plugin_manager.unload_plugin(load_target)

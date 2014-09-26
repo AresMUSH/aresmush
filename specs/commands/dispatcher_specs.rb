@@ -111,7 +111,7 @@ module AresMUSH
           @plugin1.stub(:want_command?) { true }
           @plugin1.stub(:on_command).and_raise("an error")
           @command.stub(:raw) { "raw" }
-          @client.should_receive(:emit_failure).with("dispatcher.error_executing_command")
+          @client.should_receive(:emit_failure).with("dispatcher.unexpected_error")
           @dispatcher.on_command(@client, @command)
         end
       

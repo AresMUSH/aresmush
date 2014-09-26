@@ -25,9 +25,15 @@ module AresMUSH
       config.concat Dir[File.join(PluginManager.plugin_path, "**", "shortcut*.yml")]
     end
     
-    def self.plugin_files(name = "*")
-      all_files = Dir[File.join(PluginManager.plugin_path, name, "**", "*.rb")]
-      all_files.select { |f| !/_spec[s]*.rb*/.match(f) }
+    def self.plugin_files(name = nil)
+      if (name.nil?)
+        path = File.join(PluginManager.plugin_path, "**", "*.rb")
+      else
+        path = File.join(PluginManager.plugin_path, name, "**", "*.rb")
+      end
+      
+      all_files = Dir[path]
+      all_files.select { |f| f !~ /_(spec|test|test_loader)[s]*\.rb*/ }
     end
     
     def load_all

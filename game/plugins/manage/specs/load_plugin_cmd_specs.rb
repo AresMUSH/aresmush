@@ -32,6 +32,7 @@ module AresMUSH
           locale.stub(:load!)
           config_reader.stub(:read)
           client_monitor.stub(:reload_clients)
+          Manage.stub(:can_manage_game?) { true }
         end
           
         it "should load the plugin" do
@@ -68,6 +69,19 @@ module AresMUSH
         it "should notify client if plugin load has an error" do
           plugin_manager.stub(:load_plugin) { raise "Error" }
           client.should_receive(:emit_failure).with('manage.error_loading_plugin')
+          handler.handle
+        end
+        
+        it "should fail if no permissions" do
+          Manage.stub(:can_manage_game?).with(char) { false }
+          client.should_receive(:emit_failure).with('dispatcher.not_allowed')
+          handler.handle
+        end
+        
+        it "should succeed and alert permissions are mis-configured" do
+          Manage.stub(:can_manage_game?).with(char) { raise "Error" }
+          client.should_receive(:emit_failure).with('manage.management_config_messed_up')
+          plugin_manager.should_receive(:load_plugin).with("foo")
           handler.handle
         end
         

@@ -59,7 +59,7 @@ module AresMUSH
     describe :plugin_files do
       it "should find all the ruby files in the plugin lib dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "**", "*.rb")
+       search = File.join("plugins", "**", "*.rb")
        files = ["a.rb", "b.rb", "c_spec.rb", "d_specs.rb"]
        Dir.should_receive(:[]).with(search) { files}
        PluginManager.plugin_files.should eq ["a.rb", "b.rb"]
