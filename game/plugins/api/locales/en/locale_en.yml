@@ -1,0 +1,5 @@
+en:
+    api:
+        api_error: "Error communicating with remote server. Please try again later and contact the admin if the problem persists."
+        sending_to_remote: "Sending message to remote server.  This may take a moment."
+        api_cipher_error: "Error reading response from remote server.  Please contact the admin."
