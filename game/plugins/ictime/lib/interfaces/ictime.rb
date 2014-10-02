@@ -7,7 +7,7 @@ module AresMUSH
     end
     
     def self.ic_month_str(time)
-      time.strftime Global.config["server"]["short_date_format"]
+      time.strftime Global.config["date_and_time"]["short_date_format"]
     end
   end
 end

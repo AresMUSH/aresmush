@@ -22,7 +22,7 @@ module AresMUSH
       end
     
       def mush_name
-        center(Global.config['server']['mush_name'], 78)
+        center(Global.config['server']['name'], 78)
       end
       
       def clients

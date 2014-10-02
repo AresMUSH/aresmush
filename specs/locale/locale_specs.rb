@@ -33,7 +33,7 @@ module AresMUSH
     
     describe :setup do
       before do
-        Global.stub(:config) { { 'server' => { 'locale' => "de", "default_locale" => "en" } } }        
+        Global.stub(:config) { { 'locale' => { 'locale' => "de", "default_locale" => "en" } } }        
         I18n.stub(:locale=)
         I18n.stub(:default_locale=)
       end

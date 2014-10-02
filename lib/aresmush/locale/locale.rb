@@ -62,9 +62,9 @@ module AresMUSH
     private
         
     def set_locale
-      I18n.locale =  Global.config['server']['locale']
+      I18n.locale =  Global.config['locale']['locale']
       I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-      I18n.default_locale = Global.config['server']['default_locale']
+      I18n.default_locale = Global.config['locale']['default_locale']
     end    
   end
 end

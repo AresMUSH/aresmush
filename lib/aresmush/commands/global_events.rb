@@ -38,4 +38,7 @@ module AresMUSH
       self.time = time
     end
   end
+  
+  class ConfigUpdatedEvent
+  end
 end

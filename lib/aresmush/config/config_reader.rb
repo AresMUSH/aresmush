@@ -32,6 +32,9 @@ module AresMUSH
       plugin_config = PluginManager.config_files
       self.config = YamlFileParser.read(ConfigReader.config_files, {} )
       self.config = YamlFileParser.read(plugin_config, self.config)
+      if (!Global.dispatcher.nil?)
+        Global.dispatcher.queue_event ConfigUpdatedEvent.new
+      end
     end    
   end
 end

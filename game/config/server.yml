@@ -4,38 +4,13 @@ server:
 
     # The port number your game will listen on
     port: 7207
-
-    # Main language (aka locale).  en for English.
-    locale: en
-
-    # Backup language (aka locale) if text is not available in the main language.
-    # For instance if you're running a game in Spanish, and a plugin is not 
-    # translated, it will use the English (en) text as a backup.
-    default_locale: en
     
     # Name of your game.
-    mush_name: AresMUSH
+    name: AresMUSH
 
-    # Configure the way dates are displayed in their short form
-    # %d is the date, %m is the month, %Y is the year
-    # NOTE:  If you change this, also change date_entry_format
-    short_date_format: "%m/%d/%Y"
-    # European style:
-    # short_date_format: "%d-%m-%Y"
+    # Please select the appropriate category to describe your game:
+    # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
+    category: "x"
     
-    # Configure the way dates are displayed in their long form
-    # %a is the day of week
-    # %b is the month name
-    # %d is the date
-    # %Y is the year
-    # %l is the hour in 12-hour form
-    # %M is the minute
-    # %P is am/pm
-    long_date_format: "%a %b %d, %Y %l:%M%P"
-    # European style:
-    #long_date_format: "%d-%m-%Y %l:%M%P"
-    
-    
-    # Used in help files to direct people what format to use when entering dates
-    # NOTE: Must match the order of fields in short_date_format
-    date_entry_format_help: "mm/dd/yyyy"
+    # Describe your game.  You may use ansi and other MUSH formatting codes.
+    description: "Social hub for all things AresMUSH."

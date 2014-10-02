@@ -46,6 +46,7 @@ module AresMUSH
       begin
         event_handler_name = "on_#{event.class.name.split('::').last.underscore}"
         Global.plugin_manager.plugins.each do |s|
+          
           if (s.respond_to?(:"#{event_handler_name}"))
             s.send(:"#{event_handler_name}", event)
           end

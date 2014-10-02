@@ -57,7 +57,18 @@ module AresMUSH
         YamlFileParser.should_receive(:read).with( ["c", "d"],  parsed1 ) { parsed2 }
         @reader.read 
         @reader.config.should eq parsed2
-      end      
+      end    
+      
+      it "should dispatch the update event" do
+        dispatcher = double
+        event = double
+        ConfigUpdatedEvent.stub(:new) { event }
+        Global.stub(:dispatcher) { dispatcher }
+        YamlFileParser.should_receive(:read) { {} }
+        YamlFileParser.should_receive(:read) { {} }
+        dispatcher.should_receive(:queue_event).with(event)
+        @reader.read 
+      end  
     end
   end
 end

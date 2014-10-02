@@ -80,8 +80,6 @@ end
 
 task :install do
 
-  # TODO - What about upgrade?  Break up wipe and install, make plugins smarter
-
   bootstrapper = AresMUSH::Bootstrapper.new
 
   AresMUSH::ObjectModel.models.each do |m|
@@ -130,6 +128,13 @@ end
 
 task :upgrade do
   bootstrapper = AresMUSH::Bootstrapper.new
+  
+  AresMUSH::ServerInfo.create(
+    game_id: AresMUSH::ServerInfo.arescentral_game_id,
+    name: "AresCentral", 
+    description: "Central hub for all things AresMUSH-related.", 
+    host: "mush.aresmush.com",
+    port: 7206)
 end
 
 RSpec::Core::RakeTask.new do |t|
