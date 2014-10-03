@@ -8,19 +8,23 @@ module AresMUSH
     end    
     
     def self.send_command(destination_id, client, str)
-      destination = Api.get_destination(destination_id)
-      host = destination.host
-      port = destination.port
-      key = destination.key
-      
       EM.defer do
         AresMUSH.with_error_handling(client, "API #{str}") do
           socket = nil
           begin
+            destination = Api.get_destination(destination_id)
+            raise "Host #{destination_id} not found" if destination.nil?
+
+            host = destination.host
+            port = destination.port
+            key = destination.key
+      
             Timeout.timeout(10) do
               socket = TCPSocket.new host, port
               encrypted = Api.encrypt(key, str)
-              socket.puts "api> #{destination_id} #{encrypted[:iv]} #{encrypted[:data]}"
+              Global.logger.debug "API command to #{host} #{port}: #{str}."
+              
+              socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}"
                 
               while (line = socket.gets)
                 if (line.start_with?("api< "))

@@ -13,7 +13,7 @@ module AresMUSH
         # TODO - uncomment so this doesn't happen every time.
         #if (last_server_info != server_info)
           cmd = ApiRegisterCmd.new(
-            Game.master.game_id,
+            Game.master.api_game_id,
             server['hostname'], 
             server['port'], 
             server['name'], 

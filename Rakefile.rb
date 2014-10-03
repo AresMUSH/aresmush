@@ -123,11 +123,6 @@ task :install do
   end
 
   game.save
-  puts "Install complete."
-end
-
-task :upgrade do
-  bootstrapper = AresMUSH::Bootstrapper.new
   
   AresMUSH::ServerInfo.create(
     game_id: AresMUSH::ServerInfo.arescentral_game_id,
@@ -135,6 +130,12 @@ task :upgrade do
     description: "Central hub for all things AresMUSH-related.", 
     host: "mush.aresmush.com",
     port: 7206)
+    
+  puts "Install complete."
+end
+
+task :upgrade do
+  bootstrapper = AresMUSH::Bootstrapper.new
 end
 
 RSpec::Core::RakeTask.new do |t|

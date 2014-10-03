@@ -11,16 +11,14 @@ module AresMUSH
         Global.logger.debug "API Response: #{response} #{error}"
         
         response_str = response.after("api< ")
-        command = response_str.before(" ")
-        args = response_str.after(" ")
         
-        case command
-        when "register"
-          resp = ApiRegisterResponse.new(client, args)
-          ApiRegisterResponseHandler.handle(resp)
-        else
-          return "Unrecognized command #{command}."
+        if (error)
+          if (client)
+            client.emit_failure error
+          end
+          return
         end
+        Api.router.route_response(client, response_str)
       end
     end
   end

@@ -50,8 +50,7 @@ module AresMUSH
       context "success", :dbtest do
         before do
           client.stub(:logged_in?) { true }
-          @target = Character.new(:name => "Bob", :xp => 4)
-          Character.stub(:find_all_by_name_or_id).with("Bob") { [ @target ] }
+          @target = Character.create(:name => "Bob", :xp => 4)
           AresMUSH::Locale.stub(:translate).with("fs3xp.xp_awarded", { :name => "Bob", :xp => "3" }) { "xp awarded" }        
           client.should_receive(:emit_success).with("xp awarded")
         end
