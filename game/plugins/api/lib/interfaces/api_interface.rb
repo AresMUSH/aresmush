@@ -21,12 +21,13 @@ module AresMUSH
 
             Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{str}."
       
-            Timeout.timeout(10) do
+            Timeout.timeout(15) do
               socket = TCPSocket.new host, port
               encrypted = Api.encrypt(key, str)
+              sleep 1
               
-              socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}"
-                
+              socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}\r\n"
+   
               while (line = socket.gets)
                 if (line.start_with?("api< "))
                   Global.logger.debug "Got API response from #{host} #{port}."

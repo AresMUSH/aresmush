@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        AresMUSH.with_error_handling(nil, "API Response #{self.game_id}") do
+        AresMUSH.with_error_handling(nil, "API Response from #{self.game_id}") do
           begin
             
             if (self.game_id == ServerInfo.default_game_id.to_s)
