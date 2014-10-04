@@ -9,7 +9,10 @@ module AresMUSH
         case command
         when "register"
           cmd = ApiRegisterCmd.create_from(game_id, args)
-          ApiRegisterCmdHandlerMaster.handle(cmd)
+          MasterRegisterCmdHandler.handle(cmd)
+        when "register/update"
+          cmd = ApiRegisterUpdateCmd.create_from(game_id, args)
+          RegisterUpdateCmdHandler.handle(cmd)
         else
           return "Unrecognized command #{command}."
         end
@@ -20,13 +23,18 @@ module AresMUSH
         args = response_str.after(" ")
         
         case command
-        when "register"
-          resp = ApiRegisterResponse.new(client, args)
-          ApiRegisterResponseHandlerMaster.handle(resp)
+        when "register/update"
+          resp = ApiRegisterUpdateResponse.new(client, args)
+          RegisterUpdateResponseHandler.handle(resp)
         else
-          return "Unrecognized command #{command}."
+          return "Unrecognized response #{command}."
         end
       end
+    end
+    
+    def send_game_update
+      # TODO - if master, send update to all games
+      puts "NOT IMPLEMENTED"
     end
   end
 end

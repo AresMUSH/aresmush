@@ -1,6 +1,6 @@
 module AresMUSH
   module Api
-    class ApiRegisterResponseHandlerSlave
+    class SlaveRegisterResponseHandler
       def self.handle(response)
         Global.logger.info "API info updated."
         
