@@ -18,17 +18,18 @@ module AresMUSH
             host = destination.host
             port = destination.port
             key = destination.key
+
+            Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{str}."
       
             Timeout.timeout(10) do
               socket = TCPSocket.new host, port
               encrypted = Api.encrypt(key, str)
-              Global.logger.debug "API command to #{host} #{port}: #{str}."
               
               socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}"
                 
               while (line = socket.gets)
                 if (line.start_with?("api< "))
-                  Global.logger.debug "API response from #{host} #{port}."
+                  Global.logger.debug "Got API response from #{host} #{port}."
                   response_str = line.after(" ").chomp
                   response_event = Api.decode_response(client, key, response_str)
                   Global.dispatcher.queue_event response_event

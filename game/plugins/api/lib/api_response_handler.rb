@@ -8,16 +8,15 @@ module AresMUSH
         response = event.response
         error = event.error
         
-        Global.logger.debug "API Response: #{response} #{error}"
-        
-        response_str = response.after("api< ")
-        
+        Global.logger.debug "Handling API Response: #{response} #{error}"
+                
         if (error)
           if (client)
             client.emit_failure error
           end
           return
         end
+        response_str = response.after("api< ")
         Api.router.route_response(client, response_str)
       end
     end

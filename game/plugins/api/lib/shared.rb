@@ -46,7 +46,8 @@ module AresMUSH
     def self.generate_key
       cipher = OpenSSL::Cipher.new('AES-128-CBC')
       cipher.encrypt
-      cipher.random_key
+      key = cipher.random_key
+      Base64.strict_encode64(key).encode('ASCII-8BIT')
     end
 
     # string in format <iv> <encrypted response>

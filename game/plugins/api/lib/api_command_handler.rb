@@ -25,7 +25,16 @@ module AresMUSH
       def handle
         AresMUSH.with_error_handling(nil, "API Response #{self.game_id}") do
           begin
-            key = Api.get_destination(self.game_id).key
+            
+            if (self.game_id == ServerInfo.default_game_id.to_s)
+              key = ServerInfo.default_key
+            else              
+              game = Api.get_destination(self.game_id)
+              if (game.nil?)
+                raise "Cannot accept commands from #{self.game_id}."
+              end
+              key = game.key
+            end
             command_str = Api.decrypt(key, self.cipher_iv, self.encrypted_data)
             response = Api.router.route_command(self.game_id, command_str)
             Api.send_response client, key, "api< #{response}"
