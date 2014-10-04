@@ -30,11 +30,11 @@ module AresMUSH
           return "Unrecognized response #{command}."
         end
       end
-    end
-    
-    def send_game_update
-      # TODO - if master, send update to all games
-      puts "NOT IMPLEMENTED"
+
+      def send_game_update(server_config)
+        # TODO - if master, send update to all games
+        puts "NOT IMPLEMENTED"
+      end
     end
   end
 end

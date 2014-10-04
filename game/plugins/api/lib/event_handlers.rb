@@ -13,7 +13,7 @@ module AresMUSH
         # TODO - uncomment so this doesn't happen every time.
         #if (last_server_info != server_info)
 
-        Api.router.send_game_update
+        Api.router.send_game_update(server_config)
        # end
       end
     end
