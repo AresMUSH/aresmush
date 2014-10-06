@@ -7,7 +7,7 @@ module AresMUSH
     
       def on_config_updated_event(event)
         
-        server = Global.config['server']
+        server_config = Global.config['server']
         
         
         # TODO - uncomment so this doesn't happen every time.

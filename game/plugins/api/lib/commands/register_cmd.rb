@@ -21,6 +21,17 @@ module AresMUSH
         host, port, name, category, desc = args
         ApiRegisterCmd.new(game_id, host, port, name, category, desc)
       end
+      
+      def validate
+        @port = Integer(@port) rescue nil
+        @game_id = Integer(@game_id) rescue nil
+        return "Invalid host." if @host.nil?
+        return "Invalid port." if @port.nil?
+        return "Invalid name." if @name.nil?
+        return "Invalid category." if !ServerInfo.categories.include?(@category)
+        return "Invalid description." if @desc.nil?
+        return nil
+      end
     end
   end
 end

@@ -6,7 +6,9 @@ module AresMUSH
       def initialize(client, response_str)
         @client = client
         args = response_str.split("||")
-        @game_id = Integer(args[0]) 
+        raise "Registration error: #{response_str}" if args.count != 2
+        
+        @game_id = Integer(args[0])
         @key = args[1]
       end
     end

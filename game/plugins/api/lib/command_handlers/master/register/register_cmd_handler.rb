@@ -1,7 +1,7 @@
 module AresMUSH
   module Api
     class MasterRegisterCmdHandler
-      def self.handle(cmd)      
+      def self.handle(cmd)              
         if (cmd.game_id != ServerInfo.default_game_id)
           return "register Game has already been registered."
         end
@@ -19,7 +19,7 @@ module AresMUSH
           key: key,
           game_id: game_id)
         
-        "register #{game.game_id}||#{game.key}"
+        "register #{game_id}||#{key}"
       end
     end
   end

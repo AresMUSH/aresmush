@@ -1,34 +1,34 @@
 module AresMUSH
   module Api
-    class ApiSlaveRouter
-      def route_command(game_id, command_str)
-        command = command_str.before(" ")
-        args = command_str.after(" ")
-      
-        Global.logger.debug "API Command: #{game_id} #{command_str}"
+    class ApiSlaveRouter < ApiRouter
+      def crack_command(game_id, command, args)
+        
         case command
         when "register/update"
           cmd = ApiRegisterUpdateCmd.create_from(game_id, args)
-          RegisterUpdateCmdHandler.handle(cmd)
+          handler = RegisterUpdateCmdHandler
         else
-          return "Unrecognized command #{command}."
+          cmd = nil
+          handler = nil
         end
+
+        [cmd, handler]
       end
       
-      def route_response(client, response_str)
-        command = response_str.before(" ")
-        args = response_str.after(" ")
-        
+      def crack_response(client, command, args)        
         case command
         when "register"
-          resp = ApiRegisterResponse.new(client, args)
-          SlaveRegisterResponseHandler.handle(resp)
+          response = ApiRegisterResponse.new(client, args)
+          handler = SlaveRegisterResponseHandler
         when "register/update"
-          resp = ApiRegisterUpdateResponse.new(client, args)
-          RegisterUpdateResponseHandler.handle(resp)
+          response = ApiRegisterUpdateResponse.new(client, args)
+          handler = RegisterUpdateResponseHandler
         else
-          return "Unrecognized response #{command}."
+          response = nil
+          handler = nil
         end
+        
+        [response, handler]
       end
       
       def send_game_update(server_config)

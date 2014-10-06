@@ -9,7 +9,7 @@ module AresMUSH
         game.save
 
         central = Api.get_destination(ServerInfo.arescentral_game_id)
-        if (game.nil?)
+        if (central.nil?)
           raise "Can't find AresCentral server info."
         end
         central.key = response.key

@@ -15,6 +15,10 @@ module AresMUSH
       0
     end
     
+    def self.categories
+      ["Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"]
+    end
+    
     field :game_id, :type => Integer, :default => default_game_id
     field :name, :type => String
     field :description, :type => String

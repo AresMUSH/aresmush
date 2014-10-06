@@ -10,7 +10,7 @@ module AresMUSH
         
         Global.logger.debug "Handling API Response: #{response} #{error}"
 
-        AresMUSH.with_error_handling(nil, "Handling API Response #{response}") do
+        AresMUSH.with_error_handling(client, "Error from remote server: #{response}") do
           if (error)
             if (client)
               client.emit_failure error
