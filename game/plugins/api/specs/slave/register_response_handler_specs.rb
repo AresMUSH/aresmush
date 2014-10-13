@@ -11,13 +11,13 @@ module AresMUSH
       end
       
       it "should fail if game id is invalid" do
-        cmd_str = "register x||y"
-        expect { @router.route_response(@client, cmd_str) }.to raise_error(ArgumentError)
+        response = ApiResponse.new("register", ApiResponse.ok_status, "x||y")
+        expect { @router.route_response(@client, response) }.to raise_error(ArgumentError)
       end
       
       it "should fail if there's an error string" do
-        cmd_str = "register something wrong"
-        expect { @router.route_response(@client, cmd_str) }.to raise_error("Registration error: something wrong")
+        response = ApiResponse.new("register", ApiResponse.error_status, "something wrong")
+        expect { @router.route_response(@client, response) }.to raise_error("Registration error: something wrong")
       end
       
       context "success" do
@@ -32,23 +32,23 @@ module AresMUSH
         end
         
         it "should update and save the game info" do
-          cmd_str = "register 2||x"
+          response = ApiResponse.new("register", ApiResponse.ok_status, "2||x")
           @game.should_receive(:api_game_id=).with(2)
           @game.should_receive(:save)
-          @router.route_response(@client, cmd_str)
+          @router.route_response(@client, response)
         end
       
         it "should update and save the Ares Central key" do
-          cmd_str = "register 2||x"
+          response = ApiResponse.new("register", ApiResponse.ok_status, "2||x")
           @central.should_receive(:key=).with("x")
           @central.should_receive(:save)
-          @router.route_response(@client, cmd_str)
+          @router.route_response(@client, response)
         end
       
         it "should fail if Ares Central not found" do
-          cmd_str = "register 2||x"
+          response = ApiResponse.new("register", ApiResponse.ok_status, "2||x")
           Api.stub(:get_destination).with(0) { nil }
-          expect { @router.route_response(@client, cmd_str) }.to raise_error("Can't find AresCentral server info.")
+          expect { @router.route_response(@client, response) }.to raise_error("Can't find AresCentral server info.")
         end
       end
     end

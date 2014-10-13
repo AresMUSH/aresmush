@@ -7,24 +7,33 @@ module AresMUSH
         @router = ApiMasterRouter.new
       end
       
+      def check_response(response, expected_status, expected_args)
+        response.status.should eq expected_status
+        response.args.should eq expected_args
+        response.command_name.should eq "register"
+      end
+      
       it "should fail if game already registered" do
         cmd_str = "register somewhere.com||101||A MUSH||Social||A cool MUSH"
-        @router.route_command(1, cmd_str).should eq "register Game has already been registered."
+        response = @router.route_command(1, cmd_str)
+        check_response(response, ApiResponse.error_status, "Game has already been registered.")
       end
       
       it "should fail if the port is not a number" do
         cmd_str = "register somewhere.com||x||A MUSH||Social||A cool MUSH"
-        @router.route_command(-1, cmd_str).should eq "register Invalid port."
+        response = @router.route_command(-1, cmd_str)
+        check_response(response, ApiResponse.error_status, "Invalid port.")
       end
       
       it "should fail if the category is not valid" do
         cmd_str = "register somewhere.com||101||A MUSH||x||A cool MUSH"
-        @router.route_command(-1, cmd_str).should eq "register Invalid category."
+        response = @router.route_command(-1, cmd_str)
+        check_response(response, ApiResponse.error_status, "Invalid category.")
       end
       
       it "should create the game" do
         cmd_str = "register somewhere.com||101||A MUSH||Social||A cool MUSH"
-        key = Api.stub(:generate_key) { "ABC" }
+        key = ApiCrypt.stub(:generate_key) { "ABC" }
         next_id = ServerInfo.stub(:next_id) { 3 }
         ServerInfo.should_receive(:create).with( 
           { :name => "A MUSH",
@@ -34,7 +43,8 @@ module AresMUSH
             :description => "A cool MUSH",
             :key => "ABC",
             :game_id => 3 })
-        @router.route_command(-1, cmd_str).should eq "register 3||ABC"
+        response = @router.route_command(-1, cmd_str)
+        check_response(response, ApiResponse.ok_status, "3||ABC")
       end
     end
   end

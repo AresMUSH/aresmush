@@ -10,35 +10,31 @@ module AresMUSH
         cmd, handler = crack_command(game_id, command, args)
         
         if (cmd.nil? || handler.nil?)
-          return "#{command} Unrecognized command." 
+          return ApiResponse.create_error_response(cmd, "Unrecognized command.")
         end
         
         error = cmd.validate
         if (error)
-          return "#{command} #{error}"
+          return ApiResponse.create_error_response(cmd, error)
         end
         
         handler.handle(cmd)
+      end
+      
+      def route_response(client, response)
+        handler = build_response_handler(client, response)
+        if (handler.nil?)
+          raise "Unrecognized command."
+        end
+        
+        handler.handle
       end
       
       def crack_command(game_id, command, args)
         raise NotImplementedError
       end
-      
-      def route_response(client, response_str)
-        command = response_str.before(" ")
-        args = response_str.after(" ")
-        
-        cmd, handler = crack_response(client, command, args)
-        
-        if (cmd.nil? || handler.nil?)
-          raise "Unrecognized command."
-        end
-        
-        handler.handle(cmd)
-      end
-      
-      def crack_response(game_id, command, args)
+            
+      def build_response_handler(game_id, command, args)
         raise NotImplementedError
       end
       

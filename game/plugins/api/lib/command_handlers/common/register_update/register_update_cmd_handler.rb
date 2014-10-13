@@ -3,12 +3,12 @@ module AresMUSH
     class RegisterUpdateCmdHandler
       def self.handle(cmd)      
         if (cmd.game_id == ServerInfo.default_game_id)
-          return "register/update Game has not been registered."
+          return ApiResponse.create_error_response(cmd, "Game has not been registered.")
         end
         
-        game = Api.find_destination(cmd.game_id)
+        game = Api.get_destination(cmd.game_id)
         if (game.nil?)
-          return "register/update Cannot find server info."
+          return ApiResponse.create_error_response(cmd, "Cannot find server info.")
         end
         
         Global.logger.info "Updating existing game #{game.game_id} #{cmd.name}."
@@ -20,7 +20,7 @@ module AresMUSH
         game.port = cmd.port
         game.save!
         
-        "register/update OK"
+        ApiResponse.create_ok_response(cmd)
       end
     end
   end

@@ -16,17 +16,15 @@ module AresMUSH
         [cmd, handler]
       end
       
-      def crack_response(client, command, args)        
-        case command
+      def build_response_handler(client, response)  
+        case response.command_name
         when "register/update"
-          response = ApiRegisterUpdateResponse.new(client, args)
-          handler = RegisterUpdateResponseHandler
+          handler = RegisterUpdateResponseHandler.new(client, response)
         else
-          response = nil
           handler = nil
         end
         
-        [response, handler]
+        handler
       end
 
       def send_game_update(server_config)

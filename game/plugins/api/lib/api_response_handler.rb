@@ -4,22 +4,7 @@ module AresMUSH
       include Plugin
       
       def on_api_response_event(event)
-        client = event.client
-        response = event.response
-        error = event.error
-        
-        Global.logger.debug "Handling API Response: #{response} #{error}"
-
-        AresMUSH.with_error_handling(client, "Error from remote server: #{response}") do
-          if (error)
-            if (client)
-              client.emit_failure error
-            end
-            return
-          end
-          response_str = response.after("api< ")
-          Api.router.route_response(client, response_str)
-        end
+        Api.router.route_response(event.client, event.response)
       end
     end
   end

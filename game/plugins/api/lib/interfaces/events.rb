@@ -1,11 +1,10 @@
 module AresMUSH
   class ApiResponseEvent
-    attr_accessor :client, :response, :error
+    attr_accessor :response, :client
 
-    def initialize(client, response, error)
+    def initialize(client, response)
       @client = client
       @response = response
-      @error = error
     end
   end
 end
