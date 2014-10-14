@@ -9,11 +9,16 @@ module AresMUSH
     rescue Exception => e
       begin
         id = client.nil? ? nil : client.id
+        message = t('dispatcher.unexpected_error', :desc => desc, :error_info => e)
         Global.logger.error("Error in #{desc}: client=#{id} error=#{e} backtrace=#{e.backtrace[0,10]}")
-          if (!client.nil?)
-            client.emit_failure t('dispatcher.unexpected_error', :desc => desc, :error_info => e)
-          end
+        if (!client.nil?)
+          client.emit_failure message
+        end
+        if (Global.dispatcher)
+          Global.dispatcher.queue_event UnhandledErrorEvent.new(message)
+        end
       rescue Exception => e2
+        puts e2
         Global.logger.error("Error inside of error handling: error=#{e2} backtrace=#{e2.backtrace[0,10]}")
       end
       return false

@@ -29,3 +29,6 @@ en:
         cannot_handle_jobs: "That person cannot be assigned jobs."
         job_assigned: "%{assigner} has assigned job #%{number} \"%{title}\" to %{assignee}."
         job_deleted: "%{name} has deleted job \"%{title}\"."
+        
+        unhandled_error_title:  "System Error"
+        unhandled_error_message: "There was an unexpected system error.  Check the log files for details.%R%R%{message}"

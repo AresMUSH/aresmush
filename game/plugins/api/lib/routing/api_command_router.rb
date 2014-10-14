@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        AresMUSH.with_error_handling(client, "API handling command from #{self.game_id}: #{command_str}") do
+        AresMUSH.with_error_handling(client, "API handling command from #{self.game_id}") do
           if (self.game_id == ServerInfo.default_game_id.to_s)
             key = ServerInfo.default_key
           else              
@@ -35,6 +35,7 @@ module AresMUSH
           end
           command_str = ApiCrypt.decrypt(key, self.cipher_iv, self.encrypted_data)
           cmd = ApiCommand.create_from(command_str)
+          Global.logger.info "API command from #{game_id}: #{cmd}"
           response = Api.router.route_command(self.game_id, cmd)
           Api.send_response client, key, "api< #{response}"
         end

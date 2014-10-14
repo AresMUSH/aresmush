@@ -56,6 +56,8 @@ module AresMUSH
             response = cmd.create_error_response.new("Error communicating with remote server.  Please try again later.")
             Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
           end
+        rescue Exception => e
+          Global.logger.error "Error communicating with remote server: #{e}"
         end
       end
     end

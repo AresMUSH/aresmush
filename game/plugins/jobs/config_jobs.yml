@@ -30,3 +30,6 @@ jobs:
     
     # Status for closed jobs.
     closed_status: "DONE"
+    
+    # Category to use for unexpected system errors.
+    error_category: "CODE"

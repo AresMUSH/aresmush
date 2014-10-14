@@ -12,7 +12,8 @@ module AresMUSH
     end
     
     def self.is_master?
-      Game.master.api_game_id == ServerInfo.arescentral_game_id
+      game = Game.master
+      game.nil? ? false : Game.master.api_game_id == ServerInfo.arescentral_game_id
     end
     
     def self.get_destination(dest_id)
