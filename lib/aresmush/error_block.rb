@@ -18,7 +18,6 @@ module AresMUSH
           Global.dispatcher.queue_event UnhandledErrorEvent.new(message)
         end
       rescue Exception => e2
-        puts e2
         Global.logger.error("Error inside of error handling: error=#{e2} backtrace=#{e2.backtrace[0,10]}")
       end
       return false

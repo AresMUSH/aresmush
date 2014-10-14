@@ -14,8 +14,10 @@ module AresMUSH
           else
             Global.dispatcher.queue_event UnhandledErrorEvent.new(message)
           end
+          return
+        else
+          Api.router.route_response(client, response)
         end
-        Api.router.route_response(client, response)
       end
     end
   end

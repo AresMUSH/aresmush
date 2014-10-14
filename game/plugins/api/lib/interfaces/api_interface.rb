@@ -3,7 +3,7 @@ module AresMUSH
     def self.send_response(client, key, response)
       Global.logger.debug "Sending API response to #{client.id} #{response}."
 
-      encrypted = ApiCrypt.encrypt(key, response.response_string)
+      encrypted = ApiCrypt.encrypt(key, response.to_s)
       # Use emit raw to avoid tacking extra Ansi codes on.
       client.emit_raw "api< #{encrypted[:iv]} #{encrypted[:data]}\n"
     end    

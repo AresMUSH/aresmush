@@ -4,7 +4,7 @@ module AresMUSH
       attr_accessor :game_id, :cmd
       
       def initialize(game_id, cmd)
-        @game_id = game_id
+        @game_id = Integer(game_id)
         @cmd = cmd
         crack!
       end

@@ -23,7 +23,7 @@ module AresMUSH
         central.key = args.api_key
         central.save
         
-        Global.logger.info "API info updated."
+        Global.logger.info "Game registered with AresCentral."
       end
     end
   end

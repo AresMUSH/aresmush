@@ -38,7 +38,7 @@ module AresMUSH
         iv = str.before(" ")
         encrypted = str.after(" ")
         data = ApiCrypt.decrypt(key, iv, encrypted)
-        ApiResponse.create_from_response(data)
+        ApiResponse.create_from(data)
       end
     end
   end
