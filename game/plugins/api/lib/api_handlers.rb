@@ -1,12 +1,11 @@
 module AresMUSH
   module Api
     class ApiCommandHandler
-      attr_accessor :game_id, :command_name, :args
+      attr_accessor :game_id, :cmd
       
-      def initialize(game_id, command_name, args)
+      def initialize(game_id, cmd)
         @game_id = game_id
-        @command_name = command_name
-        @args = args
+        @cmd = cmd
         crack!
       end
       
@@ -20,11 +19,10 @@ module AresMUSH
     end
     
     class ApiResponseHandler
-      attr_accessor :client, :command_name, :response
+      attr_accessor :client, :response
       
-      def initialize(client, command_name, response)
+      def initialize(client, response)
         @client = client
-        @command_name = command_name
         @response = response
         crack!
       end

@@ -1,11 +1,11 @@
 module AresMUSH
   module Api
     class ApiSlaveRouter < ApiRouter
-      def build_command_handler(game_id, command_name, args)
+      def build_command_handler(game_id, cmd)
         
-        case command_name
+        case cmd.command_name
         when "register/update"
-          handler = RegisterUpdateCmdHandler.new(game_id, command_name, args)
+          handler = RegisterUpdateCmdHandler.new(game_id, cmd)
         else
           handler = nil
         end
@@ -25,24 +25,19 @@ module AresMUSH
       end
       
       def send_game_update(server_config)
+        args = ApiRegisterCmdArgs.new(
+          server_config['hostname'], 
+          server_config['port'], 
+          server_config['name'], 
+          server_config['category'],
+          server_config['description'])
+
         if (Game.master.api_game_id == ServerInfo.default_game_id)
-          args = ApiRegisterCmdArgs.new(
-          Game.master.api_game_id,
-          server_config['hostname'], 
-          server_config['port'], 
-          server_config['name'], 
-          server_config['category'],
-          server_config['description'])
+          cmd = ApiCommand.new("register", args.to_s)
         else
-          cmd = ApiRegisterCmdArgs.new(
-          Game.master.api_game_id,
-          server_config['hostname'], 
-          server_config['port'], 
-          server_config['name'], 
-          server_config['category'],
-          server_config['description'])
+          cmd = ApiCommand.new("register/update", args.to_s)
         end
-        Api.send_command(ServerInfo.arescentral_game_id, nil, cmd.build_command_str)
+        Api.send_command(ServerInfo.arescentral_game_id, nil, cmd)
       end
     end
   end

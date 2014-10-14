@@ -1,12 +1,12 @@
 module AresMUSH
   module Api
     class ApiMasterRouter < ApiRouter
-      def build_command_handler(game_id, command_name, args)
-        case command_name
+      def build_command_handler(game_id, cmd)
+        case cmd.command_name
         when "register"
-          handler = MasterRegisterCmdHandler.new(game_id, command_name, args)
+          handler = MasterRegisterCmdHandler.new(game_id, cmd)
         when "register/update"
-          handler = RegisterUpdateCmdHandler.new(game_id, command_name, args)
+          handler = RegisterUpdateCmdHandler.new(game_id, cmd)
         else
           handler = nil
         end

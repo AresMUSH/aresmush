@@ -2,14 +2,14 @@ module AresMUSH
   module Api
     class ApiRouter
       def route_command(game_id, cmd)
-        handler = build_command_handler(game_id, command_name, args)
+        handler = build_command_handler(game_id, cmd)
         if handler.nil?
-          return ApiResponse.create_error_response(command_name, "Unrecognized command.")
+          return cmd.create_error_response("Unrecognized command.")
         end
         
         error = handler.validate
         if (error)
-          return ApiResponse.create_error_response(command_name, error)
+          return cmd.create_error_response(error)
         end
         
         handler.handle
@@ -29,7 +29,7 @@ module AresMUSH
         handler.handle
       end
       
-      def build_command_handler(game_id, command_name, args)
+      def build_command_handler(game_id, cmd)
         raise NotImplementedError
       end
             

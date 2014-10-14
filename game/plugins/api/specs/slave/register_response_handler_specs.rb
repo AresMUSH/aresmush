@@ -12,12 +12,7 @@ module AresMUSH
       
       it "should fail if game id is invalid" do
         response = ApiResponse.new("register", ApiResponse.ok_status, "x||y")
-        expect { @router.route_response(@client, response) }.to raise_error(ArgumentError)
-      end
-      
-      it "should fail if there's an error string" do
-        response = ApiResponse.new("register", ApiResponse.error_status, "something wrong")
-        expect { @router.route_response(@client, response) }.to raise_error("Registration error: something wrong")
+        expect { @router.route_response(@client, response) }.to raise_error("Invalid game ID.")
       end
       
       context "success" do

@@ -1,6 +1,5 @@
 module AresMUSH
   module Api
-    
     def self.send_response(client, key, response)
       Global.logger.debug "Sending API response to #{client.id} #{response}."
 
@@ -54,7 +53,7 @@ module AresMUSH
         end # with error handling
         begin
           if (!success)
-            response = ApiResponse.create_error_response.new(cmd, "Error communicating with remote server.  Please try again later.")
+            response = cmd.create_error_response.new("Error communicating with remote server.  Please try again later.")
             Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
           end
         end
