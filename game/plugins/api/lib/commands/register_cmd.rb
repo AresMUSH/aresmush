@@ -1,10 +1,9 @@
 module AresMUSH
   module Api
-    class ApiRegistrationCmd
-      attr_accessor :game_id, :host, :port, :name, :category, :desc
+    class ApiRegisterCmdArgs
+      attr_accessor :host, :port, :name, :category, :desc, :command_name
       
-      def initialize(game_id, host, port, name, category, desc)
-        @game_id = game_id
+      def initialize(host, port, name, category, desc)
         @host = host
         @port = port
         @name = name
@@ -12,27 +11,12 @@ module AresMUSH
         @desc = desc
       end
       
-      def command_name
-        raise NotImplementedError
-      end
-      
-      def command_string
-        "#{command_name} #{@host}||#{@port}||#{@name}||#{@category}||#{@desc}"
-      end
-      
-      def build_response(game_id, api_key)
-        ApiResponse.create_command_response(self, ApiResponse.ok_status, "#{game_id}||#{api_key}")
-      end
-      
-      def self.create_from(game_id, command_str)
-        args = command_str.split("||")
-        host, port, name, category, desc = args
-        ApiRegisterCmd.new(game_id, host, port, name, category, desc)
+      def cmd_args_str
+        "#{@host}||#{@port}||#{@name}||#{@category}||#{@desc}"
       end
       
       def validate
         @port = Integer(@port) rescue nil
-        @game_id = Integer(@game_id) rescue nil
         return "Invalid host." if @host.nil?
         return "Invalid port." if @port.nil?
         return "Invalid name." if @name.nil?
@@ -40,17 +24,36 @@ module AresMUSH
         return "Invalid description." if @desc.nil?
         return nil
       end
-    end
       
-    class ApiRegisterCmd < ApiRegistrationCmd
-      def command_name
-        "register"
+      def self.create_from(command_args)
+        args = command_args.split("||")
+        host, port, name, category, desc = args
+        ApiRegisterCmdArgs.new(host, port, name, category, desc)
       end
     end
     
-    class ApiRegisterUpdateCmd < ApiRegistrationCmd
-      def command_name
-        "register/update"
+    class ApiRegisterResponseArgs
+      attr_accessor :game_id, :key
+      
+      def initialize(game_id, key)
+        @game_id = game_id
+        @key = key
+      end
+      
+      def response_args_str
+        "#{@game_id}||#{@key}"
+      end
+
+      def validate
+        @game_id = Integer(@game_id) rescue nil
+        return "Invalid game ID." if @game_id.nil?
+        return "Invalid key." if @key.nil?
+      end
+      
+      def self.create_from(response_args)
+        args = command_args.split("||")
+        game_id, key = args
+        ApiRegisterResponseArgs.new(game_id, key)
       end
     end
   end

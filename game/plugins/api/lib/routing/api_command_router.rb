@@ -1,6 +1,6 @@
 module AresMUSH
   module Api
-    class ApiCommandHandler
+    class ApiCommandRouter
       include Plugin
            
       attr_accessor :game_id, :cipher_iv, :encrypted_data
@@ -34,7 +34,8 @@ module AresMUSH
             key = game.key
           end
           command_str = ApiCrypt.decrypt(key, self.cipher_iv, self.encrypted_data)
-          response = Api.router.route_command(self.game_id, command_str)
+          cmd = ApiCommand.create_from(command_str)
+          response = Api.router.route_command(self.game_id, cmd)
           Api.send_response client, key, "api< #{response}"
         end
       end

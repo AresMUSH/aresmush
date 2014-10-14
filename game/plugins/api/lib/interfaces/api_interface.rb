@@ -25,7 +25,7 @@ module AresMUSH
       
             Timeout.timeout(15) do
               socket = TCPSocket.new host, port
-              encrypted = ApiCrypt.encrypt(key, cmd.command_string)
+              encrypted = ApiCrypt.encrypt(key, cmd.to_s)
               sleep 1
               
               socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}\r\n"

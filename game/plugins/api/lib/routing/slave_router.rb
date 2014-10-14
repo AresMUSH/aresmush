@@ -1,18 +1,15 @@
 module AresMUSH
   module Api
     class ApiSlaveRouter < ApiRouter
-      def crack_command(game_id, command, args)
+      def build_command_handler(game_id, command_name, args)
         
-        case command
+        case command_name
         when "register/update"
-          cmd = ApiRegisterUpdateCmd.create_from(game_id, args)
-          handler = RegisterUpdateCmdHandler
+          handler = RegisterUpdateCmdHandler.new(game_id, command_name, args)
         else
-          cmd = nil
           handler = nil
         end
-
-        [cmd, handler]
+        handler
       end
       
       def build_response_handler(client, response)
@@ -24,13 +21,12 @@ module AresMUSH
         else
           handler = nil
         end
-        
         handler
       end
       
       def send_game_update(server_config)
         if (Game.master.api_game_id == ServerInfo.default_game_id)
-          cmd = ApiRegisterCmd.new(
+          args = ApiRegisterCmdArgs.new(
           Game.master.api_game_id,
           server_config['hostname'], 
           server_config['port'], 
@@ -38,7 +34,7 @@ module AresMUSH
           server_config['category'],
           server_config['description'])
         else
-          cmd = ApiRegisterUpdateCmd.new(
+          cmd = ApiRegisterCmdArgs.new(
           Game.master.api_game_id,
           server_config['hostname'], 
           server_config['port'], 

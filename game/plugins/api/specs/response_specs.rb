@@ -44,15 +44,15 @@ module AresMUSH
         end
       end
     
-      describe :response_string do
+      describe :to_s do
         it "should build the response string" do
           response = ApiResponse.create_from_response("test OK arg1 arg2")
-          response.response_string.should eq "test OK arg1 arg2"
+          response.to_s.should eq "test OK arg1 arg2"
         end
       
         it "should build the response string if no args" do
           response = ApiResponse.create_from_response("test OK arg1")
-          response.response_string.should eq "test OK arg1"
+          response.to_s.should eq "test OK arg1"
         end
       end
     end

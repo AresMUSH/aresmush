@@ -9,7 +9,7 @@ module AresMUSH
         @args = args
       end
     
-      def response_string
+      def to_s
         "#{command_name} #{status} #{args}" 
       end
     
@@ -25,7 +25,7 @@ module AresMUSH
         "OK"
       end
     
-      def self.create_from_response(response_str)
+      def self.create_from(response_str)
         cracked = /(?<command>\S+) (?<status>\S+)\s?(?<args>.*)/.match(response_str)
         raise "Invalid response format: #{response_str}." if cracked.nil?
       
