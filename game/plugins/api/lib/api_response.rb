@@ -14,7 +14,7 @@ module AresMUSH
       end
     
       def is_success?
-        @status == self.ok_status
+        status == ApiResponse.ok_status
       end
     
       def self.error_status

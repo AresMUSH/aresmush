@@ -22,7 +22,7 @@ module AresMUSH
 
             Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{cmd}."
       
-            Timeout.timeout(15) do
+            Timeout.timeout(10) do
               socket = TCPSocket.new host, port
               encrypted = ApiCrypt.encrypt(key, cmd.to_s)
               sleep 1
@@ -53,11 +53,11 @@ module AresMUSH
         end # with error handling
         begin
           if (!success)
-            response = cmd.create_error_response.new("Error communicating with remote server.  Please try again later.")
+            response = cmd.create_error_response("Error communicating with remote server.  Please try again later.")
             Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
           end
         rescue Exception => e
-          Global.logger.error "Error communicating with remote server: #{e}"
+          Global.logger.error "Error raising api error event: #{e} #{e.backtrace[0,10]}"
         end
       end
     end
