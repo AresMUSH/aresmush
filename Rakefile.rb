@@ -99,7 +99,7 @@ task :install do
   headwiz.name = "Headwiz"
   headwiz.roles << "admin"
   headwiz.save!
-  game.master_admin_id = headwiz
+  game.master_admin = headwiz
 
   builder = AresMUSH::Character.create
   builder.change_password("buildme")
@@ -112,7 +112,7 @@ task :install do
   systemchar.name = "System"
   systemchar.roles << "admin"
   systemchar.save!
-  game.system_character_id = systemchar
+  game.system_character = systemchar
 
   4.times do |n|
     guest = AresMUSH::Character.create

@@ -2,15 +2,6 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Api
-    class TestFooApiResponse < ApiResponse
-      attr_accessor :foo, :bar
-      def initialize(command_name, foo, bar)
-        @foo = foo
-        @bar = bar
-        super(command_name, ApiResponse.ok_status, "#{foo} #{bar}")
-      end
-    end
-    
     describe ApiResponse do
       describe :create_from do
         

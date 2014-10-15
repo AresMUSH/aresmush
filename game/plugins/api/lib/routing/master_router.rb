@@ -4,23 +4,25 @@ module AresMUSH
       def build_command_handler(game_id, cmd)
         case cmd.command_name
         when "register"
-          handler = MasterRegisterCmdHandler.new(game_id, cmd)
+          handler = MasterRegisterCmdHandler
         when "register/update"
-          handler = RegisterUpdateCmdHandler.new(game_id, cmd)
+          handler = RegisterUpdateCmdHandler
         else
           handler = nil
         end
-        handler
+        handler.nil? ? nil : handler.new(game_id, cmd)
       end
       
       def build_response_handler(client, response)  
         case response.command_name
         when "register/update"
-          handler = RegisterUpdateResponseHandler.new(client, response)
+          handler = RegisterUpdateResponseHandler
+        when "ping"
+          handler = PingResponseHandler
         else
           handler = nil
         end
-        handler
+        handler.nil? ? nil : handler.new(client, response)
       end
 
       def send_game_update(server_config)

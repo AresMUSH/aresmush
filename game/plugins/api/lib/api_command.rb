@@ -9,11 +9,15 @@ module AresMUSH
       end
       
       def to_s
-        "#{command_name} #{args_str}"
+        if (args_str.nil? || args_str.empty?)
+          "#{command_name}"
+        else
+          "#{command_name} #{args_str}"
+        end
       end
       
       def self.create_from(cmd_str)
-        cracked = /(?<command>\S+) (?<args>.*)/.match(cmd_str)
+        cracked = /(?<command>\S+)\s?(?<args>.*)?/.match(cmd_str)
         raise "Invalid command format: #{cmd_str}." if cracked.nil?
       
         self.new(cracked[:command], cracked[:args])
