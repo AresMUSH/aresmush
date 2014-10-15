@@ -1,0 +1,7 @@
+api:
+    # Set up when you want the API ping to occur.
+    cron:
+        #date: 1
+        #day_of_week: Sat
+        #hour: 21
+        minute: 00

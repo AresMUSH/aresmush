@@ -1,6 +1,6 @@
 module AresMUSH
   module Api
-    class ApiPingResponseArgs
+    class ApiPingCmdArgs
       # List of name:handle
       attr_accessor :chars
       
@@ -12,9 +12,9 @@ module AresMUSH
         chars.join("||")
       end
      
-      def self.create_from(response_args)
-        chars = response_args.split("||")
-        ApiPingResponseArgs.new(gchars)
+      def self.create_from(command_args)
+        chars = command_args.split("||")
+        ApiPingCmdArgs.new(chars)
       end
     end
   end

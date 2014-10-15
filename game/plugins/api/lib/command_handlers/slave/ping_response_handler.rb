@@ -2,7 +2,7 @@ module AresMUSH
   module Api
     class PingResponseHandler < ApiResponseHandler
       def handle   
-        Global.logger.info "Game registration successfully updated."
+        Global.logger.debug "Ping successful."
       end
     end
   end
