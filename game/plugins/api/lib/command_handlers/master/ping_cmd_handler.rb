@@ -3,7 +3,14 @@ module AresMUSH
     class PingCmdHandler < ApiCommandHandler
       
       def handle
-        # TODO
+        game = Api.get_destination(game_id)
+        if (game.nil?)
+          return cmd.create_error_response("Cannot find server info.")
+        end
+        
+        game.last_ping = Time.now
+        game.save!
+        
         cmd.create_ok_response
       end
     end

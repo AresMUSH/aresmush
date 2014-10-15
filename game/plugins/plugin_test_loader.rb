@@ -160,5 +160,15 @@ module AresMUSH
         handler.methods.should include :check_1_for_login
       end
     end
-  end  
+  end 
+  
+  module ApiHandlerTestHelper
+    # let(:expected_cmd) { "cmd name" }
+    
+    def check_response(response, expected_status, expected_args)
+      response.status.should eq expected_status
+      response.args_str.should eq expected_args
+      response.command_name.should eq expected_cmd
+    end
+  end 
 end

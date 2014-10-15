@@ -8,7 +8,7 @@ module AresMUSH
       def on_config_updated_event(event)
         server_config = Global.config['server']
         
-        if (last_server_info != server_info)
+        if (last_server_info != server_config)
           Api.router.send_game_update(server_config)
         end
       end

@@ -1,16 +1,14 @@
-require_relative "../../plugin_test_loader"
+require_relative "../../../../plugin_test_loader"
 
 module AresMUSH
   module Api
     describe RegisterUpdateCmdHandler do
+      include ApiHandlerTestHelper
+      
+      let(:expected_cmd) { "register/update" }
+       
       before do
         @router = ApiMasterRouter.new
-      end
-      
-      def check_response(response, expected_status, expected_args)
-        response.status.should eq expected_status
-        response.args_str.should eq expected_args
-        response.command_name.should eq "register/update"
       end
       
       it "should fail if game not registered" do

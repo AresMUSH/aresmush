@@ -7,6 +7,8 @@ module AresMUSH
           handler = MasterRegisterCmdHandler
         when "register/update"
           handler = RegisterUpdateCmdHandler
+        when "ping"
+          handler = PingCmdHandler
         else
           handler = nil
         end
@@ -17,8 +19,6 @@ module AresMUSH
         case response.command_name
         when "register/update"
           handler = RegisterUpdateResponseHandler
-        when "ping"
-          handler = PingResponseHandler
         else
           handler = nil
         end

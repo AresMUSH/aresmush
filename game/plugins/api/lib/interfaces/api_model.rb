@@ -26,6 +26,7 @@ module AresMUSH
     field :port, :type => Integer
     field :category, :type => String
     field :key, :type => String, :default => default_key
+    field :last_ping, :type => Time
     
     def self.next_id
       ServerInfo.all.map { |s| s.game_id }.max + 1
