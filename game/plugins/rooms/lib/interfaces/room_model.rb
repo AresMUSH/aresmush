@@ -1,36 +1,10 @@
 module AresMUSH
   
   class Game
-    field :welcome_room_id, :type => Moped::BSON::ObjectId
-    field :ic_start_room_id, :type => Moped::BSON::ObjectId
-    field :ooc_room_id, :type => Moped::BSON::ObjectId
+    belongs_to :welcome_room, :class_name => "AresMUSH::Room", :inverse_of => nil
+    belongs_to :ic_start_room, :class_name => "AresMUSH::Room", :inverse_of => nil
+    belongs_to :ooc_room, :class_name => "AresMUSH::Room", :inverse_of => nil
         
-    before_create :create_starting_rooms
-    
-    def welcome_room
-      Room.find(self.welcome_room_id)
-    end
-    
-    def ic_start_room
-      Room.find(self.ic_start_room_id)
-    end
-    
-    def ooc_room
-      Room.find(self.ooc_room_id)
-    end
-    
-    def create_starting_rooms  
-      Global.logger.debug "Creating start rooms."
-      
-      welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC")
-      ic_start_room = AresMUSH::Room.create(:name => "IC Start", :room_type => "IC")
-      ooc_room = AresMUSH::Room.create(:name => "OOC Center", :room_type => "OOC")
-      
-      self.welcome_room_id = welcome_room.id
-      self.ic_start_room_id = ic_start_room.id
-      self.ooc_room_id = ooc_room.id
-    end
-    
     def is_special_room?(room)
       return true if room == welcome_room
       return true if room == ic_start_room

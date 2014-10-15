@@ -49,8 +49,6 @@ module AresMUSH
       def register_default_indexes(with_unique_name: false)
         index({ name: 1 }, { unique: with_unique_name, name: 'name_idx' })
         index({ name_upcase: 1 }, { unique: with_unique_name, name: 'name_upcase_idx' })
-        index({ alias: 1 }, { unique: with_unique_name, name: 'alias_idx' })
-        index({ alias_upcase: 1 }, { unique: with_unique_name, name: 'alias_upcase_idx' })
       end
       
     end

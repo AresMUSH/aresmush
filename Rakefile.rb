@@ -4,7 +4,7 @@ require 'aresmush'
 require 'erubis'
 require 'rspec/core/rake_task'
 require 'tempfile'
-
+require 'mongoid'
 
 task :start do
   bootstrapper = AresMUSH::Bootstrapper.new
@@ -78,51 +78,58 @@ namespace :db do
   end
 end
 
+
 task :install do
 
   bootstrapper = AresMUSH::Bootstrapper.new
 
   AresMUSH::ObjectModel.models.each do |m|
+    puts "Clearing out #{m}"
+    m.delete_all
     m.remove_indexes
-    puts "Indexes created for: #{m}: #{m.create_indexes}"
+    m.create_indexes
   end
-
-  AresMUSH::Character.delete_all
-  AresMUSH::Game.delete_all
-  AresMUSH::Room.delete_all
-  AresMUSH::Exit.delete_all
 
   game = AresMUSH::Game.create
 
-  headwiz = AresMUSH::Character.create
+  puts "Creating start rooms."
+  
+  welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC")
+  ic_start_room = AresMUSH::Room.create(:name => "IC Start", :room_type => "IC")
+  ooc_room = AresMUSH::Room.create(:name => "OOC Center", :room_type => "OOC")
+  
+  game.welcome_room = welcome_room
+  game.ic_start_room = ic_start_room
+  game.ooc_room = ooc_room
+  game.save!
+  
+  puts "Creating OOC chars."
+      
+  headwiz = AresMUSH::Character.new(name: "Headwiz")
   headwiz.change_password("wizb00ts")
-  headwiz.name = "Headwiz"
   headwiz.roles << "admin"
   headwiz.save!
-  game.master_admin = headwiz
-
-  builder = AresMUSH::Character.create
+  
+  builder = AresMUSH::Character.new(name: "Builder")
   builder.change_password("buildme")
-  builder.name = "Builder"
   builder.roles << "builder"
   builder.save!
   
-  systemchar = AresMUSH::Character.create
+  systemchar = AresMUSH::Character.new(name: "System")
   systemchar.change_password("wizb00ts")
-  systemchar.name = "System"
   systemchar.roles << "admin"
   systemchar.save!
-  game.system_character = systemchar
 
   4.times do |n|
-    guest = AresMUSH::Character.create
+    guest = AresMUSH::Character.new(name: "Guest-#{n+1}")
     guest.change_password("guest")
-    guest.name = "Guest-#{n+1}"
     guest.roles << "guest"
     guest.save!
   end
 
-  game.save
+  game.master_admin = headwiz
+  game.system_character = systemchar
+  game.save!
   
   AresMUSH::ServerInfo.create(
     game_id: AresMUSH::ServerInfo.arescentral_game_id,
