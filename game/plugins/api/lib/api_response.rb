@@ -10,8 +10,13 @@ module AresMUSH
       end
     
       def to_s
-        "#{command_name} #{status} #{args_str}" 
+        if (args_str.nil? || args_str.empty?)
+          "#{command_name} #{status}" 
+        else
+          "#{command_name} #{status} #{args_str}" 
+        end
       end
+      
     
       def is_success?
         status == ApiResponse.ok_status

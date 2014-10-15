@@ -31,9 +31,9 @@ module AresMUSH
    
               while (line = socket.gets)
                 if (line.start_with?("api< "))
-                  Global.logger.debug "Got API response from #{host} #{port}: #{line}."
                   response_str = line.after(" ").chomp
                   response = ApiCrypt.decode_response(key, response_str)
+                  Global.logger.debug "Got API response from #{host} #{port}: #{response}."
                   if (response.command_name != cmd.command_name)
                     raise "Unexpected command response: #{response.command_name} to #{cmd.command_name}."
                   end

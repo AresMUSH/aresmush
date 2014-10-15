@@ -35,7 +35,7 @@ module AresMUSH
           end
           command_str = ApiCrypt.decrypt(key, self.cipher_iv, self.encrypted_data)
           cmd = ApiCommand.create_from(command_str)
-          Global.logger.info "API command from #{game_id}: #{cmd}"
+          Global.logger.debug "API command from #{game_id}: #{cmd}"
           response = Api.router.route_command(self.game_id, cmd)
           Api.send_response client, key, "#{response}"
         end
