@@ -6,6 +6,7 @@ en:
         api_cipher_error: "Error reading response from remote server.  Please contact the admin."
         game_not_found: "Game not found."
         games_title: "AresMUSH Games Directory"
+        full_games_list_at_central: "Visit AresCentral for the full directory of all AresMUSH games."
         
         game_name: "%xhName:%xn      %{name}"
         game_category: "%xhCategory:%xn  %{category}"

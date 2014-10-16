@@ -15,7 +15,7 @@ module AresMUSH
         self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
       end
       
-      def handle
+      def handle          
         if (self.filter)
           games = ServerInfo.or({category: self.filter}, {name: self.filter})
         else
@@ -24,7 +24,7 @@ module AresMUSH
         
         games = games.sort_by {|g| [g.category, g.name] }
         list = games.map { |s| "#{s.name.ljust(20)} #{s.category.ljust(15)} #{s.host}:#{s.port}" }
-        client.emit BorderedDisplay.paged_list list, self.page, 15, t('api.games_title')
+        client.emit BorderedDisplay.paged_list list, self.page, 15, t('api.games_title'), t('api.full_games_list_at_central')
       end
     end
   end

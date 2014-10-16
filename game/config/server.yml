@@ -6,11 +6,11 @@ server:
     port: 7207
     
     # Name of your game.
-    name: AresMUSH
+    name: AresCentral
 
     # Please select the appropriate category to describe your game:
     # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
-    category: "x"
+    category: "Social"
     
     # Describe your game.  You may use ansi and other MUSH formatting codes.
     description: "Social hub for all things AresMUSH."

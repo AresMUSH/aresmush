@@ -58,3 +58,9 @@ class String
     downcase
   end 
 end
+
+class Object
+  def blank?
+    self.to_s.empty?
+  end
+end
