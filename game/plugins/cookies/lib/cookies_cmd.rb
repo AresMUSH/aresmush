@@ -4,7 +4,6 @@ module AresMUSH
       include Plugin
       include PluginRequiresLogin
       include PluginWithoutArgs
-           
       
       def want_command?(client, cmd)
         cmd.root_is?("cookies")

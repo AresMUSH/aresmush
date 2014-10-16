@@ -1,0 +1,10 @@
+help:
+    categories:
+        main:
+            topics:
+                game: 
+                    toc_topic: 'Games'
+                    dir: 'game/plugins/api/help/'
+                    file: 'games.txt'
+                    summary: 'Games directory.'
+                    alias: ['games']

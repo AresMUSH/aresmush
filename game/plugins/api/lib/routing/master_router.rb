@@ -26,8 +26,18 @@ module AresMUSH
       end
 
       def send_game_update(server_config)
-        # TODO - if master, send update to all games
-        puts "NOT IMPLEMENTED"
+        ServerInfo.all.each do |s|
+          next if (s.game_id == Game.master.game_id)
+          
+          args = ApiRegisterCmdArgs.new(server_config["host"], 
+            server_config["port"], 
+            server_config["name"], 
+            server_config["category"], 
+            server_config["description"])
+            
+          cmd = ApiCommand.new("register/update", args.to_s)
+          Api.send_command(s.game_id, nil, cmd)
+        end
       end
     end
   end

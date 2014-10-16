@@ -33,3 +33,6 @@ jobs:
     
     # Category to use for unexpected system errors.
     error_category: "CODE"
+    
+    # Set to true to report unexpected code errors as jobs, false to not.
+    report_errors: false

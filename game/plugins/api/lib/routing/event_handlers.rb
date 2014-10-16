@@ -15,7 +15,7 @@ module AresMUSH
       
       def on_cron_event(event)
         config = Global.config['api']['cron']
-        #return if !Cron.is_cron_match?(config, event.time)
+        return if !Cron.is_cron_match?(config, event.time)
         return if Api.is_master?
         
         chars = []
