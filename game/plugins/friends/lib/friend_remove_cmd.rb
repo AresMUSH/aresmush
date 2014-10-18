@@ -23,9 +23,9 @@ module AresMUSH
       
       def handle
         if (self.name.start_with?("@"))
-          Api.add_handle_friend(client, self.name)
+          Api.remove_handle_friend(client, self.name)
         else
-          error = Friends.add_friend(client.char, self.name)
+          error = Friends.remove_friend(client.char, self.name)
           if (error)
             client.emit_failure error
           else
