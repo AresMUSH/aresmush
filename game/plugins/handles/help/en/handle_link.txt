@@ -1,4 +1,4 @@
-Once you have your handle, you can %xhlink%xn characters to it. Linking is optional; you can pick and choose which characters you want to link.  To protect your security, linking is a three-step process.
+Once you have your handle, you can %xhlink%xn characters to it. Linking is optional; you can pick and choose which characters you want to link.  To protect your security, linking is a three-step process. 
 
 1) On the local game, find your character ID.  This is a unique way to identify this particular character on this particular game.
 
@@ -12,7 +12,7 @@ Once you have your handle, you can %xhlink%xn characters to it. Linking is optio
 
     %xchandle/link <special code>%xn
 
-Why all the hoops?  Well, we need to prove you're you on both ends.  This ensures that nobody else can link characters to your handle.
+Why all the hoops?  Well, we need to prove you're you on both ends.  This ensures that nobody else can link characters to your handle.  And we want to make sure you never reveal your handle password to other games.
 
 On AresCentral, you can see which characters are linked to your account and unlink them:
 

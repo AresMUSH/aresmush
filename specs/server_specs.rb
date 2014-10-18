@@ -6,15 +6,18 @@ module AresMUSH
 
   describe Server do
     include GlobalTestHelper
+    include GameTestHelper
     
     before do
       stub_global_objects
+      stub_game_master
     end
     
     describe :start do
       before do
         Global.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
         @server = Server.new
+        game.stub(:welcome_room) { nil }
       end
       
       it "should start a timer for the pings" do
@@ -47,6 +50,7 @@ module AresMUSH
       
       it "should create multiple characters" do
         using_test_db do
+          
           Character.create!(name: "Bob1")
           Character.create!(name: "Bob2")
           Character.all.count.should eq 2

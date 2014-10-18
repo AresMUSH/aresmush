@@ -57,7 +57,7 @@ module AresMUSH
             @channel.stub(:emit)
             @channel.stub(:characters) { [char] }
             @channel.stub(:name) { "Public" }
-            client.stub(:name) { "Bob" }
+            char.stub(:ooc_name) { "Bob" }
           end
           
           it "should include the title in the name if set" do

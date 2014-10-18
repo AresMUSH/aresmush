@@ -11,7 +11,7 @@ module AresMUSH
       
       it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-    
+      
       describe :want_command? do
         it "should not want another command" do
           cmd.stub(:raw) { "foo" }

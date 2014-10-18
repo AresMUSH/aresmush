@@ -7,7 +7,7 @@ module AresMUSH
         client = event.client
         response = event.response
         if (!response.is_success?)
-          message = "API response error: #{response}"
+          message = "API response error: #{response}.  If you are having trouble communicating with AresCentral, visit aresmush.com for help."
           Global.logger.info message
           if (client)
             client.emit_failure "Error sending request to remote server: #{response.args_str}."

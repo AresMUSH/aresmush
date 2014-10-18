@@ -40,7 +40,7 @@ module AresMUSH
         next if client.nil?
         online_chars << c
       end
-      online_chars = online_chars.map { |c| "#{c.name}#{gag_text(c, channel)}" }
+      online_chars = online_chars.map { |c| "#{c.ooc_name}#{gag_text(c, channel)}" }
       t('channels.channel_who', :name => channel.display_name, :chars => online_chars.join(", "))
     end
     

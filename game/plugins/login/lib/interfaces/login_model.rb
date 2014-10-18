@@ -18,10 +18,6 @@ module AresMUSH
       hash == entered_password
     end
     
-    def name_and_alias
-      self.alias.nil? ? self.name : t('object.name_with_alias', :name => self.name, :alias => self.alias)
-    end
-    
     def self.check_password(password)
       return t('validation.password_too_short') if (password.length < 5)
       return t('validation.password_cant_have_equals') if (password.include?("="))

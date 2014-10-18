@@ -46,7 +46,7 @@ module AresMUSH
         end
           
         title = Channels.get_channel_option(client.char, channel, "title")
-        name = title.nil? ? client.name : "#{title} #{client.name}"
+        name = title.nil? ? client.char.ooc_name : "#{title} #{client.char.ooc_name}"
         self.channel.pose(name, self.msg)
       end
     end  
