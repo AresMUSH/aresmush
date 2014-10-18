@@ -12,10 +12,12 @@ module AresMUSH
       end
       
       def handle
-        char = Character.where(api_character_id: args.char_id).first
+        char = Character.where(handle: args.handle).first
         if (char.nil?)
-          return cmd.create_error_response "Invalid character id."
+          return cmd.create_error_response "Invalid handle."
         end
+        
+        # TODO: Check that the args.char_id is actually registered to this handle.
         
         if (cmd.command_name == "friend/add")
           error = Friend.add_friend(char, args.friend_name)

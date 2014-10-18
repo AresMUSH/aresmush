@@ -8,7 +8,7 @@ en:
         games_title: "AresMUSH Games Directory"
         full_games_list_at_central: "Visit AresCentral for the full directory of all AresMUSH games."
         sending_friends_request: "Sending friend request to AresCentral.  Please be patient."
-        cant_add_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add a friend.'
+        cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend.'
         game_name: "%xhName:%xn      %{name}"
         game_category: "%xhCategory:%xn  %{category}"
         game_address: "%xhAddress:%xn   %{host} port %{port}"

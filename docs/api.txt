@@ -100,7 +100,7 @@ When a character linked to a handle logs out, the Satellite should notify AresCe
 On a sattelite, a character can add someone's handle as a friend.
 
     From Satellite to AresCentral:
-    (C) friend/add <character id>||<handle>
+    (C) friend/add <character id>||<handle>||<friend>
     (R) friend/add <OK or an error message>
 
 ******* HANDLE REMOVE FRIEND *******
@@ -108,7 +108,7 @@ On a sattelite, a character can add someone's handle as a friend.
 On a sattelite, a character can remove someone's handle from their friends list.
 
     From Satellite to AresCentral:
-    (C) friend/remove <character id>||<handle>
+    (C) friend/remove <character id>||<handle>||<friend>
     (R) friend/remove <OK or an error message>
     
 ******* PROFILE *******
