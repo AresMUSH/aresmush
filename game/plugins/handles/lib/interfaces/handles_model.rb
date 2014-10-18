@@ -17,12 +17,7 @@ module AresMUSH
     field :handle, :type => String
     field :handle_privacy, :type => String, :default => Handles.privacy_friends
     field :handle_only, :type => Boolean
-    
-    def api_character_id
-      data = "#{Game.master.api_game_id}#{id}"
-      Base64.strict_encode64(data).encode('ASCII-8BIT')
-    end
-    
+        
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public
       return false if handle_privacy == Handles.privacy_private

@@ -22,11 +22,15 @@ module AresMUSH
       end
       
       def handle
-        error = Friends.add_friend(client.char, self.name)
-        if (error)
-          client.emit_failure error
+        if (self.name.start_with?("@"))
+          Api.add_handle_friend(client, self.name)
         else
-          client.emit_success t('friends.friend_added', :name => self.name)
+          error = Friends.add_friend(client.char, self.name)
+          if (error)
+            client.emit_failure error
+          else
+            client.emit_success t('friends.friend_added', :name => self.name)
+          end
         end
       end
     end
