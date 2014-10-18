@@ -23,10 +23,6 @@ module AresMUSH
       Base64.strict_encode64(data).encode('ASCII-8BIT')
     end
     
-    def handle_name
-      handle.nil? ? nil : "@#{handle}"
-    end
-    
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public
       return false if handle_privacy == Handles.privacy_private
@@ -35,13 +31,13 @@ module AresMUSH
     
     def ooc_name
       if (handle_only)
-        return handle_name
+        return handle
       end
       
       aliases = []
       
       if (handle_privacy == Handles.privacy_public)
-        name_part = handle_name
+        name_part = handle
         aliases << name
       else
         name_part = name
@@ -57,5 +53,10 @@ module AresMUSH
         name_part
       end
     end
+    
+    def self.find_by_handle(name)
+      Character.where(handle: name).all
+    end
+    
   end
 end

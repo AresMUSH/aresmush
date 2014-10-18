@@ -35,6 +35,7 @@ module AresMUSH
     def using_test_db(&block)
       stub_client_reload
       SpecHelpers.connect_to_test_db
+      SpecHelpers.erase_test_db
       yield block
       SpecHelpers.erase_test_db
     end

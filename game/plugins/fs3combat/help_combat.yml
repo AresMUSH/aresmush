@@ -1,0 +1,10 @@
+help:
+    categories:
+        main:
+            topics:
+                combat: 
+                    toc_topic: 'FS3'
+                    dir: 'game/plugins/fs3combat/help/'
+                    file: 'combat.txt'
+                    summary: 'Combat system.'
+                    aliases: [ 'damage', 'vehicles', 'weapons', 'weapon', 'vehicle', 'heal', 'healing', 'npc', 'npcs', 'gear' ]

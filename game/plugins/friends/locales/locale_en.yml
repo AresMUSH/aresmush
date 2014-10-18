@@ -1,7 +1,7 @@
 en:
     friends:
-        friends_title: "Friends"
-        friends_header: "Name                      Last On"
+        friends_header: "Character Friends         Last On"
+        handle_friends_header: "Handle Friends            Alts"
         already_friend: "%{name} is already on your friends list."
         not_friend: "%{name} is not on your friends list."
         friend_added: "%{name} has been added to your friends list."

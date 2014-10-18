@@ -2,9 +2,10 @@ module AresMUSH
   class Character
     has_many :friendships, :inverse_of => :character, :dependent => :destroy
     has_many :friends_of, :class_name => 'AresMUSH::Friendship', :inverse_of => :friend, :dependent => :destroy
+    field :handle_friends, :type => Array, :default => []
     
     def is_friends_with?(other_char)
-      friends.include?(other_char)
+      friends.include?(other_char) || handle_friends.include?(other_char.handle)
     end
 
     def friends
