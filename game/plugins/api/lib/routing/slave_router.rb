@@ -20,6 +20,10 @@ module AresMUSH
           handler = RegisterUpdateResponseHandler
         when "ping"
           handler = PingResponseHandler
+        when "friend/add"
+          handler = FriendResponseHandler
+        when "friend/remove"
+          handler = FriendResponseHandler
         else
           handler = nil
         end

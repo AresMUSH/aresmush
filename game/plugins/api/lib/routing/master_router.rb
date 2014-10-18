@@ -7,6 +7,10 @@ module AresMUSH
           handler = MasterRegisterCmdHandler
         when "register/update"
           handler = RegisterUpdateCmdHandler
+        when "friend/add"
+          handler = FriendCmdHandler
+        when "friend/remove"
+          handler = FriendCmdHandler
         when "ping"
           handler = PingCmdHandler
         else

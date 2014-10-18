@@ -22,26 +22,10 @@ module AresMUSH
       end
       
       def handle
-        if (self.name.start_with?("@"))
-          if (client.char.handle_friends.include?(self.name))
-            client.emit_failure t('friends.already_friend', :name => self.name)
-            return
-          end
-          
-          client.char.handle_friends << self.name
-          client.char.save!
-          client.emit_success t('friends.friend_added', :name => self.name)
-          return
-        end
-        
-        ClassTargetFinder.with_a_character(self.name, client) do |friend|
-          if (client.char.friends.include?(friend))
-            client.emit_failure t('friends.already_friend', :name => self.name)
-            return
-          end
-
-          friendship = Friendship.new(:character => client.char, :friend => friend)
-          friendship.save!
+        error = Friends.add_friend(client.char, self.name)
+        if (error)
+          client.emit_failure error
+        else
           client.emit_success t('friends.friend_added', :name => self.name)
         end
       end
