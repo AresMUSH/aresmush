@@ -7,7 +7,7 @@ module AresMUSH
           client.char.save!
           client.emit_success "Friend added."
         else
-          client.char.handle_friends.remove response.args_str
+          client.char.handle_friends.delete response.args_str
           client.char.save!
           client.emit_success "Friend removed."
         end

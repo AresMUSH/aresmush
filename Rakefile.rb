@@ -83,10 +83,12 @@ task :install do
 
   bootstrapper = AresMUSH::Bootstrapper.new
 
+  Mongoid.purge!
+
   AresMUSH::ObjectModel.models.each do |m|
     puts "Clearing out #{m}"
-    m.delete_all
-    m.remove_indexes
+    #m.delete_all
+    #m.remove_indexes
     m.create_indexes
   end
 
