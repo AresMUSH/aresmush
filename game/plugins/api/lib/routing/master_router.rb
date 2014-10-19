@@ -3,16 +3,18 @@ module AresMUSH
     class ApiMasterRouter < ApiRouter
       def build_command_handler(game_id, cmd)
         case cmd.command_name
-        when "register"
-          handler = MasterRegisterCmdHandler
-        when "register/update"
-          handler = RegisterUpdateCmdHandler
         when "friend/add"
           handler = FriendCmdHandler
         when "friend/remove"
           handler = FriendCmdHandler
+        when "link"
+          handler = LinkCmdHandler
         when "ping"
           handler = PingCmdHandler
+        when "register"
+          handler = MasterRegisterCmdHandler
+        when "register/update"
+          handler = RegisterUpdateCmdHandler
         else
           handler = nil
         end

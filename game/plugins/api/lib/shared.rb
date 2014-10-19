@@ -20,6 +20,10 @@ module AresMUSH
       ServerInfo.where(game_id: dest_id).first
     end
     
+    def self.random_link_code
+      (0...8).map { (65 + rand(26)).chr }.join
+    end
+    
     def self.send_response(client, key, response)
       Global.logger.debug "Sending API response to #{client.id} #{response}."
 

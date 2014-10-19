@@ -14,16 +14,18 @@ module AresMUSH
       
       def build_response_handler(client, response)
         case response.command_name
-        when "register"
-          handler = SlaveRegisterResponseHandler
-        when "register/update"
-          handler = RegisterUpdateResponseHandler
-        when "ping"
-          handler = PingResponseHandler
         when "friend/add"
           handler = FriendResponseHandler
         when "friend/remove"
           handler = FriendResponseHandler
+        when "link"
+          handler = LinkResponseHandler
+        when "ping"
+          handler = PingResponseHandler
+        when "register"
+          handler = SlaveRegisterResponseHandler
+        when "register/update"
+          handler = RegisterUpdateResponseHandler
         else
           handler = nil
         end

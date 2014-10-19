@@ -7,11 +7,22 @@ en:
         game_not_found: "Game not found."
         games_title: "AresMUSH Games Directory"
         full_games_list_at_central: "Visit AresCentral for the full directory of all AresMUSH games."
+
         sending_friends_request: "Sending friend request to AresCentral.  Please be patient."
-        cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend.'
+        cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend here.'
+        cant_link_on_master: "You use this command on another game to link to your AresCentral handle."
+        cant_link_on_slave: "You need to use this command on AresCentral."
+        
+        sending_link_request: "Sending link request to AresCentral.  Please be patient."
+        
         game_name: "%xhName:%xn      %{name}"
         game_category: "%xhCategory:%xn  %{category}"
         game_address: "%xhAddress:%xn   %{host} port %{port}"
         game_status: "%xhStatus:%xn    %{status} - last contacted at %{last}"
         game_up_status: "%xgUp%xn"
         game_down_status: "%xrMay Be Down%xn"
+        
+        character_id_is: "Use this character ID to link this character to your handle (help handle link): %xh%xc%{id}%xn"
+        link_key_is: "Use this link code back on the other game to complete the link process (help handle link): %xh%xc%{key}%xn"
+        character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
+        character_not_linked: "This character is not linked to a handle.  See help handle link."

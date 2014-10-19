@@ -31,7 +31,7 @@ If your game name or server info changes, the game can issue a registration upda
 
     From AresCentral to Satellite or vice-versa:
     (C) register/update <host>||<port>||<game name>||<game category>||<game description>
-    (R) register/update <OK or an error string>
+    (R) register/update
 
 ******* PING *******
 
@@ -46,8 +46,8 @@ Once a day, AresCentral will issue a ping command just to make sure the Satellit
 A Satellite game can request that a local character be linked to the handle.  This requires a one-time use code that the player gets from AresCentral (see help handles).
 
     From Satellite to AresCentral:
-    (C) handle/link <character id>||<one-time code>
-    (R) handle/link <OK or an error string>
+    (C) handle/link <handle>||<character id>||<character name>||<one-time code>
+    (R) handle/link <handle>
 
 ******* HANDLE UNLINK *******
 
@@ -55,7 +55,7 @@ AresCentral can issue a handle unlink.
 
     From AresCentral to Satellite:
     (C) handle/unlink <character id>||<handle>
-    (R) handle/unlink <OK or an error string>
+    (R) handle/unlink
     
 ******* HANDLE SYNC *******
 
@@ -65,7 +65,7 @@ The upload command replaces the AresCentral preferences with the Satellite prefe
 
     From Satellite to AresCentral:
     (C) handle/upload <character id>||<preferences>
-    (R) handle/upload <OK or an error string>
+    (R) handle/upload
 
 The download command works the other way around.
 
@@ -77,7 +77,7 @@ AresCentral can also initiate a download (typically used when the player changes
 
     From AresCentral to Satellite:
     (C) handle/update <character id>||<preferences>
-    (R) handle/update <OK or an error message>
+    (R) handle/update
 
 ******* HANDLE LOGIN *******
 
@@ -85,7 +85,7 @@ When a character linked to a handle logs in, the Satellite should check with Are
 
     From Satellite to AresCentral:
     (C) handle/login <character id>||<handle>
-    (R) handle/login <OK or an error message>
+    (R) handle/login
 
 ******* HANDLE LOGOUT *******
 
@@ -93,7 +93,7 @@ When a character linked to a handle logs out, the Satellite should notify AresCe
 
     From Satellite to AresCentral:
     (C) handle/logout <character id>||<handle>
-    (R) handle/logout <OK or an error message>
+    (R) handle/logout
     
 ******* HANDLE ADD FRIEND *******
 
@@ -101,7 +101,7 @@ On a sattelite, a character can add someone's handle as a friend.
 
     From Satellite to AresCentral:
     (C) friend/add <character id>||<handle>||<friend>
-    (R) friend/add <OK or an error message>
+    (R) friend/add <friend>
 
 ******* HANDLE REMOVE FRIEND *******
 
@@ -109,7 +109,7 @@ On a sattelite, a character can remove someone's handle from their friends list.
 
     From Satellite to AresCentral:
     (C) friend/remove <character id>||<handle>||<friend>
-    (R) friend/remove <OK or an error message>
+    (R) friend/remove <friend>
     
 ******* PROFILE *******
 
@@ -117,7 +117,7 @@ The Satellite can request a handle's profile information.  The character ID must
 
     From Satellite to AresCentral:
     (C) profile <character id>||<handle>
-    (R) profile <profile text or an error message>
+    (R) profile <profile text>
     
 ******* CROSS-GAME PAGE (someday) *******
 
@@ -125,4 +125,4 @@ You can page someone by their handle, even if they're on a different game.  If t
 
     From Satellite to AresCentral or vice-versa:
     (C) page <to handle>||<from handle>||<message>
-    (R) page <OK or an error message>
+    (R) page

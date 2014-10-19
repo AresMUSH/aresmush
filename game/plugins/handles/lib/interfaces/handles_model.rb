@@ -17,6 +17,8 @@ module AresMUSH
     field :handle, :type => String
     field :handle_privacy, :type => String, :default => Handles.privacy_friends
     field :handle_only, :type => Boolean
+    field :temp_link_codes, :type => Hash, :default => {}
+    field :linked_characters, :type => Hash, :default => {}
         
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public

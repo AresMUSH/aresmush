@@ -10,7 +10,7 @@ Once you have your handle, you can %xhlink%xn characters to it. Linking is optio
     
 3) Back on the other game, use your one-time link code from step 2 to link the character to your handle.
 
-    %xchandle/link <special code>%xn
+    %xchandle/link <link code>%xn
 
 Why all the hoops?  Well, we need to prove you're you on both ends.  This ensures that nobody else can link characters to your handle.  And we want to make sure you never reveal your handle password to other games.
 

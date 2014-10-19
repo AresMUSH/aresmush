@@ -2,7 +2,7 @@ require_relative "../../../../plugin_test_loader"
 
 module AresMUSH
   module Api
-    describe MasterRegisterCmdHandler do
+    describe PingCmdHandler do
       include ApiHandlerTestHelper
       
       let(:expected_cmd) { "ping" }
@@ -28,10 +28,6 @@ module AresMUSH
         game.should_receive(:save!)
         response = @router.route_command(1, cmd)
         check_response(response, ApiResponse.ok_status, "")
-      end
-      
-      # TODO
-      it "should update the handles last online time" do
       end
     end
   end
