@@ -39,6 +39,52 @@ module AresMUSH
           Login.can_reset_password?(@actor).should be_false
         end
       end
+      
+      describe :wants_announce do
+        before do
+          @listener = double
+          @connector = double
+        end
+        
+        it "should want announce if you're listening for everybody" do
+          @listener.stub(:watch) { "all" }
+          Login.wants_announce(@listener, @connector).should eq true
+        end 
+        
+        it "should not want announce if you've disabled it" do
+          @listener.stub(:watch) { "none" }
+          Login.wants_announce(@listener, @connector).should eq false
+        end
+        
+        it "should want announce if friends-only and have friended a char" do
+          @listener.stub(:watch) { "friends" }
+          @listener.stub(:has_friended_char?).with(@connector) { true }
+          Login.wants_announce(@listener, @connector).should eq true
+        end
+        
+        it "should not want announce if friends-only and have not friended a char" do
+          @listener.stub(:watch) { "friends" }
+          @listener.stub(:has_friended_char?).with(@connector) { false }
+          @listener.stub(:has_friended_handle?).with(@connector) { false }
+          Login.wants_announce(@listener, @connector).should eq false
+        end
+        
+        it "should want announce if friends-only and have friended a visible handle" do
+          @listener.stub(:watch) { "friends" }
+          @listener.stub(:has_friended_char?).with(@connector) { false }
+          @listener.stub(:has_friended_handle?).with(@connector) { true }
+          @connector.stub(:handle_visible_to?).with(@listener) { true }
+          Login.wants_announce(@listener, @connector).should eq true
+        end
+        
+        it "should not want announce if friends-only and have friended a non-visible handle" do
+          @listener.stub(:watch) { "friends" }
+          @listener.stub(:has_friended_char?).with(@connector) { false }
+          @listener.stub(:has_friended_handle?).with(@connector) { true }
+          @connector.stub(:handle_visible_to?).with(@listener) { false }
+          Login.wants_announce(@listener, @connector).should eq false
+        end
+      end
     end
   end
 end

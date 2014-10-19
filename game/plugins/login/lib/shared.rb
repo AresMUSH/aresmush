@@ -18,7 +18,8 @@ module AresMUSH
       return false if listener.nil?
       return true if listener.watch == "all"
       return false if listener.watch == "none"
-      listener.friends.include?(connector)
+      return true if listener.has_friended_char?(connector)
+      listener.has_friended_handle?(connector) && connector.handle_visible_to?(listener)
     end
     
     def self.guest_role

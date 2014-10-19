@@ -22,7 +22,7 @@ module AresMUSH
           text << "%R#{f.name.ljust(25)} #{connected}"
         end
         
-        text << "%R%R"
+        text << "%R%l1%R"
         text << "%xh#{t('friends.handle_friends_header')}%xn"
         text << "%R%l2"
         

@@ -27,7 +27,7 @@ module AresMUSH
         before do
           @char = Character.new(name: "Bob")
           @other = Character.new(name: "Harry")
-          @char.stub(:is_friends_with?).with(@other) { false }
+          @char.stub(:has_friended_char_or_handle?).with(@other) { false }
         end
         
         it "should return true if handle public" do
@@ -37,7 +37,7 @@ module AresMUSH
         
         it "should return true if handle friends-only and a friend" do
           @char.handle_privacy = Handles.privacy_friends
-          @char.stub(:is_friends_with?).with(@other) { true }
+          @char.stub(:has_friended_char_or_handle?).with(@other) { true }
           @char.handle_visible_to?(@other).should eq true
         end
         

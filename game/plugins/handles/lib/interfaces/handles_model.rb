@@ -21,7 +21,7 @@ module AresMUSH
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public
       return false if handle_privacy == Handles.privacy_private
-      is_friends_with?(other_char)
+      has_friended_char_or_handle?(other_char)
     end
     
     def ooc_name
