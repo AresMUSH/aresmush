@@ -1,27 +1,27 @@
 module AresMUSH
   module Handles
-    class HandleLinkCmd
+    class MasterHandleLinkCmd
       include Plugin
       include PluginRequiresArgs
       
-      attr_accessor :id_or_code
+      attr_accessor :char_id
 
       def initialize
-        self.required_args = ['id_or_code']
+        self.required_args = ['char_id']
         self.help_topic = 'handle'
         super
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("handle") && cmd.switch_is?("link")
+        cmd.root_is?("handle") && cmd.switch_is?("link") && cmd.args !~ /=/
       end
       
       def crack!
-        self.id_or_code = trim_input(cmd.args)
+        self.char_id = trim_input(cmd.args)
       end
       
       def handle
-        Api.link_character(client, id_or_code)
+        Api.get_link_code(client, char_id)
       end      
     end
 

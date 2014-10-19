@@ -39,18 +39,26 @@ module AresMUSH
       end
     end
     
-    def self.link_character(client, handle, id_or_code)
+    def self.get_link_code(client, char_id)
       if (Api.is_master?)
         random_key = Api.random_link_code
         client.char.temp_link_codes[id_or_code] = random_key
         client.emit_success t('api.link_key_is', :key => random_key)
+      else
+        client.emit_failure t('api.cant_link_on_slave')
+      end
+    end
+    
+    def self.link_character(client, handle, link_code)
+      if (Api.is_master?)
+        client.emit_failure t('api.cant_link_on_master')
       else
         if (client.char.handle)
           client.emit_failure t('api.character_already_linked')
           return
         end
         client.emit_success t('api.sending_link_request')
-        args = ApiLinkCmdArgs.new(handle, client.char.api_character_id, client.name, id_or_code)
+        args = ApiLinkCmdArgs.new(handle, client.char.api_character_id, client.name, link_code)
         cmd = ApiCommand.new("link", args.to_s)
         Api.send_command(ServerInfo.arescentral_game_id, client, cmd)
       end
