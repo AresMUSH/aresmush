@@ -1,6 +1,6 @@
 module AresMUSH
   module Handles
-    class MasterHandleLinkCmd
+    class HandleLinkCodeCmd
       include Plugin
       include PluginRequiresArgs
       
@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("handle") && cmd.switch_is?("link") && cmd.args !~ /=/
+        cmd.root_is?("handle") && cmd.switch_is?("linkcode")
       end
       
       def crack!
