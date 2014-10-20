@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def to_s
-        "#{char_id}||#{handle_name}||#{friend_name}"
+        "#{handle_name}||#{char_id}||#{friend_name}"
       end
       
       def validate
@@ -21,7 +21,7 @@ module AresMUSH
       end
      
       def self.create_from(command_args)
-        char_id, handle_name, friend_name = command_args.split("||")
+        handle_name, char_id, friend_name = command_args.split("||")
         ApiFriendCmdArgs.new(char_id, handle_name, friend_name)
       end
     end

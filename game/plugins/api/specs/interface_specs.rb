@@ -32,7 +32,7 @@ module AresMUSH
             game_id.should eq ServerInfo.arescentral_game_id
             client.should eq @client
             cmd.command_name.should eq "friend/add"
-            cmd.args_str.should eq "ABC||@Star||@Bob"
+            cmd.args_str.should eq "@Star||ABC||@Bob"
           end
           Api.add_handle_friend(@client, "@Bob")
         end
@@ -67,7 +67,7 @@ module AresMUSH
             game_id.should eq ServerInfo.arescentral_game_id
             client.should eq @client
             cmd.command_name.should eq "friend/remove"
-            cmd.args_str.should eq "ABC||@Star||@Bob"
+            cmd.args_str.should eq "@Star||ABC||@Bob"
           end
           Api.remove_handle_friend(@client, "@Bob")
         end

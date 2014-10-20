@@ -54,30 +54,23 @@ A Satellite game can request that a local character be linked to the handle.  Th
 AresCentral can issue a handle unlink.
 
     From AresCentral to Satellite:
-    (C) unlink <character id>||<handle>
+    (C) unlink <handle>||<character id>
     (R) unlink
     
 ******* HANDLE SYNC *******
 
-You can synchronize preferences between the Satellite and AresCentral.
-
-The upload command replaces the AresCentral preferences with the Satellite preferences (except friends, which are merged).
+From a Satellite, you can download your handle preferences to that character.
 
     From Satellite to AresCentral:
-    (C) handle/upload <character id>||<preferences>
-    (R) handle/upload
-
-The download command works the other way around.
-
-    From Satellite to AresCentral:
-    (C) handle/download <character id>
-    (R) handle/download <character id>||<preferences>
+    (C) sync <handle>||<character id>
+    (R) sync <handle friends>||<email>||<timezone>||<autospace>
     
-AresCentral can also initiate a download (typically used when the player changes a preference on AresCentral and wants to sync all of his games).
+And from AresCentral, you can send your preferences to all of your characters on all of your games.
 
     From AresCentral to Satellite:
-    (C) handle/update <character id>||<preferences>
-    (R) handle/update
+    (C) sync <handle>||<character id>||<handle friends>||<email>||<timezone>||<autospace>
+    (R) sync
+    
     
 ******* HANDLE ADD FRIEND *******
 
