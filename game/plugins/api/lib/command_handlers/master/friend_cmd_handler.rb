@@ -12,11 +12,11 @@ module AresMUSH
       end
       
       def handle
-        char_name = args.handle.after("@")
+        char_name = args.handle_name.after("@")
         friend_name = args.friend_name.after("@")
         
         Global.logger.debug "Adding #{friend_name} as a friend for #{char_name}."
-        char = Character.find_by_name(char_name).first
+        char = Character.find_by_name(char_name)
         if (char.nil?)
           return cmd.create_error_response "Invalid handle."
         end

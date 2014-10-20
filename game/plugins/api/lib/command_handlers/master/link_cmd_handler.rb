@@ -12,10 +12,11 @@ module AresMUSH
       end
       
       def handle
-        Global.logger.debug "Linking #{args.char_id} to #{args.handle}."
+        Global.logger.debug "Linking #{args.char_id} to #{args.handle_name}."
         
-        char_name = args.handle.after("@")
-        char = Character.find_by_name(char_name).first
+        char_name = args.handle_name.after("@")
+
+        char = Character.find_by_name(char_name)
         if (char.nil?)
           return cmd.create_error_response "Invalid handle."
         end
@@ -33,6 +34,7 @@ module AresMUSH
           "name" => args.name,
           "game_id" => game_id
         }
+        char.temp_link_codes.delete args.char_id
         char.save!
         return cmd.create_response(ApiResponse.ok_status, "@#{char.name}")
       end

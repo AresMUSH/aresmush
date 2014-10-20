@@ -10,7 +10,7 @@ module AresMUSH
           message = "API response error: #{response}.  If you are having trouble communicating with AresCentral, visit aresmush.com for help."
           Global.logger.info message
           if (client)
-            client.emit_failure "Error sending request to remote server: #{response.args_str}"
+            client.emit_failure "Error processing remote request: #{response.args_str}"
           else
             Global.dispatcher.queue_event UnhandledErrorEvent.new(message)
           end

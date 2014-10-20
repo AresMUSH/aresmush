@@ -10,11 +10,11 @@ module AresMUSH
       before do
         @router = ApiMasterRouter.new
         @char = Character.new(name: "Star")
-        Character.stub(:find_by_name).with("Star") { [@char] }
+        Character.stub(:find_by_name).with("Star") { @char }
       end
       
       it "should fail if handle char not found" do
-        Character.stub(:find_by_name).with("Star") { [] }
+        Character.stub(:find_by_name).with("Star") { nil }
         cmd = ApiCommand.create_from("link @Star||ABC||Bob||LINK1")
         response = @router.route_command(1, cmd)
         check_response(response, ApiResponse.error_status, "Invalid handle.")
@@ -40,8 +40,8 @@ module AresMUSH
         @char.should_receive(:save!) { }
         response = @router.route_command(1, cmd)
         check_response(response, ApiResponse.ok_status, "@Star")
-        @char.linked_characters["ABC"]["name"].should eq "Bob"
-        @char.linked_characters["ABC"]["game_id"].should eq 1
+        @char.linked_characters["ABC"].should include( "name" => "Bob", "game_id" => 1)
+        @char.temp_link_codes["ABC"].should be_nil
       end
     end
   end

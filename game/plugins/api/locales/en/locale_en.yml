@@ -11,7 +11,7 @@ en:
         sending_friends_request: "Sending friend request to AresCentral.  Please be patient."
         cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend here.'
         cant_link_on_master: "You use this command on another game to link to your AresCentral handle."
-        cant_link_on_slave: "You need to use this command on AresCentral."
+        use_command_on_central: "You need to use this command on AresCentral."
         
         sending_link_request: "Sending link request to AresCentral.  Please be patient."
         
@@ -26,3 +26,9 @@ en:
         link_key_is: "Use this link code back on the other game to complete the link process (help handle link): %xh%xc%{key}%xn"
         character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
         character_not_linked: "This character is not linked to a handle.  See help handle link."
+        
+        linked_characters: "Linked Characters"
+        characters_title: "Name                                     Character ID"
+        
+        character_not_linked: "That character is not linked to your handle."
+        character_unlinked: "You unlink %{name} from your handle."

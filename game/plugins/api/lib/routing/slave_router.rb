@@ -6,6 +6,8 @@ module AresMUSH
         case cmd.command_name
         when "register/update"
           handler = RegisterUpdateCmdHandler
+        when "unlink"
+          handler = UnlinkCmdHandler
         else
           handler = nil
         end

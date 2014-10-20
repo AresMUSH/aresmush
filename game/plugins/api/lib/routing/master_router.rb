@@ -25,6 +25,8 @@ module AresMUSH
         case response.command_name
         when "register/update"
           handler = RegisterUpdateResponseHandler
+        when "unlink"
+          handler = UnlinkResponseHandler
         else
           handler = nil
         end

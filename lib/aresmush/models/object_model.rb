@@ -25,14 +25,17 @@ module AresMUSH
       end
 
       def find_all_by_name_or_id(name_or_id)
+        return nil if name_or_id.blank?
         where({ :$or => [{ :name_upcase => name_or_id.upcase }, { :alias_upcase => name_or_id.upcase }, { :id => name_or_id }] }).all
       end
 
       def find_by_name(name)
+        return nil if name.blank?
         where({ :$or => [{ :name_upcase => name.upcase }, { :alias_upcase => name.upcase }] }).first
       end
 
       def find_all_by_name(name)
+        return nil if name.blank?
         where({ :$or => [{ :name_upcase => name.upcase }, { :alias_upcase => name.upcase }] }).all
       end
     

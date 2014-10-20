@@ -46,16 +46,16 @@ Once a day, AresCentral will issue a ping command just to make sure the Satellit
 A Satellite game can request that a local character be linked to the handle.  This requires a one-time use code that the player gets from AresCentral (see help handles).
 
     From Satellite to AresCentral:
-    (C) handle/link <handle>||<character id>||<character name>||<one-time code>
-    (R) handle/link <handle>
+    (C) link <handle>||<character id>||<character name>||<one-time code>
+    (R) link <handle>
 
 ******* HANDLE UNLINK *******
 
 AresCentral can issue a handle unlink.
 
     From AresCentral to Satellite:
-    (C) handle/unlink <character id>||<handle>
-    (R) handle/unlink
+    (C) unlink <character id>||<handle>
+    (R) unlink
     
 ******* HANDLE SYNC *******
 
@@ -78,22 +78,6 @@ AresCentral can also initiate a download (typically used when the player changes
     From AresCentral to Satellite:
     (C) handle/update <character id>||<preferences>
     (R) handle/update
-
-******* HANDLE LOGIN *******
-
-When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.
-
-    From Satellite to AresCentral:
-    (C) handle/login <character id>||<handle>
-    (R) handle/login
-
-******* HANDLE LOGOUT *******
-
-When a character linked to a handle logs out, the Satellite should notify AresCentral.
-
-    From Satellite to AresCentral:
-    (C) handle/logout <character id>||<handle>
-    (R) handle/logout
     
 ******* HANDLE ADD FRIEND *******
 
@@ -119,7 +103,28 @@ The Satellite can request a handle's profile information.  The character ID must
     (C) profile <character id>||<handle>
     (R) profile <profile text>
     
-******* CROSS-GAME PAGE (someday) *******
+    
+    
+!!!!!!!!!!!!!!!!!!!!!!!!! SOMEDAY !!!!!!!!!!!!!!!!!!!!!!!!! 
+
+
+******* HANDLE LOGIN *******
+
+When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.
+
+    From Satellite to AresCentral:
+    (C) handle/login <character id>||<handle>
+    (R) handle/login
+
+******* HANDLE LOGOUT *******
+
+When a character linked to a handle logs out, the Satellite should notify AresCentral.
+
+    From Satellite to AresCentral:
+    (C) handle/logout <character id>||<handle>
+    (R) handle/logout
+    
+******* CROSS-GAME PAGE *******
 
 You can page someone by their handle, even if they're on a different game.  If the character is not logged into AresCentral, AresCentral will use the character login status to find a character who's online somewhere else and page them on the other game. The character ID must pass the target's privacy settings.
 

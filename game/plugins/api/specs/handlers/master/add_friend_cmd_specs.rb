@@ -10,11 +10,11 @@ module AresMUSH
       before do
         @router = ApiMasterRouter.new
         @char = Character.new(name: "Star")
-        Character.stub(:find_by_name).with("Star") { [@char] }
+        Character.stub(:find_by_name).with("Star") { @char }
       end
       
       it "should fail if handle char not found" do
-        Character.stub(:find_by_name).with("Star") { [] }
+        Character.stub(:find_by_name).with("Star") { nil }
         cmd = ApiCommand.create_from("friend/add ABC||@Star||@Bob")
         response = @router.route_command(1, cmd)
         check_response(response, ApiResponse.error_status, "Invalid handle.")
