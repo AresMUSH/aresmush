@@ -57,20 +57,21 @@ AresCentral can issue a handle unlink.
     (C) unlink <handle>||<character id>
     (R) unlink
     
-******* HANDLE SYNC *******
+******* HANDLE LOGIN *******
 
-From a Satellite, you can download your handle preferences to that character.
+When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.
 
     From Satellite to AresCentral:
-    (C) sync <handle>||<character id>
-    (R) sync <handle friends>||<email>||<timezone>||<autospace>
-    
-And from AresCentral, you can send your preferences to all of your characters on all of your games.
+    (C) handle/login <handle>||<character id>||<name>||<privacy>
+    (R) handle/login <handle friends>
 
-    From AresCentral to Satellite:
-    (C) sync <handle>||<character id>||<handle friends>||<email>||<timezone>||<autospace>
-    (R) sync
-    
+******* HANDLE LOGOUT *******
+
+When a character linked to a handle logs out, the Satellite should notify AresCentral.
+
+    From Satellite to AresCentral:
+    (C) handle/logout <handle>||<character id>
+    (R) handle/logout
     
 ******* HANDLE ADD FRIEND *******
 
@@ -100,22 +101,6 @@ The Satellite can request a handle's profile information.  The character ID must
     
 !!!!!!!!!!!!!!!!!!!!!!!!! SOMEDAY !!!!!!!!!!!!!!!!!!!!!!!!! 
 
-
-******* HANDLE LOGIN *******
-
-When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.
-
-    From Satellite to AresCentral:
-    (C) handle/login <character id>||<handle>
-    (R) handle/login
-
-******* HANDLE LOGOUT *******
-
-When a character linked to a handle logs out, the Satellite should notify AresCentral.
-
-    From Satellite to AresCentral:
-    (C) handle/logout <character id>||<handle>
-    (R) handle/logout
     
 ******* CROSS-GAME PAGE *******
 

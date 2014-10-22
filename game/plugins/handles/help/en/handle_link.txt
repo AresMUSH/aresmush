@@ -12,7 +12,7 @@ Once you have your handle, you can %xhlink%xn characters to it. Linking is optio
 
     %xchandle/link <link code>%xn
 
-Why all the hoops?  Well, we need to prove you're you on both ends.  This ensures that nobody else can link characters to your handle.  And we want to make sure you never reveal your handle password to other games.
+Why all the hoops?  Well, we need to prove you're you on both ends.  This ensures that nobody else can link characters to your handle.
 
 On AresCentral, you can see which characters are linked to your account and unlink them:
 

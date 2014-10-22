@@ -22,8 +22,10 @@ module AresMUSH
           handler = FriendResponseHandler
         when "link"
           handler = LinkResponseHandler
+        when "login"
+          handler = LoginResponseHandler
         when "ping"
-          handler = PingResponseHandler
+          handler = NoOpResponseHandler
         when "register"
           handler = SlaveRegisterResponseHandler
         when "register/update"

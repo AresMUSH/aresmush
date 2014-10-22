@@ -9,6 +9,8 @@ module AresMUSH
           handler = FriendCmdHandler
         when "link"
           handler = LinkCmdHandler
+        when "login"
+          handler = LoginCmdHandler
         when "ping"
           handler = PingCmdHandler
         when "register"
@@ -26,7 +28,7 @@ module AresMUSH
         when "register/update"
           handler = RegisterUpdateResponseHandler
         when "unlink"
-          handler = UnlinkResponseHandler
+          handler = NoOpResponseHandler
         else
           handler = nil
         end

@@ -15,7 +15,7 @@ module AresMUSH
         it "should not work on master" do
           Api.stub(:is_master?) { true }
           @client.should_receive(:emit_failure).with("api.cant_manage_handle_friends_on_master")
-          Api.add_handle_friend(@client, "@Bob")
+          Api.add_handle_friend(@client, "@ Bob")
         end
         
         it "should fail if no handle" do
