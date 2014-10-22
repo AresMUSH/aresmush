@@ -32,17 +32,4 @@ module AresMUSH
       ServerInfo.all.map { |s| s.game_id }.max + 1
     end
   end
-  
-  class Game
-    field :api_game_id, :type => Integer, :default => ServerInfo.default_game_id
-    field :api_key, :type => String, :default => ServerInfo.default_key
-  end
-  
-  class Character
-    def api_character_id
-      data = "#{Game.master.api_game_id}#{id}"
-      Base64.strict_encode64(data).encode('ASCII-8BIT')
-    end
-  end
-  
 end
