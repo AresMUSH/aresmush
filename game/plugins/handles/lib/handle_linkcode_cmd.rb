@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def handle
-        Api.get_link_code(client, char_id)
+        Handles.get_link_code(client, char_id)
       end      
     end
 

@@ -1,14 +1,5 @@
 module AresMUSH
-  module Api
-    
-    def self.get_character_id(client)
-      if (Api.is_master?)
-        client.emit_failure t('api.cant_link_on_master')
-      else
-        client.emit_success t('api.character_id_is', :id => client.char.api_character_id)
-      end
-    end
-    
+  module Handles
     def self.get_link_code(client, char_id)
       if (Api.is_master?)
         random_key = Api.random_link_code
@@ -70,6 +61,5 @@ module AresMUSH
         client.emit_failure t('api.use_command_on_central')
       end
     end
-   
   end
 end

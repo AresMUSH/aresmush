@@ -7,7 +7,7 @@ module AresMUSH
         when "register/update"
           handler = RegisterUpdateCmdHandler
         when "unlink"
-          handler = UnlinkCmdHandler
+          handler = Handles::UnlinkCmdHandler
         else
           handler = nil
         end
@@ -21,7 +21,7 @@ module AresMUSH
         when "friend/remove"
           handler = Friends::FriendResponseHandler
         when "link"
-          handler = LinkResponseHandler
+          handler = Handles::LinkResponseHandler
         when "login"
           handler = LoginResponseHandler
         when "ping"

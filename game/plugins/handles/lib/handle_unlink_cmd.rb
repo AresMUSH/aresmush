@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def handle
-        Api.unlink_character(client, char_id)
+        Handles.unlink_character(client, char_id)
       end      
     end
 

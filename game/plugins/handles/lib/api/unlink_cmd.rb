@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module Handles
     class ApiUnlinkCmdArgs
       attr_accessor :handle_name, :char_id
       

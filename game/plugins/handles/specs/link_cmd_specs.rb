@@ -1,14 +1,12 @@
-require_relative "../../../../plugin_test_loader"
-
 module AresMUSH
-  module Api
+  module Handles
     describe LinkCmdHandler do
       include ApiHandlerTestHelper
       
       let(:expected_cmd) { "link" }
       
       before do
-        @router = ApiMasterRouter.new
+        @router = Api::ApiMasterRouter.new
         @char = Character.new(name: "Star")
         Character.stub(:find_by_name).with("Star") { @char }
         SpecHelpers.stub_translate_for_testing

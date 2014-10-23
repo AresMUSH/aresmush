@@ -1,14 +1,12 @@
-require_relative "../../../../plugin_test_loader"
-
 module AresMUSH
-  module Api
+  module Handles
     describe UnlinkCmdHandler do
       include ApiHandlerTestHelper
       
       let(:expected_cmd) { "unlink" }
       
       before do
-        @router = ApiSlaveRouter.new
+        @router = Api::ApiSlaveRouter.new
         @char = Character.new(name: "Bob", handle: "@Star")
         @char.stub(:api_character_id) { "ABC" }
         Character.stub(:all) { [ @char ] }

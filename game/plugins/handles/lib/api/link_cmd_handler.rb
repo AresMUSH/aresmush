@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module Handles
     class LinkCmdHandler < ApiCommandHandler
       attr_accessor :args
       

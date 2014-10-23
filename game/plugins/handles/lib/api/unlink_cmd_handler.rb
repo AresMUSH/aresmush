@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module Handles
     class UnlinkCmdHandler < ApiCommandHandler
       attr_accessor :args
       

@@ -2,6 +2,14 @@ module AresMUSH
   module Api
     mattr_accessor :router
     
+    def self.get_character_id(client)
+      if (Api.is_master?)
+        client.emit_failure t('api.cant_link_on_master')
+      else
+        client.emit_success t('api.character_id_is', :id => client.char.api_character_id)
+      end
+    end
+    
     def self.create_router
       if (Api.is_master?)
         self.router = ApiMasterRouter.new

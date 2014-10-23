@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        Api.link_character(client, handle_name, code)
+        Handles.link_character(client, handle_name, code)
       end      
     end
 

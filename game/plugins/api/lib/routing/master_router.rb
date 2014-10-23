@@ -8,7 +8,7 @@ module AresMUSH
         when "friend/remove"
           handler = Friends::FriendCmdHandler
         when "link"
-          handler = LinkCmdHandler
+          handler = Handles::LinkCmdHandler
         when "login"
           handler = LoginCmdHandler
         when "ping"

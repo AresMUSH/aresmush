@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module Handles
     class LinkResponseHandler < ApiResponseHandler
       def handle   
         client.char.handle = response.args_str

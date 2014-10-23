@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def handle
-        Api.list_characters(client)
+        Handles.list_characters(client)
       end      
     end
 

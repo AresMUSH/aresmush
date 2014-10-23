@@ -1,6 +1,6 @@
 module AresMUSH
-  module Api
-    describe Api do
+  module Handles
+    describe Handles do
       include MockClient
       
       describe :link_character do
@@ -15,7 +15,7 @@ module AresMUSH
         it "should fail if already has a handle" do
           @char.stub(:handle) { "Star" }
           @client.should_receive(:emit_failure).with("api.character_already_linked")
-          Api.link_character(@client, "@Star", "LINK1")
+          Handles.link_character(@client, "@Star", "LINK1")
         end
         
         it "should send command to central" do
@@ -29,7 +29,7 @@ module AresMUSH
             cmd.command_name.should eq "link"
             cmd.args_str.should eq "@Star||ABC||Bob||LINK1"
           end
-          Api.link_character(@client, "@Star", "LINK1")
+          Handles.link_character(@client, "@Star", "LINK1")
         end
       end
     end
