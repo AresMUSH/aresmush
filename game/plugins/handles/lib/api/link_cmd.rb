@@ -18,7 +18,7 @@ module AresMUSH
         return t('api.invalid_handle') if !Handles.handle_name_valid?(self.handle_name)
         return t('api.invalid_char_id') if self.char_id.blank?
         return t('api.invalid_name') if self.name.blank?
-        return t('api.invalid_link_code') if self.code.blank?
+        return t('handles.invalid_link_code') if self.code.blank?
         return nil
       end
      

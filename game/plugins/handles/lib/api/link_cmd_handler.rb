@@ -22,11 +22,11 @@ module AresMUSH
         end
         
         if (char.linked_characters.has_key?(args.char_id))
-          return cmd.create_error_response t('api.character_already_linked')
+          return cmd.create_error_response t('handles.character_already_linked')
         end
         
         if (char.temp_link_codes[args.char_id] != args.code)
-          return cmd.create_error_response t('api.invalid_link_code')
+          return cmd.create_error_response t('handles.invalid_link_code')
         end
         
         char.linked_characters[args.char_id] = 

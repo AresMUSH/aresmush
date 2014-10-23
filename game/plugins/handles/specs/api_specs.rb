@@ -14,7 +14,7 @@ module AresMUSH
         
         it "should fail if already has a handle" do
           @char.stub(:handle) { "Star" }
-          @client.should_receive(:emit_failure).with("api.character_already_linked")
+          @client.should_receive(:emit_failure).with("handles.character_already_linked")
           Handles.link_character(@client, "@Star", "LINK1")
         end
         
@@ -22,7 +22,7 @@ module AresMUSH
           @client.stub(:name) { "Bob" }
           @char.stub(:handle) { nil }
           @char.stub(:api_character_id) { "ABC" }
-          @client.should_receive(:emit_success).with("api.sending_link_request")
+          @client.should_receive(:emit_success).with("handles.sending_link_request")
           Api.should_receive(:send_command) do |game_id, client, cmd|
             game_id.should eq ServerInfo.arescentral_game_id
             client.should eq @client

@@ -23,14 +23,14 @@ module AresMUSH
         cmd = ApiCommand.create_from("link @Star||ABC||Bob||LINK1")
         @char.linked_characters["ABC"] = "Foo"
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "api.character_already_linked")
+        check_response(response, ApiResponse.error_status, "handles.character_already_linked")
       end
       
       it "should fail if link code doesn't match" do
         cmd = ApiCommand.create_from("link @Star||ABC||Bob||LINK1")
         @char.temp_link_codes["ABC"] = "Foo"
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "api.invalid_link_code")
+        check_response(response, ApiResponse.error_status, "handles.invalid_link_code")
       end
       
       it "should succeed if link code matches" do

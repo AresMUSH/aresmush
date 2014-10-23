@@ -1,5 +1,3 @@
-require_relative "../../../../plugin_test_loader"
-
 module AresMUSH
   module Api
     describe SlaveRegisterResponseHandler do

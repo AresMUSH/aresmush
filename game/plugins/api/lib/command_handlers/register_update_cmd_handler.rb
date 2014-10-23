@@ -18,7 +18,7 @@ module AresMUSH
         
         game = Api.get_destination(game_id)
         if (game.nil?)
-          return cmd.create_error_response(t('api.cannot_find_server_info'))
+          return cmd.create_error_response(t('api.game_not_found'))
         end
         
         Global.logger.info "Updating existing game #{game.game_id} #{args.name}."

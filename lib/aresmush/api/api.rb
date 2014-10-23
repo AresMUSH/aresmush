@@ -6,7 +6,7 @@ module AresMUSH
       if (Api.is_master?)
         client.emit_failure t('api.cant_link_on_master')
       else
-        client.emit_success t('api.character_id_is', :id => client.char.api_character_id)
+        client.emit_success t('handles.character_id_is', :id => client.char.api_character_id)
       end
     end
     

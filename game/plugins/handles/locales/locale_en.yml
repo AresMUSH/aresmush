@@ -1,2 +1,12 @@
 en:
-    
+    handles:
+        sending_link_request: "Sending link request to AresCentral.  Please be patient."
+        cant_link_on_master: "You use this command on another game to link to your AresCentral handle."
+        character_id_is: "Use this character ID to link this character to your handle (help handle link): %xh%xc%{id}%xn"
+        link_key_is: "Use this link code back on the other game to complete the link process (help handle link): %xh%xc%{key}%xn"
+        invalid_link_code: "Invalid link code.  Please check the code and try again."
+        linked_characters: "Linked Characters"
+        characters_title: "Name                                     Character ID"
+        character_unlinked: "You unlink %{name} from your handle."
+        character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
+        
