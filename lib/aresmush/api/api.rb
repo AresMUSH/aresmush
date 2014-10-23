@@ -1,6 +1,5 @@
 module AresMUSH
   module Api
-    
     mattr_accessor :router
     
     def self.create_router
@@ -77,7 +76,7 @@ module AresMUSH
         end # with error handling
         begin
           if (!success)
-            response = cmd.create_error_response("Error communicating with remote server.  Please try again later.")
+            response = cmd.create_error_response(t('api.api_error'))
             Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
           end
         rescue Exception => e

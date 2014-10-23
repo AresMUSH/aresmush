@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module Friends
     class FriendCmdHandler < ApiCommandHandler
       attr_accessor :args
       
@@ -18,11 +18,11 @@ module AresMUSH
         Global.logger.debug "Adding #{friend_name} as a friend for #{char_name}."
         char = Character.find_by_name(char_name)
         if (char.nil?)
-          return cmd.create_error_response "Invalid handle."
+          return cmd.create_error_response t('api.invalid_handle')
         end
         
         if (!char.linked_characters.has_key?(args.char_id))
-          return cmd.create_error_response "This character is not linked to your handle."
+          return cmd.create_error_response t('api.character_not_linked')
         end
 
         if (cmd.command_name == "friend/add")

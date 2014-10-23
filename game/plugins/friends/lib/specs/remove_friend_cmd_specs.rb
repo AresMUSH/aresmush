@@ -1,29 +1,28 @@
-require_relative "../../../../plugin_test_loader"
-
 module AresMUSH
-  module Api
+  module Friends
     describe FriendCmdHandler do
       include ApiHandlerTestHelper
       
       let(:expected_cmd) { "friend/remove" }
       
       before do
-        @router = ApiMasterRouter.new
+        @router = Api::ApiMasterRouter.new
         @char = Character.new(name: "Star")
         Character.stub(:find_by_name).with("Star") { @char }
+        SpecHelpers.stub_translate_for_testing
       end
       
       it "should fail if handle char not found" do
         Character.stub(:find_by_name).with("Star") { nil }
         cmd = ApiCommand.create_from("friend/remove @Star||ABC||@Bob")
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "Invalid handle.")
+        check_response(response, ApiResponse.error_status, "api.invalid_handle")
       end
       
       it "should fail if character is not linked" do
         cmd = ApiCommand.create_from("friend/remove @Star||ABC||@Bob")
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "This character is not linked to your handle.")
+        check_response(response, ApiResponse.error_status, "api.character_not_linked")
       end
       
       it "should fail if remove friend fails" do

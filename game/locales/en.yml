@@ -51,12 +51,19 @@ en:
         page_x_of_y: "(page %{x} of %{y})"
         not_that_many_pages: "There aren't that many pages."
         
-    
     time:
         seconds: "%{time}s"
         minutes: "%{time}m"
         hours: "%{time}h"
         days: "%{time}d"
         
-
+    api:
+        invalid_char_id: "Invalid character ID."
+        invalid_handle: "Invalid handle.  Make sure it starts with '@'."
+        character_not_linked: "That character is not linked to that handle."
+        api_error: "Error communicating with remote server. Please try again later and contact the admin if the problem persists."
+        response_error: "Error from remote server: %{error}."
+        sending_to_remote: "Sending message to remote server.  This may take a moment."
+        api_cipher_error: "Error reading response from remote server.  Please contact the admin."
+        
       

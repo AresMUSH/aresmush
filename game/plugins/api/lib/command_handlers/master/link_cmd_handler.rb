@@ -18,15 +18,15 @@ module AresMUSH
 
         char = Character.find_by_name(char_name)
         if (char.nil?)
-          return cmd.create_error_response "Invalid handle."
+          return cmd.create_error_response t('api.invalid_handle')
         end
         
         if (char.linked_characters.has_key?(args.char_id))
-          return cmd.create_error_response "This character is already linked to your handle."
+          return cmd.create_error_response t('api.character_already_linked')
         end
         
         if (char.temp_link_codes[args.char_id] != args.code)
-          return cmd.create_error_response "Invalid link code.  Please check the code and try again."
+          return cmd.create_error_response t('api.invalid_link_code')
         end
         
         char.linked_characters[args.char_id] = 

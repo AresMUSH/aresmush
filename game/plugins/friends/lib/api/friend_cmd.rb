@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module Friends
     class ApiFriendCmdArgs
       attr_accessor :char_id, :handle_name, :friend_name
       
@@ -14,9 +14,9 @@ module AresMUSH
       end
       
       def validate
-        return "Missing character id." if self.char_id.blank?
-        return "Invalid handle name.  Make sure it starts with @." if !Handles.handle_name_valid?(self.handle_name)
-        return "Missing friend name." if self.friend_name.blank?
+        return t('api.invalid_char_id') if self.char_id.blank?
+        return t('api.invalid_handle') if !Handles.handle_name_valid?(self.handle_name)
+        return t('friends.invalid_friend_name') if self.friend_name.blank?
         return nil
       end
      

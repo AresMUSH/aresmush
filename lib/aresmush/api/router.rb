@@ -4,7 +4,7 @@ module AresMUSH
       def route_command(game_id, cmd)
         handler = build_command_handler(game_id, cmd)
         if handler.nil?
-          return cmd.create_error_response("Unrecognized command.")
+          return cmd.create_error_response t('api.unrecognized_command')
         end
         
         error = handler.validate

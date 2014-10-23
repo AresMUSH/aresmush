@@ -9,13 +9,14 @@ module AresMUSH
       
       before do
         @router = ApiMasterRouter.new
+        SpecHelpers.stub_translate_for_testing
       end
       
       it "should fail if the game is not found" do
         cmd = ApiCommand.create_from("ping A:B|C:D")
         Api.stub(:get_destination).with(1) { nil }
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "Cannot find server info.")
+        check_response(response, ApiResponse.error_status, "api.cannot_find_server_info")
       end
       
       it "should update the game's last ping time" do

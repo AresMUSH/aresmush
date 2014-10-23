@@ -1,17 +1,16 @@
 en:
     api:
-        api_error: "Error communicating with remote server. Please try again later and contact the admin if the problem persists."
-        response_error: "Error from remote server: %{error}."
-        sending_to_remote: "Sending message to remote server.  This may take a moment."
-        api_cipher_error: "Error reading response from remote server.  Please contact the admin."
+
+        # Game cmd
+        game_not_registered: "Game has not been registered."
+        game_already_registered: "Game has already been registered."
+        cannot_find_server_info: "Cannot find server info."
         game_not_found: "Game not found."
         games_title: "AresMUSH Games Directory"
         full_games_list_at_central: "Visit AresCentral for the full directory of all AresMUSH games."
-
-        sending_friends_request: "Sending friend request to AresCentral.  Please be patient."
-        cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend here.'
         cant_link_on_master: "You use this command on another game to link to your AresCentral handle."
         use_command_on_central: "You need to use this command on AresCentral."
+        unrecognized_command: "Unrecognized command."
         
         sending_link_request: "Sending link request to AresCentral.  Please be patient."
         
@@ -22,13 +21,20 @@ en:
         game_up_status: "%xgUp%xn"
         game_down_status: "%xrMay Be Down%xn"
         
+        invalid_port: "Invalid port."
+        invalid_category: "Invalid category."
+        invalid_name: "Invalid name."
+        invalid_privacy: "That is not a valid privacy setting."
+        invalid_description: "Invalid description."
+        invalid_game_id: "Invalid game ID."
+        invalid_key: "Invalid key."
+        
         character_id_is: "Use this character ID to link this character to your handle (help handle link): %xh%xc%{id}%xn"
         link_key_is: "Use this link code back on the other game to complete the link process (help handle link): %xh%xc%{key}%xn"
         character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
         character_not_linked: "This character is not linked to a handle.  See help handle link."
-        
+        invalid_link_code: "Invalid link code.  Please check the code and try again."
         linked_characters: "Linked Characters"
         characters_title: "Name                                     Character ID"
         
-        character_not_linked: "That character is not linked to your handle."
         character_unlinked: "You unlink %{name} from your handle."

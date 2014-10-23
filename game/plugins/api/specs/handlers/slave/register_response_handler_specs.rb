@@ -8,11 +8,12 @@ module AresMUSH
         @client = double
         @game = double
         Game.stub(:master) { @game }
+        SpecHelpers.stub_translate_for_testing
       end
       
       it "should fail if game id is invalid" do
         response = ApiResponse.new("register", ApiResponse.ok_status, "x||y")
-        expect { @router.route_response(@client, response) }.to raise_error("Invalid game ID.")
+        expect { @router.route_response(@client, response) }.to raise_error("api.invalid_game_id")
       end
       
       context "success" do

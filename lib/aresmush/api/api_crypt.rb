@@ -1,7 +1,6 @@
 module AresMUSH
   module Api
     module ApiCrypt
-    
       def self.encrypt(key, data)
         cipher = OpenSSL::Cipher.new('AES-128-CBC')
         cipher.encrypt

@@ -4,9 +4,9 @@ module AresMUSH
       def build_command_handler(game_id, cmd)
         case cmd.command_name
         when "friend/add"
-          handler = FriendCmdHandler
+          handler = Friends::FriendCmdHandler
         when "friend/remove"
-          handler = FriendCmdHandler
+          handler = Friends::FriendCmdHandler
         when "link"
           handler = LinkCmdHandler
         when "login"

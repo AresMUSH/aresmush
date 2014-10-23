@@ -15,10 +15,10 @@ module AresMUSH
       end
       
       def validate
-        return "Missing character id." if self.char_id.blank?
-        return "Invalid handle name.  Make sure it starts with @." if !Handles.handle_name_valid?(self.handle_name)
-        return "Missing character name." if self.char_name.blank?
-        return "Missing privacy." if self.privacy.blank?
+        return t('api.invalid_char_id') if self.char_id.blank?
+        return t('api.invalid_handle') if !Handles.handle_name_valid?(self.handle_name)
+        return t('api.invalid_name') if self.char_name.blank?
+        return t('api.invalid_privacy') if self.privacy.blank?
         return nil
       end
      

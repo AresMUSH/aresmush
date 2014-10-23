@@ -16,11 +16,11 @@ module AresMUSH
       end
       
       def validate
-        return "Invalid host." if host.blank?
-        return "Invalid port." if port.blank?
-        return "Invalid name." if name.blank?
-        return "Invalid category." if !ServerInfo.categories.include?(category)
-        return "Invalid description." if desc.blank?
+        return t('api.invalid_host') if host.blank?
+        return t('api.invalid_port') if port.blank?
+        return t('api.invalid_name') if name.blank?
+        return t('api.invalid_category') if !ServerInfo.categories.include?(category)
+        return t('api.invalid_description') if desc.blank?
         return nil
       end
       

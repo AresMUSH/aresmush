@@ -13,12 +13,12 @@ module AresMUSH
 
       def handle
         if (game_id == ServerInfo.default_game_id)
-          return cmd.create_error_response("Game has not been registered.")
+          return cmd.create_error_response(t('api.game_not_registered'))
         end
         
         game = Api.get_destination(game_id)
         if (game.nil?)
-          return cmd.create_error_response("Cannot find server info.")
+          return cmd.create_error_response(t('api.cannot_find_server_info'))
         end
         
         Global.logger.info "Updating existing game #{game.game_id} #{args.name}."

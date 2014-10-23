@@ -17,11 +17,11 @@ module AresMUSH
         char = Character.all.select { |c| c.api_character_id == args.char_id }.first
         
         if (char.nil?)
-          return cmd.create_error_response "Invalid character ID."
+          return cmd.create_error_response t('api.invalid_char_id')
         end
         
         if (char.handle != args.handle_name)
-          return cmd.create_error_response "This character is not linked to that handle."
+          return cmd.create_error_response t('api.character_not_linked')
         end
         
         char.handle = nil

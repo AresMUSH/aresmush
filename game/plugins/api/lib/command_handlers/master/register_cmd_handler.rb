@@ -13,7 +13,7 @@ module AresMUSH
       
       def handle
         if (game_id != ServerInfo.default_game_id)
-          return cmd.create_error_response("Game has already been registered.")
+          return cmd.create_error_response t('api.game_already_registered')
         end
        
         key = ApiCrypt.generate_key

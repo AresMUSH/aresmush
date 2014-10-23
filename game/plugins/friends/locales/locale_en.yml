@@ -7,3 +7,6 @@ en:
         friend_added: "%{name} has been added to your friends list."
         friend_removed: "%{name} has been removed from your friends list."
         connected: "-CONNECTED-"
+        cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend here.'
+        sending_friends_request: "Sending friend request to AresCentral.  Please be patient."
+        invalid_friend_name: "Invalid friend name."

@@ -13,8 +13,8 @@ module AresMUSH
       end
 
       def validate
-        return "Invalid game ID." if game_id.blank?
-        return "Invalid key." if api_key.blank?
+        return t('api.invalid_game_id') if game_id.blank?
+        return t('api.invalid_key') if api_key.blank?
       end
       
       def self.create_from(response_args)

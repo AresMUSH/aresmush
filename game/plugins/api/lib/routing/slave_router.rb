@@ -17,9 +17,9 @@ module AresMUSH
       def build_response_handler(client, response)
         case response.command_name
         when "friend/add"
-          handler = FriendResponseHandler
+          handler = Friends::FriendResponseHandler
         when "friend/remove"
-          handler = FriendResponseHandler
+          handler = Friends::FriendResponseHandler
         when "link"
           handler = LinkResponseHandler
         when "login"

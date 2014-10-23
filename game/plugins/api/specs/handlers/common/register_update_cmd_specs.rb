@@ -9,31 +9,32 @@ module AresMUSH
        
       before do
         @router = ApiMasterRouter.new
+        SpecHelpers.stub_translate_for_testing
       end
       
       it "should fail if game not registered" do
         cmd = ApiCommand.create_from("register/update somewhere.com||101||A MUSH||Social||A cool MUSH")
         response = @router.route_command(-1, cmd)
-        check_response(response, ApiResponse.error_status, "Game has not been registered.")
+        check_response(response, ApiResponse.error_status, "api.game_not_registered")
       end
       
       it "should fail if the port is not a number" do
         cmd = ApiCommand.create_from("register/update somewhere.com||x||A MUSH||Social||A cool MUSH")
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "Invalid port.")
+        check_response(response, ApiResponse.error_status, "api.invalid_port")
       end
       
       it "should fail if the category is not valid" do
         cmd = ApiCommand.create_from("register/update somewhere.com||101||A MUSH||x||A cool MUSH")
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "Invalid category.")
+        check_response(response, ApiResponse.error_status, "api.invalid_category")
       end
       
       it "should fail if the game is not found" do
         cmd = ApiCommand.create_from("register/update somewhere.com||101||A MUSH||Social||A cool MUSH")
         Api.stub(:get_destination).with(1) { nil }
         response = @router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "Cannot find server info.")
+        check_response(response, ApiResponse.error_status, "api.cannot_find_server_info")
       end
       
       it "should update the game" do

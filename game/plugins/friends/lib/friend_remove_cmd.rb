@@ -23,7 +23,7 @@ module AresMUSH
       
       def handle
         if (self.name.start_with?("@"))
-          Api.remove_handle_friend(client, self.name)
+          Friends.remove_handle_friend(client, self.name)
         else
           error = Friends.remove_friend(client.char, self.name)
           if (error)
