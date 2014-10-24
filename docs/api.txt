@@ -57,23 +57,23 @@ AresCentral can issue a handle unlink.
     (C) unlink <handle>||<character id>
     (R) unlink
     
-******* HANDLE LOGIN *******
+******* LOGIN *******
 
 When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.
 
     From Satellite to AresCentral:
-    (C) handle/login <handle>||<character id>||<name>||<privacy>
-    (R) handle/login <handle friends>
+    (C) login <handle>||<character id>||<name>||<privacy>
+    (R) login <handle friends>
 
-******* HANDLE LOGOUT *******
+******* LOGOUT *******
 
 When a character linked to a handle logs out, the Satellite should notify AresCentral.
 
     From Satellite to AresCentral:
-    (C) handle/logout <handle>||<character id>
-    (R) handle/logout
+    (C) logout <handle>||<character id>
+    (R) logout
     
-******* HANDLE ADD FRIEND *******
+******* ADD FRIEND *******
 
 On a sattelite, a character can add someone's handle as a friend.
 
@@ -81,7 +81,7 @@ On a sattelite, a character can add someone's handle as a friend.
     (C) friend/add <character id>||<handle>||<friend>
     (R) friend/add <friend>
 
-******* HANDLE REMOVE FRIEND *******
+******* REMOVE FRIEND *******
 
 On a sattelite, a character can remove someone's handle from their friends list.
 

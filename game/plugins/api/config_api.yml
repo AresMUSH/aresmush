@@ -1,5 +1,6 @@
 api:
-    # Set up when you want the API ping to occur.
+    # Set up when you want the API ping to occur.  This is when the game will contact 
+    # AresCentral to indicate that it's alive and update its info if necessary.
     cron:
         #date: 1
         #day_of_week: Sat

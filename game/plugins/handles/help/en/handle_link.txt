@@ -8,7 +8,7 @@ Once you have your handle, you can %xhlink%xn characters to it. Linking is optio
 
     %xghandle/linkcode <character id>%xn
     
-3) Back on the other game, use your one-time link code from step 2 to link the character to your handle.
+3) Back on the original game, use your one-time link code from step 2 to link the character to your handle.
 
     %xchandle/link <link code>%xn
 

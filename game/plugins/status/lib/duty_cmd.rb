@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def crack!
-        self.status = cmd.args.nil? ? nil : trim_input(cmd.args).downcase
+        self.status = OnOffOption.new(cmd.args)
       end
       
       def check_can_manage_status
@@ -28,13 +28,12 @@ module AresMUSH
       end
       
       def check_status
-        values = ['on', 'off']
-        return t('dispatcher.invalid_on_off_option') if !values.include?(self.status)
+        return self.status.validate
       end
       
       def handle        
         client.char.is_afk = false
-        client.char.is_on_duty = (self.status == "on")
+        client.char.is_on_duty = self.status.is_on?
         client.char.save
         client.emit_ooc t('status.set_duty', :value => self.status)
       end

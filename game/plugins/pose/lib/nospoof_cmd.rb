@@ -5,10 +5,10 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginRequiresArgs
 
-      attr_accessor :value
+      attr_accessor :option
       
       def initialize
-        self.required_args = ['value']
+        self.required_args = ['option']
         self.help_topic = 'nospoof'
         super
       end
@@ -18,18 +18,17 @@ module AresMUSH
       end
       
       def crack!
-        self.value = cmd.args.nil? ? nil : trim_input(cmd.args).downcase
+        self.option = OnOffOption.new(cmd.args)
       end
       
       def check_status
-        values = ['on', 'off']
-        return t('dispatcher.invalid_on_off_option') if !values.include?(self.value)
+        return self.option.validate
       end
       
       def handle
-        client.char.nospoof = (self.value == "on")
+        client.char.nospoof = self.option.is_on?
         client.char.save
-        client.emit_success t('pose.nospoof_set', :status => self.value)
+        client.emit_success t('pose.nospoof_set', :status => self.option)
       end
     end
   end

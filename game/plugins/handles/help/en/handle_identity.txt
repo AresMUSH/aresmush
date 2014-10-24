@@ -1,8 +1,8 @@
 You can display your handle name to let others know your OOC identity.  Handles are only displayed if your character's handle privacy setting is "public".
 
-Handles are shown like an extra alias, with an "@" sign in front to distinguish them from character names.
+Handles are shown like an extra alias, with an "@" sign in front to distinguish them from character names.  So if the character Cate is linked to the handle @Faraday, a page from Cate would show up like so:
 
-    %% (to Bob): @Faraday (@Cate) says, "Hello!"
+    %% (to Bob): @Faraday (Cate) says, "Hello!"
     <Public> @Faraday (Cate) says, "Hello!"
     
 Sometimes people use a special OOC alt, for the sole purpose of hanging out OOC and keeping OOC chatter confined to a single window.  Staffers may do this too.  You can hide the character name and show only the handle by marking the character as OOC-only.
