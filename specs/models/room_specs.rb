@@ -4,7 +4,7 @@ require "aresmush"
 
 module AresMUSH
 
-  describe Room do
+  describe Room, :dbtest => true do
     
     before do
       @room = Room.new

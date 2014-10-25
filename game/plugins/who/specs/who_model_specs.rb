@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
   
 module AresMUSH
-  describe Game do    
+  describe Game, :dbtest => true do    
     describe :initialize_who_record do
       it "should set the initial online record" do
         using_test_db do

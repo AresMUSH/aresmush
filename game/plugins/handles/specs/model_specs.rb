@@ -1,6 +1,6 @@
 module AresMUSH
   module Handles
-    describe Character do
+    describe Character, :dbtest => true do
       include GameTestHelper
       
       before do

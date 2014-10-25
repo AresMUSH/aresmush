@@ -147,9 +147,30 @@ task :upgrade do
   bootstrapper = AresMUSH::Bootstrapper.new
 end
 
-RSpec::Core::RakeTask.new do |t|
-  t.pattern = FileList["./**/*_spec?.rb"]
+desc "Run all specs."
+begin
+  require 'rspec/core/rake_task'
+
+  RSpec::Core::RakeTask.new(:spec, :tag) do |t, task_args|
+    tag = task_args[:tag]
+    if (tag)
+     t.rspec_opts = "--example #{tag}"
+    end
+   end
+ rescue LoadError
+  # no rspec available
 end
 
-task :default => :start
+desc "Run all specs except the db ones."
+begin
+  require 'rspec/core/rake_task'
+
+  RSpec::Core::RakeTask.new('spec:unit', :tag) do |t, task_args|
+     t.rspec_opts = "--tag ~dbtest"
+   end
+ rescue LoadError
+  # no rspec available
+end
+
+task :default => 'spec:unit'
 

@@ -47,15 +47,6 @@ module AresMUSH
         client_monitor.should_receive(:connection_established).with(connection)
         @server.start
       end
-      
-      it "should create multiple characters" do
-        using_test_db do
-          
-          Character.create!(name: "Bob1")
-          Character.create!(name: "Bob2")
-          Character.all.count.should eq 2
-        end
-      end  
     end    
   end
 end

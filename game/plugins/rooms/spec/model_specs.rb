@@ -1,6 +1,6 @@
 module AresMUSH
 
-  describe Room do
+  describe Room, :dbtest => true do
     include GlobalTestHelper
     
     before do

@@ -47,7 +47,7 @@ module AresMUSH
         end
       end
         
-      context "success", :dbtest do
+      context "success", :dbtest, :pluginsystemtest do
         before do
           client.stub(:logged_in?) { true }
           @target = Character.create(:name => "Bob", :xp => 4)

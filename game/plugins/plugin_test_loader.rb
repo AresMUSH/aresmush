@@ -10,11 +10,6 @@ plugin_files.each do |f|
   load f
 end
 
-RSpec.configure do |c|
-  c.treat_symbols_as_metadata_keys_with_true_values = true
-  c.include AresMUSH::SpecHelpers
-end
-
 module AresMUSH
   module PluginSystemTest
     include GameTestHelper
@@ -45,7 +40,7 @@ module AresMUSH
       @client.stub(:name) { "TestDummy" }
     end
     
-    shared_context "setup test db", :dbtest do
+    shared_context "setup test db", :pluginsystemtest do
       before do
         stub_client_reload
         SpecHelpers.connect_to_test_db

@@ -1,3 +1,5 @@
+require 'rspec'
+
 # figure out where we are being loaded from
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
   begin
@@ -108,4 +110,10 @@ module AresMUSH
     end
   end
     
+end
+
+
+RSpec.configure do |c|
+  c.treat_symbols_as_metadata_keys_with_true_values = true
+  c.include AresMUSH::SpecHelpers
 end

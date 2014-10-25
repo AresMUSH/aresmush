@@ -38,7 +38,7 @@ module AresMUSH
         end
       end
       
-      context "success", :dbtest do
+      context "success", :dbtest, :pluginsystemtest do
         
           before do
             setup_client_with_real_char
