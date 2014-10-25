@@ -5,11 +5,6 @@ module AresMUSH
            
       attr_accessor :game_id, :cipher_iv, :encrypted_data
       
-      def initialize
-        Api.create_router
-        super
-      end
-      
       def want_command?(client, cmd)
         cmd.root_is?("api>")
       end
@@ -36,7 +31,7 @@ module AresMUSH
           command_str = ApiCrypt.decrypt(key, self.cipher_iv, self.encrypted_data)
           cmd = ApiCommand.create_from(command_str)
           Global.logger.debug "API command from #{game_id}: #{cmd}"
-          response = Api.router.route_command(self.game_id, cmd)
+          response = Global.api_router.route_command(self.game_id, cmd)
           Api.send_response client, key, "#{response}"
         end
       end

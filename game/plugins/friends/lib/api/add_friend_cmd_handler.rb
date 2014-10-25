@@ -1,11 +1,11 @@
 module AresMUSH
   module Friends
-    class AddFriendCmdHandler
+    class FriendCmdHandler
       include ApiCommandHandler
       attr_accessor :args
       
       def self.commands
-        ["friend/add", "friend/remove"]
+        ["friend/add"]
       end
       
       def self.available_on_master?
@@ -38,20 +38,11 @@ module AresMUSH
           return cmd.create_error_response t('api.character_not_linked')
         end
 
-        if (cmd.command_name == "friend/add")
-          error = Friends.add_friend(char, friend_name)
-          if (error)
-            return cmd.create_error_response error
-          else
-            return cmd.create_response(ApiResponse.ok_status, args.friend_name)
-          end
+        error = Friends.add_friend(char, friend_name)
+        if (error)
+          return cmd.create_error_response error
         else
-          error = Friends.remove_friend(char, friend_name)
-          if (error)
-            return cmd.create_error_response error
-          else
-            return cmd.create_response(ApiResponse.ok_status, args.friend_name)
-          end
+          return cmd.create_response(ApiResponse.ok_status, args.friend_name)
         end
       end
     end

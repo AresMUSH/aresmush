@@ -4,13 +4,25 @@ module AresMUSH
       include ApiResponseHandler
 
       attr_accessor :args
+
+      def self.commands
+        ["register"]
+      end
       
+      def self.available_on_master?
+        false
+      end
+    
+      def self.available_on_slave?
+        true
+      end
+    
       def crack!
         self.args = ApiRegisterResponseArgs.create_from(response.args_str)
       end
       
       def validate
-        args.validate
+        return args.validate
       end
       
       def handle

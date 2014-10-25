@@ -16,7 +16,7 @@ module AresMUSH
           end
           return
         else
-          Api.router.route_response(client, response)
+          Global.api_router.route_response(client, response)
         end
       end
     end

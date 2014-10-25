@@ -9,6 +9,6 @@ module AresMUSH
       config_reader.config
     end    
     
-    mattr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
+    mattr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :api_router
   end
 end

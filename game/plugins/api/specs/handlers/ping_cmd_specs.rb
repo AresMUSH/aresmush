@@ -8,7 +8,8 @@ module AresMUSH
       let(:expected_cmd) { "ping" }
       
       before do
-        @router = ApiMasterRouter.new
+        Api.stub(:is_master?) { true }
+        @router = ApiRouter.new
         SpecHelpers.stub_translate_for_testing
       end
       

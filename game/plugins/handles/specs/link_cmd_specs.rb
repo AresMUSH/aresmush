@@ -6,7 +6,8 @@ module AresMUSH
       let(:expected_cmd) { "link" }
       
       before do
-        @router = Api::ApiMasterRouter.new
+        Api.stub(:is_master?) { true }
+        @router = Api::ApiRouter.new
         @char = Character.new(name: "Star")
         Character.stub(:find_by_name).with("Star") { @char }
         SpecHelpers.stub_translate_for_testing

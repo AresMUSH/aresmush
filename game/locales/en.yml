@@ -68,5 +68,7 @@ en:
         game_not_found: "Game not found."
         use_command_on_central: "You need to use this command on AresCentral."
         unrecognized_command: "Unrecognized command."
+        received_central_command: "Satellite game received a command meant for AresCentral."
+        received_slave_command: "AresCentral received a command meant for a satellite game."
         
       

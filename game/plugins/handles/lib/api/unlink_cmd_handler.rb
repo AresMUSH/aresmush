@@ -4,6 +4,18 @@ module AresMUSH
       include ApiCommandHandler
       attr_accessor :args
       
+      def self.commands
+        ["unlink"]
+      end
+      
+      def self.available_on_master?
+        false
+      end
+      
+      def self.available_on_slave?
+        true
+      end
+      
       def crack!
         self.args = ApiUnlinkCmdArgs.create_from(cmd.args_str)
       end

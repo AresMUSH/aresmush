@@ -10,14 +10,6 @@ module AresMUSH
       end
     end
     
-    def self.create_router
-      if (Api.is_master?)
-        self.router = ApiMasterRouter.new
-      else
-        self.router = ApiSlaveRouter.new
-      end
-    end
-    
     def self.is_master?
       game = Game.master
       game.nil? ? false : Game.master.api_game_id == ServerInfo.arescentral_game_id

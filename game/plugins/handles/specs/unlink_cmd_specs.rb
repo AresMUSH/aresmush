@@ -6,7 +6,8 @@ module AresMUSH
       let(:expected_cmd) { "unlink" }
       
       before do
-        @router = Api::ApiSlaveRouter.new
+        Api.stub(:is_master?) { false }
+        @router = Api::ApiRouter.new
         @char = Character.new(name: "Bob", handle: "@Star")
         @char.stub(:api_character_id) { "ABC" }
         Character.stub(:all) { [ @char ] }

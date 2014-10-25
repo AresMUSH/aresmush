@@ -1,10 +1,10 @@
 module AresMUSH
-  module Handles
-    class LinkResponseHandler
+  module Friends
+    class FriendResponseHandler
       include ApiResponseHandler
       
       def self.commands
-        ["link"]
+        ["friend/remove"]
       end
       
       def self.available_on_master?
@@ -16,9 +16,10 @@ module AresMUSH
       end
       
       def handle   
-        client.char.handle = response.args_str
+        name = response.args_str
+        client.char.handle_friends.delete response.args_str
         client.char.save!
-        client.emit_success "You have linked this character to handle #{response.args_str}.  Your privacy level has been set to #{client.char.handle_privacy}."
+        client.emit_success t('friends.friend_removed', :name => name)
       end
     end
   end

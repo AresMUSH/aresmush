@@ -2,7 +2,8 @@ module AresMUSH
   module Api
     describe SlaveRegisterResponseHandler do
       before do
-        @router = ApiSlaveRouter.new
+        Api.stub(:is_master?) { false }
+        @router = ApiRouter.new
         @client = double
         @game = double
         Game.stub(:master) { @game }

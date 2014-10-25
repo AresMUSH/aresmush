@@ -3,6 +3,18 @@ module AresMUSH
     class PingCmdHandler
       include ApiCommandHandler
       
+      def self.commands
+        ["ping"]
+      end
+
+      def self.available_on_master?
+        true
+      end
+      
+      def self.available_on_slave?
+        false
+      end
+            
       def handle
         game = Api.get_destination(game_id)
         if (game.nil?)

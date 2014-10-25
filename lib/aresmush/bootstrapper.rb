@@ -14,6 +14,7 @@ module AresMUSH
       client_monitor = ClientMonitor.new(client_factory)
       server = Server.new
       db = Database.new
+      api_router = Api::ApiRouter.new
             
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.
@@ -22,6 +23,7 @@ module AresMUSH
       Global.plugin_manager = plugin_manager
       Global.dispatcher = dispatcher
       Global.locale = locale
+      Global.api_router = api_router
             
       # Configure a trap for exiting.
       at_exit do
@@ -36,6 +38,7 @@ module AresMUSH
       
       locale.setup
       plugin_manager.load_all
+      api_router.find_handlers
     
       Global.logger.debug Global.config
 
