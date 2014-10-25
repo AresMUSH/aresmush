@@ -1,5 +1,4 @@
 require 'rspec'
-require 'diff-lcs'
 
 # figure out where we are being loaded from
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
