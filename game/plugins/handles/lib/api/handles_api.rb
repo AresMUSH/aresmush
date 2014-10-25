@@ -53,7 +53,9 @@ module AresMUSH
         list << t('handles.characters_title')
         list << "%l2"
         client.char.linked_characters.each do |k, v| 
-          name = "#{v['name']}@#{ServerInfo.find_by_dest_id(v['game_id']).name}"
+          game = ServerInfo.find_by_dest_id(v['game_id'])
+          game_name = game.nil? ? "Unknown" : game.name
+          name = "#{v['name']}@#{game_name}"
           list << "#{name.ljust(40)} #{k}"
         end
         client.emit BorderedDisplay.list list, t('handles.linked_characters')
