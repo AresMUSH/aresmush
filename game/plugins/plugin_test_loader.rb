@@ -6,7 +6,7 @@ def self.plugin_files(name = "*")
   all_files.select { |f| !/_spec[s]*.rb*/.match(f) }
 end
 
-plugin_files.each do |f|
+plugin_files.sort.each do |f|
   load f
 end
 
