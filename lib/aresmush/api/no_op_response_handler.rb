@@ -1,6 +1,8 @@
 module AresMUSH
   module Api
-    class NoOpResponseHandler < ApiResponseHandler
+    class NoOpResponseHandler
+      include ApiResponseHandler
+      
       def handle   
         Global.logger.debug "#{response} response received."
       end

@@ -1,6 +1,8 @@
 module AresMUSH
   module Api
-    class LoginCmdHandler < ApiCommandHandler
+    class LoginCmdHandler
+      include ApiCommandHandler
+      
       attr_accessor :args
       
       def crack!

@@ -1,5 +1,5 @@
 module AresMUSH
-  class ApiCommandHandler
+  module ApiCommandHandler
     attr_accessor :game_id, :cmd
       
     def initialize(game_id, cmd)
@@ -17,7 +17,7 @@ module AresMUSH
     end
   end
     
-  class ApiResponseHandler
+  module ApiResponseHandler
     attr_accessor :client, :response
       
     def initialize(client, response)

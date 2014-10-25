@@ -1,6 +1,8 @@
 module AresMUSH
   module Api
-    class SlaveRegisterResponseHandler < ApiResponseHandler
+    class SlaveRegisterResponseHandler
+      include ApiResponseHandler
+
       attr_accessor :args
       
       def crack!

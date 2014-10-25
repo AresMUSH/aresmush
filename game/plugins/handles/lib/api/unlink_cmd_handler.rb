@@ -1,6 +1,7 @@
 module AresMUSH
   module Handles
-    class UnlinkCmdHandler < ApiCommandHandler
+    class UnlinkCmdHandler
+      include ApiCommandHandler
       attr_accessor :args
       
       def crack!

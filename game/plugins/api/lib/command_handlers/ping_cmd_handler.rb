@@ -1,6 +1,7 @@
 module AresMUSH
   module Api
-    class PingCmdHandler < ApiCommandHandler
+    class PingCmdHandler
+      include ApiCommandHandler
       
       def handle
         game = Api.get_destination(game_id)

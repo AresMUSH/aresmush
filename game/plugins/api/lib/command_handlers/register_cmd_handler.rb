@@ -1,6 +1,7 @@
 module AresMUSH
   module Api
-    class MasterRegisterCmdHandler < ApiCommandHandler
+    class MasterRegisterCmdHandler
+      include ApiCommandHandler
       attr_accessor :args
       
       def crack!

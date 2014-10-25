@@ -1,6 +1,7 @@
 module AresMUSH
   module Friends
-    class FriendCmdHandler < ApiCommandHandler
+    class FriendCmdHandler
+      include ApiCommandHandler
       attr_accessor :args
       
       def crack!

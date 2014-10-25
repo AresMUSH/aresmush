@@ -1,6 +1,8 @@
 module AresMUSH
   module Api
-    class RegisterUpdateResponseHandler < ApiResponseHandler
+    class RegisterUpdateResponseHandler
+      include ApiResponseHandler
+      
       def handle   
         Global.logger.info "Game registration successfully updated."
       end

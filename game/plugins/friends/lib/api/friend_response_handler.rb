@@ -1,6 +1,8 @@
 module AresMUSH
   module Friends
-    class FriendResponseHandler < ApiResponseHandler
+    class FriendResponseHandler
+      include ApiResponseHandler
+      
       def handle   
         name = response.args_str
         if (response.command_name == "friend/add")
