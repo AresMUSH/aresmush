@@ -93,7 +93,6 @@ require 'aresmush/plugin_helpers/on_off_option.rb'
 require 'aresmush/templates/template_renderer.rb'
 require 'aresmush/templates/template_formatters.rb'
 require 'aresmush/server.rb'
-require 'aresmush/spec_helpers.rb'
 require 'aresmush/yaml_file_parser.rb'
 
 

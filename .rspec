@@ -1,3 +1,4 @@
 -c 
 --default_path . 
 --pattern **/*_spec*.rb
+--require spec_helper
