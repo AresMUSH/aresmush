@@ -6,6 +6,7 @@ require 'rspec'
 require 'rspec/core/rake_task'
 require 'tempfile'
 require 'mongoid'
+require 'diff-lcs'
 
 task :start do
   bootstrapper = AresMUSH::Bootstrapper.new
