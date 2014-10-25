@@ -2,6 +2,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'aresmush'
 require 'erubis'
+require 'rspec'
 require 'rspec/core/rake_task'
 require 'tempfile'
 require 'mongoid'
