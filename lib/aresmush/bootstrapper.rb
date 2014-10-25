@@ -37,7 +37,8 @@ module AresMUSH
       locale.setup
       plugin_manager.load_all
       
-      api_router = ApiRouter.new(Game.master.api_game_id == ServerInfo.arescentral_game_id)
+      game = Game.master
+      api_router = ApiRouter.new(game.nil? ? false : game.api_game_id == ServerInfo.arescentral_game_id)
       Global.api_router = api_router
       api_router.find_handlers
     
