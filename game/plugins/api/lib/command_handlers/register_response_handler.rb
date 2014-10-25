@@ -30,7 +30,7 @@ module AresMUSH
         game.api_game_id = args.game_id
         game.save
 
-        central = Api.get_destination(ServerInfo.arescentral_game_id)
+        central = ServerInfo.find_by_dest_id(ServerInfo.arescentral_game_id)
         if (central.nil?)
           raise "Can't find AresCentral server info."
         end

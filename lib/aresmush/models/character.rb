@@ -15,7 +15,11 @@ module AresMUSH
       hash = super(options)
       hash[:room] = self.room_id
       hash
-    end  
+    end 
+    
+    def self.random_link_code
+      (0...8).map { (65 + rand(26)).chr }.join
+    end 
   end
 end
     

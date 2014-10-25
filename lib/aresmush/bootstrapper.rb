@@ -14,7 +14,7 @@ module AresMUSH
       client_monitor = ClientMonitor.new(client_factory)
       server = Server.new
       db = Database.new
-      api_router = Api::ApiRouter.new
+      api_router = ApiRouter.new(Game.master.api_game_id == ServerInfo.arescentral_game_id)
             
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.

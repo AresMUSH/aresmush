@@ -12,3 +12,4 @@ en:
         set_ooc_only: "This character has been marked OOC-only.  The game will not show your character name next to your handle name when your handle is shown."
         clear_ooc_only: "This character has been marked as a regular character.  The game will show your character name next to your handle name when your handle is shown."
         ooc_only_must_be_public: "A character must be public to be marked as OOC-only."
+        link_successful: "You have linked this character to handle %{handle}.  Your privacy level has been set to '%{privacy}'."

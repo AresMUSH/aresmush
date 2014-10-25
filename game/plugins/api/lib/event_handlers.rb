@@ -9,7 +9,7 @@ module AresMUSH
         server_config = Global.config['server']
         
         if (last_server_info != server_config)
-          if (Api.is_master?)
+          if (Global.api_router.is_master?)
             ServerInfo.all.each do |s|
               next if (s.game_id == Game.master.api_game_id)
           
@@ -20,7 +20,7 @@ module AresMUSH
               server_config["description"])
             
               cmd = ApiCommand.new("register/update", args.to_s)
-              Api.send_command(s.game_id, nil, cmd)
+              Global.api_router.send_command(s.game_id, nil, cmd)
             end
           else
             args = ApiRegisterCmdArgs.new(
@@ -35,7 +35,7 @@ module AresMUSH
             else
               cmd = ApiCommand.new("register/update", args.to_s)
             end
-            Api.send_command(ServerInfo.arescentral_game_id, nil, cmd)
+            Global.api_router.send_command(ServerInfo.arescentral_game_id, nil, cmd)
           end
         end
       end
@@ -43,7 +43,7 @@ module AresMUSH
       def on_cron_event(event)
         config = Global.config['api']['cron']
         return if !Cron.is_cron_match?(config, event.time)
-        return if Api.is_master?
+        return if Global.api_router.is_master?
         
         chars = []
         Global.client_monitor.logged_in_clients.each do |c|
@@ -51,7 +51,7 @@ module AresMUSH
         end
         args = ApiPingCmdArgs.new(chars)
         cmd = ApiCommand.new("ping", args.to_s)
-        Api.send_command ServerInfo.arescentral_game_id, nil, cmd
+        Global.api_router.send_command ServerInfo.arescentral_game_id, nil, cmd
       end
     end
   end

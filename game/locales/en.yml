@@ -70,5 +70,7 @@ en:
         unrecognized_command: "Unrecognized command."
         received_central_command: "Satellite game received a command meant for AresCentral."
         received_slave_command: "AresCentral received a command meant for a satellite game."
+        no_handle_set: "You have not linked this character to a handle."
+        cant_link_on_master: "This character -is- your handle.  You cannot link it to another one."
         
       

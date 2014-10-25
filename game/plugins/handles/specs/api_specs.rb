@@ -8,7 +8,9 @@ module AresMUSH
           mock_client = build_mock_client
           @client = mock_client[:client]
           @char = mock_client[:char]
-          Api.stub(:is_master?) { false }
+          @router = double
+          @router.stub(:is_master?) { false }
+          Global.stub(:api_router) { @router }
           SpecHelpers.stub_translate_for_testing
         end        
         
@@ -23,7 +25,7 @@ module AresMUSH
           @char.stub(:handle) { nil }
           @char.stub(:api_character_id) { "ABC" }
           @client.should_receive(:emit_success).with("handles.sending_link_request")
-          Api.should_receive(:send_command) do |game_id, client, cmd|
+          @router.should_receive(:send_command) do |game_id, client, cmd|
             game_id.should eq ServerInfo.arescentral_game_id
             client.should eq @client
             cmd.command_name.should eq "link"

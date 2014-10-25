@@ -29,7 +29,7 @@ module AresMUSH
           return cmd.create_error_response(t('api.game_not_registered'))
         end
         
-        game = Api.get_destination(game_id)
+        game = ServerInfo.find_by_dest_id(game_id)
         if (game.nil?)
           return cmd.create_error_response(t('api.game_not_found'))
         end

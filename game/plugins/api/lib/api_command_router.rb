@@ -22,7 +22,7 @@ module AresMUSH
           if (self.game_id == ServerInfo.default_game_id.to_s)
             key = ServerInfo.default_key
           else              
-            game = Api.get_destination(self.game_id)
+            game = ServerInfo.find_by_dest_id(self.game_id)
             if (game.nil?)
               raise "Cannot accept commands from #{self.game_id}."
             end
@@ -32,7 +32,7 @@ module AresMUSH
           cmd = ApiCommand.create_from(command_str)
           Global.logger.debug "API command from #{game_id}: #{cmd}"
           response = Global.api_router.route_command(self.game_id, cmd)
-          Api.send_response client, key, "#{response}"
+          Global.api_router.send_response client, key, "#{response}"
         end
       end
     end

@@ -31,5 +31,9 @@ module AresMUSH
     def self.next_id
       ServerInfo.all.map { |s| s.game_id }.max + 1
     end
+    
+    def self.find_by_dest_id(dest_id)
+      ServerInfo.where(game_id: dest_id).first
+    end
   end
 end

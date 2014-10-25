@@ -9,9 +9,12 @@ module AresMUSH
       end
       
       def handle
-        Api.get_character_id(client)
+        if (Global.api_router.is_master?)
+          client.emit_failure t('api.cant_link_on_master')
+        else
+          client.emit_success t('handles.character_id_is', :id => client.char.api_character_id)
+        end
       end      
     end
-
   end
 end
