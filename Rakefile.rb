@@ -146,7 +146,7 @@ task :install do
   puts "Creating channels and BBS."
   
   AresMUSH::BbsBoard.create(name: "Announcements", order: 1)
-  AresMUSH::BbsBoard.create(name: "Admin", order: 2, readroles: [ "admin"], writeroles: [ "admin" ])
+  AresMUSH::BbsBoard.create(name: "Admin", order: 2, read_roles: [ "admin"], write_roles: [ "admin" ])
   
   AresMUSH::Channel.create(name: "Public", announce: false, description: "Public chit-chat.", color: "%xy")
   AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
