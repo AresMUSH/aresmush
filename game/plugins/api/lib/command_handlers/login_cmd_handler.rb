@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def crack!
-        self.args = ApiFriendCmdArgs.create_from(cmd.args_str)
+        self.args = ApiLoginCmdArgs.create_from(cmd.args_str)
       end
       
       def validate
@@ -41,7 +41,7 @@ module AresMUSH
 
         linked_char["last_login"] = Time.now
         linked_char["privacy"] = args.privacy
-        linked_char["name"] = name
+        linked_char["name"] = args.char_name
         char.save!
         
         friends = char.friends.map { |f| "@#{f.name}" }

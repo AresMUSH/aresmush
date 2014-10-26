@@ -49,7 +49,9 @@ module AresMUSH
         }
         char.temp_link_codes.delete args.char_id
         char.save!
-        return cmd.create_response(ApiResponse.ok_status, "@#{char.name}")
+        
+        args = ApiLinkResponseArgs.new("@#{char.name}", char.friends.map { |f| "@#{f.name}" }.join(" ") )
+        return cmd.create_response(ApiResponse.ok_status, args.to_s)
       end
     end
   end

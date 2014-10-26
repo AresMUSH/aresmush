@@ -47,7 +47,7 @@ A Satellite game can request that a local character be linked to the handle.  Th
 
     From Satellite to AresCentral:
     (C) link <handle>||<character id>||<character name>||<one-time code>
-    (R) link <handle>
+    (R) link <handle>||<handle friends>
 
 ******* HANDLE UNLINK *******
 
@@ -59,19 +59,11 @@ AresCentral can issue a handle unlink.
     
 ******* LOGIN *******
 
-When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.
+When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.   It will return a list of handle friends, which the satellite can use to sync the list on their game.
 
     From Satellite to AresCentral:
     (C) login <handle>||<character id>||<name>||<privacy>
     (R) login <handle friends>
-
-******* LOGOUT *******
-
-When a character linked to a handle logs out, the Satellite should notify AresCentral.
-
-    From Satellite to AresCentral:
-    (C) logout <handle>||<character id>
-    (R) logout
     
 ******* ADD FRIEND *******
 
@@ -101,6 +93,14 @@ The Satellite can request a handle's profile information.  The character ID must
     
 !!!!!!!!!!!!!!!!!!!!!!!!! SOMEDAY !!!!!!!!!!!!!!!!!!!!!!!!! 
 
+    
+******* LOGOUT *******
+
+When a character linked to a handle logs out, the Satellite should notify AresCentral.
+
+    From Satellite to AresCentral:
+    (C) logout <handle>||<character id>
+    (R) logout
     
 ******* CROSS-GAME PAGE *******
 

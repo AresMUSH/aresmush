@@ -24,7 +24,7 @@ module AresMUSH
      
       def self.create_from(command_args)
         handle_name, char_id, char_name, privacy = command_args.split("||")
-        ApiFriendCmdArgs.new(char_id, handle_name, char_name, privacy)
+        ApiLoginCmdArgs.new(char_id, handle_name, char_name, privacy)
       end
     end
   end

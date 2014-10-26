@@ -21,3 +21,5 @@ en:
         invalid_description: "Invalid description."
         invalid_game_id: "Invalid game ID."
         invalid_key: "Invalid key."
+        
+        handle_friends_updated: "Your handle friends list has been updated to be in sync with AresCentral."
