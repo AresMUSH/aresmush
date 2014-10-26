@@ -21,6 +21,8 @@ module AresMUSH
     field :temp_link_codes, :type => Hash, :default => {}
     field :linked_characters, :type => Hash, :default => {}
 
+    before_validation :save_handle
+
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public
       return false if handle_privacy == Handles.privacy_admin
@@ -51,6 +53,13 @@ module AresMUSH
         "#{name_part} (#{aliases.join(", ")})"
       else
         name_part
+      end
+    end
+    
+    def save_handle
+      if (Global.api_router.is_master?)
+        self.handle = "@#{self.name}"
+        self.handle_privacy = Handles.privacy_public
       end
     end
     

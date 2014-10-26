@@ -36,7 +36,7 @@ module AresMUSH
       end
       
       def handle
-        OnlineCharFinder.with_online_chars(self.names, client) do |clients|
+        OnlineCharFinder.with_online_chars(self.names, client, true) do |clients|
           name = client.char.ooc_name
           message = PoseFormatter.format(name, self.message)
           recipients = clients.map { |r| r.char.ooc_name }.join(", ")
