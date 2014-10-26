@@ -26,6 +26,11 @@ module AresMUSH
         return t('handles.invalid_privacy_option', :values => values.join(" ")) if !values.include?(self.option)
         return nil
       end
+      
+      def check_slave
+        return t('handles.cant_set_privacy_on_master') if Global.api_router.is_master?
+        return nil
+      end
         
       def handle        
         client.char.handle_privacy = self.option
