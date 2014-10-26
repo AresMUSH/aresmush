@@ -145,12 +145,12 @@ task :install do
     
   puts "Creating channels and BBS."
   
-  BbsBoard.create(name: "Announcements", order: 1)
-  BbsBoard.create(name: "Admin", order: 2, readroles: [ "admin"], writeroles: [ "admin" ])
+  AresMUSH::BbsBoard.create(name: "Announcements", order: 1)
+  AresMUSH::BbsBoard.create(name: "Admin", order: 2, readroles: [ "admin"], writeroles: [ "admin" ])
   
-  Channel.create(name: "Public", announce: false, description: "Public chit-chat.", color: "%xy")
-  Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
-  Channel.create(name: "Admin", description: "Admin business.", roles: ["admin"], color: "%xr")
+  AresMUSH::Channel.create(name: "Public", announce: false, description: "Public chit-chat.", color: "%xy")
+  AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
+  AresMUSH::Channel.create(name: "Admin", description: "Admin business.", roles: ["admin"], color: "%xr")
   
   
   puts "Install complete."
