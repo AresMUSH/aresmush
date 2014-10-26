@@ -21,11 +21,14 @@ en:
         handle_main: "This character is marked your main handle char, which means handle messages will be sent here rather than to your other characters when possible."
         char_unlinked_subject: "Handle Unlinked"
         char_unlinked_body: "This character is no longer linked to your handle.  If you believe this is a mistake, contact your game admin."
-        profile_for_title: "Profile for %{name}"
-        profile_title: "Name                                     Last Seen"
+
+        profile_title: "Public Profile:"
+        profile_char_list_title: "Linked Characters                        Last Seen"
         sending_profile_request: "Sending profile request to AresCentral.  Please be patient."
         no_public_profile: "%{name} does not have a public profile."
         cant_set_privacy_on_master: "You set handle privacy on other games, not on AresCentral."
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."
         ooc_profile_title: "OOC Profile"
+        no_profile_set: "None set"
+        profile_set: "You set your profile."
         

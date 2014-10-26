@@ -13,11 +13,11 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("profile")
+        cmd.root_is?("profile") && cmd.switch.nil?
       end
       
       def crack!
-        self.name = trim_input(cmd.args)
+        self.name = titleize_input(cmd.args)
       end
       
       def check_handle

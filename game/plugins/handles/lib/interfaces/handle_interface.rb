@@ -7,9 +7,14 @@ module AresMUSH
     
     def self.build_profile_text(profile_char, asking_char)
       if (Global.api_router.is_master?)
-        list = []
-        list << t('handles.profile_title')
-        list << "%l2"
+        text = "-~- %xh%xg@#{profile_char.name}%xn -~-".center(78)
+        text << "%r%l2%r"
+        text << "%xh#{t('handles.profile_title')}%xn"
+        text << "%r"
+        text << (profile_char.handle_profile.nil? ? t('handles.no_profile_set') : profile_char.handle_profile)
+        text << "%r%r%l2%r"
+        text << t('handles.profile_char_list_title')
+        text << "%r%l2"
         profile_char.linked_characters.values.each do |c| 
           next if c['privacy'] == Handles.privacy_admin
           next if c['privacy'] == Handles.privacy_friends && !profile_char.friends.include?(asking_char)
@@ -18,10 +23,10 @@ module AresMUSH
           game_name = game.nil? ? "Unknown" : game.name
           name = "#{c['name']}@#{game_name}"
           last_online = "#{c['last_login']}"   
-          list << "#{name.ljust(40)} #{last_online}"
+          text << "%R#{name.ljust(40)} #{last_online}"
         end
         
-        BorderedDisplay.list list, t('handles.profile_for_title', :name => profile_char.name)
+        BorderedDisplay.text text
       else
         return t('api.use_command_on_central')
       end
