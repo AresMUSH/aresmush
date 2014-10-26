@@ -4,12 +4,5 @@ Handles are shown like an extra alias, with an "@" sign in front to distinguish 
 
     %% (to Bob): @Faraday (Cate) says, "Hello!"
     <Public> @Faraday (Cate) says, "Hello!"
-    
-Sometimes people use a special OOC alt, for the sole purpose of hanging out OOC and keeping OOC chatter confined to a single window.  Staffers may do this too.  You can hide the character name and show only the handle by marking the character as OOC-only.
-
-    %xchandle/ooc <on or off>%xn - Designates this as an OOC-only character
-            
-    %% (to Bob): @Faraday says, "Hello!"
-    <Public> @Faraday says, "Hello!"
 
 Next topic:  %xhhelp handle use%xn

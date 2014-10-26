@@ -26,14 +26,6 @@ module AresMUSH
         return t('handles.invalid_privacy_option', :values => values.join(" ")) if !values.include?(self.option)
         return nil
       end
-      
-      def check_privacy
-        if (client.char.handle_only && self.option != Handles.privacy_public)
-          return t('handles.ooc_only_must_be_public') 
-        else
-          return nil
-        end
-      end
         
       def handle        
         client.char.handle_privacy = self.option

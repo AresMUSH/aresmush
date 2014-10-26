@@ -36,9 +36,12 @@ module AresMUSH
         if (char.handle != args.handle_name)
           return cmd.create_error_response t('api.character_not_linked')
         end
-        
+          
         char.handle = nil
         char.save!
+
+        Mail.send_mail([char.name], t('handles.char_unlinked_subject'), t('handles.char_unlinked_body'), Game.master.system_character)
+
         return cmd.create_ok_response
       end
     end

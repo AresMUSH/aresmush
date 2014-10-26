@@ -7,3 +7,7 @@ You can add a handle to your friends list (%xhhelp friends%xn).  IF you pass the
 If someone's handle is public, you can use their handle to contact them via pages.
 
     p @Faraday=Hi there!
+
+Sometimes people use a special OOC alt, for the sole purpose of hanging out OOC and keeping OOC chatter confined to a single window.  Staffers may do this too.  You can route any handle chatter to a particular character by setting it as your 'main' handle char.
+
+    %xchandle/main <on or off>%xn - Designates this as your main handle char

@@ -87,12 +87,12 @@ module AresMUSH
           @char.ooc_name.should eq "@Star (Bob, B)"
         end
         
-        it "should display handle only char" do
+        it "should display public handle matching name" do
           @char.handle = "@Star"
+          @char.name = "Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_public
-          @char.handle_only = true
-          @char.ooc_name.should eq "@Star"
+          @char.ooc_name.should eq "@Star (B)"
         end
       end
     end

@@ -9,8 +9,8 @@ en:
         characters_title: "Name                                     Character ID"
         character_unlinked: "You unlink %{name} from your handle."
         character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
-        set_ooc_only: "This character has been marked OOC-only.  The game will not show your character name next to your handle name when your handle is shown."
-        clear_ooc_only: "This character has been marked as a regular character.  The game will show your character name next to your handle name when your handle is shown."
+        set_main: "This character is now set as your main handle character on this game."
+        clear_main: "This character is no longer set to be your main handle character."
         ooc_only_must_be_public: "A character must be public to be marked as OOC-only."
         link_successful: "You have linked this character to handle %{handle}."
         invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"
@@ -18,4 +18,6 @@ en:
         handle_info_title: "Handle Information"
         handle_name: "%xhHandle Name:%xn %{name}"
         handle_privacy: "%xhHandle Privacy:%xn %{privacy}"
-        handle_ooc_only: "This character is marked as OOC-only, which means the character name will be hidden when the handle name is shown."
+        handle_main: "This character is marked your main handle char, which means handle messages will be sent here rather than to your other characters when possible."
+        char_unlinked_subject: "Handle Unlinked"
+        char_unlinked_body: "This character is no longer linked to your handle.  If you believe this is a mistake, contact your game admin."

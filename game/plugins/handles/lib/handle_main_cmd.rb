@@ -1,6 +1,6 @@
 module AresMUSH
   module Handles
-    class HandleOocCmd
+    class HandleMainCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("handle") && cmd.switch_is?("ooc")
+        cmd.root_is?("handle") && cmd.switch_is?("main")
       end
       
       def crack!
@@ -25,22 +25,19 @@ module AresMUSH
         return self.option.validate
       end
       
-      def check_privacy
-        if (client.char.handle_privacy != Handles.privacy_public &&
-            self.option.is_on?)
-          return t('handles.ooc_only_must_be_public') 
-        else
-          return nil
-        end
-      end
-        
       def handle        
-        client.char.handle_only = self.option.is_on?
+        client.char.handle_main = self.option.is_on?
         client.char.save
         if (self.option.is_on?)
-          client.emit_ooc t('handles.set_ooc_only')
+          client.emit_ooc t('handles.set_main')
+          other_chars = Character.find_by_handle(client.char.handle)
+          other_chars.each do |c|
+            next if c == client.char
+            c.handle_main = false
+            c.save
+          end
         else
-          client.emit_ooc t('handles.clear_ooc_only')
+          client.emit_ooc t('handles.set_main')
         end
       end
     end

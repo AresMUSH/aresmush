@@ -16,7 +16,7 @@ module AresMUSH
   class Character
     field :handle, :type => String
     field :handle_privacy, :type => String, :default => Handles.privacy_friends
-    field :handle_only, :type => Boolean
+    field :handle_main, :type => Boolean
     field :temp_link_codes, :type => Hash, :default => {}
     field :linked_characters, :type => Hash, :default => {}
         
@@ -27,15 +27,13 @@ module AresMUSH
     end
     
     def ooc_name
-      if (handle_only)
-        return handle
-      end
-      
       aliases = []
       
       if (handle_privacy == Handles.privacy_public)
         name_part = handle
-        aliases << name
+        if (handle != "@#{name}")
+          aliases << name
+        end
       else
         name_part = name
       end
@@ -52,7 +50,8 @@ module AresMUSH
     end
     
     def self.find_by_handle(name)
-      Character.where(handle: name).all
+      return [] if name.nil?
+      Character.all.select { |c| c.handle.downcase == name.downcase }
     end
     
   end
