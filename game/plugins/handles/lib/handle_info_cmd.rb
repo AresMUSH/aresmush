@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def check_is_master
-        return t('api.use_command_on_central') if !Global.api_router.is_master?
+        return t('api.use_command_on_satellite') if Global.api_router.is_master?
         return nil
       end
       

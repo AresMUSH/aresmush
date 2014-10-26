@@ -41,7 +41,7 @@ module AresMUSH
         client.char.handle_privacy = self.option
         client.char.save
         client.emit_ooc t('handles.privacy_set', :value => self.option)
-        Api.sync_char_with_master(client.char)
+        Api.sync_char_with_master(client)
       end
     end
   end

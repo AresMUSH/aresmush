@@ -1,6 +1,7 @@
 module AresMUSH
   module Api
-    def self.sync_char_with_master(char)
+    def self.sync_char_with_master(client)
+      char = client.char
       return if char.handle.blank?
       return if Global.api_router.is_master?
       

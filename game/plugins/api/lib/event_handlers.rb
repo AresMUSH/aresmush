@@ -6,8 +6,7 @@ module AresMUSH
       attr_accessor :last_server_info
     
       def on_char_connected_event(event)
-        client = event.client
-        char = client.char
+        Api.sync_char_with_master(event.client)
       end
       
       def on_config_updated_event(event)
