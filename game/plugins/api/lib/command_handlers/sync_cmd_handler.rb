@@ -1,12 +1,12 @@
 module AresMUSH
   module Api
-    class LoginCmdHandler
+    class SyncCmdHandler
       include ApiCommandHandler
       
       attr_accessor :args
       
       def self.commands
-        ["login"]
+        ["sync"]
       end
       
       def self.available_on_master?
@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def crack!
-        self.args = ApiLoginCmdArgs.create_from(cmd.args_str)
+        self.args = ApiSyncCmdArgs.create_from(cmd.args_str)
       end
       
       def validate

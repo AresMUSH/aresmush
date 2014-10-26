@@ -57,9 +57,9 @@ AresCentral can issue a handle unlink.
     (C) unlink <handle>||<character id>
     (R) unlink
     
-******* LOGIN *******
+******* SYNC *******
 
-When a character linked to a handle logs in, the Satellite should check with AresCentral to make sure that the handle information is still correct.   It will return a list of handle friends, which the satellite can use to sync the list on their game.
+The sync command is used to synchronize character settings between the games.  It should be sent when a character logs in, or when the settings change.
 
     From Satellite to AresCentral:
     (C) login <handle>||<character id>||<name>||<privacy>

@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def check_handle
-        return t('handles.must_have_handle_to_view_profile') if client.char.handle.nil? && !Global.api_router.is_master?
+        return t('handles.must_have_handle_to_view_profile') if client.char.handle.blank? && !Global.api_router.is_master?
         return nil
       end
       

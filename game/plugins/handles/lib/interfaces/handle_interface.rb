@@ -20,11 +20,8 @@ module AresMUSH
           last_online = "#{c['last_online']}"   
           list << "#{name.ljust(40)} #{last_online}"
         end
-        list << "%l2"
-        list << "%xh#{t('handles.ooc_profile_title')}%xn"
-        list << profile_char.profile
         
-        client.emit BorderedDisplay.list list, t('handles.profile_for_title', :name => profile_char.name)
+        BorderedDisplay.list list, t('handles.profile_for_title', :name => profile_char.name)
       else
         return t('api.use_command_on_central')
       end

@@ -31,7 +31,7 @@ module AresMUSH
         char.handle_friends = self.args.handle_friends.split(" ")
         char.handle_privacy = Handles.privacy_friends
         char.save!
-        client.emit_success t('handles.link_successful', :handle => response.args_str)
+        client.emit_success t('handles.link_successful', :handle => self.args.handle_name)
         client.emit_ooc t('handles.privacy_set', :value => Handles.privacy_friends)
       end
     end

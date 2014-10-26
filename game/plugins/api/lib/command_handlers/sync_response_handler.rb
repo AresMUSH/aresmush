@@ -1,10 +1,10 @@
 module AresMUSH
   module Api
-    class LoginResponseHandler
+    class SyncResponseHandler
       include ApiResponseHandler
 
       def self.commands
-        ["login"]
+        ["sync"]
       end
       
       def self.available_on_master?
@@ -21,7 +21,7 @@ module AresMUSH
         
         client.char.handle_friends = handle_friends.split(" ")
         client.char.save!
-        client.emit_ooc t('api.handle_friends_updated')
+        client.emit_ooc t('api.handle_synced')
       end
     end
   end

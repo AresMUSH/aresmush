@@ -1,6 +1,6 @@
 module AresMUSH
   module Api
-    class ApiLoginCmdArgs
+    class ApiSyncCmdArgs
       attr_accessor :char_id, :handle_name, :char_name, :privacy
       
       def initialize(char_id, handle_name, char_name, privacy)
@@ -24,7 +24,7 @@ module AresMUSH
      
       def self.create_from(command_args)
         handle_name, char_id, char_name, privacy = command_args.split("||")
-        ApiLoginCmdArgs.new(char_id, handle_name, char_name, privacy)
+        ApiSyncCmdArgs.new(char_id, handle_name, char_name, privacy)
       end
     end
   end

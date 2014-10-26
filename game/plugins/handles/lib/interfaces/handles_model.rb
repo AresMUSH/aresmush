@@ -55,7 +55,7 @@ module AresMUSH
     
     def self.find_by_handle(name)
       return [] if name.nil?
-      Character.all.select { |c| c.handle.downcase == name.downcase }
+      Character.all.select { |c| (c.handle.nil? ? "" : c.handle.downcase) == name.downcase }
     end
     
   end

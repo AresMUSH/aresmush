@@ -27,6 +27,11 @@ module AresMUSH
         return nil
       end
       
+      def check_handle
+        return t('api.no_handle_set') if client.char.handle.blank?
+        return nil
+      end
+      
       def check_slave
         return t('handles.cant_set_privacy_on_master') if Global.api_router.is_master?
         return nil
@@ -36,6 +41,7 @@ module AresMUSH
         client.char.handle_privacy = self.option
         client.char.save
         client.emit_ooc t('handles.privacy_set', :value => self.option)
+        Api.sync_char_with_master(client.char)
       end
     end
   end

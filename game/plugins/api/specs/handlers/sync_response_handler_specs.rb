@@ -1,6 +1,6 @@
 module AresMUSH
   module Api
-    describe LoginResponseHandler do
+    describe SyncResponseHandler do
       include MockClient
       
       before do
@@ -13,10 +13,10 @@ module AresMUSH
       end
         
       it "should set the handle friends" do
-        response = ApiResponse.new("login", ApiResponse.ok_status, "F1 F2")
+        response = ApiResponse.new("sync", ApiResponse.ok_status, "F1 F2")
         @char.should_receive(:handle_friends=).with(["F1", "F2"])
         @char.should_receive(:save!)
-        @client.should_receive(:emit_ooc).with("api.handle_friends_updated")
+        @client.should_receive(:emit_ooc).with("api.handle_synced")
         Global.api_router.route_response(@client, response)
       end
     end 
