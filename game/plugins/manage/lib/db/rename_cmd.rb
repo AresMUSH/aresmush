@@ -53,6 +53,13 @@ module AresMUSH
           end
         end
         
+        if (target.class == Character)
+          if (target.linked_characters.keys.count > 0)
+            client.emit_failure(t('manage.cant_rename_handle_with_links'))
+            return
+          end
+        end
+        
         old_name = target.name
         target.name = self.name
         target.save!

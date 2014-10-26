@@ -20,7 +20,7 @@ module AresMUSH
     field :handle_main, :type => Boolean
     field :temp_link_codes, :type => Hash, :default => {}
     field :linked_characters, :type => Hash, :default => {}
-        
+
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public
       return false if handle_privacy == Handles.privacy_admin

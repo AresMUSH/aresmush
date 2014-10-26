@@ -38,7 +38,6 @@ module AresMUSH
       
       it "should fail if name contains an invalid char" do
         Character.check_name("A_BC").should eq "validation.name_contains_invalid_chars"
-        Character.check_name("A2BC").should eq "validation.name_contains_invalid_chars"
         Character.check_name("A BC").should eq "validation.name_contains_invalid_chars"
         Character.check_name("A.BC").should eq "validation.name_contains_invalid_chars"
         Character.check_name("@ABC").should eq "validation.name_contains_invalid_chars"

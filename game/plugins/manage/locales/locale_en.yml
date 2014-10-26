@@ -45,3 +45,5 @@ en:
         announce: "%xh%xg%%%% Game Announcement:%xn %{message}"
         
         version: "AresMUSH version %{version}%rhttp://www.aresmush.com"
+        
+        cant_rename_handle_with_links: "Cannot rename a handle that has characters linked to it.  The player needs to unlink their characters first."
