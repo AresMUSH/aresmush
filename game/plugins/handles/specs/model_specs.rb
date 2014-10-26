@@ -47,7 +47,7 @@ module AresMUSH
         end
         
         it "should return false if handle private" do
-          @char.handle_privacy = Handles.privacy_private
+          @char.handle_privacy = Handles.privacy_admin
           @char.handle_visible_to?(@other).should eq false
         end
       end
@@ -63,7 +63,7 @@ module AresMUSH
         
         it "should display a char with a private handle" do
           @char.handle = "@Star"
-          @char.handle_privacy = Handles.privacy_private
+          @char.handle_privacy = Handles.privacy_admin
           @char.ooc_name.should eq "Bob"
         end
 
@@ -76,7 +76,7 @@ module AresMUSH
         it "should display a char with a private handle and alias" do
           @char.handle = "@Star"
           @char.alias = "B"
-          @char.handle_privacy = Handles.privacy_private
+          @char.handle_privacy = Handles.privacy_admin
           @char.ooc_name.should eq "Bob (B)"
         end
         

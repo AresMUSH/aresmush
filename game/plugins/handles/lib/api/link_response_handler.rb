@@ -16,9 +16,12 @@ module AresMUSH
       end
       
       def handle   
-        client.char.handle = response.args_str
-        client.char.save!
-        client.emit_success t('handles.link_successful', :handle => response.args_str, :privacy => client.char.handle_privacy)
+        char = client.char
+        char.handle = response.args_str
+        char.handle_privacy = Handles.privacy_friends
+        char.save!
+        client.emit_success t('handles.link_successful', :handle => response.args_str)
+        client.emit_ooc t('handles.privacy_set', :value => char.handle_privacy)
       end
     end
   end

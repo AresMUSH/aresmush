@@ -8,12 +8,13 @@ module AresMUSH
         cmd.root_is?("handle") && cmd.switch_is?("id")
       end
       
+      def check_is_slave
+        return t('api.cant_link_on_master') if Global.api_router.is_master?
+        return nil
+      end
+      
       def handle
-        if (Global.api_router.is_master?)
-          client.emit_failure t('api.cant_link_on_master')
-        else
-          client.emit_success t('handles.character_id_is', :id => client.char.api_character_id)
-        end
+        client.emit_success t('handles.character_id_is', :id => client.char.api_character_id)
       end      
     end
   end

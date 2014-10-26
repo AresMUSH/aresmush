@@ -4,12 +4,12 @@ module AresMUSH
       "public"
     end
     
-    def self.privacy_private
-      "private"
+    def self.privacy_admin
+      "admin-only"
     end
     
     def self.privacy_friends
-      "friends"
+      "friends-only"
     end
   end
   
@@ -22,7 +22,7 @@ module AresMUSH
         
     def handle_visible_to?(other_char)
       return true if handle_privacy == Handles.privacy_public
-      return false if handle_privacy == Handles.privacy_private
+      return false if handle_privacy == Handles.privacy_admin
       has_friended_char_or_handle?(other_char)
     end
     
