@@ -20,6 +20,11 @@ module AresMUSH
         left(@char.groups["Position"], 19)
       end
     
+      def handle
+        name = @char.public_handle? ? @char.handle : ""
+        left(name, 19)
+      end
+        
       def status
         left("#{Status.status_color(@char.status)}#{@char.status}%xn", 6)
       end

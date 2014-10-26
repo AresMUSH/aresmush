@@ -26,10 +26,14 @@ module AresMUSH
       has_friended_char_or_handle?(other_char)
     end
     
+    def public_handle?
+      handle_privacy == Handles.privacy_public
+    end
+    
     def ooc_name
       aliases = []
       
-      if (handle_privacy == Handles.privacy_public)
+      if (public_handle?)
         name_part = handle
         if (handle != "@#{name}")
           aliases << name
