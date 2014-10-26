@@ -134,6 +134,8 @@ task :install do
   game.system_character = systemchar
   game.save!
   
+  puts "Creating server info."
+  
   AresMUSH::ServerInfo.create(
     game_id: AresMUSH::ServerInfo.arescentral_game_id,
     name: "AresCentral", 
@@ -141,6 +143,16 @@ task :install do
     host: "mush.aresmush.com",
     port: 7206)
     
+  puts "Creating channels and BBS."
+  
+  BbsBoard.create(name: "Announcements", order: 1)
+  BbsBoard.create(name: "Admin", order: 2, readroles: [ "admin"], writeroles: [ "admin" ])
+  
+  Channel.create(name: "Public", announce: false, description: "Public chit-chat.", color: "%xy")
+  Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
+  Channel.create(name: "Admin", description: "Admin business.", roles: ["admin"], color: "%xr")
+  
+  
   puts "Install complete."
 end
 
