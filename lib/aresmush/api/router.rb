@@ -98,7 +98,7 @@ module AresMUSH
     def route_response(client, response)
       handler_class = self.response_handlers[response.command_name]
       if (handler_class.nil?)
-        handler_class = NoOpResponseHandler
+        handler_class = AresMUSH::NoOpResponseHandler
       end
         
       handler = handler_class.new(client, response)

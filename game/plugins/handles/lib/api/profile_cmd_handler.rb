@@ -29,13 +29,13 @@ module AresMUSH
         
         target_name = args.target.after("@")
         target = Character.find_by_name(target_name)
-        if (char.nil?)
+        if (target.nil?)
           return cmd.create_error_response t('api.invalid_handle')
         end
         
         viewer_name = args.viewer.after("@")
         viewer = Character.find_by_name(viewer_name)
-        if (char.nil?)
+        if (viewer.nil?)
           return cmd.create_error_response t('api.invalid_handle')
         end
         

@@ -12,12 +12,12 @@ module AresMUSH
         list << "%l2"
         profile_char.linked_characters.values.each do |c| 
           next if c['privacy'] == Handles.privacy_admin
-          next if c['privacy'] == Handles.privacy_friends && !profile_char.friends.includ?(asking_char)
+          next if c['privacy'] == Handles.privacy_friends && !profile_char.friends.include?(asking_char)
           
           game = ServerInfo.find_by_dest_id(c['game_id'])
           game_name = game.nil? ? "Unknown" : game.name
           name = "#{c['name']}@#{game_name}"
-          last_online = "#{c['last_online']}"   
+          last_online = "#{c['last_login']}"   
           list << "#{name.ljust(40)} #{last_online}"
         end
         
