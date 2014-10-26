@@ -1,0 +1,8 @@
+Your handle profile is used to share OOC information about yourself.  The '+finger' command found on older games has been replaced by profile (for OOC info) and sheet (for IC info).
+
+You can access someone's profile using their handle name (e.g. 'profile @Faraday').  If their privacy settings allow, you can also access it through a character name (e.g. 'profile Cate' will show the profile for @Faraday).
+
+The profile will also show characters that are linked to your handle, depending on your privacy settings.  Public characters will always show up, and private characters will never show up.  Friends-only characters will show up when a friend views your profile.
+
+    %xcprofile <name>%xn
+    %xcprofile/set <text>%xn - Sets your public profile text.

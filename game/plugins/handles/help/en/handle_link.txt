@@ -1,22 +1,20 @@
-Once you have your handle, you can %xhlink%xn characters to it. Linking is optional; you can pick and choose which characters you want to link.  To protect your security, linking is a three-step process. 
+Having a handle is only useful once you %xhlink%xn characters to it.  This tells the game which characters on which games are yours.  Linking is optional; you can pick and choose which characters you want to link.  To protect your security, linking is a three-step process so we know that you're you on both ends.  This prevents someone from linking characters to your handle without your permission.
 
-1) On the local game, find your character ID.  This is a unique way to identify this particular character on this particular game.
+1) Using the character you want to link, find your character ID.
 
     %xchandle/id%xn
 
 2) On AresCentral, use the character ID from step 1 to generate a one-time use link code specific to that character.
 
-    %xghandle/linkcode <character id>%xn
+    %xchandle/linkcode <character id>%xn  (AresCentral only)
     
 3) Back on the original game, use your one-time link code from step 2 to link the character to your handle.
 
-    %xchandle/link <link code>%xn
+    %xchandle/link <handle name>=<link code>%xn
 
-Why all the hoops?  Well, we need to prove you're you on both ends.  This ensures that nobody else can link characters to your handle.
+You can find out information about your handle and characters linked to it using the info command.  On AresCentral, you can unlink a character from your handle:
 
-On AresCentral, you can see which characters are linked to your account and unlink them:
-
-    %xghandle/chars%xn
-    %xghandle/unlink <character id>%xn
+    %xchandle/info%xn
+    %xchandle/unlink <character id>%xn  (AresCentral only)
     
 Next topic:  %xhhelp handle privacy%xn

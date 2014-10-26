@@ -1,13 +1,18 @@
-Handles are a form of social media for MUSHing. A handle is your OOC identity. It represents you, the player. You can link characters to your handle - even across multiple games - so that other players know who you are.
+Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.
 
-%xhBut what if I don’t want people to know who I am?%xn
-Handles are completely optional. If you don't have one, you'll still have access to all the basic MUSH features, same as on Penn/Tiny.  It doesn’t have to be all or nothing, though. There are privacy settings to put your mind at ease.
+A handle is your OOC identity, unique even across different games.  Through your handle, people can identify you as a player, not just as a character.
 
-Check out the following additional help files to learn more about handles.
+Having a handle enables a lot of features.  Some of these may make you say, "OMG I don't want people to know this about me!"  %xhDon't worry.%xn  The handles system is completely optional, and there are a variety of privacy and friends settings to help you control who sees what.
 
-    %xhhelp handle creation%xn
-    %xhhelp handle link%xn
-    %xhhelp handle privacy%xn
-    %xhhelp handle identity%xn
-    %xhhelp handle use%xn
-    %xhhelp handle prefs%xn
+* You can show your handle on channels and the who list so people know who you are.
+* People can access your handle profile and find out about you and what characters you play.
+* The game can notify you when your alts have messages and other minor conveniences.
+* Add other handles as your friends and share that friends list easily on all your games.
+* When you log into a game, you can see if any of your friends are playing there.
+* View your friend's profile to see where they're playing.
+
+   %xhhelp handle creation%xn - Get a handle
+   %xhhelp handle link%xn - Link characters to your handle
+   %xhhelp handle privacy%xn - Control your privacy settings
+   %xhhelp handle profile%xn - Handle profiles.
+   %xhhelp friends%xn - Learn more about how the friends system works with handles.

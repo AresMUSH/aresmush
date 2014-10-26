@@ -22,6 +22,11 @@ module AresMUSH
         self.code = cmd.args.arg2
       end
       
+      def check_is_handle
+        return t('api.invalid_handle') if !Handles.handle_name_valid?(self.handle_name)
+        return nil
+      end
+      
       def handle
         Handles.link_character(client, handle_name, code)
       end      

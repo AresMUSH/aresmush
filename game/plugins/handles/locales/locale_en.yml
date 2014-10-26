@@ -6,7 +6,7 @@ en:
         link_key_is: "Use this link code back on the other game to complete the link process (help handle link): %xh%xc%{key}%xn"
         invalid_link_code: "Invalid link code.  Please check the code and try again."
         linked_characters: "Linked Characters"
-        characters_title: "Name                                     Character ID"
+        characters_title: "Name                      Privacy        Character ID"
         character_unlinked: "You unlink %{name} from your handle."
         character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
         set_main: "This character is now set as your main handle character on this game."

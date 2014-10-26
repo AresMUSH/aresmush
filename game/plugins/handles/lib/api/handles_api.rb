@@ -56,7 +56,7 @@ module AresMUSH
           game = ServerInfo.find_by_dest_id(v['game_id'])
           game_name = game.nil? ? "Unknown" : game.name
           name = "#{v['name']}@#{game_name}"
-          list << "#{name.ljust(40)} #{k}"
+          list << "#{name.ljust(25)} #{v['privacy'].ljust(15)}#{k}"
         end
         client.emit BorderedDisplay.list list, t('handles.linked_characters')
       else

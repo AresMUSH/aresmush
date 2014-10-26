@@ -7,4 +7,4 @@ help:
                     dir: 'game/plugins/api/help/'
                     file: 'games.txt'
                     summary: 'Games directory.'
-                    alias: ['games']
+                    aliases: ['games']

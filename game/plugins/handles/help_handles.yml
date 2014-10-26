@@ -16,15 +16,10 @@ help:
                 handle privacy:
                     dir: 'game/plugins/handles/help/'
                     file: 'handle_privacy.txt'
-                handle identity:
+                handle profile:
                     dir: 'game/plugins/handles/help/'
-                    file: 'handle_identity.txt'
-                handle prefs:
-                    dir: 'game/plugins/handles/help/'
-                    file: 'handle_prefs.txt'
-                handle use:
-                    dir: 'game/plugins/handles/help/'
-                    file: 'handle_use.txt'
+                    file: 'handle_profile.txt'
+                    aliases: [ "profile", "finger" ]
         admin:
             topics:
                 handles:
