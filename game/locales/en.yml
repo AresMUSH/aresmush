@@ -34,6 +34,7 @@ en:
         name_too_short: "Names must be at least 2 characters long."
         name_must_be_capitalized: "Names must be capitalized."
         name_is_restricted: "That name is not allowed."
+        name_contains_invalid_chars: "Special characters are not allowed in names, except for ' and -."
 
     chars_connected:
         zero: "No characters connected."
