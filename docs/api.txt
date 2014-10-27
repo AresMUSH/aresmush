@@ -63,7 +63,7 @@ The sync command is used to synchronize character settings between the games.  I
 
     From Satellite to AresCentral:
     (C) login <handle>||<character id>||<name>||<privacy>
-    (R) login <handle friends>
+    (R) login <handle friends>||<autospace>||<timezone>
     
 ******* ADD FRIEND *******
 

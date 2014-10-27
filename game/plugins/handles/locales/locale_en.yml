@@ -9,8 +9,8 @@ en:
         characters_title: "Name                      Privacy        Character ID"
         character_unlinked: "You unlink %{name} from your handle."
         character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
-        set_main: "This character is now set as your main handle character on this game."
-        clear_main: "This character is no longer set to be your main handle character."
+        set_sync: "This character will now download preferences from AresCentral."
+        clear_sync: "This character will no longer download preferences from AresCentral."
         ooc_only_must_be_public: "A character must be public to be marked as OOC-only."
         link_successful: "You have linked this character to handle %{handle}."
         invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"
@@ -18,7 +18,6 @@ en:
         handle_info_title: "Handle Information"
         handle_name: "%xhHandle Name:%xn %{name}"
         handle_privacy: "%xhHandle Privacy:%xn %{privacy}"
-        handle_main: "This character is marked your main handle char, which means handle messages will be sent here rather than to your other characters when possible."
         char_unlinked_subject: "Handle Unlinked"
         char_unlinked_body: "This character is no longer linked to your handle.  If you believe this is a mistake, contact your game admin."
 
@@ -31,4 +30,8 @@ en:
         ooc_profile_title: "OOC Profile"
         no_profile_set: "None set"
         profile_set: "You set your profile."
+        
+        setting_preference_on_linked_char: "This character is linked to your handle, and this setting will be overwritten with your handle preferences.  You may want to set this on AresCentral, or disable syncing on this character using 'handle/sync off'."
+        setting_preference_on_master: "This setting will automatically be downloaded to all your linked characters when they log in.  You can disable this on individual characters using 'handle/sync off' on the linked char."
+        cant_set_sync_on_master: "You can't use this command on AresCentral.  Use it on your linked characters."
         

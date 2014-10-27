@@ -38,17 +38,18 @@ module AresMUSH
         it "should update the character's privacy, name and last login" do
           cmd = ApiCommand.create_from("sync @Star||ABC||Bob||public")
           response = Global.api_router.route_command(1, cmd)
-          check_response(response, ApiResponse.ok_status, "")
           @char.linked_characters.should include( { "ABC" => { "last_login" => @time, "name" => "Bob", "privacy" => "public" }})
         end
       
-        it "should respond with the friends list as handles" do
+        it "should respond with the sync info" do
           cmd = ApiCommand.create_from("sync @Star||ABC||Bob||public")
           f1 = Character.new(name: "F1") 
           f2 = Character.new(name: "F2")
           @char.stub(:friends) { [ f1, f2 ]}
+          @char.autospace = "xxx"
+          @char.timezone = "EST"
           response = Global.api_router.route_command(1, cmd)
-          check_response(response, ApiResponse.ok_status, "@F1 @F2")
+          check_response(response, ApiResponse.ok_status, "@F1 @F2||xxx||EST")
         end
       end
     end

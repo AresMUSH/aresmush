@@ -26,6 +26,8 @@ module AresMUSH
         
         client.char.save!
         client.emit_success message
+        
+        Handles.warn_if_setting_linked_preference(client)
       end
     end
   end

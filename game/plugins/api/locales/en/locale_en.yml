@@ -22,4 +22,4 @@ en:
         invalid_game_id: "Invalid game ID."
         invalid_key: "Invalid key."
         
-        handle_synced: "Your character information has been synchronized with AresCentral."
+        handle_synced: "Your character information has been synchronized with AresCentral.  Your handle friends, timezone and autospace settings have been downloaded."

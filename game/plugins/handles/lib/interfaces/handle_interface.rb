@@ -5,6 +5,16 @@ module AresMUSH
       name.start_with?("@")
     end
     
+    def self.warn_if_setting_linked_preference(client)
+      if (Global.api_router.is_master?)
+        client.emit_ooc t('handles.setting_preference_on_master')
+      else
+        if (client.char.handle)
+          client.emit_ooc t('handles.setting_preference_on_linked_char')
+        end
+      end
+    end
+    
     def self.build_profile_text(profile_char, asking_char)
       if (Global.api_router.is_master?)
         text = "-~- %xh%xg@#{profile_char.name}%xn -~-".center(78)

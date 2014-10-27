@@ -46,7 +46,8 @@ module AresMUSH
         
         friends = char.friends.map { |f| "@#{f.name}" }
 
-        return cmd.create_response(ApiResponse.ok_status, friends.join(" "))
+        args = ApiSyncResponseArgs.new(friends.join(" "), char.autospace, char.timezone)
+        return cmd.create_response(ApiResponse.ok_status, args.to_s)
       end
     end
   end

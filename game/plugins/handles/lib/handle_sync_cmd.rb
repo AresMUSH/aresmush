@@ -1,6 +1,6 @@
 module AresMUSH
   module Handles
-    class HandleMainCmd
+    class HandleSyncCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("handle") && cmd.switch_is?("main")
+        cmd.root_is?("handle") && cmd.switch_is?("sync")
       end
       
       def crack!
@@ -25,19 +25,18 @@ module AresMUSH
         return self.option.validate
       end
       
+      def check_slave
+        return t('handles.cant_set_sync_on_master') if Global.api_router.is_master?
+        return nil
+      end
+      
       def handle        
-        client.char.handle_main = self.option.is_on?
+        client.char.handle_sync = self.option.is_on?
         client.char.save
         if (self.option.is_on?)
-          client.emit_ooc t('handles.set_main')
-          other_chars = Character.find_by_handle(client.char.handle)
-          other_chars.each do |c|
-            next if c == client.char
-            c.handle_main = false
-            c.save
-          end
+          client.emit_ooc t('handles.set_sync')
         else
-          client.emit_ooc t('handles.set_main')
+          client.emit_ooc t('handles.clear_sync')
         end
       end
     end

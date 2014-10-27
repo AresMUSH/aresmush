@@ -17,7 +17,7 @@ module AresMUSH
     field :handle, :type => String
     field :handle_profile, :type => String
     field :handle_privacy, :type => String, :default => Handles.privacy_friends
-    field :handle_main, :type => Boolean
+    field :handle_sync, :type => Boolean
     field :temp_link_codes, :type => Hash, :default => {}
     field :linked_characters, :type => Hash, :default => {}
 
