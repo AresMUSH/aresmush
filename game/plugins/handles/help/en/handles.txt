@@ -4,6 +4,7 @@ A handle is your OOC identity, unique even across different games.  Through your
 
 Having a handle enables a lot of features.  Some of these may make you say, "OMG I don't want people to know this about me!"  %xhDon't worry.%xn  The handles system is completely optional, and there are a variety of privacy and friends settings to help you control who sees what.
 
+Handle Features:
 * You can show your handle on channels and the who list so people know who you are.
 * People can access your handle profile and find out about you and what characters you play.
 * The game can notify you when your alts have messages and other minor conveniences.
