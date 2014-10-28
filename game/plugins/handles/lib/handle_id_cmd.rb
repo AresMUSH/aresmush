@@ -2,6 +2,7 @@ module AresMUSH
   module Handles
     class HandleIdCmd
       include Plugin
+      include PluginRequiresLogin
       include PluginWithoutArgs
       
       def want_command?(client, cmd)
@@ -9,7 +10,7 @@ module AresMUSH
       end
       
       def check_is_slave
-        return t('api.cant_link_on_master') if Global.api_router.is_master?
+        return t('handles.cant_link_on_master') if Global.api_router.is_master?
         return nil
       end
       

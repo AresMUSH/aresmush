@@ -17,14 +17,14 @@ module AresMUSH
         Character.stub(:find_by_name).with("Star") { nil }
         cmd = ApiCommand.create_from("sync @Star||ABC||Bob||public")
         response = Global.api_router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "api.invalid_handle")
+        check_response(response, ApiResponse.error_status, "api.sync_to_invalid_handle")
       end
       
       it "should fail if the handle is not linked to that char" do
         @char.linked_characters = {}
         cmd = ApiCommand.create_from("sync @Star||ABC||Bob||public")
         response = Global.api_router.route_command(1, cmd)
-        check_response(response, ApiResponse.error_status, "api.character_not_linked")
+        check_response(response, ApiResponse.error_status, "api.sync_from_unlinked_character")
       end
       
       context "success" do

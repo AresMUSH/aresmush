@@ -25,7 +25,7 @@ module AresMUSH
         Bbs.with_a_board(self.board_name, client) do |board|  
           unread_posts = board.bbs_posts.select { |p| p.is_unread?(client.char) }
           unread_posts.each do |p|
-            p.mark_read(client.char)
+            Bbs.mark_read_for_player(client.char, p)
           end
           client.emit_success t('bbs.caught_up', :board => board.name)
         end

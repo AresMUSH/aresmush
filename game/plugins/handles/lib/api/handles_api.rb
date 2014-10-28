@@ -13,7 +13,7 @@ module AresMUSH
     
     def self.link_character(client, handle, link_code)
       if (Global.api_router.is_master?)
-        client.emit_failure t('api.cant_link_on_master')
+        client.emit_failure t('handles.cant_link_on_master')
       else
         if (client.char.handle)
           client.emit_failure t('handles.character_already_linked')

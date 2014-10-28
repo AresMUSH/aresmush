@@ -67,6 +67,13 @@ module AresMUSH
     def self.can_edit_post(char, post)
       char.authored_bbposts.include?(post) || can_manage_bbs?(char)
     end
+    
+    def self.mark_read_for_player(char, post)
+      post.mark_read(char)
+      Character.find_by_handle(char.handle).each do |alt|
+        post.mark_read(alt)
+      end
+    end
   end
 end
   

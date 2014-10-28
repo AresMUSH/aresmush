@@ -21,7 +21,7 @@ module AresMUSH
       full_config = shortcut_config['full']
       if (full_config)
         full_config.each do |find_str, replace_str|
-          if (cmd.raw.start_with?(find_str))
+          if (cmd.raw.start_with?("#{cmd.prefix}#{find_str}"))
             update_cmd(cmd, find_str, replace_str)
           end
         end
@@ -29,7 +29,7 @@ module AresMUSH
     end
     
     def self.update_cmd(cmd, find_str, replace_str)
-      cmd.raw.sub!(/^#{find_str}/i, replace_str)
+      cmd.raw.sub!(/^[\/\+\=\@\&]?#{find_str}/i, replace_str)
       cmd.crack!
     end
   end

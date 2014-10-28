@@ -2,6 +2,7 @@ module AresMUSH
   module Handles
     class HandleLinkCodeCmd
       include Plugin
+      include PluginRequiresLogin
       include PluginRequiresArgs
       
       attr_accessor :char_id

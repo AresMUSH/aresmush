@@ -2,6 +2,7 @@ module AresMUSH
   module Handles
     class HandleLinkCmd
       include Plugin
+      include PluginRequiresLogin
       include PluginRequiresArgs
       
       attr_accessor :handle_name, :code

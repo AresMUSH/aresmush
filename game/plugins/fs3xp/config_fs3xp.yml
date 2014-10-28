@@ -32,8 +32,9 @@ fs3xp:
     # Controls how often someone can raise skills using XP.
     days_between_xp_raises: 7
     
-    # How many XP everyone gets each week.
-    weekly_xp: 1
+    # How many XP everyone gets each time the XP cron job runs.  (in the default
+    # configuration, that is weekly but you can make it run as often as you want).
+    periodic_xp: 1
     
     # Set up when you want the XP cron job to run.  See the 'cron' plugin for details.
     # Comment out any items you aren't using; don't just leave them blank.

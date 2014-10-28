@@ -1,37 +1,51 @@
 en:
     handles:
+        # Linking
         sending_link_request: "Sending link request to AresCentral.  Please be patient."
         cant_link_on_master: "You use this command on another game to link to your AresCentral handle."
         character_id_is: "Use this character ID to link this character to your handle (help handle link): %xh%xc%{id}%xn"
         link_key_is: "Use this link code back on the other game to complete the link process (help handle link): %xh%xc%{key}%xn"
         invalid_link_code: "Invalid link code.  Please check the code and try again."
-        linked_characters: "Linked Characters"
-        characters_title: "Name                      Privacy        Character ID"
-        character_unlinked: "You unlink %{name} from your handle."
-        character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
-        set_sync: "This character will now download preferences from AresCentral."
-        clear_sync: "This character will no longer download preferences from AresCentral."
-        ooc_only_must_be_public: "A character must be public to be marked as OOC-only."
         link_successful: "You have linked this character to handle %{handle}."
-        invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"
-        privacy_set: "Your handle privacy setting for this character is now %xh%{value}%xH.  See 'help handle privacy' for more info on what this means."
-        handle_info_title: "Handle Information"
-        handle_name: "%xhHandle Name:%xn %{name}"
-        handle_privacy: "%xhHandle Privacy:%xn %{privacy}"
+        character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
+
+        # Unlinking
+        character_unlinked: "You unlink %{name} from your handle."
         char_unlinked_subject: "Handle Unlinked"
         char_unlinked_body: "This character is no longer linked to your handle.  If you believe this is a mistake, contact your game admin."
 
+        # Info
+        linked_characters: "Linked Characters"
+        characters_title: "Name                      Privacy        Character ID"
+
+        handle_info_title: "Handle Information"
+        handle_name: "%xhHandle Name:%xn %{name}"
+        handle_privacy: "%xhHandle Privacy:%xn %{privacy}"
+
+        # Sync
+        set_sync: "This character will now download preferences from AresCentral."
+        clear_sync: "This character will no longer download preferences from AresCentral."
+        setting_preference_on_linked_char: "This character is linked to your handle, and this setting will be overwritten with your handle preferences.  You may want to set this on AresCentral, or disable syncing on this character using 'handle/sync off'."
+        setting_preference_on_master: "This setting will automatically be downloaded to all your linked characters when they log in.  You can disable this on individual characters using 'handle/sync off' on the linked char."
+        cant_set_sync_on_master: "You can't use this command on AresCentral.  Use it on your linked characters."
+
+        # Privacy
+        invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"
+        privacy_set: "Your handle privacy setting for this character is now %xh%{value}%xH.  See 'help handle privacy' for more info on what this means."
+        cant_set_privacy_on_master: "You set handle privacy on other games, not on AresCentral."
+
+        # Profile
         profile_title: "Public Profile:"
         profile_char_list_title: "Linked Characters                        Last Seen"
         sending_profile_request: "Sending profile request to AresCentral.  Please be patient."
         no_public_profile: "%{name} does not have a public profile."
-        cant_set_privacy_on_master: "You set handle privacy on other games, not on AresCentral."
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."
         ooc_profile_title: "OOC Profile"
         no_profile_set: "None set"
         profile_set: "You set your profile."
-        
-        setting_preference_on_linked_char: "This character is linked to your handle, and this setting will be overwritten with your handle preferences.  You may want to set this on AresCentral, or disable syncing on this character using 'handle/sync off'."
-        setting_preference_on_master: "This setting will automatically be downloaded to all your linked characters when they log in.  You can disable this on individual characters using 'handle/sync off' on the linked char."
-        cant_set_sync_on_master: "You can't use this command on AresCentral.  Use it on your linked characters."
+
+        # Alts
+        no_alts: "No public alts."
+        alts_list: "Public Alts for %{name}"
+        alts_not_available_on_master: "This is AresCentral.  Handles don't have alts.  Use this command on another Ares game."
         

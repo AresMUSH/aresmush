@@ -5,6 +5,11 @@ module AresMUSH
       name.start_with?("@")
     end
     
+    def self.find_visible_alts(handle, viewer)
+      return [] if handle.blank?
+      Character.find_by_handle(handle).select { |c| c.handle_visible_to?(viewer) }
+    end
+    
     def self.warn_if_setting_linked_preference(client)
       if (Global.api_router.is_master?)
         client.emit_ooc t('handles.setting_preference_on_master')

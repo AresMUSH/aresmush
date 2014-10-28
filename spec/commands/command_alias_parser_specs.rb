@@ -97,6 +97,14 @@ module AresMUSH
             cmd.switch.should eq "o"
             cmd.args.should eq "foo bar"
           end
+          
+          it "should substitute even with a prefix" do
+            cmd = Command.new("+m bar")
+            CommandAliasParser.substitute_aliases(@client, cmd)
+            cmd.root.should eq "n"
+            cmd.switch.should eq "o"
+            cmd.args.should eq "foo bar"
+          end
       
         end
       end

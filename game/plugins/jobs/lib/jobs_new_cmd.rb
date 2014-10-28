@@ -2,6 +2,7 @@ module AresMUSH
   module Jobs
     class JobsNewCmd
       include Plugin
+      include PluginRequiresLogin
       include PluginWithoutArgs
     
       def want_command?(client, cmd)

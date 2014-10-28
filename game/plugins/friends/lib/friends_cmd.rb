@@ -27,7 +27,7 @@ module AresMUSH
         text << "%R%l2"
         
         client.char.handle_friends.each do |f|
-          visible_alts = Character.find_by_handle(f).select { |c| c.handle_visible_to?(client.char) }
+          visible_alts = Handles.find_visible_alts(f, client.char)
           if (visible_alts.any?)
             text << "%R#{f.ljust(25)} #{visible_alts.map { |a| a.name }.join(" ")}"
           else

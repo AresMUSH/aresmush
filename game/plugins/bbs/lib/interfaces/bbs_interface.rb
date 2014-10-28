@@ -15,7 +15,7 @@ module AresMUSH
         message: message, author: author)
         
         if (!client.nil?)
-          post.mark_read(client.char)
+          Bbs.mark_read_for_player(client.char, post)
         end
                 
         Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 

@@ -8,3 +8,4 @@ en:
         unread_requests: "- There is new activity on your %xhrequests%xn. %xh%xx(requests)%xn"
         unread_jobs: "- There are %xhunread jobs%xn. %xh%xx(jobs/new)%xn"
         no_unread_requests: "- No unread requests or jobs."
+        alt_unread_mail: "- %{name} has unread mail."

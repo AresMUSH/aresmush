@@ -2,6 +2,7 @@ module AresMUSH
   module Handles
     class HandleInfoCmd
       include Plugin
+      include PluginRequiresLogin
       include PluginWithoutArgs
       
       def want_command?(client, cmd)

@@ -23,3 +23,7 @@ en:
         invalid_key: "Invalid key."
         
         handle_synced: "Your character information has been synchronized with AresCentral.  Your handle friends, timezone and autospace settings have been downloaded."
+        
+        sync_to_invalid_handle: "This character appears to be linked to an invalid handle.  Please contact the game admin at AresCentral for assistance."
+        sync_from_unlinked_character: "This character appears to be orphanned from its handle.  Please contact the game admin at AresCentral for assistance."
+        

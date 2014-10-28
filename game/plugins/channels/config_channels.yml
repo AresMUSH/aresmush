@@ -13,4 +13,4 @@ channels:
     # Channels you want to make sure guests and new players are on when they log in.
     default_channels:
         - Questions
-        - Public
+        - Chat

@@ -24,7 +24,7 @@ module AresMUSH
         end
 
         client.emit Bbs.post_renderer.render(board, first_unread, client)
-        first_unread.mark_read(client.char)
+        Bbs.mark_read_for_player(client.char, first_unread)
         client.program[:last_bbs_post] = first_unread
       end
     end

@@ -7,13 +7,13 @@ module AresMUSH
         config = Global.config['fs3xp']['cron']
         return if !Cron.is_cron_match?(config, event.time)
         
-        weekly_xp = Global.config['fs3xp']['weekly_xp']
+        periodic_xp = Global.config['fs3xp']['periodic_xp']
         max_xp = Global.config['fs3xp']['max_xp_hoard']
         
         approved = Character.where(is_approved: true)
         approved.each do |a|
           if (a.xp < max_xp)
-            a.xp = a.xp + weekly_xp
+            a.xp = a.xp + periodic_xp
             a.save
           end
         end
