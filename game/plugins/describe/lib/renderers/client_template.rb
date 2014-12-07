@@ -39,7 +39,7 @@ module AresMUSH
       end
       
       def actor
-        @char.actor_registry.nil? ? "" : @char.actor_registry.actor
+        @char.actor
       end
 
       def format_afk_message

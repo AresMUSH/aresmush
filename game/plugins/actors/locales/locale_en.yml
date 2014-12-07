@@ -4,3 +4,4 @@ en:
         actor_deleted: Actor deleted.
         actor_set: Actor set.
         actors_title: Actors
+        actor_not_set: None Set

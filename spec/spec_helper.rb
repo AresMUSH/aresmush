@@ -53,12 +53,11 @@ module AresMUSH
       filename = File.join(AresMUSH.game_path, "config/database.yml")
       config = YAML::load(File.open(filename))
       db_config = config['database']['test']
-      host = db_config['host']
-      port = db_config['port']
-      db_name = db_config['database']  
-      username = db_config['username']  
-      password = db_config['password']      
     
+      if (db_config.nil?)
+        raise "Test DB not defined #{db_config}"
+      end
+      
       mongoid = Mongoid.load_configuration(db_config)
     end
     

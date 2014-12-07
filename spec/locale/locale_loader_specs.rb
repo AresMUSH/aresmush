@@ -37,6 +37,7 @@ module AresMUSH
       end
 
       it "should pass along a regular file to the backend" do
+        AresLogger.stub(:create_log_dir) {} 
         File.stub(:directory?).with("f") { false }
         I18n.load_path.should_receive(:<<).with("f")
         LocaleLoader.load_file("f")

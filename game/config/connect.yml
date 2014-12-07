@@ -8,6 +8,5 @@ connect:
     welcome_text: "Still under development."
         
     # Location (relative to the main directory) of the terms of service text file.
-    # You may comment this out if you do not with to use terms of service, or if
-    # you want to put them in a room or something on the game itself.
+    # You may comment this out if you do not with to use terms of service.
     terms_of_service: "game/files/tos.txt"

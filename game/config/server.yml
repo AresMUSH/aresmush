@@ -1,6 +1,6 @@
 server:
-    # The host name where your game is running (typically localhost)
-    hostname: localhost
+    # The host name for your game.
+    hostname: mush.aresmush.com
 
     # The port number your game will listen on
     port: 7207
