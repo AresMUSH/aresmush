@@ -35,7 +35,7 @@ module AresMUSH
         text << t('api.game_category', :category => game.category)
         text << "%R"
 
-        last_ping = OOCTime.local_time_str(client, game.last_ping)        
+        last_ping = OOCTime.local_long_timestr(client, game.last_ping)        
         if (Time.now - game.last_ping < 86400)
           status = t('api.game_up_status')
         else

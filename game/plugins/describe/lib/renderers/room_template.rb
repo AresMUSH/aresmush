@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def ic_time
-        ICTime.ic_month_str ICTime.ictime
+        ICTime.ic_datestr ICTime.ictime
       end
       
       def area
@@ -33,7 +33,7 @@ module AresMUSH
       end
       
       def ooc_time
-        OOCTime.local_time_str(@client, Time.now)
+        OOCTime.local_long_timestr(@client, Time.now)
       end
     end
   end

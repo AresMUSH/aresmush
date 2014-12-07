@@ -118,7 +118,7 @@ module AresMUSH
       end
       
       def birthdate
-        format_field @char.birthdate.nil? ? "" : ICTime.ic_month_str(@char.birthdate)
+        format_field @char.birthdate.nil? ? "" : ICTime.ic_datestr(@char.birthdate)
       end
       
       def faction

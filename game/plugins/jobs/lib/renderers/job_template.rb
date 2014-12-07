@@ -71,12 +71,12 @@ module AresMUSH
       end
       
       def submitted_on
-        OOCTime.local_month_str(@client, @job.created_at)
+        OOCTime.local_short_timestr(@client, @job.created_at)
       end
       
       def reply_title(reply)
         name = reply.author.nil? ? t('jobs.deleted_author') : reply.author.name
-        date = OOCTime.local_time_str(@client, reply.created_at)
+        date = OOCTime.local_long_timestr(@client, reply.created_at)
         t('jobs.reply_title', :name => name, :date => date)
       end
       

@@ -9,7 +9,7 @@ module AresMUSH
     
     class JobsListRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/jobs_list.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/jobs_list.erb")
       end
 
       def render(client, jobs, current_page, total_pages)
@@ -20,7 +20,7 @@ module AresMUSH
     
     class JobRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/job.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/job.erb")
       end
 
       def render(client, job)

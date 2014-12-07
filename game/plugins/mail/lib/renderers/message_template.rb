@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def date
-        OOCTime.local_time_str(@client, @message.created_at)
+        OOCTime.local_long_timestr(@client, @message.created_at)
       end
       
       def body

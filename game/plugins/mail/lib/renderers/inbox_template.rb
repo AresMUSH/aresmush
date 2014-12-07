@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def message_date(delivery)
-        OOCTime.local_month_str(@client, delivery.message.created_at)
+        OOCTime.local_short_timestr(@client, delivery.message.created_at)
       end
       
       def message_author(delivery)

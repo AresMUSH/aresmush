@@ -28,7 +28,7 @@ module AresMUSH
           if (!other_client.nil?)
             client.emit_ooc t('last.currently_online', :name => target.name)
           else
-            last = OOCTime.local_time_str(client, target.last_on)
+            last = OOCTime.local_long_timestr(client, target.last_on)
             client.emit_ooc t('last.last_online', :name => target.name, :time => last)
           end
         end

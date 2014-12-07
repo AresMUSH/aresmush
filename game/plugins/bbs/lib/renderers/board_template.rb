@@ -49,7 +49,7 @@ module AresMUSH
       end
       
       def post_date(post)
-        OOCTime.local_month_str(@client, post.created_at)
+        OOCTime.local_short_timestr(@client, post.created_at)
       end
     end
     

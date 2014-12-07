@@ -9,7 +9,7 @@ module AresMUSH
     
     class NoticesRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/notices.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/notices.erb")
       end
 
       def render(client)
