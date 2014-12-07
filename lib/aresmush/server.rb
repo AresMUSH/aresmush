@@ -11,7 +11,7 @@ module AresMUSH
           Global.client_monitor.clients.each { |c| c.ping }
           Cron.raise_event
         end
-        
+                
         EventMachine::start_server(host, port, Connection) do |connection|
           Global.client_monitor.connection_established(connection)
         end

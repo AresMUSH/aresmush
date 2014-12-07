@@ -1,16 +1,16 @@
 server:
     # The host name for your game.
-    hostname: mush.aresmush.com
+    hostname: somewhere.someplace.com
 
     # The port number your game will listen on
-    port: 7207
+    port:4201
     
     # Name of your game.
-    name: AresCentral
+    name: TestMUSH
 
     # Please select the appropriate category to describe your game:
     # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
     category: "Social"
     
-    # Describe your game.  You may use ansi and other MUSH formatting codes.
-    description: "Social hub for all things AresMUSH."
+    # Describe your game.  You may use ansi and other MUSH formatting codes (%r, etc.).
+    description: "This MUSH is in development."
