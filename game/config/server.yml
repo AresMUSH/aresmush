@@ -13,7 +13,7 @@ server:
     category: Social
     
     # Describe your game.  You may use ansi and other MUSH formatting codes (%r, etc.).
-    description: Test site with "quotes".  And 'quotes'.
+    description: Test site.
     
     # Your game's website
     website: www.aresmush.com

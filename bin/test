@@ -1,1 +1,2 @@
+git update-index --assume-unchanged game/config/database.yml
 bundle exec rspec $*

@@ -1,2 +1,2 @@
-git rm --cached game/config/database.yml
+git update-index --assume-unchanged game/config/database.yml
 bundle exec rake init
