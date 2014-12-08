@@ -25,6 +25,7 @@ module AresMUSH
     field :host, :type => String
     field :port, :type => Integer
     field :category, :type => String
+    field :website, :type => String
     field :key, :type => String, :default => default_key
     field :last_ping, :type => Time, :default => Time.now
     

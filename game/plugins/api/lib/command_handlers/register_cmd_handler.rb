@@ -39,6 +39,7 @@ module AresMUSH
           description: args.desc,
           host: args.host,
           port: args.port,
+          website: args.website,
           key: key,
           game_id: game_id)
           

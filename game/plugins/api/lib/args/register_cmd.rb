@@ -1,18 +1,19 @@
 module AresMUSH
   module Api
     class ApiRegisterCmdArgs
-      attr_accessor :host, :port, :name, :category, :desc, :command_name
+      attr_accessor :host, :port, :name, :category, :desc, :website, :command_name
       
-      def initialize(host, port, name, category, desc)
+      def initialize(host, port, name, category, desc, website)
         @host = host
         @port = Integer(port) rescue nil
         @name = name
         @category = category
         @desc = desc
+        @website = website
       end
       
       def to_s
-        "#{host}||#{port}||#{name}||#{category}||#{desc}"
+        "#{host}||#{port}||#{name}||#{category}||#{desc}||#{website}"
       end
       
       def validate
@@ -26,8 +27,8 @@ module AresMUSH
       
       def self.create_from(command_args)
         args = command_args.split("||")
-        host, port, name, category, desc = args
-        ApiRegisterCmdArgs.new(host, port, name, category, desc)
+        host, port, name, category, desc, website = args
+        ApiRegisterCmdArgs.new(host, port, name, category, desc, website)
       end
     end
   end

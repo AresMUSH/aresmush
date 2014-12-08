@@ -21,7 +21,8 @@ module AresMUSH
               server_config["port"], 
               server_config["name"], 
               server_config["category"], 
-              server_config["description"])
+              server_config["description"],
+              server_config["website"])
             
               cmd = ApiCommand.new("register/update", args.to_s)
               Global.api_router.send_command(s.game_id, nil, cmd)
@@ -32,7 +33,8 @@ module AresMUSH
             server_config['port'], 
             server_config['name'], 
             server_config['category'],
-            server_config['description'])
+            server_config['description'],
+            server_config["website"])
 
             if (Game.master.api_game_id == ServerInfo.default_game_id)
               cmd = ApiCommand.new("register", args.to_s)

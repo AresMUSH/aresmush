@@ -1,3 +1,2 @@
 git rm --cached game/config/database.yml
-bundle install
-bundle exec rake install
+bundle exec rake init

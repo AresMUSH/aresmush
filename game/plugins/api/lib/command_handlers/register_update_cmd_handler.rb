@@ -41,6 +41,7 @@ module AresMUSH
         game.description = args.desc
         game.host = args.host
         game.port = args.port
+        game.website = args.website
         game.save!
         
         cmd.create_ok_response
