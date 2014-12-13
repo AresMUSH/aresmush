@@ -3,7 +3,8 @@ module AresMUSH
     class GamesCmd
       include Plugin
       include PluginRequiresLogin
-           
+      include TemplateFormatters
+      
       attr_accessor :filter, :page
       
       def want_command?(client, cmd)
@@ -23,7 +24,7 @@ module AresMUSH
         end
         
         games = games.sort_by {|g| [g.category, g.name] }
-        list = games.map { |s| "#{s.name.ljust(20)} #{s.category.ljust(15)} #{s.host}:#{s.port}" }
+        list = games.map { |s| "#{left(s.name, 20)} #{left(s.category, 15)} #{s.host}:#{s.port}" }
         client.emit BorderedDisplay.paged_list list, self.page, 15, t('api.games_title'), t('api.full_games_list_at_central')
       end
     end

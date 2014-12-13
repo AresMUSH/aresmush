@@ -46,6 +46,7 @@ module AresMUSH
         game.should_receive(:category=).with("Social")
         game.should_receive(:description=).with("A cool MUSH")
         game.should_receive(:website=).with("http://www.somewhere.com")
+        game.should_receive(:game_open=).with(true)
         game.should_receive(:save!)
         response = Global.api_router.route_command(1, cmd)
         check_response(response, ApiResponse.ok_status, "")

@@ -40,6 +40,7 @@ module AresMUSH
             :description => "A cool MUSH",
             :key => "ABC",
             :website => "http://www.somewhere.com",
+            :game_open => true,
             :game_id => 3 })
         response = Global.api_router.route_command(-1, cmd)
         check_response(response, ApiResponse.ok_status, "3||ABC")

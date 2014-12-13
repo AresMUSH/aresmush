@@ -3,7 +3,7 @@ server:
     hostname: localhost
 
     # The port number your game will listen on
-    port: 7207
+    port: 4201
     
     # Name of your game.
     name: AresTest
@@ -17,3 +17,6 @@ server:
     
     # Your game's website
     website: www.aresmush.com
+    
+    # yes if your game is open for business, no if it is in development or down
+    game_open: yes

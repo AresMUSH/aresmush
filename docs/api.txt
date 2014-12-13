@@ -20,7 +20,7 @@ A few definitions:
 When an AresMUSH game first starts up, it registers itself with AresCentral.  AresCentral responds with a game-specific id and password.  These will be used in future commands.  The game ID uniquely identifies the game, and the password is used to encrypt all traffic between the servers.  
 
     From Satellite to AresCentral:
-    (C) register <host>||<port>||<game name>||<game category>||<game description>||<website>
+    (C) register <host>||<port>||<game name>||<game category>||<game description>||<website>||<open>
     (R) register <game id>||<password>
 
 Note: When issuing the very first command, a default game ID of '-1' and a default password is used.
@@ -30,7 +30,7 @@ Note: When issuing the very first command, a default game ID of '-1' and a defau
 If your game name or server info changes, the game can issue a registration update.  AresCentral can do the same.
 
     From AresCentral to Satellite or vice-versa:
-    (C) register/update <host>||<port>||<game name>||<game category>||<game description>||<website>
+    (C) register/update <host>||<port>||<game name>||<game category>||<game description>||<website>||<open>
     (R) register/update
 
 ******* PING *******
