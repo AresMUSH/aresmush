@@ -32,12 +32,6 @@ module AresMUSH
         expect_msg("msg", msg)
       end
 
-      it "should expand ansi codes" do
-        AnsiFormatter.should_receive(:format).with("msg") { "amsg" }
-        msg = ClientFormatter.format("msg")
-        expect_msg("amsg", msg)
-      end
-
       it "should replace an escaped %" do
         msg = ClientFormatter.format("A\\%c")
         expect_msg("A%c", msg)

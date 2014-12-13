@@ -6,74 +6,60 @@ module AresMUSH
 
   describe AnsiFormatter do
     
-    describe :format do
-      it "should replace ansi codes" do
-        AnsiFormatter.format("A%xrB%XnC").should eq "A" + ANSI.red + "B" + ANSI.reset + "C" 
-      end
-      
-      it "should replace ansi c as well as x" do
-        AnsiFormatter.format("A%crB%CnC").should eq "A" + ANSI.red + "B" + ANSI.reset + "C" 
-      end
-      
-      it "should replace nested codes" do
-        AnsiFormatter.format("A%xc%xGB%xnC").should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" 
+    describe :get_code do
+      it "should give code for lowercase x + valid letter" do
+        AnsiFormatter.get_code("%xr").should eq ANSI.red
       end
 
-      it "should not replace a code preceeded by a backslash" do
-        AnsiFormatter.format("A\\%xcB").should eq "A\\%xcB" 
+      it "should give code for uppercase x + valid letter" do
+        AnsiFormatter.get_code("%Xb").should eq ANSI.blue
       end
       
-      it "should handle a numeric code for foreground" do
-        AnsiFormatter.format("A%x102B").should eq "A\e[38;5;102mB" 
+      it "should give code for lowercase c + valid letter" do
+        AnsiFormatter.get_code("%cr").should eq ANSI.red
+      end
+
+      it "should give code for uppercase C + valid letter" do
+        AnsiFormatter.get_code("%Cb").should eq ANSI.blue
       end
       
-      it "should handle a numeric code for background" do
-        AnsiFormatter.format("A%C102B").should eq "A\e[48;5;102mB" 
+      it "should give code for background color" do
+        AnsiFormatter.get_code("%CB").should eq ANSI.on_blue
       end
       
-      it "should handle a color code followed by a number" do
-        AnsiFormatter.format("A%Cg123B").should eq "A" + ANSI.green + "123B" 
+      it "should give code for a 1-digit FANSI foreground" do
+        AnsiFormatter.get_code("%x1").should eq "\e[38;5;1m" 
       end
+
+      it "should give code for a 2-digit FANSI foreground" do
+        AnsiFormatter.get_code("%x12").should eq "\e[38;5;12m" 
+      end
+
+      it "should give code for a 3-digit FANSI foreground" do
+        AnsiFormatter.get_code("%x123").should eq "\e[38;5;123m" 
+      end
+      
+      it "should give code for a FANSI background" do
+        AnsiFormatter.get_code("%X1").should eq "\e[48;5;1m" 
+      end
+      
+      it "should return nil if not ansi" do
+        AnsiFormatter.get_code("ABC").should be_nil
+      end
+      
+      it "should return nil if not a valid ansi letter code" do
+        AnsiFormatter.get_code("%xz").should be_nil
+      end
+      
+      it "should return nil if not a valid FANSI number" do
+        AnsiFormatter.get_code("999").should be_nil
+      end
+
+      it "should return nil if FANSI number is too long" do
+        AnsiFormatter.get_code("9999").should be_nil
+      end
+      
     end
     
-    describe :center do
-      it "should truncate if the string is too long" do
-        AnsiFormatter.center("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
-      end
-      
-      it "should pad if the string is too short" do
-        AnsiFormatter.center("A%xc%xhGB%xnC", 10, ".").should eq "...A%xc%xhGB%xnC..."
-      end
-    end      
-
-    describe :left do
-      it "should truncate if the string is too long" do
-        AnsiFormatter.left("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
-      end
-      
-      it "should pad if the string is too short" do
-        AnsiFormatter.left("A%xc%xhGB%xnC", 10, ".").should eq "A%xc%xhGB%xnC......"
-      end
-    end 
-
-    describe :right do
-      it "should truncate if the string is too long" do
-        AnsiFormatter.right("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
-      end
-      
-      it "should pad if the string is too short" do
-        AnsiFormatter.right("A%xc%xhGB%xnC", 10, ".").should eq "......A%xc%xhGB%xnC"
-      end
-    end 
-            
-    describe :truncate do 
-      it "should truncate a string that's too long" do
-        AnsiFormatter.truncate("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
-      end
-      
-      it "should do nothing for a string that's shorter than allowed" do
-        AnsiFormatter.truncate("A%xc%xhGB%xnC", 20).should eq "A%xc%xhGB%xnC"
-      end
-    end
   end
 end

@@ -12,6 +12,7 @@ module AresMUSH
     
     before do 
       @data = TestFormatterData.new
+      Line.stub(:show) { "" }
     end
     
     describe :right do

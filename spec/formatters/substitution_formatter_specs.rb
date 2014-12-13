@@ -48,7 +48,7 @@ module AresMUSH
       
       it "should replace %x! with a random color" do
         AresMUSH::RandomColorizer.should_receive(:random_color) { "b" }
-        SubstitutionFormatter.format("A%x!B").should eq "A%xbB"
+        SubstitutionFormatter.format("A%x!B").should eq "A" + ANSI.blue + "B"
       end
 
       it "should replace %\\ with a \\" do
@@ -58,9 +58,95 @@ module AresMUSH
       it "should replace space() with spaces" do
         SubstitutionFormatter.format("A[space(1)]B[space(10)]").should eq "A B          "
       end
+
+      it "should replace center() with centered text" do
+        SubstitutionFormatter.format("[center(A,5)]B").should eq "  A  B"
+      end
+      
+      it "should foo" do
+        str = "A fox jumped in%ch%xbside%xn the %r%b%b%b%b%xhbrown%xn barn[space(10)] whee%xrred%xn then \\%xbnot\\%xn blue or \\[space(1)\\] with %x1ansi%xn %c234red%xn"
+        puts str
+        
+        Benchmark.bm do |r|
+          N = 1000
+
+          r.report("f1") do
+            N.times { SubstitutionFormatter.format(str) }
+          end
+
+          r.report("f2") do
+            N.times { SubstitutionFormatter.format2(str) }
+          end
+        end
+        
+        
+
+      end
       
       it "should not replace an escaped linebreak or space" do
         SubstitutionFormatter.format("Test\\%bblank\\%Rline").should eq "Test\\%bblank\\%Rline"
+      end
+      
+      it "should replace nested codes" do
+        SubstitutionFormatter.format("A%xc%xGB%xnC").should eq "A" + ANSI.cyan + ANSI.on_green + "B" + ANSI.reset + "C" 
+      end
+
+      it "should not replace a code preceeded by a backslash" do
+        SubstitutionFormatter.format("A\\%xcB").should eq "A\\%xcB" 
+      end
+      
+      it "should handle a numeric code for foreground" do
+        SubstitutionFormatter.format("A%x102B").should eq "A\e[38;5;102mB" 
+      end
+      
+      it "should handle a numeric code for background" do
+        SubstitutionFormatter.format("A%C102B").should eq "A\e[48;5;102mB" 
+      end
+      
+      it "should handle a color code followed by a number" do
+        SubstitutionFormatter.format("A%Cg123B").should eq "A" + ANSI.green + "123B" 
+      end
+      
+    end
+    
+    
+    describe :center do
+      it "should truncate if the string is too long" do
+        SubstitutionFormatter.center("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+      end
+      
+      it "should pad if the string is too short" do
+        SubstitutionFormatter.center("A%xc%xhGB%xnC", 10, ".").should eq "...A%xc%xhGB%xnC..."
+      end
+    end      
+
+    describe :left do
+      it "should truncate if the string is too long" do
+        SubstitutionFormatter.left("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+      end
+      
+      it "should pad if the string is too short" do
+        SubstitutionFormatter.left("A%xc%xhGB%xnC", 10, ".").should eq "A%xc%xhGB%xnC......"
+      end
+    end 
+
+    describe :right do
+      it "should truncate if the string is too long" do
+        SubstitutionFormatter.right("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+      end
+      
+      it "should pad if the string is too short" do
+        SubstitutionFormatter.right("A%xc%xhGB%xnC", 10, ".").should eq "......A%xc%xhGB%xnC"
+      end
+    end 
+            
+    describe :truncate do 
+      it "should truncate a string that's too long" do
+        SubstitutionFormatter.truncate("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+      end
+      
+      it "should do nothing for a string that's shorter than allowed" do
+        SubstitutionFormatter.truncate("A%xc%xhGB%xnC", 20).should eq "A%xc%xhGB%xnC"
       end
     end
     

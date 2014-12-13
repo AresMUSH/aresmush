@@ -9,8 +9,7 @@ module AresMUSH
 
       # Do substitutions
       msg = SubstitutionFormatter.format(msg)      
-      # Ansify
-      msg = AnsiFormatter.format(msg)
+
       # Unescape %'s
       msg = msg.gsub("\\%", "%")
 
