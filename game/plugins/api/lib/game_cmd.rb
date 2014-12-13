@@ -30,8 +30,7 @@ module AresMUSH
         
         text = t('api.game_name', :name => game.name)
         if (!game.is_open?)
-          text << "%R%xh%xr" 
-          text << t("api.game_not_open")
+          text << "%R%R%xh%xr#{t("api.game_not_open")}%xn%R"
         end
         
         text << "%R"
