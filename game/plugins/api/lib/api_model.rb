@@ -28,6 +28,10 @@ module AresMUSH
       ServerInfo.where(game_id: dest_id).first
     end
     
+    def is_master?
+      game_id == ServerInfo.arescentral_game_id
+    end
+    
     def is_open?
       case game_open
       when "yes", "Yes", "true", "True", "open", "Open"

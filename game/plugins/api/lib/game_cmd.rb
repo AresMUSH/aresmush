@@ -48,18 +48,22 @@ module AresMUSH
         text << t('api.game_address', :host => game.host, :port => game.port)
         text << "%R"
         text << t('api.game_category', :category => game.category)
-        text << "%R"
 
-        last_ping = OOCTime.local_long_timestr(client, game.last_ping)        
-        if (Time.now - game.last_ping < 86400)
-          status = t('api.game_up_status')
-        else
-          status = t('api.game_down_status')
+        if (!game.is_master?)
+          last_ping = OOCTime.local_long_timestr(client, game.last_ping)        
+          if (Time.now - game.last_ping < 86400)
+            status = t('api.game_up_status')
+          else
+            status = t('api.game_down_status')
+          end
+        
+          text << "%R"
+          text << t('api.game_status', :status => status, :last => last_ping)
         end
         
-        text << t('api.game_status', :status => status, :last => last_ping)
         text << "%r%r"
         text << game.description
+        
         text << "%r"
       end
     end
