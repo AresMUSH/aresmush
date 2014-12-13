@@ -12,13 +12,13 @@ module AresMUSH
       end
       
       def crack!
-        self.filter = cmd.args
+        self.filter = cmd.args.nil? ? nil : cmd.args.upcase
         self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
       end
       
       def handle          
         if (self.filter)
-          games = ServerInfo.or({category: self.filter}, {name: self.filter})
+          games = ServerInfo.or({category_upcase: self.filter}, {name_upcase: self.filter})
         else
           games = ServerInfo.all
         end

@@ -15,6 +15,11 @@ module AresMUSH
     field :key, :type => String, :default => default_key
     field :last_ping, :type => Time, :default => Time.now
     
+    field :category_upcase, :type => String
+    field :name_upcase, :type => String
+    
+    before_validation :save_upcase_name
+    
     def self.next_id
       ServerInfo.all.map { |s| s.game_id }.max + 1
     end
@@ -30,6 +35,12 @@ module AresMUSH
       else
         false
       end
+    end
+    
+    private
+    def save_upcase_name
+      self.name_upcase = self.name.nil? ? "" : self.name.upcase
+      self.alias_upcase = self.alias.nil? ? "" : self.alias.upcase
     end
   end
 end
