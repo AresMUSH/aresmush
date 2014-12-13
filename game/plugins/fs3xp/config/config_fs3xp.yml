@@ -36,7 +36,7 @@ fs3xp:
     # configuration, that is weekly but you can make it run as often as you want).
     periodic_xp: 1
     
-    # Set up when you want the XP cron job to run.  See the 'cron' plugin for details.
+    # Set up when you want the XP cron job to run.  See the 'cron' tutorial on the website for details.
     # Comment out any items you aren't using; don't just leave them blank.
     cron:
         #date: 1
