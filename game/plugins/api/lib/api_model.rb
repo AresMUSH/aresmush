@@ -40,7 +40,7 @@ module AresMUSH
     private
     def save_upcase_name
       self.name_upcase = self.name.nil? ? "" : self.name.upcase
-      self.alias_upcase = self.alias.nil? ? "" : self.alias.upcase
+      self.category_upcase = self.category.nil? ? "" : self.category.upcase
     end
   end
 end
