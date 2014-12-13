@@ -66,6 +66,14 @@ module AresMUSH
       it "should replace center() with centered text with a padding char" do
         SubstitutionFormatter.format("[center(A,6,.)]B").should eq "..A...B"
       end
+
+      it "should replace left() with left text with a padding char" do
+        SubstitutionFormatter.format("[left(A,6,.)]B").should eq "A.....B"
+      end
+
+      it "should replace right() with right text with a padding char" do
+        SubstitutionFormatter.format("[right(A,6,.)]B").should eq ".....AB"
+      end
       
       it "should replace ansi() with ansi codes" do
         SubstitutionFormatter.format("[ansi(hcB,A)]").should eq ANSI.bold + ANSI.cyan + ANSI.on_blue + "A" + ANSI.reset
