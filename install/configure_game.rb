@@ -29,7 +29,7 @@ module AresMUSH
         "db_password" => db_password
       }
   
-      template = Erubis::Eruby.new(File.read(File.join(template_path, 'database.yml.erb')))
+      template = Erubis::Eruby.new(File.read(File.join(template_path, 'database.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'database.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
@@ -90,7 +90,7 @@ module AresMUSH
         "website" => website
       }
   
-      template = Erubis::Eruby.new(File.read(File.join(template_path, 'server.yml.erb')))
+      template = Erubis::Eruby.new(File.read(File.join(template_path, 'server.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'server.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end

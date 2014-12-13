@@ -129,7 +129,7 @@ module AresMUSH
         
         describe :load_help do
           it "should read the file" do
-            File.should_receive(:read).with("foo/en/a.txt") { "a topic text" }
+            File.should_receive(:read).with("foo/en/a.txt", {:encoding=>"UTF-8"}) { "a topic text" }
             Help.load_help("a", "a topic").should eq "a topic text"
           end
         

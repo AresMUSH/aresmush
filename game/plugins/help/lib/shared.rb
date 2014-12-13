@@ -70,7 +70,7 @@ module AresMUSH
       if (!File.exists?(filename))
         filename = File.join(topic["dir"], Global.locale.default_locale.to_s, topic["file"])
       end
-      File.read(filename)
+      File.read(filename, :encoding => "UTF-8")
     end
     
     # Careful with this one - name must be pre-stripped if user input

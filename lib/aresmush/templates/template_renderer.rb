@@ -10,7 +10,7 @@ module AresMUSH
     end
     
     def self.create_from_file(file_path)
-      template = File.read(file_path)
+      template = File.read(file_path, :encoding => "UTF-8")
       TemplateRenderer.new(template)
     end
   end
