@@ -57,6 +57,10 @@ class String
     tr("-", "_").
     downcase
   end 
+  
+  def repeat(n)
+    n.times.collect { self }.join
+  end
 end
 
 class Object

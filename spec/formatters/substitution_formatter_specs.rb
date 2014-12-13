@@ -63,24 +63,14 @@ module AresMUSH
         SubstitutionFormatter.format("[center(A,5)]B").should eq "  A  B"
       end
       
+      it "should replace center() with centered text with a padding char" do
+        SubstitutionFormatter.format("[center(A,6,.)]B").should eq "..A...B"
+      end
+      
       it "should foo" do
-        str = "A fox jumped in%ch%xbside%xn the %r%b%b%b%b%xhbrown%xn barn[space(10)] whee%xrred%xn then \\%xbnot\\%xn blue or \\[space(1)\\] with %x1ansi%xn %c234red%xn"
-        puts str
-        
-        Benchmark.bm do |r|
-          N = 1000
-
-          r.report("f1") do
-            N.times { SubstitutionFormatter.format(str) }
-          end
-
-          r.report("f2") do
-            N.times { SubstitutionFormatter.format2(str) }
-          end
-        end
-        
-        
-
+        str = "A fox jumped in%ch%xbside%xn the %r%b%b%b%b%xhbrown%xn barn[space(10)] [center(X,5,@)]whee%xrred%xn then \\%xbnot\\%xn blue or \\[space(1)\\] with %x1ansi%xn %c234red%xn"
+        puts SubstitutionFormatter.format(str)
+          
       end
       
       it "should not replace an escaped linebreak or space" do

@@ -126,5 +126,16 @@ module AresMUSH
         "12ABC".is_integer?.should be_false
       end
     end
+    
+    describe :repeat do
+      it "should repeat the string x times" do
+        "x".repeat(5).should eq "xxxxx"
+      end
+      
+      it "should work with multiple chars" do
+        "ab".repeat(3).should eq "ababab"
+      end
+    end
+    
   end
 end
