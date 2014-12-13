@@ -19,4 +19,4 @@ server:
     website: www.aresmush.com
     
     # yes if your game is open for business, no if it is in development or down
-    game_open: yes
+    game_open: "yes"

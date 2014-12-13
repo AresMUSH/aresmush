@@ -23,7 +23,7 @@ module AresMUSH
           games = ServerInfo.all
         end
         
-        games = games.sort_by {|g| [g.category, g.name] }
+        games = games.sort_by {|g| [g.category.nil? ? "" : g.category, g.name] }
         list = games.map { |s| "#{left(s.name, 20)} #{left(s.category, 15)} #{s.host}:#{s.port}" }
         client.emit BorderedDisplay.paged_list list, self.page, 15, t('api.games_title'), t('api.full_games_list_at_central')
       end
