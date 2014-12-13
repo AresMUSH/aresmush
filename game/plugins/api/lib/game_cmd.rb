@@ -29,6 +29,11 @@ module AresMUSH
         end
         
         text = t('api.game_name', :name => game.name)
+        if (!game.is_open?)
+          text << "%R%xh%xr" 
+          text << t("api.game_not_open")
+        end
+        
         text << "%R"
         text << t('api.game_address', :host => game.host, :port => game.port)
         text << "%R"

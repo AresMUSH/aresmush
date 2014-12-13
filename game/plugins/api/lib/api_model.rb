@@ -22,5 +22,14 @@ module AresMUSH
     def self.find_by_dest_id(dest_id)
       ServerInfo.where(game_id: dest_id).first
     end
+    
+    def is_open?
+      case info.game_open
+      when "yes", "Yes", "true", "True", "open", "Open", nil
+        true
+      else
+        false
+      end
+    end
   end
 end

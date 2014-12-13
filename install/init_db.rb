@@ -59,6 +59,7 @@ module AresMUSH
       category: "Social",
       description: "Central hub for all things AresMUSH-related.", 
       host: "mush.aresmush.com",
+      game_open: "yes",
       port: 7206)
     
       puts "Creating channels and BBS."

@@ -6,7 +6,7 @@ server:
     port: 4201
     
     # Name of your game.
-    name: AresTest
+    name: Not Set
 
     # Please select the appropriate category to describe your game:
     # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
@@ -16,7 +16,7 @@ server:
     description: Test site.
     
     # Your game's website
-    website: www.aresmush.com
+    website: ""
     
     # yes if your game is open for business, no if it is in development or down
-    game_open: "yes"
+    game_open: "no"
