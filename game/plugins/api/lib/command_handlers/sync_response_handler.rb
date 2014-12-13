@@ -36,9 +36,9 @@ module AresMUSH
         if (char.handle_sync)
           char.autospace = self.args.autospace
           char.timezone = self.args.timezone
+          client.emit_ooc t('api.handle_synced')
         end
         char.save!
-        client.emit_ooc t('api.handle_synced')
       end
       
       def update_needed(char)
