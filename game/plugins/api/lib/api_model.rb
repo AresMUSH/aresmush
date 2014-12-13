@@ -25,7 +25,7 @@ module AresMUSH
     
     def is_open?
       case game_open
-      when "yes", "Yes", "true", "True", "open", "Open", nil
+      when "yes", "Yes", "true", "True", "open", "Open"
         true
       else
         false
