@@ -39,6 +39,44 @@ module AresMUSH
           Global.api_router.route_response(@client, response)
         end
       end
+      
+      describe :update_needed do
+        before do
+          @char = double
+          @char.stub(:handle_friends) { [ "F1", "F2"] }
+          @char.stub(:autospace) { "as" }
+          @char.stub(:timezone) { "tz" }
+          
+          @response = double
+          @response.stub(:args_str) { "F1 F2||as||tz" }
+          @handler = SyncResponseHandler.new(@client, @response)
+          
+        end
+        
+        it "should need update if friends are different" do
+          @response.stub(:args_str) { "F1 F2 F3||as||tz" }
+          @handler.crack!
+          @handler.update_needed(@char).should be_true
+        end
+        
+        it "should need update if autospace is different" do
+          @response.stub(:args_str) { "F1 F2||as2||tz" }
+          @handler.crack!
+          @handler.update_needed(@char).should be_true
+        end 
+        
+        it "should need update if timezone is different" do
+          @response.stub(:args_str) { "F1 F2||as||tz2" }
+          @handler.crack!
+          @handler.update_needed(@char).should be_true
+        end
+        
+        it "should not need update if everything is same" do
+          @response.stub(:args_str) { "F1 F2||as||tz" }
+          @handler.crack!
+          @handler.update_needed(@char).should be_false
+        end
+      end
     end 
   end
 end

@@ -29,6 +29,9 @@ module AresMUSH
         Global.logger.info "Login update received for #{client.name}."
         
         char = client.char
+        
+        return if !update_needed(char)
+        
         char.handle_friends = self.args.friends.split(" ")
         if (char.handle_sync)
           char.autospace = self.args.autospace
@@ -36,6 +39,12 @@ module AresMUSH
         end
         char.save!
         client.emit_ooc t('api.handle_synced')
+      end
+      
+      def update_needed(char)
+        char.handle_friends != self.args.friends.split(" ") ||
+        char.autospace != self.args.autospace ||
+        char.timezone != self.args.timezone
       end
     end
   end
