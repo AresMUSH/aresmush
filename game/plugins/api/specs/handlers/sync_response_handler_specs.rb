@@ -19,6 +19,9 @@ module AresMUSH
           @char.stub(:handle_friends=)
           @char.stub(:autospace=)
           @char.stub(:timezone=)
+          @char.stub(:handle_friends) { [] }
+          @char.stub(:autospace) { "" }
+          @char.stub(:timezone) { "" }
         end
         
         it "should set the preferences if sync is on" do

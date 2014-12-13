@@ -3,7 +3,7 @@ module AresMUSH
     class ApiRegisterCmdArgs
       attr_accessor :host, :port, :name, :category, :desc, :website, :command_name, :game_open
       
-      def initialize(host, port, name, category, desc, website, open)
+      def initialize(host, port, name, category, desc, website, game_open)
         @host = host
         @port = Integer(port) rescue nil
         @name = name
