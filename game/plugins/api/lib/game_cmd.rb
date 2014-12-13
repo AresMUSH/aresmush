@@ -35,6 +35,8 @@ module AresMUSH
       end
       
       def show_game(game, text)
+        text << "%l2%r"
+        
         if (!game.is_open?)
           text << "%xh%xr"
           text << t("api.game_not_open")
@@ -58,6 +60,7 @@ module AresMUSH
         text << t('api.game_status', :status => status, :last => last_ping)
         text << "%r%r"
         text << game.description
+        text << "%r"
       end
     end
   end
