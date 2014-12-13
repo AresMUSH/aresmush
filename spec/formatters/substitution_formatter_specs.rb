@@ -67,10 +67,8 @@ module AresMUSH
         SubstitutionFormatter.format("[center(A,6,.)]B").should eq "..A...B"
       end
       
-      it "should foo" do
-        str = "A fox jumped in%ch%xbside%xn the %r%b%b%b%b%xhbrown%xn barn[space(10)] [center(X,5,@)]whee%xrred%xn then \\%xbnot\\%xn blue or \\[space(1)\\] with %x1ansi%xn %c234red%xn"
-        puts SubstitutionFormatter.format(str)
-          
+      it "should replace ansi() with ansi codes" do
+        SubstitutionFormatter.format("[ansi(hcB,A)]").should eq ANSI.bold + ANSI.cyan + ANSI.on_blue + "A" + ANSI.reset
       end
       
       it "should not replace an escaped linebreak or space" do

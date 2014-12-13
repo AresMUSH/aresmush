@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       it "should send the welcome screen" do
-        File.should_receive(:read).with("a file") { "Ascii Art" }
+        File.should_receive(:read).with("a file", :encoding => "UTF-8") { "Ascii Art" }
         @client.should_receive(:emit).with("Ascii Art")
       end
 

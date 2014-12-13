@@ -142,10 +142,14 @@ module AresMUSH
 
       # Might be a function.
       if (str.start_with?("["))
-        if (str =~ /\[space\((?<spaces>[\d]+)\)\]/)
+        if (str =~ /\[space\(([\d]+)\)\]/)
           return { :len => $1, :str => " ".repeat($1.to_i), :raw => str }
-        elsif (str =~ /\[center\((?<text>.+)\,(?<spaces>[\d]+)(?:\,(?<padding>.+))?\)\]/)
+        elsif (str =~ /\[center\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
           return { :len => $2, :str => center($1, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+        elsif (str =~ /\[ansi\((.+)\,(.+)\)\]/)
+          raw_codes = $1.each_char.map { |c| "%x#{c}" }
+          ansi = raw_codes.map { |c| AnsiFormatter.get_code(c) }.join
+          return { :len => $2.length, :str => "#{ansi}#{$2}#{ANSI.reset}", :raw => "#{raw_codes.join}#{$2}%xn"}
         end
       end
 
@@ -153,3 +157,6 @@ module AresMUSH
     end
   end
 end
+
+# Crazy test string for future reference
+# "A fox jumped in%ch%xbblue%xn the %r%b%b%b%b%xhbrown%xn barn[space(10)] [center(X,5,@)]whee%xrred%xn then \\%xbnot\\%xn blue or \\[space(1)\\] with %x1ansi%xn %c234red%xn"
