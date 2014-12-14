@@ -1,15 +1,14 @@
 module AresMUSH
   module Handles
     class ApiLinkResponseArgs
-      attr_accessor :handle_name, :handle_friends
+      attr_accessor :handle_name
       
-      def initialize(handle_name, handle_friends)
+      def initialize(handle_name)
         self.handle_name = handle_name
-        self.handle_friends = handle_friends
       end
       
       def to_s
-        "#{handle_name}||#{handle_friends}"
+        "#{handle_name}"
       end
       
       def validate
@@ -18,8 +17,8 @@ module AresMUSH
       end
      
       def self.create_from(response_args)
-        handle_name, handle_friends = response_args.split("||")
-        ApiLinkResponseArgs.new(handle_name, handle_friends)
+        handle_name, garbage = response_args.split("||")
+        ApiLinkResponseArgs.new(handle_name)
       end
     end
   end

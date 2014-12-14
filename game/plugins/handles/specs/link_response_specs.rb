@@ -17,27 +17,30 @@ module AresMUSH
           @client.should_receive(:emit_success).with("handles.link_successful")
           @client.should_receive(:emit_ooc).with("handles.privacy_set")
           @char.stub(:handle=)
-          @char.stub(:handle_friends=)
           @char.stub(:handle_privacy=)
+          @char.stub(:handle_sync=)
+          Api.stub(:sync_char_with_master)
         end
         
         it "should set the handle" do
-          response = ApiResponse.new("link", ApiResponse.ok_status, "@Star||F1 F2")
+          response = ApiResponse.new("link", ApiResponse.ok_status, "@Star")
           @char.should_receive(:handle=).with("@Star")
           Global.api_router.route_response(@client, response)
         end
         
-        it "should set the handle friends" do
-          response = ApiResponse.new("link", ApiResponse.ok_status, "@Star||F1 F2")
-          @char.should_receive(:handle_friends=).with(["F1", "F2"])
-          Global.api_router.route_response(@client, response)
-        end
-
-        it "should set the handle friends" do
-          response = ApiResponse.new("link", ApiResponse.ok_status, "@Star||F1 F2")
+        it "should set the handle privacy and sync to defaults" do
+          response = ApiResponse.new("link", ApiResponse.ok_status, "@Star")
           @char.should_receive(:handle_privacy=).with(Handles.privacy_friends)
+          @char.should_receive(:handle_sync=).with(true)
           Global.api_router.route_response(@client, response)
         end
+        
+        it "should immediately sync the char with master" do
+          response = ApiResponse.new("link", ApiResponse.ok_status, "@Star")
+          Api.should_receive(:sync_char_with_master).with(@client)
+          Global.api_router.route_response(@client, response)
+        end
+          
       end 
     end
   end

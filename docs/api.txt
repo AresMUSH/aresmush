@@ -47,7 +47,7 @@ A Satellite game can request that a local character be linked to the handle.  Th
 
     From Satellite to AresCentral:
     (C) link <handle>||<character id>||<character name>||<one-time code>
-    (R) link <handle>||<handle friends>
+    (R) link <handle>
 
 ******* HANDLE UNLINK *******
 

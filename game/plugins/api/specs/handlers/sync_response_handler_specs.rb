@@ -15,7 +15,6 @@ module AresMUSH
       context "success" do
         before do
           @char.should_receive(:save!)
-          @client.should_receive(:emit_ooc).with("api.handle_synced")
           @char.stub(:handle_friends=)
           @char.stub(:autospace=)
           @char.stub(:timezone=)
@@ -30,6 +29,7 @@ module AresMUSH
           @char.should_receive(:handle_friends=).with(["F1", "F2"])
           @char.should_receive(:autospace=).with("as")
           @char.should_receive(:timezone=).with("tz")
+          @client.should_receive(:emit_ooc).with("api.handle_synced")
           Global.api_router.route_response(@client, response)
         end
         
