@@ -41,7 +41,7 @@ module AresMUSH
           message = PoseFormatter.format(name, self.message)
           recipients = clients.map { |r| r.char.name_and_alias }.join(", ")
         
-          client.emit_ooc t('page.to_sender', :recipients => recipients, :message => message)
+          client.emit t('page.to_sender', :color => page_color, :recipients => recipients, :message => message)
           clients.each do |c|
             page_recipient(c, recipients, message)
           end
@@ -59,7 +59,7 @@ module AresMUSH
               t('page.missed_page_body', :name => client.name, :message => message), 
               client)
         else          
-          other_client.emit_ooc t('page.to_recipient', :recipients => recipients, :message => message)
+          other_client.emit t('page.to_recipient', :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client)
         end
       end
@@ -76,6 +76,10 @@ module AresMUSH
           time = TimeFormatter.format(other_client.idle_secs)
           client.emit_ooc t('page.recipient_is_idle', :name => char.name, :time => time)
         end
+      end
+      
+      def page_color
+        Global.config['page']['page_color']
       end
       
       def log_command
