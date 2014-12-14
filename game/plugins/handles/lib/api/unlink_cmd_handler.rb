@@ -40,7 +40,7 @@ module AresMUSH
         char.handle = nil
         char.save!
 
-        Mail.send_mail([char.name], t('handles.char_unlinked_subject'), t('handles.char_unlinked_body'), Game.master.system_character)
+        Mail.send_mail([char.name], t('handles.char_unlinked_subject'), t('handles.char_unlinked_body'), nil)
 
         return cmd.create_ok_response
       end

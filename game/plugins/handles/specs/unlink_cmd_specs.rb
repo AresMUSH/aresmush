@@ -48,7 +48,7 @@ module AresMUSH
           Mail.should_receive(:send_mail).with(["Bob"], 
             "handles.char_unlinked_subject", 
             "handles.char_unlinked_body",
-            @system_char)
+            nil)
           response = Global.api_router.route_command(1, cmd)
           check_response(response, ApiResponse.ok_status, "")
         end

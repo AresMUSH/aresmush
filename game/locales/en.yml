@@ -66,7 +66,7 @@ en:
         use_command_on_central: "You need to use this command on AresCentral."
         use_command_on_satellite: "You can't use this command on AresCentral."
         unrecognized_command: "Unrecognized command."
-        no_handle_set: "You must this character to a handle before using that command."
+        no_handle_set: "You must link this character to a handle before using that command."
         
         # Engine errors
         api_error: "Error communicating with remote server. Please try again later and contact the admin if the problem persists."
