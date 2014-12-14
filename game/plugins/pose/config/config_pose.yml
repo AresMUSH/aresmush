@@ -1,0 +1,4 @@
+pose:
+    # You can configure the ansi code used to colorize the OOC conversation emits.
+    # It can use multiple codes, like %xh%xc
+    ooc_color: "%xc"
