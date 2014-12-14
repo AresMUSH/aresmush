@@ -20,6 +20,11 @@ help:
                     file: 'trouble.txt'
                     summary: "Dealing with troublesome players."   
                     aliases: [ 'boot', 'findsite' ]
+                tinker: 
+                    toc_topic: Code Management
+                    dir: 'game/plugins/manage/help/'
+                    file: 'tinker.txt'
+                    summary: "Custom code snippets"   
         builder:
             topics:
                 database: 
