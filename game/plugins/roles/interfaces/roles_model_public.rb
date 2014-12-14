@@ -11,5 +11,9 @@ module AresMUSH
         names.any? { |n| self.roles.include?(n) }
       end
     end
+    
+    def is_master_admin?
+      self == Game.master.master_admin
+    end
   end
 end
