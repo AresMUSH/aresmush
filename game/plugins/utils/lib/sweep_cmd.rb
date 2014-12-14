@@ -2,32 +2,24 @@ module AresMUSH
   module Utils
     class SweepCmd
       include Plugin
-      include PluginWithoutSwitches
       include PluginWithoutArgs
       include PluginRequiresLogin
       
       attr_accessor :message
       
       def want_command?(client, cmd)
-        cmd.root_is?("sweep")
+        cmd.root_is?("sweep") && cmd.switch.nil?
       end
       
       def handle
         outside = client.room.out_exit
+        footer = outside.nil? ? nil : "%l2%R" + t('sweep.kick_allowed')
         
-        if (outside.nil?)
-          client.emit_failure t('sweep.cant_find_exit')
-          return
-        end
-        
-        client.room.characters.each do |c|
-          other_client = Global.client_monitor.find_client(c)
-          if (other_client.nil?)
-            Rooms.move_to(nil, c, outside.dest)
-          end
-        end
-        
-        client.emit_success t('sweep.sweep_complete')
+        client.emit footer
+        snoopers = client.room.characters.select { |c| !Global.client_monitor.find_client(c) }
+        client.emit BorderedDisplay.list snoopers.map { |c| c.name },
+          t('sweep.listening_chars'),
+          footer
       end
     end
   end

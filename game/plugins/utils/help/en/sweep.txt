@@ -1,3 +1,4 @@
-The sweep command can be used to clear disconnected players out of a room, to keep them from connecting into the middle of a private scene.
+The sweep command can be used to see what disconnected players are in your room, and to kick them out to keep them from connecting into the middle of a private scene.
 
-   %xcsweep%xn
+   %xcsweep%xn - Show disconnected players.
+   %xcsweep/kick%xn - Kick disconnected players outside.
