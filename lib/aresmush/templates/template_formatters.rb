@@ -20,6 +20,18 @@ module AresMUSH
       return ""
     end
     
+    def line_with_text(text)
+      line_config = Global.config["skin"]["line_with_text"]
+      template = line_config["template"]
+      padding = line_config["padding"]
+      left_spacer = line_config["left_spacer"]
+      right_spacer = line_config["right_spacer"]
+      width = line_config["width"]
+      
+      str = "#{left_spacer}#{text}#{right_spacer}"
+      template.gsub(/text/, center(str, width, padding))
+    end
+    
     def one_line(&block)
       str = capture(&block)
       @output << str.gsub(/\n/, "")

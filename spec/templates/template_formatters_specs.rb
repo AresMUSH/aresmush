@@ -48,6 +48,20 @@ module AresMUSH
       end
     end
     
+    describe :line_with_text do
+      it "should use the line config" do
+        Global.stub(:config) { { "skin" => 
+          { "line_with_text" => {
+            "template" => "---text---",
+            "padding" => ".",
+            "width" => 10,
+            "right_spacer" => "]",
+            "left_spacer" => "[" }}}}
+        renderer = TemplateRenderer.new("<%= line_with_text(\"ABC\") %>")
+        renderer.render(@data).should eq "---..[ABC]...---"
+      end
+    end
+    
     describe :line do
       it "should default to line1" do
         renderer = TemplateRenderer.new("FOO <% line %>")

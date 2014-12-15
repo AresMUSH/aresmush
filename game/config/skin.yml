@@ -8,3 +8,14 @@ skin:
     line2: "%x!------------------------------------------------------------------------------%xn"
     line3: "%x!----[AresMUSH]----------------------------------------------------------------%xn"
     line4: "%x!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%xn"
+    
+    # This confiures the line_with_text() function in code.  You pass in a string, which will
+    # be centered to 'width' chars using 'padding', surrounded by the spacers,
+    # and put where the word 'text' appears.  You can move the word 'text' around but be sure
+    # to leave them in there or it won't work.
+    line_with_text: 
+        template: "%x!----text-----------------------------------------------%xn"
+        padding: "-"
+        width: 20
+        left_spacer: "["
+        right_spacer: "]"
