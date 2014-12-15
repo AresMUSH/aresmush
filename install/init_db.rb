@@ -16,8 +16,27 @@ module AresMUSH
   
       welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC")
       ic_start_room = AresMUSH::Room.create(:name => "IC Start", :room_type => "IC")
-      ooc_room = AresMUSH::Room.create(:name => "OOC Center", :room_type => "OOC")
-  
+      ooc_room = AresMUSH::Room.create(:name => "Offstage", :room_type => "OOC",
+        :description => "This is a backstage area where you can hang out when not RPing.")
+      quiet_room AresMUSH::Room.create(:name => "Quiet Room", :room_type => "OOC",
+        :description => "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside.")
+      rp_room_hub AresMUSH::Room.create(:name => "RP Annex", :room_type => "OOC",
+        :description => "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded.")
+
+      4.times do |n|
+        rp_room = AresMUSH::Room.create(:name => "RP Room #{n+1}", :room_type => "OOC",
+          :description => "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything.")
+        AresMUSH::Exit.create(:name => "#{n+1}", :source => rp_room_hub, :dest => rp_room)
+        AresMUSH::Exit.create(:name => "O", :source => rp_room, :dest => rp_room_hub)
+      end
+
+      AresMUSH::Exit.create(:name => "RP", :source => ooc_room, :dest => rp_room_hub)
+      AresMUSH::Exit.create(:name => "QR", :source => ooc_room, :dest => quiet_room)
+
+      AresMUSH::Exit.create(:name => "O", :source => welcome_room, :dest => ooc_room)
+      AresMUSH::Exit.create(:name => "O", :source => quiet_room, :dest => ooc_room)
+      AresMUSH::Exit.create(:name => "O", :source => rp_room_hub, :dest => ooc_room)
+      
       game.welcome_room = welcome_room
       game.ic_start_room = ic_start_room
       game.ooc_room = ooc_room

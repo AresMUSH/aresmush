@@ -3,7 +3,7 @@
 <%= subject %> <%= date %>
 <%= line 2 %>
 <%= message %>
-<% replies.each do |r| %>
+<% replies.each_with_index do |r, i| %>
 
 <%= line 2 %>
 <%= reply_title(r) %>
