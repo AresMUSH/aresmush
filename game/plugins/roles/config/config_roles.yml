@@ -16,3 +16,7 @@ roles:
     # Roles that are restricted; only the master admin can assign or remove.
     restricted_roles:
         - admin
+    
+    # These roles show up on the admin list
+    game_admin:
+        - admin

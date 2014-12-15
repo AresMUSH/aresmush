@@ -6,3 +6,4 @@ en:
         role_removed: "You remove the %{role} role from %{name}."
         role_not_assigned: "That role is not assigned to that character."   
         role_restricted: "Only the master admin (named Headwiz by default) can assign or remove restricted roles."
+        game_admin: "Game Admin"
