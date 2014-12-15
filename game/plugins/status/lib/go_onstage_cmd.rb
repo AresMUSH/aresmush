@@ -1,12 +1,12 @@
 module AresMUSH
   module Status
-    class GoIcCmd
+    class GoOnstageCmd
       include Plugin
       include PluginRequiresLogin
       include PluginWithoutArgs
       
       def want_command?(client, cmd)
-        cmd.root_is?("ic") && (cmd.switch.nil? || cmd.switch_is?("reset"))
+        cmd.root_is?("onstage") && (cmd.switch.nil? || cmd.switch_is?("reset"))
       end
       
       def check_can_set_status

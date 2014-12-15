@@ -1,5 +1,0 @@
-The OOC command is used when you need to take a break from RPing.
-
-    %xcooc%xn - Travels to the OOC area.
-
-Note: This command can also be used with a message to make OOC remarks to people in your room.  See %xhhelp pose%xn.

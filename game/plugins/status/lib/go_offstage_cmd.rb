@@ -1,12 +1,12 @@
 module AresMUSH
   module Status
-    class GoOocCmd
+    class GoOffstageCmd
       include Plugin
       include PluginRequiresLogin
       include PluginWithoutSwitches
       
       def want_command?(client, cmd)
-        cmd.root_is?("ooc") && cmd.args.nil?
+        cmd.root_is?("offstage") && cmd.args.nil?
       end
       
       def handle        

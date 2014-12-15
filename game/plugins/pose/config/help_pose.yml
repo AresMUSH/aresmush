@@ -7,4 +7,4 @@ help:
                     dir: 'game/plugins/pose/help/'
                     file: 'posing.txt'
                     summary: 'Talking to the people around you.'
-                    aliases: [ 'pose', 'say', 'emit', 'nospoof', 'pemit' ]
+                    aliases: [ 'pose', 'say', 'emit', 'nospoof', 'pemit', 'ooc' ]
