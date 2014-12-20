@@ -26,3 +26,5 @@ en:
         proof: "%xhTo:%xn %{to}%r%xhSubject:%xn %{subject}%r%xhBody:%xn%r%{body}"
         mail_composition_tossed: "You throw away the mail message you were composing."
         body_empty: "You have not entered any text in your message."
+        starting_backup: "Starting mail backup.  Your messages will print out one by one with a short delay in-between to avoid spamming your client."
+        too_much_for_backup: "You have too many messages for the automatic backup feature.  You'll have to read them manually.  Sorry."

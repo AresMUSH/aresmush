@@ -13,7 +13,7 @@ help:
                     dir: 'game/plugins/rooms/help/'
                     file: 'getting_around.txt'
                     summary: 'Getting around the grid.'
-                    aliases: [ 'getting around', 'go', 'move', 'rooms', 'exit', 'home' ]   
+                    aliases: [ 'getting around', 'go', 'move', 'rooms', 'exit' ]   
                 home:
                     toc_topic: "Getting Around"
                     dir: 'game/plugins/rooms/help/'
