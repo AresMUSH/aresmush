@@ -13,4 +13,5 @@ shortcuts:
         "bbmove" : "bbs/move"
         "bbnewgroup" : "bbs/createboard"
         "bbcleargroup" : "bbs/deleteboard"
+        "bbarchive" : "bbs/archive"
         

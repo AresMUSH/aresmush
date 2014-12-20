@@ -2,7 +2,7 @@ module AresMUSH
   class Character
     include ObjectModel
 
-    belongs_to :room, :class_name => 'AresMUSH::Room'
+    belongs_to :room, :class_name => 'AresMUSH::Room', :inverse_of => nil
 
     register_default_indexes with_unique_name: true
 

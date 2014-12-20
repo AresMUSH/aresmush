@@ -1,1 +1,1 @@
-nohup bundle exec rake start > /dev/null & 
+nohup bundle exec rake startares > /dev/null & 

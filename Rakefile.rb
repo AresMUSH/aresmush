@@ -9,7 +9,7 @@ require 'mongoid'
 require_relative 'install/init_db.rb'
 require_relative 'install/configure_game.rb'
 
-task :start do
+task :startares do
   bootstrapper = AresMUSH::Bootstrapper.new
   bootstrapper.command_line.start
 end

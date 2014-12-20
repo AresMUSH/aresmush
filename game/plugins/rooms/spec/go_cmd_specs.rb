@@ -40,14 +40,14 @@ module AresMUSH
         
         context "exit found" do          
           before do
-            @exit = Exit.new(name_upcase: "S")
+            @exit = Exit.new(name_upcase: "S", name: "S")
             @room.stub(:get_exit).with("s") { @exit }
           end
 
           it "should go to the exit destination if there is one" do
             other_room = double
             @exit.stub(:dest) { other_room }
-            Rooms.should_receive(:move_to).with(client, char, other_room)
+            Rooms.should_receive(:move_to).with(client, char, other_room, "S")
             handler.handle
           end
           

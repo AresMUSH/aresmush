@@ -45,6 +45,7 @@ module AresMUSH
         stub_client_reload
         SpecHelpers.connect_to_test_db
         game.stub(:welcome_room) { nil }
+        game.stub(:ooc_room) { nil }
       end
       
       after do

@@ -6,6 +6,7 @@ module AresMUSH
       before do
         stub_game_master
         game.stub(:welcome_room) { nil }
+        game.stub(:ooc_room) { nil }
       end
       
       describe :find_by_handle do

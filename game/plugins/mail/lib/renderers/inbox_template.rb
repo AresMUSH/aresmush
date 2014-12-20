@@ -34,6 +34,7 @@ module AresMUSH
       end
       
       def message_tags(delivery)
+        puts t('mail.unread_marker')
         unread = delivery.read ? "-" : t('mail.unread_marker')
         trashed = delivery.trashed ? t('mail.trashed_marker') : "-"
         " [#{unread}#{trashed}]  "

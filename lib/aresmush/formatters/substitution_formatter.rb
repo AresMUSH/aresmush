@@ -103,7 +103,15 @@ module AresMUSH
         |
         %[xXcC](?:[A-Za-z]{1}|[\d]{1,3})  # Ansi code - see AnsiFormatter about regex
         |
-        \[[^\]]+\]   # Functions like space and center
+        \[left\([^\]]+\)\]
+        |
+        \[right\([^\]]+\)\]
+        |
+        \[center\([^\]]+\)\]
+        |
+        \[ansi\([^\]]+\)\]
+        |
+        \[space\([^\]]+\)\]
       )
       /x   # Allow regex to split across multiple lines
 

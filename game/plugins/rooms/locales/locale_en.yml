@@ -2,6 +2,7 @@ en:
     rooms:
        char_has_arrived: "%{name} has arrived."
        char_has_left: "%{name} has left."
+       char_has_left_through_exit: "%{name} leaves for %{room} <%{exit}>."
        room_created: "You build a room named %{name}.  It is an %xhIC%xn room. %xh%xx(help roomtype)%xn"
        exit_created: "You open an exit from %{source_name} to %{dest_name}."
        exit_already_exists: "An exit with that name already exists."
@@ -30,3 +31,7 @@ en:
        
        invalid_room_type: "Invalid room type. Try one of these: %{types}."
        room_type_set: "You set the room type."
+       
+       home_not_set: "You don't have a home!"
+       char_has_gone_home: "%{name} goes home."
+       home_set: "You make this your home."
