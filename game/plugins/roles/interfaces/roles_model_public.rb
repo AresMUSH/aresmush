@@ -15,5 +15,9 @@ module AresMUSH
     def is_master_admin?
       self == Game.master.master_admin
     end
+    
+    def is_admin?
+      self.has_any_role?(Global.config["roles"]["game_admin"])
+    end
   end
 end

@@ -24,9 +24,9 @@ module AresMUSH
     
     def status
       # AFK trumps all
-      return "AFK" if self.is_afk
+      return "AFK" if self.is_afk?
       # Admins can be on duty or OOC
-      return "ADM" if self.is_on_duty
+      return "ADM" if self.is_admin? && self.is_on_duty?
       return "OOC" if Status.can_manage_status?(self)
       # New trumps regular status
       return "NEW" if !self.is_approved
