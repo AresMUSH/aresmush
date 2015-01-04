@@ -12,4 +12,4 @@ rooms:
             # - another role
         # List roles that are allowed to use the home command.  
         can_go_home:
-            - builder
+            - everyone
