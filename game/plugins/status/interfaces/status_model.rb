@@ -4,7 +4,7 @@ module AresMUSH
     field :afk_message, :type => String
     field :is_afk, :type => Boolean
     field :is_approved, :type => Boolean
-    field :is_on_duty, :type => Boolean
+    field :is_on_duty, :type => Boolean, :default => true
     
     def is_approved?
       is_approved

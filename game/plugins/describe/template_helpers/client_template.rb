@@ -20,8 +20,12 @@ module AresMUSH
         @char.shortdesc
       end
       
+      def rank
+        @char.rank
+      end
+      
       def fullname_and_rank
-        "#{@char.rank} #{@char.fullname}"
+        @char.rank.nil? ? @char.fullname : "#{@char.rank} #{@char.fullname}"
       end
       
       def afk_message

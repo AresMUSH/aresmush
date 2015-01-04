@@ -9,4 +9,4 @@ en:
         game_admin: "Game Admin"
         connected_on_duty: "%xh%xg<On Duty>%xn"
         connected_off_duty: "%xr<Off Duty>%xn"
-        last_on: "%xh%xxLast On %{last_on}"
+        last_on: "%xh%xxLast On %{last_on}%xn"
