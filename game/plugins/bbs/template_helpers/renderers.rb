@@ -10,7 +10,7 @@ module AresMUSH
     
     class BoardListRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/boards.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/boards.erb")
       end
 
       def render(client)
@@ -21,7 +21,7 @@ module AresMUSH
     
     class BoardRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/board.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/board.erb")
       end
 
       def render(board, client)
@@ -32,7 +32,7 @@ module AresMUSH
     
     class PostRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/post.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/post.erb")
       end
 
       def render(board, post, client)

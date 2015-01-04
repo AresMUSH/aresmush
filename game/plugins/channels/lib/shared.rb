@@ -36,8 +36,7 @@ module AresMUSH
       chars = channel.characters.sort { |c1, c2| c1.name <=> c2.name }
       online_chars = []
       chars.each do |c|
-        client = Global.client_monitor.find_client(c)
-        next if client.nil?
+        next if !c.is_online?
         online_chars << c
       end
       online_chars = online_chars.map { |c| "#{c.ooc_name}#{gag_text(c, channel)}" }

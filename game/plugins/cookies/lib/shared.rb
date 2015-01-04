@@ -21,7 +21,7 @@ module AresMUSH
     end
     
     def self.notify_cookie_recipient(char, client)
-      other_client = Global.client_monitor.find_client(char)
+      other_client = char.client
       return if other_client.nil?
       
       other_client.emit_ooc t('cookies.cookie_received', :name => client.char.name)

@@ -33,7 +33,7 @@ module AresMUSH
 
           it "should emit failure if trying to destroy a char who's online" do
             @target.stub(:class) { Character }
-            client_monitor.stub(:find_client).with(@target) { double }
+            @target.stub(:is_online?) { true }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_online")
             handler.handle
           end
@@ -47,7 +47,7 @@ module AresMUSH
         
         context "success" do
           before do
-            client_monitor.stub(:find_client) { nil }
+            @target.stub(:client) { nil }
             client.stub(:emit_success)
             @target.stub(:destroy)
             @target.stub(:name) { "name" }
@@ -84,13 +84,14 @@ module AresMUSH
             it "should tell an online char they're being moved and move them" do
               # Match up a client to the character
               client_in_room = double
-              client_monitor.stub(:find_client).with(@char_in_room) { client_in_room }
+              @char_in_room.stub(:client) { client_in_room }
               client_in_room.should_receive(:emit_ooc).with("manage.room_being_destroyed")
               Rooms.should_receive(:move_to).with(client_in_room, @char_in_room, @welcome_room)
               handler.handle
             end
           
             it "should move them to the welcome room" do
+              @char_in_room.stub(:client) { nil }
               Rooms.should_receive(:move_to).with(nil, @char_in_room, @welcome_room)
               handler.handle
             end

@@ -3,8 +3,8 @@ help:
         main:
             topics:
                 game: 
-                    toc_topic: 'Games'
+                    toc_topic: 'Community'
                     dir: 'game/plugins/api/help/'
                     file: 'games.txt'
-                    summary: 'Games directory.'
+                    summary: 'Directory of other AresMUSH games.'
                     aliases: ['games']

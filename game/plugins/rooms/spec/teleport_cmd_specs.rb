@@ -82,8 +82,8 @@ module AresMUSH
           other_client2 = nil
           ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(other_char1, nil) }
           ClassTargetFinder.should_receive(:find).with("someone else", Character, client) { FindResult.new(other_char2, nil) }
-          client_monitor.stub(:find_client).with(other_char1) { other_client1 }
-          client_monitor.stub(:find_client).with(other_char2) { nil }
+          other_char1.stub(:client) { other_client1 }
+          other_char2.stub(:client) { nil }
           result =  
             [ { :client => other_client1, :char => other_char1 },
               { :client => nil, :char => other_char2 } ]

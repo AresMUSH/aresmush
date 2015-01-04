@@ -24,7 +24,7 @@ module AresMUSH
 
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |target|
-          other_client = Global.client_monitor.find_client(target)
+          other_client = target.client
           if (!other_client.nil?)
             client.emit_ooc t('last.currently_online', :name => target.name)
           else

@@ -29,7 +29,7 @@ module AresMUSH
 
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |bootee|
-          boot_client = Global.client_monitor.find_client(bootee)
+          boot_client = bootee.client
           if (boot_client.nil?)
             client.emit_failure t('manage.cant_boot_disconnected_player')
             return

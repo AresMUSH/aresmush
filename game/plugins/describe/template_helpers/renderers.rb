@@ -10,11 +10,11 @@ module AresMUSH
       
     class CharRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/character.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/character.erb")
       end
       
       def render(model, client)
-        client = Global.client_monitor.find_client(model)
+        client = model.client
         if (client.nil?)
           return t('db.object_not_found')
         end
@@ -25,7 +25,7 @@ module AresMUSH
       
     class ExitRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/exit.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/exit.erb")
       end
       
       def render(model, client)
@@ -36,7 +36,7 @@ module AresMUSH
       
     class RoomRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/room.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/room.erb")
       end
       
       def render(model, client)

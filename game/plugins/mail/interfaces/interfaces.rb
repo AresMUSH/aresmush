@@ -21,7 +21,7 @@ module AresMUSH
       
       recipients.each do |r|
         MailDelivery.create(message: msg, character: r)
-        receive_client = Global.client_monitor.find_client(r)
+        receive_client = r.client
         if (!receive_client.nil?)
           receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => msg.subject)
         end

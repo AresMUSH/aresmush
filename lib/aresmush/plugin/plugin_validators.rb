@@ -34,7 +34,7 @@ module AresMUSH
       end
       
       self.required_args.each do |arg|
-        return t('dispatcher.invalid_syntax', :command => self.help_topic) if self.send("#{arg}").to_s.strip.length == 0
+        return t('dispatcher.invalid_syntax', :command => self.help_topic) if "#{self.send("#{arg}")}".strip.length == 0
       end
       return nil
     end

@@ -16,7 +16,7 @@ module AresMUSH
         footer = outside.nil? ? nil : "%l2%R" + t('sweep.kick_allowed')
         
         client.emit footer
-        snoopers = client.room.characters.select { |c| !Global.client_monitor.find_client(c) }
+        snoopers = client.room.characters.select { |c| !c.is_online? }
         client.emit BorderedDisplay.list snoopers.map { |c| c.name },
           t('sweep.listening_chars'),
           footer

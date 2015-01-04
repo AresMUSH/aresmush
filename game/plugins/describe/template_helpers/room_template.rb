@@ -19,7 +19,7 @@ module AresMUSH
       def description
         @model.description
       end
-      
+        
       def ic_time
         ICTime.ic_datestr ICTime.ictime
       end

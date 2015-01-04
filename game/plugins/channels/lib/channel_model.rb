@@ -23,7 +23,7 @@ module AresMUSH
     def emit(msg)
       characters.each do |c|
         if (!Channels.is_gagging?(c, self))
-          client = Global.client_monitor.find_client(c)
+          client = c.client
           if (!client.nil?)
             client.emit "#{display_name} #{msg}"
           end

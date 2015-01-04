@@ -2,7 +2,7 @@ module AresMUSH
   module Who
     class WhoRenderer
       def initialize(filename)
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/#{filename}")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/#{filename}")
       end
       
       def render

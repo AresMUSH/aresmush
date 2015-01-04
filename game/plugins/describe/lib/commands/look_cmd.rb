@@ -24,7 +24,7 @@ module AresMUSH
           desc = Describe.get_desc(model, client)
           client.emit(desc)
           if (model.class == Character)
-            looked_at = Global.client_monitor.find_client(model)
+            looked_at = model.client
             if (!looked_at.nil?)
               looked_at.emit_ooc t('describe.looked_at_you', :name => client.name)
             end

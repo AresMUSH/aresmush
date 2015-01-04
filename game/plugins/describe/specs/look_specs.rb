@@ -64,7 +64,7 @@ module AresMUSH
             @model = Character.new
             client.stub(:name) { "Bob" }
             other_client = double
-            client_monitor.should_receive(:find_client).with(@model) { other_client }
+            @model.should_receive(:client) { other_client }
             other_client.should_receive(:emit_ooc).with('describe.looked_at_you')
             handler.handle
           end

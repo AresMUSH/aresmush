@@ -23,8 +23,7 @@ module AresMUSH
         end
         
         if (target.class == Character)
-          connected_client = Global.client_monitor.find_client(target)
-          if (!connected_client.nil?)
+          if (target.is_online?)
             client.emit_failure t('manage.cannot_destroy_online')
             return
           end
@@ -32,7 +31,7 @@ module AresMUSH
         
         if (target.class == Room)
           target.characters.each do |c|
-            connected_client = Global.client_monitor.find_client(c)
+            connected_client = c.client
             if (!connected_client.nil?)
               connected_client.emit_ooc t('manage.room_being_destroyed')
             end

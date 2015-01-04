@@ -26,7 +26,7 @@ module AresMUSH
 
       def check_can_assign_role
         return t('dispatcher.not_allowed') if !Roles.can_assign_role?(client.char)
-        return t('roles.role_restricted') if (Roles.is_restricted?(self.role) && !client.char.is_master_admin?)
+        return t('roles.role_restricted', :name => Game.master.master_admin.name) if (Roles.is_restricted?(self.role) && !client.char.is_master_admin?)
         return nil
       end
       

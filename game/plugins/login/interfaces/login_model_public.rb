@@ -4,6 +4,14 @@ module AresMUSH
       Login.is_guest?(self)
     end
     
+    def client
+      Global.client_monitor.find_client(self)
+    end
+    
+    def is_online?
+      !self.client.nil?
+    end
+    
     def change_password(raw_password)
       self.password_hash = Character.hash_password(raw_password)
     end

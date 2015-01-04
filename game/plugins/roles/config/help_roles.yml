@@ -1,5 +1,13 @@
 help:
     categories:
+        main:
+            topics:
+                admin: 
+                    toc_topic: 'Getting Started'
+                    dir: 'game/plugins/roles/help/'
+                    file: 'admin.txt'
+                    summary: 'Game Administration.'
+                    aliases: [ 'staff' ]
         admin:
             topics:
                 roles: 

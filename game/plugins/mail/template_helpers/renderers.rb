@@ -11,7 +11,7 @@ module AresMUSH
     
     class InboxRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/inbox.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/inbox.erb")
       end
       
       def render(client)
@@ -22,7 +22,7 @@ module AresMUSH
 
     class MessageRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/message.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/message.erb")
       end
       
       def render(client, delivery)
@@ -33,7 +33,7 @@ module AresMUSH
     
     class ForwardedRenderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/forwarded.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/forwarded.erb")
       end
       
       def render(client, original, comment)

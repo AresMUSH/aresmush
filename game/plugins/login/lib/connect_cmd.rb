@@ -36,7 +36,7 @@ module AresMUSH
           end
 
           # Handle reconnect
-          existing_client = Global.client_monitor.find_client(char)
+          existing_client = char.client
           client.char = char
           
           if (!existing_client.nil?)

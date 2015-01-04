@@ -10,7 +10,7 @@ module AresMUSH
       
     class SheetPage1Renderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/sheet1.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/sheet1.erb")
       end
       
       def render(char)
@@ -21,7 +21,7 @@ module AresMUSH
     
     class SheetPage2Renderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/sheet2.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/sheet2.erb")
       end
       
       def render(char)
@@ -32,7 +32,7 @@ module AresMUSH
     
     class SheetPage3Renderer
       def initialize
-        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../../templates/sheet3.erb")
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/sheet3.erb")
       end
       
       def render(char)
