@@ -5,19 +5,13 @@
 <%= description %>
 <%= line 2 %>
 %xgPlayers:%xn
-<% clients.each do |c| -%>
-%xh<%= c.name %>%xn<% if !c.shortdesc.nil? %> - <%= c.shortdesc %> <%end%> <%= c.afk_message %>
+<% online_chars.each do |c| -%>
+%xh<%= char_name(c) %>%xn <%= char_shordesc(c)%> <%= char_afk(c) %>
 <% end %> 
 
 %xgExits:%xn
-<% count = 0 %>
-<% first = true %>
-<% exits.each do |e| %>
-<% one_line do %>
-<% if (count % 2 == 0 && !first) %>%r<% end %>
-<% count = count + 1 %><% first = false%>
-%xh<%= left("[#{e.name}]", 5) %>%xn <%= left(e.destination, 30) -%>
-<% end %>
+<% exits.each_with_index do |e, i| %>
+<%= linebreak_every_two_exits(i) %>%xh<%= exit_name(e) %>%xn <%= exit_destination(e) -%>
 <% end %>
 <% if exits.count == 0 %>No way out!<% end %>
 <%= line %>

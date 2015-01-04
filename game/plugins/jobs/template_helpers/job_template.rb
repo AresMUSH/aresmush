@@ -1,8 +1,15 @@
 module AresMUSH
   module Jobs
+    # Template for an individual job
     class JobTemplate
       include TemplateFormatters
             
+      # Any replies to the job.
+      # Usually you would use this in a list, like so:
+      # Inside the loop, each reply would be referenced as 'r'
+      #    <% replies.each do |r| -%>
+      #    <%= reply_title(r) %> <%= reply_message(r) %>
+      #    <% end %>
       attr_accessor :replies
       
       def initialize(client, job, replies)
@@ -37,13 +44,14 @@ module AresMUSH
       end
       
       def description_title
-        "%xhDescription:%xn"
+        "%xh#{t('jobs.description')}%xn"
       end
       
       def replies_title
-        "%xhReplies:%xn"
+        "%xh%#{t('jobs.replies')}%xn"
       end
       
+      # Job number and title, centered
       def title
         center("##{@job.number} - #{@job.title}", 78)
       end
@@ -74,16 +82,22 @@ module AresMUSH
         OOCTime.local_short_timestr(@client, @job.created_at)
       end
       
+      # Title above each reply showing the reply author and date
+      # Requires a reply reference.  See 'replies' for details.
       def reply_title(reply)
         name = reply.author.nil? ? t('jobs.deleted_author') : reply.author.name
         date = OOCTime.local_long_timestr(@client, reply.created_at)
         t('jobs.reply_title', :name => name, :date => date)
       end
-      
+
+      # Message for a reply.
+      # Requires a reply reference.  See 'replies' for details.
       def reply_message(reply)
         reply.message
       end
       
+      # Shows a warning if the reply is only visible to admins.
+      # Requires a reply reference.  See 'replies' for details.
       def reply_admin_only(reply)
         reply.admin_only? ? "%xb#{t('jobs.admin_only')}%xn " : ""
       end

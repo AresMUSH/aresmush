@@ -18,7 +18,7 @@ module AresMUSH
         if (client.nil?)
           return t('db.object_not_found')
         end
-        data = ClientTemplate.new(client)
+        data = CharacterTemplate.new(client)
         @renderer.render(data)
       end
     end
@@ -40,10 +40,7 @@ module AresMUSH
       end
       
       def render(model, client)
-        logged_in = Global.client_monitor.logged_in_clients.select { |c| c.room == model }
-        clients = logged_in.map { |c| ClientTemplate.new(c) }
-        exits = model.exits.map { |e| ExitTemplate.new(e) }
-        data = RoomTemplate.new(model, clients, exits, client)
+        data = RoomTemplate.new(model, client)
         @renderer.render(data)
       end
     end

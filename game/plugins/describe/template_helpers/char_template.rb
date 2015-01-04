@@ -1,6 +1,7 @@
 module AresMUSH
   module Describe
-    class ClientTemplate
+    # Template for a character.
+    class CharacterTemplate
       include TemplateFormatters
       
       def initialize(client)
@@ -8,6 +9,7 @@ module AresMUSH
         @char = client.char
       end
       
+      # MUSH name.
       def name
         @char.name
       end
@@ -24,34 +26,18 @@ module AresMUSH
         @char.rank
       end
       
+      # Fullname, with rank if set (e.g. Commander William Adama)
       def fullname_and_rank
         @char.rank.nil? ? @char.fullname : "#{@char.rank} #{@char.fullname}"
-      end
-      
-      def afk_message
-        if (@char.is_afk)
-          format_afk_message
-        elsif (Status.is_idle?(@client))
-          "%xy%xh<#{t('describe.idle')}>%xn"
-        else
-          ""
-        end
       end
       
       def fullname
         @char.fullname
       end
       
+      # Actor name
       def actor
         @char.actor
-      end
-
-      def format_afk_message
-        msg = "%xy%xh<#{t('describe.afk')}>%xn"
-        if (@char.afk_message)
-          msg = "#{msg} %xy#{@char.afk_message}%xn"
-        end
-        msg
       end
     end
   end

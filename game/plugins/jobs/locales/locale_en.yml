@@ -17,6 +17,8 @@ en:
         submitted_by_title: "Submitted By:"
         submitted_on_title: "Submitted On:"
         handled_by_title: "Handled By"
+        description: "Description:"
+        replies: "Replies:"
         
         job_created: "Job created."
         announce_new_job:  "New Job! #%{number} \"%{title}\" submitted by %{name}."

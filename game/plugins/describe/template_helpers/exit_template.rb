@@ -1,5 +1,6 @@
 module AresMUSH
   module Describe
+    # Template for an exit.
     class ExitTemplate
       include TemplateFormatters
       

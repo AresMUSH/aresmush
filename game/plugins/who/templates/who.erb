@@ -2,13 +2,13 @@
 <%= mush_name %>
 <%= line 2 %>
 %xh<%= t('who.who_header') %> %xn
-<% clients.each do |c| -%> 
-<%= c.status -%>
- <%= c.name -%> 
- <%= c.handle -%> 
- <%= c.faction -%> 
- <%= c.connected -%>
- <%= c.idle %>
+<% characters.each do |c| -%> 
+<%= char_status(c) -%>
+ <%= char_name(c) -%> 
+ <%= char_handle(c) -%> 
+ <%= char_faction(c) -%> 
+ <%= char_connected(c) -%>
+ <%= char_idle(c) %>
 <% end %>
 <%= line 2 %>
 <% one_line do %>

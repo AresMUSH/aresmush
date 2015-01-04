@@ -1,5 +1,6 @@
 module AresMUSH
   module Mail
+    # Template for an individual mail message
     class MessageTemplate
       include TemplateFormatters
       
@@ -13,7 +14,8 @@ module AresMUSH
       def subject
         @message.subject
       end
-      
+
+      # Delivery date
       def date
         OOCTime.local_long_timestr(@client, @message.created_at)
       end
@@ -31,6 +33,7 @@ module AresMUSH
         to_list.join(", ")
       end
 
+      # Special message tags, like marked for deletion.
       def tags
         @delivery.trashed ? t('mail.trashed_tag') : ""
       end

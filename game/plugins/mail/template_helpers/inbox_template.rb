@@ -1,45 +1,62 @@
 module AresMUSH
   module Mail
+    # Template for a character's inbox.
     class InboxTemplate
       include TemplateFormatters
       
-      attr_accessor :deliveries
+      # The character's mail messages.
+      # Usually you would use this in a list with a counter, like so:
+      # Inside the loop, each exit would be referenced as 'e'
+      #    <% messages.each_with_index do |m, i| -%>
+      #    <%= message_num(i) %> <%= message_date(m) %>
+      #    <% end %>
+      # Coder nitpick:  Actually references a list of MailDelivery objects
+      attr_accessor :messages
       
       def initialize(client)
         @client = client
         @char = client.char
-        @deliveries = @char.mail
+        @messages = @char.mail
       end
       
+      # Folder name
       def folder
         "Inbox"
       end
       
+      # Message number.  
+      # Requires a message index counter.  See 'messages' for more info.
       def message_num(index)
         "#{index+1}".rjust(3)
       end
-      
-      def message_subject(delivery)
-        delivery.message.subject.ljust(31)
+
+      # Message subject.
+      # Requires a message reference.  See 'messages' for more info.
+      def message_subject(msg)
+        msg.message.subject.ljust(31)
+      end
+
+      # Message delivery date
+      # Requires a message reference.  See 'messages' for more info.
+      def message_date(msg)
+        OOCTime.local_short_timestr(@client, msg.message.created_at)
       end
       
-      def message_date(delivery)
-        OOCTime.local_short_timestr(@client, delivery.message.created_at)
-      end
-      
-      def message_author(delivery)
-        message = delivery.message
+      # Message author
+      # Requires a message reference.  See 'messages' for more info.
+      def message_author(msg)
+        message = msg.message
         a = message.author.nil? ? t('mail.deleted_author') : message.author.name
         a.ljust(22)
       end
       
-      def message_tags(delivery)
-        puts t('mail.unread_marker')
-        unread = delivery.read ? "-" : t('mail.unread_marker')
-        trashed = delivery.trashed ? t('mail.trashed_marker') : "-"
+      # Message tags, like unread or marked for deletion
+      # Requires a message reference.  See 'messages' for more info.
+      def message_tags(msg)
+        unread = msg.read ? "-" : t('mail.unread_marker')
+        trashed = msg.trashed ? t('mail.trashed_marker') : "-"
         " [#{unread}#{trashed}]  "
       end
     end
-    
   end
 end

@@ -22,15 +22,6 @@ module AresMUSH
   
   class Character
     field :hidden, :type => Boolean
-            
-    def who_room_name
-      if (self.hidden)
-        return t('who.hidden')
-      end
-      
-      area = self.room.area.nil? ? "" : "#{self.room.area} - "
-      "#{area}#{self.room.name}"
-    end
   end
   
 end

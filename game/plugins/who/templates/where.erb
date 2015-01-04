@@ -2,12 +2,12 @@
 <%= mush_name %>
 <%= line 2 %>
 %xh<%= t('who.where_header') %> %xn
-<% clients.each do |c| -%> 
-<%= c.status -%>
- <%= c.name -%> 
- <%= c.room -%> 
- <%= c.connected -%>
- <%= c.idle %>
+<% characters.each do |c| -%> 
+<%= char_status(c) -%>
+ <%= char_name(c) -%> 
+ <%= char_room(c) -%> 
+ <%= char_connected(c) -%>
+ <%= char_idle(c) %>
 <% end %>
 <%= line 2 %>
 <% one_line do %>

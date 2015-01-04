@@ -6,9 +6,8 @@ module AresMUSH
       end
       
       def render
-        logged_in = Global.client_monitor.logged_in_clients
-        clients = logged_in.map { |c| WhoClientTemplate.new(c) }
-        data = WhoTemplate.new(clients)
+        logged_in = Global.client_monitor.logged_in_clients.map { |c| c.char }
+        data = WhoTemplate.new(logged_in)
         @renderer.render(data)
       end
     end

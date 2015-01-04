@@ -1,6 +1,6 @@
 module AresMUSH
   module Bbs
-    # The template code for showing a particular bulletin board.
+    # Template for a particular bulletin board.
     class BoardTemplate
       include TemplateFormatters
       
