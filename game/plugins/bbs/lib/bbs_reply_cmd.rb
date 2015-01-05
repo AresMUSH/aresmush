@@ -30,8 +30,7 @@ module AresMUSH
       
       def handle
         post = client.program[:last_bbs_post]
-        if (!post.nil?)
-          post = client.program[:last_bbs_post]
+        if (self.board_name.nil? && !post.nil?)
           board = post.bbs_board
           save_reply(board, post)
         else
@@ -56,7 +55,6 @@ module AresMUSH
         Bbs.mark_read_for_player(client.char, post)
         
         Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
-        client.program.delete(:last_bbs_post)
       end
     end
   end
