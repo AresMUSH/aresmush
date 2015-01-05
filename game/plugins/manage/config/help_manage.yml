@@ -19,7 +19,7 @@ help:
                     dir: 'game/plugins/manage/help/'
                     file: 'trouble.txt'
                     summary: "Dealing with troublesome players."   
-                    aliases: [ 'boot', 'findsite' ]
+                    aliases: [ 'boot', 'findsite', 'ban', 'siteban', 'sitelock' ]
                 tinker: 
                     toc_topic: Code Management
                     dir: 'game/plugins/manage/help/'

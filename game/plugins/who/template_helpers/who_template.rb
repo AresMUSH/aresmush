@@ -33,12 +33,22 @@ module AresMUSH
       # List of connected characters, sorted by room name then character name.
       # Usually you would use this in a list, like so:
       # Inside the loop, each char would be referenced as 'c'
-      #    <% characters.each do |c| -%>
+      #    <% chars_by_room.each do |c| -%>
       #    <%= char_name(c) %> <%= char_faction(c) %>
       #    <% end %>
-      def characters
+      def chars_by_room
         @chars.sort_by{ |c| [who_room_name(c), c.name] }
       end 
+      
+      # List of connected characters, sorted by handle name (if public) then character name.
+      # Usually you would use this in a list, like so:
+      # Inside the loop, each char would be referenced as 'c'
+      #    <% chars_by_handle.each do |c| -%>
+      #    <%= char_name(c) %> <%= char_faction(c) %>
+      #    <% end %>
+      def chars_by_handle
+        @chars.sort_by{ |c| [c.public_handle? ? c.handle : "", c.name] }
+      end
       
       # Character name.
       # Requires a character reference.  See 'characters' for details.
