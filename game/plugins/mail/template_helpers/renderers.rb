@@ -14,8 +14,8 @@ module AresMUSH
         @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/inbox.erb")
       end
       
-      def render(client)
-        data = InboxTemplate.new(client)
+      def render(client, messages, show_from, title)
+        data = InboxTemplate.new(client, messages, show_from, title)
         @renderer.render(data)
       end
     end

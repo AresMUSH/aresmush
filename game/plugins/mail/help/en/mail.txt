@@ -7,24 +7,9 @@ The %xhMail System%xn lets you send messages to players who are not online, simi
 Sending mail is easy. The "to" field can include any number of player names, separated by spaces. You can also forward a message from your inbox to someone else.
 
     %xcmail <to>=<subject>/<message>%xn - Sends a message.
-    %xcmail/fwd <#>=<to>/<comment>%xn - Forwards a message, along with an optional comment.
-
-When replying, you can use 'reply' or 'replyall' to reply to just the author or everyone on the message.  If you omit the number, it replies to the last message you read (handy if using mail/new).
-
-    %xcmail/reply <message>%xn - Replies to the last message you read.
-    %xcmail/reply <#>=<message>%xn - Replies to a message.
-
-Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
-
-    %xcmail <to>=<subject>%xn - Starts a mail.
-    %xc-<message>%xn - Adds a new paragraph to a message.
-    %xcmail/proof%xn - Shows your mail so far.
-    %xcmail/send%xn or %xc--%xn - Sends the mail.
-    %xcmail/toss%xn - Throws away the message you were drafting.
     
-You can also delete a message.  Technically this doesn't delete it right away, but tags it as trash.  Messages tagged as trash are deleted when you log out.  You can backup your mail before deleting it.
+For advanced mail topics see:
 
-    %xcmail/delete <#> or <start#>-<end#>%xn - Sends a message to the trash.
-    %xcmail/undelete <#>%xn - Recovers a message from the trash.
-    %xcmail/emptytrash%xn - Permanently deletes messages in the trash.
-    %xcmail/backup%xn - Prints out your mail, which you can save to a log file.
+    help mail sending - Advanced mail sending features.
+    help mail review - Reviewing messages you've sent.
+    help mail managing - Managing your inbox.

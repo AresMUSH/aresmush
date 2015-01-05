@@ -13,15 +13,19 @@ module AresMUSH
       # Coder nitpick:  Actually references a list of MailDelivery objects
       attr_accessor :messages
       
-      def initialize(client)
+      # The folder name
+      attr_accessor :folder
+      
+      def initialize(client, messages, show_from, folder)
         @client = client
         @char = client.char
-        @messages = @char.mail
+        @messages = messages
+        @show_from = show_from
+        @folder = folder
       end
       
-      # Folder name
-      def folder
-        "Inbox"
+      def inbox_title
+        @show_from ? t('mail.sent_title') : t('mail.inbox_title')
       end
       
       # Message number.  
@@ -42,11 +46,25 @@ module AresMUSH
         OOCTime.local_short_timestr(@client, msg.message.created_at)
       end
       
+      # Message sent to or sent from, depending on the inbox mode.
+      # Requires a message reference.  See 'messages' for more info.
+      def message_to_or_from(msg)
+        @show_from ? message_sent_to(msg) : message_author(msg)
+      end
+      
       # Message author
       # Requires a message reference.  See 'messages' for more info.
       def message_author(msg)
         message = msg.message
         a = message.author.nil? ? t('mail.deleted_author') : message.author.name
+        a.ljust(22)
+      end
+      
+      # Message sent to.  Note that this is just the individual recipient of THIS delivery,
+      # not a list of all people who received the message.
+      # Requires a message reference.  See 'messages' for more info.
+      def message_sent_to(msg)
+        a = msg.character.nil? ? t('mail.deleted_author') : msg.character.name
         a.ljust(22)
       end
       

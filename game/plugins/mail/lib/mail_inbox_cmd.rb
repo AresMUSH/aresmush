@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def handle        
-        client.emit Mail.inbox_renderer.render(client)
+        client.emit Mail.inbox_renderer.render(client, client.char.mail, false, t('mail.inbox'))
       end
     end
   end

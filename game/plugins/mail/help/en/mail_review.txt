@@ -1,0 +1,5 @@
+The mail review feature lets you see what messages you've sent and even unsend them.
+
+    %xcmail/review%xn - Shows messages you've sent, and whether it's been read.
+    %xcmail/review <#>%xn - Sees the details of a particular message.
+    %xcmail/unsend <#>%xn - Unsends a message if it hasn't already been read.

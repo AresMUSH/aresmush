@@ -6,5 +6,16 @@ help:
                     toc_topic: 'Communicating'
                     dir: 'game/plugins/mail/help/'
                     file: 'mail.txt'
-                    summary: 'Send messages to people who are offline.'
+                    summary: 'In-game mail system.'
                     aliases: []
+                mail review: 
+                    dir: 'game/plugins/mail/help/'
+                    file: 'mail_review.txt'
+                    aliases: ['recall', 'unsend']
+                mail managing: 
+                    dir: 'game/plugins/mail/help/'
+                    file: 'mail_managing.txt'
+                mail sending: 
+                    dir: 'game/plugins/mail/help/'
+                    file: 'mail_sending.txt'
+                    aliases: ['reply', 'forward']

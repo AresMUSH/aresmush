@@ -1,6 +1,10 @@
 module AresMUSH
   module Mail
     def self.with_a_delivery(client, num, &block)
+      Mail.with_a_delivery_from_a_list client, num, client.char.mail, &block
+    end
+    
+    def self.with_a_delivery_from_a_list(client, num, list, &block)
       if (!num.is_integer?)
         client.emit_failure t('mail.invalid_message_number')
         return
@@ -12,12 +16,12 @@ module AresMUSH
         return
       end
         
-      if (client.char.mail.count <= index)
+      if (list.count <= index)
         client.emit_failure t('mail.invalid_message_number')
         return
       end
         
-      yield client.char.mail[index]
+      yield list[index]
     end
     
     def self.with_a_message(client, num, &block)
