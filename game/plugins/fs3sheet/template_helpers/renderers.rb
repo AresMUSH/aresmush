@@ -1,13 +1,25 @@
 module AresMUSH
   module Sheet
-    mattr_accessor :sheet_renderers
+    mattr_accessor :sheet_renderers, :wiki_renderer
         
     def self.build_renderers
       self.sheet_renderers = [ SheetPage1Renderer.new, 
         SheetPage2Renderer.new, 
         SheetPage3Renderer.new ]
+      self.wiki_renderer = WikiRenderer.new
     end
       
+    class WikiRenderer
+      def initialize
+        @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/wiki.erb")
+      end
+      
+      def render(char)
+        data = WikiTemplate.new(char)
+        @renderer.render(data)
+      end
+    end
+    
     class SheetPage1Renderer
       def initialize
         @renderer = TemplateRenderer.create_from_file(File.dirname(__FILE__) + "/../templates/sheet1.erb")
