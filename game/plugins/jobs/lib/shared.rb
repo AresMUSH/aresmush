@@ -12,6 +12,10 @@ module AresMUSH
       Global.config["jobs"]["status"].keys
     end
     
+    def self.closed_jobs
+      Job.all.select { |j| !j.is_open? }
+    end
+    
     def self.status_color(status)
       return "" if status.nil?
       config = Global.config["jobs"]["status"]
