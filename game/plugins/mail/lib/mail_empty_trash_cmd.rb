@@ -10,15 +10,9 @@ module AresMUSH
       end
       
       def handle
-        client.char.mail.each do |m|
-          # DO NOT USE DESTROY here or it will force a reload of the clients 
-          # for each deleted message.
-          if (m.trashed)
-            if (m.message.mail_deliveries.count <= 1)
-              m.message.delete # Do not destroy - see note above
-            end
-            m.delete # Do not destroy - see note above
-          end
+        client.char.mail.select { |m| m.trashed }.each do |m|
+          m.purged = true
+          m.save!
         end
         # Reload clients only once.
         Global.client_monitor.reload_clients

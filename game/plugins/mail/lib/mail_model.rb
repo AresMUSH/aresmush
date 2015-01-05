@@ -1,10 +1,14 @@
 module AresMUSH
   class Character
     has_many :sent_mail, :class_name => "AresMUSH::MailMessage", :inverse_of => 'author', order: :created_at.asc
-    has_many :mail, :class_name => "AresMUSH::MailDelivery", :inverse_of => 'character', order: :created_at.asc, :dependent => :destroy
+    has_many :all_mail, :class_name => "AresMUSH::MailDelivery", :inverse_of => 'character', order: :created_at.asc, :dependent => :nullify
     field :mail_compose_subject, :type => String
     field :mail_compose_to, :type => Array
     field :mail_compose_body, :type => String
+    
+    def mail
+      all_mail.select { |m| !m.purged }
+    end
     
     def unread_mail
       mail.select { |m| !m.read }
@@ -30,5 +34,6 @@ module AresMUSH
       
     field :read, :type => Boolean  
     field :trashed, :type => Boolean  
+    field :purged, :type => Boolean
   end
 end

@@ -34,7 +34,7 @@ module AresMUSH
       
       def log_command
         # Don't log full command for message privacy
-        Global.logger.debug("#{self.class.name} #{client} sending mail to #{self.names}")
+        Global.logger.debug("#{self.class.name} #{client} sending mail.")
       end
     end
   end

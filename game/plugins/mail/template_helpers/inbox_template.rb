@@ -64,7 +64,7 @@ module AresMUSH
       # not a list of all people who received the message.
       # Requires a message reference.  See 'messages' for more info.
       def message_sent_to(msg)
-        a = msg.character.nil? ? t('mail.deleted_author') : msg.character.name
+        a = msg.character.nil? ? t('mail.deleted_recipient') : msg.character.name
         a.ljust(22)
       end
       
