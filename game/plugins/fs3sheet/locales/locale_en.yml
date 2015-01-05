@@ -1,6 +1,7 @@
 en:
     sheet:
         no_permission_to_view_page: "You are not allowed to view that page."
+        no_permission_to_backup: "You are not allowed to backup somebody else."
         invalid_page_number: "That is not a valid page number."
         not_that_many_pages: "There aren't that many character sheet pages."
         

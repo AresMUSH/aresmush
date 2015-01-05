@@ -6,6 +6,7 @@ help:
                     toc_topic: 'Character Creation'
                     dir: 'game/plugins/groups/help/'
                     file: 'groups.txt'
+                    order: 2
                     summary: 'Groups and affiliations.'
                     aliases: 
                         - 'group' 

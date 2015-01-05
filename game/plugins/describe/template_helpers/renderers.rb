@@ -14,11 +14,7 @@ module AresMUSH
       end
       
       def render(model, client)
-        client = model.client
-        if (client.nil?)
-          return t('db.object_not_found')
-        end
-        data = CharacterTemplate.new(client)
+        data = CharacterTemplate.new(model)
         @renderer.render(data)
       end
     end

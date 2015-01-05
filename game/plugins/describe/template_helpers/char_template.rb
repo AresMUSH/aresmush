@@ -4,9 +4,8 @@ module AresMUSH
     class CharacterTemplate
       include TemplateFormatters
       
-      def initialize(client)
-        @client = client
-        @char = client.char
+      def initialize(char)
+        @char = char
       end
       
       # MUSH name.

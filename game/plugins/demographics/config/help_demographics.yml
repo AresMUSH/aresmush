@@ -7,4 +7,5 @@ help:
                     dir: 'game/plugins/demographics/help/'
                     file: 'demographics.txt'
                     summary: "Setting basic character info."
+                    order: 1
                     aliases: [ 'fullname', 'gender', 'birthdate', 'height', 'physique', 'eyes', 'hair', 'age', 'reputation']

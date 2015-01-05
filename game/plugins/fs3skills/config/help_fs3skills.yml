@@ -13,6 +13,7 @@ help:
                     dir: 'game/plugins/fs3skills/help/'
                     file: 'abilities.txt'
                     summary: 'Skills System.'
+                    order: 4
                     aliases: [ 'reset', 'language', 'languages', 'raise', 'lower', 'ability', 'attributes', 'attribute', 'quirk', 'quirks' ]
                 skills:
                     toc_topic: 'FS3'

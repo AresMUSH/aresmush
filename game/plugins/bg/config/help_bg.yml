@@ -6,6 +6,7 @@ help:
                     toc_topic: 'Character Creation'
                     dir: 'game/plugins/bg/help/'
                     file: 'bg.txt'
+                    order: 3
                     summary: 'Character backstories.'
         admin:
             topics:

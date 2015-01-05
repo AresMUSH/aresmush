@@ -26,7 +26,7 @@ module AresMUSH
     end
     
     def self.topics_for_toc(category, toc)
-      topics = Help.topics(category).sort_by { |k, v| v["order"].nil? ? 99 : v["order"] }
+      topics = Help.topics(category).sort_by { |k, v| [v["order"].nil? ? 99 : v["order"], k] }
       topics.select { |k, v| !v["toc_topic"].nil? && v["toc_topic"] == toc }
     end
     

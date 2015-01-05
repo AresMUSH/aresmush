@@ -16,6 +16,12 @@ module AresMUSH
         self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
       
+      def check_permission
+        return nil if self.target == client.name
+        return nil if client.char.has_any_role?(Global.config['sheet']['roles']['can_view_sheets'])
+        return t('sheet.no_permission_to_backup')
+      end
+      
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
           Sheet.sheet_renderers.count.times do |i|

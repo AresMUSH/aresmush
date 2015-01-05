@@ -11,7 +11,7 @@ To quickly read new posts and replies, you can use the bbs/new command.
     %xcbbs/new%xn - Reads the first unread message.
     %xcbbs/catchup <board>%xn - Marks all unread messages as read.
 
-On boards that you are allowed to write to, you can post a new message or reply to an existing message.
+On boards that you are allowed to write to, you can post a new message or reply to an existing message.  When replying, you can leave off the post information and it will reply to the last one you read (handy when using bbs/new).
 
     %xcbbs/post <board>=<subject>/<body>%xn - Writes a new post.
     %xcbbs/reply <reply>%xn - Replies to the last post you read.

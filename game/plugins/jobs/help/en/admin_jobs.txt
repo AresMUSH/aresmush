@@ -34,3 +34,9 @@ You can change various attributes about the job.
     %xcjob/status <#>=<status>%xn - Changes job status.
     %xcjob/cat <#>=<category>%xn - Changes job category.
     %xcjob/title <#>=<title>%xn - Changes job title.
+    
+You can keep the jobs forever, as long as you have sufficient database space.  Or you can periodically archive the closed ones to a file and purge them.
+
+    %xcjobs/backup%xn - Prints out closed jobs, which you can save to a log file.
+    %xcjobs/purge%xn - Deletes all closed jobs.
+    %xcjob/delete <#>%xn - Deletes a particular job.

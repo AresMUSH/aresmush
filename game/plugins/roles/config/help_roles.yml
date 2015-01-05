@@ -3,7 +3,7 @@ help:
         main:
             topics:
                 admin: 
-                    toc_topic: 'Getting Started'
+                    toc_topic: '1 - Getting Started'
                     dir: 'game/plugins/roles/help/'
                     file: 'admin.txt'
                     summary: 'Game Administration.'
