@@ -2,6 +2,7 @@ module AresMUSH
   module Jobs
     def self.create_job(category, title, description, author)
       if (!Jobs.categories.include?(category))
+        Global.logger.debug "Invalid job category #{category}."
         return { :job => nil, :error => t('jobs.invalid_category', :categories => Jobs.categories.join(" ")) }
       end
       

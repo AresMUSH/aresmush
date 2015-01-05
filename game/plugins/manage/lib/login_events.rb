@@ -5,8 +5,6 @@ module AresMUSH
 
       def on_char_connected_event(event)
         client = event.client
-        client.char.last_ip = client.ip_addr
-        client.char.last_hostname = client.hostname.downcase
         client.char.last_on = Time.now
         client.char.save
       end

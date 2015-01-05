@@ -12,3 +12,20 @@ login:
     
     # Name of the role that identifies your guests.  Must be configured in the roles system.
     guest_role: "guest"
+    
+    # Ares does not support an outright siteban because mostly these days people share IPs. 
+    # Instead you can register certain IPs or hostnames as "suspect" and you'll be alerted 
+    # when a new character is created from one of these sites.  You can use part of a hostname - 
+    # often only the last bit is meaningful.
+    suspect_sites:
+        # - 192.168.1.1   # Somebody bad.
+        # - verizon.net   # Those sneaky verizon users.
+        - host
+        
+    # These settings tie in with the jobs system.  
+    # Make sure they match up with your job configuration.
+    jobs:
+        
+        # What job category to use for suspect logins.
+        suspect_category: "MISC"
+

@@ -24,3 +24,5 @@ en:
        watch_none: "You will not see any connect/disconnect messages."
        watch_friends: "You will now see connect/disconnect messages for just your friends."
        disconnected_by_reconnect: "You are being disconnected because you connected from another location."
+       suspect_login_title: "Suspicious Site Activity"
+       suspect_login: "%{name} was just created and their site appeared to match something on your blocked list.%R%RIP: %{ip}%RHostname: %{host}%RMatched suspect entry %{match}."
