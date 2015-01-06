@@ -1,0 +1,5 @@
+The Maps system helps you find your way around by presenting you with in-game maps.
+
+    %xcmap%xn - Views the map for your current area.
+    %xcmaps%xn - Views all maps
+    %xcmap <area>%xn - Views a map for a specific area.

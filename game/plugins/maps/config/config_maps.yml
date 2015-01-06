@@ -1,0 +1,7 @@
+maps:
+    # There is actually no configuration here for the maps system.  All you need to do is 
+    # put files into the 'maps' directory.  The names should match your room area names, but
+    # must be *ALL LOWERCASE*.  Multi-word names are fine.
+    #
+    # The map files themselves are plain text like the connect screen and can contain ascii art,
+    # ansi codes, etc.
