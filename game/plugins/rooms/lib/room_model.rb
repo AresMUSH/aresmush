@@ -21,5 +21,16 @@ module AresMUSH
         s.save!
       end
     end
+    
+    def out_exit
+      out = get_exit("O")
+      return out if out
+      out = get_exit("OUT")
+      return out
+    end
+  end
+  
+  class Exit
+    field :lock_keys, :type => Array, :default => []
   end
 end

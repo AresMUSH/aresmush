@@ -19,6 +19,7 @@ module AresMUSH
         @client.stub(:char) { @char }
         @client.stub(:room) { @room }
         client_monitor.stub(:logged_in_clients) { [@client] }
+        Login.stub(:wants_announce) { false }
         
         @other_client = double
         @other_client.stub(:room) { nil }
@@ -30,6 +31,12 @@ module AresMUSH
       
       describe :on_char_connected_event do
         before do
+          Login.stub(:update_site_info) {}
+        end
+        
+        it "should update the site info" do
+          Login.should_receive(:update_site_info).with(@other_client) {}
+          @login_events.on_char_connected_event CharConnectedEvent.new(@other_client)
         end
         
         it "should announce the char if the client wants it" do
@@ -52,6 +59,24 @@ module AresMUSH
       end
       
       describe :on_char_created_event do
+        before do
+          Login.stub(:update_site_info) {}
+          Login.stub(:check_for_suspect) {}
+          client_monitor.stub(:emit_all_ooc)
+          @other_char = double
+          @other_client.stub(:char) { @other_char }
+        end
+        
+        it "should check for suspect sites" do
+          Login.should_receive(:check_for_suspect).with(@other_char) {}
+          @login_events.on_char_created_event CharCreatedEvent.new(@other_client)
+        end
+        
+        it "should update the site info" do
+          Login.should_receive(:update_site_info).with(@other_client) {}
+          @login_events.on_char_created_event CharCreatedEvent.new(@other_client)
+        end
+        
         it "should announce the char" do
           client_monitor.should_receive(:emit_all_ooc).with("announce_char_created")
           @login_events.on_char_created_event CharCreatedEvent.new(@other_client)

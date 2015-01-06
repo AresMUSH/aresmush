@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def handle
-        outside = client.room.out_exit
+        outside = client.room.way_out
         
         if (outside.nil?)
           client.emit_failure t('sweep.cant_find_exit')

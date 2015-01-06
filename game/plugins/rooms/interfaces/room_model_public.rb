@@ -41,11 +41,27 @@ module AresMUSH
       match = exits.select { |e| e.name_upcase == name.upcase }.first
     end
     
-    def out_exit
+    # The way out; will be one named "O" or "Out" OR the first exit
+    def way_out
       out = get_exit("O")
       return out if !out.nil?
       return nil if exits.empty?
       return exits.first
+    end
+    
+    # The way in; only applicable if the room has an out exit.
+    def way_in
+      o = out_exit
+      return nil if !o
+      ways_in = Exit.all_of(source: o.dest, dest: self).all
+      return nil if ways_in.count != 1
+      return ways_in.first
+    end
+  end
+  
+  class Exit
+    def allow_passage?(char)
+      return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
     end
   end
 end

@@ -103,9 +103,10 @@ module AresMUSH
       # Exit destination
       # Requires an exit reference.  See 'exits' for more info.
       def exit_destination(e)
-        left(e.dest.name, 30)
+        locked = e.allow_passage?(@client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
+        str = "#{locked}#{e.dest.name}"
+        left(str, 30)
       end
-        
     end
   end
 end

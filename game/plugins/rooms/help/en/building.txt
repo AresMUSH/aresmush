@@ -7,6 +7,10 @@ The MUSH grid consists of %xhRooms%xn connected by %xhExits%xn.  Admin with appr
 
 Note: In Ares, exits have only a single name so there is no exit;alias;alias syntax.  Any exit named "O" is automatically aliased to "Out".
 
+Exits can be locked to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel admin" so only rebels and admins could use it.  To unlock an exit, set the role lock to "everyone".
+
+    %xclock <exit>=<list of roles>%xn
+
 If you create rooms without exits, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  See the help files on %xcdestroy%xn and %xcfind%xn.
 
 Rooms have several properties that you can set.  The %xharea%xn and %xhgrid%xn properties are used to help people get around.  They can be used in room descriptions and the 'where' command and such.  The %xnroomtype%xn property ties in with the 'status' system, to tell whether someone is in the IC or OOC zone.

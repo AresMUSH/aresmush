@@ -29,6 +29,12 @@ module AresMUSH
           client.emit_failure(t("rooms.cant_go_that_way"))
           return
         end
+        
+        if (!exit.allow_passage?(client.char))
+          client.emit_failure t('rooms.cant_go_through_locked_exit')
+          return
+        end
+        
         Rooms.move_to(client, client.char, exit.dest, exit.name)
       end
     end

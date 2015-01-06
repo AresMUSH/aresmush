@@ -84,11 +84,11 @@ module AresMUSH
       end
     end
     
-    describe :out_exit do 
+    describe :way_out do 
       it "should return the exit with name 'O' if it exists" do
         exit = double
         @room.stub(:get_exit).with("O") { exit }
-        @room.out_exit.should eq exit
+        @room.way_out.should eq exit
       end
       
       it "should return first exit if 'O' doesn't exist" do
@@ -98,7 +98,7 @@ module AresMUSH
           @room.exits << exit1
           @room.exits << exit2
           @room.save!
-          @room.out_exit.should eq exit1
+          @room.way_out.should eq exit1
         end
       end
     end

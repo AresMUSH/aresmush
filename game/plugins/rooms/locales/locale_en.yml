@@ -35,3 +35,13 @@ en:
        home_not_set: "You don't have a home!"
        char_has_gone_home: "%{name} goes home."
        home_set: "You make this your home."
+       
+       can_only_lock_exits: "You can only lock exits."
+       exit_locked: "Exit locked."
+       exit_unlocked: "Exit unlocked."
+       exit_lock_not_valid_role: "%{name} is not a valid role."
+       cant_go_through_locked_exit: "You can't go that way; the exit is locked."
+       cant_lock_exterior_rooms: "You cannot lock the way into an exterior room."
+       way_in_locked: "You lock the way in.  Please remember to unlock it when you're done."
+       way_in_unlocked: "You unlock the way in."
+       already_has_lock: "The way in already has a different kind of lock."

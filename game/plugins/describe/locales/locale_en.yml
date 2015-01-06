@@ -20,3 +20,4 @@ en:
        idle: Idle
        
        description_review: "Checking you have a description set."
+       locked: "LOCKED"

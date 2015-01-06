@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def handle
-        outside = client.room.out_exit
+        outside = client.room.way_out
         footer = outside.nil? ? nil : "%l2%R" + t('sweep.kick_allowed')
         
         client.emit footer

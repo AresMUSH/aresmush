@@ -28,5 +28,9 @@ module AresMUSH
     def self.room_types
       [ 'IC', 'OOC' ]
     end
+    
+    def self.interior_lock
+      [ "INTERIOR_LOCK" ]
+    end
   end
 end

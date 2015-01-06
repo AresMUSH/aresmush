@@ -33,6 +33,7 @@ module AresMUSH
           client.emit_failure t('manage.management_config_messed_up')
         end
         
+        client.emit_ooc t('manage.loading_plugin_please_wait', :name => load_target)
         begin
           begin
             Global.plugin_manager.unload_plugin(load_target)

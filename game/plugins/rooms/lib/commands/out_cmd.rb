@@ -11,10 +11,10 @@ module AresMUSH
       end
       
       def handle
-        exit = client.room.out_exit
+        exit = client.room.way_out
         
         if (exit.nil? || exit.dest.nil?)
-          client.emit_failure(t("rooms.cant_go_that_way"))
+          client.emit_failure t("rooms.cant_go_that_way")
           return
         end
         Rooms.move_to(client, client.char, exit.dest)
