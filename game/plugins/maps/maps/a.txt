@@ -1,3 +1,4 @@
+Just an example of how you can use ASCII art in a map.
                                        /\
                                       /`:\
                                      /`'`:\
