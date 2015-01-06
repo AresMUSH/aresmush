@@ -1,0 +1,45 @@
+module AresMUSH
+
+  module Describe
+    class DetailSetCmd
+      include Plugin
+      include PluginRequiresLogin
+      include PluginRequiresArgs
+      
+      include PluginRequiresArgs
+      
+      attr_accessor :name, :target, :desc
+      
+      def initialize
+        self.required_args = ['name', 'target', 'desc']
+        self.help_topic = 'detail'
+        super
+      end
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("detail") && cmd.switch_is?("set")
+      end
+      
+      def crack!
+        cmd.crack_args!(CommonCracks.arg1_slash_arg2_equals_arg3)
+        self.target = cmd.args.arg1
+        self.name = titleize_input(cmd.args.arg2)
+        self.desc = cmd.args.arg3
+      end
+      
+      def handle
+        VisibleTargetFinder.with_something_visible(self.target, client) do |model|
+          
+          if (!Describe.can_describe?(client.char, model))
+            client.emit_failure(t('dispatcher.not_allowed'))
+            return
+          end
+          
+          model.details[self.name] = self.desc
+          model.save!
+          client.emit_success t('describe.detail_set')
+        end
+      end
+    end
+  end
+end

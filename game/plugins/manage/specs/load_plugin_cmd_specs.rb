@@ -27,6 +27,7 @@ module AresMUSH
           handler.crack!
             
           client.stub(:emit_success)
+          client.stub(:emit_ooc)
           plugin_manager.stub(:load_plugin)
           plugin_manager.stub(:unload_plugin)
           locale.stub(:load!)

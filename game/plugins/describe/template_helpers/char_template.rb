@@ -38,6 +38,13 @@ module AresMUSH
       def actor
         @char.actor
       end
+      
+      # Available detail views.
+      def details
+        names = @char.details.keys
+        return "" if names.nil?
+        "%R%R%xh#{t('describe.details_available')}%xn #{names.sort.join(", ")}"
+      end
     end
   end
 end

@@ -39,6 +39,13 @@ module AresMUSH
         @room.description
       end
       
+      # Available detail views.
+      def details
+        names = @room.details.keys
+        return "" if names.nil?
+        "%R%R%xh#{t('describe.details_available')}%xn #{names.sort.join(", ")}"
+      end
+      
       # Short IC date/time string
       def ic_time
         ICTime.ic_datestr ICTime.ictime

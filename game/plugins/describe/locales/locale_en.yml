@@ -21,3 +21,8 @@ en:
        
        description_review: "Checking you have a description set."
        locked: "LOCKED"
+       
+       no_such_detail: "No such detail available."
+       detail_deleted: "Detail deleted."
+       detail_set: "Detail set."
+       details_available: "[Details]"

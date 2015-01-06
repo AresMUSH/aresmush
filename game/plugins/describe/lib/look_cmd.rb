@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("look")
+        cmd.root_is?("look") && cmd.args !~ /\//
       end
       
       def crack!
