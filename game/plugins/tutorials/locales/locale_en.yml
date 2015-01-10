@@ -1,0 +1,13 @@
+en:
+    tutorials:
+        tutorials_title: "Available Tutorials"
+        no_such_tutorial: "That is not a valid tutorial."
+        tutorial_not_started: "You have not started a tutorial."
+        page_title: "%{tutorial} Tutorial"
+        page_counter: "page %{page}/%{total_pages}"
+        tutorial_complete: "You have completed the tutorial!"
+        already_on_first_page: "You are already on the first page of the tutorial."
+        prev_page_footer: "<-- tutorial/prev"
+        next_page_footer: "tutorial/next -->"
+        file_not_found: "Ooops!  There's a problem with this tutorial.  The game admin have been alerted and will hopefully fix it soon.%R%RIn the mean time, you can try to continue with the other pages of the tutorial."
+        tutorials_footer: "Type %xhtutorial/start <name>%xn to start a tutorial." 

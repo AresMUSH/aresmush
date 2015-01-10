@@ -7,3 +7,6 @@ shortcuts:
         "outfit/create": "outfit/set"
         "outfit/add" : "outfit/set"
         "outfit/remove" : "outfit/delete"
+        "detail/add" : "detail/set"
+        "detail/create" : "detail/set"
+        "detail/remove" : "detail/delete"

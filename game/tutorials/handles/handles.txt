@@ -1,0 +1,11 @@
+Handles bring a little taste of social media to MUSHing. A handle is your OOC identity, used across all Ares games. Through your handle, people can identify you as a player, not just as a character.
+
+Handles have an @-sign in front to distinguish them from regular player names, like @Faraday.
+
+%xhBut why?%xn
+
+There are some MU sub-communities where the players all know each other, and we’ve all seen posts like “Looking for SoAndSo from SuchAndSuchMUSH.” Games close, people drift.
+
+Handles provide tools to help you keep in touch with your friends, and keep track of who’s who.
+
+Having a handle enables a lot of features.  Some of them may make you say, "OMG I don't want people to know this about me!"  Don't worry.  The handles system is completely optional, and there are a variety of privacy and friends settings to help you control who sees what.

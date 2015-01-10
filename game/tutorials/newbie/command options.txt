@@ -1,0 +1,14 @@
+Many commands have options.  Throughout the help files, the <> brackets are used to describe the %xharguments%xn - supplemental information you can specify.
+
+    %xcquit%xn - The quit command takes no arguments.
+    %xcmail <recipients>=<subject>/<message>%xn - The mail command takes several.
+    
+Some commands have different modes, called %xhswitches%xn, which you specify with a slash (/).  The base command stays the same, but the switch lets you use it in different ways.  For example:
+
+    %xcoutfit/create <name>%xn - Creates an outfit
+    %xcoutfit/delete <name>%xn - Deletes an outfit
+    
+Commands that show multiple pages of data will have a "page 1 of 4" style footer at the bottom telling you there are more pages available.  You can access those pages simply by putting the page number after the commands.
+
+%xh-- Give it a try! --%xn 
+    Type: %xchelp2%xn to see the second help page.

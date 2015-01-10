@@ -39,4 +39,18 @@ class Hash
       next(false)
     end
   end
+  
+  def has_insensitive_key?(key)
+    return false if key.nil?
+    !get_insensitive_key(key).nil?
+  end
+  
+  def get_insensitive_key(key)
+    self.keys.select { |k| k.downcase == key.downcase }.first
+  end
+  
+  def get_insensitive_value(key)
+    return false if key.nil?
+    self[get_insensitive_key(key)]
+  end
 end

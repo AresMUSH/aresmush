@@ -1,0 +1,11 @@
+MUSHing bridges two worlds - the IC (In-Character) world, which is the fictional world that the characters habit, and the OOC (Out-of-Character) world, which is inhabited by real people (players).
+
+To use a theater analogy, you can think of these as being the %xhOnstage%xn (IC) and %xhOffstage%xn (OOC) areas. Right now you're probably in the Offstage area, waiting to go through the process of defining your character (which is covered in another tutorial).  Once you've done that, you'll be ready to venture Onstage.
+
+Keeping a clear delineation between IC and OOC is important to avoid hard feelings and cheating.  You can be best friends with someone OOC, even though your players are bitter enemies IC.
+
+You can see who's online and whether they're Onstage or Offstage using the %xcwho%xn and %xcwhere%xn commands.
+
+%xh-- Give it a try! --%xn 
+    Type: %xcwho%xn
+    Type: %xcwhere%xn

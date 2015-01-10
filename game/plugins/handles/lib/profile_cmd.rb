@@ -20,11 +20,6 @@ module AresMUSH
         self.name = cmd.args.nil? ? client.char.handle : titleize_input(cmd.args)
       end
       
-      def check_handle
-        return t('handles.must_have_handle_to_view_profile') if client.char.handle.blank? && !Global.api_router.is_master?
-        return nil
-      end
-      
       def handle
         Handles.get_profile(client, self.name)
       end      

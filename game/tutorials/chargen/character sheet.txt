@@ -1,0 +1,9 @@
+Another important command throughout chargen is your %xhCharacter Sheet%xn, accessed through the %xcsheet%xn command.  This will show you all your abilities, your background, and your demographics.
+
+There are multiple pages to the character sheet, accessible using sheet1, sheet2, etc.
+
+Note that the first two character sheet pages (abilities and demographics) are public on Ares by default, whereas the third (background) is private.  Your game may configure this differently, so contact your local game admins if it concerns you.
+
+%xh-- Give it a try! --%xn 
+
+    Type: %xcsheet%xn to see your character sheet, then %xcsheet2%xn, etc. to see the other pages.

@@ -1,0 +1,55 @@
+tutorials:
+    topics:
+        new player:
+            desc: "Introduction to MUSHing"
+            folder: newbie
+            pages:
+                - what is a mush.txt
+                - players on the stage.txt
+                - posing.txt
+                - rooms.txt
+                - communicating.txt
+                - commands.txt
+                - command options.txt
+                - time flies.txt
+                - admin.txt
+                - "what's next.txt"
+        ares for vets:
+            desc: "Ares differences for experienced MUSHers"
+            folder: vets
+            pages:
+                - welcome to ares.txt
+                - getting help.txt
+                - commands.txt
+                - objects.txt
+                - channels and mail.txt
+                - status.txt
+                - editing.txt
+                - cross-game features.txt
+                - "what's next.txt"
+        combat:
+            desc: "FS3 Combat Introduction"
+            folder: combat
+        chargen:
+            desc: "Character Creation Walkthrough"
+            folder: chargen
+            pages:
+                - chargen.txt
+                - app command.txt
+                - character sheet.txt
+                - demographics.txt
+                - groups.txt
+                - background.txt
+                - abilities.txt
+                - final touches.txt
+                - review.txt
+                - "what's next.txt"
+        handles:
+            desc: "Introduction to the Player Identity System"
+            folder: handles
+            pages:
+                - handles.txt
+                - features.txt
+                - privacy.txt
+                - getting a handle.txt
+                - "what's next.txt"

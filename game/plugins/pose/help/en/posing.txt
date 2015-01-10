@@ -5,11 +5,6 @@
     %xc;'s hair is black.%xn - Bob's hair is black.
     %xcemit Go Bob!%xn or %xc\Go Bob!%xn - Go Bob!
 
-You can also make out-of-character (OOC) asides to the other room occupants.  The same shortcuts (", :, etc.) apply with OOC asides.  It defaults to a 'say' if you don't specify anything.
-
-   %xcooc Hi!%xn - <OOC> Bob says, "Hi!"
-   %xcooc :waves.%xn - <OOC> Bob waves.
-   
 Lastly, the %xhpemit%xn command lets you make a private emit to certain characters.
 
     %xcpemit <list of names>=<message>%xn

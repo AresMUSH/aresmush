@@ -2,17 +2,15 @@ To get past the login screen, you need a character.  There are a number of 'gues
 
     %xctour%xn
 
-Also from the login screen, you can create a new character or connect to an existing one.  Names will normally be your character's first or last name, and can only be a single word.  You should take care to consider the game's theme when choosing your name.  If you ever forget your password, use the 'tour' command and contact the admins.
+Also from the login screen, you can create a new character or connect to an existing one.  Names will normally be your character's first or last name, and can only be a single word.  You should take care to consider the game's theme when choosing your name.  
 
     %xccreate <name> <password>%xn
     %xcconnect <name> <password>%xn
 
-You can associate an email address with your account, to enable admin to contact you.
-
-    %xcemail%xn - Views your registered email
-    %xcemail/set <email>%xn - Changes the email registered with your account.
-
-Other login-related commands:
-
-    %xcquit%xn - Disconnects from the game.
+You can change your password at any time.  If you ever forget your password, use the 'tour' command and contact the admins.
+  
     %xcpassword <oldpassword>=<newpassword>%xn - Changes your password.
+
+When you're done, you can quit.
+
+    %xcquit%xn - Disconnects from the game.  

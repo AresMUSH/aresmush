@@ -1,0 +1,10 @@
+A few final touches.
+
+You'll want to set your description - don't walk around naked.
+
+It's fun to imagine the characters on a game like characters in a movie, and to pick actors to play them.  The actors system lets you keep track of who's picked which actors, and pick one for yourself.
+
+%xh-- Give it a try! --%xn 
+
+    Type: %xchelp describe%xn for desc commands and set your desc.
+    Type: %xchelp actors%xn for actors commands and pick an actor.

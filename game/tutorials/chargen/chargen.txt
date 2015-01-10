@@ -1,0 +1,3 @@
+Character creation (aka chargen) here works a little differently than what you might be used to from other games.  Instead of being a series of rooms, it is a more free-form process.  You can access the chargen commands from anywhere.
+
+This tutorial will walk you through the character creation process step by step.  If you would rather just jump around and do things on your own, check out %xchelp chargen%xn instead.

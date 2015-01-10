@@ -1,0 +1,12 @@
+Ares does not have an @decompile like Penn and Tiny because the way it stores data is completely different.  But there are other tools you can use instead.
+
+For character backups there's the %xcbackup%xn command, which will dump out your character sheet, background, description and multi-desc outfits.  You can log this to a file. There's a separate %xcmail/backup%xn command for your mail.
+
+Want to make a change to your desc?  Use %xcdesc/edit%xn to grab a copy of your current desc into your client's input buffer (the place where you type).  This only works on some clients and may require configuration - see %xhhelp edit%xn for details.
+ 
+%xh-- Give it a try! --%xn 
+    Set up the edit parameters for your client according to the instructions in %xchelp edit%xn
+    Type: %xcdesc me=A coder type person.%xn
+    Type: %xcdesc/edit%xn to grab your current desc into your input buffer.
+    
+    Editing not working in your client?  Go to aresmush.com and select 'Feedback'!

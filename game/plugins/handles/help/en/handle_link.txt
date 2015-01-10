@@ -16,9 +16,3 @@ You can find out information about your handle and characters linked to it using
 
     %xchandle/info%xn
     %xchandle/unlink <character id>%xn  (AresCentral only)
-    
-Autospace and timezone preferences are automatically downloaded from your AresCentral character to each of your linked characters, so you don't have to set them everywhere you go.  You can enable or disable this on an individual character using the sync command.
-
-    %xchandle/sync <on or off>%xn
-    
-Next topic:  %xhhelp handle privacy%xn

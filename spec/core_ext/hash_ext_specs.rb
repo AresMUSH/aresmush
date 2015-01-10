@@ -28,6 +28,44 @@ module AresMUSH
       end
     end
     
+    describe :has_insensitive_key? do
+      it "should match a key" do
+        h = { 'a' => "D" }
+        h.has_insensitive_key?("A").should be_true
+        h.has_insensitive_key?("a").should be_true
+      end
+      
+      it "should not match a missing key" do
+        h = { 'a' => "D" }
+        h.has_insensitive_key?("x").should be_false
+      end     
+    end
+    
+    describe :get_insensitive_key do
+      it "should get a key" do
+        h = { 'a' => "D" }
+        h.get_insensitive_key("A").should eq "a"
+        h.get_insensitive_key("a").should eq "a"
+      end
+      
+      it "should not get a missing key" do
+        h = { 'a' => "D" }
+        h.get_insensitive_key("x").should be_nil
+      end     
+    end
+    
+    describe :get_insensitive_value do
+      it "should get a key" do
+        h = { 'a' => "D" }
+        h.get_insensitive_value("A").should eq "D"
+        h.get_insensitive_value("a").should eq "D"
+      end
+      
+      it "should not get a missing key" do
+        h = { 'a' => "D" }
+        h.get_insensitive_value("x").should be_nil
+      end     
+    end
     
     describe :merge_yaml do
       before do

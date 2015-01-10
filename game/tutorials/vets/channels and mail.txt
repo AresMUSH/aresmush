@@ -1,0 +1,14 @@
+The Ares channels and mail systems are a hybrid of the Penn and Tiny command syntax, but they attempt to support both commands wherever possible.
+
+So for channels, you can use:
+
+    %xcchan/who <name>%xn or %xc<alias> who%xn
+    %xcchan/join <name>%xn or %xcaddcom <name>=<alias>%xn  and so on
+
+One difference for Penn players is that you have to always use the same the channel alias, which defaults to the first two letters of the channel name.  So if your alias for the Chat channel is 'ch', you always have to use 'ch' - you can't use 'c' sometimes and 'cha' other times. You can change your alias for a given channel at any time using %xcchannel/alias <name>=<new alias>%xn.
+
+For mail, you can use the one-shot %xcmail <to>=<subject>/<message>%xn (Penn style) or you can use the piece-by-piece %xcmail <to>=<subject>%xn then %xc- <message>%xn composition (MUX style).
+
+%xh-- Give it a try! --%xn 
+    Send yourself a mail using your favorite mail syntax.
+    Talk on a channel.

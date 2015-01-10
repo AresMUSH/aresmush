@@ -9,7 +9,7 @@ help:
                     summary: "Character status and going IC/OOC/AFK."
                 onstage:
                     dir: 'game/plugins/status/help/'
-                    file: 'ic.txt'
+                    file: 'onstage.txt'
                     aliases: [ 'ic', 'stuck' ]
                 afk:
                     dir: 'game/plugins/status/help/'
@@ -17,7 +17,7 @@ help:
                     aliases: [ 'idle', 'away' ]
                 offstage: 
                     dir: 'game/plugins/status/help/'
-                    file: 'ooc.txt'
+                    file: 'offstage.txt'
         admin:
             topics:
                 status: 

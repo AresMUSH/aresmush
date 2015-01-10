@@ -46,7 +46,7 @@ module AresMUSH
           end
           
           it "should fail if the alias is already in use" do
-            char.stub(:channel_options) { { "Other" => { "alias" => "+pub" } } }
+            char.stub(:channel_options) { { "Other" => { "alias" => "pu" } } }
             Channel.stub(:find_by_name).with("Other") { double }
             client.should_receive(:emit_failure).with("channels.alias_in_use") 
             handler.handle
@@ -73,7 +73,7 @@ module AresMUSH
           end
           
           it "should set the channel alias to the default if none specified" do
-            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "pub")
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "pu")
             char.should_receive(:save!)
             handler.handle
           end

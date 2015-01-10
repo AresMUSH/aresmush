@@ -1,19 +1,19 @@
 Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.
 
-A handle is your OOC identity, unique even across different games.  Through your handle, people can identify you as a player, not just as a character.
+For a more in-depth intro to the Handles system, check out the %xcHandles Tutorial%xn (help tutorials).  This will walk you through getting a handle and what features and privacy settings are available.
 
-Having a handle enables a lot of features.  Some of these may make you say, "OMG I don't want people to know this about me!"  %xhDon't worry.%xn  The handles system is completely optional, and there are a variety of privacy and friends settings to help you control who sees what.
+You may also want to check out the following supplemental help files:
+    
+    %xhhelp handle link%xn - Link characters to your handle.
+    %xhhelp friends%xn - Learn more about how the friends system works with handles.
+    %xhhelp profile%xn - View a player's OOC profile.
 
-Handle Features:
-* You can show your handle on channels and the who list so people know who you are.
-* People can access your handle profile and find out about you and what characters you play.
-* The game can notify you when your alts have messages and other minor conveniences.
-* Add other handles as your friends and share that friends list easily on all your games.
-* When you log into a game, you can see if any of your friends are playing there.
-* View your friend's profile to see where they're playing.
+You can set your handle privacy *per-character*.
 
-   %xhhelp handle creation%xn - Get a handle
-   %xhhelp handle link%xn - Link characters to your handle
-   %xhhelp handle privacy%xn - Control your privacy settings
-   %xhhelp handle profile%xn - Handle profiles.
-   %xhhelp friends%xn - Learn more about how the friends system works with handles.
+    %xchandle/privacy <privacy setting>%xn
+    %xchandle/info%xn - View your privacy settings (and other handle information)
+
+Autospace and timezone preferences are automatically downloaded from your AresCentral character to each of your linked characters, so you don't have to set them everywhere you go.  You can enable or disable this on an individual character using the sync command.
+
+    %xchandle/sync <on or off>%xn
+

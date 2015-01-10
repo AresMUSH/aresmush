@@ -1,0 +1,9 @@
+You can control your handle privacy.  You can choose which characters are linked to your handle, and who can see that link. This setting is per-character, so you can have some public and restrict others.
+
+%xhPublic%xn - Everyone will see this character listed on your handle profile. Anyone can access your handle profile through your character name (e.g. ‘profile Cate’ will bring up the profile for @Faraday). Your handle name will show up in certain OOC commands (like channels and who list).
+
+%xhFriends-Only (Default)%xn - Only people on your friends list will see this character listed on your handle profile. Only your friends can access your handle profile through your character name. Your handle name will NOT show up in OOC commands.
+
+%xhPrivate(*)%xn - Nobody will see this character listed on your handle profile, or be able to access your handle profile through your character name.
+
+Why is there a ‘*’ by “private”? Because true privacy on a MUSH is an illusion. Remember that the admins of any game you log into have have access to your IP address, the game database, and anything you type. It’s not that hard to identify alts even without handles. AresCentral admins are bound by our privacy policy, but other games may not be.

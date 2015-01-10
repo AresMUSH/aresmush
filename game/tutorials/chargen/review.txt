@@ -1,0 +1,12 @@
+Once you're happy with your character, do a final review using the %xcapp%xn command to make sure everything is ship-shape.  Then you're ready to submit the character for approval.
+
+Application admins will reivew your character and make sure it's a good fit for the game's theme, that the skills are reasonable given the background, and that you haven't missed anything important in chargen.
+
+If you realize you need to make changes while you're waiting, or if the admins come back and say something needs to be fixed, you can withdraw or un-submit your application.  Make the necessary changes using the chargen commands.  The app will be on hold while you do this, and you can use the submit command again when you're done.
+
+While you're waiting for review, you're free to wander around the Offstage area.
+
+%xh-- Give it a try! --%xn 
+
+    Type: %xcapp%xn to give your app one last once-over
+    Type: %xchelp app%xn to see the app submission and unsubmission commands.  Submit your app.

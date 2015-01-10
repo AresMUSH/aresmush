@@ -1,0 +1,10 @@
+help:
+    categories:
+        main:
+            topics:
+                tutorials: 
+                    toc_topic: '1 - Getting Started'
+                    dir: 'game/plugins/tutorials/help/'
+                    file: 'tutorials.txt'
+                    summary: 'Interactive tutorials.'
+                    aliases: [ 'tutorial' ]

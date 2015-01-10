@@ -3,7 +3,7 @@ Channels are public forums for out-of-character communication.  Each game will h
     %xcchannels%xn - Lists channels and their descriptions and roles.  Also shows at
         a glance which channels you're monitoring and the command to talk on them.
 
-You will only see messages on channels you have chosen to join, and you may leave those channels at any time.  When you join a channel, you can specify an alias or nickname.  This becomes the command you use to talk on the channel.  If you don't specify anything, the alias defaults to a "+" and the first three characters of the channel name.  For example, the Public channel would be +pub, and to talk on it you would use %xh+pub Hi!%xn
+You will only see messages on channels you have chosen to join, and you may leave those channels at any time.  When you join a channel, you can specify an alias or nickname.  This becomes the command you use to talk on the channel.  If you don't specify anything, the alias defaults tothe first two characters of the channel name.  For example, the Chat channel would be ch, and to talk on it you would use %xhch Hi!%xn
 
     %xcchannel/join <channel>[=<alias>]%xn
     %xcchannel/leave <channel>%xn

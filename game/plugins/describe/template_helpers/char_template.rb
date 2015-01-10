@@ -42,7 +42,7 @@ module AresMUSH
       # Available detail views.
       def details
         names = @char.details.keys
-        return "" if names.nil?
+        return "" if names.empty?
         "%R%R%xh#{t('describe.details_available')}%xn #{names.sort.join(", ")}"
       end
     end

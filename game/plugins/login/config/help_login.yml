@@ -8,7 +8,7 @@ help:
                     file: 'login.txt'
                     order: 2
                     summary: 'Creating, connecting and managing passwords.'
-                    aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'email', 'quit', 'guest' ]
+                    aliases: [ 'create', 'connect', 'password', 'name', 'tour', 'quit', 'guest' ]
 
                 watch: 
                     toc_topic: 'Misc'
@@ -16,6 +16,12 @@ help:
                     file: 'watch.txt'
                     summary: 'Configure what connection messages you see.'
                     aliases: [ 'spam' ]
+                    
+                email: 
+                    toc_topic: 'Misc'
+                    dir: 'game/plugins/login/help/'
+                    file: 'email.txt'
+                    summary: 'Set your email.'
         admin:
             topics:
                 login: 

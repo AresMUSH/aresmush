@@ -1,0 +1,17 @@
+Like a TV show, MUSHes are structured around %xhScenes%xn. Typically when you log in to play, you'll look at the 'who' list to see who's around, and either find a scene already going on or start a new one. 
+
+During a scene, each player takes turns writing a few sentences about what their character is saying and doing. These are called %xhPoses%xn.  This continues round-robin style for as long as everyone wishes to continue playing.  Poses are written in third-person, present-tence, like so:
+
+    Mitchell steps out and onto the dirt road, glancing up and down the street. No trouble here, 
+    or at least no trouble so far. So he steps off to the south, apparently heading for the 
+    boarding house that he calls home.
+
+Be descriptive - describing body language, tone of voice, and what’s going on around you is equally important to give your roleplay depth.  Here are some examples of what you type to pose and what will show up to the other players if your character's name is Mitchell.
+
+    %xc"Hello.%xn   -->   Mitchell says, "Hello."
+    %xc:waves hello%xn.  -->  Mitchell waves hello.
+    %xc;'s dog barks.%xn  -->  Mitchell's dog barks.
+    %xcemit The dog wags its tail at Mitchell.%xn  -->  The dog wags its tail at Mitchell.
+    
+%xh-- Give it a try! --%xn
+    Type: %xc:tests out the pose command.%xn
