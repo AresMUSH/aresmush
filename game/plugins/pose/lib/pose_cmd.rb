@@ -14,12 +14,13 @@ module AresMUSH
       
       def handle
         Pose.emit_pose(client, message, cmd.root_is?("emit"))
+        log_pose
       end
       
-      def log_command
-        # Don't log poses
+      def log_pose
+        Pose_History.update_history(client.room.id, client.name, Time.now.to_i, message)
       end
-      
+     
       def message
         if (cmd.root_is?("emit"))
           return PoseFormatter.format(client.name, "\\#{cmd.args}")
