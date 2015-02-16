@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-ruby '2.0.0'
 gem 'ansi', '~> 1.4.3'
 gem 'bcrypt', '~> 3.1.2'
 gem 'bson', '~> 1.9.2'
