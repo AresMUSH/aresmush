@@ -30,8 +30,12 @@ module AresMUSH
         target_name = args.target.after("@")
         target = Character.find_by_name(target_name)
         
-        viewer_name = args.viewer.after("@")
-        viewer = Character.find_by_name(viewer_name)
+        if (args.viewer)
+          viewer_name = args.viewer.after("@")
+          viewer = Character.find_by_name(viewer_name)
+        else
+          viewer = nil
+        end
         
         profile_text = Handles.build_profile_text(target, viewer)
         return cmd.create_response(ApiResponse.ok_status, profile_text)
