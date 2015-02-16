@@ -1,5 +1,5 @@
 module AresMUSH
-  module Utils
+  module Manage
     class TinkerCmd
       include Plugin
       include PluginWithoutSwitches
@@ -18,8 +18,6 @@ module AresMUSH
       end
       
       def handle
-        c = Character.all.select { |c| c.name.start_with?("G") }.map { |c| c.name }
-        client.emit c.to_s
         client.emit_success "Done!"
       end
     end

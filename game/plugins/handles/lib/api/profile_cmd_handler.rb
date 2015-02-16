@@ -32,9 +32,6 @@ module AresMUSH
         
         viewer_name = args.viewer.after("@")
         viewer = Character.find_by_name(viewer_name)
-        if (viewer.nil?)
-          return cmd.create_error_response t('api.invalid_handle')
-        end
         
         profile_text = Handles.build_profile_text(target, viewer)
         return cmd.create_response(ApiResponse.ok_status, profile_text)

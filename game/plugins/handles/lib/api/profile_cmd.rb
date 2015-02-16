@@ -14,7 +14,6 @@ module AresMUSH
       
       def validate
         return t('api.invalid_handle') if !Handles.handle_name_valid?(self.target)
-        return t('api.invalid_handle') if !Handles.handle_name_valid?(self.viewer)
         return nil
       end
      

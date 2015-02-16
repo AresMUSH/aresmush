@@ -6,5 +6,5 @@ Demographics commands are used to set your basic character info.  Some items may
     %xcphysique <build/body type - athletic, wiry, slim, pudgy, etc.>%xn
     %xchair <hair color>%xn
     %xceyes <eye color>%xn
-    %xcbirthdate <yyyy-mm-dd>%xn or %xcage <years>%xn
+    %xcbirthdate <yyyy/mm/dd>%xn or %xcage <years>%xn
     %xcreputation <reputation>%xn - Information that you want people to know about you ICly.

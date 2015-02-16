@@ -13,6 +13,7 @@ module AresMUSH
         text << "%r%l2"
         profile_char.linked_characters.values.each do |c| 
           next if c['privacy'] == Handles.privacy_admin
+          next if c['privacy'] == Handles.privacy_friends && !asking_char
           next if c['privacy'] == Handles.privacy_friends && !profile_char.friends.include?(asking_char)
           
           game = ServerInfo.find_by_dest_id(c['game_id'])

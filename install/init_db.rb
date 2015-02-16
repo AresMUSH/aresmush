@@ -21,9 +21,9 @@ module AresMUSH
       ic_start_room = AresMUSH::Room.create(:name => "IC Start", :room_type => "IC")
       ooc_room = AresMUSH::Room.create(:name => "Offstage", :room_type => "OOC",
         :description => "This is a backstage area where you can hang out when not RPing.")
-      quiet_room AresMUSH::Room.create(:name => "Quiet Room", :room_type => "OOC",
+      quiet_room = AresMUSH::Room.create(:name => "Quiet Room", :room_type => "OOC",
         :description => "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside.")
-      rp_room_hub AresMUSH::Room.create(:name => "RP Annex", :room_type => "OOC",
+      rp_room_hub = AresMUSH::Room.create(:name => "RP Annex", :room_type => "OOC",
         :description => "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded.")
 
       4.times do |n|

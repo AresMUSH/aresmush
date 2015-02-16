@@ -19,8 +19,10 @@ en:
         announce_disabled: "%{name} will no longer show connection messages."
         
         channels: Channels
-        channels_title: "Channel        On?  Alias  Description              Announce Roles"
+        channels_title: "Channel              Description               Show Logins   Roles"
         channel_who: "On channel %{name}: %{chars}." 
+        channel_aliases: "(+) indicates channels you are on:"
+        unable_to_determine_auto_alias: "Could not automatically pick an alias for this channel due to name conflicts.  Use channel/join <name>=<alias> to pick one yourself."
         
         joined_channel: "%{name} has joined this channel."
         already_on_channel: "You are already on that channel."
@@ -34,7 +36,7 @@ en:
         gagging: " (gagging)"
 
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
-        channel_alias_set: "The channel alias for %{name} is now %{channel_alias}."
+        channel_alias_set: "You can now use %{channel_alias} <message> to talk on the %{name} channel. "
         short_alias_warning: "Be aware that short channel aliases may conflict with other command shortcuts."
         
         cant_use_channel: "You do not have permission to use that channel."
