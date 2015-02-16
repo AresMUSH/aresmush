@@ -8,7 +8,8 @@ module AresMUSH
   end
 end
 
-raise 'Ruby version must be greater than 2.0' unless  RUBY_VERSION.to_f > 2.0
+puts RUBY_VERSION.to_f
+raise 'Ruby version must be greater than 2.0' unless  RUBY_VERSION.to_f >= 2.0
 
 # Require this before all other items
 require 'bundler/setup'
