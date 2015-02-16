@@ -3,6 +3,8 @@ module AresMUSH
     
     def self.build_profile_text(profile_char, asking_char)
       if (Global.api_router.is_master?)
+        return t('api.invalid_handle') if profile_char.nil?
+        
         text = "-~- %xh%xg@#{profile_char.name}%xn -~-".center(78)
         text << "%r%l2%r"
         text << "%xh#{t('handles.profile_title')}%xn"
