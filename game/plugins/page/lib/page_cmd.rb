@@ -22,8 +22,15 @@ module AresMUSH
           self.message = cmd.args.after("=")
         elsif (cmd.args.include?("="))
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
-          self.message = cmd.args.arg2
+          
+          # Catch the common mistake of last-paging someone a link.
+          if (cmd.args.arg1 && cmd.args.arg1.include?("http://"))
+            self.names = client.char.last_paged
+            self.message = "#{cmd.args.arg1}=#{cmd.args.arg2}"
+          else
+            self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
+            self.message = cmd.args.arg2
+          end
         else
           self.names = client.char.last_paged
           self.message = cmd.args

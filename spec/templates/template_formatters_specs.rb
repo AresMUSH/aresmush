@@ -22,7 +22,7 @@ module AresMUSH
       end
       it "should trim a string that's too long" do
         renderer = TemplateRenderer.new("<%= right(\"FOOBAR\", 5) %>")
-        renderer.render(@data).should eq "FOOBA%xn"
+        renderer.render(@data).should eq "FOOBA"
       end
     end
   
@@ -33,7 +33,7 @@ module AresMUSH
       end
       it "should trim a string that's too long" do
         renderer = TemplateRenderer.new("<%= left(\"FOOBAR\", 5) %>")
-        renderer.render(@data).should eq "FOOBA%xn"
+        renderer.render(@data).should eq "FOOBA"
       end
     end
   
@@ -44,7 +44,7 @@ module AresMUSH
       end
       it "should trim a string that's too long" do
         renderer = TemplateRenderer.new("<%= center(\"FOOBAR\", 5) %>")
-        renderer.render(@data).should eq "FOOBA%xn"
+        renderer.render(@data).should eq "FOOBA"
       end
     end
     

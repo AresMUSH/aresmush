@@ -121,7 +121,7 @@ module AresMUSH
     end
     
     def self.set_channel_alias(client, char, channel, chan_alias)
-      aliases = chan_alias.split(",")
+      aliases = chan_alias.split(/[, ]/)
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
         if (!existing_channel.nil? && existing_channel != channel)
