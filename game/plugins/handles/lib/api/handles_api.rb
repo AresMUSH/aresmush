@@ -66,7 +66,7 @@ module AresMUSH
     
     def self.get_profile(client, name)
       if (Global.api_router.is_master?)
-        if (name.start_with("@"))
+        if (name.start_with?("@"))
           name = name.after("@")
         end
         ClassTargetFinder.with_a_character(name, client) do |model|
