@@ -11,7 +11,7 @@ module AresMUSH
       
       context "Alias has a prefix" do
         before do
-          @char.stub(:channel_options) { { "Public" => { "alias" => "+pub" } }}
+          @char.stub(:channel_options) { { "Public" => { "alias" => ["+pub"] } }}
         end
 
         it "should match the alias exactly" do
@@ -29,7 +29,7 @@ module AresMUSH
       
       context "Alias does not have a prefix" do
         before do
-          @char.stub(:channel_options) { { "Public" => { "alias" => "pub" } }}
+          @char.stub(:channel_options) { { "Public" => { "alias" => ["pub"] } }}
         end
 
         it "should match the alias exactly" do

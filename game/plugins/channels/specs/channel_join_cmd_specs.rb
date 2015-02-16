@@ -46,9 +46,10 @@ module AresMUSH
           end
           
           it "should fail if the alias is already in use" do
-            char.stub(:channel_options) { { "Other" => { "alias" => "pu" } } }
+            char.stub(:channel_options) { { "Other" => { "alias" => ["pu"] } } }
             Channel.stub(:find_by_name).with("Other") { double }
             client.should_receive(:emit_failure).with("channels.alias_in_use") 
+            client.should_receive(:emit_failure).with("channels.unable_to_determine_auto_alias") 
             handler.handle
           end
         end
@@ -56,6 +57,7 @@ module AresMUSH
         context "success" do
           before do
             @channel.stub(:name) { "Public" }
+            Channels.stub(:channel_for_alias) { nil }
             Channels.stub(:can_use_channel) { true }
             @chars = []
             @channel.stub(:save!)
@@ -64,7 +66,7 @@ module AresMUSH
             char.stub(:channel_options) { {} }
             char.stub(:save!)
             char.stub(:name) { "Bob" }
-            client.stub(:emit_ooc)
+            client.stub(:emit_success)
           end
           
           it "should announce the channel join" do
@@ -73,20 +75,20 @@ module AresMUSH
           end
           
           it "should set the channel alias to the default if none specified" do
-            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "pu")
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", ["pu", "pub"])
             char.should_receive(:save!)
             handler.handle
           end
 
           it "should set the channel alias to a user-selected value if specified" do
             handler.stub(:alias) { "=pub" }
-            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", "=pub")
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", ["=pub"])
             char.should_receive(:save!)
             handler.handle
           end
 
           it "should tell the character the channel alias" do
-            client.should_receive(:emit_ooc).with('channels.channel_alias_set')
+            client.should_receive(:emit_success).with('channels.channel_alias_set')
             handler.handle
           end
                     
