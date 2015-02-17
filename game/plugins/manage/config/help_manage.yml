@@ -19,12 +19,7 @@ help:
                     dir: 'game/plugins/manage/help/'
                     file: 'trouble.txt'
                     summary: "Dealing with troublesome players."   
-                    aliases: [ 'boot', 'findsite', 'ban', 'siteban', 'sitelock' ]
-                tinker: 
-                    toc_topic: Code Management
-                    dir: 'game/plugins/manage/help/'
-                    file: 'tinker.txt'
-                    summary: "Custom code snippets"   
+                    aliases: [ 'boot', 'findsite', 'ban', 'siteban', 'sitelock' ] 
         builder:
             topics:
                 database: 

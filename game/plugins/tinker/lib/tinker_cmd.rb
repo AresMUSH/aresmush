@@ -1,5 +1,5 @@
 module AresMUSH
-  module Manage
+  module Tinker
     class TinkerCmd
       include Plugin
       include PluginWithoutSwitches
@@ -18,6 +18,7 @@ module AresMUSH
       end
       
       def handle
+        # Put whatever you need to do here.
         client.emit_success "Done!"
       end
     end
