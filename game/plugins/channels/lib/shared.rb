@@ -55,11 +55,13 @@ module AresMUSH
     
     def self.channel_for_alias(char, channel_alias)
       a2 = CommandCracker.strip_prefix(channel_alias)
-
+      
       char.channel_options.keys.each do |k|
         option_aliases = char.channel_options[k]["alias"]
+        return nil if option_aliases.nil?
+        
         option_aliases.each do |a1|
-          if (CommandCracker.strip_prefix(a1) == a2)
+          if (CommandCracker.strip_prefix(a1).downcase == a2.downcase)
             return Channel.find_by_name(k)
           end
         end
@@ -80,6 +82,11 @@ module AresMUSH
     
     def self.with_an_enabled_channel(name, client, &block)
       channel = Channel.find_by_name(name)
+      
+      if (channel.nil?)
+        channel = Channels.channel_for_alias(client.char, name)
+        puts "Found #{name} #{channel}"
+      end
       
       if (channel.nil?)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
