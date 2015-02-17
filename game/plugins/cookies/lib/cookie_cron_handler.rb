@@ -5,7 +5,8 @@ module AresMUSH
       
       def on_cron_event(event)
         config = Global.config['cookies']['cron']
-        return if !Cron.is_cron_match?(config, event.time)
+        #return if !Cron.is_cron_match?(config, event.time)
+        puts "COOKIES!"
         
         cookies_per_luck = Global.config['cookies']['cookies_per_luck']
         max_luck = Global.config['cookies']['max_luck']
@@ -30,10 +31,13 @@ module AresMUSH
           c.save
         end
         
+        return if awards.blank?
+        
         cookie_board = Global.config['cookies']['cookie_board']
-        if (!cookie_board.nil? && !cookie_board.empty?)
-          Bbs.post(cookie_board, t('cookies.weekly_award_title'), awards.chomp, Game.master.system_character)
-        end
+        return if !cookie_board
+        return if cookie_board.blank?
+        
+        Bbs.post(cookie_board, t('cookies.weekly_award_title'), awards.chomp, Game.master.system_character)
       end
     end    
   end
