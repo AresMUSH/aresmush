@@ -32,7 +32,7 @@ module AresMUSH
         name = left(channel.display_name(false),25)
         desc = left(channel.description,25)
         roles = channel.roles.join(" ")
-        announce = channel.announce ? "+   " : "-   "
+        announce = channel.announce ? " +   " : " -   "
         on = Channels.is_on_channel?(client.char, channel) ? "(+)" : "(-)"
         "#{on} #{name} #{desc} #{announce}   #{roles}"
       end
