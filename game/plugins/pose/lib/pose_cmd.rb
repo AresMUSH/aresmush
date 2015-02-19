@@ -17,7 +17,7 @@ module AresMUSH
         log_pose
       end
       
-     def log_pose
+      def log_pose
         Pose_Order.update_order(client.room.id, client.name, Time.now.to_i)
       end
        

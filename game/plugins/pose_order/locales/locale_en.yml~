@@ -1,0 +1,9 @@
+en:
+     order:
+          order_title: "Pose Order"
+          hg: "%xh%xg%{time}%xn"
+          g: "%xg%{time}%xn"
+          hy: "%xh%xy%{time}%xn"
+          y: "%xy%{time}%xn"
+          hr: "%xh%xr%{time}%xn"
+          r: "%xr%{time}%xn" 

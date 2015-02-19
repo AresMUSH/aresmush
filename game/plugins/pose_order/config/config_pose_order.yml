@@ -1,0 +1,8 @@
+pose_order:
+  # Setup when you want the pose history to reset itself.
+  
+  cron:
+  #date: 1
+  #day_of_week
+  #hour: 21
+  #minute: 00
