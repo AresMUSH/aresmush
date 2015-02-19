@@ -1,13 +1,8 @@
 help:
     categories:
         main:
-            topics:
-                history:
-                    toc_topic: 'History'
-                    dir: 'game/plugins/pose_history/help/'
-                    file: 'history.txt'
-                    summary: 'History of most recent poses.'
-                order: 
+            topics: 
+               order: 
                     toc_topic: 'Order'
                     dir: 'game/plugins/pose_history/help/'
                     file: 'order.txt'

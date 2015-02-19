@@ -10,11 +10,19 @@ module AresMUSH
       
       def handle
         time = Time.now.to_i
-        list = Pose_Order.po[client.room.id].sort_by { |k,v| v[:time] }.reverse
-        order = list.map { |k,v| "#{k} (#{time_to_color(time - v[:time])})" }
-
-        client.emit BorderedDisplay.list(order,t('order.order_title'))
-          
+	error = t('order.no_order')
+	title = t('order.order_title')
+	# Check to see if po is nil.
+	if Pose_Order.po.nil?
+	  client.emit BorderedDisplay.text(error,title)
+	# Check to see if the room pose order is nil	
+	elsif Pose_Order.po.nil?
+	  client.emit BorderedDisplay.text(error,title)
+	else        
+	  list = Pose_Order.po[client.room.id].sort_by { |k,v| v[:time] }.reverse
+          order = list.map { |k,v| "#{k} (#{time_to_color(time - v[:time])})" }
+	  client.emit BorderedDisplay.list(order,title)
+        end
       end
 
       def time_to_color(time)

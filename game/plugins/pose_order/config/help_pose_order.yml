@@ -1,9 +1,9 @@
 help:
     categories:
         main:
-            topics:
+            topics: 
                 order: 
                     toc_topic: 'Order'
-                    dir: 'game/plugins/pose_history/help/'
+                    dir: 'game/plugins/pose_order/help/'
                     file: 'order.txt'
                     summary: 'Pose order.'
