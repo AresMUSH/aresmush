@@ -2,7 +2,7 @@ help:
     categories:
         main:
             topics:
-                posing: 
+                posing:
                     toc_topic: 'Communicating'
                     dir: 'game/plugins/pose/help/'
                     file: 'posing.txt'
