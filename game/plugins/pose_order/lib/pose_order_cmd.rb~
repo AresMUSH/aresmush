@@ -3,9 +3,10 @@ module AresMUSH
     class PoseOrderCmd
       include Plugin
       include PluginRequiresLogin
+      include PluginWithoutSwitches	
       
       def want_command?(client, cmd)
-        cmd.root_is?("order")
+        cmd.root_is?("order") && cmd.switch.nil?
       end
       
       def handle
@@ -16,7 +17,7 @@ module AresMUSH
 	if Pose_Order.po.nil?
 	  client.emit BorderedDisplay.text(error,title)
 	# Check to see if the room pose order is nil	
-	elsif Pose_Order.po.nil?
+	elsif Pose_Order.po[client.room.id].nil?
 	  client.emit BorderedDisplay.text(error,title)
 	else        
 	  list = Pose_Order.po[client.room.id].sort_by { |k,v| v[:time] }.reverse

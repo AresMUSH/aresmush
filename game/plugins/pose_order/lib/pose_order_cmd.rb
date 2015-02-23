@@ -3,9 +3,10 @@ module AresMUSH
     class PoseOrderCmd
       include Plugin
       include PluginRequiresLogin
+      include PluginWithoutSwitches	
       
       def want_command?(client, cmd)
-        cmd.root_is?("order")
+        cmd.root_is?("order") && cmd.switch.nil?
       end
       
       def handle
@@ -42,8 +43,8 @@ module AresMUSH
       end
       
       def time_display(time)
-          return TimeFormatter.format(time)
-        end
+        return TimeFormatter.format(time)
+      end
       
     end
   end

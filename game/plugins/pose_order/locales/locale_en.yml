@@ -8,3 +8,5 @@ en:
           hr: "%xh%xr%{time}%xn"
           r: "%xr%{time}%xn" 
           no_order: "%xh%xrNo pose order has been set yet.%xn"
+          no_order_to_clear: "'%{room}' has no pose order to clear."
+          cleared: "%{name} has cleared the pose order."

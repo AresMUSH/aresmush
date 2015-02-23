@@ -1,1 +1,9 @@
-Use this to see the pose order.
+The %xhorder%xn command allows you to view a history of who has posed in the room you currently occupy. Actual poses are not recorded this way, simply the names of those who have posed and how long its been since that pose happened.
+
+Every hour, the system will check to see who hasn't posed in over an hour and thirty minutes and will remove them from the list.
+
+This command is helpful in tracking who posed when in large scenes. It helps GMs tell if a player has posed and helps other players know when their turn comes around. 
+
+	%xcorder%xn - Shows the pose order
+	%xcpo%xn - This is a shortcut for the same command.
+	%xcorder/clear%xn - This will force clear the pose order

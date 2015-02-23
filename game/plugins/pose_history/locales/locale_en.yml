@@ -1,5 +1,0 @@
-en:
-    pose:
-        nospoof_set: "You turn your 'nospoof' setting %{status}."
-        pemit_nospoof_from: "Private emit from %{name}:"
-        emit_nospoof_from: "Emit from %{name}:"

@@ -14,7 +14,9 @@ module AresMUSH
       
       def handle
         Pose.emit_pose(client, message, cmd.root_is?("emit"))
-        log_pose
+	if (!cmd.root_is?("ooc"))        
+	  log_pose
+	end
       end
       
       def log_pose
