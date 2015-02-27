@@ -3,7 +3,7 @@ module AresMUSH
     def self.send_mail(names, subject, body, client)
       author = client.nil? ? Game.master.system_character : client.char
       
-      msg = MailMessage.create(subject: subject, 
+      msg = MailMessage.new(subject: subject, 
         body: body, 
         author: author)
 
@@ -18,6 +18,9 @@ module AresMUSH
         end
         recipients << result.target
       end
+      
+      msg.to_list = recipients.map { |r| r.name }.join(" ")
+      msg.save
       
       recipients.each do |r|
         MailDelivery.create(message: msg, character: r)

@@ -4,7 +4,7 @@ module AresMUSH
     class ForwardedTemplate
       include TemplateFormatters
       
-      # The original message.
+      # Message template for getting the original message fields.
       attr_reader :original
       
       # The comment attached to the message.

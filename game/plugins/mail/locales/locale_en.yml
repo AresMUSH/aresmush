@@ -21,7 +21,7 @@ en:
         to: "To:"
         sent: "Sent:"
         inbox: "Inbox"
-        sent_review: "Sent Mail"
+        sent_review: "Sent Mail to %{name}"
         original_message: "Original Message"
         trash_emptied: "Trashed mail messages are now deleted."
         no_unread_messages: "There are no new messages to read."

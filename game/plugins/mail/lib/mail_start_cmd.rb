@@ -35,11 +35,6 @@ module AresMUSH
         
         client.emit_ooc t('mail.mail_started', :subject => self.subject)
       end
-      
-      def log_command
-        # Don't log full command for message privacy
-        Global.logger.debug("#{self.class.name} #{client} started mail to #{self.names}")
-      end
     end
   end
 end

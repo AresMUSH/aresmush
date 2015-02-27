@@ -23,11 +23,6 @@ module AresMUSH
           Mail.toss_composition(client)
         end
       end
-      
-      def log_command
-        # Don't log full command for message privacy
-        Global.logger.debug("#{self.class.name} #{client} sending composed mail.")
-      end
     end
   end
 end

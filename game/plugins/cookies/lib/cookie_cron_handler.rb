@@ -5,8 +5,7 @@ module AresMUSH
       
       def on_cron_event(event)
         config = Global.config['cookies']['cron']
-        #return if !Cron.is_cron_match?(config, event.time)
-        puts "COOKIES!"
+        return if !Cron.is_cron_match?(config, event.time)
         
         cookies_per_luck = Global.config['cookies']['cookies_per_luck']
         max_luck = Global.config['cookies']['max_luck']
