@@ -72,7 +72,7 @@ module AresMUSH
       # Requires a message reference.  See 'messages' for more info.
       def message_tags(msg)
         unread = msg.read ? "-" : t('mail.unread_marker')
-        trashed = msg.trashed ? t('mail.trashed_marker') : "-"
+        trashed = msg.tags.include?(Mail.trashed_tag) ? t('mail.trashed_marker') : "-"
         " [#{unread}#{trashed}]  "
       end
     end

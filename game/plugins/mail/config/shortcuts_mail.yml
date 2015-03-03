@@ -3,5 +3,4 @@ shortcuts:
         "mail/clear": "mail/delete"
         "mail/unclear" : "mail/undelete"
         "mail/purge" : "mail/emptytrash"
-        "mail/sent" : "mail/review"
         "mail/recall" : "mail/unsend"

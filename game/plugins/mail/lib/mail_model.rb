@@ -5,6 +5,7 @@ module AresMUSH
     field :mail_compose_subject, :type => String
     field :mail_compose_to, :type => Array
     field :mail_compose_body, :type => String
+    field :copy_sent_mail, :type => Boolean, :default => false
     
     def unread_mail
       mail.select { |m| !m.read }
@@ -30,6 +31,6 @@ module AresMUSH
     belongs_to :message, :class_name => "AresMUSH::MailMessage"
       
     field :read, :type => Boolean  
-    field :trashed, :type => Boolean  
+    field :tags, :type => Array, :default => []
   end
 end

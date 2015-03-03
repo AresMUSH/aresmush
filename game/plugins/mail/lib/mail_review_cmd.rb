@@ -26,7 +26,6 @@ module AresMUSH
           self.name = trim_input(cmd.args)
           self.num = nil
         end
-        puts "#{self.name} #{self.num} #{cmd.args}"
       end
       
       def handle

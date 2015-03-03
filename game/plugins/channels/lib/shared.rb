@@ -85,7 +85,6 @@ module AresMUSH
       
       if (channel.nil?)
         channel = Channels.channel_for_alias(client.char, name)
-        puts "Found #{name} #{channel}"
       end
       
       if (channel.nil?)

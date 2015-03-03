@@ -23,7 +23,7 @@ module AresMUSH
             
       def handle
         Mail.with_a_delivery(client, self.num) do |delivery|
-          delivery.trashed = false
+          delivery.tags.delete(Mail.trashed_tag)
           delivery.save
           client.emit_ooc t("mail.message_undeleted", :subject => delivery.message.subject)
         end

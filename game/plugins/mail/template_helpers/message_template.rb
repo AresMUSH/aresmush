@@ -32,9 +32,8 @@ module AresMUSH
         @message.to_list
       end
 
-      # Special message tags, like marked for deletion.
       def tags
-        @delivery.trashed ? t('mail.trashed_tag') : ""
+        @delivery.tags.join(", ")
       end
     end
   end

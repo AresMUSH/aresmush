@@ -35,3 +35,5 @@ en:
         too_much_for_backup: "You have too many messages for the automatic backup feature.  You'll have to read them manually.  Sorry."
         cant_unsend_read_mail: "You can't unsend mail that has already been read."
         mail_unsent: "You unsend the mail message.  Please note that this does not affect others who may have received that message."
+        sentmail_off: "You will no longer be automatically CC'd on messages you send."
+        sentmail_on: "You will be automatically CC'd on messages you send."
