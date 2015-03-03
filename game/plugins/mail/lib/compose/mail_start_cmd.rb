@@ -10,12 +10,12 @@ module AresMUSH
       
       def initialize
         self.required_args = ['names', 'subject']
-        self.help_topic = 'mail'
+        self.help_topic = 'mail composition'
         super
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch.nil? && cmd.args =~ /[\=]/ && cmd.args != /[\/]/
+        cmd.root_is?("mail") && cmd.switch.nil? && cmd.args =~ /[\=]/ && cmd.args !~ /[\/]/
       end
       
       def crack!

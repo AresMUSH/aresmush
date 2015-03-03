@@ -9,7 +9,7 @@ module AresMUSH
       
       def initialize
         self.required_args = ['body']
-        self.help_topic = 'mail'
+        self.help_topic = 'mail composition'
         super
       end
       

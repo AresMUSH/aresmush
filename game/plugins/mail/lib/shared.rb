@@ -12,6 +12,10 @@ module AresMUSH
       "Inbox"
     end
     
+    def self.archive_tag
+      "Archive"
+    end
+    
     def self.with_a_delivery(client, num, &block)
       Mail.with_a_delivery_from_a_list client, num, client.char.mail, &block
     end

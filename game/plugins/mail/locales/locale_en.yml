@@ -2,38 +2,52 @@ en:
     mail:
         deleted_author: "(Author Deleted)"
         deleted_recipient: "(Recipient Deleted)"
+        
         unread_marker: "%xyU%xn"
         trashed_marker: "%xx%xhX%xn"
+        
         message_sent: "Mail sent."
         message_forwarded: "Mail forwarded."
-        inbox_title: "  #         From                   Subject                         Date"
-        sent_title:  "  #         To                     Subject                         Date"
         new_mail: "New mail from %{from}: %xh%{subject}%xn. %xh%xx(mail/new)%xn"
         invalid_message_number: "That is not a valid message number."
-        forwarded_subject: "Fwd: %{subject}"
-        reply_subject: "Re: %{subject}"
         invalid_recipient: "%{name} is not a valid recipient."
         message_deleted: "Message '%{subject}' is marked as trash."
         message_undeleted: "Message '%{subject}' is no longer marked as trash."
-        trashed_tag: "%xx%xhTrash%xn"
+        trash_emptied: "Trashed mail messages are now deleted."
+        no_unread_messages: "There are no new messages to read."
+        
+        inbox_title: "  #         From                   Subject                         Date"
+        sent_title:  "  #         To                     Subject                         Date"
+        
+        forwarded_subject: "Fwd: %{subject}"
+        reply_subject: "Re: %{subject}"
+        
+        all_tags: "All Tags"
+        no_spaces_in_tags: "Tags may not contain spaces."
+        tag_added:  "You add the %{name} tag to the message."
+        tag_removed: "You remove the %{name} tag from the message."
+        message_archived: "Message archived."
+        
         tags: "Tags:"
         from: "From:"
         to: "To:"
         sent: "Sent:"
         inbox: "Inbox"
+
         sent_review: "Sent Mail to %{name}"
         original_message: "Original Message"
-        trash_emptied: "Trashed mail messages are now deleted."
-        no_unread_messages: "There are no new messages to read."
+        cant_unsend_read_mail: "You can't unsend mail that has already been read."
+        mail_unsent: "You unsend the mail message.  Please note that this does not affect others who may have received that message."
+
         mail_started: "You start composing a mail with subject: %{subject}."
         not_composing_message: "You are not composing a mail message."
         mail_added: "You add to your mail message."
         proof: "%xhTo:%xn %{to}%r%xhSubject:%xn %{subject}%r%xhBody:%xn%r%{body}"
         mail_composition_tossed: "You throw away the mail message you were composing."
         body_empty: "You have not entered any text in your message."
-        starting_backup: "Starting mail backup.  Your messages will print out one by one with a short delay in-between to avoid spamming your client."
+
         too_much_for_backup: "You have too many messages for the automatic backup feature.  You'll have to read them manually.  Sorry."
-        cant_unsend_read_mail: "You can't unsend mail that has already been read."
-        mail_unsent: "You unsend the mail message.  Please note that this does not affect others who may have received that message."
+        starting_backup: "Starting mail backup.  Your messages will print out one by one with a short delay in-between to avoid spamming your client."
+
         sentmail_off: "You will no longer be automatically CC'd on messages you send."
         sentmail_on: "You will be automatically CC'd on messages you send."
