@@ -3,18 +3,11 @@ You can delete mail messages.  Technically this doesn't delete it right away, bu
     %xcmail/delete <#> or <start#>-<end#>%xn - Sends a message to the trash.
     %xcmail/undelete <#>%xn - Recovers a message from the trash.
     %xcmail/emptytrash%xn - Permanently deletes messages in the trash.
-    
-The archive feature lets you tag messages with keywords and then archive them so they don't clutter up your inbox. You can search for the tags to find them again later. Special tags include %xh"inbox"%xn, %xh"trash"%xn, %xh"sent"%xn and %xh"archive"%xn.
 
-    %xcmail/archive <#>%xn - Archives a message.
-    %xcmail/tag <#>=<tag>%xn - Assigns a tag to a message.
-    %xcmail/untag <#>=<tag>%xn - Removes a tag from a message.
-    %xcmail/tags%xn - Lists all your tags.
-    %xcmail/filter <list of tags>%xn - Switches your view to show only 
-         messages with matching tags.  This remains in effect until you switch back
-         to the Inbox view.
-    %xcmail/inbox%xn - Returns to the inbox view.
+Instead of deleting a mail message, you can archive it.  See %xhhelp mail tags%xn.
 
-You can backup your mail before deleting it.
+    %xcmail/archive <#>%xn - Clears current tags and applies the Archive tag instead.
+
+You may want to backup your mail before deleting it.
 
     %xcmail/backup%xn - Prints out your mail, which you can save to a log file.

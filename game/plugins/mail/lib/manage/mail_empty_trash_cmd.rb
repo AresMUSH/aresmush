@@ -10,18 +10,7 @@ module AresMUSH
       end
       
       def handle
-        client.char.mail.each do |m|
-          # DO NOT USE DESTROY here or it will force a reload of the clients 
-          # for each deleted message.
-          if (m.tags.include?(Mail.trashed_tag))
-            if (m.message.mail_deliveries.count <= 1)
-              m.message.delete # Do not destroy - see note above
-            end
-            m.delete # Do not destroy - see note above
-          end
-        end
-        # Reload clients only once.
-        Global.client_monitor.reload_clients
+        Mail.empty_trash(client)
         client.emit_ooc t('mail.trash_emptied')
       end
     end

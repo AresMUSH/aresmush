@@ -4,3 +4,4 @@ shortcuts:
         "mail/unclear" : "mail/undelete"
         "mail/purge" : "mail/emptytrash"
         "mail/recall" : "mail/unsend"
+        "mail/folder" : "mail/filter"

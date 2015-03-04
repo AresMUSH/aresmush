@@ -19,7 +19,7 @@ module AresMUSH
         recipients << result.target
       end
       
-      recipients << author if (author.copy_sent_mail)
+      recipients << author if (author.copy_sent_mail && !recipients.include?(author))
       
       msg.to_list = recipients.map { |r| r.name }.join(" ")
       msg.save

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("archive")
+        cmd.root_is?("mail") && (cmd.switch_is?("archive") && cmd.args)
       end
       
       def crack!
@@ -24,6 +24,7 @@ module AresMUSH
       def handle
         Mail.with_a_delivery(client, self.num) do |delivery|
           delivery.tags << Mail.archive_tag
+          delivery.tags.delete(Mail.inbox_tag)
           delivery.tags.uniq!
           client.emit_success t('mail.message_archived')
           delivery.save

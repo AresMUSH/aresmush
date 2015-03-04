@@ -18,4 +18,9 @@ help:
                 mail sending: 
                     dir: 'game/plugins/mail/help/'
                     file: 'mail_sending.txt'
-                    aliases: ['reply', 'forward']
+                    aliases: ['reply', 'forward', 'fwd']
+                mail tags: 
+                    dir: 'game/plugins/mail/help/'
+                    file: 'mail_tags.txt'
+                    aliases: ['mail tag', 'mail sent', 'sent mail', 'tag', 'tags']
+                    
