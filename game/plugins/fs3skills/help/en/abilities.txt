@@ -15,4 +15,4 @@ To set your abilities:
     
     %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
     
-    %xcquirk/add <quirk>%xn and %xcquirk/remove <quirk>%xn
+    %xcquirk/add <quirk>=<description>%xn and %xcquirk/remove <quirk>%xn

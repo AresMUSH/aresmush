@@ -5,3 +5,7 @@ shortcuts:
         "mail/purge" : "mail/emptytrash"
         "mail/recall" : "mail/unsend"
         "mail/folder" : "mail/filter"
+        "mail/fo" : "mail/filter"
+        "mail/file" : "mail/archive"
+        "mail/fi" : "mail/archive"
+        

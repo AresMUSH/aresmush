@@ -20,7 +20,7 @@ module AresMUSH
         char.fs3_attributes = {}
         char.fs3_action_skills = {}
         char.fs3_background_skills = {}
-        char.fs3_quirks = []
+        char.fs3_quirks = {}
         char.fs3_languages = []
         
         languages = Global.config['fs3skills']['starting_languages']

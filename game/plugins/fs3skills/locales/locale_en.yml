@@ -21,7 +21,7 @@ en:
         language_removed: "Language '%{name}' removed."
         
         quirk_already_selected: "You already have that quirk."
-        quirk_selected: "You add quirk %{name}."
+        quirk_selected: "You set quirk %{name} to %{desc}."
         quirk_not_selected:  "You don't have that quirk."
         quirk_removed: "You remove quirk %{name}."
         

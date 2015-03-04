@@ -1,3 +1,6 @@
 shortcuts:
     roots:
         "lang": "language"
+    full:
+        "quirk/delete": "quirk/remove"
+            

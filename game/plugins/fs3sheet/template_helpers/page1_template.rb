@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       def quirks
-        @char.fs3_quirks.join(", ")
+        @char.fs3_quirks.each.map { |k, v| "%xh#{k}%xn - #{v}"}
       end
       
       def xp
