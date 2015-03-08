@@ -10,4 +10,4 @@ Cross-game features are in their infancy.  It is hoped that over time they will 
 
 %xh-- Give it a try! --%xn 
 Type %xcgames%xn to find the address for AresCentral and check it out.
-Type %xcprofile @Faraday%xn
+Type %xcprofile @Faraday%xn to see Faraday's public profile.

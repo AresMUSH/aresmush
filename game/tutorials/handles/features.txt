@@ -1,11 +1,11 @@
-The Handles system provides a number of features.  You can show your handle on channels and the who list so people know who you are.
+You can show your handle on channels and the who list so people know who you are.
 
     <Chat> Cate (@Faraday) says, "Hi everyone."
 
 People can access your handle profile and find out about you and what characters you play. You can do the same for your friends.
 
-    profile @Faraday --> shows my chars, including Cate@AftermathMU
-    (on Aftermath MU) profile Cate --> shows my @Faraday profile
+    profile @Faraday --> shows my chars, including Cate@BSGUnification
+    (on BSGUnification MU) profile Cate --> shows my @Faraday profile
 
 You can add other handles as your friends and share that friends list easily on all your games.
 
