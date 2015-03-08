@@ -6,7 +6,7 @@ module AresMUSH
       include TemplateFormatters
             
       def want_command?(client, cmd)
-        cmd.root_is?("admin")
+        cmd.root_is?("admin") && !cmd.args
       end
       
       def handle

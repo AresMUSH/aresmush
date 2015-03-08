@@ -8,7 +8,8 @@ module AresMUSH
       attr_accessor :channel, :msg
 
       def want_command?(client, cmd)
-        return false if !client.logged_in?        
+        return false if !client.logged_in?
+        return false if !cmd.args    
         self.channel = Channels.channel_for_alias(client.char, cmd.root)
         !self.channel.nil?
       end

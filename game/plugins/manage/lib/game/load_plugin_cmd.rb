@@ -22,6 +22,11 @@ module AresMUSH
         cmd.args != "locale" && cmd.args != "config"
       end
       
+      def check_plugin_name
+        return t('manage.invalid_plugin_name') if self.load_target !~ /^[\w\-]+$/
+        return nil
+      end
+      
       def handle
         begin
           can_manage = Manage.can_manage_game?(client.char)

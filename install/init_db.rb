@@ -18,7 +18,7 @@ module AresMUSH
       :description => "Welcome!%R%R" + 
           "New to MUSHing?  Type: %xctutorial/start new player%xn for an interactive tutorial.%R%R" +
           "New to Ares?  Type: %xctutorial/start ares for vets%xn for a quick intro geared towards veteran players")
-      ic_start_room = AresMUSH::Room.create(:name => "IC Start", :room_type => "IC")
+      ic_start_room = AresMUSH::Room.create(:name => "Onstage", :room_type => "IC")
       ooc_room = AresMUSH::Room.create(:name => "Offstage", :room_type => "OOC",
         :description => "This is a backstage area where you can hang out when not RPing.")
       quiet_room = AresMUSH::Room.create(:name => "Quiet Room", :room_type => "OOC",
@@ -88,6 +88,7 @@ module AresMUSH
   
       AresMUSH::BbsBoard.create(name: "Announcements", order: 1)
       AresMUSH::BbsBoard.create(name: "Admin", order: 2, read_roles: [ "admin"], write_roles: [ "admin" ])
+      AresMUSH::BbsBoard.create(name: "Cookie Awards", order: 3)
   
       AresMUSH::Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy")
       AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")

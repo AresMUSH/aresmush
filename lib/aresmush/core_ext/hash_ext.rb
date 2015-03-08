@@ -14,7 +14,7 @@ class Hash
       self.merge_recursively(file_data)
     rescue Exception => ex
       # Turn mysterious YAML errors into something a little more useful.
-      raise "Error merging YAML from #{file_path}: #{ex}"
+      raise "Error merging YAML from #{file_path}. Make sure you don't have any empty YAML files or duplicate entries: #{ex}"
     end
   end
   
@@ -24,7 +24,7 @@ class Hash
       self.merge_recursively!(file_data)
     rescue Exception => ex
       # Turn mysterious YAML errors into something a little more useful.
-      raise "Error merging YAML from #{file_path}: #{ex}"
+      raise "Error merging YAML from #{file_path}. Make sure you don't have any empty YAML files or duplicate entries: #{ex}"
     end
   end
   

@@ -33,7 +33,7 @@ module AresMUSH
     end
     
     def emit(msg)
-      @connection.send_formatted msg
+      @connection.send_formatted "#{msg}"
     end 
     
     def emit_ooc(msg)
