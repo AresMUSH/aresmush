@@ -4,13 +4,13 @@ help:
             topics:
                 chargen: 
                     toc_topic: '1 - Getting Started'
-                    dir: 'game/plugins/fs3chargen/help/'
+                    dir: 'game/plugins/chargen/help/'
                     file: 'chargen.txt'
                     summary: 'Character creation walkthrough.'
                     order: 3
                 apps: 
                     toc_topic: 'Character Creation'
-                    dir: 'game/plugins/fs3chargen/help/'
+                    dir: 'game/plugins/chargen/help/'
                     file: 'app.txt'
                     summary: 'Review character status and submit for approval.'
                     order: 6
@@ -19,7 +19,7 @@ help:
             topics:
                 chargen: 
                     toc_topic: 'Approvals'
-                    dir: 'game/plugins/fs3chargen/help/'
+                    dir: 'game/plugins/chargen/help/'
                     file: 'admin_chargen.txt'
                     summary: 'Approving and rejecting characters.'
                     aliases: [ 'submit', 'approve', 'approval', 'app', 'apps' ]

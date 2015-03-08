@@ -10,5 +10,10 @@ module AresMUSH
       return t('chargen.app_in_progress') if char.chargen_locked
       return nil
     end
+    
+    def self.is_in_stage?(char, stage_name)
+      name = Chargen.stage_name(char)
+      name == stage_name
+    end
   end
 end

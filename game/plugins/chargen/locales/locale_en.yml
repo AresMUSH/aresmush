@@ -17,6 +17,12 @@ en:
         
         review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if it suits your character."
         
+        cant_go_back: "You are already on the first stage of Chargen."
+        chargen_complete: "You have completed Chargen!"
+        prev_page_footer: "<-- cg/prev"
+        next_page_footer: "cg/next -->"
+        error_loading_tutorial: "Error loading chargen tutorial.  Please try again later."
+        
         abilities_review_title:  "Abilities (help abilities)"
         demographics_review_title: "Demographics (help demographics)"
         misc_review_title: "Miscellaneous (help bg, help desc)"

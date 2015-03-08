@@ -1,4 +1,4 @@
-This game uses an Applications system for character approvals.  Once you have finished with Character Creation (see %xh'help chargen'%xn), you can review your application.  The system will flag common issues.
+This game uses an Applications system for character approvals.  As you are going through character creation, you can review your application.  The system will flag common issues.
 
     %xcapp%xn - Shows a summary of your character application and any issues.
      

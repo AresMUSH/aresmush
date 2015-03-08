@@ -1,14 +1,11 @@
-Instead of having separate systems for "faction" and "position" and whatnot, AresMUSH treats these all as %xhGroups%xn.  The exact groups will vary on each game, so use the 'groups' command to see the list.  Groups may not be changed after you've been approved.
+Instead of having separate systems for "faction" and "position" and whatnot, AresMUSH treats these all as %xhGroups%xn.  The exact groups will vary on each game, so use the 'groups' command to see the list.  
+
+During chargen, you should set your affiliation for each group unless you're sure it doesn't apply to your character. Only admin may change your groups after you've been approved.
 
     %xcgroups%xn - Lists groups.
     %xcgroup <name>%xn - Describes a group and shows valid values.
-
-Each group typically has its own command to set your affiliation.  For instance, if there's a group named "positon" then there should be a "position" command.  There's also a generic 'group/set' command that works with any group.
-
-    position Cowboy --or-- group/set position=Cowboy
-    faction Red --or--  group/set faction=Red
-    
-    Leave the vaule blank to clear it.
+    %xcgroup/set <group>=<value>%xn - Sets your affiliation.
+        Leave the vaule blank to clear it.
 
 You can use the census command to find out how many characters there are from each group.
 
