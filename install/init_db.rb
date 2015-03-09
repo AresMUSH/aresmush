@@ -89,6 +89,7 @@ module AresMUSH
       AresMUSH::BbsBoard.create(name: "Announcements", order: 1)
       AresMUSH::BbsBoard.create(name: "Admin", order: 2, read_roles: [ "admin"], write_roles: [ "admin" ])
       AresMUSH::BbsBoard.create(name: "Cookie Awards", order: 3)
+      AresMUSH::BbsBoard.create(name: "New Arrivals", order: 4)
   
       AresMUSH::Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy")
       AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")

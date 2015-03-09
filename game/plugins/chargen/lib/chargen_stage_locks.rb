@@ -7,7 +7,9 @@ module AresMUSH
     # add checks here.
     def self.can_advance?(char)
       # Add 'when' statements for the stages of chargen that need error checks.
-      # The name should match the name in the stages list.
+      # The name should match the name in the stages list.  This is the character's
+      # CURRENT stage, so in the example below, you won't let them leave the demographics
+      # stage until they've passed the necessary demographics checks.
       case Chargen.stage_name(char)
       when "demographics"
         return ChargenStageLocks.check_demographics(char)

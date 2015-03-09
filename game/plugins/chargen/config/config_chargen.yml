@@ -9,7 +9,10 @@ chargen:
         approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP."
         # This message is sent when a character is rejected.
         rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp chargen%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
-        
+    
+    # Newly-approved characters will be announced on this board.    
+    arrivals_board: "New Arrivals"
+    
     # These settings tie in with the jobs system.  
     # Make sure they match up with your job configuration.
     jobs:
@@ -23,6 +26,10 @@ chargen:
         # What job status to use when an app is on hold
         app_hold_status: "HOLD"
 
+    # Configure the stages of chargen.  For each stage, you can choose to show 
+    # either a tutorial file (from the chargen/tutorial directory), a help file 
+    # (from within the help system) or both.  Make sure the help name exactly 
+    # matches the name configured in the help system.
     stages:
         start:
             tutorial: 'chargen.txt'

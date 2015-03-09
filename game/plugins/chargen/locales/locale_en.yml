@@ -32,6 +32,9 @@ en:
         app_request: "Approval under review.  See %xhrequest %{job}%xn."
         app_job: "Approval under review.  See %xhjob %{job}%xn."
         
+        approval_bbs_subject: "Character Approved"
+        approval_bbs_body: "%{name} has been approved!"
+        
         application_title: "App - %{name}"
         app_not_started: "Application not yet started."
         

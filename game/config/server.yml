@@ -16,7 +16,7 @@ server:
     description: Just testing.
     
     # Your game's website
-    website: ""
+    website: "http://foo.wikidot.com"
     
     # yes if your game is open for business, no if it is in development, down, or 
     # otherwise not open to the public

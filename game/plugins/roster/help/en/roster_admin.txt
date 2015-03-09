@@ -1,0 +1,4 @@
+These commands allow you to manage the character roster.
+
+    %xcroster/add <name>/<contact>%xn - Adds someone to the roster.  Contact is optional.
+    %xcroster/remove <name>%xn - Removes someone from the roster.

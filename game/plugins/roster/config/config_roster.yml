@@ -1,0 +1,8 @@
+roster:
+    # List roles that are allowed to approve and reject characters.
+    roles:
+        can_manage_roster:
+            - admin
+
+    # Newly-approved characters will be announced on this board.
+    arrivals_board: "New Arrivals"
