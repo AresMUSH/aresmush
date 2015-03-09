@@ -1,5 +1,5 @@
 roster:
-    # List roles that are allowed to approve and reject characters.
+    # List roles that are allowed to manage the roster.
     roles:
         can_manage_roster:
             - admin

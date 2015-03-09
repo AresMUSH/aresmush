@@ -32,11 +32,10 @@ module AresMUSH
         
         return if awards.blank?
         
-        cookie_board = Global.config['cookies']['cookie_board']
-        return if !cookie_board
-        return if cookie_board.blank?
-        
-        Bbs.post(cookie_board, t('cookies.weekly_award_title'), awards.chomp, Game.master.system_character)
+        Bbs.system_post_to_bbs_if_configured(
+          Global.config['cookies']['cookie_board']
+          t('cookies.weekly_award_title'), 
+          awards.chomp)
       end
     end    
   end

@@ -45,14 +45,10 @@ module AresMUSH
           model.save
           client.emit_success t('chargen.app_approved', :name => model.name)
           
-          bbs = Global.config['chargen']['arrivals_board']
-          return if !bbs
-          return if bbs.blank?
-        
-          Bbs.post(bbs, 
+          Bbs.system_post_to_bbs_if_configured(
+            Global.config['chargen']['arrivals_board'],
             t('chargen.approval_bbs_subject'), 
-            t('chargen.approval_bbs_body', :name => model.name), 
-            Game.master.system_character)
+            t('chargen.approval_bbs_body', :name => model.name))
         end
       end
     end

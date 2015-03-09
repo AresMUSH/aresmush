@@ -20,6 +20,7 @@ help:
                         - 'departments' 
                         - 'colony' 
                         - 'colonies'
+                        - 'census'
                     
         admin:
             topics:

@@ -1,0 +1,10 @@
+en:
+    idle:
+        idle_title: "Idle Queue"
+        idle_not_started: "Idle sweep not started."
+        idle_action_set: "%{name}'s idle action is now %{action}."
+        invalid_action: "Not a valid idle action.  Try one of these: %{actions}"
+        added_to_roster: "Added to roster"
+        idle_warning: "In danger of idling out.  Please come back!"
+        idle_bbs_subject: "Idle-Out Characters"
+        idle_bbs_body: "The following characters have idled out or are in danger of doing so.%R%R%{report}"

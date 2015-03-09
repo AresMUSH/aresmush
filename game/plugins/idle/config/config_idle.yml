@@ -1,0 +1,15 @@
+idle:
+    roles:
+        # List roles that are allowed to idle out characters
+        can_idle_sweep:
+            - admin
+        # Roles that are exempt from idle sweep
+        idle_exempt:
+            - admin
+#            - builder
+            - guest
+
+    # Idle-out announcements will be posted to this BBS.
+    idle_board: "Announcements"
+    
+    days_before_idle: 3

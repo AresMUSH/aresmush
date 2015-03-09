@@ -14,9 +14,15 @@ module AresMUSH
       end
       
       def approval_status
-        status = @char.is_approved ? 
-        "%xg%xh#{t('sheet.approved')}%xn" : 
-        "%xr%xh#{t('sheet.unapproved')}%xn"
+        if (@char.on_roster?)
+          status = "%xb%xh#{t('sheet.rostered')}%xn"
+        elsif (@char.idled_out)
+          status = "%xr%xh#{t('sheet.idled_out', :status => @char.idled_out)}%xn"
+        elsif (!@char.is_approved?)
+          status = "%xr%xh#{t('sheet.unapproved')}%xn"
+        else
+          status = "%xg%xh#{t('sheet.approved')}%xn"
+        end        
         center(status, 23)
       end
       
