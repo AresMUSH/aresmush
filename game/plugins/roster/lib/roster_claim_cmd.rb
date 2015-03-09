@@ -23,6 +23,15 @@ module AresMUSH
       end
       
       def handle
+        terms_of_service = Login.terms_of_service
+        if (!terms_of_service.nil? && client.program[:tos_accepted].nil?)
+          client.program[:create_cmd] = cmd
+          client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
+          return
+        end
+        
+        client.program.delete(:create_cmd)
+        
         ClassTargetFinder.with_a_character(self.name, client) do |model|
           if (!model.roster_registry)
             client.emit_failure t('roster.not_on_roster', :name => model.name)
