@@ -10,6 +10,7 @@ module AresMUSH
     def serializable_hash(options={})
       hash = super(options)
       hash[:exits] = exits.map { |e| e.id }
+      hash[:characters] = characters.map { |c| c.id }
       hash
     end
   end

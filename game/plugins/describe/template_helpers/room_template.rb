@@ -66,6 +66,30 @@ module AresMUSH
         OOCTime.local_long_timestr(@client, Time.now)
       end
       
+      # Special text displayed for the exits in the RP Annex foyer.
+      def foyer
+        if (@room.name != "RP Annex")
+          return ""
+        end
+        
+        text = "%R"
+        text << center(t('describe.rp_room_status'),78)
+        exits = @room.exits.select { |e| e != @room.out_exit }
+        exits.each_with_index do |e, i|
+          if (!e.lock_keys.empty?)
+            status = t('describe.rp_room_locked')
+          elsif (e.dest.characters.count == 0)
+            status = t('describe.rp_room_free')
+          else
+            status = t('describe.rp_room_occupied')
+          end
+          text << "%r[space(15)]" if i % 3 == 0
+          text << "#{e.name}: #{left(status,15)}"
+        end
+        
+        text
+      end
+      
       # Character name.
       # Requires a character reference.  See 'online_chars' for more info.
       def char_name(char)

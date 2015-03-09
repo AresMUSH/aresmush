@@ -13,3 +13,10 @@ rooms:
         # List roles that are allowed to use the home command.  
         can_go_home:
             - everyone
+    # Set up when you want the room sweep cron job to run.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    room_lock_cron:
+        #date: 1
+        #day_of_week: Sat
+        #hour: 21
+        minute: 00
