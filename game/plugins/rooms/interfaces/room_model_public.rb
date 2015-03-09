@@ -19,6 +19,7 @@ module AresMUSH
     field :grid_x, :type => String
     field :grid_y, :type => String
     field :room_type, :type => String, :default => "IC"
+    field :is_foyer, :type => Boolean      
     
     def clients
       clients = Global.client_monitor.logged_in_clients
