@@ -4,16 +4,8 @@ module AresMUSH
     attr_accessor :client, :cmd
         
     # Override this with the processing needed to tell if you want a particular command
-    # *from a char who is logged in*.
-    #
-    # You can do basic operations:
-    #    cmd.raw.start_with?(":")
-    #
-    # Or use some of the handy helper methods:
-    #    cmd.root_is?("finger")
-    #    client.logged_in?
-    #
-    # You can even do more complex and/or combinations.
+    # Commonly, you'll look at the root and the switch:
+    #    cmd.root_is?("mail") && cmd.switch_is?("new")
     def want_command?(client, cmd)
       false
     end

@@ -11,7 +11,7 @@ module AresMUSH
     end
   end
   
-  class Room      
+  class Room
     before_destroy :null_out_sources
      
     def null_out_sources

@@ -5,5 +5,3 @@ Admins can view and edit other character backgrounds, in case you need to make s
        buffer (if your client supports it.  See %xhhelp edit%xn.)
        
 You can view someone's background on their character sheet.  See %xhhelp sheet%xn.
-
-Character submission and approvals are part of the chargen commands.  See %xhhelp chargen%xn.

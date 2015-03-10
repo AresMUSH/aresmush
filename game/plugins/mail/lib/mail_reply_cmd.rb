@@ -57,7 +57,9 @@ module AresMUSH
       def get_recipients(msg)
         recipients = [msg.author.name]
         if (cmd.switch_is?("replyall"))
-          recipients.concat msg.mail_deliveries.select{ |d| d.character }.map { |d| d.character.name }
+          to_list = msg.to_list.split(" ")
+          to_list.delete client.char.name
+          recipients.concat to_list
         end
         recipients
       end

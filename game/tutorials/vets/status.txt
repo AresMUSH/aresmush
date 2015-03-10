@@ -2,8 +2,10 @@ Your IC/OOC status is controlled solely by what room you're in.  Rooms tagged as
 
 To get between the IC and OOC grids, you use the %xconstage%xn and %xcoffstage%xn commands.
 
-AFK status is just a flag; you can set it no matter where you are and it doesn't take you to a special room or anything.  You can also set a custom AFK message, which shows up in room descs and also in pages.  %xcafk Getting dinner - be back around 8pm EST%xn.  The system will also automatically indicate that you're afk in room descs and pages if you've been idle for a very long time.
+AFK status is just a flag; you can set it no matter where you are and it doesn't take you to a special room or anything.  You can also set a custom AFK message, which shows up in room descs and also in pages.  %xcafk Getting dinner - be back around 8pm EST%xn.  
+
+The system will also automatically indicate that you're afk in room descs and pages if you've been idle for a very long time, without you needing to do anything.
  
 %xh-- Give it a try! --%xn 
-    Type: %xcafk <message>%xn to set yourself AFK.
-    Type: %xcoffstage%xn to unset the AFK status and hop back to the main offstage room.
+    Type: %xcafk <message>%xn to set yourself AFK.  %xcafk off%xn clears it.
+    Type: %xcoffstage%xn to hop to the main offstage room.

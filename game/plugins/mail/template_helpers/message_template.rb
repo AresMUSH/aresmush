@@ -29,13 +29,11 @@ module AresMUSH
       end
       
       def to
-        to_list = @message.mail_deliveries.map { |d| d.character.nil? ? t('mail.deleted_recipient') : d.character.name }
-        to_list.join(", ")
+        @message.to_list
       end
 
-      # Special message tags, like marked for deletion.
       def tags
-        @delivery.trashed ? t('mail.trashed_tag') : ""
+        @delivery.tags.join(", ")
       end
     end
   end

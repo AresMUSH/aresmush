@@ -11,5 +11,7 @@ Sending mail is easy. The "to" field can include any number of player names, sep
 For advanced mail topics see:
 
     help mail sending - Advanced mail sending features.
+    help mail composition - MUX-style mail writing.
     help mail review - Reviewing messages you've sent.
-    help mail managing - Managing your inbox.
+    help mail tags - Organizing your mail with tags.
+    help mail managing - Mail maintenance, like backup and delete.

@@ -36,3 +36,5 @@ en:
         
         approved: "Approved"
         unapproved: "Not Yet Approved"
+        rostered: "On Roster"
+        idled_out: "Idled Out - %{status}"

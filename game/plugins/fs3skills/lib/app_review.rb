@@ -33,7 +33,7 @@ module AresMUSH
     end
     
     def self.quirk_review(char)
-      num_quirks = char.fs3_quirks.count
+      num_quirks = char.fs3_quirks.keys.count
       min = Global.config["fs3skills"]["min_quirks"]
       max = Global.config["fs3skills"]["max_quirks"]
       if (num_quirks < min)

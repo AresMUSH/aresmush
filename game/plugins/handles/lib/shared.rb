@@ -3,6 +3,8 @@ module AresMUSH
     
     def self.build_profile_text(profile_char, asking_char)
       if (Global.api_router.is_master?)
+        return t('api.invalid_handle') if profile_char.nil?
+        
         text = "-~- %xh%xg@#{profile_char.name}%xn -~-".center(78)
         text << "%r%l2%r"
         text << "%xh#{t('handles.profile_title')}%xn"
@@ -13,6 +15,7 @@ module AresMUSH
         text << "%r%l2"
         profile_char.linked_characters.values.each do |c| 
           next if c['privacy'] == Handles.privacy_admin
+          next if c['privacy'] == Handles.privacy_friends && !asking_char
           next if c['privacy'] == Handles.privacy_friends && !profile_char.friends.include?(asking_char)
           
           game = ServerInfo.find_by_dest_id(c['game_id'])

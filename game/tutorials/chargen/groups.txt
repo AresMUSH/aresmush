@@ -1,8 +1,0 @@
-Instead of having separate systems for "faction" and "position" and whatnot, AresMUSH treats these all as Groups.  The exact groups will vary on each game, so use the 'groups' command to see the list.  During chargen, you should set your affiliation for each group unless you're sure it doesn't apply to your character.
-
-Looking for some idea of what's out there already?  You can use the %xccensus <group>%xn command to see a breakdown for each group.
-
-%xh-- Give it a try! --%xn 
-
-    Type %xchelp groups%xn to see what you can set.
-    Choose an affiliation for each group.

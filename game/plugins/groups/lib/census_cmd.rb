@@ -14,11 +14,11 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("census") && !cmd.args.nil?
+        cmd.root_is?("census")
       end
 
       def crack!
-        self.name = titleize_input(cmd.args)
+        self.name = cmd.args ? titleize_input(cmd.args) : "Position"
       end
       
       def handle        
@@ -33,6 +33,7 @@ module AresMUSH
         
         counts = {}
         Character.all.each do |c|
+          next if c.idled_out
           val = c.groups[self.name]
           if (!val.nil?)
             count = counts.has_key?(val) ? counts[val] : 0

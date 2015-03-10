@@ -5,17 +5,21 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginWithoutSwitches
            
-      attr_accessor :channel, :msg, :alias
+      attr_accessor :channel, :msg
 
       def want_command?(client, cmd)
         return false if !client.logged_in?
-        self.alias = cmd.root
-        self.channel = Channels.channel_for_alias(client.char, self.alias)
+        return false if !cmd.args    
+        self.channel = Channels.channel_for_alias(client.char, cmd.root)
         !self.channel.nil?
       end
             
       def crack!
         self.msg = cmd.args
+      end
+      
+      def log_command
+        # Don't log channel chat
       end
       
       def handle
@@ -25,8 +29,12 @@ module AresMUSH
         if (self.msg == "who")
           cmd = Command.new("channel/who #{self.channel.name}")
         elsif (self.msg == "on")
-          cmd = Command.new("channel/join #{self.channel.name}=#{self.alias}")
-          return
+          chan_alias = Channels.get_channel_option(client.char, self.channel, 'alias')
+          if (chan_alias)
+            cmd = Command.new("channel/join #{self.channel.name}=#{chan_alias.join(",")}")
+          else
+            cmd = Command.new("channel/join #{self.channel.name}")
+          end          
         elsif (self.msg == "off")
           cmd = Command.new("channel/leave #{self.channel.name}")
         elsif (self.msg == "gag")

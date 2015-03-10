@@ -13,5 +13,5 @@
 <% exits.each_with_index do |e, i| %>
 <%= linebreak_every_two_exits(i) %>%xh<%= exit_name(e) %>%xn <%= exit_destination(e) -%>
 <% end %>
-<% if exits.count == 0 %>No way out!<% end %>
+<% if exits.count == 0 %>No way out!<% end %><%= foyer %>
 <%= line %>

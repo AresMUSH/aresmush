@@ -23,8 +23,9 @@
 <%= languages %>
 
 <%= quirks_title %>
-<%= quirks %>
-
+<% quirks.each do |q| -%>
+<%= q %>
+<% end %> 
 
 <%= xp_title %> <%= xp %> <%= luck_title %> <%= luck %>
 %l1

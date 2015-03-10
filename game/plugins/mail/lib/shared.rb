@@ -1,7 +1,29 @@
 module AresMUSH
   module Mail
+    def self.trashed_tag
+      "Trash"
+    end
+    
+    def self.sent_tag
+      "Sent"
+    end
+    
+    def self.inbox_tag
+      "Inbox"
+    end
+    
+    def self.archive_tag
+      "Archive"
+    end
+    
+    def self.filtered_mail(client)
+      filter = client.char.mail_filter || Mail.inbox_tag
+      client.char.mail.select { |d| d.tags.include?(filter) }
+    end
+    
     def self.with_a_delivery(client, num, &block)
-      Mail.with_a_delivery_from_a_list client, num, client.char.mail, &block
+      list = Mail.filtered_mail(client)      
+      Mail.with_a_delivery_from_a_list client, num, list, &block
     end
     
     def self.with_a_delivery_from_a_list(client, num, list, &block)
@@ -22,12 +44,6 @@ module AresMUSH
       end
         
       yield list[index]
-    end
-    
-    def self.with_a_message(client, num, &block)
-      Mail.with_a_delivery(client, num) do |delivery|
-        yield delivery.message
-      end
     end
     
     def self.validate_recipients(names, client)
@@ -55,5 +71,20 @@ module AresMUSH
       client.char.save
     end
     
+    def self.empty_trash(client)
+      Global.logger.debug "Emptying trash for #{client.char.name}."
+      client.char.mail.each do |m|
+        # DO NOT USE DESTROY here or it will force a reload of the clients 
+        # for each deleted message.
+        if (m.tags.include?(Mail.trashed_tag))
+          if (m.message.mail_deliveries.count <= 1)
+            m.message.delete # Do not destroy - see note above
+          end
+          m.delete # Do not destroy - see note above
+        end
+      end
+      # Reload clients only once.
+      Global.client_monitor.reload_clients
+    end
   end
 end

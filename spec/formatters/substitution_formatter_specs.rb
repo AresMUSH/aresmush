@@ -108,7 +108,7 @@ module AresMUSH
     
     describe :center do
       it "should truncate if the string is too long" do
-        SubstitutionFormatter.center("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+        SubstitutionFormatter.center("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xnC"
       end
       
       it "should pad if the string is too short" do
@@ -118,17 +118,21 @@ module AresMUSH
 
     describe :left do
       it "should truncate if the string is too long" do
-        SubstitutionFormatter.left("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+        SubstitutionFormatter.left("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xnC"
       end
       
       it "should pad if the string is too short" do
         SubstitutionFormatter.left("A%xc%xhGB%xnC", 10, ".").should eq "A%xc%xhGB%xnC......"
       end
+      
+      it "should pad if the string is just right" do
+        SubstitutionFormatter.left("%xrABC%xn", 3).should eq "%xrABC%xn"
+      end
     end 
 
     describe :right do
       it "should truncate if the string is too long" do
-        SubstitutionFormatter.right("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+        SubstitutionFormatter.right("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xnC"
       end
       
       it "should pad if the string is too short" do
@@ -138,7 +142,7 @@ module AresMUSH
             
     describe :truncate do 
       it "should truncate a string that's too long" do
-        SubstitutionFormatter.truncate("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xn"
+        SubstitutionFormatter.truncate("A%xc%xhGB%xnC", 2).should eq "A%xc%xhG%xnC"
       end
       
       it "should do nothing for a string that's shorter than allowed" do

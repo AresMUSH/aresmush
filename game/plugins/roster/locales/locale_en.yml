@@ -1,0 +1,14 @@
+en:
+    roster:
+        roster_title: "Character Roster"
+        roster_updated: "Roster updated."
+        roster_column_titles: "Name                            Approved?   Contact"
+        not_on_roster: "%{name} is not on the roster."
+        removed_from_roster: "%{name} has been removed from the roster."
+        played_by: "Played By:"
+        wiki_page: "Wiki Page:"
+        contact: "Contact %xh%{name}%xn for more information."
+        roster_claim: "Use %xcroster/claim %{name}%xn to claim this character."
+        roster_claimed: "You have claimed %{name}.  Their new password is: %{password}"
+        roster_bbs_subject: "Roster Character Claimed"
+        roster_bbs_body: "%{name} has been claimed off the roster."

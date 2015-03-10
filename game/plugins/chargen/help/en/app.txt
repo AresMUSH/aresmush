@@ -1,0 +1,11 @@
+This game uses an Applications system for character approvals.  As you are going through character creation, you can review your application.  The system will flag common issues.
+
+    %xcapp%xn - Shows a summary of your character application and any issues.
+     
+After you submit your character for approvals, app staff will review it and get back to you soon.
+
+    %xcapp/submit%xn - Submits your application.
+
+You can't make further changes while your app is under review.  If you realize you need to change something, you can withdraw or un-submit your application.  Make the necessary changes using the chargen commands.  The app will be on hold while you do this, and you can use the submit command again when you're done.
+
+    %xcapp/unsubmit%xn - Un-submit your application.

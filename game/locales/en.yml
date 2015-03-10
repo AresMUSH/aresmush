@@ -1,4 +1,8 @@
 en:
+    global:
+        y:  "Yes"
+        n:  "No"
+
     dispatcher:
         unexpected_error: |
           Sorry! Something bad happened while executing this command.

@@ -1,0 +1,16 @@
+help:
+    categories:
+        main:
+            topics:
+                roster: 
+                    toc_topic: 'Character Creation'
+                    dir: 'game/plugins/roster/help/'
+                    file: 'roster.txt'
+                    summary: 'Pre-made characters.'
+        admin:
+            topics:
+                roster: 
+                    toc_topic: 'Character Creation'
+                    dir: 'game/plugins/roster/help/'
+                    file: 'admin_roster.txt'
+                    summary: 'Managing the roster.'

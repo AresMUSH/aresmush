@@ -2,6 +2,10 @@ Sending mail is easy. The "to" field can include any number of player names, sep
 
     %xcmail <to>=<subject>/<message>%xn - Sends a message.
     
+You can automatically CC yourself on messages you sent by enabling the sent-mail feature.
+
+    %xcmail/sentmail <on or off%xn - Turns sent mail copy on or off.
+    
 You can also forward mail.
 
     %xcmail/fwd <#>=<to>/<comment>%xn - Forwards a message, along with an optional comment.
@@ -11,10 +15,4 @@ When replying, you can use 'reply' or 'replyall' to reply to just the author or 
     %xcmail/reply <message>%xn - Replies to the last message you read.
     %xcmail/reply <#>=<message>%xn - Replies to a message.
 
-Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
-
-    %xcmail <to>=<subject>%xn - Starts a mail.
-    %xc-<message>%xn - Adds a new paragraph to a message.
-    %xcmail/proof%xn - Shows your mail so far.
-    %xcmail/send%xn or %xc--%xn - Sends the mail.
-    %xcmail/toss%xn - Throws away the message you were drafting.
+Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.  See %xhhelp mail composition%xn.

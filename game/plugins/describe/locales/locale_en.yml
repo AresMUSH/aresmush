@@ -26,3 +26,8 @@ en:
        detail_deleted: "Detail deleted."
        detail_set: "Detail set."
        details_available: "[Details]"
+       
+       foyer_room_locked: "%xrLocked%xn"
+       foyer_room_occupied: "%xyOccupied%xn"
+       foyer_room_free: "%xgOpen%xn"
+       foyer_room_status: "%xhFoyer Exits%xn"

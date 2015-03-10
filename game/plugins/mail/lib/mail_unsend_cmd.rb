@@ -5,10 +5,10 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginRequiresArgs
       
-      attr_accessor :num
+      attr_accessor :num, :name
       
       def initialize
-        self.required_args = ['num']
+        self.required_args = ['name', 'num']
         self.help_topic = 'mail'
         super
       end
@@ -18,17 +18,23 @@ module AresMUSH
       end
       
       def crack!
-        self.num = trim_input(cmd.args)
+        cmd.crack_args!(CommonCracks.arg1_slash_arg2)
+        self.name = trim_input(cmd.args.arg1)
+        self.num = trim_input(cmd.args.arg2)
       end
       
       def handle
-        deliveries = client.char.sent_mail.map { |s| s.mail_deliveries }.flatten
-        Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
-          if (delivery.read)
-            client.emit_failure t('mail.cant_unsend_read_mail')
-          else
-            client.emit_failure t('mail.mail_unsent')
-            delivery.destroy
+        ClassTargetFinder.with_a_character(self.name, client) do |model|
+          sent = client.char.sent_mail
+          deliveries = sent.map { |s| s.mail_deliveries }.flatten.select{ |d| d.character == model }
+          
+          Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
+            if (delivery.read)
+              client.emit_failure t('mail.cant_unsend_read_mail')
+            else
+              client.emit_failure t('mail.mail_unsent')
+              delivery.destroy
+            end
           end
         end
       end

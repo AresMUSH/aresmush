@@ -21,3 +21,5 @@ Rooms have several properties that you can set.  The %xharea%xn and %xhgrid%xn p
     %xcroomtype <IC or OOC>%xn - Sets a room as part of the IC or OOC zone.
         Note:  For RP Rooms, we recommend setting them "IC" so that people in them 
         show up as RPing rather than showing up as OOC.  But it's your choice.
+    %xcfoyer <on or off%xn - Marks whether a room is a foyer, like an apartment or the
+        RP room hub.  Numbered exits will be shown in a special way.

@@ -68,14 +68,14 @@ module AresMUSH
         remaining = target_len - len
         if (t[:len] > remaining)
           new_str << t[:raw].truncate(remaining)
-          new_str << "%xn"
+          #new_str << "%xn"
           len += remaining
         else
           new_str << t[:raw]
           len += t[:len]
         end
         
-        if (len >= target_len)
+        if (len > target_len)
           break
         end
       end

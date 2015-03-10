@@ -36,6 +36,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
+          
+          if (char.is_master_admin?)
+            client.emit_failure t('login.cant_reset_master_admin_password')
+            return
+          end
+          
           char.change_password(self.new_password)
           char.save!
           client.emit_success t('login.password_reset', :name => char.name)

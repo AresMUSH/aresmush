@@ -54,11 +54,22 @@ module AresMUSH
     end
     
     def self.channel_for_alias(char, channel_alias)
+      a2 = CommandCracker.strip_prefix(channel_alias)
+      
       char.channel_options.keys.each do |k|
-        a1 = CommandCracker.strip_prefix(char.channel_options[k]["alias"])
-        a2 = CommandCracker.strip_prefix(channel_alias)
-        if (a1 == a2)
-          return Channel.find_by_name(k)
+        option_aliases = char.channel_options[k]["alias"]
+        return nil if option_aliases.nil?
+        
+        option_aliases.each do |a1|
+          if (CommandCracker.strip_prefix(a1).downcase == a2.downcase)
+            return Channel.find_by_name(k)
+          end
+        end
+      end
+      
+      Channel.all.each do |c|
+        if (c.name.downcase == a2)
+          return c
         end
       end
       return nil
@@ -71,6 +82,10 @@ module AresMUSH
     
     def self.with_an_enabled_channel(name, client, &block)
       channel = Channel.find_by_name(name)
+      
+      if (channel.nil?)
+        channel = Channels.channel_for_alias(client.char, name)
+      end
       
       if (channel.nil?)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
@@ -111,6 +126,31 @@ module AresMUSH
       end
     end
     
+    def self.set_channel_alias(client, char, channel, chan_alias)
+      aliases = chan_alias.split(/[, ]/)
+      aliases.each do |a|
+        existing_channel = Channels.channel_for_alias(char, a)
+        if (!existing_channel.nil? && existing_channel != channel)
+          client.emit_failure t('channels.alias_in_use', :channel_alias => a)
+          return false
+        end
+        
+        trimmed_alias = CommandCracker.strip_prefix(a)
+        if (trimmed_alias.nil? || trimmed_alias.length < 2)
+          client.emit_failure t('channels.short_alias_warning')
+        end
+      end
+      
+      Channels.set_channel_option(char, channel, "alias", aliases)
+      
+      aliases.each do |a|
+        client.emit_success t('channels.channel_alias_set', :name => channel.name, :channel_alias => a)
+      end
+      
+      client.char.save!
+      return true
+    end
+    
     def self.join_channel(name, client, char, chan_alias)
       Channels.with_a_channel(name, client) do |channel|
                 
@@ -125,22 +165,17 @@ module AresMUSH
         end
         
         if (chan_alias.nil?)
-          chan_alias = "#{name[0..1].downcase}"
+          chan_alias = "#{name[0..1].downcase},#{name[0..2].downcase}"
         end
             
-        existing_alias = Channels.channel_for_alias(char, chan_alias)   
-        if (!existing_alias.nil? && (existing_alias != channel))
-          client.emit_failure t('channels.alias_in_use', :channel_alias => chan_alias)
+        if (!Channels.set_channel_alias(client, char, channel, chan_alias))
+          client.emit_failure t('channels.unable_to_determine_auto_alias')
           return
         end
 
-        Channels.set_channel_option(char, channel, "alias", chan_alias)
-        char.save!
-        
         channel.characters << char
         channel.save!
         channel.emit t('channels.joined_channel', :name => char.name)
-        client.emit_ooc t('channels.channel_alias_set', :name => name, :channel_alias => chan_alias)
       end
     end
   end

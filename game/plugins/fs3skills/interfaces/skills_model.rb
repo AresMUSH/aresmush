@@ -4,7 +4,7 @@ module AresMUSH
     field :fs3_action_skills, :type => Hash, :default => {}
     field :fs3_background_skills, :type => Hash, :default => {}
     field :fs3_languages, :type => Array, :default => []
-    field :fs3_quirks, :type => Array, :default => []
+    field :fs3_quirks, :type => Hash, :default => {}
     
     def ability(name)
       if fs3_attributes.has_key?(name)

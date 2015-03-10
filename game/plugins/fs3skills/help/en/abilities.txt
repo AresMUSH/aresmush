@@ -1,6 +1,6 @@
-The FS3 Abilities commands are used to set yourself up during character creation.  See %xhhelp chargen%xn for more information.
+The FS3 Abilities commands are used to set yourself up during character creation.
 
-To get started, or at any point you wish to reset yourself, use the reset command.   It is recommended that you do your groups (help groups) before your ablities, because then the system can set you up with initial recommended skills.
+To get started, or at any point you wish to reset yourself, use the reset command.
 
     %xcreset%xn - Resets your abilities, setting default values based on your position.
          %xh%xrThis will erase any abilities you have, so do this first!%xn
@@ -15,4 +15,4 @@ To set your abilities:
     
     %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
     
-    %xcquirk/add <quirk>%xn and %xcquirk/remove <quirk>%xn
+    %xcquirk/add <quirk>=<description>%xn and %xcquirk/remove <quirk>%xn

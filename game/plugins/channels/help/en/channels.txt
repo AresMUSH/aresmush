@@ -3,11 +3,11 @@ Channels are public forums for out-of-character communication.  Each game will h
     %xcchannels%xn - Lists channels and their descriptions and roles.  Also shows at
         a glance which channels you're monitoring and the command to talk on them.
 
-You will only see messages on channels you have chosen to join, and you may leave those channels at any time.  When you join a channel, you can specify an alias or nickname.  This becomes the command you use to talk on the channel.  If you don't specify anything, the alias defaults tothe first two characters of the channel name.  For example, the Chat channel would be ch, and to talk on it you would use %xhch Hi!%xn
+You will only see messages on channels you have chosen to join, and you may leave those channels at any time.  When you join a channel, you can specify an alias or nickname.  This becomes the command you use to talk on the channel.  If you don't specify anything, the alias defaults to the first two and three characters of the channel name.  For example, the Chat channel would be ch and cha, and to talk on it you would use %xhch Hi!%xn
 
     %xcchannel/join <channel>[=<alias>]%xn
     %xcchannel/leave <channel>%xn
-    %xc<channelalias> <message>%xn - Talks on channel
+    %xc<channelalias> <message>%xn - Talks on a channel.
 
 NOTE: Take care to avoid channel aliases that overlap with other commands, like 'n' for north or 'p' for page.  Remember that AresMUSH ignores prefixes like '+' on commands.
 
@@ -16,6 +16,7 @@ You can also use MUX-style channel commands, by using the keywords "on", "off", 
 Other handy channel commands:
     %xcchannel/who <channel>%xn - Shows who's on the channel
     %xcchannel/alias <channel>=<alias>%xn - Changes the alias used to talk on the channel.
+        You can set multiple aliases.  (e.g. channel/alias chat=ch cha)
     %xcchannel/title <channel>=<title>%xn - Sets a title displayed before your name.
         You can use ansi codes in this title.
     %xcchannel/gag <channel> or channel/ungag <channel>%xn - Despams for awhile.

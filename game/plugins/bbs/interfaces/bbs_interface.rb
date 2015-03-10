@@ -1,5 +1,12 @@
 module AresMUSH
   module Bbs
+    def self.system_post_to_bbs_if_configured(configured_board, subject, message)
+      return if !configured_board
+      return if configured_board.blank?
+    
+      Bbs.post(configured_board, subject, message, Game.master.system_character)
+    end
+    
     def self.post(board_name, subject, message, author, client = nil)
       Bbs.with_a_board(board_name, client) do |board|
       

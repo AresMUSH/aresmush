@@ -1,4 +1,4 @@
-All the things you've been typing so far - 'connect', 'tutorial', 'who' - are %xhcommands%xn.  There are a ton of other commands out there to support your rolepley.
+All the things you've been typing so far - 'connect', 'tutorial', 'who' - are %xhcommands%xn.  There are a ton of other commands out there to support your roleplay.
 
 One very important command is the %xhhelp%xn command, because this will give you information about all the other commands and how to use them.   To see a list of help topics, just type:
 

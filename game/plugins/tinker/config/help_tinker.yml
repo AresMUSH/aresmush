@@ -1,0 +1,9 @@
+help:
+    categories:
+        admin:
+            topics:
+                tinker: 
+                    toc_topic: Code Management
+                    dir: 'game/plugins/tinker/help/'
+                    file: 'tinker.txt'
+                    summary: "Custom code snippets"  

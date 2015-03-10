@@ -1,6 +1,0 @@
-Demographics commands are used to set your basic character info, like hair and eye color.  Some items may not be changed after your character has been approved.
-
-%xh-- Give it a try! --%xn 
-
-    Type %xchelp demographics%xn to see what you can set.
-    Set each demographic value.
