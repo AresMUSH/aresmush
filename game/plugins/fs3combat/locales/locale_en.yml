@@ -1,2 +1,19 @@
 en:
-    
+    fs3combat:
+        invalid_severity: "Invalid severity level."
+        damage_title: "Damage Report for %{name}"
+        damage_inflicted: "You inflict damage on %{name}."
+        
+        healed_wound: "%xh%xxHealed%xn"
+        light_wound: "%xgLight%xn"
+        moderate_wound: "%xbModerate%xn"
+        serious_wound: "%xySerious%xn"
+        critical_wound: "%xrCritical%xn"
+        
+        can_only_treat_characters: "You can only treat characters."
+        damage_treated: "%{doc} treats %{target}. <%{success}>"
+        
+        treat_skill_set: "%{name} will now be used for your treat rolls."
+        invalid_treat_skill: "You have to pick a treat skill you have a rating in."
+        cant_treat_self: "You can't treat yourself!"
+        too_soon_to_treat: "%{name} has already been treated today.  Try again in %{time}."

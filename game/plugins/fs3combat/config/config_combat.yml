@@ -1,0 +1,16 @@
+fs3combat:
+
+    # Which skill is used for treat rolls if you don't specify anything.
+    default_treat_skill: "First Aid"
+    
+    # Which attribute is used for toughness-related rolls.  Since this is an attribute,
+    # the roll will actually use twice the level (e.g. Body + Body)
+    toughness_attribute: "Body"
+    
+    # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    healing_cron:
+        #date: 1
+        #day_of_week: Sat
+        hour: 06
+        minute: 00
