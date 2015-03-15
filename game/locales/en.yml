@@ -78,4 +78,4 @@ en:
         sending_to_remote: "Sending message to remote server.  This may take a moment."
         api_cipher_error: "Error reading response from remote server.  Please contact the admin."
         game_not_found: "Game not found."        
-      
+

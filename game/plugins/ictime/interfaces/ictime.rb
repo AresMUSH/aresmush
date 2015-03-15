@@ -19,5 +19,18 @@ module AresMUSH
     def self.ic_long_timestr(time)
       time.strftime Global.config["date_and_time"]["long_date_format"]
     end
+    
+    def self.time_of_day(time)
+      case time.hour
+      when 6, 7, 8, 9, 10, 11
+        "morning"
+      when 12, 13, 14, 15, 16
+        "day"
+      when 17, 18, 19, 20
+        "evening"
+      else
+        "night"
+      end
+    end
   end
 end
