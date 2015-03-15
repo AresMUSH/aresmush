@@ -12,6 +12,11 @@ module AresMUSH
       def handle
         target_id = client.program[:destroy_target]
         
+        if (target_id.nil?)
+          client.emit_failure t('manage.no_destroy_in_progress')
+          return
+        end
+        
         find_result = AnyTargetFinder.find("#{target_id}", client)
         
         if (!find_result.found?)
@@ -22,11 +27,6 @@ module AresMUSH
         target = find_result.target
         if (!Manage.can_manage_object?(client.char, target))
           client.emit_failure t('dispatcher.not_allowed')
-          return
-        end
-        
-        if (target.nil?)
-          client.emit_failure t('manage.no_destroy_in_progress')
           return
         end
         

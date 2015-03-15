@@ -6,26 +6,32 @@ module AresMUSH
       
       it "should subtract a year offset" do
         Global.stub(:config) {{ "ictime" => {  "day_offset" => 0, "year_offset" => -300 }}}
-        Date.stub(:today) { Date.new(2014, 01, 27) }
-        ICTime.ictime.should eq Date.new(1714, 01, 27)
+        DateTime.stub(:now) { DateTime.new(2014, 01, 27) }
+        ICTime.ictime.should eq DateTime.new(1714, 01, 27)
       end      
 
       it "should add a year offset" do
         Global.stub(:config) {{ "ictime" => { "day_offset" => 0, "year_offset" => 300 }}}
-        Date.stub(:today) { Date.new(2014, 01, 27) }
-        ICTime.ictime.should eq Date.new(2314, 01, 27)
+        DateTime.stub(:now) { DateTime.new(2014, 01, 27) }
+        ICTime.ictime.should eq DateTime.new(2314, 01, 27)
       end      
       
       it "should handle a day offset" do
         Global.stub(:config) {{ "ictime" => { "day_offset" => 2, "year_offset" => 100 }}}
-        Date.stub(:today) { Date.new(2014, 01, 27) }
-        ICTime.ictime.should eq Date.new(2114, 01, 29)
+        DateTime.stub(:now) { DateTime.new(2014, 01, 27) }
+        ICTime.ictime.should eq DateTime.new(2114, 01, 29)
       end
 
       it "should handle a day offset across month boundaries" do
         Global.stub(:config) {{ "ictime" => { "day_offset" => -2, "year_offset" => 100 }}}
-        Date.stub(:today) { Date.new(2014, 01, 01) }
-        ICTime.ictime.should eq Date.new(2113, 12, 30)
+        DateTime.stub(:now) { DateTime.new(2014, 01, 01) }
+        ICTime.ictime.should eq DateTime.new(2113, 12, 30)
+      end
+      
+      it "should show time too" do
+        Global.stub(:config) {{ "ictime" => { "day_offset" => 2, "year_offset" => 100 }}}
+        DateTime.stub(:now) { DateTime.new(2014, 01, 27, 5, 55, 23) }
+        ICTime.ictime.should eq DateTime.new(2114, 01, 29, 5, 55, 23)
       end
     end
   end

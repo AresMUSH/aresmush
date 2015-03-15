@@ -8,4 +8,4 @@ help:
                     file: 'demographics.txt'
                     summary: "Setting basic character info."
                     order: 1
-                    aliases: [ 'fullname', 'gender', 'birthdate', 'height', 'physique', 'eyes', 'hair', 'age', 'reputation']
+                    aliases: [ 'fullname', 'gender', 'birthdate', 'skin', 'height', 'physique', 'eyes', 'hair', 'age', 'reputation']

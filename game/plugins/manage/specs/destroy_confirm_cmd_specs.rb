@@ -19,7 +19,9 @@ module AresMUSH
       describe :handle do
         before do
           @target = double
-          client.stub(:program) { { :destroy_target => @target, :something_else => "x" } }
+          @target.stub(:id) { "X" }
+          AnyTargetFinder.stub(:find).with("X", client) { FindResult.new(@target, nil) }
+          client.stub(:program) { { :destroy_target => @target.id, :something_else => "x" } }
           Manage.stub(:can_manage_object?) { true }
           handler.crack!
         end

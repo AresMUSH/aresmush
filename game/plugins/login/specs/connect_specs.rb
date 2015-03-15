@@ -10,6 +10,7 @@ module AresMUSH
         init_handler(ConnectCmd, "connect Bob password")
         SpecHelpers.stub_translate_for_testing  
         stub_global_objects      
+        client.stub(:logged_in?) { false }
       end
       
       it_behaves_like "a plugin that doesn't allow switches"
@@ -17,11 +18,19 @@ module AresMUSH
       describe :want_command? do
         it "wants the connect command" do
           cmd.stub(:root_is?).with("connect") { true }
+          cmd.stub(:root_is?).with("c") { false }
           handler.want_command?(client, cmd).should be_true
         end
 
+        it "wants the c command" do
+          cmd.stub(:root_is?).with("connect") { false }
+          cmd.stub(:root_is?).with("c") { true }
+          handler.want_command?(client, cmd).should be_true
+        end
+        
         it "doesn't want another command" do
           cmd.stub(:root_is?).with("connect") { false }
+          cmd.stub(:root_is?).with("c") { false }
           handler.want_command?(client, cmd).should be_false
         end
       end

@@ -17,7 +17,7 @@ module AresMUSH
       describe :crack! do
         it "should set the target" do          
           handler.crack!
-          handler.target.should eq 'foo'
+          handler.name.should eq 'foo'
         end
       end
       
