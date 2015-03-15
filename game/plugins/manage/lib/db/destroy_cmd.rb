@@ -5,10 +5,10 @@ module AresMUSH
       include PluginRequiresArgs
       include PluginRequiresLogin
       
-      attr_accessor :target
+      attr_accessor :name
             
       def initialize
-        self.required_args = ['target']
+        self.required_args = ['name']
         self.help_topic = 'destroy'
         super
       end
@@ -18,11 +18,11 @@ module AresMUSH
       end
       
       def crack!
-        self.target = trim_input(cmd.args)
+        self.name = trim_input(cmd.args)
       end
 
       def handle
-        find_result = AnyTargetFinder.find(self.target, client)
+        find_result = AnyTargetFinder.find(self.name, client)
         
         if (!find_result.found?)
           client.emit_failure(find_result.error)
@@ -46,7 +46,8 @@ module AresMUSH
           return
         end
         
-        client.program = { :destroy_target => target }
+        client.program = { :destroy_target => target.id }
+        
         client.emit BorderedDisplay.text(t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.to_json))
       end
     end

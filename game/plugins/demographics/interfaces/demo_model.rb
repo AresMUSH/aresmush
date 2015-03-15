@@ -2,6 +2,7 @@ module AresMUSH
   class Character
     field :height, :type => String
     field :physique, :type => String
+    field :skin, :type => String
     field :fullname, :type => String
     field :gender, :type => String, :default => "Other"
     field :hair, :type => String

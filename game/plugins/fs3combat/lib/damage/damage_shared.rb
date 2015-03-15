@@ -33,18 +33,7 @@ module AresMUSH
      end
      
      def self.healing_points(wound_level)
-       case wound_level
-       when "L"
-         2
-       when "M"
-         3
-       when "S"
-         4
-       when "C"
-         5
-       else
-         0
-       end
+       Global.config["fs3combat"]["healing_points"][wound_level]
      end
      
      def self.check_treat_frequency(char)

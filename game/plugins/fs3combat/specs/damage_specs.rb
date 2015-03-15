@@ -28,7 +28,10 @@ module AresMUSH
               "healing_points" => 7
             }
           ]
-          Global.stub(:config) { { "fs3combat" => { } } }
+          Global.stub(:config) { { "fs3combat" => {  "healing_points" =>
+            {
+              "H" => 0, "L" => 2, "M" => 3, "S" => 4, "C" => 5 
+              } } } }
           FS3Skills.stub(:one_shot_roll) { { :successes => 0 }}
         end
         

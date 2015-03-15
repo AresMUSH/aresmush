@@ -1,8 +1,6 @@
 shortcuts:
     roots:
-        "c": "connect"
         "logout" : "quit"
-        "con": "connect"
             
     full:
         "newpassword": "password/reset"

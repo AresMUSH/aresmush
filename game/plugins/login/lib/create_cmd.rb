@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :charname, :password
       
       def want_command?(client, cmd)
-        cmd.root_is?("create")
+        cmd.root_is?("create") && !client
       end
 
       def crack!
