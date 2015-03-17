@@ -40,28 +40,30 @@ module AresMUSH
       end
       
       describe :find_destination do
+        before do
+          @room = double
+          @room.stub(:name_upcase) { "SOMEWHERE" }
+          @rooms = [ @room ]
+          Room.stub(:all) { @rooms }
+        end
+        
         it "should find the room when the destination is a char" do
           handler.stub(:destination) { "somewhere" }
           other_char = double
-          room = double
-          other_char.stub(:room) { room }
+          other_char.stub(:room) { @room }
           ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(other_char, nil) }
-          ClassTargetFinder.should_not_receive(:find).with("somewhere", Room, client)
-          handler.find_destination.should eq room
+          handler.find_destination.should eq @room
         end
         
         it "should find the room when the destination is a room" do
           handler.stub(:destination) { "somewhere" }
-          room = double
           ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room, client) { FindResult.new(room, nil) }
-          handler.find_destination.should eq room
+          handler.find_destination.should eq @room
         end
         
         it "should return nil if nothing found" do
-          handler.stub(:destination) { "somewhere" }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room, client) { FindResult.new(nil, "error") }
+          handler.stub(:destination) { "foo" }
+          ClassTargetFinder.should_receive(:find).with("foo", Character, client) { FindResult.new(nil, "error") }
           handler.find_destination.should eq nil
         end
       end

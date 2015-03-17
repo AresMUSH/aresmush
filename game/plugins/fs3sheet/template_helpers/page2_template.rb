@@ -47,6 +47,10 @@ module AresMUSH
       def eyes_title
         format_field_title(t('sheet.eyes_title'))
       end
+      
+      def skin_title
+        format_field_title(t('sheet.skin_title'))
+      end
 
       def age_title
         format_field_title(t('sheet.age_title'))
@@ -110,6 +114,10 @@ module AresMUSH
       
       def eyes
         format_field @char.eyes
+      end
+      
+      def skin
+        format_field @char.skin
       end
       
       def age

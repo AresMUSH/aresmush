@@ -3,7 +3,6 @@ module AresMUSH
     class PoseCmd
       include Plugin
       include PluginRequiresLogin
-      include PluginWithoutSwitches
 
       def want_command?(client, cmd)
         (cmd.root_is?("ooc") && !cmd.args.nil?) ||

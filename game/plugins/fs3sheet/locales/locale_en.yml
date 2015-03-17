@@ -14,6 +14,7 @@ en:
         height_title: "Height:"
         physique_title: "Physique:"
         hair_title: "Hair:" 
+        skin_title: "Skin:"
         eyes_title: "Eyes:"
         age_title: "Age:"
         birthdate_title: "Birthdate:"

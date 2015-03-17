@@ -14,20 +14,20 @@ module AresMUSH
 
       puts "Creating start rooms."
   
-      welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC",
+      welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC", :area => "Offstage",
       :description => "Welcome!%R%R" + 
           "New to MUSHing?  Type: %xctutorial/start new player%xn for an interactive tutorial.%R%R" +
           "New to Ares?  Type: %xctutorial/start ares for vets%xn for a quick intro geared towards veteran players")
       ic_start_room = AresMUSH::Room.create(:name => "Onstage", :room_type => "IC")
-      ooc_room = AresMUSH::Room.create(:name => "Offstage", :room_type => "OOC",
+      ooc_room = AresMUSH::Room.create(:name => "Offstage", :room_type => "OOC", :area => "Offstage",
         :description => "This is a backstage area where you can hang out when not RPing.")
-      quiet_room = AresMUSH::Room.create(:name => "Quiet Room", :room_type => "OOC",
+      quiet_room = AresMUSH::Room.create(:name => "Quiet Room", :room_type => "OOC", :area => "Offstage",
         :description => "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside.")
-      rp_room_hub = AresMUSH::Room.create(:name => "RP Annex", :room_type => "OOC",
+      rp_room_hub = AresMUSH::Room.create(:name => "RP Annex", :room_type => "OOC", :area => "Offstage",
         :description => "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded.")
 
       4.times do |n|
-        rp_room = AresMUSH::Room.create(:name => "RP Room #{n+1}", :room_type => "OOC",
+        rp_room = AresMUSH::Room.create(:name => "RP Room #{n+1}", :room_type => "OOC", :area => "Offstage",
           :description => "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything.")
         AresMUSH::Exit.create(:name => "#{n+1}", :source => rp_room_hub, :dest => rp_room)
         AresMUSH::Exit.create(:name => "O", :source => rp_room, :dest => rp_room_hub)

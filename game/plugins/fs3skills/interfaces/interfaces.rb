@@ -14,8 +14,20 @@ module AresMUSH
 
       attr_rating = FS3Skills.ability_rating(char, ruling_attr)
       dice = skill + attr_rating + modifier
-      Global.logger.info "#{char.name} rolling #{ability} (#{skill}) mod #{modifier} attr #{ruling_attr} (#{attr_rating}) dice=#{dice}"
-      roll_dice(dice)
+      roll = roll_dice(dice)
+      Global.logger.info "#{char.name} rolling #{ability} (#{skill}) mod #{modifier} attr #{ruling_attr} (#{attr_rating}) dice=#{dice} result=#{roll}"
+      roll
+    end
+    
+    def self.one_shot_roll(client, char, roll_params)
+      roll = FS3Skills.roll_ability(client, char, roll_params)
+      roll_result = FS3Skills.get_success_level(roll)
+      success_title = FS3Skills.get_success_title(roll_result)
+      
+      {
+        :successes => roll_result,
+        :success_title => success_title
+      }
     end
     
     # Expects titleized ability name and numeric rating

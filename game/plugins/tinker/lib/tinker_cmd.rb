@@ -19,6 +19,10 @@ module AresMUSH
       
       def handle
         # Put whatever you need to do here.
+        Global.config["weather"]["conditions"].each do |temp|
+          
+              client.emit "#{temp}: The weather is #{temp}."
+        end
         client.emit_success "Done!"
       end
     end

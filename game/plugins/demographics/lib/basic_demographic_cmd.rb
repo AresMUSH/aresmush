@@ -64,9 +64,13 @@ module AresMUSH
       def want_command?(client, cmd)
         cmd.root_is?("hair")
       end
+    end
+    
+    class SkinCmd
+      include BasicDemographicCmd
       
-      def check_chargen_locked
-        Chargen.check_chargen_locked(client.char)
+      def want_command?(client, cmd)
+        cmd.root_is?("skin")
       end
     end
     

@@ -7,7 +7,8 @@ module AresMUSH
       attr_accessor :charname, :password
       
       def want_command?(client, cmd)
-        cmd.root_is?("connect")
+        # Special check for 'c' command to allow it to be used as chat alias.
+        (cmd.root_is?("connect") || cmd.root_is?("c")) && !client.logged_in?
       end
       
       def crack!
