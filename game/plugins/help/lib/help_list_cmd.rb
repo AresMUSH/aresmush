@@ -43,7 +43,7 @@ module AresMUSH
         title = t('help.toc', :category => Help.category_title(self.category))
         footer = ""
         if (!categories.empty?)
-          footer << "%l2%r"
+         # footer << "%l2%r"
           footer << "%xh#{t('help.other_help_libraries')}%xn"
           categories.keys.each do |category|
             footer << " \[#{categories[category]['command']}\] #{categories[category]['title']}"
