@@ -1,0 +1,10 @@
+*.gem
+.bundle
+.rbenv-version
+Gemfile.lock
+bin/*
+pkg/*
+vendor/*
+
+/.ruby-gemset
+/.ruby-version

@@ -1,0 +1,8 @@
+*.gem
+.DS_Store
+.rvmrc
+.bundle
+.idea/*
+Gemfile.lock
+pkg/*
+.yardoc/
