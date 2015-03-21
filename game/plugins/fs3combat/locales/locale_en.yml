@@ -17,3 +17,7 @@ en:
         invalid_treat_skill: "You have to pick a treat skill you have a rating in."
         cant_treat_self: "You can't treat yourself!"
         too_soon_to_treat: "%{name} has already been treated today.  Try again in %{time}."
+        
+        already_in_combat: "You are already in combat."
+        start_real_combat: "You start a real combat.  Damage will be permanent."
+        start_mock_combat: "You start a mock combat.  Damage will be erased at the end."
