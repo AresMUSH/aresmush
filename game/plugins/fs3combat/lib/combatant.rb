@@ -1,22 +1,34 @@
 module AresMUSH
-  module FS3Combat
-    class Combatant
-      attr_accessor :name, :name_upcase, :combatant_type, :char
+  class Combatant
+    include Mongoid::Document
+    include Mongoid::Timestamps
       
-      def initialize(name, combatant_type, char = nil)
-        self.name = name.titleize
-        self.name_upcase = name.upcase
-        self.combatant_type = combatant_type
-        self.char = char
-      end
+    field :name, :type => String
+    field :name_upcase, :type => String
+    field :combatant_type, :type => String
       
-      def client
-        self.char ? self.char.client : nil
-      end
+    belongs_to :character, :class_name => "AresMUSH::Character"
+    belongs_to :combat, :class_name => "AresMUSH::CombatInstance"
+
+    before_validation :save_upcase_name
       
-      def is_npc?
-        !self.char.nil?
-      end
+    def client
+      self.character ? self.character.client : nil
+    end
+      
+    def is_npc?
+      !self.character.nil?
+    end
+    
+    def emit(message)
+      return if !client
+      client_message = message.gsub(/#{name}/, "%xh%xy#{name}%xn")
+      client.emit t('fs3combat.combat_emit', :message => client_message)
+    end
+    
+    private
+    def save_upcase_name
+      self.name_upcase = self.name.nil? ? "" : self.name.upcase
     end
   end
 end

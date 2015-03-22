@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :type
       
-      def initialize
-        FS3Combat.combats = []
-      end
-      
       def want_command?(client, cmd)
         cmd.root_is?("combat") && cmd.switch_is?("start")
       end
@@ -19,9 +15,9 @@ module AresMUSH
       end
       
       def check_mock
-        types = ['mock', 'real']
+        types = ['Mock', 'Real']
         return nil if !self.type
-        return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include(self.type)
+        return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include?(self.type)
         return nil
       end
       
@@ -31,9 +27,9 @@ module AresMUSH
       end
       
       def handle
-        combat = CombatInstance.new(client.char, self.type == "mock")
-        FS3Combat.combats << combat
+        combat = CombatInstance.create(:organizer => client.char, :is_real => self.type == "Real")
         combat.join(client.char.name, "observer", client.char)
+        combat.save
       end
     end
   end

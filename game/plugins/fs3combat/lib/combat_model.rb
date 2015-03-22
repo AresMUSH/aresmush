@@ -1,17 +1,15 @@
 module AresMUSH
   class Character
-    
-    # current_severity (L/M/S/C)
-    # initial_severity (L/M/S/C)
-    # time
-    # desc
-    # last_treated
-    # healing_points
-    # is_stun
-    field :combat_damage, :type => Array, :default => []
-    
     field :treat_skill, :type => String
+    has_one :combatant
+    has_many :damage, :dependent => :destroy
     
-    field :last_treated, :type => Time
+    def treatable_wounds
+      self.damage.select { |d| d.is_treatable? }
+    end
+    
+    def unhealed_wounds
+      self.damage.select { |d| d.healing_points > 0 } 
+    end
   end
 end

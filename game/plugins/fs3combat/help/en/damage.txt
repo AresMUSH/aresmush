@@ -5,3 +5,5 @@ This is a quick reference for the combat damage commands. For more details on FS
 
     %xctreat <name>%xn - Treats someone's wounds.  This version is used outside of combat.  
        Inside combat, you use %xccombat/treat <name>%xn instead.
+     
+    %xctreat/skill <skill>%xn - Which skill will you use for treat rolls.

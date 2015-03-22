@@ -21,15 +21,14 @@ module AresMUSH
       
       def handle
         index = self.num.to_i - 1
-        if (index < 0 || index > FS3Combat.combats.count)
+        if (index < 0 || index >= FS3Combat.combats.count)
           client.emit_failure t('fs3combat.invalid_combat_number')
           return
         end
         
         combat = FS3Combat.combats[index]
         combat.emit t('fs3combat.combat_stopped_by', :name => client.name)
-        
-        FS3Combat.combats.delete(combat)
+        combat.destroy
         
         client.emit_success t('fs3combat.combat_stopped', :num => self.num)
       end

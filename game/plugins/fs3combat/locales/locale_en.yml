@@ -16,10 +16,10 @@ en:
         treat_skill_set: "%{name} will now be used for your treat rolls."
         invalid_treat_skill: "You have to pick a treat skill you have a rating in."
         cant_treat_self: "You can't treat yourself!"
-        too_soon_to_treat: "%{name} has already been treated today.  Try again in %{time}."
+        no_treatable_wounds: "%{name} has no treatable wounds."
         
         active_combats: "Active Combats"
-        invalid_combat_number: "That is not a valid combat number.  See combat/all for a list."
+        invalid_combat_number: "That is not a valid combat number.  See combats for a list."
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         
         combat_stopped_by: "%{name} has stopped the combat."

@@ -34,24 +34,18 @@ module AresMUSH
             return
           end
           
-          error = FS3Combat.check_treat_frequency(model)
-          if (!error.nil?)
-            client.emit_failure error
-            return
-          end
-            
           char = client.char
           ability = char.treat_skill || Global.config["fs3combat"]["default_treat_skill"]
           roll = FS3Skills.one_shot_roll(client, char, :ability => ability)
-          model.last_treated = Time.now
           
           successes = roll[:successes]
           if (successes > 0)
             Global.logger.info "Treat successful #{char.name} treating #{model.name}: #{roll}"
-            FS3Combat.heal_wounds(model, successes)
+            if !FS3Combat.heal_wounds(model, successes)
+              client.emit_failure t('fs3combat.no_treatable_wounds', :name => model.name)
+              return
+            end
           end
-
-          model.save
           
           client.room.emit_ooc t('fs3combat.damage_treated', :doc => char.name, :target => model.name, :success => roll[:success_title]) 
         end
