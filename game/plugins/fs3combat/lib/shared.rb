@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     
     def self.combats
-      CombatInstance.all
+      CombatInstance.all.sort { |c| c.created_at }
     end
     
     def self.is_in_combat?(name)

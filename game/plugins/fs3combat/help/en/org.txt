@@ -2,7 +2,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
 
     %xccombat/start [<mock or real>]%xn - Starts a combat (default real).
     %xccombat/stop <combat #>%xn - Stops a combat. 
-    %xccombat/all%xn%xn - Shows all combats going on. 
+    %xccombats%xn%xn - Shows all combats going on. 
     %xccombat/newturn%xn - Starts the first turn.
     
     %xccombat/join <list of names>=<combat #>/<combatant type>[/<vehicle>]%xn
