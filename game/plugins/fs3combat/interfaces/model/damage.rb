@@ -7,6 +7,7 @@ module AresMUSH
     field :current_severity, :type => String
     field :initial_severity, :type => String
     field :last_treated, :type => Time
+    field :ictime, :type => Time
     field :healing_points, :type => Integer
     field :description, :type => String
     field :is_stun, :type => Boolean

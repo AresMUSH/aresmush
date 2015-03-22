@@ -1,40 +1,58 @@
 fs3combat:
 
-    # Which roles can manage damage
-    roles:
-        can_manage_damage:
-            - admin
-            
-    # Which skill is used for treat rolls if you don't specify anything.
-    default_treat_skill: "First Aid"
-    
-    # Which attribute is used for toughness-related rolls.  Since this is an attribute,
-    # the roll will actually use twice the level (e.g. Body + Body)
-    toughness_attribute: "Body"
-    
-    # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
-    healing_cron:
-        #date: 1
-        #day_of_week: Sat
-        hour: 06
-        minute: 00
-    
-    # Dice penalty for different wound levels.
-    damage_mods:
-        H: 0.0
-        L: 0.25
-        M: 0.75
-        S: 2.0
-        C: 4.0
-    
-    # How many healing points are required to heal a wound down to the next lower level.
-    # Characters receive 1-2 healing points on average each day so you can tweak these numbers
-    # to provide faster or slower healing times.
-    healing_points:
-        H: 0
-        L: 2
-        M: 3
-        S: 4
-        C: 5
-            
+    combatant_types:
+        # For each combatant type, you can specify their starting weapon, armor and
+        # vehicle type.  All of this can be changed by the player once they're in combat
+        # if for some reason it doesn't apply.
+        #
+        # You can also specify whether this type is included in auto-targeting by NPCs.
+        # Typically you would set this to 'false' for passengers in vehicles (because the 
+        # pilot should be targeted instead), or observers.
+        Soldier:
+            auto_target: true
+            weapon: Rifle
+            armor: Tactical
+            #vehicle:
+        Pilot:
+            auto_target: true
+            #weapon:
+            #armor: 
+            #vehicle:
+        Passenger:
+            auto_target: false
+            #weapon:
+            #armor: 
+            #vehicle:
+        Observer:
+            auto_target: false
+            #weapon:
+            #armor:
+            #vehicle:
+
+        # You can also create custom types.  You must define which 'base type'
+        # they behave like.
+        Viper Pilot:
+            auto_target: true
+            weapon: KEW
+            #armor: 
+            vehicle: Viper
+        Raptor Pilot:
+            auto_target: true
+            #weapon: 
+            #armor:
+            vehicle: Raptor
+        Raptor ECO:
+            auto_target: false
+            weapon: ECM
+            # vehicle -- none because they'll typically join their pilot's vehicle.
+        Centurion:
+            auto_target: true
+            weapon: LMG
+            armor: Centurion
+            # vehicle:
+        Raider:
+            auto_target: true
+            weapon: KEW
+            #armor: 
+            vehicle: Raider
+        

@@ -32,6 +32,7 @@ module AresMUSH
         :description => desc,
         :current_severity => severity,
         :initial_severity => severity,
+        :ictime => ICTime.ictime,
         :healing_points => FS3Combat.healing_points(severity),
         :is_stun => is_stun)
      end

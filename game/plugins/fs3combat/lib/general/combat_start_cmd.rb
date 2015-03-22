@@ -11,25 +11,34 @@ module AresMUSH
       end
       
       def crack!
-        self.type = titleize_input(cmd.args)
+        self.type = cmd.args ? titleize_input(cmd.args) : "Real"
       end
+      
+      # TODO - Mock not implemented
+      #def check_mock
+      #  types = ['Mock', 'Real']
+      #  return nil if !self.type
+      #  return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include?(self.type)
+      #  return nil
+      #end
       
       def check_mock
-        types = ['Mock', 'Real']
-        return nil if !self.type
-        return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include?(self.type)
+        return "Sorry, mock is not implemented yet" if self.type != "Real"
         return nil
       end
-      
+        
       def check_not_already_in_combat
-        return t('fs3combat.already_in_combat') if FS3Combat.is_in_combat?(client.char.name)
+        return t('fs3combat.already_in_combat') if client.char.is_in_combat?
         return nil
       end
       
       def handle
-        combat = CombatInstance.create(:organizer => client.char, :is_real => self.type == "Real")
+        is_real = self.type == "Real"
+        combat = CombatInstance.create(:organizer => client.char, :is_real => is_real)
         combat.join(client.char.name, "observer", client.char)
         combat.save
+        
+        client.emit_ooc is_real ? t('fs3combat.start_real_combat') : t('fs3combat.start_mock_combat')
       end
     end
   end

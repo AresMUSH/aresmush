@@ -5,8 +5,9 @@ This is a quick reference for combat organizer commands.  For more details on FS
     %xccombats%xn%xn - Shows all combats going on. 
     %xccombat/newturn%xn - Starts the first turn.
     
-    %xccombat/join <list of names>=<combat #>/<combatant type>[/<vehicle>]%xn
-      Adds people to combat.
+    %xccombat/join <list of names>=<combat #>/<combatant type>
+        See %xccombat/types%xn for a list of combatant types.
+    
     %xccombat/type <name>=<combatant type>%xn - Changes someone's type
 
     %xccombat/gear%xn - Views a gear summary.

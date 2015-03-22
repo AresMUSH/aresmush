@@ -14,19 +14,10 @@ module AresMUSH
         self.num = trim_input(cmd.args)
       end
       
-      def check_number
-        return t('fs3combat.invalid_combat_number') if !self.num.is_integer?
-        return nil
-      end
-      
       def handle
-        index = self.num.to_i - 1
-        if (index < 0 || index >= FS3Combat.combats.count)
-          client.emit_failure t('fs3combat.invalid_combat_number')
-          return
-        end
-        
-        combat = FS3Combat.combats[index]
+        combat = FS3Combat.find_combat_by_number(client, self.num)
+        return if (!combat)
+
         combat.emit t('fs3combat.combat_stopped_by', :name => client.name)
         combat.destroy
         

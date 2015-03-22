@@ -8,7 +8,7 @@ module AresMUSH
       
       skill = FS3Skills.ability_rating(char, ability)
       
-      if (skill == 0 && !client.nil?)
+      if (skill == 0 && client)
         client.emit_ooc t('fs3skills.confirm_zero_skill', :name => char.name, :ability => ability)
       end
 

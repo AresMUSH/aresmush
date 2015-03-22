@@ -20,5 +20,9 @@ module AresMUSH
       return true if time_to_go < 0
       return false
     end
+    
+    def is_in_combat?
+      !combatant.nil?
+    end
   end
 end

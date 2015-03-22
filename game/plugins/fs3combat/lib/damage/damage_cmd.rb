@@ -17,27 +17,19 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          text = t('fs3combat.damage_title', :name => model.name)
-          text << "%R%R"
-          text << t('fs3combat.damage_titlebar')
-          text << "%R%l2"
-          
-          damage = model.damage.each do |d|
-            text << "%R"
-            text << damage_line(d)
-          end
-          
-          client.emit BorderedDisplay.text text
+          list = model.damage.map { |d| damage_line(d) }
+          title = t('fs3combat.damage_title', :name => model.name)
+          client.emit BorderedDisplay.subtitled_list list, title, t('fs3combat.damage_titlebar')
         end
       end
       
       def damage_line(damage)
-        line = left(OOCTime.local_short_timestr(client, damage.created_at), 13)
-        line << left(damage.description, 27)
+        line = left(ICTime.ic_datestr(damage.ictime), 13)
+        line << left(damage.description, 30)
         initial_sev = damage.initial_severity
         current_sev = FS3Combat.display_severity(damage.current_severity)
         
-        line << left("#{current_sev} (#{initial_sev})",25)
+        line << left("#{current_sev} (#{initial_sev})", 22)
         line << center(damage.is_treatable? ? t('global.y') : t('global.n'), 10)
       end
     end

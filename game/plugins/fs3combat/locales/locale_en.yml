@@ -2,7 +2,7 @@ en:
     fs3combat:
         invalid_severity: "Invalid severity level.  Try one of these: %{severities}."
         damage_title: "Damage Report for %{name}"
-        damage_titlebar: "Date         Description                Severity (original)      Treatable?"
+        damage_titlebar: "Date         Description                   Severity (original)   Treatable?"
         damage_inflicted: "You inflict damage on %{name}."
         
         healed_wound: "%xh%xxHealed%xn"
@@ -22,17 +22,27 @@ en:
         must_wait_to_treat: "You must wait a few minutes before you can treat again."
         
         active_combats: "Active Combats"
+        active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_number: "That is not a valid combat number.  See combats for a list."
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         
         combat_stopped_by: "%{name} has stopped the combat."
         combat_stopped: "You stop combat %{num}."
         
-        already_in_combat: "You are already in combat."
+        already_in_combat: "Already in combat."
+        not_in_combat: "Not in combat."
         start_real_combat: "You start a real combat.  Damage will be permanent."
         start_mock_combat: "You start a mock combat.  Damage will be erased at the end."
         
         has_joined: "%{name} has joined the combat as a %{type}."
+        has_left: "%{name} has left the combat."
+        invalid_combatant_type: "That is not a valid combatant type.  See combat/types for a list."
         
         organizer_emit: "%xc<FS3Combat>%xn %{message}"
         combat_emit: "%xb<FS3Combat>%xn %{message}"
+        
+        combatant_types: "Combatant Types"
+        combatant_types_titlebar: "Type                Weapon              Armor               Vehicle"
+        weapon_title: "Weapon:"
+        armor_title: "Armor:"
+        vehicle_title: "Vehicle:"

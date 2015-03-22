@@ -7,19 +7,17 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
     %xccombat/newturn%xn - Trigger a new turn. (Organizer only)
 
     %xccombats%xn - Lists combats.
-    %xccombat/join <combat #>/<combatant type>[/vehicle]%xn
-        type = soldier, pilot or passenger
-        If pilot, specify your vehicle type (e.g. Viper)
-        If passenger, specify someone else's specific vehicle number (e.g. Viper-123)
+    %xccombat/join <combat #>/<combatant type>
+        See %xccombat/types%xn for a list of combatant types.
     %xccombat/leave%xn - Leaves combat.
 
     %xccombat%xn - View combat display
          
-    %xccombat/vehicle <vehicle>%xn - Same vehicle options as when you join.
+    %xccombat/vehicle <vehicle>%xn - Use a vehicle type from %xcvehicles%xn to create a new
+       vehicle, or a specific vehicle name from %xccombat%xn to join an existing one.
     %xccombat/weapon <weapon>%xn - Set your weapon.
     %xccombat/armor <armor>%xn - Set your armor.
-    %xccombat/stance <stance>%xn - Set your stance. 
-        (normal, banzai, cautious, evade, hidden)
+    %xccombat/stance <stance>%xn - Set your stance (normal, banzai, cautious, evade, hidden)
 
     %xccombat/attack <target>%xn - Attack someone.
     %xccombat/pass%xn - Pass this turn.

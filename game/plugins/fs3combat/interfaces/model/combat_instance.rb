@@ -22,7 +22,15 @@ module AresMUSH
     def join(name, combatant_type, char = nil)
       combatant = Combatant.create(:name => name, :combatant_type => combatant_type, :character => char)
       self.combatants << combatant
-      emit(t('fs3combat.has_joined', :name => name, :type => combatant_type))
+      emit t('fs3combat.has_joined', :name => name, :type => combatant_type)
+    end
+    
+    def leave(name)
+      # TODO - Leave should wipe out mock damage
+      emit t('fs3combat.has_left', :name => name)
+      combatant = find_combatant(name)
+      self.combatants.delete(combatant)
+      combatant.destroy
     end
       
     def emit(message, npcmaster = nil)

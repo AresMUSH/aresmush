@@ -36,6 +36,24 @@ module AresMUSH
           @instance.join("Bob", "soldier", @bob)
         end
       end
+      
+      describe :leave do
+        it "should remove a combatant" do
+          @bob.stub(:emit)
+          @harvey.stub(:emit)
+          @harvey.should_receive(:destroy)
+          @instance.leave("Harvey")
+          @instance.combatants[0].should eq @bob
+          @instance.combatants.count.should eq 1
+        end
+        
+        it "should emit to combat" do
+          @bob.should_receive(:emit).with("fs3combat.has_joined")
+          @harvey.should_receive(:emit).with("fs3combat.has_joined")
+          @harvey.stub(:destroy)
+          @instance.leave("Harvey")
+        end
+      end
             
       describe :has_combatant? do
         it "should return true if there is someone with the name" do

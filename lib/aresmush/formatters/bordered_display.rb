@@ -21,7 +21,26 @@ module AresMUSH
       if (!footer.nil?)
         output << "%r#{footer}"
       end
+      
       return BorderedDisplay.text(output, title, false)
+    end
+    
+    def self.subtitled_list(items, title, subtitle, footer = nil)
+      output = "%xh#{title}%xn"
+      output << "%R%R"
+      output << "%xh#{subtitle}%xn"
+      output << "%R%l2"
+      
+      if (!items.nil?)
+        items.each do |i|
+          output << "%r" << i
+        end
+      end
+      if (!footer.nil?)
+        output << "%r#{footer}"
+      end
+      
+      return BorderedDisplay.text(output)
     end
     
     def self.paged_list(items, page, items_per_page = 20, title = nil, footer = nil)
