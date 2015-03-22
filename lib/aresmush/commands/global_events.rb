@@ -47,6 +47,9 @@ module AresMUSH
     end
   end
   
+  class GameStartedEvent
+  end
+  
   class ConfigUpdatedEvent
   end
   

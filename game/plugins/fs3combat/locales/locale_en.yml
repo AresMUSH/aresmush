@@ -18,6 +18,18 @@ en:
         cant_treat_self: "You can't treat yourself!"
         too_soon_to_treat: "%{name} has already been treated today.  Try again in %{time}."
         
+        active_combats: "Active Combats"
+        invalid_combat_number: "That is not a valid combat number.  See combat/all for a list."
+        invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
+        
+        combat_stopped_by: "%{name} has stopped the combat."
+        combat_stopped: "You stop combat %{num}."
+        
         already_in_combat: "You are already in combat."
         start_real_combat: "You start a real combat.  Damage will be permanent."
         start_mock_combat: "You start a mock combat.  Damage will be erased at the end."
+        
+        has_joined: "%{name} has joined the combat as a %{type}."
+        
+        organizer_emit: "%xc<FS3Combat>%xn %{message}"
+        combat_emit: "%xb<FS3Combat>%xn %{message}"

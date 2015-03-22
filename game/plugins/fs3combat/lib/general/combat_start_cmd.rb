@@ -3,7 +3,6 @@ module AresMUSH
     class CombatStartCmd
       include Plugin
       include PluginRequiresLogin
-      include PluginRequiresArgs
       
       attr_accessor :type
       
@@ -19,15 +18,22 @@ module AresMUSH
         self.type = titleize_input(cmd.args)
       end
       
+      def check_mock
+        types = ['mock', 'real']
+        return nil if !self.type
+        return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include(self.type)
+        return nil
+      end
+      
       def check_not_already_in_combat
         return t('fs3combat.already_in_combat') if FS3Combat.is_in_combat?(client.char.name)
         return nil
       end
       
       def handle
-        FS3Combat.combats << {}
-        index = FS3Combat.combats.length - 1
-        FS3Combat.add_to_combat(client, client.char, index, "organizer")
+        combat = CombatInstance.new(client.char, self.type == "mock")
+        FS3Combat.combats << combat
+        combat.join(client.char.name, "observer", client.char)
       end
     end
   end

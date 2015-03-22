@@ -16,6 +16,7 @@ module AresMUSH
           Global.client_monitor.connection_established(connection)
         end
         Global.logger.info "Server started on #{host}:#{port}."
+        Global.dispatcher.queue_event GameStartedEvent.new
       end
     end   
   end

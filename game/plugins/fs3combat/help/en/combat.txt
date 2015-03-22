@@ -6,13 +6,16 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
     %xccombat/start%xn or %xccombat/start mock%xn - Starts a combat. (Organizer only)
     %xccombat/newturn%xn - Trigger a new turn. (Organizer only)
 
-    %xccombat/all%xn - Lists combats.
-    %xccombat/join <combat #>/<combatant type>[/<vehicle>]%xn
-         combat/join 1/soldier  or   combat/join 2/pilot/Viper
+    %xccombats%xn - Lists combats.
+    %xccombat/join <combat #>/<combatant type>[/vehicle]%xn
+        type = soldier, pilot or passenger
+        If pilot, specify your vehicle type (e.g. Viper)
+        If passenger, specify someone else's specific vehicle number (e.g. Viper-123)
     %xccombat/leave%xn - Leaves combat.
 
     %xccombat%xn - View combat display
          
+    %xccombat/vehicle <vehicle>%xn - Same vehicle options as when you join.
     %xccombat/weapon <weapon>%xn - Set your weapon.
     %xccombat/armor <armor>%xn - Set your armor.
     %xccombat/stance <stance>%xn - Set your stance. 
