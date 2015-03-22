@@ -21,6 +21,16 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
+      def check_in_combat
+        return t('fs3combat.use_combat_treat_instead') if FS3Combat.is_in_combat?(client.char.name)
+        return nil
+      end
+      
+      def check_can_treat
+        return t('fs3combat.must_wait_to_treat') if !client.char.can_treat?
+        return nil
+      end
+      
       def handle
         VisibleTargetFinder.with_something_visible(self.name, client) do |model|
           
@@ -34,6 +44,12 @@ module AresMUSH
             return
           end
           
+          wounds = model.treatable_wounds
+          if (wounds.empty?)
+            client.emit_failure t('fs3combat.no_treatable_wounds', :name => model.name)
+            return
+          end
+          
           char = client.char
           ability = char.treat_skill || Global.config["fs3combat"]["default_treat_skill"]
           roll = FS3Skills.one_shot_roll(client, char, :ability => ability)
@@ -41,11 +57,11 @@ module AresMUSH
           successes = roll[:successes]
           if (successes > 0)
             Global.logger.info "Treat successful #{char.name} treating #{model.name}: #{roll}"
-            if !FS3Combat.heal_wounds(model, successes)
-              client.emit_failure t('fs3combat.no_treatable_wounds', :name => model.name)
-              return
-            end
+            FS3Combat.heal_wounds(char, wounds, successes)
           end
+          
+          client.char.last_treated = Time.now
+          client.char.save
           
           client.room.emit_ooc t('fs3combat.damage_treated', :doc => char.name, :target => model.name, :success => roll[:success_title]) 
         end

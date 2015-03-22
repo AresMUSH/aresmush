@@ -7,3 +7,5 @@ This is a quick reference for the combat damage commands. For more details on FS
        Inside combat, you use %xccombat/treat <name>%xn instead.
      
     %xctreat/skill <skill>%xn - Which skill will you use for treat rolls.
+    
+    %xcdamage/inflict <name>=<description>/<severity>%xn - Inflicts damage outside combat.

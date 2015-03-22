@@ -1,5 +1,10 @@
 fs3combat:
 
+    # Which roles can manage damage
+    roles:
+        can_manage_damage:
+            - admin
+            
     # Which skill is used for treat rolls if you don't specify anything.
     default_treat_skill: "First Aid"
     

@@ -1,7 +1,8 @@
 en:
     fs3combat:
-        invalid_severity: "Invalid severity level."
+        invalid_severity: "Invalid severity level.  Try one of these: %{severities}."
         damage_title: "Damage Report for %{name}"
+        damage_titlebar: "Date         Description                Severity (original)      Treatable?"
         damage_inflicted: "You inflict damage on %{name}."
         
         healed_wound: "%xh%xxHealed%xn"
@@ -17,6 +18,8 @@ en:
         invalid_treat_skill: "You have to pick a treat skill you have a rating in."
         cant_treat_self: "You can't treat yourself!"
         no_treatable_wounds: "%{name} has no treatable wounds."
+        use_combat_treat_instead: "You cannot use this command in combat.  Use combat/treat instead."
+        must_wait_to_treat: "You must wait a few minutes before you can treat again."
         
         active_combats: "Active Combats"
         invalid_combat_number: "That is not a valid combat number.  See combats for a list."

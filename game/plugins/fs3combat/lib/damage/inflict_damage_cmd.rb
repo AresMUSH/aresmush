@@ -24,8 +24,13 @@ module AresMUSH
         self.severity = titleize_input(cmd.args.arg3)
       end
       
+      def check_can_manage
+        return t('dispatcher.not_allowed') if !FS3Combat.can_manage_damage?(client.char)
+        return nil
+      end
+      
       def check_severity
-        return t('fs3combat.invalid_severity') if !FS3Combat.damage_severities.include?(self.severity)
+        return t('fs3combat.invalid_severity', :severities => FS3Combat.damage_severities.join(" ")) if !FS3Combat.damage_severities.include?(self.severity)
         return nil
       end
       

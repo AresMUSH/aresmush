@@ -4,6 +4,11 @@ module AresMUSH
       [ 'H', 'L', 'M', 'S', 'C' ]
     end
     
+    def self.can_manage_damage?(actor)
+      return actor.has_any_role?(Global.config["fs3combat"]["roles"]["can_manage_damage"])
+    end
+    
+    
     def self.display_severity(value)
       case value
       when 'H'
@@ -24,7 +29,7 @@ module AresMUSH
       Global.logger.info "Damage inflicted on #{char.name}: #{desc} #{severity} stun=#{is_stun}"
 
       Damage.create(:character => char,
-        :descripton => desc,
+        :description => desc,
         :current_severity => severity,
         :initial_severity => severity,
         :healing_points => FS3Combat.healing_points(severity),
@@ -35,20 +40,18 @@ module AresMUSH
        Global.config["fs3combat"]["healing_points"][wound_level]
      end
      
-     # If return is true, don't forget to save.
-     def self.heal_wounds(char, heal_roll)
-       unhealed_wounds = char.unhealed_wounds
-       return false if unhealed_wounds.empty?
-
+     def self.heal_wounds(char, wounds, treat_roll = 0)
+       return if wounds.empty?
+       
        ability = Global.config["fs3combat"]["toughness_attribute"]
        tough_roll = FS3Skills.one_shot_roll(nil, char, { :ability => ability, :ruling_attr => ability })
 
-       points = ((heal_roll + tough_roll[:successes]) / 2.0).ceil
+       points = ((treat_roll + tough_roll[:successes]) / 2.0).ceil
        
-       Global.logger.info "Healing wounds on #{char.name}: #{heal_roll} #{tough_roll[:successes]}."
+       Global.logger.info "Healing wounds on #{char.name}: #{treat_roll} #{tough_roll[:successes]}."
        
-       unhealed_wounds.each do |d|
-         d.heal(points, heal_roll > 0)
+       wounds.each do |d|
+         d.heal(points, treat_roll > 0)
        end
        return true
      end
