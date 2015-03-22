@@ -27,12 +27,12 @@ module AresMUSH
     def heal(points, was_treated = false)
       return if self.healing_points == 0
     
-      # Apply healing points
-      self.healing_points = self.healing_points - points
-    
-      if (points < 0)
+      if (points <= 0)
         points = 1
       end
+      
+      # Apply healing points
+      self.healing_points = self.healing_points - points
       
       if (was_treated)
         self.last_treated = Time.now

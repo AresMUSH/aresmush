@@ -18,6 +18,25 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
+      describe :join do
+        before do
+          @combatants = []
+          Combatant.stub(:create).with(:name => "Bob", :combatant_type => "soldier", :character => @bob) { @bob }
+          @instance.stub(:combatants) { @combatants }
+        end
+        
+        it "should create a new combatant" do
+          @bob.stub(:emit)
+          @instance.join("Bob", "soldier", @bob)
+          @instance.combatants[0].should eq @bob
+        end
+        
+        it "should emit to combat" do
+          @bob.should_receive(:emit).with("fs3combat.has_joined")
+          @instance.join("Bob", "soldier", @bob)
+        end
+      end
+            
       describe :has_combatant? do
         it "should return true if there is someone with the name" do
           @instance.has_combatant?("Bob").should be_true
