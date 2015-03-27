@@ -6,6 +6,9 @@ module AresMUSH
     field :name, :type => String
     field :name_upcase, :type => String
     field :combatant_type, :type => String
+    field :weapon, :type => String
+    field :weapon_specials, :type => Array
+    field :armor, :type => String
       
     belongs_to :character, :class_name => "AresMUSH::Character"
     belongs_to :combat, :class_name => "AresMUSH::CombatInstance"

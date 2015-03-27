@@ -33,5 +33,21 @@ module AresMUSH
       
       return FS3Combat.combats[index]
     end
+    
+    def self.with_a_combatant(name, client, &block)
+      combat = FS3Combat.combat(name)
+      if (!combat)
+        client.emit_failure t('fs3combat.not_in_combat', :name => name)
+        return
+      end
+      
+      combatant = combat.find_combatant(name)
+      
+      yield combat, combatant
+    end
+    
+    def self.npcmaster_text(name, actor)
+      actor.name == name ? nil : actor.name
+    end
   end
 end

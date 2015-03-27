@@ -28,7 +28,7 @@ module AresMUSH
       end
         
       def check_not_already_in_combat
-        return t('fs3combat.already_in_combat') if client.char.is_in_combat?
+        return t('fs3combat.already_in_combat', :name => client.char.name) if client.char.is_in_combat?
         return nil
       end
       

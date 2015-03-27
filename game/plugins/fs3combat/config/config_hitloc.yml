@@ -1,0 +1,120 @@
+fs3combat:
+    hitloc:
+        Humanoid: 
+            default:
+                - Left Leg
+                - Right Leg
+                - Left Hand
+                - Right Hand
+                - Left Arm
+                - Right Arm
+                - Abdomen
+                - Head
+                - Neck
+                - Abdomen
+                - Chest
+                - Chest
+                - Chest
+                - Chest
+                - Chest
+            vital areas:
+                Head: Critical
+                Neck: Critical
+                Chest: Vital
+                Abdomen: Vital
+        Viper:
+            default:
+                - Engine
+                - Tail
+                - Tail
+                - Right Wing
+                - Left Wing
+                - Weapon
+                - Nose
+                - Nose
+                - Cockpit
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital areas:
+                Cockpit: Critical
+                Controls: Critical
+                Body: Vital
+                Engine: Vital
+            crew areas:
+                - Cockpit
+        Raptor:
+            default:
+                - Engine
+                - Cabin
+                - Cabin
+                - Right Wing
+                - Left Wing
+                - ECM
+                - Engine
+                - Engine
+                - Cockpit
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital areas:
+                Cockpit: Critical
+                Controls: Critical
+                Body: Vital
+                Engine: Vital
+            crew areas:
+                - Cockpit
+                - Cabin
+        Raider:
+            default:
+                - Engine
+                - Left Wing
+                - Left Wing
+                - Right Wing
+                - Left Wing
+                - Weapon
+                - Right Wing
+                - Right Wing
+                - Cockpit
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital areas:
+                Cockpit: Critical
+                Controls: Critical
+                Body: Vital
+                Engine: Vital
+            crew areas:
+                - Cockpit
+        AA Battery:
+            default:
+                - Weapon
+                - Weapon
+                - Weapon
+                - Controls
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital areas:
+                Controls: Critical
+                Weapon: Critical
+                Body: Vital
+            
+                

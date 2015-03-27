@@ -15,7 +15,8 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
          
     %xccombat/vehicle <vehicle>%xn - Use a vehicle type from %xcvehicles%xn to create a new
        vehicle, or a specific vehicle name from %xccombat%xn to join an existing one.
-    %xccombat/weapon <weapon>%xn - Set your weapon.
+    %xccombat/weapon <weapon>[/<comma-separated specials>]%xn - Set your weapon and 
+       any weapon specials.
     %xccombat/armor <armor>%xn - Set your armor.
     %xccombat/stance <stance>%xn - Set your stance (normal, banzai, cautious, evade, hidden)
 

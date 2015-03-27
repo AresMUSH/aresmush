@@ -2,6 +2,7 @@ en:
     global:
         y:  "Yes"
         n:  "No"
+        none: "None"
 
     dispatcher:
         unexpected_error: |

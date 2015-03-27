@@ -29,8 +29,8 @@ en:
         combat_stopped_by: "%{name} has stopped the combat."
         combat_stopped: "You stop combat %{num}."
         
-        already_in_combat: "Already in combat."
-        not_in_combat: "Not in combat."
+        already_in_combat: "%{name} is already in combat."
+        not_in_combat: "%{name} is not in combat."
         start_real_combat: "You start a real combat.  Damage will be permanent."
         start_mock_combat: "You start a mock combat.  Damage will be erased at the end."
         
@@ -46,3 +46,42 @@ en:
         weapon_title: "Weapon:"
         armor_title: "Armor:"
         vehicle_title: "Vehicle:"
+
+        weapons_title: "Weapons List"
+        invalid_weapon: "That is not a valid weapon."
+        weapon_title_description: "Description:"
+        weapon_title_attack_skill: "Attack Skill:"
+        weapon_title_defense_skill: "Defense Skill:"
+        weapon_title_lethality: "Lethality Mod:"
+        weapon_title_penetration: "Penetration:"
+        weapon_title_weapon_type: "Weapon Type:"
+        weapon_title_is_automatic: "Is Automatic:"
+        weapon_title_ammo: "Ammo:"
+        weapon_title_recoil: "Recoil:"
+        weapon_title_damage_type: "Damage Type:"
+        weapon_title_accuracy: "Accuracy Mod:"
+        weapon_title_has_shrapnel: "Has Shrapnel:" 
+        weapon_title_reload_turns: "Reload Time:"
+        weapon_title_allowed_specials: "Allowed Specials:"
+        invalid_weapon_special: "That is not a valid special for that weapon."
+
+        armor_title: "Armor List"
+        invalid_armor: "That is not a valid armor type."
+        armor_title_description: "Description:"
+        armor_title_protection: "Protection:"
+        
+        vehicles_title: "Vehicle List"
+        vehicle_title_description: "Description:"
+        vehicle_title_pilot_skill: "Piloting Skill:"
+        vehicle_title_dodge: "Dodge Bonus:"
+        vehicle_title_weapons: "Weapons:"
+        vehicle_title_armor: "Armor:"
+        vehicle_title_hitloc_chart: "Hit Locations:"
+        vehicle_title_toughness: "Toughness:"
+        
+        hitlocs_for: "Hit Locations for %{name}"
+        
+        weapon_changed: "%{name} has changed weapons to %{weapon}.  Specials: %{specials}"
+        armor_changed: "%{name} has changed armor to %{armor}."
+        
+        

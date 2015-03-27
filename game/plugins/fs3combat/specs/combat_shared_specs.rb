@@ -9,7 +9,7 @@ module AresMUSH
           @combat1 = double
           @combat2 = double
           @client = double
-          FS3Combat.stub{:combats} { [@combat1, @combat2] }
+          FS3Combat.stub(:combats) {[@combat1, @combat2]}
           SpecHelpers.stub_translate_for_testing
         end
         
