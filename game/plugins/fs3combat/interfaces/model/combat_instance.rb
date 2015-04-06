@@ -29,7 +29,7 @@ module AresMUSH
       # TODO - Leave should wipe out mock damage
       emit t('fs3combat.has_left', :name => name)
       combatant = find_combatant(name)
-      self.combatants.delete(combatant)
+      self.combatants.delete combatant
       combatant.destroy
     end
       

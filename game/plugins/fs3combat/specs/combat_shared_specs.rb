@@ -30,7 +30,7 @@ module AresMUSH
         
         it "should fail if > count" do
           @client.should_receive(:emit_failure).with("fs3combat.invalid_combat_number")
-          FS3Combat.find_combat_by_number(@client, "2").should be_nil
+          FS3Combat.find_combat_by_number(@client, "3").should be_nil
         end
         
         it "should succeed if valid number string specified" do

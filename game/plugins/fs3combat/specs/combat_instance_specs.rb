@@ -11,7 +11,7 @@ module AresMUSH
         @bob.stub(:name_upcase) { "BOB" }
         
         @harvey = double
-        @harvey.stub(:name_upcase) { "BOB" }
+        @harvey.stub(:name_upcase) { "HARVEY" }
         
         @instance.stub(:combatants) { [ @bob, @harvey ] }
         
@@ -38,18 +38,16 @@ module AresMUSH
       end
       
       describe :leave do
-        it "should remove a combatant" do
+        it "should destroy a combatant" do
           @bob.stub(:emit)
           @harvey.stub(:emit)
           @harvey.should_receive(:destroy)
           @instance.leave("Harvey")
-          @instance.combatants[0].should eq @bob
-          @instance.combatants.count.should eq 1
         end
         
         it "should emit to combat" do
-          @bob.should_receive(:emit).with("fs3combat.has_joined")
-          @harvey.should_receive(:emit).with("fs3combat.has_joined")
+          @bob.should_receive(:emit).with("fs3combat.has_left")
+          @harvey.should_receive(:emit).with("fs3combat.has_left")
           @harvey.stub(:destroy)
           @instance.leave("Harvey")
         end
