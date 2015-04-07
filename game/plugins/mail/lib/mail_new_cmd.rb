@@ -14,7 +14,8 @@ module AresMUSH
         if (unread.nil?)
           client.emit_ooc t('mail.no_unread_messages')
         else
-          client.emit Mail.message_renderer.render(client, unread)
+          template = MessageTemplate.new(client, unread)
+          client.emit template.display
           unread.read = true
           unread.save
         end
