@@ -10,7 +10,7 @@ module AresMUSH
       
       def display
         text = "%l1%r"
-        text << "%xh%xg#{name}%xn (#{fullname_and_rank})%r"
+        text << "%xh%xg#{name}%xn (#{military_name})%r"
         text << "%r"
         text << "#{description}#{details}%r"
         text << "%r"
@@ -39,6 +39,16 @@ module AresMUSH
       # Fullname, with rank if set (e.g. Commander William Adama)
       def fullname_and_rank
         @char.rank.nil? ? @char.fullname : "#{@char.rank} #{@char.fullname}"
+      end
+      
+      # Fullname with rank and callsign, if set.  (e.g. Commander William "Husker" Adama)
+      def military_name
+        return "" if !@char.fullname
+        first_name = @char.fullname.first(" ")
+        last_name = @char.fullname.rest(" ")
+        rank = @char.rank ? "#{@char.rank} " : ""
+        callsign = @char.callsign ? "\"#{@char.callsign}\" " : ""
+        "#{rank}#{first_name} #{callsign}#{last_name}"
       end
       
       def fullname

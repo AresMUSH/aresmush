@@ -6,7 +6,7 @@ ranks:
             # - another role
                 
     # What group is used to determine rank?  (Must match your groups config)
-    rank_group: Department
+    rank_group: Faction
     
     # List available ranks by faction.  
     ranks:
