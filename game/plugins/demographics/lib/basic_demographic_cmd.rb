@@ -82,6 +82,14 @@ module AresMUSH
       end
     end
     
+    class CallsignCmd
+      include BasicDemographicCmd
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("callsign")
+      end
+    end
+    
     class Reputation
       include BasicDemographicCmd
       

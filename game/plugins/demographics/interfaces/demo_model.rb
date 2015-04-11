@@ -9,6 +9,7 @@ module AresMUSH
     field :eyes, :type => String
     field :reputation, :type => String
     field :birthdate, :type => Date
+    field :callsign, :type => String
     
     def age
       Demographics.calculate_age(self.birthdate)

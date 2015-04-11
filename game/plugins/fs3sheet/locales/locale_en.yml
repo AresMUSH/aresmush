@@ -25,6 +25,7 @@ en:
         position_title: "Position:"
         department_title: "Department:"
         faction_title: "Faction:"
+        callsign_title: "Callsign:"
         xp_title: "XP:"
         luck_title: "Luck Points:"
         

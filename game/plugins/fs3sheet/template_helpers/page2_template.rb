@@ -23,7 +23,7 @@ module AresMUSH
 
         text << "#{colony_title} #{colony} #{position_title} #{position}%r"
         text << "#{faction_title} #{faction} #{department_title} #{department}%r"
-        text << "#{rank_title} #{rank}%r"
+        text << "#{rank_title} #{rank} #{callsign_title} #{callsign}%r"
 
         text << "%l2%r"
         text << "#{reputation_title}%r"
@@ -88,6 +88,10 @@ module AresMUSH
         "%xh#{t('sheet.reputation_title')}%xn #{t('sheet.reputation_subtitle')}"
       end
       
+      def callsign_title
+        format_field_title(t('sheet.callsign_title'))
+      end
+      
       def faction_title
         format_field_title(t('sheet.faction_title'))
       end
@@ -118,6 +122,10 @@ module AresMUSH
       
       def fullname
         format_field @char.fullname
+      end
+      
+      def callsign
+        format_field @char.callsign
       end
       
       def gender
