@@ -1,5 +1,5 @@
 module AresMUSH
-  module Bg
+  module Chargen
     class BgSetCmd
       include Plugin
       include PluginRequiresLogin
@@ -31,13 +31,13 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          if (!Bg.can_edit(client.char, model, client))
+          if (!Chargen.can_edit_bg?(client.char, model, client))
             return
           end
           
           model.background = self.background
           model.save
-          client.emit_success t('bg.bg_set')
+          client.emit_success t('chargen.bg_set')
         end
       end
     end

@@ -39,7 +39,7 @@ module AresMUSH
 
             Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{cmd}."
       
-            Timeout.timeout(25) do
+            Timeout.timeout(4) do
               socket = TCPSocket.new host, port
               encrypted = ApiCrypt.encrypt(key, cmd.to_s)
               sleep 1

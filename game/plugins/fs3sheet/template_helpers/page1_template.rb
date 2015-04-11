@@ -9,6 +9,87 @@ module AresMUSH
         @char = char
       end
       
+      def display
+        text = header_display()
+        text << "%l2%r"
+
+        text << attributes_display()
+        text << "%r"
+        
+        text << action_skills_display()
+        text << "%r"
+
+        text << background_skills_display()
+        text << "%r"
+
+        text << languages_display()
+        text << "%r"
+        
+        text << quirks_display()
+        text << "%r%r"
+        
+        text << footer_display()
+        text << "%r"
+        text << "%l1"
+        
+        text
+      end
+      
+      def header_display
+        text = "%l1%r"
+        text << "%xh#{name}%xn #{approval_status} #{page_title}%r"
+        
+        text
+      end
+              
+      def attributes_display
+        text = attributes_title()
+        @char.fs3_attributes.keys.each_with_index do |a, i| 
+          text << format_attr(a, i)
+        end
+        
+        text
+      end
+        
+      def action_skills_display
+        text = action_skills_title()
+        @char.fs3_action_skills.keys.each_with_index do |s, i| 
+           text << format_skill(s, i)
+         end
+        
+        text
+      end
+      
+      def background_skills_display
+        text = background_skills_title()
+        @char.fs3_background_skills.keys.each_with_index do |s, i| 
+           text << format_skill(s, i)
+         end
+        
+        text
+      end
+      
+      def languages_display
+        text = languages_title()
+        text << "%r"
+        text << @char.fs3_languages.join(", ")
+        
+        text
+      end
+      
+      def quirks_display
+        text = quirks_title()
+        @char.fs3_quirks.each do |k, v|
+           text << "%R%xh#{k}%xn - #{v}"
+         end
+        
+        text
+      end
+      
+      def footer_display
+        "#{xp_title} #{xp} #{luck_title} #{luck}"
+      end
+      
       def name
         left(@char.name, 25)
       end
@@ -28,29 +109,6 @@ module AresMUSH
       
       def page_title
         right(t('sheet.abilities_page_title'), 28)
-      end
-      
-      def attributes
-        attrs = @char.fs3_attributes
-        attrs.keys.each_with_index.map { |a, i| format_attr(a, i)}
-      end
-
-      def action_skills
-        skills = @char.fs3_action_skills
-        skills.keys.each_with_index.map { |s, i| format_skill(s, i)}
-      end
-      
-      def background_skills
-        skills = @char.fs3_background_skills
-        skills.keys.each_with_index.map { |s, i| format_skill(s, i)}
-      end
-      
-      def languages
-        @char.fs3_languages.join(", ")
-      end
-      
-      def quirks
-        @char.fs3_quirks.each.map { |k, v| "%xh#{k}%xn - #{v}"}
       end
       
       def xp

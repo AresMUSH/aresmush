@@ -23,7 +23,8 @@ module AresMUSH
       
       def handle
         Bbs.with_a_board(self.board_name, client) do |board|  
-          client.emit Bbs.board_renderer.render(board, client)
+          template = BoardTemplate.new(board, client)
+          client.emit template.display
         end
       end
     end

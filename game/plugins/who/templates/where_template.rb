@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class WhoTemplate
+    class WhereTemplate
       include TemplateFormatters
       
       # NOTE!  Because so many fields are shared between the who and where templates,
@@ -13,17 +13,15 @@ module AresMUSH
       end
       
       def display
-        text = header(t('who.who_header'))
+        text = header(t('who.where_header'))
         
-        chars_by_handle.each do |c|
+        chars_by_room.each do |c|
           text << "%R"
           text << char_status(c)
           text << " "
           text << char_name(c)
           text << " "
-          text << char_handle(c)
-          text << " "
-          text << char_faction(c)
+          text << char_room(c)
           text << " "
           text << char_connected(c)
           text << " "

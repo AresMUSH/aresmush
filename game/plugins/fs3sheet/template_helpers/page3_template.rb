@@ -9,6 +9,16 @@ module AresMUSH
         @char = char
       end
       
+      def display
+        text = "%l1%r"
+        text << "%xh#{name}%xn #{approval_status} #{page_title}%r"
+        text << "%l2%r"
+        text << "#{background}%r"
+        text << "%l1"
+        
+        text
+      end
+      
       def name
         left(@char.name, 25)
       end

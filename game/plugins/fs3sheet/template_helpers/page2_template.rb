@@ -9,6 +9,30 @@ module AresMUSH
         @char = char
       end
       
+      def display
+        text = "%l1%r"
+        text << "%xh#{name}%xn #{approval_status} #{page_title}%r"
+        text << "%l2%r"
+        text << "#{fullname_title} #{fullname}%r"
+        text << "#{gender_title} #{gender} #{skin_title} #{skin}%r"
+        text << "#{height_title} #{height} #{physique_title} #{physique}%r"
+        text << "#{hair_title} #{hair} #{eyes_title} #{eyes}%r"
+        text << "#{age_title} #{age} #{birthdate_title} #{birthdate}%r"
+        
+        text << "%l2%r"
+
+        text << "#{colony_title} #{colony} #{position_title} #{position}%r"
+        text << "#{faction_title} #{faction} #{department_title} #{department}%r"
+        text << "#{rank_title} #{rank}%r"
+
+        text << "%l2%r"
+        text << "#{reputation_title}%r"
+        text << "#{reputation}%r"
+        text << "%l1"
+
+        text
+      end
+        
       def name
         left(@char.name, 25)
       end

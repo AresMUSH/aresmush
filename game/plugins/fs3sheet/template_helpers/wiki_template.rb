@@ -9,6 +9,27 @@ module AresMUSH
         @char = char
       end
       
+      def display
+        text = "[[include characterbox%r"
+        text << "|image=%r"
+        text << "|actor=#{ actor }%r"
+        text << "|fullname=#{ fullname }%r"
+        text << "|age=#{ age }%r"
+        text << "|alias=[!-- Aliases or nicknames --]%r"
+        text << "|colony=#{ colony }%r"
+        text << "|department=#{ department }%r"
+        text << "|position=#{ position }%r"
+        text << "|rank=#{ rank }%r"
+        text << "|callsign=[!-- Callsign --]%r"
+        text << "|height=#{ height }%r"
+        text << "|physique=#{ physique }%r"
+        text << "|eyes=#{ eyes }%r"
+        text << "|hair=#{ hair }%r"
+        text << "]]"
+        
+        text
+      end
+      
       def name
         @char.name
       end

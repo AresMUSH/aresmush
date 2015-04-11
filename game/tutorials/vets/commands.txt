@@ -1,13 +1,8 @@
-Ares does not distinguish between 'hardcode' and 'softcode'.  This makes it easier for coders to modify or even replace the functionality, so you don't need to have +who seperate from the built-in who.
+Ares does not distinguish between 'hardcode' and 'softcode'.  As a result, Ares commands have no prefix.  The who command is simply %xcwho%xn. The combat command is simply %xccombat%xn. If you do accidentally type a prefix (@, +, or /), it’ll be ignored, so +who, @who and /who all end up being just 'who'.
 
-As a result, Ares commands have no prefix.  The who command is simply %xcwho%xn. The combat command is simply %xccombat%xn. If you do accidentally type a prefix (@, +, or /), it’ll be ignored, so +who, @who and /who all end up being just 'who'.
+An attempt has been made to name Ares commands consistently and intuitively to make it more approachable to new players.  At the same time, %xhShortcuts%xn exist so veterans can use the command names you're used to.  So although the help files reference 'profile' and 'bbs' and 'build', you can go on using 'finger' and 'bbread' and 'dig' like you're used to.  
 
-An attempt has been made to name Ares commands consistently and intuitively to make it more approachable to new players.  At the same time, %xhShortcuts%xn exist so veterans can use the command names you're used to.  So although the help files reference 'profile' and 'bbs' and 'build', you can go on using 'finger' and 'bbread' and 'dig' like you're used to.  Find a missing shortcut?  Go to aresmush.com and select 'Feedback'!
-
-One nod to consistency is that commands showing lists are plural and commands showing items on the list are singular.  For example:  %xcrequests%xn shows a list, %xcrequest 1%xn shows a request.  %xcfriends%xn shows the list, %xcfriend/add Harvey%xn adds a friend.
-
-Commands that show multiple pages of data will have a "page 1 of 4" style footer at the bottom telling you there are more pages available.  You can access those pages simply by putting the page number after the commands.
+Find a missing shortcut?  Go to aresmush.com and select 'Feedback'!
  
 %xh-- Give it a try! --%xn 
     Type: %xcwho%xn and %xc+who%xn to see they're the same!
-    Type: %xchelp%xn to see the 'page x of y' footer and %xchelp2%xn to see the second page.

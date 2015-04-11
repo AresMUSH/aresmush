@@ -24,6 +24,10 @@ module AresMUSH
       def handle
         client.emit self.message
       end
+      
+      def log_command
+        # Don't log command for privacy
+      end
     end
   end
 end

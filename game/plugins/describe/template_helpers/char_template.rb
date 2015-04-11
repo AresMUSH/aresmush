@@ -4,11 +4,22 @@ module AresMUSH
     class CharacterTemplate
       include TemplateFormatters
       
-      def initialize(char)
+      def initialize(char, client)
         @char = char
       end
       
-      # MUSH name.
+      def display
+        text = "%l1%r"
+        text << "%xh%xg#{name}%xn (#{fullname_and_rank})%r"
+        text << "%r"
+        text << "#{description}#{details}%r"
+        text << "%r"
+        text << "#{actor}%r"
+        text << "%l1"
+        
+        text
+      end
+        
       def name
         @char.name
       end
@@ -34,9 +45,8 @@ module AresMUSH
         @char.fullname
       end
       
-      # Actor name
       def actor
-        @char.actor
+        "%xh#{t('describe.played_by')}%xn #{@char.actor}"
       end
       
       # Available detail views.

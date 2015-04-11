@@ -1,0 +1,6 @@
+One nod to consistency is that commands showing lists are plural and commands showing items on the list are singular.  For example:  %xcrequests%xn shows a list, %xcrequest 1%xn shows a request.  %xcfriends%xn shows the list, %xcfriend/add Harvey%xn adds a friend.
+
+Commands that show multiple pages of data will have a "page 1 of 4" style footer at the bottom telling you there are more pages available.  You can access those pages simply by putting the page number after the commands.
+ 
+%xh-- Give it a try! --%xn 
+    Type: %xchelp%xn to see the 'page x of y' footer and %xchelp2%xn to see the second page.

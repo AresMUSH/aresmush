@@ -4,10 +4,19 @@ module AresMUSH
     class ExitTemplate
       include TemplateFormatters
       
-      def initialize(model)
+      def initialize(model, client)
         @model = model
       end
       
+      def display
+        text = "%l1%r"
+        text << "%xg[#{name}] #{destination}%xn%r"
+        text << "#{description}%r"
+        text << "%l1"
+        
+        text
+      end
+        
       def name
         @model.name
       end

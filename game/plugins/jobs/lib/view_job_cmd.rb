@@ -13,7 +13,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|
-          client.emit Jobs.job_renderer.render(client, job)
+          client.emit Jobs.get_job_display(client, job)
           Jobs.mark_read(job, client.char)
         end
       end

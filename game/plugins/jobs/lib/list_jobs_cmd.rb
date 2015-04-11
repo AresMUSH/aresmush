@@ -30,7 +30,8 @@ module AresMUSH
         if (pagination.out_of_bounds?)
           client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
         else
-          client.emit Jobs.jobs_list_renderer.render(client, pagination.page_items, self.page, pagination.total_pages)
+          template = JobsListTemplate.new(client.char, pagination.page_items, self.page, pagination.total_pages)
+          client.emit template.display
         end
       end
     end

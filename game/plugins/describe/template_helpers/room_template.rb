@@ -9,12 +9,76 @@ module AresMUSH
         @client = client
       end
       
+      def display
+        text = header_display()
+        text << "%r%l2%r"
+        text << desc_display()
+        text << "%r%l2%r"
+        text << players_display()
+        text << "%r%r"
+        text << exits_display()
+        text << "%r%l1"
+        
+        text
+      end
+      
+      def header_display
+        text = "%l1%r"
+        text << "#{name} #{area}%r"
+        text << "#{ooc_time} ~ #{ic_time}"
+        
+        text
+      end
+      
+      def desc_display
+        text = ""
+        # Weather is disabled by default.  Uncomment this line to show it
+        # in room descs.
+        # text << "#{weather}"
+        text << "#{description}"
+        text << "#{details}"
+        
+        text
+      end
+      
+      def players_display
+        text = "%xg#{t('describe.players_title')}%xn"
+        online_chars.each do |c|
+          text << "%r%xh#{char_name(c)}%xn"
+          text << " "
+          text << char_shortdesc(c)
+          text << " "
+          text << char_afk(c)
+        end
+        
+        text
+      end
+      
+      def exits_display
+        text = "%xg#{t('describe.exits_title')}%xn"
+        exits.each_with_index do |e, i|
+            
+          # Linebreak every 2 exits.
+          text << ((i % 2 == 0) ? "%r" : "")
+          
+          text << "%xh#{exit_name(e)}%xn"
+          text << " "
+          text << exit_destination(e)
+        end
+        
+        if (exits.count == 0)
+          text << "%r"
+          text << t('desc.no_way_out')
+        end
+        
+        if (@room.is_foyer)
+          text << foyer()
+        end
+
+        text
+      end
+      
       # List of all exits in the room.
-      # You would typically use this in a loop with a counter, such as in the example below.
-      # Inside the loop, each exit would be referenced as 'e'
-      #    <% exits.each_with_index do |e, i| -%>
-      #    <%= exit_name(e) %> <%= exit_destination(e) %>
-      #    <% end %>
       def exits
         if (@room.is_foyer)
           non_foyer_exits
@@ -24,21 +88,14 @@ module AresMUSH
       end
       
       # List of online characters, sorted by name.      
-      # You would typically use this in a loop, such as in the example below.
-      # Inside the loop, each character would be referenced as 'c'
-      #    <% online_chars.each do |c| -%>
-      #    <%= char_name(c) %> <%= char_shortdesc(c) %>
-      #    <% end %>
       def online_chars
         @room.characters.select { |c| c.is_online? }.sort_by { |c| c.name }
       end
       
-      # Room name
       def name
         left(@room.name, 40)
       end
       
-      # Room description
       def description
         @room.description
       end
@@ -55,7 +112,6 @@ module AresMUSH
         ICTime.ic_datestr ICTime.ictime
       end
       
-      # Room area
       def area
         right(@room.area, 37)
       end
@@ -70,7 +126,6 @@ module AresMUSH
          w ? "#{w}%R" : ""
       end
       
-      # OOC date/time string
       def ooc_time
         OOCTime.local_long_timestr(@client, Time.now)
       end
@@ -85,8 +140,6 @@ module AresMUSH
       
       # Special text displayed for the exits in a foyer.
       def foyer
-        return if !@room.is_foyer
-        
         text = "%R%l2%R"
         text << center(t('describe.foyer_room_status'),78)
         foyer_exits.each_with_index do |e, i|
@@ -105,21 +158,16 @@ module AresMUSH
         text
       end
       
-      # Character name.
-      # Requires a character reference.  See 'online_chars' for more info.
       def char_name(char)
         char.name
       end
 
-      # Short chracter description.
-      # Requires a character reference.  See 'online_chars' for more info.
       def char_shortdesc(char)
         char.shortdesc ? " - #{char.shortdesc}" : ""
       end
       
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
-      # Requires a character reference.  See 'online_chars' for more info.
       def char_afk(char)
         if (char.is_afk?)
           msg = "%xy%xh<#{t('describe.afk')}>%xn"
@@ -133,21 +181,10 @@ module AresMUSH
         end
       end
       
-      # This is a special function that will print a linebreak after every 2 exits, 
-      # but not after the very first one.
-      # Require an exit counter.  See 'exits' for more info.
-      def linebreak_every_two_exits(i)
-        (i != 0 && i % 2 == 0) ? "%r" : ""
-      end
-      
-      # Exit name
-      # Requires an exit reference.  See 'exits' for more info.
       def exit_name(e)
         left("[#{e.name}]", 5)
       end
       
-      # Exit destination
-      # Requires an exit reference.  See 'exits' for more info.
       def exit_destination(e)
         locked = e.allow_passage?(@client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')

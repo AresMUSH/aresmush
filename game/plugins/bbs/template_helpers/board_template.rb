@@ -5,12 +5,6 @@ module AresMUSH
       include TemplateFormatters
       
       # List of all posts on the board, in order by date.
-      # You would typically use this in a loop, such as in the example below.
-      # Inside the loop, each post would be referenced as 'p' and its 
-      # counter index (0,1,2) as 'i'.
-      #    <% posts.each_with_index do |p, i| -%> 
-      #    <%= post_num(i) %> <%= post_subject(p) %>
-      #    <% end %>
       attr_accessor :posts
       
       def initialize(board, client)
@@ -18,6 +12,32 @@ module AresMUSH
         @posts = board.bbs_posts
         @client = client
         @char = client.char
+      end
+      
+      def display
+        text = "%l1%r"
+        text << "%xh#{name}%xn%r"
+        text << "#{desc}%r"
+        text << "%l2"
+         
+        posts.each_with_index do |p, i|
+          text << "%r"
+          text << post_num(i)
+          text << " "
+          text << post_unread_status(p)
+          text << " "
+          text << post_subject(p)
+          text << " "
+          text << post_author(p)
+          text << " "
+          text << post_date(p)
+        end
+
+        text << "%r%l2%r"
+        text << "#{can_read}    #{can_post}%r"
+        text << "%l1"
+        
+        text
       end
       
       # Roles that can read this bbs.
@@ -42,34 +62,24 @@ module AresMUSH
         @board.description
       end
       
-      # Player-friendly post number.
-      # Requires a post index counter.  See 'posts' for more info.
       def post_num(i)
         "#{i+1}".rjust(3)
       end
       
-      # Shows whether this post is read or not.
-      # Requires a post reference.  See 'posts' for more info.
       def post_unread_status(post)
         unread = post.is_unread?(@char) ? t('bbs.unread_marker') : " "
         center(unread, 5)
       end
 
-      # Post subject.
-      # Requires a post reference.  See 'posts' for more info.
       def post_subject(post)
         left(post.subject,30)
       end
 
-      # Post author.
-      # Requires a post reference.  See 'posts' for more info.
       def post_author(post)
         name = post.author.nil? ? t('bbs.deleted_author') : post.author.name
         left(name,25)
       end
       
-      # Post creation date.
-      # Requires a post reference.  See 'posts' for more info.
       def post_date(post)
         OOCTime.local_short_timestr(@client, post.created_at)
       end

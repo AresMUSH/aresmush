@@ -6,11 +6,7 @@ module AresMUSH
       include PluginWithoutSwitches
       
       attr_accessor :target
-            
-      def initialize
-        Describe.build_renderers
-      end
-      
+
       def want_command?(client, cmd)
         cmd.root_is?("look") && cmd.args !~ /\//
       end

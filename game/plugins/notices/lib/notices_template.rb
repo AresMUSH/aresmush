@@ -7,6 +7,21 @@ module AresMUSH
         @char = char
       end
       
+      def display
+        text = "%l1%r"
+        text << "%xh#{notices_title}%xn%r"
+        text << "#{mail}%r"
+        text << "#{bbs}%r"
+        text << "#{jobs_or_requests}%r"
+        text << "%l1"
+        
+        text
+      end
+      
+      def notices_title
+        center(t('notices.notices_title'), 78)
+      end
+      
       def mail
         mail_text = @char.has_unread_mail? ? t('notices.unread_mail') : t('notices.no_unread_mail')
         if (@char.handle)
