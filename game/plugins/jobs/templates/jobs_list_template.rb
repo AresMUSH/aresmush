@@ -35,7 +35,7 @@ module AresMUSH
         end
         
         text << "%r#{page_marker}"
-        text << "%l1%r"
+        text << "%r%l1"
         
         text
       end

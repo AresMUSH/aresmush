@@ -23,12 +23,14 @@ module AresMUSH
         text << "#{ status_title } #{ status }"
         text << "    #{ handled_by_title } #{ handled_by }%r"
         text << "%r"
-        text << "#{ description_title }"
+        text << "#{ description_title }%r"
         text << "#{ description }"
         replies.each do |r|
           text << "%r%l2%r"
           text << reply_admin_only(r)
           text << reply_title(r)
+          text << "%r"
+          text << reply_message(r)
         end
         text << "%r%l1"
         
