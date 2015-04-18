@@ -22,7 +22,7 @@ module AresMUSH
 
       encrypted = ApiCrypt.encrypt(key, response.to_s)
       # Use emit raw to avoid tacking extra Ansi codes on.
-      client.emit_raw "api< #{encrypted[:iv]} #{encrypted[:data]}\n"
+      client.emit_raw "api< #{encrypted[:iv]} #{encrypted[:data]}\r\n"
     end    
     
     def send_command(destination_id, client, cmd)
