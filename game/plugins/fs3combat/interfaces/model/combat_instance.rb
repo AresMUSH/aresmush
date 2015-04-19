@@ -1,12 +1,18 @@
 module AresMUSH
   class CombatInstance
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
       
-    field :is_real, :type =>Boolean
+    field :is_real, :type => Boolean
+    field :num, :type => Integer
+    
     belongs_to :organizer, :class_name => "AresMUSH::Character", :inverse_of => "nil"  
     has_many :combatants, :inverse_of => 'combat', :dependent => :destroy
 
+    def self.next_num
+      max = CombatInstance.all.max_by(&:num)
+      max ? max.num + 1 : 1
+    end
+    
     def is_real?
       is_real
     end

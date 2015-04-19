@@ -18,7 +18,6 @@ module AresMUSH
         text = left(name, 20)
         text << display_field(info, "weapon")
         text << display_field(info, "armor")
-        text << display_field(info, "vehicle")
         text
       end
 

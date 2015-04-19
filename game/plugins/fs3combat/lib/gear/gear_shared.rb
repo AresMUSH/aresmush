@@ -52,5 +52,27 @@ module AresMUSH
         return info
       end
     end
+    
+    def self.set_weapon(client, name, weapon, specials = nil)
+      FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        combatant.weapon = weapon ? weapon.titleize : nil
+        combatant.weapon_specials = specials ? specials.map { |s| s.titleize } : nil
+        combatant.save
+        specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
+        message = t('fs3combat.weapon_changed', :name => name, 
+          :weapon => combatant.weapon, 
+          :specials => specials_text)
+        combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+      end
+    end
+    
+    def self.set_armor(client, name, armor)
+      FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        combatant.armor = armor ? armor.titleize : nil
+        combatant.save
+        message = t('fs3combat.armor_changed', :name => name, :armor => combatant.armor)
+        combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+      end
+    end
   end
 end

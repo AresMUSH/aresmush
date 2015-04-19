@@ -7,12 +7,13 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
     %xccombat/newturn%xn - Trigger a new turn. (Organizer only)
 
     %xccombats%xn - Lists combats.
-    %xccombat/join <combat #>/<combatant type>
-        See %xccombat/types%xn for a list of combatant types.
+    %xccombat/join <combat #>%xn - Joins a combat
     %xccombat/leave%xn - Leaves combat.
 
     %xccombat%xn - View combat display
          
+    %xccombat/type <type>%xn - Sets your combatant type.
+        See %xccombat/types%xn for a list of combatant types.
     %xccombat/vehicle <vehicle>%xn - Use a vehicle type from %xcvehicles%xn to create a new
        vehicle, or a specific vehicle name from %xccombat%xn to join an existing one.
     %xccombat/weapon <weapon>[/<comma-separated specials>]%xn - Set your weapon and 
@@ -23,4 +24,4 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
     %xccombat/attack <target>%xn - Attack someone.
     %xccombat/pass%xn - Pass this turn.
     
-%xhYou can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123/soldier, or +combat/pass Skye.%xn
+%xhYou can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Skye.%xn

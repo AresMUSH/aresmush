@@ -15,7 +15,7 @@ module AresMUSH
       end
         
       def type_display(name, info)
-        text = left(name, 20)
+        text = left(name.titleize, 20)
         text << display_field(info, "description", 58)
         text
       end

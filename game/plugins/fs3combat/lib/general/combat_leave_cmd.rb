@@ -17,7 +17,7 @@ module AresMUSH
       def handle
         combat = FS3Combat.combat(self.name)
         if (!combat)
-          client.emit_failure t('fs3combat.not_in_combat')
+          client.emit_failure t('fs3combat.not_in_combat', :name => self.name)
           return
         end
         

@@ -5,10 +5,10 @@ module AresMUSH
       include PluginRequiresLogin
       include PluginRequiresArgs
       
-      attr_accessor :name, :type, :num
+      attr_accessor :name, :num
       
       def initialize
-        self.required_args = ['name', 'type', 'num']
+        self.required_args = ['name', 'num']
         self.help_topic = 'combat'
         super
       end
@@ -19,21 +19,13 @@ module AresMUSH
       
       def crack!
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
+          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           self.name = titleize_input(cmd.args.arg1)
           self.num = trim_input(cmd.args.arg2)
-          self.type = titleize_input(cmd.args.arg3)
         else
-          cmd.crack_args!(CommonCracks.arg1_slash_arg2)
           self.name = client.name
-          self.num = titleize_input(cmd.args.arg1)
-          self.type = titleize_input(cmd.args.arg2)
+          self.num = titleize_input(cmd.args)
         end
-      end
-      
-      def check_type
-        return t('fs3combat.invalid_combatant_type') if !FS3Combat.combatant_types.keys.include?(self.type)
-        return nil
       end
       
       def check_not_already_in_combat
@@ -47,8 +39,21 @@ module AresMUSH
         
         result = ClassTargetFinder.find(self.name, Character, client)
         
-        combat.join(self.name, self.type, result.target)
+        type = Global.config["fs3combat"]["default_type"]
+        combat.join(self.name, type, result.target)
         combat.save
+        
+        type_config = Global.config["fs3combat"]["combatant_types"][type]
+        weapon = type_config["weapon"]
+        if (weapon)
+          specials = type_config["weapon_specials"]
+          FS3Combat.set_weapon(client, self.name, weapon, specials)
+        end
+        
+        if (type_config["armor"])
+          FS3Combat.set_armor(client, self.name, type_config["armor"])
+        end
+        
       end
     end
   end

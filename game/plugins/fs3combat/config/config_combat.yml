@@ -1,58 +1,54 @@
 fs3combat:
 
+    # Default combatant type when joining combat.
+    default_type: Soldier
+    
     combatant_types:
-        # For each combatant type, you can specify their starting weapon, armor and
-        # vehicle type.  All of this can be changed by the player once they're in combat
-        # if for some reason it doesn't apply.
-        #
-        # You can also specify whether this type is included in auto-targeting by NPCs.
-        # Typically you would set this to 'false' for passengers in vehicles (because the 
-        # pilot should be targeted instead), or observers.
+        # For each combatant type, you can specify their starting weapon, 
+        # weapon specials (as a list), and armor. 
+        # This can be changed by the player once they're in combat.
+        # You can also specify whether this type is auto-targeted by NPCs, and which
+        # hit location chart it uses.
+        
+        # ----------------------------------------
+        # DEFAULT TYPES
+        # ----------------------------------------
+        # These are the default combatant types.  Do not delete them.
+        
         Soldier:
             auto_target: true
             weapon: Rifle
+            #weapon_specials: 
+            #    - Ap
             armor: Tactical
-            #vehicle:
+            hitloc: Humanoid
         Pilot:
             auto_target: true
+            #hitloc: Humanoid  - n/a, uses vehicle stats
             #weapon:
+            #weapon_specials:
             #armor: 
-            #vehicle:
         Passenger:
             auto_target: false
+            #hitloc: Humanoid - n/a, uses vehicle stats
             #weapon:
+            #weapon_specials:
             #armor: 
-            #vehicle:
         Observer:
             auto_target: false
             #weapon:
+            #weapon_specials:
             #armor:
-            #vehicle:
-
-        # You can also create custom types.  You must define which 'base type'
-        # they behave like.
-        Viper Pilot:
-            auto_target: true
-            weapon: KEW
-            #armor: 
-            vehicle: Viper
-        Raptor Pilot:
-            auto_target: true
-            #weapon: 
-            #armor:
-            vehicle: Raptor
-        Raptor ECO:
-            auto_target: false
-            weapon: ECM
-            # vehicle -- none because they'll typically join their pilot's vehicle.
+                
+        # ----------------------------------------
+        # CUSTOM TYPES
+        # ----------------------------------------
+        # Add any custom combatant types here.
+        
         Centurion:
             auto_target: true
             weapon: LMG
+            weapon_specials: 
+                - Tripod
             armor: Centurion
-            # vehicle:
-        Raider:
-            auto_target: true
-            weapon: KEW
-            #armor: 
-            vehicle: Raider
-        
+            hitloc: Humanoid           

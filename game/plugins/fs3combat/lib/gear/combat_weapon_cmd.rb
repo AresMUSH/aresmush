@@ -48,14 +48,7 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-          combatant.weapon = self.weapon
-          combatant.weapon_specials = self.specials
-          combatant.save
-          specials_text = self.specials ? self.specials.join(',') : t('global.none')
-          message = t('fs3combat.weapon_changed', :name => self.name, :weapon => self.weapon, :specials => specials_text)
-          combat.emit message, FS3Combat.npcmaster_text(self.name, client.char)
-        end
+        FS3Combat.set_weapon(client, self.name, self.weapon, self.specials)
       end
     end
   end

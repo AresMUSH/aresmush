@@ -9,14 +9,14 @@ module AresMUSH
       end
       
       def handle
-        list = FS3Combat.combats.each_with_index.map { |c, i| format_combat(c, i)}
+        list = FS3Combat.combats.map { |c| format_combat(c)}
         client.emit BorderedDisplay.subtitled_list list, t('fs3combat.active_combats'), t('fs3combat.active_combats_titlebar')
       end
       
-      def format_combat(combat, index)
-        number = (index + 1).to_s
+      def format_combat(combat)
         combatants = combat.combatants.map { |c| c.name }.join(" ")
-        "#{number.ljust(3)} #{combat.organizer.name.ljust(15)} #{combatants}"
+        num = combat.num.to_s
+        "#{num.ljust(3)} #{combat.organizer.name.ljust(15)} #{combatants}"
       end
     end
   end

@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     
     def self.combats
-      CombatInstance.all.sort { |c| c.created_at }
+      CombatInstance.all.sort { |c| c.num }.reverse
     end
     
     def self.combatant_types
@@ -25,13 +25,14 @@ module AresMUSH
         return nil
       end
       
-      index = num_str.to_i - 1
-      if (index < 0 || index >= FS3Combat.combats.count)
+      match = CombatInstance.all.select { |c| c.num == num_str.to_i }.first
+
+      if (!match)
         client.emit_failure t('fs3combat.invalid_combat_number')
         return nil
       end
       
-      return FS3Combat.combats[index]
+      return match
     end
     
     def self.with_a_combatant(name, client, &block)

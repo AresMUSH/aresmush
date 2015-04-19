@@ -29,10 +29,12 @@ en:
         combat_stopped_by: "%{name} has stopped the combat."
         combat_stopped: "You stop combat %{num}."
         
+        you_are_already_in_combat: "You are already in combat."
         already_in_combat: "%{name} is already in combat."
+        you_are_not_in_combat: "You are not in combat."
         not_in_combat: "%{name} is not in combat."
-        start_real_combat: "You start a real combat.  Damage will be permanent."
-        start_mock_combat: "You start a mock combat.  Damage will be erased at the end."
+        start_real_combat: "You start a real combat, number %{num}.  Damage will be permanent."
+        start_mock_combat: "You start a mock combat, number %{num}.  Damage will be erased at the end."
         
         has_joined: "%{name} has joined the combat as a %{type}."
         has_left: "%{name} has left the combat."
@@ -42,7 +44,7 @@ en:
         combat_emit: "%xb<FS3Combat>%xn %{message}"
         
         combatant_types: "Combatant Types"
-        combatant_types_titlebar: "Type                Weapon              Armor               Vehicle"
+        combatant_types_titlebar: "Type                Weapon              Armor"
         weapon_title: "Weapon:"
         armor_title: "Armor:"
         vehicle_title: "Vehicle:"
@@ -83,5 +85,9 @@ en:
         
         weapon_changed: "%{name} has changed weapons to %{weapon}.  Specials: %{specials}"
         armor_changed: "%{name} has changed armor to %{armor}."
+        
+        combat_hud_header: "Combat %{num}"
+        combat_hud_organizer: "Organized by %{org}"
+        combat_mock_notice: "** Mock Combat.  Damage is temporary. **"
         
         

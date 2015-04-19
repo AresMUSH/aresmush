@@ -28,17 +28,21 @@ module AresMUSH
       end
         
       def check_not_already_in_combat
-        return t('fs3combat.already_in_combat', :name => client.char.name) if client.char.is_in_combat?
+        return t('fs3combat.you_are_already_in_combat') if client.char.is_in_combat?
         return nil
       end
       
       def handle
         is_real = self.type == "Real"
-        combat = CombatInstance.create(:organizer => client.char, :is_real => is_real)
+        combat = CombatInstance.create(:organizer => client.char, 
+          :is_real => is_real,
+          :num => CombatInstance.next_num)
         combat.join(client.char.name, "observer", client.char)
         combat.save
         
-        client.emit_ooc is_real ? t('fs3combat.start_real_combat') : t('fs3combat.start_mock_combat')
+        message = is_real ? "fs3combat.start_real_combat" : "fs3combat.start_mock_combat"
+        
+        client.emit_ooc t(message, :num => combat.num)
       end
     end
   end

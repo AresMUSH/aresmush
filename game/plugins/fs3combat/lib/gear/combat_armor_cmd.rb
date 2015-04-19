@@ -34,12 +34,7 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-          combatant.armor = self.armor
-          combatant.save
-          message = t('fs3combat.armor_changed', :name => self.name, :armor => self.armor)
-          combat.emit message, FS3Combat.npcmaster_text(self.name, client.char)
-        end
+        FS3Combat.set_armor(client, self.name, self.armor)
       end
     end
   end
