@@ -48,7 +48,7 @@ module AresMUSH
     end
     
     def self.npcmaster_text(name, actor)
-      actor.name == name ? nil : actor.name
+      actor.name == name ? nil : t('fs3combat.npcmaster_text', :name => actor.name)
     end
   end
 end

@@ -40,7 +40,7 @@ module AresMUSH
     end
       
     def emit(message, npcmaster = nil)
-      message = message + " (#{npcmaster})" if npcmaster
+      message = message + "#{npcmaster}"
       self.combatants.each { |c| c.emit(message)}
     end
       

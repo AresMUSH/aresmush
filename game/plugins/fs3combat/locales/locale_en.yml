@@ -42,6 +42,7 @@ en:
         
         organizer_emit: "%xc<FS3Combat>%xn %{message}"
         combat_emit: "%xb<FS3Combat>%xn %{message}"
+        npcmaster_text: " %xh%xx(by %{name})%xn"
         
         combatant_types: "Combatant Types"
         combatant_types_titlebar: "Type                Weapon              Armor"
