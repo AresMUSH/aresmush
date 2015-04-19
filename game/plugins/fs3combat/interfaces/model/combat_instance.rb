@@ -8,6 +8,14 @@ module AresMUSH
     belongs_to :organizer, :class_name => "AresMUSH::Character", :inverse_of => "nil"  
     has_many :combatants, :inverse_of => 'combat', :dependent => :destroy
 
+    def active_combatants
+      combatants.select { |c| c.combatant_type != "Observer" }.sort_by{ |c| c.name }
+    end
+    
+    def non_combatants
+      combatants.select { |c| c.combatant_type == "Observer" }.sort_by{ |c| c.name }
+    end
+    
     def self.next_num
       max = CombatInstance.all.max_by(&:num)
       max ? max.num + 1 : 1

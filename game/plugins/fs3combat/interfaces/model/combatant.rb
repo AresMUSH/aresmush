@@ -19,6 +19,10 @@ module AresMUSH
       self.character ? self.character.client : nil
     end
       
+    def total_damage_mod
+      self.character ? FS3Combat.total_damage_mod(self.character.damage) : 99
+    end
+    
     def is_npc?
       !self.character.nil?
     end

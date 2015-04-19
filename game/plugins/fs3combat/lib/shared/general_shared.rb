@@ -25,7 +25,7 @@ module AresMUSH
         return nil
       end
       
-      match = CombatInstance.all.select { |c| c.num == num_str.to_i }.first
+      match = FS3Combat.combats.select { |c| c.num == num_str.to_i }.first
 
       if (!match)
         client.emit_failure t('fs3combat.invalid_combat_number')

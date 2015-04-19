@@ -85,7 +85,7 @@ module AresMUSH
         it "should tack on the npcmaster's name if specified" do
           @bob.should_receive(:emit).with("Test (Master)")
           @harvey.should_receive(:emit).with("Test (Master)")
-          @instance.emit("Test", "Master")
+          @instance.emit("Test", " (Master)")
         end
       end
       

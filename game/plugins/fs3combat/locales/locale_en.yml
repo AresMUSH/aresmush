@@ -90,5 +90,6 @@ en:
         combat_hud_header: "Combat %{num}"
         combat_hud_organizer: "Organized by %{org}"
         combat_mock_notice: "** Mock Combat.  Damage is temporary. **"
+        observers_title: "Observers"
         
         

@@ -37,7 +37,7 @@ module AresMUSH
         combat = CombatInstance.create(:organizer => client.char, 
           :is_real => is_real,
           :num => CombatInstance.next_num)
-        combat.join(client.char.name, "observer", client.char)
+        combat.join(client.char.name, "Observer", client.char)
         combat.save
         
         message = is_real ? "fs3combat.start_real_combat" : "fs3combat.start_mock_combat"

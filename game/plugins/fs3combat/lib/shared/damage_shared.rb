@@ -41,6 +41,22 @@ module AresMUSH
        Global.config["fs3combat"]["healing_points"][wound_level]
      end
      
+     def self.print_damage(total_damage_mod)
+       num_xs = [ total_damage_mod.ceil, 4 ].min
+       dots = num_xs.times.collect { "X" }.join
+       dashes = (4 - num_xs).times.collect { "-" }.join
+       "#{dots}#{dashes}"
+     end
+     
+     def self.total_damage_mod(wounds)
+       mod = 0
+       wound_mods = Global.config["fs3combat"]["damage_mods"]
+       wounds.each do |w|
+         mod = mod + wound_mods[w.current_severity]
+       end
+       mod
+     end
+     
      def self.heal_wounds(char, wounds, treat_roll = 0)
        return if wounds.empty?
        

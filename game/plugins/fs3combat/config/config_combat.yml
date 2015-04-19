@@ -4,11 +4,10 @@ fs3combat:
     default_type: Soldier
     
     combatant_types:
-        # For each combatant type, you can specify their starting weapon, 
-        # weapon specials (as a list), and armor. 
-        # This can be changed by the player once they're in combat.
-        # You can also specify whether this type is auto-targeted by NPCs, and which
-        # hit location chart it uses.
+        # For each combatant type, you can specify:
+        # - default weapon and specials (as a list)
+        # - default armor
+        # - which hit location chart it uses
         
         # ----------------------------------------
         # DEFAULT TYPES
@@ -16,26 +15,24 @@ fs3combat:
         # These are the default combatant types.  Do not delete them.
         
         Soldier:
-            auto_target: true
             weapon: Rifle
             #weapon_specials: 
             #    - Ap
             armor: Tactical
             hitloc: Humanoid
         Pilot:
-            auto_target: true
-            #hitloc: Humanoid  - n/a, uses vehicle stats
+            hitloc: Humanoid
             #weapon:
             #weapon_specials:
             #armor: 
         Passenger:
-            auto_target: false
-            #hitloc: Humanoid - n/a, uses vehicle stats
+            noncombatant: false
+            hitloc: Humanoid
             #weapon:
             #weapon_specials:
             #armor: 
         Observer:
-            auto_target: false
+            #hitloc: n/a - non-combatant
             #weapon:
             #weapon_specials:
             #armor:
@@ -46,7 +43,6 @@ fs3combat:
         # Add any custom combatant types here.
         
         Centurion:
-            auto_target: true
             weapon: LMG
             weapon_specials: 
                 - Tripod
