@@ -1,13 +1,23 @@
 module AresMUSH
   module FS3Skills
+    class RollParams
+      attr_accessor :ability, :modifier, :ruling_attr
+      
+      def initialize(ability, modifier = 0, ruling_attr = nil)
+        self.ability = ability
+        self.modifier = modifier
+        self.ruling_attr = ruling_attr
+      end
+    end
+    
     # Expects titleized ability name
     # Makes an ability roll and returns the raw dice results.
     # Good for when you're doing a regular roll because you can show the raw dice and
     # use the other methods in this class to get the success level and title to display.
     def self.roll_ability(client, char, roll_params)
-      ability = roll_params[:ability]
-      ruling_attr = roll_params[:ruling_attr] || FS3Skills.get_ruling_attr(char, ability)
-      modifier = roll_params[:modifier] || 0
+      ability = roll_params.ability
+      ruling_attr = roll_params.ruling_attr || FS3Skills.get_ruling_attr(char, ability)
+      modifier = roll_params.modifier || 0
       
       skill = FS3Skills.ability_rating(char, ability)
       
@@ -27,6 +37,18 @@ module AresMUSH
     # to know the raw die roll.
     def self.one_shot_roll(client, char, roll_params)
       roll = FS3Skills.roll_ability(client, char, roll_params)
+      roll_result = FS3Skills.get_success_level(roll)
+      success_title = FS3Skills.get_success_title(roll_result)
+      
+      {
+        :successes => roll_result,
+        :success_title => success_title
+      }
+    end
+    
+    # Rolls a raw number of dice.
+    def self.one_shot_die_roll(dice)
+      roll = FS3Skills.roll_dice(dice)
       roll_result = FS3Skills.get_success_level(roll)
       success_title = FS3Skills.get_success_title(roll_result)
       
@@ -79,7 +101,7 @@ module AresMUSH
     def self.roll_dice(dice)
       if (dice > 20)
         Global.logger.warn "Attempt to roll #{dice} dice."
-        return [1]
+        return [7]
       end
       dice = [dice, 1].max
       dice.times.collect { 1 + rand(8) }

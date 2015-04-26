@@ -1,5 +1,9 @@
 en:
     fs3combat:
+        
+        # ----------------------------
+        # DAMAGE
+        # ----------------------------
         invalid_severity: "Invalid severity level.  Try one of these: %{severities}."
         damage_title: "Damage Report for %{name}"
         damage_titlebar: "Date         Description                   Severity (original)   Treatable?"
@@ -20,11 +24,18 @@ en:
         no_treatable_wounds: "%{name} has no treatable wounds."
         use_combat_treat_instead: "You cannot use this command in combat.  Use combat/treat instead."
         must_wait_to_treat: "You must wait a few minutes before you can treat again."
+
+        # ----------------------------
+        # COMBAT LIST
+        # ----------------------------
         
         active_combats: "Active Combats"
         active_combats_titlebar: "#   Organizer       Participants"
-        invalid_combat_number: "That is not a valid combat number.  See combats for a list."
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
+        
+        # ----------------------------
+        # START, STOP, JOIN, LEAVE
+        # ----------------------------
         
         combat_stopped_by: "%{name} has stopped the combat."
         combat_stopped: "You stop combat %{num}."
@@ -40,15 +51,25 @@ en:
         has_left: "%{name} has left the combat."
         invalid_combatant_type: "That is not a valid combatant type.  See combat/types for a list."
         
+        # ----------------------------
+        # GENERAL
+        # ----------------------------
+        
         organizer_emit: "%xc<FS3Combat>%xn %{message}"
         combat_emit: "%xb<FS3Combat>%xn %{message}"
         npcmaster_text: " %xh%xx(by %{name})%xn"
+        invalid_combat_number: "That is not a valid combat number.  See combats for a list."
+        
+        # ----------------------------
+        # TYPES
+        # ----------------------------
         
         combatant_types: "Combatant Types"
         combatant_types_titlebar: "Type                Weapon              Armor"
-        weapon_title: "Weapon:"
-        armor_title: "Armor:"
-        vehicle_title: "Vehicle:"
+
+        # ----------------------------
+        # WEAPONS
+        # ----------------------------
 
         weapons_title: "Weapons List"
         invalid_weapon: "That is not a valid weapon."
@@ -68,10 +89,18 @@ en:
         weapon_title_allowed_specials: "Allowed Specials:"
         invalid_weapon_special: "That is not a valid special for that weapon."
 
+        # ----------------------------
+        # ARMOR
+        # ----------------------------
+
         armor_title: "Armor List"
         invalid_armor: "That is not a valid armor type."
         armor_title_description: "Description:"
         armor_title_protection: "Protection:"
+        
+        # ----------------------------
+        # VEHICLES
+        # ----------------------------
         
         vehicles_title: "Vehicle List"
         vehicle_title_description: "Description:"
@@ -82,14 +111,46 @@ en:
         vehicle_title_hitloc_chart: "Hit Locations:"
         vehicle_title_toughness: "Toughness:"
         
+        # ----------------------------
+        # HITLOCS
+        # ----------------------------
+        
         hitlocs_for: "Hit Locations for %{name}"
+        
+        # ----------------------------
+        # GEAR COMMANDS
+        # ----------------------------
         
         weapon_changed: "%{name} has changed weapons to %{weapon}.  Specials: %{specials}"
         armor_changed: "%{name} has changed armor to %{armor}."
+        
+        # ----------------------------
+        # HUD
+        # ----------------------------
         
         combat_hud_header: "Combat %{num}"
         combat_hud_organizer: "Organized by %{org}"
         combat_mock_notice: "** Mock Combat.  Damage is temporary. **"
         observers_title: "Observers"
+        
+        # ----------------------------
+        # ACTIONS
+        # ----------------------------
+        
+        invalid_action_params: "There was a problem with your action: %{error}"
+        not_a_valid_target: "%{name} is not a valid target."
+
+        # ----------------------------
+        # ATTACK
+        # ----------------------------
+
+        attack_action_msg: "%{name} will attack %{target}."
+        attack_special_burst: "(3-round burst)"
+        attack_special_called: "(called shot to the %{location})"
+        attack_special_mod: "(modifier: %{mod})"
+        invalid_attack_special: "That is not a valid attack special."
+        attack_missed: "%{name} attacks %{target} but MISSES!"
+        attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
+        attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc}"
         
         

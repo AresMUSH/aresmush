@@ -96,11 +96,11 @@ module AresMUSH
       match = /^(?<ability>[^\+\-]+)\s*(?<ruling_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
       return nil if match.nil?
       
-      {
-        :ability => match[:ability].strip,
-        :modifier => match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i,
-        :ruling_attr => match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
-      }
+      ability = match[:ability].strip
+      modifier = match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i
+      ruling_attr = match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
+      
+      return RollParams.new(ability, modifier, ruling_attr)
     end
     
     def self.emit_results(message, client, room, is_private)
