@@ -49,15 +49,15 @@ module AresMUSH
         combat.join(name, type, result.target)
         combat.save
         
-        type_config = Global.config["fs3combat"]["combatant_types"][type]
-        weapon = type_config["weapon"]
+        weapon = FS3Combat.combatant_type_stat(type, "weapon")
         if (weapon)
-          specials = type_config["weapon_specials"]
+          specials = FS3Combat.combatant_type_stat(type, "weapon_specials")
           FS3Combat.set_weapon(client, name, weapon, specials)
         end
         
-        if (type_config["armor"])
-          FS3Combat.set_armor(client, name, type_config["armor"])
+        armor = FS3Combat.combatant_type_stat(type, "armor")
+        if (armor)
+          FS3Combat.set_armor(client, name, armor)
         end
       end
     end

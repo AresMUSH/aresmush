@@ -1,7 +1,7 @@
 fs3combat:
     hitloc:
         Humanoid: 
-            default:
+            areas:
                 - Left Leg
                 - Right Leg
                 - Left Hand
@@ -17,13 +17,14 @@ fs3combat:
                 - Chest
                 - Chest
                 - Chest
-            vital areas:
-                Head: Critical
-                Neck: Critical
-                Chest: Vital
-                Abdomen: Vital
+            vital_areas:
+                - Chest
+                - Abdomen
+            critical_areas:
+                - Head
+                - Neck
         Viper:
-            default:
+            areas:
                 - Engine
                 - Tail
                 - Tail
@@ -39,15 +40,16 @@ fs3combat:
                 - Body
                 - Body
                 - Body
-            vital areas:
-                Cockpit: Critical
-                Controls: Critical
-                Body: Vital
-                Engine: Vital
-            crew areas:
+            vital_areas:
+                - Body
+                - Engine
+            critical_areas:
+                - Cockpit
+                - Controls
+            crew_areas::
                 - Cockpit
         Raptor:
-            default:
+            areas:
                 - Engine
                 - Cabin
                 - Cabin
@@ -63,16 +65,17 @@ fs3combat:
                 - Body
                 - Body
                 - Body
-            vital areas:
-                Cockpit: Critical
-                Controls: Critical
-                Body: Vital
-                Engine: Vital
-            crew areas:
+            vital_areas:
+                - Body
+                - Engine
+            critical_areas:
+                - Cockpit
+                - Controls
+            crew_areas::
                 - Cockpit
                 - Cabin
         Raider:
-            default:
+            areas:
                 - Engine
                 - Left Wing
                 - Left Wing
@@ -88,15 +91,16 @@ fs3combat:
                 - Body
                 - Body
                 - Body
-            vital areas:
-                Cockpit: Critical
-                Controls: Critical
-                Body: Vital
-                Engine: Vital
-            crew areas:
+            vital_areas:
+                - Body
+                - Engine
+            critical_areas:
+                - Cockpit
+                - Controls
+            crew_areas::
                 - Cockpit
         AA Battery:
-            default:
+            areas:
                 - Weapon
                 - Weapon
                 - Weapon
@@ -112,9 +116,10 @@ fs3combat:
                 - Body
                 - Body
                 - Body
-            vital areas:
-                Controls: Critical
-                Weapon: Critical
-                Body: Vital
+            vital_areas:
+                - Body
+            critical_areas:
+                - Controls
+                - Weapon
             
                 

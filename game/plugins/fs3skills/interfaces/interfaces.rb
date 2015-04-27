@@ -51,6 +51,8 @@ module AresMUSH
       roll = FS3Skills.roll_dice(dice)
       roll_result = FS3Skills.get_success_level(roll)
       success_title = FS3Skills.get_success_title(roll_result)
+
+      Global.logger.info "Rolling raw dice=#{dice} result=#{roll}"
       
       {
         :successes => roll_result,
@@ -99,9 +101,10 @@ module AresMUSH
     
     # Rolls a number of FS3 dice and returns the raw die results.
     def self.roll_dice(dice)
-      if (dice > 20)
+      if (dice > 18)
         Global.logger.warn "Attempt to roll #{dice} dice."
-        return [7]
+        # Hey if they're rolling this many dice they ought to succeed spectacularly.
+        return [7, 7, 7, 7, 7, 7]
       end
       dice = [dice, 1].max
       dice.times.collect { 1 + rand(8) }

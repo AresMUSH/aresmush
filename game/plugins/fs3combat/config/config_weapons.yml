@@ -2,10 +2,7 @@ fs3combat:
 
     # Weapon stats explained:
     #   description: Free-form text.  Use double quotes around it.
-    #   attack_skill: Skill used for attack rolls.
-    #   defense_skill:  Skill used for defense rolls.  Use "Default" to specify that
-    #      it should use the default skill based on the target's combatant type and
-    #      vehicle.
+    #   skill: Skill used for attack rolls.
     #   lethality: A percentage modifier to make the weapon do more or less damage.
     #      For example, a 20 means it's 20% more likely to do a more serious wound.
     #   penetration:  This matches armor levels, and represents the armor level that
@@ -26,8 +23,7 @@ fs3combat:
     weapons:
         Frag Grenade:
             description: "Fragmentation Hand Grenade"
-            attack_skill: Reaction
-            defense_skill: Reaction
+            skill: Reaction
             lethality: 0
             penetration: 3
             weapon_type: Explosive
@@ -41,8 +37,7 @@ fs3combat:
 
         Flash Grenade:
             description: "Flashbang Hand Grenade which blinds/deafens human targets for 5 secs.  No effect on Centurions."
-            attack_skill: Reaction
-            defense_skill: Reaction
+            skill: Reaction
             lethality: -75
             penetration: 20
             weapon_type: Explosive
@@ -56,8 +51,7 @@ fs3combat:
 
         Explosive:
             description: "Missile, mine or other anti-personnel explosive"
-            attack_skill: Gunnery
-            defense_skill: Reaction
+            skill: Gunnery
             lethality: 20
             penetration: 3
             weapon_type: Explosive
@@ -71,8 +65,7 @@ fs3combat:
 
         Pistol:
             description: "Pistol"
-            attack_skill: Firearms
-            defense_skill: Default
+            skill: Firearms
             lethality: 0
             penetration: 3
             weapon_type: Ranged
@@ -87,8 +80,7 @@ fs3combat:
 
         Smg:
             description: "Sub-machinegun"
-            attack_skill: Firearms
-            defense_skill: Default
+            skill: Firearms
             lethality: 0
             penetration: 3
             weapon_type: Ranged
@@ -103,8 +95,7 @@ fs3combat:
             
         Rifle:
             description: "Assault Rifle"
-            attack_skill: Firearms
-            defense_skill: Default
+            skill: Firearms
             lethality: 0
             penetration: 4
             weapon_type: Ranged
@@ -119,8 +110,7 @@ fs3combat:
             
         Lmg:
             description: "Light machinegun/SAW"
-            attack_skill: Firearms
-            defense_skill: Default
+            skill: Firearms
             lethality: 0
             penetration: 4
             weapon_type: Ranged
@@ -135,8 +125,7 @@ fs3combat:
             
         Shotgun:
             description: "Shotgun using solid shot"
-            attack_skill: Firearms
-            defense_skill: Default
+            skill: Firearms
             lethality: 10
             penetration: 3
             weapon_type: Ranged
@@ -151,8 +140,7 @@ fs3combat:
 
         Shrapnel:
             description: "Random Shrapnel"
-            attack_skill: 3
-            defense_skill: Default
+            skill: 3
             lethality: 0
             penetration: 2.5
             weapon_type: Ranged
@@ -166,8 +154,7 @@ fs3combat:
 
         Unarmed:
             description: "Unarmed"
-            attack_skill: Melee
-            defense_skill: Melee
+            skill: Melee
             lethality: 0
             penetration: 0
             weapon_type: Melee
@@ -182,8 +169,7 @@ fs3combat:
 
         Club:
             description: "Mace/club/baton"
-            attack_skill: Melee
-            defense_skill: Melee
+            skill: Melee
             lethality: -10
             penetration: 0
             weapon_type: Melee
@@ -197,8 +183,7 @@ fs3combat:
 
         Knife:
             description: "Knife"
-            attack_skill: Melee
-            defense_skill: Melee
+            skill: Melee
             lethality: -5
             penetration: 0
             weapon_type: Melee
@@ -212,8 +197,7 @@ fs3combat:
 
         Tazer:
             description: "Stun gun"
-            attack_skill: Firearms
-            defense_skill: Melee
+            skill: Firearms
             lethality: 70
             penetration: 0
             weapon_type: Ranged
@@ -227,8 +211,7 @@ fs3combat:
 
         Kew:
             description: "KEW Assault Cannon"
-            attack_skill: Gunnery
-            defense_skill: Default
+            skill: Gunnery
             lethality: 0
             penetration: 20
             weapon_type: Ranged
@@ -242,8 +225,7 @@ fs3combat:
 
         Missile:
             description: "Anti-Vehicle Missile"
-            attack_skill: Gunnery
-            defense_skill: Default
+            skill: Gunnery
             lethality: 75
             penetration: 20
             weapon_type: Ranged
@@ -257,8 +239,7 @@ fs3combat:
 
         Shaped Charge:
             description: "Anti-Vehicle explosive"
-            attack_skill: Demolitions
-            defense_skill: Default
+            skill: Demolitions
             lethality: 15
             penetration: 70
             weapon_type: Explosive
@@ -272,8 +253,7 @@ fs3combat:
 
         Hmg:
             description: "Heavy machinegun.  Assumes tripod."
-            attack_skill: Firearms
-            defense_skill: Default
+            skill: Firearms
             lethality: 0
             penetration: 8
             weapon_type: Ranged
@@ -288,8 +268,7 @@ fs3combat:
 
         Nuke:
             description: "Nuclear Missile"
-            attack_skill: Gunnery
-            defense_skill: Default
+            skill: Gunnery
             lethality: 100
             penetration: 250
             weapon_type: Explosive
@@ -303,8 +282,7 @@ fs3combat:
 
         Ecm:
             description: "ECM Package"
-            attack_skill: ECM
-            defense_skill: ECM
+            skill: ECM
             lethality: 0
             penetration: 0
             weapon_type: Suppressive

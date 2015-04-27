@@ -57,25 +57,51 @@ module AresMUSH
       end
       
       describe :resolve do
+        before do
+          @action = AttackAction.new(@combatant, "Target")
+        end
+          
         it "should dodge if defense roll greater" do
           @target.stub(:roll_defense) { 2 }
           @combatant.stub(:roll_attack) { 1 }
-          action = AttackAction.new(@combatant, "Target")
-          action.resolve[0].should eq "fs3combat.attack_dodged"
+          @action.resolve[0].should eq "fs3combat.attack_dodged"
         end
 
         it "should miss if attack roll fails" do
           @target.stub(:roll_defense) { 2 }
           @combatant.stub(:roll_attack) { 0 }
-          action = AttackAction.new(@combatant, "Target")
-          action.resolve[0].should eq "fs3combat.attack_missed"
+          @action.resolve[0].should eq "fs3combat.attack_missed"
         end
 
-        it "should hit if attack roll greater" do
-          @target.stub(:roll_defense) { 2 }
-          @combatant.stub(:roll_attack) { 3 }
-          action = AttackAction.new(@combatant, "Target")
-          action.resolve[0].should eq "fs3combat.attack_hits"
+        describe "success" do
+          before do
+            @target.stub(:roll_defense) { 2 }
+            @combatant.stub(:roll_attack) { 3 }
+            @target.stub(:determine_hitloc) { "Head" }
+            @combatant.stub(:weapon) { "Knife" }
+            FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
+            @target.stub(:do_damage)
+            @target.stub(:determine_damage) { "M" }
+          end
+          
+          it "should hit if attack roll greater" do
+            @action.resolve[0].should eq "fs3combat.attack_hits"
+          end
+        
+          it "should determine hitloc based on successes" do
+            @target.should_receive(:determine_hitloc).with(1) { "Body" }
+            @action.resolve
+          end
+          
+          it "should inflict damage" do
+            @target.should_receive(:do_damage).with("M", "Knife", "Head")
+            @action.resolve
+          end
+          
+          it "should calculate damage" do
+            @target.should_receive(:determine_damage).with("Head", "Knife") { "M" }
+            @action.resolve
+          end
         end
       end
     end

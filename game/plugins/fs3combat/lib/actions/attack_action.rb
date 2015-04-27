@@ -71,7 +71,6 @@ module AresMUSH
       
       def resolve
         # TODO - Called shots and burst fire
-        # TODO - Stance mods
         # TODO - Hitting cover
         # TODO - Armor
         
@@ -83,15 +82,14 @@ module AresMUSH
         elsif (defense_roll > attack_roll)
           message = t('fs3combat.attack_dodged', :name => self.name, :target => self.target)
         else
-          # TODO - Determine damage and hitloc
-          # TODO - Inflict damage
-          damage = "D"
-          hitloc = "H"
+          hitloc = self.target_combatant.determine_hitloc(attack_roll - defense_roll)
+          damage = self.target_combatant.determine_damage(hitloc, self.combatant.weapon)
+          self.target_combatant.do_damage(damage, self.combatant.weapon, hitloc)
           message = t('fs3combat.attack_hits', 
             :name => self.name, 
             :target => self.target,
             :hitloc => hitloc,
-            :damage => damage) 
+            :damage => FS3Combat.display_severity(damage)) 
         end
         [message]
       end

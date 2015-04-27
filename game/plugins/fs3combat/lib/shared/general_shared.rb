@@ -17,6 +17,11 @@ module AresMUSH
       FS3Combat.combats.select { |c| c.has_combatant?(name) }.first
     end
     
+    def self.combatant_type_stat(type, stat)
+      type_config = FS3Combat.combatant_types[type]
+      type_config[stat]
+    end
+    
     def self.find_combat_by_number(client, num)
       num_str = "#{num}"
       

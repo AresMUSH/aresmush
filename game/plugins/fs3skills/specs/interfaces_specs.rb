@@ -82,7 +82,7 @@ module AresMUSH
         end
         
         it "should not allow giant die rolls" do
-          FS3Skills.roll_dice(99).should eq [1]
+          FS3Skills.roll_dice(99).should eq [7, 7, 7, 7, 7, 7]
         end
       end
     

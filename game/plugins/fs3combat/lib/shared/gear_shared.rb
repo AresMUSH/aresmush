@@ -14,6 +14,10 @@ module AresMUSH
       weapon ? weapon[stat] : nil
     end
     
+    def self.weapon_is_stun?(name)
+      FS3Combat.weapon_stat(name, "damage_type").titleize == "Stun"
+    end
+    
     def self.armors
       Global.config['fs3combat']['armor']
     end

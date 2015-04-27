@@ -20,6 +20,7 @@ fs3combat:
             #    - Ap
             armor: Tactical
             hitloc: Humanoid
+            defense_skill: Reaction
         Pilot:
             hitloc: Humanoid
             #weapon:
