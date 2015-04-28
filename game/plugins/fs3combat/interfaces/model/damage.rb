@@ -1,8 +1,7 @@
 module AresMUSH
   
   class Damage
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
 
     field :current_severity, :type => String
     field :initial_severity, :type => String

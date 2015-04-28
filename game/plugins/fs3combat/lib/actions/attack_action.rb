@@ -1,22 +1,23 @@
 module AresMUSH
   module FS3Combat
-    class AttackAction
-      attr_accessor :combatant, :target, :called, :is_burst, :mod, :target_combatant
+    class AttackAction < CombatAction
+      field :mod, :type => Integer
+      field :is_burst, :type => Boolean
+      field :called_shot, :type => String
       
-      def initialize(combatant, args)
-        self.combatant = combatant
+      def parse_args(args)
         self.is_burst = false
-        self.called = nil
+        self.called_shot = nil
         self.mod = 0
         
         if (args =~ /\//)
-          self.target = InputFormatter.titleize_input(args.before("/"))
+          target_names = args.before("/")
           parse_specials args.after("/").split(",")
         else
-          self.target = InputFormatter.titleize_input(args)
+          target_names = args
         end
         
-        self.target_combatant = self.combat.find_combatant(self.target)
+        parse_targets target_names
       end
 
       def parse_specials(specials)
@@ -25,7 +26,7 @@ module AresMUSH
           value = s.after(":")
           case InputFormatter.titleize_input(name)
           when "Called"
-            self.called = InputFormatter.titleize_input(value)
+            self.called_shot = InputFormatter.titleize_input(value)
           when "Mod"
             self.mod = value.to_i
           when "Burst"
@@ -36,32 +37,20 @@ module AresMUSH
         end
       end
       
-      def check_action
+      def check_specials
         # TODO: Check weapon permits burst fire
         # TODO: Check called shot location is valid for target
-
-        # TODO: Check target is valid
-        if (!self.target_combatant)
-          return t('fs3combat.not_a_valid_target', :name => self.target)
-        end
+        # TODO: Check targets valid (no non-combatants)
         return nil
       end
       
-      def name
-        self.combatant.name
-      end
-      
-      def combat
-        self.combatant.combat
-      end
-      
       def print_action
-        msg = t('fs3combat.attack_action_msg', :name => self.name, :target => self.target)
+        msg = t('fs3combat.attack_action_msg', :name => self.name, :target => self.target_names.join(", "))
         if (self.is_burst)
           msg << " #{t('fs3combat.attack_special_burst')}"
         end
-        if (self.called)
-          msg << " #{t('fs3combat.attack_special_called', :location => self.called)}"
+        if (self.called_shot)
+          msg << " #{t('fs3combat.attack_special_called', :location => self.called_shot)}"
         end
         if (self.mod != 0)
           msg << " #{t('fs3combat.attack_special_mod', :mod => self.mod)}"
@@ -69,29 +58,40 @@ module AresMUSH
         msg
       end
       
+      def print_action_short
+        t('fs3combat.attack_action_msg_short', :target => self.target_names.join(","))
+      end
+      
       def resolve
         # TODO - Called shots and burst fire
         # TODO - Hitting cover
         # TODO - Armor
-        
+        messages = []
+        self.targets.each do |t|
+          messages << attack_target(t)
+        end
+        messages.join("%R%% ")
+      end
+      
+      def attack_target(target)
         attack_roll = self.combatant.roll_attack(self.mod)
-        defense_roll = self.target_combatant.roll_defense(self.combatant.weapon)
+        defense_roll = target.roll_defense(self.combatant.weapon)
         
         if (attack_roll <= 0)
-          message = t('fs3combat.attack_missed', :name => self.name, :target => self.target)
+          message = t('fs3combat.attack_missed', :name => self.name, :target => target.name)
         elsif (defense_roll > attack_roll)
-          message = t('fs3combat.attack_dodged', :name => self.name, :target => self.target)
+          message = t('fs3combat.attack_dodged', :name => self.name, :target => target.name)
         else
-          hitloc = self.target_combatant.determine_hitloc(attack_roll - defense_roll)
-          damage = self.target_combatant.determine_damage(hitloc, self.combatant.weapon)
-          self.target_combatant.do_damage(damage, self.combatant.weapon, hitloc)
+          hitloc = target.determine_hitloc(attack_roll - defense_roll)
+          damage = target.determine_damage(hitloc, self.combatant.weapon)
+          target.do_damage(damage, self.combatant.weapon, hitloc)
           message = t('fs3combat.attack_hits', 
             :name => self.name, 
-            :target => self.target,
+            :target => target.name,
             :hitloc => hitloc,
             :damage => FS3Combat.display_severity(damage)) 
         end
-        [message]
+        message
       end
     end
   end

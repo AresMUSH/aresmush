@@ -1,7 +1,6 @@
 module AresMUSH
   class Combatant
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
       
     field :name, :type => String
     field :name_upcase, :type => String
@@ -16,6 +15,9 @@ module AresMUSH
     belongs_to :character, :class_name => "AresMUSH::Character"
     belongs_to :combat, :class_name => "AresMUSH::CombatInstance"
 
+    has_one :action, :class_name => 'AresMUSH::CombatAction', :inverse_of => :combatant
+    has_and_belongs_to_many :targeted_by_actions, :class_name => 'AresMUSH::CombatAction', :inverse_of => :targets
+      
     after_initialize :setup_defaults
         
     def client

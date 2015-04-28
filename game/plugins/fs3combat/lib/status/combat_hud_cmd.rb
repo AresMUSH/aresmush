@@ -38,7 +38,8 @@ module AresMUSH
       end
       
       def format_combatant(c)
-        "%R#{left(c.name, 15)} #{format_weapon(c)} #{c.combatant_type} #{format_damage(c)}"
+        action = c.action ? c.action.print_action_short : "---"
+        "%R#{left(c.name, 15)} #{format_weapon(c)} #{c.combatant_type} #{format_damage(c)} #{action}"
       end
       
       def format_non_combatants(combat)

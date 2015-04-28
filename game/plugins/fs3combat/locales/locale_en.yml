@@ -59,6 +59,7 @@ en:
         combat_emit: "%xb<FS3Combat>%xn %{message}"
         npcmaster_text: " %xh%xx(by %{name})%xn"
         invalid_combat_number: "That is not a valid combat number.  See combats for a list."
+        organizer_only: "Only the organizer may do this."
         
         # ----------------------------
         # TYPES
@@ -145,6 +146,7 @@ en:
         # ----------------------------
 
         attack_action_msg: "%{name} will attack %{target}."
+        attack_action_msg_short: "Attack %{target}"
         attack_special_burst: "(3-round burst)"
         attack_special_called: "(called shot to the %{location})"
         attack_special_mod: "(modifier: %{mod})"
@@ -152,5 +154,13 @@ en:
         attack_missed: "%{name} attacks %{target} but MISSES!"
         attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
         attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc}"
+        
+        # ----------------------------
+        # PASS
+        # ----------------------------
+
+        pass_msg: "%{name} will pass this turn."
+        pass_msg_short: "Pass"
+        passes: "%{name} passes."
         
         
