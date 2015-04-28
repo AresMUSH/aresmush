@@ -15,14 +15,10 @@ module AresMUSH
       end
 
       def handle
-        combat = FS3Combat.combat(self.name)
-        if (!combat)
-          client.emit_failure t('fs3combat.not_in_combat', :name => self.name)
-          return
+        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
+          combat.leave(self.name)
+          combat.save
         end
-        
-        combat.leave(self.name)
-        combat.save
       end
     end
   end

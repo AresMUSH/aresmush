@@ -13,14 +13,10 @@ module AresMUSH
       end
       
       def crack!
-        if (cmd.args =~ /\=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.name = titleize_input(cmd.args.arg1)
-          self.action_args = cmd.args.arg2
-        else
-          self.name = client.name
-          self.action_args = cmd.args
-        end
+        # Command arguments are cracked by the action class.
+        result = self.action_klass.crack_helper(client, cmd)
+        self.name = result[:name]
+        self.action_args = result[:action_args]
       end
 
       def find_action_klass(cmd)

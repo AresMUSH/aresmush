@@ -16,7 +16,6 @@ module AresMUSH
 
       def handle
         FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
-          # TODO - If combatant is pilot or passenger, use their vehicle's hitloc chart
           hitlocs = combatant.hitloc_chart.uniq
           client.emit BorderedDisplay.list hitlocs.sort, t('fs3combat.hitlocs_for', :name => self.name)
         end

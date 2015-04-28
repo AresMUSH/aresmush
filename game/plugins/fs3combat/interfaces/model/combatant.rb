@@ -10,12 +10,14 @@ module AresMUSH
     field :stance, :type => String
     field :armor, :type => String
     field :npc_skill, :type => Integer
+    field :is_ko, :type => Boolean
+    field :stance, :type => String
     field :npc_damage, :type => Array, :default => []
       
     belongs_to :character, :class_name => "AresMUSH::Character"
     belongs_to :combat, :class_name => "AresMUSH::CombatInstance"
 
-    has_one :action, :class_name => 'AresMUSH::CombatAction', :inverse_of => :combatant
+    has_one :action, :class_name => 'AresMUSH::CombatAction', :inverse_of => :combatant, :dependent => :destroy
     has_and_belongs_to_many :targeted_by_actions, :class_name => 'AresMUSH::CombatAction', :inverse_of => :targets
       
     after_initialize :setup_defaults
@@ -47,13 +49,29 @@ module AresMUSH
     end
     
     def attack_stance_mod
-      # TODO
-      0
+      case self.stance
+      when "Banzai"
+        3
+      when "Evade"
+        -3
+      when "Cautious"
+        -1
+      else
+        0
+      end
     end
     
     def defense_stance_mod
-      # TODO
-      0
+      case self.stance
+      when "Banzai"
+        -3
+      when "Evade"
+        3
+      when "Cautious"
+        1
+      else
+        0
+      end
     end
     
     # Attacker           |  Defender            |  Skill
@@ -76,6 +94,8 @@ module AresMUSH
     end
     
     def hitloc_chart
+      # TODO - If combatant is pilot or passenger, use their vehicle's hitloc chart
+      #  except for crew hits - maybe pass in a crew_hit bool?
       hitloc_type = FS3Combat.combatant_type_stat(self.combatant_type, "hitloc")
       FS3Combat.hitloc(hitloc_type)["areas"]
     end
@@ -94,6 +114,7 @@ module AresMUSH
     def determine_hitloc(successes)
       roll = rand(hitloc_chart.count) + successes
       roll = [roll, hitloc_chart.count - 1].min
+      roll = [0, roll].max
       hitloc_chart[roll]
     end
     

@@ -43,7 +43,7 @@ en:
         you_are_already_in_combat: "You are already in combat."
         already_in_combat: "%{name} is already in combat."
         you_are_not_in_combat: "You are not in combat."
-        not_in_combat: "%{name} is not in combat."
+        not_in_combat: "%{name} is not in this combat."
         start_real_combat: "You start a real combat, number %{num}.  Damage will be permanent."
         start_mock_combat: "You start a mock combat, number %{num}.  Damage will be erased at the end."
         
@@ -140,12 +140,15 @@ en:
         
         invalid_action_params: "There was a problem with your action: %{error}"
         not_a_valid_target: "%{name} is not a valid target."
+        only_one_target: "You can only target one person with that action."
+        cant_target_noncombatant: "You can't target observers."
+        cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
 
         # ----------------------------
         # ATTACK
         # ----------------------------
 
-        attack_action_msg: "%{name} will attack %{target}."
+        attack_action_msg_long: "%{name} will attack %{target}."
         attack_action_msg_short: "Attack %{target}"
         attack_special_burst: "(3-round burst)"
         attack_special_called: "(called shot to the %{location})"
@@ -155,12 +158,16 @@ en:
         attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
         attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc}"
         
+        burst_fire_not_allowed: "You need an automatic weapon to do burst fire."
+        invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
+        fires_burst: "%{name} fires a 3-round burst!"        
+        
         # ----------------------------
         # PASS
         # ----------------------------
 
-        pass_msg: "%{name} will pass this turn."
-        pass_msg_short: "Pass"
-        passes: "%{name} passes."
+        pass_action_msg_long: "%{name} will pass this turn."
+        pass_action_msg_short: "Pass"
+        pass_resolution_msg: "%{name} passes."
         
         

@@ -15,6 +15,21 @@ module AresMUSH
       self.combatant.combat
     end
     
+    def self.crack_helper(client, cmd)
+      if (cmd.args =~ /\=/)
+        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        name = InputFormatter.titleize_input(cmd.args.arg1)
+        action_args = cmd.args.arg2
+      else
+        name = client.name
+        action_args = cmd.args
+      end
+      {
+        :name => name,
+        :action_args => action_args
+      }
+    end
+    
     def error_check
       self.methods.grep(/^check_/).sort.each do |m|
         error = send m
@@ -26,12 +41,14 @@ module AresMUSH
     end
     
     def check_can_act
-      # TODO - check not KO'd
+      return t('fs3combat.cannot_act_while_koed') if self.combatant.is_ko
       return nil
     end
     
     def check_valid_targets
-      # TODO: Check targets valid (no non-combatants)
+      self.targets.each do |t|
+        return t('fs3combat.cant_target_noncombatant', :name => t.name) if t.combatant_type == "Observer"
+      end
       return nil
     end
     

@@ -10,7 +10,7 @@ module AresMUSH
       
       def handle
         if (!client.char.is_in_combat?)
-          client.emit_failure t('fs3combat.not_in_combat', :name => self.name)
+          client.emit_failure t('fs3combat.you_are_not_in_combat')
           return
         end
         
@@ -19,7 +19,10 @@ module AresMUSH
         # TODO - initiative order
         combat.combatants.each do |c|
           next if !c.action
-          combat.emit c.action.resolve
+          messages = c.action.resolve
+          messages.each do |m|
+            combat.emit m
+          end
         end
       end
     end

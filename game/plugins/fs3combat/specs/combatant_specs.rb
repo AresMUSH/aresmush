@@ -232,6 +232,11 @@ module AresMUSH
             @combatant.should_receive(:rand).with(4) { 3 }
             @combatant.determine_hitloc(1).should eq "Body"
           end
+          
+          it "should work with lowest value and negative modifier" do
+            @combatant.should_receive(:rand).with(4) { 0 }
+            @combatant.determine_hitloc(-2).should eq "Head"
+          end
         end
         
         describe :roll_ability do
