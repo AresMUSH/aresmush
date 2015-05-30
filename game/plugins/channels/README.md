@@ -1,4 +1,4 @@
-Channels Plugin
+Channels
 ====
 
 The Channels plugin provides a game-wide chat system.  The Ares channels system does its best to support both PennMUSH and TinyMUX command syntax, so whether you like 'addcom' or '@chan/join', hopefully you'll find the commands familiar.

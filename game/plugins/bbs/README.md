@@ -1,4 +1,5 @@
-Bulletin Board Plugin
+Bulletin Boards
+====
 
 Inspired by the widely-loved [Myrrdin's  Bulletin Board System](http://www.firstmagic.com/~merlin/mushcode/mc.bb.html), the Ares BBS provides MU-wide discussion forums.
 

@@ -1,5 +1,5 @@
 en:
     maps:
         maps_title: "Available Maps"
-        map_title: "Area %{area} Map"
+        map_title: "%{area} Map"
         no_such_map: "Map not available."

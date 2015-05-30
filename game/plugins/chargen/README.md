@@ -1,4 +1,4 @@
-Chargen Plugins
+Chargen
 ====
 
 AresMUSH features a full-fledged Character Creation (Chargen) system.  Although it comes set up for the FS3 Skills System out of the box, it can be adapted to other systems with modest code changes.
