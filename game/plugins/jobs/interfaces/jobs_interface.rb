@@ -11,7 +11,7 @@ module AresMUSH
         :description => description, 
         :category => category,
         :number => Game.master.next_job_number,
-        :status => Global.config["jobs"]["default_status"])
+        :status => Global.read_config("jobs", "default_status"))
         
       game = Game.master
       game.next_job_number = game.next_job_number + 1

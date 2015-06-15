@@ -2,7 +2,7 @@ module AresMUSH
   class Database
 
     def connect
-      db_config = Global.config['database']['production']
+      db_config = Global.read_config("database", "production")
       host = db_config['sessions']['default']['hosts']
       db_name = db_config['sessions']['default']['database']
       Global.logger.info("Connection to database: #{host} #{db_name}")

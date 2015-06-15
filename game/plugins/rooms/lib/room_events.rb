@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def on_cron_event(event)
-        config = Global.config['rooms']['room_lock_cron']
+        config = Global.read_config("rooms", "room_lock_cron")
         return if !Cron.is_cron_match?(config, event.time)
 
         locked_exits = Exit.all.select { |e| !e.lock_keys.empty?}

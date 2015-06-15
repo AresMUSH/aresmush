@@ -9,13 +9,13 @@ module AresMUSH
     def self.local_short_timestr(client, datetime)
       return "" if datetime.nil?
       lt = localtime(client, datetime)
-      lt.strftime Global.config["date_and_time"]["short_date_format"]
+      lt.strftime Global.read_config("date_and_time", "short_date_format")
     end
 
     def self.local_long_timestr(client, datetime)
       return "" if datetime.nil?
       lt = localtime(client, datetime)
-      lt.strftime Global.config["date_and_time"]["long_date_format"]
+      lt.strftime Global.read_config("date_and_time", "long_date_format")
     end
     
   end

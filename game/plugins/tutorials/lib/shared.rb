@@ -1,7 +1,7 @@
 module AresMUSH
   module Tutorials
     def self.available_tutorials
-      Global.config["tutorials"]["topics"]
+      Global.read_config("tutorials", "topics")
     end
     
     def self.is_valid_tutorial?(name)

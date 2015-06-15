@@ -1,7 +1,7 @@
 module AresMUSH
   module Bbs
     def self.can_manage_bbs?(actor)
-      return actor.has_any_role?(Global.config["bbs"]["roles"]["can_manage_bbs"])
+      return actor.has_any_role?(Global.read_config("bbs", "roles", "can_manage_bbs"))
     end
 
     def self.can_write_board?(char, board)

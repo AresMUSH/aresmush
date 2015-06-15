@@ -38,7 +38,7 @@ module AresMUSH
             return
           end
           
-          Jobs.close_job(client, model.approval_job, Global.config["chargen"]["messages"]["approval"])
+          Jobs.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
           
           model.is_approved = true
           model.approval_job = nil
@@ -46,7 +46,7 @@ module AresMUSH
           client.emit_success t('chargen.app_approved', :name => model.name)
           
           Bbs.system_post_to_bbs_if_configured(
-            Global.config['chargen']['arrivals_board'],
+            Global.read_config("chargen", "arrivals_board"),
             t('chargen.approval_bbs_subject'), 
             t('chargen.approval_bbs_body', :name => model.name))
         end

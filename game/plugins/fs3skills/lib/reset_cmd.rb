@@ -23,7 +23,7 @@ module AresMUSH
         char.fs3_quirks = {}
         char.fs3_languages = []
         
-        languages = Global.config['fs3skills']['starting_languages']
+        languages = Global.read_config("fs3skills", "starting_languages")
         if (languages)
           client.emit_ooc t('fs3skills.reset_languages')
           languages.each do |l|

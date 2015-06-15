@@ -29,7 +29,7 @@ module AresMUSH
       
       def handle
         current_rating = FS3Skills.ability_rating(client.char, self.name)
-        max_rating = Global.config['fs3xp']['max_rating_through_xp']
+        max_rating = Global.read_config("fs3xp", "max_rating_through_xp")
         if (current_rating >= max_rating)
           client.emit_failure t('fs3xp.cant_raise_further_with_xp')
           return

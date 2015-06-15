@@ -2,17 +2,17 @@ module AresMUSH
   module Manage
     def self.can_manage_game?(actor)
       return false if actor.nil?
-      return actor.has_any_role?(Global.config["manage"]["roles"]["can_manage_game"])
+      return actor.has_any_role?(Global.read_config("manage", "roles", "can_manage_game"))
     end
     
     def self.can_manage_players?(actor)
       return false if actor.nil?
-      return actor.has_any_role?(Global.config["manage"]["roles"]["can_manage_players"])
+      return actor.has_any_role?(Global.read_config("manage", "roles", "can_manage_players"))
     end
     
     def self.can_manage_rooms?(actor)
       return false if actor.nil?
-      return actor.has_any_role?(Global.config["manage"]["roles"]["can_manage_rooms"])
+      return actor.has_any_role?(Global.read_config("manage", "roles", "can_manage_rooms"))
     end
     
     def self.can_manage_object?(actor, model)

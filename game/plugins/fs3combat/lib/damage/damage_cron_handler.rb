@@ -4,7 +4,7 @@ module AresMUSH
       include Plugin
       
       def on_cron_event(event)
-        config = Global.config['fs3combat']['healing_cron']
+        config = Global.read_config("fs3combat", "healing_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
         Character.each do |c|

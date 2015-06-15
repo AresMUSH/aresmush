@@ -17,7 +17,7 @@ module AresMUSH
       def handle
         if (self.name.nil?)
           title = t('ranks.all_ranks_title', :group => Ranks.rank_group)
-          client.emit BorderedDisplay.list Global.config["ranks"]["ranks"].keys, title
+          client.emit BorderedDisplay.list Global.read_config("ranks", "ranks").keys, title
           return
         end
 

@@ -3,7 +3,7 @@ module AresMUSH
     mattr_accessor :current_weather
    
     def self.can_change_weather?(actor)
-      return actor.has_any_role?(Global.config["weather"]["roles"]["can_change_weather"])
+      return actor.has_any_role?(Global.read_config("weather", "roles", "can_change_weather"))
     end
     
     def self.change_weather(area)
@@ -17,7 +17,8 @@ module AresMUSH
       end
 
       season = Weather.season_for_area(area)
-      season_config = Global.config["weather"]["climates"][climate][season]
+      climate_config = Global.read_config("weather", "climates", climate)
+      season_config = climate_config[season]
 
       # Get the current weather
       weather = Weather.current_weather[area]
@@ -40,7 +41,7 @@ module AresMUSH
     end
     
     def self.climate_for_area(area)
-      Global.config["weather"]["zones"][area] || Global.config["weather"]["default_zone"]
+      Global.read_config("weather", "zones", area) || Global.read_config("weather", "default_zone")
     end
 
     # You can make this fancier to account for months like March which are

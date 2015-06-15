@@ -31,7 +31,7 @@ module AresMUSH
             return
           end
           
-          website = Global.config["server"]["website"]
+          website = Global.read_config("server", "website")
           
           text = "%xh#{model.name}%xn (#{model.fullname})"
           text << "%R%R"

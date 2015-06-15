@@ -4,11 +4,11 @@ module AresMUSH
       include Plugin
       
       def on_cron_event(event)
-        config = Global.config['cookies']['cron']
+        config = Global.read_config("cookies", "cron")
         return if !Cron.is_cron_match?(config, event.time)
         
-        cookies_per_luck = Global.config['cookies']['cookies_per_luck']
-        max_luck = Global.config['cookies']['max_luck']
+        cookies_per_luck = Global.read_config("cookies", "cookies_per_luck")
+        max_luck = Global.read_config("cookies", "max_luck")
         
         awards = ""
         cookie_recipients = Character.all.select { |c| c.cookies_received.any? }
@@ -33,7 +33,7 @@ module AresMUSH
         return if awards.blank?
         
         Bbs.system_post_to_bbs_if_configured(
-          Global.config['cookies']['cookie_board'],
+          Global.read_config("cookies", "cookie_board"),
           t('cookies.weekly_award_title'), 
           awards.chomp)
       end

@@ -7,7 +7,7 @@ module AresMUSH
       include MockClient
       
       before do
-        Global.stub(:config) { { "api" => { "cron" => "x" } }}
+        Global.stub(:read_config).with("api", "cron") { "x" }
         stub_global_objects
         @handler = ApiEventHandler.new
         @router = double

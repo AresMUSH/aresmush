@@ -2,7 +2,7 @@ module AresMUSH
   module Help
     
     def self.categories
-      Global.config["help"]["categories"]
+      Global.read_config("help", "categories")
     end
         
     def self.topics(category)

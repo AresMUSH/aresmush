@@ -7,7 +7,7 @@ module AresMUSH
   describe ClientGreeter do
 
     before do
-      Global.stub(:config) { { "connect" => { "welcome_text" => "game welcome", "welcome_screen" => "a file"} } }
+      Global.stub(:read_config).with("connect") { { "welcome_text" => "game welcome", "welcome_screen" => "a file"} }
       @client = double.as_null_object
       SpecHelpers.stub_translate_for_testing
       File.stub(:read)      

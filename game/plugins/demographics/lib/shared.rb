@@ -1,8 +1,8 @@
 module AresMUSH
   module Demographics
     def self.check_age(age)
-      min_age = Global.config['demographics']['min_age']
-      max_age = Global.config['demographics']['max_age']
+      min_age = Global.read_config("demographics", "min_age")
+      max_age = Global.read_config("demographics", "max_age")
       if (age > max_age || age < min_age)
         return t('demographics.age_outside_limits', :min => min_age, :max => max_age) 
       end

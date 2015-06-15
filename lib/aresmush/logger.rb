@@ -1,7 +1,7 @@
 module AresMUSH
   class AresLogger
     def start
-      config = Global.config['logger']
+      config = Global.read_config("logger")
       configurator = Log4r::YamlConfigurator
       configurator.decode_yaml config
     end

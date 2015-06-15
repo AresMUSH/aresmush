@@ -7,7 +7,7 @@ module AresMUSH
         return
       end
       
-      shortcut_config = Global.config['shortcuts']
+      shortcut_config = Global.read_config("shortcuts")
       return if shortcut_config.nil?
       
       roots_config = shortcut_config['roots']

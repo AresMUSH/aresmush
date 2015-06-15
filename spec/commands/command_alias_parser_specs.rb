@@ -7,8 +7,7 @@ module AresMUSH
     before do
       @client = double(Client)
       @client.stub(:room) { nil }
-      Global.stub(:config) { { 
-        "shortcuts" =>
+      Global.stub(:read_config).with("shortcuts") { 
         {
           "roots" => 
           {
@@ -22,7 +21,7 @@ module AresMUSH
             "e" => "f/g",
             "m" => "n/o foo"
           } 
-          } } }
+          } }
           SpecHelpers.stub_translate_for_testing
         end
     

@@ -18,7 +18,7 @@ module AresMUSH
       
       def check_permission
         return nil if self.target == client.name
-        return nil if client.char.has_any_role?(Global.config['sheet']['roles']['can_view_sheets'])
+        return nil if client.char.has_any_role?(Global.read_config("sheet", "roles", "can_view_sheets"))
         return t('sheet.no_permission_to_backup')
       end
       

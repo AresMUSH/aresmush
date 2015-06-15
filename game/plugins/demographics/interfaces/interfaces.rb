@@ -3,7 +3,7 @@ module AresMUSH
     def self.app_review(char)
       message = t('demographics.demo_review')
       
-      required_properties = Global.config['demographics']['required_properties']
+      required_properties = Global.read_config("demographics", "required_properties")
       missing = []
       
       required_properties.each do |property|

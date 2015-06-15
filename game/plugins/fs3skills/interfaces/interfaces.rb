@@ -175,7 +175,7 @@ module AresMUSH
     
     def self.get_ruling_attr(char, ability)
       ability_type = FS3Skills.get_ability_type(ability)
-      default = Global.config['fs3skills']['default_ruling_attr']
+      default = Global.read_config("fs3skills", "default_ruling_attr")
       if (ability_type == :action)
         return FS3Skills.action_skills.find { |s| s["name"] == ability }["ruling_attr"]
       elsif (ability_type == :attribute)

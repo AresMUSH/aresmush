@@ -24,13 +24,13 @@ module AresMUSH
       end
       
       def check_condition
-        conditions = Global.config["weather"]["conditions"]
+        conditions = Global.read_config("weather", "conditions")
         return t('weather.invalid_condition', :conditions => conditions.join(" ")) if !conditions.include?(self.condition)
         return nil
       end
       
       def check_temp
-        temperatures = Global.config["weather"]["temperatures"]
+        temperatures = Global.read_config("weather", "temperatures")
         return t('weather.invalid_temperature', :temps => temperatures.join(" ")) if !temperatures.include?(self.temp)
         return nil
       end

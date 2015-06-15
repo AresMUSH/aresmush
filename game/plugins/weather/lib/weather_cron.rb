@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def on_cron_event(event)
-        config = Global.config['weather']['cron']
+        config = Global.read_config("weather", "cron")
         return if !Cron.is_cron_match?(config, event.time)
 
         change_all_weathers
@@ -17,7 +17,7 @@ module AresMUSH
 
       def change_all_weathers
         # Set an initial weather for each area and the default one
-        areas = Global.config["weather"]["zones"].keys + ["default"]
+        areas = Global.read_config("weather", "zones").keys + ["default"]
         areas.each do |a|
           Weather.change_weather(a)
         end

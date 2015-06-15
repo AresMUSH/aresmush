@@ -4,16 +4,10 @@ module AresMUSH
       include MockClient
       
       before do
-        Global.stub(:config) {
-          {
-            "fs3skills" => {
-              "attributes" => [ { "name" => "Mind" }, {"name" => "Body" } ],
-              "action_skills" => [ { "name" => "Firearms", "ruling_attr" => "Reaction" } ],
-              "default_ruling_attr" => "Mind"
-            }
-          }
-        }
-        
+        Global.stub(:read_config).with("fs3skills", "attributes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
+        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "ruling_attr" => "Reaction" } ] }
+        Global.stub(:read_config).with("fs3skills", "default_ruling_attr") { "Mind" }
+
         SpecHelpers.stub_translate_for_testing   
       end
       

@@ -78,7 +78,7 @@ module AresMUSH
 
         it "should format an ooc say message" do
           cmd.stub(:args) { "test" }
-          Global.stub(:config) { {"pose" => { "ooc_color" => "%xc" } } }
+          Global.stub(:read_config).with("pose", "ooc_color") { '%xc' }
           set_root({ :pose => false, :say => false, :emit => false, :ooc => true }) 
           PoseFormatter.should_receive(:format).with("Bob", "test") { "formatted msg" }
           handler.message.should eq "%xc<OOC>%xn formatted msg"

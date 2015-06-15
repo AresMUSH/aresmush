@@ -45,7 +45,7 @@ module AresMUSH
         
         result = ClassTargetFinder.find(name, Character, client)
         
-        type = Global.config["fs3combat"]["default_type"]
+        type = Global.read_config("fs3combat", "default_type")
         combat.join(name, type, result.target)
         combat.save
         

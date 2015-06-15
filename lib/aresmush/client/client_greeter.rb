@@ -2,7 +2,7 @@ module AresMUSH
 
   class ClientGreeter    
     def self.greet(client)
-      connect_config = Global.config['connect']
+      connect_config = Global.read_config("connect")
       
       # Connect screen ansi
       filename = connect_config['welcome_screen']

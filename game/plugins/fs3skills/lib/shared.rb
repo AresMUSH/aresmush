@@ -1,27 +1,27 @@
 module AresMUSH
   module FS3Skills
     def self.receives_roll_results?(char)
-      char.has_any_role?(Global.config['fs3skills']['roles']['receives_roll_results'])
+      char.has_any_role?(Global.read_config("fs3skills", "roles", "receives_roll_results"))
     end
     
     def self.can_manage_abilities?(actor)
-      actor.has_any_role?(Global.config['fs3skills']['roles']['can_manage_abilities'])
+      actor.has_any_role?(Global.read_config("fs3skills", "roles", "can_manage_abilities"))
     end
 
     def self.attributes
-      Global.config['fs3skills']['attributes']
+      Global.read_config("fs3skills", "attributes")
     end
     
     def self.action_skills
-      Global.config['fs3skills']['action_skills']
+      Global.read_config("fs3skills", "action_skills")
     end 
 
     def self.background_skills
-      Global.config['fs3skills']['background_skills']
+      Global.read_config("fs3skills", "background_skills")
     end 
 
     def self.languages
-      Global.config['fs3skills']['languages']
+      Global.read_config("fs3skills", "languages")
     end
     
     def self.attribute_names

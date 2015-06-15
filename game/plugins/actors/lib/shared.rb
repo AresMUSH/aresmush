@@ -1,7 +1,7 @@
 module AresMUSH
   module Actors
     def self.can_set_actor?(char)
-      char.has_any_role?(Global.config['actors']['roles']['can_set_actors'])
+      char.has_any_role?(Global.read_config("actors", "roles", "can_set_actors"))
     end
     
     def self.create_or_update_actor(client, charname, actorname)

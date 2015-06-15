@@ -50,13 +50,12 @@ module AresMUSH
     
     describe :line_with_text do
       it "should use the line config" do
-        Global.stub(:config) { { "skin" => 
-          { "line_with_text" => {
-            "template" => "---text---",
+        Global.stub(:read_config).with("skin", "line_with_text") { 
+          { "template" => "---text---",
             "padding" => ".",
             "width" => 10,
             "right_spacer" => "]",
-            "left_spacer" => "[" }}}}
+            "left_spacer" => "[" }}
         renderer = TemplateRenderer.new("<%= line_with_text(\"ABC\") %>")
         renderer.render(@data).should eq "---..[ABC]...---"
       end
