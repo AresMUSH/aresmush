@@ -24,7 +24,7 @@ en:
         exit_already_exists: "An exit with that name already exists in that room."
         
         find_results: "Find Results:"
-        invalid_search_class: "That is not a database object type."
+        invalid_search_class: "The Ares find command requires that you specify a database object type.  For example: find room=Welcome."
         
         objects_reloaded: "Database objects refreshed."
         

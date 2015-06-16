@@ -42,7 +42,7 @@ module AresMUSH
       Global.api_router = api_router
       api_router.find_handlers
     
-      Global.logger.debug Global.config
+      Global.logger.debug Global.config_reader.config
 
       @command_line = AresMUSH::CommandLine.new(server)
     end

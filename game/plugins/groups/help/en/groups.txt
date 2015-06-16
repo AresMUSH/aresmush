@@ -6,7 +6,3 @@ During chargen, you should set your affiliation for each group unless you're sur
     %xcgroup <name>%xn - Describes a group and shows valid values.
     %xcgroup/set <group>=<value>%xn - Sets your affiliation.
         Leave the vaule blank to clear it.
-
-You can use the census command to find out how many characters there are from each group.
-
-    %xccensus <group>%xn - Counts characters from the group.

@@ -15,7 +15,8 @@ module AresMUSH
       list = []
       queue.each do |char, action|
         name = char.is_approved? ? "%xh%xg#{char.name}%xn" : char.name
-        list << "#{name} - #{action}"
+        last_on = OOCTime.local_short_timestr(client, char.last_on)
+        list << "#{name} - #{last_on} - #{action}"
       end
       BorderedDisplay.list list, t('idle.idle_title')
     end

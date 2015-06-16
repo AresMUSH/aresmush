@@ -9,6 +9,7 @@ module AresMUSH
     rescue Exception => e
       begin
         id = client.nil? ? nil : client.id
+        puts "Error #{e.class} #{e.inspect}"
         message = t('dispatcher.unexpected_error', :desc => desc, :error_info => e)
         Global.logger.error("Error in #{desc}: client=#{id} error=#{e} backtrace=#{e.backtrace[0,10]}")
         if (!client.nil?)

@@ -1,0 +1,7 @@
+You can use the census command to find out how many characters already exist with various criteria.
+
+    %xccensus%xn - Lists all characters
+    %xccensus gender%xn - Counts characters by gender
+    %xccensus <group>%xn - Counts characters from a particular group, like position
+       or faction.  See %xhhelp groups%xn for more information about what groups are
+       available.

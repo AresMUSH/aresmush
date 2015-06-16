@@ -6,10 +6,10 @@ idle:
         # Roles that are exempt from idle sweep
         idle_exempt:
             - admin
-#            - builder
+            - builder
             - guest
 
     # Idle-out announcements will be posted to this BBS.
     idle_board: "Announcements"
     
-    days_before_idle: 3
+    days_before_idle: 30

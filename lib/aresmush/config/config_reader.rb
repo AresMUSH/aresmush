@@ -39,8 +39,12 @@ module AresMUSH
 
     def read
       plugin_config = PluginManager.config_files
-      self.config = YamlFileParser.read(ConfigReader.config_files, {} )
-      self.config = YamlFileParser.read(plugin_config, self.config)
+
+      # Don't wipe out the existing config until we know the temp one has
+      # loaded without raising an exception 
+      temp_config = YamlFileParser.read(ConfigReader.config_files, {} )
+      temp_config = YamlFileParser.read(plugin_config, temp_config)
+      self.config = temp_config
       if (!Global.dispatcher.nil?)
         Global.dispatcher.queue_event ConfigUpdatedEvent.new
       end

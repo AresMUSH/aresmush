@@ -2,6 +2,13 @@ help:
     categories:
         main:
             topics:
+                census: 
+                    toc_topic: 'Character Creation'
+                    order: 2
+                    dir: 'game/plugins/groups/help/'
+                    file: 'census.txt'
+                    summary: "See what other characters are out there."
+                    
                 groups: 
                     toc_topic: 'Character Creation'
                     dir: 'game/plugins/groups/help/'
@@ -20,7 +27,6 @@ help:
                         - 'departments' 
                         - 'colony' 
                         - 'colonies'
-                        - 'census'
                     
         admin:
             topics:

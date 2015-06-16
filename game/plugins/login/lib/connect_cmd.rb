@@ -12,14 +12,12 @@ module AresMUSH
       end
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_space_arg2)
-        self.charname = trim_input(cmd.args.arg1)
-        self.password = cmd.args.arg2
+        self.charname = trim_input(cmd.args.before(" "))
+        self.password = cmd.args.after(" ")
       end
       
       def check_for_guest_or_password
-        return t('login.maybe_you_meant_tour') if cmd.raw.downcase.chomp == "connect guest"
-        return t('login.maybe_you_meant_tour') if cmd.raw.downcase.chomp == "connect guest guest"
+        return t('login.maybe_you_meant_tour') if self.charname.downcase == "guest"
         return t('dispatcher.invalid_syntax', :command => 'connect') if self.password.nil? || self.charname.nil?
         return nil
       end

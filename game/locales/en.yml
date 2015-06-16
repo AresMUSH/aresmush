@@ -74,9 +74,9 @@ en:
         no_handle_set: "You must link this character to a handle before using that command."
         
         # Engine errors
-        api_error: "Error communicating with remote server. Please try again later and contact the admin if the problem persists."
+        api_error: "Error communicating with AresCentral. Please contact the admin if the problem persists."
         response_error: "Error from remote server: %{error}."
-        sending_to_remote: "Sending message to remote server.  This may take a moment."
-        api_cipher_error: "Error reading response from remote server.  Please contact the admin."
+        sending_to_remote: "Sending message to AresCentral.  This may take a moment."
+        api_cipher_error: "Error communicating with AresCentralr.  Please contact the admin if the problem persists."
         game_not_found: "Game not found."        
 

@@ -3,25 +3,30 @@ module AresMUSH
     class CensusCmd
       include Plugin
       include PluginRequiresLogin
-      include PluginRequiresArgs
+      include TemplateFormatters
       
-      attr_accessor :name
-
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'groups'
-        super
-      end
-      
+      attr_accessor :name, :page
+     
       def want_command?(client, cmd)
         cmd.root_is?("census")
       end
 
       def crack!
-        self.name = cmd.args ? titleize_input(cmd.args) : "Position"
+        self.name = titleize_input(cmd.args)
+        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
       end
       
-      def handle        
+      def handle   
+        if (!self.name)
+          show_complete_census
+        elsif (self.name == "Gender")
+          show_gender_census
+        else
+          show_group_census
+        end
+      end
+      
+      def show_group_census  
         group = Groups.get_group(self.name)
         
         if (group.nil?)
@@ -29,28 +34,45 @@ module AresMUSH
           return
         end
 
-        title = t('groups.census_title', :name => self.name)
+        title = t('groups.group_census_title', :name => self.name)
+        list = count_by { |c| c.groups[self.name] }
         
+        if (group['values'].nil?)
+          list = list.first(20)
+          title = t('groups.census_title_top_20', :name => self.name)
+        end
+        
+        client.emit BorderedDisplay.list list, title
+      end
+      
+      def show_gender_census
+        title = t('groups.gender_census_title')
+        list = count_by { |c| c.gender }
+        client.emit BorderedDisplay.list list, title
+      end
+      
+      def show_complete_census
+        chars = Character.all.select { |c| !c.idled_out }.sort_by { |c| c.name }
+        census = chars.map { |c| CensusTemplate.new(c).display }
+        
+        client.emit BorderedDisplay.paged_list(census, self.page, 15, t('groups.full_census_title'))
+        
+      end
+      
+      def count_by(&block)
         counts = {}
         Character.all.each do |c|
           next if c.idled_out
-          val = c.groups[self.name]
+          val = yield(c)
           if (!val.nil?)
             count = counts.has_key?(val) ? counts[val] : 0
             counts[val] = count + 1
           end
         end
         counts = counts.sort_by { |k,v| v }.reverse
-        
-        if (group['values'].nil?)
-          counts = counts.first(10)
-          title = t('groups.census_title_top_10', :name => self.name)
-        end
-        
-        list = counts.map { |k, v| "#{k.ljust(20)}#{v}"}
-        
-        client.emit BorderedDisplay.list list, title
+        counts.map { |k, v| "#{k.ljust(20)}#{v}"}
       end
+      
     end
   end
 end

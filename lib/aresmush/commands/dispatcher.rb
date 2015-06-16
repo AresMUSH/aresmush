@@ -27,7 +27,14 @@ module AresMUSH
         CommandAliasParser.substitute_aliases(client, cmd)
         Global.plugin_manager.plugins.each do |p|
           with_error_handling(client, cmd) do
-            if (p.want_command?(client, cmd))
+            begin
+              wants_command = p.want_command?(client, cmd)
+            rescue Exception => e
+              Global.logger.error("Bad wants_command method in #{p}: error=#{e} backtrace=#{e.backtrace[0,10]}")
+              wants_command = false
+            end
+            
+            if (wants_command)
               p.on_command(client, cmd)
               return
             end # if

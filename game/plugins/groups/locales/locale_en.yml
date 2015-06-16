@@ -7,7 +7,10 @@ en:
         group_set: "%{group} set to %{value}.%R%%% If skills are set, review the app using the 'app' command to make sure you all the right group skills are there."
         group_cleared: "%{group} cleared."
         invalid_group_value: "That is not a valid %{group} value."
-        census_title_top_10: "%{name} Census (Top 10)"
-        census_title: "%{name} Census"
+        census_title_top_20: "%{name} Census (Top 20)"
+        group_census_title: "%{name} Census"
+        gender_census_title: "Gender Census"
+        full_census_title: "Name                 Gender          Position"
+        
         census_groups: "Census Groups Available"
         app_review: "Checking groups are set."
