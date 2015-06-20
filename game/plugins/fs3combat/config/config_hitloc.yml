@@ -1,0 +1,125 @@
+fs3combat:
+    hitloc:
+        Humanoid: 
+            areas:
+                - Left Leg
+                - Right Leg
+                - Left Hand
+                - Right Hand
+                - Left Arm
+                - Right Arm
+                - Abdomen
+                - Head
+                - Neck
+                - Abdomen
+                - Chest
+                - Chest
+                - Chest
+                - Chest
+                - Chest
+            vital_areas:
+                - Chest
+                - Abdomen
+            critical_areas:
+                - Head
+                - Neck
+        Viper:
+            areas:
+                - Engine
+                - Tail
+                - Tail
+                - Right Wing
+                - Left Wing
+                - Weapon
+                - Nose
+                - Nose
+                - Cockpit
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital_areas:
+                - Body
+                - Engine
+            critical_areas:
+                - Cockpit
+                - Controls
+            crew_areas::
+                - Cockpit
+        Raptor:
+            areas:
+                - Engine
+                - Cabin
+                - Cabin
+                - Right Wing
+                - Left Wing
+                - ECM
+                - Engine
+                - Engine
+                - Cockpit
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital_areas:
+                - Body
+                - Engine
+            critical_areas:
+                - Cockpit
+                - Controls
+            crew_areas::
+                - Cockpit
+                - Cabin
+        Raider:
+            areas:
+                - Engine
+                - Left Wing
+                - Left Wing
+                - Right Wing
+                - Left Wing
+                - Weapon
+                - Right Wing
+                - Right Wing
+                - Cockpit
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital_areas:
+                - Body
+                - Engine
+            critical_areas:
+                - Cockpit
+                - Controls
+            crew_areas::
+                - Cockpit
+        AA Battery:
+            areas:
+                - Weapon
+                - Weapon
+                - Weapon
+                - Controls
+                - Controls
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+                - Body
+            vital_areas:
+                - Body
+            critical_areas:
+                - Controls
+                - Weapon
+            
+                

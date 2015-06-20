@@ -38,6 +38,11 @@ en:
         application_title: "App - %{name}"
         app_not_started: "Application not yet started."
         
+        cannot_edit_after_approval: "You can't change your background after you've been approved."
+        no_permission:  "You don't have permission to change that background."
+        bg_set:  "Background set."
+        background_review: "Checking that you have a background."
+        
         app_job_submitted: "App submitted."
         app_job_resubmitted: "App re-submitted."
         app_job_unsubmitted: "App un-submitted."

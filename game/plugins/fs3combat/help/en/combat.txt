@@ -2,33 +2,26 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 
     %xh%xrADMINS SHOULD UPDATE THIS LINK%xn
     http://muwikitemplate.wikidot.com/fs3
-    
-Here is a combat quick-start:
 
-1) Someone starts the combat.  The system assigns that combat a numeric identifier.
+    %xccombat/start%xn or %xccombat/start mock%xn - Starts a combat. (Organizer only)
+    %xccombat/newturn%xn - Trigger a new turn. (Organizer only)
 
-    combat/start real
-    
-2) Everyone joins combat.  You can join yourself or the organizer can join for you.  Combatant types include:  soldier, pilot, passenger, observer
+    %xccombats%xn - Lists combats.
+    %xccombat/join <combat #>%xn - Joins a combat
+    %xccombat/leave%xn - Leaves combat.
 
-    combat/join [<name>=]<combat #>/<combatant type>[/<vehicle>] - Joins someone to combat.
-         combat/join #123/soldier  or   combat/join Bob=#123/pilot/Viper-123
+    %xccombat%xn - View combat display
          
-3) Pick your weapons (type %xhweapons%xn for a list) and armor (type %xnarmor%xn for a list).
-        combat/weapon Rifle   or  combat/armor Bob=Vest
+    %xccombat/type <type>%xn - Sets your combatant type.
+        See %xccombat/types%xn for a list of combatant types.
+    %xccombat/vehicle <vehicle>%xn - Use a vehicle type from %xcvehicles%xn to create a new
+       vehicle, or a specific vehicle name from %xccombat%xn to join an existing one.
+    %xccombat/weapon <weapon>[/<comma-separated specials>]%xn - Set your weapon and 
+       any weapon specials.
+    %xccombat/armor <armor>%xn - Set your armor.
+    %xccombat/stance <stance>%xn - Set your stance (normal, banzai, cautious, evade, hidden)
 
-4) Change stance if needed.  Stances are:  normal, banzai (aggressive), cautious (defensive), evade (dodging and weaving), cover (behind cover), or hidden (being sneaky).
-        combat/stance Banzai  or   combat/stance Bob=Cover
-
-5) The organizer starts a new turn.  (%xhcombat/newturn%xn)
-
-6) Check the combat display (type %xhcombat%xn) for a list of targets and a summary of who's doing what.
-
-7) Pose your action, including any reactions to what happened last turn.
-
-8) Pick your action for this turn.  The two most common actions are:
-        combat/attack <target>   (or combat/attack <npcname>=<target>)
-        combat/pass    (or combat/pass <npcname>)
-
-        
+    %xccombat/attack <target>%xn - Attack someone.
+    %xccombat/pass%xn - Pass this turn.
     
+%xhYou can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Skye.%xn

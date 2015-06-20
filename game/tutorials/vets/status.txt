@@ -1,6 +1,6 @@
 Your IC/OOC status is controlled solely by what room you're in.  Rooms tagged as OOC areas show your status as OOC; rooms tagged as IC areas show your status as IC.
 
-To get between the IC and OOC grids, you use the %xconstage%xn and %xcoffstage%xn commands.
+To get between the IC and OOC areas, you use the %xconstage%xn and %xcoffstage%xn commands.
 
 AFK status is just a flag; you can set it no matter where you are and it doesn't take you to a special room or anything.  You can also set a custom AFK message, which shows up in room descs and also in pages.  %xcafk Getting dinner - be back around 8pm EST%xn.  
 

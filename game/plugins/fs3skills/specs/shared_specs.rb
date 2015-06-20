@@ -271,9 +271,9 @@ module AresMUSH
       end
       
       def check_params(params, ability, modifier, ruling_attr)
-        params[:ability].should eq ability
-        params[:modifier].should eq modifier
-        params[:ruling_attr].should eq ruling_attr
+        params.ability.should eq ability
+        params.modifier.should eq modifier
+        params.ruling_attr.should eq ruling_attr
       end
     end
   end

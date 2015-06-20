@@ -6,10 +6,6 @@ module AresMUSH
       include PluginRequiresLogin
       
       attr_accessor :target, :page
-
-      def initialize
-        Sheet.build_renderers
-      end
       
       def want_command?(client, cmd)
         cmd.root_is?("sheet")
@@ -29,14 +25,14 @@ module AresMUSH
       
       def check_page
         return t('sheet.invalid_page_number') if self.page <= 0
-        return t('sheet.not_that_many_pages') if self.page > Sheet.sheet_renderers.count
+        return t('sheet.not_that_many_pages') if self.page > Sheet.sheet_templates.count
         return nil
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          renderer = Sheet.sheet_renderers[self.page - 1]
-          client.emit renderer.render(model)
+          template = Sheet.sheet_templates[self.page - 1].new(model)
+          client.emit template.display
         end
       end
     end

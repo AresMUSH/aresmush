@@ -10,7 +10,7 @@ module AresMUSH
 
       def on_cron_event(event)
         config = Global.config['weather']['cron']
-        #return if !Cron.is_cron_match?(config, event.time)
+        return if !Cron.is_cron_match?(config, event.time)
 
         change_all_weathers
       end

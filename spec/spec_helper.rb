@@ -74,6 +74,7 @@ module AresMUSH
     def build_mock_client
       client = double
       char = double
+      char.stub(:client) { client }
       client.stub(:char) { char }
       {
         :client => client,

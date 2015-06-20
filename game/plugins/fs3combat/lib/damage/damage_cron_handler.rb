@@ -8,10 +8,7 @@ module AresMUSH
         return if !Cron.is_cron_match?(config, event.time)
         
         Character.each do |c|
-          healed = FS3Combat.heal_wounds(c, 0)
-          if (healed)
-            c.save
-          end
+          FS3Combat.heal_wounds(c, c.unhealed_wounds)          
         end
       end
     end

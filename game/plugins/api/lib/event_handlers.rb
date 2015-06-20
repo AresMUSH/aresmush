@@ -9,7 +9,9 @@ module AresMUSH
         Api.sync_char_with_master(event.client)
       end
       
-      def on_config_updated_event(event)
+      # This event disabled for now - doesn't seem necessary to update the game
+      # config every time you load a plugin.
+      def disabled_config_updated(event)
         server_config = Global.config['server']
         
         if (last_server_info != server_config)

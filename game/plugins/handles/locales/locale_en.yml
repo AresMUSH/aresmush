@@ -36,7 +36,7 @@ en:
 
         # Profile
         profile_title: "Public Profile:"
-        profile_char_list_title: "Linked Characters                        Last Seen"
+        profile_char_list_title: "Public Characters                        Last Seen"
         sending_profile_request: "Sending profile request to AresCentral.  Please be patient."
         no_public_profile: "%{name} does not have a public profile."
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."

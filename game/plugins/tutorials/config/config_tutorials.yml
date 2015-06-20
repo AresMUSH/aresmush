@@ -21,6 +21,7 @@ tutorials:
                 - welcome to ares.txt
                 - getting help.txt
                 - commands.txt
+                - commands2.txt
                 - objects.txt
                 - channels and mail.txt
                 - status.txt
@@ -35,15 +36,6 @@ tutorials:
             folder: chargen
             pages:
                 - chargen.txt
-                - app command.txt
-                - character sheet.txt
-                - demographics.txt
-                - groups.txt
-                - background.txt
-                - abilities.txt
-                - final touches.txt
-                - review.txt
-                - "what's next.txt"
         handles:
             desc: "Introduction to the Player Identity System"
             folder: handles

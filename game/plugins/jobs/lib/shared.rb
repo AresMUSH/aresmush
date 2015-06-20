@@ -67,5 +67,10 @@ module AresMUSH
       Global.config["jobs"]["closed_status"]
     end
     
+    def self.get_job_display(client, job)      
+      replies = Jobs.can_access_jobs?(client.char) ? job.job_replies : job.job_replies.select { |r| !r.admin_only}
+      template = JobTemplate.new(client, job, replies)
+      template.display
+    end
   end
 end

@@ -1,0 +1,88 @@
+fs3combat:
+    # Armor stats explained:
+    #   description: Free-form text.  Use double quotes around it.
+    #   protection:  Provide a list in the form  Hit Location: Protection Value
+    #     This allows you to have some areas more vulnerable than others
+    #     (chinks in the armor) and some areas not armored at all (by omitting
+    #     them from the list entirely)
+    armor:
+        Tactical:
+            description: "Military-Grade Kevlar Vest and Helmet"
+            protection: 
+                Head: 3 
+                Neck: 3
+                Chest: 4
+                Abdomen: 4
+
+        Police:
+            description: "Police-Grade Kevlar Vest"
+            protection: 
+                Chest: 3 
+                Abdomen: 3
+
+        Centurion:
+            description: "Cylon Centurion Armor"
+            protection:
+                Head: 3
+                Neck: 3
+                Chest: 5
+                Abdomen: 5
+                Left Arm: 4
+                Right Arm: 4
+                Left Leg: 5
+                Left Hand: 3
+                Right Hand: 3
+                Left Leg: 4
+                Right Leg: 4
+                Left Foot: 5
+                Right Foot: 5
+
+        Viper:
+            description: "Viper Vehicle Armor"
+            protection:
+                Cockpit: 5
+                Body: 10
+                Controls: 8
+                Engine: 10
+                Right Wing: 9
+                Left Wing: 9
+                Tail: 9
+                Nose: 10
+
+        Raider:
+            description: "Cylon Raider Vehicle Armor"
+            protection:
+                Cockpit: 2
+                Controls: 3
+                Body: 5
+                Engine: 5
+                Right Wing: 4
+                Left Wing: 4
+
+        Raptor:
+            description: "Raptor Vehicle Armor"
+            protection:
+                Cockpit: 5
+                Controls: 10
+                Body: 15
+                Engine: 15
+                Right Wing: 15
+                Left Wing: 15
+                Cabin: 15
+
+        Heavy Raider:
+            description: "Cylon Heavy Raider Vehicle Armor"
+            protection:
+                Controls: 8
+                Body: 10
+                Engine: 10
+                Right Wing: 10
+                Left Wing: 10
+                Cabin: 10
+
+        Aa Battery:
+            description: "Anti-Aircraft Battery"
+            protection:
+                Body: 12
+                Controls: 12
+                Weapon: 12

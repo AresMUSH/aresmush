@@ -4,6 +4,11 @@ chargen:
         can_approve: 
             - admin
             # - another_role
+        # List roles that are allowed to edit and set other peoples' backgrounds.
+        can_manage_bgs:
+            - admin
+            # - another_role
+            
     messages:
         # This message is sent when a character is approved.
         approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP."

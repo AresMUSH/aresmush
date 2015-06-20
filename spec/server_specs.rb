@@ -17,6 +17,7 @@ module AresMUSH
       before do
         Global.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
         @server = Server.new
+        dispatcher.stub(:queue_event)
         game.stub(:welcome_room) { nil }
       end
       
@@ -31,22 +32,35 @@ module AresMUSH
         EventMachine.should_receive(:run)
         @server.start
       end
-      
+
       it "should start the server" do
         EventMachine.should_receive(:run).and_yield
         EventMachine.stub(:add_periodic_timer)
         EventMachine.should_receive(:start_server).with('host', 123, Connection)
         @server.start
       end
+
+      describe "after server started" do
+        before do
+          @connection = double(Connection).as_null_object
+          EventMachine.should_receive(:run).and_yield
+          EventMachine.stub(:add_periodic_timer)
+          EventMachine.should_receive(:start_server).and_yield(@connection)
+          client_monitor.stub(:connection_established)
+        end
+        
+        it "should queue the game started event" do
+          event = double
+          GameStartedEvent.stub(:new) { event }
+          dispatcher.should_receive(:queue_event).with(event)
+          @server.start
+        end
       
-      it "should notify the client monitor of new connections" do
-        connection = double(Connection).as_null_object
-        EventMachine.should_receive(:run).and_yield
-        EventMachine.stub(:add_periodic_timer)
-        EventMachine.should_receive(:start_server).and_yield(connection)
-        client_monitor.should_receive(:connection_established).with(connection)
-        @server.start
-      end
-    end    
+        it "should notify the client monitor of new connections" do
+          client_monitor.should_receive(:connection_established).with(@connection)
+          @server.start
+        end
+      end    
+    end
   end
 end

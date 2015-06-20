@@ -11,7 +11,8 @@ module AresMUSH
       end
       
       def handle
-        client.emit BorderedDisplay.text t('ictime.ictime', :time => ICTime.ictime)
+        time = ICTime.ic_long_timestr ICTime.ictime
+        client.emit BorderedDisplay.text t('ictime.ictime', :time => time)
       end
     end
   end

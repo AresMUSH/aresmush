@@ -22,7 +22,7 @@ module AresMUSH
 
       encrypted = ApiCrypt.encrypt(key, response.to_s)
       # Use emit raw to avoid tacking extra Ansi codes on.
-      client.emit_raw "api< #{encrypted[:iv]} #{encrypted[:data]}\n"
+      client.emit_raw "api< #{encrypted[:iv]} #{encrypted[:data]}\r\n"
     end    
     
     def send_command(destination_id, client, cmd)
@@ -39,7 +39,7 @@ module AresMUSH
 
             Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{cmd}."
       
-            Timeout.timeout(10) do
+            Timeout.timeout(15) do
               socket = TCPSocket.new host, port
               encrypted = ApiCrypt.encrypt(key, cmd.to_s)
               sleep 1
@@ -47,7 +47,11 @@ module AresMUSH
               socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}\r\n"
    
               while (line = socket.gets)
+                Global.logger.debug "Got answer from #{host} #{port}: #{line}."
+                
                 if (line.start_with?("api< "))
+                  Global.logger.debug "Recognized it was an API response."
+                  
                   response_str = line.after(" ").chomp
                   response = ApiCrypt.decode_response(key, response_str)
                   Global.logger.debug "Got API response from #{host} #{port}: #{response}."

@@ -2,7 +2,7 @@ Ares supports several features that allow you to share and access information ac
 
 The first is the %xhHandles%xn system, which lets you set up a player identity that can follow you across games and help you stay in touch with friends.  Handles have a "@" sign in front of them, like @Faraday.  
 
-If someone has made their handle public, you will see it on the who list and can view their player profile.  Some choose to keep their handles private, or limited to friends-only.  There is a separate tutorial with more information about handles.
+If someone has made their handle public, you will see it on the who list and can view their player profile.  Some choose to keep their handles private, or limited to friends-only.  The Handles Tutorial has more information on handles.
 
 The second is the %xhGames Directory%xn, a list of all Ares games (help games).  This is currently only available on AresCentral, the main AresMUSH social hub.  Someday it will be accessible elsewhere too.
 

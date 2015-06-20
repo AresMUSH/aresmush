@@ -4,6 +4,29 @@ module AresMUSH
       actor.has_any_role?(Global.config['chargen']['roles']['can_approve'])
     end
     
+    def self.bg_app_review(char)
+      error = char.background.nil? ? t('chargen.not_set') : t('chargen.ok')
+      Chargen.display_review_status t('chargen.background_review'), error
+    end
+    
+    def self.can_manage_bgs?(actor)
+      return actor.has_any_role?(Global.config["chargen"]["roles"]["can_manage_bgs"])
+    end      
+    
+    def self.can_edit_bg?(actor, model, client)
+      if (model.is_approved && !Chargen.can_manage_bgs?(actor))
+        client.emit_failure t('chargen.cannot_edit_after_approval')
+        return false
+      end
+      
+      if (actor != model && !Chargen.can_manage_bgs?(actor))
+        client.emit_failure t('chargen.no_permission')
+        return false
+      end
+
+      return true
+    end
+    
     def self.read_tutorial(name)
       dir = File.dirname(__FILE__) + "/../tutorial/"
       filename = File.join(dir, Global.locale.locale.to_s, name)

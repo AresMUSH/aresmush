@@ -18,7 +18,8 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          client.emit Sheet.wiki_renderer.render(model)
+          template =  WikiTemplate.new(model)
+          client.emit template.display
         end
       end
     end

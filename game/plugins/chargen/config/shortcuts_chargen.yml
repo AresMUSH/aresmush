@@ -1,4 +1,6 @@
 shortcuts:
+    roots:
+        "chargen" : "cg"
     full:
         "bg/approve": "app/approve"
         "bg/reject" : "app/reject"

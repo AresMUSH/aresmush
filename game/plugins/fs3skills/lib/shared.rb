@@ -33,6 +33,7 @@ module AresMUSH
     end
 
     # Expects titleized ability name
+    # Returns the type (attribute, action, background) for a skill being rolled.
     def self.get_ability_type(ability)
       if (attribute_names.include?(ability))
         return :attribute
@@ -43,6 +44,8 @@ module AresMUSH
       end        
     end
     
+    # Gets the appropriate data hash from the character object based on
+    # the ability type.  This can be used to look up rating, ruling attribute, etc.
     def self.get_ability_hash(char, ability_type)
       if (ability_type == :attribute)
         char.fs3_attributes
@@ -69,6 +72,8 @@ module AresMUSH
       ability_hash[ability]
     end
     
+    # Takes a roll string, like Athletics+Body+2, or just Athletics, parses it to figure
+    # out the pieces, and then makes the roll.
     def self.parse_and_roll(client, char, roll_str)
       if (roll_str.is_integer?)
         die_result = FS3Skills.roll_dice(roll_str.to_i)
@@ -83,15 +88,19 @@ module AresMUSH
       die_result
     end
     
+    # Parses a roll string in the form Ability+Attribute(+ or -)Modifier, where
+    # everything except "Ability" is optional.
+    # Technically it can be Ability+Ability, or Attribute+Attribute or Attribute+Ability;
+    # the code doesn't care.
     def self.parse_roll_params(str)
       match = /^(?<ability>[^\+\-]+)\s*(?<ruling_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
       return nil if match.nil?
       
-      {
-        :ability => match[:ability].strip,
-        :modifier => match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i,
-        :ruling_attr => match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
-      }
+      ability = match[:ability].strip
+      modifier = match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i
+      ruling_attr = match[:ruling_attr].nil? ? nil : match[:ruling_attr][1..-1].strip
+      
+      return RollParams.new(ability, modifier, ruling_attr)
     end
     
     def self.emit_results(message, client, room, is_private)
@@ -112,7 +121,10 @@ module AresMUSH
     def self.print_dice(dice)
       dice.sort.reverse.map { |d| d > 6 ? "%xg#{d}%xn" : d}.join(" ")
     end
-      
+    
+    # Given one of the FS3 data attributes (like char.fs3_attributes or char.fs3_action_skills,
+    # it will find the specified ability and update its rating (adding it if it wasn't there
+    # already)
     def self.update_hash(hash, name, rating)
       if (rating == 0)
         hash.delete name
@@ -125,6 +137,7 @@ module AresMUSH
       end
     end
     
+    # Checks to make sure an ability name doesn't have any funky characters in it.
     def self.check_ability_name(ability)
       return t('fs3skills.no_special_characters') if (ability !~ /^[\w\s]+$/)
       return nil

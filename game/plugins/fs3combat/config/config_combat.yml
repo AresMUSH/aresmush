@@ -1,35 +1,51 @@
 fs3combat:
 
-    # Which skill is used for treat rolls if you don't specify anything.
-    default_treat_skill: "First Aid"
+    # Default combatant type when joining combat.
+    default_type: Soldier
     
-    # Which attribute is used for toughness-related rolls.  Since this is an attribute,
-    # the roll will actually use twice the level (e.g. Body + Body)
-    toughness_attribute: "Body"
-    
-    # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
-    healing_cron:
-        #date: 1
-        #day_of_week: Sat
-        hour: 06
-        minute: 00
-    
-    # Dice penalty for different wound levels.
-    damage_mods:
-        H: 0.0
-        L: 0.25
-        M: 0.75
-        S: 2.0
-        C: 4.0
-    
-    # How many healing points are required to heal a wound down to the next lower level.
-    # Characters receive 1-2 healing points on average each day so you can tweak these numbers
-    # to provide faster or slower healing times.
-    healing_points:
-        H: 0
-        L: 2
-        M: 3
-        S: 4
-        C: 5
-            
+    combatant_types:
+        # For each combatant type, you can specify:
+        # - default weapon and specials (as a list)
+        # - default armor
+        # - which hit location chart it uses
+        
+        # ----------------------------------------
+        # DEFAULT TYPES
+        # ----------------------------------------
+        # These are the default combatant types.  Do not delete them.
+        
+        Soldier:
+            weapon: Rifle
+            #weapon_specials: 
+            #    - Ap
+            armor: Tactical
+            hitloc: Humanoid
+            defense_skill: Reaction
+        Pilot:
+            hitloc: Humanoid
+            #weapon:
+            #weapon_specials:
+            #armor: 
+        Passenger:
+            noncombatant: false
+            hitloc: Humanoid
+            #weapon:
+            #weapon_specials:
+            #armor: 
+        Observer:
+            #hitloc: n/a - non-combatant
+            #weapon:
+            #weapon_specials:
+            #armor:
+                
+        # ----------------------------------------
+        # CUSTOM TYPES
+        # ----------------------------------------
+        # Add any custom combatant types here.
+        
+        Centurion:
+            weapon: LMG
+            weapon_specials: 
+                - Tripod
+            armor: Centurion
+            hitloc: Humanoid           

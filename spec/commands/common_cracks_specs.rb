@@ -33,6 +33,26 @@ module AresMUSH
       end
     end
     
+    describe "arg1_slash_optional_arg2" do
+      it "should crack a matching command" do
+        args = ArgCracker.crack(CommonCracks.arg1_slash_optional_arg2, "a/b")
+        args.arg1.should eq "a"
+        args.arg2.should eq "b"
+      end
+      
+      it "should crack a matching command with missing optional arg" do
+        args = ArgCracker.crack(CommonCracks.arg1_slash_optional_arg2, "a")
+        args.arg1.should eq "a"
+        args.arg2.should be_nil
+      end
+      
+      it "should set values to nil if not matched" do
+        args = ArgCracker.crack(CommonCracks.arg1_slash_optional_arg2, "a=b")
+        args.arg1.should eq "a=b"
+        args.arg2.should be_nil
+      end
+    end
+    
     describe "arg1_equals_optional_arg2" do
       it "should crack a matching command" do
         args = ArgCracker.crack(CommonCracks.arg1_equals_optional_arg2, "a=b")

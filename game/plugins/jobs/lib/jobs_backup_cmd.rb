@@ -20,7 +20,7 @@ module AresMUSH
         Jobs.closed_jobs.each_with_index do |job, i|
           Global.dispatcher.queue_timer(i, "Job Backup #{client.char.name}") do
             Global.logger.debug "Logging job #{job.number} from #{client.char.name}."
-            client.emit Jobs.job_renderer.render(client, job)
+            client.emit Jobs.get_job_display(client, job)
           end
         end
       end

@@ -9,3 +9,4 @@ Demographics commands are used to set your basic character info.  Some items may
     %xcskin <complexion>%xn
     %xcbirthdate <yyyy/mm/dd>%xn or %xcage <years>%xn
     %xcreputation <reputation>%xn - Information that you want people to know about you ICly.
+    %xccallsign <name>%xn - Callsign for pilots and other military chars.

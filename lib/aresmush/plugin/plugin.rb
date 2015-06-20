@@ -83,15 +83,13 @@ module AresMUSH
     # A handy function for stripping off leading and trailing spaces.  Safe to call
     # even if 'arg' is nil.
     def trim_input(arg)
-      return nil if arg.nil?
-      return arg.strip
+      InputFormatter.trim_input(arg)
     end
     
     # A handy function for stripping off leading/trailing spaces and capitalizing
     # its words (like a title).  Safe to call even if 'arg' is nil.
     def titleize_input(arg)
-      return nil if arg.nil?
-      return arg.strip.titleize
+      InputFormatter.titleize_input(arg)
     end
   end
 end

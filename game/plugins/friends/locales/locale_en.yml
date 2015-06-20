@@ -1,7 +1,7 @@
 en:
     friends:
         friends_header: "Friends On This Game      Last On"
-        handle_friends_header: "Handle Friends            Alts On This Game"
+        handle_friends_header: "Handle Friends            Public Alts On This Game"
         already_friend: "%{name} is already on your friends list."
         not_friend: "%{name} is not on your friends list."
         friend_added: "%{name} has been added to your friends list."

@@ -24,9 +24,9 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          Sheet.sheet_renderers.count.times do |i|
-            renderer = Sheet.sheet_renderers[i]
-            client.emit renderer.render(model)
+          Sheet.sheet_templates.count.times do |i|
+            template = Sheet.sheet_templates[i].new(model)
+            client.emit template.display
           end
           client.emit Describe.char_backup(model, client)
         end

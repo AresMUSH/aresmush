@@ -15,6 +15,12 @@ help:
                     summary: 'Review character status and submit for approval.'
                     order: 6
                     aliases: [ 'submit', 'approve', 'approval', 'app', 'apps' ]
+                bg:
+                    toc_topic: 'Character Creation'
+                    dir: 'game/plugins/chargen/help/'
+                    file: 'bg.txt'
+                    order: 3
+                    summary: 'Character backstories.'
         admin:
             topics:
                 chargen: 
@@ -23,3 +29,8 @@ help:
                     file: 'admin_chargen.txt'
                     summary: 'Approving and rejecting characters.'
                     aliases: [ 'submit', 'approve', 'approval', 'app', 'apps' ]
+                bg: 
+                    toc_topic: 'Approvals'
+                    dir: 'game/plugins/chargen/help/'
+                    file: 'admin_bg.txt'
+                    summary: 'Managing backgrounds.'

@@ -23,7 +23,8 @@ module AresMUSH
             
       def handle
         Mail.with_a_delivery(client, self.num) do |delivery|
-          client.emit Mail.message_renderer.render(client, delivery)
+          template = MessageTemplate.new(client, delivery)
+          client.emit template.display
           delivery.read = true
           delivery.save
           client.program[:last_mail] = delivery

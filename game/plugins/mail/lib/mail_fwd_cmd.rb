@@ -32,8 +32,9 @@ module AresMUSH
           Global.logger.debug("#{self.class.name} #{client} forwding message #{self.num} (#{msg.subject}) to #{self.names}.")
 
           subject = t('mail.forwarded_subject', :subject => msg.subject)
-          body = Mail.forwarded_renderer.render(client, delivery, self.comment)
-
+          template = ForwardedTemplate.new(client, delivery, self.comment)
+          body = template.display
+          
           if (Mail.send_mail(self.names, subject, body, client))
             client.emit_ooc t('mail.message_forwarded')
           end

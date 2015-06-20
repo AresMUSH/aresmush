@@ -2,15 +2,15 @@ module AresMUSH
   module Describe
     def self.get_desc(model, client)     
       if (model.class == Room)
-        renderer = Describe.room_renderer
+        template = RoomTemplate.new(model, client)
       elsif (model.class == Character)
-        renderer = Describe.char_renderer
+        template = CharacterTemplate.new(model, client)
       elsif (model.class == Exit)
-        renderer = Describe.exit_renderer
+        template = ExitTemplate.new(model, client)
       else
         raise "Invalid model type: #{model}"
       end
-      renderer.render(model, client)
+      template.display
     end
     
     def self.app_review(char)
