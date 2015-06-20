@@ -37,17 +37,30 @@ chargen:
             tutorial: 'app command.txt'
         sheet:
             tutorial: 'character sheet.txt'
+        race:
+            tutorial: 'race.txt'
         demographics:
+            tutorial: 'demographics.txt'
             help: demographics
-        groups:
-            help: groups
-        background:
-            help: bg
+        archetype:
+            tutorial: 'archetype.txt'
+        languages:
+            tutorial: 'languages.txt'
+        archetype:
+            tutorial: 'archetype.txt'
+        benefit:
+            tutorial: 'benefit.txt'
+        careers:
+            tutorial: 'careers.txt'
         abilities:
             tutorial: 'abilities.txt'
             help: abilities
         final touches:
             tutorial: 'final touches.txt'
+        groups:
+            help: groups
+        background:
+            help: bg
         review:
             tutorial: 'review.txt'
         whatsnext:
