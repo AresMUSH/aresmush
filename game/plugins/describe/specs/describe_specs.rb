@@ -54,7 +54,7 @@ module AresMUSH
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
             Describe.stub(:can_describe?).with(client.char, @model) { true }
-            VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
+            AnyTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
           
           it "should set the desc" do
@@ -94,7 +94,7 @@ module AresMUSH
         context "nothing found" do        
           before do
             find_result = FindResult.new(nil, "Not found")
-            VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
+            AnyTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
           
           it "should emit failure" do
