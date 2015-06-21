@@ -1,15 +1,19 @@
 module AresMUSH  
   class Database
 
-    def connect
+    def load_config
       db_config = Global.read_config("database", "production")
       host = db_config['sessions']['default']['hosts']
       db_name = db_config['sessions']['default']['database']
-      Global.logger.info("Connection to database: #{host} #{db_name}")
+      Global.logger.info("Database config: #{host} #{db_name}")
+      
+      # Don't be spammy about underlying moped database driver errors.
+      Moped.logger.level = Logger::ERROR
+      
       begin
         Mongoid.load_configuration(db_config)
       rescue Exception => e
-        Global.logger.fatal("Error connecting to database.  Please check your dabase configuration and installation requirements: #{e}.")      
+        Global.logger.fatal("Error loading database config.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e
       end      
     end       

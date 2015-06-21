@@ -25,21 +25,27 @@ module AresMUSH
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(target, client) do |model|
-
-          if (!Describe.can_describe?(client.char, model))
-            client.emit_failure(t('dispatcher.not_allowed'))
-            return
-          end
-          
-          if (cmd.root_is?("shortdesc"))
-            model.shortdesc = desc
-            model.save!
-          else
-            Describe.set_desc(model, desc)
-          end
-          client.emit_success(t('describe.desc_set', :name => model.name))
+        find_result = AnyTargetFinder.find(self.target, client)
+        
+        if (!find_result.found?)
+          client.emit_failure(find_result.error)
+          return
         end
+        
+        model = find_result.target
+        
+        if (!Describe.can_describe?(client.char, model))
+          client.emit_failure(t('dispatcher.not_allowed'))
+          return
+        end
+          
+        if (cmd.root_is?("shortdesc"))
+          model.shortdesc = desc
+          model.save!
+        else
+          Describe.set_desc(model, desc)
+        end
+        client.emit_success(t('describe.desc_set', :name => model.name))
       end
         
     end

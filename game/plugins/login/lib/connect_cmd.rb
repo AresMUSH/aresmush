@@ -12,8 +12,8 @@ module AresMUSH
       end
       
       def crack!
-        self.charname = trim_input(cmd.args.before(" "))
-        self.password = cmd.args.after(" ")
+        self.charname = cmd.args ? trim_input(cmd.args.before(" ")) : nil
+        self.password = cmd.args ? cmd.args.after(" ") : nil
       end
       
       def check_for_guest_or_password
