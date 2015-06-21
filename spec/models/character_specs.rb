@@ -26,21 +26,5 @@ module AresMUSH
         Character.found?("Bob").should be_false
       end
     end  
-    
-    describe :create_a_bazillion_things do 
-      it "should not die" do
-        router = double
-        router.stub(:is_master?) { true }
-        Global.stub(:api_router) { router }
-        using_test_db do 
-        last = nil
-        1000.times.each do |n|
-          Room.create(name: "Room #{n}")
-          Exit.create(name: "Exit #{n}")
-          Character.create(name: "Char #{n}")
-        end
-      end
-      end
-    end
   end
 end
