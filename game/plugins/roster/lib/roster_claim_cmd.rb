@@ -45,7 +45,7 @@ module AresMUSH
           model.save
           client.emit_success t('roster.roster_claimed', :name => model.name, :password => password)
           
-          bbs = Global.config['roster']['arrivals_board']
+          bbs = Global.read_config("roster", "arrivals_board")
           return if !bbs
           return if bbs.blank?
         

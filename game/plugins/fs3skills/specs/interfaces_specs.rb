@@ -7,15 +7,9 @@ module AresMUSH
         #   If you use Kernel.srand(22), the first 10 die rolls in tests will always be:  
         #      [6, 5, 5, 1, 5, 7, 7, 4, 5, 1]
         Kernel.srand 22
-        Global.stub(:config) {
-          {
-            "fs3skills" => {
-              "attributes" => [ { "name" => "Mind" }, {"name" => "Body" } ],
-              "action_skills" => [ { "name" => "Firearms", "ruling_attr" => "Reaction" } ],
-              "default_ruling_attr" => "Mind"
-            }
-          }
-        }
+        Global.stub(:read_config).with("fs3skills", "attributes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
+        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "ruling_attr" => "Reaction" } ] }
+        Global.stub(:read_config).with("fs3skills", "default_ruling_attr") { "Mind" }
         
         SpecHelpers.stub_translate_for_testing        
         

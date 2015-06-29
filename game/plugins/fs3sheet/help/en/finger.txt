@@ -1,6 +1,6 @@
 Folks looking for a "+finger" command like on other MUSHes will not find one here.  Instead there are distinct commands depending on what you're looking for:
 
-The %xcsheet%xn command views someone's character sheet for IC information (name/age/etc.)
+The %xcinfo%xn command views someone's character sheet for IC information (name/age/etc.)
 
 The %xcprofile%xn command views someone's OOC information (timezone, last connected, etc.)
 

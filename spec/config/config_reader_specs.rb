@@ -24,7 +24,7 @@ module AresMUSH
     describe :config do
       before do
         @config_reader = ConfigReader.new
-        @config_reader.config = { "a" => { "b" => "c" } }
+        @config_reader.config = { "a" => { "b" => "c" }, "e" => { "f" => { "g" => "h" } } }
       end
       
       it "should return the section if specified" do
@@ -36,8 +36,16 @@ module AresMUSH
         @config_reader.get_config("a", "b").should eq "c"
       end
       
-      it "should return nil if the section for the requested subsection doesn't exist" do
-        @config_reader.get_config("d", "e").should be_nil
+      it "should raise error if the section for the requested subsection doesn't exist" do
+        expect { @config_reader.get_config("d", "e") }.to raise_error
+      end
+      
+      it "should return sub-subsection if it exists" do
+        @config_reader.get_config("e", "f", "g"). should eq "h"
+      end
+      
+      it "should raise error if the sub-subsection doesn't exist" do
+        expect { @config_reader.get_config("e", "f", "i"). should eq "h" }.to raise_error
       end
     end
 

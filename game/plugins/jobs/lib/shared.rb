@@ -1,15 +1,15 @@
 module AresMUSH
   module Jobs
     def self.can_access_jobs?(actor)
-      return actor.has_any_role?(Global.config["jobs"]["roles"]["can_access_jobs"])
+      return actor.has_any_role?(Global.read_config("jobs", "roles", "can_access_jobs"))
     end
     
     def self.categories
-      Global.config["jobs"]["categories"]
+      Global.read_config("jobs", "categories")
     end
     
     def self.status_vals
-      Global.config["jobs"]["status"].keys
+      Global.read_config("jobs", "status").keys
     end
     
     def self.closed_jobs
@@ -18,7 +18,7 @@ module AresMUSH
     
     def self.status_color(status)
       return "" if status.nil?
-      config = Global.config["jobs"]["status"]
+      config = Global.read_config("jobs", "status")
       key = config.keys.find { |k| k.downcase == status.downcase }
       return "%xc" if key.nil?
       return config[key]["color"]
@@ -64,7 +64,7 @@ module AresMUSH
     end
     
     def self.closed_status
-      Global.config["jobs"]["closed_status"]
+      Global.read_config("jobs", "closed_status")
     end
     
     def self.get_job_display(client, job)      

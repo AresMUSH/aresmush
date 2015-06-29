@@ -1,7 +1,7 @@
 module AresMUSH
   module Chargen
     def self.can_approve?(actor)
-      actor.has_any_role?(Global.config['chargen']['roles']['can_approve'])
+      actor.has_any_role?(Global.read_config("chargen", "roles", "can_approve"))
     end
     
     def self.bg_app_review(char)
@@ -10,7 +10,7 @@ module AresMUSH
     end
     
     def self.can_manage_bgs?(actor)
-      return actor.has_any_role?(Global.config["chargen"]["roles"]["can_manage_bgs"])
+      return actor.has_any_role?(Global.read_config("chargen", "roles", "can_manage_bgs"))
     end      
     
     def self.can_edit_bg?(actor, model, client)
@@ -34,7 +34,7 @@ module AresMUSH
     end
     
     def self.stages
-      Global.config['chargen']['stages']
+      Global.read_config("chargen", "stages")
     end
     
     def self.stage_name(char)

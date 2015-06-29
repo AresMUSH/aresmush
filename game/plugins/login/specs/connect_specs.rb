@@ -53,8 +53,8 @@ module AresMUSH
         it "should handle a missing password" do
           init_handler(ConnectCmd, "connect Bob")
           handler.crack!
-          handler.charname.should be_nil
-          handler.password.should be_nil
+          handler.charname.should eq "Bob"
+          handler.password.should eq ""
         end
 
         it "should accept a multi-word password" do

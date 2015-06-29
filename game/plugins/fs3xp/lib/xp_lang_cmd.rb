@@ -28,7 +28,7 @@ module AresMUSH
       end
       
       def handle
-        cost = Global.config['fs3xp']['lang_cost']
+        cost = Global.read_config("fs3xp", "lang_cost")
         
         if (client.char.xp < cost)
           client.emit_failure t('fs3xp.not_enough_xp', :cost => cost)

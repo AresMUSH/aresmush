@@ -26,7 +26,7 @@ module AresMUSH
       @plugin2 = double
       @plugin1.stub(:log_command)
       @plugin2.stub(:log_command)
-      config_reader.stub(:config) { {} }
+      Global.stub(:read_config).with("shortcuts") { {} }
       SpecHelpers.stub_translate_for_testing
     end
 

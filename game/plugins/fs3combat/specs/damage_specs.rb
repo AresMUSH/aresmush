@@ -5,10 +5,8 @@ module AresMUSH
       
       describe :heal do
         before do
-          Global.stub(:config) { { "fs3combat" => {  "healing_points" =>
-            {
-              "H" => 0, "L" => 2, "M" => 3, "S" => 4, "C" => 5 
-              } } } }
+          Global.stub(:read_config).with("fs3combat", "healing_points", "L") { 2 }
+          Global.stub(:read_config).with("fs3combat", "healing_points", "H") { 0 }
         end
         
         it "should not touch a healed wound" do

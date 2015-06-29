@@ -4,8 +4,15 @@ module AresMUSH
       include Plugin
       include PluginRequiresLogin
       include PluginWithoutSwitches
+      include PluginRequiresArgs
 
       attr_accessor :search_class, :name
+      
+      def initialize
+        self.required_args = ['search_class']
+        self.help_topic = 'find'
+        super
+      end
       
       def want_command?(client, cmd)
         cmd.root_is?("find")
@@ -20,9 +27,7 @@ module AresMUSH
 
       def handle
         begin
-          
-          client.emit t('chars_connected', :count => 0)
-          c = get_search_class
+          c = AresMUSH.const_get(self.search_class)
           
           if (!Manage.can_manage_object?(client.char, c.new))
             client.emit_failure t('dispatcher.not_allowed')
@@ -43,11 +48,6 @@ module AresMUSH
         objects = objects.map { |r| "#{r.id} #{r.name}"}
         client.emit BorderedDisplay.list(objects, t('manage.find_results'))
       end
-      
-      def get_search_class
-        AresMUSH.const_get(self.search_class)
-      end
-      
     end
   end
 end

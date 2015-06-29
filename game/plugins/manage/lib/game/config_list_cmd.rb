@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def handle
-        client.emit BorderedDisplay.table(Global.config.keys, 25, t('manage.config_sections'))
+        client.emit BorderedDisplay.table(Global.config_reader.config.keys, 25, t('manage.config_sections'))
       end
     end
   end

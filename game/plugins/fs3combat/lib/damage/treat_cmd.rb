@@ -51,7 +51,7 @@ module AresMUSH
           end
           
           char = client.char
-          ability = char.treat_skill || Global.config["fs3combat"]["default_treat_skill"]
+          ability = char.treat_skill || Global.read_config("fs3combat", "default_treat_skill")
           roll = FS3Skills.one_shot_roll(client, char, :ability => ability)
           
           successes = roll[:successes]

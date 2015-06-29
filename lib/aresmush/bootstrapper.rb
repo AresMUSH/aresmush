@@ -32,17 +32,21 @@ module AresMUSH
       config_reader.read
       ares_logger.start
 
-      db.connect
-      
+      db.load_config
       locale.setup
       plugin_manager.load_all
       
-      game = Game.master
+      begin
+        game = Game.master
+      rescue Exception => e
+        raise "Error connecting to database. Check your database configuration: #{e}"
+      end
+      
       api_router = ApiRouter.new(game.nil? ? false : game.api_game_id == ServerInfo.arescentral_game_id)
       Global.api_router = api_router
       api_router.find_handlers
     
-      Global.logger.debug Global.config
+      Global.logger.debug Global.config_reader.config
 
       @command_line = AresMUSH::CommandLine.new(server)
     end

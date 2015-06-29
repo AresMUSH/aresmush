@@ -8,7 +8,7 @@ The Ares chargen system consists of three components:
 Chargen Tutorial and Stages
 ---------------------
 
-You can configure the **stages** or steps of chargen.  Each stage will display a combination of a tutorial screen or a helpfile from the [[[plugin:Help]]] system (or both!).  The chargen system tracks which stage you're in, so you can lock down commands so they only work in certain stages.  You can also setup code to make sure they've set the necessary things before allowing them to proceed to the next step.
+You can configure the **stages** or steps of chargen.  Each stage will display a combination of a tutorial screen or a helpfile from the Help system (or both!).  The chargen system tracks which stage you're in, so you can lock down commands so they only work in certain stages.  You can also setup code to make sure they've set the necessary things before allowing them to proceed to the next step.
 
     +==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+
     Character creation (aka chargen) here works a little differently than what you might be used to from other games.  Instead of being a series of rooms, the cg command will walk you through the necessary steps.  
@@ -26,7 +26,7 @@ The chargen plugin includes commands to set your character's background/bio.
 Application Review
 ---------------------
 
-Chargen ties in with the [[[plugin:Jobs]]] system to allow players to submit their character applications for review.  Both players and admin can view an app review summary, highlighting potential issues with the app at a glance.
+Chargen ties in with the Jobs system to allow players to submit their character applications for review.  Both players and admin can view an app review summary, highlighting potential issues with the app at a glance.
 
     +==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+
     App Review for Faraday

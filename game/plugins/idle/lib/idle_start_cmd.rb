@@ -22,7 +22,7 @@ module AresMUSH
           next if !c.last_on
           next if Idle.is_exempt?(c)
           idle_secs = Time.now - c.last_on
-          idle_timeout = Global.config["idle"]["days_before_idle"]
+          idle_timeout = Global.read_config("idle", "days_before_idle")
           if (idle_secs / 86400 > idle_timeout)
             if (c.is_approved?)
               client.program[:idle_queue][c] = "Npc"

@@ -1,4 +1,4 @@
-Your handle profile is used to share OOC information about yourself.  The '+finger' command found on older games has been replaced by profile (for OOC info) and sheet (for IC info).
+Your handle profile is used to share OOC information about yourself.  The '+finger' command found on older games has been replaced by profile (for OOC info) and info (for IC info).
 
 You can access someone's profile using their handle name (e.g. 'profile @Faraday').  If their privacy settings allow, you can also access it through a character name (e.g. 'profile Cate' will show the profile for @Faraday).
 

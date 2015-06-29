@@ -86,7 +86,7 @@ module AresMUSH
       end
       
       def page_color
-        Global.config['page']['page_color']
+        Global.read_config("page", "page_color")
       end
       
       def log_command

@@ -11,7 +11,7 @@ module AresMUSH
       
       before do
         init_handler XpLangCmd
-        Global.stub(:config) { { "fs3xp" => { "lang_cost" => 3 } } } 
+        Global.stub(:read_config).with("fs3xp", "lang_cost") { 3 }
       end
       
       context "failures" do

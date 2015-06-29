@@ -11,10 +11,10 @@ module AresMUSH
       end
       
       def handle
-        lang_cost = Global.config['fs3xp']['lang_cost']
-        ability_cost = Global.config['fs3xp']['skill_costs']
-        max_xp_hoard = Global.config['fs3xp']['max_xp_hoard']
-        days_between_xp_raises = Global.config['fs3xp']['days_between_xp_raises']
+        lang_cost = Global.read_config("fs3xp", "lang_cost")
+        ability_cost = Global.read_config("fs3xp", "skill_costs")
+        max_xp_hoard = Global.read_config("fs3xp", "max_xp_hoard")
+        days_between_xp_raises = Global.read_config("fs3xp", "days_between_xp_raises")
         
         text = "%xh#{t('fs3xp.lang_cost_title')}%xn #{lang_cost}"
         text << "%R%R"

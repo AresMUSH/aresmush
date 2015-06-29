@@ -21,7 +21,7 @@ module AresMUSH
     end
     
     def line_with_text(text)
-      line_config = Global.config["skin"]["line_with_text"]
+      line_config = Global.read_config("skin", "line_with_text")
       template = line_config["template"]
       padding = line_config["padding"]
       left_spacer = line_config["left_spacer"]

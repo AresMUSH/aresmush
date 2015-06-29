@@ -1,11 +1,11 @@
 module AresMUSH
   module Idle
     def self.can_idle_sweep?(actor)
-      actor.has_any_role?(Global.config['idle']['roles']['can_idle_sweep'])
+      actor.has_any_role?(Global.read_config("idle", "roles", "can_idle_sweep"))
     end
 
     def self.is_exempt?(actor)
-      actor.has_any_role?(Global.config['idle']['roles']['idle_exempt'])
+      actor.has_any_role?(Global.read_config("idle", "roles", "idle_exempt"))
     end
     
     def self.print_idle_queue(client)
@@ -15,7 +15,8 @@ module AresMUSH
       list = []
       queue.each do |char, action|
         name = char.is_approved? ? "%xh%xg#{char.name}%xn" : char.name
-        list << "#{name} - #{action}"
+        last_on = OOCTime.local_short_timestr(client, char.last_on)
+        list << "#{name} - #{last_on} - #{action}"
       end
       BorderedDisplay.list list, t('idle.idle_title')
     end

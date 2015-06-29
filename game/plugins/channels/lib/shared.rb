@@ -1,7 +1,7 @@
 module AresMUSH
   module Channels
     def self.can_manage_channels?(actor)
-      return actor.has_any_role?(Global.config["channels"]["roles"]["can_manage_channels"])
+      return actor.has_any_role?(Global.read_config("channels", "roles", "can_manage_channels"))
     end
 
     def self.set_channel_option(char, channel, option, value)
@@ -19,8 +19,8 @@ module AresMUSH
     end
     
     def self.name_with_markers(name)
-      start_marker = Global.config['channels']['start_marker']
-      end_marker = Global.config['channels']['end_marker']
+      start_marker = Global.read_config("channels", "start_marker")
+      end_marker = Global.read_config("channels", "end_marker")
       "#{start_marker}#{name}%xn#{end_marker}"
     end
     
@@ -116,7 +116,7 @@ module AresMUSH
     end
     
     def self.add_to_default_channels(client, char)
-      channels = Global.config['channels']['default_channels']
+      channels = Global.read_config("channels", "default_channels")
       channels.each do |name|
         Channels.with_a_channel(name, client) do |c|
           if (!Channels.is_on_channel?(char, c))

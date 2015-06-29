@@ -29,7 +29,7 @@ module AresMUSH
     
     describe :check_name do
       before do
-        Global.stub(:config) { { "names" => { "restricted" => ["barney"] } } }
+        Global.stub(:read_config).with("names", "restricted") { ["barney"] }
       end
       
       it "should fail if name is too short" do

@@ -28,10 +28,10 @@ module AresMUSH
       
       def handle
         begin
-          bday = Date.strptime(self.date_str, Global.config['date_and_time']['short_date_format'])
+          bday = Date.strptime(self.date_str, Global.read_config("date_and_time", "short_date_format"))
         rescue
           client.emit_failure t('demographics.invalid_birthdate', 
-            :format_str => Global.config['date_and_time']['date_entry_format_help'])
+            :format_str => Global.read_config("date_and_time", "date_entry_format_help"))
           return
         end
         

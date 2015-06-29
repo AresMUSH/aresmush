@@ -6,7 +6,7 @@ module AresMUSH
     end
     
     def self.combatant_types
-      Global.config["fs3combat"]["combatant_types"]
+      Global.read_config("fs3combat", "combatant_types")
     end
     
     def self.is_in_combat?(name)

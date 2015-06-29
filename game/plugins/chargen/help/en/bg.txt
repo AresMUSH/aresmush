@@ -10,7 +10,7 @@ The easiest way to edit your background is to type it in an offline program, lik
     %xcbg/edit%xn - Grabs the existing background text into your input 
        buffer (if your client supports it.  See %xhhelp edit%xn.)
        
-You can view your background on your character sheet.  See %xhhelp sheet%xn.
+You can view your background on your character sheet (%xhhelp sheet%xn) or with the %xcbg%xn command.
 
 Once your character has been approved, you will no longer be able to edit your background.  Contact the admins if you need to make changes after approval.
 

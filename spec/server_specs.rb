@@ -15,7 +15,8 @@ module AresMUSH
     
     describe :start do
       before do
-        Global.stub(:config) { {'server' => { 'hostname' => 'host', 'port' => 123 }} }
+        Global.stub(:read_config).with("server", "hostname") { "host" }
+        Global.stub(:read_config).with("server", "port") { 123 }
         @server = Server.new
         dispatcher.stub(:queue_event)
         game.stub(:welcome_room) { nil }

@@ -18,8 +18,8 @@ module AresMUSH
       
       def check_permission
         return nil if self.target == client.name
-        return nil if client.char.has_any_role?(Global.config['sheet']['roles']['can_view_sheets'])
-        return nil if Global.config['sheet']['public_pages'].include?(self.page)
+        return nil if client.char.has_any_role?(Global.read_config("sheet", "roles", "can_view_sheets"))
+        return nil if Global.read_config("sheet", "public_pages").include?(self.page)
         return t('sheet.no_permission_to_view_page')
       end
       

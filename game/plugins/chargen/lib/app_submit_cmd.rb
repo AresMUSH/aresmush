@@ -30,7 +30,7 @@ module AresMUSH
       end
       
       def create_job
-        job = Jobs.create_job(Global.config["chargen"]["jobs"]["app_category"], 
+        job = Jobs.create_job(Global.read_config("chargen", "jobs", "app_category"), 
           t('chargen.application_title', :name => client.name), 
           t('chargen.app_job_submitted'), 
           client.char)
@@ -49,7 +49,7 @@ module AresMUSH
       def update_job
         Jobs.change_job_status(client,
           client.char.approval_job,
-          Global.config["chargen"]["jobs"]["app_resubmit_status"],
+          Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))
           
         client.emit_success t('chargen.app_resubmitted')

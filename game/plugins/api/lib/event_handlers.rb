@@ -12,7 +12,7 @@ module AresMUSH
       # This event disabled for now - doesn't seem necessary to update the game
       # config every time you load a plugin.
       def disabled_config_updated(event)
-        server_config = Global.config['server']
+        server_config = Global.read_config("server")
         
         if (last_server_info != server_config)
           if (Global.api_router.is_master?)
@@ -51,7 +51,7 @@ module AresMUSH
       end
       
       def on_cron_event(event)
-        config = Global.config['api']['cron']
+        config = Global.read_config("api", "cron")
         return if !Cron.is_cron_match?(config, event.time)
         return if Global.api_router.is_master?
         

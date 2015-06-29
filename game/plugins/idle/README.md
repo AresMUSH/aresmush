@@ -11,7 +11,7 @@ There are several idle actions available:
 * NPC - Mark that they're a NPC.  This is the default for approved characters.
 * Gone - Mark that they've left the IC area.
 * Dead - Mark that they're dead.
-* Roster - Put them on the [[[plugin:roster]]].
+* Roster - Put them on the Roster.
 * Warn - Notify them they're in danger of idling out.
 * Nothing - Give them a pass until next time.
 

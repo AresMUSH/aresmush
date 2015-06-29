@@ -1,2 +1,3 @@
 bundle install
-nohup bundle exec rake startares > /dev/null & 
+nohup bundle exec rake startares > /dev/null 2>&1&
+echo kill -9 $! > bin/killares

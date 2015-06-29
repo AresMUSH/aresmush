@@ -4,14 +4,8 @@ module AresMUSH
       include MockClient
       
       before do
-        Global.stub(:config) { 
-          { 
-            "fs3combat" => 
-              { "toughness_attribute" => "Body",
-                "damage_mods" => { "H" => 0, "L" => 1, "M" => 2  } },
-             
-          } 
-        }
+        Global.stub(:read_config).with("fs3combat", "toughness_attribute") { "Body" }
+        Global.stub(:read_config).with("fs3combat", "damage_mods") { { "H" => 0, "L" => 1, "M" => 2  } }
       end
         
       describe :print_damage do

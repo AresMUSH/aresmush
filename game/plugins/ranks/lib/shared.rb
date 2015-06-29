@@ -1,15 +1,15 @@
 module AresMUSH
   module Ranks
     def self.can_manage_ranks?(actor)
-      actor.has_any_role?(Global.config['ranks']['roles']['can_manage_ranks'])
+      actor.has_any_role?(Global.read_config("ranks", "roles", "can_manage_ranks"))
     end
 
     def self.rank_group
-      Global.config["ranks"]["rank_group"]
+      Global.read_config("ranks", "rank_group")
     end
     
     def self.group_rank_config(group)
-      Global.config["ranks"]["ranks"][group]
+      Global.read_config("ranks", "ranks", group)
     end
     
     def self.all_ranks_for_group(group)

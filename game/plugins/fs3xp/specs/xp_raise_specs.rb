@@ -10,15 +10,9 @@ module AresMUSH
       
       before do
         init_handler XpRaiseCmd
-        Global.stub(:config) { 
-          { 
-            "fs3xp" => 
-            { 
-              "skill_costs" => { 2 => 3 },
-              "max_rating_through_xp" => 5,
-              "days_between_xp_raises" => 1
-            } 
-            } }
+        Global.stub(:read_config).with("fs3xp", "skill_costs") { { 2 => 3} }
+        Global.stub(:read_config).with("fs3xp", "max_rating_through_xp") { 5 }
+        Global.stub(:read_config).with("fs3xp", "days_between_xp_raises") { 1 }
       end
       
       context "failures" do

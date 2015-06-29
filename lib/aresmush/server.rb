@@ -5,8 +5,8 @@ module AresMUSH
     
     def start
       EventMachine::run do
-        host = Global.config['server']['hostname']
-        port = Global.config['server']['port']
+        host = Global.read_config("server", "hostname")
+        port = Global.read_config("server", "port")
         EventMachine::add_periodic_timer(45) do
           Global.client_monitor.logged_in_clients.each { |c| c.ping }
           Cron.raise_event

@@ -1,15 +1,15 @@
 module AresMUSH
   module Roles
     def self.all_roles
-      Global.config['roles']['roles'].map { |r| r.downcase }
+      Global.read_config("roles", "roles").map { |r| r.downcase }
     end
     
     def self.restricted_roles
-      Global.config['roles']['restricted_roles'].map { |r| r.downcase }
+      Global.read_config("roles", "restricted_roles").map { |r| r.downcase }
     end
     
     def self.can_assign_role?(actor)
-      actor.has_any_role?(Global.config["roles"]["can_assign_role"])
+      actor.has_any_role?(Global.read_config("roles", "can_assign_role"))
     end
     
     def self.is_restricted?(name)

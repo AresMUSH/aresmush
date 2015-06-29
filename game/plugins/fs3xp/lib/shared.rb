@@ -1,17 +1,17 @@
 module AresMUSH
   module FS3XP
     def self.can_manage_xp?(actor)
-      actor.has_any_role?(Global.config['fs3xp']['roles']['can_manage_xp'])
+      actor.has_any_role?(Global.read_config("fs3xp", "roles", "can_manage_xp"))
     end
     
     def self.cost_for_rating(new_rating)
-      config = Global.config['fs3xp']['skill_costs']
+      config = Global.read_config("fs3xp", "skill_costs")
       return config[new_rating] if config.has_key?(new_rating)
       raise "XP Cost Not Defined for #{new_rating}!"
     end
     
     def self.days_between_xp_raises
-      Global.config['fs3xp']['days_between_xp_raises']
+      Global.read_config("fs3xp", "days_between_xp_raises")
     end
     
     def self.check_raise_frequency(char)

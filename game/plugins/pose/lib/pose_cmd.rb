@@ -29,7 +29,7 @@ module AresMUSH
           return PoseFormatter.format(client.name, ":#{cmd.args}")
         elsif (cmd.root_is?("ooc"))
           msg = PoseFormatter.format(client.name, "#{cmd.args}")
-          color = Global.config['pose']['ooc_color']
+          color = Global.read_config("pose", "ooc_color")
           return "#{color}<OOC>%xn #{msg}"
         end
         return PoseFormatter.format(client.name, "\"#{cmd.args}")

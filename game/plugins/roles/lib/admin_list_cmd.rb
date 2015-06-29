@@ -11,7 +11,7 @@ module AresMUSH
       
       def handle
         text = ""
-        Global.config["roles"]["game_admin"].each do |role|
+        Global.read_config("roles", "game_admin").each do |role|
           if (!text.blank?)
             text << "%R%R"
           end

@@ -14,7 +14,7 @@ help:
                 handle profile:
                     dir: 'game/plugins/handles/help/'
                     file: 'profile.txt'
-                    aliases: [ "profile", "finger" ]
+                    aliases: [ "profile" ]
                 alts:
                     toc_topic: 'Community'
                     dir: 'game/plugins/handles/help/'

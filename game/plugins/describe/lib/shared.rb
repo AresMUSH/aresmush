@@ -10,10 +10,10 @@ module AresMUSH
     def self.can_describe?(char, model)
       if (char == model)
         return true
-      elsif (char.has_any_role?(Global.config['describe']['roles']['can_desc_anything']))
+      elsif (char.has_any_role?(Global.read_config("describe", "roles", "can_desc_anything")))
         return true
       elsif (model.class == Room)
-        return char.has_any_role?(Global.config['describe']['roles']['can_desc_places'])
+        return char.has_any_role?(Global.read_config("describe", "roles", "can_desc_places"))
       end
       return false
     end

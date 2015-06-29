@@ -4,7 +4,7 @@ module AresMUSH
       include Plugin
       
       def on_cron_event(event)
-        config = Global.config['status']['afk']
+        config = Global.read_config("status", "afk")
         return if !Cron.is_cron_match?(config['cron'], event.time)
         
         Global.client_monitor.logged_in_clients.each do |client|
