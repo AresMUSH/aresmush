@@ -15,6 +15,7 @@ module AresMUSH
         end
         
         combat = client.char.combatant.combat
+        Global.logger.debug "****** NEW COMBAT TURN ******"
 
         # TODO - initiative order
         combat.combatants.each do |c|
@@ -22,9 +23,20 @@ module AresMUSH
           next if c.is_noncombatant?
           messages = c.action.resolve
           messages.each do |m|
+            Global.logger.debug "#{m}"
             combat.emit m
           end
+             
+          # Reset aim if they've done anything other than aiming.       
+          if (c.is_aiming && c.action.class != AimAction)
+            Global.logger.debug "Reset aim for #{c.name}."
+            c.is_aiming = false
+            c.save
+          end
         end
+        
+        combat.emit t('fs3combat.new_turn', :name => client.name)
+        
       end
     end
   end

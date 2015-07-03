@@ -11,6 +11,8 @@ module AresMUSH
     field :armor, :type => String
     field :npc_skill, :type => Integer
     field :is_ko, :type => Boolean
+    field :is_aiming, :type => Boolean
+    field :aim_target, :type => String
     field :stance, :type => String
     field :npc_damage, :type => Array, :default => []
       
@@ -40,9 +42,10 @@ module AresMUSH
       accuracy_mod = FS3Combat.weapon_stat(self.weapon, "accuracy")
       damage_mod = total_damage_mod
       stance_mod = attack_stance_mod
-      mod = mod + accuracy_mod - damage_mod + stance_mod
+      aiming_mod = (self.is_aiming && (self.aim_target == self.action.print_target_names)) ? 3 : 0
+      mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod
       
-      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}"
+      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} aiming=#{aiming_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}"
       
       roll_ability(ability, mod)
     end

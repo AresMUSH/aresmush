@@ -13,13 +13,13 @@ module AresMUSH
         self.mod = 0
         
         if (args =~ /\//)
-          target_names = args.before("/")
+          names = args.before("/")
           parse_specials args.after("/").split(",")
         else
-          target_names = args
+          names = args
         end
         
-        parse_targets target_names
+        parse_targets names
       end
 
       def parse_specials(specials)
@@ -62,7 +62,7 @@ module AresMUSH
       # TODO - Clear action when switching weapons
       
       def print_action
-        msg = t('fs3combat.attack_action_msg_long', :name => self.name, :target => self.target_names.join(", "))
+        msg = t('fs3combat.attack_action_msg_long', :name => self.name, :target => print_target_names)
         if (self.is_burst)
           msg << " #{t('fs3combat.attack_special_burst')}"
         end
@@ -76,7 +76,7 @@ module AresMUSH
       end
       
       def print_action_short
-        t('fs3combat.attack_action_msg_short', :target => self.target_names.join(","))
+        t('fs3combat.attack_action_msg_short', :target => print_target_names)
       end
       
       def resolve

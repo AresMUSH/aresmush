@@ -30,6 +30,8 @@ module AresMUSH
           AttackAction
         elsif (cmd.switch_is?("pass"))
           PassAction
+        elsif (cmd.switch_is?("aim"))
+          AimAction
         else
           nil
         end

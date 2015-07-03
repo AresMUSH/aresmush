@@ -144,6 +144,7 @@ en:
         cant_target_noncombatant: "You can't target noncombatants."
         you_are_a_noncombatant: "Noncombatants can't fight."
         cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
+        new_turn: "%{name} has started a new turn!  Pose and pick your actions."
         
         # ----------------------------
         # STANCE
@@ -177,5 +178,14 @@ en:
         pass_action_msg_long: "%{name} will pass this turn."
         pass_action_msg_short: "Pass"
         pass_resolution_msg: "%{name} passes."
+        
+        # ----------------------------
+        # AIM
+        # ----------------------------
+        
+        aim_action_msg_long: "%{name} will aim at %{target} this turn."
+        aim_action_msg_short: "Aim %{target}"
+        aim_resolution_msg: "%{name} takes careful aim at %{target}."
+            
         
         

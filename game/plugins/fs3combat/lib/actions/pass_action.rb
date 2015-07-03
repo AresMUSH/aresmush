@@ -2,18 +2,6 @@ module AresMUSH
   module FS3Combat
     class PassAction < CombatAction
       
-      def self.crack_helper(client, cmd)
-        if (cmd.args)
-          name = InputFormatter.titleize_input(cmd.args)
-        else
-          name = client.name
-        end
-        {
-          :name => name,
-          :action_args => ""
-        }
-      end
-      
       def parse_args(args)
       end
 

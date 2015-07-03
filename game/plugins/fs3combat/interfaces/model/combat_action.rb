@@ -61,5 +61,9 @@ module AresMUSH
         self.targets << target
       end
     end
+    
+    def print_target_names
+      self.target_names.join(", ")
+    end
   end 
 end

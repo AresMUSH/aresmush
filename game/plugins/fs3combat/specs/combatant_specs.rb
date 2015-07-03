@@ -45,6 +45,7 @@ module AresMUSH
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 0 }
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:attack_stance_mod) { 0 }
+          @combatant.stub(:is_aiming) { false }
           @combatant.stub(:weapon) { "Knife" }
         end
         
@@ -52,6 +53,29 @@ module AresMUSH
           @combatant.should_receive(:roll_ability).with("Knives", 0)
           @combatant.roll_attack
         end
+        
+        it "should account for aim modifier if aimed at the same target" do
+          @combatant.stub(:is_aiming) { true }
+          @combatant.stub(:aim_target) { "Bob" }
+          action = double
+          action.stub(:print_target_names) { "Bob" }
+          @combatant.stub(:action) { action }
+          
+          @combatant.should_receive(:roll_ability).with("Knives", 3)
+          @combatant.roll_attack
+        end
+        
+        it "should not apply aim modifier if aimed at a different target" do
+          @combatant.stub(:is_aiming) { true }
+          @combatant.stub(:aim_target) { "Bob" }
+          action = double
+          action.stub(:print_target_names) { "Someone Else" }
+          @combatant.stub(:action) { action }
+          
+          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          @combatant.roll_attack
+        end
+        
         
         it "should account for wound modifiers" do
           @combatant.stub(:total_damage_mod) { 1 }
