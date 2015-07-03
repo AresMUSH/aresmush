@@ -38,14 +38,23 @@ module AresMUSH
     def roll_attack(mod = 0)
       ability = FS3Combat.weapon_stat(self.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(self.weapon, "accuracy")
-      mod = mod + accuracy_mod - total_damage_mod + attack_stance_mod
+      damage_mod = total_damage_mod
+      stance_mod = attack_stance_mod
+      mod = mod + accuracy_mod - damage_mod + stance_mod
+      
+      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}"
+      
       roll_ability(ability, mod)
     end
     
     def roll_defense(attacker_weapon)
-      skill = weapon_defense_skill(attacker_weapon)
-      mod = 0 - total_damage_mod + defense_stance_mod
-      roll_ability(skill, mod)
+      ability = weapon_defense_skill(attacker_weapon)
+      stance_mod = defense_stance_mod
+      mod = 0 - total_damage_mod + stance_mod
+      
+      Global.logger.debug "Defense roll for #{self.name} ability=#{ability} stance=#{stance_mod}"
+      
+      roll_ability(ability, mod)
     end
     
     def attack_stance_mod
@@ -172,6 +181,14 @@ module AresMUSH
     
     def is_npc?
       self.character.nil?
+    end
+    
+    def is_noncombatant?
+      self.combatant_type == "Observer"
+    end
+    
+    def poss_pronoun
+      is_npc? ? t('demographics.other_possessive') : self.character.possessive_pronoun
     end
     
     def emit(message)

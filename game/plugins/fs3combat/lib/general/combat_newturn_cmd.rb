@@ -19,6 +19,7 @@ module AresMUSH
         # TODO - initiative order
         combat.combatants.each do |c|
           next if !c.action
+          next if c.is_noncombatant?
           messages = c.action.resolve
           messages.each do |m|
             combat.emit m

@@ -18,6 +18,12 @@ module AresMUSH
         self.name = result[:name]
         self.action_args = result[:action_args]
       end
+      
+    
+      def check_noncombatant
+        return t('fs3combat.you_are_a_noncombatant') if (client.char.combatant.is_noncombatant? && self.name == client.name)
+        return nil
+      end
 
       def find_action_klass(cmd)
         if (cmd.switch_is?("attack"))

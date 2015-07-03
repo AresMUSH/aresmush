@@ -47,7 +47,7 @@ module AresMUSH
     
     def check_valid_targets
       self.targets.each do |t|
-        return t('fs3combat.cant_target_noncombatant', :name => t.name) if t.combatant_type == "Observer"
+        return t('fs3combat.cant_target_noncombatant', :name => t.name) if t.is_noncombatant?
       end
       return nil
     end

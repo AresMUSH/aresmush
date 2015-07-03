@@ -141,8 +141,16 @@ en:
         invalid_action_params: "There was a problem with your action: %{error}"
         not_a_valid_target: "%{name} is not a valid target."
         only_one_target: "You can only target one person with that action."
-        cant_target_noncombatant: "You can't target observers."
+        cant_target_noncombatant: "You can't target noncombatants."
+        you_are_a_noncombatant: "Noncombatants can't fight."
         cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
+        
+        # ----------------------------
+        # STANCE
+        # ----------------------------
+        
+        stance_changed: "%{name} has changed %{poss} stance to %{stance}."
+        invalid_stance: "That is not a valid stance."
 
         # ----------------------------
         # ATTACK
