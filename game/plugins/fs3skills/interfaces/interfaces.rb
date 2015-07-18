@@ -106,7 +106,8 @@ module AresMUSH
         # Hey if they're rolling this many dice they ought to succeed spectacularly.
         return [7, 7, 7, 7, 7, 7]
       end
-      dice = [dice, 1].max
+      
+      dice = [dice, 1].max.ceil
       dice.times.collect { 1 + rand(8) }
     end
     
