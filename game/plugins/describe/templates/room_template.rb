@@ -68,7 +68,7 @@ module AresMUSH
         
         if (exits.count == 0)
           text << "%r"
-          text << t('desc.no_way_out')
+          text << t('describe.no_way_out')
         end
         
         if (@room.is_foyer)
