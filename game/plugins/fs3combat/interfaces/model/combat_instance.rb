@@ -9,11 +9,11 @@ module AresMUSH
     has_many :combatants, :inverse_of => 'combat', :dependent => :destroy
 
     def active_combatants
-      combatants.select { |c| c.combatant_type != "Observer" }.sort_by{ |c| c.name }
+      combatants.select { |c| !c.is_noncombatant? }.sort_by{ |c| c.name }
     end
     
     def non_combatants
-      combatants.select { |c| c.combatant_type == "Observer" }.sort_by{ |c| c.name }
+      combatants.select { |c| c.c.is_noncombatant? }.sort_by{ |c| c.name }
     end
     
     def self.next_num
@@ -59,6 +59,17 @@ module AresMUSH
       if (client)
         client.emit t('fs3combat.organizer_emit', :message => message)
       end
+    end
+    
+    def roll_initiative
+      ability = Global.read_config("fs3combat", "initiative_ability")
+      order = []
+      self.combatants.each do |c|
+        roll = c.roll_initiative(ability)
+        order << { :combatant => c, :roll => roll }
+      end
+      Global.logger.debug "Combat initiative rolls: #{order.map { |o| "#{o[:combatant].name}=#{o[:roll]}" }}"
+      order.sort_by { |c| c[:roll] }.map { |c| c[:combatant] }
     end
   end
 end

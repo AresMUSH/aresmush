@@ -3,6 +3,8 @@ fs3combat:
     # Default combatant type when joining combat.
     default_type: Soldier
     
+    initiative_ability: Reaction
+    
     combatant_types:
         # For each combatant type, you can specify:
         # - default weapon and specials (as a list)

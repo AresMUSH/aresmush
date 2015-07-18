@@ -140,6 +140,12 @@ module AresMUSH
       result[:successes]
     end
       
+    def roll_initiative(ability)
+      roll1 = roll_ability(ability, -total_damage_mod)
+      roll2 = roll_ability(ability, -total_damage_mod)
+      roll1 + roll2
+    end
+    
     def do_damage(severity, weapon, hitloc)
       if (is_npc?)
         npc_damage << severity

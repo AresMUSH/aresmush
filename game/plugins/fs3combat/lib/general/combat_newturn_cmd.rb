@@ -17,8 +17,10 @@ module AresMUSH
         combat = client.char.combatant.combat
         Global.logger.debug "****** NEW COMBAT TURN ******"
 
+        initiative_order = combat.roll_initiative
+        
         # TODO - initiative order
-        combat.combatants.each do |c|
+        initiative_order.each do |c|
           next if !c.action
           next if c.is_noncombatant?
           messages = c.action.resolve
@@ -38,6 +40,8 @@ module AresMUSH
         combat.emit t('fs3combat.new_turn', :name => client.name)
         
       end
+      
+      
     end
   end
 end
