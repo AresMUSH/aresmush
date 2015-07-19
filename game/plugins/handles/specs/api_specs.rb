@@ -50,7 +50,11 @@ module AresMUSH
         it "should just return the char profile if on master" do
           @router.stub(:is_master?) { true }
           Character.stub(:find_all_by_name_or_id).with("Star") { [ @profile_char ] }
-          Handles.should_receive(:build_profile_text).with(@profile_char, @char) { "PROFILE" }
+          
+          char_profile_template = double
+          char_profile_template.stub(:display) { "PROFILE" }
+          HandleProfileTemplate.should_receive(:new).with(@profile_char, @char) { char_profile_template }
+          
           @client.should_receive(:emit).with("PROFILE")
           Handles.get_profile(@client, "Star")
         end

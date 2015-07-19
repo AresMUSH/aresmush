@@ -70,7 +70,8 @@ module AresMUSH
           name = name.after("@")
         end
         ClassTargetFinder.with_a_character(name, client) do |model|
-          client.emit Handles.build_profile_text(model, client.char)
+          template = HandleProfileTemplate.new(model, client.char)
+          client.emit template.display
         end
       else
         if (Handles.handle_name_valid?(name))
