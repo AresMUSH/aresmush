@@ -4,5 +4,5 @@ api:
     cron:
         #date: 1
         #day_of_week: Sat
-        #hour: 21
+        hour: 04
         minute: 00

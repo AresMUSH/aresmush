@@ -37,7 +37,7 @@ module AresMUSH
           model.is_approved = false
           model.approval_job = nil
           model.save
-          client.emit_success t('chargen.unapproved', :name => model.name)
+          client.emit_success t('chargen.app_unapproved', :name => model.name)
         end
       end
     end

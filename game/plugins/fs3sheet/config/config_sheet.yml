@@ -1,14 +1,11 @@
 sheet:
-    # List which pages of a character sheet are allowed to be public.  
-    #
-    # Comment out (with a # in front) the ones you wish to remain private.  You can
-    # make them all private if you wish. 
+    # List which pages of a character sheet are allowed to be public.  Leave off any
+    # that are private.
     #
     # It is recommended that you put public pages at the front.  Otherwise someone will
     # get an error on page 1 and never even think to try page 2.
     public_pages:
         - 1
-        - 2
         
     roles:
         # List roles that are allowed to view private sheet pages.

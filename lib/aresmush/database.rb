@@ -12,6 +12,11 @@ module AresMUSH
       
       begin
         Mongoid.load_configuration(db_config)
+        #Mongoid.load!("/Users/lynn/Code/aresmush/game/config/mongoid.yml", :foo)
+        #puts Mongoid.models
+        #puts Character.all.count
+        #puts Mongoid.sessions.inspect
+        #exit
       rescue Exception => e
         Global.logger.fatal("Error loading database config.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e

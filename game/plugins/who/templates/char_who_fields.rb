@@ -37,20 +37,8 @@ module AresMUSH
 
       # Name of the room the character is in.
       def char_room(char)
-        left(who_room_name(char), 35)
+        left(Who.who_room_name(char), 35)
       end 
-  
-      # This is how the room name is displayed.  It is also used for
-      # sorting purposes, so characters are sorted by area then individual rooms,
-      # and unfindable characters are sorted together.
-      def who_room_name(char)
-        if (char.hidden)
-          return t('who.hidden')
-        end
-  
-        area = char.room.area.nil? ? "" : "#{char.room.area} - "
-        "#{area}#{char.room.name}"
-      end
     end
   end
 end

@@ -61,18 +61,6 @@ module AresMUSH
       end
     end
     
-    describe :line do
-      it "should default to line1" do
-        renderer = TemplateRenderer.new("FOO <% line %>")
-        renderer.render(@data).should eq "FOO %l1"
-      end
-
-      it "should accept a line option" do
-        renderer = TemplateRenderer.new("FOO <% line(\"ABC\") %>")
-        renderer.render(@data).should eq "FOO %lABC"
-      end
-    end
-    
     describe :one_line do
       it "should squish newlines" do
         renderer = TemplateRenderer.new("<% one_line do %>FOO\n\nBAR<% end %>")

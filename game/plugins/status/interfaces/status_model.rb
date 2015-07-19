@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    field :last_ic_location_id, :type => Moped::BSON::ObjectId
+    field :last_ic_location_id, :type => BSON::ObjectId
     field :afk_message, :type => String
     field :is_afk, :type => Boolean
     field :is_approved, :type => Boolean

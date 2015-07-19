@@ -4,10 +4,19 @@ en:
         no_permission_to_backup: "You are not allowed to backup somebody else."
         invalid_page_number: "That is not a valid page number."
         not_that_many_pages: "There aren't that many character sheet pages."
+                
+        abilities_page_title: "Abilities"
         
-        abilities_page_title: "Abilities - Page 1 of 3"
-        profile_page_title: "Info - Page 2 of 3"
-        bg_page_title: "Background - Page 3 of 3"
+        xp_title: "XP:"
+        luck_title: "Luck Points:"
+        
+        attributes_title: "Attributes"
+        action_skills_title: "Action Skills"
+        background_skills_title: "Background Skills"
+        languages_title: "Languages"
+        quirks_title: "Quirks"
+        
+        info_title: "Info"        
         
         fullname_title: "Fullname:"
         gender_title: "Gender:"
@@ -18,25 +27,10 @@ en:
         eyes_title: "Eyes:"
         age_title: "Age:"
         birthdate_title: "Birthdate:"
-        reputation_title: "Reputation"
-        reputation_subtitle: "(common knowledge ICly)"
         colony_title: "Colony:"
         rank_title: "Rank:"
         position_title: "Position:"
         department_title: "Department:"
         faction_title: "Faction:"
         callsign_title: "Callsign:"
-        xp_title: "XP:"
-        luck_title: "Luck Points:"
         
-        attributes_title: "Attributes"
-        action_skills_title: "Action Skills"
-        background_skills_title: "Background Skills"
-        languages_title: "Languages"
-        quirks_title: "Quirks"
-        
-        
-        approved: "Approved"
-        unapproved: "Not Yet Approved"
-        rostered: "On Roster"
-        idled_out: "Idled Out - %{status}"

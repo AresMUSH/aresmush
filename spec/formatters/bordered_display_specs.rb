@@ -3,7 +3,7 @@ module AresMUSH
     describe :list do
       it "should display items one per line" do
         expected_result = "%ra%rb"
-        BorderedDisplay.should_receive(:text).with(expected_result, "Foo", false) { expected_result }
+        BorderedDisplay.should_receive(:text).with(expected_result, "Foo", false, nil) { expected_result }
         output = BorderedDisplay.list([ "a", "b" ], "Foo")
         output.should eq expected_result
       end

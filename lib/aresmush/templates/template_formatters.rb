@@ -16,8 +16,7 @@ module AresMUSH
     end
     
     def line(number = 1)
-      @output << "%l#{number}"
-      return ""
+      "%l#{number}"
     end
     
     def line_with_text(text)
@@ -32,6 +31,7 @@ module AresMUSH
       template.gsub(/text/, center(str, width, padding))
     end
     
+    # This works with Erubis templates; now depracated.
     def one_line(&block)
       str = capture(&block)
       @output << str.gsub(/\n/, "")
@@ -39,6 +39,7 @@ module AresMUSH
       return ""
     end
   
+    # This works with Erubis templates; now depracated.
     def capture(*args)
       old_buffer = @output
       @output = ""

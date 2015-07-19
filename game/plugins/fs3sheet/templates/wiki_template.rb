@@ -1,5 +1,5 @@
 module AresMUSH
-  module Sheet
+  module FS3Sheet
     class WikiTemplate
       include TemplateFormatters
       

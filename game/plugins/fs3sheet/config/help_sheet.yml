@@ -8,6 +8,12 @@ help:
                     file: 'sheet.txt'
                     summary: "Character sheets."
                     #aliases: [  ]
+                info: 
+                    toc_topic: Character Creation
+                    dir: 'game/plugins/fs3sheet/help/'
+                    file: 'info.txt'
+                    summary: "Character information."
+                    #aliases: [  ]
                 finger: 
                     #toc_topic: Character Creation
                     dir: 'game/plugins/fs3sheet/help/'

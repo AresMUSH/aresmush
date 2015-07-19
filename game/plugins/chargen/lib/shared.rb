@@ -11,7 +11,24 @@ module AresMUSH
     
     def self.can_manage_bgs?(actor)
       return actor.has_any_role?(Global.read_config("chargen", "roles", "can_manage_bgs"))
+    end     
+    
+    def self.can_view_bgs?(actor)
+      return actor.has_any_role?(Global.read_config("chargen", "roles", "can_view_bgs"))
     end      
+    
+    def self.approval_status(char)
+      if (char.on_roster?)
+        status = "%xb%xh#{t('chargen.rostered')}%xn"
+      elsif (char.idled_out)
+        status = "%xr%xh#{t('chargen.idled_out', :status => char.idled_out)}%xn"
+      elsif (!char.is_approved?)
+        status = "%xr%xh#{t('chargen.unapproved')}%xn"
+      else
+        status = "%xg%xh#{t('chargen.approved')}%xn"
+      end        
+      status
+    end
     
     def self.can_edit_bg?(actor, model, client)
       if (model.is_approved && !Chargen.can_manage_bgs?(actor))
@@ -20,11 +37,16 @@ module AresMUSH
       end
       
       if (actor != model && !Chargen.can_manage_bgs?(actor))
-        client.emit_failure t('chargen.no_permission')
+        client.emit_failure t('chargen.cannot_edit_bg')
         return false
       end
 
       return true
+    end
+    
+    def self.show_bg(model)
+      template = BgTemplate.new(model)
+      template.display
     end
     
     def self.read_tutorial(name)

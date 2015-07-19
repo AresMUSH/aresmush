@@ -20,10 +20,11 @@ module AresMUSH
     
     def self.char_backup(char, client)
       backup = Describe.get_desc(char, client)
+      outfits = ""
       char.outfits.each do |name, desc|
-        backup << "%R%r%xh#{t('describe.outfit', :name => name)}%xn%r#{desc}"
+        outfits << "%R%R%xh#{t('describe.outfit', :name => name)}%xn%r#{desc}"
       end
-      backup
+      backup << BorderedDisplay.text(outfits, t('describe.your_outfits'), false)
     end
   end
 end

@@ -1,15 +1,13 @@
 module AresMUSH
-
   module FS3Sheet
-    class WikiCmd
+    class InfoViewCmd
       include Plugin
       include PluginRequiresLogin
-      include PluginWithoutSwitches
       
       attr_accessor :target
-
+      
       def want_command?(client, cmd)
-        cmd.root_is?("wiki")
+        cmd.root_is?("info") && cmd.switch.nil?
       end
 
       def crack!
@@ -18,7 +16,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          template =  WikiTemplate.new(model)
+          template = InfoTemplate.new(model)
           client.emit template.display
         end
       end

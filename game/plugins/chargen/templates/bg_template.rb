@@ -1,6 +1,6 @@
 module AresMUSH
-  module Sheet
-    class SheetPage3Template
+  module Chargen
+    class BgTemplate
       include TemplateFormatters
       
       attr_accessor :char
@@ -24,14 +24,12 @@ module AresMUSH
       end
       
       def approval_status
-        status = @char.is_approved ? 
-        "%xg%xh#{t('sheet.approved')}%xn" : 
-        "%xr%xh#{t('sheet.unapproved')}%xn"
+        status = Chargen.approval_status(@char)
         center(status, 23)
       end
       
       def page_title
-        right(t('sheet.bg_page_title'), 28)
+        right(t('chargen.bg_page_title'), 28)
       end
       
       def background

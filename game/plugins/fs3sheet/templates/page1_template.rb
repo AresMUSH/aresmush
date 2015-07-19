@@ -1,5 +1,5 @@
 module AresMUSH
-  module Sheet
+  module FS3Sheet
     class SheetPage1Template
       include TemplateFormatters
       
@@ -95,15 +95,7 @@ module AresMUSH
       end
       
       def approval_status
-        if (@char.on_roster?)
-          status = "%xb%xh#{t('sheet.rostered')}%xn"
-        elsif (@char.idled_out)
-          status = "%xr%xh#{t('sheet.idled_out', :status => @char.idled_out)}%xn"
-        elsif (!@char.is_approved?)
-          status = "%xr%xh#{t('sheet.unapproved')}%xn"
-        else
-          status = "%xg%xh#{t('sheet.approved')}%xn"
-        end        
+        status = Chargen.approval_status(@char)
         center(status, 23)
       end
       

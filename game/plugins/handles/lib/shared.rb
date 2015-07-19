@@ -1,36 +1,32 @@
 module AresMUSH
   module Handles
-    
-    def self.build_profile_text(profile_char, asking_char)
-      if (Global.api_router.is_master?)
-        return t('api.invalid_handle') if profile_char.nil?
-        
-        text = "-~- %xh%xg@#{profile_char.name}%xn -~-".center(78)
-        text << "%r%l2%r"
-        text << "%xh#{t('handles.profile_title')}%xn"
-        text << "%r"
-        text << (profile_char.handle_profile.nil? ? t('handles.no_profile_set') : profile_char.handle_profile)
-        text << "%r%r%l2%r"
-        text << t('handles.profile_char_list_title')
-        text << "%r%l2"
-        profile_char.linked_characters.values.each do |c| 
-          next if c['privacy'] == Handles.privacy_admin
-          next if c['privacy'] == Handles.privacy_friends && !asking_char
-          next if c['privacy'] == Handles.privacy_friends && !profile_char.friends.include?(asking_char)
-          
-          game = ServerInfo.find_by_dest_id(c['game_id'])
-          game_name = game.nil? ? "Unknown" : game.name
-          name = "#{c['name']}@#{game_name}"
-          last_online = "#{c['last_login']}"   
-          text << "%R#{name.ljust(40)} #{last_online}"
-        end
-        
-        BorderedDisplay.text text
-      else
-        return t('api.use_command_on_central')
-      end
+    def self.send_handle_profile_request(client, handle_name)
+      client.emit_success t('handles.sending_profile_request')
+      args = ApiProfileCmdArgs.new(handle_name, client.char.handle)
+      cmd = ApiCommand.new("profile", args.to_s)
+      Global.api_router.send_command(ServerInfo.arescentral_game_id, client, cmd)
     end
     
+    def self.format_custom_profile(char)
+      text = "%r%l2"
+      char.profile.each_with_index do |(k, v), i|
+        if (i == 0)
+          text << "%R"
+        else
+          text << "%R%R"
+        end
+        text << "%xh#{k}%xn%R#{v}"
+      end
+      text
+    end
     
+    def self.get_visible_alts(model, actor)
+      list = Handles.find_visible_alts(model.handle, actor)
+      if (list.empty?)
+        t('handles.no_alts')
+      else
+        list.map { |l| l.name }.join(", ")
+      end
+    end
   end
 end

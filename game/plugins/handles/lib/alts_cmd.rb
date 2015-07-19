@@ -28,11 +28,9 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          if (Handles.find_visible_alts(model.handle, client.char).any?)
-            client.emit_failure t('handles.no_alts')
-          else
-            client.emit BorderedDisplay.list list, t('handles.alts_list', :name => model.name)
-          end
+          alts_text = Handles.get_visible_alts(model, client.char)
+          footer = "%R#{t('handles.alts_notice')}"
+          client.emit BorderedDisplay.text alts_text, t('handles.visible_alts'), true, footer
         end
       end
     end

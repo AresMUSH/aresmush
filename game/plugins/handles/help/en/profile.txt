@@ -1,8 +1,16 @@
-Your handle profile is used to share OOC information about yourself.  The '+finger' command found on older games has been replaced by profile (for OOC info) and info (for IC info).
+Your profile is used to view OOC information about other characters. 
 
-You can access someone's profile using their handle name (e.g. 'profile @Faraday').  If their privacy settings allow, you can also access it through a character name (e.g. 'profile Cate' will show the profile for @Faraday).
+Each character has a %xhcharacter profile%xn that is unique to that particular game.  If you have an OOC player handle then you also have a %xhhandle profile%xn that is constant across all of your characters.  Whether other people can see this profile depends on your handle privacy settings (see %xhhelp handles%xn for more info.)
 
-The profile will also show characters that are linked to your handle, depending on your privacy settings.  Public characters will always show up, and private characters will never show up.  Friends-only characters will show up when a friend views your profile.
+    %xcprofile <name or handle>%xn
 
-    %xcprofile <name>%xn
-    %xcprofile/set <text>%xn - Sets your public profile text.
+You can set custom profile fields, which can display standard MUSH formatting codes (like ansi and linebreaks).  See %xhhelp formatting%xn.   
+
+    Note: When you set up custom profile fields on AresCentral, they apply to 
+          your handle profile.  When you set them on other games, they apply
+          only to that character's profile.
+
+    %xcprofile/add <field>=<value>%xn - Adds or updates a custom profile field
+    %xcprofile/delete <field>%xn - Deletes a custom profile field
+    %xcprofile/edit <field>%xn - Snags the field into your input buffer, if
+       your client allows.  (see %xhhelp edit%xn)

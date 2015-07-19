@@ -7,7 +7,6 @@ module AresMUSH
     field :gender, :type => String, :default => "Other"
     field :hair, :type => String
     field :eyes, :type => String
-    field :reputation, :type => String
     field :birthdate, :type => Date
     field :callsign, :type => String
     
