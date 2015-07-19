@@ -11,7 +11,7 @@ module AresMUSH
     
     describe :paged_list do
       before do
-        @title_line = "%x!------------------------------------title-------------------------------------%xn"
+        @title_line = "%xh------------------------------------title-------------------------------------%xn"
       end
       
       it "should show items when there is not a full page" do
