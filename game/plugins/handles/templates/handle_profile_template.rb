@@ -16,8 +16,8 @@ module AresMUSH
       end
       
       def custom_profile
-        return "" if @char.profile.empty?
-        Handles.format_custom_profile(@char)
+        return "" if @profile_char.profile.empty?
+        Handles.format_custom_profile(@profile_char)
       end
       
       def character_list

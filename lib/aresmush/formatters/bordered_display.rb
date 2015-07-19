@@ -51,7 +51,7 @@ module AresMUSH
         return BorderedDisplay.text(t('pages.not_that_many_pages'))
       else
         page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
-        page_marker = "%x!#{page_marker.center(78, '-')}%xn"
+        page_marker = "%xh#{page_marker.center(78, '-')}%xn"
         footer = footer.nil? ? page_marker : "#{page_marker}%r#{footer}"
         return BorderedDisplay.list(pagination.page_items, title, footer)
       end

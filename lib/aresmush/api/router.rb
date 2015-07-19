@@ -47,7 +47,6 @@ module AresMUSH
               socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}\r\n"
    
               while (line = socket.gets)
-                Global.logger.debug "Got answer from #{host} #{port}: #{line}."
                 
                 if (line.start_with?("api< "))
                   Global.logger.debug "Recognized it was an API response."

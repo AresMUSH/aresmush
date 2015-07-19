@@ -153,15 +153,19 @@ module AresMUSH
         if (str =~ /\[space\(([\d]+)\)\]/)
           return { :len => $1, :str => " ".repeat($1.to_i), :raw => str }
         elsif (str =~ /\[center\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
-          return { :len => $2, :str => center($1, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+          tmp = format($1)
+          return { :len => $2, :str => center(tmp, $2.to_i, $3.nil? ? " " : $3), :raw => str }
         elsif (str =~ /\[left\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
-          return { :len => $2, :str => left($1, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+          tmp = format($1)
+          return { :len => $2, :str => left(tmp, $2.to_i, $3.nil? ? " " : $3), :raw => str }
         elsif (str =~ /\[right\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
-          return { :len => $2, :str => right($1, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+          tmp = format($1)
+          return { :len => $2, :str => right(tmp, $2.to_i, $3.nil? ? " " : $3), :raw => str }
         elsif (str =~ /\[ansi\((.+)\,(.+)\)\]/)
           raw_codes = $1.each_char.map { |c| "%x#{c}" }
+          tmp = format($2)
           ansi = raw_codes.map { |c| AnsiFormatter.get_code(c) }.join
-          return { :len => $2.length, :str => "#{ansi}#{$2}#{ANSI.reset}", :raw => "#{raw_codes.join}#{$2}%xn"}
+          return { :len => $2.length, :str => "#{ansi}#{tmp}#{ANSI.reset}", :raw => "#{raw_codes.join}#{tmp}%xn"}
         end
       end
 
