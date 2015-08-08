@@ -17,7 +17,7 @@ module AresMUSH
     
     def ooc_name
       if (public_handle?)
-        display_name = "#{self.name} (@#{self.handle})"
+        display_name = "#{self.name} (#{self.handle})"
       else
         display_name = self.name
       end
