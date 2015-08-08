@@ -1,1 +1,0 @@
-The Character Creation tutorial works a little differently than the others.  Type %xcchargen/start%xn to begin the chargen walkthrough.

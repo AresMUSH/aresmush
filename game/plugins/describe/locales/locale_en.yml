@@ -23,7 +23,7 @@ en:
        locked: "LOCKED"
        
        played_by: "Played By:"
-       players_title: "Players:"
+       players_title: "Characters:"
        exits_title: "Exits:"
        no_way_out: "No way out!"
        

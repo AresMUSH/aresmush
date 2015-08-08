@@ -62,6 +62,22 @@ module AresMUSH
       end
     end
     
+    class BbsRenameCmd
+      include BbsAttributeCmd
+    
+      def want_command?(client, cmd)
+        cmd.root_is?("bbs") && cmd.switch_is?("rename")
+      end
+    
+      def handle
+        Bbs.with_a_board(name, client) do |board|        
+          board.name = self.attribute
+          board.save!
+          client.emit_success t('bbs.board_renamed')
+        end
+      end
+    end
+    
     class BbsRolesCmd
       include BbsAttributeCmd
     

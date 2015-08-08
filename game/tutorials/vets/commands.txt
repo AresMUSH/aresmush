@@ -1,8 +1,0 @@
-Ares does not distinguish between 'hardcode' and 'softcode'.  As a result, Ares commands have no prefix.  The who command is simply %xcwho%xn. The combat command is simply %xccombat%xn. If you do accidentally type a prefix (@, +, or /), it’ll be ignored, so +who, @who and /who all end up being just 'who'.
-
-An attempt has been made to name Ares commands consistently and intuitively to make it more approachable to new players.  At the same time, %xhShortcuts%xn exist so veterans can use the command names you're used to.  So although the help files reference 'profile' and 'bbs' and 'build', you can go on using 'finger' and 'bbread' and 'dig' like you're used to.  
-
-Find a missing shortcut?  Go to aresmush.com and select 'Feedback'!
- 
-%xh-- Give it a try! --%xn 
-    Type: %xcwho%xn and %xc+who%xn to see they're the same!

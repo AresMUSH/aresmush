@@ -43,7 +43,9 @@ module AresMUSH
         game.port = args.port
         game.website = args.website
         game.game_open = args.game_open
+        game.last_ping = Time.now
         game.save!
+        
         
         cmd.create_ok_response
       end

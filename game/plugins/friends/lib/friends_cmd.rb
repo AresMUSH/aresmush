@@ -34,6 +34,8 @@ module AresMUSH
             text << "%R#{f.ljust(25)} --"
           end
         end
+        text << "%R%R"
+        text << t('friends.alts_notice')
         
         client.emit BorderedDisplay.text text
       end

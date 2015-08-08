@@ -14,6 +14,7 @@ en:
         game_up_status: "%xgUp%xn"
         game_down_status: "%xrMay Be Down%xn"
         game_not_open: "<-Not Open->"
+        game_website: "%xhWebsite:%xn   %{website}"
         
         invalid_port: "Invalid port."
         invalid_category: "Invalid category."

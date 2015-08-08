@@ -1,8 +1,9 @@
 The MUSH help system is here to help you learn how to play.  
 
-    %xchelp%xn - Lists help topics.
+    %xchelp, help2, help3, etc.%xn - Shows each page of help topics.
+        Note:  Many commands work this way, showing a "page x of y" message at the bottom of the command text.
     %xchelp <topic name>%xn - Views a help topic.
-    
+
 Some games have additional help libraries, like for admins or builders.  You'll see a list on the main help display, and can access those libraries similarly to how you access the main help.  For example, admin help is:
 
     %xcahelp%xn - Lists admin help topics

@@ -36,7 +36,7 @@ en:
 
         # Privacy
         invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"
-        privacy_set: "Your handle privacy setting for this character is now %xh%{value}%xH.  See 'help handle privacy' for more info on what this means."
+        privacy_set: "Your handle privacy setting for this character is now %xh%{value}%xH."
         cant_set_privacy_on_master: "You set handle privacy on other games, not on AresCentral."
 
         # Profile
@@ -50,7 +50,7 @@ en:
         alts_notice: "(*) Alt visibility is based on the player's privacy settings.  Do not share this info with others."
         
         profile_title: "Public Profile:"
-        profile_char_list_title: "Public Characters                        Last Seen"
+        profile_char_list_title: "Alts(*)                              Last Seen"
         sending_profile_request: "Sending profile request to AresCentral.  One moment."
         no_public_profile: "%{name} does not have a public profile."
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."

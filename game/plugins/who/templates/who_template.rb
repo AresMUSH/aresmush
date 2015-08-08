@@ -14,7 +14,6 @@ module AresMUSH
       
       def display
         text = header(t('who.who_header'))
-        
         chars_by_handle.each do |c|
           text << "%R"
           text << char_status(c)

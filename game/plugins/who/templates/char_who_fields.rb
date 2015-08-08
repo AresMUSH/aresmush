@@ -27,7 +27,7 @@ module AresMUSH
 
       # How long a character's been idle, like 20m
       def char_idle(char)
-        left("#{TimeFormatter.format(char.client.idle_secs)}", 6)
+        left("#{TimeFormatter.format(char.client.idle_secs)}", 4)
       end   
 
       # How long a character's been connected, like 3h

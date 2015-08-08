@@ -17,8 +17,8 @@ fs3combat:
     healing_cron:
         #date: 1
         #day_of_week: Sat
-        hour: 06
-        minute: 00
+        hour: 00
+        minute: 47
     
     # Dice penalty for different wound levels.
     damage_mods:

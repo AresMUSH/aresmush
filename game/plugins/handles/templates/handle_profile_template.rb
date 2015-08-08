@@ -26,7 +26,7 @@ module AresMUSH
         @profile_char.linked_characters.values.each do |c| 
           next if c['privacy'] == Handles.privacy_admin
           next if c['privacy'] == Handles.privacy_friends && !@asking_char
-          next if c['privacy'] == Handles.privacy_friends && !@profile_char.friends.include?(asking_char)
+          next if c['privacy'] == Handles.privacy_friends && !@profile_char.friends.include?(@asking_char)
         
           game = ServerInfo.find_by_dest_id(c['game_id'])
           game_name = game.nil? ? "Unknown" : game.name
@@ -34,6 +34,8 @@ module AresMUSH
           last_online = "#{c['last_login']}"   
           text << "%R#{name.ljust(40)} #{last_online}"
         end
+        text << "%R%R"
+        text << t('handles.alts_notice')
         text
       end
     end

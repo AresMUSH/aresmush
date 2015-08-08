@@ -85,19 +85,14 @@ module AresMUSH
           display << Help.load_help("main", help_file)
         end
         display << "%R%L2%R#{prev_page_footer}#{next_page_footer}"
-      rescue
+      rescue Exception => e
         error_msg = "Error loading chargen tutorial stage #{stage}"
-        Global.logger.error error_msg
+        Global.logger.error "#{error_msg}: #{e}"
         Global.dispatcher.queue_event UnhandledErrorEvent.new(error_msg)
         display << t('chargen.error_loading_tutorial')
       end
       
       display
-      #Tutorials.get_page_for_tutorial(Chargen.tutorial_name,
-      #  char.chargen_stage,
-      #  t('chargen.prev_page_footer'),
-      #  t('chargen.next_page_footer'),
-      #  "TEST%R")
     end
   end
 end

@@ -17,4 +17,4 @@ And set their descriptions as well as who can read or write (post) to them:
 You can also change the order that the boards are displayed in by assigning each an order number:
 
     %xcbbs/order <board>=<order #>%xn
-    
+    %xcbbs/rename <board>=<new name>%xn

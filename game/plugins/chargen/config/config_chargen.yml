@@ -40,14 +40,16 @@ chargen:
     # Configure the stages of chargen.  For each stage, you can choose to show 
     # either a tutorial file (from the chargen/tutorial directory), a help file 
     # (from within the help system) or both.  Make sure the help name exactly 
-    # matches the name configured in the help system.
+    # matches the topic name configured in the help system.
     stages:
         start:
             tutorial: 'chargen.txt'
         app:
             tutorial: 'app command.txt'
         sheet:
-            tutorial: 'character sheet.txt'
+            help: 'sheet'
+        info:
+            help: 'info'
         demographics:
             help: demographics
         groups:
@@ -55,11 +57,10 @@ chargen:
         background:
             help: bg
         abilities:
-            tutorial: 'abilities.txt'
             help: abilities
-        final touches:
-            tutorial: 'final touches.txt'
+        desc:
+            help: descriptions
+        actor:
+            help: actors
         review:
-            tutorial: 'review.txt'
-        whatsnext:
-            tutorial: "what's next.txt"
+            help: apps
