@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("game")
+        cmd.root_is?("game") && cmd.switch_is?("info")
       end
       
       def crack!
@@ -49,7 +49,7 @@ module AresMUSH
         text << "%R"
         text << t('api.game_category', :category => game.category)
         text << "%R"
-        text << t('api.game_website', :web => game.website)
+        text << t('api.game_website', :website => game.website)
 
         if (!game.is_master?)
           last_ping = OOCTime.local_long_timestr(client, game.last_ping)        

@@ -7,7 +7,7 @@ module AresMUSH
       include PluginRequiresLogin
 
       def want_command?(client, cmd)
-        cmd.root_is?("maps")
+        cmd.root_is?("map") && !cmd.args
       end
             
       def handle

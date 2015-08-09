@@ -1,5 +1,6 @@
 shortcuts:
     roots:
+        "groups": "group"
         "faction": "group/set faction="
         "position": "group/set position="
         "department": "group/set department="

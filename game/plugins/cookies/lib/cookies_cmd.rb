@@ -6,7 +6,7 @@ module AresMUSH
       include PluginWithoutArgs
       
       def want_command?(client, cmd)
-        cmd.root_is?("cookies")
+        cmd.root_is?("cookie") && !cmd.switch && !cmd.args
       end
       
       def handle

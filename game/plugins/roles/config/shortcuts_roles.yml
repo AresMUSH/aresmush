@@ -1,4 +1,5 @@
 shortcuts:
     roots:
+        "roles" : "role"
         "staff" : "admin"
     

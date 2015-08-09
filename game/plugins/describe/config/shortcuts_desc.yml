@@ -2,6 +2,7 @@ shortcuts:
     roots:
         "l": "look"
         "desc": "describe"
+        "outfits": "outfit"
         
     full:
         "outfit/create": "outfit/set"

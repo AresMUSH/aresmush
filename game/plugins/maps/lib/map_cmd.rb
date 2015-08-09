@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :area
       
       def want_command?(client, cmd)
-        cmd.root_is?("map")
+        cmd.root_is?("map") && cmd.args
       end
             
       def crack!

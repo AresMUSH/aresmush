@@ -5,7 +5,7 @@ module AresMUSH
       include PluginRequiresLogin
       
       def want_command?(client, cmd)
-        (cmd.root_is?("outfit") || cmd.root_is?("outfits")) && cmd.switch.nil? && cmd.args.nil?
+        cmd.root_is?("outfit") && cmd.switch.nil? && cmd.args.nil?
       end
       
       def handle

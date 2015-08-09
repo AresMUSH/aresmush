@@ -67,6 +67,7 @@ module AresMUSH
             client.emit_success t('groups.group_cleared', :group => self.group_name)
           else
             client.emit_success t('groups.group_set', :group => self.group_name, :value => self.value)
+            client.emit_ooc t('groups.group_skill_notice')
           end
         end
       end

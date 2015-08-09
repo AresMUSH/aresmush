@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :page
       
       def want_command?(client, cmd)
-        cmd.root_is?("jobs") && (cmd.switch.nil? || cmd.switch_is?("all"))
+        cmd.root_is?("job") && !cmd.args && (cmd.switch.nil? || cmd.switch_is?("all"))
       end
       
       def crack!

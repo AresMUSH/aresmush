@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("weapon")
+        cmd.root_is?("weapon") && cmd.args
       end
       
       def crack!

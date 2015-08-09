@@ -7,7 +7,7 @@ module AresMUSH
       include TemplateFormatters
            
       def want_command?(client, cmd)
-        cmd.root_is?("channels") || (cmd.root_is?("channel") && cmd.switch_is?("list"))
+        cmd.root_is?("channel") && (cmd.switch_is?("list") || !cmd.switch)
       end
       
       def handle        

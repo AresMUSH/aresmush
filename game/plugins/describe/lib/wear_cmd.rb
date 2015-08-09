@@ -17,7 +17,7 @@ module AresMUSH
           return
         end
         
-        self.names = cmd.args.split(',').map { |n| titleize_input(n) }
+        self.names = cmd.args.split(' ').map { |n| titleize_input(n) }
       end
       
       def check_outfits_exist
@@ -32,6 +32,7 @@ module AresMUSH
         desc = ""
         self.names.each do |n|
           desc << client.char.outfit(n)
+          desc << " "
         end
         Describe.set_desc(client.char, desc)
         client.emit_success t('describe.outfits_worn')

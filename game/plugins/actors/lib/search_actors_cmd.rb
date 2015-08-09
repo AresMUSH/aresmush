@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("actors") && cmd.switch_is?("search")
+        cmd.root_is?("actor") && cmd.switch_is?("search")
       end
 
       def crack!

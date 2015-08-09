@@ -5,4 +5,4 @@ Ranks are used in military or paramiltary organizations.  The Ares ranks system 
 
 As part of character creation, you can set your rank.
 
-    %xcrank <rank>%xn - Sets your rank  (leave rank blank to clear it)
+    %xcrank/set <rank>%xn - Sets your rank  (leave rank blank to clear it)

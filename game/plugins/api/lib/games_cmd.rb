@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :filter, :page
       
       def want_command?(client, cmd)
-        cmd.root_is?("games")
+        cmd.root_is?("game") && !cmd.switch
       end
       
       def crack!

@@ -1,3 +1,7 @@
 shortcuts:
+    roots:
+        "jobs": "job"
+        "requests": "request"
+
     full:
         "job/comment": "job/discuss"

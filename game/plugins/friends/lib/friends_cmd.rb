@@ -6,7 +6,7 @@ module AresMUSH
       include PluginRequiresLogin
       
       def want_command?(client, cmd)
-        cmd.root_is?("friends") && cmd.switch.nil?
+        cmd.root_is?("friend") && cmd.switch.nil?
       end
       
       def handle
