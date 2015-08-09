@@ -22,12 +22,23 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_board(self.board_name, client) do |board|  
-          unread_posts = board.bbs_posts.select { |p| p.is_unread?(client.char) }
-          unread_posts.each do |p|
-            Bbs.mark_read_for_player(client.char, p)
+        if (self.board_name == "All")
+          BbsBoard.each do |b|
+            catchup_board(b)
           end
-          client.emit_success t('bbs.caught_up', :board => board.name)
+          client.emit_success t('bbs.caught_up_all')
+        else
+          Bbs.with_a_board(self.board_name, client) do |board|  
+            catchup_board(board)
+            client.emit_success t('bbs.caught_up', :board => board.name)
+          end
+        end
+      end
+      
+      def catchup_board(board)
+        unread_posts = board.bbs_posts.select { |p| p.is_unread?(client.char) }
+        unread_posts.each do |p|
+          Bbs.mark_read_for_player(client.char, p)
         end
       end
     end
