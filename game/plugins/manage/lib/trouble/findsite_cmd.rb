@@ -36,13 +36,24 @@ module AresMUSH
           ip = suspect.last_ip
           hostname = suspect.last_hostname[0..10]
         else
-          if (self.target[0].is_integer?)
-            ip = self.target
-            hostname = Resolv.getname self.target
-          else
-            hostname = self.target
-            ip = Resolv.getaddress self.target
-          end
+          
+            if (self.target[0].is_integer?)
+              ip = self.target
+              begin
+                hostname = Resolv.getname self.target
+              rescue
+                client.emit_failure t('manage.findsite_failed_lookup', :target => self.target)
+                hostname = ""
+              end
+            else
+              hostname = self.target
+              begin
+                ip = Resolv.getaddress self.target
+              rescue
+                client.emit_failure t('manage.findsite_failed_lookup', :target => self.target)
+                ip = ""
+              end
+            end
         end
 
         title = "#{title}%r#{t('manage.findsite_player_info', :ip => ip, :hostname => hostname)}"
