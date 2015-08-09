@@ -27,6 +27,7 @@ module AresMUSH
         if (@char.handle)
           Character.find_by_handle(@char.handle).each do |alt|
             next if alt == @char
+            next if !alt.has_unread_mail?
             mail_text << "%r#{t('notices.alt_unread_mail', :name => alt.name)}"
           end
         end
