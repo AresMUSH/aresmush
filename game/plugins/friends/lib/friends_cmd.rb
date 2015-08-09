@@ -35,8 +35,6 @@ module AresMUSH
           visible_alts = Handles.find_visible_alts(f, client.char)
           if (visible_alts.any?)
             text << "%R#{f.ljust(25)} #{visible_alts.map { |a| a.name }.join(" ")}"
-          else
-            text << "%R#{f.ljust(25)} --"
           end
         end
         text << "%R%R"

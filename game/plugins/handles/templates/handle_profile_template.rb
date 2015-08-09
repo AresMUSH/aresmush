@@ -7,12 +7,12 @@ module AresMUSH
       end
       
       def display
-          text = "-~- %xh%xg@#{@profile_char.name}%xn -~-".center(78)
-          text << custom_profile
-          text << "%r%l2%r"
-          text << character_list
+        text = "-~- %xh%xg@#{@profile_char.name}%xn -~-".center(78)
+        text << custom_profile
+        text << "%r%l2%r"
+        text << character_list
           
-          BorderedDisplay.text text
+        BorderedDisplay.text text
       end
       
       def custom_profile
@@ -23,6 +23,9 @@ module AresMUSH
       def character_list
         text = t('handles.profile_char_list_title')
         text << "%r%l2"
+        
+        games = {}
+        
         @profile_char.linked_characters.values.each do |c| 
           next if c['privacy'] == Handles.privacy_admin
           next if c['privacy'] == Handles.privacy_friends && !@asking_char
@@ -30,9 +33,17 @@ module AresMUSH
         
           game = ServerInfo.find_by_dest_id(c['game_id'])
           game_name = game.nil? ? "Unknown" : game.name
-          name = "#{c['name']}@#{game_name}"
-          last_online = "#{c['last_login']}"   
-          text << "%R#{name.ljust(40)} #{last_online}"
+
+          if (games.has_key?(game_name))
+            games[game_name] << c
+          else
+            games[game_name] = [c]
+          end
+        end
+
+        games.each do |game, chars|
+          text << "%R%xh#{game}%xn%R%T"
+          text << chars.map { |c| c["name"] }.sort.join(", ")
         end
         text << "%R%R"
         text << t('handles.alts_notice')

@@ -50,7 +50,7 @@ en:
         alts_notice: "(*) Alt visibility is based on the player's privacy settings.  Do not share this info with others."
         
         profile_title: "Public Profile:"
-        profile_char_list_title: "Alts(*)                              Last Seen"
+        profile_char_list_title: "Alts (*)"
         sending_profile_request: "Sending profile request to AresCentral.  One moment."
         no_public_profile: "%{name} does not have a public profile."
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."
@@ -60,6 +60,6 @@ en:
 
         # Alts
         no_alts: "None"
-        visible_alts: "Visible Alts"
+        visible_alts: "Alts (*)"
         alts_not_available_on_master: "This is AresCentral.  Handles don't have alts.  Use this command on another Ares game."
         
