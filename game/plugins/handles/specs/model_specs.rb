@@ -53,6 +53,7 @@ module AresMUSH
         end
       end
       
+      
       describe :ooc_name do
         before do
           @char = Character.new(name: "Bob")
@@ -71,21 +72,29 @@ module AresMUSH
         it "should display a char with a public handle" do
           @char.handle = "@Star"
           @char.handle_privacy = Handles.privacy_public
-          @char.ooc_name.should eq "@Star (Bob)"
+          
+          # TODO - Delete this if it's going to stay this way.
+          #@char.ooc_name.should eq "@Star (Bob)"
+          @char.ooc_name.should eq "Bob (@Star)"
+          
         end
         
         it "should display a char with a private handle and alias" do
           @char.handle = "@Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_admin
-          @char.ooc_name.should eq "Bob (B)"
+          # TODO - Delete this if it's going to stay this way.
+          #@char.ooc_name.should eq "Bob (B)"
+          @char.ooc_name.should eq "Bob"
         end
         
         it "should display a char with a public handle and alias" do
           @char.handle = "@Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_public
-          @char.ooc_name.should eq "@Star (Bob, B)"
+          # TODO - Delete this if it's going to stay this way.
+          #@char.ooc_name.should eq "@Star (Bob, B)"
+          @char.ooc_name.should eq "Bob (@Star)"
         end
         
         it "should display public handle matching name" do
@@ -93,7 +102,9 @@ module AresMUSH
           @char.name = "Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_public
-          @char.ooc_name.should eq "@Star (B)"
+          # TODO - Delete this if it's going to stay this way.
+          # @char.ooc_name.should eq "@Star (B)"
+          @char.ooc_name.should eq "Star (@Star)"
         end
       end
     end

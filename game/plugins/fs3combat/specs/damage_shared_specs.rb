@@ -37,7 +37,13 @@ module AresMUSH
         end
         
         it "should add a body roll to the healing points" do
-          FS3Skills.should_receive(:one_shot_roll).with(nil, @char, { :ability => "Body", :ruling_attr => "Body" } ) { { :successes => 2 }}
+          FS3Skills.should_receive(:one_shot_roll) do |client, char, roll_params|
+            client.should be_nil
+            char.should eq @char
+            roll_params.ability.should eq "Body"
+            roll_params.ruling_attr.should eq "Body"
+            { :successes => 2 }
+          end
           @damage1.should_receive(:heal).with(3, true)
           @damage2.should_receive(:heal).with(3, true)        
           FS3Combat.heal_wounds(@char, @wounds, 3)
