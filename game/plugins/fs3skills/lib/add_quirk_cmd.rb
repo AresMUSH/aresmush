@@ -1,7 +1,7 @@
 module AresMUSH
 
   module FS3Skills
-    class AddQuirkCmd
+    class AddHookCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("quirk") && cmd.switch_is?("add")
+        cmd.root_is?("hook") && cmd.switch_is?("add")
       end
 
       def crack!
@@ -29,9 +29,9 @@ module AresMUSH
       end
             
       def handle
-        client.char.fs3_quirks[self.name] = self.desc
+        client.char.fs3_hooks[self.name] = self.desc
         client.char.save
-        client.emit_success t('fs3skills.quirk_selected', :name => self.name, :desc => self.desc)
+        client.emit_success t('fs3skills.hook_selected', :name => self.name, :desc => self.desc)
       end
     end
   end

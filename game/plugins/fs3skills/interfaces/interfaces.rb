@@ -249,7 +249,7 @@ module AresMUSH
       text << "%r"
       text << FS3Skills.high_ability_review(char)
       text << "%r"
-      text << FS3Skills.quirk_review(char)
+      text << FS3Skills.hook_review(char)
       text << "%r%r"
       text << FS3Skills.min_attr_review(char)
       text << "%r"

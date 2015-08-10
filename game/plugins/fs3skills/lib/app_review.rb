@@ -32,18 +32,18 @@ module AresMUSH
       Chargen.display_review_status(t('fs3skills.bg_skills_added', :num => num_skills, :min => min), error)
     end
     
-    def self.quirk_review(char)
-      num_quirks = char.fs3_quirks.keys.count
-      min = Global.read_config("fs3skills", "min_quirks")
-      max = Global.read_config("fs3skills", "max_quirks")
-      if (num_quirks < min)
+    def self.hook_review(char)
+      num_hooks = char.fs3_hooks.keys.count
+      min = Global.read_config("fs3skills", "min_hooks")
+      max = Global.read_config("fs3skills", "max_hooks")
+      if (num_hooks < min)
         error = t('chargen.not_enough')
-      elsif (num_quirks > max)
+      elsif (num_hooks > max)
         error = t('chargen.too_many')
       else
         error = t('chargen.ok')
       end
-      Chargen.display_review_status(t('fs3skills.quirks_added', :num => num_quirks, :max => max, :min => min), error)
+      Chargen.display_review_status(t('fs3skills.hooks_added', :num => num_hooks, :max => max, :min => min), error)
     end
     
     def self.high_ability_review(char)

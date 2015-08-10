@@ -14,7 +14,7 @@ help:
                     file: 'abilities.txt'
                     summary: 'Skills System.'
                     order: 4
-                    aliases: [ 'reset', 'language', 'languages', 'raise', 'lower', 'ability', 'attributes', 'attribute', 'quirk', 'quirks' ]
+                    aliases: [ 'reset', 'language', 'languages', 'raise', 'lower', 'ability', 'attributes', 'attribute', 'hook', 'hooks' ]
                 skills:
                     toc_topic: 'FS3'
                     dir: 'game/plugins/fs3skills/help/'

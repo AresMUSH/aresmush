@@ -93,8 +93,8 @@ fs3skills:
     max_points_in_attributes: 12
     starting_points: 60
     high_ability_level: 7
-    max_quirks: 4
-    min_quirks: 2
+    max_hooks: 4
+    min_hooks: 2
     min_background_skills: 4
     
     starting_languages:

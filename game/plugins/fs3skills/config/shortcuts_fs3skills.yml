@@ -2,5 +2,5 @@ shortcuts:
     roots:
         "lang": "language"
     full:
-        "quirk/delete": "quirk/remove"
+        "hook/delete": "hook/remove"
             

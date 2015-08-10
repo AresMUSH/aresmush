@@ -4,7 +4,7 @@ The FS3 Abilities commands are used to set yourself up during character creation
 * Action Skills
 * Background Skills
 * Languages
-* Quirks
+* RP Hooks
 
 To get started, or at any point you wish to reset yourself, use the reset command.
 
@@ -21,4 +21,4 @@ To set your abilities:
     
     %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
     
-    %xcquirk/add <quirk>=<description>%xn and %xcquirk/remove <quirk>%xn
+    %xchook/add <hook>=<description>%xn and %xchook/remove <hook>%xn

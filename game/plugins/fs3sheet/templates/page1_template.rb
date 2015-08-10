@@ -25,7 +25,7 @@ module AresMUSH
         text << languages_display()
         text << "%r"
         
-        text << quirks_display()
+        text << hooks_display()
         text << "%r%r"
         
         text << footer_display()
@@ -77,9 +77,9 @@ module AresMUSH
         text
       end
       
-      def quirks_display
-        text = quirks_title()
-        @char.fs3_quirks.each do |k, v|
+      def hooks_display
+        text = hooks_title()
+        @char.fs3_hooks.each do |k, v|
            text << "%R%xh#{k}%xn - #{v}"
          end
         
@@ -127,8 +127,8 @@ module AresMUSH
         format_section_title t('sheet.languages_title')
       end
       
-      def quirks_title
-        format_section_title t('sheet.quirks_title')
+      def hooks_title
+        format_section_title t('sheet.hooks_title')
       end
       
       def xp_title
