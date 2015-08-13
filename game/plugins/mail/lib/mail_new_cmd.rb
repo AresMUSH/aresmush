@@ -18,6 +18,7 @@ module AresMUSH
           client.emit template.display
           unread.read = true
           unread.save
+          client.program[:last_mail] = unread
         end
       end
     end

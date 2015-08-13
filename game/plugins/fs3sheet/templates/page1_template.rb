@@ -144,7 +144,7 @@ module AresMUSH
         rating = FS3Skills.ability_rating(@char, a)
         dots = FS3Skills.print_attribute_rating(rating)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 18)} #{left(dots,18)}"
+        "#{linebreak}#{left(name, 21)} #{left(dots,16)}"
       end
       
       def format_skill(s, i)
@@ -153,7 +153,7 @@ module AresMUSH
         dots = FS3Skills.print_skill_rating(rating)
         ruling_attr = FS3Skills.get_ruling_attr(@char, s)[0]
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 18)} (#{ruling_attr}) #{left(dots,18)}"
+        "#{linebreak}#{left(name, 17)} (#{ruling_attr}) #{left(dots,16)}"
       end
       
       def format_section_title(title)
