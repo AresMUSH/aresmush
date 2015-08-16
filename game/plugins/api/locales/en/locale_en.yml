@@ -10,7 +10,7 @@ en:
         game_name: "%xhName:%xn      %{name}"
         game_category: "%xhCategory:%xn  %{category}"
         game_address: "%xhAddress:%xn   %{host} port %{port}"
-        game_status: "%xhStatus:%xn    %{status} - last contacted at %{last}"
+        game_status: "%xhStatus:%xn    %{status} (as of %{last})"
         game_up_status: "%xgUp%xn"
         game_down_status: "%xrMay Be Down%xn"
         game_not_open: "<-Not Open->"
