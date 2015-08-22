@@ -92,14 +92,14 @@ module AresMUSH
       def hooks_display
         text = format_section_title t('sheet.hooks_title')
         text << "%R"
-        text << @char.fs3_hooks
+        text << "#{@char.fs3_hooks}"
         text
       end
       
       def goals_display
         text = format_section_title t('sheet.goals_title')
         text << "%R"
-        text << @char.fs3_goals
+        text << "#{@char.fs3_goals}"
         text
       end
       
@@ -137,7 +137,7 @@ module AresMUSH
         rating = FS3Skills.ability_rating(@char, a)
         dots = FS3Skills.print_aptitude_rating(rating)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 16)}  #{left(dots,22)}"
+        "#{linebreak}#{left(name, 16)} #{left(dots,22)}"
       end
       
       def format_skill(s, i)
@@ -146,7 +146,7 @@ module AresMUSH
         dots = FS3Skills.print_skill_rating(rating)
         related_apt = print_related_apt(s)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 17)} #{related_apt} #{left(dots,16)}"
+        "#{linebreak}#{left(name, 16)} #{related_apt} #{left(dots,16)}"
       end
       
       def format_section_title(title)
@@ -160,15 +160,17 @@ module AresMUSH
       
       def display_list(title, list, show_related_apt = true)
         text = format_section_title(title)
-        text << "%R"
-        list.each do |l|
+        list.sort.each_with_index do |l, i|
+          linebreak = i % 2 == 1 ? "" : "%r"
           if (show_related_apt)
             related_apt = " #{print_related_apt(l)}"
           else
             related_apt = ""
           end
-          text << "#{l}#{related_apt}%r"
+          skill = "#{l}#{related_apt}"
+          text << "#{linebreak}#{left(skill, 39)}"
         end
+        text << "%R"
         text
       end
     end

@@ -199,7 +199,8 @@ module AresMUSH
           return 0
         when :aptitude
           ability_hash = get_ability_hash_for_type(char, ability_type)
-          ability_hash[ability] - 1 || 0
+          rating = ability_hash[ability] || 0
+          rating - 1
         else
           ability_hash = get_ability_hash_for_type(char, ability_type)
           ability_hash[ability] || 0

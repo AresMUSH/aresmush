@@ -19,10 +19,6 @@ module AresMUSH
       
       def handle
         # Put whatever you need to do here.
-        Character.each do |c|
-          c.fs3_hooks = ""
-          c.save
-        end
         client.emit_success "Done!"
       end
 
