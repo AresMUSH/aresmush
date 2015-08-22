@@ -7,3 +7,4 @@ Related help files:
     %xhhelp sheet%xn - View your character sheet.
     %xhhelp app%xn - View the progress of your character application.
     %xhhelp relatedapt%xn - Set up your ruling aptitudes.
+    %xhelp goals%xn - Set up your goals and RP hooks.

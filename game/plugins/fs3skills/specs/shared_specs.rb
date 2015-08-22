@@ -274,9 +274,9 @@ module AresMUSH
           FS3Skills.stub(:ability_rating).with(@char, "Reaction") { 3 }
           FS3Skills.stub(:ability_rating).with(@char, "Mind") { 1 }
           FS3Skills.stub(:ability_rating).with(@char, "Untrained") { 0 }
-          FS3Skills.stub(:ability_rating).with(@char, "Basketweaving") { 2 }
+          FS3Skills.stub(:ability_rating).with(@char, "Basketweaving") { 3 }
           FS3Skills.stub(:get_related_apt).with(@char, "Firearms") { "Reaction" }
-          FS3Skills.stub(:get_related_apt).with(@char, "Reaction") { "Reaction" }
+          FS3Skills.stub(:get_related_apt).with(@char, "Basketweaving") { "Reaction" }
         end
       
         it "should roll ability alone" do
@@ -309,11 +309,11 @@ module AresMUSH
           FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
         end
         
-        it "should count aptitude mod for aptitude" do
+        it "should not count aptitude mod for aptitude" do
           roll_params = RollParams.new("Reaction")
           FS3Skills.stub(:get_ability_type).with(@char, "Reaction") { :aptitude }
           # Rolls Reaction + Reaction --> 8 dice
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 9
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
         end
         
         it "should not count aptitude mod for untrained" do
@@ -323,11 +323,11 @@ module AresMUSH
           FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 0
         end
         
-        it "should not count aptitude mod for an interest" do
+        it "should count aptitude mod for an interest" do
           roll_params = RollParams.new("Basketweaving")
           FS3Skills.stub(:get_ability_type).with(@char, "Basketweaving") { :interest }
-          # Basketweaving stubbed to return apt 2 --> 4 dice
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 4
+          # Basketweaving stubbed to return rating 3 + Reaction
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 9
         end
       end
     end

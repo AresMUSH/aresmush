@@ -99,8 +99,8 @@ module AresMUSH
       skill_rating = FS3Skills.ability_rating(char, ability)
 
       case ability_type
-      when :interest, :untrained
-        # Don't double-count aptitude rating when defaulting or rolling an interest.
+      when :untrained, :aptitude
+        # Don't double-count aptitude rating when rolling unrained.
         related_apt = "None"
         apt_rating = 0
       else
