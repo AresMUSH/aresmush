@@ -2,9 +2,12 @@ The FS3 Abilities commands are used to set yourself up during character creation
 
 * Attributes
 * Action Skills
-* Background Skills
+* Advantages (if used on this game)
+* Expertise
+* Interests
 * Languages
 * RP Hooks
+* Goals
 
 To get started, or at any point you wish to reset yourself, use the reset command.
 
@@ -13,12 +16,18 @@ To get started, or at any point you wish to reset yourself, use the reset comman
 
 At any time you can check your current status and progress using the %xhsheet%xn and %xhapp%xn commands.
 
-To set your abilities:
-
     %xcabilities%xn - Views a list of abilities.
-    %xcraise <name>%xn and %xclower <name>%xn - Raise or lower an ability by 1 level.
-    %xcability <name>=<level>%xn - Sets an ability rating directly
+ 
+Action Skills and Advantages have ratings from 1-5.  To set them, use these commands:    
     
+    %xcraise <name>%xn and %xclower <name>%xn - Raise or lower by 1 level.
+    %xcability <name>=<level>%xn - Sets the rating
+    
+Aptitudes are special.  You get to pick 1 you're Great at, 1 you're Good at, and 1 you're Poor at:
+
+    %xcaptitude <great ability>/<good ability>/<poor ability>%xn
+    
+Expertise, Interests, Languages, RP Hooks and Goals do not have ratings.  You merely add or remove them from the list.
+
     %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
-    
-    %xchook/add <hook>=<description>%xn and %xchook/remove <hook>%xn
+    Likewise for %xcexpertise%xn %xcinterest%xn %xchook%xn and %xcgoal%xn

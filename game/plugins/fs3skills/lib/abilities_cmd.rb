@@ -17,17 +17,20 @@ module AresMUSH
       
       def handle
         if (self.page == 1)
-          list = FS3Skills.attributes.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
+          list = FS3Skills.aptitudes.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
           title = t('fs3skills.attributes_title')
         elsif (self.page == 2)
           list = FS3Skills.action_skills.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
           title = t('fs3skills.action_skills_title')
         elsif (self.page == 3)
-          list = FS3Skills.background_skills
-          title = t('fs3skills.background_skills_title')
+          list = [ t('fs3skills.interests_and_expertise')]
+          title = t('fs3skills.interests_and_expertise_title')
         elsif (self.page == 4)
           list = FS3Skills.languages
           title = t('fs3skills.languages_title')
+        elsif (self.page == 5)
+          list = FS3Skills.advantages.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
+          title = t('fs3skills.advantages_title')
         else
           client.emit_failure t('pages.not_that_many_pages')
           return

@@ -41,7 +41,7 @@ module AresMUSH
             client.should be_nil
             char.should eq @char
             roll_params.ability.should eq "Body"
-            roll_params.ruling_attr.should eq "Body"
+            roll_params.ruling_apt.should eq "Body"
             { :successes => 2 }
           end
           @damage1.should_receive(:heal).with(3, true)

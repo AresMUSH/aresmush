@@ -10,11 +10,14 @@ en:
         xp_title: "XP:"
         luck_title: "Luck Points:"
         
-        attributes_title: "Attributes"
+        aptitudes_title: "Aptitudes"
         action_skills_title: "Action Skills"
-        background_skills_title: "Background Skills"
+        advantages_title: "Advantages"
+        interests_title: "Interests"
+        expertise_title: "Expertise"
         languages_title: "Languages"
         hooks_title: "RP Hooks"
+        goals_title: "Goals"
         
         info_title: "Info"        
         

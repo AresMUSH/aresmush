@@ -6,28 +6,24 @@ fs3xp:
             # - another role
 
     # Configure the highest rating you're allowed to reach via XP.  
-    max_rating_through_xp: 12
+    max_rating_through_xp: 5
     
     # Define the XP costs to reach each skill rating
     skill_costs:
-        1: 1
-        2: 2
-        3: 2
-        4: 4
-        5: 4
-        6: 4
-        7: 8
-        8: 8
-        9: 8
-        10: 12
-        11: 12
-        12: 12
+        1: 2
+        2: 8
+        3: 12
+        4: 16
+        5: 20
     
     # Cost to get a language
-    lang_cost: 3
+    lang_cost: 5
+    
+    # Cost to get an interest
+    interest_cost: 5
     
     # How many XP someone can save up.
-    max_xp_hoard: 12
+    max_xp_hoard: 20
     
     # Controls how often someone can raise skills using XP.
     days_between_xp_raises: 7

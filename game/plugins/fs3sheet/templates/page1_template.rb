@@ -13,20 +13,27 @@ module AresMUSH
         text = header_display()
         text << "%l2%r"
 
-        text << attributes_display()
+        text << aptitudes_display()
         text << "%r"
         
         text << action_skills_display()
         text << "%r"
 
-        text << background_skills_display()
-        text << "%r"
+        if (FS3Skills.advantages_enabled?)
+          text << advantages_display()
+          text << "%r"
+        end
+        
+        text << expertise_display()
+
+        text << interests_display()
 
         text << languages_display()
-        text << "%r"
         
         text << hooks_display()
-        text << "%r%r"
+
+        text << goals_display()
+        text << "%r"
         
         text << footer_display()
         text << "%r"
@@ -41,10 +48,10 @@ module AresMUSH
         
         text
       end
-              
-      def attributes_display
-        text = attributes_title()
-        @char.fs3_attributes.keys.each_with_index do |a, i| 
+      
+      def aptitudes_display
+        text = format_section_title t('sheet.aptitudes_title')
+        @char.fs3_aptitudes.keys.each_with_index do |a, i| 
           text << format_attr(a, i)
         end
         
@@ -52,7 +59,7 @@ module AresMUSH
       end
         
       def action_skills_display
-        text = action_skills_title()
+        text = format_section_title t('sheet.action_skills_title')
         @char.fs3_action_skills.keys.each_with_index do |s, i| 
            text << format_skill(s, i)
          end
@@ -60,36 +67,43 @@ module AresMUSH
         text
       end
       
-      def background_skills_display
-        text = background_skills_title()
-        @char.fs3_background_skills.keys.each_with_index do |s, i| 
+      def advantages_display
+        text = format_section_title t('sheet.advantages_title')
+        @char.fs3_advantages.keys.each_with_index do |s, i| 
            text << format_skill(s, i)
          end
         
         text
       end
       
+      def expertise_display
+        display_list t('sheet.expertise_title'), @char.fs3_expertise
+      end
+      
+      def interests_display
+        display_list t('sheet.interests_title'), @char.fs3_interests
+      end
+      
       def languages_display
-        text = languages_title()
-        text << "%r"
-        text << @char.fs3_languages.join(", ")
-        
-        text
+        display_list t('sheet.languages_title'), @char.fs3_languages, false
       end
       
       def hooks_display
-        text = hooks_title()
-        @char.fs3_hooks.each do |k, v|
-           text << "%R%xh#{k}%xn - #{v}"
-         end
-        
-        text
+        display_list t('sheet.hooks_title'), @char.fs3_hooks, false
       end
       
+      def goals_display
+        display_list t('sheet.goals_title'), @char.fs3_goals, false
+      end
+      
+          
       def footer_display
+        xp_title = "%xh#{t('sheet.xp_title')}%xn"
+        luck_title = "%xh#{t('sheet.luck_title')}%xn"
+        
         "#{xp_title} #{xp} #{luck_title} #{luck}"
       end
-      
+    
       def name
         left(@char.name, 25)
       end
@@ -111,53 +125,44 @@ module AresMUSH
         @char.luck
       end
       
-      def attributes_title
-        format_section_title t('sheet.attributes_title')
-      end
-
-      def action_skills_title
-        format_section_title t('sheet.action_skills_title')
-      end
-      
-      def background_skills_title
-        format_section_title t('sheet.background_skills_title')
-      end
-      
-      def languages_title
-        format_section_title t('sheet.languages_title')
-      end
-      
-      def hooks_title
-        format_section_title t('sheet.hooks_title')
-      end
-      
-      def xp_title
-        "%xh#{t('sheet.xp_title')}%xn"
-      end
-      
-      def luck_title
-        "%xh#{t('sheet.luck_title')}%xn"
-      end
-      
       def format_attr(a, i)
         name = "%xh#{a}:%xn"
         rating = FS3Skills.ability_rating(@char, a)
-        dots = FS3Skills.print_attribute_rating(rating)
+        dots = FS3Skills.print_aptitude_rating(rating)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 21)} #{left(dots,16)}"
+        "#{linebreak}#{left(name, 16)}  #{left(dots,22)}"
       end
       
       def format_skill(s, i)
         name = "%xh#{s}:%xn"
         rating = FS3Skills.ability_rating(@char, s)
         dots = FS3Skills.print_skill_rating(rating)
-        ruling_attr = FS3Skills.get_ruling_attr(@char, s)[0]
+        ruling_apt = print_ruling_apt(s)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 17)} (#{ruling_attr}) #{left(dots,16)}"
+        "#{linebreak}#{left(name, 17)} #{ruling_apt} #{left(dots,16)}"
       end
       
       def format_section_title(title)
         center(" %xh#{title}%xn ", 78, '-')
+      end
+      
+      def print_ruling_apt(skill)
+        apt = FS3Skills.get_ruling_apt(@char, skill)
+        apt.nil? ? "" : "(#{apt[0..2]})"
+      end
+      
+      def display_list(title, list, show_ruling_apt = true)
+        text = format_section_title(title)
+        text << "%R"
+        list.each do |l|
+          if (show_ruling_apt)
+            ruling_apt = " #{print_ruling_apt(l)}"
+          else
+            ruling_apt = ""
+          end
+          text << "#{l}#{ruling_apt}%r"
+        end
+        text
       end
     end
   end

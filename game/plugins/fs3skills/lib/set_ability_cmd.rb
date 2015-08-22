@@ -33,6 +33,13 @@ module AresMUSH
         end
       end
       
+      def check_ability_type
+        ability_type = FS3Skills.get_ability_type(client.char, self.ability_name)
+        valid_types = [:action, :advantage]
+        return t('fs3skills.wrong_type_for_ability_command') if !valid_types.include?(ability_type)
+        return nil
+      end
+      
       def check_valid_rating
         return nil if self.rating.nil?
         return t('fs3skills.invalid_rating') if !self.rating.is_integer?

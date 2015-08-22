@@ -11,77 +11,6 @@ plugin_files.sort.each do |f|
 end
 
 module AresMUSH
-  module PluginSystemTest
-    include GameTestHelper
-    include GlobalTestHelper
-    
-    attr_accessor :client, :char, :handler
-
-    def init_handler(handler_class)
-      @handler = handler_class.new
-      SpecHelpers.stub_translate_for_testing  
-      stub_global_objects
-      stub_game_master      
-      setup_client_with_mock_char
-    end
-    
-    def setup_client_with_mock_char
-      @client = double
-      @char = double
-      @char.stub(:name) { "TestDummy" }
-      @client.stub(:char) { @char }
-      @client.stub(:name) { "TestDummy" }
-    end
-    
-    def setup_client_with_real_char
-      @client = double
-      @char = Character.create(name: "TestDummy")
-      @client.stub(:char) { @char }
-      @client.stub(:name) { "TestDummy" }
-    end
-    
-    shared_context "setup test db", :pluginsystemtest do
-      before do
-        stub_client_reload
-        SpecHelpers.connect_to_test_db
-        game.stub(:welcome_room) { nil }
-        game.stub(:ooc_room) { nil }
-      end
-      
-      after do
-        SpecHelpers.erase_test_db
-      end
-    end
-    
-    shared_examples "a plugin that fails if not logged in" do
-      it "should fail if not logged in" do
-        client.stub(:logged_in?) { false }
-        client.should_receive(:emit_failure).with('dispatcher.must_be_logged_in')
-        handler.on_command client, Command.new("")
-      end
-    end
-    
-    shared_examples "a plugin that only accepts certain roots and switches" do
-      # let(:wanted_cmds) { [ "root1", "root2", "root1/switch1", "root1/switch2" ] }
-      
-      describe :want_command do
-        it "should  accept valid roots and switches" do
-          wanted_cmds.each do |wanted|
-            handler.want_command?(client, Command.new(wanted)).should be_true
-          end
-        end
-      
-        it "should reject a different root" do
-          handler.want_command?(client, Command.new("somethingelse here")).should be_false
-        end
-      
-        it "should reject a different switch" do
-          not_wanted = wanted_cmds[0] =~ /\// ? "#{wanted_cmds[0]}unrecognized" : "#{wanted_cmds[0]/unrecognized}"
-          handler.want_command?(client, Command.new("somethingelse here")).should be_false
-        end
-      end
-    end
-  end
   
   module PluginCmdTestHelper
     include MockClient
@@ -89,9 +18,9 @@ module AresMUSH
     attr_accessor :client, :char, :cmd, :handler
     
     def init_handler(handler_class, cmd_text)
-      mock_client = build_mock_client
-      @client = mock_client[:client]
-      @char = mock_client[:char]
+      @mock_client = build_mock_client
+      @client = @mock_client[:client]
+      @char = @mock_client[:char]
       
       @cmd = Command.new(cmd_text)
       
@@ -99,6 +28,13 @@ module AresMUSH
       @handler.client = @client
       @handler.cmd = @cmd
     end  
+    
+    def reset_char(char)
+      @char = char
+      @mock_client[:char] = char
+      @client.stub(:char) { char }
+      @handler.client = @client
+    end
         
     shared_examples "a plugin that expects a single root" do
       # let(:expected_root) { "cmd name" }

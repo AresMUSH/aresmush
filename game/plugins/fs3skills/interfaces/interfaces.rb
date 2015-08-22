@@ -1,13 +1,23 @@
 module AresMUSH
   module FS3Skills
     class RollParams
-      attr_accessor :ability, :modifier, :ruling_attr
       
-      def initialize(ability, modifier = 0, ruling_attr = nil)
+      attr_accessor :ability, :modifier, :ruling_apt
+      
+      def initialize(ability, modifier = 0, ruling_apt = nil)
         self.ability = ability
         self.modifier = modifier
-        self.ruling_attr = ruling_attr
+        self.ruling_apt = ruling_apt
       end
+    
+      def to_s
+        "#{self.ability} mod=#{self.modifier} ruling_apt=#{self.ruling_apt}"
+      end
+    end
+    
+    
+    def self.advantages_enabled?
+      Global.read_config("fs3skills", "enable_advantages")
     end
     
     # Expects titleized ability name
@@ -15,20 +25,14 @@ module AresMUSH
     # Good for when you're doing a regular roll because you can show the raw dice and
     # use the other methods in this class to get the success level and title to display.
     def self.roll_ability(client, char, roll_params)
-      ability = roll_params.ability
-      ruling_attr = roll_params.ruling_attr || FS3Skills.get_ruling_attr(char, ability)
-      modifier = roll_params.modifier || 0
+      dice = dice_to_roll_for_ability(char, roll_params)
       
-      skill = FS3Skills.ability_rating(char, ability)
-      
-      if (skill == 0 && client)
-        client.emit_ooc t('fs3skills.confirm_zero_skill', :name => char.name, :ability => ability)
+      if (dice == 0 && client)
+        client.emit_ooc t('fs3skills.confirm_zero_skill', :name => char.name, :ability => roll_params.ability)
       end
-
-      attr_rating = FS3Skills.ability_rating(char, ruling_attr)
-      dice = skill + attr_rating + modifier
+      
       roll = roll_dice(dice)
-      Global.logger.info "#{char.name} rolling #{ability} (#{skill}) mod #{modifier} attr #{ruling_attr} (#{attr_rating}) dice=#{dice} result=#{roll}"
+      Global.logger.info "#{char.name} rolling #{roll_params} dice=#{dice} result=#{roll}"
       roll
     end
     
@@ -63,39 +67,52 @@ module AresMUSH
     # Expects titleized ability name and numeric rating
     # Don't forget to save afterward!
     def self.set_ability(client, char, ability, rating)
-      ability_type = get_ability_type(ability)
-      ability_hash = get_ability_hash(char, ability_type)
-      
       error = FS3Skills.check_ability_name(ability)
       if (!error.nil?)
-        client.emit_failure error
+        if (client)
+          client.emit_failure error
+        end
         return false
       end
       
+      ability_type = get_ability_type(char, ability)
+      ability_hash = get_ability_hash_for_type(char, ability_type)
+      
       error = FS3Skills.check_rating(ability_type, rating)
       if (!error.nil?)
-        client.emit_failure error
+        if (client)
+          client.emit_failure error
+        end
         return false
       end
       
       update_hash(ability_hash, ability, rating)
-      if (client.char == char)
-        client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
-      else
-        client.emit_success t("fs3skills.admin_ability_set", :name => char.name, :ability_type => ability_type, :ability_name => ability, :rating => rating)
+      if (client)
+        if (client.char == char)
+          client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
+        else
+          client.emit_success t("fs3skills.admin_ability_set", :name => char.name, :ability_type => ability_type, :ability_name => ability, :rating => rating)
+        end
       end
       return true
     end
     
     # Don't forget to save afterward!
-    def self.add_language(client, char, language)
-      if (char.fs3_languages.include?(language))
-        client.emit_failure t('fs3skills.language_already_selected')
+    def self.add_unrated_ability(client, char, ability, ability_type)
+      list = FS3Skills.get_ability_list_for_type(char, ability_type)
+      if (ability_type == :interest || ability_type == :expertise)
+        other_list = FS3Skills.get_ability_list_for_type(char, ability_type == :interest ? :expertise : :interest)
+      else
+        other_list = []
+      end
+      
+      if (list.include?(ability) || other_list.include?(ability))
+        client.emit_failure t('fs3skills.item_already_selected', :name => ability)
         return false
       end
       
-      char.fs3_languages << language
-      client.emit_success t('fs3skills.language_selected', :name => language)
+      list << ability
+      client.emit_success t('fs3skills.item_selected', :name => ability)
       return true
     end
     
@@ -104,18 +121,18 @@ module AresMUSH
       if (dice > 18)
         Global.logger.warn "Attempt to roll #{dice} dice."
         # Hey if they're rolling this many dice they ought to succeed spectacularly.
-        return [7, 7, 7, 7, 7, 7]
+        return [9, 9, 9, 9, 9, 9]
       end
       
       dice = [dice, 1].max.ceil
-      dice.times.collect { 1 + rand(8) }
+      dice.times.collect { 1 + rand(10) }
     end
     
     # Determines the success level based on the raw die result.
     # Either:  0 for failure, -1 for a botch (embarrassing failure), or
     #    the number of successes.
     def self.get_success_level(die_result)
-      successes = die_result.count { |d| d > 6 }
+      successes = die_result.count { |d| d > 7 }
       botches = die_result.count { |d| d == 1 }
       return successes if (successes > 0)
       return -1 if (botches > 2)
@@ -168,94 +185,92 @@ module AresMUSH
       end
     end
     
-    # Expects titleized ability name
+    # Expects titleized ability name and return ability rating.
     def self.ability_rating(char, ability)
-      hash = FS3Skills.get_ability(char, ability)
-      hash.nil? ? 0 : hash["rating"]
-    end
-    
-    def self.get_ruling_attr(char, ability)
-      ability_type = FS3Skills.get_ability_type(ability)
-      default = Global.read_config("fs3skills", "default_ruling_attr")
-      if (ability_type == :action)
-        return FS3Skills.action_skills.find { |s| s["name"] == ability }["ruling_attr"]
-      elsif (ability_type == :attribute)
-        return ability
+      ability_type = FS3Skills.get_ability_type(char, ability)
+      case ability_type
+        when :expertise
+          return 3
+        when :interest
+          ruling_apt = FS3Skills.get_ruling_apt(char, ability)
+          rating = FS3Skills.ability_rating(char, ruling_apt)
+          return rating
+        when :untrained
+          return 0
+        when :aptitude
+          ability_hash = get_ability_hash_for_type(char, ability_type)
+          ability_hash[ability] - 1 || 0
+        else
+          ability_hash = get_ability_hash_for_type(char, ability_type)
+          ability_hash[ability] || 0
       end
-      
-      hash = FS3Skills.get_ability(char, ability)
-      return default if hash.nil?
-      return default if hash['ruling_attr'].nil?
-      return hash["ruling_attr"]
     end
     
-    def self.print_skill_rating(rating)
-      num_dots = [rating, 3].min
-      dots = print_dots(num_dots, "%xg")
+    def self.get_ruling_apt(char, ability)
+      ability_type = FS3Skills.get_ability_type(char, ability)
+      default = Global.read_config("fs3skills", "default_ruling_apt")
+      
+      case ability_type
+        when :action
+          return FS3Skills.action_skills.find { |s| s["name"].upcase == ability.upcase }["ruling_apt"]
+        when :advantage
+          return FS3Skills.advantages.find { |s| s["name"].upcase == ability.upcase }["ruling_apt"]
+        when :aptitude
+          return ability
+        else
+          return char.fs3_ruling_apts[ability] || default
+      end
+    end
 
-      if (rating > 3)
-        num_dots = [rating - 3, 3].min
-        dots = dots + print_dots(num_dots, "%xy")
-      end
-      
-      if (rating > 6)
-        num_dots = [rating - 6, 3].min
-        dots = dots + print_dots(num_dots, "%xr")
-      end
-      
-      if (rating > 9)
-        num_dots = [rating - 9, 3].min
-        dots = dots + print_dots(num_dots, "%xb")
-      end
-      dots
-    end
-    
-    def self.print_attribute_rating(rating)
+    def self.print_skill_rating(rating)
       case rating
       when 0
-        ""
+        return ""
       when 1
-        "%xg@%xn"
+        return "%xg@%xn"
       when 2
-        "%xg@%xy@%xn"
+        return "%xg@%xy@%xn"
       when 3
-        "%xg@%xy@%xr@%xn"
+        return "%xg@%xy@%xr@%xn"
       when 4
-        "%xg@%xy@%xr@%xb@%xn"
+        return "%xg@%xy@%xr@%xb@%xn"
+      when 5
+        return "%xg@%xy@%xr@%xb@%xc@%xn"
       end
     end
     
-    def self.print_dots(number, color)
-      dots = number.times.collect { "@" }.join
-      "#{color}#{dots}%xn"
+    def self.print_aptitude_rating(rating)
+      case rating
+      when 0
+        "%xr#{t('fs3skills.aptitude_poor')}%xn"
+      when 1
+        "%xy#{t('fs3skills.aptitude_average')}%xn"
+      when 2
+        "%xg#{t('fs3skills.aptitude_good')}%xn"
+      when 3
+        "%xb#{t('fs3skills.aptitude_great')}%xn"
+      end
     end
+    
     
     def self.app_review(char)
       list = []
-      
-      attrs = FS3Skills.points_on_abilities(char, :attribute)
-      action = FS3Skills.points_on_abilities(char, :action)
-      bg = FS3Skills.points_on_abilities(char, :background)
-      
-      num_languages = char.fs3_languages.count
-      
-      text = FS3Skills.total_point_review(attrs + action + bg + (num_languages * 2))
-      text << "%r"
-      text << FS3Skills.attr_review(attrs)
-      text << "%r"
-      text << FS3Skills.action_skill_review(action)
-      text << "%r%r"
-      text << FS3Skills.bg_skill_review(char)
+            
+      text = FS3Skills.total_point_review(char)
       text << "%r"
       text << FS3Skills.high_ability_review(char)
       text << "%r"
-      text << FS3Skills.hook_review(char)
+      text << FS3Skills.interests_review(char)
       text << "%r%r"
-      text << FS3Skills.min_attr_review(char)
+      text << FS3Skills.aptitudes_set_review(char)
       text << "%r"
       text << FS3Skills.starting_language_review(char)
       text << "%r"
       text << FS3Skills.starting_skills_check(char)
+      text << "%r"
+      text << FS3Skills.hook_review(char)
+      text << "%r"
+      text << FS3Skills.goals_review(char)
       text
     end
   end

@@ -23,6 +23,13 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
+      def check_ability_type
+        ability_type = FS3Skills.get_ability_type(client.char, self.name)
+        valid_types = [:action, :advantage]
+        return t('fs3skills.wrong_type_for_ability_command') if !valid_types.include?(ability_type)
+        return nil
+      end
+      
       def check_chargen_locked
         Chargen.check_chargen_locked(client.char)
       end
