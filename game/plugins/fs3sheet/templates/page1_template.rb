@@ -52,7 +52,7 @@ module AresMUSH
       
       def aptitudes_display
         text = format_section_title t('sheet.aptitudes_title')
-        @char.fs3_aptitudes.keys.each_with_index do |a, i| 
+        @char.fs3_aptitudes.keys.sort.each_with_index do |a, i| 
           text << format_attr(a, i)
         end
         
@@ -61,7 +61,7 @@ module AresMUSH
         
       def action_skills_display
         text = format_section_title t('sheet.action_skills_title')
-        @char.fs3_action_skills.keys.each_with_index do |s, i| 
+        @char.fs3_action_skills.keys.sort.each_with_index do |s, i| 
            text << format_skill(s, i)
          end
         
@@ -70,7 +70,7 @@ module AresMUSH
       
       def advantages_display
         text = format_section_title t('sheet.advantages_title')
-        @char.fs3_advantages.keys.each_with_index do |s, i| 
+        @char.fs3_advantages.keys.sort.each_with_index do |s, i| 
            text << format_skill(s, i)
          end
         
