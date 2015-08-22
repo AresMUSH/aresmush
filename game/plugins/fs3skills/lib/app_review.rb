@@ -62,7 +62,7 @@ module AresMUSH
                      points_on_languages(char) + points_on_expertise(char)
       return total_points
     end
-    
+      
     def self.total_point_review(char)
       points =  points_total(char)
       
