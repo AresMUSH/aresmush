@@ -4,7 +4,7 @@ shortcuts:
         "goals": "goal"
         "interests": "interest"
         "hooks": "hook"
-        "rulingattr": "rulingapt"
+        "rulingattr": "relatedapt"
         "advantage": "ability"
         "action": "ability"
         "expert": "expertise"

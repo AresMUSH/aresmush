@@ -268,7 +268,7 @@ module AresMUSH
             FS3Skills.should_receive(:one_shot_roll).with(nil, @char, anything) do |client, char, params|
               params.ability.should eq "Firearms"
               params.modifier.should eq 3
-              params.ruling_apt.should be_nil
+              params.related_apt.should be_nil
               result = { :successes => 2, :success_title => "Foo" }
               result
             end

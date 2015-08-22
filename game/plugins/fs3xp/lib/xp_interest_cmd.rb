@@ -1,7 +1,7 @@
 module AresMUSH
 
   module FS3XP
-    class XpLangCmd
+    class XpInterestCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("xp") && cmd.switch_is?("lang")
+        cmd.root_is?("xp") && cmd.switch_is?("interest")
       end
 
       def crack!
@@ -28,15 +28,15 @@ module AresMUSH
       end
       
       def handle
-        cost = Global.read_config("fs3xp", "lang_cost")
+        cost = Global.read_config("fs3xp", "interest_cost")
         
         if (client.char.xp < cost)
           client.emit_failure t('fs3xp.not_enough_xp', :cost => cost)
           return
         end
         
-        if (FS3Skills.add_unrated_ability(client, client.char, self.name, :language))
-          Global.logger.info "XP Spend: #{client.name} got language #{self.name}."
+        if (FS3Skills.add_unrated_ability(client, client.char, self.name, :interest))
+          Global.logger.info "XP Spend: #{client.name} got interest #{self.name}."
           client.char.xp = client.char.xp - cost
           client.char.last_xp_spend = Time.now
           client.char.save

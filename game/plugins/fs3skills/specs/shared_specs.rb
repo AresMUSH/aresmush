@@ -5,8 +5,8 @@ module AresMUSH
       
       before do
         Global.stub(:read_config).with("fs3skills", "aptitudes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
-        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "ruling_apt" => "Reaction" }, { "name" => "First Aid" } ] }
-        Global.stub(:read_config).with("fs3skills", "default_ruling_apt") { "Mind" }
+        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "related_apt" => "Reaction" }, { "name" => "First Aid" } ] }
+        Global.stub(:read_config).with("fs3skills", "default_related_apt") { "Mind" }
         Global.stub(:read_config).with("fs3skills", "advantages") { [{ "name" => "Wealth" }] }
 
         SpecHelpers.stub_translate_for_testing   
@@ -197,7 +197,7 @@ module AresMUSH
       
       
       describe :can_parse_roll_params do
-        it "should handle attribute by itself" do
+        it "should handle aptitude by itself" do
           params = FS3Skills.parse_roll_params("A")
           check_params(params, "A", 0, nil)
         end
@@ -258,10 +258,10 @@ module AresMUSH
         end
       end
       
-      def check_params(params, ability, modifier, ruling_apt)
+      def check_params(params, ability, modifier, related_apt)
         params.ability.should eq ability
         params.modifier.should eq modifier
-        params.ruling_apt.should eq ruling_apt
+        params.related_apt.should eq related_apt
       end
       
       describe :dice_to_roll_for_ability do
@@ -275,8 +275,8 @@ module AresMUSH
           FS3Skills.stub(:ability_rating).with(@char, "Mind") { 1 }
           FS3Skills.stub(:ability_rating).with(@char, "Untrained") { 0 }
           FS3Skills.stub(:ability_rating).with(@char, "Basketweaving") { 2 }
-          FS3Skills.stub(:get_ruling_apt).with(@char, "Firearms") { "Reaction" }
-          FS3Skills.stub(:get_ruling_apt).with(@char, "Reaction") { "Reaction" }
+          FS3Skills.stub(:get_related_apt).with(@char, "Firearms") { "Reaction" }
+          FS3Skills.stub(:get_related_apt).with(@char, "Reaction") { "Reaction" }
         end
       
         it "should roll ability alone" do

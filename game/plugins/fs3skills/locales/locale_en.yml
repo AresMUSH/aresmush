@@ -27,6 +27,8 @@ en:
         cant_overlap_with_name:  "That name overlaps with an existing aptitude, action skill or advantage name."
         no_special_characters: "Ability names may not contain special characters."
         advantages_not_enabled: "Advantages are not being used on this game."
+        goals_set: "You set your goals."
+        hooks_set: "You set your RP hooks."
 
         item_already_selected: "You already have %{name}."
         item_selected: "%{name} added."
@@ -34,15 +36,15 @@ en:
         item_removed: "'%{name}' removed."
         
         invalid_aptitude: "%{name} is not a valid aptitude."
-        ruling_apt_set: "You set the ruling aptitude for %{ability} to %{ruling_apt}."
-        cant_change_fixed_ruling_apts: "You can't set the ruling aptitude for that kind of ability."
-        invalid_ability_for_ruling_apt: "You can't set the ruling aptitude for an ability you don't have."
+        related_apt_set: "You set the ruling aptitude for %{ability} to %{related_apt}."
+        cant_change_fixed_related_apts: "You can't set the ruling aptitude for that kind of ability."
+        invalid_ability_for_related_apt: "You can't set the ruling aptitude for an ability you don't have."
         
         reset_complete: "Reset complete.  Note that nothing comes for free, so even default items cost character points."
         reset_for_group: "Setting default skills for %{group}."
         reset_languages: "Setting default languages."
         reset_group_notes: "Notes for %{group}: %{notes}"
-        reset_aptitudes: "Setting attributes to default values."
+        reset_aptitudes: "Setting aptitudes to default values."
         
         embarrassing_failure: "%xREmbarassing Failure%xn"
         failure: "%xrFailure%xn"
@@ -65,8 +67,8 @@ en:
 
         total_points_spent: "%{total} total points spent. (%{max} max)"
         interests_added: "%{num} interests added. (%{min} min)"
-        hooks_added: "%{num} hooks added. (%{min} min)"
-        goals_added: "%{num} goals added. (%{min} min)"
+        hooks_added: "Checking you set some RP hooks."
+        goals_added: "Checking you set your goals."
         high_abilities: "%{num} action skills at rating %{high_rating} or higher.  (%{max} max)"
         aptitudes_check: "Checking you set your aptitudes."
         language_check: "Checking for starting languages."

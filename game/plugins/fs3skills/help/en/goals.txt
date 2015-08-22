@@ -1,0 +1,10 @@
+To help you flesh out your character, FS3 requres you to set Goals and RP Hooks.
+
+You should list at least one Goal, preferably something that will drive your character in RP.  Are they looking for a job?  Wanting to open their own business?  Hoping to avenge their father's murder?   It doesn't need to be a novel - a sentence or so is fine.
+
+You should also list at least one RP Hook - something interesting about your character that others can "hook" into for RP. This could be an odd personality quirk, a reputation your character has, or anything else that might inspire someone to connect with you.  Looking around at other character's sheets can be a good way to get inspiration for RP Hooks.  Again - this doesn't need to be elaborate.
+
+RP Hooks and Goals are freeform text. You can use ansi codes and \%r linebreaks.
+
+    %xcgoals <goals>%xn
+    %xchooks <hooks>%xn

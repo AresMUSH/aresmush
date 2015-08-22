@@ -34,50 +34,44 @@ fs3skills:
         -
             name: Alertness
             desc: "Noticing things and being aware of your surroundings."
-            ruling_apt: Reactive
+            related_apt: Reactive
         -
             name: Demolitions
             desc: "Blowing stuff up."
-            ruling_apt: Technical
+            related_apt: Technical
         -
             name: Comms
             desc: "Ship sensors, countermeasures and communications (ECO and CIC type duties)."
-            ruling_apt: Technical
+            related_apt: Technical
         -   
             name: Firearms
             desc: "Shooting guns."
-            ruling_apt: Reactive
+            related_apt: Reactive
         -
             name: First Aid
             desc: "Patching people up outside of a hospital.  Docs should have a medical bg skill."
-            ruling_apt: Technical
+            related_apt: Technical
         -
             name: Gunnery
             desc: "Ship and vehicle weapons."
-            ruling_apt: Reactive
+            related_apt: Reactive
         - 
             name: Melee
             desc: "Fighting with fists, knives, and hand-to-hand weapons."
-            ruling_apt: Athletic
+            related_apt: Athletic
         -
             name: Piloting
             desc: "Flying Vipers, Raptors and other airborne vehicles."
-            ruling_apt: Reactive
+            related_apt: Reactive
         - 
             name: Stealth
             desc: "Being sneaky."
-            ruling_apt: Athletic
+            related_apt: Athletic
         -
             name: Technician
             desc: "General mechanics/electronics and fixing things."
-            ruling_apt: Technical
+            related_apt: Technical
 
-    advantages:
-        -
-            name: "Wealth"
-            desc: "Special assets."
-            ruling_apt: Confident
-    
     languages:
         - "Standard - Spoken across the colonies."
         - "Gemenese - Official language of Gemenon."
@@ -87,19 +81,23 @@ fs3skills:
         - "Tauran - Official language of Tauron."
         - "Sagittaran - Tribal language of Sagittaron.  There are actually dozens of dialects."
         - "Celtan - Language of the ethnic Celtan people on Virgon's moon, Hibernia."
-    
+
     # Set to 'true' if you're using advantages, 'false' if you're not.
-    enable_advantages: true
+    enable_advantages: false
+
+    advantages:
+        -
+            name: "Wealth"
+            desc: "Special assets."
+            related_apt: Confident
     
     free_languages: 2
     free_interests: 4
     
-    default_ruling_apt: Intellectual
+    default_related_apt: Intellectual
     max_high_abilities: 3
     starting_points: 20
     high_ability_level: 4
-    min_hooks: 1
-    min_goals: 1
     min_interests: 1
     
     starting_languages:

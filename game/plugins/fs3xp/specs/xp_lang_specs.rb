@@ -31,7 +31,7 @@ module AresMUSH
       context "success" do
           before do
             @char.xp = 4
-            FS3Skills.stub(:add_language).with(@client, @char, "Spanish") do
+            FS3Skills.stub(:add_unrated_ability).with(@client, @char, "Spanish", :language) do
               @char.fs3_languages = ["Spanish"]
               true
             end
@@ -55,7 +55,7 @@ module AresMUSH
           end
           
           it "should not save if the skill set fails" do
-            FS3Skills.stub(:add_language).with(@client, @char, "Spanish") do
+            FS3Skills.stub(:add_unrated_ability).with(@client, @char, "Spanish", :language) do
               false
             end
             @char.should_not_receive(:save)

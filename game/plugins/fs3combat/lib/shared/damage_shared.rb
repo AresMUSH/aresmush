@@ -60,7 +60,7 @@ module AresMUSH
      def self.heal_wounds(char, wounds, treat_roll = 0)
        return if wounds.empty?
        
-       ability = Global.read_config("fs3combat", "toughness_attribute")
+       ability = Global.read_config("fs3combat", "toughness_aptitude")
        roll_params = FS3Skills::RollParams.new(ability, 0, ability)
        tough_roll = FS3Skills.one_shot_roll(nil, char, roll_params)
 

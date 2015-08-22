@@ -10,13 +10,12 @@ module AresMUSH
 
       def initialize
         self.required_args = ['name']
-        self.help_topic = 'skills'
+        self.help_topic = 'abilities'
         super
       end
       
       def want_command?(client, cmd)
         (cmd.root_is?("language") ||
-         cmd.root_is?("hook") ||
          cmd.root_is?("interest") ||
          cmd.root_is?("expertise")) &&
          (cmd.switch_is?("add") || 

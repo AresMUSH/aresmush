@@ -1,6 +1,6 @@
 The FS3 Abilities commands are used to set yourself up during character creation.  You will set:
 
-* Attributes
+* Aptitudes
 * Action Skills
 * Advantages (if used on this game)
 * Expertise
@@ -27,7 +27,7 @@ Aptitudes are special.  You get to pick 1 you're Great at, 1 you're Good at, and
 
     %xcaptitude <great ability>/<good ability>/<poor ability>%xn
     
-Expertise, Interests, Languages, RP Hooks and Goals do not have ratings.  You merely add or remove them from the list.
+Expertise, Interests and Languages do not have ratings.  You merely add or remove them from the list.
 
     %xclanguage/add <language>%xn and %xclanguage/remove <language>%xn
-    Likewise for %xcexpertise%xn %xcinterest%xn %xchook%xn and %xcgoal%xn
+    Likewise for %xcexpertise%xn %xcinterest%xn

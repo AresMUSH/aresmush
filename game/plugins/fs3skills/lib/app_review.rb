@@ -9,11 +9,11 @@ module AresMUSH
     end
     
     def self.hook_review(char)
-      FS3Skills.min_item_review(char.fs3_hooks, "min_hooks", "fs3skills.hooks_added")
+      Chargen.display_review_status t('fs3skills.hooks_added'), char.fs3_hooks.blank? ? t('chargen.not_set') : t('chargen.ok')
     end
     
     def self.goals_review(char)
-      FS3Skills.min_item_review(char.fs3_goals, "min_goals", "fs3skills.goals_added")
+       Chargen.display_review_status t('fs3skills.goals_added'), char.fs3_goals.blank? ? t('chargen.not_set') : t('chargen.ok')
     end
     
     def self.interests_review(char)

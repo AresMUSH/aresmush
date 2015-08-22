@@ -9,8 +9,8 @@ module AresMUSH
         Kernel.srand 22
 
         Global.stub(:read_config).with("fs3skills", "aptitudes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
-        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "ruling_apt" => "Reaction" } ] }
-        Global.stub(:read_config).with("fs3skills", "default_ruling_apt") { "Mind" }
+        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "related_apt" => "Reaction" } ] }
+        Global.stub(:read_config).with("fs3skills", "default_related_apt") { "Mind" }
         Global.stub(:read_config).with("fs3skills", "advantages") { [{ "name" => "Wealth" }] }
         
         SpecHelpers.stub_translate_for_testing        
@@ -107,7 +107,7 @@ module AresMUSH
         end
         
         it "should return the ruling apt rating - 1 for an interest" do
-          @char.stub(:fs3_ruling_apts) { {} }
+          @char.stub(:fs3_related_apts) { {} }
           @char.stub(:fs3_aptitudes) { { "Mind" => 2 } }
           @char.stub(:fs3_interests) { [ "Basketweaving" ] }
           FS3Skills.ability_rating(@char, "Basketweaving").should eq 1
@@ -124,17 +124,17 @@ module AresMUSH
         end
       end
     
-      describe :get_ruling_apt do
+      describe :get_related_apt do
         before do 
-          @char.stub(:fs3_ruling_apts) { {} }
+          @char.stub(:fs3_related_apts) { {} }
         end
         
         it "should return the configured attr for an action skill" do         
-          FS3Skills.get_ruling_apt(@char, "Firearms").should eq "Reaction"
+          FS3Skills.get_related_apt(@char, "Firearms").should eq "Reaction"
         end
       
         it "should return the aptitude itself for an aptitude" do
-          FS3Skills.get_ruling_apt(@char, "Body").should eq "Body"
+          FS3Skills.get_related_apt(@char, "Body").should eq "Body"
         end
         
         context "interests" do
@@ -143,12 +143,12 @@ module AresMUSH
           end
           
           it "should return the default if the skill has no ruling attr" do
-            FS3Skills.get_ruling_apt(@char, "Basketweaving").should eq "Mind"        
+            FS3Skills.get_related_apt(@char, "Basketweaving").should eq "Mind"        
           end
       
           it "should return the configured ruling attr if there is one" do
-            @char.stub(:fs3_ruling_apts) { { "Basketweaving" => "Body" } }
-            FS3Skills.get_ruling_apt(@char, "Basketweaving").should eq "Body"
+            @char.stub(:fs3_related_apts) { { "Basketweaving" => "Body" } }
+            FS3Skills.get_related_apt(@char, "Basketweaving").should eq "Body"
           end
         end
       end

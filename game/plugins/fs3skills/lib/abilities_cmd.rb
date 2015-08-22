@@ -17,11 +17,11 @@ module AresMUSH
       
       def handle
         if (self.page == 1)
-          list = FS3Skills.aptitudes.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
-          title = t('fs3skills.attributes_title')
-        elsif (self.page == 2)
           list = FS3Skills.action_skills.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
           title = t('fs3skills.action_skills_title')
+        elsif (self.page == 2)
+          list = FS3Skills.aptitudes.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
+          title = t('fs3skills.aptitudes_title')
         elsif (self.page == 3)
           list = [ t('fs3skills.interests_and_expertise')]
           title = t('fs3skills.interests_and_expertise_title')

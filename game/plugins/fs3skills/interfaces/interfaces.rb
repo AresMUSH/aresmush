@@ -2,16 +2,16 @@ module AresMUSH
   module FS3Skills
     class RollParams
       
-      attr_accessor :ability, :modifier, :ruling_apt
+      attr_accessor :ability, :modifier, :related_apt
       
-      def initialize(ability, modifier = 0, ruling_apt = nil)
+      def initialize(ability, modifier = 0, related_apt = nil)
         self.ability = ability
         self.modifier = modifier
-        self.ruling_apt = ruling_apt
+        self.related_apt = related_apt
       end
     
       def to_s
-        "#{self.ability} mod=#{self.modifier} ruling_apt=#{self.ruling_apt}"
+        "#{self.ability} mod=#{self.modifier} related_apt=#{self.related_apt}"
       end
     end
     
@@ -192,8 +192,8 @@ module AresMUSH
         when :expertise
           return 3
         when :interest
-          ruling_apt = FS3Skills.get_ruling_apt(char, ability)
-          rating = FS3Skills.ability_rating(char, ruling_apt)
+          related_apt = FS3Skills.get_related_apt(char, ability)
+          rating = FS3Skills.ability_rating(char, related_apt)
           return rating
         when :untrained
           return 0
@@ -206,19 +206,19 @@ module AresMUSH
       end
     end
     
-    def self.get_ruling_apt(char, ability)
+    def self.get_related_apt(char, ability)
       ability_type = FS3Skills.get_ability_type(char, ability)
-      default = Global.read_config("fs3skills", "default_ruling_apt")
+      default = Global.read_config("fs3skills", "default_related_apt")
       
       case ability_type
         when :action
-          return FS3Skills.action_skills.find { |s| s["name"].upcase == ability.upcase }["ruling_apt"]
+          return FS3Skills.action_skills.find { |s| s["name"].upcase == ability.upcase }["related_apt"]
         when :advantage
-          return FS3Skills.advantages.find { |s| s["name"].upcase == ability.upcase }["ruling_apt"]
+          return FS3Skills.advantages.find { |s| s["name"].upcase == ability.upcase }["related_apt"]
         when :aptitude
           return ability
         else
-          return char.fs3_ruling_apts[ability] || default
+          return char.fs3_related_apts[ability] || default
       end
     end
 

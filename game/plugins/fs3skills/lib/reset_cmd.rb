@@ -23,8 +23,6 @@ module AresMUSH
         char.fs3_action_skills = {}
         char.fs3_background_skills = {}
         char.fs3_advantages = {}
-        char.fs3_hooks = []
-        char.fs3_goals = []
         char.fs3_languages = []
         
         languages = Global.read_config("fs3skills", "starting_languages")

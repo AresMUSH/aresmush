@@ -11,7 +11,7 @@ module AresMUSH
 
       def initialize
         self.required_args = ['name', 'ability_name', 'rating']
-        self.help_topic = 'skills'
+        self.help_topic = 'abilities'
         super
       end
       

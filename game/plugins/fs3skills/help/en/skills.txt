@@ -6,3 +6,4 @@ Related help files:
     %xhhelp roll%xn - Use your abilities.
     %xhhelp sheet%xn - View your character sheet.
     %xhhelp app%xn - View the progress of your character application.
+    %xhhelp relatedapt%xn - Set up your ruling aptitudes.

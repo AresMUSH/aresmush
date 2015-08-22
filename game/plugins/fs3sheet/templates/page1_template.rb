@@ -31,9 +31,10 @@ module AresMUSH
         text << languages_display()
         
         text << hooks_display()
+        text << "%r"
 
         text << goals_display()
-        text << "%r"
+        text << "%r%R"
         
         text << footer_display()
         text << "%r"
@@ -89,11 +90,17 @@ module AresMUSH
       end
       
       def hooks_display
-        display_list t('sheet.hooks_title'), @char.fs3_hooks, false
+        text = format_section_title t('sheet.hooks_title')
+        text << "%R"
+        text << @char.fs3_hooks
+        text
       end
       
       def goals_display
-        display_list t('sheet.goals_title'), @char.fs3_goals, false
+        text = format_section_title t('sheet.goals_title')
+        text << "%R"
+        text << @char.fs3_goals
+        text
       end
       
           
@@ -137,30 +144,30 @@ module AresMUSH
         name = "%xh#{s}:%xn"
         rating = FS3Skills.ability_rating(@char, s)
         dots = FS3Skills.print_skill_rating(rating)
-        ruling_apt = print_ruling_apt(s)
+        related_apt = print_related_apt(s)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 17)} #{ruling_apt} #{left(dots,16)}"
+        "#{linebreak}#{left(name, 17)} #{related_apt} #{left(dots,16)}"
       end
       
       def format_section_title(title)
         center(" %xh#{title}%xn ", 78, '-')
       end
       
-      def print_ruling_apt(skill)
-        apt = FS3Skills.get_ruling_apt(@char, skill)
+      def print_related_apt(skill)
+        apt = FS3Skills.get_related_apt(@char, skill)
         apt.nil? ? "" : "(#{apt[0..2]})"
       end
       
-      def display_list(title, list, show_ruling_apt = true)
+      def display_list(title, list, show_related_apt = true)
         text = format_section_title(title)
         text << "%R"
         list.each do |l|
-          if (show_ruling_apt)
-            ruling_apt = " #{print_ruling_apt(l)}"
+          if (show_related_apt)
+            related_apt = " #{print_related_apt(l)}"
           else
-            ruling_apt = ""
+            related_apt = ""
           end
-          text << "#{l}#{ruling_apt}%r"
+          text << "#{l}#{related_apt}%r"
         end
         text
       end

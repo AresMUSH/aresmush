@@ -37,7 +37,7 @@ module AresMUSH
     end
 
     # Expects titleized ability name
-    # Returns the type (attribute, action, background) for a skill being rolled.
+    # Returns the type (aptitude, action, etc) for a skill being rolled.
     def self.get_ability_type(char, ability)
       if (aptitude_names.include?(ability))
         return :aptitude
@@ -77,10 +77,6 @@ module AresMUSH
         char.fs3_interests
       when :expertise
         char.fs3_expertise
-      when :hook
-        char.fs3_hooks
-      when :goal
-        char.fs3_goals
       else
         raise "Invalid ability type requested: #{ability_type}."
       end
@@ -105,16 +101,16 @@ module AresMUSH
       case ability_type
       when :interest, :untrained
         # Don't double-count aptitude rating when defaulting or rolling an interest.
-        ruling_apt = "None"
+        related_apt = "None"
         apt_rating = 0
       else
-        ruling_apt = roll_params.ruling_apt || FS3Skills.get_ruling_apt(char, ability)
-        apt_rating = FS3Skills.ability_rating(char, ruling_apt)
+        related_apt = roll_params.related_apt || FS3Skills.get_related_apt(char, ability)
+        apt_rating = FS3Skills.ability_rating(char, related_apt)
       end
       
       dice = (skill_rating * 2) + apt_rating + modifier
 
-      Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} ruling_apt=#{ruling_apt} apt=#{apt_rating}"
+      Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} related_apt=#{related_apt} apt=#{apt_rating}"
       
       dice
     end
@@ -136,19 +132,19 @@ module AresMUSH
       die_result
     end
     
-    # Parses a roll string in the form Ability+Attribute(+ or -)Modifier, where
+    # Parses a roll string in the form Ability+Aptitude(+ or -)Modifier, where
     # everything except "Ability" is optional.
-    # Technically it can be Ability+Ability, or Attribute+Attribute or Attribute+Ability;
+    # Technically it can be Ability+Ability, or Attribute+Aptitude or Aptitude+Ability;
     # the code doesn't care.
     def self.parse_roll_params(str)
-      match = /^(?<ability>[^\+\-]+)\s*(?<ruling_apt>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
+      match = /^(?<ability>[^\+\-]+)\s*(?<related_apt>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
       return nil if match.nil?
       
       ability = match[:ability].strip
       modifier = match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i
-      ruling_apt = match[:ruling_apt].nil? ? nil : match[:ruling_apt][1..-1].strip
+      related_apt = match[:related_apt].nil? ? nil : match[:related_apt][1..-1].strip
       
-      return RollParams.new(ability, modifier, ruling_apt)
+      return RollParams.new(ability, modifier, related_apt)
     end
     
     def self.emit_results(message, client, room, is_private)

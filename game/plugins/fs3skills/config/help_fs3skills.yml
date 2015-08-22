@@ -14,19 +14,25 @@ help:
                     file: 'abilities.txt'
                     summary: 'Skills System.'
                     order: 4
-                    aliases: [ 'reset', 'language', 'languages', 'raise', 'lower', 'ability', 'attributes', 'attribute', 'hook', 'hooks' ]
+                    aliases: [ 'reset', 'language', 'languages', 'raise', 'lower', 'ability', 'aptitudes', 'aptitude', 'interest', 'interests', 'expertise', 'advantages' ]
                 skills:
                     toc_topic: 'FS3'
                     dir: 'game/plugins/fs3skills/help/'
                     file: 'skills.txt'
                     summary: 'Skills System.'
                     aliases: [ 'fs3', 'skill' ]
-                rulingattr:
+                relatedapt:
                     toc_topic: 'FS3'
                     dir: 'game/plugins/fs3skills/help/'
-                    file: 'rulingattr.txt'
-                    summary: 'Ruling attributes for skills.'
+                    file: 'relatedapt.txt'
+                    summary: 'Ruling aptitudes for skills.'
                     aliases: [ 'rulingattr' ]
+                goals:
+                    toc_topic: 'FS3'
+                    dir: 'game/plugins/fs3skills/help/'
+                    file: 'goals.txt'
+                    summary: "Character motivations and RP Hooks"
+                    aliases: [ 'goal', 'hooks' ]
         admin:
             topics:
                 skills:
