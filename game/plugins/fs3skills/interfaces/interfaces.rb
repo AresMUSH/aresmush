@@ -200,11 +200,7 @@ module AresMUSH
         when :aptitude
           ability_hash = get_ability_hash_for_type(char, ability_type)
           rating = ability_hash[ability] || 0
-          if (rating > 1)
-            rating - 1
-          else
-            rating - 0.5
-          end
+          rating - 1
         else
           ability_hash = get_ability_hash_for_type(char, ability_type)
           ability_hash[ability] || 0
