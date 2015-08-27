@@ -41,7 +41,7 @@ module AresMUSH
       end
       
       def check_advantages_enabled
-        ability_type = FS3Skills.get_ability_type(client.char, self.name)
+        ability_type = FS3Skills.get_ability_type(client.char, self.ability_name)
         return t('fs3skills.advantages_not_enabled') if (ability_type == :advantage && !FS3Skills.advantages_enabled?)
         return nil
       end
