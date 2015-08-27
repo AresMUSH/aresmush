@@ -27,7 +27,7 @@ module AresMUSH
 
       def check_valid_ability
         return nil if client.char.fs3_interests.include?(self.name)
-        retirn nil if client.char.fs3_expertise.include?(self.name)
+        return nil if client.char.fs3_expertise.include?(self.name)
         return t('fs3skills.invalid_ability_for_related_apt', :ability => self.name)
       end
       
