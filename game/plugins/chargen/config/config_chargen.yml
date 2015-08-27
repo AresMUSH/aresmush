@@ -58,6 +58,8 @@ chargen:
             help: bg
         abilities:
             help: abilities
+        relatedapt:
+            help: relatedapt
         goals:
             help: goals
         desc:
