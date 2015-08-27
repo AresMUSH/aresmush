@@ -67,8 +67,8 @@ en:
 
         total_points_spent: "%{total} total points spent. (%{max} max)"
         interests_added: "%{num} interests added. (%{min} min)"
-        hooks_added: "Checking you set some RP hooks."
-        goals_added: "Checking you set your goals."
+        hooks_added: "%{num} RP hooks added. (%{min} min)"
+        goals_added: "%{num} goals added. (%{min} min)"
         high_abilities: "%{num} action skills at rating %{high_rating} or higher.  (%{max} max)"
         aptitudes_check: "Checking you set your aptitudes."
         language_check: "Checking for starting languages."

@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Skills
 
     def self.app_review(char)
-      list = []
-            
       text = FS3Skills.total_point_review(char)
       text << "%r"
       text << FS3Skills.high_ability_review(char)
@@ -15,13 +13,17 @@ module AresMUSH
       text << FS3Skills.starting_language_review(char)
       text << "%r"
       text << FS3Skills.starting_skills_check(char)
-      text << "%r"
-      text << FS3Skills.hook_review(char)
+      text
+    end
+
+    def self.app_goals_review(char)
+      text = FS3Skills.hook_review(char)
       text << "%r"
       text << FS3Skills.goals_review(char)
       text
     end
-    
+      
+      
     # Don't forget to save afterward!
     def self.add_unrated_ability(client, char, ability, ability_type)
       list = FS3Skills.get_ability_list_for_type(char, ability_type)

@@ -1,7 +1,7 @@
 module AresMUSH
 
   module FS3Skills
-    class SetItemCmd
+    class SetListCmd
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs

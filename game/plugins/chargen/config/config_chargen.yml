@@ -58,6 +58,8 @@ chargen:
             help: bg
         abilities:
             help: abilities
+        goals:
+            help: goals
         desc:
             help: descriptions
         actor:

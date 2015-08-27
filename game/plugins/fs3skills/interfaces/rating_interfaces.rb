@@ -6,12 +6,10 @@ module AresMUSH
       ability_type = FS3Skills.get_ability_type(char, ability)
       case ability_type
         when :expertise
-          return 3
+          return 4
         when :interest
-          related_apt = FS3Skills.get_related_apt(char, ability)
-          rating = FS3Skills.ability_rating(char, related_apt)
-          return rating
-        when :untrained
+          return 2
+        when :nonexistant
           return 0
         when :aptitude
           ability_hash = get_ability_hash_for_type(char, ability_type)

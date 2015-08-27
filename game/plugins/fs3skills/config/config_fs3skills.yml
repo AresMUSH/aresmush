@@ -18,8 +18,8 @@ fs3skills:
             name: Reactive
             desc: "A knack for things involving hand-eye coordination and reflexes."
         -   
-            name: Intellectual
-            desc: "A knack for logic and reasoning."
+            name: Academic
+            desc: "A knack for logic and book learning."
         -   
             name: Technical
             desc: "A knack for things blending knowledge and craftsmanship."
@@ -94,11 +94,13 @@ fs3skills:
     free_languages: 2
     free_interests: 4
     
-    default_related_apt: Intellectual
+    default_related_apt: Academic
     max_high_abilities: 3
     starting_points: 20
     high_ability_level: 4
     min_interests: 1
+    min_hooks: 1
+    min_goals: 1
     
     starting_languages:
         - Standard

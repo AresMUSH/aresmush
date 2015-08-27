@@ -28,6 +28,7 @@ en:
         misc_review_title: "Miscellaneous (help bg, help desc)"
         groups_review_title: "Groups (help groups)"
         app_review_title: "Review (help apps)"
+        goals_review_title: "Goals (help goals)"
         
         app_request: "Approval under review.  See %xhrequest %{job}%xn."
         app_job: "Approval under review.  See %xhjob %{job}%xn."

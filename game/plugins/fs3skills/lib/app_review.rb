@@ -1,19 +1,12 @@
 module AresMUSH
   module FS3Skills
     
-    def self.interests_review(char)
-      num_skills = char.interests.count
-      min = Global.read_config("fs3skills", "min_interests")
-      error = num_skills >= min ? t('chargen.ok') : t('chargen.not_enough')
-      Chargen.display_review_status(t('fs3skills.interests_added', :num => num_skills, :min => min), error)
-    end
-    
     def self.hook_review(char)
-      Chargen.display_review_status t('fs3skills.hooks_added'), char.fs3_hooks.blank? ? t('chargen.not_set') : t('chargen.ok')
+      FS3Skills.min_item_review(char.hooks.keys, "min_hooks", "fs3skills.hooks_added")      
     end
     
     def self.goals_review(char)
-       Chargen.display_review_status t('fs3skills.goals_added'), char.fs3_goals.blank? ? t('chargen.not_set') : t('chargen.ok')
+       FS3Skills.min_item_review(char.goals.keys, "min_goals", "fs3skills.goals_added")
     end
     
     def self.interests_review(char)

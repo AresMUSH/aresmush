@@ -101,16 +101,14 @@ module AresMUSH
           FS3Skills.ability_rating(@char, "Wealth").should eq 4
         end
         
-        it "should return 3 for an expertise" do
+        it "should return 4 for an expertise" do
           @char.stub(:fs3_expertise) { [ "Basketweaving" ] }
-          FS3Skills.ability_rating(@char, "Basketweaving").should eq 3
+          FS3Skills.ability_rating(@char, "Basketweaving").should eq 4
         end
         
-        it "should return the ruling apt rating - 1 for an interest" do
-          @char.stub(:fs3_related_apts) { {} }
-          @char.stub(:fs3_aptitudes) { { "Mind" => 2 } }
+        it "should return 2 for an interest" do
           @char.stub(:fs3_interests) { [ "Basketweaving" ] }
-          FS3Skills.ability_rating(@char, "Basketweaving").should eq 1
+          FS3Skills.ability_rating(@char, "Basketweaving").should eq 2
         end
         
         it "should return the aptitude rating - 1 for an aptitude" do

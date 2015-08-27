@@ -50,7 +50,7 @@ module AresMUSH
       elsif (char.fs3_interests.include?(ability))
         return :interest
       else
-        return :untrained
+        return :nonexistant
       end        
     end
     
@@ -99,8 +99,8 @@ module AresMUSH
       skill_rating = FS3Skills.ability_rating(char, ability)
 
       case ability_type
-      when :untrained, :aptitude
-        # Don't double-count aptitude rating when rolling unrained.
+      when :aptitude, :nonexistant
+        # Don't double-count aptitude rating when defaulting.
         related_apt = "None"
         apt_rating = 0
       else

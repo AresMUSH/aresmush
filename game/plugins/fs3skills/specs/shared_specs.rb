@@ -316,9 +316,9 @@ module AresMUSH
           FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
         end
         
-        it "should not count aptitude mod for untrained" do
+        it "should not count aptitude mod for nonexistant" do
           roll_params = RollParams.new("Untrained")
-          FS3Skills.stub(:get_ability_type).with(@char, "Untrained") { :untrained }
+          FS3Skills.stub(:get_ability_type).with(@char, "Untrained") { :nonexistant }
           # Rolls Unskilled + no modifier --> 0 dice
           FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 0
         end

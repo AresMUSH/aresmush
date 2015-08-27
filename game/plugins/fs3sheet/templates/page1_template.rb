@@ -91,15 +91,17 @@ module AresMUSH
       
       def hooks_display
         text = format_section_title t('sheet.hooks_title')
-        text << "%R"
-        text << "#{@char.fs3_hooks}"
+        @char.hooks.each do |k, v|
+          text << "%R%xh#{k}:%xn #{v}"
+        end
         text
       end
       
       def goals_display
         text = format_section_title t('sheet.goals_title')
-        text << "%R"
-        text << "#{@char.fs3_goals}"
+        @char.goals.each do |k, v|
+          text << "%R%xh#{k}:%xn #{v}"
+        end
         text
       end
       

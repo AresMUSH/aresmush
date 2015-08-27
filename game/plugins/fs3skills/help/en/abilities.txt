@@ -6,8 +6,6 @@ The FS3 Abilities commands are used to set yourself up during character creation
 * Expertise
 * Interests
 * Languages
-* RP Hooks
-* Goals
 
 To get started, or at any point you wish to reset yourself, use the reset command.
 

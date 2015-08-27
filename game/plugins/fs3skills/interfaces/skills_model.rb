@@ -6,8 +6,9 @@ module AresMUSH
     field :fs3_interests, :type => Array, :default => []
     field :fs3_expertise, :type => Array, :default => []
     field :fs3_languages, :type => Array, :default => []
-    field :fs3_hooks, :type => String
-    field :fs3_goals, :type => String
     field :fs3_related_apts, :type => Hash, :default => {}
+
+    field :hooks, :type => Hash, :default => {}
+    field :goals, :type => Hash, :default => {}
   end
 end
