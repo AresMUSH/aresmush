@@ -26,7 +26,12 @@ module AresMUSH
         text << "|eyes=#{ eyes }%r"
         text << "|hair=#{ hair }%r"
         text << "]]"
-        
+        text << "%R%R"
+        text << background
+        text << "%R%R"
+        text << hooks
+        text << "%R%R"
+        text << goals        
         text
       end
       
@@ -91,9 +96,38 @@ module AresMUSH
         @char.rank
       end
             
-      def reputation
-        @char.reputation
+      def background
+        "+ Background%R#{ @char.background } "
       end
+
+      def hooks
+        text = "+ RP Hooks"
+        text << "%R"
+        text << @char.hooks.map { |h, v| "%R* **#{h}** - #{v}" }.join
+        text
+      end
+
+      def goals
+        text = "+ Goals"
+        text << "%R"
+        text << @char.goals.map { |h, v| "%R* **#{h}** - #{v}" }.join
+        text
+      end
+
+      def interests
+        text = "+ Interests"
+        text << "%R"
+        text << @char.fs3_interests.map { |v| "%R* **#{v}**" }.join
+        text
+      end
+
+      def expertise
+        text = "+ Expertise"
+        text << "%R"
+        text << @char.fs3_expertise.map { |v| "%R* **#{v}**" }.join
+        text
+      end
+
     end
   end
 end

@@ -7,6 +7,8 @@ The FS3 Abilities commands are used to set yourself up during character creation
 * Interests
 * Languages
 
+It is important to make sure that your background and abilities correlate with one another. That is a big thing that admins will look for during your character review.
+
 To get started, or at any point you wish to reset yourself, use the reset command.
 
     %xcreset%xn - Resets your abilities, setting default values based on your groups.
