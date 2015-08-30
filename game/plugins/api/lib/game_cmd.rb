@@ -41,6 +41,7 @@ module AresMUSH
           text << "%xh%xr"
           text << t("api.game_not_open")
           text << "%xn%R%R"
+          return text
         end
 
         text << t('api.game_name', :name => game.name)
@@ -67,6 +68,7 @@ module AresMUSH
         text << game.description
         
         text << "%r"
+        text
       end
     end
   end
