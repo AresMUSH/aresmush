@@ -4,20 +4,3 @@ server:
 
     # The port number your game will listen on
     port: 4201
-    
-    # Name of your game.
-    name: Test Site
-
-    # Please select the appropriate category to describe your game:
-    # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
-    category: Other
-    
-    # Describe your game.  You may use ansi and other MUSH formatting codes (%r, etc.).
-    description: Just testing.
-    
-    # Your game's website
-    website: ""
-    
-    # yes if your game is open for business, no if it is in development, down, or 
-    # otherwise not open to the public
-    game_open: "no"

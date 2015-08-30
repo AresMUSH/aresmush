@@ -116,7 +116,7 @@ module AresMUSH
       end
       
       def fullname
-        format_field @char.fullname
+        @char.fullname
       end
       
       def callsign

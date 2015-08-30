@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def display
-          text = "-~- %xh%xg#{@char.name}@#{Global.read_config("server", "name")}%xn -~-".center(78)
+          text = "-~- %xh%xg#{@char.name}@#{Global.read_config("game", "name")}%xn -~-".center(78)
           text << "%r"
           text << status
           text << last_on
