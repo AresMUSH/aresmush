@@ -19,7 +19,7 @@ chargen:
         # This message is sent when a character is approved.
         approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP."
         # This message is sent when a character is rejected.
-        rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp chargen%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
+        rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp app%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
     
     # Newly-approved characters will be announced on this board.    
     arrivals_board: "New Arrivals"

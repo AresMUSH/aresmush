@@ -14,6 +14,7 @@ module AresMUSH
         text << "%xh#{name}%xn #{approval_status} #{page_title}%r"
         text << "%l2%r"
         text << "#{fullname_title} #{fullname}%r"
+        text << "#{actor_title} #{actor}%r"
         text << "#{gender_title} #{gender} #{skin_title} #{skin}%r"
         text << "#{height_title} #{height} #{physique_title} #{physique}%r"
         text << "#{hair_title} #{hair} #{eyes_title} #{eyes}%r"
@@ -31,7 +32,11 @@ module AresMUSH
       end
         
       def name
-        left(@char.name, 25)
+        @char.name
+      end
+      
+      def actor
+        @char.actor
       end
       
       def approval_status
@@ -45,6 +50,10 @@ module AresMUSH
       
       def fullname_title
         format_field_title(t('sheet.fullname_title'))
+      end
+      
+      def actor_title
+        format_field_title(t('sheet.actor_title'))
       end
 
       def gender_title

@@ -12,65 +12,65 @@ fs3skills:
             
     aptitudes:
         -  
-            name: Athletic
+            name: Athletics
             desc: "A knack for things involving strength and agility."
         -   
-            name: Reactive
+            name: Reaction
             desc: "A knack for things involving hand-eye coordination and reflexes."
         -   
-            name: Academic
+            name: Academics
             desc: "A knack for logic and book learning."
         -   
-            name: Technical
+            name: Tech
             desc: "A knack for things blending knowledge and craftsmanship."
         -
-            name: Creative
+            name: Creativity
             desc: "A knack for artistic expression and imagination."
         -
-            name: Confident
+            name: Confidence
             desc: "A knack for presence and fortitude."
     
     action_skills:
         -
             name: Alertness
             desc: "Noticing things and being aware of your surroundings."
-            related_apt: Reactive
+            related_apt: Reaction
         -
             name: Demolitions
             desc: "Blowing stuff up."
-            related_apt: Technical
+            related_apt: Tech
         -
             name: Comms
             desc: "Ship sensors, countermeasures and communications (ECO and CIC type duties)."
-            related_apt: Technical
+            related_apt: Tech
         -   
             name: Firearms
             desc: "Shooting guns."
-            related_apt: Reactive
+            related_apt: Reaction
         -
             name: First Aid
             desc: "Patching people up outside of a hospital.  Docs should have a medical bg skill."
-            related_apt: Technical
+            related_apt: Tech
         -
             name: Gunnery
             desc: "Ship and vehicle weapons."
-            related_apt: Reactive
+            related_apt: Reaction
         - 
             name: Melee
             desc: "Fighting with fists, knives, and hand-to-hand weapons."
-            related_apt: Athletic
+            related_apt: Athletics
         -
             name: Piloting
             desc: "Flying Vipers, Raptors and other airborne vehicles."
-            related_apt: Reactive
+            related_apt: Reaction
         - 
             name: Stealth
             desc: "Being sneaky."
-            related_apt: Athletic
+            related_apt: Athletics
         -
             name: Technician
             desc: "General mechanics/electronics and fixing things."
-            related_apt: Technical
+            related_apt: Tech
 
     languages:
         - "Standard - Spoken across the colonies."
@@ -89,7 +89,7 @@ fs3skills:
         -
             name: "Wealth"
             desc: "Special assets."
-            related_apt: Confident
+            related_apt: Confidence
     
     free_languages: 2
     free_interests: 4

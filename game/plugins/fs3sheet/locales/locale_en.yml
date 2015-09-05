@@ -22,6 +22,7 @@ en:
         info_title: "Info"        
         
         fullname_title: "Fullname:"
+        actor_title: "Played By:"
         gender_title: "Gender:"
         height_title: "Height:"
         physique_title: "Physique:"

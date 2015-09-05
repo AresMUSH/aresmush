@@ -4,7 +4,7 @@ All abilities are influenced by a particular aptitude - this is called the "rela
 
 For instance, if you have an interest in Basketweaving, you may want to link that to the Creative aptitude. 
 
-    %xcrelatedapt Basketweaving=Creative%xn
+    %xcrelatedapt Basketweaving=Creativity%xn
     
 Related aptitudes are shown next to their skill names on your character sheet.   For example:
 

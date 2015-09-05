@@ -1,20 +1,17 @@
 en:
     fs3skills:
-        aptitudes_title: "Aptitudes"
-        action_skills_title: "Action Skills"
-        expertise_title: "Expertise"
-        interests_title: "Interests"
-        languages_title: "Languages"
-        advantages_title: "Advantages"
-        hooks_title: "RP Hooks"
-        goals_title: "Goals"
-        interests_and_expertise_title: "Interests and Expertise"
-        interests_and_expertise: "%xhExpertise%xn represents things your character is good at that are **not** already covered by Action Skills.%R%R%xhInterests%xn represent hobbies and things your character dabbles in but isn't particularly skilled at."
-        
         aptitude_poor: "Poor"
         aptitude_average: "Average"
         aptitude_good: "Good"
         aptitude_great: "Great"
+        
+        points_tutorial_total:  "You have %{total} points to spend."
+        points_tutorial_aptitudes: "Aptitudes do not cost points.  Everyone gets to pick 1 Great, 1 Good and 1 Poor.  The rest are average."
+        points_tutorial_action: "Action skills cost 1 point per rating."
+        points_tutorial_advantages:  "Advantages cost 1 point per rating."
+        points_tutorial_interests:  "You get %{free} free interests.  Any others cost 1 point each."
+        points_tutorial_expertise:  "Expertise costs 2 points each."
+        points_tutorial_languages:  "You get %{free} free languages.  Any others cost 1 point each."
         
         aptitude_set: "You are Great at %{great}, Good at %{good} and Poor at %{poor}.  Everything else is average."
         action_set: "Action Skill '%{name}' is now %{rating}."

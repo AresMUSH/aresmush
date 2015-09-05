@@ -3,15 +3,11 @@ Instead of having separate systems for "faction" and "position" and whatnot, Are
 During chargen, you should set your affiliation for each group unless you're sure it doesn't apply to your character. Only admin may change your groups after you've been approved.
 
     %xcgroups%xn - Lists groups.
-
-Most groups will have a shortcut set up so you can use the name of the group to find its values and set your own.  For example, if there was a "Faction" group, you could use:
-
-    %xcfactions%xn - Lists faction values.
-    %xcfaction <name>%xn - Sets your faction.
     
-But you can always use the general group commands, even if no shortcut exists:
+To view a group or set your affiliation:
 
     %xcgroup <name>%xn - Describes a group and shows valid values.
     %xcgroup/set <group>=<value>%xn - Sets your affiliation.
         Leave the vaule blank to clear it.
-        
+
+Most groups have shortcuts, so if there was a Position group, there would be commands like %xhpositions%xn to list all of the items in the "Position" group and %xhposition <name>%xn to set your position.
