@@ -37,7 +37,7 @@ module AresMUSH
           
           file = "costs.txt"
         elsif (self.page == 3)
-          list = FS3Skills.aptitudes.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
+          list = FS3Skills.aptitudes.map { |a| "%xh#{a['name'].ljust(20)}%xn (#{a['related_apt']}) #{a['desc']}" }
           file = "aptitudes.txt"
         elsif (self.page == 4)
           list = FS3Skills.action_skills.map { |a| "%xh#{a['name'].ljust(20)}%xn #{a['desc']}" }
