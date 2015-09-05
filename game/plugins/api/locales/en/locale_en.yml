@@ -13,7 +13,7 @@ en:
         game_status: "%xhStatus:%xn    %{status} (as of %{last})"
         game_up_status: "%xgUp%xn"
         game_down_status: "%xrMay Be Down%xn"
-        game_not_open: "<-Not Open->"
+        game_not_open: "This game is not open to the public."
         game_website: "%xhWebsite:%xn  %{website}"
         
         invalid_port: "Invalid port."

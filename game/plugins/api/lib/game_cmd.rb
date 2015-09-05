@@ -37,14 +37,16 @@ module AresMUSH
       def show_game(game, text)
         text << "%l2%r"
         
+
+        text << t('api.game_name', :name => game.name)
+        
         if (!game.is_open?)
-          text << "%xh%xr"
+          text << "%R%xh%xr"
           text << t("api.game_not_open")
           text << "%xn%R%R"
           return text
         end
-
-        text << t('api.game_name', :name => game.name)
+        
         text << "%R"
         text << t('api.game_address', :host => game.host, :port => game.port)
         text << "%R"
