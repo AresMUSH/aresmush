@@ -26,6 +26,8 @@ module AresMUSH
     def self.change_job_status(client, job, status, message = nil)
       if (message)
         Jobs.comment(job, client.char, message, false)
+      else
+        Jobs.comment(job, client.char, t('jobs.changed_job_status', :name => client.name, :status => status), false)
       end
       job.status = status
       job.save

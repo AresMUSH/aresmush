@@ -43,7 +43,7 @@ module AresMUSH
         if (!game.is_open?)
           text << "%R%R%xh%xr"
           text << t("api.game_not_open")
-          text << "%xn%R%R"
+          text << "%xn"
           return text
         end
         

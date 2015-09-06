@@ -28,9 +28,14 @@ en:
         closed_job: "%{name} has closed job #%{number} \"%{title}\"."
         updated_job: "%{name} has updated job #%{number} \"%{title}\"."
         
+        changed_job_status: "%{name} has changed the job status to \"%{status}\"."
+        job_already_closed: "That job is already closed."
+        
         cannot_handle_jobs: "That person cannot be assigned jobs."
         job_assigned: "%{assigner} has assigned job #%{number} \"%{title}\" to %{assignee}."
         job_deleted: "%{name} has deleted job \"%{title}\"."
+        
+        jobs_caught_up: "You mark all unread jobs as read."
         
         unhandled_error_title:  "System Error"
         unhandled_error_message: "There was an unexpected system error.  Check the log files for details.%R%R%{message}"
