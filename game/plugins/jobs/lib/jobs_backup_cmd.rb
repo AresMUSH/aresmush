@@ -5,7 +5,7 @@ module AresMUSH
       include PluginRequiresLogin
            
       def want_command?(client, cmd)
-        cmd.root_is?("jobs") && cmd.switch_is?("backup")
+        cmd.root_is?("job") && cmd.switch_is?("backup")
       end
       
       def check_too_many_jobs

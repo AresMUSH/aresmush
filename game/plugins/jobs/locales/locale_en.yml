@@ -41,7 +41,7 @@ en:
         unhandled_error_message: "There was an unexpected system error.  Check the log files for details.%R%R%{message}"
         
         starting_backup: "Starting jobs backup.  Your jobs will print out one by one with a short delay in-between to avoid spamming your client."
-        too_much_for_backup: "You have too many closed jobs for the automatic backup feature.  You'll have to read them manually.  Sorry."
+        too_much_for_backup: "You have too many closed jobs for the automatic backup feature.  You'll have to read and delete them manually.  Sorry."
         no_closed_jobs: "There are no closed jobs."
         
         confirm_purge: "This will *permanently* delete all closed jobs.  You may want to do a backup first.  Are you sure?  If so, type jobs/confirmpurge"
