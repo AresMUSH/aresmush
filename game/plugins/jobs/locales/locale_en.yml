@@ -25,9 +25,9 @@ en:
         invalid_job_number: "That is not a valid request or job number."
         discussed_job: "%{name} has added an admin-only comment to job #%{number} \"%{title}\".  This will not be seen by the submitter.  To respond to them, use the job/respond command."
         responded_to_job: "%{name} has responded to job #%{number} \"%{title}\"."
-        closed_job: "%{name} has closed job #%{number} \"%{title}\"."
         updated_job: "%{name} has updated job #%{number} \"%{title}\"."
         
+        closed_job: "%{name} has closed this job."
         changed_job_status: "%{name} has changed the job status to \"%{status}\"."
         job_already_closed: "That job is already closed."
         
@@ -36,7 +36,7 @@ en:
         job_deleted: "%{name} has deleted job \"%{title}\"."
         
         jobs_caught_up: "You mark all unread jobs as read."
-        
+        invalid_search_category: "That is not a valid search category."
         unhandled_error_title:  "System Error"
         unhandled_error_message: "There was an unexpected system error.  Check the log files for details.%R%R%{message}"
         
