@@ -13,13 +13,17 @@ module AresMUSH
         if (client.char.approval_job.nil?)
           if (cmd.switch_is?("confirm"))
             create_job
+            lock_char
           else
             client.emit_ooc t('chargen.app_confirm')
           end
         else
           update_job
+          lock_char
         end
+      end
       
+      def lock_char
         client.char.chargen_locked = true
         client.char.save
       end
