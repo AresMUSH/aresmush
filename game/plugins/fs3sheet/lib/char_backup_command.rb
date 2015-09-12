@@ -30,7 +30,7 @@ module AresMUSH
           end
           template = InfoTemplate.new(model, client)
           template.render
-          Chargen.show_bg(model, client
+          Chargen.show_bg(model, client)
           client.emit Describe.char_backup(model, client)
         end
       end

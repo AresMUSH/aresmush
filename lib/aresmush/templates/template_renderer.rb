@@ -8,7 +8,9 @@ module AresMUSH
     
     def render
       EM.defer do
-        self.client.emit build_template
+        AresMUSH.with_error_handling(self.client, "Rendering template:") do        
+          self.client.emit build_template
+        end
       end
     end
     
