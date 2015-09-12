@@ -1,14 +1,15 @@
 module AresMUSH
   module Describe
     # Template for a character.
-    class CharacterTemplate
+    class CharacterTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       def initialize(char, client)
         @char = char
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xh%xg#{name}%xn (#{military_name})%r"
         text << "%r"

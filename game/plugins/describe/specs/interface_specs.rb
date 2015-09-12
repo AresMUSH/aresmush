@@ -28,22 +28,19 @@ module AresMUSH
         it "should render a room" do
           model = Room.new
           RoomTemplate.should_receive(:new).with(model, @client) { @renderer }
-          @renderer.should_receive(:display)
-          Describe.get_desc(model, @client) 
+          Describe.get_desc_template(model, @client).should eq @renderer
         end
 
         it "should render a character" do
           model = Character.new
           CharacterTemplate.should_receive(:new).with(model, @client) { @renderer }
-          @renderer.should_receive(:display)
-          Describe.get_desc(model, @client) 
+          Describe.get_desc_template(model, @client).should eq @renderer
         end
         
         it "should render an exit" do
           model = Exit.new
           ExitTemplate.should_receive(:new).with(model, @client) { @renderer }
-          @renderer.should_receive(:display)
-          Describe.get_desc(model, @client) 
+          Describe.get_desc_template(model, @client).should eq @renderer
         end
       end
     end

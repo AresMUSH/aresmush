@@ -1,15 +1,15 @@
 module AresMUSH
   module Describe
     # Template for a room.
-    class RoomTemplate
+    class RoomTemplate < AsyncTemplateRenderer
       include TemplateFormatters
                             
       def initialize(room, client)
         @room = room
-        @client = client
+        super client
       end
       
-      def display
+      def build
         text = header_display()
         text << "%r%l2%r"
         text << desc_display()
@@ -127,7 +127,7 @@ module AresMUSH
       end
       
       def ooc_time
-        OOCTime.local_long_timestr(@client, Time.now)
+        OOCTime.local_long_timestr(self.client, Time.now)
       end
       
       def foyer_exits
@@ -186,7 +186,7 @@ module AresMUSH
       end
       
       def exit_destination(e)
-        locked = e.allow_passage?(@client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
+        locked = e.allow_passage?(self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')
         str = "#{locked}#{name}"
         left(str, 30)

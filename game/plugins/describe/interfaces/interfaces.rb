@@ -1,6 +1,6 @@
 module AresMUSH
   module Describe
-    def self.get_desc(model, client)     
+    def self.get_desc_template(model, client)     
       if (model.class == Room)
         template = RoomTemplate.new(model, client)
       elsif (model.class == Character)
@@ -10,7 +10,7 @@ module AresMUSH
       else
         raise "Invalid model type: #{model}"
       end
-      template.display
+      template
     end
     
     def self.app_review(char)
@@ -19,7 +19,8 @@ module AresMUSH
     end
     
     def self.char_backup(char, client)
-      backup = Describe.get_desc(char, client)
+      template = Describe.get_desc_template(char, client)
+      backup = template.build
       outfits = ""
       char.outfits.each do |name, desc|
         outfits << "%R%R%xh#{t('describe.outfit', :name => name)}%xn%r#{desc}"
