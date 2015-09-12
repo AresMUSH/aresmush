@@ -8,6 +8,7 @@ shortcuts:
         "advantage": "ability"
         "action": "ability"
         "expert": "expertise"
+        "aptitudes": "abilities"
     full:
         "hook/delete": "hook/remove"
         "goal/delete": "goal/remove"

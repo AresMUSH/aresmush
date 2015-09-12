@@ -30,30 +30,49 @@ module AresMUSH
       end
       
       def handle
-        possible_matches = Help.search_help(self.category, self.topic)
-        exact_matches = possible_matches.select { |h| h == self.topic }
-
-        if (exact_matches.count == 1)
-          display_help(exact_matches[0])
-        elsif (possible_matches.count == 1)
-          display_help(possible_matches[0])
-        elsif (possible_matches.count > 1)
-          client.emit BorderedDisplay.list(possible_matches, t('help.not_found_alternatives', :topic => self.topic))
-        else
-          client.emit_failure t('help.not_found', :topic => self.topic, :libraries => Help.valid_commands.join(" "))
+        found = find_match(self.category)
+        if (!found)
+          Help.valid_commands.each do |c|
+            cat = Help.category_for_command(c)
+            found = find_match(cat)
+            return if found
+          end
+          client.emit_failure t('help.not_found', :topic => self.topic)
         end
       end
       
-      def display_help(match)
-        category_title = Help.category_title(self.category)
-        title = t('help.topic', :category => category_title, :topic => self.topic.titlecase)
-        begin
-          text = Help.load_help(self.category, match)
-        rescue Exception => e
-          client.emit_failure t('help.error_loading_help', :topic => topic, :error => e)
-          return
+      def find_match(cat)
+        possible_matches = Help.search_help(cat, self.topic)
+        exact_matches = possible_matches.select { |h| h == self.topic }
+
+        if (exact_matches.count == 1)
+          display_help(exact_matches[0], cat)
+          return true
+        elsif (possible_matches.count == 1)
+          display_help(possible_matches[0], cat)
+          return true
+        elsif (possible_matches.count > 1)
+          client.emit BorderedDisplay.list(possible_matches, t('help.not_found_alternatives', :topic => self.topic))
+          return true
+        else
+          return false
         end
-        client.emit BorderedDisplay.text(text.chomp, title)
+      end
+      
+      def display_help(match, cat)
+        EM.defer do 
+          AresMUSH.with_error_handling(client, "Getting help file:") do            
+            category_title = Help.category_title(cat)
+            title = t('help.topic', :category => category_title, :topic => self.topic.titlecase)
+            begin
+              text = Help.load_help(cat, match)
+            rescue Exception => e
+              client.emit_failure t('help.error_loading_help', :topic => topic, :error => e)
+              return
+            end
+            client.emit BorderedDisplay.text(text.chomp, title)
+          end
+        end
       end
     end
   end
