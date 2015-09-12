@@ -66,22 +66,22 @@ module AresMUSH
             @profile_char.stub(:handle_visible_to?).with(@char) { true }
             @char.stub(:handle) { "@Star" }
             
-            char_profile_template = double
-            char_profile_template.stub(:display) { "Char Profile" }
-            CharProfileTemplate.stub(:new) { char_profile_template }
+            @char_profile_template = double
+            @char_profile_template.stub(:render) { }
+            CharProfileTemplate.stub(:new) { @char_profile_template }
             
           end
         
           it "should return regular profile if no handle on char" do
             @profile_char.stub(:handle) { nil }
-            @client.should_receive(:emit).with("Char Profile")
+            @char_profile_template.should_receive(:render)
             Handles.should_not_receive(:send_handle_profile_request)
             Handles.get_profile(@client, "Bob")
           end
         
           it "should return char profile if handle not visible" do
             @profile_char.stub(:handle_visible_to?).with(@char) { false }
-            @client.should_receive(:emit).with("Char Profile")
+            @char_profile_template.should_receive(:render)
             Handles.should_not_receive(:send_handle_profile_request)
             Handles.get_profile(@client, "Bob")
           end
@@ -95,8 +95,8 @@ module AresMUSH
         
         
           it "should send command to central if handle visible" do
-            @client.should_receive(:emit).with("Char Profile")
-                  @client.should_receive(:emit_success).with("handles.sending_profile_request")
+            @char_profile_template.should_receive(:render)
+            @client.should_receive(:emit_success).with("handles.sending_profile_request")
             @router.should_receive(:send_command) do |game_id, client, cmd|
               game_id.should eq ServerInfo.arescentral_game_id
               client.should eq @client
