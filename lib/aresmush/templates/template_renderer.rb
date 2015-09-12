@@ -19,11 +19,9 @@ module AresMUSH
     #    template.callback { |text| do something with the template text }
     #    template.build_async
     def build_async
-      EM.defer do
-        AresMUSH.with_error_handling(self.client, "Rendering template:") do   
-          text = build
-          self.succeed text
-        end
+      callback = Proc.new { |text| self.succeed text }
+      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client, callback) do
+        build
       end
     end
     

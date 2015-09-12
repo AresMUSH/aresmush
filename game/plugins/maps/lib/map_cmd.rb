@@ -16,14 +16,22 @@ module AresMUSH
       end
       
       def handle
-        map = Maps.map_for_area(self.area)
+        Global.dispatcher.spawn("Reading map.", client) do
+          map = map_for_area(self.area)
         
-        if (!map)
-          client.emit_failure t('maps.no_such_map')
-          return
+          if (!map)
+            client.emit_failure t('maps.no_such_map')
+            return
+          end
+        
+          client.emit BorderedDisplay.text map, t('maps.map_title', :area => self.area)
         end
-        
-        client.emit BorderedDisplay.text map, t('maps.map_title', :area => self.area)
+      end
+      
+      def map_for_area(area)
+        return nil if area.nil?
+        return nil if !Maps.available_maps.include?(area.downcase)
+        File.read(File.join(Maps.maps_dir, "#{area.downcase}.txt"), :encoding => "UTF-8")
       end
     end
   end
