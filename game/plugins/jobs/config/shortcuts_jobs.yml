@@ -5,3 +5,4 @@ shortcuts:
 
     full:
         "job/comment": "job/discuss"
+        "job/submit" : "job/create"

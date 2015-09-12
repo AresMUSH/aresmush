@@ -1,13 +1,14 @@
 module AresMUSH
   module Notices
-    class NoticesTemplate
+    class NoticesTemplate < AsyncTemplateRenderer
       include TemplateFormatters
             
-      def initialize(char)
+      def initialize(char, client)
         @char = char
+        super client
       end
       
-      def display
+      def build_template
         text = "%l1%r"
         text << "%xh#{notices_title}%xn%r"
         text << "#{mail}%r"

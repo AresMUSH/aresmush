@@ -4,7 +4,6 @@ module AresMUSH
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
-      include TemplateFormatters
       
       attr_accessor :board_name, :num
 
@@ -33,7 +32,7 @@ module AresMUSH
         Bbs.with_a_post(self.board_name, self.num, client) do |board, post|      
 
           template = PostTemplate.new(board, post, client)
-          client.emit template.display
+          template.render
 
           Bbs.mark_read_for_player(client.char, post)
           client.program[:last_bbs_post] = post

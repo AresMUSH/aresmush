@@ -1,17 +1,19 @@
 module AresMUSH  
-  class TemplateRenderer
-    def initialize(template)
-      @template = Erubis::Eruby.new(template, :bufvar=>'@output')
+  class AsyncTemplateRenderer
+    attr_accessor :client
+    
+    def initialize(client)
+      self.client = client
     end
     
-    def render(data)
-      return "" if data.nil?
-      @template.evaluate(data)
+    def render
+      EM.defer do
+        self.client.emit build_template
+      end
     end
     
-    def self.create_from_file(file_path)
-      template = File.read(file_path, :encoding => "UTF-8")
-      TemplateRenderer.new(template)
+    def build_template
+      raise "Not implemented."
     end
   end
 end

@@ -19,7 +19,7 @@ module AresMUSH
           Global.dispatcher.queue_timer(i, "Mail Backup #{client.char.name}") do
             Global.logger.debug "Logging mail #{delivery.id} from #{client.char.name}."
             template = MessageTemplate.new(client, delivery)
-            client.emit template.display
+            template.render
           end
         end
       end

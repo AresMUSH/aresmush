@@ -1,14 +1,14 @@
 module AresMUSH
   module Handles
-    class CharProfileTemplate
+    class CharProfileTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       def initialize(client, char)
-        @client = client
         @char = char
+        super client
       end
       
-      def display
+      def build_template
           text = "-~- %xh%xg#{@char.name}@#{Global.read_config("game", "name")}%xn -~-".center(78)
           text << "%r"
           text << status
@@ -34,7 +34,7 @@ module AresMUSH
       
       def alts
         text = format_field_title t('handles.alts')
-        text << Handles.get_visible_alts(@char, @client.char)
+        text << Handles.get_visible_alts(@char, self.client.char)
         text << "%R%R#{t('handles.alts_notice')}"
         text
       end
@@ -50,7 +50,7 @@ module AresMUSH
         if (@char.client)
           text << t('handles.currently_connected')
         else
-          text << OOCTime.local_long_timestr(@client, @char.last_on)
+          text << OOCTime.local_long_timestr(self.client, @char.last_on)
         end
         text
       end

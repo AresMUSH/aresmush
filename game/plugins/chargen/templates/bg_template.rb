@@ -1,15 +1,16 @@
 module AresMUSH
   module Chargen
-    class BgTemplate
+    class BgTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       attr_accessor :char
       
-      def initialize(char)
+      def initialize(char, client)
         @char = char
+        super client
       end
       
-      def display
+      def build_template
         text = "%l1%r"
         text << "%xh#{name}%xn #{approval_status} #{page_title}%r"
         text << "%l2%r"

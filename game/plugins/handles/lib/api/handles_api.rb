@@ -82,7 +82,7 @@ module AresMUSH
             handle_name =  model.handle
             
             template = CharProfileTemplate.new(client, model)
-            client.emit template.display
+            template.render
             
             if (model.handle && model.handle_visible_to?(client.char))
               Handles.send_handle_profile_request(client, handle_name)

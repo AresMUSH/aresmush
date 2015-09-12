@@ -18,6 +18,7 @@ module AresMUSH
         actor[0].actor = actorname
         actor[0].save
       end
+      Global.client_monitor.reload_clients
     end
   end
 end

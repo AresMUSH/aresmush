@@ -44,9 +44,9 @@ module AresMUSH
       return true
     end
     
-    def self.show_bg(model)
-      template = BgTemplate.new(model)
-      template.display
+    def self.show_bg(model, client)
+      template = BgTemplate.new(model, client)
+      template.render
     end
     
     def self.read_tutorial(name)

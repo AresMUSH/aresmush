@@ -42,7 +42,7 @@ module AresMUSH
         Chargen.check_chargen_locked(client.char)
       end
       
-      def handle        
+      def handle   
         group = Groups.get_group(self.group_name)
         
         if (group.nil?)

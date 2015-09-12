@@ -1,6 +1,5 @@
 module AresMUSH
   module Groups
-    # Template for an individual job
     class CensusTemplate
       include TemplateFormatters
             

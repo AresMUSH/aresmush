@@ -23,7 +23,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          client.emit Chargen.show_bg(model)
+          Chargen.show_bg(model, client)
         end
       end
     end

@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class WhereTemplate
+    class WhereTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       # NOTE!  Because so many fields are shared between the who and where templates,
@@ -8,13 +8,14 @@ module AresMUSH
       include WhoCharacterFields
       include CommonWhoFields
     
-      def initialize(online_chars)
+      def initialize(online_chars, client)
         self.online_chars = online_chars
+        super client
       end
       
-      def display
+      def build_template
         text = header(t('who.where_header'))
-        
+      
         chars_by_room.each do |c|
           text << "%R"
           text << char_status(c)
@@ -27,7 +28,7 @@ module AresMUSH
           text << " "
           text << char_idle(c)
         end
-        
+      
         text << footer()
         
         text

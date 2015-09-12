@@ -28,9 +28,9 @@ module AresMUSH
             template = FS3Sheet.sheet_templates[i].new(model)
             client.emit template.display
           end
-          template = InfoTemplate.new(model)
-          client.emit template.display
-          client.emit Chargen.show_bg(model)
+          template = InfoTemplate.new(model, client)
+          template.render
+          Chargen.show_bg(model, client
           client.emit Describe.char_backup(model, client)
         end
       end

@@ -1,15 +1,16 @@
 module AresMUSH
   module FS3Sheet
-    class WikiTemplate
+    class WikiTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       attr_accessor :char
       
-      def initialize(char)
+      def initialize(char, client)
         @char = char
+        super client
       end
       
-      def display
+      def build_template
         text = "[[include characterbox%r"
         text << "|image=%r"
         text << "|actor=#{ actor }%r"

@@ -9,8 +9,8 @@ module AresMUSH
       end
       
       def handle       
-        template = BoardListTemplate.new(client.char) 
-        client.emit template.display
+        template = BoardListTemplate.new(client.char, client) 
+        template.render
       end
     end
   end

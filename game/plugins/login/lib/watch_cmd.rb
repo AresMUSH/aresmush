@@ -1,5 +1,5 @@
 module AresMUSH
-  module Friends
+  module Login
     class WatchCmd
       include Plugin
       include PluginRequiresLogin

@@ -10,7 +10,7 @@ module AresMUSH
       
       def handle        
         template = InboxTemplate.new(client, Mail.filtered_mail(client), false, client.char.mail_filter)
-        client.emit template.display
+        template.render
       end
     end
   end

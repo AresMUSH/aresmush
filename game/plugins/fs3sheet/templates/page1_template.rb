@@ -1,15 +1,16 @@
 module AresMUSH
   module FS3Sheet
-    class SheetPage1Template
+    class SheetPage1Template < AsyncTemplateRenderer
       include TemplateFormatters
       
       attr_accessor :char
       
-      def initialize(char)
+      def initialize(char, client)
         @char = char
+        super client
       end
       
-      def display
+      def build_template
         text = header_display()
         text << "%l2%r"
 

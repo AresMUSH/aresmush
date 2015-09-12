@@ -16,8 +16,8 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          template = InfoTemplate.new(model)
-          client.emit template.display
+          template = InfoTemplate.new(model, client)
+          template.render
         end
       end
     end

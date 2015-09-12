@@ -24,7 +24,7 @@ module AresMUSH
         end
         
         template = PostTemplate.new(board, first_unread, client)
-        client.emit template.display
+        template.render
         
         Bbs.mark_read_for_player(client.char, first_unread)
         client.program[:last_bbs_post] = first_unread
