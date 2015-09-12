@@ -33,7 +33,7 @@ module AresMUSH
 
           subject = t('mail.forwarded_subject', :subject => msg.subject)
           template = ForwardedTemplate.new(client, delivery, self.comment)
-          body = template.build_template
+          body = template.build
           
           if (Mail.send_mail(self.names, subject, body, client))
             client.emit_ooc t('mail.message_forwarded')

@@ -14,7 +14,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = "%l1%r"
         text << "%xh#{name}%xn #{author}%r"
         text << "#{subject} #{date}%r"

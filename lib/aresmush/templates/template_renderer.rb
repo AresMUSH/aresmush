@@ -9,12 +9,12 @@ module AresMUSH
     def render
       EM.defer do
         AresMUSH.with_error_handling(self.client, "Rendering template:") do        
-          self.client.emit build_template
+          self.client.emit build
         end
       end
     end
     
-    def build_template
+    def build
       raise "Not implemented."
     end
   end

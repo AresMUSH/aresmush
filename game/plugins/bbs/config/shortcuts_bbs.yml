@@ -1,6 +1,7 @@
 shortcuts:
     roots:
         "bbread": "bbs"
+        "bbscan" : "bbs"
     
     full:
         "bbpost" : "bbs/post"

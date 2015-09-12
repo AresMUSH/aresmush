@@ -8,7 +8,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = "%l1%r"
         text << "%xh#{notices_title}%xn%r"
         text << "#{mail}%r"

@@ -13,7 +13,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = "%l1%r"
         text << "%xh#{t('bbs.boards_list_title')}%xn%r"
         text << "%l2"

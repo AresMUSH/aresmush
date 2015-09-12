@@ -10,7 +10,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = "[[include characterbox%r"
         text << "|image=%r"
         text << "|actor=#{ actor }%r"

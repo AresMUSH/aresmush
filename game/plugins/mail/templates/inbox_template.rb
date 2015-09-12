@@ -19,7 +19,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = header()
         
         messages.each_with_index do |msg, i|

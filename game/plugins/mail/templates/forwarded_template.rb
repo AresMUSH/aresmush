@@ -16,7 +16,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = "#{comment}"
         text << "%r%r"
         text << "%xh---- [#{t('mail.original_message')}] ----%xn%R"

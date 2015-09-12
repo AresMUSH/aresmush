@@ -8,7 +8,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
           text = "-~- %xh%xg#{@char.name}@#{Global.read_config("game", "name")}%xn -~-".center(78)
           text << "%r"
           text << status

@@ -11,7 +11,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         census = @chars.sort_by { |c| c.name }.map { |c| char_entry(c) }
         BorderedDisplay.paged_list(census, @page, 15, t('groups.full_census_title'))
       end

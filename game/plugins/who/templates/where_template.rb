@@ -13,7 +13,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = header(t('who.where_header'))
       
         chars_by_room.each do |c|

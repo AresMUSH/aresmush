@@ -11,7 +11,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         
         group = Groups.get_group(@group_name)
         

@@ -13,7 +13,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = header(t('who.who_header'))
         chars_by_handle.each do |c|
           text << "%R"

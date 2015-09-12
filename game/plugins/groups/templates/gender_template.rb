@@ -10,7 +10,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         title = t('groups.gender_census_title')
         list = Groups.census_by { |c| c.gender }
         BorderedDisplay.list list, title

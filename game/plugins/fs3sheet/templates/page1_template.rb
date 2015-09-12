@@ -10,7 +10,7 @@ module AresMUSH
         super client
       end
       
-      def build_template
+      def build
         text = header_display()
         text << "%l2%r"
 
