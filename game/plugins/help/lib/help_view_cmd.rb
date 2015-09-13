@@ -30,14 +30,16 @@ module AresMUSH
       end
       
       def handle
-        found = find_match(self.category_index)
-        if (!found)
-          Help.categories.each do |k, v|
-            next if v["command"] == self.category_index["command"]
-            found = find_match(v)
-            return if found
+        Global.dispatcher.spawn("Getting help file:", client) do      
+          found = find_match(self.category_index)
+          if (!found)
+            Help.categories.each do |k, v|
+              next if v["command"] == self.category_index["command"]
+              found = find_match(v)
+              return if found
+            end
+            client.emit_failure t('help.not_found', :topic => self.topic)
           end
-          client.emit_failure t('help.not_found', :topic => self.topic)
         end
       end
       
@@ -84,15 +86,13 @@ module AresMUSH
       end
       
       def display_help(topic_key, index)
-        Global.dispatcher.spawn("Getting help file:", client) do
-          category_title = index["title"]
-          title = t('help.topic', :category => category_title, :topic => topic_key.titleize)
-          begin
-            text = Help.load_help(topic_key, index)
-            client.emit BorderedDisplay.text(text.chomp, title)
-          rescue Exception => e
-            client.emit_failure t('help.error_loading_help', :topic => topic_key, :error => e)
-          end
+        category_title = index["title"]
+        title = t('help.topic', :category => category_title, :topic => topic_key.titleize)
+        begin
+          text = Help.load_help(topic_key, index)
+          client.emit BorderedDisplay.text(text.chomp, title)
+        rescue Exception => e
+          client.emit_failure t('help.error_loading_help', :topic => topic_key, :error => e)
         end
       end
     end
