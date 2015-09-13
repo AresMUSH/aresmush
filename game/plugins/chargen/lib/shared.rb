@@ -82,7 +82,7 @@ module AresMUSH
           display << "%R%l2%R"
         end        
         if (help_file)
-          display << Help.load_help("main", help_file)
+          display << Help.load_help(help_file)
         end
         display << "%R%L2%R#{prev_page_footer}#{next_page_footer}"
       rescue Exception => e

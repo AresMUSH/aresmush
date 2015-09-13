@@ -4,52 +4,65 @@ module AresMUSH
     class HelpListCmd
       include Plugin
       include PluginWithoutSwitches
-      include PluginRequiresArgs
 
-      attr_accessor :category, :page
+      attr_accessor :category_index, :page
       
-      def initialize
-        self.required_args = ['category']
-        self.help_topic = 'help'
-        super
-      end
-            
       def want_command?(client, cmd)
-        Help.valid_commands.include?(cmd.root) && cmd.args.nil?
+        cmd.root.end_with?("help") && !cmd.args
       end
 
       def crack!
-        self.category = Help.category_for_command(cmd.root)
+        self.category_index = Help.command_to_category_index(cmd.root)
         self.page = cmd.page.nil? ? 1 : cmd.page.to_i
       end
       
+      def check_valid_category
+        return t('help.unrecognized_help_library') if !self.category_index
+        return nil
+      end
+        
       def check_can_view_help
-        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return nil if !self.category_index
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category_index)
         return nil
       end
       
       def handle
-        toc = Help.category_toc(self.category)
-        text = []
-        toc.sort.each do |toc_key|
-          text << "%xg#{toc_key.titleize}%xn"
-          entries = Help.topics_for_toc(self.category, toc_key)
-          entries.each do |entry_key, entry_value|
-            text << "     %xh#{entry_key.titleize}%xn - #{entry_value["summary"]}"
-          end
-        end
-        categories = Help.categories.select { |c| c != self.category }
+        list = []
         
-        title = t('help.toc', :category => Help.category_title(self.category))
-        footer = ""
-        if (!categories.empty?)
-          footer << "%l2%r"
-          footer << "%xh#{t('help.other_help_libraries')}%xn"
-          categories.keys.each do |category|
-            footer << " \[#{categories[category]['command']}\] #{categories[category]['title']}"
+        topics_by_toc.sort.each do |name, subtopics|
+          list << "%xg#{name}%xn"
+          subtopics.each do |title, data|
+            list << "%T%xh#{title.titleize}%xn - #{data["summary"]}"
           end
         end
-        client.emit BorderedDisplay.paged_list(text, self.page, 20, title, footer)
+        
+        title = t('help.toc', :category => category_index["title"])
+        
+        client.emit BorderedDisplay.paged_list(list, self.page, 20, title, footer)
+      end
+      
+      def topics_by_toc
+        topics = self.category_index["topics"]
+        topics_by_toc = {}
+      
+        topics.each do |k, v|
+          toc = v["toc_topic"]
+          next if !toc
+          topics_by_toc[toc] = {} if !topics_by_toc[toc]
+          topics_by_toc[toc][k] = v
+        end
+      
+        topics_by_toc
+      end
+      
+      def footer
+        footer = "%l2%r"
+        footer << "%xh#{t('help.other_help_libraries')}%xn"
+        Help.categories.each do |c, v|
+          footer << " \[#{v['command']}\] #{v['title']}"
+        end
+        footer
       end
     end
   end
