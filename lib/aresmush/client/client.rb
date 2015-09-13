@@ -77,7 +77,10 @@ module AresMUSH
         return if input !~ /\S/
         self.input_buffer = self.input_buffer + input
         return if (!self.input_buffer.end_with?("\r") && !self.input_buffer.end_with?("\n"))
-        Global.dispatcher.on_command(self, Command.new(self.input_buffer))
+        input = self.input_buffer
+        input.force_encoding(Encoding::UTF_8)
+        input.scrub! if !input.valid_encoding?
+        Global.dispatcher.on_command(self, Command.new(input))
         self.input_buffer = ""
       rescue Exception => e
          Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")
