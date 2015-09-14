@@ -3,7 +3,7 @@ server:
     hostname: scrozzle.noderunner.net
 
     # The port number your game will listen on
-    port: 4000
+    port: 4001
     
     # Name of your game.
     name: Furystorm

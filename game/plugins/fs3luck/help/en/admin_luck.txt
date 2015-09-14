@@ -1,3 +1,0 @@
-Admins can award luck points.
-
-    %xcluck/award <name>%xn
