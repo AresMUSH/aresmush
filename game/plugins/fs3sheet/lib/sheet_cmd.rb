@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module Sheet
+  module FS3Sheet
     class SheetCmd
       include Plugin
       include PluginRequiresLogin
@@ -25,14 +25,14 @@ module AresMUSH
       
       def check_page
         return t('sheet.invalid_page_number') if self.page <= 0
-        return t('sheet.not_that_many_pages') if self.page > Sheet.sheet_templates.count
+        return t('sheet.not_that_many_pages') if self.page > FS3Sheet.sheet_templates.count
         return nil
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          template = Sheet.sheet_templates[self.page - 1].new(model)
-          client.emit template.display
+          template = FS3Sheet.sheet_templates[self.page - 1].new(model, client)
+          template.render
         end
       end
     end

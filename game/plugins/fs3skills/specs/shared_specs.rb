@@ -4,9 +4,10 @@ module AresMUSH
       include MockClient
       
       before do
-        Global.stub(:read_config).with("fs3skills", "attributes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
-        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "ruling_attr" => "Reaction" } ] }
-        Global.stub(:read_config).with("fs3skills", "default_ruling_attr") { "Mind" }
+        Global.stub(:read_config).with("fs3skills", "aptitudes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
+        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "related_apt" => "Reaction" }, { "name" => "First Aid" } ] }
+        Global.stub(:read_config).with("fs3skills", "default_related_apt") { "Mind" }
+        Global.stub(:read_config).with("fs3skills", "advantages") { [{ "name" => "Wealth" }] }
 
         SpecHelpers.stub_translate_for_testing   
       end
@@ -20,39 +21,39 @@ module AresMUSH
           @client.stub(:char) { @char }
         end
         
-        context "attributes" do
+        context "aptitudes" do
           it "should set a new ability" do
             FS3Skills.set_ability(@client, @char, "Mind", 2)
-            @char.fs3_attributes["Mind"]["rating"].should eq 2
+            @char.fs3_aptitudes["Mind"].should eq 2
           end
         
           it "should update an ability" do
             FS3Skills.set_ability(@client, @char, "Mind", 2)
             FS3Skills.set_ability(@client, @char, "Mind", 3)
-            @char.fs3_attributes["Mind"]["rating"].should eq 3
+            @char.fs3_aptitudes["Mind"].should eq 3
           end
         
           it "should fail if rating too high" do
             @client.should_receive(:emit_failure).with('fs3skills.max_rating_is')
-            FS3Skills.set_ability(@client, @char, "Mind", 5)
+            FS3Skills.set_ability(@client, @char, "Mind", 6)
           end
           
           it "should fail if rating too low" do
             @client.should_receive(:emit_failure).with('fs3skills.min_rating_is')
-            FS3Skills.set_ability(@client, @char, "Mind", 0)
+            FS3Skills.set_ability(@client, @char, "Mind", -1)
           end
         end
       
         context "action skills" do
           it "should set a new ability" do
             FS3Skills.set_ability(@client, @char, "Firearms", 2)
-            @char.fs3_action_skills["Firearms"]["rating"].should eq 2
+            @char.fs3_action_skills["Firearms"].should eq 2
           end
         
           it "should update an ability" do
             FS3Skills.set_ability(@client, @char, "Firearms", 2)
             FS3Skills.set_ability(@client, @char, "Firearms", 3)
-            @char.fs3_action_skills["Firearms"]["rating"].should eq 3
+            @char.fs3_action_skills["Firearms"].should eq 3
           end
         
           it "should clear an ability" do
@@ -70,57 +71,50 @@ module AresMUSH
             @client.should_receive(:emit_failure).with('fs3skills.min_rating_is')
             FS3Skills.set_ability(@client, @char, "Firearms", -1)
           end
+                
+          it "should fail if + in skill name" do
+            @client.should_receive(:emit_failure).with('fs3skills.no_special_characters')
+            FS3Skills.set_ability(@client, @char, "Basket+Weaving", 2)
+          end
+        
+          it "should fail if - in skill name" do
+            @client.should_receive(:emit_failure).with('fs3skills.no_special_characters')
+            FS3Skills.set_ability(@client, @char, "Basket-Weaving", 2)
+          end
+        
+          it "should fail if / in skill name" do
+            @client.should_receive(:emit_failure).with('fs3skills.no_special_characters')
+            FS3Skills.set_ability(@client, @char, "Basket/Weaving", 2)
+          end
+        
+          it "should allow spaces in skill name" do
+            FS3Skills.set_ability(@client, @char, "First Aid", 2)
+            @char.fs3_action_skills["First Aid"].should eq 2
+          end
         end
-      
-        context "bg skills" do
+        
+        context "advantages" do
           it "should set a new ability" do
-            FS3Skills.set_ability(@client, @char, "Basketweaving", 2)
-            @char.fs3_background_skills["Basketweaving"]["rating"].should eq 2
+            FS3Skills.set_ability(@client, @char, "Wealth", 2)
+            @char.fs3_advantages["Wealth"].should eq 2
           end
         
           it "should update an ability" do
-            FS3Skills.set_ability(@client, @char, "Basketweaving", 2)
-            FS3Skills.set_ability(@client, @char, "Basketweaving", 3)
-            @char.fs3_background_skills["Basketweaving"]["rating"].should eq 3
-          end
-        
-          it "should clear an ability" do
-            FS3Skills.set_ability(@client, @char, "Basketweaving", 2)
-            FS3Skills.set_ability(@client, @char, "Basketweaving", 0)
-            @char.fs3_background_skills["Basketweaving"].should be_nil            
+            FS3Skills.set_ability(@client, @char, "Wealth", 2)
+            FS3Skills.set_ability(@client, @char, "Wealth", 3)
+            @char.fs3_advantages["Wealth"].should eq 3
           end
         
           it "should fail if rating too high" do
             @client.should_receive(:emit_failure).with('fs3skills.max_rating_is')
-            FS3Skills.set_ability(@client, @char, "Basketweaving", 13)
+            FS3Skills.set_ability(@client, @char, "Wealth", 6)
           end
           
           it "should fail if rating too low" do
             @client.should_receive(:emit_failure).with('fs3skills.min_rating_is')
-            FS3Skills.set_ability(@client, @char, "Basketweaving", -1)
+            FS3Skills.set_ability(@client, @char, "Wealth", -1)
           end
         end
-                
-        it "should fail if + in skill name" do
-          @client.should_receive(:emit_failure).with('fs3skills.no_special_characters')
-          FS3Skills.set_ability(@client, @char, "Basket+Weaving", 2)
-        end
-        
-        it "should fail if - in skill name" do
-          @client.should_receive(:emit_failure).with('fs3skills.no_special_characters')
-          FS3Skills.set_ability(@client, @char, "Basket-Weaving", 2)
-        end
-        
-        it "should fail if / in skill name" do
-          @client.should_receive(:emit_failure).with('fs3skills.no_special_characters')
-          FS3Skills.set_ability(@client, @char, "Basket/Weaving", 2)
-        end
-        
-        it "should allow spaces in skill name" do
-          FS3Skills.set_ability(@client, @char, "Basket Weaving", 2)
-          @char.fs3_background_skills["Basket Weaving"]["rating"].should eq 2
-        end
-        
       end
       
       describe :parse_and_roll do
@@ -203,7 +197,7 @@ module AresMUSH
       
       
       describe :can_parse_roll_params do
-        it "should handle attribute by itself" do
+        it "should handle aptitude by itself" do
           params = FS3Skills.parse_roll_params("A")
           check_params(params, "A", 0, nil)
         end
@@ -264,10 +258,77 @@ module AresMUSH
         end
       end
       
-      def check_params(params, ability, modifier, ruling_attr)
+      def check_params(params, ability, modifier, related_apt)
         params.ability.should eq ability
         params.modifier.should eq modifier
-        params.ruling_attr.should eq ruling_attr
+        params.related_apt.should eq related_apt
+      end
+      
+      describe :dice_to_roll_for_ability do
+        before do
+          @char = double
+          @char.stub(:name) { "Nemo" }
+                  
+          FS3Skills.stub(:get_ability_type).with(@char, "Firearms") { :action }
+          FS3Skills.stub(:ability_rating).with(@char, "Firearms") { 1 }
+          FS3Skills.stub(:ability_rating).with(@char, "Reaction") { 3 }
+          FS3Skills.stub(:ability_rating).with(@char, "Mind") { 1 }
+          FS3Skills.stub(:ability_rating).with(@char, "Untrained") { 0 }
+          FS3Skills.stub(:ability_rating).with(@char, "Basketweaving") { 3 }
+          FS3Skills.stub(:get_related_apt).with(@char, "Firearms") { "Reaction" }
+          FS3Skills.stub(:get_related_apt).with(@char, "Basketweaving") { "Reaction" }
+        end
+      
+        it "should roll ability alone" do
+          roll_params = RollParams.new("Firearms")
+          # Rolls Firearms + Reaction 
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 5
+        end
+      
+        it "should roll ability + a different ruling attr" do
+          roll_params = RollParams.new("Firearms", 0, "Mind")
+          # Rolls Firearms + Mind
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 3
+        end
+      
+        it "should roll ability + modifier" do
+          roll_params = RollParams.new("Firearms", 1)
+          # Rolls Firearms + Reaction + 1
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
+        end
+      
+        it "should roll ability - modifier" do
+          roll_params = RollParams.new("Firearms", -1)
+          # Rolls Firearms + Reaction - 1 
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 4
+        end
+      
+        it "should roll ability + ruling attr + modifier" do
+          roll_params = RollParams.new("Firearms", 3, "Mind")
+          # Rolls Firearms + Mind + 3 
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
+        end
+        
+        it "should not count aptitude mod for aptitude" do
+          roll_params = RollParams.new("Reaction")
+          FS3Skills.stub(:get_ability_type).with(@char, "Reaction") { :aptitude }
+          # Rolls Reaction + Reaction --> 8 dice
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
+        end
+        
+        it "should not count aptitude mod for nonexistant" do
+          roll_params = RollParams.new("Untrained")
+          FS3Skills.stub(:get_ability_type).with(@char, "Untrained") { :nonexistant }
+          # Rolls Unskilled + no modifier --> 0 dice
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 0
+        end
+        
+        it "should count aptitude mod for an interest" do
+          roll_params = RollParams.new("Basketweaving")
+          FS3Skills.stub(:get_ability_type).with(@char, "Basketweaving") { :interest }
+          # Basketweaving stubbed to return rating 3 + Reaction
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 9
+        end
       end
     end
   end

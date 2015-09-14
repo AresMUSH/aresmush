@@ -1,7 +1,8 @@
 en:
     friends:
         friends_header: "Friends On This Game      Last On"
-        handle_friends_header: "Handle Friends            Public Alts On This Game"
+        handle_friends_header: "Handle Friends With Alts On This Game(*)"
+        alts_notice: "(*) Alt visibility is based on the player's privacy settings.  Do not share this info with others."        
         already_friend: "%{name} is already on your friends list."
         not_friend: "%{name} is not on your friends list."
         friend_added: "%{name} has been added to your friends list."
@@ -10,3 +11,5 @@ en:
         cant_manage_handle_friends_on_master: 'On AresCentral, handle name and character name are the same.  Use the character name without the "@" to add or remove a friend here.'
         sending_friends_request: "Sending friend request to AresCentral.  Please be patient."
         invalid_friend_name: "Invalid friend name."
+        note_on_arescentral_only: "Go to AresCentral to add notes for your handle friends."
+        note_added: "You add a note about %{name}."

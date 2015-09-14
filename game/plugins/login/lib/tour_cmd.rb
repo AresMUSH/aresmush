@@ -3,10 +3,12 @@ module AresMUSH
     class TourCmd
       include Plugin
       include PluginWithoutSwitches
-      include PluginWithoutArgs
       
       def want_command?(client, cmd)
-        cmd.root_is?("tour")
+        return false if client.logged_in?
+        return true if cmd.root_is?("tour")
+        # Special check for 'c' command to allow it to be used as chat alias.
+        return (cmd.root_is?("connect") || cmd.root_is?("c")) && cmd.args.start_with?("guest")
       end
       
       def check_not_already_logged_in

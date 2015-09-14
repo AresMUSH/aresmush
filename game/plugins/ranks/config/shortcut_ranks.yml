@@ -1,0 +1,6 @@
+shortcuts:
+    roots:
+        "ranks": "rank"
+
+    full:
+        "rank/clear": "rank/set"

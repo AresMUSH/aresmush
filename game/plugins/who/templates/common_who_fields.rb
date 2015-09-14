@@ -22,7 +22,7 @@ module AresMUSH
       
       # List of connected characters, sorted by room name then character name.
       def chars_by_room
-        self.online_chars.sort_by{ |c| [who_room_name(c), c.name] }
+        self.online_chars.sort_by{ |c| [Who.who_room_name(c), c.name] }
       end 
       
       # List of connected characters, sorted by handle name (if public) then character name.
@@ -47,7 +47,7 @@ module AresMUSH
       end
     
       def mush_name
-        center(Global.read_config("server", "name"), 78)
+        center(Global.read_config("game", "name"), 78)
       end
     end
   end

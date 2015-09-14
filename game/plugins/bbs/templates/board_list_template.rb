@@ -1,18 +1,19 @@
 module AresMUSH
   module Bbs
     # Template for the list of all bulletin boards.
-    class BoardListTemplate
+    class BoardListTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       # List of all bulletin boards in order.
       attr_accessor :boards
       
-      def initialize(char)
+      def initialize(char, client)
         @char = char
         @boards = BbsBoard.all_sorted
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xh#{t('bbs.boards_list_title')}%xn%r"
         text << "%l2"

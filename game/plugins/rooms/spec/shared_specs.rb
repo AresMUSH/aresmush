@@ -27,9 +27,10 @@ module AresMUSH
         it "should emit current room desc" do
           client = double
           room = double
-          Describe.should_receive(:get_desc).with(room, client) { "a desc" }
+          template = double
+          Describe.should_receive(:get_desc_template).with(room, client) { template }
+          template.should_receive(:render)
           client.stub(:room) { room }
-          client.should_receive(:emit).with("a desc")
           Rooms.emit_here_desc(client)
         end
       end   

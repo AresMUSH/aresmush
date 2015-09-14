@@ -6,7 +6,7 @@ module AresMUSH
       include PluginWithoutArgs
       
       def want_command?(client, cmd)
-        cmd.root_is?("jobs") && cmd.switch_is?("purge")
+        cmd.root_is?("job") && cmd.switch_is?("purge")
       end
       
       def handle

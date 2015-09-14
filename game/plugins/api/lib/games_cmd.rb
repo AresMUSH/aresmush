@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :filter, :page
       
       def want_command?(client, cmd)
-        cmd.root_is?("games")
+        cmd.root_is?("game") && !cmd.switch
       end
       
       def crack!
@@ -23,16 +23,8 @@ module AresMUSH
           games = ServerInfo.all
         end
         
-        games = games.select { |g| g.is_open? }
-        games = games.sort_by {|g| [g.category.nil? ? "" : g.category, g.name] }
-        list = games.map { |s| "#{left(s.name, 60)} #{left(s.category, 15)}" }
-        
-        if (!Global.api_router.is_master?)
-          footer = t('api.full_games_list_at_central')
-        else
-          footer = ""
-        end
-        client.emit BorderedDisplay.paged_list list, self.page, 15, t('api.games_title'), footer
+        template = GamesListTemplate.new games, self.page, client
+        template.render
       end
     end
   end

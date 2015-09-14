@@ -1,7 +1,7 @@
 module AresMUSH
   module Mail
     # Template for a character's inbox or list of messages.
-    class InboxTemplate
+    class InboxTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       # The character's mail messages.
@@ -12,14 +12,14 @@ module AresMUSH
       attr_accessor :folder
       
       def initialize(client, messages, show_from, folder)
-        @client = client
         @char = client.char
         @messages = messages
         @show_from = show_from
         @folder = folder
+        super client
       end
       
-      def display
+      def build
         text = header()
         
         messages.each_with_index do |msg, i|
@@ -61,7 +61,7 @@ module AresMUSH
       end
 
       def message_date(msg)
-        OOCTime.local_short_timestr(@client, msg.message.created_at)
+        OOCTime.local_short_timestr(self.client, msg.message.created_at)
       end
       
       # Message sent to or sent from, depending on the inbox mode.

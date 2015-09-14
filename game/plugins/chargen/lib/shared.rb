@@ -11,7 +11,24 @@ module AresMUSH
     
     def self.can_manage_bgs?(actor)
       return actor.has_any_role?(Global.read_config("chargen", "roles", "can_manage_bgs"))
+    end     
+    
+    def self.can_view_bgs?(actor)
+      return actor.has_any_role?(Global.read_config("chargen", "roles", "can_view_bgs"))
     end      
+    
+    def self.approval_status(char)
+      if (char.on_roster?)
+        status = "%xb%xh#{t('chargen.rostered')}%xn"
+      elsif (char.idled_out)
+        status = "%xr%xh#{t('chargen.idled_out', :status => char.idled_out)}%xn"
+      elsif (!char.is_approved?)
+        status = "%xr%xh#{t('chargen.unapproved')}%xn"
+      else
+        status = "%xg%xh#{t('chargen.approved')}%xn"
+      end        
+      status
+    end
     
     def self.can_edit_bg?(actor, model, client)
       if (model.is_approved && !Chargen.can_manage_bgs?(actor))
@@ -20,11 +37,16 @@ module AresMUSH
       end
       
       if (actor != model && !Chargen.can_manage_bgs?(actor))
-        client.emit_failure t('chargen.no_permission')
+        client.emit_failure t('chargen.cannot_edit_bg')
         return false
       end
 
       return true
+    end
+    
+    def self.show_bg(model, client)
+      template = BgTemplate.new(model, client)
+      template.render
     end
     
     def self.read_tutorial(name)
@@ -60,22 +82,17 @@ module AresMUSH
           display << "%R%l2%R"
         end        
         if (help_file)
-          display << Help.load_help("main", help_file)
+          display << Help.load_help(help_file)
         end
         display << "%R%L2%R#{prev_page_footer}#{next_page_footer}"
-      rescue
+      rescue Exception => e
         error_msg = "Error loading chargen tutorial stage #{stage}"
-        Global.logger.error error_msg
+        Global.logger.error "#{error_msg}: #{e}"
         Global.dispatcher.queue_event UnhandledErrorEvent.new(error_msg)
         display << t('chargen.error_loading_tutorial')
       end
       
       display
-      #Tutorials.get_page_for_tutorial(Chargen.tutorial_name,
-      #  char.chargen_stage,
-      #  t('chargen.prev_page_footer'),
-      #  t('chargen.next_page_footer'),
-      #  "TEST%R")
     end
   end
 end

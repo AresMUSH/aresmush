@@ -10,28 +10,13 @@ module AresMUSH
       end
       
       def handle
-        text = ""
-        Global.read_config("roles", "game_admin").each do |role|
-          if (!text.blank?)
-            text << "%R%R"
-          end
-          text << "%xh#{role.titleize}%xn"
-          Roles.chars_with_role(role).sort_by { |r| r.name }.each do |c|
-            next if (Game.master.is_special_char?(c))
-            text << "%R#{left(c.name,35)}#{admin_status(c)}"
-          end
+        admins_by_role = {}
+        roles = Global.read_config("roles", "game_admin")
+        roles.each do |r|
+          admins_by_role[r] = Roles.chars_with_role(r)
         end
-            
-        client.emit BorderedDisplay.text text, t('roles.game_admin')
-      end
-
-      def admin_status(a)
-        if (a.client)
-          connected = a.is_on_duty? ? t('roles.connected_on_duty') : t('roles.connected_off_duty')
-        else
-          connected = t('roles.last_on', :last_on => OOCTime.local_long_timestr(client, a.last_on))
-        end
-        return connected
+        template = AdminTemplate.new(admins_by_role, client)
+        template.render
       end
     end
   end

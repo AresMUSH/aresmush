@@ -4,6 +4,7 @@ skin:
     # You can have as many lines as you wish and use them in your template files, but
     # line1 through line4 have shortcuts that can be used in any poses, text, templates
     # as %l1, %l2, %l3, %l4
+<<<<<<< HEAD
     line1: "%b%b%xc.--.%t.-'.%t.%t%t%t%t%t%t%b%b%b.%t.`-.%t%b.--.%xn%r::::::%xc`;%xn:::::::%xc`;%xn::::%b%xh%xwFurystorm: A Codex of Alera MUSH%xn%b%xc`;%xn::::::%xc.`;%xn:::::::%xc.`;%xn::%r%xc-'%t`--'%t`.-'%t%t%t%t%t%t%t%b`-.'%t`--'%t%b`-%xn"
     line2: "%xc------------------------------------------------------------------------------%xn"
     line3: "%xc----[%bFurystorm%b]-----------------------------------------------------------%xn"
@@ -21,3 +22,9 @@ skin:
         width: 20
         left_spacer: "["
         right_spacer: "]"
+=======
+    line1: "%x!+==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+%xn"
+    line2: "%x!------------------------------------------------------------------------------%xn"
+    line3: "%x!----[AresMUSH]----------------------------------------------------------------%xn"
+    line4: "%x!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%xn"
+>>>>>>> upstream/master

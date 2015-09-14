@@ -42,7 +42,7 @@ module AresMUSH
         Chargen.check_chargen_locked(client.char)
       end
       
-      def handle        
+      def handle   
         group = Groups.get_group(self.group_name)
         
         if (group.nil?)
@@ -67,6 +67,7 @@ module AresMUSH
             client.emit_success t('groups.group_cleared', :group => self.group_name)
           else
             client.emit_success t('groups.group_set', :group => self.group_name, :value => self.value)
+            client.emit_ooc t('groups.group_skill_notice')
           end
         end
       end

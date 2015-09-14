@@ -1,12 +1,6 @@
-Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.
+Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.   For more information, see: http://aresmush.com/handles/
 
-For a more in-depth intro to the Handles system, check out the %xcHandles Tutorial%xn (help tutorials).  This will walk you through getting a handle and what features and privacy settings are available.
-
-You may also want to check out the following supplemental help files:
-    
-    %xhhelp handle link%xn - Link characters to your handle.
-    %xhhelp friends%xn - Learn more about how the friends system works with handles.
-    %xhhelp profile%xn - View a player's OOC profile.
+To link a character on another game to your Handle, follow the instructions in %xchelp handle link%xn.
 
 You can set your handle privacy *per-character*.
 
@@ -16,4 +10,3 @@ You can set your handle privacy *per-character*.
 Autospace and timezone preferences are automatically downloaded from your AresCentral character to each of your linked characters, so you don't have to set them everywhere you go.  You can enable or disable this on an individual character using the sync command.
 
     %xchandle/sync <on or off>%xn
-

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("game")
+        cmd.root_is?("game") && cmd.switch_is?("info")
       end
       
       def crack!
@@ -37,17 +37,22 @@ module AresMUSH
       def show_game(game, text)
         text << "%l2%r"
         
-        if (!game.is_open?)
-          text << "%xh%xr"
-          text << t("api.game_not_open")
-          text << "%xn%R%R"
-        end
 
         text << t('api.game_name', :name => game.name)
+        
+        if (!game.is_open?)
+          text << "%R%R%xh%xr"
+          text << t("api.game_not_open")
+          text << "%xn"
+          return text
+        end
+        
         text << "%R"
         text << t('api.game_address', :host => game.host, :port => game.port)
         text << "%R"
         text << t('api.game_category', :category => game.category)
+        text << "%R"
+        text << t('api.game_website', :website => game.website)
 
         if (!game.is_master?)
           last_ping = OOCTime.local_long_timestr(client, game.last_ping)        
@@ -64,7 +69,7 @@ module AresMUSH
         text << "%r%r"
         text << game.description
         
-        text << "%r"
+        text
       end
     end
   end

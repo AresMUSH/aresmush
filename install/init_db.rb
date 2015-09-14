@@ -16,8 +16,8 @@ module AresMUSH
   
       welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC", :area => "Offstage",
       :description => "Welcome!%R%R" + 
-          "New to MUSHing?  Type: %xctutorial/start new player%xn for an interactive tutorial.%R%R" +
-          "New to Ares?  Type: %xctutorial/start ares for vets%xn for a quick intro geared towards veteran players")
+          "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
+          "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players")
       ic_start_room = AresMUSH::Room.create(:name => "Onstage", :room_type => "IC")
       ooc_room = AresMUSH::Room.create(:name => "Offstage", :room_type => "OOC", :area => "Offstage",
         :description => "This is a backstage area where you can hang out when not RPing.")
@@ -81,6 +81,7 @@ module AresMUSH
       category: "Social",
       description: "Central hub for all things AresMUSH-related.", 
       host: "mush.aresmush.com",
+      website: "http://www.aresmush.com",
       game_open: "yes",
       port: 7206)
     

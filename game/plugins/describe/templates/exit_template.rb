@@ -1,14 +1,15 @@
 module AresMUSH
   module Describe
     # Template for an exit.
-    class ExitTemplate
+    class ExitTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       def initialize(model, client)
         @model = model
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xg[#{name}] #{destination}%xn%r"
         text << "#{description}%r"

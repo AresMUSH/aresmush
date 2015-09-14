@@ -13,6 +13,7 @@ en:
        outfit: "Outfit %{name}"
        your_outfits: "Your Outfits"
        outfits_worn: "You wear the outfits."
+       outfits_only_one_word: "Outfits may only have one-word names."
        
        looked_at_you: "%{name} looked at you."
        
@@ -23,7 +24,7 @@ en:
        locked: "LOCKED"
        
        played_by: "Played By:"
-       players_title: "Players:"
+       players_title: "Characters:"
        exits_title: "Exits:"
        no_way_out: "No way out!"
        

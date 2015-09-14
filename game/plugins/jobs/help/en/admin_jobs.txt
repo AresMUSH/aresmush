@@ -3,18 +3,17 @@ The Jobs system allows you to track admin work assignments.
     %xcjobs%xn - Lists active jobs.
     %xcjob <#>%xn - Views a job.
 
-Jobs can be created by players using the %xhrequest%xn command, or by automated systems through code (like when a character app is submitted).  Admin can also create jobs manually.
+Jobs can be created by players using the %xhrequest%xn command, by coded systems (e.g. apps), or manually.
 
     %xcjob/create <category>=<title>/<description>%xn - Creates a new job
-       also %xc+job/create <category>/<title>=<description>%xn
-       also %xc+job/create <title>=<description>%xn (defaults to REQ type)
 
-It's good to assign jobs to individual staff members so that nothing falls through the cracks, and people know who to contact if they have questions.
-
-    %xcjob/assign <#>=<player>%xn - Assigns a job
-    %xcjob/handle <#>%xn - Assigns a job to yourself
+You can change various attributes about the job, including its status and who it's assigned to.
     
-There are two ways for admins to comment upon a job.  A %xhdiscussion%xn comment is for admin eyes only, and will not ever be seen by the original submitter.  A %xhrespond%xn comment is viewable by the submitter.
+    %xcjob/assign <#>=<player>%xn                  %xcjob/handle <#>%xn 
+    %xcjob/status <#>=<status>%xn                  %xcjob/cat <#>=<category>%xn 
+    %xcjob/title <#>=<title>%xn                    
+    
+There are two ways for admins to comment upon a job.  A %xhdiscuss%xn comment is for admin eyes only, and will not ever be seen by the original submitter.  A %xhrespond%xn comment is viewable by the submitter.
 
     %xcjob/discuss <#>=<comment>%xn - Comments on a job (only admins may view)
     %xcjob/respond <#>=<message>%xn - Comments on a job (admins and submitter may view)
@@ -24,19 +23,4 @@ When you're done with the job, close it and it will be archived.
     %xcjob/close <#>%xn - Closes a job
     %xcjob/close <#>=<message>%xn - Closes a job with a comment to the original submitter.
 
-Once a job is closed, you will only see it if it has new activity or you use the /all option:
-
-    %xcjobs/all%xn - Lists all jobs, even closed ones.  Note: When doing multiple pages, you
-        put the number before the slash, like jobs2/all
-
-You can change various attributes about the job.
-    
-    %xcjob/status <#>=<status>%xn - Changes job status.
-    %xcjob/cat <#>=<category>%xn - Changes job category.
-    %xcjob/title <#>=<title>%xn - Changes job title.
-    
-You can keep the jobs forever, as long as you have sufficient database space.  Or you can periodically archive the closed ones to a file and purge them.
-
-    %xcjobs/backup%xn - Prints out closed jobs, which you can save to a log file.
-    %xcjobs/purge%xn - Deletes all closed jobs.
-    %xcjob/delete <#>%xn - Deletes a particular job.
+See %xhahelp jobs archive%xn for more information about what happens to closed jobs.

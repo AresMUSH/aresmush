@@ -14,7 +14,7 @@ en:
         female_objective: her
         other_objective: them
         male_subjective: he
-        female_subjective: her
+        female_subjective: she
         other_subjective: they
         
         demo_review: Checking all demographics are set.

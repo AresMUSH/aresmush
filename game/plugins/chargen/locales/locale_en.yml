@@ -3,7 +3,7 @@ en:
         you_are_already_approved: "You are already approved."
         already_approved: "%{name} is already approved."
         not_approved: "%{name} is not approved."
-        unapproved: "You unapprove %{name}."
+        app_unapproved: "You unapprove %{name}."
         app_approved: "You approve %{name}."
         app_rejected: "You reject %{name}."
         app_title: "App Review for %{name}"
@@ -28,6 +28,7 @@ en:
         misc_review_title: "Miscellaneous (help bg, help desc)"
         groups_review_title: "Groups (help groups)"
         app_review_title: "Review (help apps)"
+        goals_review_title: "Goals (help goals)"
         
         app_request: "Approval under review.  See %xhrequest %{job}%xn."
         app_job: "Approval under review.  See %xhjob %{job}%xn."
@@ -39,9 +40,10 @@ en:
         app_not_started: "Application not yet started."
         
         cannot_edit_after_approval: "You can't change your background after you've been approved."
-        no_permission:  "You don't have permission to change that background."
+        cannot_edit_bg:  "You don't have permission to change that background."
         bg_set:  "Background set."
         background_review: "Checking that you have a background."
+        no_permission_to_view_bg: "You don't have permission to view that background."
         
         app_job_submitted: "App submitted."
         app_job_resubmitted: "App re-submitted."
@@ -59,4 +61,10 @@ en:
         
         cant_be_changed: "That cannot be changed once you've been approved."
         app_in_progress: "Unsubmit your character application if you need to make changes."
+        
+        approved: "Approved"
+        unapproved: "Not Yet Approved"
+        rostered: "On Roster"
+        idled_out: "Idled Out - %{status}"
+        bg_page_title: "Background"
         

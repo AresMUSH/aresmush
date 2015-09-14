@@ -3,6 +3,7 @@ server:
     hostname: scrozzle.noderunner.net
 
     # The port number your game will listen on
+<<<<<<< HEAD
     port: 4001
     
     # Name of your game.
@@ -17,3 +18,6 @@ server:
     
     # Your game's website
     website: furystorm.wikidot.com
+=======
+    port: 4201
+>>>>>>> upstream/master

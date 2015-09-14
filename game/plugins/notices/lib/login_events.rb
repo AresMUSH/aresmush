@@ -6,8 +6,8 @@ module AresMUSH
       def on_char_connected_event(event)
         client = event.client
         Global.dispatcher.queue_timer(1, "Login notices") do 
-          template = NoticesTemplate.new(client.char)
-          client.emit template.display
+          template = NoticesTemplate.new(client.char, client)
+          template.render
         end
       end
     end

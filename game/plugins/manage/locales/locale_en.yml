@@ -41,6 +41,7 @@ en:
         
         findsite_title: "Possible site matches for %{search}"
         findsite_player_info: "Hostname: %{hostname} IP: %{ip}"
+        findsite_failed_lookup: "Failed to look up host or IP information for %{target}.  Findsite results may be incomplete."
         
         room_directory: "Room Directory"
         

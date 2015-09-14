@@ -36,6 +36,9 @@ module AresMUSH
           text = section_title(t('chargen.abilities_review_title'))
           text << FS3Skills.app_review(model)
           text << "%r%r"
+          text << section_title(t('chargen.goals_review_title'))
+          text << FS3Skills.app_goals_review(model)
+          text << "%r%r"
           text << section_title(t('chargen.demographics_review_title'))
           text << Demographics.app_review(model)
           text << "%r%r"

@@ -7,4 +7,4 @@ The %xhoutfit%xn command lets you manage multiple outfits for your character.  T
 
 You can wear a combination of outfits using the %xhwear%xn command.  This will set your description to the selected outfits.
 
-   %xcwear <list of outfits, comma separated>%xn - Wear outfits.
+   %xcwear <list of outfits>%xn - Wear outfits.

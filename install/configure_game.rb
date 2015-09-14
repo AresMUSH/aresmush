@@ -94,6 +94,11 @@ module AresMUSH
       File.open(File.join(AresMUSH.game_path, 'config', 'server.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
+      
+      template = Erubis::Eruby.new(File.read(File.join(template_path, 'game.yml.erb'), :encoding => "UTF-8"))
+      File.open(File.join(AresMUSH.game_path, 'config', 'game.yml'), 'w') do |f|
+        f.write(template.evaluate(template_data))
+      end
   
       puts "\nYour game has been configured!  You can edit these and other game options through the files in game/config."
       

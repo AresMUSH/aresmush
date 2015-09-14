@@ -2,4 +2,4 @@ One of AresMUSH's cross-game features is the game directory.  This directory lis
 
     %xcgames%xn - Lists all games.
     %xcgames <category>%xn - Narrows down the games list.
-    %xcgame <name>%xn - Views detailed info for a particular game.
+    %xcgame/info <name>%xn - Views detailed info for a particular game.

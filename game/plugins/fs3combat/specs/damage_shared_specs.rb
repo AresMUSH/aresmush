@@ -4,7 +4,7 @@ module AresMUSH
       include MockClient
       
       before do
-        Global.stub(:read_config).with("fs3combat", "toughness_attribute") { "Body" }
+        Global.stub(:read_config).with("fs3combat", "toughness_aptitude") { "Body" }
         Global.stub(:read_config).with("fs3combat", "damage_mods") { { "H" => 0, "L" => 1, "M" => 2  } }
       end
         
@@ -37,7 +37,13 @@ module AresMUSH
         end
         
         it "should add a body roll to the healing points" do
-          FS3Skills.should_receive(:one_shot_roll).with(nil, @char, { :ability => "Body", :ruling_attr => "Body" } ) { { :successes => 2 }}
+          FS3Skills.should_receive(:one_shot_roll) do |client, char, roll_params|
+            client.should be_nil
+            char.should eq @char
+            roll_params.ability.should eq "Body"
+            roll_params.related_apt.should eq "Body"
+            { :successes => 2 }
+          end
           @damage1.should_receive(:heal).with(3, true)
           @damage2.should_receive(:heal).with(3, true)        
           FS3Combat.heal_wounds(@char, @wounds, 3)

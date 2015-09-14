@@ -1,7 +1,7 @@
 module AresMUSH
   module Mail
     # Template used with a forwarded message
-    class ForwardedTemplate
+    class ForwardedTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       # Message template for getting the original message fields.
@@ -13,9 +13,10 @@ module AresMUSH
       def initialize(client, original, comment)
         @original = MessageTemplate.new(client, original)
         @comment = comment
+        super client
       end
       
-      def display
+      def build
         text = "#{comment}"
         text << "%r%r"
         text << "%xh---- [#{t('mail.original_message')}] ----%xn%R"

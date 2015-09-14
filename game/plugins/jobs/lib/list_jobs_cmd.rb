@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :page
       
       def want_command?(client, cmd)
-        cmd.root_is?("jobs") && (cmd.switch.nil? || cmd.switch_is?("all"))
+        cmd.root_is?("job") && !cmd.args && (cmd.switch.nil? || cmd.switch_is?("all"))
       end
       
       def crack!
@@ -24,7 +24,9 @@ module AresMUSH
         jobs = cmd.switch_is?("all") ? 
           Job.all : 
           Job.all.select { |j| j.is_open? || j.is_unread?(client.char) }
-
+          #Job.or( { :status.ne => "DONE" }, {:readers.nin => [client.char.id]} )
+          #Job.includes(:readers).where("reader._id" => client.char.id )
+  
         jobs = jobs.sort_by { |j| j.number }
         pagination = Paginator.paginate(jobs, self.page, 20)
         if (pagination.out_of_bounds?)

@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :area
       
       def want_command?(client, cmd)
-        cmd.root_is?("map")
+        cmd.root_is?("map") && cmd.args
       end
             
       def crack!
@@ -16,14 +16,22 @@ module AresMUSH
       end
       
       def handle
-        map = Maps.map_for_area(self.area)
+        Global.dispatcher.spawn("Reading map.", client) do
+          map = map_for_area(self.area)
         
-        if (!map)
-          client.emit_failure t('maps.no_such_map')
-          return
+          if (!map)
+            client.emit_failure t('maps.no_such_map')
+          else
+            client.emit BorderedDisplay.text map, t('maps.map_title', :area => self.area)
+          end
         end
-        
-        client.emit BorderedDisplay.text map, t('maps.map_title', :area => self.area)
+      end
+      
+      def map_for_area(area)
+        return nil if area.nil?
+        matches = Maps.available_maps.select { |m| m.downcase == area.downcase }
+        return nil if matches.empty?
+        File.read(File.join(Maps.maps_dir, "#{matches[0]}.txt"), :encoding => "UTF-8")
       end
     end
   end

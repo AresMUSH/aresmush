@@ -10,73 +10,68 @@ fs3skills:
             # as someone then to see their roll results.
             - admin
             
-    attributes:
+    aptitudes:
         -  
-            name: Mind
-            desc: "Mental fitness - Intelligence and Creativity"
-        -   
-            name: Body
-            desc: "Physical fitness - Strength, Constitution and Agility"
+            name: Athletics
+            desc: "A knack for things involving strength and agility."
         -   
             name: Reaction
-            desc: "Reflexes - Dexterity, Hand-Eye Coordination and Wits"
+            desc: "A knack for things involving hand-eye coordination and reflexes."
         -   
-            name: Presence
-            desc: "Personality - Charisma and Will"
+            name: Academics
+            desc: "A knack for logic and book learning."
+        -   
+            name: Tech
+            desc: "A knack for things blending knowledge and craftsmanship."
+        -
+            name: Creativity
+            desc: "A knack for artistic expression and imagination."
+        -
+            name: Confidence
+            desc: "A knack for presence and fortitude."
     
     action_skills:
         -
             name: Alertness
             desc: "Noticing things and being aware of your surroundings."
-            ruling_attr: Reaction
+            related_apt: Reaction
         -
             name: Demolitions
             desc: "Blowing stuff up."
-            ruling_attr: Mind
+            related_apt: Tech
         -
             name: Comms
             desc: "Ship sensors, countermeasures and communications (ECO and CIC type duties)."
-            ruling_attr: Mind
+            related_apt: Tech
         -   
             name: Firearms
             desc: "Shooting guns."
-            ruling_attr: Reaction
+            related_apt: Reaction
         -
             name: First Aid
             desc: "Patching people up outside of a hospital.  Docs should have a medical bg skill."
-            ruling_attr: Mind
+            related_apt: Tech
         -
             name: Gunnery
             desc: "Ship and vehicle weapons."
-            ruling_attr: Reaction
+            related_apt: Reaction
         - 
             name: Melee
             desc: "Fighting with fists, knives, and hand-to-hand weapons."
-            ruling_attr: Body
+            related_apt: Athletics
         -
             name: Piloting
             desc: "Flying Vipers, Raptors and other airborne vehicles."
-            ruling_attr: Reaction
+            related_apt: Reaction
         - 
             name: Stealth
             desc: "Being sneaky."
-            ruling_attr: Body
+            related_apt: Athletics
         -
             name: Technician
             desc: "General mechanics/electronics and fixing things."
-            ruling_attr: Mind
+            related_apt: Tech
 
-    background_skills:
-        - "A science - astronomy, biology, chemistry, geology, mathematics, physics, etc."
-        - "A humanity - history, literature, psychology, philosophy, poetry, etc."
-        - "A profession or trade	- cook, waitress, bartender, accountant, programmer, carpenter, brewer, blacksmith, etc."
-        - "A game - chess, roleplaying, poker, etc."
-        - "An art - sculpting, painting, sketching, photography, etc."
-        - "A form of expression - acting, singing, dancing, playing an instrument, writing"
-        - "A sport - baseball, football, gymnastics, etc."
-        - "A craft or hobby - gardening, basketweaving, knitting, etc."
-        - "An unusual interest - detective novels, game show hosts, etc."
-        
     languages:
         - "Standard - Spoken across the colonies."
         - "Gemenese - Official language of Gemenon."
@@ -86,16 +81,26 @@ fs3skills:
         - "Tauran - Official language of Tauron."
         - "Sagittaran - Tribal language of Sagittaron.  There are actually dozens of dialects."
         - "Celtan - Language of the ethnic Celtan people on Virgon's moon, Hibernia."
-        
-    default_ruling_attr: Mind
+
+    # Set to 'true' if you're using advantages, 'false' if you're not.
+    enable_advantages: false
+
+    advantages:
+        -
+            name: "Wealth"
+            desc: "Special assets."
+            related_apt: Confidence
+    
+    free_languages: 2
+    free_interests: 4
+    
+    default_related_apt: Academic
     max_high_abilities: 3
-    max_points_in_action_skills: 32
-    max_points_in_attributes: 12
-    starting_points: 60
-    high_ability_level: 7
-    max_quirks: 4
-    min_quirks: 2
-    min_background_skills: 4
+    starting_points: 20
+    high_ability_level: 4
+    min_interests: 1
+    min_hooks: 1
+    min_goals: 1
     
     starting_languages:
         - Standard
@@ -110,8 +115,8 @@ fs3skills:
         # Comment this out if it's not applicable.
         Everyone:
             skills:
-                Alertness: 2
-                Firearms: 2
+                Alertness: 1
+                Firearms: 1
                 First Aid: 1
                 Melee: 1
         # This is the group type.
@@ -123,49 +128,50 @@ fs3skills:
                 
                 skills: 
                     # List the skills and ratings they should get.
-                    Piloting: 4
-                    Gunnery: 4
+                    Piloting: 2
+                    Gunnery: 2
             Raptor Pilot:
                 skills:
-                    Piloting: 4
-                    Gunnery: 4
+                    Piloting: 2
+                    Gunnery: 1
             Raptor ECO:
                 skills:
-                    Piloting: 3
-                    Gunnery: 3
-                    Comms: 4
+                    Piloting: 1
+                    Gunnery: 2
+                    Comms: 2
             Rifleman:
                 skills:
-                    Firearms: 4
-                    Melee: 3
-            Combat Engineer:
-                notes: "A combat engineer should take a 4 or higher in either Demo or Tech."
-                skills:
-                    Demolitions: 3
-                    Firearms: 3
+                    Firearms: 2
                     Melee: 2
-                    Technician: 3
+            Combat Engineer:
+                notes: "A combat engineer should take a 2 or higher in either Demo or Tech."
+                skills:
+                    Demolitions: 2
+                    Firearms: 2
+                    Technician: 1
             Recon:
                 skills:
-                    Firearms: 4
-                    Stealth: 4
+                    Firearms: 2
+                    Stealth: 2
             Combat Medic:
                 skills:
-                    First Aid: 4
+                    First Aid: 2
             Doctor:
-                notes: "A doctor does not necessarily need first aid. They should have a background skill corresponding to their specialty (e.g. Surgery or Emergency Medicine.)"
+                notes: "A doctor does not necessarily need a high first aid. They should have an expertise corresponding to their specialty (e.g. Surgery or Emergency Medicine.)"
+                skills:
+                    First Aid: 1
             
             Nurse:
                 skills:
-                    Nursing: 4
+                    First Aid: 1
     
             Corpsman:
                 skills:
-                    First Aid: 4
+                    First Aid: 2
             
             Deckhand:
                 skills:
-                    Technician: 4
+                    Technician: 2
 
         # Example of how you can use factions or other groups to set additional skills.
         #Faction:

@@ -21,7 +21,12 @@ en:
         handle_info_title: "Handle Information"
         handle_name: "%xhHandle Name:%xn %{name}"
         handle_privacy: "%xhHandle Privacy:%xn %{privacy}"
-
+        
+        custom_profile_set: "Custom profile field %{field} set."
+        custom_profile_cleared: "Custom profile field %{field} cleared."
+        
+        see_also_info: "Use 'info' for IC info."
+        
         # Sync
         set_sync: "This character will now download preferences from AresCentral."
         clear_sync: "This character will no longer download preferences from AresCentral."
@@ -31,13 +36,22 @@ en:
 
         # Privacy
         invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"
-        privacy_set: "Your handle privacy setting for this character is now %xh%{value}%xH.  See 'help handle privacy' for more info on what this means."
+        privacy_set: "Your handle privacy setting for this character is now %xh%{value}%xH."
         cant_set_privacy_on_master: "You set handle privacy on other games, not on AresCentral."
 
         # Profile
+        last_on: "Last On:"
+        location: "Location:" 
+        currently_connected: "Connected!"
+        played_by: "Played By:"
+        timezone: "Timezone:"
+        status: "Status:"
+        alts: "Alts (*): "
+        alts_notice: "(*) Alt visibility is based on the player's privacy settings.  Do not share this info with others."
+        
         profile_title: "Public Profile:"
-        profile_char_list_title: "Public Characters                        Last Seen"
-        sending_profile_request: "Sending profile request to AresCentral.  Please be patient."
+        profile_char_list_title: "Alts (*)"
+        sending_profile_request: "Sending profile request to AresCentral.  One moment."
         no_public_profile: "%{name} does not have a public profile."
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."
         ooc_profile_title: "OOC Profile"
@@ -45,7 +59,7 @@ en:
         profile_set: "You set your profile."
 
         # Alts
-        no_alts: "No public alts."
-        alts_list: "Public Alts for %{name}"
+        no_alts: "None"
+        visible_alts: "Alts (*)"
         alts_not_available_on_master: "This is AresCentral.  Handles don't have alts.  Use this command on another Ares game."
         

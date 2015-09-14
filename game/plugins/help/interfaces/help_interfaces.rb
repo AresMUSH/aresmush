@@ -1,7 +1,8 @@
 module AresMUSH
   module Help
-    def self.load_help(category, topic_key)
-      topic = Help.topic(category, topic_key)
+    def self.load_help(topic_key, index = nil)
+      index = index || Help.categories["main"]
+      topic = index["topics"][topic_key]
       raise "Topic #{topic_key} not found" if topic.nil?
       raise "Help topic #{topic_key} misconfigured" if topic["file"].nil? || topic["dir"].nil?
       filename = File.join(topic["dir"], Global.locale.locale.to_s, topic["file"])

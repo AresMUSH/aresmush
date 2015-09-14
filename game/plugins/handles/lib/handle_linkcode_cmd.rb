@@ -17,6 +17,11 @@ module AresMUSH
         cmd.root_is?("handle") && cmd.switch_is?("linkcode")
       end
       
+      def check_not_guest
+        return t('dispatcher.not_allowed') if client.char.is_guest?
+        return nil
+      end
+      
       def crack!
         self.char_id = trim_input(cmd.args)
       end

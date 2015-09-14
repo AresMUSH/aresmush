@@ -16,22 +16,21 @@ module AresMUSH
     end
     
     def line(number = 1)
-      @output << "%l#{number}"
-      return ""
+      "%l#{number}"
     end
     
     def line_with_text(text)
-      line_config = Global.read_config("skin", "line_with_text")
-      template = line_config["template"]
-      padding = line_config["padding"]
-      left_spacer = line_config["left_spacer"]
-      right_spacer = line_config["right_spacer"]
-      width = line_config["width"]
+      template = "%x!----text-----------------------------------------------%xn"
+      padding = "-"
+      left_spacer = "["
+      right_spacer = "]"
+      width = 20
       
       str = "#{left_spacer}#{text}#{right_spacer}"
       template.gsub(/text/, center(str, width, padding))
     end
     
+    # This works with Erubis templates; now depracated.
     def one_line(&block)
       str = capture(&block)
       @output << str.gsub(/\n/, "")
@@ -39,6 +38,7 @@ module AresMUSH
       return ""
     end
   
+    # This works with Erubis templates; now depracated.
     def capture(*args)
       old_buffer = @output
       @output = ""

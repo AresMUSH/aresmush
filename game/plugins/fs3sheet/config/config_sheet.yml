@@ -1,0 +1,14 @@
+sheet:
+    # List which pages of a character sheet are allowed to be public.  Leave off any
+    # that are private.
+    #
+    # It is recommended that you put public pages at the front.  Otherwise someone will
+    # get an error on page 1 and never even think to try page 2.
+    public_pages:
+        - 1
+        
+    roles:
+        # List roles that are allowed to view private sheet pages.
+        can_view_sheets: 
+            - admin
+            # - another_role

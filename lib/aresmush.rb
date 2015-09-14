@@ -12,14 +12,13 @@ raise 'Ruby version must be greater than 2.0' unless  RUBY_VERSION.to_f >= 2.0
 
 # Require this before all other items
 require 'bundler/setup'
-
 require 'ansi'
 require 'yaml'
 require 'eventmachine'
 require 'mongo'
+require 'mongoid'
 require 'i18n'
 require "i18n/backend/fallbacks" 
-require 'erubis'
 require 'log4r'
 require 'log4r/yamlconfigurator'
 include Log4r
@@ -27,9 +26,9 @@ require 'date'
 require 'bcrypt'
 require 'rake'
 require 'rspec/core/rake_task'
-require 'mongoid'
 require 'pp'
-#require 'json'
+require 'json'
+require 'erubis'
 
 require 'aresmush/api/api_command.rb'
 require 'aresmush/api/api_crypt.rb'

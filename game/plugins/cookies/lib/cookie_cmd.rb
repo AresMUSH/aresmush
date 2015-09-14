@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("cookie") && cmd.switch.nil?
+        cmd.root_is?("cookie") && cmd.switch.nil? && cmd.args
       end
       
       def crack!

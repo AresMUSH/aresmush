@@ -1,13 +1,22 @@
 module AresMUSH
   module BorderedDisplay
-    def self.text(text, title = nil, leading_newline = true)
+    def self.text(text, title = nil, leading_newline = true, footer = nil)
       output = "%l1"
-      if (!title.nil?)
+      if (title)
         output << "%r%xh#{title}%xn%r"
       end
       output << "%r" if leading_newline
       output << text
+<<<<<<< HEAD
       output << "%r%l4"
+=======
+      
+      if (!footer.nil?)
+        output << "%r#{footer}"
+      end
+      
+      output << "%r%l1"
+>>>>>>> upstream/master
       return output
     end
   
@@ -18,11 +27,8 @@ module AresMUSH
           output << "%r" << i
         end
       end
-      if (!footer.nil?)
-        output << "%r#{footer}"
-      end
       
-      return BorderedDisplay.text(output, title, false)
+      return BorderedDisplay.text(output, title, false, footer)
     end
     
     def self.subtitled_list(items, title, subtitle, footer = nil)
@@ -40,7 +46,7 @@ module AresMUSH
         output << "%r#{footer}"
       end
       
-      return BorderedDisplay.text(output)
+      return BorderedDisplay.text(output, title, true, footer)
     end
     
     def self.paged_list(items, page, items_per_page = 20, title = nil, footer = nil)
@@ -49,7 +55,11 @@ module AresMUSH
         return BorderedDisplay.text(t('pages.not_that_many_pages'))
       else
         page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
+<<<<<<< HEAD
         page_marker = "%xc#{page_marker.center(78, '-')}%xn"
+=======
+        page_marker = "%xh#{page_marker.center(78, '-')}%xn"
+>>>>>>> upstream/master
         footer = footer.nil? ? page_marker : "#{page_marker}%r#{footer}"
         return BorderedDisplay.list(pagination.page_items, title, footer)
       end

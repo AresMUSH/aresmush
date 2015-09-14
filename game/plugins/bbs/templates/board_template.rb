@@ -1,7 +1,7 @@
 module AresMUSH
   module Bbs
     # Template for a particular bulletin board.
-    class BoardTemplate
+    class BoardTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       # List of all posts on the board, in order by date.
@@ -10,11 +10,12 @@ module AresMUSH
       def initialize(board, client)
         @board = board
         @posts = board.bbs_posts
-        @client = client
         @char = client.char
+        
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xh#{name}%xn%r"
         text << "#{desc}%r"
@@ -81,7 +82,7 @@ module AresMUSH
       end
       
       def post_date(post)
-        OOCTime.local_short_timestr(@client, post.created_at)
+        OOCTime.local_short_timestr(self.client, post.created_at)
       end
     end
     

@@ -1,0 +1,17 @@
+shortcuts:
+    roots:
+        "lang": "language"
+        "goals": "goal"
+        "interests": "interest"
+        "hooks": "hook"
+        "rulingattr": "relatedapt"
+        "advantage": "ability"
+        "action": "ability"
+        "expert": "expertise"
+        "aptitudes": "abilities"
+    full:
+        "hook/delete": "hook/remove"
+        "goal/delete": "goal/remove"
+        "interest/delete": "interest/remove"
+        "lang/delete": "lang/remove"
+            

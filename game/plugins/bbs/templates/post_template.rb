@@ -1,7 +1,7 @@
 module AresMUSH
   module Bbs
     # Template for a specific bulletin board post.
-    class PostTemplate
+    class PostTemplate < AsyncTemplateRenderer
       include TemplateFormatters
             
       # List of all replies to this post, in order by date.
@@ -11,10 +11,10 @@ module AresMUSH
         @board = board
         @post = post
         @replies = post.bbs_replies
-        @client = client
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xh#{name}%xn #{author}%r"
         text << "#{subject} #{date}%r"
@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       def date
-        localdate = OOCTime.local_long_timestr(@client, @post.created_at)
+        localdate = OOCTime.local_long_timestr(self.client, @post.created_at)
         right(localdate, 46)
       end
       
@@ -54,7 +54,7 @@ module AresMUSH
       
       def reply_title(reply)
         name = reply.author.nil? ? t('bbs.deleted_author') : reply.author.name
-        date = OOCTime.local_long_timestr(@client, reply.created_at)
+        date = OOCTime.local_long_timestr(self.client, reply.created_at)
         t('bbs.reply_title', :name => name, :date => date)
       end
 

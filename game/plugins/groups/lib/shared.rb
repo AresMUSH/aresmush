@@ -15,5 +15,19 @@ module AresMUSH
       return nil if key.nil?
       return all_groups[key]
     end
+    
+    def self.census_by(&block)
+      counts = {}
+      Character.active_chars.each do |c|
+        next if c.idled_out
+        val = yield(c)
+        if (!val.nil?)
+          count = counts.has_key?(val) ? counts[val] : 0
+          counts[val] = count + 1
+        end
+      end
+      counts = counts.sort_by { |k,v| v }.reverse
+      counts.map { |k, v| "#{k.ljust(20)}#{v}"}
+    end
   end
 end

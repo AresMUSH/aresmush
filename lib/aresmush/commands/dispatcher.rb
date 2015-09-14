@@ -1,16 +1,20 @@
 module AresMUSH
   class Dispatcher
 
+    # Places a new command in the queue to be processed.
     def queue_command(client, cmd)
       EventMachine.next_tick { on_command(client, cmd) } 
     end
     
+    # Place a new event in the queue to be processed.
     def queue_event(event)
       EventMachine.next_tick { on_event(event) } 
     end
     
-    def queue_timer(time, description, &block)
-      EventMachine.add_timer(time) do 
+    # Place an action in the queue to be run after APPROXIMATELY the specified number of seconds.
+    # The dispatcher is not a precise timer.
+    def queue_timer(seconds, description, &block)
+      EventMachine.add_timer(seconds) do 
         begin
           yield block
         rescue Exception => e
@@ -18,8 +22,29 @@ module AresMUSH
         end
       end
     end
+
+    # Spawns a separate task to handle something in the background while doing other things.
+    # This is good for rendering templates and doing file IO.   USE CAUTION to make sure the code
+    # called by your action is thread-safe.   You can set a callback method that will be triggered
+    # with the return value of the block.
+    #
+    # For example, this will emit "Task complete!" after doing the long task.
+    #
+    #     callback = Proc.new { |text| client.emit text }
+    #     Global.dispatcher.spawn("Doing something", client, callback) do
+    #         do_some_long_task
+    #         "Task complete!"
+    #     end
+    def spawn(description, client, callback = nil, &block)
+      EventMachine.defer do
+        AresMUSH.with_error_handling(client, description) do   
+          return_val = yield block
+          callback.call return_val if callback
+        end
+      end
+    end
     
-    ### IMPORTANT!!!  Do not call from outside of EventMachine
+    ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
       @handled = false
@@ -47,7 +72,7 @@ module AresMUSH
       end # with error handling
     end
 
-    ### IMPORTANT!!!  Do not call from outside of EventMachine
+    ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_event if you need to queue up an event
     def on_event(event)
       begin

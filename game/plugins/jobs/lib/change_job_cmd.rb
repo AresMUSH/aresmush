@@ -31,24 +31,6 @@ module AresMUSH
       end
     end
     
-    class ChangeStatusCmd
-      include ChangeJobCmd
-
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("status")
-      end
-
-      def check_status
-        return nil if self.value.nil?
-        return t('jobs.invalid_status', :statuses => Jobs.status_vals) if (!Jobs.status_vals.include?(self.value.upcase))
-        return nil
-      end
-
-      def update_value(job)
-        job.status = self.value.upcase        
-      end
-    end
-    
     class ChangeTitleCmd
       include ChangeJobCmd
 

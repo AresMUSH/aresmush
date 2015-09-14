@@ -24,19 +24,17 @@ module AresMUSH
     end
     
     def self.change_job_status(client, job, status, message = nil)
-      if (message)
-        Jobs.comment(job, client.char, message, false)
+      if (status == Jobs.closed_status)
+        status_message = t('jobs.closed_job', :name => client.name, :status => status)
+      else
+        status_message = t('jobs.changed_job_status', :name => client.name, :status => status)
       end
+            
+      message = message ? "#{message}%R%R#{status_message}" : status_message
+
+      Jobs.comment(job, client.char, message, false)
       job.status = status
       job.save
-      
-      if (status == Jobs.closed_status)
-        notification = t('jobs.closed_job', :number => job.number, :title => job.title, :name => client.name)
-      else
-        notification = t('jobs.updated_job', :number => job.number, :title => job.title, :name => client.name)
-      end
-        
-      Jobs.notify(job, notification, client.char)
     end
     
     def self.close_job(client, job, message = nil)

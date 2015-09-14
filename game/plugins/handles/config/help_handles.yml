@@ -11,10 +11,11 @@ help:
                 handle link:
                     dir: 'game/plugins/handles/help/'
                     file: 'handle_link.txt'
-                handle profile:
+                profile:
+                    toc_topic: 'Community'
+                    summary:  'OOC profile information'
                     dir: 'game/plugins/handles/help/'
                     file: 'profile.txt'
-                    aliases: [ "profile" ]
                 alts:
                     toc_topic: 'Community'
                     dir: 'game/plugins/handles/help/'

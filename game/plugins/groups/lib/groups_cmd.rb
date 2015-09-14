@@ -6,7 +6,7 @@ module AresMUSH
       include PluginWithoutArgs
       
       def want_command?(client, cmd)
-        cmd.root_is?("groups")
+        cmd.root_is?("group") && !cmd.args
       end
 
       def handle        

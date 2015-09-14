@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :name, :rank
 
       def want_command?(client, cmd)
-        cmd.root_is?("rank") 
+        cmd.root_is?("rank") && cmd.switch_is?("set")
       end
 
       def crack!

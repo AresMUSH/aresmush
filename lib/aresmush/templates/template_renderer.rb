@@ -1,17 +1,33 @@
 module AresMUSH  
-  class TemplateRenderer
-    def initialize(template)
-      @template = Erubis::Eruby.new(template, :bufvar=>'@output')
+  class AsyncTemplateRenderer
+    include EM::Deferrable
+
+    attr_accessor :client
+    
+    def initialize(client)
+      self.client = client
     end
     
-    def render(data)
-      return "" if data.nil?
-      @template.evaluate(data)
+    # Renders the template asynchronously and emits it to the client when done
+    def render
+      self.callback { |text| self.client.emit text }
+      build_async
     end
     
-    def self.create_from_file(file_path)
-      template = File.read(file_path, :encoding => "UTF-8")
-      TemplateRenderer.new(template)
+    # Builds the template asynchronously.  To get the data, set up a callback.
+    #    template = MyTemplate.new
+    #    template.callback { |text| do something with the template text }
+    #    template.build_async
+    def build_async
+      callback = Proc.new { |text| self.succeed text }
+      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client, callback) do
+        build
+      end
+    end
+    
+    # Builds the template.  This is a blocking call.
+    def build
+      raise "Not implemented."
     end
   end
 end

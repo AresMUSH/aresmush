@@ -70,27 +70,25 @@ module AresMUSH
           name = name.after("@")
         end
         ClassTargetFinder.with_a_character(name, client) do |model|
-          client.emit Handles.build_profile_text(model, client.char)
+          template = HandleProfileTemplate.new(model, client.char)
+          client.emit template.display
         end
       else
         if (Handles.handle_name_valid?(name))
           handle_name = name
+          Handles.send_handle_profile_request(client, handle_name)
         else
-          handle_name = nil
           ClassTargetFinder.with_a_character(name, client) do |model|
-            handle_name = model.handle_visible_to?(client.char) ? model.handle : nil
+            handle_name =  model.handle
+            
+            template = CharProfileTemplate.new(client, model)
+            template.render
+            
+            if (model.handle && model.handle_visible_to?(client.char))
+              Handles.send_handle_profile_request(client, handle_name)
+            end
           end
         end
-        
-        if (handle_name.nil?)
-          client.emit_failure t('handles.no_public_profile', :name => name)
-          return
-        end
-        
-        client.emit_success t('handles.sending_profile_request')
-        args = ApiProfileCmdArgs.new(handle_name, client.char.handle)
-        cmd = ApiCommand.new("profile", args.to_s)
-        Global.api_router.send_command(ServerInfo.arescentral_game_id, client, cmd)
       end
     end
   end

@@ -1,7 +1,7 @@
 module AresMUSH
   module Jobs
     # Template for an individual job
-    class JobTemplate
+    class JobTemplate < AsyncTemplateRenderer
       include TemplateFormatters
             
       attr_accessor :replies

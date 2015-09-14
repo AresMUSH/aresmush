@@ -17,24 +17,27 @@ module AresMUSH
 
       def handle
         char = client.char
-        char.fs3_attributes = {}
+        char.fs3_aptitudes = {}
+        char.fs3_interests = []
+        char.fs3_expertise = []
         char.fs3_action_skills = {}
         char.fs3_background_skills = {}
-        char.fs3_quirks = {}
+        char.fs3_advantages = {}
         char.fs3_languages = []
         
         languages = Global.read_config("fs3skills", "starting_languages")
         if (languages)
           client.emit_ooc t('fs3skills.reset_languages')
           languages.each do |l|
-            client.emit_success t('fs3skills.language_selected', :name => l)
+            client.emit_success t('fs3skills.item_selected', :name => l)
             char.fs3_languages << l
           end
         end
         
-        client.emit_ooc t('fs3skills.reset_attributes')
-        FS3Skills.attribute_names.each do |a|
-          FS3Skills.set_ability(client, client.char, a, 2)
+        client.emit_ooc t('fs3skills.reset_aptitudes')
+        FS3Skills.aptitude_names.each do |a|
+          # Nil for client to avoid spam.
+          FS3Skills.set_ability(nil, client.char, a, 2)
         end
         
         starting_skills = StartingSkills.get_groups_for_char(client.char)

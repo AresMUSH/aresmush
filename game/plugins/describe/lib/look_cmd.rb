@@ -17,8 +17,8 @@ module AresMUSH
       
       def handle
         VisibleTargetFinder.with_something_visible(target, client) do |model|
-          desc = Describe.get_desc(model, client)
-          client.emit(desc)
+          template = Describe.get_desc_template(model, client)
+          template.render
           if (model.class == Character)
             looked_at = model.client
             if (!looked_at.nil?)

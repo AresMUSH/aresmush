@@ -1,6 +1,7 @@
 shortcuts:
     roots:
         "bbread": "bbs"
+        "bbscan" : "bbs"
     
     full:
         "bbpost" : "bbs/post"
@@ -14,4 +15,6 @@ shortcuts:
         "bbnewgroup" : "bbs/createboard"
         "bbcleargroup" : "bbs/deleteboard"
         "bbarchive" : "bbs/archive"
+        "bbs/desc" : "bbs/describe"
+        "bbs/newgroup" : "bbs/createboard"
         

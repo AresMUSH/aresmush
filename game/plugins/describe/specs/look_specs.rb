@@ -40,9 +40,10 @@ module AresMUSH
         context "target found" do
           before do
             @model = double
+            @template = double
             VisibleTargetFinder.stub(:find) { FindResult.new(@model, nil)}
-            client.stub(:emit)
-            Describe.stub(:get_desc) { "a desc" }
+            Describe.stub(:get_desc_template) { @template }
+            @template.stub(:render)
           end
 
           it "should find a visible target in the looker's room" do
@@ -51,12 +52,12 @@ module AresMUSH
           end
           
           it "should get the desc from the interface" do          
-            Describe.should_receive(:get_desc).with(@model, client) { "a desc" }
+            Describe.should_receive(:get_desc_template).with(@model, client) { @template }
             handler.handle
           end
         
           it "should emit the desc to the client" do
-            client.should_receive(:emit).with("a desc")
+            @template.should_receive(:render)
             handler.handle
           end  
           

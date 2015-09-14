@@ -1,9 +1,0 @@
-The game administrators (sometimes called Staff/Wizards/Admin) are the people who run the game. They can be considered a cross between a movie director (bringing the vision to the game and coordinating things behind the scenes), movie producer (footing the server costs and making sure things run smoothly), and tabletop gamemaster (running plots and adventures for the players so they don’t just sit around drinking at the IC pub all day).
-
-You can usually see a list of game admins using the ‘admin’ command. Admin characters usually have OOC names to set them apart from regular characters.  Like Ben Affleck, MU admins can direct and also play on their own games.  To prevent potential conflicts of interest, most games have staff ethics policies in place.
-
-Admins are here to help you, but sometimes they are off-duty.  Try not to bother an off-duty admin with questions unless it's an emergency.  Instead, use the requests system (see %xhhelp requests%xn for more information) to log a request or question.
-
-%xh-- Give it a try! --%xn 
-    Type: %xcadmin%xn to see the game admin. 
-    If one is online and on-duty, say hi!  %xcpage <admin>=Hi!  Just doing the tutorial.%xn

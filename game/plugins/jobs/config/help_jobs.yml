@@ -16,3 +16,6 @@ help:
                     file: 'admin_jobs.txt'
                     summary: 'Managing jobs and requests.'
                     aliases: [ 'job', 'requests', 'request' ]
+                jobs archive: 
+                    dir: 'game/plugins/jobs/help/'
+                    file: 'jobs_archive.txt'

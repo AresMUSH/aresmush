@@ -5,6 +5,7 @@ module AresMUSH
       include PluginWithoutSwitches
       include PluginRequiresArgs
       include PluginRequiresLogin
+      include TemplateFormatters
       
       attr_accessor :target
       
@@ -37,7 +38,7 @@ module AresMUSH
           return
         end
 
-        client.emit BorderedDisplay.text("#{target.to_json}")
+        client.emit_raw "#{line}\n#{target.to_json}\n#{line}\n"
       end
     end
   end

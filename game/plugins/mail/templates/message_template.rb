@@ -1,17 +1,17 @@
 module AresMUSH
   module Mail
     # Template for an individual mail message
-    class MessageTemplate
+    class MessageTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
       def initialize(client, delivery)
-        @client = client
         @char = client.char
         @delivery = delivery
         @message = delivery.message
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xh%x![ #{subject} ]%xn%r"
         text << "%l2%r"
@@ -36,7 +36,7 @@ module AresMUSH
 
       # Delivery date
       def date
-        OOCTime.local_long_timestr(@client, @message.created_at)
+        OOCTime.local_long_timestr(self.client, @message.created_at)
       end
       
       def body

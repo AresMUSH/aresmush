@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     field :temp_link_codes, :type => Hash, :default => {}
-    field :handle_profile, :type => String
+    field :profile, :type => Hash, :default => {}
 
     before_validation :save_handle
 

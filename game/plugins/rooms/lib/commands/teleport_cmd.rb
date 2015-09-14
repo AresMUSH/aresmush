@@ -65,7 +65,7 @@ module AresMUSH
           return find_result.target
         end
         
-        matched_rooms = Room.all.select { |o| o.name_upcase =~ /#{self.destination.upcase}/ }
+        matched_rooms = Room.where(:name_upcase => /#{self.destination.upcase}/)
         
         if (matched_rooms.empty? || matched_rooms.count > 1)
           return nil

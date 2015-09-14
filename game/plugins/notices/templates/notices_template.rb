@@ -1,13 +1,14 @@
 module AresMUSH
   module Notices
-    class NoticesTemplate
+    class NoticesTemplate < AsyncTemplateRenderer
       include TemplateFormatters
             
-      def initialize(char)
+      def initialize(char, client)
         @char = char
+        super client
       end
       
-      def display
+      def build
         text = "%l1%r"
         text << "%xh#{notices_title}%xn%r"
         text << "#{mail}%r"
@@ -27,6 +28,7 @@ module AresMUSH
         if (@char.handle)
           Character.find_by_handle(@char.handle).each do |alt|
             next if alt == @char
+            next if !alt.has_unread_mail?
             mail_text << "%r#{t('notices.alt_unread_mail', :name => alt.name)}"
           end
         end

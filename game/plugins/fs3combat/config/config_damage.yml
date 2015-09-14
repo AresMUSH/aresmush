@@ -1,0 +1,39 @@
+fs3combat:
+
+    # Which roles can manage damage
+    roles:
+        can_manage_damage:
+            - admin
+            
+    # Which skill is used for treat rolls if you don't specify anything.
+    default_treat_skill: "First Aid"
+    
+    # Which aptitude is used for toughness-related rolls.
+    toughness_attribute: "Athletic"
+    
+    # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    healing_cron:
+        #date: 1
+        #day_of_week: Sat
+        hour: 00
+        minute: 47
+    
+    # Dice penalty for different wound levels.
+    damage_mods:
+        H: 0.0
+        L: 0.25
+        M: 0.75
+        S: 2.0
+        C: 4.0
+    
+    # How many healing points are required to heal a wound down to the next lower level.
+    # Characters receive 1-2 healing points on average each day so you can tweak these numbers
+    # to provide faster or slower healing times.
+    healing_points:
+        H: 0
+        L: 2
+        M: 3
+        S: 4
+        C: 5
+            

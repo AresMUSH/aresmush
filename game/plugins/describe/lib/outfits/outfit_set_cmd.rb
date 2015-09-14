@@ -24,6 +24,11 @@ module AresMUSH
         self.desc = cmd.args.arg2
       end
       
+      def check_single_word_names
+        return t('describe.outfits_only_one_word') if self.name.split.size > 1
+        return nil
+      end
+      
       def handle
         client.char.outfits[self.name] = self.desc
         client.char.save!

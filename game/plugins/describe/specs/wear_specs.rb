@@ -28,9 +28,9 @@ module AresMUSH
         end
         
         it "should set and titlecase the list of names" do
-          init_handler(WearCmd, "wear a desc,   BbB,C   ")
+          init_handler(WearCmd, "wear A  bbb    C   ")
           handler.crack!
-          handler.names.should eq [ "A Desc", "Bbb", "C" ]
+          handler.names.should eq [ "A", "Bbb", "C" ]
         end
       end
       
@@ -59,7 +59,7 @@ module AresMUSH
         end
         
         it "should set the character description to all the outfits" do
-          Describe.should_receive(:set_desc).with(char, "a descb desc")
+          Describe.should_receive(:set_desc).with(char, "a desc b desc ")
           client.stub(:emit_success)
           handler.handle
         end

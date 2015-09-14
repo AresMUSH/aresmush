@@ -35,7 +35,7 @@ module AresMUSH
           return
         end
         
-        if (FS3Skills.add_language(client, client.char, self.name))
+        if (FS3Skills.add_unrated_ability(client, client.char, self.name, :language))
           Global.logger.info "XP Spend: #{client.name} got language #{self.name}."
           client.char.xp = client.char.xp - cost
           client.char.last_xp_spend = Time.now

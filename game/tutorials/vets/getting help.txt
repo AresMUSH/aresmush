@@ -1,9 +1,0 @@
-The main Ares help system is accessed through the %xhHelp System%xn (type %xchelp%xn).  What's different is that help topics are organized by category, hopefully making it easier to find what you're looking for.  There is no help vs +help distinction, although there are other help libraries (like ahelp for admins or bhelp for builders).
-
-For a few major topics - like this one - interactive help can be found in the %xhTutorials System%xn (see %xchelp tutorials%xn).
-
-Throughout the Ares help files and tutorials, %xclight blue%xn text indicates commands you type.
- 
-%xh-- Give it a try! --%xn 
-    Type: %xchelp%xn to see the main help topics.
-    Type: %xctutorials%xn to see what tutorials are available.

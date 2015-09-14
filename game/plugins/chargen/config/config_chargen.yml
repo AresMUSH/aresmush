@@ -8,12 +8,18 @@ chargen:
         can_manage_bgs:
             - admin
             # - another_role
+        # List roles that are allowed to view other peoples' backgrounds.
+        # Add the 'everyone' role if you want public BGs.
+        can_view_bgs:
+            - admin
+            - everyone
+            # - another_role
             
     messages:
         # This message is sent when a character is approved.
         approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP."
         # This message is sent when a character is rejected.
-        rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp chargen%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
+        rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp app%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
     
     # Newly-approved characters will be announced on this board.    
     arrivals_board: "New Arrivals"
@@ -34,20 +40,22 @@ chargen:
     # Configure the stages of chargen.  For each stage, you can choose to show 
     # either a tutorial file (from the chargen/tutorial directory), a help file 
     # (from within the help system) or both.  Make sure the help name exactly 
-    # matches the name configured in the help system.
+    # matches the topic name configured in the help system.
     stages:
         start:
             tutorial: 'chargen.txt'
         app:
             tutorial: 'app command.txt'
         sheet:
-            tutorial: 'character sheet.txt'
+            help: 'sheet'
+        info:
+            help: 'info'
         demographics:
             tutorial: 'demographics.txt'
             help: demographics
         abilities:
-            tutorial: 'abilities.txt'
             help: abilities
+<<<<<<< HEAD
         final touches:
             tutorial: 'final touches.txt'
         groups:
@@ -58,3 +66,18 @@ chargen:
             tutorial: 'review.txt'
         whatsnext:
             tutorial: "what's next.txt"
+=======
+        relatedapt:
+            help: relatedapt
+        goals:
+            help: goals
+        desc:
+            help: descriptions
+        actor:
+            help: actors
+        wiki:
+            help: wiki
+            tutorial: 'wiki.txt'
+        review:
+            help: apps
+>>>>>>> upstream/master

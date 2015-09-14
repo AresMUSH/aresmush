@@ -8,7 +8,8 @@ module AresMUSH
       
       def want_command?(client, cmd)
         # Special check for 'c' command to allow it to be used as chat alias.
-        (cmd.root_is?("connect") || cmd.root_is?("c")) && !client.logged_in?
+        return false if client.logged_in?
+        return (cmd.root_is?("connect") || cmd.root_is?("c")) && !cmd.args.start_with?("guest")
       end
       
       def crack!
@@ -17,7 +18,6 @@ module AresMUSH
       end
       
       def check_for_guest_or_password
-        return t('login.maybe_you_meant_tour') if self.charname.downcase == "guest"
         return t('dispatcher.invalid_syntax', :command => 'connect') if self.password.nil? || self.charname.nil?
         return nil
       end
@@ -28,6 +28,9 @@ module AresMUSH
       end
 
       def handle
+        
+        return if self.charname.downcase == "guest"
+        
         ClassTargetFinder.with_a_character(self.charname, client) do |char|
           if (!char.compare_password(password))
             client.emit_failure(t('login.password_incorrect'))
