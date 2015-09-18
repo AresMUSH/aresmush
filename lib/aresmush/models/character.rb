@@ -3,7 +3,7 @@ module AresMUSH
     include ObjectModel
 
     belongs_to :room, :class_name => 'AresMUSH::Room', :inverse_of => nil
-
+    
     register_default_indexes with_unique_name: true
 
     def api_character_id

@@ -4,7 +4,7 @@ module AresMUSH
   end
   
   class RosterRegistry
-     include Mongoid::Document
+    include SupportingObjectModel
      
      belongs_to :character
      

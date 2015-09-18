@@ -36,8 +36,7 @@ module AresMUSH
   end
   
   class JobReply
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
     
     belongs_to :job
     belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'job_replies'

@@ -1,7 +1,6 @@
 module AresMUSH
   class Game
-    
-    include Mongoid::Document
+    include SupportingObjectModel
     
     field :model_version, :type => Integer, default: 1
     

@@ -1,5 +1,12 @@
 help:
     categories:
+        admin:
+            topics:
+                wiki:
+                    toc_topic: Character Creation
+                    dir: 'game/plugins/fs3sheet/help/'
+                    file: 'admin_wiki.txt'
+                    summary: "View someone's wiki page template."
         main:
             topics:
                 sheet: 

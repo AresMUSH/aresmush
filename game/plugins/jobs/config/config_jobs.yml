@@ -9,20 +9,20 @@ jobs:
     categories:
         - APP  # This is used by the chargen system.  If you remove or change it, you must also update that code.
         - BUILD
-        - CODE
+        - CODE  # This is used by the code error reporting.  If you remove or change it, update 'error_category' below.
         - MISC
         - REQ # This is used by the requests system. If you remove or change it, you must also update that code.
         - RP
 
     # Define your job status values and their colors.
     status:
-        NEW: 
+        NEW:  # If you remove or change this, update 'default_status' below.
             color: "%xg"
         OPEN:
             color: "%xb"
         HOLD:
             color: "%xr"
-        DONE:
+        DONE:   # If you remove or change this, update 'closed_status' below. 
             color: "%xy"
     
     # Status for new jobs.

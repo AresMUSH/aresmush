@@ -5,9 +5,9 @@ module AresMUSH
   end
   
   class BbsBoard
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
         
+    field :name, :type => String
     field :description, :type => String
     field :read_roles, :type => Array, :default => []
     field :write_roles, :type => Array, :default => []
@@ -30,8 +30,7 @@ module AresMUSH
   end
   
   class BbsPost
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
     
     field :subject, :type => String
     field :message, :type => String
@@ -58,8 +57,7 @@ module AresMUSH
   end
   
   class BbsReply
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
     
     belongs_to :bbs_post
     belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'authored_replies'

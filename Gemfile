@@ -1,16 +1,9 @@
 source 'http://rubygems.org'
 gem 'ansi', '~> 1.4.3'
-#gem 'mongo', '~> 2'
-#gem 'mongoid', '~> 4'
 
-#gem 'moped'
-#gem 'mongoid', '~> 5.0.0.beta', github: 'mongoid/mongoid'
-#gem 'mongo', '~> 2.1.0.beta'
-
-gem 'bson', '~> 1.9.2'
-gem 'bson_ext', '~> 1.9.2'
-gem 'mongo', '~> 1.9.2'
-gem 'mongoid', '~> 3.1.6'
+gem 'mongo', '~> 2'
+gem 'mongoid', '~> 5'
+gem 'bson', '~> 3.0'
 
 gem 'erubis', '~> 2.7.0'
 gem 'bcrypt', '~> 3.1.2'

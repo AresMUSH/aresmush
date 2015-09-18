@@ -14,8 +14,7 @@ module AresMUSH
   end
     
   class MailMessage
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
     
     field :subject, :type => String
     field :body, :type => String

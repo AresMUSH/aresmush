@@ -14,6 +14,8 @@ module AresMUSH
       client_monitor = ClientMonitor.new(client_factory)
       server = Server.new
       db = Database.new
+      
+      
             
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.
