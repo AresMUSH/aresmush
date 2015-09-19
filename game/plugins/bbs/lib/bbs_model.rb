@@ -54,6 +54,18 @@ module AresMUSH
       readers.clear
       save!
     end
+    
+    def reference_str
+      "(#{board_index}/#{post_index})"
+    end
+    
+    def post_index
+      self.bbs_board.bbs_posts.index(self) + 1
+    end
+    
+    def board_index
+      BbsBoard.all_sorted.index(self.bbs_board) + 1
+    end
   end
   
   class BbsReply

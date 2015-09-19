@@ -80,7 +80,10 @@ module AresMUSH
         input = self.input_buffer
         input.force_encoding(Encoding::UTF_8)
         input.scrub! if !input.valid_encoding?
-        Global.dispatcher.on_command(self, Command.new(input))
+        input.split("\n").each do |i|
+          Global.dispatcher.queue_command(self, Command.new(i))
+        end
+        
         self.input_buffer = ""
       rescue Exception => e
          Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")

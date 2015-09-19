@@ -54,11 +54,14 @@ module AresMUSH
       config = YAML::load(File.open(filename))
       db_config = config['database']['test']
           
-      if (db_config.nil? || db_config['sessions']['default']['database'].nil?)
+      if (db_config.nil? || db_config['clients']['default']['database'].nil?)
         raise "Test DB not defined."
       end
       
       mongoid = Mongoid.load_configuration(db_config)
+      
+      Mongoid.logger.level = Logger::WARN
+      Mongo::Logger.logger.level = Logger::WARN
     end
     
     # Use with the using_test_db helper whenever possible

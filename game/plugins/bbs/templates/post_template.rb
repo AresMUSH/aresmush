@@ -16,8 +16,8 @@ module AresMUSH
       
       def build
         text = "%l1%r"
-        text << "%xh#{name}%xn #{author}%r"
-        text << "#{subject} #{date}%r"
+        text << "%xh#{subject}%xn #{author}%r"
+        text << "#{board_and_post} #{date}%r"
         text << "%l2%r"
         text << "#{message}"
         replies.each_with_index do |r, i|
@@ -30,8 +30,9 @@ module AresMUSH
         text
       end
       
-      def name
-        left(@board.name, 30)
+      def board_and_post
+        text = "#{@board.name} #{@post.reference_str}"
+        left(text, 30)
       end
       
       def subject

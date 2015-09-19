@@ -54,7 +54,10 @@ module AresMUSH
         post.mark_unread
         Bbs.mark_read_for_player(client.char, post)
         
-        Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
+        Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, 
+        :board => board.name, 
+        :reference => post.reference_str,
+        :author => client.name)
       end
     end
   end

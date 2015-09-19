@@ -90,26 +90,26 @@ module AresMUSH
       
       it "should create a command and notify the dispatcher" do
         cmd = double
-        Command.should_receive(:new).with("Yay\n") { cmd }
-        @dispatcher.should_receive(:on_command).with(@client, cmd)
+        Command.should_receive(:new).with("Yay") { cmd }
+        @dispatcher.should_receive(:queue_command).with(@client, cmd)
         @client.handle_input "Yay\n"        
       end
       
       it "should concatenate split commands" do
         cmd = double
-        Command.should_receive(:new).with("Yay!More!\n") { cmd }
-        @dispatcher.should_receive(:on_command).with(@client, cmd)
+        Command.should_receive(:new).with("Yay!More!") { cmd }
+        @dispatcher.should_receive(:queue_command).with(@client, cmd)
         @client.handle_input "Yay!"        
         @client.handle_input "More!\n"
       end
       
       it "should ignore null input" do
-        @dispatcher.should_not_receive(:on_command)
+        @dispatcher.should_not_receive(:queue_command)
         @client.handle_input nil
       end
       
       it "should ignore empty input" do
-        @dispatcher.should_not_receive(:on_command)
+        @dispatcher.should_not_receive(:queue_command)
         @client.handle_input "\n"
         @client.handle_input "\r\n"
         @client.handle_input "\n\n"
