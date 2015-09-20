@@ -17,7 +17,7 @@ module AresMUSH
           roster_char = r.character          
           list << char_entry(roster_char, r)
         end
-        BorderedDisplay.paged_list(list, @page, 15, t('roster.roster_title'))
+        BorderedDisplay.paged_list(list, @page, 25, t('roster.roster_title'))
       end
       
       def char_entry(char, roster_entry)

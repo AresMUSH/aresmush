@@ -13,7 +13,7 @@ module AresMUSH
       
       def build
         census = @chars.sort_by { |c| c.name }.map { |c| char_entry(c) }
-        BorderedDisplay.paged_list(census, @page, 15, t('groups.full_census_title'))
+        BorderedDisplay.paged_list(census, @page, 25, t('groups.full_census_title'))
       end
       
       def char_entry(char)
