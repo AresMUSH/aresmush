@@ -14,6 +14,7 @@ module AresMUSH
     field :is_aiming, :type => Boolean
     field :aim_target, :type => String
     field :stance, :type => String
+    field :luck, :type => String
     field :npc_damage, :type => Array, :default => []
       
     belongs_to :character, :class_name => "AresMUSH::Character"
@@ -43,9 +44,10 @@ module AresMUSH
       damage_mod = total_damage_mod
       stance_mod = attack_stance_mod
       aiming_mod = (self.is_aiming && (self.aim_target == self.action.print_target_names)) ? 3 : 0
-      mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod
+      luck_mod = (self.luck == "Attack") ? 3 : 0
+      mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod + luck_mod
       
-      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} aiming=#{aiming_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}"
+      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} aiming=#{aiming_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod}"
       
       roll_ability(ability, mod)
     end
@@ -53,9 +55,10 @@ module AresMUSH
     def roll_defense(attacker_weapon)
       ability = weapon_defense_skill(attacker_weapon)
       stance_mod = defense_stance_mod
-      mod = 0 - total_damage_mod + stance_mod
+      luck_mod = (self.luck == "Defense") ? 3 : 0
+      mod = 0 - total_damage_mod + stance_mod + luck_mod
       
-      Global.logger.debug "Defense roll for #{self.name} ability=#{ability} stance=#{stance_mod}"
+      Global.logger.debug "Defense roll for #{self.name} ability=#{ability} stance=#{stance_mod} luck=#{luck_mod}"
       
       roll_ability(ability, mod)
     end
@@ -141,9 +144,10 @@ module AresMUSH
     end
       
     def roll_initiative(ability)
+      luck_mod = self.luck == "Initiative" ? 3 : 0
       roll1 = roll_ability(ability, -total_damage_mod)
       roll2 = roll_ability(ability, -total_damage_mod)
-      roll1 + roll2
+      roll1 + roll2 + luck_mod
     end
     
     def do_damage(severity, weapon, hitloc)

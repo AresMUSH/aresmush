@@ -69,6 +69,13 @@ en:
         combatant_types_titlebar: "Type                Weapon              Armor"
 
         # ----------------------------
+        # LUCK
+        # ----------------------------
+        invalid_luck: "You can't spend luck on that.  Try one of these: %{reasons}"
+        no_luck: "You are out of luck points."
+        spending_luck: "%{name} spends luck on %{reason} this turn."
+        
+        # ----------------------------
         # WEAPONS
         # ----------------------------
 

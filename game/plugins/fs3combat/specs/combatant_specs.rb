@@ -31,6 +31,18 @@ module AresMUSH
           @combatant.roll_defense("Knife")
         end
         
+        it "should account for luck spent on defense" do
+          @combatant.stub(:luck) { "Defense" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 3)
+          @combatant.roll_defense("Knife")
+        end
+
+        it "should ignore luck spent on something else" do
+          @combatant.stub(:luck) { "Attack" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 0)
+          @combatant.roll_defense("Knife")
+        end
+        
         it "should account for multiple modifiers" do
           @combatant.stub(:total_damage_mod) { 2 }
           @combatant.stub(:defense_stance_mod) { 1 }
@@ -94,7 +106,19 @@ module AresMUSH
           @combatant.should_receive(:roll_ability).with("Knives", 2)
           @combatant.roll_attack
         end
-        
+
+        it "should account for luck spent on attack" do
+          @combatant.stub(:luck) { "Attack" }
+          @combatant.should_receive(:roll_ability).with("Knives", 3)
+          @combatant.roll_attack
+        end
+
+        it "should ignore luck spent on something else" do
+          @combatant.stub(:luck) { "Defense" }
+          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          @combatant.roll_attack
+        end
+                
         it "should account for passed-in modifiers" do
           @combatant.should_receive(:roll_ability).with("Knives", -2)
           @combatant.roll_attack(-2)
@@ -284,10 +308,14 @@ module AresMUSH
         end
         
         describe :roll_initiative do
+          before do
+            @combatant.stub(:roll_ability) { 2 }
+            @combatant.stub(:total_damage_mod) { 0 } 
+          end
+          
           it "should roll the ability twice and add them together" do
             @combatant.should_receive(:roll_ability).with("init", 0) { 2 }
             @combatant.should_receive(:roll_ability).with("init", 0) { 3 }
-            @combatant.stub(:total_damage_mod) { 0 } 
             @combatant.roll_initiative("init").should eq 5
           end
           
@@ -296,6 +324,16 @@ module AresMUSH
             @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
             @combatant.stub(:total_damage_mod) { 1 } 
             @combatant.roll_initiative("init").should eq 5
+          end
+          
+          it "should account for luck spent on initiative" do
+            @combatant.luck = "Initiative"
+            @combatant.roll_initiative("init").should eq 7
+          end
+
+          it "should ignore luck spent on something else" do
+            @combatant.luck = "Attack"
+            @combatant.roll_initiative("init").should eq 4
           end
         end
         

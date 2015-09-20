@@ -13,7 +13,7 @@ module AresMUSH
     end
     
     def non_combatants
-      combatants.select { |c| c.c.is_noncombatant? }.sort_by{ |c| c.name }
+      combatants.select { |c| c.is_noncombatant? }.sort_by{ |c| c.name }
     end
     
     def self.next_num
