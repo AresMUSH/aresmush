@@ -1,11 +1,11 @@
 module AresMUSH
   module FS3Combat
-    class CombatHudCmd
+    class CombatSummaryCmd
       include Plugin
       include PluginRequiresLogin
       
       def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch.nil?
+        cmd.root_is?("combat") && cmd.switch_is?("summary")
       end
       
       def handle
@@ -15,9 +15,15 @@ module AresMUSH
           return
         end
         
-        template = CombatHudTemplate.new(combat, @client)
+        if (combat.organizer != client.char)
+          client.emit_failure t('fs3combat.only_organizer_can_do')
+          return
+        end
+        
+        template = CombatSummaryTemplate.new(combat, @client)
         template.render
       end
+    
     end
   end
 end

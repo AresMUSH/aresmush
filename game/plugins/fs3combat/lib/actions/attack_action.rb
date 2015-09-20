@@ -62,7 +62,6 @@ module AresMUSH
       end
       
       # TODO - Check not explosive or suppressive
-      # TODO - Check enough ammo for burst
       # TODO - Recoil and suppression modifiers
       # TODO - Handle target removed from combat
       # TODO - Clear action when switching weapons
@@ -88,7 +87,6 @@ module AresMUSH
       def resolve
         # TODO - Hitting cover
         # TODO - Armor
-        # TODO - Ammo - reduce, handle out of ammo situations, alert when out of ammo
         
         if (self.combatant.ammo == 0)
           return [t('fs3combat.weapon_empty', :name => self.name)]

@@ -10,19 +10,8 @@ module AresMUSH
       end
       
       def handle
-        list = FS3Combat.weapons.sort.map { |k, v| type_display(k, v) }
-        client.emit BorderedDisplay.list list, t('fs3combat.weapons_title')
-      end
-        
-      def type_display(name, info)
-        text = left(name.titleize, 20)
-        text << display_field(info, "description", 58)
-        text
-      end
-
-      def display_field(info, value_name, width)
-        value = info[value_name] || "---"
-        "#{left(value, width)}"
+        template = GearTemplate.new FS3Combat.weapons, t('fs3combat.weapons_title'), client
+        template.render
       end
     end
   end

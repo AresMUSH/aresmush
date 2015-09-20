@@ -32,6 +32,7 @@ en:
         active_combats: "Active Combats"
         active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
+        summary_title: "Combatant      Skill     Weapon                     Armor            Stance"
         
         # ----------------------------
         # START, STOP, JOIN, LEAVE
@@ -149,6 +150,7 @@ en:
         not_a_valid_target: "%{name} is not a valid target."
         only_one_target: "You can only target one person with that action."
         cant_target_noncombatant: "You can't target noncombatants."
+        only_organizer_can_do: "Only the organizer can do that."
         you_are_a_noncombatant: "Noncombatants can't fight."
         cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
         new_turn: "%{name} has started a new turn!  Pose and pick your actions."

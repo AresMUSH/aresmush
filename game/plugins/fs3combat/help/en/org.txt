@@ -12,6 +12,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
         "param" can be one of: type, weapon, armor, vehicle
         See %xccombat/types%xn for a list of combatant types.
     
+    %xccombat/summary%xn - Summary of the skills and gear of all combatants.
     %xccombat/slackers%xn - See at a glance who hasn't posed or chosen their actions.
 
     %xccombat/team <name>=<team#>%xn - Switches teams. 

@@ -13,8 +13,14 @@ module AresMUSH
           client.emit_failure t('fs3combat.you_are_not_in_combat')
           return
         end
-        
+                
         combat = client.char.combatant.combat
+        
+        if (combat.organizer != client.char)
+          client.emit_failure t('fs3combat.only_organizer_can_do')
+          return
+        end
+                
         Global.logger.debug "****** NEW COMBAT TURN ******"
 
         initiative_order = combat.roll_initiative
@@ -31,7 +37,8 @@ module AresMUSH
              
           # Reset aim if they've done anything other than aiming. 
           # TODO - Better way of doing this.
-          # TODO - Reset attack action if out of ammo.      
+          # TODO - Reset action if out of ammo.
+          # TODO - Reset action if target no longer exists.
           if (c.is_aiming && c.action.class != AimAction)
             Global.logger.debug "Reset aim for #{c.name}."
             c.is_aiming = false
@@ -40,10 +47,7 @@ module AresMUSH
         end
         
         combat.emit t('fs3combat.new_turn', :name => client.name)
-        
       end
-      
-      
     end
   end
 end
