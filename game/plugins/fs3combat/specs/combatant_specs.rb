@@ -282,6 +282,23 @@ module AresMUSH
             @combatant.roll_ability("Firearms", 3).should eq 2
           end
         end
+        
+        describe :roll_initiative do
+          it "should roll the ability twice and add them together" do
+            @combatant.should_receive(:roll_ability).with("init", 0) { 2 }
+            @combatant.should_receive(:roll_ability).with("init", 0) { 3 }
+            @combatant.stub(:total_damage_mod) { 0 } 
+            @combatant.roll_initiative("init").should eq 5
+          end
+          
+          it "should remove damage modifiers" do
+            @combatant.should_receive(:roll_ability).with("init", -1) { 2 }
+            @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
+            @combatant.stub(:total_damage_mod) { 1 } 
+            @combatant.roll_initiative("init").should eq 5
+          end
+        end
+        
       end
     end
   end
