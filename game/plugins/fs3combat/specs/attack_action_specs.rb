@@ -131,6 +131,36 @@ module AresMUSH
               resolutions[3].should eq "fs3combat.attack_hits"
             end
           end
+          
+          describe "ammo" do
+            before do
+              @target.stub(:roll_defense) { 2 }
+              @combatant.stub(:save) { }
+            end
+            
+            it "should reduce ammo for a burst" do
+              @action.is_burst = true
+              @combatant.stub(:ammo) { 4 }
+              @combatant.should_receive(:ammo=).with(1)
+              resolutions = @action.resolve
+            end
+            
+            it "should reduce ammo for a single shot" do
+              @combatant.stub(:ammo) { 4 }
+              @combatant.should_receive(:ammo=).with(3)
+              resolutions = @action.resolve
+            end
+                        
+            it "should handle a burst limited by ammo" do
+              @action.is_burst = true
+              @combatant.stub(:ammo) { 1 }
+              @combatant.should_receive(:ammo=).with(0)
+              resolutions = @action.resolve
+              resolutions[0].should eq "fs3combat.fires_burst"
+              resolutions[1].should eq "fs3combat.attack_hits"
+              resolutions.count.should eq 2
+            end
+          end
         end
       end
     end

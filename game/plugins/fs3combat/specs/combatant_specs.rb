@@ -178,6 +178,7 @@ module AresMUSH
         
         it "should inflict damage on a NPC" do
           @combatant.stub(:character) { nil }
+          @combatant.stub(:save) { } 
           @combatant.do_damage("M", "Knife", "Arm")
           @combatant.do_damage("L", "Knife", "Leg")
           @combatant.npc_damage[0].should eq "M"

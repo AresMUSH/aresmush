@@ -61,6 +61,7 @@ module AresMUSH
       FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
         combatant.weapon = weapon ? weapon.titleize : nil
         combatant.weapon_specials = specials ? specials.map { |s| s.titleize } : nil
+        combatant.ammo = FS3Combat.weapon_stat(weapon, "ammo")
         combatant.save
         specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
         message = t('fs3combat.weapon_changed', :name => name, 

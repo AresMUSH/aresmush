@@ -12,6 +12,7 @@ fs3combat:
     #      which combat actions are available.
     #   is_automatic: For ranged weapons, does it support bursts or full_auto fire?  
     #   ammo: For ranged weapons, how many shots can it fire before it has to reload.
+    #      Comment ammo out for weapons that don't need to reload.
     #   recoil: For automatic weapons, this is a modifier applied to each bullet after 
     #      the first when firing a burst or full-auto.
     #   damage_type:  Physical or Stun.
@@ -28,7 +29,7 @@ fs3combat:
             penetration: 3
             weapon_type: Explosive
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -42,7 +43,7 @@ fs3combat:
             penetration: 20
             weapon_type: Explosive
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Stun
             accuracy: 0
@@ -56,7 +57,7 @@ fs3combat:
             penetration: 3
             weapon_type: Explosive
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -145,7 +146,7 @@ fs3combat:
             penetration: 2.5
             weapon_type: Ranged
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -159,7 +160,7 @@ fs3combat:
             penetration: 0
             weapon_type: Melee
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Stun
             accuracy: 0
@@ -174,7 +175,7 @@ fs3combat:
             penetration: 0
             weapon_type: Melee
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -188,7 +189,7 @@ fs3combat:
             penetration: 0
             weapon_type: Melee
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -216,7 +217,7 @@ fs3combat:
             penetration: 20
             weapon_type: Ranged
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -230,7 +231,7 @@ fs3combat:
             penetration: 20
             weapon_type: Ranged
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -244,7 +245,7 @@ fs3combat:
             penetration: 70
             weapon_type: Explosive
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -273,7 +274,7 @@ fs3combat:
             penetration: 250
             weapon_type: Explosive
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -287,7 +288,7 @@ fs3combat:
             penetration: 0
             weapon_type: Suppressive
             is_automatic: false
-            ammo: 0
+            # ammo: 0
             recoil: 0
             damage_type: Physical
             accuracy: 0

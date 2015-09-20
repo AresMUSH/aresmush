@@ -19,17 +19,19 @@ module AresMUSH
 
         initiative_order = combat.roll_initiative
         
-        # TODO - initiative order
         initiative_order.each do |c|
           next if !c.action
           next if c.is_noncombatant?
+          
           messages = c.action.resolve
           messages.each do |m|
             Global.logger.debug "#{m}"
             combat.emit m
           end
              
-          # Reset aim if they've done anything other than aiming.       
+          # Reset aim if they've done anything other than aiming. 
+          # TODO - Better way of doing this.
+          # TODO - Reset attack action if out of ammo.      
           if (c.is_aiming && c.action.class != AimAction)
             Global.logger.debug "Reset aim for #{c.name}."
             c.is_aiming = false

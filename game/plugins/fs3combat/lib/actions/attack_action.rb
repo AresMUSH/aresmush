@@ -53,8 +53,14 @@ module AresMUSH
         return nil
       end
       
-      # TODO - Check ammo
-      # TODO - Check has a weapon
+      def check_ammo
+        ammo = self.combatant.ammo
+        return nil if ammo.nil?
+        return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && ammo < 2
+        return t('fs3combat.out_of_ammo') if ammo == 0
+        return nil
+      end
+      
       # TODO - Check not explosive or suppressive
       # TODO - Check enough ammo for burst
       # TODO - Recoil and suppression modifiers
@@ -83,17 +89,28 @@ module AresMUSH
         # TODO - Hitting cover
         # TODO - Armor
         # TODO - Ammo - reduce, handle out of ammo situations, alert when out of ammo
+        
+        if (self.combatant.ammo == 0)
+          return [t('fs3combat.weapon_empty', :name => self.name)]
+        end
+        
         messages = []
         target = targets[0]
         
         if (self.is_burst)
           messages << t('fs3combat.fires_burst', :name => self.name)
-          messages << attack_target(target)
-          messages << attack_target(target)
-          messages << attack_target(target)
-        else
+        end
+        
+        bullets = self.is_burst ? 3 : 1
+        if (self.combatant.ammo && bullets > self.combatant.ammo)
+          bullets = self.combatant.ammo
+        end
+        
+        bullets.times.each do |b|
           messages << attack_target(target)
         end
+
+        update_ammo(bullets)
         
         messages
       end
@@ -134,6 +151,19 @@ module AresMUSH
             :damage => FS3Combat.display_severity(damage)) 
         end
         message
+      end
+      
+      def update_ammo(bullets)
+        
+        if (self.combatant.ammo)
+          self.combatant.ammo = self.combatant.ammo - bullets
+          
+          if (self.combatant.ammo == 0)
+            messages << t('fs3combat.weapon_clicks_empty', :name => self.name)
+          end
+
+          self.combatant.save
+        end
       end
     end
   end

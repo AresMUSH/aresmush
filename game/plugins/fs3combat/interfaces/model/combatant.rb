@@ -13,8 +13,8 @@ module AresMUSH
     field :is_ko, :type => Boolean
     field :is_aiming, :type => Boolean
     field :aim_target, :type => String
-    field :stance, :type => String
     field :luck, :type => String
+    field :ammo, :type => Integer
     field :npc_damage, :type => Array, :default => []
       
     belongs_to :character, :class_name => "AresMUSH::Character"
@@ -152,7 +152,8 @@ module AresMUSH
     
     def do_damage(severity, weapon, hitloc)
       if (is_npc?)
-        npc_damage << severity
+        self.npc_damage << severity
+        self.save        
       else
         desc = "#{weapon} - #{hitloc}"
         is_stun = FS3Combat.weapon_is_stun?(weapon)

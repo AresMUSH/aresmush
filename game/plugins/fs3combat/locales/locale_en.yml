@@ -96,7 +96,7 @@ en:
         weapon_title_reload_turns: "Reload Time:"
         weapon_title_allowed_specials: "Allowed Specials:"
         invalid_weapon_special: "That is not a valid special for that weapon."
-
+        
         # ----------------------------
         # ARMOR
         # ----------------------------
@@ -166,7 +166,7 @@ en:
 
         attack_action_msg_long: "%{name} will attack %{target}."
         attack_action_msg_short: "Attack %{target}"
-        attack_special_burst: "(3-round burst)"
+        attack_special_burst: "(burst)"
         attack_special_called: "(called shot to the %{location})"
         attack_special_mod: "(modifier: %{mod})"
         invalid_attack_special: "That is not a valid attack special."
@@ -176,7 +176,7 @@ en:
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
-        fires_burst: "%{name} fires a 3-round burst!"        
+        fires_burst: "%{name} fires a burst!"        
         
         # ----------------------------
         # PASS
@@ -193,6 +193,18 @@ en:
         aim_action_msg_long: "%{name} will aim at %{target} this turn."
         aim_action_msg_short: "Aim %{target}"
         aim_resolution_msg: "%{name} takes careful aim at %{target}."
-            
+
+        # ----------------------------
+        # AMMO / RELOAD
+        # ----------------------------
+
+        not_enough_ammo_for_burst: "You need at least 2 rounds for burst fire."
+        out_of_ammo: "You are out of ammo."
+        weapon_clicks_empty: "%{name}'s weapon clicks empty."
+        weapon_empty: "%{name}'s weapon is empty."
         
+        reload_action_msg_long: "%{name} will reload this turn."
+        reload_action_msg_short: "Reload"
+        reload_resolution_msg: "%{name} reloads."
+        cant_reload: "That weapon can't be reloaded."        
         

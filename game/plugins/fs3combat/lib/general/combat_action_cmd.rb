@@ -32,6 +32,8 @@ module AresMUSH
           PassAction
         elsif (cmd.switch_is?("aim"))
           AimAction
+        elsif (cmd.switch_is?("reload"))
+          ReloadAction
         else
           nil
         end
