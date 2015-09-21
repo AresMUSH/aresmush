@@ -32,7 +32,7 @@ en:
         active_combats: "Active Combats"
         active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
-        summary_title: "Combatant      Skill     Weapon                     Armor            Stance"
+        summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
         
         # ----------------------------
         # START, STOP, JOIN, LEAVE

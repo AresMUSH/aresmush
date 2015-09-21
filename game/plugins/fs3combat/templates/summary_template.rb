@@ -13,13 +13,19 @@ module AresMUSH
         text = "%l1%R"
         text << "%xh#{t('fs3combat.summary_title')}"
         @combat.active_combatants.each do |c|
-          text << "%R#{show_name(c)} #{show_skill(c)} #{show_weapon(c)}  #{show_armor(c)}  #{show_stance(c)}"
+          text << "%R#{show_name(c)} #{show_slack(c)} #{show_skill(c)} #{show_weapon(c)}  #{show_armor(c)}  #{show_stance(c)}"
         end
         text << "%R%l1"
       end
       
       def show_name(c)
         left(c.name, 15)
+      end
+      
+      def show_slack(c)
+        acted = c.action.nil? ? '%xh%xr**%xn' : '++'
+        posed = c.is_npc? ? '--' : (c.posed ? '++' : '%xh%xr**%xn')
+        "#{acted} / #{posed}   "
       end
       
       def show_skill(c)
@@ -29,7 +35,7 @@ module AresMUSH
           weapon_skill = FS3Combat.weapon_stat(c.weapon, "skill")
           rating = FS3Skills.ability_rating(c.character, weapon_skill)          
         end
-        left("#{rating}", 8)
+        left("#{rating}", 5)
       end
       
       def show_weapon(c)
@@ -37,7 +43,7 @@ module AresMUSH
         if (c.weapon_specials)
           weapon << " (#{c.weapon_specials.join(",")})"
         end
-        left(weapon, 25)
+        left(weapon, 15)
       end
       
       def show_armor(c)

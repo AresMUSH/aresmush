@@ -42,8 +42,11 @@ module AresMUSH
           if (c.is_aiming && c.action.class != AimAction)
             Global.logger.debug "Reset aim for #{c.name}."
             c.is_aiming = false
-            c.save
           end
+          
+          c.posed = false
+          c.save
+          
         end
         
         combat.emit t('fs3combat.new_turn', :name => client.name)

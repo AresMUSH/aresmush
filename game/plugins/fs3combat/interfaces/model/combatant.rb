@@ -15,6 +15,7 @@ module AresMUSH
     field :aim_target, :type => String
     field :luck, :type => String
     field :ammo, :type => Integer
+    field :posed, :type => Boolean
     field :npc_damage, :type => Array, :default => []
       
     belongs_to :character, :class_name => "AresMUSH::Character"

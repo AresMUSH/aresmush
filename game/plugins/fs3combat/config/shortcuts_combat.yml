@@ -1,3 +1,6 @@
 shortcuts:
     roots:
         "weapons": "weapon"
+    full:
+        "combat/skills": "combat/summary"
+        "combat/slackers": "combat/summary"
