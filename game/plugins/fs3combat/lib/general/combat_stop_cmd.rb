@@ -19,6 +19,10 @@ module AresMUSH
         combat = FS3Combat.find_combat_by_number(client, self.num)
         return if (!combat)
 
+        combat.combatants.each do |c|
+          c.clear_mock_damage
+        end
+        
         combat.emit t('fs3combat.combat_stopped_by', :name => client.name)
         combat.destroy
         

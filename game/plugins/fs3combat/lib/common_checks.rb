@@ -3,7 +3,8 @@ module AresMUSH
     
     module NotAllowedWhileTurnInProgress
       def check_turn_in_progress
-        combat = client.char.combatant.combat
+        combatant = client.char.combatant
+        combat =  combatant ? combatant.combat : nil
         return nil if !combat
         return t('fs3combat.turn_in_progress') if combat.turn_in_progress
         return nil

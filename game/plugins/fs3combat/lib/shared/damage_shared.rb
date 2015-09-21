@@ -24,8 +24,7 @@ module AresMUSH
       end
     end
     
-    # Don't forget to save after!!
-    def self.inflict_damage(char, severity, desc, is_stun)
+    def self.inflict_damage(char, severity, desc, is_stun = false, is_mock = false)
       Global.logger.info "Damage inflicted on #{char.name}: #{desc} #{severity} stun=#{is_stun}"
 
       Damage.create(:character => char,
@@ -34,7 +33,8 @@ module AresMUSH
         :initial_severity => severity,
         :ictime => ICTime.ictime,
         :healing_points => FS3Combat.healing_points(severity),
-        :is_stun => is_stun)
+        :is_stun => is_stun, 
+        :is_mock => is_mock)
      end
      
      def self.healing_points(wound_level)

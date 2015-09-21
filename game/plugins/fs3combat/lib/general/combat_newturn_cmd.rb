@@ -27,12 +27,15 @@ module AresMUSH
         Global.logger.debug "****** NEW COMBAT TURN ******"
 
         initiative_order = combat.roll_initiative
+        
         combat.emit t('fs3combat.starting_turn_resolution', :name => client.name)
         combat.turn_in_progress = true
         combat.save
         
         initiative_order.each_with_index do |c, i|
           Global.dispatcher.queue_timer(i, "Combat Turn") do
+            
+            Global.logger.debug "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
             
             next if !c.action
             next if c.is_noncombatant?

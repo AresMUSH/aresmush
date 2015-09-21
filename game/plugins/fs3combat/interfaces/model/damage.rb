@@ -10,6 +10,7 @@ module AresMUSH
     field :healing_points, :type => Integer
     field :description, :type => String
     field :is_stun, :type => Boolean
+    field :is_mock, :type => Boolean
   
     belongs_to :character, :class_name => "AresMUSH::Character"
 

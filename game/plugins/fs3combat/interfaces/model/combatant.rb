@@ -158,7 +158,7 @@ module AresMUSH
       else
         desc = "#{weapon} - #{hitloc}"
         is_stun = FS3Combat.weapon_is_stun?(weapon)
-        FS3Combat.inflict_damage(self.character, severity, desc, is_stun)
+        FS3Combat.inflict_damage(self.character, severity, desc, is_stun, !self.combat.is_real)
       end
     end
     
@@ -246,6 +246,18 @@ module AresMUSH
           t('fs3combat.weapon_clicks_empty', :name => self.name)
         else
           nil
+        end
+      end
+    end
+    
+    def clear_mock_damage
+      if is_npc?
+        self.npc_damage = []
+      else
+        self.character.damage.each do |d|
+          if (d.is_mock)
+            d.destroy!
+          end
         end
       end
     end

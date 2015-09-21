@@ -14,19 +14,13 @@ module AresMUSH
         self.type = cmd.args ? titleize_input(cmd.args) : "Real"
       end
       
-      # TODO - Mock not implemented
-      #def check_mock
-      #  types = ['Mock', 'Real']
-      #  return nil if !self.type
-      #  return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include?(self.type)
-      #  return nil
-      #end
-      
       def check_mock
-        return "Sorry, mock is not implemented yet" if self.type != "Real"
+        types = ['Mock', 'Real']
+        return nil if !self.type
+        return t('fs3combat.invalid_combat_type', :types => types.join(" ")) if !types.include?(self.type)
         return nil
       end
-        
+      
       def check_not_already_in_combat
         return t('fs3combat.you_are_already_in_combat') if client.char.is_in_combat?
         return nil

@@ -36,9 +36,9 @@ module AresMUSH
             Help.categories.each do |k, v|
               next if v["command"] == self.category_index["command"]
               found = find_match(v)
-              return if found
+              break if found
             end
-            client.emit_failure t('help.not_found', :topic => self.topic)
+            client.emit_failure t('help.not_found', :topic => self.topic) if !found
           end
         end
       end

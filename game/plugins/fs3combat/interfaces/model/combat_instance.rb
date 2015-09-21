@@ -41,9 +41,9 @@ module AresMUSH
     end
     
     def leave(name)
-      # TODO - Leave should wipe out mock damage
       emit t('fs3combat.has_left', :name => name)
       combatant = find_combatant(name)
+      combatant.clear_mock_damage          
       self.combatants.delete combatant
       combatant.destroy
     end

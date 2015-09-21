@@ -36,7 +36,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          FS3Combat.inflict_damage(model, self.severity, self.desc, false)
+          FS3Combat.inflict_damage(model, self.severity, self.desc)
           model.save
           client.emit_success t('fs3combat.damage_inflicted', :name => model.name) 
         end

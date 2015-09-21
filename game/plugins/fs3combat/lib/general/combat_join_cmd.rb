@@ -21,7 +21,14 @@ module AresMUSH
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.names = cmd.args.arg1.nil? ? [] : titleize_input(cmd.args.arg1).split(" ")
+          if cmd.args.arg1
+            if (cmd.args.arg1 =~ /,/)
+              split_char = ","
+            else
+              split_char = " "
+            end
+            self.names = cmd.args.arg1.split(split_char).map { |n| titleize_input(n) }
+          end
           self.num = trim_input(cmd.args.arg2)
         else
           self.names = [ client.name ]
@@ -33,8 +40,10 @@ module AresMUSH
         combat = FS3Combat.find_combat_by_number(client, self.num)
         return if !combat
         
-        self.names.each do |n|
-          add_to_combat(combat, n)
+        self.names.each_with_index do |n, i|
+          Global.dispatcher.queue_timer(i, "Add to Combat") do
+            add_to_combat(combat, n)
+          end
         end
       end
       

@@ -54,6 +54,7 @@ en:
         has_joined: "%{name} has joined the combat as a %{type}."
         has_left: "%{name} has left the combat."
         invalid_combatant_type: "That is not a valid combatant type.  See combat/types for a list."
+        dont_use_commas_for_join: "Just use spaces between combatant names, not commas."
         
         # ----------------------------
         # GENERAL
