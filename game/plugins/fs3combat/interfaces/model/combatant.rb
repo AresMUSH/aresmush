@@ -162,7 +162,30 @@ module AresMUSH
       end
     end
     
-    def determine_damage(hitloc, weapon, armor = 0, cover = 0)
+    def determine_armor(hitloc, weapon)
+      # Not wearing armor at all.
+      return 0 if !self.armor
+      
+      pen = FS3Combat.weapon_stat(weapon, "penetration")
+      protect = FS3Combat.armor_stat(self.armor, "protection")[hitloc]
+      
+      # Armor doesn't cover this hit location
+      return 0 if !protect
+
+      pen_ratio = pen / protect
+      
+      # No coverage if penetration is way higher than armor value.
+      return 0 if pen_ratio > 2
+      
+      # Full coverage if protection way higher than penetration
+      return 100 if pen_ratio < 0.5
+       
+      # Ratio is between 0.5 (good) and 2 (bad).  Dividing a rand number by
+      # that value will give us a number from 50-200.
+      return rand(100) / pen_ratio
+    end
+    
+    def determine_damage(hitloc, weapon, armor = 0)
       random = rand(100)
       
       lethality = FS3Combat.weapon_stat(weapon, "lethality")
@@ -176,7 +199,7 @@ module AresMUSH
         severity = 0
       end
       
-      total = random + severity + lethality - armor - cover
+      total = random + severity + lethality - armor
       
       if (total < 41)
         damage = "L"
@@ -189,13 +212,12 @@ module AresMUSH
       end
       
       Global.logger.info "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
-      " lth=#{lethality} cov=#{cover} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
+      " lth=#{lethality} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
       
       damage
     end
     
     def attack_target(target, called_shot = nil, mod = 0)
-      # TODO - Hitting cover
       # TODO - Armor
       
       attack_roll = self.roll_attack(mod - self.recoil)
@@ -227,14 +249,23 @@ module AresMUSH
           hitloc = target.determine_hitloc(margin)
         end
         
-        damage = target.determine_damage(hitloc, self.weapon)
-        target.do_damage(damage, self.weapon, hitloc)
+        armor = target.determine_armor(hitloc, self.weapon)
         
-        message = t('fs3combat.attack_hits', 
-          :name => self.name, 
-          :target => target.name,
-          :hitloc => hitloc,
-          :damage => FS3Combat.display_severity(damage)) 
+        if (armor >= 100)
+          message = t('fs3combat.attack_stopped_by_armor', :name => self.name, :target => target.name, :hitloc => hitloc)
+        else
+          
+          reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
+          
+          damage = target.determine_damage(hitloc, self.weapon, armor)
+          target.do_damage(damage, self.weapon, hitloc)
+          message = t('fs3combat.attack_hits', 
+            :name => self.name, 
+            :target => target.name,
+            :hitloc => hitloc,
+            :armor => reduced_by_armor,
+            :damage => FS3Combat.display_severity(damage)) 
+        end
       end
       
       self.recoil = self.recoil + FS3Combat.weapon_stat(self.weapon, "recoil")

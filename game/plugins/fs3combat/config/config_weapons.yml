@@ -186,7 +186,7 @@ fs3combat:
             description: "Knife"
             skill: Melee
             lethality: -5
-            penetration: 0
+            penetration: 2
             weapon_type: Melee
             is_automatic: false
             # ammo: 0
@@ -200,7 +200,7 @@ fs3combat:
             description: "Stun gun"
             skill: Firearms
             lethality: 70
-            penetration: 0
+            penetration: 10
             weapon_type: Ranged
             is_automatic: false
             ammo: 5
@@ -214,7 +214,7 @@ fs3combat:
             description: "KEW Assault Cannon"
             skill: Gunnery
             lethality: 0
-            penetration: 20
+            penetration: 10
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0
@@ -253,14 +253,14 @@ fs3combat:
             reload_turns: 0
 
         Hmg:
-            description: "Heavy machinegun.  Assumes tripod."
+            description: "Heavy machinegun."
             skill: Firearms
             lethality: 0
             penetration: 8
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
-            recoil: 1
+            recoil: 3
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
@@ -310,7 +310,7 @@ fs3combat:
         Buckshot:
             description: "Shotgun pellets"
             accuracy: 3
-            penetration: 1
+            penetration: 0
         Boxing Gloves:
             description: "Padded sparring equipment"
             lethality: -20

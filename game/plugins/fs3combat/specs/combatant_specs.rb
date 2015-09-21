@@ -265,10 +265,6 @@ module AresMUSH
           it "should account for armor" do
             @combatant.determine_damage("Head", "Knife", 5).should eq "L"
           end
-          
-          it "should account for cover" do
-            @combatant.determine_damage("Head", "Knife", 0, 5).should eq "L"
-          end
         end
         
         describe :determine_hitloc do 
@@ -376,6 +372,7 @@ module AresMUSH
             @target.stub(:name) { "Target" }
             @combatant.stub(:weapon) { "Knife" }
             @target.stub(:stance) { "Normal" }
+            @target.stub(:determine_armor) { 0 }
             FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
           end
                 
@@ -390,7 +387,7 @@ module AresMUSH
             @combatant.stub(:roll_attack) { 0 }
             @combatant.attack_target(@target).should eq "fs3combat.attack_missed"
           end
-
+          
           describe "cover" do
             before do
               @target.stub(:stance) { "Cover" }
@@ -425,6 +422,7 @@ module AresMUSH
           describe "success" do
             before do
               @combatant.stub(:roll_attack) { 3 }
+              @target.stub(:roll_defense) { 2 }              
               @target.stub(:determine_hitloc) { "Head" }
               @combatant.stub(:weapon) { "Knife" }
               FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
@@ -432,11 +430,21 @@ module AresMUSH
               @target.stub(:determine_damage) { "M" }
             end
         
-            describe "single fire" do
-              before do 
-                @target.stub(:roll_defense) { 2 }              
+            describe "armor" do
+              it "should be stopped completely by armor if armor value >= 100" do
+                @target.stub(:determine_armor) { 101 }
+                @target.should_not_receive(:do_damage)
+                @combatant.attack_target(@target).should eq "fs3combat.attack_stopped_by_armor"              
               end
+            
+              it "should reduce damage by armor if it applies" do
+                @target.stub(:determine_armor) { 10 }
+                @target.should_receive(:determine_damage).with("Head", "Knife", 10) { "M" }
+                @combatant.attack_target(@target).should eq "fs3combat.attack_hits" 
+              end
+            end
           
+            describe "single fire" do
               it "should hit if attack roll greater" do
                 @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
               end
@@ -452,7 +460,7 @@ module AresMUSH
               end
         
               it "should calculate damage" do
-                @target.should_receive(:determine_damage).with("Head", "Knife") { "M" }
+                @target.should_receive(:determine_damage).with("Head", "Knife", 0) { "M" }
                 @combatant.attack_target(@target)
               end
               
@@ -473,7 +481,6 @@ module AresMUSH
           
               it "should roll random hitloc with penalty if margin <= 2" do
                 @target.should_receive(:determine_hitloc).with(-1) { "Body" }
-                @target.stub(:roll_defense) { 2 }
                 @target.should_receive(:do_damage).with("M", "Knife", "Body")
                 @combatant.attack_target(@target, "Right Leg")
               end

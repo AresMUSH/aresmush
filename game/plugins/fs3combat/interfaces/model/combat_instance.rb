@@ -38,6 +38,7 @@ module AresMUSH
       combatant = Combatant.create(:name => name, :combatant_type => combatant_type, :character => char)
       self.combatants << combatant
       emit t('fs3combat.has_joined', :name => name, :type => combatant_type)
+      return combatant
     end
     
     def leave(name)
