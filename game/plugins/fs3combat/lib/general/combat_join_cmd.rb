@@ -21,19 +21,17 @@ module AresMUSH
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          if cmd.args.arg1
-            if (cmd.args.arg1 =~ /,/)
-              split_char = ","
-            else
-              split_char = " "
-            end
-            self.names = cmd.args.arg1.split(split_char).map { |n| titleize_input(n) }
-          end
+          self.names = cmd.args.arg1 ? cmd.args.arg1.split(" ").map { |n| titleize_input(n) } : []
           self.num = trim_input(cmd.args.arg2)
         else
           self.names = [ client.name ]
           self.num = titleize_input(cmd.args)
         end
+      end
+
+      def check_commas
+        return t('fs3combat.dont_use_commas_for_join') if self.names.any? { |n| n.include?(",")}
+        return nil
       end
       
       def handle
