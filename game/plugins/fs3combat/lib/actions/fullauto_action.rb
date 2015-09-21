@@ -1,8 +1,6 @@
 module AresMUSH
   module FS3Combat
-    class FullautoAction < CombatAction
-      include ActionOnlyAllowsSingleTarget
-      
+    class FullautoAction < CombatAction      
       def parse_args(args)
         parse_targets args
       end
@@ -16,7 +14,7 @@ module AresMUSH
       def check_ammo
         ammo = self.combatant.ammo
         return nil if ammo.nil?
-        return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && ammo < 2
+        return t('fs3combat.not_enough_ammo_for_burst') if ammo < 6
         return t('fs3combat.out_of_ammo') if ammo == 0
         return nil
       end
@@ -28,31 +26,36 @@ module AresMUSH
         return nil
       end
       
-    
+      def check_targets
+        return t('fs3combat.too_many_targets') if self.targets.count > 4
+        return nil
+      end
       
       def print_action
-        t('fs3combat.fullauto_action_msg_long', :name => self.name, :target => print_target_names)
+        t('fs3combat.fullauto_action_msg_long', :name => self.name, :targets => print_target_names)
       end
       
       def print_action_short
-        t('fs3combat.fullauto_action_msg_short', :target => print_target_names)
+        t('fs3combat.fullauto_action_msg_short', :targets => print_target_names)
       end
       
       def resolve
         messages = []
         
-        messages << t('fs3combat.fires_fullauto', :name => self.name)
+        messages << t('fs3combat.fires_fullauto', :name => self.name, :targets => print_target_names)
         
-        bullets = 6
-        if (self.combatant.ammo && bullets > self.combatant.ammo)
-          bullets = self.combatant.ammo
+        bullets = {}
+        self.targets.each do |t|
+          bullets[t] = 6 / self.targets.count
         end
         
-        bullets.times.each do |b|
-          messages << self.combatant.attack_target(target)
+        bullets.each do |target, num|
+          num.floor.times.each do |n|
+            messages << self.combatant.attack_target(target)
+          end
         end
 
-        ammo_message = self.combatant.update_ammo(bullets)
+        ammo_message = self.combatant.update_ammo(6)
         if (ammo_message)
           messages << ammo_message
         end

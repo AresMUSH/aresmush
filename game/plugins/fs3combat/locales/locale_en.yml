@@ -185,8 +185,13 @@ en:
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
-        fires_burst: "%{name} fires a burst!"   
+        fires_burst: "%{name} fires a burst!"  
+         
         fires_fullauto: "%{name} fires full-auto!"     
+        fullauto_action_msg_long: "%{name} will fire full-auto at %{targets}."
+        fullauto_action_msg_short: "Fullauto %{targets}"
+        fullauto_resolution_msg: "%{name} fires full-auto!"
+        too_many_targets: "You can only attack up to 4 targets with full-auto fire."
         
         # ----------------------------
         # PASS

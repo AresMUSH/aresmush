@@ -238,6 +238,7 @@ module AresMUSH
     def update_ammo(bullets)
       if (self.ammo)
         self.ammo = self.ammo - bullets
+        self.save
         
         if (self.ammo == 0)
           t('fs3combat.weapon_clicks_empty', :name => self.name)
@@ -245,7 +246,6 @@ module AresMUSH
           nil
         end
       end
-      self.save
     end
     
     def is_npc?
