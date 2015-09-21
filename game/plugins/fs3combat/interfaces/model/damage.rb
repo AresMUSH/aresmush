@@ -24,6 +24,13 @@ module AresMUSH
       return false
     end
   
+    def wound_mod
+      config = Global.read_config("fs3combat", "damage_mods")
+      mod = config[self.current_severity]
+      mod = mod / 2 if self.last_treated
+      mod
+    end
+    
     def heal(points, was_treated = false)
       return if self.healing_points == 0
     

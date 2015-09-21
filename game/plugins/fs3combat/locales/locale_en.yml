@@ -15,16 +15,19 @@ en:
         serious_wound: "%xySerious%xn"
         critical_wound: "%xrCritical%xn"
         
-        can_only_treat_characters: "You can only treat characters."
-        damage_treated: "%{doc} treats %{target}. <%{success}>"
-        
+        can_only_treat_characters: "You can only treat PCs."        
+        only_pcs_can_treat: "Only PCs can use the treat command."
         treat_skill_set: "%{name} will now be used for your treat rolls."
         invalid_treat_skill: "You have to pick a treat skill you have a rating in."
         cant_treat_self: "You can't treat yourself!"
-        no_treatable_wounds: "%{name} has no treatable wounds."
+        no_treatable_wounds: "%{healer} attempts to treat %{patient}, but they have no treatable wounds."
         use_combat_treat_instead: "You cannot use this command in combat.  Use combat/treat instead."
         must_wait_to_treat: "You must wait a few minutes before you can treat again."
-
+        treat_success: "%{healer} treats %{patient}."
+        
+        treat_action_msg_long: "%{name} will treat %{target} this turn."
+        treat_action_msg_short: "Treat %{target}"
+        
         # ----------------------------
         # COMBAT LIST
         # ----------------------------
@@ -221,5 +224,5 @@ en:
         reload_action_msg_long: "%{name} will reload this turn."
         reload_action_msg_short: "Reload"
         reload_resolution_msg: "%{name} reloads."
-        cant_reload: "That weapon can't be reloaded."        
+        cant_reload: "That weapon can't be reloaded."      
         

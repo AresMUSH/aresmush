@@ -36,6 +36,8 @@ module AresMUSH
           ReloadAction
         elsif (cmd.switch_is?("fullauto"))
           FullautoAction
+        elsif (cmd.switch_is?("treat"))
+          TreatAction
         else
           nil
         end

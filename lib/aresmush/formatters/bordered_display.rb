@@ -28,9 +28,7 @@ module AresMUSH
     end
     
     def self.subtitled_list(items, title, subtitle, footer = nil)
-      output = "%xh#{title}%xn"
-      output << "%R%R"
-      output << "%xh#{subtitle}%xn"
+      output = "%xh#{subtitle}%xn"
       output << "%R%l2"
       
       if (!items.nil?)
