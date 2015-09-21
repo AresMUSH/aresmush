@@ -17,14 +17,19 @@ module AresMUSH
         cmd.root_is?("bbs") && cmd.switch_is?("reply")
       end
             
-      def crack!
-        if (cmd.args !~ /.+\/.+\=.+/)
-          self.reply = cmd.args
-        else
+      def crack!        
+        if (cmd.args =~ /.+\/.+\=.+/)
           cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
           self.board_name = titleize_input(cmd.args.name)
           self.num = trim_input(cmd.args.num)
           self.reply = cmd.args.reply
+        elsif (cmd.args =~ /.+\=.+\/.+/)
+          cmd.crack_args!( /(?<name>[^\=]+)\=(?<num>[^\=]+)\/(?<reply>[^\=]+)/)
+          self.board_name = titleize_input(cmd.args.name)
+          self.num = trim_input(cmd.args.num)
+          self.reply = cmd.args.reply
+        else
+          self.reply = cmd.args
         end
       end
       
