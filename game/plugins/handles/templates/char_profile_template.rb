@@ -18,6 +18,7 @@ module AresMUSH
           text << played_by
           text << alts
           text << custom_profile
+          text << handle_notice
                     
           BorderedDisplay.text text
       end
@@ -70,6 +71,15 @@ module AresMUSH
       def custom_profile
         return "" if @char.profile.empty?
         Handles.format_custom_profile(@char)
+      end
+      
+      def handle_notice
+        if (@char.handle && @char.handle_visible_to?(@client.char))
+          text = t('handles.see_handle_profile', :handle => @char.handle, :name => @char.name)          
+          "%R%l2%R#{center(text, 78)}"
+        else
+          ""
+        end
       end
     end
   end

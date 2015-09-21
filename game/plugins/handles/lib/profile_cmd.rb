@@ -17,11 +17,18 @@ module AresMUSH
       end
       
       def crack!
-        self.name = cmd.args.nil? ? client.char.handle : titleize_input(cmd.args)
+        self.name = cmd.args.nil? ? client.char.name : titleize_input(cmd.args)
       end
       
       def handle
-        Handles.get_profile(client, self.name)
+        if (Handles.handle_name_valid?(name))
+          Handles.get_profile(client, name)
+        else
+          ClassTargetFinder.with_a_character(name, client) do |model|
+            template = CharProfileTemplate.new(client, model)
+            template.render
+          end
+        end
       end      
     end
 

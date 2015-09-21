@@ -21,8 +21,7 @@ module AresMUSH
       end
       
       def character_list
-        text = t('handles.profile_char_list_title')
-        text << "%r%l2"
+        text = center( "%xh#{t('handles.profile_char_list_title')}%xn", 78)
         
         games = {}
         

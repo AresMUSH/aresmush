@@ -74,21 +74,7 @@ module AresMUSH
           client.emit template.display
         end
       else
-        if (Handles.handle_name_valid?(name))
-          handle_name = name
-          Handles.send_handle_profile_request(client, handle_name)
-        else
-          ClassTargetFinder.with_a_character(name, client) do |model|
-            handle_name =  model.handle
-            
-            template = CharProfileTemplate.new(client, model)
-            template.render
-            
-            if (model.handle && model.handle_visible_to?(client.char))
-              Handles.send_handle_profile_request(client, handle_name)
-            end
-          end
-        end
+        Handles.send_handle_profile_request(client, name)
       end
     end
   end

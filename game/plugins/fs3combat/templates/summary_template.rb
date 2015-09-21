@@ -11,7 +11,7 @@ module AresMUSH
       
       def build
         text = "%l1%R"
-        text << "%xh#{t('fs3combat.summary_title')}"
+        text << "%xh#{t('fs3combat.summary_title')}%xn"
         @combat.active_combatants.each do |c|
           text << "%R#{show_name(c)} #{show_slack(c)} #{show_skill(c)} #{show_weapon(c)}  #{show_armor(c)}  #{show_stance(c)}"
         end

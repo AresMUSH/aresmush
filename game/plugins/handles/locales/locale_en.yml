@@ -57,6 +57,7 @@ en:
         ooc_profile_title: "OOC Profile"
         no_profile_set: "None set"
         profile_set: "You set your profile."
+        see_handle_profile: "See also: %xcprofile %{handle}%xn"
 
         # Alts
         no_alts: "None"
