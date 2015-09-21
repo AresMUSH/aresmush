@@ -4,6 +4,7 @@ module AresMUSH
       
     field :is_real, :type => Boolean
     field :num, :type => Integer
+    field :turn_in_progress, :type => Boolean
     
     belongs_to :organizer, :class_name => "AresMUSH::Character", :inverse_of => "nil"  
     has_many :combatants, :inverse_of => 'combat', :dependent => :destroy

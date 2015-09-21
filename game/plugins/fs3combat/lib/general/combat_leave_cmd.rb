@@ -3,6 +3,7 @@ module AresMUSH
     class CombatLeaveCmd
       include Plugin
       include PluginRequiresLogin
+      include NotAllowedWhileTurnInProgress
       
       attr_accessor :name
       

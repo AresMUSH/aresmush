@@ -3,6 +3,7 @@ module AresMUSH
     class CombatActionCmd
       include Plugin
       include PluginRequiresLogin
+      include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :action_args, :action_klass
       

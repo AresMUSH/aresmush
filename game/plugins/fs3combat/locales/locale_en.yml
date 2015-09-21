@@ -164,6 +164,8 @@ en:
         you_are_a_noncombatant: "Noncombatants can't fight."
         cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
         new_turn: "%{name} has started a new turn!  Pose and pick your actions."
+        starting_turn_resolution: "Starting turn resolution..."
+        turn_in_progress: "Turn in progress.  Please wait."
         
         # ----------------------------
         # STANCE

@@ -16,6 +16,7 @@ module AresMUSH
     field :luck, :type => String
     field :ammo, :type => Integer
     field :posed, :type => Boolean
+    field :recoil, :type => Integer, :default => 0
     field :npc_damage, :type => Array, :default => []
       
     belongs_to :character, :class_name => "AresMUSH::Character"
@@ -48,7 +49,7 @@ module AresMUSH
       luck_mod = (self.luck == "Attack") ? 3 : 0
       mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod + luck_mod
       
-      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} aiming=#{aiming_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod}"
+      Global.logger.debug "Attack roll for #{self.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod}"
       
       roll_ability(ability, mod)
     end
@@ -154,7 +155,6 @@ module AresMUSH
     def do_damage(severity, weapon, hitloc)
       if (is_npc?)
         self.npc_damage << severity
-        self.save        
       else
         desc = "#{weapon} - #{hitloc}"
         is_stun = FS3Combat.weapon_is_stun?(weapon)
@@ -198,9 +198,9 @@ module AresMUSH
       # TODO - Hitting cover
       # TODO - Armor
       
-      attack_roll = self.roll_attack(mod)
+      attack_roll = self.roll_attack(mod - self.recoil)
       defense_roll = target.roll_defense(self.weapon)
-      
+            
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => self.name, :target => target.name)
 
@@ -232,13 +232,15 @@ module AresMUSH
           :hitloc => hitloc,
           :damage => FS3Combat.display_severity(damage)) 
       end
+      
+      self.recoil = self.recoil + FS3Combat.weapon_stat(self.weapon, "recoil")
+      
       message
     end
 
     def update_ammo(bullets)
       if (self.ammo)
         self.ammo = self.ammo - bullets
-        self.save
         
         if (self.ammo == 0)
           t('fs3combat.weapon_clicks_empty', :name => self.name)

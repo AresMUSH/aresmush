@@ -4,6 +4,7 @@ module AresMUSH
       include Plugin
       include PluginRequiresLogin
       include PluginRequiresArgs
+      include NotAllowedWhileTurnInProgress
       
       attr_accessor :names, :num
       

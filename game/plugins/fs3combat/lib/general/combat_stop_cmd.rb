@@ -3,6 +3,7 @@ module AresMUSH
     class CombatStopCmd
       include Plugin
       include PluginRequiresLogin
+      include NotAllowedWhileTurnInProgress
       
       attr_accessor :num
       

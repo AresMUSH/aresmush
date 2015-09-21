@@ -27,7 +27,6 @@ module AresMUSH
       
       def resolve
         self.combatant.ammo = FS3Combat.weapon_stat(self.combatant.weapon, "ammo")
-        self.combatant.save
         [t('fs3combat.reload_resolution_msg', :name => self.name)]
       end
     end
