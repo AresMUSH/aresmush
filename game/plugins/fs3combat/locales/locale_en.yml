@@ -62,6 +62,11 @@ en:
         invalid_combat_number: "That is not a valid combat number.  See combats for a list."
         organizer_only: "Only the organizer may do this."
         
+        
+        invalid_npc_skill: "NPC skill ratings must be from 1 to 12."
+        npc_skill_set: "You set %{name}'s NPC skill rating to %{skill}."
+        skill_set_only_for_npcs: "You can only set skills for NPCs."
+        
         # ----------------------------
         # TYPES
         # ----------------------------
@@ -97,6 +102,8 @@ en:
         weapon_title_reload_turns: "Reload Time:"
         weapon_title_allowed_specials: "Allowed Specials:"
         invalid_weapon_special: "That is not a valid special for that weapon."
+        use_explode_command: "Use the combat/explod command for this weapon."
+        use_suppress_command: "Use the combat/suppress command for this weapon."
         
         # ----------------------------
         # ARMOR
@@ -176,9 +183,10 @@ en:
         attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
         attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc}"
         
-        burst_fire_not_allowed: "You need an automatic weapon to do burst fire."
+        burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
-        fires_burst: "%{name} fires a burst!"        
+        fires_burst: "%{name} fires a burst!"   
+        fires_fullauto: "%{name} fires full-auto!"     
         
         # ----------------------------
         # PASS
@@ -200,7 +208,7 @@ en:
         # AMMO / RELOAD
         # ----------------------------
 
-        not_enough_ammo_for_burst: "You need at least 2 rounds for burst fire."
+        not_enough_ammo_for_burst: "You need at least 2 rounds for burst or fullauto fire."
         out_of_ammo: "You are out of ammo."
         weapon_clicks_empty: "%{name}'s weapon clicks empty."
         weapon_empty: "%{name}'s weapon is empty."

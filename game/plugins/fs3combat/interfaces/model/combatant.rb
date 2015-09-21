@@ -194,6 +194,60 @@ module AresMUSH
       damage
     end
     
+    def attack_target(target, called_shot = nil, mod = 0)
+      # TODO - Hitting cover
+      # TODO - Armor
+      
+      attack_roll = self.roll_attack(mod)
+      defense_roll = target.roll_defense(self.weapon)
+      
+      if (attack_roll <= 0)
+        message = t('fs3combat.attack_missed', :name => self.name, :target => target.name)
+
+      elsif (defense_roll > attack_roll)
+        message = t('fs3combat.attack_dodged', :name => self.name, :target => target.name)
+
+      else
+        # Margin of success for the attacker
+        margin = attack_roll - defense_roll
+        
+        # Called shot either hits the desired location, or chooses a random location
+        # at a penalty for missing.
+        if (called_shot)
+          if (margin > 2)
+            hitloc = called_shot
+          else
+            hitloc = target.determine_hitloc(margin - 2)
+          end
+        else
+          hitloc = target.determine_hitloc(margin)
+        end
+        
+        damage = target.determine_damage(hitloc, self.weapon)
+        target.do_damage(damage, self.weapon, hitloc)
+        
+        message = t('fs3combat.attack_hits', 
+          :name => self.name, 
+          :target => target.name,
+          :hitloc => hitloc,
+          :damage => FS3Combat.display_severity(damage)) 
+      end
+      message
+    end
+
+    def update_ammo(bullets)
+      if (self.ammo)
+        self.ammo = self.ammo - bullets
+        
+        if (self.ammo == 0)
+          t('fs3combat.weapon_clicks_empty', :name => self.name)
+        else
+          nil
+        end
+      end
+      self.save
+    end
+    
     def is_npc?
       self.character.nil?
     end

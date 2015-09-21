@@ -13,7 +13,6 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 %xccombat/reload%xn – Reloads a weapon.
 
 %xccombat/treat <name>%xn - Treat an injured person.
-%xccombat/rally <name>%xn - Try to rally (un-KO) a KO'd person.
 
 %xccombat/pass%xn - Take no action this turn.
 

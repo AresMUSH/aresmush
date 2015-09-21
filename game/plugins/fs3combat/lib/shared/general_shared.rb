@@ -5,7 +5,7 @@ module AresMUSH
       CombatInstance.all.sort { |c| c.num }.reverse
     end
     
-    def self.combatant_types
+    def combatant_types
       Global.read_config("fs3combat", "combatant_types")
     end
     
@@ -17,7 +17,7 @@ module AresMUSH
       FS3Combat.combats.select { |c| c.has_combatant?(name) }.first
     end
     
-    def self.combatant_type_stat(type, stat)
+    def combatant_type_stat(type, stat)
       type_config = FS3Combat.combatant_types[type]
       type_config[stat]
     end
