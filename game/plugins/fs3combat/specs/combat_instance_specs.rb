@@ -38,9 +38,14 @@ module AresMUSH
       end
       
       describe :leave do
-        it "should destroy a combatant" do
+        before do
           @bob.stub(:emit)
           @harvey.stub(:emit)
+          @harvey.stub(:clear_mock_damage)
+          @harvey.stub(:destroy)
+        end
+        
+        it "should destroy a combatant" do
           @harvey.should_receive(:destroy)
           @instance.leave("Harvey")
         end
@@ -48,7 +53,11 @@ module AresMUSH
         it "should emit to combat" do
           @bob.should_receive(:emit).with("fs3combat.has_left")
           @harvey.should_receive(:emit).with("fs3combat.has_left")
-          @harvey.stub(:destroy)
+          @instance.leave("Harvey")
+        end
+        
+        it "should clear mock damage" do
+          @harvey.should_receive(:clear_mock_damage)
           @instance.leave("Harvey")
         end
       end

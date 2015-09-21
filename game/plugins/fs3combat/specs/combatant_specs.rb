@@ -165,15 +165,28 @@ module AresMUSH
         
       end
       describe :do_damage do
+        before do
+          @combat = double
+          @combatant.stub(:combat) { @combat }
+          @combat.stub(:is_real) { true }
+        end
+        
         it "should inflict physical damage on a PC" do
           FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", false) {}
+          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", false, false) {}
           @combatant.do_damage("M", "Knife", "Arm")
         end
 
         it "should inflict stun damage on a PC" do
           FS3Combat.stub(:weapon_is_stun?).with("Knife") { true }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true) {}
+          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true, false) {}
+          @combatant.do_damage("M", "Knife", "Arm")
+        end
+        
+        it "should inflict mock damage on a PC" do
+          @combat.stub(:is_real) { false }
+          FS3Combat.stub(:weapon_is_stun?).with("Knife") { true }
+          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true, true) {}
           @combatant.do_damage("M", "Knife", "Arm")
         end
         
@@ -361,6 +374,8 @@ module AresMUSH
           before do
             @target = double
             @target.stub(:name) { "Target" }
+            @combatant.stub(:weapon) { "Knife" }
+            FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
           end
                 
           it "should dodge if defense roll greater" do
@@ -406,6 +421,12 @@ module AresMUSH
         
               it "should calculate damage" do
                 @target.should_receive(:determine_damage).with("Head", "Knife") { "M" }
+                @combatant.attack_target(@target)
+              end
+              
+              it "should inflict recoil" do
+                @combatant.stub(:recoil) { 2 }
+                @combatant.should_receive(:recoil=).with(3)
                 @combatant.attack_target(@target)
               end
             end
