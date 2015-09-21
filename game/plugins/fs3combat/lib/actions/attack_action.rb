@@ -67,9 +67,7 @@ module AresMUSH
         return t('fs3combat.use_suppress_command') if weapon_type == "Suppressive"
         return nil
       end
-      
-      # TODO - Recoil and suppression modifiers
-      
+            
       def print_action
         msg = t('fs3combat.attack_action_msg_long', :name => self.name, :target => print_target_names)
         if (self.is_burst)

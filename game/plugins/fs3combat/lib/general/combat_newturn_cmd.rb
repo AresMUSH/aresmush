@@ -10,8 +10,6 @@ module AresMUSH
       end
       
       def handle
-        
-        # TODO - Lock turn in progress
         if (!client.char.is_in_combat?)
           client.emit_failure t('fs3combat.you_are_not_in_combat')
           return

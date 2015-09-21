@@ -23,26 +23,6 @@ module AresMUSH
       end
       
       return display_name
-
-      # TODO - Delete this if it's going to stay this way.
-      #if (public_handle?)
-      #  name_part = handle
-      #  if (handle != "@#{name}")
-      #    aliases << name
-      #  end
-      #else
-      #  name_part = name
-      #end
-      # 
-      #if (self.alias)
-      #  aliases << self.alias
-      #end
-      #
-      #if (aliases.count > 0)
-      #  "#{name_part} (#{aliases.join(", ")})"
-      #else
-      #  name_part
-      #end
     end
     
     def self.find_by_handle(name)
