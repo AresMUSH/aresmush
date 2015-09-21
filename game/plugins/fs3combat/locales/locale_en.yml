@@ -188,6 +188,7 @@ en:
         attack_missed: "%{name} attacks %{target} but MISSES!"
         attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
         attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc}"
+        attack_hit_cover: "%{name} attacks %{target} but hits the COVER they're behind."
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."

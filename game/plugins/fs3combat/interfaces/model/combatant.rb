@@ -201,16 +201,20 @@ module AresMUSH
       attack_roll = self.roll_attack(mod - self.recoil)
       defense_roll = target.roll_defense(self.weapon)
             
+      # Margin of success for the attacker
+      margin = attack_roll - defense_roll
+            
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => self.name, :target => target.name)
 
       elsif (defense_roll > attack_roll)
         message = t('fs3combat.attack_dodged', :name => self.name, :target => target.name)
 
+      elsif (target.stance == "Cover" && margin < 2 && rand(100) < 60)
+        message = t('fs3combat.attack_hits_cover', :name => self.name, :target => target.name)
+
       else
-        # Margin of success for the attacker
-        margin = attack_roll - defense_roll
-        
+                  
         # Called shot either hits the desired location, or chooses a random location
         # at a penalty for missing.
         if (called_shot)

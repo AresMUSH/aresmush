@@ -375,6 +375,7 @@ module AresMUSH
             @target = double
             @target.stub(:name) { "Target" }
             @combatant.stub(:weapon) { "Knife" }
+            @target.stub(:stance) { "Normal" }
             FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
           end
                 
@@ -388,6 +389,37 @@ module AresMUSH
             @target.stub(:roll_defense) { 2 }
             @combatant.stub(:roll_attack) { 0 }
             @combatant.attack_target(@target).should eq "fs3combat.attack_missed"
+          end
+
+          describe "cover" do
+            before do
+              @target.stub(:stance) { "Cover" }
+              @target.stub(:roll_defense) { 2 }
+              @target.stub(:do_damage) { }
+              @target.stub(:determine_damage) { }
+              @target.stub(:determine_hitloc) { }
+              
+              # Note:  By seeding the random number generator, we can avoid the randomness.
+              #   22 makes the first random number 4.
+              #   220 makes the first random number 92.
+              Kernel.srand 22
+            end
+            
+            it "should miss cover if margin high enough" do
+              @combatant.stub(:roll_attack) { 5 }
+              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
+            end
+
+            it "should miss cover if margin is low but random die roll high" do
+              Kernel.srand 220
+              @combatant.stub(:roll_attack) { 2 }
+              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
+            end
+
+            it "should hit cover if margin and random die roll low" do
+              @combatant.stub(:roll_attack) { 2 }
+              @combatant.attack_target(@target).should eq "fs3combat.attack_hits_cover"
+            end
           end
 
           describe "success" do
