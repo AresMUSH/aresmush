@@ -35,7 +35,7 @@ fs3combat:
             #weapon_specials:
             #armor: 
         Observer:
-            #hitloc: n/a - non-combatant
+            hitloc: Humanoid
             #weapon:
             #weapon_specials:
             #armor:

@@ -16,6 +16,7 @@ module AresMUSH
         
       def type_display(name, info)
         text = left(name, 20)
+        puts "#{name} #{info}"
         text << display_field(info, "weapon")
         text << display_field(info, "armor")
         text

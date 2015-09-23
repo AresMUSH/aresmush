@@ -5,7 +5,9 @@ This is a quick reference for combat organizer commands.  For more details on FS
     %xccombats%xn%xn - Shows all combats going on. 
     %xccombat/newturn%xn - Starts the first turn.
     
-    %xccombat/join <list of names>=<combat #>
+    %xccombat/join <list of names>=<combat #>[/<type>]
+    %xccombat/vehicle <list of names>=<vehicle>/<pilot or passenger>
+        "vehicle" can be a vehicle *type* or a specific already-existing named vehicle in the combat.
     
     %xccombat/setup <list of names>=<values>%xn - Setup a bunch of people at once.
         "values" should be a list of param:value,param:value,etc.

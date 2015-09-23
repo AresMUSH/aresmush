@@ -40,7 +40,15 @@ module AresMUSH
       emit t('fs3combat.has_joined', :name => name, :type => combatant_type)
       return combatant
     end
-    
+
+    def set_vehicle(combatant, combatant_type, vehicle)
+      # TODO - Incomplete
+      # If vehicle already in list, add to crew
+      # Check for double pilots
+      # If 
+      emit t('fs3combat.joined_vehicle', :name => name, :type => combatant_type, :vehicle => vehicle_name)
+    end
+        
     def leave(name)
       emit t('fs3combat.has_left', :name => name)
       combatant = find_combatant(name)

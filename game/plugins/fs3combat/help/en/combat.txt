@@ -14,7 +14,7 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
          
     %xccombat/type <type>%xn - Sets your combatant type.
         See %xccombat/types%xn for a list of combatant types.
-    %xccombat/vehicle <vehicle>%xn - Use a vehicle type from %xcvehicles%xn to create a new
+    %xccombat/vehicle <vehicle>/<pilot or passenger>%xn - Use a vehicle type from %xcvehicles%xn to create a new
        vehicle, or a specific vehicle name from %xccombat%xn to join an existing one.
     %xccombat/weapon <weapon>[/<comma-separated specials>]%xn - Set your weapon and 
        any weapon specials.
