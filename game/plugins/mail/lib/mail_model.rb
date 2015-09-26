@@ -6,7 +6,7 @@ module AresMUSH
     field :mail_compose_to, :type => Array
     field :mail_compose_body, :type => String
     field :copy_sent_mail, :type => Boolean, :default => false
-    field :mail_filter, :type => String
+    field :mail_filter, :type => String, :default => "Inbox"
     
     def unread_mail
       mail.select { |m| !m.read }

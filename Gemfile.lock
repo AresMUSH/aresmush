@@ -21,7 +21,7 @@ GEM
     i18n (0.6.11)
     json (1.8.3)
     log4r (1.1.10)
-    minitest (5.8.0)
+    minitest (5.8.1)
     mongo (2.1.0)
       bson (~> 3.0)
     mongoid (5.0.0)

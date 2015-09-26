@@ -15,7 +15,6 @@ require 'bundler/setup'
 require 'ansi'
 require 'yaml'
 require 'eventmachine'
-require 'mongo'
 require 'mongoid'
 require 'i18n'
 require "i18n/backend/fallbacks" 

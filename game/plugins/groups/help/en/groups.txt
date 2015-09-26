@@ -8,6 +8,6 @@ To view a group or set your affiliation:
 
     %xcgroup <name>%xn - Describes a group and shows valid values.
     %xcgroup/set <group>=<value>%xn - Sets your affiliation.
-        Leave the vaule blank to clear it.
+        Leave the value blank to clear it.
 
 Most groups have shortcuts, so if there was a Position group, there would be commands like %xhpositions%xn to list all of the items in the "Position" group and %xhposition <name>%xn to set your position.

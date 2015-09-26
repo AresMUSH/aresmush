@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       def board_desc(board)
-        left(board.description,34)
+        left(board.description,33)
       end
       
       # Shows whether the character has read or write permissions

@@ -54,7 +54,7 @@ module AresMUSH
 
     def grab(msg)
       edit_prefix = char.nil? ? "" : "#{char.edit_prefix} "
-      @connection.send_data "#{edit_prefix}#{msg}\n"
+      @connection.send_data "#{edit_prefix}#{msg}\r\n"
     end
     
     def idle_secs

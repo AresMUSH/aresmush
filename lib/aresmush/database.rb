@@ -11,8 +11,8 @@ module AresMUSH
         Mongoid.load_configuration(db_config)
         
         Mongoid.logger.level = Logger::WARN
-        Mongo::Logger.logger.level = Logger::WARN
-                
+        Mongo::Logger.logger.level = Logger::WARN            
+            
       rescue Exception => e
         Global.logger.fatal("Error loading database config.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e
