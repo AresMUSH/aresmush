@@ -27,6 +27,11 @@ module AresMUSH
       key ? FS3Combat.armors[key] : nil
     end
 
+    def self.armor_stat(name, stat)
+      a = FS3Combat.armor(name)
+      a ? a[stat] : nil
+    end
+
     def self.vehicles
       Global.read_config("fs3combat", "vehicles")
     end

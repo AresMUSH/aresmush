@@ -17,6 +17,7 @@ module AresMUSH
     field :ammo, :type => Integer
     field :posed, :type => Boolean
     field :recoil, :type => Integer, :default => 0
+    field :team, :type => Integer, :default => 1
     field :npc_damage, :type => Array, :default => []
       
     belongs_to :character, :class_name => "AresMUSH::Character"

@@ -42,8 +42,8 @@ en:
         # ----------------------------
         
         combat_stopped_by: "%{name} has stopped the combat."
-        combat_stopped: "You stop combat %{num}."
-        
+        combat_stopped: "Combat %{num} is now stopped."
+        stopping_combat: "You stop combat %{num}.  This will take a moment.  Please be patient."
         you_are_already_in_combat: "You are already in combat."
         already_in_combat: "%{name} is already in combat."
         you_are_not_in_combat: "You are not in combat."
@@ -57,6 +57,11 @@ en:
         dont_use_commas_for_join: "Just use spaces between combatant names, not commas."
         use_vehicle_type_cmd: "Join as a soldier first and then use the combat/vehicle command to get in a vehicle."
         joined_vehicle: "%{name} is now a %{type} in %{vehicle}."
+
+        invalid_team: "Teams must be numbers between 1 and 5."
+        team_set: "%{name} is now on Team %{team}."
+        team_header: "---- Team %{team} ----"
+            
         # ----------------------------
         # GENERAL
         # ----------------------------
@@ -71,6 +76,8 @@ en:
         invalid_npc_skill: "NPC skill ratings must be from 1 to 12."
         npc_skill_set: "You set %{name}'s NPC skill rating to %{skill}."
         skill_set_only_for_npcs: "You can only set skills for NPCs."
+        
+        choosing_ai_actions: "Choosing NPC AI actions."
         
         # ----------------------------
         # TYPES

@@ -24,6 +24,18 @@ module AresMUSH
                 
         Global.logger.debug "****** NEW COMBAT TURN ******"
 
+        if (combat.first_turn)
+          combat.active_combatants.select { |c| c.is_npc? }.each_with_index do |c, i|
+            Global.dispatcher.queue_timer(i, "Combat AI") do          
+              combat.ai_action(client, c)
+            end
+          end
+          combat.emit t('fs3combat.new_turn', :name => client.name)
+          combat.first_turn = false
+          combat.save
+          return
+        end
+        
         initiative_order = combat.roll_initiative
         
         combat.emit t('fs3combat.starting_turn_resolution', :name => client.name)

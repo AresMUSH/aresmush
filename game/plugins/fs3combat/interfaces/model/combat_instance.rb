@@ -5,6 +5,7 @@ module AresMUSH
     field :is_real, :type => Boolean
     field :num, :type => Integer
     field :turn_in_progress, :type => Boolean
+    field :first_turn, :type => Boolean, :default => true
     
     belongs_to :organizer, :class_name => "AresMUSH::Character", :inverse_of => "nil"  
     has_many :combatants, :inverse_of => 'combat', :dependent => :destroy
@@ -35,7 +36,10 @@ module AresMUSH
     end
       
     def join(name, combatant_type, char = nil)
-      combatant = Combatant.create(:name => name, :combatant_type => combatant_type, :character => char)
+      combatant = Combatant.create(:name => name, 
+        :combatant_type => combatant_type, 
+        :character => char,
+        :team => char ? 1 : 2)
       self.combatants << combatant
       emit t('fs3combat.has_joined', :name => name, :type => combatant_type)
       return combatant
@@ -80,6 +84,15 @@ module AresMUSH
       end
       Global.logger.debug "Combat initiative rolls: #{order.map { |o| "#{o[:combatant].name}=#{o[:roll]}" }}"
       order.sort_by { |c| c[:roll] }.map { |c| c[:combatant] }
+    end
+    
+    def ai_action(client, combatant)
+      if (combatant.ammo == 0)
+        FS3Combat.set_action(client, self, combatant, FS3Combat::ReloadAction, "")
+      elsif (!combatant.action)
+        target = active_combatants.select { |t| t.team != combatant.team }.shuffle.first
+        FS3Combat.set_action(client, self, combatant, FS3Combat::AttackAction, target.name)
+      end   
     end
   end
 end

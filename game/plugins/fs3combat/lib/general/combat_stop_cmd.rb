@@ -24,9 +24,12 @@ module AresMUSH
         end
         
         combat.emit t('fs3combat.combat_stopped_by', :name => client.name)
-        combat.destroy
+        client.emit_success t('fs3combat.stopping_combat', :num => self.num)
         
-        client.emit_success t('fs3combat.combat_stopped', :num => self.num)
+        Global.dispatcher.spawn("Stopping combat.", client) do      
+          combat.destroy
+          client.emit_success t('fs3combat.combat_stopped', :num => self.num)
+        end
       end
     end
   end

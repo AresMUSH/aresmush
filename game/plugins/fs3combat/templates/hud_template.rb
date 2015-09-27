@@ -11,7 +11,11 @@ module AresMUSH
       
       def build
         text = format_header
-        text << @combat.active_combatants.map { |c| format_combatant(c) }.join
+        teams = @combat.active_combatants.group_by {|c| c.team}
+        teams.sort.each do |team, members|
+          text << "%R%xg#{t('fs3combat.team_header', :team => team)}%xn"
+          text << members.map { |c| format_combatant(c) }.join
+        end
         text << format_non_combatants
         text << "%R%l1"
       end
@@ -32,7 +36,7 @@ module AresMUSH
       def format_combatant(c)
         # TODO: Make this prettier
         action = c.action ? c.action.print_action_short : ""
-        "%R#{left(c.name, 15)} #{c.stance} #{format_weapon(c)} #{c.combatant_type} #{format_damage(c)} #{action} #{c.ammo} #{c.ammo.nil?}"
+        "%R#{left(c.name, 15)} #{c.stance} #{format_weapon(c)} #{c.combatant_type} #{format_damage(c)} #{action} #{c.ammo}"
       end
       
       def format_non_combatants
