@@ -31,7 +31,7 @@ module AresMUSH
           end
           
           board.bbs_posts.each_with_index do |post, i|
-            Global.dispatcher.queue_timer(i, "BBS Archive") do
+            Global.dispatcher.queue_timer(i, "BBS Archive", client) do
               Global.logger.debug "Logging bbpost #{post.id} from #{board.name}."
               date = OOCTime.local_long_timestr(client, post.created_at)
               author = post.author.nil? ? t('bbs.deleted_author') : post.author.name

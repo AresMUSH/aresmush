@@ -49,7 +49,7 @@ module AresMUSH
         return if !combat
         
         self.names.each_with_index do |name, i|
-          Global.dispatcher.queue_timer(i, "Set vehicle type:") do
+          Global.dispatcher.queue_timer(i, "Set vehicle type:", client) do
             FS3Combat.with_a_combatant(name, client) do |combat, combatant|   
               # TODO - incomplete     
 #              combat.join_vehicle(combatant, type, result.target)

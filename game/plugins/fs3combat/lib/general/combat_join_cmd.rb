@@ -51,7 +51,7 @@ module AresMUSH
         return if !combat
         
         self.names.each_with_index do |n, i|
-          Global.dispatcher.queue_timer(i, "Add to Combat") do
+          Global.dispatcher.queue_timer(i, "Add to Combat", client) do
             add_to_combat(combat, n)
           end
         end

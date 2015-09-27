@@ -13,12 +13,10 @@ module AresMUSH
     
     # Place an action in the queue to be run after APPROXIMATELY the specified number of seconds.
     # The dispatcher is not a precise timer.
-    def queue_timer(seconds, description, &block)
+    def queue_timer(seconds, description, client, &block)
       EventMachine.add_timer(seconds) do 
-        begin
+        AresMUSH.with_error_handling(client, description) do   
           yield block
-        rescue Exception => e
-          Global.logger.error("Error with timer '#{description}': error=#{e} backtrace=#{e.backtrace[0,10]}")
         end
       end
     end

@@ -23,7 +23,7 @@ module AresMUSH
         end
 
         combat.active_combatants.select { |c| c.is_npc? }.each_with_index do |c, i|
-          Global.dispatcher.queue_timer(i, "Combat AI") do          
+          Global.dispatcher.queue_timer(i, "Combat AI", client) do      
             combat.ai_action(client, c)
           end
         end
