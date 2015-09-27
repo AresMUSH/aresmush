@@ -28,7 +28,11 @@ module AresMUSH
         delivery = MailDelivery.create(message: msg, character: r)
         if (r == author)
           delivery.read = true
-          delivery.tags << Mail.sent_tag
+          if (author.copy_sent_mail)
+            delivery.tags << Mail.sent_tag
+          else
+            delivery.tags << Mail.inbox_tag
+          end
         else
           delivery.tags << Mail.inbox_tag
         end

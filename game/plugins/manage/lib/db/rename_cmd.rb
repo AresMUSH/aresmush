@@ -47,7 +47,8 @@ module AresMUSH
         end
         
         if (target.class == Exit)
-          if (target.source.has_exit?(self.name))
+          existing_exit = target.source.get_exit(self.name)
+          if (existing_exit && existing_exit != target)
             client.emit_failure(t('manage.exit_already_exists'))
             return
           end

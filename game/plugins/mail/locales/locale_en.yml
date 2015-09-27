@@ -33,7 +33,7 @@ en:
         to: "To:"
         sent: "Sent:"
         inbox: "Inbox"
-
+        sent_mail_notice: "Only messages you send to yourself will appear here. See %xhhelp mail review%xn."
         sent_review: "Sent Mail to %{name}"
         original_message: "Original Message"
         cant_unsend_read_mail: "You can't unsend mail that has already been read."

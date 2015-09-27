@@ -8,14 +8,14 @@ module AresMUSH
       # Coder nitpick:  Actually references a list of MailDelivery objects
       attr_accessor :messages
       
-      # The folder name
-      attr_accessor :folder
+      # The tag name
+      attr_accessor :tag
       
-      def initialize(client, messages, show_from, folder)
+      def initialize(client, messages, show_from, tag)
         @char = client.char
         @messages = messages
         @show_from = show_from
-        @folder = folder
+        @tag = tag
         super client
       end
       
@@ -35,6 +35,8 @@ module AresMUSH
           text << message_date(msg)
         end
         
+        text << footer()
+        
         text << "%r%l1"
         
         text
@@ -42,10 +44,18 @@ module AresMUSH
       
       def header
         text = "%l1%r"
-        text << "%xh%x![ #{folder} ]%xn%r"
+        text << "%xh%x![ #{tag} ]%xn%r"
         text << "%xh#{inbox_title}%xn%r"
         text << "%l2"
         text
+      end
+      
+      def footer
+        if (self.tag == Mail.sent_tag)
+          "%R%l2%R#{t('mail.sent_mail_notice')}"
+        else
+          ""
+        end
       end
       
       def inbox_title
