@@ -21,7 +21,7 @@ module AresMUSH
       describe :join do
         before do
           @combatants = []
-          Combatant.stub(:create).with(:name => "Bob", :combatant_type => "soldier", :character => @bob) { @bob }
+          Combatant.stub(:create).with(:name => "Bob", :combatant_type => "soldier", :character => @bob, :team => 1) { @bob }
           @instance.stub(:combatants) { @combatants }
         end
         

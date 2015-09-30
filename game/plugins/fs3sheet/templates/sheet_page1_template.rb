@@ -132,7 +132,7 @@ module AresMUSH
       end
       
       def luck
-        @char.luck
+        @char.luck.floor
       end
       
       def format_attr(a, i)

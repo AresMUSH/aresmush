@@ -1,5 +1,7 @@
 module AresMUSH
   module Handles
+    include TemplateFormatters
+    
     class HandleProfileTemplate
       def initialize(profile_char, asking_char)
         @profile_char = profile_char
