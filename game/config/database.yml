@@ -2,26 +2,28 @@
 # http://mongoid.org/en/mongoid/docs/installation.html#configuration
 database:
     production:
-        sessions:
+        clients:
             default:
                 hosts:
                     - localhost:7210
                 database: aresmush
-                username: ares
-                password: make_a_good_password
+                options:
+                    user: ares
+                    password: make_a_good_password
         options:
             # These options are critical for proper Ares operation.  
             # You may experiment with other options at your own discretion.
             raise_not_found_error: false
 
     test:
-        sessions:
+        clients:
             default:
                 hosts:
                     - localhost:7210
                 database: arestest
-                username: ares
-                password: make_a_good_password
+                options:
+                    user: ares
+                    password: make_a_good_password
         options:
             # These options are critical for proper Ares operation. 
             # You may experiment with other options at your own discretion.
