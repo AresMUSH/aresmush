@@ -48,6 +48,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (> 4)
   ansi (~> 1.4.3)
   bcrypt (~> 3.1.2)
   bson (~> 3.0)

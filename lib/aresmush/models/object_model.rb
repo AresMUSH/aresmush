@@ -8,7 +8,6 @@ module AresMUSH
       base.send :extend, ClassMethods   
       base.send :register_data_members
       @@models << base
-      base.reset_storage_options!
     end
  
     module ClassMethods
