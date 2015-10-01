@@ -4,7 +4,6 @@ module AresMUSH
     def self.included(base)
       base.send :extend, ClassMethods   
       base.send :register_data_members
-      #base.reset_storage_options!
     end
  
     module ClassMethods
