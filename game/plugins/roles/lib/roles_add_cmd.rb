@@ -37,7 +37,8 @@ module AresMUSH
       
       def handle        
         ClassTargetFinder.with_a_character(self.name, client) do |char|
-          if (!char.has_role?(self.role))          
+          if (!char.has_role?(self.role))     
+            Global.logger.info "#{client.name} added role #{self.role} to #{self.name}."     
             char.roles << self.role.downcase
             char.save!
           end
