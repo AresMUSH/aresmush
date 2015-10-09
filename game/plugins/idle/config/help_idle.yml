@@ -7,3 +7,10 @@ help:
                     dir: 'game/plugins/idle/help/'
                     file: 'admin_idle.txt'
                     summary: 'Idle sweeping old characters.'
+        main:
+            topics:
+                lastwill:
+                    toc_topic: 'Misc'
+                    dir: 'game/plugins/idle/help'
+                    file: 'lastwill.txt'
+                    summary: 'Preferences if your char idles out.'

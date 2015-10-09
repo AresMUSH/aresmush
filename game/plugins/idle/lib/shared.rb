@@ -13,12 +13,14 @@ module AresMUSH
       return t('idle.idle_not_started') if !queue
 
       list = []
-      queue.each do |char, action|
+      queue.each do |id, action|
+        char = Character.find(id)
         name = char.is_approved? ? "%xh%xg#{char.name}%xn" : char.name
         last_on = OOCTime.local_short_timestr(client, char.last_on)
-        list << "#{name} - #{last_on} - #{action}"
+        will = char.lastwill
+        list << "#{name.ljust(20)} #{last_on.ljust(12)} #{action.ljust(15)} #{will}"
       end
-      BorderedDisplay.list list, t('idle.idle_title')
+      BorderedDisplay.subtitled_list list, t('idle.idle_title'), t('idle.idle_subtitle')
     end
   end
 end
