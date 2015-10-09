@@ -1,10 +1,14 @@
 en:
     idle:
         idle_title: "Idle Queue"
+        idle_subtitle: "Name                 Last On      Idle Action     Last Will"
         idle_not_started: "Idle sweep not started."
         idle_action_set: "%{name}'s idle action is now %{action}."
+        idle_removed: "%{name} removed from idle queue."
         invalid_action: "Not a valid idle action.  Try one of these: %{actions}"
         added_to_roster: "Added to roster"
         idle_warning: "In danger of idling out.  Please come back!"
         idle_bbs_subject: "Idle-Out Characters"
         idle_bbs_body: "The following characters have idled out or are in danger of doing so.%R%R%{report}"
+        
+        lastwill_set: "Last will instructions set."
