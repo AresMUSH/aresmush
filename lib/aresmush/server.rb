@@ -4,6 +4,10 @@ module AresMUSH
   class Server
     
     def start
+      EventMachine.error_handler{ |e|
+        Global.logger.error "Error raised during event loop: error=#{e} backtrace=#{e.backtrace[0,10]}"
+      }
+
       EventMachine::run do
         host = Global.read_config("server", "hostname")
         port = Global.read_config("server", "port")
