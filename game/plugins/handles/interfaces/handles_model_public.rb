@@ -12,7 +12,7 @@ module AresMUSH
     end
     
     def public_handle?
-      handle_privacy == Handles.privacy_public
+      handle && handle_privacy == Handles.privacy_public
     end
     
     def ooc_name

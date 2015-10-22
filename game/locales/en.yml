@@ -6,8 +6,8 @@ en:
 
     dispatcher:
         unexpected_error: |
-          Sorry! Something bad happened while executing this command.
-          Please send this error information to the admins and tell them what you were doing:
+          Sorry! The code lost its mind while executing this command.  Not your fault.
+          Please send this error information to the admins and tell them what you were doing at the time:
           Description: "%{desc}"
           Error: "%{error_info}"
         huh: "Huh? Unrecognized command."

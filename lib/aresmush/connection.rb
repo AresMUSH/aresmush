@@ -8,7 +8,7 @@ module AresMUSH
       begin
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
       rescue Exception => e
-        Global.logger.warn "Could not decode IP address."
+        Global.logger.warn "Could not decode IP address.  error=#{e} backtrace=#{e.backtrace[0,10]}"
         @ip_addr = "0.0.0.0"
       end
     end
@@ -21,7 +21,7 @@ module AresMUSH
       begin
         super msg
       rescue Exception => e
-        Global.logger.warn "Could not send to connection: #{e}."
+        Global.logger.warn "Could not send to connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end
     
@@ -33,17 +33,25 @@ module AresMUSH
       begin
         super
       rescue Exception => e
-        Global.logger.debug "Couldn't close connection: #{e}."
+        Global.logger.warn "Couldn't close connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end
     
     def receive_data(data)
-      input = strip_control_chars(data)
-      @client.handle_input(input)
+      begin
+        input = strip_control_chars(data)
+        @client.handle_input(input)
+      rescue Exception => e
+        Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
+      end
     end
 
     def unbind
-      @client.connection_closed
+      begin
+        @client.connection_closed
+      rescue Exception => e
+        Global.logger.warn "Error closing connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
+      end
     end  
     
     private 
