@@ -22,7 +22,7 @@ en:
         invalid_rating: That is not a valid ability rating.
         wrong_type_for_ability_command: "You can't use the raise/lower/ability command for that kind of ability."
         cant_overlap_with_name:  "That name overlaps with an existing aptitude, action skill or advantage name."
-        no_special_characters: "Ability names may not contain special characters."
+        no_special_characters: "Ability, goal and hook names may not contain special characters."
         advantages_not_enabled: "Advantages are not being used on this game."
         goals_set: "You set your goals."
         hooks_set: "You set your RP hooks."

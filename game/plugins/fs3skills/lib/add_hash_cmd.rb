@@ -26,6 +26,11 @@ module AresMUSH
         self.desc = cmd.args.arg2
       end
       
+      def check_name_for_dots
+        return t('fs3skills.no_special_characters') if (self.name !~ /^[\w\s]+$/)
+        return nil
+      end
+      
       def handle
         item_hash = cmd.root_is?("hook") ? client.char.hooks : client.char.goals
         

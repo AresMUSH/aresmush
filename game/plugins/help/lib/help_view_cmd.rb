@@ -24,7 +24,13 @@ module AresMUSH
         self.topic = strip_prefix(titleize_input(cmd.args))
       end
       
+      def check_valid_category
+        return t('help.unrecognized_help_library') if !self.category_index
+        return nil
+      end
+      
       def check_can_view_help
+        return nil if !self.category_index
         return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category_index)
         return nil
       end
