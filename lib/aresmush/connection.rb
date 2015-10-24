@@ -29,7 +29,7 @@ module AresMUSH
       send_data ClientFormatter.format(msg)
     end
     
-    def close_connection
+    def close_connection(after_writing = false)
       begin
         super
       rescue Exception => e

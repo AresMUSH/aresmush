@@ -2,7 +2,6 @@ require 'eventmachine'
 
 module AresMUSH
   class Server
-    
     def start
       EventMachine.error_handler{ |e|
         begin
@@ -30,6 +29,6 @@ module AresMUSH
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end
-    end   
+    end
   end
 end

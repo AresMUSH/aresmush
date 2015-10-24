@@ -65,10 +65,11 @@ module AresMUSH
       (Time.now - self.last_connect).to_i
     end
     
-    # Initiates a disconnect on purpose.  Wait a tick
-    # to give any pending messages a chance to flush.
     def disconnect
-      EM.next_tick { @connection.close_connection }
+      AresMUSH.with_error_handling(nil, "Disconnecting client.") do
+        @connection.close_connection true  # True flushes output first
+        Global.client_monitor.connection_closed self
+      end
     end
     
     def handle_input(input)

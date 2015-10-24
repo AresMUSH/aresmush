@@ -22,8 +22,8 @@ module AresMUSH
         end
         
         # Don't use dispatcher here because we want a hard kill
-        EM.add_timer(1) do
-          EM.stop_event_loop
+        EventMachine.add_timer(1) do
+          EventMachine.stop_event_loop
         end
       end
     end

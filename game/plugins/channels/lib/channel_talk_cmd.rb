@@ -52,6 +52,11 @@ module AresMUSH
           client.emit_failure t('channels.not_on_channel')
           return
         end
+        
+        if (Channels.is_gagging?(client.char, self.channel))
+          client.emit_failure t('channels.cant_talk_when_gagged')
+          return          
+        end
           
         title = Channels.get_channel_option(client.char, channel, "title")
         name = title.nil? ? client.char.ooc_name : "#{title} #{client.char.ooc_name}"
