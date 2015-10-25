@@ -18,6 +18,11 @@ help:
                 offstage: 
                     dir: 'game/plugins/status/help/'
                     file: 'offstage.txt'
+                playerbit: 
+                    toc_topic: Community
+                    dir: 'game/plugins/status/help/'
+                    file: 'playerbit.txt'
+                    summary: "Designating a character as an OOC-only 'player bit'."
         admin:
             topics:
                 status: 

@@ -16,3 +16,8 @@ help:
                     file: 'roles.txt'
                     summary: 'Assigning permissions.'
                     aliases: [ 'role', 'permission', 'power' ]
+                admin: 
+                    toc_topic: 'Roles'
+                    dir: 'game/plugins/roles/help/'
+                    file: 'admin_admin.txt'
+                    summary: 'Configuring the admin list.'

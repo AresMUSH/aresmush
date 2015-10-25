@@ -2,8 +2,8 @@ module AresMUSH
   module Roles
     class AdminListCmd
       include Plugin
-      include PluginWithoutSwitches
       include TemplateFormatters
+      include PluginWithoutSwitches
             
       def want_command?(client, cmd)
         cmd.root_is?("admin") && !cmd.args

@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def check_can_set_status
-        return nil if Status.can_manage_status?(client.char)
+        return nil if Status.can_be_on_duty?(client.char)
         return t('status.newbies_cant_go_ic') if !client.char.is_approved
         return nil
       end

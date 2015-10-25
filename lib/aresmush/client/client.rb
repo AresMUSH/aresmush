@@ -68,7 +68,6 @@ module AresMUSH
     def disconnect
       AresMUSH.with_error_handling(nil, "Disconnecting client.") do
         @connection.close_connection true  # True flushes output first
-        Global.client_monitor.connection_closed self
       end
     end
     
