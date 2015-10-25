@@ -21,3 +21,4 @@ help:
                     dir: 'game/plugins/roles/help/'
                     file: 'admin_admin.txt'
                     summary: 'Configuring the admin list.'
+                    aliases: ['adminnote']
