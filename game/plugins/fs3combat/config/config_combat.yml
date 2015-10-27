@@ -23,17 +23,6 @@ fs3combat:
             armor: Tactical
             hitloc: Humanoid
             defense_skill: Reaction
-        Pilot:
-            hitloc: Humanoid
-            #weapon:
-            #weapon_specials:
-            #armor: 
-        Passenger:
-            noncombatant: false
-            hitloc: Humanoid
-            #weapon:
-            #weapon_specials:
-            #armor: 
         Observer:
             hitloc: Humanoid
             #weapon:

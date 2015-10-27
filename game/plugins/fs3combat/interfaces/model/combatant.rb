@@ -1,4 +1,6 @@
 module AresMUSH
+
+  
   class Combatant
     include SupportingObjectModel
       
@@ -7,7 +9,7 @@ module AresMUSH
     field :combatant_type, :type => String
     field :weapon, :type => String
     field :weapon_specials, :type => Array
-    field :stance, :type => String
+    field :stance, :type => String, :default => "Normal"
     field :armor, :type => String
     field :npc_skill, :type => Integer
     field :is_ko, :type => Boolean
@@ -25,6 +27,9 @@ module AresMUSH
 
     has_one :action, :class_name => 'AresMUSH::CombatAction', :inverse_of => :combatant, :dependent => :destroy
     has_and_belongs_to_many :targeted_by_actions, :class_name => 'AresMUSH::CombatAction', :inverse_of => :targets
+    
+    belongs_to :piloting, :class_name => 'AresMUSH::Vehicle', :inverse_of => :pilot
+    belongs_to :riding_in, :class_name => 'AresMUSH::Vehicle', :inverse_of => :passengers
       
     after_initialize :setup_defaults
         
@@ -164,6 +169,8 @@ module AresMUSH
     end
     
     def determine_armor(hitloc, weapon)
+      # TODO - If pilot or passenger, use vehicle armor
+      
       # Not wearing armor at all.
       return 0 if !self.armor
       
@@ -219,8 +226,6 @@ module AresMUSH
     end
     
     def attack_target(target, called_shot = nil, mod = 0)
-      # TODO - Armor
-      
       attack_roll = self.roll_attack(mod - self.recoil)
       defense_roll = target.roll_defense(self.weapon)
             
@@ -298,6 +303,14 @@ module AresMUSH
       end
     end
     
+    def vehicle
+      self.piloting ? self.piloting : self.riding_in
+    end
+    
+    def is_in_vehicle?
+      !self.piloting.nil? || !self.riding_in.nil?
+    end
+        
     def is_npc?
       self.character.nil?
     end

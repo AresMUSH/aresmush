@@ -6,23 +6,13 @@ This is a quick reference for combat organizer commands.  For more details on FS
     %xccombat/newturn%xn - Starts the first turn.
     
     %xccombat/join <list of names>=<combat #>[/<type>]
-    %xccombat/vehicle <list of names>=<vehicle>/<pilot or passenger>
-        "vehicle" can be a vehicle *type* or a specific already-existing named vehicle in the combat.
+        You can set up custom types in the game config to make it easier to add people with certain gear.
     
-    %xccombat/setup <list of names>=<values>%xn - Setup a bunch of people at once.
-        "values" should be a list of param:value,param:value,etc.
-        "param" can be one of: type, weapon, armor, vehicle
-        See %xccombat/types%xn for a list of combatant types.
-    
-    %xccombat/summary%xn - Summary of the skills and gear of all combatants.
-    %xccombat/slackers%xn - See at a glance who hasn't posed or chosen their actions.
+    %xccombat/summary%xn - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
 
     %xccombat/team <name>=<team#>%xn - Switches teams. 
 
     %xccombat/ai%xn - Auto-targets any NPCs who don't have actions yet.
-
-    %xccombat/mod <name>=<modifier,  or ->%xn - Sets a situational modifier (not for damage!).
-    %xccombat/lethal <name>=<modifier,  or ->%xn - Sets a lethality modifier
 
     %xccombat/unko%xn - Un-KO's someone who shouldn't have been
     %xcdamage/inflict <name>=<description>/<severity>%xn - Inflicts damage outside combat.

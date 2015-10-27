@@ -6,58 +6,53 @@ module AresMUSH
       include PluginRequiresArgs
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :names, :vehicle, :combatant_type
+      attr_accessor :name, :vehicle, :passenger_type
       
       def initialize
-        self.required_args = ['names', 'vehicle', 'combatant_type']
+        self.required_args = ['name', 'vehicle', 'passenger_type']
         self.help_topic = 'combat'
         super
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("vehicle")
+        cmd.root_is?("combat") && (cmd.switch_is?("pilot") || cmd.switch_is?("passenger"))
       end
       
       def crack!
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
-          self.names = cmd.args.arg1 ? cmd.args.arg1.split(" ").map { |n| titleize_input(n) } : nil
+          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+          self.name = titleize_input(cmd.args.arg1)
           self.vehicle = trim_input(cmd.args.arg2)
-          self.combatant_type = titleize_input(cmd.args.arg3)
         else
-          cmd.crack_args!(CommonCracks.arg1_slash_arg2)
-          self.names = [ client.name ]
-          self.vehicle = titleize_input(cmd.args.arg1)
-          self.combatant_type = titleize_input(cmd.args.arg2)
+          self.name = client.name
+          self.vehicle = titleize_input(cmd.args)
         end
-      end
-
-      def check_commas
-        return t('fs3combat.dont_use_commas_for_join') if self.names.any? { |n| n.include?(",")}
-        return nil
+        
+        self.passenger_type = cmd.switch_is?("passenger") ? "Passenger" : "Pilot"
       end
       
-      def check_type
-        valid_types = [ "Pilot", "Passenger" ]
-        return nil if !self.combatant_type       
-        return t('fs3combat.use_vehicle_type_cmd') if !valid_types.include?(self.combatant_type)
+      def check_in_combat
+        return t('fs3combat.you_are_not_in_combat') if !client.char.is_in_combat?
         return nil
       end
       
       def handle
-        combat = FS3Combat.find_combat_by_number(client, self.num)
-        return if !combat
-        
-        self.names.each_with_index do |name, i|
-          Global.dispatcher.queue_timer(i, "Set vehicle type:", client) do
-            FS3Combat.with_a_combatant(name, client) do |combat, combatant|   
-              # TODO - incomplete     
-#              combat.join_vehicle(combatant, type, result.target)
-#                      combat.save       
-#                      FS3Combat.set_default_gear(client, combatant, type)
-            end
-          end
+        combat = client.char.combatant.combat
+        vehicle = combat.find_or_create_vehicle(self.vehicle) 
+              
+        if (!vehicle)
+          client.emit_failure t('fs3combat.invalid_vehicle_name')
+          return
         end
+
+        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
+          if (combatant.is_in_vehicle?)
+            combat.leave_vehicle(combatant)
+          end
+          combat.join_vehicle(combatant, vehicle, self.passenger_type)
+        end
+        
+        combat.save
       end
     end
   end

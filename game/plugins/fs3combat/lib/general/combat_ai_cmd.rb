@@ -10,20 +10,30 @@ module AresMUSH
       end
       
       
+      def check_in_combat
+        return t('fs3combat.you_are_not_in_combat') if !client.char.is_in_combat?
+        return nil
+      end
+      
       def handle
-        combat = FS3Combat.combat(client.char.name)
-        if (!combat)
-          client.emit_failure t('fs3combat.you_are_not_in_combat')
-          return
-        end
+        combat = client.char.combatant.combat
         
         if (combat.organizer != client.char)
           client.emit_failure t('fs3combat.only_organizer_can_do')
           return
         end
 
-        combat.active_combatants.select { |c| c.is_npc? }.each_with_index do |c, i|
-          Global.dispatcher.queue_timer(i, "Combat AI", client) do      
+        npcs = combat.active_combatants.select { |c| c.is_npc? && !c.action }
+        
+        if (npcs.empty?)
+          client.emit_failure t('fs3combat.no_ai_actions_to_set')
+          return
+        end
+        
+        client.emit_success t('fs3combat.choosing_ai_actions')
+        
+        npcs.each_with_index do |c, i|
+          Global.dispatcher.queue_timer(i, "Combat AI", client) do  
             combat.ai_action(client, c)
           end
         end

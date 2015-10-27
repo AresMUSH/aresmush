@@ -36,7 +36,7 @@ en:
         active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
-        
+        hud_subtitle: "%xhCombatant         Damage  Weapon(ammo/specials)     Action(stance)%xn"
         # ----------------------------
         # START, STOP, JOIN, LEAVE
         # ----------------------------
@@ -61,6 +61,17 @@ en:
         invalid_team: "Teams must be numbers between 1 and 5."
         team_set: "%{name} is now on Team %{team}."
         team_header: "---- Team %{team} ----"
+        
+        invalid_vehicle_name: "That is not a valid vehicle name or vehicle type."
+        not_in_vehicle: "%{name} is not in a vehicle."
+        new_pilot: "%{name} takes over piloting %{vehicle}."
+        new_passenger: "%{name} is now a passenger in %{vehicle}."
+        disembarks_vehicle: "%{name} disembarks from %{vehicle}."
+        
+        piloting_hud: "%{vehicle}(Plt)"
+        passenger_hud: "%{vehicle}(Pas)"
+        vehicles_hud_title: "Vehicles            %xh%xuPilot%xn            %xh%xuPassengers%xn"
+        no_pilot: "None"
             
         # ----------------------------
         # GENERAL
@@ -78,6 +89,7 @@ en:
         skill_set_only_for_npcs: "You can only set skills for NPCs."
         
         choosing_ai_actions: "Choosing NPC AI actions."
+        no_ai_actions_to_set: "All NPCs have actions already."
         
         # ----------------------------
         # TYPES

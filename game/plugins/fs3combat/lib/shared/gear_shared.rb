@@ -41,6 +41,11 @@ module AresMUSH
       key ? FS3Combat.vehicles[key] : nil
     end
     
+    def self.vehicle_stat(name, stat)
+      v = FS3Combat.vehicle(name)
+      v ? v[stat] : nil
+    end
+    
     def self.hitlocs
       Global.read_config("fs3combat", "hitloc")
     end
@@ -85,7 +90,7 @@ module AresMUSH
       message = t('fs3combat.weapon_changed', :name => combatant.name, 
         :weapon => combatant.weapon, 
         :specials => specials_text)
-      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, client.char)
+      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, client ? client.char : nil)
     end
     
     def self.set_armor(client, combatant, armor)

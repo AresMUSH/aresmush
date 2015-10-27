@@ -9,6 +9,10 @@ module AresMUSH
       Global.read_config("fs3combat", "combatant_types")
     end
     
+    def self.passenger_types
+      [ "Pilot", "Passenger" ]
+    end
+    
     def self.is_in_combat?(name)
       !FS3Combat.combat(name).nil?
     end
@@ -60,6 +64,7 @@ module AresMUSH
     end
     
     def self.npcmaster_text(name, actor)
+      return nil if !actor
       actor.name == name ? nil : t('fs3combat.npcmaster_text', :name => actor.name)
     end
   end
