@@ -10,8 +10,9 @@ module AresMUSH
     
     # Renders the template asynchronously and emits it to the client when done
     def render
-      self.callback { |text| self.client.emit text }
-      build_async
+      #self.callback { |text| self.client.emit text }
+      #build_async
+      self.client.emit build
     end
     
     # Builds the template asynchronously.  To get the data, set up a callback.
