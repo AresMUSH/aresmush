@@ -35,5 +35,5 @@ jobs:
     error_category: "CODE"
     
     # Set to true to report unexpected code errors as jobs, false to not.
-    # You only want this 'false' when you're in development mode; otherwise leave it true.
+    # Turning this on can be spammy, but it can alert you to unexpected errors.
     report_errors: false

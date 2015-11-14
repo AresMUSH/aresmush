@@ -28,6 +28,15 @@ module AresMUSH
         end
       end
     end
+    
+    # Places a new action in the queue to be processed.
+    def queue_action(client, &block)
+      EventMachine.next_tick do
+        AresMUSH.with_error_handling(client, "Queue action.") do
+          yield block
+        end
+      end
+    end
 
     # Spawns a separate task to handle something in the background while doing other things.
     # This is good for rendering templates and doing file IO.   USE CAUTION to make sure the code

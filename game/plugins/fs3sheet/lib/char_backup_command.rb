@@ -25,8 +25,8 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
           FS3Sheet.sheet_templates.count.times do |i|
-            template = FS3Sheet.sheet_templates[i].new(model)
-            client.emit template.display
+            template = FS3Sheet.sheet_templates[i].new(model, client)
+            client.emit template.render
           end
           template = InfoTemplate.new(model, client)
           template.render
