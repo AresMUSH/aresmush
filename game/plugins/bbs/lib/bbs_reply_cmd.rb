@@ -55,7 +55,7 @@ module AresMUSH
           return
         end
 
-        BbsReply.create(author_id: client.char.id, bbs_post: post, message: self.reply)
+        BbsReply.create(author: client.char, bbs_post: post, message: self.reply)
         post.mark_unread
         Bbs.mark_read_for_player(client.char, post)
         

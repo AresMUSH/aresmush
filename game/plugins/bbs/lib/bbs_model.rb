@@ -29,19 +29,15 @@ module AresMUSH
     
     field :subject, :type => String
     field :message, :type => String
-    field :author_id, :type => BSON::ObjectId
     
     embedded_in :bbs_board
     
+    belongs_to :author, :class_name => "AresMUSH::Character"
     has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
     embeds_many :bbs_replies, order: :created_at.asc
     
-    def author
-      Character.find(self.author_id)
-    end
-    
     def authored_by?(char)
-      char.id == author_id
+      char == author
     end
     
     def is_unread?(char)
@@ -74,13 +70,9 @@ module AresMUSH
   class BbsReply
     include SupportingObjectModel
     
-    field :author_id, :type => BSON::ObjectId
     field :message, :type => String
     
     embedded_in :bbs_post
-    
-    def author
-      Character.find(self.author_id)
-    end
+    belongs_to :author, :class_name => "AresMUSH::Character"
   end
 end
