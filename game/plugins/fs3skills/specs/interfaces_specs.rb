@@ -111,9 +111,9 @@ module AresMUSH
           FS3Skills.ability_rating(@char, "Basketweaving").should eq 2
         end
         
-        it "should return the aptitude rating - 1 for an aptitude" do
+        it "should return the aptitude rating for an aptitude" do
           @char.stub(:fs3_aptitudes) { { "Mind" => 2 } }
-          FS3Skills.ability_rating(@char, "Mind").should eq 1
+          FS3Skills.ability_rating(@char, "Mind").should eq 2
         end
         
         it "should return 0 if no skill" do
