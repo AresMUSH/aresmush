@@ -33,5 +33,3 @@ module AresMUSH
     end
   end
 end
-nd
-end

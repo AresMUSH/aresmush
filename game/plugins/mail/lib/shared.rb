@@ -76,10 +76,7 @@ module AresMUSH
       client.char.mail.each do |m|
         # DO NOT USE DESTROY here or it will force a reload of the clients 
         # for each deleted message.
-        if (m.tags.include?(Mail.trashed_tag))
-          if (m.message.mail_deliveries.count <= 1)
-            m.message.delete # Do not destroy - see note above
-          end
+        if (m.tags.include?(Mail.trashed_tag))          
           m.delete # Do not destroy - see note above
         end
       end

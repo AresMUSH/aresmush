@@ -43,8 +43,7 @@ module AresMUSH
         end
       end
       
-      def reply_to(delivery)
-        msg = delivery.message
+      def reply_to(msg)
         Global.logger.debug("#{self.class.name} #{client} replying to message #{self.num} (#{msg.subject}).")
         subject = t('mail.reply_subject', :subject => msg.subject)
         recipients = get_recipients(msg)

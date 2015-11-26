@@ -3,10 +3,6 @@ module AresMUSH
     def self.send_mail(names, subject, body, client)
       author = client.nil? ? Game.master.system_character : client.char
       
-      msg = MailMessage.new(subject: subject, 
-        body: body, 
-        author: author)
-
       recipients = []
       names.each do |name|
         result = ClassTargetFinder.find(name, Character, client)
@@ -21,11 +17,10 @@ module AresMUSH
       
       recipients << author if (author.copy_sent_mail && !recipients.include?(author))
       
-      msg.to_list = recipients.map { |r| r.name }.join(" ")
-      msg.save
+      to_list = recipients.map { |r| r.name }.join(" ")
       
       recipients.each do |r|
-        delivery = MailDelivery.create(message: msg, character: r)
+        delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
         if (r == author)
           delivery.read = true
           if (author.copy_sent_mail)
@@ -40,7 +35,7 @@ module AresMUSH
         
         receive_client = r.client
         if (receive_client && receive_client != client)
-          receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => msg.subject)
+          receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)
         end
       end
       

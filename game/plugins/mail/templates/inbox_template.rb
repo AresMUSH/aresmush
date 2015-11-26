@@ -5,7 +5,6 @@ module AresMUSH
       include TemplateFormatters
       
       # The character's mail messages.
-      # Coder nitpick:  Actually references a list of MailDelivery objects
       attr_accessor :messages
       
       # The tag name
@@ -67,11 +66,11 @@ module AresMUSH
       end
 
       def message_subject(msg)
-        msg.message.subject.ljust(31)
+        msg.subject.ljust(31)
       end
 
       def message_date(msg)
-        OOCTime.local_short_timestr(self.client, msg.message.created_at)
+        OOCTime.local_short_timestr(self.client, msg.created_at)
       end
       
       # Message sent to or sent from, depending on the inbox mode.
@@ -80,8 +79,7 @@ module AresMUSH
       end
       
       def message_author(msg)
-        message = msg.message
-        a = message.author.nil? ? t('mail.deleted_author') : message.author.name
+        a = msg.author.nil? ? t('mail.deleted_author') : msg.author.name
         a.ljust(22)
       end
       
