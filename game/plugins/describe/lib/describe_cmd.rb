@@ -25,27 +25,21 @@ module AresMUSH
       end
       
       def handle
-        find_result = AnyTargetFinder.find(self.target, client)
+        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
         
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
-          return
-        end
-        
-        model = find_result.target
-        
-        if (!Describe.can_describe?(client.char, model))
-          client.emit_failure(t('dispatcher.not_allowed'))
-          return
-        end
+          if (!Describe.can_describe?(client.char, model))
+            client.emit_failure(t('dispatcher.not_allowed'))
+            return
+          end
           
-        if (cmd.root_is?("shortdesc"))
-          model.shortdesc = desc
-          model.save!
-        else
-          Describe.set_desc(model, desc)
+          if (cmd.root_is?("shortdesc"))
+            model.shortdesc = desc
+            model.save!
+          else
+            Describe.set_desc(model, desc)
+          end
+          client.emit_success(t('describe.desc_set', :name => model.name))
         end
-        client.emit_success(t('describe.desc_set', :name => model.name))
       end
         
     end

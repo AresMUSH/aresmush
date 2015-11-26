@@ -24,21 +24,15 @@ module AresMUSH
       end
 
       def handle
-        find_result = AnyTargetFinder.find(self.target, client)
-        
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
-          return
-        end
-        
-        target = find_result.target
+        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
 
-        if (!Manage.can_manage_object?(client.char, target))
-          client.emit_failure t('dispatcher.not_allowed')
-          return
-        end
+          if (!Manage.can_manage_object?(client.char, model))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
 
-        client.emit_raw "#{line}\n#{target.to_json}\n#{line}\n"
+          client.emit_raw "#{line}\n#{model.to_json}\n#{line}\n"
+        end
       end
     end
   end
