@@ -13,7 +13,7 @@ module AresMUSH
       #self.callback { |text| Global.dispatcher.queue_action(self.client) { self.client.emit text } }
       #build_async
       #self.client.emit build     
-      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client, callback) do
+      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client) do
         self.client.emit build
       end         
     end

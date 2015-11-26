@@ -19,7 +19,7 @@ module AresMUSH
       
         post = BbsPost.create(bbs_board: board, 
         subject: subject, 
-        message: message, author: author)
+        message: message, author_id: author.id)
         
         if (!client.nil?)
           Bbs.mark_read_for_player(client.char, post)
