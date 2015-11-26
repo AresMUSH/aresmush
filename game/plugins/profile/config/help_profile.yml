@@ -1,0 +1,33 @@
+help:
+    categories:
+        admin:
+            topics:
+                wiki:
+                    toc_topic: Character Creation
+                    dir: 'game/plugins/profile/help/'
+                    file: 'admin_wiki.txt'
+                    summary: "View someone's wiki page template."
+        main:
+            topics:
+                info: 
+                    toc_topic: Character Creation
+                    dir: 'game/plugins/profile/help/'
+                    file: 'info.txt'
+                    summary: "Character information."
+                    #aliases: [  ]
+                profile:
+                    toc_topic: 'Community'
+                    summary:  'OOC profile information'
+                    dir: 'game/plugins/profile/help/'
+                    file: 'profile.txt'
+                finger: 
+                    #toc_topic: Character Creation
+                    dir: 'game/plugins/profile/help/'
+                    file: 'finger.txt'
+                    #summary: "Character sheets."
+                    #aliases: [  ]
+                wiki: 
+                    toc_topic: Character Creation
+                    dir: 'game/plugins/profile/help/'
+                    file: 'wiki.txt'
+                    summary: "Jump-start your character's wiki page."

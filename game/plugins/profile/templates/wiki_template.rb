@@ -1,5 +1,5 @@
 module AresMUSH
-  module FS3Sheet
+  module Profile
     class WikiTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       

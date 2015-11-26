@@ -1,5 +1,5 @@
 module AresMUSH
-  module Handles
+  module Profile
     class CharProfileTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
@@ -28,28 +28,28 @@ module AresMUSH
       end
       
       def status
-        text = format_field_title t('handles.status')
+        text = format_field_title t('profile.status')
         text << Chargen.approval_status(@char)
         text
       end
       
       def alts
-        text = format_field_title t('handles.alts')
-        text << Handles.get_visible_alts(@char, self.client.char)
-        text << "%R%R#{t('handles.alts_notice')}"
+        text = format_field_title t('profile.alts')
+        text << Handles.get_visible_alts_name_list(@char, self.client.char)
+        text << "%R%R#{t('profile.alts_notice')}"
         text
       end
       
       def played_by
-        text = format_field_title t('handles.played_by')
+        text = format_field_title t('profile.played_by')
         text << @char.actor
         text
       end
       
       def last_on
-        text = format_field_title t('handles.last_on')
+        text = format_field_title t('profile.last_on')
         if (@char.client)
-          text << t('handles.currently_connected')
+          text << t('profile.currently_connected')
         else
           text << OOCTime.local_long_timestr(self.client, @char.last_on)
         end
@@ -57,25 +57,25 @@ module AresMUSH
       end
       
       def timezone
-        text = format_field_title t('handles.timezone')
+        text = format_field_title t('profile.timezone')
         text << @char.timezone
         text
       end
       
       def location
-        text = format_field_title t('handles.location')
+        text = format_field_title t('profile.location')
         text << Who.who_room_name(@char)
         text
       end
       
       def custom_profile
         return "" if @char.profile.empty?
-        Handles.format_custom_profile(@char)
+        Profile.format_custom_profile(@char)
       end
       
       def handle_notice
         if (@char.handle && @char.handle_visible_to?(@client.char))
-          text = t('handles.see_handle_profile', :handle => @char.handle, :name => @char.name)          
+          text = t('profile.see_handle_profile', :handle => @char.handle, :name => @char.name)          
           "%R%l2%R#{center(text, 78)}"
         else
           ""

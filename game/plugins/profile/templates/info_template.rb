@@ -1,5 +1,5 @@
 module AresMUSH
-  module FS3Sheet
+  module Profile
     class InfoTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
@@ -46,75 +46,75 @@ module AresMUSH
       end
       
       def page_title
-        right(t('sheet.info_title'), 28)
+        right(t('profile.info_title'), 28)
       end
       
       def fullname_title
-        format_field_title(t('sheet.fullname_title'))
+        format_field_title(t('profile.fullname_title'))
       end
       
       def actor_title
-        format_field_title(t('sheet.actor_title'))
+        format_field_title(t('profile.actor_title'))
       end
 
       def gender_title
-        format_field_title(t('sheet.gender_title'))
+        format_field_title(t('profile.gender_title'))
       end
 
       def height_title
-        format_field_title(t('sheet.height_title'))
+        format_field_title(t('profile.height_title'))
       end
 
       def physique_title
-        format_field_title(t('sheet.physique_title'))
+        format_field_title(t('profile.physique_title'))
       end
 
       def hair_title
-        format_field_title(t('sheet.hair_title'))
+        format_field_title(t('profile.hair_title'))
       end
 
       def eyes_title
-        format_field_title(t('sheet.eyes_title'))
+        format_field_title(t('profile.eyes_title'))
       end
       
       def skin_title
-        format_field_title(t('sheet.skin_title'))
+        format_field_title(t('profile.skin_title'))
       end
 
       def age_title
-        format_field_title(t('sheet.age_title'))
+        format_field_title(t('profile.age_title'))
       end
 
       def birthdate_title
-        format_field_title(t('sheet.birthdate_title'))
+        format_field_title(t('profile.birthdate_title'))
       end
       
       def info_title
-        "%xh#{t('sheet.info_title')}%xn"
+        "%xh#{t('profile.info_title')}%xn"
       end
       
       def callsign_title
-        format_field_title(t('sheet.callsign_title'))
+        format_field_title(t('profile.callsign_title'))
       end
       
       def faction_title
-        format_field_title(t('sheet.faction_title'))
+        format_field_title(t('profile.faction_title'))
       end
       
       def department_title
-        format_field_title(t('sheet.department_title'))
+        format_field_title(t('profile.department_title'))
       end
       
       def position_title
-        format_field_title(t('sheet.position_title'))
+        format_field_title(t('profile.position_title'))
       end
       
       def colony_title
-        format_field_title(t('sheet.colony_title'))
+        format_field_title(t('profile.colony_title'))
       end
       
       def rank_title
-        format_field_title(t('sheet.rank_title'))
+        format_field_title(t('profile.rank_title'))
       end
       
       def format_field_title(title)

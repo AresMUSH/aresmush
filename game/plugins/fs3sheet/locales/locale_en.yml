@@ -19,22 +19,5 @@ en:
         hooks_title: "RP Hooks"
         goals_title: "Goals"
         
-        info_title: "Info"        
-        
-        fullname_title: "Fullname:"
-        actor_title: "Played By:"
-        gender_title: "Gender:"
-        height_title: "Height:"
-        physique_title: "Physique:"
-        hair_title: "Hair:" 
-        skin_title: "Skin:"
-        eyes_title: "Eyes:"
-        age_title: "Age:"
-        birthdate_title: "Birthdate:"
-        colony_title: "Colony:"
-        rank_title: "Rank:"
-        position_title: "Position:"
-        department_title: "Department:"
-        faction_title: "Faction:"
-        callsign_title: "Callsign:"
+
         

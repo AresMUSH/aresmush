@@ -1,6 +1,5 @@
 module AresMUSH
-
-  module FS3Sheet
+  module Profile
     class WikiCmd
       include Plugin
       include PluginRequiresLogin

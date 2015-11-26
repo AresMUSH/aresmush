@@ -1,5 +1,5 @@
 module AresMUSH
-  module Handles
+  module Profile
     class ProfileAddCmd
       include Plugin
       include PluginRequiresLogin
