@@ -33,9 +33,9 @@ module AresMUSH
             begin
               connect_and_send(destination_id, client, cmd)
             rescue Timeout::Error
-              raise "Timeout error communicating with #{host} #{port}."
+              raise "Timeout error communicating with #{destination_id}."
             rescue OpenSSL::Cipher::CipherError
-              raise "Authentication error communicating with #{host} #{port}."
+              raise "Authentication error communicating with #{destination_id}."
             ensure
               socket.close unless socket.nil?
             end

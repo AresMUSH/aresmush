@@ -37,8 +37,7 @@ module AresMUSH
           viewer = nil
         end
         
-        template = HandleProfileTemplate.new(target, viewer)
-        profile_text = template.display
+        profile_text = Profile.render_handle_profile(target, viewer)
         return cmd.create_response(ApiResponse.ok_status, profile_text)
       end
     end

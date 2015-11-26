@@ -19,11 +19,11 @@ module AresMUSH
       
       def custom_profile
         return "" if @profile_char.profile.empty?
-        Handles.format_custom_profile(@profile_char)
+        Profile.format_custom_profile(@profile_char)
       end
       
       def character_list
-        text = center( "%xh#{t('handles.profile_char_list_title')}%xn", 78)
+        text = center( "%xh#{t('profile.profile_char_list_title')}%xn", 78)
         
         games = {}
         
@@ -47,7 +47,7 @@ module AresMUSH
           text << chars.map { |c| c["name"] }.sort.join(", ")
         end
         text << "%R%R"
-        text << t('handles.alts_notice')
+        text << t('profile.alts_notice')
         text
       end
     end

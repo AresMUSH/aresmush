@@ -65,17 +65,7 @@ module AresMUSH
     end
     
     def self.get_profile(client, name)
-      if (Global.api_router.is_master?)
-        if (name.start_with?("@"))
-          name = name.after("@")
-        end
-        ClassTargetFinder.with_a_character(name, client) do |model|
-          template = HandleProfileTemplate.new(model, client.char)
-          client.emit template.display
-        end
-      else
-        Handles.send_handle_profile_request(client, name)
-      end
+      Handles.send_handle_profile_request(client, name)
     end
   end
 end
