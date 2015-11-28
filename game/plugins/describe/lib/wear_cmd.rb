@@ -12,12 +12,9 @@ module AresMUSH
       end
       
       def crack!
-        if cmd.args.nil?
-          self.names = nil 
-          return
+        if cmd.args
+          self.names = cmd.args.split(' ').map { |n| titleize_input(n) }
         end
-        
-        self.names = cmd.args.split(' ').map { |n| titleize_input(n) }
       end
       
       def check_outfits_exist

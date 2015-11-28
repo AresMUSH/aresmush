@@ -30,7 +30,7 @@ module AresMUSH
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
     end
-
+    
     def connection_closed(client)
       Global.logger.info("Client #{client.id} disconnected.")
       @clients.delete client

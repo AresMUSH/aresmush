@@ -1,4 +1,5 @@
 require 'eventmachine'
+require 'em-websocket'
 
 module AresMUSH
   class Server
@@ -11,8 +12,9 @@ module AresMUSH
         end
       }
 
+      host = Global.read_config("server", "hostname")
+
       EventMachine::run do
-        host = Global.read_config("server", "hostname")
         port = Global.read_config("server", "port")
         EventMachine::add_periodic_timer(45) do
           AresMUSH.with_error_handling(nil, "Cron timer") do
@@ -26,6 +28,16 @@ module AresMUSH
             Global.client_monitor.connection_established(connection)
           end
         end
+
+        web_port = Global.read_config("server", "websocket_port")
+        EventMachine::WebSocket.start(:host => host, :port => web_port) do |websocket|
+          AresMUSH.with_error_handling(nil, "Web connection established") do
+            WebConnection.new(websocket) do |connection|
+              Global.client_monitor.connection_established(connection)
+            end
+          end
+        end
+        
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end
