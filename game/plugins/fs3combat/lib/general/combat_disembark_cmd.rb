@@ -1,9 +1,9 @@
 module AresMUSH
   module FS3Combat
     class CombatDisembarkCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name

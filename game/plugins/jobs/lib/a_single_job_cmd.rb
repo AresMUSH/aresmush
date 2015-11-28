@@ -1,9 +1,9 @@
 module AresMUSH
   module Jobs
     module SingleJobCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
 
       attr_accessor :number
       

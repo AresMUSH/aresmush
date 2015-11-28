@@ -1,9 +1,9 @@
 module AresMUSH
   module Jobs
     class ListJobsCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
 
       attr_accessor :page
       

@@ -1,8 +1,8 @@
 module AresMUSH
   module FS3Combat
     class CombatLeaveCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name

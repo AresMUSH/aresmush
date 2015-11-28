@@ -1,9 +1,9 @@
 module AresMUSH
   module Manage
     class DestroyConfirmCmd
-      include Plugin
-      include PluginWithoutArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutArgs
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("destroy") && cmd.switch_is?("confirm")

@@ -1,7 +1,7 @@
 module AresMUSH
   module Weather
     class WeatherCronHandler
-      include Plugin
+      include CommandHandler
 
       def on_config_updated_event(event) 
         Weather.current_weather = {}

@@ -1,9 +1,9 @@
 module AresMUSH
   module Profile
     class ProfileAddCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :field, :value
      

@@ -1,10 +1,10 @@
 module AresMUSH
   module Utils
     class Colors
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresLogin
+      include CommandWithoutArgs
          
       attr_accessor :page
          

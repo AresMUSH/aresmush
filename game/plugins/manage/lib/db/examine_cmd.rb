@@ -1,10 +1,10 @@
 module AresMUSH
   module Manage
     class ExamineCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
+      include CommandRequiresLogin
       include TemplateFormatters
       
       attr_accessor :target

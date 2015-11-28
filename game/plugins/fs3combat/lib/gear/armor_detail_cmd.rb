@@ -1,9 +1,9 @@
 module AresMUSH
   module FS3Combat
     class ArmorDetailCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       include TemplateFormatters
       
       attr_accessor :name

@@ -1,9 +1,9 @@
 module AresMUSH
   module Bbs
     class BbsArchive
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       include TemplateFormatters
       
       attr_accessor :board_name

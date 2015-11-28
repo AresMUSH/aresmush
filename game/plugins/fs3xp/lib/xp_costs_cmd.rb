@@ -2,9 +2,9 @@ module AresMUSH
 
   module FS3XP
     class XpCostsCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("xp") && cmd.switch_is?("costs")

@@ -4,7 +4,7 @@ module AresMUSH
   module Channels
     
     describe ChannelTalkCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         @channel = double

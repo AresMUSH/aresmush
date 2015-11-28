@@ -1,10 +1,10 @@
 module AresMUSH
   module Manage
     class RenameCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
+      include CommandRequiresLogin
       
       attr_accessor :target
       attr_accessor :name

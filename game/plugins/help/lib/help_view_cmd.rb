@@ -2,9 +2,9 @@ module AresMUSH
   module Help
     
     class HelpViewCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
 
       attr_accessor :category_index
       attr_accessor :topic

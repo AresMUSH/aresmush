@@ -1,7 +1,7 @@
 module AresMUSH
   module Api
     class ApiResponseRouter
-      include Plugin
+      include CommandHandler
       
       def on_api_response_event(event)
         client = event.client

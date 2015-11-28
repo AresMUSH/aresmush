@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Rooms  
     describe BuildCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(BuildCmd, "build something")

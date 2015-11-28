@@ -2,10 +2,10 @@ module AresMUSH
 
   module FS3Skills
     class SetAptitudeCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
+      include CommandWithoutSwitches
       
       attr_accessor :great, :good, :poor
 

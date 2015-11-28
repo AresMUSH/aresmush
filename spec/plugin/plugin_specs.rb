@@ -4,10 +4,10 @@ require "aresmush"
 
 module AresMUSH
 
-  describe Plugin do
+  describe CommandHandler do
     before do
       class PluginSpecTest
-        include Plugin
+        include CommandHandler
         
         def check_x
           return "error_x" if cmd.raw == "x marks the spot"

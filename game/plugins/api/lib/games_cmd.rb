@@ -1,8 +1,8 @@
 module AresMUSH
   module Api
     class GamesCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include TemplateFormatters
       
       attr_accessor :filter, :page

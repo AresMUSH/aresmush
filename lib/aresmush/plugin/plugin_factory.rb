@@ -16,7 +16,7 @@ module AresMUSH
         if (sym.class == Module)
           find_and_instantiate(sym, plugins)
         else
-          if (sym.class == Class && sym.include?(AresMUSH::Plugin))
+          if (sym.class == Class && sym.include?(AresMUSH::CommandHandler))
             Global.logger.debug "Creating #{sym}."
             plugins << sym.new         
           end

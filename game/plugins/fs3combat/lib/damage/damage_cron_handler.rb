@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Combat    
     class DamageCronHandler
-      include Plugin
+      include CommandHandler
       
       def on_cron_event(event)
         config = Global.read_config("fs3combat", "healing_cron")

@@ -1,7 +1,7 @@
 module AresMUSH
   module Cookies    
     class CookieCronHandler
-      include Plugin
+      include CommandHandler
       
       def on_cron_event(event)
         config = Global.read_config("cookies", "cron")

@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Combat
     class CombatEvents
-      include Plugin
+      include CommandHandler
     end
   end
 end

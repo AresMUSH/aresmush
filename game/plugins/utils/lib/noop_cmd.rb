@@ -1,8 +1,8 @@
 module AresMUSH
   module Utils
     class NoOpCmd
-      include Plugin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandWithoutSwitches
 
       attr_accessor :message
 

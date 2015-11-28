@@ -1,8 +1,8 @@
 module AresMUSH
   module FS3Combat
     class CombatNewTurnCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
 
       def want_command?(client, cmd)

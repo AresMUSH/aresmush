@@ -1,8 +1,8 @@
 module AresMUSH
   module Profile
     class InfoViewCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :target
       

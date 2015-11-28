@@ -1,10 +1,10 @@
 module AresMUSH
   module Jobs
     class CreateRequestCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
 
       attr_accessor :title, :description
       

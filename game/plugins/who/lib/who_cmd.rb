@@ -1,9 +1,9 @@
 module AresMUSH
   module Who
     class WhoCmd
-      include Plugin
-      include PluginWithoutArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandWithoutArgs
+      include CommandWithoutSwitches
       
       def want_command?(client, cmd)
         cmd.root_is?("who")

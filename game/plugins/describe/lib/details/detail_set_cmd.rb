@@ -2,11 +2,11 @@ module AresMUSH
 
   module Describe
     class DetailSetCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
-      include PluginRequiresArgs
+      include CommandRequiresArgs
       
       attr_accessor :name, :target, :desc
       

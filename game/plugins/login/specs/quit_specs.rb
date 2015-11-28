@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Login
     describe QuitCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(QuitCmd, "quit")

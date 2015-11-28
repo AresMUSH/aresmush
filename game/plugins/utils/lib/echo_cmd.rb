@@ -1,9 +1,9 @@
 module AresMUSH
   module Utils
     class EchoCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
       
       attr_accessor :message
       

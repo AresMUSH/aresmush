@@ -1,8 +1,8 @@
 module AresMUSH
   module Groups
     class CensusCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include TemplateFormatters
       
       attr_accessor :name, :page

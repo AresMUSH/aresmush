@@ -1,8 +1,8 @@
 module AresMUSH
   module Rooms
     class LockHereCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("lock") && cmd.args.nil?

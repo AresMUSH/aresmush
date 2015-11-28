@@ -1,10 +1,10 @@
 module AresMUSH
   module Roles
     class AdminNoteCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
+      include CommandWithoutSwitches
       
       attr_accessor :note
      

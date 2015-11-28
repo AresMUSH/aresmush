@@ -2,9 +2,9 @@ module AresMUSH
 
   module Describe
     class OutfitSetCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :name, :desc
 

@@ -1,8 +1,8 @@
 module AresMUSH
   module Login
     class ConnectCmd
-      include Plugin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandWithoutSwitches
 
       attr_accessor :charname, :password
       

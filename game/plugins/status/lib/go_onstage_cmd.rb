@@ -1,9 +1,9 @@
 module AresMUSH
   module Status
     class GoOnstageCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("onstage") && (cmd.switch.nil? || cmd.switch_is?("reset"))

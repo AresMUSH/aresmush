@@ -1,7 +1,7 @@
 module AresMUSH
   module Login
     class TosCmd
-      include Plugin
+      include CommandHandler
 
       def want_command?(client, cmd)
         cmd.root_is?("tos") && cmd.switch_is?("agree")

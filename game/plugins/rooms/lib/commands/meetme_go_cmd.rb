@@ -1,8 +1,8 @@
 module AresMUSH
   module Rooms
     class MeetmeGoCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :going
       

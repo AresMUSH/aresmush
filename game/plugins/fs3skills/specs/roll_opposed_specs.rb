@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Skills
     describe OpposedRollCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       describe :crack do
         it "should fail if the string is invalid" do
           init_handler(OpposedRollCmd, "roll A vs B")

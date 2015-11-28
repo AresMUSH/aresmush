@@ -1,7 +1,7 @@
 module AresMUSH
   module Api
     class ApiEventHandler
-      include Plugin
+      include CommandHandler
       
       attr_accessor :last_server_info
     

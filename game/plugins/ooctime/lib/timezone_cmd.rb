@@ -1,10 +1,10 @@
 module AresMUSH
   module OOCTime
     class TimezoneCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
            
       attr_accessor :zone
            

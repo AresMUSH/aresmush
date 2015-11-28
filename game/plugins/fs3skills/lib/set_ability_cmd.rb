@@ -2,10 +2,10 @@ module AresMUSH
 
   module FS3Skills
     class SetAbilityCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
+      include CommandWithoutSwitches
       
       attr_accessor :name, :ability_name, :rating
 

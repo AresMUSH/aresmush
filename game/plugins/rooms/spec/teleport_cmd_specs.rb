@@ -1,7 +1,7 @@
 module AresMUSH
   module Rooms
     describe TeleportCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       include GlobalTestHelper
       
       before do

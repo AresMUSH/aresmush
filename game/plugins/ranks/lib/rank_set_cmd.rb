@@ -1,8 +1,8 @@
 module AresMUSH
   module Ranks
     class RankSetCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :name, :rank
 

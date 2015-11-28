@@ -2,9 +2,9 @@ module AresMUSH
 
   module Idle
     class LastWillCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :will
 

@@ -17,15 +17,19 @@ module AresMUSH
       before do
         Global.stub(:read_config).with("server", "hostname") { "host" }
         Global.stub(:read_config).with("server", "port") { 123 }
+        Global.stub(:read_config).with("server", "websocket_port") { 234 }
         @server = Server.new
         dispatcher.stub(:queue_event)
         game.stub(:welcome_room) { nil }
+        EventMachine::WebSocket.stub(:start).and_yield(double)
+        EventMachine.stub(:run).and_yield
+        EventMachine.stub(:add_periodic_timer)
+        EventMachine.stub(:start_server)
       end
       
       it "should start a timer for the pings" do
         EventMachine.should_receive(:run).and_yield
         EventMachine.should_receive(:add_periodic_timer)
-        EventMachine.stub(:start_server)
         @server.start
       end
       
@@ -36,11 +40,16 @@ module AresMUSH
 
       it "should start the server" do
         EventMachine.should_receive(:run).and_yield
-        EventMachine.stub(:add_periodic_timer)
         EventMachine.should_receive(:start_server).with('host', 123, Connection)
         @server.start
       end
 
+      it "should start the web server" do
+        EventMachine::WebSocket.should_receive(:start).with({:host=>"host", :port=>234}).and_yield(double)
+        EventMachine.stub(:add_periodic_timer)
+        @server.start
+      end
+      
       describe "after server started" do
         before do
           @connection = double(Connection).as_null_object

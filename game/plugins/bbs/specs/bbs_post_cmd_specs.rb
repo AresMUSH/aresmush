@@ -4,7 +4,7 @@ module AresMUSH
   module Bbs
     
     describe BbsPostCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         @board = double

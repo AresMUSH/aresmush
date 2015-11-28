@@ -2,8 +2,8 @@ module AresMUSH
 
   module FS3Sheet
     class SheetCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :target, :page
       

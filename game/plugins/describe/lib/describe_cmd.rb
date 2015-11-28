@@ -2,9 +2,9 @@ module AresMUSH
 
   module Describe
     class DescCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :target, :desc
 

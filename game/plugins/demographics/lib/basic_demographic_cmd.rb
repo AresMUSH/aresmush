@@ -2,9 +2,9 @@ module AresMUSH
   module Demographics
 
     module BasicDemographicCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :value, :property
 

@@ -1,7 +1,7 @@
 module AresMUSH
   module Api
     class ApiCommandRouter
-      include Plugin
+      include CommandHandler
            
       attr_accessor :game_id, :cipher_iv, :encrypted_data
       

@@ -1,8 +1,8 @@
 module AresMUSH
   module FS3Combat
     class CombatListCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("combats")

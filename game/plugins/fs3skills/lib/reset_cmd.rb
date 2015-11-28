@@ -2,10 +2,10 @@ module AresMUSH
 
   module FS3Skills
     class ResetCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
+      include CommandWithoutSwitches
             
       def want_command?(client, cmd)
         cmd.root_is?("reset")

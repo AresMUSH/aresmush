@@ -1,9 +1,9 @@
 module AresMUSH
   module Rooms
     class AreaCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
 
       attr_accessor :name
       

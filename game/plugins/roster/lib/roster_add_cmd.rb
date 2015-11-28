@@ -2,9 +2,9 @@ module AresMUSH
 
   module Roster
     class RosterAddCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :name, :contact
       

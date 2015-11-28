@@ -1,9 +1,9 @@
 module AresMUSH
   module Tinker
     class TinkerCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresLogin
             
       def want_command?(client, cmd)
         cmd.root_is?("tinker")

@@ -2,9 +2,9 @@ module AresMUSH
 
   module FS3Sheet
     class CharBackupCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
       
       attr_accessor :target
 

@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Who
     describe HideCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(HideCmd, "hide")

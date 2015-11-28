@@ -1,9 +1,9 @@
 module AresMUSH
   module Manage
     class LoadPluginCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :load_target
       
@@ -41,6 +41,7 @@ module AresMUSH
         client.emit_ooc t('manage.loading_plugin_please_wait', :name => load_target)
         begin
           begin
+            
             Global.plugin_manager.unload_plugin(load_target)
           rescue SystemNotFoundException
             # Swallow this error.  Just means you're loading a plugin for the very first time.

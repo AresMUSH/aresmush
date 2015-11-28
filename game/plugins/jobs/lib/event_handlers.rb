@@ -1,7 +1,7 @@
 module AresMUSH
   module Jobs
     class JobEventHandler
-      include Plugin
+      include CommandHandler
       
       def on_unhandled_error_event(event)
         return if !Global.read_config("jobs", "report_errors")

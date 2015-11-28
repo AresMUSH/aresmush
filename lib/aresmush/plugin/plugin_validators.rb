@@ -1,5 +1,5 @@
 module AresMUSH
-  module PluginRequiresLogin
+  module CommandRequiresLogin
     # Make sure this runs before other validators - hence the '1' in the name.
     def check_1_for_login
       return t('dispatcher.must_be_logged_in') if !client.logged_in?
@@ -7,7 +7,7 @@ module AresMUSH
     end
   end
     
-  module PluginWithoutArgs
+  module CommandWithoutArgs
     # Make sure this runs before other validators except login - hence the '2' in the name.
     def check_2_no_args
       return t('dispatcher.cmd_no_args') if !cmd.args.nil?
@@ -15,7 +15,7 @@ module AresMUSH
     end
   end
     
-  module PluginWithoutSwitches
+  module CommandWithoutSwitches
     # Make sure this runs before other validators except login - hence the '2' in the name.
     def check_2_no_switches
       return t('dispatcher.cmd_no_switches') if !cmd.switch.nil?
@@ -23,7 +23,7 @@ module AresMUSH
     end
   end
     
-  module PluginRequiresArgs
+  module CommandRequiresArgs
     attr_accessor :required_args
     attr_accessor :help_topic
 

@@ -2,8 +2,8 @@ module AresMUSH
 
   module Actors
     class ActorsListCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :page
 

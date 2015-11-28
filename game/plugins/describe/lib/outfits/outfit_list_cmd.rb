@@ -1,8 +1,8 @@
 module AresMUSH
   module Describe
     class OutfitListCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("outfit") && cmd.switch.nil? && cmd.args.nil?

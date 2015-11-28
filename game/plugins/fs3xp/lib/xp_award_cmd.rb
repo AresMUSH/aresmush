@@ -2,9 +2,9 @@ module AresMUSH
 
   module FS3XP
     class XpAwardCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :name, :xp
 

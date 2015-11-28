@@ -1,9 +1,9 @@
 module AresMUSH
   module Page
     class PageCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
 
       attr_accessor :names, :message
       

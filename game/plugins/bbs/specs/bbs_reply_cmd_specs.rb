@@ -4,7 +4,7 @@ module AresMUSH
   module Bbs
     
     describe BbsReplyCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(BbsReplyCmd, "bbs/foo message")

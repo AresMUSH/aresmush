@@ -1,10 +1,10 @@
 module AresMUSH
   module Maps
     class MapsCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginWithoutArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandWithoutArgs
+      include CommandRequiresLogin
 
       def want_command?(client, cmd)
         cmd.root_is?("map") && !cmd.args

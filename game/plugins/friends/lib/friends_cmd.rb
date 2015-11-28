@@ -1,9 +1,9 @@
 module AresMUSH
   module Friends
     class FriendsCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("friend") && cmd.switch.nil?

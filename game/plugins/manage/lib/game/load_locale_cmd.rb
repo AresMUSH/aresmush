@@ -1,8 +1,8 @@
 module AresMUSH
   module Manage
     class LoadLocaleCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("load") && cmd.args == "locale"

@@ -4,7 +4,7 @@ module AresMUSH
   module Describe
     
     describe DescCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(DescCmd, "describe name=description")

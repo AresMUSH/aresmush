@@ -1,8 +1,8 @@
 module AresMUSH
   module Login
     class TourCmd
-      include Plugin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandWithoutSwitches
       
       def want_command?(client, cmd)
         return false if client.logged_in?

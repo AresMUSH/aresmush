@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Manage
     describe DestroyCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       include GameTestHelper
   
       before do

@@ -2,8 +2,8 @@ module AresMUSH
   module Help
     
     class HelpListCmd
-      include Plugin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandWithoutSwitches
 
       attr_accessor :category_index, :page
       

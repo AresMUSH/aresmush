@@ -1,7 +1,7 @@
 module AresMUSH
   module Rooms
     describe GoCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(GoCmd, "go S")

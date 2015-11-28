@@ -1,8 +1,8 @@
 module AresMUSH
   module FS3Combat
     class ArmorListCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include TemplateFormatters
       
       def want_command?(client, cmd)

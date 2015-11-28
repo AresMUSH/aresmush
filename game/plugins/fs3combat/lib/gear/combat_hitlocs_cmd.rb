@@ -1,8 +1,8 @@
 module AresMUSH
   module FS3Combat
     class CombatHitlocsCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :name
       

@@ -4,7 +4,7 @@ module AresMUSH
   module Bbs
     
     describe BbsBoardCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       
       before do
         init_handler(BbsBoardCmd, "bbs/foo board")

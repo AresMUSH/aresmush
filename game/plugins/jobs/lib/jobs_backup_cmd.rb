@@ -1,8 +1,8 @@
 module AresMUSH
   module Jobs
     class JobsBackupCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
            
       def want_command?(client, cmd)
         cmd.root_is?("job") && cmd.switch_is?("backup")

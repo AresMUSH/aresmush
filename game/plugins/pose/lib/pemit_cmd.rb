@@ -1,10 +1,10 @@
 module AresMUSH
   module Pose
     class Pemit
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
       
       attr_accessor :names, :message
       
