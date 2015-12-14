@@ -52,13 +52,13 @@ module AresMUSH
     
     def self.print_aptitude_rating(rating)
       case rating
-      when 0
-        "%xr#{t('fs3skills.aptitude_poor')}%xn"
       when 1
-        "%xy#{t('fs3skills.aptitude_average')}%xn"
+        "%xr#{t('fs3skills.aptitude_poor')}%xn"
       when 2
-        "%xg#{t('fs3skills.aptitude_good')}%xn"
+        "%xy#{t('fs3skills.aptitude_average')}%xn"
       when 3
+        "%xg#{t('fs3skills.aptitude_good')}%xn"
+      when 4
         "%xb#{t('fs3skills.aptitude_great')}%xn"
       end
     end

@@ -46,7 +46,8 @@ module AresMUSH
     def self.paged_list(items, page, items_per_page = 25, title = nil, footer = nil)
       pagination = Paginator.paginate(items, page, items_per_page)
       if (pagination.out_of_bounds?)
-        return BorderedDisplay.text(t('pages.not_that_many_pages'))
+        error_text = page == 1 ? t('pages.no_items') : t('pages.not_that_many_pages')
+        return BorderedDisplay.text error_text
       else
         page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
         page_marker = "%xh#{page_marker.center(78, '-')}%xn"
