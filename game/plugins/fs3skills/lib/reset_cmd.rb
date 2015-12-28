@@ -17,6 +17,7 @@ module AresMUSH
 
       def handle
         char = client.char
+        char.fs3_action_skills = {}
         char.fs3_aptitudes = {}
         char.fs3_interests = []
         char.fs3_expertise = []

@@ -49,11 +49,10 @@ module AresMUSH
     def receive_data(data)
       begin
         json_input = JSON.parse(data)
-        puts "GOT DATA #{json_input}"
         if (json_input["type"] == "input")
           @client.handle_input(json_input["message"] + "\r\n")
         else
-          puts "Unexpected input"
+          Global.logger.debug "Unexpected web input: #{data}"
         end
         
       rescue Exception => e
