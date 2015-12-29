@@ -7,7 +7,7 @@ module AresMUSH
   describe ClientGreeter do
 
     before do
-      Global.stub(:read_config).with("connect") { { "welcome_text" => "game welcome", "welcome_screen" => "a file"} }
+      Global.stub(:read_config).with("connect") { { "welcome_text" => "game welcome"} }
       @client = double.as_null_object
       SpecHelpers.stub_translate_for_testing
       File.stub(:read)      
@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       it "should send the welcome screen" do
-        File.should_receive(:read).with("a file", :encoding => "UTF-8") { "Ascii Art" }
+        File.should_receive(:read).with("game/files/connect.txt", :encoding => "UTF-8") { "Ascii Art" }
         @client.should_receive(:emit).with("Ascii Art")
       end
 

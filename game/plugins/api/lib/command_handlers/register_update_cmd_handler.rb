@@ -42,7 +42,7 @@ module AresMUSH
         game.host = args.host
         game.port = args.port
         game.website = args.website
-        game.game_open = args.game_open
+        game.game_open = args.game_open.to_boolx
         game.last_ping = Time.now
         game.save!
         
