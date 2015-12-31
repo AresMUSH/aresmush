@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def want_command?(client, cmd)
-        cmd.root_is?("game") && cmd.switch_is?("info")
+        cmd.root_is?("game") && !cmd.switch
       end
       
       def crack!
