@@ -3,18 +3,11 @@ module AresMUSH
     class GameCmd
       include CommandHandler
       include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'games'
-        super
-      end
-      
+           
       def want_command?(client, cmd)
-        cmd.root_is?("game") && !cmd.switch
+        cmd.root_is?("game") && (cmd.args && !cmd.switch)
       end
       
       def crack!
