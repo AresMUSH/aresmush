@@ -28,7 +28,7 @@ module AresMUSH
       end
       
       def show_game(game, text)
-        text << "%l2%r"
+        text << "%r%l2%r"
         
 
         text << t('api.game_name', :name => game.name)
