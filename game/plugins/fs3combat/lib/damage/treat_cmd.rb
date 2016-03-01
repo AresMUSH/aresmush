@@ -1,9 +1,9 @@
 module AresMUSH
   module FS3Combat
     class TreatCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :name
       
@@ -26,11 +26,6 @@ module AresMUSH
         return nil
       end
       
-      def check_can_treat
-        return t('fs3combat.must_wait_to_treat') if !client.char.can_treat?
-        return nil
-      end
-      
       def handle
         VisibleTargetFinder.with_something_visible(self.name, client) do |model|
           
@@ -38,32 +33,8 @@ module AresMUSH
             client.emit_failure t('fs3combat.can_only_treat_characters')
             return
           end
-          
-          if (model == client.char)
-            client.emit_failure t('fs3combat.cant_treat_self')
-            return
-          end
-          
-          wounds = model.treatable_wounds
-          if (wounds.empty?)
-            client.emit_failure t('fs3combat.no_treatable_wounds', :name => model.name)
-            return
-          end
-          
-          char = client.char
-          ability = char.treat_skill || Global.read_config("fs3combat", "default_treat_skill")
-          roll = FS3Skills.one_shot_roll(client, char, :ability => ability)
-          
-          successes = roll[:successes]
-          if (successes > 0)
-            Global.logger.info "Treat successful #{char.name} treating #{model.name}: #{roll}"
-            FS3Combat.heal_wounds(char, wounds, successes)
-          end
-          
-          client.char.last_treated = Time.now
-          client.char.save
-          
-          client.room.emit_ooc t('fs3combat.damage_treated', :doc => char.name, :target => model.name, :success => roll[:success_title]) 
+                    
+          client.room.emit_ooc FS3Combat.do_treat(client.char, model)
         end
       end
     end

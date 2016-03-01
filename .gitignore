@@ -1,3 +1,5 @@
+database.yml
+errors.txt
 save_pid.txt
 real_database.yml
 *.gem
@@ -26,3 +28,5 @@ game/db/mongo.conf
 game/db/data
 game/db/*.log
 game/db/*.pid
+*.yml
+*.yml

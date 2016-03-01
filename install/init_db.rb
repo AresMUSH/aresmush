@@ -82,7 +82,7 @@ module AresMUSH
       description: "Central hub for all things AresMUSH-related.", 
       host: "mush.aresmush.com",
       website: "http://www.aresmush.com",
-      game_open: "yes",
+      game_open: true,
       port: 7206)
     
       puts "Creating channels and BBS."

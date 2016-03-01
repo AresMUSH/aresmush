@@ -1,9 +1,9 @@
 module AresMUSH
   module Mail
     class MailDeleteCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
            
       attr_accessor :num
       
@@ -48,7 +48,7 @@ module AresMUSH
         Mail.with_a_delivery(client, num) do |delivery|
           delivery.tags << Mail.trashed_tag
           delivery.save
-          client.emit_ooc t("mail.message_deleted", :subject => delivery.message.subject)
+          client.emit_ooc t("mail.message_deleted", :subject => delivery.subject)
         end
       end
     end

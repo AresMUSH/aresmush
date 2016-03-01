@@ -1,6 +1,7 @@
 manage:
     roles:
-        # List roles that are allowed to use game management commands.
+        # List roles that are allowed to use game management commands, including the 
+        # database and code.
         can_manage_game: 
             - admin
             # - another_role

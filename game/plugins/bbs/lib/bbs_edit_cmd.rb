@@ -1,9 +1,9 @@
 module AresMUSH
   module Bbs
     class BbsEditCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :board_name, :num, :new_text
 
@@ -37,7 +37,10 @@ module AresMUSH
           else
             post.message = self.new_text
             post.mark_unread
-            Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, :board => board.name, :author => client.name)
+            Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, 
+            :board => board.name, 
+            :reference => post.reference_str,
+            :author => client.name)
           end
         end
       end

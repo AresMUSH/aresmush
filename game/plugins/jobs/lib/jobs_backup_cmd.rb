@@ -1,8 +1,8 @@
 module AresMUSH
   module Jobs
     class JobsBackupCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
            
       def want_command?(client, cmd)
         cmd.root_is?("job") && cmd.switch_is?("backup")
@@ -18,7 +18,7 @@ module AresMUSH
       def handle
         client.emit_ooc t('jobs.starting_backup')
         Jobs.closed_jobs.each_with_index do |job, i|
-          Global.dispatcher.queue_timer(i, "Job Backup #{client.char.name}") do
+          Global.dispatcher.queue_timer(i, "Job Backup #{client.char.name}", client) do
             Global.logger.debug "Logging job #{job.number} from #{client.char.name}."
             client.emit Jobs.get_job_display(client, job)
           end

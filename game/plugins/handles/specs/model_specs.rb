@@ -73,8 +73,6 @@ module AresMUSH
           @char.handle = "@Star"
           @char.handle_privacy = Handles.privacy_public
           
-          # TODO - Delete this if it's going to stay this way.
-          #@char.ooc_name.should eq "@Star (Bob)"
           @char.ooc_name.should eq "Bob (@Star)"
           
         end
@@ -83,8 +81,6 @@ module AresMUSH
           @char.handle = "@Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_admin
-          # TODO - Delete this if it's going to stay this way.
-          #@char.ooc_name.should eq "Bob (B)"
           @char.ooc_name.should eq "Bob"
         end
         
@@ -92,8 +88,6 @@ module AresMUSH
           @char.handle = "@Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_public
-          # TODO - Delete this if it's going to stay this way.
-          #@char.ooc_name.should eq "@Star (Bob, B)"
           @char.ooc_name.should eq "Bob (@Star)"
         end
         
@@ -102,8 +96,6 @@ module AresMUSH
           @char.name = "Star"
           @char.alias = "B"
           @char.handle_privacy = Handles.privacy_public
-          # TODO - Delete this if it's going to stay this way.
-          # @char.ooc_name.should eq "@Star (B)"
           @char.ooc_name.should eq "Star (@Star)"
         end
       end

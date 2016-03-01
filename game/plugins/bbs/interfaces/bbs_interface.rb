@@ -27,6 +27,7 @@ module AresMUSH
                 
         Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 
         :board => board.name, 
+        :reference => post.reference_str,
         :author => client.nil? ? t('bbs.system_author') : client.name)
       end
     end

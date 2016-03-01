@@ -1,14 +1,14 @@
 module AresMUSH
   module Api
     class GamesCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include TemplateFormatters
       
       attr_accessor :filter, :page
       
       def want_command?(client, cmd)
-        cmd.root_is?("game") && !cmd.switch
+        cmd.root_is?("game") && (!cmd.args || cmd.switch_is?("search"))
       end
       
       def crack!

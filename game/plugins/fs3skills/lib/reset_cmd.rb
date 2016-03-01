@@ -2,10 +2,10 @@ module AresMUSH
 
   module FS3Skills
     class ResetCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
+      include CommandWithoutSwitches
             
       def want_command?(client, cmd)
         cmd.root_is?("reset")
@@ -17,11 +17,10 @@ module AresMUSH
 
       def handle
         char = client.char
+        char.fs3_action_skills = {}
         char.fs3_aptitudes = {}
         char.fs3_interests = []
         char.fs3_expertise = []
-        char.fs3_action_skills = {}
-        char.fs3_background_skills = {}
         char.fs3_advantages = {}
         char.fs3_languages = []
         

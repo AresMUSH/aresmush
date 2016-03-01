@@ -19,7 +19,7 @@ module AresMUSH
         else
           footer = ""
         end
-        BorderedDisplay.paged_list list, @page, 15, t('api.games_title'), footer
+        BorderedDisplay.paged_list list, @page, 25, t('api.games_title'), footer
       end
     end
   end

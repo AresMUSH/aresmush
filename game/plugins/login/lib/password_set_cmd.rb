@@ -1,9 +1,9 @@
 module AresMUSH
   module Login
     class PasswordSetCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :old_password
       attr_accessor :new_password

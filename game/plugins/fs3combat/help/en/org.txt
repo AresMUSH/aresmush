@@ -1,0 +1,18 @@
+This is a quick reference for combat organizer commands.  For more details on FS3, see the game wiki or %xhhelp combat%xn.
+
+    %xccombat/start [<mock or real>]%xn - Starts a combat (default real).
+    %xccombat/stop <combat #>%xn - Stops a combat. 
+    %xccombats%xn%xn - Shows all combats going on. 
+    %xccombat/newturn%xn - Starts the first turn.
+    
+    %xccombat/join <list of names>=<combat #>[/<type>]
+        You can set up custom types in the game config to make it easier to add people with certain gear.
+    
+    %xccombat/summary%xn - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
+
+    %xccombat/team <name>=<team#>%xn - Switches teams. 
+
+    %xccombat/ai%xn - Auto-targets any NPCs who don't have actions yet.
+
+    %xccombat/unko%xn - Un-KO's someone who shouldn't have been
+    %xcdamage/inflict <name>=<description>/<severity>%xn - Inflicts damage outside combat.

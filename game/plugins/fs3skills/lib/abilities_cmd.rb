@@ -2,8 +2,8 @@ module AresMUSH
 
   module FS3Skills
     class AbilitiesCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :page
 

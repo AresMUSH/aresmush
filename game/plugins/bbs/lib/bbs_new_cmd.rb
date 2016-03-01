@@ -1,9 +1,9 @@
 module AresMUSH
   module Bbs
     class BbsNewCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("bbs") && cmd.switch_is?("new")

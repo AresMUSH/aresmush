@@ -1,6 +1,6 @@
 en:
     bbs:
-        boards_list_title: "  #       Name                        Description                         R/W"
+        boards_list_title: "  #       Name                        Description                        R/W"
         board_title: "  #       Subject                        Author                    Posted"
         unread_marker: "(U)"
 
@@ -29,9 +29,9 @@ en:
         post_moved: "Post moved."
         board_renamed: "Board renamed."
         
-        new_post: "%xnNew BBS post %xh%{subject}%xn posted to %xh%{board}%xn by %{author}. %xh%xx(bbs/new)%xn" 
-        new_reply: "%xn%{author} replied to BBS post %xh%{subject}%xn on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
-        new_edit: "%xn%{author} edited BBS post %xh%{subject}%xn on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
+        new_post: "%xnNew BBS post %xh%{subject}%xn %{reference} posted to %xh%{board}%xn by %{author}. %xh%xx(bbs/new)%xn" 
+        new_reply: "%xn%{author} replied to BBS post %xh%{subject}%xn %{reference} on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
+        new_edit: "%xn%{author} edited BBS post %xh%{subject}%xn %{reference} on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
         caught_up: "All posts on %{board} marked as read."
         caught_up_all: "All posts on all boards marked as read."
         no_new_posts: "There are no new posts to read."

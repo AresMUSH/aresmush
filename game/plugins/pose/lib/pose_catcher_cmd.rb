@@ -1,8 +1,8 @@
 module AresMUSH
   module Pose
     class PoseCatcher
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.raw.start_with?("\"") ||

@@ -11,3 +11,4 @@ IC/OOC status is determined by where you are.  Some rooms are IC areas; others a
 * help afk (to go afk) 
 * help onstage (to go ic/onstage)
 * help offstage (to go ooc/offstage)
+* help playerbit (to mark this char as a player bit)

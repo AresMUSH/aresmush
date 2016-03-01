@@ -1,12 +1,7 @@
 connect:
-    # Location (relative to the main directory) of the connect screen text file.
-    # This is required.
-    welcome_screen: "game/files/connect.txt"
 
     # This text is shown right after the connect screen.
     # You may comment this out if you do not want to show any text.
     # welcome_text: "Still under development."
-        
-    # Location (relative to the main directory) of the terms of service text file.
-    # You may comment this out if you do not with to use terms of service.
-    terms_of_service: "game/files/tos.txt"
+
+    use_terms_of_service: true

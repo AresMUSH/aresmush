@@ -99,17 +99,19 @@ module AresMUSH
       skill_rating = FS3Skills.ability_rating(char, ability)
 
       case ability_type
-      when :aptitude, :nonexistant
-        # Don't double-count aptitude rating when defaulting.
+      when :nonexistant
         related_apt = "None"
         apt_rating = 0
+      when :aptitude
+        related_apt = ability
+        apt_rating = skill_rating
+        skill_rating = 0
       else
         related_apt = roll_params.related_apt || FS3Skills.get_related_apt(char, ability)
         apt_rating = FS3Skills.ability_rating(char, related_apt)
       end
       
       dice = (skill_rating * 2) + apt_rating + modifier
-
       Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} related_apt=#{related_apt} apt=#{apt_rating}"
       
       dice

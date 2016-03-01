@@ -14,6 +14,11 @@ help:
                     file: 'database.txt'
                     summary: "Examining and manipulating the database."   
                     aliases: [ 'examine', 'rename', 'name', 'destroy', 'nuke', 'reload', 'find', 'search' ]
+                git: 
+                    toc_topic: Code Management
+                    dir: 'game/plugins/manage/help/'
+                    file: 'git.txt'
+                    summary: "Server version control commands."   
                 trouble: 
                     toc_topic: Game Management
                     dir: 'game/plugins/manage/help/'

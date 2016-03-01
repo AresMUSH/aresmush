@@ -1,8 +1,8 @@
 module AresMUSH
   module Manage
     class ConfigViewCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
 
       attr_accessor :section
             

@@ -26,58 +26,26 @@ module AresMUSH
     end    
     
     def send_command(destination_id, client, cmd)
-      EM.defer do
-        success = AresMUSH.with_error_handling(client, "API sending command #{cmd} to #{destination_id}") do
-          socket = nil
-          begin
-            destination = ServerInfo.find_by_dest_id(destination_id)
-            raise "Host #{destination_id} not found" if destination.nil?
-
-            host = destination.host
-            port = destination.port
-            key = destination.key
-
-            Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{cmd}."
-      
-            Timeout.timeout(15) do
-              socket = TCPSocket.new host, port
-              encrypted = ApiCrypt.encrypt(key, cmd.to_s)
-              sleep 1
-              
-              socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}\r\n"
-   
-              while (line = socket.gets)
-                
-                if (line.start_with?("api< "))
-                  Global.logger.debug "Recognized it was an API response."
-                  
-                  response_str = line.after(" ").chomp
-                  response = ApiCrypt.decode_response(key, response_str)
-                  Global.logger.debug "Got API response from #{host} #{port}: #{response}."
-                  if (response.command_name != cmd.command_name)
-                    raise "Unexpected command response: #{response.command_name} to #{cmd.command_name}."
-                  end
-                  
-                  Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
-                  break
-                end
-              end
-            end
-          rescue Timeout::Error
-            raise "Timeout error communicating with #{host} #{port}."
-          rescue OpenSSL::Cipher::CipherError
-            raise "Authentication error communicating with #{host} #{port}."
-          ensure
-            socket.close unless socket.nil?
-          end
-        end # with error handling
+      EventMachine.defer do
         begin
+          success = AresMUSH.with_error_handling(client, "API sending command #{cmd} to #{destination_id}") do
+            socket = nil
+            begin
+              connect_and_send(destination_id, client, cmd)
+            rescue Timeout::Error
+              raise "Timeout error communicating with #{destination_id}."
+            rescue OpenSSL::Cipher::CipherError
+              raise "Authentication error communicating with #{destination_id}."
+            ensure
+              socket.close unless socket.nil?
+            end
+          end # with error handling
           if (!success)
             response = cmd.create_error_response(t('api.api_error'))
             Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
           end
         rescue Exception => e
-          Global.logger.error "Error raising api error event: #{e} #{e.backtrace[0,10]}"
+          Global.logger.error "Uncaught api error event: #{e} #{e.backtrace[0,10]}"
         end
       end
     end
@@ -115,6 +83,42 @@ module AresMUSH
       
     private
       
+    def connect_and_send(destination_id, client, cmd)
+      destination = ServerInfo.find_by_dest_id(destination_id)
+      raise "Host #{destination_id} not found" if destination.nil?
+
+      host = destination.host
+      port = destination.port
+      key = destination.key
+
+      Global.logger.debug "Sending API command to #{destination_id} #{host} #{port}: #{cmd}."
+
+      Timeout.timeout(15) do
+        socket = TCPSocket.new host, port
+        encrypted = ApiCrypt.encrypt(key, cmd.to_s)
+        sleep 1
+        
+        socket.puts "api> #{Game.master.api_game_id} #{encrypted[:iv]} #{encrypted[:data]}\r\n"
+
+        while (line = socket.gets)
+          
+          if (line.start_with?("api< "))
+            Global.logger.debug "Recognized it was an API response."
+            
+            response_str = line.after(" ").chomp
+            response = ApiCrypt.decode_response(key, response_str)
+            Global.logger.debug "Got API response from #{host} #{port}: #{response}."
+            if (response.command_name != cmd.command_name)
+              raise "Unexpected command response: #{response.command_name} to #{cmd.command_name}."
+            end
+            
+            Global.dispatcher.queue_event ApiResponseEvent.new(client, response)
+            break
+          end
+        end
+      end
+    end
+    
     def load_from_module(mod)
       mod.constants.each do |c|
         sym = mod.const_get(c)

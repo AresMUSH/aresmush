@@ -1,9 +1,9 @@
 module AresMUSH
   module Channels
     class ChannelTalkCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
            
       attr_accessor :channel, :msg
 
@@ -51,6 +51,11 @@ module AresMUSH
         if (!Channels.is_on_channel?(client.char, self.channel))
           client.emit_failure t('channels.not_on_channel')
           return
+        end
+        
+        if (Channels.is_gagging?(client.char, self.channel))
+          client.emit_failure t('channels.cant_talk_when_gagged')
+          return          
         end
           
         title = Channels.get_channel_option(client.char, channel, "title")

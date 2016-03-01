@@ -5,7 +5,7 @@ module AresMUSH
       connect_config = Global.read_config("connect")
       
       # Connect screen ansi
-      filename = connect_config['welcome_screen']
+      filename = 'game/files/connect.txt'
       client.emit filename.nil? ? nil : File.read(filename, :encoding => "UTF-8")
 
       # Ares welcome text

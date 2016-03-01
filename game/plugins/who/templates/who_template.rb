@@ -16,6 +16,9 @@ module AresMUSH
       def build
         text = header(t('who.who_header'))
         chars_by_handle.each do |c|
+          # Mild potential race condition between when the list was teed up and now.
+          next if !c.client
+
           text << "%R"
           text << char_status(c)
           text << " "

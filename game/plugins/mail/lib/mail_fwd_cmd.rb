@@ -1,9 +1,9 @@
 module AresMUSH
   module Mail
     class MailFwdCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
            
       attr_accessor :num
       attr_accessor :names
@@ -27,8 +27,7 @@ module AresMUSH
       end
       
       def handle
-        Mail.with_a_delivery(client, self.num) do |delivery|
-          msg = delivery.message
+        Mail.with_a_delivery(client, self.num) do |msg|
           Global.logger.debug("#{self.class.name} #{client} forwding message #{self.num} (#{msg.subject}) to #{self.names}.")
 
           subject = t('mail.forwarded_subject', :subject => msg.subject)

@@ -17,6 +17,9 @@ module AresMUSH
         text = header(t('who.where_header'))
       
         chars_by_room.each do |c|
+          # Mild potential race condition between when the list was teed up and now.
+          next if !c.client
+
           text << "%R"
           text << char_status(c)
           text << " "

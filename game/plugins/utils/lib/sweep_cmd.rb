@@ -1,9 +1,9 @@
 module AresMUSH
   module Utils
     class SweepCmd
-      include Plugin
-      include PluginWithoutArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutArgs
+      include CommandRequiresLogin
       
       attr_accessor :message
       

@@ -1,20 +1,13 @@
 module AresMUSH
   module Api
     class GameCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
       
       attr_accessor :name
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'games'
-        super
-      end
-      
+           
       def want_command?(client, cmd)
-        cmd.root_is?("game") && cmd.switch_is?("info")
+        cmd.root_is?("game") && (cmd.args && !cmd.switch)
       end
       
       def crack!
@@ -35,7 +28,7 @@ module AresMUSH
       end
       
       def show_game(game, text)
-        text << "%l2%r"
+        text << "%r%l2%r"
         
 
         text << t('api.game_name', :name => game.name)

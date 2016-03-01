@@ -1,9 +1,9 @@
 module AresMUSH
   module Bbs
     class BbsReplyCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :board_name, :num, :reply
 
@@ -17,14 +17,19 @@ module AresMUSH
         cmd.root_is?("bbs") && cmd.switch_is?("reply")
       end
             
-      def crack!
-        if (cmd.args !~ /.+\/.+\=.+/)
-          self.reply = cmd.args
-        else
+      def crack!        
+        if (cmd.args =~ /.+\/.+\=.+/)
           cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
           self.board_name = titleize_input(cmd.args.name)
           self.num = trim_input(cmd.args.num)
           self.reply = cmd.args.reply
+        elsif (cmd.args =~ /.+\=.+\/.+/)
+          cmd.crack_args!( /(?<name>[^\=]+)\=(?<num>[^\=]+)\/(?<reply>[^\=]+)/)
+          self.board_name = titleize_input(cmd.args.name)
+          self.num = trim_input(cmd.args.num)
+          self.reply = cmd.args.reply
+        else
+          self.reply = cmd.args
         end
       end
       
@@ -54,7 +59,10 @@ module AresMUSH
         post.mark_unread
         Bbs.mark_read_for_player(client.char, post)
         
-        Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, :board => board.name, :author => client.name)
+        Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, 
+        :board => board.name, 
+        :reference => post.reference_str,
+        :author => client.name)
       end
     end
   end

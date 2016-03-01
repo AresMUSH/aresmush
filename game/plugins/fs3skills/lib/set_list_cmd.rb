@@ -2,9 +2,9 @@ module AresMUSH
 
   module FS3Skills
     class SetListCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :name, :add_item, :item_type
 

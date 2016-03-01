@@ -1,10 +1,7 @@
 module AresMUSH
   class Game
-    
-    include Mongoid::Document
-    
-    field :model_version, :type => Integer, default: 1
-    
+    include SupportingObjectModel
+        
     belongs_to :system_character, :class_name => "AresMUSH::Character", :inverse_of => nil
     belongs_to :master_admin, :class_name => "AresMUSH::Character", :inverse_of => nil
     

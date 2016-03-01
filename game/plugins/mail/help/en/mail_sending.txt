@@ -2,7 +2,7 @@ Sending mail is easy. The "to" field can include any number of player names, sep
 
     %xcmail <to>=<subject>/<message>%xn - Sends a message.
     
-You can automatically CC yourself on messages you sent by enabling the sent-mail feature.
+You can automatically CC yourself on messages you sent by enabling the sent-mail feature.  Messages you send will automatically appear in your "Sent" folder (available through mail/sent).
 
     %xcmail/sentmail <on or off%xn - Turns sent mail copy on or off.
     

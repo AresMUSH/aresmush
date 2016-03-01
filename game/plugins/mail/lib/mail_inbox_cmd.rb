@@ -1,8 +1,8 @@
 module AresMUSH
   module Mail
     class MailInboxCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
            
       def want_command?(client, cmd)
         cmd.root_is?("mail") && cmd.switch.nil? && cmd.args.nil?

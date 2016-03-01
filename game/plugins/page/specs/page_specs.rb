@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Page
     describe PageCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
   
       before do
         init_handler(PageCmd, "page bob=something")

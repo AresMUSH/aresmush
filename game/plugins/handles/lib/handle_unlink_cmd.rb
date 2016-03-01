@@ -1,9 +1,9 @@
 module AresMUSH
   module Handles
     class HandleUnlinkCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :char_id
 

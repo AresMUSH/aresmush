@@ -1,10 +1,10 @@
 module AresMUSH
   module Manage
     class ReloadCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
+      include CommandWithoutSwitches
       
       def want_command?(client, cmd)
         cmd.root_is?("reload")

@@ -2,8 +2,8 @@ module AresMUSH
 
   module Roster
     class RosterListCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       include TemplateFormatters
       
       attr_accessor :page

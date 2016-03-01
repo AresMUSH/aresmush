@@ -4,7 +4,7 @@ require "aresmush"
 
 module AresMUSH
 
-  describe Plugin do
+  describe CommandHandler do
     include MockClient
     
     before do
@@ -16,8 +16,8 @@ module AresMUSH
         @client = double
         @cmd = double
         class PluginValidateLoginTest
-          include Plugin
-          include PluginRequiresLogin
+          include CommandHandler
+          include CommandRequiresLogin
         end
         @plugin = PluginValidateLoginTest.new 
         @plugin.client = @client
@@ -44,8 +44,8 @@ module AresMUSH
         @client = double
         @cmd = double
         class PluginValidateRootOnlyTest
-          include Plugin
-          include PluginWithoutArgs
+          include CommandHandler
+          include CommandWithoutArgs
         end
         @plugin = PluginValidateRootOnlyTest.new 
         @plugin.client = @client
@@ -80,8 +80,8 @@ module AresMUSH
         @client = double
         @cmd = double
         class PluginValidateNoSwitchTest
-          include Plugin
-          include PluginWithoutSwitches
+          include CommandHandler
+          include CommandWithoutSwitches
         end
         @plugin = PluginValidateNoSwitchTest.new 
         @plugin.client = @client
@@ -108,8 +108,8 @@ module AresMUSH
         @client = double
         @cmd = double
         class PluginValidateArgumentPresentTest
-          include Plugin
-          include PluginRequiresArgs
+          include CommandHandler
+          include CommandRequiresArgs
           attr_accessor :foo, :bar
           def initialize
             self.required_args = [ 'foo', 'bar' ]

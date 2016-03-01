@@ -2,9 +2,9 @@ module AresMUSH
 
   module Idle
     class IdleExecuteCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("idle") && cmd.switch_is?("execute")

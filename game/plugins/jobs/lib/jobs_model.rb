@@ -6,8 +6,6 @@ module AresMUSH
   class Character
     has_many :submitted_requests, :class_name => 'AresMUSH::Job', :inverse_of => :author
     has_many :assigned_jobs, :class_name => 'AresMUSH::Job', :inverse_of => :assigned_to
-    
-    has_many :job_replies
   end
   
   class Job
@@ -23,7 +21,7 @@ module AresMUSH
     belongs_to :assigned_to, :class_name => "AresMUSH::Character", :inverse_of => :assigned_jobs
     belongs_to :approval_char, :class_name => "AresMUSH::Character", :inverse_of => :approval_job
 
-    has_many :job_replies, order: :created_at.asc, :dependent => :destroy
+    embeds_many :job_replies, order: :created_at.asc
     has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
     
     def is_unread?(char)
@@ -36,11 +34,10 @@ module AresMUSH
   end
   
   class JobReply
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
     
-    belongs_to :job
-    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => 'job_replies'
+    embedded_in :job
+    belongs_to :author, :class_name => "AresMUSH::Character"
     
     field :admin_only, :type => Boolean
     field :message, :type => String

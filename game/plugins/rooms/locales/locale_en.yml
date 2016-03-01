@@ -18,7 +18,7 @@ en:
        
        meetme_target_missing: "You didn't invite anyone!"
        no_meetme_invite: "Nobody has asked you to meet them."
-       receive_meetme_invite: "%{name} has invited you to meet them for RP. %xh%xx(help meetme)%xn"
+       receive_meetme_invite: "%{name} has invited you to meet them for RP at %{room}. %xh%xx(help meetme)%xn"
        send_meetme_invite: "You invite %{name} for RP."
        cant_meetme_self: "You can't meetme yourself!"
        cant_meetme_newbie: "You can't meetme %{name} because they haven't been approved."

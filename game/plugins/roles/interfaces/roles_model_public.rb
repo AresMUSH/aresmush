@@ -1,5 +1,7 @@
 module AresMUSH
   class Character
+    field :admin_note, :type => String
+    
     def has_role?(name)
       self.roles.include?(name)
     end

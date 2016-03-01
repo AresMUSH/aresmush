@@ -27,6 +27,11 @@ module AresMUSH
       key ? FS3Combat.armors[key] : nil
     end
 
+    def self.armor_stat(name, stat)
+      a = FS3Combat.armor(name)
+      a ? a[stat] : nil
+    end
+
     def self.vehicles
       Global.read_config("fs3combat", "vehicles")
     end
@@ -34,6 +39,11 @@ module AresMUSH
     def self.vehicle(name)
       key = FS3Combat.vehicles.keys.select { |k| k.upcase == name.upcase}.first
       key ? FS3Combat.vehicles[key] : nil
+    end
+    
+    def self.vehicle_stat(name, stat)
+      v = FS3Combat.vehicle(name)
+      v ? v[stat] : nil
     end
     
     def self.hitlocs
@@ -57,26 +67,37 @@ module AresMUSH
       end
     end
     
-    def self.set_weapon(client, name, weapon, specials = nil)
-      FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-        combatant.weapon = weapon ? weapon.titleize : nil
-        combatant.weapon_specials = specials ? specials.map { |s| s.titleize } : nil
-        combatant.save
-        specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
-        message = t('fs3combat.weapon_changed', :name => name, 
-          :weapon => combatant.weapon, 
-          :specials => specials_text)
-        combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+    def self.set_default_gear(client, combatant, type)
+      weapon = FS3Combat.combatant_type_stat(type, "weapon")
+      if (weapon)
+        specials = FS3Combat.combatant_type_stat(type, "weapon_specials")
+        FS3Combat.set_weapon(client, combatant, weapon, specials)
+      end
+      
+      armor = FS3Combat.combatant_type_stat(type, "armor")
+      if (armor)
+        FS3Combat.set_armor(client, combatant, armor)
       end
     end
     
-    def self.set_armor(client, name, armor)
-      FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-        combatant.armor = armor ? armor.titleize : nil
-        combatant.save
-        message = t('fs3combat.armor_changed', :name => name, :armor => combatant.armor)
-        combat.emit message, FS3Combat.npcmaster_text(name, client.char)
-      end
+    def self.set_weapon(client, combatant, weapon, specials = nil)
+      combatant.weapon = weapon ? weapon.titleize : nil
+      combatant.weapon_specials = specials ? specials.map { |s| s.titleize } : nil
+      combatant.ammo = FS3Combat.weapon_stat(weapon, "ammo")
+      combatant.action.destroy! if combatant.action
+      combatant.save
+      specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
+      message = t('fs3combat.weapon_changed', :name => combatant.name, 
+        :weapon => combatant.weapon, 
+        :specials => specials_text)
+      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, client ? client.char : nil)
+    end
+    
+    def self.set_armor(client, combatant, armor)
+      combatant.armor = armor ? armor.titleize : nil
+      combatant.save
+      message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
+      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, client.char)
     end
   end
 end

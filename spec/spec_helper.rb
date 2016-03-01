@@ -54,11 +54,14 @@ module AresMUSH
       config = YAML::load(File.open(filename))
       db_config = config['database']['test']
           
-      if (db_config.nil? || db_config['sessions']['default']['database'].nil?)
+      if (db_config.nil? || db_config['clients']['default']['database'].nil?)
         raise "Test DB not defined."
       end
       
       mongoid = Mongoid.load_configuration(db_config)
+      
+      Mongoid.logger.level = Logger::WARN
+      Mongo::Logger.logger.level = Logger::WARN
     end
     
     # Use with the using_test_db helper whenever possible
@@ -84,7 +87,7 @@ module AresMUSH
   end
 
   module GlobalTestHelper
-    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
+    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :api_router
     
     def stub_global_objects
       @config_reader = double
@@ -92,12 +95,14 @@ module AresMUSH
       @plugin_manager = double
       @dispatcher = double
       @locale = double
+      @api_router = double
       
       Global.stub(:config_reader) { @config_reader }
       Global.stub(:client_monitor) { @client_monitor }
       Global.stub(:plugin_manager) { @plugin_manager }
       Global.stub(:dispatcher) { @dispatcher }
       Global.stub(:locale) { @locale }
+      Global.stub(:api_router) { @api_router }
     end
   end
   

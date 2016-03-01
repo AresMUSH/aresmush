@@ -1,9 +1,9 @@
 module AresMUSH
   module Status
     class OOCCatcherCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
       
       def want_command?(client, cmd)
         cmd.root_is?("ooc") && cmd.args.nil?

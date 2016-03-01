@@ -1,10 +1,10 @@
 module AresMUSH
   module Utils
     class Colors
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresLogin
+      include CommandWithoutArgs
          
       attr_accessor :page
          
@@ -30,7 +30,7 @@ module AresMUSH
           list << "#{fg}%t%t%t#{bg}"
         end
         
-        client.emit BorderedDisplay.paged_list(list, self.page, 20, t('ansi.colors_title'), t('ansi.x_or_c'))
+        client.emit BorderedDisplay.paged_list(list, self.page, 25, t('ansi.colors_title'), t('ansi.x_or_c'))
       end
     end
   end

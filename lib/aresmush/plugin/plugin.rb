@@ -1,5 +1,5 @@
 module AresMUSH
-  module Plugin
+  module CommandHandler
     
     attr_accessor :client, :cmd
         
@@ -58,7 +58,7 @@ module AresMUSH
     # Several common error checking methods are defined, and you can include them
     # in your plugin just by including them in your plugin file.
     # For example:
-    #       include PluginRequiresLogin
+    #       include CommandRequiresLogin
     def error_check
       self.methods.grep(/^check_/).sort.each do |m|
         error = send m

@@ -27,6 +27,7 @@ en:
         invalid_search_class: "The Ares find command requires that you specify a database object type.  For example: find room=Welcome."
         
         objects_reloaded: "Database objects refreshed."
+        git_output: "Git command: %{output}"
         
         object_destroyed: "%{name} destroyed."
         confirm_object_destroy: "You want to delete %{type} %xg%{name}.%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn"

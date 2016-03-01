@@ -1,9 +1,9 @@
 module AresMUSH
   module Utils
     class AliasCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresLogin
       
       attr_accessor :alias
       

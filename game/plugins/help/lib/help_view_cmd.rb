@@ -2,9 +2,9 @@ module AresMUSH
   module Help
     
     class HelpViewCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
 
       attr_accessor :category_index
       attr_accessor :topic
@@ -24,7 +24,13 @@ module AresMUSH
         self.topic = strip_prefix(titleize_input(cmd.args))
       end
       
+      def check_valid_category
+        return t('help.unrecognized_help_library') if !self.category_index
+        return nil
+      end
+      
       def check_can_view_help
+        return nil if !self.category_index
         return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category_index)
         return nil
       end
@@ -36,9 +42,9 @@ module AresMUSH
             Help.categories.each do |k, v|
               next if v["command"] == self.category_index["command"]
               found = find_match(v)
-              return if found
+              break if found
             end
-            client.emit_failure t('help.not_found', :topic => self.topic)
+            client.emit_failure t('help.not_found', :topic => self.topic) if !found
           end
         end
       end

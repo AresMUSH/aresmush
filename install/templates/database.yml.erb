@@ -1,22 +1,24 @@
 database:
     production:
-        sessions:
+        clients:
             default:
                 hosts:
                     - <%= @db_host %>:<%= @db_port %>
                 database: <%= @db_name %>
-                username: <%= @db_user %>
-                password: <%= @db_password %>
+                options:
+                    user: <%= @db_user %>
+                    password: <%= @db_password %>
         options:
             raise_not_found_error: false
 
     test:
-        sessions:
+        clients:
             default:
                 hosts:
                     - 
                 database: 
-                username: 
-                password: 
+                options:
+                    user: 
+                    password: 
         options:
             raise_not_found_error: false

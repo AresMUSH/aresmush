@@ -2,7 +2,7 @@ module AresMUSH
   module Pose
     describe PoseCatcher do
       
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
     
       before do
         init_handler(PoseCatcher, ":test")

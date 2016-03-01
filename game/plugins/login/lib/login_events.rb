@@ -1,7 +1,7 @@
 module AresMUSH
   module Login
     class LoginEvents
-      include Plugin
+      include CommandHandler
       
       def on_char_connected_event(event)
         client = event.client

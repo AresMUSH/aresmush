@@ -11,7 +11,7 @@ module AresMUSH
     field :port, :type => Integer
     field :category, :type => String
     field :website, :type => String
-    field :game_open, :type => String
+    field :game_open, :type => Boolean
     field :key, :type => String, :default => default_key
     field :last_ping, :type => Time, :default => Time.now
     
@@ -33,12 +33,7 @@ module AresMUSH
     end
     
     def is_open?
-      case game_open
-      when "yes", "Yes", "true", "True", "open", "Open"
-        true
-      else
-        false
-      end
+      game_open
     end
     
     private

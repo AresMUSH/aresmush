@@ -1,9 +1,9 @@
 module AresMUSH
   module Groups
     class GroupSetCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :name, :value, :group_name
 

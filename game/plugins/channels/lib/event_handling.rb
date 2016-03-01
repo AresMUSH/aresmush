@@ -1,7 +1,7 @@
 module AresMUSH
   module Channels
     class LoginEvents
-      include Plugin
+      include CommandHandler
       
       def on_char_created_event(event)
         client = event.client

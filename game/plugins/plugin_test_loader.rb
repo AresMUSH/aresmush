@@ -12,7 +12,7 @@ end
 
 module AresMUSH
   
-  module PluginCmdTestHelper
+  module CommandHandlerTestHelper
     include MockClient
     
     attr_accessor :client, :char, :cmd, :handler

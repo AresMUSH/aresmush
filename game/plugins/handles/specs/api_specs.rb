@@ -47,65 +47,14 @@ module AresMUSH
           SpecHelpers.stub_translate_for_testing
         end        
         
-        it "should just return the char profile if on master" do
-          @router.stub(:is_master?) { true }
-          Character.stub(:find_all_by_name_or_id).with("Star") { [ @profile_char ] }
-          
-          char_profile_template = double
-          char_profile_template.stub(:display) { "PROFILE" }
-          HandleProfileTemplate.should_receive(:new).with(@profile_char, @char) { char_profile_template }
-          
-          @client.should_receive(:emit).with("PROFILE")
-          Handles.get_profile(@client, "Star")
-        end
-        
         context "slave" do
           before do
             Character.stub(:find_all_by_name_or_id).with("Bob") { [ @profile_char ] }
             @profile_char.stub(:handle) { "@Nemo" }
             @profile_char.stub(:handle_visible_to?).with(@char) { true }
-            @char.stub(:handle) { "@Star" }
-            
-            @char_profile_template = double
-            @char_profile_template.stub(:render) { }
-            CharProfileTemplate.stub(:new) { @char_profile_template }
-            
+            @char.stub(:handle) { "@Star" }            
           end
         
-          it "should return regular profile if no handle on char" do
-            @profile_char.stub(:handle) { nil }
-            @char_profile_template.should_receive(:render)
-            Handles.should_not_receive(:send_handle_profile_request)
-            Handles.get_profile(@client, "Bob")
-          end
-        
-          it "should return char profile if handle not visible" do
-            @profile_char.stub(:handle_visible_to?).with(@char) { false }
-            @char_profile_template.should_receive(:render)
-            Handles.should_not_receive(:send_handle_profile_request)
-            Handles.get_profile(@client, "Bob")
-          end
-        
-          it "should fail if no char found" do
-            Character.stub(:find_all_by_name_or_id).with("Bob") { [] }
-            @client.should_receive(:emit_failure).with("db.object_not_found")
-            Handles.should_not_receive(:send_handle_profile_request)
-            Handles.get_profile(@client, "Bob")
-          end
-        
-        
-          it "should send command to central if handle visible" do
-            @char_profile_template.should_receive(:render)
-            @client.should_receive(:emit_success).with("handles.sending_profile_request")
-            @router.should_receive(:send_command) do |game_id, client, cmd|
-              game_id.should eq ServerInfo.arescentral_game_id
-              client.should eq @client
-              cmd.command_name.should eq "profile"
-              cmd.args_str.should eq "@Nemo||@Star"
-            end
-            Handles.get_profile(@client, "Bob")
-          end
-          
           it "should be able to look up a handle directly" do
             @client.should_receive(:emit_success).with("handles.sending_profile_request")
             @router.should_receive(:send_command) do |game_id, client, cmd|

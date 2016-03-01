@@ -34,6 +34,7 @@ en:
         channel_gagged: "You will no longer hear messages on channel %{name}."
         channel_ungagged: "You will now hear messages on channel %{name}."
         gagging: " (gagging)"
+        cant_talk_when_gagged: "You can't talk on a channel you're gagging."
 
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
         channel_alias_set: "You can now use %{channel_alias} <message> to talk on the %{name} channel. "

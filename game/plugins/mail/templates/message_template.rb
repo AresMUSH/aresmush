@@ -4,10 +4,9 @@ module AresMUSH
     class MessageTemplate < AsyncTemplateRenderer
       include TemplateFormatters
       
-      def initialize(client, delivery)
+      def initialize(client, message)
         @char = client.char
-        @delivery = delivery
-        @message = delivery.message
+        @message = message
         super client
       end
       
@@ -52,7 +51,7 @@ module AresMUSH
       end
 
       def tags
-        @delivery.tags.join(", ")
+        @message.tags.join(", ")
       end
     end
   end

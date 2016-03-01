@@ -9,7 +9,7 @@ module AresMUSH
     if (s.category.nil?)
       s.category = "Social"
     end
-    s.game_open = "yes"
+    s.game_open = true
     s.name_upcase = s.name.upcase
     s.category_upcase = s.category.upcase
     s.save!

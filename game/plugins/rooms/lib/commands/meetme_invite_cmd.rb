@@ -1,9 +1,9 @@
 module AresMUSH
   module Rooms
     class MeetmeInviteCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
 
       attr_accessor :names
       
@@ -57,7 +57,7 @@ module AresMUSH
         end
         
         to_clients.each do |c|
-          c.emit_ooc t('rooms.receive_meetme_invite', :name => client.name)          
+          c.emit_ooc t('rooms.receive_meetme_invite', :name => client.name, :room => client.room.name)          
           c.program[:meetme] = client
         end
         client.emit_success t('rooms.send_meetme_invite', :name => self.names.join(", "))

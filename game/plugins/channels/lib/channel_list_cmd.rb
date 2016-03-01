@@ -1,9 +1,9 @@
 module AresMUSH
   module Channels
     class ChannelListCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       include TemplateFormatters
            
       def want_command?(client, cmd)

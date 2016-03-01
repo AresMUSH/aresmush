@@ -5,6 +5,7 @@ module AresMUSH
         @combatant = Combatant.new
         @char = double
         @combatant.stub(:character) { @char }
+        SpecHelpers.stub_translate_for_testing
       end
       
       describe :roll_defense do
@@ -28,6 +29,18 @@ module AresMUSH
         it "should account for stance modifiers" do
           @combatant.stub(:defense_stance_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Reaction", 1)
+          @combatant.roll_defense("Knife")
+        end
+        
+        it "should account for luck spent on defense" do
+          @combatant.stub(:luck) { "Defense" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 3)
+          @combatant.roll_defense("Knife")
+        end
+
+        it "should ignore luck spent on something else" do
+          @combatant.stub(:luck) { "Attack" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 0)
           @combatant.roll_defense("Knife")
         end
         
@@ -94,7 +107,19 @@ module AresMUSH
           @combatant.should_receive(:roll_ability).with("Knives", 2)
           @combatant.roll_attack
         end
-        
+
+        it "should account for luck spent on attack" do
+          @combatant.stub(:luck) { "Attack" }
+          @combatant.should_receive(:roll_ability).with("Knives", 3)
+          @combatant.roll_attack
+        end
+
+        it "should ignore luck spent on something else" do
+          @combatant.stub(:luck) { "Defense" }
+          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          @combatant.roll_attack
+        end
+                
         it "should account for passed-in modifiers" do
           @combatant.should_receive(:roll_ability).with("Knives", -2)
           @combatant.roll_attack(-2)
@@ -140,20 +165,34 @@ module AresMUSH
         
       end
       describe :do_damage do
+        before do
+          @combat = double
+          @combatant.stub(:combat) { @combat }
+          @combat.stub(:is_real) { true }
+        end
+        
         it "should inflict physical damage on a PC" do
           FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", false) {}
+          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", false, false) {}
           @combatant.do_damage("M", "Knife", "Arm")
         end
 
         it "should inflict stun damage on a PC" do
           FS3Combat.stub(:weapon_is_stun?).with("Knife") { true }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true) {}
+          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true, false) {}
+          @combatant.do_damage("M", "Knife", "Arm")
+        end
+        
+        it "should inflict mock damage on a PC" do
+          @combat.stub(:is_real) { false }
+          FS3Combat.stub(:weapon_is_stun?).with("Knife") { true }
+          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true, true) {}
           @combatant.do_damage("M", "Knife", "Arm")
         end
         
         it "should inflict damage on a NPC" do
           @combatant.stub(:character) { nil }
+          @combatant.stub(:save) { } 
           @combatant.do_damage("M", "Knife", "Arm")
           @combatant.do_damage("L", "Knife", "Leg")
           @combatant.npc_damage[0].should eq "M"
@@ -226,10 +265,6 @@ module AresMUSH
           it "should account for armor" do
             @combatant.determine_damage("Head", "Knife", 5).should eq "L"
           end
-          
-          it "should account for cover" do
-            @combatant.determine_damage("Head", "Knife", 0, 5).should eq "L"
-          end
         end
         
         describe :determine_hitloc do 
@@ -280,6 +315,176 @@ module AresMUSH
             result = { :successes => 2, :success_title => "Foo" }
             FS3Skills.should_receive(:one_shot_die_roll).with(@combatant.npc_skill + 3) { result }
             @combatant.roll_ability("Firearms", 3).should eq 2
+          end
+        end
+        
+        describe :roll_initiative do
+          before do
+            @combatant.stub(:roll_ability) { 2 }
+            @combatant.stub(:total_damage_mod) { 0 } 
+          end
+          
+          it "should roll the ability twice and add them together" do
+            @combatant.should_receive(:roll_ability).with("init", 0) { 2 }
+            @combatant.should_receive(:roll_ability).with("init", 0) { 3 }
+            @combatant.roll_initiative("init").should eq 5
+          end
+          
+          it "should remove damage modifiers" do
+            @combatant.should_receive(:roll_ability).with("init", -1) { 2 }
+            @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
+            @combatant.stub(:total_damage_mod) { 1 } 
+            @combatant.roll_initiative("init").should eq 5
+          end
+          
+          it "should account for luck spent on initiative" do
+            @combatant.luck = "Initiative"
+            @combatant.roll_initiative("init").should eq 7
+          end
+
+          it "should ignore luck spent on something else" do
+            @combatant.luck = "Attack"
+            @combatant.roll_initiative("init").should eq 4
+          end
+        end
+        
+        describe :update_ammo do
+          before do
+            @combatant.stub(:save) {} 
+          end
+          
+          it "should not do anything if the weapon doesn't use ammo" do
+            @combatant.ammo = nil
+            @combatant.update_ammo(1)
+            @combatant.ammo.should be_nil
+          end
+          
+          it "should adjust ammo by the number of bullets" do
+            @combatant.ammo = 15
+            @combatant.update_ammo(3)
+            @combatant.ammo.should eq 12
+          end
+        end
+        
+        describe :attack_target do    
+          before do
+            @target = double
+            @target.stub(:name) { "Target" }
+            @combatant.stub(:weapon) { "Knife" }
+            @target.stub(:stance) { "Normal" }
+            @target.stub(:determine_armor) { 0 }
+            FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
+          end
+                
+          it "should dodge if defense roll greater" do
+            @target.stub(:roll_defense) { 2 }
+            @combatant.stub(:roll_attack) { 1 }
+            @combatant.attack_target(@target).should eq "fs3combat.attack_dodged"
+          end
+
+          it "should miss if attack roll fails" do
+            @target.stub(:roll_defense) { 2 }
+            @combatant.stub(:roll_attack) { 0 }
+            @combatant.attack_target(@target).should eq "fs3combat.attack_missed"
+          end
+          
+          describe "cover" do
+            before do
+              @target.stub(:stance) { "Cover" }
+              @target.stub(:roll_defense) { 2 }
+              @target.stub(:do_damage) { }
+              @target.stub(:determine_damage) { }
+              @target.stub(:determine_hitloc) { }
+              
+              # Note:  By seeding the random number generator, we can avoid the randomness.
+              #   22 makes the first random number 4.
+              #   220 makes the first random number 92.
+              Kernel.srand 22
+            end
+            
+            it "should miss cover if margin high enough" do
+              @combatant.stub(:roll_attack) { 5 }
+              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
+            end
+
+            it "should miss cover if margin is low but random die roll high" do
+              Kernel.srand 220
+              @combatant.stub(:roll_attack) { 2 }
+              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
+            end
+
+            it "should hit cover if margin and random die roll low" do
+              @combatant.stub(:roll_attack) { 2 }
+              @combatant.attack_target(@target).should eq "fs3combat.attack_hits_cover"
+            end
+          end
+
+          describe "success" do
+            before do
+              @combatant.stub(:roll_attack) { 3 }
+              @target.stub(:roll_defense) { 2 }              
+              @target.stub(:determine_hitloc) { "Head" }
+              @combatant.stub(:weapon) { "Knife" }
+              FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
+              @target.stub(:do_damage)
+              @target.stub(:determine_damage) { "M" }
+            end
+        
+            describe "armor" do
+              it "should be stopped completely by armor if armor value >= 100" do
+                @target.stub(:determine_armor) { 101 }
+                @target.should_not_receive(:do_damage)
+                @combatant.attack_target(@target).should eq "fs3combat.attack_stopped_by_armor"              
+              end
+            
+              it "should reduce damage by armor if it applies" do
+                @target.stub(:determine_armor) { 10 }
+                @target.should_receive(:determine_damage).with("Head", "Knife", 10) { "M" }
+                @combatant.attack_target(@target).should eq "fs3combat.attack_hits" 
+              end
+            end
+          
+            describe "single fire" do
+              it "should hit if attack roll greater" do
+                @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
+              end
+      
+              it "should determine hitloc based on successes" do
+                @target.should_receive(:determine_hitloc).with(1) { "Body" }
+                @combatant.attack_target(@target)
+              end
+        
+              it "should inflict damage" do
+                @target.should_receive(:do_damage).with("M", "Knife", "Head")
+                @combatant.attack_target(@target)
+              end
+        
+              it "should calculate damage" do
+                @target.should_receive(:determine_damage).with("Head", "Knife", 0) { "M" }
+                @combatant.attack_target(@target)
+              end
+              
+              it "should inflict recoil" do
+                @combatant.stub(:recoil) { 2 }
+                @combatant.should_receive(:recoil=).with(3)
+                @combatant.attack_target(@target)
+              end
+            end
+        
+            describe "called shot" do              
+              it "should hit the desired location if margin > 2" do
+                @target.stub(:roll_defense) { 0 }
+                @target.should_not_receive(:determine_hitloc)
+                @target.should_receive(:do_damage).with("M", "Knife", "Right Leg")
+                @combatant.attack_target(@target, "Right Leg")
+              end
+          
+              it "should roll random hitloc with penalty if margin <= 2" do
+                @target.should_receive(:determine_hitloc).with(-1) { "Body" }
+                @target.should_receive(:do_damage).with("M", "Knife", "Body")
+                @combatant.attack_target(@target, "Right Leg")
+              end
+            end
           end
         end
       end

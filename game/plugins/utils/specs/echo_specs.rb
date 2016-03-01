@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Utils
     describe EchoCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
     
       before do
         init_handler(EchoCmd, "echo happy thoughts")

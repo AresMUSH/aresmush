@@ -70,13 +70,13 @@ module AresMUSH
       it "sends the raw text without formatting with the grab password" do
         char = double
         char.stub(:edit_prefix) { "SimpleMUUser" }
-        @connection.should_receive(:send_data).with("SimpleMUUser %xr%%Boo%xn%r\n")
+        @connection.should_receive(:send_data).with("SimpleMUUser %xr%%Boo%xn%r\r\n")
         @client.stub(:char) { char }
         @client.grab "%xr%%Boo%xn%r"
       end
       
       it "sends the raw text without formatting if not logged in" do
-        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r\n")
+        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r\r\n")
         @client.grab "%xr%%Boo%xn%r"
       end
     end
@@ -90,26 +90,26 @@ module AresMUSH
       
       it "should create a command and notify the dispatcher" do
         cmd = double
-        Command.should_receive(:new).with("Yay\n") { cmd }
-        @dispatcher.should_receive(:on_command).with(@client, cmd)
+        Command.should_receive(:new).with("Yay") { cmd }
+        @dispatcher.should_receive(:queue_command).with(@client, cmd)
         @client.handle_input "Yay\n"        
       end
       
       it "should concatenate split commands" do
         cmd = double
-        Command.should_receive(:new).with("Yay!More!\n") { cmd }
-        @dispatcher.should_receive(:on_command).with(@client, cmd)
+        Command.should_receive(:new).with("Yay!More!") { cmd }
+        @dispatcher.should_receive(:queue_command).with(@client, cmd)
         @client.handle_input "Yay!"        
         @client.handle_input "More!\n"
       end
       
       it "should ignore null input" do
-        @dispatcher.should_not_receive(:on_command)
+        @dispatcher.should_not_receive(:queue_command)
         @client.handle_input nil
       end
       
       it "should ignore empty input" do
-        @dispatcher.should_not_receive(:on_command)
+        @dispatcher.should_not_receive(:queue_command)
         @client.handle_input "\n"
         @client.handle_input "\r\n"
         @client.handle_input "\n\n"
@@ -118,9 +118,8 @@ module AresMUSH
     end
 
     describe :disconnect do
-      it "should close the connection on the next tick" do
-        EM.should_receive(:next_tick).and_yield
-        @connection.should_receive(:close_connection)
+      it "should close the connection and flush output" do
+        @connection.should_receive(:close_connection).with(true)
         @client.disconnect
       end
     end

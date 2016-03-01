@@ -1,8 +1,8 @@
 module AresMUSH
   module Manage
     class ConfigListCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
       
       def want_command?(client, cmd)
         cmd.root_is?("config") && cmd.switch.nil? && cmd.args.nil?

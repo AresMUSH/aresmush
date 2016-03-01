@@ -174,6 +174,7 @@ module AresMUSH
           if (char.afk_message)
             msg = "#{msg} %xy#{char.afk_message}%xn"
           end
+          msg
         elsif (char.client && Status.is_idle?(char.client))
           "%xy%xh<#{t('describe.idle')}>%xn"
         else

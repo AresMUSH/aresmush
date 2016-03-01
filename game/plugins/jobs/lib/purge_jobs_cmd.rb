@@ -1,9 +1,9 @@
 module AresMUSH
   module Jobs
     class PurgeJobsCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("job") && cmd.switch_is?("purge")
@@ -15,9 +15,9 @@ module AresMUSH
     end
     
     class PurgeJobsConfirmCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
       
       def want_command?(client, cmd)
         cmd.root_is?("jobs") && cmd.switch_is?("confirmpurge")

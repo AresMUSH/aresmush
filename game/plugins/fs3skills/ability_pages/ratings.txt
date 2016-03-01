@@ -10,3 +10,5 @@ Most things in FS3 are rated from 0-5.
 5  Elite / Awesome       You have mastered your field. Few can compare to your ability.
 
 Note - Elite doesn’t mean 'best of all time'. To use a sports analogy, Elite would mean an All-Star quality player, not necessarily the greatest player who ever lived.
+
+You can use %xcabilities2%xn, %xcabilities3%xn, etc. to see the rest of the abilities pages.

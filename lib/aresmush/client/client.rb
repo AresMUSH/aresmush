@@ -54,7 +54,7 @@ module AresMUSH
 
     def grab(msg)
       edit_prefix = char.nil? ? "" : "#{char.edit_prefix} "
-      @connection.send_data "#{edit_prefix}#{msg}\n"
+      @connection.send_data "#{edit_prefix}#{msg}\r\n"
     end
     
     def idle_secs
@@ -65,10 +65,10 @@ module AresMUSH
       (Time.now - self.last_connect).to_i
     end
     
-    # Initiates a disconnect on purpose.  Wait a tick
-    # to give any pending messages a chance to flush.
     def disconnect
-      EM.next_tick { @connection.close_connection }
+      AresMUSH.with_error_handling(nil, "Disconnecting client.") do
+        @connection.close_connection true  # True flushes output first
+      end
     end
     
     def handle_input(input)
@@ -80,7 +80,10 @@ module AresMUSH
         input = self.input_buffer
         input.force_encoding(Encoding::UTF_8)
         input.scrub! if !input.valid_encoding?
-        Global.dispatcher.on_command(self, Command.new(input))
+        input.split("\n").each do |i|
+          Global.dispatcher.queue_command(self, Command.new(i))
+        end
+        
         self.input_buffer = ""
       rescue Exception => e
          Global.logger.error("Error handling input: client=#{self} input=#{input} error=#{e} backtrace=#{e.backtrace[0,10]}")

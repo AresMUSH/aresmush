@@ -1,0 +1,29 @@
+The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion.  There are a wide variety of options and commands, which are described in more detail on the game wiki:
+
+    %xh%xrADMINS SHOULD UPDATE THIS LINK%xn
+    http://muwikitemplate.wikidot.com/fs3
+
+    %xccombat/start%xn or %xccombat/start mock%xn - Starts a combat. (Organizer only)
+    %xccombat/newturn%xn - Trigger a new turn. (Organizer only)
+
+    %xccombats%xn - Lists combats.
+    %xccombat/join <combat #>%xn - Joins a combat
+    %xccombat/leave%xn - Leaves combat.
+
+    %xccombat%xn - View combat display
+         
+    %xccombat/pilot <vehicle>>%xn - Pilots a vehicle
+    %xccombat/passenger <vehicle>%xn - Become a passenger in a vehicle.
+       Use a vehicle type from %xcvehicles%xn to create a new vehicle, or a specific vehicle name if one already exists.
+      
+    %xccombat/disembark%xn - Leaves your vehicle.
+    
+    %xccombat/weapon <weapon>[/<comma-separated specials>]%xn - Set your weapon and 
+       any weapon specials.
+    %xccombat/armor <armor>%xn - Set your armor.
+    %xccombat/stance <stance>%xn - Set your stance (normal, banzai, cautious, evade, hidden)
+
+    %xccombat/attack <target>%xn - Attack someone.
+    %xccombat/pass%xn - Pass this turn.
+    
+%xhYou can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Skye.%xn

@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Manage
     describe DestroyCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       include GameTestHelper
   
       before do
@@ -70,6 +70,7 @@ module AresMUSH
         context "success" do
           before do
             @target = double.as_null_object
+            @target.stub(:to_json) { "JSON" }
             AnyTargetFinder.stub(:find) { @target }
             client.stub(:program=)
             client.stub(:emit)

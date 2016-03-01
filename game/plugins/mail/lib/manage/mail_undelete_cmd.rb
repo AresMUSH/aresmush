@@ -1,9 +1,9 @@
 module AresMUSH
   module Mail
     class MailUndeleteCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
            
       attr_accessor :num
       

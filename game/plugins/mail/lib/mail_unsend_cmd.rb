@@ -1,9 +1,9 @@
 module AresMUSH
   module Mail
     class MailUnsendCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :num, :name
       
@@ -25,8 +25,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          sent = client.char.sent_mail
-          deliveries = sent.map { |s| s.mail_deliveries }.flatten.select{ |d| d.character == model }
+          deliveries = model.sent_mail_to(client.char)
           
           Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
             if (delivery.read)

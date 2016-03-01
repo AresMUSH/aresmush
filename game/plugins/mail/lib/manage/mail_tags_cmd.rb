@@ -1,9 +1,9 @@
 module AresMUSH
   module Mail
     class MailTagsCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutArgs
 
       def want_command?(client, cmd)
         cmd.root_is?("mail") && cmd.switch_is?("tags")

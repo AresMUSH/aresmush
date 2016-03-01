@@ -1,9 +1,9 @@
 module AresMUSH
   module Mail
     class MailSendCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
            
       attr_accessor :names
       attr_accessor :subject

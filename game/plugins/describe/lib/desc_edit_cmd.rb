@@ -2,9 +2,9 @@ module AresMUSH
 
   module Describe
     class DescEditCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandRequiresArgs
       
       attr_accessor :target
 
@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(target, client) do |model|
+        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
           client.grab "#{cmd.root} #{self.target}=#{model.description}"
         end
       end

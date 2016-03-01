@@ -271,8 +271,8 @@ module AresMUSH
                   
           FS3Skills.stub(:get_ability_type).with(@char, "Firearms") { :action }
           FS3Skills.stub(:ability_rating).with(@char, "Firearms") { 1 }
-          FS3Skills.stub(:ability_rating).with(@char, "Reaction") { 3 }
           FS3Skills.stub(:ability_rating).with(@char, "Mind") { 1 }
+          FS3Skills.stub(:ability_rating).with(@char, "Reaction") { 3 }
           FS3Skills.stub(:ability_rating).with(@char, "Untrained") { 0 }
           FS3Skills.stub(:ability_rating).with(@char, "Basketweaving") { 3 }
           FS3Skills.stub(:get_related_apt).with(@char, "Firearms") { "Reaction" }
@@ -309,11 +309,29 @@ module AresMUSH
           FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
         end
         
-        it "should not count aptitude mod for aptitude" do
-          roll_params = RollParams.new("Reaction")
-          FS3Skills.stub(:get_ability_type).with(@char, "Reaction") { :aptitude }
-          # Rolls Reaction + Reaction --> 8 dice
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
+        it "should roll 1 for poor aptitude" do
+          roll_params = RollParams.new("Mind")
+          FS3Skills.stub(:ability_rating).with(@char, "Mind") { 1 }
+          FS3Skills.stub(:get_ability_type).with(@char, "Mind") { :aptitude }
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 1
+        end
+        it "should roll 2 for avg aptitude" do
+          roll_params = RollParams.new("Mind")
+          FS3Skills.stub(:ability_rating).with(@char, "Mind") { 2 }
+          FS3Skills.stub(:get_ability_type).with(@char, "Mind") { :aptitude }
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 2
+        end
+        it "should roll 3 for good aptitude" do
+          roll_params = RollParams.new("Mind")
+          FS3Skills.stub(:ability_rating).with(@char, "Mind") { 3 }
+          FS3Skills.stub(:get_ability_type).with(@char, "Mind") { :aptitude }
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 3
+        end
+        it "should roll 4 for great aptitude" do
+          roll_params = RollParams.new("Mind")
+          FS3Skills.stub(:ability_rating).with(@char, "Mind") { 4 }
+          FS3Skills.stub(:get_ability_type).with(@char, "Mind") { :aptitude }
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 4
         end
         
         it "should not count aptitude mod for nonexistant" do

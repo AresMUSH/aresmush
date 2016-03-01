@@ -1,7 +1,7 @@
 module AresMUSH
   module Who
     class WhoEvents
-      include Plugin
+      include CommandHandler
 
       def on_char_connected_event(event)
         count = Global.client_monitor.logged_in_clients.count

@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Manage
     describe LoadPluginCmd do
-      include PluginCmdTestHelper
+      include CommandHandlerTestHelper
       include GlobalTestHelper
   
       before do
@@ -32,6 +32,7 @@ module AresMUSH
           plugin_manager.stub(:unload_plugin)
           locale.stub(:load!)
           config_reader.stub(:read)
+          api_router.stub(:find_handlers)
           client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
         end
@@ -41,7 +42,7 @@ module AresMUSH
           handler.handle
         end
           
-        it "should unload the plugin" do
+        it "should unload the plugin xxxx" do
           plugin_manager.should_receive(:unload_plugin).with("foo")
           handler.handle
         end

@@ -1,7 +1,6 @@
 module AresMUSH
   class ServerInfo
-    include Mongoid::Document
-    include Mongoid::Timestamps
+    include SupportingObjectModel
     
     def self.default_key
       "UIEAYPY76718394kJKLjfdoiu6U^MMNH&54dzSW"

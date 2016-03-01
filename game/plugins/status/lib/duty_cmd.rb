@@ -1,10 +1,10 @@
 module AresMUSH
   module Status
     class DutyCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
       
       attr_accessor :status
       
@@ -22,8 +22,8 @@ module AresMUSH
         self.status = OnOffOption.new(cmd.args)
       end
       
-      def check_can_manage_status
-        return t('status.cannot_set_on_duty') if !Status.can_manage_status?(client.char)
+      def check_can_be_on_duty
+        return t('status.cannot_set_on_duty') if !Status.can_be_on_duty?(client.char)
         return nil
       end
       

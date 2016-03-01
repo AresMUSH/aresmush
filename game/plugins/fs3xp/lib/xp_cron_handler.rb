@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3XP    
     class XpCronHandler
-      include Plugin
+      include CommandHandler
       
       def on_cron_event(event)
         config = Global.read_config("fs3xp", "cron")

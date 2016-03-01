@@ -1,8 +1,8 @@
 module AresMUSH
   module Rooms
     class FoyerCmd
-      include Plugin
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandRequiresLogin
 
       attr_accessor :option
       

@@ -32,9 +32,7 @@ module AresMUSH
     end
     
     def self.subtitled_list(items, title, subtitle, footer = nil)
-      output = "%xh#{title}%xn"
-      output << "%R%R"
-      output << "%xh#{subtitle}%xn"
+      output = "%xh#{subtitle}%xn"
       output << "%R%l2"
       
       if (!items.nil?)
@@ -49,10 +47,11 @@ module AresMUSH
       return BorderedDisplay.text(output, title, true, footer)
     end
     
-    def self.paged_list(items, page, items_per_page = 20, title = nil, footer = nil)
+    def self.paged_list(items, page, items_per_page = 25, title = nil, footer = nil)
       pagination = Paginator.paginate(items, page, items_per_page)
       if (pagination.out_of_bounds?)
-        return BorderedDisplay.text(t('pages.not_that_many_pages'))
+        error_text = page == 1 ? t('pages.no_items') : t('pages.not_that_many_pages')
+        return BorderedDisplay.text error_text
       else
         page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
 <<<<<<< HEAD

@@ -1,15 +1,15 @@
 module AresMUSH
   module Login
     class ConnectCmd
-      include Plugin
-      include PluginWithoutSwitches
+      include CommandHandler
+      include CommandWithoutSwitches
 
       attr_accessor :charname, :password
       
       def want_command?(client, cmd)
         # Special check for 'c' command to allow it to be used as chat alias.
         return false if client.logged_in?
-        return (cmd.root_is?("connect") || cmd.root_is?("c")) && !cmd.args.start_with?("guest")
+        return (cmd.root_is?("connect") || cmd.root_is?("c")) && cmd.args && !cmd.args.start_with?("guest")
       end
       
       def crack!
@@ -44,7 +44,8 @@ module AresMUSH
           if (!existing_client.nil?)
             existing_client.emit_ooc t('login.disconnected_by_reconnect')
             existing_client.disconnect
-            Global.dispatcher.queue_timer(1, "Announce Connection") { announce_connection }
+
+            Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection }
           else
             announce_connection
           end

@@ -1,9 +1,9 @@
 module AresMUSH
   module Chargen
     class ChargenPrevNextCmd
-      include Plugin
-      include PluginWithoutArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutArgs
+      include CommandRequiresLogin
       
       attr_accessor :offset
       

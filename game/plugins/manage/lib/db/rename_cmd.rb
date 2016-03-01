@@ -1,10 +1,10 @@
 module AresMUSH
   module Manage
     class RenameCmd
-      include Plugin
-      include PluginWithoutSwitches
-      include PluginRequiresArgs
-      include PluginRequiresLogin
+      include CommandHandler
+      include CommandWithoutSwitches
+      include CommandRequiresArgs
+      include CommandRequiresLogin
       
       attr_accessor :target
       attr_accessor :name
@@ -27,43 +27,38 @@ module AresMUSH
       end
 
       def handle
-        find_result = AnyTargetFinder.find(self.target, client)
-        
-        if (!find_result.found?)
-          client.emit_failure(find_result.error)
-          return
-        end
-        target = find_result.target
-
-        if (!Manage.can_manage_object?(client.char, target))
-          client.emit_failure t('dispatcher.not_allowed')
-          return
-        end
-        
-        name_validation_msg = target.class.check_name(self.name)
-        if (!name_validation_msg.nil?)
-          client.emit_failure(name_validation_msg)
-          return
-        end
-        
-        if (target.class == Exit)
-          if (target.source.has_exit?(self.name))
-            client.emit_failure(t('manage.exit_already_exists'))
+        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
+          if (!Manage.can_manage_object?(client.char, model))
+            client.emit_failure t('dispatcher.not_allowed')
             return
           end
-        end
         
-        if (target.class == Character)
-          if (target.linked_characters.keys.count > 0)
-            client.emit_failure(t('manage.cant_rename_handle_with_links'))
+          name_validation_msg = model.class.check_name(self.name)
+          if (!name_validation_msg.nil?)
+            client.emit_failure(name_validation_msg)
             return
           end
-        end
         
-        old_name = target.name
-        target.name = self.name
-        target.save!
-        client.emit_success t('manage.object_renamed', :type => target.class.name.rest("::"), :old_name => old_name, :new_name => self.name)
+          if (model.class == Exit)
+            existing_exit = model.source.get_exit(self.name)
+            if (existing_exit && existing_exit != model)
+              client.emit_failure(t('manage.exit_already_exists'))
+              return
+            end
+          end
+        
+          if (model.class == Character)
+            if (model.linked_characters.keys.count > 0)
+              client.emit_failure(t('manage.cant_rename_handle_with_links'))
+              return
+            end
+          end
+        
+          old_name = model.name
+          model.name = self.name
+          model.save!
+          client.emit_success t('manage.object_renamed', :type => model.class.name.rest("::"), :old_name => old_name, :new_name => self.name)
+        end
       end
     end
   end

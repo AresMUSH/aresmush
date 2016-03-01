@@ -1,10 +1,10 @@
 module AresMUSH
   module ICTime
     class ICTimeCmd
-      include Plugin
-      include PluginRequiresLogin
-      include PluginWithoutSwitches
-      include PluginWithoutArgs
+      include CommandHandler
+      include CommandRequiresLogin
+      include CommandWithoutSwitches
+      include CommandWithoutArgs
            
       def want_command?(client, cmd)
         cmd.root_is?("ictime")

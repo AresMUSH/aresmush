@@ -53,14 +53,21 @@ module AresMUSH
         return nil
       end
       
-      # TODO - Check ammo
-      # TODO - Check has a weapon
-      # TODO - Check not explosive or suppressive
-      # TODO - Check enough ammo for burst
-      # TODO - Recoil and suppression modifiers
-      # TODO - Handle target removed from combat
-      # TODO - Clear action when switching weapons
+      def check_ammo
+        ammo = self.combatant.ammo
+        return nil if ammo.nil?
+        return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && ammo < 2
+        return t('fs3combat.out_of_ammo') if ammo == 0
+        return nil
+      end
       
+      def check_weapon_type
+        weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
+        return t('fs3combat.use_explode_command') if weapon_type == "Explosive"
+        return t('fs3combat.use_suppress_command') if weapon_type == "Suppressive"
+        return nil
+      end
+            
       def print_action
         msg = t('fs3combat.attack_action_msg_long', :name => self.name, :target => print_target_names)
         if (self.is_burst)
@@ -80,60 +87,28 @@ module AresMUSH
       end
       
       def resolve
-        # TODO - Hitting cover
-        # TODO - Armor
-        # TODO - Ammo - reduce, handle out of ammo situations, alert when out of ammo
         messages = []
         target = targets[0]
         
         if (self.is_burst)
           messages << t('fs3combat.fires_burst', :name => self.name)
-          messages << attack_target(target)
-          messages << attack_target(target)
-          messages << attack_target(target)
-        else
-          messages << attack_target(target)
+        end
+        
+        bullets = self.is_burst ? 3 : 1
+        if (self.combatant.ammo && bullets > self.combatant.ammo)
+          bullets = self.combatant.ammo
+        end
+        
+        bullets.times.each do |b|
+          messages << self.combatant.attack_target(target, self.called_shot, self.mod)
+        end
+
+        ammo_message = self.combatant.update_ammo(bullets)
+        if (ammo_message)
+          messages << ammo_message
         end
         
         messages
-      end
-      
-      def attack_target(target)
-        attack_roll = self.combatant.roll_attack(self.mod)
-        defense_roll = target.roll_defense(self.combatant.weapon)
-        
-        if (attack_roll <= 0)
-          message = t('fs3combat.attack_missed', :name => self.name, :target => target.name)
-
-        elsif (defense_roll > attack_roll)
-          message = t('fs3combat.attack_dodged', :name => self.name, :target => target.name)
-
-        else
-          # Margin of success for the attacker
-          margin = attack_roll - defense_roll
-          
-          # Called shot either hits the desired location, or chooses a random location
-          # at a penalty for missing.
-          if (self.called_shot)
-            if (margin > 2)
-              hitloc = self.called_shot
-            else
-              hitloc = target.determine_hitloc(margin - 2)
-            end
-          else
-            hitloc = target.determine_hitloc(margin)
-          end
-          
-          damage = target.determine_damage(hitloc, self.combatant.weapon)
-          target.do_damage(damage, self.combatant.weapon, hitloc)
-          
-          message = t('fs3combat.attack_hits', 
-            :name => self.name, 
-            :target => target.name,
-            :hitloc => hitloc,
-            :damage => FS3Combat.display_severity(damage)) 
-        end
-        message
       end
     end
   end

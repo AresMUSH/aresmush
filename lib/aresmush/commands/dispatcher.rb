@@ -3,22 +3,37 @@ module AresMUSH
 
     # Places a new command in the queue to be processed.
     def queue_command(client, cmd)
-      EventMachine.next_tick { on_command(client, cmd) } 
+      EventMachine.next_tick do
+        AresMUSH.with_error_handling(client, "Queue command.") do
+          on_command(client, cmd)
+        end
+      end
     end
     
     # Place a new event in the queue to be processed.
     def queue_event(event)
-      EventMachine.next_tick { on_event(event) } 
+      EventMachine.next_tick do
+        AresMUSH.with_error_handling(nil, "Queue event.") do
+          on_event(event)
+        end
+      end
     end
     
     # Place an action in the queue to be run after APPROXIMATELY the specified number of seconds.
     # The dispatcher is not a precise timer.
-    def queue_timer(seconds, description, &block)
+    def queue_timer(seconds, description, client, &block)
       EventMachine.add_timer(seconds) do 
-        begin
+        AresMUSH.with_error_handling(client, description) do   
           yield block
-        rescue Exception => e
-          Global.logger.error("Error with timer '#{description}': error=#{e} backtrace=#{e.backtrace[0,10]}")
+        end
+      end
+    end
+    
+    # Places a new action in the queue to be processed.
+    def queue_action(client, &block)
+      EventMachine.next_tick do
+        AresMUSH.with_error_handling(client, "Queue action.") do
+          yield block
         end
       end
     end
