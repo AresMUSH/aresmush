@@ -1,3 +1,0 @@
-Admins can adjust skill levels:
-
-    %xcability <name>=<ability>/<number>%xn

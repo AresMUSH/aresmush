@@ -7,12 +7,16 @@ module AresMUSH
       end
       output << "%r" if leading_newline
       output << text
+<<<<<<< HEAD
+      output << "%r%l4"
+=======
       
       if (!footer.nil?)
         output << "%r#{footer}"
       end
       
       output << "%r%l1"
+>>>>>>> upstream/master
       return output
     end
   
@@ -50,7 +54,11 @@ module AresMUSH
         return BorderedDisplay.text error_text
       else
         page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
+<<<<<<< HEAD
+        page_marker = "%xc#{page_marker.center(78, '-')}%xn"
+=======
         page_marker = "%xh#{page_marker.center(78, '-')}%xn"
+>>>>>>> upstream/master
         footer = footer.nil? ? page_marker : "#{page_marker}%r#{footer}"
         return BorderedDisplay.list(pagination.page_items, title, footer)
       end

@@ -1,0 +1,17 @@
+<%= line %>
+%xh<%= t('who.who_header') %> %xn
+<% chars_by_handle.each do |c| -%> 
+<%= char_status(c) -%>
+ <%= char_name(c) -%> 
+ <%= char_handle(c) -%> 
+ <%= char_faction(c) -%> 
+ <%= char_connected(c) -%>
+ <%= char_idle(c) %>
+<% end %>
+<%= line 2 %>
+<% one_line do %>
+%xr<%= online_total %>%xn 
+%xg<%= ic_total %>%xn 
+%xb<%= online_record %>%xn
+<% end %>
+<%= line 4 %>

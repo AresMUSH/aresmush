@@ -1,0 +1,16 @@
+<%= line %>
+%xh<%= t('who.where_header') %> %xn
+<% chars_by_room.each do |c| -%> 
+<%= char_status(c) -%>
+ <%= char_name(c) -%> 
+ <%= char_room(c) -%> 
+ <%= char_connected(c) -%>
+ <%= char_idle(c) %>
+<% end %>
+<%= line 2 %>
+<% one_line do %>
+%xr<%= online_total %>%xn 
+%xg<%= ic_total %>%xn 
+%xb<%= online_record %>%xn
+<% end %>
+<%= line 4 %>

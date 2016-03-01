@@ -51,13 +51,22 @@ chargen:
         info:
             help: 'info'
         demographics:
+            tutorial: 'demographics.txt'
             help: demographics
+        abilities:
+            help: abilities
+<<<<<<< HEAD
+        final touches:
+            tutorial: 'final touches.txt'
         groups:
             help: groups
         background:
             help: bg
-        abilities:
-            help: abilities
+        review:
+            tutorial: 'review.txt'
+        whatsnext:
+            tutorial: "what's next.txt"
+=======
         relatedapt:
             help: relatedapt
         goals:
@@ -71,3 +80,4 @@ chargen:
             tutorial: 'wiki.txt'
         review:
             help: apps
+>>>>>>> upstream/master

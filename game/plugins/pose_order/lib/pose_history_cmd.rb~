@@ -1,0 +1,20 @@
+module AresMUSH
+  module Pose_History
+    class PoseHistoryCmd
+      include Plugin
+      include PluginRequiresLogin
+      
+      def want_command?(client, cmd)
+        cmd.root_is?("history")
+      end
+      
+      def handle
+         list = Pose_History.pose_history[client.room.id].map { |k,v| v[:pose] }.join("%R%R")
+
+         client.emit BorderedDisplay.list list 
+          
+      end
+    end
+  end
+end
+

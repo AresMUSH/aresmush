@@ -1,0 +1,21 @@
+/home/users/avyboy/.rvm/rubies/ruby-2.0.0-p598/bin/ruby -r ./siteconf20150310-8402-jecnze.rb extconf.rb 
+checking for asprintf()... yes
+checking for ruby/st.h... yes
+checking for ruby/regex.h... yes
+checking for ruby/encoding.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling cbson.c
+cbson.c: In function ‘objectid_generate’:
+cbson.c:1023: warning: implicit declaration of function ‘htonl’
+cbson.c:1031: warning: implicit declaration of function ‘htons’
+compiling bson_buffer.c
+compiling encoding_helpers.c
+linking shared-object bson_ext/cbson.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cbson.so ./.gem.20150310-8402-eyex4y/bson_ext
+installing default cbson libraries

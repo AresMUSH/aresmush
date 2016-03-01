@@ -1,0 +1,14 @@
+help:
+    categories:
+        main:
+            topics:
+                posing:
+                    toc_topic: 'History'
+                    dir: 'game/plugins/pose_history/help/'
+                    file: 'history.txt'
+                    summary: 'History of most recent poses.'
+                ooc: 
+                    toc_topic: 'Order'
+                    dir: 'game/plugins/pose_history/help/'
+                    file: 'order.txt'
+                    summary: 'Pose order.'

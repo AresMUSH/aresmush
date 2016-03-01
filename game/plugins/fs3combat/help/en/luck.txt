@@ -1,4 +1,0 @@
-This is a quick reference for luck-related combat commands.  For more details on FS3, see the game wiki or %xhhelp combat%xn.
-
-    %xccombat/hero%xn - Spends a luck point to un-KO yourself.
-    %xccombat/luck <attack, defense or initiative>%xn - Spend a luck point this turn. 

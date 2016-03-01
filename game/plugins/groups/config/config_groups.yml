@@ -11,53 +11,65 @@ groups:
         # on the screen.
         Faction:
             # A description for the group.
-            desc: "Foo"
+            desc: "Your Faction determines if you are a member of the Citizenry or not."
             # Optionally you may list valid values, each with their own description.
             # When setting this group, characters will be limited to only the values listed.
             # To leave a description blank, use empty quotes, like --   Navy: ""
             # For a free-form field (such as a free-form position), simply comment out
             # the values field.
             values:
-                Navy: "Join the fleet, see the worlds."
-                Marines: "Semper fi."
-        Department:
-            desc: "The ship is divided into several departments.  See the wiki for details."
+                Freeholder: "Freeholders are the rank and file of Aleran civilization. They are the farmers, the crafters (not in the furycrafting sense), and general workers and laborers of the land. Most have limited ability in Furycraft, but some Freeholders are strong crafters who simply don't want citizenship."
+                Citizen: "Citizens are the elite of Aleran society. They are the rich and the powerful. Citizens have a variety of ranks including: Steadholder (only considered citizens on their land), Count/Countess (presides over a small portion of land, usually comprised of many steadholts), Lord/Lady (presides over larger sections of land, oversees several Counts), High Lord/Lady (ruler over their High City and all land in their borders), First Lord (Leader of Alera)."           
+        Nationality:
+            desc: "Your character's city state of residence."
             values:
-                Air Wing: "Viper and Raptor crews keeping the skies clear. (Officers only)"
-                Medical: "Patching up the holes. (Officers and Enlisted)"
-                Marines: "Boots on the ground. (Enlisted only)"
-                Other: "Engineering or operations departments. (Officers and Enlisted)"
-        Colony:
-            desc: "Your character's home world."
-            values:
-                Aerilon: "Bread basket of the colonies."
-                Aquaria: "Cold, harsh world popular with tourists."
-                Canceron: "Crowded and hot, a developing nation."
-                Caprica: "Rich center of colonial culture and industry."
-                Gemenon: "Fundamentalist religion and isolationist people."
-                Leonis: "Old imperialist empire in decline, still known for culture and fashion."
-                Libran: "Neutral colony renowned for fostering inter-colonial cooperation."
-                Picon: "Water world famous for its beaches and strong navy."
-                Sagittaron: "Poor colony, oft-exploited, now carved into several protectorates."
-                Scorpia: "Lush jungles and bitter clan warfare. Home to shipyards constructing the Battlestars."
-                Tauron: "An up-and-coming socialist republic with a strong agricultural base and developing industries."
-                Virgon: "A monarchy in decline, clinging to old traditions."
+                Alera Imperia: "Alera Imperia is the center of the Realm geographically, economically, culturally, academically, and politically. Sitting along the River Gaul and just south of the Redhill Heights, Alera Imperia herself is laid out in concentric rings, with the First Lord's citadel at the very center. The city is home to both the primary political body, the Senate, and the academic center of the Realm, the Academy. Its colours are Scarlet and Azure, the colours of the House of Gaius and the First Lord. "
+                Antillus: "The city is located in the extreme north-west of Alera, bordered by the sea on the west and the Shieldwall on the North. Along with Phrygia on the far east, the Legions and Citizenry of Antillus maintain and man the Shieldwall, the massive bastion between the Aleran people and the Icemen Tribes of the North. Its colours are Sky-Blue on Deep Blue."
+                Aquitaine: "The city is located in the Eastern coast of Alera, south of Riva and east of Alera Imperia. The infamous Feverthorn jungle, once home to the Children of the Sun, separates its from its neighbour and often competitor Rhodes, to the south. The furylamps of the city are such that they make the city seem to be one large flame. Its colours are Scarlet and Sable."
+                Attica: "The city is located just to the South West of Alera Imperia and is geographically the closest High City to the capital. The river Gaul runs through Attica on its way to Alera Imperia."
+                Ceres: "The city is located in the Amaranth Vale, in western portion of the realm. Despite being almost equidistant from the northern and southern borders of the realm, its proximity to its southern neighbours and location in the Vale mark it as a'Southern City' in political parliance. The city is notable for a group of abolitionists who hang slavers, causing tension with the slaver city of Kalare to the immediate south west."
+                Forcia: "The city is located on the South Western Coast of Alera, and lies to the South of Kalare and to the West of Parcia. The infamous Leviathan's Run lies just off its coast further West and the cut is surrounded by forests to the north, and east."
+                Kalare: "The city is located on the volcanic mountain of Kalus, in the western coast of Alera, west of Alera Imperia and south-west of its nearest neighbour, Ceres. The city is infamous for its slave trade, and is hinted at being the source of the discipline collars almost ubiquitous around the neck of slaves in Alera. The citizenry of Kalare are seen to live at the expense of its freemen, living in luxury while the rest of the population lives in squalor. Its colours are grey and green, the colours of High Lord Kalare."
+                Parcia: "The city is located on the Southern-most tip of Alera, and is also directly South of the Floodplains and Attica. The river Gaul stems up from the 'Mare Nostrum' through Parcia and up to Attica and Alera Imperia. It is a coastal and naval city primarily. To the west lie Whiteharrow, Blackhills and Forcia. To the west lies the High City of Rhodes."
+                Placida: "The city is located on the border of the Amaranth Vale, in the north-west quadrant of Alera. The city lies directly between its nearest neighbour, Antillus to the north-west, and the Alera Imperia, to the south-east, such that the causeway to Antillus merges with that from the capital.The city's sigil is the Twin Bulls of Placida and its colours are green on green."
+                Phyrigia: "The city is located in the extreme North-East of Alera, bordered by the Sea of Ice on the East and the Shieldwall on the North. Along with Antillus on the far west, the Legions and Citizenry of Phrygia maintain and man the Shieldwall, the massive bastion between the Aleran people and the Icemen Tribes of the North. The colours of Phyrigia are Glacial Green and White."
+                Rhodes: "The city is located in the south-east of Alera, bordered by the sea. The infamous Feverthorn jungle, once home to the Children of the Sun, separates its from its neighbour and often competitor Aquitaine, to the North. The city's inhabitants are known for their reddish-brown skin tone and its colours are black and gold."
+                Riva: "The city is located to the North East of Alera Imperia and lies just South of Phrygia and to the North of Aquitaine. It is West of the Calderon Valley and Garrison, and just North of Marsford. It is the first High City between Alera and the Barbarian lands of Maratea. It's colors are Scarlet and Gold."
         Position:
-            desc: "Job."
+            desc: "This is your job in Aleran socieity. Whether citizen or not, your position will tell other players much about what you do. This is not to be confused with rank, which is set separately."
             values:
-                Viper Pilot: "Navy Viper pilot."
-                Raptor Pilot: "Navy Raptor pilot."
-                Raptor ECO: "Navy Raptor Electronic Countermeasures Officer"
-                Rifleman: "Marine rifleman."
-                Gunner: "Marine support/heavy weapons specialist."
-                Combat Engineer: "Marine demolitions, construction, maintenance."
-                Recon: "Marine scout."
-                Combat Medic: "Marine medic."
+                Senator: "Navy Viper pilot."
+                Legionare: "Navy Raptor pilot."
+                Mercenary: "Navy Raptor Electronic Countermeasures Officer"
+                Scout: "Marine rifleman."
+                Crafter: "Marine support/heavy weapons specialist."
+                Noble: "Marine demolitions, construction, maintenance."
+                Legat: "Marine scout."
+                Scribe: "Marine medic."
                 Doctor: "Navy doc."
                 Nurse: "Navy nurse."
                 Corpsman: "Navy medic."
                 Medical Support: "Other medical personnel."
                 Deckhand: "Deck crew."
                 Other: "Any other position."
+        Rank:
+            desc: "This is your rank in Aleran society or in the Legions. Only select a rank if your character has one. If you are non military and aren't a Count or higher ranking member of the Nobility, leave this blank."
+            values:
+                Count: "Navy Raptor Electronic Countermeasures Officer"
+                Countess: "Marine rifleman."
+                Lord: "Marine support/heavy weapons specialist."
+                Lady: "Marine demolitions, construction, maintenance."
+                High Lord: "Marine scout."
+                High Lady: "Marine medic."
+                First Lord: "Navy doc."
+                First Lady: "Navy nurse."
+                Legionare: "A rank and file member of a Legion. Legionares only outrank each other basedon years of experience."
+                Centurion: "A non-commissioned soldier in command of a century of legionares."
+                Knight: "Atalented crafter used as an elite troop and assigned to a unit based on their specific crafting ability. There are Knights Ignus, Terra, Ferrous, Flora and Aeris. Knights are also considered Citizens."
+                First Spear: "The most senior Centurion, and leader of the first spear of Legionares."
+                Subtribune: "A junior officers rank and assistant to the Tribune. If there is more than one subtribune, then your title may actually be: First Subtribune or Second Subtribune, etc."
+                Tribune: ""
+                Captain: ""
+
             
             

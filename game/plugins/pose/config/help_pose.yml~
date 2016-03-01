@@ -1,0 +1,16 @@
+help:
+    categories:
+        main:
+            topics:
+                posing: 
+                    toc_topic: 'Communicating'
+                    dir: 'game/plugins/pose/help/'
+                    file: 'posing.txt'
+                    summary: 'Talking to the people around you.'
+                    aliases: [ 'pose', 'say', 'emit', 'nospoof', 'pemit' ]
+                ooc: 
+                    toc_topic: 'Communicating'
+                    dir: 'game/plugins/pose/help/'
+                    file: 'ooc.txt'
+                    summary: 'OOC Asides.'
+                    aliases: [ 'sooc' ]

@@ -7,5 +7,5 @@ en:
         online_record: "%{count} Record"
         players_ic: "%{count} IC"
         players_online: "%{count} Online"
-        where_header: "Status Name                   Location                            Conn   Idle"
-        who_header:   "Status Name                   Handle              Faction         Conn   Idle"
+        where_header: "%xh%xcSTA    Name                   Location                            Conn   Idle%xn"
+        who_header:   "%xh%xcSTA    Name                   Handle              Faction         Conn   Idle%xn"

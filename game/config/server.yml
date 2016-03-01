@@ -1,9 +1,31 @@
 server:
     # The host name for your game.
-    hostname: localhost
+    hostname: scrozzle.noderunner.net
 
+<<<<<<< HEAD
+    # The port number your game will listen on
+<<<<<<< HEAD
+    port: 4001
+    
+    # Name of your game.
+    name: Furystorm
+
+    # Please select the appropriate category to describe your game:
+    # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
+    category: Fantasy
+    
+    # Describe your game.  You may use ansi and other MUSH formatting codes (%r, etc.).
+    description: A game based on Jim Butcher's Codex Alera series.
+    
+    # Your game's website
+    website: furystorm.wikidot.com
+=======
+    port: 4201
+>>>>>>> upstream/master
+=======
     # The port number your game will listen on for general connections
     port: 4201
     
     # The port number your game uses for web connections. This must be different than the regular one.
     websocket_port: 4202
+>>>>>>> refs/remotes/lynnfaraday/master
