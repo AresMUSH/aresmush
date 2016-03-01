@@ -1,0 +1,559 @@
+﻿Merge remote-tracking branch 'refs/remotes/lynnfaraday/master'
+
+# Conflicts:
+#	game/config/server.yml
+#	game/plugins/fs3combat/config/config_fs3combat_armor.yml
+#	game/plugins/fs3combat/config/config_fs3combat_hitloc.yml
+#	game/plugins/fs3combat/config/config_fs3combat_vehicles.yml
+#	game/plugins/fs3combat/config/config_fs3combat_weapons.yml
+#	game/plugins/fs3combat/config/help_fs3combat.yml
+#	game/plugins/fs3combat/help/en/actions.txt
+#	game/plugins/fs3combat/help/en/combat.txt
+#	game/plugins/fs3combat/help/en/org.txt
+#	game/plugins/fs3combat/interfaces/model/damage.rb
+#	game/plugins/fs3combat/lib/combat_events.rb
+#	game/plugins/fs3combat/lib/damage/damage_cmd.rb
+#	game/plugins/fs3combat/lib/damage/inflict_damage_cmd.rb
+#	game/plugins/fs3combat/lib/damage/treat_skill_cmd.rb
+#	game/plugins/fs3combat/lib/gear/armor_detail_cmd.rb
+#	game/plugins/fs3combat/lib/gear/armor_list_cmd.rb
+#	game/plugins/fs3combat/lib/gear/combat_armor_cmd.rb
+#	game/plugins/fs3combat/lib/gear/combat_hitlocs_cmd.rb
+#	game/plugins/fs3combat/lib/gear/combat_weapon_cmd.rb
+#	game/plugins/fs3combat/lib/gear/vehicle_detail_cmd.rb
+#	game/plugins/fs3combat/lib/gear/vehicles_list_cmd.rb
+#	game/plugins/fs3combat/lib/general/combat_leave_cmd.rb
+#	game/plugins/fs3combat/lib/general/combat_list_cmd.rb
+#	game/plugins/fs3combat/lib/general/combat_start_cmd.rb
+#	game/plugins/fs3combat/lib/general/combat_stop_cmd.rb
+#	game/plugins/fs3combat/lib/general/combat_types_cmd.rb
+#	game/plugins/fs3combat/specs/attack_action_specs.rb
+#	game/plugins/fs3combat/specs/combat_instance_specs.rb
+#	game/plugins/fs3luck/help/en/admin_luck.txt
+#	game/plugins/fs3luck/help/en/luck.txt
+#	game/plugins/fs3luck/lib/luck_award_cmd.rb
+#	game/plugins/fs3luck/lib/luck_spend_cmd.rb
+#	game/plugins/fs3skills/lib/roll_cmd.rb
+#	game/plugins/fs3skills/lib/roll_opposed_cmd.rb
+#	game/plugins/fs3skills/specs/roll_opposed_specs.rb
+#	game/plugins/fs3xp/lib/xp_award_cmd.rb
+#	game/plugins/profile/help/en/wiki.txt
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   Gemfile
+#	modified:   Gemfile.lock
+#	modified:   bin/startares
+#	modified:   game/config/connect.yml
+#	deleted:    game/config/database.yml
+#	modified:   game/config/game.yml
+#	modified:   game/config/names.yml
+#	modified:   game/config/server.yml
+#	modified:   game/locales/en.yml
+#	modified:   game/plugins/actors/lib/actors_cmd.rb
+#	modified:   game/plugins/actors/lib/actors_model.rb
+#	modified:   game/plugins/actors/lib/delete_actor_cmd.rb
+#	modified:   game/plugins/actors/lib/search_actors_cmd.rb
+#	modified:   game/plugins/actors/lib/set_actor_cmd.rb
+#	modified:   game/plugins/api/help/en/games.txt
+#	modified:   game/plugins/api/lib/api_command_router.rb
+#	modified:   game/plugins/api/lib/api_model.rb
+#	modified:   game/plugins/api/lib/api_response_router.rb
+#	modified:   game/plugins/api/lib/command_handlers/register_cmd_handler.rb
+#	modified:   game/plugins/api/lib/command_handlers/register_update_cmd_handler.rb
+#	modified:   game/plugins/api/lib/event_handlers.rb
+#	modified:   game/plugins/api/lib/game_cmd.rb
+#	modified:   game/plugins/api/lib/games_cmd.rb
+#	modified:   game/plugins/api/specs/handlers/register_cmd_specs.rb
+#	modified:   game/plugins/api/specs/handlers/register_update_cmd_specs.rb
+#	modified:   game/plugins/api/templates/games_list_template.rb
+#	modified:   game/plugins/bbs/interfaces/bbs_interface.rb
+#	modified:   game/plugins/bbs/lib/bbs_archive.rb
+#	modified:   game/plugins/bbs/lib/bbs_board_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_catchup.rb
+#	modified:   game/plugins/bbs/lib/bbs_delete_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_edit_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_list_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_model.rb
+#	modified:   game/plugins/bbs/lib/bbs_move_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_new_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_post_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_read_cmd.rb
+#	modified:   game/plugins/bbs/lib/bbs_reply_cmd.rb
+#	modified:   game/plugins/bbs/lib/management/bbs_attribute_cmd.rb
+#	modified:   game/plugins/bbs/lib/management/bbs_create_board_cmd.rb
+#	modified:   game/plugins/bbs/lib/management/bbs_delete_board_cmd.rb
+#	modified:   game/plugins/bbs/lib/management/bbs_delete_confirm_cmd.rb
+#	modified:   game/plugins/bbs/lib/shared.rb
+#	modified:   game/plugins/bbs/locales/locale_en.yml
+#	modified:   game/plugins/bbs/specs/bbs_board_cmd_specs.rb
+#	modified:   game/plugins/bbs/specs/bbs_post_cmd_specs.rb
+#	modified:   game/plugins/bbs/specs/bbs_reply_cmd_specs.rb
+#	modified:   game/plugins/bbs/templates/board_list_template.rb
+#	modified:   game/plugins/bbs/templates/post_template.rb
+#	modified:   game/plugins/channels/lib/channel_alias_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_gag_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_join_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_leave_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_list_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_talk_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_title_cmd.rb
+#	modified:   game/plugins/channels/lib/channel_who_cmd.rb
+#	modified:   game/plugins/channels/lib/event_handling.rb
+#	modified:   game/plugins/channels/lib/management/channel_attribute_cmd.rb
+#	modified:   game/plugins/channels/lib/management/channel_create_cmd.rb
+#	modified:   game/plugins/channels/lib/management/channel_delete_cmd.rb
+#	modified:   game/plugins/channels/locales/locale_en.yml
+#	modified:   game/plugins/channels/specs/channel_join_cmd_specs.rb
+#	modified:   game/plugins/channels/specs/channel_talk_specs.rb
+#	modified:   game/plugins/chargen/lib/app_approve_cmd.rb
+#	modified:   game/plugins/chargen/lib/app_cmd.rb
+#	modified:   game/plugins/chargen/lib/app_reject_cmd.rb
+#	modified:   game/plugins/chargen/lib/app_submit_cmd.rb
+#	modified:   game/plugins/chargen/lib/app_unapprove_cmd.rb
+#	modified:   game/plugins/chargen/lib/app_unsubmit_cmd.rb
+#	modified:   game/plugins/chargen/lib/bg_edit_cmd.rb
+#	modified:   game/plugins/chargen/lib/bg_set_cmd.rb
+#	modified:   game/plugins/chargen/lib/bg_view_cmd.rb
+#	modified:   game/plugins/chargen/lib/chargen_next_prev_cmd.rb
+#	modified:   game/plugins/chargen/lib/chargen_start_cmd.rb
+#	modified:   game/plugins/cookies/lib/cookie_cmd.rb
+#	modified:   game/plugins/cookies/lib/cookie_cron_handler.rb
+#	modified:   game/plugins/cookies/lib/cookie_here_cmd.rb
+#	modified:   game/plugins/cookies/lib/cookies_cmd.rb
+#	modified:   game/plugins/demographics/lib/age_cmd.rb
+#	modified:   game/plugins/demographics/lib/basic_demographic_cmd.rb
+#	modified:   game/plugins/demographics/lib/birthday_cmd.rb
+#	modified:   game/plugins/describe/lib/desc_edit_cmd.rb
+#	modified:   game/plugins/describe/lib/describe_cmd.rb
+#	modified:   game/plugins/describe/lib/details/detail_delete_cmd.rb
+#	modified:   game/plugins/describe/lib/details/detail_edit_cmd.rb
+#	modified:   game/plugins/describe/lib/details/detail_set_cmd.rb
+#	modified:   game/plugins/describe/lib/look_cmd.rb
+#	modified:   game/plugins/describe/lib/look_detail_cmd.rb
+#	modified:   game/plugins/describe/lib/outfits/outfit_delete_cmd.rb
+#	modified:   game/plugins/describe/lib/outfits/outfit_edit_cmd.rb
+#	modified:   game/plugins/describe/lib/outfits/outfit_list_cmd.rb
+#	modified:   game/plugins/describe/lib/outfits/outfit_set_cmd.rb
+#	modified:   game/plugins/describe/lib/outfits/outfit_view_cmd.rb
+#	modified:   game/plugins/describe/lib/wear_cmd.rb
+#	modified:   game/plugins/describe/specs/describe_specs.rb
+#	modified:   game/plugins/describe/specs/look_specs.rb
+#	modified:   game/plugins/describe/specs/outfit_delete_specs.rb
+#	modified:   game/plugins/describe/specs/outfit_list_specs.rb
+#	modified:   game/plugins/describe/specs/outfit_set_specs.rb
+#	modified:   game/plugins/describe/specs/outfit_view_specs.rb
+#	modified:   game/plugins/describe/specs/wear_specs.rb
+#	modified:   game/plugins/describe/templates/room_template.rb
+#	modified:   game/plugins/friends/lib/friend_add_cmd.rb
+#	modified:   game/plugins/friends/lib/friend_note_cmd.rb
+#	modified:   game/plugins/friends/lib/friend_remove_cmd.rb
+#	modified:   game/plugins/friends/lib/friends_cmd.rb
+#	deleted:    game/plugins/fs3combat/config/config_combat.yml
+#	deleted:    game/plugins/fs3combat/config/config_damage.yml
+#	deleted:    game/plugins/fs3combat/config/shortcuts_combat.yml
+#	new file:   game/plugins/fs3combat/help/en/actions.txt
+#	new file:   game/plugins/fs3combat/help/en/combat.txt
+#	new file:   game/plugins/fs3combat/help/en/org.txt
+#	new file:   game/plugins/fs3combat/interfaces/combat_interface.rb
+#	modified:   game/plugins/fs3combat/interfaces/model/combat_instance.rb
+#	modified:   game/plugins/fs3combat/interfaces/model/combatant.rb
+#	new file:   game/plugins/fs3combat/interfaces/model/damage.rb
+#	new file:   game/plugins/fs3combat/interfaces/model/vehicle.rb
+#	modified:   game/plugins/fs3combat/lib/actions/aim_action.rb
+#	modified:   game/plugins/fs3combat/lib/actions/attack_action.rb
+#	new file:   game/plugins/fs3combat/lib/actions/fullauto_action.rb
+#	new file:   game/plugins/fs3combat/lib/actions/reload_action.rb
+#	new file:   game/plugins/fs3combat/lib/actions/treat_action.rb
+#	new file:   game/plugins/fs3combat/lib/combat_events.rb
+#	new file:   game/plugins/fs3combat/lib/common_checks.rb
+#	new file:   game/plugins/fs3combat/lib/damage/damage_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/damage/damage_cron_handler.rb
+#	new file:   game/plugins/fs3combat/lib/damage/inflict_damage_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/damage/treat_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/damage/treat_skill_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/armor_detail_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/armor_list_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/combat_armor_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/combat_hitlocs_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/combat_weapon_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/vehicle_detail_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/gear/vehicles_list_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/gear/weapon_detail_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/gear/weapons_list_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/general/combat_action_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_ai_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_disembark_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/general/combat_join_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_leave_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_list_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_luck_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/general/combat_newturn_cmd.rb
+#	modified:   game/plugins/fs3combat/lib/general/combat_stance_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_start_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_stop_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_team_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_types_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/general/combat_vehicle_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/shared/actions_shared.rb
+#	modified:   game/plugins/fs3combat/lib/shared/damage_shared.rb
+#	modified:   game/plugins/fs3combat/lib/shared/gear_shared.rb
+#	modified:   game/plugins/fs3combat/lib/shared/general_shared.rb
+#	modified:   game/plugins/fs3combat/lib/status/combat_hud_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/status/combat_npcskill_cmd.rb
+#	new file:   game/plugins/fs3combat/lib/status/combat_summary_cmd.rb
+#	modified:   game/plugins/fs3combat/locales/locale_en.yml
+#	new file:   game/plugins/fs3combat/specs/attack_action_specs.rb
+#	new file:   game/plugins/fs3combat/specs/combat_instance_specs.rb
+#	modified:   game/plugins/fs3combat/specs/combatant_specs.rb
+#	modified:   game/plugins/fs3combat/specs/damage_shared_specs.rb
+#	modified:   game/plugins/fs3combat/specs/damage_specs.rb
+#	new file:   game/plugins/fs3combat/specs/fullauto_action_specs.rb
+#	new file:   game/plugins/fs3combat/templates/damage_template.rb
+#	copied:     game/plugins/fs3combat/lib/gear/weapons_list_cmd.rb -> game/plugins/fs3combat/templates/gear_template.rb
+#	new file:   game/plugins/fs3combat/templates/hud_template.rb
+#	new file:   game/plugins/fs3combat/templates/summary_template.rb
+#	new file:   game/plugins/fs3luck/help/en/admin_luck.txt
+#	new file:   game/plugins/fs3luck/help/en/luck.txt
+#	new file:   game/plugins/fs3luck/lib/luck_award_cmd.rb
+#	new file:   game/plugins/fs3luck/lib/luck_spend_cmd.rb
+#	modified:   game/plugins/fs3sheet/config/help_sheet.yml
+#	modified:   game/plugins/fs3sheet/lib/char_backup_command.rb
+#	modified:   game/plugins/fs3sheet/lib/sheet_cmd.rb
+#	modified:   game/plugins/fs3sheet/locales/locale_en.yml
+#	renamed:    game/plugins/fs3sheet/templates/page1_template.rb -> game/plugins/fs3sheet/templates/sheet_page1_template.rb
+#	modified:   game/plugins/fs3skills/ability_pages/ratings.txt
+#	modified:   game/plugins/fs3skills/interfaces/rating_interfaces.rb
+#	modified:   game/plugins/fs3skills/lib/abilities_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/add_hash_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/raise_ability_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/remove_hash_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/reset_cmd.rb
+#	new file:   game/plugins/fs3skills/lib/roll_cmd.rb
+#	new file:   game/plugins/fs3skills/lib/roll_opposed_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/set_ability_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/set_aptitude_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/set_goal_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/set_list_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/set_related_apt_cmd.rb
+#	modified:   game/plugins/fs3skills/lib/shared.rb
+#	modified:   game/plugins/fs3skills/locales/locale_en.yml
+#	modified:   game/plugins/fs3skills/specs/interfaces_specs.rb
+#	new file:   game/plugins/fs3skills/specs/roll_opposed_specs.rb
+#	modified:   game/plugins/fs3skills/specs/shared_specs.rb
+#	modified:   game/plugins/fs3xp/help/en/xp.txt
+#	new file:   game/plugins/fs3xp/lib/xp_award_cmd.rb
+#	modified:   game/plugins/fs3xp/lib/xp_costs_cmd.rb
+#	modified:   game/plugins/fs3xp/lib/xp_cron_handler.rb
+#	modified:   game/plugins/fs3xp/lib/xp_interest_cmd.rb
+#	modified:   game/plugins/fs3xp/lib/xp_lang_cmd.rb
+#	modified:   game/plugins/fs3xp/lib/xp_raise_cmd.rb
+#	modified:   game/plugins/groups/help/en/admin_groups.txt
+#	modified:   game/plugins/groups/help/en/groups.txt
+#	modified:   game/plugins/groups/lib/census_cmd.rb
+#	modified:   game/plugins/groups/lib/group_set_cmd.rb
+#	modified:   game/plugins/groups/lib/groups_cmd.rb
+#	modified:   game/plugins/groups/lib/groups_detail_cmd.rb
+#	modified:   game/plugins/groups/templates/complete_template.rb
+#	deleted:    game/plugins/handles/config/config_handles.yml
+#	modified:   game/plugins/handles/config/help_handles.yml
+#	deleted:    game/plugins/handles/config/shortcuts_handles.yml
+#	modified:   game/plugins/handles/interfaces/handle_interface.rb
+#	modified:   game/plugins/handles/interfaces/handles_model_public.rb
+#	modified:   game/plugins/handles/lib/alts_cmd.rb
+#	modified:   game/plugins/handles/lib/api/handles_api.rb
+#	modified:   game/plugins/handles/lib/api/profile_cmd_handler.rb
+#	modified:   game/plugins/handles/lib/handle_id_cmd.rb
+#	modified:   game/plugins/handles/lib/handle_info_cmd.rb
+#	modified:   game/plugins/handles/lib/handle_link_cmd.rb
+#	modified:   game/plugins/handles/lib/handle_linkcode_cmd.rb
+#	modified:   game/plugins/handles/lib/handle_privacy_cmd.rb
+#	modified:   game/plugins/handles/lib/handle_sync_cmd.rb
+#	modified:   game/plugins/handles/lib/handle_unlink_cmd.rb
+#	deleted:    game/plugins/handles/lib/profile_cmd.rb
+#	modified:   game/plugins/handles/lib/shared.rb
+#	modified:   game/plugins/handles/locales/locale_en.yml
+#	modified:   game/plugins/handles/specs/api_specs.rb
+#	modified:   game/plugins/handles/specs/model_specs.rb
+#	deleted:    game/plugins/handles/specs/profile_cmd_specs.rb
+#	modified:   game/plugins/help/lib/help_list_cmd.rb
+#	modified:   game/plugins/help/lib/help_view_cmd.rb
+#	modified:   game/plugins/ictime/lib/ictime_cmd.rb
+#	modified:   game/plugins/idle/config/help_idle.yml
+#	new file:   game/plugins/idle/help/en/lastwill.txt
+#	modified:   game/plugins/idle/interfaces/idle_model.rb
+#	modified:   game/plugins/idle/lib/idle_action_cmd.rb
+#	modified:   game/plugins/idle/lib/idle_execute_cmd.rb
+#	modified:   game/plugins/idle/lib/idle_queue_cmd.rb
+#	new file:   game/plugins/idle/lib/idle_remove_cmd.rb
+#	modified:   game/plugins/idle/lib/idle_start_cmd.rb
+#	new file:   game/plugins/idle/lib/lastwill_cmd.rb
+#	modified:   game/plugins/idle/lib/shared.rb
+#	modified:   game/plugins/idle/locales/locale_en.yml
+#	modified:   game/plugins/jobs/config/config_jobs.yml
+#	modified:   game/plugins/jobs/help/en/admin_jobs.txt
+#	modified:   game/plugins/jobs/lib/a_single_job_cmd.rb
+#	modified:   game/plugins/jobs/lib/create_job_cmd.rb
+#	modified:   game/plugins/jobs/lib/create_request_cmd.rb
+#	modified:   game/plugins/jobs/lib/event_handlers.rb
+#	modified:   game/plugins/jobs/lib/job_search_cmd.rb
+#	modified:   game/plugins/jobs/lib/jobs_backup_cmd.rb
+#	modified:   game/plugins/jobs/lib/jobs_catchup.rb
+#	modified:   game/plugins/jobs/lib/jobs_model.rb
+#	modified:   game/plugins/jobs/lib/jobs_new_cmd.rb
+#	modified:   game/plugins/jobs/lib/list_jobs_cmd.rb
+#	modified:   game/plugins/jobs/lib/list_requests_cmd.rb
+#	modified:   game/plugins/jobs/lib/purge_jobs_cmd.rb
+#	modified:   game/plugins/jobs/lib/request_comment_cmd.rb
+#	modified:   game/plugins/jobs/lib/view_request_cmd.rb
+#	modified:   game/plugins/login/interfaces/login_interfaces.rb
+#	modified:   game/plugins/login/lib/connect_cmd.rb
+#	modified:   game/plugins/login/lib/create_cmd.rb
+#	modified:   game/plugins/login/lib/email_set_cmd.rb
+#	modified:   game/plugins/login/lib/email_view_cmd.rb
+#	modified:   game/plugins/login/lib/login_events.rb
+#	modified:   game/plugins/login/lib/password_reset_cmd.rb
+#	modified:   game/plugins/login/lib/password_set_cmd.rb
+#	modified:   game/plugins/login/lib/quit_cmd.rb
+#	modified:   game/plugins/login/lib/tos_cmd.rb
+#	modified:   game/plugins/login/lib/tour_cmd.rb
+#	modified:   game/plugins/login/lib/watch_cmd.rb
+#	modified:   game/plugins/login/locales/locale_en.yml
+#	modified:   game/plugins/login/specs/connect_specs.rb
+#	modified:   game/plugins/login/specs/create_specs.rb
+#	modified:   game/plugins/login/specs/email_set_specs.rb
+#	modified:   game/plugins/login/specs/email_view_specs.rb
+#	modified:   game/plugins/login/specs/password_reset_specs.rb
+#	modified:   game/plugins/login/specs/password_set_specs.rb
+#	modified:   game/plugins/login/specs/quit_specs.rb
+#	modified:   game/plugins/mail/help/en/mail_review.txt
+#	modified:   game/plugins/mail/help/en/mail_sending.txt
+#	modified:   game/plugins/mail/interfaces/interfaces.rb
+#	modified:   game/plugins/mail/lib/compose/mail_append_cmd.rb
+#	modified:   game/plugins/mail/lib/compose/mail_proof_cmd.rb
+#	modified:   game/plugins/mail/lib/compose/mail_send_comp_cmd.rb
+#	modified:   game/plugins/mail/lib/compose/mail_start_cmd.rb
+#	modified:   game/plugins/mail/lib/compose/mail_toss_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_events.rb
+#	modified:   game/plugins/mail/lib/mail_fwd_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_inbox_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_model.rb
+#	modified:   game/plugins/mail/lib/mail_new_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_read_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_reply_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_review_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_send_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_sentmail_cmd.rb
+#	modified:   game/plugins/mail/lib/mail_unsend_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_archive_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_backup_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_delete_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_empty_trash_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_filter_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_tag_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_tags_cmd.rb
+#	modified:   game/plugins/mail/lib/manage/mail_undelete_cmd.rb
+#	modified:   game/plugins/mail/lib/shared.rb
+#	modified:   game/plugins/mail/locales/locale_en.yml
+#	modified:   game/plugins/mail/templates/inbox_template.rb
+#	modified:   game/plugins/mail/templates/message_template.rb
+#	modified:   game/plugins/manage/config/config_manage.yml
+#	modified:   game/plugins/manage/config/help_manage.yml
+#	new file:   game/plugins/manage/help/en/git.txt
+#	modified:   game/plugins/manage/lib/db/destroy_cmd.rb
+#	modified:   game/plugins/manage/lib/db/destroy_confirm_cmd.rb
+#	modified:   game/plugins/manage/lib/db/examine_cmd.rb
+#	modified:   game/plugins/manage/lib/db/find_cmd.rb
+#	modified:   game/plugins/manage/lib/db/rename_cmd.rb
+#	modified:   game/plugins/manage/lib/game/announce_cmd.rb
+#	modified:   game/plugins/manage/lib/game/config_list_cmd.rb
+#	modified:   game/plugins/manage/lib/game/config_view_cmd.rb
+#	new file:   game/plugins/manage/lib/game/git_cmd.rb
+#	modified:   game/plugins/manage/lib/game/load_config_cmd.rb
+#	modified:   game/plugins/manage/lib/game/load_locale_cmd.rb
+#	modified:   game/plugins/manage/lib/game/load_plugin_cmd.rb
+#	modified:   game/plugins/manage/lib/game/plugin_list_cmd.rb
+#	modified:   game/plugins/manage/lib/game/reload_cmd.rb
+#	modified:   game/plugins/manage/lib/game/shutdown_cmd.rb
+#	modified:   game/plugins/manage/lib/game/unload_plugin_cmd.rb
+#	modified:   game/plugins/manage/lib/game/version_cmd.rb
+#	modified:   game/plugins/manage/lib/login_events.rb
+#	modified:   game/plugins/manage/lib/trouble/boot_cmd.rb
+#	modified:   game/plugins/manage/lib/trouble/findsite_cmd.rb
+#	modified:   game/plugins/manage/locales/locale_en.yml
+#	modified:   game/plugins/manage/specs/destroy_cmd_specs.rb
+#	modified:   game/plugins/manage/specs/destroy_confirm_cmd_specs.rb
+#	modified:   game/plugins/manage/specs/load_config_cmd_specs.rb
+#	modified:   game/plugins/manage/specs/load_locale_cmd_specs.rb
+#	modified:   game/plugins/manage/specs/load_plugin_cmd_specs.rb
+#	modified:   game/plugins/manage/specs/unload_plugin_cmd_specs.rb
+#	deleted:    game/plugins/maps/config/config_maps.yml
+#	modified:   game/plugins/maps/lib/map_cmd.rb
+#	modified:   game/plugins/maps/lib/maps_cmd.rb
+#	modified:   game/plugins/notices/lib/login_events.rb
+#	modified:   game/plugins/ooctime/lib/login_events.rb
+#	modified:   game/plugins/ooctime/lib/time_cmd.rb
+#	modified:   game/plugins/ooctime/lib/timezone_cmd.rb
+#	modified:   game/plugins/page/lib/page_cmd.rb
+#	modified:   game/plugins/page/lib/page_dnd.rb
+#	modified:   game/plugins/page/specs/page_specs.rb
+#	modified:   game/plugins/plugin_test_loader.rb
+#	modified:   game/plugins/pose/lib/nospoof_cmd.rb
+#	modified:   game/plugins/pose/lib/pemit_cmd.rb
+#	modified:   game/plugins/pose/lib/pose_catcher_cmd.rb
+#	modified:   game/plugins/pose/lib/pose_cmd.rb
+#	modified:   game/plugins/pose/lib/shared.rb
+#	modified:   game/plugins/pose/specs/pose_catcher_specs.rb
+#	modified:   game/plugins/pose/specs/pose_cmd_specs.rb
+#	new file:   game/plugins/profile/help/en/admin_wiki.txt
+#	renamed:    game/plugins/fs3sheet/help/en/finger.txt -> game/plugins/profile/help/en/finger.txt
+#	renamed:    game/plugins/fs3sheet/help/en/info.txt -> game/plugins/profile/help/en/info.txt
+#	renamed:    game/plugins/handles/help/en/profile.txt -> game/plugins/profile/help/en/profile.txt
+#	new file:   game/plugins/profile/help/en/wiki.txt
+#	new file:   game/plugins/profile/interfaces/profile_interface.rb
+#	renamed:    game/plugins/fs3sheet/lib/info_view_cmd.rb -> game/plugins/profile/lib/info_view_cmd.rb
+#	renamed:    game/plugins/handles/lib/profile_add_cmd.rb -> game/plugins/profile/lib/profile_add_cmd.rb
+#	new file:   game/plugins/profile/lib/profile_cmd.rb
+#	renamed:    game/plugins/handles/lib/profile_delete_cmd.rb -> game/plugins/profile/lib/profile_delete_cmd.rb
+#	renamed:    game/plugins/handles/lib/profile_edit_cmd.rb -> game/plugins/profile/lib/profile_edit_cmd.rb
+#	new file:   game/plugins/profile/lib/shared.rb
+#	renamed:    game/plugins/fs3sheet/lib/wiki_cmd.rb -> game/plugins/profile/lib/wiki_cmd.rb
+#	renamed:    game/plugins/handles/templates/char_profile_template.rb -> game/plugins/profile/templates/char_profile_template.rb
+#	renamed:    game/plugins/handles/templates/handle_profile_template.rb -> game/plugins/profile/templates/handle_profile_template.rb
+#	renamed:    game/plugins/fs3sheet/templates/info_template.rb -> game/plugins/profile/templates/info_template.rb
+#	renamed:    game/plugins/fs3sheet/templates/wiki_template.rb -> game/plugins/profile/templates/wiki_template.rb
+#	modified:   game/plugins/ranks/lib/rank_set_cmd.rb
+#	modified:   game/plugins/ranks/lib/ranks_cmd.rb
+#	modified:   game/plugins/roles/config/help_roles.yml
+#	new file:   game/plugins/roles/help/en/admin_admin.txt
+#	modified:   game/plugins/roles/interfaces/roles_model_public.rb
+#	modified:   game/plugins/roles/lib/admin_list_cmd.rb
+#	new file:   game/plugins/roles/lib/admin_note_cmd.rb
+#	modified:   game/plugins/roles/lib/roles_add_cmd.rb
+#	modified:   game/plugins/roles/lib/roles_cmd.rb
+#	modified:   game/plugins/roles/lib/roles_remove_cmd.rb
+#	modified:   game/plugins/roles/locales/locale_en.yml
+#	modified:   game/plugins/roles/templates/admin_template.rb
+#	modified:   game/plugins/rooms/lib/commands/area_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/build_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/foyer_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/go_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/grid_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/home_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/home_set_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/link_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/lock_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/lock_here_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/meetme_go_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/meetme_invite_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/open_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/out_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/rooms_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/roomtype_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/teleport_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/unlink_cmd.rb
+#	modified:   game/plugins/rooms/lib/commands/unlock_here_cmd.rb
+#	modified:   game/plugins/rooms/lib/room_events.rb
+#	modified:   game/plugins/rooms/locales/locale_en.yml
+#	modified:   game/plugins/rooms/spec/build_cmd_specs.rb
+#	modified:   game/plugins/rooms/spec/go_cmd_specs.rb
+#	modified:   game/plugins/rooms/spec/open_cmd_specs.rb
+#	modified:   game/plugins/rooms/spec/teleport_cmd_specs.rb
+#	modified:   game/plugins/roster/lib/roster_add_cmd.rb
+#	modified:   game/plugins/roster/lib/roster_claim_cmd.rb
+#	modified:   game/plugins/roster/lib/roster_list_cmd.rb
+#	modified:   game/plugins/roster/lib/roster_model.rb
+#	modified:   game/plugins/roster/lib/roster_remove_cmd.rb
+#	modified:   game/plugins/roster/lib/roster_view_cmd.rb
+#	modified:   game/plugins/roster/templates/roster_template.rb
+#	modified:   game/plugins/status/config/help_status.yml
+#	new file:   game/plugins/status/help/en/playerbit.txt
+#	modified:   game/plugins/status/help/en/status.txt
+#	modified:   game/plugins/status/interfaces/status_model.rb
+#	modified:   game/plugins/status/lib/afk_cron_handler.rb
+#	modified:   game/plugins/status/lib/duty_cmd.rb
+#	modified:   game/plugins/status/lib/go_afk_cmd.rb
+#	modified:   game/plugins/status/lib/go_offstage_cmd.rb
+#	modified:   game/plugins/status/lib/go_onstage_cmd.rb
+#	modified:   game/plugins/status/lib/ooc_catcher_cmd.rb
+#	new file:   game/plugins/status/lib/playerbit_cmd.rb
+#	modified:   game/plugins/status/lib/shared.rb
+#	modified:   game/plugins/status/locales/locale_en.yml
+#	modified:   game/plugins/tinker/lib/tinker_cmd.rb
+#	modified:   game/plugins/utils/help/en/edit.txt
+#	modified:   game/plugins/utils/interfaces/utils_model.rb
+#	modified:   game/plugins/utils/lib/alias_cmd.rb
+#	modified:   game/plugins/utils/lib/autospace_cmd.rb
+#	modified:   game/plugins/utils/lib/colors_cmd.rb
+#	modified:   game/plugins/utils/lib/echo_cmd.rb
+#	modified:   game/plugins/utils/lib/edit_prefix_cmd.rb
+#	modified:   game/plugins/utils/lib/last_cmd.rb
+#	modified:   game/plugins/utils/lib/math_cmd.rb
+#	modified:   game/plugins/utils/lib/noop_cmd.rb
+#	modified:   game/plugins/utils/lib/recall_cmd.rb
+#	modified:   game/plugins/utils/lib/save_cmd.rb
+#	modified:   game/plugins/utils/lib/sweep_cmd.rb
+#	modified:   game/plugins/utils/lib/sweep_kick_cmd.rb
+#	modified:   game/plugins/utils/specs/echo_specs.rb
+#	modified:   game/plugins/weather/lib/weather_change_cmd.rb
+#	modified:   game/plugins/weather/lib/weather_cmd.rb
+#	modified:   game/plugins/weather/lib/weather_cron.rb
+#	modified:   game/plugins/who/lib/hide_cmd.rb
+#	modified:   game/plugins/who/lib/where_cmd.rb
+#	modified:   game/plugins/who/lib/who_cmd.rb
+#	modified:   game/plugins/who/lib/who_events.rb
+#	modified:   game/plugins/who/specs/hide_cmd_specs.rb
+#	modified:   game/plugins/who/templates/where_template.rb
+#	modified:   game/plugins/who/templates/who_template.rb
+#	modified:   install/init_db.rb
+#	modified:   install/templates/database.yml.erb
+#	modified:   install/templates/game.yml.erb
+#	modified:   install/upgrades/0001_add_upcase_to_server_info.rb
+#	modified:   lib/aresmush.rb
+#	modified:   lib/aresmush/api/router.rb
+#	modified:   lib/aresmush/bootstrapper.rb
+#	modified:   lib/aresmush/client/client.rb
+#	modified:   lib/aresmush/client/client_greeter.rb
+#	modified:   lib/aresmush/client/client_monitor.rb
+#	modified:   lib/aresmush/commands/dispatcher.rb
+#	modified:   lib/aresmush/connection.rb
+#	new file:   lib/aresmush/core_ext/bool_ext.rb
+#	deleted:    lib/aresmush/core_ext/module_ext.rb
+#	modified:   lib/aresmush/core_ext/string_ext.rb
+#	modified:   lib/aresmush/database.rb
+#	modified:   lib/aresmush/error_block.rb
+#	modified:   lib/aresmush/formatters/bordered_display.rb
+#	modified:   lib/aresmush/formatters/pose_formatter.rb
+#	modified:   lib/aresmush/models/character.rb
+#	modified:   lib/aresmush/models/game.rb
+#	modified:   lib/aresmush/models/server_info.rb
+#	modified:   lib/aresmush/plugin/plugin.rb
+#	modified:   lib/aresmush/plugin/plugin_factory.rb
+#	modified:   lib/aresmush/plugin/plugin_validators.rb
+#	modified:   lib/aresmush/plugin_helpers/any_target_finder.rb
+#	modified:   lib/aresmush/server.rb
+#	modified:   lib/aresmush/templates/template_renderer.rb
+#	new file:   lib/aresmush/web_connection.rb
+#	modified:   spec/client/client_greeter_specs.rb
+#	modified:   spec/client/client_specs.rb
+#	modified:   spec/formatters/pose_formatter_specs.rb
+#	modified:   spec/plugin/plugin_factory_specs.rb
+#	modified:   spec/plugin/plugin_specs.rb
+#	modified:   spec/plugin/plugin_validator_specs.rb
+#	modified:   spec/server_specs.rb
+#	modified:   spec/spec_helper.rb
+#
+
