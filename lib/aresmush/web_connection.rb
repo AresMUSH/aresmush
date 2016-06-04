@@ -33,7 +33,6 @@ module AresMUSH
     end
     
     def send_formatted(msg)
-      # TODO - Formatter
       send_data ClientFormatter.format(msg)
     end
     
@@ -49,8 +48,16 @@ module AresMUSH
     def receive_data(data)
       begin
         json_input = JSON.parse(data)
-        if (json_input["type"] == "input")
+        data_type = json_input["type"]
+        if (data_type == "input")
           @client.handle_input(json_input["message"] + "\r\n")
+        elsif (data_type == "command")
+          help_info = Global.config_reader.get_config("help")["categories"].keys
+          cmd = { "status" => "OK", "cmd" => json_input["cmd"], "data" => help_info, "error" => nil }
+          @client.emit cmd
+        elsif (data_type == "response")
+          cmd = { "status" => "OK", "cmd" => json_input["cmd"], "error" => nil }
+          @client.emit cmd
         else
           Global.logger.debug "Unexpected web input: #{data}"
         end
