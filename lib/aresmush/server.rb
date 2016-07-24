@@ -29,13 +29,22 @@ module AresMUSH
           end
         end
 
-        web_port = Global.read_config("server", "websocket_port")
-        EventMachine::WebSocket.start(:host => host, :port => web_port) do |websocket|
-          AresMUSH.with_error_handling(nil, "Web connection established") do
-            WebConnection.new(websocket) do |connection|
-              Global.client_monitor.connection_established(connection)
+        AresMUSH.with_error_handling(nil, "Web connection established") do
+          dispatch = Rack::Builder.app do
+            map '/' do
+              run WebApp.new
             end
           end
+
+          # Start the web server. Note that you are free to run other tasks
+          # within your EM instance.
+          Rack::Server.start({
+            app:    dispatch,
+            server: 'thin',
+            Host:   'localhost',
+            Port:   '9292',
+            signals: false,
+          })
         end
         
         Global.logger.info "Server started on #{host}:#{port}."

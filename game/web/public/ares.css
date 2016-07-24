@@ -1,0 +1,36 @@
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+#game-body {
+    height:300px;
+    overflow:scroll;
+    font-family:Consolas,Monaco,Lucida Console,monospace;
+}
+
+
+#chat-body {
+    height:200px;
+    overflow:scroll;
+}
+
+#chat-body ul {
+    list-style-type: none;    
+    padding: 0;
+}
+
+#chat-body ul li {
+    padding-bottom: 10px;
+}
+
+.ui-widget-header {
+    
+    border: 1px solid #337ab7;
+    background: #337ab7;
+}

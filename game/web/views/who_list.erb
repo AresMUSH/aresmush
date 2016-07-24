@@ -1,0 +1,7 @@
+<p><i>Last Updated: <%= who_data[:last_updated] %></i></p>
+                
+<ul>
+    <% who_data[:who].each do |w| %>
+    <li><%= w %></li>
+    <% end %>
+</ul>

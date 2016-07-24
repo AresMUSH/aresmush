@@ -1,0 +1,18 @@
+<div class="panel panel-primary">
+                
+    <div class="panel-body">
+                    
+        <div class="row">
+            <div class="col-md-12">
+                                  
+                <div id="who-body">  
+                
+                   <%= erb(:who_list, :layout => false, :locals => { :who_data => @who_data }) %>
+                
+                </div>
+                                  
+                <button id="who-submit" class="btn btn-success">Refresh</button>
+            </div>
+        </div>
+    </div>
+</div>

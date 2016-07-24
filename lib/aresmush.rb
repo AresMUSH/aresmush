@@ -26,8 +26,15 @@ require 'bcrypt'
 require 'rake'
 require 'rspec/core/rake_task'
 require 'pp'
-require 'json'
+
 require 'erubis'
+require 'sinatra'
+require 'json'
+require 'sinatra/base'
+require 'sinatra/cross_origin'
+require 'thin'
+require 'faye'
+
 
 require 'aresmush/api/api_command.rb'
 require 'aresmush/api/api_crypt.rb'

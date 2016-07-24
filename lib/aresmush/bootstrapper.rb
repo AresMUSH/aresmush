@@ -38,6 +38,8 @@ module AresMUSH
       locale.setup
       plugin_manager.load_all
       
+      load File.join(AresMUSH.game_path, "web", "web_server.rb")
+            
       begin
         game = Game.master
       rescue Exception => e

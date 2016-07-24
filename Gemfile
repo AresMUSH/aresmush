@@ -16,3 +16,9 @@ gem 'rake', '~> 10.4.2'
 gem 'rspec', '~> 2.14.1'
 gem 'timezone', '~> 0.3.2'
 gem 'dentaku', '~>1.1.0'
+gem 'json', '~> 1.8.3'
+
+gem 'sinatra', '~> 1.4.7'
+gem 'faye', '~> 1.2.1'
+gem 'thin', '~> 1.7.0'
+gem "sinatra-cross_origin", "~> 0.3.2"
