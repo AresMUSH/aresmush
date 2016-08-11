@@ -1,3 +1,4 @@
+*.log
 database.yml
 errors.txt
 save_pid.txt

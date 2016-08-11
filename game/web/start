@@ -1,0 +1,1 @@
+thin start -C config.yml -R config.ru

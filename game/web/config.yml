@@ -1,0 +1,19 @@
+user: lynn
+group: staff
+pid: /Users/lynn/Code/aresmush/game/web/thin.pid
+timeout: 30
+wait: 30
+port: 9292
+log: /Users/lynn/Code/aresmush/game/web/thin.log
+max_conns: 1024
+require: []
+environment: production
+max_persistent_conns: 512
+servers: 2
+onebyone: true
+threaded: true
+#no-epoll: true
+daemonize: true
+#socket: tmp/sockets/thin.sock
+chdir: /Users/lynn/Code/aresmush/game/web
+tag: example aux

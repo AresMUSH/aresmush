@@ -1,132 +1,181 @@
-# Based on example by Eric Terry - <a href="https://github.com/eterry1388/sinatra-faye-example">View on GitHub</a>
-
 module AresMUSH
+  class AresWeb < Angelo::Base
 
-  # Our simple hello-world app
-  class WebApp < Sinatra::Base
-    # threaded - False: Will take requests on the reactor thread
-    #            True:  Will queue request for background thread
-    # ...
-    register Sinatra::CrossOrigin
+    # just some constants to use in routes later...
+    #
+    TEST = {foo: "bar", baz: 123, bat: false}.to_json
+    HEART = '<3'
+    CORS = { 'Access-Control-Allow-Origin' => '*',
+               'Access-Control-Allow-Methods' => 'GET, POST',
+               'Access-Control-Allow-Headers' => 'Accept, Authorization, Content-Type, Origin' }
+
+    # a flag to know if the :heart task is running
+    #
+    @@hearting = false
+
+    # you can define instance methods, just like Sinatra!
+    #
+    def pong; 'pong'; end
+    def foo; params[:foo]; end
+
   
-    configure do
-      set :port, 9292
-      set :faye_client, Faye::Client.new( 'http://localhost:9292/faye' )
-      set :saved_data, []
-      set :game_data, []
-      set :who_data, { last_updated: "Never", who: [] }
-      set :help_data,  { topics: [], current_topic: "" }
-
-
-      set :threaded, false
-      enable :cross_origin
-
-      Faye::WebSocket.load_adapter 'thin'
-      use Faye::RackAdapter, mount: '/faye', timeout: 45, extensions: []
-    end
-
-    get '/' do
-      # This loads the saved data so if the web page is refreshed
-      # or a new client connects, the data persists.
-      @saved_data = settings.saved_data
-      @game_data = settings.game_data
-      @who_data = settings.who_data
-      @help_data = settings.help_data
-    
-      erb :index
-    end
-
-    post '/chat' do
-      channel = params['channel']
-      message = params['message']
-   
-      response = { :channel => channel, :message => message }
-      puts "Chat from #{channel}: #{message}."
-      settings.faye_client.publish( '/chat', response )
-
-      # Save data for future clients
-      settings.saved_data << response
-    end
-  
-    post '/game' do
-      message = params['message']
-      puts "Room message: #{message}."
-      settings.faye_client.publish( '/room', message )
-      settings.game_data << message
-
-      settings.faye_client.publish( '/notice', { type: "test", message: "A notice!" } )
-    end
-  
-    post '/who' do
-      EM.defer do
-      
-        who_list = Global.client_monitor.logged_in_clients.map { |c| c.name }
-        data = { last_updated: Time.now, who: who_list }
-    
-        settings.who_data = data
-        template = erb(:who_list, :layout => false, :locals => { :who_data => data })
-        settings.faye_client.publish( '/who', template )
+    before '/api/*' do
+      headers CORS
+      if request.path == "/api/tokenauth" 
+        puts "Token auth"      
+      elsif request.headers['Authorization'] == "Bearer 123"      
+        puts "Auth OK"
+      elsif request.method == "OPTIONS"
+        puts "Options OK"
+      else
+        puts "Failed authentication"
+        raise RequestError.new 'not authorized', 401
       end
     end
-    
-    post '/help' do
-      EM.defer do
-        puts "Got Help"
-        
-        help_topics = [ "A", "B", "C" ]
-        data = { topics: help_topics, current_topic: "" }
-    
-        settings.help_data = data
-        puts "Got Help #{data}"
-        
-        template = erb(:help_list, :layout => false, :locals => { :help_data => data })
-        settings.faye_client.publish( '/help', template )
+
+    options '/cors' do
+      headers CORS
+      nil
+    end
+
+    options '*' do
+      headers CORS
+      nil
+    end
+  
+    # standard HTTP GET handler
+    #
+    get '/ping' do
+      pong
+    end
+  
+    get '/api/characters' do
+      headers CORS
+      content_type :json
+      data = 
+      [
+          {
+            id: 0,
+            name: "A",
+            desc: "a desc"
+          },
+          {
+            id: 1,
+            name: "B",
+            desc: "b desc"
+          }
+        ]
+        puts "Getting #{data}"
+      data.to_json
+      
+      Character.all
+    end
+  
+
+    post '/api/tokenauth' do
+      headers CORS
+      content_type :json
+
+      data = { token: 123 }
+      puts "Getting auth token."
+      data.to_json
+    end
+  
+  
+    # standard HTTP POST handler
+    #
+    post '/foo' do
+      foo
+    end
+
+    post '/bar' do
+      params.to_json
+    end
+
+    # emit the TEST JSON value on all :emit_test websockets
+    # return the params posted as JSON
+    #
+    post '/emit' do
+      websockets[:emit_test].each {|ws| ws.write TEST}
+      params.to_json
+    end
+
+    # handle websocket requests at '/ws'
+    # stash them in the :emit_test context
+    # write 6 messages to the websocket whenever a message is received
+    #
+    websocket '/ws' do |ws|
+      websockets[:emit_test] << ws
+      ws.on_message do |msg|
+        5.times { ws.write TEST }
+        ws.write foo.to_json
       end
     end
-  
-    post '/create' do
-      EM.defer do
-        message = params['char']
-        puts "Got chargen #{message}"
-        
-        response = { status: "OK", char: "Bob" }
-        response.to_json
-     end
-     response = { status: "ERR", char: "Fred" }
-     response.to_json
+
+    # emit the TEST JSON value on all :other websockets
+    #
+    post '/other' do
+      websockets[:other].each {|ws| ws.write TEST}
+      ''
     end
-  
-    get '/test1' do
-      response = { status: "ERR", char: "Fred" }
-      response.to_json
+
+    # stash '/other/ws' connected websockets in the :other context
+    #
+    websocket '/other/ws' do |ws|
+      websockets[:other] << ws
     end
-    
-    get '/test2' do
-      sleep(10)
-      response = { status: "ERR", char: "Bob" }
-      response.to_json
+
+    websocket '/hearts' do |ws|
+
+      # this is a call to Base#async, actually calling
+      # the reactor to start the task
+      #
+      async :hearts unless @@hearting
+
+      websockets[:hearts] << ws
     end
-    
-    def connect_and_send
 
-      host = "localhost"
-      port = 4201
+    # this is a call to Base.task, defining the task
+    # to perform on the reactor
+    #
+    task :hearts do
+      @@hearting = true
+      every(10){ websockets[:hearts].each {|ws| ws.write HEART } }
+    end
 
-      puts "Sending API command to #{host} #{port}."
+    post '/in/:sec/sec/:msg' do
 
-      Timeout.timeout(15) do
-        socket = TCPSocket.new host, port      
-        sleep 10
-      
-        socket.puts "who\r\n"
+      # this is a call to Base#future, telling the reactor
+      # do this thing and we'll want the value eventually
+      #
+      f = future :in_sec, params[:sec], params[:msg]
+      f.value
+    end
 
-        line = socket.gets  
-      
-        puts "Got response #{line}"
-        line
+    # define a task on the reactor that sleeps for the given number of
+    # seconds and returns the given message
+    #
+    task :in_sec do |sec, msg|
+      sleep sec.to_i
+      msg
+    end
+
+    # return a chunked response of JSON for 5 seconds
+    #
+    get '/chunky_json' do
+      content_type :json
+
+      # this helper requires a block that takes one arg, the response
+      # proc to call with each chunk (i.e. the block that is passed to
+      # `#each`)
+      #
+      chunked_response do |response|
+        5.times do
+          response.call time: Time.now.to_i
+          sleep 1
+        end
       end
     end
-  
+
   end
-
 end

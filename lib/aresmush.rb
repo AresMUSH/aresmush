@@ -28,12 +28,9 @@ require 'rspec/core/rake_task'
 require 'pp'
 
 require 'erubis'
-require 'sinatra'
+require 'angelo'
 require 'json'
-require 'sinatra/base'
-require 'sinatra/cross_origin'
 require 'thin'
-require 'faye'
 
 
 require 'aresmush/api/api_command.rb'

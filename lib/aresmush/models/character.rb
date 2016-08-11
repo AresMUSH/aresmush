@@ -14,6 +14,7 @@ module AresMUSH
     def serializable_hash(options={})
       hash = super(options)
       hash[:room] = self.room_id
+      hash[:id] = self.id.to_s
       hash
     end 
     

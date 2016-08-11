@@ -32,7 +32,7 @@ module AresMUSH
         AresMUSH.with_error_handling(nil, "Web connection established") do
           dispatch = Rack::Builder.app do
             map '/' do
-              run WebApp.new
+              AresWeb.run!
             end
           end
 

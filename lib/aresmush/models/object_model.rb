@@ -55,7 +55,7 @@ module AresMUSH
       end
       
     end
-    
+   
     def to_json
       JSON.pretty_generate(as_json)
     end
