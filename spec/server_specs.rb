@@ -43,12 +43,6 @@ module AresMUSH
         EventMachine.should_receive(:start_server).with('host', 123, Connection)
         @server.start
       end
-
-      it "should start the web server" do
-        EventMachine::WebSocket.should_receive(:start).with({:host=>"host", :port=>234}).and_yield(double)
-        EventMachine.stub(:add_periodic_timer)
-        @server.start
-      end
       
       describe "after server started" do
         before do

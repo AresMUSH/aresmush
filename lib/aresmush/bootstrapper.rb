@@ -1,22 +1,20 @@
 module AresMUSH  
   class Bootstrapper 
-
-    attr_reader :command_line
+    
+    attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager
     
     def initialize
-      config_reader = ConfigReader.new
-      ares_logger = AresLogger.new
-      locale = Locale.new
+      @config_reader = ConfigReader.new
+      @ares_logger = AresLogger.new
+      @locale = Locale.new
       plugin_factory = PluginFactory.new
-      plugin_manager = PluginManager.new(plugin_factory)
+      @plugin_manager = PluginManager.new(plugin_factory)
       dispatcher = Dispatcher.new
       client_factory = ClientFactory.new
       client_monitor = ClientMonitor.new(client_factory)
-      server = Server.new
-      db = Database.new
+      @server = Server.new
+      @db = Database.new
       
-      
-            
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.
       Global.config_reader = config_reader
@@ -24,22 +22,23 @@ module AresMUSH
       Global.plugin_manager = plugin_manager
       Global.dispatcher = dispatcher
       Global.locale = locale
-                  
+    end
+    
+    def start
+                        
       # Configure a trap for exiting.
       at_exit do
         handle_exit($!)
       end
       
       # Order here is important!
-      config_reader.read
-      ares_logger.start
+      @config_reader.read
+      @ares_logger.start
 
-      db.load_config
-      locale.setup
-      plugin_manager.load_all
-      
-      load File.join(AresMUSH.game_path, "web", "web_server.rb")
-            
+      @db.load_config
+      @locale.setup
+      @plugin_manager.load_all
+                  
       begin
         game = Game.master
       rescue Exception => e
@@ -49,10 +48,11 @@ module AresMUSH
       api_router = ApiRouter.new(game.nil? ? false : game.api_game_id == ServerInfo.arescentral_game_id)
       Global.api_router = api_router
       api_router.find_handlers
-    
+      
       Global.logger.debug Global.config_reader.config
-
-      @command_line = AresMUSH::CommandLine.new(server)
+      
+      @server.start
+      sleep
     end
     
     def handle_exit(exception)

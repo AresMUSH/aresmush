@@ -29,24 +29,6 @@ module AresMUSH
           end
         end
 
-        AresMUSH.with_error_handling(nil, "Web connection established") do
-          dispatch = Rack::Builder.app do
-            map '/' do
-              AresWeb.run!
-            end
-          end
-
-          # Start the web server. Note that you are free to run other tasks
-          # within your EM instance.
-          Rack::Server.start({
-            app:    dispatch,
-            server: 'thin',
-            Host:   'localhost',
-            Port:   '9292',
-            signals: false,
-          })
-        end
-        
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end

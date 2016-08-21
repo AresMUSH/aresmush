@@ -11,7 +11,7 @@ require_relative 'install/configure_game.rb'
 
 task :startares do
   bootstrapper = AresMUSH::Bootstrapper.new
-  bootstrapper.command_line.start
+  bootstrapper.start
 end
   
 task :configure do
