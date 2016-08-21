@@ -28,17 +28,8 @@ require 'rspec/core/rake_task'
 require 'pp'
 
 require 'erubis'
-require 'angelo'
 require 'json'
-require 'thin'
 
-
-require 'aresmush/api/api_command.rb'
-require 'aresmush/api/api_crypt.rb'
-require 'aresmush/api/api_handlers.rb'
-require 'aresmush/api/api_response.rb'
-require 'aresmush/api/router.rb'
-require 'aresmush/api/no_op_response_handler.rb'
 require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'
 require 'aresmush/client/client.rb'

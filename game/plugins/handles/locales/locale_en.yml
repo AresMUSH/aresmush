@@ -17,11 +17,14 @@ en:
         # Info
         linked_characters: "Linked Characters"
         characters_title: "Name                      Privacy        Character ID"
+        alts_notice: "(*) Alt visibility is based on the player's privacy settings.  Do not share this info with others."
 
         handle_info_title: "Handle Information"
         handle_name: "%xhHandle Name:%xn %{name}"
         handle_privacy: "%xhHandle Privacy:%xn %{privacy}"
-
+        no_handle_set: "This character is not linked to a handle."
+        invalid_handle: "That is not a valid handle name.  Make sure it starts with '@'."
+        
         sending_profile_request: "Sending profile request to AresCentral.  One moment."
         
         # Sync
@@ -30,6 +33,7 @@ en:
         setting_preference_on_linked_char: "This character is linked to your handle, and this setting will be overwritten with your handle preferences.  You may want to set this on AresCentral, or disable syncing on this character using 'handle/sync off'."
         setting_preference_on_master: "This setting will automatically be downloaded to all your linked characters when they log in.  You can disable this on individual characters using 'handle/sync off' on the linked char."
         cant_set_sync_on_master: "You can't use this command on AresCentral.  Use it on your linked characters."
+        handle_synced: "Your character information has been synchronized with AresCentral.  Your handle friends, timezone and autospace settings have been downloaded."
 
         # Privacy
         invalid_privacy_option: "Invalid privacy option.  Try one of these: %{values}"

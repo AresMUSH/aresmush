@@ -10,21 +10,17 @@ module AresMUSH
       end
             
       def check_handle_set
-        return t('api.no_handle_set') if client.char.handle.blank?
+        return t('handles.no_handle_set') if client.char.handle.blank?
         return nil
       end
       
       def handle
-        if (Global.api_router.is_master?)
-          Handles.list_characters(client)
-        else
-          char = client.char
-          text = t('handles.handle_name', :name => char.handle)
-          text << "%R"
-          text << t('handles.handle_privacy', :privacy => char.handle_privacy)
-        
-          client.emit BorderedDisplay.text text, t('handles.handle_info_title')
-        end
+        char = client.char
+        text = t('handles.handle_name', :name => char.handle)
+        text << "%R"
+        text << t('handles.handle_privacy', :privacy => char.handle_privacy)
+      
+        client.emit BorderedDisplay.text text, t('handles.handle_info_title')
       end      
     end
   end

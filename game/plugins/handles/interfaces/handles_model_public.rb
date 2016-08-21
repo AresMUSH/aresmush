@@ -16,7 +16,7 @@ module AresMUSH
     end
     
     def ooc_name
-      if (public_handle? && !Global.api_router.is_master?)
+      if (public_handle?)
         display_name = "#{self.name} (#{self.handle})"
       else
         display_name = self.name

@@ -16,7 +16,6 @@ module AresMUSH
     describe :create_plugin_classes do
       before do
         @factory = PluginFactory.new 
-        Api.stub(:is_master?) { true }
       end
       
       it "creates instances of each plugin class" do

@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def handle
-        Handles.unlink_character(client, char_id)
+        # TODO - Implement
       end      
     end
 

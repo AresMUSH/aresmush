@@ -32,13 +32,40 @@ module AresMUSH
     end
     
     def self.warn_if_setting_linked_preference(client)
-      if (Global.api_router.is_master?)
-        client.emit_ooc t('handles.setting_preference_on_master')
-      else
-        if (client.char.handle)
-          client.emit_ooc t('handles.setting_preference_on_linked_char')
-        end
+      if (client.char.handle)
+        client.emit_ooc t('handles.setting_preference_on_linked_char')
       end
+    end
+    
+    def self.sync_char_with_master(client)
+      # TODO!!
+      return
+      char = client.char
+      return if char.handle.blank?
+      
+      args = ApiSyncCmdArgs.new(char.api_character_id, 
+        char.handle, 
+        char.name, 
+        char.handle_privacy)
+      cmd = ApiCommand.new("sync", args.to_s)
+      Global.api_router.send_command(ServerInfo.arescentral_game_id, client, cmd)
+      Global.logger.info "Login update received for #{client.name}."
+      
+      char = client.char
+      
+      if (char.handle_friends != self.args.friends.split(" ") ||
+          char.autospace != self.args.autospace ||
+          char.timezone != self.args.timezone)
+        return
+      end
+            
+      char.handle_friends = self.args.friends.split(" ")
+      if (char.handle_sync)
+        char.autospace = self.args.autospace
+        char.timezone = self.args.timezone
+        client.emit_ooc t('handles.handle_synced')
+      end
+      char.save!
     end
     
   end

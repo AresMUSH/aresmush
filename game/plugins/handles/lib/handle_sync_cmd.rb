@@ -25,11 +25,6 @@ module AresMUSH
         return self.option.validate
       end
       
-      def check_slave
-        return t('handles.cant_set_sync_on_master') if Global.api_router.is_master?
-        return nil
-      end
-      
       def handle        
         client.char.handle_sync = self.option.is_on?
         client.char.save

@@ -1,5 +1,0 @@
-One of AresMUSH's cross-game features is the game directory.  This directory lists all registered AresMUSH games, along with their last known status.
-
-    %xcgames%xn - Lists all games.
-    %xcgames/search <category>%xn - Narrows down the games list.
-    %xcgame <name>%xn - Views detailed info for a particular game.

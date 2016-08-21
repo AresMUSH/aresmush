@@ -32,7 +32,6 @@ module AresMUSH
           plugin_manager.stub(:unload_plugin)
           locale.stub(:load!)
           config_reader.stub(:read)
-          api_router.stub(:find_handlers)
           client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
         end

@@ -1,5 +1,5 @@
 module AresMUSH
-  class ApiArgs
+  class JsonArgs
     attr_accessor :values
       
     def initialize(json)
