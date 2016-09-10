@@ -60,7 +60,7 @@ module AresMUSH
       
       def check_chargen_locked
         return nil if FS3Skills.can_manage_abilities?(client.char)
-        Chargen.check_chargen_locked(client.char)
+        Chargen::Interface.check_chargen_locked(client.char)
       end
       
       def handle

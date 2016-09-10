@@ -24,14 +24,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          FS3Sheet.sheet_templates.count.times do |i|
-            template = FS3Sheet.sheet_templates[i].new(model, client)
-            client.emit template.render
-          end
-          template = InfoTemplate.new(model, client)
+          Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("info #{model.name}"))
+          
+          template = Describe.get_desc_template(model, client)
           template.render
-          Chargen.show_bg(model, client)
-          client.emit Describe.char_backup(model, client)
         end
       end
     end

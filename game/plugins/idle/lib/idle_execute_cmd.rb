@@ -49,7 +49,7 @@ module AresMUSH
         
         client.emit BorderedDisplay.list report
         
-        Bbs.system_post_to_bbs_if_configured(
+        Bbs::Interface.system_post(
           Global.read_config("idle", "idle_board"), 
           t('idle.idle_bbs_subject'), 
           t('idle.idle_bbs_body', :report => report.join("%R")))

@@ -11,7 +11,7 @@ module AresMUSH
         status = t('chargen.ok')
       end
       
-      Chargen.display_review_status(message, status)
+      Chargen::Interface.format_review_status(message, status)
     end
   end
 end

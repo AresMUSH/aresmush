@@ -21,7 +21,7 @@ module AresMUSH
         text << "|department=#{ department }%r"
         text << "|position=#{ position }%r"
         text << "|rank=#{ rank }%r"
-        text << "|callsign=[!-- Callsign --]%r"
+        text << "|callsign=#{ callsign }%r"
         text << "|height=#{ height }%r"
         text << "|physique=#{ physique }%r"
         text << "|eyes=#{ eyes }%r"
@@ -61,41 +61,47 @@ module AresMUSH
       end
       
       def fullname
-        @char.fullname
+        Demographics::Interface.fullname(@char)
       end
       
       def gender
-        @char.gender
+        Demographics::Interface.gender(@char)
       end
       
       def height
-        @char.height
+        Demographics::Interface.demographic(@char, :height)
       end
       
       def physique
-        @char.physique
+        Demographics::Interface.demographic(@char, :physique)
       end
       
       def hair
-        @char.hair
+        Demographics::Interface.demographic(@char, :hair)
       end
       
       def eyes
-        @char.eyes
+        Demographics::Interface.demographic(@char, :eyes)
       end
       
       def age
-        age = @char.age
+        age = Demographics::Interface.age(@char)
         age == 0 ? "" : age
       end
       
       def actor
-        @char.actor
+        Actors::Interface.actor(@char)
       end
       
       def birthdate
-        @char.birthdate.nil? ? "" : ICTime.ic_datestr(@char.birthdate)
+        dob = Demographics::Interface.demographic(@char, :birthdate)
+        dob.nil? ? "" : ICTime.ic_datestr(dob)
       end
+      
+      def callsign
+        Demographics::Interface.demographic(@char, :callsign)
+      end
+      
       
       def faction
         @char.groups['Faction']
@@ -118,7 +124,7 @@ module AresMUSH
       end
             
       def background
-        "+ Background%R#{ @char.background } "
+        "+ Background%R#{ Chargen::Interface.background(@char) } "
       end
 
       def hooks

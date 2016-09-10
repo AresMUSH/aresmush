@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       if (missing.count == 0)
-        Chargen.display_review_status(message, t('chargen.ok'))
+        Chargen::Interface.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%R%T#{m}" }.join
         "#{message}%r#{error}"

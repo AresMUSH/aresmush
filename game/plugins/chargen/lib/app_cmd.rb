@@ -40,7 +40,7 @@ module AresMUSH
           text << FS3Skills.app_goals_review(model)
           text << "%r%r"
           text << section_title(t('chargen.demographics_review_title'))
-          text << Demographics.app_review(model)
+          text << Demographics::Interface.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.groups_review_title'))
           text << Groups.app_review(model)
@@ -48,7 +48,7 @@ module AresMUSH
           text << section_title(t('chargen.misc_review_title'))
           text << Chargen.bg_app_review(model)
           text << "%r"
-          text << Describe.app_review(model)
+          text << Describe::Interface.app_review(model)
           text << "%r"
           text << Ranks.app_review(model)
           text << "%r%r"

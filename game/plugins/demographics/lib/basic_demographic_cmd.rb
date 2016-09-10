@@ -30,7 +30,7 @@ module AresMUSH
       include BasicDemographicCmd
       
       def check_chargen_locked
-        Chargen.check_chargen_locked(client.char)
+        Chargen::Interface.check_chargen_locked(client.char)
       end
       
       def want_command?(client, cmd)
@@ -50,7 +50,7 @@ module AresMUSH
       include BasicDemographicCmd
 
       def check_chargen_locked
-        Chargen.check_chargen_locked(client.char)
+        Chargen::Interface.check_chargen_locked(client.char)
       end
 
       def want_command?(client, cmd)
@@ -94,7 +94,7 @@ module AresMUSH
       include BasicDemographicCmd
       
       def check_chargen_locked
-        Chargen.check_chargen_locked(client.char)
+        Chargen::Interface.check_chargen_locked(client.char)
       end
       
       def crack!

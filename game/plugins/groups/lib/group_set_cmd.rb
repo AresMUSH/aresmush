@@ -39,7 +39,7 @@ module AresMUSH
       
       def check_chargen_locked
         return nil if Groups.can_set_group?(client.char)
-        Chargen.check_chargen_locked(client.char)
+        Chargen::Interface.check_chargen_locked(client.char)
       end
       
       def handle   

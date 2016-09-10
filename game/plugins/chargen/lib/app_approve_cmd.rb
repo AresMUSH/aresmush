@@ -45,7 +45,7 @@ module AresMUSH
           model.save
           client.emit_success t('chargen.app_approved', :name => model.name)
           
-          Bbs.system_post_to_bbs_if_configured(
+          Bbs::Interface.system_post(
             Global.read_config("chargen", "arrivals_board"),
             t('chargen.approval_bbs_subject'), 
             t('chargen.approval_bbs_body', :name => model.name))

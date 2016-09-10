@@ -14,20 +14,13 @@ module AresMUSH
       Demographics.calculate_age(self.birthdate)
     end
     
-    # His/Her/Their
-    def possessive_pronoun
-      t("demographics.#{self.gender.downcase}_possessive")
+    def demographic(name)
+      case name
+      when :height, :physique, :skin, :fullname, :gender, :hair, :eyes, :birthdate, :callsign
+        return self.send(name)
+      else
+        return ""
+      end
     end
-
-    # He/She/They
-    def subjective_pronoun
-      t("demographics.#{self.gender.downcase}_subjective")
-    end
-
-    # Him/Her/Them
-    def objective_pronoun
-      t("demographics.#{self.gender.downcase}_objective")
-    end
-    
   end
 end

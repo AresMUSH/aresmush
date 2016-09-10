@@ -42,7 +42,7 @@ module AresMUSH
       
       def played_by
         text = format_field_title t('profile.played_by')
-        text << @char.actor
+        text << Actors::Interface.actor(@char)
         text
       end
       

@@ -37,7 +37,7 @@ module AresMUSH
       end
       
       def actor
-        @char.actor
+        Actors::Interface.actor(@char)
       end
       
       def approval_status
@@ -126,44 +126,45 @@ module AresMUSH
       end
       
       def fullname
-        @char.fullname
+        Demographics::Interface.fullname(@char)
       end
       
       def callsign
-        format_field @char.callsign
+        format_field Demographics::Interface.demographic(@char, :callsign)
       end
       
       def gender
-        format_field @char.gender
+        format_field Demographics::Interface.gender(@char)
       end
       
       def height
-        format_field @char.height
+        format_field Demographics::Interface.demographic(@char, :height)
       end
       
       def physique
-        format_field @char.physique
+        format_field Demographics::Interface.demographic(@char, :physique)
       end
       
       def hair
-        format_field @char.hair
+        format_field Demographics::Interface.demographic(@char, :hair)
       end
       
       def eyes
-        format_field @char.eyes
+        format_field Demographics::Interface.demographic(@char, :eyes)
       end
       
       def skin
-        format_field @char.skin
+        format_field Demographics::Interface.demographic(@char, :skin)
       end
       
       def age
-        age = @char.age
+        age = Demographics::Interface.age(@char)
         format_field age == 0 ? "" : age
       end
       
       def birthdate
-        format_field @char.birthdate.nil? ? "" : ICTime.ic_datestr(@char.birthdate)
+        dob = Demographics::Interface.demographic(@char, :birthdate)
+        format_field dob.nil? ? "" : ICTime.ic_datestr(dob)
       end
       
       def faction

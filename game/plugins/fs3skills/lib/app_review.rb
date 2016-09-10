@@ -21,7 +21,7 @@ module AresMUSH
       
       error = count > max ? t('chargen.too_many') : t('chargen.ok')
       
-      Chargen.display_review_status(t('fs3skills.high_abilities', :high_rating => high_rating, :num => count, :max => max), error)
+      Chargen::Interface.format_review_status(t('fs3skills.high_abilities', :high_rating => high_rating, :num => count, :max => max), error)
     end
     
     def self.points_on_rated_abilities(char)
@@ -61,7 +61,7 @@ module AresMUSH
       
       max = Global.read_config("fs3skills", "starting_points")
       error = points > max ? t('chargen.too_many') : t('chargen.ok')
-      Chargen.display_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
+      Chargen::Interface.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end
     
     def self.aptitudes_set_review(char)
@@ -69,14 +69,14 @@ module AresMUSH
       ratings = hash.values
       ratings_set = ratings.select { |r| r > 2 }
       error = ratings_set.count > 0 ? t('chargen.ok') : t('chargen.not_set')
-      Chargen.display_review_status(t('fs3skills.aptitudes_check'), error)
+      Chargen::Interface.format_review_status(t('fs3skills.aptitudes_check'), error)
     end
       
     def self.starting_language_review(char)
       starting_languages = Global.read_config("fs3skills", "starting_languages")
       missing = starting_languages.select { |l| !char.fs3_languages.include?(l) }
       error = missing.count > 0 ? t('chargen.are_you_sure', :missing => missing.join(" ")) : t('chargen.ok')
-      Chargen.display_review_status(t('fs3skills.language_check'), error)
+      Chargen::Interface.format_review_status(t('fs3skills.language_check'), error)
     end
     
     def self.starting_skills_check(char)
@@ -90,7 +90,7 @@ module AresMUSH
       end
       
       if (missing.count == 0)
-        Chargen.display_review_status(message, t('chargen.ok'))
+        Chargen::Interface.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%T#{m}" }.join("%R")
         "#{message}%r#{error}"
@@ -117,7 +117,7 @@ module AresMUSH
       else
         error = t('chargen.ok')
       end
-      Chargen.display_review_status(t(prompt, :num => num, :min => min), error)
+      Chargen::Interface.format_review_status(t(prompt, :num => num, :min => min), error)
     end
     
   end

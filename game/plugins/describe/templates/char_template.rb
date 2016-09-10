@@ -39,25 +39,25 @@ module AresMUSH
       
       # Fullname, with rank if set (e.g. Commander William Adama)
       def fullname_and_rank
-        @char.rank.nil? ? @char.fullname : "#{@char.rank} #{@char.fullname}"
+        @char.rank.nil? ? fullname : "#{@char.rank} #{fullname}"
       end
       
       # Fullname with rank and callsign, if set.  (e.g. Commander William "Husker" Adama)
       def military_name
-        return "" if !@char.fullname
-        first_name = @char.fullname.first(" ")
-        last_name = @char.fullname.rest(" ")
+        return "" if !fullname
+        first_name = fullname.first(" ")
+        last_name = fullname.rest(" ")
         rank = @char.rank ? "#{@char.rank} " : ""
         callsign = @char.callsign ? "\"#{@char.callsign}\" " : ""
         "#{rank}#{first_name} #{callsign}#{last_name}"
       end
       
       def fullname
-        @char.fullname
+        Demographics::Interface.fullname(@char)
       end
       
       def actor
-        "%xh#{t('describe.played_by')}%xn #{@char.actor}"
+        "%xh#{t('describe.played_by')}%xn #{Actors::Interface.actor(@char)}"
       end
       
       # Available detail views.

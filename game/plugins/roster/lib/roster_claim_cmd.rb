@@ -49,7 +49,7 @@ module AresMUSH
           return if !bbs
           return if bbs.blank?
         
-          Bbs.post(bbs, 
+          Bbs::Interface.post(bbs, 
             t('roster.roster_bbs_subject'), 
             t('roster.roster_bbs_body', :name => model.name), 
             Game.master.system_character)

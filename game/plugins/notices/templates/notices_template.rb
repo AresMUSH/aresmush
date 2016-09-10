@@ -37,7 +37,7 @@ module AresMUSH
       
       
       def bbs
-        @char.has_unread_bbs? ? t('notices.unread_bbs') : t('notices.no_unread_bbs')
+        Bbs::Interface.has_unread_bbs?(@char) ? t('notices.unread_bbs') : t('notices.no_unread_bbs')
       end
       
       def jobs_or_requests

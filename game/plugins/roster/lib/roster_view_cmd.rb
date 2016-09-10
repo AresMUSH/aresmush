@@ -33,9 +33,9 @@ module AresMUSH
           
           website = Global.read_config("game", "website")
           
-          text = "%xh#{model.name}%xn (#{model.fullname})"
+          text = "%xh#{model.name}%xn (#{Demographics::Interface.fullname(model)})"
           text << "%R%R"
-          text << "%xh#{t('roster.played_by')}%xn #{model.actor}"
+          text << "%xh#{t('roster.played_by')}%xn #{Actors::Interface.actor(model)}"
           text << "%R%R"
           text << "%xh#{t('roster.wiki_page')}%xn #{website}/#{model.name}"
           

@@ -38,7 +38,7 @@ module AresMUSH
       
       
       def check_chargen_locked
-        Chargen.check_chargen_locked(client.char)
+        Chargen::Interface.check_chargen_locked(client.char)
       end
       
       def handle
