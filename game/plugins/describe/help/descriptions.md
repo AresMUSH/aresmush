@@ -1,22 +1,46 @@
+---
+topic: descriptions
+toc: Building
+summary: Descriptions.
+categories:
+- builder
+aliases:
+- desc
+- describe
+- shortdesc
+- detail
+---
+---
+topic: descriptions
+toc: Descriptions
+summary: Looking around.
+categories:
+- main
+aliases:
+- desc
+- describe
+- look
+- shortdesc
+---
 Every character, room and exit has a description that tells you what you see when you look at it.
 
-   %xcdescribe <name>=<description>%xn
-   %xcdescribe/edit <name>%xn - Grabs the existing description into your input 
-       buffer (if your client supports it.  See %xhhelp edit%xn.)
+`describe <name>=<description>`
+`describe/edit <name>` - Grabs the existing description into your input 
+       buffer (if your client supports it.  See `help edit`.)
        
 You can set a shorter description that is used whenever an at-a-glance description is needed.
 
-   %xcshortdesc <name>=<description>%xn
-   %xcshortdesc/edit <name>%xn - Grabs the existing description into your input 
-       buffer (if your client supports it.  See %xhhelp edit%xn.)
+`shortdesc <name>=<description>`
+`shortdesc/edit <name>` - Grabs the existing description into your input 
+       buffer (if your client supports it.  See `help edit`.)
 
 You can also have multiple outfits for your character, and have more detailed views that are separate from your main description.  See:
 
-    %xhhelp outfits%xn
-    %xhhelp details%xn
+    `help outfits`
+    `help details`
 
-The %xhlook%xn command is used to look around.
+The `look` command is used to look around.
 
-   %xclook <name>%xn
-   %xclook%xn  (shortcut for looking at 'here')
-   %xclook <name>/<detail>%xn - Looks at a detail on something.
+`look <name>`
+`look`  (shortcut for looking at 'here')
+`look <name>/<detail>` - Looks at a detail on something.

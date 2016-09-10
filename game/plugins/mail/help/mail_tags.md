@@ -1,4 +1,17 @@
-Instead of folders, Ares mail uses %xctags%xn, which are a sort of label used to organize your mail.  There are several special tags:  
+---
+topic: mail tags
+toc: 
+summary: 
+categories:
+- main
+aliases:
+- mail tag
+- mail sent
+- sent mail
+- tag
+- tags
+---
+Instead of folders, Ares mail uses `tags`, which are a sort of label used to organize your mail.  There are several special tags:  
 
     Inbox - Incoming mail.
     Sent - If you've enabled the sent-mail feature, saves a copy of mail you've sent.

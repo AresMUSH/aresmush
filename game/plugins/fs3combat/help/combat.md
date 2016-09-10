@@ -1,9 +1,13 @@
-The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion.  There are a wide variety of options and commands, which are described in more detail on the game wiki:
+---
+topic: combat
+toc: FS3 Combat
+summary: Combat overview.
+categories:
+- main
+---
+The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more details on FS3, see: http://aresmush.com/fs3
 
-    %xh%xrADMINS SHOULD UPDATE THIS LINK%xn
-    http://muwikitemplate.wikidot.com/fs3
-
-`combat/start%xn or %xccombat/start mock` - Starts a combat. (Organizer only)
+`combat/start` or `combat/start mock` - Starts a combat. (Organizer only)
 `combat/newturn` - Trigger a new turn. (Organizer only)
 
 `combats` - Lists combats.
@@ -14,7 +18,7 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
          
 `combat/pilot <vehicle>>` - Pilots a vehicle
 `combat/passenger <vehicle>` - Become a passenger in a vehicle.
-       Use a vehicle type from %xcvehicles%xn to create a new vehicle, or a specific vehicle name if one already exists.
+       Use a vehicle type from `vehicles` to create a new vehicle, or a specific vehicle name if one already exists.
       
 `combat/disembark` - Leaves your vehicle.
     
@@ -26,4 +30,4 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/attack <target>` - Attack someone.
 `combat/pass` - Pass this turn.
     
-%xhYou can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Skye.%xn
+**You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Skye.**

@@ -1,3 +1,14 @@
+---
+topic: getting around
+toc: Grid
+summary: Getting around the grid.
+categories:
+- admin
+- builder
+aliases:
+- teleport
+- join
+---
 Admin have some extra commands for getting around the grid without using the normal exits.
 
 `teleport <destination>` - Teleports yourself.

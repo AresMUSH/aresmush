@@ -1,3 +1,10 @@
+---
+topic: lock
+toc: Getting Around
+summary: Lock exits.
+categories:
+- main
+---
 If you're in an interior room (defined as one with an "O" out exit), you can lock and unlock the outside door (i.e. the one leading INTO the room from the outside) for privacy.
 
 `lock`

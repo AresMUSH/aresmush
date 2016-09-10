@@ -1,3 +1,13 @@
+---
+topic: ansi
+toc: Misc
+summary: Ansi colors.
+categories:
+- main
+aliases:
+- color
+- colors
+---
 You create a color in Ares using either \%x or \%c followed by the color code.  \%xn goes back to normal.
 
 For example: \%xgGreen\%xn makes %xgGreen%xn.  

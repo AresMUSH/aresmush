@@ -1,3 +1,14 @@
+---
+topic: mail sending
+toc: 
+summary: 
+categories:
+- main
+aliases:
+- reply
+- forward
+- fwd
+---
 Sending mail is easy. The "to" field can include any number of player names, separated by spaces. You can also forward a message from your inbox to someone else.
 
 `mail <to>=<subject>/<message>` - Sends a message.
@@ -15,4 +26,4 @@ When replying, you can use 'reply' or 'replyall' to reply to just the author or 
 `mail/reply <message>` - Replies to the last message you read.
 `mail/reply <#>=<message>` - Replies to a message.
 
-Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.  See %xhhelp mail composition%xn.
+Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.  See `help mail composition`.

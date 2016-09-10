@@ -1,4 +1,13 @@
-This is a quick reference for combat action commands.  For more details on FS3, see the game wiki or %xhhelp combat%xn.
+---
+topic: combat actions
+toc: FS3 Combat
+summary: Run-down of all combat actions.
+categories:
+- main
+aliases:
+- actions
+---
+This is a quick reference for combat action commands.  For more details on FS3, see the game wiki or `help combat`.
 
 `combat/attack <target>[/<specials, see below>]`
 
@@ -6,24 +15,24 @@ This is a quick reference for combat action commands.  For more details on FS3, 
     * burst - Fire a short (3-round) burst. 
     * mod:<special modifiers> - Dice to add or subtract to the roll.
     * called:<location> - Perform a called shot to a particular hit location. 
-       Use %xccombat/hitlocs <target>%xn to see a list of valid hit locations. 
+       Use `combat/hitlocs <target>` to see a list of valid hit locations. 
     
-%xccombat/aim <target>%xn - Takes careful aim.
+`combat/aim <target>` - Takes careful aim.
 
-%xccombat/reload%xn – Reloads a weapon.
+`combat/reload` – Reloads a weapon.
 
-%xccombat/treat <name>%xn - Treat an injured person.
+`combat/treat <name>` - Treat an injured person.
 
-%xccombat/pass%xn - Take no action this turn.
+`combat/pass` - Take no action this turn.
 
-%xccombat/fullauto <list of one or more targets, separated by commas>%xn - Fire a 
+`combat/fullauto <list of one or more targets, separated by commas>` - Fire a 
    fully automatic (10-round) burst.  You can list up to 5 separate targets.
    
-%xccombat/suppress <target>%xn - Use suppressive fire
+`combat/suppress <target>` - Use suppressive fire
     A full-auto weapon can specify a comma-separated list of up to 5 targets.
     
-%xccombat/subdue <target>%xn - Subdues or disarms a target. 
-%xccombat/escape%xn – Attempts to escape while subdued.
+`combat/subdue <target>` - Subdues or disarms a target. 
+`combat/escape` – Attempts to escape while subdued.
 
-%xccombat/explode <right next to>/<nearby>%xn - Uses an explosive weapon.
+`combat/explode <right next to>/<nearby>` - Uses an explosive weapon.
    Each group should specify a comma-separated list of targets.

@@ -1,7 +1,17 @@
+---
+topic: substitutions
+toc: Misc
+summary: Formatting codes.
+categories:
+- main
+aliases:
+- subs
+- formatting
+---
 Ares provides a number of formatting codes, which can be used pretty much anywhere: templates, poses, descriptions, and more.
 
     \%r - A linebreak
-    \%x or \%c - Ansi color (see %xhhelp ansi%xn)
+    \%x or \%c - Ansi color (see `help ansi`)
     \%b - A single blank space
     \%t - Five blank spaces (like a tab)
     \%l1, \%l2, \%l3, \%l4 - Shows one of the border lines.

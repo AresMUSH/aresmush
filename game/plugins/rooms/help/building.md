@@ -1,4 +1,23 @@
-The MUSH grid consists of %xhRooms%xn connected by %xhExits%xn.  Admin with appropriate permissions can create these using the build and open commands.
+---
+topic: building
+toc: Grid
+summary: Building the grid.
+categories:
+- admin
+- builder
+aliases:
+- build
+- open
+- rooms
+- dig
+- link
+- unlink
+- area
+- grid
+- roomtype
+- zone
+---
+The MUSH grid consists of **Rooms** connected by **Exits**.  Admin with appropriate permissions can create these using the build and open commands.
 
 `build <name>[=<outgoing exit name>,<return exit name>]` - Creates a room.
 `open <exit>[=<destination>]` - Creates an exit.
@@ -11,9 +30,9 @@ Exits can be locked to a list of roles - for instance if you had a "rebel" role 
 
 `lock <exit>=<list of roles>`
 
-If you create rooms without exits, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  See the help files on %xcdestroy%xn and %xcfind%xn.
+If you create rooms without exits, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  See the help files on `destroy` and `find`.
 
-Rooms have several properties that you can set.  The %xharea%xn and %xhgrid%xn properties are used to help people get around.  They can be used in room descriptions and the 'where' command and such.  The %xnroomtype%xn property ties in with the 'status' system, to tell whether someone is in the IC or OOC zone.
+Rooms have several properties that you can set.  The `area` and `grid`` properties are used to help people get around.  They can be used in room descriptions and the 'where' command and such.  The `roomtype` property ties in with the 'status' system, to tell whether someone is in the IC or OOC zone.
 
 `area <name>` - Sets the room area.  Leave name blank to clear.
 `grid <x>=<y>` - Sets the grid coordinates.  Leave blank to clear.

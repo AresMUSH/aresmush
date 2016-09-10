@@ -1,3 +1,18 @@
+---
+topic: database
+toc: Code Management
+summary: Examining and manipulating the database.
+categories:
+- builder
+aliases:
+- examine
+- rename
+- name
+- destroy
+- nuke
+- find
+- search
+---
 Builders have access to special commands that let you view and manipulate objects in the database.  For these commands, you can specify either an object name or object database ID.  You do not need to be in the same room as the object unless there are multiple objects with the same name.
 
 `rename <name or database ID>=<new name>` - Renames an object.
@@ -5,7 +20,7 @@ Builders have access to special commands that let you view and manipulate object
 `destroy <name or database ID>` - Deletes an item from the database.  
         %xrTHIS CANNOT BE UNDONE%xn.
 
-The %xhfind%xn command lists objects.  You can search by object type:  Room, Exit.  For instance to find all rooms you would use:   find Room. 
+The `find` command lists objects.  You can search by object type:  Room, Exit.  For instance to find all rooms you would use:   find Room. 
 
 `find <object type>[=<name, optional>]`
 

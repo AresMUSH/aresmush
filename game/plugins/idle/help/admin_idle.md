@@ -1,3 +1,10 @@
+---
+topic: idle
+toc: Player Management
+summary: Idle sweeping old characters.
+categories:
+- admin
+---
 The idle system lets you sweep the database for players who haven't logged in for awhile, so you can decide what to do with them.
 
 We recommend that idled-out players be kept around *if* they've been approved.  Why?  Well, they're part of the IC world.  They might come back, and allowing their name to be re-used could mess up the game wiki references.  Database space should not be an issue unless your game is ginormous. (If it is, you can always purge people later.)

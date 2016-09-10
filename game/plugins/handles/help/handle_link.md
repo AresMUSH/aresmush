@@ -1,6 +1,13 @@
+---
+topic: handle link
+toc: 
+summary: 
+categories:
+- main
+---
 To create a Handle, go to AresCentral (http://aresmush.com/arescentral/) and create a character there using the name you want for your Handle name.
 
-Having a handle is only useful once you %xhlink%xn characters to it.  This tells the game which characters on which games are yours.  Linking is optional; you can pick and choose which characters you want to link.  Linking is a multi-step process to verify your identity on both AresCentral and the local game.  This prevents someone from linking characters to your handle without your permission.
+Having a handle is only useful once you `link` characters to it.  This tells the game which characters on which games are yours.  Linking is optional; you can pick and choose which characters you want to link.  Linking is a multi-step process to verify your identity on both AresCentral and the local game.  This prevents someone from linking characters to your handle without your permission.
 
 1) Using the character you want to link, find your character ID.
 

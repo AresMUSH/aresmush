@@ -1,10 +1,20 @@
+---
+topic: skills
+toc: FS3
+summary: Skills System.
+categories:
+- main
+aliases:
+- fs3
+- skill
+---
 This game uses the FS3 skills system (http://www.aresmush.com/fs3).  Complete documentation can be found on the game website. This is a quick reference for the commands for setting and using your character's abilities.
 
 Related help files:  
 
-    %xhhelp abilities%xn - Set up your abilities.
-    %xhhelp roll%xn - Use your abilities.
-    %xhhelp sheet%xn - View your character sheet.
-    %xhhelp app%xn - View the progress of your character application.
-    %xhhelp relatedapt%xn - Set up your ruling aptitudes.
-    %xhelp goals%xn - Set up your goals and RP hooks.
+    `help abilities` - Set up your abilities.
+    `help roll` - Use your abilities.
+    `help sheet` - View your character sheet.
+    `help app` - View the progress of your character application.
+    `help relatedapt` - Set up your ruling aptitudes.
+    `help goals` - Set up your goals and RP hooks.

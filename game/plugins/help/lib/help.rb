@@ -32,7 +32,7 @@ module AresMUSH
     
     def self.toc(category)
       topics = Help.index(category)
-      topics.map { |k, v| v["toc"] }.uniq.sort
+      topics.select{ |k, v| v["toc"] }.map { |k, v| v["toc"] }.uniq.sort
     end
     
     def self.toc_topics(category, toc)

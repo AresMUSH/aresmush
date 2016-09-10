@@ -1,3 +1,14 @@
+---
+topic: channels
+toc: Game Management
+summary: Managing channels.
+categories:
+- admin
+aliases:
+- channel
+- chat
+- comsys
+---
 The channel administration commands are used to create, delete, and describe channels.
 
 `channel/create <channel>`

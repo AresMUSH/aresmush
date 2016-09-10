@@ -1,4 +1,12 @@
-The %xhMail System%xn lets you send messages to players who are not online, similiar to email.
+---
+topic: mail
+toc: Communicating
+summary: In-game mail system.
+categories:
+- main
+aliases:
+---
+The **Mail System** lets you send messages to players who are not online, similiar to email.
 
 `mail` - Shows your inbox.
 `mail <#>` - Reads a message in your inbox.

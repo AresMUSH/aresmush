@@ -1,6 +1,13 @@
+---
+topic: handles
+toc: Community
+summary: Player Identity.
+categories:
+- main
+---
 Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.   For more information, see: http://aresmush.com/handles/
 
-To link a character on another game to your Handle, follow the instructions in %xchelp handle link%xn.
+To link a character on another game to your Handle, follow the instructions in `help handle link`.
 
 You can set your handle privacy *per-character*.
 

@@ -1,3 +1,14 @@
+---
+topic: roles
+toc: Roles
+summary: Assigning permissions.
+categories:
+- admin
+aliases:
+- role
+- permission
+- power
+---
 Some commands are restricted so that only characters with certain roles can access them.  For example, many games will lock the building commands so that only authorized builders can create new rooms and exits.
 
 Roles are defined in the configuration files.  You can assign and remove roles from individual characters using the role command.  This, of course, requires its own permissions.

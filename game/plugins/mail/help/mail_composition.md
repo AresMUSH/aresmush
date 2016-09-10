@@ -3,5 +3,5 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 `mail <to>=<subject>` - Starts a mail.
 `-<message>` - Adds a new paragraph to a message.
 `mail/proof` - Shows your mail so far.
-`mail/send%xn or %xc--` - Sends the mail.
+`mail/send` or `--` - Sends the mail.
 `mail/toss` - Throws away the message you were drafting.

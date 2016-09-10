@@ -21,6 +21,7 @@ help:
                     summary: "Expand your description with separate details."
                     aliases: [ 'detail']
         builder:
+            topics:
                 descriptions: 
                     toc_topic: Building
                     dir: 'game/plugins/describe/help/'

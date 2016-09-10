@@ -1,3 +1,10 @@
+---
+topic: status
+toc: Community
+summary: Character status and going IC/OOC/AFK.
+categories:
+- main
+---
 Your character status is a general reflection of what you're doing on the game.
 
     AFK (Away from the Keyboard)

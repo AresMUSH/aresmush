@@ -1,3 +1,12 @@
+---
+topic: status
+toc: Player Management
+summary: Going on and off duty.
+categories:
+- admin
+aliases:
+- duty
+---
 The duty command lets you mark yourself as on or off duty.
 
 `duty <on or off>` - Marks yourself on or off duty.

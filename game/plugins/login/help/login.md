@@ -1,3 +1,18 @@
+---
+topic: login
+toc: 1 - Getting Started
+summary: Creating, connecting and managing passwords.
+categories:
+- main
+aliases:
+- create
+- connect
+- password
+- name
+- tour
+- quit
+- guest
+---
 To get past the login screen, you need a character.  There are a number of 'guest' characters available that you can borrow just to log in and look around.  To use one of them, type:
 
 `tour`

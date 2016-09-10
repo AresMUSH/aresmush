@@ -1,3 +1,16 @@
+---
+topic: trouble
+toc: Game Management
+summary: Dealing with troublesome players.
+categories:
+- admin
+aliases:
+- boot
+- findsite
+- ban
+- siteban
+- sitelock
+---
 Unfortunately, you will sometimes have to deal with troublesome players.  These commands will help.
 
  `boot <name>` - Forcibly disconnects someone from the game.

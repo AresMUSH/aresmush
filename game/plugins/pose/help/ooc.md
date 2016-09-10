@@ -1,6 +1,15 @@
+---
+topic: ooc
+toc: Communicating
+summary: OOC Asides.
+categories:
+- main
+aliases:
+- sooc
+---
 You can make out-of-character (OOC) asides to the other room occupants.  The same pose shortcuts (", :, etc.) apply with OOC asides.  It defaults to a 'say' if you don't specify anything.
 
-   %xcooc Hi!%xn - <OOC> Bob says, "Hi!"
-   %xcooc :waves.%xn - <OOC> Bob waves.
+`ooc Hi!` - <OOC> Bob says, "Hi!"
+`ooc :waves.` - <OOC> Bob waves.
    
-Note: If you're looking for the way to go OOC, you're probably looking for the %xhoffstage%xn command.
+Note: If you're looking for the way to go OOC, you're probably looking for the `offstage` command.

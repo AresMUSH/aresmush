@@ -1,7 +1,17 @@
+---
+topic: roll
+toc: FS3
+summary: Ability rolls.
+categories:
+- main
+aliases:
+- rolls
+- opposed
+---
 This game uses the FS3 skills system.  Complete documentation can be found on the game wiki.  This is a quick reference for the commands used to make an ability roll.
 
 `roll <ability>`
-    %xcroll <character>/<ability> - Makes a roll for someone else.
+`roll <character>/<ability>` - Makes a roll for someone else.
 `roll/private <ability>` - Hide results from others in the room.
 `roll <character>/<ability> vs <character>/<ability>` - Makes an opposed roll.
     

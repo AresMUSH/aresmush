@@ -1,3 +1,11 @@
+---
+topic: math
+toc: Misc
+summary: Using the MUSH as a calculator.
+categories:
+- main
+aliases:
+---
 The math command evaluates simple math expressions.  
 
 `math <expression>`

@@ -1,3 +1,10 @@
+---
+topic: groups
+toc: Player Management
+summary: Groups and affiliations.
+categories:
+- admin
+---
 Admins can set other people's group information.
 
 `group/set <char>=<type>/<value>` - Sets a character's value for a group type.
