@@ -1,6 +1,3 @@
 shortcuts:
-    roots:
-        "finger": "profile"
-        
-    full:
-        "profile/set": "profile/add"
+    "finger": "profile"
+    "profile/set": "profile/add"

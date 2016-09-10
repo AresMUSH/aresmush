@@ -9,18 +9,12 @@ module AresMUSH
       @client.stub(:room) { nil }
       Global.stub(:read_config).with("shortcuts") { 
         {
-          "roots" => 
-          {
             "a" => "b", 
-            "c" => "d" 
-          },
-          "full" => 
-          { 
+            "c" => "d" ,
             "b/c" => "d/e", 
             "b/d" => "f", 
             "e" => "f/g",
             "m" => "n/o foo"
-          } 
           } }
           SpecHelpers.stub_translate_for_testing
         end

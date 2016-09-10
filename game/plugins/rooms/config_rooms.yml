@@ -23,13 +23,11 @@ rooms:
 
 
 shortcuts:
-    roots:
-        "tel": "teleport"
-        "move": "go"
-        "dig": "build"
-        "o" : "out"
-    full:
-        "dig/teleport" : "build"
-        "dig/tel" : "build"
-        "mjoin" : "meetme/join"
-        "msummon" : "meetme/bring"
+    "tel": "teleport"
+    "move": "go"
+    "dig": "build"
+    "o" : "out"
+    "dig/teleport" : "build"
+    "dig/tel" : "build"
+    "mjoin" : "meetme/join"
+    "msummon" : "meetme/bring"

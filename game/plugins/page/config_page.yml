@@ -3,5 +3,4 @@ page:
     # It can use multiple codes, like %xh%xc
     page_color: "%xb"
 shortcuts:
-    roots:
-        "p": "page"
+    "p": "page"

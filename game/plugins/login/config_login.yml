@@ -30,9 +30,6 @@ login:
         suspect_category: "MISC"
 
 shortcuts:
-    roots:
-        "logout" : "quit"
-        "con" : "connect"
-            
-    full:
-        "newpassword": "password/reset"
+    "logout" : "quit"
+    "con" : "connect"
+    "newpassword": "password/reset"

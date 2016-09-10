@@ -10,7 +10,7 @@ module AresMUSH
       shortcut_config = Global.read_config("shortcuts")
       return if shortcut_config.nil?
       
-      roots_config = shortcut_config['roots']
+      roots_config = shortcut_config.select { |s| !s.include?('/')}
       if (roots_config)
         root = cmd.root.downcase
         if roots_config.has_key?(root)
@@ -18,7 +18,7 @@ module AresMUSH
         end
       end
       
-      full_config = shortcut_config['full']
+      full_config = shortcut_config.select { |s| s.include?('/')}
       if (full_config)
         full_config.each do |find_str, replace_str|
           if (cmd.raw.start_with?("#{cmd.prefix}#{find_str}"))

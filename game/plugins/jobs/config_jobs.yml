@@ -38,10 +38,7 @@ jobs:
     # Turning this on can be spammy, but it can alert you to unexpected errors.
     report_errors: false
 shortcuts:
-    roots:
-        "jobs": "job"
-        "requests": "request"
-
-    full:
-        "job/comment": "job/discuss"
-        "job/submit" : "job/create"
+    "jobs": "job"
+    "requests": "request"
+    "job/comment": "job/discuss"
+    "job/submit" : "job/create"

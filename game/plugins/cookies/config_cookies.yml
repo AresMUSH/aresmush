@@ -20,5 +20,4 @@ cookies:
     max_luck: 5
     
 shortcuts:
-    roots:
-        "cookies": "cookie"
+    "cookies": "cookie"

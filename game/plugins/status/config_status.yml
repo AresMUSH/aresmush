@@ -34,6 +34,5 @@ status:
             minute: 20
 
 shortcuts:
-    roots:
-        "set": "status"
-        "ic" : "onstage"
+    "set": "status"
+    "ic" : "onstage"

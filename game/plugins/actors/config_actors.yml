@@ -5,5 +5,4 @@ actors:
             - admin
             # - another_role
 shortcuts:
-    roots:
-        "actors": "actor"
+    "actors": "actor"

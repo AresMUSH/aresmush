@@ -64,8 +64,5 @@ ranks:
                 Sergeant Major: false
 
 shortcuts:
-    roots:
-        "ranks": "rank"
-
-    full:
-        "rank/clear": "rank/set"
+    "ranks": "rank"
+    "rank/clear": "rank/set"

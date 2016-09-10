@@ -22,7 +22,5 @@ roles:
         - admin
 
 shortcuts:
-    roots:
-        "roles" : "role"
-        "staff" : "admin"
-    
+    "roles" : "role"
+    "staff" : "admin"

@@ -14,5 +14,4 @@ idle:
     
     days_before_idle: 30
 shortcuts:
-    full:
-        "idle/add": "idle/action"
+    "idle/add": "idle/action"

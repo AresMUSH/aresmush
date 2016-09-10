@@ -15,8 +15,7 @@ manage:
             - builder
             # - another_role
 shortcuts:
-    roots:
-        "ex": "examine"
-        "search": "find"
-        "name" : "rename"
-        "nuke" : "destroy"
+    "ex": "examine"
+    "search": "find"
+    "name" : "rename"
+    "nuke" : "destroy"

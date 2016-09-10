@@ -61,13 +61,12 @@ groups:
                 Other: "Any other position."
             
 shortcuts:
-    roots:
-        "groups": "group"
-        "faction": "group/set faction="
-        "position": "group/set position="
-        "department": "group/set department="
-        "colony": "group/set colony="
-        "factions": "group faction"
-        "positions": "group position"
-        "departments": "group department"
-        "colonies": "group colony"
+    "groups": "group"
+    "faction": "group/set faction="
+    "position": "group/set position="
+    "department": "group/set department="
+    "colony": "group/set colony="
+    "factions": "group faction"
+    "positions": "group position"
+    "departments": "group department"
+    "colonies": "group colony"

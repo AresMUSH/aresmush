@@ -72,10 +72,8 @@ chargen:
         review:
             help: apps
 shortcuts:
-    roots:
-        "chargen" : "cg"
-    full:
-        "bg/approve": "app/approve"
-        "bg/reject" : "app/reject"
-        "bg/submit" : "app/submit"
-        "bg/unsubmit" : "app/unsubmit"
+    "chargen" : "cg"
+    "bg/approve": "app/approve"
+    "bg/reject" : "app/reject"
+    "bg/submit" : "app/submit"
+    "bg/unsubmit" : "app/unsubmit"

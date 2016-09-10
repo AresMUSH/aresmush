@@ -41,8 +41,6 @@ fs3combat:
             armor: Centurion
             hitloc: Humanoid           
 shortcuts:
-    roots:
-        "weapons": "weapon"
-    full:
-        "combat/skills": "combat/summary"
-        "combat/slackers": "combat/summary"
+    "weapons": "weapon"
+    "combat/skills": "combat/summary"
+    "combat/slackers": "combat/summary"
