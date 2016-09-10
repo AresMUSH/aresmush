@@ -14,7 +14,7 @@ Once a job is closed, you will only see it if it has new activity or you use the
 
 `jobs/search <category>=<value>` - Searches old jobs
         Category to search may be 'title' or 'submitter'.
-    
+
 If you run out of database space or want to archive your jobs offline, you can log the closed ones to a file and purge them.
 
 `jobs/backup` - Prints out closed jobs, which you can save to a log file.

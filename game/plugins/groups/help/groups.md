@@ -28,12 +28,12 @@ During chargen, you can assign your character to various **Groups**.   There are
 
 `departments` - Lists departments.
 `department <name>` - Sets your department.
-    
+
 **Colony** is where your character holds citizenship.  Typically this is where your character was born.
 
 `colonies` - Lists colonies.
 `colony <name>` - Sets your home colony.
-    
+
 **Position** represents your character's job on the ship.
 
 `positions` - Lists positions.

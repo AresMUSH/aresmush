@@ -7,7 +7,7 @@ categories:
 - admin
 ---
 
-The MUSH help system is here to help you learn how to play.    
+The MUSH help system is here to help you learn how to play.
 
 `help, help2, help3, etc.` - Shows each page of help topics.
     Note:  Many commands work this way, showing a "page x of y" message at the bottom of the command text.

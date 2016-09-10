@@ -11,11 +11,11 @@ The **Mail System** lets you send messages to players who are not online, simili
 `mail` - Shows your inbox.
 `mail <#>` - Reads a message in your inbox.
 `mail/new` - Reads your first unread message.
-    
+
 Sending mail is easy. The "to" field can include any number of player names, separated by spaces. You can also forward a message from your inbox to someone else.
 
 `mail <to>=<subject>/<message>` - Sends a message.
-    
+
 For advanced mail topics see:
 
     help mail sending - Advanced mail sending features.

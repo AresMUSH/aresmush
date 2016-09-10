@@ -22,7 +22,7 @@ Ansi codes can be nested within each other.
 
     \%xrRed on black\%xBRed on Blue\%xnBack to normal
     %xrRed on black%xBRed on Blue%xnBack to normal
-    
+
 Additional ansi codes include:
 
     \%x! - A random color

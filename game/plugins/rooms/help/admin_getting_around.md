@@ -13,10 +13,9 @@ Admin have some extra commands for getting around the grid without using the nor
 
 `teleport <destination>` - Teleports yourself.
 `teleport <list of names>=<destination>` - Teleports a character.
-        
-Note: In either case, 'destination' can be a room name, room database ID, or player name
+  Note: In either case, 'destination' can be a room name, room database ID, or player name
 
 If you're not sure of the room name or ID, you can use the rooms directory command.
-    
+
 `rooms` - Shows all rooms and their database IDs.
 `rooms <name>` - Searches for a room matching the given name.

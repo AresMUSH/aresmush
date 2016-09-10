@@ -16,5 +16,5 @@ The edit feature only works if your MU client supports grab/FugueEdit functional
 The default prefix is `FugueEdit >`, a long-standing MUSH tradition.  This will work by on many clients, but some require you to set a different prefix (sometimes called a "grab password").  To do this:
 
 `edit/prefix <prefix>` - Sets your grab/edit prefix.
-    
+
 Some clients also require special setup.  See http://aresmush.com/clients for more information.

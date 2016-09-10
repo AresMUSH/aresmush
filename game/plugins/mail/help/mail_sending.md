@@ -12,11 +12,11 @@ aliases:
 Sending mail is easy. The "to" field can include any number of player names, separated by spaces. You can also forward a message from your inbox to someone else.
 
 `mail <to>=<subject>/<message>` - Sends a message.
-    
+
 You can automatically CC yourself on messages you sent by enabling the sent-mail feature.  Messages you send will automatically appear in your "Sent" folder (available through mail/sent).
 
 `mail/sentmail <on or off` - Turns sent mail copy on or off.
-    
+
 You can also forward mail.
 
 `mail/fwd <#>=<to>/<comment>` - Forwards a message, along with an optional comment.

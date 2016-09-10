@@ -6,7 +6,7 @@ categories:
 - main
 ---
 The most important part of a character is their background. We are not looking for a novel, just a couple paragraphs describing the character’s backstory.  In particular, your background should cover:
-    
+
 * Who is your character?
 * Why are they here?
 * Anything noteworthy about your character, particularly things that explain unusual expertise or interests.
@@ -16,8 +16,7 @@ The easiest way to edit your background is to type it in an offline program, lik
 `bg/set <background>` - Sets your background.
 `bg/edit` - Grabs the existing background text into your input 
        buffer (if your client supports it.  See `help edit`.)
-       
-You can view your background with the `bg` command.
+ You can view your background with the `bg` command.
 
 Once your character has been approved, you will no longer be able to edit your background.  Contact the admins if you need to make changes after approval.
 

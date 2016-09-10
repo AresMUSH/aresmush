@@ -27,8 +27,7 @@ Every character, room and exit has a description that tells you what you see whe
 `describe <name>=<description>`
 `describe/edit <name>` - Grabs the existing description into your input 
        buffer (if your client supports it.  See `help edit`.)
-       
-You can set a shorter description that is used whenever an at-a-glance description is needed.
+ You can set a shorter description that is used whenever an at-a-glance description is needed.
 
 `shortdesc <name>=<description>`
 `shortdesc/edit <name>` - Grabs the existing description into your input 
@@ -36,8 +35,8 @@ You can set a shorter description that is used whenever an at-a-glance descripti
 
 You can also have multiple outfits for your character, and have more detailed views that are separate from your main description.  See:
 
-    `help outfits`
-    `help details`
+`help outfits`
+`help details`
 
 The `look` command is used to look around.
 

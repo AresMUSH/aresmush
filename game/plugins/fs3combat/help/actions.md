@@ -16,7 +16,7 @@ This is a quick reference for combat action commands.  For more details on FS3, 
     * mod:<special modifiers> - Dice to add or subtract to the roll.
     * called:<location> - Perform a called shot to a particular hit location. 
        Use `combat/hitlocs <target>` to see a list of valid hit locations. 
-    
+
 `combat/aim <target>` - Takes careful aim.
 
 `combat/reload` – Reloads a weapon.
@@ -30,7 +30,7 @@ This is a quick reference for combat action commands.  For more details on FS3, 
    
 `combat/suppress <target>` - Use suppressive fire
     A full-auto weapon can specify a comma-separated list of up to 5 targets.
-    
+
 `combat/subdue <target>` - Subdues or disarms a target. 
 `combat/escape` – Attempts to escape while subdued.
 

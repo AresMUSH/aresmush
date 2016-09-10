@@ -24,7 +24,7 @@ There are several commands that let you view and manipulate objects in the datab
 The `find` command lists objects.  You can search by object type:  Room, Character, Exit.  For instance to find all rooms you would use:   find Room. 
 
 `find <object type>[=<name, optional>]`
-    
+
 There is no equivalent to the generic 'set' command you might be familiar with from other MUSHes.  Instead, individual commands provide ways to update data.  
 
 **IMPORTANT NOTE:** Since Ares uses a conventional database back-end, it is possible to modify data directly in the database.  But when you do this, you must issue the `reload` command so that the memory copies of the data objects are updated.

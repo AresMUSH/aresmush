@@ -14,7 +14,7 @@ This game uses the FS3 skills system.  Complete documentation can be found on th
 `roll <character>/<ability>` - Makes a roll for someone else.
 `roll/private <ability>` - Hide results from others in the room.
 `roll <character>/<ability> vs <character>/<ability>` - Makes an opposed roll.
-    
+
 Note:  Admins can see all rolls, even private ones.  This enables them to judge scenes even when not physically present.
 
 Typically you will roll a skill.  The aptitude value is factored in automatically based on the ruling aptitude.  (e.g. roll Firearms)

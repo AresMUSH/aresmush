@@ -30,14 +30,14 @@ Use the Abilities command to see the ratings, available abilities and descriptio
 `abilities` - Everything you want to know about abilities.
  
 Action Skills and Advantages have ratings from 1-5.  To set them, use these commands:    
-    
+
 `raise <name>` and `lower <name>` - Raise or lower by 1 level.
 `ability <name>=<level>` - Sets the rating
-    
+
 Aptitudes are special.  You get to pick 1 you're Great at, 1 you're Good at, and 1 you're Poor at:
 
 `aptitude <great ability>/<good ability>/<poor ability>`
-    
+
 Expertise, Interests and Languages do not have ratings.  You merely add or remove them from the list.
 
 `language/add <language>` and `language/remove <language>`

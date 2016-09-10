@@ -15,7 +15,7 @@ Ares provides a number of formatting codes, which can be used pretty much anywhe
     \%b - A single blank space
     \%t - Five blank spaces (like a tab)
     \%l1, \%l2, \%l3, \%l4 - Shows one of the border lines.
-    
+
 It is worth noting that Ares does not treat brackets, parens or % signs as special characters (unless the % is one of the special sequences listed above). 
 
    echo I don't have to do anything special to see a [ ] or a %.

@@ -13,7 +13,6 @@ Details can be used to keep more detailed views separate from the main descripti
 `detail/delete <name>/<detail title>`
 `detail/edit <name>/<detail title>` - Grabs the existing detail into your input 
        buffer (if your client supports it.  See `help edit`.)
-       
-You view details using the regular look command:
+ You view details using the regular look command:
 
 `look <name>/<detail title>` - Looks at a detail on something.

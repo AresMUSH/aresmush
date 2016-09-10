@@ -22,8 +22,7 @@ Plugin code, help files, configuration files and translation (locale) files are 
        Unloading is normally not necessary unless you have trouble loading a plugin 
        or wish to remove it completely.  Unloading does not affect configuration or
        help, so you may want to reload them when you're done.
-       
-**Config Management**
+ **Config Management**
 `config` - Lists config sections
 `config <section>` - Views config variables for a section.
 `load config` - Reloads configuration from disk.
