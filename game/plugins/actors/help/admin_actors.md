@@ -9,7 +9,6 @@ aliases:
 categories:
 - admin
 ---
-
 Admin can set actors for other characters or NPCs.  When doing a NPC, you just specify their name the same as you would a PC - just make sure it doesn't conflict with any PC names.
 
 `actors/set <character>=<actor>` - Sets a character for a character or NPC.

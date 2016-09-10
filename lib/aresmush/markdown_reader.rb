@@ -16,10 +16,10 @@ module AresMUSH
           yaml = YAML.load(md[:metadata])
           return yaml
         rescue Exception => e
-          raise "Exception parsing #{path} -- #{e}"
+          raise "Exception parsing #{@path} -- #{e}"
         end
       else
-        raise "Help file missing metadata header! #{path}"
+        raise "Help file missing metadata header! #{@path}"
       end
     end
     
@@ -29,10 +29,10 @@ module AresMUSH
         begin
           return md.post_match          
         rescue Exception => e
-          raise "Exception parsing #{path} -- #{e}"
+          raise "Exception parsing #{@path} -- #{e}"
         end
       else
-        raise "Help file missing metadata header! #{path}"
+        raise "Help file missing metadata header! #{@path}"
       end
     end
   end

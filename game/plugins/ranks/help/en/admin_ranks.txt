@@ -1,3 +1,0 @@
-Admins can set other peoples' ranks, even to values that are not normally allowed during Chargen.
-
-    %xcrank <name>=<rank>%xn

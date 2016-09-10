@@ -9,7 +9,6 @@ aliases:
 categories:
 - main
 ---
-
 It's fun to imagine the characters on a game like characters in a movie, and to pick actors to play them.  The actors system lets you keep track of who's picked which actors, and pick one for yourself.
 
 Contact staff if you need to delete an actor or set an actor for a NPC.  Some games may limit NPC actors.

@@ -1,0 +1,3 @@
+Admins can give bonus XP, usually as a rewrard for special IC training. Avoid using XP as a reward for OOC behaviors; try luck points instead.
+
+ `xp/award <name>=<# of XP>/<reason>` - Awards XP.

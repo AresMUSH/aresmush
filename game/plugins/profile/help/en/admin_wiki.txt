@@ -1,3 +1,0 @@
-You can view someone else's basic wiki information.
-
-    %xcwiki <name>%xn

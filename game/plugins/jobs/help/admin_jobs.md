@@ -1,0 +1,28 @@
+The Jobs system allows you to track admin work assignments.
+
+`jobs` - Lists active jobs.
+`job <#>` - Views a job.
+
+Jobs can be created by players using the %xhrequest%xn command, by coded systems (e.g. apps), or manually.
+
+`job/create <category>=<title>/<description>` - Creates a new job
+        Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
+
+You can change various attributes about the job, including its status and who it's assigned to.
+    
+`job/assign <#>=<player>%xn                  %xcjob/handle <#>` 
+`job/status <#>=<status>%xn                  %xcjob/cat <#>=<category>` 
+`job/title <#>=<title>`   
+        Default status values are NEW, OPEN, HOLD (job on hold) and DONE.
+    
+There are two ways for admins to comment upon a job.  A %xhdiscuss%xn comment is for admin eyes only, and will not ever be seen by the original submitter.  A %xhrespond%xn comment is viewable by the submitter.
+
+`job/discuss <#>=<comment>` - Comments on a job (only admins may view)
+`job/respond <#>=<message>` - Comments on a job (admins and submitter may view)
+    
+When you're done with the job, close it and it will be archived.
+
+`job/close <#>` - Closes a job
+`job/close <#>=<message>` - Closes a job with a comment to the original submitter.
+
+See %xhahelp jobs archive%xn for more information about what happens to closed jobs.

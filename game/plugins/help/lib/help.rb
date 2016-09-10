@@ -76,8 +76,12 @@ module AresMUSH
 
       all_help = {}
       files.each do |f|
-        reader = MarkdownFile.new f
-        all_help[f] = reader.metadata
+        begin
+          reader = MarkdownFile.new f
+          all_help[f] = reader.metadata
+        rescue Exception => ex
+          Global.logger.warn "Error loading help file.  Skipping #{f}.  Problem: #{ex}"
+        end
       end
       
       [ nil, Global.locale.default_locale, Global.locale.locale ].each do |locale|

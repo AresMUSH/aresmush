@@ -1,7 +1,0 @@
-Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
-
-    %xcmail <to>=<subject>%xn - Starts a mail.
-    %xc-<message>%xn - Adds a new paragraph to a message.
-    %xcmail/proof%xn - Shows your mail so far.
-    %xcmail/send%xn or %xc--%xn - Sends the mail.
-    %xcmail/toss%xn - Throws away the message you were drafting.

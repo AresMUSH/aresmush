@@ -1,0 +1,10 @@
+The MUSH grid consists of %xhRooms%xn connected by %xhExits%xn.  There are a number of ways to get around the grid.
+
+The room description shows available exits and their destinations.  For example:
+      [N] Green Hills
+      
+You can use the %xhgo%xn command to move through an exit, or just use the exit name as a shortcut.  For example:  "go n" or simply "n".
+
+`go <exit name>%xn or %xc<exit name>` - Move through an exit
+    
+You can easily meet other characters for RP using the %xhmeetme%xn command.  See %xchelp meetme%xn for more information.

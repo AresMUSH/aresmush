@@ -1,9 +1,0 @@
-There are two ways to handle sent mail on Ares.   The first is to automatically CC yourself on all messages you send.  Messages you send will automatically appear in your "Sent" folder (available through mail/sent).
-
-    %xcmail/sentmail <on or off%xn - Turns sent mail copy on or off.
-
-You can also use the mail review feature to review messages you've sent to particular people, as long as they haven't been deleted.  Once someone deletes your message, it will no longer show up in the mail review list.  
-
-    %xcmail/review <name>%xn - Shows messages you've sent to someone.
-    %xcmail/review <name>/<#>%xn - Sees the details of a particular message, like whether it's been read.
-    %xcmail/unsend <name>/<#>%xn - Unsends a message if it hasn't already been read.
