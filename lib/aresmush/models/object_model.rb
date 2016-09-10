@@ -24,6 +24,14 @@ module AresMUSH
         after_destroy :reload_clients
       end
 
+      def name_and_alias
+        if (self.alias.blank?)
+          name
+        else
+          "#{name} (#{self.alias})"
+        end
+      end
+  
       def find_all_by_name_or_id(name_or_id)
         return nil if name_or_id.blank?
         where({ :$or => [{ :name_upcase => name_or_id.upcase }, { :alias_upcase => name_or_id.upcase }, { :id => name_or_id }] }).all

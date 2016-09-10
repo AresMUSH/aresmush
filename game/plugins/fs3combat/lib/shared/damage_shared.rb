@@ -31,7 +31,7 @@ module AresMUSH
         :description => desc,
         :current_severity => severity,
         :initial_severity => severity,
-        :ictime => ICTime.ictime,
+        :ictime => ICTime::Interface.ictime,
         :healing_points => FS3Combat.healing_points(severity),
         :is_stun => is_stun, 
         :is_mock => is_mock)

@@ -46,7 +46,7 @@ module AresMUSH
         client.char.birthdate = bday
         client.char.save
         client.emit_success t('demographics.birthdate_set', 
-          :birthdate => ICTime.ic_datestr(bday), 
+          :birthdate => ICTime::Interface.ic_datestr(bday), 
           :age => client.char.age)
       end
         

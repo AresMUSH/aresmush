@@ -43,7 +43,7 @@ module AresMUSH
           text << Demographics::Interface.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.groups_review_title'))
-          text << Groups.app_review(model)
+          text << Groups::Interface.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.misc_review_title'))
           text << Chargen.bg_app_review(model)

@@ -95,7 +95,7 @@ module AresMUSH
       
       def birthdate
         dob = Demographics::Interface.demographic(@char, :birthdate)
-        dob.nil? ? "" : ICTime.ic_datestr(dob)
+        dob.nil? ? "" : ICTime::Interface.ic_datestr(dob)
       end
       
       def callsign
@@ -104,19 +104,19 @@ module AresMUSH
       
       
       def faction
-        @char.groups['Faction']
+        Groups::Interface.group(@char, "Faction")
       end
       
       def position
-        @char.groups['Position']
+        Groups::Interface.group(@char, "Position")
       end
       
       def colony
-        @char.groups['Colony']
+        Groups::Interface.group(@char, "Colony")
       end
       
       def department
-        @char.groups['Department']
+        Groups::Interface.group(@char, "Department")
       end
 
       def rank

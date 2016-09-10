@@ -38,7 +38,7 @@ module AresMUSH
             return
           end
           
-          Jobs.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
+          Jobs::Interface.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
           
           model.is_approved = true
           model.approval_job = nil

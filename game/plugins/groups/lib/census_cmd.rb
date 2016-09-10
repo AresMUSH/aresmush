@@ -27,17 +27,17 @@ module AresMUSH
       end
       
       def show_group_census  
-        template = GroupCensusTemplate.new(Character.active_chars, self.name, client)
+        template = GroupCensusTemplate.new(Idle::Interface.active_chars, self.name, client)
         template.render
       end
       
       def show_gender_census
-        template = GenderCensusTemplate.new(Character.active_chars, client)
+        template = GenderCensusTemplate.new(Idle::Interface.active_chars, client)
         template.render
       end
       
       def show_complete_census
-        template = CompleteCensusTemplate.new(Character.active_chars, self.page, client )
+        template = CompleteCensusTemplate.new(Idle::Interface.active_chars, self.page, client )
         template.render        
       end   
     end

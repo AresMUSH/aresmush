@@ -8,7 +8,6 @@ module AresMUSH
         return if !Cron.is_cron_match?(config, event.time)
         
         cookies_per_luck = Global.read_config("cookies", "cookies_per_luck")
-        max_luck = Global.read_config("cookies", "max_luck")
         
         awards = ""
         cookie_recipients = Character.all.select { |c| c.cookies_received.any? }
@@ -21,7 +20,7 @@ module AresMUSH
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck
-            c.luck = [max_luck, c.luck + luck].min
+            FS3Luck::Interface.add_luck(client.char)
           end
 
           Global.logger.info "#{c.name} got #{count} cookies from #{c.cookies_received.map{|a| a.name}.join(",")}"

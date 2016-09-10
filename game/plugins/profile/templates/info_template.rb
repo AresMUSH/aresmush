@@ -164,23 +164,23 @@ module AresMUSH
       
       def birthdate
         dob = Demographics::Interface.demographic(@char, :birthdate)
-        format_field dob.nil? ? "" : ICTime.ic_datestr(dob)
+        format_field dob.nil? ? "" : ICTime::Interface.ic_datestr(dob)
       end
       
       def faction
-        format_field @char.groups['Faction']
+        format_field Groups::Interface.group(@char, "Faction")
       end
       
       def position
-        format_field @char.groups['Position']
+        format_field Groups::Interface.group(@char, "Position")
       end
       
       def colony
-        format_field @char.groups['Colony']
+        format_field Groups::Interface.group(@char, "Colony")
       end
       
       def department
-        format_field @char.groups['Department']
+        format_field Groups::Interface.group(@char, "Department")
       end
 
       def rank

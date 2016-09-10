@@ -34,7 +34,7 @@ module AresMUSH
       end
       
       def create_job
-        job = Jobs.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+        job = Jobs::Interface.create_job(Global.read_config("chargen", "jobs", "app_category"), 
           t('chargen.application_title', :name => client.name), 
           t('chargen.app_job_submitted'), 
           client.char)
@@ -51,7 +51,7 @@ module AresMUSH
       end
       
       def update_job
-        Jobs.change_job_status(client,
+        Jobs::Interface.change_job_status(client,
           client.char.approval_job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))

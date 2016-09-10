@@ -43,7 +43,7 @@ module AresMUSH
           model.chargen_locked = false
           model.save
           
-          Jobs.change_job_status(client,
+          Jobs::Interface.change_job_status(client,
             model.approval_job,
             Global.read_config("chargen", "jobs", "app_hold_status"),
             "#{Global.read_config("chargen", "messages", "rejection")}%R%R#{self.message}")

@@ -6,6 +6,25 @@ module AresMUSH
   class Character
     has_many :submitted_requests, :class_name => 'AresMUSH::Job', :inverse_of => :author
     has_many :assigned_jobs, :class_name => 'AresMUSH::Job', :inverse_of => :assigned_to
+    
+    def unread_jobs
+      if (!Jobs.can_access_jobs?(self))
+        return []
+      end
+      Job.all.select { |j| j.is_unread?(self) }
+    end
+    
+    def has_unread_jobs?
+      !unread_jobs.empty?
+    end
+  
+    def has_unread_requests?
+      if (Jobs.can_access_jobs?(self))
+        return false
+      end
+      requests = submitted_requests.select { |r| r.is_unread?(self) }
+      !requests.empty?
+    end
   end
   
   class Job

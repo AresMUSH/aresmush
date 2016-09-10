@@ -58,7 +58,7 @@ module AresMUSH
 
         title = "#{title}%r#{t('manage.findsite_player_info', :ip => ip, :hostname => hostname)}"
         
-        matches = Character.all.select { |c| c.is_site_match?(ip, hostname) }
+        matches = Character.all.select { |c| Login::Interface.is_site_match?(c, ip, hostname) }
         found = matches.map { |m| "#{m.name.ljust(25)} #{m.last_ip} #{m.last_hostname}" }
         
         client.emit BorderedDisplay.list found, title

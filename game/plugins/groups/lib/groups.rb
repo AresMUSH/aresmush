@@ -18,8 +18,8 @@ module AresMUSH
     
     def self.census_by(&block)
       counts = {}
-      Character.active_chars.each do |c|
-        next if c.idled_out
+      Idle::Interface.active_chars.each do |c|
+        next if Idle::Interfaces.idled_status(c)
         val = yield(c)
         if (!val.nil?)
           count = counts.has_key?(val) ? counts[val] : 0
@@ -28,6 +28,24 @@ module AresMUSH
       end
       counts = counts.sort_by { |k,v| v }.reverse
       counts.map { |k, v| "#{k.ljust(20)}#{v}"}
+    end
+    
+    def self.app_review(char)
+      message = t('groups.app_review')
+      missing = []
+      
+      Groups.all_groups.keys.each do |g|
+        if (char.groups[g].nil?)
+          missing << t('chargen.are_you_sure', :missing => g)
+        end
+      end
+      
+      if (missing.count == 0)
+        Chargen::Interface.format_review_status(message, t('chargen.ok'))
+      else
+        error = missing.collect { |m| "%R%T#{m}" }.join
+        "#{message}%r#{error}"
+      end
     end
   end
 end

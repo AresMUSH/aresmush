@@ -4,9 +4,6 @@ en:
         sweep_complete: "Disconnected players have been swept out of the room."
         kick_allowed: "You can use the sweep/kick command to move them outside."
         listening_chars: "Disconnected Players in this Room"
-    alias:
-        alias_set: "Your alias is now %{alias}."
-        alias_cleared: "You have removed your alias."
     autospace:
         autospace_set: "Poses will now look like this:%xn%RA pose.%r%{option}Another pose."
         autospace_cleared: "You will no longer see anything between poses."

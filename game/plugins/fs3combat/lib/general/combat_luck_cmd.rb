@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def check_points
-        return t('fs3combat.no_luck') if client.char.luck <= 0
+        return t('fs3combat.no_luck') if FS3Luck::Interface.luck(client.char) <= 1
         return nil
       end
       
@@ -36,9 +36,9 @@ module AresMUSH
       def handle
         FS3Combat.with_a_combatant(client.name, client) do |combat, combatant|
           
-          client.char.luck = client.char.luck - 1
+          FS3Luck::Interface.spend_luck(client.char, 1)
           client.char.save
-
+          
           combatant.luck = self.reason
           combatant.save
           

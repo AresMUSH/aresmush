@@ -1,5 +1,5 @@
 module AresMUSH
-  module Utils
+  module Login
     class AliasCmd
       include CommandHandler
       include CommandWithoutSwitches
@@ -19,7 +19,7 @@ module AresMUSH
         if (self.alias.nil?)
           client.char.alias = nil
           client.char.save!
-          client.emit_success t('alias.alias_cleared')
+          client.emit_success t('login.alias_cleared')
           return
         end
         
@@ -36,7 +36,7 @@ module AresMUSH
         
         client.char.alias = self.alias
         client.char.save!
-        client.emit_success t('alias.alias_set', :alias => self.alias)
+        client.emit_success t('login.alias_set', :alias => self.alias)
       end
     end
   end

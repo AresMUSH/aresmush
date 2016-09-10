@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def check_not_guest
-        return t('dispatcher.not_allowed') if client.char.is_guest?
+        return t('dispatcher.not_allowed') if Login::Interface.is_guest?(client.char)
         return nil
       end
       

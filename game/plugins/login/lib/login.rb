@@ -23,12 +23,18 @@ module AresMUSH
       client.char.save!
     end
     
+    def self.terms_of_service
+      use_tos = Global.read_config("connect", "use_terms_of_service") 
+      tos_filename = "game/files/tos.txt"
+      return use_tos ? File.read(tos_filename, :encoding => "UTF-8") : nil
+    end
+    
     def self.check_for_suspect(char)
       suspects = Global.read_config("login", "suspect_sites")
       suspects.each do |s|
         if (char.is_site_match?(s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          Jobs.create_job(Global.read_config("login", "jobs", "suspect_category"), 
+          Jobs::Interface.create_job(Global.read_config("login", "jobs", "suspect_category"), 
             t('login.suspect_login_title'), 
             t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
             Game.master.system_character)

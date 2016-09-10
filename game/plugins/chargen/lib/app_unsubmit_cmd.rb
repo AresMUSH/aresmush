@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.change_job_status(client,
+        Jobs::Interface.change_job_status(client,
           client.char.approval_job,
           Global.read_config("chargen", "jobs", "app_hold_status"),
           t('chargen.app_job_unsubmitted'))

@@ -16,8 +16,5 @@ cookies:
     # Set this to 0 to disable luck awards from cookies.
     cookies_per_luck: 10
     
-    # Maximum luck points you can achieve through cookies.
-    max_luck: 5
-    
 shortcuts:
     "cookies": "cookie"

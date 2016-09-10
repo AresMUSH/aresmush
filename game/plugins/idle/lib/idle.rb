@@ -22,5 +22,11 @@ module AresMUSH
       end
       BorderedDisplay.subtitled_list list, t('idle.idle_title'), t('idle.idle_subtitle')
     end
+    
+    def self.active_chars
+      base_list = Character.where(:idled_out.exists => false, :idled_out.ne => "", :is_playerbit.ne => true)
+      base_list.select { |c| !(c.is_admin? || Login::Interface.is_guest?(c))}
+    end
+    
   end
 end

@@ -41,8 +41,8 @@ module AresMUSH
       end
       
       def jobs_or_requests
-        return t('notices.unread_requests') if @char.has_unread_requests?
-        return t('notices.unread_jobs') if @char.has_unread_jobs?
+        return t('notices.unread_requests') if Jobs::Interface.has_unread_requests?(@char)
+        return t('notices.unread_jobs') if Jobs::Interface.has_unread_jobs?(@char)
         return t('notices.no_unread_requests')
       end
     end

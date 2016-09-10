@@ -128,11 +128,11 @@ module AresMUSH
       end
       
       def xp
-        @char.xp.to_s.ljust(40)
+        FS3XP::Interface.xp(@char).to_s.ljust(40)
       end
       
       def luck
-        @char.luck.floor
+        FS3Luck::Interface.luck(@char).floor
       end
       
       def format_attr(a, i)

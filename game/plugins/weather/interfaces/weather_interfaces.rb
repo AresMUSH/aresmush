@@ -8,7 +8,7 @@ module AresMUSH
       return nil if weather.empty?
 
       season = Weather.season_for_area(area)
-      time_of_day = ICTime.time_of_day(ICTime.ictime)
+      time_of_day = ICTime::Interface.time_of_day(ICTime::Interface.ictime)
       temperature = weather[:temperature]
       condition = weather[:condition]
       

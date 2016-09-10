@@ -18,6 +18,14 @@ module AresMUSH
       hash
     end 
     
+    def client
+      Global.client_monitor.find_client(self)
+    end
+    
+    def is_online?
+      !self.client.nil?
+    end
+    
     def self.random_link_code
       (0...8).map { (65 + rand(26)).chr }.join
     end 

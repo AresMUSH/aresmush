@@ -11,7 +11,7 @@ module AresMUSH
           if (group == "Everyone")
             groups[group] = group_config
           else
-            group_val = char.groups[group]
+            group_val = Groups::Interface.group(char, group)
             next if group_val.nil?
             group_key = group_config.keys.find { |k| k.downcase == group_val.downcase }
             tmp = group_config[group_key]

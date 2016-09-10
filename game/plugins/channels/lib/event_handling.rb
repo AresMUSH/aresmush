@@ -21,7 +21,7 @@ module AresMUSH
           end
         end
 
-        if (char.is_guest?)
+        if (Login::Interface.is_guest?(char))
           Channels.add_to_default_channels(client, char)
         end
       end

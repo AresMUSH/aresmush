@@ -47,7 +47,7 @@ module AresMUSH
     # You can make this fancier to account for months like March which are
     # split across seasons.
     def self.season_for_area(area)
-      case ICTime.ictime.month
+      case ICTime::Interface.ictime.month
       when 12, 1, 2
         'winter'
       when 3, 4, 5

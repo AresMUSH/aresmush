@@ -20,8 +20,8 @@ module AresMUSH
     def self.approval_status(char)
       if (char.on_roster?)
         status = "%xb%xh#{t('chargen.rostered')}%xn"
-      elsif (char.idled_out)
-        status = "%xr%xh#{t('chargen.idled_out', :status => char.idled_out)}%xn"
+      elsif (Idle::Interfaces.idled_status(char))
+        status = "%xr%xh#{t('chargen.idled_out', :status => Idle::Interfaces.idled_status(char))}%xn"
       elsif (!char.is_approved?)
         status = "%xr%xh#{t('chargen.unapproved')}%xn"
       else

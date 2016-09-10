@@ -32,12 +32,12 @@ module AresMUSH
       end
       
       def handle
-        bday = Date.new ICTime.ictime.year - self.age.to_i, ICTime.ictime.month, ICTime.ictime.day
+        bday = Date.new ICTime::Interface.ictime.year - self.age.to_i, ICTime::Interface.ictime.month, ICTime::Interface.ictime.day
         bday = bday - rand(364)
         client.char.birthdate = bday
         client.char.save
         client.emit_success t('demographics.birthdate_set', 
-          :birthdate => ICTime.ic_datestr(bday), 
+          :birthdate => ICTime::Interface.ic_datestr(bday), 
           :age => client.char.age)
       end
         

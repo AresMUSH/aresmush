@@ -8,7 +8,7 @@ module AresMUSH
       end
 
       def char_position(char)
-        left(char.groups["Position"], 19)
+        left(Groups::Interface.group(char, "Position"), 19)
       end
 
       # Character's player handle, if they've made it public.
@@ -22,7 +22,7 @@ module AresMUSH
       end
    
       def char_faction(char)
-        left(char.groups["Faction"], 15)
+        left(Groups::Interface.group(char, "Faction"), 15)
       end
 
       # How long a character's been idle, like 20m

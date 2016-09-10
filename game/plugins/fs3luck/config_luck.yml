@@ -1,4 +1,7 @@
 fs3luck:
+    # How many luck points you may save up.    
+    max_luck: 3
+    
     roles:
         can_manage_luck:
             # List roles that are allowed to award luck points.
