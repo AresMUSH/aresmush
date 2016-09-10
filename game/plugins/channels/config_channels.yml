@@ -1,0 +1,28 @@
+channels:
+    roles:
+        # List roles that are allowed to manage channels.
+        can_manage_channels: 
+            - admin
+            # - another_role
+            
+    # Configure the markers that appear around a channel name.
+    # Typically this would be brackets for [Mux Style] or <MUSH Style>
+    start_marker: '<'
+    end_marker: '>'
+
+    # Channels you want to make sure guests and new players are on when they log in.
+    default_channels:
+        - Questions
+        - Chat
+shortcuts:
+    roots:
+        "chan": "channel"
+        "channels": "channel"
+    
+    full:
+        "channel/add" : "channel/create"
+        "channel/on" : "channel/join"
+        "channel/off" : "channel/leave"
+        "addcom": "channel/join"
+        "delcom": "channel/leave"
+        "comtitle": "channel/title"

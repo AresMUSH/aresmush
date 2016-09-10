@@ -1,8 +1,0 @@
-shortcuts:
-    roots:
-        "chargen" : "cg"
-    full:
-        "bg/approve": "app/approve"
-        "bg/reject" : "app/reject"
-        "bg/submit" : "app/submit"
-        "bg/unsubmit" : "app/unsubmit"

@@ -1,0 +1,23 @@
+describe:
+    roles:
+        # List roles that are allowed to describe places (exits and rooms).
+        can_desc_places: 
+            - builder
+            # - another_role
+        # List roles that are allowed to describe anything.
+        can_desc_anything:
+            - admin
+            # - another_role
+shortcuts:
+    roots:
+        "l": "look"
+        "desc": "describe"
+        "outfits": "outfit"
+        
+    full:
+        "outfit/create": "outfit/set"
+        "outfit/add" : "outfit/set"
+        "outfit/remove" : "outfit/delete"
+        "detail/add" : "detail/set"
+        "detail/create" : "detail/set"
+        "detail/remove" : "detail/delete"

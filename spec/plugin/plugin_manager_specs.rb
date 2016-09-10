@@ -53,13 +53,10 @@ module AresMUSH
     describe :config_files do
       it "should find all the config files in the plugin config dirs" do
        PluginManager.stub(:plugin_path) { "plugins" }
-       search1 = File.join("plugins", "**", "config*.yml")
-       search2 = File.join("plugins", "**", "shortcut*.yml")
-       files1 = [ "a" ]
-       files2 = [ "b", "c" ]
-       Dir.should_receive(:[]).with(search1) { files1 }
-       Dir.should_receive(:[]).with(search2) { files2 }
-       PluginManager.config_files.should eq [ "a", "b", "c" ]
+       search = File.join("plugins", "**", "config*.yml")
+       files = [ "b", "c" ]
+       Dir.should_receive(:[]).with(search) { files }
+       PluginManager.config_files.should eq [ "b", "c" ]
       end
     end
     describe :plugin_files do

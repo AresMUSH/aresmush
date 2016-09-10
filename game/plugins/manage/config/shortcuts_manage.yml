@@ -1,6 +1,0 @@
-shortcuts:
-    roots:
-        "ex": "examine"
-        "search": "find"
-        "name" : "rename"
-        "nuke" : "destroy"
