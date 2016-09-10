@@ -31,6 +31,7 @@ module AresMUSH
           plugin_manager.stub(:load_plugin)
           plugin_manager.stub(:unload_plugin)
           locale.stub(:load!)
+          Help::Interface.stub(:load_help)
           config_reader.stub(:read)
           client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
@@ -58,6 +59,11 @@ module AresMUSH
         
         it "should reload the config" do
           config_reader.should_receive(:read)
+          handler.handle
+        end
+
+        it "should reload the help" do
+          Help::Interface.should_receive(:load_help)
           handler.handle
         end
           

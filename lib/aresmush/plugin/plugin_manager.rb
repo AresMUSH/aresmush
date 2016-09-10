@@ -21,8 +21,11 @@ module AresMUSH
 
     def self.config_files
       config = Dir[File.join(PluginManager.plugin_path, "**", "config*.yml")]
-      config.concat Dir[File.join(PluginManager.plugin_path, "**", "help*.yml")]
       config.concat Dir[File.join(PluginManager.plugin_path, "**", "shortcut*.yml")]
+    end
+    
+    def self.help_files
+      Dir[File.join(PluginManager.plugin_path, "*", "help", "**", "*.md")]
     end
     
     def self.plugin_files(name = nil)
