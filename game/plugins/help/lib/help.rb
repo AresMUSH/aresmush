@@ -19,7 +19,6 @@ module AresMUSH
     
     def self.command_to_category(command_root)
       match = Help.category_config.select { |k, v| v["command"].upcase == command_root.upcase }
-      puts match.inspect
       match.empty? ? nil : match.keys[0]
     end
     

@@ -1,9 +1,0 @@
-help:
-    categories:
-        main:
-            topics:
-                ictime: 
-                    toc_topic: "Game Info"
-                    dir: 'game/plugins/ictime/help/'
-                    file: 'ictime.txt'
-                    summary: "IC date and time information."
