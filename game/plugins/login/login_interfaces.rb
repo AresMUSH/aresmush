@@ -1,14 +1,5 @@
 module AresMUSH
   module Login
-    
-    class CharCreatedEvent
-      attr_accessor :client
-      
-      def initialize(client)
-        self.client = client
-      end
-    end
-    
     module Interface
       def self.terms_of_service
         Login.terms_of_service

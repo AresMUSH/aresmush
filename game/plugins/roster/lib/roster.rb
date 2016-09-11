@@ -10,5 +10,12 @@ module AresMUSH
         client.emit_success t('roster.roster_updated')
       end
     end
+    
+    def self.add_to_roster(char, contact = nil)
+      registry = char.roster_registry || RosterRegistry.new
+      registry.character = char
+      registry.contact = contact
+      registry.save!
+    end
   end
 end

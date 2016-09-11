@@ -34,12 +34,16 @@ module AresMUSH
       end
       
       def rank
-        @char.rank
+        Ranks::Interface.rank(@char)
       end
       
       # Fullname, with rank if set (e.g. Commander William Adama)
       def fullname_and_rank
-        @char.rank.nil? ? fullname : "#{@char.rank} #{fullname}"
+        rank.nil? ? fullname : "#{rank} #{fullname}"
+      end
+      
+      def callsign
+        Demographics::Interface.demographic(@char, :callsign)
       end
       
       # Fullname with rank and callsign, if set.  (e.g. Commander William "Husker" Adama)
@@ -47,9 +51,9 @@ module AresMUSH
         return "" if !fullname
         first_name = fullname.first(" ")
         last_name = fullname.rest(" ")
-        rank = @char.rank ? "#{@char.rank} " : ""
-        callsign = @char.callsign ? "\"#{@char.callsign}\" " : ""
-        "#{rank}#{first_name} #{callsign}#{last_name}"
+        rank_str = rank ? "#{rank} " : ""
+        callsign_str =  callsign ? "\"#{@char.callsign}\" " : ""
+        "#{rank_str}#{first_name} #{callsign_str}#{last_name}"
       end
       
       def fullname

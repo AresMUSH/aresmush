@@ -18,5 +18,8 @@ module AresMUSH
       lt.strftime Global.read_config("date_and_time", "long_date_format")
     end
     
+    def self.timezone(char)
+      char.timezone
+    end
   end
 end

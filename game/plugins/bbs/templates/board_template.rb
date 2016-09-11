@@ -82,7 +82,7 @@ module AresMUSH
       end
       
       def post_date(post)
-        OOCTime.local_short_timestr(self.client, post.created_at)
+        OOCTime::Interface.local_short_timestr(self.client, post.created_at)
       end
     end
     

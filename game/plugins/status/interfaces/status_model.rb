@@ -31,7 +31,7 @@ module AresMUSH
       # AFK trumps all
       return "AFK" if self.is_afk?
       # Admins can be on duty or OOC
-      return "ADM" if self.is_admin? && self.is_on_duty?
+      return "ADM" if Roles::Interface.is_admin?(self) && self.is_on_duty?
       return "OOC" if Status.can_be_on_duty?(self)
       # Playerbits are always OOC
       return "OOC" if self.is_playerbit

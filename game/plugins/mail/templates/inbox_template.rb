@@ -70,7 +70,7 @@ module AresMUSH
       end
 
       def message_date(msg)
-        OOCTime.local_short_timestr(self.client, msg.created_at)
+        OOCTime::Interface.local_short_timestr(self.client, msg.created_at)
       end
       
       # Message sent to or sent from, depending on the inbox mode.

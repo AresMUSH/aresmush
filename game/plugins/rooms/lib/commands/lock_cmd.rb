@@ -34,7 +34,7 @@ module AresMUSH
         return t('rooms.no_roles_specified') if cmd.root_is?("lock") && self.lock_keys.empty?
         
         self.lock_keys.each do |k|
-          return t('rooms.exit_lock_not_valid_role', :name => k) if !Roles.valid_role?(k)
+          return t('rooms.exit_lock_not_valid_role', :name => k) if !Roles::Interface.valid_role?(k)
         end
         return nil
       end

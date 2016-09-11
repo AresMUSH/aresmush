@@ -120,7 +120,7 @@ module AresMUSH
       end
 
       def rank
-        @char.rank
+        Ranks::Interface.rank(@char)
       end
             
       def background

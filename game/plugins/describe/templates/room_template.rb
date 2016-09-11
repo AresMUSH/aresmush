@@ -122,12 +122,12 @@ module AresMUSH
       end
       
       def weather
-         w = Weather.weather_for_area(@room.area)
+         w = Weather::Interface.weather_for_area(@room.area)
          w ? "#{w}%R" : ""
       end
       
       def ooc_time
-        OOCTime.local_long_timestr(self.client, Time.now)
+        OOCTime::Interface.local_long_timestr(self.client, Time.now)
       end
       
       def foyer_exits

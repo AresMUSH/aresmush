@@ -97,13 +97,13 @@ module AresMUSH
       end
       
       def submitted_on
-        OOCTime.local_short_timestr(@client, @job.created_at)
+        OOCTime::Interface.local_short_timestr(@client, @job.created_at)
       end
       
       # Title above each reply showing the reply author and date
       def reply_title(reply)
         name = reply.author.nil? ? t('jobs.deleted_author') : reply.author.name
-        date = OOCTime.local_long_timestr(@client, reply.created_at)
+        date = OOCTime::Interface.local_long_timestr(@client, reply.created_at)
         t('jobs.reply_title', :name => name, :date => date)
       end
 

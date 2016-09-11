@@ -119,7 +119,7 @@ module AresMUSH
       end
       
       def approval_status
-        status = Chargen.approval_status(@char)
+        status = Chargen::Interface.approval_status(@char)
         center(status, 23)
       end
       

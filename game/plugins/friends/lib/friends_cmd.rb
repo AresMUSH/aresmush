@@ -18,7 +18,7 @@ module AresMUSH
           if (friend_char.client)
             connected = t('friends.connected')
           else
-            connected = OOCTime.local_long_timestr(client, friend_char.last_on)
+            connected = OOCTime::Interface.local_long_timestr(client, Manage::Interface.last_on(friend_char))
           end
           text << "%R#{friend_char.name.ljust(25)} #{connected}"
           

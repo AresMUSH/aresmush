@@ -19,9 +19,10 @@ module AresMUSH
         client.program[:idle_queue] = {}
         
         Character.each do |c|
-          next if !c.last_on
+          last_on = Manage::Interface.last_on(c)
+          next if !last_on
           next if Idle.is_exempt?(c)
-          idle_secs = Time.now - c.last_on
+          idle_secs = Time.now - last_on
           idle_timeout = Global.read_config("idle", "days_before_idle")
           if (idle_secs / 86400 > idle_timeout)
             if (c.is_approved?)

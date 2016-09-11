@@ -17,6 +17,10 @@ module AresMUSH
       def self.is_in_stage?(char, stage_name)
         Chargen.is_in_stage?(char, stage_name)
       end
+      
+      def self.approval_status(char)
+        Chargen.approval_status(char)
+      end
     end    
   end
 end

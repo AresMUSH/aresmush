@@ -28,7 +28,7 @@ module AresMUSH
         if (a.client)
           connected = a.is_on_duty? ? t('roles.connected_on_duty') : t('roles.connected_off_duty')
         else
-          connected = t('roles.offline') #OOCTime.local_long_timestr(self.client, a.last_on)
+          connected = t('roles.offline')
         end
         return connected
       end

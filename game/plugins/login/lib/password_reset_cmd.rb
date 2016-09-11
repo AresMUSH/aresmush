@@ -37,7 +37,7 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
           
-          if (char.is_master_admin?)
+          if (Roles::Interface.is_master_admin?(char))
             client.emit_failure t('login.cant_reset_master_admin_password')
             return
           end

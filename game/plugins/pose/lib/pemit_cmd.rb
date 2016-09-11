@@ -31,7 +31,7 @@ module AresMUSH
             if (c.char.nospoof)
               nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => client.name)}%xn%R"
             end
-            c.emit "#{c.char.autospace}#{nospoof}#{self.message}"
+            c.emit "#{Utils::Interface.autospace(c.char)}#{nospoof}#{self.message}"
           end
         end
       end

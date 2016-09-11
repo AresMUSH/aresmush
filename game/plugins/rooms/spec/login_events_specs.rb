@@ -12,7 +12,7 @@ module AresMUSH
         @room = double
         @client.stub(:room) { @room }
 
-        Describe.stub(:get_desc)
+        Describe::Interface.stub(:desc_template)
         @room.stub(:emit_ooc)
         
         @login = LoginEvents.new

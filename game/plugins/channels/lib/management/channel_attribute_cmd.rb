@@ -97,7 +97,7 @@ module AresMUSH
           return nil
         end
         self.attribute.split(",").each do |r|
-          return t('channels.invalid_channel_role', :name => r) if !Roles.valid_role?(r)
+          return t('channels.invalid_channel_role', :name => r) if !Roles::Interface.valid_role?(r)
         end
         return nil
       end

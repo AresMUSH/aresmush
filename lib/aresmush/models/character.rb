@@ -6,6 +6,14 @@ module AresMUSH
     
     register_default_indexes with_unique_name: true
 
+    def name_and_alias
+      if (self.alias.blank?)
+        name
+      else
+        "#{name} (#{self.alias})"
+      end
+    end
+
     def api_character_id
       data = "#{Game.master.api_game_id}#{id}"
       Base64.strict_encode64(data).encode('ASCII-8BIT')

@@ -41,7 +41,7 @@ module AresMUSH
       end
       
       def approval_status
-        status = Chargen.approval_status(@char)
+        status = Chargen::Interface.approval_status(@char)
         center(status, 23)
       end
       
@@ -184,7 +184,7 @@ module AresMUSH
       end
 
       def rank
-        format_field @char.rank
+        format_field Ranks::Interface.rank(@char)
       end
     end
   end

@@ -13,7 +13,6 @@ module AresMUSH
           text << "%r"
           text << status
           text << last_on
-          text << location
           text << timezone
           text << played_by
           text << alts
@@ -29,7 +28,7 @@ module AresMUSH
       
       def status
         text = format_field_title t('profile.status')
-        text << Chargen.approval_status(@char)
+        text << Chargen::Interface.approval_status(@char)
         text
       end
       
@@ -51,20 +50,14 @@ module AresMUSH
         if (@char.client)
           text << t('profile.currently_connected')
         else
-          text << OOCTime.local_long_timestr(self.client, @char.last_on)
+          text << OOCTime::Interface.local_long_timestr(self.client, Manage::Interface.last_on(@char))
         end
         text
       end
       
       def timezone
         text = format_field_title t('profile.timezone')
-        text << @char.timezone
-        text
-      end
-      
-      def location
-        text = format_field_title t('profile.location')
-        text << Who.who_room_name(@char)
+        text << OOCTime::Interface.timezone(@char)
         text
       end
       

@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def mail
-        mail_text = @char.has_unread_mail? ? t('notices.unread_mail') : t('notices.no_unread_mail')
+        mail_text = Mail::Interface.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
         if (@char.handle)
           Character.find_by_handle(@char.handle).each do |alt|
             next if alt == @char

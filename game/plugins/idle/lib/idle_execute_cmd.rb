@@ -30,7 +30,7 @@ module AresMUSH
             idle_char.destroy
           when "Roster"
             Global.logger.debug "#{idle_char.name} added to roster."
-            Roster.add_to_roster(idle_char)
+            Roster::Interface.add_to_roster(idle_char)
             report << "#{idle_char.name} - #{t('idle.added_to_roster')}"
           when "Warn"
             Global.logger.debug "#{idle_char.name} idle warned."

@@ -19,7 +19,7 @@ module AresMUSH
     def self.census_by(&block)
       counts = {}
       Idle::Interface.active_chars.each do |c|
-        next if Idle::Interfaces.idled_status(c)
+        next if Idle::Interface.idled_status(c)
         val = yield(c)
         if (!val.nil?)
           count = counts.has_key?(val) ? counts[val] : 0

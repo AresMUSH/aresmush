@@ -48,7 +48,7 @@ module AresMUSH
           message = PoseFormatter.format(name, self.message)
           recipients = clients.map { |r| r.char.name_and_alias }.join(", ")
         
-          client.emit t('page.to_sender', :autospace => client.char.autospace, :color => page_color, :recipients => recipients, :message => message)
+          client.emit t('page.to_sender', :autospace => Utils::Interface.autospace(client.char), :color => page_color, :recipients => recipients, :message => message)
           clients.each do |c|
             page_recipient(c, recipients, message)
           end
@@ -61,12 +61,12 @@ module AresMUSH
       def page_recipient(other_client, recipients, message)
         if (other_client.char.do_not_disturb)
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_client.name)
-          Mail.send_mail([other_client.name], 
+          Mail::Interface.send_mail([other_client.name], 
               t('page.missed_page_subject', :name => client.name), 
               t('page.missed_page_body', :name => client.name, :message => message), 
               client)
         else          
-          other_client.emit t('page.to_recipient', :autospace => other_client.char.autospace, :color => page_color, :recipients => recipients, :message => message)
+          other_client.emit t('page.to_recipient', :autospace => Utils::Interface.autospace(other_client.char), :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client)
         end
       end

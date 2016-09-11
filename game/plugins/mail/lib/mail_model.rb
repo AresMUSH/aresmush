@@ -8,6 +8,10 @@ module AresMUSH
     field :copy_sent_mail, :type => Boolean, :default => false
     field :mail_filter, :type => String, :default => "Inbox"
     
+    def has_unread_mail?
+      mail.any? { |m| !m.read }
+    end
+    
     def unread_mail
       mail.select { |m| !m.read }
     end
