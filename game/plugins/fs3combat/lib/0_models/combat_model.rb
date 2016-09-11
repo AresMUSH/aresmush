@@ -1,6 +1,5 @@
 module AresMUSH
   class Character
-    field :treat_skill, :type => String
     field :last_treated, :type => Time
     
     has_one :combatant

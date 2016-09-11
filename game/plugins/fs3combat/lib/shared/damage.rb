@@ -56,10 +56,14 @@ module AresMUSH
        mod
      end
      
+     def self.treat_skill
+       Global.read_config("fs3combat", "treat_skill")
+     end
+     
      def self.heal_wounds(char, wounds, was_treated = false, treat_roll = 0)
        return if wounds.empty?
        
-       ability = Global.read_config("fs3combat", "toughness_aptitude")
+       ability = Global.read_config("fs3combat", "toughness_attribute")
        roll_params = FS3Skills::RollParams.new(ability, 0, ability)
        tough_roll = FS3Skills::Interface.one_shot_roll(nil, char, roll_params)
 
@@ -79,8 +83,7 @@ module AresMUSH
          return t('fs3combat.no_treatable_wounds',  :healer => healer.name, :patient => patient.name)
        end
        
-       ability = healer.treat_skill || Global.read_config("fs3combat", "default_treat_skill")
-       roll_params = FS3Skills::RollParams.new(ability)
+       roll_params = FS3Skills::RollParams.new(FS3Combat.treat_skill)
        roll = FS3Skills::Interface.one_shot_roll(nil, healer, roll_params)
        
        successes = roll[:successes]

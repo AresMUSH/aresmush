@@ -37,7 +37,7 @@ module AresMUSH
         room.is_foyer
       end
       
-      def self.room_type?(room)
+      def self.room_type(room)
         room.room_type
       end
       

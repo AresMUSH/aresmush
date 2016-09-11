@@ -4,8 +4,8 @@ module AresMUSH
       include MockClient
       
       before do
-        Global.stub(:read_config).with("fs3combat", "toughness_aptitude") { "Body" }
-        Global.stub(:read_config).with("fs3combat", "default_treat_skill") { "First Aid" }
+        Global.stub(:read_config).with("fs3combat", "toughness_attribute") { "Body" }
+        Global.stub(:read_config).with("fs3combat", "treat_skill") { "First Aid" }
         SpecHelpers.stub_translate_for_testing        
       end
         
@@ -94,19 +94,7 @@ module AresMUSH
           
         end
         
-        it "should roll the char's treat ability if set" do
-          @char.stub(:treat_skill) { "ER Doc" }
-          FS3Skills::Interface.should_receive(:one_shot_roll) do |client, char, params|
-            char.should eq @char
-            params.ability.should eq "ER Doc"
-            { :successes => 2}
-          end
-          FS3Combat.should_receive(:heal_wounds).with(@target, @wounds, true, 2)
-          FS3Combat.do_treat(@char, @target).should eq "fs3combat.treat_success"
-        end
-        
-        it "should roll the default treat ability if the char doesn't have one" do
-          @char.stub(:treat_skill) { nil }
+        it "should roll the default treat ability" do
           FS3Skills::Interface.should_receive(:one_shot_roll) do |client, char, params|
             char.should eq @char
             params.ability.should eq "First Aid"

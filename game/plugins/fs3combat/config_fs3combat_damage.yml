@@ -6,7 +6,7 @@ fs3combat:
             - admin
             
     # Which skill is used for treat rolls if you don't specify anything.
-    default_treat_skill: "First Aid"
+    treat_skill: "First Aid"
     
     # Which aptitude is used for toughness-related rolls.
     toughness_attribute: "Athletic"
