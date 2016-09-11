@@ -18,7 +18,8 @@ module AresMUSH
       end
     
       def char_status(char)
-        left("#{Status.status_color(char.status)}#{char.status}%xn", 6)
+        status = Status::Interface.status(char)
+        left("#{Status::Interface.status_color(status)}#{status}%xn", 6)
       end
    
       def char_faction(char)

@@ -75,11 +75,11 @@ module AresMUSH
         char = other_client.char
         if (char.is_afk)
           afk_message = ""
-          if (char.afk_message)
-            afk_message = "(#{char.afk_message})"
+          if (Status::Interface.afk_message(char))
+            afk_message = "(#{Status::Interface.afk_message(char)})"
           end
           client.emit_ooc t('page.recipient_is_afk', :name => char.name, :message => afk_message)
-        elsif (Status.is_idle?(other_client))
+        elsif (Status::Interface.is_idle?(other_client))
           time = TimeFormatter.format(other_client.idle_secs)
           client.emit_ooc t('page.recipient_is_idle', :name => char.name, :time => time)
         end

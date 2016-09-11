@@ -61,7 +61,7 @@ module AresMUSH
        
        ability = Global.read_config("fs3combat", "toughness_aptitude")
        roll_params = FS3Skills::RollParams.new(ability, 0, ability)
-       tough_roll = FS3Skills.one_shot_roll(nil, char, roll_params)
+       tough_roll = FS3Skills::Interface.one_shot_roll(nil, char, roll_params)
 
        points = ((treat_roll + tough_roll[:successes]) / 2.0).ceil
        
@@ -81,7 +81,7 @@ module AresMUSH
        
        ability = healer.treat_skill || Global.read_config("fs3combat", "default_treat_skill")
        roll_params = FS3Skills::RollParams.new(ability)
-       roll = FS3Skills.one_shot_roll(nil, healer, roll_params)
+       roll = FS3Skills::Interface.one_shot_roll(nil, healer, roll_params)
        
        successes = roll[:successes]
        Global.logger.info "Treat: #{healer.name} treating #{patient.name}: #{roll}"

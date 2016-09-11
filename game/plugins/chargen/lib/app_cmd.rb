@@ -34,10 +34,7 @@ module AresMUSH
           title = t('chargen.app_title', :name => model.name)
           
           text = section_title(t('chargen.abilities_review_title'))
-          text << FS3Skills.app_review(model)
-          text << "%r%r"
-          text << section_title(t('chargen.goals_review_title'))
-          text << FS3Skills.app_goals_review(model)
+          text << FS3Skills::Interface.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.demographics_review_title'))
           text << Demographics::Interface.app_review(model)

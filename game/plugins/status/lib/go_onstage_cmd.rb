@@ -22,12 +22,12 @@ module AresMUSH
         # No need to save because move will do it.
         char.room.emit_ooc t('status.go_ic', :name => char.name)
         icloc.emit_ooc t('status.go_ic', :name => char.name)
-        Rooms.move_to(client, client.char, icloc)
+        Rooms::Interface.move_to(client, client.char, icloc)
       end
       
       def get_icloc(char)
         icloc_id = char.last_ic_location_id
-        ic_start_room = Game.master.ic_start_room
+        ic_start_room = Rooms::Interface.ic_start_room
         icloc = ic_start_room
         if (!icloc_id.nil? && !cmd.switch_is?("reset"))
           icloc = Room.find(icloc_id)

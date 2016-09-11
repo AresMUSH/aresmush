@@ -1,19 +1,6 @@
 module AresMUSH
   module FS3Skills
-    class RollParams
-      
-      attr_accessor :ability, :modifier, :related_apt
-      
-      def initialize(ability, modifier = 0, related_apt = nil)
-        self.ability = ability
-        self.modifier = modifier
-        self.related_apt = related_apt
-      end
     
-      def to_s
-        "#{self.ability} mod=#{self.modifier} related_apt=#{self.related_apt}"
-      end
-    end
     
     # Expects titleized ability name
     # Makes an ability roll and returns the raw dice results.

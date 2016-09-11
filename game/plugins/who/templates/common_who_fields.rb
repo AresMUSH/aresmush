@@ -37,7 +37,7 @@ module AresMUSH
     
       # Total characters online and IC.
       def ic_total
-        ic = self.online_chars.select { |c| c.is_ic? }
+        ic = self.online_chars.select { |c| Status::Interface.is_ic?(c) }
         center(t('who.players_ic', :count => ic.count), 25)
       end
     

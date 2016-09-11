@@ -3,13 +3,8 @@ module AresMUSH
     field :last_ic_location_id, :type => BSON::ObjectId
     field :afk_message, :type => String
     field :is_afk, :type => Boolean
-    field :is_approved, :type => Boolean
     field :is_on_duty, :type => Boolean, :default => true
-    field :is_playerbit, :type => Boolean
-    
-    def is_approved?
-      is_approved
-    end
+    field :is_playerbit, :type => Boolean    
     
     def is_afk?
       is_afk
@@ -24,21 +19,21 @@ module AresMUSH
     end
     
     def is_ic?
-      self.room.room_type == "IC"
+      Rooms::Interface.room_type(self.room) == "IC"
     end
     
     def status
       # AFK trumps all
-      return "AFK" if self.is_afk?
+      return "AFK" if char.is_afk?
       # Admins can be on duty or OOC
-      return "ADM" if Roles::Interface.is_admin?(self) && self.is_on_duty?
-      return "OOC" if Status.can_be_on_duty?(self)
+      return "ADM" if Roles::Interface.is_admin?(char) && char.is_on_duty?
+      return "OOC" if Status.can_be_on_duty?(char)
       # Playerbits are always OOC
-      return "OOC" if self.is_playerbit
+      return "OOC" if char.is_playerbit
       # New trumps room type
-      return "NEW" if !self.is_approved
+      return "NEW" if !char.is_approved
       # Otherwise use room type
-      self.room.room_type
+      Rooms::Interface.room_type(char.room)
     end
   end
 end

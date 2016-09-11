@@ -11,26 +11,35 @@ module AresMUSH
     end
   end
   
+  class Game
+    belongs_to :welcome_room, :class_name => "AresMUSH::Room", :inverse_of => nil
+    belongs_to :ic_start_room, :class_name => "AresMUSH::Room", :inverse_of => nil
+    belongs_to :ooc_room, :class_name => "AresMUSH::Room", :inverse_of => nil
+        
+    def is_special_room?(room)
+      return true if room == welcome_room
+      return true if room == ic_start_room
+      return true if room == ooc_room
+      return false
+    end
+  end
+  
+  
   class Room
-    before_destroy :null_out_sources
-     
-    def null_out_sources
-      sources = Exit.where(:dest_id => self.id)
-      sources.each do |s|
-        s.dest = nil
-        s.save!
-      end
-    end
     
-    def out_exit
-      out = get_exit("O")
-      return out if out
-      out = get_exit("OUT")
-      return out
-    end
+    field :area, :type => String
+    field :grid_x, :type => String
+    field :grid_y, :type => String
+    field :room_type, :type => String, :default => "IC"
+    field :is_foyer, :type => Boolean      
+    
   end
   
   class Exit
     field :lock_keys, :type => Array, :default => []
+    
+    def allow_passage?(char)
+      return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
+    end
   end
 end

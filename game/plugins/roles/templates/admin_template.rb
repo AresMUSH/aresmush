@@ -26,7 +26,7 @@ module AresMUSH
       
       def admin_status(a)
         if (a.client)
-          connected = a.is_on_duty? ? t('roles.connected_on_duty') : t('roles.connected_off_duty')
+          connected = Status::Interface.is_on_duty?(a) ? t('roles.connected_on_duty') : t('roles.connected_off_duty')
         else
           connected = t('roles.offline')
         end

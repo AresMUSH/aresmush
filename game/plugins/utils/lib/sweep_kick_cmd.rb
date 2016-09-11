@@ -22,7 +22,7 @@ module AresMUSH
         client.room.characters.each do |c|
           other_client = c.client
           if (other_client.nil?)
-            Rooms.move_to(nil, c, outside.dest)
+            Rooms::Interface.move_to(nil, c, outside.dest)
           end
         end
         

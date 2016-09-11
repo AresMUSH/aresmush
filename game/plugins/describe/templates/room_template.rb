@@ -71,7 +71,7 @@ module AresMUSH
           text << t('describe.no_way_out')
         end
         
-        if (@room.is_foyer)
+        if (Rooms::Interface.is_foyer?(@room))
           text << foyer()
         end
 
@@ -80,7 +80,7 @@ module AresMUSH
       
       # List of all exits in the room.
       def exits
-        if (@room.is_foyer)
+        if (Rooms::Interface.is_foyer?(@room))
           non_foyer_exits
         else
           @room.exits.sort_by { |e| e.name }
@@ -113,16 +113,16 @@ module AresMUSH
       end
       
       def area
-        right(@room.area, 37)
+        right(Rooms::Interface.area(@room), 37)
       end
       
       # Room grid coordinates, e.g. (1,2)
       def grid
-        "(#{@room.grid_x},#{@room.grid_y})"
+        "(#{Rooms::Interface.grid_x(@room)},#{Rooms::Interface.grid_y(@room)})"
       end
       
       def weather
-         w = Weather::Interface.weather_for_area(@room.area)
+         w = Weather::Interface.weather_for_area(Rooms::Interface.area(@room))
          w ? "#{w}%R" : ""
       end
       
@@ -169,13 +169,14 @@ module AresMUSH
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)
-        if (char.is_afk?)
+        if (Status::Interface.is_afk?(char))
           msg = "%xy%xh<#{t('describe.afk')}>%xn"
-          if (char.afk_message)
-            msg = "#{msg} %xy#{char.afk_message}%xn"
+          afk_message = Status::Interface.afk_message(char)
+          if (afk_message)
+            msg = "#{msg} %xy#{afk_message}%xn"
           end
           msg
-        elsif (char.client && Status.is_idle?(char.client))
+        elsif (char.client && Status::Interface.is_idle?(char.client))
           "%xy%xh<#{t('describe.idle')}>%xn"
         else
           ""
@@ -187,7 +188,7 @@ module AresMUSH
       end
       
       def exit_destination(e)
-        locked = e.allow_passage?(self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
+        locked = Rooms::Interface.can_use_exit?(e, self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')
         str = "#{locked}#{name}"
         left(str, 30)

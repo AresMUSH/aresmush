@@ -1,5 +1,4 @@
 module AresMUSH
-  
   class Character
     def has_any_role?(names)
       if (!names.respond_to?(:any?))
@@ -7,8 +6,7 @@ module AresMUSH
       else
         names.any? { |n| self.roles.include?(n) }
       end
-    end
-    
+    end  
   end
   
   module Roles

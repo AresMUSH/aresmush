@@ -1,4 +1,12 @@
 module AresMUSH
+  class Character
+    field :is_approved, :type => Boolean
+    
+    def is_approved?
+      is_approved
+    end  
+  end
+  
   module Chargen
     module Interface
     

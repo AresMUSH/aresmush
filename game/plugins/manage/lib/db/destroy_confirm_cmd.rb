@@ -37,7 +37,7 @@ module AresMUSH
               if (!connected_client.nil?)
                 connected_client.emit_ooc t('manage.room_being_destroyed')
               end
-              Rooms.move_to(connected_client, c, Game.master.welcome_room)
+              Rooms::Interface.send_to_welcome_room(connected_client, c)
             end
           end
           target.destroy

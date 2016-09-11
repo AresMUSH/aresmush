@@ -12,7 +12,7 @@ module AresMUSH
       end
             
       def crack!
-        self.area = cmd.args.nil? ? client.room.area : titleize_input(cmd.args)
+        self.area = cmd.args.nil? ? Rooms::Interface.area(client.room) : titleize_input(cmd.args)
       end
       
       def handle

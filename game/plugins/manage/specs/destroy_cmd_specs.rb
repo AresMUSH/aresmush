@@ -23,7 +23,7 @@ module AresMUSH
       
       describe :handle do
         before do
-          game.stub(:is_special_room?) { false }
+          Rooms::Interface.stub(:is_special_room?) { false }
           game.stub(:is_special_char?) { false }
           Manage.stub(:can_manage_object?) { true }
           handler.crack!
@@ -41,7 +41,7 @@ module AresMUSH
           it "should emit failure if trying to destroy a special room" do
             target = double
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
-            game.stub(:is_special_room?).with(target) { true }
+            Rooms::Interface.stub(:is_special_room?).with(target) { true }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_special_rooms")
             handler.handle
           end

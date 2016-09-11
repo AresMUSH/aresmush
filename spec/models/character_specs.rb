@@ -12,7 +12,6 @@ module AresMUSH
       SpecHelpers.stub_translate_for_testing
       stub_game_master
       game.stub(:welcome_room) { nil }
-      game.stub(:ooc_room) { nil }
     end
     
     describe :found? do

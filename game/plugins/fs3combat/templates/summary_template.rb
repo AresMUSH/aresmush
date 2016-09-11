@@ -33,7 +33,7 @@ module AresMUSH
           rating = c.npc_skill
         else
           weapon_skill = FS3Combat.weapon_stat(c.weapon, "skill")
-          rating = FS3Skills.ability_rating(c.character, weapon_skill)          
+          rating = FS3Skills::Interface.ability_rating(c.character, weapon_skill)          
         end
         left("#{rating}", 5)
       end

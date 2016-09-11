@@ -30,7 +30,7 @@ module AresMUSH
           return
         end
         
-        if (!exit.allow_passage?(client.char))
+        if (!Rooms::Interface.can_use_exit?(exit, client.char))
           client.emit_failure t('rooms.cant_go_through_locked_exit')
           return
         end

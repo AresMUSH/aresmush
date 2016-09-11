@@ -28,7 +28,7 @@ module AresMUSH
             return
           end
         
-          if (Game.master.is_special_room?(target))
+          if (Rooms::Interface.is_special_room?(target))
             client.emit_failure(t('manage.cannot_destroy_special_rooms'))
             return
           end

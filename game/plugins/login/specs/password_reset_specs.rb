@@ -21,7 +21,7 @@ module AresMUSH
           @found_char.stub(:change_password)
           @found_char.stub(:name) { "name" }
           @found_char.stub(:save!)
-          Login::Interface.stub(:is_master_admin?) { false }
+          Roles::Interface.stub(:is_master_admin?) { false }
           client.stub(:emit_success)
           Login.stub(:can_reset_password?).with(char) { true }          
           Character.stub(:find_all_by_name_or_id).with("name") { [@found_char] }

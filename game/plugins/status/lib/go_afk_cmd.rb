@@ -28,7 +28,7 @@ module AresMUSH
           
         char.afk_message = self.message  
         char.is_afk = true
-        if (char.room.room_type == "IC")
+        if (Rooms::Interface.room_type(char.room) == "IC")
           char.last_ic_location_id = char.room.id
         end
         char.save     

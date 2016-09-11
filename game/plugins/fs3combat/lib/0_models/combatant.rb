@@ -143,10 +143,10 @@ module AresMUSH
     
     def roll_ability(ability, mod = 0)
       if (is_npc?)
-        result = FS3Skills.one_shot_die_roll(self.npc_skill + mod)
+        result = FS3Skills::Interface.one_shot_die_roll(self.npc_skill + mod)
       else
         params = FS3Skills::RollParams.new(ability, mod)
-        result = FS3Skills.one_shot_roll(nil, self.character, params)
+        result = FS3Skills::Interface.one_shot_roll(nil, self.character, params)
       end
       result[:successes]
     end
