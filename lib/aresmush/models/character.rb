@@ -2,10 +2,19 @@ module AresMUSH
   class Character
     include ObjectModel
 
+    field :handle, :type => String
+    field :handle_id, :type => String
+
     belongs_to :room, :class_name => 'AresMUSH::Room', :inverse_of => nil
     
     register_default_indexes with_unique_name: true
-
+    
+    def self.find_by_handle(name)
+      return [] if name.nil?
+      Character.all.select { |c| (c.handle.nil? ? "" : c.handle.downcase) == name.downcase }
+    end
+    
+    
     def name_and_alias
       if (self.alias.blank?)
         name

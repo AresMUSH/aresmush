@@ -70,7 +70,7 @@ module AresMUSH
     
     def self.mark_read_for_player(char, post)
       post.mark_read(char)
-      Character.find_by_handle(char.handle).each do |alt|
+      Handle::Interface.alts(char).each do |alt|
         post.mark_read(alt)
       end
     end

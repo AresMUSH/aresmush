@@ -6,7 +6,7 @@ en:
 
     dispatcher:
         unexpected_error: |
-          Sorry! The code lost its mind while executing this command.  Not your fault.
+          Sorry! The code lost its mind while executing a command.  Not your fault.
           Please send this error information to the admins and tell them what you were doing at the time:
           Description: "%{desc}"
           Error: "%{error_info}"

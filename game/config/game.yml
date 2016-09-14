@@ -1,7 +1,7 @@
 ---
 game:
-  name: Test Site
+  name: Local Test
   category: Other
   description: Just testing.
-  website: ''
-  game_open: true
+  website: 'http://aresmush.com'
+  public_game: true

@@ -32,13 +32,12 @@ module AresMUSH
         text << "%R%l2"
         
         client.char.handle_friends.each do |f|
-          visible_alts = Handles.find_visible_alts(f, client.char)
+          visible_alts = Handles::Interface.alts_of(f)
           if (visible_alts.any?)
             text << "%R#{f.ljust(25)} #{visible_alts.map { |a| a.name }.join(" ")}"
           end
         end
         text << "%R%R"
-        text << t('friends.alts_notice')
         
         client.emit BorderedDisplay.text text
       end

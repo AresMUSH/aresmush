@@ -1,5 +1,4 @@
 require 'eventmachine'
-require 'em-websocket'
 
 module AresMUSH
   class Server

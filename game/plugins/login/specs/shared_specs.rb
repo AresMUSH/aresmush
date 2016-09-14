@@ -56,34 +56,18 @@ module AresMUSH
           Login.wants_announce(@listener, @connector).should eq false
         end
         
-        it "should want announce if friends-only and have friended a char" do
-          @listener.stub(:watch) { "friends" }
-          @listener.stub(:has_friended_char?).with(@connector) { true }
-          Login.wants_announce(@listener, @connector).should eq true
-        end
-        
         it "should not want announce if friends-only and have not friended a char" do
           @listener.stub(:watch) { "friends" }
-          @listener.stub(:has_friended_char?).with(@connector) { false }
-          @listener.stub(:has_friended_handle?).with(@connector) { false }
+          Friends::Interface.stub(:is_friend?).with(@listener, @connector) { false }
           Login.wants_announce(@listener, @connector).should eq false
         end
         
-        it "should want announce if friends-only and have friended a visible handle" do
+        it "should want announce if friends-only and have friended a  handle" do
           @listener.stub(:watch) { "friends" }
-          @listener.stub(:has_friended_char?).with(@connector) { false }
-          @listener.stub(:has_friended_handle?).with(@connector) { true }
-          @connector.stub(:handle_visible_to?).with(@listener) { true }
+          Friends::Interface.stub(:is_friend?).with(@listener, @connector) { true }
           Login.wants_announce(@listener, @connector).should eq true
         end
         
-        it "should not want announce if friends-only and have friended a non-visible handle" do
-          @listener.stub(:watch) { "friends" }
-          @listener.stub(:has_friended_char?).with(@connector) { false }
-          @listener.stub(:has_friended_handle?).with(@connector) { true }
-          @connector.stub(:handle_visible_to?).with(@listener) { false }
-          Login.wants_announce(@listener, @connector).should eq false
-        end
       end
     end
   end

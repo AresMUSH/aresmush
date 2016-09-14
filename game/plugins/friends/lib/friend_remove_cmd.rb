@@ -22,16 +22,14 @@ module AresMUSH
       end
       
       def handle
-        if (self.name.start_with?("@"))
-          Friends.remove_handle_friend(client, self.name)
-        else
-          error = Friends.remove_friend(client.char, self.name)
-          if (error)
-            client.emit_failure error
-          else
-            client.emit_success t('friends.friend_removed', :name => self.name)
-          end   
-        end     
+        result = Friends.find_friendship(char, friend_name)
+      
+        if (result[:friendship].nil?)
+          return client.emit_failure result[:error]
+        end
+      
+        result[:friendship].destroy
+        client.emit_success t('friends.friend_removed', :name => self.name)        
       end
     end
   end

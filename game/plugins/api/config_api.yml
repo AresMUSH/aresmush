@@ -1,0 +1,13 @@
+api:
+    # Set up when you want the game sync with AresCentral to run.  
+    # See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    cron:
+        #date: 1
+        #day_of_week: Sat
+        hour: 04
+        minute: 00
+        
+    # You shouldn't need to change this unless AresCentral moves
+    #arescentral_url: "http://arescentral.aresmush.com"
+    arescentral_url: "http://localhost:9292"

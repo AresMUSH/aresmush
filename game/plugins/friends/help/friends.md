@@ -16,4 +16,4 @@ The Friends system helps you to interact with people you have designated as your
 
 You can use the friends list to control whose connect/disconnect messages you see.  See `help watch`.
 
-You can have characters OR handles as friends.  When you add a handle as a friend, it is automatically shared across all the characters linked to your your handle.  If your friend's privacy settings allow it, you can see their alts on your friends list, which helps you find out if anyone else you know is playing on this game.
+If you have an AresMUSH Player Handle, you can add other players as your friends at AresCentral.  These friendships will apply to all Ares games, so you can easily find out which of your friends are playing here.  For more information on player handles, see: http://aresmush.com/handles/.

@@ -5,10 +5,10 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandRequiresArgs
       
-      attr_accessor :handle_name, :code
+      attr_accessor :handle_name, :link_code
 
       def initialize
-        self.required_args = ['handle_name', 'code']
+        self.required_args = ['handle_name', 'link_code']
         self.help_topic = 'handle'
         super
       end
@@ -20,34 +20,36 @@ module AresMUSH
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.handle_name = cmd.args.arg1
-        self.code = cmd.args.arg2
+        self.link_code = cmd.args.arg2
       end
       
-      def check_is_handle
-        return t('handles.invalid_handle') if !Handles.handle_name_valid?(self.handle_name)
+      def check_handle_name
+        #return t('handles.character_already_linked') if client.char.handle
         return nil
       end
       
       def handle
-        if (client.char.handle)
-          client.emit_failure t('handles.character_already_linked')
-          return
-        end
-        client.emit_success t('handles.sending_link_request')
-        args = ApiLinkCmdArgs.new(handle, client.char.api_character_id, client.name, link_code)
-        cmd = ApiCommand.new("link", args.to_s)
-        Global.api_router.send_command(ServerInfo.arescentral_game_id, client, cmd)
-        
         char = client.char
-        char.handle = self.args.handle_name
-        char.handle_privacy = Handles.privacy_friends
-        char.handle_sync = true
-        char.save!
-        client.emit_success t('handles.link_successful', :handle => self.args.handle_name)
-        client.emit_ooc t('handles.privacy_set', :value => Handles.privacy_friends)
-        # TODO Is sync necessary?  Can't we just set info here?
-        Handles.sync_char_with_master(client)
+
+        # Strip off the @ a thte front if they made one.
+        self.handle_name.sub!(/^@/, '')
         
+        AresMUSH.with_error_handling(client, "Linking char to AresCentral handle.") do
+          Global.logger.info "Linking #{char.name} to #{self.handle_name}."
+        
+          connector = Api::AresCentralConnector.new
+          response = connector.link_char(self.handle_name, self.link_code, char.name, char.id.to_s)
+        
+          if (response.is_success?)
+            char.handle = response.data["handle_name"]
+            char.handle_id = response.data["handle_id"]
+            char.save!
+        
+            client.emit_success t('handles.link_successful', :handle => self.handle_name)
+          else
+            client.emit_failure t('handles.link_failed', :error => response.error_str)
+          end   
+        end     
       end      
     end
 

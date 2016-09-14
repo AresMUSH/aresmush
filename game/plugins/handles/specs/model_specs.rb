@@ -24,35 +24,6 @@ module AresMUSH
         end
       end
       
-      describe :can_see_handle do
-        before do
-          @char = Character.new(name: "Bob")
-          @other = Character.new(name: "Harry")
-          @char.stub(:has_friended_char_or_handle?).with(@other) { false }
-        end
-        
-        it "should return true if handle public" do
-          @char.handle_privacy = Handles.privacy_public
-          @char.handle_visible_to?(@other).should eq true
-        end
-        
-        it "should return true if handle friends-only and a friend" do
-          @char.handle_privacy = Handles.privacy_friends
-          @char.stub(:has_friended_char_or_handle?).with(@other) { true }
-          @char.handle_visible_to?(@other).should eq true
-        end
-        
-        it "should return false if handle friends-only and not a friend" do
-          @char.handle_privacy = Handles.privacy_friends
-          @char.handle_visible_to?(@other).should eq false
-        end
-        
-        it "should return false if handle private" do
-          @char.handle_privacy = Handles.privacy_admin
-          @char.handle_visible_to?(@other).should eq false
-        end
-      end
-      
       
       describe :ooc_name do
         before do
@@ -63,31 +34,15 @@ module AresMUSH
           @char.ooc_name.should eq "Bob"
         end
         
-        it "should display a char with a private handle" do
-          @char.handle = "@Star"
-          @char.handle_privacy = Handles.privacy_admin
-          @char.ooc_name.should eq "Bob"
-        end
 
         it "should display a char with a public handle" do
           @char.handle = "@Star"
-          @char.handle_privacy = Handles.privacy_public
-          
           @char.ooc_name.should eq "Bob (@Star)"
-          
-        end
-        
-        it "should display a char with a private handle and alias" do
-          @char.handle = "@Star"
-          @char.alias = "B"
-          @char.handle_privacy = Handles.privacy_admin
-          @char.ooc_name.should eq "Bob"
         end
         
         it "should display a char with a public handle and alias" do
           @char.handle = "@Star"
           @char.alias = "B"
-          @char.handle_privacy = Handles.privacy_public
           @char.ooc_name.should eq "Bob (@Star)"
         end
         
@@ -95,7 +50,6 @@ module AresMUSH
           @char.handle = "@Star"
           @char.name = "Star"
           @char.alias = "B"
-          @char.handle_privacy = Handles.privacy_public
           @char.ooc_name.should eq "Star (@Star)"
         end
       end

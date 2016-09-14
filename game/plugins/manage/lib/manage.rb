@@ -3,6 +3,10 @@ module AresMUSH
     def self.can_manage_game?(actor)
       return false if actor.nil?
       can_manage = true
+      
+      # This prevents you from getting in a situation where you mess up your role config and then
+      # can't fix it without shutting down the game.  If we can't read the roles, we warn you and
+      # just assume anyone can access management commands.
       AresMUSH.with_error_handling(nil, "Your game configuration is not secure.  Anyone can access admin commands.") do
         can_manage = actor.has_any_role?(Global.read_config("manage", "roles", "can_manage_game"))
       end

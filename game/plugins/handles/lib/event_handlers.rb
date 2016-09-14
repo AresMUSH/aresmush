@@ -2,46 +2,35 @@ module AresMUSH
   module Handles
     class HandlesEventHandler
       include CommandHandler
-      
-      attr_accessor :last_server_info
-    
+          
       def on_char_connected_event(event)
-        Handles.sync_char_with_master(event.client)
-      end
-      
-      def on_game_started_event(event)
-        # TODO!!
-        return
-        server_config = Global.read_config("server")
-        game_config = Global.read_config("game")
-      
-        args = ApiRegisterCmdArgs.new(
-           server_config['hostname'], 
-           server_config['port'], 
-           game_config['name'], 
-           game_config['category'],
-           game_config['description'],
-           game_config["website"],
-           game_config["game_open"])
-       
-        cmd = ApiCommand.new("register/update", args.to_s)
-        Global.api_router.send_command(ServerInfo.arescentral_game_id, nil, cmd)
-      end
-      
-      def on_cron_event(event)
-        # TODO!!
-        return
-        config = Global.read_config("api", "cron")
-        return if !Cron.is_cron_match?(config, event.time)
-        return if Global.api_router.is_master?
+        char = event.client.char
+        return if !char.handle_id
         
-        chars = []
-        Global.client_monitor.logged_in_clients.each do |c|
-          chars << "#{c.name}:#{c.char.handle}"
-        end
-        args = ApiPingCmdArgs.new(chars)
-        cmd = ApiCommand.new("ping", args.to_s)
-        Global.api_router.send_command ServerInfo.arescentral_game_id, nil, cmd
+        AresMUSH.with_error_handling(event.client, "Syncing handle with AresCentral.") do
+          connector = Api::AresCentralConnector.new
+        
+          Global.logger.info "Updating handle for #{char.handle_id}"
+          response = connector.sync_handle(char.handle_id, char.name, char.id)
+          
+          if (response.is_success?)
+            if (response.data["linked"])
+              char.autospace = response.data["autospace"]
+              char.timezone = response.data["timezone"]
+              Friends::Interface.sync_handle_friends(char, response.data["friends"])
+              char.save!
+              event.client.emit_success t('handles.handle_synced')              
+            else
+              char.handle_id = nil
+              char.handle = nil
+              char.save
+              event.client.emit_success t('handles.handle_no_longer_linked')
+              return
+            end
+          else
+            raise "Response failed: #{response}"
+          end
+        end   
       end
     end
   end

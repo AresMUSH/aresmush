@@ -39,7 +39,7 @@ module AresMUSH
         next if !c.is_online?
         online_chars << c
       end
-      online_chars = online_chars.map { |c| "#{c.ooc_name}#{gag_text(c, channel)}" }
+      online_chars = online_chars.map { |c| "#{Handles::Interface.ooc_name(c)}#{gag_text(c, channel)}" }
       t('channels.channel_who', :name => channel.display_name, :chars => online_chars.join(", "))
     end
     

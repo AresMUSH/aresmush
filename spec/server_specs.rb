@@ -21,7 +21,6 @@ module AresMUSH
         @server = Server.new
         dispatcher.stub(:queue_event)
         game.stub(:welcome_room) { nil }
-        EventMachine::WebSocket.stub(:start).and_yield(double)
         EventMachine.stub(:run).and_yield
         EventMachine.stub(:add_periodic_timer)
         EventMachine.stub(:start_server)

@@ -4,6 +4,3 @@ server:
 
     # The port number your game will listen on for general connections
     port: 4201
-    
-    # The port number your game uses for web connections. This must be different than the regular one.
-    websocket_port: 4202

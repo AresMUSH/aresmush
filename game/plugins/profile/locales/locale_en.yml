@@ -6,17 +6,16 @@ en:
         played_by: "Played By:"
         timezone: "Timezone:"
         status: "Status:"
-        alts: "Alts (*): "
-        alts_notice: "(*) Alt visibility is based on the player's privacy settings.  Do not share this info with others."
+        alts: "Alts: "
         
         profile_title: "Public Profile:"
-        profile_char_list_title: "Alts (*)"
-        no_public_profile: "%{name} does not have a public profile."
+        profile_char_list_title: "Alts"
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."
         ooc_profile_title: "OOC Profile"
         no_profile_set: "None set"
         profile_set: "You set your profile."
-        see_handle_profile: "See also: %xcprofile %{handle}%xn"
+        handle: "Handle:"
+        handle_profile: "Profile:"
         
         
         custom_profile_set: "Custom profile field %{field} set."

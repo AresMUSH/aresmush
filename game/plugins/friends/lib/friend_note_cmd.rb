@@ -24,19 +24,15 @@ module AresMUSH
       end
       
       def handle
-        if (self.name.start_with?("@"))
-          client.emit_ooc t('friends.note_on_arescentral_only')
+        result = Friends.find_friendship(client.char, self.name)
+        friendship = result[:friendship]
+        if (friendship.nil?)
+          client.emit_failure result[:error]
         else
-          result = Friends.find_friendship(client.char, self.name)
-          friendship = result[:friendship]
-          if (friendship.nil?)
-            client.emit_failure result[:error]
-          else
-            friendship.note = self.note
-            friendship.save!
-            client.emit_success t('friends.note_added', :name => self.name)
-          end   
-        end     
+          friendship.note = self.note
+          friendship.save!
+          client.emit_success t('friends.note_added', :name => self.name)
+        end   
       end
     end
   end

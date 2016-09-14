@@ -13,8 +13,7 @@ module AresMUSH
       return false if listener.nil?
       return true if listener.watch == "all"
       return false if listener.watch == "none"
-      return true if listener.has_friended_char?(connector)
-      listener.has_friended_handle?(connector) && connector.handle_visible_to?(listener)
+      Friends::Interface.is_friend?(listener, connector)
     end
     
     def self.update_site_info(client)

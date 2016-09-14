@@ -5,9 +5,9 @@ module AresMUSH
     belongs_to :system_character, :class_name => "AresMUSH::Character", :inverse_of => nil
     belongs_to :master_admin, :class_name => "AresMUSH::Character", :inverse_of => nil
     
-    field :api_game_id, :type => Integer, :default => ServerInfo.default_game_id
-    field :api_key, :type => String, :default => ServerInfo.default_key
-    
+    field :api_game_id, :type => String
+    field :api_key, :type => String
+        
     # There's only one game document and this is it!
     def self.master
       Game.all.first

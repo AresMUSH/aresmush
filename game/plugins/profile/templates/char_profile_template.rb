@@ -17,7 +17,7 @@ module AresMUSH
           text << played_by
           text << alts
           text << custom_profile
-          text << handle_notice
+          text << handle_profile
                     
           BorderedDisplay.text text
       end
@@ -34,8 +34,9 @@ module AresMUSH
       
       def alts
         text = format_field_title t('profile.alts')
-        text << Handles.get_visible_alts_name_list(@char, self.client.char)
-        text << "%R%R#{t('profile.alts_notice')}"
+        alt_list = Handles::Interface.alts(@char).map { |c| c.name }
+        alt_list.delete(@char.name)
+        text << alt_list.join(" ")
         text
       end
       
@@ -66,10 +67,15 @@ module AresMUSH
         Profile.format_custom_profile(@char)
       end
       
-      def handle_notice
-        if (@char.handle && @char.handle_visible_to?(@client.char))
-          text = t('profile.see_handle_profile', :handle => @char.handle, :name => @char.name)          
-          "%R%l2%R#{center(text, 78)}"
+      def handle_profile
+        if (@char.handle)
+          arescentral = Global.read_config("server", "arescentral_url")
+          url = "#{arescentral}/handle/#{@char.handle_id}"
+          text = "%r%l2"
+          text << format_field_title(t('profile.handle'))
+          text << @char.handle
+          text << format_field_title(t('profile.handle_profile'))
+          text << url
         else
           ""
         end
