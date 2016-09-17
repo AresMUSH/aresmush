@@ -49,7 +49,6 @@ module AresMUSH
           Global.plugin_manager.load_plugin(load_target)
           Global.locale.load!
           Help::Interface.load_help
-          Global.config_reader.read
           Global.client_monitor.reload_clients
           client.emit_success t('manage.plugin_loaded', :name => load_target)
         rescue SystemNotFoundException => e

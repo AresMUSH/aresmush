@@ -25,6 +25,7 @@ module AresMUSH
           before do
             @channel.stub(:characters) { [] }
             Channels.stub(:can_use_channel) { true }
+            @channel.stub(:default_alias) { ["pu"] }
           end
           
           it "should fail if the channel is not found" do
@@ -63,6 +64,7 @@ module AresMUSH
             @channel.stub(:save!)
             @channel.stub(:emit)
             @channel.stub(:characters) { @chars }
+            @channel.stub(:default_alias) { ["pu"] }
             char.stub(:channel_options) { {} }
             char.stub(:save!)
             char.stub(:name) { "Bob" }
@@ -75,7 +77,7 @@ module AresMUSH
           end
           
           it "should set the channel alias to the default if none specified" do
-            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", ["pu", "pub"])
+            Channels.should_receive(:set_channel_option).with(char, @channel, "alias", ["pu" ])
             char.should_receive(:save!)
             handler.handle
           end

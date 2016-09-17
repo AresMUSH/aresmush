@@ -17,11 +17,7 @@ module AresMUSH
     def self.locale_files
       Dir[File.join(PluginManager.plugin_path, "**", "locale*.yml")]
     end
-
-    def self.config_files
-      Dir[File.join(PluginManager.plugin_path, "**", "config*.yml")]
-    end
-    
+   
     def self.help_files
       Dir[File.join(PluginManager.plugin_path, "*", "help", "**", "*.md")]
     end
@@ -37,11 +33,13 @@ module AresMUSH
       plugin_loader = File.join(PluginManager.plugin_path, name, "#{name}.rb")
       Global.logger.info "Loading #{plugin_loader}"
       load plugin_loader
-      mod = find_plugin_const(name)
-      if (!mod)
+      module_name = find_plugin_const(name)
+      if (!module_name)
         raise SystemNotFoundException
       end
-      @plugins << Object.const_get("AresMUSH::#{mod}").send(:load_plugin)
+      plugin_module = Object.const_get("AresMUSH::#{module_name}")
+      Global.config_reader.load_plugin_config plugin_module.plugin_dir, plugin_module.config_files
+      @plugins << plugin_module.send(:load_plugin)
     end
     
     def unload_plugin(name)
@@ -50,7 +48,7 @@ module AresMUSH
       if (!mod)
         raise SystemNotFoundException
       end
-      
+      Global.config.delete name
       @plugins.delete Object.const_get("AresMUSH::#{mod}")
       AresMUSH.send(:remove_const, "AresMUSH::#{mod}")
     end

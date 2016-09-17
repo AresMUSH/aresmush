@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       # Order here is important!
-      @config_reader.read
+      @config_reader.load_game_config
       @ares_logger.start
 
       @db.load_config

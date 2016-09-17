@@ -49,22 +49,19 @@ module AresMUSH
       end
     end
 
-    describe :read do 
+    describe :load_game_config do 
       before do
         @reader = ConfigReader.new
         ConfigReader.stub(:config_files) { ["a", "b"] }
-        PluginManager.should_receive(:config_files) { [ "c", "d" ]}        
       end
       
       it "should read the main and plugin config" do        
         parsed1 = { "c" => "d" }
-        parsed2 = { "e" => "f" }
         
         # The first {} is what makes sure the prior config was erased
         YamlFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed1 }
-        YamlFileParser.should_receive(:read).with( ["c", "d"],  parsed1 ) { parsed2 }
-        @reader.read 
-        @reader.config.should eq parsed2
+        @reader.load_game_config 
+        @reader.config.should eq parsed1
       end    
       
       it "should dispatch the update event" do
@@ -73,9 +70,8 @@ module AresMUSH
         ConfigUpdatedEvent.stub(:new) { event }
         Global.stub(:dispatcher) { dispatcher }
         YamlFileParser.should_receive(:read) { {} }
-        YamlFileParser.should_receive(:read) { {} }
         dispatcher.should_receive(:queue_event).with(event)
-        @reader.read 
+        @reader.load_game_config 
       end  
     end
   end

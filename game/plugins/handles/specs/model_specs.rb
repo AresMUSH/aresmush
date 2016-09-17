@@ -12,14 +12,14 @@ module AresMUSH
       describe :find_by_handle do
         it "should find a char with that handle" do
           using_test_db do
-            char = Character.create(name: "Test", handle: "@Bob")
-            Character.find_by_handle("@Bob").should eq [ char ]
+            char = Character.create(name: "Test", handle: "Bob")
+            Character.find_by_handle("Bob").should eq [ char ]
           end
         end
         
         it "should not find a char if none exists" do
           using_test_db do 
-            Character.find_by_handle("@Foo").should eq []
+            Character.find_by_handle("Foo").should eq []
           end
         end
       end
@@ -36,18 +36,18 @@ module AresMUSH
         
 
         it "should display a char with a public handle" do
-          @char.handle = "@Star"
+          @char.handle = "Star"
           @char.ooc_name.should eq "Bob (@Star)"
         end
         
         it "should display a char with a public handle and alias" do
-          @char.handle = "@Star"
+          @char.handle = "Star"
           @char.alias = "B"
           @char.ooc_name.should eq "Bob (@Star)"
         end
         
         it "should display public handle matching name" do
-          @char.handle = "@Star"
+          @char.handle = "Star"
           @char.name = "Star"
           @char.alias = "B"
           @char.ooc_name.should eq "Star (@Star)"

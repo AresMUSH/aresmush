@@ -37,17 +37,25 @@ module AresMUSH
       self.config = {}
     end
 
-    def read
-      plugin_config = PluginManager.config_files
-
+    def load_game_config
+      load_files ConfigReader.config_files
+    end   
+    
+    def load_plugin_config(dir, files)
+      files = files.map { |f| File.join(dir, f) }
+      load_files files
+    end 
+    
+    def load_files(files)
       # Don't wipe out the existing config until we know the temp one has
       # loaded without raising an exception 
-      temp_config = YamlFileParser.read(ConfigReader.config_files, {} )
-      temp_config = YamlFileParser.read(plugin_config, temp_config)
+      temp_config = self.config.clone
+      temp_config = YamlFileParser.read(files, temp_config)
       self.config = temp_config
       if (!Global.dispatcher.nil?)
         Global.dispatcher.queue_event ConfigUpdatedEvent.new
       end
-    end    
+    end
+    
   end
 end

@@ -16,13 +16,18 @@ module AresMUSH
       
       describe :handle do
         it "should load config and notify client" do           
-          config_reader.should_receive(:read) {}
+          config_reader.should_receive(:load_game_config) {}
+          plugin = double
+          plugin_manager.stub(:plugins) { [plugin] }
+          plugin.stub(:plugin_dir) { "A" }
+          plugin.stub(:help_files) { [ "help" ]}
+          config_reader.should_receive(:load_plugin_config).with("A", [ "help" ] ) {}
           client.should_receive(:emit_success).with('manage.config_loaded')
           handler.handle
         end
           
         it "should handle errors from config load" do
-          config_reader.should_receive(:read) { raise "Error" }
+          config_reader.should_receive(:load_game_config) { raise "Error" }
           client.should_receive(:emit_failure).with('manage.error_loading_config')
           handler.handle
         end          
