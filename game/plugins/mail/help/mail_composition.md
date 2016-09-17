@@ -1,3 +1,11 @@
+---
+topic: mail composition
+toc: 
+summary: 
+categories:
+- main
+---
+
 Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
 
 `mail <to>=<subject>` - Starts a mail.

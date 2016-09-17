@@ -12,8 +12,15 @@ module AresMUSH
     field :description, :type => String
     field :announce, :type => Boolean, :default => true
     field :roles, :type => Array, :default => []
+    field :default_alias, :type => Array, :default => []
     
     has_and_belongs_to_many :characters
+    
+    before_create :set_default_alias
+    
+    def set_default_alias
+      self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
+    end
     
     def display_name(include_markers = true)
       display = "#{self.color}#{self.name}%xn"

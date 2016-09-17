@@ -23,3 +23,6 @@ The channel administration commands are used to create, delete, and describe cha
         Use "none" to clear existing roles.  
         Changing roles will remove anyone who is on the channel but doesn't 
         have the appropriate roles.
+`channel/defaultalias <channel>=<aliases>` - Sets the default aliases to use when
+        joining a channel.  Alias can be a list of comma-separated names.  For example, for 
+        chat you might use c,ch,cha.  

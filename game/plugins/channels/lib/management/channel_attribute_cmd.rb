@@ -123,5 +123,24 @@ module AresMUSH
         end
       end
     end
+    
+    class ChannelDefaultAlias
+      include ChannelAttributeCmd
+    
+      def want_command?(client, cmd)
+        cmd.root_is?("channel") && cmd.switch_is?("defaultalias")
+      end
+    
+      def handle
+        Channels.with_a_channel(name, client) do |channel|
+        
+          
+          channel.default_alias = self.attribute.split(",")
+          channel.save!
+          client.emit_success t('channels.default_alias_set')
+        end
+      end
+    end
+    
   end
 end

@@ -7,7 +7,7 @@ categories:
 aliases:
 - grab
 - FugueEdit
-- @dec/tf
+- decompile
 ---
 AresMUSH doesn't support the old `/grab object/attribute` syntax you may be familiar with from Penn and TinyMUX, because its database works differently.  However, many commands support an `/edit` switch, which allows you to easily grab game text into your client's input buffer (the place where you type).  For example, typing %xhdesc/edit me` will put your description into your input buffer so you can edit it and send it right back.
 

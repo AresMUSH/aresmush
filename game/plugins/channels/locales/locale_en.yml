@@ -3,7 +3,7 @@ en:
         channel_already_exists: "Channel %{name} already exists."
         channel_doesnt_exist: "Channel %{name} does not exist."
 
-        channel_created: "Channel created."
+        channel_created: "Channel created.  Default alias to speak on it: %{alias}.  You can change this with the channel/defaultalias command."
         channel_renamed: "Channel renamed."
         channel_being_renamed: "This channel is being renamed to %{new_name} by %{name}.%R  Your channel alias has been reset to %{alias}."
         channel_deleted: "Channel deleted."
@@ -12,6 +12,7 @@ en:
         desc_set: "Channel description set."
         color_set: "The channel will now be displayed like so: %{name}."
         roles_set: "Channel roles updated."
+        default_alias_set: "Channel alias set."
         invalid_channel_role: "%{name} is not a valid channel role."
         title_set: "Channel title set."
         roles_changed_by: "%{name} has changed the permissions on this channel."

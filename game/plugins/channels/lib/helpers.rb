@@ -126,7 +126,7 @@ module AresMUSH
       end
     end
     
-    def self.set_channel_alias(client, char, channel, chan_alias)
+    def self.set_channel_alias(client, char, channel, chan_alias, warn = true)
       aliases = chan_alias.split(/[, ]/)
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
@@ -136,7 +136,7 @@ module AresMUSH
         end
         
         trimmed_alias = CommandCracker.strip_prefix(a)
-        if (trimmed_alias.nil? || trimmed_alias.length < 2)
+        if (warn && (trimmed_alias.nil? || trimmed_alias.length < 2))
           client.emit_failure t('channels.short_alias_warning')
         end
       end
@@ -165,10 +165,10 @@ module AresMUSH
         end
         
         if (chan_alias.nil?)
-          chan_alias = "#{name[0..1].downcase},#{name[0..2].downcase}"
+          chan_alias = channel.default_alias.join(",")
         end
             
-        if (!Channels.set_channel_alias(client, char, channel, chan_alias))
+        if (!Channels.set_channel_alias(client, char, channel, chan_alias, false))
           client.emit_failure t('channels.unable_to_determine_auto_alias')
           return
         end

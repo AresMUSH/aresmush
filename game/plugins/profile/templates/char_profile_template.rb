@@ -69,7 +69,7 @@ module AresMUSH
       
       def handle_profile
         if (@char.handle)
-          arescentral = Global.read_config("server", "arescentral_url")
+          arescentral = Global.read_config("api", "arescentral_url")
           url = "#{arescentral}/handle/#{@char.handle_id}"
           text = "%r%l2"
           text << format_field_title(t('profile.handle'))

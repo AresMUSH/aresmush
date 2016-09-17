@@ -32,8 +32,8 @@ module AresMUSH
       end
       
       def handle
-        Channel.create(name: self.name)
-        client.emit_success t('channels.channel_created')
+        channel = Channel.create(name: self.name)
+        client.emit_success t('channels.channel_created', :alias => channel.default_alias.join(",") )
       end
     end
   end

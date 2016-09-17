@@ -1,0 +1,11 @@
+<%= line %>		
+%xh<%= left(post.subject,30) %>%xn <%= right(author,46) %>		
+<%= left(board_and_post,30) %> <%= right(date,46) %>		
+<%= line 2 %>		
+<%= post.message %>		
+<% replies.each_with_index do |r, i| %>		
+<%= line 2 %>		
+<%= reply_title(r) %>		
+<%= r.message %>		
+<% end %>		
+<%= line %> 

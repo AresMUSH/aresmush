@@ -25,8 +25,10 @@ module AresMUSH
       def handle
         list = ActorRegistry.all.select { |a| is_match?(a) }
         list = list.sort { |a,b| a.charname <=> b.charname }
-        list = list.map { |a| "#{a.charname.ljust(25)} #{a.actor}" }
-        client.emit BorderedDisplay.list(list, t('actors.actors_title'))
+        paginator = Paginator.paginate(list, 1, 100)
+        
+        template = ActorsListTemplate.new(paginator, client) 
+        template.render
       end
       
       def is_match?(actor)

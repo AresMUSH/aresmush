@@ -1,4 +1,29 @@
 module AresMUSH  
+  
+  class ErbTemplateRenderer
+    attr_accessor :client
+
+    def initialize(file, client)
+      template = File.read(file)
+      @template = Erubis::Eruby.new(template, :bufvar=>'@output')
+      self.client = client
+    end
+      		      
+    def build
+      @template.evaluate(self)
+    end		
+    
+    def render
+      #self.callback { |text| Global.dispatcher.queue_action(self.client) { self.client.emit text } }
+      #build_async
+      #self.client.emit build     
+      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client) do
+        self.client.emit build
+      end         
+    end      
+  end
+        
+        
   class AsyncTemplateRenderer
     attr_accessor :client
     

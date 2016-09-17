@@ -20,14 +20,14 @@ module AresMUSH
     end
     
     def line_with_text(text)
-      template = "%x!----text-----------------------------------------------%xn"
       padding = "-"
-      left_spacer = "["
-      right_spacer = "]"
-      width = 20
+      left_spacer = " ["
+      right_spacer = "] "
       
       str = "#{left_spacer}#{text}#{right_spacer}"
-      template.gsub(/text/, center(str, width, padding))
+      "%x!#{left('', 5, padding)}" +
+         "#{center(str, 25, padding)}" +
+         "#{right('', 48, padding)}"
     end
     
     # This works with Erubis templates; now depracated.
