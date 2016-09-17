@@ -16,13 +16,18 @@ module AresMUSH
       
       describe :handle do        
         it "should reload the locale and notify client" do
-          locale.should_receive(:load!)
+          plugin = double
+          plugin_manager.stub(:plugins) { [plugin] }
+
+          locale.should_receive(:reset_load_path)
+          plugin_manager.should_receive(:load_plugin_locale).with( plugin ) {}
+          locale.should_receive(:reload)
           client.should_receive(:emit_success).with('manage.locale_loaded')
           handler.handle
         end
         
-        it "should handle errors from config load" do
-          locale.should_receive(:load!) { raise "Error" }
+        it "should handle errors from locale load" do
+          locale.should_receive(:reset_load_path) { raise "Error" }
           client.should_receive(:emit_failure).with('manage.error_loading_locale')
           handler.handle
         end     

@@ -14,10 +14,6 @@ module AresMUSH
       File.join(AresMUSH.game_path, "plugins")
     end
     
-    def self.locale_files
-      Dir[File.join(PluginManager.plugin_path, "**", "locale*.yml")]
-    end
-   
     def self.help_files
       Dir[File.join(PluginManager.plugin_path, "*", "help", "**", "*.md")]
     end
@@ -38,8 +34,21 @@ module AresMUSH
         raise SystemNotFoundException
       end
       plugin_module = Object.const_get("AresMUSH::#{module_name}")
-      Global.config_reader.load_plugin_config plugin_module.plugin_dir, plugin_module.config_files
+      load_plugin_config plugin_module
+      load_plugin_locale plugin_module
       @plugins << plugin_module.send(:load_plugin)
+    end
+    
+    def load_plugin_config(plugin_module)
+      plugin_module.config_files.each do |config|
+        Global.config_reader.load_config_file File.join(plugin_module.plugin_dir, config)
+      end
+    end
+    
+    def load_plugin_locale(plugin_module)
+      plugin_module.locale_files.each do |locale|              
+        Global.locale.add_locale_file File.join(plugin_module.plugin_dir, locale)
+      end
     end
     
     def unload_plugin(name)

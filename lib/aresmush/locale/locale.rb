@@ -24,7 +24,8 @@ module AresMUSH
     end
     
     def setup
-      load!
+      reset_load_path
+      reload
       set_locale
     end
     
@@ -51,13 +52,18 @@ module AresMUSH
       end
     end
     
-    def load!
+    def reset_load_path
       I18n.load_path = []
       LocaleLoader.load_dir(Locale.locale_path)
-      plugin_locales = PluginManager.locale_files
-      LocaleLoader.load_files(plugin_locales)
+    end
+    
+    def reload
       I18n.reload!      
     end    
+        
+    def add_locale_file(file)
+      LocaleLoader.load_file file
+    end
     
     private
         

@@ -19,9 +19,7 @@ module AresMUSH
           config_reader.should_receive(:load_game_config) {}
           plugin = double
           plugin_manager.stub(:plugins) { [plugin] }
-          plugin.stub(:plugin_dir) { "A" }
-          plugin.stub(:help_files) { [ "help" ]}
-          config_reader.should_receive(:load_plugin_config).with("A", [ "help" ] ) {}
+          plugin_manager.should_receive(:load_plugin_config).with( plugin ) {}
           client.should_receive(:emit_success).with('manage.config_loaded')
           handler.handle
         end

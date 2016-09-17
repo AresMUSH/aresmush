@@ -111,26 +111,23 @@ module AresMUSH
       
     end
     
-    describe :load! do
+    describe :reset_load_path do
       it "should tell the backend to clear the load path" do
         I18n.should_receive(:load_path=).with([])
-        @locale.load!
+        @locale.reset_load_path
       end
 
       it "should tell the loader to load the main locale" do
         LocaleLoader.should_receive(:load_dir).with(File.join(@game_path, "locales"))
-        @locale.load!
+        @locale.reset_load_path
       end
       
-      it "should tell the loader to load the plugin locales" do
-        PluginManager.should_receive(:locale_files) { ["a", "b"] }
-        LocaleLoader.should_receive(:load_files).with( ["a", "b"] )
-        @locale.load!
-      end
-      
+    end
+    
+    describe :reload do
       it "should tell the backend to reload" do
         I18n.should_receive(:reload!)
-        @locale.load!
+        @locale.reload
       end
     end
   end

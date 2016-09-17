@@ -41,9 +41,8 @@ module AresMUSH
       load_files ConfigReader.config_files
     end   
     
-    def load_plugin_config(dir, files)
-      files = files.map { |f| File.join(dir, f) }
-      load_files files
+    def load_config_file(file)
+      load_files [file]
     end 
     
     def load_files(files)

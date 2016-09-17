@@ -17,7 +17,7 @@ module AresMUSH
         begin
           Global.config_reader.load_game_config
           Global.plugin_manager.plugins.each do |p|
-            Global.config_reader.load_plugin_config(p.plugin_dir, p.help_files)
+            Global.plugin_manager.load_plugin_config p
           end
           
           client.emit_success t('manage.config_loaded')

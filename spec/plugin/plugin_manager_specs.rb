@@ -11,7 +11,10 @@ module AresMUSH
       FileUtils.rm_rf @temp_dir
       Dir.mkdir @temp_dir
       Dir.mkdir File.join(@temp_dir, "plugins")
-
+      @config = double
+      @locale = double
+      Global.stub(:config_reader) { @config }
+      Global.stub(:locale) { @locale }
       AresMUSH.stub(:game_path) { @temp_dir }      
       @manager = PluginManager.new
     end
@@ -27,23 +30,25 @@ module AresMUSH
       end
     end
     
-    describe :locale_files do
-      it "should find all the locale files in the plugin locale dirs" do
-       PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "**", "locale*.yml")
-       files = []
-       Dir.should_receive(:[]).with(search) { files}
-       PluginManager.locale_files.should eq files
+    describe :load_plugin_config do
+      it "should load all the plugin config files" do
+        plugin = double
+        plugin.stub(:plugin_dir) { "A" }
+        plugin.stub(:config_files) { [ "c1", "c2" ]}
+        @config.should_receive(:load_config_file).with("A/c1")
+        @config.should_receive(:load_config_file).with("A/c2")
+        @manager.load_plugin_config plugin
       end
     end
     
-    describe :help_files do
-      it "should find all the help files in the plugin config dirs" do
-       PluginManager.stub(:plugin_path) { "plugins" }
-       search = File.join("plugins", "*", "help", "**", "*.md")
-       files = [ "a", "b" ]
-       Dir.should_receive(:[]).with(search) { files }
-       PluginManager.help_files.should eq [ "a", "b" ]
+    describe :load_plugin_locale do
+      it "should load all the plugin config files" do
+        plugin = double
+        plugin.stub(:plugin_dir) { "A" }
+        plugin.stub(:locale_files) { [ "l1", "l2" ]}
+        @locale.should_receive(:add_locale_file).with("A/l1")
+        @locale.should_receive(:add_locale_file).with("A/l2")
+        @manager.load_plugin_locale plugin
       end
     end    
   end

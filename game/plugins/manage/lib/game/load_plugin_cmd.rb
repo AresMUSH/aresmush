@@ -47,7 +47,6 @@ module AresMUSH
             # Swallow this error.  Just means you're loading a plugin for the very first time.
           end
           Global.plugin_manager.load_plugin(load_target)
-          Global.locale.load!
           Help::Interface.load_help
           Global.client_monitor.reload_clients
           client.emit_success t('manage.plugin_loaded', :name => load_target)

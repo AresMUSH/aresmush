@@ -46,6 +46,8 @@ module AresMUSH
             
       Global.logger.debug Global.config_reader.config
       
+      puts I18n.load_path
+      
       @server.start
       sleep
     end
