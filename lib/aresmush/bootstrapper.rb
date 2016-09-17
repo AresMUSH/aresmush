@@ -7,8 +7,7 @@ module AresMUSH
       @config_reader = ConfigReader.new
       @ares_logger = AresLogger.new
       @locale = Locale.new
-      plugin_factory = PluginFactory.new
-      @plugin_manager = PluginManager.new(plugin_factory)
+      @plugin_manager = PluginManager.new
       dispatcher = Dispatcher.new
       client_factory = ClientFactory.new
       client_monitor = ClientMonitor.new(client_factory)

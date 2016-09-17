@@ -67,15 +67,8 @@ module AresMUSH
         CommandAliasParser.substitute_aliases(client, cmd)
         Global.plugin_manager.plugins.each do |p|
           with_error_handling(client, cmd) do
-            begin
-              wants_command = p.want_command?(client, cmd)
-            rescue Exception => e
-              Global.logger.error("Bad wants_command method in #{p}: error=#{e} backtrace=#{e.backtrace[0,10]}")
-              wants_command = false
-            end
-            
-            if (wants_command)
-              p.on_command(client, cmd)
+            wanted = p.handle_command(client, cmd)
+            if (wanted)
               return
             end # if
           end # with error handling
@@ -91,13 +84,14 @@ module AresMUSH
     ### Use queue_event if you need to queue up an event
     def on_event(event)
       begin
-        event_handler_name = "on_#{event.class.name.split('::').last.underscore}"
-        Global.plugin_manager.plugins.each do |s|
-          
-          if (s.respond_to?(:"#{event_handler_name}"))
-            s.send(:"#{event_handler_name}", event)
-          end
-        end
+        Global.plugin_manager.plugins.each do |p|
+          AresMUSH.with_error_handling(nil, "Handling #{event}.") do
+            handled = p.handle_event(event)
+            if (handled)
+              return
+            end # if
+          end # with error handling
+        end # each
       rescue Exception => e
         Global.logger.error("Error handling event: event=#{event} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end

@@ -28,8 +28,8 @@ module AresMUSH
       end
 
       def handle
-        
         return if self.charname.downcase == "guest"
+
         
         ClassTargetFinder.with_a_character(self.charname, client) do |char|
           if (!char.compare_password(password))

@@ -4,8 +4,7 @@ module AresMUSH
   end
   
   class PluginManager
-    def initialize(plugin_factory)
-      @plugin_factory = plugin_factory
+    def initialize
       @plugins = []
     end
     
@@ -27,64 +26,39 @@ module AresMUSH
       Dir[File.join(PluginManager.plugin_path, "*", "help", "**", "*.md")]
     end
     
-    def self.plugin_files(name = nil)
-      if (name.nil?)
-        path = File.join(PluginManager.plugin_path, "**", "*.rb")
-      else
-        path = File.join(PluginManager.plugin_path, name, "**", "*.rb")
-      end
-      
-      all_files = Dir[path]
-      all_files.select { |f| f !~ /_(spec|test|test_loader)[s]*\.rb*/ }
-    end
-    
     def load_all
-      load_plugin_code(PluginManager.plugin_files)
+      load File.join(PluginManager.plugin_path, "plugins.rb")
+      Plugins.all_plugins.each do |p|
+        load_plugin p
+      end
     end
     
     def load_plugin(name)
-      plugin_files = PluginManager.plugin_files(name)
-      raise SystemNotFoundException if plugin_files.empty?
-      load_plugin_code(plugin_files)
+      plugin_loader = File.join(PluginManager.plugin_path, name, "#{name}.rb")
+      Global.logger.info "Loading #{plugin_loader}"
+      load plugin_loader
+      mod = find_plugin_const(name)
+      if (!mod)
+        raise SystemNotFoundException
+      end
+      @plugins << Object.const_get("AresMUSH::#{mod}").send(:load_plugin)
     end
     
     def unload_plugin(name)
-      plugin_module_name = name.upcase
-      plugins_to_delete = []
-      module_to_delete = nil
-      @plugins.each do |p|
-        if (p.class.name.upcase.starts_with?("ARESMUSH::#{plugin_module_name}::"))
-          plugins_to_delete << p
-          module_to_delete = p.class.name.after("AresMUSH::").first("::")
-        end
-      end
-
-      if plugins_to_delete.empty?
+      Global.logger.info "Unloading #{plugin_loader}"
+      mod = find_plugin_const(name)
+      if (!mod)
         raise SystemNotFoundException
       end
-
-      if (module_to_delete)
-        if (AresMUSH.const_defined?(module_to_delete))
-          Global.logger.debug "Deleting #{module_to_delete}."
-          AresMUSH.send(:remove_const, module_to_delete)
-        else
-          raise SystemNotFoundException
-        end
-      end
-
-      plugins_to_delete.each do |p|
-        @plugins.delete(p)
-        Global.logger.info "Unloading #{p}."
-      end
+      
+      @plugins.delete Object.const_get("AresMUSH::#{mod}")
+      AresMUSH.send(:remove_const, "AresMUSH::#{mod}")
     end
       
     private    
-    def load_plugin_code(files)
-      files.sort.each do |f| 
-        Global.logger.info "Loading #{f}."
-        load f
-      end
-      @plugins = @plugin_factory.create_plugin_classes
-    end 
+    
+    def find_plugin_const(name)
+      AresMUSH.constants.select { |c| c.upcase == name.to_sym.upcase }.first
+    end    
   end
 end
