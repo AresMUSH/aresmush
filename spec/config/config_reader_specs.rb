@@ -55,24 +55,33 @@ module AresMUSH
         ConfigReader.stub(:config_files) { ["a", "b"] }
       end
       
-      it "should read the main and plugin config" do        
-        parsed1 = { "c" => "d" }
+      it "should read the game config" do        
+        config = double
+        @reader.stub(:config) { config }
         
-        # The first {} is what makes sure the prior config was erased
-        YamlFileParser.should_receive(:read).with( ["a", "b"],  {} ) { parsed1 }
-        @reader.load_game_config 
-        @reader.config.should eq parsed1
-      end    
-      
-      it "should dispatch the update event" do
-        dispatcher = double
-        event = double
-        ConfigUpdatedEvent.stub(:new) { event }
-        Global.stub(:dispatcher) { dispatcher }
-        YamlFileParser.should_receive(:read) { {} }
-        dispatcher.should_receive(:queue_event).with(event)
+        config.should_receive(:merge_yaml).with("a")
+        config.should_receive(:merge_yaml).with("b")
+        
         @reader.load_game_config 
       end  
+    end
+    
+    describe :validate_game_config do 
+      before do
+        @reader = ConfigReader.new
+        ConfigReader.stub(:config_files) { ["a", "b"] }
+      end
+      
+      
+      it "should check the config" do        
+        config = double
+        @reader.stub(:config) { config }
+
+        AresMUSH::YamlExtensions.should_receive(:yaml_hash).with("a").and_raise("error")
+        AresMUSH::YamlExtensions.should_not_receive(:yaml_hash).with("a")
+        
+        expect { @reader.validate_game_config }.to raise_error
+      end          
     end
   end
 end

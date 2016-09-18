@@ -49,11 +49,13 @@ module AresMUSH
           Global.plugin_manager.load_plugin(load_target)
           Help::Interface.load_help
           Global.client_monitor.reload_clients
+          Global.dispatcher.queue_event ConfigUpdatedEvent.new
           client.emit_success t('manage.plugin_loaded', :name => load_target)
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)
         rescue Exception => e
-          client.emit_failure t('manage.error_loading_plugin', :name => load_target, :error => e.to_s)
+          Global.logger.debug "Error loading plugin: #{e}"
+          client.emit_failure t('manage.error_loading_plugin', :name => load_target, :error => e)
         end
       end
     end

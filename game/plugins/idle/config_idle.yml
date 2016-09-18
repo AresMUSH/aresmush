@@ -13,5 +13,5 @@ idle:
     idle_board: "Announcements"
     
     days_before_idle: 30
-shortcuts:
-    "idle/add": "idle/action"
+    shortcuts:
+        "idle/add": "idle/action"

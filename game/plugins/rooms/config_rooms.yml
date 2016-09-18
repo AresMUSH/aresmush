@@ -22,12 +22,12 @@ rooms:
         minute: 00
 
 
-shortcuts:
-    "tel": "teleport"
-    "move": "go"
-    "dig": "build"
-    "o" : "out"
-    "dig/teleport" : "build"
-    "dig/tel" : "build"
-    "mjoin" : "meetme/join"
-    "msummon" : "meetme/bring"
+    shortcuts:
+        "tel": "teleport"
+        "move": "go"
+        "dig": "build"
+        "o" : "out"
+        "dig/teleport" : "build"
+        "dig/tel" : "build"
+        "mjoin" : "meetme/join"
+        "msummon" : "meetme/bring"

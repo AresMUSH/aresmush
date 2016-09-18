@@ -29,7 +29,7 @@ login:
         # What job category to use for suspect logins.
         suspect_category: "MISC"
 
-shortcuts:
-    "logout" : "quit"
-    "con" : "connect"
-    "newpassword": "password/reset"
+    shortcuts:
+        "logout" : "quit"
+        "con" : "connect"
+        "newpassword": "password/reset"

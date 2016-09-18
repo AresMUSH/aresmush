@@ -26,8 +26,8 @@ module AresMUSH
     end
     
     def load_plugin(name)
+      Global.logger.info "Loading #{name}"
       plugin_loader = File.join(PluginManager.plugin_path, name, "#{name}.rb")
-      Global.logger.info "Loading #{plugin_loader}"
       load plugin_loader
       module_name = find_plugin_const(name)
       if (!module_name)
@@ -45,6 +45,12 @@ module AresMUSH
       end
     end
     
+    def validate_plugin_config(plugin_module)
+      plugin_module.config_files.each do |config|
+        Global.config_reader.validate_config_file File.join(plugin_module.plugin_dir, config)
+      end
+    end
+    
     def load_plugin_locale(plugin_module)
       plugin_module.locale_files.each do |locale|              
         Global.locale.add_locale_file File.join(plugin_module.plugin_dir, locale)
@@ -52,16 +58,29 @@ module AresMUSH
     end
     
     def unload_plugin(name)
-      Global.logger.info "Unloading #{plugin_loader}"
-      mod = find_plugin_const(name)
-      if (!mod)
+      Global.logger.info "Unloading #{name}"
+      module_name = find_plugin_const(name)
+      if (!module_name)
         raise SystemNotFoundException
       end
-      Global.config.delete name
-      @plugins.delete Object.const_get("AresMUSH::#{mod}")
-      AresMUSH.send(:remove_const, "AresMUSH::#{mod}")
+      Global.config_reader.config.delete name
+      plugin_module = Object.const_get("AresMUSH::#{module_name}")
+      @plugins.delete plugin_module
+      AresMUSH.send(:remove_const, module_name)
     end
       
+      
+    def shortcuts
+      sc = {}
+      plugins.each do |p|
+        plugin_shortcuts = p.shortcuts
+        if (p.shortcuts)
+          sc.merge! p.shortcuts
+        end
+      end
+      sc
+    end
+    
     private    
     
     def find_plugin_const(name)

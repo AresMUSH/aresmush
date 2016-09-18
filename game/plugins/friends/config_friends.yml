@@ -1,2 +1,3 @@
-shortcuts:
-    "friends": "friend"
+friends:
+    shortcuts:
+        "friends": "friend"

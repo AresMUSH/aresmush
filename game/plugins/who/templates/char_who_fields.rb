@@ -11,10 +11,8 @@ module AresMUSH
         left(Groups::Interface.group(char, "Position"), 19)
       end
 
-      # Character's player handle, if they've made it public.
       def char_handle(char)
-        name = char.public_handle? ? char.handle : ""
-        left(name, 19)
+        left(char.handle, 19)
       end
     
       def char_status(char)

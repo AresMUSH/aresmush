@@ -33,6 +33,7 @@ module AresMUSH
           Help::Interface.stub(:load_help)
           client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
+          dispatcher.stub(:queue_event)
         end
           
         it "should load the plugin" do
@@ -64,6 +65,13 @@ module AresMUSH
         it "should notify client if plugin load has an error" do
           plugin_manager.stub(:load_plugin) { raise "Error" }
           client.should_receive(:emit_failure).with('manage.error_loading_plugin')
+          handler.handle
+        end
+        
+        it "should send the config updated event" do
+          dispatcher.should_receive(:queue_event) do |event|
+            event.class.should eq ConfigUpdatedEvent
+          end
           handler.handle
         end
         

@@ -37,23 +37,28 @@ module AresMUSH
       self.config = {}
     end
 
+    def validate_game_config
+      ConfigReader.config_files.each do |file|
+        validate_config_file(file)
+      end
+    end
+    
     def load_game_config
-      load_files ConfigReader.config_files
+      ConfigReader.config_files.each do |file|
+        load_config_file(file)
+      end
     end   
     
-    def load_config_file(file)
-      load_files [file]
-    end 
-    
-    def load_files(files)
-      # Don't wipe out the existing config until we know the temp one has
-      # loaded without raising an exception 
-      temp_config = self.config.clone
-      temp_config = YamlFileParser.read(files, temp_config)
-      self.config = temp_config
-      if (!Global.dispatcher.nil?)
-        Global.dispatcher.queue_event ConfigUpdatedEvent.new
+    def validate_config_file(file)
+      begin
+        AresMUSH::YamlExtensions.yaml_hash(file)
+      rescue Exception => e
+        raise "Error in config file: #{file}.  Error: #{e}"
       end
+    end
+    
+    def load_config_file(file)
+      self.config = self.config.merge_yaml(file)
     end
     
   end

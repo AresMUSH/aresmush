@@ -63,6 +63,6 @@ ranks:
                 Master Sergeant: false
                 Sergeant Major: false
 
-shortcuts:
-    "ranks": "rank"
-    "rank/clear": "rank/set"
+    shortcuts:
+        "ranks": "rank"
+        "rank/clear": "rank/set"

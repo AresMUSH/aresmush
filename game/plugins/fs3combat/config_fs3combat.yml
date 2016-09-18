@@ -40,7 +40,7 @@ fs3combat:
                 - Tripod
             armor: Centurion
             hitloc: Humanoid           
-shortcuts:
-    "weapons": "weapon"
-    "combat/skills": "combat/summary"
-    "combat/slackers": "combat/summary"
+    shortcuts:
+        "weapons": "weapon"
+        "combat/skills": "combat/summary"
+        "combat/slackers": "combat/summary"

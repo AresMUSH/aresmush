@@ -21,6 +21,6 @@ roles:
     game_admin:
         - admin
 
-shortcuts:
-    "roles" : "role"
-    "staff" : "admin"
+    shortcuts:
+        "roles" : "role"
+        "staff" : "admin"

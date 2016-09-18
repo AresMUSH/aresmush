@@ -4,7 +4,4 @@ module AresMUSH
       char.last_on
     end  
   end
-  
-  class ConfigUpdatedEvent
-  end
 end

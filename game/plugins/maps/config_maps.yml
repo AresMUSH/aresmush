@@ -1,2 +1,3 @@
-shortcuts:
-    "maps": "map"
+maps:
+    shortcuts:
+        "maps": "map"

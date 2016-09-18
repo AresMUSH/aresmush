@@ -71,9 +71,9 @@ chargen:
             tutorial: 'wiki.txt'
         review:
             help: apps
-shortcuts:
-    "chargen" : "cg"
-    "bg/approve": "app/approve"
-    "bg/reject" : "app/reject"
-    "bg/submit" : "app/submit"
-    "bg/unsubmit" : "app/unsubmit"
+    shortcuts:
+        "chargen" : "cg"
+        "bg/approve": "app/approve"
+        "bg/reject" : "app/reject"
+        "bg/submit" : "app/submit"
+        "bg/unsubmit" : "app/unsubmit"

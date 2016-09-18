@@ -2,5 +2,5 @@ page:
     # You can configure the ansi code used to colorize the page emits.
     # It can use multiple codes, like %xh%xc
     page_color: "%xb"
-shortcuts:
-    "p": "page"
+    shortcuts:
+        "p": "page"

@@ -25,9 +25,9 @@ module AresMUSH
         self.online_chars.sort_by{ |c| [Who.who_room_name(c), c.name] }
       end 
       
-      # List of connected characters, sorted by handle name (if public) then character name.
+      # List of connected characters, sorted by handle name then character name.
       def chars_by_handle
-        self.online_chars.sort_by{ |c| [c.public_handle? ? c.handle : "", c.name] }
+        self.online_chars.sort_by{ |c| [c.handle, c.name] }
       end
       
       # Total characers online.

@@ -59,12 +59,30 @@ module AresMUSH
       end
     end
     
+    def temp_dispatch(client, cmd)
+      Global.plugin_manager.plugins.each do |p|
+        consts = p.constants
+        consts.each do |c|
+          sym = p.const_get(c)
+          if (sym.class == Class && sym.include?(AresMUSH::CommandHandler))
+            klass = sym.new
+            if (klass.want_command?(client, cmd))
+              Global.logger.debug "Found #{sym}."
+              klass.on_command(client, cmd)
+              return true
+            end
+          end
+        end
+      end
+      return false      
+    end
+    
     ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
       @handled = false
       with_error_handling(client, cmd) do
-        CommandAliasParser.substitute_aliases(client, cmd)
+        CommandAliasParser.substitute_aliases(client, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
           with_error_handling(client, cmd) do
             wanted = p.handle_command(client, cmd)

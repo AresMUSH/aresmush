@@ -4,5 +4,5 @@ actors:
         can_set_actors: 
             - admin
             # - another_role
-shortcuts:
-    "actors": "actor"
+    shortcuts:
+        "actors": "actor"

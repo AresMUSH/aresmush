@@ -1,3 +1,4 @@
-shortcuts:
-    "finger": "profile"
-    "profile/set": "profile/add"
+profile:
+    shortcuts:
+        "finger": "profile"
+        "profile/set": "profile/add"

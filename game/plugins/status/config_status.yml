@@ -33,6 +33,6 @@ status:
             #hour: 21
             minute: 20
 
-shortcuts:
-    "set": "status"
-    "ic" : "onstage"
+    shortcuts:
+        "set": "status"
+        "ic" : "onstage"

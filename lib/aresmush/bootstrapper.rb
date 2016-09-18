@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       # Order here is important!
-      @config_reader.load_game_config
+      @config_reader.load_game_config      
       @ares_logger.start
 
       @db.load_config
@@ -45,8 +45,6 @@ module AresMUSH
       end
             
       Global.logger.debug Global.config_reader.config
-      
-      puts I18n.load_path
       
       @server.start
       sleep

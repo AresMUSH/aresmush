@@ -38,6 +38,17 @@ module AresMUSH
         @config.should_receive(:load_config_file).with("A/c1")
         @config.should_receive(:load_config_file).with("A/c2")
         @manager.load_plugin_config plugin
+      end      
+    end
+    
+    describe :validate_plugin_config do
+      it "should check the plugin config files" do
+        plugin = double
+        plugin.stub(:plugin_dir) { "A" }
+        plugin.stub(:config_files) { [ "c1", "c2" ]}
+        @config.should_receive(:validate_config_file).with("A/c1").and_raise("error")
+        @config.should_not_receive(:validate_config_file).with("A/c2")
+        expect { @manager.validate_plugin_config plugin }.to raise_error("error")
       end
     end
     
@@ -51,6 +62,33 @@ module AresMUSH
         @manager.load_plugin_locale plugin
       end
     end    
+    
+    describe :shortcuts do 
+      it "should merge all the plugin shortcuts" do
+        p1 = double
+        p2 = double      
+        @manager.stub(:plugins) { [p1, p2] }
+        
+        p1.stub(:shortcuts) { { a: 1, b: 2 } }
+        p2.stub(:shortcuts) { { c: 3, d: 4 } }
+        
+        expected = { a: 1, b: 2, c: 3, d: 4 }
+        @manager.shortcuts.should eq expected
+      end
+      
+      it "should not blow up on a plugin with no shortcuts" do
+        p1 = double
+        p2 = double      
+        @manager.stub(:plugins) { [p1, p2] }
+        
+        p1.stub(:shortcuts) { { a: 1, b: 2 } }
+        p2.stub(:shortcuts) { nil }
+        
+        expected = { a: 1, b: 2 }
+        @manager.shortcuts.should eq expected
+      end
+    end
+    
   end
 end
 

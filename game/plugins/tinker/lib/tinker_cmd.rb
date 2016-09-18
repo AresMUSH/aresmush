@@ -19,7 +19,7 @@ module AresMUSH
       
       def handle
         # Put whatever you need to do here.
-        client.emit_success "Done!"
+        client.emit_success "Done2!"
       end
 
     end

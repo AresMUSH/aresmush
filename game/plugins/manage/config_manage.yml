@@ -14,8 +14,8 @@ manage:
             - admin
             - builder
             # - another_role
-shortcuts:
-    "ex": "examine"
-    "search": "find"
-    "name" : "rename"
-    "nuke" : "destroy"
+    shortcuts:
+        "ex": "examine"
+        "search": "find"
+        "name" : "rename"
+        "nuke" : "destroy"

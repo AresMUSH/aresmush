@@ -1,14 +1,11 @@
 module AresMUSH
   class CommandAliasParser
-    def self.substitute_aliases(client, cmd)
+    def self.substitute_aliases(client, cmd, shortcut_config)
       if (cmd.args.nil? && cmd.switch.nil? && !client.room.nil? && client.room.has_exit?(cmd.root))
         cmd.args = cmd.root
         cmd.root = "go"
         return
-      end
-      
-      shortcut_config = Global.read_config("shortcuts")
-      return if shortcut_config.nil?
+      end      
       
       roots_config = shortcut_config.select { |s| !s.include?('/')}
       if (roots_config)
