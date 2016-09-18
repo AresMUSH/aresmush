@@ -6,6 +6,7 @@ categories:
 - main
 aliases:
 - hero
+plugin: fs3combat
 ---
 This is a quick reference for luck-related combat commands.  For more details on FS3, see the game wiki or `help combat`.
 

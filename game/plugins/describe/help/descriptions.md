@@ -9,6 +9,7 @@ aliases:
 - describe
 - shortdesc
 - detail
+plugin: describe
 ---
 ---
 topic: descriptions

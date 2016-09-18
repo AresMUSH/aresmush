@@ -8,6 +8,7 @@ aliases:
 - job
 - requests
 - request
+plugin: jobs
 ---
 The Jobs system allows you to track admin work assignments.
 

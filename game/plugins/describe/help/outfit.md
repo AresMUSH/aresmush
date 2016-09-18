@@ -7,6 +7,7 @@ categories:
 aliases:
 - wear
 - outfit
+plugin: describe
 ---
 The `outfit` command lets you manage multiple outfits for your character.  Typically you'll define one base outfit for your character's body description, and then have a variety of mix-and-match clothing outfits for your different clothes and accessories.
 

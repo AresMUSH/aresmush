@@ -4,6 +4,7 @@ toc: Community
 summary: Player Identity.
 categories:
 - main
+plugin: handles
 ---
 Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.   
 

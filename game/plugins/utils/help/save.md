@@ -6,6 +6,7 @@ categories:
 - main
 aliases:
 - recall
+plugin: utils
 ---
 The save and recall commands are handy when you're in the middle of typing something and need to save it for a moment to do something else - like answer a page or respond on channel.  You can `save` the text you were typing, do something else, and then %xhrecall` the text when you're done.
 

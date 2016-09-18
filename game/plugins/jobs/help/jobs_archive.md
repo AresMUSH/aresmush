@@ -4,6 +4,7 @@ toc:
 summary: 
 categories:
 - admin
+plugin: jobs
 ---
 Closed jobs in Ares are not archived to a BBS, as they are in some other systems.  Instead they stay around in the jobs system forever (or until you manually purge them).  This allows you to reopen and easily find old jobs.
 

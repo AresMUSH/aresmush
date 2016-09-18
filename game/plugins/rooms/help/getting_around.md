@@ -10,6 +10,7 @@ aliases:
 - move
 - rooms
 - exit
+plugin: rooms
 ---
 The MUSH grid consists of **Rooms** connected by **Exits**.  There are a number of ways to get around the grid.
 

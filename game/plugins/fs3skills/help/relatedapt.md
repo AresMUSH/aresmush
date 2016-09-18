@@ -6,6 +6,7 @@ categories:
 - main
 aliases:
 - rulingattr
+plugin: fs3skills
 ---
 All abilities are influenced by a particular aptitude - this is called the "related aptitude" for that ability.  The game admin will configure the related aptitudes for Action Skills and Advantages, but you can set your own for your character's Expertise and Interests.
 

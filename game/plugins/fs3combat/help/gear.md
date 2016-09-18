@@ -10,6 +10,7 @@ aliases:
 - weapons
 - weapon
 - vehicle
+plugin: fs3combat
 ---
 There are various kinds of gear that can be used in combat.   For more details on FS3, see the game wiki or `help combat`.
 

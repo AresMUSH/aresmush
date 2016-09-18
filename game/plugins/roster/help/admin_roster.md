@@ -4,6 +4,7 @@ toc: Character Creation
 summary: Managing the roster.
 categories:
 - admin
+plugin: roster
 ---
 These commands allow you to manage the character roster.
 

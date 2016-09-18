@@ -7,8 +7,9 @@ aliases:
 - bbread
 - bbpost
 - bbmisc
-categories: 
+categories:
 - main
+plugin: bbs
 ---
 The bulletin board system lets you stay posted on game news and events.  There are various **boards** available, each with a different purpose.
 

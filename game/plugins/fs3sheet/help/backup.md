@@ -7,6 +7,7 @@ categories:
 aliases:
 - dec
 - decompile
+plugin: fs3sheet
 ---
 Ares supports a fast-and-easy way to back up your important character information.  This includes:
 

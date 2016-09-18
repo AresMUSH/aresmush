@@ -17,6 +17,7 @@ aliases:
 - interests
 - expertise
 - advantages
+plugin: fs3skills
 ---
 The FS3 Abilities commands are used to set yourself up during character creation.  To get started, or at any point you wish to reset yourself, use the reset command.
 

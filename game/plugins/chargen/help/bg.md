@@ -4,6 +4,7 @@ toc: Character Creation
 summary: Character backstories.
 categories:
 - main
+plugin: chargen
 ---
 The most important part of a character is their background. We are not looking for a novel, just a couple paragraphs describing the character’s backstory.  In particular, your background should cover:
 

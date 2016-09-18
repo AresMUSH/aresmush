@@ -7,6 +7,7 @@ categories:
 aliases:
 - experience
 - improvement
+plugin: fs3xp
 ---
 Experience Points (XP) are used to improve your character after chargen. Players receive XP each week.  Admins may also award bonus XP for special training situations.  
 

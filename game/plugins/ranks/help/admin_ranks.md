@@ -6,6 +6,7 @@ categories:
 - admin
 aliases:
 - rank
+plugin: ranks
 ---
 Admins can set other peoples' ranks, even to values that are not normally allowed during Chargen.
 

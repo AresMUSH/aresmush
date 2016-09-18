@@ -6,6 +6,7 @@ categories:
 - main
 aliases:
 - friend
+plugin: friends
 ---
 The Friends system helps you to interact with people you have designated as your friends.
 

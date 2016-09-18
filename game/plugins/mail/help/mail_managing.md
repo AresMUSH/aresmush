@@ -4,6 +4,7 @@ toc:
 summary: 
 categories:
 - main
+plugin: mail
 ---
 You can delete mail messages.  Technically this doesn't delete it right away, but tags it as trash.  Messages tagged as trash are deleted when you log out.
 

@@ -4,7 +4,8 @@ toc: Misc
 summary: Using the MUSH as a calculator.
 categories:
 - main
-aliases:
+aliases: 
+plugin: utils
 ---
 The math command evaluates simple math expressions.  
 

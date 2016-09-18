@@ -7,6 +7,7 @@ categories:
 aliases:
 - ic
 - stuck
+plugin: status
 ---
 The onstage command is used to travel to the IC zone of the grid for RP.
 

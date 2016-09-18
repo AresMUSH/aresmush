@@ -4,6 +4,7 @@ toc: Player Management
 summary: Groups and affiliations.
 categories:
 - admin
+plugin: groups
 ---
 Admins can set other people's group information.
 

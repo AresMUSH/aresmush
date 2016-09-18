@@ -7,6 +7,7 @@ categories:
 aliases:
 - who
 - where
+plugin: who
 ---
 The `who` command shows you which other players are connected to the game and information about them.
 

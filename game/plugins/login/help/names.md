@@ -7,6 +7,7 @@ categories:
 aliases:
 - alias
 - nickname
+plugin: login
 ---
 Once you set your character name, you cannot change it yourself.  You must contact an admin.  Why?  Your character's name is your identity.  Changing it without good reason will confuse everyone who knows you, so it requires special permission.
 

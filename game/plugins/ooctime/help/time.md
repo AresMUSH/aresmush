@@ -7,6 +7,7 @@ categories:
 aliases:
 - ooctime
 - timezone
+plugin: ooctime
 ---
 Ares will display all dates and times according to your local timezone.  Your timezone is set when you first log in, and you can change it at any time using:
 

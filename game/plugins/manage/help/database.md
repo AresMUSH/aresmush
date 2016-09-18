@@ -13,6 +13,7 @@ aliases:
 - reload
 - find
 - search
+plugin: manage
 ---
 There are several commands that let you view and manipulate objects in the database.  For these commands, you can specify either an object name or object database ID.  You do not need to be in the same room as the object unless there are multiple objects with the same name.
 

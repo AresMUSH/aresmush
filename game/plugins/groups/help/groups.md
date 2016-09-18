@@ -16,6 +16,7 @@ aliases:
 - departments
 - colony
 - colonies
+plugin: groups
 ---
 During chargen, you can assign your character to various **Groups**.   There are different commands for each group, outlined below.  Only admin may change your groups after you've been approved.
 

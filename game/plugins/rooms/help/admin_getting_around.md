@@ -8,6 +8,7 @@ categories:
 aliases:
 - teleport
 - join
+plugin: rooms
 ---
 Admin have some extra commands for getting around the grid without using the normal exits.
 

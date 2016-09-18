@@ -9,6 +9,7 @@ aliases:
 - bbwiz
 categories:
 - admin
+plugin: bbs
 ---
 Those with board admin privileges are able to edit and delete other peoples' posts as well as their own.  You can also mass delete posts to clean up boards, and perhaps archive them to wikidot format first.
 

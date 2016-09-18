@@ -7,6 +7,7 @@ categories:
 aliases:
 - subs
 - formatting
+plugin: utils
 ---
 Ares provides a number of formatting codes, which can be used pretty much anywhere: templates, poses, descriptions, and more.
 

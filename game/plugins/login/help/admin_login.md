@@ -8,6 +8,7 @@ aliases:
 - password
 - name
 - login
+plugin: login
 ---
 You can reset someone's password and name:
 

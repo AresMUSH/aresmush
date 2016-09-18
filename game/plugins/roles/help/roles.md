@@ -8,6 +8,7 @@ aliases:
 - role
 - permission
 - power
+plugin: roles
 ---
 Some commands are restricted so that only characters with certain roles can access them.  For example, many games will lock the building commands so that only authorized builders can create new rooms and exits.
 

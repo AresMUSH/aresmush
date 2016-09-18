@@ -5,8 +5,8 @@ summary: Getting help.
 categories:
 - main
 - admin
+plugin: help
 ---
-
 The MUSH help system is here to help you learn how to play.
 
 `help, help2, help3, etc.` - Shows each page of help topics.

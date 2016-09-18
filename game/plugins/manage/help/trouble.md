@@ -10,6 +10,7 @@ aliases:
 - ban
 - siteban
 - sitelock
+plugin: manage
 ---
 Unfortunately, you will sometimes have to deal with troublesome players.  These commands will help.
 

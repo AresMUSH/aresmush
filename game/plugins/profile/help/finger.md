@@ -4,6 +4,7 @@ toc:
 summary: 
 categories:
 - main
+plugin: profile
 ---
 On AresMUSH, the 'finger' command is split in two:
 

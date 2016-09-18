@@ -4,6 +4,7 @@ toc: Community
 summary: OOC profile information
 categories:
 - main
+plugin: profile
 ---
 Your profile is used to view OOC information about other characters. 
 

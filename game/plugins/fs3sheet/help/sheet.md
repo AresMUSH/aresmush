@@ -4,6 +4,7 @@ toc: Character Creation
 summary: Character sheets.
 categories:
 - main
+plugin: fs3sheet
 ---
 The `sheet` command lets you view your character sheet, showing your abilities.
 

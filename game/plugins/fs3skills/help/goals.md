@@ -7,6 +7,7 @@ categories:
 aliases:
 - goal
 - hooks
+plugin: fs3skills
 ---
 To help you flesh out your character, FS3 requres you to set Goals and RP Hooks.
 

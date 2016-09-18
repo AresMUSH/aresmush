@@ -4,6 +4,7 @@ toc: FS3
 summary: Lucky breaks.
 categories:
 - main
+plugin: fs3luck
 ---
 Luck Points in FS3 can be used to generate various lucky breaks.  Luck points are earned through cookies (see `help cookies`).  You can view your available luck points on your character sheet.
 

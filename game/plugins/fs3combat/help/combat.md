@@ -4,6 +4,7 @@ toc: FS3 Combat
 summary: Combat overview.
 categories:
 - main
+plugin: fs3combat
 ---
 The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more details on FS3, see: http://aresmush.com/fs3
 

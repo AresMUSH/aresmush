@@ -7,6 +7,7 @@ categories:
 aliases:
 - rolls
 - opposed
+plugin: fs3skills
 ---
 This game uses the FS3 skills system.  Complete documentation can be found on the game wiki.  This is a quick reference for the commands used to make an ability roll.
 

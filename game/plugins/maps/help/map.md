@@ -6,6 +6,7 @@ categories:
 - main
 aliases:
 - maps
+plugin: maps
 ---
 The Maps system helps you find your way around by presenting you with in-game maps.
 

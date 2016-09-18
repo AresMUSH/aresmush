@@ -15,6 +15,7 @@ aliases:
 - hair
 - age
 - reputation
+plugin: demographics
 ---
 Demographics commands are used to set your basic character info.  Some items may not be changed after your character has been approved.
 

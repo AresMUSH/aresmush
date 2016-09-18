@@ -6,6 +6,7 @@ categories:
 - admin
 aliases:
 - adminnote
+plugin: roles
 ---
 The `admin` command lists all game admins.  It automatically finds people based on whether they have one of the roles you have defined as an admin role in your game config.  
 

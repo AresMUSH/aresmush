@@ -6,6 +6,7 @@ categories:
 - main
 aliases:
 - staff
+plugin: roles
 ---
 The game administrators, sometimes called "admin" or "staff", are the people behind the curtain - the ones who keep the game running smoothly.  You can use the `admin` command to see who they are. 
 
