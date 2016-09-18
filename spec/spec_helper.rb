@@ -1,4 +1,5 @@
 require 'rspec'
+require "rspec/mocks/standalone"
 
 # figure out where we are being loaded from
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
@@ -35,19 +36,15 @@ module AresMUSH
     end    
     
     def using_test_db(&block)
-      stub_client_reload
+      client_monitor = double
+      Global.stub(:client_monitor) { client_monitor }
+      client_monitor.stub(:reload_clients) { }
       SpecHelpers.connect_to_test_db
       SpecHelpers.erase_test_db
       yield block
       SpecHelpers.erase_test_db
     end
     
-    def stub_client_reload
-      client_monitor = double
-      Global.stub(:client_monitor) { client_monitor }
-      client_monitor.stub(:reload_clients) { }
-    end
-      
     # Use with the using_test_db helper whenever possible
     def self.connect_to_test_db
       filename = File.join(AresMUSH.game_path, "config/database.yml")
@@ -71,23 +68,16 @@ module AresMUSH
       AresMUSH::Room.delete_all
       AresMUSH::Exit.delete_all
     end
+    
+  
+    def self.setup_mock_client(client, char)
+      client.stub(:char) { char }
+      char.stub(:client) { client }
+    end
   end  
   
-  module MockClient
-    def build_mock_client
-      client = double
-      char = double
-      char.stub(:client) { client }
-      client.stub(:char) { char }
-      {
-        :client => client,
-        :char => char
-      }
-    end
-  end
-
   module GlobalTestHelper
-    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :api_router
+    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
     
     def stub_global_objects
       @config_reader = double
@@ -95,26 +85,14 @@ module AresMUSH
       @plugin_manager = double
       @dispatcher = double
       @locale = double
-      @api_router = double
       
       Global.stub(:config_reader) { @config_reader }
       Global.stub(:client_monitor) { @client_monitor }
       Global.stub(:plugin_manager) { @plugin_manager }
       Global.stub(:dispatcher) { @dispatcher }
       Global.stub(:locale) { @locale }
-      Global.stub(:api_router) { @api_router }
     end
-  end
-  
-  module GameTestHelper
-    attr_accessor :game
-    
-    def stub_game_master
-      @game = double
-      Game.stub(:master) { @game }
-    end
-  end
-    
+  end  
 end
 
 

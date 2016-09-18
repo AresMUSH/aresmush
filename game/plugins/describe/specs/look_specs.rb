@@ -4,12 +4,10 @@ module AresMUSH
   module Describe  
     describe LookCmd do
       include CommandHandlerTestHelper
-      include GlobalTestHelper
       
       before do
         init_handler(LookCmd, "look something")
         SpecHelpers.stub_translate_for_testing        
-        stub_global_objects
       end
       
       it_behaves_like "a plugin that doesn't allow switches"

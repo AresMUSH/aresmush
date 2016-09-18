@@ -4,14 +4,12 @@ module AresMUSH
   module Manage
     describe DestroyConfirmCmd do
       include CommandHandlerTestHelper
-      include GameTestHelper
-      include GlobalTestHelper
   
       before do
         init_handler(DestroyConfirmCmd, "destroy/confirm")
         SpecHelpers.stub_translate_for_testing
-        stub_game_master
-        stub_global_objects
+        @game = double
+        Game.stub(:master) { @game }
       end
       
       it_behaves_like "a plugin that requires login"
@@ -75,7 +73,7 @@ module AresMUSH
             before do
               # Stub out welcome room
               @welcome_room = double
-              game.stub(:welcome_room) { @welcome_room }
+              @game.stub(:welcome_room) { @welcome_room }
 
               # Pretend the target is a room
               @target.stub(:class) { Room }

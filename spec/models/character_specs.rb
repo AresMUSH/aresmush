@@ -5,13 +5,8 @@ require "aresmush"
 module AresMUSH
 
   describe Character do
-    include GameTestHelper
-    
-    
     before do
       SpecHelpers.stub_translate_for_testing
-      stub_game_master
-      game.stub(:welcome_room) { nil }
     end
     
     describe :found? do

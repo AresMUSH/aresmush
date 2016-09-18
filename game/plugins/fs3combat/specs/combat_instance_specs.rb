@@ -1,7 +1,6 @@
 module AresMUSH
   module FS3Combat
     describe CombatInstance do
-      include MockClient
       
       before do
         @instance = CombatInstance.new

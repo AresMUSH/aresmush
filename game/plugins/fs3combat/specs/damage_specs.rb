@@ -1,7 +1,6 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
-      include MockClient
       
       describe :heal do
         before do

@@ -13,28 +13,20 @@ end
 module AresMUSH
   
   module CommandHandlerTestHelper
-    include MockClient
     
     attr_accessor :client, :char, :cmd, :handler
     
     def init_handler(handler_class, cmd_text)
-      @mock_client = build_mock_client
-      @client = @mock_client[:client]
-      @char = @mock_client[:char]
+      @client = double
+      @char = double
+      SpecHelpers.setup_mock_client(@client, @char)
       
       @cmd = Command.new(cmd_text)
       
       @handler = handler_class.new
       @handler.client = @client
       @handler.cmd = @cmd
-    end  
-    
-    def reset_char(char)
-      @char = char
-      @mock_client[:char] = char
-      @client.stub(:char) { char }
-      @handler.client = @client
-    end
+    end      
         
     shared_examples "a plugin that expects a single root" do
       # let(:expected_root) { "cmd name" }

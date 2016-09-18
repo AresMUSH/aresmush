@@ -1,7 +1,6 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
-      include MockClient
       
       before do
         Global.stub(:read_config).with("fs3combat", "toughness_attribute") { "Body" }

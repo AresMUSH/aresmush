@@ -19,47 +19,6 @@ module AresMUSH
       @client3.stub(:room) { double }
     end
     
-    describe :set_upcase_name do
-      it "should set the uppercase name on save" do
-        using_test_db do
-          @room.name = "test"
-          @room.save!
-          @room.name_upcase.should eq "TEST"
-        end
-      end
-      
-      it "should set the uppercase alias on save" do
-        using_test_db do
-          @room.alias = "test"
-          @room.save!
-          @room.alias_upcase.should eq "TEST"
-        end
-      end
-    end
-    
-    describe :find_by_name do
-      it "should find by name upcase" do
-        using_test_db do
-          @room.name = "test"
-          @room.save!
-          Room.find_by_name("TeSt").should eq @room
-        end
-      end
-    end
-    
-    describe :find_all_by_name do
-      it "should find many by name upcase" do
-        using_test_db do
-          @room.name = "test"
-          @room.save!
-          
-          room2 = Room.create(name: "test")
-          
-          Room.find_all_by_name("TeSt").should eq [ @room, room2 ]
-        end
-      end
-    end
-    
     describe :clients do
       it "should find clients whose chars are in this room" do
         @room.clients.should eq [ @client1, @client2 ]
@@ -84,48 +43,14 @@ module AresMUSH
       end
     end    
     
-    describe :get_exit? do
-      include SpecHelpers
+    describe :get_exit do
       it "should return exit if exit exists - case-insensitive" do
-        using_test_db do
-          exit = Exit.new(:name => "A")
-          @room.exits << exit
-          @room.save!
-          @room.get_exit("a").should eq exit
-        end
-      end
-      
-      it "should return nil if exit doesn't exist" do
-        using_test_db do
-          exit = Exit.new(:name => "A")
-          @room.exits << exit
-          @room.save!
-          @room.get_exit("b").should be_nil
-        end
-      end
-      
-      it "should match the out exit if one exists" do
-        using_test_db do
-          exit1 = Exit.new(:name => "A")
-          exit2 = Exit.new(:name => "O")
-          @room.exits << exit1
-          @room.exits << exit2
-          @room.save!
-          @room.get_exit("O").should eq exit2
-        end
-      end
-      
-    end
-    
-    describe :has_exit? do
-      it "should return false if get_exit is nil" do
-        @room.stub(:get_exit).with("a") { nil }
-        @room.has_exit?("a").should be_false
-      end
-
-      it "should return false if get_exit is not nil" do
-        @room.stub(:get_exit).with("a") { double }
-        @room.has_exit?("a").should be_true
+        exit1 = Exit.new(:name_upcase => "A",)
+        exit2 = Exit.new(:name_upcase => "B")
+        @room.stub(:exits) { [ exit1, exit2 ]}
+        @room.get_exit("a").should eq exit1
+        @room.get_exit("B").should eq exit2
+        @room.get_exit("C").should eq nil
       end
     end
     
@@ -137,32 +62,21 @@ module AresMUSH
       end
       
       it "should return first exit if 'O' doesn't exist" do
-        using_test_db do
-          exit1 = Exit.new(:name => "A")
-          exit2 = Exit.new(:name => "B")
-          @room.exits << exit1
-          @room.exits << exit2
-          @room.save!
-          @room.way_out.should eq exit1
-        end
+        exit1 = Exit.new(:name => "A")
+        exit2 = Exit.new(:name => "B")
+        @room.stub(:exits) { [ exit1, exit2 ]}
+        @room.way_out.should eq exit1
       end
     end
     
     describe :destroy do
-      it "should delete all exits leading out of the room" do
+      it "should delete all exits leading into and out of the room" do
         using_test_db do
           room = Room.create
           leading_out = Exit.create(:source => room)
-          room.destroy
-          Exit.find(leading_out.id).should be_nil
-        end
-      end
-      
-      it "should null all exits leading into the room" do
-        using_test_db do
-          room = Room.create
           leading_in = Exit.create(:dest => room)
           room.destroy
+          Exit.find(leading_out.id).should be_nil
           exit = Exit.find(leading_in.id)
           exit.dest.should be_nil
         end

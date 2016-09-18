@@ -1,30 +1,6 @@
 module AresMUSH
   module Handles
-    describe Character, :dbtest => true do
-      include GameTestHelper
-      
-      before do
-        stub_game_master
-        game.stub(:welcome_room) { nil }
-        game.stub(:ooc_room) { nil }
-      end
-      
-      describe :find_by_handle do
-        it "should find a char with that handle" do
-          using_test_db do
-            char = Character.create(name: "Test", handle: "Bob")
-            Character.find_by_handle("Bob").should eq [ char ]
-          end
-        end
-        
-        it "should not find a char if none exists" do
-          using_test_db do 
-            Character.find_by_handle("Foo").should eq []
-          end
-        end
-      end
-      
-      
+    describe Character do      
       describe :ooc_name do
         before do
           @char = Character.new(name: "Bob")

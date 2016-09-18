@@ -2,12 +2,10 @@ module AresMUSH
   module Rooms
     describe TeleportCmd do
       include CommandHandlerTestHelper
-      include GlobalTestHelper
       
       before do
         init_handler(TeleportCmd, "teleport somewhere")
         SpecHelpers.stub_translate_for_testing  
-        stub_global_objects      
       end
       
       it_behaves_like "a plugin that doesn't allow switches"

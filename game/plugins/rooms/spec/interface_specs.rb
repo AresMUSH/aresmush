@@ -3,15 +3,16 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Rooms
     describe Rooms do
-      include MockClient
 
       describe :move_to do
         before do
           @old_room = double
           @new_room = double
-          mock_client = build_mock_client
-          @client = mock_client[:client]
-          @char = mock_client[:char]
+          
+          @client = double
+          @char = double
+          SpecHelpers.setup_mock_client(@client, @char)
+          
           @char.stub(:room) { @old_room }
         
           @old_room.stub(:emit_ooc)

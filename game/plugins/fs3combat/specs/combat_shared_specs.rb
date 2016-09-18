@@ -1,8 +1,6 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
-      include MockClient
-      
         
       describe :find_combat_by_number do
         before do

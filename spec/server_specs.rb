@@ -6,11 +6,9 @@ module AresMUSH
 
   describe Server do
     include GlobalTestHelper
-    include GameTestHelper
     
     before do
       stub_global_objects
-      stub_game_master
     end
     
     describe :start do
@@ -20,7 +18,6 @@ module AresMUSH
         Global.stub(:read_config).with("server", "websocket_port") { 234 }
         @server = Server.new
         dispatcher.stub(:queue_event)
-        game.stub(:welcome_room) { nil }
         EventMachine.stub(:run).and_yield
         EventMachine.stub(:add_periodic_timer)
         EventMachine.stub(:start_server)

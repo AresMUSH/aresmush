@@ -1,7 +1,6 @@
 module AresMUSH
   module FS3Skills
     describe FS3Skills do
-      include MockClient
       
       before do
         Global.stub(:read_config).with("fs3skills", "aptitudes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
@@ -143,54 +142,62 @@ module AresMUSH
       
       describe :emit_results do
         before do
-          @client = build_mock_client
-          @admin = build_mock_client
-          @nonadmin = build_mock_client
+          @main_client = double
+          @main_char = double
+          SpecHelpers.setup_mock_client(@main_client, @main_char)
           
-          FS3Skills.stub(:receives_roll_results?).with(@client[:char]) { true }
-          FS3Skills.stub(:receives_roll_results?).with(@admin[:char]) { true }
-          FS3Skills.stub(:receives_roll_results?).with(@nonadmin[:char]) { false }
+          @admin_client = double
+          @admin_char = double
+          SpecHelpers.setup_mock_client(@admin_client, @admin_char)
+          
+          @nonadmin_client = double
+          @nonadmin_char = double 
+          SpecHelpers.setup_mock_client(@nonadmin_client, @nonadmin_char)
+          
+          FS3Skills.stub(:receives_roll_results?).with(@main_char) { true }
+          FS3Skills.stub(:receives_roll_results?).with(@admin_char) { true }
+          FS3Skills.stub(:receives_roll_results?).with(@nonadmin_char) { false }
           
           @room = double
-          @client[:client].stub(:room) { @room }
-          @admin[:client].stub(:room) { @room }
-          @nonadmin[:client].stub(:room) { @room }
+          @main_client.stub(:room) { @room }
+          @admin_client.stub(:room) { @room }
+          @nonadmin_client.stub(:room) { @room }
           
           client_monitor = double
           Global.stub(:client_monitor) { client_monitor }
-          client_monitor.stub(:logged_in_clients) { [@client[:client], @admin[:client], @nonadmin[:client] ]}
+          client_monitor.stub(:logged_in_clients) { [@main_client, @admin_client, @nonadmin_client ]}
         end
         
         context "private roll" do
           it "should emit to the client and admin" do
-            @client[:client].should_receive(:emit).with("test")
-            @admin[:client].should_receive(:emit).with("test")
-            FS3Skills.emit_results("test", @client[:client], @room, true)
+            @main_client.should_receive(:emit).with("test")
+            @admin_client.should_receive(:emit).with("test")
+            FS3Skills.emit_results("test", @main_client, @room, true)
           end
           
           it "should not emit to the room or non-admin" do
             @room.should_not_receive(:emit).with("test")
-            @nonadmin[:client].should_not_receive(:emit).with("test")
-            @client[:client].stub(:emit)
-            @admin[:client].stub(:emit)
-            FS3Skills.emit_results("test", @client[:client], @room, true)
+            @nonadmin_client.should_not_receive(:emit).with("test")
+            @main_client.stub(:emit)
+            @admin_client.stub(:emit)
+            FS3Skills.emit_results("test", @main_client, @room, true)
           end
         end
         
         context "public roll" do
           it "should emit to the room and an admin not in the room" do
-            @admin[:client].stub(:room) { nil }
-            @admin[:client].should_receive(:emit).with("test")
+            @admin_client.stub(:room) { nil }
+            @admin_client.should_receive(:emit).with("test")
             @room.should_receive(:emit).with("test")
-            FS3Skills.emit_results("test", @client[:client], @room, false)
+            FS3Skills.emit_results("test", @main_client, @room, false)
           end
           
           it "should not emit to the client, non-admin, or admin in the room" do
-            @admin[:client].should_not_receive(:emit).with("test")
-            @nonadmin[:client].should_not_receive(:emit).with("test")
-            @client[:client].should_not_receive(:emit).with("test")
+            @admin_client.should_not_receive(:emit).with("test")
+            @nonadmin_client.should_not_receive(:emit).with("test")
+            @main_client.should_not_receive(:emit).with("test")
             @room.stub(:emit)
-            FS3Skills.emit_results("test", @client[:client], @room, false)
+            FS3Skills.emit_results("test", @main_client, @room, false)
           end
         end
       end

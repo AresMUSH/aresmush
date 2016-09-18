@@ -5,7 +5,6 @@ require "aresmush"
 module AresMUSH
 
   describe CommandHandler do
-    include MockClient
     
     before do
       SpecHelpers.stub_translate_for_testing 
