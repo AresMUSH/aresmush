@@ -112,5 +112,9 @@ module AresMUSH
     def reset_program
       @program = {}
     end
+    
+    def reload
+      @char.reload if @char
+    end
   end
 end

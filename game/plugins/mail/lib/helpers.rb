@@ -80,8 +80,6 @@ module AresMUSH
           m.delete # Do not destroy - see note above
         end
       end
-      # Reload clients only once.
-      Global.client_monitor.reload_clients
     end
     
     def self.send_mail(names, subject, body, client)

@@ -50,7 +50,7 @@ module AresMUSH
     end
  
     def self.handle_command(client, cmd)
-       Global.dispatcher.temp_dispatch(client, cmd)
+       false
     end
 
     def self.handle_event(event)

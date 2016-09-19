@@ -76,6 +76,10 @@ module AresMUSH
       end
     
       context "Errors" do
+        
+        before do
+          @dispatcher.stub(:queue_event) { }
+        end
       
         it "keeps asking plugins if they want the command after an error" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }

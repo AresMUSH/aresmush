@@ -12,7 +12,7 @@ module AresMUSH
     
     # Place a new event in the queue to be processed.
     def queue_event(event)
-      EventMachine.next_tick do
+      EventMachine.defer do
         AresMUSH.with_error_handling(nil, "Queue event.") do
           on_event(event)
         end
@@ -81,6 +81,7 @@ module AresMUSH
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
       @handled = false
+      client.reload
       with_error_handling(client, cmd) do
         CommandAliasParser.substitute_aliases(client, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|

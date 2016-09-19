@@ -12,10 +12,6 @@ module AresMUSH
         self.help_topic = 'actors'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("actor") && cmd.switch_is?("delete")
-      end
 
       def crack!
         self.name = trim_input(cmd.args)

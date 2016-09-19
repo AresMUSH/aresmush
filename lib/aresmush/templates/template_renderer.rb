@@ -14,12 +14,7 @@ module AresMUSH
     end		
     
     def render
-      #self.callback { |text| Global.dispatcher.queue_action(self.client) { self.client.emit text } }
-      #build_async
-      #self.client.emit build     
-      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client) do
-        self.client.emit build
-      end         
+      self.client.emit build
     end      
   end
         
@@ -35,12 +30,7 @@ module AresMUSH
     
     # Renders the template asynchronously and emits it to the client when done
     def render
-      #self.callback { |text| Global.dispatcher.queue_action(self.client) { self.client.emit text } }
-      #build_async
-      #self.client.emit build     
-      Global.dispatcher.spawn("Building template #{self.class.name}.", self.client) do
-        self.client.emit build
-      end         
+      self.client.emit build
     end
     
     # Builds the template asynchronously.  To get the data, set up a callback.

@@ -39,16 +39,31 @@ module AresMUSH
     end
  
     def self.handle_command(client, cmd)
-      return false if !cmd.root_is("actor")
+      return false if !cmd.root_is?("actor")
       
-      if (cmd.switch_is?("search"))
-      elsif (cmd.switch_is?("set"))
-      elsif (cmd.args)
-      elsif (!cmd.switch)
-      
+      case cmd.switch
+      when "search"
+        handler = ActorsSearchCmd.new 
+      when "set"
+        handler = SetActorCmd.new
+      when "delete"
+        handler = DeleteActorCmd.new
+      when nil
+        if (cmd.args)
+          handler = ActorsCatcherCmd.new 
+        else
+          handler = ActorsListCmd.new 
+        end
+      else
+        handler = nil
       end
       
-      false
+      if (handler)
+        handler.on_command(client, cmd)
+        return true
+      else
+        return false
+      end
     end
 
     def self.handle_event(event)

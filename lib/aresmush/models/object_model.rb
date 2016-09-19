@@ -20,8 +20,6 @@ module AresMUSH
         field :alias_upcase, :type => String
         field :model_version, :type => Integer, default: 1
         before_validation :save_upcase_name
-        after_save :reload_clients
-        after_destroy :reload_clients
       end
 
       def find_all_by_name_or_id(name_or_id)
@@ -66,8 +64,5 @@ module AresMUSH
       self.alias_upcase = self.alias.nil? ? "" : self.alias.upcase
     end
     
-    def reload_clients
-      Global.client_monitor.reload_clients
-    end
   end
 end

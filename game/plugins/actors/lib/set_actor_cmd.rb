@@ -12,11 +12,7 @@ module AresMUSH
         self.help_topic = 'actors'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("actor") && cmd.switch_is?("set")
-      end
-
+            
       def crack!
         if (cmd.args =~ /\=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)

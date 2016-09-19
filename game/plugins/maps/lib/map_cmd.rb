@@ -16,14 +16,12 @@ module AresMUSH
       end
       
       def handle
-        Global.dispatcher.spawn("Reading map.", client) do
-          map = map_for_area(self.area)
-        
-          if (!map)
-            client.emit_failure t('maps.no_such_map')
-          else
-            client.emit BorderedDisplay.text map, t('maps.map_title', :area => self.area)
-          end
+        map = map_for_area(self.area)
+      
+        if (!map)
+          client.emit_failure t('maps.no_such_map')
+        else
+          client.emit BorderedDisplay.text map, t('maps.map_title', :area => self.area)
         end
       end
       
