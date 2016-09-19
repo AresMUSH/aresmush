@@ -40,21 +40,21 @@ module AresMUSH
           it "should substitute the go command if an exit is matched and there are no args" do
             cmd = Command.new("E")
             room = double
-            room.stub(:has_exit?).with("E") { true }
+            room.stub(:has_exit?).with("e") { true }
             @client.stub(:room) { room }
             CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
             cmd.root.should eq "go"
-            cmd.args.should eq "E"
+            cmd.args.should eq "e"
             cmd.switch.should be_nil
           end
       
           it "should not substitute exit names if there are other args" do
             cmd = Command.new("X foo")
             room = double
-            room.stub(:has_exit?).with("X") { true }
+            room.stub(:has_exit?).with("x") { true }
             @client.stub(:room) { room }
             CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
-            cmd.root.should eq "X"
+            cmd.root.should eq "x"
             cmd.args.should eq "foo"
             cmd.switch.should be_nil
           end

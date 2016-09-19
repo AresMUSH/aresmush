@@ -15,9 +15,9 @@ module AresMUSH
     def crack!
       cracked = CommandCracker.crack(@raw)
       @prefix = cracked[:prefix]
-      @root = cracked[:root]
+      @root = cracked[:root] ? cracked[:root].downcase : nil
       @page = cracked[:page]
-      @switch = cracked[:switch]
+      @switch = cracked[:switch] ? cracked[:switch].downcase : nil
       @args = cracked[:args]
     end
     
@@ -30,7 +30,7 @@ module AresMUSH
     end
     
     def root_is?(root)
-      @root.upcase == root.upcase
+      @root == root.downcase
     end
     
     def root_only?
@@ -39,7 +39,7 @@ module AresMUSH
     
     def switch_is?(switch)
       return false if @switch.nil?
-      @switch.upcase == switch.upcase
+      @switch == switch.downcase
     end
   
   end

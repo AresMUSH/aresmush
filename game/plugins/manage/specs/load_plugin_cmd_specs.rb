@@ -30,7 +30,7 @@ module AresMUSH
           client.stub(:emit_ooc)
           plugin_manager.stub(:load_plugin)
           plugin_manager.stub(:unload_plugin)
-          Help::Interface.stub(:load_help)
+          Help::Interface.stub(:reload_help)
           client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
           dispatcher.stub(:queue_event)
@@ -52,7 +52,7 @@ module AresMUSH
         end
           
         it "should reload the help" do
-          Help::Interface.should_receive(:load_help)
+          Help::Interface.should_receive(:reload_help)
           handler.handle
         end
           

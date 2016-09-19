@@ -39,7 +39,16 @@ module AresMUSH
     end
  
     def self.handle_command(client, cmd)
-       Global.dispatcher.temp_dispatch(client, cmd)
+      return false if !cmd.root_is("actor")
+      
+      if (cmd.switch_is?("search"))
+      elsif (cmd.switch_is?("set"))
+      elsif (cmd.args)
+      elsif (!cmd.switch)
+      
+      end
+      
+      false
     end
 
     def self.handle_event(event)

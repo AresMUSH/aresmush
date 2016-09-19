@@ -20,7 +20,7 @@ module AresMUSH
       it "should load the metadata" do
         MarkdownFile.should_receive(:new).with("file") { @markdown }
         @reader.load_help_file("file")
-        @reader.help["a"]["b"].should eq "c"
+        @reader.help["file"]["b"].should eq "c"
       end
     end
     
