@@ -1,13 +1,14 @@
 module AresMUSH  
   class Bootstrapper 
     
-    attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager
+    attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager, :help_reader
     
     def initialize
       @config_reader = ConfigReader.new
       @ares_logger = AresLogger.new
       @locale = Locale.new
       @plugin_manager = PluginManager.new
+      @help_reader = HelpReader.new
       dispatcher = Dispatcher.new
       client_factory = ClientFactory.new
       client_monitor = ClientMonitor.new(client_factory)
@@ -21,6 +22,7 @@ module AresMUSH
       Global.plugin_manager = plugin_manager
       Global.dispatcher = dispatcher
       Global.locale = locale
+      Global.help_reader = help_reader
     end
     
     def start

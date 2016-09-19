@@ -5,22 +5,12 @@ require "aresmush"
 module AresMUSH
 
   describe PluginManager do
-
+    include GlobalTestHelper
+    
     before do
-      @temp_dir = "#{Dir.pwd}/tmp_plugin"      
-      FileUtils.rm_rf @temp_dir
-      Dir.mkdir @temp_dir
-      Dir.mkdir File.join(@temp_dir, "plugins")
-      @config = double
-      @locale = double
-      Global.stub(:config_reader) { @config }
-      Global.stub(:locale) { @locale }
+      stub_global_objects
       AresMUSH.stub(:game_path) { @temp_dir }      
       @manager = PluginManager.new
-    end
-
-    after do
-      FileUtils.rm_rf @temp_dir
     end
 
     describe :plugin_path do
@@ -35,8 +25,8 @@ module AresMUSH
         plugin = double
         plugin.stub(:plugin_dir) { "A" }
         plugin.stub(:config_files) { [ "c1", "c2" ]}
-        @config.should_receive(:load_config_file).with("A/c1")
-        @config.should_receive(:load_config_file).with("A/c2")
+        config_reader.should_receive(:load_config_file).with("A/c1")
+        config_reader.should_receive(:load_config_file).with("A/c2")
         @manager.load_plugin_config plugin
       end      
     end
@@ -46,8 +36,8 @@ module AresMUSH
         plugin = double
         plugin.stub(:plugin_dir) { "A" }
         plugin.stub(:config_files) { [ "c1", "c2" ]}
-        @config.should_receive(:validate_config_file).with("A/c1").and_raise("error")
-        @config.should_not_receive(:validate_config_file).with("A/c2")
+        config_reader.should_receive(:validate_config_file).with("A/c1").and_raise("error")
+        config_reader.should_not_receive(:validate_config_file).with("A/c2")
         expect { @manager.validate_plugin_config plugin }.to raise_error("error")
       end
     end
@@ -57,11 +47,22 @@ module AresMUSH
         plugin = double
         plugin.stub(:plugin_dir) { "A" }
         plugin.stub(:locale_files) { [ "l1", "l2" ]}
-        @locale.should_receive(:add_locale_file).with("A/l1")
-        @locale.should_receive(:add_locale_file).with("A/l2")
+        locale.should_receive(:add_locale_file).with("A/l1")
+        locale.should_receive(:add_locale_file).with("A/l2")
         @manager.load_plugin_locale plugin
       end
     end    
+    
+    describe :load_plugin_help do
+      it "should load all the plugin help files" do
+        plugin = double
+        plugin.stub(:plugin_dir) { "A" }
+        plugin.stub(:help_files) { [ "h1", "h2" ]}
+        help_reader.should_receive(:load_help_file).with("A/h1")
+        help_reader.should_receive(:load_help_file).with("A/h2")
+        @manager.load_plugin_help plugin
+      end
+    end 
     
     describe :shortcuts do 
       it "should merge all the plugin shortcuts" do

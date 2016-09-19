@@ -77,7 +77,7 @@ module AresMUSH
   end  
   
   module GlobalTestHelper
-    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale
+    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :help_reader
     
     def stub_global_objects
       @config_reader = double
@@ -85,12 +85,14 @@ module AresMUSH
       @plugin_manager = double
       @dispatcher = double
       @locale = double
+      @help_reader = double
       
       Global.stub(:config_reader) { @config_reader }
       Global.stub(:client_monitor) { @client_monitor }
       Global.stub(:plugin_manager) { @plugin_manager }
       Global.stub(:dispatcher) { @dispatcher }
       Global.stub(:locale) { @locale }
+      Global.stub(:help_reader) { @help_reader }
     end
   end  
 end

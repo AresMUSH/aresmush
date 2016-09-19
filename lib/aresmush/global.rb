@@ -9,6 +9,10 @@ module AresMUSH
       config_reader.get_config(section, key, subkey)
     end
     
-    mattr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :api_router
+    def self.help
+      help_reader.help
+    end
+    
+    mattr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :help_reader
   end
 end

@@ -29,6 +29,5 @@ Plugin code, help files, configuration files and translation (locale) files are 
 `load config` - Reloads configuration from disk.
    
 **Other Commands**
-`load help` - Reloads help files from disk.
 `load locale` - Reloads translation files (locale) from disk.
 `announce <message>` - Announces something to all logged-in characters.

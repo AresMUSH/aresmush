@@ -12,7 +12,7 @@ module AresMUSH
     
     def self.index(category = "main")
       if (!Help.help_topics)
-        Help.load_help
+        Help.reload_help
       end
       Help.help_topics[category] || {}
     end
@@ -69,25 +69,15 @@ module AresMUSH
       md.contents
     end
     
-    def self.load_help
-      files = PluginManager.help_files
+    def self.reload_help
       Help.help_topics = {}
 
-      all_help = {}
-      files.each do |f|
-        begin
-          reader = MarkdownFile.new f
-          all_help[f] = reader.metadata
-        rescue Exception => ex
-          Global.logger.warn "Error loading help file.  Skipping #{f}.  Problem: #{ex}"
-        end
-      end
-      
+      all_help = Global.help_reader.help
+
       [ nil, Global.locale.default_locale, Global.locale.locale ].each do |locale|
         Global.logger.info "Loading help for #{locale}."
         
          all_help.select { |h, v| v["locale"] == locale }.each do |path, value|
-           Global.logger.debug "Loading help from #{path}."
            
            key = value["topic"]
            categories = value["categories"]
@@ -97,7 +87,6 @@ module AresMUSH
                Help.help_topics[cat] = {}
              end
              Help.help_topics[cat][key] = value
-             Help.help_topics[cat][key]["path"] = path
            end
          end
        end

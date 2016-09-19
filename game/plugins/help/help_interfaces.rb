@@ -5,8 +5,8 @@ module AresMUSH
         Help.topic_contents(topic_key, category)
       end
       
-      def self.load_help
-        Help.load_help
+      def self.reload_help
+        Help.reload_help
       end
     end    
   end
