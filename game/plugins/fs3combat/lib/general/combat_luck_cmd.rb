@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'combat'
         super
       end
-              
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("luck")
-      end
       
       def check_reason
         reasons = ["Initiative", "Attack", "Defense"]
@@ -25,7 +21,7 @@ module AresMUSH
       end
       
       def check_points
-        return t('fs3combat.no_luck') if FS3Luck::Interface.luck(client.char) <= 1
+        return t('fs3combat.no_luck') if FS3Luck::Api.luck(client.char) <= 1
         return nil
       end
       
@@ -36,7 +32,7 @@ module AresMUSH
       def handle
         FS3Combat.with_a_combatant(client.name, client) do |combat, combatant|
           
-          FS3Luck::Interface.spend_luck(client.char, 1)
+          FS3Luck::Api.spend_luck(client.char, 1)
           client.char.save
           
           combatant.luck = self.reason

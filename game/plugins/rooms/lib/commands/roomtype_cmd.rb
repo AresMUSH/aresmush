@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'rooms'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("roomtype")
-      end
             
       def crack!
         self.name = trim_input(cmd.args)

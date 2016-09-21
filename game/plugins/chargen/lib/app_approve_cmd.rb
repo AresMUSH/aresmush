@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("app") && cmd.switch_is?("approve")
-      end
-
       def crack!
         self.name = trim_input(cmd.args)
       end
@@ -38,14 +34,14 @@ module AresMUSH
             return
           end
           
-          Jobs::Interface.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
+          Jobs::Api.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
           
           model.is_approved = true
           model.approval_job = nil
           model.save
           client.emit_success t('chargen.app_approved', :name => model.name)
           
-          Bbs::Interface.system_post(
+          Bbs::Api.system_post(
             Global.read_config("chargen", "arrivals_board"),
             t('chargen.approval_bbs_subject'), 
             t('chargen.approval_bbs_body', :name => model.name))

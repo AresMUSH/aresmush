@@ -8,7 +8,7 @@ module AresMUSH
       end
 
       def char_position(char)
-        left(Groups::Interface.group(char, "Position"), 19)
+        left(Groups::Api.group(char, "Position"), 19)
       end
 
       def char_handle(char)
@@ -16,12 +16,12 @@ module AresMUSH
       end
     
       def char_status(char)
-        status = Status::Interface.status(char)
-        left("#{Status::Interface.status_color(status)}#{status}%xn", 6)
+        status = Status::Api.status(char)
+        left("#{Status::Api.status_color(status)}#{status}%xn", 6)
       end
    
       def char_faction(char)
-        left(Groups::Interface.group(char, "Faction"), 15)
+        left(Groups::Api.group(char, "Faction"), 15)
       end
 
       # How long a character's been idle, like 20m

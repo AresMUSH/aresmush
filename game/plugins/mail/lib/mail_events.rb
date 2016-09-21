@@ -1,9 +1,7 @@
 module AresMUSH
   module Mail
-    class MailEvents
-      include CommandHandler
-
-      def on_char_disconnected_event(event)
+    class CharDisconnectedEventHandler
+      def on_event(event)
         client = event.client
         char = client.char
       

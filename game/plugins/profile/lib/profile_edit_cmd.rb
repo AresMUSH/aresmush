@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
             
-      def want_command?(client, cmd)
-        cmd.root_is?("profile") && cmd.switch_is?("edit")
-      end
-
       def crack!
         self.field = titleize_input(cmd.args)
       end

@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'watch'
         super
       end
-                  
-      def want_command?(client, cmd)
-        cmd.root_is?("watch")
-      end
       
       def crack!
         self.option = cmd.args.nil? ? nil : cmd.args.downcase

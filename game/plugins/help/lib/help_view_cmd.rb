@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root.end_with?("help") && cmd.args
-      end
-      
       def crack!
         self.category = Help.command_to_category(cmd.root)
         self.topic = strip_prefix(titleize_input(cmd.args))

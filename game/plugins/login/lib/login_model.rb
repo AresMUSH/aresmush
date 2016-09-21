@@ -4,6 +4,7 @@ module AresMUSH
     field :terms_of_service_acknowledged, :type => Time
     field :watch, :type => String, :default => "all"
     field :password_hash, :type => String
+    field :last_on, :type => Time
 
     def compare_password(entered_password)
       hash = BCrypt::Password.new(self.password_hash)

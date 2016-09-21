@@ -12,10 +12,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("profile") && cmd.switch.nil?
-      end
-      
       def crack!
         self.name = cmd.args.nil? ? client.char.name : titleize_input(cmd.args)
       end

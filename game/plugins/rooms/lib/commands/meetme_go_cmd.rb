@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :going
       
-      def want_command?(client, cmd)
-        cmd.root_is?("meetme") && (cmd.switch_is?("join") || cmd.switch_is?("bring"))
-      end
-      
       def crack!
         self.going = cmd.switch_is?("join")
       end

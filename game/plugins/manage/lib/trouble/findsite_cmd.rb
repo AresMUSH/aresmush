@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("findsite")
-      end
-      
       def crack!
         self.target = trim_input(cmd.args)
       end
@@ -58,7 +54,7 @@ module AresMUSH
 
         title = "#{title}%r#{t('manage.findsite_player_info', :ip => ip, :hostname => hostname)}"
         
-        matches = Character.all.select { |c| Login::Interface.is_site_match?(c, ip, hostname) }
+        matches = Character.all.select { |c| Login::Api.is_site_match?(c, ip, hostname) }
         found = matches.map { |m| "#{m.name.ljust(25)} #{m.last_ip} #{m.last_hostname}" }
         
         client.emit BorderedDisplay.list found, title

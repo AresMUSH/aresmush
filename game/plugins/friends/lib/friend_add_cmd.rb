@@ -12,11 +12,7 @@ module AresMUSH
         self.help_topic = 'friends'
         super
       end
-                  
-      def want_command?(client, cmd)
-        cmd.root_is?("friend") && cmd.switch_is?("add")
-      end
-      
+
       def crack!
         self.name = titleize_input(cmd.args)
       end

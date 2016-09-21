@@ -3,13 +3,6 @@ module AresMUSH
     class PoseCmd
       include CommandHandler
       include CommandRequiresLogin
-
-      def want_command?(client, cmd)
-        (cmd.root_is?("ooc") && !cmd.args.nil?) ||
-        cmd.root_is?("emit") ||
-        cmd.root_is?("pose") || 
-        cmd.root_is?("say")
-      end
       
       def handle
         Pose.emit_pose(client, message, cmd.root_is?("emit"))

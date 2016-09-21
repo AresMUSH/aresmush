@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combats")
-      end
-      
       def handle
         list = FS3Combat.combats.map { |c| format_combat(c)}
         client.emit BorderedDisplay.subtitled_list list, t('fs3combat.active_combats'), t('fs3combat.active_combats_titlebar')

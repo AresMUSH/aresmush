@@ -64,6 +64,7 @@ module AresMUSH
       Global.logger.debug "Reading help file #{category}:#{topic_key}"
       index = Help.index(category)
       topic = index[topic_key]
+      raise "Help topic #{topic_key} #{index.keys} not found!" if !topic
       path = topic["path"]
       md = MarkdownFile.new(path)
       md.contents

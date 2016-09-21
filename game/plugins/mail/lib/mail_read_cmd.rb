@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch.nil? && !cmd.args.nil? && cmd.args !~ /[\/\=]/
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end

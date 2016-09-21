@@ -4,11 +4,7 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-      include TemplateFormatters
-           
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && (cmd.switch_is?("list") || !cmd.switch)
-      end
+      include TemplateFormatters           
       
       def handle        
         all_channels = Channel.all.sort { |c1, c2| c1.name <=> c2.name }

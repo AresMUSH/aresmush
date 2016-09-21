@@ -14,10 +14,6 @@ module AresMUSH
         self.help_topic = 'link'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("link")
-      end
             
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)

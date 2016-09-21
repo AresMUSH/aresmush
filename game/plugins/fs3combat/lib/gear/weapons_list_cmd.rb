@@ -3,11 +3,7 @@ module AresMUSH
     class WeaponsListCmd
       include CommandHandler
       include CommandRequiresLogin
-      include TemplateFormatters
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("weapon") && !cmd.args
-      end
+      include TemplateFormatters      
       
       def handle
         template = GearTemplate.new FS3Combat.weapons, t('fs3combat.weapons_title'), client

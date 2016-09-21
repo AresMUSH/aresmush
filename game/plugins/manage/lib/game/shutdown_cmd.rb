@@ -6,10 +6,6 @@ module AresMUSH
       include CommandWithoutArgs
       include CommandWithoutSwitches
       
-      def want_command?(client, cmd)
-        cmd.root_is?("shutdown")
-      end
-      
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
         return nil

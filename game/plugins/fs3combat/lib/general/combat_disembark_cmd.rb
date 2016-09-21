@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("disembark")
-      end
-      
       def crack!
         if (cmd.args)
           self.name = titleize_input(cmd.args)

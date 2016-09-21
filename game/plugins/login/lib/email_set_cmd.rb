@@ -12,10 +12,6 @@ module AresMUSH
         self.help_topic = 'email'
         super
       end
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("email") && cmd.switch_is?("set")
-      end
 
       def crack!
         self.email = trim_input(cmd.args)

@@ -4,7 +4,7 @@ load "lib/login_events.rb"
 load "lib/time_cmd.rb"
 load "lib/time_model.rb"
 load "lib/timezone_cmd.rb"
-load "time_interfaces.rb"
+load "ooctime_api.rb"
 
 module AresMUSH
   module OOCTime
@@ -35,11 +35,23 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       case cmd.root
+       when "time"
+         return TimeCmd
+       when "timezone"
+         return TimezoneCmd
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharCreatedEvent"
+        return CharCreatedEventHandler
+      end
+      nil
     end
   end
 end

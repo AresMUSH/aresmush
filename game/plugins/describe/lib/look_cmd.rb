@@ -5,28 +5,57 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutSwitches
       
-      attr_accessor :target
-
-      def want_command?(client, cmd)
-        cmd.root_is?("look") && cmd.args !~ /\//
-      end
+      attr_accessor :target, :detail
       
       def crack!
-        self.target = trim_input(cmd.args) || 'here'
+        if (cmd.args =~ /\//)
+          cmd.crack_args!(CommonCracks.arg1_slash_arg2)
+          self.target = cmd.args.arg1
+          self.detail = titleize_input(cmd.args.arg2)          
+        else
+          self.target = trim_input(cmd.args) || 'here'
+          self.detail = nil
+        end
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(target, client) do |model|
-          template = Describe.get_desc_template(model, client)
-          template.render
-          if (model.class == Character)
-            looked_at = model.client
-            if (!looked_at.nil?)
-              looked_at.emit_ooc t('describe.looked_at_you', :name => client.name)
-            end
+        search = VisibleTargetFinder.find(self.target, client)
+        if (self.detail)
+          if (search.found?)
+            show_detail(search.target, self.detail)
+          else
+            client.emit_failure search.error
+          end
+        else
+           if (search.found?)
+             show_desc(search.target)
+           else
+             search = VisibleTargetFinder.find("here", client)
+             show_detail(search.target, self.target)
+           end
+        end
+      end   
+      
+      def show_desc(model)
+        template = Describe.get_desc_template(model, client)
+        template.render
+        if (model.class == Character)
+          looked_at = model.client
+          if (!looked_at.nil?)
+            looked_at.emit_ooc t('describe.looked_at_you', :name => client.name)
           end
         end
-      end      
+      end
+      
+      def show_detail(model, detail_name)
+        detail_name = titleize_input(detail_name)
+        if (!model.has_detail?(detail_name))
+          client.emit_failure t("db.object_not_found")
+          return
+        end
+        title = t('describe.detail_title', :name => model.name, :detail => detail_name)
+        client.emit BorderedDisplay.text model.detail(detail_name), title
+      end   
     end
   end
 end

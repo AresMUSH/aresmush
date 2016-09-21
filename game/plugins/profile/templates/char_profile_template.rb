@@ -28,13 +28,13 @@ module AresMUSH
       
       def status
         text = format_field_title t('profile.status')
-        text << Chargen::Interface.approval_status(@char)
+        text << Chargen::Api.approval_status(@char)
         text
       end
       
       def alts
         text = format_field_title t('profile.alts')
-        alt_list = Handles::Interface.alts(@char).map { |c| c.name }
+        alt_list = Handles::Api.alts(@char).map { |c| c.name }
         alt_list.delete(@char.name)
         text << alt_list.join(" ")
         text
@@ -42,7 +42,7 @@ module AresMUSH
       
       def played_by
         text = format_field_title t('profile.played_by')
-        text << Actors::Interface.actor(@char)
+        text << Actors::Api.get_actor(@char)
         text
       end
       
@@ -51,14 +51,14 @@ module AresMUSH
         if (@char.client)
           text << t('profile.currently_connected')
         else
-          text << OOCTime::Interface.local_long_timestr(self.client, Manage::Interface.last_on(@char))
+          text << OOCTime::Api.local_long_timestr(self.client, Login::Api.last_on(@char))
         end
         text
       end
       
       def timezone
         text = format_field_title t('profile.timezone')
-        text << OOCTime::Interface.timezone(@char)
+        text << OOCTime::Api.timezone(@char)
         text
       end
       

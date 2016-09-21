@@ -27,7 +27,8 @@ module AresMUSH
       
       # List of connected characters, sorted by handle name then character name.
       def chars_by_handle
-        self.online_chars.sort_by{ |c| [c.handle, c.name] }
+        puts "#{self.online_chars}"
+        self.online_chars.sort_by{ |c| [c.handle || "", c.name] }
       end
       
       # Total characers online.
@@ -37,7 +38,7 @@ module AresMUSH
     
       # Total characters online and IC.
       def ic_total
-        ic = self.online_chars.select { |c| Status::Interface.is_ic?(c) }
+        ic = self.online_chars.select { |c| Status::Api.is_ic?(c) }
         center(t('who.players_ic', :count => ic.count), 25)
       end
     

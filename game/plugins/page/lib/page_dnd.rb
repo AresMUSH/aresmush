@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("page") && cmd.switch_is?("dnd")
-      end
-      
       def crack!
         self.option = OnOffOption.new(cmd.args)
       end

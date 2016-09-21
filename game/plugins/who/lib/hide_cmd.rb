@@ -4,11 +4,7 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-      include CommandWithoutSwitches
-      
-      def want_command?(client, cmd)
-         cmd.root_is?("hide") || cmd.root_is?("unhide")
-      end
+      include CommandWithoutSwitches      
       
       def handle
         if cmd.root_is?("unhide")

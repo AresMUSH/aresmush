@@ -36,8 +36,10 @@ module AresMUSH
     it "should catch a double error" do
       Global.logger.should_receive(:error)
       Global.logger.should_receive(:error)
-      Global.stub(:dispatcher).and_raise("Double fault!")
-      val = AresMUSH.with_error_handling(nil, "TEST") do
+      client = double
+      client.stub(:id) { 1 }
+      client.should_receive(:emit_failure).and_raise("Double fault!")
+      val = AresMUSH.with_error_handling(client, "TEST") do
         raise "An error"
       end
       val.should eq false

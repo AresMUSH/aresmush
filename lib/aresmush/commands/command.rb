@@ -30,7 +30,7 @@ module AresMUSH
     end
     
     def root_is?(root)
-      @root == root.downcase
+      @root == root
     end
     
     def root_only?
@@ -39,7 +39,7 @@ module AresMUSH
     
     def switch_is?(switch)
       return false if @switch.nil?
-      @switch == switch.downcase
+      @switch == switch
     end
   
   end

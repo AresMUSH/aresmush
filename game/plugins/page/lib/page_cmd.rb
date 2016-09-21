@@ -7,13 +7,6 @@ module AresMUSH
 
       attr_accessor :names, :message
       
-      def want_command?(client, cmd)
-        # It's a common mistake to type 'p' when you meant '+p' for a channel, but
-        # never vice-versa.  So ignore any command that has a prefix. 
-        return false if !cmd.prefix.nil?
-        cmd.root_is?("page") && cmd.switch.nil?
-      end
-      
       def crack!
         if (cmd.args.nil?)
           self.names = []
@@ -48,7 +41,7 @@ module AresMUSH
           message = PoseFormatter.format(name, self.message)
           recipients = clients.map { |r| r.char.name_and_alias }.join(", ")
         
-          client.emit t('page.to_sender', :autospace => Utils::Interface.autospace(client.char), :color => page_color, :recipients => recipients, :message => message)
+          client.emit t('page.to_sender', :autospace => Pose::Api.autospace(client.char), :color => page_color, :recipients => recipients, :message => message)
           clients.each do |c|
             page_recipient(c, recipients, message)
           end
@@ -61,12 +54,12 @@ module AresMUSH
       def page_recipient(other_client, recipients, message)
         if (other_client.char.do_not_disturb)
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_client.name)
-          Mail::Interface.send_mail([other_client.name], 
+          Mail::Api.send_mail([other_client.name], 
               t('page.missed_page_subject', :name => client.name), 
               t('page.missed_page_body', :name => client.name, :message => message), 
               client)
         else          
-          other_client.emit t('page.to_recipient', :autospace => Utils::Interface.autospace(other_client.char), :color => page_color, :recipients => recipients, :message => message)
+          other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_client.char), :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client)
         end
       end
@@ -75,11 +68,11 @@ module AresMUSH
         char = other_client.char
         if (char.is_afk)
           afk_message = ""
-          if (Status::Interface.afk_message(char))
-            afk_message = "(#{Status::Interface.afk_message(char)})"
+          if (Status::Api.afk_message(char))
+            afk_message = "(#{Status::Api.afk_message(char)})"
           end
           client.emit_ooc t('page.recipient_is_afk', :name => char.name, :message => afk_message)
-        elsif (Status::Interface.is_idle?(other_client))
+        elsif (Status::Api.is_idle?(other_client))
           time = TimeFormatter.format(other_client.idle_secs)
           client.emit_ooc t('page.recipient_is_idle', :name => char.name, :time => time)
         end

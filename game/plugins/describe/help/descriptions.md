@@ -4,6 +4,7 @@ toc: Building
 summary: Descriptions.
 categories:
 - builder
+- main
 aliases:
 - desc
 - describe
@@ -11,18 +12,7 @@ aliases:
 - detail
 plugin: describe
 ---
----
-topic: descriptions
-toc: Descriptions
-summary: Looking around.
-categories:
-- main
-aliases:
-- desc
-- describe
-- look
-- shortdesc
----
+
 Every character, room and exit has a description that tells you what you see when you look at it.
 
 `describe <name>=<description>`

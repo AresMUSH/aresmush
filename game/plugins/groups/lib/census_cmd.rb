@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :name, :page
      
-      def want_command?(client, cmd)
-        cmd.root_is?("census")
-      end
-
       def crack!
         self.name = titleize_input(cmd.args)
         self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
@@ -27,17 +23,17 @@ module AresMUSH
       end
       
       def show_group_census  
-        template = GroupCensusTemplate.new(Idle::Interface.active_chars, self.name, client)
+        template = GroupCensusTemplate.new(Idle::Api.active_chars, self.name, client)
         template.render
       end
       
       def show_gender_census
-        template = GenderCensusTemplate.new(Idle::Interface.active_chars, client)
+        template = GenderCensusTemplate.new(Idle::Api.active_chars, client)
         template.render
       end
       
       def show_complete_census
-        template = CompleteCensusTemplate.new(Idle::Interface.active_chars, self.page, client )
+        template = CompleteCensusTemplate.new(Idle::Api.active_chars, self.page, client )
         template.render        
       end   
     end

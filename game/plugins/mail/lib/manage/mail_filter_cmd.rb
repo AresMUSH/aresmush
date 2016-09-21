@@ -5,18 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
 
       attr_accessor :tag
-
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && 
-          (
-          cmd.switch_is?("filter") || 
-          cmd.switch_is?("inbox") || 
-          cmd.switch_is?("sent") || 
-          cmd.switch_is?("trash") || 
-          (!cmd.args && cmd.switch_is?("archive"))
-          )
-      end
-      
+            
       def crack!
         self.tag = titleize_input(cmd.args)        
       end

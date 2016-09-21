@@ -10,11 +10,7 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing        
       end
       
-      it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-      it_behaves_like "a plugin that expects a single root" do
-        let(:expected_root) { "look" }
-      end
       
       describe :crack do
         it "should set the target" do
@@ -71,17 +67,23 @@ module AresMUSH
         
         context "target not found" do
           before do
-            VisibleTargetFinder.stub(:find) { FindResult.new(nil, "an error") }
+            @here = double
+            handler.crack!            
+            VisibleTargetFinder.should_receive(:find).with("something", @client) { FindResult.new(nil, "an error") }
+            VisibleTargetFinder.should_receive(:find).with("here", @client) { FindResult.new(@here) }
           end
           
-          it "should emit the error to the client" do
-            client.should_receive(:emit_failure).with("an error")
+          it "should emit the error to the client if nothing found" do
+            @here.should_receive(:has_detail?).with("Something") { false }
+            client.should_receive(:emit_failure).with("db.object_not_found")
+            client.should_not_receive(:emit)
             handler.handle
           end
           
-          it "should not emit the desc" do
+          it "should emit a detail if found on room" do
+            @here.should_receive(:has_detail?).with("Something") { false }
+            client.should_receive(:emit_failure).with("db.object_not_found")
             client.should_not_receive(:emit)
-            client.stub(:emit_failure)
             handler.handle
           end
         end

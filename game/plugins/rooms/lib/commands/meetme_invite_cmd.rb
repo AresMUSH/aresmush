@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("meetme") && cmd.switch.nil?
-      end
-      
       def crack!
         if (cmd.args.nil?)
           self.names = []

@@ -6,7 +6,7 @@ load "lib/roster_list_cmd.rb"
 load "lib/roster_model.rb"
 load "lib/roster_remove_cmd.rb"
 load "lib/roster_view_cmd.rb"
-load "roster_interfaces.rb"
+load "roster_api.rb"
 load "templates/roster_template.rb"
 
 module AresMUSH
@@ -38,11 +38,28 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       return if !cmd.root_is?("roster")
+       
+       case cmd.switch
+       when "add", "update"
+         return RosterAddCmd
+       when "claim"
+         return RosterClaimCmd
+       when "remove"
+         return RosterRemoveCmd
+       when nil
+         if (cmd.args)
+           return RosterViewCmd
+         else
+           return RosterListCmd
+         end
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

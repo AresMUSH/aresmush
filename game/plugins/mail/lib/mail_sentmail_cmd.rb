@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("sentmail")
-      end
-      
       def crack!
         self.option = OnOffOption.new(cmd.args)
       end

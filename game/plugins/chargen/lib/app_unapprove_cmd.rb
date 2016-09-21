@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("app") && cmd.switch_is?("unapprove")
-      end
-
       def crack!
         self.name = trim_input(cmd.args)
       end

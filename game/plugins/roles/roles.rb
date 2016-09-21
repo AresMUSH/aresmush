@@ -7,7 +7,7 @@ load "lib/roles_cmd.rb"
 load "lib/roles_model.rb"
 load "lib/roles_remove_cmd.rb"
 load "roles_events.rb"
-load "roles_interfaces.rb"
+load "roles_api.rb"
 load "templates/admin_template.rb"
 
 module AresMUSH
@@ -39,11 +39,27 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "admin"
+        return AdminListCmd
+      when "adminnote"
+        return AdminNoteCmd
+      when "role"
+        case cmd.switch
+        when "add"
+          return RoleAddCmd
+        when "remove"
+          return RoleRemoveCmd
+        when nil
+          return RolesCmd
+        end
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

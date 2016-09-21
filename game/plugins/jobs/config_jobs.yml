@@ -34,9 +34,6 @@ jobs:
     # Category to use for unexpected system errors.
     error_category: "CODE"
     
-    # Set to true to report unexpected code errors as jobs, false to not.
-    # Turning this on can be spammy, but it can alert you to unexpected errors.
-    report_errors: false
     shortcuts:
         "jobs": "job"
         "requests": "request"

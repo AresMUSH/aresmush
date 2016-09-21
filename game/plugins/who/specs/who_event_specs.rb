@@ -3,7 +3,7 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
 
   module Who
-    describe WhoEvents do
+    describe CharConnectedEventHandler do
       include GlobalTestHelper
       
       before do
@@ -12,7 +12,7 @@ module AresMUSH
       
       describe :on_char_connected_event do
         before do
-          @events = WhoEvents.new
+          @events = CharConnectedEventHandler.new
         end
 
         context "online record set" do
@@ -26,12 +26,12 @@ module AresMUSH
           
           it "should update the online record" do
             Game.should_receive(:online_record=).with(3)
-            @events.on_char_connected_event(nil)
+            @events.on_event(nil)
           end
           
           it "should emit the new record" do
             client_monitor.should_receive(:emit_all_ooc).with("record 3")
-            @events.on_char_connected_event(nil)            
+            @events.on_event(nil)            
           end
         end
       
@@ -43,12 +43,12 @@ module AresMUSH
           
           it "should not update the online record" do
             Game.should_not_receive(:online_record=)
-            @events.on_char_connected_event(nil)            
+            @events.on_event(nil)            
           end
           
           it "should not emit a new record" do
             client_monitor.should_not_receive(:emit_all_ooc)
-            @events.on_char_connected_event(nil)            
+            @events.on_event(nil)            
           end
         end
       end

@@ -7,10 +7,6 @@ module AresMUSH
 
       attr_accessor :x, :y
       
-      def want_command?(client, cmd)
-        cmd.root_is?("grid")
-      end
-            
       def crack!
         if (cmd.args.nil?)
           self.x = nil

@@ -14,10 +14,6 @@ module AresMUSH
         self.help_topic = 'lock'
         super
       end
-      
-      def want_command?(client, cmd)
-        (cmd.root_is?("lock") || cmd.root_is?("unlock")) && cmd.args
-      end
             
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
@@ -34,7 +30,7 @@ module AresMUSH
         return t('rooms.no_roles_specified') if cmd.root_is?("lock") && self.lock_keys.empty?
         
         self.lock_keys.each do |k|
-          return t('rooms.exit_lock_not_valid_role', :name => k) if !Roles::Interface.valid_role?(k)
+          return t('rooms.exit_lock_not_valid_role', :name => k) if !Roles::Api.valid_role?(k)
         end
         return nil
       end

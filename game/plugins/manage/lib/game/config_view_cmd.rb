@@ -5,11 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
 
       attr_accessor :section
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("config") && cmd.switch.nil? && !cmd.args.nil?
-      end
-
+      
       def crack!
         self.section = trim_input(cmd.args)
       end

@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "help_interfaces.rb"
+load "help_api.rb"
 load "lib/help_list_cmd.rb"
 load "lib/help_view_cmd.rb"
 load "lib/helpers.rb"
@@ -33,11 +33,19 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       return nil if !cmd.root.end_with?("help")
+       
+       if (cmd.args)
+         return HelpViewCmd
+       else
+         return HelpListCmd
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

@@ -3,11 +3,7 @@ module AresMUSH
     class GoOnstageCmd
       include CommandHandler
       include CommandRequiresLogin
-      include CommandWithoutArgs
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("onstage") && (cmd.switch.nil? || cmd.switch_is?("reset"))
-      end
+      include CommandWithoutArgs      
       
       def check_can_set_status
         return nil if Status.can_be_on_duty?(client.char)
@@ -22,12 +18,12 @@ module AresMUSH
         # No need to save because move will do it.
         char.room.emit_ooc t('status.go_ic', :name => char.name)
         icloc.emit_ooc t('status.go_ic', :name => char.name)
-        Rooms::Interface.move_to(client, client.char, icloc)
+        Rooms::Api.move_to(client, client.char, icloc)
       end
       
       def get_icloc(char)
         icloc_id = char.last_ic_location_id
-        ic_start_room = Rooms::Interface.ic_start_room
+        ic_start_room = Rooms::Api.ic_start_room
         icloc = ic_start_room
         if (!icloc_id.nil? && !cmd.switch_is?("reset"))
           icloc = Room.find(icloc_id)

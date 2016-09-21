@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("boot")
-      end
-      
       def crack!
         self.target = trim_input(cmd.args)
       end

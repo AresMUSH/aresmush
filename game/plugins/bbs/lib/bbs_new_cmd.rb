@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("new")
-      end
-      
       def handle
         first_unread = nil
         board = nil

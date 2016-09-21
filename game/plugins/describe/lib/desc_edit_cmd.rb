@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
             
-      def want_command?(client, cmd)
-        (cmd.root_is?("describe") || cmd.root_is?("shortdesc")) && cmd.switch_is?("edit")
-      end
-
       def crack!
         self.target = trim_input(cmd.args)
       end

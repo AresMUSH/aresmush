@@ -14,9 +14,6 @@ module AresMUSH
         if (!client.nil?)
           client.emit_failure message
         end
-        if (Global.dispatcher)
-          Global.dispatcher.queue_event UnhandledErrorEvent.new(message)
-        end
         return false
       end
     rescue SystemExit

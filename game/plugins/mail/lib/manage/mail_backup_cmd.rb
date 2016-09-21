@@ -3,10 +3,6 @@ module AresMUSH
     class MailBackupCmd
       include CommandHandler
       include CommandRequiresLogin
-           
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("backup")
-      end
       
       def check_too_much_mail
         return t('mail.too_much_for_backup') if client.char.mail.count > 30

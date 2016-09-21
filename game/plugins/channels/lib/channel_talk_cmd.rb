@@ -6,14 +6,7 @@ module AresMUSH
       include CommandWithoutSwitches
            
       attr_accessor :channel, :msg
-
-      def want_command?(client, cmd)
-        return false if !client.logged_in?
-        return false if !cmd.args    
-        self.channel = Channels.channel_for_alias(client.char, cmd.root)
-        !self.channel.nil?
-      end
-            
+      
       def crack!
         self.msg = cmd.args
       end
@@ -23,6 +16,8 @@ module AresMUSH
       end
       
       def handle
+        self.channel = Channels.channel_for_alias(client.char, cmd.root)
+        
         # To support MUX-style command syntax, messages can trigger other
         # commands.
         cmd = nil
@@ -59,7 +54,7 @@ module AresMUSH
         end
           
         title = Channels.get_channel_option(client.char, channel, "title")
-        ooc_name = Handles::Interface.ooc_name(client.char)
+        ooc_name = Handles::Api.ooc_name(client.char)
         name = title.nil? ? ooc_name : "#{title} #{ooc_name}"
         self.channel.pose(name, self.msg)
       end

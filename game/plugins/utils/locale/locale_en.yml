@@ -4,9 +4,6 @@ en:
         sweep_complete: "Disconnected players have been swept out of the room."
         kick_allowed: "You can use the sweep/kick command to move them outside."
         listening_chars: "Disconnected Players in this Room"
-    autospace:
-        autospace_set: "Poses will now look like this:%xn%RA pose.%r%{option}Another pose."
-        autospace_cleared: "You will no longer see anything between poses."
     edit:
         prefix_cleared: "Edit prefix cleared."
         prefix_set: "Edit prefix set."
@@ -14,9 +11,6 @@ en:
         text_saved: "You have saved that text for later."
         recall_title: "Saved Text"
         invalid_recall_number: "That is not a valid number."
-    last:
-        currently_online: "%{name} is currently online."
-        last_online: "%{name} was last online at %{time}."
     ansi:
         colors_title: "ANSI Colors"
         x_or_c: "See 'help ansi' for help using colors."

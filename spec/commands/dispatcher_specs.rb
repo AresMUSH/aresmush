@@ -32,6 +32,8 @@ module AresMUSH
           Global.logger.stub(:error) do |msg| 
             raise msg
           end
+          @handler = double
+          @handler_class = double
         end
         
         it "performs alias substitutions" do
@@ -47,29 +49,33 @@ module AresMUSH
       
         it "asks each plugin if it wants a command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:handle_command).with(@client, @command) { false }
-          @plugin2.should_receive(:handle_command).with(@client, @command) { false }
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { false }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { false }
           @dispatcher.on_command(@client, @command)
         end      
             
         it "stops after finding one plugin to handle the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:handle_command).with(@client, @command) { true }
-          @plugin2.should_not_receive(:handle_command)
+          @handler_class.stub(:new) { @handler }
+          @handler.should_receive(:on_command).with(@client, @command)
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { @handler_class }
+          @plugin2.should_not_receive(:get_cmd_handler)
           @dispatcher.on_command(@client, @command)
         end
       
         it "continues processing if the first plugin doesn't want the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:handle_command).with(@client, @command) { false }
-          @plugin2.should_receive(:handle_command).with(@client, @command) { true }
+          @handler_class.stub(:new) { @handler }
+          @handler.should_receive(:on_command).with(@client, @command)
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { nil }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { @handler_class }
           @dispatcher.on_command(@client, @command)
         end
 
         it "sends huh message if nobody handles the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:handle_command).with(@client, @command) { false }
-          @plugin2.should_receive(:handle_command).with(@client, @command) { false }
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { nil }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { nil }
           @client.should_receive(:emit_ooc).with("dispatcher.huh")
           @dispatcher.on_command(@client, @command)
         end      
@@ -83,14 +89,14 @@ module AresMUSH
       
         it "keeps asking plugins if they want the command after an error" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:handle_command).and_raise("an error")
-          @plugin2.should_receive(:handle_command).with(@client, @command)
+          @plugin1.should_receive(:get_cmd_handler).and_raise("an error")
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command)
           @dispatcher.on_command(@client, @command)
         end
         
         it "catches exceptions from within the command handling" do
           plugin_manager.stub(:plugins) { [ @plugin1 ] }
-          @plugin1.stub(:handle_command).and_raise("an error")
+          @plugin1.stub(:get_cmd_handler).and_raise("an error")
           @command.stub(:raw) { "raw" }
           @client.should_receive(:emit_failure).with("dispatcher.unexpected_error")
           @dispatcher.on_command(@client, @command)
@@ -98,23 +104,49 @@ module AresMUSH
       
         it "allows a plugin exit exception to bubble up" do
           plugin_manager.stub(:plugins) { [ @plugin1 ] }
-          @plugin1.stub(:handle_command) { true }
-          @plugin1.stub(:handle_command).and_raise(SystemExit)
+          @plugin1.stub(:get_cmd_handler) { true }
+          @plugin1.stub(:get_cmd_handler).and_raise(SystemExit)
           expect {@dispatcher.on_command(@client, @command)}.to raise_error(SystemExit)
         end
       end
     end
 
     describe :on_event do
+      before do
+        dispatcher.stub(:spawn).and_yield
+      end
+      
       it "should send the event to any class that handles it" do
         plugin1 = double
         plugin2 = double
         plugin_manager.stub(:plugins) { [ plugin1, plugin2 ] }
         event = double
-        plugin1.should_receive(:handle_event).with(event)
-        plugin2.should_receive(:handle_event).with(event)
+        handler_class = double
+        handler1 = double
+        handler2 = double
+        handler_class.should_receive(:new) { handler1 }
+        handler_class.should_receive(:new) { handler2 }
+        plugin1.should_receive(:get_event_handler).with(event.class.to_s) { handler_class }
+        plugin2.should_receive(:get_event_handler).with(event.class.to_s) { handler_class }
+        handler1.should_receive(:on_event).with(event)
+        handler2.should_receive(:on_event).with(event)
         @dispatcher.on_event event
       end
+      
+      it "should not send event to a class that doesn't want it" do
+        plugin1 = double
+        plugin2 = double
+        plugin_manager.stub(:plugins) { [ plugin1, plugin2 ] }
+        event = double
+        handler_class = double
+        handler = double
+        handler_class.should_receive(:new) { handler }
+        plugin1.should_receive(:get_event_handler).with(event.class.to_s) { nil }
+        plugin2.should_receive(:get_event_handler).with(event.class.to_s) { handler_class }
+        handler.should_receive(:on_event).with(event)
+        @dispatcher.on_event event
+      end
+      
     end
   end
 end

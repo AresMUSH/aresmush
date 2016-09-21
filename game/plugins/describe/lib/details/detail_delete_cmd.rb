@@ -11,11 +11,7 @@ module AresMUSH
         self.required_args = ['name', 'target']
         self.help_topic = 'detail'
         super
-      end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("detail") && cmd.switch_is?("delete")
-      end
+      end      
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2)

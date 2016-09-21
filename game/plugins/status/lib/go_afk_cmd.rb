@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :message
       
-      def want_command?(client, cmd)
-        cmd.root_is?("afk")
-      end
-      
       def crack!
         self.message = cmd.args
       end
@@ -28,7 +24,7 @@ module AresMUSH
           
         char.afk_message = self.message  
         char.is_afk = true
-        if (Rooms::Interface.room_type(char.room) == "IC")
+        if (Rooms::Api.room_type(char.room) == "IC")
           char.last_ic_location_id = char.room.id
         end
         char.save     

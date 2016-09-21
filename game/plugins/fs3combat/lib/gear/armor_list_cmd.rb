@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include TemplateFormatters
       
-      def want_command?(client, cmd)
-        cmd.root_is?("armor") && !cmd.args
-      end
-      
       def handle
         template = GearTemplate.new FS3Combat.armors, t('fs3combat.armor_title'), client
         template.render

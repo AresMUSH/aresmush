@@ -44,11 +44,58 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)      
+      if (is_talk_cmd(client, cmd))
+        return ChannelTalkCmd
+      else
+        return nil if !cmd.root_is?("channel")
+      
+        case cmd.switch
+        when "alias"
+          return ChannelAliasCmd 
+        when "announce"
+          return ChannelAnnounceCmd
+        when "color"
+          return ChannelColorCmd
+        when "create"
+          return ChannelCreateCmd
+        when "defaultalias"
+          return ChannelDefaultAlias
+        when "delete"
+          return ChannelDeleteCmd
+        when "describe"
+          return ChannelDescCmd
+        when "gag", "ungag"
+          return ChannelGagCmd
+        when "join"
+          return ChannelJoinCmd
+        when "leave"
+          return ChannelLeaveCmd
+        when "list", nil
+          return ChannelListCmd
+        when "roles"
+          return ChannelRolesCmd
+        when "title"
+          return ChannelTitleCmd
+        when "who"
+          return ChannelWhoCmd
+        end
+      end
+      return nil   
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharCreatedEvent"
+        return CharCreatedEventHandler
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      when "CharDisconnectedEvent"
+        return CharDisconnectedEventHandler
+      when "RolesChangedEvent"
+        return RolesChangedEventHandler
+      end
+      nil
     end
   end
 end

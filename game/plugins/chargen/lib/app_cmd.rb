@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :name
 
-      def want_command?(client, cmd)
-        cmd.root_is?("app") && cmd.switch.nil?
-      end
-
       def crack!
         self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
@@ -34,18 +30,18 @@ module AresMUSH
           title = t('chargen.app_title', :name => model.name)
           
           text = section_title(t('chargen.abilities_review_title'))
-          text << FS3Skills::Interface.app_review(model)
+          text << FS3Skills::Api.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.demographics_review_title'))
-          text << Demographics::Interface.app_review(model)
+          text << Demographics::Api.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.groups_review_title'))
-          text << Groups::Interface.app_review(model)
+          text << Groups::Api.app_review(model)
           text << "%r%r"
           text << section_title(t('chargen.misc_review_title'))
           text << Chargen.bg_app_review(model)
           text << "%r"
-          text << Describe::Interface.app_review(model)
+          text << Describe::Api.app_review(model)
           text << "%r"
           text << Ranks.app_review(model)
           text << "%r%r"

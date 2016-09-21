@@ -15,10 +15,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("raise") || cmd.root_is?("lower")
-      end
-
       def crack!
         self.name = titleize_input(cmd.args)
       end
@@ -38,7 +34,7 @@ module AresMUSH
       
       
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
       
       def handle

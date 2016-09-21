@@ -35,11 +35,29 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("cookie")
+      
+      case cmd.switch
+      when "here"
+        return CookieHereCmd
+      when nil
+        if (cmd.args)
+          return CookieCmd
+        else
+          return CookiesCmd
+        end
+      end
+      
+      return nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
+      nil
     end
   end
 end

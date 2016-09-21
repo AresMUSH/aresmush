@@ -1,6 +1,6 @@
 module AresMUSH
   module FS3Luck
-    describe Interface do
+    describe Api do
 
       before do
         Global.stub(:read_config).with("fs3luck", "max_luck") { 3 }
@@ -12,12 +12,12 @@ module AresMUSH
         end
         
         it "should add luck" do
-          FS3Luck::Interface.award_luck(@char, 1)
+          FS3Luck::Api.award_luck(@char, 1)
           @char.luck.should eq 2
         end
 
         it "should not go over the cap" do
-          FS3Luck::Interface.award_luck(@char, 5)
+          FS3Luck::Api.award_luck(@char, 5)
           @char.luck.should eq 3
         end
       end
@@ -28,12 +28,12 @@ module AresMUSH
         end
         
         it "should spend luck" do
-          FS3Luck::Interface.spend_luck(@char, 1)
+          FS3Luck::Api.spend_luck(@char, 1)
           @char.luck.should eq 1
         end
 
         it "should not go below zero" do
-          FS3Luck::Interface.spend_luck(@char, 5)
+          FS3Luck::Api.spend_luck(@char, 5)
           @char.luck.should eq 0
         end
       end
@@ -45,7 +45,7 @@ module AresMUSH
         end
         
         it "should return luck" do
-          FS3Luck::Interface.luck(@char).should eq 2
+          FS3Luck::Api.luck(@char).should eq 2
         end
       end
     end

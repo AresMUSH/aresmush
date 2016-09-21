@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("cookie") && !cmd.switch && !cmd.args
-      end
-      
       def handle
         cookie_total = t('cookies.cookies_total', :cookies => client.char.cookie_count)
         cookie_recipients = client.char.cookies_given

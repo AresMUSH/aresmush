@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :name
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("hitlocs")
-      end
-      
       def crack!
         self.name = cmd.args ? titleize_input(cmd.args) : client.char.name
       end

@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :num
       
-      def want_command?(client, cmd)
-        cmd.root_is?("recall")
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end

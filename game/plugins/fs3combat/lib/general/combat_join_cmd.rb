@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("join")
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)

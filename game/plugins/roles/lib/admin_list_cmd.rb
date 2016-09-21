@@ -5,10 +5,6 @@ module AresMUSH
       include TemplateFormatters
       include CommandWithoutSwitches
             
-      def want_command?(client, cmd)
-        cmd.root_is?("admin") && !cmd.args
-      end
-      
       def handle
         admins_by_role = {}
         roles = Global.read_config("roles", "game_admin")

@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def mail
-        mail_text = Mail::Interface.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
+        mail_text = Mail::Api.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
         if (@char.handle)
           Character.find_by_handle(@char.handle).each do |alt|
             next if alt == @char
@@ -37,12 +37,12 @@ module AresMUSH
       
       
       def bbs
-        Bbs::Interface.has_unread_bbs?(@char) ? t('notices.unread_bbs') : t('notices.no_unread_bbs')
+        Bbs::Api.has_unread_bbs?(@char) ? t('notices.unread_bbs') : t('notices.no_unread_bbs')
       end
       
       def jobs_or_requests
-        return t('notices.unread_requests') if Jobs::Interface.has_unread_requests?(@char)
-        return t('notices.unread_jobs') if Jobs::Interface.has_unread_jobs?(@char)
+        return t('notices.unread_requests') if Jobs::Api.has_unread_requests?(@char)
+        return t('notices.unread_jobs') if Jobs::Api.has_unread_jobs?(@char)
         return t('notices.no_unread_requests')
       end
     end

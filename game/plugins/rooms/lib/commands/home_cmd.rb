@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
 
-      def want_command?(client, cmd)
-        cmd.root_is?("home") && cmd.switch.nil?
-      end
-      
       def check_home_set
         return t('rooms.home_not_set') if client.char.home.nil?
         return nil

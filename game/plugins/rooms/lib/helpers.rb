@@ -9,7 +9,7 @@ module AresMUSH
     end
     
     def self.emit_here_desc(client)        
-      template = Describe::Interface.desc_template(client.room, client)
+      template = Describe::Api.desc_template(client.room, client)
       template.render
     end
     

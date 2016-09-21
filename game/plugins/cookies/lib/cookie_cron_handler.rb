@@ -1,9 +1,7 @@
 module AresMUSH
   module Cookies    
-    class CookieCronHandler
-      include CommandHandler
-      
-      def on_cron_event(event)
+    class CronEventHandler
+      def on_event(event)
         config = Global.read_config("cookies", "cron")
         return if !Cron.is_cron_match?(config, event.time)
         
@@ -20,7 +18,7 @@ module AresMUSH
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck
-            FS3Luck::Interface.add_luck(client.char)
+            FS3Luck::Api.add_luck(client.char)
           end
 
           Global.logger.info "#{c.name} got #{count} cookies from #{c.cookies_received.map{|a| a.name}.join(",")}"
@@ -31,7 +29,7 @@ module AresMUSH
         
         return if awards.blank?
         
-        Bbs::Interface.system_post(
+        Bbs::Api.system_post(
           Global.read_config("cookies", "cookie_board"),
           t('cookies.weekly_award_title'), 
           awards.chomp)

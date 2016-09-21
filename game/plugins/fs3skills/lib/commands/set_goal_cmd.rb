@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("goal")
-      end
-
       def crack!
         self.goal = cmd.args
       end

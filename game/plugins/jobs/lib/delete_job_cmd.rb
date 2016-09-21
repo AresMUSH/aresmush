@@ -3,10 +3,6 @@ module AresMUSH
     class DeleteJobCmd
       include SingleJobCmd
       
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("delete")
-      end
-      
       def crack!
         self.number = trim_input(cmd.args)
       end

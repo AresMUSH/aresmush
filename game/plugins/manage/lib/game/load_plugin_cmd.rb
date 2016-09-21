@@ -17,11 +17,6 @@ module AresMUSH
         self.load_target = trim_input(cmd.args)
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("load") && 
-        cmd.args != "locale" && cmd.args != "config"
-      end
-      
       def check_plugin_name
         return t('manage.invalid_plugin_name') if self.load_target !~ /^[\w\-]+$/
         return nil
@@ -47,7 +42,8 @@ module AresMUSH
             # Swallow this error.  Just means you're loading a plugin for the very first time.
           end
           Global.plugin_manager.load_plugin(load_target)
-          Help::Interface.reload_help
+          Help::Api.reload_help
+          Global.locale.reload
           Global.client_monitor.reload_clients
           Global.dispatcher.queue_event ConfigUpdatedEvent.new
           client.emit_success t('manage.plugin_loaded', :name => load_target)

@@ -1,6 +1,10 @@
 $:.unshift File.dirname(__FILE__)
-load "jobs_interface.rb"
-load "lib/a_single_job_cmd.rb"
+load "jobs_api.rb"
+
+# Must be loaded before other job commands
+load "lib/single_job_cmd.rb"
+
+
 load "lib/change_job_cmd.rb"
 load "lib/close_job_cmd.rb"
 load "lib/create_job_cmd.rb"
@@ -54,11 +58,67 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       case cmd.root
+       when "job"
+         case cmd.switch
+         when "all"
+           return ListJobsCmd
+         when "backup"
+           return JobsBackupCmd
+         when "cat"
+           return ChangeCategoryCmd
+         when "catchup"
+           return JobsCatchupCmd
+         when "comment", "respond"
+           return JobCommentCmd
+         when "close"
+           return CloseJobCmd
+         when "confirmpurge"
+           return PurgeJobsConfirmCmd
+         when "create"
+           return CreateJobCmd
+         when "delete"
+           return DeleteJobCmd
+         when "handle", "assign"
+           return HandleJobCmd
+         when "new"
+           return JobsNewCmd
+         when "purge"
+           return PurgeJobsCmd
+         when "search"
+           return JobSearchCmd
+         when "status"
+           return JobStatusCmd
+         when "title"
+           return ChangeTitleCmd
+         when nil
+           if (cmd.args)
+             return ViewJobCmd
+           else
+             return ListJobsCmd
+           end
+         end
+         
+       when "request"
+         case cmd.switch
+         when "comment"
+           return RequestCommentCmd
+         when nil
+           if (!cmd.args)
+             return ListRequestsCmd
+           elsif (cmd.args =~ /\=/)
+             return CreateRequestCmd
+           else
+             return ViewRequestCmd
+           end
+         end
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

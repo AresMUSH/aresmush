@@ -11,7 +11,7 @@ module AresMUSH
     
     def self.calculate_age(dob)
       return 0 if dob.nil?
-      now = ICTime::Interface.ictime
+      now = ICTime::Api.ictime
       now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
     end
     
@@ -32,7 +32,7 @@ module AresMUSH
       end
       
       if (missing.count == 0)
-        Chargen::Interface.format_review_status(message, t('chargen.ok'))
+        Chargen::Api.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%R%T#{m}" }.join
         "#{message}%r#{error}"

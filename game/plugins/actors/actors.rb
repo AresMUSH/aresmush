@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "actors_interface.rb"
+load "actors_api.rb"
 load "lib/actor_catcher.rb"
 load "lib/actors_cmd.rb"
 load "lib/actors_model.rb"
@@ -38,35 +38,27 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-      return false if !cmd.root_is?("actor")
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("actor")
       
       case cmd.switch
-      when "search"
-        handler = ActorsSearchCmd.new 
-      when "set"
-        handler = SetActorCmd.new
       when "delete"
-        handler = DeleteActorCmd.new
+        return DeleteActorCmd
+      when "search"
+        return ActorsSearchCmd
+      when "set"
+        return SetActorCmd
       when nil
         if (cmd.args)
-          handler = ActorsCatcherCmd.new 
+          return ActorsCatcherCmd
         else
-          handler = ActorsListCmd.new 
+          return ActorsListCmd
         end
-      else
-        handler = nil
       end
-      
-      if (handler)
-        handler.on_command(client, cmd)
-        return true
-      else
-        return false
-      end
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

@@ -7,10 +7,6 @@ module AresMUSH
 
       attr_accessor :name
       
-      def want_command?(client, cmd)
-        cmd.root_is?("rooms")
-      end
-      
       def crack!
         self.name = trim_input(cmd.args)
       end

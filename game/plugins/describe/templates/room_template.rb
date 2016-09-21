@@ -71,7 +71,7 @@ module AresMUSH
           text << t('describe.no_way_out')
         end
         
-        if (Rooms::Interface.is_foyer?(@room))
+        if (Rooms::Api.is_foyer?(@room))
           text << foyer()
         end
 
@@ -80,7 +80,7 @@ module AresMUSH
       
       # List of all exits in the room.
       def exits
-        if (Rooms::Interface.is_foyer?(@room))
+        if (Rooms::Api.is_foyer?(@room))
           non_foyer_exits
         else
           @room.exits.sort_by { |e| e.name }
@@ -109,25 +109,25 @@ module AresMUSH
       
       # Short IC date/time string
       def ic_time
-        ICTime::Interface.ic_datestr ICTime::Interface.ictime
+        ICTime::Api.ic_datestr ICTime::Api.ictime
       end
       
       def area
-        right(Rooms::Interface.area(@room), 37)
+        right(Rooms::Api.area(@room), 37)
       end
       
       # Room grid coordinates, e.g. (1,2)
       def grid
-        "(#{Rooms::Interface.grid_x(@room)},#{Rooms::Interface.grid_y(@room)})"
+        "(#{Rooms::Api.grid_x(@room)},#{Rooms::Api.grid_y(@room)})"
       end
       
       def weather
-         w = Weather::Interface.weather_for_area(Rooms::Interface.area(@room))
+         w = Weather::Api.weather_for_area(Rooms::Api.area(@room))
          w ? "#{w}%R" : ""
       end
       
       def ooc_time
-        OOCTime::Interface.local_long_timestr(self.client, Time.now)
+        OOCTime::Api.local_long_timestr(self.client, Time.now)
       end
       
       def foyer_exits
@@ -169,14 +169,14 @@ module AresMUSH
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)
-        if (Status::Interface.is_afk?(char))
+        if (Status::Api.is_afk?(char))
           msg = "%xy%xh<#{t('describe.afk')}>%xn"
-          afk_message = Status::Interface.afk_message(char)
+          afk_message = Status::Api.afk_message(char)
           if (afk_message)
             msg = "#{msg} %xy#{afk_message}%xn"
           end
           msg
-        elsif (char.client && Status::Interface.is_idle?(char.client))
+        elsif (char.client && Status::Api.is_idle?(char.client))
           "%xy%xh<#{t('describe.idle')}>%xn"
         else
           ""
@@ -188,7 +188,7 @@ module AresMUSH
       end
       
       def exit_destination(e)
-        locked = Rooms::Interface.can_use_exit?(e, self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
+        locked = Rooms::Api.can_use_exit?(e, self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')
         str = "#{locked}#{name}"
         left(str, 30)

@@ -31,11 +31,16 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
+    def self.get_cmd_handler(client, cmd)
        false
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      end
+      nil
     end
   end
 end

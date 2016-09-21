@@ -17,6 +17,25 @@ module AresMUSH
       channel_options = char.channel_options[channel.name]
       channel_options.nil? ? nil : channel_options[option]
     end
+ 
+    def self.is_talk_cmd(client, cmd)
+      return false if !client.logged_in?
+      return false if !cmd.args    
+      channel = Channels.channel_for_alias(client.char, cmd.root)
+      !channel.nil?
+    end
+    
+    def self.find_common_channels(channels, other_client)
+      their_channels = other_client.char.channels
+      intersection = channels & their_channels
+      intersection = intersection.select { |c| c.announce }
+      if (intersection.empty?)
+        return nil
+      end
+      intersection = intersection.map { |c| c.display_name(false) }
+      Channels.name_with_markers(intersection.join(", "))
+    end
+    
     
     def self.name_with_markers(name)
       start_marker = Global.read_config("channels", "start_marker")
@@ -39,7 +58,7 @@ module AresMUSH
         next if !c.is_online?
         online_chars << c
       end
-      online_chars = online_chars.map { |c| "#{Handles::Interface.ooc_name(c)}#{gag_text(c, channel)}" }
+      online_chars = online_chars.map { |c| "#{Handles::Api.ooc_name(c)}#{gag_text(c, channel)}" }
       t('channels.channel_who', :name => channel.display_name, :chars => online_chars.join(", "))
     end
     

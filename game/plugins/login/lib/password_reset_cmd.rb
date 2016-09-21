@@ -13,11 +13,7 @@ module AresMUSH
         self.help_topic = 'password'
         super
       end
-
-      def want_command?(client, cmd)
-        cmd.root_is?("password") && cmd.switch_is?("reset")
-      end
-
+      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
@@ -37,7 +33,7 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
           
-          if (Roles::Interface.is_master_admin?(char))
+          if (Roles::Api.is_master_admin?(char))
             client.emit_failure t('login.cant_reset_master_admin_password')
             return
           end

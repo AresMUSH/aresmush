@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :offset
       
-      def want_command?(client, cmd)
-        cmd.root_is?("cg") && (cmd.switch_is?("next") || cmd.switch_is?("prev") || cmd.switch.nil?)
-      end
-            
       def crack!
         if (cmd.switch.nil?)
           self.offset = 0

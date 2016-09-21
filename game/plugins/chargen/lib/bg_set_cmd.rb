@@ -12,10 +12,6 @@ module AresMUSH
         self.help_topic = 'bg'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("bg") && cmd.switch_is?("set")
-      end
             
       def crack!
         # Starts with a character name and equals - since names can't have

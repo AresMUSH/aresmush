@@ -11,10 +11,6 @@ module AresMUSH
         super
       end
   
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("status")
-      end
-  
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.number = trim_input(cmd.args.arg1)

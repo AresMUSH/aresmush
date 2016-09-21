@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("delete")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2)
         self.board_name = titleize_input(cmd.args.arg1)

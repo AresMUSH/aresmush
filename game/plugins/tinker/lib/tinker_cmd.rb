@@ -5,10 +5,6 @@ module AresMUSH
       include CommandWithoutSwitches
       include CommandRequiresLogin
             
-      def want_command?(client, cmd)
-        cmd.root_is?("tinker")
-      end
-      
       def crack!
       end
       

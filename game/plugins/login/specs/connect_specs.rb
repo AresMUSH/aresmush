@@ -13,28 +13,6 @@ module AresMUSH
         client.stub(:logged_in?) { false }
       end
       
-      it_behaves_like "a plugin that doesn't allow switches"
-            
-      describe :want_command? do
-        it "wants the connect command" do
-          cmd.stub(:root_is?).with("connect") { true }
-          cmd.stub(:root_is?).with("c") { false }
-          handler.want_command?(client, cmd).should be_true
-        end
-
-        it "wants the c command" do
-          cmd.stub(:root_is?).with("connect") { false }
-          cmd.stub(:root_is?).with("c") { true }
-          handler.want_command?(client, cmd).should be_true
-        end
-        
-        it "doesn't want another command" do
-          cmd.stub(:root_is?).with("connect") { false }
-          cmd.stub(:root_is?).with("c") { false }
-          handler.want_command?(client, cmd).should be_false
-        end
-      end
-      
       describe :crack do
         it "should crack the arguments" do
           init_handler(ConnectCmd, "connect Bob password")

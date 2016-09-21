@@ -12,10 +12,6 @@ module AresMUSH
         self.help_topic = 'echo'
         super
       end
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("echo")
-      end
       
       def crack!
         self.message = cmd.args

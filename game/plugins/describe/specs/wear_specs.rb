@@ -14,12 +14,8 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing        
       end        
 
-      it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-      it_behaves_like "a plugin that expects a single root" do
-        let(:expected_root) { "wear" }
-      end
-      
+     
       describe :crack! do
         it "should set the names to nil if none are specified" do
           init_handler(WearCmd, "wear")

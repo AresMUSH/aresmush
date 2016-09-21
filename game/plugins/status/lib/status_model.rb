@@ -19,21 +19,21 @@ module AresMUSH
     end
     
     def is_ic?
-      Rooms::Interface.room_type(self.room) == "IC"
+      Rooms::Api.room_type(self.room) == "IC"
     end
     
     def status
       # AFK trumps all
       return "AFK" if self.is_afk?
       # Admins can be on duty or OOC
-      return "ADM" if Roles::Interface.is_admin?(self) && self.is_on_duty?
+      return "ADM" if Roles::Api.is_admin?(self) && self.is_on_duty?
       return "OOC" if Status.can_be_on_duty?(self)
       # Playerbits are always OOC
       return "OOC" if self.is_playerbit
       # New trumps room type
       return "NEW" if !self.is_approved
       # Otherwise use room type
-      Rooms::Interface.room_type(self.room)
+      Rooms::Api.room_type(self.room)
     end
   end
 end

@@ -300,10 +300,10 @@ module AresMUSH
         
         describe :roll_ability do
           it "should roll the specified ability for a PC" do
-            FS3Skills::Interface.should_receive(:one_shot_roll).with(nil, @char, anything) do |client, char, params|
+            FS3Skills::Api.should_receive(:one_shot_roll).with(nil, @char, anything) do |client, char, params|
               params.ability.should eq "Firearms"
               params.modifier.should eq 3
-              params.related_apt.should be_nil
+              params.linked_attr.should be_nil
               result = { :successes => 2, :success_title => "Foo" }
               result
             end
@@ -313,7 +313,7 @@ module AresMUSH
           it "should roll just a number for a NPC" do
             @combatant.stub(:character) { nil }
             result = { :successes => 2, :success_title => "Foo" }
-            FS3Skills::Interface.should_receive(:one_shot_die_roll).with(@combatant.npc_skill + 3) { result }
+            FS3Skills::Api.should_receive(:one_shot_die_roll).with(@combatant.npc_skill + 3) { result }
             @combatant.roll_ability("Firearms", 3).should eq 2
           end
         end

@@ -3,7 +3,7 @@ load "lib/helpers.rb"
 load "lib/weather_change_cmd.rb"
 load "lib/weather_cmd.rb"
 load "lib/weather_cron.rb"
-load "weather_interfaces.rb"
+load "weather_api.rb"
 
 module AresMUSH
   module Weather
@@ -34,11 +34,19 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("weather")
+      case cmd.switch
+      when "set"
+        return WeatherChangeCmd
+      when nil
+        return WeatherCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

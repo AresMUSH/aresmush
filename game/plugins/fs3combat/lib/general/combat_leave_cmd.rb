@@ -5,11 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :name
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("leave")
-      end
+      attr_accessor :name      
       
       def crack!
         self.name = cmd.args ? titleize_input(cmd.args) : client.char.name

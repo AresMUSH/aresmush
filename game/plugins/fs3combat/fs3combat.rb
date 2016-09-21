@@ -1,11 +1,14 @@
 $:.unshift File.dirname(__FILE__)
-load "combat_interface.rb"
-load "lib/0_models/combat_action.rb"
-load "lib/0_models/combat_instance.rb"
-load "lib/0_models/combat_model.rb"
-load "lib/0_models/combatant.rb"
-load "lib/0_models/damage.rb"
-load "lib/0_models/vehicle.rb"
+load "fs3combat_api.rb"
+
+# Models must come first
+load "lib/models/combat_action.rb"
+load "lib/models/combat_instance.rb"
+load "lib/models/combat_model.rb"
+load "lib/models/combatant.rb"
+load "lib/models/damage.rb"
+load "lib/models/vehicle.rb"
+
 load "lib/actions/action_checkers.rb"
 load "lib/actions/aim_action.rb"
 load "lib/actions/attack_action.rb"
@@ -13,7 +16,6 @@ load "lib/actions/fullauto_action.rb"
 load "lib/actions/pass_action.rb"
 load "lib/actions/reload_action.rb"
 load "lib/actions/treat_action.rb"
-load "lib/combat_events.rb"
 load "lib/common_checks.rb"
 load "lib/damage/damage_cmd.rb"
 load "lib/damage/damage_cron_handler.rb"
@@ -83,11 +85,84 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when"damage"
+         case cmd.switch
+         when "inflict"
+           return InflictDamageCmd
+         when nil
+           return DamageCmd
+         end
+       when "treat"
+         return TreatCmd
+       when "armor"
+         if (cmd.args)
+           return ArmorDetailCmd
+         else
+           return ArmorListCmd
+         end
+       when "vehicle"
+         if (cmd.args)
+           return VehicleDetailCmd
+         else
+           return VehiclesListCmd
+         end
+       when "weapon"
+         if (cmd.args)
+           return WeaponDetailCmd
+         else
+           return WeaponsListCmd
+         end
+       when "combats"
+         return CombatListCmd
+       when "combat"
+         case cmd.switch
+         when "armor"
+           return CombatArmorCmd
+         when "hitlocs"
+           return CombatHitlocsCmd
+         when "weapon"
+           return CombatWeaponCmd
+         when "ai"
+           return CombatAiCmd
+         when "disembark"
+           return CombatDisembarkCmd
+         when "join"
+           return CombatJoinCmd
+         when "leave"
+           return CombatLeaveCmd
+         when "luck"
+           return CombatLuckCmd
+         when "newturn"
+           return CombatNewTurnCmd
+         when "skill"
+           return CombatNpcSkillCmd
+         when "stance"
+           return CombatStanceCmd
+         when "start"
+           return CombatStartCmd
+         when "stop"
+           return CombatStopCmd
+         when "summary"
+           return CombatSummaryCmd
+         when "team"
+           return CombatTeamCmd
+         when "types"
+           return CombatTypesCmd
+         when "pilot", "passenger"
+           return CombatVehicleCmd
+         when nil
+           return CombatHudCmd
+         else
+           return CombatActionCmd
+         end
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

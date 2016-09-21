@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("app") && cmd.switch_is?("reject")
-      end
-
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
@@ -43,7 +39,7 @@ module AresMUSH
           model.chargen_locked = false
           model.save
           
-          Jobs::Interface.change_job_status(client,
+          Jobs::Api.change_job_status(client,
             model.approval_job,
             Global.read_config("chargen", "jobs", "app_hold_status"),
             "#{Global.read_config("chargen", "messages", "rejection")}%R%R#{self.message}")

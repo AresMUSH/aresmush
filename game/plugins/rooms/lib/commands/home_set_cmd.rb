@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-
-      def want_command?(client, cmd)
-        cmd.root_is?("home") && cmd.switch_is?("set")
-      end
       
       def check_can_go_home
         return t('dispatcher.not_allowed') if !Rooms.can_go_home?(client.char)

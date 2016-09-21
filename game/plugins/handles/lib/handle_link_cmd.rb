@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("handle") && cmd.switch_is?("link")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.handle_name = cmd.args.arg1
@@ -37,7 +33,7 @@ module AresMUSH
         AresMUSH.with_error_handling(client, "Linking char to AresCentral handle.") do
           Global.logger.info "Linking #{char.name} to #{self.handle_name}."
         
-          connector = Api::AresCentralConnector.new
+          connector = AresCentral::AresConnector.new
           response = connector.link_char(self.handle_name, self.link_code, char.name, char.id.to_s)
         
           if (response.is_success?)

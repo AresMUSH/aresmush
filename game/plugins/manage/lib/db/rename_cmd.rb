@@ -16,10 +16,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("rename")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
@@ -28,7 +24,7 @@ module AresMUSH
 
       def handle
         AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
-          if (!Manage.can_manage_object?(client.char, model))
+          if (!can_rename_self(model) && !Manage.can_manage_object?(client.char, model))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
@@ -45,20 +41,18 @@ module AresMUSH
               client.emit_failure(t('manage.exit_already_exists'))
               return
             end
-          end
-        
-          if (model.class == Character)
-            if (model.linked_characters.keys.count > 0)
-              client.emit_failure(t('manage.cant_rename_handle_with_links'))
-              return
-            end
-          end
+          end         
         
           old_name = model.name
           model.name = self.name
           model.save!
           client.emit_success t('manage.object_renamed', :type => model.class.name.rest("::"), :old_name => old_name, :new_name => self.name)
         end
+      end
+      
+      def can_rename_self(model)
+        return true if (model == client.char && !model.is_approved?)
+        false          
       end
     end
   end

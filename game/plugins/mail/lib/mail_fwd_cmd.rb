@@ -15,10 +15,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("fwd")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
         self.num = trim_input(cmd.args.arg1)

@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("unsend")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2)
         self.name = trim_input(cmd.args.arg1)

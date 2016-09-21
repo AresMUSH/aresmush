@@ -15,10 +15,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("ability")
-      end
-
       def crack!
         if (cmd.args =~ /[^\/]+\=.+\/.+/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
@@ -60,7 +56,7 @@ module AresMUSH
       
       def check_chargen_locked
         return nil if FS3Skills.can_manage_abilities?(client.char)
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
       
       def handle

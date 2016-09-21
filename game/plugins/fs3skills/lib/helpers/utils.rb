@@ -100,19 +100,19 @@ module AresMUSH
 
       case ability_type
       when :nonexistant
-        related_apt = "None"
+        linked_attr = "None"
         apt_rating = 0
       when :aptitude
-        related_apt = ability
+        linked_attr = ability
         apt_rating = skill_rating
         skill_rating = 0
       else
-        related_apt = roll_params.related_apt || FS3Skills.get_related_apt(char, ability)
-        apt_rating = FS3Skills.ability_rating(char, related_apt)
+        linked_attr = roll_params.linked_attr || FS3Skills.get_linked_attr(char, ability)
+        apt_rating = FS3Skills.ability_rating(char, linked_attr)
       end
       
       dice = (skill_rating * 2) + apt_rating + modifier
-      Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} related_apt=#{related_apt} apt=#{apt_rating}"
+      Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} linked_attr=#{linked_attr} apt=#{apt_rating}"
       
       dice
     end
@@ -139,14 +139,14 @@ module AresMUSH
     # Technically it can be Ability+Ability, or Attribute+Aptitude or Aptitude+Ability;
     # the code doesn't care.
     def self.parse_roll_params(str)
-      match = /^(?<ability>[^\+\-]+)\s*(?<related_apt>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
+      match = /^(?<ability>[^\+\-]+)\s*(?<linked_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
       return nil if match.nil?
       
       ability = match[:ability].strip
       modifier = match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i
-      related_apt = match[:related_apt].nil? ? nil : match[:related_apt][1..-1].strip
+      linked_attr = match[:linked_attr].nil? ? nil : match[:linked_attr][1..-1].strip
       
-      return RollParams.new(ability, modifier, related_apt)
+      return RollParams.new(ability, modifier, linked_attr)
     end
     
     def self.emit_results(message, client, room, is_private)

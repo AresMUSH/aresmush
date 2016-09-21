@@ -34,10 +34,6 @@ module AresMUSH
     class ChangeTitleCmd
       include ChangeJobCmd
 
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("title")
-      end
-
       def update_value(job)
         job.title = self.value
       end
@@ -45,10 +41,6 @@ module AresMUSH
     
     class ChangeCategoryCmd
       include ChangeJobCmd
-
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("cat")
-      end
       
       def check_category
         return nil if self.value.nil?

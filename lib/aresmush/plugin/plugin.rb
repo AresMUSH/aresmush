@@ -2,13 +2,6 @@ module AresMUSH
   module CommandHandler
     
     attr_accessor :client, :cmd
-        
-    # Override this with the processing needed to tell if you want a particular command
-    # Commonly, you'll look at the root and the switch:
-    #    cmd.root_is?("mail") && cmd.switch_is?("new")
-    def want_command?(client, cmd)
-      false
-    end
 
     # This defines basic processing suitable for many commands.  You can override this 
     # method entirely if you need advanced processing, or just override the helper methods

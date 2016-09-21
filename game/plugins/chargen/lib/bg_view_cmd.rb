@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :target, :page
       
-      def want_command?(client, cmd)
-        cmd.root_is?("bg") && !cmd.switch
-      end
-
       def crack!
         self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
         self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i

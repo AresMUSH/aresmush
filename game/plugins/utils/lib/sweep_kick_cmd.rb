@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :message
       
-      def want_command?(client, cmd)
-        cmd.root_is?("sweep") && cmd.switch_is?("kick")
-      end
-      
       def handle
         outside = client.room.way_out
         
@@ -22,7 +18,7 @@ module AresMUSH
         client.room.characters.each do |c|
           other_client = c.client
           if (other_client.nil?)
-            Rooms::Interface.move_to(nil, c, outside.dest)
+            Rooms::Api.move_to(nil, c, outside.dest)
           end
         end
         

@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "idle_interfaces.rb"
+load "idle_api.rb"
 load "lib/helpers.rb"
 load "lib/idle_action_cmd.rb"
 load "lib/idle_execute_cmd.rb"
@@ -38,11 +38,29 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "idle"
+        case cmd.switch
+        when "action"
+          return IdleActionCmd
+        when "execute"
+          return IdleExecuteCmd
+        when "queue"
+          return IdleQueueCmd
+        when "remove"
+          return IdleRemoveCmd
+        when "start"
+          return IdleStartCmd
+        end
+      when "lastwill"
+        return LastWillCmd
+      end
+       
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

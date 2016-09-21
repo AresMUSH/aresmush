@@ -50,7 +50,7 @@ module AresMUSH
     end
     
     def load_plugin_locale(plugin_module)
-      plugin_module.locale_files.each do |locale|              
+      plugin_module.locale_files.each do |locale|   
         Global.locale.add_locale_file File.join(plugin_module.plugin_dir, locale)
       end
     end

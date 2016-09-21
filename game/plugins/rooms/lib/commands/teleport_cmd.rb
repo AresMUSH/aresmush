@@ -15,10 +15,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("teleport")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         if (cmd.args.arg2.nil?)

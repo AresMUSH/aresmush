@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("roster") && (cmd.switch_is?("add") || cmd.switch_is?("update"))
-      end
-
       def check_can_add
         return nil if Roster.can_manage_roster?(client.char)
         return t('dispatcher.not_allowed')

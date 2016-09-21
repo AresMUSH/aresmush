@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
                  
-      def want_command?(client, cmd)
-        cmd.root_is?("cookie") && cmd.switch_is?("here")
-      end
-
       def handle
         client.emit_success t('cookies.giving_cookies_here')
         client.room.clients.each do |c|

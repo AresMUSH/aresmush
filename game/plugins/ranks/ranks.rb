@@ -3,7 +3,7 @@ load "lib/helpers.rb"
 load "lib/rank_set_cmd.rb"
 load "lib/ranks_cmd.rb"
 load "lib/ranks_model.rb"
-load "ranks_interfaces.rb"
+load "ranks_api.rb"
 
 module AresMUSH
   module Ranks
@@ -34,11 +34,20 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("rank")
+      
+      case cmd.switch
+      when "set"
+        return RankSetCmd
+      when nil
+        return RanksCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

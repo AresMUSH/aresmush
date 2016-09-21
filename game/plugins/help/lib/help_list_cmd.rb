@@ -7,10 +7,6 @@ module AresMUSH
 
       attr_accessor :category, :page
       
-      def want_command?(client, cmd)
-        cmd.root.end_with?("help") && !cmd.args
-      end
-
       def crack!
         self.category = Help.command_to_category(cmd.root)
         self.page = cmd.page.nil? ? 1 : cmd.page.to_i

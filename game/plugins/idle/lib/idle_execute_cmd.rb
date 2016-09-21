@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("idle") && cmd.switch_is?("execute")
-      end
 
       def check_can_manage
         return nil if Idle.can_idle_sweep?(client.char)
@@ -30,7 +26,7 @@ module AresMUSH
             idle_char.destroy
           when "Roster"
             Global.logger.debug "#{idle_char.name} added to roster."
-            Roster::Interface.add_to_roster(idle_char)
+            Roster::Api.add_to_roster(idle_char)
             report << "#{idle_char.name} - #{t('idle.added_to_roster')}"
           when "Warn"
             Global.logger.debug "#{idle_char.name} idle warned."
@@ -49,7 +45,7 @@ module AresMUSH
         
         client.emit BorderedDisplay.list report
         
-        Bbs::Interface.system_post(
+        Bbs::Api.system_post(
           Global.read_config("idle", "idle_board"), 
           t('idle.idle_bbs_subject'), 
           t('idle.idle_bbs_body', :report => report.join("%R")))

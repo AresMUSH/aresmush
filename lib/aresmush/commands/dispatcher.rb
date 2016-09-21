@@ -59,24 +59,6 @@ module AresMUSH
       end
     end
     
-    def temp_dispatch(client, cmd)
-      Global.plugin_manager.plugins.each do |p|
-        consts = p.constants
-        consts.each do |c|
-          sym = p.const_get(c)
-          if (sym.class == Class && sym.include?(AresMUSH::CommandHandler))
-            klass = sym.new
-            if (klass.want_command?(client, cmd))
-              Global.logger.debug "Found #{sym}."
-              klass.on_command(client, cmd)
-              return true
-            end
-          end
-        end
-      end
-      return false      
-    end
-    
     ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
@@ -85,9 +67,12 @@ module AresMUSH
       with_error_handling(client, cmd) do
         CommandAliasParser.substitute_aliases(client, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
-          with_error_handling(client, cmd) do
-            wanted = p.handle_command(client, cmd)
-            if (wanted)
+          AresMUSH.with_error_handling(client, cmd) do
+            handler_class = p.get_cmd_handler(client, cmd)
+            if (handler_class)
+              @handled = true
+              handler = handler_class.new
+              handler.on_command(client, cmd)
               return
             end # if
           end # with error handling
@@ -103,11 +88,15 @@ module AresMUSH
     ### Use queue_event if you need to queue up an event
     def on_event(event)
       begin
+        event_name = event.class.to_s.gsub("AresMUSH::", "")
         Global.plugin_manager.plugins.each do |p|
-          AresMUSH.with_error_handling(nil, "Handling #{event}.") do
-            handled = p.handle_event(event)
-            if (handled)
-              return
+          AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
+            handler_class = p.get_event_handler(event_name)
+            if (handler_class)
+              spawn("Handling #{event_name} with #{p}", nil) do
+                handler = handler_class.new
+                handler.on_event(event)
+              end
             end # if
           end # with error handling
         end # each

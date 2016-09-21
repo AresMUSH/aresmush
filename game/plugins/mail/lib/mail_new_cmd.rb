@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("new")
-      end
-      
       def handle
         unread = client.char.unread_mail.first
         if (unread.nil?)

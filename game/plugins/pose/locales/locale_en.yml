@@ -3,3 +3,6 @@ en:
         nospoof_set: "You turn your 'nospoof' setting %{status}."
         pemit_nospoof_from: "Private emit from %{name}:"
         emit_nospoof_from: "Emit from %{name}:"
+    autospace:
+        autospace_set: "Poses will now look like this:%xn%RA pose.%r%{option}Another pose."
+        autospace_cleared: "You will no longer see anything between poses."

@@ -14,17 +14,13 @@ module AresMUSH
         super
       end
             
-      def want_command?(client, cmd)
-        cmd.root_is?("age") 
-      end
-
       def check_age        
         return t('demographics.invalid_age') if !self.age.is_integer?
         return Demographics.check_age(self.age.to_i)
       end
       
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
       
       def crack!
@@ -32,12 +28,12 @@ module AresMUSH
       end
       
       def handle
-        bday = Date.new ICTime::Interface.ictime.year - self.age.to_i, ICTime::Interface.ictime.month, ICTime::Interface.ictime.day
+        bday = Date.new ICTime::Api.ictime.year - self.age.to_i, ICTime::Api.ictime.month, ICTime::Api.ictime.day
         bday = bday - rand(364)
         client.char.birthdate = bday
         client.char.save
         client.emit_success t('demographics.birthdate_set', 
-          :birthdate => ICTime::Interface.ic_datestr(bday), 
+          :birthdate => ICTime::Api.ic_datestr(bday), 
           :age => client.char.age)
       end
         

@@ -3,11 +3,7 @@ module AresMUSH
     class JobsBackupCmd
       include CommandHandler
       include CommandRequiresLogin
-           
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("backup")
-      end
-      
+
       def check_too_many_jobs
         closed = Jobs.closed_jobs
         return t('jobs.too_much_for_backup') if closed.count > 30

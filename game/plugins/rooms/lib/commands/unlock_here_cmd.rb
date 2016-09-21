@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       
-      def want_command?(client, cmd)
-        cmd.root_is?("unlock") && cmd.args.nil?
-      end
-
       def check_is_interior_room
         target = client.room.way_in
         return t('rooms.cant_lock_exterior_rooms') if !target

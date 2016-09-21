@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :num
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("stop")
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end

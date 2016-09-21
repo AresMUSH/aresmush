@@ -17,12 +17,10 @@ load "lib/game/shutdown_cmd.rb"
 load "lib/game/unload_plugin_cmd.rb"
 load "lib/game/version_cmd.rb"
 load "lib/helpers.rb"
-load "lib/login_events.rb"
 load "lib/manage_model.rb"
 load "lib/trouble/boot_cmd.rb"
 load "lib/trouble/findsite_cmd.rb"
 load "manage_events.rb"
-load "manage_interfaces.rb"
 
 module AresMUSH
   module Manage
@@ -53,11 +51,64 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "announce"
+        return AnnounceCmd
+      when "boot"
+        return BootCmd
+      when "config"
+        case cmd.switch
+        when nil
+          if (cmd.args)
+            return ConfigViewCmd
+          else
+            return ConfigListCmd
+          end
+        end
+      when "destroy"
+        case cmd.switch
+        when "confirm"
+          return DestroyConfirmCmd
+        when nil
+          return DestroyCmd
+        end
+      when "examine"
+        return ExamineCmd
+      when "find"
+        return FindCmd
+      when "findsite"
+        return FindsiteCmd
+      when "git"
+        return GitCmd
+      when "load"
+        case cmd.args
+        when "config"
+          return LoadConfigCmd
+        when "locale"
+          return LoadLocaleCmd
+        else
+          return LoadPluginCmd
+        end
+      when "plugins"
+        return PluginListCmd
+      when "reload"
+        return ReloadCmd
+      when "rename"
+        return RenameCmd
+      when "shutdown"
+        return ShutdownCmd
+      when "unload"
+        return UnloadPluginCmd
+      when "version"
+        return VersionCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("post")
-      end
-      
       def crack!
         if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
           cmd.crack_args!(/(?<name>[^\=]+)=(?<subject>[^\/]+)\/(?<message>.+)/)

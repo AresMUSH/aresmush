@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && (cmd.switch_is?("reply") || cmd.switch_is?("replyall"))
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)

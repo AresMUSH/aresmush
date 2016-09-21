@@ -5,10 +5,6 @@ module AresMUSH
       include CommandWithoutSwitches
       
       attr_accessor :charname, :password
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("create")
-      end
 
       def crack!
         # After agreeing to TOS, this is already cracked.

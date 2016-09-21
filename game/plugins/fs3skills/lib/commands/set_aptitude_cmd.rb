@@ -15,10 +15,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("aptitude")
-      end
-
       def crack!
         cmd.crack_args!(/(?<great>.+)\/(?<good>.+)\/(?<poor>.+)/)
         self.great = titleize_input(cmd.args.great)
@@ -35,7 +31,7 @@ module AresMUSH
       
       def check_chargen_locked
         return nil if FS3Skills.can_manage_abilities?(client.char)
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
       
       def handle

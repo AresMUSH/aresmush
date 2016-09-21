@@ -35,7 +35,7 @@ module AresMUSH
 
       # Delivery date
       def date
-        OOCTime::Interface.local_long_timestr(self.client, @message.created_at)
+        OOCTime::Api.local_long_timestr(self.client, @message.created_at)
       end
       
       def body

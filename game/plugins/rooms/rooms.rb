@@ -21,7 +21,7 @@ load "lib/commands/unlock_here_cmd.rb"
 load "lib/helpers.rb"
 load "lib/room_events.rb"
 load "lib/room_model.rb"
-load "rooms_interfaces.rb"
+load "rooms_api.rb"
 
 module AresMUSH
   module Rooms
@@ -52,11 +52,73 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "area"
+        return AreaCmd
+      when "build"
+        return BuildCmd
+      when "foyer"
+        return FoyerCmd
+      when "go"
+        return GoCmd
+      when "grid"
+        return GridCmd
+      when "home"
+        case cmd.switch
+        when "set"
+          return HomeSetCmd
+        when nil
+          return HomeCmd
+        end
+      when "link"
+        return LinkCmd
+      when "lock"
+        if (cmd.args)
+          return LockCmd
+        else
+          return LockHereCmd
+        end
+      when "meetme"
+        case cmd.switch
+        when "join", "bring"
+          return MeetmeGoCmd
+        when nil
+          return MeetmeInviteCmd
+        end
+      when "open"
+        return OpenCmd
+      when "out"
+        return OutCmd
+      when "rooms"
+        return RoomsCmd
+      when "roomtype"
+        return RoomTypeCmd
+      when "teleport"
+        return TeleportCmd
+      when "unlink"
+        return UnlinkCmd
+      when "unlock"
+        if (cmd.args)
+          return LockCmd
+        else
+          return UnlockHereCmd
+        end
+      end
+      
+      nil
     end
-
-    def self.handle_event(event)
+    
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      when "CharDisconnectedEvent"
+        return CharDisconnectedEventHandler
+      when "CronEvent"
+        return CronEventHandler
+      end
+      nil
     end
   end
 end

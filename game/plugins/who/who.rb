@@ -39,11 +39,25 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "hide", "unhide"
+        return HideCmd
+      when "where"
+        return WhereCmd
+      when "who"
+        return WhoCmd        
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      end
+      nil
     end
   end
 end

@@ -14,16 +14,12 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("roster") && cmd.switch_is?("claim")
-      end
-      
       def crack!
         self.name = titleize_input(cmd.args)
       end
       
       def handle
-        terms_of_service = Login::Interface.terms_of_service
+        terms_of_service = Login::Api.terms_of_service
         if (!terms_of_service.nil? && client.program[:tos_accepted].nil?)
           client.program[:create_cmd] = cmd
           client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
@@ -39,7 +35,7 @@ module AresMUSH
           end
 
           password = Character.random_link_code
-          Login::Interface.change_password(model, password)
+          Login::Api.change_password(model, password)
           model.roster_registry.destroy
           
           model.save
@@ -49,7 +45,7 @@ module AresMUSH
           return if !bbs
           return if bbs.blank?
         
-          Bbs::Interface.post(bbs, 
+          Bbs::Api.post(bbs, 
             t('roster.roster_bbs_subject'), 
             t('roster.roster_bbs_body', :name => model.name), 
             Game.master.system_character)

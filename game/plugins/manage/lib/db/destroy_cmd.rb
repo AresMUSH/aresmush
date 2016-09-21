@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("destroy") && cmd.switch.nil?
-      end
-      
       def crack!
         self.name = trim_input(cmd.args)
       end
@@ -28,7 +24,7 @@ module AresMUSH
             return
           end
         
-          if (Rooms::Interface.is_special_room?(target))
+          if (Rooms::Api.is_special_room?(target))
             client.emit_failure(t('manage.cannot_destroy_special_rooms'))
             return
           end

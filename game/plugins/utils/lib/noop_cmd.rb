@@ -6,10 +6,6 @@ module AresMUSH
 
       attr_accessor :message
 
-      def want_command?(client, cmd)
-        cmd.root_is?("@")
-      end
-
       def handle
         # A command that does absolutely nothing!
       end

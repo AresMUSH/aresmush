@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("request") && cmd.switch.nil? && cmd.args !~ /\=/
-      end
-      
       def crack!
         self.number = trim_input(cmd.args)
       end

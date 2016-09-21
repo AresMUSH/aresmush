@@ -30,7 +30,8 @@ module AresMUSH
           client.stub(:emit_ooc)
           plugin_manager.stub(:load_plugin)
           plugin_manager.stub(:unload_plugin)
-          Help::Interface.stub(:reload_help)
+          Help::Api.stub(:reload_help)
+          locale.stub(:reload)
           client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
           dispatcher.stub(:queue_event)
@@ -52,7 +53,7 @@ module AresMUSH
         end
           
         it "should reload the help" do
-          Help::Interface.should_receive(:reload_help)
+          Help::Api.should_receive(:reload_help)
           handler.handle
         end
           
@@ -98,6 +99,12 @@ module AresMUSH
           client_monitor.should_receive(:reload_clients)
           handler.handle
         end
+        
+        it "should reload locale" do
+          locale.should_receive(:reload)
+          handler.handle
+        end
+        
       end
     end
   end

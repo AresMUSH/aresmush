@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "handle_interface.rb"
+load "handles_api.rb"
 load "lib/event_handlers.rb"
 load "lib/handle_link_cmd.rb"
 load "lib/handles_model.rb"
@@ -33,11 +33,23 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("handle")
+      
+      case cmd.switch
+      when "link"
+        return HandleLinkCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      end
+      nil
     end
   end
 end

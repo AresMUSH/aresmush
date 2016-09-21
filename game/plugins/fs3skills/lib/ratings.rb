@@ -17,19 +17,19 @@ module AresMUSH
       end
     end
     
-    def self.get_related_apt(char, ability)
+    def self.get_linked_attr(char, ability)
       ability_type = FS3Skills.get_ability_type(char, ability)
-      default = Global.read_config("fs3skills", "default_related_apt")
+      default = Global.read_config("fs3skills", "default_linked_attr")
       
       case ability_type
         when :action
-          return FS3Skills.action_skills.find { |s| s["name"].upcase == ability.upcase }["related_apt"]
+          return FS3Skills.action_skills.find { |s| s["name"].upcase == ability.upcase }["linked_attr"]
         when :advantage
-          return FS3Skills.advantages.find { |s| s["name"].upcase == ability.upcase }["related_apt"]
+          return FS3Skills.advantages.find { |s| s["name"].upcase == ability.upcase }["linked_attr"]
         when :aptitude
           return ability
         else
-          return char.fs3_related_apts[ability] || default
+          return char.fs3_linked_attrs[ability] || default
       end
     end
     

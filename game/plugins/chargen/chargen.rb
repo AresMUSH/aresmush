@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "chargen_interface.rb"
+load "chargen_api.rb"
 load "lib/app_approve_cmd.rb"
 load "lib/app_cmd.rb"
 load "lib/app_model.rb"
@@ -45,11 +45,45 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "app"
+        case cmd.switch
+        when "approve"
+          return AppApproveCmd 
+        when "reject"
+          return AppRejectCmd
+        when "submit", "confirm"
+          return AppSubmitCmd
+        when "unapprove"
+          return AppUnapproveCmd
+        when "unsubmit"
+          return AppUnsubmitCmd
+        when nil
+          return AppCmd
+        end
+      when "bg"
+        case cmd.switch  
+        when "edit"
+          return BgEditCmd 
+        when "set"
+          return BgSetCmd
+        when nil
+          return BgCmd
+        end
+      when "cg"
+        case cmd.switch
+        when "prev", "next", nil
+          return ChargenPrevNextCmd 
+        when "start"
+          return ChargenStartCmd        
+        end
+      end
+      
+      return nil    
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

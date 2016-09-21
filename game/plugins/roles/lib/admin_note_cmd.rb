@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("adminnote")
-      end
-
       def crack!
         self.note = cmd.args
       end

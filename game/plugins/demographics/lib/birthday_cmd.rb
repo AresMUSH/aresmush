@@ -14,16 +14,12 @@ module AresMUSH
         super
       end
             
-      def want_command?(client, cmd)
-        cmd.root_is?("birthdate") 
-      end
-
       def crack!
         self.date_str = cmd.args
       end
             
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
       
       def handle
@@ -46,7 +42,7 @@ module AresMUSH
         client.char.birthdate = bday
         client.char.save
         client.emit_success t('demographics.birthdate_set', 
-          :birthdate => ICTime::Interface.ic_datestr(bday), 
+          :birthdate => ICTime::Api.ic_datestr(bday), 
           :age => client.char.age)
       end
         

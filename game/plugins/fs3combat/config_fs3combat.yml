@@ -44,3 +44,4 @@ fs3combat:
         "weapons": "weapon"
         "combat/skills": "combat/summary"
         "combat/slackers": "combat/summary"
+        "vehicles": "vehicle"

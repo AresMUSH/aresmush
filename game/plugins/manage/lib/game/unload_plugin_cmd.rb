@@ -17,10 +17,6 @@ module AresMUSH
         self.load_target = cmd.args
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("unload")
-      end
-      
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
         return nil
@@ -29,7 +25,7 @@ module AresMUSH
       def handle
         begin
           Global.plugin_manager.unload_plugin(load_target)
-          Help::Interface.reload_help
+          Help::Api.reload_help
           client.emit_success t('manage.plugin_unloaded', :name => load_target)
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)

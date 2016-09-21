@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("duty")
-      end
-      
       def crack!
         self.status = OnOffOption.new(cmd.args)
       end

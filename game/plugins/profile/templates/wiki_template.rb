@@ -61,70 +61,70 @@ module AresMUSH
       end
       
       def fullname
-        Demographics::Interface.fullname(@char)
+        Demographics::Api.fullname(@char)
       end
       
       def gender
-        Demographics::Interface.gender(@char)
+        Demographics::Api.gender(@char)
       end
       
       def height
-        Demographics::Interface.demographic(@char, :height)
+        Demographics::Api.demographic(@char, :height)
       end
       
       def physique
-        Demographics::Interface.demographic(@char, :physique)
+        Demographics::Api.demographic(@char, :physique)
       end
       
       def hair
-        Demographics::Interface.demographic(@char, :hair)
+        Demographics::Api.demographic(@char, :hair)
       end
       
       def eyes
-        Demographics::Interface.demographic(@char, :eyes)
+        Demographics::Api.demographic(@char, :eyes)
       end
       
       def age
-        age = Demographics::Interface.age(@char)
+        age = Demographics::Api.age(@char)
         age == 0 ? "" : age
       end
       
       def actor
-        Actors::Interface.actor(@char)
+        Actors::Api.get_actor(@char)
       end
       
       def birthdate
-        dob = Demographics::Interface.demographic(@char, :birthdate)
-        dob.nil? ? "" : ICTime::Interface.ic_datestr(dob)
+        dob = Demographics::Api.demographic(@char, :birthdate)
+        dob.nil? ? "" : ICTime::Api.ic_datestr(dob)
       end
       
       def callsign
-        Demographics::Interface.demographic(@char, :callsign)
+        Demographics::Api.demographic(@char, :callsign)
       end
       
       
       def faction
-        Groups::Interface.group(@char, "Faction")
+        Groups::Api.group(@char, "Faction")
       end
       
       def position
-        Groups::Interface.group(@char, "Position")
+        Groups::Api.group(@char, "Position")
       end
       
       def colony
-        Groups::Interface.group(@char, "Colony")
+        Groups::Api.group(@char, "Colony")
       end
       
       def department
-        Groups::Interface.group(@char, "Department")
+        Groups::Api.group(@char, "Department")
       end
 
       def rank
-        Ranks::Interface.rank(@char)
+        Ranks::Api.rank(@char)
       end
             
       def background
-        "+ Background%R#{ Chargen::Interface.background(@char) } "
+        "+ Background%R#{ Chargen::Api.background(@char) } "
       end
 
       def hooks

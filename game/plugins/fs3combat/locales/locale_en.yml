@@ -177,6 +177,7 @@ en:
         # ACTIONS
         # ----------------------------
         
+        unknown_command: "Unknown combat command."
         invalid_action_params: "There was a problem with your action: %{error}"
         not_a_valid_target: "%{name} is not a valid target."
         only_one_target: "You can only target one person with that action."

@@ -18,8 +18,8 @@ module AresMUSH
     
     def self.census_by(&block)
       counts = {}
-      Idle::Interface.active_chars.each do |c|
-        next if Idle::Interface.idled_status(c)
+      Idle::Api.active_chars.each do |c|
+        next if Idle::Api.idled_status(c)
         val = yield(c)
         if (!val.nil?)
           count = counts.has_key?(val) ? counts[val] : 0
@@ -41,7 +41,7 @@ module AresMUSH
       end
       
       if (missing.count == 0)
-        Chargen::Interface.format_review_status(message, t('chargen.ok'))
+        Chargen::Api.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%R%T#{m}" }.join
         "#{message}%r#{error}"

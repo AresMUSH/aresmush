@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def damage_line(damage)
-        line = left(ICTime::Interface.ic_datestr(damage.ictime), 13)
+        line = left(ICTime::Api.ic_datestr(damage.ictime), 13)
         line << left(damage.description, 30)
         initial_sev = damage.initial_severity
         current_sev = FS3Combat.display_severity(damage.current_severity)

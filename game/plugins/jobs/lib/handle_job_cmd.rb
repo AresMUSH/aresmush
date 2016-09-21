@@ -11,10 +11,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && (cmd.switch_is?("handle") || cmd.switch_is?("assign"))
-      end
-      
       def crack!
         if (cmd.args =~ /\=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)

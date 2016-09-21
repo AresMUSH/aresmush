@@ -11,11 +11,7 @@ module AresMUSH
         self.required_args = ['name']
         self.help_topic = 'bbs'
         super
-      end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("createboard")
-      end
+      end      
       
       def crack!
         self.name = titleize_input(cmd.args)

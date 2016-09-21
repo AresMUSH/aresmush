@@ -13,11 +13,7 @@ module AresMUSH
         self.help_topic = 'roll'
         super
       end
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("roll") && cmd.args =~ / vs /
-      end
-
+      
       def crack!
         
         cmd.crack_args!( /(?<name1>[^\/]+)\/(?<str1>.+) vs (?<name2>[^\/]+)?\/?(?<str2>.+)/ )

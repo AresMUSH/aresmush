@@ -30,18 +30,18 @@ module AresMUSH
         end
         
         it "should apply healing points based on half successes" do
-          FS3Skills::Interface.stub(:one_shot_roll) { { :successes => 0 }}
+          FS3Skills::Api.stub(:one_shot_roll) { { :successes => 0 }}
           @damage1.should_receive(:heal).with(2, true)
           @damage2.should_receive(:heal).with(2, true)
           FS3Combat.heal_wounds(@char, @wounds, true, 3)
         end
         
         it "should add a body roll to the healing points" do
-          FS3Skills::Interface.should_receive(:one_shot_roll) do |client, char, roll_params|
+          FS3Skills::Api.should_receive(:one_shot_roll) do |client, char, roll_params|
             client.should be_nil
             char.should eq @char
             roll_params.ability.should eq "Body"
-            roll_params.related_apt.should eq "Body"
+            roll_params.linked_attr.should eq "Body"
             { :successes => 2 }
           end
           @damage1.should_receive(:heal).with(3, true)
@@ -50,14 +50,14 @@ module AresMUSH
         end
         
         it "should not mark wounds as treated if not treated" do
-          FS3Skills::Interface.stub(:one_shot_roll) { { :successes => 1 }}
+          FS3Skills::Api.stub(:one_shot_roll) { { :successes => 1 }}
           @damage1.should_receive(:heal).with(1, false)
           @damage2.should_receive(:heal).with(1, false)        
           FS3Combat.heal_wounds(@char, @wounds)
         end
 
         it "should  mark wounds as treated even if no healing points" do
-          FS3Skills::Interface.stub(:one_shot_roll) { { :successes => 1 }}
+          FS3Skills::Api.stub(:one_shot_roll) { { :successes => 1 }}
           @damage1.should_receive(:heal).with(1, true)
           @damage2.should_receive(:heal).with(1, true)        
           FS3Combat.heal_wounds(@char, @wounds, true, 0)
@@ -94,7 +94,7 @@ module AresMUSH
         end
         
         it "should roll the default treat ability" do
-          FS3Skills::Interface.should_receive(:one_shot_roll) do |client, char, params|
+          FS3Skills::Api.should_receive(:one_shot_roll) do |client, char, params|
             char.should eq @char
             params.ability.should eq "First Aid"
             { :successes => 2 }

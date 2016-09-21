@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :type
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("start")
-      end
-      
       def crack!
         self.type = cmd.args ? titleize_input(cmd.args) : "Real"
       end

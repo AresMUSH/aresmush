@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
            
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("toss")
-      end
-      
       def check_composing_mail
         return t('mail.not_composing_message') if !Mail.is_composing_mail?(client)
         return nil

@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("luck") && cmd.switch_is?("spend")
-      end
-      
       def crack!
         self.luck = trim_input(cmd.args)
       end

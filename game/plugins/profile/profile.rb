@@ -40,11 +40,28 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "info"
+        return InfoViewCmd
+      when "profile"
+        case cmd.switch
+        when "add"
+          return ProfileAddCmd
+        when "delete"
+          return ProfileDeleteCmd
+        when "edit"
+          return ProfileEditCmd
+        when nil
+          return ProfileCmd
+        end
+      when "wiki"
+        return WikiCmd
+      end
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

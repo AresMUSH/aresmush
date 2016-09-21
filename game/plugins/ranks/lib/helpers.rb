@@ -31,7 +31,7 @@ module AresMUSH
     def self.check_rank(char, rank, allow_all)
       return nil if rank.nil?
       
-      group = Groups::Interface.group(char, Ranks.rank_group)
+      group = Groups::Api.group(char, Ranks.rank_group)
       
       if (group.nil?)
         return t('ranks.rank_group_not_set', :group => Ranks.rank_group)
@@ -66,7 +66,7 @@ module AresMUSH
         status = t('chargen.ok')
       end
       
-      Chargen::Interface.format_review_status(message, status)
+      Chargen::Api.format_review_status(message, status)
     end
     
   end

@@ -26,12 +26,6 @@ module AresMUSH
     after do
       AresMUSH.send(:remove_const, :PluginSpecTest)
     end
-
-    describe :want_command? do
-      it "should return false by default" do
-        @plugin.want_command?(nil, nil).should be_false
-      end
-    end
     
     describe :log_command do
       it "should log the client and command by default" do

@@ -6,10 +6,6 @@ module AresMUSH
 
       attr_accessor :name
 
-      def want_command?(client, cmd)
-        cmd.root_is?("email") && cmd.switch.nil?
-      end
-
       def crack!
         self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end

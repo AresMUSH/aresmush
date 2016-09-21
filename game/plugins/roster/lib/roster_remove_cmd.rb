@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'roster'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("roster") && cmd.switch_is?("remove")
-      end
 
       def check_can_remove
         return nil if Roster.can_manage_roster?(client.char)

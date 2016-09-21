@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :args
       
-      def want_command?(client, cmd)
-        cmd.root_is?("git")
-      end
-      
       def crack!
         self.args = cmd.args
       end

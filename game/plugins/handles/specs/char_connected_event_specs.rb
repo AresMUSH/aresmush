@@ -2,7 +2,7 @@ require_relative "../../plugin_test_loader"
 
 module AresMUSH
   module Handles
-    describe HandlesEventHandler do
+    describe CharConnectedEventHandler do
       
       before do
         @char = double
@@ -10,16 +10,16 @@ module AresMUSH
         SpecHelpers.setup_mock_client(@client, @char)
         SpecHelpers.stub_translate_for_testing
         @connector = double
-        @handler = HandlesEventHandler.new
+        @handler = CharConnectedEventHandler.new
         @event = CharConnectedEvent.new(@client)
-        Api::AresCentralConnector.stub(:new) { @connector }
+        AresCentral::AresConnector.stub(:new) { @connector }
       end
       
       context "no handle" do
         it "should do nothing" do
           @char.stub(:handle_id) { nil }
           @connector.should_not_receive(:sync_handle)
-          @handler.on_char_connected_event(@event)
+          @handler.on_event(@event)
         end
       end
   
@@ -31,13 +31,13 @@ module AresMUSH
           response = { "status" => "success", "data" => { "linked" => true, "autospace" => "x", "timezone" => "t", "friends" => "f" }}
           
           
-          @connector.should_receive(:sync_handle).with(123, "Bob", 111) { Api::AresCentralResponse.new(response) }  
+          @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
           @char.should_receive(:autospace=).with("x")
           @char.should_receive(:timezone=).with("t")
-          Friends::Interface.should_receive(:sync_handle_friends).with(@char, "f")
+          Friends::Api.should_receive(:sync_handle_friends).with(@char, "f")
           @char.should_receive(:save!)
           @client.should_receive(:emit_success).with("handles.handle_synced")
-          @handler.on_char_connected_event(@event)
+          @handler.on_event(@event)
         end
       end
       
@@ -48,13 +48,13 @@ module AresMUSH
           @char.stub(:id) { 111 }
           response = { "status" => "success", "data" => { "linked" => false }}
           
-          @connector.should_receive(:sync_handle).with(123, "Bob", 111) { Api::AresCentralResponse.new(response) }  
+          @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
           @char.should_not_receive(:autospace=)
           @char.should_receive(:handle=).with(nil)
           @char.should_receive(:handle_id=).with(nil)
           @char.should_receive(:save!)
           @client.should_receive(:emit_success).with("handles.handle_no_longer_linked")
-          @handler.on_char_connected_event(@event)
+          @handler.on_event(@event)
         end
       end
     end

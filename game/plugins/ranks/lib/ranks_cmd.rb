@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :name
             
-      def want_command?(client, cmd)
-        cmd.root_is?("rank") && !cmd.switch
-      end
-
       def crack!
         self.name = titleize_input(cmd.args)
       end

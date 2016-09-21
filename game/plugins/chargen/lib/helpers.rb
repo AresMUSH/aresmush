@@ -6,7 +6,7 @@ module AresMUSH
     
     def self.bg_app_review(char)
       error = char.background.nil? ? t('chargen.not_set') : t('chargen.ok')
-      chargen.format_review_status t('chargen.background_review'), error
+      Chargen.format_review_status t('chargen.background_review'), error
     end
     
     def self.can_manage_bgs?(actor)
@@ -18,10 +18,10 @@ module AresMUSH
     end      
     
     def self.approval_status(char)
-      if (Roster::Interface.on_roster?(char))
+      if (Roster::Api.on_roster?(char))
         status = "%xb%xh#{t('chargen.rostered')}%xn"
-      elsif (Idle::Interface.idled_status(char))
-        status = "%xr%xh#{t('chargen.idled_out', :status => Idle::Interfaces.idled_status(char))}%xn"
+      elsif (Idle::Api.idled_status(char))
+        status = "%xr%xh#{t('chargen.idled_out', :status => Idle::Apis.idled_status(char))}%xn"
       elsif (!char.is_approved?)
         status = "%xr%xh#{t('chargen.unapproved')}%xn"
       else
@@ -98,13 +98,17 @@ module AresMUSH
           display << "%R%l2%R"
         end        
         if (help_file)
-          display << Help::Interface.get_help(help_file)
+          display << Help::Api.get_help(help_file)
         end
-        display << "%R%L2%R#{prev_page_footer}#{next_page_footer}"
+        display << "%R%L2%R"
+        
+        markdown = MarkdownFormatter.new
+        display = markdown.to_mush(display)
+        
+        display << "#{prev_page_footer}#{next_page_footer}"
       rescue Exception => e
         error_msg = "Error loading chargen tutorial stage #{stage}"
-        Global.logger.error "#{error_msg}: #{e}"
-        Global.dispatcher.queue_event UnhandledErrorEvent.new(error_msg)
+        Global.logger.error "#{error_msg}: #{e} backtrace=#{e.backtrace[0,10]}"
         display << t('chargen.error_loading_tutorial')
       end
       

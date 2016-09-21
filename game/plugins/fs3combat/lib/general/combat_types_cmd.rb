@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include TemplateFormatters
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("types")
-      end
-      
       def handle
         list = FS3Combat.combatant_types.sort.map { |k, v| type_display(k, v) }
         client.emit BorderedDisplay.subtitled_list list, t('fs3combat.combatant_types'), t('fs3combat.combatant_types_titlebar')

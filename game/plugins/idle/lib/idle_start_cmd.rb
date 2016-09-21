@@ -6,10 +6,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("idle") && cmd.switch_is?("start")
-      end
-
       def check_can_manage
         return nil if Idle.can_idle_sweep?(client.char)
         return t('dispatcher.not_allowed')
@@ -19,7 +15,7 @@ module AresMUSH
         client.program[:idle_queue] = {}
         
         Character.each do |c|
-          last_on = Manage::Interface.last_on(c)
+          last_on = Login::Api.last_on(c)
           next if !last_on
           next if Idle.is_exempt?(c)
           idle_secs = Time.now - last_on

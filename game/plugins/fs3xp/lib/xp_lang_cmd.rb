@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'xp'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("xp") && cmd.switch_is?("lang")
-      end
 
       def crack!
         self.name = titleize_input(cmd.args)

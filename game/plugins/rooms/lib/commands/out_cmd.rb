@@ -6,10 +6,6 @@ module AresMUSH
       include CommandWithoutSwitches
       include CommandWithoutArgs
 
-      def want_command?(client, cmd)
-        cmd.root_is?("out")
-      end
-      
       def handle
         exit = client.room.way_out
         

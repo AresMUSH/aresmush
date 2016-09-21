@@ -28,10 +28,6 @@ module AresMUSH
     class BbsDescCmd
       include BbsAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("describe")
-      end
-    
       def handle
         Bbs.with_a_board(name, client) do |board|        
           board.description = self.attribute
@@ -42,11 +38,7 @@ module AresMUSH
     end
     
     class BbsOrderCmd
-      include BbsAttributeCmd
-    
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("order")
-      end
+      include BbsAttributeCmd    
     
       def check_number
         return t('bbs.invalid_board_number') if !self.attribute.is_integer?
@@ -65,10 +57,6 @@ module AresMUSH
     class BbsRenameCmd
       include BbsAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("rename")
-      end
-    
       def handle
         Bbs.with_a_board(name, client) do |board|        
           board.name = self.attribute
@@ -81,16 +69,12 @@ module AresMUSH
     class BbsRolesCmd
       include BbsAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && (cmd.switch_is?("readroles") || cmd.switch_is?("writeroles"))
-      end
-    
       def check_roles
         if (self.attribute == "none" || self.attribute.nil?)
           return nil
         end
         self.attribute.split(",").each do |r|
-          return t('bbs.invalid_board_role', :name => r) if !Roles::Interface.valid_role?(r)
+          return t('bbs.invalid_board_role', :name => r) if !Roles::Api.valid_role?(r)
         end
         return nil
       end

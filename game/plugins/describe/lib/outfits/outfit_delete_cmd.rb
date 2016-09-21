@@ -6,10 +6,6 @@ module AresMUSH
            
       attr_accessor :name
       
-      def want_command?(client, cmd)
-        cmd.root_is?("outfit") && cmd.switch_is?("delete")
-      end
-      
       def crack!
         self.name = titleize_input(cmd.args)
       end

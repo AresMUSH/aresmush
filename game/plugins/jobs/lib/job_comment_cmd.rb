@@ -11,10 +11,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && (cmd.switch_is?("discuss") || cmd.switch_is?("respond"))
-      end
-      
       def crack!
         # Has to be done first!  Crack will reset command aliases.
         self.admin_only = cmd.switch_is?("discuss")

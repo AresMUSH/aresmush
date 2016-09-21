@@ -30,80 +30,49 @@ module AresMUSH
       include BasicDemographicCmd
       
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
-      end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("height")
-      end
+        Chargen::Api.check_chargen_locked(client.char)
+      end      
     end
     
     class PhysiqueCmd
-      include BasicDemographicCmd
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("physique")
-      end
+      include BasicDemographicCmd      
     end
     
     class EyesCmd
       include BasicDemographicCmd
 
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
-      end
-
-      def want_command?(client, cmd)
-        cmd.root_is?("eyes")
+        Chargen::Api.check_chargen_locked(client.char)
       end
     end
     
     class HairCmd
-      include BasicDemographicCmd
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("hair")
-      end
+      include BasicDemographicCmd      
     end
     
     class SkinCmd
-      include BasicDemographicCmd
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("skin")
-      end
+      include BasicDemographicCmd      
     end
     
     class FullnameCmd
       include BasicDemographicCmd
       
-      def want_command?(client, cmd)
-        cmd.root_is?("fullname")
-      end
     end
     
     class CallsignCmd
-      include BasicDemographicCmd
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("callsign")
-      end
+      include BasicDemographicCmd      
     end
     
     class GenderCmd
       include BasicDemographicCmd
       
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
       
       def crack!
         self.value = titleize_input(cmd.args)
         self.property = cmd.root.downcase
-      end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("gender")
       end
       
       def check_gender

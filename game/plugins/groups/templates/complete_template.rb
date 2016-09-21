@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def char_gender(char)
-        left(Demographics::Interface.gender(char), 15)
+        left(Demographics::Api.gender(char), 15)
       end
       
       def char_position(char)

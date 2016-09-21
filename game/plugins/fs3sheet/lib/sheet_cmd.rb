@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :target, :page
       
-      def want_command?(client, cmd)
-        cmd.root_is?("sheet")
-      end
-
       def crack!
         self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
         self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
@@ -18,8 +14,8 @@ module AresMUSH
       
       def check_permission
         return nil if self.target == client.name
-        return nil if client.char.has_any_role?(Global.read_config("sheet", "roles", "can_view_sheets"))
-        return nil if Global.read_config("sheet", "public_pages").include?(self.page)
+        return nil if client.char.has_any_role?(Global.read_config("fs3sheet", "roles", "can_view_sheets"))
+        return nil if Global.read_config("fs3sheet", "public_pages").include?(self.page)
         return t('sheet.no_permission_to_view_page')
       end
       

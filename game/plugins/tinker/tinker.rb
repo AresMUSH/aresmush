@@ -30,11 +30,15 @@ module AresMUSH
       [  ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      if (cmd.root_is?("tinker"))
+        return TinkerCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

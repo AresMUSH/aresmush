@@ -1,9 +1,7 @@
 module AresMUSH
   module Login
-    class LoginEvents
-      include CommandHandler
-      
-      def on_char_connected_event(event)
+    class CharConnectedEventHandler
+      def on_event(event)
         client = event.client
         Global.logger.info("Character Connected: #{client}")
         Login.update_site_info(client)
@@ -15,16 +13,20 @@ module AresMUSH
           end
         end
       end
-      
-      def on_char_created_event(event)
+    end
+    
+    class CharCreatedEventHandler
+      def on_event(event)
         client = event.client
         Global.logger.info("Character Created: #{client}")
         Login.update_site_info(client)
         Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => client.name)
         Login.check_for_suspect(client.char)
       end
-
-      def on_char_disconnected_event(event)
+    end
+    
+    class CharDisconnectedEventHandler
+      def on_event(event)
         client = event.client
         Global.logger.info("Character Disconnected: #{client}")
         Global.client_monitor.logged_in_clients.each do |c|

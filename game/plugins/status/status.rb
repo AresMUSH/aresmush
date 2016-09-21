@@ -5,10 +5,9 @@ load "lib/go_afk_cmd.rb"
 load "lib/go_offstage_cmd.rb"
 load "lib/go_onstage_cmd.rb"
 load "lib/helpers.rb"
-load "lib/ooc_catcher_cmd.rb"
 load "lib/playerbit_cmd.rb"
 load "lib/status_model.rb"
-load "status_interfaces.rb"
+load "status_api.rb"
 
 module AresMUSH
   module Status
@@ -39,11 +38,27 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "duty"
+        return DutyCmd
+      when "afk"
+        return GoAfkCmd
+      when "offstage"
+        return GoOffstageCmd
+      when "onstage"
+        return GoOnstageCmd
+      when "ooc"
+        if (!cmd.args)
+          return GoOffstageCmd
+        end
+      when "playerbit"
+        return PlayerBitCmd
+      end      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

@@ -23,12 +23,12 @@ module AresMUSH
       end
       
       def date
-        OOCTime::Interface.local_long_timestr(self.client, @post.created_at)
+        OOCTime::Api.local_long_timestr(self.client, @post.created_at)
       end
       
       def reply_title(reply)
         name = reply.author.nil? ? t('bbs.deleted_author') : reply.author.name
-        date = OOCTime::Interface.local_long_timestr(self.client, reply.created_at)
+        date = OOCTime::Api.local_long_timestr(self.client, reply.created_at)
         t('bbs.reply_title', :name => name, :date => date)
       end
     end

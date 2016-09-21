@@ -13,12 +13,13 @@ module AresMUSH
       return false if listener.nil?
       return true if listener.watch == "all"
       return false if listener.watch == "none"
-      Friends::Interface.is_friend?(listener, connector)
+      Friends::Api.is_friend?(listener, connector)
     end
     
     def self.update_site_info(client)
       client.char.last_ip = client.ip_addr
       client.char.last_hostname = client.hostname.downcase
+      client.char.last_on = Time.now
       client.char.save!
     end
     
@@ -33,7 +34,7 @@ module AresMUSH
       suspects.each do |s|
         if (char.is_site_match?(s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          Jobs::Interface.create_job(Global.read_config("login", "jobs", "suspect_category"), 
+          Jobs::Api.create_job(Global.read_config("login", "jobs", "suspect_category"), 
             t('login.suspect_login_title'), 
             t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
             Game.master.system_character)

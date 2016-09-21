@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("friend") && cmd.switch_is?("remove")
-      end
-      
       def crack!
         self.name = cmd.args
       end

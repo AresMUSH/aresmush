@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :target
 
-      def want_command?(client, cmd)
-        cmd.root_is?("bg") && cmd.switch_is?("edit")
-      end
-            
       def crack!
         if (cmd.args.nil?)
           self.target = client.name

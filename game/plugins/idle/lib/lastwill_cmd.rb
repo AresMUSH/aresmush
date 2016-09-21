@@ -12,11 +12,7 @@ module AresMUSH
         self.required_args = ['will']
         self.help_topic = 'lastwill'
         super
-      end      
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("lastwill")
-      end
+      end     
       
       def crack!
         self.will = cmd.args

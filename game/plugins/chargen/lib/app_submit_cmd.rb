@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("app") && (cmd.switch_is?("submit") || cmd.switch_is?("confirm"))
-      end
-      
       def handle
         if (client.char.approval_job.nil?)
           if (cmd.switch_is?("confirm"))
@@ -34,7 +30,7 @@ module AresMUSH
       end
       
       def create_job
-        job = Jobs::Interface.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+        job = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
           t('chargen.application_title', :name => client.name), 
           t('chargen.app_job_submitted'), 
           client.char)
@@ -51,7 +47,7 @@ module AresMUSH
       end
       
       def update_job
-        Jobs::Interface.change_job_status(client,
+        Jobs::Api.change_job_status(client,
           client.char.approval_job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))

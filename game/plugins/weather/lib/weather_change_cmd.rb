@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'weather'
         super
       end
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("weather") && cmd.switch
-      end
 
       def check_can_change_weather
         return t('dispatcher.not_allowed') if !Weather.can_change_weather?(client.char)

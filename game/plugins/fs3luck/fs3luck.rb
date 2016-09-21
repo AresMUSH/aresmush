@@ -3,7 +3,7 @@ load "lib/helpers.rb"
 load "lib/luck_award_cmd.rb"
 load "lib/luck_model.rb"
 load "lib/luck_spend_cmd.rb"
-load "luck_interfaces.rb"
+load "fs3luck_api.rb"
 
 module AresMUSH
   module FS3Luck
@@ -34,11 +34,20 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       return nil if !cmd.root_is?("luck")
+       
+       case cmd.switch
+       when "award"
+         return LuckAwardCmd
+       when "spend"
+         return LuckSpendCmd
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

@@ -11,11 +11,7 @@ module AresMUSH
         self.required_args = ['reply']
         self.help_topic = 'bbs'
         super
-      end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("reply")
-      end
+      end      
             
       def crack!        
         if (cmd.args =~ /.+\/.+\=.+/)

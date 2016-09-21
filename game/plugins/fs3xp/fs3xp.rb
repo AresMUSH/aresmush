@@ -7,7 +7,7 @@ load "lib/xp_interest_cmd.rb"
 load "lib/xp_lang_cmd.rb"
 load "lib/xp_model.rb"
 load "lib/xp_raise_cmd.rb"
-load "xp_interfaces.rb"
+load "fs3xp_api.rb"
 
 module AresMUSH
   module FS3XP
@@ -38,11 +38,26 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       return nil if !cmd.root_is?("xp")
+       
+       case cmd.switch
+       when "award"
+         return XpAwardCmd         
+       when "costs"
+         return XpCostsCmd
+       when "interest"
+         return XpInterestCmd
+       when "lang"
+         return XpLangCmd
+       when "raise"
+         return XpRaiseCmd
+       end
+         
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

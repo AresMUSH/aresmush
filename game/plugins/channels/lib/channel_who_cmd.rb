@@ -12,10 +12,6 @@ module AresMUSH
         self.help_topic = 'channels'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("who")
-      end
             
       def crack!
         self.name = titleize_input(cmd.args)

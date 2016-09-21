@@ -20,7 +20,6 @@ module AresMUSH
         
         it "should ignore a missing arg" do
           init_handler(BbsPostCmd, "bbs/post board=subj")
-          handler.want_command?(client, cmd).should be_true
           handler.crack!
           handler.board_name.should be_nil
           handler.subject.should be_nil
@@ -30,7 +29,6 @@ module AresMUSH
         context "Myrddin syntax" do
           it "should handle the Myrddin syntax" do
             init_handler(BbsPostCmd, "bbs/post board/subj=msg")
-            handler.want_command?(client, cmd).should be_true
             handler.crack!
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
@@ -39,7 +37,6 @@ module AresMUSH
 
           it "should stop the subject after the first slash" do
             init_handler(BbsPostCmd, "bbs/post board/subj=msg with a / slash")
-            handler.want_command?(client, cmd).should be_true
             handler.crack!
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
@@ -48,7 +45,6 @@ module AresMUSH
         
           it "should stop the subjecta fter the first equals" do
             init_handler(BbsPostCmd, "bbs/post board/subj=msg with a = equals")
-            handler.want_command?(client, cmd).should be_true
             handler.crack!
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
@@ -59,7 +55,6 @@ module AresMUSH
         context "Fara syntax" do
           it "should handle the Fara syntax" do
             init_handler(BbsPostCmd, "bbs/post board=subj/msg")
-            handler.want_command?(client, cmd).should be_true
             handler.crack!
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
@@ -68,7 +63,6 @@ module AresMUSH
         
           it "should stop the subject after the first slash" do
             init_handler(BbsPostCmd, "bbs/post board=subj/msg with a / slash")
-            handler.want_command?(client, cmd).should be_true
             handler.crack!
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
@@ -77,7 +71,6 @@ module AresMUSH
         
           it "should stop the subject after the first equals" do
             init_handler(BbsPostCmd, "bbs/post board=subj/msg with a = equals")
-            handler.want_command?(client, cmd).should be_true
             handler.crack!
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"

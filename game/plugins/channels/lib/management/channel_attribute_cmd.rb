@@ -28,10 +28,6 @@ module AresMUSH
     class ChannelColorCmd
       include ChannelAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("color")
-      end
-    
       def handle
         Channels.with_a_channel(name, client) do |channel|
           channel.color = self.attribute
@@ -43,10 +39,6 @@ module AresMUSH
     
     class ChannelAnnounceCmd
       include ChannelAttributeCmd
-    
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("announce")
-      end
     
       def check_option
         return nil if self.attribute == 'on'
@@ -72,10 +64,6 @@ module AresMUSH
     class ChannelDescCmd
       include ChannelAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("describe")
-      end
-    
       def handle
         Channels.with_a_channel(name, client) do |channel|        
           channel.description = self.attribute
@@ -88,16 +76,12 @@ module AresMUSH
     class ChannelRolesCmd
       include ChannelAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("roles")
-      end
-    
       def check_roles
         if (self.attribute == "none" || self.attribute.nil?)
           return nil
         end
         self.attribute.split(",").each do |r|
-          return t('channels.invalid_channel_role', :name => r) if !Roles::Interface.valid_role?(r)
+          return t('channels.invalid_channel_role', :name => r) if !Roles::Api.valid_role?(r)
         end
         return nil
       end
@@ -127,14 +111,8 @@ module AresMUSH
     class ChannelDefaultAlias
       include ChannelAttributeCmd
     
-      def want_command?(client, cmd)
-        cmd.root_is?("channel") && cmd.switch_is?("defaultalias")
-      end
-    
       def handle
         Channels.with_a_channel(name, client) do |channel|
-        
-          
           channel.default_alias = self.attribute.split(",")
           channel.save!
           client.emit_success t('channels.default_alias_set')

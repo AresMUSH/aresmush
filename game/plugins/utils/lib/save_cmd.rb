@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("save")
-      end
-      
       def crack!
         self.text = trim_input(cmd.args)
       end

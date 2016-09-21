@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :prefix
       
-      def want_command?(client, cmd)
-        cmd.root_is?("edit") && cmd.switch_is?("prefix")
-      end
-      
       def crack!
         self.prefix = trim_input(cmd.args)
       end

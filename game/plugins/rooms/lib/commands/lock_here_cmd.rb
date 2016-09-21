@@ -2,11 +2,7 @@ module AresMUSH
   module Rooms
     class LockHereCmd
       include CommandHandler
-      include CommandRequiresLogin
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("lock") && cmd.args.nil?
-      end
+      include CommandRequiresLogin      
 
       def check_is_interior_room
         target = client.room.way_in

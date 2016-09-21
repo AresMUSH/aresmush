@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "bbs_interface.rb"
+load "bbs_api.rb"
 load "lib/bbs_archive.rb"
 load "lib/bbs_board_cmd.rb"
 load "lib/bbs_catchup.rb"
@@ -50,11 +50,54 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("bbs")
+      
+      case cmd.switch
+      when "archive"
+        return BbsArchive 
+      when "catchup"
+        return BbsCatchupCmd
+      when "confirmdelete"
+        return BbsDeleteBoardConfirmCmd
+      when "createboard"
+        return BbsCreateBoardCmd
+      when "delete"
+        return BbsDeleteCmd
+      when "deleteboard"
+        return BbsDeleteBoardCmd
+      when "describe"
+        return BbsDescCmd
+      when "edit"
+        return BbsEditCmd        
+      when "move"
+        return BbsMoveCmd
+      when "new"
+        return BbsNewCmd
+      when "order"
+        return BbsOrderCmd
+      when "post"
+        return BbsPostCmd
+      when "readroles", "writeroles"
+        return BbsRolesCmd
+      when "rename"
+        return BbsRenameCmd
+      when "reply"
+        return BbsReplyCmd
+      when nil
+        if (!cmd.args)
+          return BbsListCmd 
+        elsif (cmd.args =~ /[\/]/)
+          return BbsReadCmd 
+        else
+          return BbsBoardCmd           
+        end
+      end
+      
+      return nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

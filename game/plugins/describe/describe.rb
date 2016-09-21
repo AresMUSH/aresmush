@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "desc_interfaces.rb"
+load "describe_api.rb"
 load "lib/desc_edit_cmd.rb"
 load "lib/desc_model.rb"
 load "lib/describe_cmd.rb"
@@ -8,7 +8,6 @@ load "lib/details/detail_edit_cmd.rb"
 load "lib/details/detail_set_cmd.rb"
 load "lib/helpers.rb"
 load "lib/look_cmd.rb"
-load "lib/look_detail_cmd.rb"
 load "lib/outfits/outfit_delete_cmd.rb"
 load "lib/outfits/outfit_edit_cmd.rb"
 load "lib/outfits/outfit_list_cmd.rb"
@@ -48,11 +47,51 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "describe", "shortdesc"
+        case cmd.switch
+        when "edit"
+          return DescEditCmd
+        when nil
+          return DescCmd
+        end
+      when "detail"
+        case cmd.switch
+        when "delete"
+          return DetailDeleteCmd
+        when "edit"
+          return DetailEditCmd
+        when "set"
+          return DetailSetCmd
+        when nil
+          return LookCmd
+        end
+      when "look"
+        return LookCmd
+      when "outfit"
+        case cmd.switch
+        when "delete"
+          return OutfitDeleteCmd
+        when "edit"
+          return OutfitEditCmd
+        when "set"
+          return OutfitSetCmd
+        when nil
+          if (cmd.args)
+            return OutfitViewCmd
+          else
+            OutfitListCmd
+          end
+        end
+      when "wear"
+        return WearCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

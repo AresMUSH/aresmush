@@ -10,36 +10,6 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
-      it_behaves_like "a plugin that requires login"
-      
-      describe :want_command? do
-        it "should not want another command" do
-          set_root({ :pose => false, :say => false, :emit => false, :ooc => false }) 
-          handler.want_command?(client, cmd).should eq false
-        end
-
-        it "should want the pose command" do
-          set_root({ :pose => true, :say => false, :emit => false, :ooc => false }) 
-          handler.want_command?(client, cmd).should eq true
-        end
-
-        it "should want the say command" do
-          set_root({ :pose => false, :say => true, :emit => false, :ooc => false }) 
-          handler.want_command?(client, cmd).should eq true
-        end
-      
-        it "should want the emit command" do
-          set_root({ :pose => false, :say => false, :emit => true, :ooc => false }) 
-          handler.want_command?(client, cmd).should eq true
-        end      
-      
-        it "should want the ooc say command" do
-          cmd.stub(:args) { "test" }
-          set_root({ :pose => false, :say => false, :emit => false, :ooc => true }) 
-          handler.want_command?(client, cmd).should eq true
-        end      
-      end
-    
       describe :handle do
         it "should emit to the room" do
           room = double

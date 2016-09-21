@@ -12,20 +12,6 @@ module AresMUSH
         stub_global_objects    
       end
       
-      it_behaves_like "a plugin that doesn't allow switches"
-      
-      describe :want_command? do
-        it "should want the create command" do
-          cmd.stub(:root_is?).with("create") { true }
-          handler.want_command?(client, cmd).should eq true
-        end
-
-        it "should not want a different command" do
-          cmd.stub(:root_is?).with("create") { false }
-          handler.want_command?(client, cmd).should eq false
-        end
-      end
-      
       describe :crack! do
         it "should be able to crack correct args" do
           init_handler(CreateCmd, "create Bob foo")

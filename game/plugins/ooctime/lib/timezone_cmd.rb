@@ -8,10 +8,6 @@ module AresMUSH
            
       attr_accessor :zone
            
-      def want_command?(client, cmd)
-        cmd.root_is?("timezone")
-      end
-      
       def initialize
         self.required_args = ['zone']
         self.help_topic = 'time'

@@ -12,7 +12,7 @@ module AresMUSH
       
       def build
         title = t('groups.gender_census_title')
-        list = Groups.census_by { |c| Demographics::Interface.gender(c) }
+        list = Groups.census_by { |c| Demographics::Api.gender(c) }
         BorderedDisplay.list list, title
       end      
     end

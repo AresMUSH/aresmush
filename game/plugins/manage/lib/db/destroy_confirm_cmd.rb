@@ -5,10 +5,6 @@ module AresMUSH
       include CommandWithoutArgs
       include CommandRequiresLogin
       
-      def want_command?(client, cmd)
-        cmd.root_is?("destroy") && cmd.switch_is?("confirm")
-      end
-
       def handle
         target_id = client.program[:destroy_target]
         
@@ -37,7 +33,7 @@ module AresMUSH
               if (!connected_client.nil?)
                 connected_client.emit_ooc t('manage.room_being_destroyed')
               end
-              Rooms::Interface.send_to_welcome_room(connected_client, c)
+              Rooms::Api.send_to_welcome_room(connected_client, c)
             end
           end
           target.destroy

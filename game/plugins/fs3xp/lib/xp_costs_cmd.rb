@@ -6,10 +6,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("xp") && cmd.switch_is?("costs")
-      end
-      
       def handle
         lang_cost = Global.read_config("fs3xp", "lang_cost")
         ability_cost = Global.read_config("fs3xp", "skill_costs")

@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("group") && !cmd.args
-      end
-
       def handle        
         groups = Groups.all_groups
                 

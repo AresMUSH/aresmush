@@ -13,10 +13,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("review")
-      end
-      
       def crack!
         if (cmd.args && cmd.args.include?("/"))
           cmd.crack_args!(CommonCracks.arg1_slash_arg2)

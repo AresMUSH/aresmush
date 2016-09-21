@@ -10,7 +10,6 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
-      it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
       
       describe :crack! do

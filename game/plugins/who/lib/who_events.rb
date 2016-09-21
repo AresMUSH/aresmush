@@ -1,9 +1,7 @@
 module AresMUSH
   module Who
-    class WhoEvents
-      include CommandHandler
-
-      def on_char_connected_event(event)
+    class CharConnectedEventHandler
+      def on_event(event)
         count = Global.client_monitor.logged_in_clients.count
         
         if (count > Game.online_record)

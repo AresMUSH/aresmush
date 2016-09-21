@@ -28,7 +28,7 @@ module AresMUSH
             
           client.stub(:emit_success)
           plugin_manager.stub(:unload_plugin)
-          Help::Interface.stub(:reload_help)
+          Help::Api.stub(:reload_help)
         end
           
         it "should unload the plugin" do

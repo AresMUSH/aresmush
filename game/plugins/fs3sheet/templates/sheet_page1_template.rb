@@ -119,7 +119,7 @@ module AresMUSH
       end
       
       def approval_status
-        status = Chargen::Interface.approval_status(@char)
+        status = Chargen::Api.approval_status(@char)
         center(status, 23)
       end
       
@@ -128,11 +128,11 @@ module AresMUSH
       end
       
       def xp
-        FS3XP::Interface.xp(@char).to_s.ljust(40)
+        FS3XP::Api.xp(@char).to_s.ljust(40)
       end
       
       def luck
-        FS3Luck::Interface.luck(@char).floor
+        FS3Luck::Api.luck(@char).floor
       end
       
       def format_attr(a, i)
@@ -147,30 +147,30 @@ module AresMUSH
         name = "%xh#{s}:%xn"
         rating = FS3Skills.ability_rating(@char, s)
         dots = FS3Skills.print_skill_rating(rating)
-        related_apt = print_related_apt(s)
+        linked_attr = print_linked_attr(s)
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 16)} #{related_apt} #{left(dots,16)}"
+        "#{linebreak}#{left(name, 16)} #{linked_attr} #{left(dots,16)}"
       end
       
       def format_section_title(title)
         center(" %xh#{title}%xn ", 78, '-')
       end
       
-      def print_related_apt(skill)
-        apt = FS3Skills.get_related_apt(@char, skill)
+      def print_linked_attr(skill)
+        apt = FS3Skills.get_linked_attr(@char, skill)
         apt.nil? ? "" : "(#{apt[0..2]})"
       end
       
-      def display_list(title, list, show_related_apt = true)
+      def display_list(title, list, show_linked_attr = true)
         text = format_section_title(title)
         list.sort.each_with_index do |l, i|
           linebreak = i % 2 == 1 ? "" : "%r"
-          if (show_related_apt)
-            related_apt = " #{print_related_apt(l)}"
+          if (show_linked_attr)
+            linked_attr = " #{print_linked_attr(l)}"
           else
-            related_apt = ""
+            linked_attr = ""
           end
-          skill = "#{l}#{related_apt}"
+          skill = "#{l}#{linked_attr}"
           text << "#{linebreak}#{left(skill, 39)}"
         end
         text << "%R"

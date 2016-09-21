@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+load "pose_api.rb"
 load "lib/helpers.rb"
 load "lib/nospoof_cmd.rb"
 load "lib/pemit_cmd.rb"
@@ -24,7 +25,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/ooc.md", "help/posing.md" ]
+      [ "help/autospace.md", "help/ooc.md", "help/posing.md" ]
     end
  
     def self.config_files
@@ -35,11 +36,34 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "autospace"
+        return AutospaceCmd
+      when "nospoof"
+        return NospoofCmd
+      when "pemit"
+        return Pemit
+      when "ooc"
+        # ooc by itself is an alias for offstage
+        if (cmd.args)
+          return PoseCmd
+        end
+      when "emit", "pose", "say"        
+        return PoseCmd
+      end
+      
+      if (cmd.raw.start_with?("\"") ||
+          cmd.raw.start_with?("\\") ||
+          cmd.raw.start_with?(":") ||
+          cmd.raw.start_with?(";"))
+        return PoseCatcherCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

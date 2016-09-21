@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("armor") && cmd.args
-      end
-      
       def crack!
         self.name = titleize_input(cmd.args)
       end

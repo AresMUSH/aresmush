@@ -58,13 +58,13 @@ module AresMUSH
         
         it "should not want announce if friends-only and have not friended a char" do
           @listener.stub(:watch) { "friends" }
-          Friends::Interface.stub(:is_friend?).with(@listener, @connector) { false }
+          Friends::Api.stub(:is_friend?).with(@listener, @connector) { false }
           Login.wants_announce(@listener, @connector).should eq false
         end
         
         it "should want announce if friends-only and have friended a  handle" do
           @listener.stub(:watch) { "friends" }
-          Friends::Interface.stub(:is_friend?).with(@listener, @connector) { true }
+          Friends::Api.stub(:is_friend?).with(@listener, @connector) { true }
           Login.wants_announce(@listener, @connector).should eq true
         end
         

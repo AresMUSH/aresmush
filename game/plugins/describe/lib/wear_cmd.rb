@@ -7,10 +7,6 @@ module AresMUSH
       
       attr_accessor :names
       
-      def want_command?(client, cmd)
-        cmd.root_is?("wear")
-      end
-      
       def crack!
         if cmd.args
           self.names = cmd.args.split(' ').map { |n| titleize_input(n) }

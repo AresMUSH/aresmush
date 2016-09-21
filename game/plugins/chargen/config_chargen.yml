@@ -43,9 +43,9 @@ chargen:
     # matches the topic name configured in the help system.
     stages:
         start:
-            tutorial: 'chargen.txt'
+            tutorial: 'chargen.md'
         app:
-            tutorial: 'app command.txt'
+            tutorial: 'app command.md'
         sheet:
             help: 'sheet'
         info:
@@ -68,7 +68,6 @@ chargen:
             help: actors
         wiki:
             help: wiki
-            tutorial: 'wiki.txt'
         review:
             help: apps
     shortcuts:

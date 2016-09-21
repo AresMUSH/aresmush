@@ -7,18 +7,14 @@ module AresMUSH
       include CommandWithoutSwitches
       
       attr_accessor :target
-
-      def want_command?(client, cmd)
-        cmd.root_is?("backup")
-      end
-
+      
       def crack!
         self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
       end
       
       def check_permission
         return nil if self.target == client.name
-        return nil if client.char.has_any_role?(Global.read_config("sheet", "roles", "can_view_sheets"))
+        return nil if client.char.has_any_role?(Global.read_config("fs3sheet", "roles", "can_view_sheets"))
         return t('sheet.no_permission_to_backup')
       end
       
@@ -28,7 +24,7 @@ module AresMUSH
           Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
           Global.dispatcher.queue_command(client, Command.new("info #{model.name}"))
           
-          template = Describe::Interface.desc_template(model, client)
+          template = Describe::Api.desc_template(model, client)
           template.render
         end
       end

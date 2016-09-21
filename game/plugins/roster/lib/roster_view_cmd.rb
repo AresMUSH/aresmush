@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("roster") && cmd.switch.nil? && !cmd.args.nil?
-      end
-
       def crack!
         self.name = titleize_input(cmd.args)
       end
@@ -33,9 +29,9 @@ module AresMUSH
           
           website = Global.read_config("game", "website")
           
-          text = "%xh#{model.name}%xn (#{Demographics::Interface.fullname(model)})"
+          text = "%xh#{model.name}%xn (#{Demographics::Api.fullname(model)})"
           text << "%R%R"
-          text << "%xh#{t('roster.played_by')}%xn #{Actors::Interface.actor(model)}"
+          text << "%xh#{t('roster.played_by')}%xn #{Actors::Api.get_actor(model)}"
           text << "%R%R"
           text << "%xh#{t('roster.wiki_page')}%xn #{website}/#{model.name}"
           

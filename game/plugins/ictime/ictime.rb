@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "ictime_interfaces.rb"
+load "ictime_api.rb"
 load "lib/helpers.rb"
 load "lib/ictime_cmd.rb"
 
@@ -32,11 +32,15 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+       if (cmd.root_is?("ictime"))
+         return ICTimeCmd
+       end
+       
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

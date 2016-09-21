@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch_is?("tags")
-      end
       
       def handle
         all_tags = []

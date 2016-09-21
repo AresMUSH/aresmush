@@ -5,10 +5,6 @@ module AresMUSH
       include CommandWithoutArgs
       include CommandWithoutSwitches
       
-      def want_command?(client, cmd)
-        cmd.root_is?("where")
-      end
-      
       def handle
         online_chars = Global.client_monitor.logged_in_clients.map { |c| c.char }
         template = WhereTemplate.new online_chars, client

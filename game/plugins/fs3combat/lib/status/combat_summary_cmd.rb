@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("summary")
-      end
-      
       def handle
         combat = FS3Combat.combat(client.char.name)
         if (!combat)

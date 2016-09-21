@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
 
-      def want_command?(client, cmd)
-        cmd.root_is?("password") && cmd.switch.nil?
-      end
-
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.old_password = cmd.args.arg1

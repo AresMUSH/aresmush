@@ -5,11 +5,7 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("weather") && cmd.switch.nil?
-      end
-
+      
       def handle
         list = []
         Weather.current_weather.each do |k, v| 

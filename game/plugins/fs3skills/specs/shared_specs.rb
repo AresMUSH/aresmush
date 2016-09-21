@@ -4,8 +4,8 @@ module AresMUSH
       
       before do
         Global.stub(:read_config).with("fs3skills", "aptitudes") { [ { "name" => "Mind" }, {"name" => "Body" } ] }
-        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "related_apt" => "Reaction" }, { "name" => "First Aid" } ] }
-        Global.stub(:read_config).with("fs3skills", "default_related_apt") { "Mind" }
+        Global.stub(:read_config).with("fs3skills", "action_skills") { [ { "name" => "Firearms", "linked_attr" => "Reaction" }, { "name" => "First Aid" } ] }
+        Global.stub(:read_config).with("fs3skills", "default_linked_attr") { "Mind" }
         Global.stub(:read_config).with("fs3skills", "advantages") { [{ "name" => "Wealth" }] }
 
         SpecHelpers.stub_translate_for_testing   
@@ -265,10 +265,10 @@ module AresMUSH
         end
       end
       
-      def check_params(params, ability, modifier, related_apt)
+      def check_params(params, ability, modifier, linked_attr)
         params.ability.should eq ability
         params.modifier.should eq modifier
-        params.related_apt.should eq related_apt
+        params.linked_attr.should eq linked_attr
       end
       
       describe :dice_to_roll_for_ability do
@@ -282,8 +282,8 @@ module AresMUSH
           FS3Skills.stub(:ability_rating).with(@char, "Reaction") { 3 }
           FS3Skills.stub(:ability_rating).with(@char, "Untrained") { 0 }
           FS3Skills.stub(:ability_rating).with(@char, "Basketweaving") { 3 }
-          FS3Skills.stub(:get_related_apt).with(@char, "Firearms") { "Reaction" }
-          FS3Skills.stub(:get_related_apt).with(@char, "Basketweaving") { "Reaction" }
+          FS3Skills.stub(:get_linked_attr).with(@char, "Firearms") { "Reaction" }
+          FS3Skills.stub(:get_linked_attr).with(@char, "Basketweaving") { "Reaction" }
         end
       
         it "should roll ability alone" do

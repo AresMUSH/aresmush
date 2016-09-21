@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "groups_interfaces.rb"
+load "groups_api.rb"
 load "lib/census_cmd.rb"
 load "lib/group_set_cmd.rb"
 load "lib/groups_cmd.rb"
@@ -39,11 +39,26 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "census"
+        return CensusCmd
+      when "group"
+        case cmd.switch
+        when "set"
+          return GroupSetCmd
+        when nil
+          if (cmd.args)
+            return GroupDetailCmd
+          else
+            return GroupsCmd
+          end
+        end
+      end
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

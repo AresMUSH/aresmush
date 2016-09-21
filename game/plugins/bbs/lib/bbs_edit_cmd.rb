@@ -12,10 +12,6 @@ module AresMUSH
         self.help_topic = 'bbs'
         super
       end
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("bbs") && cmd.switch_is?("edit")
-      end
             
       def crack!
         cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=?(?<new_text>[^\=]+)?/)

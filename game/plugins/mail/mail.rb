@@ -24,7 +24,7 @@ load "lib/manage/mail_filter_cmd.rb"
 load "lib/manage/mail_tag_cmd.rb"
 load "lib/manage/mail_tags_cmd.rb"
 load "lib/manage/mail_undelete_cmd.rb"
-load "mail_interfaces.rb"
+load "mail_api.rb"
 load "templates/forwarded_template.rb"
 load "templates/inbox_template.rb"
 load "templates/message_template.rb"
@@ -58,11 +58,80 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "mail"
+        case cmd.switch
+        when "proof"
+          return MailProofCmd
+        when "send"
+          return MailSendComposition
+        when "start"
+          return MailStartCmd
+        when "toss"
+          return MailTossCmd
+        when "backup"
+          return MailBackupCmd
+        when "delete"
+          return MailDeleteCmd
+        when "tag", "untag"
+          return MailTagCmd
+        when "tags"
+          return MailTagsCmd
+        when "emptytrash"
+          return MailEmptyTrashCmd
+        when "filter", "inbox", "sent", "trash"
+          return MailFilterCmd
+        when "archive"
+          if (cmd.args)
+            return MailArchiveCmd
+          else
+            return MailFilterCmd
+          end
+        when "fwd"         
+          return MailFwdCmd
+        when "new"
+          return MailNewCmd
+        when "reply", "replyall"
+          return MailReplyCmd
+        when "review"
+          return MailReviewCmd
+        when "sentmail"
+          return MailSentMailCmd
+        when "unsend"
+          return MailUnsendCmd
+        when "undelete"
+          return MailUndeleteCmd
+        when nil
+          if (cmd.args)
+            if (cmd.args =~ /[\=]/ && cmd.args !~ /[\/]/)
+              return MailStartCmd
+            elsif (cmd.args =~ /.*\=.*\/.*/)
+              return MailSendCmd
+            else
+              return MailReadCmd
+            end
+          else
+            return MailInboxCmd
+          end
+        end
+      when "--"
+        return MailSendComposition         
+      end
+       
+      if (cmd.root.starts_with?("-"))
+        return MailAppendCmd
+      end
+       
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CharDisconnectedEvent"
+        return CharDisconnectedEventHandler
+      end
+      nil
     end
   end
 end

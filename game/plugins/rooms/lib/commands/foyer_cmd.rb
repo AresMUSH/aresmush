@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
 
       attr_accessor :option
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("foyer")
-      end
             
       def crack!
         self.option = OnOffOption.new(cmd.args)

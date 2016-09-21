@@ -32,11 +32,25 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      case cmd.root
+      when "page"
+        case cmd.switch
+        when "dnd"
+          return PageDoNotDisturbCmd
+        when nil
+          # It's a common mistake to type 'p' when you meant '+p' for a channel, but
+          # not vice-versa.  So ignore any command that has a prefix. 
+          if (!cmd.prefix)
+            return PageCmd
+          end
+        end
+      end 
+          
+       nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

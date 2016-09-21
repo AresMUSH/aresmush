@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("mail") && cmd.switch.nil? && cmd.args =~ /[\=]/ && cmd.args !~ /[\/]/
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")

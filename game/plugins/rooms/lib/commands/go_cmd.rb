@@ -14,10 +14,6 @@ module AresMUSH
         super
       end
       
-      def want_command?(client, cmd)
-        cmd.root_is?("go")
-      end
-      
       def crack!
         self.destination = trim_input(cmd.args)
       end
@@ -30,7 +26,7 @@ module AresMUSH
           return
         end
         
-        if (!Rooms::Interface.can_use_exit?(exit, client.char))
+        if (!Rooms::Api.can_use_exit?(exit, client.char))
           client.emit_failure t('rooms.cant_go_through_locked_exit')
           return
         end

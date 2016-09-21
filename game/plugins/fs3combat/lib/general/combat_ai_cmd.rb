@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
-      def want_command?(client, cmd)
-        cmd.root_is?("combat") && cmd.switch_is?("ai")
-      end
-      
       
       def check_in_combat
         return t('fs3combat.you_are_not_in_combat') if !client.char.is_in_combat?

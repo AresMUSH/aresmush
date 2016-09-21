@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "friends_interface.rb"
+load "friends_api.rb"
 load "lib/friend_add_cmd.rb"
 load "lib/friend_note_cmd.rb"
 load "lib/friend_remove_cmd.rb"
@@ -36,11 +36,24 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.handle_command(client, cmd)
-       false
+    def self.get_cmd_handler(client, cmd)
+      return nil if !cmd.root_is?("friend")
+      
+      case cmd.switch
+      when "add"
+        return FriendAddCmd
+      when "note"
+        return FriendNoteCmd
+      when "remove"
+        return FriendRemoveCmd
+      when nil
+        return FriendsCmd
+      end
+      
+      nil
     end
 
-    def self.handle_event(event)
+    def self.get_event_handler(event_name) 
     end
   end
 end

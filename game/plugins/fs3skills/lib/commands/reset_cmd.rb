@@ -6,13 +6,9 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       include CommandWithoutSwitches
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("reset")
-      end
-      
+
       def check_chargen_locked
-        Chargen::Interface.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(client.char)
       end
 
       def handle

@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("plugins")
-      end
-      
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
         return nil

@@ -33,7 +33,7 @@ module AresMUSH
     
     def self.app_review(char)
       error = char.description.nil? ? t('chargen.not_set') : t('chargen.ok')
-      Chargen::Interface.format_review_status t('describe.description_review'), error
+      Chargen::Api.format_review_status t('describe.description_review'), error
     end
     
     def self.char_backup(char, client)

@@ -37,11 +37,11 @@ module AresMUSH
       end
       
       def actor
-        Actors::Interface.actor(@char)
+        Actors::Api.get_actor(@char)
       end
       
       def approval_status
-        status = Chargen::Interface.approval_status(@char)
+        status = Chargen::Api.approval_status(@char)
         center(status, 23)
       end
       
@@ -126,65 +126,65 @@ module AresMUSH
       end
       
       def fullname
-        Demographics::Interface.fullname(@char)
+        Demographics::Api.fullname(@char)
       end
       
       def callsign
-        format_field Demographics::Interface.demographic(@char, :callsign)
+        format_field Demographics::Api.demographic(@char, :callsign)
       end
       
       def gender
-        format_field Demographics::Interface.gender(@char)
+        format_field Demographics::Api.gender(@char)
       end
       
       def height
-        format_field Demographics::Interface.demographic(@char, :height)
+        format_field Demographics::Api.demographic(@char, :height)
       end
       
       def physique
-        format_field Demographics::Interface.demographic(@char, :physique)
+        format_field Demographics::Api.demographic(@char, :physique)
       end
       
       def hair
-        format_field Demographics::Interface.demographic(@char, :hair)
+        format_field Demographics::Api.demographic(@char, :hair)
       end
       
       def eyes
-        format_field Demographics::Interface.demographic(@char, :eyes)
+        format_field Demographics::Api.demographic(@char, :eyes)
       end
       
       def skin
-        format_field Demographics::Interface.demographic(@char, :skin)
+        format_field Demographics::Api.demographic(@char, :skin)
       end
       
       def age
-        age = Demographics::Interface.age(@char)
+        age = Demographics::Api.age(@char)
         format_field age == 0 ? "" : age
       end
       
       def birthdate
-        dob = Demographics::Interface.demographic(@char, :birthdate)
-        format_field dob.nil? ? "" : ICTime::Interface.ic_datestr(dob)
+        dob = Demographics::Api.demographic(@char, :birthdate)
+        format_field dob.nil? ? "" : ICTime::Api.ic_datestr(dob)
       end
       
       def faction
-        format_field Groups::Interface.group(@char, "Faction")
+        format_field Groups::Api.group(@char, "Faction")
       end
       
       def position
-        format_field Groups::Interface.group(@char, "Position")
+        format_field Groups::Api.group(@char, "Position")
       end
       
       def colony
-        format_field Groups::Interface.group(@char, "Colony")
+        format_field Groups::Api.group(@char, "Colony")
       end
       
       def department
-        format_field Groups::Interface.group(@char, "Department")
+        format_field Groups::Api.group(@char, "Department")
       end
 
       def rank
-        format_field Ranks::Interface.rank(@char)
+        format_field Ranks::Api.rank(@char)
       end
     end
   end

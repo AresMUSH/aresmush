@@ -6,10 +6,6 @@ module AresMUSH
       include CommandWithoutSwitches
       include CommandWithoutArgs
            
-      def want_command?(client, cmd)
-        cmd.root_is?("time")
-      end
-      
       def handle
         server_time = t('time.server_time', :time => DateTime.now.strftime("%a %b %d, %Y %l:%M%P"))
         local_time = t('time.local_time', :time => OOCTime.local_long_timestr(client, Time.now))

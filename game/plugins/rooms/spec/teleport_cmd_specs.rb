@@ -8,11 +8,7 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing  
       end
       
-      it_behaves_like "a plugin that doesn't allow switches"
       it_behaves_like "a plugin that requires login"
-      it_behaves_like "a plugin that expects a single root" do
-        let(:expected_root) { "teleport" }
-      end
       
       describe :crack do
         it "should crack a destination only" do

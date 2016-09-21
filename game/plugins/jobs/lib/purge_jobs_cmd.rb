@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("purge")
-      end
-      
       def handle
         client.emit_failure t('jobs.confirm_purge')
       end
@@ -18,10 +14,6 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
-      
-      def want_command?(client, cmd)
-        cmd.root_is?("jobs") && cmd.switch_is?("confirmpurge")
-      end
       
       def check_closed_jobs
         return t('jobs.no_closed_jobs') if Jobs.closed_jobs.count == 0

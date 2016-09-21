@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :message
       
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("close")
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         self.number = trim_input(cmd.args.arg1)

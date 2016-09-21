@@ -5,10 +5,6 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
     
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch_is?("new")
-      end
-      
       def check_can_access
         return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(client.char)
         return nil

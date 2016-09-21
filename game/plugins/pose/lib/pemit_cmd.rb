@@ -13,10 +13,6 @@ module AresMUSH
         self.help_topic = 'posing'
         super
       end
-            
-      def want_command?(client, cmd)
-        cmd.root_is?("pemit")
-      end
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -31,7 +27,7 @@ module AresMUSH
             if (c.char.nospoof)
               nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => client.name)}%xn%R"
             end
-            c.emit "#{Utils::Interface.autospace(c.char)}#{nospoof}#{self.message}"
+            c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{self.message}"
           end
         end
       end

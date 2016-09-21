@@ -3,10 +3,6 @@ module AresMUSH
     class ViewJobCmd
       include SingleJobCmd
       
-      def want_command?(client, cmd)
-        cmd.root_is?("job") && cmd.switch.nil?
-      end
-      
       def crack!
         self.number = trim_input(cmd.args)
       end
