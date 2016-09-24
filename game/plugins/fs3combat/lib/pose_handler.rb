@@ -1,7 +1,8 @@
 module AresMUSH
   module FS3Combat
-    module Api
-      def self.register_pose(char)
+    class PoseEventHandler
+      def on_event(event)
+        char = event.client.char
         return if !char.combatant
         char.combatant.posed = true
         char.combatant.save

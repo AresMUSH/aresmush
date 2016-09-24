@@ -18,6 +18,8 @@ load "lib/commands/roomtype_cmd.rb"
 load "lib/commands/teleport_cmd.rb"
 load "lib/commands/unlink_cmd.rb"
 load "lib/commands/unlock_here_cmd.rb"
+load "lib/commands/work_cmd.rb"
+load "lib/commands/work_set_cmd.rb"
 load "lib/helpers.rb"
 load "lib/room_events.rb"
 load "lib/room_model.rb"
@@ -103,6 +105,13 @@ module AresMUSH
           return LockCmd
         else
           return UnlockHereCmd
+        end
+      when "work"
+        case cmd.switch
+        when "set"
+          return WorkSetCmd
+        when nil
+          return WorkCmd
         end
       end
       

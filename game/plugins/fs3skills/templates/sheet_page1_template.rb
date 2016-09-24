@@ -14,12 +14,8 @@ module AresMUSH
         Chargen::Api.approval_status(@char)
       end
       
-      def xp
-        FS3Skills::Api.xp(@char).to_s
-      end
-      
       def luck
-        FS3Skills::Api.luck(@char).floor.to_s
+        @char.luck.floor
       end
       
       def aptitudes

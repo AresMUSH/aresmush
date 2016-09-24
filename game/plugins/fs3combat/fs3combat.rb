@@ -1,5 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "fs3combat_api.rb"
 
 # Models must come first
 load "lib/models/combat_action.rb"
@@ -17,6 +16,7 @@ load "lib/actions/pass_action.rb"
 load "lib/actions/reload_action.rb"
 load "lib/actions/treat_action.rb"
 load "lib/common_checks.rb"
+load "lib/pose_handler.rb"
 load "lib/damage/damage_cmd.rb"
 load "lib/damage/damage_cron_handler.rb"
 load "lib/damage/inflict_damage_cmd.rb"
@@ -164,7 +164,11 @@ module AresMUSH
        nil
     end
 
-    def self.get_event_handler(event_name) 
+    def self.get_event_handler(event_name)
+      case event_name
+      when "PoseEvent"
+        return PoseEventHandler
+      end
       nil
     end
   end

@@ -7,7 +7,7 @@ module AresMUSH
           nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => client.name)}%xn%R"
         end
         c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{pose}"
-        FS3Combat::Api.register_pose(client.char)
+        Global.dispatcher.queue_event PoseEvent.new(client, pose, is_emit)
       end
     end
   end

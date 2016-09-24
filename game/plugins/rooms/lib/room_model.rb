@@ -2,12 +2,14 @@ module AresMUSH
   class Character
     before_create :set_starting_room
     belongs_to :home, :class_name => "AresMUSH::Room", :inverse_of => nil
+    belongs_to :work, :class_name => "AresMUSH::Room", :inverse_of => nil
 
     def set_starting_room
       Global.logger.debug "Setting starting room."
       
       self.room = Game.master.welcome_room
       self.home = Game.master.ooc_room
+      self.work = Game.master.ooc_room
     end
   end
   

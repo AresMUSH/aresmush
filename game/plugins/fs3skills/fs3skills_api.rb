@@ -51,10 +51,6 @@ module AresMUSH
       def self.spend_luck(char, amount)
         FS3Skills.modify_luck(char, -amount)
       end
-      
-      def self.xp(char)
-        char.xp
-      end
     end
   end
 end
