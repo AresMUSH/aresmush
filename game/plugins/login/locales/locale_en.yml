@@ -27,8 +27,8 @@ en:
        disconnected_by_reconnect: "You are being disconnected because you connected from another location."
        suspect_login_title: "Suspicious Site Activity"
        suspect_login: "%{name} was just created and their site appeared to match something on your blocked list.%R%RIP: %{ip}%RHostname: %{host}%RMatched suspect entry %{match}."
-       alias_set: "Your alias is now %{alias}."
-       alias_cleared: "You have removed your alias."
+       alias_set: "Alias set to %{alias}."
+       alias_cleared: "Alias cleared."
        currently_online: "%{name} is currently online."
        last_online: "%{name} was last online at %{time}."
        

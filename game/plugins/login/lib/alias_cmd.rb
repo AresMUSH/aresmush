@@ -5,34 +5,48 @@ module AresMUSH
       include CommandWithoutSwitches
       include CommandRequiresLogin
       
-      attr_accessor :alias
+      attr_accessor :alias, :name
       
       def crack!
-        self.alias = trim_input(cmd.args)
+        if (cmd.args =~ /\=/ )
+          self.name = trim_input(cmd.args.before("="))
+          self.alias = trim_input(cmd.args.after("="))
+        else
+          self.name = "me"
+          self.alias = trim_input(cmd.args)
+        end
       end
-
+      
       def handle
-        if (self.alias.nil?)
-          client.char.alias = nil
-          client.char.save!
+        char = ClassTargetFinder.find(self.name, Character, client)
+        return if (!char.found?)
+
+        target = char.target
+        
+        if (target == client.char || Manage::Api.can_manage_game?(client.char))
+          update_alias(target)
+        else
+          client.emit_failure t('dispatcher.not_allowed')
+        end
+      end
+      
+      def update_alias(target)
+        if (self.alias.blank?)
+          target.alias = nil
+          target.save!
           client.emit_success t('login.alias_cleared')
-          return
-        end
+        else
+          
+          name_validation_msg = Character.check_name(self.alias)
+          if (!name_validation_msg.nil?)
+            client.emit_failure(name_validation_msg)
+            return
+          end
         
-        # Catch the old-school alias me=whatever
-        if (self.alias.include?("="))
-          self.alias = self.alias.rest("=")
+          target.alias = self.alias
+          target.save!
+          client.emit_success t('login.alias_set', :alias => self.alias)
         end
-        
-        name_validation_msg = Character.check_name(self.alias)
-        if (!name_validation_msg.nil?)
-          client.emit_failure(name_validation_msg)
-          return
-        end
-        
-        client.char.alias = self.alias
-        client.char.save!
-        client.emit_success t('login.alias_set', :alias => self.alias)
       end
     end
   end
