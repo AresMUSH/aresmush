@@ -8,7 +8,7 @@ aliases:
 - actions
 plugin: fs3combat
 ---
-This is a quick reference for combat action commands.  For more details on FS3, see the game wiki or `help combat`.
+This is a quick reference for combat action commands.  For more details on FS3, see `help combat`.
 
 `combat/attack <target>[/<specials, see below>]`
 
@@ -17,6 +17,7 @@ This is a quick reference for combat action commands.  For more details on FS3, 
     * mod:<special modifiers> - Dice to add or subtract to the roll.
     * called:<location> - Perform a called shot to a particular hit location. 
        Use `combat/hitlocs <target>` to see a list of valid hit locations. 
+    * crew - Attack a vehicle crewperson directly instead of the vehicle itself.
 
 `combat/aim <target>` - Takes careful aim.
 
@@ -26,14 +27,8 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 
 `combat/pass` - Take no action this turn.
 
-`combat/fullauto <list of one or more targets, separated by commas>` - Fire a 
-   fully automatic (10-round) burst.  You can list up to 5 separate targets.
-   
 `combat/suppress <target>` - Use suppressive fire
-    A full-auto weapon can specify a comma-separated list of up to 5 targets.
+    A full-auto or explosive weapon can specify a list of up to 5 targets.
 
 `combat/subdue <target>` - Subdues or disarms a target. 
 `combat/escape` – Attempts to escape while subdued.
-
-`combat/explode <right next to>/<nearby>` - Uses an explosive weapon.
-   Each group should specify a comma-separated list of targets.

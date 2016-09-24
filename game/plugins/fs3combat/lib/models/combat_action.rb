@@ -53,7 +53,7 @@ module AresMUSH
     end
     
     def parse_targets(name_string)
-      self.target_names = name_string.split(",").map { |n| InputFormatter.titleize_input(n) }
+      self.target_names = name_string.split(" ").map { |n| InputFormatter.titleize_input(n) }
       self.targets = []
       self.target_names.each do |name|
         target = self.combat.find_combatant(name)
@@ -63,7 +63,7 @@ module AresMUSH
     end
     
     def print_target_names
-      self.target_names.join(", ")
+      self.target_names.join(" ")
     end
   end 
 end

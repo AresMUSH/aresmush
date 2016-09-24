@@ -6,11 +6,11 @@ categories:
 - main
 plugin: fs3combat
 ---
-This is a quick reference for combat organizer commands.  For more details on FS3, see the game wiki or `help combat`.
+This is a quick reference for combat organizer commands.  For more details on FS3, see `help combat`.
 
 `combat/start [<mock or real>]` - Starts a combat (default real).
 `combat/stop <combat #>` - Stops a combat. 
-`combats%xn` - Shows all combats going on. 
+`combats` - Shows all combats going on. 
 `combat/newturn` - Starts the first turn.
 
 `combat/join <list of names>=<combat #>[/<type>]

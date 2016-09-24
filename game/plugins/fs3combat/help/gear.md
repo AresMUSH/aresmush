@@ -12,7 +12,7 @@ aliases:
 - vehicle
 plugin: fs3combat
 ---
-There are various kinds of gear that can be used in combat.   For more details on FS3, see the game wiki or `help combat`.
+There are various kinds of gear that can be used in combat.   For more details on FS3, see `help combat`.
 
 `weapons` - List all weapons.
 `weapon <name>` - See details for a particular weapon.

@@ -6,7 +6,7 @@ categories:
 - main
 plugin: fs3combat
 ---
-The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more details on FS3, see: http://aresmush.com/fs3
+The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more help, see http://aresmush.com/fs3/fs3-3/combat-quickref/.
 
 `combat/start` or `combat/start mock` - Starts a combat. (Organizer only)
 `combat/newturn` - Trigger a new turn. (Organizer only)
@@ -16,7 +16,8 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/leave` - Leaves combat.
 
 `combat` - View combat display
-   `combat/pilot <vehicle>>` - Pilots a vehicle
+
+`combat/pilot <vehicle>` - Pilots a vehicle
 `combat/passenger <vehicle>` - Become a passenger in a vehicle.
        Use a vehicle type from `vehicles` to create a new vehicle, or a specific vehicle name if one already exists.
 `combat/disembark` - Leaves your vehicle.

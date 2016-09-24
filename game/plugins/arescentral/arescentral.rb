@@ -47,6 +47,8 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return CronEventHandler
+      when "GameStartedEvent"
+        return GameStartedEventHandler
       end
       nil
     end

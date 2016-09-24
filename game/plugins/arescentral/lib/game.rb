@@ -2,7 +2,7 @@ module AresMUSH
   module AresCentral
     def self.update_game
       Global.logger.info "Updating game registration."
-      params = Api.build_game_params
+      params = AresCentral.build_game_params
       connector = AresCentral::AresConnector.new
       response = connector.update_game(params)
     
@@ -15,7 +15,7 @@ module AresMUSH
     
     def self.register_game
       Global.logger.info "Creating game registration."
-      params = Api.build_game_params
+      params = AresCentral.build_game_params
       connector = AresCentral::AresConnector.new    
       response = connector.register_game(params)
       

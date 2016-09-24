@@ -9,7 +9,7 @@ aliases:
 - opposed
 plugin: fs3skills
 ---
-This game uses the FS3 skills system.  Complete documentation can be found on the game wiki.  This is a quick reference for the commands used to make an ability roll.
+This game uses the FS3 skills system.  This is a quick reference for the commands used to make an ability roll.  For more help, see http://aresmush.com/fs3/fs3-3/roll-quickref/.
 
 `roll <ability>`
 `roll <character>/<ability>` - Makes a roll for someone else.

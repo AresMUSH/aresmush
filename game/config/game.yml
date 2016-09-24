@@ -2,6 +2,6 @@
 game:
   name: Local Test
   category: Other
-  description: Just testing.
+  description: AresMUSH test site.
   website: 'http://aresmush.com'
   public_game: true

@@ -14,7 +14,7 @@ module AresMUSH
       def check_ammo
         ammo = self.combatant.ammo
         return nil if ammo.nil?
-        return t('fs3combat.not_enough_ammo_for_burst') if ammo < 6
+        return t('fs3combat.not_enough_ammo_for_burst') if ammo < 8
         return t('fs3combat.out_of_ammo') if ammo == 0
         return nil
       end
@@ -46,7 +46,7 @@ module AresMUSH
         
         bullets = {}
         self.targets.each do |t|
-          bullets[t] = 6 / self.targets.count
+          bullets[t] = 8 / self.targets.count
         end
         
         bullets.each do |target, num|
@@ -55,7 +55,7 @@ module AresMUSH
           end
         end
 
-        ammo_message = self.combatant.update_ammo(6)
+        ammo_message = self.combatant.update_ammo(8)
         if (ammo_message)
           messages << ammo_message
         end

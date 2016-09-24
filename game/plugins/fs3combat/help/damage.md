@@ -11,7 +11,7 @@ aliases:
 - healing
 plugin: fs3combat
 ---
-This is a quick reference for the combat damage commands. For more details on FS3, see the game wiki or `help combat`.
+This is a quick reference for the combat damage commands. For more details on FS3, see `help combat`.
  
 `damage` - Views your damage. 
 `damage <name>` - Views someone else's damage, PC, NPC or Vehicle 

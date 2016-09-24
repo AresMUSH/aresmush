@@ -17,5 +17,4 @@ Related help files:
     `help roll` - Use your abilities.
     `help sheet` - View your character sheet.
     `help app` - View the progress of your character application.
-    `help relatedapt` - Set up your ruling aptitudes.
     `help goals` - Set up your goals and RP hooks.
