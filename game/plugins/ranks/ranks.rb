@@ -36,13 +36,15 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd)
-      return nil if !cmd.root_is?("rank")
-      
-      case cmd.switch
-      when "set"
-        return RankSetCmd
-      when nil
+      case cmd.root
+      when "ranks"
         return RanksCmd
+        
+      when "rank"
+        case cmd.switch
+        when "set", nil
+          return RankSetCmd
+        end
       end
       
       nil

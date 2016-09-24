@@ -65,5 +65,4 @@ ranks:
                 Sergeant Major: false
 
     shortcuts:
-        "ranks": "rank"
         "rank/clear": "rank/set"
