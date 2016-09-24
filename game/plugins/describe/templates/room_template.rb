@@ -74,7 +74,7 @@ module AresMUSH
           status = t('describe.foyer_room_locked')
         elsif (chars.count == 0)
           status = t('describe.foyer_room_free')
-        elsif (chars.select { |c| c.client } > 0 )
+        elsif (chars.select { |c| c.client }.count > 0 )
           status = t('describe.foyer_room_in_use')
         else
           status = t('describe.foyer_room_occupied')
