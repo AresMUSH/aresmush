@@ -11,4 +11,6 @@ en:
         review_rank_missing: "Rank"
         review_rank_invalid: "%xh%xr< Invalid Rank >%xn"
         rank_group_not_set: "Your %{group} is not set."
+        enlisted: "Enlisted"
+        officer: "Officer"
         

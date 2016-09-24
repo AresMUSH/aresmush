@@ -37,7 +37,7 @@ ranks:
                 Specialist: true
                 Petty Officer 2nd Class: true
                 Petty Officer 1st Class: true
-                Chief Petty Officer: true
+                Chief Petty Officer: false
                 Senior Chief Petty Officer: false
                 Master Chief Petty Officer: false                
                 
@@ -57,9 +57,10 @@ ranks:
                 Private: true
                 Private First Class: true
                 Lance Corporal: true
+                Corporal: true
                 Sergeant: true
                 Staff Sergeant: true
-                Gunnery Sergeant: true
+                Gunnery Sergeant: false
                 Master Sergeant: false
                 Sergeant Major: false
 
