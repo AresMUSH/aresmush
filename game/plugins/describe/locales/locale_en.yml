@@ -37,3 +37,4 @@ en:
        foyer_room_occupied: "%xyOccupied%xn"
        foyer_room_free: "%xgOpen%xn"
        foyer_room_status: "%xhFoyer Exits%xn"
+       foyer_room_in_use: "%xy%xhIn Use%xn"

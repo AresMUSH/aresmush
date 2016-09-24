@@ -69,10 +69,13 @@ module AresMUSH
       
      
       def foyer_status(e, i)
+        chars = e.dest.characters
         if (!e.lock_keys.empty?)
           status = t('describe.foyer_room_locked')
-        elsif (e.dest.characters.count == 0)
+        elsif (chars.count == 0)
           status = t('describe.foyer_room_free')
+        elsif (chars.select { |c| c.client } > 0 )
+          status = t('describe.foyer_room_in_use')
         else
           status = t('describe.foyer_room_occupied')
         end
