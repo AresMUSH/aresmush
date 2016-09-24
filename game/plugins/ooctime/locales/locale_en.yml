@@ -1,7 +1,7 @@
 en:
     time:
-        server_time: "%xhServer Time%xn: %{time}."
-        local_time: "%xhLocal Time%xn:  %{time}."
+        server_time: "Server Time:"
+        local_time: "Local Time:"
         timezone: "Your local timezone is set to %xh%{timezone}%xn."
         default_timezone_set: "Your timezone has been set to %{timezone}.  See 'help time' if you would ike to change it.  Events, bbs posts, and other MUSH dates and times will be displayed in that timezone."
         invalid_timezone: "That is not a valid timezone.  See 'help time'."

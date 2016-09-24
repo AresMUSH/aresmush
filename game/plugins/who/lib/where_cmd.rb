@@ -7,8 +7,8 @@ module AresMUSH
       
       def handle
         online_chars = Global.client_monitor.logged_in_clients.map { |c| c.char }
-        template = WhereTemplate.new online_chars, client
-        template.render
+        template = WhereTemplate.new online_chars
+        client.emit template.render
       end      
     end
   end

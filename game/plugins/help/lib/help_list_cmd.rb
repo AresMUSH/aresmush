@@ -23,28 +23,16 @@ module AresMUSH
         return nil
       end
       
-      def handle
-        list = []
+      def handle        
+        list = Help.toc(self.category)
+        paginator = Paginator.paginate(list, self.page, 4)
         
-        Help.toc(self.category).each do |toc|
-          list << "%xg#{toc}%xn"
-          Help.toc_topics(category, toc).each do |title, data|
-            list << "%T%xh#{title.titleize}%xn - #{data["summary"]}"
-          end
+        if (paginator.out_of_bounds?)
+          client.emit_failure paginator.out_of_bounds_msg
+        else
+          template = HelpListTemplate.new(paginator, self.category)
+          client.emit template.render        
         end
-        
-        title = t('help.toc', :category => self.category["title"])
-        
-        client.emit BorderedDisplay.paged_list(list, self.page, 20, title, footer)
-      end
-      
-      def footer
-        footer = "%l2%r"
-        footer << "%xh#{t('help.other_help_libraries')}%xn"
-        Help.category_config.each do |c, v|
-          footer << " \[#{v['command']}\] #{v['title']}"
-        end
-        footer
       end
     end
   end

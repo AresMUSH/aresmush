@@ -7,10 +7,10 @@ module AresMUSH
       # List of all bulletin boards in order.
       attr_accessor :boards
       
-      def initialize(char, client)
+      def initialize(char)
         @char = char
         @boards = BbsBoard.all_sorted
-        super File.dirname(__FILE__) + "/board_list.erb", client
+        super File.dirname(__FILE__) + "/board_list.erb"
       end
       
       def num(index)

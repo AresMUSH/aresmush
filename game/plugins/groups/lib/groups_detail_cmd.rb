@@ -25,17 +25,8 @@ module AresMUSH
           return
         end
         
-        output = "#{group['desc']}%R%l2%r"
-        values = group['values']
-        if (values.nil?)
-          output << t('groups.open_ended_group')
-        else
-          values.keys.sort.each do |v|
-             output << "%r#{v.titlecase.ljust(20)} #{group['values'][v]}"
-          end
-        end
-        
-        client.emit BorderedDisplay.text output, t('groups.group_title', :name => self.name)
+        template = GroupDetailTemplate.new(self.name, group)
+        client.emit template.render        
       end
     end
   end

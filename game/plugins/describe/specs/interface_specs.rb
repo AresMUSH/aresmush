@@ -33,13 +33,13 @@ module AresMUSH
 
         it "should render a character" do
           model = Character.new
-          CharacterTemplate.should_receive(:new).with(model, @client) { @renderer }
+          CharacterTemplate.should_receive(:new).with(model) { @renderer }
           Describe.get_desc_template(model, @client).should eq @renderer
         end
         
         it "should render an exit" do
           model = Exit.new
-          ExitTemplate.should_receive(:new).with(model, @client) { @renderer }
+          ExitTemplate.should_receive(:new).with(model) { @renderer }
           Describe.get_desc_template(model, @client).should eq @renderer
         end
       end

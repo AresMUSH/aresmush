@@ -15,6 +15,8 @@ load "lib/chargen_stage_locks.rb"
 load "lib/chargen_start_cmd.rb"
 load "lib/helpers.rb"
 load "templates/bg_template.rb"
+load "templates/chargen_template.rb"
+load "templates/app_template.rb"
 
 module AresMUSH
   module Chargen
@@ -84,6 +86,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

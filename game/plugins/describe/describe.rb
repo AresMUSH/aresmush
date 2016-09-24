@@ -14,7 +14,7 @@ load "lib/outfits/outfit_list_cmd.rb"
 load "lib/outfits/outfit_set_cmd.rb"
 load "lib/outfits/outfit_view_cmd.rb"
 load "lib/wear_cmd.rb"
-load "templates/char_template.rb"
+load "templates/character_template.rb"
 load "templates/exit_template.rb"
 load "templates/room_template.rb"
 
@@ -92,6 +92,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

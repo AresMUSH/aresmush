@@ -41,7 +41,7 @@ module AresMUSH
     
     describe :line_with_text do
       it "should render the line with text" do
-        line_with_text("ABC").should eq "%x!-------------- [ABC] ---------------------------------------------------------"
+        line_with_text("ABC").should eq "%x!-------------- [ABC] ---------------------------------------------------------%xn"
       end
     end
   end

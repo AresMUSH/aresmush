@@ -18,8 +18,8 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          template = CharProfileTemplate.new(client, model)
-          template.render
+          template = ProfileTemplate.new(client, model)
+          client.emit template.render
         end
       end      
     end

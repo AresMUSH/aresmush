@@ -6,9 +6,11 @@ load "lib/groups_cmd.rb"
 load "lib/groups_detail_cmd.rb"
 load "lib/groups_model.rb"
 load "lib/helpers.rb"
-load "templates/complete_template.rb"
-load "templates/gender_template.rb"
-load "templates/group_template.rb"
+load "templates/complete_census_template.rb"
+load "templates/gender_census_template.rb"
+load "templates/group_census_template.rb"
+load "templates/group_detail_template.rb"
+load "templates/group_list_template.rb"
 
 module AresMUSH
   module Groups
@@ -59,6 +61,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

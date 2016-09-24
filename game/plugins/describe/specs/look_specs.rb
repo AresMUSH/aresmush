@@ -38,6 +38,7 @@ module AresMUSH
             VisibleTargetFinder.stub(:find) { FindResult.new(@model, nil)}
             Describe.stub(:get_desc_template) { @template }
             @template.stub(:render)
+            client.stub(:emit)
           end
 
           it "should find a visible target in the looker's room" do
@@ -51,7 +52,8 @@ module AresMUSH
           end
         
           it "should emit the desc to the client" do
-            @template.should_receive(:render)
+            @template.should_receive(:render) { "a desc" }
+            client.should_receive(:emit).with("a desc")
             handler.handle
           end  
           

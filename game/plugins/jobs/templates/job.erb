@@ -1,0 +1,18 @@
+<%= line %>
+%xh<%= center( title, 78 ) %>%xn
+
+%xh<%= left( t('jobs.category_title'), 15 ) %>%xn <%= job.category %>    
+%xh<%= left( t('jobs.submitted_by_title'), 15 ) %>%xn <%= left( submitted_by, 20 ) -%>
+%xh<%= left( t('jobs.submitted_on_title'), 15 ) %>%xn <%= submitted_on %> 
+%xh<%= left( t('jobs.status_title'), 15 ) %>%xn <%= left( job.status, 20) -%>
+%xh<%= left( t('jobs.handled_by_title'), 15 ) %>%xn <%= handled_by %>
+
+%xh<%= t('jobs.description') %>%xn
+<%= job.description %>
+<% replies.each do |r| -%> 
+
+<%= line 2 %>
+<%= reply_admin_only(r) %><%= reply_title(r) %>
+<%= r.message %>
+<% end %>
+<%= line %>

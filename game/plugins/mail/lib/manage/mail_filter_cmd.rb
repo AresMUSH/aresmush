@@ -28,7 +28,7 @@ module AresMUSH
         char.save
 
         template = InboxTemplate.new(client, Mail.filtered_mail(client), false, char.mail_filter)
-        template.render
+        client.emit template.render
       end
     end
   end

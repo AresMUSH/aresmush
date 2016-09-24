@@ -1,0 +1,14 @@
+<%= line %>
+%xh<%= t('jobs.jobs_list_title') %>%xn
+<%= line 2 %>
+<% paginator.items.each do |job| %>
+<%= right( job.number.to_s, 5) -%>
+    %xh<%= left( unread_status(job), 3 ) %><%= "%xn" -%>
+<%= status_color(job) %><%= left( job.status, 7) %><%= "%xn" -%>
+<%= left( job.title, 19) -%>
+<%= left( submitter(job), 17) -%>
+<%= left( handler(job), 18) -%>
+<%= job.category %>
+<% end %>
+<%= line_with_text paginator.page_marker %>
+<%= line %>

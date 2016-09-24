@@ -70,7 +70,7 @@ module AresMUSH
            return ChangeCategoryCmd
          when "catchup"
            return JobsCatchupCmd
-         when "comment", "respond"
+         when "discuss", "respond"
            return JobCommentCmd
          when "close"
            return CloseJobCmd
@@ -119,6 +119,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

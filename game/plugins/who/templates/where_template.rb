@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class WhereTemplate < AsyncTemplateRenderer
+    class WhereTemplate < ErbTemplateRenderer
       include TemplateFormatters
       
       # NOTE!  Because so many fields are shared between the who and where templates,
@@ -8,34 +8,32 @@ module AresMUSH
       include WhoCharacterFields
       include CommonWhoFields
     
-      def initialize(online_chars, client)
-        self.online_chars = online_chars
-        super client
-      end
-      
-      def build
-        text = header(t('who.where_header'))
-      
-        chars_by_room.each do |c|
-          # Mild potential race condition between when the list was teed up and now.
-          next if !c.client
-
-          text << "%R"
-          text << char_status(c)
-          text << " "
-          text << char_name(c)
-          text << " "
-          text << char_room(c)
-          text << " "
-          text << char_connected(c)
-          text << " "
-          text << char_idle(c)
-        end
-      
-        text << footer()
+      attr_accessor :online_chars
+    
+      def initialize(online_chars)
+        @online_chars = online_chars
         
-        text
-      end
+        # There are two built-in templates - one that shows people grouped by room,
+        # and the other that shows a list similar to 'who'. 
+        #super File.dirname(__FILE__) + "/where_by_room.erb"
+        super File.dirname(__FILE__) + "/where.erb"
+      end      
+      
+      
+      def room_groups
+        groups = {}
+        self.online_chars.each do |c|
+          room = Who.who_room_name(c)
+          idle = Status::Api.is_afk?(c) || Status::Api.is_idle?(c.client)
+          name = idle ? "%xh%xx#{c.name}%xn" : c.name
+          if (groups.has_key?(room))
+            groups[room] << name
+          else
+            groups[room] = [name]
+          end
+        end
+        groups.sort
+      end 
     end 
   end
 end

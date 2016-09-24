@@ -24,14 +24,8 @@ module AresMUSH
       end
       
       def handle
-        list = FS3Combat.armor(self.name).sort.map { |k, v| type_display(k, v) }
-        client.emit BorderedDisplay.list list, self.name
-      end
-        
-      def type_display(name, info)
-        title = t("fs3combat.armor_title_#{name}")
-        detail = FS3Combat.gear_detail(info)
-        "%xh#{left(title, 20)}%xn #{detail}"
+        template = GearDetailTemplate.new(FS3Combat.armor(self.name), self.name)
+        client.emit template.render
       end
     end
   end

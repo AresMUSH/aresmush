@@ -1,5 +1,5 @@
 module AresMUSH
-  module Api
+  module AresCentral
     def self.update_game
       Global.logger.info "Updating game registration."
       params = Api.build_game_params

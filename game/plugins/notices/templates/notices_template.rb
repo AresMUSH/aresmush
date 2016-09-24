@@ -1,40 +1,27 @@
 module AresMUSH
   module Notices
-    class NoticesTemplate < AsyncTemplateRenderer
+    class NoticesTemplate < ErbTemplateRenderer
       include TemplateFormatters
+
+      attr_accessor :char
             
-      def initialize(char, client)
+      def initialize(char)
         @char = char
-        super client
-      end
-      
-      def build
-        text = "%l1%r"
-        text << "%xh#{notices_title}%xn%r"
-        text << "#{mail}%r"
-        text << "#{bbs}%r"
-        text << "#{jobs_or_requests}%r"
-        text << "%l1"
-        
-        text
-      end
-      
-      def notices_title
-        center(t('notices.notices_title'), 78)
+        super File.dirname(__FILE__) + "/notices.erb"
       end
       
       def mail
-        mail_text = Mail::Api.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
-        if (@char.handle)
-          Character.find_by_handle(@char.handle).each do |alt|
-            next if alt == @char
-            next if !alt.has_unread_mail?
-            mail_text << "%r#{t('notices.alt_unread_mail', :name => alt.name)}"
-          end
-        end
-        mail_text
+        Mail::Api.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
       end
       
+      def alts
+        return [] if !@char.handle
+        Character.find_by_handle(@char.handle).select { |a| a != @char }
+      end
+      
+      def has_alt_mail(alt)
+        Mail::Api.has_unread_mail?(alt)
+      end
       
       def bbs
         Bbs::Api.has_unread_bbs?(@char) ? t('notices.unread_bbs') : t('notices.no_unread_bbs')

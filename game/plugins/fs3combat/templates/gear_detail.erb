@@ -1,0 +1,7 @@
+<%= line %>
+%xh<%= title %>%xn
+
+<% list.each do |name, data| %>
+%xh<%= left( name.titleize, 20 ) %>%xn <%= field(data) %>
+<% end %>
+<%= line %>

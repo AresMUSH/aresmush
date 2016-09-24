@@ -17,6 +17,7 @@ load "lib/helpers/utils.rb"
 load "lib/ratings.rb"
 load "lib/skills_model.rb"
 load "lib/starting_skills.rb"
+load "templates/ability_page_template.rb"
 
 module AresMUSH
   module FS3Skills
@@ -81,6 +82,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

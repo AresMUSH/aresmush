@@ -5,6 +5,7 @@ load "lib/time_cmd.rb"
 load "lib/time_model.rb"
 load "lib/timezone_cmd.rb"
 load "ooctime_api.rb"
+load "templates/time_template.rb"
 
 module AresMUSH
   module OOCTime

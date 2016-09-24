@@ -10,9 +10,10 @@ module AresMUSH
       def initialize(board, client)
         @board = board
         @posts = board.bbs_posts
+        @client = client
         @char = client.char
         
-        super File.dirname(__FILE__) + "/board.erb", client
+        super File.dirname(__FILE__) + "/board.erb"
       end
       
       # Roles that can read this bbs.
@@ -40,7 +41,7 @@ module AresMUSH
       end
       
       def date(post)
-        OOCTime::Api.local_short_timestr(self.client, post.created_at)
+        OOCTime::Api.local_short_timestr(@client, post.created_at)
       end
     end
     

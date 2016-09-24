@@ -3,6 +3,7 @@ load "help_api.rb"
 load "lib/help_list_cmd.rb"
 load "lib/help_view_cmd.rb"
 load "lib/helpers.rb"
+load "templates/help_list_template.rb"
 
 module AresMUSH
   module Help
@@ -46,6 +47,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

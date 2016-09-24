@@ -66,13 +66,7 @@ module AresMUSH
     def self.closed_status
       Global.read_config("jobs", "closed_status")
     end
-    
-    def self.get_job_display(client, job)      
-      replies = Jobs.can_access_jobs?(client.char) ? job.job_replies : job.job_replies.select { |r| !r.admin_only}
-      template = JobTemplate.new(client, job, replies)
-      template.display
-    end
-    
+        
     def self.create_job(category, title, description, author)
       if (!Jobs.categories.include?(category))
         Global.logger.debug "Invalid job category #{category}."

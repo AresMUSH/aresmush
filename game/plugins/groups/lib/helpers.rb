@@ -26,8 +26,7 @@ module AresMUSH
           counts[val] = count + 1
         end
       end
-      counts = counts.sort_by { |k,v| v }.reverse
-      counts.map { |k, v| "#{k.ljust(20)}#{v}"}
+      counts.sort_by { |k,v| v }.reverse
     end
     
     def self.app_review(char)

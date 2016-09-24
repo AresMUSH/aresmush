@@ -16,8 +16,8 @@ module AresMUSH
           return
         end
         
-        template = CombatSummaryTemplate.new(combat, @client)
-        template.render
+        template = CombatSummaryTemplate.new(combat)
+        client.emit template.render
       end
     
     end

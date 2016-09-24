@@ -23,20 +23,8 @@ module AresMUSH
           return
         end
 
-        title = t('ranks.ranks_title', :group => self.name)
-        list = [ "%xh#{title}%xn" ]
-        config.each do |rank_type, type_config|
-          list << "%R%xh#{rank_type}%xn"
-          type_config.each do |rank, allowed|
-            color = allowed ? "" : "%xh%xx"
-            list << "#{color}#{rank}%xn"
-          end
-        end
-        
-        list << ""
-        list << t('ranks.ranks_footer')
-        
-        client.emit BorderedDisplay.list list
+        template = RanksTemplate.new config, self.name
+        client.emit template.render
       end
     end
   end

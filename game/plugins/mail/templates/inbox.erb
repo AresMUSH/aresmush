@@ -1,0 +1,19 @@
+<%= line %>
+%xh%x![ <%= tag %> ]%xn
+%xh<%= inbox_title %>%xn
+<%= line 2 %>
+<% messages.each_with_index do |msg, i| %>
+<%= right( (i + 1).to_s, 3 ) -%>
+<%= left( tags(msg), 9 ) -%>
+<%= left( to_or_from(msg), 23 ) -%>
+<%= left( msg.subject, 31 ) -%>
+<%= date(msg) %>
+<% end %>
+<% if filters_enabled %>
+<%= line 2 %>
+<%= t('mail.filters_notice') %>
+<% end %>
+<% if is_sent_mail %>
+<%= t('mail.sent_mail_notice') %>
+<% end %>
+<%= line %>

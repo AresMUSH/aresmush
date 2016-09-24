@@ -27,47 +27,10 @@ module AresMUSH
             return
           end
           
-          title = t('chargen.app_title', :name => model.name)
-          
-          text = section_title(t('chargen.abilities_review_title'))
-          text << FS3Skills::Api.app_review(model)
-          text << "%r%r"
-          text << section_title(t('chargen.demographics_review_title'))
-          text << Demographics::Api.app_review(model)
-          text << "%r%r"
-          text << section_title(t('chargen.groups_review_title'))
-          text << Groups::Api.app_review(model)
-          text << "%r%r"
-          text << section_title(t('chargen.misc_review_title'))
-          text << Chargen.bg_app_review(model)
-          text << "%r"
-          text << Describe::Api.app_review(model)
-          text << "%r"
-          text << Ranks.app_review(model)
-          text << "%r%r"
-          text << section_title(t('chargen.app_review_title'))
-          
-          if (model.approval_job)
-            number = model.approval_job.number
-            if (client.name == self.name)
-              text << t('chargen.app_request', :job => number)
-            else
-              text <<  t('chargen.app_job', :job => number)
-            end
-          else
-              text <<  t('chargen.app_not_started')
-          end
-
-          text << "%r%r"
-          text << t('chargen.review_summary')
-          client.emit BorderedDisplay.text text, title
+          template = AppTemplate.new(model)
+          client.emit template.render
         end
-      end
-      
-      def section_title(title)
-        title = " #{title} ".center(78, '-')
-        "%x!%xh#{title}%xH%xn%r"
-      end
+      end      
     end
   end
 end

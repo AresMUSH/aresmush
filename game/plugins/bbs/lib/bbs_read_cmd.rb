@@ -28,7 +28,7 @@ module AresMUSH
         Bbs.with_a_post(self.board_name, self.num, client) do |board, post|      
 
           template = PostTemplate.new(board, post, client)
-          template.render
+          client.emit template.render
 
           Bbs.mark_read_for_player(client.char, post)
           client.program[:last_bbs_post] = post

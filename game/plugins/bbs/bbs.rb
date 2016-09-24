@@ -17,6 +17,7 @@ load "lib/management/bbs_attribute_cmd.rb"
 load "lib/management/bbs_create_board_cmd.rb"
 load "lib/management/bbs_delete_board_cmd.rb"
 load "lib/management/bbs_delete_confirm_cmd.rb"
+load "templates/archive_template.rb"
 load "templates/board_list_template.rb"
 load "templates/board_template.rb"
 load "templates/post_template.rb"
@@ -98,6 +99,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

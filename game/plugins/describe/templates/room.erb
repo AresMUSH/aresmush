@@ -1,0 +1,28 @@
+<%= line %>
+<%= left(room.name, 40) %> <%= right(area, 37) %>
+<%= ooc_time %> ~ <%= ic_time %>
+<%= line 2 %>
+<%= room.description %>
+<% if details %>
+
+%xh<%= t('describe.details_available') %>%xn <%= details %>
+<% end %>
+<%= line 2 %>
+%xg<%= t('describe.players_title') %>%xn
+<% online_chars.each do |c| -%>
+%xh<%= c.name %>%xn <%= char_shortdesc(c)%> <%= char_afk(c) %>
+<% end %> 
+
+<%= "%xg#{t('describe.exits_title')}%xn" -%>
+<% exits.each_with_index do |e, i| %>
+<%= exit_linebreak(i) %>%xh<%= left(exit_name(e), 5) %>%xn <%= left(exit_destination(e),30) -%>
+<% end %>
+<% if exits.count == 0 %>No way out!<% end %>
+<% if is_foyer %>
+<%= line 2 -%>
+<% foyer_exits.each_with_index do |e, i| %>
+<%= foyer_status(e, i) -%>
+<% end %>
+
+<% end %>
+<%= line %>

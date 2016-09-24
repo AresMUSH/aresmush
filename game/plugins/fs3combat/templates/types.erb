@@ -1,0 +1,10 @@
+<%= line %>
+%xh<%= t('fs3combat.combatant_types') %>%xn
+
+%xh<%= t('fs3combat.combatant_types_titlebar') %>%xn
+<% list.each do |name, info| %>
+<%= left( name, 20 ) -%> 
+<%= left( field(info, 'weapon' ), 20 ) -%> 
+<%= field(info, 'armor') %>
+<% end %>
+<%= line %>

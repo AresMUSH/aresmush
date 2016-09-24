@@ -17,12 +17,12 @@ module AresMUSH
           client.char.submitted_requests.select { |r| r.is_open? || r.is_unread?(client.char) }
 
         requests = requests.sort_by { |r| r.number }
-        pagination = Paginator.paginate(requests, self.page, 20)
-        if (pagination.out_of_bounds?)
+        paginator = Paginator.paginate(requests, self.page, 20)
+        if (paginator.out_of_bounds?)
           client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
         else
-          template = JobsListTemplate.new(client.char, pagination.page_items, self.page, pagination.total_pages)
-          client.emit template.display
+          template = JobsListTemplate.new(client.char, paginator)
+          client.emit template.render
         end
       end
     end

@@ -22,7 +22,7 @@ module AresMUSH
       def handle
         client.char.profile[self.field] = self.value
         client.char.save!
-        client.emit_success t('handles.custom_profile_set', :field => self.field)
+        client.emit_success t('profile.custom_profile_set', :field => self.field)
       end
     end
   end

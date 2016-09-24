@@ -28,8 +28,10 @@ module AresMUSH
             end
           end
         end
+
+        template = IdleQueueTemplate.new(client.program[:idle_queue], client)
+        client.emit template.render
         
-        client.emit Idle.print_idle_queue(client)
       end
     end
   end

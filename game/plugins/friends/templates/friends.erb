@@ -1,0 +1,16 @@
+<%= line %>
+%xh<%= t('friends.friends_header') %>%xn
+<% friendships.each do |f| %>
+<%= left(friend_name(f), 25) %> <%= friend_last_on(f) %> 
+<% if f.note %>
+     %xc<%= f.note %>%xn
+<% end %>
+<% end %>
+<%= line 2 %>
+%xh<%= t('friends.handle_friends_header') %>%xn
+<% handle_friends.each do |h| %>
+<% if visible_alts(h) %>
+%xh<%= left(h,20) %> <%= visible_alts(h) %>
+<% end %>
+<% end %>
+<%= line %>

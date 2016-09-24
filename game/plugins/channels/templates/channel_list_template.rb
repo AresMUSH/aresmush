@@ -1,37 +1,39 @@
 module AresMUSH
   module Channels
-    class ChannelListTemplate < AsyncTemplateRenderer
+    class ChannelListTemplate < ErbTemplateRenderer
       include TemplateFormatters
+      
+      attr_accessor :channels
       
       def initialize(channels, client)
         @channels = channels
-        super client
+        @client = client
+        super File.dirname(__FILE__) + "/channel_list.erb"        
       end
       
-      def build
-        output = "%xh#{t('channels.channels_title')}%xn%r%l2%r"
-        output << @channels.map { |c| channel_list_entry(c) }.join("%r")
-        output << "%R%l2%R"
-        output << t('channels.channel_aliases')
-        @channels.each do |channel|
-          if (Channels.is_on_channel?(self.client.char, channel))
-            aliases = Channels.get_channel_option(self.client.char, channel, 'alias')
-            aliases.each do |a|
-              output << "%R%T#{channel.color}#{a} <message>%xn talks on #{channel.display_name(false)}."
-            end
-          end
-        end
-        BorderedDisplay.text(output)
+      def channel_name(channel)
+        channel.display_name(false)
       end
       
-      def channel_list_entry(channel)
-        name = left(channel.display_name(false),25)
-        desc = left(channel.description,25)
-        roles = channel.roles.join(" ")
-        announce = channel.announce ? " +   " : " -   "
-        on = Channels.is_on_channel?(self.client.char, channel) ? "(+)" : "(-)"
-        "#{on} #{name} #{desc} #{announce}   #{roles}"
+      def channel_roles(channel)
+        channel.roles.join(" ")
       end
+      
+      def channel_announce(channel)
+        channel.announce ? " +   " : " -   "
+      end
+      
+      def channel_on_indicator(channel)
+        is_on_channel?(channel) ? "(+)" : "(-)"
+      end
+      
+      def is_on_channel?(channel)
+        Channels.is_on_channel?(@client.char, channel) 
+      end
+      
+      def channel_aliases(channel)
+        Channels.get_channel_option(@client.char, channel, 'alias')
+      end      
     end
   end
 end

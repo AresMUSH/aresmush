@@ -10,7 +10,7 @@ module AresMUSH
     
     def self.emit_here_desc(client)        
       template = Describe::Api.desc_template(client.room, client)
-      template.render
+      client.emit template.render
     end
     
     def self.can_build?(actor)

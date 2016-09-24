@@ -71,7 +71,7 @@ module AresMUSH
         title = t('help.topic', :category => category_title, :topic => topic.titleize)
         text = Help.topic_contents(topic, self.category)
         markdown = MarkdownFormatter.new
-        display = markdown.to_mush(text)
+        display = markdown.to_mush(text).chomp
         client.emit BorderedDisplay.text(display, category_title)
       end
     end

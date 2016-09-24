@@ -52,9 +52,11 @@ load "lib/status/combat_hud_cmd.rb"
 load "lib/status/combat_npcskill_cmd.rb"
 load "lib/status/combat_summary_cmd.rb"
 load "templates/damage_template.rb"
-load "templates/gear_template.rb"
+load "templates/gear_detail_template.rb"
+load "templates/gear_list_template.rb"
 load "templates/hud_template.rb"
 load "templates/summary_template.rb"
+load "templates/types_template.rb"
 
 module AresMUSH
   module FS3Combat
@@ -163,6 +165,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

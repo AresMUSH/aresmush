@@ -38,7 +38,7 @@ module AresMUSH
       
       def show_desc(model)
         template = Describe.get_desc_template(model, client)
-        template.render
+        client.emit template.render
         if (model.class == Character)
           looked_at = model.client
           if (!looked_at.nil?)

@@ -1,0 +1,12 @@
+<%= line %>
+%xh<%= t('ranks.ranks_title', :group => name) %>%xn
+<% config.each do |type, ranks| %>
+
+%xh<%= type %>%xn
+<% ranks.each do |rank, allowed| %>
+<% if allowed %>
+<%= rank %>
+<% else %>
+%xh%xx<%= rank %>%xn<% end %><% end %><% end %>
+<%= t('ranks.ranks_footer' ) %>
+<%= line %>

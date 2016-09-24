@@ -1,33 +1,18 @@
 module AresMUSH
   module Describe
     # Template for an exit.
-    class ExitTemplate < AsyncTemplateRenderer
+    class ExitTemplate < ErbTemplateRenderer
       include TemplateFormatters
       
-      def initialize(model, client)
-        @model = model
-        super client
-      end
+      attr_accessor :ex
       
-      def build
-        text = "%l1%r"
-        text << "%xg[#{name}] #{destination}%xn%r"
-        text << "#{description}%r"
-        text << "%l1"
-        
-        text
-      end
-        
-      def name
-        @model.name
-      end
-      
-      def description
-        @model.description
+      def initialize(model)
+        @ex = model
+        super File.dirname(__FILE__) + "/exit.erb"        
       end
       
       def destination
-        @model.dest.nil? ? t('describe.nowhere') : @model.dest.name
+        @ex.dest.nil? ? t('describe.nowhere') : @ex.dest.name
       end
     end
   end

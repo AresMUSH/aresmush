@@ -1,81 +1,19 @@
 module AresMUSH
   module Describe
     # Template for a room.
-    class RoomTemplate < AsyncTemplateRenderer
+    class RoomTemplate < ErbTemplateRenderer
       include TemplateFormatters
-                            
+             
+      attr_accessor :client, :room
+                     
       def initialize(room, client)
         @room = room
-        super client
+        @client = client
+        super File.dirname(__FILE__) + "/room.erb"        
       end
       
-      def build
-        text = header_display()
-        text << "%r%l2%r"
-        text << desc_display()
-        text << "%r%l2%r"
-        text << players_display()
-        text << "%r%r"
-        text << exits_display()
-        text << "%r%l1"
-        
-        text
-      end
-      
-      def header_display
-        text = "%l1%r"
-        text << "#{name} #{area}%r"
-        text << "#{ooc_time} ~ #{ic_time}"
-        
-        text
-      end
-      
-      def desc_display
-        text = ""
-        # Weather is disabled by default.  Uncomment this line to show it
-        # in room descs.
-        # text << "#{weather}"
-        text << "#{description}"
-        text << "#{details}"
-        
-        text
-      end
-      
-      def players_display
-        text = "%xg#{t('describe.players_title')}%xn"
-        online_chars.each do |c|
-          text << "%r%xh#{char_name(c)}%xn"
-          text << " "
-          text << char_shortdesc(c)
-          text << " "
-          text << char_afk(c)
-        end
-        
-        text
-      end
-      
-      def exits_display
-        text = "%xg#{t('describe.exits_title')}%xn"
-        exits.each_with_index do |e, i|
-            
-          # Linebreak every 2 exits.
-          text << ((i % 2 == 0) ? "%r" : "")
-          
-          text << "%xh#{exit_name(e)}%xn"
-          text << " "
-          text << exit_destination(e)
-        end
-        
-        if (exits.count == 0)
-          text << "%r"
-          text << t('describe.no_way_out')
-        end
-        
-        if (Rooms::Api.is_foyer?(@room))
-          text << foyer()
-        end
-
-        text
+      def is_foyer
+        Rooms::Api.is_foyer?(@room)
       end
       
       # List of all exits in the room.
@@ -92,19 +30,10 @@ module AresMUSH
         @room.characters.select { |c| c.is_online? }.sort_by { |c| c.name }
       end
       
-      def name
-        left(@room.name, 40)
-      end
-      
-      def description
-        @room.description
-      end
-      
       # Available detail views.
       def details
         names = @room.details.keys
-        return "" if names.empty?
-        "%R%R%xh#{t('describe.details_available')}%xn #{names.sort.join(", ")}"
+        names.empty? ? nil : names.sort.join(", ")
       end
       
       # Short IC date/time string
@@ -113,7 +42,7 @@ module AresMUSH
       end
       
       def area
-        right(Rooms::Api.area(@room), 37)
+        Rooms::Api.area(@room)
       end
       
       # Room grid coordinates, e.g. (1,2)
@@ -123,11 +52,11 @@ module AresMUSH
       
       def weather
          w = Weather::Api.weather_for_area(Rooms::Api.area(@room))
-         w ? "#{w}%R" : ""
+         w ? "#{w}%R" : nil
       end
       
       def ooc_time
-        OOCTime::Api.local_long_timestr(self.client, Time.now)
+        OOCTime::Api.local_long_timestr(@client, Time.now)
       end
       
       def foyer_exits
@@ -138,30 +67,20 @@ module AresMUSH
         @room.exits.select { |e| !e.name.is_integer? }.sort_by { |e| e.name }
       end
       
-      # Special text displayed for the exits in a foyer.
-      def foyer
-        text = "%R%l2%R"
-        text << center(t('describe.foyer_room_status'),78)
-        foyer_exits.each_with_index do |e, i|
-          if (!e.lock_keys.empty?)
-            status = t('describe.foyer_room_locked')
-          elsif (e.dest.characters.count == 0)
-            status = t('describe.foyer_room_free')
-          else
-            status = t('describe.foyer_room_occupied')
-          end
-          text << "%r[space(10)]" if i % 2 == 0
-          room_name = "#{e.dest.name} (#{status})"
-          text << "%xh[#{e.name}]%xn #{left(room_name,29)}"
+     
+      def foyer_status(e, i)
+        if (!e.lock_keys.empty?)
+          status = t('describe.foyer_room_locked')
+        elsif (e.dest.characters.count == 0)
+          status = t('describe.foyer_room_free')
+        else
+          status = t('describe.foyer_room_occupied')
         end
-        
-        text
+        linebreak = i % 2 == 0 ? "%R          " : ""
+        room_name = "#{e.dest.name} (#{status})"
+        "#{linebreak}%xh[#{e.name}]%xn #{left(room_name,29)}"
       end
       
-      def char_name(char)
-        char.name
-      end
-
       def char_shortdesc(char)
         char.shortdesc ? " - #{char.shortdesc}" : ""
       end
@@ -184,14 +103,17 @@ module AresMUSH
       end
       
       def exit_name(e)
-        left("[#{e.name}]", 5)
+        "[#{e.name}]"
       end
       
       def exit_destination(e)
         locked = Rooms::Api.can_use_exit?(e, self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')
-        str = "#{locked}#{name}"
-        left(str, 30)
+        "#{locked}#{name}"
+      end
+      
+      def exit_linebreak(i)
+        i % 2 == 0 ? "%r" : ""
       end
     end
   end

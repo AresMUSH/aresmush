@@ -6,6 +6,7 @@ load "lib/friend_remove_cmd.rb"
 load "lib/friends_cmd.rb"
 load "lib/friends_model.rb"
 load "lib/helpers.rb"
+load "templates/friends_template.rb"
 
 module AresMUSH
   module Friends
@@ -54,6 +55,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

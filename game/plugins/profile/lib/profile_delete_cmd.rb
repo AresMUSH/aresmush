@@ -20,7 +20,7 @@ module AresMUSH
       def handle
         client.char.profile.delete self.field
         client.char.save!
-        client.emit_success t('handles.custom_profile_cleared', :field => self.field)
+        client.emit_success t('profile.custom_profile_cleared', :field => self.field)
       end
     end
   end

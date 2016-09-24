@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def handle
-        list = Global.plugin_manager.plugins.map { |p| p.class.name.rest("AresMUSH::") }
+        list = Global.plugin_manager.plugins.map { |p| p.name.rest("AresMUSH::") }.sort
         client.emit BorderedDisplay.table(list, 25, t('manage.plugins'))
       end
     end

@@ -8,7 +8,8 @@ module AresMUSH
         client.char.chargen_stage = 0
         client.char.save!
 
-        client.emit BorderedDisplay.text Chargen.chargen_display(client.char)
+        template = ChargenTemplate.new(client.char)
+        client.emit template.render
       end
     end
   end

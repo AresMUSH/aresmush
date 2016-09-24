@@ -1,48 +1,32 @@
 module AresMUSH
   module FS3Combat
-    class CombatHudTemplate < AsyncTemplateRenderer
+    class CombatHudTemplate < ErbTemplateRenderer
 
       include TemplateFormatters
 
-      def initialize(combat, client)
+      attr_accessor :combat
+      
+      def initialize(combat)
         @combat = combat
-        super client
+        super File.dirname(__FILE__) + "/hud.erb"
+      end
+           
+      def organizer
+        t('fs3combat.combat_hud_organizer', :org => @combat.organizer.name)
       end
       
-      def build
-        text = format_header
-        teams = @combat.active_combatants.group_by {|c| c.team}
-        teams.sort.each do |team, members|
-          text << "%R%xg#{t('fs3combat.team_header', :team => team)}%xn"
-          text << members.map { |c| format_combatant(c) }.join
-        end
-        text << format_vehicles
-        text << format_non_combatants
-        text << "%R%l1"
+      def title
+        t('fs3combat.combat_hud_header', :num => @combat.num)
+      end
+       
+      def teams
+        @combat.active_combatants.group_by {|c| c.team}
       end
       
-      def format_header
-        title = t('fs3combat.combat_hud_header', :num => @combat.num)
-        org = t('fs3combat.combat_hud_organizer', :org => @combat.organizer.name)
-        text = "%l1%R%xh#{left(title, 39)}#{right(org, 39)}%xn"
-        text << "%r%l2"
-        if (!@combat.is_real)
-          msg = t('fs3combat.combat_mock_notice')
-          text << "%r%xg#{center(msg, 78)}%xn"
-          text << "%r%l2"
-        end
-        text << "%R#{t('fs3combat.hud_subtitle')}"
-        text
-      end
-      
-      def format_combatant(c)
-        "%R#{left(c.name, 18)} #{format_damage(c)}   #{format_weapon(c)} #{format_action(c)}"
-      end
       
       def format_action(c)
         action = c.action ? c.action.print_action_short : "----"
-        action = "#{action} #{format_stance(c)}"
-        left(action, 25)
+        "#{action} #{format_stance(c)}"
       end
       
       def format_stance(c)
@@ -59,26 +43,20 @@ module AresMUSH
         text
       end
       
-      def format_vehicles
-        text = "%R%l2%R"
-        text << "%xh#{t('fs3combat.vehicles_hud_title')}%xn"
-        @combat.vehicles.each do |v|
-          pilot = v.pilot ? v.pilot.name : t('fs3combat.no_pilot')
-          passengers = v.passengers.map { |p| p.name }.join(",")
-          text << "%R"
-          text << left(v.name,20)
-          text << left(pilot, 17)
-          text << passengers
-        end
-        
-        text
+      def pilot(v)
+        v.pilot ? v.pilot.name : t('fs3combat.no_pilot')
       end
       
-      def format_non_combatants
-        text = "%R%l2%R"
-        text << "%xh#{t('fs3combat.observers_title')}%xn%R"
-        text << @combat.non_combatants.map { |c| c.name}.join(", ")
-        text
+      def passengers(v)
+        v.passengers.map { |p| p.name }.join(",")
+      end
+      
+      def vehicles
+        combat.vehicles.sort_by { |v| v.name }
+      end
+      
+      def non_combatants
+        @combat.non_combatants.map { |c| c.name}.join(", ")
       end
       
       def format_vehicle(c)
@@ -89,13 +67,12 @@ module AresMUSH
         else
          text =  ""
         end
-        left(text, 20)
+        text
       end
       
       def format_damage(c)
         FS3Combat.print_damage(c.total_damage_mod)
       end
-      
       
       def format_weapon(c)
         weapon = "#{c.weapon}"
@@ -111,7 +88,7 @@ module AresMUSH
           notes = ""
         end
         
-        left("#{weapon}#{notes}", 25)
+        "#{weapon}#{notes}"
       end
     end
   end

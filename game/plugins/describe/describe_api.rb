@@ -8,10 +8,6 @@ module AresMUSH
       def self.app_review(char)
         Describe.app_review(char)
       end
-      
-      def self.char_backup(char, client)
-        Describe.char_backup(char, client)
-      end
     end
   end
 end

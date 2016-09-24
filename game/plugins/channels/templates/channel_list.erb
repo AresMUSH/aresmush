@@ -1,0 +1,22 @@
+<%= line %>
+%xh<%= t('channels.channels_title') %>%xn
+<%= line 2 %>
+<% channels.each do |c| %>
+<%= channel_on_indicator(c) -%>
+ <%= left(channel_name(c),25) -%>
+ <%= left(c.description,25) -%>
+ <%= channel_announce(c) -%>
+   <%= channel_roles(c) %>
+<% end %>
+<%= line 2 %>
+%xh<%= t('channels.channel_aliases') %>%xn
+<% channels.each do |c| %>
+<% if is_on_channel?(c) %>
+<% channel_aliases(c).each do |a| %>
+     <%= c.color %><%= a %> <message>%xn talks on <%= channel_name(c) %>
+<% end %>
+<% end %>
+<% end %>
+
+<%= t('channels.alias_notice') %>
+<%= line %>

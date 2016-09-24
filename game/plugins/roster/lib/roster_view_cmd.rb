@@ -27,22 +27,8 @@ module AresMUSH
             return
           end
           
-          website = Global.read_config("game", "website")
-          
-          text = "%xh#{model.name}%xn (#{Demographics::Api.fullname(model)})"
-          text << "%R%R"
-          text << "%xh#{t('roster.played_by')}%xn #{Actors::Api.get_actor(model)}"
-          text << "%R%R"
-          text << "%xh#{t('roster.wiki_page')}%xn #{website}/#{model.name}"
-          
-          if (registry.contact)
-            text << "%R%R#{t('roster.contact', :name => registry.contact)}"
-          end
-          
-          text << "%R%R"
-          text << t('roster.roster_claim', :name => model.name)
-          
-          client.emit BorderedDisplay.text text
+          template = RosterDetailTemplate.new model, registry
+          client.emit template.render
         end
       end
     end

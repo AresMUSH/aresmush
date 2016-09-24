@@ -9,3 +9,4 @@ en:
         players_online: "%{count} Online"
         where_header: "Status Name                   Location                            Conn   Idle"
         who_header:   "Status Name                   Handle              Faction         Conn   Idle"
+        where_by_room_header: "Location                            People"

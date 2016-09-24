@@ -24,19 +24,8 @@ module AresMUSH
       end
       
       def handle
-        list = FS3Combat.vehicle(self.name).sort.map { |k, v| type_display(k, v) }
-        client.emit BorderedDisplay.list list, self.name
-      end
-        
-      def type_display(name, info)
-        title = t("fs3combat.vehicle_title_#{name}")
-        if (name == "hitloc_chart")
-          hitloc = FS3Combat.hitloc(info)
-          detail = FS3Combat.gear_detail(hitloc["default"].uniq)
-        else
-          detail = FS3Combat.gear_detail(info)
-        end
-        "%xh#{left(title, 20)}%xn #{detail}"
+        template = GearDetailTemplate.new(FS3Combat.vehicle(self.name), self.name)
+        client.emit template.render
       end
     end
   end

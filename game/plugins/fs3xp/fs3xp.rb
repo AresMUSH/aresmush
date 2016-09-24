@@ -8,6 +8,7 @@ load "lib/xp_lang_cmd.rb"
 load "lib/xp_model.rb"
 load "lib/xp_raise_cmd.rb"
 load "fs3xp_api.rb"
+load "templates/xp_template.rb"
 
 module AresMUSH
   module FS3XP
@@ -58,6 +59,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

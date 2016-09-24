@@ -13,7 +13,14 @@ module AresMUSH
       end
       
       def handle
-        client.emit Idle.print_idle_queue(client)
+        queue = client.program[:idle_queue]
+        if (!queue)
+          client.emit_failure t('idle.idle_not_started')
+          return
+        end
+        
+        template = IdleQueueTemplate.new(queue, client)
+        client.emit template.render
       end
     end
   end

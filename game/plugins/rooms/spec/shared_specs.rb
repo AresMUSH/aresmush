@@ -29,8 +29,9 @@ module AresMUSH
           room = double
           template = double
           Describe::Api.should_receive(:desc_template).with(room, client) { template }
-          template.should_receive(:render)
+          template.should_receive(:render) { "room desc" }
           client.stub(:room) { room }
+          client.should_receive(:emit).with("room desc")
           Rooms.emit_here_desc(client)
         end
       end   

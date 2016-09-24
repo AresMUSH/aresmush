@@ -1,0 +1,11 @@
+<%= line %>
+<%= center(t('notices.notices_title'), 78) %>
+<%= mail %>
+<% alts.each do |a| %>
+<% if has_alt_mail(a) %>
+<%= t('notices.alt_unread_mail', :name => a.name) %>
+<% end %>
+<% end %>
+<%= bbs %>
+<%= jobs_or_requests %>
+<%= line %>

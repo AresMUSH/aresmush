@@ -1,0 +1,14 @@
+<%= line %>
+%xh<%= char.name%>%xn
+<%= military_name %>
+<%= line 2 %>
+
+<%= char.description %>
+<% if details %>
+
+%xh<%= t('describe.details_available') %>%xn <%= details %>
+<% end %>
+
+<%= line 2 %>
+%xh<%= t('describe.played_by') %>%xn <%= actor %>
+<%= line %>

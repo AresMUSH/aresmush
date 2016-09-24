@@ -1,0 +1,25 @@
+<%= line %>
+%xh<%= left( title, 39) %><%= right( organizer, 39 ) %>
+<% if !combat.is_real %>
+%xg<%= t('fs3combat.combat_mock_notice') %>%xn
+<% end %>
+<%= line 2 %>
+<%= t('fs3combat.hud_subtitle') %>
+<% teams.each do |team, members| %>
+%xg<%= t('fs3combat.team_header', :team => team) %>%xn
+<% members.each do |combatant| %>
+<%= left( combatant.name, 18 ) -%>
+<%= left( format_damage(combatant), 8 ) -%>
+<%= left( format_weapon(combatant), 26 ) -%>
+<%= format_action(combatant) %>
+<% end %>
+<% end %>
+<%= line 2 %>
+%xh<%= t('fs3combat.vehicles_hud_title') %>%xn
+<% vehicles.each do |v| %>
+<%= left( v.name, 20 ) %><%= left( pilot(v), 17 ) %><%= passengers(v) %>
+<% end %>
+<%= line 2 %>
+%xh<%= t('fs3combat.observers_title') %>%xn
+<%= non_combatants %>
+<%= line %>

@@ -1,5 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/helpers.rb"
 load "lib/info_view_cmd.rb"
 load "lib/profile_add_cmd.rb"
 load "lib/profile_cmd.rb"
@@ -7,7 +6,7 @@ load "lib/profile_delete_cmd.rb"
 load "lib/profile_edit_cmd.rb"
 load "lib/profile_model.rb"
 load "lib/wiki_cmd.rb"
-load "templates/char_profile_template.rb"
+load "templates/profile_template.rb"
 load "templates/info_template.rb"
 load "templates/wiki_template.rb"
 
@@ -62,6 +61,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

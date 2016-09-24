@@ -1,57 +1,38 @@
 module AresMUSH
   module FS3Combat
-    class CombatSummaryTemplate < AsyncTemplateRenderer
+    class CombatSummaryTemplate < ErbTemplateRenderer
 
       include TemplateFormatters
 
-      def initialize(combat, client)
+      attr_accessor :combat
+      
+      def initialize(combat)
         @combat = combat
-        super client
+        super File.dirname(__FILE__) + "/summary.erb"
       end
       
-      def build
-        text = "%l1%R"
-        text << "%xh#{t('fs3combat.summary_title')}%xn"
-        @combat.active_combatants.each do |c|
-          text << "%R#{show_name(c)} #{show_slack(c)} #{show_skill(c)} #{show_weapon(c)}  #{show_armor(c)}  #{show_stance(c)}"
-        end
-        text << "%R%l1"
-      end
-      
-      def show_name(c)
-        left(c.name, 15)
-      end
-      
-      def show_slack(c)
-        acted = c.action.nil? ? '%xh%xr**%xn' : '++'
-        posed = c.is_npc? ? '--' : (c.posed ? '++' : '%xh%xr**%xn')
+      def slack(c)
+        acted = c.action.nil? ? '%xh%xr**%xn' : '%xg++%xn'
+        posed = c.is_npc? ? '%xg--%xn' : (c.posed ? '%xg++%xn' : '%xh%xr**%xn')
         "#{acted} / #{posed}   "
       end
       
-      def show_skill(c)
+      def skill(c)
         if (c.is_npc?)
           rating = c.npc_skill
         else
           weapon_skill = FS3Combat.weapon_stat(c.weapon, "skill")
           rating = FS3Skills::Api.ability_rating(c.character, weapon_skill)          
         end
-        left("#{rating}", 5)
+        rating
       end
       
-      def show_weapon(c)
+      def weapon(c)
         weapon = "#{c.weapon}"
         if (c.weapon_specials)
           weapon << " (#{c.weapon_specials.join(",")})"
         end
-        left(weapon, 15)
-      end
-      
-      def show_armor(c)
-        left(c.armor, 15)
-      end
-      
-      def show_stance(c)
-        left(c.stance, 15)
+        weapon
       end
     end
   end

@@ -1,29 +1,30 @@
 module AresMUSH
   module FS3Combat
-    class DamageTemplate < AsyncTemplateRenderer
+    class DamageTemplate < ErbTemplateRenderer
 
       include TemplateFormatters
 
-      def initialize(char, client)
+      attr_accessor :damage, :char
+      
+      def initialize(char)
         @char = char
-        super client
+        @damage = char.damage
+        super File.dirname(__FILE__) + "/damage.erb"
+      end      
+      
+      def time(d)
+        ICTime::Api.ic_datestr d.ictime
       end
       
-      def build
-        list = @char.damage.map { |d| damage_line(d) }
-        title = t('fs3combat.damage_title', :name => @char.name)
-        BorderedDisplay.subtitled_list list, title, t('fs3combat.damage_titlebar')
+      def severity(d)
+        initial_sev = d.initial_severity
+        current_sev = FS3Combat.display_severity(d.current_severity)
+        "#{current_sev} (#{initial_sev})"
       end
       
-      def damage_line(damage)
-        line = left(ICTime::Api.ic_datestr(damage.ictime), 13)
-        line << left(damage.description, 30)
-        initial_sev = damage.initial_severity
-        current_sev = FS3Combat.display_severity(damage.current_severity)
-  
-        line << left("#{current_sev} (#{initial_sev})", 22)
-        line << center(damage.is_treatable? ? t('global.y') : t('global.n'), 10)
-      end
+      def treatable(d)
+        d.is_treatable? ? t('global.y') : t('global.n')
+      end      
     end
   end
 end

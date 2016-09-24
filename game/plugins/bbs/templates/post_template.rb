@@ -11,7 +11,8 @@ module AresMUSH
         @board = board
         @post = post
         @replies = post.bbs_replies
-        super File.dirname(__FILE__) + "/post.erb", client
+        @client = client
+        super File.dirname(__FILE__) + "/post.erb"
       end
       
       def board_and_post
@@ -23,12 +24,12 @@ module AresMUSH
       end
       
       def date
-        OOCTime::Api.local_long_timestr(self.client, @post.created_at)
+        OOCTime::Api.local_long_timestr(@client, @post.created_at)
       end
       
       def reply_title(reply)
         name = reply.author.nil? ? t('bbs.deleted_author') : reply.author.name
-        date = OOCTime::Api.local_long_timestr(self.client, reply.created_at)
+        date = OOCTime::Api.local_long_timestr(@client, reply.created_at)
         t('bbs.reply_title', :name => name, :date => date)
       end
     end

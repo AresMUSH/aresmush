@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 load "connector.rb"
+load "lib/arescentral_info_cmd.rb"
 load "lib/event_handlers.rb"
 load "lib/game.rb"
 
@@ -29,11 +30,17 @@ module AresMUSH
     end
  
     def self.locale_files
-      [  ]
+      [ "locales/locale_en.yml" ]
     end
  
     def self.get_cmd_handler(client, cmd)      
-      nil
+      case cmd.root
+      when "arescentral"
+        case cmd.switch
+        when "info"
+          return AresCentralInfoCmd
+        end
+      end
     end
 
     def self.get_event_handler(event_name) 

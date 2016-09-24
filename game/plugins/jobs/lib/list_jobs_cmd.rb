@@ -24,12 +24,12 @@ module AresMUSH
           #Job.includes(:readers).where("reader._id" => client.char.id )
   
         jobs = jobs.sort_by { |j| j.number }
-        pagination = Paginator.paginate(jobs, self.page, 20)
-        if (pagination.out_of_bounds?)
+        paginator = Paginator.paginate(jobs, self.page, 20)
+        if (paginator.out_of_bounds?)
           client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
         else
-          template = JobsListTemplate.new(client.char, pagination.page_items, self.page, pagination.total_pages)
-          client.emit template.display
+          template = JobsListTemplate.new(client.char, paginator)
+          client.emit template.render
         end
       end
     end

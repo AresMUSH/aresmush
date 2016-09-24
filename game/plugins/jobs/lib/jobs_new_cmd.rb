@@ -19,7 +19,8 @@ module AresMUSH
         
         unread = unread.sort_by { |j| j.number }
         job = unread[0]
-        client.emit Jobs.get_job_display(client, job)
+        template = JobTemplate.new(client, job)            
+        client.emit template.render
         Jobs.mark_read(job, client.char)
       end
     end

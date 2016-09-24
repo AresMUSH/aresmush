@@ -26,7 +26,8 @@ module AresMUSH
       
       def handle
         Jobs.with_a_request(client, self.number) do |request|
-          client.emit Jobs.get_job_display(client, request)
+          template = JobTemplate.new(client, request)            
+          client.emit template.render
           Jobs.mark_read(request, client.char)
         end
       end

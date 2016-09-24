@@ -6,9 +6,9 @@ module AresMUSH
       
       attr_accessor :paginator
       
-      def initialize(paginator, client)
+      def initialize(paginator)
         @paginator = paginator
-        super File.dirname(__FILE__) + "/actors_list.erb", client
+        super File.dirname(__FILE__) + "/actors_list.erb"
       end      
     end
   end

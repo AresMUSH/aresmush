@@ -1,0 +1,13 @@
+<%= line %>		
+%xh<%= name %>%xn		
+<%= description %>
+<%= line 2 %>
+<% if values %>
+<% values.each do |name, desc| %>
+<%= left(name.titlecase, 20) -%>		
+ <%= desc %>		
+<% end %>
+<% else %>
+<%= t('groups.open_ended_group') %>
+<% end %>
+<%= line %> 

@@ -18,17 +18,17 @@ module AresMUSH
       end
       
       def handle
-        result = ClassTargetFinder.find(friend_name, Character, nil)
+        result = ClassTargetFinder.find(self.name, Character, nil)
         if (!result.found?)
           client.emit_failure result.error
           return
         end
         friend = result.target
 
-        if (char.friends.include?(friend))
-          return t('friends.already_friend', :name => friend_name)
+        if (client.char.friends.include?(friend))
+          return t('friends.already_friend', :name => self.name)
         end
-        friendship = Friendship.new(:character => char, :friend => friend)
+        friendship = Friendship.new(:character => client.char, :friend => friend)
         friendship.save!
         client.emit_success t('friends.friend_added', :name => self.name)
       end

@@ -1,0 +1,6 @@
+<%= line %>
+%xh<%= title %>%xn
+<% list.each do |name, info| %>
+<%= left( name.titleize, 20 ) %> <%= description(info) %>
+<% end %>
+<%= line %>

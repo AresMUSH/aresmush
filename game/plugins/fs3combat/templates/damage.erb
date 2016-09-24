@@ -1,0 +1,10 @@
+<%= line %>
+<%= t('fs3combat.damage_title', :name => char.name) %>
+<%= t('fs3combat.damage_titlebar') %>
+<% damage.each do |d| %>
+<%= left( time(d), 13 ) -%>
+<%= left( d.description, 30 ) -%>
+<%= left( severity(d), 22 ) -%>
+<%= center( treatable(d), 10 )%>
+<% end %>
+<%= line %>

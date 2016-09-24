@@ -4,6 +4,7 @@ load "lib/rank_set_cmd.rb"
 load "lib/ranks_cmd.rb"
 load "lib/ranks_model.rb"
 load "ranks_api.rb"
+load "templates/ranks_template.rb"
 
 module AresMUSH
   module Ranks
@@ -48,6 +49,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

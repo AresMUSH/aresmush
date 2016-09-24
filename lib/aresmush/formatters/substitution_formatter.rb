@@ -88,6 +88,7 @@ module AresMUSH
     end
     
     def self.tokenize(str)
+      str = "#{str}"
       code_regex = /
       (?<!\\)  # Not preceded by backslash
       (

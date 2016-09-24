@@ -20,6 +20,7 @@ load "lib/helpers.rb"
 load "lib/manage_model.rb"
 load "lib/trouble/boot_cmd.rb"
 load "lib/trouble/findsite_cmd.rb"
+load "manage_api.rb"
 load "manage_events.rb"
 
 module AresMUSH

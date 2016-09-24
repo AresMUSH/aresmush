@@ -1,0 +1,10 @@
+<%= line %>
+%xh<%= t('roles.game_admin') %>%xn
+<% admins_by_role.each do | role, chars | %>
+
+%xh<%= role.titleize %>%xn
+<% chars.each do |c| %>
+<%= left( c.name, 18, '.' ) %> <%= left( note(c), 46, '.' ) %> <%= status(c) %>
+<% end %>
+<% end %>
+<%= line %>

@@ -11,8 +11,8 @@ module AresMUSH
         roles.each do |r|
           admins_by_role[r] = Roles.chars_with_role(r)
         end
-        template = AdminTemplate.new(admins_by_role, client)
-        template.render
+        template = AdminTemplate.new(admins_by_role)
+        client.emit template.render
       end
     end
   end

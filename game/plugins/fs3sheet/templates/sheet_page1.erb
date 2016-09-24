@@ -1,0 +1,28 @@
+%l1
+%xh<%= char.name %>%xn <%= center( approval_status, 23 ) %> <%= right(t('sheet.abilities_page_title'), 28) %>
+%l2
+<%= line_with_text t('sheet.aptitudes_title') %>
+<% aptitudes.each do |a| -%>
+<%= a -%>
+<% end %> 
+
+
+<%= line_with_text t('sheet.action_skills_title') %>
+<% action_skills.each do |a| -%>
+<%= a -%>
+<% end %> 
+
+
+<%= line_with_text t('sheet.languages_title') %>
+<% languages.each do |l| -%>
+<%= l -%>
+<% end %> 
+
+<%= line_with_text t('sheet.hooks_title') %>
+<% hooks.each do |h| -%>
+<%= h %>
+<% end %> 
+
+%xh<%= t('sheet.xp_title') %>%xn <%= left( xp, 30 ) %> %xh<%= t('sheet.luck_title') %>%xn <%= luck %>
+%l1
+          

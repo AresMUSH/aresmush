@@ -1,0 +1,10 @@
+<%= line %>
+<%= center( mush_name, 78 ) %>
+<%= line 2 %>
+%xh<%= t('who.where_by_room_header') %>%xn
+<% room_groups.each do |room, people| %>
+<%= left( room, 35 ) %> <%= people.join(" ") %>
+<% end %>
+<%= line 2 %>
+%xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
+<%= line %>

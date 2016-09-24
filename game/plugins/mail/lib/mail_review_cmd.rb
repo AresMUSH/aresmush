@@ -31,11 +31,11 @@ module AresMUSH
           if (self.num)
             Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
               template = MessageTemplate.new(client, delivery)
-              template.render
+              client.emit template.render
             end
           else
             template = InboxTemplate.new(client, deliveries, true, t('mail.sent_review', :name => model.name))
-            template.render
+            client.emit template.render
           end
         end
       end

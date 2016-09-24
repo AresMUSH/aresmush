@@ -13,20 +13,31 @@ module AresMUSH
       
       def handle
         
-        num_pages = FS3Skills.advantages_enabled? ? 7 : 6
+        num_pages = 6
         
-        if (self.page == 1)
-          list = nil
-          file = "ratings.txt"
-        elsif (self.page == 2)
-          list = [ 
-            t('fs3skills.points_tutorial_total', :total => Global.read_config("fs3skills", "starting_points")),
-            t('fs3skills.points_tutorial_aptitudes'),
-            t('fs3skills.points_tutorial_action'),
-            t('fs3skills.points_tutorial_interests', :free => Global.read_config("fs3skills", "free_interests")),
-            t('fs3skills.points_tutorial_expertise'),
-            t('fs3skills.points_tutorial_languages', :free => Global.read_config("fs3skills", "free_languages"))
-          ]
+        case self.page
+        when 1
+          template = AbilityPageTemplate.new("/ratings.erb", {})
+        when 2
+          template = AbilityPageTemplate.new("/costs.erb", {
+            starting_points: Global.read_config("fs3skills", "starting_points"),
+            free_interests: Global.read_config("fs3skills", "free_interests"),
+            free_languages: Global.read_config("fs3skills", "free_languages")
+          })
+        end
+        
+          client.emit template.render
+        
+        return 
+        if (self.page == 2)
+          #list = [ 
+          #  , :total => ),
+          #  t('fs3skills.points_tutorial_aptitudes'),
+          #  t('fs3skills.points_tutorial_action'),
+          #  t('fs3skills.points_tutorial_interests', :free => ),
+          #  t('fs3skills.points_tutorial_expertise'),
+          #  t('fs3skills.points_tutorial_languages', :free => )
+          #]
           if (FS3Skills.advantages_enabled?)
             list << t('fs3skills.points_tutorial_advantages')
           end

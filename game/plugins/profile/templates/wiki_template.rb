@@ -1,63 +1,13 @@
 module AresMUSH
   module Profile
-    class WikiTemplate < AsyncTemplateRenderer
+    class WikiTemplate < ErbTemplateRenderer
       include TemplateFormatters
       
       attr_accessor :char
       
-      def initialize(char, client)
+      def initialize(char)
         @char = char
-        super client
-      end
-      
-      def build
-        text = "[[include characterbox%r"
-        text << "|image=%r"
-        text << "|actor=#{ actor }%r"
-        text << "|fullname=#{ fullname }%r"
-        text << "|age=#{ age }%r"
-        text << "|alias=[!-- Aliases or nicknames --]%r"
-        text << "|colony=#{ colony }%r"
-        text << "|department=#{ department }%r"
-        text << "|position=#{ position }%r"
-        text << "|rank=#{ rank }%r"
-        text << "|callsign=#{ callsign }%r"
-        text << "|height=#{ height }%r"
-        text << "|physique=#{ physique }%r"
-        text << "|eyes=#{ eyes }%r"
-        text << "|hair=#{ hair }%r"
-        text << "]]"
-        text << "%R%R"
-        text << background
-        text << "%R%R"
-        text << hooks
-        text << "%R%R"
-        text << goals        
-        text << "%R%R"
-        text << "+ IC Events%R"
-        text << "[[include LogList name=#{name}]]"
-        text << "%R%R"
-        text << "+ Relationships%R"
-        text << "[[include RelationshipsTop]]"
-        text << "%R%R"
-        text << "[[include RelationshipBox%R"
-        text << "| name=<mush name here>%R"
-        text << "| relationship=**<Relation>** - <describe relationship>%R"
-        text << "]]"
-        text << "%R%R"
-        text << "[[include RelationshipBoxNoImage%R"
-        text << "| name=<Name>%R"
-        text << "| relationship=**<Relation>** - <describe relationship>%R"
-        text << "]]%R"
-        text << "[[include RelationshipsBottom]]"
-        text << "%R%R"
-        text << "+ Gallery%R"
-        text << "[[gallery]]"
-        text
-      end
-      
-      def name
-        @char.name
+        super File.dirname(__FILE__) + "/wiki.erb"
       end
       
       def fullname
@@ -102,7 +52,6 @@ module AresMUSH
         Demographics::Api.demographic(@char, :callsign)
       end
       
-      
       def faction
         Groups::Api.group(@char, "Faction")
       end
@@ -124,37 +73,12 @@ module AresMUSH
       end
             
       def background
-        "+ Background%R#{ Chargen::Api.background(@char) } "
+        Chargen::Api.background(@char)
       end
 
       def hooks
-        text = "+ RP Hooks"
-        text << "%R"
-        text << @char.hooks.map { |h, v| "%R* **#{h}** - #{v}" }.join
-        text
+        @char.hooks.map { |h, v| "%R* **#{h}** - #{v}" }.join
       end
-
-      def goals
-        text = "+ Goals"
-        text << "%R"
-        text << @char.goals.map { |h, v| "%R* **#{h}** - #{v}" }.join
-        text
-      end
-
-      def interests
-        text = "+ Interests"
-        text << "%R"
-        text << @char.fs3_interests.map { |v| "%R* **#{v}**" }.join
-        text
-      end
-
-      def expertise
-        text = "+ Expertise"
-        text << "%R"
-        text << @char.fs3_expertise.map { |v| "%R* **#{v}**" }.join
-        text
-      end
-
     end
   end
 end

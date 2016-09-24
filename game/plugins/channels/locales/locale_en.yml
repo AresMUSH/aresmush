@@ -40,5 +40,6 @@ en:
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
         channel_alias_set: "You can now use %{channel_alias} <message> to talk on the %{name} channel. "
         short_alias_warning: "Be aware that short channel aliases may conflict with other command shortcuts."
+        alias_notice: "You can use the channel/alias command to change your channel aliases."
         
         cant_use_channel: "You do not have permission to use that channel."

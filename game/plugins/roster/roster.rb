@@ -7,7 +7,8 @@ load "lib/roster_model.rb"
 load "lib/roster_remove_cmd.rb"
 load "lib/roster_view_cmd.rb"
 load "roster_api.rb"
-load "templates/roster_template.rb"
+load "templates/roster_list_template.rb"
+load "templates/roster_detail_template.rb"
 
 module AresMUSH
   module Roster
@@ -60,6 +61,7 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      nil
     end
   end
 end

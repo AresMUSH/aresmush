@@ -33,11 +33,12 @@ en:
         to: "To:"
         sent: "Sent:"
         inbox: "Inbox"
-        sent_mail_notice: "Only messages you send to yourself will appear here. See %xhhelp mail review%xn."
+        sent_mail_notice: "You need to have the 'sentmail' option on for messages to appear here."
         sent_review: "Sent Mail to %{name}"
         original_message: "Original Message"
         cant_unsend_read_mail: "You can't unsend mail that has already been read."
         mail_unsent: "You unsend the mail message.  Please note that this does not affect others who may have received that message."
+        filters_notice: "Filters enabled.  Use %xcmail/inbox%xn to get back to your inbox."
 
         mail_started: "You start composing a mail with subject: %{subject}."
         not_composing_message: "You are not composing a mail message."
