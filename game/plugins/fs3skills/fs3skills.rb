@@ -11,13 +11,28 @@ load "lib/commands/roll_opposed_cmd.rb"
 load "lib/commands/set_ability_cmd.rb"
 load "lib/commands/set_aptitude_cmd.rb"
 load "lib/commands/set_goal_cmd.rb"
+load "lib/commands/xp_award_cmd.rb"
+load "lib/commands/xp_costs_cmd.rb"
+load "lib/commands/xp_interest_cmd.rb"
+load "lib/commands/xp_lang_cmd.rb"
+load "lib/commands/xp_raise_cmd.rb"
+load "lib/commands/luck_award_cmd.rb"
+load "lib/commands/luck_spend_cmd.rb"
+load "lib/commands/char_backup_command.rb"
+load "lib/commands/sheet_cmd.rb"
 load "lib/helpers/chargen.rb"
+load "lib/helpers/luck.rb"
 load "lib/helpers/rolls.rb"
 load "lib/helpers/utils.rb"
+load "lib/helpers/xp.rb"
 load "lib/ratings.rb"
 load "lib/skills_model.rb"
 load "lib/starting_skills.rb"
+load "lib/xp_cron_handler.rb"
 load "templates/ability_page_template.rb"
+load "templates/xp_template.rb"
+load "templates/sheet_page1_template.rb"
+load "templates/sheet_page_templates.rb"
 
 module AresMUSH
   module FS3Skills
@@ -37,7 +52,9 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/abilities.md", "help/admin_skills.md", "help/goals.md", "help/roll.md", "help/skills.md" ]
+      [ "help/abilities.md", "help/admin_skills.md", "help/goals.md", "help/roll.md", "help/skills.md",
+        "help/admin_luck.md", "help/luck.md", "help/backup.md", "help/sheet.md",
+        "help/admin_xp.md", "help/xp.md" ]
     end
  
     def self.config_files
@@ -52,11 +69,20 @@ module AresMUSH
       case cmd.root
       when "abilities"
         return AbilitiesCmd
+      when "backup"
+        return CharBackupCmd
       when "hook"
         if (cmd.switch_is?("add"))
           return AddHookCmd
         elsif (cmd.switch_is?("remove"))
           return RemoveHookCmd
+        end
+      when "luck"
+        case cmd.switch
+        when "award"
+          return LuckAwardCmd
+        when "spend"
+          return LuckSpendCmd
         end
       when "raise", "lower"
         return RaiseAbilityCmd
@@ -68,6 +94,8 @@ module AresMUSH
         else
           return RollCmd
         end
+      when "sheet"
+        return SheetCmd
       when "ability"
         return SetAbilityCmd
       when "aptitude"
@@ -75,6 +103,19 @@ module AresMUSH
       when "language"
         if (cmd.switch_is?("add") || cmd.switch_is?("remove"))
           return SetLanguageCmd
+        end
+      when "xp"
+        case cmd.switch
+        when "award"
+          return XpAwardCmd         
+        when "costs"
+          return XpCostsCmd
+        when "interest"
+          return XpInterestCmd
+        when "lang"
+          return XpLangCmd
+        when "raise"
+          return XpRaiseCmd
         end
       end
       

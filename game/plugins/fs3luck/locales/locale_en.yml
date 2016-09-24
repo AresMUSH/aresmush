@@ -1,8 +1,0 @@
-en:
-    fs3luck:
-        invalid_luck_points: "That is not a valid number of luck points."
-        luck_awarded: "You award %{luck} luck points to %{name}."
-        not_enough_points: "You don't have that many luck points."
-        luck_point_spent: 
-            one: "%{name} spends a luck point!"
-            other: "%{name} spends %{count} luck points!"

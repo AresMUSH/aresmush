@@ -1,4 +1,8 @@
 fs3skills:
+    
+    # How many luck points you may save up.    
+    max_luck: 3
+                
     roles:
         can_manage_abilities:
             # List roles that are allowed to modify character abilities.
@@ -9,7 +13,27 @@ fs3skills:
             # spam, comment out all values but you'll have to be in the same room
             # as someone then to see their roll results.
             - admin
+        can_manage_luck:
+            # List roles that are allowed to award luck points.
+            - admin
+            # - another role
+        # List roles that are allowed to view private sheet pages.
+        can_view_sheets: 
+            - admin
+            # - another_role
+        can_manage_xp:
+            # List roles that are allowed to award xp.
+            - admin
+            # - another role
             
+    # List which pages of a character sheet are allowed to be public.  Leave off any
+    # that are private.
+    #
+    # It is recommended that you put public pages at the front.  Otherwise someone will
+    # get an error on page 1 and never even think to try page 2.
+    public_pages:
+        - 1
+        
     aptitudes:
         -  
             name: Athletics
@@ -179,7 +203,43 @@ fs3skills:
         #        skills:
         #            Semper Fi: 3
         #            Alertness: 1
-        
+
+
+    # Configure the highest rating you're allowed to reach via XP.  
+    max_rating_through_xp: 5
+    
+    # Define the XP costs to reach each skill rating
+    skill_costs:
+        1: 2
+        2: 8
+        3: 12
+        4: 16
+        5: 20
+    
+    # Cost to get a language
+    lang_cost: 5
+    
+    # Cost to get an interest
+    interest_cost: 5
+    
+    # How many XP someone can save up.
+    max_xp_hoard: 20
+    
+    # Controls how often someone can raise skills using XP.
+    days_between_xp_raises: 7
+    
+    # How many XP everyone gets each time the XP cron job runs.  (in the default
+    # configuration, that is weekly but you can make it run as often as you want).
+    periodic_xp: 1
+    
+    # Set up when you want the XP cron job to run.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    cron:
+        #date: 1
+        day_of_week: Sat
+        hour: 21
+        minute: 00
+
     shortcuts:
         "lang": "language"
         "goals": "goal"

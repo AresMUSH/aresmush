@@ -75,3 +75,56 @@ en:
         npc: "%{name} (a NPC)"
         numbers_only_for_npc_skills: "Use a number for a NPC skill, like Henchman/3."
 
+
+        # ------------------------------------------------------
+        # LUCK
+        # ------------------------------------------------------
+        
+        invalid_luck_points: "That is not a valid number of luck points."
+        luck_awarded: "You award %{luck} luck points to %{name}."
+        not_enough_points: "You don't have that many luck points."
+        luck_point_spent: 
+            one: "%{name} spends a luck point!"
+            other: "%{name} spends %{count} luck points!"
+            
+        # ------------------------------------------------------
+        # SHEET
+        # ------------------------------------------------------
+            
+        no_permission_to_view_page: "You are not allowed to view that page."
+        no_permission_to_backup: "You are not allowed to backup somebody else."
+        invalid_page_number: "That is not a valid page number."
+        not_that_many_pages: "There aren't that many character sheet pages."
+                
+        abilities_page_title: "Abilities"
+        
+        xp_title: "XP:"
+        luck_title: "Luck Points:"
+        
+        aptitudes_title: "Aptitudes"
+        action_skills_title: "Action Skills"
+        advantages_title: "Advantages"
+        interests_title: "Interests"
+        expertise_title: "Expertise"
+        languages_title: "Languages"
+        hooks_title: "RP Hooks"
+        goals_title: "Goals"
+        
+        
+        # ------------------------------------------------------
+        # XP
+        # ------------------------------------------------------
+        
+        not_approved: "You can't spend XP until you're approved."
+        cant_raise_further_with_xp: "You can't raise that ability further with XP."
+        not_enough_xp: "That would cost %{cost} XP.  You don't have enough."
+        costs_title: "XP Costs and Limits"
+        lang_cost_title: "Cost to add a language:"
+        interest_cost_title: "Cost to add an interest:"
+        ability_costs_title: "Cost for skill levels:"
+        max_xp_hoard: "Maximum XP you can save:"
+        days_between_xp_raises: "Days between XP spending:"
+        invalid_xp_award: "That is not a valid number of XP."
+        xp_awarded: "You award %{xp} XP to %{name}."
+        must_wait_to_spend: "You must wait %{time} to spend XP again."
+        special_items_notice: "Adding advantages and expertise requires admin approval.  XP Costs may vary.  Please submit a request."

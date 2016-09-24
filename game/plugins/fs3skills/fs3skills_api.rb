@@ -37,6 +37,24 @@ module AresMUSH
       def self.ability_rating(char, ability)
         FS3Skills.ability_rating(char, ability)
       end
+      
+      def self.luck(char)
+        char.luck
+      end
+      
+      # Does not save!  Must do that yourself!
+      def self.award_luck(char, amount)
+        FS3Skills.modify_luck(char, amount)
+      end
+      
+      # Does not save!  Must do that yourself!
+      def self.spend_luck(char, amount)
+        FS3Skills.modify_luck(char, -amount)
+      end
+      
+      def self.xp(char)
+        char.xp
+      end
     end
   end
 end
