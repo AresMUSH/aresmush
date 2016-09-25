@@ -11,3 +11,5 @@ en:
         repose_turned_off: "%{name} has turned off the repose system in this room."
         repose_list: "Recent Poses"
         repose_not_in_ooc: "Repose is not enabled in OOC rooms."
+        repose_cleared: "You clear the poses and pose order."
+        repose_order_title: "Name                        Last Posed"

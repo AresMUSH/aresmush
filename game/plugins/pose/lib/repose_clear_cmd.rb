@@ -10,16 +10,11 @@ module AresMUSH
       
       def handle
         room = client.char.room        
+        room.pose_order = {}
+        room.poses = []
+        room.save!
         
-        if (self.option.is_on?)
-          room.repose_on = true
-          room.save!
-          client.emit_success t('pose.repose_turned_on')
-        else
-          room.repose_on = true
-          room.save!
-          client.emit_success t('pose.repose_turned_off')
-        end
+        client.emit_success t('pose.repose_cleared')
       end
     end
   end

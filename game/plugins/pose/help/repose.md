@@ -6,8 +6,15 @@ categories:
 - main
 plugin: pose
 ---
-The repose system keeps track of poses so you can catch up on what you've missed.  You can disable the system temporarily to keep a scene private.
+The repose system keeps track of poses so you can catch up on what you've missed. 
 
 `repose` - View catchup poses.
+`repose/order` - Shows the pose order of the room.
+
+You can disable the system temporarily to keep a scene private.
+
 `repose/on` or `repose/off` - Turns the system on or off in a room.
-`repose/clear` - Clears saved poses in a room.
+
+If you start a new scene and there are remnants from an old one, you can clear the old poses and pose order.
+
+`repose/clear`

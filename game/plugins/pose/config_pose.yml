@@ -13,3 +13,6 @@ pose:
         #day_of_week: Sat
         #hour: 21
         minute: 30
+        
+    shortcuts:
+        "po" : "repose/order"

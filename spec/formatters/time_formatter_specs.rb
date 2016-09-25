@@ -25,6 +25,11 @@ module AresMUSH
         Locale.stub(:translate).with('time.days', :time => 2)  { "2d" }
         TimeFormatter.format(24 * 2 * 60 * 60).should eq "2d"
       end
+      
+      it "should round fractional times" do
+        Locale.stub(:translate).with('time.days', :time => 2)  { "2d" }
+        TimeFormatter.format(24 * 2.1 * 60 * 60).should eq "2d"
+      end        
     end
   end
 end

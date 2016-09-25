@@ -1,6 +1,7 @@
 module AresMUSH
   class TimeFormatter
     def self.format(seconds)
+      seconds = seconds.floor
       if (seconds < 60)
         t('time.seconds', :time => seconds)
       elsif (seconds < 3600)

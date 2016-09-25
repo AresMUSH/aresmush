@@ -7,5 +7,6 @@ module AresMUSH
   class Room
     field :repose_on, :type => Boolean, :default => true
     field :poses, :type => Array, :default => []
+    field :pose_order, :type => Hash, :default => {}
   end
 end

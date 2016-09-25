@@ -9,6 +9,7 @@ load "lib/pose_cmd.rb"
 load "lib/pose_model.rb"
 load "lib/repose_cmd.rb"
 load "lib/repose_clear_cmd.rb"
+load "lib/repose_order_cmd.rb"
 load "lib/repose_set_cmd.rb"
 
 module AresMUSH
@@ -63,6 +64,8 @@ module AresMUSH
           return ReposeClearCmd
         when "on", "off"
           return ReposeSetCmd
+        when "order"
+          return ReposeOrderCmd
         end
       end
       

@@ -3,7 +3,7 @@ module AresMUSH
     class CronEventHandler
       def on_event(event)
         config = Global.read_config("pose", "cron")
-        #return if !Cron.is_cron_match?(config, event.time)
+        return if !Cron.is_cron_match?(config, event.time)
 
         # Don't clear poses in rooms with active people.
         active_rooms = Global.client_monitor.logged_in_clients.map { |c| c.char.room }
@@ -14,6 +14,7 @@ module AresMUSH
           
           Global.logger.debug "Clearing poses from #{r.name}."
           r.poses = []
+          r.pose_order = {}
           r.repose_on = true
           r.save!
         end

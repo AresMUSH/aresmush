@@ -9,6 +9,7 @@ module AresMUSH
         end
         c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{pose}"
         
+        room.pose_order[client.name] = Time.now
         room.poses << pose
         if (room.poses.count > 8)
           room.poses.shift
