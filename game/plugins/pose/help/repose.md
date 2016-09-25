@@ -6,7 +6,7 @@ categories:
 - main
 plugin: pose
 ---
-The repose system keeps track of poses so you can catch up on what you've missed. 
+The repose system keeps track of poses so you can catch up on what you've missed.   Poses and pose order are automatically cleared every hour if there's nobody logged into the room.
 
 `repose` - View catchup poses.
 `repose/order` - Shows the pose order of the room.

@@ -1,6 +1,6 @@
 module AresMUSH
   module Pose
-    def self.emit_pose(client, pose, is_emit)
+    def self.emit_pose(client, pose, is_emit, is_ooc)
       room = client.room
       room.clients.each do |c|
         nospoof = ""
@@ -8,14 +8,15 @@ module AresMUSH
           nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => client.name)}%xn%R"
         end
         c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{pose}"
-        
+      end
+      
+      if (!is_ooc)
         room.pose_order[client.name] = Time.now
         room.poses << pose
         if (room.poses.count > 8)
           room.poses.shift
         end
         room.save!
-        
         Global.dispatcher.queue_event PoseEvent.new(client, pose, is_emit)
       end
     end
