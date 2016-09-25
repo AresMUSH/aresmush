@@ -16,7 +16,7 @@ module AresMUSH
           client.stub(:name) { "Bob" }
           cmd.stub(:raw) { ":test" }
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "Bob test"}
-          Pose.should_receive(:emit_pose).with(client, "Bob test", false)
+          Pose.should_receive(:emit_pose).with(client, "Bob test", false, false)
           handler.handle
         end
       end
