@@ -14,10 +14,10 @@ module AresMUSH
       def handle
         if (self.option.nil?)
           client.char.autospace = nil
-          message = t('autospace.autospace_cleared')
+          message = t('pose.autospace_cleared')
         else
           client.char.autospace = self.option
-          message = t('autospace.autospace_set', :option => self.option)
+          message = t('pose.autospace_set', :option => self.option)
         end
         
         client.char.save!

@@ -7,6 +7,15 @@
 
 %xh<%= t('describe.details_available') %>%xn <%= details %>
 <% end %>
+<% if room.sceneset %>
+<%= line 2 %>
+%xg<%= t('describe.scene_set_title')%>%xn
+%xh<%= room.sceneset %>%xn
+<% end %>
+<% if repose_on %>
+
+%xy<%= center( t('describe.repose_active'), 78 )%>%xn
+<% end %>
 <%= line 2 %>
 %xg<%= t('describe.players_title') %>%xn
 <% online_chars.each do |c| -%>

@@ -1,6 +1,6 @@
 ---
 topic: descriptions
-toc: Building
+toc: Descriptions
 summary: Descriptions.
 categories:
 - builder
@@ -28,9 +28,3 @@ You can also have multiple outfits for your character, and have more detailed vi
 
 `help outfits`
 `help details`
-
-The `look` command is used to look around.
-
-`look <name>`
-`look`  (shortcut for looking at 'here')
-`look <name>/<detail>` - Looks at a detail on something.

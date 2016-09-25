@@ -36,6 +36,10 @@ module AresMUSH
         names.empty? ? nil : names.sort.join(", ")
       end
       
+      def repose_on
+        Pose::Api.repose_on(@room)
+      end
+      
       # Short IC date/time string
       def ic_time
         ICTime::Api.ic_datestr ICTime::Api.ictime

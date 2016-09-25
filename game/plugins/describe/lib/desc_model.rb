@@ -42,6 +42,8 @@ module AresMUSH
 
     field :description, :type => String
     field :shortdesc, :type => String
+    field :sceneset, :type => String
+    field :sceneset_time, :type => Time
   end
   
   class Exit

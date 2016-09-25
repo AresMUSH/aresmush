@@ -2,3 +2,14 @@ pose:
     # You can configure the ansi code used to colorize the OOC conversation emits.
     # It can use multiple codes, like %xh%xc
     ooc_color: "%xc"
+    
+    # Enable or disable the repose system globally.
+    repose_enabled: true
+    
+    # Set up when you want old poses to be cleared.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    cron:
+        #date: 1
+        #day_of_week: Sat
+        #hour: 21
+        minute: 30

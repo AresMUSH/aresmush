@@ -4,6 +4,10 @@ module AresMUSH
       def self.autospace(char)
         char.autospace
       end
+      
+      def self.repose_on(room)
+        Pose.repose_on(room)
+      end
     end
   end
   

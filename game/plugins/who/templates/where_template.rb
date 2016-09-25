@@ -15,8 +15,8 @@ module AresMUSH
         
         # There are two built-in templates - one that shows people grouped by room,
         # and the other that shows a list similar to 'who'. 
-        #super File.dirname(__FILE__) + "/where_by_room.erb"
-        super File.dirname(__FILE__) + "/where.erb"
+        super File.dirname(__FILE__) + "/where_by_room.erb"
+        #super File.dirname(__FILE__) + "/where.erb"
       end      
       
       

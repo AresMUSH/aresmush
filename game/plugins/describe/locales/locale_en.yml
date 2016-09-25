@@ -28,6 +28,8 @@ en:
        exits_title: "Exits:"
        no_way_out: "No way out!"
        
+       repose_active: "+++ The repose system is active in this room. +++"
+       
        no_such_detail: "No such detail available."
        detail_deleted: "Detail deleted."
        detail_set: "Detail set."
@@ -38,3 +40,8 @@ en:
        foyer_room_free: "%xgOpen%xn"
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
+       
+       scene_set: "You create a scene set in this room.  Please remember to clear it when the scene is over.  It will be cleared automatically after 24 hours."
+       scene_set_cleared: "You clear the scene set in this room."
+       scene_set_title: "Scene Set:"
+       rooms_with_scenes: "Rooms With Scenes"

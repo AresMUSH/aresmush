@@ -36,5 +36,9 @@ module AresMUSH
       Chargen::Api.format_review_status t('describe.description_review'), error
     end
     
+    def self.rooms_with_scenes
+      Room.where(:sceneset.ne => nil)
+    end
+    
   end
 end

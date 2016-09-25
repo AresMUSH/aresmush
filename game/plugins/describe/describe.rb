@@ -6,6 +6,7 @@ load "lib/describe_cmd.rb"
 load "lib/details/detail_delete_cmd.rb"
 load "lib/details/detail_edit_cmd.rb"
 load "lib/details/detail_set_cmd.rb"
+load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/look_cmd.rb"
 load "lib/outfits/outfit_delete_cmd.rb"
@@ -13,10 +14,13 @@ load "lib/outfits/outfit_edit_cmd.rb"
 load "lib/outfits/outfit_list_cmd.rb"
 load "lib/outfits/outfit_set_cmd.rb"
 load "lib/outfits/outfit_view_cmd.rb"
+load "lib/scene_set_cmd.rb"
+load "lib/scenes_cmd.rb"
 load "lib/wear_cmd.rb"
 load "templates/character_template.rb"
 load "templates/exit_template.rb"
 load "templates/room_template.rb"
+load "templates/scenes_list_template.rb"
 
 module AresMUSH
   module Describe
@@ -36,7 +40,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/descriptions.md", "help/detail.md", "help/outfit.md" ]
+      [ "help/descriptions.md", "help/detail.md", "help/outfit.md", "help/look.md", "help/scene.md" ]
     end
  
     def self.config_files
@@ -84,6 +88,13 @@ module AresMUSH
             OutfitListCmd
           end
         end
+      when "scene"
+        case cmd.switch
+        when "set"
+          return SceneSetCmd
+        end
+      when "scenes"
+        return ScenesCmd
       when "wear"
         return WearCmd
       end
@@ -92,6 +103,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
       nil
     end
   end

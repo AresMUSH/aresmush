@@ -30,8 +30,12 @@ module AresMUSH
       end
       
       def handle
-        client.room.room_type = self.name.upcase
-        client.room.save!
+        room = client.room
+        room.room_type = self.name.upcase
+        if (room.room_type == "OOC")
+          room.repose_on = false
+        end
+        room.save!
         client.emit_success t('rooms.room_type_set')
       end
     end

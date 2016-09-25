@@ -3,6 +3,11 @@ en:
         nospoof_set: "You turn your 'nospoof' setting %{status}."
         pemit_nospoof_from: "Private emit from %{name}:"
         emit_nospoof_from: "Emit from %{name}:"
-    autospace:
         autospace_set: "Poses will now look like this:%xn%RA pose.%r%{option}Another pose."
         autospace_cleared: "You will no longer see anything between poses."
+
+        repose_disabled: "Repose is disabled here."
+        repose_turned_on: "%{name} has turned on the repose system in this room."
+        repose_turned_off: "%{name} has turned off the repose system in this room."
+        repose_list: "Recent Poses"
+        repose_not_in_ooc: "Repose is not enabled in OOC rooms."
