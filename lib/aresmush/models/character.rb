@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     include ObjectModel
-
+    
     field :handle, :type => String
     field :handle_id, :type => String
 
@@ -13,7 +13,6 @@ module AresMUSH
       return [] if name.nil?
       Character.all.select { |c| (c.handle.nil? ? "" : c.handle.downcase) == name.downcase }
     end
-    
     
     def name_and_alias
       if (self.alias.blank?)

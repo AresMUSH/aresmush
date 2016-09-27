@@ -14,6 +14,8 @@ module AresMUSH
       def register_data_members
         send :include, Mongoid::Document
         send :include, Mongoid::Timestamps
+        send :include, Lockable
+
         field :name, :type => String
         field :name_upcase, :type => String
         field :alias, :type => String
