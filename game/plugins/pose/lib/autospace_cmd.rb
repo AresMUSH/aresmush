@@ -1,5 +1,5 @@
 module AresMUSH
-  module Utils
+  module Pose
     class AutospaceCmd
       include CommandHandler
       include CommandWithoutSwitches
@@ -23,7 +23,7 @@ module AresMUSH
         client.char.save!
         client.emit_success message
         
-        Handles.warn_if_setting_linked_preference(client)
+        Handles::Api.warn_if_setting_linked_preference(client)
       end
     end
   end

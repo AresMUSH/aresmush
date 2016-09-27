@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 load "pose_api.rb"
+load "lib/autospace_cmd.rb"
 load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/nospoof_cmd.rb"

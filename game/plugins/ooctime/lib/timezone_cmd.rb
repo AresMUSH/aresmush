@@ -44,7 +44,7 @@ module AresMUSH
         client.char.timezone = self.zone
         client.char.save
         client.emit_success t('time.timezone_set', :timezone => self.zone)
-        Handles.warn_if_setting_linked_preference(client)
+        Handles::Api.warn_if_setting_linked_preference(client)
       end
     end
   end

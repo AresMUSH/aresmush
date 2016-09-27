@@ -11,8 +11,8 @@ module AresMUSH
         
         # There are two built-in rank templates - a generic one and one that shows 
         # officer/enlisted ranks side by side
-        #super File.dirname(__FILE__) + "/military_ranks.erb"
-        super File.dirname(__FILE__) + "/ranks.erb"
+        super File.dirname(__FILE__) + "/military_ranks.erb"
+        #super File.dirname(__FILE__) + "/ranks.erb"
       end
       
       def officer_ranks
