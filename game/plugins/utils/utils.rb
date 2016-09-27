@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+load "utils_api.rb"
 load "lib/autospace_cmd.rb"
 load "lib/colors_cmd.rb"
 load "lib/echo_cmd.rb"
