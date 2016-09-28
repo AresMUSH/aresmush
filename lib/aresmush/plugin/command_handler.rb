@@ -1,14 +1,15 @@
 module AresMUSH
   module CommandHandler
     
-    attr_accessor :client, :cmd
+    attr_accessor :client, :cmd, :enactor
 
     # This defines basic processing suitable for many commands.  You can override this 
     # method entirely if you need advanced processing, or just override the helper methods
     # as needed.  See the documentation on crack!, check and handle for more info.
-    def on_command(client, cmd)
+    def on_command(client, cmd, enactor)
       @client = client
       @cmd = cmd
+      @enactor = enactor
       log_command
       crack!
       
@@ -21,6 +22,14 @@ module AresMUSH
       handle
     end
         
+    def enactor_room
+      @enactor ? @enactor.room : nil
+    end
+    
+    def enactor_name
+      @enactor ? @enactor.name : t('client.anonymous')
+    end
+    
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
     # doing:

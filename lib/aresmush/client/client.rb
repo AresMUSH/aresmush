@@ -106,7 +106,7 @@ module AresMUSH
     end
     
     def logged_in?
-      !@char.nil?
+      @char
     end
     
     def reset_program

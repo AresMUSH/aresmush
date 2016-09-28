@@ -68,11 +68,12 @@ module AresMUSH
         CommandAliasParser.substitute_aliases(client, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
           AresMUSH.with_error_handling(client, cmd) do
-            handler_class = p.get_cmd_handler(client, cmd)
+            enactor = client.char
+            handler_class = p.get_cmd_handler(client, cmd, enactor)
             if (handler_class)
               @handled = true
               handler = handler_class.new
-              handler.on_command(client, cmd)
+              handler.on_command(client, cmd, enactor)
               return
             end # if
           end # with error handling

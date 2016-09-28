@@ -34,7 +34,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
        return nil if !cmd.root.end_with?("help")
        
        if (cmd.args)

@@ -55,40 +55,40 @@ module AresMUSH
       
       it "should crack the args" do
         @plugin.should_receive(:crack!)
-        @plugin.on_command(@client, @cmd)
+        @plugin.on_command(@client, @cmd, @char)
       end
       
       it "should log the command" do
         @plugin.stub(:check) { nil }
         @plugin.should_receive(:log_command)
-        @plugin.on_command(@client, @cmd)
+        @plugin.on_command(@client, @cmd, @char)
       end
         
       it "should call all check methods" do
         @plugin.should_receive(:check_x) { nil }
         @plugin.should_receive(:check_y) { nil }
-        @plugin.on_command(@client, @cmd)
+        @plugin.on_command(@client, @cmd, @char)
       end
       
       it "should emit an error and stop if any validator fails" do
         @cmd.stub(:raw) { "x marks the spot" }
         @client.should_receive(:emit_failure).with("error_x")
         @plugin.should_not_receive(:handle)
-        @plugin.on_command(@client, @cmd)
+        @plugin.on_command(@client, @cmd, @char)
       end
       
       it "should emit an error and stop if any validator fails" do
         @cmd.stub(:raw) { "y marks the spot" }
         @client.should_receive(:emit_failure).with("error_y")
         @plugin.should_not_receive(:handle)
-        @plugin.on_command(@client, @cmd)
+        @plugin.on_command(@client, @cmd, @char)
       end
       
       it "should handle the command if it's valid" do
         @plugin.stub(:check) { nil }
         @client.should_not_receive(:emit_failure)
         @plugin.should_receive(:handle)
-        @plugin.on_command(@client, @cmd)
+        @plugin.on_command(@client, @cmd, @char)
       end    
     end  
     

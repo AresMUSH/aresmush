@@ -15,6 +15,8 @@ module AresMUSH
       @client = double(Client).as_null_object
       @client.stub(:id) { "1" }
       @client.stub(:room) { nil }
+      @char = double
+      @client.stub(:char) { @char }
       @command = Command.new("x")
       @dispatcher = Dispatcher.new
       @plugin1 = double
@@ -49,16 +51,16 @@ module AresMUSH
       
         it "asks each plugin if it wants a command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { false }
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { false }
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @char) { false }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @char) { false }
           @dispatcher.on_command(@client, @command)
         end      
             
         it "stops after finding one plugin to handle the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
           @handler_class.stub(:new) { @handler }
-          @handler.should_receive(:on_command).with(@client, @command)
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { @handler_class }
+          @handler.should_receive(:on_command).with(@client, @command, @char)
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @char) { @handler_class }
           @plugin2.should_not_receive(:get_cmd_handler)
           @dispatcher.on_command(@client, @command)
         end
@@ -66,16 +68,16 @@ module AresMUSH
         it "continues processing if the first plugin doesn't want the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
           @handler_class.stub(:new) { @handler }
-          @handler.should_receive(:on_command).with(@client, @command)
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { nil }
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { @handler_class }
+          @handler.should_receive(:on_command).with(@client, @command, @char)
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @char) { nil }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @char) { @handler_class }
           @dispatcher.on_command(@client, @command)
         end
 
         it "sends huh message if nobody handles the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { nil }
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { nil }
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @char) { nil }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @char) { nil }
           @client.should_receive(:emit_ooc).with("dispatcher.huh")
           @dispatcher.on_command(@client, @command)
         end      
@@ -90,7 +92,7 @@ module AresMUSH
         it "keeps asking plugins if they want the command after an error" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
           @plugin1.should_receive(:get_cmd_handler).and_raise("an error")
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command)
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @char)
           @dispatcher.on_command(@client, @command)
         end
         

@@ -44,12 +44,9 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)      
-      if (is_talk_cmd(client, cmd))
-        return ChannelTalkCmd
-      else
-        return nil if !cmd.root_is?("channel")
-      
+    def self.get_cmd_handler(client, cmd, enactor)      
+      case cmd.root
+      when "channel"
         case cmd.switch
         when "alias"
           return ChannelAliasCmd 
@@ -79,6 +76,10 @@ module AresMUSH
           return ChannelTitleCmd
         when "who"
           return ChannelWhoCmd
+        end
+      else
+        if (is_talk_cmd(enactor, cmd))
+          return ChannelTalkCmd
         end
       end
       return nil   

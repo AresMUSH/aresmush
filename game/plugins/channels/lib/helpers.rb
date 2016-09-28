@@ -18,8 +18,8 @@ module AresMUSH
       channel_options.nil? ? nil : channel_options[option]
     end
  
-    def self.is_talk_cmd(client, cmd)
-      return false if !client.logged_in?
+    def self.is_talk_cmd(enactor, cmd)
+      return false if !enactor
       return false if !cmd.args    
       channel = Channels.channel_for_alias(client.char, cmd.root)
       !channel.nil?

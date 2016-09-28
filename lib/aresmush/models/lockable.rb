@@ -23,16 +23,13 @@ module AresMUSH
         existing = existing.first
       end
       if (existing)
-        puts "#{existing['lock_field']} && #{self.lock_field} && #{old_lock}"
-      else
-        "New: #{old_lock}"
+        Global.logger.debug "#{existing['lock_field']} && #{self.lock_field} && #{old_lock}"
       end
       if existing.present? && existing['lock_field'] &&
         existing['lock_field'].to_i > old_lock.to_i
         raise new StaleObjectError
       end
       self.lock_field = (self.lock_field ? self.lock_field + 1 : 1)
-      puts "Lock field is #{self.lock_field}"
     end
   end
 end
