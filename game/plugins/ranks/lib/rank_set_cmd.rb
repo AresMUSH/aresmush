@@ -12,38 +12,38 @@ module AresMUSH
           self.name = trim_input(cmd.args.arg1)
           self.rank = titleize_input(cmd.args.arg2)
         else
-          self.name = client.name
+          self.name = enactor_name
           self.rank = titleize_input(cmd.args)
         end
       end
       
       def check_can_set
-        return nil if client.name == self.name
-        return nil if Ranks.can_manage_ranks?(client.char)
+        return nil if enactor_name == self.name
+        return nil if Ranks.can_manage_ranks?(enactor)
         return t('dispatcher.not_allowed')
       end      
       
       def check_chargen_locked
-        return nil if Ranks.can_manage_ranks?(client.char)
-        Chargen::Api.check_chargen_locked(client.char)
+        return nil if Ranks.can_manage_ranks?(enactor)
+        Chargen::Api.check_chargen_locked(enactor)
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|        
           
           if (self.rank.nil?)
-            client.char.rank = rank
-            client.char.save
+            enactor.rank = rank
+            enactor.save
             client.emit_success t('ranks.rank_cleared')
           else
-            error = Ranks.check_rank(model, self.rank, Ranks.can_manage_ranks?(client.char))
+            error = Ranks.check_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
             if (!error.nil?)
               client.emit_failure error
               return
             end
           
-            client.char.rank = rank
-            client.char.save
+            enactor.rank = rank
+            enactor.save
             client.emit_success t('ranks.rank_set', :rank => rank)
           end
         end

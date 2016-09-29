@@ -11,13 +11,13 @@ module AresMUSH
       end
 
       def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil
       end
       
       def handle
-        client.room.is_foyer = self.option.is_on?
-        client.room.save
+        enactor_room.is_foyer = self.option.is_on?
+        enactor_room.save
         if (self.option.is_on?)
           client.emit_ooc t('rooms.foyer_set')
         else

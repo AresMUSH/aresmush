@@ -5,7 +5,7 @@ module AresMUSH
 
       attr_accessor :message, :admin_only
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number', 'message']
         self.help_topic = 'jobs'
         super
@@ -22,7 +22,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|     
-          Jobs.comment(job, client.char, self.message, self.admin_only)
+          Jobs.comment(job, enactor, self.message, self.admin_only)
         end
       end
     end

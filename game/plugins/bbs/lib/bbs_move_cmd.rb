@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :new_board_name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['board_name', 'num', 'new_board_name']
         self.help_topic = 'bbs'
         super
@@ -22,7 +22,7 @@ module AresMUSH
       
       def handle
         Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
-          if (!Bbs.can_edit_post(client.char, post))
+          if (!Bbs.can_edit_post(enactor, post))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

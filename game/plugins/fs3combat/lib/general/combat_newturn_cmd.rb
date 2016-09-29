@@ -6,14 +6,14 @@ module AresMUSH
       include NotAllowedWhileTurnInProgress
 
       def handle
-        if (!client.char.is_in_combat?)
+        if (!enactor.is_in_combat?)
           client.emit_failure t('fs3combat.you_are_not_in_combat')
           return
         end
                 
-        combat = client.char.combatant.combat
+        combat = enactor.combatant.combat
         
-        if (combat.organizer != client.char)
+        if (combat.organizer != enactor)
           client.emit_failure t('fs3combat.only_organizer_can_do')
           return
         end
@@ -26,7 +26,7 @@ module AresMUSH
               combat.ai_action(client, c)
             end
           end
-          combat.emit t('fs3combat.new_turn', :name => client.name)
+          combat.emit t('fs3combat.new_turn', :name => enactor_name)
           combat.first_turn = false
           combat.save
           return
@@ -34,7 +34,7 @@ module AresMUSH
         
         initiative_order = combat.roll_initiative
         
-        combat.emit t('fs3combat.starting_turn_resolution', :name => client.name)
+        combat.emit t('fs3combat.starting_turn_resolution', :name => enactor_name)
         combat.turn_in_progress = true
         combat.save
         
@@ -72,7 +72,7 @@ module AresMUSH
           end
           combat.turn_in_progress = false
           combat.save
-          combat.emit t('fs3combat.new_turn', :name => client.name)
+          combat.emit t('fs3combat.new_turn', :name => enactor_name)
         end
       end
     end

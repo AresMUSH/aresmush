@@ -7,7 +7,7 @@ module AresMUSH
            
       attr_accessor :name, :attribute
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'attribute']
         self.help_topic = 'bbs'
         super
@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Bbs.can_manage_bbs?(client.char)
+        return t('dispatcher.not_allowed') if !Bbs.can_manage_bbs?(enactor)
         return nil
       end
     end

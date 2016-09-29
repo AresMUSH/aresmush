@@ -8,7 +8,7 @@ module AresMUSH
 
       attr_accessor :title, :description
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['title', 'description']
         self.help_topic = 'requests'
         super
@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def handle
-        result = Jobs.create_job("REQ", self.title, self.description, client.char)
+        result = Jobs.create_job("REQ", self.title, self.description, enactor)
         if (result[:error].nil?)
           client.emit_success t('jobs.request_submitted')
         else

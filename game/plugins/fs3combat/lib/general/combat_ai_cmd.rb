@@ -7,14 +7,14 @@ module AresMUSH
       
       
       def check_in_combat
-        return t('fs3combat.you_are_not_in_combat') if !client.char.is_in_combat?
+        return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
         return nil
       end
       
       def handle
-        combat = client.char.combatant.combat
+        combat = enactor.combatant.combat
         
-        if (combat.organizer != client.char)
+        if (combat.organizer != enactor)
           client.emit_failure t('fs3combat.only_organizer_can_do')
           return
         end

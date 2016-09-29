@@ -7,7 +7,7 @@ module AresMUSH
       
       def handle
         all_tags = []
-        client.char.mail.each do |msg|
+        enactor.mail.each do |msg|
           all_tags = all_tags.concat(msg.tags)
         end
         

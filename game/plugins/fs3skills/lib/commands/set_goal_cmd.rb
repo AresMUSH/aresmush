@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :goal
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['goal']
         self.help_topic = 'abilities'
         super
@@ -19,8 +19,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.fs3_goals = self.goal
-        client.char.save
+        enactor.fs3_goals = self.goal
+        enactor.save
         
         client.emit_success t('fs3skills.goals_set')
       end

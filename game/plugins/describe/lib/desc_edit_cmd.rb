@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :target
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['target']
         self.help_topic = 'describe'
         super

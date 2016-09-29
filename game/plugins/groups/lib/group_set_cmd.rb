@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :value, :group_name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'group_name']
         self.help_topic = 'groups'
         super
@@ -21,21 +21,21 @@ module AresMUSH
           self.value = titleize_input(cmd.args.arg3)
         else
           cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
-          self.name = client.name
+          self.name = enactor_name
           self.group_name = titleize_input(cmd.args.arg1)
           self.value = titleize_input(cmd.args.arg2)
         end
       end
       
       def check_can_set
-        return nil if self.name == client.name
-        return nil if Groups.can_set_group?(client.char)
+        return nil if self.name == enactor_name
+        return nil if Groups.can_set_group?(enactor)
         return t('dispatcher.not_allowed')
       end
       
       def check_chargen_locked
-        return nil if Groups.can_set_group?(client.char)
-        Chargen::Api.check_chargen_locked(client.char)
+        return nil if Groups.can_set_group?(enactor)
+        Chargen::Api.check_chargen_locked(enactor)
       end
       
       def handle   

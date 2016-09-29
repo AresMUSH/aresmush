@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :age
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['age']
         self.help_topic = 'demographics'
         super
@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(enactor)
       end
       
       def crack!
@@ -30,11 +30,11 @@ module AresMUSH
       def handle
         bday = Date.new ICTime::Api.ictime.year - self.age.to_i, ICTime::Api.ictime.month, ICTime::Api.ictime.day
         bday = bday - rand(364)
-        client.char.birthdate = bday
-        client.char.save
+        enactor.birthdate = bday
+        enactor.save
         client.emit_success t('demographics.birthdate_set', 
           :birthdate => ICTime::Api.ic_datestr(bday), 
-          :age => client.char.age)
+          :age => enactor.age)
       end
         
     end

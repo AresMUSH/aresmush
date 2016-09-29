@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :desc
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'desc']
         self.help_topic = 'outfit'
         super
@@ -26,8 +26,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.outfits[self.name] = self.desc
-        client.char.save!
+        enactor.outfits[self.name] = self.desc
+        enactor.save!
         client.emit_success t('describe.outfit_set')
       end
     end

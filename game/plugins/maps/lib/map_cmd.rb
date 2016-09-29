@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :area
       
       def crack!
-        self.area = cmd.args.nil? ? Rooms::Api.area(client.room) : titleize_input(cmd.args)
+        self.area = cmd.args.nil? ? Rooms::Api.area(enactor_room) : titleize_input(cmd.args)
       end
       
       def handle

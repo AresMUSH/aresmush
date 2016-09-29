@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :text
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['text']
         self.help_topic = 'save'
         super
@@ -19,11 +19,11 @@ module AresMUSH
       end
 
       def handle
-        client.char.saved_text << self.text
-        if (client.char.saved_text.count > 5)
-          client.char.saved_text.shift
+        enactor.saved_text << self.text
+        if (enactor.saved_text.count > 5)
+          enactor.saved_text.shift
         end
-        client.char.save
+        enactor.save
 
         client.emit_success t('save.text_saved')
       end

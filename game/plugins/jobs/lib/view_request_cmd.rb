@@ -8,7 +8,7 @@ module AresMUSH
 
       attr_accessor :number
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number']
         self.help_topic = 'requests'
         super
@@ -28,7 +28,7 @@ module AresMUSH
         Jobs.with_a_request(client, self.number) do |request|
           template = JobTemplate.new(client, request)            
           client.emit template.render
-          Jobs.mark_read(request, client.char)
+          Jobs.mark_read(request, enactor)
         end
       end
     end

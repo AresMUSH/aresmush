@@ -12,8 +12,8 @@ module AresMUSH
       describe :handle do
         it "should emit to the room" do
           room = double
-          client.stub(:room) { room }
-          client.stub(:name) { "Bob" }
+          enactor.stub(:room) { room }
+          enactor.stub(:name) { "Bob" }
           cmd.stub(:raw) { ":test" }
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "Bob test"}
           Pose.should_receive(:emit_pose).with(client, "Bob test", false, false)

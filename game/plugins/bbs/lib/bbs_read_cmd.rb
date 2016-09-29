@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :board_name, :num
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['board_name', 'num']
         self.help_topic = 'bbs'
         super
@@ -30,7 +30,7 @@ module AresMUSH
           template = PostTemplate.new(board, post, client)
           client.emit template.render
 
-          Bbs.mark_read_for_player(client.char, post)
+          Bbs.mark_read_for_player(enactor, post)
           client.program[:last_bbs_post] = post
         end
       end      

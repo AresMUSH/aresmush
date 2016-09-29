@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :stance
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'stance']
         self.help_topic = 'combat'
         super
@@ -20,7 +20,7 @@ module AresMUSH
           self.name = titleize_input(cmd.args.arg1)
           self.stance = titleize_input(cmd.args.arg2)
         else
-          self.name = client.char.name
+          self.name = enactor.name
           self.stance = titleize_input(cmd.args)
         end
       end
@@ -36,7 +36,7 @@ module AresMUSH
           combatant.stance = stance
           combatant.save
           message = t('fs3combat.stance_changed', :stance => self.stance, :name => self.name, :poss => combatant.poss_pronoun)
-          combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+          combat.emit message, FS3Combat.npcmaster_text(name, enactor)
         end
       end
     end

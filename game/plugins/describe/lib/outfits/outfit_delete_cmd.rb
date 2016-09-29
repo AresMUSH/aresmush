@@ -11,13 +11,13 @@ module AresMUSH
       end
       
       def check_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if client.char.outfit(self.name).nil?
+        return t('describe.outfit_does_not_exist', :name => self.name) if enactor.outfit(self.name).nil?
         return nil
       end
       
       def handle
-        client.char.outfits.delete(self.name)
-        client.char.save!
+        enactor.outfits.delete(self.name)
+        enactor.save!
         client.emit_success t('describe.outfit_deleted')
       end
     end

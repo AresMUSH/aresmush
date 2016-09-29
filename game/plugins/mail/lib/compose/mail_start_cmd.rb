@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :names
       attr_accessor :subject
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['names', 'subject']
         self.help_topic = 'mail composition'
         super
@@ -25,9 +25,9 @@ module AresMUSH
           return
         end
         
-        client.char.mail_compose_to = self.names
-        client.char.mail_compose_subject = self.subject
-        client.char.save
+        enactor.mail_compose_to = self.names
+        enactor.mail_compose_subject = self.subject
+        enactor.save
         
         client.emit_ooc t('mail.mail_started', :subject => self.subject)
       end

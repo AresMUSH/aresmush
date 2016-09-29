@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :old_password
       attr_accessor :new_password
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['old_password', 'new_password']
         self.help_topic = 'password'
         super
@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def handle
-        char = client.char
+        char = enactor
         if (!char.compare_password(self.old_password))
           client.emit_failure(t('login.password_incorrect'))
           return 

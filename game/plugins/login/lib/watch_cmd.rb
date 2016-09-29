@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :option
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['option']
         self.help_topic = 'watch'
         super
@@ -24,8 +24,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.watch = self.option
-        client.char.save!
+        enactor.watch = self.option
+        enactor.save!
         if (self.option == "all")
           client.emit_success t('login.watch_all')
         elsif (self.option == "none")

@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :luck
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['luck']
         self.help_topic = 'luck'
         super
@@ -27,25 +27,25 @@ module AresMUSH
       def handle
         count = self.luck.to_i
         
-        if (count > client.char.luck)
+        if (count > enactor.luck)
           client.emit_failure t('fs3skills.not_enough_points')
           return
         end
         
-        message = t('fs3skills.luck_point_spent', :name => client.name, :count => count)
+        message = t('fs3skills.luck_point_spent', :name => enactor_name, :count => count)
         
-        client.char.luck = client.char.luck - count
-        client.char.save
+        enactor.luck = enactor.luck - count
+        enactor.save
         
-        client.room.emit_ooc message
+        enactor_room.emit_ooc message
         Global.client_monitor.logged_in_clients.each do |c|
           next if c == client
-          next if c.room == client.room
+          next if c.room == enactor_room
           if (FS3Skills.can_manage_luck?(c.char))
             c.emit_ooc message
           end
         end
-        Global.logger.info "#{client.name} spent #{count} luck points."
+        Global.logger.info "#{enactor_name} spent #{count} luck points."
       end
     end
   end

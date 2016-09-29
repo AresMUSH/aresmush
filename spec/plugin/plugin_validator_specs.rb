@@ -18,9 +18,7 @@ module AresMUSH
           include CommandHandler
           include CommandRequiresLogin
         end
-        @plugin = PluginValidateLoginTest.new 
-        @plugin.client = @client
-        @plugin.cmd = @cmd
+        @plugin = PluginValidateLoginTest.new(@client, @cmd, double)
       end
     
       after do
@@ -46,9 +44,7 @@ module AresMUSH
           include CommandHandler
           include CommandWithoutArgs
         end
-        @plugin = PluginValidateRootOnlyTest.new 
-        @plugin.client = @client
-        @plugin.cmd = @cmd
+        @plugin = PluginValidateRootOnlyTest.new(@client, @cmd, double)
       end
     
       after do
@@ -72,35 +68,7 @@ module AresMUSH
         @cmd.stub(:switch) { nil }
         @plugin.check_2_no_args.should eq nil
       end
-    end    
-      
-    describe :check_2_no_switches do
-      before do
-        @client = double
-        @cmd = double
-        class PluginValidateNoSwitchTest
-          include CommandHandler
-          include CommandWithoutSwitches
-        end
-        @plugin = PluginValidateNoSwitchTest.new 
-        @plugin.client = @client
-        @plugin.cmd = @cmd
-      end
-    
-      after do
-        AresMUSH.send(:remove_const, :PluginValidateNoSwitchTest)
-      end
-      
-      it "should reject command if there is a switch" do
-        @cmd.stub(:switch) { "foo" }
-        @plugin.check_2_no_switches.should eq "dispatcher.cmd_no_switches"
-      end
-      
-      it "should allow command if there is no switch" do
-        @cmd.stub(:switch) { nil }
-        @plugin.check_2_no_switches.should eq nil
-      end
-    end      
+    end          
     
     describe :check_2_arguments_present do
       before do
@@ -110,15 +78,13 @@ module AresMUSH
           include CommandHandler
           include CommandRequiresArgs
           attr_accessor :foo, :bar
-          def initialize
+          def initialize(client, cmd, enactor)
             self.required_args = [ 'foo', 'bar' ]
             self.help_topic = 'test'
             super
           end
         end
-        @plugin = PluginValidateArgumentPresentTest.new 
-        @plugin.client = @client
-        @plugin.cmd = @cmd
+        @plugin = PluginValidateArgumentPresentTest.new(@client, @cmd, double)
         AresMUSH::Locale.stub(:translate).with("dispatcher.invalid_syntax", { :command => "test" }) { "invalid syntax" }        
       end
     

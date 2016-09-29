@@ -11,12 +11,12 @@ module AresMUSH
       end
       
       def check_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if client.char.outfit(self.name).nil?
+        return t('describe.outfit_does_not_exist', :name => self.name) if enactor.outfit(self.name).nil?
         return nil
       end
       
       def handle
-        outfit = client.char.outfit(self.name)
+        outfit = enactor.outfit(self.name)
         client.emit BorderedDisplay.text(outfit, t('describe.outfit', :name => self.name))
       end
     end    

@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :reply
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['reply']
         self.help_topic = 'bbs'
         super
@@ -46,19 +46,19 @@ module AresMUSH
       end
       
       def save_reply(board, post)
-        if (!Bbs.can_write_board?(client.char, board))
+        if (!Bbs.can_write_board?(enactor, board))
           client.emit_failure(t('bbs.cannot_post'))
           return
         end
 
-        BbsReply.create(author: client.char, bbs_post: post, message: self.reply)
+        BbsReply.create(author: enactor, bbs_post: post, message: self.reply)
         post.mark_unread
-        Bbs.mark_read_for_player(client.char, post)
+        Bbs.mark_read_for_player(enactor, post)
         
         Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, 
         :board => board.name, 
         :reference => post.reference_str,
-        :author => client.name)
+        :author => enactor_name)
       end
     end
   end

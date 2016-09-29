@@ -19,7 +19,7 @@ module AresMUSH
         
       def check_can_view_help
         return nil if !self.category
-        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(enactor, self.category)
         return nil
       end
       

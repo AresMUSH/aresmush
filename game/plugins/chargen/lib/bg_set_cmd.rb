@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :target, :background
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['target', 'background']
         self.help_topic = 'bg'
         super
@@ -20,14 +20,14 @@ module AresMUSH
           self.target = cmd.args.before("=")
           self.background = cmd.args.after("=")
         else
-          self.target = client.name
+          self.target = enactor_name
           self.background = cmd.args
         end
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          if (!Chargen.can_edit_bg?(client.char, model, client))
+          if (!Chargen.can_edit_bg?(enactor, model, client))
             return
           end
           

@@ -9,7 +9,7 @@ module AresMUSH
       attr_accessor :destination
       attr_accessor :names
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['destination']
         self.help_topic = 'teleport'
         super
@@ -27,7 +27,7 @@ module AresMUSH
       end
       
       def check_can_teleport
-        return t('dispatcher.not_allowed') if !Rooms.can_teleport?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_teleport?(enactor)
         return nil
       end
       
@@ -43,7 +43,7 @@ module AresMUSH
 
         targets.each do |t|
           if (t[:client] != client && t[:client] != nil)
-            t[:client].emit_ooc(t('rooms.you_are_teleported', :name => client.name))
+            t[:client].emit_ooc(t('rooms.you_are_teleported', :name => enactor_name))
           end
         
           Rooms.move_to(t[:client], t[:char], room)
@@ -71,7 +71,7 @@ module AresMUSH
       
       def find_targets
         if (self.names.empty?)
-          target = { :client => client, :char => client.char }
+          target = { :client => client, :char => enactor }
           targets = [ target ]
         else
           targets = []

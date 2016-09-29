@@ -18,9 +18,9 @@ module AresMUSH
       def handle
         inviter = client.program[:meetme]
         if (self.going)
-          Rooms.move_to(client, client.char, inviter.room)
+          Rooms.move_to(client, enactor, inviter.room)
         else
-          Rooms.move_to(inviter, inviter.char, client.room)
+          Rooms.move_to(inviter, inviter.char, enactor_room)
         end
       end
     end

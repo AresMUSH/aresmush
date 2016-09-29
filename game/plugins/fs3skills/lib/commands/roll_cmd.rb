@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :roll_str, :private_roll
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'roll_str']
         self.help_topic = 'roll'
         super
@@ -20,7 +20,7 @@ module AresMUSH
           self.name = cmd.args.arg1
           self.roll_str = titleize_input(cmd.args.arg2)
         else
-          self.name = client.name        
+          self.name = enactor_name        
           self.roll_str = titleize_input(cmd.args)
         end
         self.private_roll = cmd.switch_is?("private")

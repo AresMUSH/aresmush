@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def handle
-        char = client.char
+        char = enactor
         
         if (cmd.switch_is?("inbox"))
           char.mail_filter = Mail.inbox_tag

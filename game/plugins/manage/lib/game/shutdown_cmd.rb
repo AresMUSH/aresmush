@@ -7,13 +7,13 @@ module AresMUSH
       include CommandWithoutSwitches
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
+        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
         return nil
       end
 
       def handle
         Global.client_monitor.clients.each do |c|
-          c.emit_ooc t('manage.shutdown', :name => client.name)
+          c.emit_ooc t('manage.shutdown', :name => enactor_name)
           c.disconnect
         end
         

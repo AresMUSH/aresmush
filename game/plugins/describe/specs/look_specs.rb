@@ -62,6 +62,7 @@ module AresMUSH
             client.stub(:name) { "Bob" }
             other_client = double
             @model.should_receive(:client) { other_client }
+            @enactor.should_receive(:name) { "Bob" }
             other_client.should_receive(:emit_ooc).with('describe.looked_at_you')
             handler.handle
           end

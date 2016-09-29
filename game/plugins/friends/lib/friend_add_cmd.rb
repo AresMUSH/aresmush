@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'friends'
         super
@@ -25,10 +25,10 @@ module AresMUSH
         end
         friend = result.target
 
-        if (client.char.friends.include?(friend))
+        if (enactor.friends.include?(friend))
           return t('friends.already_friend', :name => self.name)
         end
-        friendship = Friendship.new(:character => client.char, :friend => friend)
+        friendship = Friendship.new(:character => enactor, :friend => friend)
         friendship.save!
         client.emit_success t('friends.friend_added', :name => self.name)
       end

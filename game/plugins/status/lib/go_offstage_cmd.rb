@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutSwitches
       
       def handle        
-        char = client.char
+        char = enactor
         oocloc = Rooms::Api.ooc_room
         
         char.is_afk = false
@@ -16,7 +16,7 @@ module AresMUSH
         end
         char.room.emit_ooc t('status.go_ooc', :name => char.name)
         oocloc.emit_ooc t('status.go_ooc', :name => char.name)
-        Rooms::Api.move_to(client, client.char, oocloc)
+        Rooms::Api.move_to(client, enactor, oocloc)
       end
     end
   end

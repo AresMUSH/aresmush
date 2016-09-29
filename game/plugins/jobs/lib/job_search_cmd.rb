@@ -7,7 +7,7 @@ module AresMUSH
 
       attr_accessor :category, :value
   
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['category', 'value']
         self.help_topic = 'jobs'
         super
@@ -41,7 +41,7 @@ module AresMUSH
           return
         end
         
-        template = JobsListTemplate.new(client.char, jobs, 1, 1)
+        template = JobsListTemplate.new(enactor, jobs, 1, 1)
         client.emit template.display          
         
       end

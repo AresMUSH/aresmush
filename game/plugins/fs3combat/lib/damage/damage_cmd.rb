@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :name
 
       def crack!
-        self.name = cmd.args ? titleize_input(cmd.args) : client.char.name
+        self.name = cmd.args ? titleize_input(cmd.args) : enactor.name
       end
       
       def handle

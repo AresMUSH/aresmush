@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :actor
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'actor']
         self.help_topic = 'actors'
         super
@@ -19,14 +19,14 @@ module AresMUSH
           self.name = titleize_input(cmd.args.arg1)
           self.actor = titleize_input(cmd.args.arg2)
         else
-          self.name = client.name
+          self.name = enactor_name
           self.actor = titleize_input(cmd.args)
         end
       end
       
       def check_can_set
-        return nil if self.name == client.name
-        return nil if Actors.can_set_actor?(client.char)
+        return nil if self.name == enactor_name
+        return nil if Actors.can_set_actor?(enactor)
         return t('dispatcher.not_allowed')
       end
       

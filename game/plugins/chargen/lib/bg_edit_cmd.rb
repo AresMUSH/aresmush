@@ -8,7 +8,7 @@ module AresMUSH
 
       def crack!
         if (cmd.args.nil?)
-          self.target = client.name
+          self.target = enactor_name
         else
           self.target = trim_input(cmd.args)
         end
@@ -16,11 +16,11 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client) do |model|
-          if (!Chargen.can_edit_bg?(client.char, model, client))
+          if (!Chargen.can_edit_bg?(enactor, model, client))
             return
           end
           
-          if (self.target == client.name)
+          if (self.target == enactor_name)
             client.grab "bg/set #{model.background}"
           else
             client.grab "bg/set #{target}=#{model.background}"

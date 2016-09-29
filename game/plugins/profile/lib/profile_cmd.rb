@@ -6,14 +6,14 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'profile'
         super
       end
       
       def crack!
-        self.name = cmd.args.nil? ? client.char.name : titleize_input(cmd.args)
+        self.name = cmd.args.nil? ? enactor.name : titleize_input(cmd.args)
       end
       
       def handle

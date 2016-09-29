@@ -7,7 +7,7 @@ module AresMUSH
 
       attr_accessor :title, :description, :category
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['title', 'description', 'category']
         self.help_topic = 'jobs'
         super
@@ -32,12 +32,12 @@ module AresMUSH
       end
       
       def check_can_access
-        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(client.char)
+        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         return nil
       end
       
       def handle
-        result = Jobs.create_job(self.category, self.title, self.description, client.char)
+        result = Jobs.create_job(self.category, self.title, self.description, enactor)
         if (!result[:error].nil?)
           client.emit_failure result[:error]
         end

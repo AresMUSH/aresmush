@@ -42,7 +42,7 @@ module AresMUSH
         if (model.class == Character)
           looked_at = model.client
           if (!looked_at.nil?)
-            looked_at.emit_ooc t('describe.looked_at_you', :name => client.name)
+            looked_at.emit_ooc t('describe.looked_at_you', :name => enactor_name)
           end
         end
       end

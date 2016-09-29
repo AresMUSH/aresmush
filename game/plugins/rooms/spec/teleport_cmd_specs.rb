@@ -60,7 +60,7 @@ module AresMUSH
       describe :find_targets do
         it "should return the client if there's no name" do
           handler.stub(:names) { [] }
-          result = { :client => client, :char => char }
+          result = { :client => client, :char => enactor }
           targets = handler.find_targets
           targets.should eq [ result ]
         end
@@ -98,11 +98,11 @@ module AresMUSH
           before do
             @dest = double
             handler.stub(:find_destination) { @dest }
-            handler.stub(:find_targets) { [ {:client => client, :char => char } ] }
+            handler.stub(:find_targets) { [ {:client => client, :char => enactor } ] }
           end
           
           it "should go to the room" do
-            Rooms.should_receive(:move_to).with(client, char, @dest)
+            Rooms.should_receive(:move_to).with(client, enactor, @dest)
             handler.handle
           end
           
@@ -118,7 +118,7 @@ module AresMUSH
             @dest = double
             @other_char = double
             @other_client = double
-            client.stub(:name) { "Bob" }
+            enactor.stub(:name) { "Bob" }
             handler.stub(:find_destination) { @dest }
             handler.stub(:find_targets) { [ {:client => @other_client, :char => @other_char } ] }
           end

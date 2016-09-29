@@ -7,7 +7,7 @@ module AresMUSH
 
       attr_accessor :option
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['option']
         self.help_topic = 'nospoof'
         super
@@ -22,8 +22,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.nospoof = self.option.is_on?
-        client.char.save
+        enactor.nospoof = self.option.is_on?
+        enactor.save
         client.emit_success t('pose.nospoof_set', :status => self.option)
       end
     end

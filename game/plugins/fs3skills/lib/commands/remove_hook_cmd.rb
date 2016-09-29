@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'goals'
         super
@@ -19,9 +19,9 @@ module AresMUSH
       end
       
       def handle        
-        if (client.char.hooks.has_key?(self.name))
-          client.char.hooks.delete self.name
-          client.char.save
+        if (enactor.hooks.has_key?(self.name))
+          enactor.hooks.delete self.name
+          enactor.save
           client.emit_success t('fs3skills.item_removed', :name => self.name)
         else
           client.emit_failure t('fs3skills.item_not_selected', :name => self.name)

@@ -7,7 +7,7 @@ module AresMUSH
            
       attr_accessor :names
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['names']
         self.help_topic = 'cookies'
         super

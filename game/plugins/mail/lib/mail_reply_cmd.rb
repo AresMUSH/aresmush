@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :num
       attr_accessor :body
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['body']
         self.help_topic = 'mail'
         super
@@ -53,7 +53,7 @@ module AresMUSH
         recipients = [msg.author.name]
         if (cmd.switch_is?("replyall"))
           to_list = msg.to_list.split(" ")
-          to_list.delete client.char.name
+          to_list.delete enactor.name
           recipients.concat to_list
         end
         recipients

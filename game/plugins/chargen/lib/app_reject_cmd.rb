@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :message
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'message']
         self.help_topic = 'app'
         super
@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def check_permission
-        return t('dispatcher.not_allowed') if !Chargen.can_approve?(client.char)
+        return t('dispatcher.not_allowed') if !Chargen.can_approve?(enactor)
         return nil
       end
       

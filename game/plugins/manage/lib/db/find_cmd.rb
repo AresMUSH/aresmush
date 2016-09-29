@@ -8,7 +8,7 @@ module AresMUSH
 
       attr_accessor :search_class, :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['search_class']
         self.help_topic = 'find'
         super
@@ -25,7 +25,7 @@ module AresMUSH
         begin
           c = AresMUSH.const_get(self.search_class)
           
-          if (!Manage.can_manage_object?(client.char, c.new))
+          if (!Manage.can_manage_object?(enactor, c.new))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

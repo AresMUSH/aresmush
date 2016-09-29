@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'damage'
         super
@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def check_in_combat
-        return t('fs3combat.use_combat_treat_instead') if FS3Combat.is_in_combat?(client.char.name)
+        return t('fs3combat.use_combat_treat_instead') if FS3Combat.is_in_combat?(enactor.name)
         return nil
       end
       
@@ -30,7 +30,7 @@ module AresMUSH
             return
           end
                     
-          client.room.emit_ooc FS3Combat.do_treat(client.char, model)
+          enactor_room.emit_ooc FS3Combat.do_treat(enactor, model)
         end
       end
     end

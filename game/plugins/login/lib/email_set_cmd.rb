@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :email
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['email']
         self.help_topic = 'email'
         super
@@ -25,8 +25,8 @@ module AresMUSH
       end
       
       def handle      
-        client.char.email = self.email
-        client.char.save!
+        enactor.email = self.email
+        enactor.save!
         client.emit_success t('login.email_set')
       end
     end

@@ -77,13 +77,13 @@ module AresMUSH
         end
         
         it "should fail if no permissions" do
-          Manage.stub(:can_manage_game?).with(char) { false }
+          Manage.stub(:can_manage_game?).with(enactor) { false }
           client.should_receive(:emit_failure).with('dispatcher.not_allowed')
           handler.handle
         end
         
         it "should succeed and alert permissions are mis-configured" do
-          Manage.stub(:can_manage_game?).with(char) { raise "Error" }
+          Manage.stub(:can_manage_game?).with(enactor) { raise "Error" }
           client.should_receive(:emit_failure).with('manage.management_config_messed_up')
           plugin_manager.should_receive(:load_plugin).with("foo")
           handler.handle

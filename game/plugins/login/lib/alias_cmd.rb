@@ -23,7 +23,7 @@ module AresMUSH
 
         target = char.target
         
-        if (target == client.char || Manage::Api.can_manage_game?(client.char))
+        if (target == enactor || Manage::Api.can_manage_game?(enactor))
           update_alias(target)
         else
           client.emit_failure t('dispatcher.not_allowed')

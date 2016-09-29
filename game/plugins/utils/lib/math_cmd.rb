@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :expression
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['expression']
         self.help_topic = 'math'
         super

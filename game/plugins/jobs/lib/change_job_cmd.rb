@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :value
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number', 'value']
         self.help_topic = 'jobs'
         super
@@ -21,8 +21,8 @@ module AresMUSH
         Jobs.with_a_job(client, self.number) do |job|
           update_value(job)
           job.save
-          notification = t('jobs.updated_job', :number => job.number, :title => job.title, :name => client.name)
-          Jobs.notify(job, notification, client.char)
+          notification = t('jobs.updated_job', :number => job.number, :title => job.title, :name => enactor_name)
+          Jobs.notify(job, notification, enactor)
         end
       end
       

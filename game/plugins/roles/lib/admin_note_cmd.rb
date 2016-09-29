@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :note
      
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['note']
         self.help_topic = 'admin'
         super
@@ -19,8 +19,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.admin_note = self.note
-        client.char.save!
+        enactor.admin_note = self.note
+        enactor.save!
         client.emit_success t('roles.admin_note_set')
       end
     end

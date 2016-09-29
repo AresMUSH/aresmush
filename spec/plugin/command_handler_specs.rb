@@ -19,7 +19,6 @@ module AresMUSH
           return nil
         end
       end
-      @plugin = PluginSpecTest.new   
       SpecHelpers.stub_translate_for_testing 
     end
     
@@ -33,10 +32,11 @@ module AresMUSH
         client = double
         client.should_receive(:to_s) { "client" }
         cmd.should_receive(:to_s) { "Cmd" }
-        @plugin.cmd = cmd
-        @plugin.client = client
+        @handler = PluginSpecTest.new(@client, @cmd, @char)
+        @handler.cmd = cmd
+        @handler.client = client
         Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: client Cmd=Cmd")
-        @plugin.log_command
+        @handler.log_command
       end
     end
     
@@ -51,64 +51,73 @@ module AresMUSH
         @char.stub(:room) { @room }
         @cmd.stub(:raw) { "raw" }
         @cmd.stub(:switch) { nil }
+        @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
       it "should crack the args" do
-        @plugin.should_receive(:crack!)
-        @plugin.on_command(@client, @cmd, @char)
+        @handler.should_receive(:crack!)
+        @handler.on_command
       end
       
       it "should log the command" do
-        @plugin.stub(:check) { nil }
-        @plugin.should_receive(:log_command)
-        @plugin.on_command(@client, @cmd, @char)
+        @handler.stub(:check) { nil }
+        @handler.should_receive(:log_command)
+        @handler.on_command
       end
         
       it "should call all check methods" do
-        @plugin.should_receive(:check_x) { nil }
-        @plugin.should_receive(:check_y) { nil }
-        @plugin.on_command(@client, @cmd, @char)
+        @handler.should_receive(:check_x) { nil }
+        @handler.should_receive(:check_y) { nil }
+        @handler.on_command
       end
       
       it "should emit an error and stop if any validator fails" do
         @cmd.stub(:raw) { "x marks the spot" }
         @client.should_receive(:emit_failure).with("error_x")
-        @plugin.should_not_receive(:handle)
-        @plugin.on_command(@client, @cmd, @char)
+        @handler.should_not_receive(:handle)
+        @handler.on_command
       end
       
       it "should emit an error and stop if any validator fails" do
         @cmd.stub(:raw) { "y marks the spot" }
         @client.should_receive(:emit_failure).with("error_y")
-        @plugin.should_not_receive(:handle)
-        @plugin.on_command(@client, @cmd, @char)
+        @handler.should_not_receive(:handle)
+        @handler.on_command
       end
       
       it "should handle the command if it's valid" do
-        @plugin.stub(:check) { nil }
+        @handler.stub(:check) { nil }
         @client.should_not_receive(:emit_failure)
-        @plugin.should_receive(:handle)
-        @plugin.on_command(@client, @cmd, @char)
+        @handler.should_receive(:handle)
+        @handler.on_command
       end    
     end  
     
     describe :trim_input do
+      before do
+        @handler = PluginSpecTest.new(@client, @cmd, @char)
+      end
+      
       it "should return nil for nil" do
-        @plugin.trim_input(nil).should eq nil
+        @handler.trim_input(nil).should eq nil
       end
       
       it "should return a titleized string" do
-        @plugin.trim_input("   someTHING   ").should eq "someTHING"
+        @handler.trim_input("   someTHING   ").should eq "someTHING"
       end
     end
     
     describe :titleize_input do
+      before do 
+        @handler = PluginSpecTest.new(@client, @cmd, @char)
+      end
+      
       it "should return nil for nil" do
-        @plugin.titleize_input(nil).should eq nil
+        @handler.titleize_input(nil).should eq nil
       end
       
       it "should return a titleized string" do
-        @plugin.titleize_input("   someTHING   ").should eq "Something"
+        @handler.titleize_input("   someTHING   ").should eq "Something"
       end
     end
   end

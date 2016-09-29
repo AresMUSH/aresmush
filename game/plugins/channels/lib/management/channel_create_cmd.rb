@@ -7,7 +7,7 @@ module AresMUSH
            
       attr_accessor :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'channels'
         super
@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Channels.can_manage_channels?(client.char)
+        return t('dispatcher.not_allowed') if !Channels.can_manage_channels?(enactor)
         return nil
       end
       

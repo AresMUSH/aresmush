@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'groups'
         super

@@ -8,7 +8,7 @@ module AresMUSH
 
       attr_accessor :category, :topic, :category_config
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['topic']
         self.help_topic = 'help'
         super
@@ -27,7 +27,7 @@ module AresMUSH
       
       def check_can_view_help
         return nil if !self.category
-        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(enactor, self.category)
         return nil
       end
       

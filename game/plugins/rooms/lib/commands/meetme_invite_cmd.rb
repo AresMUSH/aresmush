@@ -7,7 +7,7 @@ module AresMUSH
 
       attr_accessor :names
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['names']
         self.help_topic = 'meetme'
         super
@@ -27,8 +27,8 @@ module AresMUSH
       end
       
       def check_approved
-        return nil if Rooms.can_teleport?(client.char)
-        return t('rooms.cant_meetme_if_newbie') if !client.char.is_approved
+        return nil if Rooms.can_teleport?(enactor)
+        return t('rooms.cant_meetme_if_newbie') if !enactor.is_approved
         return nil
       end
       
@@ -53,7 +53,7 @@ module AresMUSH
         end
         
         to_clients.each do |c|
-          c.emit_ooc t('rooms.receive_meetme_invite', :name => client.name, :room => client.room.name)          
+          c.emit_ooc t('rooms.receive_meetme_invite', :name => enactor_name, :room => enactor_room.name)          
           c.program[:meetme] = client
         end
         client.emit_success t('rooms.send_meetme_invite', :name => self.names.join(", "))

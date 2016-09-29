@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :board_name, :subject, :message
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['board_name', 'subject', 'message']
         self.help_topic = 'bbs'
         super
@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def handle        
-        Bbs.post(self.board_name, self.subject, self.message, client.char, client)
+        Bbs.post(self.board_name, self.subject, self.message, enactor, client)
       end
     end
   end

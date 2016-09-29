@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def handle
-        room = client.char.room        
+        room = enactor.room        
         room.pose_order = {}
         room.poses = []
         room.save!

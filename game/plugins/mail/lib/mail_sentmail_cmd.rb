@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :option
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['option']
         self.help_topic = 'mail'
         super
@@ -22,8 +22,8 @@ module AresMUSH
       end      
       
       def handle        
-        client.char.copy_sent_mail = self.option.is_on?
-        client.char.save
+        enactor.copy_sent_mail = self.option.is_on?
+        enactor.save
         if (self.option.is_on?)
           client.emit_ooc t('mail.sentmail_on')
         else

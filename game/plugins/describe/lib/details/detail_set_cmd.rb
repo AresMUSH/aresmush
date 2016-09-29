@@ -10,7 +10,7 @@ module AresMUSH
       
       attr_accessor :name, :target, :desc
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'target', 'desc']
         self.help_topic = 'detail'
         super
@@ -26,7 +26,7 @@ module AresMUSH
       def handle
         VisibleTargetFinder.with_something_visible(self.target, client) do |model|
           
-          if (!Describe.can_describe?(client.char, model))
+          if (!Describe.can_describe?(enactor, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end

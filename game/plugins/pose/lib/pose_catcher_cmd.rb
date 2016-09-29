@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
            
       def handle
-        message = PoseFormatter.format(client.name, cmd.raw)
+        message = PoseFormatter.format(enactor_name, cmd.raw)
         Pose.emit_pose(client, message, cmd.raw.start_with?("\\"), false)
       end
 

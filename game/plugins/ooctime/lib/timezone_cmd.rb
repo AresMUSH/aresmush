@@ -8,7 +8,7 @@ module AresMUSH
            
       attr_accessor :zone
            
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['zone']
         self.help_topic = 'time'
         super
@@ -41,8 +41,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.timezone = self.zone
-        client.char.save
+        enactor.timezone = self.zone
+        enactor.save
         client.emit_success t('time.timezone_set', :timezone => self.zone)
         Handles::Api.warn_if_setting_linked_preference(client)
       end

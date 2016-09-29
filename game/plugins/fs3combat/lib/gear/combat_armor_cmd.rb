@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :armor
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'armor']
         self.help_topic = 'combat'
         super
@@ -20,7 +20,7 @@ module AresMUSH
           self.name = titleize_input(cmd.args.arg1)
           self.armor = titleize_input(cmd.args.arg2)
         else
-          self.name = client.char.name
+          self.name = enactor.name
           self.armor = titleize_input(cmd.args)
         end
       end

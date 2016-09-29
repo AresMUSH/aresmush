@@ -7,11 +7,11 @@ module AresMUSH
       attr_accessor :name
       
       def crack!
-        self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
+        self.name = cmd.args.nil? ? enactor_name : trim_input(cmd.args)
       end
 
       def check_can_assign_role
-        return t('dispatcher.not_allowed') if !Roles.can_assign_role?(client.char)
+        return t('dispatcher.not_allowed') if !Roles.can_assign_role?(enactor)
         return nil
       end
 

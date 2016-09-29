@@ -6,12 +6,12 @@ module AresMUSH
       include CommandWithoutArgs
     
       def check_can_access
-        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(client.char)
+        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         return nil
       end
       
       def handle
-        unread = client.char.unread_jobs
+        unread = enactor.unread_jobs
         if (unread.empty?)
           client.emit_success t('jobs.no_new_jobs')
           return
@@ -21,7 +21,7 @@ module AresMUSH
         job = unread[0]
         template = JobTemplate.new(client, job)            
         client.emit template.render
-        Jobs.mark_read(job, client.char)
+        Jobs.mark_read(job, enactor)
       end
     end
   end

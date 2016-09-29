@@ -22,7 +22,7 @@ module AresMUSH
       
       describe :message do
         before do
-          client.stub(:name) { "Bob" }          
+          enactor.stub(:name) { "Bob" }          
         end
         
         it "should format an emit message" do

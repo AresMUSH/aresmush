@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :target
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['target']
         self.help_topic = 'findsite'
         super
@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
+        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
         return nil
       end
 

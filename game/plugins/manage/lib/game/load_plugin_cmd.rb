@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :load_target
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['load_target']
         self.help_topic = 'load'
         super
@@ -24,7 +24,7 @@ module AresMUSH
       
       def handle
         begin
-          can_manage = Manage.can_manage_game?(client.char)
+          can_manage = Manage.can_manage_game?(enactor)
           if (!can_manage)
             client.emit_failure t('dispatcher.not_allowed')
             return

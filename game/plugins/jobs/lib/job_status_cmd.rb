@@ -5,7 +5,7 @@ module AresMUSH
   
       attr_accessor :value
   
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number', 'value']
         self.help_topic = 'jobs'
         super

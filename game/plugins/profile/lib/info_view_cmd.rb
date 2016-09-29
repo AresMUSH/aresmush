@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :target
       
       def crack!
-        self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
+        self.target = cmd.args.nil? ? enactor_name : trim_input(cmd.args)
       end
       
       def handle

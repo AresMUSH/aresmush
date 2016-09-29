@@ -13,14 +13,14 @@ module AresMUSH
 
       def handle
         if (self.option.nil?)
-          client.char.autospace = nil
+          enactor.autospace = nil
           message = t('pose.autospace_cleared')
         else
-          client.char.autospace = self.option
+          enactor.autospace = self.option
           message = t('pose.autospace_set', :option => self.option)
         end
         
-        client.char.save!
+        enactor.save!
         client.emit_success message
         
         Handles::Api.warn_if_setting_linked_preference(client)

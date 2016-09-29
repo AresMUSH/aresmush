@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :target, :desc
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['target', 'desc']
         self.help_topic = 'describe'
         super
@@ -23,7 +23,7 @@ module AresMUSH
       def handle
         AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
         
-          if (!Describe.can_describe?(client.char, model))
+          if (!Describe.can_describe?(enactor, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end

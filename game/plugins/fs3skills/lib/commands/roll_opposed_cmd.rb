@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name1, :name2, :roll_str1, :roll_str2
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name1', 'roll_str1', 'roll_str2']
         self.help_topic = 'roll'
         super
@@ -57,7 +57,7 @@ module AresMUSH
           :dice2 => FS3Skills.print_dice(die_result2),
           :result => results)  
             
-          FS3Skills.emit_results message, client, client.room, false
+          FS3Skills.emit_results message, client, enactor_room, false
         end
       end
     end

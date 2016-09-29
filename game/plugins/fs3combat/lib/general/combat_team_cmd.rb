@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :team
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'team']
         self.help_topic = 'combat'
         super
@@ -20,7 +20,7 @@ module AresMUSH
           self.name = titleize_input(cmd.args.arg1)
           self.team = trim_input(cmd.args.arg2).to_i
         else
-          self.name = client.char.name
+          self.name = enactor.name
           self.team = trim_input(cmd.args).to_i
         end
       end
@@ -35,7 +35,7 @@ module AresMUSH
           combatant.team = team
           combatant.save
           message = t('fs3combat.team_set', :name => self.name, :team => self.team)
-          combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+          combat.emit message, FS3Combat.npcmaster_text(name, enactor)
         end
       end
     end

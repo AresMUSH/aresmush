@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :num, :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'num']
         self.help_topic = 'mail'
         super
@@ -21,7 +21,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
-          deliveries = model.sent_mail_to(client.char)
+          deliveries = model.sent_mail_to(enactor)
           
           Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
             if (delivery.read)

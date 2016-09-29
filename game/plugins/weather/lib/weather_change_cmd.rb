@@ -8,14 +8,14 @@ module AresMUSH
       
       attr_accessor :temp, :condition, :area
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['temp', 'condition', 'area']
         self.help_topic = 'weather'
         super
       end
 
       def check_can_change_weather
-        return t('dispatcher.not_allowed') if !Weather.can_change_weather?(client.char)
+        return t('dispatcher.not_allowed') if !Weather.can_change_weather?(enactor)
         return nil
       end
       

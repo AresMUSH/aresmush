@@ -7,7 +7,7 @@ module AresMUSH
 
       attr_accessor :num, :tag
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['num', 'tag']
         self.help_topic = 'mail tags'
         super

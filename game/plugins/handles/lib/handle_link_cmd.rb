@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :handle_name, :link_code
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['handle_name', 'link_code']
         self.help_topic = 'handle'
         super
@@ -20,12 +20,12 @@ module AresMUSH
       end
       
       def check_handle_name
-        #return t('handles.character_already_linked') if client.char.handle
+        #return t('handles.character_already_linked') if enactor.handle
         return nil
       end
       
       def handle
-        char = client.char
+        char = enactor
 
         # Strip off the @ a thte front if they made one.
         self.handle_name.sub!(/^@/, '')

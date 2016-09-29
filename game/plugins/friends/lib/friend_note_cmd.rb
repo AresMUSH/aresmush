@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :note
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'note']
         self.help_topic = 'friends'
         super
@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def handle
-        result = Friends.find_friendship(client.char, self.name)
+        result = Friends.find_friendship(enactor, self.name)
         friendship = result[:friendship]
         if (friendship.nil?)
           client.emit_failure result[:error]

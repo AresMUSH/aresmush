@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :will
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['will']
         self.help_topic = 'lastwill'
         super
@@ -19,8 +19,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.lastwill = self.will
-        client.char.save!
+        enactor.lastwill = self.will
+        enactor.save!
         client.emit_success t('idle.lastwill_set')
       end
     end

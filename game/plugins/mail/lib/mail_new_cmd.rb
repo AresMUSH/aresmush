@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutArgs
       
       def handle
-        unread = client.char.unread_mail.first
+        unread = enactor.unread_mail.first
         if (unread.nil?)
           client.emit_ooc t('mail.no_unread_messages')
         else

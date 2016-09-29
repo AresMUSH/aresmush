@@ -7,7 +7,7 @@ module AresMUSH
 
       attr_accessor :number
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number']
         self.help_topic = 'jobs'
         super
@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def check_can_access
-        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(client.char)
+        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         return nil
       end
     end

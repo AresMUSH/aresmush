@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name
             
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'destroy'
         super
@@ -19,7 +19,7 @@ module AresMUSH
 
       def handle
         AnyTargetFinder.with_any_name_or_id(self.name, client) do |target|
-          if (!Manage.can_manage_object?(client.char, target))
+          if (!Manage.can_manage_object?(enactor, target))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

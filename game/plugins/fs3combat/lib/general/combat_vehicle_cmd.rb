@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :vehicle, :passenger_type
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'vehicle', 'passenger_type']
         self.help_topic = 'combat'
         super
@@ -20,7 +20,7 @@ module AresMUSH
           self.name = titleize_input(cmd.args.arg1)
           self.vehicle = trim_input(cmd.args.arg2)
         else
-          self.name = client.name
+          self.name = enactor_name
           self.vehicle = titleize_input(cmd.args)
         end
         
@@ -28,12 +28,12 @@ module AresMUSH
       end
       
       def check_in_combat
-        return t('fs3combat.you_are_not_in_combat') if !client.char.is_in_combat?
+        return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
         return nil
       end
       
       def handle
-        combat = client.char.combatant.combat
+        combat = enactor.combatant.combat
         vehicle = combat.find_or_create_vehicle(self.vehicle) 
               
         if (!vehicle)

@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :names, :num, :combatant_type
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['names', 'num']
         self.help_topic = 'combat'
         super
@@ -22,7 +22,7 @@ module AresMUSH
           self.combatant_type = titleize_input(cmd.args.arg3)
         else
           cmd.crack_args!(CommonCracks.arg1_slash_optional_arg2)
-          self.names = [ client.name ]
+          self.names = [ enactor_name ]
           self.num = titleize_input(cmd.args.arg1)
           self.combatant_type = titleize_input(cmd.args.arg2)
         end

@@ -9,7 +9,7 @@ module AresMUSH
       attr_accessor :target
       attr_accessor :name
             
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['target']
         self.required_args = ['name']
         self.help_topic = 'rename'
@@ -24,7 +24,7 @@ module AresMUSH
 
       def handle
         AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
-          if (!can_rename_self(model) && !Manage.can_manage_object?(client.char, model))
+          if (!can_rename_self(model) && !Manage.can_manage_object?(enactor, model))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
@@ -51,7 +51,7 @@ module AresMUSH
       end
       
       def can_rename_self(model)
-        return true if (model == client.char && !model.is_approved?)
+        return true if (model == enactor && !model.is_approved?)
         false          
       end
     end

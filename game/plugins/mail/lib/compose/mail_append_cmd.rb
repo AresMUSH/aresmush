@@ -7,7 +7,7 @@ module AresMUSH
            
       attr_accessor :body
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['body']
         self.help_topic = 'mail composition'
         super
@@ -23,13 +23,13 @@ module AresMUSH
       end
       
       def handle
-        body_so_far = client.char.mail_compose_body
+        body_so_far = enactor.mail_compose_body
         if (body_so_far.nil?)
-          client.char.mail_compose_body = self.body
+          enactor.mail_compose_body = self.body
         else
-          client.char.mail_compose_body = "#{body_so_far}%R%R#{self.body}"
+          enactor.mail_compose_body = "#{body_so_far}%R%R#{self.body}"
         end
-        client.char.save
+        enactor.save
         
         client.emit_ooc t('mail.mail_added')
       end

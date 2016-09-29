@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def handle
-        self.channel = Channels.channel_for_alias(client.char, cmd.root)
+        self.channel = Channels.channel_for_alias(enactor, cmd.root)
         
         # To support MUX-style command syntax, messages can trigger other
         # commands.
@@ -24,7 +24,7 @@ module AresMUSH
         if (self.msg == "who")
           cmd = Command.new("channel/who #{self.channel.name}")
         elsif (self.msg == "on")
-          chan_alias = Channels.get_channel_option(client.char, self.channel, 'alias')
+          chan_alias = Channels.get_channel_option(enactor, self.channel, 'alias')
           if (chan_alias)
             cmd = Command.new("channel/join #{self.channel.name}=#{chan_alias.join(",")}")
           else
@@ -43,18 +43,18 @@ module AresMUSH
           return
         end
 
-        if (!Channels.is_on_channel?(client.char, self.channel))
+        if (!Channels.is_on_channel?(enactor, self.channel))
           client.emit_failure t('channels.not_on_channel')
           return
         end
         
-        if (Channels.is_gagging?(client.char, self.channel))
+        if (Channels.is_gagging?(enactor, self.channel))
           client.emit_failure t('channels.cant_talk_when_gagged')
           return          
         end
           
-        title = Channels.get_channel_option(client.char, channel, "title")
-        ooc_name = Handles::Api.ooc_name(client.char)
+        title = Channels.get_channel_option(enactor, channel, "title")
+        ooc_name = Handles::Api.ooc_name(enactor)
         name = title.nil? ? ooc_name : "#{title} #{ooc_name}"
         self.channel.pose(name, self.msg)
       end

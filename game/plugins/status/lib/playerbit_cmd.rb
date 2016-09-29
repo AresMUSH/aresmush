@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :option
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['option']
         self.help_topic = 'playerbit'
         super
@@ -23,8 +23,8 @@ module AresMUSH
       end
       
       def handle        
-        client.char.is_playerbit = self.option.is_on?
-        client.char.save
+        enactor.is_playerbit = self.option.is_on?
+        enactor.save
         client.emit_ooc self.option.is_on? ? t('status.set_playerbit_on') : t('status.set_playerbit_off')
       end
     end

@@ -7,7 +7,7 @@ module AresMUSH
            
       attr_accessor :name, :alias
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'alias']
         self.help_topic = 'channels'
         super
@@ -22,7 +22,7 @@ module AresMUSH
       
       def handle
         Channels.with_an_enabled_channel(self.name, client) do |channel|
-          Channels.set_channel_alias(client, client.char, channel, self.alias)
+          Channels.set_channel_alias(client, enactor, channel, self.alias)
         end
       end
     end  

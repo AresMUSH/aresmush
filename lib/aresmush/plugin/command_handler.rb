@@ -3,13 +3,16 @@ module AresMUSH
     
     attr_accessor :client, :cmd, :enactor
 
-    # This defines basic processing suitable for many commands.  You can override this 
-    # method entirely if you need advanced processing, or just override the helper methods
-    # as needed.  See the documentation on crack!, check and handle for more info.
-    def on_command(client, cmd, enactor)
+    def initialize(client, cmd, enactor)
       @client = client
       @cmd = cmd
       @enactor = enactor
+    end
+    
+    # This defines basic processing suitable for many commands.  You can override this 
+    # method entirely if you need advanced processing, or just override the helper methods
+    # as needed.  See the documentation on crack!, check and handle for more info.
+    def on_command
       log_command
       crack!
       

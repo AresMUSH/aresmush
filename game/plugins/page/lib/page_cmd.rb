@@ -11,21 +11,21 @@ module AresMUSH
         if (cmd.args.nil?)
           self.names = []
         elsif (cmd.args.start_with?("="))
-          self.names = client.char.last_paged
+          self.names = enactor.last_paged
           self.message = cmd.args.after("=")
         elsif (cmd.args.include?("="))
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           
           # Catch the common mistake of last-paging someone a link.
           if (cmd.args.arg1 && cmd.args.arg1.include?("http://"))
-            self.names = client.char.last_paged
+            self.names = enactor.last_paged
             self.message = "#{cmd.args.arg1}=#{cmd.args.arg2}"
           else
             self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
             self.message = cmd.args.arg2
           end
         else
-          self.names = client.char.last_paged
+          self.names = enactor.last_paged
           self.message = cmd.args
         end
       end
@@ -37,35 +37,35 @@ module AresMUSH
       
       def handle
         OnlineCharFinder.with_online_chars(self.names, client) do |clients|
-          name = client.char.name
+          name = enactor.name
           message = PoseFormatter.format(name, self.message)
           recipients = clients.map { |r| r.char.name_and_alias }.join(", ")
         
-          client.emit t('page.to_sender', :autospace => Pose::Api.autospace(client.char), :color => page_color, :recipients => recipients, :message => message)
+          client.emit t('page.to_sender', :autospace => Pose::Api.autospace(enactor), :color => page_color, :recipients => recipients, :message => message)
           clients.each do |c|
             page_recipient(c, recipients, message)
           end
         
-          client.char.last_paged = self.names
-          client.char.save!
+          enactor.last_paged = self.names
+          enactor.save!
         end
       end
       
       def page_recipient(other_client, recipients, message)
-        if (other_client.char.do_not_disturb)
-          client.emit_ooc t('page.recipient_do_not_disturb', :name => other_client.name)
-          Mail::Api.send_mail([other_client.name], 
-              t('page.missed_page_subject', :name => client.name), 
-              t('page.missed_page_body', :name => client.name, :message => message), 
+        if (other_enactor.do_not_disturb)
+          client.emit_ooc t('page.recipient_do_not_disturb', :name => other_enactor_name)
+          Mail::Api.send_mail([other_enactor_name], 
+              t('page.missed_page_subject', :name => enactor_name), 
+              t('page.missed_page_body', :name => enactor_name, :message => message), 
               client)
         else          
-          other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_client.char), :color => page_color, :recipients => recipients, :message => message)
+          other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_enactor), :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client)
         end
       end
       
       def send_afk_message(other_client)
-        char = other_client.char
+        char = other_enactor
         if (char.is_afk)
           afk_message = ""
           if (Status::Api.afk_message(char))

@@ -5,10 +5,10 @@ module AresMUSH
       include CommandRequiresLogin
 
       def handle
-        client.char.chargen_stage = 0
-        client.char.save!
+        enactor.chargen_stage = 0
+        enactor.save!
 
-        template = ChargenTemplate.new(client.char)
+        template = ChargenTemplate.new(enactor)
         client.emit template.render
       end
     end

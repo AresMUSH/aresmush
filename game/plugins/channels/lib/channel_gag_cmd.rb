@@ -7,7 +7,7 @@ module AresMUSH
            
       attr_accessor :name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'channels'
         super
@@ -20,13 +20,13 @@ module AresMUSH
       def handle
         Channels.with_an_enabled_channel(self.name, client) do |channel|
           if (cmd.switch_is?("gag"))
-            Channels.set_gagging(client.char, channel, true)
+            Channels.set_gagging(enactor, channel, true)
             client.emit_success t('channels.channel_gagged', :name => self.name)
           else
-            Channels.set_gagging(client.char, channel, false)
+            Channels.set_gagging(enactor, channel, false)
             client.emit_success t('channels.channel_ungagged', :name => self.name)
           end
-          client.char.save!
+          enactor.save!
         end
       end
     end  

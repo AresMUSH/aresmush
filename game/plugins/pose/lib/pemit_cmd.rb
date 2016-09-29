@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :names, :message
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['names', 'message']
         self.help_topic = 'posing'
         super
@@ -25,7 +25,7 @@ module AresMUSH
           clients.each do |c|
             nospoof = ""
             if (c.char.nospoof)
-              nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => client.name)}%xn%R"
+              nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => enactor_name)}%xn%R"
             end
             c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{self.message}"
           end

@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :name
       attr_accessor :new_password
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'new_password']
         self.help_topic = 'password'
         super
@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def check_can_reset
-        return t('dispatcher.not_allowed')  if !Login.can_reset_password?(client.char)
+        return t('dispatcher.not_allowed')  if !Login.can_reset_password?(enactor)
         return nil
       end
       

@@ -9,7 +9,7 @@ module AresMUSH
       attr_accessor :subject
       attr_accessor :body
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['names', 'subject', 'body']
         self.help_topic = 'mail'
         super

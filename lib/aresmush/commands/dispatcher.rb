@@ -72,8 +72,8 @@ module AresMUSH
             handler_class = p.get_cmd_handler(client, cmd, enactor)
             if (handler_class)
               @handled = true
-              handler = handler_class.new
-              handler.on_command(client, cmd, enactor)
+              handler = handler_class.new(client, cmd, enactor)
+              handler.on_command
               return
             end # if
           end # with error handling

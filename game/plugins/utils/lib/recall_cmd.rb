@@ -13,7 +13,7 @@ module AresMUSH
 
       def handle
         if (self.num.nil?)
-          recall_items = client.char.saved_text.each_with_index.map { |x,i| "#{i+1}.  #{x}" }
+          recall_items = enactor.saved_text.each_with_index.map { |x,i| "#{i+1}.  #{x}" }
           client.emit BorderedDisplay.list(recall_items, t('save.recall_title'))
           return
         end
@@ -24,7 +24,7 @@ module AresMUSH
         end
         index = num.to_i - 1
         
-        client.grab client.char.saved_text[index]
+        client.grab enactor.saved_text[index]
       end
       
     end

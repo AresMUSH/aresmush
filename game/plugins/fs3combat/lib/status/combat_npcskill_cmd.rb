@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :skill
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'skill']
         self.help_topic = 'combat'
         super
@@ -26,7 +26,7 @@ module AresMUSH
       
       def handle
         FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-          if (combat.organizer != client.char)
+          if (combat.organizer != enactor)
             client.emit_failure t('fs3combat.only_organizer_can_do')
             return
           end

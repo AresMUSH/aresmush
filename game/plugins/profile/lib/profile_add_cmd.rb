@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :field, :value
      
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['field', 'value']
         self.help_topic = 'profile'
         super
@@ -20,8 +20,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.profile[self.field] = self.value
-        client.char.save!
+        enactor.profile[self.field] = self.value
+        enactor.save!
         client.emit_success t('profile.custom_profile_set', :field => self.field)
       end
     end

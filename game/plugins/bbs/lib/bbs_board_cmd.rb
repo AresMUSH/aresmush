@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :board_name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['board_name']
         self.help_topic = 'bbs'
         super

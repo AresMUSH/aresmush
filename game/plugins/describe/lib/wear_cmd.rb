@@ -16,7 +16,7 @@ module AresMUSH
       def check_outfits_exist
         return t('dispatcher.invalid_syntax', :command => 'wear') if self.names.nil? || self.names.empty?
         self.names.each do |n|
-          return t('describe.outfit_does_not_exist', :name => n) if client.char.outfit(n).nil?
+          return t('describe.outfit_does_not_exist', :name => n) if enactor.outfit(n).nil?
         end
         return nil
       end
@@ -24,10 +24,10 @@ module AresMUSH
       def handle
         desc = ""
         self.names.each do |n|
-          desc << client.char.outfit(n)
+          desc << enactor.outfit(n)
           desc << " "
         end
-        Describe.set_desc(client.char, desc)
+        Describe.set_desc(enactor, desc)
         client.emit_success t('describe.outfits_worn')
       end
     end

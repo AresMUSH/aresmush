@@ -11,9 +11,9 @@ module AresMUSH
             
       def handle
         client.emit BorderedDisplay.text t('mail.proof', 
-        :to => client.char.mail_compose_to.join(" "), 
-        :subject => client.char.mail_compose_subject,
-        :body => client.char.mail_compose_body)
+        :to => enactor.mail_compose_to.join(" "), 
+        :subject => enactor.mail_compose_subject,
+        :body => enactor.mail_compose_body)
       end
     end
   end

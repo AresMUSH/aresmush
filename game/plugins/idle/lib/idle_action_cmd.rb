@@ -8,7 +8,7 @@ module AresMUSH
       
       attr_accessor :name, :action
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'action']
         self.help_topic = 'idle'
         super
@@ -21,7 +21,7 @@ module AresMUSH
       end
 
       def check_can_manage
-        return nil if Idle.can_idle_sweep?(client.char)
+        return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')
       end
       

@@ -8,14 +8,14 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'roster'
         super
       end
 
       def check_can_remove
-        return nil if Roster.can_manage_roster?(client.char)
+        return nil if Roster.can_manage_roster?(enactor)
         return t('dispatcher.not_allowed')
       end
       

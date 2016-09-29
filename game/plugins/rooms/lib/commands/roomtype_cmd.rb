@@ -8,7 +8,7 @@ module AresMUSH
 
       attr_accessor :name
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'rooms'
         super
@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil
       end
       
@@ -30,7 +30,7 @@ module AresMUSH
       end
       
       def handle
-        room = client.room
+        room = enactor_room
         room.room_type = self.name.upcase
         if (room.room_type == "OOC")
           room.repose_on = false

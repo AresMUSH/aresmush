@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :desc, :severity
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'desc', 'severity']
         self.help_topic = 'damage'
         super
@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !FS3Combat.can_manage_damage?(client.char)
+        return t('dispatcher.not_allowed') if !FS3Combat.can_manage_damage?(enactor)
         return nil
       end
       

@@ -14,18 +14,16 @@ module AresMUSH
   
   module CommandHandlerTestHelper
     
-    attr_accessor :client, :char, :cmd, :handler
+    attr_accessor :client, :enactor, :cmd, :handler
     
     def init_handler(handler_class, cmd_text)
       @client = double
-      @char = double
-      SpecHelpers.setup_mock_client(@client, @char)
+      @enactor = double
+      SpecHelpers.setup_mock_client(@client, @enactor)
       
       @cmd = Command.new(cmd_text)
       
-      @handler = handler_class.new
-      @handler.client = @client
-      @handler.cmd = @cmd
+      @handler = handler_class.new(@client, @cmd, @enactor)
     end        
       
     shared_examples "a plugin that requires login" do

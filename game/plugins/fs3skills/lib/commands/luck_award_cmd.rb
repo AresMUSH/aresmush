@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name, :luck
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name', 'luck']
         self.help_topic = 'luck'
         super
@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def check_can_award
-        return nil if FS3Skills.can_manage_luck?(client.char)
+        return nil if FS3Skills.can_manage_luck?(enactor)
         return t('dispatcher.not_allowed')
       end
       
@@ -33,7 +33,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.name, client) do |model|
           model.luck = model.luck + self.luck.to_i
           model.save
-          Global.logger.info "#{self.luck} Luck Points Awarded by #{client.name} to #{model.name}"
+          Global.logger.info "#{self.luck} Luck Points Awarded by #{enactor_name} to #{model.name}"
           client.emit_success t('fs3skills.luck_awarded', :name => model.name, :luck => self.luck)
         end
       end

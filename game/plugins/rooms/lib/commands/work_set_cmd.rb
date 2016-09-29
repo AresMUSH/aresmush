@@ -6,14 +6,14 @@ module AresMUSH
       include CommandWithoutArgs
       
       def check_can_go_work
-        return t('dispatcher.not_allowed') if !Rooms.can_go_home?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_go_home?(enactor)
         return nil
       end
       
       def handle
         client.emit_ooc t('rooms.work_set')
-        client.char.work = client.char.room
-        client.char.save!
+        enactor.work = enactor.room
+        enactor.save!
       end
     end
   end

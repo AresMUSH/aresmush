@@ -12,19 +12,19 @@ module AresMUSH
       end
 
       def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil
       end
       
       def handle
         if (self.name.nil?)
-          client.room.area = nil
+          enactor_room.area = nil
           message = t('rooms.area_cleared')
         else
-          client.room.area = self.name
+          enactor_room.area = self.name
           message = t('rooms.area_set')
         end
-        client.room.save!
+        enactor_room.save!
         client.emit_success message
       end
     end

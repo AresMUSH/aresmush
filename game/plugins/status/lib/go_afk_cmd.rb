@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def handle      
-        char = client.char
+        char = enactor
 
         if (self.message == "off")
           char.afk_message = ""

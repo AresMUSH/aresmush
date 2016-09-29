@@ -37,7 +37,7 @@ module AresMUSH
           @dest = double
           @client_room = double
           Rooms.stub(:open_exit)
-          client.stub(:room) { @client_room }
+          enactor.stub(:room) { @client_room }
         end
         
         context "dest not found" do

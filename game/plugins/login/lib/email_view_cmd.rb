@@ -7,13 +7,13 @@ module AresMUSH
       attr_accessor :name
 
       def crack!
-        self.name = cmd.args.nil? ? client.name : trim_input(cmd.args)
+        self.name = cmd.args.nil? ? enactor_name : trim_input(cmd.args)
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |char|
           
-          if !Login.can_access_email?(client.char, char)
+          if !Login.can_access_email?(enactor, char)
             client.emit_failure t('dispatcher.not_allowed') 
             return
           end

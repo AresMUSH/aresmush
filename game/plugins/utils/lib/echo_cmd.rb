@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :message
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['message']
         self.help_topic = 'echo'
         super

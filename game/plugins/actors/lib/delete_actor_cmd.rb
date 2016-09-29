@@ -7,7 +7,7 @@ module AresMUSH
       
       attr_accessor :name
 
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['name']
         self.help_topic = 'actors'
         super
@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def check_is_allowed
-        return t('dispatcher.not_allowed') if !Actors.can_set_actor?(client.char)
+        return t('dispatcher.not_allowed') if !Actors.can_set_actor?(enactor)
         return nil
       end
       
