@@ -7,23 +7,23 @@ module AresMUSH
       # List of all replies to this post, in order by date.
       attr_accessor :post
       
-      def initialize(post, client)
+      def initialize(post, enactor)
         @post = post
-        @client = client
+        @enactor = enactor
         super File.dirname(__FILE__) + "/archive.erb"
       end
 
       def date
-        OOCTime::Api.local_long_timestr(@client, @post.created_at)
+        OOCTime::Api.local_long_timestr(@enactor, @post.created_at)
       end
       
       def author
-        @post.author.nil? ? t('bbs.deleted_author') : @post.author.name
+        !@post.author ? t('bbs.deleted_author') : @post.author.name
       end
       
       def reply_title(reply)
-        rauthor = reply.author.nil? ? t('bbs.deleted_author') : reply.author.name
-        rdate = OOCTime::Api.local_long_timestr(@client, reply.created_at)
+        rauthor = !reply.author ? t('bbs.deleted_author') : reply.author.name
+        rdate = OOCTime::Api.local_long_timestr(@enactor, reply.created_at)
         t('bbs.reply_title', :name => rauthor, :date => rdate)
       end
     end

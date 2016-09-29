@@ -64,7 +64,7 @@ module AresMUSH
       def strip_prefix(arg)
         return nil if !arg
         cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(arg)
-        cracked.nil? ? nil : cracked[:rest]
+        !cracked ? nil : cracked[:rest]
       end
             
       def display_help(topic, category_title)

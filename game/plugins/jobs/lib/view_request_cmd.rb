@@ -19,14 +19,14 @@ module AresMUSH
       end
       
       def check_number
-        return nil if self.number.nil?
+        return nil if !self.number
         return t('jobs.invalid_job_number') if !self.number.is_integer?
         return nil
       end
       
       def handle
-        Jobs.with_a_request(client, self.number) do |request|
-          template = JobTemplate.new(client, request)            
+        Jobs.with_a_request(client, enactor, self.number) do |request|
+          template = JobTemplate.new(enactor, request)            
           client.emit template.render
           Jobs.mark_read(request, enactor)
         end

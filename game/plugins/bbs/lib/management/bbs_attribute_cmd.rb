@@ -29,7 +29,7 @@ module AresMUSH
       include BbsAttributeCmd
     
       def handle
-        Bbs.with_a_board(name, client) do |board|        
+        Bbs.with_a_board(name, client, enactor) do |board|        
           board.description = self.attribute
           board.save!
           client.emit_success t('bbs.desc_set')
@@ -46,7 +46,7 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_board(name, client) do |board|        
+        Bbs.with_a_board(name, client, enactor) do |board|        
           board.order = self.attribute.to_i
           board.save!
           client.emit_success t('bbs.order_set')
@@ -58,7 +58,7 @@ module AresMUSH
       include BbsAttributeCmd
     
       def handle
-        Bbs.with_a_board(name, client) do |board|        
+        Bbs.with_a_board(name, client, enactor) do |board|        
           board.name = self.attribute
           board.save!
           client.emit_success t('bbs.board_renamed')
@@ -70,7 +70,7 @@ module AresMUSH
       include BbsAttributeCmd
     
       def check_roles
-        if (self.attribute == "none" || self.attribute.nil?)
+        if (self.attribute == "none" || !self.attribute)
           return nil
         end
         self.attribute.split(",").each do |r|
@@ -80,7 +80,7 @@ module AresMUSH
       end
     
       def handle
-        Bbs.with_a_board(name, client) do |board|
+        Bbs.with_a_board(name, client, enactor) do |board|
         
           if (self.attribute == "none")
             roles = []

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def check_composing_mail
-        return t('mail.not_composing_message') if !Mail.is_composing_mail?(client)
+        return t('mail.not_composing_message') if !Mail.is_composing_mail?(enactor)
         return nil
       end
       
@@ -24,7 +24,7 @@ module AresMUSH
       
       def handle
         body_so_far = enactor.mail_compose_body
-        if (body_so_far.nil?)
+        if (!body_so_far)
           enactor.mail_compose_body = self.body
         else
           enactor.mail_compose_body = "#{body_so_far}%R%R#{self.body}"

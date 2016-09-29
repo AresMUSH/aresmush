@@ -17,11 +17,11 @@ module AresMUSH
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
-        if (cmd.args.arg2.nil?)
+        if (!cmd.args.arg2)
           self.names = []
           self.destination = trim_input(cmd.args.arg1)
         else
-          self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
+          self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
           self.destination = trim_input(cmd.args.arg2)
         end
       end
@@ -33,7 +33,7 @@ module AresMUSH
       
       def handle
         room = find_destination
-        if (room.nil?)
+        if (!room)
           client.emit_failure(t('rooms.invalid_teleport_destination'))
           return
         end

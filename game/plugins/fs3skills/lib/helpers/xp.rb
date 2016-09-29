@@ -15,7 +15,7 @@ module AresMUSH
     end
     
     def self.check_raise_frequency(char)
-      return nil if char.last_xp_spend.nil?
+      return nil if !char.last_xp_spend
 
       time_to_go = (FS3Skills.days_between_xp_raises * 86400) - (Time.now - char.last_xp_spend)
       return nil if time_to_go < 0

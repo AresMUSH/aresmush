@@ -14,7 +14,7 @@ module AresMUSH
         enactor.mail.each_with_index do |delivery, i|
           Global.dispatcher.queue_timer(i, "Mail Backup #{enactor.name}", client) do
             Global.logger.debug "Logging mail #{delivery.id} from #{enactor.name}."
-            template = MessageTemplate.new(client, delivery)
+            template = MessageTemplate.new(enactor, delivery)
             client.emit template.render
           end
         end

@@ -308,11 +308,11 @@ module AresMUSH
     end
     
     def is_in_vehicle?
-      !self.piloting.nil? || !self.riding_in.nil?
+      self.piloting || self.riding_in
     end
         
     def is_npc?
-      self.character.nil?
+      !self.character
     end
     
     def is_noncombatant?
@@ -331,7 +331,7 @@ module AresMUSH
     
     private
     def setup_defaults
-      self.name_upcase = self.name.nil? ? "" : self.name.upcase
+      self.name_upcase = !self.name ? "" : self.name.upcase
       self.npc_skill = self.npc_skill || (rand(3) + 3)
     end
   end

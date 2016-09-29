@@ -38,7 +38,7 @@ module AresMUSH
         else
           
           name_validation_msg = Character.check_name(self.alias)
-          if (!name_validation_msg.nil?)
+          if (name_validation_msg)
             client.emit_failure(name_validation_msg)
             return
           end

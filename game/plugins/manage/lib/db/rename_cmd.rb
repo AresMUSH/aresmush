@@ -30,7 +30,7 @@ module AresMUSH
           end
         
           name_validation_msg = model.class.check_name(self.name)
-          if (!name_validation_msg.nil?)
+          if (name_validation_msg)
             client.emit_failure(name_validation_msg)
             return
           end

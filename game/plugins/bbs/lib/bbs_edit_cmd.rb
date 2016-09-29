@@ -21,14 +21,14 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
+        Bbs.with_a_post(self.board_name, self.num, client, enactor) do |board, post|
           
           if (!Bbs.can_edit_post(enactor, post))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
             
-          if (self.new_text.nil?)
+          if (!self.new_text)
             client.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
             post.message = self.new_text

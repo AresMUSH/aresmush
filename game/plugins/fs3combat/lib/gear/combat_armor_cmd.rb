@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
           FS3Combat.set_armor(client, combatant, self.armor)
         end
       end

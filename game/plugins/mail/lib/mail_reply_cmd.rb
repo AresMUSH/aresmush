@@ -26,14 +26,14 @@ module AresMUSH
       
       def handle
         last_mail = client.program[:last_mail]
-        if (self.num.nil?)
+        if (!self.num)
           if (last_mail)
             reply_to last_mail
           else
             client.emit_failure t('dispatcher.invalid_syntax', :command => 'mail')
           end
         else
-          Mail.with_a_delivery(client, self.num) do |delivery|
+          Mail.with_a_delivery(client, enactor, self.num) do |delivery|
             reply_to delivery
           end
         end
@@ -44,7 +44,7 @@ module AresMUSH
         subject = t('mail.reply_subject', :subject => msg.subject)
         recipients = get_recipients(msg)
         
-        if (Mail.send_mail(recipients, subject, body, client))
+        if (Mail.send_mail(recipients, subject, body, client, enactor))
           client.emit_ooc t('mail.message_sent')
         end
       end

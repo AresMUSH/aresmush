@@ -35,7 +35,7 @@ module AresMUSH
       Global.logger.info("Client #{client.id} disconnected.")
       @clients.delete client
       Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
-      if (!client.char.nil?)
+      if (client.logged_in?)
         Global.dispatcher.queue_event CharDisconnectedEvent.new(client)
       end        
     end
@@ -49,7 +49,7 @@ module AresMUSH
     end
     
     def reload_clients
-      clients_with_chars = clients.select { |client| !client.char.nil? }
+      clients_with_chars = clients.select { |client| client.char }
       clients_with_chars.each do |c|
         c.char.reload
       end

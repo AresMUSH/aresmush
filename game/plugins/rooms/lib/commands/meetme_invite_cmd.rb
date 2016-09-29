@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.names = []
         else
           self.names = cmd.args.split(" ")

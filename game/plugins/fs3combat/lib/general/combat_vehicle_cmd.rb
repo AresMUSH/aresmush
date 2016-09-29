@@ -41,7 +41,7 @@ module AresMUSH
           return
         end
 
-        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
+        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
           if (combatant.is_in_vehicle?)
             combat.leave_vehicle(combatant)
           end

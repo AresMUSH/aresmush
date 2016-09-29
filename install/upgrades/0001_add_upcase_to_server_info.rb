@@ -6,7 +6,7 @@ module AresMUSH
   puts "======================================================================="
   
   ServerInfo.all.each do |s|
-    if (s.category.nil?)
+    if (!s.category)
       s.category = "Social"
     end
     s.game_open = true

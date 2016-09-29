@@ -22,8 +22,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.do_not_disturb = (self.option.is_on?)
-        client.char.save
+        enactor.do_not_disturb = (self.option.is_on?)
+        enactor.save
         client.emit_success t('page.do_not_disturb_set', :status => self.option)
       end
     end

@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutArgs
 
       def check_home_set
-        return t('rooms.home_not_set') if enactor.home.nil?
+        return t('rooms.home_not_set') if !enactor.home
         return nil
       end
       
@@ -16,9 +16,8 @@ module AresMUSH
       end
       
       def handle
-        char = enactor
-        char.room.emit_ooc t('rooms.char_has_gone_home', :name => char.name)
-        Rooms.move_to(client, char, char.home)
+        enactor.room.emit_ooc t('rooms.char_has_gone_home', :name => enactor.name)
+        Rooms.move_to(client, enactor, enactor.home)
       end
     end
   end

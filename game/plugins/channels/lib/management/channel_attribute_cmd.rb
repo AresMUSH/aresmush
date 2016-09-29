@@ -77,7 +77,7 @@ module AresMUSH
       include ChannelAttributeCmd
     
       def check_roles
-        if (self.attribute == "none" || self.attribute.nil?)
+        if (self.attribute == "none" || !self.attribute)
           return nil
         end
         self.attribute.split(",").each do |r|

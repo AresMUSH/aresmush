@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        Channels.with_an_enabled_channel(self.name, client) do |channel|
+        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           if (cmd.switch_is?("gag"))
             Channels.set_gagging(enactor, channel, true)
             client.emit_success t('channels.channel_gagged', :name => self.name)

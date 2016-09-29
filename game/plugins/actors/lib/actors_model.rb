@@ -3,7 +3,7 @@ module AresMUSH
     has_one :actor_registry, dependent: :nullify
     
     def actor
-      self.actor_registry.nil? ? t('actors.actor_not_set') : self.actor_registry.actor
+      self.actor_registry ? self.actor_registry.actor : t('actors.actor_not_set')
     end
     
   end

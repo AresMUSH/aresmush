@@ -34,7 +34,7 @@ module AresMUSH
         age = Demographics.calculate_age(bday)
         age_error = Demographics.check_age(age)
         
-        if (!age_error.nil?)
+        if (age_error)
           client.emit_failure age_error
           return
         end

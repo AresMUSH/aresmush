@@ -21,7 +21,7 @@ module AresMUSH
       def handle
         exit = enactor_room.get_exit(self.destination)
         
-        if (exit.nil? || exit.dest.nil?)
+        if (!exit || !exit.dest)
           client.emit_failure(t("rooms.cant_go_that_way"))
           return
         end

@@ -9,7 +9,7 @@ module AresMUSH
         client.emit_success t('cookies.giving_cookies_here')
         enactor_room.clients.each do |c|
           if (c != client)
-            Cookies.give_cookie(c.char, client)
+            Cookies.give_cookie(c.char, client, enactor)
           end
         end
       end

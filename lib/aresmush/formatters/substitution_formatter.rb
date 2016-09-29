@@ -28,7 +28,7 @@ module AresMUSH
     end
     
     def self.left(str, target_len, pad_char = " ")
-      return nil if str.nil?
+      return nil if !str
        tokens = tokenize(str)
        trunc = truncate_tokenized(tokens, target_len)
        padding = pad_char.repeat(trunc[:remaining])
@@ -36,7 +36,7 @@ module AresMUSH
     end
     
     def self.right(str, target_len, pad_char = " ")
-      return nil if str.nil?
+      return nil if !str
        tokens = tokenize(str)
        trunc = truncate_tokenized(tokens, target_len)
        padding = pad_char.repeat(trunc[:remaining])
@@ -44,7 +44,7 @@ module AresMUSH
     end
     
     def self.center(str, target_len, pad_char = " ")
-      return nil if str.nil?
+      return nil if !str
        tokens = tokenize(str)
        trunc = truncate_tokenized(tokens, target_len)
        left_pad = pad_char.repeat((trunc[:remaining]/2.0).floor)
@@ -53,7 +53,7 @@ module AresMUSH
     end
     
     def self.truncate(str, target_len)
-      return nil if str.nil?
+      return nil if !str
       tokens = tokenize(str)
       trunc = truncate_tokenized(tokens, target_len)
       "#{trunc[:str]}"
@@ -155,13 +155,13 @@ module AresMUSH
           return { :len => $1, :str => " ".repeat($1.to_i), :raw => str }
         elsif (str =~ /\[center\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
           tmp = format($1)
-          return { :len => $2, :str => center(tmp, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+          return { :len => $2, :str => center(tmp, $2.to_i, !$3 ? " " : $3), :raw => str }
         elsif (str =~ /\[left\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
           tmp = format($1)
-          return { :len => $2, :str => left(tmp, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+          return { :len => $2, :str => left(tmp, $2.to_i, !$3 ? " " : $3), :raw => str }
         elsif (str =~ /\[right\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
           tmp = format($1)
-          return { :len => $2, :str => right(tmp, $2.to_i, $3.nil? ? " " : $3), :raw => str }
+          return { :len => $2, :str => right(tmp, $2.to_i, !$3 ? " " : $3), :raw => str }
         elsif (str =~ /\[ansi\((.+)\,(.+)\)\]/)
           raw_codes = $1.each_char.map { |c| "%x#{c}" }
           tmp = format($2)

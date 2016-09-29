@@ -34,8 +34,8 @@ module AresMUSH
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
         self.area = titleize_input(cmd.args.arg1)
-        self.temp = cmd.args.arg2.nil? ? nil : trim_input(cmd.args.arg2).downcase
-        self.condition = cmd.args.arg3.nil? ? nil : trim_input(cmd.args.arg3).downcase
+        self.temp = !cmd.args.arg2 ? nil : trim_input(cmd.args.arg2).downcase
+        self.condition = !cmd.args.arg3 ? nil : trim_input(cmd.args.arg3).downcase
       end
       
       def handle

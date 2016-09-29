@@ -20,7 +20,7 @@ module AresMUSH
       def handle
         group = Groups.get_group(self.name)
         
-        if (group.nil?)
+        if (!group)
           client.emit_failure t('groups.invalid_group_type')
           return
         end

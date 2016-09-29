@@ -22,7 +22,7 @@ module AresMUSH
       def handle
         result = Friends.find_friendship(enactor, self.name)
         friendship = result[:friendship]
-        if (friendship.nil?)
+        if (!friendship)
           client.emit_failure result[:error]
         else
           friendship.note = self.note

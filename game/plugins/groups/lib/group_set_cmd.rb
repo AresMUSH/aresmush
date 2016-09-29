@@ -41,15 +41,15 @@ module AresMUSH
       def handle   
         group = Groups.get_group(self.group_name)
         
-        if (group.nil?)
+        if (!group)
           client.emit_failure t('groups.invalid_group_type')
           return
         end
         
         values = group['values']
-        if (!self.value.nil? && !values.nil?)
+        if (self.value && values)
           self.value = values.keys.find { |v| v.downcase == self.value.downcase }
-          if (self.value.nil?)
+          if (!self.value)
             client.emit_failure t('groups.invalid_group_value', :group => self.group_name)
             return
           end
@@ -59,7 +59,7 @@ module AresMUSH
           model.groups[self.group_name] = self.value
           model.save
           
-          if (self.value.nil?)
+          if (!self.value)
             client.emit_success t('groups.group_cleared', :group => self.group_name)
           else
             client.emit_success t('groups.group_set', :group => self.group_name, :value => self.value)

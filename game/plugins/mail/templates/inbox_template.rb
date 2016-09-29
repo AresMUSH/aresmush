@@ -6,8 +6,8 @@ module AresMUSH
       
       attr_accessor :tag, :messages
       
-      def initialize(client, messages, show_from, tag)
-        @client = client
+      def initialize(enactor, messages, show_from, tag)
+        @enactor = enactor
         @messages = messages
         @show_from = show_from
         @tag = tag
@@ -27,7 +27,7 @@ module AresMUSH
       end
       
       def date(msg)
-        OOCTime::Api.local_short_timestr(@client, msg.created_at)
+        OOCTime::Api.local_short_timestr(@enactor, msg.created_at)
       end
       
       # Message sent to or sent from, depending on the inbox mode.
@@ -36,13 +36,13 @@ module AresMUSH
       end
       
       def author(msg)
-        msg.author.nil? ? t('mail.deleted_author') : msg.author.name
+        !msg.author ? t('mail.deleted_author') : msg.author.name
       end
       
       # Message sent to.  Note that this is just the individual recipient of THIS delivery,
       # not a list of all people who received the message.
       def sent_to(msg)
-        msg.character.nil? ? t('mail.deleted_recipient') : msg.character.name
+        !msg.character ? t('mail.deleted_recipient') : msg.character.name
       end
       
       # Message tags, like unread or marked for deletion

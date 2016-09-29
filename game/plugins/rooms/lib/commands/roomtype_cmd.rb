@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def check_room_type
-        return nil if self.name.nil?
+        return nil if !self.name
         return t('rooms.invalid_room_type', :types => Rooms.room_types.join(", ")) if !Rooms.room_types.include?(self.name.upcase)
         return nil
       end

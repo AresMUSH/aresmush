@@ -12,7 +12,7 @@ module AresMUSH
       end
 
       def handle
-        if (self.num.nil?)
+        if (!self.num)
           recall_items = enactor.saved_text.each_with_index.map { |x,i| "#{i+1}.  #{x}" }
           client.emit BorderedDisplay.list(recall_items, t('save.recall_title'))
           return

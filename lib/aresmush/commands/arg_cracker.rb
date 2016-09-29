@@ -5,7 +5,7 @@ module AresMUSH
     
     def self.crack(regex, args)
       match = regex.match(args)
-      match.nil? ? HashReader.new({}) : HashReader.new(match.names_hash)
+      !match ? HashReader.new({}) : HashReader.new(match.names_hash)
     end
     
     def self.can_crack_args?(regex, args)

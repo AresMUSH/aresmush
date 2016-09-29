@@ -10,8 +10,8 @@ module AresMUSH
     register_default_indexes with_unique_name: true
     
     def self.find_by_handle(name)
-      return [] if name.nil?
-      Character.all.select { |c| (c.handle.nil? ? "" : c.handle.downcase) == name.downcase }
+      return [] if !name
+      Character.all.select { |c| (!c.handle ? "" : c.handle.downcase) == name.downcase }
     end
     
     def name_and_alias
@@ -39,7 +39,7 @@ module AresMUSH
     end
     
     def is_online?
-      !self.client.nil?
+      self.client
     end
     
     def self.random_link_code

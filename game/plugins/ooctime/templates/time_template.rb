@@ -3,11 +3,9 @@ module AresMUSH
     class TimeTemplate < ErbTemplateRenderer
 
       include TemplateFormatters
-
-      attr_accessor :client
       
-      def initialize(client)
-        @client = client
+      def initialize(enactor)
+        @enactor = enactor
         super File.dirname(__FILE__) + "/time.erb"
       end
             
@@ -16,11 +14,11 @@ module AresMUSH
       end
       
       def local_time
-        OOCTime.local_long_timestr(@client, Time.now)
+        OOCTime.local_long_timestr(@enactor, Time.now)
       end
       
       def timezone
-        t('time.timezone', :timezone => @client.char.timezone)
+        t('time.timezone', :timezone => @enactor.timezone)
       end
       
     end

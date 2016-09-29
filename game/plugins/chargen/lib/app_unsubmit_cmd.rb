@@ -11,12 +11,12 @@ module AresMUSH
       end
       
       def check_approval_job
-        return t('chargen.you_have_not_submitted_app') if enactor.approval_job.nil?
+        return t('chargen.you_have_not_submitted_app') if !enactor.approval_job
         return nil
       end
       
       def handle
-        Jobs::Api.change_job_status(client,
+        Jobs::Api.change_job_status(enactor,
           enactor.approval_job,
           Global.read_config("chargen", "jobs", "app_hold_status"),
           t('chargen.app_job_unsubmitted'))

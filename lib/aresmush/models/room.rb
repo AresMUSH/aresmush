@@ -55,7 +55,7 @@ module AresMUSH
     # The way out; will be one named "O" or "Out" OR the first exit
     def way_out
       out = get_exit("O")
-      return out if !out.nil?
+      return out if out
       return nil if exits.empty?
       return exits.first
     end

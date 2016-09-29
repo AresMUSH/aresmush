@@ -25,9 +25,9 @@ module AresMUSH
           return
         end
         
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|      
+        Bbs.with_a_post(self.board_name, self.num, client, enactor) do |board, post|      
 
-          template = PostTemplate.new(board, post, client)
+          template = PostTemplate.new(board, post, enactor)
           client.emit template.render
 
           Bbs.mark_read_for_player(enactor, post)

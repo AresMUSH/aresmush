@@ -9,7 +9,7 @@ module AresMUSH
       
       def crack!
         self.category = Help.command_to_category(cmd.root)
-        self.page = cmd.page.nil? ? 1 : cmd.page.to_i
+        self.page = !cmd.page ? 1 : cmd.page.to_i
       end
       
       def check_valid_category

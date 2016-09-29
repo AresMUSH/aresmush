@@ -31,13 +31,13 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|        
           
-          if (self.rank.nil?)
+          if (!self.rank)
             enactor.rank = rank
             enactor.save
             client.emit_success t('ranks.rank_cleared')
           else
             error = Ranks.check_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
-            if (!error.nil?)
+            if (error)
               client.emit_failure error
               return
             end

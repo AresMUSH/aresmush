@@ -29,7 +29,7 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |model|
           die_result = FS3Skills.parse_and_roll(client, model, self.roll_str)
-          return if die_result.nil?
+          return if !die_result
           
           success_level = FS3Skills.get_success_level(die_result)
           success_title = FS3Skills.get_success_title(success_level)

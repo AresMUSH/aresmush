@@ -32,7 +32,7 @@ module AresMUSH
         end
         
         error = FS3Skills.check_raise_frequency(enactor)
-        if (!error.nil?)
+        if (error)
           client.emit_failure error
           return
         end

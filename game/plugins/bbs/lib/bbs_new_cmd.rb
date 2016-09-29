@@ -11,15 +11,15 @@ module AresMUSH
         BbsBoard.all_sorted.each do |b|
           board = b
           first_unread = b.first_unread(enactor)
-          break if !first_unread.nil?
+          break if first_unread
         end
           
-        if (first_unread.nil?)
+        if (!first_unread)
           client.emit_success t('bbs.no_new_posts')
           return
         end
         
-        template = PostTemplate.new(board, first_unread, client)
+        template = PostTemplate.new(board, first_unread, enactor)
         client.emit template.render
         
         Bbs.mark_read_for_player(enactor, first_unread)

@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :area
       
       def crack!
-        self.area = cmd.args.nil? ? Rooms::Api.area(enactor_room) : titleize_input(cmd.args)
+        self.area = !cmd.args ? Rooms::Api.area(enactor_room) : titleize_input(cmd.args)
       end
       
       def handle
@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def map_for_area(area)
-        return nil if area.nil?
+        return nil if !area
         matches = Maps.available_maps.select { |m| m.downcase == area.downcase }
         return nil if matches.empty?
         File.read(File.join(Maps.maps_dir, "#{matches[0]}.txt"), :encoding => "UTF-8")

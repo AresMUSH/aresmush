@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def handle
-        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
+        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
           hitlocs = combatant.hitloc_chart.uniq
           client.emit BorderedDisplay.list hitlocs.sort, t('fs3combat.hitlocs_for', :name => self.name)
         end

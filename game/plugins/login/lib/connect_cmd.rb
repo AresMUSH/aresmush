@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def check_for_guest_or_password
-        return t('dispatcher.invalid_syntax', :command => 'connect') if self.password.nil? || self.charname.nil?
+        return t('dispatcher.invalid_syntax', :command => 'connect') if !self.password || !self.charname
         return nil
       end
       
@@ -35,7 +35,7 @@ module AresMUSH
           existing_client = char.client
           client.char = char
           
-          if (!existing_client.nil?)
+          if (existing_client)
             existing_client.emit_ooc t('login.disconnected_by_reconnect')
             existing_client.disconnect
 

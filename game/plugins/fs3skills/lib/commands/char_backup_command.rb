@@ -9,12 +9,12 @@ module AresMUSH
       attr_accessor :target
       
       def crack!
-        self.target = cmd.args.nil? ? client.name : trim_input(cmd.args)
+        self.target = !cmd.args ? client.name : trim_input(cmd.args)
       end
       
       def check_permission
         return nil if self.target == client.name
-        return nil if client.char.has_any_role?(Global.read_config("fs3skills", "roles", "can_view_sheets"))
+        return nil if enactor.has_any_role?(Global.read_config("fs3skills", "roles", "can_view_sheets"))
         return t('fs3skills.no_permission_to_backup')
       end
       
@@ -24,7 +24,7 @@ module AresMUSH
           Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
           Global.dispatcher.queue_command(client, Command.new("info #{model.name}"))
           
-          template = Describe::Api.desc_template(model, client)
+          template = Describe::Api.desc_template(model, enactor)
           client.emit template.render
         end
       end

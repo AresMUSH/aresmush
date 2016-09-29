@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        Pose.emit_pose(client, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))
+        Pose.emit_pose(enactor, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))
       end
       
       def log_command

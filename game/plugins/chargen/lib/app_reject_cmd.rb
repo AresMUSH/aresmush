@@ -31,7 +31,7 @@ module AresMUSH
             return
           end
 
-          if (model.approval_job.nil?)
+          if (!model.approval_job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
             return
           end
@@ -39,7 +39,7 @@ module AresMUSH
           model.chargen_locked = false
           model.save
           
-          Jobs::Api.change_job_status(client,
+          Jobs::Api.change_job_status(enactor,
             model.approval_job,
             Global.read_config("chargen", "jobs", "app_hold_status"),
             "#{Global.read_config("chargen", "messages", "rejection")}%R%R#{self.message}")

@@ -47,7 +47,7 @@ module AresMUSH
           end
           
           it "should get the desc from the interface" do          
-            Describe.should_receive(:get_desc_template).with(@model, client) { @template }
+            Describe.should_receive(:get_desc_template).with(@model, enactor) { @template }
             handler.handle
           end
         

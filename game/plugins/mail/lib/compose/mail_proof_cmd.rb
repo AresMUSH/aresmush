@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
            
       def check_composing_mail
-        return t('mail.not_composing_message') if !Mail.is_composing_mail?(client)
+        return t('mail.not_composing_message') if !Mail.is_composing_mail?(enactor)
         return nil
       end
             

@@ -20,7 +20,7 @@ module AresMUSH
       
       def handle
         client.emit_ooc t('bbs.starting_archive')
-        Bbs.with_a_board(self.board_name, client) do |board|  
+        Bbs.with_a_board(self.board_name, client, enactor) do |board|  
           if board.bbs_posts.count > 30
             client.emit_failure t('bbs.too_much_for_archive')
             return
@@ -30,7 +30,7 @@ module AresMUSH
             Global.dispatcher.queue_timer(i, "BBS Archive", client) do
               Global.logger.debug "Logging bbpost #{post.id} from #{board.name}."
 
-              template = ArchiveTemplate.new(post, client)
+              template = ArchiveTemplate.new(post, enactor)
               client.emit template.render
             end
           end

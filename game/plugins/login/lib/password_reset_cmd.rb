@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def check_new_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if self.new_password.nil?
+        return t('dispatcher.invalid_syntax', :command => 'passsword') if !self.new_password
         return Character.check_password(self.new_password)
       end
       
@@ -46,7 +46,7 @@ module AresMUSH
       
       def log_command
         # Don't log full command for password privacy
-        name = cmd.args.nil? ? "" : cmd.args.first("=")
+        name = !cmd.args ? "" : cmd.args.first("=")
         Global.logger.debug("#{self.class.name} #{client} #{name}")
       end
     end

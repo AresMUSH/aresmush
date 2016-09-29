@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def handle
-        if (self.name.nil?)
+        if (!self.name)
           objects = Room.all
         else
           objects = Room.where(:name_upcase => /#{self.name.upcase}/)

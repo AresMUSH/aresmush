@@ -43,7 +43,7 @@ module AresMUSH
       include ChangeJobCmd
       
       def check_category
-        return nil if self.value.nil?
+        return nil if !self.value
         return t('jobs.invalid_category', :categories => Jobs.categories) if (!Jobs.categories.include?(self.value.upcase))
         return nil
       end

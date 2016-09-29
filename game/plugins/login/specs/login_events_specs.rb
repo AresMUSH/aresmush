@@ -21,9 +21,10 @@ module AresMUSH
         client_monitor.stub(:logged_in_clients) { [@client] }
         Login.stub(:wants_announce) { false }
         
+        @other_char = double
         @other_client = double
         @other_client.stub(:room) { nil }
-        @other_client.stub(:char) { nil }
+        @other_client.stub(:char) { @other_char }
         @other_client.stub(:name) { "Bob" }
       end
       
@@ -34,7 +35,7 @@ module AresMUSH
         end
         
         it "should update the site info" do
-          Login.should_receive(:update_site_info).with(@other_client) {}
+          Login.should_receive(:update_site_info).with(@other_client, @other_char) {}
           @login_events.on_event CharConnectedEvent.new(@other_client)
         end
         
@@ -73,7 +74,7 @@ module AresMUSH
         end
         
         it "should update the site info" do
-          Login.should_receive(:update_site_info).with(@other_client) {}
+          Login.should_receive(:update_site_info).with(@other_client, @other_char) {}
           @login_events.on_event CharCreatedEvent.new(@other_client)
         end
         

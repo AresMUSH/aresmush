@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutArgs
       
       def handle
-        Mail.empty_trash(client)
+        Mail.empty_trash(enactor)
         client.emit_ooc t('mail.trash_emptied')
       end
     end

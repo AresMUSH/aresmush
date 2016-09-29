@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       it "should notify the dispatcher of an anonymous client disconnected" do
-        @client1.stub(:char) { nil }
+        @client1.stub(:logged_in?) { false }
         dispatcher.should_receive(:queue_event) do |event|
           event.class.should eq ConnectionClosedEvent
           event.client.should eq @client1
@@ -53,7 +53,7 @@ module AresMUSH
       end
 
       it "should notify the dispatcher of a client disconnected with a char logged in" do
-        @client1.stub(:char) { double }
+        @client1.stub(:logged_in?) { true }
         dispatcher.should_receive(:queue_event) do |event|
           event.class.should eq ConnectionClosedEvent
           event.client.should eq @client1

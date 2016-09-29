@@ -18,7 +18,7 @@ module AresMUSH
         
         enactor = guest.first
         terms_of_service = Login.terms_of_service
-        if (!terms_of_service.nil?)
+        if (terms_of_service)
           client.emit "%l1%r#{terms_of_service}%r%l1"
         end
         Global.dispatcher.queue_event CharConnectedEvent.new(client)

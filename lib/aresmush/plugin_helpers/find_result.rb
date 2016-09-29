@@ -7,7 +7,7 @@ module AresMUSH
     end
     
     def found?
-      !@target.nil?
+      @target
     end
   end
 end

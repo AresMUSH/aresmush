@@ -16,7 +16,7 @@ module AresMUSH
           enactor.stub(:name) { "Bob" }
           cmd.stub(:raw) { ":test" }
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "Bob test"}
-          Pose.should_receive(:emit_pose).with(client, "Bob test", false, false)
+          Pose.should_receive(:emit_pose).with(enactor, "Bob test", false, false)
           handler.handle
         end
       end

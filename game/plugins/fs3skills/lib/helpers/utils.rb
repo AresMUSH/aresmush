@@ -125,7 +125,7 @@ module AresMUSH
         die_result = FS3Skills.roll_dice(roll_str.to_i)
       else
         roll_params = FS3Skills.parse_roll_params roll_str
-        if (roll_params.nil?)
+        if (!roll_params)
           client.emit_failure t('fs3skills.unknown_roll_params')
           return nil
         end
@@ -140,7 +140,7 @@ module AresMUSH
     # the code doesn't care.
     def self.parse_roll_params(str)
       match = /^(?<ability>[^\+\-]+)\s*(?<linked_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
-      return nil if match.nil?
+      return nil if !match
       
       ability = match[:ability].strip
       modifier = match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i

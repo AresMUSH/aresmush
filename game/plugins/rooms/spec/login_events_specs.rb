@@ -21,8 +21,9 @@ module AresMUSH
       
       describe :on_char_connected_event do      
         it "should emit the desc of the char's last location" do
+          @client.stub(:char) { @char }
           @login = CharConnectedEventHandler.new
-          Rooms.should_receive(:emit_here_desc).with(@client)
+          Rooms.should_receive(:emit_here_desc).with(@client, @char)
           @login.on_event CharConnectedEvent.new(@client)
         end
       end

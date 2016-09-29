@@ -12,7 +12,7 @@ module AresMUSH
             groups[group] = group_config
           else
             group_val = Groups::Api.group(char, group)
-            next if group_val.nil?
+            next if !group_val
             group_key = group_config.keys.find { |k| k.downcase == group_val.downcase }
             tmp = group_config[group_key]
             next if !tmp
@@ -27,7 +27,7 @@ module AresMUSH
         groups = get_groups_for_char(char)
         groups.each do |k, v|
           group_skills = v["skills"]
-          next if group_skills.nil?
+          next if !group_skills
           group_skills.each do |skill, rating|
             if (!skills.has_key?(skill) || skills[skill] < rating)
               skills[skill] = rating

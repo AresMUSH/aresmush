@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        Channels.with_an_enabled_channel(self.name, client) do |channel|
+        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           channel_who = Channels.channel_who(channel)
           client.emit_ooc "%xn#{channel_who}"
         end

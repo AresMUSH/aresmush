@@ -5,11 +5,11 @@ module AresMUSH
         return t('rooms.exit_already_exists')
       end
       AresMUSH::Exit.create(:name => name, :source => source, :dest => dest)
-      return t('rooms.exit_created', :source_name => source.name, :dest_name => dest.nil? ? t('rooms.nowhere') : dest.name)
+      return t('rooms.exit_created', :source_name => source.name, :dest_name => !dest ? t('rooms.nowhere') : dest.name)
     end
     
-    def self.emit_here_desc(client)        
-      template = Describe::Api.desc_template(client.room, client)
+    def self.emit_here_desc(client, viewer)        
+      template = Describe::Api.desc_template(viewer.room, viewer)
       client.emit template.render
     end
     
@@ -43,8 +43,8 @@ module AresMUSH
       room.emit_ooc t('rooms.char_has_arrived', :name => char.name)
       char.room = room
       char.save!
-      if (!client.nil?)
-        Rooms.emit_here_desc(client)
+      if (client)
+        Rooms.emit_here_desc(client, char)
       end
     end
   end

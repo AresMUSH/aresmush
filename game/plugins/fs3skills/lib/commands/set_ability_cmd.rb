@@ -43,7 +43,7 @@ module AresMUSH
       end
       
       def check_valid_rating
-        return nil if self.rating.nil?
+        return nil if !self.rating
         return t('fs3skills.invalid_rating') if !self.rating.is_integer?
         return nil
       end

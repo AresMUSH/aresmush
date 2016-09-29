@@ -44,7 +44,7 @@ module AresMUSH
         end
       
         it "should emit the new room desc" do
-          Rooms.should_receive(:emit_here_desc).with(@client)
+          Rooms.should_receive(:emit_here_desc).with(@client, @char)
           Rooms.move_to(@client, @char, @new_room)
         end
       end

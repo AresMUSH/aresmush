@@ -39,7 +39,7 @@ module AresMUSH
           end
           
           it "should use the post and board from the command args" do
-            Bbs.should_receive(:with_a_post).with("1", "2", client).and_yield(@board, @post)
+            Bbs.should_receive(:with_a_post).with("1", "2", client, enactor).and_yield(@board, @post)
             handler.should_receive(:save_reply).with(@board, @post)
             handler.handle
           end  

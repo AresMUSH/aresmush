@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutArgs
       
       def handle
-        if (enactor.approval_job.nil?)
+        if (!enactor.approval_job)
           if (cmd.switch_is?("confirm"))
             create_job
             lock_char
@@ -47,7 +47,7 @@ module AresMUSH
       end
       
       def update_job
-        Jobs::Api.change_job_status(client,
+        Jobs::Api.change_job_status(enactor,
           enactor.approval_job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))

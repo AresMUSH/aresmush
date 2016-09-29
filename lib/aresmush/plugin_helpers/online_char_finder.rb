@@ -34,7 +34,7 @@ module AresMUSH
       name = name.upcase
       char = client.char
       return false if name.blank?
-      return false if char.nil?
+      return false if !char
       return true if char.name_upcase == name
       return true if char.alias_upcase == name
       return true if allow_handles && char.handle && char.handle.upcase == name && char.handle_visible_to?(viewer)
@@ -45,7 +45,7 @@ module AresMUSH
       name = name.upcase
       char = client.char
       return false if name.blank?
-      return false if char.nil?
+      return false if !char
       return true if char.name_upcase.start_with?(name)
       return true if allow_handles && char.handle && char.handle.upcase.start_with?(name) && char.handle_visible_to?(viewer)
       return false

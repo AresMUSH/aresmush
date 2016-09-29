@@ -17,16 +17,16 @@ module AresMUSH
     end
     
     def self.status_color(status)
-      return "" if status.nil?
+      return "" if !status
       config = Global.read_config("jobs", "status")
       key = config.keys.find { |k| k.downcase == status.downcase }
-      return "%xc" if key.nil?
+      return "%xc" if !key
       return config[key]["color"]
     end
     
     def self.with_a_job(client, number, &block)
       job = Job.where(number: number.to_i).first
-      if (job.nil?)
+      if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
       end
@@ -34,9 +34,9 @@ module AresMUSH
       yield job
     end
     
-    def self.with_a_request(client, number, &block)
-      job = client.char.submitted_requests.where(number: number.to_i).first
-      if (job.nil?)
+    def self.with_a_request(client, enactor, number, &block)
+      job = enactor.submitted_requests.where(number: number.to_i).first
+      if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
       end
@@ -90,22 +90,22 @@ module AresMUSH
       return { :job => job, :error => nil }
     end
     
-    def self.change_job_status(client, job, status, message = nil)
+    def self.change_job_status(enactor, job, status, message = nil)
       if (status == Jobs.closed_status)
-        status_message = t('jobs.closed_job', :name => client.name, :status => status)
+        status_message = t('jobs.closed_job', :name => enactor.name, :status => status)
       else
-        status_message = t('jobs.changed_job_status', :name => client.name, :status => status)
+        status_message = t('jobs.changed_job_status', :name => enactor.name, :status => status)
       end
             
       message = message ? "#{message}%R%R#{status_message}" : status_message
 
-      Jobs.comment(job, client.char, message, false)
+      Jobs.comment(job, enactor, message, false)
       job.status = status
       job.save
     end
     
-    def self.close_job(client, job, message = nil)
-      Jobs.change_job_status(client, job, Jobs.closed_status, message)
+    def self.close_job(enactor, job, message = nil)
+      Jobs.change_job_status(enactor, job, Jobs.closed_status, message)
     end
     
     def self.notify(job, message, author, notify_submitter = true)

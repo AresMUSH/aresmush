@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def check_number
-        return t('jobs.invalid_job_number') if self.number.nil?
+        return t('jobs.invalid_job_number') if !self.number
         return t('jobs.invalid_job_number') if !self.number.is_integer?
         return nil
       end

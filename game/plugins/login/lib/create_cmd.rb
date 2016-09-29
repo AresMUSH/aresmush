@@ -21,19 +21,19 @@ module AresMUSH
       end      
       
       def check_name
-        return t('dispatcher.invalid_syntax', :command => 'create') if charname.nil?
+        return t('dispatcher.invalid_syntax', :command => 'create') if !charname
         return t('validation.name_must_be_capitalized') if (charname[0].downcase == charname[0])
         return Character.check_name(charname)
       end
       
       def check_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if password.nil?
+        return t('dispatcher.invalid_syntax', :command => 'passsword') if !password
         return Character.check_password(password)
       end
       
       def handle
         terms_of_service = Login.terms_of_service
-        if (!terms_of_service.nil? && client.program[:tos_accepted].nil?)
+        if (terms_of_service && client.program[:tos_accepted].nil?)
           client.program[:create_cmd] = cmd
           client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
           return
@@ -44,7 +44,7 @@ module AresMUSH
         char = Character.new
         char.name = charname
         char.change_password(password)
-        if (!terms_of_service.nil?)
+        if (terms_of_service)
           char.terms_of_service_acknowledged = Time.now
         end
         char.save!

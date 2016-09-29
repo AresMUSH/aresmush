@@ -32,7 +32,7 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
           combatant.stance = stance
           combatant.save
           message = t('fs3combat.stance_changed', :stance => self.stance, :name => self.name, :poss => combatant.poss_pronoun)

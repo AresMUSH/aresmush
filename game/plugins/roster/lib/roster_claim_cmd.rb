@@ -20,7 +20,7 @@ module AresMUSH
       
       def handle
         terms_of_service = Login::Api.terms_of_service
-        if (!terms_of_service.nil? && client.program[:tos_accepted].nil?)
+        if (terms_of_service && client.program[:tos_accepted].nil?)
           client.program[:create_cmd] = cmd
           client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
           return

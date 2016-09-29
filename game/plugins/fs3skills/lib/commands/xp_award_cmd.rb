@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def check_xp
-        return nil if self.xp.nil?
+        return nil if !self.xp
         return t('fs3skills.invalid_xp_award') if !self.xp.is_integer?
         return nil
       end

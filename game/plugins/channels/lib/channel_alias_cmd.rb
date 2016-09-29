@@ -21,7 +21,7 @@ module AresMUSH
       
       
       def handle
-        Channels.with_an_enabled_channel(self.name, client) do |channel|
+        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           Channels.set_channel_alias(client, enactor, channel, self.alias)
         end
       end

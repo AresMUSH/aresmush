@@ -30,7 +30,7 @@ module AresMUSH
             return
           end
           
-          if (self.name.nil?)
+          if (!self.name)
             objects = c.all
           else
             objects = c.all.select { |o| o.name_upcase =~ /#{self.name.upcase}/ }

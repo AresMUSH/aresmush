@@ -18,7 +18,7 @@ module AresMUSH
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         self.name = trim_input(cmd.args.arg1)
-        self.lock_keys = cmd.args.arg2.nil? ? [] : trim_input(cmd.args.arg2).split(" ")
+        self.lock_keys = !cmd.args.arg2 ? [] : trim_input(cmd.args.arg2).split(" ")
       end
 
       def check_can_build

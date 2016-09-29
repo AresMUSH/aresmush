@@ -53,7 +53,7 @@ module AresMUSH
     end
 
     def grab(msg)
-      edit_prefix = char.nil? ? "" : "#{char.edit_prefix} "
+      edit_prefix = !char ? "" : "#{char.edit_prefix} "
       @connection.send_data "#{edit_prefix}#{msg}\r\n"
     end
     
@@ -98,11 +98,11 @@ module AresMUSH
     # In general, we want to avoid duplicating character interfaces on the client, but 
     # these two (name and room) are used so ubiquitously that they're an exception.
     def name
-      @char.nil? ? t('client.anonymous'): @char.name
+      !@char ? t('client.anonymous'): @char.name
     end
     
     def room
-      @char.nil? ? nil : @char.room
+      !@char ? nil : @char.room
     end
     
     def logged_in?

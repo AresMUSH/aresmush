@@ -8,10 +8,10 @@ module AresMUSH
       rescue SystemExit
         raise SystemExit
       rescue Exception => e
-        id = client.nil? ? nil : client.id
+        id = !client ? nil : client.id
         message = t('dispatcher.unexpected_error', :desc => desc, :error_info => e)
         Global.logger.error("Error in #{desc}: client=#{id} error=#{e} backtrace=#{e.backtrace[0,10]}")
-        if (!client.nil?)
+        if (client)
           client.emit_failure message
         end
         return false

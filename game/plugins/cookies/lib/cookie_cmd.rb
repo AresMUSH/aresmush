@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.names = []
         else
           self.names = cmd.args.split(" ")
@@ -27,7 +27,7 @@ module AresMUSH
           if (!result.found?)
             client.emit_failure(t('cookies.invalid_recipient', :name => name))
           else
-            Cookies.give_cookie(result.target, client)
+            Cookies.give_cookie(result.target, client, enactor)
           end
         end
       end

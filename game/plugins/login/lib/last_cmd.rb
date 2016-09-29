@@ -21,10 +21,10 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client) do |target|
           other_client = target.client
-          if (!other_client.nil?)
+          if (other_client)
             client.emit_ooc t('login.currently_online', :name => target.name)
           else
-            last = OOCTime::Api.local_long_timestr(client, Login::Api.last_on(target))
+            last = OOCTime::Api.local_long_timestr(enactor, Login::Api.last_on(target))
             client.emit_ooc t('login.last_online', :name => target.name, :time => last)
           end
         end

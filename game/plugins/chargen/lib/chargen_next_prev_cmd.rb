@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :offset
       
       def crack!
-        if (cmd.switch.nil?)
+        if (!cmd.switch)
           self.offset = 0
         elsif (cmd.switch_is?("next"))
           self.offset = 1

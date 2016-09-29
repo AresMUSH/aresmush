@@ -10,14 +10,14 @@ module AresMUSH
       def handle
         outside = enactor_room.way_out
         
-        if (outside.nil?)
+        if (!outside)
           client.emit_failure t('sweep.cant_find_exit')
           return
         end
         
         enactor_room.characters.each do |c|
           other_client = c.client
-          if (other_client.nil?)
+          if (!other_client)
             Rooms::Api.move_to(nil, c, outside.dest)
           end
         end

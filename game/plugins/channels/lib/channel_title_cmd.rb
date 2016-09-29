@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def handle
-        Channels.with_an_enabled_channel(self.name, client) do |channel|
+        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           Channels.set_channel_option(enactor, channel, "title", self.title)
           enactor.save!
           client.emit_success t('channels.title_set')

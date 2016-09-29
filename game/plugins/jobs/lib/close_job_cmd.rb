@@ -17,7 +17,7 @@ module AresMUSH
             client.emit_failure t('jobs.job_already_closed')
             return
           end
-          Jobs.close_job(client, job, self.message)
+          Jobs.close_job(enactor, job, self.message)
         end
       end
     end

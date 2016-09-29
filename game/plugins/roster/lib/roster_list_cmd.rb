@@ -9,7 +9,7 @@ module AresMUSH
       attr_accessor :page
 
       def crack!
-        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
+        self.page = !cmd.page ? 1 : trim_input(cmd.page).to_i
       end
       
       def handle

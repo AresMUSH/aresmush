@@ -5,15 +5,14 @@ module AresMUSH
       
       attr_accessor :message
       
-      def initialize(client, message)
-        @client = client
-        @char = client.char
+      def initialize(enactor, message)
+        @enactor = enactor
         @message = message
         super File.dirname(__FILE__) + "/message.erb"
       end
       
       def date
-        OOCTime::Api.local_long_timestr(@client, @message.created_at)
+        OOCTime::Api.local_long_timestr(@enactor, @message.created_at)
       end
       
       # Some of these fields are redundant, but the forward template needs them.
@@ -30,7 +29,7 @@ module AresMUSH
       end
       
       def author
-        @message.author.nil? ? t('mail.deleted_author') : @message.author.name
+        !@message.author ? t('mail.deleted_author') : @message.author.name
       end
     end
   end

@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
           if (combat.organizer != enactor)
             client.emit_failure t('fs3combat.only_organizer_can_do')
             return

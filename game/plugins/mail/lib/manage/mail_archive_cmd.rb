@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        Mail.with_a_delivery(client, self.num) do |delivery|
+        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
           delivery.tags << Mail.archive_tag
           delivery.tags.delete(Mail.inbox_tag)
           delivery.tags.uniq!

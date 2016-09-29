@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def handle
-        Mail.with_a_delivery(client, self.num) do |delivery|
+        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
           
           if (cmd.switch_is?("tag"))
             delivery.tags << self.tag

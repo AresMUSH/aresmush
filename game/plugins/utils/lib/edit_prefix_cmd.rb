@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def handle
-        if (self.prefix.nil?)
+        if (!self.prefix)
           enactor.edit_prefix = nil
           message = t('edit.prefix_cleared')
         else

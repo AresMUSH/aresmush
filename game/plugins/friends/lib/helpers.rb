@@ -9,7 +9,7 @@ module AresMUSH
       friend = result.target
       
       friendship = Friendship.where(:character => char, :friend => friend).first
-      if (friendship.nil?)
+      if (!friendship)
         return { :friendship => nil, :error => t('friends.not_friend', :name => friend_name) }
       end
       

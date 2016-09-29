@@ -30,7 +30,7 @@ module AresMUSH
       end
 
       def handle
-        FS3Combat.with_a_combatant(enactor_name, client) do |combat, combatant|
+        FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
           
           FS3Skills::Api.spend_luck(enactor, 1)
           enactor.save

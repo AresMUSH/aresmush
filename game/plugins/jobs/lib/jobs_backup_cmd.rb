@@ -16,7 +16,7 @@ module AresMUSH
         Jobs.closed_jobs.each_with_index do |job, i|
           Global.dispatcher.queue_timer(i, "Job Backup #{enactor.name}", client) do
             Global.logger.debug "Logging job #{job.number} from #{enactor.name}."
-            template = JobTemplate.new(client, job)            
+            template = JobTemplate.new(enactor, job)            
             client.emit template.render
           end
         end

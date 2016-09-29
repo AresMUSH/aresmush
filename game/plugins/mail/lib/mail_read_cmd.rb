@@ -18,8 +18,8 @@ module AresMUSH
       end
             
       def handle
-        Mail.with_a_delivery(client, self.num) do |delivery|
-          template = MessageTemplate.new(client, delivery)
+        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
+          template = MessageTemplate.new(enactor, delivery)
           client.emit template.render
           delivery.read = true
           delivery.save

@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :original, :comment
             
-      def initialize(client, original, comment)
-        @original = MessageTemplate.new(client, original)
+      def initialize(enactor, original, comment)
+        @original = MessageTemplate.new(enactor, original)
         @comment = comment
         super File.dirname(__FILE__) + "/forwarded.erb"
       end

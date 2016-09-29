@@ -5,7 +5,7 @@ module AresMUSH
     end
     
     def self.bg_app_review(char)
-      error = char.background.nil? ? t('chargen.not_set') : t('chargen.ok')
+      error = !char.background ? t('chargen.not_set') : t('chargen.ok')
       Chargen.format_review_status t('chargen.background_review'), error
     end
     

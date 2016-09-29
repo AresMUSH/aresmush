@@ -10,7 +10,7 @@ module AresMUSH
   module CommandWithoutArgs
     # Make sure this runs before other validators except login - hence the '2' in the name.
     def check_2_no_args
-      return t('dispatcher.cmd_no_args') if !cmd.args.nil?
+      return t('dispatcher.cmd_no_args') if cmd.args
       return nil
     end
   end
@@ -18,7 +18,7 @@ module AresMUSH
   module CommandWithoutSwitches
     # Make sure this runs before other validators except login - hence the '2' in the name.
     def check_2_no_switches
-      return t('dispatcher.cmd_no_switches') if !cmd.switch.nil?
+      return t('dispatcher.cmd_no_switches') if cmd.switch
       return nil
     end
   end
@@ -29,7 +29,7 @@ module AresMUSH
 
     # Make sure this runs before other validators except login - hence the '2' in the name.
     def check_2_arguments_present
-      if (self.required_args.nil?)
+      if (!self.required_args)
         raise "Plugin #{self.class} says it requires args but has none listed"
       end
       

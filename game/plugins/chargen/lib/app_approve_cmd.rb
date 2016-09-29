@@ -29,12 +29,12 @@ module AresMUSH
             return
           end
 
-          if (model.approval_job.nil?)
+          if (!model.approval_job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
             return
           end
           
-          Jobs::Api.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
+          Jobs::Api.close_job(enactor, model.approval_job, Global.read_config("chargen", "messages", "approval"))
           
           model.is_approved = true
           model.approval_job = nil

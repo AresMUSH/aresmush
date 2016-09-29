@@ -38,7 +38,7 @@ module AresMUSH
           cmd = Command.new("channel/ungag #{self.channel.name}")
         end
         
-        if (!cmd.nil?)
+        if (cmd)
           Global.dispatcher.queue_command(client, cmd)
           return
         end
@@ -55,7 +55,7 @@ module AresMUSH
           
         title = Channels.get_channel_option(enactor, channel, "title")
         ooc_name = Handles::Api.ooc_name(enactor)
-        name = title.nil? ? ooc_name : "#{title} #{ooc_name}"
+        name = !title ? ooc_name : "#{title} #{ooc_name}"
         self.channel.pose(name, self.msg)
       end
     end  

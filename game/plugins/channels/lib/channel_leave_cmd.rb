@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        Channels.with_an_enabled_channel(self.name, client) do |channel|
+        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           Channels.leave_channel(enactor, channel)
         end
       end

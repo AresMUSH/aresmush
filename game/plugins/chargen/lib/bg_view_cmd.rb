@@ -7,8 +7,8 @@ module AresMUSH
       attr_accessor :target, :page
       
       def crack!
-        self.target = cmd.args.nil? ? enactor_name : trim_input(cmd.args)
-        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
+        self.target = !cmd.args ? enactor_name : trim_input(cmd.args)
+        self.page = !cmd.page ? 1 : trim_input(cmd.page).to_i
       end
       
       def check_permission

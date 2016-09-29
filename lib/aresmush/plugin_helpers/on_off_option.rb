@@ -3,7 +3,7 @@ module AresMUSH
     attr_accessor :value
     
     def initialize(value)
-      self.value = value.nil? ? nil : value.strip.downcase
+      self.value = !value ? nil : value.strip.downcase
     end
     
     def self.values

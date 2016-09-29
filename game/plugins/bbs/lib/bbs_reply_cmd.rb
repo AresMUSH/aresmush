@@ -31,15 +31,15 @@ module AresMUSH
       
       def handle
         post = client.program[:last_bbs_post]
-        if (self.board_name.nil? && !post.nil?)
+        if (!self.board_name && post)
           board = post.bbs_board
           save_reply(board, post)
         else
-          if (self.board_name.nil? || self.num.nil?)
+          if (!self.board_name || !self.num)
             client.emit_failure t('dispatcher.invalid_syntax', :command => 'bbs')
             return
           end
-          Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
+          Bbs.with_a_post(self.board_name, self.num, client, enactor) do |board, post|
             save_reply(board, post)
           end
         end

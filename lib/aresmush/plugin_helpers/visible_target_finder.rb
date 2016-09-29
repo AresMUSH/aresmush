@@ -6,7 +6,7 @@ module AresMUSH
 
       chars = Character.find_all_by_name(name).select { |c| c.room == client.room }
       exits = Exit.find_all_by_name(name).select { |c| c.source == client.room }
-      contents = [chars, exits].flatten(1).select { |c| !c.nil? }   
+      contents = [chars, exits].flatten(1).select { |c| c }   
             
       SingleResultSelector.select(contents)
     end

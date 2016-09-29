@@ -10,9 +10,9 @@ module AresMUSH
     end
     
     def self.get_group(name)
-      return nil if name.nil?
+      return nil if !name
       key = all_groups.keys.find { |g| g.downcase == name.downcase }
-      return nil if key.nil?
+      return nil if !key
       return all_groups[key]
     end
     
@@ -21,7 +21,7 @@ module AresMUSH
       Idle::Api.active_chars.each do |c|
         next if Idle::Api.idled_status(c)
         val = yield(c)
-        if (!val.nil?)
+        if (val)
           count = counts.has_key?(val) ? counts[val] : 0
           counts[val] = count + 1
         end

@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def crack!
-        self.name = cmd.args.nil? ? enactor.name : titleize_input(cmd.args)
+        self.name = !cmd.args ? enactor.name : titleize_input(cmd.args)
       end
       
       def handle

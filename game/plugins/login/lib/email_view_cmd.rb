@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :name
 
       def crack!
-        self.name = cmd.args.nil? ? enactor_name : trim_input(cmd.args)
+        self.name = !cmd.args ? enactor_name : trim_input(cmd.args)
       end
       
       def handle
@@ -18,7 +18,7 @@ module AresMUSH
             return
           end
           
-          if (char.email.nil?)
+          if (!char.email)
             client.emit_ooc(t('login.no_email_is_registered', :name => self.name))
           else
             client.emit_ooc(t('login.email_registered_is', :name => self.name, :email => char.email))

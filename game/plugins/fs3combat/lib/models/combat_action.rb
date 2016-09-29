@@ -33,7 +33,7 @@ module AresMUSH
     def error_check
       self.methods.grep(/^check_/).sort.each do |m|
         error = send m
-        if (!error.nil?)
+        if (error)
           return error
         end
       end

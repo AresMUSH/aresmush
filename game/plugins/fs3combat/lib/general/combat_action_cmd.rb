@@ -28,8 +28,8 @@ module AresMUSH
           return
         end
         
-        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
-          FS3Combat.set_action(client, combat, combatant, self.action_klass, self.action_args)
+        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
+          FS3Combat.set_action(client, enactor, combat, combatant, self.action_klass, self.action_args)
         end
       end
     end

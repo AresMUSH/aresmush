@@ -8,7 +8,7 @@ module AresMUSH
       output << "%r" if leading_newline
       output << text
       
-      if (!footer.nil?)
+      if (footer)
         output << "%r#{footer}"
       end
       
@@ -18,7 +18,7 @@ module AresMUSH
   
     def self.list(items, title = nil, footer = nil)
       output = ""
-      if (!items.nil?)
+      if (items)
         items.each do |i|
           output << "%r" << i
         end
@@ -31,12 +31,12 @@ module AresMUSH
       output = "%xh#{subtitle}%xn"
       output << "%R%l2"
       
-      if (!items.nil?)
+      if (items)
         items.each do |i|
           output << "%r" << i
         end
       end
-      if (!footer.nil?)
+      if (footer)
         output << "%r#{footer}"
       end
       
@@ -51,14 +51,14 @@ module AresMUSH
       else
         page_marker = t('pages.page_x_of_y', :x => page, :y => pagination.total_pages)
         page_marker = "%xh#{page_marker.center(78, '-')}%xn"
-        footer = footer.nil? ? page_marker : "#{page_marker}%r#{footer}"
+        footer = !footer ? page_marker : "#{page_marker}%r#{footer}"
         return BorderedDisplay.list(pagination.page_items, title, footer)
       end
     end
   
     def self.table(items, column_width = 20, title = nil)
       output = ""
-      if (!items.nil?)
+      if (items)
         count = 0
         items_per_line = 78 / column_width
         items.each do |i|

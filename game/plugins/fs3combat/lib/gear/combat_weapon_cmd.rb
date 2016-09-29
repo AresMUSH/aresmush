@@ -45,8 +45,8 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-          FS3Combat.set_weapon(client, combatant, self.weapon, self.specials)
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
+          FS3Combat.set_weapon(enactor, combatant, self.weapon, self.specials)
         end
       end
     end

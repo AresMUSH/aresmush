@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_board(self.name, client) do |board|
+        Bbs.with_a_board(self.name, client, enactor) do |board|
           client.program[:delete_bbs] = board
           client.emit BorderedDisplay.text(t('bbs.board_confirm_delete', :board => board.name))
         end

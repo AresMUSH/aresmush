@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :names, :message
       
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.names = []
         elsif (cmd.args.start_with?("="))
           self.names = enactor.last_paged
@@ -21,7 +21,7 @@ module AresMUSH
             self.names = enactor.last_paged
             self.message = "#{cmd.args.arg1}=#{cmd.args.arg2}"
           else
-            self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
+            self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
             self.message = cmd.args.arg2
           end
         else
@@ -57,7 +57,7 @@ module AresMUSH
           Mail::Api.send_mail([other_enactor_name], 
               t('page.missed_page_subject', :name => enactor_name), 
               t('page.missed_page_body', :name => enactor_name, :message => message), 
-              client)
+              client, enactor)
         else          
           other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_enactor), :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client)

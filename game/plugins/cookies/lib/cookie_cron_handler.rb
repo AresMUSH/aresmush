@@ -18,7 +18,7 @@ module AresMUSH
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck
-            FS3Skills::Api.add_luck(client.char)
+            FS3Skills::Api.add_luck(c)
           end
 
           Global.logger.info "#{c.name} got #{count} cookies from #{c.cookies_received.map{|a| a.name}.join(",")}"

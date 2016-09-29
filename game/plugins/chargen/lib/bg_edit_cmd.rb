@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :target
 
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.target = enactor_name
         else
           self.target = trim_input(cmd.args)

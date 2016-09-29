@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :x, :y
       
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.x = nil
           self.y = nil
         else
@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def handle
-        if (self.x.nil? || self.y.nil?)
+        if (!self.x || !self.y)
           enactor_room.grid_x = nil
           enactor_room.grid_y = nil
           message = t('rooms.grid_cleared')

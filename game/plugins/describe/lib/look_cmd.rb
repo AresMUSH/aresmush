@@ -37,11 +37,11 @@ module AresMUSH
       end   
       
       def show_desc(model)
-        template = Describe.get_desc_template(model, client)
+        template = Describe.get_desc_template(model, enactor)
         client.emit template.render
         if (model.class == Character)
           looked_at = model.client
-          if (!looked_at.nil?)
+          if (looked_at)
             looked_at.emit_ooc t('describe.looked_at_you', :name => enactor_name)
           end
         end

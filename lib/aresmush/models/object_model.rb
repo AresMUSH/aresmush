@@ -41,7 +41,7 @@ module AresMUSH
     
       def found?(name)
         existing = find_by_name(name)
-        return !existing.nil?
+        return existing
       end
       
       # Derived classes may implement name checking
@@ -62,8 +62,8 @@ module AresMUSH
 
     private
     def save_upcase_name
-      self.name_upcase = self.name.nil? ? "" : self.name.upcase
-      self.alias_upcase = self.alias.nil? ? "" : self.alias.upcase
+      self.name_upcase = !self.name ? "" : self.name.upcase
+      self.alias_upcase = !self.alias ? "" : self.alias.upcase
     end
     
   end

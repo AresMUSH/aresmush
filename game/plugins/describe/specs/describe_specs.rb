@@ -53,7 +53,7 @@ module AresMUSH
             @model = double
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
-            Describe.stub(:can_describe?).with(client.char, @model) { true }
+            Describe.stub(:can_describe?).with(enactor, @model) { true }
             AnyTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
           
@@ -75,7 +75,7 @@ module AresMUSH
             @model = double
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
-            Describe.should_receive(:can_describe?).with(client.char, @model) { false }
+            Describe.should_receive(:can_describe?).with(enactor, @model) { false }
             VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
           end
           

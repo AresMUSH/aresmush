@@ -21,13 +21,13 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
+        Bbs.with_a_post(self.board_name, self.num, client, enactor) do |board, post|
           if (!Bbs.can_edit_post(enactor, post))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
           
-          Bbs.with_a_board(self.new_board_name, client) do |new_board|
+          Bbs.with_a_board(self.new_board_name, client, enactor) do |new_board|
             post.bbs_board = new_board
             post.save!
             client.emit_success t('bbs.post_moved', :subject => post.subject, :board => new_board.name)

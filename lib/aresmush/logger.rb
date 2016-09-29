@@ -10,7 +10,7 @@ module AresMUSH
       create_log_dir
       logger = Log4r::Logger['ares']
       # For tests - use a dummy logger if one's not there already
-      logger = Log4r::Logger.root if logger.nil?
+      logger = Log4r::Logger.root if !logger
       logger
     end
     

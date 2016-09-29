@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def crack!
-        self.option = cmd.args.nil? ? nil : cmd.args.downcase
+        self.option = !cmd.args ? nil : cmd.args.downcase
       end
       
       def check_option

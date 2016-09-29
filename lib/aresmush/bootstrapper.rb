@@ -55,7 +55,7 @@ module AresMUSH
     def handle_exit(exception)
       if (exception.kind_of?(SystemExit))
         Global.logger.info "Normal shutdown."
-      elsif (exception.nil?)
+      elsif (!exception)
         Global.logger.info "Shutting down."
       else
         Global.logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
