@@ -32,7 +32,7 @@ module AresMUSH
       end
       
       def handle        
-        ClassTargetFinder.with_a_character(self.name, client) do |char|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
           if (!char.has_role?(self.role))     
             Global.logger.info "#{enactor_name} added role #{self.role} to #{self.name}."     
             char.roles << self.role.downcase

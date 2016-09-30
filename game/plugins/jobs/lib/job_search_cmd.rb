@@ -29,7 +29,7 @@ module AresMUSH
         if (self.category == "title")
           jobs = Job.where(title: /#{self.value}/i).sort_by { |j| j.number }
         elsif (self.category == "submitter")
-          result = ClassTargetFinder.find(self.value, Character, client)
+          result = ClassTargetFinder.find(self.value, Character, enactor)
           if (result.found?)
             jobs = Job.where(author: result.target).sort_by { |j| j.number }
           else

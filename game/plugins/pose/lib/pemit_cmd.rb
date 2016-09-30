@@ -21,13 +21,13 @@ module AresMUSH
       end
       
       def handle
-        OnlineCharFinder.with_online_chars(self.names, client) do |clients|
-          clients.each do |c|
+        OnlineCharFinder.with_online_chars(self.names, client) do |results|
+          results.each do |r|
             nospoof = ""
-            if (c.char.nospoof)
+            if (r.char.nospoof)
               nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => enactor_name)}%xn%R"
             end
-            c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{self.message}"
+            r.client.emit "#{Pose::Api.autospace(r.char)}#{nospoof}#{self.message}"
           end
         end
       end

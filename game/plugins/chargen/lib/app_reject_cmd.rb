@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (model.is_approved)
             client.emit_failure t('chargen.already_approved', :name => model.name) 
             return

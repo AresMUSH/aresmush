@@ -30,7 +30,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           model.luck = model.luck + self.luck.to_i
           model.save
           Global.logger.info "#{self.luck} Luck Points Awarded by #{enactor_name} to #{model.name}"

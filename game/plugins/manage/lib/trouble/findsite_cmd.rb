@@ -24,7 +24,7 @@ module AresMUSH
       end
 
       def handle
-        result = ClassTargetFinder.find(self.target, Character, client)
+        result = ClassTargetFinder.find(self.target, Character, enactor)
         title = t('manage.findsite_title', :search => self.target)
       
         if (result.found?)

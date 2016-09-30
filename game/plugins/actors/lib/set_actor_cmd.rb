@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       def handle
-        Actors.create_or_update_actor(client, self.name, self.actor)
+        Actors.create_or_update_actor(enactor, self.name, self.actor)
         client.emit_success t('actors.actor_set')
       end
     end

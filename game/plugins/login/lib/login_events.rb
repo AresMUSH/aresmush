@@ -3,13 +3,14 @@ module AresMUSH
     class CharConnectedEventHandler
       def on_event(event)
         client = event.client
-        Global.logger.info("Character Connected: #{client}")
-        Login.update_site_info(client, event.char)
-        Global.client_monitor.logged_in_clients.each do |c|
-          if (c.room == client.room)
-            c.emit_success t('login.announce_char_connected_here', :name => client.name)
-          elsif (Login.wants_announce(c.char, event.char))
-            c.emit_ooc t('login.announce_char_connected', :name => client.name)
+        char = event.char
+        Global.logger.info("Character Connected: #{char.name}")
+        Login.update_site_info(client, char)
+        Global.client_monitor.logged_in.each do |other_client, other_char|
+          if (other_char.room == char.room)
+            other_client.emit_success t('login.announce_char_connected_here', :name => char.name)
+          elsif (Login.wants_announce(other_char, char))
+            other_client.emit_ooc t('login.announce_char_connected', :name => char.name)
           end
         end
       end
@@ -18,22 +19,24 @@ module AresMUSH
     class CharCreatedEventHandler
       def on_event(event)
         client = event.client
-        Global.logger.info("Character Created: #{client}")
-        Login.update_site_info(client, event.char)
-        Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => client.name)
-        Login.check_for_suspect(event.char)
+        char = event.char
+        Global.logger.info("Character Created: #{char.name}")
+        Login.update_site_info(client, char)
+        Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => char.name)
+        Login.check_for_suspect(char)
       end
     end
     
     class CharDisconnectedEventHandler
       def on_event(event)
         client = event.client
-        Global.logger.info("Character Disconnected: #{client}")
-        Global.client_monitor.logged_in_clients.each do |c|
-          if (c.room == client.room)
-            c.emit_success t('login.announce_char_disconnected_here', :name => client.name)
-          elsif (Login.wants_announce(c.char, event.char))
-            c.emit_ooc t('login.announce_char_disconnected', :name => client.name)
+        char = event.char
+        Global.logger.info("Character Disconnected: #{char.name}")
+        Global.client_monitor.logged_in.each do |other_client, other_char|
+          if (other_char.room == char.room)
+            other_client.emit_success t('login.announce_char_disconnected_here', :name => char.name)
+          elsif (Login.wants_announce(other_char, char))
+            other_client.emit_ooc t('login.announce_char_disconnected', :name => char.name)
           end
         end
       end

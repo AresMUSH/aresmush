@@ -22,7 +22,7 @@ module AresMUSH
         other_client.emit_ooc t('cookies.cookie_received', :name => giver.name)
       end
       
-      Global.logger.info "#{client.name} gave #{recipient.name} a cookie."
+      Global.logger.info "#{giver.name} gave #{recipient.name} a cookie."
     end
   end
 end

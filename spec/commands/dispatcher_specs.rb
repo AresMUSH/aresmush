@@ -24,9 +24,9 @@ module AresMUSH
       @plugin1.stub(:log_command)
       @plugin2.stub(:log_command)
       @shortcuts = {}
-      @client.stub(:reload)
       @client.stub(:emit_ooc)
       plugin_manager.stub(:shortcuts) { @shortcuts }
+      CommandAliasParser.stub(:substitute_aliases)
       SpecHelpers.stub_translate_for_testing
     end
 
@@ -42,7 +42,7 @@ module AresMUSH
         
         it "performs alias substitutions" do
           plugin_manager.stub(:plugins) { [] }
-          CommandAliasParser.should_receive(:substitute_aliases).with(@client, @command, @shortcuts)
+          CommandAliasParser.should_receive(:substitute_aliases).with(@enactor, @command, @shortcuts)
           @dispatcher.on_command(@client, @command)
         end
       

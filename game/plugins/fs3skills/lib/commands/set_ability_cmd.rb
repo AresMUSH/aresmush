@@ -60,7 +60,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|        
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
           FS3Skills.set_ability(client, model, self.ability_name, self.rating.to_i)
           model.save
         end

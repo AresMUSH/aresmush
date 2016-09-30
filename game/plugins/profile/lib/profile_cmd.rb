@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           template = ProfileTemplate.new(client, model)
           client.emit template.render
         end

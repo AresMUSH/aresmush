@@ -155,10 +155,10 @@ module AresMUSH
       else
         room.emit message
       end
-      Global.client_monitor.logged_in_clients.each do |c|
-        next if c == client
-        if (FS3Skills.receives_roll_results?(c.char) && (c.room != room || is_private))
-          c.emit message
+      Global.client_monitor.logged_in.each do |other_client, other_char|
+        next if other_client == client
+        if (FS3Skills.receives_roll_results?(other_char) && (other_char.room != room || is_private))
+          other_client.emit message
         end
       end
       Global.logger.info "FS3 roll results: #{message}"

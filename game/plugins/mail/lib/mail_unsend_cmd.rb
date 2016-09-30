@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           deliveries = model.sent_mail_to(enactor)
           
           Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|

@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :char
       
-      def initialize(char)
+      def initialize(char, enactor)
         @char = char
         super File.dirname(__FILE__) + "/app.erb" 
       end
@@ -42,7 +42,7 @@ module AresMUSH
       def job_info
         if (@char.approval_job)
           number = @char.approval_job.number
-          if (@client.name == @char.name)
+          if (@enactor.name == @char.name)
             return t('chargen.app_request', :job => number)
           else
             return t('chargen.app_job', :job => number)

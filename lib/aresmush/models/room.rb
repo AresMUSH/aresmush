@@ -16,7 +16,7 @@ module AresMUSH
         s.save!
       end
     end
-    
+
     def out_exit
       out = get_exit("O")
       return out if out
@@ -32,8 +32,7 @@ module AresMUSH
     end
     
     def clients
-      clients = Global.client_monitor.logged_in_clients
-      clients.select { |c| c.room == self }
+      Global.client_monitor.logged_in.select { |client, char| char.room == self }.keys
     end
     
     def emit(msg)

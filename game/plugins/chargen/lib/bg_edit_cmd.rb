@@ -15,15 +15,15 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.target, client) do |model|
+        ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           if (!Chargen.can_edit_bg?(enactor, model, client))
             return
           end
           
           if (self.target == enactor_name)
-            client.grab "bg/set #{model.background}"
+            Utils::Api.grab client, "bg/set #{model.background}"
           else
-            client.grab "bg/set #{target}=#{model.background}"
+            Utils::Api.grab client, "bg/set #{target}=#{model.background}"
           end
         end
       end

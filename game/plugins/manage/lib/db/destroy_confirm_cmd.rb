@@ -13,7 +13,7 @@ module AresMUSH
           return
         end
         
-        AnyTargetFinder.with_any_name_or_id("#{target_id}", client) do |target|
+        AnyTargetFinder.with_any_name_or_id("#{target_id}", client, enactor) do |target|
         
           if (!Manage.can_manage_object?(enactor, target))
             client.emit_failure t('dispatcher.not_allowed')

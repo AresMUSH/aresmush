@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def handle
-        client.grab "outfit/set #{self.name}=#{enactor.outfit(self.name)}"
+        Utils::Api.grab client, "outfit/set #{self.name}=#{enactor.outfit(self.name)}"
       end
     end    
   end

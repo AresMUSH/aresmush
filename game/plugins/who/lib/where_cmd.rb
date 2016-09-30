@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutSwitches
       
       def handle
-        online_chars = Global.client_monitor.logged_in_clients.map { |c| c.char }
+        online_chars = Global.client_monitor.logged_in.map { |client, char| char }
         template = WhereTemplate.new online_chars
         client.emit template.render
       end      

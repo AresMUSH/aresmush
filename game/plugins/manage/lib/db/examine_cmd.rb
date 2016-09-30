@@ -20,7 +20,7 @@ module AresMUSH
       end
 
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
 
           if (!Manage.can_manage_object?(enactor, model))
             client.emit_failure t('dispatcher.not_allowed')

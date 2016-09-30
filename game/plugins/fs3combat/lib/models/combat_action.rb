@@ -15,13 +15,13 @@ module AresMUSH
       self.combatant.combat
     end
     
-    def self.crack_helper(client, cmd)
+    def self.crack_helper(enactor, cmd)
       if (cmd.args =~ /\=/)
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         name = InputFormatter.titleize_input(cmd.args.arg1)
         action_args = cmd.args.arg2
       else
-        name = client.name
+        name = enactor.name
         action_args = cmd.args
       end
       {

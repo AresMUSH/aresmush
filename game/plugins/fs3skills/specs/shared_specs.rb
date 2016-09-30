@@ -159,13 +159,18 @@ module AresMUSH
           FS3Skills.stub(:receives_roll_results?).with(@nonadmin_char) { false }
           
           @room = double
-          @main_client.stub(:room) { @room }
-          @admin_client.stub(:room) { @room }
-          @nonadmin_client.stub(:room) { @room }
+          @main_char.stub(:room) { @room }
+          @admin_char.stub(:room) { @room }
+          @nonadmin_char.stub(:room) { @room }
           
           client_monitor = double
           Global.stub(:client_monitor) { client_monitor }
-          client_monitor.stub(:logged_in_clients) { [@main_client, @admin_client, @nonadmin_client ]}
+          client_monitor.stub(:logged_in) { 
+            {
+              @admin_client => @admin_char,
+              @main_client => @main_char,
+              @nonadmin_client => @nonadmin_char
+              } }
         end
         
         context "private roll" do
@@ -186,7 +191,7 @@ module AresMUSH
         
         context "public roll" do
           it "should emit to the room and an admin not in the room" do
-            @admin_client.stub(:room) { nil }
+            @admin_char.stub(:room) { nil }
             @admin_client.should_receive(:emit).with("test")
             @room.should_receive(:emit).with("test")
             FS3Skills.emit_results("test", @main_client, @room, false)

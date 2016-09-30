@@ -55,7 +55,7 @@ module AresMUSH
           end
         end
         
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           model.groups[self.group_name] = self.value
           model.save
           

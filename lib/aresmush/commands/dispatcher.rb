@@ -63,12 +63,11 @@ module AresMUSH
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
       @handled = false
-      client.reload
       with_error_handling(client, cmd) do
-        CommandAliasParser.substitute_aliases(client, cmd, Global.plugin_manager.shortcuts)
+        enactor = client.char
+        CommandAliasParser.substitute_aliases(enactor, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
           AresMUSH.with_error_handling(client, cmd) do
-            enactor = client.char
             handler_class = p.get_cmd_handler(client, cmd, enactor)
             if (handler_class)
               @handled = true

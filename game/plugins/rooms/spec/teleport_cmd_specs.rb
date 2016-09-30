@@ -45,14 +45,14 @@ module AresMUSH
           handler.stub(:destination) { "somewhere" }
           other_char = double
           other_char.stub(:room) { @room }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(other_char, nil) }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, enactor) { FindResult.new(other_char, nil) }
           handler.find_destination.should eq @room
         end
         
         it "should find the room when the destination is a room with an exact name match" do
           handler.stub(:destination) { "somewhere" }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, client) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room, client) { FindResult.new(@room, nil) }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, enactor) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Room, enactor) { FindResult.new(@room, nil) }
           handler.find_destination.should eq @room
         end
       end

@@ -25,8 +25,8 @@ module AresMUSH
       channel
     end
     
-    def self.find_common_channels(channels, other_client)
-      their_channels = other_client.char.channels
+    def self.find_common_channels(channels, other_char)
+      their_channels = other_char.channels
       intersection = channels & their_channels
       intersection = intersection.select { |c| c.announce }
       if (intersection.empty?)
@@ -58,8 +58,7 @@ module AresMUSH
         next if !c.is_online?
         online_chars << c
       end
-      online_chars = online_chars.map { |c| "#{Handles::Api.ooc_name(c)}#{gag_text(c, channel)}" }
-      t('channels.channel_who', :name => channel.display_name, :chars => online_chars.join(", "))
+      online_chars
     end
     
     def self.gag_text(char, channel)

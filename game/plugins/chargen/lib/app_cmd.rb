@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def handle        
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (model.is_approved)
             if (model == enactor)
               client.emit_failure t('chargen.you_are_already_approved')
@@ -27,7 +27,7 @@ module AresMUSH
             return
           end
           
-          template = AppTemplate.new(model)
+          template = AppTemplate.new(model, enactor)
           client.emit template.render
         end
       end      

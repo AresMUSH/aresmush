@@ -12,7 +12,7 @@ module AresMUSH
         self.action_klass = FS3Combat.find_action_klass(cmd.switch)
         return if !self.action_klass
         
-        result = self.action_klass.crack_helper(client, cmd)
+        result = self.action_klass.crack_helper(enactor, cmd)
         self.name = result[:name]
         self.action_args = result[:action_args]
       end

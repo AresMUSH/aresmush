@@ -42,7 +42,7 @@ module AresMUSH
           end
 
           it "should find a visible target in the looker's room" do
-            VisibleTargetFinder.should_receive(:find).with("something", client) { FindResult.new(@model, nil)}
+            VisibleTargetFinder.should_receive(:find).with("something", enactor) { FindResult.new(@model, nil)}
             handler.handle
           end
           
@@ -72,8 +72,8 @@ module AresMUSH
           before do
             @here = double
             handler.crack!            
-            VisibleTargetFinder.should_receive(:find).with("something", @client) { FindResult.new(nil, "an error") }
-            VisibleTargetFinder.should_receive(:find).with("here", @client) { FindResult.new(@here) }
+            VisibleTargetFinder.should_receive(:find).with("something", enactor) { FindResult.new(nil, "an error") }
+            VisibleTargetFinder.should_receive(:find).with("here", enactor) { FindResult.new(@here) }
           end
           
           it "should emit the error to the client if nothing found" do

@@ -14,7 +14,6 @@ load "lib/quit_cmd.rb"
 load "lib/tos_cmd.rb"
 load "lib/tour_cmd.rb"
 load "lib/watch_cmd.rb"
-load "login_events.rb"
 load "login_api.rb"
 
 module AresMUSH

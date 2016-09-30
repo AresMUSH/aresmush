@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.target, client) do |model|
+        ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           if (!Chargen.can_edit_bg?(enactor, model, client))
             return
           end

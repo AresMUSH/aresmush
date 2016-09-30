@@ -32,7 +32,6 @@ module AresMUSH
           plugin_manager.stub(:unload_plugin)
           Help::Api.stub(:reload_help)
           locale.stub(:reload)
-          client_monitor.stub(:reload_clients)
           Manage.stub(:can_manage_game?) { true }
           dispatcher.stub(:queue_event)
         end
@@ -92,11 +91,6 @@ module AresMUSH
         it "should still load even if the unload failed" do
           plugin_manager.stub(:unload_plugin) { raise SystemNotFoundException }
           plugin_manager.should_receive(:load_plugin).with("foo")
-          handler.handle
-        end
-        
-        it "should reload the clients" do
-          client_monitor.should_receive(:reload_clients)
           handler.handle
         end
         

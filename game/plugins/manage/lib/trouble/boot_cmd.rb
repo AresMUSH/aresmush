@@ -24,7 +24,7 @@ module AresMUSH
       end
 
       def handle
-        ClassTargetFinder.with_a_character(self.target, client) do |bootee|
+        ClassTargetFinder.with_a_character(self.target, client, enactor) do |bootee|
           boot_client = bootee.client
           if (!boot_client)
             client.emit_failure t('manage.cant_boot_disconnected_player')

@@ -54,7 +54,7 @@ module AresMUSH
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
             Describe.stub(:can_describe?).with(enactor, @model) { true }
-            AnyTargetFinder.should_receive(:find).with("name", client) { find_result }
+            AnyTargetFinder.should_receive(:find).with("name", enactor) { find_result }
           end
           
           it "should set the desc" do
@@ -76,7 +76,7 @@ module AresMUSH
             @model.stub(:name) { "Bob" }
             find_result = FindResult.new(@model, nil)
             Describe.should_receive(:can_describe?).with(enactor, @model) { false }
-            VisibleTargetFinder.should_receive(:find).with("name", client) { find_result }
+            VisibleTargetFinder.should_receive(:find).with("name", enactor) { find_result }
           end
           
           it "should emit failure" do
@@ -94,7 +94,7 @@ module AresMUSH
         context "nothing found" do        
           before do
             find_result = FindResult.new(nil, "Not found")
-            AnyTargetFinder.should_receive(:find).with("name", client) { find_result }
+            AnyTargetFinder.should_receive(:find).with("name", enactor) { find_result }
           end
           
           it "should emit failure" do

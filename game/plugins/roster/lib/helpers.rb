@@ -5,7 +5,7 @@ module AresMUSH
     end
     
     def self.create_or_update_roster(client, name, contact)
-      ClassTargetFinder.with_a_character(name, client) do |model|
+      ClassTargetFinder.with_a_character(name, client, enactor) do |model|
         Roster.add_to_roster(model, contact)
         client.emit_success t('roster.roster_updated')
       end

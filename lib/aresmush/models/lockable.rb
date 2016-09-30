@@ -19,11 +19,11 @@ module AresMUSH
     def check_lock_field
       old_lock = self.lock_field
       existing = _reload # get the current root or embedded document
-      if (existing.class == Array)
-        existing = existing.first
-      end
       if (existing)
         Global.logger.debug "#{existing['lock_field']} && #{self.lock_field} && #{old_lock}"
+        if (existing.class == Array)
+          existing = existing.first
+        end
       end
       if existing.present? && existing['lock_field'] &&
         existing['lock_field'].to_i > old_lock.to_i

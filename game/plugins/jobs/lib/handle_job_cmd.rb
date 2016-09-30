@@ -24,7 +24,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|
-          ClassTargetFinder.with_a_character(self.assignee, client) do |target|
+          ClassTargetFinder.with_a_character(self.assignee, client, enactor) do |target|
             if (!Jobs.can_access_jobs?(target))
               client.emit_failure t('jobs.cannot_handle_jobs')
               return

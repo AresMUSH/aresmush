@@ -51,12 +51,12 @@ module AresMUSH
       end
       
       def find_destination
-        find_result = ClassTargetFinder.find(self.destination, Character, client)
+        find_result = ClassTargetFinder.find(self.destination, Character, enactor)
         if (find_result.found?)
           return find_result.target.room
         end
         
-        find_result = ClassTargetFinder.find(self.destination, Room, client)
+        find_result = ClassTargetFinder.find(self.destination, Room, enactor)
         if (find_result.found?)
           return find_result.target
         end

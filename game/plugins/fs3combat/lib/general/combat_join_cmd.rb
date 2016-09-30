@@ -57,7 +57,7 @@ module AresMUSH
           return
         end
         
-        result = ClassTargetFinder.find(name, Character, client)
+        result = ClassTargetFinder.find(name, Character, enactor)
         
         type = self.combatant_type || Global.read_config("fs3combat", "default_type")
         combatant = combat.join(name, type, result.target)

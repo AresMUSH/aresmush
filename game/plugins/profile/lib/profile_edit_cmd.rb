@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        client.grab "profile/set #{self.field}=#{enactor.profile[self.field]}"
+        Utils::Api.grab client, "profile/set #{self.field}=#{enactor.profile[self.field]}"
       end
         
     end

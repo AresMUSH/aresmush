@@ -30,7 +30,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           client.program[:idle_queue].delete model.id
           client.emit_success t('idle.idle_removed', :name => self.name)
         end

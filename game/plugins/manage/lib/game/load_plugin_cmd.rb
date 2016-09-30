@@ -44,7 +44,6 @@ module AresMUSH
           Global.plugin_manager.load_plugin(load_target)
           Help::Api.reload_help
           Global.locale.reload
-          Global.client_monitor.reload_clients
           Global.dispatcher.queue_event ConfigUpdatedEvent.new
           client.emit_success t('manage.plugin_loaded', :name => load_target)
         rescue SystemNotFoundException => e

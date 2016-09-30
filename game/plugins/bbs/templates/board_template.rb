@@ -7,7 +7,7 @@ module AresMUSH
       # List of all posts on the board, in order by date.
       attr_accessor :posts, :board
       
-      def initialize(board, client, enactor)
+      def initialize(board, enactor)
         @board = board
         @posts = board.bbs_posts
         @enactor = enactor

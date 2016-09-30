@@ -23,7 +23,7 @@ module AresMUSH
       
       def handle
         names.each do |name|
-          result = ClassTargetFinder.find(name, Character, client)
+          result = ClassTargetFinder.find(name, Character, enactor)
           if (!result.found?)
             client.emit_failure(t('cookies.invalid_recipient', :name => name))
           else

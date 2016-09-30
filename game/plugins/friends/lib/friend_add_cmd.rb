@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        result = ClassTargetFinder.find(self.name, Character, nil)
+        result = ClassTargetFinder.find(self.name, Character, enactor)
         if (!result.found?)
           client.emit_failure result.error
           return

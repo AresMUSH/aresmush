@@ -109,12 +109,12 @@ module AresMUSH
     end
     
     def self.notify(job, message, author, notify_submitter = true)
-      Global.client_monitor.logged_in_clients.each do |c|
+      Global.client_monitor.logged_in.each do |other_client, other_char|
         job.readers = [ author ]
         job.save
         
-        if (Jobs.can_access_jobs?(c.char) || (notify_submitter && (c.char == job.author)))
-          c.emit_ooc message
+        if (Jobs.can_access_jobs?(other_char) || (notify_submitter && (other_char == job.author)))
+          other_client.emit_ooc message
         end
       end
     end

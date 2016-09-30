@@ -18,7 +18,7 @@ module AresMUSH
         before do
           @target = double
           @target.stub(:id) { "X" }
-          AnyTargetFinder.stub(:find).with("X", client) { FindResult.new(@target, nil) }
+          AnyTargetFinder.stub(:find).with("X", enactor) { FindResult.new(@target, nil) }
           client.stub(:program) { { :destroy_target => @target.id, :something_else => "x" } }
           Manage.stub(:can_manage_object?) { true }
           handler.crack!

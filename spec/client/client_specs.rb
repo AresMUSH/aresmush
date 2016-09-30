@@ -66,21 +66,6 @@ module AresMUSH
       end
     end
     
-    describe :grab do
-      it "sends the raw text without formatting with the grab password" do
-        char = double
-        char.stub(:edit_prefix) { "SimpleMUUser" }
-        @connection.should_receive(:send_data).with("SimpleMUUser %xr%%Boo%xn%r\r\n")
-        @client.stub(:char) { char }
-        @client.grab "%xr%%Boo%xn%r"
-      end
-      
-      it "sends the raw text without formatting if not logged in" do
-        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r\r\n")
-        @client.grab "%xr%%Boo%xn%r"
-      end
-    end
-
     describe :handle_input do
       before do 
         Global.logger.stub(:error) do |msg| 
@@ -130,35 +115,6 @@ module AresMUSH
         @client.connection_closed
       end
     end 
-    
-    describe :name do
-      it "should use the char name if available" do
-        char = double
-        @client.char = char
-        char.should_receive(:name) { "Bob" }
-        @client.name.should eq "Bob"
-      end
-      
-      it "should use anonymous if there's no char" do
-        @client.char = nil
-        @client.name.should eq "client.anonymous"
-      end
-      
-    end
-    
-    describe :room do
-      it "should use the char location if available" do
-        char = double
-        @client.char = char
-        char.should_receive(:room) { "111" }
-        @client.room.should eq "111"
-      end
-      
-      it "should use nil if there's no char" do
-        @client.char = nil
-        @client.room.should eq nil
-      end
-    end
     
     describe :idle_secs do
       it "should track the time since last activity" do

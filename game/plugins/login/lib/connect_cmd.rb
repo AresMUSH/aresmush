@@ -25,7 +25,7 @@ module AresMUSH
         return if self.charname.downcase == "guest"
 
         
-        ClassTargetFinder.with_a_character(self.charname, client) do |char|
+        ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
           if (!char.compare_password(password))
             client.emit_failure(t('login.password_incorrect'))
             return 
@@ -41,13 +41,13 @@ module AresMUSH
 
             Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection }
           else
-            announce_connection
+            announce_connection(char)
           end
         end
       end
       
-      def announce_connection
-        Global.dispatcher.queue_event CharConnectedEvent.new(client)
+      def announce_connection(char)
+        Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
       end
       
       def log_command

@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |target|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |target|
           other_client = target.client
           if (other_client)
             client.emit_ooc t('login.currently_online', :name => target.name)

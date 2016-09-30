@@ -27,7 +27,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           die_result = FS3Skills.parse_and_roll(client, model, self.roll_str)
           return if !die_result
           

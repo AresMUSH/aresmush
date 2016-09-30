@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def handle
-        search = VisibleTargetFinder.find(self.target, client)
+        search = VisibleTargetFinder.find(self.target, enactor)
         if (self.detail)
           if (search.found?)
             show_detail(search.target, self.detail)
@@ -30,7 +30,7 @@ module AresMUSH
            if (search.found?)
              show_desc(search.target)
            else
-             search = VisibleTargetFinder.find("here", client)
+             search = VisibleTargetFinder.find("here", enactor)
              show_detail(search.target, self.target)
            end
         end

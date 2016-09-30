@@ -27,7 +27,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.name1, client) do |model1|
           
           if (self.name2)
-            result = ClassTargetFinder.find(self.name2, Character, client)
+            result = ClassTargetFinder.find(self.name2, Character, enactor)
             model2 = result.target
             self.name2 = !model2 ? self.name2 : model2.name
           end

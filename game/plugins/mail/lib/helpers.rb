@@ -74,10 +74,8 @@ module AresMUSH
     def self.empty_trash(char)
       Global.logger.debug "Emptying trash for #{char.name}."
       char.mail.each do |m|
-        # DO NOT USE DESTROY here or it will force a reload of the clients 
-        # for each deleted message.
         if (m.tags.include?(Mail.trashed_tag))          
-          m.delete # Do not destroy - see note above
+          m.destroy
         end
       end
     end

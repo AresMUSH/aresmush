@@ -19,8 +19,8 @@ module AresMUSH
       end
       
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
-          client.grab "#{cmd.root} #{self.target}=#{model.description}"
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
+          Utils::Api.grab client, "#{cmd.root} #{self.target}=#{model.description}"
         end
       end
         

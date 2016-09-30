@@ -32,7 +32,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           model.xp = model.xp + self.xp.to_i
           model.save
           Global.logger.info "#{self.xp} XP Awarded by #{enactor_name} to #{model.name}"

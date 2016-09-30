@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |char|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
           
           if !Login.can_access_email?(enactor, char)
             client.emit_failure t('dispatcher.not_allowed') 

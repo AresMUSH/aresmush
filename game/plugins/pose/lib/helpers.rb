@@ -2,12 +2,12 @@ module AresMUSH
   module Pose
     def self.emit_pose(enactor, pose, is_emit, is_ooc)
       room = enactor.room
-      room.clients.each do |c|
+      room.characters.each do |c|
         nospoof = ""
-        if (is_emit && c.char.nospoof)
+        if (is_emit && c.nospoof)
           nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
         end
-        c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{pose}"
+        c.client.emit "#{Pose::Api.autospace(c)}#{nospoof}#{pose}"
       end
       
       if (!is_ooc)

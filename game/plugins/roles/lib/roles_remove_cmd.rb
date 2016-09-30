@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def handle        
-        ClassTargetFinder.with_a_character(self.name, client) do |char|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
 
           if (!char.has_role?(self.role))
             client.emit_failure(t('roles.role_not_assigned'))

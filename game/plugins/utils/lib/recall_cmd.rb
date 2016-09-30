@@ -24,7 +24,7 @@ module AresMUSH
         end
         index = num.to_i - 1
         
-        client.grab enactor.saved_text[index]
+        Utils::Api.grab client, enactor.saved_text[index]
       end
       
     end

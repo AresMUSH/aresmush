@@ -29,7 +29,7 @@ module AresMUSH
           end
             
           if (!self.new_text)
-            client.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
+            Utils::Api.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
             post.message = self.new_text
             post.mark_unread

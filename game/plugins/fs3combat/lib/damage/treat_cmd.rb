@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(self.name, client) do |model|
+        VisibleTargetFinder.with_something_visible(self.name, client, enactor) do |model|
           
           if (model.class != Character)
             client.emit_failure t('fs3combat.can_only_treat_characters')

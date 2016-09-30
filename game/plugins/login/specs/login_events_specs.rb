@@ -13,48 +13,50 @@ module AresMUSH
         AresMUSH::Locale.stub(:translate).with("login.announce_char_created", { :name => "Bob" }) { "announce_char_created" }
         stub_global_objects
         
-        @client = double(Client)
-        @char = double
+        @room_client = double(Client)
+        @room_char = double
         @room = double
-        @client.stub(:char) { @char }
-        @client.stub(:room) { @room }
-        client_monitor.stub(:logged_in_clients) { [@client] }
+
+        @room_client.stub(:room) { @room }
+        @room_char.stub(:room) { @room }
+        @room_char.stub(:name) { "Bob" }
+        client_monitor.stub(:logged_in) { { @room_client => @room_char } }
         Login.stub(:wants_announce) { false }
         
-        @other_char = double
-        @other_client = double
-        @other_client.stub(:room) { nil }
-        @other_client.stub(:char) { @other_char }
-        @other_client.stub(:name) { "Bob" }
+        @event_char = double
+        @event_client = double
+        @event_char.stub(:name) { "Bob" }
+        @event_char.stub(:room) { nil }    
       end
       
       describe :on_char_connected_event do
         before do
           Login.stub(:update_site_info) {}
           @login_events = CharConnectedEventHandler.new
+          @room_client.stub(:emit_success)
         end
         
-        it "should update the site info" do
-          Login.should_receive(:update_site_info).with(@other_client, @other_char) {}
-          @login_events.on_event CharConnectedEvent.new(@other_client)
+        it "should update the site infoxxx" do
+          Login.should_receive(:update_site_info).with(@event_client, @event_char) {}
+          @login_events.on_event CharConnectedEvent.new(@event_client, @event_char)
         end
         
         it "should announce the char if the client wants it" do
           Login.stub(:wants_announce) { true }
-          @client.should_receive(:emit_ooc).with("announce_char_connected")
-          @login_events.on_event CharConnectedEvent.new(@other_client)
+          @room_client.should_receive(:emit_ooc).with("announce_char_connected")
+          @login_events.on_event CharConnectedEvent.new(@event_client, @event_char)
         end
 
         it "should not announce the char if the client doesn't want it" do
           Login.stub(:wants_announce) { false }
-          @client.should_not_receive(:emit_ooc)
-          @login_events.on_event CharConnectedEvent.new(@other_client)
+          @room_client.should_not_receive(:emit_ooc)
+          @login_events.on_event CharConnectedEvent.new(@event_client, @event_char)
         end
         
         it "should announce the char in the room" do
-          @other_client.stub(:room) { @room }
-          @client.should_receive(:emit_success).with("announce_char_connected_here")
-          @login_events.on_event CharConnectedEvent.new(@other_client)
+          @event_char.stub(:room) { @room }
+          @room_client.should_receive(:emit_success).with("announce_char_connected_here")
+          @login_events.on_event CharConnectedEvent.new(@event_client, @event_char)
         end
       end
       
@@ -63,24 +65,22 @@ module AresMUSH
           Login.stub(:update_site_info) {}
           Login.stub(:check_for_suspect) {}
           client_monitor.stub(:emit_all_ooc)
-          @other_char = double
-          @other_client.stub(:char) { @other_char }
           @login_events = CharCreatedEventHandler.new
         end
         
         it "should check for suspect sites" do
-          Login.should_receive(:check_for_suspect).with(@other_char) {}
-          @login_events.on_event CharCreatedEvent.new(@other_client)
+          Login.should_receive(:check_for_suspect).with(@event_char) {}
+          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
         end
         
         it "should update the site info" do
-          Login.should_receive(:update_site_info).with(@other_client, @other_char) {}
-          @login_events.on_event CharCreatedEvent.new(@other_client)
+          Login.should_receive(:update_site_info).with(@event_client, @event_char) {}
+          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
         end
         
         it "should announce the char" do
           client_monitor.should_receive(:emit_all_ooc).with("announce_char_created")
-          @login_events.on_event CharCreatedEvent.new(@other_client)
+          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
         end
       end
       
@@ -91,20 +91,20 @@ module AresMUSH
         
         it "should announce the char if the client wants it" do
           Login.stub(:wants_announce) { true }
-          @client.should_receive(:emit_ooc).with("announce_char_disconnected")
-          @login_events.on_event CharDisconnectedEvent.new(@other_client)
+          @room_client.should_receive(:emit_ooc).with("announce_char_disconnected")
+          @login_events.on_event CharDisconnectedEvent.new(@event_client, @event_char)
         end
         
         it "should not announce the char if the client doesn't want it" do
           Login.stub(:wants_announce) { false }
-          @client.should_not_receive(:emit_ooc)
-          @login_events.on_event CharDisconnectedEvent.new(@other_client)
+          @room_client.should_not_receive(:emit_ooc)
+          @login_events.on_event CharDisconnectedEvent.new(@event_client, @event_char)
         end
 
         it "should announce the char in the room" do
-          @other_client.stub(:room) { @room }
-          @client.should_receive(:emit_success).with("announce_char_disconnected_here")
-          @login_events.on_event CharDisconnectedEvent.new(@other_client)
+          @event_char.stub(:room) { @room }
+          @room_client.should_receive(:emit_success).with("announce_char_disconnected_here")
+          @login_events.on_event CharDisconnectedEvent.new(@event_client, @event_char)
         end
       end
     end

@@ -18,7 +18,7 @@ module AresMUSH
       end
 
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.name, client) do |target|
+        AnyTargetFinder.with_any_name_or_id(self.name, client, enactor) do |target|
           if (!Manage.can_manage_object?(enactor, target))
             client.emit_failure t('dispatcher.not_allowed')
             return

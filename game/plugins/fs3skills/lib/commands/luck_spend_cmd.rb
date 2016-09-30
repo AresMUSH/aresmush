@@ -37,14 +37,8 @@ module AresMUSH
         enactor.luck = enactor.luck - count
         enactor.save
         
-        enactor_room.emit_ooc message
-        Global.client_monitor.logged_in_clients.each do |c|
-          next if c == client
-          next if c.room == enactor_room
-          if (FS3Skills.can_manage_luck?(c.char))
-            c.emit_ooc message
-          end
-        end
+        enactor_room.emit_ooc message        
+          
         Global.logger.info "#{enactor_name} spent #{count} luck points."
       end
     end

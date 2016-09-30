@@ -105,16 +105,16 @@ module AresMUSH
       !@char ? nil : @char.room
     end
     
+    def find_char
+      @char
+    end
+    
     def logged_in?
       @char
     end
     
     def reset_program
       @program = {}
-    end
-    
-    def reload
-      @char.reload if @char
     end
   end
 end

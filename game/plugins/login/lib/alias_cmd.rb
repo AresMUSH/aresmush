@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def handle
-        char = ClassTargetFinder.find(self.name, Character, client)
+        char = ClassTargetFinder.find(self.name, Character, enactor)
         return if (!char.found?)
 
         target = char.target

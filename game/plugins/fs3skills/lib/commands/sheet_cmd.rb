@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.target, client) do |model|
+        ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           template = FS3Skills.sheet_templates[self.page - 1].new(model, client)
           client.emit template.render
         end

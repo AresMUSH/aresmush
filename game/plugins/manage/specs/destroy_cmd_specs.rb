@@ -31,7 +31,7 @@ module AresMUSH
         
         context "not found" do
           it "should emit failure if the target is not found" do
-            AnyTargetFinder.stub(:find).with("foo", client) { FindResult.new(nil, "an error") }
+            AnyTargetFinder.stub(:find).with("foo", enactor) { FindResult.new(nil, "an error") }
             client.should_receive(:emit_failure).with("an error")
             handler.handle
           end

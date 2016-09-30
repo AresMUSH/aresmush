@@ -27,14 +27,14 @@ module AresMUSH
       end
       
       def handle
-        find_result = ClassTargetFinder.find(self.dest, Room, client)
+        find_result = ClassTargetFinder.find(self.dest, Room, enactor)
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return
         end
         dest = find_result.target
           
-        find_result = VisibleTargetFinder.find(self.name, client)
+        find_result = VisibleTargetFinder.find(self.name, enactor)
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return

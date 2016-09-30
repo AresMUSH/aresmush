@@ -11,18 +11,16 @@ module AresMUSH
       @client1 = double
       @client2 = double
       @client3 = double
+      @char1 = double
+      @char2 = double
+      @char3 = double
+      
       client_monitor = double
       Global.stub(:client_monitor) { client_monitor }
-      client_monitor.stub(:logged_in_clients) { [ @client1, @client2, @client3 ] }
-      @client1.stub(:room) { @room }
-      @client2.stub(:room) { @room }
-      @client3.stub(:room) { double }
-    end
-    
-    describe :clients do
-      it "should find clients whose chars are in this room" do
-        @room.clients.should eq [ @client1, @client2 ]
-      end
+      client_monitor.stub(:logged_in) { { @client1 => @char1, @client2 => @char2, @client3 => @char3 } }
+      @char1.stub(:room) { @room }
+      @char2.stub(:room) { @room }
+      @char3.stub(:room) { double }
     end
     
     describe :emit do
