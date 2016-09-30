@@ -33,7 +33,7 @@ module AresMUSH
 
           # Handle reconnect
           existing_client = char.client
-          client.char = char
+          client.char_id = char.id
           
           if (existing_client)
             existing_client.emit_ooc t('login.disconnected_by_reconnect')

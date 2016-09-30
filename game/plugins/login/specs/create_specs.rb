@@ -103,10 +103,11 @@ module AresMUSH
           Login.stub(:terms_of_service) { nil }
           
           @char = double.as_null_object
+          @char.stub(:id) { 33 }
           Character.stub(:new) { @char }
 
           client.stub(:emit_success)
-          client.stub(:char=) 
+          client.stub(:char_id=) 
           client.stub(:program) { {} }       
         
           SpecHelpers.stub_translate_for_testing        
@@ -133,7 +134,7 @@ module AresMUSH
         end
 
         it "should set the char on the client" do
-          client.should_receive(:char=).with(@char)
+          client.should_receive(:char_id=).with(33)
           handler.handle
         end
 

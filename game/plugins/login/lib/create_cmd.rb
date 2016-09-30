@@ -50,7 +50,7 @@ module AresMUSH
         char.save!
         
         client.emit_success(t('login.created_and_logged_in', :name => charname))
-        client.char = char
+        client.char_id = char.id
         Global.dispatcher.queue_event CharCreatedEvent.new(client, char)
         Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
       end

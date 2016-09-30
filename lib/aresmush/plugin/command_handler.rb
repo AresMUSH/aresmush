@@ -82,7 +82,7 @@ module AresMUSH
     # Override this if you don't want logging at all, or don't want to log the full command - 
     # for instance to avoid logging a connect command for privacy of passwords.
     def log_command
-      Global.logger.debug("#{self.class.name}: #{client} Cmd=#{cmd}")
+      Global.logger.debug("#{self.class.name}: #{client} Enactor=#{enactor_name} Cmd=#{cmd}")
     end
     
     # A handy function for stripping off leading and trailing spaces.  Safe to call

@@ -31,7 +31,7 @@ module AresMUSH
           return
         end
         
-        Rooms.move_to(client, enactor, exit.dest, exit.name)
+       Rooms.move_to(client, enactor, exit.dest, exit.name)
       end
     end
   end

@@ -114,12 +114,15 @@ module AresMUSH
     describe :find_client do
       it "should find a client with a matching character" do
         char = double
-        @client1.stub(:char) { char }
+        char.stub(:id) { 123 }
+        @client1.stub(:char_id) { 123 }
         @client_monitor.find_client(char).should eq @client1
       end
       
       it "should return nil if no client found" do
         char = double
+        char.stub(:id) { 123 }
+        @client1.stub(:char_id) { 456 }
         @client_monitor.find_client(char).should eq nil
       end
     end

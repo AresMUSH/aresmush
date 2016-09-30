@@ -76,7 +76,7 @@ module AresMUSH
         else
           targets = []
           self.names.each do |n|
-            find_result = ClassTargetFinder.find(n, Character, client)
+            find_result = ClassTargetFinder.find(n, Character, enactor)
             if (!find_result.found?)
               client.emit_failure t('rooms.cant_find_that_to_teleport', :name => n)
               return []

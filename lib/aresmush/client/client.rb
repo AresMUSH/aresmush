@@ -3,7 +3,7 @@ module AresMUSH
   class Client 
 
     attr_reader :ip_addr, :id, :hostname
-    attr_accessor :char, :last_activity, :last_connect, :program, :input_buffer
+    attr_accessor :char_id, :last_activity, :last_connect, :program, :input_buffer
     
     def initialize(id, connection)
       @id = id
@@ -21,7 +21,7 @@ module AresMUSH
     end
     
     def to_s
-      "Name=#{name} ID=#{id}"
+      "ID=#{id}"
     end
     
     def connected
@@ -52,11 +52,6 @@ module AresMUSH
       @connection.send_data "#{msg}"
     end
 
-    def grab(msg)
-      edit_prefix = !char ? "" : "#{char.edit_prefix} "
-      @connection.send_data "#{edit_prefix}#{msg}\r\n"
-    end
-    
     def idle_secs
       (Time.now - self.last_activity).to_i
     end
@@ -94,23 +89,25 @@ module AresMUSH
     def connection_closed
       Global.client_monitor.connection_closed self
     end
+
+    def char
+      raise "Someone still trying to use client.char"
+    end  
     
-    # In general, we want to avoid duplicating character interfaces on the client, but 
-    # these two (name and room) are used so ubiquitously that they're an exception.
     def name
-      !@char ? t('client.anonymous'): @char.name
+      raise "Someone still trying to use client.name"
     end
     
     def room
-      !@char ? nil : @char.room
+      raise "Someone still trying to use client.room"
     end
     
     def find_char
-      @char
+      @char_id ? Character.find(@char_id) : nil
     end
     
     def logged_in?
-      @char
+      @char_id
     end
     
     def reset_program

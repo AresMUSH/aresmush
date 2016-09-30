@@ -82,11 +82,12 @@ module AresMUSH
           before do
             @found_char = double
             @found_char.stub(:client) { nil }
+            @found_char.stub(:id) { 3 }
             Character.should_receive(:find_all_by_name_or_id) { [ @found_char ] }
             @found_char.stub(:compare_password).with("password") { true }  
          
             dispatcher.stub(:queue_event)  
-            client.stub(:char=)      
+            client.stub(:char_id=)      
           end
           
           it "should disconnect an existing client" do
@@ -104,7 +105,7 @@ module AresMUSH
           end        
        
           it "should set the char on the client" do
-            client.should_receive(:char=).with(@found_char)
+            client.should_receive(:char_id=).with(3)
             handler.handle
           end
 

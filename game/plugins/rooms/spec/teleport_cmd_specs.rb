@@ -71,8 +71,8 @@ module AresMUSH
           other_client1 = double
           other_char2 = double
           other_client2 = nil
-          ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(other_char1, nil) }
-          ClassTargetFinder.should_receive(:find).with("someone else", Character, client) { FindResult.new(other_char2, nil) }
+          ClassTargetFinder.should_receive(:find).with("someone", Character, enactor) { FindResult.new(other_char1, nil) }
+          ClassTargetFinder.should_receive(:find).with("someone else", Character, enactor) { FindResult.new(other_char2, nil) }
           other_char1.stub(:client) { other_client1 }
           other_char2.stub(:client) { nil }
           result =  
@@ -83,7 +83,7 @@ module AresMUSH
 
         it "should return nil if nothing found" do
           handler.stub(:names) { [ "someone" ] }
-          ClassTargetFinder.should_receive(:find).with("someone", Character, client) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("someone", Character, enactor) { FindResult.new(nil, "error") }
           client.should_receive(:emit_failure).with('rooms.cant_find_that_to_teleport')
           handler.find_targets.should eq []
         end

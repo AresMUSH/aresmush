@@ -64,7 +64,7 @@ module AresMUSH
     def on_command(client, cmd)
       @handled = false
       with_error_handling(client, cmd) do
-        enactor = client.char
+        enactor = client.find_char
         CommandAliasParser.substitute_aliases(enactor, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
           AresMUSH.with_error_handling(client, cmd) do

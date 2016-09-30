@@ -2,8 +2,8 @@ module AresMUSH
   module Pose
     class CronEventHandler
       def on_event(event)
-        config = Global.read_config("pose", "cron")
-        return if !Cron.is_cron_match?(config, event.time)
+        #config = Global.read_config("pose", "cron")
+        #return if !Cron.is_cron_match?(config, event.time)
 
         # Don't clear poses in rooms with active people.
         active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }

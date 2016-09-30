@@ -16,7 +16,7 @@ module AresMUSH
       @client = double
       @client.stub(:id) { "1" }
       @client.stub(:room) { nil }
-      @client.stub(:char) { @enactor }
+      @client.stub(:find_char) { @enactor }
       @command = Command.new("x")
       @dispatcher = Dispatcher.new
       @plugin1 = double
@@ -38,14 +38,19 @@ module AresMUSH
           end
           @handler = double
           @handler_class = double
+          plugin_manager.stub(:plugins) { [] }
         end
         
         it "performs alias substitutions" do
-          plugin_manager.stub(:plugins) { [] }
           CommandAliasParser.should_receive(:substitute_aliases).with(@enactor, @command, @shortcuts)
           @dispatcher.on_command(@client, @command)
         end
       
+        it "should look up the enactor" do
+          @client.should_receive(:find_char) { @enactor }
+          @dispatcher.on_command(@client, @command)
+        end
+        
         it "gets the list of plugins from the plugin manager" do
           plugin_manager.should_receive(:plugins) { [] }
           @dispatcher.on_command(@client, @command)

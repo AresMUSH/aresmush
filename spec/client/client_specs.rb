@@ -145,5 +145,19 @@ module AresMUSH
         @client.hostname.should eq "fake host"
       end
    end 
+   
+   describe :find_char do
+     it "should look up the char if there is one" do
+       @client.char_id = 15
+       found_char = double
+       Character.stub(:find).with(15) { found_char }
+       @client.find_char.should eq found_char
+     end
+     
+     it "should return nil if not logged in" do
+       @client.char_id = nil
+       @client.find_char.should eq nil
+     end
+   end
   end
 end
