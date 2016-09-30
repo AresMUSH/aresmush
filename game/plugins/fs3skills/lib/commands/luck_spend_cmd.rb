@@ -5,41 +5,35 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandRequiresArgs
       
-      attr_accessor :luck
+      attr_accessor :reason
 
       def initialize(client, cmd, enactor)
-        self.required_args = ['luck']
+        self.required_args = ['reason']
         self.help_topic = 'luck'
         super
       end
       
       def crack!
-        self.luck = trim_input(cmd.args)
-      end
-      
-      def check_luck
-        return nil if !self.luck
-        return t('fs3skills.invalid_luck_points') if !self.luck.is_integer?
-        return t('fs3skills.invalid_luck_points') if self.luck.to_i <= 0
-        return nil
+        self.reason = trim_input(cmd.args)
       end
       
       def handle
-        count = self.luck.to_i
         
-        if (count > enactor.luck)
+        if (enactor.luck < 1)
           client.emit_failure t('fs3skills.not_enough_points')
           return
         end
         
-        message = t('fs3skills.luck_point_spent', :name => enactor_name, :count => count)
+        message = t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
         
-        enactor.luck = enactor.luck - count
+        enactor.luck = enactor.luck - 1
         enactor.save
+        
+        result = Jobs.create_job("REQ", t('fs3skills.luck_job_title'), message, enactor)
         
         enactor_room.emit_ooc message        
           
-        Global.logger.info "#{enactor_name} spent #{count} luck points."
+        Global.logger.info "#{enactor_name} spent luck on #{reason}."
       end
     end
   end
