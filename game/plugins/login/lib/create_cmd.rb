@@ -43,6 +43,7 @@ module AresMUSH
         
         char = Character.new
         char.name = charname
+        char.room = Game.master.welcome_room
         char.change_password(password)
         if (terms_of_service)
           char.terms_of_service_acknowledged = Time.now

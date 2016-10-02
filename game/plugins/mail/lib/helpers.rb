@@ -75,7 +75,7 @@ module AresMUSH
       Global.logger.debug "Emptying trash for #{char.name}."
       char.mail.each do |m|
         if (m.tags.include?(Mail.trashed_tag))          
-          m.destroy
+          m.delete
         end
       end
     end

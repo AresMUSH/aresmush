@@ -12,11 +12,11 @@ module AresMUSH
     
       def find_any(name_or_id)
         return [] if !name_or_id
-        results = find(id: name_or_id)
-        if (results.empty?)
-          results = find(name_upcase: name_or_id)
+        result = self[name_or_id]
+        if result
+          return [result]
         end
-        results
+        find(name_upcase: name_or_id).to_a
       end
 
       def find_one(name)

@@ -29,7 +29,7 @@ module AresMUSH
               client.emit_failure t('mail.cant_unsend_read_mail')
             else
               client.emit_failure t('mail.mail_unsent')
-              delivery.destroy
+              delivery.delete
             end
           end
         end

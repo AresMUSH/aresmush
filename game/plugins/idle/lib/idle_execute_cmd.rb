@@ -22,8 +22,8 @@ module AresMUSH
         client.program[:idle_queue].each do |idle_char, action|
           case action
           when "Destroy"
-            Global.logger.debug "#{idle_char.name} destroyed for idling out."
-            idle_char.destroy
+            Global.logger.debug "#{idle_char.name} deleteed for idling out."
+            idle_char.delete
           when "Roster"
             Global.logger.debug "#{idle_char.name} added to roster."
             Roster::Api.add_to_roster(idle_char)

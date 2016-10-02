@@ -22,7 +22,7 @@ module AresMUSH
       
       def handle
         Jobs.closed_jobs.each do |job|
-          job.destroy
+          job.delete
         end
         client.emit_success t('jobs.jobs_purged')
       end

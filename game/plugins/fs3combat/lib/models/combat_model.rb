@@ -3,7 +3,7 @@ module AresMUSH
     field :last_treated, :type => Time
     
     has_one :combatant
-    has_many :damage, :dependent => :destroy
+    has_many :damage, :dependent => :delete
     
     def treatable_wounds
       self.damage.select { |d| d.is_treatable? }

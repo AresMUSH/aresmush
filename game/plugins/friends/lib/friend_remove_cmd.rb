@@ -25,7 +25,7 @@ module AresMUSH
           return client.emit_failure result[:error]
         end
       
-        result[:friendship].destroy
+        result[:friendship].delete
         client.emit_success t('friends.friend_removed', :name => self.name)        
       end
     end

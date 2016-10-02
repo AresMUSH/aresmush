@@ -37,7 +37,7 @@ module AresMUSH
 
           password = Character.random_link_code
           Login::Api.change_password(model, password)
-          model.roster_registry.destroy
+          model.roster_registry.delete
           
           model.save
           client.emit_success t('roster.roster_claimed', :name => model.name, :password => password)

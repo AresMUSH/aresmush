@@ -25,7 +25,7 @@ module AresMUSH
     belongs_to :character, :class_name => "AresMUSH::Character"
     belongs_to :combat, :class_name => "AresMUSH::CombatInstance"
 
-    has_one :action, :class_name => 'AresMUSH::CombatAction', :inverse_of => :combatant, :dependent => :destroy
+    has_one :action, :class_name => 'AresMUSH::CombatAction', :inverse_of => :combatant, :dependent => :delete
     has_and_belongs_to_many :targeted_by_actions, :class_name => 'AresMUSH::CombatAction', :inverse_of => :targets
     
     belongs_to :piloting, :class_name => 'AresMUSH::Vehicle', :inverse_of => :pilot
@@ -297,7 +297,7 @@ module AresMUSH
       else
         self.character.damage.each do |d|
           if (d.is_mock)
-            d.destroy!
+            d.delete
           end
         end
       end

@@ -22,7 +22,7 @@ module AresMUSH
         combat.emit t('fs3combat.combat_stopped_by', :name => enactor_name)
         client.emit_success t('fs3combat.stopping_combat', :num => self.num)
         
-        combat.destroy
+        combat.delete
         client.emit_success t('fs3combat.combat_stopped', :num => self.num)
       end
     end

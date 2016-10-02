@@ -22,7 +22,7 @@ module AresMUSH
     def self.set_action(client, enactor, combat, combatant, action_klass, args)
       begin
         if (combatant.action)
-          combatant.action.destroy
+          combatant.action.delete
         end
         action = action_klass.new(combatant:combatant)
         action.parse_args(args)

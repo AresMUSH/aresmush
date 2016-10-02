@@ -32,7 +32,7 @@ module AresMUSH
             return
           end
 
-          model.roster_registry.destroy
+          model.roster_registry.delete
           client.emit_success t('roster.removed_from_roster', :name => model.name)
         end
       end

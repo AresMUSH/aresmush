@@ -9,8 +9,8 @@ module AresMUSH
     field :first_turn, :type => Boolean, :default => true
     
     belongs_to :organizer, :class_name => "AresMUSH::Character", :inverse_of => "nil"  
-    has_many :combatants, :inverse_of => 'combat', :dependent => :destroy
-    has_many :vehicles, :inverse_of => 'combat', :dependent => :destroy
+    has_many :combatants, :inverse_of => 'combat', :dependent => :delete
+    has_many :vehicles, :inverse_of => 'combat', :dependent => :delete
 
     def active_combatants
       combatants.select { |c| !c.is_noncombatant? }.sort_by{ |c| c.name }
@@ -52,7 +52,7 @@ module AresMUSH
       combatant = find_combatant(name)
       combatant.clear_mock_damage          
       self.combatants.delete combatant
-      combatant.destroy
+      combatant.delete
     end
 
     def find_vehicle_by_name(name)

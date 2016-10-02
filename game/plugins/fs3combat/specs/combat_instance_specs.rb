@@ -41,11 +41,11 @@ module AresMUSH
           @bob.stub(:emit)
           @harvey.stub(:emit)
           @harvey.stub(:clear_mock_damage)
-          @harvey.stub(:destroy)
+          @harvey.stub(:delete)
         end
         
-        it "should destroy a combatant" do
-          @harvey.should_receive(:destroy)
+        it "should delete a combatant" do
+          @harvey.should_receive(:delete)
           @instance.leave("Harvey")
         end
         

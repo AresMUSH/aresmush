@@ -25,11 +25,12 @@ module AresMUSH
     
     def self.find_any(name_or_id)
       return [] if !name_or_id
-      results = Character[name_or_id]
-      if (!results)
-        results = find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase)
+      result = Character[name_or_id]
+      if (result)
+        return [ result ]
       end
-      results.to_a
+      
+      find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase).to_a
     end
 
     def self.find_one(name)
