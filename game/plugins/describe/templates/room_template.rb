@@ -21,7 +21,7 @@ module AresMUSH
         if (Rooms::Api.is_foyer?(@room))
           non_foyer_exits
         else
-          @room.exits.sort_by { |e| e.name }
+          @room.exits.sort_by(:name)
         end
       end
       
@@ -32,8 +32,7 @@ module AresMUSH
       
       # Available detail views.
       def details
-        names = @room.details.keys
-        names.empty? ? nil : names.sort.join(", ")
+        @room.details.empty? ? nil : @room.details.sort_by(:name).map { |d| d.name }.join(", ")
       end
       
       def repose_on

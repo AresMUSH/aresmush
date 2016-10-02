@@ -20,7 +20,9 @@ end
 
 task :testinit do
   load "game/plugins/bbs/bbs.rb"
+  load "game/plugins/describe/describe.rb"
   load "game/plugins/channels/channels.rb"
+  load "game/plugins/pose/pose.rb"
   load "game/plugins/rooms/rooms.rb"
   load "game/plugins/login/login.rb"
 
@@ -40,6 +42,8 @@ task :init do
   bootstrapper = AresMUSH::Bootstrapper.new
   
   load "game/plugins/bbs/bbs.rb"
+  load "game/plugins/pose/pose.rb"
+  load "game/plugins/describe/describe.rb"
   load "game/plugins/channels/channels.rb"
   load "game/plugins/rooms/rooms.rb"
   load "game/plugins/login/login.rb"

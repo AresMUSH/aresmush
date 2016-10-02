@@ -103,7 +103,7 @@ module AresMUSH
     end
     
     def find_char
-      @char_id ? Character.find(@char_id) : nil
+      @char_id ? Character[@char_id] : nil
     end
     
     def logged_in?

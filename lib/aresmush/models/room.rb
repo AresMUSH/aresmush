@@ -6,13 +6,9 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
 
-    # TODO - MOVE
-    attribute :repose_on
-    attribute :description
-    
     index :name_upcase
   
-    collection :exits, "AresMUSH::Exit"
+    set :exits, "AresMUSH::Exit"
     collection :characters, "AresMUSH::Character"
     
     # -----------------------------------

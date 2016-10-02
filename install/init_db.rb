@@ -127,8 +127,9 @@ module AresMUSH
   
       AresMUSH::Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy", default_alias: [ 'c', 'ch', 'cha' ])
       AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg", default_alias: [ 'q', 'qu', 'que' ])
-      AresMUSH::Channel.create(name: "Admin", description: "Admin business.", roles: ["admin"], color: "%xr", default_alias: [ 'a', 'ad', 'adm' ])
-  
+      channel = AresMUSH::Channel.create(name: "Admin", description: "Admin business.", color: "%xr", default_alias: [ 'a', 'ad', 'adm' ])
+      channel.roles.add admin_role
+      channel.save
   
       puts "Install complete."
     end

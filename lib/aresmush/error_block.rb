@@ -5,12 +5,6 @@ module AresMUSH
         yield block
         return true
         # Allow system exit to bubble up so it shuts the system down.
-      rescue StaleObjectError => e
-        Global.logger.error("Stale Object error in #{desc}: client=#{id} error=#{e} backtrace=#{e.backtrace[0,10]}")
-        if (client)
-          client.emit_failure t('dispatcher.stale_object_error', :error_info => e)
-        end
-        return false
       rescue SystemExit
         raise SystemExit
       rescue Exception => e

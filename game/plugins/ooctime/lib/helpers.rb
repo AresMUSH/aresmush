@@ -2,7 +2,7 @@ module AresMUSH
   module OOCTime
     def self.localtime(viewer, datetime)
       return "" if !datetime
-      timezone = Timezone::Zone.new :zone => !viewer ? "America/New_York" : viewer.timezone
+      timezone = Timezone::Zone.new :zone => !viewer ? "America/New_York" : timezone(viewer)
       timezone.time datetime
     end
     
@@ -19,7 +19,7 @@ module AresMUSH
     end
     
     def self.timezone(char)
-      char.timezone
+      char.timezone || "America/New_York"
     end
   end
 end

@@ -8,8 +8,8 @@ module AresMUSH
   
     index :name_upcase
     
-    reference :source, "AresMUSH::Exit"
-    reference :dest, "AresMUSH::Exit"
+    reference :source, "AresMUSH::Room"
+    reference :dest, "AresMUSH::Room"
     
     # -----------------------------------
     # CLASS METHODS
