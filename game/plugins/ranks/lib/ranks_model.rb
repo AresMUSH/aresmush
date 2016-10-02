@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    field :rank, :type => String
+    attribute :rank
   end
 end

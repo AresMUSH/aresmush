@@ -7,9 +7,9 @@ module AresMUSH
         return find_result
       end
       
-      chars = Character.find_all_by_name_or_id(name_or_id)
-      exits = Exit.find_all_by_name_or_id(name_or_id)
-      rooms = Room.find_all_by_name_or_id(name_or_id)
+      chars = Character.find_any(name_or_id)
+      exits = Exit.find_any(name_or_id)
+      rooms = Room.find_any(name_or_id)
       
       contents = [chars, exits, rooms].flatten(1).select { |c| !c.nil? }   
             

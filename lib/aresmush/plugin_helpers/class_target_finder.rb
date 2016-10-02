@@ -4,7 +4,8 @@ module AresMUSH
       return FindResult.new(client.char, nil) if (name_or_id.downcase == "me") && client && search_klass == Character
       return FindResult.new(client.room, nil) if (name_or_id.downcase == "here") && client && search_klass == Room
 
-      results = search_klass.find_all_by_name_or_id(name_or_id)
+      results = search_klass.find_any(name_or_id)      
+      
       SingleResultSelector.select(results)
     end
     

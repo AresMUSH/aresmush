@@ -8,7 +8,7 @@ module AresMUSH
         # Don't clear poses in rooms with active people.
         active_rooms = Global.client_monitor.logged_in_clients.map { |c| c.char.room }
 
-        rooms = Room.where(:poses.not => {"$size"=>0})
+        rooms = Room.all.select { |r| !r.poses.empty? }
         rooms.each do |r|
           next if active_rooms.include?(r)
           
@@ -16,16 +16,16 @@ module AresMUSH
           r.poses = []
           r.pose_order = {}
           r.repose_on = true
-          r.save!
+          r.save
         end
         
-        rooms = Room.where(:repose_on.ne => true, :room_type => "IC")
+        rooms = Room.all.select { |r| !r.repose_on && r.room_type == "IC" }
         rooms.each do |r|
           next if active_rooms.include?(r)
 
           Global.logger.debug "Enabling repose in #{r.name}."
           r.repose_on = true
-          r.save!
+          r.save
         end
       end
     end

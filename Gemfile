@@ -1,10 +1,9 @@
 source 'http://rubygems.org'
 gem 'ansi', '~> 1.4.3'
 
-gem 'mongo', '~> 2'
-gem 'mongoid', '~> 5'
 gem 'bson', '~> 3.0'
 gem 'activesupport', '> 4' 
+gem 'ohm', '~> 3.0.3'
 
 gem 'erubis', '~> 2.7.0'
 gem 'bcrypt', '~> 3.1.2'

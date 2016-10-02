@@ -16,11 +16,11 @@ module AresMUSH
         if (self.set)
           room.sceneset = self.set
           room.sceneset_time = Time.now
-          room.save!
+          room.save
           client.emit_success t('describe.scene_set')
         else
           room.sceneset = nil
-          room.save!
+          room.save
           client.emit_success t('describe.scene_set_cleared')
         end
       end

@@ -53,7 +53,7 @@ module AresMUSH
         else
           target.lock_keys = self.lock_keys
         end
-        target.save!
+        target.save
         client.emit_success self.lock_keys.empty? ? t('rooms.exit_unlocked') : t('rooms.exit_locked')
       end
     end

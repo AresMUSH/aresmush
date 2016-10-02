@@ -20,7 +20,7 @@ module AresMUSH
       
       def handle
         client.char.admin_note = self.note
-        client.char.save!
+        client.char.save
         client.emit_success t('roles.admin_note_set')
       end
     end

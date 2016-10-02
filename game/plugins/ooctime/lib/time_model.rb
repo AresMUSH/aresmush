@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    field :timezone, :type => String, :default => "America/New_York"
+    attribute :timezone
   end
 end

@@ -47,7 +47,7 @@ module AresMUSH
           end
         
           client.char.last_paged = self.names
-          client.char.save!
+          client.char.save
         end
       end
       

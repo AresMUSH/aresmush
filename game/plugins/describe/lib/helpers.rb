@@ -4,7 +4,7 @@ module AresMUSH
       Global.logger.debug("Setting desc: #{model.name} #{desc}")
       
       model.description = desc
-      model.save!
+      model.save
     end
     
     def self.can_describe?(char, model)
@@ -37,7 +37,7 @@ module AresMUSH
     end
     
     def self.rooms_with_scenes
-      Room.where(:sceneset.ne => nil)
+      Room.all.select { |r| !r.sceneset.empty? }
     end
     
   end

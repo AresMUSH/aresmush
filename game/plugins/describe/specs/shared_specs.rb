@@ -14,7 +14,7 @@ module AresMUSH
         end
 
         it "should save the model" do
-          @model.should_receive(:save!)    
+          @model.should_receive(:save)    
           Describe.set_desc(@model, "New desc")
         end        
       end

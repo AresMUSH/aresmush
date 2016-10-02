@@ -32,7 +32,7 @@ module AresMUSH
           end
           
           model.details[self.name] = self.desc
-          model.save!
+          model.save
           client.emit_success t('describe.detail_set')
         end
       end

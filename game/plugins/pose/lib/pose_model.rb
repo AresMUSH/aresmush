@@ -1,12 +1,20 @@
 module AresMUSH
   class Character
-    field :nospoof, :type => Boolean, :default => false
-    field :autospace, :type => String, :default => "%r"    
+    attribute :nospoof, DataType::Boolean
+    attribute :autospace
+  end
+
+  class Room
+    attribute :repose_on, DataType::Boolean
+    set :poses, "AresMUSH::SimpleData"
+    set :pose_order, "AresMUSH::PoseOrder"
   end
   
-  class Room
-    field :repose_on, :type => Boolean, :default => true
-    field :poses, :type => Array, :default => []
-    field :pose_order, :type => Hash, :default => {}
+  class PoseOrder < Ohm::Model
+    include ObjectModel
+    
+    attribute :pose
+    attribute :time, DataType::Time
   end
+  
 end

@@ -1,9 +1,10 @@
 module AresMUSH
   class Character
-    field :chargen_locked, :type => Boolean, :default => false
-    field :chargen_stage, :type => Integer, :default => 0
-    field :background, :type => String
+    attribute :is_approved, DataType::Boolean
+    attribute :chargen_locked, DataType::Boolean
+    attribute :chargen_stage, DataType::Integer
+    attribute :background
     
-    has_one :approval_job, :class_name => 'AresMUSH::Job', :inverse_of => :approval_char
+    reference :approval_job, "AresMUSH::Job"
   end
 end

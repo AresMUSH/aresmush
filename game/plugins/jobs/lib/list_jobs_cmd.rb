@@ -20,8 +20,6 @@ module AresMUSH
         jobs = cmd.switch_is?("all") ? 
           Job.all : 
           Job.all.select { |j| j.is_open? || j.is_unread?(client.char) }
-          #Job.or( { :status.ne => "DONE" }, {:readers.nin => [client.char.id]} )
-          #Job.includes(:readers).where("reader._id" => client.char.id )
   
         jobs = jobs.sort_by { |j| j.number }
         paginator = Paginator.paginate(jobs, self.page, 20)

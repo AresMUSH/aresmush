@@ -26,7 +26,7 @@ module AresMUSH
           client.emit_failure result[:error]
         else
           friendship.note = self.note
-          friendship.save!
+          friendship.save
           client.emit_success t('friends.note_added', :name => self.name)
         end   
       end

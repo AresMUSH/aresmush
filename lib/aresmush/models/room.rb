@@ -1,20 +1,45 @@
 module AresMUSH
-  class Room
+  class Room < Ohm::Model
     include ObjectModel
-
-    has_many :exits, :class_name => 'AresMUSH::Exit', :foreign_key => :source_id, :inverse_of => "source_id", :dependent => :destroy
-    has_many :characters, :class_name => 'AresMUSH::Character', :inverse_of => "room"
-
-    register_default_indexes
+    include FindByName
     
-    before_destroy :null_out_sources
-     
-    def null_out_sources
-      sources = Exit.where(:dest_id => self.id)
+    attribute :name
+    attribute :name_upcase
+
+    # TODO - MOVE
+    attribute :repose_on
+    attribute :description
+    
+    index :name_upcase
+  
+    collection :exits, "AresMUSH::Exit"
+    collection :characters, "AresMUSH::Character"
+    
+    # -----------------------------------
+    # CLASS METHODS
+    # -----------------------------------
+    
+    # Derived classes may implement name checking
+    def self.check_name(name)
+      nil
+    end
+
+    # -----------------------------------
+    # INSTANCE METHODS
+    # -----------------------------------
+    
+    def save
+      self.name_upcase = self.name ? self.name.upcase : nil
+      super
+    end
+    
+    def delete
+      sources = Exit.find(dest_id: self.id)
       sources.each do |s|
         s.dest = nil
-        s.save!
+        s.save
       end
+      super
     end
     
     def out_exit
@@ -22,13 +47,6 @@ module AresMUSH
       return out if out
       out = get_exit("OUT")
       return out
-    end
-    
-    def serializable_hash(options={})
-      hash = super(options)
-      hash[:exits] = exits.map { |e| e.id }
-      hash[:characters] = characters.map { |c| c.id }
-      hash
     end
     
     def clients
@@ -64,7 +82,7 @@ module AresMUSH
     def way_in
       o = out_exit
       return nil if !o
-      ways_in = Exit.all_of(source: o.dest, dest: self).all
+      ways_in = Exit.find(source_id: o.dest.id).combine(dest_id: self.id)
       return nil if ways_in.count != 1
       return ways_in.first
     end

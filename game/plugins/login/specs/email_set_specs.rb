@@ -15,14 +15,14 @@ module AresMUSH
       describe :handle do  
         before do
           char.stub(:email=)
-          char.stub(:save!)
+          char.stub(:save)
           client.stub(:emit_success)
         end
 
         it "should set the email" do
           handler.stub(:email) { "foo@bar.com" }
           char.should_receive(:email=).with("foo@bar.com")
-          char.should_receive(:save!)
+          char.should_receive(:save)
           handler.handle
         end
           

@@ -26,7 +26,7 @@ module AresMUSH
           if (e.dest.characters.count == 0)
             Global.logger.debug "Unlocking #{e.name} automatically."
             e.lock_keys = []
-            e.save!
+            e.save
           end
         end
       end

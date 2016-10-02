@@ -35,7 +35,7 @@ module AresMUSH
         if (room.room_type == "OOC")
           room.repose_on = false
         end
-        room.save!
+        room.save
         client.emit_success t('rooms.room_type_set')
       end
     end

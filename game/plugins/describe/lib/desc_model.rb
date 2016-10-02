@@ -8,48 +8,67 @@ module AresMUSH
     
     module ClassMethods
       def register_data_members
-        field :details, :type => Hash, :default => {}
+        set :details, "AresMUSH::Detail"
       end
     end
     
     def has_detail?(name)
-      details.has_key?(name)
+      !!detail(name)
     end
     
     def detail(name)
-      details[name]
+      details.find(name: name).first
     end
   end
+  
+  class Detail < Ohm::Model
+    include ObjectModel
+
+    attribute :name
+    attribute :description
+    
+    index :name
+  end
       
+  class Outfit < Ohm::Model
+    include ObjectModel
+    
+    attribute :name
+    attribute :description
+    reference :character, "AresMUSH::Character"
+    
+    index :name
+  end
+  
   class Character
     include Detailable
 
-    field :description, :type => String
-    field :shortdesc, :type => String
-    field :outfits, :type => Hash, :default => {}
+    attribute :description
+    attribute :shortdesc
+    collection :outfits, "AresMUSH::Outfit"
     
     def has_outfit?(name)
-      outfits.has_key?(name)
+      !!outfit(name)
     end
     
     def outfit(name)
-      outfits[name]
+      outfits.find(name: name).first
     end
   end
   
   class Room
     include Detailable
 
-    field :description, :type => String
-    field :shortdesc, :type => String
-    field :sceneset, :type => String
-    field :sceneset_time, :type => Time
+    attribute :description
+    attribute :shortdesc
+    attribute :sceneset
+    attribute :sceneset_time, DataType::Time
   end
   
   class Exit
     include Detailable
 
-    field :description, :type => String
-    field :shortdesc, :type => String
+    attribute :description
+    attribute :shortdesc
   end    
 end

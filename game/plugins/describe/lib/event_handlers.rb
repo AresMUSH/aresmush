@@ -9,7 +9,7 @@ module AresMUSH
           if (Time.now - r.sceneset_time > 28800)
             Global.logger.debug "Clearing sceneset from #{r.name}."
             r.sceneset = nil
-            r.save!
+            r.save
           end
         end
       end

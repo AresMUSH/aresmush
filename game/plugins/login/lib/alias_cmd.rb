@@ -33,7 +33,7 @@ module AresMUSH
       def update_alias(target)
         if (self.alias.blank?)
           target.alias = nil
-          target.save!
+          target.save
           client.emit_success t('login.alias_cleared')
         else
           
@@ -44,7 +44,7 @@ module AresMUSH
           end
         
           target.alias = self.alias
-          target.save!
+          target.save
           client.emit_success t('login.alias_set', :alias => self.alias)
         end
       end

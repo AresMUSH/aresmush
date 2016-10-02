@@ -15,7 +15,7 @@ module AresMUSH
       def handle
         target = client.room.way_in
         target.lock_keys = []
-        target.save!
+        target.save
         client.emit_success t('rooms.way_in_unlocked')
       end
     end

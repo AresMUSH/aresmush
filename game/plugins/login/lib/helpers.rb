@@ -20,7 +20,7 @@ module AresMUSH
       client.char.last_ip = client.ip_addr
       client.char.last_hostname = client.hostname.downcase
       client.char.last_on = Time.now
-      client.char.save!
+      client.char.save
     end
     
     def self.terms_of_service
@@ -51,7 +51,7 @@ module AresMUSH
     end
     
     def self.guests
-      Character.where(:roles.in => [ Login.guest_role ]).all
+      Character.all.select { |c| c.roles.include?(Login.guest_role) }
     end
   end
 end

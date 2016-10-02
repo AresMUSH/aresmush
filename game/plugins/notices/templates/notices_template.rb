@@ -11,7 +11,9 @@ module AresMUSH
       end
       
       def mail
-        Mail::Api.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
+        # TODO
+        "NONE"
+        #Mail::Api.has_unread_mail?(@char) ? t('notices.unread_mail') : t('notices.no_unread_mail')
       end
       
       def alts
@@ -20,7 +22,9 @@ module AresMUSH
       end
       
       def has_alt_mail(alt)
-        Mail::Api.has_unread_mail?(alt)
+        # TODO
+        false
+        #Mail::Api.has_unread_mail?(alt)
       end
       
       def bbs

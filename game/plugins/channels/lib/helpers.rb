@@ -27,7 +27,7 @@ module AresMUSH
     
     def self.find_common_channels(channels, other_client)
       their_channels = other_client.char.channels
-      intersection = channels & their_channels
+      intersection = channels.to_a & their_channels.to_a
       intersection = intersection.select { |c| c.announce }
       if (intersection.empty?)
         return nil
@@ -69,7 +69,7 @@ module AresMUSH
     def self.leave_channel(char, channel)
       channel.emit t('channels.left_channel', :name => char.name)
       channel.characters.delete char
-      channel.save!
+      channel.save
     end
     
     def self.channel_for_alias(char, channel_alias)
@@ -81,7 +81,7 @@ module AresMUSH
         
         option_aliases.each do |a1|
           if (CommandCracker.strip_prefix(a1).downcase == a2.downcase)
-            return Channel.find_by_name(k)
+            return Channel.find_one(k)
           end
         end
       end
@@ -100,7 +100,7 @@ module AresMUSH
     end
     
     def self.with_an_enabled_channel(name, client, &block)
-      channel = Channel.find_by_name(name)
+      channel = Channel.find_one(name)
       
       if (channel.nil?)
         channel = Channels.channel_for_alias(client.char, name)
@@ -120,7 +120,7 @@ module AresMUSH
     end
     
     def self.with_a_channel(name, client, &block)
-      channel = Channel.find_by_name(name)
+      channel = Channel.find_one(name)
       
       if (channel.nil?)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
@@ -166,7 +166,7 @@ module AresMUSH
         client.emit_success t('channels.channel_alias_set', :name => channel.name, :channel_alias => a)
       end
       
-      client.char.save!
+      client.char.save
       return true
     end
     
@@ -193,7 +193,7 @@ module AresMUSH
         end
 
         channel.characters << char
-        channel.save!
+        channel.save
         channel.emit t('channels.joined_channel', :name => char.name)
       end
     end

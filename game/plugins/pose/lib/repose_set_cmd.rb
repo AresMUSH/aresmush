@@ -28,12 +28,12 @@ module AresMUSH
         
         if (self.option.is_on?)
           room.repose_on = true
-          room.save!
+          room.save
           room.emit_ooc t('pose.repose_turned_on', :name => client.name)
         else
           room.repose_on = false
           room.poses = []
-          room.save!
+          room.save
           room.emit_ooc t('pose.repose_turned_off', :name => client.name)
         end
       end

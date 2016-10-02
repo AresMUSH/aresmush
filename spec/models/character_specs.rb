@@ -11,12 +11,12 @@ module AresMUSH
     
     describe :found? do
       it "should return true if there is an existing char" do
-        Character.stub(:find_by_name).with("Bob") { double }
+        Character.stub(:find_one).with("Bob") { double }
         Character.found?("Bob").should be_true
       end
       
       it "should return false if no char exists" do
-        Character.stub(:find_by_name).with("Bob") { nil }
+        Character.stub(:find_one).with("Bob") { nil }
         Character.found?("Bob").should be_false
       end
     end  

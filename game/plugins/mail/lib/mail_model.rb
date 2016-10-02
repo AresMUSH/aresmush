@@ -17,7 +17,7 @@ module AresMUSH
     end
     
     def sent_mail_to(recipient)
-      mail.where(author: recipient)
+      mail.find(author_id: recipient.id)
     end
   end    
     

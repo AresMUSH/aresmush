@@ -20,7 +20,7 @@ module AresMUSH
       
       def handle
         client.char.lastwill = self.will
-        client.char.save!
+        client.char.save
         client.emit_success t('idle.lastwill_set')
       end
     end

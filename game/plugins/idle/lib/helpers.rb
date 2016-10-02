@@ -9,8 +9,8 @@ module AresMUSH
     end
         
     def self.active_chars
-      base_list = Character.where(:idled_out.exists => false, :idled_out.ne => "", :is_playerbit.ne => true)
-      base_list.select { |c| !(Roles::Api.is_admin?(c) || Login::Api.is_guest?(c))}
+      base_list = Character.find(idled_out: nil).union(idled_out: false)
+      base_list.select { |c| !(Roles::Api.is_admin?(c) || c.is_playerbit || Login::Api.is_guest?(c))}
     end
     
   end

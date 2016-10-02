@@ -16,12 +16,12 @@ module AresMUSH
               char.autospace = response.data["autospace"]
               char.timezone = response.data["timezone"]
               Friends::Api.sync_handle_friends(char, response.data["friends"])
-              char.save!
+              char.save
               event.client.emit_success t('handles.handle_synced')              
             else
               char.handle_id = nil
               char.handle = nil
-              char.save!
+              char.save
               event.client.emit_success t('handles.handle_no_longer_linked')
               return
             end

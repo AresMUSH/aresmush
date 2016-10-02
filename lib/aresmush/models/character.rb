@@ -1,19 +1,74 @@
 module AresMUSH
-  class Character
+  class Character < Ohm::Model
     include ObjectModel
-
-    field :handle, :type => String
-    field :handle_id, :type => String
-
-    belongs_to :room, :class_name => 'AresMUSH::Room', :inverse_of => nil
     
-    register_default_indexes with_unique_name: true
+    attribute :handle
+    attribute :handle_id
+    attribute :handle_upcase
+    attribute :name
+    attribute :name_upcase
+    attribute :alias
+    attribute :alias_upcase
+
+    index :handle_upcase
+    index :handle_id
+    index :name_upcase
+    index :alias_upcase
+    
+    reference :room, "AresMUSH::Room"
+    
+    set :roles, "AresMUSH::Role"
+    
+    # -----------------------------------
+    # CLASS METHODS
+    # -----------------------------------
+    
+    def self.find_any(name_or_id)
+      return [] if !name_or_id
+      results = Character[name_or_id]
+      if (!results)
+        results = find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase)
+      end
+      results.to_a
+    end
+
+    def self.find_one(name)
+      find_any(name).first
+    end
     
     def self.find_by_handle(name)
       return [] if name.nil?
-      Character.all.select { |c| (c.handle.nil? ? "" : c.handle.downcase) == name.downcase }
+      find(handle_upcase: name.upcase)
     end
     
+    def self.found?(name)
+      find_any(name).first
+    end
+  
+    # Derived classes may implement name checking
+    def self.check_name(name)
+      nil
+    end
+
+    # -----------------------------------
+    # INSTANCE METHODS
+    # -----------------------------------
+    
+    def has_role?(name)
+      role = Role.find(name: name).first
+      self.roles.include?(role)
+    end
+        
+    def is_master_admin?
+      self == Game.master.master_admin
+    end
+    
+    def save
+      self.name_upcase = self.name ? self.name.upcase : nil
+      self.alias_upcase = self.alias ? self.alias.upcase : nil
+      self.handle_upcase = self.handle ? self.handle.upcase : nil
+      super
+    end
     
     def name_and_alias
       if (self.alias.blank?)
@@ -22,18 +77,6 @@ module AresMUSH
         "#{name} (#{self.alias})"
       end
     end
-
-    def api_character_id
-      data = "#{Game.master.api_game_id}#{id}"
-      Base64.strict_encode64(data).encode('ASCII-8BIT')
-    end
-    
-    def serializable_hash(options={})
-      hash = super(options)
-      hash[:room] = self.room_id
-      hash[:id] = self.id.to_s
-      hash
-    end 
     
     def client
       Global.client_monitor.find_client(self)

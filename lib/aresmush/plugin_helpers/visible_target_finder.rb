@@ -4,8 +4,8 @@ module AresMUSH
       return FindResult.new(client.char, nil) if (name.downcase == "me")
       return FindResult.new(client.room, nil) if (name.downcase == "here")
 
-      chars = Character.find_all_by_name(name).select { |c| c.room == client.room }
-      exits = Exit.find_all_by_name(name).select { |c| c.source == client.room }
+      chars = Character.find_any(name).select { |c| c.room == client.room }
+      exits = Exit.find_any(name).select { |c| c.source == client.room }
       contents = [chars, exits].flatten(1).select { |c| !c.nil? }   
             
       SingleResultSelector.select(contents)

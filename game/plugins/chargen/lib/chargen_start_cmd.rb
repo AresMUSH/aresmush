@@ -6,7 +6,7 @@ module AresMUSH
 
       def handle
         client.char.chargen_stage = 0
-        client.char.save!
+        client.char.save
 
         template = ChargenTemplate.new(client.char)
         client.emit template.render

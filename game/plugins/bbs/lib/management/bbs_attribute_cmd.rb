@@ -31,7 +31,7 @@ module AresMUSH
       def handle
         Bbs.with_a_board(name, client) do |board|        
           board.description = self.attribute
-          board.save!
+          board.save
           client.emit_success t('bbs.desc_set')
         end
       end
@@ -48,7 +48,7 @@ module AresMUSH
       def handle
         Bbs.with_a_board(name, client) do |board|        
           board.order = self.attribute.to_i
-          board.save!
+          board.save
           client.emit_success t('bbs.order_set')
         end
       end
@@ -60,7 +60,7 @@ module AresMUSH
       def handle
         Bbs.with_a_board(name, client) do |board|        
           board.name = self.attribute
-          board.save!
+          board.save
           client.emit_success t('bbs.board_renamed')
         end
       end
@@ -93,7 +93,7 @@ module AresMUSH
           else
             board.write_roles = roles.map  { |r| r.capitalize }
           end
-          board.save!
+          board.save
           client.emit_success t('bbs.roles_set')
         end
       end

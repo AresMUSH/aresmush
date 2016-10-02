@@ -33,7 +33,7 @@ module AresMUSH
           client.room.grid_y = self.y
           message = t('rooms.grid_set')
         end
-        client.room.save!
+        client.room.save
         client.emit_success message
       end
     end

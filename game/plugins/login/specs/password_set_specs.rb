@@ -15,7 +15,7 @@ module AresMUSH
       describe :handle do  
         before do
           char.stub(:change_password)
-          char.stub(:save!)
+          char.stub(:save)
           client.stub(:emit_success)
           char.stub(:compare_password).with("old") { true }
           handler.crack!
@@ -30,7 +30,7 @@ module AresMUSH
         
         it "should change the client's password" do
           char.should_receive(:change_password).with("new")
-          char.should_receive(:save!)
+          char.should_receive(:save)
           handler.handle
         end
           

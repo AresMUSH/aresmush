@@ -24,7 +24,7 @@ module AresMUSH
           client.room.area = self.name
           message = t('rooms.area_set')
         end
-        client.room.save!
+        client.room.save
         client.emit_success message
       end
     end

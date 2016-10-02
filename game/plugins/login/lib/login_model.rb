@@ -1,10 +1,12 @@
 module AresMUSH
   class Character
-    field :email, :type => String
-    field :terms_of_service_acknowledged, :type => Time
-    field :watch, :type => String, :default => "all"
-    field :password_hash, :type => String
-    field :last_on, :type => Time
+    include Ohm::DataTypes
+    
+    attribute :email
+    attribute :terms_of_service_acknowledged, DataType::Time
+    attribute :watch
+    attribute :password_hash
+    attribute :last_on, DataType::Time
 
     def compare_password(entered_password)
       hash = BCrypt::Password.new(self.password_hash)

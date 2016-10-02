@@ -4,7 +4,7 @@ module AresMUSH
       if (!names.respond_to?(:any?))
         has_role?(names)
       else
-        names.any? { |n| self.roles.include?(n) }
+        names.any? { |n| has_role?(n) }
       end
     end  
   end

@@ -17,7 +17,7 @@ module AresMUSH
         
           @old_room.stub(:emit_ooc)
           @new_room.stub(:emit_ooc)
-          @char.stub(:save!)
+          @char.stub(:save)
           @char.stub(:room=)
           @char.stub(:name) { "Char" }
           Rooms.stub(:emit_here_desc)
@@ -39,7 +39,7 @@ module AresMUSH
       
         it "should update the char location" do
           @char.should_receive(:room=).with(@new_room)
-          @char.should_receive(:save!)
+          @char.should_receive(:save)
           Rooms.move_to(@client, @char, @new_room)
         end
       

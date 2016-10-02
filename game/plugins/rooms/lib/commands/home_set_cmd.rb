@@ -13,7 +13,7 @@ module AresMUSH
       def handle
         client.emit_ooc t('rooms.home_set')
         client.char.home = client.char.room
-        client.char.save!
+        client.char.save
       end
     end
   end

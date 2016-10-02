@@ -37,7 +37,7 @@ module AresMUSH
         end
         
         target.dest = nil
-        target.save!
+        target.save
         client.emit_success t('rooms.exit_unlinked')
       end
     end

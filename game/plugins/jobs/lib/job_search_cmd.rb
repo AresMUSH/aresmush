@@ -27,13 +27,14 @@ module AresMUSH
   
       def handle
         if (self.category == "title")
-          jobs = Job.where(title: /#{self.value}/i).sort_by { |j| j.number }
+          jobs = Job.all.select { |j| j.title =~ /#{self.value}/i }.sort_by { |j| j.number }
         elsif (self.category == "submitter")
           result = ClassTargetFinder.find(self.value, Character, client)
           if (result.found?)
-            jobs = Job.where(author: result.target).sort_by { |j| j.number }
+            jobs = Job.find(author_id: result.target.id).sort_by { |j| j.number }
           else
-            jobs = Job.all.select{ |j| !j.author }.sort_by { |j| j.number }
+            client.emit_failure t('dispatcher.not_found')
+            return
           end
           
         else

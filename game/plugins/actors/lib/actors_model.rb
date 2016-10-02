@@ -1,19 +1,19 @@
 module AresMUSH
   class Character
-    has_one :actor_registry, dependent: :nullify
+    reference :actor_registry, "AresMUSH::ActorRegistry"
     
     def actor
-      self.actor_registry.nil? ? t('actors.actor_not_set') : self.actor_registry.actor
+      self.actor_registry ? self.actor_registry.actor : t('actors.actor_not_set')
     end
     
   end
   
-  class ActorRegistry
-     include SupportingObjectModel
+  class ActorRegistry < Ohm::Model
+    include ObjectModel
      
-     belongs_to :character
-     
-     field :charname, :type => String
-     field :actor, :type => String
+     reference :character, "AresMUSH::Character"
+
+     attribute :charname
+     attribute :actor
   end
 end

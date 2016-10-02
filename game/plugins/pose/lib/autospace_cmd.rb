@@ -20,7 +20,7 @@ module AresMUSH
           message = t('pose.autospace_set', :option => self.option)
         end
         
-        client.char.save!
+        client.char.save
         client.emit_success message
         
         Handles.warn_if_setting_linked_preference(client)

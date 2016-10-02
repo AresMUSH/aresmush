@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    field :edit_prefix, :type => String, :default => "FugueEdit >"
-    field :saved_text, :type => Array, :default => []
+    attribute :edit_prefix
+    set :saved_text, "AresMUSH::SimpleData"
   end
 end

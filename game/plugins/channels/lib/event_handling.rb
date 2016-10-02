@@ -42,7 +42,7 @@ module AresMUSH
         channels.each do |c|
           Channels.set_gagging(client.char, c, false)
         end
-        client.char.save!        
+        client.char.save        
       end
     end
     

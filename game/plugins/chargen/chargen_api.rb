@@ -1,7 +1,5 @@
 module AresMUSH
-  class Character
-    field :is_approved, :type => Boolean, :default => false
-    
+  class Character    
     def is_approved?
       self.is_approved
     end  

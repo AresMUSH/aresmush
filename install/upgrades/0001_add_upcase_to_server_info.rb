@@ -12,7 +12,7 @@ module AresMUSH
     s.game_open = true
     s.name_upcase = s.name.upcase
     s.category_upcase = s.category.upcase
-    s.save!
+    s.save
   end
   
   puts "Upgrade complete!"

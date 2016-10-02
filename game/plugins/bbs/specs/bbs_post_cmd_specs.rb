@@ -8,7 +8,7 @@ module AresMUSH
       
       before do
         @board = double
-        BbsBoard.stub(:find_by_name).with("announce") { @board }
+        BbsBoard.stub(:find_one).with("announce") { @board }
 
         init_handler(BbsPostCmd, "bbs/edit board=subj/msg")
         SpecHelpers.stub_translate_for_testing

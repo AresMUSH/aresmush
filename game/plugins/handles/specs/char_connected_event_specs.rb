@@ -35,7 +35,7 @@ module AresMUSH
           @char.should_receive(:autospace=).with("x")
           @char.should_receive(:timezone=).with("t")
           Friends::Api.should_receive(:sync_handle_friends).with(@char, "f")
-          @char.should_receive(:save!)
+          @char.should_receive(:save)
           @client.should_receive(:emit_success).with("handles.handle_synced")
           @handler.on_event(@event)
         end
@@ -52,7 +52,7 @@ module AresMUSH
           @char.should_not_receive(:autospace=)
           @char.should_receive(:handle=).with(nil)
           @char.should_receive(:handle_id=).with(nil)
-          @char.should_receive(:save!)
+          @char.should_receive(:save)
           @client.should_receive(:emit_success).with("handles.handle_no_longer_linked")
           @handler.on_event(@event)
         end

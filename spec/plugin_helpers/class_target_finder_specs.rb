@@ -20,21 +20,21 @@ module AresMUSH
         
         it "should find the specified class by name" do
           room = double
-          Room.stub(:find_all_by_name_or_id).with("foo") { [room] }
+          Room.stub(:find_any).with("foo") { [room] }
           result = ClassTargetFinder.find("foo", Room, @client)
           result.target.should eq room
           result.error.should be_nil
         end
     
         it "should return ambiguous if multiple results" do
-          Room.stub(:find_all_by_name_or_id).with("foo") { [double, double] }
+          Room.stub(:find_any).with("foo") { [double, double] }
           result = ClassTargetFinder.find("foo", Room, @client)
           result.target.should eq nil
           result.error.should eq 'db.object_ambiguous'
         end
 
         it "should return not found if no results" do
-          Room.stub(:find_all_by_name_or_id).with("bar") { [] }
+          Room.stub(:find_any).with("bar") { [] }
           result = ClassTargetFinder.find("bar", Room, @client)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
@@ -51,7 +51,7 @@ module AresMUSH
         it "should not return the char for another kind of object" do
           char = double
           @client.stub(:char) { char }
-          Room.stub(:find_all_by_name_or_id).with("me") { [] }
+          Room.stub(:find_any).with("me") { [] }
           result = ClassTargetFinder.find("me", Room, @client)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
@@ -68,7 +68,7 @@ module AresMUSH
         it "should not find here for another kind of object" do
           room = double
           @client.stub(:room) { room }
-          Character.stub(:find_all_by_name_or_id).with("here") { [] }
+          Character.stub(:find_any).with("here") { [] }
           result = ClassTargetFinder.find("here", Character, @client)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'

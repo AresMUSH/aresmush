@@ -1,17 +1,17 @@
 module AresMUSH
   class Character
-    has_one :roster_registry, dependent: :nullify
+    reference :roster_registry, "AresMUSH::RosterRegistry"
     
     def on_roster?
-      roster_registry ? true : false
+      !!roster_registry
     end
   end
   
-  class RosterRegistry
-    include SupportingObjectModel
+  class RosterRegistry < Ohm::Model
+    include ObjectModel
      
-     belongs_to :character
+     reference :character, "AresMUSH::Character"
      
-     field :contact, :type => String
+     attribute :contact
   end
 end

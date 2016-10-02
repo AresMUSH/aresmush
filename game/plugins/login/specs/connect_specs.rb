@@ -62,7 +62,7 @@ module AresMUSH
              
         context "failure" do
           it "should fail if there isn't a matching char" do
-            Character.should_receive(:find_all_by_name_or_id).with("Bob") { [] }
+            Character.should_receive(:find_any).with("Bob") { [] }
             Global.should_not_receive(:queue_event)
             client.should_receive(:emit_failure).with("db.object_not_found")
             handler.handle
@@ -71,7 +71,7 @@ module AresMUSH
           it "should fail if the passwords don't match" do
             found_char = double
             found_char.should_receive(:compare_password).with("password") { false }
-            Character.should_receive(:find_all_by_name_or_id).with("Bob") { [found_char] }
+            Character.should_receive(:find_any).with("Bob") { [found_char] }
             client.should_receive(:emit_failure).with("login.password_incorrect")
             Global.should_not_receive(:queue_event)
             handler.handle
@@ -82,7 +82,7 @@ module AresMUSH
           before do
             @found_char = double
             @found_char.stub(:client) { nil }
-            Character.should_receive(:find_all_by_name_or_id) { [ @found_char ] }
+            Character.should_receive(:find_any) { [ @found_char ] }
             @found_char.stub(:compare_password).with("password") { true }  
          
             dispatcher.stub(:queue_event)  

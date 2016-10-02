@@ -1,13 +1,33 @@
 module AresMUSH
-  class Exit
+  class Exit < Ohm::Model
     include ObjectModel
-
-    field :source_id, :type => BSON::ObjectId
-    belongs_to :source, :class_name => 'AresMUSH::Room', :inverse_of => 'exits'
+    include FindByName
     
-    field :dest_id, :type => BSON::ObjectId
-    belongs_to :dest, :class_name => 'AresMUSH::Room',  :inverse_of => nil
+    attribute :name
+    attribute :name_upcase
+  
+    index :name_upcase
+    
+    reference :source, "AresMUSH::Exit"
+    reference :dest, "AresMUSH::Exit"
+    
+    # -----------------------------------
+    # CLASS METHODS
+    # -----------------------------------
+  
+    # Derived classes may implement name checking
+    def self.check_name(name)
+      nil
+    end
 
-    register_default_indexes
+    # -----------------------------------
+    # INSTANCE METHODS
+    # -----------------------------------
+    
+    def save
+      self.name_upcase = self.name ? self.name.upcase : nil
+      super
+    end
+    
   end
 end

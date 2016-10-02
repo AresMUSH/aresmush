@@ -40,7 +40,7 @@ module AresMUSH
         end
         
         client.char.chargen_stage = new_page
-        client.char.save!
+        client.char.save
         
         template = ChargenTemplate.new(client.char)
         client.emit template.render

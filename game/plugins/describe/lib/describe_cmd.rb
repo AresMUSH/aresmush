@@ -30,7 +30,7 @@ module AresMUSH
           
           if (cmd.root_is?("shortdesc"))
             model.shortdesc = desc
-            model.save!
+            model.save
           else
             Describe.set_desc(model, desc)
           end

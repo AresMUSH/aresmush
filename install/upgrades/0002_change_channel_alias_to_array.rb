@@ -11,7 +11,7 @@ module AresMUSH
         chan["alias"] = [ chan["alias"] ]
       end
     end
-    c.save!
+    c.save
   end
   
   puts "Upgrade complete!"

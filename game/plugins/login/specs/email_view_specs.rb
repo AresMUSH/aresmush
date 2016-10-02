@@ -32,7 +32,7 @@ module AresMUSH
         context "not found" do
           it "should fail if there isn't a matching char" do
             handler.stub(:name) { "Bob" }
-            Character.should_receive(:find_all_by_name_or_id).with("Bob") { nil }
+            Character.should_receive(:find_any).with("Bob") { nil }
             client.should_receive(:emit_failure).with("db.object_not_found")
             handler.handle
           end
@@ -42,7 +42,7 @@ module AresMUSH
           it "should fail if the actor doesn't have permission" do
             handler.stub(:name) { "Bob" }
             @found_char = double
-            Character.stub(:find_all_by_name_or_id) { [@found_char] }
+            Character.stub(:find_any) { [@found_char] }
             Login.stub(:can_access_email?).with(char, @found_char) { false }
             client.should_receive(:emit_failure).with("dispatcher.not_allowed")
             handler.handle
@@ -53,7 +53,7 @@ module AresMUSH
           before do
             handler.stub(:name) { "Bob" }
             @found_char = double
-            Character.should_receive(:find_all_by_name_or_id).with("Bob") { [@found_char] }
+            Character.should_receive(:find_any).with("Bob") { [@found_char] }
             Login.stub(:can_access_email?).with(char, @found_char) { true }
             AresMUSH::Locale.stub(:translate).with("login.email_registered_is", { :name => "Bob", :email => "foo@bar.com" }) { "email_is" }
             AresMUSH::Locale.stub(:translate).with("login.no_email_is_registered", { :name => "Bob" }) { "no_email_registered" }

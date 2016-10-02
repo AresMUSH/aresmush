@@ -29,7 +29,7 @@ module AresMUSH
           
           Bbs.with_a_board(self.new_board_name, client) do |new_board|
             post.bbs_board = new_board
-            post.save!
+            post.save
             client.emit_success t('bbs.post_moved', :subject => post.subject, :board => new_board.name)
           end
         end

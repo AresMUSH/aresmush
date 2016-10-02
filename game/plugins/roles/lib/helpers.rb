@@ -1,11 +1,11 @@
 module AresMUSH
   module Roles
     def self.all_roles
-      Global.read_config("roles", "roles").map { |r| r.downcase }
+      Roles.all.map { |r| r.name }
     end
     
     def self.restricted_roles
-      Global.read_config("roles", "restricted_roles").map { |r| r.downcase }
+      Roles.all.select { |r| r.is_restricted }.map { |r| r.name }
     end
     
     def self.can_assign_role?(actor)
@@ -13,15 +13,17 @@ module AresMUSH
     end
     
     def self.is_restricted?(name)
-      restricted_roles.include?(name.downcase)
+      role = Role.find(name: name).first
+      restricted_roles.include?(role)
     end
     
     def self.valid_role?(name)
-      all_roles.include?(name.downcase)
+      role = Role.find(name: name).first
     end
     
     def self.chars_with_role(name)
-      Character.where(:roles.in => [ name ]).all
+      role = Role.find(name: name).first
+      Character.select { |c| c.roles.include?(role) }
     end
   end
 end

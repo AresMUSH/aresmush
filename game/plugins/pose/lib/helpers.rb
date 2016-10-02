@@ -16,7 +16,7 @@ module AresMUSH
         if (room.poses.count > 8)
           room.poses.shift
         end
-        room.save!
+        room.save
         Global.dispatcher.queue_event PoseEvent.new(client, pose, is_emit)
       end
     end

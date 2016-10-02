@@ -1,6 +1,8 @@
 module AresMUSH
   class Character
-    field :idled_out, :type => String
-    field :lastwill, :type => String
+    attribute :idled_out
+    attribute :lastwill
+    
+    index :idled_out
   end
 end

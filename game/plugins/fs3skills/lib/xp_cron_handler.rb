@@ -10,7 +10,7 @@ module AresMUSH
         periodic_xp = Global.read_config("fs3skills", "periodic_xp")
         max_xp = Global.read_config("fs3skills", "max_xp_hoard")
         
-        approved = Character.where(is_approved: true)
+        approved = Character.find(is_approved: true)
         approved.each do |a|
           if (a.xp < max_xp)
             a.xp = a.xp + periodic_xp

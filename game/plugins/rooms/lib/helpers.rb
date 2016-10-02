@@ -42,7 +42,7 @@ module AresMUSH
       
       room.emit_ooc t('rooms.char_has_arrived', :name => char.name)
       char.room = room
-      char.save!
+      char.save
       if (!client.nil?)
         Rooms.emit_here_desc(client)
       end

@@ -20,17 +20,17 @@ module AresMUSH
           @found_char = double
           @found_char.stub(:change_password)
           @found_char.stub(:name) { "name" }
-          @found_char.stub(:save!)
+          @found_char.stub(:save)
           Roles::Api.stub(:is_master_admin?) { false }
           client.stub(:emit_success)
           Login.stub(:can_reset_password?).with(char) { true }          
-          Character.stub(:find_all_by_name_or_id).with("name") { [@found_char] }
+          Character.stub(:find_any).with("name") { [@found_char] }
           AresMUSH::Locale.stub(:translate).with("login.password_reset", { :name => "name" }) { "password_reset" }
         end
                 
         it "should change the found char's password" do
           @found_char.should_receive(:change_password).with("new")
-          @found_char.should_receive(:save!)
+          @found_char.should_receive(:save)
           handler.handle
         end
           

@@ -1,10 +1,11 @@
 module AresMUSH
   class Character
-    field :last_ic_location_id, :type => BSON::ObjectId
-    field :afk_message, :type => String
-    field :is_afk, :type => Boolean
-    field :is_on_duty, :type => Boolean, :default => true
-    field :is_playerbit, :type => Boolean    
+    reference :last_ic_location, "AresMUSH::Room"
+
+    attribute :afk_message
+    attribute :is_afk, DataType::Boolean
+    attribute :is_on_duty, DataType::Boolean
+    attribute :is_playerbit, DataType::Boolean    
     
     def is_afk?
       is_afk

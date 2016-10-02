@@ -12,7 +12,7 @@ module AresMUSH
         room = client.char.room        
         room.pose_order = {}
         room.poses = []
-        room.save!
+        room.save
         
         client.emit_success t('pose.repose_cleared')
       end

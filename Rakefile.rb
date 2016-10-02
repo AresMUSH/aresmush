@@ -5,7 +5,7 @@ require 'erubis'
 require 'rspec'
 require 'rspec/core/rake_task'
 require 'tempfile'
-require 'mongoid'
+#require 'mongoid'
 require_relative 'install/init_db.rb'
 require_relative 'install/configure_game.rb'
 
@@ -18,8 +18,31 @@ task :configure do
   AresMUSH::Install.configure_game
 end
 
+task :testinit do
+  load "game/plugins/bbs/bbs.rb"
+  load "game/plugins/channels/channels.rb"
+  load "game/plugins/rooms/rooms.rb"
+  load "game/plugins/login/login.rb"
+
+  bootstrapper = AresMUSH::Bootstrapper.new
+  AresMUSH::Character.all.each do |c|
+    puts c.inspect
+  end
+  
+  c = AresMUSH::Character.find_one("Headwiz")
+  puts c.inspect
+  
+  
+  puts AresMUSH::Game[1].inspect
+end
+
 task :init do    
   bootstrapper = AresMUSH::Bootstrapper.new
+  
+  load "game/plugins/bbs/bbs.rb"
+  load "game/plugins/channels/channels.rb"
+  load "game/plugins/rooms/rooms.rb"
+  load "game/plugins/login/login.rb"
   AresMUSH::Install.init_db
 end
 

@@ -1,23 +1,29 @@
 module AresMUSH
   class Character
-    field :channel_options, :type => Hash, :default => {}
-    has_and_belongs_to_many :channels
+    collection :channel_options, "AresMUSH::ChannelOptions"
+
+    set :channels, "AresMUSH::Channel"
   end
   
-  class Channel
-    
+  class ChannelOptions  < Ohm::Model
     include ObjectModel
     
-    field :color, :type => String, :default => "%xh"
-    field :description, :type => String
-    field :announce, :type => Boolean, :default => true
-    field :roles, :type => Array, :default => []
-    field :default_alias, :type => Array, :default => []
+    reference :character, "AresMUSH::Character"
+    reference :channel, "AresMUSH::Channel"
+  end
+  
+  class Channel < Ohm::Model
+    include ObjectModel
     
-    has_and_belongs_to_many :characters
+    attribute :name
+    attribute :color
+    attribute :description
+    attribute :announce, DataType::Boolean
+    attribute :default_alias
     
-    before_create :set_default_alias
-    
+    set :roles, "AresMUSH::Role"
+    set :characters, "AresMUSH::Character"
+        
     def set_default_alias
       self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
     end

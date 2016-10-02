@@ -8,7 +8,7 @@ module AresMUSH
       
       before do
         @channel = double
-        Channel.stub(:find_by_name).with("Public") { @channel }
+        Channel.stub(:find_one).with("Public") { @channel }
 
         init_handler(ChannelJoinCmd, "channel/join public")
         SpecHelpers.stub_translate_for_testing
@@ -29,7 +29,7 @@ module AresMUSH
           end
           
           it "should fail if the channel is not found" do
-            Channel.stub(:find_by_name).with("Public") { nil }
+            Channel.stub(:find_one).with("Public") { nil }
             client.should_receive(:emit_failure).with("channels.channel_doesnt_exist")
             handler.handle
           end
@@ -48,7 +48,7 @@ module AresMUSH
           
           it "should fail if the alias is already in use" do
             char.stub(:channel_options) { { "Other" => { "alias" => ["pu"] } } }
-            Channel.stub(:find_by_name).with("Other") { double }
+            Channel.stub(:find_one).with("Other") { double }
             client.should_receive(:emit_failure).with("channels.alias_in_use") 
             client.should_receive(:emit_failure).with("channels.unable_to_determine_auto_alias") 
             handler.handle
@@ -61,12 +61,12 @@ module AresMUSH
             Channels.stub(:channel_for_alias) { nil }
             Channels.stub(:can_use_channel) { true }
             @chars = []
-            @channel.stub(:save!)
+            @channel.stub(:save)
             @channel.stub(:emit)
             @channel.stub(:characters) { @chars }
             @channel.stub(:default_alias) { ["pu"] }
             char.stub(:channel_options) { {} }
-            char.stub(:save!)
+            char.stub(:save)
             char.stub(:name) { "Bob" }
             client.stub(:emit_success)
           end
@@ -78,14 +78,14 @@ module AresMUSH
           
           it "should set the channel alias to the default if none specified" do
             Channels.should_receive(:set_channel_option).with(char, @channel, "alias", ["pu" ])
-            char.should_receive(:save!)
+            char.should_receive(:save)
             handler.handle
           end
 
           it "should set the channel alias to a user-selected value if specified" do
             handler.stub(:alias) { "=pub" }
             Channels.should_receive(:set_channel_option).with(char, @channel, "alias", ["=pub"])
-            char.should_receive(:save!)
+            char.should_receive(:save)
             handler.handle
           end
 
@@ -95,7 +95,7 @@ module AresMUSH
           end
                     
           it "should add the char to the channel" do
-            @channel.should_receive(:save!)
+            @channel.should_receive(:save)
             handler.handle
             @channel.characters.should eq [char]
           end

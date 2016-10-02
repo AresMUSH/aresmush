@@ -6,7 +6,7 @@ module AresMUSH
       before do
         @char = double
         @channel = double
-        Channel.stub(:find_by_name).with("Public") { @channel }
+        Channel.stub(:find_one).with("Public") { @channel }
       end
       
       context "Alias has a prefix" do

@@ -29,7 +29,7 @@ module AresMUSH
           return t('friends.already_friend', :name => self.name)
         end
         friendship = Friendship.new(:character => client.char, :friend => friend)
-        friendship.save!
+        friendship.save
         client.emit_success t('friends.friend_added', :name => self.name)
       end
     end

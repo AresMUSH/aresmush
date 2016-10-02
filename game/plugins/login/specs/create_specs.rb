@@ -123,7 +123,7 @@ module AresMUSH
         end
 
         it "should save the character" do          
-          @char.should_receive(:save!)
+          @char.should_receive(:save)
           handler.handle
         end
 

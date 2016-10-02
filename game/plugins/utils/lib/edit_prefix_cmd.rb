@@ -19,7 +19,7 @@ module AresMUSH
           message = t('edit.prefix_set')
         end
         
-        client.char.save!
+        client.char.save
         client.emit_success message
       end
     end

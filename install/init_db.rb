@@ -1,100 +1,135 @@
 module AresMUSH
   module Install
     def self.init_db
-      Mongoid.purge!
-  
-      AresMUSH::ObjectModel.models.each do |m|
-        puts "Clearing out #{m}"
-        #m.delete_all
-        #m.remove_indexes
-        m.create_indexes
-      end
 
-      game = AresMUSH::Game.create
+      Ohm.redis.call "FLUSHDB"
+      
+      game = Game.create
 
       puts "Creating start rooms."
   
-      welcome_room = AresMUSH::Room.create(:name => "Welcome Room", :room_type => "OOC", :repose_on => false, :area => "Offstage",
-      :description => "Welcome!%R%R" + 
-          "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
-          "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players")
-      ic_start_room = AresMUSH::Room.create(:name => "Onstage", :repose_on => false, :room_type => "IC")
-      ooc_room = AresMUSH::Room.create(:name => "Offstage", :repose_on => false, :room_type => "OOC", :area => "Offstage",
+      welcome_room = Room.create(
+        :name => "Welcome Room", 
+        :room_type => "OOC", 
+        :area => "Offstage",
+        :repose_on => false, 
+        :description => "Welcome!%R%R" + 
+            "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
+            "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players")
+            
+      ic_start_room = Room.create(
+        :name => "Onstage", 
+        :room_type => "IC",
+        :area => "Onstage",
+        :repose_on => true, 
+        :description => "This is the room where all characters start out."
+      )
+      
+      ooc_room = Room.create(
+        :name => "Offstage", 
+        :room_type => "OOC", 
+        :area => "Offstage",
+        :repose_on => false, 
         :description => "This is a backstage area where you can hang out when not RPing.")
-      quiet_room = AresMUSH::Room.create(:name => "Quiet Room", :repose_on => false, :room_type => "OOC", :area => "Offstage",
+
+      quiet_room = Room.create(
+        :name => "Quiet Room", 
+        :room_type => "OOC", 
+        :area => "Offstage",
+        :repose_on => false, 
         :description => "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside.")
-      rp_room_hub = AresMUSH::Room.create(:name => "RP Annex", :repose_on => false, :room_type => "OOC", :area => "Offstage",
+        
+      rp_room_hub = Room.create(
+        :name => "RP Annex", 
+        :room_type => "OOC", 
+        :area => "Offstage",
+        :repose_on => false, 
+        :is_foyer => true,
         :description => "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded.")
 
-      4.times do |n|
-        rp_room = AresMUSH::Room.create(:name => "RP Room #{n+1}", :repose_on => true, :room_type => "IC", :area => "Offstage",
+      6.times do |n|
+        rp_room = Room.create(
+          :name => "RP Room #{n+1}", 
+          :room_type => "IC", 
+          :area => "Offstage",
+          :repose_on => true, 
           :description => "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything.")
-        AresMUSH::Exit.create(:name => "#{n+1}", :source => rp_room_hub, :dest => rp_room)
-        AresMUSH::Exit.create(:name => "O", :source => rp_room, :dest => rp_room_hub)
+        Exit.create(:name => "#{n+1}", :source => rp_room_hub, :dest => rp_room)
+        Exit.create(:name => "O", :source => rp_room, :dest => rp_room_hub)
       end
 
-      AresMUSH::Exit.create(:name => "RP", :source => ooc_room, :dest => rp_room_hub)
-      AresMUSH::Exit.create(:name => "QR", :source => ooc_room, :dest => quiet_room)
+      Exit.create(:name => "RP", :source => ooc_room, :dest => rp_room_hub)
+      Exit.create(:name => "QR", :source => ooc_room, :dest => quiet_room)
 
-      AresMUSH::Exit.create(:name => "O", :source => welcome_room, :dest => ooc_room)
-      AresMUSH::Exit.create(:name => "O", :source => quiet_room, :dest => ooc_room)
-      AresMUSH::Exit.create(:name => "O", :source => rp_room_hub, :dest => ooc_room)
+      Exit.create(:name => "O", :source => welcome_room, :dest => ooc_room)
+      Exit.create(:name => "O", :source => quiet_room, :dest => ooc_room)
+      Exit.create(:name => "O", :source => rp_room_hub, :dest => ooc_room)
       
       game.welcome_room = welcome_room
       game.ic_start_room = ic_start_room
       game.ooc_room = ooc_room
-      game.save!
+      game.save
   
+      admin_role = Role.create(name: "admin", is_restricted: true)
+      admin_role.save
+      everyone_role = Role.create(name: "everyone")
+      everyone_role.save
+      builder_role = Role.create(name: "builder")
+      builder_role.save
+      guest_role = Role.create(name: "guest")
+      guest_role.save
+      
       puts "Creating OOC chars."
       
-      headwiz = AresMUSH::Character.new(name: "Headwiz")
+      headwiz = Character.create(name: "Headwiz")
       headwiz.change_password("change_me!")
-      headwiz.roles << "admin"
-      headwiz.save!
+      headwiz.roles.add admin_role
+      headwiz.roles.add everyone_role
+      headwiz.room = welcome_room
+      headwiz.save
   
-      builder = AresMUSH::Character.new(name: "Builder")
+      builder = Character.create(name: "Builder")
       builder.change_password("change_me!")
-      builder.roles << "builder"
-      builder.save!
+      builder.roles.add builder_role
+      builder.roles.add everyone_role
+      builder.room = welcome_room
+      builder.save
   
-      systemchar = AresMUSH::Character.new(name: "System")
+      systemchar = Character.create(name: "System")
       systemchar.change_password("change_me!")
-      systemchar.roles << "admin"
-      systemchar.save!
+      systemchar.roles.add admin_role
+      systemchar.roles.add everyone_role
+      systemchar.room = welcome_room
+      systemchar.save
 
       4.times do |n|
-        guest = AresMUSH::Character.new(name: "Guest-#{n+1}")
-        guest.change_password("guest")
-        guest.roles << "guest"
-        guest.save!
+        guest = Character.create(name: "Guest-#{n+1}")
+        guest.roles.add guest_role
+        guest.roles.add everyone_role
+        guest.room = welcome_room
+        guest.save
       end
 
       game.master_admin = headwiz
       game.system_character = systemchar
-      game.save!
-  
-      puts "Creating server info."
-  
-      AresMUSH::ServerInfo.create(
-      game_id: AresMUSH::ServerInfo.arescentral_game_id,
-      name: "AresCentral", 
-      category: "Social",
-      description: "Central hub for all things AresMUSH-related.", 
-      host: "mush.aresmush.com",
-      website: "http://www.aresmush.com",
-      game_open: true,
-      port: 7206)
-    
+      game.save
+        
       puts "Creating channels and BBS."
   
-      AresMUSH::BbsBoard.create(name: "Announcements", order: 1)
-      AresMUSH::BbsBoard.create(name: "Admin", order: 2, read_roles: [ "admin"], write_roles: [ "admin" ])
-      AresMUSH::BbsBoard.create(name: "Cookie Awards", order: 3)
-      AresMUSH::BbsBoard.create(name: "New Arrivals", order: 4)
+      BbsBoard.create(name: "Announcements", order: 1)
+      board = BbsBoard.create(name: "Admin", order: 2)
+      board.read_roles.add admin_role
+      board.write_roles.add admin_role
+      board.save
+      
+      BbsBoard.create(name: "Cookie Awards", order: 3)
+      BbsBoard.create(name: "New Arrivals", order: 4)
   
-      AresMUSH::Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy")
-      AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
-      AresMUSH::Channel.create(name: "Admin", description: "Admin business.", roles: ["admin"], color: "%xr")
+      Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy")
+      Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
+      channel = Channel.create(name: "Admin", description: "Admin business.", color: "%xr")
+      channel.roles.add admin_role
+      channel.save
   
   
       puts "Install complete."

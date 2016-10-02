@@ -31,7 +31,7 @@ module AresMUSH
       def handle
         Channels.with_a_channel(name, client) do |channel|
           channel.color = self.attribute
-          channel.save!
+          channel.save
           client.emit_success "%xn#{t('channels.color_set', :name => channel.display_name)}"
         end
       end
@@ -50,11 +50,11 @@ module AresMUSH
         Channels.with_a_channel(name, client) do |channel|
           if (self.attribute == 'on')
             channel.announce = true
-            channel.save!
+            channel.save
             client.emit_success "%xn#{t('channels.announce_enabled', :name => channel.display_name)}"
           else
             channel.announce = false
-            channel.save!
+            channel.save
             client.emit_success "%xn#{t('channels.announce_disabled', :name => channel.display_name)}"
           end          
         end
@@ -67,7 +67,7 @@ module AresMUSH
       def handle
         Channels.with_a_channel(name, client) do |channel|        
           channel.description = self.attribute
-          channel.save!
+          channel.save
           client.emit_success t('channels.desc_set')
         end
       end
@@ -102,7 +102,7 @@ module AresMUSH
               Channels.leave_channel(c, channel)
             end
           end
-          channel.save!
+          channel.save
           client.emit_success t('channels.roles_set')
         end
       end
@@ -114,7 +114,7 @@ module AresMUSH
       def handle
         Channels.with_a_channel(name, client) do |channel|
           channel.default_alias = self.attribute.split(",")
-          channel.save!
+          channel.save
           client.emit_success t('channels.default_alias_set')
         end
       end

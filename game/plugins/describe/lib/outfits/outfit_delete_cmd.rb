@@ -17,7 +17,7 @@ module AresMUSH
       
       def handle
         client.char.outfits.delete(self.name)
-        client.char.save!
+        client.char.save
         client.emit_success t('describe.outfit_deleted')
       end
     end

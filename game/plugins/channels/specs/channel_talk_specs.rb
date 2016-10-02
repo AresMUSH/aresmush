@@ -8,7 +8,7 @@ module AresMUSH
       
       before do
         @channel = double
-        Channel.stub(:find_by_name).with("Public") { @channel }
+        Channel.stub(:find_one).with("Public") { @channel }
 
         init_handler(ChannelTalkCmd, "+pub Hi.")
         SpecHelpers.stub_translate_for_testing

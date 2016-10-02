@@ -15,7 +15,7 @@ module AresMUSH
       registry = char.roster_registry || RosterRegistry.new
       registry.character = char
       registry.contact = contact
-      registry.save!
+      registry.save
     end
   end
 end

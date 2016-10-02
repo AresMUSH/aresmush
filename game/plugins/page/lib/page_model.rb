@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    field :last_paged, :type => Array, :default => []
-    field :do_not_disturb, :type => Boolean
+    set :last_paged, "AresMUSH::Character"
+    attribute :do_not_disturb, DataType::Boolean
   end
 end

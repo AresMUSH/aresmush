@@ -6,23 +6,27 @@ module AresMUSH
     end
   end
   
-  class BbsBoard
-    include SupportingObjectModel
-        
-    field :name, :type => String
-    field :description, :type => String
-    field :read_roles, :type => Array, :default => []
-    field :write_roles, :type => Array, :default => []
-    field :order, :type => Integer
+  class BbsBoard < Ohm::Model
+    include ObjectModel
+
+    attribute :name
+    attribute :description
+    attribute :order, DataType::Integer
+
+    index :order
+    index :name
     
-    embeds_many :bbs_posts, order: :created_at.asc
+    set :read_roles, "AresMUSH::Role"
+    set :write_roles, "AresMUSH::Role"
+    
+    collection :bbs_posts, "AresMUSH::BbsPost"
     
     def has_unread?(char)
-      bbs_posts.any? { |p| p.is_unread?(char) }
+      bbs_posts.select { |p| p.is_unread?(char) }.any?
     end
     
     def self.all_sorted
-      BbsBoard.all.sort { |a, b| [a.order, a.name] <=> [b.order, b.name] }
+      BbsBoard.all.sort_by(:order)
     end
     
     def first_unread(char)
@@ -31,17 +35,17 @@ module AresMUSH
     end
   end
   
-  class BbsPost
-    include SupportingObjectModel
+  class BbsPost < Ohm::Model
+    include ObjectModel
     
-    field :subject, :type => String
-    field :message, :type => String
-    
-    embedded_in :bbs_board
-    
-    belongs_to :author, :class_name => "AresMUSH::Character"
-    has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
-    embeds_many :bbs_replies, order: :created_at.asc
+    attribute :subject
+    attribute :message
+
+    set :readers, "AresMUSH::Character"
+        
+    reference :author, "AresMUSH::Character"
+    reference :bbs_board, "AresMUSH::BBsBoard"
+    collection :bbs_replies, "AresMUSH::BbsReply"
     
     def authored_by?(char)
       char == author
@@ -53,12 +57,12 @@ module AresMUSH
     
     def mark_read(char)
       readers << char
-      save!
+      save
     end
     
     def mark_unread
       readers.clear
-      save!
+      save
     end
     
     def reference_str
@@ -74,12 +78,12 @@ module AresMUSH
     end
   end
   
-  class BbsReply
-    include SupportingObjectModel
+  class BbsReply < Ohm::Model
+    include ObjectModel
     
-    field :message, :type => String
-    
-    embedded_in :bbs_post
-    belongs_to :author, :class_name => "AresMUSH::Character"
+    attribute :message
+
+    reference :bbs_post, "AresMUSH::BbsPost"
+    reference :author, "AresMUSH::Character"
   end
 end

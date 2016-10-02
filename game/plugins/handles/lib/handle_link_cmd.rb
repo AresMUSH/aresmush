@@ -39,7 +39,7 @@ module AresMUSH
           if (response.is_success?)
             char.handle = response.data["handle_name"]
             char.handle_id = response.data["handle_id"]
-            char.save!
+            char.save
         
             client.emit_success t('handles.link_successful', :handle => self.handle_name)
           else

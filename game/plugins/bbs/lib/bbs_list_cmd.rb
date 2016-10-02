@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin      
       
-      def handle       
+      def handle    
         template = BoardListTemplate.new(client.char) 
         client.emit template.render
       end

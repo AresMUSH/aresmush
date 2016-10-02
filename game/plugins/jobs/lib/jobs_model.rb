@@ -1,11 +1,11 @@
 module AresMUSH
   class Game
-    field :next_job_number, :type => Integer, :default => 1
+    attribute :next_job_number, DataType::Integer
   end
   
   class Character
-    has_many :submitted_requests, :class_name => 'AresMUSH::Job', :inverse_of => :author
-    has_many :assigned_jobs, :class_name => 'AresMUSH::Job', :inverse_of => :assigned_to
+    collection :submitted_requests, "AresMUSH::Job"
+    set :assigned_jobs, "AresMUSH::Job"
     
     def unread_jobs
       if (!Jobs.can_access_jobs?(self))
@@ -27,22 +27,24 @@ module AresMUSH
     end
   end
   
-  class Job
-    include SupportingObjectModel
+  class Job < Ohm::Model
+    include ObjectModel
     
-    field :title, :type => String
-    field :description, :type => String
-    field :category, :type => String
-    field :status, :type => String
-    field :number, :type => Integer
+    attribute :title
+    attribute :description
+    attribute :category
+    attribute :status
+    attribute :number, DataType::Integer
     
-    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => :submitted_requests
-    belongs_to :assigned_to, :class_name => "AresMUSH::Character", :inverse_of => :assigned_jobs
-    belongs_to :approval_char, :class_name => "AresMUSH::Character", :inverse_of => :approval_job
+    reference :author, "AresMUSH::Character"
+    reference :assigned_to, "AresMUSH::Character"
+    reference :approval_char, "AresMUSH::Character"
 
-    embeds_many :job_replies, order: :created_at.asc
-    has_and_belongs_to_many :readers, :class_name => "AresMUSH::Character", :inverse_of => nil
+    collection :job_replies, "AresMUSH::JobReply"
+    set :readers, "AresMUSH::Character"
     
+    index :number
+
     def is_unread?(char)
       !readers.include?(char)
     end
@@ -52,13 +54,13 @@ module AresMUSH
     end
   end
   
-  class JobReply
-    include SupportingObjectModel
+  class JobReply < Ohm::Model
+    include ObjectModel
     
-    embedded_in :job
-    belongs_to :author, :class_name => "AresMUSH::Character"
+    reference :job, "AresMUSH::Job"
+    reference :author, "AresMUSH::Character"
     
-    field :admin_only, :type => Boolean
-    field :message, :type => String
+    attribute :admin_only, DataType::Boolean
+    attribute :message
   end
 end

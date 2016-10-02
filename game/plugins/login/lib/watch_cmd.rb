@@ -25,7 +25,7 @@ module AresMUSH
       
       def handle
         client.char.watch = self.option
-        client.char.save!
+        client.char.save
         if (self.option == "all")
           client.emit_success t('login.watch_all')
         elsif (self.option == "none")

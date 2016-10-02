@@ -4,7 +4,7 @@ module AresMUSH
       actor.has_any_role?(Global.read_config("fs3skills", "roles", "can_manage_luck"))
     end
     
-    # Does not save!  Do that yourself!
+    # Does not save  Do that yourself!
     def self.modify_luck(char, amount)
       max_luck = Global.read_config("fs3skills", "max_luck")
       char.luck = char.luck + amount

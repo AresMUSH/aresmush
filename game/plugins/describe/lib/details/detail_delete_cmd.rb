@@ -32,7 +32,7 @@ module AresMUSH
           end
           
           model.details.delete(self.name)
-          model.save!
+          model.save
           client.emit_success t('describe.detail_deleted')
         end
       end
