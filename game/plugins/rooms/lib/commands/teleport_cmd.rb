@@ -9,12 +9,6 @@ module AresMUSH
       attr_accessor :destination
       attr_accessor :names
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['destination']
-        self.help_topic = 'teleport'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         if (!cmd.args.arg2)
@@ -24,6 +18,13 @@ module AresMUSH
           self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
           self.destination = trim_input(cmd.args.arg2)
         end
+      end
+      
+      def required_args
+        {
+          args: [ self.destination ],
+          help: 'teleport'
+        }
       end
       
       def check_can_teleport

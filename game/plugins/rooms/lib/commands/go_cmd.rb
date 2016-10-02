@@ -8,14 +8,15 @@ module AresMUSH
 
       attr_accessor :destination
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['destination']
-        self.help_topic = 'go'
-        super
-      end
-      
       def crack!
         self.destination = trim_input(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.destination ],
+          help: 'go'
+        }
       end
       
       def handle

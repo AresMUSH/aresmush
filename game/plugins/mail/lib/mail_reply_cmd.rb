@@ -8,12 +8,6 @@ module AresMUSH
       attr_accessor :num
       attr_accessor :body
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['body']
-        self.help_topic = 'mail'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -22,6 +16,13 @@ module AresMUSH
         else
           self.body = cmd.args
         end
+      end
+
+      def required_args
+        {
+          args: [ self.body ],
+          help: 'mail'
+        }
       end
       
       def handle

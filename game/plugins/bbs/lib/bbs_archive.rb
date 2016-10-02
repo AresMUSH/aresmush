@@ -7,15 +7,16 @@ module AresMUSH
       include TemplateFormatters
       
       attr_accessor :board_name
-
-      def initialize
-        self.required_args = ['board_name']
-        self.help_topic = 'bbs'
-        super
-      end
       
       def crack!
         self.board_name = titleize_input(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.board_name ],
+          help: 'bbs'
+        }
       end
       
       def handle

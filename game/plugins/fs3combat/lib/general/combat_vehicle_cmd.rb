@@ -8,12 +8,6 @@ module AresMUSH
       
       attr_accessor :name, :vehicle, :passenger_type
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'vehicle', 'passenger_type']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -25,6 +19,13 @@ module AresMUSH
         end
         
         self.passenger_type = cmd.switch_is?("passenger") ? "Passenger" : "Pilot"
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.vehicle, self.passenger_type ],
+          help: 'combat'
+        }
       end
       
       def check_in_combat

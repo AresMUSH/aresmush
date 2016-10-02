@@ -7,13 +7,21 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :temp, :condition, :area
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['temp', 'condition', 'area']
-        self.help_topic = 'weather'
-        super
+      
+      def crack!
+        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
+        self.area = titleize_input(cmd.args.arg1)
+        self.temp = !cmd.args.arg2 ? nil : trim_input(cmd.args.arg2).downcase
+        self.condition = !cmd.args.arg3 ? nil : trim_input(cmd.args.arg3).downcase
       end
-
+      
+      def required_args
+        {
+          args: [ self.temp, self.condition, self.area ],
+          help: 'weather'
+        }
+      end
+      
       def check_can_change_weather
         return t('dispatcher.not_allowed') if !Weather.can_change_weather?(enactor)
         return nil
@@ -29,13 +37,6 @@ module AresMUSH
         temperatures = Global.read_config("weather", "temperatures")
         return t('weather.invalid_temperature', :temps => temperatures.join(" ")) if !temperatures.include?(self.temp)
         return nil
-      end
-      
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
-        self.area = titleize_input(cmd.args.arg1)
-        self.temp = !cmd.args.arg2 ? nil : trim_input(cmd.args.arg2).downcase
-        self.condition = !cmd.args.arg3 ? nil : trim_input(cmd.args.arg3).downcase
       end
       
       def handle

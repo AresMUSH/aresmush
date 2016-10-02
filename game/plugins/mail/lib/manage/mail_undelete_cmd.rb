@@ -7,16 +7,17 @@ module AresMUSH
            
       attr_accessor :num
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['num']
-        self.help_topic = 'mail managing'
-        super
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end
-            
+      
+      def required_args
+        {
+          args: [ self.num ],
+          help: 'mail managing'
+        }
+      end
+        
       def handle
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
           delivery.tags.delete(Mail.trashed_tag)

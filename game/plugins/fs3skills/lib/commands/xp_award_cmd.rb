@@ -8,16 +8,17 @@ module AresMUSH
       
       attr_accessor :name, :xp
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'xp']
-        self.help_topic = 'xp'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.xp = trim_input(cmd.args.arg2)
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.xp ],
+          help: 'xp'
+        }
       end
       
       def check_xp

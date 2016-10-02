@@ -78,10 +78,12 @@ module AresMUSH
           include CommandHandler
           include CommandRequiresArgs
           attr_accessor :foo, :bar
-          def initialize(client, cmd, enactor)
-            self.required_args = [ 'foo', 'bar' ]
-            self.help_topic = 'test'
-            super
+          
+          def required_args
+            {
+              args: [ self.foo, self.bar ],
+              help: 'test'
+            }
           end
         end
         @plugin = PluginValidateArgumentPresentTest.new(@client, @cmd, double)

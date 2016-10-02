@@ -8,19 +8,19 @@ module AresMUSH
       
       attr_accessor :name1, :name2, :roll_str1, :roll_str2
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name1', 'roll_str1', 'roll_str2']
-        self.help_topic = 'roll'
-        super
-      end
-      
       def crack!
-        
         cmd.crack_args!( /(?<name1>[^\/]+)\/(?<str1>.+) vs (?<name2>[^\/]+)?\/?(?<str2>.+)/ )
         self.roll_str1 = titleize_input(cmd.args.str1)
         self.roll_str2 = titleize_input(cmd.args.str2)
         self.name1 = cmd.args.name1
         self.name2 = cmd.args.name2
+      end
+
+      def required_args
+        {
+          args: [ self.name1, self.roll_str1, self.roll_str2 ],
+          help: 'roll'
+        }
       end
       
       def handle

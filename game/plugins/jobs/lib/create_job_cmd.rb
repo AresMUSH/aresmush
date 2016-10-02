@@ -7,12 +7,6 @@ module AresMUSH
 
       attr_accessor :title, :description, :category
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['title', 'description', 'category']
-        self.help_topic = 'jobs'
-        super
-      end
-      
       def crack!
         if (cmd.args !~ /\//)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -29,6 +23,13 @@ module AresMUSH
           self.title = cmd.args.title
           self.description = cmd.args.description
         end        
+      end
+      
+      def required_args
+        {
+          args: [ self.title, self.description, self.category ],
+          help: 'jobs'
+        }
       end
       
       def check_can_access

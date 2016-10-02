@@ -7,16 +7,17 @@ module AresMUSH
       
       attr_accessor :handle_name, :link_code
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['handle_name', 'link_code']
-        self.help_topic = 'handle'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.handle_name = cmd.args.arg1
         self.link_code = cmd.args.arg2
+      end
+
+      def required_args
+        {
+          args: [ self.handle_name, self.link_code ],
+          help: 'handle'
+        }
       end
       
       def check_handle_name

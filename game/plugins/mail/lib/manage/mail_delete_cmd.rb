@@ -7,16 +7,17 @@ module AresMUSH
            
       attr_accessor :num
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['num']
-        self.help_topic = 'mail managing'
-        super
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end
-            
+      
+      def required_args
+        {
+          args: [ self.num ],
+          help: 'mail managing'
+        }
+      end
+      
       def handle
         if (self.num =~ /\-/)
           splits = self.num.split("-")

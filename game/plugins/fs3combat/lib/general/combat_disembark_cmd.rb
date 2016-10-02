@@ -7,13 +7,7 @@ module AresMUSH
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'combat'
-        super
-      end
-      
+
       def crack!
         if (cmd.args)
           self.name = titleize_input(cmd.args)
@@ -22,6 +16,13 @@ module AresMUSH
         end
       end
 
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'combat'
+        }
+      end
+      
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|   
           if (!combatant.is_in_vehicle?)

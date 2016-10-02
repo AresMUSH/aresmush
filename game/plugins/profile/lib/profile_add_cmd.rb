@@ -6,17 +6,18 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :field, :value
-     
-      def initialize(client, cmd, enactor)
-        self.required_args = ['field', 'value']
-        self.help_topic = 'profile'
-        super
-      end
 
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.field = titleize_input(cmd.args.arg1)
         self.value = cmd.args.arg2
+      end
+      
+      def required_args
+        {
+          args: [ self.field, self.value ],
+          help: 'profile'
+        }
       end
       
       def handle

@@ -8,19 +8,20 @@ module AresMUSH
 
       attr_accessor :name
       attr_accessor :dest
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'open'
-        super
-      end
-            
+        
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         self.name = cmd.args.arg1
         self.dest = cmd.args.arg2
       end
-
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'open'
+        }
+      end
+      
       def check_can_build
         return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil

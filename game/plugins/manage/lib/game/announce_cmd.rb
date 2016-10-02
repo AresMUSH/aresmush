@@ -6,17 +6,18 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :message
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['message']
-        self.help_topic = 'announce'
-        super
-      end
-      
+
       def crack!
         self.message = cmd.args
       end
-
+      
+      def required_args
+        {
+          args: [ self.message ],
+          help: 'announce'
+        }
+      end
+      
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
         return nil

@@ -7,17 +7,18 @@ module AresMUSH
       
       attr_accessor :name
       attr_accessor :new_password
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'new_password']
-        self.help_topic = 'password'
-        super
-      end
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.new_password = cmd.args.arg2
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.new_password ],
+          help: 'password'
+        }
       end
       
       def check_new_password

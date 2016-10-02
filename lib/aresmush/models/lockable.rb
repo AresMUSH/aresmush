@@ -27,7 +27,7 @@ module AresMUSH
       end
       if existing.present? && existing['lock_field'] &&
         existing['lock_field'].to_i > old_lock.to_i
-        raise new StaleObjectError
+        raise StaleObjectError.new
       end
       self.lock_field = (self.lock_field ? self.lock_field + 1 : 1)
     end

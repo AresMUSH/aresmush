@@ -7,16 +7,17 @@ module AresMUSH
       
       attr_accessor :name, :luck
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'luck']
-        self.help_topic = 'luck'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.luck = trim_input(cmd.args.arg2)
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.luck ],
+          help: 'luck'
+        }
       end
       
       def check_luck

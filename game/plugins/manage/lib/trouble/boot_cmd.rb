@@ -8,16 +8,17 @@ module AresMUSH
       
       attr_accessor :target
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['target']
-        self.help_topic = 'boot'
-        super
-      end
-      
       def crack!
         self.target = trim_input(cmd.args)
       end
-
+      
+      def required_args
+        {
+          args: [ self.target ],
+          help: 'boot'
+        }
+      end
+      
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
         return nil

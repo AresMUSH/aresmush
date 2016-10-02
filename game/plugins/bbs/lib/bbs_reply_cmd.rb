@@ -7,12 +7,6 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :reply
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['reply']
-        self.help_topic = 'bbs'
-        super
-      end      
-            
       def crack!        
         if (cmd.args =~ /.+\/.+\=.+/)
           cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
@@ -27,6 +21,13 @@ module AresMUSH
         else
           self.reply = cmd.args
         end
+      end
+      
+      def required_args
+        {
+          args: [ self.reply ],
+          help: 'bbs'
+        }
       end
       
       def handle

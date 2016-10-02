@@ -9,16 +9,17 @@ module AresMUSH
       
       attr_accessor :target
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['target']
-        self.help_topic = 'examine'
-        super
-      end
-      
       def crack!
         self.target = trim_input(cmd.args)
       end
-
+      
+      def required_args
+        {
+          args: [ self.target ],
+          help: 'examine'
+        }
+      end
+      
       def handle
         AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
 

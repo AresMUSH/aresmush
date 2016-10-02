@@ -7,18 +7,19 @@ module AresMUSH
       
       attr_accessor :name, :message
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'message']
-        self.help_topic = 'app'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.message = cmd.args.arg2
       end
       
+      def required_args
+        {
+          args: [ self.name, self.message ],
+          help: 'app'
+        }
+      end
+
       def check_permission
         return t('dispatcher.not_allowed') if !Chargen.can_approve?(enactor)
         return nil

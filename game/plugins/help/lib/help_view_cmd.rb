@@ -8,16 +8,17 @@ module AresMUSH
 
       attr_accessor :category, :topic, :category_config
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['topic']
-        self.help_topic = 'help'
-        super
-      end
-      
       def crack!
         self.category = Help.command_to_category(cmd.root)
         self.topic = strip_prefix(titleize_input(cmd.args))
         self.category_config = Help.category_config[self.category]
+      end
+
+      def required_args
+        {
+          args: [ self.topic ],
+          help: 'help'
+        }
       end
       
       def check_valid_category

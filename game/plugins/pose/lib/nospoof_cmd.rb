@@ -6,15 +6,16 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :option
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['option']
-        self.help_topic = 'nospoof'
-        super
-      end
-      
+
       def crack!
         self.option = OnOffOption.new(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.option ],
+          help: 'nospoof'
+        }
       end
       
       def check_status

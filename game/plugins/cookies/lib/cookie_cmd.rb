@@ -7,18 +7,19 @@ module AresMUSH
            
       attr_accessor :names
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['names']
-        self.help_topic = 'cookies'
-        super
-      end
-      
       def crack!
         if (!cmd.args)
           self.names = []
         else
           self.names = cmd.args.split(" ")
         end
+      end
+      
+      def required_args
+        {
+          args: [ self.names ],
+          help: 'cookies'
+        }
       end
       
       def handle

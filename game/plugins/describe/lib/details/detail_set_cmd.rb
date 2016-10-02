@@ -5,22 +5,21 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandRequiresArgs
-      
-      include CommandRequiresArgs
-      
+            
       attr_accessor :name, :target, :desc
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'target', 'desc']
-        self.help_topic = 'detail'
-        super
-      end
-      
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2_equals_arg3)
         self.target = cmd.args.arg1
         self.name = titleize_input(cmd.args.arg2)
         self.desc = cmd.args.arg3
+      end
+      
+      def required_args
+        {
+          args: [ self.target, self.desc, self.name ],
+          help: 'detail'
+        }
       end
       
       def handle

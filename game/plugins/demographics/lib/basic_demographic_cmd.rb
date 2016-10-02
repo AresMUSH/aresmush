@@ -8,17 +8,18 @@ module AresMUSH
       
       attr_accessor :value, :property
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['value']
-        self.help_topic = 'demographics'
-        super
-      end
-            
       def crack!
         self.value = trim_input(cmd.args)
         self.property = cmd.root.downcase
       end
       
+      def required_args
+        {
+          args: [ self.value ],
+          help: 'demographics'
+        }
+      end
+         
       def handle
         enactor.send("#{self.property}=", self.value)
         enactor.save

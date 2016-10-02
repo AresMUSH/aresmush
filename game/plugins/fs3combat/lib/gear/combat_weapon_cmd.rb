@@ -8,12 +8,6 @@ module AresMUSH
       
       attr_accessor :name, :weapon, :specials
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'weapon']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
@@ -30,6 +24,13 @@ module AresMUSH
         self.specials = specials_str ? specials_str.split(',') : nil
       end
 
+      def required_args
+        {
+          args: [ self.name, self.weapon ],
+          help: 'combat'
+        }
+      end
+      
       def check_special_allowed
         return nil if !self.specials
         allowed_specials = FS3Combat.weapon_stat(self.weapon, "allowed_specials")

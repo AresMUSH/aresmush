@@ -8,17 +8,18 @@ module AresMUSH
            
       attr_accessor :zone
            
-      def initialize(client, cmd, enactor)
-        self.required_args = ['zone']
-        self.help_topic = 'time'
-        super
-      end
-      
       def crack!
         self.zone = trim_input(cmd.args)
         handle_timezone_aliases
       end
-
+      
+      def required_args
+        {
+          args: [ self.zone ],
+          help: 'time'
+        }
+      end
+      
       def handle_timezone_aliases
         case self.zone.upcase
         when "EST"

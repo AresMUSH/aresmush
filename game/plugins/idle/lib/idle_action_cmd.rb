@@ -8,18 +8,19 @@ module AresMUSH
       
       attr_accessor :name, :action
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'action']
-        self.help_topic = 'idle'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = titleize_input(cmd.args.arg1)
         self.action = titleize_input(cmd.args.arg2)
       end
-
+      
+      def required_args
+        {
+          args: [ self.name, self.action ],
+          help: 'idle'
+        }
+      end
+      
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')

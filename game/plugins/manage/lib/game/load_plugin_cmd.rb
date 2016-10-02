@@ -7,14 +7,15 @@ module AresMUSH
       
       attr_accessor :load_target
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['load_target']
-        self.help_topic = 'load'
-        super
-      end
-      
       def crack!
         self.load_target = trim_input(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.load_target ],
+          help: 'load'
+        }
       end
       
       def check_plugin_name

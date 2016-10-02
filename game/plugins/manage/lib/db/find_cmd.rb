@@ -7,20 +7,21 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :search_class, :name
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['search_class']
-        self.help_topic = 'find'
-        super
-      end
-      
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         
         self.search_class = cmd.args.arg1 ? trim_input(cmd.args.arg1).titleize : nil
         self.name = trim_input(cmd.args.arg2)
       end
-
+      
+      def required_args
+        {
+          args: [ self.search_class ],
+          help: 'find'
+        }
+      end
+      
       def handle
         begin
           c = AresMUSH.const_get(self.search_class)

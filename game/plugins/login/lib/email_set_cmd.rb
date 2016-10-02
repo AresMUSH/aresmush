@@ -7,16 +7,17 @@ module AresMUSH
       
       attr_accessor :email
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['email']
-        self.help_topic = 'email'
-        super
-      end
-
       def crack!
         self.email = trim_input(cmd.args)
       end
 
+      def required_args
+        {
+          args: [ self.email ],
+          help: 'email'
+        }
+      end
+      
       def check_email_format
         if self.email !~ /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
           return t('login.invalid_email_format')

@@ -29,13 +29,13 @@ module AresMUSH
     describe :log_command do
       it "should log the client and command by default" do
         cmd = double
+        char = double
         client = double
         client.should_receive(:to_s) { "client" }
         cmd.should_receive(:to_s) { "Cmd" }
-        @handler = PluginSpecTest.new(@client, @cmd, @char)
-        @handler.cmd = cmd
-        @handler.client = client
-        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: client Cmd=Cmd")
+        char.stub(:name) { "Bob" }
+        @handler = PluginSpecTest.new(client, cmd, char)
+        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: client Enactor=Bob Cmd=Cmd")
         @handler.log_command
       end
     end
@@ -51,6 +51,7 @@ module AresMUSH
         @char.stub(:room) { @room }
         @cmd.stub(:raw) { "raw" }
         @cmd.stub(:switch) { nil }
+        @char.stub(:name) { "Bob" }
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       

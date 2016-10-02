@@ -7,14 +7,15 @@ module AresMUSH
       
       attr_accessor :board_name
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['board_name']
-        self.help_topic = 'bbs'
-        super
-      end
-      
       def crack!
         self.board_name = titleize_input(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.board_name ],
+          help: 'bbs'
+        }
       end
       
       def handle

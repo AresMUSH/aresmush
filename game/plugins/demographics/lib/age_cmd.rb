@@ -8,12 +8,13 @@ module AresMUSH
       
       attr_accessor :age
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['age']
-        self.help_topic = 'demographics'
-        super
+      def required_args
+        {
+          args: [ self.age ],
+          help: 'demographics'
+        }
       end
-            
+         
       def check_age        
         return t('demographics.invalid_age') if !self.age.is_integer?
         return Demographics.check_age(self.age.to_i)

@@ -8,20 +8,20 @@ module AresMUSH
       
       attr_accessor :target
       attr_accessor :name
-            
-      def initialize(client, cmd, enactor)
-        self.required_args = ['target']
-        self.required_args = ['name']
-        self.help_topic = 'rename'
-        super
-      end
-      
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
         self.name = trim_input(cmd.args.arg2)
       end
-
+      
+      def required_args
+        {
+          args: [ self.target, self.name ],
+          help: 'rename'
+        }
+      end
+      
       def handle
         AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
           if (!can_rename_self(model) && !Manage.can_manage_object?(enactor, model))

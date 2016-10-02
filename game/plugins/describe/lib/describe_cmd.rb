@@ -8,16 +8,17 @@ module AresMUSH
       
       attr_accessor :target, :desc
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['target', 'desc']
-        self.help_topic = 'describe'
-        super
-      end      
-
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
         self.desc = cmd.args.arg2
+      end
+      
+      def required_args
+        {
+          args: [ self.target, self.desc ],
+          help: 'describe'
+        }
       end
       
       def handle

@@ -8,14 +8,15 @@ module AresMUSH
       
       attr_accessor :status
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['status']
-        self.help_topic = 'duty'
-        super
-      end
-      
       def crack!
         self.status = OnOffOption.new(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.status ],
+          help: 'duty'
+        }
       end
       
       def check_can_be_on_duty

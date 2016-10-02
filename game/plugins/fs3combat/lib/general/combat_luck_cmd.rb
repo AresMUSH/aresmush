@@ -8,10 +8,15 @@ module AresMUSH
       
       attr_accessor :reason
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['reason']
-        self.help_topic = 'combat'
-        super
+      def crack!
+        self.reason = titleize_input(cmd.args)
+      end
+
+      def required_args
+        {
+          args: [ self.reason ],
+          help: 'combat'
+        }
       end
       
       def check_reason
@@ -25,10 +30,6 @@ module AresMUSH
         return nil
       end
       
-      def crack!
-        self.reason = titleize_input(cmd.args)
-      end
-
       def handle
         FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
           

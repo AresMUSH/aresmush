@@ -7,12 +7,6 @@ module AresMUSH
       
       attr_accessor :name, :num
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'mail'
-        super
-      end
-      
       def crack!
         if (cmd.args && cmd.args.include?("/"))
           cmd.crack_args!(CommonCracks.arg1_slash_arg2)
@@ -22,6 +16,13 @@ module AresMUSH
           self.name = trim_input(cmd.args)
           self.num = nil
         end
+      end
+
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'mail'
+        }
       end
       
       def handle

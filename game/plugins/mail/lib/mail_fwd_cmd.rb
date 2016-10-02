@@ -9,17 +9,18 @@ module AresMUSH
       attr_accessor :names
       attr_accessor :comment
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['names']
-        self.help_topic = 'mail'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
         self.num = trim_input(cmd.args.arg1)
         self.names = !cmd.args.arg2 ? [] : cmd.args.arg2.split(" ")
         self.comment = cmd.args.arg3
+      end
+
+      def required_args
+        {
+          args: [ self.names ],
+          help: 'mail'
+        }
       end
       
       def handle

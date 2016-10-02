@@ -7,19 +7,20 @@ module AresMUSH
            
       attr_accessor :body
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['body']
-        self.help_topic = 'mail composition'
-        super
+      def crack!
+        self.body = cmd.raw.after("-").chomp
+      end
+      
+      def required_args
+        {
+          args: [ self.body ],
+          help: 'mail composition'
+        }
       end
       
       def check_composing_mail
         return t('mail.not_composing_message') if !Mail.is_composing_mail?(enactor)
         return nil
-      end
-      
-      def crack!
-        self.body = cmd.raw.after("-").chomp
       end
       
       def handle

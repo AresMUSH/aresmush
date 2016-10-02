@@ -10,12 +10,6 @@ module AresMUSH
       attr_accessor :exit
       attr_accessor :return_exit
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'build'
-        super
-      end
-      
       def crack!
         # build <name>
         # build <name>=<outgoing exit>
@@ -25,7 +19,14 @@ module AresMUSH
         self.exit = cmd.args.exit
         self.return_exit = cmd.args.return_exit
       end
-
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'build'
+        }
+      end
+      
       def check_can_build
         return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil

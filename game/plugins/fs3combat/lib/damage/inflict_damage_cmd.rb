@@ -7,17 +7,18 @@ module AresMUSH
       
       attr_accessor :name, :desc, :severity
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'desc', 'severity']
-        self.help_topic = 'damage'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
         self.name = titleize_input(cmd.args.arg1)
         self.desc = titleize_input(cmd.args.arg2)
         self.severity = titleize_input(cmd.args.arg3)
+      end
+      
+      def required_args
+        {
+          args: [ self.name, self.desc, self.severity ],
+          help: 'damage'
+        }
       end
       
       def check_can_manage

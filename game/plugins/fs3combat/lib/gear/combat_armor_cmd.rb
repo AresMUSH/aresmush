@@ -7,13 +7,7 @@ module AresMUSH
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :armor
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'armor']
-        self.help_topic = 'combat'
-        super
-      end
-      
+
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -24,7 +18,14 @@ module AresMUSH
           self.armor = titleize_input(cmd.args)
         end
       end
-
+      
+      def required_args
+        {
+          args: [ self.name, self.armor ],
+          help: 'combat'
+        }
+      end
+      
       def check_valid_armor
         return t('fs3combat.invalid_armor') if !FS3Combat.armor(self.armor)
         return nil

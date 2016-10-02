@@ -22,19 +22,17 @@ module AresMUSH
       return nil
     end
   end
-    
+  
   module CommandRequiresArgs
-    attr_accessor :required_args
-    attr_accessor :help_topic
-
+    def required_args
+      raise "Plugin #{self.class} says it requires args but has none listed"
+    end
+    
     # Make sure this runs before other validators except login - hence the '2' in the name.
     def check_2_arguments_present
-      if (!self.required_args)
-        raise "Plugin #{self.class} says it requires args but has none listed"
-      end
-      
-      self.required_args.each do |arg|
-        return t('dispatcher.invalid_syntax', :command => self.help_topic) if "#{self.send("#{arg}")}".strip.length == 0
+     
+      required_args[:args].each do |arg|
+        return t('dispatcher.invalid_syntax', :command => required_args[:help]) if "#{arg}".strip.length == 0
       end
       return nil
     end

@@ -6,12 +6,6 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :board_name, :subject, :message
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['board_name', 'subject', 'message']
-        self.help_topic = 'bbs'
-        super
-      end
       
       def crack!
         if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
@@ -22,6 +16,13 @@ module AresMUSH
         self.board_name = trim_input(cmd.args.name)
         self.subject = trim_input(cmd.args.subject)
         self.message = cmd.args.message
+      end
+      
+      def required_args
+        {
+          args: [ self.board_name, self.subject, self.message ],
+          help: 'bbs'
+        }
       end
       
       def handle        

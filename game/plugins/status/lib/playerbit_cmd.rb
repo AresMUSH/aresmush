@@ -8,14 +8,15 @@ module AresMUSH
       
       attr_accessor :option
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['option']
-        self.help_topic = 'playerbit'
-        super
-      end
-      
       def crack!
         self.option = OnOffOption.new(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.option ],
+          help: 'playerbit'
+        }
       end
       
       def check_status

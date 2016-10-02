@@ -7,14 +7,15 @@ module AresMUSH
       
       attr_accessor :reason
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['reason']
-        self.help_topic = 'luck'
-        super
-      end
-      
       def crack!
         self.reason = trim_input(cmd.args)
+      end
+
+      def required_args
+        {
+          args: [ self.reason ],
+          help: 'luck'
+        }
       end
       
       def handle

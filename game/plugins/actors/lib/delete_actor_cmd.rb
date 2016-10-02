@@ -6,15 +6,16 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :name
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'actors'
-        super
-      end
-
+      
       def crack!
         self.name = trim_input(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'actors'
+        }
       end
       
       def check_is_allowed

@@ -8,12 +8,6 @@ module AresMUSH
       
       attr_accessor :name, :stance
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'stance']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -23,6 +17,13 @@ module AresMUSH
           self.name = enactor.name
           self.stance = titleize_input(cmd.args)
         end
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.stance ],
+          help: 'combat'
+        }
       end
 
       def check_stance

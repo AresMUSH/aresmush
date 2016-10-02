@@ -6,19 +6,20 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :category, :value
-  
-      def initialize(client, cmd, enactor)
-        self.required_args = ['category', 'value']
-        self.help_topic = 'jobs'
-        super
-      end
-  
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.category = cmd.args.arg1 ? trim_input(cmd.args.arg1).downcase : nil
         self.value = cmd.args.arg2
       end
-
+      
+      def required_args
+        {
+          args: [ self.category, self.value ],
+          help: 'jobs'
+        }
+      end
+      
       def check_category
         categories = [ 'title', 'submitter' ]
         return  if (!categories.include?(self.category))

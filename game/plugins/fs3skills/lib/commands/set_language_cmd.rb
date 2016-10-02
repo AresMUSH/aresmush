@@ -8,16 +8,17 @@ module AresMUSH
       
       attr_accessor :name, :add_item, :item_type
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'abilities'
-        super
-      end
-
       def crack!
         self.item_type = cmd.root.downcase.to_sym
         self.name = titleize_input(cmd.args)
         self.add_item = cmd.switch_is?("add")
+      end
+
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'abilities'
+        }
       end
       
       def check_name

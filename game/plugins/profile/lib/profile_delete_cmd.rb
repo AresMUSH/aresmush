@@ -7,14 +7,15 @@ module AresMUSH
       
       attr_accessor :field
      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['field']
-        self.help_topic = 'profile'
-        super
-      end
-      
       def crack!
         self.field = titleize_input(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.field ],
+          help: 'profile'
+        }
       end
       
       def handle

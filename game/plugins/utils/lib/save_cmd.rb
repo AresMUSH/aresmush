@@ -7,17 +7,18 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :text
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['text']
-        self.help_topic = 'save'
-        super
-      end
-      
+
       def crack!
         self.text = trim_input(cmd.args)
       end
-
+      
+      def required_args
+        {
+          args: [ self.text ],
+          help: 'save'
+        }
+      end
+      
       def handle
         enactor.saved_text << self.text
         if (enactor.saved_text.count > 5)

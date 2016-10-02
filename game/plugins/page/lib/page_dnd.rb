@@ -7,14 +7,15 @@ module AresMUSH
 
       attr_accessor :option
       
-      def initialize
-        self.required_args = ['option']
-        self.help_topic = 'page'
-        super
-      end
-      
       def crack!
         self.option = OnOffOption.new(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.option ],
+          help: 'page'
+        }
       end
       
       def check_status

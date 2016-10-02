@@ -7,12 +7,6 @@ module AresMUSH
       
       attr_accessor :name, :value, :group_name
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'group_name']
-        self.help_topic = 'groups'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /\//)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
@@ -25,6 +19,13 @@ module AresMUSH
           self.group_name = titleize_input(cmd.args.arg1)
           self.value = titleize_input(cmd.args.arg2)
         end
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.group_name ],
+          help: 'groups'
+        }
       end
       
       def check_can_set

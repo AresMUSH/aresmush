@@ -8,12 +8,6 @@ module AresMUSH
       include CommandWithoutSwitches
       
       attr_accessor :name, :ability_name, :rating
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'ability_name', 'rating']
-        self.help_topic = 'abilities'
-        super
-      end
       
       def crack!
         if (cmd.args =~ /[^\/]+\=.+\/.+/)
@@ -27,6 +21,13 @@ module AresMUSH
           self.ability_name = titleize_input(cmd.args.arg1)
           self.rating = trim_input(cmd.args.arg2)
         end
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.ability_name, self.rating ],
+          help: 'abilities'
+        }
       end
       
       def check_ability_type

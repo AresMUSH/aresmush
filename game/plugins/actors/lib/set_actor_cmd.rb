@@ -6,13 +6,7 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :name, :actor
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name', 'actor']
-        self.help_topic = 'actors'
-        super
-      end
-            
+      
       def crack!
         if (cmd.args =~ /\=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -22,6 +16,13 @@ module AresMUSH
           self.name = enactor_name
           self.actor = titleize_input(cmd.args)
         end
+      end
+
+      def required_args
+        {
+          args: [self.name, self.actor],
+          help: 'actors'
+        }
       end
       
       def check_can_set

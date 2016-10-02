@@ -9,17 +9,18 @@ module AresMUSH
       
       attr_accessor :great, :good, :poor
 
-      def initialize(client, cmd, enactor)
-        self.required_args = ['great', 'good', 'poor']
-        self.help_topic = 'abilities'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(/(?<great>.+)\/(?<good>.+)\/(?<poor>.+)/)
         self.great = titleize_input(cmd.args.great)
         self.good = titleize_input(cmd.args.good)
         self.poor = titleize_input(cmd.args.poor)
+      end
+
+      def required_args
+        {
+          args: [ self.great, self.good, self.poor ],
+          help: 'abilities'
+        }
       end
       
       def check_aptitudes

@@ -8,20 +8,22 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'roster'
-        super
+      def crack!
+        self.name = titleize_input(cmd.args)
       end
-
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'roster'
+        }
+      end
+      
       def check_can_remove
         return nil if Roster.can_manage_roster?(enactor)
         return t('dispatcher.not_allowed')
       end
-      
-      def crack!
-        self.name = titleize_input(cmd.args)
-      end
+
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|

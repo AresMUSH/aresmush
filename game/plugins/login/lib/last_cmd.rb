@@ -7,17 +7,18 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :name
-      
-      def initialize(client, cmd, enactor)
-        self.required_args = ['name']
-        self.help_topic = 'last'
-        super
-      end
-      
+
       def crack!
         self.name = trim_input(cmd.args)
       end
 
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'last'
+        }
+      end
+      
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |target|
           other_client = target.client

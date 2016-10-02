@@ -7,17 +7,18 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :date_str
-
-      def initialize(client, cmd, enactor)
-        self.required_args = ['date_str']
-        self.help_topic = 'demographics'
-        super
-      end
             
       def crack!
         self.date_str = cmd.args
       end
-            
+      
+      def required_args
+        {
+          args: [ self.date_str ],
+          help: 'demographics'
+        }
+      end
+                
       def check_chargen_locked
         Chargen::Api.check_chargen_locked(enactor)
       end
