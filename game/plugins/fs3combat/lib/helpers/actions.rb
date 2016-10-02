@@ -19,7 +19,7 @@ module AresMUSH
       end
     end
     
-    def self.set_action(client, combat, combatant, action_klass, args)
+    def self.set_action(client, enactor, combat, combatant, action_klass, args)
       begin
         if (combatant.action)
           combatant.action.destroy
@@ -33,7 +33,7 @@ module AresMUSH
         end
         action.save
         combatant.save
-        combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, client.char)
+        combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
       rescue Exception => err
         Global.logger.debug("Combat action error error=#{err} backtrace=#{err.backtrace[0,10]}")
         client.emit_failure t('fs3combat.invalid_action_params', :error => err)

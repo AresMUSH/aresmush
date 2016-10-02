@@ -11,12 +11,12 @@ module AresMUSH
       end
       
       def check_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if client.char.outfit(self.name).nil?
+        return t('describe.outfit_does_not_exist', :name => self.name) if enactor.outfit(self.name).nil?
         return nil
       end
       
       def handle
-        client.grab "outfit/set #{self.name}=#{client.char.outfit(self.name)}"
+        Utils::Api.grab client, "outfit/set #{self.name}=#{enactor.outfit(self.name)}"
       end
     end    
   end

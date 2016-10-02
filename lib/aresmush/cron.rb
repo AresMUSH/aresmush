@@ -4,7 +4,7 @@ module AresMUSH
     
     def self.raise_event
       tick = Time.now
-      if (Cron.last_tick.nil? || Cron.last_tick.min != tick.min)
+      if (!Cron.last_tick || Cron.last_tick.min != tick.min)
         Global.dispatcher.on_event CronEvent.new(tick)
         Cron.last_tick = tick
       end
@@ -19,12 +19,12 @@ module AresMUSH
     end
     
     def self.test_match(cron_component, time_component)
-      return true if cron_component.nil?
+      return true if !cron_component
       return cron_component == time_component
     end
     
     def self.convert_weekday(weekday)
-      return nil if weekday.nil?
+      return nil if !weekday
       case weekday.upcase
       when "SUN"
         0

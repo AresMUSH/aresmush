@@ -8,16 +8,17 @@ module AresMUSH
 
       attr_accessor :category, :topic, :category_config
       
-      def initialize
-        self.required_args = ['topic']
-        self.help_topic = 'help'
-        super
-      end
-      
       def crack!
         self.category = Help.command_to_category(cmd.root)
         self.topic = strip_prefix(titleize_input(cmd.args))
         self.category_config = Help.category_config[self.category]
+      end
+
+      def required_args
+        {
+          args: [ self.topic ],
+          help: 'help'
+        }
       end
       
       def check_valid_category
@@ -27,7 +28,7 @@ module AresMUSH
       
       def check_can_view_help
         return nil if !self.category
-        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(enactor, self.category)
         return nil
       end
       
@@ -64,7 +65,7 @@ module AresMUSH
       def strip_prefix(arg)
         return nil if !arg
         cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(arg)
-        cracked.nil? ? nil : cracked[:rest]
+        !cracked ? nil : cracked[:rest]
       end
             
       def display_help(topic, category_title)

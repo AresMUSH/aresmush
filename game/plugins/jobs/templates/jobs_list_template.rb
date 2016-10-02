@@ -17,11 +17,11 @@ module AresMUSH
       end
      
       def handler(job)
-        job.assigned_to.nil? ? t('jobs.unhandled') : job.assigned_to.name
+        !job.assigned_to ? t('jobs.unhandled') : job.assigned_to.name
       end
       
       def submitter(job)
-        job.author.nil? ? t('jobs.deleted_author') : job.author.name
+        !job.author ? t('jobs.deleted_author') : job.author.name
       end
       
       def unread_status(job)

@@ -11,14 +11,14 @@ module AresMUSH
       end
       
       def handle
-        if (self.name.nil?)
+        if (!self.name)
           title = t('ranks.all_ranks_title', :group => Ranks.rank_group)
           client.emit BorderedDisplay.list Global.read_config("ranks", "ranks").keys, title
           return
         end
 
         config = Ranks.group_rank_config(self.name)
-        if (config.nil?)
+        if (!config)
           client.emit_failure t('ranks.no_ranks_for_group', :group => self.name)
           return
         end

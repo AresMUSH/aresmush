@@ -8,20 +8,21 @@ module AresMUSH
       
       attr_accessor :name, :action
 
-      def initialize
-        self.required_args = ['name', 'action']
-        self.help_topic = 'idle'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = titleize_input(cmd.args.arg1)
         self.action = titleize_input(cmd.args.arg2)
       end
-
+      
+      def required_args
+        {
+          args: [ self.name, self.action ],
+          help: 'idle'
+        }
+      end
+      
       def check_can_manage
-        return nil if Idle.can_idle_sweep?(client.char)
+        return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')
       end
       
@@ -38,7 +39,7 @@ module AresMUSH
       end
             
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           client.program[:idle_queue][model.id] = self.action
           client.emit_success t('idle.idle_action_set', :name => self.name, :action => self.action)
         end

@@ -8,31 +8,31 @@ module AresMUSH
       attr_accessor :old_password
       attr_accessor :new_password
 
-      def initialize
-        self.required_args = ['old_password', 'new_password']
-        self.help_topic = 'password'
-        super
-      end
-
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.old_password = cmd.args.arg1
         self.new_password = cmd.args.arg2
       end
+
+      def required_args
+        {
+          args: [ self.old_password, self.new_password ],
+          help: 'password'
+        }
+      end
       
       def check_new_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if self.new_password.nil?
+        return t('dispatcher.invalid_syntax', :command => 'passsword') if !self.new_password
         return Character.check_password(self.new_password)
       end
       
       def handle
-        char = client.char
-        if (!char.compare_password(self.old_password))
+        if (!enactor.compare_password(self.old_password))
           client.emit_failure(t('login.password_incorrect'))
           return 
         end
-        char.change_password(self.new_password)
-        char.save
+        enactor.change_password(self.new_password)
+        enactor.save
         client.emit_success t('login.password_changed')
       end
       

@@ -7,16 +7,17 @@ module AresMUSH
       
       attr_accessor :message
       
-      def initialize
-        self.required_args = ['message']
-        self.help_topic = 'echo'
-        super
-      end
-      
       def crack!
         self.message = cmd.args
       end
-        
+      
+      def required_args
+        {
+          args: [ self.message ],
+          help: 'echo'
+        }
+      end
+      
       def handle
         client.emit self.message
       end

@@ -7,12 +7,6 @@ module AresMUSH
       
       attr_accessor :name, :desc, :severity
       
-      def initialize
-        self.required_args = ['name', 'desc', 'severity']
-        self.help_topic = 'damage'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
         self.name = titleize_input(cmd.args.arg1)
@@ -20,8 +14,15 @@ module AresMUSH
         self.severity = titleize_input(cmd.args.arg3)
       end
       
+      def required_args
+        {
+          args: [ self.name, self.desc, self.severity ],
+          help: 'damage'
+        }
+      end
+      
       def check_can_manage
-        return t('dispatcher.not_allowed') if !FS3Combat.can_manage_damage?(client.char)
+        return t('dispatcher.not_allowed') if !FS3Combat.can_manage_damage?(enactor)
         return nil
       end
       
@@ -31,7 +32,7 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           FS3Combat.inflict_damage(model, self.severity, self.desc)
           model.save
           client.emit_success t('fs3combat.damage_inflicted', :name => model.name) 

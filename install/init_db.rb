@@ -125,11 +125,9 @@ module AresMUSH
       BbsBoard.create(name: "Cookie Awards", order: 3)
       BbsBoard.create(name: "New Arrivals", order: 4)
   
-      Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy")
-      Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg")
-      channel = Channel.create(name: "Admin", description: "Admin business.", color: "%xr")
-      channel.roles.add admin_role
-      channel.save
+      AresMUSH::Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy", default_alias: [ 'c', 'ch', 'cha' ])
+      AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg", default_alias: [ 'q', 'qu', 'que' ])
+      AresMUSH::Channel.create(name: "Admin", description: "Admin business.", roles: ["admin"], color: "%xr", default_alias: [ 'a', 'ad', 'adm' ])
   
   
       puts "Install complete."

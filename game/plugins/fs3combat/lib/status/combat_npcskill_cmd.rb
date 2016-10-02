@@ -7,16 +7,17 @@ module AresMUSH
       
       attr_accessor :name, :skill
       
-      def initialize
-        self.required_args = ['name', 'skill']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)   
         self.name = cmd.args.arg1
         self.skill = cmd.args.arg2 ? cmd.args.arg2.to_i : 0
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.skill ],
+          help: 'combat'
+        }
       end
       
       def check_skill
@@ -25,8 +26,8 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
-          if (combat.organizer != client.char)
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
+          if (combat.organizer != enactor)
             client.emit_failure t('fs3combat.only_organizer_can_do')
             return
           end

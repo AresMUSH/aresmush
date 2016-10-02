@@ -37,14 +37,14 @@ module AresMUSH
           @dest = double
           @client_room = double
           Rooms.stub(:open_exit)
-          client.stub(:room) { @client_room }
+          enactor.stub(:room) { @client_room }
         end
         
         context "dest not found" do
           before do
             handler.stub(:dest) { "Room" }
             @find_result = FindResult.new(nil, "error")
-            ClassTargetFinder.should_receive(:find).with("Room", Room, client) { @find_result }            
+            ClassTargetFinder.should_receive(:find).with("Room", Room, enactor) { @find_result }            
           end
           
           it "should emit the failure message" do
@@ -83,7 +83,7 @@ module AresMUSH
           end
           
           it "should find the room" do
-            ClassTargetFinder.should_receive(:find).with("Room", Room, client)
+            ClassTargetFinder.should_receive(:find).with("Room", Room, enactor)
             handler.handle
           end
           

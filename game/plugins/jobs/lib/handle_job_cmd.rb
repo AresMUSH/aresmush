@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :assignee
       
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number']
         self.help_topic = 'jobs'
         super
@@ -18,13 +18,13 @@ module AresMUSH
           self.assignee = trim_input(cmd.args.arg2)
         else
           self.number = trim_input(cmd.args)
-          self.assignee = client.name
+          self.assignee = enactor_name
         end
       end
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|
-          ClassTargetFinder.with_a_character(self.assignee, client) do |target|
+          ClassTargetFinder.with_a_character(self.assignee, client, enactor) do |target|
             if (!Jobs.can_access_jobs?(target))
               client.emit_failure t('jobs.cannot_handle_jobs')
               return
@@ -32,8 +32,8 @@ module AresMUSH
             job.assigned_to = target
             job.status = "OPEN"
             job.save
-            notification = t('jobs.job_assigned', :number => job.number, :title => job.title, :assigner => client.name, :assignee => target.name)
-            Jobs.notify(job, notification, client.char)
+            notification = t('jobs.job_assigned', :number => job.number, :title => job.title, :assigner => enactor_name, :assignee => target.name)
+            Jobs.notify(job, notification, enactor)
           end
         end
       end

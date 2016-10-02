@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        Pose.emit_pose(client, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))
+        Pose.emit_pose(enactor, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))
       end
       
       def log_command
@@ -14,15 +14,15 @@ module AresMUSH
       
       def message
         if (cmd.root_is?("emit"))
-          return PoseFormatter.format(client.name, "\\#{cmd.args}")
+          return PoseFormatter.format(enactor_name, "\\#{cmd.args}")
         elsif (cmd.root_is?("pose"))
-          return PoseFormatter.format(client.name, ":#{cmd.args}")
+          return PoseFormatter.format(enactor_name, ":#{cmd.args}")
         elsif (cmd.root_is?("ooc"))
-          msg = PoseFormatter.format(client.name, "#{cmd.args}")
+          msg = PoseFormatter.format(enactor_name, "#{cmd.args}")
           color = Global.read_config("pose", "ooc_color")
           return "#{color}<OOC>%xn #{msg}"
         end
-        return PoseFormatter.format(client.name, "\"#{cmd.args}")
+        return PoseFormatter.format(enactor_name, "\"#{cmd.args}")
       end
     end
   end

@@ -12,9 +12,9 @@ module AresMUSH
   end
   
   class PoseEvent
-    attr_accessor :client, :pose, :is_emit
-    def initialize(client, pose, is_emit)
-      @client = client
+    attr_accessor :enactor, :pose, :is_emit
+    def initialize(enactor, pose, is_emit)
+      @enactor = enactor
       @pose = pose
       @is_emit = is_emit
     end

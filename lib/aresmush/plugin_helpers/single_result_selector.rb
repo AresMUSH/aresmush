@@ -1,7 +1,7 @@
 module AresMUSH
   class SingleResultSelector
     def self.select(results)
-      if (results.nil? || results.empty?)
+      if (!results || results.empty?)
         return FindResult.new(nil, t("db.object_not_found"))
       elsif (results.count > 1)
         return FindResult.new(nil, t("db.object_ambiguous"))

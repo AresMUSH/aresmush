@@ -47,7 +47,7 @@ module AresMUSH
     # Don't forget to save afterward!
     def self.set_ability(client, char, ability, rating)
       error = FS3Skills.check_ability_name(ability)
-      if (!error.nil?)
+      if (error)
         if (client)
           client.emit_failure error
         end
@@ -58,7 +58,7 @@ module AresMUSH
       ability_hash = get_ability_hash_for_type(char, ability_type)
       
       error = FS3Skills.check_rating(ability_type, rating)
-      if (!error.nil?)
+      if (error)
         if (client)
           client.emit_failure error
         end
@@ -67,7 +67,7 @@ module AresMUSH
       
       update_hash(ability_hash, ability, rating)
       if (client)
-        if (client.char == char)
+        if (char.client == client)
           client.emit_success t("fs3skills.#{ability_type}_set", :name => ability, :rating => rating)
         else
           client.emit_success t("fs3skills.admin_ability_set", :name => char.name, :ability_type => ability_type, :ability_name => ability, :rating => rating)

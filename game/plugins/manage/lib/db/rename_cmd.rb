@@ -8,29 +8,29 @@ module AresMUSH
       
       attr_accessor :target
       attr_accessor :name
-            
-      def initialize
-        self.required_args = ['target']
-        self.required_args = ['name']
-        self.help_topic = 'rename'
-        super
-      end
-      
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
         self.name = trim_input(cmd.args.arg2)
       end
-
+      
+      def required_args
+        {
+          args: [ self.target, self.name ],
+          help: 'rename'
+        }
+      end
+      
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
-          if (!can_rename_self(model) && !Manage.can_manage_object?(client.char, model))
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
+          if (!can_rename_self(model) && !Manage.can_manage_object?(enactor, model))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
         
           name_validation_msg = model.class.check_name(self.name)
-          if (!name_validation_msg.nil?)
+          if (name_validation_msg)
             client.emit_failure(name_validation_msg)
             return
           end
@@ -51,7 +51,7 @@ module AresMUSH
       end
       
       def can_rename_self(model)
-        return true if (model == client.char && !model.is_approved?)
+        return true if (model == enactor && !model.is_approved?)
         false          
       end
     end

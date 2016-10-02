@@ -6,7 +6,7 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        template = FriendsTemplate.new(client)
+        template = FriendsTemplate.new(enactor)
         client.emit template.render        
       end
     end

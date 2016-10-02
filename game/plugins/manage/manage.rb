@@ -12,7 +12,6 @@ load "lib/game/load_config_cmd.rb"
 load "lib/game/load_locale_cmd.rb"
 load "lib/game/load_plugin_cmd.rb"
 load "lib/game/plugin_list_cmd.rb"
-load "lib/game/reload_cmd.rb"
 load "lib/game/shutdown_cmd.rb"
 load "lib/game/unload_plugin_cmd.rb"
 load "lib/game/version_cmd.rb"
@@ -52,7 +51,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "announce"
         return AnnounceCmd
@@ -93,8 +92,6 @@ module AresMUSH
         end
       when "plugins"
         return PluginListCmd
-      when "reload"
-        return ReloadCmd
       when "rename"
         return RenameCmd
       when "shutdown"

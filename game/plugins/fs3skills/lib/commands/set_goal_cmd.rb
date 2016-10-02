@@ -7,20 +7,21 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :goal
-
-      def initialize
-        self.required_args = ['goal']
-        self.help_topic = 'abilities'
-        super
-      end
       
       def crack!
         self.goal = cmd.args
       end
+
+      def required_args
+        {
+          args: [ self.goal ],
+          help: 'abilities'
+        }
+      end
       
       def handle
-        client.char.fs3_goals = self.goal
-        client.char.save
+        enactor.fs3_goals = self.goal
+        enactor.save
         
         client.emit_success t('fs3skills.goals_set')
       end

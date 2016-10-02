@@ -7,16 +7,17 @@ module AresMUSH
            
       attr_accessor :num
       
-      def initialize
-        self.required_args = ['num']
-        self.help_topic = 'mail managing'
-        super
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end
-            
+      
+      def required_args
+        {
+          args: [ self.num ],
+          help: 'mail managing'
+        }
+      end
+      
       def handle
         if (self.num =~ /\-/)
           splits = self.num.split("-")
@@ -41,7 +42,7 @@ module AresMUSH
       end
       
       def delete_message(num)
-        Mail.with_a_delivery(client, num) do |delivery|
+        Mail.with_a_delivery(client, enactor, num) do |delivery|
           delivery.tags << Mail.trashed_tag
           delivery.save
           client.emit_ooc t("mail.message_deleted", :subject => delivery.subject)

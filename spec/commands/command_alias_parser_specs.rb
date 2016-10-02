@@ -5,8 +5,8 @@ require "aresmush"
 module AresMUSH
   describe CommandAliasParser do
     before do
-      @client = double(Client)
-      @client.stub(:room) { nil }
+      @enactor = double
+      @enactor.stub(:room) { nil }
       @shortcuts =
         {
             "a" => "b", 
@@ -23,7 +23,7 @@ module AresMUSH
       
           it "should substitute roots if the root is an alias" do
             cmd = Command.new("c/foo bar")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "d"
             cmd.switch.should eq "foo"
             cmd.args.should eq "bar"
@@ -31,7 +31,7 @@ module AresMUSH
           
           it "should NOT substitute roots if only part of the root is an alias" do
             cmd = Command.new("cab bar")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "cab"
             cmd.switch.should be_nil
             cmd.args.should eq "bar"
@@ -41,8 +41,8 @@ module AresMUSH
             cmd = Command.new("E")
             room = double
             room.stub(:has_exit?).with("e") { true }
-            @client.stub(:room) { room }
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            @enactor.stub(:room) { room }
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "go"
             cmd.args.should eq "e"
             cmd.switch.should be_nil
@@ -52,8 +52,8 @@ module AresMUSH
             cmd = Command.new("X foo")
             room = double
             room.stub(:has_exit?).with("x") { true }
-            @client.stub(:room) { room }
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            @enactor.stub(:room) { room }
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "x"
             cmd.args.should eq "foo"
             cmd.switch.should be_nil
@@ -61,7 +61,7 @@ module AresMUSH
       
           it "should substitute a switch to a single command" do
             cmd = Command.new("b/d xyz")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "f"
             cmd.switch.should be_nil
             cmd.args.should eq "xyz"
@@ -69,7 +69,7 @@ module AresMUSH
       
           it "should substitute a single command to a switch" do
             cmd = Command.new("e xyz")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "f"
             cmd.switch.should eq "g"
             cmd.args.should eq "xyz"
@@ -77,7 +77,7 @@ module AresMUSH
       
           it "should double substitute both a root and a switch" do
             cmd = Command.new("a/c xyz")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "d"
             cmd.switch.should eq "e"
             cmd.args.should eq "xyz"
@@ -85,7 +85,7 @@ module AresMUSH
           
           it "should substitute a full commmand with args" do
             cmd = Command.new("m bar")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "n"
             cmd.switch.should eq "o"
             cmd.args.should eq "foo bar"
@@ -93,7 +93,7 @@ module AresMUSH
           
           it "should substitute even with a prefix" do
             cmd = Command.new("+m bar")
-            CommandAliasParser.substitute_aliases(@client, cmd, @shortcuts)
+            CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
             cmd.root.should eq "n"
             cmd.switch.should eq "o"
             cmd.args.should eq "foo bar"

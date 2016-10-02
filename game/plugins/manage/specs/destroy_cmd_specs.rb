@@ -31,7 +31,7 @@ module AresMUSH
         
         context "not found" do
           it "should emit failure if the target is not found" do
-            AnyTargetFinder.stub(:find).with("foo", client) { FindResult.new(nil, "an error") }
+            AnyTargetFinder.stub(:find).with("foo", enactor) { FindResult.new(nil, "an error") }
             client.should_receive(:emit_failure).with("an error")
             handler.handle
           end
@@ -61,7 +61,7 @@ module AresMUSH
           it "should emit failure if the char doesn't have permission" do
             target = double
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
-            Manage.should_receive(:can_manage_object?).with(client.char, target) { false }
+            Manage.should_receive(:can_manage_object?).with(enactor, target) { false }
             client.should_receive(:emit_failure).with("dispatcher.not_allowed")
             handler.handle
           end

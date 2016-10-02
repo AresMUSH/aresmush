@@ -8,16 +8,17 @@ module AresMUSH
       
       attr_accessor :expression
       
-      def initialize
-        self.required_args = ['expression']
-        self.help_topic = 'math'
-        super
-      end
-      
       def crack!
         self.expression = cmd.args
       end
-
+      
+      def required_args
+        {
+          args: [ self.expression ],
+          help: 'math'
+        }
+      end
+      
       def handle
         result = Dentaku(self.expression)
         client.emit_ooc "#{self.expression} = #{result}"

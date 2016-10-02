@@ -69,7 +69,7 @@ module AresMUSH
       
       def print_linked_attr(skill)
         apt = FS3Skills.get_linked_attr(@char, skill)
-        apt.nil? ? "" : "(#{apt[0..2]})"
+        !apt ? "" : "(#{apt[0..2]})"
       end
       
       def format_list_item(item, i)

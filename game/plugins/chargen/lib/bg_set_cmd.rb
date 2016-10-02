@@ -6,13 +6,7 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :target, :background
-
-      def initialize
-        self.required_args = ['target', 'background']
-        self.help_topic = 'bg'
-        super
-      end
-            
+ 
       def crack!
         # Starts with a character name and equals - since names can't have
         # spaces we can check for that.  This allows the BG itself to contain ='s.
@@ -20,14 +14,21 @@ module AresMUSH
           self.target = cmd.args.before("=")
           self.background = cmd.args.after("=")
         else
-          self.target = client.name
+          self.target = enactor_name
           self.background = cmd.args
         end
       end
       
+      def required_args
+        {
+          args: [ self.target, self.background ],
+          help: 'bg'
+        }
+      end
+
       def handle
-        ClassTargetFinder.with_a_character(self.target, client) do |model|
-          if (!Chargen.can_edit_bg?(client.char, model, client))
+        ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+          if (!Chargen.can_edit_bg?(enactor, model, client))
             return
           end
           

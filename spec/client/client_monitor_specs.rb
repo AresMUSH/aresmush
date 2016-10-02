@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       it "should notify the dispatcher of an anonymous client disconnected" do
-        @client1.stub(:char) { nil }
+        @client1.stub(:logged_in?) { false }
         dispatcher.should_receive(:queue_event) do |event|
           event.class.should eq ConnectionClosedEvent
           event.client.should eq @client1
@@ -53,7 +53,7 @@ module AresMUSH
       end
 
       it "should notify the dispatcher of a client disconnected with a char logged in" do
-        @client1.stub(:char) { double }
+        @client1.stub(:logged_in?) { true }
         dispatcher.should_receive(:queue_event) do |event|
           event.class.should eq ConnectionClosedEvent
           event.client.should eq @client1
@@ -114,31 +114,16 @@ module AresMUSH
     describe :find_client do
       it "should find a client with a matching character" do
         char = double
-        @client1.stub(:char) { char }
+        char.stub(:id) { 123 }
+        @client1.stub(:char_id) { 123 }
         @client_monitor.find_client(char).should eq @client1
       end
       
       it "should return nil if no client found" do
         char = double
+        char.stub(:id) { 123 }
+        @client1.stub(:char_id) { 456 }
         @client_monitor.find_client(char).should eq nil
-      end
-    end
-    
-    describe :reload_clients do
-      before do
-        @char = double
-        @client1.stub(:char) { nil }
-        @client2.stub(:char) { @char }
-      end
-      
-      it "should trigger a reload on a logged-in client" do
-        @char.should_receive(:reload)
-        @client_monitor.reload_clients
-      end
-      
-      it "should do nothing if the client is not logged in" do
-        @char.stub(:reload)
-        @client_monitor.reload_clients
       end
     end
   end

@@ -8,11 +8,11 @@ module AresMUSH
       attr_accessor :name      
       
       def crack!
-        self.name = cmd.args ? titleize_input(cmd.args) : client.char.name
+        self.name = cmd.args ? titleize_input(cmd.args) : enactor.name
       end
 
       def handle
-        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
+        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
           combat.leave(self.name)
           combat.save
         end

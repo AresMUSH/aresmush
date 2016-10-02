@@ -5,13 +5,12 @@ module AresMUSH
       include TemplateFormatters
       
       # List of all posts on the board, in order by date.
-      attr_accessor :posts, :board, :char
+      attr_accessor :posts, :board
       
-      def initialize(board, client)
+      def initialize(board, enactor)
         @board = board
         @posts = board.bbs_posts
-        @client = client
-        @char = client.char
+        @enactor = enactor
         
         super File.dirname(__FILE__) + "/board.erb"
       end
@@ -33,15 +32,15 @@ module AresMUSH
       end
       
       def unread(post)
-        post.is_unread?(@char) ? t('bbs.unread_marker') : " "
+        post.is_unread?(@enactor) ? t('bbs.unread_marker') : " "
       end
 
       def author(post)
-        post.author.nil? ? t('bbs.deleted_author') : post.author.name
+        !post.author ? t('bbs.deleted_author') : post.author.name
       end
       
       def date(post)
-        OOCTime::Api.local_short_timestr(@client, post.created_at)
+        OOCTime::Api.local_short_timestr(@enactor, post.created_at)
       end
     end
     

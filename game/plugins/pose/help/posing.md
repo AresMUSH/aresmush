@@ -23,6 +23,6 @@ Lastly, the `pemit` command lets you make a private emit to certain characters.
 
 `pemit <list of names>=<message>`
 
-Emit poses are normally anonymous to maintain the flow of the RP text.  Unfortunately, that means they can be abused by spammers.  If you're getting rogue messages, you can turn on your "nospoof" setting to identify emits and report the offender to the admin.
+Emit poses are normally anonymous to maintain the flow of the RP text.  If someone is abusing this privilege, you can turn on your "nospoof" setting to identify emits and report the offender to the admin.
 
 `nospoof <on or off>`

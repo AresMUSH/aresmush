@@ -7,20 +7,21 @@ module AresMUSH
            
       attr_accessor :name, :attribute
 
-      def initialize
-        self.required_args = ['name', 'attribute']
-        self.help_topic = 'channels'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = titleize_input(cmd.args.arg1)
         self.attribute = trim_input(cmd.args.arg2)
       end
       
+      def required_args
+        {
+          args: [ self.name, self.attribute ],
+          help: 'channels'
+        }
+      end
+      
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Channels.can_manage_channels?(client.char)
+        return t('dispatcher.not_allowed') if !Channels.can_manage_channels?(enactor)
         return nil
       end
     end
@@ -77,7 +78,7 @@ module AresMUSH
       include ChannelAttributeCmd
     
       def check_roles
-        if (self.attribute == "none" || self.attribute.nil?)
+        if (self.attribute == "none" || !self.attribute)
           return nil
         end
         self.attribute.split(",").each do |r|
@@ -95,7 +96,7 @@ module AresMUSH
             channel.roles = self.attribute.split(",")
           end
         
-          channel.emit t('channels.roles_changed_by', :name => client.name)
+          channel.emit t('channels.roles_changed_by', :name => enactor_name)
         
           channel.characters.each do |c|
             if (!Channels.can_use_channel(c, channel))

@@ -8,21 +8,22 @@ module AresMUSH
       
       attr_accessor :name, :stance
       
-      def initialize
-        self.required_args = ['name', 'stance']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           self.name = titleize_input(cmd.args.arg1)
           self.stance = titleize_input(cmd.args.arg2)
         else
-          self.name = client.char.name
+          self.name = enactor.name
           self.stance = titleize_input(cmd.args)
         end
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.stance ],
+          help: 'combat'
+        }
       end
 
       def check_stance
@@ -32,11 +33,11 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
           combatant.stance = stance
           combatant.save
           message = t('fs3combat.stance_changed', :stance => self.stance, :name => self.name, :poss => combatant.poss_pronoun)
-          combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+          combat.emit message, FS3Combat.npcmaster_text(name, enactor)
         end
       end
     end

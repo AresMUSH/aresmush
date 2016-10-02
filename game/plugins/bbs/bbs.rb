@@ -2,7 +2,7 @@ $:.unshift File.dirname(__FILE__)
 load "bbs_api.rb"
 load "lib/bbs_archive.rb"
 load "lib/bbs_board_cmd.rb"
-load "lib/bbs_catchup.rb"
+load "lib/bbs_catchup_cmd.rb"
 load "lib/bbs_delete_cmd.rb"
 load "lib/bbs_edit_cmd.rb"
 load "lib/bbs_list_cmd.rb"
@@ -51,7 +51,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
       return nil if !cmd.root_is?("bbs")
       
       case cmd.switch

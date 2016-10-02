@@ -19,7 +19,7 @@ module AresMUSH
           return
         end
         
-        template = IdleQueueTemplate.new(queue, client)
+        template = IdleQueueTemplate.new(queue, enactor)
         client.emit template.render
       end
     end

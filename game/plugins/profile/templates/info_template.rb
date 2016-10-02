@@ -57,7 +57,7 @@ module AresMUSH
 
       def birthdate
         dob = Demographics::Api.demographic(@char, :birthdate)
-        dob.nil? ? "" : ICTime::Api.ic_datestr(dob)
+        !dob ? "" : ICTime::Api.ic_datestr(dob)
       end
 
       def faction

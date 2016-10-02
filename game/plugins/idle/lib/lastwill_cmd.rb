@@ -6,21 +6,22 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandRequiresArgs
       
-      attr_accessor :will
-
-      def initialize
-        self.required_args = ['will']
-        self.help_topic = 'lastwill'
-        super
-      end     
+      attr_accessor :will   
       
       def crack!
         self.will = cmd.args
       end
       
+      def required_args
+        {
+          args: [ self.will ],
+          help: 'lastwill'
+        }
+      end
+      
       def handle
-        client.char.lastwill = self.will
-        client.char.save
+        enactor.lastwill = self.will
+        enactor.save
         client.emit_success t('idle.lastwill_set')
       end
     end

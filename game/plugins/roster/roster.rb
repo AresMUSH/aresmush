@@ -39,7 +39,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
        return if !cmd.root_is?("roster")
        
        case cmd.switch

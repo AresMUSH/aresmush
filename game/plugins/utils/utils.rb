@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+load "utils_api.rb"
 load "lib/autospace_cmd.rb"
 load "lib/colors_cmd.rb"
 load "lib/echo_cmd.rb"
@@ -40,7 +41,7 @@ module AresMUSH
       [ "locale/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "colors"
         return Colors

@@ -13,15 +13,15 @@ module AresMUSH
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
-    def self.with_a_board(board_name, client, &block)
+    def self.with_a_board(board_name, client, enactor, &block)
       if (board_name.is_integer?)
         board = BbsBoard.all_sorted[board_name.to_i - 1] rescue nil
       else
         board = BbsBoard.all_sorted.find { |b| b.name.upcase == board_name.upcase }
       end
 
-      if (board.nil?)
-        if (client.nil?)
+      if (!board)
+        if (!client)
           Global.logger.warn "System tried to post to #{board_name}, which does not exist."
         else
           client.emit_failure t('bbs.board_doesnt_exist', :board => board_name) 
@@ -29,8 +29,8 @@ module AresMUSH
         return
       end
       
-      if (!client.nil?)
-        if (!can_read_board?(client.char, board))
+      if (client)
+        if (!can_read_board?(enactor, board))
           client.emit_failure t('bbs.cannot_access_board')
           return
         end
@@ -39,8 +39,8 @@ module AresMUSH
       yield board
     end
     
-    def self.with_a_post(board_name, num, client, &block)
-      with_a_board(board_name, client) do |board|
+    def self.with_a_post(board_name, num, client, enactor, &block)
+      with_a_board(board_name, client, enactor) do |board|
         
         if (!num.is_integer?)
           client.emit_failure t('bbs.invalid_post_number')
@@ -83,10 +83,10 @@ module AresMUSH
     end
     
     def self.post(board_name, subject, message, author, client = nil)
-      Bbs.with_a_board(board_name, client) do |board|
+      Bbs.with_a_board(board_name, client, author) do |board|
       
-        if (!client.nil?)
-          if (!Bbs.can_write_board?(client.char, board))
+        if (client)
+          if (!Bbs.can_write_board?(author, board))
             client.emit_failure(t('bbs.cannot_post'))
             return
           end
@@ -96,14 +96,14 @@ module AresMUSH
         subject: subject, 
         message: message, author: author)
         
-        if (!client.nil?)
-          Bbs.mark_read_for_player(client.char, post)
+        if (client)
+          Bbs.mark_read_for_player(enactor, post)
         end
                 
         Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 
         :board => board.name, 
         :reference => post.reference_str,
-        :author => client.nil? ? t('bbs.system_author') : client.name)
+        :author => client ? author.name : t('bbs.system_author'))
       end
     end
   end

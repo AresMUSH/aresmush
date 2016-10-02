@@ -6,12 +6,6 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :field, :value
-     
-      def initialize
-        self.required_args = ['field', 'value']
-        self.help_topic = 'profile'
-        super
-      end
 
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -19,9 +13,16 @@ module AresMUSH
         self.value = cmd.args.arg2
       end
       
+      def required_args
+        {
+          args: [ self.field, self.value ],
+          help: 'profile'
+        }
+      end
+      
       def handle
-        client.char.profile[self.field] = self.value
-        client.char.save
+        enactor.profile[self.field] = self.value
+        enactor.save
         client.emit_success t('profile.custom_profile_set', :field => self.field)
       end
     end

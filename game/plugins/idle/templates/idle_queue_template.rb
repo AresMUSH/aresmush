@@ -6,13 +6,13 @@ module AresMUSH
       
       attr_accessor :queue
       
-      def initialize(list, client)
+      def initialize(list, enactor)
         @queue = []
         list.each do |k, v|
           @queue << { char: Character.find(k), action: v }
         end
 
-        @client = client
+        @enactor = enactor
         super File.dirname(__FILE__) + "/idle_queue.erb"
       end
       
@@ -28,7 +28,7 @@ module AresMUSH
       
       def last_on(entry)
         char = entry[:char]
-        OOCTime::Api.local_short_timestr(@client, Login::Api.last_on(char))
+        OOCTime::Api.local_short_timestr(@enactor, Login::Api.last_on(char))
       end
       
       def action(entry)

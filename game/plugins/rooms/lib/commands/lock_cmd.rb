@@ -8,21 +8,22 @@ module AresMUSH
 
       attr_accessor :name
       attr_accessor :lock_keys
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'lock'
-        super
-      end
             
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
         self.name = trim_input(cmd.args.arg1)
-        self.lock_keys = cmd.args.arg2.nil? ? [] : trim_input(cmd.args.arg2).split(" ")
+        self.lock_keys = !cmd.args.arg2 ? [] : trim_input(cmd.args.arg2).split(" ")
       end
-
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'lock'
+        }
+      end
+      
       def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil
       end
       
@@ -36,7 +37,7 @@ module AresMUSH
       end
       
       def handle
-        find_result = VisibleTargetFinder.find(self.name, client)
+        find_result = VisibleTargetFinder.find(self.name, enactor)
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return

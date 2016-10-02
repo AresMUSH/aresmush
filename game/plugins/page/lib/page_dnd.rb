@@ -7,14 +7,15 @@ module AresMUSH
 
       attr_accessor :option
       
-      def initialize
-        self.required_args = ['option']
-        self.help_topic = 'page'
-        super
-      end
-      
       def crack!
         self.option = OnOffOption.new(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.option ],
+          help: 'page'
+        }
       end
       
       def check_status
@@ -22,8 +23,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.do_not_disturb = (self.option.is_on?)
-        client.char.save
+        enactor.do_not_disturb = (self.option.is_on?)
+        enactor.save
         client.emit_success t('page.do_not_disturb_set', :status => self.option)
       end
     end

@@ -7,29 +7,30 @@ module AresMUSH
            
       attr_accessor :body
       
-      def initialize
-        self.required_args = ['body']
-        self.help_topic = 'mail composition'
-        super
-      end
-      
-      def check_composing_mail
-        return t('mail.not_composing_message') if !Mail.is_composing_mail?(client)
-        return nil
-      end
-      
       def crack!
         self.body = cmd.raw.after("-").chomp
       end
       
+      def required_args
+        {
+          args: [ self.body ],
+          help: 'mail composition'
+        }
+      end
+      
+      def check_composing_mail
+        return t('mail.not_composing_message') if !Mail.is_composing_mail?(enactor)
+        return nil
+      end
+      
       def handle
-        body_so_far = client.char.mail_compose_body
-        if (body_so_far.nil?)
-          client.char.mail_compose_body = self.body
+        body_so_far = enactor.mail_compose_body
+        if (!body_so_far)
+          enactor.mail_compose_body = self.body
         else
-          client.char.mail_compose_body = "#{body_so_far}%R%R#{self.body}"
+          enactor.mail_compose_body = "#{body_so_far}%R%R#{self.body}"
         end
-        client.char.save
+        enactor.save
         
         client.emit_ooc t('mail.mail_added')
       end

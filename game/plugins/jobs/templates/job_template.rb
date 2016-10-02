@@ -5,24 +5,23 @@ module AresMUSH
             
       attr_accessor :replies, :job
       
-      def initialize(client, job)
-        @char = client.char
-        @client = client
+      def initialize(enactor, job)
+        @enactor = enactor
         @job = job
-        @replies = Jobs.can_access_jobs?(client.char) ? job.job_replies : job.job_replies.select { |r| !r.admin_only}
+        @replies = Jobs.can_access_jobs?(@enactor) ? job.job_replies : job.job_replies.select { |r| !r.admin_only}
         super File.dirname(__FILE__) + "/job.erb"
       end
      
       def submitted_by
-        @job.author.nil? ? t('jobs.deleted_author') : @job.author.name        
+        !@job.author ? t('jobs.deleted_author') : @job.author.name        
       end
       
       def submitted_on
-        OOCTime::Api.local_short_timestr(@client, @job.created_at)
+        OOCTime::Api.local_short_timestr(@enactor, @job.created_at)
       end
       
       def handled_by
-        @job.assigned_to.nil? ? t('jobs.unhandled') : @job.assigned_to.name
+        !@job.assigned_to ? t('jobs.unhandled') : @job.assigned_to.name
       end
             
       def title
@@ -31,8 +30,8 @@ module AresMUSH
       
       # Title above each reply showing the reply author and date
       def reply_title(reply)
-        name = reply.author.nil? ? t('jobs.deleted_author') : reply.author.name
-        date = OOCTime::Api.local_long_timestr(@client, reply.created_at)
+        name = !reply.author ? t('jobs.deleted_author') : reply.author.name
+        date = OOCTime::Api.local_long_timestr(@enactor, reply.created_at)
         t('jobs.reply_title', :name => name, :date => date)
       end
 

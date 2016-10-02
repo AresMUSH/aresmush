@@ -5,9 +5,9 @@ module AresMUSH
       
       attr_accessor :char
       
-      def initialize(client, char)
+      def initialize(enactor, char)
         @char = char
-        @client = client
+        @enactor = enactor
         super File.dirname(__FILE__) + "/profile.erb"
       end
 
@@ -29,7 +29,7 @@ module AresMUSH
         if (@char.client)
           t('profile.currently_connected')
         else
-          OOCTime::Api.local_long_timestr(self.client, Login::Api.last_on(@char))
+          OOCTime::Api.local_long_timestr(@enactor, Login::Api.last_on(@char))
         end
       end
       

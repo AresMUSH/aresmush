@@ -6,19 +6,20 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :board_name, :num
-
-      def initialize
-        self.required_args = ['board_name', 'num']
-        self.help_topic = 'bbs'
-        super
-      end
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2)
         self.board_name = titleize_input(cmd.args.arg1)
         self.num = trim_input(cmd.args.arg2)
       end
-      
+
+      def required_args
+        {
+          args: [ self.board_name, self.num ],
+          help: 'bbs'
+        }
+      end
+            
       def handle
         if (self.num =~ /\-/)
           splits = self.num.split("-")
@@ -43,9 +44,9 @@ module AresMUSH
       end
       
       def delete_post(num)
-        Bbs.with_a_post(self.board_name, num, client) do |board, post| 
+        Bbs.with_a_post(self.board_name, num, client, enactor) do |board, post| 
           
-          if (!Bbs.can_edit_post(client.char, post))
+          if (!Bbs.can_edit_post(enactor, post))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

@@ -6,12 +6,6 @@ module AresMUSH
       include CommandRequiresArgs
            
       attr_accessor :name, :attribute
-
-      def initialize
-        self.required_args = ['name', 'attribute']
-        self.help_topic = 'bbs'
-        super
-      end
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -19,8 +13,15 @@ module AresMUSH
         self.attribute = trim_input(cmd.args.arg2)
       end
       
+      def required_args
+        {
+          args: [ self.name, self.attribute ],
+          help: 'bbs'
+        }
+      end
+      
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Bbs.can_manage_bbs?(client.char)
+        return t('dispatcher.not_allowed') if !Bbs.can_manage_bbs?(enactor)
         return nil
       end
     end
@@ -29,7 +30,7 @@ module AresMUSH
       include BbsAttributeCmd
     
       def handle
-        Bbs.with_a_board(name, client) do |board|        
+        Bbs.with_a_board(name, client, enactor) do |board|        
           board.description = self.attribute
           board.save
           client.emit_success t('bbs.desc_set')
@@ -46,7 +47,7 @@ module AresMUSH
       end
       
       def handle
-        Bbs.with_a_board(name, client) do |board|        
+        Bbs.with_a_board(name, client, enactor) do |board|        
           board.order = self.attribute.to_i
           board.save
           client.emit_success t('bbs.order_set')
@@ -58,7 +59,7 @@ module AresMUSH
       include BbsAttributeCmd
     
       def handle
-        Bbs.with_a_board(name, client) do |board|        
+        Bbs.with_a_board(name, client, enactor) do |board|        
           board.name = self.attribute
           board.save
           client.emit_success t('bbs.board_renamed')
@@ -70,7 +71,7 @@ module AresMUSH
       include BbsAttributeCmd
     
       def check_roles
-        if (self.attribute == "none" || self.attribute.nil?)
+        if (self.attribute == "none" || !self.attribute)
           return nil
         end
         self.attribute.split(",").each do |r|
@@ -80,7 +81,7 @@ module AresMUSH
       end
     
       def handle
-        Bbs.with_a_board(name, client) do |board|
+        Bbs.with_a_board(name, client, enactor) do |board|
         
           if (self.attribute == "none")
             roles = []

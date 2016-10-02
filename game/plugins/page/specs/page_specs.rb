@@ -29,7 +29,7 @@ module AresMUSH
         
         it "should use the lastpaged if no name specified" do
           init_handler(PageCmd, "page something")
-          char.stub(:last_paged) { ["bob", "harvey"] }
+          enactor.stub(:last_paged) { ["bob", "harvey"] }
           handler.crack!
           handler.names.should eq [ "bob", "harvey" ]
           handler.message.should eq "something"
@@ -37,7 +37,7 @@ module AresMUSH
         
         it "should use lastpaged for a message beginning with =" do
           init_handler(PageCmd, "page =something")
-          char.stub(:last_paged) { ["bob", "harvey"] }
+          enactor.stub(:last_paged) { ["bob", "harvey"] }
           handler.crack!
           handler.names.should eq [ "bob", "harvey" ]
           handler.message.should eq "something"

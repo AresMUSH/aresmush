@@ -8,16 +8,17 @@ module AresMUSH
       attr_accessor :names
       attr_accessor :subject
       
-      def initialize
-        self.required_args = ['names', 'subject']
-        self.help_topic = 'mail composition'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
+        self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
         self.subject = cmd.args.arg2
+      end
+      
+      def required_args
+        {
+          args: [ self.names, self.subject ],
+          help: 'mail composition'
+        }
       end
       
       def handle
@@ -25,9 +26,9 @@ module AresMUSH
           return
         end
         
-        client.char.mail_compose_to = self.names
-        client.char.mail_compose_subject = self.subject
-        client.char.save
+        enactor.mail_compose_to = self.names
+        enactor.mail_compose_subject = self.subject
+        enactor.save
         
         client.emit_ooc t('mail.mail_started', :subject => self.subject)
       end

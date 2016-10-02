@@ -4,11 +4,11 @@ module AresMUSH
     class RoomTemplate < ErbTemplateRenderer
       include TemplateFormatters
              
-      attr_accessor :client, :room
+      attr_accessor :room
                      
-      def initialize(room, client)
+      def initialize(room, enactor)
         @room = room
-        @client = client
+        @enactor = enactor
         super File.dirname(__FILE__) + "/room.erb"        
       end
       
@@ -60,7 +60,7 @@ module AresMUSH
       end
       
       def ooc_time
-        OOCTime::Api.local_long_timestr(@client, Time.now)
+        OOCTime::Api.local_long_timestr(@enactor, Time.now)
       end
       
       def foyer_exits
@@ -114,7 +114,7 @@ module AresMUSH
       end
       
       def exit_destination(e)
-        locked = Rooms::Api.can_use_exit?(e, self.client.char) ? "" : "%xr*#{t('describe.locked')}*%xn "
+        locked = Rooms::Api.can_use_exit?(e, @enactor) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')
         "#{locked}#{name}"
       end

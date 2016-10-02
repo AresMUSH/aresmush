@@ -8,20 +8,21 @@ module AresMUSH
       
       attr_accessor :name
 
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'goals'
-        super
-      end
-      
       def crack!
         self.name = titleize_input(cmd.args)
       end
+
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'hooks'
+        }
+      end
       
       def handle        
-        if (client.char.hooks.has_key?(self.name))
-          client.char.hooks.delete self.name
-          client.char.save
+        if (enactor.hooks.has_key?(self.name))
+          enactor.hooks.delete self.name
+          enactor.save
           client.emit_success t('fs3skills.item_removed', :name => self.name)
         else
           client.emit_failure t('fs3skills.item_not_selected', :name => self.name)

@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        combat = FS3Combat.combat(client.char.name)
+        combat = FS3Combat.combat(enactor.name)
         if (!combat)
           client.emit_failure t('fs3combat.you_are_not_in_combat')
           return

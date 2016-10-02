@@ -6,19 +6,20 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :load_target
-
-      def initialize
-        self.required_args = ['load_target']
-        self.help_topic = 'unload'
-        super
-      end
       
       def crack!
         self.load_target = cmd.args
       end
       
+      def required_args
+        {
+          args: [ self.load_target ],
+          help: 'load'
+        }
+      end
+      
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(client.char)
+        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
         return nil
       end
 

@@ -7,15 +7,16 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :option
-      
-      def initialize
-        self.required_args = ['option']
-        self.help_topic = 'watch'
-        super
-      end
-      
+
       def crack!
-        self.option = cmd.args.nil? ? nil : cmd.args.downcase
+        self.option = !cmd.args ? nil : cmd.args.downcase
+      end
+
+      def required_args
+        {
+          args: [ self.option ],
+          help: 'watch'
+        }
       end
       
       def check_option
@@ -24,8 +25,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.watch = self.option
-        client.char.save
+        enactor.watch = self.option
+        enactor.save
         if (self.option == "all")
           client.emit_success t('login.watch_all')
         elsif (self.option == "none")

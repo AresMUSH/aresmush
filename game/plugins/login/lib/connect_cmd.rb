@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def check_for_guest_or_password
-        return t('dispatcher.invalid_syntax', :command => 'connect') if self.password.nil? || self.charname.nil?
+        return t('dispatcher.invalid_syntax', :command => 'connect') if !self.password || !self.charname
         return nil
       end
       
@@ -24,7 +24,7 @@ module AresMUSH
       def handle
         return if self.charname.downcase == "guest"
         
-        ClassTargetFinder.with_a_character(self.charname, client) do |char|
+        ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
           if (!char.compare_password(password))
             client.emit_failure(t('login.password_incorrect'))
             return 
@@ -32,21 +32,21 @@ module AresMUSH
 
           # Handle reconnect
           existing_client = char.client
-          client.char = char
+          client.char_id = char.id
           
-          if (!existing_client.nil?)
+          if (existing_client)
             existing_client.emit_ooc t('login.disconnected_by_reconnect')
             existing_client.disconnect
 
             Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection }
           else
-            announce_connection
+            announce_connection(char)
           end
         end
       end
       
-      def announce_connection
-        Global.dispatcher.queue_event CharConnectedEvent.new(client)
+      def announce_connection(char)
+        Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
       end
       
       def log_command

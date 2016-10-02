@@ -1,16 +1,28 @@
 module AresMUSH
+  class OnlineCharResult
+    attr_accessor :client, :char
+    def initialize(client, char)
+      @client = client
+      @char = char
+    end
+  end
+  
   class OnlineCharFinder
     def self.find(name, client, allow_handles = false)
       return FindResult.new(client, nil) if (name.downcase == "me")
-      online = Global.client_monitor.logged_in_clients.select { |c| exact_match?(c, name, allow_handles, client)}
+      online = Global.client_monitor.logged_in
+          .select { |other_client, other_char| exact_match?(other_char, name, allow_handles, client)}
+          .map { |other_client, other_char| OnlineCharResult.new(other_client, other_char )}
       if (online.count == 0)
-        online = Global.client_monitor.logged_in_clients.select { |c| partial_match?(c, name, allow_handles, client)}
+        online = Global.client_monitor.logged_in
+        .select { |other_client, other_char| partial_match?(other_char, name, allow_handles, client)}
+        .map { |other_client, other_char| OnlineCharResult.new(other_client, other_char )}
       end
       
       if (online.count == 0)
         return FindResult.new(nil, t('db.no_char_online_found', :name => name))
       elsif (online.count == 1)
-        return FindResult.new(online[0], nil)
+        return FindResult.new(online.first, nil)
       end
       FindResult.new(nil, t('db.ambiguous_char_online', :name => name))
     end
@@ -19,6 +31,7 @@ module AresMUSH
       to_clients = []
       names.each do |name|
         result = self.find(name, client, allow_handles)
+                
         if (!result.found?)
           client.emit_failure(result.error)
           return
@@ -30,22 +43,20 @@ module AresMUSH
     
     private
     
-    def self.exact_match?(client, name, allow_handles, viewer)
+    def self.exact_match?(char, name, allow_handles, viewer)
       name = name.upcase
-      char = client.char
       return false if name.blank?
-      return false if char.nil?
+      return false if !char
       return true if char.name_upcase == name
       return true if char.alias_upcase == name
       return true if allow_handles && char.handle && char.handle.upcase == name && char.handle_visible_to?(viewer)
       return false
     end
     
-    def self.partial_match?(client, name, allow_handles, viewer)
+    def self.partial_match?(char, name, allow_handles, viewer)
       name = name.upcase
-      char = client.char
       return false if name.blank?
-      return false if char.nil?
+      return false if !char
       return true if char.name_upcase.start_with?(name)
       return true if allow_handles && char.handle && char.handle.upcase.start_with?(name) && char.handle_visible_to?(viewer)
       return false

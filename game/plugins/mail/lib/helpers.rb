@@ -16,13 +16,13 @@ module AresMUSH
       "Archive"
     end
     
-    def self.filtered_mail(client)
-      filter = client.char.mail_filter || Mail.inbox_tag
-      client.char.mail.select { |d| d.tags.include?(filter) }
+    def self.filtered_mail(char)
+      filter = char.mail_filter || Mail.inbox_tag
+      char.mail.select { |d| d.tags.include?(filter) }
     end
     
-    def self.with_a_delivery(client, num, &block)
-      list = Mail.filtered_mail(client)      
+    def self.with_a_delivery(client, enactor, num, &block)
+      list = Mail.filtered_mail(enactor)      
       Mail.with_a_delivery_from_a_list client, num, list, &block
     end
     
@@ -57,34 +57,31 @@ module AresMUSH
       end
     end
     
-    def self.is_composing_mail?(client)
-      return false if client.char.nil?
-      return false if client.char.mail_compose_to.nil?
-      return false if client.char.mail_compose_to.empty?
+    def self.is_composing_mail?(char)
+      return false if !char
+      return false if !char.mail_compose_to
+      return false if char.mail_compose_to.empty?
       return true
     end
     
-    def self.toss_composition(client)
-      client.char.mail_compose_to = nil
-      client.char.mail_compose_subject = nil
-      client.char.mail_compose_body = nil
-      client.char.save
+    def self.toss_composition(char)
+      char.mail_compose_to = nil
+      char.mail_compose_subject = nil
+      char.mail_compose_body = nil
+      char.save
     end
     
-    def self.empty_trash(client)
-      Global.logger.debug "Emptying trash for #{client.char.name}."
-      client.char.mail.each do |m|
-        # DO NOT USE DESTROY here or it will force a reload of the clients 
-        # for each deleted message.
+    def self.empty_trash(char)
+      Global.logger.debug "Emptying trash for #{char.name}."
+      char.mail.each do |m|
         if (m.tags.include?(Mail.trashed_tag))          
-          m.delete # Do not destroy - see note above
+          m.destroy
         end
       end
     end
     
-    def self.send_mail(names, subject, body, client)
-      author = client.nil? ? Game.master.system_character : client.char
-      
+    def self.send_mail(names, subject, body, client, author = nil)
+      author = author || Game.master.system_character
       recipients = []
       names.each do |name|
         result = ClassTargetFinder.find(name, Character, client)

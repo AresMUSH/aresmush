@@ -9,7 +9,7 @@ module AresMUSH
      
       def crack!
         self.name = titleize_input(cmd.args)
-        self.page = cmd.page.nil? ? 1 : trim_input(cmd.page).to_i
+        self.page = !cmd.page ? 1 : trim_input(cmd.page).to_i
       end
       
       def handle   
@@ -25,7 +25,7 @@ module AresMUSH
           template = GenderCensusTemplate.new
         else
           group = Groups.get_group(self.name)
-          if (group.nil?)
+          if (!group)
             client.emit_failure t('groups.invalid_group_type')
             return
           end

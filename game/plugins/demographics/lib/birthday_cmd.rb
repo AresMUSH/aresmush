@@ -7,19 +7,20 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :date_str
-
-      def initialize
-        self.required_args = ['date_str']
-        self.help_topic = 'demographics'
-        super
-      end
             
       def crack!
         self.date_str = cmd.args
       end
-            
+      
+      def required_args
+        {
+          args: [ self.date_str ],
+          help: 'demographics'
+        }
+      end
+                
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(enactor)
       end
       
       def handle
@@ -34,16 +35,16 @@ module AresMUSH
         age = Demographics.calculate_age(bday)
         age_error = Demographics.check_age(age)
         
-        if (!age_error.nil?)
+        if (age_error)
           client.emit_failure age_error
           return
         end
         
-        client.char.birthdate = bday
-        client.char.save
+        enactor.birthdate = bday
+        enactor.save
         client.emit_success t('demographics.birthdate_set', 
           :birthdate => ICTime::Api.ic_datestr(bday), 
-          :age => client.char.age)
+          :age => enactor.age)
       end
         
     end

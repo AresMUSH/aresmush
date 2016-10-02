@@ -18,9 +18,9 @@ module AresMUSH
       return false
     end
     
-    def self.get_desc_template(model, client)     
+    def self.get_desc_template(model, enactor)     
       if (model.class == Room)
-        template = RoomTemplate.new(model, client)
+        template = RoomTemplate.new(model, enactor)
       elsif (model.class == Character)
         template = CharacterTemplate.new(model)
       elsif (model.class == Exit)
@@ -32,7 +32,7 @@ module AresMUSH
     end
     
     def self.app_review(char)
-      error = char.description.nil? ? t('chargen.not_set') : t('chargen.ok')
+      error = !char.description ? t('chargen.not_set') : t('chargen.ok')
       Chargen::Api.format_review_status t('describe.description_review'), error
     end
     

@@ -37,7 +37,6 @@ module AresMUSH
     def using_test_db(&block)
       client_monitor = double
       Global.stub(:client_monitor) { client_monitor }
-      client_monitor.stub(:reload_clients) { }
       SpecHelpers.connect_to_test_db
       SpecHelpers.erase_test_db
       yield block
@@ -50,7 +49,7 @@ module AresMUSH
       config = YAML::load(File.open(filename))
       db_config = config['database']['test']
           
-      if (db_config.nil? || db_config['clients']['default']['database'].nil?)
+      if (!db_config || db_config['clients']['default']['database'].nil?)
         raise "Test DB not defined."
       end
       

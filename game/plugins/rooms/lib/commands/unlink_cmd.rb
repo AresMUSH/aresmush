@@ -7,24 +7,25 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :name
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'unlink'
-        super
-      end
-            
+        
       def crack!
         self.name = trim_input(cmd.args)
       end
-
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'unlink'
+        }
+      end
+      
       def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil
       end
       
       def handle
-        find_result = VisibleTargetFinder.find(self.name, client)
+        find_result = VisibleTargetFinder.find(self.name, enactor)
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return

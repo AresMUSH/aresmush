@@ -14,14 +14,14 @@ module AresMUSH
     end
     
     def can_treat?
-      return true if self.last_treated.nil?
+      return true if !self.last_treated
       time_to_go = 300 - (Time.now - self.last_treated)
       return true if time_to_go < 0
       return false
     end
     
     def is_in_combat?
-      !combatant.nil?
+      combatant
     end
   end
 end

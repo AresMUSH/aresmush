@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 load "pose_api.rb"
+load "lib/autospace_cmd.rb"
 load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/nospoof_cmd.rb"
@@ -41,7 +42,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "autospace"
         return AutospaceCmd

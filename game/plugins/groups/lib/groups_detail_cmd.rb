@@ -7,20 +7,21 @@ module AresMUSH
       
       attr_accessor :name
 
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'groups'
-        super
-      end
-      
       def crack!
         self.name = titleize_input(cmd.args)
+      end
+
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'groups'
+        }
       end
       
       def handle
         group = Groups.get_group(self.name)
         
-        if (group.nil?)
+        if (!group)
           client.emit_failure t('groups.invalid_group_type')
           return
         end

@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        room = client.char.room
+        room = enactor.room
         if (!Pose.repose_on(room))
           client.emit_failure t('pose.repose_disabled')
           return

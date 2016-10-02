@@ -6,17 +6,16 @@ module AresMUSH
       include CommandWithoutSwitches
       
       def handle        
-        char = client.char
         oocloc = Rooms::Api.ooc_room
         
-        char.is_afk = false
-        if (Rooms::Api.room_type(char.room) == "IC")
-          char.last_ic_location_id = char.room.id
+        enactor.is_afk = false
+        if (Rooms::Api.room_type(enactor.room) == "IC")
+          enactor.last_ic_location_id = enactor.room.id
           # No need to save because we're going to do it when we move them
         end
-        char.room.emit_ooc t('status.go_ooc', :name => char.name)
-        oocloc.emit_ooc t('status.go_ooc', :name => char.name)
-        Rooms::Api.move_to(client, client.char, oocloc)
+        enactor.room.emit_ooc t('status.go_ooc', :name => enactor.name)
+        oocloc.emit_ooc t('status.go_ooc', :name => enactor.name)
+        Rooms::Api.move_to(client, enactor, oocloc)
       end
     end
   end

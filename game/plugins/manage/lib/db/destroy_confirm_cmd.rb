@@ -8,14 +8,14 @@ module AresMUSH
       def handle
         target_id = client.program[:destroy_target]
         
-        if (target_id.nil?)
+        if (!target_id)
           client.emit_failure t('manage.no_destroy_in_progress')
           return
         end
         
-        AnyTargetFinder.with_any_name_or_id("#{target_id}", client) do |target|
+        AnyTargetFinder.with_any_name_or_id("#{target_id}", client, enactor) do |target|
         
-          if (!Manage.can_manage_object?(client.char, target))
+          if (!Manage.can_manage_object?(enactor, target))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
@@ -30,7 +30,7 @@ module AresMUSH
           if (target.class == Room)
             target.characters.each do |c|
               connected_client = c.client
-              if (!connected_client.nil?)
+              if (connected_client)
                 connected_client.emit_ooc t('manage.room_being_destroyed')
               end
               Rooms::Api.send_to_welcome_room(connected_client, c)

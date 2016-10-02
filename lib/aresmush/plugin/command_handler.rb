@@ -1,14 +1,18 @@
 module AresMUSH
   module CommandHandler
     
-    attr_accessor :client, :cmd
+    attr_accessor :client, :cmd, :enactor
 
+    def initialize(client, cmd, enactor)
+      @client = client
+      @cmd = cmd
+      @enactor = enactor
+    end
+    
     # This defines basic processing suitable for many commands.  You can override this 
     # method entirely if you need advanced processing, or just override the helper methods
     # as needed.  See the documentation on crack!, check and handle for more info.
-    def on_command(client, cmd)
-      @client = client
-      @cmd = cmd
+    def on_command
       log_command
       crack!
       
@@ -21,6 +25,14 @@ module AresMUSH
       handle
     end
         
+    def enactor_room
+      @enactor ? @enactor.room : nil
+    end
+    
+    def enactor_name
+      @enactor ? @enactor.name : t('client.anonymous')
+    end
+    
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
     # doing:
@@ -55,7 +67,7 @@ module AresMUSH
     def error_check
       self.methods.grep(/^check_/).sort.each do |m|
         error = send m
-        if (!error.nil?)
+        if (error)
           return error
         end
       end
@@ -70,7 +82,7 @@ module AresMUSH
     # Override this if you don't want logging at all, or don't want to log the full command - 
     # for instance to avoid logging a connect command for privacy of passwords.
     def log_command
-      Global.logger.debug("#{self.class.name}: #{client} Cmd=#{cmd}")
+      Global.logger.debug("#{self.class.name}: #{client} Enactor=#{enactor_name} Cmd=#{cmd}")
     end
     
     # A handy function for stripping off leading and trailing spaces.  Safe to call

@@ -8,8 +8,8 @@ module AresMUSH
       before do
         init_handler(WearCmd, "wear something")
         
-        char.stub(:outfit).with("a") { "a desc" }
-        char.stub(:outfit).with("b") { "b desc" }
+        @enactor.stub(:outfit).with("a") { "a desc" }
+        @enactor.stub(:outfit).with("b") { "b desc" }
         
         SpecHelpers.stub_translate_for_testing        
       end        
@@ -42,7 +42,7 @@ module AresMUSH
         end
 
         it "should fail if one of the descs doesn't exist" do
-          char.stub(:outfit).with("c") { nil }
+          @enactor.stub(:outfit).with("c") { nil }
           
           handler.stub(:names) { [ "a", "c" ] }
           handler.check_outfits_exist.should eq "describe.outfit_does_not_exist"
@@ -55,14 +55,14 @@ module AresMUSH
         end
         
         it "should set the character description to all the outfits" do
-          Describe.should_receive(:set_desc).with(char, "a desc b desc ")
-          client.stub(:emit_success)
+          Describe.should_receive(:set_desc).with(@enactor, "a desc b desc ")
+          @client.stub(:emit_success)
           handler.handle
         end
         
         it "should emit success" do
           Describe.stub(:set_desc)
-          client.should_receive(:emit_success).with('describe.outfits_worn')
+          @client.should_receive(:emit_success).with('describe.outfits_worn')
           handler.handle
         end
       end

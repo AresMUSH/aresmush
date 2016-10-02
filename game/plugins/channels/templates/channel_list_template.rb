@@ -5,9 +5,9 @@ module AresMUSH
       
       attr_accessor :channels
       
-      def initialize(channels, client)
+      def initialize(channels, enactor)
         @channels = channels
-        @client = client
+        @enactor = enactor
         super File.dirname(__FILE__) + "/channel_list.erb"        
       end
       
@@ -28,11 +28,11 @@ module AresMUSH
       end
       
       def is_on_channel?(channel)
-        Channels.is_on_channel?(@client.char, channel) 
+        Channels.is_on_channel?(@enactor, channel) 
       end
       
       def channel_aliases(channel)
-        Channels.get_channel_option(@client.char, channel, 'alias')
+        Channels.get_channel_option(@enactor, channel, 'alias')
       end      
     end
   end

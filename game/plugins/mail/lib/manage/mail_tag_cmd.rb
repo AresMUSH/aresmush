@@ -6,12 +6,6 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :num, :tag
-
-      def initialize
-        self.required_args = ['num', 'tag']
-        self.help_topic = 'mail tags'
-        super
-      end
       
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -19,8 +13,15 @@ module AresMUSH
         self.tag = titleize_input(cmd.args.arg2)        
       end
       
+      def required_args
+        {
+          args: [ self.num, self.tag ],
+          help: 'mail tags'
+        }
+      end
+      
       def handle
-        Mail.with_a_delivery(client, self.num) do |delivery|
+        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
           
           if (cmd.switch_is?("tag"))
             delivery.tags << self.tag

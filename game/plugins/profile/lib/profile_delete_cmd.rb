@@ -7,19 +7,20 @@ module AresMUSH
       
       attr_accessor :field
      
-      def initialize
-        self.required_args = ['field']
-        self.help_topic = 'profile'
-        super
-      end
-      
       def crack!
         self.field = titleize_input(cmd.args)
       end
       
+      def required_args
+        {
+          args: [ self.field ],
+          help: 'profile'
+        }
+      end
+      
       def handle
-        client.char.profile.delete self.field
-        client.char.save
+        enactor.profile.delete self.field
+        enactor.save
         client.emit_success t('profile.custom_profile_cleared', :field => self.field)
       end
     end

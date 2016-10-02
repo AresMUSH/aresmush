@@ -5,7 +5,7 @@ module AresMUSH
   
       attr_accessor :value
   
-      def initialize
+      def initialize(client, cmd, enactor)
         self.required_args = ['number', 'value']
         self.help_topic = 'jobs'
         super
@@ -18,14 +18,14 @@ module AresMUSH
       end
 
       def check_status
-        return nil if self.value.nil?
+        return nil if !self.value
         return t('jobs.invalid_status', :statuses => Jobs.status_vals) if (!Jobs.status_vals.include?(self.value.upcase))
         return nil
       end
   
       def handle
         Jobs.with_a_job(client, self.number) do |job|
-          Jobs.change_job_status(client, job, self.value.upcase)
+          Jobs.change_job_status(enactor, job, self.value.upcase)
         end
       end
     end

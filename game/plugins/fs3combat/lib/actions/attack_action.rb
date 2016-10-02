@@ -55,7 +55,7 @@ module AresMUSH
       
       def check_ammo
         ammo = self.combatant.ammo
-        return nil if ammo.nil?
+        return nil if !ammo
         return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && ammo < 2
         return t('fs3combat.out_of_ammo') if ammo == 0
         return nil

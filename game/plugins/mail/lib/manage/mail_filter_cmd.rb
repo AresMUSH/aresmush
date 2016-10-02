@@ -11,8 +11,6 @@ module AresMUSH
       end
       
       def handle
-        char = client.char
-        
         if (cmd.switch_is?("inbox"))
           char.mail_filter = Mail.inbox_tag
         elsif (cmd.switch_is?("archive"))
@@ -25,9 +23,9 @@ module AresMUSH
           char.mail_filter = self.tag || Mail.inbox_tag
         end
         
-        char.save
+        enactor.save
 
-        template = InboxTemplate.new(client, Mail.filtered_mail(client), false, char.mail_filter)
+        template = InboxTemplate.new(enactor, Mail.filtered_mail(client), false, enactor.mail_filter)
         client.emit template.render
       end
     end

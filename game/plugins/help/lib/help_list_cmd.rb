@@ -9,7 +9,7 @@ module AresMUSH
       
       def crack!
         self.category = Help.command_to_category(cmd.root)
-        self.page = cmd.page.nil? ? 1 : cmd.page.to_i
+        self.page = !cmd.page ? 1 : cmd.page.to_i
       end
       
       def check_valid_category
@@ -19,7 +19,7 @@ module AresMUSH
         
       def check_can_view_help
         return nil if !self.category
-        return t('dispatcher.not_allowed') if !Help.can_access_help?(client.char, self.category)
+        return t('dispatcher.not_allowed') if !Help.can_access_help?(enactor, self.category)
         return nil
       end
       

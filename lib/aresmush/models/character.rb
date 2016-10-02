@@ -2,72 +2,16 @@ module AresMUSH
   class Character < Ohm::Model
     include ObjectModel
     
-    attribute :handle
-    attribute :handle_id
-    attribute :handle_upcase
-    attribute :name
-    attribute :name_upcase
-    attribute :alias
-    attribute :alias_upcase
-
-    index :handle_upcase
-    index :handle_id
-    index :name_upcase
-    index :alias_upcase
-    
-    reference :room, "AresMUSH::Room"
-    
-    set :roles, "AresMUSH::Role"
-    
-    # -----------------------------------
-    # CLASS METHODS
-    # -----------------------------------
-    
-    def self.find_any(name_or_id)
-      return [] if !name_or_id
-      results = Character[name_or_id]
-      if (!results)
-        results = find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase)
-      end
-      results.to_a
-    end
+    field :handle, :type => String
+    field :handle_id, :type => String
 
     def self.find_one(name)
       find_any(name).first
     end
     
     def self.find_by_handle(name)
-      return [] if name.nil?
-      find(handle_upcase: name.upcase)
-    end
-    
-    def self.found?(name)
-      find_any(name).first
-    end
-  
-    # Derived classes may implement name checking
-    def self.check_name(name)
-      nil
-    end
-
-    # -----------------------------------
-    # INSTANCE METHODS
-    # -----------------------------------
-    
-    def has_role?(name)
-      role = Role.find(name: name).first
-      self.roles.include?(role)
-    end
-        
-    def is_master_admin?
-      self == Game.master.master_admin
-    end
-    
-    def save
-      self.name_upcase = self.name ? self.name.upcase : nil
-      self.alias_upcase = self.alias ? self.alias.upcase : nil
-      self.handle_upcase = self.handle ? self.handle.upcase : nil
-      super
+      return [] if !name
+      Character.all.select { |c| (!c.handle ? "" : c.handle.downcase) == name.downcase }
     end
     
     def name_and_alias
@@ -83,7 +27,7 @@ module AresMUSH
     end
     
     def is_online?
-      !self.client.nil?
+      self.client
     end
     
     def self.random_link_code

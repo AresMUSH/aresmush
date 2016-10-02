@@ -8,22 +8,23 @@ module AresMUSH
       
       attr_accessor :target, :desc
 
-      def initialize
-        self.required_args = ['target', 'desc']
-        self.help_topic = 'describe'
-        super
-      end      
-
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
         self.desc = cmd.args.arg2
       end
       
+      def required_args
+        {
+          args: [ self.target, self.desc ],
+          help: 'describe'
+        }
+      end
+      
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.target, client) do |model|
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
         
-          if (!Describe.can_describe?(client.char, model))
+          if (!Describe.can_describe?(enactor, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end

@@ -34,11 +34,11 @@ module AresMUSH
     end
     
     def root_only?
-      @switch.nil? && @args.nil?
+      !@switch && !@args
     end
     
     def switch_is?(switch)
-      return false if @switch.nil?
+      return false if !@switch
       @switch == switch
     end
   

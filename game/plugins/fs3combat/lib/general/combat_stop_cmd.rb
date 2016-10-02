@@ -19,7 +19,7 @@ module AresMUSH
           c.clear_mock_damage
         end
         
-        combat.emit t('fs3combat.combat_stopped_by', :name => client.name)
+        combat.emit t('fs3combat.combat_stopped_by', :name => enactor_name)
         client.emit_success t('fs3combat.stopping_combat', :num => self.num)
         
         combat.destroy

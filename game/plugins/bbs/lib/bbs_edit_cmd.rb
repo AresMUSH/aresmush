@@ -7,12 +7,6 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :new_text
 
-      def initialize
-        self.required_args = ['board_name', 'num']
-        self.help_topic = 'bbs'
-        super
-      end
-            
       def crack!
         cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=?(?<new_text>[^\=]+)?/)
         self.board_name = titleize_input(cmd.args.name)
@@ -20,23 +14,30 @@ module AresMUSH
         self.new_text = cmd.args.new_text
       end
       
+      def required_args
+        {
+          args: [ self.board_name, self.num ],
+          help: 'bbs'
+        }
+      end
+      
       def handle
-        Bbs.with_a_post(self.board_name, self.num, client) do |board, post|
+        Bbs.with_a_post(self.board_name, self.num, client, enactor) do |board, post|
           
-          if (!Bbs.can_edit_post(client.char, post))
+          if (!Bbs.can_edit_post(enactor, post))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
             
-          if (self.new_text.nil?)
-            client.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
+          if (!self.new_text)
+            Utils::Api.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
             post.message = self.new_text
             post.mark_unread
             Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, 
             :board => board.name, 
             :reference => post.reference_str,
-            :author => client.name)
+            :author => enactor_name)
           end
         end
       end

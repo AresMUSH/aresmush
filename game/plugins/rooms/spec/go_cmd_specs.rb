@@ -14,7 +14,7 @@ module AresMUSH
         before do
           handler.stub(:destination) { "s" }
           @room = double
-          client.stub(:room) { @room }
+          enactor.stub(:room) { @room }
         end
         
         context "exit not found" do
@@ -43,7 +43,7 @@ module AresMUSH
           it "should go to the exit destination if there is one" do
             other_room = double
             @exit.stub(:dest) { other_room }
-            Rooms.should_receive(:move_to).with(client, char, other_room, "S")
+            Rooms.should_receive(:move_to).with(client, enactor, other_room, "S")
             handler.handle
           end
           

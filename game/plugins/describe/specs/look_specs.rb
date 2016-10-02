@@ -42,12 +42,12 @@ module AresMUSH
           end
 
           it "should find a visible target in the looker's room" do
-            VisibleTargetFinder.should_receive(:find).with("something", client) { FindResult.new(@model, nil)}
+            VisibleTargetFinder.should_receive(:find).with("something", enactor) { FindResult.new(@model, nil)}
             handler.handle
           end
           
           it "should get the desc from the interface" do          
-            Describe.should_receive(:get_desc_template).with(@model, client) { @template }
+            Describe.should_receive(:get_desc_template).with(@model, enactor) { @template }
             handler.handle
           end
         
@@ -62,6 +62,7 @@ module AresMUSH
             client.stub(:name) { "Bob" }
             other_client = double
             @model.should_receive(:client) { other_client }
+            @enactor.should_receive(:name) { "Bob" }
             other_client.should_receive(:emit_ooc).with('describe.looked_at_you')
             handler.handle
           end
@@ -71,8 +72,8 @@ module AresMUSH
           before do
             @here = double
             handler.crack!            
-            VisibleTargetFinder.should_receive(:find).with("something", @client) { FindResult.new(nil, "an error") }
-            VisibleTargetFinder.should_receive(:find).with("here", @client) { FindResult.new(@here) }
+            VisibleTargetFinder.should_receive(:find).with("something", enactor) { FindResult.new(nil, "an error") }
+            VisibleTargetFinder.should_receive(:find).with("here", enactor) { FindResult.new(@here) }
           end
           
           it "should emit the error to the client if nothing found" do

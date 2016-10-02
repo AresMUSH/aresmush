@@ -17,7 +17,7 @@ module AresMUSH
       
       # Fullname, with rank if set (e.g. Commander William Adama)
       def fullname_and_rank
-        rank.nil? ? fullname : "#{rank} #{fullname}"
+        !rank ? fullname : "#{rank} #{fullname}"
       end
       
       def callsign

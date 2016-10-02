@@ -7,7 +7,7 @@ module AresMUSH
       include CommandWithoutArgs
 
       def check_can_manage
-        return nil if Idle.can_idle_sweep?(client.char)
+        return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')
       end
       

@@ -15,61 +15,59 @@ module AresMUSH
     
       describe :find do
         before do
-          @client = double
+          @viewer = double
         end
         
         it "should find the specified class by name" do
           room = double
           Room.stub(:find_any).with("foo") { [room] }
-          result = ClassTargetFinder.find("foo", Room, @client)
+          result = ClassTargetFinder.find("foo", Room, @viewer)
           result.target.should eq room
           result.error.should be_nil
         end
     
         it "should return ambiguous if multiple results" do
           Room.stub(:find_any).with("foo") { [double, double] }
-          result = ClassTargetFinder.find("foo", Room, @client)
+          result = ClassTargetFinder.find("foo", Room, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_ambiguous'
         end
 
         it "should return not found if no results" do
           Room.stub(:find_any).with("bar") { [] }
-          result = ClassTargetFinder.find("bar", Room, @client)
+          result = ClassTargetFinder.find("bar", Room, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
         end
       
         it "should return the char for the me keword" do
-          char = double
-          @client.stub(:char) { char }
-          result = ClassTargetFinder.find("me", Character, @client)
-          result.target.should eq char
+          result = ClassTargetFinder.find("me", Character, @viewer)
+          result.target.should eq @viewer
           result.error.should be_nil
         end
 
         it "should not return the char for another kind of object" do
           char = double
-          @client.stub(:char) { char }
+          @viewer.stub(:char) { char }
           Room.stub(:find_any).with("me") { [] }
-          result = ClassTargetFinder.find("me", Room, @client)
+          result = ClassTargetFinder.find("me", Room, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
         end
       
         it "should return the char's location for the here keyword" do
           room = double
-          @client.stub(:room) { room }
-          result = ClassTargetFinder.find("here", Room, @client)
+          @viewer.stub(:room) { room }
+          result = ClassTargetFinder.find("here", Room, @viewer)
           result.target.should eq room
           result.error.should be_nil
         end
       
         it "should not find here for another kind of object" do
           room = double
-          @client.stub(:room) { room }
+          @viewer.stub(:room) { room }
           Character.stub(:find_any).with("here") { [] }
-          result = ClassTargetFinder.find("here", Character, @client)
+          result = ClassTargetFinder.find("here", Character, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
         end
@@ -77,6 +75,7 @@ module AresMUSH
 
       describe :with_a_character do
         before do
+          @viewer = double
           @client = double
           @char = double
           @char.stub(:name) { "char name" }
@@ -84,9 +83,9 @@ module AresMUSH
       
         it "should emit failure if the char doesn't exist" do
           result = FindResult.new(nil, "error msg")
-          ClassTargetFinder.should_receive(:find).with("name", Character, @client) { result }
+          ClassTargetFinder.should_receive(:find).with("name", Character, @viewer) { result }
           @client.should_receive(:emit_failure).with("error msg")
-          ClassTargetFinder.with_a_character("name", @client) do |char|
+          ClassTargetFinder.with_a_character("name", @client, @viewer) do |char|
             raise "Should not get here."
           end
         end
@@ -94,14 +93,14 @@ module AresMUSH
         it "should not call the block with the char if it doesn't exist" do
           ClassTargetFinder.stub(:find) { FindResult.new(nil, nil) }
           @client.stub(:emit_failure)
-          ClassTargetFinder.with_a_character("name", @client) do |char|
+          ClassTargetFinder.with_a_character("name", @client, @viewer) do |char|
             raise "Should not get here."
           end
         end
             
         it "should call the block with the char if it exists" do
           ClassTargetFinder.stub(:find) { FindResult.new(@char, nil) }
-          ClassTargetFinder.with_a_character("name", @client) do |char|
+          ClassTargetFinder.with_a_character("name", @client, @viewer) do |char|
             char.name.should eq "char name"
           end
         end

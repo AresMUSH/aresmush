@@ -39,7 +39,7 @@ module AresMUSH
     # or nil if ansi code is not valid.
     def self.get_code(str)
       matches = /^%(?<control>[XxCc])(?<code>.+)/.match(str)
-      return nil if matches.nil?
+      return nil if !matches
       
       control = matches[:control]
       code = matches[:code]

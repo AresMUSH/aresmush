@@ -8,20 +8,21 @@ module AresMUSH
       
       attr_accessor :value, :property
 
-      def initialize
-        self.required_args = ['value']
-        self.help_topic = 'demographics'
-        super
-      end
-            
       def crack!
         self.value = trim_input(cmd.args)
         self.property = cmd.root.downcase
       end
       
+      def required_args
+        {
+          args: [ self.value ],
+          help: 'demographics'
+        }
+      end
+         
       def handle
-        client.char.send("#{self.property}=", self.value)
-        client.char.save
+        enactor.send("#{self.property}=", self.value)
+        enactor.save
         client.emit_success t('demographics.property_set', :property => self.property, :value => self.value)
       end
     end
@@ -30,7 +31,7 @@ module AresMUSH
       include BasicDemographicCmd
       
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(enactor)
       end      
     end
     
@@ -42,7 +43,7 @@ module AresMUSH
       include BasicDemographicCmd
 
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(enactor)
       end
     end
     
@@ -67,7 +68,7 @@ module AresMUSH
       include BasicDemographicCmd
       
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(client.char)
+        Chargen::Api.check_chargen_locked(enactor)
       end
       
       def crack!

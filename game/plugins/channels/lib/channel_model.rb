@@ -37,7 +37,7 @@ module AresMUSH
       characters.each do |c|
         if (!Channels.is_gagging?(c, self))
           client = c.client
-          if (!client.nil?)
+          if (client)
             client.emit "#{display_name} #{msg}"
           end
         end

@@ -4,8 +4,8 @@ module AresMUSH
       char.has_any_role?(Global.read_config("actors", "roles", "can_set_actors"))
     end
     
-    def self.create_or_update_actor(client, charname, actorname)
-      actor_char = ClassTargetFinder.find(charname, Character, client)
+    def self.create_or_update_actor(enactor, charname, actorname)
+      actor_char = ClassTargetFinder.find(charname, Character, enactor)
       if (actor_char.found?)
         charname = actor_char.target.name
       end

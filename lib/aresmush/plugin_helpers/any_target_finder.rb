@@ -1,7 +1,7 @@
 module AresMUSH
   class AnyTargetFinder
-    def self.find(name_or_id, client)
-      find_result = VisibleTargetFinder.find(name_or_id, client)
+    def self.find(name_or_id, char)
+      find_result = VisibleTargetFinder.find(name_or_id, char)
       
       if (find_result.found?)
         return find_result
@@ -11,13 +11,13 @@ module AresMUSH
       exits = Exit.find_any(name_or_id)
       rooms = Room.find_any(name_or_id)
       
-      contents = [chars, exits, rooms].flatten(1).select { |c| !c.nil? }   
+      contents = [chars, exits, rooms].flatten(1).select { |c| c }   
             
       SingleResultSelector.select(contents)
     end
     
-    def self.with_any_name_or_id(name, client, &block)
-      result = AnyTargetFinder.find(name, client)
+    def self.with_any_name_or_id(name, client, char, &block)
+      result = AnyTargetFinder.find(name, char)
       
       if (!result.found?)
         client.emit_failure(result.error)

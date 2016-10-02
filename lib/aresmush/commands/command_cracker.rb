@@ -9,7 +9,7 @@ module AresMUSH
     def self.crack(input)
       cracked = /^(?<prefix>[\/\+\=\@\&]?)(?<root>[^\d\s\/]+)(?<page>[\d]*)?(?<switch>\/[^\s]+)*(?<args>.+)*/.match(input.strip)
 
-      if (cracked.nil?)      
+      if (!cracked)      
         # Never allow root to be nil
         return { :prefix => nil, :root => input.chomp, :page => nil, :switch => nil, :args => nil }
       end
@@ -30,7 +30,7 @@ module AresMUSH
     end
     
     def self.strip_prefix(str)
-      str.nil? ? nil : str.sub(/^[\/\+\=\@\&]/, '')
+      !str ? nil : str.sub(/^[\/\+\=\@\&]/, '')
     end
     
   end

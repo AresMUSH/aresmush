@@ -6,8 +6,8 @@ module AresMUSH
       include CommandWithoutArgs
       
       def handle
-        cookie_total = t('cookies.cookies_total', :cookies => client.char.cookie_count)
-        cookie_recipients = client.char.cookies_given
+        cookie_total = t('cookies.cookies_total', :cookies => enactor.cookie_count)
+        cookie_recipients = enactor.cookies_given
         if (cookie_recipients.empty?)
           cookies_given = t('cookies.cookies_not_given_this_week')
         else

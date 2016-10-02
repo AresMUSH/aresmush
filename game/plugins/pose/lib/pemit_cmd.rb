@@ -8,26 +8,27 @@ module AresMUSH
       
       attr_accessor :names, :message
       
-      def initialize
-        self.required_args = ['names', 'message']
-        self.help_topic = 'posing'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
+        self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
         self.message = cmd.args.arg2
       end
       
+      def required_args
+        {
+          args: [ self.names, self.message ],
+          help: 'posing'
+        }
+      end
+      
       def handle
-        OnlineCharFinder.with_online_chars(self.names, client) do |clients|
-          clients.each do |c|
+        OnlineCharFinder.with_online_chars(self.names, client) do |results|
+          results.each do |r|
             nospoof = ""
-            if (c.char.nospoof)
-              nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => client.name)}%xn%R"
+            if (r.char.nospoof)
+              nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => enactor_name)}%xn%R"
             end
-            c.emit "#{Pose::Api.autospace(c.char)}#{nospoof}#{self.message}"
+            r.client.emit "#{Pose::Api.autospace(r.char)}#{nospoof}#{self.message}"
           end
         end
       end

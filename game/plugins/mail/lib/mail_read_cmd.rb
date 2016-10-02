@@ -7,19 +7,20 @@ module AresMUSH
            
       attr_accessor :num
       
-      def initialize
-        self.required_args = ['num']
-        self.help_topic = 'mail'
-        super
-      end
-      
       def crack!
         self.num = trim_input(cmd.args)
       end
-            
+
+      def required_args
+        {
+          args: [ self.num ],
+          help: 'mail'
+        }
+      end
+       
       def handle
-        Mail.with_a_delivery(client, self.num) do |delivery|
-          template = MessageTemplate.new(client, delivery)
+        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
+          template = MessageTemplate.new(enactor, delivery)
           client.emit template.render
           delivery.read = true
           delivery.save

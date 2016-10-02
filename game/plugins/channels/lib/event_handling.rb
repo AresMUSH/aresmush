@@ -2,22 +2,20 @@ module AresMUSH
   module Channels
     class CharCreatedEventHandler
       def on_event(event)
-        client = event.client
-        char = client.char
-        Channels.add_to_default_channels(client, char)
+        Channels.add_to_default_channels(event.client, event.char)
       end
     end
     
     class CharConnectedEventHandler
       def on_event(event)
         client = event.client
-        char = client.char
+        char = event.char
+        channels = char.channels
 
-        channels = client.char.channels
-        Global.client_monitor.logged_in_clients.each do |other_client|
-          common_channels = Channels.find_common_channels(channels, other_client)
-          if (!common_channels.nil?)
-            other_client.emit "#{common_channels} #{t('channels.has_connected', :name => client.name)}"
+        Global.client_monitor.logged_in.each do |other_client, other_char|
+          common_channels = Channels.find_common_channels(channels, other_char)
+          if (common_channels)
+           other_client.emit "#{common_channels} #{t('channels.has_connected', :name => char.name)}"
           end
         end
 
@@ -30,19 +28,20 @@ module AresMUSH
     class CharDisconnectedEventHandler
       def on_event(event)
         client = event.client
-        channels = client.char.channels
+        char = event.char
+        channels = char.channels
         
-        Global.client_monitor.logged_in_clients.each do |other_client|
-          common_channels = Channels.find_common_channels(channels, other_client)
-          if (!common_channels.nil?)
-            other_client.emit "#{common_channels} #{t('channels.has_disconnected', :name => client.name)}"
+        Global.client_monitor.logged_in.each do |other_client, other_char|
+          common_channels = Channels.find_common_channels(channels, other_char)
+          if (common_channels)
+            other_client.emit "#{common_channels} #{t('channels.has_disconnected', :name => char.name)}"
           end
         end
         
         channels.each do |c|
-          Channels.set_gagging(client.char, c, false)
+          Channels.set_gagging(char, c, false)
         end
-        client.char.save        
+        char.save        
       end
     end
     

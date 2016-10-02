@@ -6,27 +6,28 @@ module AresMUSH
       include CommandRequiresArgs
            
       attr_accessor :name
-
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'channels'
-        super
-      end
       
       def crack!
         self.name = titleize_input(cmd.args)
       end
       
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'channels'
+        }
+      end
+      
       def handle
-        Channels.with_an_enabled_channel(self.name, client) do |channel|
+        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           if (cmd.switch_is?("gag"))
-            Channels.set_gagging(client.char, channel, true)
+            Channels.set_gagging(enactor, channel, true)
             client.emit_success t('channels.channel_gagged', :name => self.name)
           else
-            Channels.set_gagging(client.char, channel, false)
+            Channels.set_gagging(enactor, channel, false)
             client.emit_success t('channels.channel_ungagged', :name => self.name)
           end
-          client.char.save
+          enactor.save
         end
       end
     end  

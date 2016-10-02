@@ -33,7 +33,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)      
+    def self.get_cmd_handler(client, cmd, enactor)      
       case cmd.root
       when "arescentral"
         case cmd.switch

@@ -14,7 +14,6 @@ load "lib/quit_cmd.rb"
 load "lib/tos_cmd.rb"
 load "lib/tour_cmd.rb"
 load "lib/watch_cmd.rb"
-load "login_events.rb"
 load "login_api.rb"
 
 module AresMUSH
@@ -46,7 +45,7 @@ module AresMUSH
       [ "locales/locale_en.yml" ]
     end
  
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "alias"
         return AliasCmd

@@ -7,21 +7,22 @@ module AresMUSH
       
       attr_accessor :num, :name
       
-      def initialize
-        self.required_args = ['name', 'num']
-        self.help_topic = 'mail'
-        super
-      end
-      
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.num = trim_input(cmd.args.arg2)
       end
+
+      def required_args
+        {
+          args: [ self.name, self.num ],
+          help: 'mail'
+        }
+      end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
-          deliveries = model.sent_mail_to(client.char)
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+          deliveries = model.sent_mail_to(enactor)
           
           Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
             if (delivery.read)

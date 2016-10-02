@@ -12,12 +12,12 @@ module AresMUSH
       end
 
       def check_can_build
-        return t('dispatcher.not_allowed') if !Rooms.can_build?(client.char)
+        return t('dispatcher.not_allowed') if !Rooms.can_build?(enactor)
         return nil
       end
       
       def handle
-        if (self.name.nil?)
+        if (!self.name)
           objects = Room.all
         else
           objects = Room.all.select { |r| r.name_upcase =~ /#{self.name.upcase}/ }

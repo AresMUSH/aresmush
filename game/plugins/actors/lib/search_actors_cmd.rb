@@ -7,17 +7,18 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :name
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'actors'
-        super
-      end
 
       def crack!
         self.name = trim_input(cmd.args)
       end
       
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'actors'
+        }
+      end
+        
       def handle
         list = ActorRegistry.all.select { |a| is_match?(a) }
         list = list.sort { |a,b| a.charname <=> b.charname }

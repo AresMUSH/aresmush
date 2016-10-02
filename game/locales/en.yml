@@ -18,6 +18,7 @@ en:
         cmd_invalid_switch: "That is not a valid switch (/whatever) for this command."
         invalid_syntax: "That is not the right command format.  Please see 'help %{command}'."
         invalid_on_off_option: "Please use 'on' or 'off'."
+        stale_object_error: "Someone else changed that object at the same time.  Please try again."
     
     db:
         object_not_found: Nothing found with that name.

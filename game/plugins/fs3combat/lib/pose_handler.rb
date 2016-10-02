@@ -2,10 +2,10 @@ module AresMUSH
   module FS3Combat
     class PoseEventHandler
       def on_event(event)
-        char = event.client.char
-        return if !char.combatant
-        char.combatant.posed = true
-        char.combatant.save
+        enactor = event.enactor
+        return if !enactor.combatant
+        enactor.combatant.posed = true
+        enactor.combatant.save
       end
     end
   end

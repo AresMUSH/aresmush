@@ -5,17 +5,9 @@ module AresMUSH
       include CommandHandler
       include CommandRequiresLogin
       include CommandRequiresArgs
-      
-      include CommandRequiresArgs
-      
+            
       attr_accessor :name, :target, :desc
-      
-      def initialize
-        self.required_args = ['name', 'target', 'desc']
-        self.help_topic = 'detail'
-        super
-      end
-      
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_slash_arg2_equals_arg3)
         self.target = cmd.args.arg1
@@ -23,10 +15,17 @@ module AresMUSH
         self.desc = cmd.args.arg3
       end
       
+      def required_args
+        {
+          args: [ self.target, self.desc, self.name ],
+          help: 'detail'
+        }
+      end
+      
       def handle
-        VisibleTargetFinder.with_something_visible(self.target, client) do |model|
+        VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
           
-          if (!Describe.can_describe?(client.char, model))
+          if (!Describe.can_describe?(enactor, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end

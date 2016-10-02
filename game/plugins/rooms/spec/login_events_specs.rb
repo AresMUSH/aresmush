@@ -21,9 +21,10 @@ module AresMUSH
       
       describe :on_char_connected_event do      
         it "should emit the desc of the char's last location" do
+          @client.stub(:char) { @char }
           @login = CharConnectedEventHandler.new
-          Rooms.should_receive(:emit_here_desc).with(@client)
-          @login.on_event CharConnectedEvent.new(@client)
+          Rooms.should_receive(:emit_here_desc).with(@client, @char)
+          @login.on_event CharConnectedEvent.new(@client, @char)
         end
       end
       
@@ -39,13 +40,13 @@ module AresMUSH
         it "should send guests home to the welcome room" do
           Login::Api.stub(:is_guest?) { true }
           Rooms.should_receive(:move_to).with(@client, @char, @welcome_room)
-          @login.on_event CharDisconnectedEvent.new(@client)
+          @login.on_event CharDisconnectedEvent.new(@client, @char)
         end
 
         it "should not move around regular characters" do
           Login::Api.stub(:is_guest?) { false }
           Rooms.should_not_receive(:move_to)
-          @login.on_event CharDisconnectedEvent.new(@client)
+          @login.on_event CharDisconnectedEvent.new(@client, @char)
         end
       end
     end

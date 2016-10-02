@@ -3,17 +3,14 @@ module AresMUSH
     # Template for an exit.
     class FriendsTemplate < ErbTemplateRenderer
       include TemplateFormatters
-      
-      attr_accessor :char
-      
-      def initialize(client)
-        @client = client
-        @char = client.char
+            
+      def initialize(enactor)
+        @enactor = enactor
         super File.dirname(__FILE__) + "/friends.erb"        
       end
       
       def friendships
-        @char.friendships.sort_by { |f| f.friend.name }
+        @enactor.friendships.sort_by { |f| f.friend.name }
       end
       
       def friend_name(friendship)
@@ -21,7 +18,7 @@ module AresMUSH
       end
       
       def handle_friends
-        @char.handle_friends.sort
+        @enactor.handle_friends.sort
       end
       
       def visible_alts(handle)
@@ -34,7 +31,7 @@ module AresMUSH
         if (char.client)
           connected = t('friends.connected')
         else
-          connected = OOCTime::Api.local_long_timestr(@client, Login::Api.last_on(char))
+          connected = OOCTime::Api.local_long_timestr(@enactor, Login::Api.last_on(char))
         end
       end
       

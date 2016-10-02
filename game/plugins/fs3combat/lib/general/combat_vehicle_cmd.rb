@@ -8,32 +8,33 @@ module AresMUSH
       
       attr_accessor :name, :vehicle, :passenger_type
       
-      def initialize
-        self.required_args = ['name', 'vehicle', 'passenger_type']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           self.name = titleize_input(cmd.args.arg1)
           self.vehicle = trim_input(cmd.args.arg2)
         else
-          self.name = client.name
+          self.name = enactor_name
           self.vehicle = titleize_input(cmd.args)
         end
         
         self.passenger_type = cmd.switch_is?("passenger") ? "Passenger" : "Pilot"
       end
+
+      def required_args
+        {
+          args: [ self.name, self.vehicle, self.passenger_type ],
+          help: 'combat'
+        }
+      end
       
       def check_in_combat
-        return t('fs3combat.you_are_not_in_combat') if !client.char.is_in_combat?
+        return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
         return nil
       end
       
       def handle
-        combat = client.char.combatant.combat
+        combat = enactor.combatant.combat
         vehicle = combat.find_or_create_vehicle(self.vehicle) 
               
         if (!vehicle)
@@ -41,7 +42,7 @@ module AresMUSH
           return
         end
 
-        FS3Combat.with_a_combatant(self.name, client) do |combat, combatant|
+        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
           if (combatant.is_in_vehicle?)
             combat.leave_vehicle(combatant)
           end

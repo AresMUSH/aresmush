@@ -6,7 +6,7 @@ module AresMUSH
 
     def self.set_channel_option(char, channel, option, value)
       channel_options = char.channel_options[channel.name]
-      if (channel_options.nil?)
+      if (!channel_options)
         char.channel_options[channel.name] = { option => value }
       else
         char.channel_options[channel.name][option] = value
@@ -15,18 +15,18 @@ module AresMUSH
     
     def self.get_channel_option(char, channel, option)
       channel_options = char.channel_options[channel.name]
-      channel_options.nil? ? nil : channel_options[option]
+      !channel_options ? nil : channel_options[option]
     end
  
-    def self.is_talk_cmd(client, cmd)
-      return false if !client.logged_in?
+    def self.is_talk_cmd(enactor, cmd)
+      return false if !enactor
       return false if !cmd.args    
-      channel = Channels.channel_for_alias(client.char, cmd.root)
-      !channel.nil?
+      channel = Channels.channel_for_alias(enactor, cmd.root)
+      channel
     end
     
-    def self.find_common_channels(channels, other_client)
-      their_channels = other_client.char.channels
+    def self.find_common_channels(channels, other_char)
+      their_channels = other_char.channels
       intersection = channels.to_a & their_channels.to_a
       intersection = intersection.select { |c| c.announce }
       if (intersection.empty?)
@@ -58,8 +58,7 @@ module AresMUSH
         next if !c.is_online?
         online_chars << c
       end
-      online_chars = online_chars.map { |c| "#{Handles::Api.ooc_name(c)}#{gag_text(c, channel)}" }
-      t('channels.channel_who', :name => channel.display_name, :chars => online_chars.join(", "))
+      online_chars
     end
     
     def self.gag_text(char, channel)
@@ -77,7 +76,7 @@ module AresMUSH
       
       char.channel_options.keys.each do |k|
         option_aliases = char.channel_options[k]["alias"]
-        return nil if option_aliases.nil?
+        return nil if !option_aliases
         
         option_aliases.each do |a1|
           if (CommandCracker.strip_prefix(a1).downcase == a2.downcase)
@@ -99,19 +98,19 @@ module AresMUSH
       return char.has_any_role?(channel.roles)
     end
     
-    def self.with_an_enabled_channel(name, client, &block)
+    def self.with_an_enabled_channel(name, client, enactor, &block)
       channel = Channel.find_one(name)
       
-      if (channel.nil?)
-        channel = Channels.channel_for_alias(client.char, name)
+      if (!channel)
+        channel = Channels.channel_for_alias(enactor, name)
       end
       
-      if (channel.nil?)
+      if (!channel)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
         return
       end
 
-      if (!Channels.is_on_channel?(client.char, channel))
+      if (!Channels.is_on_channel?(enactor, channel))
         client.emit_failure t('channels.not_on_channel')
         return
       end
@@ -122,7 +121,7 @@ module AresMUSH
     def self.with_a_channel(name, client, &block)
       channel = Channel.find_one(name)
       
-      if (channel.nil?)
+      if (!channel)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
         return
       end
@@ -149,13 +148,13 @@ module AresMUSH
       aliases = chan_alias.split(/[, ]/)
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
-        if (!existing_channel.nil? && existing_channel != channel)
+        if (existing_channel && existing_channel != channel)
           client.emit_failure t('channels.alias_in_use', :channel_alias => a)
           return false
         end
         
         trimmed_alias = CommandCracker.strip_prefix(a)
-        if (warn && (trimmed_alias.nil? || trimmed_alias.length < 2))
+        if (warn && (!trimmed_alias || trimmed_alias.length < 2))
           client.emit_failure t('channels.short_alias_warning')
         end
       end
@@ -166,7 +165,7 @@ module AresMUSH
         client.emit_success t('channels.channel_alias_set', :name => channel.name, :channel_alias => a)
       end
       
-      client.char.save
+      char.save
       return true
     end
     
@@ -183,7 +182,7 @@ module AresMUSH
           return
         end
         
-        if (chan_alias.nil?)
+        if (!chan_alias)
           chan_alias = channel.default_alias.join(",")
         end
             

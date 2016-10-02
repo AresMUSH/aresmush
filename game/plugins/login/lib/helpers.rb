@@ -10,17 +10,17 @@ module AresMUSH
     end
     
     def self.wants_announce(listener, connector)
-      return false if listener.nil?
+      return false if !listener
       return true if listener.watch == "all"
       return false if listener.watch == "none"
       Friends::Api.is_friend?(listener, connector)
     end
     
-    def self.update_site_info(client)
-      client.char.last_ip = client.ip_addr
-      client.char.last_hostname = client.hostname.downcase
-      client.char.last_on = Time.now
-      client.char.save
+    def self.update_site_info(client, char)
+      char.last_ip = client.ip_addr
+      char.last_hostname = client.hostname.downcase
+      char.last_on = Time.now
+      char.save
     end
     
     def self.terms_of_service

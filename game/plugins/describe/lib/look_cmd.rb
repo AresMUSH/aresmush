@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def handle
-        search = VisibleTargetFinder.find(self.target, client)
+        search = VisibleTargetFinder.find(self.target, enactor)
         if (self.detail)
           if (search.found?)
             show_detail(search.target, self.detail)
@@ -30,19 +30,19 @@ module AresMUSH
            if (search.found?)
              show_desc(search.target)
            else
-             search = VisibleTargetFinder.find("here", client)
+             search = VisibleTargetFinder.find("here", enactor)
              show_detail(search.target, self.target)
            end
         end
       end   
       
       def show_desc(model)
-        template = Describe.get_desc_template(model, client)
+        template = Describe.get_desc_template(model, enactor)
         client.emit template.render
         if (model.class == Character)
           looked_at = model.client
-          if (!looked_at.nil?)
-            looked_at.emit_ooc t('describe.looked_at_you', :name => client.name)
+          if (looked_at)
+            looked_at.emit_ooc t('describe.looked_at_you', :name => enactor_name)
           end
         end
       end

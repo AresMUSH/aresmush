@@ -14,13 +14,13 @@ module AresMUSH
     
     def self.all_ranks_for_group(group)
       config = Ranks.group_rank_config(group)
-      return nil if config.nil?
+      return nil if !config
       config.values.collect { |t| t.keys }.flatten
     end
     
     def self.allowed_ranks_for_group(group)
       config = Ranks.group_rank_config(group)
-      return nil if config.nil?
+      return nil if !config
       ranks = []
       config.values.each do |t|
         ranks << t.select { |t, v| v }
@@ -29,11 +29,11 @@ module AresMUSH
     end
     
     def self.check_rank(char, rank, allow_all)
-      return nil if rank.nil?
+      return nil if !rank
       
       group = Groups::Api.group(char, Ranks.rank_group)
       
-      if (group.nil?)
+      if (!group)
         return t('ranks.rank_group_not_set', :group => Ranks.rank_group)
       end
       
@@ -43,12 +43,12 @@ module AresMUSH
         ranks = Ranks.allowed_ranks_for_group(group)
       end
       
-      if (ranks.nil?)
+      if (!ranks)
         return t('ranks.no_ranks_for_group', :group => group)
       end
       
       found = ranks.find { |r| r.downcase == rank.downcase }
-      if (found.nil?)
+      if (!found)
         return t('ranks.invalid_rank_for_group', :group => group)
       end
       
@@ -58,7 +58,7 @@ module AresMUSH
     def self.app_review(char)
       message = t('ranks.app_review')
       
-      if (char.rank.nil?)
+      if (!char.rank)
         status = t('chargen.are_you_sure', :missing => t('ranks.review_rank_missing'))
       elsif Ranks.check_rank(char, char.rank, false)
         status = t('ranks.review_rank_invalid')

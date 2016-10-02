@@ -18,7 +18,7 @@ module AresMUSH
         before do
           @target = double
           @target.stub(:id) { "X" }
-          AnyTargetFinder.stub(:find).with("X", client) { FindResult.new(@target, nil) }
+          AnyTargetFinder.stub(:find).with("X", enactor) { FindResult.new(@target, nil) }
           client.stub(:program) { { :destroy_target => @target.id, :something_else => "x" } }
           Manage.stub(:can_manage_object?) { true }
           handler.crack!
@@ -39,7 +39,7 @@ module AresMUSH
           end
           
           it "should emit failure if the char doesn't have permission" do
-            Manage.should_receive(:can_manage_object?).with(char, @target) { false }
+            Manage.should_receive(:can_manage_object?).with(enactor, @target) { false }
             client.should_receive(:emit_failure).with("dispatcher.not_allowed")
             handler.handle
           end

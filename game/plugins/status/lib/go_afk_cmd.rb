@@ -12,23 +12,21 @@ module AresMUSH
       end
       
       def handle      
-        char = client.char
-
         if (self.message == "off")
-          char.afk_message = ""
-          char.is_afk = false
-          char.save
-          char.room.emit_ooc t('status.no_longer_afk', :name => char.name)
+          enactor.afk_message = ""
+          enactor.is_afk = false
+          enactor.save
+          enactor.room.emit_ooc t('status.no_longer_afk', :name => enactor.name)
           return
         end
           
-        char.afk_message = self.message  
-        char.is_afk = true
-        if (Rooms::Api.room_type(char.room) == "IC")
-          char.last_ic_location_id = char.room.id
+        enactor.afk_message = self.message  
+        enactor.is_afk = true
+        if (Rooms::Api.room_type(enactor.room) == "IC")
+          enactor.last_ic_location_id = enactor.room.id
         end
-        char.save     
-        char.room.emit_ooc t('status.go_afk', :name => char.name, :message => self.message)
+        enactor.save     
+        enactor.room.emit_ooc t('status.go_afk', :name => enactor.name, :message => self.message)
       end
     end
   end

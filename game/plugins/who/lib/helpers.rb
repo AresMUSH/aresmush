@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       room_area = Rooms::Api.area(char.room)
-      area = room_area.nil? ? "" : "#{room_area} - "
+      area = !room_area ? "" : "#{room_area} - "
       "#{area}#{char.room.name}"
     end
   end

@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def handle
-        room = client.char.room
+        room = enactor.room
         
         if (self.set)
           room.sceneset = self.set

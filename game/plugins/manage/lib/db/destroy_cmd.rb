@@ -6,20 +6,21 @@ module AresMUSH
       include CommandRequiresLogin
       
       attr_accessor :name
-            
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'destroy'
-        super
-      end
-      
+
       def crack!
         self.name = trim_input(cmd.args)
       end
-
+      
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'destroy'
+        }
+      end
+      
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.name, client) do |target|
-          if (!Manage.can_manage_object?(client.char, target))
+        AnyTargetFinder.with_any_name_or_id(self.name, client, enactor) do |target|
+          if (!Manage.can_manage_object?(enactor, target))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

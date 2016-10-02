@@ -67,20 +67,20 @@ module AresMUSH
       end
     end
     
-    def self.set_default_gear(client, combatant, type)
+    def self.set_default_gear(enactor, combatant, type)
       weapon = FS3Combat.combatant_type_stat(type, "weapon")
       if (weapon)
         specials = FS3Combat.combatant_type_stat(type, "weapon_specials")
-        FS3Combat.set_weapon(client, combatant, weapon, specials)
+        FS3Combat.set_weapon(enactor, combatant, weapon, specials)
       end
       
       armor = FS3Combat.combatant_type_stat(type, "armor")
       if (armor)
-        FS3Combat.set_armor(client, combatant, armor)
+        FS3Combat.set_armor(enactor, combatant, armor)
       end
     end
     
-    def self.set_weapon(client, combatant, weapon, specials = nil)
+    def self.set_weapon(enactor, combatant, weapon, specials = nil)
       combatant.weapon = weapon ? weapon.titleize : nil
       combatant.weapon_specials = specials ? specials.map { |s| s.titleize } : nil
       combatant.ammo = FS3Combat.weapon_stat(weapon, "ammo")
@@ -90,14 +90,14 @@ module AresMUSH
       message = t('fs3combat.weapon_changed', :name => combatant.name, 
         :weapon => combatant.weapon, 
         :specials => specials_text)
-      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, client ? client.char : nil)
+      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
-    def self.set_armor(client, combatant, armor)
+    def self.set_armor(enactor, combatant, armor)
       combatant.armor = armor ? armor.titleize : nil
       combatant.save
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
-      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, client.char)
+      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
   end
 end

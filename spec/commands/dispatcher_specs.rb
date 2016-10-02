@@ -12,9 +12,11 @@ module AresMUSH
 
     before do
       stub_global_objects
-      @client = double(Client).as_null_object
+      @enactor = double
+      @client = double
       @client.stub(:id) { "1" }
       @client.stub(:room) { nil }
+      @client.stub(:find_char) { @enactor }
       @command = Command.new("x")
       @dispatcher = Dispatcher.new
       @plugin1 = double
@@ -22,7 +24,9 @@ module AresMUSH
       @plugin1.stub(:log_command)
       @plugin2.stub(:log_command)
       @shortcuts = {}
+      @client.stub(:emit_ooc)
       plugin_manager.stub(:shortcuts) { @shortcuts }
+      CommandAliasParser.stub(:substitute_aliases)
       SpecHelpers.stub_translate_for_testing
     end
 
@@ -34,14 +38,19 @@ module AresMUSH
           end
           @handler = double
           @handler_class = double
+          plugin_manager.stub(:plugins) { [] }
         end
         
         it "performs alias substitutions" do
-          plugin_manager.stub(:plugins) { [] }
-          CommandAliasParser.should_receive(:substitute_aliases).with(@client, @command, @shortcuts)
+          CommandAliasParser.should_receive(:substitute_aliases).with(@enactor, @command, @shortcuts)
           @dispatcher.on_command(@client, @command)
         end
       
+        it "should look up the enactor" do
+          @client.should_receive(:find_char) { @enactor }
+          @dispatcher.on_command(@client, @command)
+        end
+        
         it "gets the list of plugins from the plugin manager" do
           plugin_manager.should_receive(:plugins) { [] }
           @dispatcher.on_command(@client, @command)
@@ -49,33 +58,33 @@ module AresMUSH
       
         it "asks each plugin if it wants a command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { false }
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { false }
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { false }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { false }
           @dispatcher.on_command(@client, @command)
         end      
             
         it "stops after finding one plugin to handle the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @handler_class.stub(:new) { @handler }
-          @handler.should_receive(:on_command).with(@client, @command)
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { @handler_class }
+          @handler_class.stub(:new).with(@client, @command, @enactor) { @handler }
+          @handler.should_receive(:on_command)
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { @handler_class }
           @plugin2.should_not_receive(:get_cmd_handler)
           @dispatcher.on_command(@client, @command)
         end
       
         it "continues processing if the first plugin doesn't want the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @handler_class.stub(:new) { @handler }
-          @handler.should_receive(:on_command).with(@client, @command)
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { nil }
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { @handler_class }
+          @handler_class.stub(:new).with(@client, @command, @enactor) { @handler }
+          @handler.should_receive(:on_command)
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { nil }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { @handler_class }
           @dispatcher.on_command(@client, @command)
         end
 
         it "sends huh message if nobody handles the command" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
-          @plugin1.should_receive(:get_cmd_handler).with(@client, @command) { nil }
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command) { nil }
+          @plugin1.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { nil }
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @enactor) { nil }
           @client.should_receive(:emit_ooc).with("dispatcher.huh")
           @dispatcher.on_command(@client, @command)
         end      
@@ -90,7 +99,7 @@ module AresMUSH
         it "keeps asking plugins if they want the command after an error" do
           plugin_manager.stub(:plugins) { [ @plugin1, @plugin2 ] }
           @plugin1.should_receive(:get_cmd_handler).and_raise("an error")
-          @plugin2.should_receive(:get_cmd_handler).with(@client, @command)
+          @plugin2.should_receive(:get_cmd_handler).with(@client, @command, @enactor)
           @dispatcher.on_command(@client, @command)
         end
         

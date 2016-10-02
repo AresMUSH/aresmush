@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutArgs
       
       def handle
-        if (client.char.approval_job.nil?)
+        if (!enactor.approval_job)
           if (cmd.switch_is?("confirm"))
             create_job
             lock_char
@@ -20,20 +20,20 @@ module AresMUSH
       end
       
       def lock_char
-        client.char.chargen_locked = true
-        client.char.save
+        enactor.chargen_locked = true
+        enactor.save
       end
       
       def check_approval
-        return t('chargen.you_are_already_approved') if client.char.is_approved
+        return t('chargen.you_are_already_approved') if enactor.is_approved
         return nil
       end
       
       def create_job
         job = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
-          t('chargen.application_title', :name => client.name), 
+          t('chargen.application_title', :name => enactor_name), 
           t('chargen.app_job_submitted'), 
-          client.char)
+          enactor)
         
         if (!job[:error].nil?)
           Global.logger.error "Problem submitting application: #{job[:error]}"
@@ -41,14 +41,14 @@ module AresMUSH
           return
         end
         
-        client.char.approval_job = job[:job]
-        client.char.save        
+        enactor.approval_job = job[:job]
+        enactor.save        
         client.emit_success t('chargen.app_submitted')
       end
       
       def update_job
-        Jobs::Api.change_job_status(client,
-          client.char.approval_job,
+        Jobs::Api.change_job_status(enactor,
+          enactor.approval_job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))
           

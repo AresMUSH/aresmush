@@ -44,15 +44,13 @@ module AresMUSH
       return match
     end
     
-    def self.with_a_combatant(name, client, &block)
-      char = client.char
-      
-      if (!char.is_in_combat?)
+    def self.with_a_combatant(name, client, enactor, &block)      
+      if (!enactor.is_in_combat?)
         client.emit_failure t('fs3combat.you_are_not_in_combat')
         return
       end
       
-      combat = char.combatant.combat
+      combat = enactor.combatant.combat
       combatant = combat.find_combatant(name)
       
       if (!combatant)

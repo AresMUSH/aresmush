@@ -9,5 +9,5 @@ arescentral:
         minute: 00
         
     # You shouldn't need to change this unless AresCentral moves
-    #arescentral_url: "http://arescentral.aresmush.com"
-    arescentral_url: "http://localhost:9292"
+    arescentral_url: "http://arescentral.aresmush.com"
+    #arescentral_url: "http://localhost:9292"

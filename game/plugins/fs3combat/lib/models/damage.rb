@@ -19,7 +19,7 @@ module AresMUSH
     end
   
     def is_treatable?
-      return true if self.last_treated.nil?
+      return true if !self.last_treated
       time_to_go = 86400 - (Time.now - self.last_treated)
       return true if time_to_go < 0
       return false

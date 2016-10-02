@@ -22,25 +22,25 @@ module AresMUSH
       describe :get_desc do
         before do
           @renderer = double
-          @client = double
+          @enactor = double
         end
         
         it "should render a room" do
           model = Room.new
-          RoomTemplate.should_receive(:new).with(model, @client) { @renderer }
-          Describe.get_desc_template(model, @client).should eq @renderer
+          RoomTemplate.should_receive(:new).with(model, @enactor) { @renderer }
+          Describe.get_desc_template(model, @enactor).should eq @renderer
         end
 
         it "should render a character" do
           model = Character.new
           CharacterTemplate.should_receive(:new).with(model) { @renderer }
-          Describe.get_desc_template(model, @client).should eq @renderer
+          Describe.get_desc_template(model, @enactor).should eq @renderer
         end
         
         it "should render an exit" do
           model = Exit.new
           ExitTemplate.should_receive(:new).with(model) { @renderer }
-          Describe.get_desc_template(model, @client).should eq @renderer
+          Describe.get_desc_template(model, @enactor).should eq @renderer
         end
       end
     end

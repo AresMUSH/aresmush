@@ -2,9 +2,9 @@ module AresMUSH
   module FS3Combat
     class ReloadAction < CombatAction
       
-      def self.crack_helper(client, cmd)
+      def self.crack_helper(enactor, cmd)
         {
-          :name => cmd.args ? cmd.args : client.name,
+          :name => cmd.args ? cmd.args : enactor.name,
           :action_args => nil
         }
       end

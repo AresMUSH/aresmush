@@ -8,11 +8,11 @@ module AresMUSH
       attr_accessor :name
 
       def crack!
-        self.name = cmd.args ? titleize_input(cmd.args) : client.char.name
+        self.name = cmd.args ? titleize_input(cmd.args) : enactor.name
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           template = DamageTemplate.new(model)
           client.emit template.render
         end

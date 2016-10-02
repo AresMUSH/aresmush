@@ -7,21 +7,22 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :title, :description
-      
-      def initialize
-        self.required_args = ['title', 'description']
-        self.help_topic = 'requests'
-        super
-      end
-      
+
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.title = trim_input(cmd.args.arg1)
         self.description = cmd.args.arg2
       end
       
+      def required_args
+        {
+          args: [ self.title, self.description ],
+          help: 'requests'
+        }
+      end
+      
       def handle
-        result = Jobs.create_job("REQ", self.title, self.description, client.char)
+        result = Jobs.create_job("REQ", self.title, self.description, enactor)
         if (result[:error].nil?)
           client.emit_success t('jobs.request_submitted')
         else

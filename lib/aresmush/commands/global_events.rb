@@ -16,18 +16,29 @@ module AresMUSH
   end  
   
   class CharDisconnectedEvent
-    attr_accessor :client
+    attr_accessor :client, :char
     
-    def initialize(client)
+    def initialize(client, char)
       self.client = client
+      self.char = char
     end
   end
 
   class CharConnectedEvent
-    attr_accessor :client
+    attr_accessor :client, :char
     
-    def initialize(client)
+    def initialize(client, char)
       self.client = client
+      self.char = char
+    end
+  end
+  
+  class CharCreatedEvent
+    attr_accessor :client, :char
+    
+    def initialize(client, char)
+      self.client = client
+      self.char = char
     end
   end
   

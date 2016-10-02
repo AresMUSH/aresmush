@@ -8,12 +8,6 @@ module AresMUSH
       attr_accessor :num
       attr_accessor :body
       
-      def initialize
-        self.required_args = ['body']
-        self.help_topic = 'mail'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -23,17 +17,24 @@ module AresMUSH
           self.body = cmd.args
         end
       end
+
+      def required_args
+        {
+          args: [ self.body ],
+          help: 'mail'
+        }
+      end
       
       def handle
         last_mail = client.program[:last_mail]
-        if (self.num.nil?)
+        if (!self.num)
           if (last_mail)
             reply_to last_mail
           else
             client.emit_failure t('dispatcher.invalid_syntax', :command => 'mail')
           end
         else
-          Mail.with_a_delivery(client, self.num) do |delivery|
+          Mail.with_a_delivery(client, enactor, self.num) do |delivery|
             reply_to delivery
           end
         end
@@ -44,7 +45,7 @@ module AresMUSH
         subject = t('mail.reply_subject', :subject => msg.subject)
         recipients = get_recipients(msg)
         
-        if (Mail.send_mail(recipients, subject, body, client))
+        if (Mail.send_mail(recipients, subject, body, client, enactor))
           client.emit_ooc t('mail.message_sent')
         end
       end
@@ -53,7 +54,7 @@ module AresMUSH
         recipients = [msg.author.name]
         if (cmd.switch_is?("replyall"))
           to_list = msg.to_list.split(" ")
-          to_list.delete client.char.name
+          to_list.delete enactor.name
           recipients.concat to_list
         end
         recipients

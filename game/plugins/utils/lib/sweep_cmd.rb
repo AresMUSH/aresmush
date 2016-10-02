@@ -8,11 +8,11 @@ module AresMUSH
       attr_accessor :message
       
       def handle
-        outside = client.room.way_out
-        footer = outside.nil? ? nil : "%l2%R" + t('sweep.kick_allowed')
+        outside = enactor_room.way_out
+        footer = !outside ? nil : "%l2%R" + t('sweep.kick_allowed')
         
         client.emit footer
-        snoopers = client.room.characters.select { |c| !c.is_online? }
+        snoopers = enactor_room.characters.select { |c| !c.is_online? }
         client.emit BorderedDisplay.list snoopers.map { |c| c.name },
           t('sweep.listening_chars'),
           footer

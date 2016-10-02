@@ -8,21 +8,22 @@ module AresMUSH
       
       attr_accessor :name, :team
       
-      def initialize
-        self.required_args = ['name', 'team']
-        self.help_topic = 'combat'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           self.name = titleize_input(cmd.args.arg1)
           self.team = trim_input(cmd.args.arg2).to_i
         else
-          self.name = client.char.name
+          self.name = enactor.name
           self.team = trim_input(cmd.args).to_i
         end
+      end
+
+      def required_args
+        {
+          args: [ self.name, self.team ],
+          help: 'combat'
+        }
       end
 
       def check_team
@@ -31,11 +32,11 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client) do |combat, combatant|        
+        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
           combatant.team = team
           combatant.save
           message = t('fs3combat.team_set', :name => self.name, :team => self.team)
-          combat.emit message, FS3Combat.npcmaster_text(name, client.char)
+          combat.emit message, FS3Combat.npcmaster_text(name, enactor)
         end
       end
     end

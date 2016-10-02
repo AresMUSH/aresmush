@@ -13,7 +13,7 @@ module AresMUSH
     
     def self.is_idle?(client)
       minutes_before_idle = Global.read_config("status", "afk", "minutes_before_idle")
-      return false if minutes_before_idle.nil?
+      return false if !minutes_before_idle
       return client.idle_secs > minutes_before_idle * 60
     end
   end

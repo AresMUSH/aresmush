@@ -3,9 +3,10 @@ module AresMUSH
     def self.update_game
       Global.logger.info "Updating game registration."
       params = AresCentral.build_game_params
+      
       connector = AresCentral::AresConnector.new
       response = connector.update_game(params)
-    
+          
       if (response.is_success?)
         Global.logger.info "Game registration updated."
       else
@@ -43,7 +44,7 @@ module AresMUSH
         website: game_config["website"],
         public_game: game_config["public_game"]
       }
-      
+            
       params
     end   
   end

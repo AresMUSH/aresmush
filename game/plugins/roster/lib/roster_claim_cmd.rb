@@ -8,19 +8,20 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'roster'
-        super
-      end
-      
       def crack!
         self.name = titleize_input(cmd.args)
+      end
+       
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'roster'
+        }
       end
       
       def handle
         terms_of_service = Login::Api.terms_of_service
-        if (!terms_of_service.nil? && client.program[:tos_accepted].nil?)
+        if (terms_of_service && client.program[:tos_accepted].nil?)
           client.program[:create_cmd] = cmd
           client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
           return
@@ -28,7 +29,7 @@ module AresMUSH
         
         client.program.delete(:create_cmd)
         
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (!model.roster_registry)
             client.emit_failure t('roster.not_on_roster', :name => model.name)
             return

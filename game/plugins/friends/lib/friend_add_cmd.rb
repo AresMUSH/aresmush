@@ -6,29 +6,30 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :name
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'friends'
-        super
-      end
 
       def crack!
         self.name = titleize_input(cmd.args)
       end
       
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'friends'
+        }
+      end
+      
       def handle
-        result = ClassTargetFinder.find(self.name, Character, nil)
+        result = ClassTargetFinder.find(self.name, Character, enactor)
         if (!result.found?)
           client.emit_failure result.error
           return
         end
         friend = result.target
 
-        if (client.char.friends.include?(friend))
+        if (enactor.friends.include?(friend))
           return t('friends.already_friend', :name => self.name)
         end
-        friendship = Friendship.new(:character => client.char, :friend => friend)
+        friendship = Friendship.new(:character => enactor, :friend => friend)
         friendship.save
         client.emit_success t('friends.friend_added', :name => self.name)
       end

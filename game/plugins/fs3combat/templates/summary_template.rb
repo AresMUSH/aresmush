@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def slack(c)
-        acted = c.action.nil? ? '%xh%xr**%xn' : '%xg++%xn'
+        acted = !c.action ? '%xh%xr**%xn' : '%xg++%xn'
         posed = c.is_npc? ? '%xg--%xn' : (c.posed ? '%xg++%xn' : '%xh%xr**%xn')
         "#{acted} / #{posed}   "
       end

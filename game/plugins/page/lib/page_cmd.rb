@@ -8,24 +8,24 @@ module AresMUSH
       attr_accessor :names, :message
       
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.names = []
         elsif (cmd.args.start_with?("="))
-          self.names = client.char.last_paged
+          self.names = enactor.last_paged
           self.message = cmd.args.after("=")
         elsif (cmd.args.include?("="))
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
           
           # Catch the common mistake of last-paging someone a link.
           if (cmd.args.arg1 && cmd.args.arg1.include?("http://"))
-            self.names = client.char.last_paged
+            self.names = enactor.last_paged
             self.message = "#{cmd.args.arg1}=#{cmd.args.arg2}"
           else
-            self.names = cmd.args.arg1.nil? ? [] : cmd.args.arg1.split(" ")
+            self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
             self.message = cmd.args.arg2
           end
         else
-          self.names = client.char.last_paged
+          self.names = enactor.last_paged
           self.message = cmd.args
         end
       end
@@ -36,45 +36,44 @@ module AresMUSH
       end
       
       def handle
-        OnlineCharFinder.with_online_chars(self.names, client) do |clients|
-          name = client.char.name
+        OnlineCharFinder.with_online_chars(self.names, client) do |results|
+          name = enactor.name
           message = PoseFormatter.format(name, self.message)
-          recipients = clients.map { |r| r.char.name_and_alias }.join(", ")
+          recipients = results.map { |result| result.char.name_and_alias }.join(", ")
         
-          client.emit t('page.to_sender', :autospace => Pose::Api.autospace(client.char), :color => page_color, :recipients => recipients, :message => message)
-          clients.each do |c|
-            page_recipient(c, recipients, message)
+          client.emit t('page.to_sender', :autospace => Pose::Api.autospace(enactor), :color => page_color, :recipients => recipients, :message => message)
+          results.each do |r|
+            page_recipient(r.client, r.char, recipients, message)
           end
         
-          client.char.last_paged = self.names
-          client.char.save
+          enactor.last_paged = self.names
+          enactor.save
         end
       end
       
-      def page_recipient(other_client, recipients, message)
-        if (other_client.char.do_not_disturb)
-          client.emit_ooc t('page.recipient_do_not_disturb', :name => other_client.name)
-          Mail::Api.send_mail([other_client.name], 
-              t('page.missed_page_subject', :name => client.name), 
-              t('page.missed_page_body', :name => client.name, :message => message), 
-              client)
+      def page_recipient(other_client, other_char, recipients, message)
+        if (other_char.do_not_disturb)
+          client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
+          Mail::Api.send_mail([other_char.name], 
+              t('page.missed_page_subject', :name => enactor_name), 
+              t('page.missed_page_body', :name => enactor_name, :message => message), 
+              client, enactor)
         else          
-          other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_client.char), :color => page_color, :recipients => recipients, :message => message)
-          send_afk_message(other_client)
+          other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_char), :color => page_color, :recipients => recipients, :message => message)
+          send_afk_message(other_client, other_char)
         end
       end
       
-      def send_afk_message(other_client)
-        char = other_client.char
-        if (char.is_afk)
+      def send_afk_message(other_client, other_char)
+        if (other_char.is_afk)
           afk_message = ""
-          if (Status::Api.afk_message(char))
-            afk_message = "(#{Status::Api.afk_message(char)})"
+          if (Status::Api.afk_message(other_char))
+            afk_message = "(#{Status::Api.afk_message(other_char)})"
           end
-          client.emit_ooc t('page.recipient_is_afk', :name => char.name, :message => afk_message)
+          client.emit_ooc t('page.recipient_is_afk', :name => other_char.name, :message => afk_message)
         elsif (Status::Api.is_idle?(other_client))
           time = TimeFormatter.format(other_client.idle_secs)
-          client.emit_ooc t('page.recipient_is_idle', :name => char.name, :time => time)
+          client.emit_ooc t('page.recipient_is_idle', :name => other_char.name, :time => time)
         end
       end
       

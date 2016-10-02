@@ -7,24 +7,25 @@ module AresMUSH
       include CommandRequiresArgs
       
       attr_accessor :name
-      
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'last'
-        super
-      end
-      
+
       def crack!
         self.name = trim_input(cmd.args)
       end
 
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'last'
+        }
+      end
+      
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |target|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |target|
           other_client = target.client
-          if (!other_client.nil?)
+          if (other_client)
             client.emit_ooc t('login.currently_online', :name => target.name)
           else
-            last = OOCTime::Api.local_long_timestr(client, Login::Api.last_on(target))
+            last = OOCTime::Api.local_long_timestr(enactor, Login::Api.last_on(target))
             client.emit_ooc t('login.last_online', :name => target.name, :time => last)
           end
         end

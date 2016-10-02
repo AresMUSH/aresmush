@@ -8,10 +8,15 @@ module AresMUSH
       
       attr_accessor :reason
       
-      def initialize
-        self.required_args = ['reason']
-        self.help_topic = 'combat'
-        super
+      def crack!
+        self.reason = titleize_input(cmd.args)
+      end
+
+      def required_args
+        {
+          args: [ self.reason ],
+          help: 'combat'
+        }
       end
       
       def check_reason
@@ -21,24 +26,20 @@ module AresMUSH
       end
       
       def check_points
-        return t('fs3combat.no_luck') if FS3Skills::Api.luck(client.char) <= 1
+        return t('fs3combat.no_luck') if FS3Skills::Api.luck(enactor) <= 1
         return nil
       end
       
-      def crack!
-        self.reason = titleize_input(cmd.args)
-      end
-
       def handle
-        FS3Combat.with_a_combatant(client.name, client) do |combat, combatant|
+        FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
           
-          FS3Skills::Api.spend_luck(client.char, 1)
-          client.char.save
+          FS3Skills::Api.spend_luck(enactor, 1)
+          enactor.save
           
           combatant.luck = self.reason
           combatant.save
           
-          combat.emit t('fs3combat.spending_luck', :name => client.name, :reason => self.reason)
+          combat.emit t('fs3combat.spending_luck', :name => enactor_name, :reason => self.reason)
         end
       end
     end

@@ -41,7 +41,7 @@ class Hash
   end
   
   def has_insensitive_key?(key)
-    return false if key.nil?
+    return false if !key
     !get_insensitive_key(key).nil?
   end
   
@@ -50,7 +50,7 @@ class Hash
   end
   
   def get_insensitive_value(key)
-    return false if key.nil?
+    return false if !key
     self[get_insensitive_key(key)]
   end
 end

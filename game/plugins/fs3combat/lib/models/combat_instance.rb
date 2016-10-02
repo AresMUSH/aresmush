@@ -80,7 +80,7 @@ module AresMUSH
         default_weapon = FS3Combat.vehicle_stat(vehicle.vehicle_type, "weapons").first
         FS3Combat.set_weapon(nil, combatant, default_weapon)
         
-        if (!old_pilot.nil? && old_pilot != combatant)
+        if (old_pilot && old_pilot != combatant)
           vehicle.passengers << old_pilot
         end
         emit t('fs3combat.new_pilot', :name => combatant.name, :vehicle => vehicle.name)
@@ -131,12 +131,12 @@ module AresMUSH
     
     def ai_action(client, combatant)
       if (combatant.ammo == 0)
-        FS3Combat.set_action(client, self, combatant, FS3Combat::ReloadAction, "")
+        FS3Combat.set_action(client, nil, self, combatant, FS3Combat::ReloadAction, "")
         # TODO - Use suppress attack for suppress only weapon
       else
         target = active_combatants.select { |t| t.team != combatant.team }.shuffle.first
         if (target)
-          FS3Combat.set_action(client, self, combatant, FS3Combat::AttackAction, target.name)
+          FS3Combat.set_action(client, nil, self, combatant, FS3Combat::AttackAction, target.name)
         end
       end   
     end

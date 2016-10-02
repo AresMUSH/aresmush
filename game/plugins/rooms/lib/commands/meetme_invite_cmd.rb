@@ -6,19 +6,20 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :names
-      
-      def initialize
-        self.required_args = ['names']
-        self.help_topic = 'meetme'
-        super
-      end
-      
+
       def crack!
-        if (cmd.args.nil?)
+        if (!cmd.args)
           self.names = []
         else
           self.names = cmd.args.split(" ")
         end
+      end
+      
+      def required_args
+        {
+          args: [ self.names ],
+          help: 'meetme'
+        }
       end
       
       def check_target
@@ -27,36 +28,30 @@ module AresMUSH
       end
       
       def check_approved
-        return nil if Rooms.can_teleport?(client.char)
-        return t('rooms.cant_meetme_if_newbie') if !client.char.is_approved
+        return nil if Rooms.can_teleport?(enactor)
+        return t('rooms.cant_meetme_if_newbie') if !enactor.is_approved
         return nil
       end
       
       def handle
-        to_clients = []
-        self.names.each do |name|
-          result = OnlineCharFinder.find(name, client)
-          if (!result.found?)
-            client.emit_failure(result.error)
-            return
+        success_names = []
+        OnlineCharFinder.with_online_chars(self.names, client) do |results|
+          results.each do |r|
+            invitee = r.char
+            if (invitee == enactor)
+              client.emit_failure t('rooms.cant_meetme_self')
+            elsif (!invitee.is_approved)
+              client.emit_failure t('rooms.cant_meetme_newbie', :name => invitee.name)
+            else
+              r.client.emit_ooc t('rooms.receive_meetme_invite', :name => enactor_name, :room => enactor_room.name)
+              r.client.program[:meetme] = enactor
+              success_names << invitee.name
+            end
           end
-          target = result.target
-          if (target == client)
-            client.emit_failure t('rooms.cant_meetme_self')
-            return
-          end
-          if (!target.char.is_approved && !Rooms.can_teleport?(target.char))
-            client.emit_failure t('rooms.cant_meetme_newbie', :name => target.name)
-            return
-          end
-          to_clients << target
         end
-        
-        to_clients.each do |c|
-          c.emit_ooc t('rooms.receive_meetme_invite', :name => client.name, :room => client.room.name)          
-          c.program[:meetme] = client
+        if (!success_names.empty?)
+          client.emit_success t('rooms.send_meetme_invite', :name => success_names.join(", "))
         end
-        client.emit_success t('rooms.send_meetme_invite', :name => self.names.join(", "))
       end
     end
   end

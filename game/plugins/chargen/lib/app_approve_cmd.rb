@@ -7,34 +7,35 @@ module AresMUSH
       
       attr_accessor :name
       
-      def initialize
-        self.required_args = ['name']
-        self.help_topic = 'app'
-        super
-      end
-      
       def crack!
         self.name = trim_input(cmd.args)
       end
       
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'app'
+        }
+      end
+      
       def check_permission
-        return t('dispatcher.not_allowed') if !Chargen.can_approve?(client.char)
+        return t('dispatcher.not_allowed') if !Chargen.can_approve?(enactor)
         return nil
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (model.is_approved)
             client.emit_failure t('chargen.already_approved', :name => model.name) 
             return
           end
 
-          if (model.approval_job.nil?)
+          if (!model.approval_job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
             return
           end
           
-          Jobs::Api.close_job(client, model.approval_job, Global.read_config("chargen", "messages", "approval"))
+          Jobs::Api.close_job(enactor, model.approval_job, Global.read_config("chargen", "messages", "approval"))
           
           model.is_approved = true
           model.approval_job = nil

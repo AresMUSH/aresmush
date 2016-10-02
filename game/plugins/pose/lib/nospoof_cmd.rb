@@ -6,15 +6,16 @@ module AresMUSH
       include CommandRequiresArgs
 
       attr_accessor :option
-      
-      def initialize
-        self.required_args = ['option']
-        self.help_topic = 'nospoof'
-        super
-      end
-      
+
       def crack!
         self.option = OnOffOption.new(cmd.args)
+      end
+      
+      def required_args
+        {
+          args: [ self.option ],
+          help: 'nospoof'
+        }
       end
       
       def check_status
@@ -22,8 +23,8 @@ module AresMUSH
       end
       
       def handle
-        client.char.nospoof = self.option.is_on?
-        client.char.save
+        enactor.nospoof = self.option.is_on?
+        enactor.save
         client.emit_success t('pose.nospoof_set', :status => self.option)
       end
     end

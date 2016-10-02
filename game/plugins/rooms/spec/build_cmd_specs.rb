@@ -10,8 +10,6 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing        
       end
       
-      it_behaves_like "a plugin that requires login"      
-      
       describe :crack do
         it "should crack a name by itself" do
           init_handler(BuildCmd, "build Bob's Room")
@@ -42,7 +40,7 @@ module AresMUSH
         before do
           @room = double
           @client_room = double
-          client.stub(:room) { @client_room }
+          enactor.stub(:room) { @client_room }
           Room.stub(:create)
           Rooms.stub(:move_to)
           client.stub(:emit_success)
@@ -62,7 +60,7 @@ module AresMUSH
           end
         
           it "should move the client to the new room" do
-            Rooms.should_receive(:move_to).with(client, char, @room)
+            Rooms.should_receive(:move_to).with(client, enactor, @room)
             handler.handle
           end
         end
