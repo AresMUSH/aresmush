@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def played_by
-        Actors::Api.get_actor(@char)
+        @char.actor
       end
       
       def last_on

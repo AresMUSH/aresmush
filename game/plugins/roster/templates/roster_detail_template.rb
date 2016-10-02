@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def actor
-        Actors::Api.get_actor(@char)
+        @char.actor
       end
       
       def website

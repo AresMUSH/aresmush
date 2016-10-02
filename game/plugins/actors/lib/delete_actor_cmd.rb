@@ -29,7 +29,7 @@ module AresMUSH
         if (actor.empty?)
           client.emit_failure t('actors.actor_not_found')
         else
-          actor[0].destroy
+          actor[0].delete
           client.emit_success t('actors.actor_deleted')
         end
       end

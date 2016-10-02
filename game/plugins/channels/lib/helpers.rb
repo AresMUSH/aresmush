@@ -74,7 +74,7 @@ module AresMUSH
     def self.channel_for_alias(char, channel_alias)
       a2 = CommandCracker.strip_prefix(channel_alias)
       
-      char.channel_options.keys.each do |k|
+      char.channel_options.each do |k|
         option_aliases = char.channel_options[k]["alias"]
         return nil if !option_aliases
         
