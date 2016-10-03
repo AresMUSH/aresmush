@@ -6,35 +6,38 @@ module Ohm
     end
 
     module ClassMethods
-        
+      @@before_create_callbacks = {}
+      @@before_save_callbacks = {}
+      @@before_delete_callbacks = {}
+      
       def register_data_members
-        @@before_create_callbacks = []
-        @@before_save_callbacks = []
-        @@before_delete_callbacks = []
+        @@before_create_callbacks[self] = []
+        @@before_save_callbacks[self] = []
+        @@before_delete_callbacks[self] = []
       end
 
       def before_create(sym)
-        @@before_create_callbacks << sym
+        @@before_create_callbacks[self] << sym
       end    
     
       def before_save(sym)
-        @@before_save_callbacks << sym
+        @@before_save_callbacks[self] << sym
       end
     
       def before_delete(sym)
-        @@before_delete_callbacks << sym
+        @@before_delete_callbacks[self] << sym
       end
     
       def before_save_callbacks
-        @@before_save_callbacks
+        @@before_save_callbacks[self]
       end
     
       def before_create_callbacks
-        @@before_create_callbacks
+        @@before_create_callbacks[self]
       end
     
       def before_delete_callbacks
-        @@before_delete_callbacks
+        @@before_delete_callbacks[self]
       end
     end
   

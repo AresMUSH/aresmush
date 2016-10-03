@@ -26,7 +26,7 @@ module AresMUSH
 
     before_create :set_channel_defaults
     
-    def set_timezone
+    def set_channel_defaults
       self.color = "%h"
       self.announce = true
       self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]

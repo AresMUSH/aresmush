@@ -1,12 +1,16 @@
 module AresMUSH
   class Character
-    embeds_many :mail, :class_name => "AresMUSH::MailMessage", order: :created_at.asc
+    collection :mail, "AresMUSH::MailMessage"
+    attribute :copy_sent_mail, DataType::Boolean
+    attribute :mail_filter
+
+    reference :mail_composition, "AresMUSH::MailComposition"
     
-    field :mail_compose_subject, :type => String
-    field :mail_compose_to, :type => Array
-    field :mail_compose_body, :type => String
-    field :copy_sent_mail, :type => Boolean, :default => false
-    field :mail_filter, :type => String, :default => "Inbox"
+    before_create :set_default_mail_attributes
+    
+    def set_default_mail_attributes
+      self.mail_filter = "Inbox"
+    end
     
     def has_unread_mail?
       mail.any? { |m| !m.read }
@@ -21,18 +25,29 @@ module AresMUSH
     end
   end    
     
-  class MailMessage
-    include SupportingObjectModel
+  class MailComposition < Ohm::Model
+    include ObjectModel
+    
+    attribute :subject
+    attribute :body
+    
+    reference :character, "AresMUSH::Character"
+    
+    set :to_list, "AresMUSH::Chracter"
+  end
+  
+    
+  class MailMessage < Ohm::Model
+    include ObjectModel
       
-    embedded_in :character, :inverse_of => :mail
-    belongs_to :author, :class_name => "AresMUSH::Character", :inverse_of => nil
+    reference :character, "AresMUSH::Character"
+    reference :author, "AresMUSH::Character"
 
-    field :subject, :type => String
-    field :body, :type => String
-    field :to_list, :type => String
+    attribute :subject
+    attribute :body
+    attribute :to_list
     
-    
-    field :read, :type => Boolean  
-    field :tags, :type => Array, :default => []
+    attribute :read, DataType::Boolean
+    set :tags, "AresMUSH::SimpleData"
   end
 end

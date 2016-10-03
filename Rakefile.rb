@@ -19,14 +19,8 @@ task :configure do
 end
 
 task :testinit do
-  load "game/plugins/bbs/bbs.rb"
-  load "game/plugins/describe/describe.rb"
-  load "game/plugins/channels/channels.rb"
-  load "game/plugins/pose/pose.rb"
-  load "game/plugins/rooms/rooms.rb"
-  load "game/plugins/login/login.rb"
-
   bootstrapper = AresMUSH::Bootstrapper.new
+  AresMUSH::Global.plugin_manager.load_all
   AresMUSH::Character.all.each do |c|
     puts c.inspect
   end
@@ -39,14 +33,8 @@ task :testinit do
 end
 
 task :init do    
-  bootstrapper = AresMUSH::Bootstrapper.new
-  
-  load "game/plugins/bbs/bbs.rb"
-  load "game/plugins/pose/pose.rb"
-  load "game/plugins/describe/describe.rb"
-  load "game/plugins/channels/channels.rb"
-  load "game/plugins/rooms/rooms.rb"
-  load "game/plugins/login/login.rb"
+  bootstrapper = AresMUSH::Bootstrapper.new  
+  AresMUSH::Global.plugin_manager.load_all
   AresMUSH::Install.init_db
 end
 

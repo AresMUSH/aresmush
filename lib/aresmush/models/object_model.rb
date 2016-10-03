@@ -9,7 +9,7 @@ module ObjectModel
     def register_data_members
       send :include, Ohm::DataTypes
       send :include, Ohm::Timestamps
-      send :include, Ohm::Callbcaks
+      send :include, Ohm::Callbacks
     end
   end
 end

@@ -24,7 +24,7 @@ module AresMUSH
         "idle", 
         "jobs", 
         "login", 
-        #"mail", 
+        "mail", 
         "manage", 
         "maps", 
         "notices", 
