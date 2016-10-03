@@ -23,8 +23,12 @@ module AresMUSH
     
     set :roles, "AresMUSH::Role"
     set :characters, "AresMUSH::Character"
-        
-    def set_default_alias
+
+    before_create :set_channel_defaults
+    
+    def set_timezone
+      self.color = "%h"
+      self.announce = true
       self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
     end
     

@@ -7,6 +7,12 @@ module AresMUSH
     attribute :is_on_duty, DataType::Boolean
     attribute :is_playerbit, DataType::Boolean    
     
+    before_create :set_default_status_attributes
+    
+    def set_default_status_attributes
+      self.is_on_duty = true
+    end
+    
     def is_afk?
       is_afk
     end

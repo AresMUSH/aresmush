@@ -11,6 +11,8 @@ module AresMUSH
     reference :source, "AresMUSH::Room"
     reference :dest, "AresMUSH::Room"
     
+    before_save :save_upcase
+    
     # -----------------------------------
     # CLASS METHODS
     # -----------------------------------
@@ -24,9 +26,8 @@ module AresMUSH
     # INSTANCE METHODS
     # -----------------------------------
     
-    def save
+    def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
-      super
     end
     
   end

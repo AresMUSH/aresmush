@@ -10,6 +10,12 @@ module AresMUSH
     attribute :birthdate, DataType::Time
     attribute :callsign
     
+    before_create :set_default_demographics
+    
+    def set_default_demographics
+      self.gender = "Other"
+    end
+    
     def age
       Demographics.calculate_age(self.birthdate)
     end

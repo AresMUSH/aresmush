@@ -19,6 +19,8 @@ module AresMUSH
     
     set :roles, "AresMUSH::Role"
     
+    before_save :save_upcase
+    
     # -----------------------------------
     # CLASS METHODS
     # -----------------------------------
@@ -64,11 +66,10 @@ module AresMUSH
       self == Game.master.master_admin
     end
     
-    def save
+    def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
       self.alias_upcase = self.alias ? self.alias.upcase : nil
       self.handle_upcase = self.handle ? self.handle.upcase : nil
-      super
     end
     
     def name_and_alias

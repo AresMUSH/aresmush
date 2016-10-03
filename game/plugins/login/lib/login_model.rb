@@ -8,6 +8,12 @@ module AresMUSH
     attribute :password_hash
     attribute :last_on, DataType::Time
 
+    before_create :set_default_login_attributes
+    
+    def set_default_login_attributes
+      self.watch = "all"
+    end
+    
     def compare_password(entered_password)
       hash = BCrypt::Password.new(self.password_hash)
       hash == entered_password
