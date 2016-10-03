@@ -26,7 +26,7 @@ module AresMUSH
     
       # Max number of characters ever online
       def online_record
-        t('who.online_record', :count => Game.online_record)
+        t('who.online_record', :count => Game.master.online_record)
       end
     
       def mush_name
