@@ -10,11 +10,10 @@
 <% end %>
 <%= line 2 %>
 %xh<%= t('channels.channel_aliases') %>%xn
+
 <% channels.each do |c| %>
 <% if is_on_channel?(c) %>
-<% channel_aliases(c).each do |a| %>
-     <%= c.color %><%= a %> <message>%xn talks on <%= channel_name(c) %>
-<% end %>
+<%= c.color %><%= channel_alias(c) %>%xn
 <% end %>
 <% end %>
 

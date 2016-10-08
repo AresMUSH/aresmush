@@ -42,9 +42,13 @@ module AresMUSH
         Profile.format_custom_profile(@char)
       end
       
+      def handle_name
+        @char.handle.name
+      end
+      
       def handle_profile
         arescentral = Global.read_config("arescentral", "arescentral_url")
-        "#{arescentral}/handle/#{@char.handle}"
+        "#{arescentral}/handle/#{@char.handle.name}"
       end
     end
   end

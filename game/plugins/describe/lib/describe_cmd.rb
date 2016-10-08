@@ -6,17 +6,17 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandRequiresArgs
       
-      attr_accessor :target, :desc
+      attr_accessor :target, :description
 
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
-        self.desc = cmd.args.arg2
+        self.description = cmd.args.arg2
       end
       
       def required_args
         {
-          args: [ self.target, self.desc ],
+          args: [ self.target, self.description ],
           help: 'describe'
         }
       end
@@ -29,16 +29,17 @@ module AresMUSH
             return
           end
           
-          if (cmd.root_is?("shortdesc"))
-            model.shortdesc = desc
-            model.save
+          type = cmd.root_is?("shortdesc") ? :short : :current
+          desc = model.descs_of_type(type).first
+        
+          if (!desc)
+            desc = model.create_desc(type,  self.description)
           else
-            Describe.set_desc(model, desc)
+            desc.update(description: self.description)
           end
           client.emit_success(t('describe.desc_set', :name => model.name))
         end
       end
-        
     end
   end
 end

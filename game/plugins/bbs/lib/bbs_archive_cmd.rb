@@ -27,14 +27,10 @@ module AresMUSH
             return
           end
           
-          board.bbs_posts.each_with_index do |post, i|
-            Global.dispatcher.queue_timer(i, "BBS Archive", client) do
-              Global.logger.debug "Logging bbpost #{post.id} from #{board.name}."
+          Global.logger.debug "Logging posts from #{board.name}."
 
-              template = ArchiveTemplate.new(post, enactor)
-              client.emit template.render
-            end
-          end
+          template = ArchiveTemplate.new(board.bbs_posts, enactor)
+          client.emit template.render
         end
       end      
     end

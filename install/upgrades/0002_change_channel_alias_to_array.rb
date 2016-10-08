@@ -1,5 +1,6 @@
 module AresMUSH
   bootstrapper = AresMUSH::Bootstrapper.new
+  AresMUSH::Global.plugin_manager.load_all
   
   puts "======================================================================="
   puts "Make channel aliases into an array."

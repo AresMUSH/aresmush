@@ -1,16 +1,21 @@
 module AresMUSH
   class Character
-    set :groups, "AresMUSH::Group"
+    collection :group_assignments, "AresMUSH::GroupAssignment"
+    
+    def group(name)
+      GroupAssignment.find(character_id: self.id).combine(group: name).first
+    end
   end
   
-  class Group < Ohm::Model
+  class GroupAssignment < Ohm::Model
     include ObjectModel
     
-    attribute :name
-    attribute :group_type
-    attribute :description
+    reference :character, "AresMUSH::Character"
     
-    index :name
-    index :group_type
+    attribute :group
+    attribute :value
+    
+    index :group
+    index :value
   end
 end

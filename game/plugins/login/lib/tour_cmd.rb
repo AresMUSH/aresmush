@@ -17,7 +17,7 @@ module AresMUSH
         end
         
         guest = guest.first
-        client.char = guest
+        client.char_id = guest.id
         terms_of_service = Login.terms_of_service
         if (terms_of_service)
           client.emit "%l1%r#{terms_of_service}%r%l1"

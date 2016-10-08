@@ -6,8 +6,7 @@ module AresMUSH
         return FindResult.new(viewer.room, nil) if (name_or_id.downcase == "here") && search_klass == Room
       end
 
-      results = search_klass.find_any(name_or_id)      
-      
+      results = search_klass.find_any_by_name(name_or_id)      
       SingleResultSelector.select(results)
     end
     

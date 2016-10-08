@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def census
-        Groups.census_by { |c| Demographics::Api.gender(c) }
+        Groups.census_by { |c| Demographics::Api.demographic(c, :gender) }
       end      
     end
   end

@@ -2,6 +2,7 @@
 database.yml
 errors.txt
 save_pid.txt
+.DS_Store
 real_database.yml
 *.gem
 *.rbc

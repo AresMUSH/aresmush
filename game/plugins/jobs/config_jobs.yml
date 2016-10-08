@@ -39,3 +39,4 @@ jobs:
         "requests": "request"
         "job/comment": "job/discuss"
         "job/submit" : "job/create"
+        "job/reply" : "job/respond"

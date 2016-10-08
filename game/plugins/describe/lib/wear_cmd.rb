@@ -22,12 +22,19 @@ module AresMUSH
       end
       
       def handle
-        desc = ""
+        text = ""
         self.names.each do |n|
-          desc << enactor.outfit(n)
-          desc << " "
+          text << enactor.outfit(n).description
+          text << " "
         end
-        Describe.set_desc(enactor, desc)
+        
+        desc = enactor.current_desc
+      
+        if (!desc)
+          desc = enactor.create_desc(:current, desc)
+        end
+        desc.update(description: text)
+        
         client.emit_success t('describe.outfits_worn')
       end
     end

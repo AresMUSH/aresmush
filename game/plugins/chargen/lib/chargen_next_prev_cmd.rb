@@ -18,13 +18,15 @@ module AresMUSH
       end
       
       def check_can_advance
+        return t('chargen.not_started') if !Chargen.current_stage(enactor)
+        
         if (self.offset > 0)
           Chargen.can_advance?(enactor)
         end
       end
       
       def handle
-        current_page = enactor.chargen_stage
+        current_page = Chargen.current_stage(enactor)        
         total_pages = Chargen.stages.keys.count
         
         new_page = current_page + offset
@@ -39,8 +41,9 @@ module AresMUSH
           return
         end
         
-        enactor.chargen_stage = new_page
-        enactor.save
+        info = enactor.chargen_info
+        info.current_stage = new_page
+        info.save
         
         template = ChargenTemplate.new(enactor)
         client.emit template.render

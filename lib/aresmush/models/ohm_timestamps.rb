@@ -1,38 +1,30 @@
 # With credit to: https://github.com/sinefunc/ohm-contrib
+
 module Ohm
-  # Provides created_at / updated_at timestamps.
-  #
-  # @example
-  #
-  #   class Post < Ohm::Model
-  #     include Ohm::Timestamping
-  #   end
-  #
-  #   post = Post.create
-  #   post.created_at.to_s == Time.now.utc.to_s
-  #   # => true
-  #
-  #   post = Post[post.id]
-  #   post.save
-  #   post.updated_at.to_s == Time.now.utc.to_s
-  #   # => true
   module Timestamps
     def self.included(base)
-      base.attribute :created_at
-      base.attribute :updated_at
+      base.send :extend, ClassMethods   
+      base.send :register_data_members
     end
 
-    def create
-      self.created_at ||= Time.now.utc.to_s
-
-      super
+    module ClassMethods
+        
+      def register_data_members
+        send :include, Ohm::DataTypes
+        attribute :created_at, Ohm::DataTypes::DataType::Time
+        attribute :updated_at, Ohm::DataTypes::DataType::Time
+        before_create :set_created_date
+        before_save :set_updated_date
+      end
+    end
+  
+    def set_created_date
+      self.created_at ||= Time.now.to_s
     end
 
-    protected
-    def write
-      self.updated_at = Time.now.utc.to_s
-
-      super
+    def set_updated_date
+      self.updated_at = Time.now.to_s
     end
+  
   end
 end

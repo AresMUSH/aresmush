@@ -12,15 +12,22 @@ module AresMUSH
       
       def handle
         room = enactor.room
+        scene_set = room.scene_set
         
         if (self.set)
-          room.sceneset = self.set
-          room.sceneset_time = Time.now
-          room.save
+          if (scene_set)
+            scene_set.set = self.set
+            scene_set.time = Time.now
+            scene_set.save
+          else
+            scene_set = SceneSet.create(room: room, set: self.set, time: Time.now)
+            room.update(scene_set: scene_set)
+          end
           client.emit_success t('describe.scene_set')
         else
-          room.sceneset = nil
-          room.save
+          if (scene_set)
+            scene_set.delete
+          end
           client.emit_success t('describe.scene_set_cleared')
         end
       end

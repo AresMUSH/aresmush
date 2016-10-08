@@ -5,12 +5,6 @@ module AresMUSH
       
       attr_accessor :assignee
       
-      def initialize(client, cmd, enactor)
-        self.required_args = ['number']
-        self.help_topic = 'jobs'
-        super
-      end
-      
       def crack!
         if (cmd.args =~ /\=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
@@ -20,6 +14,13 @@ module AresMUSH
           self.number = trim_input(cmd.args)
           self.assignee = enactor_name
         end
+      end
+      
+      def required_args
+        {
+          args: [ self.number ],
+          help: 'jobs'
+        }
       end
       
       def handle

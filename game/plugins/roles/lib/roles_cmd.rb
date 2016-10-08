@@ -10,11 +10,6 @@ module AresMUSH
         self.name = !cmd.args ? enactor_name : trim_input(cmd.args)
       end
 
-      def check_can_assign_role
-        return t('dispatcher.not_allowed') if !Roles.can_assign_role?(enactor)
-        return nil
-      end
-
       def handle        
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
           list = Roles.all_roles.map { |r| "#{char.has_role?(r) ? '(+)' : '(-)'} #{r}"}

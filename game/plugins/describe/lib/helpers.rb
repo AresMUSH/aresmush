@@ -1,12 +1,5 @@
 module AresMUSH
   module Describe
-    def self.set_desc(model, desc)  
-      Global.logger.debug("Setting desc: #{model.name} #{desc}")
-      
-      model.description = desc
-      model.save
-    end
-    
     def self.can_describe?(char, model)
       if (char == model)
         return true
@@ -32,12 +25,12 @@ module AresMUSH
     end
     
     def self.app_review(char)
-      error = !char.description ? t('chargen.not_set') : t('chargen.ok')
+      error = !char.current_desc ? t('chargen.not_set') : t('chargen.ok')
       Chargen::Api.format_review_status t('describe.description_review'), error
     end
     
     def self.rooms_with_scenes
-      Room.all.select { |r| !r.sceneset.empty? }
+      Room.all.select { |r| !!r.scene_set }
     end
     
   end

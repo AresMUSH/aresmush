@@ -35,7 +35,7 @@ module AresMUSH
       end
       
       def fullname
-        Demographics::Api.fullname(@char)
+        Demographics::Api.demographic(@char, :fullname)
       end
       
       def actor
@@ -43,7 +43,7 @@ module AresMUSH
       end
       
       def details
-        names = @char.details.keys
+        names = @char.details.map { |d| d.name }
         names.empty? ? nil : names.sort.join(", ")
       end
     end

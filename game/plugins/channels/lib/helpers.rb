@@ -3,21 +3,11 @@ module AresMUSH
     def self.can_manage_channels?(actor)
       return actor.has_any_role?(Global.read_config("channels", "roles", "can_manage_channels"))
     end
-
-    def self.set_channel_option(char, channel, option, value)
-      channel_options = char.channel_options[channel.name]
-      if (!channel_options)
-        char.channel_options[channel.name] = { option => value }
-      else
-        char.channel_options[channel.name][option] = value
-      end
-    end
     
-    def self.get_channel_option(char, channel, option)
-      channel_options = char.channel_options[channel.name]
-      !channel_options ? nil : channel_options[option]
+    def self.get_channel_options(char, channel)
+      char.channel_options.find(channel_id: channel.id).first
     end
- 
+
     def self.is_talk_cmd(enactor, cmd)
       return false if !enactor
       return false if !cmd.args    
@@ -44,15 +34,18 @@ module AresMUSH
     end
     
     def self.is_gagging?(char, channel)
-      Channels.get_channel_option(char, channel, "gagging")
+      options = Channels.get_channel_options(char, channel)
+      options.gagging
     end
     
     def self.set_gagging(char, channel, gag)
-      Channels.set_channel_option(char, channel, "gagging", gag)
+      options = Channels.get_channel_options(char, channel)
+      options.gagging = gag
+      options.save
     end
     
     def self.channel_who(channel)
-      chars = channel.characters.sort { |c1, c2| c1.name <=> c2.name }
+      chars = channel.characters.sort_by(:name_upcase, :order => "ALPHA")
       online_chars = []
       chars.each do |c|
         next if !c.is_online?
@@ -71,22 +64,16 @@ module AresMUSH
       channel.save
     end
     
-    def self.channel_for_alias(char, channel_alias)
-      a2 = CommandCracker.strip_prefix(channel_alias)
-      
-      char.channel_options.each do |k|
-        option_aliases = char.channel_options[k]["alias"]
-        return nil if !option_aliases
-        
-        option_aliases.each do |a1|
-          if (CommandCracker.strip_prefix(a1).downcase == a2.downcase)
-            return Channel.find_one(k)
-          end
+    def self.channel_for_alias(char, channel_alias)  
+      channel_alias = CommandCracker.strip_prefix(channel_alias).downcase    
+      char.channel_options.each do |o|
+        if (o.match_alias(channel_alias))
+          return o.channel
         end
       end
       
       Channel.all.each do |c|
-        if (c.name.downcase == a2)
+        if (c.name.downcase == channel_alias.downcase)
           return c
         end
       end
@@ -99,7 +86,7 @@ module AresMUSH
     end
     
     def self.with_an_enabled_channel(name, client, enactor, &block)
-      channel = Channel.find_one(name)
+      channel = Channel.find_one_by_name(name)
       
       if (!channel)
         channel = Channels.channel_for_alias(enactor, name)
@@ -119,7 +106,7 @@ module AresMUSH
     end
     
     def self.with_a_channel(name, client, &block)
-      channel = Channel.find_one(name)
+      channel = Channel.find_one_by_name(name)
       
       if (!channel)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 
@@ -139,13 +126,16 @@ module AresMUSH
         Channels.with_a_channel(name, client) do |c|
           if (!Channels.is_on_channel?(char, c))
             Channels.join_channel(name, client, char, nil)
+          else
+            options = Channels.get_channel_options(char, c)
+            client.emit_ooc options.alias_hint
           end
         end
       end
     end
     
     def self.set_channel_alias(client, char, channel, chan_alias, warn = true)
-      aliases = chan_alias.split(/[, ]/)
+      aliases = chan_alias.split(/[, ]/).map { |a| CommandCracker.strip_prefix(a).downcase }
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
         if (existing_channel && existing_channel != channel)
@@ -153,17 +143,16 @@ module AresMUSH
           return false
         end
         
-        trimmed_alias = CommandCracker.strip_prefix(a)
-        if (warn && (!trimmed_alias || trimmed_alias.length < 2))
+        if (warn && (!a || a.length < 2))
           client.emit_failure t('channels.short_alias_warning')
         end
       end
       
-      Channels.set_channel_option(char, channel, "alias", aliases)
+      options = Channels.get_channel_options(char, channel)
+      options.aliases = aliases
+      options.save
       
-      aliases.each do |a|
-        client.emit_success t('channels.channel_alias_set', :name => channel.name, :channel_alias => a)
-      end
+      client.emit_ooc options.alias_hint
       
       char.save
       return true
@@ -184,6 +173,11 @@ module AresMUSH
         
         if (!chan_alias)
           chan_alias = channel.default_alias.join(",")
+        end
+        
+        options = Channels.get_channel_options(char, channel)
+        if (!options)
+          ChannelOptions.create(character: char, channel: channel)
         end
             
         if (!Channels.set_channel_alias(client, char, channel, chan_alias, false))

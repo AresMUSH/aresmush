@@ -1,9 +1,11 @@
-
+<% posts.each do |post| %>
 
 + <%= post.subject %>	
-//<%= author %> -- <%= date %>//
+//<%= author(post) %> -- <%= date(post) %>//
 <%= post.message %>
 <% post.bbs_replies.each do |r| %>
+
 //<%= reply_title(r) %>//
 <%= r.message %>
+<% end %>
 <% end %>

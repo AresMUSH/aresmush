@@ -32,7 +32,8 @@ module AresMUSH
       
       # Available detail views.
       def details
-        @room.details.empty? ? nil : @room.details.sort_by(:name).map { |d| d.name }.join(", ")
+        @room.details.empty? ? nil : @room.details.sort_by(:name, :order => "ALPHA")
+        .map { |d| d.name }.join(", ")
       end
       
       def repose_on

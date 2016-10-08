@@ -104,6 +104,8 @@ module AresMUSH
          case cmd.switch
          when "comment"
            return RequestCommentCmd
+         when "all"
+           return ListRequestsCmd
          when nil
            if (!cmd.args)
              return ListRequestsCmd

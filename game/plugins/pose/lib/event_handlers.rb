@@ -8,7 +8,7 @@ module AresMUSH
         # Don't clear poses in rooms with active people.
         active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
 
-        rooms = Room.all.select { |r| !r.poses.empty? }
+        rooms = Room.all.select { |r| r.poses && !r.poses.empty? }
         rooms.each do |r|
           next if active_rooms.include?(r)
           

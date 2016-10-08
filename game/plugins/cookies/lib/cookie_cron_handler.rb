@@ -8,23 +8,28 @@ module AresMUSH
         cookies_per_luck = Global.read_config("cookies", "cookies_per_luck")
         
         awards = ""
-        cookie_recipients = Character.all.select { |c| c.cookies_received.any? }
-        cookie_recipients = cookie_recipients.sort_by { |c| c.cookies_received.count }.reverse
-        cookie_recipients.each_with_index do |c, i|
-          count = c.cookies_received.count
+        counts = {}
+        CookieAward.all.each do |c|
+          recipient = c.recipient
+          if (counts.has_key?(c.recipient))
+            counts[recipient] = counts[recipient] + 1
+          else
+            counts[recipient] = 1 
+          end
+          c.delete
+        end
+        
+        counts.each_with_index do |(char, count), i|
           index = i+1
-          awards << "#{index}. #{c.name.ljust(20)}#{count}\n"
-          c.cookie_count = c.cookie_count + count
+          awards << "#{index}. #{char.name.ljust(20)}#{count}\n"
+          char.cookie_count = char.cookie_count + count
+          char.save
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck
             FS3Skills::Api.add_luck(c)
           end
 
-          Global.logger.info "#{c.name} got #{count} cookies from #{c.cookies_received.map{|a| a.name}.join(",")}"
-
-          c.cookies_received = []          
-          c.save
         end
         
         return if awards.blank?

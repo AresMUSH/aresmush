@@ -11,11 +11,11 @@ module AresMUSH
       end
       
       def gender(char)
-        Demographics::Api.gender(char)
+        Demographics::Api.demographic(char, :gender)
       end
       
       def position(char)
-        char.groups["Position"]
+        char.group("Position")
       end
     end
   end

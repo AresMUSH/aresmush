@@ -10,21 +10,21 @@ module AresMUSH
       #def register_data_members
       #end
     
-      def find_any(name_or_id)
+      def find_any_by_name(name_or_id)
         return [] if !name_or_id
         result = self[name_or_id]
         if result
           return [result]
         end
-        find(name_upcase: name_or_id).to_a
+        find(name_upcase: name_or_id.upcase).to_a
       end
 
-      def find_one(name)
-        find_any(name).first
+      def find_one_by_name(name)
+        find_any_by_name(name).first
       end
     
       def found?(name)
-        find_any(name).first
+        !!find_any_by_name(name).first
       end
       
     end

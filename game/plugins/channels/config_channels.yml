@@ -17,6 +17,7 @@ channels:
     shortcuts:
         "chan": "channel"
         "channels": "channel"
+        "channel/desc": "channel/describe"
         "channel/add" : "channel/create"
         "channel/on" : "channel/join"
         "channel/off" : "channel/leave"

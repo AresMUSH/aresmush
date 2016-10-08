@@ -27,8 +27,12 @@ module AresMUSH
       end
       
       def handle
-        enactor.outfits[self.name] = self.desc
-        enactor.save
+        outfit = enactor.outfit(self.name)
+        if (!outfit)
+          outfit = enactor.create_desc(:outfit, desc, self.name)
+        else
+           outfit.update(description: desc)
+        end
         client.emit_success t('describe.outfit_set')
       end
     end

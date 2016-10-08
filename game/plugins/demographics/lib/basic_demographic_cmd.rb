@@ -21,8 +21,9 @@ module AresMUSH
       end
          
       def handle
-        enactor.send("#{self.property}=", self.value)
-        enactor.save
+        demographics = Demographics.get_or_create_demographics(enactor)
+        demographics.send("#{self.property}=", self.value)
+        demographics.save
         client.emit_success t('demographics.property_set', :property => self.property, :value => self.value)
       end
     end

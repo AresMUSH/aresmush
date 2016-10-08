@@ -31,9 +31,16 @@ module AresMUSH
           if (!Chargen.can_edit_bg?(enactor, model, client))
             return
           end
+                    
+          bg = model.background
+          if (!bg)
+            bg = Background.create(character: model)
+            model.background = bg
+            model.save
+          end
           
-          model.background = self.background
-          model.save
+          bg.text = self.background
+          bg.save
           client.emit_success t('chargen.bg_set')
         end
       end

@@ -11,7 +11,7 @@ module AresMUSH
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
-        self.role = trim_input(cmd.args.arg2)
+        self.role = cmd.args.arg2 ? trim_input(cmd.args.arg2).downcase : nil
       end
       
       def required_args
@@ -28,15 +28,15 @@ module AresMUSH
       end
       
       def check_role_exists
-        return t('roles.role_does_not_exist') if !Roles.valid_role?(self.role)
+        return t('roles.role_does_not_exist') if !Role.found?(self.role)
         return nil
       end
       
-      def handle        
+      def handle  
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
           if (!char.has_role?(self.role))     
             Global.logger.info "#{enactor_name} added role #{self.role} to #{self.name}."     
-            char.roles << self.role.downcase
+            char.roles.add Role.find_one(name: self.role)
             char.save
           end
           client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role)

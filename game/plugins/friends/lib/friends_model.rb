@@ -1,7 +1,6 @@
 module AresMUSH
   class Character
     collection :friendships, "AresMUSH::Friendship"
-    set :handle_friends, "AresMUSH::SimpleData"
 
     def friends
       friendships.map { |f| f.friend }
@@ -12,7 +11,16 @@ module AresMUSH
     end
     
     def has_friended_char_or_handle?(other_char)
-       friends.include?(other_char) || handle_friends.include?(other_char.handle)
+      return true if friends.include?(other_char)
+      
+      this_handle = self.handle
+      
+      return false if !this_handle
+      return false if !this_handle.friends
+      return false if !other_char.handle
+      
+      return true if this_handle.friends.include?(other_char.handle.name)
+      false
     end
   end  
   

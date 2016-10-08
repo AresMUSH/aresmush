@@ -3,6 +3,7 @@ module AresMUSH
     class CensusCmd
       include CommandHandler
       include CommandRequiresLogin
+      include CommandWithoutSwitches
       include TemplateFormatters
       
       attr_accessor :name, :page

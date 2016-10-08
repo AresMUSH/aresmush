@@ -1,6 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/admin_list_cmd.rb"
 load "lib/admin_note_cmd.rb"
+load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/roles_add_cmd.rb"
 load "lib/roles_cmd.rb"
@@ -42,7 +43,9 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "admin"
-        return AdminListCmd
+        if (!cmd.args)
+          return AdminListCmd
+        end
       when "adminnote"
         return AdminNoteCmd
       when "role"
@@ -60,6 +63,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CharCreatedEvent"
+        return CharCreatedEventHandler
+      end
       nil
     end
   end

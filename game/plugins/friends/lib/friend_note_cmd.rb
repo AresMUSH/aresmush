@@ -25,11 +25,10 @@ module AresMUSH
         friendship = result[:friendship]
         if (!friendship)
           client.emit_failure result[:error]
-        else
-          friendship.note = self.note
-          friendship.save
-          client.emit_success t('friends.note_added', :name => self.name)
-        end   
+          return
+        end
+        friendship.update(note: self.note)
+        client.emit_success t('friends.note_added', :name => self.name)   
       end
     end
   end

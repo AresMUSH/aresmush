@@ -5,21 +5,22 @@ module AresMUSH
   
       attr_accessor :value
   
-      def initialize(client, cmd, enactor)
-        self.required_args = ['number', 'value']
-        self.help_topic = 'jobs'
-        super
-      end
-  
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.number = trim_input(cmd.args.arg1)
         self.value = cmd.args.arg2
       end
+      
+      def required_args
+        {
+          args: [ self.number, self.value ],
+          help: 'jobs'
+        }
+      end
 
       def check_status
         return nil if !self.value
-        return t('jobs.invalid_status', :statuses => Jobs.status_vals) if (!Jobs.status_vals.include?(self.value.upcase))
+        return t('jobs.invalid_status', :statuses => Jobs.status_vals.join(", ")) if (!Jobs.status_vals.include?(self.value.upcase))
         return nil
       end
   

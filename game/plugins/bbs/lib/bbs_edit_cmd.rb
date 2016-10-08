@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :board_name, :num, :new_text
 
       def crack!
-        cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=?(?<new_text>[^\=]+)?/)
+        cmd.crack_args!( /(?<name>[^\/]+)\/(?<num>[^\=]+)\=?(?<new_text>.+)?/)
         self.board_name = titleize_input(cmd.args.name)
         self.num = trim_input(cmd.args.num)
         self.new_text = cmd.args.new_text
@@ -30,10 +30,11 @@ module AresMUSH
           end
             
           if (!self.new_text)
-            Utils::Api.grab "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
+            Utils::Api.grab client, enactor, "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
             post.message = self.new_text
             post.mark_unread
+            post.save
             Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, 
             :board => board.name, 
             :reference => post.reference_str,

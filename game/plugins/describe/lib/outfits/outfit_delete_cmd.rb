@@ -10,14 +10,14 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
-      def check_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if enactor.outfit(self.name).nil?
-        return nil
-      end
-      
       def handle
-        enactor.outfits.delete(self.name)
-        enactor.save
+        outfit = enactor.outfit(self.name)
+        if (!outfit)
+          client.emit_failure t('describe.outfit_does_not_exist', :name => self.name)
+          return
+        end
+        
+        outfit.delete
         client.emit_success t('describe.outfit_deleted')
       end
     end

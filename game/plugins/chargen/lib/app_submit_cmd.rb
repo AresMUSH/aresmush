@@ -5,29 +5,34 @@ module AresMUSH
       include CommandRequiresLogin
       include CommandWithoutArgs
       
+      attr_accessor :chargen_info
+      
+      def check_approval
+        return t('chargen.you_are_already_approved') if enactor.is_approved?
+        return nil
+      end
+      
       def handle
-        if (!enactor.approval_job)
+        self.chargen_info = enactor.chargen_info
+        
+        job = Chargen.approval_job(enactor)
+        if (!job)
           if (cmd.switch_is?("confirm"))
-            create_job
-            lock_char
+            job = create_job
+            self.chargen_info.approval_job = job
+            self.chargen_info.chargen_locked = true
+            client.emit_success t('chargen.app_submitted')
           else
             client.emit_ooc t('chargen.app_confirm')
           end
         else
-          update_job
-          lock_char
+          update_job(job)
+          self.chargen_info.chargen_locked = true
+          client.emit_success t('chargen.app_resubmitted')
         end
+        self.chargen_info.save
       end
       
-      def lock_char
-        enactor.chargen_locked = true
-        enactor.save
-      end
-      
-      def check_approval
-        return t('chargen.you_are_already_approved') if enactor.is_approved
-        return nil
-      end
       
       def create_job
         job = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
@@ -35,24 +40,17 @@ module AresMUSH
           t('chargen.app_job_submitted'), 
           enactor)
         
-        if (!job[:error].nil?)
-          Global.logger.error "Problem submitting application: #{job[:error]}"
-          client.emit_failure t('chargen.app_job_problem')
-          return
+        if (job[:error])
+          raise "Problem submitting application: #{job[:error]}"
         end
-        
-        enactor.approval_job = job[:job]
-        enactor.save        
-        client.emit_success t('chargen.app_submitted')
+        job
       end
       
-      def update_job
+      def update_job(job)
         Jobs::Api.change_job_status(enactor,
-          enactor.approval_job,
+          job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))
-          
-        client.emit_success t('chargen.app_resubmitted')
       end
     end
   end

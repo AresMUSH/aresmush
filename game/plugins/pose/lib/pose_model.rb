@@ -12,7 +12,7 @@ module AresMUSH
 
   class Room
     attribute :repose_on, DataType::Boolean
-    set :poses, "AresMUSH::SimpleData"
+    attribute :poses, DataType::Array
     set :pose_order, "AresMUSH::PoseOrder"
   end
   

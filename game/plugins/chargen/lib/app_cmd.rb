@@ -18,7 +18,7 @@ module AresMUSH
       
       def handle        
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          if (model.is_approved)
+          if (model.is_approved?)
             if (model == enactor)
               client.emit_failure t('chargen.you_are_already_approved')
             else

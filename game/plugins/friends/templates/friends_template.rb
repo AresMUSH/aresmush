@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def friendships
-        @enactor.friendships.sort_by { |f| f.friend.name }
+        @enactor.friendships.to_a.sort_by { |f| f.friend.name }
       end
       
       def friend_name(friendship)
@@ -18,7 +18,8 @@ module AresMUSH
       end
       
       def handle_friends
-        @enactor.handle_friends.sort
+        return [] if !@enactor.handle
+        @enactor.handle.friends ? @enactor.handle.friends.sort_by(:name, :order => "ALPHA") : []
       end
       
       def visible_alts(handle)

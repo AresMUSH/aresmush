@@ -24,14 +24,20 @@ module AresMUSH
       
       def handle
         VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
-          
+                    
           if (!Describe.can_describe?(enactor, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end
           
-          model.details[self.name] = self.desc
-          model.save
+          detail = model.detail(self.name)
+          
+          if (!detail)
+            model.create_desc(:detail, self.desc, self.name)
+          else
+            detail.description = self.desc
+            detail.save
+          end
           client.emit_success t('describe.detail_set')
         end
       end

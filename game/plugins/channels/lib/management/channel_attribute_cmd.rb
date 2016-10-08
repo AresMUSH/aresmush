@@ -78,22 +78,26 @@ module AresMUSH
       include ChannelAttributeCmd
     
       def check_roles
-        if (self.attribute == "none" || !self.attribute)
-          return nil
-        end
-        self.attribute.split(",").each do |r|
-          return t('channels.invalid_channel_role', :name => r) if !Roles::Api.valid_role?(r)
+        roles.each do |r|
+          return t('channels.invalid_channel_role', :name => r) if !Role.found?(r)
         end
         return nil
+      end
+      
+      def roles
+        if (self.attribute == "none" || !self.attribute)
+          return []
+        end
+        self.attribute.split(",").map { |r| trim_input(r) }
       end
     
       def handle
         Channels.with_a_channel(name, client) do |channel|
         
-          if (self.attribute == "none")
-            channel.roles = []
-          else
-            channel.roles = self.attribute.split(",")
+          channel.roles.each { |r| channel.roles.delete r }
+          
+          roles.each do |r|
+            roles.each { |r| channel.roles.add Role.find_one_by_name(r) }
           end
         
           channel.emit t('channels.roles_changed_by', :name => enactor_name)

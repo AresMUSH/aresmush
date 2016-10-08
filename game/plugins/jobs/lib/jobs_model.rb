@@ -4,14 +4,18 @@ module AresMUSH
   end
   
   class Character
-    collection :submitted_requests, "AresMUSH::Job"
-    set :assigned_jobs, "AresMUSH::Job"
+    
+    collection :job_read_marks, "AresMUSH::JobReadMark"
+    collection :jobs, "AresMUSH::Job", :author
+    
+    def assigned_jobs
+      Job.find(assigned_to_id: self.id)
+    end
     
     def unread_jobs
-      if (!Jobs.can_access_jobs?(self))
-        return []
-      end
-      Job.all.select { |j| j.is_unread?(self) }
+      return [] if !Jobs.can_access_jobs?(self)
+      read_jobs = self.job_read_marks.map { |m| m.job }
+      Job.all.select { |j| !read_jobs.include?(j) }
     end
     
     def has_unread_jobs?
@@ -22,10 +26,22 @@ module AresMUSH
       if (Jobs.can_access_jobs?(self))
         return false
       end
-      requests = submitted_requests.select { |r| r.is_unread?(self) }
+      requests = self.jobs.select { |r| r.is_unread?(self) }
       !requests.empty?
     end
   end
+  
+  class JobReadMark < Ohm::Model
+    include ObjectModel
+    
+    reference :character, "AresMUSH::Character"
+    reference :job, "AresMUSH::Job"
+    
+    def self.find_mark(job, char)
+      JobReadMark.find(character_id: char.id).combine(job_id: job.id).first
+    end
+  end
+  
   
   class Job < Ohm::Model
     include ObjectModel
@@ -41,12 +57,17 @@ module AresMUSH
     reference :approval_char, "AresMUSH::Character"
 
     collection :job_replies, "AresMUSH::JobReply"
-    set :readers, "AresMUSH::Character"
     
     index :number
 
+    before_delete :delete_replies
+    
+    def delete_replies
+      job_replies.each { |r| r.delete }
+    end
+    
     def is_unread?(char)
-      !readers.include?(char)
+      !JobReadMark.find_mark(self, char)
     end
       
     def is_open?
@@ -62,5 +83,9 @@ module AresMUSH
     
     attribute :admin_only, DataType::Boolean
     attribute :message
+    
+    def admin_only?
+      self.admin_only
+    end
   end
 end

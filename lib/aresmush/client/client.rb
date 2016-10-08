@@ -49,9 +49,9 @@ module AresMUSH
     end
     
     def emit_raw(msg)
-      @connection.send_data "#{msg}"
+      @connection.send_data "#{msg}\r\n"
     end
-
+    
     def idle_secs
       (Time.now - self.last_activity).to_i
     end

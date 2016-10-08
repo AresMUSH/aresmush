@@ -51,7 +51,8 @@ module AresMUSH
     end
     
     def self.guests
-      Character.all.select { |c| c.roles.include?(Login.guest_role) }
+      role = Role.find_one_by_name(Login.guest_role)
+      Character.all.select { |c| c.roles.include?(role) }
     end
   end
 end

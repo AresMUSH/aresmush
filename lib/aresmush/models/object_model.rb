@@ -8,8 +8,12 @@ module ObjectModel
         
     def register_data_members
       send :include, Ohm::DataTypes
-      send :include, Ohm::Timestamps
       send :include, Ohm::Callbacks
+      send :include, Ohm::Timestamps
+    end
+    
+    def find_one(args)
+      find(args).first
     end
   end
 end

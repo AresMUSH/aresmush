@@ -3,104 +3,73 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Channels
     
-    describe ChannelJoinCmd do
-      include CommandHandlerTestHelper
-      
+    describe Channels do
+
       before do
         @channel = double
-        Channel.stub(:find_one).with("Public") { @channel }
-
-        init_handler(ChannelJoinCmd, "channel/join public")
+        @char = double
+        @client = double
+        @options = double
         SpecHelpers.stub_translate_for_testing
       end
-      
-      it_behaves_like "a plugin that requires login"
-      
-      describe :handle do
+        
+      describe :join_channel do
         before do
-          handler.crack!
+          Channel.stub(:find_one_by_name).with("pub") { @channel }
+          Channels.stub(:is_on_channel?) { false }
+          Channels.stub(:can_use_channel) { true }
+          Channels.stub(:get_channel_options) { @options }
         end
         
-        context "failure" do
-          before do
-            @channel.stub(:characters) { [] }
-            Channels.stub(:can_use_channel) { true }
-            @channel.stub(:default_alias) { ["pu"] }
-          end
-          
-          it "should fail if the channel is not found" do
-            Channel.stub(:find_one).with("Public") { nil }
-            client.should_receive(:emit_failure).with("channels.channel_doesnt_exist")
-            handler.handle
-          end
-          
-          it "should fail if the char is already on that channel" do
-            @channel.stub(:characters) { [enactor] }
-            client.should_receive(:emit_failure).with("channels.already_on_channel") 
-            handler.handle
-          end
-          
-          it "should fail if the char doesn't have permissions" do
-            Channels.stub(:can_use_channel).with(enactor, @channel) { false }
-            client.should_receive(:emit_failure).with("channels.cant_use_channel") 
-            handler.handle
-          end
-          
-          it "should fail if the alias is already in use" do
-            enactor.stub(:channel_options) { { "Other" => { "alias" => ["pu"] } } }
-            Channel.stub(:find_one).with("Other") { double }
-            client.should_receive(:emit_failure).with("channels.alias_in_use") 
-            client.should_receive(:emit_failure).with("channels.unable_to_determine_auto_alias") 
-            handler.handle
-          end
+        it "should fail if already on channel" do
+          Channels.should_receive(:is_on_channel?).with(@char, @channel) { true }
+          @client.should_receive(:emit_failure).with('channels.already_on_channel')
+          Channels.join_channel("pub", @client, @char, nil)
         end
-
+        
+        it "should fail if can't access channel" do
+          Channels.should_receive(:can_use_channel).with(@char, @channel) { false }
+          @client.should_receive(:emit_failure).with('channels.cant_use_channel')
+          Channels.join_channel("pub", @client, @char, nil)
+        end
+        
+        it "should fail if alias already in use" do
+          Channels.should_receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { false }
+          @client.should_receive(:emit_failure).with('channels.unable_to_determine_auto_alias')
+          Channels.join_channel("pub", @client, @char, "pub")
+        end
+        
         context "success" do
           before do
-            @channel.stub(:name) { "Public" }
-            Channels.stub(:channel_for_alias) { nil }
-            Channels.stub(:can_use_channel) { true }
-            @chars = []
+            Channels.stub(:set_channel_alias) { true }
+            @options.stub(:alias_hint) { "Hint" }
+            @chars_stub = double
+            @chars_stub.stub(:<<) {}
+            @channel.stub(:characters) { @chars_stub }
             @channel.stub(:save)
-            @channel.stub(:emit)
-            @channel.stub(:characters) { @chars }
-            @channel.stub(:default_alias) { ["pu"] }
-            enactor.stub(:channel_options) { {} }
-            enactor.stub(:save)
-            enactor.stub(:name) { "Bob" }
-            client.stub(:emit_success)
+            @channel.stub(:emit) {}
+            @char.stub(:name) { "Bob" }
           end
           
-          it "should announce the channel join" do
-            @channel.should_receive(:emit).with('channels.joined_channel')
-            handler.handle
+          it "should use default alias if none specified" do
+            @channel.stub(:default_alias) { [ "pub" ]}
+            Channels.should_receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { true }
+            Channels.join_channel("pub", @client, @char, nil)
           end
-          
-          it "should set the channel alias to the default if none specified" do
-            Channels.should_receive(:set_channel_option).with(enactor, @channel, "alias", ["pu" ])
-            enactor.should_receive(:save)
-            handler.handle
+        
+          it "should use alias if specified" do
+            @channel.stub(:default_alias) { [ "pub" ]}
+            Channels.should_receive(:set_channel_alias).with(@client, @char, @channel, "p2", false) { true }
+            Channels.join_channel("pub", @client, @char, "p2")
           end
-
-          it "should set the channel alias to a user-selected value if specified" do
-            handler.stub(:alias) { "=pub" }
-            Channels.should_receive(:set_channel_option).with(enactor, @channel, "alias", ["=pub"])
-            enactor.should_receive(:save)
-            handler.handle
-          end
-
-          it "should tell the character the channel alias" do
-            client.should_receive(:emit_success).with('channels.channel_alias_set')
-            handler.handle
-          end
-                    
+        
           it "should add the char to the channel" do
+            @chars_stub.should_receive(:<<).with(@char) {}
             @channel.should_receive(:save)
-            handler.handle
-            @channel.characters.should eq [enactor]
+            Channels.join_channel("pub", @client, @char, "p")
           end
         end
-      end
+      end  
     end
   end
 end

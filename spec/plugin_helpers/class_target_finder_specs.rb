@@ -20,21 +20,21 @@ module AresMUSH
         
         it "should find the specified class by name" do
           room = double
-          Room.stub(:find_any).with("foo") { [room] }
+          Room.stub(:find_any_by_name).with("foo") { [room] }
           result = ClassTargetFinder.find("foo", Room, @viewer)
           result.target.should eq room
           result.error.should be_nil
         end
     
         it "should return ambiguous if multiple results" do
-          Room.stub(:find_any).with("foo") { [double, double] }
+          Room.stub(:find_any_by_name).with("foo") { [double, double] }
           result = ClassTargetFinder.find("foo", Room, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_ambiguous'
         end
 
         it "should return not found if no results" do
-          Room.stub(:find_any).with("bar") { [] }
+          Room.stub(:find_any_by_name).with("bar") { [] }
           result = ClassTargetFinder.find("bar", Room, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
@@ -49,7 +49,7 @@ module AresMUSH
         it "should not return the char for another kind of object" do
           char = double
           @viewer.stub(:char) { char }
-          Room.stub(:find_any).with("me") { [] }
+          Room.stub(:find_any_by_name).with("me") { [] }
           result = ClassTargetFinder.find("me", Room, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'
@@ -66,7 +66,7 @@ module AresMUSH
         it "should not find here for another kind of object" do
           room = double
           @viewer.stub(:room) { room }
-          Character.stub(:find_any).with("here") { [] }
+          Character.stub(:find_any_by_name).with("here") { [] }
           result = ClassTargetFinder.find("here", Character, @viewer)
           result.target.should eq nil
           result.error.should eq 'db.object_not_found'

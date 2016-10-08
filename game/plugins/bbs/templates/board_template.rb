@@ -17,13 +17,21 @@ module AresMUSH
       
       # Roles that can read this bbs.
       def can_read
-        read_roles = @board.read_roles.empty? ? t('bbs.everyone') : @board.read_roles.join(", ")
+        if (@board.read_roles.empty?)
+          read_roles = t('bbs.everyone')
+        else 
+          read_roles = @board.read_roles.map { |r| r.name.titlecase }.join(", ")
+        end
         "%xh#{t('bbs.can_read')}%xn #{read_roles}"
       end
       
       # Roles that can post to this bbs.
       def can_post
-        write_roles = @board.write_roles.empty? ? t('bbs.everyone') : @board.write_roles.join(", ")
+        if (@board.write_roles.empty?)
+          write_roles = t('bbs.everyone') 
+        else
+          write_roles =@board.write_roles.map { |r| r.name.titlecase }.join(", ")
+        end
         "%xh#{t('bbs.can_post')}%xn #{write_roles}"
       end
       

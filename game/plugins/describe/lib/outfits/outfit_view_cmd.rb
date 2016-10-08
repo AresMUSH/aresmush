@@ -10,14 +10,14 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
-      def check_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if enactor.outfit(self.name).nil?
-        return nil
-      end
-      
       def handle
         outfit = enactor.outfit(self.name)
-        client.emit BorderedDisplay.text(outfit, t('describe.outfit', :name => self.name))
+        if (!outfit)
+          client.emit_failure t('describe.outfit_does_not_exist', :name => self.name)
+          return
+        end
+        
+        client.emit BorderedDisplay.text(outfit.description, t('describe.outfit', :name => self.name))
       end
     end    
   end

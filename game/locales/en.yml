@@ -3,6 +3,7 @@ en:
         y:  "Yes"
         n:  "No"
         none: "None"
+        or: "or"
 
     dispatcher:
         unexpected_error: |

@@ -54,7 +54,8 @@ module AresMUSH
           return
         end
         title = t('describe.detail_title', :name => model.name, :detail => detail_name)
-        client.emit BorderedDisplay.text model.detail(detail_name), title
+        desc = model.detail(detail_name).description
+        client.emit BorderedDisplay.text desc, title
       end   
     end
   end

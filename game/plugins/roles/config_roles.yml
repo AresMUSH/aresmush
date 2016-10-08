@@ -1,14 +1,8 @@
 roles:
-    # List available roles.
-    # Use caution when deleting or renaming roles, because unless you also update
-    # the plugins and database, you can end up with commands that nobody can use.
-    # NOTE! Roles may only have one-word names!
-    roles:
-        - everyone
-        - admin
-        - builder
-        - guest
-        # - another role
+    # Roles that everyone starts with
+    default_roles:
+       - everyone
+
     # List roles have the power to assign other roles.
     can_assign_role: 
         - admin

@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     attribute :edit_prefix
-    set :saved_text, "AresMUSH::SimpleData"
+    attribute :saved_text, DataType::Array
     
     before_create :set_default_util_attributes
     

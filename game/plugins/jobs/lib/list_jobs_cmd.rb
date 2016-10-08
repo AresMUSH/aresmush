@@ -18,10 +18,8 @@ module AresMUSH
       
       def handle
         jobs = cmd.switch_is?("all") ? 
-          Job.all : 
+          Job.all.to_a : 
           Job.all.select { |j| j.is_open? || j.is_unread?(enactor) }
-          #Job.or( { :status.ne => "DONE" }, {:readers.nin => [enactor.id]} )
-          #Job.includes(:readers).where("reader._id" => enactor.id )
   
         jobs = jobs.sort_by { |j| j.number }
         paginator = Paginator.paginate(jobs, self.page, 20)

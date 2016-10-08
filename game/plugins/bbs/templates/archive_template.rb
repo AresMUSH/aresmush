@@ -5,20 +5,20 @@ module AresMUSH
       include TemplateFormatters
             
       # List of all replies to this post, in order by date.
-      attr_accessor :post
+      attr_accessor :posts
       
-      def initialize(post, enactor)
-        @post = post
+      def initialize(posts, enactor)
+        @posts = posts
         @enactor = enactor
         super File.dirname(__FILE__) + "/archive.erb"
       end
 
-      def date
-        OOCTime::Api.local_long_timestr(@enactor, @post.created_at)
+      def date(post)
+        OOCTime::Api.local_long_timestr(@enactor, post.created_at)
       end
       
-      def author
-        !@post.author ? t('bbs.deleted_author') : @post.author.name
+      def author(post)
+        !post.author ? t('bbs.deleted_author') : post.author.name
       end
       
       def reply_title(reply)

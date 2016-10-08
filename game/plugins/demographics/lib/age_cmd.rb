@@ -31,8 +31,11 @@ module AresMUSH
       def handle
         bday = Date.new ICTime::Api.ictime.year - self.age.to_i, ICTime::Api.ictime.month, ICTime::Api.ictime.day
         bday = bday - rand(364)
-        enactor.birthdate = bday
-        enactor.save
+        
+        demographics = Demographics.get_or_create_demographics(enactor)
+        
+        demographics.birthdate = bday
+        demographics.save
         client.emit_success t('demographics.birthdate_set', 
           :birthdate => ICTime::Api.ic_datestr(bday), 
           :age => enactor.age)

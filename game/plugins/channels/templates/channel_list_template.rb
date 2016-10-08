@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def channel_roles(channel)
-        channel.roles.join(" ")
+        channel.roles.map {|r| r.name}.join(" ")
       end
       
       def channel_announce(channel)
@@ -31,8 +31,9 @@ module AresMUSH
         Channels.is_on_channel?(@enactor, channel) 
       end
       
-      def channel_aliases(channel)
-        Channels.get_channel_option(@enactor, channel, 'alias')
+      def channel_alias(channel)
+        options = Channels.get_channel_options(@enactor, channel)
+        options.alias_hint
       end      
     end
   end

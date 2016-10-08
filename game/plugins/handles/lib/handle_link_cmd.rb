@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def check_handle_name
-        #return t('handles.character_already_linked') if enactor.handle
+        return t('handles.character_already_linked') if enactor.handle
         return nil
       end
       
@@ -36,10 +36,10 @@ module AresMUSH
           response = connector.link_char(self.handle_name, self.link_code, enactor.name, enactor.id.to_s)
         
           if (response.is_success?)
-            enactor.handle = response.data["handle_name"]
-            enactor.handle_id = response.data["handle_id"]
-            enactor.save
-        
+            handle = Handle.create(name: response.data["handle_name"], 
+                handle_id: response.data["handle_id"],
+                character: enactor)
+            enactor.update(handle: handle)
             client.emit_success t('handles.link_successful', :handle => self.handle_name)
           else
             client.emit_failure t('handles.link_failed', :error => response.error_str)

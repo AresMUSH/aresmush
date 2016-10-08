@@ -6,8 +6,8 @@ module AresMUSH
       viewer_room = viewer.room
       return FindResult.new(viewer_room, nil) if (name.downcase == "here")
 
-      chars = Character.find_any(name).select { |c| c.room == viewer_room }
-      exits = Exit.find_any(name).select { |c| c.source == viewer_room }
+      chars = Character.find_any_by_name(name).select { |c| c.room == viewer_room }
+      exits = Exit.find_any_by_name(name).select { |c| c.source == viewer_room }
       contents = [chars, exits].flatten(1).select { |c| c }   
             
       SingleResultSelector.select(contents)

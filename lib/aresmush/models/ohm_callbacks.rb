@@ -19,7 +19,7 @@ module Ohm
       def before_create(sym)
         @@before_create_callbacks[self] << sym
       end    
-    
+
       def before_save(sym)
         @@before_save_callbacks[self] << sym
       end
@@ -27,7 +27,7 @@ module Ohm
       def before_delete(sym)
         @@before_delete_callbacks[self] << sym
       end
-    
+       
       def before_save_callbacks
         @@before_save_callbacks[self]
       end
@@ -42,7 +42,8 @@ module Ohm
     end
   
     def save
-      if (new?)
+      is_new = new?
+      if (is_new)
         self.class.before_create_callbacks.each do |callback|
           self.send(callback)
         end

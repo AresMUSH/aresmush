@@ -22,7 +22,9 @@ module AresMUSH
       
       def handle
         VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
-          if (!model.has_detail?(self.name))
+          detail = model.detail(self.name)
+          
+          if (!detail)
             client.emit_failure t('describe.no_such_detail', :name => self.name)
             return
           end
@@ -32,8 +34,7 @@ module AresMUSH
             return
           end
           
-          model.details.delete(self.name)
-          model.save
+          detail.delete
           client.emit_success t('describe.detail_deleted')
         end
       end

@@ -17,7 +17,7 @@ module AresMUSH
       
       context "no handle" do
         it "should do nothing" do
-          @char.stub(:handle_id) { nil }
+          @char.stub(:handle) { nil }
           @connector.should_not_receive(:sync_handle)
           @handler.on_event(@event)
         end
@@ -25,7 +25,9 @@ module AresMUSH
   
       context "linked" do       
         it "should set the preferences" do
-          @char.stub(:handle_id) { 123 }
+          @handle = double
+          @handle.stub(:id) { 123 }
+          @char.stub(:handle) { @handle }
           @char.stub(:name) { "Bob" }
           @char.stub(:id) { 111 }
           response = { "status" => "success", "data" => { "linked" => true, "autospace" => "x", "timezone" => "t", "friends" => "f" }}
@@ -34,7 +36,7 @@ module AresMUSH
           @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
           @char.should_receive(:autospace=).with("x")
           @char.should_receive(:timezone=).with("t")
-          Friends::Api.should_receive(:sync_handle_friends).with(@char, "f")
+          @handle.should_receive(:update).with(friends: "f")
           @char.should_receive(:save)
           @client.should_receive(:emit_success).with("handles.handle_synced")
           @handler.on_event(@event)
@@ -43,16 +45,16 @@ module AresMUSH
       
       context "not linked" do
         it "should unlink the handle" do
-          @char.stub(:handle_id) { 123 }
+          @handle = double
+          @handle.stub(:id) { 123 }
+          @char.stub(:handle) { @handle }
           @char.stub(:name) { "Bob" }
           @char.stub(:id) { 111 }
           response = { "status" => "success", "data" => { "linked" => false }}
           
           @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
           @char.should_not_receive(:autospace=)
-          @char.should_receive(:handle=).with(nil)
-          @char.should_receive(:handle_id=).with(nil)
-          @char.should_receive(:save)
+          @handle.should_receive(:delete)
           @client.should_receive(:emit_success).with("handles.handle_no_longer_linked")
           @handler.on_event(@event)
         end

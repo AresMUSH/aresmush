@@ -5,8 +5,12 @@ module AresMUSH
     end
     
     def self.bg_app_review(char)
-      error = !char.background ? t('chargen.not_set') : t('chargen.ok')
+      error = !Chargen.background_text(char) ? t('chargen.not_set') : t('chargen.ok')
       Chargen.format_review_status t('chargen.background_review'), error
+    end
+    
+    def self.format_review_status(msg, error)
+      "#{msg.ljust(50)} #{error}"
     end
     
     def self.can_manage_bgs?(actor)
@@ -31,23 +35,19 @@ module AresMUSH
     end
     
     def self.check_chargen_locked(char)
-      hold_status = Global.read_config("chargen", "jobs", "app_hold_status")
-      return t('chargen.cant_be_changed') if char.is_approved
-      return t('chargen.app_in_progress') if char.chargen_locked
+      info = char.chargen_info
+      return nil if !info
+      return t('chargen.cant_be_changed') if info.is_approved
+      return t('chargen.app_in_progress') if info.chargen_locked
       return nil
     end
     
     def self.is_in_stage?(char, stage_name)
-      name = Chargen.stage_name(char)
-      name == stage_name
-    end
-    
-    def self.format_review_status(msg, error)
-      "#{msg.ljust(50)} #{error}"
+      Chargen.stage_name(char) == stage_name
     end
     
     def self.can_edit_bg?(actor, model, client)
-      if (model.is_approved && !Chargen.can_manage_bgs?(actor))
+      if (model.is_approved? && !Chargen.can_manage_bgs?(actor))
         client.emit_failure t('chargen.cannot_edit_after_approval')
         return false
       end
@@ -71,7 +71,20 @@ module AresMUSH
     end
     
     def self.stage_name(char)
-      Chargen.stages.keys[char.chargen_stage]
+      stage = Chargen.current_stage(char)
+      stage ? Chargen.stages.keys[stage] : nil
+    end
+    
+    def self.current_stage(char)
+      char.chargen_info ? char.chargen_info.current_stage : nil
+    end
+    
+    def self.background_text(char)
+      char.background ? char.background.text : nil
+    end
+    
+    def self.approval_job(char)
+      char.chargen_info ? char.chargen_info.approval_job : nil
     end
   end
 end

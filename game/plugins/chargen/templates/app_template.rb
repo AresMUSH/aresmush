@@ -40,8 +40,9 @@ module AresMUSH
       end
      
       def job_info
-        if (@char.approval_job)
-          number = @char.approval_job.number
+        job = Chargen.approval_job(@char)
+        if (job)
+          number =job.number
           if (@enactor.name == @char.name)
             return t('chargen.app_request', :job => number)
           else

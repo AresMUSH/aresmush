@@ -19,10 +19,11 @@ module AresMUSH
       end
       
       def handle
-        result = Friends.find_friendship(char, friend_name)
+        result = Friends.find_friendship(enactor, self.name)
       
         if (result[:friendship].nil?)
-          return client.emit_failure result[:error]
+          client.emit_failure client.emit_failure result[:error]
+          return
         end
       
         result[:friendship].delete

@@ -85,7 +85,7 @@ module AresMUSH
           if (cmd.args)
             return OutfitViewCmd
           else
-            OutfitListCmd
+            return OutfitListCmd
           end
         end
       when "scene"

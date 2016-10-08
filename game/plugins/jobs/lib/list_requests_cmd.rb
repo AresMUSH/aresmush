@@ -13,8 +13,8 @@ module AresMUSH
       
       def handle
         requests = cmd.switch_is?("all") ? 
-          enactor.submitted_requests : 
-          enactor.submitted_requests.select { |r| r.is_open? || r.is_unread?(enactor) }
+          enactor.jobs.to_a : 
+          enactor.jobs.select { |r| r.is_open? || r.is_unread?(enactor) }
 
         requests = requests.sort_by { |r| r.number }
         paginator = Paginator.paginate(requests, self.page, 20)

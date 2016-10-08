@@ -12,48 +12,53 @@ module AresMUSH
         :name => "Welcome Room", 
         :room_type => "OOC", 
         :area => "Offstage",
-        :repose_on => false, 
-        :description => "Welcome!%R%R" + 
-            "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
-            "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players")
-            
+        :repose_on => false)
+
+      welcome_room.current_desc = "Welcome!%R%R" + 
+        "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
+        "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players"
+
       ic_start_room = Room.create(
         :name => "Onstage", 
         :room_type => "IC",
         :area => "Onstage",
-        :repose_on => true, 
-        :description => "This is the room where all characters start out."
-      )
+        :repose_on => true)
+      ic_start_room.current_desc = "This is the room where all characters start out."
       
       ooc_room = Room.create(
         :name => "Offstage", 
         :room_type => "OOC", 
         :area => "Offstage",
-        :repose_on => false, 
-        :description => "This is a backstage area where you can hang out when not RPing.")
+        :repose_on => false)
+      
+      ooc_room.current_desc = "This is a backstage area where you can hang out when not RPing."
 
       quiet_room = Room.create(
         :name => "Quiet Room", 
         :room_type => "OOC", 
         :area => "Offstage",
-        :repose_on => false, 
-        :description => "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside.")
+        :repose_on => false)
+      
+      quiet_room.current_desc = "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside."
         
       rp_room_hub = Room.create(
         :name => "RP Annex", 
         :room_type => "OOC", 
         :area => "Offstage",
         :repose_on => false, 
-        :is_foyer => true,
-        :description => "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded.")
+        :is_foyer => true)
+      
+      rp_room_hub.current_desc = "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded."
 
       6.times do |n|
         rp_room = Room.create(
           :name => "RP Room #{n+1}", 
           :room_type => "IC", 
           :area => "Offstage",
-          :repose_on => true, 
-          :description => "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything.")
+          :repose_on => true)
+        
+        rp_room.current_desc = "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything."
+          
         Exit.create(:name => "#{n+1}", :source => rp_room_hub, :dest => rp_room)
         Exit.create(:name => "O", :source => rp_room, :dest => rp_room_hub)
       end
@@ -116,7 +121,10 @@ module AresMUSH
         
       puts "Creating channels and BBS."
   
-      BbsBoard.create(name: "Announcements", order: 1)
+      board = BbsBoard.create(name: "Announcements", order: 1)
+      board.write_roles.add admin_role
+      board.save
+      
       board = BbsBoard.create(name: "Admin", order: 2)
       board.read_roles.add admin_role
       board.write_roles.add admin_role
@@ -125,9 +133,23 @@ module AresMUSH
       BbsBoard.create(name: "Cookie Awards", order: 3)
       BbsBoard.create(name: "New Arrivals", order: 4)
   
-      AresMUSH::Channel.create(name: "Chat", announce: false, description: "Public chit-chat.", color: "%xy", default_alias: [ 'c', 'ch', 'cha' ])
-      AresMUSH::Channel.create(name: "Questions", description: "Questions and answers.", color: "%xg", default_alias: [ 'q', 'qu', 'que' ])
-      channel = AresMUSH::Channel.create(name: "Admin", description: "Admin business.", color: "%xr", default_alias: [ 'a', 'ad', 'adm' ])
+      channel = AresMUSH::Channel.create(name: "Chat")
+      channel.announce = false
+      channel.description = "Public chit-chat."
+      channel.color = "%xy"
+      channel.default_alias = [ 'c', 'ch', 'cha' ]
+      channel.save
+      
+      channel = AresMUSH::Channel.create(name: "Questions")
+      channel.description = "Questions and answers."
+      channel.color = "%xg"
+      channel.default_alias = [ 'q', 'qu', 'que' ]
+      channel.save
+      
+      channel = AresMUSH::Channel.create(name: "Admin")
+      channel.description = "Admin business."
+      channel.color = "%xr"
+      channel.default_alias = [ 'a', 'ad', 'adm' ]
       channel.roles.add admin_role
       channel.save
   

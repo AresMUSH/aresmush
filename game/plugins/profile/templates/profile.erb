@@ -7,7 +7,7 @@
 %xh<%= left( t('profile.alts'), 12 ) %>%xn <%= alts %>
 <% if char.handle %>
 <%= line 2 %>
-%xh<%= left( t('profile.handle'), 12 ) %>%xn <%= char.handle %>
+%xh<%= left( t('profile.handle'), 12 ) %>%xn @<%= handle_name %>
 %xh<%= left( t('profile.handle_profile'), 12 ) %>%xn <%= handle_profile %>
 <% end %>
 <% if char.profile %>

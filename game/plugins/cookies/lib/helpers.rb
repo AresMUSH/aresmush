@@ -2,7 +2,7 @@ module AresMUSH
   module Cookies
     def self.give_cookie(recipient, client, giver)
       
-      if (recipient.client == giver)
+      if (recipient == giver)
         client.emit_failure t('cookies.cant_cookie_yourself')
         return
       end
@@ -12,8 +12,7 @@ module AresMUSH
         return
       end
       
-      recipient.cookies_received << giver
-      recipient.save
+      CookieAward.create(giver: giver, recipient: recipient)
       
       client.emit_success t('cookies.cookie_given', :name => recipient.name)
 

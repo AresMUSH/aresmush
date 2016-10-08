@@ -6,7 +6,7 @@ module AresMUSH
       end
       
       def self.group(char, name)
-        char.groups[name]
+        char.group(name)
       end
     end
   end

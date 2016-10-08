@@ -6,8 +6,8 @@ module AresMUSH
       include CommandWithoutArgs
       include TemplateFormatters           
       
-      def handle        
-        all_channels = Channel.all.sort { |c1, c2| c1.name <=> c2.name }
+      def handle   
+        all_channels = Channel.all.sort_by(:name_upcase, :order => 'ALPHA')
         template = ChannelListTemplate.new(all_channels, enactor)
         client.emit template.render
       end

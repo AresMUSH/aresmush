@@ -34,7 +34,7 @@ module AresMUSH
       missing = []
       
       Groups.all_groups.keys.each do |g|
-        if (char.groups[g].nil?)
+        if (char.group(g).nil?)
           missing << t('chargen.are_you_sure', :missing => g)
         end
       end

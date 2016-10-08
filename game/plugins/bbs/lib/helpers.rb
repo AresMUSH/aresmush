@@ -5,11 +5,13 @@ module AresMUSH
     end
 
     def self.can_write_board?(char, board)
-      board.write_roles.empty? || char.has_any_role?(board.write_roles) || can_manage_bbs?(char)
+      roles = board.write_roles.to_a
+      !roles || roles.empty? || char.has_any_role?(roles) || can_manage_bbs?(char)
     end
     
     def self.can_read_board?(char, board)
-      board.read_roles.empty? || char.has_any_role?(board.read_roles) || can_manage_bbs?(char)
+      roles = board.read_roles.to_a
+      !roles || roles.empty? || char.has_any_role?(roles) || can_manage_bbs?(char)
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -17,7 +19,7 @@ module AresMUSH
       if (board_name.is_integer?)
         board = BbsBoard.all_sorted[board_name.to_i - 1] rescue nil
       else
-        board = BbsBoard.all_sorted.find { |b| b.name.upcase == board_name.upcase }
+        board = BbsBoard.find_one_by_name(board_name)
       end
 
       if (!board)
@@ -58,7 +60,7 @@ module AresMUSH
           return
         end
         
-        post = board.bbs_posts[index]
+        post = board.bbs_posts.to_a[index]
         
         yield board, post
       end
@@ -97,7 +99,7 @@ module AresMUSH
         message: message, author: author)
         
         if (client)
-          Bbs.mark_read_for_player(enactor, post)
+          Bbs.mark_read_for_player(author, post)
         end
                 
         Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 

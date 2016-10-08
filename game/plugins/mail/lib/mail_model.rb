@@ -48,6 +48,6 @@ module AresMUSH
     attribute :to_list
     
     attribute :read, DataType::Boolean
-    set :tags, "AresMUSH::SimpleData"
+    attribute :tags, DataType::Array
   end
 end

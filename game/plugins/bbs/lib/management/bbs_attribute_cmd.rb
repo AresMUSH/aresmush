@@ -75,7 +75,7 @@ module AresMUSH
           return nil
         end
         self.attribute.split(",").each do |r|
-          return t('bbs.invalid_board_role', :name => r) if !Roles::Api.valid_role?(r)
+          return t('bbs.invalid_board_role', :name => r) if !Role.found?(r)
         end
         return nil
       end
@@ -86,13 +86,15 @@ module AresMUSH
           if (self.attribute == "none")
             roles = []
           else
-            roles = self.attribute.split(",")
+            roles = self.attribute.split(",").map { |r| Role.find_one_by_name(r) }
           end
           
           if (cmd.switch_is?("readroles"))
-            board.read_roles = roles.map { |r| r.capitalize }
+            board.read_roles.each { |r| board.read_roles.delete r }
+            roles.each { |r| board.read_roles.add r }
           else
-            board.write_roles = roles.map  { |r| r.capitalize }
+            board.write_roles.each { |r| board.write_roles.delete r }
+            roles.each { |r| board.write_roles.add r }
           end
           board.save
           client.emit_success t('bbs.roles_set')

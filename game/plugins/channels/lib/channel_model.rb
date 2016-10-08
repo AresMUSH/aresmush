@@ -2,7 +2,9 @@ module AresMUSH
   class Character
     collection :channel_options, "AresMUSH::ChannelOptions"
 
-    set :channels, "AresMUSH::Channel"
+    def channels
+      Channel.all.select { |c| c.characters.include?(self)}
+    end
   end
   
   class ChannelOptions  < Ohm::Model
@@ -10,24 +12,50 @@ module AresMUSH
     
     reference :character, "AresMUSH::Character"
     reference :channel, "AresMUSH::Channel"
+    
+    attribute :title
+    attribute :aliases, DataType::Array
+    attribute :gagging, DataType::Boolean
+    
+    def match_alias(a)
+      return false if !self.aliases
+      if (self.aliases.include?(a))
+        return true
+      end
+      false
+    end
+    
+    def alias_hint
+      hints = []
+      self.aliases.each do |a|
+        hints << "%xh#{t('channels.channel_alias_hint', :alias => a)}%xH"
+      end
+      hint_text = hints.join(" #{t('global.or')} ")
+      t('channels.channel_alias_set', :name => self.channel.name, :channel_alias => hint_text)
+    end
   end
   
   class Channel < Ohm::Model
     include ObjectModel
+    include FindByName
     
     attribute :name
+    attribute :name_upcase
     attribute :color
     attribute :description
     attribute :announce, DataType::Boolean
-    attribute :default_alias
+    attribute :default_alias, DataType::Array
+    
+    index :name_upcase
     
     set :roles, "AresMUSH::Role"
     set :characters, "AresMUSH::Character"
 
     before_create :set_channel_defaults
-    
+        
     def set_channel_defaults
-      self.color = "%h"
+      self.name_upcase = self.name.upcase
+      self.color = "%xh"
       self.announce = true
       self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
     end

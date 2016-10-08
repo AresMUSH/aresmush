@@ -1,6 +1,6 @@
 module AresMUSH
   
-  module Detailable
+  module Describable
     def self.included(base)
       base.send :extend, ClassMethods   
       base.send :register_data_members
@@ -8,10 +8,47 @@ module AresMUSH
     
     module ClassMethods
       def register_data_members
-        set :details, "AresMUSH::Detail"
       end
     end
     
+    def descs_of_type(type)
+      Description.find(parent_id: self.id)
+        .combine(parent_type: self.class.to_s)
+        .combine(desc_type: type)
+    end
+    
+    def create_desc(type, desc, name = nil)
+      Description.create(name: name, 
+          desc_type: type,
+          description: desc, 
+          parent_type: self.class.to_s, 
+          parent_id: self.id)
+    end
+        
+    # -------------------------------
+    # Current
+    # -------------------------------
+    
+    def description
+      current = current_desc
+      current ? current.description : nil
+    end
+
+    def current_desc
+      descs_of_type(:current).first
+    end
+    
+    def current_desc=(desc)
+      if (description)
+        description.update(description: desc)
+      else
+        create_desc(:current, desc)
+      end
+    end
+      
+    # -------------------------------
+    # Details
+    # -------------------------------
     def has_detail?(name)
       !!detail(name)
     end
@@ -19,33 +56,44 @@ module AresMUSH
     def detail(name)
       details.find(name: name).first
     end
+    
+    def details
+      descs_of_type(:detail)
+    end
   end
-  
-  class Detail < Ohm::Model
+
+  class Description < Ohm::Model
     include ObjectModel
 
     attribute :name
     attribute :description
+    attribute :parent_id
+    attribute :parent_type
+    attribute :desc_type
     
     index :name
+    index :parent_id
+    index :parent_type
+    index :desc_type
   end
-      
-  class Outfit < Ohm::Model
+
+  class SceneSet < Ohm::Model
     include ObjectModel
-    
-    attribute :name
-    attribute :description
-    reference :character, "AresMUSH::Character"
-    
-    index :name
+    attribute :set
+    attribute :time, DataType::Time
+    reference :room, "AresMUSH::Room"
   end
   
   class Character
-    include Detailable
-
-    attribute :description
-    attribute :shortdesc
-    collection :outfits, "AresMUSH::Outfit"
+    include Describable
+    
+    def shortdesc
+      descs_of_type("short").first
+    end
+    
+    # -------------------------------
+    # Outfits
+    # -------------------------------
     
     def has_outfit?(name)
       !!outfit(name)
@@ -54,21 +102,19 @@ module AresMUSH
     def outfit(name)
       outfits.find(name: name).first
     end
+    
+    def outfits
+      descs_of_type(:outfit)
+    end
   end
   
   class Room
-    include Detailable
+    include Describable
 
-    attribute :description
-    attribute :shortdesc
-    attribute :sceneset
-    attribute :sceneset_time, DataType::Time
+    reference :scene_set, "AresMUSH::SceneSet"
   end
   
   class Exit
-    include Detailable
-
-    attribute :description
-    attribute :shortdesc
+    include Describable
   end    
 end

@@ -25,7 +25,7 @@ module AresMUSH
     end
     
     def self.with_a_job(client, number, &block)
-      job = Job.where(number: number.to_i).first
+      job = Job.find(number: number.to_i).first
       if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
@@ -35,7 +35,7 @@ module AresMUSH
     end
     
     def self.with_a_request(client, enactor, number, &block)
-      job = enactor.submitted_requests.where(number: number.to_i).first
+      job = enactor.jobs.find(number: number.to_i).first
       if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
@@ -58,9 +58,10 @@ module AresMUSH
       end
     end
     
-    def self.mark_read(job, char)
-      job.readers << char
-      job.save
+    def self.mark_read(job, char)      
+      if (job.is_unread?(char))
+        JobReadMark.create(character: char, job: job)
+      end
     end
     
     def self.closed_status
@@ -81,8 +82,7 @@ module AresMUSH
         :status => Global.read_config("jobs", "default_status"))
         
       game = Game.master
-      game.next_job_number = game.next_job_number + 1
-      game.save
+      game.update(next_job_number: game.next_job_number + 1)
       
       message = t('jobs.announce_new_job', :number => job.number, :title => job.title, :name => author.name)
       Jobs.notify(job, message, author, false)
@@ -100,8 +100,7 @@ module AresMUSH
       message = message ? "#{message}%R%R#{status_message}" : status_message
 
       Jobs.comment(job, enactor, message, false)
-      job.status = status
-      job.save
+      job.update(status: status)
     end
     
     def self.close_job(enactor, job, message = nil)
@@ -110,8 +109,8 @@ module AresMUSH
     
     def self.notify(job, message, author, notify_submitter = true)
       Global.client_monitor.logged_in.each do |other_client, other_char|
-        job.readers = [ author ]
-        job.save
+        JobReadMark.find(job_id: job.id).each { |j| j.delete }
+        JobReadMark.create(job: job, character: author)
         
         if (Jobs.can_access_jobs?(other_char) || (notify_submitter && (other_char == job.author)))
           other_client.emit_ooc message

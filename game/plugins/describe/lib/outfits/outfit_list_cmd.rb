@@ -5,7 +5,8 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        client.emit BorderedDisplay.list(enactor.outfits.keys, t('describe.your_outfits'))
+        outfits = enactor.outfits.map { |d| d.name }
+        client.emit BorderedDisplay.list(outfits, t('describe.your_outfits'))
       end
     end
   end

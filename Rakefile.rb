@@ -21,11 +21,11 @@ end
 task :testinit do
   bootstrapper = AresMUSH::Bootstrapper.new
   AresMUSH::Global.plugin_manager.load_all
-  AresMUSH::Character.all.each do |c|
-    puts c.inspect
+  AresMUSH::Channel.all.each do |c|
+    puts "#{c.name} #{c.announce}"
   end
   
-  c = AresMUSH::Character.find_one("Headwiz")
+  c = AresMUSH::Character.find_one_by_name("Headwiz")
   puts c.inspect
   
   

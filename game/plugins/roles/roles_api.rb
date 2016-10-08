@@ -11,10 +11,6 @@ module AresMUSH
   
   module Roles
     module Api
-      def self.valid_role?(name)
-        Roles.valid_role?(name)
-      end
-    
       def self.chars_with_role(name)
         Roles.chars_with_role(name)
       end

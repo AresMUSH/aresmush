@@ -7,8 +7,8 @@ module AresMUSH
                  
       def handle
         client.emit_success t('cookies.giving_cookies_here')
-        enactor_room.character.each do |c|
-          if (c != enactor && c.logged_in?)
+        enactor_room.characters.each do |c|
+          if (c != enactor && c.is_online?)
             Cookies.give_cookie(c, client, enactor)
           end
         end

@@ -27,10 +27,10 @@ module AresMUSH
         friend = result.target
 
         if (enactor.friends.include?(friend))
-          return t('friends.already_friend', :name => self.name)
+          client.emit_failure t('friends.already_friend', :name => self.name)
+          return
         end
-        friendship = Friendship.new(:character => enactor, :friend => friend)
-        friendship.save
+        Friendship.create(:character => enactor, :friend => friend)
         client.emit_success t('friends.friend_added', :name => self.name)
       end
     end

@@ -7,10 +7,10 @@
 
 %xh<%= t('describe.details_available') %>%xn <%= details %>
 <% end %>
-<% if room.sceneset %>
+<% if room.scene_set %>
 <%= line 2 %>
 %xg<%= t('describe.scene_set_title')%>%xn
-%xh<%= room.sceneset %>%xn
+%xh<%= room.scene_set.description %>%xn
 <% end %>
 <% if repose_on %>
 

@@ -10,13 +10,14 @@ module AresMUSH
         self.name = titleize_input(cmd.args)
       end
       
-      def check_outfit_exists
-        return t('describe.outfit_does_not_exist', :name => self.name) if enactor.outfit(self.name).nil?
-        return nil
-      end
-      
       def handle
-        Utils::Api.grab client, "outfit/set #{self.name}=#{enactor.outfit(self.name)}"
+        outfit = enactor.outfit(self.name)
+        if (!outfit)
+          client.emit_failure t('describe.outfit_does_not_exist', :name => self.name)
+          return
+        end
+        
+        Utils::Api.grab client, enactor, "outfit/set #{self.name}=#{outfit.description}"
       end
     end    
   end

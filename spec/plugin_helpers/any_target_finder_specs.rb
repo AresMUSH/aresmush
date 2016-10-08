@@ -7,9 +7,9 @@ module AresMUSH
     describe :find do
       before do
         @client = double
-        Exit.stub(:find_any) { [] }
-        Room.stub(:find_any) { [] }
-        Character.stub(:find_any) { [] }
+        Exit.stub(:find_any_by_name) { [] }
+        Room.stub(:find_any_by_name) { [] }
+        Character.stub(:find_any_by_name) { [] }
         VisibleTargetFinder.stub(:find) { FindResult.new(nil, "Error") }
       end
 
@@ -27,9 +27,9 @@ module AresMUSH
         char2 = double
         exit = double
         room = double
-        Character.should_receive(:find_any).with("A") { [char1, char2] }
-        Exit.should_receive(:find_any).with("A") { [exit] }
-        Room.should_receive(:find_any).with("A") { [room] }
+        Character.should_receive(:find_any_by_name).with("A") { [char1, char2] }
+        Exit.should_receive(:find_any_by_name).with("A") { [exit] }
+        Room.should_receive(:find_any_by_name).with("A") { [room] }
         result = FindResult.new(nil, "an error")
         SingleResultSelector.should_receive(:select).with([char1, char2, exit, room]) { result }
         AnyTargetFinder.find("A", @client).should eq result
@@ -40,9 +40,9 @@ module AresMUSH
         room.stub(:id) { 1 }
         @client.stub(:room) { room }
         char = double
-        Character.stub(:find_any) { [char] }
-        Exit.stub(:find_any) { [nil] }
-        Room.stub(:find_any) { [] }
+        Character.stub(:find_any_by_name) { [char] }
+        Exit.stub(:find_any_by_name) { [nil] }
+        Room.stub(:find_any_by_name) { [] }
         result = FindResult.new(char, nil)
         SingleResultSelector.should_receive(:select).with([char]) { result }
         AnyTargetFinder.find("A", @client).should eq result      

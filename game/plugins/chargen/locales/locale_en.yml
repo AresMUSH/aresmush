@@ -17,6 +17,7 @@ en:
         
         review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if it suits your character."
         
+        not_started: "You haven't starget chargen yet.  Use chargen/start first."
         cant_go_back: "You are already on the first stage of Chargen."
         chargen_complete: "You have completed Chargen!"
         prev_page_footer: "<-- cg/prev"
@@ -42,6 +43,7 @@ en:
         cannot_edit_after_approval: "You can't change your background after you've been approved."
         cannot_edit_bg:  "You don't have permission to change that background."
         bg_set:  "Background set."
+        bg_not_set: "No background available."
         background_review: "Checking that you have a background."
         no_permission_to_view_bg: "You don't have permission to view that background."
         

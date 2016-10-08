@@ -2,20 +2,16 @@ module AresMUSH
   class Character < Ohm::Model
     include ObjectModel
     
-    attribute :handle
-    attribute :handle_id
-    attribute :handle_upcase
     attribute :name
     attribute :name_upcase
     attribute :alias
     attribute :alias_upcase
 
-    index :handle_upcase
-    index :handle_id
     index :name_upcase
     index :alias_upcase
     
     reference :room, "AresMUSH::Room"
+    reference :handle, "AresMUSH::Handle"
     
     set :roles, "AresMUSH::Role"
     
@@ -25,7 +21,7 @@ module AresMUSH
     # CLASS METHODS
     # -----------------------------------
     
-    def self.find_any(name_or_id)
+    def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
       result = Character[name_or_id]
       if (result)
@@ -35,30 +31,35 @@ module AresMUSH
       find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase).to_a
     end
 
-    def self.find_one(name)
-      find_any(name).first
-    end
-    
-    def self.find_by_handle(name)
-      return [] if name.nil?
-      find(handle_upcase: name.upcase)
+    def self.find_one_by_name(name)
+      find_any_by_name(name).first
     end
     
     def self.found?(name)
-      find_any(name).first
+      find_any_by_name(name).first
     end
   
     # Derived classes may implement name checking
     def self.check_name(name)
       nil
     end
+    
+    def self.find_by_handle(handle)
+      Handle.find_any_by_name(handle.name).map { |h| h.character }
+    end
 
     # -----------------------------------
     # INSTANCE METHODS
     # -----------------------------------
     
-    def has_role?(name)
-      role = Role.find(name: name).first
+    def has_role?(name_or_role)
+      return false if !self.roles
+      
+      if (name_or_role.class == Role)
+        role = name_or_role
+      else
+        role = Role.find_one(name: name_or_role)
+      end
       self.roles.include?(role)
     end
         
@@ -69,7 +70,6 @@ module AresMUSH
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
       self.alias_upcase = self.alias ? self.alias.upcase : nil
-      self.handle_upcase = self.handle ? self.handle.upcase : nil
     end
     
     def name_and_alias
@@ -78,6 +78,16 @@ module AresMUSH
       else
         "#{name} (#{self.alias})"
       end
+    end
+    
+    def ooc_name
+      if (self.handle)
+        display_name = "#{self.name} (@#{self.handle.name})"
+      else
+        display_name = self.name
+      end
+      
+      return display_name
     end
     
     def client

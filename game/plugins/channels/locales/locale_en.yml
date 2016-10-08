@@ -18,7 +18,7 @@ en:
         roles_changed_by: "%{name} has changed the permissions on this channel."
         announce_enabled: "%{name} will now show connection messages."
         announce_disabled: "%{name} will no longer show connection messages."
-        
+        invalid_announce_option: "Please use off or on."
         channels: Channels
         channels_title: "Channel                       Description             Announce  Restricted To"
         channel_who: "On channel %{name}: %{chars}." 
@@ -38,7 +38,8 @@ en:
         cant_talk_when_gagged: "You can't talk on a channel you're gagging."
 
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
-        channel_alias_set: "You can now use %{channel_alias} <message> to talk on the %{name} channel. "
+        channel_alias_hint: "%{alias} <msg>"
+        channel_alias_set: "You can use %{channel_alias} to talk on the %{name} channel. "
         short_alias_warning: "Be aware that short channel aliases may conflict with other command shortcuts."
         alias_notice: "You can use the channel/alias command to change your channel aliases."
         
