@@ -130,16 +130,61 @@ Handles
 * Sync Prefs  (TODO)
 * Handle Friends  (TODO)
 
+Idle
+====
+* Start - login times (TODO)
+* Add extra
+* Queue
+* Lastwill on queue
+* Update lastwill
+* Execute - bbpost, delete, warn, roster
+
 Jobs
 ====
 
 Requests
 
 * Create request
+* List request
 * Add to request
 * Admin reply to request
 * Admin-only reply
 * Admin-closed req still shows up as new
 * Request/all shows closed even after read
+* Unread notice on login
+* New activity notice
 
+Jobs
 
+* Create job
+* List jobs
+* Unread notice on login
+* New activity notice
+* Assign
+* Handle
+* Change status/title/category
+
+Login
+=====
+* Email set
+* Email view
+* Private email view
+* Create/Connect
+* Alias (self / other)
+* Quit
+* Password change
+* Password reset
+* Tour finds guest
+
+Mail
+====
+* Send mail
+* Read mail
+* Fwd
+* Reply
+* Mail/new
+* Sentmail on
+* Tag
+* Delete
+* Empty Trash on logout
+* Purge

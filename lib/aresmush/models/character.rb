@@ -7,6 +7,8 @@ module AresMUSH
     attribute :alias
     attribute :alias_upcase
 
+    attribute :password_hash
+
     index :name_upcase
     index :alias_upcase
     
@@ -51,6 +53,25 @@ module AresMUSH
     # -----------------------------------
     # INSTANCE METHODS
     # -----------------------------------
+    
+    def compare_password(entered_password)
+      hash = BCrypt::Password.new(self.password_hash)
+      hash == entered_password
+    end
+    
+    def self.hash_password(password)
+      BCrypt::Password.create(password)
+    end
+    
+    def change_password(raw_password)
+      self.password_hash = Character.hash_password(raw_password)
+    end
+
+    def self.check_password(password)
+      return t('validation.password_too_short') if (password.length < 5)
+      return t('validation.password_cant_have_equals') if (password.include?("="))
+      return nil
+    end
     
     def has_role?(name_or_role)
       return false if !self.roles

@@ -19,7 +19,7 @@ module AresMUSH
       end
         
       def inbox_title
-        @show_from ? t('mail.sent_title') : t('mail.inbox_title')
+        @show_from ? t('mail.inbox_title') : t('mail.sent_title') 
       end
       
       def is_sent_mail
@@ -32,7 +32,7 @@ module AresMUSH
       
       # Message sent to or sent from, depending on the inbox mode.
       def to_or_from(msg)
-        @show_from ? sent_to(msg) : author(msg)
+        @show_from ? author(msg) : msg.to_list
       end
       
       def author(msg)

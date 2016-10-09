@@ -4,7 +4,7 @@
 %xh<%= t('idle.idle_subtitle') %>%xn 
 <% queue.each do |entry| %>
 <%= highlight_color(entry) %><%= left( name(entry), 20 ) %>%xn <%= left( last_on(entry), 13 ) -%>
-<%= action(entry) -%>
+<%= left( action(entry), 16 ) -%>
 <%= lastwill(entry) %>
 <% end %>
 <%= line %>

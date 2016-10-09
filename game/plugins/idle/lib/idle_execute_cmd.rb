@@ -22,7 +22,7 @@ module AresMUSH
         client.program[:idle_queue].each do |idle_char, action|
           case action
           when "Destroy"
-            Global.logger.debug "#{idle_char.name} deleteed for idling out."
+            Global.logger.debug "#{idle_char.name} deleted for idling out."
             idle_char.delete
           when "Roster"
             Global.logger.debug "#{idle_char.name} added to roster."
@@ -35,15 +35,20 @@ module AresMUSH
             # Do nothing
           else
             Global.logger.debug "#{idle_char.name} idled out with action #{action}."
-            idle_char.idled_out = action
-            idle_char.save
+            idle_status = idle_char.idle_status
+            if (idle_status)
+              idle_status.update(status: action)
+            else
+              idle_status = IdleStatus.create(character: idle_char, idled_out: true, status: action)
+              idle_char.update(idle_status: idle_status)
+            end
             report << "#{idle_char.name} - #{action}"
           end
         end
         
         client.program.delete(:idle_queue)
         
-        client.emit BorderedDisplay.list report
+        client.emit BorderedDisplay.list report.sort
         
         Bbs::Api.system_post(
           Global.read_config("idle", "idle_board"), 

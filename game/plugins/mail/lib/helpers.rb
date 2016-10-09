@@ -16,9 +16,19 @@ module AresMUSH
       "Archive"
     end
     
+    def self.get_or_create_mail_prefs(char)
+      prefs = char.mail_prefs
+      if (!prefs)
+        prefs = MailPrefs.create(character: char)
+        char.update(mail_prefs: prefs)
+      end
+      prefs
+    end
+    
     def self.filtered_mail(char)
-      filter = char.mail_filter || Mail.inbox_tag
-      char.mail.select { |d| d.tags.include?(filter) }
+      prefs = Mail.get_or_create_mail_prefs(char)
+      filter = prefs.mail_filter || Mail.inbox_tag
+      char.mail.select { |d| d.tags && d.tags.include?(filter) }
     end
     
     def self.with_a_delivery(client, enactor, num, &block)
@@ -42,8 +52,8 @@ module AresMUSH
         client.emit_failure t('mail.invalid_message_number')
         return
       end
-        
-      yield list[index]
+              
+      yield list.to_a[index]
     end
     
     def self.validate_recipients(names, client)
@@ -59,16 +69,12 @@ module AresMUSH
     
     def self.is_composing_mail?(char)
       return false if !char
-      return false if !char.mail_compose_to
-      return false if char.mail_compose_to.empty?
-      return true
+      !!char.mail_composition
     end
     
     def self.toss_composition(char)
-      char.mail_compose_to = nil
-      char.mail_compose_subject = nil
-      char.mail_compose_body = nil
-      char.save
+      return if !char.mail_composition
+      char.mail_composition.delete
     end
     
     def self.empty_trash(char)
@@ -94,22 +100,26 @@ module AresMUSH
         recipients << result.target
       end
       
-      recipients << author if (author.copy_sent_mail && !recipients.include?(author))
+      copy_sent = author.mail_prefs && author.mail_prefs.copy_sent_mail
+      
+      recipients << author if (copy_sent && !recipients.include?(author))
       
       to_list = recipients.map { |r| r.name }.join(" ")
       
       recipients.each do |r|
         delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
+        tags = []
         if (r == author)
           delivery.read = true
-          if (author.copy_sent_mail)
-            delivery.tags << Mail.sent_tag
+          if (copy_sent)
+            tags << Mail.sent_tag
           else
-            delivery.tags << Mail.inbox_tag
+            tags << Mail.inbox_tag
           end
         else
-          delivery.tags << Mail.inbox_tag
+          tags << Mail.inbox_tag
         end
+        delivery.tags = tags
         delivery.save
         
         receive_client = r.client

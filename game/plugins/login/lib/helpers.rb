@@ -11,16 +11,19 @@ module AresMUSH
     
     def self.wants_announce(listener, connector)
       return false if !listener
-      return true if listener.watch == "all"
-      return false if listener.watch == "none"
+      prefs = listener.login_prefs
+      return false if !listener
+      return true if prefs.watch == "all"
+      return false if prefs.watch == "none"
       Friends::Api.is_friend?(listener, connector)
     end
     
     def self.update_site_info(client, char)
-      char.last_ip = client.ip_addr
-      char.last_hostname = client.hostname.downcase
-      char.last_on = Time.now
-      char.save
+      status = char.login_status
+      status.last_ip = client.ip_addr
+      status.last_hostname = client.hostname.downcase
+      status.last_on = Time.now
+      status.save
     end
     
     def self.terms_of_service
@@ -34,9 +37,10 @@ module AresMUSH
       suspects.each do |s|
         if (char.is_site_match?(s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
+          status = char.login_status
           Jobs::Api.create_job(Global.read_config("login", "jobs", "suspect_category"), 
             t('login.suspect_login_title'), 
-            t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
+            t('login.suspect_login', :name => char.name, :ip => status.last_ip, :host => status.last_hostname, :match => s), 
             Game.master.system_character)
         end
       end

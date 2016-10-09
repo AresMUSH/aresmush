@@ -24,13 +24,15 @@ module AresMUSH
       end
       
       def handle
-        body_so_far = enactor.mail_compose_body
+        composition = enactor.mail_composition
+        
+        body_so_far = composition.body
         if (!body_so_far)
-          enactor.mail_compose_body = self.body
+          composition.body = self.body
         else
-          enactor.mail_compose_body = "#{body_so_far}%R%R#{self.body}"
+          composition.body = "#{body_so_far}%R%R#{self.body}"
         end
-        enactor.save
+        composition.save
         
         client.emit_ooc t('mail.mail_added')
       end

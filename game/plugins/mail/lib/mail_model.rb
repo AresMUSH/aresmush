@@ -1,10 +1,25 @@
 module AresMUSH
+  
   class Character
     collection :mail, "AresMUSH::MailMessage"
-    attribute :copy_sent_mail, DataType::Boolean
-    attribute :mail_filter
-
     reference :mail_composition, "AresMUSH::MailComposition"
+    reference :mail_prefs, "AresMUSH::MailPrefs"
+    
+    def has_unread_mail?
+      !unread_mail.empty?
+    end
+    
+    def unread_mail
+      mail.except(read: true)
+    end
+    
+    def sent_mail_to(recipient)
+      mail.find(author_id: recipient.id)
+    end
+  end 
+  
+  class MailPrefs < Ohm::Model
+    include ObjectModel
     
     before_create :set_default_mail_attributes
     
@@ -12,28 +27,20 @@ module AresMUSH
       self.mail_filter = "Inbox"
     end
     
-    def has_unread_mail?
-      mail.any? { |m| !m.read }
-    end
+    reference :character, "AresMUSH::Character"
     
-    def unread_mail
-      mail.select { |m| !m.read }
-    end
-    
-    def sent_mail_to(recipient)
-      mail.find(author_id: recipient.id)
-    end
-  end    
-    
+    attribute :copy_sent_mail, DataType::Boolean
+    attribute :mail_filter
+  end
+  
   class MailComposition < Ohm::Model
     include ObjectModel
     
     attribute :subject
     attribute :body
+    attribute :to_list, DataType::Array
     
     reference :character, "AresMUSH::Character"
-    
-    set :to_list, "AresMUSH::Chracter"
   end
   
     
@@ -49,5 +56,7 @@ module AresMUSH
     
     attribute :read, DataType::Boolean
     attribute :tags, DataType::Array
+    
+    index :read
   end
 end

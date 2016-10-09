@@ -6,7 +6,7 @@ module AresMUSH
       end
       
       def self.idled_status(char)
-        char.idled_out
+        char.idle_status ? char.idle_status.status : nil
       end
     end
   end

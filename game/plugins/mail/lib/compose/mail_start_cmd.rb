@@ -26,9 +26,8 @@ module AresMUSH
           return
         end
         
-        enactor.mail_compose_to = self.names
-        enactor.mail_compose_subject = self.subject
-        enactor.save
+        composition = MailComposition.create(to: self.names, subject: self.subject)
+        enactor.update(mail_composition: composition)
         
         client.emit_ooc t('mail.mail_started', :subject => self.subject)
       end

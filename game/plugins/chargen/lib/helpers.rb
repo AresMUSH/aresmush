@@ -25,7 +25,7 @@ module AresMUSH
       if (Roster::Api.on_roster?(char))
         status = "%xb%xh#{t('chargen.rostered')}%xn"
       elsif (Idle::Api.idled_status(char))
-        status = "%xr%xh#{t('chargen.idled_out', :status => Idle::Apis.idled_status(char))}%xn"
+        status = "%xr%xh#{t('chargen.idled_out', :status => Idle::Api.idled_status(char))}%xn"
       elsif (!char.is_approved?)
         status = "%xr%xh#{t('chargen.unapproved')}%xn"
       else

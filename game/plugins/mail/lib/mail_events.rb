@@ -5,8 +5,8 @@ module AresMUSH
         client = event.client
         char = event.char
       
-        char.mail_filter = Mail.inbox_tag
-        char.save
+        prefs = Mail.get_or_create_mail_prefs(char)
+        prefs.update(mail_filter:  Mail.inbox_tag)
       
         Mail.empty_trash(char)
       end

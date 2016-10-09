@@ -14,7 +14,7 @@ module AresMUSH
       def handle
         client.program[:idle_queue] = {}
         
-        Character.each do |c|
+        Character.all.each do |c|
           last_on = Login::Api.last_on(c)
           next if !last_on
           next if Idle.is_exempt?(c)
@@ -22,9 +22,9 @@ module AresMUSH
           idle_timeout = Global.read_config("idle", "days_before_idle")
           if (idle_secs / 86400 > idle_timeout)
             if (c.is_approved?)
-              client.program[:idle_queue][c.id] = "Npc"
+              client.program[:idle_queue][c] = "Npc"
             else
-              client.program[:idle_queue][c.id] = "Destroy"
+              client.program[:idle_queue][c] = "Destroy"
             end
           end
         end

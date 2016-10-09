@@ -11,21 +11,24 @@ module AresMUSH
       end
       
       def handle
+        prefs = Mail.get_or_create_mail_prefs(enactor)
+        show_from = true
+        
         if (cmd.switch_is?("inbox"))
-          char.mail_filter = Mail.inbox_tag
+          prefs.update(mail_filter:  Mail.inbox_tag)
         elsif (cmd.switch_is?("archive"))
-          char.mail_filter = Mail.archive_tag
+          prefs.update(mail_filter: Mail.archive_tag)
         elsif (cmd.switch_is?("sent"))
-          char.mail_filter = Mail.sent_tag
+          prefs.update(mail_filter: Mail.sent_tag)
+          show_from = false
         elsif (cmd.switch_is?("trash"))
-          char.mail_filter = Mail.trashed_tag
+          prefs.update(mail_filter: Mail.trashed_tag)
         else
-          char.mail_filter = self.tag || Mail.inbox_tag
+          prefs.update(mail_filter: self.tag || Mail.inbox_tag)
         end
         
-        enactor.save
-
-        template = InboxTemplate.new(enactor, Mail.filtered_mail(client), false, enactor.mail_filter)
+        client.emit "#{show_from} #{prefs.mail_filter}"
+        template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), show_from, prefs.mail_filter)
         client.emit template.render
       end
     end

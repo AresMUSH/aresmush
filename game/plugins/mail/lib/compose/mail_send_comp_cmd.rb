@@ -11,9 +11,11 @@ module AresMUSH
       end
             
       def handle
-        if (Mail.send_mail(enactor.mail_compose_to, 
-          enactor.mail_compose_subject, 
-          enactor.mail_compose_body, 
+        composition = enactor.mail_composition
+        
+        if (Mail.send_mail(composition.to_list, 
+          composition.subject, 
+          composition.body, 
           client, enactor))
           client.emit_ooc t('mail.message_sent')
           Mail.toss_composition(enactor)

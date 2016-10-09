@@ -14,6 +14,9 @@ module AresMUSH
       end
       
       def handle
+        c = Character.find_one_by_name("Faraday")
+        client.emit c.mail.count
+        client.emit c.mail_prefs.inspect
         # Put whatever you need to do here.
         client.emit_success "Done!"
       end

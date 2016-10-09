@@ -43,8 +43,9 @@ module AresMUSH
       
       def delete_message(num)
         Mail.with_a_delivery(client, enactor, num) do |delivery|
-          delivery.tags << Mail.trashed_tag
-          delivery.save
+          tags = delivery.tags
+          tags << Mail.trashed_tag
+          delivery.update(tags: tags)
           client.emit_ooc t("mail.message_deleted", :subject => delivery.subject)
         end
       end

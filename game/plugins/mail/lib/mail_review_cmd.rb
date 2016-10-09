@@ -35,7 +35,7 @@ module AresMUSH
               client.emit template.render
             end
           else
-            template = InboxTemplate.new(enactor, deliveries, true, t('mail.sent_review', :name => model.name))
+            template = InboxTemplate.new(enactor, deliveries, false, t('mail.sent_review', :name => model.name))
             client.emit template.render
           end
         end

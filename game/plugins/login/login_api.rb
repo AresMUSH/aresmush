@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def self.last_on(char)
-        char.last_on
+        char.login_status ? char.login_status.last_on : nil
       end  
     end
   end

@@ -5,7 +5,9 @@ module AresMUSH
       include CommandRequiresLogin
            
       def handle        
-        template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), false, enactor.mail_filter)
+        prefs = Mail.get_or_create_mail_prefs(enactor)
+        show_from = prefs.mail_filter != Mail.sent_tag
+        template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), show_from, prefs.mail_filter)
         client.emit template.render
       end
     end

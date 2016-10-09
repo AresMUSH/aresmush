@@ -20,11 +20,12 @@ module AresMUSH
       
       def handle
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          delivery.tags << Mail.archive_tag
-          delivery.tags.delete(Mail.inbox_tag)
-          delivery.tags.uniq!
+          tags = delivery.tags
+          tags << Mail.archive_tag
+          tags.delete(Mail.inbox_tag)
+          tags.uniq!
+          delivery.update(tags: tags)
           client.emit_success t('mail.message_archived')
-          delivery.save
         end
       end
     end

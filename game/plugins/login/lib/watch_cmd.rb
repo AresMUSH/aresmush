@@ -25,8 +25,14 @@ module AresMUSH
       end
       
       def handle
-        enactor.watch = self.option
-        enactor.save
+        prefs = enactor.login_prefs
+        if (prefs)
+          prefs.update(watch: self.option)
+        else
+          prefs = LoginPrefs.create(character: enactor, watch: self.option)
+          enactor.update(login_prefs: prefs)
+        end
+        
         if (self.option == "all")
           client.emit_success t('login.watch_all')
         elsif (self.option == "none")

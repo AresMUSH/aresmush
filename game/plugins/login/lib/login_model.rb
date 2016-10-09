@@ -1,37 +1,36 @@
 module AresMUSH
-  class Character
-    include Ohm::DataTypes
+  
+  class LoginStatus < Ohm::Model
+    include ObjectModel
+    
+    reference :character, "AresMUSH::Character"
+    
+    attribute :terms_of_service_acknowledged, DataType::Time
+    attribute :last_on, DataType::Time
+    attribute :last_ip
+    attribute :last_hostname
+  end
+  
+  
+  class LoginPrefs < Ohm::Model
+    include ObjectModel
     
     attribute :email
-    attribute :terms_of_service_acknowledged, DataType::Time
     attribute :watch
-    attribute :password_hash
-    attribute :last_on, DataType::Time
 
+    reference :character, "AresMUSH::Character"
+    
     before_create :set_default_login_attributes
     
     def set_default_login_attributes
       self.watch = "all"
     end
+  end
+  
+  class Character
     
-    def compare_password(entered_password)
-      hash = BCrypt::Password.new(self.password_hash)
-      hash == entered_password
-    end
-    
-    def self.hash_password(password)
-      BCrypt::Password.create(password)
-    end
-    
-    def change_password(raw_password)
-      self.password_hash = Character.hash_password(raw_password)
-    end
-
-    def self.check_password(password)
-      return t('validation.password_too_short') if (password.length < 5)
-      return t('validation.password_cant_have_equals') if (password.include?("="))
-      return nil
-    end
+    reference :login_status, "AresMUSH::LoginStatus"
+    reference :login_prefs, "AresMUSH::LoginPrefs"
     
     def self.check_name(name)
       return t('validation.name_too_short') if (name.length < 2)

@@ -22,8 +22,7 @@ module AresMUSH
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
           template = MessageTemplate.new(enactor, delivery)
           client.emit template.render
-          delivery.read = true
-          delivery.save
+          delivery.update(read: true)
           client.program[:last_mail] = delivery
         end
       end
