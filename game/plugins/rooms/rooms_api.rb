@@ -1,4 +1,30 @@
 module AresMUSH
+  
+  class Room
+    def grid_x
+      self.room_grid_x
+    end
+    
+    def grid_y
+      self.room_grid_y
+    end
+    
+    def area
+      self.room_area
+    end
+    
+    def is_foyer?
+      self.room_is_foyer
+    end
+  end
+  
+  class Exit  
+    def allow_passage?(char)
+      return false if (self.lock_keys == Rooms.interior_lock)
+      return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
+    end
+  end
+  
   module Rooms
     module Api
       def self.move_to(client, char, room, exit_name = nil?)
@@ -19,30 +45,6 @@ module AresMUSH
       
       def self.ooc_room
         Game.master.ooc_room
-      end
-      
-      def self.area(room)
-        room.room_area
-      end
-    
-      def self.grid_x(room)
-        room.room_grid_x
-      end
-    
-      def self.grid_y(room)
-        room.room_grid_y
-      end
-    
-      def self.is_foyer?(room)
-        room.room_is_foyer
-      end
-      
-      def self.room_type(room)
-        room.room_type
-      end
-      
-      def self.can_use_exit?(ex, char)
-        Rooms.can_use_exit?(ex, char)
       end
     end
   end

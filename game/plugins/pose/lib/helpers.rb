@@ -8,7 +8,7 @@ module AresMUSH
         if (is_emit && char.pose_nospoof)
           nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
         end
-        client.emit "#{char.autospace}#{nospoof}#{pose}"
+        client.emit "#{char.pose_autospace}#{nospoof}#{pose}"
       end
       
       if (!is_ooc)
@@ -41,10 +41,6 @@ module AresMUSH
       Global.read_config("pose", "repose_enabled")
     end
     
-    def self.repose_on(room)
-      repose_enabled && room.repose_info
-    end
-    
     def self.reset_reposes
       # Don't clear poses in rooms with active people.
       active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
@@ -66,7 +62,7 @@ module AresMUSH
     
     def self.reset_repose(room)
       repose = room.repose_info
-      if (Rooms::Api.room_type(room) == "IC" && !repose)
+      if (room.room_type == "IC" && !repose)
         Global.logger.debug "Enabling repose in #{room.name}."
         repose = ReposeInfo.create(room: room)
         room.update(repose_info: repose)

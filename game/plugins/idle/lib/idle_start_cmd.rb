@@ -15,7 +15,7 @@ module AresMUSH
         client.program[:idle_queue] = {}
         
         Character.all.each do |c|
-          last_on = Login::Api.last_on(c)
+          last_on = c.last_on
           next if !last_on
           next if Idle.is_exempt?(c)
           idle_secs = Time.now - last_on

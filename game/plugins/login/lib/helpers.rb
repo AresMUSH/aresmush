@@ -13,7 +13,7 @@ module AresMUSH
       return false if !listener
       return true if listener.login_watch == "all"
       return false if listener.login_watch == "none"
-      Friends::Api.is_friend?(listener, connector)
+      listener.is_friend?(connector)
     end
     
     def self.update_site_info(client, char)
@@ -52,11 +52,7 @@ module AresMUSH
     def self.guest_role
       Global.read_config("login", "guest_role")
     end
-    
-    def self.is_guest?(char)
-      char.has_any_role?(Login.guest_role)
-    end
-    
+        
     def self.guests
       role = Role.find_one_by_name(Login.guest_role)
       Character.all.select { |c| c.roles.include?(role) }

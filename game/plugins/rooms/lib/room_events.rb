@@ -9,7 +9,7 @@ module AresMUSH
     class CharDisconnectedEventHandler      
       def on_event(event)
         client = event.client
-        if (Login::Api.is_guest?(event.char))
+        if (event.char.is_guest?)
           Rooms.move_to(client, event.char, Game.master.welcome_room)
         end
       end  

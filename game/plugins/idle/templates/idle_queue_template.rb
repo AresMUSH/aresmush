@@ -29,7 +29,7 @@ module AresMUSH
       
       def last_on(entry)
         char = entry[:char]
-        OOCTime::Api.local_short_timestr(@enactor, Login::Api.last_on(char))
+        OOCTime::Api.local_short_timestr(@enactor, char.last_on)
       end
       
       def action(entry)

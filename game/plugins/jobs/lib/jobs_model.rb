@@ -29,16 +29,11 @@ module AresMUSH
       Job.all.select { |j| !read_jobs.include?(j) }
     end
     
-    def has_unread_jobs?
-      !unread_jobs.empty?
-    end
-  
-    def has_unread_requests?
+    def unread_requests
       if (Jobs.can_access_jobs?(self))
-        return false
+        return []
       end
-      requests = self.jobs.select { |r| r.is_unread?(self) }
-      !requests.empty?
+      self.jobs.select { |r| r.is_unread?(self) }
     end
   end
   

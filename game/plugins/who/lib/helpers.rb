@@ -8,7 +8,7 @@ module AresMUSH
         return t('who.hidden')
       end
 
-      room_area = Rooms::Api.area(char.room)
+      room_area = char.room.area
       area = !room_area ? "" : "#{room_area} - "
       "#{area}#{char.room.name}"
     end

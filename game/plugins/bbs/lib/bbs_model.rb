@@ -1,15 +1,6 @@
 module AresMUSH
   
   class Character
-    def has_unread_bbs?
-      BbsBoard.all.each do |b|
-        if (b.has_unread?(self))
-          return true
-        end
-      end
-      return false
-    end
-    
     collection :bbs_read_marks, "AresMUSH::BbsReadMark"
   end
   

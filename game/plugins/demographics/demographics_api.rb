@@ -1,24 +1,19 @@
 module AresMUSH
+  class Character
+    def age
+      Demographics.calculate_age(demographic(:birthdate))
+    end
+    
+    def demographic(name)
+      return nil if !self.demographics
+      self.demographics.send(name)
+    end  
+  end
+  
   module Demographics
     module Api
       def self.app_review(char)
         Demographics.app_review(char)
-      end
-      
-      def self.age(char)
-        char.age
-      end
-      
-      def self.fullname(char)
-        char.fullname
-      end
-      
-      def self.gender(char)
-        char.gender
-      end
-      
-      def self.demographic(char, name)
-        char.demographic(name)
       end
       
       # His/Her/Their

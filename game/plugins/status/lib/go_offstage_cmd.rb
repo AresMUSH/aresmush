@@ -9,7 +9,7 @@ module AresMUSH
         oocloc = Rooms::Api.ooc_room
         
         enactor.is_afk = false
-        if (Rooms::Api.room_type(enactor.room) == "IC")
+        if (room.room_type == "IC")
           enactor.last_ic_location_id = enactor.room.id
         end
         # No need to save because we're going to do it when we move them

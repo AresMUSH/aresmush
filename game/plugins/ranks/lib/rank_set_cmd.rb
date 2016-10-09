@@ -32,7 +32,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
           
           if (!self.rank)
-            enactor.update(rank: rank)
+            enactor.update(ranks_rank: rank)
             client.emit_success t('ranks.rank_cleared')
           else
             error = Ranks.check_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
@@ -41,7 +41,7 @@ module AresMUSH
               return
             end
           
-            enactor.update(rank: rank)
+            enactor.update(ranks_rank: rank)
             client.emit_success t('ranks.rank_set', :rank => rank)
           end
         end

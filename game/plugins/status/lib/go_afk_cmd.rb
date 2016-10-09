@@ -22,7 +22,7 @@ module AresMUSH
           
         enactor.afk_message = self.message  
         enactor.is_afk = true
-        if (Rooms::Api.room_type(enactor.room) == "IC")
+        if (enactor.room.room_type == "IC")
           enactor.last_ic_location_id = enactor.room.id
         end
         enactor.save     

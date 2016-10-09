@@ -38,13 +38,13 @@ module AresMUSH
         end
            
         it "should send guests home to the welcome room" do
-          Login::Api.stub(:is_guest?) { true }
+          @char.stub(:is_guest?) { true }
           Rooms.should_receive(:move_to).with(@client, @char, @welcome_room)
           @login.on_event CharDisconnectedEvent.new(@client, @char)
         end
 
         it "should not move around regular characters" do
-          Login::Api.stub(:is_guest?) { false }
+          @char.stub(:is_guest?) { false }
           Rooms.should_not_receive(:move_to)
           @login.on_event CharDisconnectedEvent.new(@client, @char)
         end

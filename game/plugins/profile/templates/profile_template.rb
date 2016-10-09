@@ -29,16 +29,16 @@ module AresMUSH
         if (@char.client)
           t('profile.currently_connected')
         else
-          OOCTime::Api.local_long_timestr(@enactor, Login::Api.last_on(@char))
+          OOCTime::Api.local_long_timestr(@enactor, @char.last_on)
         end
       end
       
       def timezone
-        OOCTime::Api.timezone(@char)
+        @char.timezone
       end
       
       def custom_profile
-        !char.profile_fields.empty?
+        !@char.profile_fields.empty?
       end
       
       def handle_name

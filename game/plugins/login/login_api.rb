@@ -1,14 +1,20 @@
 module AresMUSH
+  class Character
+    def is_guest?
+      self.has_any_role?(Login.guest_role)
+    end
+    
+    def last_on
+      self.login_status ? self.login_status.last_on : nil
+    end
+  end
+  
   module Login
     module Api
       def self.terms_of_service
         Login.terms_of_service
       end
-      
-      def self.is_guest?(char)
-        Login.is_guest?(char)
-      end
-      
+            
       def self.change_password(char, password)
         char.change_password(password)
       end
@@ -16,10 +22,6 @@ module AresMUSH
       def self.is_site_match?(char, ip, hostname)
         Login.is_site_match?(char, ip, hostname)
       end
-      
-      def self.last_on(char)
-        char.login_status ? char.login_status.last_on : nil
-      end  
     end
   end
 end

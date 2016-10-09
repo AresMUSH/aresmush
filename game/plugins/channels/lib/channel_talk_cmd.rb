@@ -54,7 +54,7 @@ module AresMUSH
         end
           
         title = options.title
-        ooc_name = Handles::Api.ooc_name(enactor)
+        ooc_name = enactor.ooc_name
         name = !title ? ooc_name : "#{title} #{ooc_name}"
         self.channel.pose(name, self.msg)
       end

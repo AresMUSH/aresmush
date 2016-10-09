@@ -8,15 +8,6 @@ module AresMUSH
       self.demographics.delete if self.demographics
     end
     
-    def age
-      Demographics.calculate_age(demographic(:birthdate))
-    end
-    
-    def demographic(name)
-      return nil if !self.demographics
-      self.demographics.send(name)
-    end
-    
     def get_or_create_demographics
       demo = self.demographics
       if (!demo)

@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage::Api.can_manage_game?(enactor)
+        return t('dispatcher.not_allowed') if !enactor.can_manage_game?
         return nil
       end
       

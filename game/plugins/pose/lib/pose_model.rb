@@ -2,12 +2,12 @@ module AresMUSH
 
   class Character
     attribute :pose_nospoof, DataType::Boolean
-    attribute :autospace
+    attribute :pose_autospace
     
     before_create :set_default_autospace
     
     def set_default_autospace
-      self.autospace = "%r"
+      self.pose_autospace = "%r"
     end
   end
   

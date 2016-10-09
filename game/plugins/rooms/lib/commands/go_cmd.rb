@@ -27,7 +27,7 @@ module AresMUSH
           return
         end
         
-        if (!Rooms::Api.can_use_exit?(exit, enactor))
+        if (!exit.allow_passage?(enactor))
           client.emit_failure t('rooms.cant_go_through_locked_exit')
           return
         end

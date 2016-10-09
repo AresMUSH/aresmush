@@ -13,10 +13,6 @@ module AresMUSH
       self.mail.each { |m| m.delete }
     end
     
-    def has_unread_mail?
-      !unread_mail.empty?
-    end
-    
     def unread_mail
       mail.except(read: true)
     end

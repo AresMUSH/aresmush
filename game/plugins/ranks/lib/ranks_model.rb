@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    attribute :rank
+    attribute :ranks_rank
   end
 end

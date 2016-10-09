@@ -13,12 +13,12 @@ module AresMUSH
       end
       
       def is_foyer
-        Rooms::Api.is_foyer?(@room)
+        @room.is_foyer?
       end
       
       # List of all exits in the room.
       def exits
-        if (Rooms::Api.is_foyer?(@room))
+        if (@room.is_foyer?)
           non_foyer_exits
         else
           @room.exits.sort_by(:name, :order => "ALPHA")
@@ -37,7 +37,7 @@ module AresMUSH
       end
       
       def repose_on
-        Pose::Api.repose_on(@room)
+        @room.repose_on?
       end
       
       # Short IC date/time string
@@ -46,16 +46,16 @@ module AresMUSH
       end
       
       def area
-        Rooms::Api.area(@room)
+        @room.area
       end
       
       # Room grid coordinates, e.g. (1,2)
       def grid
-        "(#{Rooms::Api.grid_x(@room)},#{Rooms::Api.grid_y(@room)})"
+        "(#{@room.grid_x},#{@room.grid_y})"
       end
       
       def weather
-         w = Weather::Api.weather_for_area(Rooms::Api.area(@room))
+         w = Weather::Api.weather_for_area(@room.area)
          w ? "#{w}%R" : nil
       end
       
@@ -95,9 +95,9 @@ module AresMUSH
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)
-        if (Status::Api.is_afk?(char))
+        if (char.is_afk?)
           msg = "%xy%xh<#{t('describe.afk')}>%xn"
-          afk_message = Status::Api.afk_message(char)
+          afk_message = char.afk_display
           if (afk_message)
             msg = "#{msg} %xy#{afk_message}%xn"
           end
@@ -114,7 +114,7 @@ module AresMUSH
       end
       
       def exit_destination(e)
-        locked = Rooms::Api.can_use_exit?(e, @enactor) ? "" : "%xr*#{t('describe.locked')}*%xn "
+        locked =  e.allow_passage?(@enactor) ? "" : "%xr*#{t('describe.locked')}*%xn "
         name = e.dest ? e.dest.name : t('describe.nowhere')
         "#{locked}#{name}"
       end

@@ -6,22 +6,14 @@ module AresMUSH
       else
         names.any? { |n| has_role?(n) }
       end
+    end
+    
+    def is_admin?
+      self.has_any_role?(Global.read_config("roles", "game_admin"))
     end  
-  end
-  
-  module Roles
-    module Api
-      def self.chars_with_role(name)
-        Roles.chars_with_role(name)
-      end
-      
-      def self.is_master_admin?(char)
-        char.is_master_admin?
-      end
-      
-      def self.is_admin?(char)
-        char.is_admin?
-      end
+        
+    def is_master_admin?
+      self == Game.master.master_admin
     end
   end
 end

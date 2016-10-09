@@ -2,16 +2,15 @@ module AresMUSH
   class Character    
     def is_approved?
       self.is_approved
-    end  
+    end
+    
+    def background
+      self.cg_background
+    end
   end
   
   module Chargen
     module Api
-    
-      def self.background(char)
-        char.background
-      end
-            
       def self.format_review_status(msg, error)
         Chargen.format_review_status(msg, error)
       end

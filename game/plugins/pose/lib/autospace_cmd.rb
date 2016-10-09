@@ -14,10 +14,10 @@ module AresMUSH
       def handle
         
         if (!self.option)
-          enactor.update(autospace: nil)
+          enactor.update(pose_autospace: nil)
           message = t('pose.autospace_cleared')
         else
-          enactor.update(autospace: self.option)
+          enactor.update(pose_autospace: self.option)
           message = t('pose.autospace_set', :option => self.option)
         end
         

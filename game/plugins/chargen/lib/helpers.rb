@@ -22,10 +22,10 @@ module AresMUSH
     end      
     
     def self.approval_status(char)
-      if (Roster::Api.on_roster?(char))
+      if (char.on_roster?)
         status = "%xb%xh#{t('chargen.rostered')}%xn"
-      elsif (Idle::Api.idled_status(char))
-        status = "%xr%xh#{t('chargen.idled_out', :status => Idle::Api.idled_status(char))}%xn"
+      elsif (char.idled_out?)
+        status = "%xr%xh#{t('chargen.idled_out', :status => char.idled_out_reason)}%xn"
       elsif (!char.is_approved?)
         status = "%xr%xh#{t('chargen.unapproved')}%xn"
       else

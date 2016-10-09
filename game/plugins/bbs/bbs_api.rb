@@ -1,4 +1,15 @@
 module AresMUSH
+  class Character
+    def has_unread_bbs?
+      BbsBoard.all.each do |b|
+        if (b.has_unread?(self))
+          return true
+        end
+      end
+      return false
+    end
+  end
+  
   module Bbs
     module Api
       def self.system_post(configured_board, subject, message)
@@ -7,10 +18,6 @@ module AresMUSH
       
       def self.post(board_name, subject, message, author, client = nil)
         Bbs.post(board_name, subject, message, author, client)
-      end
-      
-      def self.has_unread_bbs?(char)
-        char.has_unread_bbs?
       end
     end
   end

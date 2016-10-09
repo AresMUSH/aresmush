@@ -84,10 +84,6 @@ module AresMUSH
       self.roles.include?(role)
     end
         
-    def is_master_admin?
-      self == Game.master.master_admin
-    end
-    
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
       self.alias_upcase = self.alias ? self.alias.upcase : nil

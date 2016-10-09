@@ -41,7 +41,7 @@ module AresMUSH
           message = PoseFormatter.format(name, self.message)
           recipients = results.map { |result| result.char.name_and_alias }.join(", ")
         
-          client.emit t('page.to_sender', :autospace => Pose::Api.autospace(enactor), :color => page_color, :recipients => recipients, :message => message)
+          client.emit t('page.to_sender', :autospace => enactor.autospace, :color => page_color, :recipients => recipients, :message => message)
           results.each do |r|
             page_recipient(r.client, r.char, recipients, message)
           end
@@ -58,7 +58,7 @@ module AresMUSH
               t('page.missed_page_body', :name => enactor_name, :message => message), 
               client, enactor)
         else          
-          other_client.emit t('page.to_recipient', :autospace => Pose::Api.autospace(other_char), :color => page_color, :recipients => recipients, :message => message)
+          other_client.emit t('page.to_recipient', :autospace => other_char.autospace, :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client, other_char)
         end
       end
@@ -66,8 +66,8 @@ module AresMUSH
       def send_afk_message(other_client, other_char)
         if (other_char.is_afk)
           afk_message = ""
-          if (Status::Api.afk_message(other_char))
-            afk_message = "(#{Status::Api.afk_message(other_char)})"
+          if (other_char.afk_display)
+            afk_message = "(#{other_char.afk_display})"
           end
           client.emit_ooc t('page.recipient_is_afk', :name => other_char.name, :message => afk_message)
         elsif (Status::Api.is_idle?(other_client))

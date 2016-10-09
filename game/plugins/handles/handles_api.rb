@@ -16,10 +16,6 @@ module AresMUSH
         return [] if !handle
         Character.find_by_handle(handle)
       end
-      
-      def self.ooc_name(char)
-        char.ooc_name
-      end
     end
   end
 end

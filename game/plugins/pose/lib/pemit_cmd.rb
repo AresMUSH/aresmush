@@ -28,7 +28,7 @@ module AresMUSH
             if (enactor.pose_nospoof)
               nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => enactor_name)}%xn%R"
             end
-            r.client.emit "#{enactor.autospace}#{nospoof}#{self.message}"
+            r.client.emit "#{enactor.pose_autospace}#{nospoof}#{self.message}"
           end
         end
       end

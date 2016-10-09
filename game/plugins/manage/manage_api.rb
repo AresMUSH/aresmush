@@ -1,9 +1,7 @@
 module AresMUSH
-  module Manage
-    module Api
-      def self.can_manage_game?(char)
-        return Manage.can_manage_game?(char)
-      end
+  class Character
+    def can_manage_game?
+      Manage.can_manage_game?(self)
     end
   end
 end

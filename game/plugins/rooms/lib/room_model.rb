@@ -26,6 +26,7 @@ module AresMUSH
     end
   end
   
+  
   class Room
     attribute :room_grid_x
     attribute :room_grid_y
@@ -50,11 +51,6 @@ module AresMUSH
     
     def set_default_lock
       self.lock_keys = []
-    end
-    
-    def allow_passage?(char)
-      return false if (self.lock_keys == Rooms.interior_lock)
-      return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
     end
   end
 end

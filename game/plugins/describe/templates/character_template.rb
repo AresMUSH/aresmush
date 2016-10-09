@@ -12,7 +12,7 @@ module AresMUSH
       end
             
       def rank
-        Ranks::Api.rank(@char)
+        @char.rank
       end
       
       # Fullname, with rank if set (e.g. Commander William Adama)
@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def callsign
-        Demographics::Api.demographic(@char, :callsign)
+        @char.demographic(:callsign)
       end
       
       # Fullname with rank and callsign, if set.  (e.g. Commander William "Husker" Adama)
@@ -35,7 +35,7 @@ module AresMUSH
       end
       
       def fullname
-        Demographics::Api.demographic(@char, :fullname)
+        @char.demographic(:fullname)
       end
       
       def actor

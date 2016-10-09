@@ -10,7 +10,7 @@ module AresMUSH
         
     def self.active_chars
       base_list = Character.all
-      base_list.select { |c| !(c.idled_out? || Roles::Api.is_admin?(c) || c.is_playerbit || Login::Api.is_guest?(c))}
+      base_list.select { |c| !(c.idled_out? || c.is_admin? || c.is_playerbit || c.is_guest?)}
     end
     
   end

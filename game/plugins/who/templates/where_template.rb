@@ -24,7 +24,7 @@ module AresMUSH
         groups = {}
         self.online_chars.each do |c|
           room = Who.who_room_name(c)
-          idle = Status::Api.is_afk?(c) || Status::Api.is_idle?(c.client)
+          idle = c.is_afk? || Status::Api.is_idle?(c.client)
           name = idle ? "%xh%xx#{c.name}%xn" : c.name
           if (groups.has_key?(room))
             groups[room] << name

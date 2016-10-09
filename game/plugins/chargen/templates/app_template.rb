@@ -36,7 +36,7 @@ module AresMUSH
       end
      
       def ranks
-        Ranks.app_review(@char)
+        Ranks::Api.app_review(@char)
       end
      
       def job_info

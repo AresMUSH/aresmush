@@ -7,10 +7,6 @@ module AresMUSH
     def delete_groups
       self.group_assignments.each { |g| g.delete }
     end
-    
-    def group(name)
-      GroupAssignment.find(character_id: self.id).combine(group: name).first
-    end
   end
   
   class GroupAssignment < Ohm::Model

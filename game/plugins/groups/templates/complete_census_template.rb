@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def gender(char)
-        Demographics::Api.demographic(char, :gender)
+        char.demographic(:gender)
       end
       
       def position(char)

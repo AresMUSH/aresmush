@@ -32,7 +32,7 @@ module AresMUSH
             return
           end
                     
-          model.update(background: self.background)
+          model.update(cg_background: self.background)
           client.emit_success t('chargen.bg_set')
         end
       end

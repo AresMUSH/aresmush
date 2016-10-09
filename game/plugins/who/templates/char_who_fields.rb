@@ -5,7 +5,7 @@ module AresMUSH
     module WhoCharacterFields
      
       def position(char)
-        Groups::Api.group(char, "Position")
+        char.group_value("Position")
       end
     
       def status_color(char)
@@ -13,11 +13,11 @@ module AresMUSH
       end
       
       def status(char)
-        Status::Api.status(char)
+        char.status
       end
    
       def faction(char)
-        Groups::Api.group(char, "Faction")
+        char.group_value("Faction")
       end
 
       # How long a character's been idle, like 20m

@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    attribute :background
+    attribute :cg_background
     attribute :is_approved, DataType::Boolean
     reference :chargen_info, "AresMUSH::ChargenInfo"
     

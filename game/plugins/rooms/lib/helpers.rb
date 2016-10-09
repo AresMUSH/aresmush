@@ -33,10 +33,6 @@ module AresMUSH
       [ "INTERIOR_LOCK" ]
     end
     
-    def self.can_use_exit?(ex, char)
-      ex.allow_passage?(char)
-    end
-    
     def self.move_to(client, char, room, exit_name = nil?)
       current_room = char.room
       

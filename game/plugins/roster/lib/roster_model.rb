@@ -16,10 +16,6 @@ module AresMUSH
       end
       registry
     end
-    
-    def on_roster?
-      !!roster_registry
-    end
   end
   
   class RosterRegistry < Ohm::Model

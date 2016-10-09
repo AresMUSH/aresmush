@@ -8,10 +8,6 @@ module AresMUSH
       self.idle_status.delete if self.idle_status
     end
     
-    def idled_out?
-      self.idle_status
-    end
-    
     def get_or_create_idle_status
       status = self.idle_status
       if (!status)

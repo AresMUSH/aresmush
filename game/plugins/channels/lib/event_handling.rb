@@ -20,7 +20,7 @@ module AresMUSH
           end
         end
 
-        if (Login::Api.is_guest?(char))
+        if (char.is_guest?)
           Channels.add_to_default_channels(client, char)
         end
       end

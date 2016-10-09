@@ -1,14 +1,23 @@
 module AresMUSH
+  class Character
+    def autospace
+      self.pose_autospace
+    end
+    
+    def autospace=(value)
+      self.update(pose_autospace: value)
+    end
+  end
+  
+  class Room
+    def repose_on?
+      Pose.repose_enabled && self.repose_info
+    end
+  end
+  
+  
   module Pose
     module Api
-      def self.autospace(char)
-        char.autospace
-      end
-      
-      def self.repose_on(room)
-        Pose.repose_on(room)
-      end
-      
       def self.reset_repose(room)
         Pose.reset_repose(room)
       end

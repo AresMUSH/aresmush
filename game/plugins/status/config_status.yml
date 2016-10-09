@@ -36,3 +36,6 @@ status:
     shortcuts:
         "set": "status"
         "ic" : "onstage"
+        "afk on": "afk"
+        "afk/on": "afk"
+        "afk/off": "afk off"
