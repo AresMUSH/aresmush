@@ -12,25 +12,30 @@ module AresMUSH
         return nil
       end
       
+      def check_can_advance
+        return t('chargen.not_started') if !Chargen.current_stage(enactor)
+        return nil
+      end
+      
       def handle
-        self.chargen_info = enactor.chargen_info
+        info = enactor.get_or_create_chargen_info
+        job = info.approval_job
         
-        job = Chargen.approval_job(enactor)
         if (!job)
           if (cmd.switch_is?("confirm"))
             job = create_job
-            self.chargen_info.approval_job = job
-            self.chargen_info.chargen_locked = true
+            info.approval_job = job
+            info.locked = true
             client.emit_success t('chargen.app_submitted')
           else
             client.emit_ooc t('chargen.app_confirm')
           end
         else
           update_job(job)
-          self.chargen_info.chargen_locked = true
+          info.locked = true
           client.emit_success t('chargen.app_resubmitted')
         end
-        self.chargen_info.save
+        info.save
       end
       
       
@@ -43,7 +48,7 @@ module AresMUSH
         if (job[:error])
           raise "Problem submitting application: #{job[:error]}"
         end
-        job
+        job[:job]
       end
       
       def update_job(job)

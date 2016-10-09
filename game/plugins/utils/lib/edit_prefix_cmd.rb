@@ -12,14 +12,13 @@ module AresMUSH
 
       def handle
         if (!self.prefix)
-          enactor.edit_prefix = nil
+          enactor.update(utils_edit_prefix: nil)
           message = t('edit.prefix_cleared')
         else
-          enactor.edit_prefix = self.prefix
+          enactor.update(utils_edit_prefix: self.prefix)
           message = t('edit.prefix_set')
         end
         
-        enactor.save
         client.emit_success message
       end
     end

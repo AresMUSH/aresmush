@@ -19,7 +19,10 @@ module AresMUSH
       end
       
       def handle
-        Utils::Api.grab client, "profile/set #{self.field}=#{enactor.profile[self.field]}"
+        field = ProfileField.find(name: self.field).first
+        text = field ? field.data : ""
+        
+        Utils::Api.grab client, enactor, "profile/set #{self.field}=#{text}"
       end
         
     end

@@ -22,27 +22,27 @@ module AresMUSH
       end
       
       def self.area(room)
-        room.area
+        room.room_area
       end
     
       def self.grid_x(room)
-        room.grid_x
+        room.room_grid_x
       end
     
       def self.grid_y(room)
-        room.grid_y
+        room.room_grid_y
       end
     
       def self.is_foyer?(room)
-        room.is_foyer
+        room.room_is_foyer
       end
       
       def self.room_type(room)
         room.room_type
       end
       
-      def self.can_use_exit?(exit, char)
-        exit.allow_passage?(char)
+      def self.can_use_exit?(ex, char)
+        Rooms.can_use_exit?(ex, char)
       end
     end
   end

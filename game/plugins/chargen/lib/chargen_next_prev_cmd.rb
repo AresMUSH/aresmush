@@ -41,9 +41,7 @@ module AresMUSH
           return
         end
         
-        info = enactor.chargen_info
-        info.current_stage = new_page
-        info.save
+        enactor.chargen_info.update(current_stage: new_page)
         
         template = ChargenTemplate.new(enactor)
         client.emit template.render

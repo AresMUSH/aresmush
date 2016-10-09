@@ -21,7 +21,7 @@ module AresMUSH
         if (Rooms::Api.is_foyer?(@room))
           non_foyer_exits
         else
-          @room.exits.sort_by(:name)
+          @room.exits.sort_by(:name, :order => "ALPHA")
         end
       end
       

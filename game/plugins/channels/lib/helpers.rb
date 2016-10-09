@@ -35,13 +35,12 @@ module AresMUSH
     
     def self.is_gagging?(char, channel)
       options = Channels.get_channel_options(char, channel)
-      options.gagging
+      options ? options.gagging : false
     end
     
     def self.set_gagging(char, channel, gag)
       options = Channels.get_channel_options(char, channel)
-      options.gagging = gag
-      options.save
+      options.update(gagging: gag)
     end
     
     def self.channel_who(channel)
@@ -149,12 +148,10 @@ module AresMUSH
       end
       
       options = Channels.get_channel_options(char, channel)
-      options.aliases = aliases
-      options.save
+      options.update(aliases: aliases)
       
       client.emit_ooc options.alias_hint
       
-      char.save
       return true
     end
     

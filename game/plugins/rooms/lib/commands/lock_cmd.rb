@@ -50,11 +50,10 @@ module AresMUSH
         end
         
         if (cmd.root_is?("unlock"))
-          target.lock_keys = []
+          target.update(lock_keys: [])
         else
-          target.lock_keys = self.lock_keys
+          target.update(lock_keys: self.lock_keys)
         end
-        target.save
         client.emit_success self.lock_keys.empty? ? t('rooms.exit_unlocked') : t('rooms.exit_locked')
       end
     end

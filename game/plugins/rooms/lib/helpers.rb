@@ -33,6 +33,10 @@ module AresMUSH
       [ "INTERIOR_LOCK" ]
     end
     
+    def self.can_use_exit?(ex, char)
+      ex.allow_passage?(char)
+    end
+    
     def self.move_to(client, char, room, exit_name = nil?)
       current_room = char.room
       
@@ -42,12 +46,11 @@ module AresMUSH
         current_room.emit_ooc t('rooms.char_has_left', :name => char.name)
       end
       
-      char.room = room
+      char.update(room: room)
       if (client)
         Rooms.emit_here_desc(client, char)
       end
       
-      char.save
       room.emit_ooc t('rooms.char_has_arrived', :name => char.name)
     end
   end

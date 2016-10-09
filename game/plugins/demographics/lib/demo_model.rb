@@ -2,6 +2,12 @@ module AresMUSH
   class Character
     reference :demographics, "AresMUSH::DemographicInfo"
     
+    before_delete :delete_demographics
+    
+    def delete_demographics
+      self.demographics.delete if self.demographics
+    end
+    
     def age
       Demographics.calculate_age(demographic(:birthdate))
     end
@@ -9,6 +15,15 @@ module AresMUSH
     def demographic(name)
       return nil if !self.demographics
       self.demographics.send(name)
+    end
+    
+    def get_or_create_demographics
+      demo = self.demographics
+      if (!demo)
+        demo = DemographicInfo.create(character: self)
+        self.update(demographics: demo)
+      end
+      demo
     end
   end
   

@@ -19,14 +19,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          background = model.background
-          
-          if (!background)
-            client.emit_failure t('chargen.bg_not_set')
-            return
-          end
-            
-          template = BgTemplate.new(model, background)
+          template = BgTemplate.new(model, model.background)
           client.emit template.render
         end
       end

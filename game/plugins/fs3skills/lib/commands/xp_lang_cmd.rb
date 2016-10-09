@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def check_approval
-        return t('fs3skills.not_approved') if !enactor.is_approved
+        return t('fs3skills.not_approved') if !enactor.is_approved?
         return nil
       end
       

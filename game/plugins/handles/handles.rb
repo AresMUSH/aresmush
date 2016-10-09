@@ -2,7 +2,6 @@ $:.unshift File.dirname(__FILE__)
 load "handles_api.rb"
 load "lib/event_handlers.rb"
 load "lib/handle_link_cmd.rb"
-load "lib/handles_model.rb"
 
 module AresMUSH
   module Handles

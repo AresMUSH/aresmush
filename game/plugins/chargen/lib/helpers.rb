@@ -5,7 +5,7 @@ module AresMUSH
     end
     
     def self.bg_app_review(char)
-      error = !Chargen.background_text(char) ? t('chargen.not_set') : t('chargen.ok')
+      error = !char.background ? t('chargen.not_set') : t('chargen.ok')
       Chargen.format_review_status t('chargen.background_review'), error
     end
     
@@ -35,10 +35,11 @@ module AresMUSH
     end
     
     def self.check_chargen_locked(char)
+      return t('chargen.cant_be_changed') if char.is_approved?
+
       info = char.chargen_info
       return nil if !info
-      return t('chargen.cant_be_changed') if info.is_approved
-      return t('chargen.app_in_progress') if info.chargen_locked
+      return t('chargen.app_in_progress') if info.locked
       return nil
     end
     
@@ -77,10 +78,6 @@ module AresMUSH
     
     def self.current_stage(char)
       char.chargen_info ? char.chargen_info.current_stage : nil
-    end
-    
-    def self.background_text(char)
-      char.background ? char.background.text : nil
     end
     
     def self.approval_job(char)

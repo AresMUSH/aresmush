@@ -29,9 +29,7 @@ module AresMUSH
       end
       
       def handle        
-        enactor.is_afk = false
-        enactor.is_on_duty = self.status.is_on?
-        enactor.save
+        enactor.update(is_on_duty: self.status.is_on?)
         client.emit_ooc t('status.set_duty', :value => self.status)
       end
     end

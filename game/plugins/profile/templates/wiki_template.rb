@@ -11,11 +11,11 @@ module AresMUSH
       end
       
       def fullname
-        Demographics::Api.fullname(@char)
+        Demographics::Api.demographic(@char, :fullname)
       end
       
       def gender
-        Demographics::Api.gender(@char)
+        Demographics::Api.demographic(@char, :gender)
       end
       
       def height
@@ -77,7 +77,8 @@ module AresMUSH
       end
 
       def hooks
-        @char.hooks.map { |h, v| "%R* **#{h}** - #{v}" }.join
+        #@char.hooks.map { |h, v| "%R* **#{h}** - #{v}" }.join
+        "" # TODO
       end
     end
   end

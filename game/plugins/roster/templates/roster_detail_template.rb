@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def fullname
-        Demographics::Api.fullname(@char)
+        Demographics::Api.demographic(@char, :fullname)
       end
       
       def actor

@@ -31,8 +31,9 @@ module AresMUSH
         if (result.found?)
           suspect = result.target
           login_status = suspect.login_status
-          ip = login_status.last_ip
-          hostname = login_status.last_hostname[0..10]
+          
+          ip = login_status ? login_status.last_ip : ""
+          hostname = login_status ? login_status.last_hostname[0..10] : ""
         else
           
             if (self.target[0].is_integer?)

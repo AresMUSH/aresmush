@@ -23,9 +23,7 @@ module AresMUSH
       end
       
       def handle
-        prefs = Pose.get_or_create_pose_prefs(enactor)
-        prefs.update(nospoof: self.option.is_on?)
-        
+        enactor.update(pose_nospoof: self.option.is_on?)
         client.emit_success t('pose.nospoof_set', :status => self.option)
       end
     end

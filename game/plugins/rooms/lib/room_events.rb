@@ -24,8 +24,7 @@ module AresMUSH
         locked_exits.each do |e|
           if (e.dest.characters.count == 0)
             Global.logger.debug "Unlocking #{e.name} automatically."
-            e.lock_keys = []
-            e.save
+            e.update(lock_keys: [])
           end
         end
       end

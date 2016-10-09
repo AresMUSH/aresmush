@@ -9,7 +9,7 @@ module AresMUSH
       def initialize(list, enactor)
         @queue = []
         list.each do |k, v|
-          @queue << { char: k, action: v }
+          @queue << { char: Character[k], action: v }
         end
 
         @enactor = enactor
@@ -23,7 +23,8 @@ module AresMUSH
       
       def lastwill(entry)
         char = entry[:char]
-        char.idle_prefs ? char.idle_prefs.lastwill : ""
+        puts "#{char.inspect}"
+        char.idle_lastwill
       end
       
       def last_on(entry)

@@ -7,14 +7,14 @@ module AresMUSH
   
   # First you have to re-define the fields you deleted.
   class Character
-    attribute :cookie_count
-    attribute :timezone
-    attribute :autospace
+    attribute :edit_prefix
   end
   
   class Room
-    attribute :repose_on
-    attribute :poses
+    attribute :grid_x
+    attribute :grid_y
+    attribute :area
+    attribute :is_foyer
   end
   
   puts "======================================================================="
@@ -23,15 +23,15 @@ module AresMUSH
   
   # Then wipe out the field on all affected objects.
   Character.all.each do |c|
-    c.cookie_count = nil
-    c.timezone = nil
-    c.autospace = nil
+    c.edit_prefix = nil
     c.save
   end
   
   Room.all.each do |r|
-    r.repose_on = nil
-    r.poses = nil
+    r.grid_x = nil
+    r.grid_y = nil
+    r.area = nil
+    r.is_foyer = nil
     r.save
   end
   

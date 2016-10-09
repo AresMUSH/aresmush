@@ -18,11 +18,11 @@ module AresMUSH
             return
           end
           
-          if (!char.login_prefs || !char.login_prefs.email)
+          if (!char.login_email)
             client.emit_ooc(t('login.no_email_is_registered', :name => char.name))
           else
             client.emit_ooc(t('login.email_registered_is', :name => char.name, 
-                :email => char.login_prefs.email))
+                :email => char.login_email))
           end
         end
       end

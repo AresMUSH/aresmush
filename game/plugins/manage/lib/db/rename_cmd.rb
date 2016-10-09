@@ -44,8 +44,7 @@ module AresMUSH
           end         
         
           old_name = model.name
-          model.name = self.name
-          model.save
+          model.update(name: self.name)
           client.emit_success t('manage.object_renamed', :type => model.class.name.rest("::"), :old_name => old_name, :new_name => self.name)
         end
       end

@@ -16,8 +16,7 @@ module AresMUSH
       end
       
       def handle
-        enactor_room.is_foyer = self.option.is_on?
-        enactor_room.save
+        enactor_room.update(room_is_foyer: self.option.is_on?)
         if (self.option.is_on?)
           client.emit_ooc t('rooms.foyer_set')
         else

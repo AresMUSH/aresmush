@@ -26,7 +26,7 @@ module AresMUSH
       
       str = "#{left_spacer}#{text}#{right_spacer}"
       "%x!#{left('', 5, padding)}" +
-         "#{center(str, 25, padding)}" +
+         "#{left(str, 25, padding)}" +
          "#{right('', 48, padding)}%xn"
     end
     

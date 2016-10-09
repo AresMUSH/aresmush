@@ -22,9 +22,9 @@ module AresMUSH
           idle_timeout = Global.read_config("idle", "days_before_idle")
           if (idle_secs / 86400 > idle_timeout)
             if (c.is_approved?)
-              client.program[:idle_queue][c] = "Npc"
+              client.program[:idle_queue][c.id] = "Npc"
             else
-              client.program[:idle_queue][c] = "Destroy"
+              client.program[:idle_queue][c.id] = "Destroy"
             end
           end
         end

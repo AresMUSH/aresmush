@@ -11,9 +11,8 @@ module AresMUSH
       end
       
       def handle
+        enactor.update(room_work: enactor.room)
         client.emit_ooc t('rooms.work_set')
-        enactor.work = enactor.room
-        enactor.save
       end
     end
   end

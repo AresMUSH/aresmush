@@ -23,26 +23,27 @@ module AresMUSH
     end
   end
   
-  
-  class LoginPrefs < Ohm::Model
-    include ObjectModel
-    
-    attribute :email
-    attribute :watch
+  class Character
 
-    reference :character, "AresMUSH::Character"
+    attribute :login_email
+    attribute :login_watch
+    
+    reference :login_status, "AresMUSH::LoginStatus"
     
     before_create :set_default_login_attributes
     
     def set_default_login_attributes
-      self.watch = "all"
+      self.login_watch = "all"
     end
-  end
-  
-  class Character
     
-    reference :login_status, "AresMUSH::LoginStatus"
-    reference :login_prefs, "AresMUSH::LoginPrefs"
+    def get_or_create_login_status
+      status = self.login_status
+      if (!status)
+        status = LoginStatus.create(character: self)
+        self.update(login_status: status)
+      end
+      status
+    end
     
     def self.check_name(name)
       return t('validation.name_too_short') if (name.length < 2)

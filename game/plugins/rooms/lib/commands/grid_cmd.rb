@@ -25,12 +25,12 @@ module AresMUSH
       
       def handle
         if (!self.x || !self.y)
-          enactor_room.grid_x = nil
-          enactor_room.grid_y = nil
+          enactor_room.room_grid_x = nil
+          enactor_room.room_grid_y = nil
           message = t('rooms.grid_cleared')
         else          
-          enactor_room.grid_x = self.x
-          enactor_room.grid_y = self.y
+          enactor_room.room_grid_x = self.x
+          enactor_room.room_grid_y = self.y
           message = t('rooms.grid_set')
         end
         enactor_room.save

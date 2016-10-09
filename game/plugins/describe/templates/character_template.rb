@@ -30,7 +30,7 @@ module AresMUSH
         first_name = fullname.first(" ")
         last_name = fullname.rest(" ")
         rank_str = rank ? "#{rank} " : ""
-        callsign_str =  callsign ? "\"#{@char.callsign}\" " : ""
+        callsign_str =  callsign ? "\"#{callsign}\" " : ""
         "#{rank_str}#{first_name} #{callsign_str}#{last_name}"
       end
       

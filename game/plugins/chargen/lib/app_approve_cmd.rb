@@ -30,8 +30,8 @@ module AresMUSH
             return
           end
 
-          job = Chargen.approval_job(model)
-          info = model.chargen_info
+          info = model.get_or_create_chargen_info
+          job = info.approval_job
 
           if (!job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
@@ -40,9 +40,9 @@ module AresMUSH
           
           Jobs::Api.close_job(enactor, job, Global.read_config("chargen", "messages", "approval"))
           
-          info.is_approved = true
-          info.approval_job = nil
-          info.save
+          model.update(is_approved: true)
+          info.delete
+          
           client.emit_success t('chargen.app_approved', :name => model.name)
           
           Bbs::Api.system_post(

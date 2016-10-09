@@ -31,17 +31,15 @@ module AresMUSH
             client.emit_failure t('chargen.already_approved', :name => model.name) 
             return
           end
-
-          job = Chargen.approval_job(model)
-          info = model.chargen_info
           
+          
+          job = Chargen.approval_job(model)
           if (!job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
             return
           end
           
-          info.chargen_locked = false
-          info.save
+          model.chargen_info.update(locked: false)
           
           Jobs::Api.change_job_status(enactor,
             job,

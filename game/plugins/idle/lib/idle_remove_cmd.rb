@@ -25,14 +25,13 @@ module AresMUSH
       end
       
       def check_idle_in_progress
-        queue = client.program[:idle_queue]
-        return t('idle.idle_not_started') if !queue
+        return t('idle.idle_not_started') if !client.program[:idle_queue]
         return nil
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          client.program[:idle_queue].delete model
+          client.program[:idle_queue].delete model.id
           client.emit_success t('idle.idle_removed', :name => self.name)
         end
       end

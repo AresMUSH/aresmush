@@ -31,8 +31,7 @@ module AresMUSH
     
       def handle
         Bbs.with_a_board(name, client, enactor) do |board|        
-          board.description = self.attribute
-          board.save
+          board.update(description: self.attribute)
           client.emit_success t('bbs.desc_set')
         end
       end
@@ -48,8 +47,7 @@ module AresMUSH
       
       def handle
         Bbs.with_a_board(name, client, enactor) do |board|        
-          board.order = self.attribute.to_i
-          board.save
+          board.update(order: self.attribute.to_i)
           client.emit_success t('bbs.order_set')
         end
       end
@@ -60,8 +58,7 @@ module AresMUSH
     
       def handle
         Bbs.with_a_board(name, client, enactor) do |board|        
-          board.name = self.attribute
-          board.save
+          board.update(name: self.attribute)
           client.emit_success t('bbs.board_renamed')
         end
       end

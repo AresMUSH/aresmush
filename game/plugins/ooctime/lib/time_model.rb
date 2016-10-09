@@ -1,12 +1,11 @@
 module AresMUSH
-  class TimePrefs < Ohm::Model
-    include ObjectModel
-    
-    attribute :timezone
-    reference :character, "AresMUSH::Character"
-  end
-  
   class Character
-    reference :time_prefs, "AresMUSH::TimePrefs"
+    attribute :timezone
+    
+    before_create :set_default_timezone
+    
+    def set_default_timezone
+      self.timezone = Global.read_config("ooctime", "default_timezone")
+    end
   end
 end

@@ -32,15 +32,7 @@ module AresMUSH
             return
           end
                     
-          bg = model.background
-          if (!bg)
-            bg = Background.create(character: model)
-            model.background = bg
-            model.save
-          end
-          
-          bg.text = self.background
-          bg.save
+          model.update(background: self.background)
           client.emit_success t('chargen.bg_set')
         end
       end

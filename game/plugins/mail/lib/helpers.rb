@@ -32,7 +32,8 @@ module AresMUSH
         sent_to = Character.find_one_by_name(filter.after(" "))
         return char.sent_mail_to(sent_to)
       end
-      char.mail.select { |d| d.tags && d.tags.include?(filter) }
+      messages = char.mail.select { |d| d.tags && d.tags.include?(filter) }
+      messages.sort_by { |m| m.created_at }
     end
     
     def self.with_a_delivery(client, enactor, num, &block)

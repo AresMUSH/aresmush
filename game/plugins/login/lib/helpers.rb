@@ -11,24 +11,13 @@ module AresMUSH
     
     def self.wants_announce(listener, connector)
       return false if !listener
-      prefs = listener.login_prefs
-      return false if !prefs
-      return true if prefs.watch == "all"
-      return false if prefs.watch == "none"
+      return true if listener.login_watch == "all"
+      return false if listener.login_watch == "none"
       Friends::Api.is_friend?(listener, connector)
     end
     
-    def self.get_or_create_login_status(char)
-      status = char.login_status
-      if (!status)
-        status = LoginStatus.create(character: char)
-        char.update(login_status: status)
-      end
-      status
-    end
-        
     def self.update_site_info(client, char)
-      status = Login.get_or_create_login_status(char)
+      status = char.get_or_create_login_status
       status.last_ip = client.ip_addr
       status.last_hostname = client.hostname.downcase
       status.last_on = Time.now

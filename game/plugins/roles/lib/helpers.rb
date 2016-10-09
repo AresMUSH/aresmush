@@ -14,12 +14,12 @@ module AresMUSH
     end
     
     def self.is_restricted?(name)
-      role = Role.find_one(name: name)
+      role = Role.find_one_by_name(name)
       restricted_roles.include?(role)
     end
     
     def self.chars_with_role(name)
-      role = Role.find_one(name: name)
+      role = Role.find_one_by_name(name)
       Character.all.select { |c| c.roles.include?(role) }
     end
   end

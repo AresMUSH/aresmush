@@ -6,7 +6,7 @@ module AresMUSH
       end
       
       def self.post(board_name, subject, message, author, client = nil)
-        BBs.post(board_name, subject, message, author, client)
+        Bbs.post(board_name, subject, message, author, client)
       end
       
       def self.has_unread_bbs?(char)

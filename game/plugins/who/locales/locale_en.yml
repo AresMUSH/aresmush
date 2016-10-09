@@ -2,7 +2,7 @@ en:
     who:
         hide_enabled: "Your location is hidden from the who list."
         hide_disabled: "Your location is visible on the who list."
-        hidden: "<Hidden>"
+        hidden: "Unavailable"
         new_online_record: "New Online Record: %{count}"
         online_record: "%{count} Record"
         players_ic: "%{count} IC"

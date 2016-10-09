@@ -12,14 +12,14 @@ module AresMUSH
       end
       
       def check_idle_in_progress
-        queue = client.program[:idle_queue]
-        return t('idle.idle_not_started') if !queue
+        return t('idle.idle_not_started') if !client.program[:idle_queue]
         return nil
       end
       
       def handle
         report = []
-        client.program[:idle_queue].each do |idle_char, action|
+        client.program[:idle_queue].each do |id, action|
+          idle_char = Character[id]
           case action
           when "Destroy"
             Global.logger.debug "#{idle_char.name} deleted for idling out."
@@ -35,13 +35,8 @@ module AresMUSH
             # Do nothing
           else
             Global.logger.debug "#{idle_char.name} idled out with action #{action}."
-            idle_status = idle_char.idle_status
-            if (idle_status)
-              idle_status.update(status: action)
-            else
-              idle_status = IdleStatus.create(character: idle_char, idled_out: true, status: action)
-              idle_char.update(idle_status: idle_status)
-            end
+            idle_status = idle_char.get_or_create_idle_status
+            idle_status.update(status: action)
             report << "#{idle_char.name} - #{action}"
           end
         end

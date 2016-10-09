@@ -12,8 +12,7 @@ module AresMUSH
       
       def handle
         client.emit_ooc t('rooms.home_set')
-        enactor.home = enactor.room
-        enactor.save
+        enactor.update(room_home: enactor.room)
       end
     end
   end

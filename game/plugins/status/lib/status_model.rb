@@ -7,9 +7,9 @@ module AresMUSH
     attribute :is_on_duty, DataType::Boolean
     attribute :is_playerbit, DataType::Boolean    
     
-    before_create :set_default_status_attributes
+    before_create :set_default_status
     
-    def set_default_status_attributes
+    def set_default_status
       self.is_on_duty = true
     end
     
@@ -38,7 +38,7 @@ module AresMUSH
       # Playerbits are always OOC
       return "OOC" if self.is_playerbit
       # New trumps room type
-      return "NEW" if !self.is_approved
+      return "NEW" if !self.is_approved?
       # Otherwise use room type
       Rooms::Api.room_type(self.room)
     end

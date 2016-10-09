@@ -7,12 +7,12 @@ module AresMUSH
       
       def check_can_set_status
         return nil if Status.can_be_on_duty?(enactor)
-        return t('status.newbies_cant_go_ic') if !enactor.is_approved
+        return t('status.newbies_cant_go_ic') if !enactor.is_approved?
         return nil
       end
       
       def handle        
-        icloc = get_icloc(char)
+        icloc = get_icloc(enactor)
         enactor.is_afk = false
         # No need to save because move will do it.
         enactor.room.emit_ooc t('status.go_ic', :name => enactor.name)
@@ -25,7 +25,7 @@ module AresMUSH
         ic_start_room = Rooms::Api.ic_start_room
         icloc = ic_start_room
         if (icloc_id && !cmd.switch_is?("reset"))
-          icloc = Room.find(icloc_id)
+          icloc = Room[icloc_id]
         end
         icloc || ic_start_room
       end

@@ -1,29 +1,35 @@
 module AresMUSH
   class Character
-    reference :idle_prefs, "AresMUSH::IdlePrefs"
     reference :idle_status, "AresMUSH::IdleStatus"
     
+    before_delete :delete_idle_status
+    
+    def delete_idle_status
+      self.idle_status.delete if self.idle_status
+    end
+    
     def idled_out?
-      self.idle_status && self.idle_status.idled_out
+      self.idle_status
+    end
+    
+    def get_or_create_idle_status
+      status = self.idle_status
+      if (!status)
+        status = IdleStatus.create(character: self)
+        self.update(idle_status: status)
+      end
+      status
     end
   end
   
-  class IdlePrefs < Ohm::Model
-    include ObjectModel
-
-    attribute :lastwill
-    
-    reference :character, "AresMUSH::Character"
+  class Character
+    attribute :idle_lastwill
   end
   
   class IdleStatus < Ohm::Model
     include ObjectModel
     
-    attribute :status
-    attribute :idled_out, DataType::Boolean
-    
-    index :idled_out
-    
+    attribute :status    
     reference :character, "AresMUSH::Character"
   end
 end

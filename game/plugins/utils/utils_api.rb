@@ -2,8 +2,8 @@ module AresMUSH
   module Utils
     module Api
       def self.grab(client, char, msg)
-        edit_prefix = "#{char.edit_prefix} "
-        client.emit_raw "#{edit_prefix}#{msg}"
+        prefix = char.utils_edit_prefix ? "#{char.utils_edit_prefix} " : ""
+        client.emit_raw "#{prefix}#{msg}"
       end
     end
   end

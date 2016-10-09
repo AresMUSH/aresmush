@@ -8,7 +8,7 @@ module AresMUSH
 
     index :name_upcase
   
-    set :exits, "AresMUSH::Exit"
+    collection :exits, "AresMUSH::Exit", :source
     collection :characters, "AresMUSH::Character"
     
     before_save :save_upcase

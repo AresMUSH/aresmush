@@ -28,11 +28,10 @@ module AresMUSH
         
         body_so_far = composition.body
         if (!body_so_far)
-          composition.body = self.body
+          composition.update(body: self.body)
         else
-          composition.body = "#{body_so_far}%R%R#{self.body}"
+          composition.update(body: "#{body_so_far}%R%R#{self.body}")
         end
-        composition.save
         
         client.emit_ooc t('mail.mail_added')
       end

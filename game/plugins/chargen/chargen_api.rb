@@ -1,7 +1,7 @@
 module AresMUSH
   class Character    
     def is_approved?
-      self.chargen_info && self.chargen_info.is_approved
+      self.is_approved
     end  
   end
   
@@ -9,7 +9,7 @@ module AresMUSH
     module Api
     
       def self.background(char)
-        Chargen.background_text(char)
+        char.background
       end
             
       def self.format_review_status(msg, error)

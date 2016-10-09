@@ -5,15 +5,8 @@ module AresMUSH
       include CommandRequiresLogin
 
       def handle
-        chargen_info = enactor.chargen_info
-        if (!chargen_info)
-          chargen_info = ChargenInfo.create(character: enactor)
-          enactor.chargen_info = chargen_info
-          enactor.save
-        end
-        
-        chargen_info.current_stage = 0
-        chargen_info.save
+        chargen_info = enactor.get_or_create_chargen_info
+        chargen_info.update(current_stage: 0)
 
         template = ChargenTemplate.new(enactor)
         client.emit template.render

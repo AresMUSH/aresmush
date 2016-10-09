@@ -47,8 +47,7 @@ module AresMUSH
           return
         end
         
-        target.dest = dest
-        target.save
+        target.update(dest: dest)
         client.emit_success t('rooms.exit_linked', :dest => dest.name)
       end
     end

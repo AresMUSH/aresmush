@@ -46,8 +46,8 @@ module AresMUSH
         char.change_password(password)
 
         if (terms_of_service)
-          login_status = Login.get_or_create_login_status(char)
-          char.login_status = login_status
+          login_status = char.get_or_create_login_status
+          login_status.update(terms_of_service_acknowledged: Time.now)
         end
         
         char.save

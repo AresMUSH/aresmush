@@ -11,17 +11,15 @@ module AresMUSH
         actor_char = result.target
       end
       
-      actor = ActorRegistry.all.select { |a| a.charname.upcase == charname.upcase }
+      actor = ActorRegistry.all.select { |a| a.charname.upcase == charname.upcase }.first
       
-      if (actor.empty?)
+      if (!actor)
         a = ActorRegistry.create(charname: charname, character: actor_char, actor: actorname)
         if (actor_char)
-          actor_char.actor_registry = a
-          actor_char.save
+          actor_char.update(actor_registry: a)
         end
       else
-        actor[0].actor = actorname
-        actor[0].save
+        actor.update(actor: actorname)
       end
     end
   end

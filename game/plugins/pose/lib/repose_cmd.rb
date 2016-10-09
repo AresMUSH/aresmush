@@ -13,7 +13,8 @@ module AresMUSH
           return
         end
         
-        client.emit BorderedDisplay.list repose.poses.map { |p| "#{p}%R"}, t('pose.repose_list')
+        poses = repose.poses || []
+        client.emit BorderedDisplay.list poses.map { |p| "#{p}%R"}, t('pose.repose_list')
       end
     end
   end

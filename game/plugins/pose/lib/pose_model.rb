@@ -1,16 +1,14 @@
 module AresMUSH
 
   class Character
-    reference :pose_prefs, "AresMUSH::PosePrefs"
-  end
-  
-  class PosePrefs < Ohm::Model
-    include ObjectModel
-    
-    attribute :nospoof, DataType::Boolean
+    attribute :pose_nospoof, DataType::Boolean
     attribute :autospace
     
-    reference :character, "AresMUSH::Character"
+    before_create :set_default_autospace
+    
+    def set_default_autospace
+      self.autospace = "%r"
+    end
   end
   
   class PoseOrder < Ohm::Model
@@ -20,8 +18,6 @@ module AresMUSH
 
     reference :character, "AresMUSH::Character"
     reference :repose_info, "AresMUSH::ReposeInfo"
-    
-    index :time
   end
   
   class ReposeInfo < Ohm::Model

@@ -8,7 +8,9 @@ module AresMUSH
     before_delete :delete_mail
     
     def delete_mail
-      mail.each { |m| m.delete }
+      self.mail_prefs.delete if self.mail_prefs
+      self.mail_composition.delete if self.mail_composition
+      self.mail.each { |m| m.delete }
     end
     
     def has_unread_mail?

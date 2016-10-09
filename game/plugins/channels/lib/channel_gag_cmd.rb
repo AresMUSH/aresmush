@@ -27,7 +27,6 @@ module AresMUSH
             Channels.set_gagging(enactor, channel, false)
             client.emit_success t('channels.channel_ungagged', :name => self.name)
           end
-          enactor.save
         end
       end
     end  

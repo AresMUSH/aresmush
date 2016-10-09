@@ -8,8 +8,7 @@ module AresMUSH
         Describe.rooms_with_scenes.each do |r|
           if (Time.now - r.scene_set.time > 28800)
             Global.logger.debug "Clearing sceneset from #{r.name}."
-            r.sceneset = nil
-            r.save
+            r.update(sceneset, nil)
           end
         end
       end

@@ -4,7 +4,7 @@ module AresMUSH
   end
   
   class Character
-    attribute :hidden, DataType::Boolean
+    attribute :who_hidden, DataType::Boolean
   end
   
 end

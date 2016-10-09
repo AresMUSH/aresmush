@@ -20,17 +20,10 @@ module AresMUSH
             return
           end
           
-          bg = model.background
-          if (!bg)
-            client.emit_failure 'chargen.bg_not_set'
-            return
-          end
-          
-          text = bg.text
           if (self.target == enactor_name)
-            Utils::Api.grab client, enactor, "bg/set #{text}"
+            Utils::Api.grab client, enactor, "bg/set #{model.background}"
           else
-            Utils::Api.grab client, enactor, "bg/set #{target}=#{text}"
+            Utils::Api.grab client, enactor, "bg/set #{target}=#{model.background}"
           end
         end
       end

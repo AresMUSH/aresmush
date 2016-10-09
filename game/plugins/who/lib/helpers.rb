@@ -4,7 +4,7 @@ module AresMUSH
     # sorting purposes, so characters are sorted by area then individual rooms,
     # and unfindable characters are sorted together.
     def self.who_room_name(char)
-      if (char.hidden)
+      if (char.who_hidden)
         return t('who.hidden')
       end
 

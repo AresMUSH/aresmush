@@ -11,7 +11,7 @@ module AresMUSH
       welcome_room = Room.create(
         :name => "Welcome Room", 
         :room_type => "OOC", 
-        :area => "Offstage")
+        :room_area => "Offstage")
 
       welcome_room.current_desc = "Welcome!%R%R" + 
         "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
@@ -20,28 +20,28 @@ module AresMUSH
       ic_start_room = Room.create(
         :name => "Onstage", 
         :room_type => "IC",
-        :area => "Onstage")
+        :room_area => "Onstage")
       ic_start_room.current_desc = "This is the room where all characters start out."
       
       ooc_room = Room.create(
         :name => "Offstage", 
         :room_type => "OOC", 
-        :area => "Offstage")
+        :room_area => "Offstage")
       
       ooc_room.current_desc = "This is a backstage area where you can hang out when not RPing."
 
       quiet_room = Room.create(
         :name => "Quiet Room", 
         :room_type => "OOC", 
-        :area => "Offstage")
+        :room_area => "Offstage")
       
       quiet_room.current_desc = "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside."
         
       rp_room_hub = Room.create(
         :name => "RP Annex", 
         :room_type => "OOC", 
-        :area => "Offstage",
-        :is_foyer => true)
+        :room_area => "Offstage",
+        :room_is_foyer => true)
       
       rp_room_hub.current_desc = "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded."
 
@@ -49,7 +49,7 @@ module AresMUSH
         rp_room = Room.create(
           :name => "RP Room #{n+1}", 
           :room_type => "IC", 
-          :area => "Offstage")
+          :room_area => "Offstage")
         
         rp_room.current_desc = "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything."
           

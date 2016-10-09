@@ -6,8 +6,7 @@ module AresMUSH
         game = Game.master
         
         if (count > game.online_record)
-          game.online_record = count
-          game.save
+          game.update(online_record: count)
           Global.logger.info("Online Record Now: #{count}")
           Global.client_monitor.emit_all_ooc t('who.new_online_record', :count => count)
         end

@@ -11,7 +11,7 @@ module AresMUSH
       def crack!
         cmd.crack_args!(CommonCracks.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
-        self.role = cmd.args.arg2 ? trim_input(cmd.args.arg2).downcase : nil
+        self.role = cmd.args.arg2 ? trim_input(cmd.args.arg2) : nil
       end
       
       def required_args
@@ -34,12 +34,12 @@ module AresMUSH
       
       def handle  
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
-          if (!char.has_role?(self.role))     
+          if (!char.has_role?(self.role))
             Global.logger.info "#{enactor_name} added role #{self.role} to #{self.name}."     
-            char.roles.add Role.find_one(name: self.role)
+            char.roles.add Role.find_one_by_name(self.role)
             char.save
           end
-          client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role)
+          client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role.downcase)
           Global.dispatcher.queue_event RolesChangedEvent.new(char)
         end
       end

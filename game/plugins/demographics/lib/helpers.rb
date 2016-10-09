@@ -1,15 +1,5 @@
 module AresMUSH
-  module Demographics
-    def self.get_or_create_demographics(char)
-      demographics = char.demographics
-      if (!demographics)
-        demographics = DemographicInfo.create(character: char)
-        char.demographics = demographics
-        char.save
-      end
-      demographics
-    end
-    
+  module Demographics    
     def self.check_age(age)
       min_age = Global.read_config("demographics", "min_age")
       max_age = Global.read_config("demographics", "max_age")

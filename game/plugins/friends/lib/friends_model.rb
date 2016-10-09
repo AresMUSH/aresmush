@@ -2,6 +2,12 @@ module AresMUSH
   class Character
     collection :friendships, "AresMUSH::Friendship"
 
+    before_delete :delete_friendships
+    
+    def delete_friendships
+      self.friendships.each { |f| f.delete }
+    end
+    
     def friends
       friendships.map { |f| f.friend }
     end

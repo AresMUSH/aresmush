@@ -36,7 +36,7 @@ module AresMUSH
           end
         
           client.program = { :destroy_target => target.id, :destroy_class => target.class }
-          client.emit BorderedDisplay.text(t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.to_json))
+          client.emit BorderedDisplay.text(t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.pretty_print))
         end
       end
     end

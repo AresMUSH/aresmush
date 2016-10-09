@@ -2,7 +2,7 @@ module AresMUSH
   module Pose
     module Api
       def self.autospace(char)
-        Pose.autospace(char)
+        char.autospace
       end
       
       def self.repose_on(room)

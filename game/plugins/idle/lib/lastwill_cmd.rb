@@ -20,13 +20,7 @@ module AresMUSH
       end
       
       def handle
-        prefs = enactor.idle_prefs
-        if (prefs)
-          prefs.update(lastwill: self.will)
-        else
-          prefs = IdlePrefs.create(character: enactor, lastwill: self.will)
-          enactor.update(idle_prefs: prefs)
-        end
+        enactor.update(idle_lastwill: self.will)
         client.emit_success t('idle.lastwill_set')
       end
     end

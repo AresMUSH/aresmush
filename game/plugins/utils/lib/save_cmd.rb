@@ -20,11 +20,12 @@ module AresMUSH
       end
       
       def handle
-        enactor.saved_text << self.text
-        if (enactor.saved_text.count > 5)
-          enactor.saved_text.shift
+        saved_text = enactor.utils_saved_text || []
+        saved_text << self.text
+        if (saved_text.count > 5)
+          saved_text.shift
         end
-        enactor.save
+        enactor.update(utils_saved_text: saved_text)
 
         client.emit_success t('save.text_saved')
       end

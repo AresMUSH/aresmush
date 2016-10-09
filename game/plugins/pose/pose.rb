@@ -86,8 +86,6 @@ module AresMUSH
         return CronEventHandler
       when "GameStartedEvent"
         return GameStartedEventHandler
-      when "CharCreatedEvent"
-        return CharCreatedEventHandler
       end
       nil
     end

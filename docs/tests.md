@@ -222,3 +222,73 @@ Pose
 * View reposes
 * Reposes limited to 8
 * Pose order
+
+Profile
+====
+* Profile add
+* Profile delete
+* Profile view
+
+Rank
+====
+* Not allowed for group
+* Not starting rank
+* Invalid rank
+* Set
+* Shows in wiki
+
+Rooms
+=====
+
+Shortcuts
+
+* Home and Work not set
+* Set home and work
+* Go home/work
+* Meetme go
+* Meetme join
+* Multi meetme
+
+Building
+
+* Build room
+* Build room + exit
+* Open exit
+* Relink exit
+* Unlink exit
+* Lock exit
+* Unlock exit
+* Change room type --> shows status
+
+Descs
+
+* Set area
+* Set foyer
+* Set grid
+* Foyer
+
+Movement
+
+* Go
+* Teleport by name
+* Teleport to player
+* Out
+
+Roster
+======
+* Add to roster w/ no contact
+* Add to roster w/ contact
+* Update contact after on roster
+* View on roster
+* Remove from roster
+* Claim from roster
+
+Status
+======
+* Onstage / Offstage
+* AFK (room, pages, who)
+* On/Off Duty
+
+Who
+=====
+* hide/unhide 

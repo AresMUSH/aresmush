@@ -42,7 +42,6 @@ module AresMUSH
         channels.each do |c|
           Channels.set_gagging(char, c, false)
         end
-        char.save        
       end
     end
     

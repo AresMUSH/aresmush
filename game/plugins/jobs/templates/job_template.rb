@@ -8,10 +8,14 @@ module AresMUSH
       def initialize(enactor, job)
         @enactor = enactor
         @job = job
-        @replies = Jobs.can_access_jobs?(@enactor) ? job.job_replies : job.job_replies.select { |r| !r.admin_only}
+        @replies = visible_replies.sort_by { |r| r.created_at }
         super File.dirname(__FILE__) + "/job.erb"
       end
      
+      def visible_replies
+        Jobs.can_access_jobs?(@enactor) ? job.job_replies.to_a : job.job_replies.select { |r| !r.admin_only}
+      end
+      
       def submitted_by
         !@job.author ? t('jobs.deleted_author') : @job.author.name        
       end

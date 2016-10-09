@@ -12,13 +12,12 @@ module AresMUSH
       end
 
       def handle
-        prefs = Pose.get_or_create_pose_prefs(enactor)
         
         if (!self.option)
-          prefs.update(autospace: nil)
+          enactor.update(autospace: nil)
           message = t('pose.autospace_cleared')
         else
-          prefs.update(autospace: self.option)
+          enactor.update(autospace: self.option)
           message = t('pose.autospace_set', :option => self.option)
         end
         

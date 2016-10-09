@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def note(a)
-        a.admin_note || "."
+        a.role_admin_note || "."
       end
       
       def status(a)

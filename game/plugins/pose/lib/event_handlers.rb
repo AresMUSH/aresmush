@@ -1,12 +1,5 @@
 module AresMUSH
   module Pose
-    class CharCreatedEventHandler
-      def on_event(event)
-        prefs = PosePrefs.create(character: event.char, autospace: "%r")
-        event.char.update(pose_prefs: prefs)
-      end
-    end
-    
     class GameStartedEventHandler
       def on_event(event)
         Pose.reset_reposes

@@ -18,13 +18,12 @@ module AresMUSH
       
       def handle
         if (!self.name)
-          enactor_room.area = nil
+          enactor_room.update(room_area: nil)
           message = t('rooms.area_cleared')
         else
-          enactor_room.area = self.name
+          enactor_room.update(room_area: self.name)
           message = t('rooms.area_set')
         end
-        enactor_room.save
         client.emit_success message
       end
     end

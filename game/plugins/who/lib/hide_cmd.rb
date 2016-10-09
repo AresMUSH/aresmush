@@ -9,10 +9,10 @@ module AresMUSH
       def handle
         if cmd.root_is?("unhide")
           client.emit_success(t('who.hide_disabled'))
-          enactor.hidden = false
+          enactor.update(who_hidden: false)
         else
           client.emit_success(t('who.hide_enabled'))
-          enactor.hidden = true
+          enactor.update(who_hidden: true)
         end            
       end      
     end

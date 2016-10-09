@@ -2,6 +2,12 @@ module AresMUSH
   class Character
     collection :group_assignments, "AresMUSH::GroupAssignment"
     
+    before_delete :delete_groups
+    
+    def delete_groups
+      self.group_assignments.each { |g| g.delete }
+    end
+    
     def group(name)
       GroupAssignment.find(character_id: self.id).combine(group: name).first
     end

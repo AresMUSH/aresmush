@@ -31,8 +31,7 @@ module AresMUSH
     
       def handle
         Channels.with_a_channel(name, client) do |channel|
-          channel.color = self.attribute
-          channel.save
+          channel.update(color: self.attribute)
           client.emit_success "%xn#{t('channels.color_set', :name => channel.display_name)}"
         end
       end
@@ -50,12 +49,10 @@ module AresMUSH
       def handle
         Channels.with_a_channel(name, client) do |channel|
           if (self.attribute == 'on')
-            channel.announce = true
-            channel.save
+            channel.update(announce: true)
             client.emit_success "%xn#{t('channels.announce_enabled', :name => channel.display_name)}"
           else
-            channel.announce = false
-            channel.save
+            channel.update(announce: false)
             client.emit_success "%xn#{t('channels.announce_disabled', :name => channel.display_name)}"
           end          
         end
@@ -67,8 +64,7 @@ module AresMUSH
     
       def handle
         Channels.with_a_channel(name, client) do |channel|        
-          channel.description = self.attribute
-          channel.save
+          channel.update(description: self.attribute)
           client.emit_success t('channels.desc_set')
         end
       end
@@ -118,8 +114,7 @@ module AresMUSH
     
       def handle
         Channels.with_a_channel(name, client) do |channel|
-          channel.default_alias = self.attribute.split(",")
-          channel.save
+          channel.update(default_alias: self.attribute.split(","))
           client.emit_success t('channels.default_alias_set')
         end
       end

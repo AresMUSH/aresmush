@@ -23,8 +23,7 @@ module AresMUSH
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           options = Channels.get_channel_options(enactor, channel)
-          options.title = self.title
-          options.save
+          options.update(title: self.title)
           client.emit_success t('channels.title_set')
         end
       end

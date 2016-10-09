@@ -26,14 +26,7 @@ module AresMUSH
       end
       
       def handle      
-        prefs = enactor.login_prefs
-        if (prefs)
-          prefs.update(email: self.email)
-        else
-          prefs = LoginPrefs.create(character: enactor, email: self.email)
-          enactor.update(login_prefs: prefs)
-        end
-        
+        enactor.update(login_email: self.email)
         client.emit_success t('login.email_set')
       end
     end

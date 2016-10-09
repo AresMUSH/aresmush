@@ -40,9 +40,9 @@ module AresMUSH
           return
         end
         
-        demographics = Demographics.get_or_create_demographics(enactor)
-        demographics.birthdate = bday
-        demographics.save
+        demographics = enactor.get_or_create_demographics
+        demographics.update(birthdate: bday)
+        
         client.emit_success t('demographics.birthdate_set', 
           :birthdate => ICTime::Api.ic_datestr(bday), 
           :age => enactor.age)

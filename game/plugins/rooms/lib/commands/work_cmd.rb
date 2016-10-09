@@ -6,7 +6,7 @@ module AresMUSH
       include CommandWithoutArgs
 
       def check_work_set
-        return t('rooms.work_not_set') if !enactor.work
+        return t('rooms.work_not_set') if !enactor.room_work
         return nil
       end
       
@@ -17,7 +17,7 @@ module AresMUSH
       
       def handle
         enactor.room.emit_ooc t('rooms.char_has_gone_work', :name => enactor.name)
-        Rooms.move_to(client, enactor, enactor.work)
+        Rooms.move_to(client, enactor, enactor.room_work)
       end
     end
   end

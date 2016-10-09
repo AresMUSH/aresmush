@@ -27,7 +27,7 @@ module AresMUSH
       end
 
       def handle
-        Roster.create_or_update_roster(client, self.name, self.contact)
+        Roster.create_or_update_roster(client, enactor, self.name, self.contact)
       end
     end
   end

@@ -35,8 +35,7 @@ module AresMUSH
           if (!detail)
             model.create_desc(:detail, self.desc, self.name)
           else
-            detail.description = self.desc
-            detail.save
+            detail.update(description: self.desc)
           end
           client.emit_success t('describe.detail_set')
         end

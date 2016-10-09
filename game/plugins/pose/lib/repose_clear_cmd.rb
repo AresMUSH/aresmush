@@ -13,6 +13,8 @@ module AresMUSH
         if (repose)
           repose.delete
         end
+        repose = ReposeInfo.create(room: enactor.room)
+        enactor.room.update(repose_info: repose)
         client.emit_success t('pose.repose_cleared')
       end
     end

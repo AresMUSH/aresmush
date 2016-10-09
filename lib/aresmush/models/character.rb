@@ -79,7 +79,7 @@ module AresMUSH
       if (name_or_role.class == Role)
         role = name_or_role
       else
-        role = Role.find_one(name: name_or_role)
+        role = Role.find_one_by_name(name_or_role)
       end
       self.roles.include?(role)
     end

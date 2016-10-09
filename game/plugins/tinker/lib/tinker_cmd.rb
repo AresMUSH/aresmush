@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def handle
-        ReposeInfo.all.each { |r| r.delete}
+        RosterRegistry.all.each { |r| r.delete }
         # Put whatever you need to do here.
         client.emit_success "Done!"
       end

@@ -24,8 +24,7 @@ module AresMUSH
       end
       
       def handle        
-        enactor.is_playerbit = self.option.is_on?
-        enactor.save
+        enactor.update(is_playerbit: self.option.is_on?)
         client.emit_ooc self.option.is_on? ? t('status.set_playerbit_on') : t('status.set_playerbit_off')
       end
     end

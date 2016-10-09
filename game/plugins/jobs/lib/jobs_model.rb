@@ -1,12 +1,23 @@
 module AresMUSH
   class Game
     attribute :next_job_number, DataType::Integer
+    before_create :init_job_number
+    
+    def init_job_number
+      self.next_job_number = 1
+    end
   end
   
   class Character
     
     collection :job_read_marks, "AresMUSH::JobReadMark"
     collection :jobs, "AresMUSH::Job", :author
+    
+    before_delete :delete_job_read_marks
+    
+    def delete_job_read_marks
+      self.job_read_marks.each { |j| j.delete }
+    end
     
     def assigned_jobs
       Job.find(assigned_to_id: self.id)

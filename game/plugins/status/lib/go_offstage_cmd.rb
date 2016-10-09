@@ -11,8 +11,8 @@ module AresMUSH
         enactor.is_afk = false
         if (Rooms::Api.room_type(enactor.room) == "IC")
           enactor.last_ic_location_id = enactor.room.id
-          # No need to save because we're going to do it when we move them
         end
+        # No need to save because we're going to do it when we move them
         enactor.room.emit_ooc t('status.go_ooc', :name => enactor.name)
         oocloc.emit_ooc t('status.go_ooc', :name => enactor.name)
         Rooms::Api.move_to(client, enactor, oocloc)

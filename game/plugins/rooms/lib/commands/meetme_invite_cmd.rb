@@ -29,7 +29,7 @@ module AresMUSH
       
       def check_approved
         return nil if Rooms.can_teleport?(enactor)
-        return t('rooms.cant_meetme_if_newbie') if !enactor.is_approved
+        return t('rooms.cant_meetme_if_newbie') if !enactor.is_approved?
         return nil
       end
       
@@ -40,7 +40,7 @@ module AresMUSH
             invitee = r.char
             if (invitee == enactor)
               client.emit_failure t('rooms.cant_meetme_self')
-            elsif (!invitee.is_approved)
+            elsif (!invitee.is_approved?)
               client.emit_failure t('rooms.cant_meetme_newbie', :name => invitee.name)
             else
               r.client.emit_ooc t('rooms.receive_meetme_invite', :name => enactor_name, :room => enactor_room.name)

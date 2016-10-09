@@ -8,7 +8,14 @@ module AresMUSH
     
     module ClassMethods
       def register_data_members
+        before_delete :delete_descs
       end
+    end
+    
+    
+    def delete_descs
+      descs =  Description.find(parent_id: self.id).combine(parent_type: self.class.to_s)
+      descs.each { |d| d.delete }
     end
     
     def descs_of_type(type)
@@ -112,6 +119,13 @@ module AresMUSH
     include Describable
 
     reference :scene_set, "AresMUSH::SceneSet"
+    
+    before_delete :delete_scene_set
+    
+    def delete_scene_set
+      self.scene_set.delete if self.scene_set
+    end
+    
   end
   
   class Exit

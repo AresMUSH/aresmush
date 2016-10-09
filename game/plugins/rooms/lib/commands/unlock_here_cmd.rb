@@ -14,8 +14,7 @@ module AresMUSH
       
       def handle
         target = enactor_room.way_in
-        target.lock_keys = []
-        target.save
+        target.update(lock_keys: [])
         client.emit_success t('rooms.way_in_unlocked')
       end
     end

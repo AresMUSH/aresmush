@@ -20,8 +20,7 @@ module AresMUSH
       end
       
       def handle
-        enactor.admin_note = self.note
-        enactor.save
+        enactor.update(role_admin_note: self.note)
         client.emit_success t('roles.admin_note_set')
       end
     end

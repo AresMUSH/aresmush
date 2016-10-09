@@ -23,13 +23,7 @@ module AresMUSH
       end
       
       def handle
-        prefs = enactor.page_prefs
-        if (prefs)
-          prefs.update(do_not_disturb: self.option.is_on?)
-        else
-          prefs = PagePrefs.create(character: enactor, do_not_disturb: self.option.is_on?)
-          enactor.update(page_prefs: prefs)
-        end
+        enactor.update(page_do_not_disturb: self.option.is_on?)
         client.emit_success t('page.do_not_disturb_set', :status => self.option)
       end
     end

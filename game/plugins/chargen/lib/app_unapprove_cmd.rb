@@ -30,10 +30,9 @@ module AresMUSH
             return
           end
 
-          info = model.chargen_info
-          
-          info.chargen_locked = false
-          info.is_approved = false
+          model.update(is_approved: false)
+          info = model.get_or_create_chargen_info
+          info.locked = false
           info.approval_job = nil
           info.save
           client.emit_success t('chargen.app_unapproved', :name => model.name)

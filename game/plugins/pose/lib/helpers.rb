@@ -5,10 +5,10 @@ module AresMUSH
       Global.client_monitor.logged_in.each do |client, char|
         next if char.room != enactor.room
         nospoof = ""
-        if (is_emit && char.pose_prefs && char.pose_prefs.nospoof)
+        if (is_emit && char.pose_nospoof)
           nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
         end
-        client.emit "#{Pose.autospace(char)}#{nospoof}#{pose}"
+        client.emit "#{char.autospace}#{nospoof}#{pose}"
       end
       
       if (!is_ooc)
@@ -26,7 +26,7 @@ module AresMUSH
       if (enactor_order)
         enactor_order.update(time: Time.now)
       else
-        PoseOrder.create(repose_info: repose, character: enactor)
+        PoseOrder.create(repose_info: repose, character: enactor, time: Time.now)
       end
 
       poses = repose.poses
@@ -41,28 +41,15 @@ module AresMUSH
       Global.read_config("pose", "repose_enabled")
     end
     
-    def self.autospace(char)
-      char.pose_prefs ? char.pose_prefs.autospace : ""
-    end
-    
     def self.repose_on(room)
       repose_enabled && room.repose_info
-    end
-    
-    def self.get_or_create_pose_prefs(char)
-      prefs = char.pose_prefs
-      if (!prefs)
-        prefs = PosePrefs.create(character: char)
-        char.update(pose_prefs: prefs)
-      end
-      prefs
     end
     
     def self.reset_reposes
       # Don't clear poses in rooms with active people.
       active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
 
-      rooms = Room.all.except(repose_info: nil)
+      rooms = Room.all.select { |r| r.repose_info }
       rooms.each do |r|
         next if active_rooms.include?(r)
         
@@ -70,7 +57,7 @@ module AresMUSH
         r.repose_info.delete
       end
       
-      rooms = Room.find(repose_info: nil)
+      rooms = Room.find(repose_info_id: nil)
       rooms.each do |r|
         next if active_rooms.include?(r)
         Pose.reset_repose(r)

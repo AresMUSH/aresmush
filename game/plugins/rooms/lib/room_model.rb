@@ -1,14 +1,14 @@
 module AresMUSH
   class Character
-    reference :home, "AresMUSH::Room"
-    reference :work, "AresMUSH::Room"
+    reference :room_home, "AresMUSH::Room"
+    reference :room_work, "AresMUSH::Room"
     
     before_create :set_starting_rooms
     
     def set_starting_rooms
       self.room = Game.master.welcome_room
-      self.home = Game.master.ooc_room
-      self.work = Game.master.ooc_room
+      self.room_home = Game.master.ooc_room
+      self.room_work = Game.master.ooc_room
     end
     
   end
@@ -27,11 +27,11 @@ module AresMUSH
   end
   
   class Room
-    attribute :grid_x
-    attribute :grid_y
+    attribute :room_grid_x
+    attribute :room_grid_y
     attribute :room_type
-    attribute :area
-    attribute :is_foyer, DataType::Boolean
+    attribute :room_area
+    attribute :room_is_foyer, DataType::Boolean
      
     index :room_type
     
@@ -43,14 +43,17 @@ module AresMUSH
     
   end
   
-  class Exit
-    def lock_keys
-      []
+  class Exit    
+    attribute :lock_keys, DataType::Array
+    
+    before_create :set_default_lock
+    
+    def set_default_lock
+      self.lock_keys = []
     end
-
-    set :lock_keys, :Role
     
     def allow_passage?(char)
+      return false if (self.lock_keys == Rooms.interior_lock)
       return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
     end
   end
