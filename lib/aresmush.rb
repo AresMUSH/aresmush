@@ -17,6 +17,7 @@ require 'yaml'
 require 'eventmachine'
 require 'active_support/all'
 require 'ohm'
+require "ohm/json"
 require 'i18n'
 require "i18n/backend/fallbacks" 
 require 'log4r'

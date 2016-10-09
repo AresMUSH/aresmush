@@ -11,7 +11,7 @@ module AresMUSH
       end
     
       def self.timezone(char)
-        char.timezone
+        OOCTime.timezone(char)
       end
     end
   end

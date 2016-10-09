@@ -37,7 +37,7 @@ en:
         sent_review: "Sent Mail to %{name}"
         original_message: "Original Message"
         cant_unsend_read_mail: "You can't unsend mail that has already been read."
-        mail_unsent: "You unsend the mail message.  Please note that this does not affect others who may have received that message."
+        mail_unsent: "You unsend the mail message.  Note!  If there were multiple recipients, you must unsend the message for each of them separately."
         filters_notice: "Filters enabled.  Use %xcmail/inbox%xn to get back to your inbox."
 
         mail_started: "You start composing a mail with subject: %{subject}."

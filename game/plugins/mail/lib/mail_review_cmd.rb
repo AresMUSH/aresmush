@@ -27,17 +27,10 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          deliveries = model.sent_mail_to(enactor)
-          
-          if (self.num)
-            Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
-              template = MessageTemplate.new(enactor, delivery)
-              client.emit template.render
-            end
-          else
-            template = InboxTemplate.new(enactor, deliveries, false, t('mail.sent_review', :name => model.name))
-            client.emit template.render
-          end
+          prefs = Mail.get_or_create_mail_prefs(enactor)
+          prefs.update(mail_filter: "review #{model.name}")
+          template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), false, prefs.mail_filter)
+          client.emit template.render
         end
       end
     end

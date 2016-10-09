@@ -22,7 +22,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          deliveries = model.sent_mail_to(enactor)
+          deliveries = enactor.sent_mail_to(model)
           
           Mail.with_a_delivery_from_a_list(client, self.num, deliveries) do |delivery|
             if (delivery.read)

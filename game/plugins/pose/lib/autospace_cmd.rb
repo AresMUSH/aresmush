@@ -12,17 +12,17 @@ module AresMUSH
       end
 
       def handle
+        prefs = Pose.get_or_create_pose_prefs(enactor)
+        
         if (!self.option)
-          enactor.autospace = nil
+          prefs.update(autospace: nil)
           message = t('pose.autospace_cleared')
         else
-          enactor.autospace = self.option
+          prefs.update(autospace: self.option)
           message = t('pose.autospace_set', :option => self.option)
         end
         
-        enactor.save
         client.emit_success message
-        
         Handles::Api.warn_if_setting_linked_preference(client, enactor)
       end
     end

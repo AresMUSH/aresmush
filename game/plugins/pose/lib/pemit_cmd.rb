@@ -25,10 +25,12 @@ module AresMUSH
         OnlineCharFinder.with_online_chars(self.names, client) do |results|
           results.each do |r|
             nospoof = ""
-            if (r.char.nospoof)
+            prefs = Pose.get_or_create_pose_prefs(r)
+            
+            if (prefs.nospoof)
               nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => enactor_name)}%xn%R"
             end
-            r.client.emit "#{Pose::Api.autospace(r.char)}#{nospoof}#{self.message}"
+            r.client.emit "#{prefs.autospace}#{nospoof}#{self.message}"
           end
         end
       end

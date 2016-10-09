@@ -188,3 +188,37 @@ Mail
 * Delete
 * Empty Trash on logout
 * Purge
+
+Manage
+====
+* Examine
+* Find
+* Destroy
+* findsite
+* boot
+* version
+* load plugin/config/locale
+
+OOCTime
+====
+* Set timezone
+* Default tz on create
+* bbposts adjust with tz
+
+Page
+====
+* Page
+* Lastpage
+* Multipage
+* Do not disturb
+
+Pose
+====
+* All the various poses/emits
+* Shortcuts (:, ;, etc.)
+* Repose
+* Reset repose if OOC room
+* Reset repose on startup / cron (not active rooms)
+* View reposes
+* Reposes limited to 8
+* Pose order

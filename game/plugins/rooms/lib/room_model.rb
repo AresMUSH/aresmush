@@ -33,6 +33,8 @@ module AresMUSH
     attribute :area
     attribute :is_foyer, DataType::Boolean
      
+    index :room_type
+    
     before_create :set_default_room_attributes
     
     def set_default_room_attributes

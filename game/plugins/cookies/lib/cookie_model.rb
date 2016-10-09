@@ -1,7 +1,5 @@
 module AresMUSH
   class Character
-    attribute :cookie_count, DataType::Integer
-    
     def cookies_received
       CookieAward.find(recipient_id: self.id)
     end

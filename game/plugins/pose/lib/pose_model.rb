@@ -1,26 +1,41 @@
 module AresMUSH
+
   class Character
+    reference :pose_prefs, "AresMUSH::PosePrefs"
+  end
+  
+  class PosePrefs < Ohm::Model
+    include ObjectModel
+    
     attribute :nospoof, DataType::Boolean
     attribute :autospace
     
-    before_create :set_default_pose_attributes
-    
-    def set_default_pose_attributes
-      self.autospace = "%r"
-    end
-  end
-
-  class Room
-    attribute :repose_on, DataType::Boolean
-    attribute :poses, DataType::Array
-    set :pose_order, "AresMUSH::PoseOrder"
+    reference :character, "AresMUSH::Character"
   end
   
   class PoseOrder < Ohm::Model
     include ObjectModel
     
-    attribute :pose
     attribute :time, DataType::Time
+
+    reference :character, "AresMUSH::Character"
+    reference :repose_info, "AresMUSH::ReposeInfo"
+    
+    index :time
   end
+  
+  class ReposeInfo < Ohm::Model
+    include ObjectModel
+    
+    reference :room, "AresMUSH::Room"
+    
+    attribute :poses, DataType::Array
+    collection :pose_orders, "AresMUSH::PoseOrder"
+  end
+
+  class Room
+    reference :repose_info, "AresMUSH::ReposeInfo"
+  end
+  
   
 end

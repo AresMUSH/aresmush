@@ -42,7 +42,7 @@ module AresMUSH
         end
           
         objects = objects.sort { |a,b| a.name_upcase <=> b.name_upcase}
-        objects = objects.map { |r| "#{r.id} #{r.name}"}
+        objects = objects.map { |r| "#{r.id.ljust(4)} #{r.name}"}
         client.emit BorderedDisplay.list(objects, t('manage.find_results'))
       end
     end

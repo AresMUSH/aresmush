@@ -33,9 +33,7 @@ module AresMUSH
       def handle
         room = enactor_room
         room.room_type = self.name.upcase
-        if (room.room_type == "OOC")
-          room.repose_on = false
-        end
+        Pose::Api.reset_repose(room)
         room.save
         client.emit_success t('rooms.room_type_set')
       end

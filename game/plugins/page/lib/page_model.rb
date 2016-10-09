@@ -1,6 +1,14 @@
 module AresMUSH
   class Character
-    set :last_paged, "AresMUSH::Character"
+    reference :page_prefs, "AresMUSH::PagePrefs"
+  end
+  
+  class PagePrefs < Ohm::Model
+    include ObjectModel
+    
+    reference :character, "AresMUSH::Character"
+    
+    attribute :last_paged, DataType::Array
     attribute :do_not_disturb, DataType::Boolean
   end
 end

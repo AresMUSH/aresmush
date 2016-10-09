@@ -28,6 +28,10 @@ module AresMUSH
     def self.filtered_mail(char)
       prefs = Mail.get_or_create_mail_prefs(char)
       filter = prefs.mail_filter || Mail.inbox_tag
+      if (filter.start_with?("review"))
+        sent_to = Character.find_one_by_name(filter.after(" "))
+        return char.sent_mail_to(sent_to)
+      end
       char.mail.select { |d| d.tags && d.tags.include?(filter) }
     end
     

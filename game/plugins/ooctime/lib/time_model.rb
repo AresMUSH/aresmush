@@ -1,11 +1,12 @@
 module AresMUSH
-  class Character
+  class TimePrefs < Ohm::Model
+    include ObjectModel
+    
     attribute :timezone
-    
-    before_create :set_timezone
-    
-    def set_timezone
-      self.timezone = "America/New_York"
-    end
+    reference :character, "AresMUSH::Character"
+  end
+  
+  class Character
+    reference :time_prefs, "AresMUSH::TimePrefs"
   end
 end

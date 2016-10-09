@@ -18,7 +18,14 @@ module AresMUSH
         @tag != Mail.inbox_tag
       end
         
-      def inbox_title
+      def tag_title
+        if (@tag.start_with?("review"))
+          return t('mail.sent_review', :name => @tag.after(" "))
+        end
+        @tag
+      end
+      
+      def header
         @show_from ? t('mail.inbox_title') : t('mail.sent_title') 
       end
       

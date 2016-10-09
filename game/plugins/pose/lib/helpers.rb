@@ -5,29 +5,88 @@ module AresMUSH
       Global.client_monitor.logged_in.each do |client, char|
         next if char.room != enactor.room
         nospoof = ""
-        if (is_emit && char.nospoof)
+        if (is_emit && char.pose_prefs && char.pose_prefs.nospoof)
           nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
         end
-        client.emit "#{Pose::Api.autospace(char)}#{nospoof}#{pose}"
+        client.emit "#{Pose.autospace(char)}#{nospoof}#{pose}"
       end
       
       if (!is_ooc)
-        room.pose_order[enactor.name] = Time.now
-        room.poses << pose
-        if (room.poses.count > 8)
-          room.poses.shift
-        end
-        room.save
+        Pose.add_repose(room, enactor, pose)
         Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit)
       end
+    end
+
+    def self.add_repose(room, enactor, pose)
+      repose = room.repose_info
+      return if !repose
+      
+      order = repose.pose_orders 
+      enactor_order = order.find(character_id: enactor.id).first
+      if (enactor_order)
+        enactor_order.update(time: Time.now)
+      else
+        PoseOrder.create(repose_info: repose, character: enactor)
+      end
+
+      poses = repose.poses
+      poses << pose
+      if (poses.count > 8)
+        poses.shift
+      end
+      repose.update(poses: poses)
     end
     
     def self.repose_enabled
       Global.read_config("pose", "repose_enabled")
     end
     
-    def self.repose_on(room)
-      repose_enabled && room.repose_on
+    def self.autospace(char)
+      char.pose_prefs ? char.pose_prefs.autospace : ""
     end
+    
+    def self.repose_on(room)
+      repose_enabled && room.repose_info
+    end
+    
+    def self.get_or_create_pose_prefs(char)
+      prefs = char.pose_prefs
+      if (!prefs)
+        prefs = PosePrefs.create(character: char)
+        char.update(pose_prefs: prefs)
+      end
+      prefs
+    end
+    
+    def self.reset_reposes
+      # Don't clear poses in rooms with active people.
+      active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
+
+      rooms = Room.all.except(repose_info: nil)
+      rooms.each do |r|
+        next if active_rooms.include?(r)
+        
+        Global.logger.debug "Clearing poses from #{r.name}."
+        r.repose_info.delete
+      end
+      
+      rooms = Room.find(repose_info: nil)
+      rooms.each do |r|
+        next if active_rooms.include?(r)
+        Pose.reset_repose(r)
+      end
+    end
+    
+    def self.reset_repose(room)
+      repose = room.repose_info
+      if (Rooms::Api.room_type(room) == "IC" && !repose)
+        Global.logger.debug "Enabling repose in #{room.name}."
+        repose = ReposeInfo.create(room: room)
+        room.update(repose_info: repose)
+      elsif repose
+        repose.delete
+      end
+    end
+    
   end
 end

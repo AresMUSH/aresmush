@@ -30,8 +30,9 @@ module AresMUSH
       
         if (result.found?)
           suspect = result.target
-          ip = suspect.last_ip
-          hostname = suspect.last_hostname[0..10]
+          login_status = suspect.login_status
+          ip = login_status.last_ip
+          hostname = login_status.last_hostname[0..10]
         else
           
             if (self.target[0].is_integer?)
@@ -56,7 +57,7 @@ module AresMUSH
         title = "#{title}%r#{t('manage.findsite_player_info', :ip => ip, :hostname => hostname)}"
         
         matches = Character.all.select { |c| Login::Api.is_site_match?(c, ip, hostname) }
-        found = matches.map { |m| "#{m.name.ljust(25)} #{m.last_ip} #{m.last_hostname}" }
+        found = matches.map { |m| "#{m.name.ljust(25)} #{m.login_status.last_ip} #{m.login_status.last_hostname}" }
         
         client.emit BorderedDisplay.list found, title
       end

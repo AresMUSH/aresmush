@@ -9,7 +9,6 @@ module AresMUSH
     
     attribute :text
     reference :character, "AresMUSH::Character"
-    
   end
   
   class ChargenInfo < Ohm::Model

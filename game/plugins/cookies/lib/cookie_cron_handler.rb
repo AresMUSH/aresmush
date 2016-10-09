@@ -22,8 +22,6 @@ module AresMUSH
         counts.each_with_index do |(char, count), i|
           index = i+1
           awards << "#{index}. #{char.name.ljust(20)}#{count}\n"
-          char.cookie_count = char.cookie_count + count
-          char.save
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck

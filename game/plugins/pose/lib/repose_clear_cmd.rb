@@ -9,11 +9,10 @@ module AresMUSH
       end
       
       def handle
-        room = enactor.room        
-        room.pose_order = {}
-        room.poses = []
-        room.save
-        
+        repose = enactor.room.repose_info
+        if (repose)
+          repose.delete
+        end
         client.emit_success t('pose.repose_cleared')
       end
     end

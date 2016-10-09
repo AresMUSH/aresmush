@@ -5,14 +5,14 @@ module AresMUSH
       include CommandRequiresLogin
       
       def handle
-        room = enactor.room
-        if (!Pose.repose_on(room))
+        repose = enactor.room.repose
+        if (!repose)
           client.emit_failure t('pose.repose_disabled')
           return
         end
         
-        poses = room.pose_order.sort_by { |k, v| v }.reverse
-        list = poses.map { |n, v| "#{n.ljust(30)} #{last_posed(v)}"}
+        poses = repose.pose_orders.sort_by(:time).reverse
+        list = poses.map { |p| "#{p.character.name.ljust(30)} #{last_posed(p.time)}"}
         client.emit BorderedDisplay.list list, t('pose.repose_order_title')
       end
       

@@ -7,9 +7,14 @@ module AresMUSH
   
   # First you have to re-define the fields you deleted.
   class Character
-    attribute :chargen_stage
-    attribute :chargen_locked
-    attribute :background
+    attribute :cookie_count
+    attribute :timezone
+    attribute :autospace
+  end
+  
+  class Room
+    attribute :repose_on
+    attribute :poses
   end
   
   puts "======================================================================="
@@ -18,10 +23,16 @@ module AresMUSH
   
   # Then wipe out the field on all affected objects.
   Character.all.each do |c|
-    c.chargen_stage = nil
-    c.chargen_locked = nil
-    c.background = nil
+    c.cookie_count = nil
+    c.timezone = nil
+    c.autospace = nil
     c.save
+  end
+  
+  Room.all.each do |r|
+    r.repose_on = nil
+    r.poses = nil
+    r.save
   end
   
   puts "Upgrade complete!"

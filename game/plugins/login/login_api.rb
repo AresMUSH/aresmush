@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def self.is_site_match?(char, ip, hostname)
-        char.is_site_match?(ip, hostname)
+        Login.is_site_match?(char, ip, hostname)
       end
       
       def self.last_on(char)

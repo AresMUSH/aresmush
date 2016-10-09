@@ -5,7 +5,6 @@ module AresMUSH
       include CommandWithoutSwitches
       include CommandRequiresArgs
       include CommandRequiresLogin
-      include TemplateFormatters
       
       attr_accessor :target
       
@@ -28,8 +27,14 @@ module AresMUSH
             return
           end
 
-          client.emit_raw "#{line}\n#{model.to_json}\n#{line}\n"
+          line = "-".repeat(78)
+          json = model.pretty_print
+          
+          client.emit_raw "#{line}\n#{json}#{}\n#{line}"
         end
+      end
+      
+      def print_model
       end
     end
   end

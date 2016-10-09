@@ -19,7 +19,8 @@ module AresMUSH
     end
     
     def self.timezone(char)
-      char.timezone || "America/New_York"
+      prefs = char.time_prefs
+      prefs ? prefs.timezone : "America/New_York"
     end
   end
 end

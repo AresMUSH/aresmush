@@ -9,6 +9,18 @@ module AresMUSH
     attribute :last_on, DataType::Time
     attribute :last_ip
     attribute :last_hostname
+    
+    # Checks to see if either the IP or hostname is a match with the specified string.
+    # For IP we check the first few numbers because they're most meaningful.  
+    # For the hostname, it's reversed.
+    def is_site_match?(ip, hostname)
+      host_search = hostname.chars.last(20).join.to_s.downcase
+      ip_search = ip.chars.first(10).join.to_s
+      
+      return true if !ip_search.blank? && self.last_ip.include?(ip_search)
+      return true if !host_search.blank? && self.last_hostname.include?(host_search)
+      return false
+    end
   end
   
   
@@ -39,18 +51,5 @@ module AresMUSH
       return t('validation.char_name_taken') if (Character.found?(name))
       return nil
     end
-    
-    # Checks to see if either the IP or hostname is a match with the specified string.
-    # For IP we check the first few numbers because they're most meaningful.  
-    # For the hostname, it's reversed.
-    def is_site_match?(ip, hostname)
-      host_search = hostname.chars.last(20).join.to_s.downcase
-      ip_search = ip.chars.first(10).join.to_s
-      
-      return true if self.last_ip.include?(ip_search)
-      return true if self.last_hostname.include?(host_search)
-      return false
-    end
-    
   end  
 end

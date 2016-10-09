@@ -27,7 +27,6 @@ module AresMUSH
           prefs.update(mail_filter: self.tag || Mail.inbox_tag)
         end
         
-        client.emit "#{show_from} #{prefs.mail_filter}"
         template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), show_from, prefs.mail_filter)
         client.emit template.render
       end

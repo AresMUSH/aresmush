@@ -5,6 +5,12 @@ module AresMUSH
     reference :mail_composition, "AresMUSH::MailComposition"
     reference :mail_prefs, "AresMUSH::MailPrefs"
     
+    before_delete :delete_mail
+    
+    def delete_mail
+      mail.each { |m| m.delete }
+    end
+    
     def has_unread_mail?
       !unread_mail.empty?
     end
@@ -14,7 +20,7 @@ module AresMUSH
     end
     
     def sent_mail_to(recipient)
-      mail.find(author_id: recipient.id)
+      recipient.mail.find(author_id: self.id)
     end
   end 
   

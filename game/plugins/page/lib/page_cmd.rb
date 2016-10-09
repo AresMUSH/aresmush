@@ -46,13 +46,19 @@ module AresMUSH
             page_recipient(r.client, r.char, recipients, message)
           end
         
-          enactor.last_paged = self.names
-          enactor.save
+          prefs = enactor.page_prefs
+          if (prefs)
+            prefs.update(last_paged: self.names)
+          else
+            prefs = PagePrefs.create(character: enactor, last_paged: self.names)
+            enactor.update(page_prefs: prefs)
+          end
+          
         end
       end
       
       def page_recipient(other_client, other_char, recipients, message)
-        if (other_char.do_not_disturb)
+        if (other_char.page_prefs && other_char.page_prefs.do_not_disturb)
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
           Mail::Api.send_mail([other_char.name], 
               t('page.missed_page_subject', :name => enactor_name), 
