@@ -5,7 +5,7 @@ module AresMUSH
       path = File.join(AresMUSH.game_path, "config", "database.yml") 
       config = AresMUSH::YamlExtensions.yaml_hash(path)
       
-      Ohm.redis.auth config["database"]["password"]
+      Ohm.redis.call "AUTH", config["database"]["password"]
       Ohm.redis.call "FLUSHDB"
       
       game = Game.create
@@ -23,7 +23,6 @@ module AresMUSH
 
       ic_start_room = Room.create(
         :name => "Onstage", 
-        :room_type => "IC",
         :room_area => "Onstage")
       ic_start_room.current_desc = "This is the room where all characters start out."
       
@@ -52,7 +51,6 @@ module AresMUSH
       6.times do |n|
         rp_room = Room.create(
           :name => "RP Room #{n+1}", 
-          :room_type => "IC", 
           :room_area => "Offstage")
         
         rp_room.current_desc = "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything."

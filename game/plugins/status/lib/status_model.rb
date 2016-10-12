@@ -7,10 +7,10 @@ module AresMUSH
     attribute :is_on_duty, DataType::Boolean
     attribute :is_playerbit, DataType::Boolean    
     
-    before_create :set_default_status
+    default_values :default_status_values
     
-    def set_default_status
-      self.is_on_duty = true
+    def self.default_status_values
+       { is_on_duty: true }
     end
   end
 end

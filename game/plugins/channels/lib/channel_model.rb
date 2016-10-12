@@ -57,13 +57,19 @@ module AresMUSH
     set :roles, "AresMUSH::Role"
     set :characters, "AresMUSH::Character"
 
-    before_create :set_channel_defaults
-        
-    def set_channel_defaults
+    default_values :channel_defaults
+    before_save :save_upcase
+    
+    def save_upcase
       self.name_upcase = self.name.upcase
-      self.color = "%xh"
-      self.announce = true
-      self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
+    end      
+        
+    def self.channel_defaults
+      {
+        color: "%xh",
+        announce: true,
+        
+      }
     end
     
     def display_name(include_markers = true)

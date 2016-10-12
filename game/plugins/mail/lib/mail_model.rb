@@ -25,10 +25,10 @@ module AresMUSH
   class MailPrefs < Ohm::Model
     include ObjectModel
     
-    before_create :set_default_mail_attributes
+    default_values :default_mail_attributes
     
-    def set_default_mail_attributes
-      self.mail_filter = "Inbox"
+    def self.default_mail_attributes
+      { mail_filter: "Inbox" }
     end
     
     reference :character, "AresMUSH::Character"

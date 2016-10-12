@@ -1,10 +1,10 @@
 module AresMUSH
   class Game
     attribute :next_job_number, DataType::Integer
-    before_create :init_job_number
+    default_values :default_job_values
     
-    def init_job_number
-      self.next_job_number = 1
+    def self.default_job_values
+      { next_job_number: 1 }
     end
   end
   

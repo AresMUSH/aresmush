@@ -4,10 +4,10 @@ module AresMUSH
     attribute :pose_nospoof, DataType::Boolean
     attribute :pose_autospace
     
-    before_create :set_default_autospace
+    default_values :default_autospace
     
-    def set_default_autospace
-      self.pose_autospace = "%r"
+    def self.default_autospace
+      { pose_autospace: "%r" }
     end
   end
   

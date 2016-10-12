@@ -2,15 +2,6 @@ module AresMUSH
   class Character
     reference :room_home, "AresMUSH::Room"
     reference :room_work, "AresMUSH::Room"
-    
-    before_create :set_starting_rooms
-    
-    def set_starting_rooms
-      self.room = Game.master.welcome_room
-      self.room_home = Game.master.ooc_room
-      self.room_work = Game.master.ooc_room
-    end
-    
   end
   
   class Game
@@ -36,10 +27,10 @@ module AresMUSH
      
     index :room_type
     
-    before_create :set_default_room_attributes
+    default_values :default_room_attributes
     
-    def set_default_room_attributes
-      self.room_type = "IC"
+    def self.default_room_attributes
+      { room_type: "IC" }
     end
     
   end
@@ -47,10 +38,10 @@ module AresMUSH
   class Exit    
     attribute :lock_keys, DataType::Array
     
-    before_create :set_default_lock
+    default_values :default_lock
     
-    def set_default_lock
-      self.lock_keys = []
+    def self.default_lock
+      { lock_keys: [] }
     end
   end
 end

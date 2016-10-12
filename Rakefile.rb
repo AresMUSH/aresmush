@@ -21,12 +21,19 @@ end
 task :testinit do
   bootstrapper = AresMUSH::Bootstrapper.new
   AresMUSH::Global.plugin_manager.load_all
+  bootstrapper.config_reader.load_game_config
+  bootstrapper.db.load_config
   AresMUSH::Channel.all.each do |c|
     puts "#{c.name} #{c.announce}"
   end
   
-  c = AresMUSH::Character.find_one_by_name("Headwiz")
-  puts c.inspect
+  AresMUSH::Character.all.each do |c|
+    puts c.inspect
+  end
+
+  AresMUSH::Room.all.each do |c|
+    puts c.inspect
+  end
   
   
   puts AresMUSH::Game[1].inspect

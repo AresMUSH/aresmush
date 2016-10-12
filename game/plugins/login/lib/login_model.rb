@@ -30,10 +30,10 @@ module AresMUSH
     
     reference :login_status, "AresMUSH::LoginStatus"
     
-    before_create :set_default_login_attributes
+    default_values :default_login_attributes
     
-    def set_default_login_attributes
-      self.login_watch = "all"
+    def self.default_login_attributes
+      { login_watch: "all" }
     end
     
     def get_or_create_login_status

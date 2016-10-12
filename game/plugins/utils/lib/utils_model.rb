@@ -3,10 +3,10 @@ module AresMUSH
     attribute :utils_edit_prefix
     attribute :utils_saved_text, DataType::Array
     
-    before_create :set_default_util_attributes
+    default_values :default_util_attributes
     
-    def set_default_util_attributes
-      self.utils_edit_prefix = "FugueEdit >"
+    def self.default_util_attributes
+      { utils_edit_prefix: "FugueEdit >" }
     end
   end
 end

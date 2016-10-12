@@ -33,10 +33,10 @@ module AresMUSH
     
     reference :character, "AresMUSH::Character"
     
-    before_create :set_default_demographics
+    default_values :default_demographics
     
-    def set_default_demographics
-      self.gender = "Other"
+    def self.default_demographics
+      { gender: "Other" }
     end
   end
 end

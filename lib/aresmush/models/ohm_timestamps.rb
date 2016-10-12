@@ -13,14 +13,14 @@ module Ohm
         send :include, Ohm::DataTypes
         attribute :created_at, Ohm::DataTypes::DataType::Time
         attribute :updated_at, Ohm::DataTypes::DataType::Time
-        before_create :set_created_date
+        default_values :default_created_date
         before_save :set_updated_date
+      end
+      def default_created_date
+        { created_at: Time.now.to_s }
       end
     end
   
-    def set_created_date
-      self.created_at ||= Time.now.to_s
-    end
 
     def set_updated_date
       self.updated_at = Time.now.to_s
