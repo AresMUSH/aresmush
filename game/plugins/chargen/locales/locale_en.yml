@@ -55,7 +55,7 @@ en:
         app_submitted: "You submit your character for approval.  Staff should review your app within 24-48 hours.%R%% You can check the status of your app using 'requests'."
         app_resubmitted: "You re-submit your character for approval.  You can check the status of your app using 'requests'."
         app_unsubmitted: "You un-submit your application.  Use the submit command after you've made your changes."
-        app_job_problem: "There was a problem submitting your job.  Please contact staff."
+        app_job_problem: "There was a problem submitting your job.  Please contact the game admin."
 
         you_have_not_submitted_app: "You have not submitted your character for approval."
         no_app_submitted: "%{name} has not submitted their character for approval."

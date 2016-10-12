@@ -1,7 +1,7 @@
 en:
     handles:
         # Linking
-        link_failed: "There was a problem linking this character to your handle.  If the problem persists, contact staff for help: %{error}"
+        link_failed: "There was a problem linking this character to your handle.  If the problem persists, contact the game admin for help: %{error}"
         link_successful: "You have linked this character to handle %{handle}."
         character_already_linked: 'This character is already linked to a handle.  You must unlink it at AresCentral if you want to link to a different one.'
                 
