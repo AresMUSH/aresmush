@@ -13,19 +13,21 @@ module AresMUSH
       describe :on_char_connected_event do
         before do
           @events = CharConnectedEventHandler.new
+          @master = double
+          Game.stub(:master) { @master }
         end
 
         context "online record set" do
           before do 
-            Game.stub(:online_record) { 2 }
-            Game.stub(:online_record=) {}
+            @master.stub(:online_record) { 2 }
+            @master.stub(:update) {}
             client_monitor.stub(:logged_in_clients) { [double, double, double] }            
             client_monitor.stub(:emit_all_ooc) {} 
             AresMUSH::Locale.stub(:translate).with("who.new_online_record", { :count => 3 }) { "record 3" }            
           end
           
           it "should update the online record" do
-            Game.should_receive(:online_record=).with(3)
+            @master.should_receive(:update).with(online_record: 3)
             @events.on_event(nil)
           end
           
@@ -37,12 +39,12 @@ module AresMUSH
       
         context "online record not set" do
           before do
-            Game.stub(:online_record) { 2 }
+            @master.stub(:online_record) { 2 }
             client_monitor.stub(:logged_in_clients) { [double, double] }                        
           end
           
           it "should not update the online record" do
-            Game.should_not_receive(:online_record=)
+            @master.should_not_receive(:update)
             @events.on_event(nil)            
           end
           

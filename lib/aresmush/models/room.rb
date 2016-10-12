@@ -51,6 +51,8 @@ module AresMUSH
     end
     
     def emit(msg)
+      puts Global.client_monitor.logged_in.map { |x, c| c.room }
+      puts "ROOM #{self}"
       clients.each { |c| c.emit(msg) }
     end
     

@@ -47,23 +47,23 @@ module AresMUSH
         end
         
         it "should want announce if you're listening for everybody" do
-          @listener.stub(:watch) { "all" }
+          @listener.stub(:login_watch) { "all" }
           Login.wants_announce(@listener, @connector).should eq true
         end 
         
         it "should not want announce if you've disabled it" do
-          @listener.stub(:watch) { "none" }
+          @listener.stub(:login_watch) { "none" }
           Login.wants_announce(@listener, @connector).should eq false
         end
         
         it "should not want announce if friends-only and have not friended a char" do
-          @listener.stub(:watch) { "friends" }
+          @listener.stub(:login_watch) { "friends" }
           @listener.stub(:is_friend?).with(@connector) { false }
           Login.wants_announce(@listener, @connector).should eq false
         end
         
         it "should want announce if friends-only and have friended a  handle" do
-          @listener.stub(:watch) { "friends" }
+          @listener.stub(:login_watch) { "friends" }
           @listener.stub(:is_friend?).with(@connector) { true }
           Login.wants_announce(@listener, @connector).should eq true
         end

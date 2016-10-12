@@ -36,7 +36,7 @@ module AresMUSH
         
         context "exit found" do          
           before do
-            @exit = Exit.new(name_upcase: "S", name: "S")
+            @exit = Exit.new(name_upcase: "S", name: "S", lock_keys: [])
             @room.stub(:get_exit).with("s") { @exit }
           end
 

@@ -38,7 +38,7 @@ module AresMUSH
     end
     
     def self.found?(name)
-      find_any_by_name(name).first
+      !!find_one_by_name(name)
     end
   
     # Derived classes may implement name checking

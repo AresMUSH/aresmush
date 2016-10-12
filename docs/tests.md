@@ -292,3 +292,6 @@ Status
 Who
 =====
 * hide/unhide 
+* who/where
+* online count and record
+

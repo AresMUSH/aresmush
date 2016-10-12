@@ -16,10 +16,13 @@ module AresMUSH
       
       describe :handle do
         before do
-          @target = double
+          @target = Character.new
           @target.stub(:id) { "X" }
-          AnyTargetFinder.stub(:find).with("X", enactor) { FindResult.new(@target, nil) }
-          client.stub(:program) { { :destroy_target => @target.id, :something_else => "x" } }
+          @target.stub(:is_online?) { false }
+          ClassTargetFinder.stub(:find).with("X", @target.class, enactor) { FindResult.new(@target, nil) }
+          client.stub(:program) { { :destroy_target => @target.id, 
+               :destroy_class => @target.class,
+               :something_else => "x" } }
           Manage.stub(:can_manage_object?) { true }
           handler.crack!
         end
@@ -32,14 +35,13 @@ module AresMUSH
           end
 
           it "should emit failure if trying to destroy a char who's online" do
-            @target.stub(:class) { Character }
             @target.stub(:is_online?) { true }
             client.should_receive(:emit_failure).with("manage.cannot_destroy_online")
             handler.handle
           end
           
           it "should emit failure if the char doesn't have permission" do
-            Manage.should_receive(:can_manage_object?).with(enactor, @target) { false }
+            Manage.should_receive(:can_manage_object?) { false }
             client.should_receive(:emit_failure).with("dispatcher.not_allowed")
             handler.handle
           end
@@ -47,14 +49,13 @@ module AresMUSH
         
         context "success" do
           before do
-            @target.stub(:client) { nil }
             client.stub(:emit_success)
-            @target.stub(:destroy)
+            @target.stub(:delete) {}
             @target.stub(:name) { "name" }
           end
           
           it "should destroy the target" do
-            @target.should_receive(:destroy)
+            @target.should_receive(:delete)
             handler.handle
           end
           
@@ -71,12 +72,15 @@ module AresMUSH
         
           context "destroying a room" do
             before do
+
               # Stub out welcome room
               @welcome_room = double
               @game.stub(:welcome_room) { @welcome_room }
 
               # Pretend the target is a room
               @target.stub(:class) { Room }
+              ClassTargetFinder.stub(:find).with("X", @target.class, enactor) { FindResult.new(@target, nil) }
+
               @char_in_room = double
               @target.stub(:characters) { [@char_in_room] }
             end

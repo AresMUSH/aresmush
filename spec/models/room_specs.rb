@@ -24,7 +24,7 @@ module AresMUSH
     end
     
     describe :emit do
-      it "should emit to all clients in the room" do
+      it "should emit to all clients in the room xxx" do
         @client1.should_receive(:emit).with("Test")
         @client2.should_receive(:emit).with("Test")
         @client3.should_not_receive(:emit)

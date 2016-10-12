@@ -24,7 +24,7 @@ module AresMUSH
       end
     
       def found?(name)
-        !!find_any_by_name(name).first
+        !!find_one_by_name(name)
       end
       
     end

@@ -60,8 +60,8 @@ module AresMUSH
     end
     
     describe :emit_raw do
-      it "sends the raw text without formatting" do
-        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r")
+      it "sends the raw text without formatting and with a linebreak" do
+        @connection.should_receive(:send_data).with("%xr%%Boo%xn%r\r\n")
         @client.emit_raw "%xr%%Boo%xn%r"
       end
     end
@@ -150,7 +150,7 @@ module AresMUSH
      it "should look up the char if there is one" do
        @client.char_id = 15
        found_char = double
-       Character.stub(:find).with(15) { found_char }
+       Character.stub(:[]).with(15) { found_char }
        @client.find_char.should eq found_char
      end
      

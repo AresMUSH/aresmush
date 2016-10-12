@@ -2,6 +2,10 @@ module AresMUSH
   module Install
     def self.init_db
 
+      path = File.join(AresMUSH.game_path, "config", "database.yml") 
+      config = AresMUSH::YamlExtensions.yaml_hash(path)
+      
+      Ohm.redis.auth config["database"]["password"]
       Ohm.redis.call "FLUSHDB"
       
       game = Game.create

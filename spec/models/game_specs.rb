@@ -8,7 +8,7 @@ module AresMUSH
     describe :master do
       it "should return the master game object" do
         model = double
-        Game.stub(:all) { [model] }
+        Game.stub(:[]).with(1) { model }
         Game.master.should eq model
       end
     end

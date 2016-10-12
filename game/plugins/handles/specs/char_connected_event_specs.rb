@@ -26,7 +26,7 @@ module AresMUSH
       context "linked" do       
         it "should set the preferences" do
           @handle = double
-          @handle.stub(:id) { 123 }
+          @handle.stub(:handle_id) { 123 }
           @char.stub(:handle) { @handle }
           @char.stub(:name) { "Bob" }
           @char.stub(:id) { 111 }
@@ -46,7 +46,7 @@ module AresMUSH
       context "not linked" do
         it "should unlink the handle" do
           @handle = double
-          @handle.stub(:id) { 123 }
+          @handle.stub(:handle_id) { 123 }
           @char.stub(:handle) { @handle }
           @char.stub(:name) { "Bob" }
           @char.stub(:id) { 111 }

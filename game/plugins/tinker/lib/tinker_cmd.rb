@@ -14,7 +14,10 @@ module AresMUSH
       end
       
       def handle
-        RosterRegistry.all.each { |r| r.delete }
+        g = Game.master
+        g.api_game_id = nil
+        g.api_key = nil
+        g.save
         # Put whatever you need to do here.
         client.emit_success "Done!"
       end

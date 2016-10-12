@@ -69,15 +69,16 @@ module AresMUSH
         
         context "success" do
           before do
-            @target = double.as_null_object
-            @target.stub(:to_json) { "JSON" }
-            AnyTargetFinder.stub(:find) { @target }
+            @target = Character.new
+            @target.stub(:id) { 1 }
+            results = FindResult.new(@target)
+            AnyTargetFinder.stub(:find) { results }
             client.stub(:program=)
             client.stub(:emit)
           end
           
           it "should set the program to the destroy target" do
-            client.should_receive(:program=).with( { :destroy_target => @target } )
+            client.should_receive(:program=).with( { :destroy_target => 1, :destroy_class => AresMUSH::Character } )
             handler.handle
           end
           
