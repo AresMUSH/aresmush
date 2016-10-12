@@ -129,22 +129,22 @@ module AresMUSH
       BbsBoard.create(name: "Cookie Awards", order: 3)
       BbsBoard.create(name: "New Arrivals", order: 4)
   
-      channel = AresMUSH::Channel.create(name: "Chat")
-      channel.announce = false
-      channel.description = "Public chit-chat."
-      channel.color = "%xy"
+      channel = AresMUSH::Channel.create(name: "Chat", 
+          announce: false, 
+          description: "Public chit-chat",
+          color: "%xy")
       channel.default_alias = [ 'c', 'ch', 'cha' ]
       channel.save
       
-      channel = AresMUSH::Channel.create(name: "Questions")
-      channel.description = "Questions and answers."
-      channel.color = "%xg"
+      channel = AresMUSH::Channel.create(name: "Questions",
+         color: "%xg",
+         description: "Questions and answers.")
       channel.default_alias = [ 'q', 'qu', 'que' ]
       channel.save
       
-      channel = AresMUSH::Channel.create(name: "Admin")
-      channel.description = "Admin business."
-      channel.color = "%xr"
+      channel = AresMUSH::Channel.create(name: "Admin",
+        description: "Admin business.",
+        color: "%xr")
       channel.default_alias = [ 'a', 'ad', 'adm' ]
       channel.roles.add admin_role
       channel.save

@@ -87,7 +87,7 @@ module AresMUSH
   class SceneSet < Ohm::Model
     include ObjectModel
     attribute :set
-    attribute :time, DataType::Time
+    attribute :time, :type => DataType::Time
     reference :room, "AresMUSH::Room"
   end
   

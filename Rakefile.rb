@@ -24,7 +24,7 @@ task :testinit do
   bootstrapper.config_reader.load_game_config
   bootstrapper.db.load_config
   AresMUSH::Channel.all.each do |c|
-    puts "#{c.name} #{c.announce}"
+    puts c.inspect
   end
   
   AresMUSH::Character.all.each do |c|

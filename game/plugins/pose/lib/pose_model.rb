@@ -1,20 +1,14 @@
 module AresMUSH
 
   class Character
-    attribute :pose_nospoof, DataType::Boolean
-    attribute :pose_autospace
-    
-    default_values :default_autospace
-    
-    def self.default_autospace
-      { pose_autospace: "%r" }
-    end
+    attribute :pose_nospoof, :type => DataType::Boolean
+    attribute :pose_autospace, :default => "%r"
   end
   
   class PoseOrder < Ohm::Model
     include ObjectModel
     
-    attribute :time, DataType::Time
+    attribute :time, :type => DataType::Time
 
     reference :character, "AresMUSH::Character"
     reference :repose_info, "AresMUSH::ReposeInfo"
@@ -25,7 +19,7 @@ module AresMUSH
     
     reference :room, "AresMUSH::Room"
     
-    attribute :poses, DataType::Array
+    attribute :poses, :type => DataType::Array
     collection :pose_orders, "AresMUSH::PoseOrder"
   end
 

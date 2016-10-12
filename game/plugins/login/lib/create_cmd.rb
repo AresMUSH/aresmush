@@ -44,6 +44,7 @@ module AresMUSH
         char = Character.new
         char.name = charname
         char.change_password(password)
+        char.room = Game.master.welcome_room
 
         if (terms_of_service)
           login_status = char.get_or_create_login_status

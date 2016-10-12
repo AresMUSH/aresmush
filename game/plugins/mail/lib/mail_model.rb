@@ -25,16 +25,10 @@ module AresMUSH
   class MailPrefs < Ohm::Model
     include ObjectModel
     
-    default_values :default_mail_attributes
-    
-    def self.default_mail_attributes
-      { mail_filter: "Inbox" }
-    end
-    
     reference :character, "AresMUSH::Character"
     
-    attribute :copy_sent_mail, DataType::Boolean
-    attribute :mail_filter
+    attribute :copy_sent_mail, :type => DataType::Boolean
+    attribute :mail_filter, :default => "Inbox"
   end
   
   class MailComposition < Ohm::Model
@@ -42,7 +36,7 @@ module AresMUSH
     
     attribute :subject
     attribute :body
-    attribute :to_list, DataType::Array
+    attribute :to_list, :type => DataType::Array
     
     reference :character, "AresMUSH::Character"
   end
@@ -58,8 +52,8 @@ module AresMUSH
     attribute :body
     attribute :to_list
     
-    attribute :read, DataType::Boolean
-    attribute :tags, DataType::Array
+    attribute :read, :type => DataType::Boolean
+    attribute :tags, :type => DataType::Array
     
     index :read
   end

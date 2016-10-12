@@ -3,14 +3,8 @@ module AresMUSH
     reference :last_ic_location, "AresMUSH::Room"
 
     attribute :afk_message
-    attribute :is_afk, DataType::Boolean
-    attribute :is_on_duty, DataType::Boolean
-    attribute :is_playerbit, DataType::Boolean    
-    
-    default_values :default_status_values
-    
-    def self.default_status_values
-       { is_on_duty: true }
-    end
+    attribute :is_afk, :type => DataType::Boolean
+    attribute :is_on_duty, :type => DataType::Boolean, :default => true
+    attribute :is_playerbit, :type => DataType::Boolean
   end
 end

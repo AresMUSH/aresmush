@@ -5,8 +5,8 @@ module AresMUSH
     
     reference :character, "AresMUSH::Character"
     
-    attribute :terms_of_service_acknowledged, DataType::Time
-    attribute :last_on, DataType::Time
+    attribute :terms_of_service_acknowledged, :type => DataType::Time
+    attribute :last_on, :type => DataType::Time
     attribute :last_ip
     attribute :last_hostname
     
@@ -26,15 +26,9 @@ module AresMUSH
   class Character
 
     attribute :login_email
-    attribute :login_watch
+    attribute :login_watch, :default => "all"
     
     reference :login_status, "AresMUSH::LoginStatus"
-    
-    default_values :default_login_attributes
-    
-    def self.default_login_attributes
-      { login_watch: "all" }
-    end
     
     def get_or_create_login_status
       status = self.login_status

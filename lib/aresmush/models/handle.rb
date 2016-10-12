@@ -7,7 +7,7 @@ module AresMUSH
     attribute :handle_id
     attribute :name_upcase
     
-    attribute :friends, DataType::Array
+    attribute :friends, :type => DataType::Array
     
     index :name_upcase
     index :handle_id

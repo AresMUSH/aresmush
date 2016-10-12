@@ -21,27 +21,14 @@ module AresMUSH
   class Room
     attribute :room_grid_x
     attribute :room_grid_y
-    attribute :room_type
+    attribute :room_type, :default => "IC"
     attribute :room_area
-    attribute :room_is_foyer, DataType::Boolean
+    attribute :room_is_foyer, :type => DataType::Boolean
      
     index :room_type
-    
-    default_values :default_room_attributes
-    
-    def self.default_room_attributes
-      { room_type: "IC" }
-    end
-    
   end
   
   class Exit    
-    attribute :lock_keys, DataType::Array
-    
-    default_values :default_lock
-    
-    def self.default_lock
-      { lock_keys: [] }
-    end
+    attribute :lock_keys, :type => DataType::Array, :default => []
   end
 end

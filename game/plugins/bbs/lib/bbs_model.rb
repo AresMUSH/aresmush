@@ -18,7 +18,7 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :description
-    attribute :order, DataType::Integer
+    attribute :order, :type => DataType::Integer
 
     index :order
     index :name_upcase

@@ -1,11 +1,6 @@
 module AresMUSH
   class Game
-    attribute :next_job_number, DataType::Integer
-    default_values :default_job_values
-    
-    def self.default_job_values
-      { next_job_number: 1 }
-    end
+    attribute :next_job_number, :type => DataType::Integer, :default => 1
   end
   
   class Character
@@ -56,7 +51,7 @@ module AresMUSH
     attribute :description
     attribute :category
     attribute :status
-    attribute :number, DataType::Integer
+    attribute :number, :type => DataType::Integer
     
     reference :author, "AresMUSH::Character"
     reference :assigned_to, "AresMUSH::Character"
@@ -87,7 +82,7 @@ module AresMUSH
     reference :job, "AresMUSH::Job"
     reference :author, "AresMUSH::Character"
     
-    attribute :admin_only, DataType::Boolean
+    attribute :admin_only, :type => DataType::Boolean
     attribute :message
     
     def admin_only?

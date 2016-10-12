@@ -25,18 +25,12 @@ module AresMUSH
     attribute :physique
     attribute :skin
     attribute :fullname
-    attribute :gender
+    attribute :gender, :default => "Other"
     attribute :hair
     attribute :eyes
-    attribute :birthdate, DataType::Date
+    attribute :birthdate, :type => DataType::Date
     attribute :callsign
     
     reference :character, "AresMUSH::Character"
-    
-    default_values :default_demographics
-    
-    def self.default_demographics
-      { gender: "Other" }
-    end
   end
 end

@@ -11,18 +11,15 @@ module Ohm
         
       def register_data_members
         send :include, Ohm::DataTypes
-        attribute :created_at, Ohm::DataTypes::DataType::Time
-        attribute :updated_at, Ohm::DataTypes::DataType::Time
-        default_values :default_created_date
-        before_save :set_updated_date
-      end
-      def default_created_date
-        { created_at: Time.now.to_s }
+        attribute :created_at, :type => Ohm::DataTypes::DataType::Time
+        attribute :updated_at, :type => Ohm::DataTypes::DataType::Time
+        before_save :update_dates
       end
     end
   
 
-    def set_updated_date
+    def update_dates
+      self.created_at ||= Time.now.to_s
       self.updated_at = Time.now.to_s
     end
   

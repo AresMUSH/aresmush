@@ -20,8 +20,8 @@ module AresMUSH
     reference :channel, "AresMUSH::Channel"
     
     attribute :title
-    attribute :aliases, DataType::Array
-    attribute :gagging, DataType::Boolean
+    attribute :aliases, :type => DataType::Array
+    attribute :gagging, :type => DataType::Boolean
     
     def match_alias(a)
       return false if !self.aliases
@@ -47,31 +47,25 @@ module AresMUSH
     
     attribute :name
     attribute :name_upcase
-    attribute :color
+    attribute :color, :default => "%xh"
     attribute :description
-    attribute :announce, DataType::Boolean
-    attribute :default_alias, DataType::Array
+    attribute :announce, :type => DataType::Boolean, :default => true
+    attribute :default_alias, :type => DataType::Array
     
     index :name_upcase
     
     set :roles, "AresMUSH::Role"
     set :characters, "AresMUSH::Character"
 
-    default_values :channel_defaults
     before_save :save_upcase
     
     def save_upcase
       self.name_upcase = self.name.upcase
+      if (!self.default_alias)
+        self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
+      end
     end      
         
-    def self.channel_defaults
-      {
-        color: "%xh",
-        announce: true,
-        
-      }
-    end
-    
     def display_name(include_markers = true)
       display = "#{self.color}#{self.name}%xn"
       include_markers ? Channels.name_with_markers(display) : display

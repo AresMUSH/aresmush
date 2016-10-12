@@ -5,7 +5,7 @@ module AresMUSH
     
     attribute :name
     attribute :name_upcase
-    attribute :is_restricted, DataType::Boolean
+    attribute :is_restricted, :type => DataType::Boolean
     
     index :name_upcase
     

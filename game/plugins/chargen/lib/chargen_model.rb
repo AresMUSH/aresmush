@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     attribute :cg_background
-    attribute :is_approved, DataType::Boolean
+    attribute :is_approved, :type => DataType::Boolean
     reference :chargen_info, "AresMUSH::ChargenInfo"
     
     before_delete :delete_chargen_info
@@ -23,8 +23,8 @@ module AresMUSH
   class ChargenInfo < Ohm::Model
     include ObjectModel
     
-    attribute :locked, DataType::Boolean
-    attribute :current_stage, DataType::Integer
+    attribute :locked, :type => DataType::Boolean
+    attribute :current_stage, :type => DataType::Integer
     reference :approval_job, "AresMUSH::Job"
     
     reference :character, "AresMUSH::Character"

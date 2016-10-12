@@ -5,6 +5,7 @@ module ObjectModel
   end
 
   module ClassMethods
+    @@default_values = {}
         
     def register_data_members
       send :include, Ohm::DataTypes
@@ -15,8 +16,40 @@ module ObjectModel
     def find_one(args)
       find(args).first
     end
+    
+    def default_values
+      @@default_values[self]
+    end
+    
+    def attribute(name, options = nil)
+      if (options)
+        cast = options[:type]
+        default = options[:default]
+      end
+      super(name, cast)
+      if (default)
+        if (!@@default_values[self])
+          @@default_values[self] = {}
+        end
+        @@default_values[self][name] = default
+      end
+    end
+   
   end
   
+  
+  def initialize(attrs = {})
+    if (self.class.default_values)
+      self.class.default_values.each do |k, v|
+        if (!attrs.has_key?(k) && !attrs.has_key?(:id))
+          attrs[k] = v
+        end
+      end
+    end
+    super(attrs)
+  end
+      
+      
   def pretty_print
     json = JSON.pretty_generate(self.attributes)
     self.methods.each do |m|
