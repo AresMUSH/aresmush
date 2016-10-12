@@ -41,6 +41,7 @@ module AresMUSH
         end
 
         it "should match the alias exactly" do
+          Channel.stub(:all) { [] }
           Channels.channel_for_alias(@char, "pub").should eq nil
         end
       end

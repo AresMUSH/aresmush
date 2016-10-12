@@ -28,7 +28,7 @@ module AresMUSH
           end
 
           line = "-".repeat(78)
-          json = model.pretty_print
+          json = model.print_json
           
           client.emit_raw "#{line}\n#{json}#{}\n#{line}"
         end

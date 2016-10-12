@@ -23,7 +23,6 @@ module AresMUSH
       
       def lastwill(entry)
         char = entry[:char]
-        puts "#{char.inspect}"
         char.idle_lastwill
       end
       

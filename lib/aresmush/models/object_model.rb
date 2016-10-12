@@ -34,10 +34,8 @@ module ObjectModel
         @@default_values[self][name] = default
       end
     end
-   
   end
-  
-  
+
   def initialize(attrs = {})
     if (self.class.default_values)
       self.class.default_values.each do |k, v|
@@ -49,8 +47,7 @@ module ObjectModel
     super(attrs)
   end
       
-      
-  def pretty_print
+  def print_json
     json = JSON.pretty_generate(self.attributes)
     self.methods.each do |m|
       if (m.to_s.end_with?('_id'))

@@ -34,40 +34,6 @@ module AresMUSH
       end
     end    
     
-    def using_test_db(&block)
-      client_monitor = double
-      Global.stub(:client_monitor) { client_monitor }
-      SpecHelpers.connect_to_test_db
-      SpecHelpers.erase_test_db
-      yield block
-      SpecHelpers.erase_test_db
-    end
-    
-    # Use with the using_test_db helper whenever possible
-    def self.connect_to_test_db
-      filename = File.join(AresMUSH.game_path, "config/database.yml")
-      config = YAML::load(File.open(filename))
-      db_config = config['database']['test']
-          
-      if (!db_config || db_config['clients']['default']['database'].nil?)
-        raise "Test DB not defined."
-      end
-      
-      mongoid = Mongoid.load_configuration(db_config)
-      
-      Mongoid.logger.level = Logger::WARN
-      Mongo::Logger.logger.level = Logger::WARN
-    end
-    
-    # Use with the using_test_db helper whenever possible
-    def self.erase_test_db
-      AresMUSH::Character.delete_all
-      AresMUSH::Game.delete_all  
-      AresMUSH::Room.delete_all
-      AresMUSH::Exit.delete_all
-    end
-    
-  
     def self.setup_mock_client(client, char)
       client.stub(:char) { char }
       char.stub(:client) { client }

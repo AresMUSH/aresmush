@@ -110,6 +110,9 @@ module AresMUSH
           client.stub(:char_id=) 
           client.stub(:program) { {} }       
         
+          game = double
+          Game.stub(:master) { game }
+          game.stub(:welcome_room) { double }
           SpecHelpers.stub_translate_for_testing        
         end
         
