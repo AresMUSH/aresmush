@@ -3,7 +3,7 @@ module AresMUSH
 
     # Places a new command in the queue to be processed.
     def queue_command(client, cmd)
-      EventMachine.defer do
+      EventMachine.next_tick do
         AresMUSH.with_error_handling(client, "Queue command.") do
           on_command(client, cmd)
         end
@@ -12,7 +12,7 @@ module AresMUSH
     
     # Place a new event in the queue to be processed.
     def queue_event(event)
-      EventMachine.defer do
+      EventMachine.next_tick do
         AresMUSH.with_error_handling(nil, "Queue event.") do
           on_event(event)
         end
