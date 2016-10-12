@@ -8,6 +8,6 @@ en:
         recipient_is_afk: "%{name} is AFK and may not respond right away. %{message}"
         recipient_is_idle: "%{name} is %{time} idle and may be AFK."
         do_not_disturb_set: "You turn your 'do not disturb' status %{status}."
-        recipient_do_not_disturb: "%{name} is set 'do not disturb'.  Your page has been converted to a mail message."
+        recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your page again later."
         missed_page_subject: "Missed Page From %{name}"
         missed_page_body: "While you were set 'do not disturb' you received this message from %{name}:%r%{message}"

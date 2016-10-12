@@ -53,10 +53,6 @@ module AresMUSH
       def page_recipient(other_client, other_char, recipients, message)
         if (other_char.page_do_not_disturb)
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
-          Mail::Api.send_mail([other_char.name], 
-              t('page.missed_page_subject', :name => enactor_name), 
-              t('page.missed_page_body', :name => enactor_name, :message => message), 
-              client, enactor)
         else          
           other_client.emit t('page.to_recipient', :autospace => other_char.autospace, :color => page_color, :recipients => recipients, :message => message)
           send_afk_message(other_client, other_char)
