@@ -25,7 +25,7 @@ module AresMUSH
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck
-            FS3Skills::Api.add_luck(c)
+            c.award_luck(luck)
           end
 
         end

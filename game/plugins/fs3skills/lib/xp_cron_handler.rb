@@ -10,12 +10,9 @@ module AresMUSH
         periodic_xp = Global.read_config("fs3skills", "periodic_xp")
         max_xp = Global.read_config("fs3skills", "max_xp_hoard")
         
-        approved = Character.find(is_approved: true)
+        approved = Idle::Api.active_chars.select { |c| c.is_approved? }
         approved.each do |a|
-          if (a.xp < max_xp)
-            a.xp = a.xp + periodic_xp
-            a.save
-          end
+          FS3Skills.modify_xp(a, periodic_xp)
         end
       end
     end    

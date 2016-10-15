@@ -32,8 +32,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          model.luck = model.luck + self.luck.to_i
-          model.save
+          model.award_luck(self.luck.to_i)
           Global.logger.info "#{self.luck} Luck Points Awarded by #{enactor_name} to #{model.name}"
           client.emit_success t('fs3skills.luck_awarded', :name => model.name, :luck => self.luck)
         end

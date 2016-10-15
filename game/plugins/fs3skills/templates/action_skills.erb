@@ -1,3 +1,12 @@
 <%= line %>
-%xhAction skills%xn represent your ability in areas deemed important for gameplay.  They are rated from 1-5.
+%xhAction Skills%xn represent your ability in areas deemed important for gameplay.
+
+<% data[:skills].each do |s| %>
+<%= left( s['name'], 14) %> <%= s['desc'] %> (<%= s['linked_attr'] %>)
+<% if s['specialties'] %>
+                   %xh<%= t('fs3skills.specialty_required') %>%xn <%= s['specialties'].join(", ") %>
+<% end %>
+<% end %>
+
+<%= line_with_text page_marker %>
 <%= line %>

@@ -11,9 +11,10 @@ plugin: fs3skills
 ---
 Ares supports a fast-and-easy way to back up your important character information.  This includes:
 
-* Character sheet - stats, profile and background
+* Character sheet
+* Background
 * Description
-* Outfits
+* Info
 
 You can log this backup to a file for your archives.
 

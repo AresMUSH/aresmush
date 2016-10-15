@@ -5,6 +5,21 @@ module AresMUSH
         Global.read_config("fs3skills", "starting_skills")
       end
       
+      def self.get_skills_for_char(char)
+        skills = {}
+        groups = get_groups_for_char(char)
+        groups.each do |k, v|
+          group_skills = v["skills"]
+          next if !group_skills
+          group_skills.each do |skill, rating|
+            if (!skills.has_key?(skill) || skills[skill] < rating)
+              skills[skill] = rating
+            end
+          end
+        end
+        skills
+      end 
+      
       def self.get_groups_for_char(char)
         groups = {}
         config.each do |group, group_config|
@@ -20,21 +35,6 @@ module AresMUSH
           end
         end
         groups
-      end 
-      
-      def self.get_skills_for_char(char)
-        skills = {}
-        groups = get_groups_for_char(char)
-        groups.each do |k, v|
-          group_skills = v["skills"]
-          next if !group_skills
-          group_skills.each do |skill, rating|
-            if (!skills.has_key?(skill) || skills[skill] < rating)
-              skills[skill] = rating
-            end
-          end
-        end
-        skills
       end 
     end
   end

@@ -30,19 +30,6 @@ module AresMUSH
         }
       end
       
-      def check_ability_type
-        ability_type = FS3Skills.get_ability_type(enactor, self.ability_name)
-        valid_types = [:action, :advantage]
-        return t('fs3skills.wrong_type_for_ability_command') if !valid_types.include?(ability_type)
-        return nil
-      end
-      
-      def check_advantages_enabled
-        ability_type = FS3Skills.get_ability_type(enactor, self.ability_name)
-        return t('fs3skills.advantages_not_enabled') if (ability_type == :advantage && !FS3Skills.advantages_enabled?)
-        return nil
-      end
-      
       def check_valid_rating
         return nil if !self.rating
         return t('fs3skills.invalid_rating') if !self.rating.is_integer?
@@ -63,7 +50,6 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
           FS3Skills.set_ability(client, model, self.ability_name, self.rating.to_i)
-          model.save
         end
       end
     end

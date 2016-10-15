@@ -3,58 +3,171 @@ module AresMUSH
     describe FS3Skills do 
       
       before do
-        Global.stub(:read_config).with("fs3skills", "free_languages") { 2 }
-        Global.stub(:read_config).with("fs3skills", "free_interests") { 3 }
-        @char = double
+        SpecHelpers.stub_translate_for_testing
       end
       
-      describe :points_on_rated_abilities do
-        it "should charge 1 point each for advantages and action skills" do
-          @char.stub(:fs3_action_skills) { { "Firearms" => 2, "Alertness" => 3}}
-          @char.stub(:fs3_advantages) { { "Wealth" => 1 } }
-          FS3Skills.points_on_rated_abilities(@char).should eq 6
+      describe :hook_review do
+        before do 
+          Global.stub(:read_config).with("fs3skills", "min_hooks") { 2 }
+          @char = double
+        end
+        
+        it "should error if too few hooks" do
+          @char.stub(:fs3_hooks) { [ FS3RpHook.new() ] }
+          review = FS3Skills.hook_review(@char)
+          review.should eq "fs3skills.hooks_added                              chargen.not_enough"
+        end
+        
+        it "should be OK if enough hooks" do
+          @char.stub(:fs3_hooks) { [ FS3RpHook.new(), FS3RpHook.new() ] }
+          review = FS3Skills.hook_review(@char)
+          review.should eq "fs3skills.hooks_added                              chargen.ok"
+        end
+      end
+
+      describe :backgrounds do
+        before do 
+          Global.stub(:read_config).with("fs3skills", "min_backgrounds") { 2 }
+          @char = double
+        end
+        
+        it "should error if too few bg skills" do
+          @char.stub(:fs3_background_skills) { [ FS3BackgroundSkill.new() ] }
+          review = FS3Skills.backgrounds_review(@char)
+          review.should eq "fs3skills.backgrounds_added                        chargen.not_enough"
+        end
+        
+        it "should be OK if enough bg skills" do
+          @char.stub(:fs3_background_skills) { [ FS3BackgroundSkill.new(), FS3BackgroundSkill.new() ] }
+          review = FS3Skills.backgrounds_review(@char)
+          review.should eq "fs3skills.backgrounds_added                        chargen.ok"
         end
       end
       
-      describe :points_on_interests do
-        it "should allow some interests for free" do
-          @char.stub(:fs3_interests) { ["A", "B", "C"]}
-          FS3Skills.points_on_interests(@char).should eq 0
+      describe :ability_rating_check do
+        before do 
+          Global.stub(:read_config).with("fs3skills", "max_skills_above_4") { 2 }
+          Global.stub(:read_config).with("fs3skills", "max_skills_above_6") { 1 }
+          Global.stub(:read_config).with("fs3skills", "max_attr_above_3") { 2 }
+          Global.stub(:read_config).with("fs3skills", "max_attr_above_4") { 1 }
+          Global.stub(:read_config).with("fs3skills", "max_attributes") { 14 }
+          @char = double
+        end
+        
+        it "should error if too many skills above 6" do
+          @char.stub(:fs3_attributes) { [] }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7), 
+                                             FS3ActionSkill.new(rating: 8) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.action_skills_above"
         end
 
-        it "should charge 1 point each for excessive interests" do
-          @char.stub(:fs3_interests) { ["A", "B", "C", "D", "E"]}
-          FS3Skills.points_on_interests(@char).should eq 2
+        it "should error if too many skills above 4" do
+          @char.stub(:fs3_attributes) { [] }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7),
+                                             FS3ActionSkill.new(rating: 5),
+                                             FS3ActionSkill.new(rating: 5) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.action_skills_above"
         end
-      end    
+        
+        it "should error if too many points on attrs" do
+          @char.stub(:fs3_action_skills) { [] }
+          @char.stub(:fs3_attributes) { [ FS3Attribute.new(rating: 3),
+                                             FS3Attribute.new(rating: 4),
+                                             FS3Attribute.new(rating: 3),
+                                             FS3Attribute.new(rating: 3),
+                                             FS3Attribute.new(rating: 4),
+                                             FS3Attribute.new(rating: 3) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.too_many_attributes"
+        end
+        
+        it "should error if too many attrs above 3" do
+          @char.stub(:fs3_action_skills) { [] }
+          @char.stub(:fs3_attributes) { [ FS3Attribute.new(rating: 4),
+                                             FS3Attribute.new(rating: 4),
+                                             FS3Attribute.new(rating: 5) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.attributes_above"
+        end
+        
+        it "should error if too many attrs above 4" do
+          @char.stub(:fs3_action_skills) { [] }
+          @char.stub(:fs3_attributes) { [ FS3Attribute.new(rating: 5),
+                                             FS3Attribute.new(rating: 5) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.attributes_above"
+        end
+        
+        it "should be OK if not too many high abilities" do
+          @char.stub(:fs3_attributes) { [ FS3Attribute.new(rating: 3),
+                                             FS3Attribute.new(rating: 4),
+                                             FS3Attribute.new(rating: 2) ] }
+         @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7),
+                                            FS3ActionSkill.new(rating: 4),
+                                            FS3ActionSkill.new(rating: 3) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check                    chargen.ok"
+        end
+      end
       
-      describe :points_on_languages do
-        it "should allow some languages for free" do
-          @char.stub(:fs3_languages) { ["A", "B"]}
-          FS3Skills.points_on_languages(@char).should eq 0
+      
+      describe :starting_language_review do
+        before do 
+          Global.stub(:read_config).with("fs3skills", "starting_languages") { ["English", "German"] }
+          @char = double
         end
 
-        it "should charge 1 point each for excessive languages" do
-          @char.stub(:fs3_languages) { ["A", "B", "C"]}
-          FS3Skills.points_on_languages(@char).should eq 1
+        it "should warn if missing a starting language" do
+          FS3Skills.stub(:ability_rating).with(@char, "English") { 3 }
+          FS3Skills.stub(:ability_rating).with(@char, "German") { 0 }
+          review = FS3Skills.starting_language_review(@char)
+          review.should eq "fs3skills.language_check                           chargen.are_you_sure"
+        end
+        
+        it "should be OK if all languages present" do
+          FS3Skills.stub(:ability_rating).with(@char, "English") { 3 }
+          FS3Skills.stub(:ability_rating).with(@char, "German") { 3 }
+          review = FS3Skills.starting_language_review(@char)
+          review.should eq "fs3skills.language_check                           chargen.ok"
         end
       end
-      
-      describe :points_on_expertise do
-        it "should charge 2 points each for expertise" do
-          @char.stub(:fs3_expertise) { ["A", "B", "C"] }
-          FS3Skills.points_on_expertise(@char).should eq 6
+
+      describe :starting_skills_check do
+        before do 
+          @char = double
+          @char.stub(:fs3_action_skills) { [] }
+          StartingSkills.stub(:get_skills_for_char) { { "A" => 2, "B" => 3 }}
+          FS3Skills.stub(:ability_rating).with(@char, "A") { 3 }
+          FS3Skills.stub(:ability_rating).with(@char, "B") { 3 }
         end
-      end
-      
-      describe :total_points do 
-        it "should count ratings interests languages and experience" do
-          @char.stub(:fs3_action_skills) { { "Firearms" => 2, "Alertness" => 3}}
-          @char.stub(:fs3_advantages) { { "Wealth" => 1 } }
-          @char.stub(:fs3_interests) { ["A", "B", "C", "D", "E"]}
-          @char.stub(:fs3_languages) { ["A", "B", "C"]}
-          @char.stub(:fs3_expertise) { ["A", "B", "C"] }
-          FS3Skills.points_total(@char).should eq 15
+
+        it "should warn if missing a starting skill" do
+          FS3Skills.stub(:ability_rating).with(@char, "B") { 0 }
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check%r%Tfs3skills.missing_starting_skill"
+        end
+        
+        it "should be OK if all skills present" do
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check                    chargen.ok"
+        end
+        
+        it "should warn if missing a required specialty" do
+          config = { "specialties" => [ "A" ] }
+          FS3Skills.stub(:action_skill_config) { config }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "Firearms")] }
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check%r%Tfs3skills.missing_specialty"
+        end
+        
+        it "should be OK if specialty present" do
+          config = { "specialties" => [ "A" ] }
+          FS3Skills.stub(:action_skill_config) { config }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "Firearms", specialties: [ "X" ])] }
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check                    chargen.ok"
         end
       end
     end

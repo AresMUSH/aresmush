@@ -34,8 +34,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          model.xp = model.xp + self.xp.to_i
-          model.save
+          model.award_xp self.xp.to_i
           Global.logger.info "#{self.xp} XP Awarded by #{enactor_name} to #{model.name}"
           client.emit_success t('fs3skills.xp_awarded', :name => model.name, :xp => self.xp)
         end

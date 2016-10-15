@@ -34,97 +34,125 @@ fs3skills:
     public_pages:
         - 1
         
-    aptitudes:
+    attributes:
         -  
-            name: Athletics
-            desc: "A knack for things involving strength and agility."
+            name: Reflexes
+            desc: "Reflexes, dexterity, and hand-eye coordination."
         -   
-            name: Reaction
-            desc: "A knack for things involving hand-eye coordination and reflexes."
+            name: Brawn
+            desc: "Physical strength and toughness."
         -   
-            name: Academics
-            desc: "A knack for logic and book learning."
+            name: Wits
+            desc: "Practical intelligence, inventiveness and creativity."
         -   
-            name: Tech
-            desc: "A knack for things blending knowledge and craftsmanship."
+            name: Grit
+            desc: "Willpower and determination."
         -
-            name: Creativity
-            desc: "A knack for artistic expression and imagination."
+            name: Perception
+            desc: "Senses and general awareness."
         -
-            name: Confidence
-            desc: "A knack for presence and fortitude."
+            name: Presence
+            desc: "Charisma and beauty."
     
     action_skills:
         -
             name: Alertness
             desc: "Noticing things and being aware of your surroundings."
-            related_apt: Reaction
+            linked_attr: Perception
+        -
+            name: Athletics
+            desc: "General running, jumping, climbing, etc."
+            linked_attr: Brawn
+        -
+            name: Composure
+            desc: "Coolness under pressure."
+            linked_attr: Grit
         -
             name: Demolitions
             desc: "Blowing stuff up."
-            related_apt: Tech
-        -
-            name: Comms
-            desc: "Ship sensors, countermeasures and communications (ECO and CIC type duties)."
-            related_apt: Tech
+            linked_attr: Wits
         -   
             name: Firearms
             desc: "Shooting guns."
-            related_apt: Reaction
-        -
-            name: First Aid
-            desc: "Patching people up outside of a hospital.  Docs should have a medical bg skill."
-            related_apt: Tech
+            linked_attr: Reflexes
         -
             name: Gunnery
-            desc: "Ship and vehicle weapons."
-            related_apt: Reaction
+            desc: "Vehicle and heavy weapons."
+            linked_attr: Reflexes
+        -
+            name: Medicine
+            desc: "Tending to the ill and injured. Requires Specialty: Doctor, Surgeon, Nurse, Medic, Other"
+            linked_attr: Wits
+            specialties:
+                - Doctor
+                - Surgeon
+                - Nurse
+                - Medic
+                - Other
         - 
             name: Melee
             desc: "Fighting with fists, knives, and hand-to-hand weapons."
-            related_apt: Athletics
+            linked_attr: Brawn
         -
             name: Piloting
-            desc: "Flying Vipers, Raptors and other airborne vehicles."
-            related_apt: Reaction
+            desc: "Flying air and spacecraft. Requires Specialty: Viper, Raptor, Shuttle"
+            linked_attr: Reflexes
+            specialties:
+                - Viper
+                - Raptor
+                - Shuttle
+                - Other
         - 
             name: Stealth
             desc: "Being sneaky."
-            related_apt: Athletics
+            linked_attr: Reflexes
         -
             name: Technician
             desc: "General mechanics/electronics and fixing things."
-            related_apt: Tech
+            linked_attr: Wits
 
     languages:
-        - "Standard - Spoken across the colonies."
-        - "Gemenese - Official language of Gemenon."
-        - "Old Gemenese - Dead language known by academics and religious scholars."
-        - "Leonese - Official language of Leonis, also spoken in parts of Sagittaron and Scorpia."
-        - "Scorpian - Official language of parts of Scorpia."
-        - "Tauran - Official language of Tauron."
-        - "Sagittaran - Tribal language of Sagittaron.  There are actually dozens of dialects."
-        - "Celtan - Language of the ethnic Celtan people on Virgon's moon, Hibernia."
-
-    # Set to 'true' if you're using advantages, 'false' if you're not.
-    enable_advantages: false
-
-    advantages:
+        - 
+            name: Standard
+            desc: "Spoken across the colonies."
         -
-            name: "Wealth"
-            desc: "Special assets."
-            related_apt: Confidence
+            name: Gemenese
+            desc: "Dead language known by academics and religious scholars."
+        -
+            name: Leonese
+            desc: "Official language of Leonis, also spoken in parts of Libran, Sagittaron and Scorpia."
+        -
+            name: Scorpian
+            desc: "Spoken in some parts of Scorpia."
+        -
+            name: Tauran
+            desc: "Official language of Tauron."
+        - 
+            name: Sagittaran
+            desc: "Tribal language of Sagittaron."
+        - 
+            name: Celtan
+            desc: "Spoken in some places on Virgon's moon, Hibernia."
+
+    default_linked_attr: Wits
+
+    free_languages: 3
+    free_backgrounds: 6
     
-    free_languages: 2
-    free_interests: 4
-    
-    default_related_apt: Academic
-    max_high_abilities: 3
-    starting_points: 20
-    high_ability_level: 4
-    min_interests: 1
+    # Number of independent background skills
+    min_backgrounds: 1
     min_hooks: 1
-    min_goals: 1
+    
+    max_ap: 40
+    
+    max_skills_above_4: 3
+    max_skills_above_6: 1
+    max_skill_rating: 7
+    
+    max_attr_above_3: 2
+    max_attr_above_4: 1
+    max_attr_rating: 5
+    max_attributes: 16
     
     starting_languages:
         - Standard
@@ -139,10 +167,12 @@ fs3skills:
         # Comment this out if it's not applicable.
         Everyone:
             skills:
-                Alertness: 1
-                Firearms: 1
-                First Aid: 1
-                Melee: 1
+                Alertness: 2
+                Athletics: 2
+                Composure: 2
+                Firearms: 2
+                Medicine: 2
+                Melee: 2
         # This is the group type.
         Position:
             # This is the group value.
@@ -152,50 +182,57 @@ fs3skills:
                 
                 skills: 
                     # List the skills and ratings they should get.
-                    Piloting: 2
-                    Gunnery: 2
+                    Piloting: 3
+                    Gunnery: 3
             Raptor Pilot:
                 skills:
-                    Piloting: 2
-                    Gunnery: 1
+                    Piloting: 3
+                    Gunnery: 3
             Raptor ECO:
                 skills:
-                    Piloting: 1
-                    Gunnery: 2
-                    Comms: 2
+                    Piloting: 3
+                    Gunnery: 3
             Rifleman:
                 skills:
-                    Firearms: 2
-                    Melee: 2
-            Combat Engineer:
-                notes: "A combat engineer should take a 2 or higher in either Demo or Tech."
+                    Firearms: 3
+                    Melee: 3
+            Combat Medic:
+                notes: "Combat medics "
                 skills:
-                    Demolitions: 2
-                    Firearms: 2
-                    Technician: 1
+                    Firearms: 3
+                    Medicine: 3
+            Combat Engineer:
+                notes: "A combat engineer should take a 3 or higher in either Demo or Tech."
+                skills:
+                    Demolitions: 3
+                    Firearms: 3
+            Gunner:
+                skills:
+                    Firearms: 3
+                    Gunnery: 3
             Recon:
                 skills:
-                    Firearms: 2
-                    Stealth: 2
-            Combat Medic:
+                    Firearms: 3
+                    Stealth: 3
+            Technician:
                 skills:
-                    First Aid: 2
+                    Technician: 3
             Doctor:
-                notes: "A doctor does not necessarily need a high first aid. They should have an expertise corresponding to their specialty (e.g. Surgery or Emergency Medicine.)"
                 skills:
-                    First Aid: 1
-            
+                    Medicine: 3
             Nurse:
                 skills:
-                    First Aid: 1
-    
+                    Medicine: 3
             Corpsman:
                 skills:
-                    First Aid: 2
-            
+                    Medicine: 3
+            Medical Staff:
+                skills:
+                    Medicine: 3
             Deckhand:
                 skills:
-                    Technician: 2
+                    Technician: 3
+            Other:
 
         # Example of how you can use factions or other groups to set additional skills.
         #Faction:
@@ -204,30 +241,6 @@ fs3skills:
         #            Semper Fi: 3
         #            Alertness: 1
 
-
-    # Configure the highest rating you're allowed to reach via XP.  
-    max_rating_through_xp: 5
-    
-    # Define the XP costs to reach each skill rating
-    skill_costs:
-        1: 2
-        2: 8
-        3: 12
-        4: 16
-        5: 20
-    
-    # Cost to get a language
-    lang_cost: 5
-    
-    # Cost to get an interest
-    interest_cost: 5
-    
-    # How many XP someone can save up.
-    max_xp_hoard: 20
-    
-    # Controls how often someone can raise skills using XP.
-    days_between_xp_raises: 7
-    
     # How many XP everyone gets each time the XP cron job runs.  (in the default
     # configuration, that is weekly but you can make it run as often as you want).
     periodic_xp: 1
@@ -241,16 +254,6 @@ fs3skills:
         minute: 00
 
     shortcuts:
-        "lang": "language"
-        "goals": "goal"
-        "interests": "interest"
         "hooks": "hook"
-        "rulingattr": "relatedapt"
-        "advantage": "ability"
-        "action": "ability"
-        "expert": "expertise"
-        "aptitudes": "abilities"
         "hook/delete": "hook/remove"
-        "goal/delete": "goal/remove"
-        "interest/delete": "interest/remove"
-        "lang/delete": "lang/remove"
+        "spec": "specialty"

@@ -12,26 +12,27 @@ module AresMUSH
       end
 
       def handle
-        enactor.fs3_action_skills = {}
-        enactor.fs3_aptitudes = {}
-        enactor.fs3_interests = []
-        enactor.fs3_expertise = []
-        enactor.fs3_advantages = {}
-        enactor.fs3_languages = []
+        enactor.fs3_action_skills.each { |s| s.delete }
+        enactor.fs3_attributes.each { |s| s.delete }
+        enactor.fs3_background_skills.each { |s| s.delete }
+        enactor.fs3_languages.each { |s| s.delete }
+        enactor.fs3_hooks.each { |s| s.delete }
         
         languages = Global.read_config("fs3skills", "starting_languages")
         if (languages)
           client.emit_ooc t('fs3skills.reset_languages')
           languages.each do |l|
-            client.emit_success t('fs3skills.item_selected', :name => l)
-            enactor.fs3_languages << l
+            FS3Skills.set_ability(client, enactor, l, 3)
           end
         end
         
         client.emit_ooc t('fs3skills.reset_aptitudes')
-        FS3Skills.aptitude_names.each do |a|
-          # Nil for client to avoid spam.
-          FS3Skills.set_ability(nil, enactor, a, 2)
+        FS3Skills.attr_names.each do |a|
+          FS3Skills.set_ability(client, enactor, a, 2)
+        end
+        
+        FS3Skills.action_skill_names.each do |a|
+          FS3Skills.set_ability(client, enactor, a, 1)
         end
         
         starting_skills = StartingSkills.get_groups_for_char(enactor)
@@ -40,7 +41,6 @@ module AresMUSH
           set_starting_skills(k, v)
         end
         
-        enactor.save
         client.emit_ooc t('fs3skills.reset_complete')
       end
       

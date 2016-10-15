@@ -1,33 +1,35 @@
 $:.unshift File.dirname(__FILE__)
 load "fs3skills_api.rb"
+load "lib/ability_point_counter.rb"
 load "lib/app_review.rb"
 load "lib/commands/abilities_cmd.rb"
 load "lib/commands/add_hook_cmd.rb"
+load "lib/commands/add_spec_cmd.rb"
 load "lib/commands/raise_ability_cmd.rb"
 load "lib/commands/remove_hook_cmd.rb"
+load "lib/commands/remove_spec_cmd.rb"
 load "lib/commands/reset_cmd.rb"
 load "lib/commands/roll_cmd.rb"
 load "lib/commands/roll_opposed_cmd.rb"
 load "lib/commands/set_ability_cmd.rb"
-load "lib/commands/set_aptitude_cmd.rb"
-load "lib/commands/set_goal_cmd.rb"
 load "lib/commands/xp_award_cmd.rb"
 load "lib/commands/xp_costs_cmd.rb"
-load "lib/commands/xp_interest_cmd.rb"
-load "lib/commands/xp_lang_cmd.rb"
 load "lib/commands/xp_raise_cmd.rb"
 load "lib/commands/luck_award_cmd.rb"
 load "lib/commands/luck_spend_cmd.rb"
 load "lib/commands/char_backup_command.rb"
 load "lib/commands/sheet_cmd.rb"
 load "lib/helpers/chargen.rb"
+load "lib/helpers/formatting.rb"
 load "lib/helpers/luck.rb"
+load "lib/helpers/parse_rolls.rb"
+load "lib/helpers/ratings.rb"
 load "lib/helpers/rolls.rb"
 load "lib/helpers/utils.rb"
 load "lib/helpers/xp.rb"
-load "lib/ratings.rb"
 load "lib/skills_model.rb"
 load "lib/starting_skills.rb"
+load "lib/ability_point_counter.rb"
 load "lib/xp_cron_handler.rb"
 load "templates/ability_page_template.rb"
 load "templates/xp_template.rb"
@@ -76,6 +78,12 @@ module AresMUSH
           return AddHookCmd
         elsif (cmd.switch_is?("remove"))
           return RemoveHookCmd
+        end
+      when "specialty"
+        if (cmd.switch_is?("add"))
+          return AddSpecialtyCmd
+        elsif (cmd.switch_is?("remove"))
+          return RemoveSpecialtyCmd
         end
       when "luck"
         case cmd.switch

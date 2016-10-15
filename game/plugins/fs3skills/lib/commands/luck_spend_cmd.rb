@@ -18,18 +18,16 @@ module AresMUSH
         }
       end
       
+      def checK_luck
+        return t('fs3skills.not_enough_points') if enactor.luck < 1
+        return nil
+      end
+      
       def handle
-        
-        if (enactor.luck < 1)
-          client.emit_failure t('fs3skills.not_enough_points')
-          return
-        end
         
         message = t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
         
-        enactor.luck = enactor.luck - 1
-        enactor.save
-        
+        enactor.spend_luck(1)
         result = Jobs.create_job("REQ", t('fs3skills.luck_job_title'), message, enactor)
         
         enactor_room.emit_ooc message        

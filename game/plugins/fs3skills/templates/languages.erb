@@ -1,5 +1,9 @@
 <%= line %>
-%xhLanguages%xn
+%xhLanguages%xn represent your ability to speak and read other languages.
 
-Languages represent your ability to speak and read other languages.  Fluency is assumed, but you are free to RP a lesser degree of proficiency if you wish.
+<% data[:skills].each do |s| %>
+<%= left( s['name'], 14 ) %> <%= s['desc'] %>
+<% end %>
+
+<%= line_with_text page_marker %>
 <%= line %>

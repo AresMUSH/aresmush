@@ -1,25 +1,35 @@
 %l1
-%xh<%= char.name %>%xn <%= center( approval_status, 23 ) %> <%= right(t('fs3skills.abilities_page_title'), 28) %>
-%l2
-<%= line_with_text t('fs3skills.aptitudes_title') %>
-<% aptitudes.each do |a| -%>
+%xh<%= char.name %>%xn <%= center( approval_status, 23 ) %>
+<%= line_with_text t('fs3skills.attributes_title') -%>
+<% attrs.each do |a| -%>
 <%= a -%>
 <% end %> 
 
 
-<%= line_with_text t('fs3skills.action_skills_title') %>
+<%= line_with_text t('fs3skills.action_skills_title') -%>
 <% action_skills.each do |a| -%>
 <%= a -%>
 <% end %> 
 
+<% if specialties %>
 
-<%= line_with_text t('fs3skills.languages_title') %>
+%xh<%= t('fs3skills.specialties_title') %>%xn <%= specialties %>
+<% end %>
+
+<%= line_with_text t('fs3skills.background_skills_title') -%>
+<% background_skills.each do |b| -%>
+<%= b -%>
+<% end %> 
+
+
+<%= line_with_text t('fs3skills.languages_title') -%>
 <% languages.each do |l| -%>
 <%= l -%>
 <% end %> 
 
+
 <%= line_with_text t('fs3skills.hooks_title') %>
-<% hooks.each do |h| -%>
+<% hooks.each do |h| %>
 <%= h %>
 <% end %> 
 

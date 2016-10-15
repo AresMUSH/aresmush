@@ -41,7 +41,7 @@ module AresMUSH
           handler.handle
         end
           
-        it "should unload the plugin xxxx" do
+        it "should unload the plugin" do
           plugin_manager.should_receive(:unload_plugin).with("foo")
           handler.handle
         end

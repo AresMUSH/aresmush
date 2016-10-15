@@ -20,12 +20,12 @@ module AresMUSH
       end
       
       def handle        
-        if (enactor.hooks.has_key?(self.name))
-          enactor.hooks.delete self.name
-          enactor.save
-          client.emit_success t('fs3skills.item_removed', :name => self.name)
+        hook = enactor.fs3_hooks.find(name: self.name)
+        if (!hook)          
+          client.emit_failure t('fs3skills.hook_not_found', :name => self.name)
         else
-          client.emit_failure t('fs3skills.item_not_selected', :name => self.name)
+          hook.delete
+          client.emit_success t('fs3skills.hook_removed', :name => self.name)
         end
       end
     end

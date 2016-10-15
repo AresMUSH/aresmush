@@ -27,7 +27,7 @@ module AresMUSH
         end
       end
       
-      if (char.gender == "other")
+      if (char.demographic(:gender) == "other")
         missing << "%xy%xh#{t('demographics.gender_set_to_other')}%xn"
       end
       

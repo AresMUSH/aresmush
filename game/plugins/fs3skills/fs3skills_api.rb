@@ -1,6 +1,28 @@
 module AresMUSH
-  module FS3Skills
+  
+  class Character
+    def luck
+      self.fs3_luck
+    end
     
+    def xp
+      self.fs3_xp
+    end
+    
+    def award_luck(amount)
+      FS3Skills.modify_luck(self, amount)
+    end
+    
+    def spend_luck(amount)
+      FS3Skills.modify_luck(self, -amount)
+    end
+    
+    def award_xp(amount)
+      FS3Skills.modify_xp(self, amount)
+    end
+  end
+  
+  module FS3Skills
     class RollParams
       
       attr_accessor :ability, :modifier, :linked_attr
@@ -36,20 +58,6 @@ module AresMUSH
       
       def self.ability_rating(char, ability)
         FS3Skills.ability_rating(char, ability)
-      end
-      
-      def self.luck(char)
-        char.luck
-      end
-      
-      # Does not save  Must do that yourself!
-      def self.award_luck(char, amount)
-        FS3Skills.modify_luck(char, amount)
-      end
-      
-      # Does not save  Must do that yourself!
-      def self.spend_luck(char, amount)
-        FS3Skills.modify_luck(char, -amount)
       end
     end
   end

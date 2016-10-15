@@ -36,7 +36,7 @@ module AresMUSH
           @room_client.stub(:emit_success)
         end
         
-        it "should update the site infoxxx" do
+        it "should update the site info" do
           Login.should_receive(:update_site_info).with(@event_client, @event_char) {}
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char)
         end

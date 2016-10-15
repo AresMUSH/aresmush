@@ -22,6 +22,6 @@ Typically you will roll a skill.  The aptitude value is factored in automaticall
 
 You may specify an aptitude directly if you want to use a different ruling aptitude.  (e.g. roll Firearms+Mind)
 
-You may roll an aptitude by itself if you are defaulting to a common knowledge skill (e.g. roll Mind)
+You may roll an aptitude by itself if you are defaulting to the "Everyman" ability for common knowledge (e.g. roll Mind)
 
 You can apply a + or - modifier.  The modifier increases or decreases your ability rating, adding or subtracting dice.  (e.g. roll Firearms-1)

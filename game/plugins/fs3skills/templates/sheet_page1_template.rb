@@ -18,9 +18,9 @@ module AresMUSH
         @char.luck.floor
       end
       
-      def aptitudes
+      def attrs
        list = []        
-        @char.fs3_aptitudes.keys.sort.each_with_index do |a, i| 
+        @char.fs3_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i| 
           list << format_attr(a, i)
         end   
         list     
@@ -28,7 +28,15 @@ module AresMUSH
         
       def action_skills
         list = []
-        @char.fs3_action_skills.keys.sort.each_with_index do |s, i| 
+        @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |s, i| 
+           list << format_skill(s, i, true)
+        end
+        list
+      end
+
+      def background_skills
+        list = []
+        @char.fs3_background_skills.sort_by(:name, :order => "ALPHA").each_with_index do |s, i| 
            list << format_skill(s, i)
         end
         list
@@ -36,45 +44,50 @@ module AresMUSH
       
       def languages
         list = []
-        @char.fs3_languages.each_with_index do |l, i|
-           list << format_list_item(l, i)
+        @char.fs3_languages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
+          list << format_skill(l, i)
         end
         list
       end
       
       def hooks
         list = []
-        @char.hooks.each do |k, v|
-          list << "%xh#{k}:%xn #{v}"
+        @char.fs3_hooks.sort_by(:name, :order => "ALPHA").each do |h|
+          list << "%xh#{h.name}:%xn #{h.description}"
         end
         list
       end
       
-      def format_attr(a, i)
-        name = "%xh#{a}:%xn"
-        rating = FS3Skills.ability_rating(@char, a)
-        dots = FS3Skills.print_aptitude_rating(rating)
-        linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 16)} #{left(dots,22)}"
+      def specialties
+        spec = {}
+        @char.fs3_action_skills.each do |a|
+          if (a.specialties)
+            a.specialties.each do |s|
+              spec[s] = a.name
+            end
+          end
+        end
+        return nil if (spec.keys.count == 0)
+        spec.map { |spec, ability| "#{spec}(#{ability})"}.join(", ")
       end
       
-      def format_skill(s, i)
-        name = "%xh#{s}:%xn"
-        rating = FS3Skills.ability_rating(@char, s)
-        dots = FS3Skills.print_skill_rating(rating)
-        linked_attr = print_linked_attr(s)
+      def format_attr(a, i)
+        name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 16)} #{linked_attr} #{left(dots,16)}"
+        "#{linebreak}#{left(name, 16)} #{left(a.print_rating,20)}"
+      end
+      
+      def format_skill(s, i, show_linked_attr = false)
+        name = "%xh#{s.name}:%xn"
+        linked_attr = show_linked_attr ? print_linked_attr(s) : ""
+        rating_width = show_linked_attr ? 16 : 20
+        linebreak = i % 2 == 1 ? "" : "%r"
+        "#{linebreak}#{left(name, 16)} #{linked_attr}#{left(s.print_rating,rating_width)}"
       end
       
       def print_linked_attr(skill)
-        apt = FS3Skills.get_linked_attr(@char, skill)
-        !apt ? "" : "(#{apt[0..2]})"
-      end
-      
-      def format_list_item(item, i)
-        linebreak = (i % 2 == 1) ? "" : "%r"
-        "#{linebreak}#{item}"
+        apt = FS3Skills.get_linked_attr(skill.name)
+        !apt ? "" : "%xh%xx#{apt[0..2].upcase}+%xn"
       end
     end
   end

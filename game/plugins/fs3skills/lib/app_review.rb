@@ -1,80 +1,76 @@
 module AresMUSH
   module FS3Skills
     
+    def self.app_review(char)
+      text = FS3Skills.total_point_review(char)
+      text << "%r"
+      text << FS3Skills.ability_rating_review(char)
+      text << "%r"
+      text << FS3Skills.backgrounds_review(char)
+      text << "%r%r"
+      text << FS3Skills.starting_language_review(char)
+      text << "%r"
+      text << FS3Skills.starting_skills_check(char)
+      text << "%r"
+      text << FS3Skills.hook_review(char)
+      text
+    end
+    
     def self.hook_review(char)
-      FS3Skills.min_item_review(char.hooks.keys, "min_hooks", "fs3skills.hooks_added")      
+      FS3Skills.min_item_review(char.fs3_hooks.count, "min_hooks", "fs3skills.hooks_added")      
     end
     
-    def self.goals_review(char)
-       FS3Skills.min_item_review(char.goals.keys, "min_goals", "fs3skills.goals_added")
-    end
-    
-    def self.interests_review(char)
-      FS3Skills.min_item_review(char.fs3_interests, "min_interests", "fs3skills.interests_added")
+    def self.backgrounds_review(char)
+      FS3Skills.min_item_review(char.fs3_background_skills.count, "min_backgrounds", "fs3skills.backgrounds_added")
     end
 
-    def self.high_ability_review(char)
-      high_rating = Global.read_config("fs3skills", "high_ability_level")
-      count = FS3Skills.num_high_abilities(char, :action, high_rating)
+    def self.ability_rating_review(char)
+      too_high = []
+      message = t('fs3skills.ability_ratings_check')
+
+      error = FS3Skills.check_high_abilities(char.fs3_action_skills, 5, 
+        'max_skills_above_4', 'fs3skills.action_skills_above')
+      too_high << error if error
       
-      max = Global.read_config("fs3skills", "max_high_abilities")
+      error = FS3Skills.check_high_abilities(char.fs3_action_skills, 7, 
+         'max_skills_above_6', 'fs3skills.action_skills_above')
+      too_high << error if error
+
+      error = FS3Skills.check_high_abilities(char.fs3_attributes, 4, 
+         'max_attr_above_3', 'fs3skills.attributes_above')
+      too_high << error if error
       
-      error = count > max ? t('chargen.too_many') : t('chargen.ok')
+      error = FS3Skills.check_high_abilities(char.fs3_attributes, 5, 
+         'max_attr_above_4', 'fs3skills.attributes_above')
+      too_high << error if error
+
+      error = FS3Skills.check_attr_points(char)
+      too_high << error if error
       
-      Chargen::Api.format_review_status(t('fs3skills.high_abilities', :high_rating => high_rating, :num => count, :max => max), error)
-    end
-    
-    def self.points_on_rated_abilities(char)
-      action = FS3Skills.points_on_abilities(char, :action)
-      advantages = FS3Skills.points_on_abilities(char, :advantage)
-      action + advantages
-    end
-    
-    def self.points_on_interests(char)
-      num_interests = char.fs3_interests.count
-      free_interests = Global.read_config("fs3skills", "free_interests")
-      interest_points = [ (num_interests - free_interests), 0 ].max
-      interest_points
-    end
-    
-    def self.points_on_languages(char)
-      num_languages = char.fs3_languages.count
-      free_languages = Global.read_config("fs3skills", "free_languages")
-      language_points = [ (num_languages - free_languages), 0 ].max
-      language_points
-    end
-    
-    def self.points_on_expertise(char)
-      num_expertise = char.fs3_expertise.count
-      expertise_points = num_expertise * 2
-      expertise_points
-    end
-    
-    def self.points_total(char)
-      total_points = points_on_rated_abilities(char)+ points_on_interests(char) + 
-                     points_on_languages(char) + points_on_expertise(char)
-      return total_points
+      if (too_high.count == 0)
+        Chargen::Api.format_review_status(message, t('chargen.ok'))
+      else
+        error = too_high.collect { |m| "%T#{m}" }.join("%R")
+        "#{message}%r#{error}"
+      end
     end
       
+    def self.check_attr_points(char)
+      points = AbilityPointCounter.points_on_attrs(char)
+      max = Global.read_config("fs3skills", "max_attributes")
+      points > max ? t('fs3skills.too_many_attributes', :max => max) : nil
+    end
+        
     def self.total_point_review(char)
-      points =  points_total(char)
-      
-      max = Global.read_config("fs3skills", "starting_points")
+      points =  AbilityPointCounter.total_points(char)
+      max = Global.read_config("fs3skills", "max_ap")
       error = points > max ? t('chargen.too_many') : t('chargen.ok')
       Chargen::Api.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end
     
-    def self.aptitudes_set_review(char)
-      hash = FS3Skills.get_ability_hash_for_type(char, :aptitude)
-      ratings = hash.values
-      ratings_set = ratings.select { |r| r > 2 }
-      error = ratings_set.count > 0 ? t('chargen.ok') : t('chargen.not_set')
-      Chargen::Api.format_review_status(t('fs3skills.aptitudes_check'), error)
-    end
-      
     def self.starting_language_review(char)
       starting_languages = Global.read_config("fs3skills", "starting_languages")
-      missing = starting_languages.select { |l| !char.fs3_languages.include?(l) }
+      missing = starting_languages.select { |l| FS3Skills.ability_rating(char, l) < 3 }
       error = missing.count > 0 ? t('chargen.are_you_sure', :missing => missing.join(" ")) : t('chargen.ok')
       Chargen::Api.format_review_status(t('fs3skills.language_check'), error)
     end
@@ -89,6 +85,13 @@ module AresMUSH
         end
       end
       
+      char.fs3_action_skills.each do |a|
+        config = FS3Skills.action_skill_config(a.name)
+        if (config['specialties'] && a.specialties.empty?)
+          missing << t('fs3skills.missing_specialty', :skill => a.name)
+        end
+      end
+      
       if (missing.count == 0)
         Chargen::Api.format_review_status(message, t('chargen.ok'))
       else
@@ -97,27 +100,22 @@ module AresMUSH
       end
     end
     
-    def self.points_on_abilities(char, type)
-      hash = FS3Skills.get_ability_hash_for_type(char, type)
-      ratings = hash.values
-      ratings.inject(0) { |sum, a| sum + a }
-    end
-    
-    def self.num_high_abilities(char, type, high_rating)
-      hash = FS3Skills.get_ability_hash_for_type(char, type)
-      ratings = hash.values
-      ratings.inject(0) { |count, a| count + (a >= high_rating ? 1 : 0) }
-    end
-    
-    def self.min_item_review(items, min_config_option_name, prompt)
-      num = items.count
-      min = Global.read_config("fs3skills", min_config_option_name)
-      if (num < min)
-        error = t('chargen.not_enough')
+    def self.check_high_abilities(abilities, high_rating, max_config_option_name, prompt)
+      ratings = abilities.map { |a| a.rating }
+      count = ratings.inject(0) { |count, a| count + (a >= high_rating ? 1 : 0) }
+      max = Global.read_config("fs3skills", max_config_option_name)
+      if (count > max)
+        prompt = t(prompt, :num => count, :max => max, :high_rating => high_rating)
+        return prompt
       else
-        error = t('chargen.ok')
+        return nil
       end
-      Chargen::Api.format_review_status(t(prompt, :num => num, :min => min), error)
+    end
+    
+    def self.min_item_review(count, min_config_option_name, prompt)
+      min = Global.read_config("fs3skills", min_config_option_name)
+      error = count < min ? t('chargen.not_enough') : t('chargen.ok')
+      Chargen::Api.format_review_status(t(prompt, :num => count, :min => min), error)
     end
     
   end

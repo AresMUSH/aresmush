@@ -16,7 +16,7 @@ module AresMUSH
         "describe", 
         "friends", 
         #"fs3combat", 
-        #"fs3skills", 
+        "fs3skills", 
         "groups", 
         "handles", 
         "help", 
