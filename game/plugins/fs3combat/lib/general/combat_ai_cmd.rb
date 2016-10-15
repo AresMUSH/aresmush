@@ -30,7 +30,7 @@ module AresMUSH
         
         npcs.each_with_index do |c, i|
           Global.dispatcher.queue_timer(i, "Combat AI", client) do  
-            combat.ai_action(client, c)
+            FS3Combat.ai_action(combat, client, c)
           end
         end
       end

@@ -4,8 +4,8 @@ module AresMUSH
         
       describe :find_combat_by_number do
         before do
-          @combat1 = CombatInstance.new(num: 1)
-          @combat2 = CombatInstance.new(num: 2)
+          @combat1 = Combat.new(num: 1)
+          @combat2 = Combat.new(num: 2)
           @client = double
           FS3Combat.stub(:combats) {[@combat1, @combat2]}
           SpecHelpers.stub_translate_for_testing

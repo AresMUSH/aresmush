@@ -60,7 +60,8 @@ module AresMUSH
        Global.read_config("fs3combat", "treat_skill")
      end
      
-     def self.heal_wounds(char, wounds, was_treated = false, treat_roll = 0)
+     def self.heal_wounds(char, was_treated = false, treat_roll = 0)
+       wounds = c.unhealed_wounds
        return if wounds.empty?
        
        ability = Global.read_config("fs3combat", "toughness_attribute")
@@ -72,12 +73,12 @@ module AresMUSH
        Global.logger.info "Healing wounds on #{char.name}: #{treat_roll} #{tough_roll[:successes]}."
        
        wounds.each do |d|
-         d.heal(points, was_treated)
+         FS3Combat.heal(d, points, was_treated)
        end
        return true
      end
      
-     def self.do_treat(healer, patient)
+     def self.treat(healer, patient)
        wounds = patient.treatable_wounds
        if (wounds.empty?)
          return t('fs3combat.no_treatable_wounds',  :healer => healer.name, :patient => patient.name)
@@ -91,5 +92,32 @@ module AresMUSH
        FS3Combat.heal_wounds(patient, wounds, true, successes)
        t('fs3combat.treat_success', :healer => healer.name, :patient => patient.name)
      end
+     
+    
+     def self.heal(damage, points, was_treated = false)
+       return if damage.healing_points == 0
+    
+       if (points <= 0)
+         points = 1
+       end
+      
+       # Apply healing points
+       damage.healing_points = damage.healing_points - points
+      
+       if (was_treated)
+         damage.last_treated = Time.now
+       end
+    
+       # Wound going down a level.
+       if (damage.healing_points <= 0)
+         new_severity_index = FS3Combat.damage_severities.index(damage.current_severity) - 1
+         new_severity = FS3Combat.damage_severities[new_severity_index]
+         damage.current_severity = new_severity
+         damage.healing_points = FS3Combat.healing_points(new_severity)
+       end
+    
+       damage.save
+     end
+  
   end
 end

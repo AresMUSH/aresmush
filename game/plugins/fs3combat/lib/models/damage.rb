@@ -1,18 +1,18 @@
 module AresMUSH
   
-  class Damage
-    include SupportingObjectModel
+  class Damage < Ohm::Model
+    include ObjectModel
 
-    field :current_severity, :type => String
-    field :initial_severity, :type => String
-    field :last_treated, :type => Time
-    field :ictime, :type => Time
-    field :healing_points, :type => Integer
-    field :description, :type => String
-    field :is_stun, :type => Boolean
-    field :is_mock, :type => Boolean
+    attribute :current_severity
+    attribute :initial_severity
+    attribute :last_treated, :type => DataType::Time
+    attribute :ictime, :type => DataType::Time
+    attribute :healing_points, :type => DataType::Integer
+    attribute :description
+    attribute :is_stun, :type => DataType::Boolean
+    attribute :is_mock, :type => DataType::Boolean
   
-    belongs_to :character, :class_name => "AresMUSH::Character"
+    reference :character, "AresMUSH::Character"
 
     def is_stun?
       is_stun
@@ -31,31 +31,5 @@ module AresMUSH
       mod = mod / 2 if self.last_treated
       mod
     end
-    
-    def heal(points, was_treated = false)
-      return if self.healing_points == 0
-    
-      if (points <= 0)
-        points = 1
-      end
-      
-      # Apply healing points
-      self.healing_points = self.healing_points - points
-      
-      if (was_treated)
-        self.last_treated = Time.now
-      end
-    
-      # Wound going down a level.
-      if (self.healing_points <= 0)
-        new_severity_index = FS3Combat.damage_severities.index(self.current_severity) - 1
-        new_severity = FS3Combat.damage_severities[new_severity_index]
-        self.current_severity = new_severity
-        self.healing_points = FS3Combat.healing_points(new_severity)
-      end
-    
-      save
-    end
-  
   end
 end

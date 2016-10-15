@@ -1,9 +1,9 @@
 module AresMUSH
   module FS3Combat
-    describe CombatInstance do
+    describe Combat do
       
       before do
-        @instance = CombatInstance.new
+        @instance = Combat.new
         @instance.stub(:save) { }
         
         @bob = double
@@ -17,49 +17,6 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
-      describe :join do
-        before do
-          @combatants = []
-          Combatant.stub(:create).with(:name => "Bob", :combatant_type => "soldier", :character => @bob, :team => 1) { @bob }
-          @instance.stub(:combatants) { @combatants }
-        end
-        
-        it "should create a new combatant" do
-          @bob.stub(:emit)
-          @instance.join("Bob", "soldier", @bob)
-          @instance.combatants[0].should eq @bob
-        end
-        
-        it "should emit to combat" do
-          @bob.should_receive(:emit).with("fs3combat.has_joined")
-          @instance.join("Bob", "soldier", @bob)
-        end
-      end
-      
-      describe :leave do
-        before do
-          @bob.stub(:emit)
-          @harvey.stub(:emit)
-          @harvey.stub(:clear_mock_damage)
-          @harvey.stub(:delete)
-        end
-        
-        it "should delete a combatant" do
-          @harvey.should_receive(:delete)
-          @instance.leave("Harvey")
-        end
-        
-        it "should emit to combat" do
-          @bob.should_receive(:emit).with("fs3combat.has_left")
-          @harvey.should_receive(:emit).with("fs3combat.has_left")
-          @instance.leave("Harvey")
-        end
-        
-        it "should clear mock damage" do
-          @harvey.should_receive(:clear_mock_damage)
-          @instance.leave("Harvey")
-        end
-      end
             
       describe :has_combatant? do
         it "should return true if there is someone with the name" do
@@ -118,33 +75,6 @@ module AresMUSH
         end
       end
       
-      describe :find_or_create_vehicle do
-        it "should return a vehicle that already exists" do
-          v = Vehicle.new(name: "ABC")
-          @instance.stub(:vehicles) { [v] }
-          @instance.find_or_create_vehicle("ABC").should eq v
-        end
-        
-        it "should return nil for invalid vehicle type" do
-          Global.stub(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
-          @instance.stub(:vehicles) { [] }
-          @instance.find_or_create_vehicle("ABC").should eq nil
-        end
-        
-        it "should add a new vehicle" do
-          # This random seed guarantees the Viper # will always be UT7045
-          Kernel.srand 22
-          Global.stub(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
-          @instance.stub(:vehicles) { [] }
-          v = double
-          Vehicle.stub(:create) do |args|
-            args[:combat].should eq @instance
-            args[:name].should eq "Viper-UT7045"
-            v
-          end
-          @instance.find_or_create_vehicle("Viper").should eq v
-        end
-      end
     end
   end
 end

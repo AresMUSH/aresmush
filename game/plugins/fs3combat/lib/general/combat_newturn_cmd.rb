@@ -23,7 +23,7 @@ module AresMUSH
         if (combat.first_turn)
           combat.active_combatants.select { |c| c.is_npc? }.each_with_index do |c, i|
             Global.dispatcher.queue_timer(i, "Combat AI", client) do          
-              combat.ai_action(client, c)
+              FS3Combat.ai_action(combat, client, c)
             end
           end
           combat.emit t('fs3combat.new_turn', :name => enactor_name)
@@ -32,7 +32,7 @@ module AresMUSH
           return
         end
         
-        initiative_order = combat.roll_initiative
+        initiative_order = FS3Combat.roll_initiative(combat)
         
         combat.emit t('fs3combat.starting_turn_resolution', :name => enactor_name)
         combat.turn_in_progress = true

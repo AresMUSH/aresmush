@@ -35,7 +35,7 @@ module AresMUSH
       
       def handle
         combat = enactor.combatant.combat
-        vehicle = combat.find_or_create_vehicle(self.vehicle) 
+        vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
               
         if (!vehicle)
           client.emit_failure t('fs3combat.invalid_vehicle_name')
@@ -44,9 +44,9 @@ module AresMUSH
 
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
           if (combatant.is_in_vehicle?)
-            combat.leave_vehicle(combatant)
+            FS3Combat.leave_vehicle(combat, combatant)
           end
-          combat.join_vehicle(combatant, vehicle, self.passenger_type)
+          FS3Combat.join_vehicle(combat, combatant, vehicle, self.passenger_type)
         end
         
         combat.save

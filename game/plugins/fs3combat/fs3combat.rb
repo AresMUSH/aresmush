@@ -1,13 +1,13 @@
 $:.unshift File.dirname(__FILE__)
 
 # Models must come first
-load "lib/models/combat_action.rb"
 load "lib/models/combat_instance.rb"
 load "lib/models/combat_model.rb"
 load "lib/models/combatant.rb"
 load "lib/models/damage.rb"
 load "lib/models/vehicle.rb"
 
+load "lib/actions/combat_action.rb"
 load "lib/actions/action_checkers.rb"
 load "lib/actions/aim_action.rb"
 load "lib/actions/attack_action.rb"
@@ -48,6 +48,8 @@ load "lib/helpers/actions.rb"
 load "lib/helpers/damage.rb"
 load "lib/helpers/gear.rb"
 load "lib/helpers/general.rb"
+load "lib/helpers/joining.rb"
+load "lib/helpers/vehicles.rb"
 load "lib/status/combat_hud_cmd.rb"
 load "lib/status/combat_npcskill_cmd.rb"
 load "lib/status/combat_summary_cmd.rb"

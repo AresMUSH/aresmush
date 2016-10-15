@@ -64,6 +64,45 @@ module AresMUSH
         end
       end
       
+      
+      describe :heal do
+        before do
+          Global.stub(:read_config).with("fs3combat", "healing_points", "L") { 2 }
+          Global.stub(:read_config).with("fs3combat", "healing_points", "H") { 0 }
+          @damage = Damage.new(:healing_points => 0)
+          @damage.stub(:save)
+        end
+        
+        it "should not touch a healed wound" do
+          damage.should_not_receive(:save)
+          FS3Combat.heal(damage, 1)
+          damage.healing_points.should eq 0
+        end
+        
+        it "should heal at least one point" do
+          damage = Damage.new(:healing_points => 3)
+          damage.should_receive(:save) {}
+          FS3Combat.heal(damage, 0)
+          damage.healing_points.should eq 2
+        end
+        
+        it "should lower severity and reset points when a wound gets enough healing points" do
+          damage = Damage.new(:healing_points => 3, :current_severity => "M")
+          damage.should_receive(:save) {}
+          FS3Combat.heal(damage, 4)
+          damage.healing_points.should eq 2
+          damage.current_severity.should eq "L"
+        end
+        
+        it "should set healing points to 0 for a completely healed wound" do
+          damage = Damage.new(:healing_points => 3, :current_severity => "L")
+          damage.should_receive(:save) {}
+          FS3Combat.heal(damage, 4)
+          damage.healing_points.should eq 0
+          damage.current_severity.should eq "H"
+        end
+      end
+      
       describe :total_damage_mod do
         it "should count all wound levels" do
           damage1 = double
@@ -80,7 +119,7 @@ module AresMUSH
         end        
       end
       
-      describe :do_treat do
+      describe :treat do
         before do 
           @char = double
           @char.stub(:name) { "Bob" }
@@ -100,13 +139,13 @@ module AresMUSH
             { :successes => 2 }
           end
           FS3Combat.should_receive(:heal_wounds).with(@target, @wounds, true, 2)
-          FS3Combat.do_treat(@char, @target).should eq "fs3combat.treat_success"
+          FS3Combat.treat(@char, @target).should eq "fs3combat.treat_success"
         end
         
         it "should not do anything if no treatable wounds" do
           @target.stub(:treatable_wounds) { [] }
           FS3Combat.should_not_receive(:heal_wounds)
-          FS3Combat.do_treat(@char, @target).should eq "fs3combat.no_treatable_wounds"
+          FS3Combat.treat(@char, @target).should eq "fs3combat.no_treatable_wounds"
         end
       end
     end

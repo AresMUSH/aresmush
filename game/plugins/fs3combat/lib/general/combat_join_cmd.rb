@@ -61,7 +61,7 @@ module AresMUSH
         result = ClassTargetFinder.find(name, Character, enactor)
         
         type = self.combatant_type || Global.read_config("fs3combat", "default_type")
-        combatant = combat.join(name, type, result.target)
+        combatant = FS3Combat.join_combat(combat, name, type, result.target)
         combat.save
         
         FS3Combat.set_default_gear(client, combatant, type)

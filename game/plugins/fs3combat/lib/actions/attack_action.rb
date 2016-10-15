@@ -3,9 +3,7 @@ module AresMUSH
     class AttackAction < CombatAction
       include ActionOnlyAllowsSingleTarget
       
-      field :mod, :type => Integer
-      field :is_burst, :type => Boolean
-      field :called_shot, :type => String
+      attr_accessor :mod, :is_burst, :called_shot
       
       def parse_args(args)
         self.is_burst = false

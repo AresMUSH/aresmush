@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def resolve        
-        [FS3Combat.do_treat(self.combatant.character, self.targets[0].character)]
+        [FS3Combat.treat(self.combatant.character, self.targets[0].character)]
       end
     end
   end

@@ -1,9 +1,15 @@
 module AresMUSH
   class Character
-    field :last_treated, :type => Time
+    attribute :last_treated, :type => Time
     
-    has_one :combatant
-    has_many :damage, :dependent => :delete
+    reference :combatant, "AresMUSH::Combatant"
+    collection :damage, "AresMUSH::Damage"
+    
+    before_delete :delete_damage
+    
+    def delete_damage
+      self.damage.each { |d| d.delete }
+    end
     
     def treatable_wounds
       self.damage.select { |d| d.is_treatable? }
@@ -13,7 +19,7 @@ module AresMUSH
       self.damage.select { |d| d.healing_points > 0 } 
     end
     
-    def can_treat?
+    def can_be_treated?
       return true if !self.last_treated
       time_to_go = 300 - (Time.now - self.last_treated)
       return true if time_to_go < 0

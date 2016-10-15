@@ -29,7 +29,7 @@ module AresMUSH
             client.emit_failure t('fs3combat.not_in_vehicle', :name => self.name)
             return
           end
-          combat.leave_vehicle(combatant)
+          FS3Combat.leave_vehicle(combat, combatant)
           combat.save       
         end
       end

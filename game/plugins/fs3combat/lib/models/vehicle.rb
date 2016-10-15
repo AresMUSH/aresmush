@@ -1,14 +1,14 @@
 module AresMUSH
-  class Vehicle
-    include SupportingObjectModel
+  class Vehicle < Ohm::Model
+    include ObjectModel
   
-    field :name, :type => String
-    field :damage, :type => Array, :default => []
-    field :vehicle_type, :type => String
+    attribute :name
+    attribute :damage, :type => DataType::Array, :default => []
+    attribute :vehicle_type
     
-    belongs_to :combat, :class_name => "AresMUSH::CombatInstance"
+    reference :combat, "AresMUSH::Combat"
     
-    has_one :pilot, :class_name => 'AresMUSH::Combatant', :inverse_of => :piloting
-    has_many :passengers, :class_name => 'AresMUSH::Combatant', :inverse_of => :riding_in
+    reference :pilot, 'AresMUSH::Combatant'
+    collection :passengers, 'AresMUSH::Combatant'
   end
 end

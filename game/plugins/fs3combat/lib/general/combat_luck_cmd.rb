@@ -26,15 +26,14 @@ module AresMUSH
       end
       
       def check_points
-        return t('fs3combat.no_luck') if FS3Skills::Api.luck(enactor) <= 1
+        return t('fs3combat.no_luck') if enactor.luck <= 1
         return nil
       end
       
       def handle
         FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
           
-          FS3Skills::Api.spend_luck(enactor, 1)
-          enactor.save
+          enactor.spend_luck(1)
           
           combatant.luck = self.reason
           combatant.save

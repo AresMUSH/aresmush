@@ -1,11 +1,12 @@
 module AresMUSH
   class CombatAction
-    include SupportingObjectModel
     
-    field :target_names, :type => Array, :default => []
+    attr_accessor :target_names, :combatant, :targets
 
-    belongs_to :combatant, :class_name => 'AresMUSH::Combatant', :inverse_of => :action
-    has_and_belongs_to_many :targets, :class_name => 'AresMUSH::Combatant', :inverse_of => :targeted_by_actions
+    def initialize(combatant)
+      self.combatant = combatant
+      self.targets = []
+    end
     
     def name
       self.combatant.name
