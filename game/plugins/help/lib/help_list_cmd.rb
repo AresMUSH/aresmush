@@ -25,7 +25,7 @@ module AresMUSH
       
       def handle        
         list = Help.toc(self.category)
-        paginator = Paginator.paginate(list, self.page, 4)
+        paginator = Paginator.paginate(list, self.page, 3)
         
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg

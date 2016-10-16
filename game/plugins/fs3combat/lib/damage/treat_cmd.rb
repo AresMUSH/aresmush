@@ -27,11 +27,11 @@ module AresMUSH
         VisibleTargetFinder.with_something_visible(self.name, client, enactor) do |model|
           
           if (model.class != Character)
-            client.emit_failure t('fs3combat.can_only_treat_characters')
+            client.emit_failure t('db.object_not_found')
             return
           end
                     
-          enactor_room.emit_ooc FS3Combat.treat(enactor, model)
+          enactor_room.emit_ooc FS3Combat.treat(model, enactor)
         end
       end
     end

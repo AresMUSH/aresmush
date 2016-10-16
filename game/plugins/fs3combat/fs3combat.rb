@@ -6,9 +6,11 @@ load "lib/models/combat_model.rb"
 load "lib/models/combatant.rb"
 load "lib/models/damage.rb"
 load "lib/models/vehicle.rb"
+load "lib/models/healing.rb"
 
 load "lib/actions/combat_action.rb"
 load "lib/actions/action_checkers.rb"
+load "lib/actions/actions_helper.rb"
 load "lib/actions/aim_action.rb"
 load "lib/actions/attack_action.rb"
 load "lib/actions/fullauto_action.rb"
@@ -16,9 +18,14 @@ load "lib/actions/pass_action.rb"
 load "lib/actions/reload_action.rb"
 load "lib/actions/treat_action.rb"
 load "lib/common_checks.rb"
-load "lib/pose_handler.rb"
 load "lib/damage/damage_cmd.rb"
 load "lib/damage/damage_cron_handler.rb"
+load "lib/damage/damage_helper.rb"
+load "lib/damage/heal_start_cmd.rb"
+load "lib/damage/heal_stop_cmd.rb"
+load "lib/damage/healing_cmd.rb"
+load "lib/damage/hospitals_cmd.rb"
+load "lib/damage/hospital_set_cmd.rb"
 load "lib/damage/inflict_damage_cmd.rb"
 load "lib/damage/treat_cmd.rb"
 load "lib/gear/armor_detail_cmd.rb"
@@ -26,15 +33,13 @@ load "lib/gear/armor_list_cmd.rb"
 load "lib/gear/combat_armor_cmd.rb"
 load "lib/gear/combat_hitlocs_cmd.rb"
 load "lib/gear/combat_weapon_cmd.rb"
+load "lib/gear/gear_helper.rb"
 load "lib/gear/vehicle_detail_cmd.rb"
 load "lib/gear/vehicles_list_cmd.rb"
 load "lib/gear/weapon_detail_cmd.rb"
 load "lib/gear/weapons_list_cmd.rb"
 load "lib/general/combat_action_cmd.rb"
 load "lib/general/combat_ai_cmd.rb"
-load "lib/general/combat_disembark_cmd.rb"
-load "lib/general/combat_join_cmd.rb"
-load "lib/general/combat_leave_cmd.rb"
 load "lib/general/combat_list_cmd.rb"
 load "lib/general/combat_luck_cmd.rb"
 load "lib/general/combat_newturn_cmd.rb"
@@ -43,22 +48,25 @@ load "lib/general/combat_start_cmd.rb"
 load "lib/general/combat_stop_cmd.rb"
 load "lib/general/combat_team_cmd.rb"
 load "lib/general/combat_types_cmd.rb"
-load "lib/general/combat_vehicle_cmd.rb"
-load "lib/helpers/actions.rb"
-load "lib/helpers/damage.rb"
-load "lib/helpers/gear.rb"
-load "lib/helpers/general.rb"
-load "lib/helpers/joining.rb"
-load "lib/helpers/vehicles.rb"
+load "lib/general/general_helper.rb"
+load "lib/joining/combat_join_cmd.rb"
+load "lib/joining/combat_leave_cmd.rb"
+load "lib/joining/joining_helper.rb"
+load "lib/pose_handler.rb"
 load "lib/status/combat_hud_cmd.rb"
 load "lib/status/combat_npcskill_cmd.rb"
 load "lib/status/combat_summary_cmd.rb"
+load "lib/vehicles/combat_disembark_cmd.rb"
+load "lib/vehicles/combat_vehicle_cmd.rb"
+load "lib/vehicles/vehicles_helper.rb"
 load "templates/damage_template.rb"
 load "templates/gear_detail_template.rb"
 load "templates/gear_list_template.rb"
+load "templates/healing_template.rb"
 load "templates/hud_template.rb"
 load "templates/summary_template.rb"
 load "templates/types_template.rb"
+
 
 module AresMUSH
   module FS3Combat
@@ -78,7 +86,8 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/actions.md", "help/combat.md", "help/damage.md", "help/gear.md", "help/luck.md", "help/org.md" ]
+      [ "help/actions.md", "help/combat.md", "help/damage.md", "help/gear.md", "help/luck.md", 
+        "help/org.md", "help/hospitals.md" ]
     end
  
     def self.config_files
@@ -105,6 +114,22 @@ module AresMUSH
            return ArmorDetailCmd
          else
            return ArmorListCmd
+         end
+       when "heal"
+         case cmd.switch
+         when "start", nil
+           return HealStartCmd
+         when "stop"
+           return HealStopCmd
+         when "list"
+           return HealingCmd
+         end
+       when "hospital"
+         case cmd.switch
+         when "list"
+           return HospitalsCmd
+         when "on", "off"
+           return HospitalSetCmd
          end
        when "vehicle"
          if (cmd.args)

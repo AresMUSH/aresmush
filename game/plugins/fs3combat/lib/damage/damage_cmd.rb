@@ -3,7 +3,6 @@ module AresMUSH
     class DamageCmd
       include CommandHandler
       include CommandRequiresLogin
-      include TemplateFormatters
       
       attr_accessor :name
 

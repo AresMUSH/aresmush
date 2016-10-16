@@ -8,25 +8,32 @@ en:
         damage_title: "Damage Report for %{name}"
         damage_titlebar: "Date         Description                   Severity (original)   Treatable?"
         damage_inflicted: "You inflict damage on %{name}."
-        
+        wound_mod: "Wound Modifier:"
         healed_wound: "%xh%xxHealed%xn"
-        light_wound: "%xgLight%xn"
-        moderate_wound: "%xbModerate%xn"
-        serious_wound: "%xySerious%xn"
-        critical_wound: "%xrCritical%xn"
+        graze_wound: "%xgGraze%xn"
+        flesh_wound: "%xbFlesh Wound%xn"
+        impaired_wound: "%xyImpaired%xn"
+        incap_wound: "%xrIncapacitated%xn"
         
-        can_only_treat_characters: "You can only treat PCs."        
-        only_pcs_can_treat: "Only PCs can use the treat command."
-        treat_skill_set: "%{name} will now be used for your treat rolls."
-        invalid_treat_skill: "You have to pick a treat skill you have a rating in."
         cant_treat_self: "You can't treat yourself!"
         no_treatable_wounds: "%{healer} attempts to treat %{patient}, but they have no treatable wounds."
         use_combat_treat_instead: "You cannot use this command in combat.  Use combat/treat instead."
         must_wait_to_treat: "You must wait a few minutes before you can treat again."
         treat_success: "%{healer} treats %{patient}."
-        
+        treat_failed: "%{healer} attempts to treat %{patient} but fails."
         treat_action_msg_long: "%{name} will treat %{target} this turn."
         treat_action_msg_short: "Treat %{target}"
+        
+        no_more_patients: "You cannot take on any more patients.  You have to stop healing one first."
+        already_healing: "%{name} is already your patient."
+        not_healing: "%{name} is not your patient."
+        start_heal: "%{name} is now your patient."
+        stop_heal: "%{name} is no longer your patient."
+        healing_patients: "Patients Under Your Care"
+        hospitals_title: "Hospital Rooms"
+        set_hospital: "You set up this room as a hospital."
+        clear_hospital: "This room is no longer set as a hospital."
+        max_patients: "You can have up to %{max} patients at once."
         
         # ----------------------------
         # COMBAT LIST

@@ -45,3 +45,5 @@ fs3combat:
         "combat/skills": "combat/summary"
         "combat/slackers": "combat/summary"
         "vehicles": "vehicle"
+        "hospitals": "hospital/list"
+        "healing": "heal/list"

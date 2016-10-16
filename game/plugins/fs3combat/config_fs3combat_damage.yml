@@ -1,15 +1,21 @@
 fs3combat:
 
-    # Which roles can manage damage
+    # Which roles can manage damage or set up rooms as hospitals
     roles:
         can_manage_damage:
             - admin
+        can_setup_hospitals:
+            - admin
+            - builder
             
-    # Which skill is used for treat rolls if you don't specify anything.
-    treat_skill: "First Aid"
+    # Which skill is used for treat rolls.
+    treat_skill: "Medicine"
     
-    # Which aptitude is used for toughness-related rolls.
-    toughness_attribute: "Athletic"
+    # Which skill is used for healing.
+    healing_skill: "Medicine"
+    
+    # Which ability is used for recovery (natural healing) rolls.
+    recovery_skill: "Athletics"
     
     # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
     # Comment out any items you aren't using; don't just leave them blank.
@@ -21,19 +27,19 @@ fs3combat:
     
     # Dice penalty for different wound levels.
     damage_mods:
-        H: 0.0
-        L: 0.25
-        M: 0.75
-        S: 2.0
-        C: 4.0
+        HEAL: 0.0
+        GRAZE: 0.0
+        FLESH: 0.25
+        IMPAIR: 1.0
+        INCAP: 4.0
     
     # How many healing points are required to heal a wound down to the next lower level.
     # Characters receive 1-2 healing points on average each day so you can tweak these numbers
     # to provide faster or slower healing times.
     healing_points:
-        H: 0
-        L: 2
-        M: 3
-        S: 4
-        C: 5
+        HEAL: 0
+        GRAZE: 3
+        FLESH: 10
+        IMPAIR: 14
+        INCAP: 30
             

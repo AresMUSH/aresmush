@@ -19,11 +19,10 @@ module AresMUSH
     attribute :posed, :type => DataType::Boolean
     attribute :recoil, :type => DataType::Integer, :default => 0
     attribute :team, :type => DataType::Integer, :default => 1
-    attribute :npc_damage, :type => DataType::Integer
-    attribute :npc_skill, :type => DataType::Integer
 
     reference :character, "AresMUSH::Character"
     reference :combat, "AresMUSH::Combat"
+    reference :npc, "AresMUSH::Npc"
 
     before_save :save_upcase
     before_delete :clear_mock_damage
@@ -43,14 +42,6 @@ module AresMUSH
     
     def client
       self.character ? self.character.client : nil
-    end
-    
-    def total_damage_mod
-      if (self.is_npc?)
-        self.npc_damage
-      else
-        FS3Combat.total_damage_mod(self.wounds)
-      end
     end
     
     def attack_stance_mod
@@ -80,8 +71,8 @@ module AresMUSH
     end
     
     def clear_mock_damage
-      return if self.is_npc?
-      self.character.damage.each do |d|
+      wounds = self.is_npc? ? self.npc.damage : self.character.damage
+      wounds.each do |d|
         if (d.is_mock)
           d.delete
         end
@@ -97,7 +88,7 @@ module AresMUSH
     end
         
     def is_npc?
-      !self.character
+      !!self.npc
     end
     
     def is_noncombatant?

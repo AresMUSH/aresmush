@@ -11,13 +11,13 @@ module AresMUSH
         cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
         self.name = titleize_input(cmd.args.arg1)
         self.desc = titleize_input(cmd.args.arg2)
-        self.severity = titleize_input(cmd.args.arg3)
+        self.severity = cmd.args.arg3 ? cmd.args.arg3.upcase : nil
       end
       
       def required_args
         {
           args: [ self.name, self.desc, self.severity ],
-          help: 'damage'
+          help: 'combat org'
         }
       end
       

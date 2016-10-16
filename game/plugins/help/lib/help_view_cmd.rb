@@ -73,7 +73,7 @@ module AresMUSH
         text = Help.topic_contents(topic, self.category)
         markdown = MarkdownFormatter.new
         display = markdown.to_mush(text).chomp
-        client.emit BorderedDisplay.text(display, category_title)
+        client.emit BorderedDisplay.text(display, title)
       end
     end
   end

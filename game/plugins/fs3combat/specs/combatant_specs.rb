@@ -200,27 +200,6 @@ module AresMUSH
         end
       end
       
-      describe :total_damage_mod do
-        it "should total damage for a PC" do
-          damage = [ Damage.new(current_severity: "L"),
-            Damage.new(current_severity: "M") ]
-            @char.stub(:damage) { damage }
-            FS3Combat.should_receive(:total_damage_mod).with(damage) { 2 }
-            @combatant.total_damage_mod.should eq 2
-          end
-        
-          it "should total damage for a NPC" do
-            @combatant.stub(:character) { nil }
-            @combatant.stub(:npc_damage) { ["L", "M"] }
-            FS3Combat.should_receive(:total_damage_mod).with(anything) do |wounds|
-              wounds[0].current_severity.should eq "L"
-              wounds[1].current_severity.should eq "M"
-              3
-            end
-            @combatant.total_damage_mod.should eq 3
-          end
-        end
-      
         describe :hitloc_severity do
           it "should determine severity" do
             FS3Combat.stub(:combatant_type_stat) { "Human" }

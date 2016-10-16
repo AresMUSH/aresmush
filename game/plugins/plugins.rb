@@ -15,7 +15,7 @@ module AresMUSH
         "demographics", 
         "describe", 
         "friends", 
-        #"fs3combat", 
+        "fs3combat", 
         "fs3skills", 
         "groups", 
         "handles", 
