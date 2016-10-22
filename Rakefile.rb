@@ -9,6 +9,13 @@ require 'tempfile'
 require_relative 'install/init_db.rb'
 require_relative 'install/configure_game.rb'
 
+def minimal_boot
+  bootstrapper = AresMUSH::Bootstrapper.new
+  AresMUSH::Global.plugin_manager.load_all
+  bootstrapper.config_reader.load_game_config
+  bootstrapper.db.load_config
+end
+
 task :startares do
   bootstrapper = AresMUSH::Bootstrapper.new
   bootstrapper.start
@@ -18,11 +25,8 @@ task :configure do
   AresMUSH::Install.configure_game
 end
 
-task :testinit do
-  bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all
-  bootstrapper.config_reader.load_game_config
-  bootstrapper.db.load_config
+task :dumpdb do
+  minimal_boot
   AresMUSH::Channel.all.each do |c|
     puts c.inspect
   end
@@ -35,17 +39,16 @@ task :testinit do
     puts c.inspect
   end
   
-  
   puts AresMUSH::Game[1].inspect
 end
 
 task :init do    
-  bootstrapper = AresMUSH::Bootstrapper.new  
-  AresMUSH::Global.plugin_manager.load_all
+  minimal_boot
   AresMUSH::Install.init_db
 end
 
 task :upgrade, [:scriptname] do |t, args|
+  minimal_boot
   scriptname = args[:scriptname]
   require_relative "install/upgrades/#{scriptname}.rb"
 end

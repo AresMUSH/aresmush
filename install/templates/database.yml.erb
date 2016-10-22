@@ -1,24 +1,4 @@
 database:
-    production:
-        clients:
-            default:
-                hosts:
-                    - <%= @db_host %>:<%= @db_port %>
-                database: <%= @db_name %>
-                options:
-                    user: <%= @db_user %>
-                    password: <%= @db_password %>
-        options:
-            raise_not_found_error: false
-
-    test:
-        clients:
-            default:
-                hosts:
-                    - 
-                database: 
-                options:
-                    user: 
-                    password: 
-        options:
-            raise_not_found_error: false
+    url: <%= @db_url %>
+    password: <%= @db_password %>
+    config_file: <%= @db_config_file %>

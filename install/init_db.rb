@@ -2,12 +2,19 @@ module AresMUSH
   module Install
     def self.init_db
 
-      path = File.join(AresMUSH.game_path, "config", "database.yml") 
-      config = AresMUSH::YamlExtensions.yaml_hash(path)
-      
-      Ohm.redis.call "AUTH", config["database"]["password"]
-      Ohm.redis.call "FLUSHDB"
-      
+      password = Global.read_config("database", "password")
+      host = Global.read_config("database", "url")
+
+      begin
+        Ohm.redis.call "FLUSHDB"
+      rescue
+        Ohm.redis = Redic.new("redis://#{host}")
+        puts Ohm.redis.call "config", "get", "requirepass"
+        puts Ohm.redis.call "FLUSHDB"
+        puts Ohm.redis.call "CONFIG", "SET", "requirepass", password
+        Ohm.redis = Redic.new("redis://:#{password}@#{host}")
+        puts Ohm.redis.call "CONFIG", "REWRITE"
+      end
       game = Game.create
 
       puts "Creating start rooms."

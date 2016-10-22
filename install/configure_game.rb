@@ -5,27 +5,15 @@ module AresMUSH
     
       puts "\nLet's set up your database.  Please enter the requested information."
 
-      print "Database host > "
-      db_host = STDIN.gets.chomp
-
-      print "\nDatabase port > "
-      db_port = STDIN.gets.chomp
-
-      print "\nDatabase name > "
-      db_name = STDIN.gets.chomp
-
-      print "\nDatabase user > "
-      db_user = STDIN.gets.chomp
+      print "Database url > "
+      db_url = STDIN.gets.chomp
 
       print "\nDatabase password > "
       db_password = STDIN.gets.chomp
-  
+      
       template_data =
       {
-        "db_host" => db_host,
-        "db_port" => db_port,
-        "db_name" => db_name,
-        "db_user" => db_user,
+        "db_url" => db_url,
         "db_password" => db_password
       }
   

@@ -1,6 +1,4 @@
 module AresMUSH
-  bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all
   
   puts "======================================================================="
   puts "Update some new fields in server info"
