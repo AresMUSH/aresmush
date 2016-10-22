@@ -7,10 +7,10 @@ module AresMUSH
         @instance.stub(:save) { }
         
         @bob = double
-        @bob.stub(:name_upcase) { "BOB" }
+        @bob.stub(:name) { "Bob" }
         
         @harvey = double
-        @harvey.stub(:name_upcase) { "HARVEY" }
+        @harvey.stub(:name) { "Harvey" }
         
         @instance.stub(:combatants) { [ @bob, @harvey ] }
         

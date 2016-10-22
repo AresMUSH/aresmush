@@ -24,15 +24,12 @@ module AresMUSH
       
       def handle
         is_real = self.type == "Real"
-        combat = Combat.create(:organizer => enactor, 
-          :is_real => is_real,
-          :num => Combat.next_num)
-        FS3Combat.join_combat(combat, enactor.name, "Observer", enactor)
-        combat.save
+        combat = Combat.create(:organizer => enactor, :is_real => is_real)
+        FS3Combat.join_combat(combat, enactor.name, "Observer", enactor, client)
         
         message = is_real ? "fs3combat.start_real_combat" : "fs3combat.start_mock_combat"
         
-        client.emit_ooc t(message, :num => combat.num)
+        client.emit_ooc t(message, :num => combat.id)
       end
     end
   end

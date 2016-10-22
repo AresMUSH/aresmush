@@ -1,46 +1,65 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
-      before do
-        @instance = Combat.new
-        @instance.stub(:save) { }
-      end
-      describe :join do
+      describe :join_combat do
         before do
-          @combatants = []
-          Combatant.stub(:create).with(:name => "Bob", :combatant_type => "soldier", :character => @bob, :team => 1) { @bob }
-          @instance.stub(:combatants) { @combatants }
+          @combat = double
+          @enactor = double
+          @client = double
+          
+          @combat.stub(:emit)
+          
+          FS3Combat.stub(:is_in_combat?) { false }
+          ClassTargetFinder.stub(:find) { FindResult.new(nil, "error") }
+          FS3Combat.stub(:set_default_gear)
+          SpecHelpers.stub_translate_for_testing
         end
   
-        it "should create a new combatant" do
-          @bob.stub(:emit)
-          FS3Combat.join_combat(@instance, "Bob", "soldier", @bob)
-          @instance.combatants[0].should eq @bob
+        it "should fail if already in combat" do
+          FS3Combat.should_receive(:is_in_combat?).with("Bob") { true }
+          @client.should_receive(:emit_failure).with("fs3combat.already_in_combat")
+          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
-  
-        it "should emit to combat" do
-          @bob.should_receive(:emit).with("fs3combat.has_joined")
-          FS3Combat.join_combat(@instance, "Bob", "soldier", @bob)
+        
+        it "should create a NPC if char not found" do
+          ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(nil, "error") }
+          npc = double
+          Npc.should_receive(:create).with(name: "Bob") { npc }
+          Combatant.should_receive(:create) do |params|
+            params[:combatant_type].should eq "soldier"
+            params[:team].should eq 2
+            params[:npc].should eq npc
+            params[:combat].should eq @combat
+          end
+          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
-      end
-
-      describe :leave do
-        before do
-          @bob.stub(:emit)
-          @harvey.stub(:emit)
-          @harvey.stub(:clear_mock_damage)
-          @harvey.stub(:delete)
+        
+        it "should create a combatant for a character if found" do
+          char = double
+          ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
+          Combatant.should_receive(:create) do |params|
+            params[:combatant_type].should eq "soldier"
+            params[:team].should eq 1
+            params[:character].should eq char
+            params[:combat].should eq @combat
+          end
+          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
-  
-        it "should delete a combatant" do
-          @harvey.should_receive(:delete)
-          FS3Combat.leave_combat(@instance, "Harvey")
+        
+        it "should emit join message to combat" do
+          combatant = double
+          Npc.stub(:create)
+          Combatant.stub(:create) { combatant }
+          @combat.should_receive(:emit).with("fs3combat.has_joined")
+          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
-  
-        it "should emit to combat" do
-          @bob.should_receive(:emit).with("fs3combat.has_left")
-          @harvey.should_receive(:emit).with("fs3combat.has_left")
-          FS3Combat.leave_combat(@instance, "Harvey")
+        
+        it "should set default gear" do
+          combatant = double
+          Npc.stub(:create)
+          Combatant.stub(:create) { combatant }
+          FS3Combat.should_receive(:set_default_gear).with(@enactor, combatant, "soldier")
+          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
       end
     end

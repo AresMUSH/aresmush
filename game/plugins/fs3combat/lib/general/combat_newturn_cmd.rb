@@ -21,30 +21,26 @@ module AresMUSH
         Global.logger.debug "****** NEW COMBAT TURN ******"
 
         if (combat.first_turn)
-          combat.active_combatants.select { |c| c.is_npc? }.each_with_index do |c, i|
-            Global.dispatcher.queue_timer(i, "Combat AI", client) do          
-              FS3Combat.ai_action(combat, client, c)
-            end
+          combat.active_combatants.select { |c| c.is_npc? && !c.action }.each_with_index do |c, i|
+            FS3Combat.ai_action(combat, client, c)
           end
           combat.emit t('fs3combat.new_turn', :name => enactor_name)
-          combat.first_turn = false
-          combat.save
+          combat.update(first_turn: false)
           return
         end
         
-        initiative_order = FS3Combat.roll_initiative(combat)
+        initiative_order = FS3Combat.get_initiative_order(combat)
         
         combat.emit t('fs3combat.starting_turn_resolution', :name => enactor_name)
-        combat.turn_in_progress = true
-        combat.save
+        combat.update(turn_in_progress: true)
         
         initiative_order.each_with_index do |c, i|
           Global.dispatcher.queue_timer(i, "Combat Turn", client) do
             
-            Global.logger.debug "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
-            
             next if !c.action
             next if c.is_noncombatant?
+
+            Global.logger.debug "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
           
             messages = c.action.resolve
             messages.each do |m|
@@ -52,26 +48,12 @@ module AresMUSH
               combat.emit m
             end
              
-            # Reset aim if they've done anything other than aiming. 
-            # TODO - Better way of doing this.
-            # TODO - Reset action if out of ammo.
-            # TODO - Reset action if target no longer exists.
-            if (c.is_aiming && c.action.class != AimAction)
-              Global.logger.debug "Reset aim for #{c.name}."
-              c.is_aiming = false
-            end
-          
-            c.posed = false
-            c.recoil = 0
+            FS3Combat.reset_actions(c)
           end
         end
         
         Global.dispatcher.queue_timer(initiative_order.count + 1, "Combat Turn", client) do
-          initiative_order.each do |c|
-            c.save
-          end
-          combat.turn_in_progress = false
-          combat.save
+          combat.update(turn_in_progress: false)
           combat.emit t('fs3combat.new_turn', :name => enactor_name)
         end
       end

@@ -5,7 +5,12 @@ module AresMUSH
       include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
+      attr_accessor :force
       
+      def crack!
+       self.force = (cmd.args && cmd.args.downcase == "force")
+     end
+     
       def check_in_combat
         return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
         return nil
@@ -19,7 +24,11 @@ module AresMUSH
           return
         end
 
-        npcs = combat.active_combatants.select { |c| c.is_npc? && !c.action }
+        if (self.force)
+          npcs = combat.active_combatants.select { |c| c.is_npc? }
+        else
+          npcs = combat.active_combatants.select { |c| c.is_npc? && !c.action }
+        end
         
         if (npcs.empty?)
           client.emit_failure t('fs3combat.no_ai_actions_to_set')
@@ -29,9 +38,7 @@ module AresMUSH
         client.emit_success t('fs3combat.choosing_ai_actions')
         
         npcs.each_with_index do |c, i|
-          Global.dispatcher.queue_timer(i, "Combat AI", client) do  
-            FS3Combat.ai_action(combat, client, c)
-          end
+          FS3Combat.ai_action(combat, client, c)
         end
       end
     end

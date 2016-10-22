@@ -11,7 +11,7 @@ module AresMUSH
       
       def format_combat(combat)
         combatants = combat.combatants.map { |c| c.name }.join(" ")
-        num = combat.num.to_s
+        num = combat.id.to_s
         "#{num.ljust(3)} #{combat.organizer.name.ljust(15)} #{combatants}"
       end
     end

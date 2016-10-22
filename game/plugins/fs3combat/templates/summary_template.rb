@@ -19,7 +19,7 @@ module AresMUSH
       
       def skill(c)
         if (c.is_npc?)
-          rating = c.npc_skill
+          rating = c.npc.skill
         else
           weapon_skill = FS3Combat.weapon_stat(c.weapon, "skill")
           rating = FS3Skills::Api.ability_rating(c.character, weapon_skill)          

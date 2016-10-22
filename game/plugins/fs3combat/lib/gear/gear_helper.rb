@@ -5,8 +5,7 @@ module AresMUSH
     end
     
     def self.weapon(name)
-      key = FS3Combat.weapons.keys.select { |k| k.upcase == name.upcase}.first
-      key ? FS3Combat.weapons[key] : nil
+      FS3Combat.weapons.select { |k, v| k.upcase == name.upcase}.values.first
     end
 
     def self.weapon_stat(name, stat)
@@ -23,8 +22,7 @@ module AresMUSH
     end
     
     def self.armor(name)
-      key = FS3Combat.armors.keys.select { |k| k.upcase == name.upcase}.first
-      key ? FS3Combat.armors[key] : nil
+      FS3Combat.armors.select { |k, v| k.upcase == name.upcase}.values.first
     end
 
     def self.armor_stat(name, stat)
@@ -37,8 +35,7 @@ module AresMUSH
     end
 
     def self.vehicle(name)
-      key = FS3Combat.vehicles.keys.select { |k| k.upcase == name.upcase}.first
-      key ? FS3Combat.vehicles[key] : nil
+      FS3Combat.vehicles.select { |k, v| k.upcase == name.upcase}.values.first
     end
     
     def self.vehicle_stat(name, stat)
@@ -51,8 +48,7 @@ module AresMUSH
     end
     
     def self.hitloc(name)
-      key = FS3Combat.hitlocs.keys.select { |k| k.upcase == name.upcase}.first
-      key ? FS3Combat.hitlocs[key] : nil
+      FS3Combat.hitlocs.select { |k, v| k.upcase == name.upcase}.values.first
     end
     
     def self.gear_detail(info)
@@ -81,11 +77,11 @@ module AresMUSH
     end
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-      combatant.weapon = weapon ? weapon.titleize : nil
-      combatant.weapon_specials = specials ? specials.map { |s| s.titleize } : nil
-      combatant.ammo = FS3Combat.weapon_stat(weapon, "ammo")
+      combatant.update(weapon: weapon ? weapon.titleize : nil)
+      combatant.update(weapon_specials: specials ? specials.map { |s| s.titleize } : nil)
+      combatant.update(ammo: weapon ? FS3Combat.weapon_stat(weapon, "ammo") : nil)
       combatant.action = nil
-      combatant.save
+
       specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
       message = t('fs3combat.weapon_changed', :name => combatant.name, 
         :weapon => combatant.weapon, 
@@ -94,8 +90,7 @@ module AresMUSH
     end
     
     def self.set_armor(enactor, combatant, armor)
-      combatant.armor = armor ? armor.titleize : nil
-      combatant.save
+      combatant.update(armor: armor ? armor.titleize : nil)
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
       combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end

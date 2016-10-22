@@ -14,7 +14,7 @@ module AresMUSH
     end
     
     def self.is_in_combat?(name)
-      !FS3Combat.combat(name).nil?
+      !!FS3Combat.combat(name)
     end
     
     def self.combat(name)
@@ -24,6 +24,17 @@ module AresMUSH
     def self.combatant_type_stat(type, stat)
       type_config = FS3Combat.combatant_types[type]
       type_config[stat]
+    end
+    
+    def self.get_initiative_order(combat)
+      ability = Global.read_config("fs3combat", "initiative_ability")
+      order = []
+      combat.combatants.each do |c|
+        roll = FS3Combat.roll_initiative(c, ability)
+        order << { :combatant => c, :roll => roll }
+      end
+      Global.logger.debug "Combat initiative rolls: #{order.map { |o| "#{o[:combatant].name}=#{o[:roll]}" }}"
+      order.sort_by { |c| c[:roll] }.map { |c| c[:combatant] }.reverse
     end
     
     def self.with_a_combatant(name, client, enactor, &block)      

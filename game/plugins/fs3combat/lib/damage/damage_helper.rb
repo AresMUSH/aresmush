@@ -93,9 +93,10 @@ module AresMUSH
        recovery_roll = FS3Skills::Api.one_shot_roll(nil, char, roll_params)
        in_hospital = FS3Combat.is_in_hospital?(char)
        doctors = char.doctors.map { |d| d.name }
-       points = ((1 + recovery_roll[:successes]) / 2.0).ceil
        
-       if (in_hospital || doctors.count > 0)
+       points = 1
+       
+       if (in_hospital || doctors.count > 0 || recovery_roll[:successes] > 0)
          points += 1
        end
        
@@ -143,20 +144,23 @@ module AresMUSH
        healing = wound.healing_points
        return if healing == 0
 
+       if (wound.is_stun)
+         points = points * 3
+       end
+       
        healing = healing - points      
-    
+
        # Wound going down a level.
        if (healing <= 0)
          new_severity_index = FS3Combat.damage_severities.index(wound.current_severity) - 1
          new_severity = FS3Combat.damage_severities[new_severity_index]
-         wound.current_severity = new_severity
-         wound.healing_points = FS3Combat.healing_points(new_severity)
+         wound.update(current_severity: new_severity)
+         wound.update(healing_points: FS3Combat.healing_points(new_severity))
        else
-         wound.healing_points = healing
+         wound.update(healing_points: healing)
        end
 
-       wound.healed = true
-       wound.save
+       wound.update(healed: true)
      end
   
   end

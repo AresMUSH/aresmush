@@ -33,8 +33,7 @@ module AresMUSH
       
       def handle
         FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
-          combatant.team = team
-          combatant.save
+          combatant.update(team: team)
           message = t('fs3combat.team_set', :name => self.name, :team => self.team)
           combat.emit message, FS3Combat.npcmaster_text(name, enactor)
         end

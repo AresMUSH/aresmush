@@ -50,7 +50,7 @@ en:
         
         combat_stopped_by: "%{name} has stopped the combat."
         combat_stopped: "Combat %{num} is now stopped."
-        stopping_combat: "You stop combat %{num}.  This will take a moment.  Please be patient."
+        stopping_combat: "You stop combat %{num}."
         you_are_already_in_combat: "You are already in combat."
         already_in_combat: "%{name} is already in combat."
         you_are_not_in_combat: "You are not in combat."

@@ -34,8 +34,7 @@ module AresMUSH
       
       def handle
         FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
-          combatant.stance = stance
-          combatant.save
+          combatant.update(stance: stance)
           message = t('fs3combat.stance_changed', :stance => self.stance, :name => self.name, :poss => combatant.poss_pronoun)
           combat.emit message, FS3Combat.npcmaster_text(name, enactor)
         end

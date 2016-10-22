@@ -4,10 +4,12 @@ module AresMUSH
         
       describe :find_combat_by_number do
         before do
-          @combat1 = Combat.new(num: 1)
-          @combat2 = Combat.new(num: 2)
+          @combat1 = double
+          @combat2 = double
           @client = double
-          FS3Combat.stub(:combats) {[@combat1, @combat2]}
+          Combat.stub(:[]).with(1) { @combat1 }
+          Combat.stub(:[]).with(2) { @combat2 }
+          Combat.stub(:[]).with(3) { nil }
           SpecHelpers.stub_translate_for_testing
         end
         
@@ -33,5 +35,30 @@ module AresMUSH
         
       end
     end
+    
+    describe :get_initiative_order do
+      it "should return combatants in order of initiative roll" do
+        @combat = double
+        @combatant1 = double
+        @combatant2 = double
+        @combatant3 = double
+        
+        @combatant1.stub(:name) { "A" }
+        @combatant2.stub(:name) { "B" }
+        @combatant3.stub(:name) { "C" }
+
+        @combat.stub(:combatants) { [ @combatant1, @combatant2, @combatant3 ]}
+        
+        Global.stub(:read_config).with("fs3combat", "initiative_ability") { "init" }
+        
+        FS3Combat.should_receive(:roll_initiative).with(@combatant1, "init") { 3 }
+        FS3Combat.should_receive(:roll_initiative).with(@combatant2, "init") { 5 }
+        FS3Combat.should_receive(:roll_initiative).with(@combatant3, "init") { 1 }
+        
+        FS3Combat.get_initiative_order(@combat).should eq [ @combatant2, @combatant1, @combatant3 ]
+      end
+    end
+    
+    
   end
 end

@@ -35,8 +35,7 @@ module AresMUSH
           
           enactor.spend_luck(1)
           
-          combatant.luck = self.reason
-          combatant.save
+          combatant.update(luck: self.reason)
           
           combat.emit t('fs3combat.spending_luck', :name => enactor_name, :reason => self.reason)
         end

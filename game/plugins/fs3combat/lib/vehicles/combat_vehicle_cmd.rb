@@ -48,8 +48,6 @@ module AresMUSH
           end
           FS3Combat.join_vehicle(combat, combatant, vehicle, self.passenger_type)
         end
-        
-        combat.save
       end
     end
   end

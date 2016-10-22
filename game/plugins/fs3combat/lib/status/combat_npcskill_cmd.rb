@@ -36,8 +36,7 @@ module AresMUSH
             return
           end
           
-          combatant.npc_skill = self.skill
-          combatant.save
+          combatant.update(npc_skill: self.skill)
           client.emit_success t('fs3combat.npc_skill_set', :skill => self.skill, :name => self.name)
         end
       end

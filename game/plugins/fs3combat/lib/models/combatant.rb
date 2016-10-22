@@ -1,11 +1,10 @@
 module AresMUSH
-
   
   class Combatant < Ohm::Model
     include ObjectModel
       
-    attribute :name
-    attribute :name_upcase
+    attr_accessor :action
+    
     attribute :combatant_type
     attribute :weapon
     attribute :weapon_specials, :type => DataType::Array
@@ -24,26 +23,45 @@ module AresMUSH
     reference :combat, "AresMUSH::Combat"
     reference :npc, "AresMUSH::Npc"
 
-    before_save :save_upcase
-    before_delete :clear_mock_damage
+    reference :piloting, "AresMUSH::Vehicle"
+    reference :riding_in, "AresMUSH::Vehicle"
     
+    before_delete :cleanup
+    
+    def cleanup
+      self.clear_mock_damage
+      self.npc.delete if self.npc
+    end
+    
+    def name
+      is_npc? ? self.npc.name : self.character.name
+    end
+    
+    def roll_ability(ability, mod = 0)
+      result = is_npc? ? self.npc.roll_ability(ability, mod) : self.character.roll_ability(ability, mod)
+      result[:successes]
+    end
     
     def targeted_by
       # TODO!!!!
-    end
-    
-    def piloting
-      # TODO!!!
-    end
-    
-    def riding_in
-      # TODO!!!
     end
     
     def client
       self.character ? self.character.client : nil
     end
     
+    def total_damage_mod
+      is_npc? ? FS3Combat.total_damage_mod(self.npc) : FS3Combat.total_damage_mod(self.character)
+    end
+    
+    def inflict_damage(severity, desc, is_stun = false)
+      if (combatant.is_npc?)
+        FS3Combat.inflict_damage(combatant.npc, severity, desc, is_stun, !combatant.combat.is_real)
+      else
+        FS3Combat.inflict_damage(combatant.character, severity, desc, is_stun, !combatant.combat.is_real)
+      end
+    end
+      
     def attack_stance_mod
       case self.stance
       when "Banzai"
@@ -101,15 +119,8 @@ module AresMUSH
     
     def emit(message)
       return if !self.client
-      client_message = message.gsub(/#{self.name}/, "%xh%xy#{self.name}%xn")
+      client_message = message.gsub(/#{self.name}/, "%xh%xc#{self.name}%xn")
       client.emit t('fs3combat.combat_emit', :message => client_message)
-    end
-    
-    private
-   
-    def save_upcase
-      self.name_upcase = !self.name ? "" : self.name.upcase
-      self.npc_skill = self.npc_skill || (rand(3) + 3)
     end
   end
 end

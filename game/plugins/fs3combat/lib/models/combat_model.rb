@@ -1,10 +1,13 @@
 module AresMUSH
   class Character    
-    reference :combatant, "AresMUSH::Combatant"
     collection :damage, "AresMUSH::Damage"
     
     before_delete :delete_damage
       
+    def combatant
+      Combatant.find(character_id: self.id).first
+    end
+    
     def delete_damage
       self.damage.each { |d| d.delete }
     end

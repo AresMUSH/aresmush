@@ -4,8 +4,7 @@ module AresMUSH
       def on_event(event)
         enactor = event.enactor
         return if !enactor.combatant
-        enactor.combatant.posed = true
-        enactor.combatant.save
+        enactor.combatant.update(posed: true)
       end
     end
   end

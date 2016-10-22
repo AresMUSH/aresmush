@@ -30,7 +30,6 @@ module AresMUSH
             return
           end
           FS3Combat.leave_vehicle(combat, combatant)
-          combat.save       
         end
       end
     end

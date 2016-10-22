@@ -45,26 +45,11 @@ module AresMUSH
         combat = FS3Combat.find_combat_by_number(client, self.num)
         return if !combat
         
-        self.names.each_with_index do |n, i|
-          Global.dispatcher.queue_timer(i, "Add to Combat", client) do
-            add_to_combat(combat, n)
-          end
-        end
-      end
-      
-      def add_to_combat(combat, name)
-        if FS3Combat.is_in_combat?(name)
-          client.emit_failure t('fs3combat.already_in_combat', :name => name) 
-          return
-        end
-        
-        result = ClassTargetFinder.find(name, Character, enactor)
-        
         type = self.combatant_type || Global.read_config("fs3combat", "default_type")
-        combatant = FS3Combat.join_combat(combat, name, type, result.target)
-        combat.save
         
-        FS3Combat.set_default_gear(client, combatant, type)
+        self.names.each_with_index do |n, i|
+          FS3Combat.join_combat(combat, n, type, enactor, client)
+        end
       end
     end
   end

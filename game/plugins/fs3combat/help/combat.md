@@ -13,13 +13,14 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 
 `combats` - Lists combats.
 `combat/join <combat #>` - Joins a combat
+`combat/join <combat #>/<type>` - Joins as a special type to auto-set weapons/armor.  See `combat/types`.
 `combat/leave` - Leaves combat.
 
 `combat` - View combat display
 
 `combat/pilot <vehicle>` - Pilots a vehicle
-`combat/passenger <vehicle>` - Become a passenger in a vehicle.
        Use a vehicle type from `vehicles` to create a new vehicle, or a specific vehicle name if one already exists.
+`combat/passenger <vehicle>` - Become a passenger in a vehicle.
 `combat/disembark` - Leaves your vehicle.
 
 `combat/weapon <weapon>[/<comma-separated specials>]` - Set your weapon and 
@@ -30,4 +31,4 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/attack <target>` - Attack someone.
 `combat/pass` - Pass this turn.
 
-**You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Skye.**
+**You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Bob.**

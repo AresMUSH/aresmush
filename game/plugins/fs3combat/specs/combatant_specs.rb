@@ -2,55 +2,13 @@ module AresMUSH
   module FS3Combat
     describe Combatant do
       before do
-        @combatant = Combatant.new
+        @combatant = double
         @char = double
+        @combatant.stub(:name) { "Trooper" }
         @combatant.stub(:character) { @char }
         SpecHelpers.stub_translate_for_testing
       end
       
-      describe :roll_defense do
-        before do
-          @combatant.stub(:total_damage_mod) { 0 }
-          @combatant.stub(:defense_stance_mod) { 0 }
-          @combatant.stub(:weapon_defense_skill) { "Reaction" }
-        end
-        
-        it "should roll the weapon defense stat" do
-          @combatant.should_receive(:roll_ability).with("Reaction", 0)
-          @combatant.roll_defense("Knife")
-        end
-        
-        it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", -1)
-          @combatant.roll_defense("Knife")
-        end
-        
-        it "should account for stance modifiers" do
-          @combatant.stub(:defense_stance_mod) { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", 1)
-          @combatant.roll_defense("Knife")
-        end
-        
-        it "should account for luck spent on defense" do
-          @combatant.stub(:luck) { "Defense" }
-          @combatant.should_receive(:roll_ability).with("Reaction", 3)
-          @combatant.roll_defense("Knife")
-        end
-
-        it "should ignore luck spent on something else" do
-          @combatant.stub(:luck) { "Attack" }
-          @combatant.should_receive(:roll_ability).with("Reaction", 0)
-          @combatant.roll_defense("Knife")
-        end
-        
-        it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { 2 }
-          @combatant.stub(:defense_stance_mod) { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", -1)
-          @combatant.roll_defense("Knife")
-        end
-      end
       
       describe :roll_attack do
         before do
@@ -60,11 +18,12 @@ module AresMUSH
           @combatant.stub(:attack_stance_mod) { 0 }
           @combatant.stub(:is_aiming) { false }
           @combatant.stub(:weapon) { "Knife" }
+          @combatant.stub(:luck)
         end
         
         it "should roll the weapon attack stat" do
           @combatant.should_receive(:roll_ability).with("Knives", 0)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
         
         it "should account for aim modifier if aimed at the same target" do
@@ -75,7 +34,7 @@ module AresMUSH
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 3)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
         
         it "should not apply aim modifier if aimed at a different target" do
@@ -86,43 +45,43 @@ module AresMUSH
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 0)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
         
         
         it "should account for wound modifiers" do
           @combatant.stub(:total_damage_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Knives", -1)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
         
         it "should account for stance modifiers" do
           @combatant.stub(:attack_stance_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Knives", 1)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
         
         it "should account for accuracy modifiers" do
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
 
         it "should account for luck spent on attack" do
           @combatant.stub(:luck) { "Attack" }
           @combatant.should_receive(:roll_ability).with("Knives", 3)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
 
         it "should ignore luck spent on something else" do
           @combatant.stub(:luck) { "Defense" }
           @combatant.should_receive(:roll_ability).with("Knives", 0)
-          @combatant.roll_attack
+          FS3Combat.roll_attack(@combatant)
         end
                 
         it "should account for passed-in modifiers" do
           @combatant.should_receive(:roll_ability).with("Knives", -2)
-          @combatant.roll_attack(-2)
+          FS3Combat.roll_attack(@combatant, -2)
         end
         
         it "should account for multiple modifiers" do
@@ -130,9 +89,56 @@ module AresMUSH
           @combatant.stub(:attack_stance_mod) { 1 }
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
-          @combatant.roll_attack(1)
+          FS3Combat.roll_attack(@combatant, 1)
         end
       end
+      
+      describe :roll_defense do
+        before do
+          @combatant.stub(:total_damage_mod) { 0 }
+          @combatant.stub(:defense_stance_mod) { 0 }
+          @combatant.stub(:luck)
+          FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
+        end
+        
+        it "should roll the weapon defense stat" do
+          FS3Combat.should_receive(:weapon_defense_skill).with(@combatant, "Knife") { "Reaction" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 0)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+        
+        it "should account for wound modifiers" do
+          @combatant.stub(:total_damage_mod) { 1 }
+          @combatant.should_receive(:roll_ability).with("Reaction", -1)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+        
+        it "should account for stance modifiers" do
+          @combatant.stub(:defense_stance_mod) { 1 }
+          @combatant.should_receive(:roll_ability).with("Reaction", 1)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+        
+        it "should account for luck spent on defense" do
+          @combatant.stub(:luck) { "Defense" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 3)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+
+        it "should ignore luck spent on something else" do
+          @combatant.stub(:luck) { "Attack" }
+          @combatant.should_receive(:roll_ability).with("Reaction", 0)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+        
+        it "should account for multiple modifiers" do
+          @combatant.stub(:total_damage_mod) { 2 }
+          @combatant.stub(:defense_stance_mod) { 1 }
+          @combatant.should_receive(:roll_ability).with("Reaction", -1)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+      end
+      
       
       describe :weapon_defense_skill do
         describe "soldiers" do
@@ -144,328 +150,141 @@ module AresMUSH
             FS3Combat.stub(:weapon_stat).with("Pistol", "weapon_type") { "Ranged" }
             FS3Combat.stub(:weapon_stat).with("Pistol", "skill") { "Firearms" }
             FS3Combat.stub(:combatant_type_stat).with("Soldier", "defense_skill") { "Reaction" }
-            @combatant.combatant_type = "Soldier"
+            @combatant.stub(:combatant_type) { "Soldier" }
           end
         
           it "should use defender melee skill for melee vs melee" do
-            @combatant.weapon = "Knife"
-            @combatant.weapon_defense_skill("Sword").should eq "Knives"
+            @combatant.stub(:weapon) { "Knife" }
+            FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Knives"
           end
         
           it "should use defender type default for melee vs ranged" do
-            @combatant.weapon = "Pistol"
-            @combatant.weapon_defense_skill("Sword").should eq "Reaction"
+            @combatant.stub(:weapon) { "Pistol" }
+            FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Reaction"
           end
         
           it "should use defender type default for ranged vs melee" do
-            @combatant.weapon = "Knife"
-            @combatant.weapon_defense_skill("Pistol").should eq "Reaction"
+            @combatant.stub(:weapon) { "Knife" }
+            FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Reaction"
           end
         end            
         
       end
-      describe :do_damage do
-        before do
-          @combat = double
-          @combatant.stub(:combat) { @combat }
-          @combat.stub(:is_real) { true }
+      
+      describe :hitloc_chart do
+        it "should use a soldier's hitloc chart" do
+          @combatant.stub(:combatant_type) { "soldier" }
+          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
+          FS3Combat.should_receive(:hitloc).with("human") { { "areas" => "x" } }
+          FS3Combat.hitloc_chart(@combatant).should eq "x"
+        end
+      end
+    
+      describe :hitloc_severity do
+        before do 
+          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "Human" }
+          FS3Combat.stub(:hitloc).with("Human") { 
+            { "vital_areas" => [ "Abdomen" ], 
+              "critical_areas" => ["head"] }}
+            
+          @combatant.stub(:combatant_type) { "soldier"}
         end
         
-        it "should inflict physical damage on a PC" do
-          FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", false, false) {}
-          @combatant.do_damage("M", "Knife", "Arm")
+        it "should determine severity for a critical area" do
+          FS3Combat.hitloc_severity(@combatant, "Head").should eq "Critical"
         end
 
-        it "should inflict stun damage on a PC" do
-          FS3Combat.stub(:weapon_is_stun?).with("Knife") { true }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true, false) {}
-          @combatant.do_damage("M", "Knife", "Arm")
+        it "should determine severity for a vital area" do
+          FS3Combat.hitloc_severity(@combatant, "ABDOMEN").should eq "Vital"
         end
-        
-        it "should inflict mock damage on a PC" do
-          @combat.stub(:is_real) { false }
-          FS3Combat.stub(:weapon_is_stun?).with("Knife") { true }
-          FS3Combat.should_receive(:inflict_damage).with(@char, "M", "Knife - Arm", true, true) {}
-          @combatant.do_damage("M", "Knife", "Arm")
-        end
-        
-        it "should inflict damage on a NPC" do
-          @combatant.stub(:character) { nil }
-          @combatant.stub(:save) { } 
-          @combatant.do_damage("M", "Knife", "Arm")
-          @combatant.do_damage("L", "Knife", "Leg")
-          @combatant.npc_damage[0].should eq "M"
-          @combatant.npc_damage[1].should eq "L"
+
+        it "should determine severity for a regular area" do
+          FS3Combat.hitloc_severity(@combatant, "Arm").should eq "Normal"
         end
       end
       
-        describe :hitloc_severity do
-          it "should determine severity" do
-            FS3Combat.stub(:combatant_type_stat) { "Human" }
-            FS3Combat.stub(:hitloc).with("Human") { 
-              { "vital_areas" => [ "Abdomen" ], 
-              "critical_areas" => ["head"] }}
-              
-            @combatant.hitloc_severity("Head").should eq "Critical"
-            @combatant.hitloc_severity("ABDOMEN").should eq "Vital"
-            @combatant.hitloc_severity("Arm").should eq "Normal"
-          end
+      describe :determine_hitloc do 
+        before do 
+          FS3Combat.stub(:hitloc_chart) { ["Head", "Arm", "Leg", "Body" ]}
         end
         
-        describe :determine_damage do
-          before do 
-            @combatant.stub(:hitloc_severity).with("Head") { "Normal" }
-            FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
-            @combatant.stub(:rand) { 45 }
-          end
-          
-          it "should determine random damage" do
-            @combatant.determine_damage("Head", "Knife").should eq "M"
-          end
-          
-          it "should account for lethality" do
-            FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 40 }
-            @combatant.determine_damage("Head", "Knife").should eq "S"
-          end
-
-          it "should account for hitloc severity for vital" do
-            FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 25 }
-            @combatant.stub(:hitloc_severity).with("Head") { "Vital" }
-            @combatant.determine_damage("Head", "Knife").should eq "S"
-          end
-
-          it "should account for hitloc severity for critical" do
-            @combatant.stub(:hitloc_severity).with("Head") { "Critical" }
-            FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 10 }
-            @combatant.determine_damage("Head", "Knife").should eq "S"
-          end
-          
-          it "should account for armor" do
-            @combatant.determine_damage("Head", "Knife", 5).should eq "L"
-          end
+        it "should work with random lowest value" do
+          FS3Combat.should_receive(:rand).with(4) { 0 }
+          FS3Combat.determine_hitloc(@combatant, 0).should eq "Head"
         end
         
-        describe :determine_hitloc do 
-          before do 
-            @combatant.stub(:hitloc_chart) { ["Head", "Arm", "Leg", "Body" ]}
-          end
-          
-          it "should work with random lowest value" do
-            @combatant.should_receive(:rand).with(4) { 0 }
-            @combatant.determine_hitloc(0).should eq "Head"
-          end
-          
-          it "should work with random highest value" do
-            @combatant.should_receive(:rand).with(4) { 3 }
-            @combatant.determine_hitloc(0).should eq "Body"
-          end
-          
-          it "should add in successes with lowest random value" do
-            @combatant.should_receive(:rand).with(4) { 0 }
-            @combatant.determine_hitloc(1).should eq "Arm"
-          end
-          
-          it "should add in successes with highest random value" do
-            @combatant.should_receive(:rand).with(4) { 3 }
-            @combatant.determine_hitloc(1).should eq "Body"
-          end
-          
-          it "should work with lowest value and negative modifier" do
-            @combatant.should_receive(:rand).with(4) { 0 }
-            @combatant.determine_hitloc(-2).should eq "Head"
-          end
+        it "should work with random highest value" do
+          FS3Combat.should_receive(:rand).with(4) { 3 }
+          FS3Combat.determine_hitloc(@combatant, 0).should eq "Body"
         end
         
-        describe :roll_ability do
-          it "should roll the specified ability for a PC" do
-            FS3Skills::Api.should_receive(:one_shot_roll).with(nil, @char, anything) do |client, char, params|
-              params.ability.should eq "Firearms"
-              params.modifier.should eq 3
-              params.linked_attr.should be_nil
-              result = { :successes => 2, :success_title => "Foo" }
-              result
-            end
-            @combatant.roll_ability("Firearms", 3).should eq 2
-          end
-        
-          it "should roll just a number for a NPC" do
-            @combatant.stub(:character) { nil }
-            result = { :successes => 2, :success_title => "Foo" }
-            FS3Skills::Api.should_receive(:one_shot_die_roll).with(@combatant.npc_skill + 3) { result }
-            @combatant.roll_ability("Firearms", 3).should eq 2
-          end
+        it "should add in successes with lowest random value" do
+          FS3Combat.should_receive(:rand).with(4) { 0 }
+          FS3Combat.determine_hitloc(@combatant, 1).should eq "Arm"
         end
         
-        describe :roll_initiative do
-          before do
-            @combatant.stub(:roll_ability) { 2 }
-            @combatant.stub(:total_damage_mod) { 0 } 
-          end
-          
-          it "should roll the ability twice and add them together" do
-            @combatant.should_receive(:roll_ability).with("init", 0) { 2 }
-            @combatant.should_receive(:roll_ability).with("init", 0) { 3 }
-            @combatant.roll_initiative("init").should eq 5
-          end
-          
-          it "should remove damage modifiers" do
-            @combatant.should_receive(:roll_ability).with("init", -1) { 2 }
-            @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
-            @combatant.stub(:total_damage_mod) { 1 } 
-            @combatant.roll_initiative("init").should eq 5
-          end
-          
-          it "should account for luck spent on initiative" do
-            @combatant.luck = "Initiative"
-            @combatant.roll_initiative("init").should eq 7
-          end
-
-          it "should ignore luck spent on something else" do
-            @combatant.luck = "Attack"
-            @combatant.roll_initiative("init").should eq 4
-          end
+        it "should add in successes with highest random value" do
+          FS3Combat.should_receive(:rand).with(4) { 3 }
+          FS3Combat.determine_hitloc(@combatant, 1).should eq "Body"
         end
         
-        describe :update_ammo do
-          before do
-            @combatant.stub(:save) {} 
-          end
-          
-          it "should not do anything if the weapon doesn't use ammo" do
-            @combatant.ammo = nil
-            @combatant.update_ammo(1)
-            @combatant.ammo.should be_nil
-          end
-          
-          it "should adjust ammo by the number of bullets" do
-            @combatant.ammo = 15
-            @combatant.update_ammo(3)
-            @combatant.ammo.should eq 12
-          end
+        it "should work with lowest value and negative modifier" do
+          FS3Combat.should_receive(:rand).with(4) { 0 }
+          FS3Combat.determine_hitloc(@combatant, -2).should eq "Head"
         end
-        
-        describe :attack_target do    
-          before do
-            @target = double
-            @target.stub(:name) { "Target" }
-            @combatant.stub(:weapon) { "Knife" }
-            @target.stub(:stance) { "Normal" }
-            @target.stub(:determine_armor) { 0 }
-            FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
-          end
-                
-          it "should dodge if defense roll greater" do
-            @target.stub(:roll_defense) { 2 }
-            @combatant.stub(:roll_attack) { 1 }
-            @combatant.attack_target(@target).should eq "fs3combat.attack_dodged"
-          end
-
-          it "should miss if attack roll fails" do
-            @target.stub(:roll_defense) { 2 }
-            @combatant.stub(:roll_attack) { 0 }
-            @combatant.attack_target(@target).should eq "fs3combat.attack_missed"
-          end
-          
-          describe "cover" do
-            before do
-              @target.stub(:stance) { "Cover" }
-              @target.stub(:roll_defense) { 2 }
-              @target.stub(:do_damage) { }
-              @target.stub(:determine_damage) { }
-              @target.stub(:determine_hitloc) { }
-              
-              # Note:  By seeding the random number generator, we can avoid the randomness.
-              #   22 makes the first random number 4.
-              #   220 makes the first random number 92.
-              Kernel.srand 22
-            end
-            
-            it "should miss cover if margin high enough" do
-              @combatant.stub(:roll_attack) { 5 }
-              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
-            end
-
-            it "should miss cover if margin is low but random die roll high" do
-              Kernel.srand 220
-              @combatant.stub(:roll_attack) { 2 }
-              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
-            end
-
-            it "should hit cover if margin and random die roll low" do
-              @combatant.stub(:roll_attack) { 2 }
-              @combatant.attack_target(@target).should eq "fs3combat.attack_hits_cover"
-            end
-          end
-
-          describe "success" do
-            before do
-              @combatant.stub(:roll_attack) { 3 }
-              @target.stub(:roll_defense) { 2 }              
-              @target.stub(:determine_hitloc) { "Head" }
-              @combatant.stub(:weapon) { "Knife" }
-              FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
-              @target.stub(:do_damage)
-              @target.stub(:determine_damage) { "M" }
-            end
-        
-            describe "armor" do
-              it "should be stopped completely by armor if armor value >= 100" do
-                @target.stub(:determine_armor) { 101 }
-                @target.should_not_receive(:do_damage)
-                @combatant.attack_target(@target).should eq "fs3combat.attack_stopped_by_armor"              
-              end
-            
-              it "should reduce damage by armor if it applies" do
-                @target.stub(:determine_armor) { 10 }
-                @target.should_receive(:determine_damage).with("Head", "Knife", 10) { "M" }
-                @combatant.attack_target(@target).should eq "fs3combat.attack_hits" 
-              end
-            end
-          
-            describe "single fire" do
-              it "should hit if attack roll greater" do
-                @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
-              end
+      end
       
-              it "should determine hitloc based on successes" do
-                @target.should_receive(:determine_hitloc).with(1) { "Body" }
-                @combatant.attack_target(@target)
-              end
+      describe :roll_initiative do
+        before do
+          @combatant.stub(:roll_ability) { 2 }
+          @combatant.stub(:total_damage_mod) { 0 } 
+          @combatant.stub(:luck)
+        end
         
-              it "should inflict damage" do
-                @target.should_receive(:do_damage).with("M", "Knife", "Head")
-                @combatant.attack_target(@target)
-              end
+        it "should roll the init ability" do
+          @combatant.should_receive(:roll_ability).with("init", 0) { 3 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+        end
         
-              it "should calculate damage" do
-                @target.should_receive(:determine_damage).with("Head", "Knife", 0) { "M" }
-                @combatant.attack_target(@target)
-              end
-              
-              it "should inflict recoil" do
-                @combatant.stub(:recoil) { 2 }
-                @combatant.should_receive(:recoil=).with(3)
-                @combatant.attack_target(@target)
-              end
-            end
+        it "should subtract damage modifiers" do
+          @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
+          @combatant.stub(:total_damage_mod) { 1 } 
+          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+        end
         
-            describe "called shot" do              
-              it "should hit the desired location if margin > 2" do
-                @target.stub(:roll_defense) { 0 }
-                @target.should_not_receive(:determine_hitloc)
-                @target.should_receive(:do_damage).with("M", "Knife", "Right Leg")
-                @combatant.attack_target(@target, "Right Leg")
-              end
-          
-              it "should roll random hitloc with penalty if margin <= 2" do
-                @target.should_receive(:determine_hitloc).with(-1) { "Body" }
-                @target.should_receive(:do_damage).with("M", "Knife", "Body")
-                @combatant.attack_target(@target, "Right Leg")
-              end
-            end
-          end
+        it "should account for luck spent on initiative" do
+          @combatant.stub(:luck) {"Initiative"}
+          @combatant.should_receive(:roll_ability).with("init", 3) { 3 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+        end
+
+        it "should ignore luck spent on something else" do
+          @combatant.stub(:luck) {"Attack"}
+          @combatant.should_receive(:roll_ability).with("init", 0) { 1 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 1
+        end
+      end
+      
+      describe :update_ammo do
+      
+        it "should not do anything if the weapon doesn't use ammo" do
+          @combatant.stub(:ammo) { nil }
+          @combatant.should_not_receive(:update)
+          FS3Combat.update_ammo(@combatant, 1).should be_nil
+        end
+      
+        it "should adjust ammo by the number of bullets" do
+          @combatant.stub(:ammo) { 15 }
+          @combatant.should_receive(:update).with(ammo: 12)
+          FS3Combat.update_ammo(@combatant, 3).should be_nil
+        end
+      
+        it "should warn if out of ammo" do
+          @combatant.stub(:ammo) { 4 }
+          @combatant.should_receive(:update).with(ammo: 0)
+          FS3Combat.update_ammo(@combatant, 4).should eq "fs3combat.weapon_clicks_empty"
         end
       end
     end
   end
+end

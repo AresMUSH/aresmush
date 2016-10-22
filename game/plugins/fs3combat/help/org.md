@@ -22,6 +22,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
 `combat/team <name>=<team#>` - Switches teams. 
 
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.
+`combat/ai force` - Auto-targets NPCs even if they have an action set.
 
 `combat/unko` - Un-KO's someone who shouldn't have been
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.

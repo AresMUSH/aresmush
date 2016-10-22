@@ -3,7 +3,8 @@ fs3combat:
     # Default combatant type when joining combat.
     default_type: Soldier
     
-    initiative_ability: Reaction
+    # The system expects this to be a skill.
+    initiative_ability: Composure
     
     combatant_types:
         # For each combatant type, you can specify:
@@ -18,8 +19,8 @@ fs3combat:
         
         Soldier:
             weapon: Rifle
-            #weapon_specials: 
-            #    - Ap
+            weapon_specials: 
+                - Ap
             armor: Tactical
             hitloc: Humanoid
             defense_skill: Reaction
@@ -47,3 +48,4 @@ fs3combat:
         "vehicles": "vehicle"
         "hospitals": "hospital/list"
         "healing": "heal/list"
+        "weapons": "weapon"

@@ -13,8 +13,7 @@ module AresMUSH
 
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
-          combat.leave(self.name)
-          combat.save
+          FS3Combat.leave_combat(combat, combatant)
         end
       end
     end

@@ -35,7 +35,7 @@ module AresMUSH
     end
       
     def find_combatant(name)
-      Combatant.find_one_by_name(c.name).combine(combat_id: self.id).first
+      combatants.select { |c| c.name.downcase == name.downcase }.first
     end
    
     def find_vehicle_by_name(name)
@@ -44,7 +44,7 @@ module AresMUSH
 
     def emit(message, npcmaster = nil)
       message = message + "#{npcmaster}"
-      self.combatants.each { |c| c.emit(message)}
+      self.combatants.each { |c| c.emit(message) }
     end
       
     def emit_to_organizer(message, npcmaster = nil)

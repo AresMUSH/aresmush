@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def title
-        t('fs3combat.combat_hud_header', :num => @combat.num)
+        t('fs3combat.combat_hud_header', :num => @combat.id)
       end
        
       def teams
@@ -52,7 +52,7 @@ module AresMUSH
       end
       
       def vehicles
-        combat.vehicles.sort_by { |v| v.name }
+        combat.vehicles.sort_by(:name, :order => "ALPHA" )
       end
       
       def non_combatants

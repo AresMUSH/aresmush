@@ -67,8 +67,8 @@ module AresMUSH
             roll_params.ability.should eq "Body"
             { :successes => 4 }
           end
-          FS3Combat.should_receive(:heal).with(@damage1, 3)
-          FS3Combat.should_receive(:heal).with(@damage2, 3)
+          FS3Combat.should_receive(:heal).with(@damage1, 2)
+          FS3Combat.should_receive(:heal).with(@damage2, 2)
           FS3Combat.heal_wounds(@char)
         end
         
@@ -93,6 +93,7 @@ module AresMUSH
           doctor.stub(:name) { "Dr. Carter" }
           FS3Combat.stub(:is_in_hospital?) { true }
           @char.stub(:doctors) { [doctor] }
+          FS3Skills::Api.stub(:one_shot_roll) { { :successes => 3 } }
           FS3Combat.should_receive(:heal).with(@damage1, 2)
           FS3Combat.should_receive(:heal).with(@damage2, 2)
           FS3Combat.heal_wounds(@char)
@@ -105,6 +106,7 @@ module AresMUSH
           Global.stub(:read_config).with("fs3combat", "healing_points", "GRAZE") { 5 }
           Global.stub(:read_config).with("fs3combat", "healing_points", "HEAL") { 0 }
           @damage = double
+          @damage.stub(:is_stun) { false }
           @damage.stub(:save)
         end
         
@@ -116,29 +118,34 @@ module AresMUSH
         
         it "should subtract healing points" do
           @damage.stub(:healing_points) { 5 }
-          @damage.should_receive(:healing_points=).with(3)
-          @damage.should_receive(:healed=).with(true)
-          @damage.should_receive(:save) {}
+          @damage.should_receive(:update).with(healing_points: 3)
+          @damage.should_receive(:update).with(healed: true)
+          FS3Combat.heal(@damage, 2)          
+        end
+        
+        it "should triple healing points for a stun wound" do
+          @damage.stub(:healing_points) { 8 }
+          @damage.stub(:is_stun) { true }
+          @damage.should_receive(:update).with(healing_points: 2)
+          @damage.should_receive(:update).with(healed: true)
           FS3Combat.heal(@damage, 2)          
         end
         
         it "should lower severity and reset points when a wound gets enough healing points" do
           @damage.stub(:healing_points) { 2 }
           @damage.stub(:current_severity) { "FLESH" }
-          @damage.should_receive(:current_severity=).with("GRAZE")
-          @damage.should_receive(:healing_points=).with(5)
-          @damage.should_receive(:healed=).with(true)
-          @damage.should_receive(:save) {}
+          @damage.should_receive(:update).with(healing_points: 5)
+          @damage.should_receive(:update).with(healed: true)
+          @damage.should_receive(:update).with(current_severity: "GRAZE")
           FS3Combat.heal(@damage, 2)  
         end
         
         it "should reset healing points for a healed wound" do
           @damage.stub(:healing_points) { 2 }
           @damage.stub(:current_severity) { "GRAZE" }
-          @damage.should_receive(:current_severity=).with("HEAL")
-          @damage.should_receive(:healing_points=).with(0)
-          @damage.should_receive(:healed=).with(true)
-          @damage.should_receive(:save) {}
+          @damage.should_receive(:update).with(healing_points: 0)
+          @damage.should_receive(:update).with(healed: true)
+          @damage.should_receive(:update).with(current_severity: "HEAL")
           FS3Combat.heal(@damage, 3)  
         end
       end
