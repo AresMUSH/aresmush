@@ -74,20 +74,21 @@ module AresMUSH
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 16)} #{left(a.print_rating,20)}"
+        rating_text = "#{a.rating_name}"
+        "#{linebreak}#{left(name, 16)} #{left(rating_text,20)}"
       end
       
       def format_skill(s, i, show_linked_attr = false)
         name = "%xh#{s.name}:%xn"
         linked_attr = show_linked_attr ? print_linked_attr(s) : ""
-        rating_width = show_linked_attr ? 16 : 20
         linebreak = i % 2 == 1 ? "" : "%r"
-        "#{linebreak}#{left(name, 16)} #{linked_attr}#{left(s.print_rating,rating_width)}"
+        rating_text = "#{s.rating_name}#{linked_attr}"
+        "#{linebreak}#{left(name, 16)} #{left(rating_text, 20)}"
       end
       
       def print_linked_attr(skill)
         apt = FS3Skills.get_linked_attr(skill.name)
-        !apt ? "" : "%xh%xx#{apt[0..2].upcase}+%xn"
+        !apt ? "" : " %xh%xx(#{apt[0..2].upcase})%xn"
       end
     end
   end

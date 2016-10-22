@@ -20,8 +20,9 @@ module AresMUSH
         end
   
         it "should return a die result for a plain number" do
-          FS3Skills.stub(:roll_dice).with(2) { [1, 2] }
-          FS3Skills.parse_and_roll(@client, @char, "2").should eq [1, 2]
+          # Note - automatically factors in a default linked attr and die multiplier
+          FS3Skills.stub(:roll_dice).with(5) { [1, 2, 3, 4, 5] }
+          FS3Skills.parse_and_roll(@client, @char, "2").should eq [1, 2, 3, 4, 5]
         end
   
         it "should parse results and roll the ability for any other string" do
@@ -100,9 +101,11 @@ module AresMUSH
 
           FS3Skills.stub(:get_ability_type).with("Firearms") { :action }
           FS3Skills.stub(:get_ability_type).with("Brawn") { :attribute }
+          FS3Skills.stub(:get_ability_type).with("Reflexes") { :attribute }
           FS3Skills.stub(:get_ability_type).with("English") { :language }
           FS3Skills.stub(:get_ability_type).with("Basketweaving") { :background }
           FS3Skills.stub(:get_ability_type).with("Untrained") { :background }
+          FS3Skills.stub(:get_ability_type).with(nil) { :background }
           
           FS3Skills.stub(:ability_rating).with(@char, "Untrained") { 0 }
           FS3Skills.stub(:ability_rating).with(@char, "Firearms") { 1 }
@@ -121,16 +124,22 @@ module AresMUSH
         it "should roll ability alone" do
           roll_params = RollParams.new("Firearms")
           # Rolls Firearms + Reflexes 
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 3
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 4
         end
       
         it "should roll ability + a different ruling attr" do
           roll_params = RollParams.new("Firearms", 0, "Brawn")
           # Rolls Firearms + Brawn
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 5
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
         end
         
         it "should roll attr + ability" do
+          roll_params = RollParams.new("Brawn", 0, "Firearms")
+          # Rolls Brawn + Firearms
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
+        end
+
+        it "should roll attr + attr" do
           roll_params = RollParams.new("Brawn", 0, "Reflexes")
           # Rolls Brawn + Reflexes
           FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
@@ -138,55 +147,49 @@ module AresMUSH
         
         it "should roll ability + ability" do
           roll_params = RollParams.new("Firearms", 0, "Firearms")
-          # Rolls Firearms + Basketweaving
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 2
+          # Rolls Firearms + Firearms
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 4
         end
         
         it "should roll twice a background skill" do 
           roll_params = RollParams.new("Basketweaving")
           # Rolls Basketweaving*2 + Reflexes
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 8
         end
         
         it "should roll twice a language skill" do 
           roll_params = RollParams.new("English")
           # Rolls English*2 + Reflexes
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 8
-        end
-        
-        it "should roll attr + attr" do
-          roll_params = RollParams.new("Brawn", 0, "Firearms")
-          # Rolls Firearms + Brawn
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 5
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 11
         end
         
         it "should roll ability + modifier" do
           roll_params = RollParams.new("Firearms", 1)
           # Rolls Firearms + Reflexes + 1
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 4
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 5
         end
       
         it "should roll ability - modifier" do
           roll_params = RollParams.new("Firearms", -1)
           # Rolls Firearms + Reflexes - 1 
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 2
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 3
         end
       
         it "should roll ability + ruling attr + modifier" do
           roll_params = RollParams.new("Firearms", 3, "Brawn")
           # Rolls Firearms + Brawn + 3 
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 8
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 9
         end
         
         it "should roll everyman for an attribute" do
           roll_params = RollParams.new("Brawn")
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 5
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 7
         end
         
         it "should roll everyman for nonexistant bg skill" do
           roll_params = RollParams.new("Untrained")
           # Rolls everyman (1) + Brawn
-          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 5
+          FS3Skills.dice_to_roll_for_ability(@char, roll_params).should eq 6
         end
         
         it "should roll zero for nonexistant lang skill" do

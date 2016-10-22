@@ -8,6 +8,7 @@ module AresMUSH
       
       skill_rating = FS3Skills.ability_rating(char, ability)
       ability_type = FS3Skills.get_ability_type(ability)
+      linked_attr_type = FS3Skills.get_ability_type(linked_attr)
       
       # Language doubles dice except 0 = 0
       if (ability_type == :language)
@@ -16,11 +17,18 @@ module AresMUSH
       elsif (ability_type == :background)
         skill_rating = skill_rating == 0 ? 1 : skill_rating * 2
       elsif (ability_type == :attribute && !linked_attr)
-        skill_rating = skill_rating + 1
+        skill_rating = 1
+        linked_attr = ability
       end
       
       apt_rating = linked_attr ? FS3Skills.ability_rating(char, linked_attr) : 0
       
+      if (ability_type != :attribute)
+        skill_rating = (skill_rating * 1.5).ceil
+      end
+      if (linked_attr_type != :attribute)
+        apt_rating = (apt_rating * 1.5).ceil
+      end
       dice = skill_rating + apt_rating + modifier
       Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} linked_attr=#{linked_attr} apt=#{apt_rating}"
       
@@ -32,7 +40,8 @@ module AresMUSH
     # out the pieces, and then makes the roll.
     def self.parse_and_roll(client, char, roll_str)
       if (roll_str.is_integer?)
-        die_result = FS3Skills.roll_dice(roll_str.to_i)
+        dice = (roll_str.to_i * 1.5) + 2
+        die_result = FS3Skills.roll_dice(dice)
       else
         roll_params = FS3Skills.parse_roll_params roll_str
         if (!roll_params)

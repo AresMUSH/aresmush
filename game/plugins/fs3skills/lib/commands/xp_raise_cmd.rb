@@ -47,9 +47,7 @@ module AresMUSH
         
         if (FS3Skills.set_ability(client, enactor, self.name, current_rating + 1))
           Global.logger.info "XP Spend: #{enactor_name} raised #{self.name} to #{current_rating + 1}."
-          enactor.xp = enactor.xp - cost
-          enactor.last_xp_spend = Time.now
-          enactor.save
+          enactor.spend_xp(cost)
         end
       end
     end

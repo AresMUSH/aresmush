@@ -25,3 +25,5 @@ You may specify an aptitude directly if you want to use a different ruling aptit
 You may roll an aptitude by itself if you are defaulting to the "Everyman" ability for common knowledge (e.g. roll Mind)
 
 You can apply a + or - modifier.  The modifier increases or decreases your ability rating, adding or subtracting dice.  (e.g. roll Firearms-1)
+
+For NPCs, you can specify a skill rating (e.g. roll 4).  Note that the code automatically factors in an average attribute.
