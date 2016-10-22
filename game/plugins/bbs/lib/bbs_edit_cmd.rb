@@ -32,9 +32,8 @@ module AresMUSH
           if (!self.new_text)
             Utils::Api.grab client, enactor, "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
-            post.message = self.new_text
+            post.update(message: self.new_text)
             post.mark_unread
-            post.save
             Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, 
             :board => board.name, 
             :reference => post.reference_str,

@@ -16,9 +16,8 @@ module AresMUSH
         
         if (self.set)
           if (scene_set)
-            scene_set.set = self.set
-            scene_set.time = Time.now
-            scene_set.save
+            scene_set.update(set: self.set)
+            scene_set.update(time: Time.now)
           else
             scene_set = SceneSet.create(room: room, set: self.set, time: Time.now)
             room.update(scene_set: scene_set)

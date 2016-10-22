@@ -34,10 +34,9 @@ module AresMUSH
           
           
           @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
-          @char.should_receive(:autospace=).with("x")
-          @char.should_receive(:timezone=).with("t")
+          @char.should_receive(:update).with({:autospace => "x"})
+          @char.should_receive(:update).with({:timezone => "t"})
           @handle.should_receive(:update).with(friends: "f")
-          @char.should_receive(:save)
           @client.should_receive(:emit_success).with("handles.handle_synced")
           @handler.on_event(@event)
         end

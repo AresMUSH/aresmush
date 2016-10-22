@@ -93,7 +93,6 @@ module AresMUSH
             board.write_roles.each { |r| board.write_roles.delete r }
             roles.each { |r| board.write_roles.add r }
           end
-          board.save
           client.emit_success t('bbs.roles_set')
         end
       end

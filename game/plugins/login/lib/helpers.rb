@@ -18,10 +18,9 @@ module AresMUSH
     
     def self.update_site_info(client, char)
       status = char.get_or_create_login_status
-      status.last_ip = client.ip_addr
-      status.last_hostname = client.hostname.downcase
-      status.last_on = Time.now
-      status.save
+      status.update(last_ip: client.ip_addr)
+      status.update(last_hostname: client.hostname.downcase)
+      status.update(last_on: Time.now)
     end
     
     def self.is_site_match?(char, ip, hostname)

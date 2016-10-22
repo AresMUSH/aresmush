@@ -37,7 +37,6 @@ module AresMUSH
           if (!char.has_role?(self.role))
             Global.logger.info "#{enactor_name} added role #{self.role} to #{self.name}."     
             char.roles.add Role.find_one_by_name(self.role)
-            char.save
           end
           client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role.downcase)
           Global.dispatcher.queue_event RolesChangedEvent.new(char)

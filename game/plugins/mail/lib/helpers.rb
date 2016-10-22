@@ -115,7 +115,7 @@ module AresMUSH
         delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
         tags = []
         if (r == author)
-          delivery.read = true
+          delivery.update(read: true)
           if (copy_sent)
             tags << Mail.sent_tag
           else
@@ -124,8 +124,7 @@ module AresMUSH
         else
           tags << Mail.inbox_tag
         end
-        delivery.tags = tags
-        delivery.save
+        delivery.update(tags: tags)
         
         receive_client = r.client
         if (receive_client && receive_client != client)

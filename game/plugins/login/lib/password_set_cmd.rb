@@ -32,7 +32,6 @@ module AresMUSH
           return 
         end
         enactor.change_password(self.new_password)
-        enactor.save
         client.emit_success t('login.password_changed')
       end
       

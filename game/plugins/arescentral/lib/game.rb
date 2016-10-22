@@ -22,9 +22,8 @@ module AresMUSH
       
       if (response.is_success?)
         game = Game.master
-        game.api_key = response.data["api_key"]
-        game.api_game_id = response.data["game_id"]
-        game.save
+        game.update(api_key: response.data["api_key"])
+        game.update(api_game_id: response.data["game_id"])
         Global.logger.info "Game registration created."
       else
         raise "Response failed: #{response}"

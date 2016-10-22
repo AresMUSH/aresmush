@@ -37,7 +37,6 @@ module AresMUSH
         
           role = Role.find_one_by_name(self.role)
           char.roles.delete role
-          char.save
           client.emit_success t('roles.role_removed', :name => self.name, :role => self.role.downcase)
           Global.dispatcher.queue_event RolesChangedEvent.new(char)
         end

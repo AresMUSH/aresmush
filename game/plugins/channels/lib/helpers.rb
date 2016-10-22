@@ -60,7 +60,6 @@ module AresMUSH
     def self.leave_channel(char, channel)
       channel.emit t('channels.left_channel', :name => char.name)
       channel.characters.delete char
-      channel.save
     end
     
     def self.channel_for_alias(char, channel_alias)  
@@ -183,7 +182,6 @@ module AresMUSH
         end
 
         channel.characters << char
-        channel.save
         channel.emit t('channels.joined_channel', :name => char.name)
       end
     end

@@ -6,7 +6,6 @@ module AresMUSH
         default_roles.each do |role|
           event.char.roles.add Role.find_one(name: role)
         end
-        event.char.save
       end
     end
   end

@@ -103,7 +103,6 @@ module AresMUSH
               Channels.leave_channel(c, channel)
             end
           end
-          channel.save
           client.emit_success t('channels.roles_set')
         end
       end

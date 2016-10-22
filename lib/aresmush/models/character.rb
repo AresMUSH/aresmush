@@ -64,7 +64,7 @@ module AresMUSH
     end
     
     def change_password(raw_password)
-      self.password_hash = Character.hash_password(raw_password)
+      self.update(password_hash: Character.hash_password(raw_password))
     end
 
     def self.check_password(password)

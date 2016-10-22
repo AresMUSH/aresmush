@@ -16,12 +16,14 @@ module AresMUSH
     describe :compare_password do
       it "should return true if passwords match" do
         char = Character.new
+        char.stub(:save) {}
         char.change_password("existing_pw")
         char.compare_password("existing_pw").should be_true
       end
       
       it "should return false if passwords don't match" do
         char = Character.new
+        char.stub(:save) {}
         char.change_password("existing_pw")
         char.compare_password("other_password").should be_false
       end

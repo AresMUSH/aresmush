@@ -24,18 +24,16 @@ module AresMUSH
         if (!job)
           if (cmd.switch_is?("confirm"))
             job = create_job
-            info.approval_job = job
-            info.locked = true
+            info.update(locked: true)
+            info.update(approval_job: job)
             client.emit_success t('chargen.app_submitted')
           else
             client.emit_ooc t('chargen.app_confirm')
           end
         else
-          update_job(job)
-          info.locked = true
+          info.update(locked: true)
           client.emit_success t('chargen.app_resubmitted')
         end
-        info.save
       end
       
       

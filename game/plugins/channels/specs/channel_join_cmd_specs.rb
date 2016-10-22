@@ -65,7 +65,6 @@ module AresMUSH
         
           it "should add the char to the channel" do
             @chars_stub.should_receive(:<<).with(@char) {}
-            @channel.should_receive(:save)
             Channels.join_channel("pub", @client, @char, "p")
           end
         end
