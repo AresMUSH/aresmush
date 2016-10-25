@@ -39,7 +39,7 @@ module AresMUSH
       def room(char)
         Who.who_room_name(char)
       end 
-      
+
       def handle(char)
         char.handle ? "@#{char.handle.name}" : ""
       end

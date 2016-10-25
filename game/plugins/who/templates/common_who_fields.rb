@@ -24,7 +24,7 @@ module AresMUSH
       def online_record
         t('who.online_record', :count => Game.master.online_record)
       end
-    
+
       def mush_name
         Global.read_config("game", "name")
       end
