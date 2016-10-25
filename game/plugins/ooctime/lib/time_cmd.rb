@@ -7,7 +7,7 @@ module AresMUSH
       include CommandWithoutArgs
            
       def handle
-        template = TimeTemplate.new(client)
+        template = TimeTemplate.new(enactor)
         client.emit template.render
       end
     end

@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def handle        
-        hook = enactor.fs3_hooks.find(name: self.name)
+        hook = enactor.fs3_hooks.find(name: self.name).first
         if (!hook)          
           client.emit_failure t('fs3skills.hook_not_found', :name => self.name)
         else

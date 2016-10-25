@@ -20,20 +20,29 @@ module AresMUSH
         char.group_value("Faction")
       end
 
-      # How long a character's been idle, like 20m
+      def position(char)
+        char.group_value("Position")
+      end
+
+      def department(char)
+        char.group_value("Department")
+      end
+      
       def idle(char)
         TimeFormatter.format(char.client.idle_secs)
       end   
 
-      # How long a character's been connected, like 3h
       def connected(char)
         TimeFormatter.format(char.client.connected_secs)
       end   
 
-      # Name of the room the character is in.
       def room(char)
         Who.who_room_name(char)
       end 
+      
+      def handle(char)
+        char.handle ? "@#{char.handle.name}" : ""
+      end
     end
   end
 end

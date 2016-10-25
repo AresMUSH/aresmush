@@ -52,6 +52,8 @@ chargen:
             help: 'info'
         demographics:
             help: demographics
+        ranks:
+            help: ranks
         groups:
             help: groups
         background:

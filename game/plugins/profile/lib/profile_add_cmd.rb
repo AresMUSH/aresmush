@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def handle
-        field = ProfileField.find(name: self.field).first
+        field = ProfileField.find(name: self.field).combine(character_id: enactor.id).first
         if (field)
           field.update(data: self.value)
         else

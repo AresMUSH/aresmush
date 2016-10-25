@@ -29,7 +29,7 @@ At any time you can check your current status and progress using the `sheet` and
 
 Use the Abilities command to see the ratings, available abilities and descriptions.
 
-`abilities` - Everything you want to know about abilities.
+`abilities` - Lists abilities.
 
 There are two ways to adjust your abilities:   
 

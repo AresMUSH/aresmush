@@ -32,6 +32,7 @@ module AresMUSH
           end
         else
           info.update(locked: true)
+          update_job(job)
           client.emit_success t('chargen.app_resubmitted')
         end
       end

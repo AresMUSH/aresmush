@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def handle
-        list = ActorRegistry.all.sort { |a,b| a.charname <=> b.charname }        
+        list = ActorRegistry.all.sort_by(:charname, order: "ALPHA")
         paginator = Paginator.paginate(list, self.page, 15)
         
         if (paginator.out_of_bounds?)

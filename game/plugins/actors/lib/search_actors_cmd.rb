@@ -20,8 +20,8 @@ module AresMUSH
       end
         
       def handle
-        list = ActorRegistry.all.select { |a| is_match?(a) }
-        list = list.sort { |a,b| a.charname <=> b.charname }
+        list = ActorRegistry.all.sort_by(:charname, order: "ALPHA")
+        list = list.select { |a| is_match?(a) }
         paginator = Paginator.paginate(list, 1, 100)
         
         if (paginator.out_of_bounds?)

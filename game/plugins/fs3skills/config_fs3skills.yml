@@ -100,7 +100,7 @@ fs3skills:
             specialties:
                 - Viper
                 - Raptor
-                - Shuttle
+                - Freighter
                 - Other
         - 
             name: Stealth
@@ -143,7 +143,7 @@ fs3skills:
     min_backgrounds: 1
     min_hooks: 1
     
-    max_ap: 40
+    max_ap: 45
     
     max_skills_above_4: 3
     max_skills_above_6: 1
@@ -229,10 +229,18 @@ fs3skills:
             Medical Staff:
                 skills:
                     Medicine: 3
-            Deckhand:
+            Deck Crew:
                 skills:
                     Technician: 3
             Other:
+
+        Colony:
+            Tauron:
+                skills:
+                    Tauran: 3
+            Leonis:
+                skills:
+                    Leonese: 3
 
         # Example of how you can use factions or other groups to set additional skills.
         #Faction:

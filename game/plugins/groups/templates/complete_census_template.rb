@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def position(char)
-        char.group("Position")
+        char.group_value("Position")
       end
     end
   end

@@ -43,10 +43,10 @@ ranks:
                 
         Marines:
             Officer:
-                Ensign: true
-                Lieutenant JG: true
-                Lieutenant: true
-                Captain: true
+                Ensign: false
+                Lieutenant JG: false
+                Lieutenant: false
+                Captain: false
                 Major: false
                 Colonel: false
                 Commander: false

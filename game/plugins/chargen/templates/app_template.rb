@@ -7,6 +7,7 @@ module AresMUSH
       
       def initialize(char, enactor)
         @char = char
+        @enactor = enactor
         super File.dirname(__FILE__) + "/app.erb" 
       end
       
@@ -43,7 +44,7 @@ module AresMUSH
         job = Chargen.approval_job(@char)
         if (job)
           number =job.number
-          if (@enactor.name == @char.name)
+          if (@enactor == @char)
             return t('chargen.app_request', :job => number)
           else
             return t('chargen.app_job', :job => number)

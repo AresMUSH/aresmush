@@ -87,7 +87,7 @@ module AresMUSH
       
       char.fs3_action_skills.each do |a|
         config = FS3Skills.action_skill_config(a.name)
-        if (config['specialties'] && a.specialties.empty?)
+        if (config['specialties'] && a.specialties.empty? && a.rating > 2)
           missing << t('fs3skills.missing_specialty', :skill => a.name)
         end
       end

@@ -23,10 +23,10 @@ groups:
         Department:
             desc: "The ship is divided into several departments.  See the wiki for details."
             values:
-                Air Wing: "Viper and Raptor crews keeping the skies clear. (Officers only)"
+                Air Wing: "Viper and Raptor crews and deckhands. (Officers and Enlisted)"
                 Medical: "Patching up the holes. (Officers and Enlisted)"
                 Marines: "Boots on the ground. (Enlisted only)"
-                Other: "Engineering or operations departments. (Officers and Enlisted)"
+                Operations: "Support personnel - CIC, engineering, weapons, etc. (Officers and Enlisted)"
         Colony:
             desc: "Your character's home world."
             values:
@@ -57,7 +57,7 @@ groups:
                 Nurse: "Navy nurse."
                 Corpsman: "Navy medic."
                 Medical Support: "Other medical personnel."
-                Deckhand: "Deck crew."
+                Deck Crew: "Air wing support/maintenance personnel."
                 Other: "Any other position."
             
     shortcuts:

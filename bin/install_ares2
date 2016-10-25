@@ -1,0 +1,19 @@
+echo "(setq make-backup-files nil)" > ~/.emacs
+
+command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+
+\curl -sSL https://get.rvm.io | bash -s stable --rails
+
+source /home/ares/.rvm/scripts/rvm
+
+rvm use ruby-2.3.0
+
+git clone https://github.com/lynnfaraday/aresmush.git
+
+cd aresmush
+
+git checkout redis
+
+bin/configure
+
+bin/init
