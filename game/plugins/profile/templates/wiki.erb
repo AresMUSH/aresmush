@@ -1,8 +1,10 @@
-[[include characterbox]]
+[[include characterbox
 |image=
 |actor=<%= actor %>
+|title=<%= rank %> <%= fullname %>
 |fullname=<%=  fullname %>
-|age=<%=  age %>"
+|age=<%=  age %>
+|birthdate=<%= birthdate %>
 |alias=[!-- Aliases or nicknames --]
 |colony=<%=  colony %>
 |department=<%=  department %>
@@ -15,17 +17,64 @@
 |hair=<%=  hair %>
 ]]
 
-+ Background
+[[tabview]]
+[[tab +]]
+[[=]]
+[[span class="tab-cover"]]Service Record[[/span]]
+[[/=]]
+[[/tab]]
+
+[[tab Background]]
+
+Short summary
+
+[[collapsible show="+ Show Full Background" hide="- Hide Full Background"]]
+
 <%= background %>
 
-+ RP Hooks
+[[/collapsible]]
+
+[[/tab]]
+
+[[tab Military Service]]
+[[/tab]]
+
+[[tab Distinguishing Marks]]
+[[/tab]]
+
+[[tab Family]]
+[[/tab]]
+[[/tabview]]
+
+
+[[# Supplemental]]
+[[tabview]]
+[[tab +]]
+[[=]]
+[[span class="tab-cover"]]Supplemental Information[[/span]]
+[[/=]]
+[[/tab]]
+
+[[tab Common Knowledge]]
+[[/tab]]
+
+[[tab RP Hooks]]
 <%= hooks %>
+[[/tab]]
 
-+ IC Events
-[[include LogList name=<%= char.name %>]]
 
-+ Relationships
-[[include RelationshipsTop]]
+[[/tabview]]
+
+[[# Relationships]]
+[[tabview]]
+[[tab +]]
+[[=]]
+[[span  class="tab-cover"]]Relationships[[/span]]
+[[/=]]
+[[/tab]]
+
+[[tab Friends]]
+
 [[include RelationshipBox
 | name=<mush name here>
 | relationship=**<Relation>** - <describe relationship>
@@ -35,7 +84,17 @@
 | name=<Name>
 | relationship=**<Relation>** - <describe relationship>
 ]]
-[[include RelationshipsBottom]]
 
-+ Gallery
+[[/tab]]
+
+[[tab Associates]]
+[[/tab]]
+
+[[tab Other]]
+[[/tab]]
+[[/tabview]]
+
+
+[[include LogList name=<%= char.name %>]]
+
 [[gallery]]
