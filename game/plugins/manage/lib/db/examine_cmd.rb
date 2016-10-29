@@ -20,18 +20,27 @@ module AresMUSH
       end
       
       def handle
-        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
-
-          if (!Manage.can_manage_object?(enactor, model))
-            client.emit_failure t('dispatcher.not_allowed')
+        search = VisibleTargetFinder.find(self.target, enactor)
+        if (search.found?)
+          model = search.target
+        else
+          search = AnyTargetFinder.find(self.target, enactor)
+          if (!search.found?)
+            client.emit_failure search.error
             return
           end
-
-          line = "-".repeat(78)
-          json = model.print_json
-          
-          client.emit_raw "#{line}\n#{json}#{}\n#{line}"
+          model = search.target
         end
+        
+        if (!Manage.can_manage_object?(enactor, model))
+          client.emit_failure t('dispatcher.not_allowed')
+          return
+        end
+
+        line = "-".repeat(78)
+        json = model.print_json
+        
+        client.emit_raw "#{line}\n#{model.name}\n\n#{json}#{}\n#{line}"
       end
       
       def print_model

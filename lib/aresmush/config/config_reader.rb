@@ -12,7 +12,7 @@ module AresMUSH
     end
 
     def self.config_files
-      Dir[File.join(ConfigReader.config_path, "**")]
+      Dir[File.join(ConfigReader.config_path, "**", "*.yml")]
     end
 
     def get_config(section_name, key = nil, subkey = nil)
