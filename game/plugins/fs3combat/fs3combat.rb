@@ -148,6 +148,8 @@ module AresMUSH
          return CombatListCmd
        when "combat"
          case cmd.switch
+         when "all", "list"
+           return CombatListCmd
          when "armor"
            return CombatArmorCmd
          when "hitlocs"

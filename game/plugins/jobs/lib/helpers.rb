@@ -112,8 +112,10 @@ module AresMUSH
         JobReadMark.find(job_id: job.id).each { |j| j.delete }
         JobReadMark.create(job: job, character: author)
         
-        if (Jobs.can_access_jobs?(other_char) || (notify_submitter && (other_char == job.author)))
+        if (Jobs.can_access_jobs?(other_char))
           other_client.emit_ooc message
+        elsif (notify_submitter && (other_char == job.author))
+          other_client.emit_ooc message + "  " + t('jobs.requests_cmd_hint')
         end
       end
     end

@@ -26,6 +26,21 @@ module AresMUSH
       type_config[stat]
     end
     
+    # Finds a character, vehicle or NPC by name
+    def self.find_named_thing(name, enactor)
+      result = ClassTargetFinder.find(name, Character, enactor)
+      if (result.found?)
+        return result.target
+      end
+      
+      combatant = enactor.combatant
+      if (!combatant)
+        return nil
+      end
+      
+      return combatant.combat.find_named_thing(name)
+    end
+    
     def self.get_initiative_order(combat)
       ability = Global.read_config("fs3combat", "initiative_ability")
       order = []

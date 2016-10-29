@@ -11,9 +11,13 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          template = DamageTemplate.new(model)
+        target = FS3Combat.find_named_thing(self.name, enactor)
+            
+        if (target)
+          template = DamageTemplate.new(target)
           client.emit template.render
+        else 
+          client.emit_failure t('dispatcher.not_found')
         end
       end
     end

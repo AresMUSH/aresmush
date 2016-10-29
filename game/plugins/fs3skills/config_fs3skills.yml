@@ -265,3 +265,4 @@ fs3skills:
         "hooks": "hook"
         "hook/delete": "hook/remove"
         "spec": "specialty"
+        "sheet2": "profile"

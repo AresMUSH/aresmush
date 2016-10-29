@@ -6,8 +6,7 @@ module AresMUSH
       if (existing)
         return existing
       elsif (FS3Combat.vehicles.include?(name))
-        random_name = name + '-' + [*('A'..'Z')].shuffle[0,2].join + [*('0'..'9')].shuffle[0,4].join
-        Vehicle.create(combat: combat, name: random_name, vehicle_type: name)
+        Vehicle.create(combat: combat, vehicle_type: name)
       else
         return nil
       end
@@ -26,11 +25,9 @@ module AresMUSH
         if (old_pilot && old_pilot != combatant)
           old_pilot.update(piloting: nil)
           old_pilot.update(riding_in: vehicle)
-          vehicle.passengers.add old_pilot
         end
         combat.emit t('fs3combat.new_pilot', :name => combatant.name, :vehicle => vehicle.name)
       else
-        vehicle.passengers.add combatant
         combatant.update(riding_in: vehicle)
         combat.emit t('fs3combat.new_passenger', :name => combatant.name, :vehicle => vehicle.name)
       end
@@ -43,7 +40,6 @@ module AresMUSH
          combatant.update(piloting: nil)
        else
          vehicle = combatant.riding_in
-         vehicle.passengers.delete combatant
          combatant.update(riding_in: nil)
        end
        combat.emit t('fs3combat.disembarks_vehicle', :name => combatant.name, :vehicle => vehicle.name)

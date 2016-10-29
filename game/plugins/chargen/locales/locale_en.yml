@@ -46,6 +46,7 @@ en:
         bg_not_set: "No background available."
         background_review: "Checking that you have a background."
         no_permission_to_view_bg: "You don't have permission to view that background."
+        accidental_view_bg: "Pretty sure you meant to use bg/set."
         
         app_job_submitted: "App submitted."
         app_job_resubmitted: "App re-submitted."

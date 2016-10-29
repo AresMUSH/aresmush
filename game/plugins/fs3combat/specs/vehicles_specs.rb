@@ -23,14 +23,11 @@ module AresMUSH
         end
   
         it "should add a new vehicle" do
-          # This random seed guarantees the Viper # will always be UT7045
-          Kernel.srand 22
           Global.stub(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
           @instance.stub(:find_vehicle_by_name).with("Viper") { nil }
           v = double
           Vehicle.stub(:create) do |args|
             args[:combat].should eq @instance
-            args[:name].should eq "Viper-UT7045"
             args[:vehicle_type].should eq "Viper"
             v
           end
@@ -43,7 +40,6 @@ module AresMUSH
           @vehicle = double
           @combat = double
           @combatant = double
-          @passenger_list = double
           
           @vehicle.stub(:name) { "Viper-1" }
           @combatant.stub(:name) { "Bob" }
@@ -52,7 +48,6 @@ module AresMUSH
           @vehicle.stub(:vehicle_type) { "Viper" }
           @combat.stub(:emit)
           @vehicle.stub(:update)
-          @vehicle.stub(:passengers) { @passenger_list }
 
           FS3Combat.stub(:set_weapon)
           FS3Combat.stub(:vehicle_stat) { [] }
@@ -66,14 +61,12 @@ module AresMUSH
             old_pilot.should_receive(:update).with(piloting: nil)
             old_pilot.should_receive(:update).with(riding_in: @vehicle)
             @vehicle.should_receive(:update).with(pilot: @combatant)
-            @passenger_list.should_receive(:add).with(old_pilot)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
           
           it "should not move pilot if they're the same as the old pilot" do
             @vehicle.stub(:pilot) { @combatant }
             @vehicle.should_receive(:update).with(pilot: @combatant)
-            @passenger_list.should_not_receive(:add)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
           
@@ -95,11 +88,6 @@ module AresMUSH
         end
         
         describe "passenger" do
-          it "should add passenger to the list" do
-            @passenger_list.should_receive(:add).with(@combatant)
-            FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
-          end
-          
           it "should update the pilot's vehicle stat" do
             @passenger_list.stub(:add)
             @combatant.should_receive(:update).with(riding_in: @vehicle)
@@ -119,14 +107,12 @@ module AresMUSH
           @vehicle = double
           @combat = double
           @combatant = double
-          @passenger_list = double
         
           @vehicle.stub(:name) { "Viper-1" }
           @combatant.stub(:name) { "Bob" }
           @combat.stub(:emit)
           @combatant.stub(:update)
           @vehicle.stub(:update)
-          @vehicle.stub(:passengers) { @passenger_list }
         end
       
         it "should remove a pilot" do
@@ -146,7 +132,6 @@ module AresMUSH
           @combatant.stub(:piloting) { nil }
           @combatant.stub(:riding_in) { @vehicle }
           @combatant.should_receive(:update).with(riding_in: nil)
-          @passenger_list.should_receive(:delete).with(@combatant)
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
       end

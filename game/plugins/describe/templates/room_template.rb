@@ -89,7 +89,7 @@ module AresMUSH
       end
       
       def char_shortdesc(char)
-        char.shortdesc ? " - #{char.shortdesc}" : ""
+        char.shortdesc ? " - #{char.shortdesc.description}" : ""
       end
       
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,

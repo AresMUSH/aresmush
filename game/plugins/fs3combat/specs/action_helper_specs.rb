@@ -2,37 +2,127 @@ module AresMUSH
   module FS3Combat
     describe FS3Combat do
       
+      describe :reset_actions do
+        before do 
+          @combatant = double
+          @combatant.stub(:name) { "Trooper" }
+          @combatant.stub(:update)
+          @combatant.stub(:is_aiming) { false }
+        end
+        
+        it "should reset posed" do
+          @combatant.should_receive(:update).with(posed: false)
+          FS3Combat.reset_actions(@combatant)
+        end
+        
+        it "should reset recoil" do
+          @combatant.should_receive(:update).with(recoil: 0)
+          FS3Combat.reset_actions(@combatant)
+        end
+        
+        it "should reset aiming if they aren't still aiming" do 
+          @combatant.stub(:is_aiming) { true }
+          @combatant.stub(:action) { AttackAction.new(@combatant) }
+          @combatant.should_receive(:update).with(is_aiming: false)
+          FS3Combat.reset_actions(@combatant)
+        end
+
+        it "should not reset aiming if they're still aiming" do 
+          @combatant.stub(:is_aiming) { true }
+          @combatant.stub(:action) { AimAction.new(@combatant) }
+          @combatant.should_not_receive(:update).with(is_aiming: false)
+          FS3Combat.reset_actions(@combatant)
+        end
+      end
+      
+      describe :ai_action do
+        before do
+          @combatant = double
+          @client = double
+          @combat = double
+          @combatant.stub(:ammo) { nil }
+        end
+        
+        it "should choose reload if out of ammo" do
+          @combatant.stub(:ammo) { 0 }
+          FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::ReloadAction, "")
+          FS3Combat.ai_action(@combat, @client, @combatant)
+        end
+
+        describe "attack" do
+          before do
+            @target1 = double
+            @target2 = double
+            @target2.stub(:name) { "Bob" }
+            @combatant.stub(:team) { 1 }
+            @target1.stub(:team) { 1 }
+            @target2.stub(:team) { 2 }
+            @combat.stub(:active_combatants) { [@target1, @target2] }
+          end   
+                   
+          it "should attack a random target from the other team" do
+            FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::AttackAction, "Bob")
+            FS3Combat.ai_action(@combat, @client, @combatant)
+          end
+          
+          it "should do nothing if no valid target found" do
+            @target2.stub(:team) { 1 }
+            FS3Combat.should_not_receive(:set_action)
+            FS3Combat.ai_action(@combat, @client, @combatant)
+          end
+        end
+      end
       
       describe :determine_damage do
         before do 
-          @combatant.stub(:hitloc_severity).with("Head") { "Normal" }
+          @combatant = double
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head") { "Normal" }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
-          @combatant.stub(:rand) { 45 }
+          FS3Combat.stub(:rand) { 25 }
         end
   
-        it "should determine random damage" do
-          @combatant.determine_damage("Head", "Knife").should eq "M"
+        describe "random damage" do
+          it "should roll a graze" do
+            FS3Combat.stub(:rand) { 29 }
+            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "GRAZE"
+          end
+          
+          it "should roll a flesh wound" do
+            FS3Combat.stub(:rand) { 69 }
+            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
+          end
+          
+          it "should roll an impairing wound" do
+            FS3Combat.stub(:rand) { 99 }
+            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "IMPAIR"
+          end
+          
+          it "should roll an incap wound" do
+            FS3Combat.stub(:rand) { 101 }
+            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "INCAP"
+          end
         end
   
         it "should account for lethality" do
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 40 }
-          @combatant.determine_damage("Head", "Knife").should eq "S"
+          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
         end
 
         it "should account for hitloc severity for vital" do
-          FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 25 }
-          @combatant.stub(:hitloc_severity).with("Head") { "Vital" }
-          @combatant.determine_damage("Head", "Knife").should eq "S"
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head") { "Vital" }
+          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
         end
 
         it "should account for hitloc severity for critical" do
-          @combatant.stub(:hitloc_severity).with("Head") { "Critical" }
-          FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 10 }
-          @combatant.determine_damage("Head", "Knife").should eq "S"
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head") { "Critical" }
+          FS3Combat.stub(:rand) { 80 }
+          FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
+          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "INCAP"
         end
   
         it "should account for armor" do
-          @combatant.determine_damage("Head", "Knife", 5).should eq "L"
+          FS3Combat.stub(:rand) { 32 }
+          FS3Combat.determine_damage(@combatant, "Head", "Knife", 5).should eq "GRAZE"
         end
       end
       

@@ -32,9 +32,13 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          FS3Combat.inflict_damage(model, self.severity, self.desc)
-          client.emit_success t('fs3combat.damage_inflicted', :name => model.name) 
+        target = FS3Combat.find_named_thing(self.name, enactor)
+            
+        if (target)
+          FS3Combat.inflict_damage(target, self.severity, self.desc)
+          client.emit_success t('fs3combat.damage_inflicted', :name => target.name) 
+        else 
+          client.emit_failure t('dispatcher.not_found')
         end
       end
     end

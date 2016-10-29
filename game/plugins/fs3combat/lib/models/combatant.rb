@@ -31,6 +31,11 @@ module AresMUSH
     def cleanup
       self.clear_mock_damage
       self.npc.delete if self.npc
+      self.vehicle.delete if self.vehicle
+    end
+    
+    def associated_model
+      is_npc? ? self.npc : self.character
     end
     
     def name
@@ -51,15 +56,11 @@ module AresMUSH
     end
     
     def total_damage_mod
-      is_npc? ? FS3Combat.total_damage_mod(self.npc) : FS3Combat.total_damage_mod(self.character)
+      FS3Combat.total_damage_mod(self.associated_model)
     end
     
     def inflict_damage(severity, desc, is_stun = false)
-      if (combatant.is_npc?)
-        FS3Combat.inflict_damage(combatant.npc, severity, desc, is_stun, !combatant.combat.is_real)
-      else
-        FS3Combat.inflict_damage(combatant.character, severity, desc, is_stun, !combatant.combat.is_real)
-      end
+      FS3Combat.inflict_damage(self.associated_model, severity, desc, is_stun, !combatant.combat.is_real)
     end
       
     def attack_stance_mod

@@ -74,12 +74,7 @@ en:
         new_pilot: "%{name} takes over piloting %{vehicle}."
         new_passenger: "%{name} is now a passenger in %{vehicle}."
         disembarks_vehicle: "%{name} disembarks from %{vehicle}."
-        
-        piloting_hud: "%{vehicle}(Plt)"
-        passenger_hud: "%{vehicle}(Pas)"
-        vehicles_hud_title: "Vehicles            %xh%xuPilot%xn            %xh%xuPassengers%xn"
-        no_pilot: "None"
-            
+                    
         # ----------------------------
         # GENERAL
         # ----------------------------
@@ -179,6 +174,10 @@ en:
         combat_hud_organizer: "Organized by %{org}"
         combat_mock_notice: "** Mock Combat.  Damage is temporary. **"
         observers_title: "Observers"
+        piloting_hud: "%{vehicle}(Plt)"
+        passenger_hud: "%{vehicle}(Pas)"
+        vehicles_hud_title: "Vehicles          %xhDamage%xn  %xhPilot%xn            %xhPassengers%xn"
+        no_pilot: "None"
         
         # ----------------------------
         # ACTIONS

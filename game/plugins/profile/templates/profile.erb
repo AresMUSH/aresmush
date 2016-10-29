@@ -1,9 +1,26 @@
-<%= line %> 
-%xh<%= center( char.name_and_alias, 78 ) %>%xn
-%xh<%= left( t('profile.status'), 12 ) %>%xn <%= status %>
+<%= line %>
+<%= char.name %><%= center( approval_status, 23 ) %><%= right( t('profile.profile_title'), 28 ) %>
+<%= line 2 %>
+%xh<%= left( t('profile.fullname_title'), 12 ) %>%xn <%= fullname %>
+%xh<%= left( t('profile.actor_title'), 12 ) %>%xn <%= played_by %>
+%xh<%= left( t('profile.gender_title'), 12 ) %>%xn <%= left( gender, 25 ) -%>
+%xh<%= left( t('profile.skin_title'), 12 ) %>%xn <%= left( skin, 25 ) %>
+%xh<%= left( t('profile.height_title'), 12 ) %>%xn <%= left( height, 25 ) -%>
+%xh<%= left( t('profile.physique_title'), 12 ) %>%xn <%= left( physique, 25 ) %>
+%xh<%= left( t('profile.hair_title'), 12 ) %>%xn <%= left( hair, 25 ) -%>
+%xh<%= left( t('profile.eyes_title'), 12 ) %>%xn <%= left( eyes, 25 ) %>
+%xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) -%>
+%xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( birthdate, 25 ) %>
+<%= line 2 %>
+%xh<%= left( t('profile.colony_title'), 12 ) %>%xn <%= left( colony, 25 ) -%>
+%xh<%= left( t('profile.position_title'), 12 ) %>%xn <%= left( position, 25 ) %>
+%xh<%= left( t('profile.faction_title'), 12 ) %>%xn <%= left( faction, 25 ) -%>
+%xh<%= left( t('profile.department_title'), 12 ) %>%xn <%= left( department, 25 ) %>
+%xh<%= left( t('profile.rank_title'), 12 ) %>%xn <%= left( rank, 25 ) -%>
+%xh<%= left( t('profile.callsign_title'), 12 ) %>%xn <%= left( callsign, 25 ) %>
+<%= line 2 %>
 %xh<%= left( t('profile.last_on'), 12 ) %>%xn <%= last_on %>
 %xh<%= left( t('profile.timezone'), 12 ) %>%xn <%= timezone %>
-%xh<%= left( t('profile.played_by'), 12 ) %>%xn <%= played_by %>
 %xh<%= left( t('profile.alts'), 12 ) %>%xn <%= alts %>
 <% if char.handle %>
 <%= line 2 %>

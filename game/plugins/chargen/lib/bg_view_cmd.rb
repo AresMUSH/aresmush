@@ -11,6 +11,11 @@ module AresMUSH
         self.page = !cmd.page ? 1 : trim_input(cmd.page).to_i
       end
       
+      def check_words
+        return t('chargen.accidental_view_bg') if (self.target.length > 30)
+        return nil
+      end
+          
       def check_permission
         return nil if self.target == enactor_name
         return nil if Chargen.can_view_bgs?(enactor)

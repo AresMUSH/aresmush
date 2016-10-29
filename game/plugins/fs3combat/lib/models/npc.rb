@@ -5,10 +5,11 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :level
+
+    collection :damage, "AresMUSH::Damage"
     
     before_save :save_upcase
     before_delete :clear_damage
-    collection :damage, "AresMUSH::Damage"
     
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : ""

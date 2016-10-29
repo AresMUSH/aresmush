@@ -17,7 +17,7 @@
 <%= line 2 %>
 %xh<%= t('fs3combat.vehicles_hud_title') %>%xn
 <% vehicles.each do |v| %>
-<%= left( v.name, 20 ) %><%= left( pilot(v), 17 ) %><%= passengers(v) %>
+<%= left( v.name, 18 ) %><%= left( format_damage(v), 8 )%><%= left( pilot(v), 17 ) %><%= passengers(v) %>
 <% end %>
 <%= line 2 %>
 %xh<%= t('fs3combat.observers_title') %>%xn

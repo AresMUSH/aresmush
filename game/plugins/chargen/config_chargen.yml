@@ -12,7 +12,7 @@ chargen:
         # Add the 'everyone' role if you want public BGs.
         can_view_bgs:
             - admin
-            - everyone
+            # - everyone
             # - another_role
             
     messages:

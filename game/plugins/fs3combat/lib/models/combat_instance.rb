@@ -35,11 +35,18 @@ module AresMUSH
     end
       
     def find_combatant(name)
-      combatants.select { |c| c.name.downcase == name.downcase }.first
+      combatants.select { |c| c.name.upcase == name.upcase }.first
+    end
+    
+    # Finds a vehicle, combatant or NPC
+    def find_named_thing(name)
+      combatant = self.find_combatant(name)
+      return combatant.associated_model if combatant
+      self.find_vehicle_by_name(name)
     end
    
     def find_vehicle_by_name(name)
-      self.vehicles.find(name_upcase: name.upcase).first
+      self.vehicles.select { |v| v.name.upcase == name.upcase }.first
     end
 
     def emit(message, npcmaster = nil)
