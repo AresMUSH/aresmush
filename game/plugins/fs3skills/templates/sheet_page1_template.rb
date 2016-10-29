@@ -68,7 +68,7 @@ module AresMUSH
           end
         end
         return nil if (spec.keys.count == 0)
-        spec.map { |spec, ability| "#{spec}(#{ability})"}.join(", ")
+        spec.map { |spec, ability| "#{spec} (#{ability})"}.join(", ")
       end
       
       def format_attr(a, i)

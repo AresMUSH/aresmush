@@ -154,12 +154,20 @@ module AresMUSH
           review.should eq "fs3skills.starting_skills_check                    chargen.ok"
         end
         
-        it "should warn if missing a required specialty" do
+        it "should warn if missing a required specialty and over amateur" do
           config = { "specialties" => [ "A" ] }
           FS3Skills.stub(:action_skill_config) { config }
-          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "Firearms")] }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "Firearms", rating: 3)] }
           review = FS3Skills.starting_skills_check(@char)
           review.should eq "fs3skills.starting_skills_check%r%Tfs3skills.missing_specialty"
+        end
+        
+        it "should warn if missing a required specialty and under amateur" do
+          config = { "specialties" => [ "A" ] }
+          FS3Skills.stub(:action_skill_config) { config }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "Firearms", rating: 2)] }
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check                    chargen.ok"
         end
         
         it "should be OK if specialty present" do

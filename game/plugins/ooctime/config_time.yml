@@ -8,3 +8,7 @@ ooctime:
     #    Mountain Time --> America/Denver
     #    Pacific Time --> America/Los_Angeles
     default_timezone: "America/New_York"
+    
+    shortcuts:
+       "ictime": "time"
+       "ooctime": "time"

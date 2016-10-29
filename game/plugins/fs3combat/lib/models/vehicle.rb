@@ -3,20 +3,34 @@ module AresMUSH
     include ObjectModel
     include FindByName
     
-    attribute :name
-    attribute :name_upcase
-    attribute :damage, :type => DataType::Array, :default => []
     attribute :vehicle_type
     
     reference :combat, "AresMUSH::Combat"
     
     reference :pilot, 'AresMUSH::Combatant'
-    collection :passengers, 'AresMUSH::Combatant'
+    collection :passengers, 'AresMUSH::Combatant', :riding_in
+    collection :damage, 'AresMUSH::Damage'
     
-    before_save :save_upcase
+    before_delete :clear_damage
     
-    def save_upcase
-      self.name_upcase = self.name ? self.name.upcase : nil
+    def name
+      self.vehicle_type + '-' + self.id
+    end
+    
+    def armor
+      FS3Combat.vehicle_stat(self.vehicle_type, armor)
+    end
+    
+    def clear_damage
+      self.damage.each { |d| d.delete }
+    end
+    
+    def total_damage_mod
+      FS3Combat.total_damage_mod(self)
+    end
+    
+    def random_name
+      self.vehicle_type + '-' + [*('A'..'Z')].shuffle[0,2].join + [*('0'..'9')].shuffle[0,4].join
     end
   end
 end

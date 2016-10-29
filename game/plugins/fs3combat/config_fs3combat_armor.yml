@@ -6,6 +6,10 @@ fs3combat:
     #     (chinks in the armor) and some areas not armored at all (by omitting
     #     them from the list entirely)
     armor:
+        None:
+            description: "In case you need to take off armor"
+            protection:
+                
         Tactical:
             description: "Military-Grade Kevlar Vest and Helmet"
             protection: 

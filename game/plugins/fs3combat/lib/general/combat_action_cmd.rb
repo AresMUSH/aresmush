@@ -18,6 +18,7 @@ module AresMUSH
       end
     
       def check_noncombatant
+        return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
         return t('fs3combat.you_are_a_noncombatant') if (enactor.combatant.is_noncombatant? && self.name == enactor_name)
         return nil
       end

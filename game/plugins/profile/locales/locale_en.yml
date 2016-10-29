@@ -8,7 +8,7 @@ en:
         status: "Status:"
         alts: "Alts: "
         
-        profile_title: "Public Profile:"
+        profile_title: "Profile"
         profile_char_list_title: "Alts"
         must_have_handle_to_view_profile: "You must have a handle to view handle profiles."
         ooc_profile_title: "OOC Profile"

@@ -1,5 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/info_view_cmd.rb"
 load "lib/profile_add_cmd.rb"
 load "lib/profile_cmd.rb"
 load "lib/profile_delete_cmd.rb"
@@ -7,7 +6,6 @@ load "lib/profile_edit_cmd.rb"
 load "lib/profile_model.rb"
 load "lib/wiki_cmd.rb"
 load "templates/profile_template.rb"
-load "templates/info_template.rb"
 load "templates/wiki_template.rb"
 
 module AresMUSH
@@ -28,7 +26,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/admin_wiki.md", "help/finger.md", "help/info.md", "help/profile.md", "help/wiki.md" ]
+      [ "help/admin_wiki.md", "help/profile.md", "help/wiki.md" ]
     end
  
     def self.config_files
@@ -41,8 +39,6 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when "info"
-        return InfoViewCmd
       when "profile"
         case cmd.switch
         when "add"

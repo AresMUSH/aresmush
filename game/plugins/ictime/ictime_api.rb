@@ -17,7 +17,7 @@ module AresMUSH
       end
     
       def self.ic_long_timestr(time)
-        ICTIme.ic_long_timestr(time)
+        ICTime.ic_long_timestr(time)
       end
     
       def self.time_of_day(time)

@@ -14,7 +14,7 @@ module AresMUSH
     end
  
     def self.shortcuts
-      {}
+      Global.read_config("ooctime", "shortcuts")
     end
  
     def self.load_plugin

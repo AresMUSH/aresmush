@@ -25,12 +25,24 @@ module AresMUSH
       # TODO - Better way of doing this.
       # TODO - Reset action if out of ammo.
       # TODO - Reset action if target no longer exists.
-      if (c.is_aiming && c.action.class != AimAction)
-        Global.logger.debug "Reset aim for #{c.name}."
-        c.is_aiming = false
+      if (combatant.is_aiming && combatant.action.class != AimAction)
+        Global.logger.debug "Reset aim for #{combatant.name}."
+        combatant.update(is_aiming: false)
       end
-      c.update(posed: false)
-      c.update(recoil: 0)
+      combatant.update(posed: false)
+      combatant.update(recoil: 0)
+    end
+        
+    def self.ai_action(combat, client, combatant)
+      if (combatant.ammo == 0)
+        FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::ReloadAction, "")
+        # TODO - Use suppress attack for suppress only weapon
+      else
+        target = combat.active_combatants.select { |t| t.team != combatant.team }.shuffle.first
+        if (target)
+          FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::AttackAction, target.name)
+        end
+      end   
     end
     
     def self.set_action(client, enactor, combat, combatant, action_klass, args)
@@ -49,31 +61,6 @@ module AresMUSH
       end
     end
     
-    def self.determine_armor(combatant, hitloc, weapon)
-      # TODO - If pilot or passenger, use vehicle armor
-      
-      # Not wearing armor at all.
-      return 0 if !combatant.armor
-      
-      pen = FS3Combat.weapon_stat(weapon, "penetration")
-      protect = FS3Combat.armor_stat(combatant.armor, "protection")[hitloc]
-      
-      # Armor doesn't cover this hit location
-      return 0 if !protect
-
-      pen_ratio = pen / protect
-      
-      # No coverage if penetration is way higher than armor value.
-      return 0 if pen_ratio > 2
-      
-      # Full coverage if protection way higher than penetration
-      return 100 if pen_ratio < 0.5
-       
-      # Ratio is between 0.5 (good) and 2 (bad).  Dividing a rand number by
-      # that value will give us a number from 50-200.
-      return rand(100) / pen_ratio
-    end
-    
     def self.determine_damage(combatant, hitloc, weapon, armor = 0)
       random = rand(100)
       
@@ -81,29 +68,59 @@ module AresMUSH
       
       case FS3Combat.hitloc_severity(combatant, hitloc)
       when "Critical"
-        severity = 30
+        severity = 20
       when "Vital"
-        severity = 15
+        severity = 10
       else
         severity = 0
       end
       
       total = random + severity + lethality - armor
       
-      if (total < 41)
-        damage = "L"
-      elsif (total < 81)
-        damage = "M"
+      if (total < 30)
+        damage = "GRAZE"
+      elsif (total < 70)
+        damage = "FLESH"
       elsif (total <100)
-        damage = "S"
+        damage = "IMPAIR"
       else
-        damage = "C"
+        damage = "INCAP"
       end
       
-      Global.logger.info "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
+      Global.logger.debug "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
       " lth=#{lethality} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
       
       damage
+    end
+    
+    def self.determine_armor(combatant, hitloc, weapon, attack_net_success)
+      vehicle = combatant.vehicle
+      if (vehicle)
+        armor = vehicle.armor
+      else
+        armor = combatant.armor
+      end
+      
+      # Not wearing armor at all.
+      return 0 if !armor
+      
+      pen = FS3Combat.weapon_stat(weapon, "penetration")
+      protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
+      
+      # Armor doesn't cover this hit location
+      return 0 if !protect
+
+      pen_roll = FS3Skills::Api.one_shot_die_roll(pen)
+      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)
+      
+      margin = pen_roll + attack_net_success - protect_roll
+      if (margin > 2)
+        return 0
+      elsif (margin < -2)
+        return 100
+      else
+        return 30
+      end
     end
     
     def self.attack_target(combatant, target, called_shot = nil, mod = 0)
@@ -165,18 +182,6 @@ module AresMUSH
       combatant.recoil = combatant.recoil + FS3Combat.weapon_stat(combatant.weapon, "recoil")
       
       message
-    end
-        
-    def self.ai_action(combat, client, combatant)
-      if (combatant.ammo == 0)
-        FS3Combat.set_action(client, nil, self, combatant, FS3Combat::ReloadAction, "")
-        # TODO - Use suppress attack for suppress only weapon
-      else
-        target = active_combatants.select { |t| t.team != combatant.team }.shuffle.first
-        if (target)
-          FS3Combat.set_action(client, nil, self, combatant, FS3Combat::AttackAction, target.name)
-        end
-      end   
     end
   end
 end

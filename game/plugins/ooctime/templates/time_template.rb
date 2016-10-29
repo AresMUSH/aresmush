@@ -17,6 +17,10 @@ module AresMUSH
         OOCTime.local_long_timestr(@enactor, Time.now)
       end
       
+      def ic_time
+        ICTime::Api.ic_long_timestr ICTime::Api.ictime
+      end
+      
       def timezone
         t('time.timezone', :timezone => @enactor.timezone)
       end

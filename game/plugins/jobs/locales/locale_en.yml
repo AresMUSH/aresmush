@@ -26,6 +26,7 @@ en:
         discussed_job: "%{name} has added an admin-only comment to job #%{number} \"%{title}\".  This will not be seen by the submitter.  To respond to them, use the job/respond command."
         responded_to_job: "%{name} has responded to job #%{number} \"%{title}\"."
         updated_job: "%{name} has updated job #%{number} \"%{title}\"."
+        requests_cmd_hint: "Use the requests command to view your requests."
         
         closed_job: "%{name} has closed this job."
         changed_job_status: "%{name} has changed the job status to \"%{status}\"."

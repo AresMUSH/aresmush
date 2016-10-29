@@ -20,6 +20,11 @@ module AresMUSH
         }
       end
       
+      def check_guest
+        return t('dispatcher.not_allowed') if (enactor.is_guest?)
+        return nil
+      end
+      
       def check_handle_name
         return t('handles.character_already_linked') if enactor.handle
         return nil

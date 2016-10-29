@@ -1,4 +1,5 @@
 profile:
     shortcuts:
         "finger": "profile"
+        "info": "profile"
         "profile/set": "profile/add"

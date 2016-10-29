@@ -27,8 +27,8 @@ module AresMUSH
       end
     end
     
-    def self.inflict_damage(char_or_npc, severity, desc, is_stun = false, is_mock = false)
-      Global.logger.info "Damage inflicted on #{char_or_npc.name}: #{desc} #{severity} stun=#{is_stun}"
+    def self.inflict_damage(target, severity, desc, is_stun = false, is_mock = false)
+      Global.logger.info "Damage inflicted on #{target.name}: #{desc} #{severity} stun=#{is_stun}"
 
       params = {
         :description => desc,
@@ -39,10 +39,12 @@ module AresMUSH
         :is_stun => is_stun, 
         :is_mock => is_mock
       }
-      if (char_or_npc.class == Character)
-        params[:character] = char_or_npc
+      if (target.class == Character)
+        params[:character] = target
+      elsif (target.class == Vehicle)
+        params[:vehicle] = target
       else
-        params[:npc] = char_or_npc
+        params[:npc] = target
       end
       
       Damage.create(params)
@@ -57,10 +59,10 @@ module AresMUSH
      end
      
      def self.print_damage(total_damage_mod)
-       num_xs = [ total_damage_mod.ceil, 4 ].min
+       num_xs = [ -total_damage_mod.ceil, 4 ].min
        dots = num_xs.times.collect { "X" }.join
        dashes = (4 - num_xs).times.collect { "-" }.join
-       "#{dots}#{dashes}"
+       "%xr#{dots}%xn#{dashes}"
      end
      
      def self.total_damage_mod(char_or_npc)
