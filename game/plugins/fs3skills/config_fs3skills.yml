@@ -136,7 +136,7 @@ fs3skills:
 
     default_linked_attr: Wits
 
-    free_languages: 3
+    free_languages: 5
     free_backgrounds: 6
     
     # Number of independent background skills
