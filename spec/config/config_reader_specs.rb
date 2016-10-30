@@ -16,7 +16,7 @@ module AresMUSH
     describe :config_files do 
       it "searches for files in the config dir" do
         AresMUSH.stub(:game_path) { "game" }
-        Dir.should_receive(:[]).with(File.join("game", "config", "**")) { ["a", "b"]}
+        Dir.should_receive(:[]).with(File.join("game", "config", "**", "*.yml")) { ["a", "b"]}
         ConfigReader.config_files.should eq ["a", "b"]
       end
     end

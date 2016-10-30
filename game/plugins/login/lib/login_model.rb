@@ -26,7 +26,7 @@ module AresMUSH
   class Character
 
     attribute :login_email
-    attribute :login_watch, :default => "all"
+    attribute :login_watch, :default => "friends"
     
     reference :login_status, "AresMUSH::LoginStatus"
     

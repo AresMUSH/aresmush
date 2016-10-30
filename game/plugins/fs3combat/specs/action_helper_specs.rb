@@ -126,6 +126,76 @@ module AresMUSH
         end
       end
       
+      describe :determine_armor do
+        before do 
+          @combatant = double
+          @combatant.stub(:vehicle) { nil }
+          @combatant.stub(:armor) { "Tactical" }
+          FS3Skills::Api.stub(:one_shot_die_roll) { 0 }
+          FS3Combat.stub(:weapon_stat) { 3 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 5 } }
+        end
+
+        it "should return no protection if no armor" do
+          @combatant.stub(:armor) { nil }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
+        end
+        
+        it "should get protection from vehicle armor if in a vehicle" do
+          vehicle = double
+          vehicle.stub(:armor) { "Viper" }
+          @combatant.stub(:vehicle) { vehicle }
+          
+          FS3Combat.should_receive(:armor_stat).with("Viper", "protection") { {} }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
+        end
+
+        it "should get protection from combatant armor if not in a vehicle" do
+          FS3Combat.should_receive(:armor_stat).with("Tactical", "protection") { {} }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
+        end
+        
+        it "should bypass armor if not a protected location" do
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Chest" => 2 } }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
+        end
+        
+        it "should roll the penetration and protection dice" do
+          FS3Combat.should_receive(:weapon_stat).with("Rifle", "penetration") { 5 }
+          FS3Combat.should_receive(:armor_stat).with("Tactical", "protection") { { "Head" => 2 } }
+          
+          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5)
+          FS3Skills::Api.should_receive(:one_shot_die_roll).with(2)
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
+        end
+        
+        it "should bypass armor if pen wins by enough" do
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 2 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 5 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
+        end
+        
+        it "should be stopped by armor if protect wins by enough" do
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 5 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 2 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 100
+        end
+
+        it "should randomize protection if no decisive winner" do
+          FS3Combat.stub(:rand) { 29 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 4 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 2 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 29
+        end
+
+        it "should add in attacker successes" do
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 2 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 4 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 0
+        end
+        
+        
+      end
       
       describe :attack_target do    
         before do

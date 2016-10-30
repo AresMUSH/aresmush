@@ -22,7 +22,7 @@ module AresMUSH
         enactor.update(afk_message: self.message)
         enactor.update(is_afk: true)
         if (enactor.room.room_type == "IC")
-          enactor.update(last_ic_location_id: enactor.room.id)
+          enactor.update(last_ic_location: enactor.room)
         end
         enactor.room.emit_ooc t('status.go_afk', :name => enactor.name, :message => self.message)
       end

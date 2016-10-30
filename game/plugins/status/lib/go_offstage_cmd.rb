@@ -9,8 +9,8 @@ module AresMUSH
         oocloc = Rooms::Api.ooc_room
         
         enactor.is_afk = false
-        if (room.room_type == "IC")
-          enactor.last_ic_location_id = enactor.room.id
+        if (enactor_room.room_type == "IC")
+          enactor.update(last_ic_location: enactor.room)
         end
         # No need to save because we're going to do it when we move them
         enactor.room.emit_ooc t('status.go_ooc', :name => enactor.name)

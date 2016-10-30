@@ -12,10 +12,12 @@ module AresMUSH
       end
     end
     
+    def all_descs
+      Description.find(parent_id: self.id).combine(parent_type: self.class.to_s)
+    end
     
     def delete_descs
-      descs =  Description.find(parent_id: self.id).combine(parent_type: self.class.to_s)
-      descs.each { |d| d.delete }
+      self.all_descs.each { |d| d.delete }
     end
     
     def descs_of_type(type)
@@ -66,6 +68,14 @@ module AresMUSH
     
     def details
       descs_of_type(:detail)
+    end
+    
+    def print_json
+      json = super
+      all_descs.each do |d|
+        json << "\r\ndescription: #{d.print_json}"
+      end
+      json
     end
   end
 

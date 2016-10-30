@@ -30,7 +30,13 @@ module AresMUSH
     end
     
     def self.translate(str, *args)  
-      I18n.t(str, *args)
+      begin
+        I18n.t(str, *args)
+      rescue I18n::InvalidLocaleData => ex
+        I18n.load_path.delete ex.filename
+        Global.logger.error "Error in translations file! #{ex}"
+        "%xh%xrOops!  Something's wrong with one of the language files.  Please inform the admins: #{ex.filename}.%xn"
+      end
     end
     
     def self.localize(object, *args)

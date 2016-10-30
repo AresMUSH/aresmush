@@ -10,13 +10,13 @@ module AresMUSH
         
       describe :print_damage do
         it "should print the right damage" do
-          FS3Combat.print_damage(0).should eq "----"
-          FS3Combat.print_damage(0.25).should eq "X---"
-          FS3Combat.print_damage(1.0).should eq "X---"
-          FS3Combat.print_damage(1.25).should eq "XX--"
-          FS3Combat.print_damage(2.25).should eq "XXX-"
-          FS3Combat.print_damage(3.25).should eq "XXXX"
-          FS3Combat.print_damage(5).should eq "XXXX"
+          FS3Combat.print_damage(-0).should eq "%xr%xn----"
+          FS3Combat.print_damage(-0.25).should eq "%xrX%xn---"
+          FS3Combat.print_damage(-1.0).should eq "%xrX%xn---"
+          FS3Combat.print_damage(-1.25).should eq "%xrXX%xn--"
+          FS3Combat.print_damage(-2.25).should eq "%xrXXX%xn-"
+          FS3Combat.print_damage(-3.25).should eq "%xrXXXX%xn"
+          FS3Combat.print_damage(-5).should eq "%xrXXXX%xn"
         end
       end
       
