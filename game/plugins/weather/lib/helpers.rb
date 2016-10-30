@@ -6,6 +6,14 @@ module AresMUSH
       return actor.has_any_role?(Global.read_config("weather", "roles", "can_change_weather"))
     end
     
+    def self.change_all_weathers
+      # Set an initial weather for each area and the default one
+      areas = Global.read_config("weather", "zones").keys + ["default"]
+      areas.each do |a|
+        Weather.change_weather(a)
+      end
+    end
+      
     def self.change_weather(area)
       # Figure out the climate for this area
       climate = Weather.climate_for_area(area)
