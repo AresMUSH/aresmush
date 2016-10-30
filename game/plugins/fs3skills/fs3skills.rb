@@ -54,7 +54,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/abilities.md", "help/admin_skills.md", "help/goals.md", "help/roll.md", "help/skills.md",
+      [ "help/abilities.md", "help/admin_skills.md", "help/hooks.md", "help/roll.md", "help/skills.md",
         "help/admin_luck.md", "help/luck.md", "help/backup.md", "help/sheet.md",
         "help/admin_xp.md", "help/xp.md" ]
     end

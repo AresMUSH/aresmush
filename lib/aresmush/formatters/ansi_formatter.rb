@@ -25,7 +25,7 @@ module AresMUSH
         "i" => ANSI.inverse,
 
         "U" => ANSI.underline_off,
-        "I" => ANSI.inverse_off,
+        "I" => ANSI.reveal,  # Should be inverse_off but there appears to be a bug in the ANSI lib.
         "H" => ANSI.bold_off,
 
         "n" => ANSI.reset,
