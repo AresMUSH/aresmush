@@ -2,7 +2,7 @@ $:.unshift File.dirname(__FILE__)
 load "lib/helpers.rb"
 load "lib/weather_change_cmd.rb"
 load "lib/weather_cmd.rb"
-load "lib/weather_cron.rb"
+load "lib/weather_events.rb"
 load "weather_api.rb"
 
 module AresMUSH
@@ -47,7 +47,12 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
-      nil
+      case event_name
+      when "CronEvent"
+        return WeatherCronEventHandler
+      when "GameStartedEvent"
+        return WeatherGameStartedEventHandler
+      end
     end
   end
 end

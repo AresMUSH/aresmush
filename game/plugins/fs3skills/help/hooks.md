@@ -1,11 +1,10 @@
 ---
-topic: goals
+topic: hooks
 toc: FS3
-summary: Character motivations and RP Hooks
+summary: Character RP Hooks
 categories:
 - main
 aliases:
-- goal
 - hooks
 plugin: fs3skills
 ---

@@ -283,7 +283,7 @@ fs3combat:
 
         Ecm:
             description: "ECM Package"
-            skill: ECM
+            skill: Gunnery
             lethality: 0
             penetration: 0
             weapon_type: Suppressive

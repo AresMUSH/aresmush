@@ -20,4 +20,4 @@ You can set custom profile fields, which can display standard MUSH formatting co
 `profile/edit <field>` - Snags the field into your input buffer, if
        your client allows.  (see `help edit`)
 
-If you have a handle, people viewing your character profile will also see a link to your OOC handle profile (see %xhhelp handles` for more info.)
+If you have a handle, people viewing your character profile will also see a link to your OOC handle profile (see `help handles` for more info.)

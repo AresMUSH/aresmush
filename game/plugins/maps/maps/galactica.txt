@@ -14,11 +14,11 @@ The Landing has stairs with up/down (U/D) exits to change decks.
 
 There are 12 decks total, but only decks 4-10 are reflected on the grid.  The other decks are for gun turrets, storage, more crew berthings, and other uninteresting stuff.
 
-Deck 3 – Observation Deck & Offices
-Deck 4 – CIC & Senior Officer Area
-Deck 5 – Engineering
-Deck 6 – Flight Deck (connects to flight pod)
-Deck 7 – Berthings
-Deck 8 – Crew Amenities (gym, mess hall, etc.)
-Deck 9 – Sickbay & Chapel
-Deck 10 – Firing Range & Security
+Deck 3 - Observation Deck & Offices
+Deck 4 - CIC & Senior Officer Area
+Deck 5 - Engineering
+Deck 6 - Flight Deck (connects to flight pod)
+Deck 7 - Berthings
+Deck 8 - Crew Amenities (gym, mess hall, etc.)
+Deck 9 - Sickbay & Chapel
+Deck 10 - Firing Range & Security
