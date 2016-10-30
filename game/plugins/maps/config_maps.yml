@@ -3,8 +3,8 @@ maps:
         # List areas in the form "Area Name": "map file name"
         # 
         # For example:
-        "Offstage": "offstage.txt"
+        #"Offstage": "offstage.txt"
 
     # An overview map, used when there's no specific area one, in the form "Title" : "map file name"    
     master_map: 
-        "Overview" : "master.txt"
+        "Galactica" : "galactica.txt"
