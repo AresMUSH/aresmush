@@ -35,11 +35,9 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
        case cmd.root
        when "map"
-         if (cmd.args)
-           return MapCmd
-         else
-           return MapsCmd
-         end
+         return MapCmd
+       when "maps"
+         return MapsCmd
        end
        nil
     end
