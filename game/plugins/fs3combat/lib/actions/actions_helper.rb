@@ -106,7 +106,7 @@ module AresMUSH
       
       pen = FS3Combat.weapon_stat(weapon, "penetration")
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
-      
+            
       # Armor doesn't cover this hit location
       return 0 if !protect
 
@@ -119,7 +119,7 @@ module AresMUSH
       elsif (margin < -2)
         return 100
       else
-        return 30
+        return rand(50)
       end
     end
     
