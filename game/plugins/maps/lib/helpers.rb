@@ -17,7 +17,8 @@ module AresMUSH
     end
     
     def self.get_map(name)
-      map_file = Global.read_config("maps", "map_areas")[name]
+      areas = Global.read_config("maps", "map_areas")
+      map_file = areas ? areas[name] : nil
       if (!map_file)
         master = Global.read_config("maps", "master_map")
         if (master)
