@@ -27,8 +27,12 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 
 `combat/pass` - Take no action this turn.
 
+`combat/fullauto <list of targets>` - Fire a full-auto burst
+
+`combat/explode <list of targets>` - Use an explosive weapon.
+
 `combat/suppress <target>` - Use suppressive fire
-    A full-auto or explosive weapon can specify a list of up to 5 targets.
+    A full-auto weapon can specify a list of up to 3 targets.
 
 `combat/subdue <target>` - Subdues or disarms a target. 
 `combat/escape` – Attempts to escape while subdued.

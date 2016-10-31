@@ -10,7 +10,7 @@ module AresMUSH
           @combatant = double
           @combatant.stub(:name) { "Trooper" }
           @combatant.stub(:update)
-          @combatant.stub(:is_aiming) { false }
+          @combatant.stub(:is_aiming?) { false }
         end
         
         it "should reset posed" do
@@ -24,16 +24,16 @@ module AresMUSH
         end
         
         it "should reset aiming if they aren't still aiming" do 
-          @combatant.stub(:is_aiming) { true }
-          @combatant.stub(:action) { AttackAction.new(@combatant) }
-          @combatant.should_receive(:update).with(is_aiming: false)
+          @combatant.stub(:is_aiming?) { true }
+          @combatant.stub(:action) { AttackAction.new(@combatant, "") }
+          @combatant.should_receive(:update).with(aim_target: nil)
           FS3Combat.reset_actions(@combatant)
         end
 
         it "should not reset aiming if they're still aiming" do 
-          @combatant.stub(:is_aiming) { true }
-          @combatant.stub(:action) { AimAction.new(@combatant) }
-          @combatant.should_not_receive(:update).with(is_aiming: false)
+          @combatant.stub(:is_aiming?) { true }
+          @combatant.stub(:action) { AimAction.new(@combatant, "") }
+          @combatant.should_not_receive(:update).with(aim_target: nil)
           FS3Combat.reset_actions(@combatant)
         end
       end

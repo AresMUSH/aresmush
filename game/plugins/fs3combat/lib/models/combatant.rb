@@ -11,14 +11,13 @@ module AresMUSH
     attribute :stance, :default => "Normal"
     attribute :armor
     attribute :is_ko, :type => DataType::Boolean
-    attribute :is_aiming, :type => DataType::Boolean
-    attribute :aim_target
     attribute :luck
     attribute :ammo, :type => DataType::Integer
     attribute :posed, :type => DataType::Boolean
     attribute :recoil, :type => DataType::Integer, :default => 0
     attribute :team, :type => DataType::Integer, :default => 1
 
+    reference :aim_target, "AresMUSH::Character"
     reference :character, "AresMUSH::Character"
     reference :combat, "AresMUSH::Combat"
     reference :npc, "AresMUSH::Npc"
@@ -32,6 +31,10 @@ module AresMUSH
       self.clear_mock_damage
       self.npc.delete if self.npc
       self.vehicle.delete if self.vehicle
+    end
+    
+    def is_aiming?
+      !!self.aim_target
     end
     
     def associated_model

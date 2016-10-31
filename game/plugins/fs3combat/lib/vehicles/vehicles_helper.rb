@@ -42,6 +42,8 @@ module AresMUSH
          vehicle = combatant.riding_in
          combatant.update(riding_in: nil)
        end
+       FS3Combat.set_default_gear(nil, combatant, Global.read_config("fs3combat", "default_type"))
+       
        combat.emit t('fs3combat.disembarks_vehicle', :name => combatant.name, :vehicle => vehicle.name)
     end
     

@@ -10,7 +10,6 @@ load "lib/models/healing.rb"
 load "lib/models/npc.rb"
 
 load "lib/actions/combat_action.rb"
-load "lib/actions/action_checkers.rb"
 load "lib/actions/actions_helper.rb"
 load "lib/actions/aim_action.rb"
 load "lib/actions/attack_action.rb"

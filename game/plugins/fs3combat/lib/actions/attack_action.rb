@@ -1,23 +1,47 @@
 module AresMUSH
   module FS3Combat
     class AttackAction < CombatAction
-      include ActionOnlyAllowsSingleTarget
       
       attr_accessor :mod, :is_burst, :called_shot
       
-      def parse_args(args)
+      def prepare
+        if (self.action_args =~ /\//)
+          names = self.action_args.before("/")
+          specials = self.action_args.after("/").split(",")
+        else
+          names = self.action_args
+          specials = []
+        end
+        
+        weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
+        return t('fs3combat.use_explode_command') if weapon_type == "Explosive"
+        return t('fs3combat.use_suppress_command') if weapon_type == "Suppressive"
+        
+        error = self.parse_targets(names)
+        return error if error
+      
+        return t('fs3combat.only_one_target') if (self.targets.count > 1)
+      
         self.is_burst = false
         self.called_shot = nil
         self.mod = 0
+                
+        error = self.parse_specials(specials)
+        return error if error
         
-        if (args =~ /\//)
-          names = args.before("/")
-          parse_specials args.after("/").split(",")
-        else
-          names = args
-        end
+        supports_burst = FS3Combat.weapon_stat(self.combatant.weapon, "is_automatic")
+        return t('fs3combat.burst_fire_not_allowed') if self.is_burst && !supports_burst
         
-        parse_targets names
+        hitlocs = FS3Combat.hitloc_chart(targets[0])
+        return t('fs3combat.invalid_called_shot_loc') if self.called_shot && !hitlocs.include?(self.called_shot)
+        
+        return t('fs3combat.no_fullauto_called_shots') if self.called_shot && self.is_burst
+        
+        ammo = self.combatant.ammo
+        return t('fs3combat.out_of_ammo') if ammo == 0
+        return t('fs3combat.not_enough_ammo_for_burst') if ammo && self.is_burst && ammo < 2
+        
+        return nil
       end
 
       def parse_specials(specials)
@@ -32,40 +56,12 @@ module AresMUSH
           when "Burst"
             self.is_burst = true
           else
-            raise t('fs3combat.invalid_attack_special')
+            return t('fs3combat.invalid_attack_special')
           end
         end
-      end
-      
-      def check_burst_fire
-        return nil if !self.is_burst
-        supports_burst = FS3Combat.weapon_stat(self.combatant.weapon, "is_automatic")
-        return t('fs3combat.burst_fire_not_allowed') if self.is_burst && !supports_burst
         return nil
       end
       
-      def check_called_shot_loc
-        return nil if !self.called_shot
-        hitlocs = targets[0].hitloc_chart
-        return t('fs3combat.invalid_called_shot_loc') if !hitlocs.include?(self.called_shot)
-        return nil
-      end
-      
-      def check_ammo
-        ammo = self.combatant.ammo
-        return nil if !ammo
-        return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && ammo < 2
-        return t('fs3combat.out_of_ammo') if ammo == 0
-        return nil
-      end
-      
-      def check_weapon_type
-        weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
-        return t('fs3combat.use_explode_command') if weapon_type == "Explosive"
-        return t('fs3combat.use_suppress_command') if weapon_type == "Suppressive"
-        return nil
-      end
-            
       def print_action
         msg = t('fs3combat.attack_action_msg_long', :name => self.name, :target => print_target_names)
         if (self.is_burst)
@@ -92,16 +88,12 @@ module AresMUSH
           messages << t('fs3combat.fires_burst', :name => self.name)
         end
         
-        bullets = self.is_burst ? 3 : 1
-        if (self.combatant.ammo && bullets > self.combatant.ammo)
-          bullets = self.combatant.ammo
-        end
-        
+        bullets = self.is_burst ? [3, self.combatant.ammo].min : 1
         bullets.times.each do |b|
-          messages << self.combatant.attack_target(target, self.called_shot, self.mod)
+          messages << FS3Combat.attack_target(combatant, target, self.mod, self.called_shot)
         end
 
-        ammo_message = self.combatant.update_ammo(bullets)
+        ammo_message = FS3Combat.update_ammo(combatant, bullets)
         if (ammo_message)
           messages << ammo_message
         end

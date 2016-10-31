@@ -19,15 +19,14 @@ module AresMUSH
       end
     end
     
-    
     def self.reset_actions(combatant)
       # Reset aim if they've done anything other than aiming. 
       # TODO - Better way of doing this.
       # TODO - Reset action if out of ammo.
       # TODO - Reset action if target no longer exists.
-      if (combatant.is_aiming && combatant.action.class != AimAction)
+      if (combatant.is_aiming? && combatant.action.class != AimAction)
         Global.logger.debug "Reset aim for #{combatant.name}."
-        combatant.update(is_aiming: false)
+        combatant.update(aim_target: nil)
       end
       combatant.update(posed: false)
       combatant.update(recoil: 0)
@@ -46,19 +45,15 @@ module AresMUSH
     end
     
     def self.set_action(client, enactor, combat, combatant, action_klass, args)
-      begin
-        action = action_klass.new(combatant)
-        action.parse_args(args)
-        error = action.error_check
-        if (error)
-          client.emit_failure error
-          return
-        end
-        combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
-      rescue Exception => err
-        Global.logger.debug("Combat action error error=#{err} backtrace=#{err.backtrace[0,10]}")
-        client.emit_failure t('fs3combat.invalid_action_params', :error => err)
+      action = action_klass.new(combatant, args)
+      combatant.action = action
+      puts "SET #{action} #{combatant.action}"
+      error = action.prepare
+      if (error)
+        client.emit_failure error
+        return
       end
+      combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
     def self.determine_damage(combatant, hitloc, weapon, armor = 0)
@@ -165,10 +160,12 @@ module AresMUSH
     end
       
     def self.attack_target(combatant, target, mod = 0, called_shot = nil)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot)
+
+      # Update recoil after determining the attack success but before returning out for a miss
       recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
       combatant.update(recoil: combatant.recoil + recoil)
-      
-      margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot)
+
       return margin[:message] if !margin[:hit]
     
       weapon = combatant.weapon

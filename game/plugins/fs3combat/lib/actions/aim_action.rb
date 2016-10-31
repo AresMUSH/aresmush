@@ -1,24 +1,26 @@
 module AresMUSH
   module FS3Combat
     class AimAction < CombatAction
-      include ActionOnlyAllowsSingleTarget
-      
-      def parse_args(args)
-        parse_targets args
+            
+      def prepare
+        error = FS3Combat.parse_targets(self.combat, self.action_args)
+        return error if error
+        
+        return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        return nil
       end
 
       def print_action
-        msg = t('fs3combat.aim_action_msg_long', :name => self.name, :target => print_target_names)
+        msg = t('fs3combat.aim_action_msg_long', :name => self.name, :target => self.print_target_names)
       end
       
       def print_action_short
-        t('fs3combat.aim_action_msg_short', :name => self.name, :target => print_target_names)
+        t('fs3combat.aim_action_msg_short', :name => self.name, :target => self.print_target_names)
       end
       
       def resolve
-        self.combatant.update(is_aiming: true)
-        self.combatant.update(aim_target: print_target_names)
-        [t('fs3combat.aim_resolution_msg', :name => self.name, :target => print_target_names)]
+        self.combatant.update(aim_target: self.targets[0])
+        [t('fs3combat.aim_resolution_msg', :name => self.name, :target => self.print_target_names)]
       end
     end
   end

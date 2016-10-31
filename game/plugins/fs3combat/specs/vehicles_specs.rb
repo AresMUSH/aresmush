@@ -89,13 +89,11 @@ module AresMUSH
         
         describe "passenger" do
           it "should update the pilot's vehicle stat" do
-            @passenger_list.stub(:add)
             @combatant.should_receive(:update).with(riding_in: @vehicle)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
           
           it "should emit to combat" do
-            @passenger_list.stub(:add)
             @combat.should_receive(:emit).with("fs3combat.new_passenger")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
