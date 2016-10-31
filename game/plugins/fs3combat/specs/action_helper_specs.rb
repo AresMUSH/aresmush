@@ -1,6 +1,9 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
+      before do
+        SpecHelpers.stub_translate_for_testing
+      end
       
       describe :reset_actions do
         before do 
@@ -193,129 +196,141 @@ module AresMUSH
           FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 4 }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 0
         end
+      end
+      
+      describe :determine_attack_margin do
+        before do
+          @combatant = double
+          @target = double
+          
+          @combatant.stub(:name) { "A" }
+          @target.stub(:name) { "D" }
+          
+          @combatant.stub(:recoil) { 0 }
+          @combatant.stub(:weapon) { "Rifle" }
+          @target.stub(:stance) { "Normal" }
+        end
         
+        it "should roll attack and defense" do
+          FS3Combat.should_receive(:roll_attack).with(@combatant, 0) { 0 }
+          FS3Combat.should_receive(:roll_defense).with(@target, "Rifle") { 0 }
+          FS3Combat.determine_attack_margin(@combatant, @target, 0)
+        end
         
+        it "should add in an attacker modifier" do
+          FS3Combat.should_receive(:roll_attack).with(@combatant, 1) { 0 }
+          FS3Combat.should_receive(:roll_defense).with(@target, "Rifle") { 0 }
+          FS3Combat.determine_attack_margin(@combatant, @target, 1)
+        end
+        
+        it "should subtract recoil" do
+          @combatant.stub(:recoil) { 2 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, -2) { 0 }
+          FS3Combat.should_receive(:roll_defense).with(@target, "Rifle") { 0 }
+          FS3Combat.determine_attack_margin(@combatant, @target, 0)
+        end
+        
+        it "should be a dodege if the defender wins" do
+          FS3Combat.stub(:roll_attack) { 1 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_dodged"
+          result[:hit].should eq false
+        end
+        
+        it "should hit cover if defender is in cover and cover applies" do
+          @target.stub(:stance) { "Cover" }
+          FS3Combat.should_receive(:stopped_by_cover?).with(2) { true }
+          FS3Combat.stub(:roll_attack) { 3 }
+          FS3Combat.stub(:roll_defense) { 1 }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_hits_cover"
+          result[:hit].should eq false
+        end
+
+        it "should be hit if the attacker ties" do
+          FS3Combat.stub(:roll_attack) { 2 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should be_nil
+          result[:attacker_net_successes].should eq 0
+          result[:hit].should eq true
+        end
+
+        it "should be hit if the attacker wins" do
+          FS3Combat.stub(:roll_attack) { 4 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should be_nil
+          result[:attacker_net_successes].should eq 2
+          result[:hit].should eq true
+        end
       end
       
       describe :attack_target do    
         before do
           @target = double
-          @target.stub(:name) { "Target" }
+          @combatant = double
+          
+          @target.stub(:name) { "D" }
+          @combatant.stub(:name) { "A" }
+          
           @combatant.stub(:weapon) { "Knife" }
-          @target.stub(:stance) { "Normal" }
-          @target.stub(:determine_armor) { 0 }
           FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
+          FS3Combat.stub(:determine_attack_margin) { { hit: true, attacker_net_successes: 2 }}
+          FS3Combat.stub(:determine_armor) { 0 }
+          FS3Combat.stub(:determine_damage) { "GRAZE" }
+          FS3Combat.stub(:weapon_is_stun?) { false }
+          FS3Combat.stub(:determine_hitloc) { "Chest" }
+          @combatant.stub(:inflict_damage)
+          @combatant.stub(:update)
+          @combatant.stub(:recoil) { 0 }
         end
             
-        it "should dodge if defense roll greater" do
-          @target.stub(:roll_defense) { 2 }
-          @combatant.stub(:roll_attack) { 1 }
-          @combatant.attack_target(@target).should eq "fs3combat.attack_dodged"
+        it "should return margin message if a miss" do
+          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, 0, nil) { { hit: false, message: "dodged" }}
+          FS3Combat.attack_target(@combatant, @target).should eq "dodged"
         end
-
-        it "should miss if attack roll fails" do
-          @target.stub(:roll_defense) { 2 }
-          @combatant.stub(:roll_attack) { 0 }
-          @combatant.attack_target(@target).should eq "fs3combat.attack_missed"
-        end
-      
-        describe "cover" do
-          before do
-            @target.stub(:stance) { "Cover" }
-            @target.stub(:roll_defense) { 2 }
-            @target.stub(:do_damage) { }
-            @target.stub(:determine_damage) { }
-            @target.stub(:determine_hitloc) { }
-          
-            # Note:  By seeding the random number generator, we can avoid the randomness.
-            #   22 makes the first random number 4.
-            #   220 makes the first random number 92.
-            Kernel.srand 22
-          end
         
-          it "should miss cover if margin high enough" do
-            @combatant.stub(:roll_attack) { 5 }
-            @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
-          end
-
-          it "should miss cover if margin is low but random die roll high" do
-            Kernel.srand 220
-            @combatant.stub(:roll_attack) { 2 }
-            @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
-          end
-
-          it "should hit cover if margin and random die roll low" do
-            @combatant.stub(:roll_attack) { 2 }
-            @combatant.attack_target(@target).should eq "fs3combat.attack_hits_cover"
-          end
+        it "should pass along the attack mod" do
+          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, -1, nil) { { hit: false, message: "dodged" }}
+          FS3Combat.attack_target(@combatant, @target, -1)
+        end
+        
+        it "should determine hit location if no called shot" do
+          FS3Combat.should_receive(:determine_hitloc).with(@target, 2, nil) { "Head" }
+          FS3Combat.attack_target(@combatant, @target)
         end
 
-        describe "success" do
-          before do
-            @combatant.stub(:roll_attack) { 3 }
-            @target.stub(:roll_defense) { 2 }              
-            @target.stub(:determine_hitloc) { "Head" }
-            @combatant.stub(:weapon) { "Knife" }
-            FS3Combat.stub(:weapon_is_stun?).with("Knife") { false }
-            @target.stub(:do_damage)
-            @target.stub(:determine_damage) { "M" }
-          end
-    
-          describe "armor" do
-            it "should be stopped completely by armor if armor value >= 100" do
-              @target.stub(:determine_armor) { 101 }
-              @target.should_not_receive(:do_damage)
-              @combatant.attack_target(@target).should eq "fs3combat.attack_stopped_by_armor"              
-            end
+        it "should determine hit location if called shot" do
+          FS3Combat.should_receive(:determine_hitloc).with(@target, 2, "Arm") { "Hand" }
+          FS3Combat.attack_target(@combatant, @target, 0, "Arm")
+        end
         
-            it "should reduce damage by armor if it applies" do
-              @target.stub(:determine_armor) { 10 }
-              @target.should_receive(:determine_damage).with("Head", "Knife", 10) { "M" }
-              @combatant.attack_target(@target).should eq "fs3combat.attack_hits" 
-            end
-          end
-      
-          describe "single fire" do
-            it "should hit if attack roll greater" do
-              @combatant.attack_target(@target).should eq "fs3combat.attack_hits"
-            end
-  
-            it "should determine hitloc based on successes" do
-              @target.should_receive(:determine_hitloc).with(1) { "Body" }
-              @combatant.attack_target(@target)
-            end
-    
-            it "should inflict damage" do
-              @target.should_receive(:do_damage).with("M", "Knife", "Head")
-              @combatant.attack_target(@target)
-            end
-    
-            it "should calculate damage" do
-              @target.should_receive(:determine_damage).with("Head", "Knife", 0) { "M" }
-              @combatant.attack_target(@target)
-            end
-          
-            it "should inflict recoil" do
-              @combatant.stub(:recoil) { 2 }
-              @combatant.should_receive(:recoil=).with(3)
-              @combatant.attack_target(@target)
-            end
-          end
-    
-          describe "called shot" do              
-            it "should hit the desired location if margin > 2" do
-              @target.stub(:roll_defense) { 0 }
-              @target.should_not_receive(:determine_hitloc)
-              @target.should_receive(:do_damage).with("M", "Knife", "Right Leg")
-              @combatant.attack_target(@target, "Right Leg")
-            end
-      
-            it "should roll random hitloc with penalty if margin <= 2" do
-              @target.should_receive(:determine_hitloc).with(-1) { "Body" }
-              @target.should_receive(:do_damage).with("M", "Knife", "Body")
-              @combatant.attack_target(@target, "Right Leg")
-            end
-          end
+        it "should return armor message if stopped by armor" do
+          FS3Combat.should_receive(:determine_armor).with(@target, "Chest", "Knife", 2) { 110 }
+          FS3Combat.attack_target(@combatant, @target, 0, "Arm").should eq "fs3combat.attack_stopped_by_armor"
+        end
+        
+        it "should reduce damage if armor slowed the attack" do
+          FS3Combat.stub(:determine_armor) { 22 }
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 22) { "INCAP" }
+          FS3Combat.attack_target(@combatant, @target)
+        end
+        
+        it "should inflict damage" do
+          @combatant.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false)
+          FS3Combat.attack_target(@combatant, @target)
+        end
+        
+        it "should update recoil" do
+          @combatant.stub(:recoil) { 5 }
+          @combatant.should_receive(:update).with(recoil: 6)
+          FS3Combat.attack_target(@combatant, @target)
+        end
+        
+        it "should return a hit message" do
+          FS3Combat.attack_target(@combatant, @target).should eq "fs3combat.attack_hits"
         end
       end
     end

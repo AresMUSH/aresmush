@@ -205,32 +205,44 @@ module AresMUSH
       
       describe :determine_hitloc do 
         before do 
-          FS3Combat.stub(:hitloc_chart) { ["Head", "Arm", "Leg", "Body" ]}
+          FS3Combat.stub(:hitloc_chart) { {
+            "Chest" => [ "A", "B", "C" ],
+            "Head" => [ "D", "E", "F", "G" ]
+          }}
         end
         
         it "should work with random lowest value" do
-          FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 0).should eq "Head"
+          FS3Combat.should_receive(:rand).with(3) { 0 }
+          FS3Combat.determine_hitloc(@combatant, 0).should eq "A"
         end
         
         it "should work with random highest value" do
-          FS3Combat.should_receive(:rand).with(4) { 3 }
-          FS3Combat.determine_hitloc(@combatant, 0).should eq "Body"
+          FS3Combat.should_receive(:rand).with(3) { 2 }
+          FS3Combat.determine_hitloc(@combatant, 0).should eq "C"
         end
         
         it "should add in successes with lowest random value" do
-          FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 1).should eq "Arm"
+          FS3Combat.should_receive(:rand).with(3) { 0 }
+          FS3Combat.determine_hitloc(@combatant, 1).should eq "B"
         end
         
         it "should add in successes with highest random value" do
-          FS3Combat.should_receive(:rand).with(4) { 3 }
-          FS3Combat.determine_hitloc(@combatant, 1).should eq "Body"
+          FS3Combat.should_receive(:rand).with(3) { 2 }
+          FS3Combat.determine_hitloc(@combatant, 1).should eq "C"
         end
         
         it "should work with lowest value and negative modifier" do
+          FS3Combat.should_receive(:rand).with(3) { 0 }
+          FS3Combat.determine_hitloc(@combatant, -2).should eq "A"
+        end
+        
+        it "should return the exact hit location if called shot and net > 2" do
+          FS3Combat.determine_hitloc(@combatant, 3, "Head").should eq "Head"
+        end
+        
+        it "should use the called shot hitloc chart if called shot and net < 2" do
           FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, -2).should eq "Head"
+          FS3Combat.determine_hitloc(@combatant, 1, "Head").should eq "E"
         end
       end
       

@@ -93,7 +93,7 @@ module AresMUSH
       damage
     end
     
-    def self.determine_armor(combatant, hitloc, weapon, attack_net_success)
+    def self.determine_armor(combatant, hitloc, weapon, attacker_net_successes)
       vehicle = combatant.vehicle
       if (vehicle)
         armor = vehicle.armor
@@ -113,7 +113,7 @@ module AresMUSH
       pen_roll = FS3Skills::Api.one_shot_die_roll(pen)
       protect_roll = FS3Skills::Api.one_shot_die_roll(protect)
       
-      margin = pen_roll + attack_net_success - protect_roll
+      margin = pen_roll + attacker_net_successes - protect_roll
       if (margin > 2)
         return 0
       elsif (margin < -2)
@@ -137,19 +137,22 @@ module AresMUSH
     end
     
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }
-    def self.determine_attack_margin(combatant, target, mod)
+    def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil)
+      weapon = combatant.weapon
       attack_roll = FS3Combat.roll_attack(combatant, mod - combatant.recoil)
-      defense_roll = target.roll_defense(combatant.weapon)
-            
-      attacker_net = attack_roll - defense_roll
+      defense_roll = FS3Combat.roll_defense(target, weapon)
+      
+      attacker_net_successes = attack_roll - defense_roll
       hit = false
       
       if (attack_roll <= 0)
-        message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name)
-      elsif (defense_roll > attack_roll)
-        message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name)
-      elsif (target.stance == "Cover" && FS3Combat.stopped_by_cover?(attacker_net))
-        message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name)        
+        message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (attacker_net_successes < 0)
+        message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (target.stance == "Cover" && FS3Combat.stopped_by_cover?(attacker_net_successes))
+        message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (called_shot && (attacker_net_successes < 1))
+        message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
       else
         hit = true
       end
@@ -157,53 +160,43 @@ module AresMUSH
       {
         message: message,
         hit: hit,
-        attacker_net_successes: attacker_net
+        attacker_net_successes: attacker_net_successes
       }
     end
       
-    def self.attack_target(combatant, target, called_shot = nil, mod = 0)
+    def self.attack_target(combatant, target, mod = 0, called_shot = nil)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot)
+      return margin[:message] if !margin[:hit]
       
-      # Called shot either hits the desired location, or chooses a random location
-      # at a penalty for missing.
-      if (called_shot)
-        if (margin > 2)
-          hitloc = called_shot
-        else
-          hitloc = target.determine_hitloc(margin - 2)
-        end
-      else
-        hitloc = target.determine_hitloc(margin)
-      end
-        
-      armor = target.determine_armor(hitloc, combatant.weapon)
+      weapon = combatant.weapon
+      
+      attacker_net_successes = margin[:attacker_net_successes]
+      hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot)
+      armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
         
       if (armor >= 100)
-        message = t('fs3combat.attack_stopped_by_armor', :name => combatant.name, :target => target.name, :hitloc => hitloc)
-      else
-          
-        reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
-          
-        damage = target.determine_damage(hitloc, combatant.weapon, armor)
-          
-        is_stun = FS3Combat.weapon_is_stun?(combatant.weapon)
-        desc = "#{combatant.weapon} - #{hitloc}"
-        mock = !combatant.combat.is_real
-
-        combatant.inflict_damage(severity, desc, is_stun)
-          
-          
-        message = t('fs3combat.attack_hits', 
-        :name => combatant.name, 
-        :target => target.name,
-        :hitloc => hitloc,
-        :armor => reduced_by_armor,
-        :damage => FS3Combat.display_severity(damage)) 
+        return t('fs3combat.attack_stopped_by_armor', :name => combatant.name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
       end
+                  
+      reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
+          
+      damage = FS3Combat.determine_damage(target, hitloc, weapon, armor)
+          
+      is_stun = FS3Combat.weapon_is_stun?(weapon)
+      desc = "#{weapon} - #{hitloc}"
+
+      combatant.inflict_damage(damage, desc, is_stun)
       
+      recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
+      combatant.update(recoil: combatant.recoil + recoil)
       
-      combatant.recoil = combatant.recoil + FS3Combat.weapon_stat(combatant.weapon, "recoil")
-      
-      message
+      return t('fs3combat.attack_hits', 
+            :name => combatant.name, 
+            :weapon => weapon,
+            :target => target.name,
+            :hitloc => hitloc,
+            :armor => reduced_by_armor,
+            :damage => FS3Combat.display_severity(damage)) 
     end
   end
 end

@@ -63,12 +63,21 @@ module AresMUSH
       return "Normal"
     end
     
-    def self.determine_hitloc(combatant, successes)
+    def self.determine_hitloc(combatant, attacker_net_successes, called_shot = nil)
+      return called_shot if (called_shot && attacker_net_successes > 2)
+
       hitloc_chart = FS3Combat.hitloc_chart(combatant)
-      roll = rand(hitloc_chart.count) + successes
-      roll = [roll, hitloc_chart.count - 1].min
+            
+      if (called_shot)
+        locations = hitloc_chart[called_shot]
+      else
+        locations = hitloc_chart[hitloc_chart.keys.first]
+      end
+      
+      roll = rand(locations.count) + attacker_net_successes
+      roll = [roll, locations.count - 1].min
       roll = [0, roll].max
-      hitloc_chart[roll]
+      locations[roll]
     end    
       
     def self.roll_initiative(combatant, ability)

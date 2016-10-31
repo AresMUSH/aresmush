@@ -58,7 +58,7 @@ module AresMUSH
     def total_damage_mod
       FS3Combat.total_damage_mod(self.associated_model)
     end
-    
+
     def inflict_damage(severity, desc, is_stun = false)
       FS3Combat.inflict_damage(self.associated_model, severity, desc, is_stun, !combatant.combat.is_real)
     end

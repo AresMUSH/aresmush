@@ -12,7 +12,7 @@ fs3combat:
             description: "Viper space fighter"
             pilot_skill: Piloting
             toughness: 5
-            hitloc_chart: Viper
+            hitloc_chart: Fighter
             armor: Viper
             weapons:
                 - Kew
@@ -22,7 +22,7 @@ fs3combat:
             description: "Cylon Raider space fighter"
             pilot_skill: Piloting
             toughness: 2
-            hitloc_chart: Raider
+            hitloc_chart: Fighter
             armor: Raider
             weapons:
                 - Kew
@@ -34,7 +34,7 @@ fs3combat:
             description: "Raptor space command and control"
             pilot_skill: Piloting
             toughness: 7
-            hitloc_chart: Raptor
+            hitloc_chart: Transport
             armor: Raptor
             weapons:
                 - Ecm
@@ -46,7 +46,7 @@ fs3combat:
             description: "Cylon Heavy Raider space transport/bomber"
             pilot_skill: Piloting
             toughness: 7
-            hitloc_chart: Raptor
+            hitloc_chart: Transport
             armor: Heavy Raider
             weapons:
                 - Kew

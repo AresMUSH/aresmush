@@ -44,6 +44,7 @@ en:
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
         hud_subtitle: "%xhCombatant         Damage  Weapon(ammo/specials)     Action(stance)%xn"
+        
         # ----------------------------
         # START, STOP, JOIN, LEAVE
         # ----------------------------
@@ -212,10 +213,11 @@ en:
         attack_special_called: "(called shot to the %{location})"
         attack_special_mod: "(modifier: %{mod})"
         invalid_attack_special: "That is not a valid attack special."
-        attack_missed: "%{name} attacks %{target} but MISSES!"
-        attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
-        attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc} %{armor}"
-        attack_hit_cover: "%{name} attacks %{target} but hits the COVER they're behind."
+        attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
+        attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} DODGES!"
+        attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
+        attack_hits: "%{name} attacks %{target} with %{weapons} and HITS!  %{damage} wound to %{hitloc} %{armor}"
+        attack_hit_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
@@ -227,7 +229,7 @@ en:
         fullauto_resolution_msg: "%{name} fires full-auto!"
         too_many_targets: "You can only attack up to 4 targets with full-auto fire."
         
-        attack_stopped_by_armor: "%{name} attacks %{target}.  Stopped by ARMOR on %{hitloc}."
+        attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"
         
         # ----------------------------

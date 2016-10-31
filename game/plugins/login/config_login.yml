@@ -33,3 +33,4 @@ login:
         "logout" : "quit"
         "con" : "connect"
         "newpassword": "password/reset"
+        "conn": "connect"
