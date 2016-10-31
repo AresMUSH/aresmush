@@ -172,11 +172,31 @@ module AresMUSH
       end
       
       describe :hitloc_chart do
-        it "should use a soldier's hitloc chart" do
+        before do 
+          @vehicle = double
           @combatant.stub(:combatant_type) { "soldier" }
+          @combatant.stub(:vehicle) { nil }
+        end
+          
+        it "should use a soldier's hitloc chart" do
           FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
           FS3Combat.should_receive(:hitloc).with("human") { { "areas" => "x" } }
           FS3Combat.hitloc_chart(@combatant).should eq "x"
+        end
+        
+        it "should use a pilot's vehicle's hitloc chart if not a crew hit" do
+          @combatant.stub(:vehicle) { @vehicle }
+          @vehicle.stub(:vehicle_type) { "Raider" }
+          FS3Combat.should_receive(:vehicle_stat).with("Raider", "hitloc_chart") { "fighter" }
+          FS3Combat.should_receive(:hitloc).with("fighter") { { "areas" => "y" } }
+          FS3Combat.hitloc_chart(@combatant).should eq "y"
+        end
+        
+        it "should use the pilot's hitloc chart if a crew hit" do
+          @combatant.stub(:vehicle) { @vehicle }
+          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
+          FS3Combat.should_receive(:hitloc).with("human") { { "areas" => "x" } }
+          FS3Combat.hitloc_chart(@combatant, true).should eq "x"
         end
       end
     

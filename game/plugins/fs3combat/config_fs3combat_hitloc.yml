@@ -8,7 +8,7 @@ fs3combat:
                 Chest: [ 'Left Leg', 'Right Leg',  'Left Arm', 'Right Arm', 'Right Arm', 'Abdomen', 'Abdomen', 'Chest', 'Chest', 'Chest' ]
                 Left Leg: [ 'Chest', 'Right Foot', 'Right Leg', 'Right Leg', 'Abdomen', 'Abdomen', 'Left Foot', 'Left Leg', 'Left Leg', 'Left Leg' ]
                 Right Leg: [ 'Chest', 'Left Foot', 'Left Leg', 'Left Leg', 'Abdomen',  'Abdomen', 'Right Foot', 'Right Leg', 'Right Leg', 'Right Leg' ]
-                Groin: [ 'Abdomen', 'Abdomen', 'Abdomen', 'Left Leg', 'Right Leg',  'Left Leg', 'Right Leg' 'Groin', 'Groin', 'Groin' ]
+                Groin: [ 'Abdomen', 'Abdomen', 'Abdomen', 'Left Leg', 'Right Leg',  'Left Leg', 'Right Leg', 'Groin', 'Groin', 'Groin' ]
                 Left Hand: [ 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Left Arm', 'Left Arm', 'Left Arm', 'Left Hand', 'Left Hand', 'Left Hand' ]
                 Right Hand: [ 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Right Arm', 'Right Arm', 'Right Arm', 'Left Hand', 'Left Hand', 'Left Hand' ]
                 Left Arm:  [ 'Head', 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Left Hand', 'Left Hand', 'Left Arm', 'Left Arm', 'Left Hand' ]
@@ -26,14 +26,14 @@ fs3combat:
                 - Groin
         Fighter:
             areas:
-                Body: [ 'Controls', 'Tail', 'Weapon', 'Wing', 'Wing' 'Cockpit', 'Nose', 'Body', 'Body', 'Body' ]
-                Engine: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body' 'Tail', 'Tail', 'Engine', 'Engine', 'Engine' ]
-                Tail: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body' 'Engine', 'Engine', 'Tail', 'Tail', 'Tail' ]
-                Wing: [ 'Controls', 'Cockpit', 'Weapon', 'Body', 'Body' 'Tail', 'Tail', 'Wing', 'Wing', 'Wing' ]
-                Weapon: [ 'Controls', 'Controls', 'Body', 'Body', 'Wing' 'Wing', 'Wing', 'Weapon', 'Weapon', 'Weapon' ]
-                Nose: [ 'Controls', 'Weapon', 'Wing', 'Wing', 'Cockpit' 'Body', 'Body', 'Nose', 'Nose', 'Nose' ]
-                Cockpit: [ 'Controls', 'Weapon', 'Wing', 'Body', 'Body' 'Nose', 'Nose', 'Cockpit', 'Cockpit', 'Cockpit' ]
-                Controls: [ 'Cockpit', 'Weapon', 'Wing', 'Body', 'Body' 'Nose', 'Nose', 'Controls', 'Controls', 'Controls' ]
+                Body: [ 'Controls', 'Tail', 'Weapon', 'Wing', 'Wing', 'Cockpit', 'Nose', 'Body', 'Body', 'Body' ]
+                Engine: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body', 'Tail', 'Tail', 'Engine', 'Engine', 'Engine' ]
+                Tail: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body', 'Engine', 'Engine', 'Tail', 'Tail', 'Tail' ]
+                Wing: [ 'Controls', 'Cockpit', 'Weapon', 'Body', 'Body', 'Tail', 'Tail', 'Wing', 'Wing', 'Wing' ]
+                Weapon: [ 'Controls', 'Controls', 'Body', 'Body', 'Wing', 'Wing', 'Wing', 'Weapon', 'Weapon', 'Weapon' ]
+                Nose: [ 'Controls', 'Weapon', 'Wing', 'Wing', 'Cockpit', 'Body', 'Body', 'Nose', 'Nose', 'Nose' ]
+                Cockpit: [ 'Controls', 'Weapon', 'Wing', 'Body', 'Body', 'Nose', 'Nose', 'Cockpit', 'Cockpit', 'Cockpit' ]
+                Controls: [ 'Cockpit', 'Weapon', 'Wing', 'Body', 'Body', 'Nose', 'Nose', 'Controls', 'Controls', 'Controls' ]
             vital_areas:
                 - Body
                 - Engine
@@ -44,15 +44,15 @@ fs3combat:
                 - Cockpit
         Transport:
             areas:
-                Body: [ 'Controls', 'Tail', 'Weapon', 'Wing', 'Wing' 'Cockpit', 'Nose', 'Body', 'Body', 'Body' ]
-                Engine: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body' 'Tail', 'Tail', 'Engine', 'Engine', 'Engine' ]
-                Tail: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body' 'Engine', 'Engine', 'Tail', 'Tail', 'Tail' ]
-                Wing: [ 'Controls', 'Cockpit', 'Weapon', 'Body', 'Body' 'Tail', 'Tail', 'Wing', 'Wing', 'Wing' ]
-                Weapon: [ 'Controls', 'Controls', 'Body', 'Body', 'Wing' 'Wing', 'Wing', 'Weapon', 'Weapon', 'Weapon' ]
-                Nose: [ 'Controls', 'Weapon', 'Wing', 'Wing', 'Cockpit' 'Body', 'Body', 'Nose', 'Nose', 'Nose' ]
-                Cockpit: [ 'Controls', 'Weapon', 'Wing', 'Body', 'Body' 'Nose', 'Nose', 'Cockpit', 'Cockpit', 'Cockpit' ]
-                Controls: [ 'Cockpit', 'Weapon', 'Wing', 'Body', 'Body' 'Nose', 'Nose', 'Controls', 'Controls', 'Controls' ]
-                Cabin: [ 'Controls', 'Tail', 'Weapon', 'Wing', 'Wing' 'Cockpit', 'Nose', 'Cabin', 'Cabin', 'Cabin' ]
+                Body: [ 'Controls', 'Tail', 'Weapon', 'Wing', 'Wing', 'Cockpit', 'Nose', 'Body', 'Body', 'Body' ]
+                Engine: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body', 'Tail', 'Tail', 'Engine', 'Engine', 'Engine' ]
+                Tail: [ 'Controls', 'Wing', 'Weapon', 'Body', 'Body', 'Engine', 'Engine', 'Tail', 'Tail', 'Tail' ]
+                Wing: [ 'Controls', 'Cockpit', 'Weapon', 'Body', 'Body', 'Tail', 'Tail', 'Wing', 'Wing', 'Wing' ]
+                Weapon: [ 'Controls', 'Controls', 'Body', 'Body', 'Wing', 'Wing', 'Wing', 'Weapon', 'Weapon', 'Weapon' ]
+                Nose: [ 'Controls', 'Weapon', 'Wing', 'Wing', 'Cockpit', 'Body', 'Body', 'Nose', 'Nose', 'Nose' ]
+                Cockpit: [ 'Controls', 'Weapon', 'Wing', 'Body', 'Body', 'Nose', 'Nose', 'Cockpit', 'Cockpit', 'Cockpit' ]
+                Controls: [ 'Cockpit', 'Weapon', 'Wing', 'Body', 'Body', 'Nose', 'Nose', 'Controls', 'Controls', 'Controls' ]
+                Cabin: [ 'Controls', 'Tail', 'Weapon', 'Wing', 'Wing', 'Cockpit', 'Nose', 'Cabin', 'Cabin', 'Cabin' ]
             vital_areas:
                 - Body
                 - Engine
@@ -64,10 +64,10 @@ fs3combat:
                 - Cabin
         AA Battery:
             areas:
-                Weapon: [ 'Crew', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Weapon' 'Weapon', 'Weapon' ]
-                Controls: [ 'Crew', 'Weapon' 'Weapon', 'Weapon', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls' ]
-                Body: [ 'Controls', 'Controls', 'Controls', 'Crew', 'Weapon' 'Weapon', 'Weapon', 'Body', 'Body', 'Body' ]
-                Crew: [ 'Weapon', 'Weapon' 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Crew', 'Crew', 'Crew' ]
+                Weapon: [ 'Crew', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Weapon', 'Weapon', 'Weapon' ]
+                Controls: [ 'Crew', 'Weapon', 'Weapon', 'Weapon', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls' ]
+                Body: [ 'Controls', 'Controls', 'Controls', 'Crew', 'Weapon', 'Weapon', 'Weapon', 'Body', 'Body', 'Body' ]
+                Crew: [ 'Weapon', 'Weapon', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Crew', 'Crew', 'Crew' ]
             vital_areas:
                 - Body
             critical_areas:

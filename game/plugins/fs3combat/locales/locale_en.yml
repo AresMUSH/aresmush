@@ -210,6 +210,7 @@ en:
         attack_action_msg_long: "%{name} will attack %{target}."
         attack_action_msg_short: "Attack %{target}"
         attack_special_burst: "(burst)"
+        attack_special_fullauto: "(fullauto)"
         attack_special_called: "(called shot to the %{location})"
         attack_special_mod: "(modifier: %{mod})"
         invalid_attack_special: "That is not a valid attack special."
@@ -221,6 +222,7 @@ en:
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
+        no_fullauto_called_shots: "You can't do called shots with bursts or multiple targets."
         fires_burst: "%{name} fires a burst!"  
          
         fires_fullauto: "%{name} fires full-auto!"     
@@ -231,6 +233,7 @@ en:
         
         attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"
+        
         
         # ----------------------------
         # PASS
@@ -252,7 +255,8 @@ en:
         # AMMO / RELOAD
         # ----------------------------
 
-        not_enough_ammo_for_burst: "You need at least 2 rounds for burst or fullauto fire."
+        not_enough_ammo_for_burst: "You need 3 rounds for burst fire."
+        not_enough_ammo_for_fullauto: "You need 10 rounds for fullauto fire."
         out_of_ammo: "You are out of ammo."
         weapon_clicks_empty: "%{name}'s weapon clicks empty."
         weapon_empty: "%{name}'s weapon is empty."

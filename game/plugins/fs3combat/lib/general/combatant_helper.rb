@@ -45,10 +45,13 @@ module AresMUSH
       skill
     end
     
-    def self.hitloc_chart(combatant)
-      # TODO - If combatant is pilot or passenger, use their vehicle's hitloc chart
-      #  except for crew hits - maybe pass in a crew_hit bool?
-      hitloc_type = FS3Combat.combatant_type_stat(combatant.combatant_type, "hitloc")
+    def self.hitloc_chart(combatant, crew_hit = false)
+      vehicle = combatant.vehicle
+      if (!crew_hit && vehicle)
+        hitloc_type = FS3Combat.vehicle_stat(vehicle.vehicle_type, "hitloc_chart")
+      else
+        hitloc_type = FS3Combat.combatant_type_stat(combatant.combatant_type, "hitloc")
+      end
       FS3Combat.hitloc(hitloc_type)["areas"]
     end
     
