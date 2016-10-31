@@ -215,9 +215,9 @@ en:
         attack_special_mod: "(modifier: %{mod})"
         invalid_attack_special: "That is not a valid attack special."
         attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
-        attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} DODGES!"
+        attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
         attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
-        attack_hits: "%{name} attacks %{target} with %{weapons} and HITS!  %{damage} wound to %{hitloc} %{armor}"
+        attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc} %{armor}"
         attack_hit_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."

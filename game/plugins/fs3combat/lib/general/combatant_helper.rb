@@ -5,7 +5,7 @@ module AresMUSH
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       damage_mod = combatant.total_damage_mod
-      stance_mod = combatant.attack_stance_mod(combatant)
+      stance_mod = combatant.attack_stance_mod
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.targets[0])) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod + luck_mod

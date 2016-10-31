@@ -134,7 +134,7 @@ module AresMUSH
           @combatant = double
           @combatant.stub(:vehicle) { nil }
           @combatant.stub(:armor) { "Tactical" }
-          FS3Skills::Api.stub(:one_shot_die_roll) { 0 }
+          FS3Skills::Api.stub(:one_shot_die_roll) { { successes: 0 } }
           FS3Combat.stub(:weapon_stat) { 3 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 5 } }
         end
@@ -173,27 +173,27 @@ module AresMUSH
         end
         
         it "should bypass armor if pen wins by enough" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 2 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 5 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 2 } }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 5 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
         it "should be stopped by armor if protect wins by enough" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 5 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 2 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 5 } }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 }  }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 100
         end
 
         it "should randomize protection if no decisive winner" do
           FS3Combat.stub(:rand) { 29 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 4 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 2 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 4 }  }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 }  }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 29
         end
 
         it "should add in attacker successes" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { 2 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { 4 }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 2 }  }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 4 }  }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 0
         end
       end

@@ -19,7 +19,7 @@ module AresMUSH
       self.damage.each { |d| d.delete }
     end
     
-    def roll_ability(ability, mod)
+    def roll_ability(ability, mod = 0)
       FS3Skills::Api.one_shot_die_roll(self.skill + mod)
     end
     

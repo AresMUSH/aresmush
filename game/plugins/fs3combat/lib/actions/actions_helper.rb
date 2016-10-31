@@ -46,8 +46,8 @@ module AresMUSH
     
     def self.set_action(client, enactor, combat, combatant, action_klass, args)
       action = action_klass.new(combatant, args)
-      combatant.action = action
-      puts "SET #{action} #{combatant.action}"
+      combatant.update(action_klass: action_klass)
+      combatant.update(action_args: args)
       error = action.prepare
       if (error)
         client.emit_failure error
@@ -105,17 +105,22 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
 
-      pen_roll = FS3Skills::Api.one_shot_die_roll(pen)
-      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)
+      pen_roll = FS3Skills::Api.one_shot_die_roll(pen)[:successes]
+      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
       
       margin = pen_roll + attacker_net_successes - protect_roll
       if (margin > 2)
-        return 0
+        protection = 0
       elsif (margin < -2)
-        return 100
+        protection = 100
       else
-        return rand(50)
+        protection = rand(50)
       end
+      
+      Global.logger.debug "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
+      " pen=#{pen_roll} protect=#{protect_roll} result=#{protection}"
+      
+      protection
     end
     
     def self.stopped_by_cover?(attacker_net_successes)
@@ -128,7 +133,13 @@ module AresMUSH
         cover_chance = 0
       end
       
-      return rand(100) >= cover_chance
+      roll = rand(100) 
+      result = roll >= cover_chance
+      
+      Global.logger.debug "Determined cover: net=#{attacker_net_successes}" +
+      " chance=#{cover_chance} roll=#{roll} result=#{protection}"
+      
+      rand(100) >= cover_chance 
     end
     
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }
@@ -151,6 +162,10 @@ module AresMUSH
       else
         hit = true
       end
+      
+      Global.logger.debug "Attack Margin: mod=#{mod} called=#{called_shot} " +
+      " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} result=#{message}"
+      
       
       {
         message: message,

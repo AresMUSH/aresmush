@@ -36,7 +36,6 @@ module AresMUSH
         
         initiative_order.each_with_index do |c, i|
           Global.dispatcher.queue_timer(i, "Combat Turn", client) do
-            puts "Action for #{c.name} #{c.action} #{c.is_noncombatant?}"
             next if !c.action
             next if c.is_noncombatant?
 

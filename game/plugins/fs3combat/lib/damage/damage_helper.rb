@@ -70,7 +70,7 @@ module AresMUSH
        char_or_npc.damage.each do |w|
          mod = mod + w.wound_mod
        end
-       -mod
+       -mod.round(2)
      end
      
      def self.treat_skill

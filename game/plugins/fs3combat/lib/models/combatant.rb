@@ -3,8 +3,8 @@ module AresMUSH
   class Combatant < Ohm::Model
     include ObjectModel
       
-    attr_accessor :action
-    
+    attribute :action_klass
+    attribute :action_args    
     attribute :combatant_type
     attribute :weapon
     attribute :weapon_specials, :type => DataType::Array
@@ -33,6 +33,14 @@ module AresMUSH
       self.vehicle.delete if self.vehicle
     end
     
+    def action
+      return nil if !self.action_klass
+      klass = FS3Combat.const_get(self.action_klass)
+      a = klass.new(self, self.action_args)
+      a.prepare
+      a
+    end
+      
     def is_aiming?
       !!self.aim_target
     end
@@ -63,7 +71,7 @@ module AresMUSH
     end
 
     def inflict_damage(severity, desc, is_stun = false)
-      FS3Combat.inflict_damage(self.associated_model, severity, desc, is_stun, !combatant.combat.is_real)
+      FS3Combat.inflict_damage(self.associated_model, severity, desc, is_stun, !self.combat.is_real)
     end
       
     def attack_stance_mod
