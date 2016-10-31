@@ -165,17 +165,26 @@ module AresMUSH
     end
       
     def self.attack_target(combatant, target, mod = 0, called_shot = nil)
+      recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
+      combatant.update(recoil: combatant.recoil + recoil)
+      
       margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot)
       return margin[:message] if !margin[:hit]
-      
+    
       weapon = combatant.weapon
       
       attacker_net_successes = margin[:attacker_net_successes]
+            
+      FS3Combat.resolve_attack(combatant.name, target, weapon, attacker_net_successes, called_shot)
+    end
+    
+    
+    def self.resolve_attack(attacker_name, target, weapon, attacker_net_successes = 0, called_shot = nil)
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot)
       armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
         
       if (armor >= 100)
-        return t('fs3combat.attack_stopped_by_armor', :name => combatant.name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
+        return t('fs3combat.attack_stopped_by_armor', :name => attacker_name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
       end
                   
       reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
@@ -185,13 +194,10 @@ module AresMUSH
       is_stun = FS3Combat.weapon_is_stun?(weapon)
       desc = "#{weapon} - #{hitloc}"
 
-      combatant.inflict_damage(damage, desc, is_stun)
-      
-      recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
-      combatant.update(recoil: combatant.recoil + recoil)
+      target.inflict_damage(damage, desc, is_stun)
       
       return t('fs3combat.attack_hits', 
-            :name => combatant.name, 
+            :name => attacker_name, 
             :weapon => weapon,
             :target => target.name,
             :hitloc => hitloc,

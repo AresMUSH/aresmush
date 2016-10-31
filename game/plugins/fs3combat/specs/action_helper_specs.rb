@@ -267,26 +267,21 @@ module AresMUSH
         end
       end
       
-      describe :attack_target do    
+      describe :attack_target do
         before do
           @target = double
           @combatant = double
-          
-          @target.stub(:name) { "D" }
-          @combatant.stub(:name) { "A" }
-          
           @combatant.stub(:weapon) { "Knife" }
           FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
-          FS3Combat.stub(:determine_attack_margin) { { hit: true, attacker_net_successes: 2 }}
-          FS3Combat.stub(:determine_armor) { 0 }
-          FS3Combat.stub(:determine_damage) { "GRAZE" }
-          FS3Combat.stub(:weapon_is_stun?) { false }
-          FS3Combat.stub(:determine_hitloc) { "Chest" }
-          @combatant.stub(:inflict_damage)
-          @combatant.stub(:update)
           @combatant.stub(:recoil) { 0 }
+          @combatant.stub(:update)
+          
+          @combatant.stub(:name) { "A" }
+          FS3Combat.stub(:determine_attack_margin) { { hit: true, attacker_net_successes: 2 }}
+          
+          FS3Combat.stub(:resolve_attack)
         end
-            
+        
         it "should return margin message if a miss" do
           FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, 0, nil) { { hit: false, message: "dodged" }}
           FS3Combat.attack_target(@combatant, @target).should eq "dodged"
@@ -297,40 +292,65 @@ module AresMUSH
           FS3Combat.attack_target(@combatant, @target, -1)
         end
         
-        it "should determine hit location if no called shot" do
-          FS3Combat.should_receive(:determine_hitloc).with(@target, 2, nil) { "Head" }
-          FS3Combat.attack_target(@combatant, @target)
-        end
-
-        it "should determine hit location if called shot" do
-          FS3Combat.should_receive(:determine_hitloc).with(@target, 2, "Arm") { "Hand" }
-          FS3Combat.attack_target(@combatant, @target, 0, "Arm")
-        end
-        
-        it "should return armor message if stopped by armor" do
-          FS3Combat.should_receive(:determine_armor).with(@target, "Chest", "Knife", 2) { 110 }
-          FS3Combat.attack_target(@combatant, @target, 0, "Arm").should eq "fs3combat.attack_stopped_by_armor"
-        end
-        
-        it "should reduce damage if armor slowed the attack" do
-          FS3Combat.stub(:determine_armor) { 22 }
-          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 22) { "INCAP" }
-          FS3Combat.attack_target(@combatant, @target)
-        end
-        
-        it "should inflict damage" do
-          @combatant.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false)
-          FS3Combat.attack_target(@combatant, @target)
-        end
-        
         it "should update recoil" do
           @combatant.stub(:recoil) { 5 }
           @combatant.should_receive(:update).with(recoil: 6)
           FS3Combat.attack_target(@combatant, @target)
         end
         
+        it "should resolve the attack" do
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil)
+          FS3Combat.attack_target(@combatant, @target)
+        end
+        
+        it "should resolve the attack with a called shot and mod" do
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, "Head")
+          FS3Combat.attack_target(@combatant, @target, 3, "Head")
+        end
+      end
+      
+      
+      describe :resolve_attack do    
+        
+        before do
+          @target = double
+          FS3Combat.stub(:determine_armor) { 0 }
+          FS3Combat.stub(:determine_damage) { "GRAZE" }
+          FS3Combat.stub(:weapon_is_stun?) { false }
+          FS3Combat.stub(:determine_hitloc) { "Chest" }
+          @target.stub(:inflict_damage)
+          @target.stub(:name) { "D" }
+        end
+            
+        
+        it "should determine hit location if no called shot" do
+          FS3Combat.should_receive(:determine_hitloc).with(@target, 0, nil) { "Head" }
+          FS3Combat.resolve_attack("A", @target, "Knife")
+        end
+
+        it "should determine hit location if called shot" do
+          FS3Combat.should_receive(:determine_hitloc).with(@target, 0, "Arm") { "Hand" }
+          FS3Combat.resolve_attack("A", @target, "Knife", 0, "Arm")
+        end
+        
+        it "should return armor message if stopped by armor" do
+          FS3Combat.should_receive(:determine_armor).with(@target, "Chest", "Knife", 2) { 110 }
+          FS3Combat.resolve_attack("A", @target, "Knife", 2).should eq "fs3combat.attack_stopped_by_armor"
+        end
+        
+        it "should reduce damage if armor slowed the attack" do
+          FS3Combat.stub(:determine_armor) { 22 }
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 22) { "INCAP" }
+          FS3Combat.resolve_attack("A", @target, "Knife")
+        end
+        
+        it "should inflict damage" do
+          @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false)
+          FS3Combat.resolve_attack("A", @target, "Knife")
+        end        
+        
         it "should return a hit message" do
-          FS3Combat.attack_target(@combatant, @target).should eq "fs3combat.attack_hits"
+          FS3Combat.resolve_attack("A", @target, "Knife").should eq "fs3combat.attack_hits"
         end
       end
     end
