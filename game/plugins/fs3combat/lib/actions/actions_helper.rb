@@ -2,37 +2,59 @@ module AresMUSH
   module FS3Combat
     def self.find_action_klass(name)
       case name
-      when "attack"
-        AttackAction
-      when "pass"
-        PassAction
       when "aim"
         AimAction
-      when "reload"
-        ReloadAction
+      when "attack"
+        AttackAction
+      when "escape"
+        EscapeAction
+      when "explode"
+        ExplodeAction
       when "fullauto"
         FullautoAction
+      when "pass"
+        PassAction
+      when "reload"
+        ReloadAction
       when "treat"
         TreatAction
+      when "subdue"
+        SubdueAction
+      when "suppress"
+        SuppressAction
       else
         nil
       end
     end
     
-    def self.reset_actions(combatant)
+    def self.reset_for_new_turn(combatant)
+      # This will reset their action if it's no longer valid.
+      action = combatant.action
+      
       # Reset aim if they've done anything other than aiming. 
-      # TODO - Better way of doing this.
-      # TODO - Reset action if out of ammo.
-      # TODO - Reset action if target no longer exists.
-      if (combatant.is_aiming? && combatant.action.class != AimAction)
+      if (combatant.is_aiming? && action.class != AimAction)
         Global.logger.debug "Reset aim for #{combatant.name}."
         combatant.update(aim_target: nil)
       end
+      
+      if (!combatant.is_subdued?)
+        combatant.update(subdued_by: nil)
+      end
+      
       combatant.update(posed: false)
       combatant.update(recoil: 0)
+      FS3Combat.reset_stress(combatant)
+    end
+    
+    def self.reset_stress(combatant)
+      composure = Global.read_config("fs3combat", "composure_ability")
+      roll = combatant.roll_ability(composure)
+      new_stress = [0, combatant.stress - roll - 1].max
+      combatant.update(stress: new_stress)
     end
         
     def self.ai_action(combat, client, combatant)
+      # TODO - use escape if subdued
       if (combatant.ammo == 0)
         FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::ReloadAction, "")
         # TODO - Use suppress attack for suppress only weapon
@@ -207,6 +229,8 @@ module AresMUSH
       desc = "#{weapon} - #{hitloc}"
 
       target.inflict_damage(damage, desc, is_stun)
+      
+      target.add_stress(1)
       
       return t('fs3combat.attack_hits', 
             :name => attacker_name, 

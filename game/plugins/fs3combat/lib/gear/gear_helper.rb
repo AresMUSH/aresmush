@@ -77,10 +77,13 @@ module AresMUSH
     end
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
+      max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       combatant.update(weapon: weapon ? weapon.titleize : nil)
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titleize } : nil)
-      combatant.update(ammo: weapon ? FS3Combat.weapon_stat(weapon, "ammo") : nil)
-      combatant.action = nil
+      combatant.update(ammo: max_ammo)
+      combatant.update(max_ammo: max_ammo)
+      combatant.update(action_klass: nil)
+      combatant.update(action_args: nil)
 
       specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
       message = t('fs3combat.weapon_changed', :name => combatant.name, 

@@ -5,7 +5,7 @@ module AresMUSH
       include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :name, :action_args
+      attr_accessor :name, :action_args, :combat_command
            
       def crack!
         if (cmd.args =~ /\=/)
@@ -15,6 +15,7 @@ module AresMUSH
           self.name = enactor.name
           self.action_args = cmd.args
         end
+        self.combat_command = cmd.switch ? cmd.switch.downcase : nil
       end
       
       def check_can_act
@@ -25,9 +26,14 @@ module AresMUSH
       end
       
       def handle
-        action_klass = FS3Combat.find_action_klass(cmd.switch)
+        action_klass = FS3Combat.find_action_klass(self.combat_command)
         if (!action_klass)
           client.emit_failure t('fs3combat.unknown_command')
+          return
+        end
+        
+        if (enactor.combatant.is_subdued? && self.combat_command != "escape")
+          client.emit_failure t('fs3combat.must_escape_first') 
           return
         end
         

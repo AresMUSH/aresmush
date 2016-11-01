@@ -16,6 +16,7 @@ module AresMUSH
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 0 }
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:attack_stance_mod) { 0 }
+          @combatant.stub(:stress) { 0 }
           @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:weapon) { "Knife" }
           @combatant.stub(:luck)
@@ -31,7 +32,7 @@ module AresMUSH
           @combatant.stub(:is_aiming?) { true }
           @combatant.stub(:aim_target) { target }
           action = double
-          action.stub(:targets) { [ target ]}
+          action.stub(:target) { target }
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 3)
@@ -43,7 +44,7 @@ module AresMUSH
           @combatant.stub(:is_aiming?) { true }
           @combatant.stub(:aim_target) { target }
           action = double
-          action.stub(:targets) { [ double ] }
+          action.stub(:target) { double }
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 0)
@@ -66,6 +67,12 @@ module AresMUSH
         it "should account for accuracy modifiers" do
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
+          FS3Combat.roll_attack(@combatant)
+        end
+        
+        it "should account for stress modifiers" do
+          @combatant.stub(:stress) { 1 }
+          @combatant.should_receive(:roll_ability).with("Knives", -1)
           FS3Combat.roll_attack(@combatant)
         end
 
@@ -299,10 +306,35 @@ module AresMUSH
         end
       end
       
-      describe :update_ammo do
+      describe :check_ammo do
+        before do
+          @combatant.stub(:max_ammo) { 10 }
+        end
+        
+        it "should return true if the weapon doesn't use ammo" do
+          @combatant.stub(:max_ammo) { 0 }
+          FS3Combat.check_ammo(@combatant, 22).should be_true          
+        end
+         
+        it "should return true if enough bullets" do
+          @combatant.stub(:ammo) { 10 }
+          FS3Combat.check_ammo(@combatant, 2).should be_true
+        end
+        
+        it "should return false if not enough bullets" do
+          @combatant.stub(:ammo) { 10 }
+          FS3Combat.check_ammo(@combatant, 22).should be_false
+        end
+      end
+        
       
+      describe :update_ammo do
+        before do
+          @combatant.stub(:max_ammo) { 10 }
+        end
+          
         it "should not do anything if the weapon doesn't use ammo" do
-          @combatant.stub(:ammo) { nil }
+          @combatant.stub(:max_ammo) { 0 }
           @combatant.should_not_receive(:update)
           FS3Combat.update_ammo(@combatant, 1).should be_nil
         end

@@ -30,6 +30,9 @@ module AresMUSH
       return nil
     end
     
+    def target
+      targets ? targets[0] : nil
+    end
     
     def target_names
       self.targets.map { |t| t.name }

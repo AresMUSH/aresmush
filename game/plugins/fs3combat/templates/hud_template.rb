@@ -78,9 +78,9 @@ module AresMUSH
         weapon = "#{c.weapon}"
         specials = c.weapon_specials ? c.weapon_specials.join(",") : ""
         
-        if (c.ammo && !specials.blank?)
+        if (c.max_ammo > 0 && !specials.blank?)
           notes = " (#{c.ammo}, #{specials})"
-        elsif (c.ammo)
+        elsif (c.max_ammo > 0)
           notes = " (#{c.ammo})"
         elsif (!specials.blank?)
           notes = " (#{specials})"

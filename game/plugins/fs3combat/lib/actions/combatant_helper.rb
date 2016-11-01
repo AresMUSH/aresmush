@@ -6,11 +6,12 @@ module AresMUSH
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       damage_mod = combatant.total_damage_mod
       stance_mod = combatant.attack_stance_mod
-      aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.targets[0])) ? 3 : 0
+      stress_mod = combatant.stress
+      aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
-      mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod + luck_mod
+      mod = mod + accuracy_mod - damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod
       
-      Global.logger.debug "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod}"
+      Global.logger.debug "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod}"
       
       combatant.roll_ability(ability, mod)
     end
@@ -88,17 +89,21 @@ module AresMUSH
       combatant.roll_ability(ability, luck_mod - combatant.total_damage_mod)
     end
     
+    def self.check_ammo(combatant, bullets)
+      return true if combatant.max_ammo == 0
+      combatant.ammo >= bullets
+    end
+    
     def self.update_ammo(combatant, bullets)
-      ammo = combatant.ammo
-      if (ammo)
-        ammo = ammo - bullets
-        combatant.update(ammo: ammo)
-        
-        if (ammo == 0)
-          t('fs3combat.weapon_clicks_empty', :name => combatant.name)
-        else
-          nil
-        end
+      return nil if combatant.max_ammo == 0
+
+      ammo = combatant.ammo - bullets
+      combatant.update(ammo: ammo)
+      
+      if (ammo == 0)
+        t('fs3combat.weapon_clicks_empty', :name => combatant.name)
+      else
+        nil
       end
     end
   end

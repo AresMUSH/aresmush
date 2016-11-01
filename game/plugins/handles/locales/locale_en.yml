@@ -8,3 +8,4 @@ en:
         handle_synced: "Your character information has been synchronized with AresCentral.  Your handle friends, timezone and autospace settings have been downloaded."
         
         handle_no_longer_linked: "This character was unlinked from AresCentral and is no longer associated with your handle."
+        setting_preference_on_linked_char: "handle preferences are managed on AresCentral.  Your setting will be wiped out the next time your character is synced with AresCentral."

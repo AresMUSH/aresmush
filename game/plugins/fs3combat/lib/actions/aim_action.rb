@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def resolve
-        self.combatant.update(aim_target: self.targets[0])
+        self.combatant.update(aim_target: self.target)
         [t('fs3combat.aim_resolution_msg', :name => self.name, :target => self.print_target_names)]
       end
     end

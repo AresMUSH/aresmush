@@ -18,7 +18,7 @@ module AresMUSH
     end
     
     def armor
-      FS3Combat.vehicle_stat(self.vehicle_type, armor)
+      FS3Combat.vehicle_stat(self.vehicle_type, "armor")
     end
     
     def clear_damage

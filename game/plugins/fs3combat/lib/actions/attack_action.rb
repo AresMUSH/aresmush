@@ -32,14 +32,13 @@ module AresMUSH
         supports_burst = FS3Combat.weapon_stat(self.combatant.weapon, "is_automatic")
         return t('fs3combat.burst_fire_not_allowed') if self.is_burst && !supports_burst
         
-        hitlocs = FS3Combat.hitloc_chart(targets[0])
-        return t('fs3combat.invalid_called_shot_loc') if self.called_shot && !hitlocs.include?(self.called_shot)
-        
         return t('fs3combat.no_fullauto_called_shots') if self.called_shot && self.is_burst
         
-        ammo = self.combatant.ammo
-        return t('fs3combat.out_of_ammo') if ammo == 0
-        return t('fs3combat.not_enough_ammo_for_burst') if ammo && self.is_burst && ammo < 2
+        hitlocs = FS3Combat.hitloc_chart(target)
+        return t('fs3combat.invalid_called_shot_loc') if self.called_shot && !hitlocs.include?(self.called_shot)
+        
+        return t('fs3combat.out_of_ammo') if !FS3Combat.check_ammo(self.combatant, 1)
+        return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && !FS3Combat.check_ammo(self.combatant, 2)
         
         return nil
       end
@@ -82,7 +81,6 @@ module AresMUSH
       
       def resolve
         messages = []
-        target = targets[0]
         
         if (self.is_burst)
           messages << t('fs3combat.fires_burst', :name => self.name)

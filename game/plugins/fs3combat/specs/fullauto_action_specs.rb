@@ -7,7 +7,8 @@ module AresMUSH
 
         @combatant.stub(:combat) { @combat }
         @combatant.stub(:weapon) { "Rifle" }
-        @combatant.stub(:ammo) { nil }
+        FS3Combat.stub(:check_ammo) { true }
+        FS3Combat.stub(:update_ammo) { nil }
         @combatant.stub(:name) { "A" }
         FS3Combat.stub(:weapon_stat) { "" }
         SpecHelpers.stub_translate_for_testing
@@ -27,14 +28,8 @@ module AresMUSH
           @action.prepare.should eq "fs3combat.too_many_targets"
         end
         
-        it "should fail if out of ammo" do
-          @combatant.stub(:ammo) { 0 }
-          @action = FullautoAction.new(@combatant, "target")
-          @action.prepare.should eq "fs3combat.out_of_ammo"
-        end
-
         it "should fail if not enough ammo for a burst" do
-          @combatant.stub(:ammo) { 1 }
+          FS3Combat.should_receive(:check_ammo).with(@combatant, 8) { false }
           @action = FullautoAction.new(@combatant, "target")
           @action.prepare.should eq "fs3combat.not_enough_ammo_for_fullauto"
         end
@@ -57,7 +52,11 @@ module AresMUSH
           @action.prepare.should eq "fs3combat.use_suppress_command"
         end
 
-        
+        it "should succeed" do
+          @action = FullautoAction.new(@combatant, "target1 target2")
+          @action.prepare.should be_nil
+          @action.targets.should eq [ @target, @target ]
+        end
       end
       
       describe :resolve do
@@ -80,7 +79,7 @@ module AresMUSH
           FS3Combat.stub(:attack_target) { "resultx" }
         end
           
-        it "should attack a single target with all the bullets xxx" do
+        it "should attack a single target with all the bullets" do
           @action = FullautoAction.new(@combatant, "target1")
           @action.prepare
           FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result1" }

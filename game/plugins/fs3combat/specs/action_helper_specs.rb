@@ -5,36 +5,86 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
       
-      describe :reset_actions do
+      describe :reset_for_new_turn do
         before do 
           @combatant = double
           @combatant.stub(:name) { "Trooper" }
           @combatant.stub(:update)
           @combatant.stub(:is_aiming?) { false }
+          @combatant.stub(:is_subdued?) { false }
+          @combatant.stub(:action) { nil }
+          FS3Combat.stub(:reset_stress)
         end
         
         it "should reset posed" do
           @combatant.should_receive(:update).with(posed: false)
-          FS3Combat.reset_actions(@combatant)
+          FS3Combat.reset_for_new_turn(@combatant)
         end
         
         it "should reset recoil" do
           @combatant.should_receive(:update).with(recoil: 0)
-          FS3Combat.reset_actions(@combatant)
+          FS3Combat.reset_for_new_turn(@combatant)
         end
         
         it "should reset aiming if they aren't still aiming" do 
           @combatant.stub(:is_aiming?) { true }
           @combatant.stub(:action) { AttackAction.new(@combatant, "") }
           @combatant.should_receive(:update).with(aim_target: nil)
-          FS3Combat.reset_actions(@combatant)
+          FS3Combat.reset_for_new_turn(@combatant)
         end
 
         it "should not reset aiming if they're still aiming" do 
           @combatant.stub(:is_aiming?) { true }
           @combatant.stub(:action) { AimAction.new(@combatant, "") }
           @combatant.should_not_receive(:update).with(aim_target: nil)
-          FS3Combat.reset_actions(@combatant)
+          FS3Combat.reset_for_new_turn(@combatant)
+        end
+        
+        it "should reset subdued if their attacker is no longer subduing them" do
+          subduer = double
+          @combatant.stub(:is_subdued?) { false }
+          @combatant.should_receive(:update).with(subdued_by: nil)
+          FS3Combat.reset_for_new_turn(@combatant)
+        end
+
+        it "should not reset subdued if their attacker is still subduing them" do
+          subduer = double
+          @combatant.stub(:is_subdued?) { true }
+          @combatant.should_not_receive(:update).with(subdued_by: nil)
+          FS3Combat.reset_for_new_turn(@combatant)
+        end
+        
+        it "should lower stress" do
+          FS3Combat.should_receive(:reset_stress).with(@combatant)
+          FS3Combat.reset_for_new_turn(@combatant)
+        end
+      end
+      
+      describe :reset_stress do 
+        before do
+          @combatant = double
+          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+        end
+        
+        it "should reduce stress by 1 even if roll fails" do
+          @combatant.stub(:stress) { 3 }
+          @combatant.stub(:roll_ability).with("Composure") { 0 }
+          @combatant.should_receive(:update).with(stress: 2)
+          FS3Combat.reset_stress(@combatant)
+        end
+        
+        it "should reduce stress by roll result further" do
+          @combatant.stub(:stress) { 3 }
+          @combatant.stub(:roll_ability).with("Composure") { 2 }
+          @combatant.should_receive(:update).with(stress: 0)
+          FS3Combat.reset_stress(@combatant)
+        end
+        
+        it "should not reduce stress below 0" do
+          @combatant.stub(:stress) { 1 }
+          @combatant.stub(:roll_ability).with("Composure") { 2 }
+          @combatant.should_receive(:update).with(stress: 0)
+          FS3Combat.reset_stress(@combatant)
         end
       end
       
@@ -320,6 +370,7 @@ module AresMUSH
           FS3Combat.stub(:determine_hitloc) { "Chest" }
           @target.stub(:inflict_damage)
           @target.stub(:name) { "D" }
+          @target.stub(:add_stress)
         end
             
         
@@ -352,6 +403,12 @@ module AresMUSH
         it "should return a hit message" do
           FS3Combat.resolve_attack("A", @target, "Knife").should eq "fs3combat.attack_hits"
         end
+        
+        it "should add a stress point" do
+          @target.should_receive(:add_stress).with(1)
+          FS3Combat.resolve_attack("A", @target, "Knife").should eq "fs3combat.attack_hits"
+        end
+        
       end
     end
   end

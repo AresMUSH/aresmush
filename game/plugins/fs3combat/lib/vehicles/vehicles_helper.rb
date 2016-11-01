@@ -34,11 +34,12 @@ module AresMUSH
     end
     
     def self.leave_vehicle(combat, combatant)
-      vehicle = combatant.piloting
-       if (vehicle)
+      
+       if (combatant.piloting)
+         vehicle = combatant.piloting
          vehicle.update(pilot: nil)
          combatant.update(piloting: nil)
-       else
+       elsif (combatant.riding_in)
          vehicle = combatant.riding_in
          combatant.update(riding_in: nil)
        end

@@ -9,12 +9,13 @@ module AresMUSH
         @combat.stub(:find_combatant) { @target }
         @combatant.stub(:combat) { @combat }
         @combatant.stub(:weapon) { "Rifle" }
-        @combatant.stub(:ammo) { nil }
         @combatant.stub(:name) { "A" }
-        @target.stub(:hitloc_chart) { [] }
+        FS3Combat.stub(:hitloc_chart) { [] }
         @target.stub(:name) { "Target" }
         @target.stub(:is_noncombatant?) { false }
         FS3Combat.stub(:weapon_stat) { "" }
+        FS3Combat.stub(:check_ammo) { true }
+        FS3Combat.stub(:update_ammo) { nil }
         SpecHelpers.stub_translate_for_testing
       end
       
@@ -37,7 +38,7 @@ module AresMUSH
         
         it "should parse target plus called" do
           @action = AttackAction.new(@combatant, "target/called:head")
-          @target.stub(:hitloc_chart) { ["Head"] }
+          FS3Combat.stub(:hitloc_chart) { ["Head"] }
           @action.prepare.should be_nil
           @action.is_burst.should be_false
           @action.called_shot.should eq "Head"
@@ -54,7 +55,7 @@ module AresMUSH
         end
         
         it "should raise error for invalid called shot location" do
-          @action = AttackAction.new(@combatant, "target/called:head , burst")
+          @action = AttackAction.new(@combatant, "target/called:head")
           @action.prepare.should eq "fs3combat.invalid_called_shot_loc"
         end
         
@@ -69,13 +70,13 @@ module AresMUSH
         end
         
         it "should fail if out of ammo" do
-          @combatant.stub(:ammo) { 0 }
+          FS3Combat.should_receive(:check_ammo).with(@combatant, 1) { false }
           @action = AttackAction.new(@combatant, "target")
           @action.prepare.should eq "fs3combat.out_of_ammo"
         end
 
         it "should fail if not enough ammo for a burst" do
-          @combatant.stub(:ammo) { 1 }
+          FS3Combat.should_receive(:check_ammo).with(@combatant, 2) { false }
           @action = AttackAction.new(@combatant, "target/burst")
           @action.prepare.should eq "fs3combat.not_enough_ammo_for_burst"
         end
@@ -104,7 +105,11 @@ module AresMUSH
           @action.prepare.should eq "fs3combat.use_suppress_command"
         end
 
-        
+        it "should succeed" do
+          @action = AttackAction.new(@combatant, "target")
+          @action.prepare.should be_nil
+          @action.targets.should eq [ @target ]
+        end
       end
       
       describe :resolve do
@@ -145,8 +150,7 @@ module AresMUSH
           resolutions[0].should eq "fs3combat.fires_burst"
           resolutions[1].should eq "result1"
           resolutions[2].should eq "result2"
-          resolutions[3].should eq "fs3combat.weapon_clicks_empty"
-          resolutions.count.should eq 4
+          resolutions.count.should eq 3
         end
         
         it "should update ammo for a single shot" do

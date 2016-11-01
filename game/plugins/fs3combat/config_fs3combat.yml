@@ -4,7 +4,10 @@ fs3combat:
     default_type: Soldier
     
     # The system expects this to be a skill.
-    initiative_ability: Composure
+    initiative_ability: Alertness
+    
+    # The system expects this to be a skill.  Used for knockout and stress rolls.
+    composure_ability: Composure
     
     combatant_types:
         # For each combatant type, you can specify:

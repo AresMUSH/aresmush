@@ -3,7 +3,7 @@ module AresMUSH
     class ReloadAction < CombatAction
       
       def prepare
-        return t('fs3combat.cant_reload') if !self.combatant.ammo
+        return t('fs3combat.cant_reload') if !self.combatant.max_ammo
         return nil
       end
 
@@ -16,8 +16,7 @@ module AresMUSH
       end
             
       def resolve
-        max_ammo = FS3Combat.weapon_stat(self.combatant.weapon, "ammo")
-        self.combatant.update(ammo: max_ammo)
+        self.combatant.update(ammo: self.combatant.max_ammo)
         [t('fs3combat.reload_resolution_msg', :name => self.name)]
       end
     end

@@ -14,9 +14,7 @@ module AresMUSH
         supports_burst = FS3Combat.weapon_stat(self.combatant.weapon, "is_automatic")
         return t('fs3combat.burst_fire_not_allowed') if !supports_burst
         
-        ammo = self.combatant.ammo
-        return t('fs3combat.out_of_ammo') if ammo == 0
-        return t('fs3combat.not_enough_ammo_for_fullauto') if ammo && ammo < 8
+        return t('fs3combat.not_enough_ammo_for_fullauto') if !FS3Combat.check_ammo(self.combatant, 8)
         
         return nil
       end

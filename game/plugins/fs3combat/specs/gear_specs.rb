@@ -70,12 +70,14 @@ module AresMUSH
         it "should reset stats if nil" do
           @combatant.should_receive(:update).with(weapon: nil)
           @combatant.should_receive(:update).with(weapon_specials: nil)
-          @combatant.should_receive(:update).with(ammo: nil)
+          @combatant.should_receive(:update).with(ammo: 0)
+          @combatant.should_receive(:update).with(max_ammo: 0)
           FS3Combat.set_weapon(@enactor, @combatant, nil, nil)
         end
         
         it "should reset their combat action" do
-          @combatant.should_receive(:action=).with(nil)
+          @combatant.should_receive(:update).with(action_klass: nil)
+          @combatant.should_receive(:update).with(action_args: nil)
           FS3Combat.set_weapon(@enactor, @combatant, nil, nil)
         end
         

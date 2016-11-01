@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def resolve        
-        [FS3Combat.treat(self.targets[0].associated_model, self.combatant.associated_model)]
+        [FS3Combat.treat(self.target.associated_model, self.combatant.associated_model)]
       end
     end
   end
