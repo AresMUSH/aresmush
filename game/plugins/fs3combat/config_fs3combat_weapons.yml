@@ -107,7 +107,7 @@ fs3combat:
             accuracy: 0
             has_shrapnel: false
             reload_turns: 1
-            allowed_specials: [ 'Ap' ]
+            allowed_specials: [ 'Ap', 'Scope' ]
             
         Lmg:
             description: "Light machinegun/SAW"
@@ -122,7 +122,7 @@ fs3combat:
             accuracy: 0
             has_shrapnel: false
             reload_turns: 1
-            allowed_specials: [ 'Ap', 'Tripod' ]
+            allowed_specials: [ 'Ap', 'Bipod' ]
             
         Shotgun:
             description: "Shotgun using solid shot"
@@ -166,7 +166,7 @@ fs3combat:
             accuracy: 0
             has_shrapnel: false
             reload_turns: 0
-            allowed_specials: [ 'Boxing Gloves' ]
+            allowed_specials: [ 'Sparring' ]
 
         Club:
             description: "Mace/club/baton"
@@ -304,13 +304,16 @@ fs3combat:
         Ap:
             description: "Armor Piercing Rounds"
             penetration: 3
-        Tripod:
-            description: "Bipod or Tripod Brace"
+        Bipod:
+            description: "Bipod Brace"
             recoi: -2
+        Scope: 
+            description: "Sniper scope"
+            accuracy: 2
         Buckshot:
             description: "Shotgun pellets"
             accuracy: 3
             penetration: 0
-        Boxing Gloves:
+        Sparring:
             description: "Padded sparring equipment"
             lethality: -20
