@@ -94,6 +94,10 @@ en:
         choosing_ai_actions: "Choosing NPC AI actions."
         no_ai_actions_to_set: "All NPCs have actions already."
         
+        npc_skill_set: "%{name} skill level set to %{level}."
+        invalid_npc_level: "Invalid NPC skill level.  Try one of these: %{levels}."
+        not_a_npc: "You can only set NPC skill levels."
+        
         # ----------------------------
         # TYPES
         # ----------------------------
@@ -233,6 +237,8 @@ en:
         
         attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"
+        
+        crew_hit: "CREW HIT!"
 
         # ----------------------------
         # SUPPRESS

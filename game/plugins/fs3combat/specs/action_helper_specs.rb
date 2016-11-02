@@ -93,12 +93,19 @@ module AresMUSH
           @combatant = double
           @client = double
           @combat = double
-          @combatant.stub(:ammo) { nil }
+          FS3Combat.stub(:check_ammo) { true }
+          @combatant.stub(:is_subdued?) { false }
         end
         
         it "should choose reload if out of ammo" do
-          @combatant.stub(:ammo) { 0 }
+          FS3Combat.should_receive(:check_ammo).with(@combatant, 1) { false }
           FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::ReloadAction, "")
+          FS3Combat.ai_action(@combat, @client, @combatant)
+        end
+        
+        it "should choose escape if subdued" do
+          @combatant.stub(:is_subdued?) { true }
+          FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::EscapeAction, "")
           FS3Combat.ai_action(@combat, @client, @combatant)
         end
 
@@ -108,9 +115,11 @@ module AresMUSH
             @target2 = double
             @target2.stub(:name) { "Bob" }
             @combatant.stub(:team) { 1 }
+            @combatant.stub(:weapon) { "Rifle" }
             @target1.stub(:team) { 1 }
             @target2.stub(:team) { 2 }
             @combat.stub(:active_combatants) { [@target1, @target2] }
+            FS3Combat.stub(:weapon_stat) { "" }
           end   
                    
           it "should attack a random target from the other team" do
@@ -123,13 +132,28 @@ module AresMUSH
             FS3Combat.should_not_receive(:set_action)
             FS3Combat.ai_action(@combat, @client, @combatant)
           end
+          
+          it "should use the explode action for explosive weapons" do
+            FS3Combat.should_receive(:weapon_stat).with("Rifle", "weapon_type") { "Explosive" }            
+            FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::ExplodeAction, "Bob")
+
+            FS3Combat.ai_action(@combat, @client, @combatant)
+          end
+          
+          it "should use the suppress action for suppressive weapons" do
+            FS3Combat.should_receive(:weapon_stat).with("Rifle", "weapon_type") { "Suppressive" }            
+            FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::SuppressAction, "Bob")
+
+            FS3Combat.ai_action(@combat, @client, @combatant)
+          end
+          
         end
       end
       
       describe :determine_damage do
         before do 
           @combatant = double
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head") { "Normal" }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Normal" }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
           FS3Combat.stub(:rand) { 25 }
         end
@@ -156,18 +180,23 @@ module AresMUSH
           end
         end
   
+        it "should pass along a crew hit" do
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", true) { "Normal" }
+          FS3Combat.determine_damage(@combatant, "Head", "Knife", 0, true).should eq "GRAZE"
+        end
+        
         it "should account for lethality" do
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 40 }
           FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
         end
 
         it "should account for hitloc severity for vital" do
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head") { "Vital" }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Vital" }
           FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
         end
 
         it "should account for hitloc severity for critical" do
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head") { "Critical" }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Critical" }
           FS3Combat.stub(:rand) { 80 }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
           FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "INCAP"
@@ -325,7 +354,7 @@ module AresMUSH
           FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
           @combatant.stub(:recoil) { 0 }
           @combatant.stub(:update)
-          
+          @target.stub(:riding_in) { nil }
           @combatant.stub(:name) { "A" }
           FS3Combat.stub(:determine_attack_margin) { { hit: true, attacker_net_successes: 2 }}
           
@@ -334,7 +363,7 @@ module AresMUSH
         
         it "should return margin message if a miss" do
           FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, 0, nil) { { hit: false, message: "dodged" }}
-          FS3Combat.attack_target(@combatant, @target).should eq "dodged"
+          FS3Combat.attack_target(@combatant, @target).should eq ["dodged"]
         end
         
         it "should pass along the attack mod" do
@@ -349,13 +378,27 @@ module AresMUSH
         end
         
         it "should resolve the attack" do
-          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil)
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, false)
           FS3Combat.attack_target(@combatant, @target)
         end
         
         it "should resolve the attack with a called shot and mod" do
-          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, "Head")
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, "Head", false)
           FS3Combat.attack_target(@combatant, @target, 3, "Head")
+        end
+        
+        it "should resolve the attack with a crew hit" do
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, true)
+          FS3Combat.attack_target(@combatant, @target, 3, nil, true)
+        end
+        
+        it "should attack the pilot when the passenger is targeted" do
+          pilot = double
+          vehicle = double
+          @target.stub(:riding_in) { vehicle }
+          vehicle.stub(:pilot) { pilot }
+          FS3Combat.should_receive(:resolve_attack).with("A", pilot, "Knife", 2, nil, false)
+          FS3Combat.attack_target(@combatant, @target)
         end
       end
       
@@ -368,6 +411,7 @@ module AresMUSH
           FS3Combat.stub(:determine_damage) { "GRAZE" }
           FS3Combat.stub(:weapon_is_stun?) { false }
           FS3Combat.stub(:determine_hitloc) { "Chest" }
+          FS3Combat.stub(:resolve_possible_crew_hit) { [] }
           @target.stub(:inflict_damage)
           @target.stub(:name) { "D" }
           @target.stub(:add_stress)
@@ -375,38 +419,84 @@ module AresMUSH
             
         
         it "should determine hit location if no called shot" do
-          FS3Combat.should_receive(:determine_hitloc).with(@target, 0, nil) { "Head" }
+          FS3Combat.should_receive(:determine_hitloc).with(@target, 0, nil, false) { "Head" }
           FS3Combat.resolve_attack("A", @target, "Knife")
         end
 
         it "should determine hit location if called shot" do
-          FS3Combat.should_receive(:determine_hitloc).with(@target, 0, "Arm") { "Hand" }
+          FS3Combat.should_receive(:determine_hitloc).with(@target, 0, "Arm", false) { "Hand" }
           FS3Combat.resolve_attack("A", @target, "Knife", 0, "Arm")
         end
         
         it "should return armor message if stopped by armor" do
           FS3Combat.should_receive(:determine_armor).with(@target, "Chest", "Knife", 2) { 110 }
-          FS3Combat.resolve_attack("A", @target, "Knife", 2).should eq "fs3combat.attack_stopped_by_armor"
+          FS3Combat.resolve_attack("A", @target, "Knife", 2).should eq ["fs3combat.attack_stopped_by_armor"]
         end
         
         it "should reduce damage if armor slowed the attack" do
           FS3Combat.stub(:determine_armor) { 22 }
-          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 22) { "INCAP" }
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 22, false) { "INCAP" }
           FS3Combat.resolve_attack("A", @target, "Knife")
         end
         
         it "should inflict damage" do
-          @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false)
+          @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false, false)
           FS3Combat.resolve_attack("A", @target, "Knife")
         end        
         
         it "should return a hit message" do
-          FS3Combat.resolve_attack("A", @target, "Knife").should eq "fs3combat.attack_hits"
+          FS3Combat.resolve_attack("A", @target, "Knife").should eq ["fs3combat.attack_hits"]
         end
         
         it "should add a stress point" do
           @target.should_receive(:add_stress).with(1)
-          FS3Combat.resolve_attack("A", @target, "Knife").should eq "fs3combat.attack_hits"
+          FS3Combat.resolve_attack("A", @target, "Knife").should eq ["fs3combat.attack_hits"]
+        end
+        
+        it "should pass along a crew hit" do
+          @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false, true)
+          FS3Combat.resolve_attack("A", @target, "Knife", 0, nil, true).should eq ["fs3combat.attack_hits"]
+        end
+      end
+      
+      describe :resolve_possible_crew_hit do
+        before do
+          @target = double
+          @target.stub(:is_in_vehicle?) { true }
+          @vehicle = double
+          FS3Combat.stub(:hitloc_chart).with(@target) { { "crew_areas" => ["Cockpit"] } }
+          
+          # By seeding the kernel random number generator, the first two shrapnel rolls
+          # will always be 2, 1.
+          Kernel.srand 5
+          
+        end
+        
+        it "should return nothing if not in vehicle" do
+          @target.stub(:is_in_vehicle?) { false }
+          FS3Combat.resolve_possible_crew_hit(@target, "Body", "GRAZE").should eq []
+        end
+        
+        it "should not do damage if not a crew hitloc xxx" do
+          @target.stub(:vehicle) { @vehicle}
+          FS3Combat.resolve_possible_crew_hit(@target, "Body", "GRAZE").should eq []
+        end
+        
+        it "should inflict shrapnel to each passenger" do
+          p1 = double
+          p2 = double
+          p1.stub(:name) { "a" }
+          p2.stub(:name) { "b" }
+          
+          
+          @target.stub(:vehicle) { @vehicle }
+          @vehicle.stub(:passengers) { [p1] }
+          @vehicle.stub(:pilot) { p2 }
+          FS3Combat.should_receive(:resolve_attack).with(t('fs3combat.crew_hit'), p1, "Shrapnel", 0, nil, true) { ["a1"]}
+          FS3Combat.should_receive(:resolve_attack).with(t('fs3combat.crew_hit'), p1, "Shrapnel", 0, nil, true) { ["a2"]}
+          FS3Combat.should_receive(:resolve_attack).with(t('fs3combat.crew_hit'), p2, "Shrapnel", 0, nil, true) { ["a3"]}
+
+          FS3Combat.resolve_possible_crew_hit(@target, "Cockpit", "IMPAIR").should eq ["a1", "a2", "a3"]
         end
         
       end

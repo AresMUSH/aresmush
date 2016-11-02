@@ -67,6 +67,7 @@ en:
         
         approved: "Approved"
         unapproved: "Not Yet Approved"
+        npc: "NPC"
         rostered: "On Roster"
         idled_out: "Idled Out - %{status}"
         bg_page_title: "Background"

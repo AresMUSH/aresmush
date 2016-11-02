@@ -28,6 +28,9 @@ module AresMUSH
             Global.logger.debug "#{idle_char.name} added to roster."
             Roster::Api.add_to_roster(idle_char)
             report << "#{idle_char.name} - #{t('idle.added_to_roster')}"
+          when "Npc"
+            idle_char.update(is_npc: true)
+            report << "#{idle_char.name} - #{t('idle.turned_to_npc')}"
           when "Warn"
             Global.logger.debug "#{idle_char.name} idle warned."
             report << "#{idle_char.name} - #{t('idle.idle_warning')}"

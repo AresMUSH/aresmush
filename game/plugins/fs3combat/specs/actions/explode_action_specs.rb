@@ -65,7 +65,7 @@ module AresMUSH
           @combat.stub(:find_combatant).with("Target1") { @target1 }
           @combat.stub(:find_combatant).with("Target2") { @target2 }
           @combat.stub(:find_combatant).with("Target3") { @target3 }
-          FS3Combat.stub(:attack_target) { "resultx" }
+          FS3Combat.stub(:attack_target) { ["resultx"] }
           FS3Combat.stub(:weapon_stat).with("Missile", "has_shrapnel") { false }
           
           # By seeding the kernel random number generator, the first three shrapnel rolls
@@ -76,9 +76,9 @@ module AresMUSH
         it "should attack with only explosives if no shrapnel" do
           @action = ExplodeAction.new(@combatant, "target1 target2 target3")
           @action.prepare
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { "result2" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { "result3" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { ["result3"] }
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.explosion_resolution_msg", "result1", "result2", "result3" ]
         end
@@ -87,15 +87,15 @@ module AresMUSH
           FS3Combat.stub(:weapon_stat).with("Missile", "has_shrapnel") { true }
           @action = ExplodeAction.new(@combatant, "target1 target2 target3")
           @action.prepare
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { "result2" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { "result3" }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { "shrapnel1" }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { "shrapnel2" }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { "shrapnel3" }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { "shrapnel4" }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target3, "Shrapnel" ) { "shrapnel5" }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target3, "Shrapnel" ) { "shrapnel6" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { ["result3"] }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel1"] }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel2"] }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel3"] }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel4"] }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target3, "Shrapnel" ) { ["shrapnel5"] }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target3, "Shrapnel" ) { ["shrapnel6"] }
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.explosion_resolution_msg", "result1", "result2", "shrapnel1",
             "shrapnel2", "shrapnel3", "shrapnel4", "result3", "shrapnel5", "shrapnel6" ]

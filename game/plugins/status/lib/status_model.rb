@@ -6,5 +6,6 @@ module AresMUSH
     attribute :is_afk, :type => DataType::Boolean
     attribute :is_on_duty, :type => DataType::Boolean, :default => true
     attribute :is_playerbit, :type => DataType::Boolean
+    attribute :is_npc, :type => DataType::Boolean
   end
 end

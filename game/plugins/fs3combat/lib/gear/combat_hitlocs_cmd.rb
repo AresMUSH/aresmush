@@ -12,7 +12,7 @@ module AresMUSH
 
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
-          hitlocs = FS3Combat.hitloc_chart(combatant).keys
+          hitlocs = FS3Combat.hitloc_areas(combatant).keys
           client.emit BorderedDisplay.list hitlocs.sort, t('fs3combat.hitlocs_for', :name => self.name)
         end
       end

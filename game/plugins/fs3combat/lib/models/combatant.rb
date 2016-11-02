@@ -80,16 +80,18 @@ module AresMUSH
       self.update(stress: points)
     end
     
-    def targeted_by
-      # TODO!!!!
-    end
-    
     def client
       self.character ? self.character.client : nil
     end
     
+    # NOTE!  This is reported as a negative number.
     def total_damage_mod
-      FS3Combat.total_damage_mod(self.associated_model)
+      if (is_in_vehicle?)
+        total = FS3Combat.total_damage_mod(self.associated_model) + FS3Combat.total_damage_mod(self.vehicle)
+        total.ceil
+      else
+        FS3Combat.total_damage_mod(self.associated_model)
+      end
     end
 
     def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)

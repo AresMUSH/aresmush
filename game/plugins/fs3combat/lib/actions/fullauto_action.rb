@@ -43,7 +43,7 @@ module AresMUSH
         
         self.targets.each do |target, num|
           bullets_per_target.times.each do |n|
-            messages << FS3Combat.attack_target(combatant, target)
+            messages.concat FS3Combat.attack_target(combatant, target)
           end
         end
 

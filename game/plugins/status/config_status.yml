@@ -10,6 +10,7 @@ status:
         # Provide full ansi codes for the colors you want for each status.
         IC: "%xr"
         OOC: "%xh"
+        NPC: "%xh"
         AFK: "%xy"
         NEW: "%xg"
         ADM: "%xb"

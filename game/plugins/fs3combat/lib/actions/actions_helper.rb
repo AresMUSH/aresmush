@@ -54,14 +54,23 @@ module AresMUSH
     end
         
     def self.ai_action(combat, client, combatant)
-      # TODO - use escape if subdued
-      if (combatant.ammo == 0)
+      if (combatant.is_subdued?)
+        FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::EscapeAction, "")
+      elsif (!FS3Combat.check_ammo(combatant, 1))
         FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::ReloadAction, "")
-        # TODO - Use suppress attack for suppress only weapon
       else
         target = combat.active_combatants.select { |t| t.team != combatant.team }.shuffle.first
         if (target)
-          FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::AttackAction, target.name)
+          weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
+          case weapon_type
+          when "Explosive"
+            action_klass = FS3Combat::ExplodeAction
+          when "Suppressive"
+            action_klass = FS3Combat::SuppressAction
+          else
+            action_klass = FS3Combat::AttackAction
+          end
+          FS3Combat.set_action(client, nil, combat, combatant, action_klass, target.name)
         end
       end   
     end
@@ -78,12 +87,12 @@ module AresMUSH
       combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
-    def self.determine_damage(combatant, hitloc, weapon, armor = 0)
+    def self.determine_damage(combatant, hitloc, weapon, armor = 0, crew_hit = false)
       random = rand(100)
       
       lethality = FS3Combat.weapon_stat(weapon, "lethality")
       
-      case FS3Combat.hitloc_severity(combatant, hitloc)
+      case FS3Combat.hitloc_severity(combatant, hitloc, crew_hit)
       when "Critical"
         severity = 20
       when "Vital"
@@ -127,7 +136,10 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
 
+      Global.logger.debug "Rolling weapon penetration."
       pen_roll = FS3Skills::Api.one_shot_die_roll(pen)[:successes]
+
+      Global.logger.debug "Rolling armor protection."
       protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
       
       margin = pen_roll + attacker_net_successes - protect_roll
@@ -196,49 +208,92 @@ module AresMUSH
       }
     end
       
-    def self.attack_target(combatant, target, mod = 0, called_shot = nil)
+    def self.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false)
+      # If targeting a passenger, adjust target to the pilot instead.
+      if (target.riding_in)
+        target = target.riding_in.pilot
+      end
+      
       margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot)
 
       # Update recoil after determining the attack success but before returning out for a miss
       recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
       combatant.update(recoil: combatant.recoil + recoil)
 
-      return margin[:message] if !margin[:hit]
+      return [margin[:message]] if !margin[:hit]
     
       weapon = combatant.weapon
       
       attacker_net_successes = margin[:attacker_net_successes]
             
-      FS3Combat.resolve_attack(combatant.name, target, weapon, attacker_net_successes, called_shot)
+      FS3Combat.resolve_attack(combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
     end
     
     
-    def self.resolve_attack(attacker_name, target, weapon, attacker_net_successes = 0, called_shot = nil)
-      hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot)
+    def self.resolve_attack(attacker_name, target, weapon, attacker_net_successes = 0, called_shot = nil, crew_hit = false)
+      hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
       armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
         
       if (armor >= 100)
-        return t('fs3combat.attack_stopped_by_armor', :name => attacker_name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
+        message = t('fs3combat.attack_stopped_by_armor', :name => attacker_name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
+        return [message]
       end
                   
       reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
           
-      damage = FS3Combat.determine_damage(target, hitloc, weapon, armor)
+      damage = FS3Combat.determine_damage(target, hitloc, weapon, armor, crew_hit)
           
       is_stun = FS3Combat.weapon_is_stun?(weapon)
       desc = "#{weapon} - #{hitloc}"
 
-      target.inflict_damage(damage, desc, is_stun)
+      target.inflict_damage(damage, desc, is_stun, crew_hit)
       
       target.add_stress(1)
       
-      return t('fs3combat.attack_hits', 
-            :name => attacker_name, 
-            :weapon => weapon,
-            :target => target.name,
-            :hitloc => hitloc,
-            :armor => reduced_by_armor,
-            :damage => FS3Combat.display_severity(damage)) 
+      messages = []
+      
+      messages << t('fs3combat.attack_hits', 
+                    :name => attacker_name, 
+                    :weapon => weapon,
+                    :target => target.name,
+                    :hitloc => hitloc,
+                    :armor => reduced_by_armor,
+                    :damage => FS3Combat.display_severity(damage)) 
+                    
+      messages.concat FS3Combat.resolve_possible_crew_hit(target, hitloc, damage)
+      messages
+    end
+    
+    def self.resolve_possible_crew_hit(target, hitloc, damage)
+      messages = []
+      return [] if (!target.is_in_vehicle?)
+      vehicle = target.vehicle
+      crew_hitlocs = FS3Combat.hitloc_chart(target)["crew_areas"]
+      
+      return [] if (!crew_hitlocs.include?(hitloc))
+
+      people = vehicle.passengers.to_a
+      people << vehicle.pilot
+      
+      people.each do |p|
+        case damage
+        when "GRAZE"
+          shrapnel = 0
+        when "FLESH"
+          shrapnel = rand(1)
+        when "IMPAIR"
+          shrapnel = rand(3)
+        when "INCAP"
+          shrapnel = rand(5)
+        end
+                
+        Global.logger.debug "Crew area hit. #{p.name} shrapnel=#{shrapnel}"
+        shrapnel.times.each do |s|
+          messages.concat FS3Combat.resolve_attack(t('fs3combat.crew_hit'), p, "Shrapnel", 0, nil, true)
+        end
+      end
+      
+      messages
     end
   end
 end

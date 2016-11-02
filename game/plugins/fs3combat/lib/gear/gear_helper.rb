@@ -43,12 +43,12 @@ module AresMUSH
       v ? v[stat] : nil
     end
     
-    def self.hitlocs
+    def self.hitloc_charts
       Global.read_config("fs3combat", "hitloc")
     end
     
-    def self.hitloc(name)
-      FS3Combat.hitlocs.select { |k, v| k.upcase == name.upcase}.values.first
+    def self.hitloc_chart_for_type(name)
+      FS3Combat.hitloc_charts.select { |k, v| k.upcase == name.upcase}.values.first
     end
     
     def self.gear_detail(info)

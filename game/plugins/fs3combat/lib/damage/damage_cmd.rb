@@ -17,7 +17,7 @@ module AresMUSH
           template = DamageTemplate.new(target)
           client.emit template.render
         else 
-          client.emit_failure t('dispatcher.not_found')
+          client.emit_failure t('db.object_not_found')
         end
       end
     end

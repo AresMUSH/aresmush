@@ -50,6 +50,7 @@ load "lib/general/combat_stance_cmd.rb"
 load "lib/general/combat_team_cmd.rb"
 load "lib/general/combat_types_cmd.rb"
 load "lib/general/general_helper.rb"
+load "lib/general/combat_npc_cmd.rb"
 load "lib/joining/combat_join_cmd.rb"
 load "lib/joining/combat_leave_cmd.rb"
 load "lib/joining/combat_list_cmd.rb"
@@ -169,6 +170,8 @@ module AresMUSH
            return CombatLeaveCmd
          when "luck"
            return CombatLuckCmd
+         when "npc"
+           return CombatNpcCmd
          when "newturn"
            return CombatNewTurnCmd
          when "skill"

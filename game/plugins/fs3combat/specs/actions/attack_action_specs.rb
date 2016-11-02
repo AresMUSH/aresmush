@@ -10,7 +10,7 @@ module AresMUSH
         @combatant.stub(:combat) { @combat }
         @combatant.stub(:weapon) { "Rifle" }
         @combatant.stub(:name) { "A" }
-        FS3Combat.stub(:hitloc_chart) { [] }
+        FS3Combat.stub(:hitloc_areas) { [] }
         @target.stub(:name) { "Target" }
         @target.stub(:is_noncombatant?) { false }
         FS3Combat.stub(:weapon_stat) { "" }
@@ -25,6 +25,7 @@ module AresMUSH
           @action.prepare.should be_nil
           @action.is_burst.should be_false
           @action.called_shot.should be_nil
+          @action.crew_hit.should eq false
           @action.mod.should eq 0
         end
         
@@ -33,24 +34,37 @@ module AresMUSH
           @action.prepare.should be_nil
           @action.is_burst.should be_false
           @action.called_shot.should be_nil
+          @action.crew_hit.should eq false
           @action.mod.should eq 3
         end
         
         it "should parse target plus called" do
           @action = AttackAction.new(@combatant, "target/called:head")
-          FS3Combat.stub(:hitloc_chart) { ["Head"] }
+          FS3Combat.stub(:hitloc_areas) { ["Head"] }
           @action.prepare.should be_nil
           @action.is_burst.should be_false
           @action.called_shot.should eq "Head"
+          @action.crew_hit.should eq false
+          @action.mod.should eq 0
+        end
+        
+        it "should parse target plus called and crew" do
+          FS3Combat.should_receive(:hitloc_areas).with(@target, true) { ["Head"] }
+          @action = AttackAction.new(@combatant, "target/called:head,crew")
+          @action.prepare.should be_nil
+          @action.is_burst.should be_false
+          @action.called_shot.should eq "Head"
+          @action.crew_hit.should eq true
           @action.mod.should eq 0
         end
         
         it "should parse mod plus burst" do
           @action = AttackAction.new(@combatant, "target/burst,mod:3")
-          @target.stub(:hitloc_chart) { ["Head"] }
+          @target.stub(:hitloc_areas) { ["Head"] }
           @action.prepare.should be_nil
           @action.is_burst.should be_true
           @action.called_shot.should be_nil
+          @action.crew_hit.should eq false
           @action.mod.should eq 3
         end
         
@@ -88,7 +102,7 @@ module AresMUSH
         end
 
         it "should fail if trying to burst with called shot" do
-          @target.stub(:hitloc_chart) { ["Head"] }
+          @target.stub(:hitloc_areas) { ["Head"] }
           @action = AttackAction.new(@combatant, "target/called:head , burst")
           @action.prepare.should eq "fs3combat.no_fullauto_called_shots"
         end
@@ -118,20 +132,20 @@ module AresMUSH
           @action = AttackAction.new(@combatant, "target")
           @action.prepare
           @combatant.stub(:ammo) { 5 }
-          FS3Combat.stub(:attack_target) { "resultx" }
+          FS3Combat.stub(:attack_target) { ["resultx"] }
         end
           
         it "should attack in single fire" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result1" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
           resolutions = @action.resolve
           resolutions[0].should eq "result1"
           resolutions.count.should eq 1
         end
         
         it "should attack in burst fire" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result2" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result3" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result3"] }
           @action.is_burst = true
           resolutions = @action.resolve
           resolutions[0].should eq "fs3combat.fires_burst"
@@ -143,8 +157,8 @@ module AresMUSH
         
         it "should limit burst fire to the number of bullets" do
           @combatant.stub(:ammo) { 2 }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result2" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result2"] }
           @action.is_burst = true
           resolutions = @action.resolve
           resolutions[0].should eq "fs3combat.fires_burst"
@@ -174,7 +188,7 @@ module AresMUSH
         end
         
         it "should add an out of ammo message" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil) { "result1" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
           FS3Combat.should_receive(:update_ammo).with(@combatant, 1) { "out of ammo" }
           resolutions = @action.resolve
           resolutions[0].should eq "result1"

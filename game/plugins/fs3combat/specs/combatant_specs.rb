@@ -53,7 +53,7 @@ module AresMUSH
         
         
         it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { 1 }
+          @combatant.stub(:total_damage_mod) { -1 }
           @combatant.should_receive(:roll_ability).with("Knives", -1)
           FS3Combat.roll_attack(@combatant)
         end
@@ -94,7 +94,7 @@ module AresMUSH
         end
         
         it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { 2 }
+          @combatant.stub(:total_damage_mod) { -2 }
           @combatant.stub(:attack_stance_mod) { 1 }
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
@@ -117,7 +117,7 @@ module AresMUSH
         end
         
         it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { 1 }
+          @combatant.stub(:total_damage_mod) { -1 }
           @combatant.should_receive(:roll_ability).with("Reaction", -1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
@@ -141,7 +141,7 @@ module AresMUSH
         end
         
         it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { 2 }
+          @combatant.stub(:total_damage_mod) { -2 }
           @combatant.stub(:defense_stance_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Reaction", -1)
           FS3Combat.roll_defense(@combatant, "Knife")
@@ -160,6 +160,7 @@ module AresMUSH
             FS3Combat.stub(:weapon_stat).with("Pistol", "skill") { "Firearms" }
             FS3Combat.stub(:combatant_type_stat).with("Soldier", "defense_skill") { "Reaction" }
             @combatant.stub(:combatant_type) { "Soldier" }
+            @combatant.stub(:is_in_vehicle?) { false }
           end
         
           it "should use defender melee skill for melee vs melee" do
@@ -176,6 +177,15 @@ module AresMUSH
             @combatant.stub(:weapon) { "Knife" }
             FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Reaction"
           end
+          
+          it "should use piloting skill if in a vehicle" do
+            vehicle = double
+            @combatant.stub(:is_in_vehicle?) { true }
+            @combatant.stub(:vehicle) { vehicle }
+            vehicle.stub(:vehicle_type) { "Viper" }
+            FS3Combat.stub(:vehicle_stat).with("Viper", "pilot_skill") { "Piloting" }
+            FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Piloting"
+          end
         end            
         
       end
@@ -185,34 +195,40 @@ module AresMUSH
           @vehicle = double
           @combatant.stub(:combatant_type) { "soldier" }
           @combatant.stub(:vehicle) { nil }
+          @hitloc = { "areas" => "x" }
         end
           
         it "should use a soldier's hitloc chart" do
           FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
-          FS3Combat.should_receive(:hitloc).with("human") { { "areas" => "x" } }
-          FS3Combat.hitloc_chart(@combatant).should eq "x"
+          FS3Combat.should_receive(:hitloc_chart_for_type).with("human") { @hitloc }
+          FS3Combat.hitloc_chart(@combatant).should eq @hitloc
         end
         
         it "should use a pilot's vehicle's hitloc chart if not a crew hit" do
           @combatant.stub(:vehicle) { @vehicle }
-          @vehicle.stub(:vehicle_type) { "Raider" }
-          FS3Combat.should_receive(:vehicle_stat).with("Raider", "hitloc_chart") { "fighter" }
-          FS3Combat.should_receive(:hitloc).with("fighter") { { "areas" => "y" } }
-          FS3Combat.hitloc_chart(@combatant).should eq "y"
+          @vehicle.stub(:hitloc_type) { "fighter" }
+          FS3Combat.should_receive(:hitloc_chart_for_type).with("fighter") { @hitloc }
+          FS3Combat.hitloc_chart(@combatant).should eq @hitloc
         end
         
         it "should use the pilot's hitloc chart if a crew hit" do
           @combatant.stub(:vehicle) { @vehicle }
           FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
-          FS3Combat.should_receive(:hitloc).with("human") { { "areas" => "x" } }
-          FS3Combat.hitloc_chart(@combatant, true).should eq "x"
+          FS3Combat.should_receive(:hitloc_chart_for_type).with("human") { @hitloc }
+          FS3Combat.hitloc_chart(@combatant, true).should eq @hitloc
+        end
+      end
+      
+      describe :hitloc_areas do
+        it "should extract areas from the hitloc chart" do
+          FS3Combat.should_receive(:hitloc_chart).with(@combatant, true) { { "areas" => "x" } }
+          FS3Combat.hitloc_areas(@combatant, true).should eq "x"
         end
       end
     
       describe :hitloc_severity do
         before do 
-          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "Human" }
-          FS3Combat.stub(:hitloc).with("Human") { 
+          FS3Combat.stub(:hitloc_chart).with(@combatant, false) { 
             { "vital_areas" => [ "Abdomen" ], 
               "critical_areas" => ["head"] }}
             
@@ -234,7 +250,7 @@ module AresMUSH
       
       describe :determine_hitloc do 
         before do 
-          FS3Combat.stub(:hitloc_chart) { {
+          FS3Combat.stub(:hitloc_areas) { {
             "Chest" => [ "A", "B", "C" ],
             "Head" => [ "D", "E", "F", "G" ]
           }}
@@ -289,7 +305,7 @@ module AresMUSH
         
         it "should subtract damage modifiers" do
           @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
-          @combatant.stub(:total_damage_mod) { 1 } 
+          @combatant.stub(:total_damage_mod) { -1 } 
           FS3Combat.roll_initiative(@combatant, "init").should eq 3
         end
         

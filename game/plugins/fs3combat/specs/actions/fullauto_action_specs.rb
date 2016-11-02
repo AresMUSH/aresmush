@@ -76,20 +76,20 @@ module AresMUSH
           @combat.stub(:find_combatant).with("Target1") { @target1 }
           @combat.stub(:find_combatant).with("Target2") { @target2 }
           @combat.stub(:find_combatant).with("Target3") { @target3 }
-          FS3Combat.stub(:attack_target) { "resultx" }
+          FS3Combat.stub(:attack_target) { ["resultx"] }
         end
           
         it "should attack a single target with all the bullets" do
           @action = FullautoAction.new(@combatant, "target1")
           @action.prepare
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result2" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result3" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result4" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result5" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result6" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result7" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result8" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result3"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result4"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result5"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result6"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result7"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result8"] }
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.fires_fullauto", "result1", "result2", "result3", "result4",
             "result5", "result6", "result7", "result8" ]
@@ -98,12 +98,12 @@ module AresMUSH
         it "should attack two targets with split bullets" do
           @action = FullautoAction.new(@combatant, "target1 target2")
           @action.prepare
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result2" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result3" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { "result4" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { "result5" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { "result6" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result3"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result4"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result5"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result6"] }
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.fires_fullauto", "result1", "result2", "result3", "result4",
             "result5", "result6" ]
@@ -112,9 +112,9 @@ module AresMUSH
         it "should attack three targets with split bullets" do
           @action = FullautoAction.new(@combatant, "target1 target2 target3")
           @action.prepare
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { "result1" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { "result2" }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { "result3" }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { ["result3"] }
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.fires_fullauto", "result1", "result2", "result3" ]
         end
@@ -122,7 +122,7 @@ module AresMUSH
         it "should update ammo" do
           @action = FullautoAction.new(@combatant, "target1 target2 target3")
           @action.prepare
-          @combatant.stub(:attack_target) { "result" }
+          @combatant.stub(:attack_target) { ["result"] }
           FS3Combat.should_receive(:update_ammo).with(@combatant, 8)
           @action.resolve
         end

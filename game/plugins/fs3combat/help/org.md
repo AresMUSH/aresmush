@@ -19,6 +19,8 @@ This is a quick reference for combat organizer commands.  For more details on FS
 
 `combat/summary` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
 
+`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Boss
+
 `combat/team <name>=<team#>` - Switches teams. 
 
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.

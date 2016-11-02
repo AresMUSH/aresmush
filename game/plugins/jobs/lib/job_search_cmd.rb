@@ -34,7 +34,7 @@ module AresMUSH
           if (result.found?)
             jobs = Job.find(author_id: result.target.id).sort_by { |j| j.number }
           else
-            client.emit_failure t('dispatcher.not_found')
+            client.emit_failure t('db.object_not_found')
             return
           end
           

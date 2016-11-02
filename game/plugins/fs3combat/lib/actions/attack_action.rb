@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class AttackAction < CombatAction
       
-      attr_accessor :mod, :is_burst, :called_shot
+      attr_accessor :mod, :is_burst, :called_shot, :crew_hit
       
       def prepare
         if (self.action_args =~ /\//)
@@ -25,6 +25,7 @@ module AresMUSH
         self.is_burst = false
         self.called_shot = nil
         self.mod = 0
+        self.crew_hit = false
                 
         error = self.parse_specials(specials)
         return error if error
@@ -34,7 +35,8 @@ module AresMUSH
         
         return t('fs3combat.no_fullauto_called_shots') if self.called_shot && self.is_burst
         
-        hitlocs = FS3Combat.hitloc_chart(target)
+        hitlocs = FS3Combat.hitloc_areas(target, self.crew_hit)
+        
         return t('fs3combat.invalid_called_shot_loc') if self.called_shot && !hitlocs.include?(self.called_shot)
         
         return t('fs3combat.out_of_ammo') if !FS3Combat.check_ammo(self.combatant, 1)
@@ -54,6 +56,8 @@ module AresMUSH
             self.mod = value.to_i
           when "Burst"
             self.is_burst = true
+          when "Crew"
+            self.crew_hit = true
           else
             return t('fs3combat.invalid_attack_special')
           end
@@ -88,7 +92,7 @@ module AresMUSH
         
         bullets = self.is_burst ? [3, self.combatant.ammo].min : 1
         bullets.times.each do |b|
-          messages << FS3Combat.attack_target(combatant, target, self.mod, self.called_shot)
+          messages.concat FS3Combat.attack_target(combatant, target, self.mod, self.called_shot, self.crew_hit)
         end
 
         ammo_message = FS3Combat.update_ammo(combatant, bullets)
