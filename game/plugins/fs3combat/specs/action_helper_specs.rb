@@ -12,7 +12,9 @@ module AresMUSH
           @combatant.stub(:update)
           @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:is_subdued?) { false }
+          @combatant.stub(:freshly_damaged) { false }
           @combatant.stub(:action) { nil }
+          @combatant.stub(:is_ko) { false }
           FS3Combat.stub(:reset_stress)
         end
         
@@ -23,6 +25,11 @@ module AresMUSH
         
         it "should reset recoil" do
           @combatant.should_receive(:update).with(recoil: 0)
+          FS3Combat.reset_for_new_turn(@combatant)
+        end
+        
+        it "should reset fresh damage" do
+          @combatant.should_receive(:update).with(freshly_damaged: false)
           FS3Combat.reset_for_new_turn(@combatant)
         end
         
@@ -58,11 +65,21 @@ module AresMUSH
           FS3Combat.should_receive(:reset_stress).with(@combatant)
           FS3Combat.reset_for_new_turn(@combatant)
         end
+        
+        it "should remove a KO'ed NPC" do
+          @combatant.stub(:is_ko) { true }
+          @combatant.stub(:is_npc?) { true }
+          combat = double
+          @combatant.stub(:combat) { combat }
+          FS3Combat.should_receive(:leave_combat).with(combat, @combatant)
+          FS3Combat.reset_for_new_turn(@combatant)
+        end
       end
       
       describe :reset_stress do 
         before do
           @combatant = double
+          @combatant.stub(:name) { "Bob" }
           Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
         end
         
@@ -85,6 +102,99 @@ module AresMUSH
           @combatant.stub(:roll_ability).with("Composure") { 2 }
           @combatant.should_receive(:update).with(stress: 0)
           FS3Combat.reset_stress(@combatant)
+        end
+      end
+      
+      describe :check_for_ko do
+        before do
+          @combatant = double
+          @combatant.stub(:is_ko) { false }
+          @combatant.stub(:freshly_damaged) { true }
+          @combatant.stub(:total_damage_mod) { -2.0 }
+        end
+        
+        it "should do nothing if already KOd" do
+          @combatant.stub(:is_ko) { true }
+          FS3Combat.check_for_ko(@combatant)
+        end
+        
+        it "should do nothing if only slightly injured" do
+          @combatant.stub(:total_damage_mod) { -0.99 }
+          FS3Combat.check_for_ko(@combatant)
+        end
+        
+        it "should do nothing if not freshly damaged" do
+          @combatant.stub(:freshly_damaged) { false }
+          FS3Combat.check_for_ko(@combatant)
+        end
+        
+        it "should KO the person if roll fails" do
+          combat = double
+          @combatant.stub(:name) { "Bob" }
+          FS3Combat.should_receive(:make_ko_roll).with(@combatant) { 0 }
+          @combatant.should_receive(:update).with(action_klass: nil)
+          @combatant.should_receive(:update).with(action_args: nil)
+          @combatant.should_receive(:update).with(is_ko: true)
+          @combatant.stub(:combat) { combat }
+          combat.should_receive(:emit).with("fs3combat.is_koed")
+          FS3Combat.check_for_ko(@combatant)
+        end
+        
+        it "should not KO the person if their roll succeeds" do
+          FS3Combat.should_receive(:make_ko_roll).with(@combatant) { 1 }
+          FS3Combat.check_for_ko(@combatant)
+        end
+      end
+      
+      describe :check_forunko do
+        before do
+          @combatant = double
+          @combatant.stub(:is_ko) { true }
+        end
+        
+        it "should do nothing if not KOd" do
+          @combatant.stub(:is_ko) { false }
+          FS3Combat.check_for_unko(@combatant)
+        end
+        
+        it "should do nothing if KO roll fails" do
+          FS3Combat.should_receive(:make_ko_roll).with(@combatant) { 0 }
+          FS3Combat.check_for_unko(@combatant)
+        end
+        
+        it "should un-KO the person if their roll succeeds" do
+          combat = double
+          @combatant.stub(:name) { "Bob" }
+          @combatant.should_receive(:update).with(is_ko: false)
+          FS3Combat.should_receive(:make_ko_roll).with(@combatant) { 1 }
+          @combatant.stub(:combat) { combat }
+          combat.should_receive(:emit).with("fs3combat.is_no_longer_koed")
+          FS3Combat.check_for_unko(@combatant)
+        end
+      end
+      
+      describe :make_ko_roll do
+        before do
+          @combatant = double
+          @combatant.stub(:name) { "Bob" }
+          @combatant.stub(:total_damage_mod) { -2 }
+        end
+        
+        it "should roll vehicle toughness if in a vehicle" do
+          vehicle = double
+          vehicle.stub(:vehicle_type) { "Viper" }
+          @combatant.stub(:is_in_vehicle?) { true }
+          @combatant.stub(:vehicle) { vehicle }
+          FS3Combat.stub(:vehicle_stat).with("Viper", "toughness") { 5 }
+          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 1 } }
+          FS3Combat.make_ko_roll(@combatant).should eq 1
+        end
+        
+        it "should roll personal toughness if in a vehicle" do
+          @combatant.stub(:is_in_vehicle?) { false }
+          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          @combatant.should_receive(:roll_ability).with("Composure", -2) { 1 }
+          FS3Combat.make_ko_roll(@combatant).should eq 1
         end
       end
       
@@ -153,6 +263,7 @@ module AresMUSH
       describe :determine_damage do
         before do 
           @combatant = double
+          @combatant.stub(:damage_lethality_mod) { 0 }
           FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Normal" }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
           FS3Combat.stub(:rand) { 25 }
@@ -442,8 +553,8 @@ module AresMUSH
         it "should inflict damage" do
           @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false, false)
           FS3Combat.resolve_attack("A", @target, "Knife")
-        end        
-        
+        end      
+
         it "should return a hit message" do
           FS3Combat.resolve_attack("A", @target, "Knife").should eq ["fs3combat.attack_hits"]
         end

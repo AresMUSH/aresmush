@@ -17,7 +17,9 @@ module AresMUSH
         Damage.all.each { |d| client.emit d.inspect }
         Npc.all.each { |d| client.emit d.inspect }
         Combatant.all.each { |d| client.emit d.inspect }
-      Damage.all.each { |d| client.emit d.delete }
+     # Damage.all.each { |d| client.emit d.delete }
+      
+     Combatant.all.each { |d| d.update(foo: nil)}
         # Put whatever you need to do here.
         
         client.emit_success "Done!"

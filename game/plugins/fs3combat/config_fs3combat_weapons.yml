@@ -24,7 +24,7 @@ fs3combat:
     weapons:
         Frag Grenade:
             description: "Fragmentation Hand Grenade"
-            skill: Reaction
+            skill: Athletics
             lethality: 0
             penetration: 3
             weapon_type: Explosive
@@ -38,7 +38,7 @@ fs3combat:
 
         Flash Grenade:
             description: "Flashbang Hand Grenade which blinds/deafens human targets for 5 secs.  No effect on Centurions."
-            skill: Reaction
+            skill: Athletics
             lethality: -75
             penetration: 20
             weapon_type: Explosive

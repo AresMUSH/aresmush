@@ -12,6 +12,42 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
       end
 
+      describe :weapon_stat do
+        before do
+          FS3Combat.stub(:weapon).with("Rifle") { { "penetration" => 3, "lethality" => 10 } }
+          specials = {
+            "Ap" => { "penetration" => 2 },
+            "Silencer" => { "lethality" => -5 }
+          }
+          FS3Combat.stub(:weapon_specials) { specials }
+        end
+        
+        it "should return nil if weapon not found" do
+           FS3Combat.stub(:weapon) { nil }
+           FS3Combat.weapon_stat("Banjo", "penetration").should be_nil
+        end
+
+        it "should return nil if weapon has no stat" do
+           FS3Combat.weapon_stat("Rifle", "moxie").should be_nil
+        end
+        
+        it "should return a value for a weapon without a special" do
+          FS3Combat.weapon_stat("Rifle", "penetration").should eq 3
+        end
+
+        it "should return raw value for a weapon with an invalid special" do
+          FS3Combat.weapon_stat("Rifle+Foo", "penetration").should eq 3
+        end
+        
+        it "should adjust a value for a weapon with a special" do
+          FS3Combat.weapon_stat("Rifle+Ap", "penetration").should eq 5
+        end
+        
+        it "should handle multiple specials" do
+          FS3Combat.weapon_stat("Rifle+Ap+Silencer", "penetration").should eq 5
+        end
+      end
+      
       describe :set_default_gear do
         before do
           FS3Combat.stub(:combatant_type_stat) { nil }
@@ -56,7 +92,7 @@ module AresMUSH
         end
 
         it "should pretty up the weapon and specials if set" do
-          @combatant.should_receive(:update).with(weapon: "Rifle")
+          @combatant.should_receive(:update).with(weapon_name: "Rifle")
           @combatant.should_receive(:update).with(weapon_specials: ["S1", "S2"])
           FS3Combat.set_weapon(@enactor, @combatant, "rifle", [ "s1", "s2" ])
         end
@@ -68,8 +104,8 @@ module AresMUSH
         end
         
         it "should reset stats if nil" do
-          @combatant.should_receive(:update).with(weapon: nil)
-          @combatant.should_receive(:update).with(weapon_specials: nil)
+          @combatant.should_receive(:update).with(weapon_name: "Unarmed")
+          @combatant.should_receive(:update).with(weapon_specials: [])
           @combatant.should_receive(:update).with(ammo: 0)
           @combatant.should_receive(:update).with(max_ammo: 0)
           FS3Combat.set_weapon(@enactor, @combatant, nil, nil)

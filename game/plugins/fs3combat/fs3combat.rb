@@ -17,6 +17,7 @@ load "lib/actions/attack_action.rb"
 load "lib/actions/explode_action.rb"
 load "lib/actions/fullauto_action.rb"
 load "lib/actions/pass_action.rb"
+load "lib/actions/rally_action.rb"
 load "lib/actions/subdue_action.rb"
 load "lib/actions/suppress_action.rb"
 load "lib/actions/reload_action.rb"
@@ -45,11 +46,14 @@ load "lib/gear/weapons_list_cmd.rb"
 load "lib/general/combat_action_cmd.rb"
 load "lib/general/combat_ai_cmd.rb"
 load "lib/general/combat_luck_cmd.rb"
+load "lib/general/combat_mod_cmd.rb"
 load "lib/general/combat_newturn_cmd.rb"
 load "lib/general/combat_stance_cmd.rb"
 load "lib/general/combat_team_cmd.rb"
 load "lib/general/combat_types_cmd.rb"
 load "lib/general/general_helper.rb"
+load "lib/general/combat_hero_cmd.rb"
+load "lib/general/combat_unko_cmd.rb"
 load "lib/general/combat_npc_cmd.rb"
 load "lib/joining/combat_join_cmd.rb"
 load "lib/joining/combat_leave_cmd.rb"
@@ -154,6 +158,8 @@ module AresMUSH
          case cmd.switch
          when "all", "list"
            return CombatListCmd
+         when "attackmod", "defensemod", "lethalmod"
+           return CombatModCmd
          when "armor"
            return CombatArmorCmd
          when "hitlocs"
@@ -164,6 +170,8 @@ module AresMUSH
            return CombatAiCmd
          when "disembark"
            return CombatDisembarkCmd
+         when "hero"
+           return CombatHeroCmd
          when "join"
            return CombatJoinCmd
          when "leave"
@@ -190,6 +198,8 @@ module AresMUSH
            return CombatTypesCmd
          when "pilot", "passenger"
            return CombatVehicleCmd
+         when "unko"
+           return CombatUnkoCmd
          when nil
            return CombatHudCmd
          else

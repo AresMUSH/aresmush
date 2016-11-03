@@ -98,6 +98,17 @@ en:
         invalid_npc_level: "Invalid NPC skill level.  Try one of these: %{levels}."
         not_a_npc: "You can only set NPC skill levels."
         
+        mod_applied: "You apply a %{type} modifier to %{name}."
+
+        # ----------------------------
+        # KO
+        # ----------------------------
+        
+        is_koed: "%{name} has been %xrKOed%xn!"
+        is_no_longer_koed: "%{name} is %xgno longer KOed%xn!"
+        not_koed: "You are not KOed!"
+        back_in_the_fight: "%{name} spends a luck point and is back in the fight!"
+        
         # ----------------------------
         # TYPES
         # ----------------------------
@@ -274,6 +285,15 @@ en:
         aim_action_msg_long: "%{name} will aim at %{target} this turn."
         aim_action_msg_short: "Aim %{target}"
         aim_resolution_msg: "%{name} takes careful aim at %{target}."
+        
+        # ----------------------------
+        # RALLY
+        # ----------------------------
+        
+        rally_action_msg_long: "%{name} will rally %{target} this turn."
+        rally_action_msg_short: "Rally %{target}"
+        rally_resolution_failed: "%{name} attempts to rally %{target}, but they are still KO'ed."
+        rally_resolution_success: "%{name} successfully rallies %{target}."
         
         # ----------------------------
         # SUBDUE AND ESCAPE

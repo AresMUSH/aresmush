@@ -28,3 +28,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
 
 `combat/unko` - Un-KO's someone who shouldn't have been
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
+
+`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
+`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
+`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN

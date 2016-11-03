@@ -6,7 +6,7 @@ module AresMUSH
     attribute :action_klass
     attribute :action_args    
     attribute :combatant_type
-    attribute :weapon
+    attribute :weapon_name
     attribute :weapon_specials, :type => DataType::Array
     attribute :stance, :default => "Normal"
     attribute :armor
@@ -18,7 +18,12 @@ module AresMUSH
     attribute :recoil, :type => DataType::Integer, :default => 0
     attribute :team, :type => DataType::Integer, :default => 1
     attribute :stress, :type => DataType::Integer, :default => 0
-        
+    attribute :freshly_damaged, :type => DataType::Boolean, :default => false
+    
+    attribute :damage_lethality_mod, :type => DataType::Integer, :default => 0
+    attribute :defense_mod, :type => DataType::Integer, :default => 0
+    attribute :attack_mod, :type => DataType::Integer, :default => 0
+    
     reference :subdued_by, "AresMUSH::Character"
     reference :aim_target, "AresMUSH::Character"
     reference :character, "AresMUSH::Character"
@@ -27,13 +32,18 @@ module AresMUSH
 
     reference :piloting, "AresMUSH::Vehicle"
     reference :riding_in, "AresMUSH::Vehicle"
-    
+        
     before_delete :cleanup
     
     def cleanup
       self.clear_mock_damage
       self.npc.delete if self.npc
       self.vehicle.delete if self.vehicle
+    end
+    
+    def weapon
+      special_text = self.weapon_specials ? "+#{self.weapon_specials.join("+")}" : nil
+      "#{self.weapon_name}#{special_text}"
     end
     
     def action
@@ -87,14 +97,14 @@ module AresMUSH
     # NOTE!  This is reported as a negative number.
     def total_damage_mod
       if (is_in_vehicle?)
-        total = FS3Combat.total_damage_mod(self.associated_model) + FS3Combat.total_damage_mod(self.vehicle)
-        total.ceil
+        FS3Combat.total_damage_mod(self.associated_model) + FS3Combat.total_damage_mod(self.vehicle)
       else
         FS3Combat.total_damage_mod(self.associated_model)
       end
     end
 
     def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
+      self.update(freshly_damaged: true)
       if (self.is_in_vehicle? && !is_crew_hit)
         model = self.vehicle
       else

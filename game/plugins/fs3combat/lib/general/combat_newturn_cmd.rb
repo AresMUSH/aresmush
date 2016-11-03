@@ -49,8 +49,9 @@ module AresMUSH
           end
         end
         
-        Global.dispatcher.queue_timer(initiative_order.count + 2, "Combat Turn", client) do
-          initiative_order.each { |c| FS3Combat.reset_for_new_turn(c) }
+        Global.dispatcher.queue_timer(initiative_order.count + 1, "Combat Turn", client) do
+          combat = enactor.combatant.combat
+          combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
           combat.update(turn_in_progress: false)
           combat.emit t('fs3combat.new_turn', :name => enactor_name)
         end

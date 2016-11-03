@@ -25,6 +25,8 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 
 `combat/treat <name>` - Treat an injured person.
 
+`combat/rally <name>` - Rally a knocked out person (without first aid).
+
 `combat/pass` - Take no action this turn.
 
 `combat/fullauto <list of targets>` - Fire a full-auto burst
@@ -32,7 +34,7 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 `combat/explode <list of targets>` - Use an explosive weapon.
 
 `combat/suppress <target>` - Use suppressive fire
-    A full-auto weapon can specify a list of up to 3 targets.
+    A full-auto or explosive weapon can specify a list of up to 3 targets.
 
 `combat/subdue <target>` - Subdues or disarms a target. 
 `combat/escape` – Attempts to escape while subdued.

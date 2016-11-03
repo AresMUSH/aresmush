@@ -17,6 +17,7 @@ module AresMUSH
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:attack_stance_mod) { 0 }
           @combatant.stub(:stress) { 0 }
+          @combatant.stub(:attack_mod) { 0 }
           @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:weapon) { "Knife" }
           @combatant.stub(:luck)
@@ -106,6 +107,7 @@ module AresMUSH
         before do
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:defense_stance_mod) { 0 }
+          @combatant.stub(:defense_mod) { 0 }
           @combatant.stub(:luck)
           FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
         end
@@ -176,6 +178,10 @@ module AresMUSH
           it "should use defender type default for ranged vs melee" do
             @combatant.stub(:weapon) { "Knife" }
             FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Reaction"
+          end
+          
+          it "should use composure for a suppression attack" do
+
           end
           
           it "should use piloting skill if in a vehicle" do

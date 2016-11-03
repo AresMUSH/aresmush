@@ -92,15 +92,19 @@ module AresMUSH
           @combat.stub(:find_combatant).with("Target1") { @target1 }
           @combat.stub(:find_combatant).with("Target2") { @target2 }
           @combat.stub(:find_combatant).with("Target3") { @target3 }
-          FS3Combat.stub(:determine_attack_margin) { { hit: false }}
+          FS3Combat.stub(:roll_attack) { 1 }
+          @target1.stub(:roll_ability) { 2 }
+          @target2.stub(:roll_ability) { 2 }
+          @target3.stub(:roll_ability) { 2 }
+          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
         end
           
         it "should suppress a single target successfully" do
           @action = SuppressAction.new(@combatant, "target1")
           @action.prepare
-          results = { hit: true, attacker_net_successes: 3 }
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target1) { results }
-          @target1.should_receive(:add_stress).with(5)
+          FS3Combat.should_receive(:roll_attack).with(@combatant) { 2 }
+          @target1.should_receive(:roll_ability).with("Composure") { 0 }
+          @target1.should_receive(:add_stress).with(4)
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.suppress_successful_msg" ]
         end
@@ -108,7 +112,8 @@ module AresMUSH
         it "should suppress a single target unsuccessfully" do
           @action = SuppressAction.new(@combatant, "target1")
           @action.prepare
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target1) { { hit: false } }
+          FS3Combat.should_receive(:roll_attack).with(@combatant) { 0 }
+          @target1.should_receive(:roll_ability).with("Composure") { 1 }
           @target1.should_not_receive(:add_stress)
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.suppress_failed_msg" ]
@@ -118,12 +123,14 @@ module AresMUSH
         it "should suppress multiple targets with separate rolls" do
           @action = SuppressAction.new(@combatant, "target1 target2")
           @action.prepare
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target1) { { hit: false } }
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target2) { { hit: true, attacker_net_successes: 1 } }
-          @target1.should_not_receive(:add_stress)
-          @target2.should_receive(:add_stress).with(3)
+          FS3Combat.should_receive(:roll_attack).with(@combatant) { 2 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant) { 1 }
+          @target1.should_receive(:roll_ability).with("Composure") { 0 }
+          @target2.should_receive(:roll_ability).with("Composure") { 3 }
+          @target1.should_receive(:add_stress).with(4)
+          @target2.should_not_receive(:add_stress)
           resolutions = @action.resolve
-          resolutions.should eq [ "fs3combat.suppress_failed_msg", "fs3combat.suppress_successful_msg" ]
+          resolutions.should eq [ "fs3combat.suppress_successful_msg", "fs3combat.suppress_failed_msg" ]
         end
         
         it "should update ammo for multiple targets" do

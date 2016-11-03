@@ -18,7 +18,8 @@ module AresMUSH
         t('fs3combat.treat_action_msg_short', :name => self.name, :target => print_target_names)
       end
       
-      def resolve        
+      def resolve
+        FS3Combat.check_for_unko(self.target)        
         [FS3Combat.treat(self.target.associated_model, self.combatant.associated_model)]
       end
     end

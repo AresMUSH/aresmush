@@ -14,6 +14,8 @@ module AresMUSH
         FullautoAction
       when "pass"
         PassAction
+      when "rally"
+        RallyAction
       when "reload"
         ReloadAction
       when "treat"
@@ -44,13 +46,58 @@ module AresMUSH
       combatant.update(posed: false)
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)
+      
+      FS3Combat.check_for_ko(combatant)
+      combatant.update(freshly_damaged: false)
+      
+      if (combatant.is_ko && combatant.is_npc?)
+        FS3Combat.leave_combat(combatant.combat, combatant)
+      end
     end
     
     def self.reset_stress(combatant)
       composure = Global.read_config("fs3combat", "composure_ability")
+      Global.logger.debug "#{combatant.name} resetting stress.  stress=#{combatant.stress}."
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
       combatant.update(stress: new_stress)
+    end
+    
+    def self.check_for_ko(combatant)
+      return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
+      roll = FS3Combat.make_ko_roll(combatant)
+      
+      if (roll <= 0)
+        combatant.update(is_ko: true)
+        combatant.update(action_klass: nil)
+        combatant.update(action_args: nil)
+        combatant.combat.emit t('fs3combat.is_koed', :name => combatant.name)
+      end
+    end
+      
+    def self.check_for_unko(combatant)
+      return if !combatant.is_ko
+      roll = FS3Combat.make_ko_roll(combatant)
+      
+      if (roll > 0)
+        combatant.update(is_ko: false)
+        combatant.combat.emit t('fs3combat.is_no_longer_koed', :name => combatant.name)
+      end
+    end
+    
+    def self.make_ko_roll(combatant)
+      if (combatant.is_in_vehicle?)
+        vehicle = combatant.vehicle
+        toughness = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness")
+        Global.logger.debug "#{combatant.name} vehicle checking KO. tough=#{toughness} mod=#{combatant.total_damage_mod}."
+        roll = FS3Skills::Api.one_shot_die_roll(toughness + combatant.total_damage_mod)[:successes]
+      else
+        toughness = Global.read_config("fs3combat", "composure_ability")
+        Global.logger.debug "#{combatant.name} checking KO. mod=#{combatant.total_damage_mod}."
+        roll = combatant.roll_ability(toughness, combatant.total_damage_mod)
+      end
+      
+      roll
     end
         
     def self.ai_action(combat, client, combatant)
@@ -101,7 +148,9 @@ module AresMUSH
         severity = 0
       end
       
-      total = random + severity + lethality - armor
+      special = combatant.damage_lethality_mod
+      
+      total = random + severity + lethality - armor + special
       
       if (total < 30)
         damage = "GRAZE"
@@ -114,7 +163,7 @@ module AresMUSH
       end
       
       Global.logger.debug "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
-      " lth=#{lethality} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
+      " lth=#{lethality} special=#{special} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
       
       damage
     end
@@ -152,7 +201,7 @@ module AresMUSH
       end
       
       Global.logger.debug "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen_roll} protect=#{protect_roll} result=#{protection}"
+      " pen=#{pen}/#{pen_roll} protect=#{protect}/#{protect_roll} result=#{protection}"
       
       protection
     end
@@ -247,7 +296,7 @@ module AresMUSH
       desc = "#{weapon} - #{hitloc}"
 
       target.inflict_damage(damage, desc, is_stun, crew_hit)
-      
+            
       target.add_stress(1)
       
       messages = []
@@ -259,7 +308,7 @@ module AresMUSH
                     :hitloc => hitloc,
                     :armor => reduced_by_armor,
                     :damage => FS3Combat.display_severity(damage)) 
-                    
+
       messages.concat FS3Combat.resolve_possible_crew_hit(target, hitloc, damage)
       messages
     end
