@@ -10,8 +10,8 @@ en:
         damage_inflicted: "You inflict damage on %{name}."
         wound_mod: "Wound Modifier:"
         healed_wound: "%xh%xxHealed%xn"
-        graze_wound: "%xgGraze%xn"
-        flesh_wound: "%xbFlesh Wound%xn"
+        graze_wound: "%xhGraze%xn"
+        flesh_wound: "%xgFlesh Wound%xn"
         impaired_wound: "%xyImpaired%xn"
         incap_wound: "%xrIncapacitated%xn"
         

@@ -264,7 +264,8 @@ module AresMUSH
         before do 
           @combatant = double
           @combatant.stub(:damage_lethality_mod) { 0 }
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Normal" }
+          @combatant.stub(:is_npc?) { false }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Vital" }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
           FS3Combat.stub(:rand) { 25 }
         end
@@ -301,9 +302,10 @@ module AresMUSH
           FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
         end
 
-        it "should account for hitloc severity for vital" do
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Vital" }
-          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
+        it "should account for hitloc severity for non-vital" do
+          FS3Combat.stub(:rand) { 31 }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Normal" }
+          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "GRAZE"
         end
 
         it "should account for hitloc severity for critical" do
@@ -526,6 +528,7 @@ module AresMUSH
           @target.stub(:inflict_damage)
           @target.stub(:name) { "D" }
           @target.stub(:add_stress)
+          @target.stub(:update).with(freshly_damaged: true)
         end
             
         
@@ -554,6 +557,11 @@ module AresMUSH
           @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false, false)
           FS3Combat.resolve_attack("A", @target, "Knife")
         end      
+        
+        it "should mark as freshly damaged" do
+          @target.should_receive(:update).with(freshly_damaged: true)
+          FS3Combat.resolve_attack("A", @target, "Knife")
+        end
 
         it "should return a hit message" do
           FS3Combat.resolve_attack("A", @target, "Knife").should eq ["fs3combat.attack_hits"]
