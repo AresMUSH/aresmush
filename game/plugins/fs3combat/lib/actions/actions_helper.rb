@@ -56,6 +56,8 @@ module AresMUSH
     end
     
     def self.reset_stress(combatant)
+      return if combatant.stress == 0
+
       composure = Global.read_config("fs3combat", "composure_ability")
       Global.logger.debug "#{combatant.name} resetting stress.  stress=#{combatant.stress}."
       roll = combatant.roll_ability(composure)
@@ -64,6 +66,7 @@ module AresMUSH
     end
     
     def self.check_for_ko(combatant)
+      Global.logger.debug "#{combatant.name} KO #{combatant.freshly_damaged} #{combatant.updated_at}"
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
       roll = FS3Combat.make_ko_roll(combatant)
       
@@ -143,12 +146,13 @@ module AresMUSH
       when "Critical"
         severity = 20
       when "Vital"
-        severity = 10
-      else
         severity = 0
+      else
+        severity = -10
       end
       
       special = combatant.damage_lethality_mod
+      npc = combatant.is_npc? ? 30 : 0
       
       total = random + severity + lethality - armor + special
       
@@ -296,7 +300,10 @@ module AresMUSH
       desc = "#{weapon} - #{hitloc}"
 
       target.inflict_damage(damage, desc, is_stun, crew_hit)
-            
+      target.update(freshly_damaged: true)
+      
+      Global.logger.debug "#{combatant.name} DAMAGED #{combatant.freshly_damaged} #{combatant.updated_at}"
+      
       target.add_stress(1)
       
       messages = []

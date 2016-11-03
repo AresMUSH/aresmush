@@ -29,27 +29,26 @@ module AresMUSH
           return
         end
         
-        initiative_order = FS3Combat.get_initiative_order(combat)
-        
         combat.emit t('fs3combat.starting_turn_resolution', :name => enactor_name)
         combat.update(turn_in_progress: true)
+
+        Global.dispatcher.spawn("Combat Turn", client) do
+          
+          initiative_order = FS3Combat.get_initiative_order(combat)
         
-        initiative_order.each_with_index do |c, i|
-          Global.dispatcher.queue_timer(i, "Combat Turn", client) do
+          initiative_order.each_with_index do |c, i|
             next if !c.action
             next if c.is_noncombatant?
 
             Global.logger.debug "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
-          
+            
             messages = c.action.resolve
             messages.each do |m|
               Global.logger.debug "#{m}"
               combat.emit m
             end
           end
-        end
         
-        Global.dispatcher.queue_timer(initiative_order.count + 1, "Combat Turn", client) do
           combat = enactor.combatant.combat
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
           combat.update(turn_in_progress: false)

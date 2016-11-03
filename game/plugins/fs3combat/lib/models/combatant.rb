@@ -104,7 +104,6 @@ module AresMUSH
     end
 
     def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
-      self.update(freshly_damaged: true)
       if (self.is_in_vehicle? && !is_crew_hit)
         model = self.vehicle
       else

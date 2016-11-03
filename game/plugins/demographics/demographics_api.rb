@@ -18,17 +18,17 @@ module AresMUSH
       
       # His/Her/Their
       def self.possessive_pronoun(char)
-        t("demographics.#{char.gender.downcase}_possessive")
+        t("demographics.#{char.demographic(:gender).downcase}_possessive")
       end
 
       # He/She/They
       def self.subjective_pronoun(char)
-        t("demographics.#{char.gender.downcase}_subjective")
+        t("demographics.#{char.demographic(:gender).downcase}_subjective")
       end
 
       # Him/Her/Them
       def self.objective_pronoun(char)
-        t("demographics.#{char.gender.downcase}_objective")
+        t("demographics.#{char.demographic(:gender).downcase}_objective")
       end
     end
   end
