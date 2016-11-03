@@ -38,7 +38,7 @@ module AresMUSH
           FS3Combat.inflict_damage(target, self.severity, self.desc)
           client.emit_success t('fs3combat.damage_inflicted', :name => target.name) 
         else 
-          client.emit_failure t('dispatcher.not_found')
+          client.emit_failure t('db.object_not_found')
         end
       end
     end

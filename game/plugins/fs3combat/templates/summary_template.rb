@@ -26,14 +26,6 @@ module AresMUSH
         end
         rating
       end
-      
-      def weapon(c)
-        weapon = "#{c.weapon}"
-        if (c.weapon_specials)
-          weapon << " (#{c.weapon_specials.join(",")})"
-        end
-        weapon
-      end
     end
   end
 end

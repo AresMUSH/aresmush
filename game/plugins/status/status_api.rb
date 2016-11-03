@@ -4,6 +4,10 @@ module AresMUSH
       is_afk
     end
     
+    def is_npc?
+      is_npc
+    end
+    
     def is_on_duty?
       is_on_duty
     end
@@ -24,6 +28,8 @@ module AresMUSH
       return "OOC" if Status.can_be_on_duty?(self)
       # Playerbits are always OOC
       return "OOC" if self.is_playerbit
+      # NPCs are always NPC
+      return "NPC" if self.is_npc
       # New trumps room type
       return "NEW" if !self.is_approved?
       # Otherwise use room type

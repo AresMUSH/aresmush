@@ -76,14 +76,9 @@ module AresMUSH
       
       def format_weapon(c)
         weapon = "#{c.weapon}"
-        specials = c.weapon_specials ? c.weapon_specials.join(",") : ""
         
-        if (c.ammo && !specials.blank?)
-          notes = " (#{c.ammo}, #{specials})"
-        elsif (c.ammo)
+        if (c.max_ammo > 0)
           notes = " (#{c.ammo})"
-        elsif (!specials.blank?)
-          notes = " (#{specials})"
         else
           notes = ""
         end

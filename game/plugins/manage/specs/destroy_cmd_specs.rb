@@ -71,6 +71,7 @@ module AresMUSH
           before do
             @target = Character.new
             @target.stub(:id) { 1 }
+            @target.stub(:print_json) { "" }
             results = FindResult.new(@target)
             AnyTargetFinder.stub(:find) { results }
             client.stub(:program=)

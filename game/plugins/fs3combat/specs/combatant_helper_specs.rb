@@ -16,7 +16,9 @@ module AresMUSH
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 0 }
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:attack_stance_mod) { 0 }
-          @combatant.stub(:is_aiming) { false }
+          @combatant.stub(:stress) { 0 }
+          @combatant.stub(:attack_mod) { 0 }
+          @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:weapon) { "Knife" }
           @combatant.stub(:luck)
         end
@@ -27,10 +29,11 @@ module AresMUSH
         end
         
         it "should account for aim modifier if aimed at the same target" do
-          @combatant.stub(:is_aiming) { true }
-          @combatant.stub(:aim_target) { "Bob" }
+          target = double
+          @combatant.stub(:is_aiming?) { true }
+          @combatant.stub(:aim_target) { target }
           action = double
-          action.stub(:print_target_names) { "Bob" }
+          action.stub(:target) { target }
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 3)
@@ -38,10 +41,11 @@ module AresMUSH
         end
         
         it "should not apply aim modifier if aimed at a different target" do
-          @combatant.stub(:is_aiming) { true }
-          @combatant.stub(:aim_target) { "Bob" }
+          target = double
+          @combatant.stub(:is_aiming?) { true }
+          @combatant.stub(:aim_target) { target }
           action = double
-          action.stub(:print_target_names) { "Someone Else" }
+          action.stub(:target) { double }
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 0)
@@ -50,7 +54,7 @@ module AresMUSH
         
         
         it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { 1 }
+          @combatant.stub(:total_damage_mod) { -1 }
           @combatant.should_receive(:roll_ability).with("Knives", -1)
           FS3Combat.roll_attack(@combatant)
         end
@@ -64,6 +68,12 @@ module AresMUSH
         it "should account for accuracy modifiers" do
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
+          FS3Combat.roll_attack(@combatant)
+        end
+        
+        it "should account for stress modifiers" do
+          @combatant.stub(:stress) { 1 }
+          @combatant.should_receive(:roll_ability).with("Knives", -1)
           FS3Combat.roll_attack(@combatant)
         end
 
@@ -85,7 +95,7 @@ module AresMUSH
         end
         
         it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { 2 }
+          @combatant.stub(:total_damage_mod) { -2 }
           @combatant.stub(:attack_stance_mod) { 1 }
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
@@ -97,6 +107,7 @@ module AresMUSH
         before do
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:defense_stance_mod) { 0 }
+          @combatant.stub(:defense_mod) { 0 }
           @combatant.stub(:luck)
           FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
         end
@@ -108,7 +119,7 @@ module AresMUSH
         end
         
         it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { 1 }
+          @combatant.stub(:total_damage_mod) { -1 }
           @combatant.should_receive(:roll_ability).with("Reaction", -1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
@@ -132,7 +143,7 @@ module AresMUSH
         end
         
         it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { 2 }
+          @combatant.stub(:total_damage_mod) { -2 }
           @combatant.stub(:defense_stance_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Reaction", -1)
           FS3Combat.roll_defense(@combatant, "Knife")
@@ -151,6 +162,7 @@ module AresMUSH
             FS3Combat.stub(:weapon_stat).with("Pistol", "skill") { "Firearms" }
             FS3Combat.stub(:combatant_type_stat).with("Soldier", "defense_skill") { "Reaction" }
             @combatant.stub(:combatant_type) { "Soldier" }
+            @combatant.stub(:is_in_vehicle?) { false }
           end
         
           it "should use defender melee skill for melee vs melee" do
@@ -167,23 +179,62 @@ module AresMUSH
             @combatant.stub(:weapon) { "Knife" }
             FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Reaction"
           end
+          
+          it "should use composure for a suppression attack" do
+
+          end
+          
+          it "should use piloting skill if in a vehicle" do
+            vehicle = double
+            @combatant.stub(:is_in_vehicle?) { true }
+            @combatant.stub(:vehicle) { vehicle }
+            vehicle.stub(:vehicle_type) { "Viper" }
+            FS3Combat.stub(:vehicle_stat).with("Viper", "pilot_skill") { "Piloting" }
+            FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Piloting"
+          end
         end            
         
       end
       
       describe :hitloc_chart do
-        it "should use a soldier's hitloc chart" do
+        before do 
+          @vehicle = double
           @combatant.stub(:combatant_type) { "soldier" }
+          @combatant.stub(:vehicle) { nil }
+          @hitloc = { "areas" => "x" }
+        end
+          
+        it "should use a soldier's hitloc chart" do
           FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
-          FS3Combat.should_receive(:hitloc).with("human") { { "areas" => "x" } }
-          FS3Combat.hitloc_chart(@combatant).should eq "x"
+          FS3Combat.should_receive(:hitloc_chart_for_type).with("human") { @hitloc }
+          FS3Combat.hitloc_chart(@combatant).should eq @hitloc
+        end
+        
+        it "should use a pilot's vehicle's hitloc chart if not a crew hit" do
+          @combatant.stub(:vehicle) { @vehicle }
+          @vehicle.stub(:hitloc_type) { "fighter" }
+          FS3Combat.should_receive(:hitloc_chart_for_type).with("fighter") { @hitloc }
+          FS3Combat.hitloc_chart(@combatant).should eq @hitloc
+        end
+        
+        it "should use the pilot's hitloc chart if a crew hit" do
+          @combatant.stub(:vehicle) { @vehicle }
+          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
+          FS3Combat.should_receive(:hitloc_chart_for_type).with("human") { @hitloc }
+          FS3Combat.hitloc_chart(@combatant, true).should eq @hitloc
+        end
+      end
+      
+      describe :hitloc_areas do
+        it "should extract areas from the hitloc chart" do
+          FS3Combat.should_receive(:hitloc_chart).with(@combatant, true) { { "areas" => "x" } }
+          FS3Combat.hitloc_areas(@combatant, true).should eq "x"
         end
       end
     
       describe :hitloc_severity do
         before do 
-          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "Human" }
-          FS3Combat.stub(:hitloc).with("Human") { 
+          FS3Combat.stub(:hitloc_chart).with(@combatant, false) { 
             { "vital_areas" => [ "Abdomen" ], 
               "critical_areas" => ["head"] }}
             
@@ -205,32 +256,44 @@ module AresMUSH
       
       describe :determine_hitloc do 
         before do 
-          FS3Combat.stub(:hitloc_chart) { ["Head", "Arm", "Leg", "Body" ]}
+          FS3Combat.stub(:hitloc_areas) { {
+            "Chest" => [ "A", "B", "C" ],
+            "Head" => [ "D", "E", "F", "G" ]
+          }}
         end
         
         it "should work with random lowest value" do
-          FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 0).should eq "Head"
+          FS3Combat.should_receive(:rand).with(3) { 0 }
+          FS3Combat.determine_hitloc(@combatant, 0).should eq "A"
         end
         
         it "should work with random highest value" do
-          FS3Combat.should_receive(:rand).with(4) { 3 }
-          FS3Combat.determine_hitloc(@combatant, 0).should eq "Body"
+          FS3Combat.should_receive(:rand).with(3) { 2 }
+          FS3Combat.determine_hitloc(@combatant, 0).should eq "C"
         end
         
         it "should add in successes with lowest random value" do
-          FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 1).should eq "Arm"
+          FS3Combat.should_receive(:rand).with(3) { 0 }
+          FS3Combat.determine_hitloc(@combatant, 1).should eq "B"
         end
         
         it "should add in successes with highest random value" do
-          FS3Combat.should_receive(:rand).with(4) { 3 }
-          FS3Combat.determine_hitloc(@combatant, 1).should eq "Body"
+          FS3Combat.should_receive(:rand).with(3) { 2 }
+          FS3Combat.determine_hitloc(@combatant, 1).should eq "C"
         end
         
         it "should work with lowest value and negative modifier" do
+          FS3Combat.should_receive(:rand).with(3) { 0 }
+          FS3Combat.determine_hitloc(@combatant, -2).should eq "A"
+        end
+        
+        it "should return the exact hit location if called shot and net > 2" do
+          FS3Combat.determine_hitloc(@combatant, 3, "Head").should eq "Head"
+        end
+        
+        it "should use the called shot hitloc chart if called shot and net < 2" do
           FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, -2).should eq "Head"
+          FS3Combat.determine_hitloc(@combatant, 1, "Head").should eq "E"
         end
       end
       
@@ -248,7 +311,7 @@ module AresMUSH
         
         it "should subtract damage modifiers" do
           @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
-          @combatant.stub(:total_damage_mod) { 1 } 
+          @combatant.stub(:total_damage_mod) { -1 } 
           FS3Combat.roll_initiative(@combatant, "init").should eq 3
         end
         
@@ -265,10 +328,35 @@ module AresMUSH
         end
       end
       
-      describe :update_ammo do
+      describe :check_ammo do
+        before do
+          @combatant.stub(:max_ammo) { 10 }
+        end
+        
+        it "should return true if the weapon doesn't use ammo" do
+          @combatant.stub(:max_ammo) { 0 }
+          FS3Combat.check_ammo(@combatant, 22).should be_true          
+        end
+         
+        it "should return true if enough bullets" do
+          @combatant.stub(:ammo) { 10 }
+          FS3Combat.check_ammo(@combatant, 2).should be_true
+        end
+        
+        it "should return false if not enough bullets" do
+          @combatant.stub(:ammo) { 10 }
+          FS3Combat.check_ammo(@combatant, 22).should be_false
+        end
+      end
+        
       
+      describe :update_ammo do
+        before do
+          @combatant.stub(:max_ammo) { 10 }
+        end
+          
         it "should not do anything if the weapon doesn't use ammo" do
-          @combatant.stub(:ammo) { nil }
+          @combatant.stub(:max_ammo) { 0 }
           @combatant.should_not_receive(:update)
           FS3Combat.update_ammo(@combatant, 1).should be_nil
         end

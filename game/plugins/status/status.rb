@@ -5,6 +5,7 @@ load "lib/go_afk_cmd.rb"
 load "lib/go_offstage_cmd.rb"
 load "lib/go_onstage_cmd.rb"
 load "lib/helpers.rb"
+load "lib/npc_cmd.rb"
 load "lib/playerbit_cmd.rb"
 load "lib/status_model.rb"
 load "status_api.rb"
@@ -27,7 +28,8 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/admin_duty.md", "help/afk.md", "help/offstage.md", "help/onstage.md", "help/playerbit.md", "help/status.md" ]
+      [ "help/admin_duty.md", "help/afk.md", "help/npc.md", "help/offstage.md", "help/onstage.md", 
+        "help/playerbit.md", "help/status.md" ]
     end
  
     def self.config_files
@@ -44,6 +46,8 @@ module AresMUSH
         return DutyCmd
       when "afk"
         return GoAfkCmd
+      when "npc"
+        return NpcCmd
       when "offstage"
         return GoOffstageCmd
       when "onstage"

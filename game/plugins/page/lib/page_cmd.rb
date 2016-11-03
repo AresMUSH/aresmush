@@ -31,13 +31,13 @@ module AresMUSH
       end
       
       def check_page_target
-        return t('page.target_missing') if self.names.empty?
+        return t('page.target_missing') if !self.names || self.names.empty?
         return nil
       end
       
       def handle
         OnlineCharFinder.with_online_chars(self.names, client) do |results|
-          name = enactor.name
+          name = enactor.name_and_alias
           message = PoseFormatter.format(name, self.message)
           recipients = results.map { |result| result.char.name_and_alias }.join(", ")
         

@@ -19,6 +19,8 @@ This is a quick reference for combat organizer commands.  For more details on FS
 
 `combat/summary` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
 
+`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Boss
+
 `combat/team <name>=<team#>` - Switches teams. 
 
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.
@@ -26,3 +28,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
 
 `combat/unko` - Un-KO's someone who shouldn't have been
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
+
+`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
+`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
+`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN

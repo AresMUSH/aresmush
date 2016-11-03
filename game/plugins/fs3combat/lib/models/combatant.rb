@@ -3,35 +3,73 @@ module AresMUSH
   class Combatant < Ohm::Model
     include ObjectModel
       
-    attr_accessor :action
-    
+    attribute :action_klass
+    attribute :action_args    
     attribute :combatant_type
-    attribute :weapon
+    attribute :weapon_name
     attribute :weapon_specials, :type => DataType::Array
     attribute :stance, :default => "Normal"
     attribute :armor
     attribute :is_ko, :type => DataType::Boolean
-    attribute :is_aiming, :type => DataType::Boolean
-    attribute :aim_target
     attribute :luck
     attribute :ammo, :type => DataType::Integer
+    attribute :max_ammo, :type => DataType::Integer, :default => 0
     attribute :posed, :type => DataType::Boolean
     attribute :recoil, :type => DataType::Integer, :default => 0
     attribute :team, :type => DataType::Integer, :default => 1
-
+    attribute :stress, :type => DataType::Integer, :default => 0
+    attribute :freshly_damaged, :type => DataType::Boolean, :default => false
+    
+    attribute :damage_lethality_mod, :type => DataType::Integer, :default => 0
+    attribute :defense_mod, :type => DataType::Integer, :default => 0
+    attribute :attack_mod, :type => DataType::Integer, :default => 0
+    
+    reference :subdued_by, "AresMUSH::Character"
+    reference :aim_target, "AresMUSH::Character"
     reference :character, "AresMUSH::Character"
     reference :combat, "AresMUSH::Combat"
     reference :npc, "AresMUSH::Npc"
 
     reference :piloting, "AresMUSH::Vehicle"
     reference :riding_in, "AresMUSH::Vehicle"
-    
+        
     before_delete :cleanup
     
     def cleanup
       self.clear_mock_damage
       self.npc.delete if self.npc
       self.vehicle.delete if self.vehicle
+    end
+    
+    def weapon
+      special_text = self.weapon_specials ? "+#{self.weapon_specials.join("+")}" : nil
+      "#{self.weapon_name}#{special_text}"
+    end
+    
+    def action
+      return nil if !self.action_klass
+      klass = FS3Combat.const_get(self.action_klass)
+      a = klass.new(self, self.action_args)
+      error = a.prepare
+      if (error)
+        self.combat.emit t('fs3combat.resetting_action', :name => self.name, :error => error)
+        self.update(action_klass: nil)
+        self.update(action_args: nil)
+        return nil
+      end
+      a
+    end
+      
+    def is_subdued?
+      self.subdued_by && self.subdued_by.is_subduing?(self)
+    end
+    
+    def is_subduing?(target)
+      self.action && self.action.class == SubdueAction && self.action.targets && self.action.target == target
+    end
+    
+    def is_aiming?
+      !!self.aim_target
     end
     
     def associated_model
@@ -47,20 +85,32 @@ module AresMUSH
       result[:successes]
     end
     
-    def targeted_by
-      # TODO!!!!
+    def add_stress(points)
+      points = [ self.stress + points, 5 ].min
+      self.update(stress: points)
     end
     
     def client
       self.character ? self.character.client : nil
     end
     
+    # NOTE!  This is reported as a negative number.
     def total_damage_mod
-      FS3Combat.total_damage_mod(self.associated_model)
+      if (is_in_vehicle?)
+        FS3Combat.total_damage_mod(self.associated_model) + FS3Combat.total_damage_mod(self.vehicle)
+      else
+        FS3Combat.total_damage_mod(self.associated_model)
+      end
     end
-    
-    def inflict_damage(severity, desc, is_stun = false)
-      FS3Combat.inflict_damage(self.associated_model, severity, desc, is_stun, !combatant.combat.is_real)
+
+    def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
+      self.update(freshly_damaged: true)
+      if (self.is_in_vehicle? && !is_crew_hit)
+        model = self.vehicle
+      else
+        model = self.associated_model
+      end
+      FS3Combat.inflict_damage(model, severity, desc, is_stun, !self.combat.is_real)
     end
       
     def attack_stance_mod

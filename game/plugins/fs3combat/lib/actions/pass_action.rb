@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class PassAction < CombatAction
       
-      def parse_args(args)
+      def prepare
       end
 
       def print_action

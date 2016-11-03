@@ -44,6 +44,7 @@ en:
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
         hud_subtitle: "%xhCombatant         Damage  Weapon(ammo/specials)     Action(stance)%xn"
+        
         # ----------------------------
         # START, STOP, JOIN, LEAVE
         # ----------------------------
@@ -92,6 +93,21 @@ en:
         
         choosing_ai_actions: "Choosing NPC AI actions."
         no_ai_actions_to_set: "All NPCs have actions already."
+        
+        npc_skill_set: "%{name} skill level set to %{level}."
+        invalid_npc_level: "Invalid NPC skill level.  Try one of these: %{levels}."
+        not_a_npc: "You can only set NPC skill levels."
+        
+        mod_applied: "You apply a %{type} modifier to %{name}."
+
+        # ----------------------------
+        # KO
+        # ----------------------------
+        
+        is_koed: "%{name} has been %xrKOed%xn!"
+        is_no_longer_koed: "%{name} is %xgno longer KOed%xn!"
+        not_koed: "You are not KOed!"
+        back_in_the_fight: "%{name} spends a luck point and is back in the fight!"
         
         # ----------------------------
         # TYPES
@@ -194,6 +210,7 @@ en:
         new_turn: "%{name} has started a new turn!  Pose and pick your actions."
         starting_turn_resolution: "Starting turn resolution..."
         turn_in_progress: "Turn in progress.  Please wait."
+        resetting_action: "Restting %{name}'s action because it is no longer valid: %{error}"
         
         # ----------------------------
         # STANCE
@@ -209,26 +226,49 @@ en:
         attack_action_msg_long: "%{name} will attack %{target}."
         attack_action_msg_short: "Attack %{target}"
         attack_special_burst: "(burst)"
+        attack_special_fullauto: "(fullauto)"
         attack_special_called: "(called shot to the %{location})"
         attack_special_mod: "(modifier: %{mod})"
         invalid_attack_special: "That is not a valid attack special."
-        attack_missed: "%{name} attacks %{target} but MISSES!"
-        attack_dodged: "%{name} attacks %{target} but %{target} DODGES!"
-        attack_hits: "%{name} attacks %{target} and HITS!  %{damage} wound to %{hitloc} %{armor}"
-        attack_hit_cover: "%{name} attacks %{target} but hits the COVER they're behind."
+        attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
+        attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
+        attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
+        attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc} %{armor}"
+        attack_hit_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."
+        no_fullauto_called_shots: "You can't do called shots with bursts or multiple targets."
         fires_burst: "%{name} fires a burst!"  
          
         fires_fullauto: "%{name} fires full-auto!"     
         fullauto_action_msg_long: "%{name} will fire full-auto at %{targets}."
         fullauto_action_msg_short: "Fullauto %{targets}"
-        fullauto_resolution_msg: "%{name} fires full-auto!"
         too_many_targets: "You can only attack up to 4 targets with full-auto fire."
         
-        attack_stopped_by_armor: "%{name} attacks %{target}.  Stopped by ARMOR on %{hitloc}."
+        attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"
+        
+        crew_hit: "CREW HIT!"
+
+        # ----------------------------
+        # SUPPRESS
+        # ----------------------------
+            
+        suppress_action_msg_long: "%{name} will suppress %{targets}."
+        suppress_action_msg_short: "Suppress %{targets}"
+        suppress_successful_msg: "%{name} suppresses %{target} with %{weapon}."
+        suppress_failed_msg: "%{name} tries to suppress %{target} with %{weapon} but FAILS."
+
+        
+        # ----------------------------
+        # EXPLODE
+        # ----------------------------
+        
+        not_explosive_weapon: "You do not have an explosive weapon."
+        explode_action_msg_long: "%{name} will blow up %{targets}."
+        explode_action_msg_short: "Explode %{targets}"
+        explode_resolution_message: "%{name} uses %{weapon}.  EXPLOSION!"
         
         # ----------------------------
         # PASS
@@ -245,12 +285,38 @@ en:
         aim_action_msg_long: "%{name} will aim at %{target} this turn."
         aim_action_msg_short: "Aim %{target}"
         aim_resolution_msg: "%{name} takes careful aim at %{target}."
-
+        
+        # ----------------------------
+        # RALLY
+        # ----------------------------
+        
+        rally_action_msg_long: "%{name} will rally %{target} this turn."
+        rally_action_msg_short: "Rally %{target}"
+        rally_resolution_failed: "%{name} attempts to rally %{target}, but they are still KO'ed."
+        rally_resolution_success: "%{name} successfully rallies %{target}."
+        
+        # ----------------------------
+        # SUBDUE AND ESCAPE
+        # ----------------------------
+        
+        subdue_uses_melee: "You must use a melee weapon to subdue."
+        subdue_action_msg_long: "%{name} will subdue %{target} this turn."
+        subdue_action_msg_short: "Subdue %{target}"
+        subdue_action_success: "%{name} subdues %{target}."
+        subdue_action_failed: "%{name} tries to subdue %{target} but FAILS."
+        not_subdued: "You are not subdued."
+        escape_action_msg_long: "%{name} will try to escape from %{target} this turn."
+        escape_action_msg_short: "Escape %{target}"
+        escape_action_success: "%{name} escapes from %{target}."
+        escape_action_failed: "%{name} tries to escape from %{target} but is still subdued."
+        
+        
         # ----------------------------
         # AMMO / RELOAD
         # ----------------------------
 
-        not_enough_ammo_for_burst: "You need at least 2 rounds for burst or fullauto fire."
+        not_enough_ammo_for_burst: "You need 3 rounds for burst fire."
+        not_enough_ammo_for_fullauto: "You need 8 rounds for fullauto fire."
         out_of_ammo: "You are out of ammo."
         weapon_clicks_empty: "%{name}'s weapon clicks empty."
         weapon_empty: "%{name}'s weapon is empty."

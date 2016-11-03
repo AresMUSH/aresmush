@@ -44,44 +44,51 @@ fs3combat:
         Viper:
             description: "Viper Vehicle Armor"
             protection:
-                Cockpit: 5
                 Body: 10
-                Controls: 8
                 Engine: 10
-                Right Wing: 9
-                Left Wing: 9
                 Tail: 9
+                Wing: 9
+                Weapon: 5
                 Nose: 10
+                Cockpit: 5
+                Controls: 8
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
             protection:
-                Cockpit: 2
-                Controls: 3
                 Body: 5
                 Engine: 5
-                Right Wing: 4
-                Left Wing: 4
+                Tail: 5
+                Wing: 4
+                Weapon: 2
+                Nose: 5
+                Cockpit: 2
+                Controls: 3
 
         Raptor:
             description: "Raptor Vehicle Armor"
             protection:
-                Cockpit: 5
-                Controls: 10
                 Body: 15
                 Engine: 15
-                Right Wing: 15
-                Left Wing: 15
+                Tail: 10
+                Wing: 15
+                Weapon: 5
+                Nose: 15
+                Cockpit: 5
+                Controls: 10
                 Cabin: 15
 
         Heavy Raider:
             description: "Cylon Heavy Raider Vehicle Armor"
             protection:
-                Controls: 8
                 Body: 10
                 Engine: 10
-                Right Wing: 10
-                Left Wing: 10
+                Tail: 10
+                Wing: 10
+                Weapon: 5
+                Nose: 10
+                Cockpit: 5
+                Controls: 10
                 Cabin: 10
 
         Aa Battery:

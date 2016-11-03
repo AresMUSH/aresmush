@@ -34,14 +34,17 @@ module AresMUSH
     end
     
     def self.leave_vehicle(combat, combatant)
-      vehicle = combatant.piloting
-       if (vehicle)
+      
+       if (combatant.piloting)
+         vehicle = combatant.piloting
          vehicle.update(pilot: nil)
          combatant.update(piloting: nil)
-       else
+       elsif (combatant.riding_in)
          vehicle = combatant.riding_in
          combatant.update(riding_in: nil)
        end
+       FS3Combat.set_default_gear(nil, combatant, Global.read_config("fs3combat", "default_type"))
+       
        combat.emit t('fs3combat.disembarks_vehicle', :name => combatant.name, :vehicle => vehicle.name)
     end
     

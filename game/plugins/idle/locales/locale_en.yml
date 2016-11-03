@@ -12,3 +12,4 @@ en:
         idle_bbs_body: "The following characters have idled out or are in danger of doing so.%R%R%{report}"
         
         lastwill_set: "Last will instructions set."
+        turned_to_npc: "Turned into NPC"

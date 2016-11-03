@@ -14,3 +14,6 @@ en:
         
         set_playerbit_on: "You mark this character as a player bit."
         set_playerbit_off: "This character is no longer marked as a player bit."
+
+        set_npc_on: "You mark %{name} as a NPC."
+        set_npc_off: "%{name} is no longer marked as a NPC."

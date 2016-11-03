@@ -89,13 +89,11 @@ module AresMUSH
         
         describe "passenger" do
           it "should update the pilot's vehicle stat" do
-            @passenger_list.stub(:add)
             @combatant.should_receive(:update).with(riding_in: @vehicle)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
           
           it "should emit to combat" do
-            @passenger_list.stub(:add)
             @combat.should_receive(:emit).with("fs3combat.new_passenger")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
@@ -113,6 +111,9 @@ module AresMUSH
           @combat.stub(:emit)
           @combatant.stub(:update)
           @vehicle.stub(:update)
+          
+          FS3Combat.stub(:set_default_gear) {}
+          Global.stub(:read_config).with("fs3combat", "default_type") { "soldier" }
         end
       
         it "should remove a pilot" do
@@ -134,6 +135,13 @@ module AresMUSH
           @combatant.should_receive(:update).with(riding_in: nil)
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
+        
+        it "should reset gear" do
+          @combatant.stub(:piloting) { @vehicle }
+          FS3Combat.should_receive(:set_default_gear).with(nil, @combatant, "soldier")
+          FS3Combat.leave_vehicle(@combat, @combatant)
+        end
+        
       end
       
     end

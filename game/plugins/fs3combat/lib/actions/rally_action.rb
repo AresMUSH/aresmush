@@ -1,0 +1,33 @@
+module AresMUSH
+  module FS3Combat
+    class RallyAction < CombatAction
+      
+      def prepare
+        error = self.parse_targets( self.action_args)
+        return error if error
+        
+        return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        return nil
+      end
+      
+      def print_action
+        msg = t('fs3combat.rally_action_msg_long', :name => self.name, :target => print_target_names)
+      end
+      
+      def print_action_short
+        t('fs3combat.rally_action_msg_short', :name => self.name, :target => print_target_names)
+      end
+      
+      def resolve
+        FS3Combat.check_for_unko(self.target)
+        if (self.target.is_ko)
+          message = t('fs3combat.rally_resolution_failed', :target => print_target_names)
+        else
+          message = t('fs3combat.rally_resolution_success', :target => print_target_names)
+        end
+        
+        [ message ]
+      end
+    end
+  end
+end

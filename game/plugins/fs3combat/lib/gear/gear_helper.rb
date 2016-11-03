@@ -5,12 +5,38 @@ module AresMUSH
     end
     
     def self.weapon(name)
-      FS3Combat.weapons.select { |k, v| k.upcase == name.upcase}.values.first
+      name_upcase = name ? name.upcase : nil
+      FS3Combat.weapons.select { |k, v| k.upcase == name_upcase}.values.first
     end
 
-    def self.weapon_stat(name, stat)
+    def self.weapon_specials
+      Global.read_config("fs3combat", "weapon specials")
+    end
+    
+    def self.weapon_stat(name_with_specials, stat)
+      specials = FS3Combat.weapon_specials
+      
+      name = name_with_specials.before("+")
       weapon = FS3Combat.weapon(name)
-      weapon ? weapon[stat] : nil
+      return nil if !weapon
+      
+      value = weapon[stat]
+      return nil if !value
+      
+      special_names = name_with_specials.after("+")
+      special_names = special_names ? special_names.split("+") : []
+      
+      special_names.each do |s|
+        special = specials[s]
+        next if !special
+      
+        special_value = special[stat]
+        next if !special_value
+      
+        value = value + special_value
+      end
+      
+      value
     end
     
     def self.weapon_is_stun?(name)
@@ -43,12 +69,12 @@ module AresMUSH
       v ? v[stat] : nil
     end
     
-    def self.hitlocs
+    def self.hitloc_charts
       Global.read_config("fs3combat", "hitloc")
     end
     
-    def self.hitloc(name)
-      FS3Combat.hitlocs.select { |k, v| k.upcase == name.upcase}.values.first
+    def self.hitloc_chart_for_type(name)
+      FS3Combat.hitloc_charts.select { |k, v| k.upcase == name.upcase}.values.first
     end
     
     def self.gear_detail(info)
@@ -77,10 +103,13 @@ module AresMUSH
     end
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-      combatant.update(weapon: weapon ? weapon.titleize : nil)
-      combatant.update(weapon_specials: specials ? specials.map { |s| s.titleize } : nil)
-      combatant.update(ammo: weapon ? FS3Combat.weapon_stat(weapon, "ammo") : nil)
-      combatant.action = nil
+      max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
+      combatant.update(weapon_name: weapon ? weapon.titleize : "Unarmed")
+      combatant.update(weapon_specials: specials ? specials.map { |s| s.titleize } : [])
+      combatant.update(ammo: max_ammo)
+      combatant.update(max_ammo: max_ammo)
+      combatant.update(action_klass: nil)
+      combatant.update(action_args: nil)
 
       specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
       message = t('fs3combat.weapon_changed', :name => combatant.name, 

@@ -4,11 +4,11 @@ module AresMUSH
     def self.dice_to_roll_for_ability(char, roll_params)
       ability = roll_params.ability
       modifier = roll_params.modifier || 0
+
       linked_attr = roll_params.linked_attr || FS3Skills.get_linked_attr(ability)
       
       skill_rating = FS3Skills.ability_rating(char, ability)
       ability_type = FS3Skills.get_ability_type(ability)
-      linked_attr_type = FS3Skills.get_ability_type(linked_attr)
       
       # Language doubles dice except 0 = 0
       if (ability_type == :language)
@@ -23,12 +23,6 @@ module AresMUSH
       
       apt_rating = linked_attr ? FS3Skills.ability_rating(char, linked_attr) : 0
       
-      if (ability_type != :attribute)
-        skill_rating = (skill_rating * 1.5).ceil
-      end
-      if (linked_attr_type != :attribute)
-        apt_rating = (apt_rating * 1.5).ceil
-      end
       dice = skill_rating + apt_rating + modifier
       Global.logger.debug "#{char.name} rolling #{ability} mod=#{modifier} skill=#{skill_rating} linked_attr=#{linked_attr} apt=#{apt_rating}"
       

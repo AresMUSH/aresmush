@@ -18,7 +18,11 @@ module AresMUSH
     end
     
     def armor
-      FS3Combat.vehicle_stat(self.vehicle_type, armor)
+      FS3Combat.vehicle_stat(self.vehicle_type, "armor")
+    end
+    
+    def hitloc_type
+      FS3Combat.vehicle_stat(self.vehicle_type, "hitloc_chart")
     end
     
     def clear_damage

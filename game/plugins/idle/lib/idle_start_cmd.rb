@@ -14,10 +14,11 @@ module AresMUSH
       def handle
         client.program[:idle_queue] = {}
         
-        Character.all.each do |c|
+        Idle.active_chars.each do |c|
           last_on = c.last_on
           next if !last_on
           next if Idle.is_exempt?(c)
+          next if c.is_npc?
           idle_secs = Time.now - last_on
           idle_timeout = Global.read_config("idle", "days_before_idle")
           if (idle_secs / 86400 > idle_timeout)

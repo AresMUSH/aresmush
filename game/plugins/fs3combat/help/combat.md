@@ -23,8 +23,7 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/passenger <vehicle>` - Become a passenger in a vehicle.
 `combat/disembark` - Leaves your vehicle.
 
-`combat/weapon <weapon>[/<comma-separated specials>]` - Set your weapon and 
-       any weapon specials.
+`combat/weapon <weapon>[+<specials separated by +>]` - Set your weapon and any weapon specials.
 `combat/armor <armor>` - Set your armor.
 `combat/stance <stance>` - Set your stance (normal, banzai, cautious, evade, hidden)
 
