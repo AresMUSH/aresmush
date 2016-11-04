@@ -259,8 +259,8 @@ module AresMUSH
     end
       
     def self.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false)
-      # If targeting a passenger, adjust target to the pilot instead.
-      if (target.riding_in)
+      # If targeting a passenger, adjust target to the pilot instead.  Unless of course there isn't one.
+      if (target.riding_in && target.riding_in.pilot)
         target = target.riding_in.pilot
       end
       

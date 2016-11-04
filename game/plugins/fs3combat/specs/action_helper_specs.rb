@@ -553,6 +553,15 @@ module AresMUSH
           FS3Combat.should_receive(:resolve_attack).with("A", pilot, "Knife", 2, nil, false)
           FS3Combat.attack_target(@combatant, @target)
         end
+
+        it "should not attack a non-existent pilot if a passenger is targeted" do
+          pilot = double
+          vehicle = double
+          @target.stub(:riding_in) { vehicle }
+          vehicle.stub(:pilot) { nil }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, false)
+          FS3Combat.attack_target(@combatant, @target)
+        end
       end
       
       
