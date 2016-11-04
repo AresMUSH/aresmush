@@ -46,9 +46,9 @@ module AresMUSH
       order = []
       combat.combatants.each do |c|
         roll = FS3Combat.roll_initiative(c, ability)
-        order << { :combatant => c, :roll => roll }
+        order << { :combatant => c.id, :name => c.name, :roll => roll }
       end
-      combat.log "Combat initiative rolls: #{order.map { |o| "#{o[:combatant].name}=#{o[:roll]}" }}"
+      combat.log "Combat initiative rolls: #{order.map { |o| "#{o[:name]}=#{o[:roll]}" }}"
       order.sort_by { |c| c[:roll] }.map { |c| c[:combatant] }.reverse
     end
     

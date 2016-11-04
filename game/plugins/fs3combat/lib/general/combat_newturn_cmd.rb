@@ -36,7 +36,8 @@ module AresMUSH
           begin
             initiative_order = FS3Combat.get_initiative_order(combat)
         
-            initiative_order.each_with_index do |c, i|
+            initiative_order.each do |id|
+              c = Combatant[id]
               next if !c.action
               next if c.is_noncombatant?
 
@@ -47,7 +48,6 @@ module AresMUSH
                 combat.emit m
               end
               
-              sleep 6
             end
         
             combat = enactor.combatant.combat

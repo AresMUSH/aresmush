@@ -63,6 +63,7 @@ module AresMUSH
     end
     
     def self.check_for_ko(combatant)
+      combatant.log "Checking for KO: #{combatant.name} #{combatant.freshly_damaged} #{combatant.is_ko} #{combatant.total_damage_mod}"
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
       roll = FS3Combat.make_ko_roll(combatant)
       

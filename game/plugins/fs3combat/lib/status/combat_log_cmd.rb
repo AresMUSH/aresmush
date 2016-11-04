@@ -17,7 +17,11 @@ module AresMUSH
           return
         end
         
-        list = combat.debug_log ? combat.debug_log.combat_log_messages.map { |l| "#{l.created_at} #{l.message}"} : []
+        if (combat.debug_log)
+          list = combat.debug_log.combat_log_messages.sort_by(:timestamp).map { |l| "#{l.created_at} #{l.message}"}
+        else
+          list = []
+        end
         client.emit BorderedDisplay.paged_list(list, self.page, 25, t('fs3combat.log_title'))
       end
     end
