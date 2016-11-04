@@ -32,3 +32,5 @@ This is a quick reference for combat organizer commands.  For more details on FS
 `combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
+
+`combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.

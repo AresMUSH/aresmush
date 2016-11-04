@@ -8,6 +8,7 @@ load "lib/pemit_cmd.rb"
 load "lib/pose_catcher_cmd.rb"
 load "lib/pose_cmd.rb"
 load "lib/pose_model.rb"
+load "lib/quote_color_cmd.rb"
 load "lib/repose_cmd.rb"
 load "lib/repose_clear_cmd.rb"
 load "lib/repose_order_cmd.rb"
@@ -31,7 +32,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/autospace.md", "help/ooc.md", "help/posing.md", "help/repose.md" ]
+      [ "help/pose_format.md", "help/ooc.md", "help/posing.md", "help/repose.md" ]
     end
  
     def self.config_files
@@ -57,6 +58,8 @@ module AresMUSH
         end
       when "emit", "pose", "say"        
         return PoseCmd
+      when "quotecolor"
+        return QuoteColorCmd
       when "repose"
         case cmd.switch
         when nil

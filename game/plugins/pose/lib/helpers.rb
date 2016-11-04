@@ -4,11 +4,7 @@ module AresMUSH
       room = enactor.room
       Global.client_monitor.logged_in.each do |client, char|
         next if char.room != enactor.room
-        nospoof = ""
-        if (is_emit && char.pose_nospoof)
-          nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
-        end
-        client.emit "#{char.pose_autospace}#{nospoof}#{pose}"
+        client.emit Pose.custom_format(pose, char, is_emit, is_ooc)
       end
       
       if (!is_ooc)
@@ -62,13 +58,38 @@ module AresMUSH
     
     def self.reset_repose(room)
       repose = room.repose_info
-      if (room.room_type == "IC" && !repose)
+      if ((room.room_type == "IC" || room.room_type == "RPR") && !repose)
         Global.logger.debug "Enabling repose in #{room.name}."
         repose = ReposeInfo.create(room: room)
         room.update(repose_info: repose)
       elsif repose
         repose.delete
       end
+    end
+    
+    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false)
+      nospoof = ""
+      if (is_emit && char.pose_nospoof)
+        nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
+      end
+      
+      quote_color = char.pose_quote_color
+      if (is_ooc || quote_color.blank?)
+        colored_pose = pose
+      else
+        matches = pose.scan(/([^"]+)?("[^"]+")?/)
+        colored_pose = ""
+        matches.each do |m| 
+          if (m[0])
+            colored_pose << "#{m[0]}"
+          end
+          if (m[1])
+            colored_pose << "#{quote_color}#{m[1]}%xn"
+          end
+        end
+      end
+      
+      "#{char.pose_autospace}#{nospoof}#{colored_pose}"
     end
     
   end

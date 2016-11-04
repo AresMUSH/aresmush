@@ -23,7 +23,7 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 
 `combat/reload` – Reloads a weapon.
 
-`combat/treat <name>` - Treat an injured person.
+`combat/treat <name>` - Treat an injured person's worst treatable wound.
 
 `combat/rally <name>` - Rally a knocked out person (without first aid).
 

@@ -15,3 +15,6 @@ en:
         repose_not_in_ooc: "Repose is not enabled in OOC rooms."
         repose_cleared: "You clear the poses and pose order."
         repose_order_title: "Name                        Last Posed"
+        
+        quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
+        quote_color_cleared: "Quotation color cleared."

@@ -52,7 +52,7 @@ module AresMUSH
       end
       
       def vehicles
-        combat.vehicles.sort_by(:name, :order => "ALPHA" )
+        combat.vehicles.sort_by(:name, :order => "ALPHA" ).map { |v| v.name }.join(" ")
       end
       
       def non_combatants

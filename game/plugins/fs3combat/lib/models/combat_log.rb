@@ -15,7 +15,7 @@ module AresMUSH
     collection :combat_log_messages, "AresMUSH::CombatLogMessage"
     
     def add(msg)
-      CombatLogMessage.create(timestamp: Time.utc(0001,01,01).to_i, message: msg, combat_log: self)
+      CombatLogMessage.create(timestamp: Time.now.to_f, message: msg, combat_log: self)
     end
   end
 end

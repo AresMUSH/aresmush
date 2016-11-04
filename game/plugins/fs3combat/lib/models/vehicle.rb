@@ -14,7 +14,14 @@ module AresMUSH
     before_delete :clear_damage
     
     def name
-      self.vehicle_type + '-' + self.id
+      digits = "#{self.id}".split("")
+      
+      # Turn first digit into a letter.
+      callsign = (digits[0].to_i + 64).chr
+      if (digits.length > 1)
+        callsign = "#{callsign}#{digits[1..-1].join}"
+      end
+      self.vehicle_type + '-' + callsign
     end
     
     def armor

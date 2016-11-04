@@ -17,7 +17,7 @@ module AresMUSH
     end
     
     def is_ic?
-      self.room.room_type == "IC"
+      self.room.room_type == "IC" || self.room.room_type == "RPR"
     end
     
     def status
@@ -32,6 +32,8 @@ module AresMUSH
       return "NPC" if self.is_npc
       # New trumps room type
       return "NEW" if !self.is_approved?
+      # RP rooms show up as IC
+      return "IC" if self.room.room_type == "RPR"
       # Otherwise use room type
       self.room.room_type
     end
