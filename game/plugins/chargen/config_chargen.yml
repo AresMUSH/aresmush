@@ -48,8 +48,6 @@ chargen:
             tutorial: 'app command.md'
         sheet:
             help: 'sheet'
-        profile:
-            help: 'profile'
         demographics:
             help: demographics
         ranks:
@@ -68,6 +66,8 @@ chargen:
             help: actors
         wiki:
             help: wiki
+        profile:
+            help: 'profile'
         review:
             help: apps
     shortcuts:

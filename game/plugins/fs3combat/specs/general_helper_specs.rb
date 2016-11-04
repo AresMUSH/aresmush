@@ -47,6 +47,10 @@ module AresMUSH
         @combatant1.stub(:name) { "A" }
         @combatant2.stub(:name) { "B" }
         @combatant3.stub(:name) { "C" }
+        
+        @combatant1.stub(:id) { 1 }
+        @combatant2.stub(:id) { 2 }
+        @combatant3.stub(:id) { 3 }
 
         @combat.stub(:combatants) { [ @combatant1, @combatant2, @combatant3 ]}
         
@@ -56,7 +60,7 @@ module AresMUSH
         FS3Combat.should_receive(:roll_initiative).with(@combatant2, "init") { 5 }
         FS3Combat.should_receive(:roll_initiative).with(@combatant3, "init") { 1 }
         
-        FS3Combat.get_initiative_order(@combat).should eq [ @combatant2, @combatant1, @combatant3 ]
+        FS3Combat.get_initiative_order(@combat).should eq [ 2, 1, 3 ]
       end
     end
     

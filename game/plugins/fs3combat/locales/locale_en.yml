@@ -43,7 +43,7 @@ en:
         active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
-        hud_subtitle: "%xhCombatant         Damage  Weapon(ammo/specials)     Action(stance)%xn"
+        hud_subtitle: "%xhCombatant      Damage  Weapon(ammo)   Vehicle          Action(stance)%xn"
         
         # ----------------------------
         # START, STOP, JOIN, LEAVE
@@ -68,7 +68,7 @@ en:
 
         invalid_team: "Teams must be numbers between 1 and 5."
         team_set: "%{name} is now on Team %{team}."
-        team_header: "---- Team %{team} ----"
+        team_header: "-- Team %{team} --"
         
         invalid_vehicle_name: "That is not a valid vehicle name or vehicle type."
         not_in_vehicle: "%{name} is not in a vehicle."

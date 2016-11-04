@@ -17,6 +17,7 @@ module AresMUSH
           @combatant.stub(:action_klass) { nil }
           @combatant.stub(:is_ko) { false }
           FS3Combat.stub(:reset_stress)
+          FS3Combat.stub(:check_for_ko)
         end
         
         it "should reset posed" do
@@ -111,6 +112,7 @@ module AresMUSH
         before do
           @combatant = double
           @combatant.stub(:log)
+          @combatant.stub(:name) { "Bob" }
           @combatant.stub(:is_ko) { false }
           @combatant.stub(:freshly_damaged) { true }
           @combatant.stub(:total_damage_mod) { -2.0 }
@@ -549,6 +551,15 @@ module AresMUSH
           @target.stub(:riding_in) { vehicle }
           vehicle.stub(:pilot) { pilot }
           FS3Combat.should_receive(:resolve_attack).with("A", pilot, "Knife", 2, nil, false)
+          FS3Combat.attack_target(@combatant, @target)
+        end
+
+        it "should not attack a non-existent pilot if a passenger is targeted" do
+          pilot = double
+          vehicle = double
+          @target.stub(:riding_in) { vehicle }
+          vehicle.stub(:pilot) { nil }
+          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, false)
           FS3Combat.attack_target(@combatant, @target)
         end
       end

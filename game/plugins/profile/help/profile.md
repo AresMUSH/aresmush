@@ -13,7 +13,7 @@ Each character has a **character profile** showing various information.  Any IC 
 
 `profile <name>`  (`profile` by itself shows your own)
 
-You can set custom profile fields, which can display standard MUSH formatting codes (like ansi and linebreaks).  See `help formatting`.   
+The basic fields in your profile will be set up as part of character creation.  You can also set custom profile fields for extra things like notes, quotes, etc.  These custom fields can display standard MUSH formatting codes (like ansi and linebreaks).  See `help formatting`.   
 
 `profile/add <field>=<value>` - Adds or updates a custom profile field
 `profile/delete <field>` - Deletes a custom profile field
