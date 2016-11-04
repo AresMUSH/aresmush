@@ -20,7 +20,7 @@ module AresMUSH
       end
        
       def teams
-        @combat.active_combatants.group_by {|c| c.team}
+        @combat.active_combatants.sort_by{|c| c.team}.group_by {|c| c.team}
       end
       
       

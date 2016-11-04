@@ -17,6 +17,7 @@ module AresMUSH
           @combatant.stub(:action_klass) { nil }
           @combatant.stub(:is_ko) { false }
           FS3Combat.stub(:reset_stress)
+          FS3Combat.stub(:check_for_ko)
         end
         
         it "should reset posed" do
@@ -111,6 +112,7 @@ module AresMUSH
         before do
           @combatant = double
           @combatant.stub(:log)
+          @combatant.stub(:name) { "Bob" }
           @combatant.stub(:is_ko) { false }
           @combatant.stub(:freshly_damaged) { true }
           @combatant.stub(:total_damage_mod) { -2.0 }
