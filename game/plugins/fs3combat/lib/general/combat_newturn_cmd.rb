@@ -18,7 +18,7 @@ module AresMUSH
           return
         end
                 
-        Global.logger.debug "****** NEW COMBAT TURN ******"
+        combat.log "****** NEW COMBAT TURN ******"
 
         if (combat.first_turn)
           combat.active_combatants.select { |c| c.is_npc? && !c.action }.each_with_index do |c, i|
@@ -33,26 +33,32 @@ module AresMUSH
         combat.update(turn_in_progress: true)
 
         Global.dispatcher.spawn("Combat Turn", client) do
-          
-          initiative_order = FS3Combat.get_initiative_order(combat)
+          begin
+            initiative_order = FS3Combat.get_initiative_order(combat)
         
-          initiative_order.each_with_index do |c, i|
-            next if !c.action
-            next if c.is_noncombatant?
+            initiative_order.each_with_index do |c, i|
+              next if !c.action
+              next if c.is_noncombatant?
 
-            Global.logger.debug "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
+              combat.log "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
             
-            messages = c.action.resolve
-            messages.each do |m|
-              Global.logger.debug "#{m}"
-              combat.emit m
+              messages = c.action.resolve
+              messages.each do |m|
+                combat.emit m
+              end
+              
+              sleep 6
             end
-          end
         
-          combat = enactor.combatant.combat
-          combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
-          combat.update(turn_in_progress: false)
-          combat.emit t('fs3combat.new_turn', :name => enactor_name)
+            combat = enactor.combatant.combat
+            combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
+            # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
+            combat.active_combatants.each { |c| c.action }
+      
+            combat.emit t('fs3combat.new_turn', :name => enactor_name)
+          ensure
+            combat.update(turn_in_progress: false)
+          end
         end
       end
     end

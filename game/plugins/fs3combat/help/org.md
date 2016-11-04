@@ -21,7 +21,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
 
 `combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Boss
 
-`combat/team <name>=<team#>` - Switches teams. 
+`combat/team <list of names>=<team#>` - Switches teams. 
 
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.
 `combat/ai force` - Auto-targets NPCs even if they have an action set.

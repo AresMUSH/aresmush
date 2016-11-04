@@ -4,6 +4,7 @@ module AresMUSH
       before do
         @combatant = double
         @char = double
+        @combatant.stub(:log)
         @combatant.stub(:name) { "Trooper" }
         @combatant.stub(:character) { @char }
         SpecHelpers.stub_translate_for_testing

@@ -59,7 +59,8 @@ module AresMUSH
      end
      
      def self.print_damage(total_damage_mod)
-       num_xs = [ (-total_damage_mod).ceil, 4 ].min
+       rounded_damage = (-total_damage_mod).ceil
+       num_xs = [ rounded_damage, 4 ].min
        dots = num_xs.times.collect { "X" }.join
        dashes = (4 - num_xs).times.collect { "-" }.join
        "%xr#{dots}%xn#{dashes}"

@@ -11,6 +11,7 @@ module AresMUSH
           
           FS3Combat.stub(:is_in_combat?) { false }
           ClassTargetFinder.stub(:find) { FindResult.new(nil, "error") }
+          FS3Combat.stub(:combatant_type_stat) { nil }
           FS3Combat.stub(:set_default_gear)
           SpecHelpers.stub_translate_for_testing
         end
@@ -45,6 +46,20 @@ module AresMUSH
           end
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
+        
+        
+        it "should create a vehicle if specified" do
+          char = double
+          combatant = double
+          vehicle = double
+          ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
+          Combatant.stub(:create) { combatant }
+          FS3Combat.should_receive(:combatant_type_stat).with("viper", "vehicle") { "Viper" }
+          FS3Combat.should_receive(:find_or_create_vehicle).with(@combat, "Viper") { vehicle }
+          FS3Combat.should_receive(:join_vehicle).with(@combat, combatant, vehicle, "Pilot")
+          FS3Combat.join_combat(@combat, "Bob", "viper", @enactor, @client)
+        end
+        
         
         it "should emit join message to combat" do
           combatant = double

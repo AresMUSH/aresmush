@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def handle
-        template = GearDetailTemplate.new(FS3Combat.weapon(self.name), self.name)
+        template = GearDetailTemplate.new(FS3Combat.weapon(self.name), self.name, :weapon)
         client.emit template.render
       end
     end

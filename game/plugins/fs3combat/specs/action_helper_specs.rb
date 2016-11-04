@@ -8,12 +8,13 @@ module AresMUSH
       describe :reset_for_new_turn do
         before do 
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:name) { "Trooper" }
           @combatant.stub(:update)
           @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:is_subdued?) { false }
           @combatant.stub(:freshly_damaged) { false }
-          @combatant.stub(:action) { nil }
+          @combatant.stub(:action_klass) { nil }
           @combatant.stub(:is_ko) { false }
           FS3Combat.stub(:reset_stress)
         end
@@ -42,7 +43,7 @@ module AresMUSH
 
         it "should not reset aiming if they're still aiming" do 
           @combatant.stub(:is_aiming?) { true }
-          @combatant.stub(:action) { AimAction.new(@combatant, "") }
+          @combatant.stub(:action_klass) { "AimAction" }
           @combatant.should_not_receive(:update).with(aim_target: nil)
           FS3Combat.reset_for_new_turn(@combatant)
         end
@@ -79,6 +80,7 @@ module AresMUSH
       describe :reset_stress do 
         before do
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:name) { "Bob" }
           Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
         end
@@ -108,6 +110,7 @@ module AresMUSH
       describe :check_for_ko do
         before do
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:is_ko) { false }
           @combatant.stub(:freshly_damaged) { true }
           @combatant.stub(:total_damage_mod) { -2.0 }
@@ -149,6 +152,7 @@ module AresMUSH
       describe :check_forunko do
         before do
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:is_ko) { true }
         end
         
@@ -176,8 +180,10 @@ module AresMUSH
       describe :make_ko_roll do
         before do
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:name) { "Bob" }
           @combatant.stub(:total_damage_mod) { -2 }
+          @combatant.stub(:is_npc?) { true }
         end
         
         it "should roll vehicle toughness if in a vehicle" do
@@ -190,10 +196,18 @@ module AresMUSH
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
         
-        it "should roll personal toughness if in a vehicle" do
+        it "should roll personal toughness if not in a vehicle" do
           @combatant.stub(:is_in_vehicle?) { false }
           Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
           @combatant.should_receive(:roll_ability).with("Composure", -2) { 1 }
+          FS3Combat.make_ko_roll(@combatant).should eq 1
+        end
+        
+        it "should give PCs a bonus to knockout" do
+          @combatant.stub(:is_npc?) { false }
+          @combatant.stub(:is_in_vehicle?) { false }
+          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          @combatant.should_receive(:roll_ability).with("Composure", 1) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
       end
@@ -201,6 +215,7 @@ module AresMUSH
       describe :ai_action do
         before do
           @combatant = double
+          @combatant.stub(:log)
           @client = double
           @combat = double
           FS3Combat.stub(:check_ammo) { true }
@@ -260,9 +275,29 @@ module AresMUSH
         end
       end
       
+      describe :stopped_by_cover? do
+        before do 
+          @combatant = double
+          @combatant.stub(:log)
+        end
+        
+        it "should bypass cover if enough successes on attack roll" do
+          FS3Combat.stub(:rand) { 0 }
+          FS3Combat.stopped_by_cover?(3, @combatant).should be_false
+        end
+        
+        it "should adjust percent chance of cover based on attack roll" do
+          FS3Combat.stub(:rand) { 26 }
+          FS3Combat.stopped_by_cover?(2, @combatant).should be_true
+          FS3Combat.stopped_by_cover?(1, @combatant).should be_false
+          FS3Combat.stopped_by_cover?(0, @combatant).should be_false
+        end
+      end
+      
       describe :determine_damage do
         before do 
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:damage_lethality_mod) { 0 }
           @combatant.stub(:is_npc?) { false }
           FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Vital" }
@@ -324,6 +359,7 @@ module AresMUSH
       describe :determine_armor do
         before do 
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:vehicle) { nil }
           @combatant.stub(:armor) { "Tactical" }
           FS3Skills::Api.stub(:one_shot_die_roll) { { successes: 0 } }
@@ -393,6 +429,7 @@ module AresMUSH
       describe :determine_attack_margin do
         before do
           @combatant = double
+          @combatant.stub(:log)
           @target = double
           
           @combatant.stub(:name) { "A" }
@@ -432,7 +469,7 @@ module AresMUSH
         
         it "should hit cover if defender is in cover and cover applies" do
           @target.stub(:stance) { "Cover" }
-          FS3Combat.should_receive(:stopped_by_cover?).with(2) { true }
+          FS3Combat.should_receive(:stopped_by_cover?).with(2, @combatant) { true }
           FS3Combat.stub(:roll_attack) { 3 }
           FS3Combat.stub(:roll_defense) { 1 }
           result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
@@ -463,6 +500,7 @@ module AresMUSH
         before do
           @target = double
           @combatant = double
+          @combatant.stub(:log)
           @combatant.stub(:weapon) { "Knife" }
           FS3Combat.stub(:weapon_stat).with("Knife", "recoil") { 1 }
           @combatant.stub(:recoil) { 0 }
@@ -582,6 +620,7 @@ module AresMUSH
         before do
           @target = double
           @target.stub(:is_in_vehicle?) { true }
+          @target.stub(:log)
           @vehicle = double
           FS3Combat.stub(:hitloc_chart).with(@target) { { "crew_areas" => ["Cockpit"] } }
           

@@ -13,9 +13,12 @@ module AresMUSH
 
     before_delete :delete_objects
     
+    reference :debug_log, "AresMUSH::CombatLog"
+    
     def delete_objects
       combatants.each { |c| c.delete }
       vehicles.each { |v| v.delete }
+      debug_log.delete if debug_log
     end
     
     def active_combatants
@@ -51,6 +54,7 @@ module AresMUSH
 
     def emit(message, npcmaster = nil)
       message = message + "#{npcmaster}"
+      log(message)
       self.combatants.each { |c| c.emit(message) }
     end
       
@@ -61,6 +65,15 @@ module AresMUSH
       if (client)
         client.emit t('fs3combat.organizer_emit', :message => message)
       end
+    end
+    
+    def log(msg)
+      if (!self.debug_log)
+        combat_log = CombatLog.create(combat: self)
+        self.update(debug_log: combat_log)
+      end
+      
+      self.debug_log.add msg
     end
   end
 end

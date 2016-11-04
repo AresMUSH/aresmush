@@ -5,7 +5,7 @@ module AresMUSH
       before do
         @instance = Combat.new
         @instance.stub(:save) { }
-        
+        @instance.stub(:log) { }
         @bob = double
         @bob.stub(:name) { "Bob" }
         

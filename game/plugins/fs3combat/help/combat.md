@@ -24,10 +24,11 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/disembark` - Leaves your vehicle.
 
 `combat/weapon <weapon>[+<specials separated by +>]` - Set your weapon and any weapon specials.
+        Use a ewapon type of 'Unarmed' for no weapon.
 `combat/armor <armor>` - Set your armor.
 `combat/stance <stance>` - Set your stance (normal, banzai, cautious, evade, hidden)
 
 `combat/attack <target>` - Attack someone.
 `combat/pass` - Pass this turn.
 
-**You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123, or +combat/pass Bob.**
+**You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, +combat/pass Bob=**

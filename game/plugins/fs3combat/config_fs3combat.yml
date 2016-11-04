@@ -43,7 +43,17 @@ fs3combat:
             weapon_specials: 
                 - Tripod
             armor: Centurion
-            hitloc: Humanoid           
+            hitloc: Humanoid
+        Viper:
+            vehicle: Viper
+            hitloc: Humanoid
+        Raptor:
+            vehicle: Raptor
+            hitloc: Humanoid
+        Raider:
+            vehicle: Raider
+            hitloc: Humanoid
+                     
     shortcuts:
         "weapons": "weapon"
         "combat/skills": "combat/summary"

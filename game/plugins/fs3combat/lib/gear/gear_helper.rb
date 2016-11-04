@@ -99,7 +99,7 @@ module AresMUSH
       armor = FS3Combat.combatant_type_stat(type, "armor")
       if (armor)
         FS3Combat.set_armor(enactor, combatant, armor)
-      end
+      end      
     end
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)

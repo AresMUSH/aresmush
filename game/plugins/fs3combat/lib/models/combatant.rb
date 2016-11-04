@@ -25,7 +25,7 @@ module AresMUSH
     attribute :attack_mod, :type => DataType::Integer, :default => 0
     
     reference :subdued_by, "AresMUSH::Character"
-    reference :aim_target, "AresMUSH::Character"
+    reference :aim_target, "AresMUSH::Combatant"
     reference :character, "AresMUSH::Character"
     reference :combat, "AresMUSH::Combat"
     reference :npc, "AresMUSH::Npc"
@@ -42,7 +42,8 @@ module AresMUSH
     end
     
     def weapon
-      special_text = self.weapon_specials ? "+#{self.weapon_specials.join("+")}" : nil
+      specials = self.weapon_specials || []
+      special_text = specials.empty? ? nil : "+#{specials.join("+")}"
       "#{self.weapon_name}#{special_text}"
     end
     
@@ -82,7 +83,9 @@ module AresMUSH
     
     def roll_ability(ability, mod = 0)
       result = is_npc? ? self.npc.roll_ability(ability, mod) : self.character.roll_ability(ability, mod)
-      result[:successes]
+      successes = result[:successes]
+      log("#{self.name} rolling #{ability}: #{successes}")
+      successes
     end
     
     def add_stress(points)
@@ -171,6 +174,10 @@ module AresMUSH
       return if !self.client
       client_message = message.gsub(/#{self.name}/, "%xh%xc#{self.name}%xn")
       client.emit t('fs3combat.combat_emit', :message => client_message)
+    end
+    
+    def log(msg)
+      self.combat.log(msg)
     end
   end
 end

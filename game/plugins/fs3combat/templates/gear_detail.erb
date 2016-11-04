@@ -2,6 +2,13 @@
 %xh<%= title %>%xn
 
 <% list.each do |name, data| %>
-%xh<%= left( name.titleize, 20 ) %>%xn <%= field(data) %>
+%xh<%= left( field_name(name), 20 ) %>%xn <%= field(data) %>
+<% end %>
+<% if specials.count > 0 %>
+
+%xh<%= t('fs3combat.weapon_specials')%>%xn
+<% specials.each do |s| %>
+<%= s %>
+<% end %>
 <% end %>
 <%= line %>

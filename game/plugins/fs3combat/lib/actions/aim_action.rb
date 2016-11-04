@@ -3,7 +3,7 @@ module AresMUSH
     class AimAction < CombatAction
             
       def prepare
-        error = FS3Combat.parse_targets(self.combat, self.action_args)
+        error = parse_targets(self.action_args)
         return error if error
         
         return t('fs3combat.only_one_target') if (self.targets.count > 1)

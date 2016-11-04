@@ -1,6 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 # Models must come first
+load "lib/models/combat_log.rb"
 load "lib/models/combat_instance.rb"
 load "lib/models/combat_model.rb"
 load "lib/models/combatant.rb"
@@ -65,6 +66,7 @@ load "lib/pose_handler.rb"
 load "lib/status/combat_hud_cmd.rb"
 load "lib/status/combat_npcskill_cmd.rb"
 load "lib/status/combat_summary_cmd.rb"
+load "lib/status/combat_log_cmd.rb"
 load "lib/vehicles/combat_disembark_cmd.rb"
 load "lib/vehicles/combat_vehicle_cmd.rb"
 load "lib/vehicles/vehicles_helper.rb"
@@ -176,6 +178,8 @@ module AresMUSH
            return CombatJoinCmd
          when "leave"
            return CombatLeaveCmd
+         when "log"
+           return CombatLogCmd
          when "luck"
            return CombatLuckCmd
          when "npc"
