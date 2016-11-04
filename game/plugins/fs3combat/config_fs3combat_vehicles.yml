@@ -37,6 +37,7 @@ fs3combat:
             hitloc_chart: Transport
             armor: Raptor
             weapons:
+                - Kew
                 - Ecm
                 - Missile
                 - Nuke
