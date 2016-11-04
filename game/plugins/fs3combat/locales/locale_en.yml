@@ -80,8 +80,8 @@ en:
         # GENERAL
         # ----------------------------
         
-        organizer_emit: "%xc<FS3Combat>%xn %{message}"
-        combat_emit: "%xb<FS3Combat>%xn %{message}"
+        organizer_emit: "%xb<FS3Combat>%xn %{message}"
+        combat_emit: "%xc<FS3Combat>%xn %{message}"
         npcmaster_text: " %xh%xx(by %{name})%xn"
         invalid_combat_number: "That is not a valid combat number.  See combats for a list."
         organizer_only: "Only the organizer may do this."
@@ -99,7 +99,8 @@ en:
         not_a_npc: "You can only set NPC skill levels."
         
         mod_applied: "You apply a %{type} modifier to %{name}."
-
+        log_title: "Combat Log"
+        
         # ----------------------------
         # KO
         # ----------------------------
@@ -143,9 +144,11 @@ en:
         weapon_title_has_shrapnel: "Has Shrapnel:" 
         weapon_title_reload_turns: "Reload Time:"
         weapon_title_allowed_specials: "Allowed Specials:"
+        weapon_title_skill: "Skill:"
         invalid_weapon_special: "That is not a valid special for that weapon."
         use_explode_command: "Use the combat/explod command for this weapon."
         use_suppress_command: "Use the combat/suppress command for this weapon."
+        weapon_specials:  "Available Weapon Specials"
         
         # ----------------------------
         # ARMOR
@@ -210,7 +213,7 @@ en:
         new_turn: "%{name} has started a new turn!  Pose and pick your actions."
         starting_turn_resolution: "Starting turn resolution..."
         turn_in_progress: "Turn in progress.  Please wait."
-        resetting_action: "Restting %{name}'s action because it is no longer valid: %{error}"
+        resetting_action: "Resetting %{name}'s action because it is no longer valid: %{error}"
         
         # ----------------------------
         # STANCE
@@ -224,7 +227,7 @@ en:
         # ----------------------------
 
         attack_action_msg_long: "%{name} will attack %{target}."
-        attack_action_msg_short: "Attack %{target}"
+        attack_action_msg_short: "Attack %{target} %{specials}"
         attack_special_burst: "(burst)"
         attack_special_fullauto: "(fullauto)"
         attack_special_called: "(called shot to the %{location})"

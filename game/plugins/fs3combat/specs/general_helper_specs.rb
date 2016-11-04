@@ -39,6 +39,7 @@ module AresMUSH
     describe :get_initiative_order do
       it "should return combatants in order of initiative roll" do
         @combat = double
+        @combat.stub(:log)
         @combatant1 = double
         @combatant2 = double
         @combatant3 = double

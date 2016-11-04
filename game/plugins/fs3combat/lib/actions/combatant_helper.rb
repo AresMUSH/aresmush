@@ -11,7 +11,7 @@ module AresMUSH
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
 
-      Global.logger.debug "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod}"
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod}"
 
       mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod
       
@@ -28,7 +28,7 @@ module AresMUSH
       
       mod = stance_mod + luck_mod + damage_mod + special_mod
       
-      Global.logger.debug "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod}"
+      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod}"
       
       combatant.roll_ability(ability, mod)
     end

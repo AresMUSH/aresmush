@@ -20,7 +20,7 @@ module AresMUSH
     end
     
     def roll_ability(ability, mod = 0)
-      Global.logger.debug "#{self.name} rolling #{ability} skill=#{skill} mod=#{mod}"
+      Global.logger.info "#{self.name} rolling #{ability} skill=#{skill} mod=#{mod}"
       FS3Skills::Api.one_shot_die_roll(self.skill + mod)
     end
     

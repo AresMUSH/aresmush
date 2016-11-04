@@ -6,22 +6,22 @@ module AresMUSH
       include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :name, :team
+      attr_accessor :names, :team
       
       def crack!
         if (cmd.args =~ /=/)
           cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.name = titleize_input(cmd.args.arg1)
+          self.names = cmd.args.arg1 ? cmd.args.arg1.split(" ").map { |n| titleize_input(n) } : nil
           self.team = trim_input(cmd.args.arg2).to_i
         else
-          self.name = enactor.name
+          self.names = [enactor.name]
           self.team = trim_input(cmd.args).to_i
         end
       end
 
       def required_args
         {
-          args: [ self.name, self.team ],
+          args: [ self.names, self.team ],
           help: 'combat'
         }
       end
@@ -32,10 +32,12 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
-          combatant.update(team: team)
-          message = t('fs3combat.team_set', :name => self.name, :team => self.team)
-          combat.emit message, FS3Combat.npcmaster_text(name, enactor)
+        self.names.each do |name|
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
+            combatant.update(team: team)
+            message = t('fs3combat.team_set', :name => name, :team => self.team)
+            combat.emit message, FS3Combat.npcmaster_text(name, enactor)
+          end
         end
       end
     end

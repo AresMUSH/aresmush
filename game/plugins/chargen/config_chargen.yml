@@ -48,8 +48,8 @@ chargen:
             tutorial: 'app command.md'
         sheet:
             help: 'sheet'
-        info:
-            help: 'info'
+        profile:
+            help: 'profile'
         demographics:
             help: demographics
         ranks:
@@ -60,8 +60,8 @@ chargen:
             help: bg
         abilities:
             help: abilities
-        goals:
-            help: goals
+        hooks:
+            help: hooks
         desc:
             help: descriptions
         actor:

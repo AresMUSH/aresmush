@@ -88,6 +88,7 @@ module AresMUSH
           @target3.stub(:is_noncombatant?) { false }
 
           @combatant.stub(:update)
+          @combatant.stub(:log)
           @combatant.stub(:ammo) { 10 }
           @combat.stub(:find_combatant).with("Target1") { @target1 }
           @combat.stub(:find_combatant).with("Target2") { @target2 }

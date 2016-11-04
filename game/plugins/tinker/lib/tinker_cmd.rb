@@ -14,8 +14,8 @@ module AresMUSH
       end
       
       def handle
-        Damage.all.each { |d| client.emit d.inspect }
-        Npc.all.each { |d| client.emit d.inspect }
+        #Damage.all.each { |d| client.emit d.inspect }
+        #Npc.all.each { |d| client.emit d.inspect }
         Combatant.all.each { |d| client.emit d.inspect }
          Damage.all.each { |d| client.emit d.delete }
       

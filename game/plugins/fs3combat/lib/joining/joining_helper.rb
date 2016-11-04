@@ -40,7 +40,14 @@ module AresMUSH
       end
       combat.emit t('fs3combat.has_joined', :name => name, :type => combatant_type)
       
-      FS3Combat.set_default_gear(enactor, combatant, combatant_type)
+      vehicle_type = FS3Combat.combatant_type_stat(combatant_type, "vehicle")
+      
+      if (vehicle_type)
+        vehicle = FS3Combat.find_or_create_vehicle(combat, vehicle_type)
+        FS3Combat.join_vehicle(combat, combatant, vehicle, "Pilot")
+      else
+        FS3Combat.set_default_gear(enactor, combatant, combatant_type)
+      end
       
       return combatant
     end

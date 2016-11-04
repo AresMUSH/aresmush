@@ -80,7 +80,8 @@ module AresMUSH
       end
       
       def print_action_short
-        t('fs3combat.attack_action_msg_short', :target => print_target_names)
+        specials = self.action_args.after("/")
+        t('fs3combat.attack_action_msg_short', :target => print_target_names, :specials => specials)
       end
       
       def resolve

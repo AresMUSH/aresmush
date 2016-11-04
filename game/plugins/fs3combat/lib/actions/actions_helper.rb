@@ -30,12 +30,9 @@ module AresMUSH
     end
     
     def self.reset_for_new_turn(combatant)
-      # This will reset their action if it's no longer valid.
-      action = combatant.action
-      
       # Reset aim if they've done anything other than aiming. 
-      if (combatant.is_aiming? && action.class != AimAction)
-        Global.logger.debug "Reset aim for #{combatant.name}."
+      if (combatant.is_aiming? && combatant.action_klass != "AimAction")
+        combatant.log "Reset aim for #{combatant.name}."
         combatant.update(aim_target: nil)
       end
       
@@ -59,14 +56,13 @@ module AresMUSH
       return if combatant.stress == 0
 
       composure = Global.read_config("fs3combat", "composure_ability")
-      Global.logger.debug "#{combatant.name} resetting stress.  stress=#{combatant.stress}."
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
+      combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old=#{combatant.stress} new=#{new_stress}."
       combatant.update(stress: new_stress)
     end
     
     def self.check_for_ko(combatant)
-      Global.logger.debug "#{combatant.name} KO #{combatant.freshly_damaged} #{combatant.updated_at}"
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
       roll = FS3Combat.make_ko_roll(combatant)
       
@@ -89,15 +85,17 @@ module AresMUSH
     end
     
     def self.make_ko_roll(combatant)
+      pc_mod = combatant.is_npc? ? 0 : 3
+      
       if (combatant.is_in_vehicle?)
         vehicle = combatant.vehicle
         toughness = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness")
-        Global.logger.debug "#{combatant.name} vehicle checking KO. tough=#{toughness} mod=#{combatant.total_damage_mod}."
-        roll = FS3Skills::Api.one_shot_die_roll(toughness + combatant.total_damage_mod)[:successes]
+        combatant.log "#{combatant.name} vehicle checking KO. tough=#{toughness} mod=#{combatant.total_damage_mod}."
+        roll = FS3Skills::Api.one_shot_die_roll(toughness + combatant.total_damage_mod + pc_mod)[:successes]
       else
         toughness = Global.read_config("fs3combat", "composure_ability")
-        Global.logger.debug "#{combatant.name} checking KO. mod=#{combatant.total_damage_mod}."
-        roll = combatant.roll_ability(toughness, combatant.total_damage_mod)
+        combatant.log "#{combatant.name} checking KO. mod=#{combatant.total_damage_mod}."
+        roll = combatant.roll_ability(toughness, pc_mod + combatant.total_damage_mod)
       end
       
       roll
@@ -166,7 +164,7 @@ module AresMUSH
         damage = "INCAP"
       end
       
-      Global.logger.debug "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
+      combatant.log "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
       " lth=#{lethality} special=#{special} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
       
       damage
@@ -189,10 +187,7 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
 
-      Global.logger.debug "Rolling weapon penetration."
       pen_roll = FS3Skills::Api.one_shot_die_roll(pen)[:successes]
-
-      Global.logger.debug "Rolling armor protection."
       protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
       
       margin = pen_roll + attacker_net_successes - protect_roll
@@ -204,13 +199,13 @@ module AresMUSH
         protection = rand(50)
       end
       
-      Global.logger.debug "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen}/#{pen_roll} protect=#{protect}/#{protect_roll} result=#{protection}"
+      combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
+      " pen=#{pen} pen_roll=#{pen_roll} protect=#{protect} protect_roll=#{protect_roll} result=#{protection}"
       
       protection
     end
     
-    def self.stopped_by_cover?(attacker_net_successes)
+    def self.stopped_by_cover?(attacker_net_successes, combatant)
       case attacker_net_successes
       when 0, 1
         cover_chance = 50
@@ -221,12 +216,12 @@ module AresMUSH
       end
       
       roll = rand(100) 
-      result = roll >= cover_chance
+      result = roll > cover_chance
+            
+      combatant.log "Determined cover: net=#{attacker_net_successes}" +
+            " chance=#{cover_chance} roll=#{roll} result=#{result}"
       
-      Global.logger.debug "Determined cover: net=#{attacker_net_successes}" +
-      " chance=#{cover_chance} roll=#{roll} result=#{protection}"
-      
-      rand(100) >= cover_chance 
+      result
     end
     
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }
@@ -236,13 +231,14 @@ module AresMUSH
       defense_roll = FS3Combat.roll_defense(target, weapon)
       
       attacker_net_successes = attack_roll - defense_roll
+      stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
       
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (attacker_net_successes < 0)
         message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (target.stance == "Cover" && FS3Combat.stopped_by_cover?(attacker_net_successes))
+      elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (called_shot && (attacker_net_successes < 1))
         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
@@ -250,8 +246,8 @@ module AresMUSH
         hit = true
       end
       
-      Global.logger.debug "Attack Margin: mod=#{mod} called=#{called_shot} " +
-      " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} result=#{message}"
+      combatant.log "Attack Margin: mod=#{mod} called=#{called_shot} " +
+      " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} result=#{message}"
       
       
       {
@@ -301,9 +297,7 @@ module AresMUSH
 
       target.inflict_damage(damage, desc, is_stun, crew_hit)
       target.update(freshly_damaged: true)
-      
-      Global.logger.debug "#{combatant.name} DAMAGED #{combatant.freshly_damaged} #{combatant.updated_at}"
-      
+            
       target.add_stress(1)
       
       messages = []
@@ -343,7 +337,7 @@ module AresMUSH
           shrapnel = rand(5)
         end
                 
-        Global.logger.debug "Crew area hit. #{p.name} shrapnel=#{shrapnel}"
+        target.log "Crew area hit. #{p.name} shrapnel=#{shrapnel}"
         shrapnel.times.each do |s|
           messages.concat FS3Combat.resolve_attack(t('fs3combat.crew_hit'), p, "Shrapnel", 0, nil, true)
         end

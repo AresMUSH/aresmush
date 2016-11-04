@@ -211,7 +211,7 @@ fs3combat:
             reload_turns: 1
 
         Kew:
-            description: "KEW Assault Cannon"
+            description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
             skill: Gunnery
             lethality: 0
             penetration: 10

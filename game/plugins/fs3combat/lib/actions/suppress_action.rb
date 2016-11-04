@@ -7,7 +7,7 @@ module AresMUSH
 
         weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
         is_automatic = FS3Combat.weapon_stat(self.combatant.weapon, "is_automatic")
-        if (weapon_type == "Explosive" || is_automatic)
+        if (weapon_type == "Explosive" || weapon_type == "Suppressive" || is_automatic)
           return t('fs3combat.too_many_targets') if (self.targets.count > 3)
         else        
           return t('fs3combat.too_many_targets') if (self.targets.count > 1)
@@ -39,7 +39,7 @@ module AresMUSH
           defense_roll = target.roll_ability(composure)
           margin = attack_roll - defense_roll
           
-          Global.logger.debug "#{self.name} suppressing #{target.name}.  atk=#{attack_roll} def=#{defense_roll}"
+          self.combatant.log "#{self.name} suppressing #{target.name}.  atk=#{attack_roll} def=#{defense_roll}"
           if (margin >= 0)
             target.add_stress(margin + 2)
             messages << t('fs3combat.suppress_successful_msg', :name => self.name, 
