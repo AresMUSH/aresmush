@@ -47,8 +47,8 @@ module AresMUSH
           
           Bbs::Api.system_post(
             Global.read_config("chargen", "arrivals_board"),
-            t('chargen.approval_bbs_subject'), 
-            t('chargen.approval_bbs_body', :name => model.name))
+            t('chargen.approval_bbs_subject', :name => model.name), 
+            t('chargen.approval_bbs_body', :name => model.name, :position => model.group_value("Position")))
         end
       end
     end
