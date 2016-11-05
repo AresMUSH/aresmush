@@ -48,5 +48,10 @@ module AresMUSH
        combat.emit t('fs3combat.disembarks_vehicle', :name => combatant.name, :vehicle => vehicle.name)
     end
     
+    def self.vehicle_dodge_mod(combatant)
+      return 0 if !combatant.is_in_vehicle?
+      
+      FS3Combat.vehicle_stat(combatant.vehicle.vehicle_type, "dodge")
+    end
   end
 end

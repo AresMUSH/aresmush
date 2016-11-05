@@ -111,6 +111,7 @@ module AresMUSH
           @combatant.stub(:defense_mod) { 0 }
           @combatant.stub(:luck)
           FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
+          FS3Combat.stub(:vehicle_dodge_mod) { 0 }
         end
         
         it "should roll the weapon defense stat" do
@@ -127,6 +128,12 @@ module AresMUSH
         
         it "should account for stance modifiers" do
           @combatant.stub(:defense_stance_mod) { 1 }
+          @combatant.should_receive(:roll_ability).with("Reaction", 1)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+        
+        it "should account for vehicle dodge modifiers" do
+          FS3Combat.should_receive(:vehicle_dodge_mod).with(@combatant) { 1 }
           @combatant.should_receive(:roll_ability).with("Reaction", 1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end

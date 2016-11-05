@@ -32,7 +32,7 @@ module AresMUSH
         if (char.client)
           connected = t('friends.connected')
         else
-          connected = OOCTime::Api.local_long_timestr(@enactor, @char.last_on)
+          connected = OOCTime::Api.local_long_timestr(@enactor, char.last_on)
         end
       end
       

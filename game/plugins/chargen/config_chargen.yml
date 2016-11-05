@@ -50,10 +50,10 @@ chargen:
             help: 'sheet'
         demographics:
             help: demographics
-        ranks:
-            help: ranks
         groups:
             help: groups
+        ranks:
+            help: ranks
         background:
             help: bg
         abilities:

@@ -25,10 +25,11 @@ module AresMUSH
       luck_mod = (combatant.luck == "Defense") ? 3 : 0
       damage_mod = combatant.total_damage_mod
       special_mod = combatant.defense_mod
+      dodge_mod = FS3Combat.vehicle_dodge_mod(combatant)
       
-      mod = stance_mod + luck_mod + damage_mod + special_mod
+      mod = stance_mod + luck_mod + damage_mod + special_mod + dodge_mod
       
-      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod}"
+      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod} dodge=#{dodge_mod}"
       
       combatant.roll_ability(ability, mod)
     end

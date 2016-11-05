@@ -137,7 +137,13 @@ module AresMUSH
          return t('fs3combat.treat_failed', :healer => healer_name, :patient => patient_name)
        end
        
-       Global.logger.info "Treat: #{healer_name} treating #{patient_name}: #{roll}"
+       combat = FS3Combat.combat(healer_name)
+       if (combat)
+         combat.log "Treat: #{healer_name} treating #{patient_name}: #{roll}"
+       else
+         Global.logger.info "Treat: #{healer_name} treating #{patient_name}: #{roll}"
+       end
+       
        FS3Combat.heal(wound, 1)
        t('fs3combat.treat_success', :healer => healer_name, :patient => patient_name)
      end

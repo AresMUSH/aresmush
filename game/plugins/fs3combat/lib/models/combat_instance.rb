@@ -72,7 +72,7 @@ module AresMUSH
         combat_log = CombatLog.create(combat: self)
         self.update(debug_log: combat_log)
       end
-      
+      Global.logger.debug msg
       self.debug_log.add msg
     end
   end
