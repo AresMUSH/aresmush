@@ -49,6 +49,11 @@ module AresMUSH
             Global.read_config("chargen", "arrivals_board"),
             t('chargen.approval_bbs_subject', :name => model.name), 
             t('chargen.approval_bbs_body', :name => model.name, :position => model.group_value("Position")))
+            
+          Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+             t('chargen.approval_bbs_subject', :name => model.name), 
+             Global.read_config("chargen", "messages", "post_approval"), 
+             Game.master.system_character)
         end
       end
     end
