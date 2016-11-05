@@ -56,7 +56,7 @@ module AresMUSH
     def self.help_files
       [ "help/abilities.md", "help/admin_skills.md", "help/hooks.md", "help/roll.md", "help/skills.md",
         "help/admin_luck.md", "help/luck.md", "help/backup.md", "help/sheet.md",
-        "help/admin_xp.md", "help/xp.md" ]
+      ] #  "help/admin_xp.md" , "help/xp.md" ]
     end
  
     def self.config_files
@@ -112,7 +112,7 @@ module AresMUSH
         if (cmd.switch_is?("add") || cmd.switch_is?("remove"))
           return SetLanguageCmd
         end
-      when "xp"
+      when "xpDISABLED"
         case cmd.switch
         when "award"
           return XpAwardCmd         

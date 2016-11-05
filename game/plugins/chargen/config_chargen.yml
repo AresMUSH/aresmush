@@ -17,7 +17,7 @@ chargen:
             
     messages:
         # This message is sent when a character is approved.
-        approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP."
+        approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP.  You can also use the %xcwiki%xn command to create a character page on the game wiki:  http://bsgunificationmush.wikidot.com/.  To join the wiki, use the password %xhphoenix%xn."
         # This message is sent when a character is rejected.
         rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp app%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
     
