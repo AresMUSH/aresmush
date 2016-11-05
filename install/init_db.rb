@@ -58,6 +58,7 @@ module AresMUSH
       6.times do |n|
         rp_room = Room.create(
           :name => "RP Room #{n+1}", 
+          :room_type => "RPR",
           :room_area => "Offstage")
         
         rp_room.current_desc = "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything."

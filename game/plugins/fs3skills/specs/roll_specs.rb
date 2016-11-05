@@ -7,7 +7,7 @@ module AresMUSH
 
         # Note:  By seeding the random number generator, we can avoid the randomness.
         #   If you use Kernel.srand(22), the first 10 die rolls in tests will always be:  
-        #      [6, 5, 1, 5, 7, 7, 4, 5, 1]
+        #      [6, 5, 5, 1, 5, 7, 7, 4, 5, 1]
         Kernel.srand 22
 
         SpecHelpers.stub_translate_for_testing
@@ -92,13 +92,13 @@ module AresMUSH
         it "should roll ability" do
           roll_params = RollParams.new("Firearms")
           FS3Skills.should_receive(:dice_to_roll_for_ability).with(@char, roll_params) { 5 }
-          FS3Skills.roll_ability(@client, @char, roll_params).should eq [6, 5, 1, 5, 7]
+          FS3Skills.roll_ability(@client, @char, roll_params).should eq [6, 5, 5, 1, 5]
         end
       end
     
       describe :roll_dice do
         it "should roll the specified number of dice" do
-          FS3Skills.roll_dice(4).should eq [ 6, 5, 1, 5 ]
+          FS3Skills.roll_dice(4).should eq [ 6, 5, 5, 1 ]
         end
         
         it "should always roll 1 die even if asked for 0 or less" do
@@ -106,7 +106,7 @@ module AresMUSH
         end
         
         it "should not allow giant die rolls" do
-          FS3Skills.roll_dice(99).should eq [9, 9, 9, 9, 9, 9, 9, 9]
+          FS3Skills.roll_dice(99).should eq [8, 8, 8, 8, 8, 8, 8, 8]
         end
       end
     

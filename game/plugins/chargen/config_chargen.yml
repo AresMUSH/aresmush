@@ -50,10 +50,10 @@ chargen:
             help: 'sheet'
         demographics:
             help: demographics
-        ranks:
-            help: ranks
         groups:
             help: groups
+        ranks:
+            help: ranks
         background:
             help: bg
         abilities:
@@ -72,6 +72,7 @@ chargen:
             help: apps
     shortcuts:
         "chargen" : "cg"
+        "cg/back": "cg/prev"
         "bg/approve": "app/approve"
         "bg/reject" : "app/reject"
         "bg/submit" : "app/submit"

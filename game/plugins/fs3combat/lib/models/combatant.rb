@@ -38,7 +38,6 @@ module AresMUSH
     def cleanup
       self.clear_mock_damage
       self.npc.delete if self.npc
-      self.vehicle.delete if self.vehicle
     end
     
     def weapon

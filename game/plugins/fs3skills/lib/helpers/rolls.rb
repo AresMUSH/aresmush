@@ -48,11 +48,11 @@ module AresMUSH
       if (dice > 18)
         Global.logger.warn "Attempt to roll #{dice} dice."
         # Hey if they're rolling this many dice they ought to succeed spectacularly.
-        return [9, 9, 9, 9, 9, 9, 9, 9]
+        return [8, 8, 8, 8, 8, 8, 8, 8]
       end
       
       dice = [dice, 1].max.ceil
-      dice.times.collect { 1 + rand(10) }
+      dice.times.collect { 1 + rand(8) }
     end
     
     # Determines the success level based on the raw die result.

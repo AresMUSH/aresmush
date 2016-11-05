@@ -50,6 +50,8 @@ module AresMUSH
               
             end
         
+            combat.log "---- Resolutions ----"
+        
             combat = enactor.combatant.combat
             combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
             # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.

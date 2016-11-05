@@ -5,7 +5,7 @@ module AresMUSH
         char = event.char
         return if !char.handle
         
-         #AresMUSH.with_error_handling(event.client, "Syncing handle with AresCentral.") do
+         AresMUSH.with_error_handling(event.client, "Syncing handle with AresCentral.") do
           connector = AresCentral::AresConnector.new
         
           Global.logger.info "Updating handle for #{char.handle.handle_id}"
@@ -13,7 +13,8 @@ module AresMUSH
 
           if (response.is_success?)
             if (response.data["linked"])
-              char.update(autospace: response.data["autospace"])
+              char.update(pose_quote_color: response.data["quote_color"])
+              char.update(pose_autospace: response.data["autospace"])
               char.update(timezone: response.data["timezone"])
               char.handle.update(friends: response.data["friends"])
               event.client.emit_success t('handles.handle_synced')              
@@ -24,7 +25,7 @@ module AresMUSH
           else
             raise "Response failed: #{response}"
           end
-          #end   
+        end   
       end
     end
   end

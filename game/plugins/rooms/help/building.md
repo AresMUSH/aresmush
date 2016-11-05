@@ -38,8 +38,6 @@ Rooms have several properties that you can set.  The `area` and `grid`` properti
 `area <name>` - Sets the room area.  Leave name blank to clear.
 `grid <x>=<y>` - Sets the grid coordinates.  Leave blank to clear.
         You can use letters or numbers (1,1) or (B,2)
-`roomtype <IC or OOC>` - Sets a room as part of the IC or OOC zone.
-        Note:  For RP Rooms, we recommend setting them "IC" so that people in them 
-        show up as RPing rather than showing up as OOC.  But it's your choice.
+`roomtype <IC, OOC or RPR>` - Sets a room as part of the IC, OOC or RPR (Roleplay Room) zone.
 `foyer <on or off` - Marks whether a room is a foyer, like an apartment or the
         RP room hub.  Numbered exits will be shown in a special way.

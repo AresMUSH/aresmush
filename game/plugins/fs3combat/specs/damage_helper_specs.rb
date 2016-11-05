@@ -194,7 +194,7 @@ module AresMUSH
           
           @patient.stub(:name) { "Bob" }
           @doctor.stub(:name) { "Doc" }
-          
+          FS3Combat.stub(:combat)
           @damage = double
           FS3Combat.stub(:worst_treatable_wound) { @damage }
         end

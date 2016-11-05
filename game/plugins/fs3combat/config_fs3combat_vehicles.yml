@@ -16,7 +16,7 @@ fs3combat:
             armor: Viper
             weapons:
                 - Kew
-            dodge: 0
+            dodge: 1
             
         Raider:
             description: "Cylon Raider space fighter"
@@ -28,7 +28,7 @@ fs3combat:
                 - Kew
                 - Missile
                 - Nuke
-            dodge: 0
+            dodge: 1
 
         Raptor:
             description: "Raptor space command and control"
