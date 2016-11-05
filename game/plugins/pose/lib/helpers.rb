@@ -41,16 +41,22 @@ module AresMUSH
       # Don't clear poses in rooms with active people.
       active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
 
-      rooms = Room.all.select { |r| r.repose_info }
-      rooms.each do |r|
+
+      rooms = Room.all.group_by { |r| !!r.repose_info }
+      enabled_rooms = rooms[true] || []
+      disabled_rooms = rooms[false] || []
+
+      enabled_rooms.each do |r|
         next if active_rooms.include?(r)
         
         Global.logger.debug "Clearing poses from #{r.name}."
         r.repose_info.delete
+        r.update(repose_info_id: nil)
+        disabled_rooms << r
       end
+    
       
-      rooms = Room.find(repose_info_id: nil)
-      rooms.each do |r|
+      disabled_rooms.each do |r|
         next if active_rooms.include?(r)
         Pose.reset_repose(r)
       end
@@ -58,6 +64,7 @@ module AresMUSH
     
     def self.reset_repose(room)
       repose = room.repose_info
+      
       if ((room.room_type == "IC" || room.room_type == "RPR") && !repose)
         Global.logger.debug "Enabling repose in #{room.name}."
         repose = ReposeInfo.create(room: room)
