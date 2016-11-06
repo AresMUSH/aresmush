@@ -60,7 +60,7 @@ module AresMUSH
       end
       
       def ooc_time
-        OOCTime::Api.local_long_timestr(@enactor, Time.now)
+        OOCTime::Api.local_short_timestr(@enactor, Time.now)
       end
       
       def foyer_exits

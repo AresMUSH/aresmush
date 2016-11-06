@@ -28,18 +28,22 @@ module AresMUSH
         end
         
         if (self.option.is_on?)
-          if (repose)
+          if (enactor.room.repose_on?)
             client.emit_ooc t('pose.repose_already_on')
           else
-            repose = ReposeInfo.create(room: room, poses: [])
-            room.update(repose_info: repose)
+            repose = enactor.room.repose_info
+            if (!repose)
+              repose = ReposeInfo.create(room: room, poses: [])
+              room.update(repose_info: repose)
+            end
+            repose.update(enabled: true)
             room.emit_ooc t('pose.repose_turned_on', :name => enactor_name)
           end
         else
-          if (!repose)
+          if (!enactor.room.repose_on?)
             client.emit_ooc t('pose.repose_already_off')
           else
-            repose.delete
+            repose.update(enabled: false)
             room.emit_ooc t('pose.repose_turned_off', :name => enactor_name)
           end
         end

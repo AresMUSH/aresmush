@@ -39,6 +39,8 @@ module AresMUSH
           text = "(CAU)"
         when "Evade"
           text = "(EVA)"
+        when "Cover"
+          text = "(COV)"
         end
         text
       end
