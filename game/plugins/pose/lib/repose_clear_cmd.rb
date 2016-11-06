@@ -9,12 +9,12 @@ module AresMUSH
       end
       
       def handle
-        repose = enactor.room.repose_info
-        if (repose)
-          repose.delete
+        if (!enactor.room.repose_on?)
+          client.emit_failure t('pose.repose_disabled')
+          return
         end
-        repose = ReposeInfo.create(room: enactor.room)
-        enactor.room.update(repose_info: repose)
+
+        enactor.room.repose_info.reset
         client.emit_success t('pose.repose_cleared')
       end
     end

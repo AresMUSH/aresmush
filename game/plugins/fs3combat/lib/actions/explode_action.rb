@@ -26,7 +26,7 @@ module AresMUSH
       def resolve
         messages = []
         
-        messages << t('fs3combat.explosion_resolution_msg', :name => self.name, :weapon => self.combatant.weapon)
+        messages << t('fs3combat.explode_resolution_message', :name => self.name, :weapon => self.combatant.weapon)
         
         self.targets.each do |target, num|
           messages.concat FS3Combat.attack_target(combatant, target)

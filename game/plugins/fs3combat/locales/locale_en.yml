@@ -237,7 +237,7 @@ en:
         attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
         attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
         attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc} %{armor}"
-        attack_hit_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
+        attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."

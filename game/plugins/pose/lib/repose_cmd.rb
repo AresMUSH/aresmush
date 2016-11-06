@@ -7,12 +7,12 @@ module AresMUSH
       include CommandWithoutArgs
       
       def handle
-        repose = enactor.room.repose_info
-        if (!repose)
+        if (!enactor.room.repose_on?)
           client.emit_failure t('pose.repose_disabled')
           return
         end
         
+        repose = enactor.room.repose_info
         poses = repose.poses || []
         client.emit BorderedDisplay.list poses.map { |p| "#{p}%R"}, t('pose.repose_list')
       end

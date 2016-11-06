@@ -14,8 +14,9 @@ module AresMUSH
     end
 
     def self.add_repose(room, enactor, pose)
+      return if !room.repose_on?
+      
       repose = room.repose_info
-      return if !repose
       
       order = repose.pose_orders 
       enactor_order = order.find(character_id: enactor.id).first
@@ -25,7 +26,7 @@ module AresMUSH
         PoseOrder.create(repose_info: repose, character: enactor, time: Time.now)
       end
 
-      poses = repose.poses
+      poses = repose.poses || []
       poses << pose
       if (poses.count > 8)
         poses.shift
@@ -42,7 +43,7 @@ module AresMUSH
       active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
 
 
-      rooms = Room.all.group_by { |r| !!r.repose_info }
+      rooms = Room.all.group_by { |r| r.repose_on? }
       enabled_rooms = rooms[true] || []
       disabled_rooms = rooms[false] || []
 
@@ -67,10 +68,13 @@ module AresMUSH
       
       if ((room.room_type == "IC" || room.room_type == "RPR") && !repose)
         Global.logger.debug "Enabling repose in #{room.name}."
-        repose = ReposeInfo.create(room: room)
-        room.update(repose_info: repose)
+        if (!repose)
+          repose = ReposeInfo.create(room: room)
+          room.update(repose_info: repose)
+        end
+        repose.update(enabled: true)
       elsif repose
-        repose.delete
+        repose.update(enabled: false)
       end
     end
     
