@@ -70,6 +70,8 @@ module AresMUSH
           return ChannelLeaveCmd
         when "list", nil
           return ChannelListCmd
+        when "rename"
+          return ChannelRenameCmd
         when "roles"
           return ChannelRolesCmd
         when "title"

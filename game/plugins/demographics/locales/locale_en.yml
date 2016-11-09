@@ -1,5 +1,9 @@
 en:
     demographics:
+        admin_property_set: "You set %{name}'s %{property} to %{value}."
+        set_birhdate_instead: "Set birthdate instead of age."
+        invalid_demographic: "That is not a valid demographic."
+        
         property_set: "You set your %{property} to %{value}."
         invalid_gender: "Please pick: male, female, other."
         invalid_age: "Please enter a number of years."
@@ -16,6 +20,9 @@ en:
         male_subjective: he
         female_subjective: she
         other_subjective: they
+        male_noun: man
+        female_noun: woman
+        other_noun: person
         
         demo_review: Checking all demographics are set.
         gender_set_to_other: "< Gender is set to 'Other'.  Is that correct? >"

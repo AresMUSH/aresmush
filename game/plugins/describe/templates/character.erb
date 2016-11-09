@@ -1,6 +1,6 @@
 <%= line %>
 %xh<%= char.name%>%xn
-<%= military_name %>
+<%= military_name(char) %>
 <%= line 2 %>
 
 <%= char.description %>
@@ -10,5 +10,5 @@
 <% end %>
 
 <%= line 2 %>
-%xh<%= t('describe.played_by') %>%xn <%= actor %>
+%xh<%= t('describe.played_by') %>%xn <%= actor(char) %>
 <%= line %>

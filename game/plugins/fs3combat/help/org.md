@@ -27,7 +27,7 @@ This is a quick reference for combat organizer commands.  For more details on FS
 `combat/ai force` - Auto-targets NPCs even if they have an action set.
 
 `combat/unko` - Un-KO's someone who shouldn't have been
-`damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
+`damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.  (Currently staff-only)
 
 `combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend

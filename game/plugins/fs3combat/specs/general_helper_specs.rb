@@ -52,7 +52,7 @@ module AresMUSH
         @combatant2.stub(:id) { 2 }
         @combatant3.stub(:id) { 3 }
 
-        @combat.stub(:combatants) { [ @combatant1, @combatant2, @combatant3 ]}
+        @combat.stub(:active_combatants) { [ @combatant1, @combatant2, @combatant3 ]}
         
         Global.stub(:read_config).with("fs3combat", "initiative_ability") { "init" }
         

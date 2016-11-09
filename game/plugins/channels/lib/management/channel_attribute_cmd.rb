@@ -26,6 +26,17 @@ module AresMUSH
       end
     end
   
+    class ChannelRenameCmd
+      include ChannelAttributeCmd
+    
+      def handle
+        Channels.with_a_channel(name, client) do |channel|
+          channel.update(name: self.attribute)
+          client.emit_success "%xn#{t('channels.channel_renamed', :old_name => self.name, :new_name => channel.display_name)}"
+        end
+      end
+    end
+    
     class ChannelColorCmd
       include ChannelAttributeCmd
     

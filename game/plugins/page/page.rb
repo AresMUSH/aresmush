@@ -1,6 +1,8 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/page_cmd.rb"
 load "lib/page_dnd.rb"
+load "lib/page_autospace_cmd.rb"
+load "lib/page_color_cmd.rb"
 load "lib/page_model.rb"
 
 module AresMUSH
@@ -36,6 +38,10 @@ module AresMUSH
       case cmd.root
       when "page"
         case cmd.switch
+        when "autospace"
+          return PageAutospaceCmd
+        when "color"
+          return PageColorCmd
         when "dnd"
           return PageDoNotDisturbCmd
         when nil

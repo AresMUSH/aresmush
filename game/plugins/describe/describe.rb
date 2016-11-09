@@ -3,6 +3,7 @@ load "describe_api.rb"
 load "lib/desc_edit_cmd.rb"
 load "lib/desc_model.rb"
 load "lib/describe_cmd.rb"
+load "lib/glance_cmd.rb"
 load "lib/details/detail_delete_cmd.rb"
 load "lib/details/detail_edit_cmd.rb"
 load "lib/details/detail_set_cmd.rb"
@@ -17,8 +18,10 @@ load "lib/outfits/outfit_view_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "lib/wear_cmd.rb"
+load "templates/char_desc_template_fields.rb"
 load "templates/character_template.rb"
 load "templates/exit_template.rb"
+load "templates/glance_template.rb"
 load "templates/room_template.rb"
 load "templates/scenes_list_template.rb"
 
@@ -40,7 +43,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/descriptions.md", "help/detail.md", "help/outfit.md", "help/look.md", "help/scene.md" ]
+      [ "help/descriptions.md", "help/detail.md", "help/glance.md", "help/outfit.md", "help/look.md", "help/scene.md" ]
     end
  
     def self.config_files
@@ -71,6 +74,8 @@ module AresMUSH
         when nil
           return LookCmd
         end
+      when "glance"
+        return GlanceCmd
       when "look"
         return LookCmd
       when "outfit"

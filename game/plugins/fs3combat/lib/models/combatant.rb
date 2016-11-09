@@ -83,7 +83,7 @@ module AresMUSH
     def roll_ability(ability, mod = 0)
       result = is_npc? ? self.npc.roll_ability(ability, mod) : self.character.roll_ability(ability, mod)
       successes = result[:successes]
-      log("#{self.name} rolling #{ability}: #{successes}")
+      log("#{self.name} rolling #{ability}: #{successes} successes")
       successes
     end
     

@@ -1,6 +1,6 @@
 ---
 topic: groups
-toc: Player Management
+toc: Character Creation
 summary: Groups and affiliations.
 categories:
 - admin

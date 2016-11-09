@@ -20,3 +20,4 @@ bbs:
         "bbarchive" : "bbs/archive"
         "bbs/desc" : "bbs/describe"
         "bbs/newgroup" : "bbs/createboard"
+        "bb/new": "bbs/new"
