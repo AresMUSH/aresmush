@@ -3,4 +3,4 @@ game:
   category: Other
   description: AresMUSH test site.
   website: 'http://aresmush.com'
-  public_game: true
+  public_game: false

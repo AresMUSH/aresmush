@@ -247,7 +247,7 @@ en:
         fires_fullauto: "%{name} fires full-auto!"     
         fullauto_action_msg_long: "%{name} will fire full-auto at %{targets}."
         fullauto_action_msg_short: "Fullauto %{targets}"
-        too_many_targets: "You can only attack up to 4 targets with full-auto fire."
+        too_many_targets: "You can only attack up to 3 targets with full-auto fire."
         
         attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"

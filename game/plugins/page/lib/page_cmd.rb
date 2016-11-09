@@ -41,7 +41,11 @@ module AresMUSH
           message = PoseFormatter.format(name, self.message)
           recipients = results.map { |result| result.char.name_and_alias }.join(", ")
         
-          client.emit t('page.to_sender', :autospace => enactor.autospace, :color => page_color, :recipients => recipients, :message => message)
+          client.emit t('page.to_sender', 
+            :autospace => enactor.page_autospace, 
+            :color => enactor.page_color, 
+            :recipients => recipients, 
+            :message => message)
           results.each do |r|
             page_recipient(r.client, r.char, recipients, message)
           end
@@ -54,7 +58,11 @@ module AresMUSH
         if (other_char.page_do_not_disturb)
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
         else          
-          other_client.emit t('page.to_recipient', :autospace => other_char.autospace, :color => page_color, :recipients => recipients, :message => message)
+          other_client.emit t('page.to_recipient', 
+            :autospace => other_char.page_autospace, 
+            :color => other_char.page_color, 
+            :recipients => recipients, 
+            :message => message)
           send_afk_message(other_client, other_char)
         end
       end
@@ -65,10 +73,14 @@ module AresMUSH
           if (other_char.afk_display)
             afk_message = "(#{other_char.afk_display})"
           end
-          client.emit_ooc t('page.recipient_is_afk', :name => other_char.name, :message => afk_message)
+          afk_message = t('page.recipient_is_afk', :name => other_char.name, :message => afk_message)
+          client.emit_ooc afk_message
+          other_char.client.emit_ooc afk_message
         elsif (Status::Api.is_idle?(other_client))
           time = TimeFormatter.format(other_client.idle_secs)
-          client.emit_ooc t('page.recipient_is_idle', :name => other_char.name, :time => time)
+          afk_message = t('page.recipient_is_idle', :name => other_char.name, :time => time)
+          client.emit_ooc afk_message
+          other_char.client.emit_ooc afk_message
         end
       end
       

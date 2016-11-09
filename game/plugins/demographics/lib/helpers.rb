@@ -1,5 +1,11 @@
 module AresMUSH
   module Demographics    
+
+    def self.can_set_demographics?(char)
+      char.has_any_role?(Global.read_config("demographics", "roles", "can_set_demographics"))
+    end
+    
+    
     def self.check_age(age)
       min_age = Global.read_config("demographics", "min_age")
       max_age = Global.read_config("demographics", "max_age")

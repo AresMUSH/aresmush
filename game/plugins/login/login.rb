@@ -84,7 +84,7 @@ module AresMUSH
          
       # Special check to allow 'c' to be used for tour or connect when not logged in.
       if (!client.logged_in?)
-        if (cmd.root_is?("c") && cmd.args)
+        if (cmd.args && (cmd.root_is?("c") || cmd.root_is?("co")))
           if (cmd.args.start_with?("guest"))
             return TourCmd
           else

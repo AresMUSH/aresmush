@@ -20,7 +20,7 @@ module AresMUSH
       
       def check_can_act
         return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
-        return t('fs3combat.cannot_act_while_koed') if enactor.combatant.is_ko
+        return t('fs3combat.cannot_act_while_koed') if (enactor.combatant.is_ko && self.name == enactor.name)
         return t('fs3combat.you_are_a_noncombatant') if (enactor.combatant.is_noncombatant? && self.name == enactor_name)
         return nil
       end
