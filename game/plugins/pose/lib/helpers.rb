@@ -4,7 +4,7 @@ module AresMUSH
       room = enactor.room
       Global.client_monitor.logged_in.each do |client, char|
         next if char.room != enactor.room
-        client.emit Pose.custom_format(pose, char, is_emit, is_ooc)
+        client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc)
       end
       
       if (!is_ooc)
