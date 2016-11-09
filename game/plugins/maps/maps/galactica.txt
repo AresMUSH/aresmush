@@ -2,6 +2,8 @@ F exits take you toward the front (fore) of the ship.
 A exits take you toward the rear (aft) of the ship.
 The Landing has stairs with up/down (U/D) exits to change decks.
 
+Here is a sample of how the main corridors work:
+
 +-----------+   +-----------+   +-----------+
 |  Deck 4   |___|  Deck 4   |___|  Deck 4   |
 |  Aft      |   |  Landing  |   |  Fore     |
@@ -12,7 +14,7 @@ The Landing has stairs with up/down (U/D) exits to change decks.
 |  Aft      |   |  Landing  |   |  Fore     |
 +-----+-----+   +-----+-----+   +-----+-----+
 
-There are 12 decks total, but only decks 4-10 are reflected on the grid.  The other decks are for gun turrets, storage, more crew berthings, and other uninteresting stuff.
+There are 12 decks total, but only decks 3-10 are reflected on the grid.  The other decks are for gun turrets, storage, more crew berthings, and other uninteresting stuff.
 
 Deck 3 - Observation Deck & Offices
 Deck 4 - CIC & Senior Officer Area

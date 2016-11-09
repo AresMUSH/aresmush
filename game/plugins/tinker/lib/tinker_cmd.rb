@@ -16,11 +16,13 @@ module AresMUSH
       def handle
         #Damage.all.each { |d| client.emit d.inspect }
         #Npc.all.each { |d| client.emit d.inspect }
-        Combatant.all.each { |d| client.emit d.inspect }
+        #Combatant.all.each { |d| client.emit d.inspect }
         # Damage.all.each { |d| client.emit d.delete }
-      
+
+#   FS3BackgroundSkill[199].update(name: "Guitar")
         # Put whatever you need to do here.
         
+
         client.emit_success "Done!"
       end
 

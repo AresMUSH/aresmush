@@ -59,6 +59,7 @@ groups:
                 Medical Support: "Other medical personnel."
                 Deck Crew: "Air wing support/maintenance personnel."
                 Other: "Any other position."
+                Technician: "Marine or navy tech."
             
     shortcuts:
         "groups": "group"

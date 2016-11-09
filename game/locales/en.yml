@@ -49,7 +49,7 @@ en:
         other: "%{count} characters connected." 
         
     client:   
-        welcome: Welcome to AresMUSH!   Type 'help' to get started.  Type 'tour' to explore with a guest character.
+        welcome: "Welcome to AresMUSH!  Type 'help' to get started."
         anonymous: Anonymous
 
     number:
