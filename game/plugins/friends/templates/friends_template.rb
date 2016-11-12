@@ -19,10 +19,11 @@ module AresMUSH
       
       def handle_friends
         return [] if !@enactor.handle
-        @enactor.handle.friends ? @enactor.handle.friends.sort_by(:name, :order => "ALPHA") : []
+        @enactor.handle.friends ? @enactor.handle.friends.sort : []
       end
       
-      def visible_alts(handle)
+      def visible_alts(handle_name)
+        handle = Handle.find_one_by_name(handle_name)
         visible_alts = Handles::Api.alts_of(handle)
         visible_alts.empty? ? nil : visible_alts.map { |a| a.name }.join(" ")
       end

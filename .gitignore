@@ -1,5 +1,6 @@
 *.log
 database.yml
+secrets.yml
 errors.txt
 save_pid.txt
 .DS_Store

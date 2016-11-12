@@ -7,7 +7,8 @@ module AresMUSH
         return
       end
       
-      if (recipient.cookies_received.include?(giver))
+      cookies_from_giver = recipient.cookies_received.select { |c| c.giver == giver }
+      if (!cookies_from_giver.empty?)
         client.emit_failure t('cookies.cookie_already_given', :name => recipient.name)
         return
       end

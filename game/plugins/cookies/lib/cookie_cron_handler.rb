@@ -19,13 +19,13 @@ module AresMUSH
           c.delete
         end
         
-        counts.each_with_index do |(char, count), i|
+        counts.sort_by { |char, count| count }.each_with_index do |(char, count), i|
           index = i+1
           awards << "#{index}. #{char.name.ljust(20)}#{count}\n"
           
           if (cookies_per_luck != 0)
             luck = count.to_f / cookies_per_luck
-            c.award_luck(luck)
+            char.award_luck(luck)
           end
 
         end
