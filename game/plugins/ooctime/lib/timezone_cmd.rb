@@ -30,6 +30,10 @@ module AresMUSH
           self.zone = "America/Denver"
         when "PST"
           self.zone = "America/Los_Angeles"
+        when "AST"
+          self.zone = "Canada/Atlantic"
+        when "GMT"
+          self.zone = "Greenwich"
         else
           # Leave timezone alone
         end

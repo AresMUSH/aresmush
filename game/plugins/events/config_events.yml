@@ -1,4 +1,8 @@
 events:
+    
+    # Displays to tell people what timezone the web calendar is using.
+    calendar_timezone: "EST"
+    
     # NOTE: The calendar ID and API key are configured in the game/config/secrets.yml file
     shortcuts:
         "events" : "event"

@@ -9,11 +9,11 @@ aliases:
 - timezone
 plugin: ooctime
 ---
-Ares will display all dates and times according to your local timezone.  Your timezone is set when you first log in, and you can change it at any time using:
+Ares will display all dates and times according to your local timezone.  If you have a player handle, your timezone is managed in AresCentral.  See `help handles`.  Otherwise you can change it at any time using:
 
 `timezone <name>` - Sets your timezone.
 
-You can use pretty much any timezone in the "tz database" (http://en.wikipedia.org/wiki/List_of_tz_database_time_zones), or the common American ones (EST, CST, MST, PST).
+Timezone names come from the world standard timezone database: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones. Just enter the name - for instance, "Pacific/Fiji".   Ares also recognizes some of the common abbreviations (EST, CST, MST, PST, GMT, AST) and tries to map them to the closest available timezone option.  EST for example maps to "America/New_York".
 
 The `time` command shows you a few bits of time-related information, including your local time.  You can compare this to your wall clock to make sure your timezone is set correctly.
 

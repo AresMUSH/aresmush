@@ -20,6 +20,9 @@ date_and_time:
     #long_date_format: "%d-%m-%Y %l:%M%P"
     
     
+    # Format when just displaying a time.
+    time_format: "%l:%M%P"
+    
     # Used in help files to direct people what format to use when entering dates
     # NOTE: Must match the order of fields in short_date_format
     date_entry_format_help: "mm/dd/yyyy"
