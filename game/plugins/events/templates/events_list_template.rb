@@ -16,9 +16,14 @@ module AresMUSH
         Events.calendar_view_url
       end
       
-      def event_starts(event)
-        event.formatted_start_time(@enactor)
+      def start_time_local(event)
+        event.start_time_local(@enactor)
       end
+      
+      def start_time_standard(event)
+        event.start_time_standard
+      end
+
     end
   end
 end

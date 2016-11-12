@@ -16,6 +16,13 @@ module AresMUSH
         time ? DateTime.strptime(time, '%Y-%m-%dT%H:%M:%S%Z' ) : nil
       end
       
+      def start_time_standard
+        timezone = Global.read_config("events", "calendar_timezone")
+        format = Global.read_config("date_and_time", "time_format")
+        formatted_time = starts.strftime(format).strip
+        "#{formatted_time} #{timezone}"
+      end
+      
       def all_day
         @event['all_day'] || false
       end
@@ -41,7 +48,7 @@ module AresMUSH
         notes
       end
       
-      def formatted_start_time(enactor)
+      def start_time_local(enactor)
         time = self.starts
         local_time = OOCTime::Api.local_long_timestr(enactor, time.to_time)
         notice = self.all_day ? " (#{t('events.all_day')})" : ""

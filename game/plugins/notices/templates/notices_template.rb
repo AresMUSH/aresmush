@@ -37,8 +37,12 @@ module AresMUSH
         Events::Api.upcoming_events
       end
       
-      def event_starts(event)
-        event.formatted_start_time(@char)
+      def start_time_local(event)
+        event.start_time_local(@enactor)
+      end
+      
+      def start_time_standard(event)
+        event.start_time_standard
       end
       
     end
