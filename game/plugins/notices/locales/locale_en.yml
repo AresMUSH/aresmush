@@ -9,3 +9,4 @@ en:
         unread_jobs: "- There are %xh%xmunread jobs%xn. %xh%xx(jobs/new)%xn"
         no_unread_requests: "- No unread requests or jobs."
         alt_unread_mail: "- %{name} has unread mail."
+        upcoming_events_title: "Upcoming Events"

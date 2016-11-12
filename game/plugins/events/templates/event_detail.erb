@@ -1,0 +1,11 @@
+%l1
+%xh<%= left( event.title, 30 ) %>%xn
+
+%xh<%= t('events.starts_at_title')%>%xn <%= event_starts %>
+%xh<%= t('events.who_title')%>%xn <%= event.who %>
+%xh<%= t('events.where_title')%>%xn <%= event.location %>
+
+<%= event.notes %>
+
+<%= t('events.url_title') %> <%= view_url %>
+%l1

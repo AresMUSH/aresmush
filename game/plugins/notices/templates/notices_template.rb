@@ -32,6 +32,15 @@ module AresMUSH
         return t('notices.unread_jobs') if @char.has_unread_jobs?
         return t('notices.no_unread_requests')
       end
+      
+      def events
+        Events::Api.upcoming_events
+      end
+      
+      def event_starts(event)
+        event.formatted_start_time(@char)
+      end
+      
     end
   end
 end

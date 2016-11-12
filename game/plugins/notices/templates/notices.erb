@@ -1,5 +1,6 @@
 <%= line %>
-<%= center(t('notices.notices_title'), 78) %>
+%xh<%= center( t('notices.notices_title'), 78 ) %>%xn
+%l2
 <%= mail %>
 <% alts.each do |a| %>
 <% if has_alt_mail(a) %>
@@ -8,4 +9,11 @@
 <% end %>
 <%= bbs %>
 <%= jobs_or_requests %>
+
+%l2
+%xh<%= center( t('notices.upcoming_events_title'), 78 ) %>%xn
+%l2
+<% events.each do |ev| %>
+<%= left( ev.title, 30 ) %> <%= event_starts(ev) %>
+<% end %>
 <%= line %>

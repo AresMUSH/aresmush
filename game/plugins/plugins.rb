@@ -14,6 +14,7 @@ module AresMUSH
         "cookies", 
         "demographics", 
         "describe", 
+        "events",
         "friends", 
         "fs3combat", 
         "fs3skills", 

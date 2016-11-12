@@ -29,6 +29,8 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'pp'
 require 'net/http'
+require 'html2markdown'
+
 
 require 'erubis'
 require 'json'

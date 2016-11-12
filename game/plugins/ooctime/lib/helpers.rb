@@ -4,7 +4,7 @@ module AresMUSH
       return "" if !datetime
       setting = viewer ? viewer.timezone : nil
       timezone = Timezone::Zone.new :zone => setting || "America/New_York"
-      timezone.time datetime
+      timezone.time datetime      
     end
     
     def self.local_short_timestr(viewer, datetime)
