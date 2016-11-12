@@ -13,7 +13,7 @@ module AresMUSH
       
       def starts
         time = @event['start_dt']
-        time ? DateTime.strptime(time, '%Y-%m-%dT%H:%M:%S' ) : nil
+        time ? DateTime.strptime(time, '%Y-%m-%dT%H:%M:%S%Z' ) : nil
       end
       
       def all_day
