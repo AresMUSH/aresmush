@@ -111,10 +111,8 @@ module AresMUSH
       combatant.update(action_klass: nil)
       combatant.update(action_args: nil)
 
-      specials_text = combatant.weapon_specials ? combatant.weapon_specials.join(',') : t('global.none')
       message = t('fs3combat.weapon_changed', :name => combatant.name, 
-        :weapon => combatant.weapon, 
-        :specials => specials_text)
+        :weapon => combatant.weapon)
       combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     

@@ -34,7 +34,7 @@ module AresMUSH
       end
       
       def handle
-        combat = enactor.combatant.combat
+        combat = enactor.combat
         vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
               
         if (!vehicle)

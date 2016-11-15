@@ -41,7 +41,7 @@ module AresMUSH
         client.emit template.render
         if (model.class == Character)
           looked_at = model.client
-          if (looked_at)
+          if (looked_at && model.desc_notify)
             looked_at.emit_ooc t('describe.looked_at_you', :name => enactor_name)
           end
         end

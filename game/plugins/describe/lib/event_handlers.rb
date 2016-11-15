@@ -6,7 +6,7 @@ module AresMUSH
         return if !Cron.is_cron_match?(config, event.time)
         
         Describe.rooms_with_scenes.each do |r|
-          if (Time.now - r.scene_set.time > 28800)
+          if (r.clients.empty? || (Time.now - r.scene_set.time > 28800))
             Global.logger.debug "Clearing sceneset from #{r.name}."
             r.scene_set.delete
           end

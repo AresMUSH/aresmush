@@ -11,7 +11,7 @@ module AresMUSH
           return
         end
                 
-        combat = enactor.combatant.combat
+        combat = enactor.combat
         
         if (combat.organizer != enactor)
           client.emit_failure t('fs3combat.only_organizer_can_do')
@@ -52,7 +52,7 @@ module AresMUSH
         
             combat.log "---- Resolutions ----"
         
-            combat = enactor.combatant.combat
+            combat = enactor.combat
             combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
             # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
             combat.active_combatants.each { |c| c.action }

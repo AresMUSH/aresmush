@@ -15,7 +15,7 @@ module AresMUSH
           self.weapon = titleize_input(cmd.args.arg2)
           specials_str = titleize_input(cmd.args.arg3)
         else
-          cmd.crack_args!(/(?<arg1>[^\/]+)\+?(?<arg2>.+)?/)
+          cmd.crack_args!(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
           self.name = enactor.name
           self.weapon = titleize_input(cmd.args.arg1)
           specials_str = titleize_input(cmd.args.arg2)

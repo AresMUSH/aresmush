@@ -1,10 +1,7 @@
 module AresMUSH
   module Utils
-    class NoOpCmd
+    class KeepaliveCmd
       include CommandHandler
-      include CommandWithoutSwitches
-
-      attr_accessor :message
 
       def handle
         # A command that does absolutely nothing!

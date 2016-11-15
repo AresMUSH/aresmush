@@ -14,3 +14,5 @@ en:
     ansi:
         colors_title: "ANSI Colors"
         x_or_c: "See 'help ansi' for help using colors."
+    utils:
+        no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."

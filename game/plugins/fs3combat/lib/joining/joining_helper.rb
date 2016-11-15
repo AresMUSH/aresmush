@@ -32,7 +32,7 @@ module AresMUSH
           :team => 1,
           :combat => combat)
       else
-        npc = Npc.create(name: name)
+        npc = Npc.create(name: name, combat: combat)
         combatant = Combatant.create(:combatant_type => combatant_type, 
         :npc => npc,
         :team =>  2,

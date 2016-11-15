@@ -101,11 +101,16 @@ en:
         mod_applied: "You apply a %{type} modifier to %{name}."
         log_title: "Combat Log"
         
+        must_transfer_to_combatant: "%{name} needs to join the combat before you can transfer it to them."
+        combat_transferred: "%{name} is now the combat organizer."
+        
+        everyone_posed: "Everyone has posed!"
+        
         # ----------------------------
         # KO
         # ----------------------------
         
-        is_koed: "%{name} has been %xrKOed%xn!"
+        is_koed: "%{name} has been %xr**KO'd**%xn!"
         is_no_longer_koed: "%{name} is %xgno longer KOed%xn!"
         not_koed: "You are not KOed!"
         back_in_the_fight: "%{name} spends a luck point and is back in the fight!"
@@ -182,7 +187,7 @@ en:
         # GEAR COMMANDS
         # ----------------------------
         
-        weapon_changed: "%{name} has changed weapons to %{weapon}.  Specials: %{specials}"
+        weapon_changed: "%{name} has changed weapons to %{weapon}."
         armor_changed: "%{name} has changed armor to %{armor}."
         
         # ----------------------------

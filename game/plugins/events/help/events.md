@@ -15,4 +15,4 @@ The game provides a limited view of upcoming events.
 `events`  - Lists upcoming events
 `event <#>` - Views an event
 
-Note: It may take five minutes or so before an event added online appears in the game.  If you make a change on the web page and want it to show up right away, use `events/refresh`.
+Note: It may take a few minutes before an event added online appears in the game.  If you make a change on the web page and want it to show up right away, use `events/refresh`.

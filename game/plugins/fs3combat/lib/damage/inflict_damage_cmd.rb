@@ -21,10 +21,6 @@ module AresMUSH
         }
       end
       
-      def check_can_manage
-        return t('dispatcher.not_allowed') if !FS3Combat.can_manage_damage?(enactor)
-        return nil
-      end
       
       def check_severity
         return t('fs3combat.invalid_severity', :severities => FS3Combat.damage_severities.join(" ")) if !FS3Combat.damage_severities.include?(self.severity)
@@ -34,6 +30,12 @@ module AresMUSH
       def handle
         target = FS3Combat.find_named_thing(self.name, enactor)
             
+        if !self.can_inflict_damage(target)
+          client.emit_failure t('dispatcher.not_allowed') 
+          return nil
+        end
+      
+            
         if (target)
           FS3Combat.inflict_damage(target, self.severity, self.desc)
           client.emit_success t('fs3combat.damage_inflicted', :name => target.name) 
@@ -41,6 +43,16 @@ module AresMUSH
           client.emit_failure t('db.object_not_found')
         end
       end
+      
+      def can_inflict_damage(target)
+        target_combat = target.combat
+        enactor_combat = enactor.combat
+        return true if FS3Combat.can_manage_damage?(enactor)
+        return false if !target_combat
+        return false if target_combat != enactor_combat
+        enactor_combat.organizer  == enactor
+      end
+      
     end
   end
 end

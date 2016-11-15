@@ -4,7 +4,7 @@ module AresMUSH
     mattr_accessor :last_events, :last_event_time
 
     def self.upcoming_events(days_ahead)
-      if (!self.last_events || (Time.now - self.last_event_time > (360 * 5)))
+      if (!self.last_events || (Time.now - self.last_event_time > (360 * 30)))
         startDate = DateTime.now
         endDate = startDate + days_ahead
 
