@@ -3,6 +3,7 @@ load "describe_api.rb"
 load "lib/desc_edit_cmd.rb"
 load "lib/desc_model.rb"
 load "lib/describe_cmd.rb"
+load "lib/desc_notify_cmd.rb"
 load "lib/glance_cmd.rb"
 load "lib/details/detail_delete_cmd.rb"
 load "lib/details/detail_edit_cmd.rb"
@@ -60,6 +61,8 @@ module AresMUSH
         case cmd.switch
         when "edit"
           return DescEditCmd
+        when "notify"
+          return DescNotifyCmd
         when nil
           return DescCmd
         end

@@ -52,6 +52,7 @@ load "lib/general/combat_mod_cmd.rb"
 load "lib/general/combat_newturn_cmd.rb"
 load "lib/general/combat_stance_cmd.rb"
 load "lib/general/combat_team_cmd.rb"
+load "lib/general/combat_transfer_cmd.rb"
 load "lib/general/combat_types_cmd.rb"
 load "lib/general/general_helper.rb"
 load "lib/general/combat_hero_cmd.rb"
@@ -199,6 +200,8 @@ module AresMUSH
            return CombatSummaryCmd
          when "team"
            return CombatTeamCmd
+         when "transfer"
+           return CombatTransferCmd
          when "types"
            return CombatTypesCmd
          when "pilot", "passenger"

@@ -58,7 +58,7 @@ module AresMUSH
         return
       end
       
-      combat = enactor.combatant.combat
+      combat = enactor.combat
       combatant = combat.find_combatant(name)
       
       if (!combatant)

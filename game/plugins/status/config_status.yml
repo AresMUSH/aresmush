@@ -35,7 +35,6 @@ status:
             minute: 20
 
     shortcuts:
-        "set": "status"
         "ic" : "onstage"
         "afk on": "afk"
         "afk/on": "afk"

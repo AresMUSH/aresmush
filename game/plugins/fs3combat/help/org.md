@@ -34,3 +34,5 @@ This is a quick reference for combat organizer commands.  For more details on FS
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
 
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
+
+`combat/transfer <name>` - Transfer organizer powers to another person in combat.

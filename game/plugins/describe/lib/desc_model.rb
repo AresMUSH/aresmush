@@ -87,7 +87,7 @@ module AresMUSH
     attribute :parent_id
     attribute :parent_type
     attribute :desc_type
-    
+
     index :name
     index :parent_id
     index :parent_type
@@ -103,6 +103,8 @@ module AresMUSH
   
   class Character
     include Describable
+    
+    attribute :desc_notify, :type => DataType::Boolean, :default => true
     
     def shortdesc
       descs_of_type("short").first

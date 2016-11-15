@@ -23,6 +23,10 @@ module AresMUSH
     def is_in_combat?
       combatant
     end
+    
+    def combat
+      self.combatant ? self.combatant.combat : nil
+    end
   end
   
   class Room

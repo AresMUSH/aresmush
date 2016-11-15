@@ -41,6 +41,8 @@ en:
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
        
+       notify_set: "You turn the notifications when someone looks at you %{status}."
+       
        glance: "%{height} height, %{age} year-old %{gender} with %{hair} hair and %{eyes} eyes."
        
        scene_set: "You create a scene set in this room.  Please remember to clear it when the scene is over.  It will be cleared automatically after 24 hours."

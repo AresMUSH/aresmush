@@ -7,6 +7,7 @@ module AresMUSH
     attribute :level, :default => "Goon"
 
     collection :damage, "AresMUSH::Damage"
+    reference :combat, "AresMUSH::Combat"
     
     before_save :save_upcase
     before_delete :clear_damage

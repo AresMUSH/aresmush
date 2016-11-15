@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def handle
-        combat = enactor.combatant.combat
+        combat = enactor.combat
         
         if (combat.organizer != enactor)
           client.emit_failure t('fs3combat.only_organizer_can_do')

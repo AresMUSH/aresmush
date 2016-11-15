@@ -50,7 +50,6 @@ module AresMUSH
       enabled_rooms.each do |r|
         next if active_rooms.include?(r)
         
-        Global.logger.debug "Clearing poses from #{r.name}."
         r.repose_info.delete
         r.update(repose_info_id: nil)
         disabled_rooms << r
@@ -67,7 +66,7 @@ module AresMUSH
       repose = room.repose_info
       
       if ((room.room_type == "IC" || room.room_type == "RPR") && !repose)
-        Global.logger.debug "Enabling repose in #{room.name}."
+        Global.logger.debug "Re-enabling repose in #{room.name}."
         if (!repose)
           repose = ReposeInfo.create(room: room)
           room.update(repose_info: repose)

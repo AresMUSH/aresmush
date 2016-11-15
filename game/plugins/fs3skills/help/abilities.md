@@ -31,7 +31,7 @@ Use the Abilities command to see the ratings, available abilities and descriptio
 
 `abilities` - Lists abilities.
 
-There are two ways to adjust your abilities:   
+There are two ways to adjust your abilities.  All abilities use the same commands:   
 
 `raise <name>` and `lower <name>` - Raise or lower by 1 level.
 `ability <name>=<level>` - Sets the rating
