@@ -20,4 +20,10 @@ usermod -p "$ENCRYPTEDPW" ares
 addgroup www
 usermod -a -G sudo,www ares
 
+echo "/home/ares/aresmush/bin/startares&" > onboot.sh
+
+chmod +x onboot.sh
+
 echo "User ares created with password $PASSWD.  You will need it in a minute.  Please refer back to the installation instructions for the next steps."
+
+echo "Done!"
