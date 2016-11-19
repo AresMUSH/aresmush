@@ -82,7 +82,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
+            reload_turns: 99
             
         Rocket:
             description: "Unguided Anti-Personnel Rocket"
@@ -96,7 +96,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
-            reload_turns: 0
+            reload_turns: 99
                         
         Shaped Charge:
             description: "Anti-Vehicle explosive"
