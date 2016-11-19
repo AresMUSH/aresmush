@@ -65,6 +65,10 @@ chargen:
             help: descriptions
         actor:
             help: actors
+        handles:
+            help: handles
+        alts:
+            tutorial: 'handles.md'
         wiki:
             help: wiki
         profile:
