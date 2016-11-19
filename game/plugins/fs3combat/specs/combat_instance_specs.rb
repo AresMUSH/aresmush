@@ -20,12 +20,12 @@ module AresMUSH
             
       describe :has_combatant? do
         it "should return true if there is someone with the name" do
-          @instance.has_combatant?("Bob").should be_true
-          @instance.has_combatant?("bOb").should be_true
+          @instance.has_combatant?("Bob").should be true
+          @instance.has_combatant?("bOb").should be true
         end
         
         it "should return false if there is not someone with the name" do
-          @instance.has_combatant?("Jane").should be_false
+          @instance.has_combatant?("Jane").should be false
         end
       end
       

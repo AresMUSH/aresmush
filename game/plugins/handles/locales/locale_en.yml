@@ -9,3 +9,5 @@ en:
         
         handle_no_longer_linked: "This character was unlinked from AresCentral and is no longer associated with your handle."
         setting_preference_on_linked_char: "Handle preferences are managed on AresCentral.  Your setting will be wiped out the next time your character is synced with AresCentral."
+        
+        trouble_syncing_handle: "There was a problem synchronizing your handle preferences with AresCentral.  It will be synced again the next time you connect."

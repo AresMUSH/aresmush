@@ -60,61 +60,61 @@ module AresMUSH
     describe :root_is? do      
       it "should match the specified root" do
         cmd = Command.new("test/foo bar")
-        cmd.root_is?("test").should be_true
+        cmd.root_is?("test").should be true
       end
 
       it "should not match a different root" do
         cmd = Command.new("test/foo bar")
-        cmd.root_is?("foo").should be_false
+        cmd.root_is?("foo").should be false
       end
       
       it "should ignore case in the root" do
         cmd = Command.new("TesT/foo bar")
-        cmd.root_is?("test").should be_true
+        cmd.root_is?("test").should be true
       end            
     end
     
     describe :switch_is? do      
       it "should match the specified switch" do
         cmd = Command.new("test/foo bar")
-        cmd.switch_is?("foo").should be_true
+        cmd.switch_is?("foo").should be true
       end
 
       it "should not match a different switch" do
         cmd = Command.new("test/foo bar")
-        cmd.switch_is?("bar").should be_false
+        cmd.switch_is?("bar").should be false
       end
       
       it "should ignore case in the switch" do
         cmd = Command.new("test/fOO bar")
-        cmd.switch_is?("foo").should be_true
+        cmd.switch_is?("foo").should be true
       end      
       
       it "should return false for a nil root" do
         cmd = Command.new("test bar")
-        cmd.switch_is?("foo").should be_false
+        cmd.switch_is?("foo").should be false
       end
     end
     
     describe :root_only? do
       it "should return true if there's no switch and no args" do
         cmd = Command.new("test")
-        cmd.root_only?.should be_true
+        cmd.root_only?.should be true
       end
       
       it "should return false if there's a switch" do
         cmd = Command.new("test/foo")
-        cmd.root_only?.should be_false
+        cmd.root_only?.should be false
       end
 
       it "should return false if there's an arg" do
         cmd = Command.new("test foo")
-        cmd.root_only?.should be_false
+        cmd.root_only?.should be false
       end
       
       it "should return false if there's both a switch and arg" do
         cmd = Command.new("test/foo bar")
-        cmd.root_only?.should be_false
+        cmd.root_only?.should be false
       end        
     end
   end

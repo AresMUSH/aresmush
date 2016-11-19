@@ -23,7 +23,7 @@ module AresMUSH
         it "should parse simple taget" do
           @action = AttackAction.new(@combatant, " target ")
           @action.prepare.should be_nil
-          @action.is_burst.should be_false
+          @action.is_burst.should be false
           @action.called_shot.should be_nil
           @action.crew_hit.should eq false
           @action.mod.should eq 0
@@ -32,7 +32,7 @@ module AresMUSH
         it "should parse target plus mod" do
           @action = AttackAction.new(@combatant, "target/mod:3")
           @action.prepare.should be_nil
-          @action.is_burst.should be_false
+          @action.is_burst.should be false
           @action.called_shot.should be_nil
           @action.crew_hit.should eq false
           @action.mod.should eq 3
@@ -40,19 +40,19 @@ module AresMUSH
         
         it "should parse target plus called" do
           @action = AttackAction.new(@combatant, "target/called:head")
-          FS3Combat.stub(:hitloc_areas) { ["Head"] }
+          FS3Combat.stub(:has_hitloc?).with(@target, "Head") { true }
           @action.prepare.should be_nil
-          @action.is_burst.should be_false
+          @action.is_burst.should be false
           @action.called_shot.should eq "Head"
           @action.crew_hit.should eq false
           @action.mod.should eq 0
         end
         
         it "should parse target plus called and crew" do
-          FS3Combat.should_receive(:hitloc_areas).with(@target, true) { ["Head"] }
+          FS3Combat.stub(:has_hitloc?).with(@target, "Head") { true }
           @action = AttackAction.new(@combatant, "target/called:head,crew")
           @action.prepare.should be_nil
-          @action.is_burst.should be_false
+          @action.is_burst.should be false
           @action.called_shot.should eq "Head"
           @action.crew_hit.should eq true
           @action.mod.should eq 0
@@ -62,13 +62,14 @@ module AresMUSH
           @action = AttackAction.new(@combatant, "target/burst,mod:3")
           @target.stub(:hitloc_areas) { ["Head"] }
           @action.prepare.should be_nil
-          @action.is_burst.should be_true
+          @action.is_burst.should be true
           @action.called_shot.should be_nil
           @action.crew_hit.should eq false
           @action.mod.should eq 3
         end
         
         it "should raise error for invalid called shot location" do
+          FS3Combat.stub(:has_hitloc?).with(@target, "Head") { false }
           @action = AttackAction.new(@combatant, "target/called:head")
           @action.prepare.should eq "fs3combat.invalid_called_shot_loc"
         end

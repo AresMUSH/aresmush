@@ -4,6 +4,7 @@ load "lib/db/destroy_confirm_cmd.rb"
 load "lib/db/examine_cmd.rb"
 load "lib/db/find_cmd.rb"
 load "lib/db/rename_cmd.rb"
+load "lib/game/alts_cmd.rb"
 load "lib/game/announce_cmd.rb"
 load "lib/game/config_list_cmd.rb"
 load "lib/game/config_view_cmd.rb"
@@ -39,7 +40,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/builder_db.md", "help/database.md", "help/git.md", "help/manage.md", "help/trouble.md" ]
+      [ "help/alts.md", "help/admin_alts.md", "help/builder_db.md", "help/database.md", "help/git.md", "help/manage.md", "help/trouble.md" ]
     end
  
     def self.config_files
@@ -52,6 +53,8 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "alts"
+        return AltsCmd
       when "announce"
         return AnnounceCmd
       when "boot"

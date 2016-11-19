@@ -27,6 +27,7 @@ module AresMUSH
 
     attribute :login_email
     attribute :login_watch, :default => "friends"
+    attribute :login_keepalive, :type => DataType::Boolean, :default => true
     
     reference :login_status, "AresMUSH::LoginStatus"
     

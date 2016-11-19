@@ -35,9 +35,7 @@ module AresMUSH
         
         return t('fs3combat.no_fullauto_called_shots') if self.called_shot && self.is_burst
         
-        hitlocs = FS3Combat.hitloc_areas(target, self.crew_hit)
-        
-        return t('fs3combat.invalid_called_shot_loc') if self.called_shot && !hitlocs.include?(self.called_shot)
+        return t('fs3combat.invalid_called_shot_loc') if self.called_shot && !FS3Combat.has_hitloc?(target, self.called_shot)
         
         return t('fs3combat.out_of_ammo') if !FS3Combat.check_ammo(self.combatant, 1)
         return t('fs3combat.not_enough_ammo_for_burst') if self.is_burst && !FS3Combat.check_ammo(self.combatant, 2)

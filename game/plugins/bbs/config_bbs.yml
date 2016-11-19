@@ -6,7 +6,7 @@ bbs:
             # - another_role
     shortcuts:
         "bbread": "bbs"
-        "bbscan" : "bbs"
+        "bbscan" : "bbs/scan"
         "bbpost" : "bbs/post"
         "bbnext": "bbs/new"
         "bbnew": "bbs/new"

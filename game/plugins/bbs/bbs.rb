@@ -12,6 +12,7 @@ load "lib/bbs_new_cmd.rb"
 load "lib/bbs_post_cmd.rb"
 load "lib/bbs_read_cmd.rb"
 load "lib/bbs_reply_cmd.rb"
+load "lib/bbs_scan_cmd.rb"
 load "lib/helpers.rb"
 load "lib/management/bbs_attribute_cmd.rb"
 load "lib/management/bbs_create_board_cmd.rb"
@@ -85,6 +86,8 @@ module AresMUSH
         return BbsRenameCmd
       when "reply"
         return BbsReplyCmd
+      when "scan"
+        return BbsScanCmd
       when nil
         if (!cmd.args)
           return BbsListCmd 

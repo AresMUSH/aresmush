@@ -1,10 +1,10 @@
 module AresMUSH
-  module Utils
+  module Login
     class KeepaliveCmd
       include CommandHandler
 
       def handle
-        # A command that does absolutely nothing!
+        # A command that does absolutely nothing!     
       end
 
       def log_command

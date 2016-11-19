@@ -6,6 +6,7 @@ module AresMUSH
     attribute :is_real, :type => DataType::Boolean
     attribute :turn_in_progress, :type => DataType::Boolean
     attribute :first_turn, :type => DataType::Boolean, :default => true
+    attribute :team_targets, :type => DataType::Hash, :default => {}
     
     reference :organizer, "AresMUSH::Character"
     collection :combatants, "AresMUSH::Combatant"

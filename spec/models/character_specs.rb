@@ -12,12 +12,12 @@ module AresMUSH
     describe :found? do
       it "should return true if there is an existing char" do
         Character.stub(:find_one_by_name).with("Bob") { double }
-        Character.found?("Bob").should be_true
+        Character.found?("Bob").should be true
       end
       
       it "should return false if no char exists" do
         Character.stub(:find_one_by_name).with("Bob") { false }
-        Character.found?("Bob").should be_false
+        Character.found?("Bob").should be false
       end
     end 
 
@@ -40,16 +40,16 @@ module AresMUSH
         end
         
         it "should return true if the character has the role" do
-          @char.has_role?("A").should be_true
+          @char.has_role?("A").should be true
         end
 
         it "should return false if they don't" do
-          @char.has_role?("B").should be_false
+          @char.has_role?("B").should be false
         end
 
         it "should search by role class as well as name" do
-          @char.has_role?(@role_a).should be_true
-          @char.has_role?(@role_b).should be_false
+          @char.has_role?(@role_a).should be true
+          @char.has_role?(@role_b).should be false
         end
         
       end
@@ -59,15 +59,15 @@ module AresMUSH
           @char.stub(:roles) { [ @role_a, @role_b ] }
         end
         it "should return true if the character has a role in the list" do
-          @char.has_any_role?([ "B", "C" ]).should be_true
+          @char.has_any_role?([ "B", "C" ]).should be true
         end
       
         it "should return false if they don't" do
-          @char.has_any_role?([ "C", "D" ]).should be_false
+          @char.has_any_role?([ "C", "D" ]).should be false
         end
       
         it "should accept a single role" do
-          @char.has_any_role?( "B" ).should be_true        
+          @char.has_any_role?( "B" ).should be true        
         end
       end
     

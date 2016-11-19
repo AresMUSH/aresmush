@@ -33,6 +33,14 @@ module AresMUSH
           end
           FS3Combat.find_or_create_vehicle(@instance, "Viper").should eq v
         end
+        
+        it "should find a vehicle with a case-insensitive name" do
+          Global.stub(:read_config).with("fs3combat", "vehicles") { { "AA Battery" => {} } }
+          @instance.stub(:find_vehicle_by_name).with("aa battery") { nil }
+          v = double
+          Vehicle.stub(:create) { v }
+          FS3Combat.find_or_create_vehicle(@instance, "aa battery").should eq v
+        end
       end
       
       describe :join_vehicle do

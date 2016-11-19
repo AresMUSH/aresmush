@@ -32,13 +32,13 @@ module AresMUSH
     def skill
       case self.level
       when "Goon"
-        4
+        5
       when "Henchman"
-        6
+        7
       when "Boss"
-        8
+        9
       else
-        4
+        5
       end
     end
   end

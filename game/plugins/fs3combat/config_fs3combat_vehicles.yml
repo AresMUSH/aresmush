@@ -39,7 +39,7 @@ fs3combat:
             weapons:
                 - Ecm
                 - Missile
-                - Nuke
+                - Rocket
             dodge: 0
 
         Heavy Raider:
@@ -51,15 +51,15 @@ fs3combat:
             weapons:
                 - Kew
                 - Missile
-                - Nuke
+                - Rocket
             dodge: 0
 
-        Aa Battery:
+        AA Battery:
             description: "Anti-Aircraft Battery"
-            pilot_skill: 5
+            pilot_skill: Gunnery
             toughness: 1
-            hitloc_chart: AA_Battery
-            armor: AA_Battery
+            hitloc_chart: AA Battery
+            armor: AA Battery
             weapons:
                 - Missile
             dodge: 0

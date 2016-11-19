@@ -17,7 +17,6 @@ module AresMUSH
         port = Global.read_config("server", "port")
         EventMachine::add_periodic_timer(45) do
           AresMUSH.with_error_handling(nil, "Cron timer") do
-            Global.client_monitor.logged_in_clients.each { |c| c.ping }
             Cron.raise_event
           end
         end

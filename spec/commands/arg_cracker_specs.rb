@@ -23,11 +23,11 @@ module AresMUSH
 
     describe :can_crack_args? do
       it "should be true if it can crack the args" do
-        ArgCracker.can_crack_args?(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/, "bar=baz+harvey").should be_true
+        ArgCracker.can_crack_args?(/(?<a>.+)=(?<b>.+)\+(?<c>.+)/, "bar=baz+harvey").should be_truthy
       end
   
       it "should be false if it can't crack the args" do
-        ArgCracker.can_crack_args?(/(?<a>.+)\/(?<b>.+)/, "bar=baz+harvey").should be_false
+        ArgCracker.can_crack_args?(/(?<a>.+)\/(?<b>.+)/, "bar=baz+harvey").should be_nil
       end
     end    
   
