@@ -103,27 +103,27 @@ module AresMUSH
     
     describe :is_integer? do
       it "should return true for a number" do
-        "1".is_integer?.should be_true
+        "1".is_integer?.should be true
       end
       
       it "should return true for a multi-digit number" do
-        "123".is_integer?.should be_true
+        "123".is_integer?.should be true
       end
       
       it "should return false for not a number" do
-        "x".is_integer?.should be_false
+        "x".is_integer?.should be false
       end
       
       it "should return false for empty string" do
-        "".is_integer?.should be_false
+        "".is_integer?.should be false
       end
       
       it "should return false for a float" do
-        "1.2".is_integer?.should be_false
+        "1.2".is_integer?.should be false
       end
 
       it "should return false for a number mixed with string" do
-        "12ABC".is_integer?.should be_false
+        "12ABC".is_integer?.should be false
       end
     end
     

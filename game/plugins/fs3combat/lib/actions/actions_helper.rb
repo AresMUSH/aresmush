@@ -108,7 +108,7 @@ module AresMUSH
       elsif (!FS3Combat.check_ammo(combatant, 1))
         FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::ReloadAction, "")
       else
-        target = combat.active_combatants.select { |t| t.team != combatant.team }.shuffle.first
+        target = FS3Combat.find_ai_target(combat, combatant)
         if (target)
           weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
           case weapon_type
@@ -124,15 +124,27 @@ module AresMUSH
       end   
     end
     
+    def self.find_ai_target(combat, attacker)
+      attacking_team = attacker.team
+      default_targets = [ 1, 2, 3, 4, 5]
+      default_targets.delete(attacking_team)
+      team_targets = combat.team_targets[attacking_team.to_s] || default_targets
+      
+      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) }
+      
+      puts "#{attacker.name} #{attacker.team} #{combat.team_targets} -- #{team_targets} -- #{possible_targets.map { |p| p.name + " " + p.team.to_s }}"
+      possible_targets.shuffle.first
+    end
+    
     def self.set_action(client, enactor, combat, combatant, action_klass, args)
       action = action_klass.new(combatant, args)
-      combatant.update(action_klass: action_klass)
-      combatant.update(action_args: args)
       error = action.prepare
       if (error)
         client.emit_failure error
         return
       end
+      combatant.update(action_klass: action_klass)
+      combatant.update(action_args: args)
       combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
@@ -297,7 +309,10 @@ module AresMUSH
       desc = "#{weapon} - #{hitloc}"
 
       target.inflict_damage(damage, desc, is_stun, crew_hit)
-      target.update(freshly_damaged: true)
+
+      if (damage != "GRAZE")
+        target.update(freshly_damaged: true)
+      end
             
       target.add_stress(1)
       

@@ -9,4 +9,9 @@
 <%= left( c.armor, 17 ) -%>
 <%= left( c.stance, 15 ) %>
 <% end %>
+
+<%= t('fs3combat.team_targets') %>
+<% combat.team_targets.each do |team, targets| %>
+<%= left( team, 15 ) %> <%= targets.join(", ")%>
+<% end %>
 <%= line %>

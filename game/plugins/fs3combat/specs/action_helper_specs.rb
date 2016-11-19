@@ -245,17 +245,18 @@ module AresMUSH
             @combatant.stub(:weapon) { "Rifle" }
             @target1.stub(:team) { 1 }
             @target2.stub(:team) { 2 }
-            @combat.stub(:active_combatants) { [@target1, @target2] }
             FS3Combat.stub(:weapon_stat) { "" }
+            FS3Combat.stub(:find_ai_target) { @target2 }
           end   
                    
-          it "should attack a random target from the other team" do
+          it "should attack a random target" do
+            FS3Combat.should_receive(:find_ai_target).with(@combat, @combatant) { @target2 }
             FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::AttackAction, "Bob")
             FS3Combat.ai_action(@combat, @client, @combatant)
           end
           
           it "should do nothing if no valid target found" do
-            @target2.stub(:team) { 1 }
+            FS3Combat.should_receive(:find_ai_target).with(@combat, @combatant) { nil }
             FS3Combat.should_not_receive(:set_action)
             FS3Combat.ai_action(@combat, @client, @combatant)
           end
@@ -277,6 +278,52 @@ module AresMUSH
         end
       end
       
+      describe :find_ai_target do
+        before do
+          @attacker = double
+          @combat = double
+          @target1 = double("t1")
+          @target2 = double("t2")
+          @target3 = double("t3")
+          @attacker.stub(:team) { 1 }
+          @combat.stub(:active_combatants) { [@attacker, @target1, @target2, @target3] }
+          Array.any_instance.stub(:shuffle) do |instance|
+            instance
+          end
+        end
+        
+        it "should find a random target on any other team if no team target specified" do
+          @combat.stub(:team_targets) { {} }
+          @target1.stub(:team) { 1 }
+          @target2.stub(:team) { 2 }
+          @target3.stub(:team) { 3 }
+
+          target = FS3Combat.find_ai_target(@combat, @attacker)
+          target.should eq @target2
+        end
+        
+        it "should find a random target on the specified team target teams" do
+          @combat.stub(:team_targets) { { "1" => [ 3, 4 ] } }
+          @target1.stub(:team) { 1 }
+          @target2.stub(:team) { 2 }
+          @target3.stub(:team) { 3 }
+
+          target = FS3Combat.find_ai_target(@combat, @attacker)
+          target.should eq @target3
+        end
+        
+        it "should return nil if no valid targets found" do
+          @combat.stub(:team_targets) { { "1" => [ 4 ] } }
+          
+          @target1.stub(:team) { 1 }
+          @target2.stub(:team) { 2 }
+          @target3.stub(:team) { 3 }
+
+          target = FS3Combat.find_ai_target(@combat, @attacker)
+          target.should eq nil
+        end
+      end
+      
       describe :stopped_by_cover? do
         before do 
           @combatant = double
@@ -285,14 +332,14 @@ module AresMUSH
         
         it "should bypass cover if enough successes on attack roll" do
           FS3Combat.stub(:rand) { 0 }
-          FS3Combat.stopped_by_cover?(3, @combatant).should be_false
+          FS3Combat.stopped_by_cover?(3, @combatant).should be false
         end
         
         it "should adjust percent chance of cover based on attack roll" do
           FS3Combat.stub(:rand) { 26 }
-          FS3Combat.stopped_by_cover?(2, @combatant).should be_true
-          FS3Combat.stopped_by_cover?(1, @combatant).should be_false
-          FS3Combat.stopped_by_cover?(0, @combatant).should be_false
+          FS3Combat.stopped_by_cover?(2, @combatant).should be true
+          FS3Combat.stopped_by_cover?(1, @combatant).should be false
+          FS3Combat.stopped_by_cover?(0, @combatant).should be false
         end
       end
       
@@ -608,7 +655,14 @@ module AresMUSH
         end      
         
         it "should mark as freshly damaged" do
+          FS3Combat.stub(:determine_damage) { "FLESH" }
           @target.should_receive(:update).with(freshly_damaged: true)
+          FS3Combat.resolve_attack("A", @target, "Knife")
+        end
+        
+        it "should not mark as freshly damaged for a graze wound" do
+          FS3Combat.stub(:determine_damage) { "GRAZE" }
+          @target.should_not_receive(:update).with(freshly_damaged: true)
           FS3Combat.resolve_attack("A", @target, "Knife")
         end
 

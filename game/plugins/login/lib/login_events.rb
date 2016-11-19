@@ -41,5 +41,15 @@ module AresMUSH
         end
       end
     end
+    
+    class CronEventHandler
+      def on_event(event)
+        Global.client_monitor.logged_in.each do |client, char| 
+          if (char.login_keepalive)
+            client.ping
+          end
+        end
+      end
+    end
   end
 end

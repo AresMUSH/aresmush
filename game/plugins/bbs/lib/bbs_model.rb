@@ -56,6 +56,10 @@ module AresMUSH
     def first_unread(char)
       unread_posts(char).first
     end
+    
+    def board_index
+      BbsBoard.all_sorted.index(self) + 1
+    end
   end
   
   class BbsPost < Ohm::Model
@@ -107,7 +111,7 @@ module AresMUSH
     end
     
     def board_index
-      BbsBoard.all_sorted.index(self.bbs_board) + 1
+      self.bbs_board.board_index
     end
   end
   

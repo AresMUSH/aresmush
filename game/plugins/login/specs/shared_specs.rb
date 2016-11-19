@@ -9,17 +9,17 @@ module AresMUSH
         end
           
         it "should allow you to see your own email" do
-          Login.can_access_email?(@actor, @actor).should be_true
+          Login.can_access_email?(@actor, @actor).should be true
         end
         
         it "should allow someone with the required role to see email" do
           @actor.stub(:has_any_role?).with(["admin"]) { true }
-          Login.can_access_email?(@actor, @other_char).should be_true
+          Login.can_access_email?(@actor, @other_char).should be true
         end
         
         it "should not allow you to access someone else's email" do
           @actor.stub(:has_any_role?).with(["admin"]) { false }
-          Login.can_access_email?(@actor, @other_char).should be_false
+          Login.can_access_email?(@actor, @other_char).should be false
         end
       end
       
@@ -31,12 +31,12 @@ module AresMUSH
           
         it "should allow someone with the required role to reset a password" do
           @actor.stub(:has_any_role?).with(["admin"]) { true }
-          Login.can_reset_password?(@actor).should be_true
+          Login.can_reset_password?(@actor).should be true
         end
         
         it "should not allow you to access someone else's email" do
           @actor.stub(:has_any_role?).with(["admin"]) { false }
-          Login.can_reset_password?(@actor).should be_false
+          Login.can_reset_password?(@actor).should be false
         end
       end
       

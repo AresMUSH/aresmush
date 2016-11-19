@@ -1,15 +1,21 @@
 ---
-topic: substitutions
+topic: formatting
 toc: Misc
-summary: Formatting codes.
+summary: Formatting and substition codes.
 categories:
 - main
 aliases:
 - subs
 - formatting
+- linebreak
+- center
 plugin: utils
 ---
-Ares provides a number of formatting codes, which can be used pretty much anywhere: templates, poses, descriptions, and more.
+Ares provides a number of formatting codes, which can be used pretty much anywhere: templates, poses, descriptions, and more.  
+
+A complete list can be found here:  http://aresmush.com/formatting
+
+Some commonly used ones are:
 
     \%r - A linebreak
     \%x or \%c - Ansi color (see `help ansi`)

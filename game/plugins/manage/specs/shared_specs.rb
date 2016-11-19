@@ -20,27 +20,27 @@ module AresMUSH
         end
           
         it "should allow someone with room permissions to manage a room" do
-          Manage.can_manage_object?(@builder, @room).should be_true
+          Manage.can_manage_object?(@builder, @room).should be true
         end
 
         it "should not allow someone without room permissions to manage a room" do
-          Manage.can_manage_object?(@admin, @room).should be_false
+          Manage.can_manage_object?(@admin, @room).should be false
         end
 
         it "should allow someone with room permissions to manage an exit" do
-          Manage.can_manage_object?(@builder, @exit).should be_true
+          Manage.can_manage_object?(@builder, @exit).should be true
         end
 
         it "should not allow someone with room permissions to manage an exit" do
-          Manage.can_manage_object?(@admin, @exit).should be_false
+          Manage.can_manage_object?(@admin, @exit).should be false
         end
 
         it "should allow someone with char permissions to manage a character" do
-          Manage.can_manage_object?(@admin, @char).should be_true
+          Manage.can_manage_object?(@admin, @char).should be true
         end
 
         it "should not allow someone with char permissions to manage a character" do
-          Manage.can_manage_object?(@builder, @char).should be_false
+          Manage.can_manage_object?(@builder, @char).should be false
         end
       end
     end

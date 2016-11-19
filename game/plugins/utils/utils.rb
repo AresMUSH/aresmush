@@ -5,7 +5,6 @@ load "lib/colors_cmd.rb"
 load "lib/echo_cmd.rb"
 load "lib/edit_prefix_cmd.rb"
 load "lib/math_cmd.rb"
-load "lib/keepalive_cmd.rb"
 load "lib/recall_cmd.rb"
 load "lib/save_cmd.rb"
 load "lib/set_catcher_cmd.rb"
@@ -31,7 +30,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/ansi.md", "help/echo.md", "help/edit.md", "help/math.md", "help/save.md", "help/substitutions.md", "help/sweep.md", "help/keepalive.md" ]
+      [ "help/ansi.md", "help/echo.md", "help/edit.md", "help/math.md", "help/save.md", "help/formatting.md", "help/sweep.md" ]
     end
  
     def self.config_files
@@ -54,8 +53,6 @@ module AresMUSH
         end
       when "math"
         return MathCmd
-      when "keepalive"
-        return KeepaliveCmd
       when "recall"
         return RecallCmd
       when "save"

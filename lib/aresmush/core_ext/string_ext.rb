@@ -46,7 +46,7 @@ class String
   end 
   
   def is_integer?
-    self =~ /^\d+$/
+    !!(self =~ /^\d+$/)
   end
   
   # From ActiveRecord

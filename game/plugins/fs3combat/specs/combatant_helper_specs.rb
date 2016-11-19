@@ -343,17 +343,17 @@ module AresMUSH
         
         it "should return true if the weapon doesn't use ammo" do
           @combatant.stub(:max_ammo) { 0 }
-          FS3Combat.check_ammo(@combatant, 22).should be_true          
+          FS3Combat.check_ammo(@combatant, 22).should be true          
         end
          
         it "should return true if enough bullets" do
           @combatant.stub(:ammo) { 10 }
-          FS3Combat.check_ammo(@combatant, 2).should be_true
+          FS3Combat.check_ammo(@combatant, 2).should be true
         end
         
         it "should return false if not enough bullets" do
           @combatant.stub(:ammo) { 10 }
-          FS3Combat.check_ammo(@combatant, 22).should be_false
+          FS3Combat.check_ammo(@combatant, 22).should be false
         end
       end
         

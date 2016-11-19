@@ -2,8 +2,11 @@
 %xh<%= t('groups.full_census_title') %>%xn
 <% paginator.items.each do |char| %>
 <%= left( char.name, 21 ) -%>
-<%= left( gender(char), 16 ) -%>
-<%= position(char) %>
+<%= left( gender(char), 10 ) -%>
+<%= left( position(char), 22) -%>
+<%= callsign(char) %>
+
+
 <% end %>
 <%= line_with_text paginator.page_marker %>
 <%= line %>

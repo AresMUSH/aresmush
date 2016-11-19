@@ -1,4 +1,4 @@
 -c 
---default_path . 
+-I . 
 --pattern spec/**/*_spec*.rb,game/**/*_spec*.rb
 --require spec_helper

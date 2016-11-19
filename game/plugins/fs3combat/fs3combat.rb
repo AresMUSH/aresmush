@@ -56,6 +56,7 @@ load "lib/general/combat_transfer_cmd.rb"
 load "lib/general/combat_types_cmd.rb"
 load "lib/general/general_helper.rb"
 load "lib/general/combat_hero_cmd.rb"
+load "lib/general/combat_target_cmd.rb"
 load "lib/general/combat_unko_cmd.rb"
 load "lib/general/combat_npc_cmd.rb"
 load "lib/joining/combat_join_cmd.rb"
@@ -198,6 +199,8 @@ module AresMUSH
            return CombatStopCmd
          when "summary"
            return CombatSummaryCmd
+         when "target"
+           return CombatTargetCmd
          when "team"
            return CombatTeamCmd
          when "transfer"

@@ -9,24 +9,29 @@ module AresMUSH
           connector = AresCentral::AresConnector.new
         
           Global.logger.info "Updating handle for #{char.handle.handle_id}"
-          response = connector.sync_handle(char.handle.handle_id, char.name, char.id)
+          
+          begin
+            response = connector.sync_handle(char.handle.handle_id, char.name, char.id)
 
-          if (response.is_success?)
-            if (response.data["linked"])
-              Global.logger.debug response
-              char.update(pose_quote_color: response.data["quote_color"])
-              char.update(page_autospace: response.data["page_autospace"])
-              char.update(page_color: response.data["page_color"])
-              char.update(pose_autospace: response.data["autospace"])
-              char.update(timezone: response.data["timezone"])
-              char.handle.update(friends: response.data["friends"])
-              event.client.emit_success t('handles.handle_synced')              
+            if (response.is_success?)
+              if (response.data["linked"])
+                Global.logger.debug response
+                char.update(pose_quote_color: response.data["quote_color"])
+                char.update(page_autospace: response.data["page_autospace"])
+                char.update(page_color: response.data["page_color"])
+                char.update(pose_autospace: response.data["autospace"])
+                char.update(timezone: response.data["timezone"])
+                char.handle.update(friends: response.data["friends"])
+                event.client.emit_success t('handles.handle_synced')              
+              else
+                char.handle.delete
+                event.client.emit_failure t('handles.handle_no_longer_linked')
+              end
             else
-              char.handle.delete
-              event.client.emit_success t('handles.handle_no_longer_linked')
+              raise "Response failed: #{response}"
             end
-          else
-            raise "Response failed: #{response}"
+          rescue 
+            event.client.emit_failure t('handles.trouble_syncing_handle')
           end
         end   
       end

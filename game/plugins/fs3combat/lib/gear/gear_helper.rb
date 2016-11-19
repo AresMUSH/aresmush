@@ -35,7 +35,6 @@ module AresMUSH
       
         value = value + special_value
       end
-      
       value
     end
     

@@ -52,6 +52,7 @@ module AresMUSH
       a = klass.new(self, self.action_args)
       error = a.prepare
       if (error)
+        self.combat.log "Action Reset: #{self.name} #{self.action_klass} #{self.action_args} #{error}"
         self.combat.emit t('fs3combat.resetting_action', :name => self.name, :error => error)
         self.update(action_klass: nil)
         self.update(action_args: nil)

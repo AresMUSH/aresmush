@@ -29,6 +29,8 @@ en:
         post_moved: "Post moved."
         board_renamed: "Board renamed."
         
+        scan_title: "Unread Posts"
+        
         new_post: "%xnNew BBS post %xh%{subject}%xn %{reference} posted to %xh%{board}%xn by %{author}. %xh%xx(bbs/new)%xn" 
         new_reply: "%xn%{author} replied to BBS post %xh%{subject}%xn %{reference} on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
         new_edit: "%xn%{author} edited BBS post %xh%{subject}%xn %{reference} on %xh%{board}%xn. %xh%xx(bbs/new)%xn"

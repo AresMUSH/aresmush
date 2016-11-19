@@ -31,4 +31,5 @@ en:
        alias_cleared: "Alias cleared."
        currently_online: "%{name} is currently online."
        last_online: "%{name} was last online at %{time}."
+       keepalive_set: "You turn your keepalive ping %{option}."
        

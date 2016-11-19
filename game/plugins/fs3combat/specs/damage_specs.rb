@@ -27,19 +27,19 @@ module AresMUSH
         it "should be treatable if it's been less than four hours" do
           Time.stub(:now) { Time.new(2014, 01, 01, 8, 0, 0) }
           damage = Damage.new(created_at: Time.new(2014, 01, 01, 4, 1, 0))
-          damage.is_treatable?.should be_true
+          damage.is_treatable?.should be true
         end
         
         it "should not be treatable if it's been more than four hours" do
           Time.stub(:now) { Time.new(2014, 01, 01, 8, 0, 0) }
           damage = Damage.new(created_at: Time.new(2014, 01, 01, 3, 59, 0))
-          damage.is_treatable?.should be_false
+          damage.is_treatable?.should be false
         end
         
         it "should not be treatable if it's already been treated" do
           Time.stub(:now) { Time.new(2014, 01, 01, 8, 0, 0) }
           damage = Damage.new(created_at: Time.new(2014, 01, 01, 4, 1, 0), :healed => true)
-          damage.is_treatable?.should be_false
+          damage.is_treatable?.should be false
         end
         
       end

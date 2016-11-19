@@ -57,7 +57,7 @@ module AresMUSH
           @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
           @char.should_not_receive(:autospace=)
           @handle.should_receive(:delete)
-          @client.should_receive(:emit_success).with("handles.handle_no_longer_linked")
+          @client.should_receive(:emit_failure).with("handles.handle_no_longer_linked")
           @handler.on_event(@event)
         end
       end

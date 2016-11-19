@@ -9,6 +9,7 @@ fs3combat:
         None:
             description: "In case you need to take off armor"
             protection:
+                Nowhere: 0
                 
         Tactical:
             description: "Military-Grade Kevlar Vest and Helmet"
@@ -41,6 +42,23 @@ fs3combat:
                 Left Foot: 5
                 Right Foot: 5
 
+        Cylon:
+            description: "Cylon (Non-Centurion) Skeleton"
+            protection:
+                Head: 1
+                Neck: 1
+                Chest: 3
+                Abdomen: 3
+                Left Arm: 2
+                Right Arm: 2
+                Left Leg: 3
+                Left Hand: 1
+                Right Hand: 1
+                Left Leg: 2
+                Right Leg: 2
+                Left Foot: 3
+                Right Foot: 3
+                
         Viper:
             description: "Viper Vehicle Armor"
             protection:
@@ -91,7 +109,7 @@ fs3combat:
                 Controls: 10
                 Cabin: 10
 
-        Aa Battery:
+        AA Battery:
             description: "Anti-Aircraft Battery"
             protection:
                 Body: 12

@@ -28,7 +28,7 @@ module AresMUSH
       
     shared_examples "a plugin that requires login" do
       it "should include the login validator" do
-        handler.methods.should include :check_1_for_login
+        expect { handler.methods.include?(:check_1_for_login).to be true }
       end
     end
   end 

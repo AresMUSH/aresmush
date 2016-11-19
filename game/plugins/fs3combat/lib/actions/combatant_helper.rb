@@ -70,6 +70,12 @@ module AresMUSH
       FS3Combat.hitloc_chart(combatant, crew_hit)["areas"]
     end
     
+    def self.has_hitloc?(combatant, hitloc, crew_hit = false)
+      hitlocs = FS3Combat.hitloc_areas(combatant, crew_hit)
+      puts hitloc
+      hitlocs.keys.map { |h| h.titleize }.include?(hitloc.titleize)
+    end
+    
     def self.hitloc_severity(combatant, hitloc, crew_hit = false)
       hitloc_chart = FS3Combat.hitloc_chart(combatant, crew_hit)
       vital_areas = hitloc_chart["vital_areas"]

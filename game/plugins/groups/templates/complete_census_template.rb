@@ -17,6 +17,10 @@ module AresMUSH
       def position(char)
         char.group_value("Position")
       end
+      
+      def callsign(char)
+        char.demographic(:callsign)
+      end
     end
   end
 end

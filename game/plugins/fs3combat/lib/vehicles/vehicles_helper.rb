@@ -5,7 +5,11 @@ module AresMUSH
       existing = combat.find_vehicle_by_name(name)
       if (existing)
         return existing
-      elsif (FS3Combat.vehicles.include?(name))
+      end
+        
+      vehicle = FS3Combat.vehicles.select { |k, v| k.titleize == name.titleize }
+      if (vehicle.keys[0])
+        name = vehicle.keys[0]
         Vehicle.create(combat: combat, vehicle_type: name)
       else
         return nil

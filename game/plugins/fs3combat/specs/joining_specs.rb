@@ -25,7 +25,7 @@ module AresMUSH
         it "should create a NPC if char not found" do
           ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(nil, "error") }
           npc = double
-          Npc.should_receive(:create).with(name: "Bob") { npc }
+          Npc.should_receive(:create).with(name: "Bob", combat: @combat) { npc }
           Combatant.should_receive(:create) do |params|
             params[:combatant_type].should eq "soldier"
             params[:team].should eq 2

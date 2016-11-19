@@ -37,15 +37,15 @@ module AresMUSH
       end
       
       it "should raise error if the section for the requested subsection doesn't exist" do
-        expect { @config_reader.get_config("d", "e") }.to raise_error
+        expect { @config_reader.get_config("d", "e") }.to raise_error(RuntimeError)
       end
       
       it "should return sub-subsection if it exists" do
         @config_reader.get_config("e", "f", "g"). should eq "h"
       end
       
-      it "should raise error if the sub-subsection doesn't exist" do
-        expect { @config_reader.get_config("e", "f", "i"). should eq "h" }.to raise_error
+      it "should return nil if the sub-subsection doesn't exist" do
+        @config_reader.get_config("e", "f", "i"). should be_nil 
       end
     end
 
@@ -79,8 +79,7 @@ module AresMUSH
 
         AresMUSH::YamlExtensions.should_receive(:yaml_hash).with("a").and_raise("error")
         AresMUSH::YamlExtensions.should_not_receive(:yaml_hash).with("a")
-        
-        expect { @reader.validate_game_config }.to raise_error
+        expect { @reader.validate_game_config }.to raise_error(RuntimeError)
       end          
     end
   end

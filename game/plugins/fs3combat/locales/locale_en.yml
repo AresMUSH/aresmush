@@ -105,6 +105,8 @@ en:
         combat_transferred: "%{name} is now the combat organizer."
         
         everyone_posed: "Everyone has posed!"
+        team_target_set: "Team %{team} will now pick targets from teams %{targets}."
+        team_targets: "Team     Targeted Team(s)"
         
         # ----------------------------
         # KO
@@ -151,7 +153,7 @@ en:
         weapon_title_allowed_specials: "Allowed Specials:"
         weapon_title_skill: "Skill:"
         invalid_weapon_special: "That is not a valid special for that weapon."
-        use_explode_command: "Use the combat/explod command for this weapon."
+        use_explode_command: "Use the combat/explode command for this weapon."
         use_suppress_command: "Use the combat/suppress command for this weapon."
         weapon_specials:  "Available Weapon Specials"
         
@@ -252,7 +254,7 @@ en:
         fires_fullauto: "%{name} fires full-auto!"     
         fullauto_action_msg_long: "%{name} will fire full-auto at %{targets}."
         fullauto_action_msg_short: "Fullauto %{targets}"
-        too_many_targets: "You can only attack up to 3 targets with full-auto fire."
+        too_many_targets: "You can only attack up to 3 targets with full-auto fire or explosives."
         
         attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"

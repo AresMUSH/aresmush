@@ -5,6 +5,8 @@ load "lib/create_cmd.rb"
 load "lib/email_set_cmd.rb"
 load "lib/email_view_cmd.rb"
 load "lib/helpers.rb"
+load "lib/keepalive_cmd.rb"
+load "lib/keepalive_set_cmd.rb"
 load "lib/last_cmd.rb"
 load "lib/login_events.rb"
 load "lib/login_model.rb"
@@ -34,7 +36,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/admin_login.md", "help/email.md", "help/last.md", "help/login.md", "help/names.md", "help/watch.md" ]
+      [ "help/admin_login.md", "help/email.md", "help/keepalive.md", "help/last.md", "help/login.md", "help/names.md", "help/watch.md" ]
     end
  
     def self.config_files
@@ -57,6 +59,12 @@ module AresMUSH
           return EmailSetCmd
         when nil
           return EmailViewCmd
+        end
+      when "keepalive"
+        if (cmd.args)
+          return KeepaliveSetCmd
+        else
+          return KeepaliveCmd
         end
       when "last"
         return LastCmd
@@ -103,6 +111,8 @@ module AresMUSH
         return CharConnectedEventHandler
       when "CharDisconnectedEvent"
         return CharDisconnectedEventHandler      
+      when "CronEvent"
+        return CronEventHandler
       end
       nil
     end

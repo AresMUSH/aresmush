@@ -11,7 +11,7 @@ en:
         census_title_top_20: "%{name} Census (Top 20)"
         group_census_title: "%{name} Census"
         gender_census_title: "Gender Census"
-        full_census_title: "Name                 Gender          Position"
+        full_census_title: "Name                 Gender    Position              Callsign"
         
         census_groups: "Census Groups Available"
         app_review: "Checking groups are set."

@@ -14,11 +14,11 @@ module AresMUSH
         
           it "should return true if on character friends list" do
             @char.stub(:friends) { [ @other ] }
-            @char.has_friended_char_or_handle?(@other).should be_true
+            @char.has_friended_char_or_handle?(@other).should be true
           end
         
           it "should return false if not a friend" do
-            @char.has_friended_char_or_handle?(@other).should be_false
+            @char.has_friended_char_or_handle?(@other).should be false
           end
         end
         
@@ -38,24 +38,24 @@ module AresMUSH
             @handle.stub(:friends) { [ "HarryHandle" ] }
             @other.stub(:handle) { @other_handle }
             
-            @char.has_friended_char_or_handle?(@other).should be_true
+            @char.has_friended_char_or_handle?(@other).should be true
           end
         
           it "should return false if this char has no handle" do
             @other.stub(:handle) { @other_handle }
-            @char.has_friended_char_or_handle?(@other).should be_false          
+            @char.has_friended_char_or_handle?(@other).should be false          
           end
         
           it "should return false if other char has no handle" do
             @char.stub(:handle) { @handle }
             @handle.stub(:friends) { [ "HarryHandle" ] }
-            @char.has_friended_char_or_handle?(@other).should be_false          
+            @char.has_friended_char_or_handle?(@other).should be false          
           end
           
           it "should return false if this char has no friends" do
             @char.stub(:handle) { @handle }
             @other.stub(:handle) { @other_handle }
-            @char.has_friended_char_or_handle?(@other).should be_false          
+            @char.has_friended_char_or_handle?(@other).should be false          
           end
           
           

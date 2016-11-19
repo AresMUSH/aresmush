@@ -31,13 +31,13 @@ module AresMUSH
     describe :has_insensitive_key? do
       it "should match a key" do
         h = { 'a' => "D" }
-        h.has_insensitive_key?("A").should be_true
-        h.has_insensitive_key?("a").should be_true
+        h.has_insensitive_key?("A").should be true
+        h.has_insensitive_key?("a").should be true
       end
       
       it "should not match a missing key" do
         h = { 'a' => "D" }
-        h.has_insensitive_key?("x").should be_false
+        h.has_insensitive_key?("x").should be false
       end     
     end
     
