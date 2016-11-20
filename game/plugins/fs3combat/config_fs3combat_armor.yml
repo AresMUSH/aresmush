@@ -112,6 +112,6 @@ fs3combat:
         AA Battery:
             description: "Anti-Aircraft Battery"
             protection:
-                Body: 12
-                Controls: 12
-                Weapon: 12
+                Body: 6
+                Controls: 6
+                Weapon: 6

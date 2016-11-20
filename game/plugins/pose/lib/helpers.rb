@@ -83,6 +83,8 @@ module AresMUSH
         nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
       end
       
+      place_title = enactor.place_title(char)
+      
       quote_color = char.pose_quote_color
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
@@ -99,7 +101,7 @@ module AresMUSH
         end
       end
       
-      "#{char.pose_autospace}#{nospoof}#{colored_pose}"
+      "#{char.pose_autospace}#{nospoof}#{place_title}#{colored_pose}"
     end
     
   end

@@ -1,6 +1,6 @@
 ---
 topic: events
-toc: Events
+toc: Community
 summary: Game events.
 categories:
 - main

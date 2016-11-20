@@ -65,6 +65,8 @@ chargen:
             help: descriptions
         actor:
             help: actors
+        handles:
+            help: handles
         wiki:
             help: wiki
         profile:

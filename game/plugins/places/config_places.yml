@@ -1,0 +1,11 @@
+places:
+    # Set up when you want empty places to be cleared.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    cron:
+        #date: 1
+        #day_of_week: Fri
+        #hour: 22
+        minute: 05
+        
+    # Color to use for a title when someone's at the same place.
+    same_place_color: "%xB"

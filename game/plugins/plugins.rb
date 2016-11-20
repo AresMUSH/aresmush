@@ -31,6 +31,7 @@ module AresMUSH
         "notices", 
         "ooctime", 
         "page", 
+        "places",
         "pose", 
         "profile", 
         "ranks", 
