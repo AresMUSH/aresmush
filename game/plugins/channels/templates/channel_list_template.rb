@@ -20,7 +20,8 @@ module AresMUSH
       end
       
       def channel_announce(channel)
-        channel.announce ? " +   " : " -   "
+        announce = Channels.announce_enabled?(@enactor, channel)
+        announce ? " +   " : " -   "
       end
       
       def channel_on_indicator(channel)

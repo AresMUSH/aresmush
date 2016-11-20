@@ -22,6 +22,7 @@ module AresMUSH
     attribute :title
     attribute :aliases, :type => DataType::Array
     attribute :gagging, :type => DataType::Boolean
+    attribute :announce, :type => DataType::Boolean, :default => true
     
     def match_alias(a)
       return false if !self.aliases

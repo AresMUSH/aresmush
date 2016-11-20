@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/channel_alias_cmd.rb"
+load "lib/channel_announce_cmd.rb"
 load "lib/channel_gag_cmd.rb"
 load "lib/channel_join_cmd.rb"
 load "lib/channel_leave_cmd.rb"
@@ -50,7 +51,7 @@ module AresMUSH
         case cmd.switch
         when "alias"
           return ChannelAliasCmd 
-        when "announce"
+        when "announce", "mute", "quiet"
           return ChannelAnnounceCmd
         when "color"
           return ChannelColorCmd

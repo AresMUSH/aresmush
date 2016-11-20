@@ -17,9 +17,8 @@ en:
         invalid_channel_role: "%{name} is not a valid channel role."
         title_set: "Channel title set."
         roles_changed_by: "%{name} has changed the permissions on this channel."
-        announce_enabled: "%{name} will now show connection messages."
-        announce_disabled: "%{name} will no longer show connection messages."
-        invalid_announce_option: "Please use off or on."
+        announce_enabled: "You will now see connection messages on %{name}."
+        announce_disabled: "You will no longer see connection messages on %{name}."
         channels: Channels
         channels_title: "Channel                       Description             Announce  Restricted To"
         channel_who: "On channel %{name}: %{chars}." 

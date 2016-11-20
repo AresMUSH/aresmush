@@ -22,6 +22,7 @@ channels:
         "channel/add" : "channel/create"
         "channel/on" : "channel/join"
         "channel/off" : "channel/leave"
+        "channel/quiet" : "channel/mute"
         "addcom": "channel/join"
         "delcom": "channel/leave"
         "comtitle": "channel/title"
