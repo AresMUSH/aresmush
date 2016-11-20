@@ -1,6 +1,6 @@
 ---
 topic: actors
-toc: Game Info
+toc: Character Creation
 summary: Picking the game's dream cast.
 aliases:
 - actor
