@@ -18,7 +18,7 @@ module AresMUSH
     def self.find_common_channels(channels, other_char)
       their_channels = other_char.channels
       intersection = channels.to_a & their_channels.to_a
-      intersection = intersection.select { |c| c.announce }
+      intersection = intersection.select { |c| Channels.announce_enabled?(other_char, c) }
       if (intersection.empty?)
         return nil
       end
@@ -26,6 +26,10 @@ module AresMUSH
       Channels.name_with_markers(intersection.join(", "))
     end
     
+    def self.announce_enabled?(char, channel)
+      options = Channels.get_channel_options(char, channel)
+      options ? options.announce : false
+    end
     
     def self.name_with_markers(name)
       start_marker = Global.read_config("channels", "start_marker")
