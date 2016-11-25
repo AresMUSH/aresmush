@@ -26,6 +26,7 @@ module AresMUSH
           Rooms::Api.stub(:is_special_room?) { false }
           @game.stub(:is_special_char?) { false }
           Manage.stub(:can_manage_object?) { true }
+          FS3Combat::Api.stub(:is_in_combat?) { false }
           handler.crack!
         end
         
@@ -55,6 +56,14 @@ module AresMUSH
             client.should_receive(:emit_failure).with("manage.cannot_destroy_special_chars")
             handler.handle
           end
+        end
+        
+        it "should emit failure if trying to a char in combat" do
+          target = double
+          AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
+          FS3Combat::Api.stub(:is_in_combat?).with(target) { true }
+          client.should_receive(:emit_failure).with("manage.cannot_destroy_in_combat")
+          handler.handle
         end
         
         context "not allowed" do

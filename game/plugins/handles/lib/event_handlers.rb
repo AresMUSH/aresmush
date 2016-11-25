@@ -30,8 +30,9 @@ module AresMUSH
             else
               raise "Response failed: #{response}"
             end
-          rescue 
+          rescue Exception => ex
             event.client.emit_failure t('handles.trouble_syncing_handle')
+            Global.logger.warn "Trouble syncing handle: #{ex}"
           end
         end   
       end

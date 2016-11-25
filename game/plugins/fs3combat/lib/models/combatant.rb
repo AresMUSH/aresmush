@@ -78,6 +78,7 @@ module AresMUSH
     end
     
     def name
+      puts "#{id} #{is_npc?} #{self.npc} #{self.character}"
       is_npc? ? self.npc.name : self.character.name
     end
     

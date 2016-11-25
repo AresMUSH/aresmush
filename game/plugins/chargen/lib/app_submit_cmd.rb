@@ -47,6 +47,7 @@ module AresMUSH
         if (job[:error])
           raise "Problem submitting application: #{job[:error]}"
         end
+        enactor.client.emit_ooc t('chargen.approval_reminder')
         job[:job]
       end
       

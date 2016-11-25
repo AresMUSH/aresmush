@@ -26,6 +26,10 @@ module AresMUSH
       def self.approval_status(char)
         Chargen.approval_status(char)
       end
+      
+      def self.approval_job_notice(char)
+        char.get_or_create_chargen_info.approval_job ? t('chargen.approval_reminder') : nil
+      end
     end    
   end
 end

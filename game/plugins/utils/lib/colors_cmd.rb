@@ -1,6 +1,6 @@
 module AresMUSH
   module Utils
-    class Colors
+    class ColorsCmd
       include CommandHandler
       include CommandWithoutSwitches
       include CommandRequiresLogin

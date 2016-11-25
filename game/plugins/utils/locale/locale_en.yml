@@ -16,3 +16,6 @@ en:
         x_or_c: "See 'help ansi' for help using colors."
     utils:
         no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."
+    dice:
+        too_many_dice: "You can't roll that many dice."
+        no_zero_dice: "You can't roll zero dice."

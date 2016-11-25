@@ -11,6 +11,7 @@ module AresMUSH
           @char.stub(:pose_quote_color) { nil }
           @char.stub(:pose_nospoof) { nil }
           @char.stub(:pose_autospace) { "" }
+          @enactor.stub(:place_title) { "" }
           SpecHelpers.stub_translate_for_testing
         end
         
@@ -79,7 +80,12 @@ module AresMUSH
             Pose.custom_format(pose, @char, @enactor).should eq pose
           end
         end
-        
+
+        it "should include place title if set" do
+          @enactor.stub(:place_title) { "xxx" }
+          Pose.custom_format("Test", @char, @enactor).should eq "xxxTest"
+        end
+                
         it "should include autospace if set" do
           @char.stub(:pose_autospace) { "%R" }
           Pose.custom_format("Test", @char, @enactor).should eq "%RTest"

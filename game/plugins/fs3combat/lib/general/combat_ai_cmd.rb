@@ -5,10 +5,11 @@ module AresMUSH
       include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :force
+      attr_accessor :force, :names
       
       def crack!
        self.force = (cmd.args && cmd.args.downcase == "force")
+       self.names = (!self.force && cmd.args) ? cmd.args.split(" ").map { |n| titleize_input(n) } : nil
      end
      
       def check_in_combat
@@ -26,6 +27,17 @@ module AresMUSH
 
         if (self.force)
           npcs = combat.active_combatants.select { |c| c.is_npc? }
+        elsif (self.names)
+          npcs = []
+          self.names.each do |name|
+            combatant = combat.find_combatant(name)
+      
+            if (!combatant)
+              client.emit_failure t('fs3combat.not_in_combat', :name => name)
+              return
+            end
+            npcs << combatant
+          end
         else
           npcs = combat.active_combatants.select { |c| c.is_npc? && !c.action }
         end
