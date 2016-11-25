@@ -33,12 +33,16 @@ module AresMUSH
         return t('notices.no_unread_requests')
       end
       
+      def approval_notice
+        Chargen::Api.approval_job_notice(@char)
+      end
+      
       def events
         Events::Api.upcoming_events
       end
       
       def start_time_local(event)
-        event.start_time_local(@enactor)
+        event.start_time_local(@char)
       end
       
       def start_time_standard(event)

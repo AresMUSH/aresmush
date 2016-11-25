@@ -10,6 +10,7 @@ load "lib/models/vehicle.rb"
 load "lib/models/healing.rb"
 load "lib/models/npc.rb"
 
+load "fs3combat_api.rb"
 load "lib/actions/combat_action.rb"
 load "lib/actions/combatant_helper.rb"
 load "lib/actions/actions_helper.rb"

@@ -24,7 +24,7 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/disembark` - Leaves your vehicle.
 
 `combat/weapon <weapon>[+<specials separated by +>]` - Set your weapon and any weapon specials.
-        Use a ewapon type of 'Unarmed' for no weapon.
+        Use a weapon type of 'Unarmed' for no weapon.
 `combat/armor <armor>` - Set your armor.
 `combat/stance <stance>` - Set your stance (normal, banzai, cautious, evade, hidden)
 

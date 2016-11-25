@@ -34,6 +34,11 @@ module AresMUSH
             client.emit_failure(t('manage.cannot_destroy_special_chars'))
             return
           end
+          
+          if (FS3Combat::Api.is_in_combat?(target))
+            client.emit_failure t('manage.cannot_destroy_in_combat')
+            return
+          end
         
           client.program = { :destroy_target => target.id, :destroy_class => target.class }
           client.emit BorderedDisplay.text(t('manage.confirm_object_destroy', :name => target.name, :type => target.class.name.rest("::"), :examine => target.print_json))

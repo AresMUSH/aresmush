@@ -2,6 +2,7 @@ $:.unshift File.dirname(__FILE__)
 load "utils_api.rb"
 load "lib/autospace_cmd.rb"
 load "lib/colors_cmd.rb"
+load "lib/dice_cmd.rb"
 load "lib/echo_cmd.rb"
 load "lib/edit_prefix_cmd.rb"
 load "lib/math_cmd.rb"
@@ -30,7 +31,8 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/ansi.md", "help/echo.md", "help/edit.md", "help/math.md", "help/save.md", "help/formatting.md", "help/sweep.md" ]
+      [ "help/ansi.md", "help/dice.md", "help/echo.md", "help/edit.md", "help/math.md", 
+        "help/save.md", "help/formatting.md", "help/sweep.md" ]
     end
  
     def self.config_files
@@ -44,7 +46,9 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "colors"
-        return Colors
+        return ColorsCmd
+      when "dice"
+        return DiceCmd
       when "echo"
         return EchoCmd
       when "edit"

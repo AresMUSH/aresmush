@@ -132,7 +132,6 @@ module AresMUSH
       
       possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) }
       
-      puts "#{attacker.name} #{attacker.team} #{combat.team_targets} -- #{team_targets} -- #{possible_targets.map { |p| p.name + " " + p.team.to_s }}"
       possible_targets.shuffle.first
     end
     
@@ -163,13 +162,13 @@ module AresMUSH
       end
       
       special = combatant.damage_lethality_mod
-      npc = combatant.is_npc? ? 30 : 0
+      npc = combatant.is_npc? ? 40 : 0
       
       total = random + severity + lethality - armor + special
       
-      if (total < 30)
+      if (total < 20)
         damage = "GRAZE"
-      elsif (total < 70)
+      elsif (total < 60)
         damage = "FLESH"
       elsif (total <100)
         damage = "IMPAIR"
@@ -200,20 +199,21 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
 
-      pen_roll = FS3Skills::Api.one_shot_die_roll(pen)[:successes]
-      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
+      dice = [1, pen - protect].max + attacker_net_successes
       
-      margin = pen_roll + attacker_net_successes - protect_roll
+      pen_roll = FS3Skills::Api.one_shot_die_roll(dice)[:successes]
+      
+      margin = pen_roll
       if (margin > 2)
         protection = 0
-      elsif (margin < -2)
+      elsif (margin < 1)
         protection = 100
       else
         protection = rand(50)
       end
       
       combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen} pen_roll=#{pen_roll} protect=#{protect} protect_roll=#{protect_roll} result=#{protection}"
+      " pen=#{pen} protect=#{protect} pen_roll=#{pen_roll} result=#{protection}"
       
       protection
     end

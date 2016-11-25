@@ -17,9 +17,7 @@ module AresMUSH
         #Damage.all.each { |d| client.emit d.inspect }
         #Npc.all.each { |d| client.emit d.inspect }
         #Combatant.all.each { |d| client.emit d.inspect }
-        # Damage.all.each { |d| client.emit d.delete }
-
-#   FS3BackgroundSkill[199].update(name: "Guitar")
+     # Damage.all.each { |d| client.emit d.delete }
         # Put whatever you need to do here.
         
 

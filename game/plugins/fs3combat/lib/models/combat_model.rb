@@ -21,7 +21,7 @@ module AresMUSH
     end
     
     def is_in_combat?
-      combatant
+      !!combatant
     end
     
     def combat

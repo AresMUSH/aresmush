@@ -349,59 +349,59 @@ module AresMUSH
           @combatant.stub(:log)
           @combatant.stub(:damage_lethality_mod) { 0 }
           @combatant.stub(:is_npc?) { false }
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Vital" }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Chest", false) { "Vital" }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
-          FS3Combat.stub(:rand) { 25 }
+          FS3Combat.stub(:rand) { 0 }
         end
   
         describe "random damage" do
           it "should roll a graze" do
-            FS3Combat.stub(:rand) { 29 }
-            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "GRAZE"
+            FS3Combat.stub(:rand) { 19 }
+            FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "GRAZE"
           end
           
           it "should roll a flesh wound" do
-            FS3Combat.stub(:rand) { 69 }
-            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
+            FS3Combat.stub(:rand) { 59 }
+            FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "FLESH"
           end
           
           it "should roll an impairing wound" do
-            FS3Combat.stub(:rand) { 99 }
-            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "IMPAIR"
+            FS3Combat.stub(:rand) { 80 }
+            FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "IMPAIR"
           end
           
           it "should roll an incap wound" do
             FS3Combat.stub(:rand) { 101 }
-            FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "INCAP"
+            FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "INCAP"
           end
         end
   
         it "should pass along a crew hit" do
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", true) { "Normal" }
-          FS3Combat.determine_damage(@combatant, "Head", "Knife", 0, true).should eq "GRAZE"
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Chest", true) { "Normal" }
+          FS3Combat.determine_damage(@combatant, "Chest", "Knife", 0, true).should eq "GRAZE"
         end
         
         it "should account for lethality" do
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 40 }
-          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "FLESH"
+          FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "FLESH"
         end
 
         it "should account for hitloc severity for non-vital" do
-          FS3Combat.stub(:rand) { 31 }
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Normal" }
-          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "GRAZE"
+          FS3Combat.stub(:rand) { 29 }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Chest", false) { "Normal" }
+          FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "GRAZE"
         end
 
         it "should account for hitloc severity for critical" do
-          FS3Combat.stub(:hitloc_severity).with(@combatant, "Head", false) { "Critical" }
+          FS3Combat.stub(:hitloc_severity).with(@combatant, "Chest", false) { "Critical" }
           FS3Combat.stub(:rand) { 80 }
           FS3Combat.stub(:weapon_stat).with("Knife", "lethality") { 0 }
-          FS3Combat.determine_damage(@combatant, "Head", "Knife").should eq "INCAP"
+          FS3Combat.determine_damage(@combatant, "Chest", "Knife").should eq "INCAP"
         end
   
         it "should account for armor" do
-          FS3Combat.stub(:rand) { 32 }
-          FS3Combat.determine_damage(@combatant, "Head", "Knife", 5).should eq "GRAZE"
+          FS3Combat.stub(:rand) { 24 }
+          FS3Combat.determine_damage(@combatant, "Chest", "Knife", 5).should eq "GRAZE"
         end
       end
       
@@ -412,8 +412,8 @@ module AresMUSH
           @combatant.stub(:vehicle) { nil }
           @combatant.stub(:armor) { "Tactical" }
           FS3Skills::Api.stub(:one_shot_die_roll) { { successes: 0 } }
-          FS3Combat.stub(:weapon_stat) { 3 }
-          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 5 } }
+          FS3Combat.stub(:weapon_stat) { 5 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 2 } }
         end
 
         it "should return no protection if no armor" do
@@ -440,37 +440,32 @@ module AresMUSH
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
-        it "should roll the penetration and protection dice" do
+        it "should roll the penetration dice" do
           FS3Combat.should_receive(:weapon_stat).with("Rifle", "penetration") { 5 }
           FS3Combat.should_receive(:armor_stat).with("Tactical", "protection") { { "Head" => 2 } }
           
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5)
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(2)
+          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3)
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
         end
         
         it "should bypass armor if pen wins by enough" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 2 } }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 5 } }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 3 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
         it "should be stopped by armor if protect wins by enough" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 5 } }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 }  }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 0 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 100
         end
 
         it "should randomize protection if no decisive winner" do
           FS3Combat.stub(:rand) { 29 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 4 }  }
           FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 }  }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 29
         end
 
         it "should add in attacker successes" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(5) { { successes: 2 }  }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 4 }  }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(4) { { successes: 3 }  }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 0
         end
       end
