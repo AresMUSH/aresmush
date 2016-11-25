@@ -122,6 +122,10 @@ module AresMUSH
       def exit_linebreak(i)
         i % 2 == 0 ? "%r" : ""
       end
+
+      def condition_notice
+         @room.room_type == "IC" ? " [** Condition #{Game.master.ship_condition} **] ".center(78, '-') : nil
+      end
     end
   end
 end

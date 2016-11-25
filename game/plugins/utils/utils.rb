@@ -2,6 +2,7 @@ $:.unshift File.dirname(__FILE__)
 load "utils_api.rb"
 load "lib/autospace_cmd.rb"
 load "lib/colors_cmd.rb"
+load "lib/condition_cmd.rb"
 load "lib/dice_cmd.rb"
 load "lib/echo_cmd.rb"
 load "lib/edit_prefix_cmd.rb"
@@ -47,6 +48,8 @@ module AresMUSH
       case cmd.root
       when "colors"
         return ColorsCmd
+      when "condition"
+        return ConditionCmd
       when "dice"
         return DiceCmd
       when "echo"
