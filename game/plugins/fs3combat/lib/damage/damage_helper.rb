@@ -103,7 +103,7 @@ module AresMUSH
          points += 1
        end
        
-       Global.logger.info "Healing wounds on #{char.name}: #{doctors} #{in_hospital} #{recovery_roll[:successes]}."
+       Global.logger.info "Healing wounds on #{char.name}: docs=#{doctors.join(",")} hospital=#{in_hospital} recovery=#{recovery_roll[:successes]}."
        
        wounds.each do |d|
          FS3Combat.heal(d, points)
