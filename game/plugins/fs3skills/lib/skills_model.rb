@@ -166,7 +166,7 @@ module AresMUSH
   
   class FS3RpHook < Ohm::Model
     include ObjectModel
-    
+
     index :name
     
     reference :character, "AresMUSH::Character"

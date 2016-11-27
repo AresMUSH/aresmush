@@ -33,9 +33,9 @@ module AresMUSH
         case c.stance
         when "Normal"
           text = ""
-        when "Banzai"
+        when "Aggressive"
           text = "(BNZ)"
-        when "Cautious"
+        when "Defensive"
           text = "(CAU)"
         when "Evade"
           text = "(EVA)"

@@ -118,11 +118,11 @@ module AresMUSH
       
     def attack_stance_mod
       case self.stance
-      when "Banzai"
+      when "Aggressive"
         3
       when "Evade"
         -3
-      when "Cautious"
+      when "Defensive"
         -1
       else
         0
@@ -131,11 +131,11 @@ module AresMUSH
     
     def defense_stance_mod
       case self.stance
-      when "Banzai"
+      when "Aggressive"
         -3
       when "Evade"
         3
-      when "Cautious"
+      when "Defensive"
         1
       else
         0
