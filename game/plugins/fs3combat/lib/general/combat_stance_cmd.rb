@@ -27,7 +27,7 @@ module AresMUSH
       end
 
       def check_stance
-        stances = ['Banzai', 'Normal', 'Cautious', 'Evade', 'Cover']
+        stances = ['Aggressive', 'Normal', 'Defensive', 'Evade', 'Cover']
         return t('fs3combat.invalid_stance') if !stances.include?(self.stance)
         return nil
       end

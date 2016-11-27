@@ -27,8 +27,9 @@ module AresMUSH
       end
       
       def handle
-        hook = enactor.fs3_hooks.find(name: self.name)
-        if (!hook)          
+        hook = enactor.fs3_hooks.find(name: self.name).first
+        
+        if (hook)          
           hook.update(description: self.desc)
         else
           FS3RpHook.create(name: self.name, description: self.desc, character: enactor)
