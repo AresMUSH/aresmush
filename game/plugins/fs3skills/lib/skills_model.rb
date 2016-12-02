@@ -9,9 +9,52 @@ module AresMUSH
     collection :fs3_languages, "AresMUSH::FS3Language"
     collection :fs3_hooks, "AresMUSH::FS3RpHook"
   end
-
+  
+  module LearnableAbility
+    def self.included(base)
+      base.send :extend, ClassMethods   
+      base.send :register_data_members
+    end
+    module ClassMethods
+      def register_data_members
+        attribute :last_learned, :type => Ohm::DataTypes::DataType::Time, :default => Time.now
+        attribute :xp, :type => Ohm::DataTypes::DataType::Integer, :default => 0
+      end
+    end
+    
+    def learn
+      update(last_learned: Time.now)
+      update(xp: self.xp + 1)
+    end
+    
+    def xp_needed
+      FS3Skills.xp_needed(self.name, self.rating)
+    end
+    
+    def learning_progress
+      spent = self.xp.to_f || 0.0
+      spent / self.xp_needed
+    end
+    
+    def learning_complete
+      self.xp >= self.xp_needed
+    end
+    
+    def can_learn?
+      self.time_to_next_learn <= 0
+    end
+    
+    def time_to_next_learn
+      return 0 if !self.last_learned
+      time_left = (FS3Skills.days_between_learning * 86400) - (Time.now - self.last_learned)
+      [time_left, 0].max
+    end
+  end
+  
+  
   class FS3Attribute < Ohm::Model
     include ObjectModel
+    include LearnableAbility
     
     reference :character, "AresMUSH::Character"
     attribute :name
@@ -56,6 +99,7 @@ module AresMUSH
   
   class FS3ActionSkill < Ohm::Model
     include ObjectModel
+    include LearnableAbility
     
     reference :character, "AresMUSH::Character"
     attribute :name
@@ -112,6 +156,7 @@ module AresMUSH
   
   class FS3BackgroundSkill < Ohm::Model
     include ObjectModel
+    include LearnableAbility
     
     reference :character, "AresMUSH::Character"
     attribute :name
@@ -139,6 +184,7 @@ module AresMUSH
   
   class FS3Language < Ohm::Model
     include ObjectModel
+    include LearnableAbility
     
     reference :character, "AresMUSH::Character"
     attribute :name

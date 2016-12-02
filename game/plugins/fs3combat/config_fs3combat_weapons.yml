@@ -291,7 +291,7 @@ fs3combat:
             description: "Heavy machinegun."
             skill: Firearms
             lethality: 0
-            penetration: 8
+            penetration: 12
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
@@ -306,7 +306,7 @@ fs3combat:
             description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
             skill: Gunnery
             lethality: 0
-            penetration: 10
+            penetration: 15
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0
@@ -320,7 +320,7 @@ fs3combat:
             description: "KEW Assault Cannon strafing ground targets."
             skill: Gunnery
             lethality: 30
-            penetration: 10
+            penetration: 15
             weapon_type: Ranged
             is_automatic: true
             # ammo: 0

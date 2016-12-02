@@ -26,6 +26,16 @@ module AresMUSH
       type_config[stat]
     end
     
+    def self.npc_type(name)
+      types = Global.read_config("fs3combat", "npc_types")
+      types.select { |k, v| k.upcase == name.upcase}.values.first || {}
+    end
+    
+    def self.npc_type_names
+      Global.read_config("fs3combat", "npc_types").keys.map { |n| n.titleize }
+    end
+    
+    
     # Finds a character, vehicle or NPC by name
     def self.find_named_thing(name, enactor)
       result = ClassTargetFinder.find(name, Character, enactor)

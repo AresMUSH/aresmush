@@ -63,8 +63,10 @@ module AresMUSH
     end
     
     def self.check_for_ko(combatant)
-      combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
+
+      combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
+
       roll = FS3Combat.make_ko_roll(combatant)
       
       if (roll <= 0)
@@ -120,6 +122,8 @@ module AresMUSH
             action_klass = FS3Combat::AttackAction
           end
           FS3Combat.set_action(client, nil, combat, combatant, action_klass, target.name)
+        else
+          FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::PassAction, "")
         end
       end   
     end
@@ -130,8 +134,8 @@ module AresMUSH
       default_targets.delete(attacking_team)
       team_targets = combat.team_targets[attacking_team.to_s] || default_targets
       
-      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) }
-      
+      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) && 
+                                                               t.stance != "Hidden"}
       possible_targets.shuffle.first
     end
     
@@ -161,8 +165,8 @@ module AresMUSH
         severity = -10
       end
       
-      special = combatant.damage_lethality_mod
-      npc = combatant.is_npc? ? 40 : 0
+      npc = combatant.is_npc? ? 30 : 0
+      special = combatant.damage_lethality_mod + npc
       
       total = random + severity + lethality - armor + special
       

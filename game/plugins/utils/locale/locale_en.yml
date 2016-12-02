@@ -19,3 +19,8 @@ en:
     dice:
         too_many_dice: "You can't roll that many dice."
         no_zero_dice: "You can't roll zero dice."
+    shortcuts:
+        shortcut_deleted: "Shortcut deleted."
+        shortcut_added: "Shortcut added."
+        shortcuts_title: "Shortcuts"
+        shortcut_does_not_exist: "That shortcut does not exist."

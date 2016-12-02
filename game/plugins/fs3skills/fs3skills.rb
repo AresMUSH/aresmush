@@ -5,6 +5,7 @@ load "lib/app_review.rb"
 load "lib/commands/abilities_cmd.rb"
 load "lib/commands/add_hook_cmd.rb"
 load "lib/commands/add_spec_cmd.rb"
+load "lib/commands/learn_ability_cmd.rb"
 load "lib/commands/raise_ability_cmd.rb"
 load "lib/commands/remove_hook_cmd.rb"
 load "lib/commands/remove_spec_cmd.rb"
@@ -13,8 +14,7 @@ load "lib/commands/roll_cmd.rb"
 load "lib/commands/roll_opposed_cmd.rb"
 load "lib/commands/set_ability_cmd.rb"
 load "lib/commands/xp_award_cmd.rb"
-load "lib/commands/xp_costs_cmd.rb"
-load "lib/commands/xp_raise_cmd.rb"
+load "lib/commands/xp_cmd.rb"
 load "lib/commands/luck_award_cmd.rb"
 load "lib/commands/luck_spend_cmd.rb"
 load "lib/commands/char_backup_command.rb"
@@ -60,7 +60,7 @@ module AresMUSH
     end
  
     def self.config_files
-      [ "config_fs3skills.yml" ]
+      [ "config_fs3skills.yml", "config_xp.yml" ]
     end
  
     def self.locale_files
@@ -85,6 +85,8 @@ module AresMUSH
         elsif (cmd.switch_is?("remove"))
           return RemoveSpecialtyCmd
         end
+      when "learn"
+        return LearnAbilityCmd
       when "luck"
         case cmd.switch
         when "award"
@@ -116,14 +118,8 @@ module AresMUSH
         case cmd.switch
         when "award"
           return XpAwardCmd         
-        when "costs"
-          return XpCostsCmd
-        when "interest"
-          return XpInterestCmd
-        when "lang"
-          return XpLangCmd
-        when "raise"
-          return XpRaiseCmd
+        else
+          return XpCmd
         end
       end
       

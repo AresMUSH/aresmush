@@ -25,6 +25,7 @@ module AresMUSH
       end
       
       def channel_on_indicator(channel)
+        return "(X)" if Channels.is_gagging?(@enactor, channel)
         is_on_channel?(channel) ? "(+)" : "(-)"
       end
       

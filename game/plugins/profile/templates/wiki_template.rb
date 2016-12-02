@@ -49,7 +49,7 @@ module AresMUSH
       end
       
       def callsign
-        @char.demographic(:callsign)
+        @char.demographic(:callsign) || t('profile.none')
       end
       
       def faction

@@ -22,7 +22,7 @@ en:
         channels: Channels
         channels_title: "Channel                       Description             Announce  Restricted To"
         channel_who: "On channel %{name}: %{chars}." 
-        channel_aliases: "(+) indicates channels you are on:"
+        channel_aliases: "(+) = channel on     (X) = channel gagged     (-) = channel off"
         unable_to_determine_auto_alias: "Could not automatically pick an alias for this channel due to name conflicts.  Use channel/join <name>=<alias> to pick one yourself."
         
         joined_channel: "%{name} has joined this channel."

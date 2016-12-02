@@ -9,6 +9,8 @@ module AresMUSH
 
     attribute :password_hash
 
+    attribute :shortcuts, :type => DataType::Hash, :default => {}
+
     index :name_upcase
     index :alias_upcase
     

@@ -4,3 +4,4 @@ utils:
         "@@": "keepalive"
         "@": "keepalive"
         "idle": "keepalive"
+        "shortcut/remove": "shortcut/delete"

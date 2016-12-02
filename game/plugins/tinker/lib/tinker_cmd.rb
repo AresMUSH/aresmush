@@ -19,7 +19,7 @@ module AresMUSH
         #Combatant.all.each { |d| client.emit d.inspect }
      # Damage.all.each { |d| client.emit d.delete }
         # Put whatever you need to do here.
-        
+
         client.emit_success "Done!"
       end
 

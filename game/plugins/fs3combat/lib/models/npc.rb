@@ -21,25 +21,14 @@ module AresMUSH
     end
     
     def roll_ability(ability, mod = 0)
-      Global.logger.info "#{self.name} rolling #{ability} skill=#{skill} mod=#{mod}"
-      FS3Skills::Api.one_shot_die_roll(self.skill + mod)
+      rating = self.ability_rating(ability)
+      Global.logger.info "#{self.name} rolling #{ability} skill=#{rating} mod=#{mod}"
+      FS3Skills::Api.one_shot_die_roll(rating + mod)
     end
     
-    def self.levels
-      ["Goon", "Henchman", "Boss"]
-    end
-    
-    def skill
-      case self.level
-      when "Goon"
-        5
-      when "Henchman"
-        7
-      when "Boss"
-        9
-      else
-        5
-      end
+    def ability_rating(ability)
+      stats = FS3Combat.npc_type(self.level)
+      stats[ability] || 3      
     end
   end
 end

@@ -1,0 +1,34 @@
+fs3skills:
+
+    # How many XP everyone gets each time the XP cron job runs.  (in the default
+    # configuration, that is weekly but you can make it run as often as you want).
+    periodic_xp: 1
+    
+    # How long you have to wait before learning an ability again.
+    days_between_learning: 30
+    
+    # How many XP you can save up.
+    max_xp_hoard: 4
+    
+    xp_costs:
+        language:
+            1: 4
+            2: 12
+        action:
+            1: 1
+            2: 2
+            3: 4
+            4: 4
+            5: 12
+            6: 12
+            7: 12
+        background:
+            1: 4
+            2: 12
+        attribute:
+            1: 1
+            2: 2
+            3: 4
+            4: 12
+            
+            

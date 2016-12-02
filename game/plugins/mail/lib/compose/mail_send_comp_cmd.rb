@@ -6,7 +6,7 @@ module AresMUSH
            
       def check_composing_mail
         return t('mail.not_composing_message') if !Mail.is_composing_mail?(enactor)
-        return t('mail.body_empty') if !enactor.mail_compose_body
+        return t('mail.body_empty') if !enactor.mail_composition.body
         return nil
       end
             

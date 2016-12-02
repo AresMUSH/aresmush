@@ -29,6 +29,15 @@ module AresMUSH
       def wound_mod
         FS3Combat.total_damage_mod(char)
       end
+      
+      def vehicle_notice
+        combat = @char.combat
+        return nil if !combat
+        combatant = combat.find_combatant(@char.name)
+        return nil if !combatant
+        vehicle = combatant.vehicle
+        vehicle ? t('fs3combat.vehicle_damage_notice', :name => vehicle.name) : nil
+      end
     end
   end
 end

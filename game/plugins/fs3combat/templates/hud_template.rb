@@ -41,6 +41,8 @@ module AresMUSH
           text = "(EVA)"
         when "Cover"
           text = "(COV)"
+        when "Hidden"
+          text = "(HID)"
         end
         text
       end

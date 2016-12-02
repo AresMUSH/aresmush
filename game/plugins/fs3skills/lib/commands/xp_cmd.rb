@@ -1,13 +1,13 @@
 module AresMUSH
 
   module FS3Skills
-    class XpCostsCmd
+    class XpCmd
       include CommandHandler
       include CommandRequiresLogin
       include CommandWithoutArgs
       
       def handle
-        template = XpTemplate.new
+        template = XpTemplate.new(enactor)
         client.emit template.render
       end
     end
