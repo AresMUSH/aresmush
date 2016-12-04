@@ -257,7 +257,7 @@ module AresMUSH
           
           it "should do nothing if no valid target found" do
             FS3Combat.should_receive(:find_ai_target).with(@combat, @combatant) { nil }
-            FS3Combat.should_not_receive(:set_action)
+            FS3Combat.should_receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::PassAction, "")
             FS3Combat.ai_action(@combat, @client, @combatant)
           end
           
@@ -285,6 +285,9 @@ module AresMUSH
           @target1 = double("t1")
           @target2 = double("t2")
           @target3 = double("t3")
+          @target1.stub(:stance) { "Normal" }
+          @target2.stub(:stance) { "Normal" }
+          @target3.stub(:stance) { "Normal" }
           @attacker.stub(:team) { 1 }
           @combat.stub(:active_combatants) { [@attacker, @target1, @target2, @target3] }
           Array.any_instance.stub(:shuffle) do |instance|
@@ -300,6 +303,17 @@ module AresMUSH
 
           target = FS3Combat.find_ai_target(@combat, @attacker)
           target.should eq @target2
+        end
+        
+        it "should omit targets that are hidden " do
+          @combat.stub(:team_targets) { {} }
+          @target1.stub(:team) { 1 }
+          @target2.stub(:team) { 2 }
+          @target3.stub(:team) { 3 }
+          @target2.stub(:stance) { "Hidden" }
+
+          target = FS3Combat.find_ai_target(@combat, @attacker)
+          target.should eq @target3
         end
         
         it "should find a random target on the specified team target teams" do

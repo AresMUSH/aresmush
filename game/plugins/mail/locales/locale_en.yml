@@ -51,4 +51,4 @@ en:
         starting_backup: "Starting mail backup.  Your messages will print out one by one with a short delay in-between to avoid spamming your client."
 
         sentmail_off: "You will no longer be automatically CC'd on messages you send."
-        sentmail_on: "You will be automatically CC'd on messages you send."
+        sentmail_on: "You will be automatically CC'd on messages you send.  You can see them with mail/sent."

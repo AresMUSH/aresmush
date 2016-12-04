@@ -8,6 +8,9 @@ load "lib/echo_cmd.rb"
 load "lib/edit_prefix_cmd.rb"
 load "lib/math_cmd.rb"
 load "lib/recall_cmd.rb"
+load "lib/shortcuts_cmd.rb"
+load "lib/shortcut_add_cmd.rb"
+load "lib/shortcut_delete_cmd.rb"
 load "lib/save_cmd.rb"
 load "lib/set_catcher_cmd.rb"
 load "lib/sweep_cmd.rb"
@@ -33,7 +36,7 @@ module AresMUSH
  
     def self.help_files
       [ "help/ansi.md", "help/dice.md", "help/echo.md", "help/edit.md", "help/math.md", 
-        "help/save.md", "help/formatting.md", "help/sweep.md" ]
+        "help/save.md", "help/formatting.md", "help/sweep.md", "help/shortcuts.md"]
     end
  
     def self.config_files
@@ -66,6 +69,15 @@ module AresMUSH
         return SaveCmd
       when "set"
         return SetCatcherCmd
+      when "shortcuts"
+        return ShortcutsCmd
+      when "shortcut"
+        case cmd.switch
+        when "add"
+          return ShortcutAddCmd
+        when "delete"
+          return ShortcutDeleteCmd
+        end
       when "sweep"
         case cmd.switch
         when "kick"

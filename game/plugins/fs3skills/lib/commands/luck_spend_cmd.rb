@@ -28,7 +28,7 @@ module AresMUSH
         message = t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
         
         enactor.spend_luck(1)
-        result = Jobs.create_job("REQ", t('fs3skills.luck_job_title'), message, enactor)
+        result = Jobs.create_job("REQ", t('fs3skills.luck_job_title'), message, Game.master.system_character)
         
         enactor_room.emit_ooc message        
           

@@ -12,7 +12,7 @@ module AresMUSH
   puts "======================================================================="
   puts "Remove chargen fields."
   puts "======================================================================="
-  
+
   # Then wipe out the field on all affected objects.
   Character.all.each do |c|
     c.chargen_stage = nil

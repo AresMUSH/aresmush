@@ -6,7 +6,7 @@ module ObjectModel
 
   module ClassMethods
     @@default_values = {}
-        
+    
     def register_data_members
       send :include, Ohm::DataTypes
       send :include, Ohm::Callbacks

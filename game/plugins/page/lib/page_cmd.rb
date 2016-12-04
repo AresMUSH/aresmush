@@ -39,6 +39,7 @@ module AresMUSH
         OnlineCharFinder.with_online_chars(self.names, client) do |results|
           name = enactor.name_and_alias
           message = PoseFormatter.format(name, self.message)
+          results.each { |r| puts r.inspect }
           recipients = results.map { |result| result.char.name_and_alias }.join(", ")
         
           client.emit t('page.to_sender', 

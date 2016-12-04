@@ -35,6 +35,8 @@ en:
         clear_hospital: "This room is no longer set as a hospital."
         max_patients: "You can have up to %{max} patients at once."
         
+        vehicle_damage_notice: "This character is in a vehicle.  See 'damage %{name}' for damage to the vehicle."
+        
         # ----------------------------
         # COMBAT LIST
         # ----------------------------

@@ -1,15 +1,20 @@
 <%= line %>
-%xh<%= t('fs3skills.costs_title') %>%xn
+%xh<%= t('fs3skills.xp_summary') %>%xn
 
-%xh<%= t('fs3skills.lang_cost_title') %>%xn <%= lang_cost %>
-
-%xh<%= t('fs3skills.ability_costs_title') %>%xn
-<% ability_cost.each do |rating, cost| %>
-%xh<%= left(rating.to_s, 6) %>%xn <%= cost %>
+%xh<%= t('fs3skills.xp_progress_title')%>%xn
+<% char.fs3_attributes.each do |a| %>
+<%= display(a) %>
 <% end %>
 
-%xh<%= t('fs3skills.max_xp_hoard') %>%xn <%= hoard_limit %> 
-%xh<%= t('fs3skills.days_between_xp_raises') %>%xn <%= days_between_raises %>
+<% char.fs3_action_skills.each do |a| %>
+<%= display(a) %>
+<% end %>
 
-<%= t('fs3skills.special_items_notice') %>
+<% char.fs3_background_skills.each do |a| %>
+<%= display(a) %>
+<% end %>
+
+<% char.fs3_languages.each do |a| %>
+<%= display(a) %>
+<% end %>
 <%= line %>

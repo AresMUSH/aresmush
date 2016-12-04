@@ -4,6 +4,7 @@ en:
         n:  "No"
         none: "None"
         or: "or"
+        done: "Done!"
 
     dispatcher:
         unexpected_error: |

@@ -9,11 +9,13 @@ aliases:
 - improvement
 plugin: fs3skills
 ---
-Experience Points (XP) are used to improve your character after chargen. Players receive XP each week.  Admins may also award bonus XP for special training situations.  
+Experience Points (XP) are gained periodically to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.  The number of XP needed to reach the next rating depends on the current rating, so higher skills take longer to learn.
 
-You can spend XP to raise skills, interests and languages.  
+You can spend XP to learn/practice any ability - attributes, action skills, background skills and languages.   XP represents IC progress, not an OOC reward.  You should only spend it on things that actually make sense for your character to be learning.
 
-Abilities are frozen for some time immediately after you exit chargen, and any time you raise them. You cannot raise them while they’re frozen.
+`learn <ability>` - Spends XP to learn an ability.
 
-`xp/costs` - Shows the general cost table and limits on XP spending.
-`xp/raise <ability>` - Spends XP to raise an ability.
+After learning a skill, you must wait some time before you can learn it again.  You can't hoard XP, so it behooves you to spread your XP around a little on different skills.
+
+`xp` - Shows your progress towards the next rating level.
+

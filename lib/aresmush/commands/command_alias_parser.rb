@@ -23,6 +23,14 @@ module AresMUSH
           end
         end
       end
+
+      if (enactor)
+        enactor.shortcuts.each do |find_str, replace_str|
+          if (cmd.raw.start_with?("#{cmd.prefix}#{find_str}"))
+            update_cmd(cmd, find_str, replace_str)
+          end
+        end
+      end
     end
     
     def self.update_cmd(cmd, find_str, replace_str)

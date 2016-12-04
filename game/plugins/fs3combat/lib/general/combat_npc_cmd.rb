@@ -22,8 +22,8 @@ module AresMUSH
       end
       
       def check_reason
-        levels = Npc.levels
-        return t('fs3combat.invalid_npc_level', :reasons => levels.join(", ")) if !levels.include?(self.level)
+        levels = FS3Combat.npc_type_names
+        return t('fs3combat.invalid_npc_level', :levels => levels.join(", ")) if !levels.include?(self.level)
         return nil
       end
       

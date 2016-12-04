@@ -3,26 +3,37 @@ module AresMUSH
     # Template for an exit.
     class XpTemplate < ErbTemplateRenderer
       include TemplateFormatters
-            
-      def initialize
+        
+      attr_accessor :char
+          
+      def initialize(char)
+        @char = char
         super File.dirname(__FILE__) + "/xp.erb"        
       end
-      
-      def lang_cost
-        Global.read_config("fs3skills", "lang_cost")
+              
+      def display(a)
+        "#{a.name.ljust(20)} #{progress(a)} #{detail(a)} #{days_left(a)}"
       end
       
-      def ability_cost
-        Global.read_config("fs3skills", "skill_costs")
+      def detail(a)
+        can_raise = FS3Skills.can_learn_further?(a.name, a.rating)
+        status = can_raise ? "(#{a.xp}/#{a.xp_needed})" : "(---)"
+        status.ljust(16)
       end
       
-      def hoard_limit
-        Global.read_config("fs3skills", "max_xp_hoard")
+      def days_left(a)
+        time_left = (a.time_to_next_learn / 86400).ceil
+        message = time_left == 0 ? t('fs3skills.xp_days_now') : t('fs3skills.xp_days', :days => time_left)
+        center(message, 13)
       end
       
-      def days_between_raises
-        Global.read_config("fs3skills", "days_between_xp_raises")
-      end            
+      def progress(a)
+        percent = (a.learning_progress * 10).floor        
+        stars = percent.times.collect { "@" }.join
+        dots = (10 - percent).times.collect { "." }.join
+        "#{stars}#{dots}"
+      end
+      
     end
   end
 end
