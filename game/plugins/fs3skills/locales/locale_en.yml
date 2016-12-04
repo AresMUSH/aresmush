@@ -143,3 +143,4 @@ en:
         xp_spent: "You spend some time learning %{name}."
         xp_job_title: "XP Spent"
         xp_raised_job: "%{name} raised %{ability} to %{rating} with XP."
+        must_be_approved: "You must be approved before you can spend XP."
