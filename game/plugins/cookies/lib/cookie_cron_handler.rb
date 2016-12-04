@@ -22,7 +22,8 @@ module AresMUSH
         counts.sort_by { |char, count| count }.reverse.each_with_index do |(char, count), i|
           index = i+1
           if (i <= 10)
-            awards << "#{index.to_s.ljust(3)}. #{char.name.ljust(20)}#{count}\n"
+            num = "#{index.to_s}."
+            awards << "#{num.ljust(3)} #{char.name.ljust(20)}#{count}\n"
           end
           
           if (cookies_per_luck != 0)

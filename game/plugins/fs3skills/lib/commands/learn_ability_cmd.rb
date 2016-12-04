@@ -21,7 +21,8 @@ module AresMUSH
       end
       
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(enactor)
+        return t('fs3skills.must_be_approved') if !char.is_approved?
+        return nil
       end
       
       def check_xp

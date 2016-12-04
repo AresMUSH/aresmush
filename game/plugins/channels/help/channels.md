@@ -32,6 +32,6 @@ Other handy channel commands:
 `channel/title <channel>=<title>` - Sets a title displayed before your name.
         You can use ansi codes in this title.
 `channel/gag <channel> or channel/ungag <channel>` - Despams for awhile.
-        Gagging is cleared when you disconnect.
+        Gagging is cleared when you disconnect.  You can use 'all' to gag or ungag all channels.
 `channel/announce <channel>=<on/off>` - Configures whether the channel shows
         connection and disconnection messages.
