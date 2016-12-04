@@ -21,6 +21,8 @@ module AresMUSH
       
       def handle
         client.emit_ooc t('bbs.starting_archive')
+        Global.dispatcher.spawn("Archiving BBS", client) do 
+
         Bbs.with_a_board(self.board_name, client, enactor) do |board|  
 
           posts = board.bbs_posts
@@ -34,6 +36,7 @@ module AresMUSH
           Global.dispatcher.queue_timer(posts.count + 2, "Board archive", client) do
             client.emit_success t('global.done')
           end
+        end
         end
       end      
     end
