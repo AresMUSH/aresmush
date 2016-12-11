@@ -257,7 +257,7 @@ module AresMUSH
         message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (called_shot && (attacker_net_successes < 1))
+      elsif (called_shot && (attacker_net_successes < 2))
         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
       else
         hit = true

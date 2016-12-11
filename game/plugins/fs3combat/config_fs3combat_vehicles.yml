@@ -57,7 +57,7 @@ fs3combat:
 
         AA Battery:
             description: "Anti-Aircraft Battery"
-            pilot_skill: Gunnery
+            pilot_skill: Piloting
             toughness: 1
             hitloc_chart: AA Battery
             armor: AA Battery

@@ -53,7 +53,7 @@ en:
         reset_for_group: "Setting default skills for %{group}."
         reset_languages: "Setting default languages."
         reset_group_notes: "Notes for %{group}: %{notes}"
-        reset_aptitudes: "Setting aptitudes to default values."
+        reset_attributes: "Setting attributes to default values."
         
         # Rolls
         embarrassing_failure: "%xREmbarassing Failure%xn"

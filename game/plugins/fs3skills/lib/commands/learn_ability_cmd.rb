@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def check_chargen_locked
-        return t('fs3skills.must_be_approved') if !char.is_approved?
+        return t('fs3skills.must_be_approved') if !enactor.is_approved?
         return nil
       end
       

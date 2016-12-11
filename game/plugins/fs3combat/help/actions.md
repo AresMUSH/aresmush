@@ -38,3 +38,5 @@ This is a quick reference for combat action commands.  For more details on FS3, 
 
 `combat/subdue <target>` - Subdues or disarms a target. 
 `combat/escape` – Attempts to escape while subdued.
+
+`combat/randtarget <number of targets>` - Suggests a couple potential targets at random.

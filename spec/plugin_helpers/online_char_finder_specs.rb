@@ -18,8 +18,10 @@ module AresMUSH
      
       it "should return the client for the me keword" do
         char = double
+        @client.stub(:find_char) { char }
         result = OnlineCharFinder.find("me", @client)
-        result.target.should eq @client
+        result.target.client.should eq @client
+        result.target.char.should eq char
         result.error.should be_nil
       end
 

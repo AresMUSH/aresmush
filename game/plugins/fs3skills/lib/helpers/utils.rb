@@ -36,7 +36,7 @@ module AresMUSH
       FS3Skills.action_skills.find { |s| s["name"].upcase == name.upcase }
     end
     
-    # Returns the type (aptitude, action, etc) for a skill being rolled.
+    # Returns the type (attribute, action, etc) for a skill being rolled.
     def self.get_ability_type(ability)
       ability = ability.titleize
       if (attr_names.include?(ability))

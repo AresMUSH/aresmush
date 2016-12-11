@@ -3,9 +3,10 @@
 <%= t('fs3combat.damage_titlebar') %>
 <% damage.each do |d| %>
 <%= left( d.ictime_str, 13 ) -%>
-<%= left( d.description, 30 ) -%>
-<%= left( severity(d), 22 ) -%>
-<%= center( treatable(d), 10 )%>
+<%= left( d.description, 27 ) -%>
+<%= left( severity(d), 19 ) -%>
+<%= center( treatable(d), 9 ) -%>
+<%= center( healing(d), 9) %>
 <% end %>
 
 %xh<%= t('fs3combat.wound_mod') %>%xn <%= wound_mod %>

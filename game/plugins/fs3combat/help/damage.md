@@ -17,7 +17,9 @@ This is a quick reference for the combat damage commands. For more details on FS
 `damage` - Views your damage. 
 `damage <name>` - Views someone else's damage.
 
-For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound.  Note: inside combat, you use `combat/treat <name>` instead.
+Note that the healing progress bar on the damage display just shows how close you are to reducing the wound by one level. 
+
+For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound.  Inside combat, you use `combat/treat <name>` instead.
 
 `treat <name>` - Treats someone's wounds with immediate first aid.
 
