@@ -108,8 +108,6 @@ module AresMUSH
         return SheetCmd
       when "ability"
         return SetAbilityCmd
-      when "aptitude"
-        return SetAptitudeCmd
       when "language"
         if (cmd.switch_is?("add") || cmd.switch_is?("remove"))
           return SetLanguageCmd
@@ -127,6 +125,11 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return XpCronHandler
+      end
+      
       nil
     end
   end

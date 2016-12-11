@@ -31,11 +31,6 @@ module AresMUSH
       FS3Skills.xp_needed(self.name, self.rating)
     end
     
-    def learning_progress
-      spent = self.xp.to_f || 0.0
-      spent / self.xp_needed
-    end
-    
     def learning_complete
       self.xp >= self.xp_needed
     end

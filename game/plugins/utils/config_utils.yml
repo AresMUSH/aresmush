@@ -3,5 +3,4 @@ utils:
         "think": "echo"
         "@@": "keepalive"
         "@": "keepalive"
-        "idle": "keepalive"
         "shortcut/remove": "shortcut/delete"

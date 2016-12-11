@@ -1,9 +1,7 @@
 module AresMUSH
   module FS3Skills    
     class XpCronHandler
-      include CommandHandler
-      
-      def on_cron_event(event)
+      def on_event(event)
         config = Global.read_config("fs3skills", "cron")
         return if !Cron.is_cron_match?(config, event.time)
         

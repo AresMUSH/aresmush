@@ -49,7 +49,7 @@ module AresMUSH
     
     # Parses a roll string in the form Ability+Attr(+ or -)Modifier, where
     # everything except "Ability" is optional.
-    # Technically it can be Ability+Ability, or Attribute+Aptitude or Aptitude+Ability;
+    # Technically it can be Ability+Ability, or Attribute+Attribute or Attribute+Ability;
     # the code doesn't care.
     def self.parse_roll_params(str)
       match = /^(?<ability>[^\+\-]+)\s*(?<linked_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)

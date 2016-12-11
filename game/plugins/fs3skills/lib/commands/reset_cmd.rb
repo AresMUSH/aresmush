@@ -26,7 +26,7 @@ module AresMUSH
           end
         end
         
-        client.emit_ooc t('fs3skills.reset_aptitudes')
+        client.emit_ooc t('fs3skills.reset_attributes')
         FS3Skills.attr_names.each do |a|
           FS3Skills.set_ability(client, enactor, a, 2)
         end

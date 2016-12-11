@@ -229,6 +229,8 @@ module AresMUSH
       case event_name
       when "PoseEvent"
         return PoseEventHandler
+      when "CronEvent"
+        return DamageCronHandler
       end
       nil
     end

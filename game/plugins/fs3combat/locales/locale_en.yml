@@ -6,7 +6,7 @@ en:
         # ----------------------------
         invalid_severity: "Invalid severity level.  Try one of these: %{severities}."
         damage_title: "Damage Report for %{name}"
-        damage_titlebar: "Date         Description                   Severity (original)   Treatable?"
+        damage_titlebar: "Date         Description                Severity (orig)   Treatable   Healing"
         damage_inflicted: "You inflict damage on %{name}."
         wound_mod: "Wound Modifier:"
         healed_wound: "%xh%xxHealed%xn"
@@ -245,7 +245,7 @@ en:
         attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
         attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
         attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
-        attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc} %{armor}"
+        attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc}. %{armor}"
         attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."

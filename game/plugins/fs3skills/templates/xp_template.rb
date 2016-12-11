@@ -28,10 +28,7 @@ module AresMUSH
       end
       
       def progress(a)
-        percent = (a.learning_progress * 10).floor        
-        stars = percent.times.collect { "@" }.join
-        dots = (10 - percent).times.collect { "." }.join
-        "#{stars}#{dots}"
+        ProgressBarFormatter.format(a.xp, a.xp_needed)
       end
       
     end

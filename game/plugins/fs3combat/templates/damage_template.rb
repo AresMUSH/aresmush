@@ -20,8 +20,17 @@ module AresMUSH
       
       def treatable(d)
         d.is_treatable? ? t('global.y') : t('global.n')
-      end      
-      
+      end   
+         
+      def healing(d)
+        total = FS3Combat.healing_points(d.current_severity)
+        healed = total - d.healing_points
+
+        return "-----" if (total == 0)
+
+        ProgressBarFormatter.format(healed, total, 5)
+      end
+            
       def healed_by
         @char.healed_by.map { |h| }
       end
