@@ -51,6 +51,7 @@ load "lib/general/combat_ai_cmd.rb"
 load "lib/general/combat_luck_cmd.rb"
 load "lib/general/combat_mod_cmd.rb"
 load "lib/general/combat_newturn_cmd.rb"
+load "lib/general/combat_randtarget_cmd.rb"
 load "lib/general/combat_stance_cmd.rb"
 load "lib/general/combat_team_cmd.rb"
 load "lib/general/combat_transfer_cmd.rb"
@@ -193,6 +194,8 @@ module AresMUSH
            return CombatNpcCmd
          when "newturn"
            return CombatNewTurnCmd
+         when "randtarget"
+           return CombatRandTargetCmd
          when "skill"
            return CombatNpcSkillCmd
          when "stance"

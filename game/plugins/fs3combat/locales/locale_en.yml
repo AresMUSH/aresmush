@@ -110,6 +110,8 @@ en:
         team_target_set: "Team %{team} will now pick targets from teams %{targets}."
         team_targets: "Team     Targeted Team(s)"
         
+        random_targets: "Suggested Targets: %{targets}"
+        
         # ----------------------------
         # KO
         # ----------------------------
