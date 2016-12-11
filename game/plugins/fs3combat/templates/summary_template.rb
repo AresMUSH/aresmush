@@ -22,7 +22,7 @@ module AresMUSH
         if (c.is_npc?)
           rating = c.npc.ability_rating(weapon_skill)
         else
-          rating = FS3Skills::Api.ability_rating(c.character, weapon_skill)          
+          rating = FS3Skills::Api.dice_rolled(c.character, weapon_skill)          
         end
         rating
       end
