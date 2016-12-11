@@ -16,7 +16,16 @@ module AresMUSH
       maps
     end
     
-    def self.get_map(name)
+    def self.load_map(map_file)
+      File.read(File.join(Maps.maps_dir, map_file), :encoding => "UTF-8")
+    end
+    
+    def self.save_map(map_file, text)
+      path = File.join(Maps.maps_dir, map_file)
+      File.open(path, 'w', :encoding => "UTF-8") { |file| file.write(text) }
+    end
+    
+    def self.get_map_file(name)
       areas = Global.read_config("maps", "map_areas")
       map_file = areas ? areas[name] : nil
       if (!map_file)
