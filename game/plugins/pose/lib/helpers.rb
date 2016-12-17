@@ -63,15 +63,15 @@ module AresMUSH
     def self.reset_repose(room)
       repose = room.repose_info
       
-      if ((room.room_type == "IC" || room.room_type == "RPR") && !repose)
-        Global.logger.debug "Re-enabling repose in #{room.name}."
-        if (!repose)
-          repose = ReposeInfo.create(room: room)
+      if (room.room_type == "IC" || room.room_type == "RPR")
+        if (repose)
+          repose.update(enabled: true)
+        else
+          repose = ReposeInfo.create(room: room, enabled: true)
           room.update(repose_info: repose)
         end
-        repose.update(enabled: true)
-      elsif repose
-        repose.update(enabled: false)
+      elsif (repose)
+        repose.delete
       end
     end
     
