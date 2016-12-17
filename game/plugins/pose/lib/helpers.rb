@@ -50,9 +50,7 @@ module AresMUSH
       enabled_rooms.each do |r|
         next if active_rooms.include?(r)
         
-        r.repose_info.delete
-        r.update(repose_info_id: nil)
-        disabled_rooms << r
+        r.repose_info.reset
       end
     
       

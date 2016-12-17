@@ -10,6 +10,14 @@ fs3skills:
     # How many XP you can save up.
     max_xp_hoard: 4
     
+    # Set up when you want the XP cron job to run.  See the 'cron' tutorial on the website for details.
+    # Comment out any items you aren't using; don't just leave them blank.
+    cron:
+        #date: 1
+        day_of_week: Sat
+        hour: 21
+        minute: 00
+            
     xp_costs:
         language:
             1: 4
