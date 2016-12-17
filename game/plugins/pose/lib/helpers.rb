@@ -43,7 +43,7 @@ module AresMUSH
       active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
 
 
-      rooms = Room.all.group_by { |r| r.repose_on? }
+      rooms = Room.find(room_type: "IC").union(room_type: "RPR").group_by { |r| r.repose_on? }
       enabled_rooms = rooms[true] || []
       disabled_rooms = rooms[false] || []
 

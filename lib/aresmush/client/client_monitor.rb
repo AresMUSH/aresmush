@@ -55,7 +55,7 @@ module AresMUSH
     end
     
     def find_client(char)
-      @clients.find { |c| c.char_id == char.id }
+      @clients.select { |c| c.char_id == char.id }
     end
   end
 end
