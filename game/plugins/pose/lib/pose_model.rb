@@ -32,10 +32,6 @@ module AresMUSH
 
   class Room
     reference :repose_info, "AresMUSH::ReposeInfo"
-    
-    def repose_on?
-      self.repose_info && self.repose_info.enabled
-    end
   end
   
   
