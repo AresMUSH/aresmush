@@ -2,7 +2,6 @@ $:.unshift File.dirname(__FILE__)
 load "lib/helpers.rb"
 load "lib/map_cmd.rb"
 load "lib/maps_cmd.rb"
-load "web/maps_web.rb"
 
 module AresMUSH
   module Maps

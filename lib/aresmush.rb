@@ -31,9 +31,10 @@ require 'pp'
 require 'net/http'
 require 'html2markdown'
 
-#require 'sinatra/base'
-#require "sinatra/reloader"
-#require 'thin'
+require 'sinatra/base'
+require "sinatra/reloader"
+require 'sinatra/flash'
+require 'thin'
 
 require 'erubis'
 require 'json'
@@ -106,4 +107,5 @@ require 'aresmush/rest_connector.rb'
 require 'aresmush/templates/template_renderer.rb'
 require 'aresmush/templates/template_formatters.rb'
 require 'aresmush/server.rb'
-#require 'aresmush/web/web_server.rb'
+require 'aresmush/web/web_server.rb'
+require 'aresmush/web/web_connection.rb'

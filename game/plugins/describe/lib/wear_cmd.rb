@@ -28,12 +28,7 @@ module AresMUSH
           text << " "
         end
         
-        desc = enactor.current_desc
-      
-        if (!desc)
-          desc = enactor.create_desc(:current, desc)
-        end
-        desc.update(description: text)
+        Describe.update_current_desc(enactor, text)
         
         client.emit_success t('describe.outfits_worn')
       end

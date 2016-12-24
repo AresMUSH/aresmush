@@ -18,8 +18,7 @@ module AresMUSH
     end
     
     def self.calendar_view_url
-      config = Global.read_config("secrets", "events")
-      calendar = config["calendar"]
+      calendar = Global.read_config("secrets", "events", "calendar")
       "https://teamup.com/#{calendar}"
     end
   end

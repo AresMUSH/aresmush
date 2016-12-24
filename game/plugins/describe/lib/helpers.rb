@@ -33,5 +33,13 @@ module AresMUSH
       Room.all.select { |r| !!r.scene_set }
     end
     
+    def self.update_current_desc(char, text)
+      desc = char.current_desc
+    
+      if (!desc)
+        desc = char.create_desc(:current, text)
+      end
+      desc.update(description: text)
+    end
   end
 end

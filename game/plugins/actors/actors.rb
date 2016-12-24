@@ -8,7 +8,6 @@ load "lib/helpers.rb"
 load "lib/search_actors_cmd.rb"
 load "lib/set_actor_cmd.rb"
 load "templates/actors_list.rb"
-load "web/actors_web.rb"
 
 module AresMUSH
   module Actors

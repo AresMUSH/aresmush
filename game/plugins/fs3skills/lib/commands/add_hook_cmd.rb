@@ -27,13 +27,7 @@ module AresMUSH
       end
       
       def handle
-        hook = enactor.fs3_hooks.find(name: self.name).first
-        
-        if (hook)          
-          hook.update(description: self.desc)
-        else
-          FS3RpHook.create(name: self.name, description: self.desc, character: enactor)
-        end
+        FS3Skills.set_hook(enactor, self.name, self.desc)
         client.emit_success t('fs3skills.hook_set', :name => self.name)
       end
     end

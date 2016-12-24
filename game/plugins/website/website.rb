@@ -1,9 +1,18 @@
 $:.unshift File.dirname(__FILE__)
 
 load 'web/web.rb'
+load 'web/config.rb'
+load 'web/help.rb'
+load 'web/chargen.rb'
+load 'web/characters.rb'
+load 'web/admin.rb'
+load 'web/logs.rb'
+load 'web/setup.rb'
+load 'web_cmd_handler.rb'
+
 
 module AresMUSH
-  module Web
+  module Website
     def self.plugin_dir
       File.dirname(__FILE__)
     end
@@ -36,6 +45,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      if (event_name == "WebCmdEvent")
+        return WebCmdEventHandler
+      end
+      
       nil
     end
   end

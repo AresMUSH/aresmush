@@ -57,12 +57,7 @@ module AresMUSH
         end
         
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          group = model.group(self.group_name)
-          if (!group)
-            GroupAssignment.create(character: model, group: self.group_name, value: self.value)
-          else
-            group.update(value: self.value)
-          end
+          Groups.set_group(model, self.group_name, self.value)
                     
           if (!self.value)
             client.emit_success t('groups.group_cleared', :group => self.group_name)

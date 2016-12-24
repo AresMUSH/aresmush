@@ -1,6 +1,17 @@
 game:
-  name: Local Test
-  category: Other
-  description: AresMUSH test site.
-  website: 'http://aresmush.com'
-  public_game: false
+    # Name of your game.
+    name: "Local Test"
+
+    # Please select the appropriate category to describe your game:
+    # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
+    category: Social
+    
+    # Describe your game.  You may use ansi and other MUSH formatting codes (%r, etc.).
+    description: "AresMUSH test site. %r%r"
+    
+    # Your game's website
+    website: "http://aresmush.com"
+        
+    # true if your game is open for business, false if it is in development, down, or 
+    # otherwise not open to the public
+    public_game: false

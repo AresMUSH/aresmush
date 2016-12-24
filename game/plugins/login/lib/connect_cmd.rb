@@ -30,23 +30,8 @@ module AresMUSH
             return 
           end
 
-          # Handle reconnect
-          existing_client = char.client
-          client.char_id = char.id
-          
-          if (existing_client)
-            existing_client.emit_ooc t('login.disconnected_by_reconnect')
-            existing_client.disconnect
-
-            Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
-          else
-            announce_connection(client, char)
-          end
+          Login.login_char(char, client)          
         end
-      end
-      
-      def announce_connection(client, char)
-        Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
       end
       
       def log_command

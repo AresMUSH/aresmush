@@ -1,6 +1,7 @@
 module AresMUSH
   
   class WebAppLoader
+
     # Start he reactor
     def run(opts = {})
 
@@ -58,8 +59,27 @@ module AresMUSH
     configure do
       set :threaded, false
       register Sinatra::Reloader
+      register Sinatra::Flash
+      enable :sessions
+      set :public_folder, File.join(AresMUSH.game_path, 'plugins', 'website', 'web', 'public')
     end
-
+    
+    register do
+      def auth (type)
+        condition do
+          unless send("is_#{type}?")
+            puts type
+            if (type == :admin)
+              flash[:error] = "Please log in with an admin account."
+            else
+              flash[:error] = "Please log in first"
+            end
+            redirect "/" 
+          end
+        end
+      end
+    end
+    
     helpers do
       def find_template(views, name, engine, &block)
         views = Plugins.all_plugins.map { |p| File.join(PluginManager.plugin_path, p, 'web') }

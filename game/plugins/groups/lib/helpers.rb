@@ -45,5 +45,14 @@ module AresMUSH
         "#{message}%r#{error}"
       end
     end
+    
+    def self.set_group(char, group_name, group_value)
+      group = char.group(group_name)
+      if (!group)
+        GroupAssignment.create(character: char, group: group_name, value: group_value)
+      else
+        group.update(value: group_value)
+      end
+    end
   end
 end

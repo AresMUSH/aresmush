@@ -1,9 +1,0 @@
-<h1><%= @name %></h1>
-
-<pre><%= AresMUSH::Maps.load_map(AresMUSH::Maps.get_map_file(@name)) %></pre>
-
-<p>
-<a href="/maps"><button type="button" class="btn btn-default">Back to Maps</button></a>
-<a href="/map/edit/<%= @name %>"><button type="button" class="btn btn-primary">Edit</button></a>
-</p>
-

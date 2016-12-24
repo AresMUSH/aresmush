@@ -42,7 +42,7 @@ module AresMUSH
         "tinker", 
         "utils", 
         "weather", 
-        "web",
+        "website",
         "who"   
       ]
     end
