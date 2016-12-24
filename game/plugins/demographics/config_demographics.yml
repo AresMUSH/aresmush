@@ -1,9 +1,8 @@
 demographics:
-    roles:
-        # List roles have the power to assign demographics.
-        can_set_demographics: 
-            - admin
-            # - another role
+    # List roles have the power to assign demographics.
+    can_set_demographics: 
+        - admin
+        # - another role
 
     # Enforce minimum and maximum age limits in chargen
     min_age: 18

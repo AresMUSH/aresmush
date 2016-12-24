@@ -2,11 +2,11 @@ module AresMUSH
   module Login
     def self.can_access_email?(actor, model)
       return true if actor == model
-      return actor.has_any_role?(Global.read_config("login", "roles", "can_access_email"))
+      return actor.has_any_role?(Global.read_config("login", "can_access_email"))
     end
     
     def self.can_reset_password?(actor)
-      return actor.has_any_role?(Global.read_config("login", "roles", "can_reset_password"))
+      return actor.has_any_role?(Global.read_config("login", "can_reset_password"))
     end
     
     def self.wants_announce(listener, connector)

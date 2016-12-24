@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Skills
     def self.can_manage_luck?(actor)
-      actor.has_any_role?(Global.read_config("fs3skills", "roles", "can_manage_luck"))
+      actor.has_any_role?(Global.read_config("fs3skills", "can_manage_luck"))
     end
     
     def self.modify_luck(char, amount)

@@ -1,7 +1,7 @@
 module AresMUSH
   module Channels
     def self.can_manage_channels?(actor)
-      return actor.has_any_role?(Global.read_config("channels", "roles", "can_manage_channels"))
+      return actor.has_any_role?(Global.read_config("channels", "can_manage_channels"))
     end
     
     def self.get_channel_options(char, channel)

@@ -90,8 +90,7 @@ weather:
         #hour: 21
         minute: 00
         
-    roles:
-        # Who has access to change the weather.
-        can_change_weather:
-            - admin
-            
+    # Who has access to change the weather.
+    can_change_weather:
+        - admin
+        

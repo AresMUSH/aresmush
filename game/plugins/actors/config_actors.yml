@@ -1,8 +1,7 @@
 actors:
-    roles:
-        # List roles that are allowed to set actors for NPCs or other people
-        can_set_actors: 
-            - admin
-            # - another_role
+    # List roles that are allowed to set actors for NPCs or other people
+    can_set_actors: 
+        - admin
+        # - another_role
     shortcuts:
         "actors": "actor"

@@ -1,9 +1,8 @@
 ranks:
-    roles:
-        can_manage_ranks:
-            # List roles that are allowed to modify character ranks.
-            - admin
-            # - another role
+    can_manage_ranks:
+        # List roles that are allowed to modify character ranks.
+        - admin
+        # - another role
                 
     # What group is used to determine rank?  (Must match your groups config)
     rank_group: Faction

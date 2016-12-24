@@ -2,7 +2,7 @@ module AresMUSH
   module Groups
 
     def self.can_set_group?(char)
-      char.has_any_role?(Global.read_config("groups", "roles", "can_set_group"))
+      char.has_any_role?(Global.read_config("groups", "can_set_group"))
     end
 
     def self.all_groups

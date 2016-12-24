@@ -1,8 +1,7 @@
 roster:
     # List roles that are allowed to manage the roster.
-    roles:
-        can_manage_roster:
-            - admin
+    can_manage_roster:
+        - admin
 
     # Newly-approved characters will be announced on this board.
     arrivals_board: "New Arrivals"
