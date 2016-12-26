@@ -76,7 +76,7 @@ module AresMUSH
       
       
     def shortcuts
-      sc = Global.read_config("shortcuts")
+      sc = {}
       plugins.each do |p|
         plugin_shortcuts = p.shortcuts
         if (p.shortcuts)

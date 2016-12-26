@@ -37,6 +37,17 @@ module AresMUSH
         AresResponse.new(json)
       end
     
+      def reset_password(handle_id, password, char_id)
+        params = {
+          password: password,
+          char_id: char_id,
+          api_key: Game.master.api_key,
+          game_id: Game.master.api_game_id
+        }
+        json = @rest.post("handle/#{handle_id}/reset_password", params)
+        AresResponse.new(json)
+      end
+      
       def link_char(handle_name, link_code, char_name, char_id)
         params = {
           handle_name: handle_name,

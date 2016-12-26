@@ -40,6 +40,7 @@ module AresMUSH
           end
           
           char.change_password(self.new_password)
+          char.update(login_failures: 0)
           client.emit_success t('login.password_reset', :name => char.name)
         end
       end

@@ -65,20 +65,6 @@ module AresMUSH
     end 
     
     describe :shortcuts do 
-      before do
-        Global.stub(:read_config).with("shortcuts") { {} }
-      end
-      
-      it "should add in game shortcuts" do
-        Global.stub(:read_config).with("shortcuts") { { x: 5 } }
-        p1 = double
-        @manager.stub(:plugins) { [p1] }
-        
-        p1.stub(:shortcuts) { { a: 1, b: 2 } }
-        expected = { a: 1, b: 2, x: 5 }
-        @manager.shortcuts.should eq expected
-      end
-      
       it "should merge all the plugin shortcuts" do
         p1 = double
         p2 = double      

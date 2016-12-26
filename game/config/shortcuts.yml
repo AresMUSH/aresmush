@@ -1,8 +1,0 @@
-shortcuts:
-    # Here you can define any custom game shortcuts (outside of the plugins).
-    #
-    # The format is: 
-    # "original cmd" : "substitute"
-    #
-    # For example, to make 'gaze' activate the 'look' command, you'd do:
-    # "gaze" : "look"

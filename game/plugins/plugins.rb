@@ -12,6 +12,7 @@ module AresMUSH
         "channels", 
         "chargen", 
         "cookies", 
+        "custom",
         "demographics", 
         "describe", 
         "events",

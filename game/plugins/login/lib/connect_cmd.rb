@@ -25,11 +25,39 @@ module AresMUSH
         return if self.charname.downcase == "guest"
         
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
+          
+          if (char.login_failures > 5)
+            temp_reset = false
+            
+            if (char.handle)
+              AresMUSH.with_error_handling(client, "AresCentral forgotten password.") do
+                Global.logger.info "Checking AresCentral for forgotten password."
+      
+                connector = AresCentral::AresConnector.new
+                response = connector.reset_password(char.handle.handle_id, self.password, char.id.to_s)
+      
+                if (response.is_success? && response.data["matched"])
+                  client.emit_ooc t('login.temp_password_set', :password => self.password)
+                  char.change_password self.password
+                end
+              end
+            end
+            
+            if (!temp_reset)
+              Global.logger.info "#{self.charname} locked due to repeated login failures."
+              client.emit_failure(t('login.password_locked'))
+              return
+            end
+          end
+            
           if (!char.compare_password(password))
+            Global.logger.info "Failed login attempt #{char.login_failures} to #{self.charname} from #{client.ip_addr}."
+            char.update(login_failures: char.login_failures + 1)
             client.emit_failure(t('login.password_incorrect'))
             return 
           end
 
+          char.update(login_failures: 0)
           Login.login_char(char, client)          
         end
       end
