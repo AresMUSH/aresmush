@@ -3,7 +3,6 @@ module AresMUSH
   module FS3Skills
     class ResetCmd
       include CommandHandler
-      include CommandWithoutArgs
 
       def check_chargen_locked
         Chargen::Api.check_chargen_locked(enactor)

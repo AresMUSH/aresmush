@@ -2,7 +2,6 @@ module AresMUSH
   module Rooms
     class WorkSetCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def check_can_go_work
         return t('dispatcher.not_allowed') if !Rooms.can_go_home?(enactor)

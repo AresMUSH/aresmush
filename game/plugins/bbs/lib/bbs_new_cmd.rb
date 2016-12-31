@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     class BbsNewCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         first_unread = nil

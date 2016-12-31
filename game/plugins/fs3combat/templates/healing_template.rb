@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class HealingTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :char
       

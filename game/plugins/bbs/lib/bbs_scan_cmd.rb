@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     class BbsScanCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         

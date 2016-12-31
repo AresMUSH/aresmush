@@ -2,7 +2,6 @@ module AresMUSH
   module Rooms
     class OutCmd
       include CommandHandler
-      include CommandWithoutArgs
 
       def handle
         exit = enactor_room.way_out

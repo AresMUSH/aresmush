@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     # Template for a room.
     class GlanceTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       include CharDescTemplateFields
       
       attr_accessor :room

@@ -2,7 +2,6 @@ module AresMUSH
   module Utils
     class ColorsCmd
       include CommandHandler
-      include CommandWithoutArgs
 
       def handle
         list = []

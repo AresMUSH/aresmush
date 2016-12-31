@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailTagsCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         all_tags = []

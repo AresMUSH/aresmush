@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailTossCmd
       include CommandHandler
-      include CommandWithoutArgs
            
       def check_composing_mail
         return t('mail.not_composing_message') if !Mail.is_composing_mail?(enactor)

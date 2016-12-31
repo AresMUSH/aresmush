@@ -1,7 +1,6 @@
 module AresMUSH
   module Jobs
     class JobTemplate < ErbTemplateRenderer
-      include TemplateFormatters
             
       attr_accessor :replies, :job
       

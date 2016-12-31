@@ -2,7 +2,6 @@ module AresMUSH
   module Manage
     class VersionCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def allow_without_login
         true

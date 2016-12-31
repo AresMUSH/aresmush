@@ -2,7 +2,6 @@ module AresMUSH
   module Roster
     class RosterDetailTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :char, :registry
       

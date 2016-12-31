@@ -3,7 +3,6 @@ module AresMUSH
   module Idle
     class IdleStartCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)

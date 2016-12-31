@@ -2,7 +2,6 @@ module AresMUSH
   module Manage
     class DestroyConfirmCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         target_id = client.program[:destroy_target]

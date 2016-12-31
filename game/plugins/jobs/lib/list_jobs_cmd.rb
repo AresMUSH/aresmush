@@ -2,7 +2,6 @@ module AresMUSH
   module Jobs
     class ListJobsCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def check_can_access
         return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)

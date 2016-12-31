@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     # Template for a specific bulletin board post.
     class PostTemplate < ErbTemplateRenderer
-      include TemplateFormatters
             
       # List of all replies to this post, in order by date.
       attr_accessor :replies, :board, :post

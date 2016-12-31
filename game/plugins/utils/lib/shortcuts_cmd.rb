@@ -2,7 +2,6 @@ module AresMUSH
   module Utils
     class ShortcutsCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       
       def handle

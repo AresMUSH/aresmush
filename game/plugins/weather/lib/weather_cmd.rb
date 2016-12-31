@@ -3,7 +3,6 @@ module AresMUSH
   module Weather
     class WeatherCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         list = []

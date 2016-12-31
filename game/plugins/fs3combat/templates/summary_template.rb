@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatSummaryTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :combat
       

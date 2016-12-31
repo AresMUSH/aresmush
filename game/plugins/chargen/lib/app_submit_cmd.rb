@@ -2,7 +2,6 @@ module AresMUSH
   module Chargen
     class AppSubmitCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       attr_accessor :chargen_info
       

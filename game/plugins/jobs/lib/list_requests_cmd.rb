@@ -2,7 +2,6 @@ module AresMUSH
   module Jobs
     class ListRequestsCmd
       include CommandHandler
-      include CommandWithoutArgs
 
       def handle
         requests = cmd.switch_is?("all") ? 

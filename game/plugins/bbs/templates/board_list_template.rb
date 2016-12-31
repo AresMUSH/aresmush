@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     # Template for the list of all bulletin boards.
     class BoardListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       # List of all bulletin boards in order.
       attr_accessor :boards

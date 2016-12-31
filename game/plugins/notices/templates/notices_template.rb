@@ -1,7 +1,6 @@
 module AresMUSH
   module Notices
     class NoticesTemplate < ErbTemplateRenderer
-      include TemplateFormatters
 
       attr_accessor :char
             

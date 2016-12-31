@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class WeaponDetailCmd
       include CommandHandler
-      include TemplateFormatters
       
       attr_accessor :name
       

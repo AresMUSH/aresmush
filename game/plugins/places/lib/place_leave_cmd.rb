@@ -2,7 +2,6 @@ module AresMUSH
   module Places
     class PlaceLeaveCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def check_in_place
         return t('places.not_in_place') if !enactor.place

@@ -3,7 +3,6 @@ module AresMUSH
   module Roster
     class RosterListCmd
       include CommandHandler
-      include TemplateFormatters
       
       def handle
         roster = RosterRegistry.all.sort { |a,b| a.character.name <=> b.character.name }

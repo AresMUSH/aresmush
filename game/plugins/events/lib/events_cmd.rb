@@ -3,7 +3,6 @@ module AresMUSH
   module Events
     class EventsCmd
       include CommandHandler
-      include CommandWithoutArgs
 
       def handle
         if (cmd.switch_is?("refresh"))

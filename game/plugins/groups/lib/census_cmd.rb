@@ -2,7 +2,6 @@ module AresMUSH
   module Groups
     class CensusCmd
       include CommandHandler
-      include TemplateFormatters
       
       attr_accessor :name
      

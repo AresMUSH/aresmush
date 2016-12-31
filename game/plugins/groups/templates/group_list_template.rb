@@ -1,7 +1,6 @@
 module AresMUSH
   module Groups
     class GroupListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :groups
       

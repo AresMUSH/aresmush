@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     # Template for an exit.
     class ExitTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :ex
       

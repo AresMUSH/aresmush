@@ -2,7 +2,6 @@ module AresMUSH
   module Cookies
     class CookiesCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         cookie_recipients = enactor.cookies_given

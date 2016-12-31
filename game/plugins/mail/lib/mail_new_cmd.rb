@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailNewCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         unread = enactor.unread_mail.first

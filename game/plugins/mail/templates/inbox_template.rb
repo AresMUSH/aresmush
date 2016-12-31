@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     # Template for an individual mail message
     class InboxTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :tag, :messages
       

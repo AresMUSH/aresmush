@@ -1,7 +1,6 @@
 module AresMUSH
   module Events
     class EventDetailTemplate < ErbTemplateRenderer
-      include TemplateFormatters
              
       attr_accessor :event
                      

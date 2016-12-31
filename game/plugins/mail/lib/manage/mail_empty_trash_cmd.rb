@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailEmptyTrashCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         Mail.empty_trash(enactor)

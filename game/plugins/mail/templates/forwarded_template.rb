@@ -1,7 +1,6 @@
 module AresMUSH
   module Mail
     class ForwardedTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :original, :comment
             

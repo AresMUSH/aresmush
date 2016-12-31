@@ -2,7 +2,6 @@ module AresMUSH
   module Who
     class HideCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       def handle
         if cmd.root_is?("unhide")

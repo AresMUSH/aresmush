@@ -2,7 +2,6 @@ module AresMUSH
   module Utils
     class SweepKickCmd
       include CommandHandler
-      include CommandWithoutArgs
       
       attr_accessor :message
       

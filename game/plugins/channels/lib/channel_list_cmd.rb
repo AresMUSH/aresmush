@@ -2,7 +2,6 @@ module AresMUSH
   module Channels
     class ChannelListCmd
       include CommandHandler
-      include CommandWithoutArgs
       include TemplateFormatters           
       
       def handle   
