@@ -2,7 +2,6 @@ module AresMUSH
   module Utils
     class DiceCmd
       include CommandHandler
-      include CommandRequiresArgs
       
       attr_accessor :num, :sides
       

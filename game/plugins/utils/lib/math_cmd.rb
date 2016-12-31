@@ -2,9 +2,6 @@ module AresMUSH
   module Utils
     class MathCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :expression
       

@@ -3,8 +3,6 @@ module AresMUSH
   module Roster
     class RosterViewCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 

@@ -2,8 +2,6 @@ module AresMUSH
   module Jobs
     class JobSearchCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :category, :value
 

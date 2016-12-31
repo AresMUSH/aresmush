@@ -2,7 +2,6 @@ module AresMUSH
   module Rooms
     class MeetmeGoCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :going
       

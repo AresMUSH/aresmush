@@ -2,12 +2,15 @@ module AresMUSH
   module Who
     class WhereCmd
       include CommandHandler
-      include CommandWithoutSwitches
       
       attr_accessor :search
       
       def crack!
         self.search = titleize_input(cmd.args)
+      end
+      
+      def allow_without_login
+        true
       end
       
       def handle

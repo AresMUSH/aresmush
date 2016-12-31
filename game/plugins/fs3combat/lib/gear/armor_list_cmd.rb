@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class ArmorListCmd
       include CommandHandler
-      include CommandRequiresLogin
       include TemplateFormatters
       
       def handle

@@ -2,8 +2,6 @@ module AresMUSH
   module Manage
     class LoadPluginCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :load_target
       

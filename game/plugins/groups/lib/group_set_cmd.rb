@@ -2,8 +2,6 @@ module AresMUSH
   module Groups
     class GroupSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :value, :group_name
 

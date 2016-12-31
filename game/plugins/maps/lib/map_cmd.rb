@@ -2,8 +2,6 @@ module AresMUSH
   module Maps
     class MapCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
       
       attr_accessor :area
       

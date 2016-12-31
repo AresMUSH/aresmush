@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class HospitalSetCmd
       include CommandHandler
-      include CommandRequiresLogin
             
       attr_accessor :option
 

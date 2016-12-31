@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatVehicleCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :vehicle, :passenger_type

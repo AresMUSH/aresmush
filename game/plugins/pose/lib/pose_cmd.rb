@@ -2,7 +2,6 @@ module AresMUSH
   module Pose
     class PoseCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def handle
         Pose.emit_pose(enactor, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))

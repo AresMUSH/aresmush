@@ -2,8 +2,6 @@ module AresMUSH
   module Mail
     class MailUnsendCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :num, :name
       

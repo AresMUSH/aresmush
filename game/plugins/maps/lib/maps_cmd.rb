@@ -2,9 +2,7 @@ module AresMUSH
   module Maps
     class MapsCmd
       include CommandHandler
-      include CommandWithoutSwitches
       include CommandWithoutArgs
-      include CommandRequiresLogin
 
       def handle
         maps = GameMap.all.map { |m| "#{m.name.ljust(20)} #{m.areas.join(',')}" }

@@ -2,8 +2,6 @@ module AresMUSH
   module Jobs
     class RequestCommentCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :number, :message
       

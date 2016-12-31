@@ -2,8 +2,6 @@ module AresMUSH
   module Manage
     class DestroyCmd
       include CommandHandler
-      include CommandRequiresArgs
-      include CommandRequiresLogin
       
       attr_accessor :name
 

@@ -2,8 +2,6 @@ module AresMUSH
   module Bbs
     class BbsCreateBoardCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :name
 

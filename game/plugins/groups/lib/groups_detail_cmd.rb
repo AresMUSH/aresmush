@@ -2,8 +2,6 @@ module AresMUSH
   module Groups
     class GroupDetailCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 

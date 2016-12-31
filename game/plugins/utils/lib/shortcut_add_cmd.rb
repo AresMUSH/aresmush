@@ -2,8 +2,6 @@ module AresMUSH
   module Utils
     class ShortcutAddCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :shortcut, :cmd
 

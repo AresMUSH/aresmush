@@ -2,9 +2,6 @@ module AresMUSH
   module Login
     class LastCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 

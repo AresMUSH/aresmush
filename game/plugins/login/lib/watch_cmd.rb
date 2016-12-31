@@ -2,9 +2,6 @@ module AresMUSH
   module Login
     class WatchCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
       
       attr_accessor :option
 

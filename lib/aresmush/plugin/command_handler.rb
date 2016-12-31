@@ -25,13 +25,6 @@ module AresMUSH
       handle
     end
         
-    def enactor_room
-      @enactor ? @enactor.room : nil
-    end
-    
-    def enactor_name
-      @enactor ? @enactor.name : t('client.anonymous')
-    end
     
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
@@ -59,12 +52,19 @@ module AresMUSH
     #     return t(your_plugin.some_error_message) if something_is_wrong
     #     return nil
     #   end
-    # 
-    # Several common error checking methods are defined, and you can include them
-    # in your plugin just by including them in your plugin file.
-    # For example:
-    #       include CommandRequiresLogin
+    
     def error_check
+      # Two universal checks - require login and require args
+      if (!client.logged_in? && !allow_without_login)
+        return t('dispatcher.must_be_logged_in')
+      end
+      
+      if (required_args)
+        required_args[:args].each do |arg|
+          return t('dispatcher.invalid_syntax', :command => required_args[:help]) if "#{arg}".strip.length == 0
+        end
+      end
+      
       self.methods.grep(/^check_/).sort.each do |m|
         error = send m
         if (error)
@@ -74,9 +74,28 @@ module AresMUSH
       return nil
     end
     
+    # If you want to automatically check for required arguments, override this method and
+    # return a hash with a list of arg variables and a help file to show if one is missing.
+    # For example, this will prompt them to see 'help actors' if they forgot the actor name:
+    #   def required_args
+    #    {
+    #      args: [ self.name ],
+    #      help: 'actors'
+    #    }
+    #   end
+    def required_args
+      nil
+    end
+    
+    # Most commands require you to be connected with a character.  For commands that work from
+    # the connect screen, override this method and return true.
+    def allow_without_login
+      false
+    end
+    
     # Override this with the details of your command handling.
     def handle
-      Global.logger.warn("#{self} said it wanted a command and didn't handle it!")
+      raise "#{self} didn't actually handle the command!"
     end    
  
     # Override this if you don't want logging at all, or don't want to log the full command - 
@@ -85,14 +104,33 @@ module AresMUSH
       Global.logger.debug("#{self.class.name}: #{client} Enactor=#{enactor_name} Cmd=#{cmd}")
     end
     
+    
+    # ---------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------
+    # COMMON UTILITIES
+    #
+    # These are some common things you'll use in many command handlers.
+    # ---------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------
+      
+    # The enactor's room, or nil if not logged in.        
+    def enactor_room
+      @enactor ? @enactor.room : nil
+    end
+    
+    # The enactor's name, or 'anonymous' if not logged in.    
+    def enactor_name
+      @enactor ? @enactor.name : t('client.anonymous')
+    end
+    
     # A handy function for stripping off leading and trailing spaces.  Safe to call
-    # even if 'arg' is nil.
+    # (returns nil) if 'arg' is nil.
     def trim_input(arg)
       InputFormatter.trim_input(arg)
     end
     
     # A handy function for stripping off leading/trailing spaces and capitalizing
-    # its words (like a title).  Safe to call even if 'arg' is nil.
+    # its words (like a title).  Safe to call (returns nil) if 'arg' is nil.
     def titleize_input(arg)
       InputFormatter.titleize_input(arg)
     end

@@ -2,8 +2,6 @@ module AresMUSH
   module Status
     class GoAfkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :message
       

@@ -2,9 +2,6 @@ module AresMUSH
   module Status
     class PlayerBitCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
       
       attr_accessor :option
       

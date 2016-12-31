@@ -2,8 +2,6 @@ module AresMUSH
   module Describe
     class LookCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :target, :detail
       

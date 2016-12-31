@@ -3,8 +3,6 @@ module AresMUSH
   module Events
     class EventDetailCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :num
 

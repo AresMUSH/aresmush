@@ -2,8 +2,6 @@ module AresMUSH
   module Manage
     class AnnounceCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :message
 

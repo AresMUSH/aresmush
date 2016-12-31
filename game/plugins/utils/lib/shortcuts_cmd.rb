@@ -2,8 +2,6 @@ module AresMUSH
   module Utils
     class ShortcutsCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       

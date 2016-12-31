@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailTagsCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def handle

@@ -2,8 +2,6 @@ module AresMUSH
   module Bbs
     class BbsDeleteReplyCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :board_name, :post_num, :reply_num
 

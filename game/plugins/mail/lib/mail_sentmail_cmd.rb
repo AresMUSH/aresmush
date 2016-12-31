@@ -2,8 +2,6 @@ module AresMUSH
   module Mail
     class MailSentMailCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :option
 

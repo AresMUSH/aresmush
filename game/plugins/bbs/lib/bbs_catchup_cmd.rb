@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     class BbsCatchupCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :board_name
       

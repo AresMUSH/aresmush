@@ -3,8 +3,6 @@ module AresMUSH
   module FS3Skills
     class OpposedRollCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name1, :name2, :roll_str1, :roll_str2
 

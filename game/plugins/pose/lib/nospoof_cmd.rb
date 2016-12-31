@@ -2,8 +2,6 @@ module AresMUSH
   module Pose
     class NospoofCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :option
 

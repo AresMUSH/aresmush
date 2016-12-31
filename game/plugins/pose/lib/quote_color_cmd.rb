@@ -2,8 +2,6 @@ module AresMUSH
   module Pose
     class QuoteColorCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
       
       attr_accessor :option
       

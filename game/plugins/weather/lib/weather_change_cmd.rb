@@ -3,8 +3,6 @@ module AresMUSH
   module Weather
     class WeatherChangeCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :temp, :condition, :area
       

@@ -3,7 +3,6 @@ module AresMUSH
   module Idle
     class IdleQueueCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def check_idle_in_progress

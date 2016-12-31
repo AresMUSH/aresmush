@@ -6,7 +6,6 @@ module AresMUSH
     end
   end
   
-  puts "LOADED"
   class RolesDeletedEvent
     attr_accessor :role_id
     

@@ -68,7 +68,6 @@ module AresMUSH
       def auth (type)
         condition do
           unless send("is_#{type}?")
-            puts type
             if (type == :admin)
               flash[:error] = "Please log in with an admin account."
             else

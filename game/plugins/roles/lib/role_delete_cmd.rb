@@ -2,8 +2,6 @@ module AresMUSH
   module Roles
     class RoleDeleteCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       

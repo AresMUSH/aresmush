@@ -2,7 +2,6 @@ module AresMUSH
   module Places
     class PlaceLeaveCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def check_in_place

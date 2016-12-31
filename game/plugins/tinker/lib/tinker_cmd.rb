@@ -2,8 +2,6 @@ module AresMUSH
   module Tinker
     class TinkerCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
             
       def crack!
       end

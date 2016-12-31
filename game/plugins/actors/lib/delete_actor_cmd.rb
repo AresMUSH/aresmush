@@ -2,8 +2,6 @@ module AresMUSH
   module Actors
     class DeleteActorCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       

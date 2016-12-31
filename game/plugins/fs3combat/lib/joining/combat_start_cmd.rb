@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatStartCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :type
       

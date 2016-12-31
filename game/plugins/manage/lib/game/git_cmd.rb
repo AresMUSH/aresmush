@@ -2,8 +2,6 @@ module AresMUSH
   module Manage
     class GitCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :args
       

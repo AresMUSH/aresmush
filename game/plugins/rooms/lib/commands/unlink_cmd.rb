@@ -2,9 +2,6 @@ module AresMUSH
   module Rooms
     class UnlinkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :name
         

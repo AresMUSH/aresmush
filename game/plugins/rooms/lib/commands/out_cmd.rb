@@ -2,8 +2,6 @@ module AresMUSH
   module Rooms
     class OutCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       include CommandWithoutArgs
 
       def handle

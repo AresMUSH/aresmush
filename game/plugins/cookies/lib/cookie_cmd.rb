@@ -2,8 +2,6 @@ module AresMUSH
   module Cookies
     class CookieCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :names
       

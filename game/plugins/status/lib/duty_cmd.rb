@@ -2,9 +2,6 @@ module AresMUSH
   module Status
     class DutyCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
       
       attr_accessor :status
       

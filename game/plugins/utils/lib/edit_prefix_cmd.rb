@@ -2,7 +2,6 @@ module AresMUSH
   module Utils
     class EditPasswordCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :prefix
       

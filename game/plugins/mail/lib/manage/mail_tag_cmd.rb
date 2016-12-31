@@ -2,8 +2,6 @@ module AresMUSH
   module Mail
     class MailTagCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :num, :tag
       

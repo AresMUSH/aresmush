@@ -2,8 +2,6 @@ module AresMUSH
   module Jobs
     class CreateJobCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :title, :description, :category
       

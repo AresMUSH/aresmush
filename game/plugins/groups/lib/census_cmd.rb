@@ -2,21 +2,18 @@ module AresMUSH
   module Groups
     class CensusCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       include TemplateFormatters
       
-      attr_accessor :name, :page
+      attr_accessor :name
      
       def crack!
         self.name = titleize_input(cmd.args)
-        self.page = !cmd.page ? 1 : trim_input(cmd.page).to_i
       end
       
       def handle   
         chars = Idle::Api.active_chars
         if (!self.name)
-          paginator = Paginator.paginate(chars.sort_by { |c| c.name }, self.page, 20)
+          paginator = Paginator.paginate(chars.sort_by { |c| c.name }, cmd.page, 20)
           if (paginator.out_of_bounds?)
             client.emit_failure paginator.out_of_bounds_msg
             return

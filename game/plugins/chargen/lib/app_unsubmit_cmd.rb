@@ -2,7 +2,6 @@ module AresMUSH
   module Chargen
     class AppUnsubmitCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def check_approval

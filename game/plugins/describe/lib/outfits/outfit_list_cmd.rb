@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     class OutfitListCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def handle
         outfits = enactor.outfits.map { |d| d.name }

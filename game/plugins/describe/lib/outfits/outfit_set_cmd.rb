@@ -3,8 +3,6 @@ module AresMUSH
   module Describe
     class OutfitSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :desc
       

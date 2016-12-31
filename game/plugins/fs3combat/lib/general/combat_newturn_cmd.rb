@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatNewTurnCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
 
       def handle

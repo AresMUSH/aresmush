@@ -2,8 +2,6 @@ module AresMUSH
   module Channels
     class ChannelJoinCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :name, :alias
 

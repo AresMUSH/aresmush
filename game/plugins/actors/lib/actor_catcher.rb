@@ -3,7 +3,6 @@ module AresMUSH
   module Actors
     class ActorsCatcherCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :page
 

@@ -2,9 +2,6 @@ module AresMUSH
   module Jobs
     class ViewRequestCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :number
 

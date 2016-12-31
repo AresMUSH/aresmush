@@ -3,8 +3,6 @@ module AresMUSH
   module Actors
     class ActorsSearchCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 

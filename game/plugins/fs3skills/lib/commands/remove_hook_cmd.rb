@@ -3,8 +3,6 @@ module AresMUSH
   module FS3Skills
     class RemoveHookCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 

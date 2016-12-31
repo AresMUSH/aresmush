@@ -3,8 +3,6 @@ module AresMUSH
   module Roster
     class RosterRemoveCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       

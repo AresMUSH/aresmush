@@ -3,9 +3,6 @@ module AresMUSH
   module FS3Skills
     class RaiseAbilityCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
-      include CommandWithoutSwitches
       
       attr_accessor :name
 

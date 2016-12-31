@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatAiCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :force, :names

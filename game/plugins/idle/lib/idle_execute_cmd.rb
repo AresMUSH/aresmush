@@ -3,7 +3,6 @@ module AresMUSH
   module Idle
     class IdleExecuteCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
 
       def check_can_manage

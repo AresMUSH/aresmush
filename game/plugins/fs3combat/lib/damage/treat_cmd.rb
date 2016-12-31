@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Combat
     class TreatCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       

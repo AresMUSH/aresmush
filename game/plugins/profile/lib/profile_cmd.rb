@@ -2,7 +2,6 @@ module AresMUSH
   module Profile
     class ProfileCmd
       include CommandHandler
-      include CommandRequiresArgs
       
       attr_accessor :name
       

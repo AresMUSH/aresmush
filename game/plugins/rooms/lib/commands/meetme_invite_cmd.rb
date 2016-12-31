@@ -2,8 +2,6 @@ module AresMUSH
   module Rooms
     class MeetmeInviteCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :names
 

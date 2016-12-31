@@ -2,7 +2,6 @@ module AresMUSH
   module Rooms
     class HomeSetCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def check_can_go_home

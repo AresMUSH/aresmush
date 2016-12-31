@@ -2,8 +2,6 @@ module AresMUSH
   module Channels
     class ChannelTalkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
            
       attr_accessor :channel, :msg
       

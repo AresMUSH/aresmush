@@ -2,8 +2,6 @@ module AresMUSH
   module Describe
     class WearCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :names
       

@@ -2,7 +2,6 @@ module AresMUSH
   module Login
     class CreateCmd
       include CommandHandler
-      include CommandWithoutSwitches
       
       attr_accessor :charname, :password
 
@@ -13,6 +12,10 @@ module AresMUSH
         end
         self.charname = trim_input(cmd.args.arg1)
         self.password = cmd.args.arg2
+      end
+      
+      def allow_without_login
+        true
       end
       
       def check_not_already_logged_in

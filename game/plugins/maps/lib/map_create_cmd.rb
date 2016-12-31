@@ -2,8 +2,6 @@ module AresMUSH
   module Maps
     class MapCreateCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :map_text
       

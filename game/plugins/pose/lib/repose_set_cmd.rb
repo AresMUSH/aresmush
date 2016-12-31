@@ -2,7 +2,6 @@ module AresMUSH
   module Pose
     class ReposeSetCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :option
       

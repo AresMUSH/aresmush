@@ -2,8 +2,6 @@ module AresMUSH
   module Profile
     class WikiCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :target
 

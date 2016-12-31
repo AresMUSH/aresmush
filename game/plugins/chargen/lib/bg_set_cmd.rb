@@ -2,8 +2,6 @@ module AresMUSH
   module Chargen
     class BgSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :target, :background
  

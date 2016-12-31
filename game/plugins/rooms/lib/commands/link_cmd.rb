@@ -2,9 +2,6 @@ module AresMUSH
   module Rooms
     class LinkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :name
       attr_accessor :dest

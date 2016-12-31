@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Skills
     class LuckSpendCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :reason
 

@@ -2,8 +2,6 @@ module AresMUSH
   module Mail
     class MailFwdCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :num
       attr_accessor :names

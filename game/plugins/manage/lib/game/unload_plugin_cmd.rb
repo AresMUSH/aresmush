@@ -2,8 +2,6 @@ module AresMUSH
   module Manage
     class UnloadPluginCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :load_target
       

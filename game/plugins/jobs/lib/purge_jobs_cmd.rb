@@ -2,7 +2,6 @@ module AresMUSH
   module Jobs
     class PurgeJobsCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def handle
@@ -12,7 +11,6 @@ module AresMUSH
     
     class PurgeJobsConfirmCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def check_closed_jobs

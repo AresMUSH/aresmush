@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Skills
     class LuckAwardCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :luck
 

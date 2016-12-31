@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     class BbsNewCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def handle

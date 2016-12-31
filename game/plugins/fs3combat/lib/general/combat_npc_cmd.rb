@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatNpcCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :level, :name

@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     class OutfitDeleteCmd
       include CommandHandler
-      include CommandRequiresLogin
            
       attr_accessor :name
       

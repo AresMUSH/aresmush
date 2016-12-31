@@ -3,7 +3,6 @@ module AresMUSH
     class SweepKickCmd
       include CommandHandler
       include CommandWithoutArgs
-      include CommandRequiresLogin
       
       attr_accessor :message
       

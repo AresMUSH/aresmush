@@ -2,7 +2,6 @@ module AresMUSH
   module Ranks
     class RanksCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :name
             

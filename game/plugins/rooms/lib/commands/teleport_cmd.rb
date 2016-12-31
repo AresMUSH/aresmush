@@ -2,9 +2,6 @@ module AresMUSH
   module Rooms
     class TeleportCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :destination
       attr_accessor :names

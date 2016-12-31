@@ -2,9 +2,6 @@ module AresMUSH
   module Utils
     class SaveCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :text
 

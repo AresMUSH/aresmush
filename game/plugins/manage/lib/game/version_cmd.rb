@@ -3,7 +3,10 @@ module AresMUSH
     class VersionCmd
       include CommandHandler
       include CommandWithoutArgs
-      include CommandWithoutSwitches
+      
+      def allow_without_login
+        true
+      end
       
       def handle
         client.emit BorderedDisplay.text t('manage.version', :version => AresMUSH.version)

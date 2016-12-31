@@ -2,8 +2,6 @@ module AresMUSH
   module Login
     class AliasCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
       
       attr_accessor :alias, :name
       

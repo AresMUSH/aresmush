@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailEmptyTrashCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
       
       def handle

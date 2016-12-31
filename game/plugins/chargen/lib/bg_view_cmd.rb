@@ -2,13 +2,11 @@ module AresMUSH
   module Chargen
     class BgCmd
       include CommandHandler
-      include CommandRequiresLogin
       
-      attr_accessor :target, :page
+      attr_accessor :target
       
       def crack!
         self.target = !cmd.args ? enactor_name : trim_input(cmd.args)
-        self.page = !cmd.page ? 1 : trim_input(cmd.page).to_i
       end
       
       def check_words

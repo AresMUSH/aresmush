@@ -3,8 +3,6 @@ module AresMUSH
   module Idle
     class IdleActionCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :action
 

@@ -2,9 +2,6 @@ module AresMUSH
   module Manage
     class BootCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
-      include CommandRequiresLogin
       
       attr_accessor :target
       

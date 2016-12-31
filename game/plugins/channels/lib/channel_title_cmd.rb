@@ -2,8 +2,6 @@ module AresMUSH
   module Channels
     class ChannelTitleCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :name, :title
 

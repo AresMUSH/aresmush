@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatLogCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :page
          

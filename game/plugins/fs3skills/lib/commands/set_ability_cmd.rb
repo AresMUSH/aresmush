@@ -3,9 +3,6 @@ module AresMUSH
   module FS3Skills
     class SetAbilityCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
-      include CommandWithoutSwitches
       
       attr_accessor :name, :ability_name, :rating
       

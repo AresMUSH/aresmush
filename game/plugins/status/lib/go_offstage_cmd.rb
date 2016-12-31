@@ -2,8 +2,6 @@ module AresMUSH
   module Status
     class GoOffstageCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       def handle        
         oocloc = Rooms::Api.ooc_room

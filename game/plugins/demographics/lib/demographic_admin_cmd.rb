@@ -3,8 +3,6 @@ module AresMUSH
   
     class DemographicAdminCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
   
       attr_accessor :name, :value, :property
 

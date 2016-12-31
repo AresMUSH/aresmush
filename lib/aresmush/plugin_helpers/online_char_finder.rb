@@ -31,7 +31,6 @@ module AresMUSH
       to_clients = []
       names.each do |name|
         result = self.find(name, client, allow_handles)
-             puts result.inspect 
                 
         if (!result.found?)
           client.emit_failure(result.error)

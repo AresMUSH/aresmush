@@ -3,8 +3,6 @@ module AresMUSH
   module Describe
     class DetailSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
             
       attr_accessor :name, :target, :desc
 

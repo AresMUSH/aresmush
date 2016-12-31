@@ -2,8 +2,6 @@ module AresMUSH
   module Profile
     class ProfileEditCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :field
 

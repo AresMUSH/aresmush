@@ -2,8 +2,6 @@ module AresMUSH
   module Places
     class PlaceRenameCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :old_name, :new_name
 

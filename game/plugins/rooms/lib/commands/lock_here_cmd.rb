@@ -2,7 +2,6 @@ module AresMUSH
   module Rooms
     class LockHereCmd
       include CommandHandler
-      include CommandRequiresLogin      
 
       def check_is_interior_room
         target = enactor_room.way_in

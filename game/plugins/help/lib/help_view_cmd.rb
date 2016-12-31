@@ -3,8 +3,6 @@ module AresMUSH
     
     class HelpViewCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :category, :topic, :category_config
       
@@ -19,6 +17,10 @@ module AresMUSH
           args: [ self.topic ],
           help: 'help'
         }
+      end
+      
+      def allow_without_login
+        true
       end
       
       def check_valid_category

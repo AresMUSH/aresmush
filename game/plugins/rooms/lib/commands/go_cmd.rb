@@ -2,9 +2,6 @@ module AresMUSH
   module Rooms
     class GoCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :destination
       

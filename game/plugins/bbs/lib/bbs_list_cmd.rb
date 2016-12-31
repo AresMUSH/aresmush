@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     class BbsListCmd
       include CommandHandler
-      include CommandRequiresLogin      
       
       def handle       
         template = BoardListTemplate.new(enactor) 

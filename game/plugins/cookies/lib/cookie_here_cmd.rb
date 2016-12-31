@@ -2,7 +2,6 @@ module AresMUSH
   module Cookies
     class CookieHereCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
                  
       def handle

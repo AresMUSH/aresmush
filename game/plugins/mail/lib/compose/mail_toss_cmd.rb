@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailTossCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
            
       def check_composing_mail

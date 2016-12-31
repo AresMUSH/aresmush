@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailFilterCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       attr_accessor :tag
             

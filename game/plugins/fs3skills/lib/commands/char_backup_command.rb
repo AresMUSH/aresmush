@@ -3,8 +3,6 @@ module AresMUSH
   module FS3Skills
     class CharBackupCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :target
       

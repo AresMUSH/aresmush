@@ -2,8 +2,6 @@ module AresMUSH
   module Utils
     class RecallCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
       
       attr_accessor :num
       

@@ -2,8 +2,6 @@ module AresMUSH
   module Channels
     class ChannelAnnounceCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :option, :name
 

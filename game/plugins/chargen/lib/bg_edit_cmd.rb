@@ -2,7 +2,6 @@ module AresMUSH
   module Chargen
     class BgEditCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :target
 

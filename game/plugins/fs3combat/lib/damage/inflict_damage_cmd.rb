@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Combat
     class InflictDamageCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :desc, :severity
       

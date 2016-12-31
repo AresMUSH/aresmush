@@ -2,8 +2,6 @@ module AresMUSH
   module Rooms
     class RoomsCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
 
       attr_accessor :name
       

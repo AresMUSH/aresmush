@@ -2,7 +2,6 @@ module AresMUSH
   module Page
     class PageColorCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :option
       

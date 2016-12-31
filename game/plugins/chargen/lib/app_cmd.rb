@@ -2,7 +2,6 @@ module AresMUSH
   module Chargen
     class AppCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :name
 

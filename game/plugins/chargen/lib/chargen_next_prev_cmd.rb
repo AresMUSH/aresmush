@@ -3,7 +3,6 @@ module AresMUSH
     class ChargenPrevNextCmd
       include CommandHandler
       include CommandWithoutArgs
-      include CommandRequiresLogin
       
       attr_accessor :offset
       

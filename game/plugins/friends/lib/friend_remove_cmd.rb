@@ -2,8 +2,6 @@ module AresMUSH
   module Friends
     class FriendRemoveCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 

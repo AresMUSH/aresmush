@@ -2,9 +2,6 @@ module AresMUSH
   module Rooms
     class LockCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :name
       attr_accessor :lock_keys

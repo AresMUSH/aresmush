@@ -2,9 +2,6 @@ module AresMUSH
   module Manage
     class FindsiteCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
-      include CommandRequiresLogin
       
       attr_accessor :target
 

@@ -2,8 +2,6 @@ module AresMUSH
   module Login
     class PasswordResetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       attr_accessor :new_password

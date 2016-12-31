@@ -2,7 +2,6 @@ module AresMUSH
   module Jobs
     class JobsNewCmd
       include CommandHandler
-      include CommandRequiresLogin
       include CommandWithoutArgs
     
       def check_can_access

@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatActionCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :action_args, :combat_command

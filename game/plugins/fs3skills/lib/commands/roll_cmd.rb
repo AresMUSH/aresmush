@@ -3,8 +3,6 @@ module AresMUSH
   module FS3Skills
     class RollCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :roll_str, :private_roll
 

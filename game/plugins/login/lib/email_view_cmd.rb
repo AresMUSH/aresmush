@@ -2,7 +2,6 @@ module AresMUSH
   module Login
     class EmailViewCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       attr_accessor :name
 

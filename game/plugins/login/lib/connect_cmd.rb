@@ -2,13 +2,16 @@ module AresMUSH
   module Login
     class ConnectCmd
       include CommandHandler
-      include CommandWithoutSwitches
 
       attr_accessor :charname, :password
       
       def crack!
         self.charname = cmd.args ? trim_input(cmd.args.before(" ")) : nil
         self.password = cmd.args ? cmd.args.after(" ") : nil
+      end
+      
+      def allow_without_login
+        true
       end
       
       def check_for_guest_or_password

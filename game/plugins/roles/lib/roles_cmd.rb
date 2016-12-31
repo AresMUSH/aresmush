@@ -2,7 +2,6 @@ module AresMUSH
   module Roles
     class RolesCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :name
       

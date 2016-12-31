@@ -2,8 +2,6 @@ module AresMUSH
   module Rooms
     class GridCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
 
       attr_accessor :x, :y
       

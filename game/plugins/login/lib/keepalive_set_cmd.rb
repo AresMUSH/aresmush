@@ -2,8 +2,6 @@ module AresMUSH
   module Login
     class KeepaliveSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :option
 

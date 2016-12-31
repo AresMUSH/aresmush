@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Combat
     class VehicleDetailCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include TemplateFormatters
       
       attr_accessor :name
