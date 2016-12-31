@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :name
 
-      def crack!
-        self.name = !cmd.args ? enactor_name : trim_input(cmd.args)
+      def parse_args
+        self.name = !cmd.args ? enactor_name : trim_arg(cmd.args)
       end
       
       def check_can_review

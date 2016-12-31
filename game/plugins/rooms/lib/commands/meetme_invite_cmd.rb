@@ -5,7 +5,7 @@ module AresMUSH
 
       attr_accessor :names
 
-      def crack!
+      def parse_args
         if (!cmd.args)
           self.names = []
         else

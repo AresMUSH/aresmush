@@ -5,14 +5,15 @@ module AresMUSH
       
       attr_accessor :name, :actor
       
-      def crack!
+     
+      def parse_args
         if (cmd.args =~ /\=/)
-          cmd.crack_args!(ArgParser.arg1_equals_arg2)
-          self.name = titleize_input(cmd.args.arg1)
-          self.actor = titleize_input(cmd.args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.name = titlecase_arg(args.arg1)
+          self.actor = titlecase_arg(args.arg2)
         else
           self.name = enactor_name
-          self.actor = titleize_input(cmd.args)
+          self.actor = titlecase_arg(cmd.args)
         end
       end
 

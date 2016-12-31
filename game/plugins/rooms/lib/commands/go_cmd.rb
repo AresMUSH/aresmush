@@ -5,8 +5,8 @@ module AresMUSH
 
       attr_accessor :destination
       
-      def crack!
-        self.destination = trim_input(cmd.args)
+      def parse_args
+        self.destination = trim_arg(cmd.args)
       end
       
       def required_args

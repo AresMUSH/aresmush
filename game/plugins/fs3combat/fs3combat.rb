@@ -68,7 +68,6 @@ load "lib/joining/combat_stop_cmd.rb"
 load "lib/joining/joining_helper.rb"
 load "lib/pose_handler.rb"
 load "lib/status/combat_hud_cmd.rb"
-load "lib/status/combat_npcskill_cmd.rb"
 load "lib/status/combat_summary_cmd.rb"
 load "lib/status/combat_log_cmd.rb"
 load "lib/vehicles/combat_disembark_cmd.rb"
@@ -193,8 +192,6 @@ module AresMUSH
            return CombatNpcCmd
          when "newturn"
            return CombatNewTurnCmd
-         when "skill"
-           return CombatNpcSkillCmd
          when "stance"
            return CombatStanceCmd
          when "start"

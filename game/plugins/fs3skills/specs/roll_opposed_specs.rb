@@ -4,7 +4,7 @@ module AresMUSH
       describe :crack do
         it "should fail if the string is invalid" do
           handler = OpposedRollCmd.new(nil, Command.new("roll A vs B"), nil)
-          handler.crack!
+          handler.parse_args
           handler.name1.should be_nil
           handler.name2.should be_nil
           handler.roll_str1.should be_nil
@@ -13,7 +13,7 @@ module AresMUSH
         
         it "should crack a PC roll vs a NPC number" do
           handler = OpposedRollCmd.new(nil, Command.new("roll A/1 vs 3"), nil)
-          handler.crack!
+          handler.parse_args
           handler.name1.should eq "A"
           handler.name2.should be_nil
           handler.roll_str1.should eq "1"
@@ -22,7 +22,7 @@ module AresMUSH
         
         it "should crack a PC roll vs another PC" do
           handler = OpposedRollCmd.new(nil, Command.new("roll A/Firearms vs B/Melee"), nil)
-          handler.crack!
+          handler.parse_args
           handler.name1.should eq "A"
           handler.name2.should eq "B"
           handler.roll_str1.should eq "Firearms"
@@ -31,7 +31,7 @@ module AresMUSH
         
         it "should crack skill names with spaces" do
           handler = OpposedRollCmd.new(nil, Command.new("roll A/Basket Weaving+2 vs B/Scuba Diving - 1"), nil)
-          handler.crack!
+          handler.parse_args
           handler.name1.should eq "A"
           handler.name2.should eq "B"
           handler.roll_str1.should eq "Basket Weaving+2"

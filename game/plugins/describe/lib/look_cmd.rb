@@ -5,13 +5,13 @@ module AresMUSH
       
       attr_accessor :target, :detail
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /\//)
-          cmd.crack_args!(ArgParser.arg1_slash_arg2)
-          self.target = cmd.args.arg1
-          self.detail = titleize_input(cmd.args.arg2)          
+          args = cmd.parse_args(ArgParser.arg1_slash_arg2)
+          self.target = trim_arg(args.arg1)
+          self.detail = titlecase_arg(args.arg2)          
         else
-          self.target = trim_input(cmd.args) || 'here'
+          self.target = trim_arg(cmd.args) || 'here'
           self.detail = nil
         end
       end
@@ -46,7 +46,7 @@ module AresMUSH
       end
       
       def show_detail(model, detail_name)
-        detail_name = titleize_input(detail_name)
+        detail_name = titlecase_arg(detail_name)
         if (!model.has_detail?(detail_name))
           client.emit_failure t("db.object_not_found")
           return

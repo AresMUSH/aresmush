@@ -109,12 +109,12 @@ module AresMUSH
       #### ---------------------------------
       demo = @user.get_or_create_demographics
       demo.fullname = params[:fullname]
-      demo.skin = titleize_input(params[:skin])
-      demo.hair = titleize_input(params[:hair])
-      demo.eyes = titleize_input(params[:eyes])
-      demo.height = titleize_input(params[:height])
-      demo.physique = titleize_input(params[:physique])
-      demo.callsign = titleize_input(params[:callsign])
+      demo.skin = titlecase_arg(params[:skin])
+      demo.hair = titlecase_arg(params[:hair])
+      demo.eyes = titlecase_arg(params[:eyes])
+      demo.height = titlecase_arg(params[:height])
+      demo.physique = titlecase_arg(params[:physique])
+      demo.callsign = titlecase_arg(params[:callsign])
       demo.gender = params[:gender]
       
       age = params[:age].to_i
@@ -152,7 +152,7 @@ module AresMUSH
 
       remaining_hooks = []
       6.times.each do |i|
-        name = titleize_input(params["hook-name-#{i}".to_sym])
+        name = titlecase_arg(params["hook-name-#{i}".to_sym])
         desc = params["hook-desc-#{i}".to_sym]  
         if (!desc.empty?)
           remaining_hooks << name
@@ -175,7 +175,7 @@ module AresMUSH
       
       remaining_bgskills = []
       10.times.each do |i|
-        name = titleize_input(params["bg-name-#{i}".to_sym])
+        name = titlecase_arg(params["bg-name-#{i}".to_sym])
         rating = params["bg-rating-#{i}".to_sym].to_i
         remaining_bgskills << name
         

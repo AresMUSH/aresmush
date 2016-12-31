@@ -34,7 +34,7 @@ module AresMUSH
           FS3Combat.weapon_specials.each do |k, v|
             if (allowed_specials.include?(k))
               special_title = left("#{k}:", 20)
-              effects = v.map { |k, v|  "#{k.titleize}: #{v}" }.join("%R%T")
+              effects = v.map { |k, v|  "#{k.titlecase}: #{v}" }.join("%R%T")
               specials << "%xh#{special_title}%xn%R%T#{effects}"
             end
           end

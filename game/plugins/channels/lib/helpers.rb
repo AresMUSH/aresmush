@@ -67,7 +67,7 @@ module AresMUSH
     end
     
     def self.channel_for_alias(char, channel_alias)  
-      channel_alias = CommandArgParser.strip_prefix(channel_alias).downcase    
+      channel_alias = CommandCracker.strip_prefix(channel_alias).downcase    
       char.channel_options.each do |o|
         if (o.match_alias(channel_alias))
           return o.channel
@@ -137,7 +137,7 @@ module AresMUSH
     end
     
     def self.set_channel_alias(client, char, channel, chan_alias, warn = true)
-      aliases = chan_alias.split(/[, ]/).map { |a| CommandArgParser.strip_prefix(a).downcase }
+      aliases = chan_alias.split(/[, ]/).map { |a| CommandCracker.strip_prefix(a).downcase }
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
         if (existing_channel && existing_channel != channel)

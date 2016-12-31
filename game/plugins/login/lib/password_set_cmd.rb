@@ -6,10 +6,10 @@ module AresMUSH
       attr_accessor :old_password
       attr_accessor :new_password
 
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.old_password = cmd.args.arg1
-        self.new_password = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.old_password = args.arg1
+        self.new_password = args.arg2
       end
 
       def required_args

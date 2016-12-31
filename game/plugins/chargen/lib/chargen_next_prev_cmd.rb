@@ -6,7 +6,7 @@ module AresMUSH
       
       attr_accessor :offset
       
-      def crack!
+      def parse_args
         if (!cmd.switch)
           self.offset = 0
         elsif (cmd.switch_is?("next"))

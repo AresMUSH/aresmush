@@ -6,9 +6,9 @@ module AresMUSH
       
       attr_accessor :name
 
-      def crack!
+      def parse_args
         if (cmd.args)
-          self.name = titleize_input(cmd.args)
+          self.name = titlecase_arg(cmd.args)
         else
           self.name = enactor_name
         end

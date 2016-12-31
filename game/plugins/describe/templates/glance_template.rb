@@ -21,7 +21,7 @@ module AresMUSH
         height = char.demographic(:height) || "-"
         eyes = char.demographic(:eyes) || "-"
         hair = char.demographic(:hair) || "-"
-        t('describe.glance', :height => height.titleize,
+        t('describe.glance', :height => height.titlecase,
           :gender => Demographics::Api.gender_noun(char),
           :age => char.age,
           :hair => hair.downcase,

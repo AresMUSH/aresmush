@@ -6,11 +6,11 @@ module AresMUSH
       
       attr_accessor :temp, :condition, :area
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_arg3)
-        self.area = titleize_input(cmd.args.arg1)
-        self.temp = !cmd.args.arg2 ? nil : trim_input(cmd.args.arg2).downcase
-        self.condition = !cmd.args.arg3 ? nil : trim_input(cmd.args.arg3).downcase
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+        self.area = titlecase_arg(args.arg1)
+        self.temp = downcase_arg(args.arg2)
+        self.condition = downcase_arg(args.arg3)
       end
       
       def required_args

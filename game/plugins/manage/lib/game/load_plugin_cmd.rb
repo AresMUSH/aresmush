@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :load_target
       
-      def crack!
-        self.load_target = trim_input(cmd.args)
+      def parse_args
+        self.load_target = trim_arg(cmd.args)
       end
       
       def required_args

@@ -29,7 +29,7 @@ module AresMUSH
         context "Replying to specific post" do
           before do 
             @handler = BbsReplyCmd.new(@client, Command.new("bbs/foo 1/2=message"), @enactor)
-            @handler.crack!
+            @handler.parse_args
             @post = double
             @board = double
             @client.stub(:program) { {} }

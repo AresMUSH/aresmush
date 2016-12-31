@@ -6,17 +6,17 @@ module AresMUSH
       
       attr_accessor :name, :weapon, :specials
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /=/)
-          cmd.crack_args!( /(?<arg1>[^\=]+)\=(?<arg2>[^\+]+)\+?(?<arg3>.+)?/)
-          self.name = titleize_input(cmd.args.arg1)
-          self.weapon = titleize_input(cmd.args.arg2)
-          specials_str = titleize_input(cmd.args.arg3)
+          args = cmd.parse_args( /(?<arg1>[^\=]+)\=(?<arg2>[^\+]+)\+?(?<arg3>.+)?/)
+          self.name = titlecase_arg(args.arg1)
+          self.weapon = titlecase_arg(args.arg2)
+          specials_str = titlecase_arg(args.arg3)
         else
-          cmd.crack_args!(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+          args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
           self.name = enactor.name
-          self.weapon = titleize_input(cmd.args.arg1)
-          specials_str = titleize_input(cmd.args.arg2)
+          self.weapon = titlecase_arg(args.arg1)
+          specials_str = titlecase_arg(args.arg2)
         end
         
         self.specials = specials_str ? specials_str.split('+') : nil

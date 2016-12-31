@@ -5,8 +5,8 @@ module AresMUSH
 
       attr_accessor :charname, :password
       
-      def crack!
-        self.charname = cmd.args ? trim_input(cmd.args.before(" ")) : nil
+      def parse_args
+        self.charname = cmd.args ? trim_arg(cmd.args.before(" ")) : nil
         self.password = cmd.args ? cmd.args.after(" ") : nil
       end
       

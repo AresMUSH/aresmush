@@ -5,10 +5,10 @@ module AresMUSH
       
       attr_accessor :old_name, :new_name
 
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.old_name = titleize_input(cmd.args.arg1)
-        self.new_name = titleize_input(cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.old_name = titlecase_arg(args.arg1)
+        self.new_name = titlecase_arg(args.arg2)
       end
       
       def required_args

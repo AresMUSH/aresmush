@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :area
       
-      def crack!
-        self.area = !cmd.args ? enactor_room.area : titleize_input(cmd.args)
+      def parse_args
+        self.area = !cmd.args ? enactor_room.area : titlecase_arg(cmd.args)
       end
       
       def handle

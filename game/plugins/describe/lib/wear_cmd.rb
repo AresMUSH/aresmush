@@ -5,9 +5,9 @@ module AresMUSH
       
       attr_accessor :names
       
-      def crack!
+      def parse_args
         if cmd.args
-          self.names = cmd.args.split(' ').map { |n| titleize_input(n) }
+          self.names = cmd.args.split(' ').map { |n| titlecase_arg(n) }
         end
       end
       

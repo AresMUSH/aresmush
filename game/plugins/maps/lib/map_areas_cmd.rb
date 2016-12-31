@@ -5,10 +5,10 @@ module AresMUSH
       
       attr_accessor :name, :areas
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.name = titleize_input(cmd.args.arg1)
-        self.areas = cmd.args.arg2 ? cmd.args.arg2.split(',').map { |m| titleize_input(m) } : nil
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = titlecase_arg(args.arg1)
+        self.areas = split_and_titlecase_arg(args.arg2, ',')
       end
       
       def required_args

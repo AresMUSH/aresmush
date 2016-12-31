@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :field
 
-      def crack!
-        self.field = titleize_input(cmd.args)
+      def parse_args
+        self.field = titlecase_arg(cmd.args)
       end
       
       def required_args

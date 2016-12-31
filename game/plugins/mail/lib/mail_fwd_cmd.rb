@@ -7,11 +7,11 @@ module AresMUSH
       attr_accessor :names
       attr_accessor :comment
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_optional_arg3)
-        self.num = trim_input(cmd.args.arg1)
-        self.names = !cmd.args.arg2 ? [] : cmd.args.arg2.split(" ")
-        self.comment = cmd.args.arg3
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
+        self.num = trim_arg(args.arg1)
+        self.names = split_arg(args.arg2)
+        self.comment = args.arg3
       end
 
       def required_args

@@ -13,7 +13,7 @@ module AresMUSH
     end
     
     get '/help/:topic' do |topic|
-      @topic = topic.titleize
+      @topic = topic.titlecase
       text = Help::Api.get_help(topic)
       text = ClientFormatter.format text
       formatter = MarkdownFormatter.new

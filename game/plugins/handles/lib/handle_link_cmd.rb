@@ -5,10 +5,10 @@ module AresMUSH
       
       attr_accessor :handle_name, :link_code
 
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.handle_name = cmd.args.arg1
-        self.link_code = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.handle_name = trim_arg(args.arg1)
+        self.link_code = trim_arg(args.arg2)
       end
 
       def required_args

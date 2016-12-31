@@ -14,7 +14,7 @@ module AresMUSH
       describe :crack do
         it "should crack a name by itself" do
           @handler = BuildCmd.new(@client, Command.new("build Bob's Room"), @enactor)
-          @handler.crack!
+          @handler.parse_args
           @handler.name.should eq "Bob's Room"
           @handler.exit.should eq ""
           @handler.return_exit.should eq ""
@@ -22,7 +22,7 @@ module AresMUSH
         
         it "should crack a name and exit" do
           @handler = BuildCmd.new(@client, Command.new("build Bob's Room=N"), @enactor)
-          @handler.crack!
+          @handler.parse_args
           @handler.name.should eq "Bob's Room"
           @handler.exit.should eq "N"
           @handler.return_exit.should eq ""
@@ -30,7 +30,7 @@ module AresMUSH
         
         it "should crack a name exit and return exit" do
           @handler = BuildCmd.new(@client, Command.new("build Bob's Room=N,S"), @enactor)
-          @handler.crack!
+          @handler.parse_args
           @handler.name.should eq "Bob's Room"
           @handler.exit.should eq "N"
           @handler.return_exit.should eq "S"

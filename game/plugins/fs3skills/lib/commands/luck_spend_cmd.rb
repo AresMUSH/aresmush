@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :reason
 
-      def crack!
-        self.reason = trim_input(cmd.args)
+      def parse_args
+        self.reason = trim_arg(cmd.args)
       end
 
       def required_args

@@ -5,11 +5,11 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :new_board_name
       
-      def crack!
-        cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<new_board>[^\=]+)/)
-        self.board_name = titleize_input(cmd.args.name)
-        self.num = trim_input(cmd.args.num)
-        self.new_board_name = cmd.args.new_board
+      def parse_args
+        args = cmd.parse_args( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<new_board>[^\=]+)/)
+        self.board_name = titlecase_arg(args.name)
+        self.num = trim_arg(args.num)
+        self.new_board_name = trim_arg(args.new_board)
       end
       
       def required_args

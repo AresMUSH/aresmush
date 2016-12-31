@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :option
       
-      def crack!
-        self.option = trim_input(cmd.args)
+      def parse_args
+        self.option = trim_arg(cmd.args)
       end
 
       def handle

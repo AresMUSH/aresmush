@@ -5,7 +5,7 @@ module AresMUSH
            
       attr_accessor :body
       
-      def crack!
+      def parse_args
         self.body = cmd.raw.after("-").chomp
       end
       

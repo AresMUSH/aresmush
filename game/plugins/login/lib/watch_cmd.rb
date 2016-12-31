@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :option
 
-      def crack!
+      def parse_args
         self.option = !cmd.args ? nil : cmd.args.downcase
       end
 

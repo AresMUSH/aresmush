@@ -6,7 +6,7 @@ module AresMUSH
       
       attr_accessor :will   
       
-      def crack!
+      def parse_args
         self.will = cmd.args
       end
       

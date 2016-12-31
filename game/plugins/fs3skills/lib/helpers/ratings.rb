@@ -6,7 +6,7 @@ module AresMUSH
     end
     
     def self.find_ability(char, ability_name)
-      ability_name = ability_name.titleize
+      ability_name = ability_name.titlecase
       ability_type = FS3Skills.get_ability_type(ability_name)
       case ability_type
       when :attribute

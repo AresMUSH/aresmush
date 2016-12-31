@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :board_name
       
-      def crack!
-        self.board_name = cmd.args ? titleize_input(cmd.args) : "All"
+      def parse_args
+        self.board_name = cmd.args ? titlecase_arg(cmd.args) : "All"
       end
 
       def handle

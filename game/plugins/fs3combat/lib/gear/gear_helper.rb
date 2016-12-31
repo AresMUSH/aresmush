@@ -39,7 +39,7 @@ module AresMUSH
     end
     
     def self.weapon_is_stun?(name)
-      FS3Combat.weapon_stat(name, "damage_type").titleize == "Stun"
+      FS3Combat.weapon_stat(name, "damage_type").titlecase == "Stun"
     end
     
     def self.armors
@@ -103,8 +103,8 @@ module AresMUSH
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
-      combatant.update(weapon_name: weapon ? weapon.titleize : "Unarmed")
-      combatant.update(weapon_specials: specials ? specials.map { |s| s.titleize } : [])
+      combatant.update(weapon_name: weapon ? weapon.titlecase : "Unarmed")
+      combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase } : [])
       combatant.update(ammo: max_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
@@ -116,7 +116,7 @@ module AresMUSH
     end
     
     def self.set_armor(enactor, combatant, armor)
-      combatant.update(armor: armor ? armor.titleize : nil)
+      combatant.update(armor: armor ? armor.titlecase : nil)
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
       combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end

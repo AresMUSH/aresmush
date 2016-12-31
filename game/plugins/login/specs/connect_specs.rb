@@ -18,28 +18,28 @@ module AresMUSH
       
       describe :crack do
         it "should crack the arguments" do
-          @handler.crack!
+          @handler.parse_args
           @handler.charname.should eq "Bob"
           @handler.password.should eq "password"
         end
         
         it "should handle no args" do
           @handler = ConnectCmd.new(@client, Command.new("connect"), nil)
-          @handler.crack!
+          @handler.parse_args
           @handler.charname.should be_nil
           @handler.password.should be_nil
         end
         
         it "should handle a missing password" do
           @handler = ConnectCmd.new(@client, Command.new("connect Bob"), nil)
-          @handler.crack!
+          @handler.parse_args
           @handler.charname.should eq "Bob"
           @handler.password.should eq ""
         end
 
         it "should accept a multi-word password" do
           @handler = ConnectCmd.new(@client, Command.new("connect Bob bob's password"), nil)
-          @handler.crack!
+          @handler.parse_args
           @handler.charname.should eq "Bob"
           @handler.password.should eq "bob's password"
         end
@@ -59,7 +59,7 @@ module AresMUSH
      
       describe :handle do  
         before do
-          @handler.crack!
+          @handler.parse_args
         end
              
         context "failure" do

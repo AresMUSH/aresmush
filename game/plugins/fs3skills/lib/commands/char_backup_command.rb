@@ -6,8 +6,8 @@ module AresMUSH
       
       attr_accessor :target
       
-      def crack!
-        self.target = !cmd.args ? enactor.name : trim_input(cmd.args)
+      def parse_args
+        self.target = !cmd.args ? enactor.name : trim_arg(cmd.args)
       end
       
       def check_permission

@@ -14,14 +14,14 @@ module AresMUSH
       describe :crack do
         it "should crack a name by itself" do
           @handler = OpenCmd.new(@client, Command.new("open N"), @enactor)
-          @handler.crack!
+          @handler.parse_args
           @handler.name.should eq "N"
           @handler.dest.should be_nil
         end
         
         it "should crack a name and destination" do
           @handler = OpenCmd.new(@client, Command.new("open N=Happy Room"), @enactor)
-          @handler.crack!
+          @handler.parse_args
           @handler.name.should eq "N"
           @handler.dest.should eq "Happy Room"
         end

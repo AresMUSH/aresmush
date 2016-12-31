@@ -5,10 +5,10 @@ module AresMUSH
 
       attr_accessor :reply_num
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.number = trim_input(cmd.args.arg1)
-        self.reply_num = cmd.args.arg2 ? cmd.args.arg2.to_i : 0
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.number = trim_arg(args.arg1)
+        self.reply_num = args.arg2 ? args.arg2.to_i : 0
       end
       
       def required_args

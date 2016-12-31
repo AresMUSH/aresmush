@@ -3,7 +3,7 @@ module AresMUSH
     class TinkerCmd
       include CommandHandler
             
-      def crack!
+      def parse_args
       end
       
       def check_can_manage

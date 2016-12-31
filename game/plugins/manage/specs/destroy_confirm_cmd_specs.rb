@@ -22,7 +22,7 @@ module AresMUSH
                :destroy_class => @target.class,
                :something_else => "x" } }
           Manage.stub(:can_manage_object?) { true }
-          @handler.crack!
+          @handler.parse_args
         end
         
         context "failures" do

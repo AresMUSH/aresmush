@@ -88,8 +88,8 @@ module AresMUSH
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
-      it "should crack the args" do
-        @handler.should_receive(:crack!)
+      it "should parse the args" do
+        @handler.should_receive(:parse_args)
         @handler.on_command
       end
       
@@ -173,31 +173,31 @@ module AresMUSH
       end    
     end  
     
-    describe :trim_input do
+    describe :trim_arg do
       before do
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
       it "should return nil for nil" do
-        @handler.trim_input(nil).should eq nil
+        @handler.trim_arg(nil).should eq nil
       end
       
-      it "should return a titleized string" do
-        @handler.trim_input("   someTHING   ").should eq "someTHING"
+      it "should return a titlecased string" do
+        @handler.trim_arg("   someTHING   ").should eq "someTHING"
       end
     end
     
-    describe :titleize_input do
+    describe :titlecase_arg do
       before do 
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
       it "should return nil for nil" do
-        @handler.titleize_input(nil).should eq nil
+        @handler.titlecase_arg(nil).should eq nil
       end
       
-      it "should return a titleized string" do
-        @handler.titleize_input("   someTHING   ").should eq "Something"
+      it "should return a titlecased string" do
+        @handler.titlecase_arg("   someTHING   ").should eq "Something"
       end
     end
   end

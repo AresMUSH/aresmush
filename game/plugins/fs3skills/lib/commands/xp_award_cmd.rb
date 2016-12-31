@@ -6,10 +6,10 @@ module AresMUSH
       
       attr_accessor :name, :xp
 
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.name = trim_input(cmd.args.arg1)
-        self.xp = trim_input(cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = trim_arg(args.arg1)
+        self.xp = trim_arg(args.arg2)
       end
 
       def required_args

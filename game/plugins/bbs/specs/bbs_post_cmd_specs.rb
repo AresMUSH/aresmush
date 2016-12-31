@@ -16,7 +16,7 @@ module AresMUSH
         
         it "should ignore a missing arg" do
           handler = BbsPostCmd.new(nil, Command.new("bbs/post board=subj"), nil)
-          handler.crack!
+          handler.parse_args
           handler.board_name.should be_nil
           handler.subject.should be_nil
           handler.message.should be_nil
@@ -25,7 +25,7 @@ module AresMUSH
         context "Myrddin syntax" do
           it "should handle the Myrddin syntax" do
             handler = BbsPostCmd.new(nil, Command.new("bbs/post board/subj=msg"), nil)
-            handler.crack!
+            handler.parse_args
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
             handler.message.should eq "msg"
@@ -33,7 +33,7 @@ module AresMUSH
 
           it "should stop the subject after the first slash" do
             handler = BbsPostCmd.new(nil, Command.new("bbs/post board/subj=msg with a / slash"), nil)
-            handler.crack!
+            handler.parse_args
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
             handler.message.should eq "msg with a / slash"
@@ -41,7 +41,7 @@ module AresMUSH
         
           it "should stop the subjecta fter the first equals" do
             handler = BbsPostCmd.new(nil, Command.new("bbs/post board/subj=msg with a = equals"), nil)
-            handler.crack!
+            handler.parse_args
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
             handler.message.should eq "msg with a = equals"
@@ -51,7 +51,7 @@ module AresMUSH
         context "Fara syntax" do
           it "should handle the Fara syntax" do
             handler = BbsPostCmd.new(nil, Command.new("bbs/post board=subj/msg"), nil)
-            handler.crack!
+            handler.parse_args
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
             handler.message.should eq "msg"
@@ -59,7 +59,7 @@ module AresMUSH
         
           it "should stop the subject after the first slash" do
             handler = BbsPostCmd.new(nil, Command.new("bbs/post board=subj/msg with a / slash"), nil)
-            handler.crack!
+            handler.parse_args
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
             handler.message.should eq "msg with a / slash"
@@ -67,7 +67,7 @@ module AresMUSH
         
           it "should stop the subject after the first equals" do
             handler = BbsPostCmd.new(nil, Command.new("bbs/post board=subj/msg with a = equals"), nil)
-            handler.crack!
+            handler.parse_args
             handler.board_name.should eq "board"
             handler.subject.should eq "subj"
             handler.message.should eq "msg with a = equals"

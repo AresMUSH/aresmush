@@ -5,8 +5,8 @@ module AresMUSH
 
       attr_accessor :search
       
-      def crack!
-        self.search = titleize_input(cmd.args)
+      def parse_args
+        self.search = titlecase_arg(cmd.args)
       end
       
       def allow_without_login

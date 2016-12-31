@@ -1,7 +1,7 @@
 module AresMUSH  
   class ArgParser
       
-    def self.crack(regex, args)
+    def self.parse(regex, args)
       match = regex.match(args)
       !match ? HashReader.new({}) : HashReader.new(match.names_hash)
     end

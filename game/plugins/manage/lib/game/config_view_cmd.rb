@@ -5,8 +5,8 @@ module AresMUSH
 
       attr_accessor :section
       
-      def crack!
-        self.section = trim_input(cmd.args)
+      def parse_args
+        self.section = trim_arg(cmd.args)
       end
       
       def check_section_exists

@@ -5,7 +5,7 @@ module AresMUSH
 
       attr_accessor :category
       
-      def crack!
+      def parse_args
         self.category = Help.command_to_category(cmd.root)
       end
       

@@ -7,14 +7,14 @@ module AresMUSH
       attr_accessor :exit
       attr_accessor :return_exit
       
-      def crack!
+      def parse_args
         # build <name>
         # build <name>=<outgoing exit>
         # build <name>=<outgoing exit>,<return exit>
-        cmd.crack_args!(/(?<name>[^\=]+)\=?(?<exit>[^\,]*),?(?<return_exit>[^\,]*)/)
-        self.name = cmd.args.name
-        self.exit = cmd.args.exit
-        self.return_exit = cmd.args.return_exit
+        args = cmd.parse_args(/(?<name>[^\=]+)\=?(?<exit>[^\,]*),?(?<return_exit>[^\,]*)/)
+        self.name = trim_arg(args.name)
+        self.exit = trim_arg(args.exit)
+        self.return_exit = trim_arg(args.return_exit)
       end
       
       def required_args

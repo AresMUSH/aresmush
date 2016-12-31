@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :set
       
-      def crack!
-        self.set = cmd.args ? trim_input(cmd.args) : nil
+      def parse_args
+        self.set = cmd.args ? trim_arg(cmd.args) : nil
       end
       
       def handle

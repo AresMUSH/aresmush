@@ -5,10 +5,10 @@ module AresMUSH
       
       attr_accessor :option, :name
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.name = titleize_input(cmd.args.arg1)
-        self.option = OnOffOption.new(cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = titlecase_arg(args.arg1)
+        self.option = OnOffOption.new(args.arg2)
       end
       
       def required_args

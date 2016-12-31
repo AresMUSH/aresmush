@@ -5,10 +5,10 @@ module AresMUSH
 
       attr_accessor :category, :value
 
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.category = cmd.args.arg1 ? trim_input(cmd.args.arg1).downcase : nil
-        self.value = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.category = downcase_arg(args.arg1)
+        self.value = trim_arg(args.arg2)
       end
       
       def required_args
@@ -30,7 +30,7 @@ module AresMUSH
         elsif (self.category == "submitter")
           result = ClassTargetFinder.find(self.value, Character, enactor)
           if (result.found?)
-            jobs = Job.find(author_id: result.target.id).sort_by { |j| j.number }
+            jobs = Job.find(author_id: result.target.id).sort_by(:number)
           else
             client.emit_failure t('db.object_not_found')
             return
@@ -41,9 +41,14 @@ module AresMUSH
           return
         end
         
-        template = JobsListTemplate.new(enactor, jobs, 1, 1)
-        client.emit template.display          
-        
+        paginator = Paginator.paginate(jobs, cmd.page, 20)        
+        template = JobsListTemplate.new(enactor, paginator)
+        if (paginator.out_of_bounds?)
+          client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
+        else
+          template = JobsListTemplate.new(enactor, paginator)
+          client.emit template.render
+        end        
       end
     end
   end

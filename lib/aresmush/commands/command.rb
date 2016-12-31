@@ -13,7 +13,7 @@ module AresMUSH
     end    
     
     def crack!
-      cracked = CommandArgParser.crack(@raw)
+      cracked = CommandCracker.crack(@raw)
       @prefix = cracked[:prefix]
       @root = cracked[:root] ? cracked[:root].downcase : nil
       @page = cracked[:page]
@@ -21,8 +21,8 @@ module AresMUSH
       @args = cracked[:args]
     end
     
-    def crack_args!(args_regex)
-      @args = ArgParser.crack(args_regex, @args)        
+    def parse_args(args_regex)
+      ArgParser.parse(args_regex, @args)
     end
     
     def to_s

@@ -5,10 +5,10 @@ module AresMUSH
       
       attr_accessor :name, :note
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.name = cmd.args.arg1
-        self.note = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = args.arg1
+        self.note = args.arg2
       end
       
       def required_args

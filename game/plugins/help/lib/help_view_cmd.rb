@@ -6,9 +6,9 @@ module AresMUSH
 
       attr_accessor :category, :topic, :category_config
       
-      def crack!
+      def parse_args
         self.category = Help.command_to_category(cmd.root)
-        self.topic = strip_prefix(titleize_input(cmd.args))
+        self.topic = strip_prefix(titlecase_arg(cmd.args))
         self.category_config = Help.category_config[self.category]
       end
 
@@ -71,7 +71,7 @@ module AresMUSH
       end
             
       def display_help(topic, category_title)
-        title = t('help.topic', :category => category_title, :topic => topic.titleize)
+        title = t('help.topic', :category => category_title, :topic => topic.titlecase)
         text = Help.topic_contents(topic, self.category)
         markdown = MarkdownFormatter.new
         display = markdown.to_mush(text).chomp

@@ -6,17 +6,17 @@ module AresMUSH
       
       attr_accessor :name, :ability_name, :rating
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /[^\/]+\=.+\/.+/)
-          cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_arg3)
-          self.name = trim_input(cmd.args.arg1)
-          self.ability_name = titleize_input(cmd.args.arg2)
-          self.rating = trim_input(cmd.args.arg3)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+          self.name = trim_arg(args.arg1)
+          self.ability_name = titlecase_arg(args.arg2)
+          self.rating = trim_arg(args.arg3)
         else
-          cmd.crack_args!(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.name = enactor_name
-          self.ability_name = titleize_input(cmd.args.arg1)
-          self.rating = trim_input(cmd.args.arg2)
+          self.ability_name = titlecase_arg(args.arg1)
+          self.rating = trim_arg(args.arg2)
         end
       end
 

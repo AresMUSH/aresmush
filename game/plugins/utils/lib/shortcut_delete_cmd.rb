@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :shortcut
 
-      def crack!
-        self.shortcut = cmd.args ? trim_input(cmd.args).downcase : nil
+      def parse_args
+        self.shortcut = cmd.args ? trim_arg(cmd.args).downcase : nil
       end
       
       def required_args

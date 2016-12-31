@@ -25,15 +25,15 @@ module AresMUSH
     end
     
     def self.attr_names
-      attrs.map { |a| a['name'].titleize }
+      attrs.map { |a| a['name'].titlecase }
     end
     
     def self.action_skill_names
-      action_skills.map { |a| a['name'].titleize }
+      action_skills.map { |a| a['name'].titlecase }
     end
     
     def self.language_names
-      languages.map { |l| l['name'].titleize }
+      languages.map { |l| l['name'].titlecase }
     end
 
     def self.action_skill_config(name)
@@ -42,7 +42,7 @@ module AresMUSH
     
     # Returns the type (attribute, action, etc) for a skill being rolled.
     def self.get_ability_type(ability)
-      ability = ability.titleize
+      ability = ability.titlecase
       if (attr_names.include?(ability))
         return :attribute
       elsif (action_skill_names.include?(ability))

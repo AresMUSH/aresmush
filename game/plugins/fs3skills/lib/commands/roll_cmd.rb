@@ -6,14 +6,14 @@ module AresMUSH
       
       attr_accessor :name, :roll_str, :private_roll
 
-      def crack!
+      def parse_args
         if (cmd.args =~ /\//)
-          cmd.crack_args!(ArgParser.arg1_slash_arg2)          
-          self.name = cmd.args.arg1
-          self.roll_str = titleize_input(cmd.args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_slash_arg2)          
+          self.name = trim_arg(args.arg1)
+          self.roll_str = titlecase_arg(args.arg2)
         else
           self.name = enactor_name        
-          self.roll_str = titleize_input(cmd.args)
+          self.roll_str = titlecase_arg(cmd.args)
         end
         self.private_roll = cmd.switch_is?("private")
       end

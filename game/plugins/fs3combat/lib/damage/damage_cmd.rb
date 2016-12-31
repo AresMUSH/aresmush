@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :name
 
-      def crack!
-        self.name = cmd.args ? titleize_input(cmd.args) : enactor.name
+      def parse_args
+        self.name = cmd.args ? titlecase_arg(cmd.args) : enactor.name
       end
       
       def handle

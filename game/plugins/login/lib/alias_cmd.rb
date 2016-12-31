@@ -5,13 +5,13 @@ module AresMUSH
       
       attr_accessor :alias, :name
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /\=/ )
-          self.name = trim_input(cmd.args.before("="))
-          self.alias = trim_input(cmd.args.after("="))
+          self.name = trim_arg(cmd.args.before("="))
+          self.alias = trim_arg(cmd.args.after("="))
         else
           self.name = "me"
-          self.alias = trim_input(cmd.args)
+          self.alias = trim_arg(cmd.args)
         end
       end
       

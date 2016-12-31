@@ -44,7 +44,7 @@ module AresMUSH
         input.gsub(/%r/i, '&#013;&#010;')
       end
       
-      def titleize_input(input)
+      def titlecase_arg(input)
         return nil if !input
         input.titlecase
       end

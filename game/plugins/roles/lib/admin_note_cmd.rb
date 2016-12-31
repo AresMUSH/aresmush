@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :note
 
-      def crack!
+      def parse_args
         self.note = cmd.args
       end
       

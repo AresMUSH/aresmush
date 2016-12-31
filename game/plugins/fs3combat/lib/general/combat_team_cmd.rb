@@ -6,14 +6,14 @@ module AresMUSH
       
       attr_accessor :names, :team
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /=/)
-          cmd.crack_args!(ArgParser.arg1_equals_arg2)
-          self.names = cmd.args.arg1 ? cmd.args.arg1.split(" ").map { |n| titleize_input(n) } : nil
-          self.team = trim_input(cmd.args.arg2).to_i
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.names = split_and_titlecase_arg(args.arg1)
+          self.team = trim_arg(args.arg2).to_i
         else
           self.names = [enactor.name]
-          self.team = trim_input(cmd.args).to_i
+          self.team = trim_arg(cmd.args).to_i
         end
       end
 

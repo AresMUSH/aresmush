@@ -6,7 +6,7 @@ module AresMUSH
       
       attr_accessor :num
 
-      def crack!
+      def parse_args
         self.num = cmd.args ? cmd.args.to_i : nil
       end
       

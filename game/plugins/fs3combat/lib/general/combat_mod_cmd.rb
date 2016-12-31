@@ -6,10 +6,10 @@ module AresMUSH
       
       attr_accessor :name, :value, :mod_type
       
-      def crack!
-        cmd.crack_args!(ArgParser.arg1_equals_arg2)
-        self.name = titleize_input(cmd.args.arg1)
-        self.value = cmd.args.arg2.to_i
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = titlecase_arg(args.arg1)
+        self.value = args.arg2.to_i
         case cmd.switch
         when "defensemod"
           self.mod_type = :defense

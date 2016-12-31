@@ -5,8 +5,8 @@ module AresMUSH
       
       attr_accessor :text
 
-      def crack!
-        self.text = trim_input(cmd.args)
+      def parse_args
+        self.text = trim_arg(cmd.args)
       end
       
       def required_args

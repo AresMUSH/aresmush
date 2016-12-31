@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :page
          
-      def crack!
+      def parse_args
         self.page = cmd.args ? cmd.args.to_i : 1
       end
       

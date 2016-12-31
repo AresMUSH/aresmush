@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :going
       
-      def crack!
+      def parse_args
         self.going = cmd.switch_is?("join")
       end
       
