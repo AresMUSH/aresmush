@@ -12,3 +12,6 @@ en:
         offline: "%xh%xx<Offline>%xn"
         last_on: "%xh%xxLast On %{last_on}%xn"
         admin_note_set: "You set your admin note."
+        role_created: "Role %{name} created."
+        role_deleted: "Role %{name} deleted.  Make sure if you have any plugins configured to use that role that you remove it from them."
+        role_already_exists: "Role %{name} already exists."

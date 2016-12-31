@@ -81,6 +81,7 @@ module AresMUSH
         redirect '/login'
       else
         session[:user_id] = char.id
+        char.update(login_api_token: Character.random_link_code)
         flash[:info] = "Welcome, #{char.name}!"
         redirect '/'
       end

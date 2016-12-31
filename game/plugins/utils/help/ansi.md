@@ -9,7 +9,7 @@ aliases:
 - colors
 plugin: utils
 ---
-You create a color in Ares using either \%x or \%c followed by the color code.  \%xn goes back to normal.
+You create a color in Ares using either \%x or \%c followed by the color code.  \%xn goes back to normal.  
 
 For example: \%xgGreen\%xn makes %xgGreen%xn.  
 
@@ -23,6 +23,11 @@ Ansi codes can be nested within each other.
 
     \%xrRed on black\%xBRed on Blue\%xnBack to normal
     %xrRed on black%xBRed on Blue%xnBack to normal
+
+And codes like bold and underline can be stacked with other colors.
+
+    \%xh%xbHighlighted blue.\%xn
+    %xh%xbHighlighted blue.%xn
 
 Additional ansi codes include:
 

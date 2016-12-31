@@ -12,8 +12,10 @@ load "lib/bbs_new_cmd.rb"
 load "lib/bbs_post_cmd.rb"
 load "lib/bbs_read_cmd.rb"
 load "lib/bbs_reply_cmd.rb"
+load "lib/bbs_delete_reply_cmd.rb"
 load "lib/bbs_scan_cmd.rb"
 load "lib/helpers.rb"
+load "lib/event_handlers.rb"
 load "lib/management/bbs_attribute_cmd.rb"
 load "lib/management/bbs_create_board_cmd.rb"
 load "lib/management/bbs_delete_board_cmd.rb"
@@ -41,7 +43,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/admin_bbs.md", "help/bbs.md" ]
+      [ "help/admin_bbs.md", "help/bbs.md", "help/bbs_edit.md" ]
     end
  
     def self.config_files
@@ -66,6 +68,8 @@ module AresMUSH
         return BbsCreateBoardCmd
       when "delete"
         return BbsDeleteCmd
+      when "deletereply"
+        return BbsDeleteReplyCmd
       when "deleteboard"
         return BbsDeleteBoardCmd
       when "describe"
@@ -102,6 +106,11 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "RolesDeletedEvent"
+        return RolesDeletedEventHandler
+      end
+      
       nil
     end
   end

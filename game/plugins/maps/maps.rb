@@ -2,6 +2,10 @@ $:.unshift File.dirname(__FILE__)
 load "lib/helpers.rb"
 load "lib/map_cmd.rb"
 load "lib/maps_cmd.rb"
+load "lib/maps_model.rb"
+load "lib/map_create_cmd.rb"
+load "lib/map_delete_cmd.rb"
+load "lib/map_areas_cmd.rb"
 
 module AresMUSH
   module Maps
@@ -21,7 +25,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/map.md" ]
+      [ "help/map.md", "help/admin_map.md" ]
     end
  
     def self.config_files
@@ -35,7 +39,16 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
        case cmd.root
        when "map"
-         return MapCmd
+         case cmd.switch
+         when "create"
+           return MapCreateCmd
+         when "delete"
+           return MapDeleteCmd
+         when "areas"
+           return MapAreasCmd
+         when nil
+           return MapCmd
+         end
        when "maps"
          return MapsCmd
        end

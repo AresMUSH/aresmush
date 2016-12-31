@@ -12,13 +12,12 @@ module AresMUSH
       end
       
       def handle
-        map_file = Maps.get_map_file(self.area)
+        map = Maps.get_map_for_area(self.area)
       
         if (!map)
-          client.emit_failure t('maps.no_such_map')
+          client.emit_failure t('maps.no_such_map', :name => self.area)
         else
-          map_text = Maps.load_map(map_file)
-          client.emit BorderedDisplay.text map_text, t('maps.map_title', :area => self.area)
+          client.emit BorderedDisplay.text map.map_text, t('maps.map_title', :area => self.area)
         end
       end
     end

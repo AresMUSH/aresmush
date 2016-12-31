@@ -73,7 +73,7 @@
       if (charId !== ' ') {
         data = {
           'id': "" + charId,
-          'token': "" + charToken
+          'login_api_token': "" + charToken
         };
         send_cmd('connect', data);
       }

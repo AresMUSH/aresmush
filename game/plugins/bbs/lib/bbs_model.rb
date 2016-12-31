@@ -84,6 +84,10 @@ module AresMUSH
       char == author
     end
     
+    def author_name
+      !self.author ? t('bbs.deleted_author') : self.author.name
+    end
+    
     def read_marker(char)
       BbsReadMark.find(character_id: char.id).combine(bbs_post_id: self.id).first
     end
@@ -122,5 +126,13 @@ module AresMUSH
 
     reference :bbs_post, "AresMUSH::BbsPost"
     reference :author, "AresMUSH::Character"
+    
+    def authored_by?(char)
+      char == author
+    end
+    
+    def author_name
+      !self.author ? t('bbs.deleted_author') : self.author.name
+    end
   end
 end

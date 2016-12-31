@@ -17,7 +17,7 @@
         <div id="console"></div>
         
         <input type="hidden" id="charId" name="charId" value="<%= @user ? @user.id : ' ' %>">
-        <input type="hidden" id="charToken" name="charToken" value="<%= @user ? @user.password_hash : ' ' %>">
+        <input type="hidden" id="charToken" name="charToken" value="<%= @user ? @user.login_api_token : ' ' %>">
         <textarea id="sendMsg"></textarea>
      <button class="sendButton btn-primary">Send Text</button>
         

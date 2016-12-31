@@ -8,7 +8,7 @@ module AresMUSH
       def initialize(enactor, job)
         @enactor = enactor
         @job = job
-        @replies = visible_replies.sort_by { |r| r.created_at }
+        @replies = visible_replies
         super File.dirname(__FILE__) + "/job.erb"
       end
      

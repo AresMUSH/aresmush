@@ -7,7 +7,8 @@ module AresMUSH
       include CommandRequiresLogin
 
       def handle
-        client.emit BorderedDisplay.list Maps.available_maps, t('maps.maps_title')
+        maps = GameMap.all.map { |m| "#{m.name.ljust(20)} #{m.areas.join(',')}" }
+        client.emit BorderedDisplay.list maps, t('maps.maps_title')
       end
     end
   end

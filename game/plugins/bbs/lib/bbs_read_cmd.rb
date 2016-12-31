@@ -22,7 +22,17 @@ module AresMUSH
       
       def handle
         if (self.num.downcase == 'u')
-          Global.dispatcher.queue_command(client, Command.new("bbs/new #{self.board_name}"))
+          Bbs.with_a_board(self.board_name, client, enactor) do |board|  
+            unread = board.unread_posts(enactor)
+            if (unread.count == 0)
+              client.emit_success t('bbs.no_new_posts')
+              return
+            end
+            
+            unread.each do |u|
+              Global.dispatcher.queue_command(client, Command.new("bbs #{self.board_name}/#{u.post_index}"))
+            end
+          end
           return
         end
         

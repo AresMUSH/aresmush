@@ -3,7 +3,9 @@ load "lib/admin_list_cmd.rb"
 load "lib/admin_note_cmd.rb"
 load "lib/event_handlers.rb"
 load "lib/helpers.rb"
-load "lib/roles_add_cmd.rb"
+load "lib/roles_assign_cmd.rb"
+load "lib/role_create_cmd.rb"
+load "lib/role_delete_cmd.rb"
 load "lib/roles_cmd.rb"
 load "lib/roles_model.rb"
 load "lib/roles_remove_cmd.rb"
@@ -29,7 +31,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/admin.md", "help/admin_admin.md", "help/roles.md" ]
+      [ "help/admin.md", "help/admin_roles.md", "help/roles.md" ]
     end
  
     def self.config_files
@@ -50,10 +52,14 @@ module AresMUSH
         return AdminNoteCmd
       when "role"
         case cmd.switch
-        when "add"
-          return RoleAddCmd
+        when "assign"
+          return RoleAssignCmd
         when "remove"
           return RoleRemoveCmd
+        when "create"
+          return RoleCreateCmd
+        when "delete"
+          return RoleDeleteCmd          
         when nil
           return RolesCmd
         end

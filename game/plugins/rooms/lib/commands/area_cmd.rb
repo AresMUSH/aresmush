@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :name
       
       def crack!
-        self.name = !cmd.args ? nil : trim_input(cmd.args)
+        self.name = !cmd.args ? nil : titleize_input(cmd.args)
       end
 
       def check_can_build

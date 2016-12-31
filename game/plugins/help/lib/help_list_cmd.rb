@@ -1,6 +1,5 @@
 module AresMUSH
   module Help
-    
     class HelpListCmd
       include CommandHandler
       include CommandWithoutSwitches
@@ -25,7 +24,18 @@ module AresMUSH
       
       def handle        
         list = Help.toc(self.category)
-        paginator = Paginator.paginate(list, self.page, 4)
+        case self.category
+        when "main"
+          topics_per_page = 3
+        when "admin"
+          topics_per_page = 5
+        when "builder"
+          topics_per_page = 6
+        else
+          topics_per_page = 4
+        end
+            
+        paginator = Paginator.paginate(list, self.page, topics_per_page)
         
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg

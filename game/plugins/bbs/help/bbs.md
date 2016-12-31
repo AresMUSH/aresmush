@@ -30,10 +30,5 @@ On boards that you are allowed to write to, you can post a new message or reply 
 `bbs/reply <reply>` - Replies to the last post you read.
 `bbs/reply <board>/<post #>=<reply>` - Writes a comment as a reply to a post.
 
-You can also edit or delete your own posts.  Currently there is no way to edit or delete replies.
+See also `help bbs edit` for info on editing posts.
 
-`bbs/edit <board>/<post #>` - Grabs the existing post text into your input 
-       buffer (if your client supports it.  See `help edit`.)
-`bbs/edit <board>/<post #>=<new text>` - Replaces post text with the new text.
-`bbs/delete <board>/<post #>` - Deletes a post
-`bbs/move <board>/<post #>=<new board>` - Moves a post from one board to another.

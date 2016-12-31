@@ -48,3 +48,9 @@ en:
         confirm_purge: "This will *permanently* delete all closed jobs.  You may want to do a backup first.  Are you sure?  If so, type jobs/confirmpurge"
         jobs_purged: "All closed jobs have been deleted."
         
+        mail_sent: "You send a mail message to %{names}."
+        mail_comment: "Mail sent to %{names}:%R%{message}"
+        
+        reply_deleted: "Reply deleted."
+        invalid_reply_number: "That is not a valid reply number."
+        

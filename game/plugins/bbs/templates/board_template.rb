@@ -44,7 +44,7 @@ module AresMUSH
       end
 
       def author(post)
-        !post.author ? t('bbs.deleted_author') : post.author.name
+        post.author_name
       end
       
       def date(post)

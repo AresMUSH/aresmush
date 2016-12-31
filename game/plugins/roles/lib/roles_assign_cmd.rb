@@ -1,6 +1,6 @@
 module AresMUSH
   module Roles
-    class RoleAddCmd
+    class RoleAssignCmd
       include CommandHandler
       include CommandRequiresLogin
       include CommandRequiresArgs
