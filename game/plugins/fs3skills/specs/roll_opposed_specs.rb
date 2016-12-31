@@ -1,10 +1,9 @@
 module AresMUSH
   module FS3Skills
     describe OpposedRollCmd do
-      include CommandHandlerTestHelper
       describe :crack do
         it "should fail if the string is invalid" do
-          init_handler(OpposedRollCmd, "roll A vs B")
+          handler = OpposedRollCmd.new(nil, Command.new("roll A vs B"), nil)
           handler.crack!
           handler.name1.should be_nil
           handler.name2.should be_nil
@@ -13,7 +12,7 @@ module AresMUSH
         end
         
         it "should crack a PC roll vs a NPC number" do
-          init_handler(OpposedRollCmd, "roll A/1 vs 3")
+          handler = OpposedRollCmd.new(nil, Command.new("roll A/1 vs 3"), nil)
           handler.crack!
           handler.name1.should eq "A"
           handler.name2.should be_nil
@@ -22,7 +21,7 @@ module AresMUSH
         end
         
         it "should crack a PC roll vs another PC" do
-          init_handler(OpposedRollCmd, "roll A/Firearms vs B/Melee")
+          handler = OpposedRollCmd.new(nil, Command.new("roll A/Firearms vs B/Melee"), nil)
           handler.crack!
           handler.name1.should eq "A"
           handler.name2.should eq "B"
@@ -31,7 +30,7 @@ module AresMUSH
         end
         
         it "should crack skill names with spaces" do
-          init_handler(OpposedRollCmd, "roll A/Basket Weaving+2 vs B/Scuba Diving - 1")
+          handler = OpposedRollCmd.new(nil, Command.new("roll A/Basket Weaving+2 vs B/Scuba Diving - 1"), nil)
           handler.crack!
           handler.name1.should eq "A"
           handler.name2.should eq "B"

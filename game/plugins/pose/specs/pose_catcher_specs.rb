@@ -1,23 +1,22 @@
 module AresMUSH
   module Pose
     describe PoseCatcherCmd do
-      
-      include CommandHandlerTestHelper
-    
+          
       before do
-        init_handler(PoseCatcherCmd, ":test")
+        @client = double
+        @enactor = double
+        @handler = PoseCatcherCmd.new(@client, Command.new(":test"), @enactor)
         SpecHelpers.stub_translate_for_testing
       end
             
       describe :handle do
         it "should emit to the room" do
           room = double
-          enactor.stub(:room) { room }
-          enactor.stub(:name) { "Bob" }
-          cmd.stub(:raw) { ":test" }
+          @enactor.stub(:room) { room }
+          @enactor.stub(:name) { "Bob" }
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "Bob test"}
-          Pose.should_receive(:emit_pose).with(enactor, "Bob test", false, false)
-          handler.handle
+          Pose.should_receive(:emit_pose).with(@enactor, "Bob test", false, false)
+          @handler.handle
         end
       end
     end
