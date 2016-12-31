@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :num, :tag
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)
         self.num = trim_input(cmd.args.arg1)
         self.tag = titleize_input(cmd.args.arg2)        
       end

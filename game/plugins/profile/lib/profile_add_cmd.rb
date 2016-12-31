@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :field, :value
 
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)
         self.field = titleize_input(cmd.args.arg1)
         self.value = cmd.args.arg2
       end

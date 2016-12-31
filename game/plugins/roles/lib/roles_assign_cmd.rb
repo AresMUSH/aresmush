@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :role
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.role = cmd.args.arg2 ? trim_input(cmd.args.arg2) : nil
       end

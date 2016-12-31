@@ -9,7 +9,7 @@ module AresMUSH
         # Has to be done first!  Crack will reset command aliases.
         self.admin_only = cmd.switch_is?("discuss")
 
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)
         self.number = trim_input(cmd.args.arg1)
         self.message = cmd.args.arg2
       end

@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :name, :skill
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)   
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)   
         self.name = cmd.args.arg1
         self.skill = cmd.args.arg2 ? cmd.args.arg2.to_i : 0
       end

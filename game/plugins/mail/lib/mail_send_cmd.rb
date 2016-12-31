@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :body
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_arg3)
         self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
         self.subject = cmd.args.arg2
         self.body = cmd.args.arg3

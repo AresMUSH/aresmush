@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :board_name, :num
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_slash_arg2)
+        cmd.crack_args!(ArgParser.arg1_slash_arg2)
         self.board_name = titleize_input(cmd.args.arg1)
         self.num = trim_input(cmd.args.arg2)
       end

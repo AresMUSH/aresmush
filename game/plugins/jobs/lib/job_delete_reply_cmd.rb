@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :reply_num
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)
         self.number = trim_input(cmd.args.arg1)
         self.reply_num = cmd.args.arg2 ? cmd.args.arg2.to_i : 0
       end

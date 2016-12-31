@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :lock_keys
             
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_optional_arg2)
         self.name = trim_input(cmd.args.arg1)
         self.lock_keys = !cmd.args.arg2 ? [] : trim_input(cmd.args.arg2).split(" ")
       end

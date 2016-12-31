@@ -1,5 +1,5 @@
 module AresMUSH
-  class CommandCracker
+  class CommandArgParser
     
     # Decodes commands in the standard form:
     #   root[/switch][ args]

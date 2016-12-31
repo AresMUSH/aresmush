@@ -8,7 +8,7 @@ module AresMUSH
       attr_accessor :comment
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_optional_arg3)
         self.num = trim_input(cmd.args.arg1)
         self.names = !cmd.args.arg2 ? [] : cmd.args.arg2.split(" ")
         self.comment = cmd.args.arg3

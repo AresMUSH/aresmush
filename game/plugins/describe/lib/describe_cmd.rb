@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :target, :description
 
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2)
         self.target = trim_input(cmd.args.arg1)
         self.description = cmd.args.arg2
       end

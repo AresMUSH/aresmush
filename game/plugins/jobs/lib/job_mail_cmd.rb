@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :names, :message
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_arg3)
         self.number = trim_input(cmd.args.arg1)
         self.names = cmd.args.arg2 ? cmd.args.arg2.split.map { |n| titleize_input(n) } : nil
         self.message = cmd.args.arg3

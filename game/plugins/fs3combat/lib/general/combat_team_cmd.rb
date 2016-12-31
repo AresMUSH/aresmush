@@ -8,7 +8,7 @@ module AresMUSH
       
       def crack!
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+          cmd.crack_args!(ArgParser.arg1_equals_arg2)
           self.names = cmd.args.arg1 ? cmd.args.arg1.split(" ").map { |n| titleize_input(n) } : nil
           self.team = trim_input(cmd.args.arg2).to_i
         else

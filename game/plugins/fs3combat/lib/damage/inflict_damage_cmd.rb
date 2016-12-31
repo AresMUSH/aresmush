@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :name, :desc, :severity
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
+        cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_arg3)
         self.name = titleize_input(cmd.args.arg1)
         self.desc = titleize_input(cmd.args.arg2)
         self.severity = cmd.args.arg3 ? cmd.args.arg3.upcase : nil

@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :board_name, :post_num, :reply_num
 
       def crack!        
-        cmd.crack_args!(CommonCracks.arg1_slash_arg2_equals_arg3)
+        cmd.crack_args!(ArgParser.arg1_slash_arg2_equals_arg3)
         self.board_name = cmd.args.arg1
         self.post_num = cmd.args.arg2
         self.reply_num = cmd.args.arg3 ? cmd.args.arg3.to_i : 0

@@ -8,12 +8,12 @@ module AresMUSH
       
       def crack!
         if (cmd.args =~ /[^\/]+\=.+\/.+/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
+          cmd.crack_args!(ArgParser.arg1_equals_arg2_slash_arg3)
           self.name = trim_input(cmd.args.arg1)
           self.ability_name = titleize_input(cmd.args.arg2)
           self.rating = trim_input(cmd.args.arg3)
         else
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+          cmd.crack_args!(ArgParser.arg1_equals_arg2)
           self.name = enactor_name
           self.ability_name = titleize_input(cmd.args.arg1)
           self.rating = trim_input(cmd.args.arg2)

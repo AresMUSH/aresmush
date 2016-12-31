@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :search_class, :name
 
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_optional_arg2)
         
         self.search_class = cmd.args.arg1 ? trim_input(cmd.args.arg1).titleize : nil
         self.name = trim_input(cmd.args.arg2)

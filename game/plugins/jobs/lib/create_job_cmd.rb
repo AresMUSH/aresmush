@@ -7,7 +7,7 @@ module AresMUSH
       
       def crack!
         if (cmd.args !~ /\//)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+          cmd.crack_args!(ArgParser.arg1_equals_arg2)
           self.title = trim_input(cmd.args.arg1)
           self.description = cmd.args.arg2
           self.category = "REQ"

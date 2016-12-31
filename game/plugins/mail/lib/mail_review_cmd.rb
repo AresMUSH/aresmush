@@ -7,7 +7,7 @@ module AresMUSH
       
       def crack!
         if (cmd.args && cmd.args.include?("/"))
-          cmd.crack_args!(CommonCracks.arg1_slash_arg2)
+          cmd.crack_args!(ArgParser.arg1_slash_arg2)
           self.name = cmd.args.arg1
           self.num = cmd.args.arg2
         else

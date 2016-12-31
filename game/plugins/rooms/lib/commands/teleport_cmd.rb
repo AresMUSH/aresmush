@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :names
       
       def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
+        cmd.crack_args!(ArgParser.arg1_equals_optional_arg2)
         if (!cmd.args.arg2)
           self.names = []
           self.destination = trim_input(cmd.args.arg1)
