@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       it "should do MUSH substitutions" do
-        SubstitutionFormatter.should_receive(:format).with("msg") { "xmsg" }
+        SubstitutionFormatter.should_receive(:format).with("msg", true) { "xmsg" }
         msg = ClientFormatter.format("msg")
         expect_msg("xmsg", msg)
       end

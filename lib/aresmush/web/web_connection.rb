@@ -34,7 +34,7 @@ module AresMUSH
     
     def send_formatted(msg)
       # Strip out < and > - may need to strip other things in the future
-      send_data ClientFormatter.format(msg).gsub(/</, '&lt;').gsub(/>/, '&gt;')
+      send_data ClientFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
     end
     
     def close_connection(dummy = nil)  # Dummy for compatibility with the other connection class.

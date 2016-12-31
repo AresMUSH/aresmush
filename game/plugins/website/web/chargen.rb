@@ -77,7 +77,7 @@ module AresMUSH
       }
       
       template = Chargen::AppTemplate.new(@user, @user)
-      @app = ClientFormatter.format template.render
+      @app = ClientFormatter.format template.render, false
       
       @hooks = {}
       @user.fs3_hooks.each do |h|

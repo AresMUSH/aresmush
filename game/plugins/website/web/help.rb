@@ -15,7 +15,7 @@ module AresMUSH
     get '/help/:topic' do |topic|
       @topic = topic.titlecase
       text = Help::Api.get_help(topic)
-      text = ClientFormatter.format text
+      text = ClientFormatter.format text, false
       formatter = MarkdownFormatter.new
       @help =  formatter.to_html(text)
       erb :help

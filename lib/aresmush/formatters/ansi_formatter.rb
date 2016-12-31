@@ -37,7 +37,7 @@ module AresMUSH
     
     # Given a string like %xb or %c102, returns the appropriate ansified string, 
     # or nil if ansi code is not valid.
-    def self.get_code(str)
+    def self.get_code(str, enable_fansi = true)
       matches = /^%(?<control>[XxCc])(?<code>.+)/.match(str)
       return nil if !matches
       
@@ -47,10 +47,14 @@ module AresMUSH
       if (ansi_code_map.has_key?(code))
         return ansi_code_map[code]
       elsif (code.to_i > 0 && code.to_i < 257)
-        if (control == "X" || control == "C")
-          return "\e[48;5;#{code}m"
+        if (enable_fansi)
+          if (control == "X" || control == "C")
+            return "\e[48;5;#{code}m"
+          else
+            return "\e[38;5;#{code}m"
+          end
         else
-          return "\e[38;5;#{code}m"
+          return nil
         end
       else
         return nil
