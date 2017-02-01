@@ -19,7 +19,8 @@ fs3combat:
         # ----------------------------------------
         # DEFAULT TYPES
         # ----------------------------------------
-        # These are the default combatant types.  Do not delete them.
+        # These are the default combatant types.  You can change their stats,
+        # but don't delete them.
         
         Soldier:
             weapon: Rifle
