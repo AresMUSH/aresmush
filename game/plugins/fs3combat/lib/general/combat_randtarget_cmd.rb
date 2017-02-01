@@ -10,7 +10,7 @@ module AresMUSH
       
       def crack!
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+          cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
           self.name = titleize_input(cmd.args.arg1)
           self.number = cmd.args.arg2 ? cmd.args.arg2.to_i : 1
         else
@@ -27,8 +27,6 @@ module AresMUSH
       end
       
       def handle
-        client.emit "#{name} #{number}"
-        
         FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
           
           targets = []
