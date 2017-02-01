@@ -103,9 +103,9 @@ module AresMUSH
       
       mod = damage_mod + pc_mod + vehicle_mod
       roll = combatant.roll_ability(composure, mod)
-      
+
       combatant.log "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod}"
-      
+
       roll
     end
         

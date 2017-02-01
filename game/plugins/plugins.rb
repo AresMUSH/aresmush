@@ -41,7 +41,7 @@ module AresMUSH
         "status", 
         "tinker", 
         "utils", 
-        "weather", 
+        #"weather", 
         "who"   
       ]
     end

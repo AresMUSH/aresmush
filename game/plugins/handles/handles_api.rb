@@ -9,12 +9,12 @@ module AresMUSH
     
       def self.alts(char)
         return [] if !char.handle
-        Character.find_by_handle(char.handle)
+        Character.find_by_handle(char.handle).select  { |c| c }
       end
       
       def self.alts_of(handle)
         return [] if !handle
-        Character.find_by_handle(handle)
+        Character.find_by_handle(handle).select  { |c| c }
       end
     end
   end

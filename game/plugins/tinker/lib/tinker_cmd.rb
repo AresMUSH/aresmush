@@ -14,32 +14,11 @@ module AresMUSH
       end
       
       def handle
-        Damage.all.each { |d| client.emit d.inspect }
+        #Damage.all.each { |d| client.emit d.inspect }
         #Npc.all.each { |d| client.emit d.inspect }
         #Combatant.all.each { |d| client.emit d.inspect }
         # Put whatever you need to do here.
 
-  Character.all.each { |c| c.update(shortcuts: {} )}
-  
-  FS3Attribute.all.each do |a|
-    a.update(last_learned: a.character.created_at)
-    a.update(xp: 0)
-  end
-  
-  FS3ActionSkill.all.each do |a|
-    a.update(last_learned: a.character.created_at)
-    a.update(xp: 0)
-  end
-  
-  FS3BackgroundSkill.all.each do |a|
-    a.update(last_learned: a.character.created_at)
-    a.update(xp: 0)
-  end
-  
-  FS3Language.all.each do |a|
-    a.update(last_learned: a.character.created_at)
-    a.update(xp: 0)
-  end
         client.emit_success "Done!"
       end
 

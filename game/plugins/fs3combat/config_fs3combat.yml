@@ -20,7 +20,11 @@ fs3combat:
         # DEFAULT TYPES
         # ----------------------------------------
         # These are the default combatant types.  Do not delete them.
-        
+
+        Unarmed:
+            weapon: Unarmed
+            hitloc: Humanoid
+            defense_skill: Reflexes
         Soldier:
             weapon: Rifle
             weapon_specials: 
