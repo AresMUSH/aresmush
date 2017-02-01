@@ -33,6 +33,10 @@ fs3combat:
             #weapon:
             #weapon_specials:
             #armor:
+        Unarmed:
+            weapon: Unarmed
+            hitloc: Humanoid
+            defense_skill: Reflexes
                 
         # ----------------------------------------
         # CUSTOM TYPES
