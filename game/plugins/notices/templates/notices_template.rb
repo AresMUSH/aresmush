@@ -15,8 +15,7 @@ module AresMUSH
       end
       
       def alts
-        return [] if !@char.handle
-        Character.find_by_handle(@char.handle).select { |a| a != @char }
+        Handles::Api.alts(@char).select { |a| a != @char }
       end
       
       def has_alt_mail(alt)
