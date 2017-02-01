@@ -94,16 +94,15 @@ module AresMUSH
       
       if (combatant.is_in_vehicle?)
         vehicle = combatant.vehicle
-        vehicle_mod = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness")
+        vehicle_mod = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness").to_i
       else
         vehicle_mod = 0
       end
       
       damage_mod = combatant.total_damage_mod
       
-      toughness = composure + damage_mod + pc_mod + vehicle_mod
-      
-      roll = FS3Skills::Api.one_shot_die_roll(toughness)[:successes]
+      mod = damage_mod + pc_mod + vehicle_mod
+      roll = combatant.roll_ability(composure, mod)
       
       combatant.log "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod}"
       

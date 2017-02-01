@@ -21,7 +21,7 @@ fs3combat:
         Raider:
             description: "Cylon Raider space fighter"
             pilot_skill: Piloting
-            toughness: -2
+            toughness: -1
             hitloc_chart: Fighter
             armor: Raider
             weapons:
@@ -33,7 +33,7 @@ fs3combat:
         Raptor:
             description: "Raptor space command and control"
             pilot_skill: Piloting
-            toughness: 3
+            toughness: 2
             hitloc_chart: Transport
             armor: Raptor
             weapons:
@@ -45,7 +45,7 @@ fs3combat:
         Heavy Raider:
             description: "Cylon Heavy Raider space transport/bomber"
             pilot_skill: Piloting
-            toughness: 3
+            toughness: 2
             hitloc_chart: Transport
             armor: Heavy Raider
             weapons:
