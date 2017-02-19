@@ -1,27 +1,42 @@
+# Need to let the redis service update its own config files so we can use the 
+# redis config commands.
 sudo chown redis /etc/redis/redis.conf
-
 sudo chgrp redis /etc/redis/redis.conf
 
+# Make sure we have the latest packages.
 apt-get update
 
+# We need git to manage the source code.
 apt-get install -y git
 
-apt-get install -y nginx
-
+# I like emacs for text editing.
 apt-get install -y emacs
 
+# Protect SSH from multiple failed logins.
+apt-get install -y fail2ban
+
+# Allow unattended upgrades
+apt-get install -y unattended-upgrades
+
+# Turn unatteded upgrades on.
+dpkg-reconfigure -plow unattended-upgrades
+
+# Create a random password and encrypt it (we'll need that when setting it later)
 PASSWD=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
-
-adduser --disabled-password --gecos "" ares
-
 ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
 
+# Create an ares user
+adduser --disabled-password --gecos "" ares
+
+# Set the ares user's password
 usermod -p "$ENCRYPTEDPW" ares
+
+# Add them to the web and ares groups
 addgroup www
 usermod -a -G sudo,www ares
 
+# Have the game server start when the server reboots
 echo "/home/ares/aresmush/bin/startares&" > onboot.sh
-
 chmod +x onboot.sh
 
 echo "User ares created with password $PASSWD.  You will need it in a minute.  Please refer back to the installation instructions for the next steps."
