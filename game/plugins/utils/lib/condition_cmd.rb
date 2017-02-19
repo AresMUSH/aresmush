@@ -6,11 +6,10 @@ module AresMUSH
   module Utils
     class ConditionCmd
       include CommandHandler
-      include CommandWithoutSwitches
       
       attr_accessor :condition
       
-      def crack!
+      def parse_args
         self.condition = cmd.args
       end
       

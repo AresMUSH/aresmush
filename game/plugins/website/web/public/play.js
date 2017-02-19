@@ -37,7 +37,7 @@
       $('#sendMsg').val('');
     };
     connect = function() {
-      ws = new WebSocket('ws://localhost:4202/websocket');
+      ws = new WebSocket('ws://mush.aresmush.com:7205/websocket');
       ws.onmessage = function(evt) {
         var cleanData, html;
         cleanData = evt.data;

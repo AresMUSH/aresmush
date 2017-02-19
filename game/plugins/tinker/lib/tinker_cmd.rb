@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 module AresMUSH
   module Tinker
     class TinkerCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
-            
-      def crack!
+
+      def parse_args
       end
       
       def check_can_manage

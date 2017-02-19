@@ -11,4 +11,4 @@ server:
     # The web socket port is the one the web client connects to.  It must be different than
     # both the web server and regular port.
     websocket_port: 7205
-    webserver_port: 80
+    webserver_port: 8081
