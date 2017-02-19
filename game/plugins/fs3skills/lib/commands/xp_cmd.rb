@@ -3,11 +3,10 @@ module AresMUSH
   module FS3Skills
     class XpCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       attr_accessor :target
 
-      def crack!
+      def parse_args
         self.target = !cmd.args ? enactor_name : trim_input(cmd.args)
       end
 

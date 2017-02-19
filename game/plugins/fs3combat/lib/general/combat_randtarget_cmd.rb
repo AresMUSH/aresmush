@@ -2,15 +2,13 @@ module AresMUSH
   module FS3Combat
     class CombatRandTargetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :number
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
+          cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
           self.name = titleize_input(cmd.args.arg1)
           self.number = cmd.args.arg2 ? cmd.args.arg2.to_i : 1
         else
