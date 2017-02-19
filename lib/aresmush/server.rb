@@ -42,6 +42,9 @@ module AresMUSH
                 end
               end
             end
+            Global.logger.info "Websocket started on #{host}:#{websocket_port}."
+          else
+            Global.logger.info "Websocket not enabled."
           end
         end
 
