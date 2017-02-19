@@ -89,17 +89,22 @@ module AresMUSH
     
     def self.make_ko_roll(combatant)
       pc_mod = combatant.is_npc? ? 0 : 3
+
+      composure = Global.read_config("fs3combat", "composure_ability")
       
       if (combatant.is_in_vehicle?)
         vehicle = combatant.vehicle
-        toughness = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness")
-        roll = FS3Skills::Api.one_shot_die_roll(toughness + combatant.total_damage_mod + pc_mod)[:successes]
-        combatant.log "#{combatant.name} vehicle checking KO. roll=#{roll} tough=#{toughness} mod=#{combatant.total_damage_mod}."
+        vehicle_mod = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness").to_i
       else
-        toughness = Global.read_config("fs3combat", "composure_ability")
-        roll = combatant.roll_ability(toughness, pc_mod + combatant.total_damage_mod)
-        combatant.log "#{combatant.name} checking KO. roll=#{roll} mod=#{combatant.total_damage_mod}."
+        vehicle_mod = 0
       end
+      
+      damage_mod = combatant.total_damage_mod
+      
+      mod = damage_mod + pc_mod + vehicle_mod
+      roll = combatant.roll_ability(composure, mod)
+      
+      combatant.log "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod}"
       
       roll
     end

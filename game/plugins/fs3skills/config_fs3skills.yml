@@ -247,14 +247,7 @@ fs3skills:
         #        skills:
         #            Semper Fi: 3
         #            Alertness: 1
-    
-    # Set up when you want the XP cron job to run.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
-    cron:
-        #date: 1
-        day_of_week: Sat
-        hour: 21
-        minute: 00
+
 
     shortcuts:
         "hooks": "hook"

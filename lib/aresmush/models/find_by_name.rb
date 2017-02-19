@@ -16,7 +16,7 @@ module AresMUSH
         if result
           return [result]
         end
-        find(name_upcase: name_or_id.upcase).to_a
+        find(name_upcase: name_or_id.upcase).to_a.select { |x| x }
       end
 
       def find_one_by_name(name)

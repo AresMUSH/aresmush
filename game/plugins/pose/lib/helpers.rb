@@ -43,16 +43,14 @@ module AresMUSH
       active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
 
 
-      rooms = Room.all.group_by { |r| r.repose_on? }
+      rooms = Room.find(room_type: "IC").union(room_type: "RPR").group_by { |r| r.repose_on? }
       enabled_rooms = rooms[true] || []
       disabled_rooms = rooms[false] || []
 
       enabled_rooms.each do |r|
         next if active_rooms.include?(r)
         
-        r.repose_info.delete
-        r.update(repose_info_id: nil)
-        disabled_rooms << r
+        r.repose_info.reset
       end
     
       
@@ -65,15 +63,15 @@ module AresMUSH
     def self.reset_repose(room)
       repose = room.repose_info
       
-      if ((room.room_type == "IC" || room.room_type == "RPR") && !repose)
-        Global.logger.debug "Re-enabling repose in #{room.name}."
-        if (!repose)
-          repose = ReposeInfo.create(room: room)
+      if (room.room_type == "IC" || room.room_type == "RPR")
+        if (repose)
+          repose.update(enabled: true)
+        else
+          repose = ReposeInfo.create(room: room, enabled: true)
           room.update(repose_info: repose)
         end
-        repose.update(enabled: true)
-      elsif repose
-        repose.update(enabled: false)
+      elsif (repose)
+        repose.delete
       end
     end
     

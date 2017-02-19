@@ -24,6 +24,10 @@ module AresMUSH
         }
       end
 
+      def check_chargen_locked
+        Chargen::Api.check_chargen_locked(enactor)
+      end
+
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           if (!Chargen.can_edit_bg?(enactor, model, client))

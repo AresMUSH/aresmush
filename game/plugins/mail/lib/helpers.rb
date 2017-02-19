@@ -107,7 +107,8 @@ module AresMUSH
       
       copy_sent = author.mail_prefs && author.mail_prefs.copy_sent_mail
       
-      recipients << author if (copy_sent && !recipients.include?(author))
+      recipients << author if copy_sent
+      recipients = recipients.uniq
       
       to_list = recipients.map { |r| r.name }.join(" ")
       
