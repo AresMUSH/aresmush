@@ -2,8 +2,6 @@ module AresMUSH
   module Roles
     class AdminListCmd
       include CommandHandler
-      include TemplateFormatters
-      include CommandWithoutSwitches
             
       def handle
         admins_by_role = {}

@@ -2,12 +2,10 @@ module AresMUSH
   module Manage
     class GitCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :args
       
-      def crack!
+      def parse_args
         self.args = cmd.args
       end
       

@@ -2,8 +2,6 @@ module AresMUSH
   module Chargen
     class AppUnsubmitCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs
       
       def check_approval
         return t('chargen.you_are_already_approved') if enactor.is_approved?

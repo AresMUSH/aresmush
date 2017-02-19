@@ -1,11 +1,15 @@
 module AresMUSH
   module FS3Skills
     def self.receives_roll_results?(char)
-      char.has_any_role?(Global.read_config("fs3skills", "roles", "receives_roll_results"))
+      char.has_any_role?(Global.read_config("fs3skills", "receives_roll_results"))
     end
     
     def self.can_manage_abilities?(actor)
-      actor.has_any_role?(Global.read_config("fs3skills", "roles", "can_manage_abilities"))
+      actor.has_any_role?(Global.read_config("fs3skills", "can_manage_abilities"))
+    end
+    
+    def self.can_view_sheets?(actor)
+      actor.has_any_role?(Global.read_config("fs3skills", "can_view_sheets"))
     end
 
     def self.attrs
@@ -21,15 +25,15 @@ module AresMUSH
     end
     
     def self.attr_names
-      attrs.map { |a| a['name'].titleize }
+      attrs.map { |a| a['name'].titlecase }
     end
     
     def self.action_skill_names
-      action_skills.map { |a| a['name'].titleize }
+      action_skills.map { |a| a['name'].titlecase }
     end
     
     def self.language_names
-      languages.map { |l| l['name'].titleize }
+      languages.map { |l| l['name'].titlecase }
     end
 
     def self.action_skill_config(name)
@@ -38,7 +42,7 @@ module AresMUSH
     
     # Returns the type (attribute, action, etc) for a skill being rolled.
     def self.get_ability_type(ability)
-      ability = ability.titleize
+      ability = ability.titlecase
       if (attr_names.include?(ability))
         return :attribute
       elsif (action_skill_names.include?(ability))

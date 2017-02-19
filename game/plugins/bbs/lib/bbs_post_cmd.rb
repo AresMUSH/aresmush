@@ -2,20 +2,18 @@ module AresMUSH
   module Bbs
     class BbsPostCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :board_name, :subject, :message
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
-          cmd.crack_args!(/(?<name>[^\=]+)=(?<subject>[^\/]+)\/(?<message>.+)/)
+          args = cmd.parse_args(/(?<name>[^\=]+)=(?<subject>[^\/]+)\/(?<message>.+)/)
         else
-          cmd.crack_args!(/(?<name>[^\/]+)\/(?<subject>[^\=]+)\=(?<message>.+)/)
+          args = cmd.parse_args(/(?<name>[^\/]+)\/(?<subject>[^\=]+)\=(?<message>.+)/)
         end
-        self.board_name = trim_input(cmd.args.name)
-        self.subject = trim_input(cmd.args.subject)
-        self.message = cmd.args.message
+        self.board_name = trim_arg(args.name)
+        self.subject = trim_arg(args.subject)
+        self.message = args.message
       end
       
       def required_args

@@ -2,14 +2,12 @@ module AresMUSH
   module Describe
     class WearCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :names
       
-      def crack!
+      def parse_args
         if cmd.args
-          self.names = cmd.args.split(' ').map { |n| titleize_input(n) }
+          self.names = cmd.args.split(' ').map { |n| titlecase_arg(n) }
         end
       end
       
@@ -28,12 +26,7 @@ module AresMUSH
           text << " "
         end
         
-        desc = enactor.current_desc
-      
-        if (!desc)
-          desc = enactor.create_desc(:current, desc)
-        end
-        desc.update(description: text)
+        Describe.update_current_desc(enactor, text)
         
         client.emit_success t('describe.outfits_worn')
       end

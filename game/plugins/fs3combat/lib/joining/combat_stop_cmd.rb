@@ -2,13 +2,12 @@ module AresMUSH
   module FS3Combat
     class CombatStopCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :num
       
-      def crack!
-        self.num = trim_input(cmd.args)
+      def parse_args
+        self.num = trim_arg(cmd.args)
       end
       
       def handle

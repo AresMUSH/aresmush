@@ -21,11 +21,7 @@ class String
   
   # Fairly crude - doesn't worry about helper words or anything.  Should suffice for MUSH purposes.
   def titlecase
-    self.gsub(/\b('?[a-z])/) { $1.capitalize }
-  end   
-  
-  def titleize
-    self.downcase.strip.titlecase
+    self.downcase.strip.gsub(/\b('?[a-z])/) { $1.capitalize }
   end    
   
   def code_gsub(find, replace)

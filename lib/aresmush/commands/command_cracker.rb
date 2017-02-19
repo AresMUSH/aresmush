@@ -11,11 +11,11 @@ module AresMUSH
 
       if (!cracked)      
         # Never allow root to be nil
-        return { :prefix => nil, :root => input.chomp, :page => nil, :switch => nil, :args => nil }
+        return { :prefix => nil, :root => input.chomp, :page => 1, :switch => nil, :args => nil }
       end
 
       prefix = cracked[:prefix].empty? ? nil : cracked[:prefix].strip
-      page = cracked[:page].empty? ? nil : cracked[:page].strip
+      page = cracked[:page].empty? ? 1 : cracked[:page].strip.to_i
       root = cracked[:root].nil? ? input.chomp : cracked[:root].strip
       switch = cracked[:switch].nil? ? nil : cracked[:switch].rest("/")
       args = cracked[:args].nil? ? nil : cracked[:args].strip

@@ -2,16 +2,14 @@ module AresMUSH
   module FS3Combat
     class InflictDamageCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :desc, :severity
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_arg3)
-        self.name = titleize_input(cmd.args.arg1)
-        self.desc = titleize_input(cmd.args.arg2)
-        self.severity = cmd.args.arg3 ? cmd.args.arg3.upcase : nil
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+        self.name = titlecase_arg(args.arg1)
+        self.desc = titlecase_arg(args.arg2)
+        self.severity = upcase_arg(args.arg3)
       end
       
       def required_args

@@ -5,13 +5,13 @@ module AresMUSH
       
       attr_accessor :assignee
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /\=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.number = trim_input(cmd.args.arg1)
-          self.assignee = trim_input(cmd.args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.number = trim_arg(args.arg1)
+          self.assignee = trim_arg(args.arg2)
         else
-          self.number = trim_input(cmd.args)
+          self.number = trim_arg(cmd.args)
           self.assignee = enactor_name
         end
       end

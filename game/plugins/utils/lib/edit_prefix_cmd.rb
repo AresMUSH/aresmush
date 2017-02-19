@@ -2,12 +2,11 @@ module AresMUSH
   module Utils
     class EditPasswordCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :prefix
       
-      def crack!
-        self.prefix = trim_input(cmd.args)
+      def parse_args
+        self.prefix = trim_arg(cmd.args)
       end
 
       def handle

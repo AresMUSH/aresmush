@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     # Template for a particular bulletin board.
     class BoardTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       # List of all posts on the board, in order by date.
       attr_accessor :posts, :board
@@ -44,7 +43,7 @@ module AresMUSH
       end
 
       def author(post)
-        !post.author ? t('bbs.deleted_author') : post.author.name
+        post.author_name
       end
       
       def date(post)

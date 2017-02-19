@@ -1,7 +1,6 @@
 module AresMUSH
   module FS3Skills
     class SheetPage1Template < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :char
       

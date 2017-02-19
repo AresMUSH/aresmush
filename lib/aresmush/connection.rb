@@ -25,8 +25,8 @@ module AresMUSH
       end
     end
     
-    def send_formatted(msg)
-      send_data ClientFormatter.format(msg)
+    def send_formatted(msg, enable_fansi = true)
+      send_data ClientFormatter.format(msg, enable_fansi)
     end
     
     def close_connection(after_writing = false)

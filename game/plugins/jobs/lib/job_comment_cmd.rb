@@ -5,13 +5,13 @@ module AresMUSH
 
       attr_accessor :message, :admin_only
       
-      def crack!
+      def parse_args
         # Has to be done first!  Crack will reset command aliases.
         self.admin_only = cmd.switch_is?("discuss")
 
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.number = trim_input(cmd.args.arg1)
-        self.message = cmd.args.arg2
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.number = trim_arg(args.arg1)
+        self.message = args.arg2
       end
       
       def required_args

@@ -2,12 +2,10 @@ module AresMUSH
   module Manage
     class AnnounceCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :message
 
-      def crack!
+      def parse_args
         self.message = cmd.args
       end
       

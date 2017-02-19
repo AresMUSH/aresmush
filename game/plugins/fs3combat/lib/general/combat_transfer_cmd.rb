@@ -2,13 +2,12 @@ module AresMUSH
   module FS3Combat
     class CombatTransferCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
 
       attr_accessor :name
       
-      def crack!
-        self.name = titleize_input(cmd.args)  
+      def parse_args
+        self.name = titlecase_arg(cmd.args)  
       end
       
       def handle

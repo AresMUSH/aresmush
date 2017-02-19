@@ -9,10 +9,10 @@
 
 %xh<%= t('jobs.description') %>%xn
 <%= job.description %>
-<% replies.each do |r| -%> 
+<% replies.each_with_index do |r, index| -%> 
 
 <%= line 2 %>
-<%= reply_admin_only(r) %><%= reply_title(r) %>
+(<%= index + 1 %>) <%= reply_admin_only(r) %><%= reply_title(r) %>
 <%= r.message %>
 <% end %>
 <%= line %>

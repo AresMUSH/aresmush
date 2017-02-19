@@ -2,7 +2,6 @@ module AresMUSH
   module Bbs
     class BbsDeleteBoardConfirmCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def check_can_manage
         return t('dispatcher.not_allowed') if !Bbs.can_manage_bbs?(enactor)

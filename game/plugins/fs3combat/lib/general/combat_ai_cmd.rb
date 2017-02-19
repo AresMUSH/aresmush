@@ -2,14 +2,13 @@ module AresMUSH
   module FS3Combat
     class CombatAiCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :force, :names
       
-      def crack!
+      def parse_args
        self.force = (cmd.args && cmd.args.downcase == "force")
-       self.names = (!self.force && cmd.args) ? cmd.args.split(" ").map { |n| titleize_input(n) } : nil
+       self.names = (!self.force && cmd.args) ? cmd.args.split(" ").map { |n| titlecase_arg(n) } : nil
      end
      
       def check_in_combat

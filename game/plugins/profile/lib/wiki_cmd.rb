@@ -2,13 +2,11 @@ module AresMUSH
   module Profile
     class WikiCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :target
 
-      def crack!
-        self.target = !cmd.args ? enactor_name : trim_input(cmd.args)
+      def parse_args
+        self.target = !cmd.args ? enactor_name : trim_arg(cmd.args)
       end
       
       def handle

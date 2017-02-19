@@ -1,4 +1,4 @@
-Just an example of how you can use ASCII art in a map.
+Another example of how you can use ASCII art in a map.
                                        /\
                                       /`:\
                                      /`'`:\
@@ -29,4 +29,10 @@ Just an example of how you can use ASCII art in a map.
        __  .--'  ;,' ,'  ,  ': //    -.._    __  _.-  -
    `-   --    _ ;',' ,'  ,' ,;/_  -.       ---    _,
        _,.   /-:,_,_,_,_,_,_(/:-\   ,     ,.    _
-     -'   `-'--'-'-'-'-'-'-'-''--'-' `-'`'  `'`' `-SSt-
+     -'   `-'--'-'-'-'-'-'-'-''--'-' `-'`'  `'`' `-SSt4-
+
+
+
+
+
+

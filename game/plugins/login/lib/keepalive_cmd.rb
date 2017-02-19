@@ -3,6 +3,10 @@ module AresMUSH
     class KeepaliveCmd
       include CommandHandler
 
+      def allow_without_login
+        true
+      end
+      
       def handle
         # A command that does absolutely nothing!     
       end

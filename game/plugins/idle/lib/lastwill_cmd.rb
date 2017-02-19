@@ -3,12 +3,10 @@ module AresMUSH
   module Idle
     class LastWillCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :will   
       
-      def crack!
+      def parse_args
         self.will = cmd.args
       end
       

@@ -55,6 +55,14 @@ module AresMUSH
         "#{local_time}#{notice}"
       end
       
+      def start_datetime_standard
+        time = self.starts
+        formatted_time = time.to_time.strftime "%a %b %d, %Y %l:%M%P"
+        notice = self.all_day ? " (#{t('events.all_day')})" : ""
+        timezone = Global.read_config("events", "calendar_timezone")
+        "#{formatted_time}#{notice} #{timezone}"
+      end
+      
     end
     
     class TeamupApi
@@ -62,20 +70,18 @@ module AresMUSH
         begin
           response = get("#{calendar}/events", { "startDate" => startDate, "endDate" => endDate})
           response ? response['events'].map { |e| TeamupEvent.new(e) } : []
-        rescue
-          Global.logger.warn "Unable to contact calendar server."
+        rescue Exception => ex
+          Global.logger.warn "Unable to contact calendar server: #{ex}"
           []
         end
       end
 
       def api_key
-        config = Global.read_config("secrets", "events")
-        config["api_key"]
+        Global.read_config("secrets", "events", "api_key")
       end
       
       def calendar
-        config = Global.read_config("secrets", "events")
-        config["calendar"]
+        Global.read_config("secrets", "events", "calendar")
       end
       
       def build_uri(action)
@@ -91,7 +97,7 @@ module AresMUSH
          req['Teamup-Token'] = api_key
 
          res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') {|http|
-           resp = http.request(req)
+           resp = http.request(req)           
            return JSON.parse(resp.body)
          }
       end

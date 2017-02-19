@@ -1,11 +1,11 @@
 module AresMUSH
   module Idle
     def self.can_idle_sweep?(actor)
-      actor.has_any_role?(Global.read_config("idle", "roles", "can_idle_sweep"))
+      actor.has_any_role?(Global.read_config("idle", "can_idle_sweep"))
     end
 
     def self.is_exempt?(actor)
-      actor.has_any_role?(Global.read_config("idle", "roles", "idle_exempt"))
+      actor.has_any_role?(Global.read_config("idle", "idle_exempt"))
     end
         
     def self.active_chars

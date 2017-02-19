@@ -2,14 +2,11 @@ module AresMUSH
   module Rooms
     class GoCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :destination
       
-      def crack!
-        self.destination = trim_input(cmd.args)
+      def parse_args
+        self.destination = trim_arg(cmd.args)
       end
       
       def required_args

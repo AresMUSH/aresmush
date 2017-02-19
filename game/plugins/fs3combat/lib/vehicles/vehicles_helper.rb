@@ -7,7 +7,7 @@ module AresMUSH
         return existing
       end
         
-      vehicle = FS3Combat.vehicles.select { |k, v| k.titleize == name.titleize }
+      vehicle = FS3Combat.vehicles.select { |k, v| k.titlecase == name.titlecase }
       if (vehicle.keys[0])
         name = vehicle.keys[0]
         Vehicle.create(combat: combat, vehicle_type: name)

@@ -6,15 +6,14 @@ describe:
         #day_of_week: Sat
         #hour: 21
         minute: 00
-    roles:
-        # List roles that are allowed to describe places (exits and rooms).
-        can_desc_places: 
-            - builder
-            # - another_role
-        # List roles that are allowed to describe anything.
-        can_desc_anything:
-            - admin
-            # - another_role
+    # List roles that are allowed to describe places (exits and rooms).
+    can_desc_places: 
+        - builder
+        # - another_role
+    # List roles that are allowed to describe anything.
+    can_desc_anything:
+        - admin
+        # - another_role
     shortcuts:
         "l": "look"
         "desc": "describe"

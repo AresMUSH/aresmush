@@ -1,7 +1,6 @@
 module AresMUSH
   module Ranks
     class RanksTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :config, :name
       

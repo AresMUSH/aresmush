@@ -2,11 +2,10 @@ module AresMUSH
   module Rooms
     class FoyerCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       attr_accessor :option
             
-      def crack!
+      def parse_args
         self.option = OnOffOption.new(cmd.args)
       end
 

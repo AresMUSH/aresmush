@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class HospitalsCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def handle
         hospitals = Room.find(is_hospital: true)

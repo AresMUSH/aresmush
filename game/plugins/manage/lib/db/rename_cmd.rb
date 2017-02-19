@@ -2,17 +2,14 @@ module AresMUSH
   module Manage
     class RenameCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
-      include CommandRequiresLogin
       
       attr_accessor :target
       attr_accessor :name
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.target = trim_input(cmd.args.arg1)
-        self.name = trim_input(cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.target = trim_arg(args.arg1)
+        self.name = trim_arg(args.arg2)
       end
       
       def required_args

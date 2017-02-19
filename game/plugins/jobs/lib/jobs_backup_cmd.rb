@@ -2,7 +2,6 @@ module AresMUSH
   module Jobs
     class JobsBackupCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       def check_too_many_jobs
         closed = Jobs.closed_jobs

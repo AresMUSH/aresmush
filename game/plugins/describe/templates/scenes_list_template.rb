@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     # Template for a room.
     class SceneListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
              
       attr_accessor :rooms
                      

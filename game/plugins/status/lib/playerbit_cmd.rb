@@ -2,13 +2,10 @@ module AresMUSH
   module Status
     class PlayerBitCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
       
       attr_accessor :option
       
-      def crack!
+      def parse_args
         self.option = OnOffOption.new(cmd.args)
       end
       

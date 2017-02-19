@@ -1,15 +1,16 @@
 module AresMUSH
   module Help
-    
     class HelpListCmd
       include CommandHandler
-      include CommandWithoutSwitches
 
-      attr_accessor :category, :page
+      attr_accessor :category
       
-      def crack!
+      def parse_args
         self.category = Help.command_to_category(cmd.root)
-        self.page = !cmd.page ? 1 : cmd.page.to_i
+      end
+      
+      def allow_without_login
+        true
       end
       
       def check_valid_category
@@ -25,7 +26,18 @@ module AresMUSH
       
       def handle        
         list = Help.toc(self.category)
-        paginator = Paginator.paginate(list, self.page, 4)
+        case self.category
+        when "main"
+          topics_per_page = 3
+        when "admin"
+          topics_per_page = 5
+        when "builder"
+          topics_per_page = 6
+        else
+          topics_per_page = 4
+        end
+            
+        paginator = Paginator.paginate(list, cmd.page, topics_per_page)
         
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg

@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatSummaryCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def handle
         combat = FS3Combat.combat(enactor.name)

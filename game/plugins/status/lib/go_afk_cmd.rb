@@ -2,12 +2,10 @@ module AresMUSH
   module Status
     class GoAfkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
       
       attr_accessor :message
       
-      def crack!
+      def parse_args
         self.message = cmd.args
       end
       

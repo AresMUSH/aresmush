@@ -2,7 +2,7 @@ module AresMUSH
   module Install
     def self.init_db
 
-      password = Global.read_config("database", "password")
+      password = Global.read_config("secrets", "database", "password")
       host = Global.read_config("database", "url")
 
       begin

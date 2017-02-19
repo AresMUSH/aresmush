@@ -2,7 +2,6 @@ module AresMUSH
   module Jobs
     # Template for the list of all jobs.
     class JobsListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :paginator
       

@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class GearListTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :title, :list
       

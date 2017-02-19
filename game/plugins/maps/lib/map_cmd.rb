@@ -2,23 +2,20 @@ module AresMUSH
   module Maps
     class MapCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
       
       attr_accessor :area
       
-      def crack!
-        self.area = !cmd.args ? enactor_room.area : titleize_input(cmd.args)
+      def parse_args
+        self.area = !cmd.args ? enactor_room.area : titlecase_arg(cmd.args)
       end
       
       def handle
-        map = Maps.get_map(self.area)
+        map = Maps.get_map_for_area(self.area)
       
         if (!map)
-          client.emit_failure t('maps.no_such_map')
+          client.emit_failure t('maps.no_such_map', :name => self.area)
         else
-          map_text = File.read(File.join(Maps.maps_dir, map), :encoding => "UTF-8")
-          client.emit BorderedDisplay.text map_text, t('maps.map_title', :area => self.area)
+          client.emit BorderedDisplay.text map.map_text, t('maps.map_title', :area => self.area)
         end
       end
     end

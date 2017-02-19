@@ -2,18 +2,17 @@ module AresMUSH
   module Ranks
     class RankSetCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :name, :rank
 
-      def crack!
+      def parse_args
         if (cmd.args =~ /[^\/]+\=.+/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.name = trim_input(cmd.args.arg1)
-          self.rank = titleize_input(cmd.args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.name = trim_arg(args.arg1)
+          self.rank = titlecase_arg(args.arg2)
         else
           self.name = enactor_name
-          self.rank = titleize_input(cmd.args)
+          self.rank = titlecase_arg(cmd.args)
         end
       end
       

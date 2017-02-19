@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Skills
     class AbilityPageTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :data
       

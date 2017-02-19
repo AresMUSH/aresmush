@@ -2,16 +2,14 @@ module AresMUSH
   module Login
     class PasswordResetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       attr_accessor :new_password
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.name = trim_input(cmd.args.arg1)
-        self.new_password = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = trim_arg(args.arg1)
+        self.new_password = args.arg2
       end
 
       def required_args
@@ -40,6 +38,7 @@ module AresMUSH
           end
           
           char.change_password(self.new_password)
+          char.update(login_failures: 0)
           client.emit_success t('login.password_reset', :name => char.name)
         end
       end

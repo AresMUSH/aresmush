@@ -2,7 +2,6 @@ module AresMUSH
   module Friends
     # Template for an exit.
     class FriendsTemplate < ErbTemplateRenderer
-      include TemplateFormatters
             
       def initialize(enactor)
         @enactor = enactor

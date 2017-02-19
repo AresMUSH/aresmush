@@ -2,8 +2,6 @@ module AresMUSH
   module Utils
     class SweepCmd
       include CommandHandler
-      include CommandWithoutArgs
-      include CommandRequiresLogin
       
       attr_accessor :message
       

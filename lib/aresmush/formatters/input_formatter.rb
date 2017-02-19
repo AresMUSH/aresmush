@@ -1,13 +1,13 @@
 module AresMUSH
   class InputFormatter
-    def self.trim_input(arg)
+    def self.trim_arg(arg)
       return nil if !arg
       return arg.strip
     end
     
-    def self.titleize_input(arg)
+    def self.titlecase_arg(arg)
       return nil if !arg
-      return arg.strip.titleize
+      return arg.strip.titlecase
     end
   end
 end

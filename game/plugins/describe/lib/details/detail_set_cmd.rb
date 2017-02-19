@@ -3,16 +3,14 @@ module AresMUSH
   module Describe
     class DetailSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
             
       attr_accessor :name, :target, :desc
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_slash_arg2_equals_arg3)
-        self.target = cmd.args.arg1
-        self.name = titleize_input(cmd.args.arg2)
-        self.desc = cmd.args.arg3
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
+        self.target = trim_arg(args.arg1)
+        self.name = titlecase_arg(args.arg2)
+        self.desc = args.arg3
       end
       
       def required_args

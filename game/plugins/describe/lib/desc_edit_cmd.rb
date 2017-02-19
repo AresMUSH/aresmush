@@ -3,13 +3,11 @@ module AresMUSH
   module Describe
     class DescEditCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :target
       
-      def crack!
-        self.target = trim_input(cmd.args)
+      def parse_args
+        self.target = trim_arg(cmd.args)
       end
       
       def required_args

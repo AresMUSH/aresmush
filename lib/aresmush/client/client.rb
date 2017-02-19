@@ -32,20 +32,26 @@ module AresMUSH
       @connection.ping
     end
     
+    def enable_fansi
+      return false if !@char_id
+      char = find_char
+      char.fansi_on
+    end
+    
     def emit(msg)
-      @connection.send_formatted "#{msg}"
+      @connection.send_formatted "#{msg}", enable_fansi
     end 
     
     def emit_ooc(msg)
-      @connection.send_formatted "%xc%% #{msg}%xn"
+      @connection.send_formatted "%xc%% #{msg}%xn", enable_fansi
     end
 
     def emit_success(msg)
-      @connection.send_formatted "%xg%% #{msg}%xn"
+      @connection.send_formatted "%xg%% #{msg}%xn", enable_fansi
     end
 
     def emit_failure(msg)
-      @connection.send_formatted "%xr%% #{msg}%xn"
+      @connection.send_formatted "%xr%% #{msg}%xn", enable_fansi
     end
     
     def emit_raw(msg)

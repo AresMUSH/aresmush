@@ -18,7 +18,7 @@ module AresMUSH
       end
     end
     
-    describe :crack! do 
+    describe :parse_args do 
      
       it "should set the root" do
         cmd = Command.new("test/sw foo")
@@ -30,7 +30,7 @@ module AresMUSH
         cmd.raw.should eq "test/sw foo"
       end
 
-      it "should use the command cracker to parse the command" do
+      it "should use the command ArgParser to parse the command" do
         CommandCracker.should_receive(:crack).with("test 123") { { :root => "r", :switch => "s", :args => "a" }}
         cmd = Command.new("test 123")
         cmd.root.should eq "r"
@@ -38,7 +38,7 @@ module AresMUSH
         cmd.args.should eq "a"
       end
       
-      it "should save the results from cracker even if they're nil" do
+      it "should save the results from ArgParser even if they're nil" do
         CommandCracker.should_receive(:crack).with("test 123") { { :root => nil, :switch => nil, :args => nil }}
         cmd = Command.new("test 123")
         cmd.root.should eq nil
@@ -47,13 +47,13 @@ module AresMUSH
       end
     end
 
-    describe :crack_args! do
-      it "should crack the args" do
+    describe :parse_args do
+      it "should parse the args" do
         regex = /.+/
-        ArgCracker.should_receive(:crack).with(regex, "123") { HashReader.new({ :a => "a" }) }
+        ArgParser.should_receive(:parse).with(regex, "123") { HashReader.new({ :a => "a" }) }
         cmd = Command.new("test 123")
-        cmd.crack_args!(regex)
-        cmd.args.a.should eq "a"
+        args = cmd.parse_args(regex)
+        args.a.should eq "a"
       end
     end
     

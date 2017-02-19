@@ -2,7 +2,6 @@ module AresMUSH
   module AresCentral
     class AresCentralInfoCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def check_can_manage
         return t('dispatcher.not_allowed') if !enactor.can_manage_game?

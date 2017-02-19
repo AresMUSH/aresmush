@@ -3,6 +3,10 @@ module AresMUSH
     class TosCmd
       include CommandHandler
         
+      def allow_without_login
+        true
+      end
+      
       def check_pending_connect
         return t('login.tos_agreement_not_pending') if !client.program[:create_cmd]
         return nil

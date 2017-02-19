@@ -32,4 +32,6 @@ en:
        currently_online: "%{name} is currently online."
        last_online: "%{name} was last online at %{time}."
        keepalive_set: "You turn your keepalive ping %{option}."
+       password_locked: "Your character has been locked due to repeated login failures.  You can log in as a guest (using the 'tour' command) and ask an admin to reset your password.  If you have a player handle, you can also reset the password through AresCentral."
+       temp_password_set: "Your password has been set to %{password}.  Please reset it using the 'password' command."
        

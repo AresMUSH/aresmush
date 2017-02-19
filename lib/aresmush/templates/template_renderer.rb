@@ -1,5 +1,7 @@
 module AresMUSH  
   class ErbTemplateRenderer
+    include TemplateFormatters
+    
     attr_accessor :client
 
     def initialize(file)

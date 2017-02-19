@@ -2,14 +2,11 @@ module AresMUSH
   module Jobs
     class ViewRequestCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :number
 
-      def crack!
-        self.number = trim_input(cmd.args)
+      def parse_args
+        self.number = trim_arg(cmd.args)
       end
       
       def required_args

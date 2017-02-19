@@ -43,6 +43,9 @@ en:
         deleted_author: "(Author Deleted)"
         system_author: "AresMUSH"
         
+        reply_deleted: "Reply deleted."
+        invalid_reply_number: "That is not a valid reply number."
+        
         starting_archive: "Starting BBS archive.  Your posts will print out one by one with a short delay in-between to avoid spamming your client."
         too_much_for_archive: "That board has too many posts for the automatic archive feature.  30 is the limit.  You'll have to read them manually or move some to another board temporarily and do the archive in stages.  Sorry."
         

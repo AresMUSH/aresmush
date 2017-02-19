@@ -22,13 +22,19 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
   
-      puts "\nYour database is configured.  Now we'll set up your server information."
+      puts "\nGreat.  Now we'll gather some server information."
   
       print "\nServer hostname > "
       server_host = STDIN.gets.chomp
 
-      print "\nServer port > "
+      print "\nServer telnet port> "
       server_port = STDIN.gets.chomp
+
+      print "\nServer web socket port> "
+      websocket_port = STDIN.gets.chomp
+
+      print "\nServer website port> "
+      webserver_port = STDIN.gets.chomp
 
       print "\nMUSH Name > "
       mush_name = STDIN.gets.chomp
@@ -72,10 +78,13 @@ module AresMUSH
       {
         "host_name" => server_host,
         "host_port" => server_port,
+        "websocket_port" => websocket_port,
+        "webserver_port" => webserver_port,
         "mush_name" => mush_name,
         "category" => category,
         "game_desc" => game_desc,
-        "website" => website
+        "website" => website,
+        "public_game" => false
       }
   
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'server.yml.erb'), :encoding => "UTF-8"))
@@ -85,6 +94,11 @@ module AresMUSH
       
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'game.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'game.yml'), 'w') do |f|
+        f.write(template.evaluate(template_data))
+      end
+
+      template = Erubis::Eruby.new(File.read(File.join(template_path, 'secrets.yml.erb'), :encoding => "UTF-8"))
+      File.open(File.join(AresMUSH.game_path, 'config', 'secrets.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
   

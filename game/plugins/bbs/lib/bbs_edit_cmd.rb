@@ -2,16 +2,14 @@ module AresMUSH
   module Bbs
     class BbsEditCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :board_name, :num, :new_text
 
-      def crack!
-        cmd.crack_args!( /(?<name>[^\/]+)\/(?<num>[^\=]+)\=?(?<new_text>.+)?/)
-        self.board_name = titleize_input(cmd.args.name)
-        self.num = trim_input(cmd.args.num)
-        self.new_text = cmd.args.new_text
+      def parse_args
+        args = cmd.parse_args( /(?<name>[^\/]+)\/(?<num>[^\=]+)\=?(?<new_text>.+)?/)
+        self.board_name = titlecase_arg(args.name)
+        self.num = trim_arg(args.num)
+        self.new_text = args.new_text
       end
       
       def required_args

@@ -2,12 +2,11 @@ module AresMUSH
   module FS3Combat
     class CombatStartCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :type
       
-      def crack!
-        self.type = cmd.args ? titleize_input(cmd.args) : "Real"
+      def parse_args
+        self.type = cmd.args ? titlecase_arg(cmd.args) : "Real"
       end
       
       def check_mock

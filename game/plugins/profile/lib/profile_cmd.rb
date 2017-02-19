@@ -2,12 +2,11 @@ module AresMUSH
   module Profile
     class ProfileCmd
       include CommandHandler
-      include CommandRequiresArgs
       
       attr_accessor :name
       
-      def crack!
-        self.name = !cmd.args ? enactor.name : titleize_input(cmd.args)
+      def parse_args
+        self.name = !cmd.args ? enactor.name : titlecase_arg(cmd.args)
       end
       
       def required_args

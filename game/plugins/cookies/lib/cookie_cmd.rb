@@ -2,12 +2,10 @@ module AresMUSH
   module Cookies
     class CookieCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :names
       
-      def crack!
+      def parse_args
         if (!cmd.args)
           self.names = []
         else

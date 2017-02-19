@@ -2,21 +2,18 @@ module AresMUSH
   module Rooms
     class TeleportCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :destination
       attr_accessor :names
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
-        if (!cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+        if (!args.arg2)
           self.names = []
-          self.destination = trim_input(cmd.args.arg1)
+          self.destination = trim_arg(args.arg1)
         else
-          self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
-          self.destination = trim_input(cmd.args.arg2)
+          self.names = split_arg(args.arg1)
+          self.destination = trim_arg(args.arg2)
         end
       end
       

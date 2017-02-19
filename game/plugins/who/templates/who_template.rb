@@ -1,7 +1,6 @@
 module AresMUSH
   module Who
     class WhoTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       # NOTE!  Because so many fields are shared between the who and where templates,
       # they are defined in these two modules, found in other files in this directory.

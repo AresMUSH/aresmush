@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Skills
     # Template for an exit.
     class XpTemplate < ErbTemplateRenderer
-      include TemplateFormatters
         
       attr_accessor :char
           

@@ -14,11 +14,13 @@ load "lib/event_handlers.rb"
 load "lib/handle_job_cmd.rb"
 load "lib/helpers.rb"
 load "lib/job_comment_cmd.rb"
+load "lib/job_delete_reply_cmd.rb"
 load "lib/job_search_cmd.rb"
 load "lib/job_status_cmd.rb"
 load "lib/jobs_backup_cmd.rb"
 load "lib/jobs_catchup.rb"
 load "lib/jobs_model.rb"
+load "lib/job_mail_cmd.rb"
 load "lib/jobs_new_cmd.rb"
 load "lib/list_jobs_cmd.rb"
 load "lib/list_requests_cmd.rb"
@@ -80,8 +82,12 @@ module AresMUSH
            return CreateJobCmd
          when "delete"
            return DeleteJobCmd
+         when "deletereply"
+           return JobDeleteReplyCmd
          when "handle", "assign"
            return HandleJobCmd
+         when "mail"
+           return JobMailCmd
          when "new"
            return JobsNewCmd
          when "purge"

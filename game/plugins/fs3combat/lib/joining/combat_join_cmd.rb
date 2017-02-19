@@ -2,23 +2,21 @@ module AresMUSH
   module FS3Combat
     class CombatJoinCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :names, :num, :combatant_type
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2_slash_optional_arg3)
-          self.names = cmd.args.arg1 ? cmd.args.arg1.split(" ").map { |n| titleize_input(n) } : nil
-          self.num = trim_input(cmd.args.arg2)
-          self.combatant_type = titleize_input(cmd.args.arg3)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
+          self.names = split_and_titlecase_arg(args.arg1)
+          self.num = trim_arg(args.arg2)
+          self.combatant_type = titlecase_arg(args.arg3)
         else
-          cmd.crack_args!(CommonCracks.arg1_slash_optional_arg2)
+          args = cmd.parse_args(ArgParser.arg1_slash_optional_arg2)
           self.names = [ enactor_name ]
-          self.num = titleize_input(cmd.args.arg1)
-          self.combatant_type = titleize_input(cmd.args.arg2)
+          self.num = titlecase_arg(args.arg1)
+          self.combatant_type = titlecase_arg(args.arg2)
         end
       end
 

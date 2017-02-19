@@ -12,6 +12,7 @@ module AresMUSH
         "channels", 
         "chargen", 
         "cookies", 
+        "custom",
         "demographics", 
         "describe", 
         "events",
@@ -42,6 +43,7 @@ module AresMUSH
         "tinker", 
         "utils", 
         "weather", 
+        "website",
         "who"   
       ]
     end

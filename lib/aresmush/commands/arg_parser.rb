@@ -1,5 +1,11 @@
-module AresMUSH
-  module CommonCracks
+module AresMUSH  
+  class ArgParser
+      
+    def self.parse(regex, args)
+      match = regex.match(args)
+      !match ? HashReader.new({}) : HashReader.new(match.names_hash)
+    end
+    
     def self.arg1_slash_arg2
       /(?<arg1>[^\/]+)\/(?<arg2>.+)/
     end
@@ -31,5 +37,6 @@ module AresMUSH
     def self.arg1_equals_arg2_slash_optional_arg3
       /(?<arg1>[^\=]+)\=(?<arg2>[^\/]+)\/?(?<arg3>.+)?/
     end
+    
   end
 end

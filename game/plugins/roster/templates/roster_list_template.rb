@@ -1,7 +1,6 @@
 module AresMUSH
   module Roster
     class RosterListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :paginator
       

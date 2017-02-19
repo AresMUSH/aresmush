@@ -2,12 +2,10 @@ module AresMUSH
   module Mail
     class MailAppendCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :body
       
-      def crack!
+      def parse_args
         self.body = cmd.raw.after("-").chomp
       end
       

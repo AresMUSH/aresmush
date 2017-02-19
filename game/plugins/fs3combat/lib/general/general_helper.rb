@@ -32,7 +32,7 @@ module AresMUSH
     end
     
     def self.npc_type_names
-      Global.read_config("fs3combat", "npc_types").keys.map { |n| n.titleize }
+      Global.read_config("fs3combat", "npc_types").keys.map { |n| n.titlecase }
     end
     
     

@@ -1,7 +1,6 @@
 module AresMUSH
   module Groups
     class GroupCensusTemplate < ErbTemplateRenderer
-      include TemplateFormatters
             
       attr_accessor :name, :group
       

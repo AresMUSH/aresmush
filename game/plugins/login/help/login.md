@@ -23,8 +23,8 @@ Also from the login screen, you can create a new character or connect to an exis
 `create <name> <password>`
 `connect <name> <password>`
 
-You can change your password at any time.  If you ever forget your password, use the 'tour' command and contact the admins.
-  
+You can change your password at any time.  If you forget your password and have a player handle (help handles), you can create a temporary one at AresCentral.  If you don't have a player handle, you'll have to log in with a guest character using the `tour` command and contact an admin.
+
 `password <oldpassword>=<newpassword>` - Changes your password.
 
 When you're done, you can quit.

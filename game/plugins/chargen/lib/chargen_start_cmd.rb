@@ -2,7 +2,6 @@ module AresMUSH
   module Chargen
     class ChargenStartCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       def handle
         chargen_info = enactor.get_or_create_chargen_info

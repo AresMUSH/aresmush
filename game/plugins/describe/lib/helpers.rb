@@ -3,10 +3,10 @@ module AresMUSH
     def self.can_describe?(char, model)
       if (char == model)
         return true
-      elsif (char.has_any_role?(Global.read_config("describe", "roles", "can_desc_anything")))
+      elsif (char.has_any_role?(Global.read_config("describe", "can_desc_anything")))
         return true
       elsif (model.class == Room)
-        return char.has_any_role?(Global.read_config("describe", "roles", "can_desc_places"))
+        return char.has_any_role?(Global.read_config("describe", "can_desc_places"))
       end
       return false
     end
@@ -33,5 +33,13 @@ module AresMUSH
       Room.all.select { |r| !!r.scene_set }
     end
     
+    def self.update_current_desc(char, text)
+      desc = char.current_desc
+    
+      if (!desc)
+        desc = char.create_desc(:current, text)
+      end
+      desc.update(description: text)
+    end
   end
 end

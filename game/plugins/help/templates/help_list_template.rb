@@ -2,7 +2,6 @@ module AresMUSH
   module Help
     class HelpListTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :category, :paginator
       

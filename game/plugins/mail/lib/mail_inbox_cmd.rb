@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailInboxCmd
       include CommandHandler
-      include CommandRequiresLogin
            
       def handle        
         prefs = Mail.get_or_create_mail_prefs(enactor)

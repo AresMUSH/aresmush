@@ -2,13 +2,11 @@ module AresMUSH
   module Mail
     class MailDeleteCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :num
       
-      def crack!
-        self.num = trim_input(cmd.args)
+      def parse_args
+        self.num = trim_arg(cmd.args)
       end
       
       def required_args

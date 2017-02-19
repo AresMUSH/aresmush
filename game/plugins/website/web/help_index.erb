@@ -1,0 +1,17 @@
+<h1>Help</h1>
+
+<p>This page shows the in-game help files.  For more tutorials, see <a href="http://aresmush.com">AresMUSH.com</a>.</p>
+
+<% @topics.each do |toc, topics| %>
+
+<h2><%= toc %></h2>
+
+<ul>
+<% topics.each do |topic| %>
+<li>
+<a href="/help/<%= topic %>"><%= topic.titleize %></a>
+</li>
+<% end %>
+</ul>
+
+<% end %>

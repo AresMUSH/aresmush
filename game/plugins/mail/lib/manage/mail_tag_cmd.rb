@@ -2,15 +2,13 @@ module AresMUSH
   module Mail
     class MailTagCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :num, :tag
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.num = trim_input(cmd.args.arg1)
-        self.tag = titleize_input(cmd.args.arg2)        
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.num = trim_arg(args.arg1)
+        self.tag = titlecase_arg(args.arg2)        
       end
       
       def required_args

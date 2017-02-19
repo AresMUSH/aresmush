@@ -2,15 +2,13 @@ module AresMUSH
   module Mail
     class MailUnsendCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :num, :name
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_slash_arg2)
-        self.name = trim_input(cmd.args.arg1)
-        self.num = trim_input(cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_slash_arg2)
+        self.name = trim_arg(args.arg1)
+        self.num = trim_arg(args.arg2)
       end
 
       def required_args

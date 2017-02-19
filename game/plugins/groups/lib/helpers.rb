@@ -2,7 +2,7 @@ module AresMUSH
   module Groups
 
     def self.can_set_group?(char)
-      char.has_any_role?(Global.read_config("groups", "roles", "can_set_group"))
+      char.has_any_role?(Global.read_config("groups", "can_set_group"))
     end
 
     def self.all_groups
@@ -43,6 +43,15 @@ module AresMUSH
       else
         error = missing.collect { |m| "%R%T#{m}" }.join
         "#{message}%r#{error}"
+      end
+    end
+    
+    def self.set_group(char, group_name, group_value)
+      group = char.group(group_name)
+      if (!group)
+        GroupAssignment.create(character: char, group: group_name, value: group_value)
+      else
+        group.update(value: group_value)
       end
     end
   end

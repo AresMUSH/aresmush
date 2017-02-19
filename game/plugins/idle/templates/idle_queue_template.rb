@@ -2,7 +2,6 @@ module AresMUSH
   module Idle
     class IdleQueueTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
       
       attr_accessor :queue
       

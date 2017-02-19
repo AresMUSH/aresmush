@@ -1,7 +1,6 @@
 module AresMUSH
   module Places
     class PlacesTemplate < ErbTemplateRenderer
-      include TemplateFormatters
 
       attr_accessor :room
             

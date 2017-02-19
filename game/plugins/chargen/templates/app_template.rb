@@ -1,7 +1,6 @@
 module AresMUSH
   module Chargen
     class AppTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :char
       

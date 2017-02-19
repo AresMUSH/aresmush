@@ -3,15 +3,13 @@ module AresMUSH
   module Describe
     class DescCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :target, :description
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.target = trim_input(cmd.args.arg1)
-        self.description = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.target = trim_arg(args.arg1)
+        self.description = args.arg2
       end
       
       def required_args

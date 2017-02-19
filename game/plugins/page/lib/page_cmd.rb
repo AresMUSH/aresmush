@@ -2,27 +2,25 @@ module AresMUSH
   module Page
     class PageCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
 
       attr_accessor :names, :message
       
-      def crack!
+      def parse_args
         if (!cmd.args)
           self.names = []
         elsif (cmd.args.start_with?("="))
           self.names = enactor.last_paged
           self.message = cmd.args.after("=")
         elsif (cmd.args.include?("="))
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           
           # Catch the common mistake of last-paging someone a link.
-          if (cmd.args.arg1 && cmd.args.arg1.include?("http://"))
+          if (args.arg1 && args.arg1.include?("http://"))
             self.names = enactor.last_paged
-            self.message = "#{cmd.args.arg1}=#{cmd.args.arg2}"
+            self.message = "#{args.arg1}=#{args.arg2}"
           else
-            self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
-            self.message = cmd.args.arg2
+            self.names = split_arg(args.arg1)
+            self.message = trim_arg(args.arg2)
           end
         else
           self.names = enactor.last_paged

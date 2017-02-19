@@ -1,7 +1,6 @@
 module AresMUSH
   module Groups
     class GenderCensusTemplate < ErbTemplateRenderer
-      include TemplateFormatters
             
       attr_accessor :chars
       

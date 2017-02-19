@@ -2,8 +2,6 @@ module AresMUSH
   module Jobs
     class PurgeJobsCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs
       
       def handle
         client.emit_failure t('jobs.confirm_purge')
@@ -12,8 +10,6 @@ module AresMUSH
     
     class PurgeJobsConfirmCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs
       
       def check_closed_jobs
         return t('jobs.no_closed_jobs') if Jobs.closed_jobs.count == 0

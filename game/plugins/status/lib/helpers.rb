@@ -1,7 +1,7 @@
 module AresMUSH
   module Status
     def self.can_be_on_duty?(actor)
-      actor.has_any_role?(Global.read_config("status", "roles", "can_manage_status"))
+      actor.has_any_role?(Global.read_config("status", "can_manage_status"))
     end
     
     def self.status_color(status)

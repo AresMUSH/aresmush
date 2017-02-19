@@ -2,15 +2,14 @@ module AresMUSH
   module Utils
     class DiceCmd
       include CommandHandler
-      include CommandRequiresArgs
       
       attr_accessor :num, :sides
       
-      def crack!
-        cmd.crack_args!(/(?<num>[\d]+)[dD](?<sides>[\d]+$)/)
+      def parse_args
+        args = cmd.parse_args(/(?<num>[\d]+)[dD](?<sides>[\d]+$)/)
         
-        self.num = cmd.args.num.to_i 
-        self.sides = cmd.args.sides.to_i
+        self.num = args.num.to_i 
+        self.sides = args.sides.to_i
       end
       
       def required_args

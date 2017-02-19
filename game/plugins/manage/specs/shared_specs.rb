@@ -15,8 +15,8 @@ module AresMUSH
           @exit = Exit.new
           @char = Character.new
 
-          Global.stub(:read_config).with("manage", "roles", "can_manage_players") { ['admin'] }
-          Global.stub(:read_config).with("manage", "roles", "can_manage_rooms") { ['builder'] }
+          Global.stub(:read_config).with("manage", "can_manage_players") { ['admin'] }
+          Global.stub(:read_config).with("manage", "can_manage_rooms") { ['builder'] }
         end
           
         it "should allow someone with room permissions to manage a room" do

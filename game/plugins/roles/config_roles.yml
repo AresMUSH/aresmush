@@ -7,6 +7,7 @@ roles:
     can_assign_role: 
         - admin
         # - another role
+
     # Roles that are restricted; only the master admin can assign or remove.
     restricted_roles:
         - admin
@@ -18,3 +19,4 @@ roles:
     shortcuts:
         "roles" : "role"
         "staff" : "admin"
+        "role/add" : "role/assign"

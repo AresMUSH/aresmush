@@ -1,9 +1,8 @@
 channels:
-    roles:
-        # List roles that are allowed to manage channels.
-        can_manage_channels: 
-            - admin
-            # - another_role
+    # List roles that are allowed to manage channels.
+    can_manage_channels: 
+        - admin
+        # - another_role
             
     # Configure the markers that appear around a channel name.
     # Typically this would be brackets for [Mux Style] or <MUSH Style>

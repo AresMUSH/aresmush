@@ -48,9 +48,9 @@ module AresMUSH
       end
     end
 
-    describe :titleize do
+    describe :titlecase do
       it "should clean up funky spacing and capitalization" do
-        "    a VERY long ENgagEMent    ".titleize.should eq "A Very Long Engagement"
+        "    a VERY long ENgagEMent    ".titlecase.should eq "A Very Long Engagement"
       end
     end
 

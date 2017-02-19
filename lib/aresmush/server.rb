@@ -1,4 +1,5 @@
 require 'eventmachine'
+require 'em-websocket'
 
 module AresMUSH
   class Server
@@ -24,6 +25,23 @@ module AresMUSH
         EventMachine::start_server(host, port, Connection) do |connection|
           AresMUSH.with_error_handling(nil, "Connection established") do
             Global.client_monitor.connection_established(connection)
+          end
+        end
+        
+        webserver_port = Global.read_config("server", "webserver_port")
+        if (webserver_port)
+          web = WebAppLoader.new
+          web.run(port: webserver_port)
+          
+          websocket_port = Global.read_config("server", "websocket_port")
+          if (websocket_port)
+            EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
+              AresMUSH.with_error_handling(nil, "Web connection established") do
+                WebConnection.new(websocket) do |connection|
+                  Global.client_monitor.connection_established(connection)
+                end
+              end
+            end
           end
         end
 

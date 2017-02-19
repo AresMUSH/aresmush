@@ -47,9 +47,9 @@ module AresMUSH
         specials.each do |s|
           name = s.before(":")
           value = s.after(":")
-          case InputFormatter.titleize_input(name)
+          case InputFormatter.titlecase_arg(name)
           when "Called"
-            self.called_shot = InputFormatter.titleize_input(value)
+            self.called_shot = InputFormatter.titlecase_arg(value)
           when "Mod"
             self.mod = value.to_i
           when "Burst"
