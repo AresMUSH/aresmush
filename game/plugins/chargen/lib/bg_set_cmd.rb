@@ -2,12 +2,10 @@ module AresMUSH
   module Chargen
     class BgSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :target, :background
  
-      def crack!
+      def parse_args
         # Starts with a character name and equals - since names can't have
         # spaces we can check for that.  This allows the BG itself to contain ='s.
         if (cmd.args =~ /^[\S]+\=/)

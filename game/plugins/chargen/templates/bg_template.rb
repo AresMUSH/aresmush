@@ -1,7 +1,6 @@
 module AresMUSH
   module Chargen
     class BgTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :char, :background
       

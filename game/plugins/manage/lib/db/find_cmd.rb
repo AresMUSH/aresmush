@@ -2,17 +2,14 @@ module AresMUSH
   module Manage
     class FindCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :search_class, :name
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_optional_arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         
-        self.search_class = cmd.args.arg1 ? trim_input(cmd.args.arg1).titleize : nil
-        self.name = trim_input(cmd.args.arg2)
+        self.search_class = titlecase_arg(args.arg1)
+        self.name = trim_arg(args.arg2)
       end
       
       def required_args

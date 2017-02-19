@@ -1,0 +1,73 @@
+<h1><%= @char.name %></h1>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-sm-2">
+            <b>Fullname:</b> 
+    </div>
+    <div class="col-sm-10">
+            <%= @char.demographic(:fullname) %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+            <b>Age:</b> 
+    </div>
+    <div class="col-sm-10">
+            <%= @char.age %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+            <b>Gender:</b> 
+    </div>
+    <div class="col-sm-10">
+            <%= @char.demographic(:gender) %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+            <b>Faction:</b> 
+    </div>
+    <div class="col-sm-10">
+            <%= @char.group_value("Faction") %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+            <b>Position:</b> 
+    </div>
+    <div class="col-sm-10">
+            <%= @char.group_value("Position") %>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-2">
+            <b>Played By:</b> 
+    </div>
+    <div class="col-sm-10">
+            <%= @char.actor %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+            <b>RP Hooks:</b> 
+            <ul>
+            <% @char.fs3_hooks.each do |h| %>
+            <li><b><%= h.name %></b> - <%= h.description %></li>
+            <% end %>
+            </ul>
+    </div>
+</div>
+
+
+
+</div>

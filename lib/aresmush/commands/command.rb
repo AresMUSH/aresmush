@@ -21,8 +21,8 @@ module AresMUSH
       @args = cracked[:args]
     end
     
-    def crack_args!(args_regex)
-      @args = ArgCracker.crack(args_regex, @args)        
+    def parse_args(args_regex)
+      ArgParser.parse(args_regex, @args)
     end
     
     def to_s

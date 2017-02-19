@@ -2,17 +2,15 @@ module AresMUSH
   module Mail
     class MailReplyCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :num
       attr_accessor :body
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.num = trim_input(cmd.args.arg1)
-          self.body = cmd.args.arg2
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.num = trim_arg(args.arg1)
+          self.body = args.arg2
         else
           self.body = cmd.args
         end

@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     class ScenesCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :set
       

@@ -2,16 +2,14 @@ module AresMUSH
   module Mail
     class MailStartCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
            
       attr_accessor :names
       attr_accessor :subject
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.names = !cmd.args.arg1 ? [] : cmd.args.arg1.split(" ")
-        self.subject = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.names = split_arg(args.arg1)
+        self.subject = trim_arg(args.arg2)
       end
       
       def required_args

@@ -2,7 +2,6 @@ module AresMUSH
   module Pose
     class ReposeOrderCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def handle
         if (!enactor.room.repose_on?)

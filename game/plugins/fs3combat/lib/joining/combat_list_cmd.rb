@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatListCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def handle
         list = FS3Combat.combats.map { |c| format_combat(c)}

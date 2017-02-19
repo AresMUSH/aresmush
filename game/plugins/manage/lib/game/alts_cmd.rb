@@ -2,7 +2,6 @@ module AresMUSH
   module Manage
     class AltsCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)

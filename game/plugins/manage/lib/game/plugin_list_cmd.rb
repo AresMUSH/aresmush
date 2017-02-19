@@ -2,8 +2,6 @@ module AresMUSH
   module Manage
     class PluginListCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs
       
       def check_can_manage
         return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)

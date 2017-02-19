@@ -2,7 +2,6 @@ module AresMUSH
   module Login
     class TourCmd
       include CommandHandler
-      include CommandWithoutSwitches
       
       def check_not_already_logged_in
         return t("login.already_logged_in") if client.logged_in?

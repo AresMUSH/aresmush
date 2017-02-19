@@ -2,13 +2,16 @@ module AresMUSH
   module Login
     class ConnectCmd
       include CommandHandler
-      include CommandWithoutSwitches
 
       attr_accessor :charname, :password
       
-      def crack!
-        self.charname = cmd.args ? trim_input(cmd.args.before(" ")) : nil
+      def parse_args
+        self.charname = cmd.args ? trim_arg(cmd.args.before(" ")) : nil
         self.password = cmd.args ? cmd.args.after(" ") : nil
+      end
+      
+      def allow_without_login
+        true
       end
       
       def check_for_guest_or_password
@@ -25,28 +28,41 @@ module AresMUSH
         return if self.charname.downcase == "guest"
         
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
+          
+          if (char.login_failures > 5)
+            temp_reset = false
+            
+            if (char.handle)
+              AresMUSH.with_error_handling(client, "AresCentral forgotten password.") do
+                Global.logger.info "Checking AresCentral for forgotten password."
+      
+                connector = AresCentral::AresConnector.new
+                response = connector.reset_password(char.handle.handle_id, self.password, char.id.to_s)
+      
+                if (response.is_success? && response.data["matched"])
+                  client.emit_ooc t('login.temp_password_set', :password => self.password)
+                  char.change_password self.password
+                end
+              end
+            end
+            
+            if (!temp_reset)
+              Global.logger.info "#{self.charname} locked due to repeated login failures."
+              client.emit_failure(t('login.password_locked'))
+              return
+            end
+          end
+            
           if (!char.compare_password(password))
+            Global.logger.info "Failed login attempt #{char.login_failures} to #{self.charname} from #{client.ip_addr}."
+            char.update(login_failures: char.login_failures + 1)
             client.emit_failure(t('login.password_incorrect'))
             return 
           end
 
-          # Handle reconnect
-          existing_client = char.client
-          client.char_id = char.id
-          
-          if (existing_client)
-            existing_client.emit_ooc t('login.disconnected_by_reconnect')
-            existing_client.disconnect
-
-            Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
-          else
-            announce_connection(client, char)
-          end
+          char.update(login_failures: 0)
+          Login.login_char(char, client)          
         end
-      end
-      
-      def announce_connection(client, char)
-        Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
       end
       
       def log_command

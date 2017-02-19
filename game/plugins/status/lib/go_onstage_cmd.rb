@@ -2,8 +2,6 @@ module AresMUSH
   module Status
     class GoOnstageCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs      
       
       def check_can_set_status
         return nil if Status.can_be_on_duty?(enactor)

@@ -2,13 +2,12 @@ module AresMUSH
   module FS3Combat
     class CombatLeaveCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name      
       
-      def crack!
-        self.name = cmd.args ? titleize_input(cmd.args) : enactor.name
+      def parse_args
+        self.name = cmd.args ? titlecase_arg(cmd.args) : enactor.name
       end
 
       def handle

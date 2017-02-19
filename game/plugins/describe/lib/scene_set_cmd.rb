@@ -2,12 +2,11 @@ module AresMUSH
   module Describe
     class SceneSetCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :set
       
-      def crack!
-        self.set = cmd.args ? trim_input(cmd.args) : nil
+      def parse_args
+        self.set = cmd.args ? trim_arg(cmd.args) : nil
       end
       
       def handle

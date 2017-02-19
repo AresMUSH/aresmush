@@ -1,9 +1,7 @@
 module AresMUSH
   module Actors
     # Template for the list of all bulletin boards.
-    class ActorsListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
-      
+    class ActorsListTemplate < ErbTemplateRenderer      
       attr_accessor :paginator
       
       def initialize(paginator)

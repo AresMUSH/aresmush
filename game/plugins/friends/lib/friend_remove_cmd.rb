@@ -2,12 +2,10 @@ module AresMUSH
   module Friends
     class FriendRemoveCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
 
-      def crack!
+      def parse_args
         self.name = cmd.args
       end
       

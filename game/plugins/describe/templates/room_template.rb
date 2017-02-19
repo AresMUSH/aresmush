@@ -3,7 +3,6 @@ module AresMUSH
   module Describe
     # Template for a room.
     class RoomTemplate < ErbTemplateRenderer
-      include TemplateFormatters
              
       attr_accessor :room
                      

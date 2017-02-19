@@ -5,6 +5,10 @@ module AresMUSH
         Help.topic_contents(topic_key, category)
       end
       
+      def self.help_topics
+        Help.help_topics
+      end
+      
       def self.reload_help
         Help.reload_help
       end

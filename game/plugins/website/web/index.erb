@@ -1,0 +1,41 @@
+<p>Welcome to the AresMUSH game portal for <b><%= game_name %></b>!</p>
+
+<p>For the game's full website, visit <a href="<%= game_website %>"><%= game_website %></a>.</p>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-sm-4 splash-box">
+            <div class="splash-heading">
+                <h2>Play on the Web</h2>
+                <i class="fa fa-globe fa-3x" aria-hidden="true"></i>
+            </div>
+            
+            <p>The <a href="/play">web client</a> allows you to play the game from many web browsers.</p>
+        </div>
+
+
+        <div class="col-sm-4 splash-box">
+            <div class="splash-heading">
+                <h2>Play with a Client</h2>
+                <i class="fa fa-desktop fa-3x" aria-hidden="true"></i>
+            </div>
+            <p>Connect to the game via your favorite MU client at <b><%= game_address %></b>.  AresMUSH works well with <a href="http://www.potatomushclient.com/">Potato</a>.</p>
+            
+        </div>
+        
+        <div class="col-sm-4 splash-box">
+            <div class="splash-heading">
+                <h2>Upcoming Events</h2>
+                <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+            </div>
+            <% @events.each do |e| %>
+            <p><b><%= e.title %></b><br/><%= e.start_datetime_standard %></p>
+            <% end %>
+            
+            <a href="<%= @calendar %>">Full Calendar</a>
+        </div>
+
+        
+    </div>
+</div>

@@ -1,7 +1,6 @@
 module AresMUSH
   module Mail
     class MessageTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :message
       

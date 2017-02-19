@@ -18,7 +18,7 @@ module AresMUSH
     end
     
     def parse_targets(name_string)
-      target_names = name_string.split(" ").map { |n| InputFormatter.titleize_input(n) }
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
       targets = []
       target_names.each do |name|
         target = self.combat.find_combatant(name)

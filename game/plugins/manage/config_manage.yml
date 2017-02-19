@@ -1,19 +1,18 @@
 manage:
-    roles:
-        # List roles that are allowed to use game management commands, including the 
-        # database and code.
-        can_manage_game: 
-            - admin
-            # - another_role
-        # List roles that are allowed to use player/character management commands.
-        can_manage_players: 
-            - admin
-            # - another_role
-        # List roles that are allowed to use room/exit management commands.
-        can_manage_rooms: 
-            - admin
-            - builder
-            # - another_role
+    # List roles that are allowed to use game management commands, including the 
+    # database and code.
+    can_manage_game: 
+        - admin
+        # - another_role
+    # List roles that are allowed to use player/character management commands.
+    can_manage_players: 
+        - admin
+        # - another_role
+    # List roles that are allowed to use room/exit management commands.
+    can_manage_rooms: 
+        - admin
+        - builder
+        # - another_role
     shortcuts:
         "ex": "examine"
         "search": "find"

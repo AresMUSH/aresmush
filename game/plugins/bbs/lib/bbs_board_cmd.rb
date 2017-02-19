@@ -2,13 +2,11 @@ module AresMUSH
   module Bbs
     class BbsBoardCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :board_name
 
-      def crack!
-        self.board_name = titleize_input(cmd.args)
+      def parse_args
+        self.board_name = titlecase_arg(cmd.args)
       end
       
       def required_args

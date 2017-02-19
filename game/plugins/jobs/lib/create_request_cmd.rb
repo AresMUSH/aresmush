@@ -2,16 +2,13 @@ module AresMUSH
   module Jobs
     class CreateRequestCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :title, :description
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.title = trim_input(cmd.args.arg1)
-        self.description = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.title = trim_arg(args.arg1)
+        self.description = args.arg2
       end
       
       def required_args

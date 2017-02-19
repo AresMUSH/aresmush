@@ -3,22 +3,13 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Manage
     describe DestroyCmd do
-      include CommandHandlerTestHelper
   
       before do
-        init_handler(DestroyCmd, "destroy foo")
+        @client = double
+        @handler = DestroyCmd.new(@client, nil, nil)
         SpecHelpers.stub_translate_for_testing
         @game = double
         Game.stub(:master) { @game }
-      end
-      
-      it_behaves_like "a plugin that requires login"
-      
-      describe :crack! do
-        it "should set the target" do          
-          handler.crack!
-          handler.name.should eq 'foo'
-        end
       end
       
       describe :handle do
@@ -27,14 +18,14 @@ module AresMUSH
           @game.stub(:is_special_char?) { false }
           Manage.stub(:can_manage_object?) { true }
           FS3Combat::Api.stub(:is_in_combat?) { false }
-          handler.crack!
+          @handler.name = "foo"
         end
         
         context "not found" do
           it "should emit failure if the target is not found" do
-            AnyTargetFinder.stub(:find).with("foo", enactor) { FindResult.new(nil, "an error") }
-            client.should_receive(:emit_failure).with("an error")
-            handler.handle
+            AnyTargetFinder.stub(:find).with("foo", @enactor) { FindResult.new(nil, "an error") }
+            @client.should_receive(:emit_failure).with("an error")
+            @handler.handle
           end
         end
         
@@ -43,8 +34,8 @@ module AresMUSH
             target = double
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
             Rooms::Api.stub(:is_special_room?).with(target) { true }
-            client.should_receive(:emit_failure).with("manage.cannot_destroy_special_rooms")
-            handler.handle
+            @client.should_receive(:emit_failure).with("manage.cannot_destroy_special_rooms")
+            @handler.handle
           end
         end
         
@@ -53,8 +44,8 @@ module AresMUSH
             target = double
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
             @game.stub(:is_special_char?).with(target) { true }
-            client.should_receive(:emit_failure).with("manage.cannot_destroy_special_chars")
-            handler.handle
+            @client.should_receive(:emit_failure).with("manage.cannot_destroy_special_chars")
+            @handler.handle
           end
         end
         
@@ -62,17 +53,17 @@ module AresMUSH
           target = double
           AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
           FS3Combat::Api.stub(:is_in_combat?).with(target) { true }
-          client.should_receive(:emit_failure).with("manage.cannot_destroy_in_combat")
-          handler.handle
+          @client.should_receive(:emit_failure).with("manage.cannot_destroy_in_combat")
+          @handler.handle
         end
         
         context "not allowed" do
           it "should emit failure if the char doesn't have permission" do
             target = double
             AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
-            Manage.should_receive(:can_manage_object?).with(enactor, target) { false }
-            client.should_receive(:emit_failure).with("dispatcher.not_allowed")
-            handler.handle
+            Manage.should_receive(:can_manage_object?).with(@enactor, target) { false }
+            @client.should_receive(:emit_failure).with("dispatcher.not_allowed")
+            @handler.handle
           end
         end
         
@@ -83,18 +74,18 @@ module AresMUSH
             @target.stub(:print_json) { "" }
             results = FindResult.new(@target)
             AnyTargetFinder.stub(:find) { results }
-            client.stub(:program=)
-            client.stub(:emit)
+            @client.stub(:program=)
+            @client.stub(:emit)
           end
           
           it "should set the program to the destroy target" do
-            client.should_receive(:program=).with( { :destroy_target => 1, :destroy_class => AresMUSH::Character } )
-            handler.handle
+            @client.should_receive(:program=).with( { :destroy_target => 1, :destroy_class => AresMUSH::Character } )
+            @handler.handle
           end
           
           it "should emit the confirmation message" do
-            client.should_receive(:emit).with("%l1%rmanage.confirm_object_destroy%r%l1")
-            handler.handle
+            @client.should_receive(:emit).with("%l1%rmanage.confirm_object_destroy%r%l1")
+            @handler.handle
           end
         end
       end

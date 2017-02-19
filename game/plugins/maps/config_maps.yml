@@ -1,10 +1,8 @@
 maps:
-    map_areas:
-        # List areas in the form "Area Name": "map file name"
-        # 
-        # For example:
-        #"Offstage": "offstage.txt"
-
-    # An overview map, used when there's no specific area one, in the form "Title" : "map file name"    
-    master_map: 
-        "Galactica" : "galactica.txt"
+    can_manage_maps:
+    # List roles have the power to manage maps.
+        - admin
+        # - another role
+        
+    shortcuts:
+        "map/update" : "map/create"

@@ -2,20 +2,18 @@ module AresMUSH
   module FS3Combat
     class CombatStanceCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :stance
       
-      def crack!
+      def parse_args
         if (cmd.args =~ /=/)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.name = titleize_input(cmd.args.arg1)
-          self.stance = titleize_input(cmd.args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.name = titlecase_arg(args.arg1)
+          self.stance = titlecase_arg(args.arg2)
         else
           self.name = enactor.name
-          self.stance = titleize_input(cmd.args)
+          self.stance = titlecase_arg(cmd.args)
         end
       end
 

@@ -12,7 +12,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq nil
       end
@@ -21,7 +21,7 @@ module AresMUSH
         cracked = CommandCracker.crack("1")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "1"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq nil
       end
@@ -30,7 +30,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test1")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq "1"
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq nil
       end
@@ -39,7 +39,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test2 foo")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq "2"
+        cracked[:page].should eq 2
         cracked[:switch].should eq nil
         cracked[:args].should eq "foo"        
       end
@@ -48,7 +48,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test abc")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq "abc"        
       end
@@ -57,7 +57,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test 2")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq "2"
       end
@@ -66,7 +66,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test/sw")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "sw"
         cracked[:args].should eq nil        
       end
@@ -75,7 +75,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test2/sw")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq "2"
+        cracked[:page].should eq 2
         cracked[:switch].should eq "sw"
         cracked[:args].should eq nil        
       end
@@ -84,7 +84,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test/sw arg")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "sw"
         cracked[:args].should eq "arg"        
       end
@@ -93,7 +93,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test/sw 2")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "sw"
         cracked[:args].should eq "2"
       end
@@ -102,7 +102,7 @@ module AresMUSH
         cracked = CommandCracker.crack("   test/sw    2   ")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "sw"
         cracked[:args].should eq "2"
       end
@@ -111,7 +111,7 @@ module AresMUSH
         cracked = CommandCracker.crack("   test  /  sw    2   ")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq "/  sw    2"
       end
@@ -121,7 +121,7 @@ module AresMUSH
         cracked = CommandCracker.crack("+test/foo bar")
         cracked[:prefix].should eq "+"
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end  
@@ -130,7 +130,7 @@ module AresMUSH
         cracked = CommandCracker.crack("/test/foo bar")
         cracked[:prefix].should eq "/"
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end
@@ -139,7 +139,7 @@ module AresMUSH
         cracked = CommandCracker.crack("@test/foo bar")
         cracked[:prefix].should eq "@"
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end
@@ -148,7 +148,7 @@ module AresMUSH
         cracked = CommandCracker.crack("=test/foo bar")
         cracked[:prefix].should eq "="
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end
@@ -157,7 +157,7 @@ module AresMUSH
         cracked = CommandCracker.crack("&test/foo bar")
         cracked[:prefix].should eq "&"
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end
@@ -166,7 +166,7 @@ module AresMUSH
         cracked = CommandCracker.crack("test/foo bar")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end
@@ -175,7 +175,7 @@ module AresMUSH
         cracked = CommandCracker.crack("~test/foo bar")
         cracked[:prefix].should eq nil
         cracked[:root].should eq "~test"
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq "foo"
         cracked[:args].should eq "bar"
       end
@@ -184,7 +184,7 @@ module AresMUSH
         cracked = CommandCracker.crack("")
         cracked[:prefix].should eq nil
         cracked[:root].should eq ""
-        cracked[:page].should eq nil
+        cracked[:page].should eq 1
         cracked[:switch].should eq nil
         cracked[:args].should eq nil
       end

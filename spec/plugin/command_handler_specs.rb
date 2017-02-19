@@ -9,16 +9,48 @@ module AresMUSH
       class PluginSpecTest
         include CommandHandler
         
+        attr_accessor :x, :y
+        
         def check_x
-          return "error_x" if cmd.raw == "x marks the spot"
+          return "error_x" if self.x == "x marks the spot"
           return nil
         end
         
         def check_y
-          return "error_y" if cmd.raw == "y marks the spot"
+          return "error_y" if self.y == "y marks the spot"
           return nil
         end
+        
+        def handle
+        end
       end
+      
+      class PluginSpecTestAllowWithoutLogin
+        include CommandHandler
+        
+        def allow_without_login
+          true
+        end
+        
+        def handle
+        end
+      end
+      
+      class PluginSpecTestRequiredArgs
+        include CommandHandler
+        
+        attr_accessor :foo, :bar
+        def required_args
+          {
+            args: [ self.foo, self.bar ],
+            help: 'test'
+          }
+        end
+        
+        def handle
+        end
+      end
+      
       SpecHelpers.stub_translate_for_testing 
     end
     
@@ -52,11 +84,12 @@ module AresMUSH
         @cmd.stub(:raw) { "raw" }
         @cmd.stub(:switch) { nil }
         @char.stub(:name) { "Bob" }
+        @client.stub(:logged_in?) { true }
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
-      it "should crack the args" do
-        @handler.should_receive(:crack!)
+      it "should parse the args" do
+        @handler.should_receive(:parse_args)
         @handler.on_command
       end
       
@@ -66,21 +99,67 @@ module AresMUSH
         @handler.on_command
       end
         
-      it "should call all check methods" do
+      it "should fail if not logged in" do
+        @client.stub(:logged_in?) { false }
+        @client.should_receive(:emit_failure).with("dispatcher.must_be_logged_in")
+        @handler.on_command
+      end
+        
+      it "should not fail if not logged in when the command allows it" do
+        @handler = PluginSpecTestAllowWithoutLogin.new(@client, @cmd, @char)
+        @client.stub(:logged_in?) { false }
+        @client.should_not_receive(:emit_failure)
+        @handler.on_command
+      end
+      
+      it "should fail if a required arg is missing" do
+        @handler = PluginSpecTestRequiredArgs.new(@client, @cmd, @char)
+        @handler.foo = nil
+        @handler.bar = "here"
+        @client.should_receive(:emit_failure).with("dispatcher.invalid_syntax")
+        @handler.on_command
+      end
+      
+      it "should fail if a required arg is blank" do
+        @handler = PluginSpecTestRequiredArgs.new(@client, @cmd, @char)
+        @handler.foo = "here"
+        @handler.bar = "    "
+        @client.should_receive(:emit_failure).with("dispatcher.invalid_syntax")
+        @handler.on_command
+      end
+      
+      it "should pass if all required args are present" do
+        @handler = PluginSpecTestRequiredArgs.new(@client, @cmd, @char)
+        @handler.foo = "here"
+        @handler.bar = "there"
+        @client.should_not_receive(:emit_failure)
+        @handler.on_command
+      end
+      
+      it "should not care about required args if none are specified" do
+        @handler.x = nil
+        @handler.y = "     "
+        @client.should_not_receive(:emit_failure)
+        @handler.on_command
+      end
+      
+      
+      it "should call all check methods but do nothing if they return nil" do
         @handler.should_receive(:check_x) { nil }
         @handler.should_receive(:check_y) { nil }
+        @client.should_not_receive(:emit_failure)
         @handler.on_command
       end
       
       it "should emit an error and stop if any validator fails" do
-        @cmd.stub(:raw) { "x marks the spot" }
+        @handler.x = "x marks the spot"
         @client.should_receive(:emit_failure).with("error_x")
         @handler.should_not_receive(:handle)
         @handler.on_command
       end
       
       it "should emit an error and stop if any validator fails" do
-        @cmd.stub(:raw) { "y marks the spot" }
+        @handler.y = "y marks the spot"
         @client.should_receive(:emit_failure).with("error_y")
         @handler.should_not_receive(:handle)
         @handler.on_command
@@ -94,31 +173,31 @@ module AresMUSH
       end    
     end  
     
-    describe :trim_input do
+    describe :trim_arg do
       before do
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
       it "should return nil for nil" do
-        @handler.trim_input(nil).should eq nil
+        @handler.trim_arg(nil).should eq nil
       end
       
-      it "should return a titleized string" do
-        @handler.trim_input("   someTHING   ").should eq "someTHING"
+      it "should return a titlecased string" do
+        @handler.trim_arg("   someTHING   ").should eq "someTHING"
       end
     end
     
-    describe :titleize_input do
+    describe :titlecase_arg do
       before do 
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
       it "should return nil for nil" do
-        @handler.titleize_input(nil).should eq nil
+        @handler.titlecase_arg(nil).should eq nil
       end
       
-      it "should return a titleized string" do
-        @handler.titleize_input("   someTHING   ").should eq "Something"
+      it "should return a titlecased string" do
+        @handler.titlecase_arg("   someTHING   ").should eq "Something"
       end
     end
   end

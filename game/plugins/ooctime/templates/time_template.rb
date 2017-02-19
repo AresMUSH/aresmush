@@ -2,7 +2,6 @@ module AresMUSH
   module OOCTime
     class TimeTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
       
       def initialize(enactor)
         @enactor = enactor

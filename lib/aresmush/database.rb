@@ -3,7 +3,7 @@ module AresMUSH
 
     def load_config
       host = Global.read_config("database", "url")
-      password = Global.read_config("database", "password")
+      password = Global.read_config("secrets", "database", "password")
       Global.logger.info("Database config: #{host}")
       
       begin

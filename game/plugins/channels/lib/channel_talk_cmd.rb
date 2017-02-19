@@ -2,12 +2,10 @@ module AresMUSH
   module Channels
     class ChannelTalkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
            
       attr_accessor :channel, :msg
       
-      def crack!
+      def parse_args
         self.msg = cmd.args
       end
       

@@ -22,6 +22,10 @@ module AresMUSH
       def self.is_site_match?(char, ip, hostname)
         Login.is_site_match?(char, ip, hostname)
       end
+      
+      def self.login_char(char, client)
+        Login.login_char(char, client)
+      end
     end
   end
 end

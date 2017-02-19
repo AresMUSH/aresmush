@@ -2,14 +2,13 @@ module AresMUSH
   module FS3Combat
     class CombatActionCmd
       include CommandHandler
-      include CommandRequiresLogin
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :name, :action_args, :combat_command
            
-      def crack!
+      def parse_args
         if (cmd.args =~ /\=/)
-          self.name = InputFormatter.titleize_input(cmd.args.before("="))
+          self.name = InputFormatter.titlecase_arg(cmd.args.before("="))
           self.action_args = cmd.args.after("=")
         else
           self.name = enactor.name

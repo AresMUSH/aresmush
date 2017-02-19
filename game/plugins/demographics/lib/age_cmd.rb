@@ -3,8 +3,6 @@ module AresMUSH
 
     class AgeCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :age
 
@@ -24,8 +22,8 @@ module AresMUSH
         Chargen::Api.check_chargen_locked(enactor)
       end
       
-      def crack!
-        self.age = trim_input(cmd.args)
+      def parse_args
+        self.age = trim_arg(cmd.args)
       end
       
       def handle

@@ -6,7 +6,8 @@ module AresMUSH
     attribute :name_upcase
     attribute :alias
     attribute :alias_upcase
-
+    attribute :fansi_on, :default => true
+    
     attribute :password_hash
 
     attribute :shortcuts, :type => DataType::Hash, :default => {}

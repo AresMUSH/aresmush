@@ -30,31 +30,42 @@ module AresMUSH
         @client.ping
       end
     end
-    
+
+    describe :emit do
+      it "should send the message to the connection with fansi enabled if char has it turned on" do
+        char = double
+        @client.char_id = 5
+        @client.stub(:find_char) { char }
+        char.stub(:fansi_on) { true }
+        @connection.should_receive(:send_formatted).with("Hi", true)
+        @client.emit "Hi"
+      end
+    end
+        
     describe :emit do
       it "should send the message to the connection" do
-        @connection.should_receive(:send_formatted).with("Hi")
+        @connection.should_receive(:send_formatted).with("Hi", false)
         @client.emit "Hi"
       end
     end
 
     describe :emit_ooc do
       it "should send the message with yellow ansi tags and %% prefix" do
-        @connection.should_receive(:send_formatted).with("%xc%% OOC%xn")
+        @connection.should_receive(:send_formatted).with("%xc%% OOC%xn", false)
         @client.emit_ooc "OOC"
       end
     end    
     
     describe :emit_success do
       it "should send the message with green ansi tags and %% prefix" do
-        @connection.should_receive(:send_formatted).with("%xg%% Yay%xn")
+        @connection.should_receive(:send_formatted).with("%xg%% Yay%xn", false)
         @client.emit_success "Yay"
       end
     end
 
     describe :emit_failure do
       it "sends the message with green ansi tags and %% prefix" do
-        @connection.should_receive(:send_formatted).with("%xr%% Boo%xn")
+        @connection.should_receive(:send_formatted).with("%xr%% Boo%xn", false)
         @client.emit_failure "Boo"
       end
     end

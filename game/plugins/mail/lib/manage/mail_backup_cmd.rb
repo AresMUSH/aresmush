@@ -2,7 +2,6 @@ module AresMUSH
   module Mail
     class MailBackupCmd
       include CommandHandler
-      include CommandRequiresLogin      
       
       def handle
         client.emit_ooc t('mail.starting_backup')

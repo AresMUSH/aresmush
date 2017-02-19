@@ -2,7 +2,6 @@ module AresMUSH
   module Pose
     class ReposeClearCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       def check_repose_enabled
         return t('pose.repose_disabled') if !Pose.repose_enabled

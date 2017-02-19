@@ -2,7 +2,6 @@ module AresMUSH
   module Describe
     # Template for a character.
     class CharacterTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       include CharDescTemplateFields
       
       attr_accessor :char 

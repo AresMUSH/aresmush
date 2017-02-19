@@ -3,7 +3,7 @@ module AresMUSH
     mattr_accessor :current_weather
    
     def self.can_change_weather?(actor)
-      return actor.has_any_role?(Global.read_config("weather", "roles", "can_change_weather"))
+      return actor.has_any_role?(Global.read_config("weather", "can_change_weather"))
     end
     
     def self.change_all_weathers

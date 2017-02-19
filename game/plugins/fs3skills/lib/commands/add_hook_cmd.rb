@@ -3,15 +3,13 @@ module AresMUSH
   module FS3Skills
     class AddHookCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :desc
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.name = titleize_input(cmd.args.arg1)
-        self.desc = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = titlecase_arg(args.arg1)
+        self.desc = args.arg2
       end
 
       def required_args
@@ -27,13 +25,7 @@ module AresMUSH
       end
       
       def handle
-        hook = enactor.fs3_hooks.find(name: self.name).first
-        
-        if (hook)          
-          hook.update(description: self.desc)
-        else
-          FS3RpHook.create(name: self.name, description: self.desc, character: enactor)
-        end
+        FS3Skills.set_hook(enactor, self.name, self.desc)
         client.emit_success t('fs3skills.hook_set', :name => self.name)
       end
     end

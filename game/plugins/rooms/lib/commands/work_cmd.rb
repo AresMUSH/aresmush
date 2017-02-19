@@ -2,8 +2,6 @@ module AresMUSH
   module Rooms
     class WorkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs
 
       def check_work_set
         return t('rooms.work_not_set') if !enactor.room_work

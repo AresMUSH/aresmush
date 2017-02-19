@@ -2,26 +2,24 @@ module AresMUSH
   module Jobs
     class CreateJobCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
 
       attr_accessor :title, :description, :category
       
-      def crack!
+      def parse_args
         if (cmd.args !~ /\//)
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.title = trim_input(cmd.args.arg1)
-          self.description = cmd.args.arg2
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.title = trim_arg(args.arg1)
+          self.description = args.arg2
           self.category = "REQ"
         else          
           if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
-            cmd.crack_args!(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
+            args = cmd.parse_args(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
           else
-            cmd.crack_args!(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
+            args = cmd.parse_args(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
           end
-          self.category = cmd.args.category
-          self.title = cmd.args.title
-          self.description = cmd.args.description
+          self.category = trim_arg(args.category)
+          self.title = trim_arg(args.title)
+          self.description = args.description
         end        
       end
       

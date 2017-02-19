@@ -6,6 +6,7 @@ load "lib/condition_cmd.rb"
 load "lib/dice_cmd.rb"
 load "lib/echo_cmd.rb"
 load "lib/edit_prefix_cmd.rb"
+load "lib/fansi_cmd.rb"
 load "lib/math_cmd.rb"
 load "lib/recall_cmd.rb"
 load "lib/shortcuts_cmd.rb"
@@ -61,6 +62,8 @@ module AresMUSH
         if (cmd.switch_is?("prefix"))
           return EditPasswordCmd
         end
+      when "fansi"
+        return FansiCmd
       when "math"
         return MathCmd
       when "recall"

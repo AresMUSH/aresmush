@@ -2,13 +2,11 @@ module AresMUSH
   module Login
     class EmailSetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :email
 
-      def crack!
-        self.email = trim_input(cmd.args)
+      def parse_args
+        self.email = trim_arg(cmd.args)
       end
 
       def required_args

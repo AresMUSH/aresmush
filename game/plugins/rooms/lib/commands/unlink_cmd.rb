@@ -2,14 +2,11 @@ module AresMUSH
   module Rooms
     class UnlinkCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
 
       attr_accessor :name
         
-      def crack!
-        self.name = trim_input(cmd.args)
+      def parse_args
+        self.name = trim_arg(cmd.args)
       end
       
       def required_args

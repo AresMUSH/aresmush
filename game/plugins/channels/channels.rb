@@ -98,6 +98,8 @@ module AresMUSH
         return CharDisconnectedEventHandler
       when "RolesChangedEvent"
         return RolesChangedEventHandler
+      when "RolesDeletedEvent"
+        return RolesDeletedEventHandler
       end
       nil
     end

@@ -1,7 +1,6 @@
 module AresMUSH
   module Channels
     class ChannelListTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :channels
       

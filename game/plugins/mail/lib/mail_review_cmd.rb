@@ -2,18 +2,16 @@ module AresMUSH
   module Mail
     class MailReviewCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :num
       
-      def crack!
+      def parse_args
         if (cmd.args && cmd.args.include?("/"))
-          cmd.crack_args!(CommonCracks.arg1_slash_arg2)
-          self.name = cmd.args.arg1
-          self.num = cmd.args.arg2
+          args = cmd.parse_args(ArgParser.arg1_slash_arg2)
+          self.name = trim_arg(args.arg1)
+          self.num = trim_arg(args.arg2)
         else
-          self.name = trim_input(cmd.args)
+          self.name = trim_arg(cmd.args)
           self.num = nil
         end
       end

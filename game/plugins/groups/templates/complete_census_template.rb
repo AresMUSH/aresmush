@@ -1,7 +1,6 @@
 module AresMUSH
   module Groups
     class CompleteCensusTemplate < ErbTemplateRenderer
-      include TemplateFormatters
             
       attr_accessor :paginator
       

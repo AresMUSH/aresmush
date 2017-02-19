@@ -3,15 +3,13 @@ module AresMUSH
   module Idle
     class IdleActionCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name, :action
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.name = titleize_input(cmd.args.arg1)
-        self.action = titleize_input(cmd.args.arg2)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.name = titlecase_arg(args.arg1)
+        self.action = titlecase_arg(args.arg2)
       end
       
       def required_args

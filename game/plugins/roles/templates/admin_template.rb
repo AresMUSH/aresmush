@@ -1,7 +1,6 @@
 module AresMUSH
   module Roles
     class AdminTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :admins_by_role
 

@@ -46,8 +46,8 @@ module AresMUSH
         return FS3Combat.vehicle_stat(combatant.vehicle.vehicle_type, "pilot_skill")
       end
       
-      attacker_weapon_type = FS3Combat.weapon_stat(attacker_weapon, "weapon_type").titleize
-      defender_weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type").titleize
+      attacker_weapon_type = FS3Combat.weapon_stat(attacker_weapon, "weapon_type").titlecase
+      defender_weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type").titlecase
       if (attacker_weapon_type == "Melee" && defender_weapon_type == "Melee")
         skill = FS3Combat.weapon_stat(combatant.weapon, "skill")
       else
@@ -72,7 +72,7 @@ module AresMUSH
     
     def self.has_hitloc?(combatant, hitloc, crew_hit = false)
       hitlocs = FS3Combat.hitloc_areas(combatant, crew_hit)
-      hitlocs.keys.map { |h| h.titleize }.include?(hitloc.titleize)
+      hitlocs.keys.map { |h| h.titlecase }.include?(hitloc.titlecase)
     end
     
     def self.hitloc_severity(combatant, hitloc, crew_hit = false)
@@ -80,8 +80,8 @@ module AresMUSH
       vital_areas = hitloc_chart["vital_areas"]
       crit_areas = hitloc_chart["critical_areas"]
       
-      return "Vital" if vital_areas.map { |v| v.titleize }.include?(hitloc.titleize)
-      return "Critical" if crit_areas.map { |c| c.titleize }.include?(hitloc.titleize)
+      return "Vital" if vital_areas.map { |v| v.titlecase }.include?(hitloc.titlecase)
+      return "Critical" if crit_areas.map { |c| c.titlecase }.include?(hitloc.titlecase)
       return "Normal"
     end
     

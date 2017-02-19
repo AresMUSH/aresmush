@@ -27,10 +27,11 @@ You can change various attributes about the job, including its status and who it
 `job/title <#>=<title>`   
         Default status values are NEW, OPEN, HOLD (job on hold) and DONE.
 
-There are two ways for admins to comment upon a job.  A `discuss` comment is for admin eyes only, and will not ever be seen by the original submitter.  A `respond` comment is **viewable by the submitter**.
+There are two ways for admins to comment upon a job.  A `discuss` comment is for admin eyes only, and will never be seen by the original submitter.  A `respond` comment is **viewable by the submitter**.
 
 `job/discuss <#>=<comment>` - Comments on a job (only admins may view)
 `job/respond <#>=<message>` - Comments on a job (admins and submitter may view)
+`job/deletereply <#>=<reply#>` - Deletes a reply.
 
 When you're done with the job, close it and it will be archived.
 

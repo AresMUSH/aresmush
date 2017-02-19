@@ -2,13 +2,11 @@ module AresMUSH
   module Chargen
     class AppApproveCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :name
       
-      def crack!
-        self.name = trim_input(cmd.args)
+      def parse_args
+        self.name = trim_arg(cmd.args)
       end
       
       def required_args

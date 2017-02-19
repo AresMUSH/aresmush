@@ -3,16 +3,14 @@ module AresMUSH
   
     class DemographicAdminCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
   
       attr_accessor :name, :value, :property
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_slash_arg2_equals_arg3)
-        self.name = titleize_input(cmd.args.arg1)
-        self.property = cmd.args.arg2 ? cmd.args.arg2.downcase : nil
-        self.value = titleize_input(cmd.args.arg3)
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
+        self.name = titlecase_arg(args.arg1)
+        self.property = downcase_arg(args.arg2)
+        self.value = titlecase_arg(args.arg3)
       end
   
       def required_args

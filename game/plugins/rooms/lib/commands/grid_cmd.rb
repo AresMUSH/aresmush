@@ -2,19 +2,17 @@ module AresMUSH
   module Rooms
     class GridCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
 
       attr_accessor :x, :y
       
-      def crack!
+      def parse_args
         if (!cmd.args)
           self.x = nil
           self.y = nil
         else
-          cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-          self.x = trim_input(cmd.args.arg1)
-          self.y = trim_input(cmd.args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.x = trim_arg(args.arg1)
+          self.y = trim_arg(args.arg2)
         end
       end
 

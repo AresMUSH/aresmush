@@ -2,7 +2,6 @@ module AresMUSH
   module Pose
     class PoseCatcherCmd
       include CommandHandler
-      include CommandRequiresLogin
            
       def handle
         message = PoseFormatter.format(enactor_name, cmd.raw)

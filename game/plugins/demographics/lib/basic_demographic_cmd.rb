@@ -3,13 +3,11 @@ module AresMUSH
 
     module BasicDemographicCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :value, :property
 
-      def crack!
-        self.value = trim_input(cmd.args)
+      def parse_args
+        self.value = trim_arg(cmd.args)
         self.property = cmd.root.downcase
       end
       
@@ -72,8 +70,8 @@ module AresMUSH
         Chargen::Api.check_chargen_locked(enactor)
       end
       
-      def crack!
-        self.value = titleize_input(cmd.args)
+      def parse_args
+        self.value = titlecase_arg(cmd.args)
         self.property = cmd.root.downcase
       end
       

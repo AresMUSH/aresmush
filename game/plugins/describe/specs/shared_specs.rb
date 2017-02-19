@@ -5,8 +5,8 @@ module AresMUSH
     describe Describe do      
       describe :can_describe? do
         before do
-          Global.stub(:read_config).with("describe", "roles", "can_desc_anything") { ['admin', 'powerful'] }
-          Global.stub(:read_config).with("describe", "roles", "can_desc_places") { ['builder', 'descer'] }
+          Global.stub(:read_config).with("describe", "can_desc_anything") { ['admin', 'powerful'] }
+          Global.stub(:read_config).with("describe", "can_desc_places") { ['builder', 'descer'] }
           @char = double
         end
         

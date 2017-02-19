@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AresMUSH</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+   <!-- 
+    <link rel="stylesheet" href="/javascripts/jquery-ui-1.11.4/jquery-ui.min.css">
+    <script src="/javascripts/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+    <script src="/javascripts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="/javascripts/jquery.bootstrap-growl.min.js"></script>
+    -->
+       
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://use.fontawesome.com/ee2438614b.js"></script>
+  
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/ansi.js"></script>
+  <script src="/ansi_up.js"></script>
+
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+  
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="site-title"><%= game_name %></h1>
+            </div>
+            <div class="col-md-6 text-right user-bar">
+            <% if @user %>
+            <p>Welcome, <%= @user.name %>.</p>
+            <p><a href="/logout">Logout</a> </p>
+            <% else %>
+            <p><a href="/login">Login</a></p>
+            <% end %>
+            </div>
+        </div>
+        
+        <div class="row">
+          
+            <div class="col-md-12">
+              
+                        
+                        
+            <nav class="navbar navbar-inverse">
+                <ul class="nav navbar-nav">
+                  <li><a href="/">Home</a></li>
+
+                  <% if !is_approved? %>
+                  <li><a href="/chargen">Chargen</a></li>
+                  <% end %>
+                  
+                  <li><a href="/play">Play</a></li>
+                  <li><a href="/chars">Characters</a></li>
+                  <li><a href="/help">Help</a></li> 
+                  <% if is_admin? %>
+                  <li><a href="/admin">Admin</a></li>
+                  <% end %>
+                  <li><a href="<%= game_website %>">About</a></li> 
+                </ul>
+            </nav>
+
+                <% if flash[:info] %>
+                <div class="alert alert-info">                
+                    <%= styled_flash %>      
+                </div>
+                <% end %>
+
+                    
+                <% if flash[:error] %>
+                <div class="alert alert-danger">                
+                    <%= styled_flash %>      
+                </div>
+                <% end %>
+                  
+                <%= yield %>
+              
+            </div>
+                                      
+        </div>
+        
+    
+      <div class="row">
+          <div class="col-md-12 footer">
+              Running <a href="http://www.aresmush.com">AresMUSH</a> version <%= AresMUSH.version %>.
+           </div>
+      </div>
+              
+    </div>
+    
+</body>
+</html>
+

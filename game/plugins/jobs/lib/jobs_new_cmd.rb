@@ -2,8 +2,6 @@ module AresMUSH
   module Jobs
     class JobsNewCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutArgs
     
       def check_can_access
         return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)

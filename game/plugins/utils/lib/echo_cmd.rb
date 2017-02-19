@@ -2,13 +2,15 @@ module AresMUSH
   module Utils
     class EchoCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
       
       attr_accessor :message
       
-      def crack!
+      def parse_args
         self.message = cmd.args
+      end
+      
+      def allow_without_login
+        true
       end
       
       def required_args

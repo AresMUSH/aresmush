@@ -2,15 +2,13 @@ module AresMUSH
   module Profile
     class ProfileAddCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :field, :value
 
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.field = titleize_input(cmd.args.arg1)
-        self.value = cmd.args.arg2
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.field = titlecase_arg(args.arg1)
+        self.value = args.arg2
       end
       
       def required_args

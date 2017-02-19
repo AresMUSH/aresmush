@@ -2,16 +2,14 @@ module AresMUSH
   module FS3Combat
     class CombatTargetCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :team, :targets
       
-      def crack!
-        cmd.crack_args!(CommonCracks.arg1_equals_arg2)
-        self.team = trim_input(cmd.args.arg1).to_i
-        self.targets = cmd.args.arg2 ? cmd.args.arg2.split(" ").map { |n| trim_input(n).to_i } : []
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.team = trim_arg(args.arg1).to_i
+        self.targets = args.arg2 ? args.arg2.split(" ").map { |n| trim_arg(n).to_i } : nil
       end
 
       def required_args

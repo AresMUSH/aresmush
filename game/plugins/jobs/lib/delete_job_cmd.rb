@@ -3,8 +3,8 @@ module AresMUSH
     class DeleteJobCmd
       include SingleJobCmd
       
-      def crack!
-        self.number = trim_input(cmd.args)
+      def parse_args
+        self.number = trim_arg(cmd.args)
       end
       
       def handle

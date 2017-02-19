@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class DamageTemplate < ErbTemplateRenderer
 
-      include TemplateFormatters
 
       attr_accessor :damage, :char
       

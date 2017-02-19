@@ -2,8 +2,6 @@ module AresMUSH
   module FS3Combat
     class CombatHeroCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       

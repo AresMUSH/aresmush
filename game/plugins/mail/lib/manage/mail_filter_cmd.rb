@@ -2,12 +2,11 @@ module AresMUSH
   module Mail
     class MailFilterCmd
       include CommandHandler
-      include CommandRequiresLogin
 
       attr_accessor :tag
             
-      def crack!
-        self.tag = titleize_input(cmd.args)        
+      def parse_args
+        self.tag = titlecase_arg(cmd.args)        
       end
       
       def handle

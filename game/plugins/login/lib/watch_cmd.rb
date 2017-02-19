@@ -2,13 +2,10 @@ module AresMUSH
   module Login
     class WatchCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
       
       attr_accessor :option
 
-      def crack!
+      def parse_args
         self.option = !cmd.args ? nil : cmd.args.downcase
       end
 

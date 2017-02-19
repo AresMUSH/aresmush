@@ -2,17 +2,20 @@ module AresMUSH
   module Login
     class CreateCmd
       include CommandHandler
-      include CommandWithoutSwitches
       
       attr_accessor :charname, :password
 
-      def crack!
+      def parse_args
         # After agreeing to TOS, this is already cracked.
         if (cmd.args.class != AresMUSH::HashReader)
-          cmd.crack_args!(CommonCracks.arg1_space_arg2)
+          args = cmd.parse_args(ArgParser.arg1_space_arg2)
         end
-        self.charname = trim_input(cmd.args.arg1)
-        self.password = cmd.args.arg2
+        self.charname = trim_arg(args.arg1)
+        self.password = args.arg2
+      end
+      
+      def allow_without_login
+        true
       end
       
       def check_not_already_logged_in

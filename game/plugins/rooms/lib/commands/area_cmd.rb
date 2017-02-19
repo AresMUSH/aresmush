@@ -2,13 +2,11 @@ module AresMUSH
   module Rooms
     class AreaCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
 
       attr_accessor :name
       
-      def crack!
-        self.name = !cmd.args ? nil : trim_input(cmd.args)
+      def parse_args
+        self.name = !cmd.args ? nil : titlecase_arg(cmd.args)
       end
 
       def check_can_build

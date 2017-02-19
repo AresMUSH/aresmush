@@ -2,14 +2,12 @@ module AresMUSH
   module FS3Combat
     class CombatLuckCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       include NotAllowedWhileTurnInProgress
       
       attr_accessor :reason
       
-      def crack!
-        self.reason = titleize_input(cmd.args)
+      def parse_args
+        self.reason = titlecase_arg(cmd.args)
       end
 
       def required_args

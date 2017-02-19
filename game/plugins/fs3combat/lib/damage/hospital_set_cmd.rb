@@ -2,11 +2,10 @@ module AresMUSH
   module FS3Combat
     class HospitalSetCmd
       include CommandHandler
-      include CommandRequiresLogin
             
       attr_accessor :option
 
-      def crack!
+      def parse_args
         self.option = OnOffOption.new(cmd.switch)
       end
 

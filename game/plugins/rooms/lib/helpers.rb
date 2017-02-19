@@ -14,15 +14,15 @@ module AresMUSH
     end
     
     def self.can_build?(actor)
-      actor.has_any_role?(Global.read_config("rooms", "roles", "can_build"))
+      actor.has_any_role?(Global.read_config("rooms", "can_build"))
     end
 
     def self.can_teleport?(actor)
-      actor.has_any_role?(Global.read_config("rooms", "roles", "can_teleport"))
+      actor.has_any_role?(Global.read_config("rooms", "can_teleport"))
     end
     
     def self.can_go_home?(actor)
-      actor.has_any_role?(Global.read_config("rooms", "roles", "can_go_home"))
+      actor.has_any_role?(Global.read_config("rooms", "can_go_home"))
     end
     
     def self.room_types

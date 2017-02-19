@@ -5,7 +5,7 @@ module AresMUSH
         before do
           @actor = double
           @other_char = double
-          Global.stub(:read_config).with("login", "roles", "can_access_email") { ['admin'] }
+          Global.stub(:read_config).with("login", "can_access_email") { ['admin'] }
         end
           
         it "should allow you to see your own email" do
@@ -26,7 +26,7 @@ module AresMUSH
       describe :can_reset_password? do
         before do
           @actor = double
-          Global.stub(:read_config).with("login", "roles", "can_reset_password") { ['admin'] }
+          Global.stub(:read_config).with("login", "can_reset_password") { ['admin'] }
         end
           
         it "should allow someone with the required role to reset a password" do

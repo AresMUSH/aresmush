@@ -2,22 +2,20 @@ module AresMUSH
   module Bbs
     class BbsReplyCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandRequiresArgs
       
       attr_accessor :board_name, :num, :reply
 
-      def crack!        
+      def parse_args        
         if (cmd.args =~ /.+\/.+\=.+/)
-          cmd.crack_args!( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
-          self.board_name = titleize_input(cmd.args.name)
-          self.num = trim_input(cmd.args.num)
-          self.reply = cmd.args.reply
+          args = cmd.parse_args( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
+          self.board_name = titlecase_arg(args.name)
+          self.num = trim_arg(args.num)
+          self.reply = args.reply
         elsif (cmd.args =~ /.+\=.+\/.+/)
-          cmd.crack_args!( /(?<name>[^\=]+)\=(?<num>[^\=]+)\/(?<reply>[^\=]+)/)
-          self.board_name = titleize_input(cmd.args.name)
-          self.num = trim_input(cmd.args.num)
-          self.reply = cmd.args.reply
+          args = cmd.parse_args( /(?<name>[^\=]+)\=(?<num>[^\=]+)\/(?<reply>[^\=]+)/)
+          self.board_name = titlecase_arg(args.name)
+          self.num = trim_arg(args.num)
+          self.reply = args.reply
         else
           self.reply = cmd.args
         end

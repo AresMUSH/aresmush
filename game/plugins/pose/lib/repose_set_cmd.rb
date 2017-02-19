@@ -2,11 +2,10 @@ module AresMUSH
   module Pose
     class ReposeSetCmd
       include CommandHandler
-      include CommandRequiresLogin
       
       attr_accessor :option
       
-      def crack!
+      def parse_args
         self.option = OnOffOption.new(cmd.switch)
       end
       

@@ -4,7 +4,7 @@ ictime:
 
     # Set this to a positive or negative number to add or subtract years from the current
     # OOC server time.
-    year_offset: 220
+    year_offset: 0
     # After the year offset is taken into account, this number of days will be added to 
     # or subtracted from the new date.   An example of when you might want to do this is
     # if you launch your game in Janurary but want the game to ICly start in summer.  You

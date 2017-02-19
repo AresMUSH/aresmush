@@ -1,7 +1,6 @@
 module AresMUSH
   module Profile
     class WikiTemplate < ErbTemplateRenderer
-      include TemplateFormatters
       
       attr_accessor :char
       

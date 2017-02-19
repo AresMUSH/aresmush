@@ -1,7 +1,7 @@
 module AresMUSH
   module Chargen
     def self.can_approve?(actor)
-      actor.has_any_role?(Global.read_config("chargen", "roles", "can_approve"))
+      actor.has_any_role?(Global.read_config("chargen", "can_approve"))
     end
     
     def self.bg_app_review(char)
@@ -14,11 +14,11 @@ module AresMUSH
     end
     
     def self.can_manage_bgs?(actor)
-      return actor.has_any_role?(Global.read_config("chargen", "roles", "can_manage_bgs"))
+      return actor.has_any_role?(Global.read_config("chargen", "can_manage_bgs"))
     end     
     
     def self.can_view_bgs?(actor)
-      return actor.has_any_role?(Global.read_config("chargen", "roles", "can_view_bgs"))
+      return actor.has_any_role?(Global.read_config("chargen", "can_view_bgs"))
     end      
     
     def self.approval_status(char)

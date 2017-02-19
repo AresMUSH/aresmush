@@ -2,14 +2,11 @@ module AresMUSH
   module OOCTime
     class TimezoneCmd
       include CommandHandler
-      include CommandRequiresLogin
-      include CommandWithoutSwitches
-      include CommandRequiresArgs
            
       attr_accessor :zone
            
-      def crack!
-        self.zone = trim_input(cmd.args)
+      def parse_args
+        self.zone = trim_arg(cmd.args)
         handle_timezone_aliases
       end
       

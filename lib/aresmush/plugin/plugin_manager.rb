@@ -27,7 +27,7 @@ module AresMUSH
       load plugin_loader
       module_name = find_plugin_const(name)
       if (!module_name)
-        raise SystemNotFoundException
+        raise SystemNotFoundException.new("Can't find a module for #{name}.")
       end
       plugin_module = Object.const_get("AresMUSH::#{module_name}")
       load_plugin_config plugin_module

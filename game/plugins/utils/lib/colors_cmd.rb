@@ -2,15 +2,6 @@ module AresMUSH
   module Utils
     class ColorsCmd
       include CommandHandler
-      include CommandWithoutSwitches
-      include CommandRequiresLogin
-      include CommandWithoutArgs
-         
-      attr_accessor :page
-         
-      def crack!
-        self.page = !cmd.page ? 1 : cmd.page.to_i
-      end
 
       def handle
         list = []
@@ -26,7 +17,7 @@ module AresMUSH
           list << "#{fg}%t%t%t#{bg}"
         end
         
-        client.emit BorderedDisplay.paged_list(list, self.page, 25, t('ansi.colors_title'), t('ansi.x_or_c'))
+        client.emit BorderedDisplay.paged_list(list, cmd.page, 25, t('ansi.colors_title'), t('ansi.x_or_c'))
       end
     end
   end
