@@ -32,8 +32,8 @@ module AresMUSH
       end
     end
     
-    def send_formatted(msg)
-      # Strip out < and > - may need to strip other things in the future
+    def send_formatted(msg, enable_fansi = false)
+       # Strip out < and > - may need to strip other things in the future
       send_data ClientFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
     end
     
