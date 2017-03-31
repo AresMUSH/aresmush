@@ -16,8 +16,9 @@ module AresMUSH
       
       def handle
         report = []
-        client.program[:idle_queue].each do |id, action|
+        client.program[:idle_queue].sort_by { |id, action| action }.each do |id, action|
           idle_char = Character[id]
+          char_name = idle_char.name.ljust(20)
           case action
           when "Destroy"
             Global.logger.debug "#{idle_char.name} deleted for idling out."
@@ -25,20 +26,20 @@ module AresMUSH
           when "Roster"
             Global.logger.debug "#{idle_char.name} added to roster."
             Roster::Api.add_to_roster(idle_char)
-            report << "#{idle_char.name} - #{t('idle.added_to_roster')}"
+            report << "#{char_name} - #{t('idle.added_to_roster')}"
           when "Npc"
             idle_char.update(is_npc: true)
-            report << "#{idle_char.name} - #{t('idle.turned_to_npc')}"
+            report << "#{char_name} - #{t('idle.turned_to_npc')}"
           when "Warn"
             Global.logger.debug "#{idle_char.name} idle warned."
-            report << "#{idle_char.name} - #{t('idle.idle_warning')}"
+            report << "#{char_name} - #{t('idle.idle_warning')}"
           when "Nothing"
             # Do nothing
           else
             Global.logger.debug "#{idle_char.name} idled out with action #{action}."
             idle_status = idle_char.get_or_create_idle_status
             idle_status.update(status: action)
-            report << "#{idle_char.name} - #{action}"
+            report << "#{char_name} - #{action}"
           end
         end
         
