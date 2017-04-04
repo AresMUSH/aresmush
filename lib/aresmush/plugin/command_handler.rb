@@ -141,6 +141,11 @@ module AresMUSH
       arg ? trim_arg(arg.downcase) : nil
     end
     
+    # Converts an arg to an integer.  Returns nil if 'arg' is nil
+    def integer_arg(arg)
+      arg ? trim_arg(arg).to_i : nil
+    end
+    
     # Splits an argument into an array.  Returns nil if 'arg' is nil.  By default, splits at
     # spaces but you can pass something else (like to split at a comma)
     def split_arg(arg, split = " ")

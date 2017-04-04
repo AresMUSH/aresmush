@@ -7,6 +7,7 @@ categories:
 aliases:
 - color
 - colors
+- fansi
 plugin: utils
 ---
 You create a color in Ares using either \%x or \%c followed by the color code.  \%xn goes back to normal.  

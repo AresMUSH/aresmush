@@ -4,7 +4,7 @@
     <tbody>
 <% @chars.each do |c| %>
     <tr><td> 
-        <a href="/char/<%= c.id %>"><%= c.name %></a>
+        <a href="/char/<%= c.id %>"><%= c.name %></a> - <%= c.group_value('Position') %>
     </td></tr>
 <% end %>
     </tbody>

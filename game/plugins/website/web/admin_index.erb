@@ -6,6 +6,11 @@
     
     <div class="panel-body">
         
+        <% if @reboot_required %>
+            <div class="alert alert-warning">
+              <strong>Reboot Required!</strong> Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please reboot at your earliest convenience.
+            </div>
+        <% end %>
         <a href="/setup" class="btn btn-default">Edit Game Info</a>
 
         <a href="/config" class="btn btn-default">Configure the Game</a>

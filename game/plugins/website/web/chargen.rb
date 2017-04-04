@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp
     get '/chargen' do
       if (!@user)
-        flash[:error] = "You need to create your character in the game first and then log in using the link at the top left."
+        flash[:error] = "You need to log in first."
         redirect "/"
       end
         
@@ -116,6 +116,7 @@ module AresMUSH
       demo.physique = titlecase_arg(params[:physique])
       demo.callsign = titlecase_arg(params[:callsign])
       demo.gender = params[:gender]
+      demo.actor = params[:actor]
       
       age = params[:age].to_i
       if (!Demographics.check_age(age))

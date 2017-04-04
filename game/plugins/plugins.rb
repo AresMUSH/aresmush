@@ -6,7 +6,6 @@ module AresMUSH
   module Plugins
     def self.all_plugins
       [
-        "actors", 
         "arescentral", 
         "bbs", 
         "channels", 

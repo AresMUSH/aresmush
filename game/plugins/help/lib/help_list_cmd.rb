@@ -26,17 +26,7 @@ module AresMUSH
       
       def handle        
         list = Help.toc(self.category)
-        case self.category
-        when "main"
-          topics_per_page = 3
-        when "admin"
-          topics_per_page = 5
-        when "builder"
-          topics_per_page = 6
-        else
-          topics_per_page = 4
-        end
-            
+        topics_per_page = Help.category_config[self.category]['topics_per_page']
         paginator = Paginator.paginate(list, cmd.page, topics_per_page)
         
         if (paginator.out_of_bounds?)
