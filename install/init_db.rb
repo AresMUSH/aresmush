@@ -150,6 +150,12 @@ module AresMUSH
       channel.default_alias = [ 'q', 'qu', 'que' ]
       channel.save
       
+      channel = AresMUSH::Channel.create(name: "RP",
+         color: "%xB",
+         description: "Looking for RP requests.")
+      channel.default_alias = [ 'rp' ]
+      channel.save
+      
       channel = AresMUSH::Channel.create(name: "Admin",
         description: "Admin business.",
         color: "%xr")
