@@ -40,7 +40,7 @@ module AresMUSH
               return
             end
           
-            enactor.update(ranks_rank: rank)
+            model.update(ranks_rank: rank)
             client.emit_success t('ranks.rank_set', :rank => rank)
           end
         end
