@@ -20,6 +20,12 @@ module AresMUSH
         board = BbsBoard.all_sorted[board_name.to_i - 1] rescue nil
       else
         board = BbsBoard.find_one_by_name(board_name)
+        if (!board)
+          possible_matches = BbsBoard.all.select { |b| b.name_upcase.starts_with?(board_name.upcase) }
+          if (possible_matches.count == 1)
+            board = possible_matches.first
+          end
+        end
       end
 
       if (!board)

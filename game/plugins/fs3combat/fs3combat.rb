@@ -34,7 +34,9 @@ load "lib/damage/heal_stop_cmd.rb"
 load "lib/damage/healing_cmd.rb"
 load "lib/damage/hospitals_cmd.rb"
 load "lib/damage/hospital_set_cmd.rb"
+load "lib/damage/delete_damage_cmd.rb"
 load "lib/damage/inflict_damage_cmd.rb"
+load "lib/damage/modify_damage_cmd.rb"
 load "lib/damage/treat_cmd.rb"
 load "lib/gear/armor_detail_cmd.rb"
 load "lib/gear/armor_list_cmd.rb"
@@ -122,6 +124,10 @@ module AresMUSH
          case cmd.switch
          when "inflict"
            return InflictDamageCmd
+         when "modify"
+           return ModifyDamageCmd
+         when "delete"
+           return DeleteDamageCmd
          when nil
            return DamageCmd
          end

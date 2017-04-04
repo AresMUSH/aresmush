@@ -7,7 +7,7 @@ module AresMUSH
       self.websocket = websocket
       self.ready_callback = ready_callback
       websocket.onopen { |handshake| connection_opened(handshake) }
-      websocket.onclose { close_connection }
+      websocket.onclose { connection_closed }
       websocket.onmessage { |msg| receive_data(msg) }
     end
 
@@ -37,9 +37,13 @@ module AresMUSH
       send_data ClientFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
     end
     
+    # Just announces that the websocket was closed.
+    def connection_closed
+      @client.connection_closed        
+    end
+    
     def close_connection(dummy = nil)  # Dummy for compatibility with the other connection class.
       begin
-        @client.connection_closed        
         self.websocket.close
       rescue Exception => e
         Global.logger.warn "Couldn't close connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."

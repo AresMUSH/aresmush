@@ -5,7 +5,7 @@ en:
         unread_marker: "(U)"
 
         board_already_exists: "That board already exists."
-        board_doesnt_exist: "That board does not exist."
+        board_doesnt_exist: "Can't find a board with that name."
         invalid_post_number: "Invalid post number."
         invalid_board_number: "That is not a valid board number."
         

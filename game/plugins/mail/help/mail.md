@@ -1,7 +1,8 @@
 ---
 topic: mail
-toc: Communicating
+toc: Mail
 summary: In-game mail system.
+order: 1
 categories:
 - main
 aliases: 

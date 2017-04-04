@@ -1,16 +1,16 @@
 
+<script src="/config.js"></script>
 <script src="/play.js"></script>
 <script src="/ansi_up.js"></script>
 
 <div class="alert alert-warning">If you reload or leave this page, it will close your connection to the game.</div>
 
 <div>
-        <button class="connectButton btn-success">Connect</button>
-        
-        
-        <button class="helpButton btn-default">Help</button>
-        <button class="whoButton btn-default">Who</button>
-        <button class="disconnectButton btn-danger">Disconnect</button>
+        <button class="connectButton btn btn-success">Connect</button>
+        <button class="btn btn-default" onclick=" window.open('/help','_blank')">Help</button>
+        <button class="whoButton btn btn-default">Who</button>
+        <button class="disconnectButton btn btn-danger">Disconnect</button>
+
 </div>
         
         <div id="console"></div>
@@ -18,7 +18,7 @@
         <input type="hidden" id="charId" name="charId" value="<%= @user ? @user.id : ' ' %>">
         <input type="hidden" id="charToken" name="charToken" value="<%= @user ? @user.login_api_token : ' ' %>">
         <textarea id="sendMsg"></textarea>
-     <button class="sendButton btn-primary">Send Text</button>
+     <button class="sendButton btn-primary btn">Send Text</button>
         
         <div id="debug"></div>
         

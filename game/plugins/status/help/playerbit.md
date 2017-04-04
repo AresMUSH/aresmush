@@ -1,6 +1,6 @@
 ---
 topic: playerbit
-toc: Community
+toc: Status
 summary: Designating a character as an OOC-only 'player bit'.
 categories:
 - main

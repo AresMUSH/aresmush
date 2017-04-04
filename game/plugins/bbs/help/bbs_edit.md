@@ -1,6 +1,7 @@
 ---
 topic: bbs edit
-summary: Bulletin boards.
+summary: Editing BBS messages.
+toc: Bbs
 aliases:
 categories:
 - main

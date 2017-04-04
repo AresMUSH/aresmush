@@ -19,6 +19,7 @@ There are several idle actions available:
     Roster - Put them on the roster.
     Warn - Notify them they're in danger of idling out.
     Nothing - Give them a pass until next time.
+    Reset - Clear their idle status.
 
 `idle/start` - Builds up a list of idle players.
 `idle/action <name>=<action>` - Decides what to do with someone.

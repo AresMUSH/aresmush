@@ -25,6 +25,11 @@ module AresMUSH
         if (terms_of_service)
           client.emit "%l1%r#{terms_of_service}%r%l1"
         end
+        
+        Global.dispatcher.queue_timer(2, "Tell guest their name", client) do
+          client.emit_success t('login.guest_name', :name => guest.name)
+        end
+        
         Global.dispatcher.queue_event CharConnectedEvent.new(client, guest)
       end
     end

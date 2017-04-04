@@ -25,7 +25,6 @@ module AresMUSH
       
       def check_name
         return t('dispatcher.invalid_syntax', :command => 'create') if !charname
-        return t('validation.name_must_be_capitalized') if (charname[0].downcase == charname[0])
         return Character.check_name(charname)
       end
       

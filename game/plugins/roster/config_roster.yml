@@ -5,3 +5,6 @@ roster:
 
     # Newly-approved characters will be announced on this board.
     arrivals_board: "New Arrivals"
+    
+    # Who's the default contact name for roster characters
+    default_contact: "Admin"

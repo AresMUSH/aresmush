@@ -1,0 +1,42 @@
+module AresMUSH
+  class WebApp    
+    
+    
+    get '/register' do
+      erb :register
+    end
+    
+    post '/register' do
+      name = params[:name]
+      pw = params[:password]
+      confirm_pw = params[:confirm_password]
+      
+      name_error = Character.check_name(name)
+      password_error = Character.check_password(pw)
+      
+      if (pw != confirm_pw)
+        flash[:error] = "Passwords don't match."
+        redirect '/register'
+      elsif name_error
+        flash[:error] = name_error
+        redirect '/register'
+      elsif password_error
+        flash[:error] = password_error
+        redirect '/register'
+      else 
+        char = Character.new
+        char.name = name
+        char.change_password(pw)
+        char.room = Game.master.welcome_room
+        char.login_api_token = Character.random_link_code
+        char.save
+        
+        session[:user_id] = char.id
+        flash[:info] = "Welcome, #{char.name}!"
+        
+        redirect '/'
+      end
+      
+    end
+  end
+end

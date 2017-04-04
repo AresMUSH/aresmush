@@ -1,7 +1,7 @@
 ---
 topic: mail managing
-toc: 
-summary: 
+toc: Mail
+summary: Deleting and archiving mail.
 categories:
 - main
 plugin: mail

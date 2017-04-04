@@ -19,3 +19,6 @@ demographics:
         - eyes
         - birthdate
         - skin
+        
+    shortcuts:
+        "actors": "actor"

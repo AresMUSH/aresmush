@@ -1,7 +1,7 @@
 ---
 topic: mail tags
-toc: 
-summary: 
+toc: Mail
+summary: Organizing your mail.
 categories:
 - main
 aliases:

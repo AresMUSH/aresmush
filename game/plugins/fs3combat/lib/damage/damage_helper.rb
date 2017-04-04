@@ -27,6 +27,15 @@ module AresMUSH
       end
     end
     
+    def self.can_inflict_damage(enactor, target)
+      target_combat = target.combat
+      enactor_combat = enactor.combat
+      return true if FS3Combat.can_manage_damage?(enactor)
+      return false if !target_combat
+      return false if target_combat != enactor_combat
+      enactor_combat.organizer  == enactor
+    end
+      
     def self.inflict_damage(target, severity, desc, is_stun = false, is_mock = false)
       Global.logger.info "Damage inflicted on #{target.name}: #{desc} #{severity} stun=#{is_stun}"
 

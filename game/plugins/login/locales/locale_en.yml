@@ -20,6 +20,7 @@ en:
        tos_agree: "Type %xctos/agree%xn to agree to these terms of service."
        maybe_you_meant_tour: "%xcIf you're trying to connect to a guest character, please type 'tour'.%xn"
        all_guests_taken:  "We're so sorry - all the guest characters are currently taken.  Please try again later."
+       guest_name: "Your temporary guest character name is %{name}."       
        invalid_watch_option: "Valid watch options are: all, none, friends"
        watch_all: "You will now see connect/disconnect messages for all characters."
        watch_none: "You will not see any connect/disconnect messages."

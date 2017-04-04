@@ -30,6 +30,7 @@ module AresMUSH
     attribute :eyes
     attribute :birthdate, :type => DataType::Date
     attribute :callsign
+    attribute :actor
     
     reference :character, "AresMUSH::Character"
   end

@@ -13,6 +13,7 @@ load "lib/commands/meetme_go_cmd.rb"
 load "lib/commands/meetme_invite_cmd.rb"
 load "lib/commands/open_cmd.rb"
 load "lib/commands/out_cmd.rb"
+load "lib/commands/owner_cmd.rb"
 load "lib/commands/rooms_cmd.rb"
 load "lib/commands/roomtype_cmd.rb"
 load "lib/commands/teleport_cmd.rb"
@@ -92,6 +93,8 @@ module AresMUSH
         return OpenCmd
       when "out"
         return OutCmd
+      when "owner"
+        return OwnerCmd
       when "rooms"
         return RoomsCmd
       when "roomtype"

@@ -1,7 +1,7 @@
 ---
 topic: mail sending
-toc: 
-summary: 
+toc: Mail
+summary: Sending mail.
 categories:
 - main
 aliases:

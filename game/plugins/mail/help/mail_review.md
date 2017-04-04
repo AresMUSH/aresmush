@@ -1,7 +1,7 @@
 ---
 topic: mail review
-toc: 
-summary: 
+toc: Mail
+summary: Reviewing sent mail.
 categories:
 - main
 aliases:

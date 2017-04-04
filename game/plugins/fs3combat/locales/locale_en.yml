@@ -6,8 +6,12 @@ en:
         # ----------------------------
         invalid_severity: "Invalid severity level.  Try one of these: %{severities}."
         damage_title: "Damage Report for %{name}"
-        damage_titlebar: "Date         Description                Severity (orig)   Treatable   Healing"
+        damage_titlebar: "#  Date         Description                Severity (orig)    Treat?  Healing"
         damage_inflicted: "You inflict damage on %{name}."
+        damage_modified: "Damage modified."
+        damage_deleted: "Damage deleted."
+        invalid_damage_number: "Invalid wound number."
+        
         wound_mod: "Wound Modifier:"
         healed_wound: "%xh%xxHealed%xn"
         graze_wound: "%xhGraze%xn"
@@ -111,7 +115,7 @@ en:
         team_targets: "Team     Targeted Team(s)"
         
         random_targets: "Suggested Targets: %{targets}"
-        
+        no_targets_specified: "No targets specified."
         # ----------------------------
         # KO
         # ----------------------------

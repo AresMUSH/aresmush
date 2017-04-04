@@ -1,11 +1,12 @@
 module AresMUSH
 
-  module Actors
+  module Demographics
     class ActorsListCmd
       include CommandHandler
       
       def handle
-        list = ActorRegistry.all.sort_by(:charname, order: "ALPHA")
+        list = Character.all.select { |c| c.demographic(:actor) }
+        
         paginator = Paginator.paginate(list, cmd.page, 15)
         
         if (paginator.out_of_bounds?)

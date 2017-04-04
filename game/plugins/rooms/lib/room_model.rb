@@ -24,7 +24,11 @@ module AresMUSH
     attribute :room_type, :default => "IC"
     attribute :room_area
     attribute :room_is_foyer, :type => DataType::Boolean
-     
+    
+    # Room owner is just the ID, but it's not named "_id" to prevent builders
+    # from seeing all character details on examine.
+    attribute :room_owner
+         
     index :room_type
   end
   

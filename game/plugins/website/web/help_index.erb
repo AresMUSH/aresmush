@@ -7,9 +7,9 @@
 <h2><%= toc %></h2>
 
 <ul>
-<% topics.each do |topic| %>
+<% topics.each do |name, data| %>
 <li>
-<a href="/help/<%= topic %>"><%= topic.titleize %></a>
+<a href="/help/<%= name %>"><%= name.titleize %></a> - <%= data['summary'] %>
 </li>
 <% end %>
 </ul>

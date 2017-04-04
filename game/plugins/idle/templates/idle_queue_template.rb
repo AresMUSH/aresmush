@@ -20,6 +20,10 @@ module AresMUSH
         char.name
       end
       
+      def sorted_queue
+      	 @queue.sort_by { |q| last_on(q) }
+      end
+            
       def lastwill(entry)
         char = entry[:char]
         char.idle_lastwill
@@ -27,12 +31,17 @@ module AresMUSH
       
       def last_on(entry)
         char = entry[:char]
-        OOCTime::Api.local_short_timestr(@enactor, char.last_on)
+        str = OOCTime::Api.local_short_timestr(@enactor, char.last_on)
+        if (char.idle_warned)
+          str += '*'
+        end
+        str
       end
       
       def action(entry)
-        entry[:action]
-      end
+      	color = Idle.idle_action_color(entry[:action])
+      	"#{color}#{entry[:action]}%xn"
+      end            
       
       def highlight_color(entry)
         char = entry[:char]

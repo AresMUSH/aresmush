@@ -1,7 +1,7 @@
 ---
 topic: mail composition
-toc: 
-summary: 
+toc: Mail
+summary: Composing mail messages in drafts.
 categories:
 - main
 plugin: mail

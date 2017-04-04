@@ -1,6 +1,7 @@
 module AresMUSH
   class Character
     reference :idle_status, "AresMUSH::IdleStatus"
+    attribute :idle_warned
     
     before_delete :delete_idle_status
     
