@@ -46,7 +46,7 @@
         window_visible = true;
     });
     connect = function() {
-      ws = new WebSocket(`ws://localhost:${config.port}/websocket`);
+      ws = new WebSocket(`ws://${config.host}:${config.port}/websocket`);
       ws.onmessage = function(evt) {
         var cleanData, html;
         cleanData = evt.data;
