@@ -1,6 +1,6 @@
 ---
 topic: npc
-toc: Community
+toc: Status
 summary: Designating a character as a NPC.
 categories:
 - admin

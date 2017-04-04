@@ -4,10 +4,13 @@ module AresMUSH
       @topics = {}
       
       Help.toc("main").each do |toc|
-        @topics[toc] = Help.toc_topics("main", toc).map { |k, v| k }
+        @topics[toc] = Help.toc_topics("main", toc)
       end
 
-      @topics["Supplemental"] = Help.toc_topics("main", nil).map { |k, v| k }
+      uncategorized =  Help.toc_topics("main", nil)
+      if (uncategorized.count > 0)
+        @topics["Uncategorized"] = uncategorized
+      end
       
       erb :help_index
     end

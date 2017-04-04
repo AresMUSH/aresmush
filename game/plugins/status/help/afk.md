@@ -1,7 +1,7 @@
 ---
 topic: afk
-toc: 
-summary: 
+toc: Status
+summary: Going AFK.
 categories:
 - main
 aliases:

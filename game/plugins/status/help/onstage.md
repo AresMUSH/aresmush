@@ -1,7 +1,7 @@
 ---
 topic: onstage
-toc: 
-summary: 
+toc: Status
+summary: Going onstage (IC).
 categories:
 - main
 aliases:

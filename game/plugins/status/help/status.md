@@ -1,6 +1,7 @@
 ---
 topic: status
-toc: Community
+toc: Status
+order: 1
 summary: Character status and going IC/OOC/AFK.
 categories:
 - main

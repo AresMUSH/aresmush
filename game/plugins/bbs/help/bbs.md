@@ -1,6 +1,7 @@
 ---
 topic: bbs
-toc: Communicating
+toc: Bbs
+order: 1
 summary: Bulletin boards.
 aliases:
 - bbs

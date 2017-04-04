@@ -1,7 +1,7 @@
 ---
 topic: offstage
-toc: 
-summary: 
+toc: Status
+summary: Going offstage (OOC).
 categories:
 - main
 plugin: status
