@@ -18,6 +18,7 @@ module AresMUSH
     end
     
     def parse_targets(name_string)
+      return t('fs3combat.no_targets_specified') if (!name_string)
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
       targets = []
       target_names.each do |name|

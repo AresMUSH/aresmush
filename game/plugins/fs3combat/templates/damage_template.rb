@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def treatable(d)
-        d.is_treatable? ? t('global.y') : t('global.n')
+        d.is_treatable? ? t('global.y') : '-'
       end   
          
       def healing(d)
