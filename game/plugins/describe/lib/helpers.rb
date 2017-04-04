@@ -5,8 +5,8 @@ module AresMUSH
         return true
       elsif (char.has_any_role?(Global.read_config("describe", "can_desc_anything")))
         return true
-      elsif (model.class == Room)
-        return char.has_any_role?(Global.read_config("describe", "can_desc_places"))
+      elsif (model.class == Room)        
+        return model.owned_by?(char) || char.has_any_role?(Global.read_config("describe", "can_desc_places"))
       end
       return false
     end
@@ -25,7 +25,8 @@ module AresMUSH
     end
     
     def self.app_review(char)
-      error = !char.current_desc ? t('chargen.not_set') : t('chargen.ok')
+      has_desc = char.current_desc && !char.current_desc.description.to_s.empty?
+      error = has_desc ? t('chargen.ok') : t('chargen.not_set')
       Chargen::Api.format_review_status t('describe.description_review'), error
     end
     

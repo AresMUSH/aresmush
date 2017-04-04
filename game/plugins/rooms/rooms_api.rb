@@ -16,6 +16,10 @@ module AresMUSH
     def is_foyer?
       self.room_is_foyer
     end
+    
+    def owned_by?(char)
+      self.room_owner == char.id
+    end
   end
   
   class Exit  
