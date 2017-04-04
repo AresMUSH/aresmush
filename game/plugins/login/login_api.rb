@@ -26,6 +26,12 @@ module AresMUSH
       def self.login_char(char, client)
         Login.login_char(char, client)
       end
+      
+      def self.set_random_password(char)
+        password = Character.random_link_code
+        char.change_password(password)
+        password
+      end
     end
   end
 end

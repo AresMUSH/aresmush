@@ -6,10 +6,16 @@ en:
         idle_action_set: "%{name}'s idle action is now %{action}."
         idle_removed: "%{name} removed from idle queue."
         invalid_action: "Not a valid idle action.  Try one of these: %{actions}"
-        added_to_roster: "Added to roster"
-        idle_warning: "In danger of idling out.  Please come back!"
+
+        idle_roster: "Added to roster"
+        idle_warn: "In danger of idling out.  Please come back!"
+        idle_dead: "Dead"
+        idle_gone: "Left the Grid"
+        idle_reset: "No Longer Idle"
+        idle_npc: "Turned into NPC"
+
+        previously_warned: "Previously idle warned."
         idle_bbs_subject: "Idle-Out Characters"
-        idle_bbs_body: "The following characters have idled out or are in danger of doing so.%R%R%{report}"
+        idle_bbs_body: "The following characters have idled out or are in danger of doing so.%{report}"
         
         lastwill_set: "Last will instructions set."
-        turned_to_npc: "Turned into NPC"

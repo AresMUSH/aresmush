@@ -16,42 +16,66 @@ module AresMUSH
       
       def handle
         report = []
-        client.program[:idle_queue].sort_by { |id, action| action }.each do |id, action|
-          idle_char = Character[id]
-          char_name = idle_char.name.ljust(20)
-          case action
-          when "Destroy"
-            Global.logger.debug "#{idle_char.name} deleted for idling out."
-            idle_char.delete
-          when "Roster"
-            Global.logger.debug "#{idle_char.name} added to roster."
-            Roster::Api.add_to_roster(idle_char)
-            report << "#{char_name} - #{t('idle.added_to_roster')}"
-          when "Npc"
-            idle_char.update(is_npc: true)
-            report << "#{char_name} - #{t('idle.turned_to_npc')}"
-          when "Warn"
-            Global.logger.debug "#{idle_char.name} idle warned."
-            report << "#{char_name} - #{t('idle.idle_warning')}"
-          when "Nothing"
-            # Do nothing
-          else
-            Global.logger.debug "#{idle_char.name} idled out with action #{action}."
-            idle_status = idle_char.get_or_create_idle_status
-            idle_status.update(status: action)
-            report << "#{char_name} - #{action}"
+        
+        client.program[:idle_queue].map { |id, action| action }.uniq.each do |action|
+          ids =  client.program[:idle_queue].select { |id, a| a == action }
+          chars = ids.map { |id, action| Character[id] }
+
+          # Don't log destroyed chars who never hit the grid
+          if (action != "Destroy" && action != "Nothing")   
+            title = t("idle.idle_#{action.downcase}")
+            color = Idle.idle_action_color(action)
+            report << "%r#{color}#{title}%xn"
+          end
+          
+          chars.sort_by { |c| c.name }.each do |idle_char|
+            # Don't log destroyed chars who never hit the grid
+            if (action != "Destroy" && action != "Nothing")   
+              report << idle_char.name               
+            end
+            
+            case action
+            when "Destroy"
+              Global.logger.debug "#{idle_char.name} deleted for idling out."
+              idle_char.delete
+            when "Roster"
+              Global.logger.debug "#{idle_char.name} added to roster."
+              Roster::Api.add_to_roster(idle_char)
+            when "Npc"
+              idle_char.update(is_npc: true)
+              Login::Api.set_random_password(idle_char)
+            when "Warn"
+              Global.logger.debug "#{idle_char.name} idle warned."
+              idle_char.update(idle_warned: true)
+            when "Nothing"
+              # Do nothing
+            when "Reset"
+              # Reset their idle status
+              idle_char.update(idle_warned: false)
+              idle_char.update(is_npc: false)
+              if (idle_char.idle_status)
+                idle_char.idle_status.delete
+              end
+              # Remove them from the roster.
+              Roster::Api.remove_from_roster(idle_char)
+            else
+              Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
+              idle_status = idle_char.get_or_create_idle_status
+              idle_status.update(status: action)
+              Login::Api.set_random_password(idle_char)
+            end
           end
         end
         
         client.program.delete(:idle_queue)
         
-        client.emit BorderedDisplay.list report.sort
+        client.emit BorderedDisplay.list report
         
         Bbs::Api.system_post(
           Global.read_config("idle", "idle_board"), 
           t('idle.idle_bbs_subject'), 
           t('idle.idle_bbs_body', :report => report.join("%R")))
-      end
+      end      
     end
   end
 end

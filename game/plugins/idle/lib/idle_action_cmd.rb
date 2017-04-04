@@ -31,7 +31,7 @@ module AresMUSH
       end
       
       def check_action
-        actions = [ 'Nothing', 'Roster', 'Destroy', 'Dead', 'Gone', "Npc", "Warn" ]
+        actions = [ 'Nothing', 'Reset', 'Roster', 'Destroy', 'Dead', 'Gone', "Npc", "Warn" ]
         return t('idle.invalid_action', :actions => actions.join(" ")) if !actions.include?(self.action)
         return nil
       end

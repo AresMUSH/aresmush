@@ -3,6 +3,7 @@ load "idle_api.rb"
 load "lib/helpers.rb"
 load "lib/idle_action_cmd.rb"
 load "lib/idle_execute_cmd.rb"
+load 'lib/event_handling.rb'
 load "lib/idle_model.rb"
 load "lib/idle_queue_cmd.rb"
 load "lib/idle_remove_cmd.rb"
@@ -62,6 +63,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      end
       nil
     end
   end

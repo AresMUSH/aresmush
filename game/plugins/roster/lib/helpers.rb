@@ -13,7 +13,14 @@ module AresMUSH
     
     def self.add_to_roster(char, contact = nil)
       registry = char.get_or_create_roster_registry
-      registry.update(contact: contact)
+      registry.update(contact: contact || Global.read_config("roster", "default_contact"))
+      Login::Api.set_random_password(char)
+    end
+    
+    def self.remove_from_roster(char)
+      if (char.roster_registry)
+        char.roster_registry.delete
+      end
     end
   end
 end

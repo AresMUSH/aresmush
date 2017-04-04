@@ -31,30 +31,17 @@ module AresMUSH
       
       def last_on(entry)
         char = entry[:char]
-        OOCTime::Api.local_short_timestr(@enactor, char.last_on)
+        str = OOCTime::Api.local_short_timestr(@enactor, char.last_on)
+        if (char.idle_warned)
+          str += '*'
+        end
+        str
       end
       
       def action(entry)
-      	case entry[:action]
-           when "Destroy"
-             color = "%xh%xx"
-           when "Warn"
-             color = "%xh"
-           when "Npc"
-             color = "%xb"
-           when "Gone"
-             color = "%xh%xy"
-           when "Roster"
-             color = "%xh%xg"
-	         else
-	           color = "%xc"
-         end
+      	color = Idle.idle_action_color(entry[:action])
       	"#{color}#{entry[:action]}%xn"
-      end
-            
-      def action(entry)
-        entry[:action]
-      end
+      end            
       
       def highlight_color(entry)
         char = entry[:char]
