@@ -1,11 +1,13 @@
 $:.unshift File.dirname(__FILE__)
 load "demographics_api.rb"
 load "lib/age_cmd.rb"
+load "lib/actors_cmd.rb"
 load "lib/basic_demographic_cmd.rb"
 load "lib/demographic_admin_cmd.rb"
 load "lib/birthday_cmd.rb"
 load "lib/demo_model.rb"
 load "lib/helpers.rb"
+load "templates/actors_list.rb"
 
 module AresMUSH
   module Demographics
@@ -39,6 +41,12 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       
       case cmd.root
+      when "actor"
+        if (cmd.args)
+          return ActorSetCmd
+        else
+          return ActorsListCmd
+        end
       when "age"
         return AgeCmd 
       when "birthdate"

@@ -4,6 +4,10 @@ module AresMUSH
       Demographics.calculate_age(demographic(:birthdate))
     end
     
+    def actor
+      demographic(:actor) || t('demographics.actor_not_set')
+    end
+    
     def demographic(name)
       return nil if !self.demographics
       self.demographics.send(name)

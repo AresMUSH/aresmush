@@ -34,6 +34,14 @@ module AresMUSH
       end      
     end
     
+    class ActorCmd
+      include BasicDemographicCmd
+      
+      def check_chargen_locked
+        Chargen::Api.check_chargen_locked(enactor)
+      end      
+    end
+    
     class PhysiqueCmd
       include BasicDemographicCmd      
     end

@@ -1,5 +1,8 @@
 en:
     demographics:
+        actor_not_set: None Set
+        actors_title: Actors
+
         admin_property_set: "You set %{name}'s %{property} to %{value}."
         set_birhdate_instead: "Set birthdate instead of age."
         invalid_demographic: "That is not a valid demographic."
