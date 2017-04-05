@@ -40,18 +40,28 @@ module AresMUSH
           it "should allow a builder to describe a room" do
             @char.stub(:has_any_role?).with(["admin", "powerful"]) { false }
             @char.stub(:has_any_role?).with(["builder", "descer"]) { true }
+            @room.stub(:owned_by?).with(@char) { false }
             Describe.can_describe?(@char, @room).should be true
           end
           
           it "should allow someone with desc-anything power to describe a room" do
             @char.stub(:has_any_role?).with(["admin", "powerful"]) { true }
             @char.stub(:has_any_role?).with(["builder", "descer"]) { false }
+            @room.stub(:owned_by?).with(@char) { false }
+            Describe.can_describe?(@char, @room).should be true
+          end
+          
+          it "should allow a room owner to describe a room" do
+            @char.stub(:has_any_role?).with(["admin", "powerful"]) { false }
+            @char.stub(:has_any_role?).with(["builder", "descer"]) { false }
+            @room.stub(:owned_by?).with(@char) { true }
             Describe.can_describe?(@char, @room).should be true
           end
           
           it "should not allow someone without permission to describe a room" do
             @char.stub(:has_any_role?).with(["admin", "powerful"]) { false }
             @char.stub(:has_any_role?).with(["builder", "descer"]) { false }
+            @room.stub(:owned_by?).with(@char) { false }
             Describe.can_describe?(@char, @room).should be false
           end
         end
