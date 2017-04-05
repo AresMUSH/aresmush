@@ -9,20 +9,10 @@ module AresMUSH
         @enactor = enactor
         super File.dirname(__FILE__) + "/events_list.erb"        
       end
-
-
-      def view_url
-        Events.calendar_view_url
-      end
       
-      def start_time_local(event)
-        event.start_time_local(@enactor)
+      def color(event)
+        event.is_past? ? "%xh%xx" : ""
       end
-      
-      def start_time_standard(event)
-        event.start_time_standard
-      end
-
     end
   end
 end

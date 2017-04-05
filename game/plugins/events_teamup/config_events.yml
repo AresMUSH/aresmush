@@ -1,0 +1,15 @@
+events:
+    
+    # The events system integrates with Teamup calendar:  http://www.teamup.com/
+    # To use it, you'll need to set up a teamup account and create a calendar for your game.
+    # Once you have it set up, you'll need two pieces of info:
+    # 1.  Your calendar ID, like ab123df8135, from Settings -> Sharing.  
+    #      Use the "Add Events" calendar to let people add events, or "Read-only" to lock it down.
+    # 2.  An API key, which you can request from https://teamup.com/api-keys/request
+
+    # Displays to tell people what timezone the web calendar is using.
+    calendar_timezone: "EST"
+    
+    # NOTE: The calendar ID and API key are configured in the game/config/secrets.yml file
+    shortcuts:
+        "events" : "event"

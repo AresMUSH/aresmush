@@ -1,25 +1,40 @@
 module AresMUSH
   module Events
-
-    mattr_accessor :last_events, :last_event_time
-
-    def self.upcoming_events(days_ahead)
-      if (!self.last_events || (Time.now - self.last_event_time > (360 * 30)))
-        startDate = DateTime.now
-        endDate = startDate + days_ahead
-
-        Global.logger.debug "Loading events from Teamup."
-        teamup = TeamupApi.new
-        self.last_events = teamup.get_events(startDate, endDate)
-        self.last_event_time = Time.now
-      end
+    def self.can_manage_events?(actor)
+      actor.has_permission?("manage_events")
+    end
       
-      self.last_events
+    def self.upcoming_events(days_ahead)
+      Event.sorted_events.select { |e| e.is_upcoming?(10) }
     end
     
-    def self.calendar_view_url
-      calendar = Global.read_config("secrets", "events", "calendar")
-      "https://teamup.com/#{calendar}"
+    def self.parse_date_time_desc(str)
+      begin
+        split = str.split('/')
+        date_format = Global.read_config("date_and_time", "short_date_format")
+        date = Date.strptime(split[0..2].join('/'), date_format)
+        time = split[3]
+        desc = split[4..-1].join("/")
+        
+        return date, time, desc, nil
+      rescue Exception => e
+        puts e
+        error = t('events.invalid_event_date', 
+                   :format_str => Global.read_config("date_and_time", "date_entry_format_help"))
+        
+        return nil, nil, nil, error
+      end
+    end
+    
+    
+    def self.with_an_event(num, client, enactor, &block)
+      events = Event.sorted_events
+      if (num < 0 || num > events.count)
+        client.emit_failure t('events.invalid_event')
+        return
+      end
+      
+      yield events.to_a[num - 1]
     end
   end
 end
