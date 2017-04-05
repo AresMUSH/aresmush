@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
+load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/scene_model.rb"
 load "lib/scene_join_cmd.rb"
@@ -28,7 +29,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/scene.md" ]
+      [ "help/scene.md", "help/scene_set.md" ]
     end
  
     def self.config_files
@@ -64,6 +65,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
       nil
     end
   end
