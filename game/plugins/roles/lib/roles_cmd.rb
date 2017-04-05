@@ -11,9 +11,14 @@ module AresMUSH
 
       def handle        
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
-          list = Roles.all_roles.map { |r| "#{char.has_role?(r) ? '(+)' : '(-)'} #{r}"}
+          list = Role.all.map { |r| print_role(char, r) }
           client.emit BorderedDisplay.list(list, t('roles.assigned_roles', :name => char.name))
         end
+      end
+      
+      def print_role(char, r)
+        has_role = char.has_role?(r) ? '(+)' : '(-)'
+        "#{has_role} #{r.name} - #{r.permissions.join(', ') }"
       end
     end
   end

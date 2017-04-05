@@ -12,7 +12,7 @@ module AresMUSH
 
       def check_permission
         return nil if self.target == enactor_name
-        return nil if enactor.has_any_role?(Global.read_config("fs3skills",  "can_view_sheets"))
+        return nil if enactor.has_permission?("can_view_sheets")
         return t('dispatcher.not_allowed')
       end
 

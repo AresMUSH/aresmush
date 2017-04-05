@@ -1,13 +1,7 @@
 login:
-    # List roles that are allowed to see other character's email.
-    can_access_email: 
-        - admin
-        # - another_role
-
-    # List roles that are allowed to reset passwords.
-    can_reset_password: 
-        - admin
-        # - another_role
+    permissions:
+        - access_email
+        - reset_password
     
     # Name of the role that identifies your guests.  Must be configured in the roles system.
     guest_role: "guest"

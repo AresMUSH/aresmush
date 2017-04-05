@@ -1,7 +1,7 @@
 idle:
-    # List roles that are allowed to idle out characters
-    can_idle_sweep:
-        - admin
+    permissions:
+        - idle_sweep
+
     # Roles that are exempt from idle sweep
     idle_exempt:
         - admin

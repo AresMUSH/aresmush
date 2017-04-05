@@ -1,7 +1,7 @@
 module AresMUSH
   module Roster
     def self.can_manage_roster?(actor)
-      actor.has_any_role?(Global.read_config("roster", "can_manage_roster"))
+      actor.has_permission?("manage_roster")
     end
     
     def self.create_or_update_roster(client, enactor, name, contact)

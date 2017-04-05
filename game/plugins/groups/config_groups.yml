@@ -1,9 +1,7 @@
 groups:
-    # List roles have the power to assign groups.
-    can_set_group: 
-        - admin
-        # - another role
-       
+    permissions:
+        - set_group
+
     # Define your groups. 
     types:
         # This is the group name.  Be sure it's capitalized the way you want it to be shown

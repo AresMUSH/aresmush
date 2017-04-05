@@ -1,10 +1,7 @@
 status:
-    can_manage_status:
-        # List roles that are allowed to set themselves as admin on/off-duty
-        # and use the status commands irrespective of whether they've been approved.
-        - admin
-        # - another role
-            
+    permissions:
+        - manage_status
+
     colors:
         # Provide full ansi codes for the colors you want for each status.
         IC: "%xr"

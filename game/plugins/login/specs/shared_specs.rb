@@ -13,12 +13,12 @@ module AresMUSH
         end
         
         it "should allow someone with the required role to see email" do
-          @actor.stub(:has_any_role?).with(["admin"]) { true }
+          @actor.stub(:has_permission?).with("access_email") { true }
           Login.can_access_email?(@actor, @other_char).should be true
         end
         
         it "should not allow you to access someone else's email" do
-          @actor.stub(:has_any_role?).with(["admin"]) { false }
+          @actor.stub(:has_permission?).with("access_email") { false }
           Login.can_access_email?(@actor, @other_char).should be false
         end
       end
@@ -26,16 +26,15 @@ module AresMUSH
       describe :can_reset_password? do
         before do
           @actor = double
-          Global.stub(:read_config).with("login", "can_reset_password") { ['admin'] }
         end
           
         it "should allow someone with the required role to reset a password" do
-          @actor.stub(:has_any_role?).with(["admin"]) { true }
+          @actor.stub(:has_permission?).with("reset_password") { true }
           Login.can_reset_password?(@actor).should be true
         end
         
-        it "should not allow you to access someone else's email" do
-          @actor.stub(:has_any_role?).with(["admin"]) { false }
+        it "should not allow you to reset a password" do
+          @actor.stub(:has_permission?).with("reset_password") { false }
           Login.can_reset_password?(@actor).should be false
         end
       end

@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def is_admin?
-        @user != nil && @user.can_manage_game?
+        @user != nil && @user.is_admin?
       end
       
       def is_approved?

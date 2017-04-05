@@ -1,8 +1,6 @@
 maps:
-    can_manage_maps:
-    # List roles have the power to manage maps.
-        - admin
-        # - another role
-        
+    permissions:
+        - manage_maps
+    
     shortcuts:
         "map/update" : "map/create"

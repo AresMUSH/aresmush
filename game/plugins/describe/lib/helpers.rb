@@ -3,10 +3,10 @@ module AresMUSH
     def self.can_describe?(char, model)
       if (char == model)
         return true
-      elsif (char.has_any_role?(Global.read_config("describe", "can_desc_anything")))
+      elsif (char.has_permission?("desc_anything"))
         return true
       elsif (model.class == Room)        
-        return model.owned_by?(char) || char.has_any_role?(Global.read_config("describe", "can_desc_places"))
+        return model.owned_by?(char) || char.has_permission?("desc_places")
       end
       return false
     end

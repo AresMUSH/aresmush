@@ -1,11 +1,7 @@
 fs3combat:
-
-    # Which roles can manage damage or set up rooms as hospitals
-    can_manage_damage:
-        - admin
-    can_setup_hospitals:
-        - admin
-        - builder
+    permissions:
+        - manage_damage
+        - setup_hospitals
             
     # Which skill is used for treat rolls.
     treat_skill: "Medicine"

@@ -1,4 +1,6 @@
 scenes:
+    permissions:
+        - manage_scenes
 
     # Set up when you want old scene sets to be cleared.  See the 'cron' tutorial on the website for details.
     # Comment out any items you aren't using; don't just leave them blank.
@@ -7,7 +9,3 @@ scenes:
      #day_of_week: Sat
      #hour: 21
      minute: 00
-
-     # Which roles can manage scenes.
-    can_manage_scenes:
-        - admin
