@@ -93,13 +93,6 @@ module AresMUSH
     index :parent_type
     index :desc_type
   end
-
-  class SceneSet < Ohm::Model
-    include ObjectModel
-    attribute :set
-    attribute :time, :type => DataType::Time
-    reference :room, "AresMUSH::Room"
-  end
   
   class Character
     include Describable
@@ -129,15 +122,6 @@ module AresMUSH
   
   class Room
     include Describable
-
-    reference :scene_set, "AresMUSH::SceneSet"
-    
-    before_delete :delete_scene_set
-    
-    def delete_scene_set
-      self.scene_set.delete if self.scene_set
-    end
-    
   end
   
   class Exit

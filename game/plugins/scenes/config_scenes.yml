@@ -1,0 +1,5 @@
+scenes:
+
+    # Which roles can manage scenes.
+    can_manage_scenes:
+        - admin

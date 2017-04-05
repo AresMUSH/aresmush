@@ -1,12 +1,13 @@
 module AresMUSH
-  module Describe
+  module Scenes
     class ScenesCmd
       include CommandHandler
       
       attr_accessor :set
       
       def handle
-        template = SceneListTemplate.new(Describe.rooms_with_scenes)
+        scenes = Scene.all
+        template = SceneListTemplate.new(scenes)
         client.emit template.render
       end
     end

@@ -1,11 +1,4 @@
 describe:
-    # Set up when you want old scene sets to be cleared.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
-    cron:
-        #date: 1
-        #day_of_week: Sat
-        #hour: 21
-        minute: 00
     # List roles that are allowed to describe places (exits and rooms).
     can_desc_places: 
         - builder

@@ -75,6 +75,16 @@ module AresMUSH
       end
     end
     
+    def self.enable_repose(room)
+      return if (room.repose_on?)
+      repose = room.repose_info
+      if (!repose)
+        repose = ReposeInfo.create(room: room, poses: [])
+        room.update(repose_info: repose)
+      end
+      repose.update(enabled: true)
+    end
+    
     def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false)
       nospoof = ""
       if (is_emit && char.pose_nospoof)

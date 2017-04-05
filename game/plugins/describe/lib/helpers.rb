@@ -30,10 +30,6 @@ module AresMUSH
       Chargen::Api.format_review_status t('describe.description_review'), error
     end
     
-    def self.rooms_with_scenes
-      Room.all.select { |r| !!r.scene_set }
-    end
-    
     def self.update_current_desc(char, text)
       desc = char.current_desc
     

@@ -23,6 +23,8 @@ en:
        description_review: "Checking you have a description set."
        locked: "LOCKED"
        
+       scene_set_title: "Scene Set:"
+       
        played_by: "Played By:"
        players_title: "Characters:"
        exits_title: "Exits:"
@@ -45,7 +47,3 @@ en:
        
        glance: "%{height} height, %{age} year-old %{gender} with %{hair} hair and %{eyes} eyes."
        
-       scene_set: "You create a scene set in this room.  Please remember to clear it when the scene is over.  It will be cleared automatically after 24 hours."
-       scene_set_cleared: "You clear the scene set in this room."
-       scene_set_title: "Scene Set:"
-       rooms_with_scenes: "Rooms With Scenes"
