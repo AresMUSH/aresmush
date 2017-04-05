@@ -1,0 +1,18 @@
+en:
+    scenes:
+        scene_set: "You create a scene set in this room.  Please remember to clear it when the scene is over.  It will be cleared automatically after 24 hours."
+        scene_set_cleared: "You clear the scene set in this room."
+        rooms_with_scenes: "Rooms With Scenes"
+        scenes_title: "Scenes"
+        players_title: "Players: "
+        organizer_title: "Organized by %{name}"
+        scene_ending: "The scene is ending."
+        scene_stopped: "The scene has ended."
+        scene_not_found: "Scene not found."
+        invalid_privacy: "Invalid privacy setting.  Please use 'public' or 'private'."
+        scene_marked_private: "The scene has been marked private."
+        scene_marked_public: "The scene has been marked public."
+        scene_is_private: "That scene is private.  You must request a meetme from one of the participants to join."
+        
+        public: "Public"
+        private: "Private"

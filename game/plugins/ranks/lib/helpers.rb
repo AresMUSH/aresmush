@@ -1,7 +1,7 @@
 module AresMUSH
   module Ranks
     def self.can_manage_ranks?(actor)
-      actor.has_any_role?(Global.read_config("ranks", "can_manage_ranks"))
+      actor.has_permission?("manage_ranks")
     end
 
     def self.rank_group

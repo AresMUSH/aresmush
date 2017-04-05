@@ -2,7 +2,7 @@ module AresMUSH
   module Demographics    
 
     def self.can_set_demographics?(char)
-      char.has_any_role?(Global.read_config("demographics", "can_set_demographics"))
+      char.has_permission?("set_demographics")
     end
     
     

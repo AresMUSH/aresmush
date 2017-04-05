@@ -4,19 +4,16 @@ module AresMUSH
       describe :can_manage_object? do
         before do
           @admin = double
-          @admin.stub(:has_any_role?).with(["admin"]) { true }
-          @admin.stub(:has_any_role?).with(["builder"]) { false }
+          @admin.stub(:has_permission?).with("manage_players") { true }
+          @admin.stub(:has_permission?).with("manage_rooms") { false }
 
           @builder = double
-          @builder.stub(:has_any_role?).with(["admin"]) { false }
-          @builder.stub(:has_any_role?).with(["builder"]) { true }
+          @builder.stub(:has_permission?).with("manage_players") { false }
+          @builder.stub(:has_permission?).with("manage_rooms") { true }
 
           @room = Room.new
           @exit = Exit.new
           @char = Character.new
-
-          Global.stub(:read_config).with("manage", "can_manage_players") { ['admin'] }
-          Global.stub(:read_config).with("manage", "can_manage_rooms") { ['builder'] }
         end
           
         it "should allow someone with room permissions to manage a room" do

@@ -3,10 +3,10 @@ module AresMUSH
     def self.can_describe?(char, model)
       if (char == model)
         return true
-      elsif (char.has_any_role?(Global.read_config("describe", "can_desc_anything")))
+      elsif (char.has_permission?("desc_anything"))
         return true
       elsif (model.class == Room)        
-        return model.owned_by?(char) || char.has_any_role?(Global.read_config("describe", "can_desc_places"))
+        return model.owned_by?(char) || char.has_permission?("desc_places")
       end
       return false
     end
@@ -28,10 +28,6 @@ module AresMUSH
       has_desc = char.current_desc && !char.current_desc.description.to_s.empty?
       error = has_desc ? t('chargen.ok') : t('chargen.not_set')
       Chargen::Api.format_review_status t('describe.description_review'), error
-    end
-    
-    def self.rooms_with_scenes
-      Room.all.select { |r| !!r.scene_set }
     end
     
     def self.update_current_desc(char, text)

@@ -21,6 +21,10 @@ module AresMUSH
       def self.reset_repose(room)
         Pose.reset_repose(room)
       end
+      
+      def self.enable_repose(room)
+        Pose.enable_repose(room)
+      end
     end
   end
   

@@ -1,7 +1,7 @@
 module AresMUSH
   module Jobs
     def self.can_access_jobs?(actor)
-      return actor.has_any_role?(Global.read_config("jobs", "can_access_jobs"))
+      actor.has_permission?("access_jobs")
     end
     
     def self.categories

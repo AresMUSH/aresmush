@@ -5,7 +5,7 @@ module AresMUSH
             
       def handle
         admins_by_role = {}
-        roles = Global.read_config("roles", "game_admin")
+        roles = Global.read_config("roles", "admin_list_roles")
         roles.each do |r|
           admins_by_role[r] = Roles.chars_with_role(r)
         end

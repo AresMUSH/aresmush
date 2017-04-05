@@ -49,8 +49,9 @@ module AresMUSH
           end
         end
         
-        it "should emit failure if trying to a char in combat" do
+        it "should emit failure if trying to destroy a char in combat" do
           target = double
+          target.stub(:class) { "AresMUSH::Character"}
           AnyTargetFinder.stub(:find) { FindResult.new(target, nil) }
           FS3Combat::Api.stub(:is_in_combat?).with(target) { true }
           @client.should_receive(:emit_failure).with("manage.cannot_destroy_in_combat")

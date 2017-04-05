@@ -151,7 +151,7 @@ module AresMUSH
         end
       end
       
-      describe :check_forunko do
+      describe :check_for_unko do
         before do
           @combatant = double
           @combatant.stub(:log)
@@ -190,11 +190,13 @@ module AresMUSH
         
         it "should roll vehicle toughness if in a vehicle" do
           vehicle = double
+          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
           vehicle.stub(:vehicle_type) { "Viper" }
           @combatant.stub(:is_in_vehicle?) { true }
           @combatant.stub(:vehicle) { vehicle }
           FS3Combat.stub(:vehicle_stat).with("Viper", "toughness") { 5 }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 1 } }
+          # Total mod = +5 for vehicle, -2 for damage
+          @combatant.should_receive(:roll_ability).with("Composure", 3) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
         

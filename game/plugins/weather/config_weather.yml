@@ -1,4 +1,7 @@
-weather:   
+weather:  
+    permissions:
+        - change_weather
+
     # List valid temperatures here. You can add more, but make sure you also add a 
     # locale entry for each combination of temperature_season_timeofday (like cool_winter_night)
     temperatures: 
@@ -89,8 +92,3 @@ weather:
         #day_of_week: Sat
         #hour: 21
         minute: 00
-        
-    # Who has access to change the weather.
-    can_change_weather:
-        - admin
-        

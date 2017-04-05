@@ -9,8 +9,7 @@ module AresMUSH
     end
     
     def self.can_assign_role?(actor)
-      role = Global.read_config("roles", "can_assign_role")
-      actor.has_any_role?(role)
+      actor.has_permission?("assign_role")
     end
     
     def self.is_restricted?(name)

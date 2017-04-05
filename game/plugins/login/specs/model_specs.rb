@@ -42,7 +42,7 @@ module AresMUSH
         Character.check_name("A_BC").should eq "validation.name_contains_invalid_chars"
         Character.check_name("A BC").should eq "validation.name_contains_invalid_chars"
         Character.check_name("A.BC").should eq "validation.name_contains_invalid_chars"
-        Character.check_name("@ABC").should eq "validation.name_contains_invalid_chars"
+        Character.check_name("B@ABC").should eq "validation.name_contains_invalid_chars"
       end
       
       it "should fail if the char already exists" do

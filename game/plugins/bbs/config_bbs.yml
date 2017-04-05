@@ -1,8 +1,7 @@
 bbs:
-    # List roles that are allowed to manage bulletin boards.
-    can_manage_bbs: 
-        - admin
-        # - another_role
+    permissions:
+        - manage_bbs
+
     shortcuts:
         "bbread": "bbs"
         "bbscan" : "bbs/scan"

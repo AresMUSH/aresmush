@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Skills
     def self.can_manage_xp?(actor)
-      actor.has_any_role?(Global.read_config("fs3skills", "can_manage_xp"))
+      actor.has_permission?("manage_xp")
     end
     
     def self.modify_xp(char, amount)

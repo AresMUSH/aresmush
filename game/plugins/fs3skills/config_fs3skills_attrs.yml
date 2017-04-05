@@ -1,0 +1,20 @@
+fs3skills:
+    attributes:
+        -  
+            name: Reflexes
+            desc: "Reflexes, dexterity, and hand-eye coordination."
+        -   
+            name: Brawn
+            desc: "Physical strength and toughness."
+        -   
+            name: Wits
+            desc: "Practical intelligence, inventiveness and creativity."
+        -   
+            name: Grit
+            desc: "Willpower and determination."
+        -
+            name: Perception
+            desc: "Senses and general awareness."
+        -
+            name: Presence
+            desc: "Charisma and beauty."

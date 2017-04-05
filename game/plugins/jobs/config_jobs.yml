@@ -1,8 +1,6 @@
 jobs:
-    # List roles that are allowed to see jobs.
-    can_access_jobs: 
-        - admin
-        # - another_role
+    permissions:
+        - access_jobs
 
     # List the categories you want to support.
     categories:

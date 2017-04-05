@@ -5,11 +5,11 @@ module AresMUSH
     end
     
     def self.can_manage_damage?(actor)
-      return actor.has_any_role?(Global.read_config("fs3combat", "can_manage_damage"))
+      actor.has_permission?("manage_damage")
     end
 
     def self.can_setup_hospitals?(actor)
-      return actor.has_any_role?(Global.read_config("fs3combat", "can_setup_hospitals"))
+      actor.has_permission?("setup_hospitals")
     end
     
     def self.display_severity(value)

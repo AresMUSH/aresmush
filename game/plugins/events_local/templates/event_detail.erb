@@ -1,0 +1,7 @@
+%l1
+%xh<%= left( event.title, 30 ) %>%xn
+
+%xh<%= t('events.starts_at_title')%>%xn <%= event.date_str %>
+
+<%= event.description %>
+%l1

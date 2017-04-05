@@ -1,15 +1,15 @@
 module AresMUSH
   module FS3Skills
-    def self.receives_roll_results?(char)
-      char.has_any_role?(Global.read_config("fs3skills", "receives_roll_results"))
+    def self.receives_roll_results?(actor)
+      actor.has_permission?("receives_roll_results")
     end
     
     def self.can_manage_abilities?(actor)
-      actor.has_any_role?(Global.read_config("fs3skills", "can_manage_abilities"))
+      actor.has_permission?("manage_abilities")
     end
     
     def self.can_view_sheets?(actor)
-      actor.has_any_role?(Global.read_config("fs3skills", "can_view_sheets"))
+      actor.has_permission?("view_sheets")
     end
 
     def self.attrs

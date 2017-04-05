@@ -30,12 +30,7 @@ module AresMUSH
           if (enactor.room.repose_on?)
             client.emit_ooc t('pose.repose_already_on')
           else
-            repose = enactor.room.repose_info
-            if (!repose)
-              repose = ReposeInfo.create(room: room, poses: [])
-              room.update(repose_info: repose)
-            end
-            repose.update(enabled: true)
+            Pose.enable_repose(enactor.room)
             room.emit_ooc t('pose.repose_turned_on', :name => enactor_name)
           end
         else

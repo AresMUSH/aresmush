@@ -52,6 +52,8 @@ module AresMUSH
     attribute :description
     attribute :announce, :type => DataType::Boolean, :default => true
     attribute :default_alias, :type => DataType::Array
+    attribute :messages, :type => DataType::Array, :default => []
+    attribute :recall_enabled, :type => DataType::Boolean, :default => true
     
     index :name_upcase
     
@@ -73,18 +75,31 @@ module AresMUSH
     end
     
     def emit(msg)
+      message_with_title = "#{display_name} #{msg}"
+      add_to_history message_with_title
       characters.each do |c|
         if (!Channels.is_gagging?(c, self))
           client = c.client
           if (client)
-            client.emit "#{display_name} #{msg}"
+            client.emit message_with_title
           end
         end
       end
     end
     
+    def add_to_history(msg)
+      return if !self.recall_enabled
+      new_messages = (self.messages << msg)
+      if (new_messages.count > 25)
+        new_messages.shift
+      end
+      self.update(messages: new_messages)
+    end
+      
+    
     def pose(name, msg)
-      emit PoseFormatter.format(name, msg)
+      formatted_msg = PoseFormatter.format(name, msg)
+      emit formatted_msg
     end
   end
 end

@@ -5,8 +5,6 @@ module AresMUSH
     describe Describe do      
       describe :can_describe? do
         before do
-          Global.stub(:read_config).with("describe", "can_desc_anything") { ['admin', 'powerful'] }
-          Global.stub(:read_config).with("describe", "can_desc_places") { ['builder', 'descer'] }
           @char = double
         end
         
@@ -22,12 +20,12 @@ module AresMUSH
           end
           
           it "should let someone with desc-anything power describe any object" do
-            @char.stub(:has_any_role?).with(["admin", "powerful"]) { true }
+            @char.stub(:has_permission?).with("desc_anything") { true }
             Describe.can_describe?(@char, @target).should be true
           end
 
           it "should not let random people describe any object" do
-            @char.stub(:has_any_role?).with(["admin", "powerful"]) { false }
+            @char.stub(:has_permission?).with("desc_anything") { false }
             Describe.can_describe?(@char, @target).should be false
           end
         end
@@ -38,20 +36,30 @@ module AresMUSH
           end
           
           it "should allow a builder to describe a room" do
-            @char.stub(:has_any_role?).with(["admin", "powerful"]) { false }
-            @char.stub(:has_any_role?).with(["builder", "descer"]) { true }
+            @char.stub(:has_permission?).with("desc_anything") { false }
+            @char.stub(:has_permission?).with("desc_places") { true }
+            @room.stub(:owned_by?).with(@char) { false }
             Describe.can_describe?(@char, @room).should be true
           end
           
           it "should allow someone with desc-anything power to describe a room" do
-            @char.stub(:has_any_role?).with(["admin", "powerful"]) { true }
-            @char.stub(:has_any_role?).with(["builder", "descer"]) { false }
+            @char.stub(:has_permission?).with("desc_anything") { true }
+            @char.stub(:has_permission?).with("desc_places") { false }
+            @room.stub(:owned_by?).with(@char) { false }
+            Describe.can_describe?(@char, @room).should be true
+          end
+          
+          it "should allow a room owner to describe a room" do
+            @char.stub(:has_permission?).with("desc_anything") { false }
+            @char.stub(:has_permission?).with("desc_places") { false }
+            @room.stub(:owned_by?).with(@char) { true }
             Describe.can_describe?(@char, @room).should be true
           end
           
           it "should not allow someone without permission to describe a room" do
-            @char.stub(:has_any_role?).with(["admin", "powerful"]) { false }
-            @char.stub(:has_any_role?).with(["builder", "descer"]) { false }
+            @char.stub(:has_permission?).with("desc_anything") { false }
+            @char.stub(:has_permission?).with("desc_places") { false }
+            @room.stub(:owned_by?).with(@char) { false }
             Describe.can_describe?(@char, @room).should be false
           end
         end

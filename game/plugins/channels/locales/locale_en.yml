@@ -37,6 +37,9 @@ en:
         gagging: " (gagging)"
         cant_talk_when_gagged: "You can't talk on a channel you're gagging."
 
+        recall_history: "Chat History For %{name}"
+        invalid_recall_limit: "Please specify a number between 1 and 25."
+        
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
         channel_alias_hint: "%{alias} <msg>"
         channel_alias_set: "You can use %{channel_alias} to talk on the %{name} channel. "

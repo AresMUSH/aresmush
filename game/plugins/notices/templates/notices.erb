@@ -18,6 +18,6 @@
 %xh<%= center( t('notices.upcoming_events_title'), 78 ) %>%xn
 %l2
 <% events.each do |ev| %>
-<%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)
+<%= left( ev.title, 30 ) %> <%= ev.date_str %> 
 <% end %>
 <%= line %>

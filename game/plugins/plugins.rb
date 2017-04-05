@@ -38,6 +38,7 @@ module AresMUSH
         "roles", 
         "rooms", 
         "roster", 
+        "scenes",
         "status", 
         "tinker", 
         "utils", 

@@ -17,7 +17,7 @@ You can customize the appearance of pages by changing the color (see `help color
 `page/autospace <text before pages>`
 `page/color <ansi code>`
 
-If you don't want to be bothered by pages, you can mark yourself as 'do not disturb' and incoming pages will be routed to mail instead.
+If you don't want to be bothered by pages, you can mark yourself as 'do not disturb' and incoming pages will be blocked.
 
 `page/dnd <on or off>`
 
