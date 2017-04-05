@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :num
 
       def parse_args
-        self.num = integer_arg(cmd.args)
+        self.num = cmd.args ? cmd.args.to_i : nil
       end
       
       def required_args
@@ -16,12 +16,15 @@ module AresMUSH
           help: 'events'
         }
       end
-      
       def handle
-        Events.with_an_event(self.num, client, enactor) do |event|     
-          template = EventDetailTemplate.new(event, enactor)
-          client.emit template.render
+        events = Events.upcoming_events(30)
+        if (self.num < 0 || self.num > events.count)
+          client.emit_failure t('events.invalid_event')
+          return
         end
+        
+        template = EventDetailTemplate.new(events[self.num - 1], enactor)
+        client.emit template.render
       end
     end
   end

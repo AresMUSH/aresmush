@@ -2,6 +2,8 @@
 %xh<%= t('events.events_title') %>%xn
 
 <% events.each_with_index do |ev, i| %>
-<%= color(ev) %><%= left(i+1, 4) %><%= left( ev.title, 30 ) %> <%= ev.date_str %>%xn
+<%= left(i+1, 4) %><%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)
 <% end %>
+
+<%= t('events.url_title') %> <%= view_url %>
 %l1

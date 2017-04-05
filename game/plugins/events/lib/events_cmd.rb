@@ -5,7 +5,10 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        events = Event.sorted_events
+        if (cmd.switch_is?("refresh"))
+          Events.last_events = nil
+        end
+        events = Events.upcoming_events(30)
         template = EventsListTemplate.new(events, enactor)
         client.emit template.render
       end

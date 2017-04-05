@@ -1,0 +1,7 @@
+%l1
+%xh<%= t('events.events_title') %>%xn
+
+<% events.each_with_index do |ev, i| %>
+<%= color(ev) %><%= left(i+1, 4) %><%= left( ev.title, 30 ) %> <%= ev.date_str %>%xn
+<% end %>
+%l1

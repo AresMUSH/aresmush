@@ -37,7 +37,7 @@ module AresMUSH
         OnlineCharFinder.with_online_chars(self.names, client) do |results|
           name = enactor.name_and_alias
           message = PoseFormatter.format(name, self.message)
-          recipients = results.map { |result| result.char.name_and_alias }.join(", ")
+          recipients = results.map { |result| result.char.name }.join(",")
         
           client.emit t('page.to_sender', 
             :autospace => enactor.page_autospace, 

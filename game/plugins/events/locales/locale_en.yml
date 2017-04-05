@@ -1,6 +1,6 @@
 en:
     events:
-        events_title: "Upcoming Events"
+        events_title: "Events in the Next 30 Days"
         url_title: "To add/edit events or access the full calendar, go to:"
         all_day: "All Day Event"
         invalid_event: "That is not a valid event number."
@@ -8,9 +8,3 @@ en:
         starts_at_title: "Starts At:"
         who_title: "Who:"
         where_title: "Where:"
-        
-        event_deleted: "Event deleted."
-        event_updated: "Event updated."
-        event_created: "Event created."
-        
-        invalid_event_date: "Invalid event date format.  The date needs to be in this form: %{format_str}"
