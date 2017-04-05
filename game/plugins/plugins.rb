@@ -14,7 +14,7 @@ module AresMUSH
         "custom",
         "demographics", 
         "describe", 
-        "events_teamup",  # You can make this events_local if you don't like teamup
+        "events",  # You can make this events_local if you don't like teamup
         "friends", 
         "fs3combat", 
         "fs3skills", 
