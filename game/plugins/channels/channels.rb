@@ -6,6 +6,7 @@ load "lib/channel_join_cmd.rb"
 load "lib/channel_leave_cmd.rb"
 load "lib/channel_list_cmd.rb"
 load "lib/channel_model.rb"
+load "lib/channel_recall_cmd.rb"
 load "lib/channel_talk_cmd.rb"
 load "lib/channel_title_cmd.rb"
 load "lib/channel_who_cmd.rb"
@@ -34,7 +35,7 @@ module AresMUSH
     end
  
     def self.help_files
-      [ "help/admin_channels.md", "help/channels.md" ]
+      [ "help/admin_channels.md", "help/channels.md", "help/channel_prefs.md" ]
     end
  
     def self.config_files
@@ -71,6 +72,8 @@ module AresMUSH
           return ChannelLeaveCmd
         when "list", nil
           return ChannelListCmd
+        when "recall"
+          return ChannelRecallCmd
         when "rename"
           return ChannelRenameCmd
         when "roles"
