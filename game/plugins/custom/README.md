@@ -1,11 +1,3 @@
-Demographics
+Custom
 ====
-The Demographics plugin works in conjunction with the Chargen plugin to provide a way to set basic character stats.
-
-Some of the stats included in the out-of-the-box configuration are listed below, but it's pretty easy to add more with a minor code tweak.
-
-* Age/Birthday
-* Height, Weight
-* Hair Color, Eye Color
-* Full name
-* and more!
+This is a special plugin that doesn't contain any code by default, but gives you a place to put your own custom commands and shortcuts without touching any of the central game plugins.

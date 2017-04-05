@@ -60,7 +60,9 @@ module AresMUSH
     end
  
     def self.config_files
-      [ "config_fs3skills.yml", "config_xp.yml" ]
+      [ "config_fs3skills.yml", "config_xp.yml", "config_fs3skills_action.yml",
+        "config_fs3skills_attrs.yml", "config_fs3skills_chargen.yml", 
+        "config_fs3skills_langs.yml" ]
     end
  
     def self.locale_files

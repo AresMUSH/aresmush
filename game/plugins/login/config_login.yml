@@ -6,7 +6,8 @@ login:
     # Name of the role that identifies your guests.  Must be configured in the roles system.
     guest_role: "guest"
     
-    # Ares does not support an outright siteban because mostly these days people share IPs. 
+    # Ares does not support an outright siteban because mostly these days people use dynamic
+    # or shared IPs. 
     # Instead you can register certain IPs or hostnames as "suspect" and you'll be alerted 
     # when a new character is created from one of these sites.  You can use part of a hostname - 
     # often only the last bit is meaningful.
