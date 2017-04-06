@@ -1,6 +1,39 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
+        Game Setup
+    </div>
+    
+    <div class="panel-body">
+        
+        <ul>
+            <li><a href="/setup">Basic Game Info</a>
+            <li><a href="/config/edit?path=files/connect.txt">Connect Screen</a></li>
+            <li><a href="/config/edit?path=files/tos.txt">Terms of Service</a></li>
+        </ul>
+        
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Code and Configuration
+    </div>
+    
+    <div class="panel-body">
+        
+       
+        <a href="/config" class="btn btn-default">Advanced Config</a>
+
+        <a href="/tinker" class="btn btn-default">Tinker</a></p>
+                
+    </div>
+</div>
+
+    
+<div class="panel panel-primary">
+    <div class="panel-heading">
         Admin Tasks
     </div>
     
@@ -11,25 +44,16 @@
               <strong>Reboot Required!</strong> Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please reboot at your earliest convenience.
             </div>
         <% end %>
-        <a href="/setup" class="btn btn-default">Edit Game Info</a>
-
-        <a href="/config" class="btn btn-default">Configure the Game</a>
+        
 
         <a href="/logs" class="btn btn-default">View Logs</a></p>
 
-        <a href="/tinker" class="btn btn-default">Tinker with Code</a></p>
 
-    </div>
-</div>
-
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        Shutdown
-    </div>
-    
-    <div class="panel-body">
+    <div class="alert alert-danger">
         <p>This button will kill your game process.  This is a rough way to shut down the game, and should only be used if the in-game <code>shutdown</code> command isn't working.  You will have to log into the server shell to restart the game.</p>
         
-        <p><a href="/shutdown" class="btn btn-danger">Shut Down Game</a></p>
+        <p><a href="/shutdown" class="btn btn-danger">Hard Shutdown</a></p>
+    </div>
+
     </div>
 </div>

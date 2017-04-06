@@ -85,5 +85,34 @@ module AresMUSH
     def self.approval_job(char)
       char.chargen_info ? char.chargen_info.approval_job : nil
     end
+    
+    def self.submit_app(char)
+      info = char.get_or_create_chargen_info
+      job = info.approval_job
+      
+      if (!job)
+        result = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+          t('chargen.application_title', :name => char.name), 
+          t('chargen.app_job_submitted'), 
+          char)
+      
+        if (result[:error])
+          raise "Problem submitting application: #{job[:error]}"
+        end
+        job = result[:job]
+        info.update(locked: true)
+        info.update(approval_job: job)
+        return t('chargen.app_submitted')
+      else
+        info.update(locked: true)
+        Jobs::Api.change_job_status(char,
+          job,
+          Global.read_config("chargen", "jobs", "app_resubmit_status"),
+          t('chargen.app_job_resubmitted'))
+        return t('chargen.app_resubmitted')
+      end
+    end
+    
+    
   end
 end

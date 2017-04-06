@@ -27,6 +27,8 @@ module AresMUSH
 
       reset_path = File.join(AresMUSH.game_path, 'plugins', 'tinker', 'default_tinker.txt')
       FileUtils.cp reset_path, tinker_cmd_path
+      Global.plugin_manager.unload_plugin("tinker")
+      Global.plugin_manager.load_plugin("tinker")
       redirect '/tinker'
     end
     

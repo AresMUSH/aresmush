@@ -11,7 +11,7 @@ load 'web/register.rb'
 load 'web/logs.rb'
 load 'web/setup.rb'
 load 'web_cmd_handler.rb'
-
+load 'recaptcha_helper.rb'
 
 module AresMUSH
   module Website

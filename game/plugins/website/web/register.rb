@@ -10,6 +10,12 @@ module AresMUSH
       name = params[:name]
       pw = params[:password]
       confirm_pw = params[:confirm_password]
+      recaptcha_response = params["g-recaptcha-response"]
+      
+      if (@recaptcha.is_enabled? && !@recaptcha.verify(recaptcha_response))
+        flash[:error] = "Please prove you're human first."
+        redirect '/register'
+      end
       
       name_error = Character.check_name(name)
       password_error = Character.check_password(pw)

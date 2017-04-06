@@ -23,11 +23,11 @@ module AresMUSH
     end
  
     def self.config_files
-      [  ]
+      [ "config_tinker.yml" ]
     end
  
     def self.locale_files
-      [  ]
+      [ "locales/locale_en.yml" ]
     end
  
     def self.get_cmd_handler(client, cmd, enactor)

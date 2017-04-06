@@ -1,23 +1,33 @@
 <p>Here you can configure every aspect of your game's operation.  Many of the config files use the YAML format.  You can read all about it on the AresMUSH YAML tutorial.</p>
 
-<h1>Game Files</h1>
-<ul>
-    <li><a href="/config/files/connect.txt">Connect Screen</a></li>
-    <li><a href="/config/files/tos.txt">Terms of Service</a></li>
-</ul>
-
-
 <h1>Game Config</h1>
 
 <ul>
     <% @game_config.each do |f| %>
-    <li><a href="/config/game/<%= f %>"><%= f %></a></li>
+    <li><a href="/config/edit?path=<%= f %>"><%= File.basename(f) %></a></li>
     <% end %>
 </ul>
 
 <h1>Plugin Config</h1>
-<ul>
-    <% @plugin_config.each do |f, p| %>
-    <li><a href="/config/<%= p %>/<%= f %>"><%= f %></a></li>
+    <p>Quick Links:
+        <% @plugin_config.keys.each do |p| %>
+        <a href="#<%= p %>"><%= p %></a>
+        <% end %>
+    </p>
+
+    <% @plugin_config.keys.each do |p| %>
+        <hr/>
+        <a name="<%= p %>"></a>
+        <h3><%= p %></h3>
+
+            <p><a href="http://aresmush.com/plugins/<%= p %>" target="_blank">Info & Tutorials</a></p>
+            
+            <% ["config", "help", "locale"].each do |section| %>
+            <b><%= section %></b>
+                <ul>
+                <% @plugin_config[p][section].each do |f| %>
+                  <li><a href="/config/edit?path=<%= f %>"><%= File.basename(f) %></a></li>
+                <% end %>
+                </ul>
+            <% end %>
     <% end %>
-</ul>

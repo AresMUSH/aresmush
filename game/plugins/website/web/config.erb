@@ -4,11 +4,12 @@
 </div>
 <% end %>
 
-<h1><%= @filename %></h1>
+<h1><%= @title %></h1>
 
-<form method="POST" action="/config/update/<%= @plugin %>/<%= @filename %>">
+<form method="POST" action="/config/update">
 <textarea name="config" rows="40" cols="100" style="font-family:courier"><%= @config %></textarea>
-
+<input type="hidden" name="path" value="<%= @path %>" />
+<input type="hidden" name="title" value="<%= @title %>" />
 <p>
 <a href="/config"><button type="button" class="btn btn-default">Cancel</button></a>
 <button type="submit" class="btn btn-primary">Save</button>

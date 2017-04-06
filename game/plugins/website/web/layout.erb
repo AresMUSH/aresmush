@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://use.fontawesome.com/ee2438614b.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="/ansi.js"></script>
@@ -43,7 +44,7 @@
             <p>Welcome, <%= @user.name %>.</p>
             <p><a href="/logout">Logout</a> </p>
             <% else %>
-            <p><a href="/login">Login</a></p>
+            <p><a href="/login">Login</a> | <a href="/register">Register</a>  </p>
             <% end %>
             </div>
         </div>

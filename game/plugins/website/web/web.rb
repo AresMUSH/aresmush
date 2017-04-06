@@ -5,6 +5,7 @@ module AresMUSH
     before do
       user_id = session[:user_id]
       @user = user_id ? Character[user_id] : nil
+      @recaptcha = AresMUSH::Website::RecaptchaHelper.new
     end
     
     helpers do

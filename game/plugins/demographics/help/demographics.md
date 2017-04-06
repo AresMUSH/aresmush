@@ -15,6 +15,8 @@ aliases:
 - hair
 - age
 - reputation
+- actor
+- actors
 plugin: demographics
 ---
 Demographics commands are used to set your basic character info.  Some items may not be changed after your character has been approved.
@@ -28,3 +30,4 @@ Demographics commands are used to set your basic character info.  Some items may
 `skin <complexion>`
 `birthdate <mm/dd/yyyy>` or `age <years>`
 `callsign <name>` - Callsign for pilots and other military chars.
+`actor <name>` - Set your actor.  You can see taken actors using the `actors` command.
