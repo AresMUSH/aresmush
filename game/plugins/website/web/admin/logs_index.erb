@@ -4,6 +4,6 @@
 
 <ul>
 <% @logs.each_with_index do |l, i| %>
-    <li><a href="/log/<%= File.basename(l) %>"><%= i + 1 %></a></li>
+    <li><a href="/admin/log/<%= File.basename(l) %>"><%= i + 1 %></a></li>
 <% end %>
 </ul>

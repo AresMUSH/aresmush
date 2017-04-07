@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/game_prefs', :auth => :admin do
+    get '/admin/game_prefs', :auth => :admin do
       @date = Global.read_config("date_and_time")
       @names = Global.read_config("names")
       @secrets = Global.read_config("secrets")
@@ -12,10 +12,10 @@ module AresMUSH
       @events_calendar = Global.read_config("secrets", "events", "calendar")
       @events_api_key = Global.read_config("secrets", "events", "api_key")
       
-      erb :game_prefs
+      erb :"admin/game_prefs"
     end
     
-    post '/game_prefs/update', :auth => :admin do
+    post '/admin/game_prefs/update', :auth => :admin do
       
       @date = Global.read_config("date_and_time")
       @names = Global.read_config("names")

@@ -17,7 +17,7 @@
     <p><a href="http://aresmush.com/plugins/<%= @plugin %>" target="_blank"><%= @plugin.titlecase %> Info & Tutorials</a></p>
 </p>
 <% end %>
-<form method="POST" action="/config/update">
+<form method="POST" action="/admin/config/update">
 <div id="editor" class="ace-editor"><%= @config %></div>
 <input type="hidden" id="config" name="config" />
 <input type="hidden" id="path" name="path" value="<%= @path %>" />

@@ -8,31 +8,31 @@ module AresMUSH
     
     get '/admin', :auth => :admin do
       @reboot_required = File.exist?('/var/run/reboot-required')
-      erb :admin_index      
+      erb :"admin/admin_index"
     end
     
-    get '/shutdown', :auth => :admin do
+    get '/admin/shutdown', :auth => :admin do
       path = File.join( AresMUSH.game_path, "..", "bin", "killares" )
       `#{path}`
       "" # We'll never return
     end
     
-    get '/tinker', :auth => :admin do
+    get '/admin/tinker', :auth => :admin do
       @code = File.read(tinker_cmd_path)
-      erb :tinker
+      erb :"admin/tinker"
     end
     
-    post '/tinker/reset', :auth => :admin do
+    post '/admin/tinker/reset', :auth => :admin do
       flash[:info] = "The tinker code has been reset to its default value."
 
       reset_path = File.join(AresMUSH.game_path, 'plugins', 'tinker', 'default_tinker.txt')
       FileUtils.cp reset_path, tinker_cmd_path
       Global.plugin_manager.unload_plugin("tinker")
       Global.plugin_manager.load_plugin("tinker")
-      redirect '/tinker'
+      redirect '/admin/tinker'
     end
     
-    post '/tinker/update', :auth => :admin do
+    post '/admin/tinker/update', :auth => :admin do
 
       flash[:info] = "The tinker code has been updated.  You can now run it in-game with the 'tinker' command."
       
@@ -42,7 +42,7 @@ module AresMUSH
       Global.plugin_manager.unload_plugin("tinker")
       Global.plugin_manager.load_plugin("tinker")
       
-      redirect '/tinker'
+      redirect '/admin/tinker'
     end
     
   end

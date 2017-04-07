@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/config', :auth => :admin do
+    get '/admin/config', :auth => :admin do
       game_path = AresMUSH.game_path
       @game_config = ConfigReader.config_files.map { |f| f.gsub(game_path, "") }
       @plugin_config = {}
@@ -16,16 +16,16 @@ module AresMUSH
         @plugin_config[plugin_name]["templates"] = template_files.map { |f| f.gsub(game_path, "") }
         
       end
-      erb :config_index
+      erb :"admin/config_index"
     end
     
-    get '/config/edit', :auth => :admin do
+    get '/admin/config/edit', :auth => :admin do
       
       @path = params[:path]
       @plugin = params[:plugin]
       @config = File.read(File.join(AresMUSH.game_path, @path))
       @error = nil      
-      @return_url = params[:return_url] || '/config'
+      @return_url = params[:return_url] || '/admin/config'
       
       begin
         if (@path.end_with?(".yml"))
@@ -35,10 +35,10 @@ module AresMUSH
         @error = "There's a problem with the format of your YAML file.  Please check your formatting and review the tips in the <a href=\"http://www.aresmush.com\">YAML configuration tutorial</a>.  Error: #{ex}"
       end
       
-      erb :config
+      erb :"admin/config"
     end
     
-    post '/config/update', :auth => :admin do
+    post '/admin/config/update', :auth => :admin do
       
       config = params[:config]
       path = params[:path]
@@ -58,7 +58,7 @@ module AresMUSH
       end
       
       if (error)
-        redirect "/config/edit?path=#{path}&plugin=#{plugin}"
+        redirect "/admin/config/edit?path=#{path}&plugin=#{plugin}"
       else
         flash[:info] = "Saved!"
         Manage::Api.reload_config

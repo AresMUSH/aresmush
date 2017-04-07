@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/fs3_skills', :auth => :admin do
+    get '/admin/fs3_skills', :auth => :admin do
       
       @action_skills = Global.read_config("fs3skills", "action_skills").to_a
       count = @action_skills.count
@@ -28,10 +28,10 @@ module AresMUSH
       end
       
       
-      erb :fs3_skills
+      erb :"admin/fs3_skills"
     end
     
-    post '/fs3_skills/update', :auth => :admin do
+    post '/admin/fs3_skills/update', :auth => :admin do
       
       action_skills = []
       15.times.each do |i|

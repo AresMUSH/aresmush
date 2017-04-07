@@ -1,11 +1,11 @@
 module AresMUSH
   class WebApp
-    get '/game_info', :auth => :admin do
+    get '/admin/game_info', :auth => :admin do
       @config = Global.read_config("game")
-      erb :game_info
+      erb :"admin/game_info"
     end
     
-    post '/game_info/update', :auth => :admin do
+    post '/admin/game_info/update', :auth => :admin do
       template_data = 
       {
         "mush_name" => params[:name],

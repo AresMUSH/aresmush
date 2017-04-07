@@ -1,17 +1,17 @@
 $:.unshift File.dirname(__FILE__)
 
 load 'web/web.rb'
-load 'web/config.rb'
 load 'web/help.rb'
 load 'web/chargen.rb'
 load 'web/characters.rb'
-load 'web/admin.rb'
+load 'web/admin/config.rb'
+load 'web/admin/fs3_skills.rb'
+load 'web/admin/game_info.rb'
+load 'web/admin/game_prefs.rb'
+load 'web/admin/admin.rb'
+load 'web/admin/logs.rb'
 load 'web/login.rb'
 load 'web/register.rb'
-load 'web/logs.rb'
-load 'web/game_info.rb'
-load 'web/game_prefs.rb'
-load 'web/fs3_skills.rb'
 load 'web_cmd_handler.rb'
 load 'recaptcha_helper.rb'
 

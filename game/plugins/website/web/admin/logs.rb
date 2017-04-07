@@ -1,13 +1,13 @@
 module AresMUSH
   class WebApp
-    get '/logs', :auth => :admin do
+    get '/admin/logs', :auth => :admin do
       @logs = Dir[File.join(AresMUSH.game_path, "logs", "**")]
-      erb :logs_index
+      erb :"admin/logs_index"
     end
     
-    get '/log/:file', :auth => :admin do |file|
+    get '/admin/log/:file', :auth => :admin do |file|
       @lines = File.readlines(File.join(AresMUSH.game_path, "logs", file)).reverse
-      erb :log
+      erb :"admin/log"
     end
   end
 end
