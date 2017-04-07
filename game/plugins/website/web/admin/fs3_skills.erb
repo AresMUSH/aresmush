@@ -23,6 +23,14 @@
         <% end %>
         </div>
         
+        
+        <div class="row">
+            <div class="col col-xs-12">
+                <label>Default Linked Attr</label>
+                <p class="hint">Specify the default linked attribute when rolling a background skill.</p>
+                <input name="default-attr" type="text" size="20" value="<%= @default_attr %>" />
+            </div>
+        </div>
     </div>
 </div>
 
@@ -72,6 +80,15 @@
         <input name="lang-desc-<%= i %>" type="text" size="50" class="col-xs-10 col-form-label" value="<%= lang['desc'] %>" />
         
         <% end %>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col col-xs-12">
+                <label>Starting Language</label>
+                <p class="hint">Specify the common languages everyone should start with, separated by commas.</p>
+                <input name="starting-langs" type="text" size="20" value="<%= @starting_langs %>" />
+            </div>
         </div>
         
     </div>

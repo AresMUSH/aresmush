@@ -1,4 +1,7 @@
 fs3skills:
+    starting_languages:
+        - Standard
+        
     languages:
         - 
             name: Standard

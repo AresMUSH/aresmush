@@ -83,7 +83,7 @@ module AresMUSH
           @combatant = double
           @combatant.stub(:log)
           @combatant.stub(:name) { "Bob" }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
         end
         
         it "should reduce stress by 1 even if roll fails" do
@@ -190,7 +190,7 @@ module AresMUSH
         
         it "should roll vehicle toughness if in a vehicle" do
           vehicle = double
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
           vehicle.stub(:vehicle_type) { "Viper" }
           @combatant.stub(:is_in_vehicle?) { true }
           @combatant.stub(:vehicle) { vehicle }
@@ -202,7 +202,7 @@ module AresMUSH
         
         it "should roll personal toughness if not in a vehicle" do
           @combatant.stub(:is_in_vehicle?) { false }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
           @combatant.should_receive(:roll_ability).with("Composure", -2) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
@@ -210,7 +210,7 @@ module AresMUSH
         it "should give PCs a bonus to knockout" do
           @combatant.stub(:is_npc?) { false }
           @combatant.stub(:is_in_vehicle?) { false }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
           @combatant.should_receive(:roll_ability).with("Composure", 1) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end

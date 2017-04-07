@@ -1,4 +1,6 @@
 fs3skills:
+    default_linked_attr: Wits
+
     attributes:
         -  
             name: Reflexes

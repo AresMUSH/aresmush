@@ -34,7 +34,7 @@ module AresMUSH
         messages = []
         
         self.targets.each do |target, num|
-          composure = Global.read_config("fs3combat", "composure_ability")
+          composure = Global.read_config("fs3combat", "composure_skill")
           attack_roll = FS3Combat.roll_attack(self.combatant)
           defense_roll = target.roll_ability(composure)
           margin = attack_roll - defense_roll

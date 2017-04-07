@@ -3,15 +3,6 @@ fs3combat:
         - manage_damage
         - setup_hospitals
             
-    # Which skill is used for treat rolls.
-    treat_skill: "Medicine"
-    
-    # Which skill is used for healing.
-    healing_skill: "Medicine"
-    
-    # Which ability is used for recovery (natural healing) rolls.
-    recovery_skill: "Athletics"
-    
     # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
     # Comment out any items you aren't using; don't just leave them blank.
     healing_cron:

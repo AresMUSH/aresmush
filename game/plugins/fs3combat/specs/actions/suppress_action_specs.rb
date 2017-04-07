@@ -97,7 +97,7 @@ module AresMUSH
           @target1.stub(:roll_ability) { 2 }
           @target2.stub(:roll_ability) { 2 }
           @target3.stub(:roll_ability) { 2 }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
         end
           
         it "should suppress a single target successfully" do

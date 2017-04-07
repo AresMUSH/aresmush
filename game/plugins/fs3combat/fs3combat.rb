@@ -110,7 +110,7 @@ module AresMUSH
     def self.config_files
       [ "config_fs3combat.yml", "config_fs3combat_armor.yml", "config_fs3combat_damage.yml", 
         "config_fs3combat_hitloc.yml", "config_fs3combat_vehicles.yml", "config_fs3combat_weapons.yml",
-        "config_fs3combat_npcs.yml"  
+        "config_fs3combat_npcs.yml", "config_fs3combat_skills.yml" 
       ]
     end
  

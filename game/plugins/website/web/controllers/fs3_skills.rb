@@ -18,6 +18,7 @@ module AresMUSH
         @attrs << { 'name' => "", 'desc' => ""}
       end
       
+      @default_attr = Global.read_config("fs3skills", "default_linked_attr")
       
       @langs = Global.read_config("fs3skills", "languages").to_a
       count = @langs.count
@@ -27,6 +28,7 @@ module AresMUSH
         @langs << { 'name' => "", 'desc' => ""}
       end
       
+      @starting_langs = Global.read_config("fs3skills", "starting_languages").join(",")
       
       erb :"admin/fs3_skills"
     end
@@ -53,6 +55,46 @@ module AresMUSH
         
       }
       output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3skills', 'config_fs3skills_action.yml')
+      write_config_file output_path, config.to_yaml
+      
+      
+      attributes = []
+      10.times.each do |i|
+        if (!params["attr-name-#{i}"].blank?)
+          att =  { 'name' => params["attr-name-#{i}"],
+                             'desc' => params["attr-desc-#{i}"]}
+          attributes << att
+        end
+      end
+      
+      config = { 
+        "fs3skills" => {
+          "attributes" => attributes,
+          "default_linked_attr" => params["default-attr"]
+        }
+        
+      }
+      output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3skills', 'config_fs3skills_attrs.yml')
+      write_config_file output_path, config.to_yaml
+      
+      
+      langs = []
+      10.times.each do |i|
+        if (!params["lang-name-#{i}"].blank?)
+          l =  { 'name' => params["lang-name-#{i}"],
+                             'desc' => params["lang-desc-#{i}"]}
+          langs << l
+        end
+      end
+      
+      config = { 
+        "fs3skills" => {
+          "languages" => langs,
+          "starting_languages" => params['starting-langs'].split(',')
+        }
+        
+      }
+      output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3skills', 'config_fs3skills_langs.yml')
       write_config_file output_path, config.to_yaml
       
 

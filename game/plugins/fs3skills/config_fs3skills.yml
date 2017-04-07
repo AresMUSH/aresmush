@@ -17,8 +17,6 @@ fs3skills:
     public_pages:
         - 1
 
-    default_linked_attr: Wits
-
     shortcuts:
         "hooks": "hook"
         "hook/delete": "hook/remove"
