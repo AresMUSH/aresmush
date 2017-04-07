@@ -3,7 +3,6 @@ load "demographics_api.rb"
 load "lib/age_cmd.rb"
 load "lib/actors_cmd.rb"
 load "lib/basic_demographic_cmd.rb"
-load "lib/demographic_admin_cmd.rb"
 load "lib/birthday_cmd.rb"
 load "lib/demo_model.rb"
 load "lib/helpers.rb"
@@ -41,37 +40,14 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       
       case cmd.root
-      when "actor"
-        if (cmd.args)
-          return ActorSetCmd
-        else
-          return ActorsListCmd
-        end
+      when "actors"
+        return ActorsListCmd
       when "age"
         return AgeCmd 
       when "birthdate"
-        return BirthdateCmd 
-      when "callsign"
-        return CallsignCmd 
+        return BirthdateCmd       
       when "demographic"
-        case cmd.switch
-        when "set"
-          return DemographicAdminCmd
-        end
-      when "eyes"
-        return EyesCmd 
-      when "fullname"
-        return FullnameCmd 
-      when "gender"
-        return GenderCmd 
-      when "hair"
-        return HairCmd 
-      when "height"
-        return HeightCmd 
-      when "physique"
-        return PhysiqueCmd 
-      when "skin"
-        return SkinCmd 
+        return BasicDemographicCmd
       end
       
       nil     

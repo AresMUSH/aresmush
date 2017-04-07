@@ -78,9 +78,13 @@ module AresMUSH
     def shortcuts
       sc = {}
       plugins.each do |p|
-        plugin_shortcuts = p.shortcuts
-        if (p.shortcuts)
-          sc.merge! p.shortcuts
+        begin
+          plugin_shortcuts = p.shortcuts
+          if (p.shortcuts)
+            sc.merge! p.shortcuts
+          end
+        rescue Exception => ex
+          Global.logger.error "Error parsing shortcuts: #{p} #{ex}"
         end
       end
       sc

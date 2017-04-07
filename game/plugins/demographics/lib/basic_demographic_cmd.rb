@@ -1,94 +1,81 @@
 module AresMUSH
   module Demographics
 
-    module BasicDemographicCmd
+    class BasicDemographicCmd
       include CommandHandler
       
-      attr_accessor :value, :property
+      attr_accessor :name, :value, :property
 
       def parse_args
-        self.value = trim_arg(cmd.args)
-        self.property = cmd.root.downcase
+        # Admin version
+        if (cmd.args =~ /\//)
+          args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
+          self.name = titlecase_arg(args.arg1)
+          self.property = downcase_arg(args.arg2)
+          self.value = titlecase_arg(args.arg3)
+        # Self version
+        else
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.name = enactor.name
+          self.property = downcase_arg(args.arg1)
+          self.value = titlecase_arg(args.arg2)
+        end
       end
       
       def required_args
         {
-          args: [ self.value ],
+          args: [ self.name, self.property, self.value ],
           help: 'demographics'
         }
       end
-         
-      def handle
-        demographics = enactor.get_or_create_demographics
-        demographics.send("#{self.property}=", self.value)
-        demographics.save
-        client.emit_success t('demographics.property_set', :property => self.property, :value => self.value)
+     
+      def check_is_allowed
+        return nil if self.name == enactor_name
+        return t('dispatcher.not_allowed') if !Demographics.can_set_demographics?(enactor)
+        return nil
       end
-    end
-    
-    class HeightCmd
-      include BasicDemographicCmd
-      
-      def check_chargen_locked
-        Chargen::Api.check_chargen_locked(enactor)
-      end      
-    end
-    
-    class ActorCmd
-      include BasicDemographicCmd
-      
-      def check_chargen_locked
-        Chargen::Api.check_chargen_locked(enactor)
-      end      
-    end
-    
-    class PhysiqueCmd
-      include BasicDemographicCmd      
-    end
-    
-    class EyesCmd
-      include BasicDemographicCmd
 
-      def check_chargen_locked
-        Chargen::Api.check_chargen_locked(enactor)
+      def check_property
+        return t('demographics.set_birthdate_instead') if (self.property == "age")
+        return nil
       end
-    end
-    
-    class HairCmd
-      include BasicDemographicCmd      
-    end
-    
-    class SkinCmd
-      include BasicDemographicCmd      
-    end
-    
-    class FullnameCmd
-      include BasicDemographicCmd
-      
-    end
-    
-    class CallsignCmd
-      include BasicDemographicCmd      
-    end
-    
-    class GenderCmd
-      include BasicDemographicCmd
       
       def check_chargen_locked
+        return nil if Demographics.can_set_demographics?(enactor)
+        enabled_after_cg = Global.read_config("demographics", "editable_properties")
+        return nil if enabled_after_cg.include?(self.property)
         Chargen::Api.check_chargen_locked(enactor)
       end
-      
-      def parse_args
-        self.value = titlecase_arg(cmd.args)
-        self.property = cmd.root.downcase
-      end
-      
+         
       def check_gender
+        return nil if self.property != "gender"
+        
         genders = [ "Male", "Female", "Other" ]
         return nil if genders.include?(self.value)
         return t('demographics.invalid_gender')
       end
+      
+      def handle
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+          if (self.property == "birthdate")
+            begin
+              self.value = Date.strptime(self.value, Global.read_config("date_and_time", "short_date_format"))
+            rescue
+              client.emit_failure t('demographics.invalid_birthdate', 
+                :format_str => Global.read_config("date_and_time", "date_entry_format_help"))
+              return
+            end
+          end
+          
+          model.update_demographic(self.property, self.value)
+          
+          if (self.name == enactor_name)
+            client.emit_success t('demographics.property_set', :property => self.property, :value => self.value)
+          else
+            client.emit_success t('demographics.admin_property_set', :name => self.name, :property => self.property, :value => self.value)
+          end
+        end
+      end
     end
-    
   end
 end

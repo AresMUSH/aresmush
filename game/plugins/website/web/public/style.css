@@ -115,7 +115,7 @@ pre code {
 .cg-tip { 
     color: #888;
     font-style: italic;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 .app-status{
@@ -133,4 +133,16 @@ pre code {
 .splash-heading {
     text-align: center;
     padding-bottom: 10px;
+}
+
+.hint { 
+    color: #888;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.ace-editor { 
+    position: relative;
+    height: 500px;
+    width: 1000px
 }

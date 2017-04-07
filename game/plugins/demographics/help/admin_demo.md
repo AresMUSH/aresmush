@@ -19,4 +19,4 @@ plugin: demographics
 ---
 Admins can set any of the basic character demographics (fullname, gender, etc.) on another character.
 
-`demographic/set <name>/<field>=<value>`
+`demographic <name>/<field>=<value>`

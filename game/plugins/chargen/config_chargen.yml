@@ -52,8 +52,6 @@ chargen:
             help: hooks
         desc:
             help: descriptions
-        actor:
-            help: actors
         handles:
             help: handles
         wiki:
@@ -62,10 +60,3 @@ chargen:
             help: 'profile'
         review:
             help: apps
-    shortcuts:
-        "chargen" : "cg"
-        "cg/back": "cg/prev"
-        "bg/approve": "app/approve"
-        "bg/reject" : "app/reject"
-        "bg/submit" : "app/submit"
-        "bg/unsubmit" : "app/unsubmit"

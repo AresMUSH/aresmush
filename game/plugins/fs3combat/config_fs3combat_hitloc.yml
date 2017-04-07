@@ -62,18 +62,3 @@ fs3combat:
             crew_areas:
                 - Cockpit
                 - Cabin
-        AA Battery:
-            areas:
-                Weapon: [ 'Crew', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Weapon', 'Weapon', 'Weapon' ]
-                Controls: [ 'Crew', 'Weapon', 'Weapon', 'Weapon', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls' ]
-                Body: [ 'Controls', 'Controls', 'Controls', 'Crew', 'Weapon', 'Weapon', 'Weapon', 'Body', 'Body', 'Body' ]
-                Crew: [ 'Weapon', 'Weapon', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Crew', 'Crew', 'Crew' ]
-            vital_areas:
-                - Body
-            critical_areas:
-                - Controls
-                - Weapon
-            crew_areas: 
-                - Crew
-            
-                

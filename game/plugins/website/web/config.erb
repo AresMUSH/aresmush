@@ -1,3 +1,9 @@
+<script src="//ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/ace_editor.js"></script>
+
+
+<div>
+
 <% if @error %>
 <div class="alert alert-danger">                
     <%= @error %>      
@@ -7,11 +13,15 @@
 <h1><%= @title %></h1>
 
 <form method="POST" action="/config/update">
-<textarea name="config" rows="40" cols="100" style="font-family:courier"><%= @config %></textarea>
+<div id="editor" class="ace-editor"><%= @config %></div>
+<input type="hidden" id="config" name="config" />
 <input type="hidden" name="path" value="<%= @path %>" />
-<input type="hidden" name="title" value="<%= @title %>" />
+<input type="hidden" id="title" name="title" value="<%= @title %>" />
+<input type="hidden" name="return_url" value="<%= @return_url %>" />
 <p>
-<a href="/config"><button type="button" class="btn btn-default">Cancel</button></a>
+<a href="<%= @return_url %>"><button type="button" class="btn btn-default">Cancel</button></a>
 <button type="submit" class="btn btn-primary">Save</button>
 </p>
 </form>
+
+</div>

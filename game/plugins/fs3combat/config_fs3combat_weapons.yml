@@ -302,8 +302,8 @@ fs3combat:
             reload_turns: 0
             allowed_specials: [ 'Ap' ]
             
-        Kew:
-            description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
+        Cannon:
+            description: "Vehicle cannon."
             skill: Gunnery
             lethality: 0
             penetration: 15
@@ -317,7 +317,7 @@ fs3combat:
             reload_turns: 0
 
         Strafing:
-            description: "KEW Assault Cannon strafing ground targets."
+            description: "Cannon strafing ground targets."
             skill: Gunnery
             lethality: 30
             penetration: 15

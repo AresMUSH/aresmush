@@ -44,25 +44,17 @@ fs3combat:
         # ----------------------------------------
         # Add any custom combatant types here.
         
-        Centurion:
-            weapon: LMG
-            weapon_specials: 
-                - Tripod
-            armor: Centurion
-            hitloc: Humanoid
-            defense_skill: Reflexes
-        Viper:
-            vehicle: Viper
-            hitloc: Humanoid
-            defense_skill: Piloting
-        Raptor:
-            vehicle: Raptor
-            hitloc: Humanoid
-            defense_skill: Piloting            
-        Raider:
-            vehicle: Raider
-            hitloc: Humanoid
-            defense_skill: Piloting
+        #Centurion:
+        #    weapon: LMG
+        #    weapon_specials: 
+        #        - Tripod
+        #    armor: Centurion
+        #    hitloc: Humanoid
+        #    defense_skill: Reflexes
+        #Viper:
+        #    vehicle: Viper
+        #    hitloc: Humanoid
+        #    defense_skill: Piloting
                      
     shortcuts:
         "weapons": "weapon"

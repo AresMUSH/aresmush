@@ -1,0 +1,149 @@
+<h1>Game Preferences</h1>
+
+<p>This screen lets you configure various game preferences.  More fine-tuned configuration is available on the <a href="/config">Advanced Configuration</a> screen.</p>
+
+<form method="POST" action="/game_prefs/update">
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Date and Time
+    </div>
+    
+    <div class="panel-body">
+        <p>For more info on available time formats, see the <a href="https://apidock.com/ruby/DateTime/strftime">Ruby documentation</a>.  The hints below each format show some common options for American formats (02/01/2017 2:45pm) and European (2017-02-01 14:45).</p>
+        
+        <div class="form-group row">
+    
+        <label for="short_date_format" class="col-xs-2 col-form-label">Short Date Format:</label> 
+        <input type="text" name="short_date_format" size="100" value="<%= @date['short_date_format'] %>"/>
+        <div class="hint">American: %m/%d/%Y  &nbsp; &nbsp; &nbsp; Euro: %d-%m-%Y</div>
+
+        </div>
+
+        <div class="form-group row">
+    
+        <label for="long_date_format" class="col-xs-2 col-form-label">Long Date Format:</label> 
+        <input type="text" name="long_date_format" size="100" value="<%= @date['long_date_format'] %>"/>
+        <div class="hint">American: %a %b %d, %Y %l:%M%P  &nbsp; &nbsp; &nbsp; Euro: %d-%m-%Y %k%M</div>
+
+        </div>
+
+        <div class="form-group row">
+    
+        <label for="time_format" class="col-xs-2 col-form-label">Time Format:</label> 
+        <input type="text" name="time_format" size="100" value="<%= @date['time_format'] %>"/>
+        <div class="hint">American: %l:%M%P  &nbsp; &nbsp; &nbsp; Euro: %k%M</div>
+
+        </div>
+
+        <div class="form-group row">
+    
+        <label for="date_entry_format_help" class="col-xs-2 col-form-label">Date Entry Format Help:</label> 
+        <input type="text" name="date_entry_format_help" size="100" value="<%= @date['date_entry_format_help'] %>"/>
+        <div class="hint">American: mm/dd/yyyy  &nbsp; &nbsp; &nbsp; Euro: yyyy-mm-dd</div>
+
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Restricted Names
+    </div>
+    
+    <div class="panel-body">
+        <p>List names that you don't want people to be able to use, one per line.</p>
+        
+        <textarea name="restricted_names" rows="10" cols="100"><%= @names['restricted'].join("\n") %></textarea>
+        
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Secret Codes
+    </div>
+    
+    <div class="panel-body">
+        
+      <div class="form-group row">
+  
+      <label for="events_calendar" class="col-xs-2 col-form-label">Events - Teamup Calendar ID:</label> 
+      <input type="text" name="events_calendar" size="100" value="<%= @events_calendar %>"/>
+
+      </div>
+
+      <div class="form-group row">
+  
+      <label for="events_api_key" class="col-xs-2 col-form-label">Events - Teamup API Key:</label> 
+      <input type="text" name="events_api_key" size="100" value="<%= @events_api_key %>"/>
+
+      </div>
+
+      <div class="form-group row">
+  
+      <label for="recaptcha_secret" class="col-xs-2 col-form-label">Recaptcha Secret:</label> 
+      <input type="text" name="recaptcha_secret" size="100" value="<%= @recaptcha_secret %>"/>
+
+      </div>
+
+      <div class="form-group row">
+  
+      <label for="recaptcha_site_key" class="col-xs-2 col-form-label">Recaptcha Site:</label> 
+      <input type="text" name="recaptcha_site_key" size="100" value="<%= @recaptcha_site_key %>"/>
+
+      </div>
+        
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Lines
+    </div>
+    
+    <div class="panel-body">
+        
+      <div class="form-group row">
+  
+      <label for="line1" class="col-xs-2 col-form-label">Line 1 (standard border):</label> 
+      <input type="text" name="line1" size="100" value="<%= @skin['line1'] %>"/>
+
+      </div>
+
+      <div class="form-group row">
+  
+      <label for="line2" class="col-xs-2 col-form-label">Line 2 (separator):</label> 
+      <input type="text" name="line2" size="100" value="<%= @skin['line2'] %>"/>
+
+      </div>
+
+      <div class="form-group row">
+  
+      <label for="line3" class="col-xs-2 col-form-label">Line 3 (MU title):</label> 
+      <input type="text" name="line3" size="100" value="<%= @skin['line3'] %>"/>
+
+      </div>
+
+      <div class="form-group row">
+  
+      <label for="line4" class="col-xs-2 col-form-label">Line 4 (alternate separator):</label> 
+      <input type="text" name="line4" size="100" value="<%= @skin['line4'] %>"/>
+
+      </div>
+        
+    </div>
+</div>
+
+
+<p>
+<a href="/admin"><button type="button" class="btn btn-default">Cancel</button></a>
+<button type="submit" class="btn btn-primary">Save</button>
+</p>
+</form>

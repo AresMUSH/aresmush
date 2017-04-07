@@ -20,18 +20,18 @@ ranks:
                 Ensign: true
                 Lieutenant JG: true
                 Lieutenant: true
-                Captain: true
-                Major: false
-                Colonel: false
+                Lieutenant Cmdr: true
                 Commander: false
+                Captain: false
                 Rear Admiral: false
+                Vice Admiral: false
                 Admiral: false
                 
             Enlisted:
+                Crewman Recruit: true
                 Crewman Apprentice: true
                 Crewman: true
-                Able Crewman: true
-                Specialist: true
+                Petty Officer 3rd Class: true
                 Petty Officer 2nd Class: true
                 Petty Officer 1st Class: true
                 Chief Petty Officer: false
@@ -40,14 +40,15 @@ ranks:
                 
         Marines:
             Officer:
-                Ensign: false
-                Lieutenant JG: false
-                Lieutenant: false
+                Second Lieutenant: false
+                First Lieutenant: false
                 Captain: false
                 Major: false
+                Lieutenant Colonel: false
                 Colonel: false
-                Commander: false
                 Brigadier General: false
+                Major General: false
+                Lieutenant General: false
                 General: false
                 
             Enlisted:

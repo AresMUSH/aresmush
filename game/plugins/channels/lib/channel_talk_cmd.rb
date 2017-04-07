@@ -34,7 +34,7 @@ module AresMUSH
           cmd = Command.new("channel/gag #{self.channel.name}")
         elsif (self.msg == "ungag")
           cmd = Command.new("channel/ungag #{self.channel.name}")
-        elsif (self.msg =~ /last[\b\d]*/)
+        elsif (self.msg =~ /^last[ \d]*$/)
           num = self.msg.after("last")
           limit = num.blank? ? "" : "=#{integer_arg(num)}"
           cmd = Command.new("channel/recall #{self.channel.name}#{limit}")

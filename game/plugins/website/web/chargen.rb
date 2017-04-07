@@ -113,24 +113,23 @@ module AresMUSH
       #### ---------------------------------
       #### DEMOGRAPHICS
       #### ---------------------------------
-      demo = @user.get_or_create_demographics
-      demo.fullname = params[:fullname]
-      demo.skin = titlecase_arg(params[:skin])
-      demo.hair = titlecase_arg(params[:hair])
-      demo.eyes = titlecase_arg(params[:eyes])
-      demo.height = titlecase_arg(params[:height])
-      demo.physique = titlecase_arg(params[:physique])
-      demo.callsign = titlecase_arg(params[:callsign])
-      demo.gender = params[:gender]
-      demo.actor = params[:actor]
+
+      @user.update_demographic :fullname, params[:fullname]
+      @user.update_demographic :skin, titlecase_arg(params[:skin])
+      @user.update_demographic :hair, titlecase_arg(params[:hair])
+      @user.update_demographic :eyes, titlecase_arg(params[:eyes])
+      @user.update_demographic :height, titlecase_arg(params[:height])
+      @user.update_demographic :physique, titlecase_arg(params[:physique])
+      @user.update_demographic :callsign, titlecase_arg(params[:callsign])
+      @user.update_demographic :gender, params[:gender]
+      @user.update_demographic :actor, params[:actor]
       
       age = params[:age].to_i
       if (!Demographics.check_age(age))
         bday = Date.new ICTime::Api.ictime.year - age, ICTime::Api.ictime.month, ICTime::Api.ictime.day
         bday = bday - rand(364)
-        demo.birthdate = bday
+        @user.update_demographic :birthdate, bday
       end
-      demo.save
 
       #### ---------------------------------
       #### GROUPS

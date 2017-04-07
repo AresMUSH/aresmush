@@ -1,7 +1,0 @@
-events:
-    
-    permissions:
-        - manage_events
-        
-    shortcuts:
-        "events" : "event"

@@ -1,4 +1,6 @@
-<p>Here you can configure every aspect of your game's operation.  Many of the config files use the YAML format.  You can read all about it on the AresMUSH YAML tutorial.</p>
+<p>Here you can edit your game's configuration files.</p>
+
+<div class="alert alert-warning">This section is for experienced users.  Please read the AresMUSH.com tutorials before attempting to configure your game here.</div>
 
 <h1>Game Config</h1>
 
@@ -9,11 +11,12 @@
 </ul>
 
 <h1>Plugin Config</h1>
-    <p>Quick Links:
+    <blockquote>
+        Quick Links:
         <% @plugin_config.keys.each do |p| %>
-        <a href="#<%= p %>"><%= p %></a>
+        <a href="#<%= p %>"><%= p %></a> | 
         <% end %>
-    </p>
+    </blockquote>
 
     <% @plugin_config.keys.each do |p| %>
         <hr/>
@@ -22,7 +25,7 @@
 
             <p><a href="http://aresmush.com/plugins/<%= p %>" target="_blank">Info & Tutorials</a></p>
             
-            <% ["config", "help", "locale"].each do |section| %>
+            <% ["config", "help", "locale", "templates"].each do |section| %>
             <b><%= section %></b>
                 <ul>
                 <% @plugin_config[p][section].each do |f| %>

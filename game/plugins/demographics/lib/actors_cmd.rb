@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
       
       def handle
-        list = Character.all.select { |c| c.demographic(:actor) }
+        list = Character.all.select { |c| c.demographic(:actor) && !c.demographic(:actor).blank? }
         
         paginator = Paginator.paginate(list, cmd.page, 15)
         

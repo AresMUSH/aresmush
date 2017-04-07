@@ -6,8 +6,8 @@ demographics:
     min_age: 18
     max_age: 65
 
-    # Names of properties that will be checked for during chargen.  Be sure to use
-    # the exact names of the code properties in demo_model.rb
+    # Names of demographics that will be checked for during chargen.
+    # Use all-lowercase names!
     required_properties:
         - height
         - physique
@@ -17,6 +17,35 @@ demographics:
         - eyes
         - birthdate
         - skin
+    
+    # Names of demographics that can be edited after chargen.
+    # Use all-lowercase names!
+    editable_properties:
+        - fullname
+        - hair
+        - physique
+        - fullname
+
+    # Available demographics
+    # Use all-lowercase names!
+    demographics:
+        - actor
+        - hair
+        - eyes
+        - skin
+        - height
+        - physique
+        - fullname
+        - birthdate
         
     shortcuts:
-        "actors": "actor"
+        "demographics": "demographic"
+        "actor": "demographic/set actor="
+        "hair": "demographic/set hair="
+        "eyes": "demographic/set eyes="
+        "skin": "demographic/set skin="
+        "height": "demographic/set height="
+        "physique": "demographic/set physique="
+        "fullname": "demographic/set fullname="
+        "callsign": "demographic/set callsign="
+        "gender": "demographic/set gender="

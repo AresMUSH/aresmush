@@ -49,6 +49,12 @@ module AresMUSH
         return nil if !input
         input.titlecase
       end
+      
+      def write_config_file(path, config)
+        File.open(path, 'w') do |f|
+          f.write(config)
+        end
+      end
 
     end
 
