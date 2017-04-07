@@ -1,7 +1,5 @@
 arescentral:
-    # Set up when you want the game sync with AresCentral to run.  
-    # See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
+    # This is when the game will sync up with AresCentral.
     cron:
         #date: 1
         #day_of_week: Sat

@@ -22,7 +22,7 @@ module AresMUSH
     get '/config/edit', :auth => :admin do
       
       @path = params[:path]
-      @title = params[:title] || @path
+      @plugin = params[:plugin]
       @config = File.read(File.join(AresMUSH.game_path, @path))
       @error = nil      
       @return_url = params[:return_url] || '/config'
@@ -42,7 +42,7 @@ module AresMUSH
       
       config = params[:config]
       path = params[:path]
-      title = params[:title]
+      plugin = params[:plugin]
       
       error = nil
       begin
@@ -58,7 +58,7 @@ module AresMUSH
       end
       
       if (error)
-        redirect "/config/edit?path=#{path}&title=#{title}"
+        redirect "/config/edit?path=#{path}&plugin=#{plugin}"
       else
         flash[:info] = "Saved!"
         Manage::Api.reload_config

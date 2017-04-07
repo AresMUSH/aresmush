@@ -4,7 +4,7 @@
       var editor = ace.edit("editor");
       editor.setTheme("ace/theme/cobalt");
 
-      var title = document.getElementById('title').value;
+      var title = document.getElementById('path').value;
       editor.getSession().setMode("ace/mode/yaml");
       if (title.endsWith('erb')) {
           editor.getSession().setMode("ace/mode/html_ruby");

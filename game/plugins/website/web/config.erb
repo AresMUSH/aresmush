@@ -10,13 +10,18 @@
 </div>
 <% end %>
 
-<h1><%= @title %></h1>
+<h1><%= @path %></h1>
 
+<% if @plugin %>
+<p>
+    <p><a href="http://aresmush.com/plugins/<%= @plugin %>" target="_blank"><%= @plugin.titlecase %> Info & Tutorials</a></p>
+</p>
+<% end %>
 <form method="POST" action="/config/update">
 <div id="editor" class="ace-editor"><%= @config %></div>
 <input type="hidden" id="config" name="config" />
-<input type="hidden" name="path" value="<%= @path %>" />
-<input type="hidden" id="title" name="title" value="<%= @title %>" />
+<input type="hidden" id="path" name="path" value="<%= @path %>" />
+<input type="hidden" name="plugin" value="<%= @plugin %>" />
 <input type="hidden" name="return_url" value="<%= @return_url %>" />
 <p>
 <a href="<%= @return_url %>"><button type="button" class="btn btn-default">Cancel</button></a>
