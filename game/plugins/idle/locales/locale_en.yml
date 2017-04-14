@@ -19,3 +19,7 @@ en:
         idle_bbs_body: "The following characters have idled out or are in danger of doing so.%{report}"
         
         lastwill_set: "Last will instructions set."
+        
+        use_npc_cmd: "Use the 'npc' command to make someone a NPC or not."
+        use_roster_cmd: "Use the 'roster' command to add/remove someone from the roster."
+        idle_status_set: "%{name}'s idle status is now %{status}."

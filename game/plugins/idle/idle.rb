@@ -7,6 +7,7 @@ load 'lib/event_handling.rb'
 load "lib/idle_model.rb"
 load "lib/idle_queue_cmd.rb"
 load "lib/idle_remove_cmd.rb"
+load "lib/idle_set_cmd.rb"
 load "lib/idle_start_cmd.rb"
 load "lib/lastwill_cmd.rb"
 load "templates/idle_queue_template.rb"
@@ -52,6 +53,8 @@ module AresMUSH
           return IdleQueueCmd
         when "remove"
           return IdleRemoveCmd
+        when "set"
+          return IdleSetCmd
         when "start"
           return IdleStartCmd
         end

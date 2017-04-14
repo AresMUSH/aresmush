@@ -26,3 +26,7 @@ There are several idle actions available:
         Note: If someone isn't already on the list, this will add them.
 `idle/queue` - Review everyone's actions.
 `idle/execute` - Takes care of the actions and posts a summary to the BBS.
+
+`idle/set <name>=<status>` - Sets someone's status without running through the idle queue 
+    or making a post.  Status can only be Gone, Dead or Nothing.  There are separate commands
+    for putting someone on/off the roster (help roster) or making them a NPC (help npc).
