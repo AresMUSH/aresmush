@@ -8,7 +8,7 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.location = titlecase_arg(args.arg1)
-        self.privacy = titlecase_arg(args.arg2)
+        self.privacy = titlecase_arg(args.arg2) || "Public"
       end
       
       def required_args
@@ -31,7 +31,8 @@ module AresMUSH
         end
         
         scene = Scene.create(owner: enactor, location: self.location, private_scene: self.privacy == "Private")
-        room = Room.create(scene: scene, name: "Scene #{scene.id} - #{self.location}")
+        room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.location}")
+        ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
         scene.update(room: room)
         room.create_desc("current", description)
         Pose.enable_repose(room)

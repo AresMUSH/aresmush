@@ -18,7 +18,7 @@ To join a scene, you can get a meetme from a participant or use the join scene c
 `scenes` - Lists scenes.
 `scene/join <#>` - Joins a scene.
 
-The scene's organizer can stop the scene and change the privacy setting.
+The scene's organizer can stop the scene and change the privacy setting.  If no scene number is specified, it will operate on your current room.
 
-`scene/privacy <#>=<private/public>` - Changes the privacy level.
-`scene/stop <#>` - Stops a scene and recycles the room.
+`scene/privacy [<#>=]<private/public>` - Changes the privacy level.
+`scene/stop [<#>]` - Stops a scene and recycles the room.
