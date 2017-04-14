@@ -88,7 +88,7 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
 
   def header(text, header_level)
     line = "-" * (text.length + 5)
-    "\n#{text}\n#{line}\n"
+    "\n%xh#{text}%xn\n#{line}\n"
   end
 
   def hrule()

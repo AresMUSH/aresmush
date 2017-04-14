@@ -34,7 +34,7 @@ module AresMUSH
     # out the pieces, and then makes the roll.
     def self.parse_and_roll(client, char, roll_str)
       if (roll_str.is_integer?)
-        dice = (roll_str.to_i * 1.5) + 2
+        dice = (roll_str.to_i) + 2
         die_result = FS3Skills.roll_dice(dice)
       else
         roll_params = FS3Skills.parse_roll_params roll_str

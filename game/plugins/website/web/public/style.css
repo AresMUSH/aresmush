@@ -103,14 +103,6 @@ form {
 
 }    
      
-pre .box { 
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-}
-
-pre code {
-    color: black;
-}
 
 .cg-tip { 
     color: #888;
@@ -145,4 +137,40 @@ pre code {
     position: relative;
     height: 500px;
     width: 1000px
+}
+
+
+blockquote{
+	margin: 0.4em 0;
+    width: 80%;
+	padding: 10px;	
+    font-size: 1em;
+    background-color: #F8F8F8;
+    color: #;
+    border: 0px;
+    border-left: 1px solid red;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+
+pre code { 
+	border: 2px solid #001D1D;
+    border-radius: 5px;
+	background-color: black;
+    font-size: 1em;
+    color: #fff; 
+	font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
+    font-size: 14px; 
+	margin: 0.4em 0;
+    width: 700px;
+    padding: 10px;
+	overflow: auto;
+    word-wrap: break-word;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
 }
