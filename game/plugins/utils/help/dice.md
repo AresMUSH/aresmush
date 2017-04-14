@@ -1,15 +1,17 @@
 ---
-topic: dice
-toc: Misc
+toc: Utilities
 summary: Rolling random dice.
-categories:
-- main
 aliases:
 - coinflip
 - coin
 - die
-plugin: utils
 ---
-The dice command is used to roll random dice.  The syntax is like 4d6 where 4 is the number of dice to roll and 6 is how many sides on each die.  A coin flip can be simulated using 1d2.
+# Dice Roller
+
+The dice command is used to roll random dice.  The syntax is <numDice>d<dieSides>.  
+
+For example: 4d6 would roll four six-sided dice.
+
+A coin flip can be simulated using 1d2 with a result of '1' meaning heads and '2' meaning tails.
 
 `dice <die string>`

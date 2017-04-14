@@ -10,9 +10,7 @@ module AresMUSH
         "composure_skill" => Global.read_config("fs3combat", "composure_skill"),
         "default_defense_skill" => Global.read_config("fs3combat", "default_defense_skill")
       }
-      
-      puts @skills
-      
+            
       erb :"admin/fs3_combat"
     end
     

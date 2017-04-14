@@ -48,7 +48,7 @@ module AresMUSH
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)
         rescue Exception => e
-          Global.logger.debug "Error loading plugin: #{e}"
+          Global.logger.debug "Error loading plugin: #{e}  backtrace=#{e.backtrace[0,10]}"
           client.emit_failure t('manage.error_loading_plugin', :name => load_target, :error => e)
         end
       end

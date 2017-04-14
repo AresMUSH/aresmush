@@ -1,26 +1,4 @@
 help:
-    categories:
-        # You can have as many help categories as you wish.  The format is:
-        #      category_name: 
-        #          command: command_name
-        #          title:  Text shown at the top of the help topic
-        #          topics_per_page: How many topics you want to show on each 
-        #              page of the help index (help, help2, etc.)
-        #          roles:  Optional list of roles that are allowed to use this command.
-        main:
-            command: help
-            title: "Player Help"
-            topics_per_page: 4
-        admin:
-            command: ahelp
-            title: "Admin Help"
-            topics_per_page: 6
-            roles: 
-                - admin
-        builder:
-            command: bhelp
-            title: "Builder Help"
-            topics_per_page: 6
-            roles: 
-                - builder
-                - admin
+    shortcuts:
+        "shelp" : "help"
+        "ahelp" : "help"

@@ -1,15 +1,12 @@
 ---
-topic: ansi
-toc: Misc
+toc: Utilities
 summary: Ansi colors.
-categories:
-- main
 aliases:
 - color
 - colors
 - fansi
-plugin: utils
 ---
+# Ansi Color
 You create a color in Ares using either \%x or \%c followed by the color code.  \%xn goes back to normal.  
 
 For example: \%xgGreen\%xn makes %xgGreen%xn.  

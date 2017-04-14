@@ -42,10 +42,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_bbs.md", "help/bbs.md", "help/bbs_edit.md" ]
-    end
- 
     def self.config_files
       [ "config_bbs.yml" ]
     end

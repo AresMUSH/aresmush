@@ -1,6 +1,4 @@
 <%= line %>
-%xh<%= title %>%xn
-
 <% paginator.items.each do |section| %>
 %xg<%= section %>%xn
 <% section_topics(section).each do |title, data| %>
@@ -8,9 +6,4 @@
 <% end %>
 <% end %>
 <%= line_with_text paginator.page_marker %>
-%xh<%= t('help.other_help_libraries') %>%xn
-<% other_cats.each do |c, v| %>
-%xh[<%= v['command'] %>]%xn <%= v['title'] %> <%= -%>
-<% end %>
-
 <%= line %>
