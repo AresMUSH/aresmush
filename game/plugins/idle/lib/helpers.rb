@@ -10,7 +10,8 @@ module AresMUSH
         
     def self.active_chars
       base_list = Character.all
-      base_list.select { |c| !(c.idled_out? || c.is_admin? || c.is_playerbit? || c.is_guest? || c.is_npc? )}
+      base_list.select { |c| !(c.idled_out? || c.is_admin? || c.is_playerbit? || 
+        c.is_guest? || c.is_npc? || c.on_roster? )}
     end
     
     def self.idle_action_color(action)
