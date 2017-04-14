@@ -3,3 +3,4 @@ profile:
         "finger": "profile"
         "info": "profile"
         "profile/set": "profile/add"
+        "nfo": "profile"
