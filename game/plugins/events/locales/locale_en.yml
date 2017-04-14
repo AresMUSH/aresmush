@@ -8,3 +8,5 @@ en:
         starts_at_title: "Starts At:"
         who_title: "Who:"
         where_title: "Where:"
+        
+        events_refreshed: "It takes a moment for the events to refresh from the calendar server.  Try the `events` command in a few seconds."

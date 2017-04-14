@@ -5,6 +5,14 @@ module AresMUSH
 
     def self.upcoming_events(days_ahead)
       if (!self.last_events || (Time.now - self.last_event_time > (360 * 30)))
+        # This will refresh it for the next guy.
+        self.refresh_events(days_ahead)
+      end
+      self.last_events || []
+    end
+    
+    def self.refresh_events(days_ahead)
+      Global.dispatcher.spawn("Loading Teamup Events", nil) do
         startDate = DateTime.now
         endDate = startDate + days_ahead
 
@@ -13,8 +21,6 @@ module AresMUSH
         self.last_events = teamup.get_events(startDate, endDate)
         self.last_event_time = Time.now
       end
-      
-      self.last_events
     end
     
     def self.calendar_view_url

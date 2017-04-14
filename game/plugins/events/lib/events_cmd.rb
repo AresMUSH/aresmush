@@ -6,7 +6,9 @@ module AresMUSH
 
       def handle
         if (cmd.switch_is?("refresh"))
-          Events.last_events = nil
+          Events.refresh_events
+          client.emit t('events.events_refreshed')
+          return
         end
         events = Events.upcoming_events(30)
         template = EventsListTemplate.new(events, enactor)
