@@ -1,6 +1,6 @@
 module AresMUSH
   module Places
-    class PlaceJoinCmd
+    class PlaceDeleteCmd
       include CommandHandler
       
       attr_accessor :name
@@ -15,16 +15,17 @@ module AresMUSH
           help: 'places'
         }
       end
-            
+      
       def handle
         place = enactor_room.places.find(name: self.name).first
-      
+        
         if (!place)
-          place = Place.create(name: self.name, room: enactor_room)
+          client.emit_failure t('places.place_doesnt_exit')
+          return
         end
         
-        enactor.update(place: place)
-        enactor_room.emit_ooc t('places.place_joined', :name => enactor.name, :place_name => self.name)
+        place.delete
+        client.emit_success t('places.place_deleted', :name => enactor.name, :place_name => self.name)
       end
     end
   end

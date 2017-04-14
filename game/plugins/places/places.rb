@@ -2,7 +2,8 @@ $:.unshift File.dirname(__FILE__)
 load "places_api.rb"
 load "lib/places_model.rb"
 load "lib/places_events.rb"
-load "lib/place_create_cmd.rb"
+load "lib/place_emit_cmd.rb"
+load "lib/place_delete_cmd.rb"
 load "lib/place_join_cmd.rb"
 load "lib/place_leave_cmd.rb"
 load "lib/place_rename_cmd.rb"
@@ -44,8 +45,10 @@ module AresMUSH
          return PlacesCmd
        when "place"
          case cmd.switch
-         when "create"
-           return PlaceCreateCmd
+         when "emit"
+           return PlaceEmitCmd
+         when "delete"
+           return PlaceDeleteCmd
          when "join"
            return PlaceJoinCmd
          when "leave"
