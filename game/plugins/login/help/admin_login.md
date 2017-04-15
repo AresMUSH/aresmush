@@ -1,5 +1,4 @@
 ---
-topic: login
 toc: Player Management
 summary: Managing player login info.
 categories:
@@ -8,7 +7,6 @@ aliases:
 - password
 - name
 - login
-plugin: login
 ---
 You can reset someone's password, name and alias:
 

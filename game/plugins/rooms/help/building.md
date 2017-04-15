@@ -1,5 +1,4 @@
 ---
-topic: building
 toc: Grid
 summary: Building the grid.
 categories:
@@ -16,7 +15,6 @@ aliases:
 - grid
 - roomtype
 - zone
-plugin: rooms
 ---
 The MUSH grid consists of **Rooms** connected by **Exits**.  Admin with appropriate permissions can create these using the build and open commands.
 

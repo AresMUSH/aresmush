@@ -1,5 +1,4 @@
 ---
-topic: demographics
 toc: Character Creation
 summary: Setting demographics.
 categories:
@@ -15,7 +14,6 @@ aliases:
 - hair
 - age
 - reputation
-plugin: demographics
 ---
 Admins can set any of the basic character demographics (fullname, gender, etc.) on another character.
 

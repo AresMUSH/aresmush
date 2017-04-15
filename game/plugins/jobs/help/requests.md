@@ -1,12 +1,10 @@
 ---
-topic: requests
 toc: Communicating
 summary: Asking for help from the admin.
 categories:
 - main
 aliases:
 - request
-plugin: jobs
 ---
 The Request system is used to submit requests to the admins. You can track the status of your request, as well as who it's assigned to.
 

@@ -1,5 +1,4 @@
 ---
-topic: mail review
 toc: Mail
 summary: Reviewing sent mail.
 categories:
@@ -7,7 +6,6 @@ categories:
 aliases:
 - recall
 - unsend
-plugin: mail
 ---
 There are two ways to handle sent mail on Ares.   The first is to automatically CC yourself on all messages you send.  Messages you send will automatically appear in your "Sent" folder (available through mail/sent).
 

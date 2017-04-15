@@ -1,14 +1,11 @@
 ---
-topic: scene
 toc: Scenes
 summary: Starting scenes.
 categories:
 - main
-plugin: scenes
 aliases:
 - scenes
 ---
-
 The scenes system lets you spawn a room for a scene.  You can indicate whether the scene is public (meaning anyone is invited to join) or public.
 
 `scene/start <location>=<private/public>` - Starts a scene.  The location can be the name of an existing room (in which case the description will be copied over) or a custom name.

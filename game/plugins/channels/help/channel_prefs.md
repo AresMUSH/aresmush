@@ -1,12 +1,9 @@
 ---
-topic: channel prefs
 toc: Communicating
 summary: Channel preferences
 categories:
 - main
-plugin: channels
 ---
-
 You can configure various preferences for a channel you're on.
 
 `channel/alias <channel>=<alias>` - Changes the alias used to talk on the channel.

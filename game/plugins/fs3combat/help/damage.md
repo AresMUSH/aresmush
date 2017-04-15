@@ -1,5 +1,4 @@
 ---
-topic: combat damage
 toc: FS3 Combat
 summary: Combat damage and healing.
 categories:
@@ -10,7 +9,6 @@ aliases:
 - heal
 - healing
 - hospitals
-plugin: fs3combat
 ---
 This is a quick reference for the combat damage commands. For more details on FS3, see `help combat`.
  

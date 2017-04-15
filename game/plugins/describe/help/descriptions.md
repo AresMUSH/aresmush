@@ -1,5 +1,4 @@
 ---
-topic: descriptions
 toc: Descriptions
 summary: Descriptions.
 categories:
@@ -10,9 +9,7 @@ aliases:
 - describe
 - shortdesc
 - detail
-plugin: describe
 ---
-
 Every character, room and exit has a description that tells you what you see when you look at it.
 
 `describe <name>=<description>`

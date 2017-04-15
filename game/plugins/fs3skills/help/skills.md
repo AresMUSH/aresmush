@@ -1,5 +1,4 @@
 ---
-topic: skills
 toc: FS3
 summary: Skills System.
 categories:
@@ -7,7 +6,6 @@ categories:
 aliases:
 - fs3
 - skill
-plugin: fs3skills
 ---
 This game uses the FS3 skills system, Third Edition.  The complete rulebook can be found here:  http://www.aresmush.com/fs3/fs3-3.  This is a quick reference for the commands for setting and using your character's abilities.
 

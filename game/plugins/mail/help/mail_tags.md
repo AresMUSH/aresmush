@@ -1,5 +1,4 @@
 ---
-topic: mail tags
 toc: Mail
 summary: Organizing your mail.
 categories:
@@ -10,7 +9,6 @@ aliases:
 - sent mail
 - tag
 - tags
-plugin: mail
 ---
 Instead of folders, Ares mail uses `tags`, which are a sort of label used to organize your mail.  There are several special tags:  
 

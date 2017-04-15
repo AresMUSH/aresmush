@@ -1,14 +1,11 @@
 ---
-topic: look
 toc: Descriptions
 summary: Looking around.
 categories:
 - main
-plugin: describe
 aliases:
 - adesc
 ---
-
 The `look` command is used to look around.
 
 `look <name>`

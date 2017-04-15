@@ -1,5 +1,4 @@
 ---
-topic: roll
 toc: FS3
 summary: Ability rolls.
 categories:
@@ -7,7 +6,6 @@ categories:
 aliases:
 - rolls
 - opposed
-plugin: fs3skills
 ---
 This game uses the FS3 skills system.  This is a quick reference for the commands used to make an ability roll.  For more help, see http://aresmush.com/fs3/fs3-3/roll-quickref/.
 

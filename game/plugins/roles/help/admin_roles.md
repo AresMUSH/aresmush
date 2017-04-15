@@ -1,12 +1,10 @@
 ---
-topic: admin
 toc: Roles
 summary: Configuring roles and the admin list.
 categories:
 - admin
 aliases:
 - adminnote
-plugin: roles
 ---
 You can create and delete roles.
 

@@ -1,5 +1,4 @@
 ---
-topic: channels
 toc: Game Management
 summary: Managing channels.
 categories:
@@ -8,7 +7,6 @@ aliases:
 - channel
 - chat
 - comsys
-plugin: channels
 ---
 The channel administration commands are used to create, delete, and describe channels.
 

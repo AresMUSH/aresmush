@@ -1,12 +1,10 @@
 ---
-topic: combat actions
 toc: FS3 Combat
 summary: Run-down of all combat actions.
 categories:
 - main
 aliases:
 - actions
-plugin: fs3combat
 ---
 This is a quick reference for combat action commands.  For more details on FS3, see `help combat`.
 

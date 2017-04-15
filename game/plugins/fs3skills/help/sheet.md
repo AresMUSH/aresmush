@@ -1,10 +1,8 @@
 ---
-topic: sheet
 toc: Character Creation
 summary: Character sheets.
 categories:
 - main
-plugin: fs3skills
 ---
 The `sheet` command lets you view your character sheet, showing your abilities.
 

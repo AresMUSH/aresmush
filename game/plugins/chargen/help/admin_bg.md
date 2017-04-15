@@ -1,10 +1,8 @@
 ---
-topic: bg
 toc: Approvals
 summary: Managing backgrounds.
 categories:
 - admin
-plugin: chargen
 ---
 Admins can view and edit other character backgrounds, in case you need to make simple tweaks during the approval process.
 

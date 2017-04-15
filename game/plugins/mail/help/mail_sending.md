@@ -1,5 +1,4 @@
 ---
-topic: mail sending
 toc: Mail
 summary: Sending mail.
 categories:
@@ -8,7 +7,6 @@ aliases:
 - reply
 - forward
 - fwd
-plugin: mail
 ---
 Sending mail is easy. The "to" field can include any number of player names, separated by spaces. You can also forward a message from your inbox to someone else.
 

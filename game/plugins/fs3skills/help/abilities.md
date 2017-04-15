@@ -1,5 +1,4 @@
 ---
-topic: abilities
 toc: Character Creation
 summary: Skills System.
 categories:
@@ -16,7 +15,6 @@ aliases:
 - specialty
 - specialties
 - advantages
-plugin: fs3skills
 ---
 The FS3 Abilities commands are used to set yourself up during character creation.  For more help with abilities, see http://aresmush.com/fs3/fs3-3/chargen/.
 

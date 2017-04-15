@@ -1,3 +1,6 @@
+--- 
+...
+---
 # AresCentral
 
 [AresCentral](http://arescentral.aresmush.com/) is the social hub for AresMUSH. 

@@ -1,10 +1,8 @@
 ---
-topic: census
 toc: Character Creation
 summary: See what other characters are out there.
 categories:
 - main
-plugin: groups
 ---
 You can use the census command to find out how many characters already exist with various criteria.
 

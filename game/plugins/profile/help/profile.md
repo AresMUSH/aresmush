@@ -1,5 +1,4 @@
 ---
-topic: profile
 toc: Community
 summary: OOC profile information
 categories:
@@ -7,7 +6,6 @@ categories:
 aliases:
 - info
 - finger
-plugin: profile
 ---
 Each character has a **character profile** showing various information.  Any IC information is provided for OOC reference; do not use it inappropriately if you have no IC reason to know it.
 

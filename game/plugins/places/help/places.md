@@ -1,12 +1,10 @@
 ---
-topic: places
 toc: Misc
 summary: Separating RP in a scene.
 categories:
 - main
 aliases:
 - tables
-plugin: places
 ---
 The places system allows you to manage large scenes by keeping track of who's where in the room.
 

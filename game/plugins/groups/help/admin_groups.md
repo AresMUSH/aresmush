@@ -1,10 +1,8 @@
 ---
-topic: groups
 toc: Character Creation
 summary: Groups and affiliations.
 categories:
 - admin
-plugin: groups
 ---
 Admins can set other people's group information.
 

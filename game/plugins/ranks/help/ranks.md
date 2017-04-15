@@ -1,12 +1,10 @@
 ---
-topic: ranks
 toc: Character Creation
 summary: Military/paramilitary ranks.
 categories:
 - main
 aliases:
 - rank
-plugin: ranks
 ---
 Ranks are used in military or paramiltary organizations.  The Ares ranks system differentiates ranks by groups (see help groups).
 

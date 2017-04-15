@@ -1,10 +1,8 @@
 ---
-topic: home
 toc: Getting Around
 summary: Get home.
 categories:
 - main
-plugin: rooms
 aliases:
 - work
 ---

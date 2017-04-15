@@ -1,5 +1,4 @@
 ---
-topic: manage
 toc: Code Management
 summary: Managing plugins and config.
 categories:
@@ -11,7 +10,6 @@ aliases:
 - config
 - announce
 - wall
-plugin: manage
 ---
 Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server.  To make changes to these things, you need to edit them on disk and then tell the game to reload them using one of these management commands.
 

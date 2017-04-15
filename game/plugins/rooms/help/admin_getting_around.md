@@ -1,5 +1,4 @@
 ---
-topic: getting around
 toc: Grid
 summary: Getting around the grid.
 categories:
@@ -8,7 +7,6 @@ categories:
 aliases:
 - teleport
 - join
-plugin: rooms
 ---
 Admin have some extra commands for getting around the grid without using the normal exits.
 

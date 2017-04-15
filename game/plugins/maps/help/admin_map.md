@@ -1,12 +1,10 @@
 ---
-topic: map
 toc: Getting Around
 summary: Managing maps.
 categories:
 - admin
 aliases:
 - maps
-plugin: maps
 ---
 You can create in-game maps using ASCII art and text.
 

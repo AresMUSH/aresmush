@@ -1,15 +1,13 @@
 ---
-topic: pose format
 toc: Communicating
 summary: Making poses and emits more readable.
 categories:
 - main
-aliases: 
+aliases:
 - autospace
 - saycolor
 - quotecolor
 - nospoof
-plugin: pose
 ---
 AresMUSH provides a few commands to help make poses and emits more readable.
 

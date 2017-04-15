@@ -1,5 +1,4 @@
 ---
-topic: trouble
 toc: Game Management
 summary: Dealing with troublesome players.
 categories:
@@ -10,7 +9,6 @@ aliases:
 - ban
 - siteban
 - sitelock
-plugin: manage
 ---
 Unfortunately, you will sometimes have to deal with troublesome players.  These commands will help.
 

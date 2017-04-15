@@ -1,5 +1,4 @@
 ---
-topic: chargen
 toc: Approvals
 summary: Approving and rejecting characters.
 categories:
@@ -10,7 +9,6 @@ aliases:
 - approval
 - app
 - apps
-plugin: chargen
 ---
 Admins with appropriate permissions can approve and reject character applications.  These commands tie in with the character's approval job in the Jobs System.  Approving a character closes the job.  Rejecting a character puts it into a pending state until they re-submit.
 

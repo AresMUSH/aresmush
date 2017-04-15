@@ -1,11 +1,9 @@
 ---
-topic: help
 toc: 1 - Getting Started
 summary: Getting help.
 categories:
 - main
 - admin
-plugin: help
 ---
 The MUSH help system is here to help you learn how to play.
 

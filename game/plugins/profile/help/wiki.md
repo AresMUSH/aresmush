@@ -1,10 +1,8 @@
 ---
-topic: wiki
 toc: Character Creation
 summary: Jump-start your character's wiki page.
 categories:
 - main
-plugin: profile
 ---
 The wiki command is intended to help you create your character's wiki page.  
 

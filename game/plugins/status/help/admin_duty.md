@@ -1,12 +1,10 @@
 ---
-topic: status
 toc: Player Management
 summary: Going on and off duty.
 categories:
 - admin
 aliases:
 - duty
-plugin: status
 ---
 The duty command lets you mark yourself as on or off duty.
 

@@ -1,5 +1,4 @@
 ---
-topic: apps
 toc: Character Creation
 summary: Review character status and submit for approval.
 categories:
@@ -10,7 +9,6 @@ aliases:
 - approval
 - app
 - apps
-plugin: chargen
 ---
 This game uses an Applications system for character approvals.  As you are going through character creation, you can review your application.  The system will flag common issues.
 

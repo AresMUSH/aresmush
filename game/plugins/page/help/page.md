@@ -1,5 +1,4 @@
 ---
-topic: page
 toc: Communicating
 summary: Private chat messages.
 categories:
@@ -7,7 +6,6 @@ categories:
 aliases:
 - tell
 - pm
-plugin: page
 ---
 Pages are private messages sent between players.  You can page any number of people at once, and use the standard pose formats in the message (like : and ;).
 

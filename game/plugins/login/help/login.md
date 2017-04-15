@@ -1,5 +1,4 @@
 ---
-topic: login
 toc: 1 - Getting Started
 summary: Creating, connecting and managing passwords.
 order: 1
@@ -13,7 +12,6 @@ aliases:
 - tour
 - quit
 - guest
-plugin: login
 ---
 To get past the login screen, you need a character.  There are a number of 'guest' characters available that you can borrow just to log in and look around.  To use one of them, type:
 

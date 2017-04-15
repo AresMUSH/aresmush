@@ -1,10 +1,8 @@
 ---
-topic: repose
 toc: Communicating
 summary: Catching up on poses you missed.
 categories:
 - main
-plugin: pose
 ---
 The repose system keeps track of poses so you can catch up on what you've missed.  Pose order tracking is a tool to help you keep track of whose turn it is.  It is **not** intended to be a strict restriction on who's allowed to pose.  Use any order you like in a given scene.
 

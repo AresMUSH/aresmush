@@ -1,7 +1,7 @@
 ---
 toc: Utilities
 summary: In-game calculator.
-aliases: 
+aliases:
 - calculator
 ---
 # Math Calculator

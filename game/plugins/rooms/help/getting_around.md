@@ -1,5 +1,4 @@
 ---
-topic: moving
 toc: Getting Around
 summary: Getting around the grid.
 order: 1
@@ -11,7 +10,6 @@ aliases:
 - move
 - rooms
 - exit
-plugin: rooms
 ---
 The MUSH grid consists of **Rooms** connected by **Exits**.  There are a number of ways to get around the grid.
 

@@ -1,5 +1,4 @@
 ---
-topic: time
 toc: Misc
 summary: Set up OOC time information.
 categories:
@@ -7,7 +6,6 @@ categories:
 aliases:
 - ooctime
 - timezone
-plugin: ooctime
 ---
 Ares will display all dates and times according to your local timezone.  If you have a player handle, your timezone is managed in AresCentral.  See `help handles`.  Otherwise you can change it at any time using:
 

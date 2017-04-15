@@ -1,7 +1,7 @@
 ---
 summary: Posting BBS messages.
 toc: Bulletin Boards
-aliases:
+aliases: 
 categories:
 - main
 ---

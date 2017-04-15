@@ -1,10 +1,8 @@
 ---
-topic: idle
 toc: Player Management
 summary: Idle sweeping old characters.
 categories:
 - admin
-plugin: idle
 ---
 The idle system lets you sweep the database for players who haven't logged in for awhile, so you can decide what to do with them.
 

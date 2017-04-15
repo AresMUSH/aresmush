@@ -1,11 +1,9 @@
 ---
-topic: status
 toc: Status
 order: 1
 summary: Character status and going IC/OOC/AFK.
 categories:
 - main
-plugin: status
 ---
 Your character status is a general reflection of what you're doing on the game.
 

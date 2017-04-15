@@ -1,5 +1,4 @@
 ---
-topic: areas
 toc: Grid
 summary: Areas and coordinates.
 categories:
@@ -10,7 +9,6 @@ aliases:
 - grid
 - roomtype
 - zone
-plugin: rooms
 ---
 Rooms have several properties that you can set.  The `area` and `grid`` properties are used to help people get around.  They can be used in room descriptions and the 'where' command and such.  The `roomtype` property ties in with the 'status' system, to tell whether someone is in the IC or OOC zone.
 
