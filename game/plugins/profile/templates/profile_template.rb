@@ -81,7 +81,7 @@ module AresMUSH
       end
       
       def alts
-        alt_list = Handles::Api.alts(@char).map { |c| c.name }
+        alt_list = AresCentral::Api.alts(@char).map { |c| c.name }
         alt_list.delete(@char.name)
         alt_list.join(" ")
       end

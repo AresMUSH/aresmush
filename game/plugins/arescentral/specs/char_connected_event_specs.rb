@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module Handles
+  module AresCentral
     describe CharConnectedEventHandler do
       
       before do
@@ -40,7 +40,7 @@ module AresMUSH
           @char.should_receive(:update).with({:page_color => "pc"})
           @char.should_receive(:update).with({:timezone => "t"})
           @handle.should_receive(:update).with(friends: "f")
-          @client.should_receive(:emit_success).with("handles.handle_synced")
+          @client.should_receive(:emit_success).with("arescentral.handle_synced")
           @handler.on_event(@event)
         end
       end
@@ -57,7 +57,7 @@ module AresMUSH
           @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
           @char.should_not_receive(:autospace=)
           @handle.should_receive(:delete)
-          @client.should_receive(:emit_failure).with("handles.handle_no_longer_linked")
+          @client.should_receive(:emit_failure).with("arescentral.handle_no_longer_linked")
           @handler.on_event(@event)
         end
       end

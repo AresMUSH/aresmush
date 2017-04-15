@@ -1,11 +1,11 @@
 ---
-topic: handles
-toc: Community
-summary: Player Identity.
-categories:
-- main
-plugin: handles
+toc: AresCentral
+summary: Player handles - OOC identity.
+aliases:
+- handles
 ---
+# AresCentral - Player Handles
+
 Handles bring a little taste of social media to MUSHing. The handles system is in its infancy right now, but the dream is to someday provide a wealth of cross-game social features.   
 
 For more information and help on creating your handle, see: http://aresmush.com/handles/
@@ -14,6 +14,6 @@ Having a handle is only useful once you `link` characters to it.  This tells the
 
 `handle/link <handle name>=<link code>`
 
-Managing your handle is done through AresCentral.
+Managing your handle is done through [AresCentral](http://arescentral.aresmush.com/).
 
 Autospace and timezone preferences are automatically downloaded from your AresCentral character to each of your linked characters, so you don't have to set them everywhere you go.  

@@ -20,7 +20,6 @@ module AresMUSH
         "fs3combat", 
         "fs3skills", 
         "groups", 
-        "handles", 
         "help", 
         "ictime", 
         "idle", 

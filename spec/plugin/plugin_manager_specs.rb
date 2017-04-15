@@ -9,7 +9,7 @@ module AresMUSH
     
     before do
       stub_global_objects
-      AresMUSH.stub(:game_path) { @temp_dir }      
+      AresMUSH.stub(:game_path) { "/game" }      
       @manager = PluginManager.new
     end
 
@@ -56,10 +56,11 @@ module AresMUSH
     describe :load_plugin_help do
       it "should load all the plugin help files" do
         plugin = double
+        Dir.stub(:[]).with("A/help/**.md") { [ "h1", "h2" ] }
         plugin.stub(:plugin_dir) { "A" }
-        plugin.stub(:help_files) { [ "h1", "h2" ]}
-        help_reader.should_receive(:load_help_file).with("A/h1")
-        help_reader.should_receive(:load_help_file).with("A/h2")
+        plugin.stub(:to_s) { "AresMUSH::A" }
+        help_reader.should_receive(:load_help_file).with("h1", "A")
+        help_reader.should_receive(:load_help_file).with("h2", "A")
         @manager.load_plugin_help plugin
       end
     end 

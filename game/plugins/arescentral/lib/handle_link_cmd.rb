@@ -1,5 +1,5 @@
 module AresMUSH
-  module Handles
+  module AresCentral
     class HandleLinkCmd
       include CommandHandler
       
@@ -24,7 +24,7 @@ module AresMUSH
       end
       
       def check_handle_name
-        return t('handles.character_already_linked') if enactor.handle
+        return t('arescentral.character_already_linked') if enactor.handle
         return nil
       end
       
@@ -43,9 +43,9 @@ module AresMUSH
                 handle_id: response.data["handle_id"],
                 character: enactor)
             enactor.update(handle: handle)
-            client.emit_success t('handles.link_successful', :handle => self.handle_name)
+            client.emit_success t('arescentral.link_successful', :handle => self.handle_name)
           else
-            client.emit_failure t('handles.link_failed', :error => response.error_str)
+            client.emit_failure t('arescentral.link_failed', :error => response.error_str)
           end   
         end     
       end      

@@ -14,7 +14,7 @@ module AresMUSH
       meta = md.metadata
       if (meta)
         meta["path"] = file
-        meta["plugin"] = plugin
+        meta["plugin"] = plugin.downcase
         self.help[file] = meta
       else
         Global.logger.warn "Skipping help file #{file} - missing metadata."

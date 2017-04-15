@@ -1,8 +1,10 @@
 # AresCentral
 
-The AresCentral plugin simply allows your game to communicate with [AresCentral](http://arescentral.aresmush.com) so your players can manage their handles and preferences.
+[AresCentral](http://arescentral.aresmush.com/) is the social hub for AresMUSH. 
+
+Players can manage their [handles](http://aresmush.com/handles) and preferences.   They can also view the AresCentral games directory, seeing all Ares games.
 
 ## Topics
 
-[Configuring AresCentral](/docs/arescentral/config)
-[Game Directory](/docs/arescentral/directory)
+[Player Handles](/help/arescentral/handles)
+[Configuring AresCentral](/help/arescentral/config)

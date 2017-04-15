@@ -21,7 +21,7 @@ module AresMUSH
   
         it "should return a die result for a plain number" do
           # Note - automatically factors in a default linked attr
-          FS3Skills.stub(:roll_dice).with(3) { [1, 2, 3, 4, 5] }
+          FS3Skills.stub(:roll_dice).with(4) { [1, 2, 3, 4, 5] }
           FS3Skills.parse_and_roll(@client, @char, "2").should eq [1, 2, 3, 4, 5]
         end
   

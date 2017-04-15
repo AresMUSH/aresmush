@@ -11,7 +11,7 @@ aliases:
 
 Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firstmagic.com/~merlin/mushcode/mc.bb.html), the Ares BBS provides MU-wide discussion forums.
 
-## Quick Reference
+## Command Quick Reference
 
 > **Tip:** For all of the bbs commands, you can specify either the board name or number.  Those familiar with Myrddin's BBS should find that the commands you're used to (bbread, bbpost, etc.) also work here.
 

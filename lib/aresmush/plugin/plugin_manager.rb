@@ -56,8 +56,8 @@ module AresMUSH
     end
     
     def load_plugin_help(plugin_module)
-      plugin_name = plugin_module.to_s.after("::").downcase
-      search = File.join(PluginManager.plugin_path, plugin_name, "help", "**.md")
+      plugin_name = plugin_module.to_s.after("::")
+      search = File.join(plugin_module.plugin_dir, "help", "**.md")
       help_files = Dir[search]
       help_files.each do |path|              
         Global.help_reader.load_help_file path, plugin_name

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def alts
-        Handles::Api.alts(@char).select { |a| a != @char }
+        AresCentral::Api.alts(@char).select { |a| a != @char }
       end
       
       def has_alt_mail(alt)

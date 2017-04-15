@@ -45,7 +45,7 @@ module AresMUSH
       def handle
         enactor.update(ooctime_timezone: self.zone)
         client.emit_success t('time.timezone_set', :timezone => self.zone)
-        Handles::Api.warn_if_setting_linked_preference(client, enactor)
+        AresCentral::Api.warn_if_setting_linked_preference(client, enactor)
       end
     end
   end

@@ -1,9 +1,9 @@
 module AresMUSH
-  module Handles
+  module AresCentral
     module Api      
       def self.warn_if_setting_linked_preference(client, enactor)
         if (enactor.handle)
-          client.emit_ooc t('handles.setting_preference_on_linked_char')
+          client.emit_ooc t('arescentral.setting_preference_on_linked_char')
         end
       end
     
