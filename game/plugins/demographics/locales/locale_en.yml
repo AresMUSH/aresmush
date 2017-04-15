@@ -29,3 +29,19 @@ en:
         
         demo_review: Checking all demographics are set.
         gender_set_to_other: "< Gender is set to 'Other'.  Is that correct? >"
+        
+        group_types_title: "Group Types"
+        invalid_group_type: "Not a valid group type.  See 'groups'."
+        group_title: "Group Type '%{name}'"
+        open_ended_group: "This group type is free-form.  You can enter your own value."
+        group_set: "%{group} set to %{value}."
+        group_skill_notice: "Some groups require certain skills.  If you already set your skills, you may want to review your app to make sure you have taken all the necessary skills for your group."
+        group_cleared: "%{group} cleared."
+        invalid_group_value: "That is not a valid %{group} value."
+        census_title_top_20: "%{name} Census (Top 20)"
+        group_census_title: "%{name} Census"
+        gender_census_title: "Gender Census"
+        full_census_title: "Name                 Gender    Position              Callsign"
+        
+        census_groups: "Census Groups Available"
+        app_review: "Checking groups are set."

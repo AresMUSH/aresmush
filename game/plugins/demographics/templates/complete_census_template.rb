@@ -1,5 +1,5 @@
 module AresMUSH
-  module Groups
+  module Demographics
     class CompleteCensusTemplate < ErbTemplateRenderer
             
       attr_accessor :paginator

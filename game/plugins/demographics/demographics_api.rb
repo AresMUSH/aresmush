@@ -24,6 +24,15 @@ module AresMUSH
         self.update(demographics: demo)
       end
     end
+    
+    def group(name)
+      GroupAssignment.find(character_id: self.id).combine(group: name).first
+    end
+    
+    def group_value(name)
+      group = group(name)
+      group ? group.value : nil
+    end
   end
   
   module Demographics

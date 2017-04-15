@@ -1,5 +1,5 @@
 module AresMUSH
-  module Groups
+  module Demographics
     class GroupCensusTemplate < ErbTemplateRenderer
             
       attr_accessor :name, :group
@@ -15,12 +15,12 @@ module AresMUSH
       end
       
       def title
-        is_freeform ? t('groups.census_title_top_20', :name => self.name) : 
-            t('groups.group_census_title', :name => self.name)
+        is_freeform ? t('demographics.census_title_top_20', :name => self.name) : 
+            t('demographics.group_census_title', :name => self.name)
       end
       
       def census
-        census = Groups.census_by { |c| c.group(self.name) ? c.group(self.name).value : nil }
+        census = Demographics.census_by { |c| c.group(self.name) ? c.group(self.name).value : nil }
         is_freeform ? census.first(20) : census
       end
       

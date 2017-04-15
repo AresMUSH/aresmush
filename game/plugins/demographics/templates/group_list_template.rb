@@ -1,5 +1,5 @@
 module AresMUSH
-  module Groups
+  module Demographics
     class GroupListTemplate < ErbTemplateRenderer
       
       attr_accessor :groups

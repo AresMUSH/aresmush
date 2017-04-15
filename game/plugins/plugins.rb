@@ -19,7 +19,6 @@ module AresMUSH
         "friends", 
         "fs3combat", 
         "fs3skills", 
-        "groups", 
         "help", 
         "ictime", 
         "idle", 

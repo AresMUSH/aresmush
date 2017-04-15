@@ -6,7 +6,16 @@ load "lib/basic_demographic_cmd.rb"
 load "lib/birthday_cmd.rb"
 load "lib/demo_model.rb"
 load "lib/helpers.rb"
+load "lib/census_cmd.rb"
+load "lib/group_set_cmd.rb"
+load "lib/groups_cmd.rb"
+load "lib/groups_detail_cmd.rb"
 load "templates/actors_list.rb"
+load "templates/complete_census_template.rb"
+load "templates/gender_census_template.rb"
+load "templates/group_census_template.rb"
+load "templates/group_detail_template.rb"
+load "templates/group_list_template.rb"
 
 module AresMUSH
   module Demographics
@@ -48,6 +57,19 @@ module AresMUSH
         return BirthdateCmd       
       when "demographic"
         return BasicDemographicCmd
+      when "census"
+        return CensusCmd
+      when "group"
+        case cmd.switch
+        when "set"
+          return GroupSetCmd
+        when nil
+          if (cmd.args)
+            return GroupDetailCmd
+          else
+            return GroupsCmd
+          end
+        end
       end
       
       nil     

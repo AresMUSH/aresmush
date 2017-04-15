@@ -1,5 +1,5 @@
 module AresMUSH
-  module Groups
+  module Demographics
     class GroupSetCmd
       include CommandHandler
       
@@ -28,20 +28,20 @@ module AresMUSH
       
       def check_can_set
         return nil if self.name == enactor_name
-        return nil if Groups.can_set_group?(enactor)
+        return nil if Demographics.can_set_group?(enactor)
         return t('dispatcher.not_allowed')
       end
       
       def check_chargen_locked
-        return nil if Groups.can_set_group?(enactor)
+        return nil if Demographics.can_set_group?(enactor)
         Chargen::Api.check_chargen_locked(enactor)
       end
       
       def handle   
-        group = Groups.get_group(self.group_name)
+        group = Demographics.get_group(self.group_name)
         
         if (!group)
-          client.emit_failure t('groups.invalid_group_type')
+          client.emit_failure t('demographics.invalid_group_type')
           return
         end
         
@@ -49,18 +49,18 @@ module AresMUSH
         if (self.value && values)
           self.value = values.keys.find { |v| v.downcase == self.value.downcase }
           if (!self.value)
-            client.emit_failure t('groups.invalid_group_value', :group => self.group_name)
+            client.emit_failure t('demographics.invalid_group_value', :group => self.group_name)
             return
           end
         end
         
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          Groups.set_group(model, self.group_name, self.value)
+          Demographics.set_group(model, self.group_name, self.value)
                     
           if (!self.value)
-            client.emit_success t('groups.group_cleared', :group => self.group_name)
+            client.emit_success t('demographics.group_cleared', :group => self.group_name)
           else
-            client.emit_success t('groups.group_set', :group => self.group_name, :value => self.value)
+            client.emit_success t('demographics.group_set', :group => self.group_name, :value => self.value)
           end
         end
       end

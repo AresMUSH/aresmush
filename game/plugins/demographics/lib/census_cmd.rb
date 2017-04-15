@@ -1,5 +1,5 @@
 module AresMUSH
-  module Groups
+  module Demographics
     class CensusCmd
       include CommandHandler
       
@@ -21,9 +21,9 @@ module AresMUSH
         elsif (self.name == "Gender")
           template = GenderCensusTemplate.new
         else
-          group = Groups.get_group(self.name)
+          group = Demographics.get_group(self.name)
           if (!group)
-            client.emit_failure t('groups.invalid_group_type')
+            client.emit_failure t('demographics.invalid_group_type')
             return
           end
           template = GroupCensusTemplate.new(group, self.name)    

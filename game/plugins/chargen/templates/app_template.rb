@@ -23,10 +23,6 @@ module AresMUSH
         Demographics::Api.app_review(@char)
       end
        
-      def groups
-        Groups::Api.app_review(@char)
-      end
-       
       def bg
         Chargen.bg_app_review(@char)
       end

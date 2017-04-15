@@ -17,10 +17,10 @@ module AresMUSH
         redirect "/char/#{@user.id}"
       end
       
-      @factions = Groups.get_group("Faction")
-      @positions = Groups.get_group("Position")
-      @departments = Groups.get_group("Department")
-      @colonies = Groups.get_group("Colony")
+      @factions = Demographics.get_group("Faction")
+      @positions = Demographics.get_group("Position")
+      @departments = Demographics.get_group("Department")
+      @colonies = Demographics.get_group("Colony")
       
       @ranks = []
       @factions['values'].each do |k, v|
@@ -135,10 +135,10 @@ module AresMUSH
       #### GROUPS
       #### ---------------------------------
 
-      Groups.set_group(@user, "Faction", params[:faction])
-      Groups.set_group(@user, "Department", params[:department])
-      Groups.set_group(@user, "Colony", params[:colony])
-      Groups.set_group(@user, "Position", params[:position])
+      Demographics.set_group(@user, "Faction", params[:faction])
+      Demographics.set_group(@user, "Department", params[:department])
+      Demographics.set_group(@user, "Colony", params[:colony])
+      Demographics.set_group(@user, "Position", params[:position])
       
       @user.update(ranks_rank: params[:rank])
       

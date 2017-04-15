@@ -1,5 +1,5 @@
 module AresMUSH
-  module Groups
+  module Demographics
     class GenderCensusTemplate < ErbTemplateRenderer
             
       attr_accessor :chars
@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def census
-        Groups.census_by { |c| c.demographic(:gender) }
+        Demographics.census_by { |c| c.demographic(:gender) }
       end      
     end
   end
