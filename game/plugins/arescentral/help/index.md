@@ -1,5 +1,6 @@
---- 
-...
+---
+toc: AresCentral
+summary: AresMUSH social hub.
 ---
 # AresCentral
 
