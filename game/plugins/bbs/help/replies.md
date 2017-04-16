@@ -1,7 +1,6 @@
 ---
 summary: Replying to BBS messages.
 toc: Bulletin Boards
-aliases: 
 ---
 # BBS - Replying to Posts
 

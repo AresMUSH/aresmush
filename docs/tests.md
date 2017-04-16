@@ -54,9 +54,9 @@ Channels
 * common channel announce
 * channels list
 * who
-* who (w/ gagging)
+* who (w/ muted)
 * talk on chan
-* talk on chan when gagged
+* talk on chan when muted
 * add guest to default channels
 * talk on chan w/ handle
 * talk on chan w/ title

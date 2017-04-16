@@ -1,7 +1,4 @@
 bbs:
-    permissions:
-        - manage_bbs
-
     shortcuts:
         "bbread": "bbs"
         "bbscan" : "bbs/scan"

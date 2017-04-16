@@ -40,7 +40,7 @@ module AresMUSH
         end
         
         channels.each do |c|
-          Channels.set_gagging(char, c, false)
+          Channels.set_muted(char, c, false)
         end
       end
     end

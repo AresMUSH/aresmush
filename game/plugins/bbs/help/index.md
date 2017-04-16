@@ -39,3 +39,4 @@ Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firs
 [Making Posts](/help/bbs/posting)
 [Replying to Posts](/help/bbs/replies)
 [Setting Up Boards](/help/bbs/setup)
+[Managing Boards](/help/bbs/manage)

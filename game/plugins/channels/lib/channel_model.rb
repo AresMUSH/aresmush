@@ -21,7 +21,7 @@ module AresMUSH
     
     attribute :title
     attribute :aliases, :type => DataType::Array
-    attribute :gagging, :type => DataType::Boolean
+    attribute :muted, :type => DataType::Boolean
     attribute :announce, :type => DataType::Boolean, :default => true
     
     def match_alias(a)
@@ -78,7 +78,7 @@ module AresMUSH
       message_with_title = "#{display_name} #{msg}"
       add_to_history message_with_title
       characters.each do |c|
-        if (!Channels.is_gagging?(c, self))
+        if (!Channels.is_muted?(c, self))
           client = c.client
           if (client)
             client.emit message_with_title

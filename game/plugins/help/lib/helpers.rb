@@ -20,7 +20,7 @@ module AresMUSH
     
     def self.toc_topics(toc)
       all_topics = Help.index
-      all_topics.select { |k, v| v["toc"] == toc }.sort_by { |k, v| [ v["order"] || 99, v["topic"] ] }
+      all_topics.select { |k, v| v["toc"] == toc }.sort_by { |k, v| [ v["order"] || 50, v["topic"] ] }
     end    
     
     def self.find_topic(topic)

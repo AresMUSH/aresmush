@@ -37,14 +37,14 @@ module AresMUSH
       "#{start_marker}#{name}%xn#{end_marker}"
     end
     
-    def self.is_gagging?(char, channel)
+    def self.is_muted?(char, channel)
       options = Channels.get_channel_options(char, channel)
-      options ? options.gagging : false
+      options ? options.muted : false
     end
     
-    def self.set_gagging(char, channel, gag)
+    def self.set_muted(char, channel, mute)
       options = Channels.get_channel_options(char, channel)
-      options.update(gagging: gag)
+      options.update(muted: mute)
     end
     
     def self.channel_who(channel)
@@ -57,8 +57,8 @@ module AresMUSH
       online_chars
     end
     
-    def self.gag_text(char, channel)
-      Channels.is_gagging?(char, channel) ? t('channels.gagging') : ""
+    def self.mute_text(char, channel)
+      Channels.is_muted?(char, channel) ? t('channels.muted') : ""
     end
     
     def self.leave_channel(char, channel)

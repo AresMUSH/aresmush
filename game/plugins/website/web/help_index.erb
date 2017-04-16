@@ -10,7 +10,7 @@
 <% topics.each do |name, data| %>
 <li>
     
-<a href="/help/<%= data['plugin'] %>/<%= File.basename(data['path'], ".md") %>"><%= name.titleize %></a> - <%= data['summary'] %>
+<a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>"><%= name.titleize %></a> - <%= data['summary'] %>
 </li>
 <% end %>
 </ul>

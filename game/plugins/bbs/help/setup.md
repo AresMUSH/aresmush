@@ -1,38 +1,36 @@
 ---
 toc: Bulletin Boards
-summary: Managing bulletin boards.
+summary: Setting up bulletin boards.
+order: 99
 aliases:
 - bbwiz
 ---
 # BBS - Setting Up Boards
 
-> **Permissions Required:** These commands require the permission: can\_manage\_bbs
+> **Permission Required:** These commands require the permission: manage\_bbs
 
-Those with board privileges are able to edit and delete other peoples' posts as well as their own.  You can also mass delete posts to clean up boards, and perhaps archive them to wikidot format first.
+Those with board privileges are create and setup boards.
 
-`bbs/delete <board>/<#>-<#>`
-`bbs/archive <board>` - Prints out messages so you can log them to a file.
+## Creating and Deleting Boards
 
-Board admins can also create and delete boards:
+Board admins can create and delete boards.  Each board must be uniquely identified by name and can be given a description with the board's purpose.  You can change a board's name at any time.
 
 `bbs/createboard <name>`
+`bbs/describe <board>=<description>`
+`bbs/rename <board>=<new name>`
 `bbs/deleteboard <board>`
 
-And set their descriptions as well as who can read or write (post) to them:
+## Changing Board Order
 
-`bbs/describe <board>=<description>`
-`bbs/readroles <board>=<roles that can read it, or 'everyone'>`
-`bbs/writeroles <board>=<roles that can write to it, or 'everyone'>`
-
-You can also change the order that the boards are displayed in by assigning each an order number:
+You can change the order that the boards are displayed in by assigning each an order number.
 
 `bbs/order <board>=<order #>`
-`bbs/rename <board>=<new name>`
 
+## Access Roles
 
+Access to bulletin boards is done by role.  You can define a role in the [Roles System](/help/roles) and then give that role read and/or write permissions to a board.  
 
-Some other miscellaneous features:
+Posting and replying to a board requires 'write' permissions.
 
-* Board permissions tie into the Roles plugin, allowing you to define which roles can read and write to each board.
-* You can reply to board posts.  Replies are shown inline with the original post.
-* Admins can archive bbs posts to a wikidot format for offline archiving.
+`bbs/readroles <board>=<roles that can read it, or 'everyone'>`
+`bbs/writeroles <board>=<roles that can write to it, or 'everyone'>`
