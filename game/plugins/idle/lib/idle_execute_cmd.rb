@@ -31,7 +31,12 @@ module AresMUSH
           chars.sort_by { |c| c.name }.each do |idle_char|
             # Don't log destroyed chars who never hit the grid
             if (action != "Destroy" && action != "Nothing")   
-              report << idle_char.name               
+              report << idle_char.name 
+              
+              # Remove their handle.              
+              if (idle_char.handle)
+                idle_char.handle.delete
+              end
             end
             
             case action
