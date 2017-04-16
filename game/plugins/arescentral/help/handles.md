@@ -1,8 +1,6 @@
 ---
 toc: AresCentral
 summary: Player handles - OOC identity.
-aliases:
-- handles
 ---
 # AresCentral - Player Handles
 

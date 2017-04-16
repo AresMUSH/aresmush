@@ -2,7 +2,6 @@
 toc: Bulletin Boards
 summary: Bulletin boards.
 aliases:
-- bbs
 - bbread
 - bbpost
 - bbmisc

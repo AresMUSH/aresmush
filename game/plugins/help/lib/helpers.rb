@@ -35,6 +35,16 @@ module AresMUSH
             all_keys[a.downcase] = k.downcase
           end
         end
+        
+        plugin_name = k.first(' ')
+        if (plugin_name.end_with?('s'))
+          singular = plugin_name.chop
+          all_keys["#{singular} #{k.rest(' ')}"] = k.downcase
+        end
+        
+        if (k.end_with?('s'))
+          all_keys[k.chop] = k.downcase
+        end
       end
       
       matches = all_keys.select { |k, v| k == search }

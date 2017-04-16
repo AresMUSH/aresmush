@@ -1,7 +1,6 @@
 ---
 summary: Reading BBS messages.
 toc: Bulletin Boards
-aliases: 
 ---
 # BBS - Reading Boards
 
