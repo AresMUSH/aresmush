@@ -12,6 +12,11 @@ module AresMUSH
           elsif (Login.wants_announce(other_char, char))
             other_client.emit_ooc t('login.announce_char_connected', :name => char.name)
           end
+          
+          Global.dispatcher.queue_timer(1, "Login notices", client) do 
+            template = NoticesTemplate.new(event.char)
+            client.emit template.render
+          end
         end
       end
     end

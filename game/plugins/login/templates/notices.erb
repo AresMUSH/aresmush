@@ -1,10 +1,10 @@
 <%= line %>
-%xh<%= center( t('notices.notices_title'), 78 ) %>%xn
+%xh<%= center( t('login.notices_title'), 78 ) %>%xn
 %l2
 <%= mail %>
 <% alts.each do |a| %>
 <% if has_alt_mail(a) %>
-<%= t('notices.alt_unread_mail', :name => a.name) %>
+<%= t('login.alt_unread_mail', :name => a.name) %>
 <% end %>
 <% end %>
 <%= bbs %>
@@ -15,7 +15,7 @@
 <% end %>
 
 %l2
-%xh<%= center( t('notices.upcoming_events_title'), 78 ) %>%xn
+%xh<%= center( t('login.upcoming_events_title'), 78 ) %>%xn
 %l2
 <% events.each do |ev| %>
 <%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)

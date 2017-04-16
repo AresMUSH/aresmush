@@ -27,7 +27,6 @@ module AresMUSH
         "mail", 
         "manage", 
         "maps", 
-        "notices", 
         "ooctime", 
         "page", 
         "places",

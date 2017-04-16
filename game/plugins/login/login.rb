@@ -17,6 +17,7 @@ load "lib/tos_cmd.rb"
 load "lib/tour_cmd.rb"
 load "lib/watch_cmd.rb"
 load "login_api.rb"
+load "templates/notices_template.rb"
 
 module AresMUSH
   module Login

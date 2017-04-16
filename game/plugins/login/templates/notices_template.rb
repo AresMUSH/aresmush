@@ -1,5 +1,5 @@
 module AresMUSH
-  module Notices
+  module Login
     class NoticesTemplate < ErbTemplateRenderer
 
       attr_accessor :char
@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def mail
-        @char.has_unread_mail? ? t('notices.unread_mail') : t('notices.no_unread_mail')
+        @char.has_unread_mail? ? t('login.unread_mail') : t('login.no_unread_mail')
       end
       
       def alts
@@ -22,13 +22,13 @@ module AresMUSH
       end
       
       def bbs
-        @char.has_unread_bbs? ? t('notices.unread_bbs') : t('notices.no_unread_bbs')
+        @char.has_unread_bbs? ? t('login.unread_bbs') : t('login.no_unread_bbs')
       end
       
       def jobs_or_requests
-        return t('notices.unread_requests') if @char.has_unread_requests?
-        return t('notices.unread_jobs') if @char.has_unread_jobs?
-        return t('notices.no_unread_requests')
+        return t('login.unread_requests') if @char.has_unread_requests?
+        return t('login.unread_jobs') if @char.has_unread_jobs?
+        return t('login.no_unread_requests')
       end
       
       def approval_notice
