@@ -1,9 +1,6 @@
 ---
 toc: Descriptions
 summary: Descriptions.
-categories:
-- builder
-- main
 aliases:
 - desc
 - describe

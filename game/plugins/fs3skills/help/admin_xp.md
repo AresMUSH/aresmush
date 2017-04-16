@@ -1,8 +1,6 @@
 ---
 toc: FS3
 summary: Experience points.
-categories:
-- admin
 ---
 Admins can give bonus XP.
 

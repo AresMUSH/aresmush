@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Character sheets.
-categories:
-- main
 ---
 The `sheet` command lets you view your character sheet, showing your abilities.
 

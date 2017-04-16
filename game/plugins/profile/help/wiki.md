@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Jump-start your character's wiki page.
-categories:
-- main
 ---
 The wiki command is intended to help you create your character's wiki page.  
 

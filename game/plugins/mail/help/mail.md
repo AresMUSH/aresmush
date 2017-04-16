@@ -2,8 +2,6 @@
 toc: Mail
 summary: In-game mail system.
 order: 1
-categories:
-- main
 aliases: 
 ---
 The **Mail System** lets you send messages to players who are not online, similiar to email.

@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Groups and affiliations.
-categories:
-- main
 aliases:
 - group
 - org

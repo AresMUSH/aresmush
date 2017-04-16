@@ -2,8 +2,6 @@
 toc: 1 - Getting Started
 summary: Creating, connecting and managing passwords.
 order: 1
-categories:
-- main
 aliases:
 - create
 - connect

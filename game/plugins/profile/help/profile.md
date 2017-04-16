@@ -1,8 +1,6 @@
 ---
 toc: Community
 summary: OOC profile information
-categories:
-- main
 aliases:
 - info
 - finger

@@ -1,8 +1,6 @@
 ---
 toc: Approvals
 summary: Approving and rejecting characters.
-categories:
-- admin
 aliases:
 - submit
 - approve

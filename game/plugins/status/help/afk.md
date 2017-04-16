@@ -1,8 +1,6 @@
 ---
 toc: Status
 summary: Going AFK.
-categories:
-- main
 aliases:
 - idle
 - away

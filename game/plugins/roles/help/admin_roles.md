@@ -1,8 +1,6 @@
 ---
 toc: Roles
 summary: Configuring roles and the admin list.
-categories:
-- admin
 aliases:
 - adminnote
 ---

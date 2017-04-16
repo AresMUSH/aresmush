@@ -1,8 +1,6 @@
 ---
 toc: Misc
 summary: Set up OOC time information.
-categories:
-- main
 aliases:
 - ooctime
 - timezone

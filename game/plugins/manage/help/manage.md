@@ -1,8 +1,6 @@
 ---
 toc: Code Management
 summary: Managing plugins and config.
-categories:
-- admin
 aliases:
 - load
 - unload

@@ -1,8 +1,6 @@
 ---
 toc: Player Management
 summary: Going on and off duty.
-categories:
-- admin
 aliases:
 - duty
 ---

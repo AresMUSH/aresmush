@@ -1,8 +1,6 @@
 ---
 toc: Getting Around
 summary: Meeting up for roleplay.
-categories:
-- main
 aliases:
 - meetme
 ---

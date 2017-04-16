@@ -1,8 +1,6 @@
 ---
 toc: Mail
 summary: Composing mail messages in drafts.
-categories:
-- main
 ---
 Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
 

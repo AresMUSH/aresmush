@@ -1,8 +1,6 @@
 ---
 toc: Mail
 summary: Reviewing sent mail.
-categories:
-- main
 aliases:
 - recall
 - unsend

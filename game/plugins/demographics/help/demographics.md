@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Setting basic character info.
-categories:
-- main
 aliases:
 - fullname
 - gender

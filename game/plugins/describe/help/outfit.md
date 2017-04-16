@@ -1,8 +1,6 @@
 ---
 toc: Descriptions
 summary: Your character's wardrobe.
-categories:
-- main
 aliases:
 - wear
 - outfit

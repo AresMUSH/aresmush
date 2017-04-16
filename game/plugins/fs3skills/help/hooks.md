@@ -1,8 +1,6 @@
 ---
 toc: FS3
 summary: Character RP Hooks
-categories:
-- main
 aliases:
 - hooks
 ---

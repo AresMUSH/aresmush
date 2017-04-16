@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Military/paramilitary ranks.
-categories:
-- main
 aliases:
 - rank
 ---

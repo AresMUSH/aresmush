@@ -1,8 +1,6 @@
 ---
 toc: 1 - Getting Started
 summary: Character creation walkthrough.
-categories:
-- main
 ---
 Character creation (aka chargen) here works a little differently than what you might be used to from other games.  Instead of being a series of rooms, it is a multi-step tutorial that guides you through the necessary setup.  
 

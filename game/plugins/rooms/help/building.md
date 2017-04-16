@@ -1,9 +1,6 @@
 ---
 toc: Grid
 summary: Building the grid.
-categories:
-- admin
-- builder
 aliases:
 - build
 - open

@@ -1,8 +1,6 @@
 ---
 toc: Communicating
 summary: Private chat messages.
-categories:
-- main
 aliases:
 - tell
 - pm

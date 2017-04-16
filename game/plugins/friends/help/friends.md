@@ -1,8 +1,6 @@
 ---
 toc: Community
 summary: Interacting with your friends.
-categories:
-- main
 aliases:
 - friend
 ---

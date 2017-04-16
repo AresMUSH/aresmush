@@ -1,8 +1,6 @@
 ---
 toc: Player Management
 summary: Managing player login info.
-categories:
-- admin
 aliases:
 - password
 - name

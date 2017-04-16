@@ -1,8 +1,6 @@
 ---
 toc: FS3 Combat
 summary: Weapons, armor and vehicles.
-categories:
-- main
 aliases:
 - gear
 - vehicles

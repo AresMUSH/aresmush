@@ -1,8 +1,6 @@
 ---
 toc: Code Management
 summary: Examining and manipulating the database.
-categories:
-- admin
 aliases:
 - examine
 - rename

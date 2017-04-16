@@ -1,8 +1,6 @@
 ---
 toc: Communicating
 summary: Asking for help from the admin.
-categories:
-- main
 aliases:
 - request
 ---

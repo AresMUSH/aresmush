@@ -1,8 +1,6 @@
 ---
 toc: Code Management
 summary: Custom code snippets
-categories:
-- admin
 ---
 The tinker command can be used to run custom code snippets.  For example, let's say you really quickly wanted to find all the characters whose names start with "G".  There's no admin command for that, but you can whip up a quick tinker for it.
 

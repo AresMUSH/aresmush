@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Skills System.
-categories:
-- main
 aliases:
 - reset
 - language

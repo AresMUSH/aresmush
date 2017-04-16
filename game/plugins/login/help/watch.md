@@ -1,8 +1,6 @@
 ---
 toc: Misc
 summary: Configure what connection messages you see.
-categories:
-- main
 aliases:
 - spam
 ---

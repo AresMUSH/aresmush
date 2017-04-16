@@ -1,8 +1,6 @@
 ---
 toc: Descriptions
 summary: Expand your description with separate details.
-categories:
-- main
 aliases:
 - detail
 ---

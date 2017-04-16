@@ -1,8 +1,6 @@
 ---
 toc: Descriptions
 summary: A quick look at people.
-categories:
-- main
 ---
 The `glance` command gives you a quick summary of everyone in the room.
 

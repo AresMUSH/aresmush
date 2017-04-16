@@ -1,8 +1,6 @@
 ---
 toc: Game Management
 summary: Dealing with troublesome players.
-categories:
-- admin
 aliases:
 - boot
 - findsite

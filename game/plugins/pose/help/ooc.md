@@ -1,8 +1,6 @@
 ---
 toc: Communicating
 summary: OOC Asides.
-categories:
-- main
 aliases:
 - sooc
 ---

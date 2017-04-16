@@ -1,8 +1,6 @@
 ---
 toc: Misc
 summary: Separating RP in a scene.
-categories:
-- main
 aliases:
 - tables
 ---

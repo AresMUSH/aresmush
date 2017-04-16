@@ -1,8 +1,6 @@
 ---
 toc: FS3 Combat
 summary: Combat damage and healing.
-categories:
-- main
 aliases:
 - damage
 - treat

@@ -1,8 +1,6 @@
 ---
 toc: Status
 summary: Going onstage (IC).
-categories:
-- main
 aliases:
 - ic
 - stuck

@@ -1,8 +1,6 @@
 ---
 toc: Community
 summary: Seeing who's online.
-categories:
-- main
 aliases:
 - who
 - where

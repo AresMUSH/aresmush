@@ -1,8 +1,6 @@
 ---
 toc: Descriptions
 summary: Looking around.
-categories:
-- main
 aliases:
 - adesc
 ---

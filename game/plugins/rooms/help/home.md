@@ -1,8 +1,6 @@
 ---
 toc: Getting Around
 summary: Get home.
-categories:
-- main
 aliases:
 - work
 ---

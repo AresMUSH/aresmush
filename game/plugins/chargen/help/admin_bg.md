@@ -1,8 +1,6 @@
 ---
 toc: Approvals
 summary: Managing backgrounds.
-categories:
-- admin
 ---
 Admins can view and edit other character backgrounds, in case you need to make simple tweaks during the approval process.
 

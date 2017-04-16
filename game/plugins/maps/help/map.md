@@ -1,8 +1,6 @@
 ---
 toc: Getting Around
 summary: Finding your way around.
-categories:
-- main
 aliases:
 - maps
 ---

@@ -1,8 +1,6 @@
 ---
 toc: Communicating
 summary: Making poses and emits more readable.
-categories:
-- main
 aliases:
 - autospace
 - saycolor

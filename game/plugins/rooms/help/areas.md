@@ -1,9 +1,6 @@
 ---
 toc: Grid
 summary: Areas and coordinates.
-categories:
-- admin
-- builder
 aliases:
 - area
 - grid

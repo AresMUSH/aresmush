@@ -1,8 +1,6 @@
 ---
 toc: FS3 Combat
 summary: Run-down of all combat actions.
-categories:
-- main
 aliases:
 - actions
 ---

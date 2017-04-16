@@ -2,8 +2,6 @@
 toc: Getting Around
 summary: Getting around the grid.
 order: 1
-categories:
-- main
 aliases:
 - getting around
 - go

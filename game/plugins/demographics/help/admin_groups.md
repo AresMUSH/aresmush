@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Groups and affiliations.
-categories:
-- admin
 ---
 Admins can set other people's group information.
 

@@ -1,8 +1,6 @@
 ---
 toc: FS3
 summary: Lucky breaks.
-categories:
-- admin
 ---
 Admins can award luck points.
 

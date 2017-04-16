@@ -1,8 +1,6 @@
 ---
 toc: Misc
 summary: Set your email.
-categories:
-- main
 ---
 You can associate an email address with your account, to enable admin to contact you.  This is optional, but can be helpful if the game ever goes down, or if you can't log in for awhile (so you don't get idled out).  Your email is not displayed on your public profile.
 

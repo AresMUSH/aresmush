@@ -1,8 +1,6 @@
 ---
 toc: Communicating
 summary: Talking to the people around you.
-categories:
-- main
 aliases:
 - pose
 - say

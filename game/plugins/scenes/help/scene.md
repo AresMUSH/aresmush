@@ -1,8 +1,6 @@
 ---
 toc: Scenes
 summary: Starting scenes.
-categories:
-- main
 aliases:
 - scenes
 ---

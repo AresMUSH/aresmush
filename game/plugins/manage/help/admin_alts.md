@@ -1,8 +1,6 @@
 ---
 toc: Game Management
 summary: Finding potential alts.
-categories:
-- admin
 ---
 AresMUSH considers "alts" as characters who are linked to a %xhplayer handle%xn (help handles).   Since handles are optional, your game may need other ways for you to declare if you have multiple characters (a request or wiki page, for instance.)
 

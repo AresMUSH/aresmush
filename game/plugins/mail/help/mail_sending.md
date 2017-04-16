@@ -1,8 +1,6 @@
 ---
 toc: Mail
 summary: Sending mail.
-categories:
-- main
 aliases:
 - reply
 - forward

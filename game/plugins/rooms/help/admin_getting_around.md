@@ -1,9 +1,6 @@
 ---
 toc: Grid
 summary: Getting around the grid.
-categories:
-- admin
-- builder
 aliases:
 - teleport
 - join

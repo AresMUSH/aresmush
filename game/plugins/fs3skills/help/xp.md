@@ -1,8 +1,6 @@
 ---
 toc: FS3
 summary: Experience points.
-categories:
-- main
 aliases:
 - experience
 - improvement

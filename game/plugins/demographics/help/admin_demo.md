@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Setting demographics.
-categories:
-- admin
 aliases:
 - fullname
 - gender

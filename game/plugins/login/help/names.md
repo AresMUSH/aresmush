@@ -1,8 +1,6 @@
 ---
 toc: Misc
 summary: Character names and aliases.
-categories:
-- main
 aliases:
 - alias
 - nickname

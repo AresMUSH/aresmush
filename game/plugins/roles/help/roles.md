@@ -1,8 +1,6 @@
 ---
 toc: Roles
 summary: Assigning permissions.
-categories:
-- admin
 aliases:
 - role
 - permission

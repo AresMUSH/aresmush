@@ -1,8 +1,6 @@
 ---
 toc: Misc
 summary: Backing up your character.
-categories:
-- main
 aliases:
 - dec
 - decompile

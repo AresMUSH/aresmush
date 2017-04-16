@@ -1,8 +1,6 @@
 ---
 toc: Status
 summary: Designating a character as an OOC-only 'player bit'.
-categories:
-- main
 ---
 Sometimes players like to make a character just for OOC purposes, to keep page and channel chatter away from their PCs.  These are called `Player Bits`.   Often a player bit's will mirror their handle name (help handles).  
 

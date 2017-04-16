@@ -1,8 +1,6 @@
 ---
 toc: 1 - Getting Started
 summary: Game Administration.
-categories:
-- main
 aliases:
 - staff
 ---

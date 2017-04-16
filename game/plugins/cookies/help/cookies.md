@@ -1,8 +1,6 @@
 ---
 toc: Community
 summary: Rewarding your fellow players.
-categories:
-- main
 aliases:
 - cookie
 - nom

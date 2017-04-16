@@ -1,8 +1,6 @@
 ---
 toc: Player Management
 summary: Managing jobs and requests.
-categories:
-- admin
 aliases:
 - job
 - requests

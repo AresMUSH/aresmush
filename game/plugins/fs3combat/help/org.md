@@ -1,9 +1,6 @@
 ---
 toc: FS3 Combat
 summary: Commands for combat organizers.
-categories:
-- main
-- admin
 ---
 This is a quick reference for combat organizer commands.  For more details on FS3, see `help combat`.
 

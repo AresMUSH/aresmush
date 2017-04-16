@@ -1,8 +1,6 @@
 ---
 toc: Getting Around
 summary: Managing maps.
-categories:
-- admin
 aliases:
 - maps
 ---

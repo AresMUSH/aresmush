@@ -1,8 +1,6 @@
 ---
 toc: Character Creation
 summary: Managing the roster.
-categories:
-- admin
 ---
 These commands allow you to manage the character roster.
 

@@ -1,8 +1,6 @@
 ---
 toc: FS3 Combat
 summary: Using luck in combat.
-categories:
-- main
 aliases:
 - hero
 ---

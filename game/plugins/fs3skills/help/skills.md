@@ -1,8 +1,6 @@
 ---
 toc: FS3
 summary: Skills System.
-categories:
-- main
 aliases:
 - fs3
 - skill

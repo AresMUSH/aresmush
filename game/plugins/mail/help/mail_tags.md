@@ -1,8 +1,6 @@
 ---
 toc: Mail
 summary: Organizing your mail.
-categories:
-- main
 aliases:
 - mail tag
 - mail sent
