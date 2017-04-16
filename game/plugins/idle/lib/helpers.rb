@@ -3,7 +3,29 @@ module AresMUSH
     def self.can_idle_sweep?(actor)
       actor.has_permission?("idle_sweep")
     end
-
+    
+    def self.can_manage_roster?(actor)
+      actor.has_permission?("manage_roster")
+    end
+    
+    def self.create_or_update_roster(client, enactor, name, contact)
+      ClassTargetFinder.with_a_character(name, client, enactor) do |model|
+        Idle.add_to_roster(model, contact)
+        client.emit_success t('idle.roster_updated')
+      end
+    end
+    
+    def self.add_to_roster(char, contact = nil)
+      registry = char.get_or_create_roster_registry
+      registry.update(contact: contact || Global.read_config("idle", "default_contact"))
+      Login::Api.set_random_password(char)
+    end
+    
+    def self.remove_from_roster(char)
+      if (char.roster_registry)
+        char.roster_registry.delete
+      end
+    end
     def self.is_exempt?(actor)
       actor.has_permission?("idle_exempt")
     end

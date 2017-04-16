@@ -40,7 +40,7 @@ module AresMUSH
               idle_char.delete
             when "Roster"
               Global.logger.debug "#{idle_char.name} added to roster."
-              Roster::Api.add_to_roster(idle_char)
+              Idle.add_to_roster(idle_char)
             when "Npc"
               idle_char.update(is_npc: true)
               Login::Api.set_random_password(idle_char)
@@ -57,7 +57,7 @@ module AresMUSH
                 idle_char.idle_status.delete
               end
               # Remove them from the roster.
-              Roster::Api.remove_from_roster(idle_char)
+              Idle.remove_from_roster(idle_char)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
               idle_status = idle_char.get_or_create_idle_status

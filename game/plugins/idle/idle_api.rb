@@ -6,6 +6,10 @@ module AresMUSH
       self.idle_status
     end
     
+    def on_roster?
+      !!roster_registry
+    end
+    
     def idled_out_reason
       self.idle_status.status
     end

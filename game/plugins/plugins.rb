@@ -36,7 +36,6 @@ module AresMUSH
         "ranks", 
         "roles", 
         "rooms", 
-        "roster", 
         "scenes",
         "status", 
         "tinker", 

@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module Roster
+  module Idle
     class RosterViewCmd
       include CommandHandler
       
@@ -22,7 +22,7 @@ module AresMUSH
           registry = model.roster_registry
           
           if (!registry)
-            client.emit_failure t('roster.not_on_roster', :name => model.name)
+            client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
           

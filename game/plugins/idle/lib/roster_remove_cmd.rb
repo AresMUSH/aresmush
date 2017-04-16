@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module Roster
+  module Idle
     class RosterRemoveCmd
       include CommandHandler
       
@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def check_can_remove
-        return nil if Roster.can_manage_roster?(enactor)
+        return nil if Idle.can_manage_roster?(enactor)
         return t('dispatcher.not_allowed')
       end
 
@@ -26,12 +26,12 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (!model.roster_registry)
-            client.emit_failure t('roster.not_on_roster', :name => model.name)
+            client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
 
           model.roster_registry.delete
-          client.emit_success t('roster.removed_from_roster', :name => model.name)
+          client.emit_success t('idle.removed_from_roster', :name => model.name)
         end
       end
     end

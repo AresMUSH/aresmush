@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module Roster
+  module Idle
     class RosterListCmd
       include CommandHandler
       

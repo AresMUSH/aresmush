@@ -1,7 +1,7 @@
 <%= line %>
-%xh<%= t('roster.roster_title') %>%xn
+%xh<%= t('idle.roster_title') %>%xn
 
-%xh<%= t('roster.roster_column_titles') %>%xn
+%xh<%= t('idle.roster_column_titles') %>%xn
 <% paginator.items.each do |r| %>
 <%= left( r.character.name, 32 ) -%>
 <%= left( r.character.group_value("Position"), 20 ) -%>

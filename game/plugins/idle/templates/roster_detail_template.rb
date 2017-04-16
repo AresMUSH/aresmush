@@ -1,5 +1,5 @@
 module AresMUSH
-  module Roster
+  module Idle
     class RosterDetailTemplate < ErbTemplateRenderer
 
 

@@ -10,7 +10,14 @@ load "lib/idle_remove_cmd.rb"
 load "lib/idle_set_cmd.rb"
 load "lib/idle_start_cmd.rb"
 load "lib/lastwill_cmd.rb"
+load "lib/roster_add_cmd.rb"
+load "lib/roster_claim_cmd.rb"
+load "lib/roster_list_cmd.rb"
+load "lib/roster_remove_cmd.rb"
+load "lib/roster_view_cmd.rb"
 load "templates/idle_queue_template.rb"
+load "templates/roster_list_template.rb"
+load "templates/roster_detail_template.rb"
 
 module AresMUSH
   module Idle
@@ -60,6 +67,21 @@ module AresMUSH
         end
       when "lastwill"
         return LastWillCmd
+      when "roster"
+        case cmd.switch
+        when "add", "update"
+          return RosterAddCmd
+        when "claim"
+          return RosterClaimCmd
+        when "remove"
+          return RosterRemoveCmd
+        when nil
+          if (cmd.args)
+            return RosterViewCmd
+          else
+            return RosterListCmd
+          end
+        end
       end
        
       nil

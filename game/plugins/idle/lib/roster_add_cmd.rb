@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module Roster
+  module Idle
     class RosterAddCmd
       include CommandHandler
       
@@ -20,12 +20,12 @@ module AresMUSH
       end
       
       def check_can_add
-        return nil if Roster.can_manage_roster?(enactor)
+        return nil if Idle.can_manage_roster?(enactor)
         return t('dispatcher.not_allowed')
       end
 
       def handle
-        Roster.create_or_update_roster(client, enactor, self.name, self.contact)
+        Idle.create_or_update_roster(client, enactor, self.name, self.contact)
       end
     end
   end

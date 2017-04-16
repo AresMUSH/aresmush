@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module Roster
+  module Idle
     class RosterClaimCmd
       include CommandHandler
       
@@ -29,22 +29,22 @@ module AresMUSH
         
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (!model.roster_registry)
-            client.emit_failure t('roster.not_on_roster', :name => model.name)
+            client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
 
           password = Login::Api.set_random_password(model)
           model.roster_registry.delete
           
-          client.emit_success t('roster.roster_claimed', :name => model.name, :password => password)
+          client.emit_success t('idle.roster_claimed', :name => model.name, :password => password)
           
-          bbs = Global.read_config("roster", "arrivals_board")
+          bbs = Global.read_config("idle", "arrivals_board")
           return if !bbs
           return if bbs.blank?
         
           Bbs::Api.post(bbs, 
-            t('roster.roster_bbs_subject'), 
-            t('roster.roster_bbs_body', :name => model.name), 
+            t('idle.roster_bbs_subject'), 
+            t('idle.roster_bbs_body', :name => model.name), 
             Game.master.system_character)
         end
       end
