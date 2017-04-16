@@ -74,6 +74,7 @@ module AresMUSH
       end
       
       def format_damage(c)
+        return "%xh%xr#{t('fs3combat.ko_status')}%xn" if c.is_ko
         FS3Combat.print_damage(c.total_damage_mod)
       end
       
