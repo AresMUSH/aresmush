@@ -2,6 +2,12 @@ module AresMUSH
   module Pose
     def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil)
       room = enactor.room
+      
+      if (is_ooc)
+        color = Global.read_config("pose", "ooc_color")
+        pose = "#{color}<OOC>%xn #{pose}"
+      end
+      
       Global.client_monitor.logged_in.each do |client, char|
         next if char.room != enactor.room
         client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc, place_name)

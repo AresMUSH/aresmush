@@ -72,6 +72,8 @@ module AresMUSH
       if (cmd.raw.start_with?("\"") ||
           cmd.raw.start_with?("\\") ||
           cmd.raw.start_with?(":") ||
+          cmd.raw.start_with?("'") ||
+          cmd.raw.start_with?(">") ||
           cmd.raw.start_with?(";"))
         return PoseCatcherCmd
       end

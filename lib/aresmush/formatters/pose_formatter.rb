@@ -13,6 +13,10 @@ module AresMUSH
         msg.rest("\\ ")
       elsif msg.start_with?("\\")
         msg.rest("\\")
+      elsif msg.start_with?("'")
+        self.format name, msg.rest("'")
+      elsif msg.start_with?(">")
+        self.format name, msg.rest(">")
       else
         t('object.say', :name => name, :msg => msg)
       end

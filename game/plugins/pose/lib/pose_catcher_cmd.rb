@@ -5,7 +5,9 @@ module AresMUSH
            
       def handle
         message = PoseFormatter.format(enactor_name, cmd.raw)
-        Pose.emit_pose(enactor, message, cmd.raw.start_with?("\\"), false)
+        is_emit = cmd.raw.start_with?("\\")
+        is_ooc = cmd.raw.start_with?("'") || cmd.raw.start_with?(">")
+        Pose.emit_pose(enactor, message, is_emit, is_ooc)
       end
 
       def log_command

@@ -34,6 +34,7 @@ module AresMUSH
           Login.stub(:update_site_info) {}
           @login_events = CharConnectedEventHandler.new
           @room_client.stub(:emit_success)
+          dispatcher.stub(:queue_timer)
         end
         
         it "should update the site info" do

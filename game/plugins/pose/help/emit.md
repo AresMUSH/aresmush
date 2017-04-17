@@ -6,12 +6,13 @@ aliases:
 ---
 # Emits
 
-Emits allow you to send messages to the room you're in.  There are a variety of commands that will 
+Emits allow you to send messages to the room you're in.  There are several commands to emit, some of which add your character's name and other text to the message automatically as a convenience.
 
 `say Hello!` or `"Hello!` - Bob says, "Hello!"
 `pose waves.` or `:waves.` - Bob waves.
 `;'s hair is black.` - Bob's hair is black.
 `emit Go Bob!` or `\Go Bob!` - Go Bob!
+`ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
 
 ## Private Emits
 
