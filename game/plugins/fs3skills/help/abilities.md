@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: FS3 Skills
 summary: Skills System.
 aliases:
 - reset
@@ -14,6 +14,8 @@ aliases:
 - specialties
 - advantages
 ---
+# FS3 - Abilities
+
 The FS3 Abilities commands are used to set yourself up during character creation.  For more help with abilities, see http://aresmush.com/fs3/fs3-3/chargen/.
 
 To get started, or at any point you wish to reset yourself, use the reset command.

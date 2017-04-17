@@ -5,6 +5,8 @@ aliases:
 - ic
 - stuck
 ---
+# Onstage
+
 The onstage command is used to travel to the IC zone of the grid for RP.
 
 `onstage` - Travels to the IC area.

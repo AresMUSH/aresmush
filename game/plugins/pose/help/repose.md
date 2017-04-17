@@ -1,7 +1,11 @@
 ---
-toc: Communicating
-summary: Catching up on poses you missed.
+toc: Posing
+summary: Pose order and repose.
+aliases:
+- po
 ---
+# Repose
+
 The repose system keeps track of poses so you can catch up on what you've missed.  Pose order tracking is a tool to help you keep track of whose turn it is.  It is **not** intended to be a strict restriction on who's allowed to pose.  Use any order you like in a given scene.
 
 `repose` - View catchup poses.

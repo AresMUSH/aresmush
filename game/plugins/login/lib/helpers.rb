@@ -2,11 +2,11 @@ module AresMUSH
   module Login
     def self.can_access_email?(actor, model)
       return true if actor == model
-      actor.has_permission?("access_email")
+      actor.has_permission?("manage_login")
     end
     
     def self.can_reset_password?(actor)
-      actor.has_permission?("reset_password")
+      actor.has_permission?("manage_login")
     end
     
     def self.wants_announce(listener, connector)

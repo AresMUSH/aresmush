@@ -15,6 +15,7 @@ load 'web/controllers/login.rb'
 load 'web/controllers/register.rb'
 load 'web_cmd_handler.rb'
 load 'recaptcha_helper.rb'
+load 'website_cmd.rb'
 
 module AresMUSH
   module Website
@@ -33,10 +34,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [  ]
-    end
- 
     def self.config_files
       [  ]
     end
@@ -46,6 +43,10 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd, enactor)       
+      if (cmd.root == "website")
+        return WebsiteCmd
+      end
+      
       nil
     end
 

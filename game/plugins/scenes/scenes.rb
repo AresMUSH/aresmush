@@ -28,10 +28,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/scene.md", "help/scene_set.md" ]
-    end
- 
     def self.config_files
       [ "config_scenes.yml" ]
     end

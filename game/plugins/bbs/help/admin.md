@@ -1,13 +1,12 @@
 ---
 toc: Bulletin Boards
 summary: Managing bulletin boards.
-order: 98
 aliases:
 - bbwiz
 ---
 # BBS - Managing Boards
 
-> **Permission Required:** These commands require the permission: manage\_bbs
+> **Permission Required:** These commands require the Admin role or the permission: manage\_bbs
 
 Those with board privileges are create and manage boards.
 
@@ -34,7 +33,7 @@ Posting and replying to a board requires 'write' permissions.
 
 `bbs/readroles <board>=<roles that can read it, or 'everyone'>`
 `bbs/writeroles <board>=<roles that can write to it, or 'everyone'>`
-> **Permission Required:** These commands require the permission: manage\_bbs
+> **Permission Required:** These commands require the Admin role or the permission: manage\_bbs
 
 ## Archiving a Board
 

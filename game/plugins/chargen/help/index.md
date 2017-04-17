@@ -4,9 +4,11 @@ summary: Character creation walkthrough.
 ---
 # Character Creation
 
-Character creation (aka chargen) here works a little differently than what you might be used to from other games.  Instead of being a series of rooms, it is a multi-step tutorial that guides you through the necessary setup.  
+Character creation (aka chargen) here works a little differently than what you might be used to from other games.  
 
-To start chargen, type `cg/start`.  You can access the chargen commands from anywhere on the game.
+You can do chargen either on the [Web Portal](/help/website) or in-game.  They both have the same information - it's just a matter of preference.
+ 
+To start chargen in the game, type `cg/start`.  You can access the chargen commands from anywhere on the game.  The chargen tutorial will prompt you step by step.
 
 ## Quick Reference - Common Commands
 

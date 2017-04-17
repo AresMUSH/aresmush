@@ -34,10 +34,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_channels.md", "help/channels.md", "help/channel_prefs.md" ]
-    end
- 
     def self.config_files
       [ "config_channels.yml" ]
     end

@@ -18,6 +18,11 @@ module AresMUSH
         }
       end
       
+      def check_can_manage_npcs
+        return t('dispatcher.not_allowed') if !Status.can_manage_status?(enactor)
+        return nil
+      end
+      
       def check_status
         return self.option.validate
       end

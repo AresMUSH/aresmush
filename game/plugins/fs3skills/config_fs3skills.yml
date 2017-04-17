@@ -1,11 +1,4 @@
 fs3skills:
-    permissions:
-        - manage_abilities
-        - receives_roll_results
-        - manage_luck
-        - view_sheets
-        - manage_xp
-
     # How many luck points you may save up.    
     max_luck: 3
                 

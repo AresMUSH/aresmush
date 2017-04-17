@@ -27,10 +27,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/who.md" ]
-    end
- 
     def self.config_files
       [  ]
     end

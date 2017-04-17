@@ -4,7 +4,7 @@ summary: Managing approvals.
 ---
 # Managing Applications
 
-> **Permission Required:** These commands require the permission: manage\_apps
+> **Permission Required:** These commands require the Admin role or the permission: manage\_apps
 
 The application review process goes as follows:
 

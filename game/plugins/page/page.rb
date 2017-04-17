@@ -22,10 +22,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/page.md" ]
-    end
- 
     def self.config_files
       [ "config_page.yml" ]
     end

@@ -2,32 +2,17 @@ module AresMUSH
   module Manage
     def self.can_manage_game?(actor)
       return false if !actor
-      can_manage = true
-      
-      # This prevents you from getting in a situation where you mess up your role config and then
-      # can't fix it without shutting down the game.  If we can't read the roles, we warn you and
-      # just assume anyone can access management commands.
-      AresMUSH.with_error_handling(nil, "Your game configuration is not secure.  Anyone can access admin commands.") do
-        can_manage = actor.has_permission?("manage_game")
-      end
-      can_manage
-    end
-    
-    def self.can_manage_players?(actor)
-      return false if !actor
-      actor.has_permission?("manage_players")
+      actor.has_permission?("manage_game")
     end
     
     def self.can_manage_rooms?(actor)
       return false if !actor
-      actor.has_permission?("manage_rooms")
+      actor.has_permission?("build") || self.can_manage_game?(actor)
     end
     
     def self.can_manage_object?(actor, model)
       return false if !actor
-      if (model.class == Character)
-        self.can_manage_players?(actor)
-      elsif (model.class == Room || model.class == Exit)
+      if (model.class == Room || model.class == Exit)
         self.can_manage_rooms?(actor)
       else
         self.can_manage_game?(actor)

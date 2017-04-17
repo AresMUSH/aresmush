@@ -1,8 +1,4 @@
-login:
-    permissions:
-        - access_email
-        - reset_password
-    
+login:    
     # Name of the role that identifies your guests.  Must be configured in the roles system.
     guest_role: "guest"
     

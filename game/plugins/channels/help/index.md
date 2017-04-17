@@ -1,7 +1,6 @@
 ---
 toc: Channels
 summary: Public chat channels.
-order: 1
 aliases:
 - chat
 - comsys

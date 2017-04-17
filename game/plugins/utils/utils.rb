@@ -34,11 +34,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/ansi.md", "help/dice.md", "help/echo.md", "help/edit.md", "help/math.md", 
-        "help/save.md", "help/formatting.md", "help/sweep.md", "help/shortcuts.md"]
-    end
- 
     def self.config_files
       [ "config_utils.yml" ]
     end

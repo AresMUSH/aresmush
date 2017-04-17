@@ -1,7 +1,6 @@
 ---
 toc: Channels
 summary: Talking on channels.
-order: 2
 ---
 # Talking on Channels
 

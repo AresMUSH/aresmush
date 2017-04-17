@@ -27,11 +27,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_duty.md", "help/afk.md", "help/npc.md", "help/offstage.md", "help/onstage.md", 
-        "help/playerbit.md", "help/status.md" ]
-    end
- 
     def self.config_files
       [ "config_status.yml" ]
     end

@@ -36,14 +36,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_idle.md", "help/lastwill.md" ]
-    end
- 
-    def self.config_files
-      [ "config_idle.yml" ]
-    end
- 
     def self.locale_files
       [ "locales/locale_en.yml" ]
     end

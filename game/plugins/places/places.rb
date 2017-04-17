@@ -26,11 +26,7 @@ module AresMUSH
  
     def self.unload_plugin
     end
- 
-    def self.help_files
-      [ "help/places.md" ]
-    end
- 
+    
     def self.config_files
       [ "config_places.yml" ]
     end

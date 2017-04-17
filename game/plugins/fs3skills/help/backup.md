@@ -5,6 +5,8 @@ aliases:
 - dec
 - decompile
 ---
+# Character Backup
+
 Ares supports a fast-and-easy way to back up your important character information.  This includes:
 
 * Character sheet

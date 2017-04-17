@@ -36,10 +36,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_login.md", "help/email.md", "help/keepalive.md", "help/last.md", "help/login.md", "help/names.md", "help/watch.md" ]
-    end
- 
     def self.config_files
       [ "config_login.yml" ]
     end

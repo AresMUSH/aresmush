@@ -2,6 +2,13 @@ module AresMUSH
   
   class Character
     collection :bbs_read_marks, "AresMUSH::BbsReadMark"
+
+    before_delete :delete_marks
+    
+    def delete_marks
+      bbs_read_marks.each { |m| m.delete }
+    end
+
   end
   
   class BbsReadMark < Ohm::Model

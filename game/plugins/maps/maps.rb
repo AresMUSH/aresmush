@@ -23,11 +23,7 @@ module AresMUSH
  
     def self.unload_plugin
     end
- 
-    def self.help_files
-      [ "help/map.md", "help/admin_map.md" ]
-    end
- 
+    
     def self.config_files
       [ "config_maps.yml" ]
     end

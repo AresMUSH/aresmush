@@ -4,6 +4,8 @@ summary: OOC Asides.
 aliases:
 - sooc
 ---
+# OOC Asides
+
 You can make out-of-character (OOC) asides to the other room occupants.  The same pose shortcuts (", :, etc.) apply with OOC asides.  It defaults to a 'say' if you don't specify anything.
 
 `ooc Hi!` - <OOC> Bob says, "Hi!"

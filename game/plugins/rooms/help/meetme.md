@@ -1,9 +1,9 @@
 ---
 toc: Getting Around
 summary: Meeting up for roleplay.
-aliases:
-- meetme
 ---
+# Meetme
+
 The meetme command is used to hook up with other players for RP.  You can easily join another player's location or bring them to you.
 
 `meetme <list of names>` - Invites others to join you.

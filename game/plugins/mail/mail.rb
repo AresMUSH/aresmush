@@ -46,10 +46,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/mail.md", "help/mail_composition.md", "help/mail_managing.md", "help/mail_review.md", "help/mail_sending.md", "help/mail_tags.md" ]
-    end
- 
     def self.config_files
       [ "config_mail.yml" ]
     end

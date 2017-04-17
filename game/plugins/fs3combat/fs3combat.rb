@@ -102,11 +102,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/actions.md", "help/combat.md", "help/damage.md", "help/gear.md", "help/luck.md", 
-        "help/org.md", "help/hospitals.md" ]
-    end
- 
     def self.config_files
       [ "config_fs3combat.yml", "config_fs3combat_armor.yml", "config_fs3combat_damage.yml", 
         "config_fs3combat_hitloc.yml", "config_fs3combat_vehicles.yml", "config_fs3combat_weapons.yml",

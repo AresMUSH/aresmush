@@ -24,10 +24,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/time.md" ]
-    end
- 
     def self.config_files
       [ "config_time.yml" ]
     end

@@ -1,11 +1,10 @@
 ---
 toc: Channels
 summary: Managing channels.
-order: 98
 ---
 # Managing Channels
 
-> **Permission Required:** These commands require the permission: manage\_channels
+> **Permission Required:** These commands require the Admin role or the permission: manage\_channels
 
 ## Creating and Deleting Channels
 
