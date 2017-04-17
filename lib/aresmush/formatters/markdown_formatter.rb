@@ -88,7 +88,7 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
   end
 
   def header(text, header_level)
-    line = "-" * (text.length + 5)
+    line = "-" * (text.length)
     "\n%xh#{text}%xn\n#{line}\n"
   end
 

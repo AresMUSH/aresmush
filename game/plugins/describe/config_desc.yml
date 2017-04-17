@@ -1,8 +1,4 @@
 describe:
-    permissions:
-        - desc_places
-        - desc_anything
-
     shortcuts:
         "l": "look"
         "desc": "describe"

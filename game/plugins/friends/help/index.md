@@ -1,9 +1,9 @@
 ---
 toc: Community
 summary: Interacting with your friends.
-aliases:
-- friend
 ---
+# Friends
+
 The Friends system helps you to interact with people you have designated as your friends.
 
 `friends` - Shows your friends list.

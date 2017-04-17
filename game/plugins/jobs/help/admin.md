@@ -1,11 +1,9 @@
 ---
-toc: Managing Characters
-summary: Managing jobs and requests.
-aliases:
-- job
-- requests
-- request
+toc: Jobs
+summary: Managing jobs.
 ---
+# Managing Jobs
+
 The Jobs system allows you to track admin work assignments.
 
 `jobs` - Lists active jobs.

@@ -2,6 +2,8 @@
 toc: FS3 Combat
 summary: Combat overview.
 ---
+# FS3 Combat
+
 The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more help, see http://aresmush.com/fs3/fs3-3/combat-quickref/.
 
 `combat/start` or `combat/start mock` - Starts a combat. (Organizer only)
@@ -27,4 +29,15 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/attack <target>` - Attack someone.
 `combat/pass` - Pass this turn.
 
+`combat/hero` - Spends a luck point to un-KO yourself.
+`combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
+
 **You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, +combat/pass Bob=**
+
+## Topics
+
+[Actions](/help/fs3combat/actions)
+[Damage](/help/fs3combat/damage)
+[Gear](/help/fs3combat/gear)
+[Luck](/help/fs3combat/luck)
+[Organizing](/help/fs3combat/org)

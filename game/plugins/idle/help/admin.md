@@ -4,7 +4,9 @@ summary: Idle sweeping old characters.
 ---
 The idle system lets you sweep the database for players who haven't logged in for awhile, so you can decide what to do with them.
 
-We recommend that idled-out players be kept around *if* they've been approved.  Why?  Well, they're part of the IC world.  They might come back, and allowing their name to be re-used could mess up the game wiki references.  Database space should not be an issue unless your game is ginormous. (If it is, you can always purge people later.)
+We recommend that idled-out players be kept around *if* they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used could mess up the game wiki references.  Database space should not be an issue unless your game is ginormous. (If it is, you can always purge people later.)
+
+## Idle Sweep
 
 There are several idle actions available:
 
@@ -26,3 +28,11 @@ There are several idle actions available:
 `idle/set <name>=<status>` - Sets someone's status without running through the idle queue 
     or making a post.  Status can only be Gone, Dead or Nothing.  There are separate commands
     for putting someone on/off the roster (help roster) or making them a NPC (help npc).
+
+## Roster
+
+`roster/add <name>=<contact>` - Adds someone to the roster.  Contact is optional.
+`roster/update <name>=<contact>` - Updates contact info on roster.  
+        Leave blank to clear.
+`roster/remove <name>` - Removes someone from the roster.
+

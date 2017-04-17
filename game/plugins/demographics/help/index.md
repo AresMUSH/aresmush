@@ -18,7 +18,7 @@ aliases:
 
 Demographics commands are used to set your basic character info.  Some items may not be changed after your character has been approved.
 
-## Command Quick Reference
+## Quick Reference - Common Commands
 
 `fullname <name>`
 `gender <male/female/other>`

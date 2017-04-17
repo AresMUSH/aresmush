@@ -1,5 +1,5 @@
 ---
-toc: Utilities
+toc: Miscellaneous
 summary: Asides to yourself.
 aliases:
 - think

@@ -1,5 +1,5 @@
 ---
-toc: Utilities
+toc: Miscellaneous
 summary: Rolling random dice.
 aliases:
 - coinflip

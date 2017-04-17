@@ -1,5 +1,5 @@
 ---
-toc: Utilities
+toc: Miscellaneous
 summary: Easily grab and edit text from the game.
 aliases:
 - grab

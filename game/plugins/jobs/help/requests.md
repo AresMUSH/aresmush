@@ -1,9 +1,9 @@
 ---
-toc: Communicating
+toc: Jobs
 summary: Asking for help from the admin.
-aliases:
-- request
 ---
+# Requests
+
 The Request system is used to submit requests to the admins. You can track the status of your request, as well as who it's assigned to.
 
 `request <title>=<description>` - Submits a request

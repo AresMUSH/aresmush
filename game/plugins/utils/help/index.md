@@ -1,5 +1,5 @@
 ---
-toc: Utilities
+toc: Miscellaneous
 summary: Helpful utilities.
 ---
 The Utilities plugin contains a variety of miscellaneous tools to help you out while playing.  It includes:

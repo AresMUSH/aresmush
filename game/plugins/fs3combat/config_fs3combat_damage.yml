@@ -1,8 +1,4 @@
 fs3combat:
-    permissions:
-        - manage_damage
-        - setup_hospitals
-            
     # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
     # Comment out any items you aren't using; don't just leave them blank.
     healing_cron:

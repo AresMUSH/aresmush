@@ -6,6 +6,7 @@ module AresMUSH
       attr_accessor :name, :num, :desc, :severity
       
       def parse_args
+        # char/damage#=desc/severity
         args = cmd.parse_args(/(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=(?<arg3>[^\/]+)\/(?<arg4>.+)/)
         self.name = titlecase_arg(args.arg1)
         self.num = integer_arg(args.arg2)

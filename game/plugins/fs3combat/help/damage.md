@@ -2,22 +2,27 @@
 toc: FS3 Combat
 summary: Combat damage and healing.
 aliases:
-- damage
 - treat
 - heal
 - healing
 - hospitals
 ---
-This is a quick reference for the combat damage commands. For more details on FS3, see `help combat`.
+# FS3 Combat - Damage
+
+This is a quick reference for the combat damage commands.
  
 `damage` - Views your damage. 
 `damage <name>` - Views someone else's damage.
 
 Note that the healing progress bar on the damage display just shows how close you are to reducing the wound by one level. 
 
+## Treating
+
 For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound.  Inside combat, you use `combat/treat <name>` instead.
 
 `treat <name>` - Treats someone's wounds with immediate first aid.
+
+## Healing
 
 For more longer-term healing, doctors/healers can use the heal command.  You will continue healing someone until they are well.  
 
@@ -25,6 +30,20 @@ For more longer-term healing, doctors/healers can use the heal command.  You wil
 `heal/start <name>` - Removes a patient.
 `heal/list` - Shows your patients.
 
-When a room is marked as a hospital, people who are there heal faster.
+## Hospitals
+
+When a room is marked as a hospital, people who are there heal faster.  
 
 `hospitals` - Finds hospitals.
+
+Admins or builders with the `setup_hospitals` permission can designate rooms as hospitals.
+
+`hospital/on` or `hospital/off`- Makes the current room a hospital or not.
+
+## Adjusting Damage
+
+Admins, combat organizers, and characters with the manage_damage permission can add or modify damage.
+
+`damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
+`damage/modify <name>/<damage #>=<description>/<severity>` - Modifies damage.
+`damage/delete <name>/<damage #>` - Deletes damage.

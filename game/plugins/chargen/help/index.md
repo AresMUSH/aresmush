@@ -8,17 +8,11 @@ Character creation (aka chargen) here works a little differently than what you m
 
 To start chargen, type `cg/start`.  You can access the chargen commands from anywhere on the game.
 
-## Command Quick Reference
+## Quick Reference - Common Commands
 
 `chargen/start` - Starts chargen.
 `cg/next` and `cg/prev` - Navigates the stages in chargen.
 `cg` - View the current chargen page again.
-`bg` - View your background.
-`bg/set <background>` - Sets your background.
-`bg/edit` - Grabs the existing background text into your input buffer.
-`app` - Shows a summary of your character application and any issues.
-`app/submit` - Submits your application.
-`app/unsubmit` - Un-submit your application.
 
 ## Topics
 

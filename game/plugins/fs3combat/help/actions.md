@@ -1,10 +1,10 @@
 ---
 toc: FS3 Combat
 summary: Run-down of all combat actions.
-aliases:
-- actions
 ---
-This is a quick reference for combat action commands.  For more details on FS3, see `help combat`.
+# FS3 Combat - Actions
+
+This is a quick reference for combat action commands.
 
 `combat/attack <target>[/<specials, see below>]`
 

@@ -2,6 +2,8 @@
 toc: Character Creation
 summary: Pre-made characters.
 ---
+# Roster
+
 The roster system allows you to jump into RP more quickly with a ready-made character with ties to other players. Some characters have been pre-played, while others are former NPCs.
 
 `roster` - Views a list of rostered characters.

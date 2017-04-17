@@ -3,13 +3,22 @@ toc: Descriptions
 summary: Looking around.
 aliases:
 - adesc
+- glance
 ---
-The `look` command is used to look around.
+# Looking Around
+
+The `look` command is used to look around.  You can also look at a particular object or a detail on an object.
 
 `look <name>`
 `look`  (shortcut for looking at 'here')
 `look <name>/<detail>` - Looks at a detail on something.
 
-By default, the game will notify you if someone looks at you.  If you don't like that, you can turn it off:
+## Glancing
+
+The `glance` command gives you a quick summary of everyone in your room.  This will show some of your demographic information and your short description.
+
+## Description Notifications
+
+By default, the game will notify you if someone looks at you. (the @adesc feature from other MU servers.) If you don't like that, you can turn it off:
 
 `desc/notify <on or off>`
