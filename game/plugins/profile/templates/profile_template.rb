@@ -103,7 +103,7 @@ module AresMUSH
       end
       
       def custom_profile
-        !@char.profile_fields.empty?
+        !@char.profile.empty?
       end
       
       def handle_name
