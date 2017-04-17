@@ -1,8 +1,8 @@
 module AresMUSH
   module Help
     module Api
-      def self.get_help(topic_key, category = "main")
-        Help.topic_contents(topic_key, category)
+      def self.get_help(topic_key)
+        Help.topic_contents(topic_key)
       end
       
       def self.help_topics

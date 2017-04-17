@@ -1,5 +1,5 @@
 ---
-toc: Code Management
+toc: Managing Code
 summary: Examining and manipulating the database.
 aliases:
 - examine

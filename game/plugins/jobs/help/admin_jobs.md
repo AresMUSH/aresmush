@@ -1,5 +1,5 @@
 ---
-toc: Player Management
+toc: Managing Characters
 summary: Managing jobs and requests.
 aliases:
 - job

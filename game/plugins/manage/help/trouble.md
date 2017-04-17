@@ -1,5 +1,5 @@
 ---
-toc: Game Management
+toc: Managing Game
 summary: Dealing with troublesome players.
 aliases:
 - boot

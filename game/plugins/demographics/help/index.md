@@ -13,9 +13,12 @@ aliases:
 - age
 - reputation
 - actor
-- actors
 ---
+# Demographics
+
 Demographics commands are used to set your basic character info.  Some items may not be changed after your character has been approved.
+
+## Command Quick Reference
 
 `fullname <name>`
 `gender <male/female/other>`
@@ -27,3 +30,10 @@ Demographics commands are used to set your basic character info.  Some items may
 `birthdate <mm/dd/yyyy>` or `age <years>`
 `callsign <name>` - Callsign for pilots and other military chars.
 `actor <name>` - Set your actor.  You can see taken actors using the `actors` command.
+
+
+## Topics
+
+[Setting Groups](/help/demographics/groups)
+[Character Census](/help/demographics/census)
+[Managing Demographics](/help/demographics/admin)

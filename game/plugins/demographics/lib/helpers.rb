@@ -2,11 +2,11 @@ module AresMUSH
   module Demographics    
 
     def self.can_set_demographics?(char)
-      char.has_permission?("set_demographics")
+      char.has_permission?("manage_demographics")
     end
 
     def self.can_set_group?(char)
-      char.has_permission?("set_group")
+      char.has_permission?("manage_demographics")
     end
 
     def self.all_groups

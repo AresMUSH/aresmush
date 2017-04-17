@@ -1,15 +1,15 @@
 ---
 toc: Bulletin Boards
-summary: Setting up bulletin boards.
-order: 99
+summary: Managing bulletin boards.
+order: 98
 aliases:
 - bbwiz
 ---
-# BBS - Setting Up Boards
+# BBS - Managing Boards
 
 > **Permission Required:** These commands require the permission: manage\_bbs
 
-Those with board privileges are create and setup boards.
+Those with board privileges are create and manage boards.
 
 ## Creating and Deleting Boards
 
@@ -34,3 +34,18 @@ Posting and replying to a board requires 'write' permissions.
 
 `bbs/readroles <board>=<roles that can read it, or 'everyone'>`
 `bbs/writeroles <board>=<roles that can write to it, or 'everyone'>`
+> **Permission Required:** These commands require the permission: manage\_bbs
+
+## Archiving a Board
+
+You can archive the messages from a bulletin board for offline storage.  The default format is suitable for a wikidot wiki page.
+
+`bbs/archive <board>` - Prints out messages so you can log them to a file.
+
+## Editing, Moving and Deleting Posts
+
+You can edit and delete other peoples' posts as well as their own.  You can also mass delete posts to clean up boards.
+
+> **Tip:** It is recommended that you archive a board before doing a mass delete, as there is no 'undo'.  Deleted messages are permanently gone.
+
+`bbs/delete <board>/<#>-<#>`

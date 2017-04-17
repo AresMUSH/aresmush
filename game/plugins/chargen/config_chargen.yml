@@ -1,62 +1,43 @@
 chargen:
-    permissions:
-        - approve
-        - manage_bgs
-        - view_bgs
-
     messages:
-        # This message is sent when a character is approved.
         approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP."
-        # This message is sent when a character is rejected.
         rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp app%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
         post_approval: "Please create a wiki page and icon for them."
+        welcome: "Please welcome %{name}, our latest %{position} to be approved!"
     
-    # Newly-approved characters will be announced on this board.    
     arrivals_board: "New Arrivals"
     
-    # These settings tie in with the jobs system.  
-    # Make sure they match up with your job configuration.
     jobs:
-        
-        # What job category to use for applications.
         app_category: "APP"
-        
-        # What job status to use when an app is resubmitted
         app_resubmit_status: "OPEN"
-        
-        # What job status to use when an app is on hold
         app_hold_status: "HOLD"
 
-    # Configure the stages of chargen.  For each stage, you can choose to show 
-    # either a tutorial file (from the chargen/tutorial directory), a help file 
-    # (from within the help system) or both.  Make sure the help name exactly 
-    # matches the topic name configured in the help system.
     stages:
         start:
             tutorial: 'chargen.md'
         app:
             tutorial: 'app command.md'
         sheet:
-            help: 'sheet'
+            help: 'fs3skills sheet'
         demographics:
             help: demographics
         groups:
-            help: groups
+            help: demographics groups
         ranks:
-            help: ranks
+            help: ranks ranks
         background:
-            help: bg
+            help: chargen bg
         abilities:
-            help: abilities
+            help: fs3skills abilities
         hooks:
-            help: hooks
+            help: fs3skills hooks
         desc:
-            help: descriptions
+            help: describe descriptions
         handles:
-            help: handles
+            help: arescentral handles
         wiki:
-            help: wiki
+            help: profile wiki
         profile:
-            help: 'profile'
+            help: profile profile
         review:
-            help: apps
+            help: chargen app

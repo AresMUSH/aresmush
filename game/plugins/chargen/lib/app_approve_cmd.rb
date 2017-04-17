@@ -43,10 +43,13 @@ module AresMUSH
           
           client.emit_success t('chargen.app_approved', :name => model.name)
           
+          welcome_message = Global.read_config("chargen", "messages", "welcome")
+          bbs_body = welcome_message % { :name => model.name, :position => model.group_value("Position") }
+          
           Bbs::Api.system_post(
             Global.read_config("chargen", "arrivals_board"),
             t('chargen.approval_bbs_subject', :name => model.name), 
-            t('chargen.approval_bbs_body', :name => model.name, :position => model.group_value("Position")))
+            bbs_body)
             
           Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
              t('chargen.approval_bbs_subject', :name => model.name), 

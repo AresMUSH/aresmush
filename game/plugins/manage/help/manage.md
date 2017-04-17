@@ -1,5 +1,5 @@
 ---
-toc: Code Management
+toc: Managing Code
 summary: Managing plugins and config.
 aliases:
 - load

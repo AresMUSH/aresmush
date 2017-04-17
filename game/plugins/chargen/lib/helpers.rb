@@ -1,7 +1,7 @@
 module AresMUSH
   module Chargen
     def self.can_approve?(actor)
-      actor.has_permission?("approve")
+      actor.has_permission?("manage_apps")
     end
     
     def self.bg_app_review(char)
@@ -14,11 +14,11 @@ module AresMUSH
     end
     
     def self.can_manage_bgs?(actor)
-      actor.has_permission?("manage_bgs")
+      actor.has_permission?("can_approve")
     end     
     
     def self.can_view_bgs?(actor)
-      actor.has_permission?("view_bgs")
+      Chargen.can_manage_bgs?(actor) || actor.has_permission?("view_bgs")
     end      
     
     def self.approval_status(char)
@@ -64,8 +64,8 @@ module AresMUSH
     end
     
     def self.read_tutorial(name)
-      dir = File.dirname(__FILE__) + "/../tutorial/"
-      filename = File.join(dir, Global.locale.locale.to_s, name)
+      dir = File.dirname(__FILE__) + "/../templates/"
+      filename = File.join(dir, name)
       File.read(filename, :encoding => "UTF-8")
     end
     

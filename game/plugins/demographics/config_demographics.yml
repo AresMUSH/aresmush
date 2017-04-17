@@ -1,13 +1,7 @@
 demographics:
-    permissions:
-        -  can_set_demographics
-        
-    # Enforce minimum and maximum age limits in chargen
     min_age: 18
     max_age: 65
 
-    # Names of demographics that will be checked for during chargen.
-    # Use all-lowercase names!
     required_properties:
         - height
         - physique
@@ -18,16 +12,12 @@ demographics:
         - birthdate
         - skin
     
-    # Names of demographics that can be edited after chargen.
-    # Use all-lowercase names!
     editable_properties:
         - fullname
         - hair
         - physique
         - fullname
 
-    # Available demographics
-    # Use all-lowercase names!
     demographics:
         - actor
         - hair
@@ -37,22 +27,10 @@ demographics:
         - physique
         - fullname
         - birthdate
-        
-    permissions:
-        - set_group
 
-    # Define your groups. 
     groups:
-        # This is the group name.  Be sure it's capitalized the way you want it to be shown
-        # on the screen.
         Faction:
-            # A description for the group.
-            desc: "Foo"
-            # Optionally you may list valid values, each with their own description.
-            # When setting this group, characters will be limited to only the values listed.
-            # To leave a description blank, use empty quotes, like --   Navy: ""
-            # For a free-form field (such as a free-form position), simply comment out
-            # the values field.
+            desc: "Military faction."
             values:
                 Navy: "Join the fleet, see the worlds."
                 Marines: "Semper fi."

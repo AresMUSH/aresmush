@@ -1,10 +1,16 @@
 ---
-toc: AresCentral
+toc: Managing Configuration
 summary: Configuring AresCentral.
 ---
 # AresCentral - Configuration
 
-This article details how game admins can configure AresCentral.
+> **Permission Required:** Configuring the game requires the Admin role.
+
+To configure the AresCentral plugin:
+
+1. Go to the Web Portal's Admin screen.  
+2. Select Advanced Config.
+3. Edit `config_arescentral.yml`
 
 ## Games Directory
 

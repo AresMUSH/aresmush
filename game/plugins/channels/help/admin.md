@@ -1,9 +1,9 @@
 ---
 toc: Channels
 summary: Managing channels.
-order: 99
+order: 98
 ---
-# Setting Up Channels
+# Managing Channels
 
 > **Permission Required:** These commands require the permission: manage\_channels
 

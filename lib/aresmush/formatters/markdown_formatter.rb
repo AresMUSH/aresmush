@@ -44,6 +44,7 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
   
   def list_item(content, list_type)
     if list_type == :ordered
+      @order = (@order || 1)
       text = "#{@order}. #{content}"
       @order = @order + 1
     else
