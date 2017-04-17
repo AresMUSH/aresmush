@@ -1,5 +1,5 @@
 ---
-toc: AresCentral
+toc: Community
 summary: Player handles - OOC identity.
 ---
 # AresCentral - Player Handles

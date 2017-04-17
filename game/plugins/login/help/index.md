@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: 1 - Getting Started
 summary: Logging in and managing your connection.
 ---
 

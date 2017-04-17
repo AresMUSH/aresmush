@@ -1,6 +1,6 @@
 ---
-toc: Posing
-summary: Writing the story.
+toc: Scenes
+summary: Posing your actions.
 aliases:
 - say
 - emit

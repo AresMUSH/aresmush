@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Scenes
 summary: Viewing the weather.
 ---
 # Weather

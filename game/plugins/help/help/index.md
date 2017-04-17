@@ -1,5 +1,5 @@
 ---
-toc: Help
+toc: 1 - Getting Started
 summary: Getting help.
 ---
 # Help System

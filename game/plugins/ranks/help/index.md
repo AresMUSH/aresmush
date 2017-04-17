@@ -4,7 +4,7 @@ summary: Military/paramilitary ranks.
 ---
 # Ranks
 
-Ranks are used in military or paramiltary organizations.  The Ares ranks system differentiates ranks by groups (see help groups).
+Ranks are used in military or paramiltary organizations.  The Ares ranks system differentiates ranks by groups (see [Groups](/help/demographics/groups)).
 
 ## Quick Reference
 

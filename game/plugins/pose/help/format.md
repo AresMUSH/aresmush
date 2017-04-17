@@ -1,5 +1,5 @@
 ---
-toc: Posing
+toc: Scenes
 summary: Making poses and emits more readable.
 aliases:
 - autospace

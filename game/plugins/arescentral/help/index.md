@@ -1,5 +1,5 @@
 ---
-toc: AresCentral
+toc: Community
 summary: AresMUSH social hub.
 ---
 # AresCentral

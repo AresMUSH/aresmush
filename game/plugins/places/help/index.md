@@ -1,5 +1,5 @@
 ---
-toc: Posing
+toc: Scenes
 summary: Separating RP in a scene.
 aliases:
 - tables

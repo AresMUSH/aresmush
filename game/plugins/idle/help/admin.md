@@ -1,5 +1,5 @@
 ---
-toc: Managing Characters
+toc: Managing Game
 summary: Idle sweeping old characters.
 ---
 The idle system lets you sweep the database for players who haven't logged in for awhile, so you can decide what to do with them.

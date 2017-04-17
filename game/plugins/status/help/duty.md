@@ -1,5 +1,5 @@
 ---
-toc: Managing Characters
+toc: Managing Game
 summary: Going on and off duty.
 aliases:
 - duty

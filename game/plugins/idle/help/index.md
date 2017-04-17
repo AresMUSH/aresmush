@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Login
 summary: Preferences if your char idles out.
 ---
 # Idle Characters

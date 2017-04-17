@@ -1,5 +1,5 @@
 ---
-toc: Roles
+toc: Managing Game
 summary: Managing roles.
 aliases:
 - adminnote

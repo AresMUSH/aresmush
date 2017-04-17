@@ -1,5 +1,5 @@
 ---
-toc: Managing Configuration
+toc: Managing Code
 summary: Customizing your game.
 ---
 # Custom

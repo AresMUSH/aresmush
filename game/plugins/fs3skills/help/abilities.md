@@ -1,5 +1,5 @@
 ---
-toc: FS3 Skills
+toc: FS3
 summary: Skills System.
 aliases:
 - reset

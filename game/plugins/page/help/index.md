@@ -1,5 +1,5 @@
 ---
-toc: Communicating
+toc: Community
 summary: Private chat messages.
 aliases:
 - tell

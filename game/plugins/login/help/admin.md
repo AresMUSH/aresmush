@@ -1,5 +1,5 @@
 ---
-toc: Managing Characters
+toc: Managing Game
 summary: Managing player login info.
 aliases:
 - newpassword

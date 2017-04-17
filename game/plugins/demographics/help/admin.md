@@ -1,5 +1,5 @@
 ---
-toc: Managing Characters
+toc: Managing Game
 summary: Managing demographics.
 ---
 # Managing Demographics
