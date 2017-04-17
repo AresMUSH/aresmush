@@ -36,6 +36,10 @@ module AresMUSH
     def self.unload_plugin
     end
  
+    def self.config_files
+      [ "config_idle.yml"]
+    end
+    
     def self.locale_files
       [ "locales/locale_en.yml" ]
     end
