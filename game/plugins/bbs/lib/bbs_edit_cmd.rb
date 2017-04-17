@@ -36,6 +36,9 @@ module AresMUSH
             :board => board.name, 
             :reference => post.reference_str,
             :author => enactor_name)
+            
+            Bbs.mark_read_for_player(enactor, post)
+            
           end
         end
       end
