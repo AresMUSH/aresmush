@@ -11,7 +11,7 @@ module AresMUSH
       def handle
         sites = {}
         Character.all.each do |c|
-          host = c.login_status ? c.login_status.last_hostname : nil
+          host = c.last_hostname
           if (sites.has_key?(host))
             sites[host] << c.name
           else

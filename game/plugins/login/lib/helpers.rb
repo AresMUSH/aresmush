@@ -17,15 +17,13 @@ module AresMUSH
     end
     
     def self.update_site_info(client, char)
-      status = char.get_or_create_login_status
-      status.update(last_ip: client.ip_addr)
-      status.update(last_hostname: client.hostname.downcase)
-      status.update(last_on: Time.now)
+      char.update(last_ip: client.ip_addr)
+      char.update(last_hostname: client.hostname.downcase)
+      char.update(last_on: Time.now)
     end
     
     def self.is_site_match?(char, ip, hostname)
-      return false if !char.login_status
-      char.login_status.is_site_match?(ip, hostname)
+      char.is_site_match?(ip, hostname)
     end
 
     def self.terms_of_service
@@ -39,10 +37,9 @@ module AresMUSH
       suspects.each do |s|
         if (Login.is_site_match?(char, s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          status = char.login_status
           Jobs::Api.create_job(Global.read_config("login", "jobs", "suspect_category"), 
             t('login.suspect_login_title'), 
-            t('login.suspect_login', :name => char.name, :ip => status.last_ip, :host => status.last_hostname, :match => s), 
+            t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
             Game.master.system_character)
         end
       end
