@@ -59,9 +59,7 @@ module AresMUSH
     end
     
     def self.mark_read(job, char)      
-      if (job.is_unread?(char))
-        JobReadMark.create(character: char, job: job)
-      end
+      job.readers.add char
     end
     
     def self.closed_status
@@ -109,8 +107,8 @@ module AresMUSH
     
     def self.notify(job, message, author, notify_submitter = true)
       Global.client_monitor.logged_in.each do |other_client, other_char|
-        JobReadMark.find(job_id: job.id).each { |j| j.delete }
-        JobReadMark.create(job: job, character: author)
+        job.readers.each { |r| job.readers.delete r }
+        job.readers.add author
         
         if (Jobs.can_access_jobs?(other_char))
           other_client.emit_ooc message

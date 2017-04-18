@@ -85,7 +85,7 @@ module AresMUSH
     end
     
     def mark_unread
-      readers.clear
+      readers.each { |r| readers.delete r }
     end
     
     def reference_str
