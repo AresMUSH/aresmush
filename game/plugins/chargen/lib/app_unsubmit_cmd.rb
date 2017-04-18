@@ -21,7 +21,7 @@ module AresMUSH
           Global.read_config("chargen", "jobs", "app_hold_status"),
           t('chargen.app_job_unsubmitted'))
           
-        enactor.chargen_info.update(locked: false)
+        enactor.update(chargen_locked: false)
           
         client.emit_success t('chargen.app_unsubmitted')
       end

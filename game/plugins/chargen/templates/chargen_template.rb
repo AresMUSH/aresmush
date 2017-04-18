@@ -6,7 +6,7 @@ module AresMUSH
       
       def initialize(char)
         @char = char
-        @stage_index = char.chargen_info.current_stage
+        @stage_index = char.chargen_stage
         @stage = Chargen.stages[Chargen.stage_name(char)]
         @markdown = MarkdownFormatter.new
         super File.dirname(__FILE__) + "/chargen.erb" 

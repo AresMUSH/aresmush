@@ -11,7 +11,6 @@ login:
         # - 192.168.1.1   # Somebody bad.
         # - verizon.net   # Those sneaky verizon users.
         - "delete me and put a real site here"
-        - localhost
         
     # These settings tie in with the jobs system.  
     # Make sure they match up with your job configuration.

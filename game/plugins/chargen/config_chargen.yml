@@ -24,7 +24,7 @@ chargen:
         groups:
             help: demographics groups
         ranks:
-            help: ranks ranks
+            help: ranks
         background:
             help: chargen bg
         abilities:
@@ -32,12 +32,12 @@ chargen:
         hooks:
             help: fs3skills hooks
         desc:
-            help: describe descriptions
+            help: describe
         handles:
             help: arescentral handles
         wiki:
             help: profile wiki
         profile:
-            help: profile profile
+            help: profile
         review:
             help: chargen app

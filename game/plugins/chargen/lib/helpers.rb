@@ -38,10 +38,7 @@ module AresMUSH
     
     def self.check_chargen_locked(char)
       return t('chargen.cant_be_changed') if char.is_approved?
-
-      info = char.chargen_info
-      return nil if !info
-      return t('chargen.app_in_progress') if info.locked
+      return t('chargen.app_in_progress') if char.chargen_locked
       return nil
     end
     
@@ -74,21 +71,20 @@ module AresMUSH
     end
     
     def self.stage_name(char)
-      stage = Chargen.current_stage(char)
+      stage = Chargen.chargen_stage(char)
       stage ? Chargen.stages.keys[stage] : nil
     end
     
-    def self.current_stage(char)
-      char.chargen_info ? char.chargen_info.current_stage : nil
+    def self.chargen_stage(char)
+      char.chargen_stage
     end
     
     def self.approval_job(char)
-      char.chargen_info ? char.chargen_info.approval_job : nil
+      char.approval_job
     end
     
     def self.submit_app(char)
-      info = char.get_or_create_chargen_info
-      job = info.approval_job
+      job = char.approval_job
       
       if (!job)
         result = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
@@ -100,11 +96,11 @@ module AresMUSH
           raise "Problem submitting application: #{job[:error]}"
         end
         job = result[:job]
-        info.update(locked: true)
-        info.update(approval_job: job)
+        char.update(chargen_locked: true)
+        char.update(approval_job: job)
         return t('chargen.app_submitted')
       else
-        info.update(locked: true)
+        char.update(chargen_locked: true)
         Jobs::Api.change_job_status(char,
           job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
