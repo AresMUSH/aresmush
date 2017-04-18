@@ -1,23 +1,4 @@
 module AresMUSH
-  
-  class Character
-    collection :bbs_read_marks, "AresMUSH::BbsReadMark"
-
-    before_delete :delete_marks
-    
-    def delete_marks
-      bbs_read_marks.each { |m| m.delete }
-    end
-
-  end
-  
-  class BbsReadMark < Ohm::Model
-    include ObjectModel
-    
-    reference :bbs_post, "AresMUSH::BbsPost"
-    reference :character, "AresMUSH::Character"
-  end
-  
   class BbsBoard < Ohm::Model
     include ObjectModel
     include FindByName
@@ -29,7 +10,7 @@ module AresMUSH
 
     index :order
     index :name_upcase
-    
+        
     set :read_roles, "AresMUSH::Role"
     set :write_roles, "AresMUSH::Role"
     
@@ -48,8 +29,7 @@ module AresMUSH
     
     def unread_posts(char)
       return [] if !Bbs.can_read_board?(char, self)
-      read_posts = char.bbs_read_marks.map { |m| m.bbs_post }
-      bbs_posts.select { |p| !read_posts.include?(p) }
+      bbs_posts.select { |p| p.is_unread?(char) }
     end
       
     def has_unread?(char)
@@ -78,6 +58,7 @@ module AresMUSH
     reference :author, "AresMUSH::Character"
     reference :bbs_board, "AresMUSH::BbsBoard"
     collection :bbs_replies, "AresMUSH::BbsReply"
+    set :readers, "AresMUSH::Character"
     
     index :bbs_board
     
@@ -95,22 +76,16 @@ module AresMUSH
       !self.author ? t('bbs.deleted_author') : self.author.name
     end
     
-    def read_marker(char)
-      BbsReadMark.find(character_id: char.id).combine(bbs_post_id: self.id).first
-    end
-    
     def is_unread?(char)
-      !read_marker(char)
+      !readers.include?(char)
     end
     
     def mark_read(char)
-      if (!read_marker(char))
-        BbsReadMark.create(character: char, bbs_post: self)
-      end
+      readers.add char
     end
     
     def mark_unread
-      BbsReadMark.find(bbs_post_id: self.id).each { |rm| rm.delete }
+      readers.clear
     end
     
     def reference_str
