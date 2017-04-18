@@ -3,15 +3,15 @@ module AresMUSH
   class Character
     
     def idled_out?
-      self.idle_status
+      !!self.idle_state
     end
     
     def on_roster?
-      !!roster_registry
+      self.idle_state == "Roster"
     end
     
     def idled_out_reason
-      self.idle_status.status
+      self.idle_state
     end
   end
   

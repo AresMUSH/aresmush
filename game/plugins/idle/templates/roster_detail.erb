@@ -5,8 +5,8 @@
 
 %xh<%= t('idle.wiki_page') %>%xn <%= website %>
           
-<% if registry.contact %>
-%xh<%= t('idle.contact', :name => registry.contact) %>
+<% if roster_contact %>
+%xh<%= t('idle.contact', :name => roster_contact) %>
 
 <% end %>
 <%= t('idle.roster_claim', :name => char.name) %>

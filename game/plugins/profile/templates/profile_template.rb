@@ -57,19 +57,19 @@ module AresMUSH
       end
 
       def faction
-        @char.group_value("Faction")
+        @char.group("Faction")
       end
 
       def position
-        @char.group_value("Position")
+        @char.group("Position")
       end
 
       def colony
-        @char.group_value("Colony")
+        @char.group("Colony")
       end
 
       def department
-        @char.group_value("Department")
+        @char.group("Department")
       end
 
       def rank

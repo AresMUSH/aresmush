@@ -28,13 +28,13 @@ module AresMUSH
         client.program.delete(:create_cmd)
         
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          if (!model.roster_registry)
+          if (!model.on_roster?)
             client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
 
           password = Login::Api.set_random_password(model)
-          model.roster_registry.delete
+          model.update(idle_state: nil)
           
           client.emit_success t('idle.roster_claimed', :name => model.name, :password => password)
           

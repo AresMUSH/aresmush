@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def position(char)
-        char.group_value("Position")
+        char.group("Position")
       end
       
       def callsign(char)

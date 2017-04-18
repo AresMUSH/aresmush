@@ -3,9 +3,9 @@ module AresMUSH
     class RosterDetailTemplate < ErbTemplateRenderer
 
 
-      attr_accessor :char, :registry
+      attr_accessor :char
       
-      def initialize(char, registry)
+      def initialize(char)
         @char = char
         @registry = registry
         super File.dirname(__FILE__) + "/roster_detail.erb"

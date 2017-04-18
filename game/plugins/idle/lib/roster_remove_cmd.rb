@@ -25,12 +25,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          if (!model.roster_registry)
+          if (!model.on_roster?)
             client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
 
-          model.roster_registry.delete
+          model.update(idle_state: nil)
           client.emit_success t('idle.removed_from_roster', :name => model.name)
         end
       end

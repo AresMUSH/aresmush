@@ -46,11 +46,10 @@ module AresMUSH
             return
           end
           
-          if (self.status == 'Nothing' && model.idle_status)
-            model.idle_status.delete
+          if (self.status == 'Nothing')
+            model.update(idle_state: nil)
           else
-            idle_status = model.get_or_create_idle_status
-            idle_status.update(status: self.status)
+            model.update(idle_state: self.status)
           end
           
           client.emit_success t('idle.idle_status_set', :name => self.name, :status => self.status)

@@ -44,7 +44,7 @@ module AresMUSH
           client.emit_success t('chargen.app_approved', :name => model.name)
           
           welcome_message = Global.read_config("chargen", "messages", "welcome")
-          bbs_body = welcome_message % { :name => model.name, :position => model.group_value("Position") }
+          bbs_body = welcome_message % { :name => model.name, :position => model.group("Position") }
           
           Bbs::Api.system_post(
             Global.read_config("chargen", "arrivals_board"),

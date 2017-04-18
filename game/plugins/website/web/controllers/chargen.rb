@@ -27,7 +27,7 @@ module AresMUSH
         @ranks.concat Ranks.allowed_ranks_for_group(k)
       end
       
-      @allowed_ranks = Ranks.allowed_ranks_for_group(@user.group_value("Faction"))
+      @allowed_ranks = Ranks.allowed_ranks_for_group(@user.group("Faction"))
       
       
       @fs3_attrs = FS3Skills.attrs

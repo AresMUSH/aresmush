@@ -49,7 +49,7 @@ module AresMUSH
         if (self.value && values)
           self.value = values.keys.find { |v| v.downcase == self.value.downcase }
           if (!self.value)
-            client.emit_failure t('demographics.invalid_group_value', :group => self.group_name)
+            client.emit_failure t('demographics.invalid_group', :group => self.group_name)
             return
           end
         end

@@ -19,22 +19,22 @@ module AresMUSH
         end
         
         it "should include Everyone skills" do
-          @char.stub(:group_value).with("Position") { "Other" }
-          @char.stub(:group_value).with("Faction") { "Other" }
+          @char.stub(:group).with("Position") { "Other" }
+          @char.stub(:group).with("Faction") { "Other" }
           skills = { "A" => 2, "B" => 3 }
           StartingSkills.get_skills_for_char(@char).should eq skills
         end
         
         it "should include matching group skills" do
-          @char.stub(:group_value).with("Position") { "Pilot" }
-          @char.stub(:group_value).with("Faction") { "Other" }
+          @char.stub(:group).with("Position") { "Pilot" }
+          @char.stub(:group).with("Faction") { "Other" }
           skills = { "A" => 2, "B" => 3, "C" => 4 }
           StartingSkills.get_skills_for_char(@char).should eq skills
         end
 
         it "should include the higher skill if multiple matches" do
-          @char.stub(:group_value).with("Position") { "Pilot" }
-          @char.stub(:group_value).with("Faction") { "Navy" }
+          @char.stub(:group).with("Position") { "Pilot" }
+          @char.stub(:group).with("Faction") { "Navy" }
           skills = { "A" => 2, "B" => 3, "C" => 4 }
           StartingSkills.get_skills_for_char(@char).should eq skills
         end

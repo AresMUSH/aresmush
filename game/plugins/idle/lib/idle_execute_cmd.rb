@@ -58,15 +58,10 @@ module AresMUSH
               # Reset their idle status
               idle_char.update(idle_warned: false)
               idle_char.update(is_npc: false)
-              if (idle_char.idle_status)
-                idle_char.idle_status.delete
-              end
-              # Remove them from the roster.
-              Idle.remove_from_roster(idle_char)
+              idle_char.update(idle_state: nil)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
-              idle_status = idle_char.get_or_create_idle_status
-              idle_status.update(status: action)
+              char.update(idle_state: action)
               Login::Api.set_random_password(idle_char)
             end
           end

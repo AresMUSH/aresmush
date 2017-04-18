@@ -32,13 +32,10 @@ module AresMUSH
       counts.sort_by { |k,v| v }.reverse
     end
     
-    def self.set_group(char, group_name, group_value)
-      group = char.group(group_name)
-      if (!group)
-        GroupAssignment.create(character: char, group: group_name, value: group_value)
-      else
-        group.update(value: group_value)
-      end
+    def self.set_group(char, group_name, group)
+      groups = char.groups
+      groups[group_name] = group
+      char.update(groups: groups)      
     end
     
     def self.check_age(age)

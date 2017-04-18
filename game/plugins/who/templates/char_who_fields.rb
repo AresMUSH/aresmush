@@ -5,7 +5,7 @@ module AresMUSH
     module WhoCharacterFields
      
       def position(char)
-        char.group_value("Position")
+        char.group("Position")
       end
     
       def status_color(char)
@@ -17,15 +17,15 @@ module AresMUSH
       end
    
       def faction(char)
-        char.group_value("Faction")
+        char.group("Faction")
       end
 
       def position(char)
-        char.group_value("Position")
+        char.group("Position")
       end
 
       def department(char)
-        char.group_value("Department")
+        char.group("Department")
       end
       
       def idle(char)

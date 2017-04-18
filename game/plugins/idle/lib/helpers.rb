@@ -16,8 +16,8 @@ module AresMUSH
     end
     
     def self.add_to_roster(char, contact = nil)
-      registry = char.get_or_create_roster_registry
-      registry.update(contact: contact || Global.read_config("idle", "default_contact"))
+      char.update(roster_contact: contact || Global.read_config("idle", "default_contact"))
+      char.update(idle_state: "Roster")
       # Reset their password.
       Login::Api.set_random_password(char)
       # Remove their handle.              
@@ -27,10 +27,9 @@ module AresMUSH
     end
     
     def self.remove_from_roster(char)
-      if (char.roster_registry)
-        char.roster_registry.delete
-      end
+      char.update(idle_state: nil)
     end
+    
     def self.is_exempt?(actor)
       actor.has_permission?("idle_exempt")
     end

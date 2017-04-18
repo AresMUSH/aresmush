@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
       
       def handle
-        roster = RosterRegistry.all.sort { |a,b| a.character.name <=> b.character.name }
+        roster = Character.all.select { |c| c.on_roster? }.sort { |a,b| a.name <=> b.name }
         paginator = Paginator.paginate(roster, cmd.page, 15)
         
         if (paginator.out_of_bounds?)

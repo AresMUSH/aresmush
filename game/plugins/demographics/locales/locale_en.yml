@@ -37,7 +37,7 @@ en:
         group_set: "%{group} set to %{value}."
         group_skill_notice: "Some groups require certain skills.  If you already set your skills, you may want to review your app to make sure you have taken all the necessary skills for your group."
         group_cleared: "%{group} cleared."
-        invalid_group_value: "That is not a valid %{group} value."
+        invalid_group: "That is not a valid %{group} value."
         census_title_top_20: "%{name} Census (Top 20)"
         group_census_title: "%{name} Census"
         gender_census_title: "Gender Census"

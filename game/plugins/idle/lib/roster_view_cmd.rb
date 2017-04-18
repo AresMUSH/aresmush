@@ -19,14 +19,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          registry = model.roster_registry
-          
-          if (!registry)
+          if (!model.on_roster?)
             client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
           
-          template = RosterDetailTemplate.new model, registry
+          template = RosterDetailTemplate.new model
           client.emit template.render
         end
       end

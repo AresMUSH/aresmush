@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def census
-        census = Demographics.census_by { |c| c.group(self.name) ? c.group(self.name).value : nil }
+        census = Demographics.census_by { |c| c.group(self.name) }
         is_freeform ? census.first(20) : census
       end
       

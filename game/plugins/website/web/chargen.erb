@@ -113,7 +113,7 @@
             <label for="faction" class="col-xs-2 col-form-label">Faction:</label> 
             <select name="faction">
               <% @factions['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @factions['desc']%></p>
@@ -123,7 +123,7 @@
             <label for="position" class="col-xs-2 col-form-label">Position:</label> 
             <select name="position">
               <% @positions['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @positions['desc']%></p>
@@ -134,7 +134,7 @@
             <label for="department" class="col-xs-2 col-form-label">Department:</label> 
             <select name="department">
               <% @departments['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @departments['desc']%></p>
@@ -144,7 +144,7 @@
             <label for="colony" class="col-xs-2 col-form-label">Colony:</label> 
             <select name="colony">
               <% @colonies['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @colonies['desc']%></p>
