@@ -11,6 +11,8 @@ module AresMUSH
         t('object.semipose', :name => name, :msg => msg.rest(";"))
       elsif msg.start_with?("\\ ")
         msg.rest("\\ ")
+      elsif msg.start_with?("\\\\")
+        msg.rest("\\\\")
       elsif msg.start_with?("\\")
         msg.rest("\\")
       elsif msg.start_with?("'")
