@@ -8,4 +8,7 @@ places:
         minute: 05
         
     # Color to use for a title when someone's at the same place.
-    same_place_color: "%xB"
+    same_place_color: "%xc%xB"
+    
+    shortcuts:
+        "place/create" : "place/join"

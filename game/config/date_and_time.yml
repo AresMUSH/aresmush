@@ -16,13 +16,17 @@ date_and_time:
     # %M is the minute
     # %P is am/pm
     long_date_format: "%a %b %d, %Y %l:%M%P"
-    # European style:
-    #long_date_format: "%d-%m-%Y %l:%M%P"
+    # European style (24hr clock):
+    #long_date_format: "%d-%m-%Y %k%M"
     
     
     # Format when just displaying a time.
     time_format: "%l:%M%P"
+    # European style (24hr clock):
+    #long_date_format: "%k%M"
     
     # Used in help files to direct people what format to use when entering dates
     # NOTE: Must match the order of fields in short_date_format
     date_entry_format_help: "mm/dd/yyyy"
+    # European style
+    # date_entry_format_help: "yyyy-mm-dd"

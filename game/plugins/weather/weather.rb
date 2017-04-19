@@ -22,10 +22,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_weather.md", "help/weather.md" ]
-    end
- 
     def self.config_files
       [ "config_weather.yml" ]
     end

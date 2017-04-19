@@ -7,13 +7,27 @@ module AresMUSH
       attr_accessor :name, :number
       
       def parse_args
+        # name=number for NPC
         if (cmd.args =~ /=/)
-          cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
-          self.name = titleize_input(cmd.args.arg1)
-          self.number = cmd.args.arg2 ? cmd.args.arg2.to_i : 1
-        else
+          args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+          self.name = titlecase_arg(args.arg1)
+          self.number = args.arg2 ? integer_arg(args.arg2) : 1
+        # No arg - for PC
+        elsif (!cmd.args)
           self.name = enactor.name
-          self.number = cmd.args ? cmd.args.to_i : 1
+          self.number = 1
+        # Single arg - could be a name or a number.
+        else
+          
+          self.number = integer_arg(cmd.args)
+
+          if (self.number == 0)
+            self.name = titlecase_arg(cmd.args)
+            self.number = 1
+          else
+            self.name = enactor.name
+            self.number = integer_arg(cmd.args)
+          end
         end
       end
 

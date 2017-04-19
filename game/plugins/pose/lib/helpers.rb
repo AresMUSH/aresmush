@@ -1,10 +1,16 @@
 module AresMUSH
   module Pose
-    def self.emit_pose(enactor, pose, is_emit, is_ooc)
+    def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil)
       room = enactor.room
+      
+      if (is_ooc)
+        color = Global.read_config("pose", "ooc_color")
+        pose = "#{color}<OOC>%xn #{pose}"
+      end
+      
       Global.client_monitor.logged_in.each do |client, char|
         next if char.room != enactor.room
-        client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc)
+        client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc, place_name)
       end
       
       if (!is_ooc)
@@ -12,7 +18,7 @@ module AresMUSH
         Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit)
       end
     end
-
+    
     def self.add_repose(room, enactor, pose)
       return if !room.repose_on?
       
@@ -85,13 +91,18 @@ module AresMUSH
       repose.update(enabled: true)
     end
     
-    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false)
+    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
       nospoof = ""
       if (is_emit && char.pose_nospoof)
         nospoof = "%xc%% #{t('pose.emit_nospoof_from', :name => enactor.name)}%xn%R"
       end
       
-      place_title = enactor.place_title(char)
+      if (place_name)
+        same_place = (char.place ? char.place.name : nil) == place_name
+        place_title = Places::Api.place_title(place_name, same_place)
+      else
+        place_title = is_ooc ? "" : enactor.place_title(char)
+      end
       
       quote_color = char.pose_quote_color
       if (is_ooc || quote_color.blank?)

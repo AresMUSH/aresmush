@@ -7,6 +7,11 @@
         <p>Name: <input type="text" name="name"></p>
         <p>Password: <input type="password" name="password"></p>
         <p>Confirm Password: <input type="password" name="confirm_password"></p>
+        
+        <% if @recaptcha.is_enabled? %>
+        <div class="g-recaptcha" data-sitekey="<%= @recaptcha.site_key %>"></div>
+        <% end %>
+        
         <input type="submit">
     </form>
     </div>

@@ -24,11 +24,7 @@ module AresMUSH
  
     def self.unload_plugin
     end
- 
-    def self.help_files
-      [ "help/admin_wiki.md", "help/profile.md", "help/wiki.md" ]
-    end
- 
+    
     def self.config_files
       [ "config_profile.yml" ]
     end

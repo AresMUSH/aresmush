@@ -52,7 +52,7 @@ module AresMUSH
     end
     
     def self.get_initiative_order(combat)
-      ability = Global.read_config("fs3combat", "initiative_ability")
+      ability = Global.read_config("fs3combat", "initiative_skill")
       order = []
       combat.active_combatants.each do |c|
         roll = FS3Combat.roll_initiative(c, ability)

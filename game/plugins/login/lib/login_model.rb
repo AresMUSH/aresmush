@@ -1,12 +1,14 @@
 module AresMUSH
   
-  class LoginStatus < Ohm::Model
-    include ObjectModel
-    
-    reference :character, "AresMUSH::Character"
+  class Character
+
+    attribute :login_email
+    attribute :login_watch, :default => "friends"
+    attribute :login_keepalive, :type => DataType::Boolean, :default => true
+    attribute :login_failures, :type => DataType::Integer
+    attribute :login_api_token
     
     attribute :terms_of_service_acknowledged, :type => DataType::Time
-    attribute :last_on, :type => DataType::Time
     attribute :last_ip
     attribute :last_hostname
     
@@ -16,30 +18,14 @@ module AresMUSH
     def is_site_match?(ip, hostname)
       host_search = hostname.chars.last(20).join.to_s.downcase
       ip_search = ip.chars.first(10).join.to_s
-      
-      return true if !ip_search.blank? && self.last_ip.include?(ip_search)
-      return true if !host_search.blank? && self.last_hostname.include?(host_search)
-      return false
-    end
-  end
-  
-  class Character
 
-    attribute :login_email
-    attribute :login_watch, :default => "friends"
-    attribute :login_keepalive, :type => DataType::Boolean, :default => true
-    attribute :login_failures, :type => DataType::Integer
-    attribute :login_api_token
-    
-    reference :login_status, "AresMUSH::LoginStatus"
-    
-    def get_or_create_login_status
-      status = self.login_status
-      if (!status)
-        status = LoginStatus.create(character: self)
-        self.update(login_status: status)
-      end
-      status
+      ip = self.last_ip || ""
+      host = self.last_hostname || ""
+      
+      puts "Checking site match #{host_search}/#{host}  #{ip_search}/#{ip}"
+      return true if !ip_search.blank? && ip.include?(ip_search)
+      return true if !host_search.blank? && host.include?(host_search)
+      return false
     end
     
     def self.check_name(name)

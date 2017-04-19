@@ -13,7 +13,7 @@ en:
         color_set: "The channel will now be displayed like so: %{name}."
         channel_renamed: "Channel %{old_name} is now named %{new_name}."
         roles_set: "Channel roles updated."
-        default_alias_set: "Channel alias set."
+        default_alias_set: "Channel alias set to %{alias}."
         invalid_channel_role: "%{name} is not a valid channel role."
         title_set: "Channel title set."
         roles_changed_by: "%{name} has changed the permissions on this channel."
@@ -22,7 +22,7 @@ en:
         channels: Channels
         channels_title: "Channel                       Description             Announce  Restricted To"
         channel_who: "On channel %{name}: %{chars}." 
-        channel_aliases: "(+) = channel on     (X) = channel gagged     (-) = channel off"
+        channel_aliases: "(+) = channel on     (X) = channel muted     (-) = channel off"
         unable_to_determine_auto_alias: "Could not automatically pick an alias for this channel due to name conflicts.  Use channel/join <name>=<alias> to pick one yourself."
         
         joined_channel: "%{name} has joined this channel."
@@ -32,10 +32,10 @@ en:
         has_disconnected: "%{name} has disconnected."
         has_connected: "%{name} has connected."
         
-        channel_gagged: "You will no longer hear messages on channel %{name}."
-        channel_ungagged: "You will now hear messages on channel %{name}."
-        gagging: " (gagging)"
-        cant_talk_when_gagged: "You can't talk on a channel you're gagging."
+        channel_muted: "Channel %{name} is now muted."
+        channel_unmuted: "Channel %{name} is no longer muted."
+        muted: " (muted)"
+        cant_talk_when_muted: "You can't talk on a channel while it's muted."
 
         recall_history: "Chat History For %{name}"
         invalid_recall_limit: "Please specify a number between 1 and 25."

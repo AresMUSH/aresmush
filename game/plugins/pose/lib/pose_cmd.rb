@@ -17,9 +17,7 @@ module AresMUSH
         elsif (cmd.root_is?("pose"))
           return PoseFormatter.format(enactor_name, ":#{cmd.args}")
         elsif (cmd.root_is?("ooc"))
-          msg = PoseFormatter.format(enactor_name, "#{cmd.args}")
-          color = Global.read_config("pose", "ooc_color")
-          return "#{color}<OOC>%xn #{msg}"
+          return PoseFormatter.format(enactor_name, "#{cmd.args}")
         end
         return PoseFormatter.format(enactor_name, "\"#{cmd.args}")
       end

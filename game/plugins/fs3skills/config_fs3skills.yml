@@ -1,11 +1,4 @@
 fs3skills:
-    permissions:
-        - manage_abilities
-        - receives_roll_results
-        - manage_luck
-        - view_sheets
-        - manage_xp
-
     # How many luck points you may save up.    
     max_luck: 3
                 
@@ -16,8 +9,6 @@ fs3skills:
     # get an error on page 1 and never even think to try page 2.
     public_pages:
         - 1
-
-    default_linked_attr: Wits
 
     shortcuts:
         "hooks": "hook"

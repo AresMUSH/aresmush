@@ -1,7 +1,4 @@
 jobs:
-    permissions:
-        - access_jobs
-
     # List the categories you want to support.
     categories:
         - APP  # This is used by the chargen system.  If you remove or change it, you must also update that code.

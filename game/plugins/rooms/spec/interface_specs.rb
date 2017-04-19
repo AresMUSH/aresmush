@@ -20,7 +20,7 @@ module AresMUSH
           @char.stub(:update)
           @char.stub(:name) { "Char" }
           Rooms.stub(:emit_here_desc)
-        
+          Status::Api.stub(:update_last_ic_location) {}
           SpecHelpers.stub_translate_for_testing
         end
       
@@ -43,6 +43,11 @@ module AresMUSH
       
         it "should emit the new room desc" do
           Rooms.should_receive(:emit_here_desc).with(@client, @char)
+          Rooms.move_to(@client, @char, @new_room)
+        end
+        
+        it "should update last IC loc" do
+          Status::Api.should_receive(:update_last_ic_location) {}
           Rooms.move_to(@client, @char, @new_room)
         end
       end

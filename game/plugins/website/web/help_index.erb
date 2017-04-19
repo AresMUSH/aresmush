@@ -9,7 +9,8 @@
 <ul>
 <% topics.each do |name, data| %>
 <li>
-<a href="/help/<%= name %>"><%= name.titleize %></a> - <%= data['summary'] %>
+    
+<a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>"><%= name.titleize %></a> - <%= data['summary'] %>
 </li>
 <% end %>
 </ul>

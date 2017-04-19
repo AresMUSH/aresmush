@@ -31,7 +31,12 @@ module AresMUSH
           chars.sort_by { |c| c.name }.each do |idle_char|
             # Don't log destroyed chars who never hit the grid
             if (action != "Destroy" && action != "Nothing")   
-              report << idle_char.name               
+              report << idle_char.name 
+              
+              # Remove their handle.              
+              if (idle_char.handle)
+                idle_char.handle.delete
+              end
             end
             
             case action
@@ -40,7 +45,7 @@ module AresMUSH
               idle_char.delete
             when "Roster"
               Global.logger.debug "#{idle_char.name} added to roster."
-              Roster::Api.add_to_roster(idle_char)
+              Idle.add_to_roster(idle_char)
             when "Npc"
               idle_char.update(is_npc: true)
               Login::Api.set_random_password(idle_char)
@@ -53,15 +58,10 @@ module AresMUSH
               # Reset their idle status
               idle_char.update(idle_warned: false)
               idle_char.update(is_npc: false)
-              if (idle_char.idle_status)
-                idle_char.idle_status.delete
-              end
-              # Remove them from the roster.
-              Roster::Api.remove_from_roster(idle_char)
+              idle_char.update(idle_state: nil)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
-              idle_status = idle_char.get_or_create_idle_status
-              idle_status.update(status: action)
+              char.update(idle_state: action)
               Login::Api.set_random_password(idle_char)
             end
           end

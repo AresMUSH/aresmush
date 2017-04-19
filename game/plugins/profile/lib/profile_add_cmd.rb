@@ -19,12 +19,9 @@ module AresMUSH
       end
       
       def handle
-        field = ProfileField.find(name: self.field).combine(character_id: enactor.id).first
-        if (field)
-          field.update(data: self.value)
-        else
-          ProfileField.create(character: enactor, name: self.field, data: self.value)
-        end
+        profile = enactor.profile
+        profile[self.field] = self.value
+        enactor.update(profile: profile)        
         client.emit_success t('profile.custom_profile_set', :field => self.field)
       end
     end

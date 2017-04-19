@@ -1,0 +1,12 @@
+<%= line %>
+%xh<%= t('idle.roster_title') %>%xn
+
+%xh<%= t('idle.roster_column_titles') %>%xn
+<% paginator.items.each do |r| %>
+<%= left( r.name, 32 ) -%>
+<%= left( r.group("Position"), 20 ) -%>
+<%= left( approved(r), 12 ) -%>
+<%= r.roster_contact %>
+<% end %>
+<%= line_with_text paginator.page_marker %>
+<%= line %>

@@ -31,7 +31,7 @@ module AresMUSH
     def self.check_rank(char, rank, allow_all)
       return nil if !rank
       
-      group = char.group_value(Ranks.rank_group)
+      group = char.group(Ranks.rank_group)
       
       if (!group)
         return t('ranks.rank_group_not_set', :group => Ranks.rank_group)

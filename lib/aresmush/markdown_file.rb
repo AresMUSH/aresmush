@@ -19,7 +19,7 @@ module AresMUSH
           raise "Exception parsing #{@path} -- #{e}"
         end
       else
-        raise "Help file missing metadata header! #{@path}"
+        return nil
       end
     end
     
@@ -32,7 +32,7 @@ module AresMUSH
           raise "Exception parsing #{@path} -- #{e}"
         end
       else
-        raise "Help file missing metadata header! #{@path}"
+        return @file
       end
     end
   end

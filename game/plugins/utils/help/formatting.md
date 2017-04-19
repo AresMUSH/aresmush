@@ -1,32 +1,41 @@
 ---
-topic: formatting
-toc: Misc
+toc: Miscellaneous
 summary: Formatting and substition codes.
-categories:
-- main
 aliases:
 - subs
 - formatting
 - linebreak
 - center
-plugin: utils
 ---
+# Text Formatting
+
 Ares provides a number of formatting codes, which can be used pretty much anywhere: templates, poses, descriptions, and more.  
 
-A complete list can be found here:  http://aresmush.com/formatting
+## Escaping Characters
 
-Some commonly used ones are:
+Ares does not treat brackets, parens or % signs as special characters (unless the % is one of the special sequences listed above). 
 
-    \%r - A linebreak
-    \%x or \%c - Ansi color (see `help ansi`)
-    \%b - A single blank space
-    \%t - Five blank spaces (like a tab)
-    \%l1, \%l2, \%l3, \%l4 - Shows one of the border lines.
-
-It is worth noting that Ares does not treat brackets, parens or % signs as special characters (unless the % is one of the special sequences listed above). 
-
-   echo I don't have to do anything special to see a [ ] or a %.
+    echo I don't have to do anything special to see a [ ] or a %.
    
 If you did want to page someone one of the special codes, just put a \ in front of it.
 
-   echo Escape \\%xb with a backslash so I don't turn my text blue.
+    echo Escape \\%xb with a backslash so I don't turn my text blue.
+
+## Format Codes
+
+    \%r - A linebreak
+    \%b - A single blank space
+    \%t - Five blank spaces (like a tab)
+    \%l1, \%l2, \%l3, \%l4 - One of the border lines - line1, 2, 3 or 4.
+
+\%x or \%c are used for ansi color.  See [Ansi](/help/utils/ansi).
+
+## Functions
+
+Ares in general doesn't support functions the way you're used to from MUSHCode.  But there is **limited** support for a few for backwards-compatibility. 
+
+    [space(<number of spaces>)] - blank spaces
+    [center(<text>,<length>,<optional padding string>)] - center text
+    [left(<text>,<length>,<optional padding string>)] - left align text
+    [right(<text>,<length>,<optional padding string>)] - right a lign text
+    [ansi(<code>,<text>)] - ansify text

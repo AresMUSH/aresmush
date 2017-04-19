@@ -1,12 +1,11 @@
 ---
-topic: math
-toc: Misc
-summary: Using the MUSH as a calculator.
-categories:
-- main
-aliases: 
-plugin: utils
+toc: Miscellaneous
+summary: In-game calculator.
+aliases:
+- calculator
 ---
+# Math Calculator
+
 The math command evaluates simple math expressions.  
 
 `math <expression>`

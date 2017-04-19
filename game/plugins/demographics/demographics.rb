@@ -3,11 +3,19 @@ load "demographics_api.rb"
 load "lib/age_cmd.rb"
 load "lib/actors_cmd.rb"
 load "lib/basic_demographic_cmd.rb"
-load "lib/demographic_admin_cmd.rb"
 load "lib/birthday_cmd.rb"
 load "lib/demo_model.rb"
 load "lib/helpers.rb"
+load "lib/census_cmd.rb"
+load "lib/group_set_cmd.rb"
+load "lib/groups_cmd.rb"
+load "lib/groups_detail_cmd.rb"
 load "templates/actors_list.rb"
+load "templates/complete_census_template.rb"
+load "templates/gender_census_template.rb"
+load "templates/group_census_template.rb"
+load "templates/group_detail_template.rb"
+load "templates/group_list_template.rb"
 
 module AresMUSH
   module Demographics
@@ -26,10 +34,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/demographics.md", "help/admin_demo.md" ]
-    end
- 
     def self.config_files
       [ "config_demographics.yml" ]
     end
@@ -41,37 +45,27 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       
       case cmd.root
-      when "actor"
-        if (cmd.args)
-          return ActorSetCmd
-        else
-          return ActorsListCmd
-        end
+      when "actors"
+        return ActorsListCmd
       when "age"
         return AgeCmd 
       when "birthdate"
-        return BirthdateCmd 
-      when "callsign"
-        return CallsignCmd 
+        return BirthdateCmd       
       when "demographic"
+        return BasicDemographicCmd
+      when "census"
+        return CensusCmd
+      when "group"
         case cmd.switch
         when "set"
-          return DemographicAdminCmd
+          return GroupSetCmd
+        when nil
+          if (cmd.args)
+            return GroupDetailCmd
+          else
+            return GroupsCmd
+          end
         end
-      when "eyes"
-        return EyesCmd 
-      when "fullname"
-        return FullnameCmd 
-      when "gender"
-        return GenderCmd 
-      when "hair"
-        return HairCmd 
-      when "height"
-        return HeightCmd 
-      when "physique"
-        return PhysiqueCmd 
-      when "skin"
-        return SkinCmd 
       end
       
       nil     

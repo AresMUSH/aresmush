@@ -28,8 +28,7 @@ module AresMUSH
             return
           end
 
-          info = model.get_or_create_chargen_info
-          job = info.approval_job
+          job = model.approval_job
 
           if (!job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
@@ -39,14 +38,17 @@ module AresMUSH
           Jobs::Api.close_job(enactor, job, Global.read_config("chargen", "messages", "approval"))
           
           model.update(is_approved: true)
-          info.delete
+          model.update(approval_job: nil)
           
           client.emit_success t('chargen.app_approved', :name => model.name)
+          
+          welcome_message = Global.read_config("chargen", "messages", "welcome")
+          bbs_body = welcome_message % { :name => model.name, :position => model.group("Position") }
           
           Bbs::Api.system_post(
             Global.read_config("chargen", "arrivals_board"),
             t('chargen.approval_bbs_subject', :name => model.name), 
-            t('chargen.approval_bbs_body', :name => model.name, :position => model.group_value("Position")))
+            bbs_body)
             
           Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
              t('chargen.approval_bbs_subject', :name => model.name), 

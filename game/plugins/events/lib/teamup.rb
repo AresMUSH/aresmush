@@ -69,7 +69,14 @@ module AresMUSH
       def get_events(startDate, endDate)
         begin
           response = get("#{calendar}/events", { "startDate" => startDate, "endDate" => endDate})
-          response ? response['events'].map { |e| TeamupEvent.new(e) } : []
+          Global.logger.debug "Got response from calendar server."
+          if (response && response['error'])
+            Global.logger.warn "Error contacting calendar server: #{response}"
+          elsif (response)
+            return response['events'].map { |e| TeamupEvent.new(e) }
+          else
+            return []
+          end
         rescue Exception => ex
           Global.logger.warn "Unable to contact calendar server: #{ex}"
           []

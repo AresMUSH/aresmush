@@ -1,14 +1,12 @@
 ---
-topic: backup
-toc: Misc
+toc: FS3
 summary: Backing up your character.
-categories:
-- main
 aliases:
 - dec
 - decompile
-plugin: fs3skills
 ---
+# Character Backup
+
 Ares supports a fast-and-easy way to back up your important character information.  This includes:
 
 * Character sheet

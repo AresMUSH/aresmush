@@ -1,0 +1,32 @@
+<script src="//ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/ace_editor.js"></script>
+
+
+<div>
+
+<% if @error %>
+<div class="alert alert-danger">                
+    <%= @error %>      
+</div>
+<% end %>
+
+<h1><%= @path %></h1>
+
+<% if @plugin %>
+<p>
+    <p><a href="http://aresmush.com/plugins/<%= @plugin %>" target="_blank"><%= @plugin.titlecase %> Info & Tutorials</a></p>
+</p>
+<% end %>
+<form method="POST" action="/admin/config/update">
+<div id="editor" class="ace-editor"><%= @config %></div>
+<input type="hidden" id="config" name="config" />
+<input type="hidden" id="path" name="path" value="<%= @path %>" />
+<input type="hidden" name="plugin" value="<%= @plugin %>" />
+<input type="hidden" name="return_url" value="<%= @return_url %>" />
+<p>
+<a href="<%= @return_url %>"><button type="button" class="btn btn-default">Cancel</button></a>
+<button type="submit" class="btn btn-primary">Save</button>
+</p>
+</form>
+
+</div>

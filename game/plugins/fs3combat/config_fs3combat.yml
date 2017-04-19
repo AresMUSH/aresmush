@@ -3,18 +3,13 @@ fs3combat:
     # Default combatant type when joining combat.
     default_type: Soldier
     
-    # The system expects this to be a skill.
-    initiative_ability: Alertness
-    
-    # The system expects this to be a skill.  Used for knockout and stress rolls.
-    composure_ability: Composure
-    
     combatant_types:
         # For each combatant type, you can specify:
         # - default weapon and specials (as a list)
         # - default armor
         # - which hit location chart it uses
         # - a defense skill to fall back on - mostly for dodging ranged combat
+        #   if not specified, defaults to the global defense skill
         
         # ----------------------------------------
         # DEFAULT TYPES
@@ -25,7 +20,7 @@ fs3combat:
                 - Ap
             armor: Tactical
             hitloc: Humanoid
-            defense_skill: Reflexes
+            # defense_skill: Reflexes
         Observer:
             hitloc: Humanoid
             #weapon:
@@ -34,13 +29,12 @@ fs3combat:
         Unarmed:
             weapon: Unarmed
             hitloc: Humanoid
-            defense_skill: Reflexes
+            # defense_skill: Reflexes
                 
         # ----------------------------------------
         # CUSTOM TYPES
         # ----------------------------------------
         # Add any custom combatant types here.
-        
         Centurion:
             weapon: LMG
             weapon_specials: 
@@ -60,6 +54,22 @@ fs3combat:
             vehicle: Raider
             hitloc: Humanoid
             defense_skill: Piloting
+        Heavy:
+            vehicle: "Heavy Raider"
+            hitloc: Humanoid
+            defense_skill: Piloting
+
+        #Centurion:
+        #    weapon: LMG
+        #    weapon_specials: 
+        #        - Tripod
+        #    armor: Centurion
+        #    hitloc: Humanoid
+        #    defense_skill: Reflexes
+        #Viper:
+        #    vehicle: Viper
+        #    hitloc: Humanoid
+        #    defense_skill: Piloting
                      
     shortcuts:
         "weapons": "weapon"

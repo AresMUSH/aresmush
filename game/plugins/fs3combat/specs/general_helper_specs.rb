@@ -54,7 +54,7 @@ module AresMUSH
 
         @combat.stub(:active_combatants) { [ @combatant1, @combatant2, @combatant3 ]}
         
-        Global.stub(:read_config).with("fs3combat", "initiative_ability") { "init" }
+        Global.stub(:read_config).with("fs3combat", "initiative_skill") { "init" }
         
         FS3Combat.should_receive(:roll_initiative).with(@combatant1, "init") { 3 }
         FS3Combat.should_receive(:roll_initiative).with(@combatant2, "init") { 5 }

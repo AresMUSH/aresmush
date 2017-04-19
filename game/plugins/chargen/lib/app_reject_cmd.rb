@@ -37,7 +37,7 @@ module AresMUSH
             return
           end
           
-          model.chargen_info.update(locked: false)
+          model.update(chargen_locked: false)
           
           Jobs::Api.change_job_status(enactor,
             job,

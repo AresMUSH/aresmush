@@ -3,10 +3,8 @@ module AresMUSH
     def is_guest?
       self.has_any_role?(Login.guest_role)
     end
-    
-    def last_on
-      self.login_status ? self.login_status.last_on : nil
-    end
+
+    attribute :last_on, :type => DataType::Time
   end
   
   module Login

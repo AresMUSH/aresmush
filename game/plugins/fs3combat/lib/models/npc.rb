@@ -28,7 +28,7 @@ module AresMUSH
     
     def ability_rating(ability)
       stats = FS3Combat.npc_type(self.level)
-      stats[ability] || 3      
+      stats[ability] || stats["Default"]   
     end
   end
 end

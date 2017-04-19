@@ -4,7 +4,7 @@ load "lib/db/destroy_confirm_cmd.rb"
 load "lib/db/examine_cmd.rb"
 load "lib/db/find_cmd.rb"
 load "lib/db/rename_cmd.rb"
-load "lib/game/alts_cmd.rb"
+load "lib/game/findsite_all_cmd.rb"
 load "lib/game/announce_cmd.rb"
 load "lib/game/config_list_cmd.rb"
 load "lib/game/config_view_cmd.rb"
@@ -37,10 +37,6 @@ module AresMUSH
     end
  
     def self.unload_plugin
-    end
- 
-    def self.help_files
-      [ "help/alts.md", "help/admin_alts.md", "help/builder_db.md", "help/database.md", "help/git.md", "help/manage.md", "help/trouble.md" ]
     end
  
     def self.config_files
@@ -80,7 +76,11 @@ module AresMUSH
       when "find"
         return FindCmd
       when "findsite"
-        return FindsiteCmd
+        if (cmd.args)
+          return FindsiteCmd
+        else
+          return FindsiteAllCmd
+        end
       when "git"
         return GitCmd
       when "load"

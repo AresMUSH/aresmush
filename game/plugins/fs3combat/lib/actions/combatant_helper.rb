@@ -36,7 +36,7 @@ module AresMUSH
     
     # Attacker           |  Defender            |  Skill
     # -------------------|----------------------|----------------------------
-    # Suppress action    |  --                  |  Composure
+    # Suppress action    |  --                  |  Composure   [[Not yet implemented]]
     # Any weapon         |  In Vehicle          |  Vehicle piloting skill
     # Melee weapon       |  Melee weapon        |  Defender's weapon skill
     # Melee weapon       |  Other weapon        |  Default combatant type skill
@@ -51,7 +51,8 @@ module AresMUSH
       if (attacker_weapon_type == "Melee" && defender_weapon_type == "Melee")
         skill = FS3Combat.weapon_stat(combatant.weapon, "skill")
       else
-        skill = FS3Combat.combatant_type_stat(combatant.combatant_type, "defense_skill")
+        skill = FS3Combat.combatant_type_stat(combatant.combatant_type, "defense_skill") ||
+                Global.read_config("fs3combat", "default_defense_skill")
       end
       skill
     end

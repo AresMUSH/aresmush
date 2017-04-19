@@ -30,11 +30,11 @@ module AresMUSH
           end          
         elsif (self.msg == "off")
           cmd = Command.new("channel/leave #{self.channel.name}")
-        elsif (self.msg == "gag")
-          cmd = Command.new("channel/gag #{self.channel.name}")
-        elsif (self.msg == "ungag")
-          cmd = Command.new("channel/ungag #{self.channel.name}")
-        elsif (self.msg =~ /last[\b\d]*/)
+        elsif (self.msg == "gag" || self.msg == "mute")
+          cmd = Command.new("channel/mute #{self.channel.name}")
+        elsif (self.msg == "ungag" || self.msg == "unmute")
+          cmd = Command.new("channel/unmute #{self.channel.name}")
+        elsif (self.msg =~ /^last[ \d]*$/)
           num = self.msg.after("last")
           limit = num.blank? ? "" : "=#{integer_arg(num)}"
           cmd = Command.new("channel/recall #{self.channel.name}#{limit}")
@@ -50,8 +50,8 @@ module AresMUSH
           return
         end
         
-        if (Channels.is_gagging?(enactor, self.channel))
-          client.emit_failure t('channels.cant_talk_when_gagged')
+        if (Channels.is_muted?(enactor, self.channel))
+          client.emit_failure t('channels.cant_talk_when_muted')
           return          
         end
           

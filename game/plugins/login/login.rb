@@ -17,6 +17,7 @@ load "lib/tos_cmd.rb"
 load "lib/tour_cmd.rb"
 load "lib/watch_cmd.rb"
 load "login_api.rb"
+load "templates/notices_template.rb"
 
 module AresMUSH
   module Login
@@ -33,10 +34,6 @@ module AresMUSH
     end
  
     def self.unload_plugin
-    end
- 
-    def self.help_files
-      [ "help/admin_login.md", "help/email.md", "help/keepalive.md", "help/last.md", "help/login.md", "help/names.md", "help/watch.md" ]
     end
  
     def self.config_files

@@ -19,7 +19,7 @@ module AresMUSH
         end
         
         client.emit_success message
-        Handles::Api.warn_if_setting_linked_preference(client, enactor)
+        AresCentral::Api.warn_if_setting_linked_preference(client, enactor)
       end
     end
   end

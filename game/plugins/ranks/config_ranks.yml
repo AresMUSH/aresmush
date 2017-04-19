@@ -1,7 +1,4 @@
 ranks:
-    permissions:
-        - manage_ranks
-                
     # What group is used to determine rank?  (Must match your groups config)
     rank_group: Faction
     
@@ -60,6 +57,5 @@ ranks:
                 Gunnery Sergeant: false
                 Master Sergeant: false
                 Sergeant Major: false
-
     shortcuts:
         "rank/clear": "rank/set"

@@ -1,14 +1,12 @@
 ---
-topic: onstage
 toc: Status
 summary: Going onstage (IC).
-categories:
-- main
 aliases:
 - ic
 - stuck
-plugin: status
 ---
+# Onstage
+
 The onstage command is used to travel to the IC zone of the grid for RP.
 
 `onstage` - Travels to the IC area.

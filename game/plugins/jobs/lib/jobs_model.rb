@@ -5,14 +5,7 @@ module AresMUSH
   
   class Character
     
-    collection :job_read_marks, "AresMUSH::JobReadMark"
     collection :jobs, "AresMUSH::Job", :author
-    
-    before_delete :delete_job_read_marks
-    
-    def delete_job_read_marks
-      self.job_read_marks.each { |j| j.delete }
-    end
     
     def assigned_jobs
       Job.find(assigned_to_id: self.id)
@@ -20,8 +13,7 @@ module AresMUSH
     
     def unread_jobs
       return [] if !Jobs.can_access_jobs?(self)
-      read_jobs = self.job_read_marks.map { |m| m.job }
-      Job.all.select { |j| !read_jobs.include?(j) }
+      Job.all.select { |j| j.is_unread?(self) }
     end
     
     def unread_requests
@@ -29,17 +21,6 @@ module AresMUSH
         return []
       end
       self.jobs.select { |r| r.is_unread?(self) }
-    end
-  end
-  
-  class JobReadMark < Ohm::Model
-    include ObjectModel
-    
-    reference :character, "AresMUSH::Character"
-    reference :job, "AresMUSH::Job"
-    
-    def self.find_mark(job, char)
-      JobReadMark.find(character_id: char.id).combine(job_id: job.id).first
     end
   end
   
@@ -59,6 +40,8 @@ module AresMUSH
 
     collection :job_replies, "AresMUSH::JobReply"
     
+    set :readers, "AresMUSH::Character"
+    
     index :number
 
     before_delete :delete_replies
@@ -68,7 +51,7 @@ module AresMUSH
     end
     
     def is_unread?(char)
-      !JobReadMark.find_mark(self, char)
+      !readers.include?(char)
     end
       
     def is_open?

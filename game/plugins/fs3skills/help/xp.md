@@ -1,13 +1,9 @@
 ---
-topic: xp
 toc: FS3
 summary: Experience points.
-categories:
-- main
 aliases:
 - experience
 - improvement
-plugin: fs3skills
 ---
 Experience Points (XP) are gained periodically to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.  
 

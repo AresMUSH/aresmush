@@ -55,7 +55,7 @@ module AresMUSH
     def self.reset_stress(combatant)
       return if combatant.stress == 0
 
-      composure = Global.read_config("fs3combat", "composure_ability")
+      composure = Global.read_config("fs3combat", "composure_skill")
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
       combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old=#{combatant.stress} new=#{new_stress}."
@@ -66,8 +66,13 @@ module AresMUSH
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
 
       combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
-
-      roll = FS3Combat.make_ko_roll(combatant)
+      
+      if (combatant.is_npc? && (combatant.total_damage_mod < -7))
+        combatant.log "#{combatant.name} auto-KO'd."
+        roll = 0
+      else
+        roll = FS3Combat.make_ko_roll(combatant)
+      end
       
       if (roll <= 0)
         combatant.update(is_ko: true)
@@ -90,7 +95,7 @@ module AresMUSH
     def self.make_ko_roll(combatant)
       pc_mod = combatant.is_npc? ? 0 : 3
 
-      composure = Global.read_config("fs3combat", "composure_ability")
+      composure = Global.read_config("fs3combat", "composure_skill")
       
       if (combatant.is_in_vehicle?)
         vehicle = combatant.vehicle

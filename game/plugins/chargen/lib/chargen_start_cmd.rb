@@ -4,8 +4,7 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        chargen_info = enactor.get_or_create_chargen_info
-        chargen_info.update(current_stage: 0)
+        enactor.update(chargen_stage: 0)
 
         template = ChargenTemplate.new(enactor)
         client.emit template.render

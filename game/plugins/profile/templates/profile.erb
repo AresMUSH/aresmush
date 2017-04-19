@@ -28,10 +28,10 @@
 %xh<%= left( t('profile.handle_profile'), 12 ) %>%xn <%= handle_profile %>
 <% end %>
 <% if custom_profile %>
-<% char.profile_fields.each do |p| %>
+<% char.profile.each do |name, value| %>
 
-<%= line_with_text p.name %>
-<%= p.data %>
+<%= line_with_text name %>
+<%= value %>
 <% end %>
 <% end %>
 <%= line %>

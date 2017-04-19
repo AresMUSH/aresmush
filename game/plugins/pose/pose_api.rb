@@ -25,6 +25,10 @@ module AresMUSH
       def self.enable_repose(room)
         Pose.enable_repose(room)
       end
+      
+      def self.emit(enactor, pose, place_name = nil)
+        Pose.emit_pose(enactor, pose, true, false, place_name)
+      end
     end
   end
   

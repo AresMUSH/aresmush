@@ -8,10 +8,26 @@ module AresMUSH
       demographic(:actor) || t('demographics.actor_not_set')
     end
     
-    def demographic(name)
-      return nil if !self.demographics
-      self.demographics.send(name)
-    end  
+    def demographic(key)
+      name = key.to_s
+      return self.birthdate if name == "birthdate"
+      return self.demographics[name]
+    end
+    
+    def update_demographic(key, value)
+      name = key.to_s
+      if (name == "birthdate")
+        self.update(birthdate: value)
+      else
+        demo = self.demographics
+        demo[name] = value
+        self.update(demographics: demo)
+      end
+    end
+    
+    def group(name)
+      self.groups[name]
+    end
   end
   
   module Demographics

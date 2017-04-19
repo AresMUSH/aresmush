@@ -28,7 +28,7 @@ module AresMUSH
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           total_messages = channel.messages.count
           start_message = [ (total_messages - self.num_messages), 0 ].max
-          messages = channel.messages[start_message, total_messages]
+          messages = channel.messages[start_message, total_messages].map { |m| " #{m}" }
           client.emit BorderedDisplay.list messages, t('channels.recall_history', :name => channel.display_name(false))
         end
       end

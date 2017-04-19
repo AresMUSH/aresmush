@@ -3,25 +3,16 @@ module AresMUSH
     class HelpListTemplate < ErbTemplateRenderer
 
 
-      attr_accessor :category, :paginator
+      attr_accessor :paginator
       
-      def initialize(paginator, category)
+      def initialize(paginator)
         @paginator = paginator
-        @category = category
         super File.dirname(__FILE__) + "/help_list.erb"
       end
-            
-      def title
-        t('help.toc', :category => Help.category_config[self.category]["title"])
-      end    
       
       def section_topics(section)
-        Help.toc_topics(self.category, section)
-      end
-      
-      def other_cats
-        Help.category_config
-      end
+        Help.toc_topics(section)
+      end      
     end
   end
 end

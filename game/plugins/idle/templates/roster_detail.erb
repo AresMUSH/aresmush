@@ -1,0 +1,13 @@
+<%= line %>
+%xh<%= fullname %> (<%= char.name %>)
+
+%xh<%= t('idle.played_by') %>%xn <%= actor %>
+
+%xh<%= t('idle.wiki_page') %>%xn <%= website %>
+          
+<% if roster_contact %>
+%xh<%= t('idle.contact', :name => roster_contact) %>
+
+<% end %>
+<%= t('idle.roster_claim', :name => char.name) %>
+<%= line %>

@@ -182,14 +182,24 @@ module AresMUSH
             @combatant.stub(:weapon) { "Pistol" }
             FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Reaction"
           end
-        
+          
           it "should use defender type default for ranged vs melee" do
             @combatant.stub(:weapon) { "Knife" }
             FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Reaction"
           end
           
+          
+          it "should use the global default if no defender type specified" do
+            @combatant.stub(:combatant_type) { "NoDefense" }
+            FS3Combat.stub(:combatant_type_stat).with("NoDefense", "defense_skill") { nil }
+            Global.stub(:read_config).with("fs3combat", "default_defense_skill") { "Other" }
+            @combatant.stub(:weapon) { "Pistol" }
+            FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Other"
+          end
+          
+          
           it "should use composure for a suppression attack" do
-
+            # [[Not yet implemented]]
           end
           
           it "should use piloting skill if in a vehicle" do

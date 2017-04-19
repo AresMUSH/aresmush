@@ -1,24 +1,18 @@
 ---
-topic: tinker
-toc: Code Management
+toc: Managing Code
 summary: Custom code snippets
-categories:
-- admin
-plugin: tinker
 ---
+# Tinkering
+
+> **Permission Required:** Tinkering with the code requires the Admin role.
+
 The tinker command can be used to run custom code snippets.  For example, let's say you really quickly wanted to find all the characters whose names start with "G".  There's no admin command for that, but you can whip up a quick tinker for it.
 
-It's like a PennMUSH coder trying to do something ad-hoc like:
+1. Go to the Web Portal's Admin screen.  
+2. Select 'Tinker'.
+3. Add your code to the 'handle' method.
+4. Click Save.
+5. Back in the game window, run the `tinker` command.
+6. Return to the Web Portal and click 'Reset Tinker Code' to restore the tinker code to its original template.
 
-    think iter(lsearch(all,type,player), DO SOMETHING)
-
-Same idea, but the code lives on the server side.
-
-1. Edit tinker_cmd.rb and put the custom code into the handle method. For example:
-
-    c = Character.all.select { |c| c.name.start_with?("G") }.map { |c| c.name }
-    client.emit c.to_s
-
-2. `load manage` to reload the code.
-3. `tinker <your command syntax>` to tinker.
-
+For more help with tinkering, including examples, see [Tinkering With Code](http://aresmush.com/code/tinker) on aresmush.com.

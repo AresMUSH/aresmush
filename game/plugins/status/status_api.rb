@@ -52,6 +52,13 @@ module AresMUSH
       def self.is_idle?(client)
         Status.is_idle?(client)
       end
+      
+      def self.update_last_ic_location(char)
+        if (char.room.room_type == "IC")
+          char.update(last_ic_location: char.room)
+        end
+      end
+      
     end
   end  
 end

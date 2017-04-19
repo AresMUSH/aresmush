@@ -1,17 +1,21 @@
 $:.unshift File.dirname(__FILE__)
 
-load 'web/web.rb'
-load 'web/config.rb'
-load 'web/help.rb'
-load 'web/chargen.rb'
-load 'web/characters.rb'
-load 'web/admin.rb'
-load 'web/login.rb'
-load 'web/register.rb'
-load 'web/logs.rb'
-load 'web/setup.rb'
+load 'web/controllers/web.rb'
+load 'web/controllers/help.rb'
+load 'web/controllers/chargen.rb'
+load 'web/controllers/characters.rb'
+load 'web/controllers/config.rb'
+load 'web/controllers/fs3_combat.rb'
+load 'web/controllers/fs3_skills.rb'
+load 'web/controllers/game_info.rb'
+load 'web/controllers/game_prefs.rb'
+load 'web/controllers/admin.rb'
+load 'web/controllers/logs.rb'
+load 'web/controllers/login.rb'
+load 'web/controllers/register.rb'
 load 'web_cmd_handler.rb'
-
+load 'recaptcha_helper.rb'
+load 'website_cmd.rb'
 
 module AresMUSH
   module Website
@@ -30,10 +34,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [  ]
-    end
- 
     def self.config_files
       [  ]
     end
@@ -43,6 +43,10 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd, enactor)       
+      if (cmd.root == "website")
+        return WebsiteCmd
+      end
+      
       nil
     end
 

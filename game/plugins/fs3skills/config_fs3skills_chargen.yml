@@ -18,14 +18,10 @@ fs3skills:
     max_attr_rating: 5
     max_attributes: 16
     
-    starting_languages:
-        - Standard
-        
     # Here is where you can assign starting skills based on some group value - position,
     # faction, department, etc.  
     # Nothing will stop the player from dropping these skills, or later changing
     # their group, but it's at least a starting point.  It is also used in app review.
-    # If you don't want to use this feature, simply comment out the values.
     starting_skills:
         # You can set starting skills for everyone using the special "everyone" group.
         # Comment this out if it's not applicable.

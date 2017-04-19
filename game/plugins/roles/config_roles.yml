@@ -1,7 +1,4 @@
 roles:
-    permissions:
-        - assign_role
-
     # Roles that everyone starts with
     default_roles:
        - everyone

@@ -7,3 +7,4 @@ en:
         error_loading_help: "Error loading help %{topic}: %{error}."
         other_help_libraries: "Help Libraries:"
         unrecognized_help_library: "That is not a valid help library."
+        web_help_tip: "The help files are best viewed on the web portal.  See %xhhelp website%xn."

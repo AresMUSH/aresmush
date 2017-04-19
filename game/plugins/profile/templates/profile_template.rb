@@ -57,19 +57,19 @@ module AresMUSH
       end
 
       def faction
-        @char.group_value("Faction")
+        @char.group("Faction")
       end
 
       def position
-        @char.group_value("Position")
+        @char.group("Position")
       end
 
       def colony
-        @char.group_value("Colony")
+        @char.group("Colony")
       end
 
       def department
-        @char.group_value("Department")
+        @char.group("Department")
       end
 
       def rank
@@ -81,7 +81,7 @@ module AresMUSH
       end
       
       def alts
-        alt_list = Handles::Api.alts(@char).map { |c| c.name }
+        alt_list = AresCentral::Api.alts(@char).map { |c| c.name }
         alt_list.delete(@char.name)
         alt_list.join(" ")
       end
@@ -103,7 +103,7 @@ module AresMUSH
       end
       
       def custom_profile
-        !@char.profile_fields.empty?
+        !@char.profile.empty?
       end
       
       def handle_name

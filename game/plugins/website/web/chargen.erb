@@ -14,7 +14,7 @@
     
            <div class="panel-body">
 
-             <p>Be sure to <b>save</b> your character using the 'Save' button at the bottom.  Each time you save, the app status will update and alert you to any problems or things you still need to do.  Once you're done, you can log into the game itself to submit your character for review using '<code>app/submit</code>. </p>
+             <p>Changes you make here are not made in-game until you click the <b>Save</b> button.  Use the <b>App Status</b> tab to make sure there are no issues with your character and to submit them for approval when you're done. </p>
                 
             <p>
             <button type="submit" name="save" class="btn btn-warning">Save</button>
@@ -43,6 +43,24 @@
         <div class="panel-body">
         
             <pre class="ansi app-status"><%= @app %></pre>
+            
+            <div class="panel panel-success">
+    
+                <div class="panel-heading">
+                    All Done?
+                </div>
+    
+                <div class="panel-body">
+
+                  <p>If everything looks OK with your application, you can submit it for approval.  You'll need to log into the game itself to check on the status of your app. </p>
+                
+                 <p>
+                 <button type="submit" name="submit-app" class="btn btn-success">Submit Application</button>
+                 </p>
+
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
@@ -95,7 +113,7 @@
             <label for="faction" class="col-xs-2 col-form-label">Faction:</label> 
             <select name="faction">
               <% @factions['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @factions['desc']%></p>
@@ -105,7 +123,7 @@
             <label for="position" class="col-xs-2 col-form-label">Position:</label> 
             <select name="position">
               <% @positions['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @positions['desc']%></p>
@@ -116,7 +134,7 @@
             <label for="department" class="col-xs-2 col-form-label">Department:</label> 
             <select name="department">
               <% @departments['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @departments['desc']%></p>
@@ -126,7 +144,7 @@
             <label for="colony" class="col-xs-2 col-form-label">Colony:</label> 
             <select name="colony">
               <% @colonies['values'].each do |k, v| %>
-              <option value="<%= k %>" <% if @user.group_value("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+              <option value="<%= k %>" <% if @user.group("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
               <% end %>
             </select>
             <p class="cg-tip"><%= @colonies['desc']%></p>
@@ -185,22 +203,10 @@
 
 <div id="tabs-5">
 
-    <div class="panel panel-danger">
-    
-        <div class="panel-heading">
-            Reset Abilities
-        </div>
-    
-        <div class="panel-body">
-            <p>
-                After you have picked your groups, you should click Reset to set all of your abilities to starting levels.  <b>This will erase all of your current skills and attributes.</b>  Your other demographic and group information will be saved.
-            </p>
-        
-            <p><button type="submit" name="reset" class="btn btn-danger">Save and Reset Abilities</button></p>
-
-        </div>
-    </div>
-
+              <div class="alert alert-danger">Reset will erase all of your current skills and attributes and set starting levels based on your selected groups (position/faction/etc.).  Your other demographic and group information will be saved.
+                <p><button type="submit" name="reset" class="btn btn-danger">Reset Abilities</button></p>
+                </div>
+          
 
     <div class="panel panel-primary">
     
@@ -286,11 +292,11 @@
     
         <div class="panel-body">
             <p class="cg-tip">Background Skills represent arts, sports, hobbies, professions and any other skills not covered by Action Skills.  Background Skills are free-form, so there is no specific list. You can pick anything from Singing to Underwater Basketweaving. See <a href="http://aresmush.com/fs3/fs3-3/chargen/#background-skills">FS3 Background Skills</a> for details.</p>
-        <p class="cg-tip">To remove a background skill, set its rating to Everyman.</p>
+        <p class="cg-tip">Replace 'skill slot #' with the name of your skill.  To remove a background skill, set its rating to Everyman.</p>
 
             <% @fs3_bg_skills.each_with_index do |(name, rating), i| %>
             <div class="form-group row">
-            <input name="bg-name-<%= i %>" ype="text" size="20" class="col-xs-2 col-form-label" value="<%= name %>" />
+            <input name="bg-name-<%= i %>" type="text" size="20" class="col-xs-2 col-form-label" value="<%= name %>" />
             <select name="bg-rating-<%= i %>">
               <% @fs3_bg_skill_ratings.each do |num, desc| %>
               <option value="<%= num %>" 
@@ -340,7 +346,7 @@
         <div class="panel-body">
                             
         <p class="cg-tip">To help you flesh out your character, FS3 requres you to set RP Hooks.  These are interesting things about your character that others can "hook" into for RP. This could be an odd personality quirk, a reputation your character has, or anything else that might inspire someone to connect with you.  Looking around at other character's sheets can be a good way to get inspiration for RP Hooks.</p>
-        <p class="cg-tip">To remove a hook, just leave its description blank.</p>
+        <p class="cg-tip">Replace 'hook slot #' with the name of your hook and fill in the description.  To remove a hook, just leave its description blank.</p>
 
         <% @hooks.each_with_index do |(name, desc), i| %>
         <div class="form-group row">

@@ -52,13 +52,7 @@ module AresMUSH
  
     def self.unload_plugin
     end
- 
-    def self.help_files
-      [ "help/abilities.md", "help/admin_skills.md", "help/hooks.md", "help/roll.md", "help/skills.md",
-        "help/admin_luck.md", "help/luck.md", "help/backup.md", "help/sheet.md",
-        "help/admin_xp.md" , "help/xp.md" ]
-    end
- 
+  
     def self.config_files
       [ "config_fs3skills.yml", "config_xp.yml", "config_fs3skills_action.yml",
         "config_fs3skills_attrs.yml", "config_fs3skills_chargen.yml", 

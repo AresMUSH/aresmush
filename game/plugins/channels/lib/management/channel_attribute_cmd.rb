@@ -100,8 +100,8 @@ module AresMUSH
     
       def handle
         Channels.with_a_channel(name, client) do |channel|
-          channel.update(default_alias: self.attribute.split(","))
-          client.emit_success t('channels.default_alias_set')
+          channel.update(default_alias: self.attribute.split(/[, ]/))
+          client.emit_success t('channels.default_alias_set', :alias => channel.default_alias.join(", "))
         end
       end
     end

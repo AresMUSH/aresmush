@@ -49,8 +49,7 @@ module AresMUSH
         char.room = Game.master.welcome_room
 
         if (terms_of_service)
-          login_status = char.get_or_create_login_status
-          login_status.update(terms_of_service_acknowledged: Time.now)
+          char.terms_of_service_acknowledged = Time.now
         end
         
         char.save

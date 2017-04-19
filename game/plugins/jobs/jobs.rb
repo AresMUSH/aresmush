@@ -48,10 +48,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/admin_jobs.md", "help/jobs_archive.md", "help/requests.md" ]
-    end
- 
     def self.config_files
       [ "config_jobs.yml" ]
     end

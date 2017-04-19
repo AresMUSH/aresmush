@@ -43,13 +43,6 @@ module AresMUSH
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "formatted msg" }
           @handler.message.should eq "formatted msg"
         end
-
-        it "should format an ooc say message" do
-          Global.stub(:read_config).with("pose", "ooc_color") { '%xc' }
-          @handler = PoseCmd.new(@client, Command.new("ooc test"), @enactor)
-          PoseFormatter.should_receive(:format).with("Bob", "test") { "formatted msg" }
-          @handler.message.should eq "%xc<OOC>%xn formatted msg"
-        end
       end     
     end
   end

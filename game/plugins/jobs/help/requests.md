@@ -1,13 +1,9 @@
 ---
-topic: requests
-toc: Communicating
+toc: Jobs
 summary: Asking for help from the admin.
-categories:
-- main
-aliases:
-- request
-plugin: jobs
 ---
+# Requests
+
 The Request system is used to submit requests to the admins. You can track the status of your request, as well as who it's assigned to.
 
 `request <title>=<description>` - Submits a request

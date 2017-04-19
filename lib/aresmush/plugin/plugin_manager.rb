@@ -55,9 +55,16 @@ module AresMUSH
       end
     end
     
+    def help_files(plugin_module)
+      search = File.join(plugin_module.plugin_dir, "help", "**.md")
+      Dir[search]
+    end
+    
     def load_plugin_help(plugin_module)
-      plugin_module.help_files.each do |help|              
-        Global.help_reader.load_help_file File.join(plugin_module.plugin_dir, help)
+      plugin_name = plugin_module.to_s.after("::")
+      help_files = self.help_files(plugin_module)
+      help_files.each do |path|              
+        Global.help_reader.load_help_file path, plugin_name
       end
     end
     
@@ -78,9 +85,13 @@ module AresMUSH
     def shortcuts
       sc = {}
       plugins.each do |p|
-        plugin_shortcuts = p.shortcuts
-        if (p.shortcuts)
-          sc.merge! p.shortcuts
+        begin
+          plugin_shortcuts = p.shortcuts
+          if (p.shortcuts)
+            sc.merge! p.shortcuts
+          end
+        rescue Exception => ex
+          Global.logger.error "Error parsing shortcuts: #{p} #{ex}"
         end
       end
       sc

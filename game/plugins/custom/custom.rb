@@ -16,11 +16,7 @@ module AresMUSH
  
     def self.unload_plugin
     end
- 
-    def self.help_files
-      [ ]
-    end
- 
+     
     def self.config_files
       [ "config_custom.yml" ]
     end

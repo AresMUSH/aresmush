@@ -1,13 +1,7 @@
 channels:
-    permissions:
-        - manage_channels
-            
-    # Configure the markers that appear around a channel name.
-    # Typically this would be brackets for [Mux Style] or <MUSH Style>
-    start_marker: '<'
+    start_marker: '%xg<%xn'
     end_marker: '>'
 
-    # Channels you want to make sure guests and new players are on when they log in.
     default_channels:
         - Questions
         - Chat
@@ -17,6 +11,8 @@ channels:
         "chan": "channel"
         "channels": "channel"
         "channel/desc": "channel/describe"
+        "channel/gag": "channel/mute"
+        "channel/ungag": "channel/unmute"
         "channel/add" : "channel/create"
         "channel/on" : "channel/join"
         "channel/off" : "channel/leave"

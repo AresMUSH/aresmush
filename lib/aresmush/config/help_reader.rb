@@ -7,13 +7,19 @@ module AresMUSH
       self.help = {}
     end
 
-    def load_help_file(file)
+    def load_help_file(file, plugin)
       Global.logger.debug "Loading help from #{file}."
       md = MarkdownFile.new(file)
       md.load_file
       meta = md.metadata
-      meta["path"] = file
-      self.help[file] = meta
+      if (meta)
+        meta["path"] = file
+        meta["plugin"] = plugin.downcase
+        meta["topic"] = File.basename(file, ".md").downcase
+        self.help[file] = meta
+      else
+        Global.logger.warn "Skipping help file #{file} - missing metadata."
+      end
     end
     
     def unload_help(plugin)

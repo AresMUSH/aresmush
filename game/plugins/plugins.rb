@@ -6,6 +6,7 @@ module AresMUSH
   module Plugins
     def self.all_plugins
       [
+        
         "arescentral", 
         "bbs", 
         "channels", 
@@ -18,8 +19,6 @@ module AresMUSH
         "friends", 
         "fs3combat", 
         "fs3skills", 
-        "groups", 
-        "handles", 
         "help", 
         "ictime", 
         "idle", 
@@ -28,7 +27,6 @@ module AresMUSH
         "mail", 
         "manage", 
         "maps", 
-        "notices", 
         "ooctime", 
         "page", 
         "places",
@@ -37,7 +35,6 @@ module AresMUSH
         "ranks", 
         "roles", 
         "rooms", 
-        "roster", 
         "scenes",
         "status", 
         "tinker", 

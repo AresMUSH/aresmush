@@ -36,3 +36,14 @@ en:
        password_locked: "Your character has been locked due to repeated login failures.  You can log in as a guest (using the 'tour' command) and ask an admin to reset your password.  If you have a player handle, you can also reset the password through AresCentral."
        temp_password_set: "Your password has been set to %{password}.  Please reset it using the 'password' command."
        
+       # Notices
+       notices_title: "Notices"
+       unread_mail: "- You have %xh%xmunread mail%xn messages.  %xh%xx(mail/new)%xn"
+       no_unread_mail: "- No unread mail."
+       unread_bbs: "- There are %xh%xmnew bbs%xn posts.  %xh%xx(bbs/new)%xn"
+       no_unread_bbs: "- No new bbs posts."
+       unread_requests: "- There is new activity on your %xhrequests%xn. %xh%xx(requests)%xn"
+       unread_jobs: "- There are %xh%xmunread jobs%xn. %xh%xx(jobs/new)%xn"
+       no_unread_requests: "- No unread requests or jobs."
+       alt_unread_mail: "- %{name} has unread mail."
+       upcoming_events_title: "Upcoming Events"

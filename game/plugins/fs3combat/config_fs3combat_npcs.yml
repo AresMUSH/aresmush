@@ -1,6 +1,7 @@
 fs3combat:
     npc_types:
         Goon:
+            Default: 4
             Firearms: 6
             Gunnery: 6
             Piloting: 4
@@ -12,6 +13,7 @@ fs3combat:
             Medicine: 4
             Reflexes: 3
         Henchman:
+            Default: 6
             Firearms: 8
             Gunnery: 8
             Piloting: 6
@@ -23,6 +25,7 @@ fs3combat:
             Medicine: 6
             Reflexes: 5
         Boss:
+            Default: 8
             Firearms: 10
             Gunnery: 10
             Piloting: 8

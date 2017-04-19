@@ -31,10 +31,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/pose_format.md", "help/ooc.md", "help/posing.md", "help/repose.md" ]
-    end
- 
     def self.config_files
       [ "config_pose.yml" ]
     end
@@ -76,6 +72,8 @@ module AresMUSH
       if (cmd.raw.start_with?("\"") ||
           cmd.raw.start_with?("\\") ||
           cmd.raw.start_with?(":") ||
+          cmd.raw.start_with?("'") ||
+          cmd.raw.start_with?(">") ||
           cmd.raw.start_with?(";"))
         return PoseCatcherCmd
       end

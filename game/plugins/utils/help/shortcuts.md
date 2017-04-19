@@ -1,11 +1,6 @@
 ---
-topic: shortcuts
-toc: Misc
+toc: Miscellaneous
 summary: Create your own command shortcuts.
-categories:
-- main
-aliases: 
-plugin: utils
 ---
 You can create your own shortcuts for commands.  
 

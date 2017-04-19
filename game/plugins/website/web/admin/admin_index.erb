@@ -1,0 +1,58 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Game Setup
+    </div>
+    
+    <div class="panel-body">
+        
+        <a href="/admin/game_info" class="btn btn-default">Game Info</a>
+        <a href="/admin/game_prefs" class="btn btn-default">Game Preferences</a>
+        <a href="/admin/config/edit?path=files/connect.txt&return_url=/admin" class="btn btn-default">Connect Screen</a>
+        <a href="/admin/config/edit?path=files/tos.txt&return_url=/admin" class="btn btn-default">Terms of Service</a>
+        <a href="/admin/fs3_skills" class="btn btn-default">FS3 Skills</a>
+        <a href="/admin/fs3_combat" class="btn btn-default">FS3 Combat</a>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Code and Configuration
+    </div>
+    
+    <div class="panel-body">
+               
+        <a href="/admin/config" class="btn btn-default">Advanced Config</a>
+
+        <a href="/admin/tinker" class="btn btn-default">Tinker</a></p>
+                
+    </div>
+</div>
+
+    
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Admin Tasks
+    </div>
+    
+    <div class="panel-body">
+        
+        <% if @reboot_required %>
+            <div class="alert alert-warning">
+              <strong>Reboot Required!</strong> Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please reboot at your earliest convenience.
+            </div>
+        <% end %>
+        
+
+        <a href="/admin/logs" class="btn btn-default">View Logs</a></p>
+
+
+    <div class="alert alert-danger">
+        <p>This button will kill your game process.  This is a rough way to shut down the game, and should only be used if the in-game <code>shutdown</code> command isn't working.  You will have to log into the server shell to restart the game.</p>
+        
+        <p><a href="/admin/shutdown" class="btn btn-danger">Hard Shutdown</a></p>
+    </div>
+
+    </div>
+</div>

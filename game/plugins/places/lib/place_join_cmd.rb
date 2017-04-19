@@ -20,8 +20,7 @@ module AresMUSH
         place = enactor_room.places.find(name: self.name).first
       
         if (!place)
-          client.emit_failure t('places.place_doesnt_exit')
-          return
+          place = Place.create(name: self.name, room: enactor_room)
         end
         
         enactor.update(place: place)

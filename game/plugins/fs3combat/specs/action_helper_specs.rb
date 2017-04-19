@@ -83,7 +83,7 @@ module AresMUSH
           @combatant = double
           @combatant.stub(:log)
           @combatant.stub(:name) { "Bob" }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
         end
         
         it "should reduce stress by 1 even if roll fails" do
@@ -116,6 +116,8 @@ module AresMUSH
           @combatant.stub(:is_ko) { false }
           @combatant.stub(:freshly_damaged) { true }
           @combatant.stub(:total_damage_mod) { -2.0 }
+          @combatant.stub(:is_npc?) { false }
+          @combatant.stub(:name) { "Bob" }
         end
         
         it "should do nothing if already KOd" do
@@ -135,13 +137,33 @@ module AresMUSH
         
         it "should KO the person if roll fails" do
           combat = double
-          @combatant.stub(:name) { "Bob" }
           FS3Combat.should_receive(:make_ko_roll).with(@combatant) { 0 }
           @combatant.should_receive(:update).with(action_klass: nil)
           @combatant.should_receive(:update).with(action_args: nil)
           @combatant.should_receive(:update).with(is_ko: true)
           @combatant.stub(:combat) { combat }
           combat.should_receive(:emit).with("fs3combat.is_koed")
+          FS3Combat.check_for_ko(@combatant)
+        end
+        
+        it "should auto-ko a NPC with enough damage" do
+          combat = double
+          @combatant.stub(:total_damage_mod) { -7.1 }
+          @combatant.stub(:is_npc?) { true }
+          FS3Combat.should_not_receive(:make_ko_roll)
+          @combatant.should_receive(:update).with(action_klass: nil)
+          @combatant.should_receive(:update).with(action_args: nil)
+          @combatant.should_receive(:update).with(is_ko: true)
+          @combatant.stub(:combat) { combat }
+          combat.should_receive(:emit).with("fs3combat.is_koed")
+          FS3Combat.check_for_ko(@combatant)
+        end
+        
+        it "should not auto-ko a PC with enough damage" do
+          combat = double
+          @combatant.stub(:total_damage_mod) { -10.1 }
+          @combatant.stub(:is_npc?) { false }
+          FS3Combat.should_receive(:make_ko_roll).with(@combatant) { 1 }
           FS3Combat.check_for_ko(@combatant)
         end
         
@@ -190,7 +212,7 @@ module AresMUSH
         
         it "should roll vehicle toughness if in a vehicle" do
           vehicle = double
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
           vehicle.stub(:vehicle_type) { "Viper" }
           @combatant.stub(:is_in_vehicle?) { true }
           @combatant.stub(:vehicle) { vehicle }
@@ -202,7 +224,7 @@ module AresMUSH
         
         it "should roll personal toughness if not in a vehicle" do
           @combatant.stub(:is_in_vehicle?) { false }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
           @combatant.should_receive(:roll_ability).with("Composure", -2) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
@@ -210,7 +232,7 @@ module AresMUSH
         it "should give PCs a bonus to knockout" do
           @combatant.stub(:is_npc?) { false }
           @combatant.stub(:is_in_vehicle?) { false }
-          Global.stub(:read_config).with("fs3combat", "composure_ability") { "Composure" }
+          Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
           @combatant.should_receive(:roll_ability).with("Composure", 1) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end

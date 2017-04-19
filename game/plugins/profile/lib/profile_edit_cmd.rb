@@ -17,8 +17,8 @@ module AresMUSH
       end
       
       def handle
-        field = ProfileField.find(name: self.field).first
-        text = field ? field.data : ""
+        value = enactor.profile[self.field]
+        text = value || ""
         
         Utils::Api.grab client, enactor, "profile/set #{self.field}=#{text}"
       end

@@ -6,10 +6,15 @@ module AresMUSH
       attr_accessor :privacy, :scene_num
       
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        if (cmd.args =~ /\=/)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         
-        self.scene_num = integer_arg(args.arg1)
-        self.privacy = titlecase_arg(args.arg2)
+          self.scene_num = integer_arg(args.arg1)
+          self.privacy = titlecase_arg(args.arg2)
+        else
+          self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
+          self.privacy = titlecase_arg(args)
+        end
       end
       
       def required_args

@@ -15,6 +15,8 @@ module AresMUSH
           self.name = enactor.name
           self.stance = titlecase_arg(cmd.args)
         end
+        
+        self.stance = self.stances.select { |s| s.start_with? self.stance }.first
       end
 
       def required_args
@@ -24,8 +26,11 @@ module AresMUSH
         }
       end
 
-      def check_stance
-        stances = ['Aggressive', 'Normal', 'Defensive', 'Evade', 'Cover', 'Hidden']
+      def stances
+        ['Aggressive', 'Normal', 'Defensive', 'Evade', 'Cover', 'Hidden']
+      end
+      
+      def check_stance        
         return t('fs3combat.invalid_stance') if !stances.include?(self.stance)
         return nil
       end

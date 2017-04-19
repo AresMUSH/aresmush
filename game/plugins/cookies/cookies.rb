@@ -23,10 +23,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.help_files
-      [ "help/cookies.md" ]
-    end
- 
     def self.config_files
       [ "config_cookies.yml" ]
     end
