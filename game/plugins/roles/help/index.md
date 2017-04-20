@@ -20,6 +20,7 @@ In addition to allowing you to designate game admins, the Roles system lets you 
 `admin` - Shows game admins.
 `roles` - Show the available roles and those assigned to you.
 
-## Topics
+## Admin Topics
 
 [Managing Roles](/help/roles/manage)
+[Configuring the Roles System](/help/roles/config)

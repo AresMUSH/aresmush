@@ -41,3 +41,10 @@ chargen:
             help: profile
         review:
             help: chargen app
+    shortcuts:
+        "chargen" : "cg"
+        "cg/back": "cg/prev"
+        "bg/approve": "app/approve"
+        "bg/reject" : "app/reject"
+        "bg/submit" : "app/submit"
+        "bg/unsubmit" : "app/unsubmit"

@@ -1,33 +1,27 @@
 jobs:
-    # List the categories you want to support.
     categories:
-        - APP  # This is used by the chargen system.  If you remove or change it, you must also update that code.
+        - APP
         - BUILD
-        - CODE  # This is used by the code error reporting.  If you remove or change it, update 'error_category' below.
+        - BUG
+        - CODE
         - MISC
-        - REQ # This is used by the requests system. If you remove or change it, you must also update that code.
+        - REQ
         - RP
 
-    # Define your job status values and their colors.
     status:
-        NEW:  # If you remove or change this, update 'default_status' below.
+        NEW:
             color: "%xg"
         OPEN:
             color: "%xb"
         HOLD:
             color: "%xr"
-        DONE:   # If you remove or change this, update 'closed_status' below. 
+        DONE:
             color: "%xy"
     
-    # Status for new jobs.
     default_status:  "NEW"
     
-    # Status for closed jobs.
     closed_status: "DONE"
-    
-    # Category to use for unexpected system errors.
-    error_category: "CODE"
-    
+        
     shortcuts:
         "jobs": "job"
         "requests": "request"

@@ -3,10 +3,17 @@ module AresMUSH
     get '/help' do
       @topics = {}
       
+      
       Help.toc.each do |toc|
-        @topics[toc] = Help.toc_topics(toc)
+        if (params[:list])
+          @topics[toc] = Help.toc_topics(toc)
+          @show_full = true
+        else
+          @topics[toc] = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
+          @show_full = false
+        end
       end
-
+      
       uncategorized =  Help.toc_topics(nil)
       if (uncategorized.count > 0)
         @topics["Uncategorized"] = uncategorized

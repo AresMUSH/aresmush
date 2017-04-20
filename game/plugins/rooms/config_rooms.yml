@@ -1,11 +1,4 @@
 rooms:
-    permissions:
-        - build
-        - teleport
-        - go_home
-        
-    # Set up when you want the room sweep cron job to run.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
     room_lock_cron:
         #date: 1
         #day_of_week: Sat

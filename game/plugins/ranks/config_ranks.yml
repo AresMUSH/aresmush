@@ -1,19 +1,9 @@
 ranks:
-    # What group is used to determine rank?  (Must match your groups config)
     rank_group: Faction
     
-    # List available ranks by faction.  
     ranks:
-        
-        # List the group value from the rank_group above.
         Navy:
-            # List the rank type.  A faction can have different "types" of ranks
-            # (for example, officer vs enlisted).  All this affects is how the 
-            # ranks are shown on the ranks list.  If you don't really want different
-            # types, you can make a bogus type named "All"
             Officer:
-                # For each rank, list the name and then whether it's allowed
-                # in chargen.
                 Ensign: true
                 Lieutenant JG: true
                 Lieutenant: true

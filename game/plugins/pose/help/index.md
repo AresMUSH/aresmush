@@ -24,3 +24,7 @@ aliases:
 [Emits](/help/pose/emit)
 [OOC Asides](/help/pose/ooc)
 [Repose and Pose Order](/help/pose/repose)
+
+## Admin Topics
+
+[Configuring the Pose System](/help/pose/config)

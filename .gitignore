@@ -1,6 +1,5 @@
 tinkerfoo.rb
 *.log
-database.yml
 secrets.yml
 errors.txt
 save_pid.txt

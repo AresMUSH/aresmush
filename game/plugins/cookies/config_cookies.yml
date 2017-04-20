@@ -1,19 +1,12 @@
 cookies:
-    # Set up when you want the cookie cron job to run.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
     cron:
         #date: 1
         day_of_week: Fri
         hour: 22
         minute: 00
     
-    # If you want cookie notices posted to the bbs, set up a bulletin board where they will 
-    # go and put its name here.  If you're not using the BBS, comment this line out.
     cookie_board: "Cookie Awards"
     
-    # How many cookies does it take to get a luck point?  You can have fractional luck
-    # points, so they'll accumulate week to week.
-    # Set this to 0 to disable luck awards from cookies.
     cookies_per_luck: 10
     
     shortcuts:

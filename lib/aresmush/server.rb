@@ -29,25 +29,18 @@ module AresMUSH
         end
         
         webserver_port = Global.read_config("server", "webserver_port")
-        if (webserver_port)
-          web = WebAppLoader.new
-          web.run(port: webserver_port)
-          
-          websocket_port = Global.read_config("server", "websocket_port")
-          if (websocket_port)
-            EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
-              AresMUSH.with_error_handling(nil, "Web connection established") do
-                WebConnection.new(websocket) do |connection|
-                  Global.client_monitor.connection_established(connection)
-                end
+        web = WebAppLoader.new
+        web.run(port: webserver_port)
+        
+        websocket_port = Global.read_config("server", "websocket_port")
+          EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
+            AresMUSH.with_error_handling(nil, "Web connection established") do
+              WebConnection.new(websocket) do |connection|
+                Global.client_monitor.connection_established(connection)
               end
             end
-            Global.logger.info "Websocket started on #{host}:#{websocket_port}."
-          else
-            Global.logger.info "Websocket not enabled."
           end
-        end
-
+        Global.logger.info "Websocket started on #{host}:#{websocket_port}."
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end

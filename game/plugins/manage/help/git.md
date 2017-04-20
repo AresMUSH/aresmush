@@ -1,5 +1,5 @@
 ---
-toc: Managing Code
+toc: ~admin~ Coding
 summary: Server version control commands.
 ---
 # Git

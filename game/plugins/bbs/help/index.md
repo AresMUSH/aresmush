@@ -24,4 +24,7 @@ Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firs
 [Reading Boards](/help/bbs/reading)
 [Making Posts](/help/bbs/posting)
 [Replying to Posts](/help/bbs/replies)
+
+## Admin Topics
+
 [Managing Boards](/help/bbs/admin)

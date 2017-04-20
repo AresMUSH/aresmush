@@ -1,5 +1,5 @@
 ---
-toc: Managing Code
+toc: ~admin~ Configuring the Game
 summary: Configuring AresCentral.
 ---
 # AresCentral - Configuration
@@ -18,7 +18,7 @@ The game will automatically register itself with AresCentral the first time it s
 
 ## Directory Update Cron Job
 
-The game will periodically contact AresCentral to update its status and game directory info.  There is a [Cron Job](http://www.aresmush.com/tutorials/configuring-cron) to control when this happens.  By default it does this daily during off-hours.
+The game will periodically contact AresCentral to update its status and game directory info.  There is a cron job to control when this happens.  By default it does this daily during off-hours.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
 
 ## AresCentral URL
 

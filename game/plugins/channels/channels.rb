@@ -58,7 +58,7 @@ module AresMUSH
           return ChannelDefaultAlias
         when "delete"
           return ChannelDeleteCmd
-        when "describe"
+        when "desc"
           return ChannelDescCmd
         when "mute", "unmute"
           return ChannelMuteCmd

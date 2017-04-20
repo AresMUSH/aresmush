@@ -1,6 +1,7 @@
 ---
 toc: Character Creation
 summary: Military/paramilitary ranks.
+order: 2
 ---
 # Ranks
 
@@ -19,3 +20,6 @@ Admins and people with the `manage_ranks` permission can set someone else's rank
 
 `rank <name>=<rank>`
 
+## Admin Topics
+
+[Configuring the Ranks System](/help/ranks/config)

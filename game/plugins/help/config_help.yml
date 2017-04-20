@@ -2,3 +2,4 @@ help:
     shortcuts:
         "shelp" : "help"
         "ahelp" : "help"
+        "bhelp" : "help"

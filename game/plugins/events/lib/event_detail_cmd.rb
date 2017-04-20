@@ -17,7 +17,7 @@ module AresMUSH
         }
       end
       def handle
-        events = Events.upcoming_events(30)
+        events = Events.upcoming_events
         if (self.num < 0 || self.num > events.count)
           client.emit_failure t('events.invalid_event')
           return

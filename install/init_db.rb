@@ -53,19 +53,7 @@ module AresMUSH
         :room_area => "Offstage",
         :room_is_foyer => true)
       
-      rp_room_hub.current_desc = "RP Rooms can be used for backscenes, private scenes, or scenes taking place in areas of the grid that are not coded."
-
-      6.times do |n|
-        rp_room = Room.create(
-          :name => "RP Room #{n+1}", 
-          :room_type => "RPR",
-          :room_area => "Offstage")
-        
-        rp_room.current_desc = "The walls of the room shimmer. They are shapeless, malleable, waiting to be given form. With a little imagination, the room can become anything."
-          
-        Exit.create(:name => "#{n+1}", :source => rp_room_hub, :dest => rp_room)
-        Exit.create(:name => "O", :source => rp_room, :dest => rp_room_hub)
-      end
+      rp_room_hub.current_desc = "This game does not have RP/TP Rooms, but you can accomplish the same thing with the scenes system."
 
       Exit.create(:name => "RP", :source => ooc_room, :dest => rp_room_hub)
       Exit.create(:name => "QR", :source => ooc_room, :dest => quiet_room)
@@ -150,9 +138,9 @@ module AresMUSH
       channel.default_alias = [ 'q', 'qu', 'que' ]
       channel.save
       
-      channel = AresMUSH::Channel.create(name: "RP",
+      channel = AresMUSH::Channel.create(name: "RP Requests",
          color: "%xB",
-         description: "Looking for RP requests.")
+         description: "Look for RP. No spam.")
       channel.default_alias = [ 'rp' ]
       channel.save
       

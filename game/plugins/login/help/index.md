@@ -21,4 +21,8 @@ The login plugin handles everything you need to connect to the game, create a ch
 [Changing Your Password](/help/login/password)
 [Keeping Your Connection Alive](/help/login/keepalive)
 [Watching Other Characters Connect](/help/login/email)
+
+## Admin Topics
+
 [Managing Login Information](/help/login/admin)
+[Configuring the Login System](/help/login/config)

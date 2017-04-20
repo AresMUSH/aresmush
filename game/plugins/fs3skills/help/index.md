@@ -18,6 +18,9 @@ This game uses the FS3 skills system, Third Edition.  The complete rulebook can 
 [Experience Points](/help/fs3skills/xp)
 [Abilities](/help/fs3skills/abilities)
 [Backing Up Your Character](/help/fs3skills/backup)
+
+## Admin Topics
+
 [Managing Abilities](/help/fs3skills/admin)
 
 ## Copyright

@@ -11,4 +11,8 @@ The fate of idled-out characters is at the game admin's discretion, but we will 
 ## Topics
 
 [Roster](/help/idle/roster)
+
+## Admin Topics
+
 [Managing Idle Characters](/help/idle/admin)
+[Configuring the Idle System](/help/idle/config)

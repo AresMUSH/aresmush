@@ -21,3 +21,7 @@ If you don't want to be bothered by pages, you can mark yourself as 'do not dist
 `page/dnd <on or off>`
 
 If you are very idle or marked Away From the Keyboard, people paging you will be notified that you may not respond right away.  You can control the specific message they receive using the 'afk' command.
+
+## Admin Topics
+
+[Configuring the Page System](/help/page/config)

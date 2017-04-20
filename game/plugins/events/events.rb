@@ -2,6 +2,7 @@ $:.unshift File.dirname(__FILE__)
 load "events_api.rb"
 load "lib/events_cmd.rb"
 load "lib/event_detail_cmd.rb"
+load "lib/events_cron_handler.rb"
 load "lib/helpers.rb"
 load "lib/teamup.rb"
 load "templates/events_list_template.rb"
@@ -46,6 +47,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
       nil
     end
   end

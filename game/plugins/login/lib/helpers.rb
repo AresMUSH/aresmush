@@ -37,7 +37,7 @@ module AresMUSH
       suspects.each do |s|
         if (Login.is_site_match?(char, s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          Jobs::Api.create_job(Global.read_config("login", "jobs", "suspect_category"), 
+          Jobs::Api.create_job(Global.read_config("login", "suspect_category"), 
             t('login.suspect_login_title'), 
             t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
             Game.master.system_character)

@@ -40,7 +40,7 @@ module AresMUSH
            return MapCreateCmd
          when "delete"
            return MapDeleteCmd
-         when "areas"
+         when "area"
            return MapAreasCmd
          when nil
            return MapCmd

@@ -1,6 +1,7 @@
 ---
 toc: Character Creation
 summary: Setting basic character info.
+order: 2
 aliases:
 - fullname
 - gender
@@ -31,9 +32,11 @@ Demographics commands are used to set your basic character info.  Some items may
 `callsign <name>` - Callsign for pilots and other military chars.
 `actor <name>` - Set your actor.  You can see taken actors using the `actors` command.
 
-
 ## Topics
 
 [Setting Groups](/help/demographics/groups)
 [Character Census](/help/demographics/census)
+
+## Admin Topics
+
 [Managing Demographics](/help/demographics/admin)
