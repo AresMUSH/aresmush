@@ -1,6 +1,7 @@
 ---
 toc: Character Creation
 summary: Pre-made characters.
+order: 3
 ---
 # Roster
 

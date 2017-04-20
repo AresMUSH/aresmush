@@ -1,6 +1,4 @@
 weather:  
-    # List valid temperatures here. You can add more, but make sure you also add a 
-    # locale entry for each combination of temperature_season_timeofday (like cool_winter_night)
     temperatures: 
         - hot
         - warm
@@ -8,8 +6,6 @@ weather:
         - cold
         - freezing
     
-    # List valid conditions here. You can add more, but make sure you also add a 
-    # locale entry for them. 
     conditions:
         - clear
         - fair
@@ -20,70 +16,49 @@ weather:
         - storming
         - flurrying
         - snowing
-        
-    # Define the climates and their seasonal weather patterns and how stble the 
-    # weather is.
-    #
-    # The temperatures are a list of all possible temperatures for that climate.
-    # List as many as you want. By assigning 10 of them, we basically make it so that 
-    # there's a 10% chance of each weather item coming up. If you listed 20 conditions, 
-    # there would be a 5% chance for each item.
-    #
-    # The patterns are just a list of all possible weather conditions for that climate. 
-    # Like temperature, the more you list - the more chance of each one appearing.
-    # 
-    # The weather stability defines the chance for the weather to *stay the same* as 
-    # the current weather each time the weather cron job runs. This keeps the weather 
-    # from fluctuating wildly.
+
     climates:
         polar:
             spring:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
-                pattern:  clear clear clear fair fair fair flurrying flurrying overcast snowing
+                condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
                 stability: 80
             summer:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
-                pattern:  clear clear clear fair fair fair flurrying flurrying overcast snowing
+                condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
                 stability: 80
             fall:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
-                pattern:  clear clear clear fair fair fair flurrying flurrying overcast snowing
+                condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
                 stability: 80
             winter:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
-                pattern:  clear clear clear fair fair fair flurrying flurrying overcast snowing
+                condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
                 stability: 80
         temperate:
             summer:
-                temperature: hot hot hot hot hot warm warm warm warm cool cool
-                pattern:  clear clear clear fair fair fair drizzling drizzling overcast raining
+                temperature: hot hot hot hot hot warm warm warm cool cool
+                condition:  clear clear clear fair fair fair drizzling drizzling overcast raining
                 stability: 70
             spring:
                 temperature: cool cool cool cool cool warm warm warm warm warm
-                pattern:  clear clear clear fair fair fair drizzling drizzling overcast raining
+                condition:  clear clear clear fair fair fair drizzling drizzling overcast raining
                 stability: 70
             fall:
                 temperature: cool cool cool cool cool cool cool freezing warm warm
-                pattern:  clear clear clear fair fair fair drizzling drizzling overcast raining
+                condition:  clear clear clear fair fair fair drizzling drizzling overcast raining
                 stability: 70
             winter:
                 temperature: cold cold cold cold cold cold cold cool cool freezing freezing
-                pattern:  clear clear clear fair fair fair flurrying flurrying overcast snowing
+                condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
                 stability: 70
 
-    # This chooses which climate to use for any area not specified in the zones list.
-    default_zone: temperate
+    default_climate: temperate
 
-    # Define any areas that are different from the default_zone above.
-    # If there are none, set zones to an empty array:   
-    #   zones: []
-    zones:
+    climate_for_area:
         Offstage: none
         North: polar
      
-    # Set up when you want the weather update job to run.  
-    # See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
     cron:
         #date: 1
         #day_of_week: Sat

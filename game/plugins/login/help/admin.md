@@ -1,5 +1,5 @@
 ---
-toc: Managing Game
+toc: ~admin~ Managing Game
 summary: Managing player login info.
 aliases:
 - newpassword

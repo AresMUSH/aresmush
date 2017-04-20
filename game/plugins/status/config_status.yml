@@ -1,6 +1,5 @@
 status:
     colors:
-        # Provide full ansi codes for the colors you want for each status.
         IC: "%xr"
         OOC: "%xh"
         NPC: "%xh"
@@ -8,24 +7,14 @@ status:
         NEW: "%xg"
         ADM: "%xb"
         
-    afk:
-        # How many minutes before someone is considered idle.  Unlike AFK, this is not
-        # a deliberate setting, but just a way certain systems can warn that someone has
-        # been idle awhile.
-        # Comment out to disable this feature.
-        minutes_before_idle: 120
-        
-        # How many minutes before someone is automatically logged out for inactivity.
-        # Comment out to disable this feature.
-        minutes_before_idle_disconnect: 720
-        
-        # Set up when you want the AFK cron job to run.  See the 'cron' tutorial on the website for details.
-        # Comment out any items you aren't using; don't just leave them blank.
-        cron:
-            #date: 1
-            #day_of_week: Sat
-            #hour: 21
-            minute: 20
+    minutes_before_idle: 120
+    minutes_before_idle_disconnect: 720
+    
+    afk_cron:
+        #date: 1
+        #day_of_week: Sat
+        #hour: 21
+        minute: 20
 
     shortcuts:
         "ic" : "onstage"

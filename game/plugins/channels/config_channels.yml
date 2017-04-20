@@ -6,11 +6,12 @@ channels:
         - Questions
         - Chat
         - Galactica
+        - RP Requests
 
     shortcuts:
         "chan": "channel"
         "channels": "channel"
-        "channel/desc": "channel/describe"
+        "channel/describe": "channel/desc"
         "channel/gag": "channel/mute"
         "channel/ungag": "channel/unmute"
         "channel/add" : "channel/create"

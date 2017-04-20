@@ -1,12 +1,12 @@
 ---
-toc: Managing Game
+toc: ~admin~ Managing Game
 summary: Game management commands.
 ---
 # Managing the Game
 
 The Manage plugin provides a variety of admin commands to help you manage the game.
 
-## Topics
+## Admin Topics
 
 [Making Announcements](/help/manage/announce)
 [Managing the Database](/help/manage/database)

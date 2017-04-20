@@ -1,6 +1,6 @@
 ---
-toc: Managing Code
-summary: Custom code snippets
+toc: ~admin~ Coding
+summary: Custom code snippets.
 ---
 # Tinkering
 
@@ -15,4 +15,4 @@ The tinker command can be used to run custom code snippets.  For example, let's 
 5. Back in the game window, run the `tinker` command.
 6. Return to the Web Portal and click 'Reset Tinker Code' to restore the tinker code to its original template.
 
-For more help with tinkering, including examples, see [Tinkering With Code](http://aresmush.com/code/tinker) on aresmush.com.
+For more help with tinkering, including examples, see [Tinkering With Code](http://aresmush.com/tutorials/tinker) on aresmush.com.

@@ -38,7 +38,7 @@ module AresMUSH
             :dice => FS3Skills.print_dice(die_result),
             :success => success_title
           )
-          FS3Skills.emit_results message, client, model.room, self.private_roll
+          FS3Skills.emit_results message, client, enactor_room, self.private_roll
         end
       end
     end

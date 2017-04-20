@@ -27,5 +27,9 @@ The Jobs system is used by the game administrators to track work requests and to
 ## Topics
 
 [Player Requests](/help/jobs/requests)
+
+## Admin Topics
+
 [Managing Jobs](/help/jobs/admin)
 [Jobs Archive](/help/jobs/archive)
+[Configuring the Jobs System](/help/jobs/config)

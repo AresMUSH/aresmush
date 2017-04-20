@@ -3,11 +3,7 @@ module AresMUSH
 
     mattr_accessor :last_events, :last_event_time
 
-    def self.upcoming_events(days_ahead)
-      if (!self.last_events || (Time.now - self.last_event_time > (360 * 30)))
-        # This will refresh it for the next guy.
-        self.refresh_events(days_ahead)
-      end
+    def self.upcoming_events
       self.last_events || []
     end
     

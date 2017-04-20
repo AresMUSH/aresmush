@@ -1,14 +1,9 @@
 idle:
-    permissions:
-        - idle_sweep
-
-    # Roles that are exempt from idle sweep
     idle_exempt:
         - admin
         - builder
         - guest
 
-    # Idle-out announcements will be posted to this BBS.
     idle_board: "Announcements"
     
     days_before_idle: 30
@@ -16,10 +11,8 @@ idle:
     permissions:
         - manage_roster
 
-    # Newly-approved characters will be announced on this board.
     arrivals_board: "New Arrivals"
     
-    # Who's the default contact name for roster characters
     default_contact: "Admin"
 
     shortcuts:

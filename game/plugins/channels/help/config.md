@@ -1,12 +1,12 @@
 ---
-toc: Managing Code
+toc: ~admin~ Configuring the Game
 summary: Configuring channels.
 ---
 # Configuring the Channel System
 
 > **Permission Required:** Configuring the game requires the Admin role.
 
-To configure the AresCentral plugin:
+To configure the Channels plugin:
 
 1. Go to the Web Portal's Admin screen.  
 2. Select Advanced Config.

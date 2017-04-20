@@ -78,7 +78,7 @@ module AresMUSH
            plugin = value["plugin"]
            if (file_name == "index")
              key = plugin
-             value["order"] = 1
+             value["order"] = value["order"] || 1
              if (!value["aliases"])
                value["aliases"] = [ file_name ]
              else

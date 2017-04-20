@@ -29,4 +29,8 @@ Player Bits are special characters that are OOC only.
 [Going AFK](/help/status/afk)
 [Going On/Off Duty](/help/status/duty)
 [OOC-Only Player Bits](/help/status/playerbit)
+
+## Admin Topics
+
 [NPCs](/help/status/npc)
+[Configuring the Status System](/help/status/config)

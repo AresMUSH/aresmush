@@ -1,5 +1,6 @@
 ---
 toc: Character Creation
+order: 2
 summary: Character sheets.
 ---
 # FS3 - Character Sheet

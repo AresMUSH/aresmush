@@ -21,5 +21,8 @@ To start chargen in the game, type `cg/start`.  You can access the chargen comma
 
 [Backgrounds](/help/chargen/bg) - Writing your character's background.
 [App](/help/chargen/app) - Review character status and submit for approval.
+
+## Admin Topics
+
 [Managing Apps](/help/chargen/admin) - Managing applications.
 [Configuring Chargen](/help/chargen/config) - Configuring the chargen system.

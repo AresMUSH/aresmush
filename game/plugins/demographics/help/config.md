@@ -1,5 +1,5 @@
 ---
-toc: Managing Code
+toc: ~admin~ Configuring the Game
 summary: Configuring demographics.
 ---
 # Configuring the Demographics Plugin

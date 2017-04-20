@@ -8,7 +8,7 @@ module AresMUSH
     
     def self.change_all_weathers
       # Set an initial weather for each area and the default one
-      areas = Global.read_config("weather", "zones").keys + ["default"]
+      areas = Global.read_config("weather", "climate_for_area").keys + ["default"]
       areas.each do |a|
         Weather.change_weather(a)
       end
@@ -18,13 +18,14 @@ module AresMUSH
       # Figure out the climate for this area
       climate = Weather.climate_for_area(area)
 
-      # Save no weather if the weather is disabled for this zone.
+      # Save no weather if the weather is disabled for this area.
       if (climate == "none")
         Weather.current_weather[area] = ""
         return
       end
 
       season = Weather.season_for_area(area)
+      
       climate_config = Global.read_config("weather", "climates", climate)
       season_config = climate_config[season]
 
@@ -42,14 +43,14 @@ module AresMUSH
     end
 
     def self.random_weather(season_config)
-      condition = season_config["pattern"].split(/ /).shuffle.first
+      condition = season_config["condition"].split(/ /).shuffle.first
       temperature = season_config["temperature"].split(/ /).shuffle.first
       
       { :condition => condition, :temperature => temperature }
     end
     
     def self.climate_for_area(area)
-      Global.read_config("weather", "zones", area) || Global.read_config("weather", "default_zone")
+      Global.read_config("weather", "climate_for_area", area) || Global.read_config("weather", "default_climate")
     end
 
     # You can make this fancier to account for months like March which are

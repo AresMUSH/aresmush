@@ -1,6 +1,16 @@
-<h1>Help</h1>
+<% if @show_full %>
+<h1>Expanded Help List</h1>
+<% else %>
+<h1>Help Index</h1>
+<% end %>
 
 <p>This page shows the in-game help files.  For more tutorials, see <a href="http://aresmush.com">AresMUSH.com</a>.</p>
+
+<% if @show_full %>
+<p>View <a href="/help">Help Index</a></p>
+<% else %>
+<p>View <a href="/help?list=full">Full Help List</a></p>
+<% end %>
 
 <% @topics.each do |toc, topics| %>
 
@@ -10,7 +20,8 @@
 <% topics.each do |name, data| %>
 <li>
     
-<a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>"><%= name.titleize %></a> - <%= data['summary'] %>
+<a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>">
+    <%= name.titleize %></a> - <%= data['summary'] %>
 </li>
 <% end %>
 </ul>

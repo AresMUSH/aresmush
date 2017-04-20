@@ -19,3 +19,6 @@ Admins can also configure the game and perform various admin-related functions t
 
 Type `website` to get the address to the Web Portal.
 
+## Admin Topics
+
+[Configuring the Website](/help/website/config)

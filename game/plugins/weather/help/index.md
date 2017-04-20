@@ -10,6 +10,12 @@ The current IC weather for your area shows up in room descriptions, but you can 
 
 ## Changing the Weather
 
-Admins and people with the 'change_weather' permission are able to change the weather for a given area.  This will last until the next normal weather change.
+> **Required Permissions:** This command requires the Admin role or the change_weather permission.
+
+You can manually override the weather.  This will take effect until the next automatic weather change.
 
 `weather/set <area>=<temperature>/<weather condition>`
+
+## Admin Topics
+
+[Configuring the Weather System](/help/weather/config)

@@ -1,9 +1,4 @@
 manage:
-    permissions:
-        - manage_game
-        - manage_players
-        - manage_rooms
-
     shortcuts:
         "ex": "examine"
         "search": "find"

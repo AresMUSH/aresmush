@@ -1,5 +1,5 @@
 ---
-toc: Managing Game
+toc: ~admin~ Managing Game
 summary: Making announcements
 aliases:
 - wall

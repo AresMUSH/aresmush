@@ -1,12 +1,5 @@
 ooctime:
     
-    # The default timezone for new players.  You should be able to select any timezone from
-    # the 'tz database' (http://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    # Commonly:  
-    #    Eastern Time --> America/New_York 
-    #    Central Time --> America/Chicago
-    #    Mountain Time --> America/Denver
-    #    Pacific Time --> America/Los_Angeles
     default_timezone: "America/New_York"
     
     shortcuts:
