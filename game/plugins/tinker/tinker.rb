@@ -19,7 +19,7 @@ module AresMUSH
     end
     
     def self.config_files
-      [ "config_tinker.yml" ]
+      [ ]
     end
  
     def self.locale_files
