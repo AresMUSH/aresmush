@@ -7,6 +7,7 @@ module AresMUSH
     attribute :login_keepalive, :type => DataType::Boolean, :default => true
     attribute :login_failures, :type => DataType::Integer
     attribute :login_api_token
+    attribute :login_api_token_expiry, :type => DataType::Time
     
     attribute :terms_of_service_acknowledged, :type => DataType::Time
     attribute :last_ip
@@ -35,6 +36,10 @@ module AresMUSH
       return t('validation.name_is_restricted') if (Global.read_config("names", "restricted").include?(name.downcase))
       return t('validation.char_name_taken') if (Character.found?(name))
       return nil
+    end
+    
+    def is_valid_api_token?(token)
+      return self.login_api_token == token && self.login_api_token_expiry > Time.now
     end
   end  
 end
