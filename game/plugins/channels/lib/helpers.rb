@@ -88,10 +88,10 @@ module AresMUSH
     end
     
     def self.with_an_enabled_channel(name, client, enactor, &block)
-      channel = Channel.find_one_by_name(name)
+      channel = Channels.channel_for_alias(enactor, name)
       
       if (!channel)
-        channel = Channels.channel_for_alias(enactor, name)
+        channel = Channel.find_one_with_partial_match(name)
       end
       
       if (!channel)
@@ -108,7 +108,7 @@ module AresMUSH
     end
     
     def self.with_a_channel(name, client, &block)
-      channel = Channel.find_one_by_name(name)
+      channel = Channel.find_one_with_partial_match(name)
       
       if (!channel)
         client.emit_failure t('channels.channel_doesnt_exist', :name => name) 

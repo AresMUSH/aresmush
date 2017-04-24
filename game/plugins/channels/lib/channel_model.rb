@@ -64,8 +64,9 @@ module AresMUSH
     
     def save_upcase
       self.name_upcase = self.name.upcase
+      
       if (!self.default_alias)
-        self.default_alias = [self.name[0..1].downcase, self.name[0..2].downcase ]
+        self.default_alias = [self.name[0..1].trim.downcase, self.name[0..2].trim.downcase ].uniq
       end
     end      
         
@@ -100,6 +101,19 @@ module AresMUSH
     def pose(name, msg)
       formatted_msg = PoseFormatter.format(name, msg)
       emit formatted_msg
+    end
+    
+    def self.find_one_with_partial_match(name)
+      channel = Channel.find_one_by_name(name)
+      
+      if (!channel)
+        possible_matches = Channel.all.select { |c| c.name_upcase.starts_with?(name.upcase) }
+        if (possible_matches.count == 1)
+          channel = possible_matches.first
+        end
+      end
+      
+      channel
     end
   end
 end
