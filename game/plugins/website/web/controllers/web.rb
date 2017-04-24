@@ -2,10 +2,20 @@ module AresMUSH
   class WebApp    
     attr_accessor :user
     
+    configure do
+      disable :show_exceptions      
+    end
+    
     before do
       user_id = session[:user_id]
       @user = user_id ? Character[user_id] : nil
       @recaptcha = AresMUSH::Website::RecaptchaHelper.new
+    end
+    
+    error do
+      Global.logger.error env['sinatra.error']
+      @error = env['sinatra.error'].message
+      erb :error 
     end
     
     helpers do
