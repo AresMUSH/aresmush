@@ -4,7 +4,7 @@ en:
         actors_title: Actors
 
         admin_property_set: "You set %{name}'s %{property} to %{value}."
-        set_birthdate_instead: "Set birthdate instead of age."
+        use_birthday_instead: "Use the birthday command to set someone's age or birthday."
         invalid_demographic: "That is not a valid demographic."
         
         property_set: "You set your %{property} to %{value}."

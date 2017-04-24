@@ -4,6 +4,7 @@ load "lib/age_cmd.rb"
 load "lib/actors_cmd.rb"
 load "lib/actor_catcher_cmd.rb"
 load "lib/actor_search_cmd.rb"
+load "lib/actor_set_cmd.rb"
 load "lib/basic_demographic_cmd.rb"
 load "lib/birthday_cmd.rb"
 load "lib/demo_model.rb"
@@ -50,6 +51,7 @@ module AresMUSH
       when "actor"
         case cmd.switch
         when "set"
+          return ActorSetCmd
         when "search"
           return ActorSearchCmd
         else

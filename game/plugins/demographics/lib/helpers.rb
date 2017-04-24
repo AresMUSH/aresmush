@@ -9,6 +9,10 @@ module AresMUSH
       char.has_permission?("manage_demographics")
     end
 
+    def self.all_demographics
+      Global.read_config("demographics", "demographics")
+    end
+    
     def self.all_groups
       Global.read_config("demographics", "groups")
     end

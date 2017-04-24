@@ -85,7 +85,6 @@ demographics:
         "departments": "group department"
         "colonies": "group colony"
         "demographics": "demographic"
-        "actor/set": "demographic/set actor="
         "hair": "demographic/set hair="
         "eyes": "demographic/set eyes="
         "skin": "demographic/set skin="
@@ -94,3 +93,4 @@ demographics:
         "fullname": "demographic/set fullname="
         "callsign": "demographic/set callsign="
         "gender": "demographic/set gender="
+        "birthday": "birthdate"

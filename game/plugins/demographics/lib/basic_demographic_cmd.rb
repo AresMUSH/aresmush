@@ -36,7 +36,9 @@ module AresMUSH
       end
 
       def check_property
-        return t('demographics.set_birthdate_instead') if (self.property == "age")
+        bday = [ "age", "birthdate", "birthday"]
+        return t('demographics.use_birthday_instead') if bday.include?(self.property)
+        return t('demographics.invalid_demographic') if !Demographics.all_demographics.include?(self.property)
         return nil
       end
       
@@ -57,15 +59,6 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          if (self.property == "birthdate")
-            begin
-              self.value = Date.strptime(self.value, Global.read_config("date_and_time", "short_date_format"))
-            rescue
-              client.emit_failure t('demographics.invalid_birthdate', 
-                :format_str => Global.read_config("date_and_time", "date_entry_format_help"))
-              return
-            end
-          end
           
           model.update_demographic(self.property, self.value)
           
