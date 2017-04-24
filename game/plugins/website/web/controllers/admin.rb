@@ -36,9 +36,10 @@ module AresMUSH
 
       begin
         flash[:info] = "The tinker code has been updated.  You can now run it in-game with the 'tinker' command."
+                
       
         File.open(tinker_cmd_path, 'w') do |f|
-          f.write params[:tinkerCode]
+          f.write params[:contents]
         end
         Global.plugin_manager.unload_plugin("tinker")
         Global.plugin_manager.load_plugin("tinker")
