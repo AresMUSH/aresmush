@@ -45,3 +45,5 @@ en:
         
         census_groups: "Census Groups Available"
         app_review: "Checking groups are set."
+        
+        try_actor_search_or_set: "Maybe you meant actor/set or actor/search?"

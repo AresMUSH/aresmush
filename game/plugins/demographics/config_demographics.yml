@@ -85,7 +85,7 @@ demographics:
         "departments": "group department"
         "colonies": "group colony"
         "demographics": "demographic"
-        "actor": "demographic/set actor="
+        "actor/set": "demographic/set actor="
         "hair": "demographic/set hair="
         "eyes": "demographic/set eyes="
         "skin": "demographic/set skin="

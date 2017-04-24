@@ -34,13 +34,17 @@ module AresMUSH
     
     post '/admin/tinker/update', :auth => :admin do
 
-      flash[:info] = "The tinker code has been updated.  You can now run it in-game with the 'tinker' command."
+      begin
+        flash[:info] = "The tinker code has been updated.  You can now run it in-game with the 'tinker' command."
       
-      File.open(tinker_cmd_path, 'w') do |f|
-        f.write params[:tinkerCode]
+        File.open(tinker_cmd_path, 'w') do |f|
+          f.write params[:tinkerCode]
+        end
+        Global.plugin_manager.unload_plugin("tinker")
+        Global.plugin_manager.load_plugin("tinker")
+      rescue Exception => ex
+        flash[:error] = "There was a problem with the tinker code: #{e}"
       end
-      Global.plugin_manager.unload_plugin("tinker")
-      Global.plugin_manager.load_plugin("tinker")
       
       redirect '/admin/tinker'
     end
