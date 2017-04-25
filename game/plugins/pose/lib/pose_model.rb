@@ -4,6 +4,7 @@ module AresMUSH
     attribute :pose_nospoof, :type => DataType::Boolean
     attribute :pose_autospace, :default => "%r"
     attribute :pose_quote_color
+    attribute :repose_nudge, :type => DataType::Boolean, :default => true
   end
   
   class PoseOrder < Ohm::Model
@@ -20,6 +21,7 @@ module AresMUSH
     
     reference :room, "AresMUSH::Room"
     
+    attribute :first_turn, :type => DataType::Boolean, :default => true
     attribute :poses, :type => DataType::Array, :default => []
     attribute :enabled, :type => DataType::Boolean, :default => true
     collection :pose_orders, "AresMUSH::PoseOrder"
@@ -27,6 +29,11 @@ module AresMUSH
     def reset
       pose_orders.each { |po| po.delete }
       self.update(poses: [])
+      self.update(first_turn: true)
+    end
+    
+    def sorted_orders
+      self.pose_orders.to_a.sort { |p1, p2| p1.time <=> p2.time }
     end
   end
 

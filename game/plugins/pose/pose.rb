@@ -11,6 +11,7 @@ load "lib/pose_model.rb"
 load "lib/quote_color_cmd.rb"
 load "lib/repose_cmd.rb"
 load "lib/repose_clear_cmd.rb"
+load "lib/repose_nudge_cmd.rb"
 load "lib/repose_order_cmd.rb"
 load "lib/repose_set_cmd.rb"
 
@@ -58,10 +59,12 @@ module AresMUSH
         return QuoteColorCmd
       when "repose"
         case cmd.switch
-        when nil
+        when nil, "all"
           return ReposeCmd
         when "clear"
           return ReposeClearCmd
+        when "nudge"
+          return ReposeNudgeCmd
         when "on", "off"
           return ReposeSetCmd
         when "order"
