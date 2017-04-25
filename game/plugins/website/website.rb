@@ -55,7 +55,7 @@ module AresMUSH
       case event_name
         when "WebCmdEvent"
           return WebCmdEventHandler
-        when "ConfigUpdatedEvent"
+        when "ConfigUpdatedEvent", "GameStartedEvent"
           return WebConfigUpdatedEventHandler
       end
       
