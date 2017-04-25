@@ -58,7 +58,7 @@ module AresMUSH
     end
     
     def self.mute_text(char, channel)
-      Channels.is_muted?(char, channel) ? t('channels.muted') : ""
+      Channels.is_muted?(char, channel) ? "%xh%xx#{t('channels.muted')}%xn" : ""
     end
     
     def self.leave_channel(char, channel)
