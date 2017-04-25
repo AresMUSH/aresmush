@@ -14,6 +14,10 @@ module AresMUSH
         same_place_format = "#{color}[#{place_name}]%xn%R"
         same_place ? same_place_format : default_format
       end
+      
+      def self.clear_place(char)
+        char.place.delete
+      end
     end
   end
 end
