@@ -5,6 +5,7 @@ load "lib/where_cmd.rb"
 load "lib/who_cmd.rb"
 load "lib/who_events.rb"
 load "lib/who_model.rb"
+load "lib/whois_cmd.rb"
 load "templates/char_who_fields.rb"
 load "templates/common_who_fields.rb"
 load "templates/where_template.rb"
@@ -43,6 +44,8 @@ module AresMUSH
         return WhereCmd
       when "who"
         return WhoCmd        
+      when "whois"
+        return WhoisCmd
       end
       
       nil

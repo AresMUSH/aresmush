@@ -27,6 +27,7 @@ demographics:
         - physique
         - fullname
         - birthdate
+        - callsign
 
     groups:
         Faction:
