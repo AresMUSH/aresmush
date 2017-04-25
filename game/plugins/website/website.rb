@@ -14,6 +14,7 @@ load 'web/controllers/logs.rb'
 load 'web/controllers/login.rb'
 load 'web/controllers/register.rb'
 load 'web_cmd_handler.rb'
+load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'
 load 'website_cmd.rb'
 
@@ -51,8 +52,11 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
-      if (event_name == "WebCmdEvent")
-        return WebCmdEventHandler
+      case event_name
+        when "WebCmdEvent"
+          return WebCmdEventHandler
+        when "ConfigUpdatedEvent"
+          return WebConfigUpdatedEventHandler
       end
       
       nil

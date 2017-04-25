@@ -1,5 +1,1 @@
-var config = {
-    port: '4202',
-    mu_name: 'AresMUSH',
-    host: 'localhost'
-};
+var config = {"port":4202,"mu_name":"Local Test3","host":"localhost"};
