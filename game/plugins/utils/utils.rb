@@ -7,6 +7,9 @@ load "lib/echo_cmd.rb"
 load "lib/edit_prefix_cmd.rb"
 load "lib/fansi_cmd.rb"
 load "lib/math_cmd.rb"
+load "lib/notes_cmd.rb"
+load "lib/note_add_cmd.rb"
+load "lib/note_delete_cmd.rb"
 load "lib/recall_cmd.rb"
 load "lib/shortcuts_cmd.rb"
 load "lib/shortcut_add_cmd.rb"
@@ -58,6 +61,15 @@ module AresMUSH
         return FansiCmd
       when "math"
         return MathCmd
+      when "notes"
+        return NotesCmd
+      when "note"
+        case cmd.switch
+        when "add"
+          return NoteAddCmd
+        when "delete"
+          return NoteDeleteCmd
+        end
       when "recall"
         return RecallCmd
       when "save"

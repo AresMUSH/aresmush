@@ -26,3 +26,8 @@ en:
         shortcut_added: "Shortcut added."
         shortcuts_title: "Shortcuts"
         shortcut_does_not_exist: "That shortcut does not exist."
+    notes:
+        note_added: "Note added."
+        note_deleted: "Note deleted."
+        notes_title: "Player Notes"
+        note_does_not_exist: "That note does not exist."
