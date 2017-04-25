@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def self.clear_place(char)
-        char.place.delete
+        char.place.delete if char.place
       end
     end
   end

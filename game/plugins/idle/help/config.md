@@ -35,6 +35,10 @@ When characters are idled out, an annnouncement is posted to the BBS system.  Yo
 
 When characters are taken off the roster, an arrival announcement is also posted to the BBS board.  You can configure which board this goes to.  As with the Idle BBS Announcement, comment out or remove this line to disable the announcement.
 
+## Roster Welcome Message
+
+You can configure the contents of a mail message sent to a new player when they are taken off the roster.  You might use this to tell them the wiki password or any special instructions for getting started.
+
 ## Default Roster Contact
 
 If a character on the roster doesn't have a specific contact person (for questions about the character), this will used.  It defaults to "Admin" but you could make it a specific person or something like "App Staff".
