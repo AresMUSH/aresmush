@@ -1,6 +1,9 @@
 ---
-toc: ~admin~ Configuring the Game
+toc: ~admin~ Configuring the Plugins
 summary: Configuring the website.
+aliases:
+- css
+- recaptcha
 ---
 # Configuring the Website
 
@@ -25,3 +28,29 @@ In the `game/plugins/website/web/public` directory is a file named `config.js`. 
     }
 
 The port name and host must match the websocket_port and hostname from your server configuration.   The MUSH name should match the MU name from your game configuration.
+
+## Configuring Recaptca
+
+The game website uses Google's [Recaptcha](https://www.google.com/recaptcha/intro/) to keep bots from creating accounts.  Sign up for your own key by clicking "Get Recaptcha" from that website.
+
+* Create a new "Recaptcha v2" key.
+* List your game's website domain under the domains list.  You can also list 'localhost' if you're doing local testing.
+* Google will show your key info.
+
+Under 'Client Side Integration' you'll find a code snippet like this:
+
+`<div class="g-recaptcha" data-sitekey="ABCD123"></div>`
+
+The 'ABCD123" is your Recaptcha Site.
+
+Under 'Server Side Integraton' you'll see an entry like this:
+
+`secret(required): DEFGH789`
+
+The 'DEFGH789 is your Recaptcha Secret.
+
+To configure the recaptcha information:
+
+* Go to the Web Portal.
+* Select 'Game Preferences'.
+* Find 'Secret Codes'.
