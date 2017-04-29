@@ -217,15 +217,15 @@ module AresMUSH
           @combatant.stub(:is_in_vehicle?) { true }
           @combatant.stub(:vehicle) { vehicle }
           FS3Combat.stub(:vehicle_stat).with("Viper", "toughness") { 5 }
-          # Total mod = +5 for vehicle, -2 for damage
-          @combatant.should_receive(:roll_ability).with("Composure", 3) { 1 }
+          # Total mod = +5 for vehicle, -4 for damage (-2 x 2)
+          @combatant.should_receive(:roll_ability).with("Composure", 1) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
         
         it "should roll personal toughness if not in a vehicle" do
           @combatant.stub(:is_in_vehicle?) { false }
           Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
-          @combatant.should_receive(:roll_ability).with("Composure", -2) { 1 }
+          @combatant.should_receive(:roll_ability).with("Composure", -4) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
         
@@ -233,7 +233,7 @@ module AresMUSH
           @combatant.stub(:is_npc?) { false }
           @combatant.stub(:is_in_vehicle?) { false }
           Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
-          @combatant.should_receive(:roll_ability).with("Composure", 1) { 1 }
+          @combatant.should_receive(:roll_ability).with("Composure", -1) { 1 }
           FS3Combat.make_ko_roll(@combatant).should eq 1
         end
       end
