@@ -15,6 +15,7 @@ module AresMUSH
       end
       
       def handle
+        enactor.update(terms_of_service_acknowledged: nil)
         client.emit_success "Done!"
       end
 

@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def check_can_reset
-        return t('dispatcher.not_allowed')  if !Login.can_reset_password?(enactor)
+        return t('dispatcher.not_allowed')  if !Login.can_manage_login?(enactor)
         return nil
       end
       
