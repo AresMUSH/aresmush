@@ -32,16 +32,7 @@ module AresMUSH
           return
         end
         
-        scene.room.characters.each do |c|
-          connected_client = c.client
-          if (connected_client)
-            connected_client.emit t('scenes.scene_ending')
-          end
-          Rooms::Api.send_to_ooc_room(connected_client, c)
-        end
-        
-        scene.room.delete
-        scene.delete
+        Scenes.stop_scene(scene)
         client.emit_success t('scenes.scene_stopped')
       end
     end
