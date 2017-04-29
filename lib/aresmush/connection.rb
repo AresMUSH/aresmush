@@ -42,7 +42,6 @@ module AresMUSH
         input = strip_control_chars(data)
         @client.handle_input(input)
       rescue Exception => e
-        puts "#{e}"
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end
@@ -78,7 +77,6 @@ module AresMUSH
         end
       end
       
-      puts stripped.split("").join(",")
       stripped = stripped.gsub(/\^M/,"\n")
       stripped = stripped.gsub(/\0/,"")
       stripped.gsub(/\^@/,"")
