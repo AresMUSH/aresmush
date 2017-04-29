@@ -37,7 +37,7 @@ module AresMUSH
         line = "-".repeat(78)
         json = model.print_json
         
-        client.emit_raw "#{line}\n#{model.name} (##{model.id})\n\n#{json}#{}\n#{line}"
+        client.emit_raw "#{line}\n#{model.name} (#{model.dbref})\n\n#{json}#{}\n#{line}"
       end
       
       def print_model

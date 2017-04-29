@@ -1,0 +1,25 @@
+<h1>Expanded Help List</h1>
+
+<p>This page shows the in-game help files.  For more tutorials, see <a href="http://aresmush.com">AresMUSH.com</a>.</p>
+
+<p>Back to <a href="/help">Help Index</a>.</p>
+
+
+<% @topics.each do |toc, topics| %>
+
+<h2><%= toc %></h2>
+<ul>
+<% topics.each do |name, data| %>
+<li>
+    
+<a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>">
+    <%= name.titleize %></a> - <%= data['summary'] %>
+</li>
+<% end %>
+</ul>
+
+<% end %>
+
+
+
+

@@ -35,6 +35,18 @@ module AresMUSH
         @event['who'] || ""
       end
       
+      def color
+        if ((self.starts.to_time - Time.now) < 86400 )
+          "%xh%xg"
+        elsif ((self.starts.to_time - Time.now) < 86400 * 2 )
+          "%xh%xy"
+        elsif ((self.starts.to_time - Time.now) < 86400 * 7 )
+          "%xh"
+        else
+          ""
+        end
+      end
+      
       def notes
         markdown = MarkdownFormatter.new
         

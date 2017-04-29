@@ -1,7 +1,0 @@
-connect:
-
-    # This text is shown right after the connect screen.
-    # You may comment this out if you do not want to show any text.
-    # welcome_text: "Important message."
-
-    use_terms_of_service: true

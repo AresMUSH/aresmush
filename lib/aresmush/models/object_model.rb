@@ -17,6 +17,10 @@ module ObjectModel
       find(args).first
     end
     
+    def dbref_prefix
+      self.class.name
+    end
+  
     def default_values
       @@default_values[self]
     end
@@ -45,6 +49,10 @@ module ObjectModel
       end
     end
     super(attrs)
+  end
+  
+  def dbref
+    "##{self.class.dbref_prefix}-#{self.id}"
   end
       
   def print_json

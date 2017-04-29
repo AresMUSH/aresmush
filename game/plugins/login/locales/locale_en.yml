@@ -35,6 +35,7 @@ en:
        keepalive_set: "You turn your keepalive ping %{option}."
        password_locked: "Your character has been locked due to repeated login failures.  You can log in as a guest (using the 'tour' command) and ask an admin to reset your password.  If you have a player handle, you can also reset the password through AresCentral."
        temp_password_set: "Your password has been set to %{password}.  Please reset it using the 'password' command."
+       no_auto_login_time_expired:  "You have not been automatically connected to your character because your session has expired.  Please refresh the page and log in again."
        
        # Notices
        notices_title: "Notices"

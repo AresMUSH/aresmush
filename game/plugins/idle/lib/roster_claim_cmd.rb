@@ -38,6 +38,9 @@ module AresMUSH
           
           client.emit_success t('idle.roster_claimed', :name => model.name, :password => password)
           
+          welcome_message = Global.read_config("idle", "roster_welcome_msg")
+          Mail::Api.send_mail([model.name], "Welcome!", welcome_message, nil)          
+          
           bbs = Global.read_config("idle", "arrivals_board")
           return if !bbs
           return if bbs.blank?

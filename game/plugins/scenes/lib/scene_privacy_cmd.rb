@@ -13,7 +13,7 @@ module AresMUSH
           self.privacy = titlecase_arg(args.arg2)
         else
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
-          self.privacy = titlecase_arg(args)
+          self.privacy = titlecase_arg(cmd.args)
         end
       end
       

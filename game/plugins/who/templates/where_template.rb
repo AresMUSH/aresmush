@@ -18,11 +18,22 @@ module AresMUSH
         #super File.dirname(__FILE__) + "/where.erb"
       end      
       
+      def room_name(char)
+        room = char.room
+        name = Who.who_room_name(char)
+        if (room.scene)
+          name = "(S#{room.scene.id})#{name.after('-')}"
+          privacy = room.scene.private_scene ? "%xr<#{t('who.private')}>%xn" : "%xg<#{t('who.public')}>%xn"
+          "#{name} #{privacy}"
+        else
+          name
+        end
+      end
       
       def room_groups
         groups = {}
         self.online_chars.each do |c|
-          room = Who.who_room_name(c)
+          room = room_name(c)
           idle = c.is_afk? || Status::Api.is_idle?(c.client)
           name = idle ? "%xh%xx#{c.name}%xn" : c.name
           if (groups.has_key?(room))

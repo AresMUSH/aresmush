@@ -40,7 +40,7 @@ module AresMUSH
     
     post '/admin/config/update', :auth => :admin do
       
-      config = params[:config]
+      config = params[:contents]
       path = params[:path]
       plugin = params[:plugin]
       

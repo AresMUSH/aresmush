@@ -18,6 +18,6 @@
 %xh<%= center( t('login.upcoming_events_title'), 78 ) %>%xn
 %l2
 <% events.each do |ev| %>
-<%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)
+<%= ev.color -%><%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)%xn
 <% end %>
 <%= line %>
