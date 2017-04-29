@@ -6,14 +6,15 @@ demographics:
     # Names of properties that will be checked for during chargen.  Be sure to use
     # the exact names of the code properties in demo_model.rb
     required_properties:
+        - actor
+        - hair
+        - eyes
+        - skin
         - height
         - physique
         - fullname
         - gender
-        - hair
-        - eyes
         - birthdate
-        - skin
     
     editable_properties:
         - fullname
@@ -30,6 +31,7 @@ demographics:
         - height
         - physique
         - fullname
+        - gender
         - birthdate
         - callsign
 
@@ -90,7 +92,6 @@ demographics:
         "departments": "group department"
         "colonies": "group colony"
         "demographics": "demographic"
-        "actor": "demographic/set actor="
         "hair": "demographic/set hair="
         "eyes": "demographic/set eyes="
         "skin": "demographic/set skin="
@@ -99,3 +100,4 @@ demographics:
         "fullname": "demographic/set fullname="
         "callsign": "demographic/set callsign="
         "gender": "demographic/set gender="
+        "birthday": "birthdate"

@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Game
+toc: ~admin~ Configuring the Plugins
 summary: Configuring the events system.
 ---
 # Configuring the Events System
@@ -58,11 +58,11 @@ Fill out the [Teamup form](https://teamup.com/api-keys/request) to request your 
 
 ### Configure the Game
 
-To configure the Demographics plugin:
+To configure the game to talk to your calendar:
 
 1. Go to the Web Portal's Admin screen.  
-2. Select Game Preferences.
-3. Scroll down to Secret Codes.
+2. Select 'Secret Codes'.
+3. Scroll down to 'Teamup Events'.
 4. Enter the API Key and Calendar ID
 5. Click Save.
 

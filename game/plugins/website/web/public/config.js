@@ -1,5 +1,5 @@
 var config = {
-    port: '4205',
-    mu_name: 'AresMUSH'
+    port: '8181',
+    mu_name: 'BSG: Unification'
     host: 'mush.aresmush.com'
-}
+};

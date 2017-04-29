@@ -15,6 +15,12 @@ en:
         repose_not_in_ooc: "Repose is not enabled in OOC rooms."
         repose_cleared: "You clear the poses and pose order."
         repose_order_title: "Name                        Last Posed"
+        maybe_meant_on_off: "Maybe you meant repose/on or repose/off instead?"
+        repose_your_turn: "It's your turn to pose."
+        repose_nudge_on: "You will now be notified when it's your turn to pose.  Note: This only functions when the repose system is turned on in a room."
+        repose_nudge_off: "You will no longer be notified when it's your turn to pose."
         
         quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
         quote_color_cleared: "Quotation color cleared."
+        
+        

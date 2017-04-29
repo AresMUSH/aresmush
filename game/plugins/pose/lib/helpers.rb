@@ -15,6 +15,7 @@ module AresMUSH
       
       if (!is_ooc)
         Pose.add_repose(room, enactor, pose)
+        Pose.notify_next_person(room)
         Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit)
       end
     end
@@ -28,16 +29,36 @@ module AresMUSH
       enactor_order = order.find(character_id: enactor.id).first
       if (enactor_order)
         enactor_order.update(time: Time.now)
+        
+        # Soeone has acted twice, so we'll assume this is the pose order.
+        repose.update(first_turn: false)
       else
         PoseOrder.create(repose_info: repose, character: enactor, time: Time.now)
       end
 
       poses = repose.poses || []
       poses << pose
-      if (poses.count > 8)
-        poses.shift
-      end
       repose.update(poses: poses)
+    end
+    
+    def self.notify_next_person(room)
+      return if !room.repose_on?
+      
+      repose = room.repose_info
+      return if repose.first_turn
+      return if repose.sorted_orders.count < 3
+        
+      next_up_order = repose.sorted_orders.first
+      next_up_char = next_up_order.character
+      
+      if (!next_up_char.client)
+        next_up_order.delete
+        Pose.notify_next_person(room)
+      elsif (next_up_char.repose_nudge)
+        next_up_char.client.emit_ooc t('pose.repose_your_turn')
+      else
+        
+      end
     end
     
     def self.repose_enabled

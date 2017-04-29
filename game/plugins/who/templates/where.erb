@@ -5,7 +5,7 @@
 <% chars_by_room.each do |c| %>
 <%= status_color(c) %><%= left( status(c), 7 ) %><%= "%xn" -%>
 <%= left( c.name, 23 ) -%>
-<%= left( c.room.name, 36 ) -%>
+<%= left( room_name(c), 36 ) -%>
 <%= left( connected(c), 7 ) -%>
 <%= idle(c) %>
 <% end %>

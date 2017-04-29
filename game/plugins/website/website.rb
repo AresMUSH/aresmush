@@ -5,15 +5,19 @@ load 'web/controllers/help.rb'
 load 'web/controllers/chargen.rb'
 load 'web/controllers/characters.rb'
 load 'web/controllers/config.rb'
+load 'web/controllers/config_date.rb'
+load 'web/controllers/config_secrets.rb'
+load 'web/controllers/config_skin.rb'
+load 'web/controllers/config_names.rb'
 load 'web/controllers/fs3_combat.rb'
 load 'web/controllers/fs3_skills.rb'
 load 'web/controllers/game_info.rb'
-load 'web/controllers/game_prefs.rb'
 load 'web/controllers/admin.rb'
 load 'web/controllers/logs.rb'
 load 'web/controllers/login.rb'
 load 'web/controllers/register.rb'
 load 'web_cmd_handler.rb'
+load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'
 load 'website_cmd.rb'
 
@@ -51,8 +55,11 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
-      if (event_name == "WebCmdEvent")
-        return WebCmdEventHandler
+      case event_name
+        when "WebCmdEvent"
+          return WebCmdEventHandler
+        when "ConfigUpdatedEvent", "GameStartedEvent"
+          return WebConfigUpdatedEventHandler
       end
       
       nil

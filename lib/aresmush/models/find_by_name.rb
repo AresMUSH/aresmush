@@ -10,11 +10,23 @@ module AresMUSH
       #def register_data_members
       #end
     
+      def find_any_by_id(id)
+        puts "Finding #{id} in #{self.class.name} #{self.dbref_prefix}"
+        prefix = id.after("#").before("-")
+        if (prefix == self.dbref_prefix)
+          puts "ID: #{id.after("-")}"
+          return [self[id.after("-")]]
+        else
+          puts "Not matched id #{prefix}  my id #{self.dbref_prefix}"
+          return []
+        end
+      end
+      
       def find_any_by_name(name_or_id)
         return [] if !name_or_id
-        result = self[name_or_id]
-        if result
-          return [result]
+        
+        if (name_or_id.start_with?("#"))
+          return find_any_by_id(name_or_id)
         end
         find(name_upcase: name_or_id.upcase).to_a.select { |c| c }
       end

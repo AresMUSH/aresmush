@@ -2,10 +2,27 @@ module AresMUSH
   class WebApp    
     attr_accessor :user
     
+    configure do
+      disable :show_exceptions      
+    end
+    
     before do
       user_id = session[:user_id]
       @user = user_id ? Character[user_id] : nil
+      
+      if (@user && @user.login_api_token_expiry < Time.now)
+        flash[:error] = "Your session has expired.  Please log in again."
+        session.clear
+        redirect to('/')
+      end
+      
       @recaptcha = AresMUSH::Website::RecaptchaHelper.new
+    end
+    
+    error do
+      Global.logger.error env['sinatra.error']
+      @error = env['sinatra.error'].message
+      erb :error 
     end
     
     helpers do

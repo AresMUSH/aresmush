@@ -30,11 +30,18 @@ module AresMUSH
       end
       
       def handle
-        room = find_destination
-        if (!room)
-          client.emit_failure(t('rooms.invalid_teleport_destination'))
+        matched_rooms = find_destination
+        if (matched_rooms.count == 0)
+          client.emit_failure t('rooms.invalid_teleport_destination')
           return
         end
+        
+        if (matched_rooms.count > 1)
+          client.emit_failure t('db.object_ambiguous')
+          return
+        end
+        
+        room = matched_rooms[0]
         
         targets = find_targets
         return if targets.empty?
@@ -51,20 +58,25 @@ module AresMUSH
       def find_destination
         find_result = ClassTargetFinder.find(self.destination, Character, enactor)
         if (find_result.found?)
-          return find_result.target.room
+          return [find_result.target.room]
         end
         
         find_result = ClassTargetFinder.find(self.destination, Room, enactor)
         if (find_result.found?)
-          return find_result.target
+          return [find_result.target]
         end
         
-        matched_rooms = Room.all.select { |r| r.name_upcase =~ /#{self.destination.upcase}/ }
-        
-        if (matched_rooms.empty? || matched_rooms.count > 1)
-          return nil
+        matched_rooms = Room.all.select { |r| format_room_name_for_match(r) =~ /#{self.destination.upcase}/ }
+                
+        return matched_rooms
+      end
+      
+      def format_room_name_for_match(room)
+        if (self.destination =~ /\//)
+          return "#{room.area}/#{room.name}".upcase
+        else
+          return room.name.upcase
         end
-        return matched_rooms[0]
       end
       
       def find_targets

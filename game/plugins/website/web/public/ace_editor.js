@@ -15,12 +15,12 @@
       else if (title.endsWith('txt')) {
           editor.getSession().setMode("ace/mode/plain_text");
       }
-      var config = document.getElementById('config');
-      config.value = editor.getValue();
+      var contents = document.getElementById('contents');
+      contents.value = editor.getValue();
 
       editor.getSession().on('change', function(e) {
-          var config = document.getElementById('config');
-          config.value = editor.getValue(); 
+          var contents = document.getElementById('contents');
+          contents.value = editor.getValue(); 
       }); 
       
   });

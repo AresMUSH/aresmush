@@ -7,7 +7,6 @@ module AresMUSH
       
       def initialize(char)
         @char = char
-        @registry = registry
         super File.dirname(__FILE__) + "/roster_detail.erb"
       end
       

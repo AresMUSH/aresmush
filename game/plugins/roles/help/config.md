@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Game
+toc: ~admin~ Configuring the Plugins
 summary: Configuring the roles system.
 ---
 # Configuring the Roles System

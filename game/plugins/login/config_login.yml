@@ -6,6 +6,8 @@ login:
     suspect_category: "MISC"
 
     guest_role: "guest"
+    
+    use_terms_of_service: true
 
     shortcuts:
         "logout" : "quit"

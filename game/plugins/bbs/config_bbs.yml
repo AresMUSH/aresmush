@@ -10,6 +10,7 @@ bbs:
         "bbreply" : "bbs/reply"
         "bbremove" : "bbs/delete"
         "bbmove" : "bbs/move"
+        "bbs/remove": "bbs/delete"
         "bbnewgroup" : "bbs/createboard"
         "bbcleargroup" : "bbs/deleteboard"
         "bbarchive" : "bbs/archive"

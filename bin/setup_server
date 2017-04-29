@@ -33,7 +33,7 @@ usermod -p "$ENCRYPTEDPW" ares
 
 # Add them to the web and ares groups
 addgroup www
-usermod -a -G sudo,www ares
+usermod -a -G sudo,www,redis ares
 
 # Have the game server start when the server reboots
 echo "/home/ares/aresmush/bin/startares&" > onboot.sh

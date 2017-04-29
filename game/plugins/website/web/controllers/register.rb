@@ -35,6 +35,7 @@ module AresMUSH
         char.change_password(pw)
         char.room = Game.master.welcome_room
         char.login_api_token = Character.random_link_code
+        char.login_api_token_expiry = Time.now + 86400
         char.save
         
         session[:user_id] = char.id

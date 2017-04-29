@@ -1,3 +1,7 @@
+<script src="//ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/ace_editor.js"></script>
+
+
 <% if @error %>
 <div class="alert alert-danger">                
     <%= @error %>      
@@ -7,8 +11,11 @@
 <h1>Tinker Command</h1>
 
 <form method="POST" action="/admin/tinker/update">
-<textarea name="tinkerCode" rows="40" cols="100" style="font-family:courier"><%= @code %></textarea>
-
+    
+    <div id="editor" class="ace-editor"><%= @code %></div>
+    <input type="hidden" id="path" name="path" value="tinker.rb" />
+    <input type="hidden" id="contents" name="contents" />
+    
 <p>
 <a href="/admin"><button type="button" class="btn btn-default">Cancel</button></a>
 <button type="submit" class="btn btn-primary">Save</button>
