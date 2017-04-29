@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 module AresMUSH
   module Manage
     class AwsBackup
