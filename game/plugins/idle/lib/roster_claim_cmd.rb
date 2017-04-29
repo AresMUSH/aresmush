@@ -17,6 +17,12 @@ module AresMUSH
         }
       end
       
+      def check_roster_enabled
+        return t('idle.roster_disabled') if !Idle.roster_enabled?
+        return nil
+      end
+      
+      
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (!model.on_roster?)

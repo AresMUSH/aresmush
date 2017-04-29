@@ -24,6 +24,7 @@ en:
         use_roster_cmd: "Use the 'roster' command to add/remove someone from the roster."
         idle_status_set: "%{name}'s idle status is now %{status}."
 
+        roster_disabled: "This game does not use the roster system."
         roster_title: "Character Roster"
         roster_updated: "Roster updated."
         roster_column_titles: "Name                            Position         Approved?      Contact"

@@ -8,6 +8,10 @@ module AresMUSH
       actor.has_permission?("manage_roster")
     end
     
+    def self.roster_enabled?
+      Global.read_config("idle", "use_roster")
+    end
+    
     def self.create_or_update_roster(client, enactor, name, contact)
       ClassTargetFinder.with_a_character(name, client, enactor) do |model|
         Idle.add_to_roster(model, contact)
