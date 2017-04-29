@@ -39,10 +39,10 @@ module AresMUSH
       end
             
       def display_help(topic)
-        text = Help.topic_contents(topic)
-        markdown = MarkdownFormatter.new
-        display = markdown.to_mush(text).chomp
-        client.emit BorderedDisplay.text display
+        template = HelpFileTemplate.new(topic)
+        text = template.render
+        
+        client.emit BorderedDisplay.text text
       end
     end
   end

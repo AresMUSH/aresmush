@@ -9,6 +9,8 @@ aliases:
 
 Channels are public forums for out-of-character communication.  Each game will have a variety of channels available for use.  Some will be locked so that only people with certain roles may use them.
 
+<%= test %>
+
 ## Quick Reference - Common Commands
 
 `channels` - List channels and the commands to talk on them.

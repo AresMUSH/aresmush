@@ -4,6 +4,7 @@ load "lib/help_list_cmd.rb"
 load "lib/help_view_cmd.rb"
 load "lib/helpers.rb"
 load "templates/help_list_template.rb"
+load "templates/help_file_template.rb"
 
 module AresMUSH
   module Help

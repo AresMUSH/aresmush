@@ -54,11 +54,16 @@ module AresMUSH
       matches.values.uniq
     end
     
-    def self.topic_contents(topic_key)
-      Global.logger.debug "Reading help file #{topic_key}"
+    def self.topic_metadata(topic_key)
       index = Help.index
       topic = index[topic_key]
       raise "Help topic #{topic_key} not found!  Available: #{index.keys.join(' ')} " if !topic
+      topic
+    end
+    
+    def self.topic_contents(topic_key)
+      Global.logger.debug "Reading help file #{topic_key}"
+      topic = Help.topic_metadata(topic_key)
       path = topic["path"]
       md = MarkdownFile.new(path)
       md.contents
