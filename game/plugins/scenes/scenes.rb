@@ -53,8 +53,6 @@ module AresMUSH
         end
       when "scenes"
         return ScenesCmd
-      when "wear"
-        return WearCmd
       end
       
       nil
