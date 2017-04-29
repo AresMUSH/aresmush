@@ -10,3 +10,5 @@ en:
         where_header: "Status Name                   Location                            Conn   Idle"
         who_header:   "Status Name                   Department          Position        Conn   Idle"
         where_by_room_header: "Location                            People"
+        public: "Pub"
+        private: "Pvt"

@@ -1,6 +1,6 @@
 ---
 toc: ~admin~ Managing Game
-summary: Game management commands.
+summary: Game management and configuration.
 ---
 # Managing the Game
 

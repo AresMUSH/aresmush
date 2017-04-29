@@ -39,6 +39,8 @@ chargen:
             help: profile wiki
         profile:
             help: profile
+        lastwill:
+            help: idle
         review:
             help: chargen app
     shortcuts:

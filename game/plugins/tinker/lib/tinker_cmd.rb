@@ -1,3 +1,6 @@
+require 'aws-sdk'
+
+
 module AresMUSH
   module Tinker
     class TinkerCmd

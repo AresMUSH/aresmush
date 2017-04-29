@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+load "lib/db/backup_cmd.rb"
 load "lib/db/destroy_cmd.rb"
 load "lib/db/destroy_confirm_cmd.rb"
 load "lib/db/examine_cmd.rb"
@@ -16,6 +17,8 @@ load "lib/game/plugin_list_cmd.rb"
 load "lib/game/shutdown_cmd.rb"
 load "lib/game/unload_plugin_cmd.rb"
 load "lib/game/version_cmd.rb"
+load "lib/aws_backup.rb"
+load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/trouble/boot_cmd.rb"
 load "lib/trouble/findsite_cmd.rb"
@@ -53,6 +56,8 @@ module AresMUSH
         return AltsCmd
       when "announce"
         return AnnounceCmd
+      when "dbbackup"
+        return BackupCmd
       when "boot"
         return BootCmd
       when "config"
@@ -108,6 +113,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
       nil
     end
   end

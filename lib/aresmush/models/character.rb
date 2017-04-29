@@ -1,6 +1,7 @@
 module AresMUSH
   class Character < Ohm::Model
     include ObjectModel
+    include FindByName
     
     attribute :name
     attribute :name_upcase
@@ -28,9 +29,9 @@ module AresMUSH
     
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
-      result = Character[name_or_id]
-      if (result)
-        return [ result ]
+      
+      if (name_or_id.start_with?("#"))
+        return find_any_by_id(name_or_id)
       end
       
       find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase).to_a
@@ -74,6 +75,10 @@ module AresMUSH
       return t('validation.password_too_short') if (password.length < 5)
       return t('validation.password_cant_have_equals') if (password.include?("="))
       return nil
+    end
+    
+    def self.dbref_prefix
+      "C"
     end
     
     def has_role?(name_or_role)

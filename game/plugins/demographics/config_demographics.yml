@@ -3,14 +3,15 @@ demographics:
     max_age: 65
 
     required_properties:
+        - actor
+        - hair
+        - eyes
+        - skin
         - height
         - physique
         - fullname
         - gender
-        - hair
-        - eyes
         - birthdate
-        - skin
     
     editable_properties:
         - fullname
@@ -26,6 +27,7 @@ demographics:
         - height
         - physique
         - fullname
+        - gender
         - birthdate
         - callsign
 

@@ -4,7 +4,7 @@ summary: Starting scenes.
 ---
 # Scenes
 
-The scenes system lets you spawn a room for a scene.  You can indicate whether the scene is public (meaning anyone is invited to join) or public.
+The scenes system lets you spawn a room for a scene.  You can indicate whether the scene is public (meaning anyone is invited to join) or private.
 
 ## Starting and Stopping a Scene
 

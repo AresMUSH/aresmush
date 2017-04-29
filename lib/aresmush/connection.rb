@@ -42,6 +42,7 @@ module AresMUSH
         input = strip_control_chars(data)
         @client.handle_input(input)
       rescue Exception => e
+        puts "#{e}"
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end
@@ -57,7 +58,28 @@ module AresMUSH
     private 
     
     def strip_control_chars(data)
-      stripped = data.gsub(/\^M/,"\n")
+
+      # Look for the telnet NAWS codes.
+      # [ 255, 250, ..... , 240 ] is one possibility
+      # [ 255, xxx, yyy ] is another, where xxx is something other than 250.
+      chars = data.split("")
+      stripped = data
+      if (chars.length >= 2 && chars[0].ord == 255)
+        if (chars[1].ord == 250)
+          chars.shift
+          chars.shift
+          while (chars[0].ord != 240)
+            chars.shift
+          end
+          chars.shift
+          stripped = chars.join
+        else
+          stripped = chars[3..-1].join
+        end
+      end
+      
+      puts stripped.split("").join(",")
+      stripped = stripped.gsub(/\^M/,"\n")
       stripped = stripped.gsub(/\0/,"")
       stripped.gsub(/\^@/,"")
     end   

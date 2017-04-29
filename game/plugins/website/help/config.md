@@ -33,9 +33,9 @@ The port name and host must match the websocket_port and hostname from your serv
 
 The game website uses Google's [Recaptcha](https://www.google.com/recaptcha/intro/) to keep bots from creating accounts.  Sign up for your own key by clicking "Get Recaptcha" from that website.
 
-* Create a new "Recaptcha v2" key.
-* List your game's website domain under the domains list.  You can also list 'localhost' if you're doing local testing.
-* Google will show your key info.
+1. Create a new "Recaptcha v2" key.
+2. List your game's website domain under the domains list.  You can also list 'localhost' if you're doing local testing.
+3. Google will show your key info.
 
 Under 'Client Side Integration' you'll find a code snippet like this:
 
@@ -51,6 +51,7 @@ The 'DEFGH789 is your Recaptcha Secret.
 
 To configure the recaptcha information:
 
-* Go to the Web Portal.
-* Select 'Game Preferences'.
-* Find 'Secret Codes'.
+1. Go to the Web Portal.
+2. Select 'Secret Codes'.
+3. Scroll down to 'Recaptcha'.
+4. Enter your secret and site ids.

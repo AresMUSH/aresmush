@@ -30,7 +30,7 @@ en:
         git_output: "Git command: %{output}"
         
         object_destroyed: "%{name} destroyed."
-        confirm_object_destroy: "You want to delete %{type} %xg%{name}.%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn"
+        confirm_object_destroy: "You want to delete %{type} %xg%{name} (%{dbref}).%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn"
         cannot_destroy_online: You can't destroy someone when they're online.
         room_being_destroyed: "This room is being destroyed.  Moving you to a safer spot."
         cannot_destroy_special_rooms: "You can't destroy that room.  It's special."
@@ -52,3 +52,10 @@ en:
         version: "AresMUSH version %{version}%rhttp://www.aresmush.com"
         
         cant_rename_handle_with_links: "Cannot rename a handle that has characters linked to it.  The player needs to unlink their characters first."
+        
+        backups_not_enabled: "Backups are not enabled."
+        starting_backup: "Starting backup."
+        aws_problem: "There was a problem communicating with AWS.  Check the log for details and make sure your configuration settings are correct."
+        backup_complete: "Backup complete."
+        
+        

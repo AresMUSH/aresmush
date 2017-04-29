@@ -9,8 +9,7 @@ summary: Configuring the date and time formats.
 To configure the date and time preferencse:
 
 1. Go to the Web Portal's Admin screen.  
-2. Select 'Game Preferences'.
-3. Scroll down to Date and Time.
+2. Select 'Date/Time Formats'.
 
 The game shows dates and times in various places.  You can configure how these are shown.  You have complete control over each format.  You can change the it use hyphens, put the month first or second, use two-digit years instead of four-digit years, use 12 or 24-hour time, etc.  
 

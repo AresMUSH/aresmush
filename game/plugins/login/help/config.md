@@ -6,13 +6,44 @@ summary: Configuring the login system.
 
 > **Permission Required:** Configuring the game requires the Admin role.
 
-To configure the Login plugin:
+## Connect Screen
+
+To configure the Connect Screen:
+
+1. Go to the Web Portal's Admin screen.  
+2. Select 'Connect Screen'.
+
+The connect screen can contain all the usual MUSH formatting codes (including color!), but you don't need to put in \%r for linebreaks or \%b for spaces.  The game will respect what's in the file as it appears.
+
+## Terms of Service
+
+By default, the game will present a Terms of Service file to new users.  
+
+To configure the Terms of Service:
+
+1. Go to the Web Portal's Admin screen.  
+2. Select 'Terms of Service'.
+
+The TOS can contain all the usual MUSH formatting codes, but you don't need to put in \%r for linebreaks.  The game will respect what's in the file.
+
+> **Tip:** If your TOS is long, it's recommended that you just link to a wiki/web page rather than spamming new players with a giant wall of text.
+
+To disable the terms of service, see below.
+
+## Other Configuration
+
+To configure the rest of the Login plugin:
 
 1. Go to the Web Portal's Admin screen.  
 2. Select Advanced Config.
 3. Edit `config_login.yml`
 
-## Suspects
+
+### Disabling Terms of Service
+
+You can disable the terms of service completely by setting `use_terms_of_service` to false.
+
+### Suspects
 
 Ares does not support an outright siteban because these days people mostly use dynamic or shared IPs, making it hard to pinpoint a particular person's IP address.
 
@@ -26,6 +57,6 @@ Here is an example:
 
 You can also configure which job category is used when the system creates a job for a suspect alert.  By default it's the MISC category.
 
-## Guest Role
+### Guest Role
 
 The system looks for characters with the role set in `guest_role` when finding a guest character.  If for some reason you change that role, you need to update this configuration option.

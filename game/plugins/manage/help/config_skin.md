@@ -9,8 +9,7 @@ summary: Configuring the game skin (lines).
 To configure the game skin:
 
 1. Go to the Web Portal's Admin screen.  
-2. Select 'Game Preferences'.
-3. Scroll down to Lines.
+2. Select 'Skin / Lines'.
 
 You can configure the border lines that are used in almost every command.  Ares lets you define four different lines, and you can use them in any template with the \%l1, \%l2, \%l3, \%l4 formatting codes.   
 

@@ -21,7 +21,11 @@ module AresMUSH
     def self.check_name(name)
       nil
     end
-
+    
+    def self.dbref_prefix
+      "E"
+    end
+    
     # -----------------------------------
     # INSTANCE METHODS
     # -----------------------------------

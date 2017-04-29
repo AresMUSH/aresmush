@@ -7,7 +7,11 @@ aliases:
 ---
 # Character Backup
 
-Ares supports a fast-and-easy way to back up your important character information.  This includes:
+Ares supports a fast-and-easy way to back up your important character information.  
+
+> **Tip:** For a full game backup, see [Backups](/help/manage/config_backups).
+
+The character backup includes:
 
 * Character sheet
 * Background
