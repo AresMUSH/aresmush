@@ -42,6 +42,11 @@ fs3skills:
             name: Piloting
             desc: "Flying aircraft"
             linked_attr: Reflexes
+            specialties:
+            - Raptor
+            - Viper
+            - Freighter
+            - Other
         - 
             name: Stealth
             desc: "Being sneaky."
