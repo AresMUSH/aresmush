@@ -38,6 +38,10 @@ module AresMUSH
         char.login_api_token_expiry = Time.now + 86400
         char.save
         
+        connection = HeadlessConnection.new(request.ip)
+        client = Client.new(0, connection)
+        Global.dispatcher.queue_event CharCreatedEvent.new(client, char)
+        
         session[:user_id] = char.id
         flash[:info] = "Welcome, #{char.name}!"
         
