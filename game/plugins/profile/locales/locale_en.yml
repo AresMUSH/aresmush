@@ -42,5 +42,7 @@ en:
         department_title: "Department:"
         faction_title: "Faction:"
         callsign_title: "Callsign:"
+        unread_mail: "Unread Mail:"
+        unread_message_count: "%{num} Messages"
         
         none: "None"

@@ -3,6 +3,10 @@ module AresMUSH
     def has_unread_mail?
       !unread_mail.empty?
     end
+    
+    def num_unread_mail
+      unread_mail.count
+    end
   end
   
   module Mail

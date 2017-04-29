@@ -110,6 +110,10 @@ module AresMUSH
         @char.handle.name
       end
       
+      def unread_mail
+        t('profile.unread_message_count', :num => @char.num_unread_mail)
+      end
+      
       def handle_profile
         arescentral = Global.read_config("arescentral", "arescentral_url")
         "#{arescentral}/handle/#{@char.handle.name}"
