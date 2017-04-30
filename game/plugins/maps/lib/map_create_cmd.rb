@@ -22,6 +22,7 @@ module AresMUSH
         map = GameMap.find_one_by_name(self.name)
         if (map)
           map.update(areas: [ self.name ])
+          map.update(map_text: self.map_text)
           client.emit_success t('maps.map_updated', :name => self.name)
         else
           GameMap.create(name: self.name, areas: [ self.name ], map_text: self.map_text)

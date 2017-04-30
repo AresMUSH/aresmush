@@ -23,7 +23,7 @@ module AresMUSH
         repose = enactor.room.repose_info
         poses = repose.poses || []
         if (!self.all)
-          poses = poses[-8, 8]
+          poses = poses[-8, 8] || poses
         end
         client.emit BorderedDisplay.list poses.map { |p| "#{p}%R"}, t('pose.repose_list')
       end

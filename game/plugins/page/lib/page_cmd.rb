@@ -35,19 +35,28 @@ module AresMUSH
       
       def handle
         OnlineCharFinder.with_online_chars(self.names, client) do |results|
+          recipients = results.map { |result| result.char }
+          
+          locked = recipients.select { |c| c.page_ignored.include?(enactor) }
+          if (locked.any?)
+            locked_names = locked.map { |c| c.name }
+            client.emit_failure t('page.cant_page_ignored', :names => locked_names.join(" "))
+            return
+          end
+          
           name = enactor.name_and_alias
           message = PoseFormatter.format(name, self.message)
-          recipients = results.map { |result| result.char.name }.join(",")
+          recipient_names = recipients.map { |r| r.name }.join(",")
         
           client.emit t('page.to_sender', 
             :autospace => enactor.page_autospace, 
             :color => enactor.page_color, 
-            :recipients => recipients, 
+            :recipients => recipient_names, 
             :message => message)
           results.each do |r|
-            page_recipient(r.client, r.char, recipients, message)
+            page_recipient(r.client, r.char, recipient_names, message)
           end
-        
+          
           enactor.update(last_paged: self.names)
         end
       end
