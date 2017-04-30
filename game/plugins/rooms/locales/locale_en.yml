@@ -13,7 +13,8 @@ en:
        you_are_teleported: "%{name} is teleporting you to a new location."
        cant_find_that_to_teleport: "Cannot find %{name} to teleport them."
        can_only_link_exits: You can only link exits.
-       exit_linked: "Exit linked to %{dest}."
+       exit_linked: "The exit now leads to %{room}."
+       exit_source_linked: "The exit now leads from %{room} to here."
        exit_unlinked: "Exit unlinked."
        
        meetme_target_missing: "You didn't invite anyone!"

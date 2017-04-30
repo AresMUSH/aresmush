@@ -29,7 +29,11 @@ You can create a room and optionally specify an outgoing exit (from your current
 You can create additional exits using the 'open' command, and link exits to different rooms.  You can use the room database ID or a name (as long as the name is unambiguous).
 
 `open <exit>[=<destination>]` - Creates an exit.
+
+Once you have an exit, you can change the source or destination rooms that it's linked to.  
+
 `link <exit>=<destination>` - Links an exit to a room.
+`link/source <exit>=<source>` - Changes the exit's source.  The destination will be the current room.
 `unlink <exit>` - Unlinks an exit from its destination.
 
 ## Finding Rooms
