@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def handle
-        result = Jobs.create_job("REQ", self.title, self.description, enactor)
+        result = Jobs.create_job(Jobs.request_category, self.title, self.description, enactor)
         if (result[:error].nil?)
           client.emit_success t('jobs.request_submitted')
         else

@@ -21,6 +21,8 @@ jobs:
     default_status:  "NEW"
     
     closed_status: "DONE"
+    
+    request_category: "REQ"
         
     shortcuts:
         "jobs": "job"

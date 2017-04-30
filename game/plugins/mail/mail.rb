@@ -8,6 +8,7 @@ load "lib/helpers.rb"
 load "lib/mail_events.rb"
 load "lib/mail_fwd_cmd.rb"
 load "lib/mail_inbox_cmd.rb"
+load "lib/mail_job_cmd.rb"
 load "lib/mail_model.rb"
 load "lib/mail_new_cmd.rb"
 load "lib/mail_read_cmd.rb"
@@ -58,6 +59,8 @@ module AresMUSH
       case cmd.root
       when "mail"
         case cmd.switch
+        when "job"
+          return MailJobCmd
         when "proof"
           return MailProofCmd
         when "send"

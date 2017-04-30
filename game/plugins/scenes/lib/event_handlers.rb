@@ -7,7 +7,7 @@ module AresMUSH
         
         rooms = Room.all.select { |r| !!r.scene_set || !!r.scene }
         rooms.each do |r|
-          if (r.clients.empty?)
+          if (r.clients.empty? && r.scene_set)
             Global.logger.debug("Clearing scene set on #{r.name}")
             r.update(scene_set: nil)
           end
