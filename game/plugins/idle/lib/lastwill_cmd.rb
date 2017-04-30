@@ -10,16 +10,13 @@ module AresMUSH
         self.will = cmd.args
       end
       
-      def required_args
-        {
-          args: [ self.will ],
-          help: 'lastwill'
-        }
-      end
-      
       def handle
-        enactor.update(idle_lastwill: self.will)
-        client.emit_success t('idle.lastwill_set')
+        if (self.will)
+          enactor.update(idle_lastwill: self.will)
+          client.emit_success t('idle.lastwill_set')
+        else
+          client.emit_ooc t('idle.lastwill', :will => enactor.idle_lastwill)
+        end
       end
     end
   end
