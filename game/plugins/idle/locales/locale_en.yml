@@ -20,6 +20,7 @@ en:
         
         lastwill_set: "Last will instructions set."
         lastwill: "Your last will instructions are: %{will}."
+        lastwill_not_set: "You have no last will set."
         
         use_npc_cmd: "Use the 'npc' command to make someone a NPC or not."
         use_roster_cmd: "Use the 'roster' command to add/remove someone from the roster."
