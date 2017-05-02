@@ -4,12 +4,13 @@ summary: Old jobs.
 ---
 # Jobs Archive
 
+> **Permissions Requred:** Working with jobs requires the access_jobs permission.
+
 Closed jobs in Ares are not archived to a BBS, as they are in some other systems.  Instead they stay around in the jobs system forever (or until you manually purge them).  This allows you to reopen and easily find old jobs.
 
 Once a job is closed, you will only see it if it has new activity or you use the /all option:
 
-`jobs/all` - Lists all jobs, even closed ones. 
-        Note: When doing multiple pages, you put the number before the slash, like jobs2/all to see page 2
+`jobs/all` - Lists all jobs, even closed ones.
 
 `jobs/search <category>=<value>` - Searches old jobs
         Category to search may be 'title' or 'submitter'.

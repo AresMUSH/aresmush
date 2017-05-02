@@ -8,19 +8,30 @@ fs3combat:
     #   dodge: Dice added to/subtracted from defense rolls.
 
     vehicles:
-        Fighter:
-            description: "Light fighter"
+        Viper:
+            description: "Viper space fighter"
             pilot_skill: Piloting
             toughness: 0
             hitloc_chart: Fighter
-            armor: Fighter
+            armor: Viper
             weapons:
-                - Cannon
+                - Kew
             dodge: 1
             
+        Raider:
+            description: "Cylon Raider space fighter"
+            pilot_skill: Piloting
+            toughness: -1
+            hitloc_chart: Fighter
+            armor: Raider
+            weapons:
+                - Kew
+                - Missile
+                - Nuke
+            dodge: 1
 
-        Transport:
-            description: "Transport"
+        Raptor:
+            description: "Raptor space command and control"
             pilot_skill: Piloting
             toughness: 2
             hitloc_chart: Transport
@@ -29,4 +40,26 @@ fs3combat:
                 - Ecm
                 - Missile
                 - Rocket
+            dodge: 0
+
+        Heavy Raider:
+            description: "Cylon Heavy Raider space transport/bomber"
+            pilot_skill: Piloting
+            toughness: 2
+            hitloc_chart: Transport
+            armor: Heavy Raider
+            weapons:
+                - Kew
+                - Missile
+                - Rocket
+            dodge: 0
+
+        AA Battery:
+            description: "Anti-Aircraft Battery"
+            pilot_skill: Piloting
+            toughness: -2
+            hitloc_chart: AA Battery
+            armor: AA Battery
+            weapons:
+                - Missile
             dodge: 0

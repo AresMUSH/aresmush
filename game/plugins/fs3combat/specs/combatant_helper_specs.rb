@@ -197,11 +197,6 @@ module AresMUSH
             FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Other"
           end
           
-          
-          it "should use composure for a suppression attack" do
-            # [[Not yet implemented]]
-          end
-          
           it "should use piloting skill if in a vehicle" do
             vehicle = double
             @combatant.stub(:is_in_vehicle?) { true }

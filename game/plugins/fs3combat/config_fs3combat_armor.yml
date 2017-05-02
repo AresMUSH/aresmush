@@ -24,9 +24,43 @@ fs3combat:
             protection: 
                 Chest: 3 
                 Abdomen: 3
+
+        Centurion:
+            description: "Cylon Centurion Armor"
+            protection:
+                Head: 3
+                Neck: 3
+                Chest: 5
+                Abdomen: 5
+                Left Arm: 4
+                Right Arm: 4
+                Left Leg: 5
+                Left Hand: 3
+                Right Hand: 3
+                Left Leg: 4
+                Right Leg: 4
+                Left Foot: 5
+                Right Foot: 5
+
+        Cylon:
+            description: "Cylon (Non-Centurion) Skeleton"
+            protection:
+                Head: 1
+                Neck: 1
+                Chest: 3
+                Abdomen: 3
+                Left Arm: 2
+                Right Arm: 2
+                Left Leg: 3
+                Left Hand: 1
+                Right Hand: 1
+                Left Leg: 2
+                Right Leg: 2
+                Left Foot: 3
+                Right Foot: 3
                 
-        Fighter:
-            description: "Light Fighter Vehicle Armor"
+        Viper:
+            description: "Viper Vehicle Armor"
             protection:
                 Body: 10
                 Engine: 10
@@ -37,8 +71,8 @@ fs3combat:
                 Cockpit: 5
                 Controls: 8
 
-        Transport:
-            description: "Transport Vehicle Armor"
+        Raider:
+            description: "Cylon Raider Vehicle Armor"
             protection:
                 Body: 5
                 Engine: 5
@@ -48,3 +82,36 @@ fs3combat:
                 Nose: 5
                 Cockpit: 2
                 Controls: 3
+
+        Raptor:
+            description: "Raptor Vehicle Armor"
+            protection:
+                Body: 15
+                Engine: 15
+                Tail: 10
+                Wing: 15
+                Weapon: 5
+                Nose: 15
+                Cockpit: 5
+                Controls: 10
+                Cabin: 15
+
+        Heavy Raider:
+            description: "Cylon Heavy Raider Vehicle Armor"
+            protection:
+                Body: 10
+                Engine: 10
+                Tail: 10
+                Wing: 10
+                Weapon: 5
+                Nose: 10
+                Cockpit: 5
+                Controls: 10
+                Cabin: 10
+
+        AA Battery:
+            description: "Anti-Aircraft Battery"
+            protection:
+                Body: 6
+                Controls: 6
+                Weapon: 6

@@ -17,7 +17,7 @@ module AresMUSH
           else
             args = cmd.parse_args(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
           end
-          self.category = trim_arg(args.category)
+          self.category = args.category ? trim_arg(args.category.upcase) : nil
           self.title = trim_arg(args.title)
           self.description = args.description
         end        

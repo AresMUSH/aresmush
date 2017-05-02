@@ -54,3 +54,6 @@ en:
         reply_deleted: "Reply deleted."
         invalid_reply_number: "That is not a valid reply number."
         
+        job_filter_active: "Jobs Filter: %xh%x![%{filter}]%xn"
+        job_filter_tip: "Use %xcjobs/filter <filter>%xn to view a different set of jobs."
+        invalid_filter_type: "That is not a valid filter type.  Try one of these: %{names}"

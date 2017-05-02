@@ -19,9 +19,11 @@ fs3combat:
         
         Soldier:
             weapon: Rifle
+            weapon_specials: 
+                - Ap
             armor: Tactical
             hitloc: Humanoid
-            # defense_skill: Reflexes
+            defense_skill: Reflexes
         Observer:
             hitloc: Humanoid
             #weapon:
@@ -30,24 +32,32 @@ fs3combat:
         Unarmed:
             weapon: Unarmed
             hitloc: Humanoid
-            # defense_skill: Reflexes
+            defense_skill: Reflexes
                 
         # ----------------------------------------
         # CUSTOM TYPES
         # ----------------------------------------
         # Add any custom combatant types here.
         
-        #Centurion:
-        #    weapon: LMG
-        #    weapon_specials: 
-        #        - Tripod
-        #    armor: Centurion
-        #    hitloc: Humanoid
-        #    defense_skill: Reflexes
-        #Viper:
-        #    vehicle: Viper
-        #    hitloc: Humanoid
-        #    defense_skill: Piloting
+        Centurion:
+            weapon: LMG
+            weapon_specials: 
+                - Tripod
+            armor: Centurion
+            hitloc: Humanoid
+            defense_skill: Reflexes
+        Viper:
+            vehicle: Viper
+            hitloc: Humanoid
+            defense_skill: Piloting
+        Raptor:
+            vehicle: Raptor
+            hitloc: Humanoid
+            defense_skill: Piloting            
+        Raider:
+            vehicle: Raider
+            hitloc: Humanoid
+            defense_skill: Piloting
                      
     shortcuts:
         "weapons": "weapon"
