@@ -40,8 +40,13 @@ fs3skills:
             linked_attr: Brawn
         -
             name: Piloting
-            desc: "Flying aircraft"
+            desc: "Flying air and spacecraft. Requires Specialty: Viper, Raptor, Shuttle"
             linked_attr: Reflexes
+            specialties:
+                - Viper
+                - Raptor
+                - Freighter
+                - Other
         - 
             name: Stealth
             desc: "Being sneaky."

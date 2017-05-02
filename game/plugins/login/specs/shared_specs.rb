@@ -23,19 +23,19 @@ module AresMUSH
         end
       end
       
-      describe :can_reset_password? do
+      describe :can_manage_login? do
         before do
           @actor = double
         end
           
         it "should allow someone with the required role to reset a password" do
           @actor.stub(:has_permission?).with("manage_login") { true }
-          Login.can_reset_password?(@actor).should be true
+          Login.can_manage_login?(@actor).should be true
         end
         
         it "should not allow you to reset a password" do
           @actor.stub(:has_permission?).with("manage_login") { false }
-          Login.can_reset_password?(@actor).should be false
+          Login.can_manage_login?(@actor).should be false
         end
       end
       

@@ -7,5 +7,4 @@ mail:
         "mail/folder" : "mail/filter"
         "mail/fo" : "mail/filter"
         "mail/file" : "mail/archive"
-        "mail/fi" : "mail/archive"
     

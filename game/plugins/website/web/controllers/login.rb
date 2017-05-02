@@ -15,6 +15,10 @@ module AresMUSH
       pw = params[:password]
       char = Character.find_one_by_name(name)
       
+      if (char.is_guest?)
+        flash[:error] = "Guests do not have a web portal account.  You can still use the 'Play' screen to play with the web client as a guest."
+        redirect '/login'
+      end
       
       if (!char || !char.compare_password(pw))
         flash[:error] = "Invalid name or password."

@@ -3,7 +3,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require "aresmush"
 
 module AresMUSH
-  describe ClassTargetFinder, :dbtest => true do
+  describe ClassTargetFinder do
   
     describe :find do
 

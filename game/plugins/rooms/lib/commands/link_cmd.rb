@@ -3,18 +3,18 @@ module AresMUSH
     class LinkCmd
       include CommandHandler
 
-      attr_accessor :name
-      attr_accessor :dest
+      attr_accessor :name, :room_name, :move_source
 
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = trim_arg(args.arg1)
-        self.dest = trim_arg(args.arg2)
+        self.room_name = trim_arg(args.arg2)
+        self.move_source = cmd.switch_is?("source")
       end
       
       def required_args
         {
-          args: [ self.name, self.dest ],
+          args: [ self.name, self.room_name ],
           help: 'link'
         }
       end
@@ -25,12 +25,12 @@ module AresMUSH
       end
       
       def handle
-        find_result = ClassTargetFinder.find(self.dest, Room, enactor)
+        find_result = ClassTargetFinder.find(self.room_name, Room, enactor)
         if (!find_result.found?)
           client.emit_failure(find_result.error)
           return
         end
-        dest = find_result.target
+        room = find_result.target
           
         find_result = VisibleTargetFinder.find(self.name, enactor)
         if (!find_result.found?)
@@ -44,8 +44,14 @@ module AresMUSH
           return
         end
         
-        target.update(dest: dest)
-        client.emit_success t('rooms.exit_linked', :dest => dest.name)
+        if (self.move_source)
+          client.emit_success t('rooms.exit_source_linked', :room => room.name)
+          target.update(source: room)
+          target.update(dest: enactor_room)
+        else
+          client.emit_success t('rooms.exit_linked', :room => room.name)
+          target.update(dest: room)
+        end
       end
     end
   end

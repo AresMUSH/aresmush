@@ -4,6 +4,11 @@ module AresMUSH
     class RosterListCmd
       include CommandHandler
       
+      def check_roster_enabled
+        return t('idle.roster_disabled') if !Idle.roster_enabled?
+        return nil
+      end
+      
       def handle
         roster = Character.all.select { |c| c.on_roster? }.sort { |a,b| a.name <=> b.name }
         paginator = Paginator.paginate(roster, cmd.page, 15)

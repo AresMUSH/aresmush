@@ -6,6 +6,7 @@ load "lib/commands/go_cmd.rb"
 load "lib/commands/grid_cmd.rb"
 load "lib/commands/home_cmd.rb"
 load "lib/commands/home_set_cmd.rb"
+load "lib/commands/ic_start_cmd.rb"
 load "lib/commands/link_cmd.rb"
 load "lib/commands/lock_cmd.rb"
 load "lib/commands/lock_here_cmd.rb"
@@ -70,6 +71,8 @@ module AresMUSH
         when nil
           return HomeCmd
         end
+      when "icstart"
+        return ICStartCmd
       when "link"
         return LinkCmd
       when "lock"

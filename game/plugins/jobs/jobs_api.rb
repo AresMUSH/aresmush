@@ -22,6 +22,14 @@ module AresMUSH
       def self.close_job(enactor, job, message = nil)
         Jobs.change_job_status(enactor, job, Jobs.closed_status, message)
       end
+      
+      def self.request_category
+        Jobs.request_category
+      end
+      
+      def self.can_access_jobs?(actor)
+        Jobs.can_access_jobs?(actor)
+      end
     end
   end
 end

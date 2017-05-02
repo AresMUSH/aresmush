@@ -12,3 +12,7 @@ The Request system is used to submit requests to the admins. You can track the s
 
 `requests` - Views your active requests
 `requests/all` - Views all of your requests, even closed ones.
+
+## Requests/Jobs and Mail
+
+Job requests are preferred over mail as a means of communicating with the game admin.  The jobs system does not normally send you a mail message when your request is updated.  All activity is logged in the job itself.

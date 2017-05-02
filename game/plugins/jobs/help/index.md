@@ -24,12 +24,15 @@ The Jobs system is used by the game administrators to track work requests and to
 `job/discuss <#>=<comment>` - Comments on a job (only admins may view)
 `job/respond <#>=<message>` - Comments on a job (admins and submitter may view)
 
+Admins can convert a mail mssage into a job.  See [Mail](/help/mail) for detail.
+
 ## Topics
 
 [Player Requests](/help/jobs/requests)
 
 ## Admin Topics
 
-[Managing Jobs](/help/jobs/admin)
+[Viewing Jobs](/help/jobs/view)
+[Managing Jobs](/help/jobs/manage)
 [Jobs Archive](/help/jobs/archive)
 [Configuring the Jobs System](/help/jobs/config)

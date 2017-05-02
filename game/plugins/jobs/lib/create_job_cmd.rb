@@ -10,14 +10,14 @@ module AresMUSH
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.title = trim_arg(args.arg1)
           self.description = args.arg2
-          self.category = "REQ"
+          self.category = Jobs.request_category
         else          
           if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
             args = cmd.parse_args(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
           else
             args = cmd.parse_args(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
           end
-          self.category = trim_arg(args.category)
+          self.category = args.category ? trim_arg(args.category.upcase) : nil
           self.title = trim_arg(args.title)
           self.description = args.description
         end        

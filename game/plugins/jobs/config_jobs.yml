@@ -21,10 +21,21 @@ jobs:
     default_status:  "NEW"
     
     closed_status: "DONE"
+    
+    request_category: "REQ"
         
     shortcuts:
+        # These must come first before the jobs -> job conversion
+        "jobs/all" : "job/filter all"
+        "jobs/mine" : "job/filter mine"
+        "jobs/active" : "job/filter active"
+
         "jobs": "job"
         "requests": "request"
         "job/comment": "job/discuss"
         "job/submit" : "job/create"
         "job/reply" : "job/respond"
+        
+        "job/all" : "job/filter all"
+        "job/mine" : "job/filter mine"
+        "job/active" : "job/filter active"

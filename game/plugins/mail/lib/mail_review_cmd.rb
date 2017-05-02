@@ -25,9 +25,8 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          prefs = Mail.get_or_create_mail_prefs(enactor)
-          prefs.update(mail_filter: "review #{model.name}")
-          template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), false, prefs.mail_filter)
+          enactor.update(mail_filter: "review #{model.name}")
+          template = InboxTemplate.new(enactor, Mail.filtered_mail(enactor), false, enactor.mail_filter)
           client.emit template.render
         end
       end

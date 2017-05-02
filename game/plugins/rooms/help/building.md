@@ -8,10 +8,7 @@ aliases:
 - dig
 - link
 - unlink
-- area
-- grid
-- roomtype
-- zone
+- icstart
 ---
 # Creating Rooms
 
@@ -32,9 +29,25 @@ You can create a room and optionally specify an outgoing exit (from your current
 You can create additional exits using the 'open' command, and link exits to different rooms.  You can use the room database ID or a name (as long as the name is unambiguous).
 
 `open <exit>[=<destination>]` - Creates an exit.
+
+Once you have an exit, you can change the source or destination rooms that it's linked to.  
+
 `link <exit>=<destination>` - Links an exit to a room.
+`link/source <exit>=<source>` - Changes the exit's source.  The destination will be the current room.
 `unlink <exit>` - Unlinks an exit from its destination.
 
 ## Finding Rooms
 
 If you lose track of rooms you've created, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  See the [Database Help](/help/manage/database) file.
+
+## Special Rooms
+
+The game knows about three special rooms:  
+
+* The Welcome Room, where all new characters start.
+* The Offstage (or OOC) Room, where all characters go when they go offstage/ooc.
+* The IC Start room, where characters go the very first time they go onstage/ic.
+
+Never mess with the first two.  If you do, you'll have to fiddle with code to tell the game where the new rooms are.
+
+The IC Start room can be changed to any room with the command:  `icstart/set <room>`

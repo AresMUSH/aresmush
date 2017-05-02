@@ -1,9 +1,17 @@
 <p>Enter your character information.</p>
 
+        
+        
+        <% if @tos %>
+            <pre class="ansi alert alert-info"><%= @tos %></pre>
+        <% end %>
+        
 <div class="panel panel-default">
     <div class="panel-body">
 
+
     <form method="POST" action="/register">
+        
         <p>Name: <input type="text" name="name"></p>
         <p>Password: <input type="password" name="password"></p>
         <p>Confirm Password: <input type="password" name="confirm_password"></p>
@@ -11,6 +19,7 @@
         <% if @recaptcha.is_enabled? %>
         <div class="g-recaptcha" data-sitekey="<%= @recaptcha.site_key %>"></div>
         <% end %>
+        
         
         <input type="submit">
     </form>

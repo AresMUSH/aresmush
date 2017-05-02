@@ -19,6 +19,11 @@ module AresMUSH
         }
       end
       
+      def check_roster_enabled
+        return t('idle.roster_disabled') if !Idle.roster_enabled?
+        return nil
+      end
+      
       def check_can_add
         return nil if Idle.can_manage_roster?(enactor)
         return t('dispatcher.not_allowed')

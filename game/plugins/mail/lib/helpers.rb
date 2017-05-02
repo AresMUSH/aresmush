@@ -15,23 +15,14 @@ module AresMUSH
     def self.archive_tag
       "Archive"
     end
-    
-    def self.get_or_create_mail_prefs(char)
-      prefs = char.mail_prefs
-      if (!prefs)
-        prefs = MailPrefs.create(character: char)
-        char.update(mail_prefs: prefs)
-      end
-      prefs
-    end
-    
+        
     def self.filtered_mail(char)
-      prefs = Mail.get_or_create_mail_prefs(char)
-      filter = prefs.mail_filter || Mail.inbox_tag
+      filter = char.mail_filter || Mail.inbox_tag
       if (filter.start_with?("review"))
         sent_to = Character.find_one_by_name(filter.after(" "))
         return char.sent_mail_to(sent_to)
       end
+      
       messages = char.mail.select { |d| d.tags && d.tags.include?(filter) }
       messages.sort_by { |m| m.created_at }
     end
@@ -105,7 +96,7 @@ module AresMUSH
         recipients << result.target
       end
       
-      copy_sent = author.mail_prefs && author.mail_prefs.copy_sent_mail
+      copy_sent = author.copy_sent_mail
       
       recipients << author if copy_sent
       recipients = recipients.uniq

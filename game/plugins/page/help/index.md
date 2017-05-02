@@ -4,6 +4,7 @@ summary: Private chat messages.
 aliases:
 - tell
 - pm
+- pagelock
 ---
 # Pages
 

@@ -26,9 +26,9 @@ The jobs system comes with a set of default categories, but you can add more.
 * REQ - Player request.
 * RP - Plot/RP related.
 
-### System Error Category
+### Request Category
 
-By default, unexpected system errors 
+This is the category used for player requests.
 
 ## Status
 

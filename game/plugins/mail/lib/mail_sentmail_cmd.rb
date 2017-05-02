@@ -21,8 +21,7 @@ module AresMUSH
       end      
       
       def handle        
-        prefs = Mail.get_or_create_mail_prefs(enactor)
-        prefs.update(copy_sent_mail: self.option.is_on?)
+        enactor.update(copy_sent_mail: self.option.is_on?)
 
         if (self.option.is_on?)
           client.emit_ooc t('mail.sentmail_on')

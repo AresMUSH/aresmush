@@ -15,3 +15,7 @@ en:
         autospace_set: "Pages will now look like this:%xn%RA pose.%r%{option}%% (to You): Someone waves."
         autospace_cleared: "You will no longer see anything between poses."
         color_set: "Pages will now appear with this marker: %{option}%%%xn"
+        
+        ignore_added: "%{name} has been added to your page ignore list."
+        ignore_removed: "%{name} has been removed from your page ignore list."
+        cant_page_ignored: "You can't page %{names} because you're on their ignore list."

@@ -80,7 +80,7 @@ module AresMUSH
           end
           
           it "should set the program to the destroy target" do
-            @client.should_receive(:program=).with( { :destroy_target => 1, :destroy_class => AresMUSH::Character } )
+            @client.should_receive(:program=).with( { :destroy_target => "#C-1", :destroy_class => AresMUSH::Character } )
             @handler.handle
           end
           

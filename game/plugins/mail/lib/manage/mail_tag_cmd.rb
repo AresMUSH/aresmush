@@ -21,16 +21,15 @@ module AresMUSH
       def handle
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
           
-          tags = delivery.tags
+          tags = delivery.tags || []
           if (cmd.switch_is?("tag"))
             tags << self.tag
-            tags = tags.uniq!
+            tags.uniq!
             delivery.update(tags: tags)
             client.emit_success t('mail.tag_added', :name => self.tag)
           else
             tags.delete self.tag
             delivery.update(tags: tags)
-            
             client.emit_success t('mail.tag_removed', :name => self.tag)
           end          
         end

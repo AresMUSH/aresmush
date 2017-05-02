@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 module AresMUSH
   module Manage
     class AwsBackup
@@ -8,7 +10,7 @@ module AresMUSH
           bucket_name = Global.read_config("secrets", "aws", "bucket")
           key_id = Global.read_config("secrets", "aws", "key_id")
           key = Global.read_config("secrets", "aws", "secret_key")
-          db_path = Global.read_config("secrets", "database", "path")
+          db_path = Global.read_config("database", "path")
           num_backups = Global.read_config("manage", "backups_to_keep")
       
           if (!num_backups || !bucket_name || bucket_name.blank?)

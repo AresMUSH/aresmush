@@ -3,6 +3,7 @@ load "lib/page_cmd.rb"
 load "lib/page_dnd.rb"
 load "lib/page_autospace_cmd.rb"
 load "lib/page_color_cmd.rb"
+load "lib/page_ignore_cmd.rb"
 load "lib/page_model.rb"
 
 module AresMUSH
@@ -40,6 +41,8 @@ module AresMUSH
           return PageColorCmd
         when "dnd"
           return PageDoNotDisturbCmd
+        when "ignore"
+          return PageIgnoreCmd
         when nil
           # It's a common mistake to type 'p' when you meant '+p' for a channel, but
           # not vice-versa.  So ignore any command that has a prefix. 
