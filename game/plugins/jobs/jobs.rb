@@ -20,6 +20,7 @@ load "lib/job_status_cmd.rb"
 load "lib/jobs_backup_cmd.rb"
 load "lib/jobs_catchup.rb"
 load "lib/jobs_model.rb"
+load "lib/jobs_filter_cmd.rb"
 load "lib/job_mail_cmd.rb"
 load "lib/jobs_new_cmd.rb"
 load "lib/list_jobs_cmd.rb"
@@ -60,8 +61,6 @@ module AresMUSH
        case cmd.root
        when "job"
          case cmd.switch
-         when "all"
-           return ListJobsCmd
          when "backup"
            return JobsBackupCmd
          when "cat"
@@ -82,6 +81,8 @@ module AresMUSH
            return JobDeleteReplyCmd
          when "handle", "assign"
            return HandleJobCmd
+         when "filter"
+           return JobsFilterCmd
          when "mail"
            return JobMailCmd
          when "new"
@@ -123,6 +124,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      end
       nil
     end
   end

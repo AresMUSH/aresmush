@@ -12,6 +12,10 @@ To configure the Idle plugin:
 2. Select Advanced Config.
 3. Edit `config_idle.yml`
 
+## Use Roster
+
+You can turn the roster system on or off by setting `use_roster` to true or false.
+
 ## Days Before Idle
 
 You can configure how long someone has to be idle (e.g. not logged in) before they appear on the idle sweep.

@@ -14,6 +14,7 @@ load "lib/password_reset_cmd.rb"
 load "lib/password_set_cmd.rb"
 load "lib/quit_cmd.rb"
 load "lib/tos_cmd.rb"
+load "lib/tos_reset_cmd.rb"
 load "lib/tour_cmd.rb"
 load "lib/watch_cmd.rb"
 load "login_api.rb"
@@ -78,6 +79,8 @@ module AresMUSH
         case cmd.switch
         when "agree"
           return TosCmd
+        when "reset"
+          return TosResetCmd
         end
       when "tour"
         return TourCmd

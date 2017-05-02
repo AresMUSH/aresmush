@@ -17,16 +17,13 @@ module AresMUSH
         }
       end
       
+      def check_roster_enabled
+        return t('idle.roster_disabled') if !Idle.roster_enabled?
+        return nil
+      end
+      
+      
       def handle
-        terms_of_service = Login::Api.terms_of_service
-        if (terms_of_service && client.program[:tos_accepted].nil?)
-          client.program[:create_cmd] = cmd
-          client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
-          return
-        end
-        
-        client.program.delete(:create_cmd)
-        
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           if (!model.on_roster?)
             client.emit_failure t('idle.not_on_roster', :name => model.name)
@@ -35,6 +32,7 @@ module AresMUSH
 
           password = Login::Api.set_random_password(model)
           model.update(idle_state: nil)
+          model.update(terms_of_service_acknowledged: nil)
           
           client.emit_success t('idle.roster_claimed', :name => model.name, :password => password)
           

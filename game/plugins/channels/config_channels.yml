@@ -1,5 +1,5 @@
 channels:
-    start_marker: '%xg<%xn'
+    start_marker: '<'
     end_marker: '>'
 
     default_channels:

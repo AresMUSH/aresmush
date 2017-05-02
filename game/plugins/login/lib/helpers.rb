@@ -5,7 +5,7 @@ module AresMUSH
       actor.has_permission?("manage_login")
     end
     
-    def self.can_reset_password?(actor)
+    def self.can_manage_login?(actor)
       actor.has_permission?("manage_login")
     end
     

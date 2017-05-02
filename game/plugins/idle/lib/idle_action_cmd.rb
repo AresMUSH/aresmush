@@ -19,6 +19,11 @@ module AresMUSH
         }
       end
       
+      def check_roster_enabled
+        return t('idle.roster_disabled') if (!Idle.roster_enabled? && self.action == "Roster")
+        return nil
+      end
+      
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')

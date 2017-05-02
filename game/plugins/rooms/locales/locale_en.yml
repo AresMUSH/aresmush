@@ -13,7 +13,8 @@ en:
        you_are_teleported: "%{name} is teleporting you to a new location."
        cant_find_that_to_teleport: "Cannot find %{name} to teleport them."
        can_only_link_exits: You can only link exits.
-       exit_linked: "Exit linked to %{dest}."
+       exit_linked: "The exit now leads to %{room}."
+       exit_source_linked: "The exit now leads from %{room} to here."
        exit_unlinked: "Exit unlinked."
        
        meetme_target_missing: "You didn't invite anyone!"
@@ -55,3 +56,5 @@ en:
        
        foyer_set: This room is now marked as a foyer.
        foyer_cleared: This room is no longer marked as a foyer.
+       
+       ic_start_set: "New characters will now start in %{name}."

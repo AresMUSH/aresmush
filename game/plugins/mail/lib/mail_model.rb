@@ -3,7 +3,8 @@ module AresMUSH
   class Character
     collection :mail, "AresMUSH::MailMessage"
     reference :mail_composition, "AresMUSH::MailComposition"
-    reference :mail_prefs, "AresMUSH::MailPrefs"
+    attribute :copy_sent_mail, :type => DataType::Boolean
+    attribute :mail_filter, :default => "Inbox"
     
     before_delete :delete_mail
     
@@ -21,15 +22,6 @@ module AresMUSH
       recipient.mail.find(author_id: self.id)
     end
   end 
-  
-  class MailPrefs < Ohm::Model
-    include ObjectModel
-    
-    reference :character, "AresMUSH::Character"
-    
-    attribute :copy_sent_mail, :type => DataType::Boolean
-    attribute :mail_filter, :default => "Inbox"
-  end
   
   class MailComposition < Ohm::Model
     include ObjectModel

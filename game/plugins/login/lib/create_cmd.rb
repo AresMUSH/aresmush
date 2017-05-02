@@ -36,12 +36,12 @@ module AresMUSH
       def handle
         terms_of_service = Login.terms_of_service
         if (terms_of_service && client.program[:tos_accepted].nil?)
-          client.program[:create_cmd] = cmd
+          client.program[:login_cmd] = cmd
           client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
           return
         end
         
-        client.program.delete(:create_cmd)
+        client.program.delete(:login_cmd)
         
         char = Character.new
         char.name = charname

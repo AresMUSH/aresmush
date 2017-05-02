@@ -3,6 +3,8 @@ module AresMUSH
     
     
     get '/register' do
+      tos = Login.terms_of_service
+      @tos = tos ? ClientFormatter.format(tos) : nil
       erb :register
     end
     
@@ -36,7 +38,15 @@ module AresMUSH
         char.room = Game.master.welcome_room
         char.login_api_token = Character.random_link_code
         char.login_api_token_expiry = Time.now + 86400
+        
+        if (Login.terms_of_service)
+          char.update(terms_of_service_acknowledged: Time.now)
+        end
         char.save
+        
+        connection = HeadlessConnection.new(request.ip)
+        client = Client.new(0, connection)
+        Global.dispatcher.queue_event CharCreatedEvent.new(client, char)
         
         session[:user_id] = char.id
         flash[:info] = "Welcome, #{char.name}!"

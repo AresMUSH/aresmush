@@ -4,6 +4,8 @@ idle:
         - builder
         - guest
 
+    use_roster: true
+    
     idle_board: "Announcements"
     
     days_before_idle: 30

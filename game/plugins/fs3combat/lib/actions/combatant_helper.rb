@@ -36,7 +36,6 @@ module AresMUSH
     
     # Attacker           |  Defender            |  Skill
     # -------------------|----------------------|----------------------------
-    # Suppress action    |  --                  |  Composure   [[Not yet implemented]]
     # Any weapon         |  In Vehicle          |  Vehicle piloting skill
     # Melee weapon       |  Melee weapon        |  Defender's weapon skill
     # Melee weapon       |  Other weapon        |  Default combatant type skill

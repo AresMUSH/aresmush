@@ -5,11 +5,15 @@ module AresMUSH
     end
     
     def self.categories
-      Global.read_config("jobs", "categories")
+      Global.read_config("jobs", "categories").map { |c| c.upcase }
     end
     
     def self.status_vals
       Global.read_config("jobs", "status").keys
+    end
+    
+    def self.request_category
+      Global.read_config("jobs", "request_category")
     end
     
     def self.closed_jobs
@@ -22,6 +26,22 @@ module AresMUSH
       key = config.keys.find { |k| k.downcase == status.downcase }
       return "%xc" if !key
       return config[key]["color"]
+    end
+    
+    def self.filtered_jobs(char)
+      case (char.jobs_filter)
+      when "ALL"
+        jobs = Job.all.to_a
+      when "ACTIVE"
+        jobs = Job.all.select { |j| j.is_open? || j.is_unread?(char) }
+      when "MINE"
+        jobs = char.assigned_jobs.select { |j| j.is_open? }
+      else
+        jobs = Job.find(category: char.jobs_filter.upcase).select { |j| j.is_open? }
+      end
+
+      jobs = jobs || []
+      jobs.sort_by { |j| j.number }
     end
     
     def self.with_a_job(client, number, &block)

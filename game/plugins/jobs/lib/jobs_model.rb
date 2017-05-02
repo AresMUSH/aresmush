@@ -6,6 +6,7 @@ module AresMUSH
   class Character
     
     collection :jobs, "AresMUSH::Job", :author
+    attribute :jobs_filter, :default => "ACTIVE"
     
     def assigned_jobs
       Job.find(assigned_to_id: self.id)
@@ -43,6 +44,7 @@ module AresMUSH
     set :readers, "AresMUSH::Character"
     
     index :number
+    index :category
 
     before_delete :delete_replies
     

@@ -27,8 +27,9 @@ module AresMUSH
       def handle
         return if self.charname.downcase == "guest"
         
+
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
-          
+  
           if (char.login_failures > 5)
             temp_reset = false
             
@@ -60,6 +61,19 @@ module AresMUSH
             return 
           end
 
+          terms_of_service = Login::Api.terms_of_service
+          if (terms_of_service && !char.terms_of_service_acknowledged  && !client.program[:tos_accepted])
+            client.program[:login_cmd] = cmd
+            client.emit "%l1%r#{terms_of_service}%r#{t('login.tos_agree')}%r%l1"
+            return
+          end
+        
+          client.program.delete(:login_cmd)
+          
+          if (terms_of_service)
+            char.update(terms_of_service_acknowledged: Time.now)
+          end
+          
           char.update(login_failures: 0)
           Login.login_char(char, client)          
         end

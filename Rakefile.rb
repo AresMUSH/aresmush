@@ -60,6 +60,7 @@ begin
   RSpec::Core::RakeTask.new(:spec, :tag) do |t, task_args|
     tag = task_args[:tag]
     if (tag)
+      t.pattern = "spec/**/*_specs.rb,spec/**/*_spec.rb,game/plugins/**/*_specs.rb,game/plugins/**/*_spec.rb"
       t.rspec_opts = "--example #{tag}"
     end
   end
@@ -72,6 +73,7 @@ begin
   require 'rspec/core/rake_task'
 
   RSpec::Core::RakeTask.new('spec:unit', :tag) do |t, task_args|
+    t.pattern = "spec/**/*_specs.rb,spec/**/*_spec.rb,game/plugins/**/*_specs.rb,game/plugins/**/*_spec.rb"
     t.rspec_opts = "--tag ~dbtest"
   end
 rescue LoadError

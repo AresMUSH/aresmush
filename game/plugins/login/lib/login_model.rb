@@ -23,7 +23,6 @@ module AresMUSH
       ip = self.last_ip || ""
       host = self.last_hostname || ""
       
-      puts "Checking site match #{host_search}/#{host}  #{ip_search}/#{ip}"
       return true if !ip_search.blank? && ip.include?(ip_search)
       return true if !host_search.blank? && host.include?(host_search)
       return false
