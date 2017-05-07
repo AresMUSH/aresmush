@@ -26,8 +26,7 @@ module AresMUSH
       end
       
       def check_action
-        actions = [ 'Nothing', 'Destroy', 'Dead', 'Gone' ]
-        return t('idle.use_npc_cmd') if self.status == 'Npc'
+        actions = [ 'Nothing', 'Dead', 'Gone', 'Npc' ]
         return t('idle.use_roster_cmd') if self.status == 'Roster'
         
         return t('idle.invalid_action', :actions => actions.join(" ")) if !actions.include?(self.status)
@@ -48,8 +47,16 @@ module AresMUSH
           
           if (self.status == 'Nothing')
             model.update(idle_state: nil)
+          elsif (self.status == 'Npc')
+            model.update(is_npc: true)
           else
             model.update(idle_state: self.status)
+          end
+
+          # Reset their password and handle
+          Login::Api.set_random_password(model)
+          if (model.handle)
+            model.handle.delete
           end
           
           client.emit_success t('idle.idle_status_set', :name => self.name, :status => self.status)

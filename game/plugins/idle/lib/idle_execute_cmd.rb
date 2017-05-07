@@ -29,7 +29,7 @@ module AresMUSH
           end
           
           chars.sort_by { |c| c.name }.each do |idle_char|
-            # Don't log destroyed chars who never hit the grid
+
             if (action != "Destroy" && action != "Nothing")   
               report << idle_char.name 
               

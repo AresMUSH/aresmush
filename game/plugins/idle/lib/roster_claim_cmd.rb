@@ -29,6 +29,11 @@ module AresMUSH
             client.emit_failure t('idle.not_on_roster', :name => model.name)
             return
           end
+          
+          if (model.roster_restricted)
+            client.emit_failure t('idle.contact_required')
+            return
+          end
 
           password = Login::Api.set_random_password(model)
           model.update(idle_state: nil)

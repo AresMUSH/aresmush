@@ -6,7 +6,8 @@
 <%= left( r.name, 32 ) -%>
 <%= left( r.group("Position"), 20 ) -%>
 <%= left( approved(r), 12 ) -%>
-<%= r.roster_contact %>
+<%= contact(r) %>
 <% end %>
 <%= line_with_text paginator.page_marker %>
+<%= t('idle.star_means_contact_required')%>
 <%= line %>

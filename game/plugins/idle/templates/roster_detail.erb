@@ -4,8 +4,15 @@
 %xh<%= t('idle.played_by') %>%xn <%= actor %>
 
 %xh<%= t('idle.wiki_page') %>%xn <%= website %>
-          
-%xh<%= t('idle.contact', :name => char.roster_contact) %>
 
+%xh<%= t('idle.contact') %>%xn <%= char.roster_contact %>
+          
+%xh<%= t('idle.notes') %>%xn
+<%= char.roster_notes %>
+
+<% if char.roster_restricted %>
+%xr%xh<%= t('idle.contact_required') %>%xn
+<% else %>
 <%= t('idle.roster_claim', :name => char.name) %>
+<% end %>
 <%= line %>
