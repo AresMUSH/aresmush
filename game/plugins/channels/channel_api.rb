@@ -1,0 +1,14 @@
+module AresMUSH
+  module Channels
+    module Api
+      def self.send_to_channel(channel_name, message)
+        channel = Channel.find_one_with_partial_match(channel_name)
+        if (!channel)
+          Global.logger.error "Tried to send message to non-existent channel #{channel_name}."
+          return
+        end
+        channel.emit message        
+      end
+    end
+  end
+end

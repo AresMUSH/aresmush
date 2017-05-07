@@ -1,14 +1,11 @@
 fs3skills:
-    # How many luck points you may save up.    
+
     max_luck: 3
-                
-    # List which pages of a character sheet are allowed to be public.  Leave off any
-    # that are private.
-    #
-    # It is recommended that you put public pages at the front.  Otherwise someone will
-    # get an error on page 1 and never even think to try page 2.
+
     public_pages:
         - 1
+        
+    roll_channel: "FS3 Rolls"
 
     shortcuts:
         "hooks": "hook"

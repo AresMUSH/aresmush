@@ -5,7 +5,14 @@ module AresMUSH
         client = event.client
         char = event.char
         Global.logger.info("Character Connected: #{char.name}")
+        
+        first_login = !char.last_ip
         Login.update_site_info(client, char)
+        
+        if (first_login)
+          Login.check_for_suspect(char)
+        end
+        
         Global.client_monitor.logged_in.each do |other_client, other_char|
           if (other_char.room == char.room)
             other_client.emit_success t('login.announce_char_connected_here', :name => char.name)
@@ -26,9 +33,11 @@ module AresMUSH
         client = event.client
         char = event.char
         Global.logger.info("Character Created: #{char.name}")
-        Login.update_site_info(client, char)
-        Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => char.name)
-        Login.check_for_suspect(char)
+        
+        if (client)
+          Login.update_site_info(client, char)
+          Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => char.name)
+        end
       end
     end
     

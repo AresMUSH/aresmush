@@ -1,40 +1,34 @@
 fs3combat:
 
-    # Default combatant type when joining combat.
     default_type: Soldier
     
     combatant_types:
-        # For each combatant type, you can specify:
-        # - default weapon and specials (as a list)
-        # - default armor
-        # - which hit location chart it uses
-        # - a defense skill to fall back on - mostly for dodging ranged combat
-        #   if not specified, defaults to the global defense skill
-        
+
         # ----------------------------------------
-        # DEFAULT TYPES
+        # SPECIAL TYPES
         # ----------------------------------------
+
+        Observer:
+            hitloc: Humanoid
+            #weapon:
+            #weapon_specials:
+            #armor:
+
+        # ----------------------------------------
+        # CUSTOM TYPES
+        # ----------------------------------------
+
         Soldier:
             weapon: Rifle
             weapon_specials: 
                 - Ap
             armor: Tactical
             hitloc: Humanoid
-            # defense_skill: Reflexes
-        Observer:
-            hitloc: Humanoid
-            #weapon:
-            #weapon_specials:
-            #armor:
+            defense_skill: Reflexes
         Unarmed:
             weapon: Unarmed
             hitloc: Humanoid
-            # defense_skill: Reflexes
-                
-        # ----------------------------------------
-        # CUSTOM TYPES
-        # ----------------------------------------
-        # Add any custom combatant types here.
+            defense_skill: Reflexes
         Centurion:
             weapon: LMG
             weapon_specials: 
@@ -58,18 +52,6 @@ fs3combat:
             vehicle: "Heavy Raider"
             hitloc: Humanoid
             defense_skill: Piloting
-
-        #Centurion:
-        #    weapon: LMG
-        #    weapon_specials: 
-        #        - Tripod
-        #    armor: Centurion
-        #    hitloc: Humanoid
-        #    defense_skill: Reflexes
-        #Viper:
-        #    vehicle: Viper
-        #    hitloc: Humanoid
-        #    defense_skill: Piloting
                      
     shortcuts:
         "weapons": "weapon"

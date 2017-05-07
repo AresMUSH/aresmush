@@ -1,26 +1,5 @@
 fs3combat:
 
-    # Weapon stats explained:
-    #   description: Free-form text.  Use double quotes around it.
-    #   skill: Skill used for attack rolls.
-    #   lethality: A percentage modifier to make the weapon do more or less damage.
-    #      For example, a 20 means it's 20% more likely to do a more serious wound.
-    #   penetration:  This matches armor levels, and represents the armor level that
-    #      it can penetrate *about half the time*.  Lower armor will be penetrated 
-    #      more easily, higher armor less easily.
-    #   weapon_type:  Explosive, Ranged, Melee or Suppressive, which basically dictates
-    #      which combat actions are available.
-    #   is_automatic: For ranged weapons, does it support bursts or full_auto fire?  
-    #   ammo: For ranged weapons, how many shots can it fire before it has to reload.
-    #      Comment ammo out for weapons that don't need to reload.
-    #   recoil: For automatic weapons, this is a modifier applied to each bullet after 
-    #      the first when firing a burst or full-auto.
-    #   damage_type:  Physical or Stun.
-    #   accuracy: A number of dice added to/subtracted from the attack roll.
-    #   has_shrapnel: For explosive weapons, do they create shrapnel.
-    #   reload_turns: For weapons with ammo, how many turns does it take to reload.
-    #   allowed_specials: A list of any weapon specials allowed. 
-    #      Use YAML list format, like [ 'item', 'item' ] 
     weapons:
 
         ## ----------------------------------------------------------------------
@@ -40,13 +19,12 @@ fs3combat:
             damage_type: Stun
             accuracy: 5
             has_shrapnel: false
-            reload_turns: 0
             
         Frag Grenade:
             description: "Fragmentation Hand Grenade"
             skill: Athletics
             lethality: 0
-            penetration: 3
+            penetration: 6
             weapon_type: Explosive
             is_automatic: false
             # ammo: 0
@@ -54,13 +32,12 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
-            reload_turns: 0
             
         Mine:
             description: "Mine or other anti-personnel explosive"
             skill: Demolitions
             lethality: 20
-            penetration: 3
+            penetration: 6
             weapon_type: Explosive
             is_automatic: false
             # ammo: 0
@@ -68,7 +45,6 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
-            reload_turns: 0
             
         Missile:
             description: "Guided Anti-Vehicle Missile"
@@ -82,13 +58,12 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 99
             
         Rocket:
             description: "Unguided Anti-Personnel Rocket"
             skill: Gunnery
             lethality: 20
-            penetration: 10
+            penetration: 15
             weapon_type: Explosive
             is_automatic: false
             ammo: 4
@@ -96,13 +71,12 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
-            reload_turns: 99
                         
         Shaped Charge:
             description: "Anti-Vehicle explosive"
             skill: Demolitions
             lethality: 15
-            penetration: 70
+            penetration: 20
             weapon_type: Explosive
             is_automatic: false
             # ammo: 0
@@ -110,13 +84,12 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
-            reload_turns: 0
             
         Shrapnel:
             description: "Random Shrapnel"
             skill: 3
             lethality: 0
-            penetration: 3
+            penetration: 6
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0
@@ -124,7 +97,6 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
             
         ## ----------------------------------------------------------------------
         ## FIREARMS
@@ -134,7 +106,7 @@ fs3combat:
             description: "Light machinegun/SAW"
             skill: Firearms
             lethality: 0
-            penetration: 4
+            penetration: 8
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
@@ -142,15 +114,16 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 1
-            allowed_specials: [ 'Ap', 'Bipod' ]
+            allowed_specials: 
+                - 'Ap'
+                - 'Bipod'
     
 
         Pistol:
             description: "Pistol"
             skill: Firearms
             lethality: 0
-            penetration: 3
+            penetration: 6
             weapon_type: Ranged
             is_automatic: false
             ammo: 10
@@ -158,14 +131,14 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 1
-            allowed_specials: [ 'Ap' ]
+            allowed_specials: 
+                - 'Ap'
 
         Rifle:
             description: "Assault Rifle"
             skill: Firearms
             lethality: 0
-            penetration: 4
+            penetration: 8
             weapon_type: Ranged
             is_automatic: true
             ammo: 20
@@ -173,14 +146,15 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 1
-            allowed_specials: [ 'Ap', 'Scope' ]
+            allowed_specials: 
+                - 'Ap'
+                - 'Scope'
 
         Shotgun:
             description: "Shotgun using solid shot"
             skill: Firearms
             lethality: 10
-            penetration: 3
+            penetration: 6
             weapon_type: Ranged
             is_automatic: false
             ammo: 8
@@ -188,14 +162,14 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 1
-            allowed_specials: [ 'Buckshot' ]
+            allowed_specials: 
+                - 'Buckshot'
                         
         Smg:
             description: "Sub-machinegun"
             skill: Firearms
             lethality: 0
-            penetration: 3
+            penetration: 6
             weapon_type: Ranged
             is_automatic: true
             ammo: 30
@@ -203,14 +177,14 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 1
-            allowed_specials: [ 'Ap' ]            
+            allowed_specials: 
+                - 'Ap'
 
         Tazer:
             description: "Stun gun"
             skill: Firearms
             lethality: 70
-            penetration: 10
+            penetration: 12
             weapon_type: Ranged
             is_automatic: false
             ammo: 5
@@ -218,7 +192,6 @@ fs3combat:
             damage_type: Stun
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 1
         
         ## ----------------------------------------------------------------------
         ## MELEE
@@ -237,13 +210,12 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
 
         Knife:
             description: "Knife"
             skill: Melee
             lethality: -5
-            penetration: 2
+            penetration: 4
             weapon_type: Melee
             is_automatic: false
             # ammo: 0
@@ -251,7 +223,6 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
 
         Unarmed:
             description: "Unarmed"
@@ -265,8 +236,8 @@ fs3combat:
             damage_type: Stun
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
-            allowed_specials: [ 'Sparring' ]
+            allowed_specials: 
+                - 'Sparring'
 
         
         ## ----------------------------------------------------------------------
@@ -285,7 +256,6 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
 
         Hmg:
             description: "Heavy machinegun."
@@ -299,8 +269,8 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
-            allowed_specials: [ 'Ap' ]
+            allowed_specials: 
+                - 'Ap'
             
         Kew:
             description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
@@ -314,7 +284,6 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
 
         Strafing:
             description: "KEW Assault Cannon strafing ground targets."
@@ -328,7 +297,6 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
-            reload_turns: 0
 
 
 
@@ -340,7 +308,7 @@ fs3combat:
     weapon specials:
         AP:
             description: "Armor Piercing Rounds"
-            penetration: 3
+            penetration: 6
         Bipod:
             description: "Bipod Brace"
             recoi: -2
@@ -353,4 +321,4 @@ fs3combat:
             penetration: 0
         Sparring:
             description: "Padded sparring equipment"
-            lethality: -20
+            lethality: -50

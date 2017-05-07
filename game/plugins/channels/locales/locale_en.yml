@@ -45,5 +45,5 @@ en:
         channel_alias_set: "You can use %{channel_alias} to talk on the %{name} channel. "
         short_alias_warning: "Be aware that short channel aliases may conflict with other command shortcuts."
         alias_notice: "You can use the channel/alias command to change your channel aliases."
-        
+        channel_command_hint: "Type 'channels' to see the commands to talk on different channels."
         cant_use_channel: "You do not have permission to use that channel."
