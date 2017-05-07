@@ -8,7 +8,8 @@ en:
 
         repose_already_off: "The repose system is already off here."
         repose_already_on: "The repose system is already on here."
-        repose_disabled: "Repose is disabled here."
+        repose_disabled: "Repose is disabled for this room."
+        repose_off: "The repose system is turned off here.  Use repose/on to turn it back on."
         repose_turned_on: "%{name} has turned on the repose system in this room."
         repose_turned_off: "%{name} has turned off the repose system in this room."
         repose_list: "Recent Poses"

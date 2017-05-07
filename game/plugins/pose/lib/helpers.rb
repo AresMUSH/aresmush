@@ -76,6 +76,7 @@ module AresMUSH
 
       enabled_rooms.each do |r|
         next if active_rooms.include?(r)
+        next if r.scene
         
         r.repose_info.reset
       end
