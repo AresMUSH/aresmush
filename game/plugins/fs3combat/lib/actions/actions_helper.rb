@@ -168,7 +168,7 @@ module AresMUSH
       
       case FS3Combat.hitloc_severity(combatant, hitloc, crew_hit)
       when "Critical"
-        severity = 20
+        severity = 30
       when "Vital"
         severity = 0
       else

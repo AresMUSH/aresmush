@@ -5,7 +5,7 @@ fs3combat:
             # Each hit location should have ten possibilities, with the ones closest to the desired target
             # at the END of the list.
             areas:
-                Chest: [ 'Left Leg', 'Right Leg',  'Left Arm', 'Right Arm', 'Right Arm', 'Abdomen', 'Abdomen', 'Chest', 'Chest', 'Chest' ]
+                Chest: [ 'Left Leg', 'Right Leg',  'Left Arm', 'Right Arm', 'Abdomen', 'Abdomen', 'Head', 'Chest', 'Chest', 'Chest' ]
                 Left Leg: [ 'Chest', 'Right Foot', 'Right Leg', 'Right Leg', 'Abdomen', 'Abdomen', 'Left Foot', 'Left Leg', 'Left Leg', 'Left Leg' ]
                 Right Leg: [ 'Chest', 'Left Foot', 'Left Leg', 'Left Leg', 'Abdomen',  'Abdomen', 'Right Foot', 'Right Leg', 'Right Leg', 'Right Leg' ]
                 Groin: [ 'Abdomen', 'Abdomen', 'Abdomen', 'Left Leg', 'Right Leg',  'Left Leg', 'Right Leg', 'Groin', 'Groin', 'Groin' ]

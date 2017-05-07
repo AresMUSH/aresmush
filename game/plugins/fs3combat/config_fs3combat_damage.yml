@@ -1,13 +1,10 @@
 fs3combat:
-    # Set up when you want the healing cron job to run.  See the 'cron' tutorial on the website for details.
-    # Comment out any items you aren't using; don't just leave them blank.
     healing_cron:
         #date: 1
         #day_of_week: Sat
         hour: 00
         minute: 47
     
-    # Dice penalty for different wound levels.
     damage_mods:
         HEAL: 0.0
         GRAZE: 0.0
@@ -15,9 +12,6 @@ fs3combat:
         IMPAIR: 1.0
         INCAP: 4.0
     
-    # How many healing points are required to heal a wound down to the next lower level.
-    # Characters receive 1-2 healing points on average each day so you can tweak these numbers
-    # to provide faster or slower healing times.
     healing_points:
         HEAL: 0
         GRAZE: 3

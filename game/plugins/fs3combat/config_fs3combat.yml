@@ -1,22 +1,23 @@
 fs3combat:
 
-    # Default combatant type when joining combat.
     default_type: Soldier
     
     combatant_types:
-        # For each combatant type, you can specify:
-        # - default weapon and specials (as a list)
-        # - default armor
-        # - which hit location chart it uses
-        # - a defense skill to fall back on - mostly for dodging ranged combat
-        #   if not specified, defaults to the global defense skill
-        
+
         # ----------------------------------------
-        # DEFAULT TYPES
+        # SPECIAL TYPES
         # ----------------------------------------
-        # These are the default combatant types.  You can change their stats,
-        # but don't delete them.
-        
+
+        Observer:
+            hitloc: Humanoid
+            #weapon:
+            #weapon_specials:
+            #armor:
+
+        # ----------------------------------------
+        # CUSTOM TYPES
+        # ----------------------------------------
+
         Soldier:
             weapon: Rifle
             weapon_specials: 
@@ -24,21 +25,10 @@ fs3combat:
             armor: Tactical
             hitloc: Humanoid
             defense_skill: Reflexes
-        Observer:
-            hitloc: Humanoid
-            #weapon:
-            #weapon_specials:
-            #armor:
         Unarmed:
             weapon: Unarmed
             hitloc: Humanoid
             defense_skill: Reflexes
-                
-        # ----------------------------------------
-        # CUSTOM TYPES
-        # ----------------------------------------
-        # Add any custom combatant types here.
-        
         Centurion:
             weapon: LMG
             weapon_specials: 
