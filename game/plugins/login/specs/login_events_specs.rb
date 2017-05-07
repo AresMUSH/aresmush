@@ -31,6 +31,7 @@ module AresMUSH
       
       describe :on_char_connected_event do
         before do
+          @event_char.stub(:last_ip) { "127" }
           Login.stub(:update_site_info) {}
           @login_events = CharConnectedEventHandler.new
           @room_client.stub(:emit_success)
@@ -59,6 +60,18 @@ module AresMUSH
           @room_client.should_receive(:emit_success).with("announce_char_connected_here")
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char)
         end
+        
+        it "should check for suspect site on the first login" do
+          @event_char.stub(:last_ip) { nil }
+          Login.should_receive(:check_for_suspect).with(@event_char) {}
+          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
+        end
+
+        it "should not check for suspect site on subsequent login" do
+          Login.should_not_receive(:check_for_suspect).with(@event_char) {}
+          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
+        end
+        
       end
       
       describe :on_char_created_event do
@@ -67,11 +80,6 @@ module AresMUSH
           Login.stub(:check_for_suspect) {}
           client_monitor.stub(:emit_all_ooc)
           @login_events = CharCreatedEventHandler.new
-        end
-        
-        it "should check for suspect sites" do
-          Login.should_receive(:check_for_suspect).with(@event_char) {}
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
         end
         
         it "should update the site info" do

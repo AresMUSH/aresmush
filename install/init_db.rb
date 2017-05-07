@@ -144,6 +144,12 @@ module AresMUSH
       channel.default_alias = [ 'rp' ]
       channel.save
       
+      channel = AresMUSH::Channel.create(name: "FS3 Rolls",
+         color: "%xb",
+         description: "Roll results.")
+      channel.default_alias = [ 'fs3' ]
+      channel.save
+      
       channel = AresMUSH::Channel.create(name: "Admin",
         description: "Admin business.",
         color: "%xr")

@@ -56,17 +56,18 @@ module ObjectModel
   end
       
   def print_json
-    json = JSON.pretty_generate(self.attributes)
-    self.methods.each do |m|
-      if (m.to_s.end_with?('_id'))
-        method = m.to_s.gsub('_id', '')
-        if (self.respond_to?(method))
-          nested = self.send(method)
-          next if !nested
-          json << "\n#{method}: #{JSON.pretty_generate(nested.attributes)}"
-        end
-      end
-    end
-    json
+    JSON.pretty_generate( Hash[self.attributes.sort] )
+    #json = JSON.pretty_generate( Hash[self.attributes.sort] )
+    #self.methods.each do |m|
+    #  if (m.to_s.end_with?('_id'))
+    #    method = m.to_s.gsub('_id', '')
+    #    if (self.respond_to?(method))
+    #      nested = self.send(method)
+    #      next if !nested
+    #      json << "\n#{method}: #{JSON.pretty_generate( Hash[nested.attributes.sort] )}"
+    #    end
+    #  end
+    #end
+    #json
   end
 end

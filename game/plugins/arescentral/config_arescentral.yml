@@ -1,11 +1,9 @@
 arescentral:
-    # This is when the game will sync up with AresCentral.
     cron:
         #date: 1
         #day_of_week: Sat
         hour: 04
         minute: 00
         
-    # You shouldn't need to change this unless AresCentral moves
     arescentral_url: "http://arescentral.aresmush.com"
     #arescentral_url: "http://localhost:9292"

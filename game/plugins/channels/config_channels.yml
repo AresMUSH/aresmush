@@ -20,3 +20,4 @@ channels:
         "addcom": "channel/join"
         "delcom": "channel/leave"
         "comtitle": "channel/title"
+        "channel/name": "channel/rename"

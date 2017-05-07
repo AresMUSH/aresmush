@@ -36,6 +36,7 @@ module AresMUSH
   class CharCreatedEvent
     attr_accessor :client, :char
     
+    ## NOTE!  Client may be nil
     def initialize(client, char)
       self.client = client
       self.char = char

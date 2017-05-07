@@ -66,7 +66,14 @@ module AresMUSH
       self.name_upcase = self.name.upcase
       
       if (!self.default_alias)
-        self.default_alias = [self.name[0..1].trim.downcase, self.name[0..2].trim.downcase ].uniq
+        aliases = []
+        if (self.name.length >= 3)
+          aliases << self.name[0..2].strip.downcase 
+        end
+        if (self.name.length >= 2)
+          aliases << self.name[0..1].strip.downcase
+        end
+        self.default_alias = aliases.uniq
       end
     end      
         

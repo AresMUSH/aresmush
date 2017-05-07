@@ -4,6 +4,7 @@ module AresMUSH
 
       before do
         Global.stub(:read_config).with("fs3skills", "max_luck") { 3 }
+        Global.stub(:read_config).with("fs3skills", "roll_channel") { "FS3 Chan" }
 
         # Note:  By seeding the random number generator, we can avoid the randomness.
         #   If you use Kernel.srand(22), the first 10 die rolls in tests will always be:  
@@ -48,14 +49,14 @@ module AresMUSH
         end
   
         context "private roll" do
-          it "should emit to the client and admin" do
+          it "should emit to the client" do
             @main_client.should_receive(:emit).with("test")
-            @admin_client.should_receive(:emit).with("test")
             FS3Skills.emit_results("test", @main_client, @room, true)
           end
     
-          it "should not emit to the room or non-admin" do
+          it "should not emit to the room or anyone else" do
             @room.should_not_receive(:emit).with("test")
+            @admin_client.should_not_receive(:emit).with("test")
             @nonadmin_client.should_not_receive(:emit).with("test")
             @main_client.stub(:emit)
             @admin_client.stub(:emit)
@@ -64,17 +65,17 @@ module AresMUSH
         end
   
         context "public roll" do
-          it "should emit to the room and an admin not in the room" do
+          it "should emit to the room" do
+            Channels::Api.stub(:send_to_channel)
             @admin_char.stub(:room) { nil }
-            @admin_client.should_receive(:emit).with("test")
+            @admin_client.should_not_receive(:emit).with("test")
+            @nonadmin_client.should_not_receive(:emit).with("test")
             @room.should_receive(:emit).with("test")
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
     
-          it "should not emit to the client, non-admin, or admin in the room" do
-            @admin_client.should_not_receive(:emit).with("test")
-            @nonadmin_client.should_not_receive(:emit).with("test")
-            @main_client.should_not_receive(:emit).with("test")
+          it "should emit to the channel" do
+            Channels::Api.should_receive(:send_to_channel).with("FS3 Chan", "test")
             @room.stub(:emit)
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
