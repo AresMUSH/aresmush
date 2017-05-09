@@ -276,7 +276,7 @@ en:
             
         suppress_action_msg_long: "%{name} will suppress %{targets}."
         suppress_action_msg_short: "Suppress %{targets}"
-        suppress_successful_msg: "%{name} suppresses %{target} with %{weapon}."
+        suppress_successful_msg: "%{name} suppresses %{target} with %{weapon} and succeeds."
         suppress_failed_msg: "%{name} tries to suppress %{target} with %{weapon} but FAILS."
 
         
@@ -321,7 +321,7 @@ en:
         subdue_uses_melee: "You must use a melee weapon to subdue."
         subdue_action_msg_long: "%{name} will subdue %{target} this turn."
         subdue_action_msg_short: "Subdue %{target}"
-        subdue_action_success: "%{name} subdues %{target}."
+        subdue_action_success: "%{name} successfully subdues %{target}."
         subdue_action_failed: "%{name} tries to subdue %{target} but FAILS."
         not_subdued: "You are not subdued."
         escape_action_msg_long: "%{name} will try to escape from %{target} this turn."
