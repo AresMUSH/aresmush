@@ -1,9 +1,5 @@
 skin:
     
-    # Here you can define the lines that are used in numerous commands.
-    # You can have as many lines as you wish and use them in your template files, but
-    # line1 through line4 have shortcuts that can be used in any poses, text, templates
-    # as %l1, %l2, %l3, %l4
     line1: "%x!+==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+%xn"
     line2: "%x!------------------------------------------------------------------------------%xn"
     line3: "%x!----[AresMUSH]----------------------------------------------------------------%xn"

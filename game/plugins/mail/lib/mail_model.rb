@@ -9,7 +9,6 @@ module AresMUSH
     before_delete :delete_mail
     
     def delete_mail
-      self.mail_prefs.delete if self.mail_prefs
       self.mail_composition.delete if self.mail_composition
       self.mail.each { |m| m.delete }
     end

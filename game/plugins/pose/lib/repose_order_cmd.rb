@@ -5,7 +5,7 @@ module AresMUSH
       
       def handle
         if (!enactor.room.repose_on?)
-          client.emit_failure t('pose.repose_disabled')
+          client.emit_failure t('pose.repose_off')
           return
         end
         

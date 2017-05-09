@@ -13,6 +13,8 @@ load "lib/lastwill_cmd.rb"
 load "lib/roster_add_cmd.rb"
 load "lib/roster_claim_cmd.rb"
 load "lib/roster_list_cmd.rb"
+load "lib/roster_note_cmd.rb"
+load "lib/roster_restrict_cmd.rb"
 load "lib/roster_remove_cmd.rb"
 load "lib/roster_view_cmd.rb"
 load "templates/idle_queue_template.rb"
@@ -65,12 +67,16 @@ module AresMUSH
         return LastWillCmd
       when "roster"
         case cmd.switch
-        when "add", "update"
+        when "add"
           return RosterAddCmd
         when "claim"
           return RosterClaimCmd
+        when "note"
+          return RosterNoteCmd
         when "remove"
           return RosterRemoveCmd
+        when "restrict"
+          return RosterRestrictCmd
         when nil
           if (cmd.args)
             return RosterViewCmd

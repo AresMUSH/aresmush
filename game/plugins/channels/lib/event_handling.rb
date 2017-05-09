@@ -2,7 +2,13 @@ module AresMUSH
   module Channels
     class CharCreatedEventHandler
       def on_event(event)
-        Channels.add_to_default_channels(event.client, event.char)
+        client = event.client
+        char = event.char
+        
+        Channels.add_to_default_channels(client, char)
+        if (client)
+          client.emit_success t('channels.channel_command_hint')
+        end
       end
     end
     
@@ -22,6 +28,7 @@ module AresMUSH
 
         if (char.is_guest?)
           Channels.add_to_default_channels(client, char)
+          client.emit_success t('channels.channel_command_hint')
         end
       end
     end

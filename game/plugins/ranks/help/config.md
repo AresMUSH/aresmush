@@ -39,4 +39,4 @@ You can define different types within a faction - typically this would be for Of
 
 The default template for the ranks display (`military_ranks.erb`) shows a side-by-side listing of Officer and Enlisted ranks, suitable for a military game.
 
-If your game is different, there's also a more generic ranks template (`ranks.erb`).  You can either modify the code to use that one, or simply use it as inspiration for modifying the military ranks template.
+If your game is different, there's also a more generic ranks template (`ranks.erb`).  You will have to modify the code to use that template, or simply use it as inspiration for modifying the standard template.

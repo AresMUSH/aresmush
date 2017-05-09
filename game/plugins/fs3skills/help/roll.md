@@ -10,7 +10,7 @@ This game uses the FS3 skills system.  This is a quick reference for the command
 
 `roll <ability>`
 `roll <character>/<ability>` - Makes a roll for someone else.
-`roll/private <ability>` - Hide results from others in the room.
+`roll/private <ability>` - Shows results only to yourself.
 `roll <character>/<ability> vs <character>/<ability>` - Makes an opposed roll.
 
 Note:  Admins can see all rolls, even private ones.  This enables them to judge scenes even when not physically present.

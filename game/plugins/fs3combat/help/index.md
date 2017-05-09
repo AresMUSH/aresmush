@@ -41,3 +41,13 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 [Gear](/help/fs3combat/gear)
 [Luck](/help/fs3combat/luck)
 [Organizing](/help/fs3combat/org)
+
+## Admin Topics
+
+[Configuring FS3 Combat Skills](/help/fs3combat/config_skills)
+[Configuring FS3 Combat Miscellaneous](/help/fs3combat/config_misc)
+[Configuring FS3 Combat Armor](/help/fs3combat/config_armor)
+[Configuring FS3 Combat Damage](/help/fs3combat/config_damage)
+[Configuring FS3 Combat Hit Locations](/help/fs3combat/config_hitloc)
+[Configuring FS3 Combat Vehicles](/help/fs3combat/config_vehicles)
+[Configuring FS3 Combat Weapons](/help/fs3combat/config_weapons)

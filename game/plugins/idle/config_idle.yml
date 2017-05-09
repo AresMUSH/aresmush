@@ -21,4 +21,7 @@ idle:
     
     shortcuts:
         "idle/add": "idle/action"
+        "roster/update": "roster/add"
+        "roster/contact": "roster/add"
+        "roster/notes": "roster/note"
 

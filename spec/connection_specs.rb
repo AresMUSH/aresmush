@@ -29,6 +29,11 @@ module AresMUSH
       before do
         @client = double
         @connection.client = @client
+        negotiator = double
+        @connection.negotiator = negotiator
+        negotiator.stub(:handle_input) do |data|
+          data
+        end
       end
       
       it "should send data to the client" do
@@ -41,19 +46,6 @@ module AresMUSH
         @connection.receive_data("test^@\0")    
       end
       
-      it "should strip out a telnet NAW2S at the beginning" do
-        @client.should_receive(:handle_input).with("012")
-        data = [ 255, 251, 31, 0x30, 0x31, 0x32 ]
-        str = data.map { |d| d.chr }.join
-        @connection.receive_data(str)
-      end
-      
-      it "should strip out a telnet NAWS at the beginning" do
-        @client.should_receive(:handle_input).with("012")
-        data = [ 255, 250, 31, 0, 80, 0, 24, 255, 240, 0x30, 0x31, 0x32 ]
-        str = data.map { |d| d.chr }.join
-        @connection.receive_data(str)
-      end
       
       it "should convert control code newline to newline" do
         client = double

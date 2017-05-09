@@ -1,12 +1,22 @@
 module AresMUSH
 
   class Connection < EventMachine::Connection
-    attr_accessor :client
+    attr_accessor :client, :window_width, :window_height
     attr_reader :ip_addr
+    
+    # For unit testing only
+    attr_accessor :negotiator
     
     def post_init
       begin
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
+        @window_width = 78
+        @window_height = 24
+        @negotiator = TelnetNegotiation.new(self)
+
+        @negotiator.send_naws_request
+        @negotiator.send_charset_request
+        
       rescue Exception => e
         Global.logger.warn "Could not decode IP address.  error=#{e} backtrace=#{e.backtrace[0,10]}"
         @ip_addr = "0.0.0.0"
@@ -39,9 +49,13 @@ module AresMUSH
     
     def receive_data(data)
       begin
-        input = strip_control_chars(data)
+        input = @negotiator.handle_input(data)
+        return if !input
+
+        input = strip_control_chars(input)
         @client.handle_input(input)
       rescue Exception => e
+        puts "ERROR #{e}"
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end
@@ -57,27 +71,7 @@ module AresMUSH
     private 
     
     def strip_control_chars(data)
-
-      # Look for the telnet NAWS codes.
-      # [ 255, 250, ..... , 240 ] is one possibility
-      # [ 255, xxx, yyy ] is another, where xxx is something other than 250.
-      chars = data.split("")
-      stripped = data
-      if (chars.length >= 2 && chars[0].ord == 255)
-        if (chars[1].ord == 250)
-          chars.shift
-          chars.shift
-          while (chars[0].ord != 240)
-            chars.shift
-          end
-          chars.shift
-          stripped = chars.join
-        else
-          stripped = chars[3..-1].join
-        end
-      end
-      
-      stripped = stripped.gsub(/\^M/,"\n")
+      stripped = data.gsub(/\^M/,"\n")
       stripped = stripped.gsub(/\0/,"")
       stripped.gsub(/\^@/,"")
     end   

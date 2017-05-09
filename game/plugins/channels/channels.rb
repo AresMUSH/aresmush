@@ -16,6 +16,7 @@ load "lib/management/channel_attribute_cmd.rb"
 load "lib/management/channel_create_cmd.rb"
 load "lib/management/channel_delete_cmd.rb"
 load "templates/channel_list_template.rb"
+load "channel_api.rb"
 
 module AresMUSH
   module Channels

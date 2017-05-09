@@ -125,12 +125,22 @@ module AresMUSH
     def self.add_to_default_channels(client, char)
       channels = Global.read_config("channels", "default_channels")
       channels.each do |name|
-        Channels.with_a_channel(name, client) do |c|
-          if (!Channels.is_on_channel?(char, c))
-            Channels.join_channel(name, client, char, nil)
-          else
-            options = Channels.get_channel_options(char, c)
-            client.emit_ooc options.alias_hint
+        channel = Channel.find_one_with_partial_match(name)
+        if (!channel)
+          Global.logger.error "Default channel #{name} does not exist."
+          next
+        end
+        
+        if (!Channels.is_on_channel?(char, channel))
+          aliases = channel.default_alias.map { |a| CommandCracker.strip_prefix(a).downcase }
+          options = Channels.get_channel_options(char, channel)
+          if (!options)
+            ChannelOptions.create(character: char, channel: channel, aliases: aliases)
+          end
+          channel.characters << char
+          
+          if (client)
+            channel.emit t('channels.joined_channel', :name => char.name)
           end
         end
       end

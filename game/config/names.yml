@@ -1,5 +1,5 @@
 names:
-    # Names that you don't want players to use.  Use ALL LOWERCASE names.
+    # Note: Use ALL LOWERCASE names.
     restricted:
         - me
         - here

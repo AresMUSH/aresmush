@@ -72,11 +72,9 @@ module AresMUSH
         client.emit message
       else
         room.emit message
-      end
-      Global.client_monitor.logged_in.each do |other_client, other_char|
-        next if other_client == client
-        if (FS3Skills.receives_roll_results?(other_char) && (other_char.room != room || is_private))
-          other_client.emit message
+        channel = Global.read_config("fs3skills", "roll_channel")
+        if (channel)
+          Channels::Api.send_to_channel(channel, message)
         end
       end
       Global.logger.info "FS3 roll results: #{message}"

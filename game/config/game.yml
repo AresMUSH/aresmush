@@ -1,17 +1,10 @@
 game:
-    # Name of your game.
     name: "BSG: Unification"
 
-    # Please select the appropriate category to describe your game:
-    # "Historical", "Sci-Fi", "Fantasy", "Modern", "Supernatural", "Social", "Other"
     category: Sci-Fi
     
-    # Describe your game.  You may use ansi and other MUSH formatting codes (%r, etc.).
     description: Battlestar Galactica during the First Cylon War.
     
-    # Your game's website
     website: "http://bsgunificationmush.wikidot.com"
         
-    # true if your game is open for business, false if it is in development, down, or 
-    # otherwise not open to the public
     public_game: true

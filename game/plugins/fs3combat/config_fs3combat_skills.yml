@@ -1,18 +1,12 @@
 fs3combat:
-    # Which skill is used for treat rolls.
     treat_skill: "Medicine"
     
-    # Which skill is used for healing.
     healing_skill: "Medicine"
     
-    # Which skill is used for recovery (natural healing) rolls.
     recovery_skill: "Athletics"
     
-    # Which skill is used for initiative
     initiative_skill: Alertness
     
-    # Which skill is used for knockout and stress rolls.
     composure_skill: Composure
     
-    # Default defense skill (mostly for ranged combat)
     default_defense_skill: Reflexes

@@ -13,6 +13,7 @@ module AresMUSH
         @client.stub(:ip_addr) { "" }
         @found_char.stub(:login_failures) { 0 }
         @client.stub(:logged_in?) { false }
+        
         @handler = ConnectCmd.new(@client, Command.new("connect Bob password"), nil)
       end
       
@@ -59,6 +60,9 @@ module AresMUSH
      
       describe :handle do  
         before do
+          Login.stub(:terms_of_service) { nil }
+          @client.stub(:program) { {} }       
+          
           @handler.parse_args
         end
              
@@ -122,6 +126,23 @@ module AresMUSH
             end
             @handler.handle
           end
+          
+        
+          it "should prompt with the terms of service if defined and not acknowledged" do
+            Login.stub(:terms_of_service) { "tos text" }
+            @found_char.stub(:terms_of_service_acknowledged) { nil }
+            @client.should_receive(:emit).with("%l1%rtos text%rlogin.tos_agree%r%l1")
+            @client.should_not_receive(:char_id=)
+            @handler.handle
+          end
+          
+          it "should not prompt for TOS if already acknowledged" do
+            Login.stub(:terms_of_service) { "tos text" }
+            @found_char.stub(:terms_of_service_acknowledged) { DateTime.now }
+            @client.should_receive(:char_id=).with(3)
+            @handler.handle
+          end
+          
         end      
       end
     end
