@@ -85,12 +85,26 @@ module AresMUSH
         end
       end
       
+      starting_specs = StartingSkills.get_specialties_for_char(char)
+      char.fs3_action_skills.each do |a|
+        specs_for_skill = starting_specs[a.name]
+        if (specs_for_skill)
+          specs_for_skill.each do |s|
+            if (!a.specialties.include?(s))        
+              missing << t('fs3skills.missing_group_specialty', :spec => s, :skill => a.name)
+            end
+          end
+        end
+      end
+      
+      
       char.fs3_action_skills.each do |a|
         config = FS3Skills.action_skill_config(a.name)
         if (config['specialties'] && a.specialties.empty? && a.rating > 2)
           missing << t('fs3skills.missing_specialty', :skill => a.name)
         end
       end
+      
       
       if (missing.count == 0)
         Chargen::Api.format_review_status(message, t('chargen.ok'))

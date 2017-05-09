@@ -49,7 +49,7 @@ You can configure various limits to what skills and attributes a character can h
 
 ## Starting Skills
 
-FS3 lets you assign starting skills for different groups.  For example, you may want to ensure that people from a certain colony all start with a particular language, or that people in a certain position start with certain professional skills.
+FS3 lets you assign starting skills and specialties for different groups.  For example, you may want to ensure that people from a certain colony all start with a particular language, or that people in a certain position start with certain professional skills.
 
 > **Note:** As with the rating limits, these are soft targets.  Nothing stops a character from lowering or removing these starting skills; they are just a starting point.  The app command status will have a warning if any starting skills are missing or too low.
 
@@ -67,6 +67,10 @@ Starting skills are group-based, so you'll see multiple entries for different gr
             Pilot:
                 skills:
                     Piloting: 3
+                specialties:
+                    Piloting:
+                        - Viper
+                        - Raptor
             Rifleman:
                 skills:
                     Firearms: 3
