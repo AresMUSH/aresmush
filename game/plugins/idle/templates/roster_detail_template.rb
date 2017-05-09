@@ -20,7 +20,7 @@ module AresMUSH
       
       def website
         game_site = Global.read_config("game", "website")
-        "#{game_site}/#{@char.name}"
+        "#{game_site}/char:#{@char.name}"
       end
       
     end

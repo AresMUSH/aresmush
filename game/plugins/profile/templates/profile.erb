@@ -28,6 +28,9 @@
 %xh<%= left( t('profile.handle'), 12 ) %>%xn @<%= handle_name %>
 %xh<%= left( t('profile.handle_profile'), 12 ) %>%xn <%= handle_profile %>
 <% end %>
+
+<%= line_with_text t('profile.description')%>
+<%= desc %>
 <% if custom_profile %>
 <% char.profile.each do |name, value| %>
 

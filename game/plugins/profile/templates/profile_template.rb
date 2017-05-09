@@ -76,6 +76,10 @@ module AresMUSH
         @char.rank
       end
       
+      def desc
+        @char.description
+      end
+      
       def status
         Chargen::Api.approval_status(@char)
       end

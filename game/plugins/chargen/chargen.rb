@@ -3,6 +3,7 @@ load "chargen_api.rb"
 load "lib/app_approve_cmd.rb"
 load "lib/app_cmd.rb"
 load "lib/app_reject_cmd.rb"
+load "lib/app_review_cmd.rb"
 load "lib/app_submit_cmd.rb"
 load "lib/app_unapprove_cmd.rb"
 load "lib/app_unsubmit_cmd.rb"
@@ -51,6 +52,8 @@ module AresMUSH
           return AppApproveCmd 
         when "reject"
           return AppRejectCmd
+        when "review"
+          return AppReviewCmd
         when "submit", "confirm"
           return AppSubmitCmd
         when "unapprove"

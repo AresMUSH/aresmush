@@ -45,4 +45,6 @@ en:
         unread_mail: "Unread Mail:"
         unread_message_count: "%{num} Messages"
         
+        description: "Description"
+        
         none: "None"
