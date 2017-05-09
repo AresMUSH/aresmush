@@ -251,6 +251,7 @@ en:
         invalid_attack_special: "That is not a valid attack special."
         attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
         attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
+        attack_dodged_easily: "%{name} attacks %{target} with %{weapon} but %{target} EVADES EASILY!"
         attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
         attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc}. %{armor}"
         attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."

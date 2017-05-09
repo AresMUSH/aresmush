@@ -263,6 +263,8 @@ module AresMUSH
       
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (attacker_net_successes < -2)
+        message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (attacker_net_successes < 0)
         message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (stopped_by_cover)
