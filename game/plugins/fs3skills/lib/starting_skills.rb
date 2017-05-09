@@ -20,6 +20,23 @@ module AresMUSH
         skills
       end 
       
+      def self.get_specialties_for_char(char)
+        specs = {}
+        groups = get_groups_for_char(char)
+        groups.each do |k, v|
+          group_specs = v["specialties"]
+          next if !group_specs
+          group_specs.each do |skill, spec|
+            if (!specs.has_key(skill))
+              specs[skill] = []
+            end
+            
+            specs[skill] << spec
+          end
+        end
+        specs
+      end 
+      
       def self.get_groups_for_char(char)
         groups = {}
         config.each do |group, group_config|

@@ -32,14 +32,24 @@ fs3skills:
                 skills: 
                     Piloting: 3
                     Gunnery: 3
+                specialties:
+                    Piloting:
+                        - Viper
+                        - Raptor
             Raptor Pilot:
                 skills:
                     Piloting: 3
                     Gunnery: 3
+                specialties:
+                    Piloting:
+                        - Raptor
             Raptor ECO:
                 skills:
                     Piloting: 3
                     Gunnery: 3
+                specialties:
+                    Piloting:
+                        - Raptor
             Rifleman:
                 skills:
                     Firearms: 3
@@ -49,6 +59,9 @@ fs3skills:
                 skills:
                     Firearms: 3
                     Medicine: 3
+                specialties:
+                    Medicine:
+                        - Medic
             Combat Engineer:
                 notes: "A combat engineer should take a 3 or higher in either Demo or Tech."
                 skills:
@@ -68,15 +81,27 @@ fs3skills:
             Doctor:
                 skills:
                     Medicine: 3
+                specialties:
+                    Medicine:
+                        - Doctor
             Nurse:
                 skills:
                     Medicine: 3
+                specialties:
+                    Medicine:
+                        - Nurse
             Corpsman:
                 skills:
                     Medicine: 3
+                specialties:
+                    Medicine:
+                        - Medic
             Medical Staff:
                 skills:
                     Medicine: 3
+                specialties:
+                    Medicine:
+                        - Other
             Deck Crew:
                 skills:
                     Technician: 3
