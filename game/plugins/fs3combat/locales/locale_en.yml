@@ -280,6 +280,15 @@ en:
         suppress_successful_msg: "%{name} suppresses %{target} with %{weapon} and succeeds."
         suppress_failed_msg: "%{name} tries to suppress %{target} with %{weapon} but FAILS."
 
+        # ----------------------------
+        # DISTRACT
+        # ----------------------------
+            
+        distract_action_msg_long: "%{name} will distract %{targets}."
+        distract_action_msg_short: "Distract %{targets}"
+        distract_successful_msg: "%{name} distracts %{target} successfully."
+        distract_failed_msg: "%{name} tries to distract %{target} but FAILS."
+
         
         # ----------------------------
         # EXPLODE

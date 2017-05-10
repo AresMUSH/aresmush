@@ -5,6 +5,7 @@ load "lib/helpers.rb"
 load "lib/scene_model.rb"
 load "lib/scene_join_cmd.rb"
 load "lib/scene_privacy_cmd.rb"
+load "lib/scene_rename_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
@@ -48,6 +49,8 @@ module AresMUSH
           return SceneStartCmd
         when "stop"
           return SceneStopCmd
+        when "rename"
+          return SceneRenameCmd
         when "privacy"
           return ScenePrivacyCmd
         end

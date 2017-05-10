@@ -18,6 +18,7 @@ module AresMUSH
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:attack_stance_mod) { 0 }
           @combatant.stub(:stress) { 0 }
+          @combatant.stub(:distraction) { 0 }
           @combatant.stub(:attack_mod) { 0 }
           @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:weapon) { "Knife" }
@@ -57,6 +58,12 @@ module AresMUSH
         it "should account for wound modifiers" do
           @combatant.stub(:total_damage_mod) { -1 }
           @combatant.should_receive(:roll_ability).with("Knives", -1)
+          FS3Combat.roll_attack(@combatant)
+        end
+        
+        it "should account for distract modifiers" do
+          @combatant.stub(:distraction) { 2 }
+          @combatant.should_receive(:roll_ability).with("Knives", -2)
           FS3Combat.roll_attack(@combatant)
         end
         
@@ -109,6 +116,7 @@ module AresMUSH
           @combatant.stub(:total_damage_mod) { 0 }
           @combatant.stub(:defense_stance_mod) { 0 }
           @combatant.stub(:defense_mod) { 0 }
+          @combatant.stub(:distraction) { 0 }
           @combatant.stub(:luck)
           FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
           FS3Combat.stub(:vehicle_dodge_mod) { 0 }
@@ -126,6 +134,12 @@ module AresMUSH
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
+        it "should account for distract modifiers" do
+          @combatant.stub(:distraction) { 2 }
+          @combatant.should_receive(:roll_ability).with("Reaction", -2)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+                
         it "should account for stance modifiers" do
           @combatant.stub(:defense_stance_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Reaction", 1)

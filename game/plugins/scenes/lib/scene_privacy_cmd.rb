@@ -42,7 +42,7 @@ module AresMUSH
         end
         
         scene.update(private_scene: self.privacy == "Private")
-        if (self.privacy)        
+        if (scene.private_scene)        
           client.emit_success t('scenes.scene_marked_private')
         else
           client.emit_success t('scenes.scene_marked_public')

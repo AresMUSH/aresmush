@@ -13,6 +13,8 @@ en:
         scene_marked_private: "The scene has been marked private."
         scene_marked_public: "The scene has been marked public."
         scene_is_private: "That scene is private.  You must request a meetme from one of the participants to join."
+        scene_rename: "Scene renamed."
+        scene_pending_join: "%{name} is about to join the scene."
         
         public: "Public"
         private: "Private"

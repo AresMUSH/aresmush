@@ -12,6 +12,7 @@ module AresMUSH
     attribute :armor
     attribute :is_ko, :type => DataType::Boolean
     attribute :luck
+    attribute :distraction, :type => DataType::Integer, :default => 0
     attribute :ammo, :type => DataType::Integer
     attribute :max_ammo, :type => DataType::Integer, :default => 0
     attribute :posed, :type => DataType::Boolean
