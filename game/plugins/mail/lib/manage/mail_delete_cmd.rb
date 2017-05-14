@@ -12,7 +12,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.num ],
-          help: 'mail managing'
+          help: 'mail delete'
         }
       end
       

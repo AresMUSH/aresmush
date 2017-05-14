@@ -7,7 +7,7 @@ aliases:
 ---
 # FS3 Skills
 
-This game uses the FS3 skills system, Third Edition.  The complete rulebook can be found here:  http://www.aresmush.com/fs3/fs3-3.  This is a quick reference for the commands for setting and using your character's abilities.
+This game uses the FS3 skills system, Third Edition.  The complete rulebook can be found online: [FS3 Player's Guide](http://www.aresmush.com/fs3/fs3-3).  This is a quick reference for the commands for setting and using your character's abilities.
 
 ## Topics
 

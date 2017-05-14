@@ -15,7 +15,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.new_password ],
-          help: 'password'
+          help: 'login admin'
         }
       end
       

@@ -19,7 +19,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.board_name, self.subject, self.message ],
-          help: 'bbs'
+          help: 'bbs posting'
         }
       end
       

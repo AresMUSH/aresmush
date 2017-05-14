@@ -15,7 +15,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.notes ],
-          help: 'roster'
+          help: 'roster admin'
         }
       end
       

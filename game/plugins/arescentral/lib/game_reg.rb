@@ -41,7 +41,8 @@ module AresMUSH
         category: game_config['category'],
         description: game_config['description'],
         website: game_config["website"],
-        public_game: game_config["public_game"]
+        public_game: game_config["public_game"],
+        activity: Game.master.login_activity
       }
             
       params

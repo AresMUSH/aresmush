@@ -51,6 +51,7 @@ load "lib/gear/weapon_detail_cmd.rb"
 load "lib/gear/weapons_list_cmd.rb"
 load "lib/general/combat_action_cmd.rb"
 load "lib/general/combat_ai_cmd.rb"
+load "lib/general/combat_ammo_cmd.rb"
 load "lib/general/combat_luck_cmd.rb"
 load "lib/general/combat_mod_cmd.rb"
 load "lib/general/combat_newturn_cmd.rb"
@@ -166,9 +167,11 @@ module AresMUSH
        when "combats"
          return CombatListCmd
        when "combat"
-         case cmd.switch
+         case cmd.switch        
          when "all", "list"
            return CombatListCmd
+         when "ammo"
+           return CombatAmmoCmd
          when "attackmod", "defensemod", "lethalmod"
            return CombatModCmd
          when "armor"

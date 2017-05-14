@@ -50,3 +50,6 @@ en:
        upcoming_events_title: "Upcoming Events"
        
        tos_reset: "You have reset everyone's terms of service acknowledgement."
+       
+       activity_header: "Game Activity"
+       activity_footer: "@ = 5 players, o = 1-4 players"

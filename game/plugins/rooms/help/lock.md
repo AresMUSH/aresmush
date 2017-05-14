@@ -1,6 +1,8 @@
 ---
 toc: Getting Around
 summary: Lock exits.
+aliases:
+- lock
 ---
 # Locking Exits
 

@@ -14,7 +14,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.message ],
-          help: 'app'
+          help: 'chargen admin'
         }
       end
 

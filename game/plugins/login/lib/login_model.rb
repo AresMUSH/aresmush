@@ -41,4 +41,10 @@ module AresMUSH
       return self.login_api_token == token && self.login_api_token_expiry > Time.now
     end
   end  
+  
+  
+  class Game
+    attribute :login_activity, :type => DataType::Hash
+    attribute :login_activity_samples, :type => DataType::Integer
+  end
 end

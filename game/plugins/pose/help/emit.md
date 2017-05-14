@@ -3,6 +3,8 @@ toc: Scenes
 summary: Emitting messages.
 aliases:
 - nospoof
+- emit
+- pemit
 ---
 # Emits
 

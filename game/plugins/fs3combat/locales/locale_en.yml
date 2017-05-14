@@ -116,6 +116,9 @@ en:
         
         random_targets: "Suggested Targets: %{targets}"
         no_targets_specified: "No targets specified."
+        
+        ammo_set: "%{name} ammo now set to %{ammo}."
+        
         # ----------------------------
         # KO
         # ----------------------------

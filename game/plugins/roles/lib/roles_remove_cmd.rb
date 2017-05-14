@@ -15,7 +15,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.role ],
-          help: 'roles'
+          help: 'roles manage'
         }
       end
       

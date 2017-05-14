@@ -19,7 +19,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name ],
-          help: 'mail'
+          help: 'mail review'
         }
       end
       

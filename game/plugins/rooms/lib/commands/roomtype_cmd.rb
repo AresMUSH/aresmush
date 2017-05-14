@@ -12,7 +12,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name ],
-          help: 'rooms'
+          help: 'rooms setup'
         }
       end
       

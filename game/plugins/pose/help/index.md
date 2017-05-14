@@ -3,8 +3,6 @@ toc: Scenes
 summary: Posing your actions.
 aliases:
 - say
-- emit
-- pemit
 ---
 # Posing
 
