@@ -13,7 +13,7 @@ aliases:
 - hair
 - age
 - reputation
-- actor
+- actors
 ---
 # Demographics
 

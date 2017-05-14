@@ -116,6 +116,9 @@ en:
         
         random_targets: "Suggested Targets: %{targets}"
         no_targets_specified: "No targets specified."
+        
+        ammo_set: "%{name} ammo now set to %{ammo}."
+        
         # ----------------------------
         # KO
         # ----------------------------
@@ -251,6 +254,7 @@ en:
         invalid_attack_special: "That is not a valid attack special."
         attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
         attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
+        attack_dodged_easily: "%{name} attacks %{target} with %{weapon} but %{target} EVADES EASILY!"
         attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
         attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc}. %{armor}"
         attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
@@ -278,6 +282,15 @@ en:
         suppress_action_msg_short: "Suppress %{targets}"
         suppress_successful_msg: "%{name} suppresses %{target} with %{weapon} and succeeds."
         suppress_failed_msg: "%{name} tries to suppress %{target} with %{weapon} but FAILS."
+
+        # ----------------------------
+        # DISTRACT
+        # ----------------------------
+            
+        distract_action_msg_long: "%{name} will distract %{targets}."
+        distract_action_msg_short: "Distract %{targets}"
+        distract_successful_msg: "%{name} distracts %{target} successfully."
+        distract_failed_msg: "%{name} tries to distract %{target} but FAILS."
 
         
         # ----------------------------

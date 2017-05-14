@@ -3,7 +3,8 @@
 
 %xh<%= t('idle.roster_column_titles') %>%xn
 <% paginator.items.each do |r| %>
-<%= left( r.name, 32 ) -%>
+<%= left( r.name, 22 ) -%>
+<%= left( r.demographic('gender'), 10 ) -%>
 <%= left( r.group("Position"), 20 ) -%>
 <%= left( approved(r), 12 ) -%>
 <%= contact(r) %>

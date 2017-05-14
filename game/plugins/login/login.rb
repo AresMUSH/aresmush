@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+load "lib/activity_cmd.rb"
 load "lib/alias_cmd.rb"
 load "lib/connect_cmd.rb"
 load "lib/create_cmd.rb"
@@ -47,6 +48,8 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "activity"
+        return ActivityCmd
       when "alias"
         return AliasCmd
       when "create"

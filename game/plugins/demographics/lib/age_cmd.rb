@@ -9,7 +9,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.age ],
-          help: 'demographics'
+          help: 'age'
         }
       end
          

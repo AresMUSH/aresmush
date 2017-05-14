@@ -15,7 +15,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.status ],
-          help: 'idle'
+          help: 'idle admin'
         }
       end
       

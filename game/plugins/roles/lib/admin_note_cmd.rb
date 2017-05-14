@@ -12,7 +12,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.note ],
-          help: 'admin'
+          help: 'roles manage'
         }
       end
       

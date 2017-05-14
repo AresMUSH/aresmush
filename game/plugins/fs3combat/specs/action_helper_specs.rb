@@ -83,27 +83,35 @@ module AresMUSH
           @combatant = double
           @combatant.stub(:log)
           @combatant.stub(:name) { "Bob" }
+          @combatant.stub(:stress) { 0 }
+          @combatant.stub(:distraction) { 0 }
           Global.stub(:read_config).with("fs3combat", "composure_skill") { "Composure" }
         end
         
         it "should reduce stress by 1 even if roll fails" do
           @combatant.stub(:stress) { 3 }
+          @combatant.stub(:distraction) { 2 }
           @combatant.stub(:roll_ability).with("Composure") { 0 }
           @combatant.should_receive(:update).with(stress: 2)
+          @combatant.should_receive(:update).with(distraction: 1)
           FS3Combat.reset_stress(@combatant)
         end
         
         it "should reduce stress by roll result further" do
           @combatant.stub(:stress) { 3 }
+          @combatant.stub(:distraction) { 4 }
           @combatant.stub(:roll_ability).with("Composure") { 2 }
           @combatant.should_receive(:update).with(stress: 0)
+          @combatant.should_receive(:update).with(distraction: 1)
           FS3Combat.reset_stress(@combatant)
         end
         
         it "should not reduce stress below 0" do
           @combatant.stub(:stress) { 1 }
+          @combatant.stub(:distraction) { 1 }
           @combatant.stub(:roll_ability).with("Composure") { 2 }
           @combatant.should_receive(:update).with(stress: 0)
+          @combatant.should_receive(:update).with(distraction: 0)
           FS3Combat.reset_stress(@combatant)
         end
       end

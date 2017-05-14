@@ -1,10 +1,12 @@
 ---
 toc: FS3 Combat
 summary: Combat overview.
+aliases:
+- combat
 ---
 # FS3 Combat
 
-The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more help, see http://aresmush.com/fs3/fs3-3/combat-quickref/.
+The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. For more help, see the [FS3 Combat Player's Guide](http://aresmush.com/fs3/fs3-3/combat).
 
 `combat/start` or `combat/start mock` - Starts a combat. (Organizer only)
 `combat/newturn` - Trigger a new turn. (Organizer only)

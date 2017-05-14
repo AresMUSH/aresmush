@@ -182,7 +182,7 @@ module AresMUSH
         @handler.trim_arg(nil).should eq nil
       end
       
-      it "should return a titlecased string" do
+      it "should return a /help/d string" do
         @handler.trim_arg("   someTHING   ").should eq "someTHING"
       end
     end
@@ -196,7 +196,7 @@ module AresMUSH
         @handler.titlecase_arg(nil).should eq nil
       end
       
-      it "should return a titlecased string" do
+      it "should return a /help/d string" do
         @handler.titlecase_arg("   someTHING   ").should eq "Something"
       end
     end

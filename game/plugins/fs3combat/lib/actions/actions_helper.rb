@@ -6,6 +6,8 @@ module AresMUSH
         AimAction
       when "attack"
         AttackAction
+      when "distract"
+        DistractAction
       when "escape"
         EscapeAction
       when "explode"
@@ -53,13 +55,16 @@ module AresMUSH
     end
     
     def self.reset_stress(combatant)
-      return if combatant.stress == 0
+      return if combatant.stress == 0 && combatant.distraction == 0
 
       composure = Global.read_config("fs3combat", "composure_skill")
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
-      combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old=#{combatant.stress} new=#{new_stress}."
+      new_distract = [0, combatant.distraction - roll - 1].max      
+      
+      combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old_stress=#{combatant.stress} new_stress=#{new_stress} old_distr=#{combatant.distraction} new_distr=#{new_distract}."
       combatant.update(stress: new_stress)
+      combatant.update(distraction: new_distract)
     end
     
     def self.check_for_ko(combatant)
@@ -263,6 +268,8 @@ module AresMUSH
       
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (attacker_net_successes < -2)
+        message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (attacker_net_successes < 0)
         message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (stopped_by_cover)

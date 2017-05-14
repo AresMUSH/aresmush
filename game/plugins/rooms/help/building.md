@@ -38,7 +38,12 @@ Once you have an exit, you can change the source or destination rooms that it's 
 
 ## Finding Rooms
 
-If you lose track of rooms you've created, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  See the [Database Help](/help/manage/database) file.
+If you lose track of rooms you've created, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  
+
+`rooms`- Lists all rooms
+`rooms <search>` - Search for rooms.
+
+See the [Database Help](/help/manage/database) file for more information.
 
 ## Special Rooms
 

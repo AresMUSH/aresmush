@@ -32,6 +32,8 @@ This is a quick reference for combat action commands.
 `combat/suppress <target>` - Use suppressive fire
     A full-auto or explosive weapon can specify a list of up to 3 targets.
 
+`combat/distract <target>` - Distracts a target
+
 `combat/subdue <target>` - Subdues or disarms a target. 
 `combat/escape` – Attempts to escape while subdued.
 

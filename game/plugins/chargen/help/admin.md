@@ -20,14 +20,23 @@ There's a single approval job throughout the process, making it easier to keep t
 `app/approve <name>`
 `app/reject <name>=<message>` - Unlocks them so they can make changes.
 
-If you ever make a mistake and accidentally approve someone, you can unapprove them.
+## Reviewing Characters and Backgrounds
 
-`app/unapprove <name>` - Unapproves someone.
+Application managers can quickly review the character's background, sheet, profile and description.
 
-## Reviewing and Editing Backgrounds
+`app/review <name>` - Quick command to review app, background, profile and sheet all at once.
+
+## Editing Backgrounds
 
 Application managers can view and edit other character backgrounds, in case you need to make simple tweaks during the approval process.
 
 `bg/set <name>=<background>` - Sets a background.
 `bg/edit <name>` - Grabs the existing background text into your input buffer.
 `bg <name>` - Views someone else's background.
+
+## Unapproving a Character
+
+If you ever make a mistake and accidentally approve someone, you can unapprove them.
+
+`app/unapprove <name>` - Unapproves someone.
+

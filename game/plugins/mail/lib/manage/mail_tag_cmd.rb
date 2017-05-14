@@ -14,7 +14,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.num, self.tag ],
-          help: 'mail tags'
+          help: 'mail organization'
         }
       end
       

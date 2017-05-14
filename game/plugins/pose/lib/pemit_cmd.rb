@@ -14,7 +14,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.names, self.message ],
-          help: 'posing'
+          help: 'pemit'
         }
       end
       

@@ -61,7 +61,7 @@ module AresMUSH
               idle_char.update(idle_state: nil)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
-              char.update(idle_state: action)
+              idle_char.update(idle_state: action)
               Login::Api.set_random_password(idle_char)
             end
           end

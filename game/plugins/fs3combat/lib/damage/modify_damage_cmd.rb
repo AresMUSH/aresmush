@@ -17,7 +17,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.num, self.desc, self.severity ],
-          help: 'combat org'
+          help: 'damage'
         }
       end
       

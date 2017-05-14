@@ -139,8 +139,10 @@ module AresMUSH
           @char = double
           @char.stub(:fs3_action_skills) { [] }
           StartingSkills.stub(:get_skills_for_char) { { "A" => 2, "B" => 3 }}
+          StartingSkills.stub(:get_specialties_for_char) { { "A" => [ "X" ] }}
           FS3Skills.stub(:ability_rating).with(@char, "A") { 3 }
           FS3Skills.stub(:ability_rating).with(@char, "B") { 3 }
+          FS3Skills.stub(:action_skill_config) { {} }
         end
 
         it "should warn if missing a starting skill" do
@@ -174,6 +176,19 @@ module AresMUSH
           config = { "specialties" => [ "A" ] }
           FS3Skills.stub(:action_skill_config) { config }
           @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "Firearms", specialties: [ "X" ])] }
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check                    chargen.ok"
+        end
+        
+        it "should warn if missing group specialty" do
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "A", rating: 3)] }
+          review = FS3Skills.starting_skills_check(@char)
+          review.should eq "fs3skills.starting_skills_check%r%Tfs3skills.missing_group_specialty"
+        end
+
+        it "should not warn if group specialty present" do
+          skill = FS3ActionSkill.new(name: "A", rating: 3, specialties: [ 'X' ])
+          @char.stub(:fs3_action_skills) { [ skill ] }
           review = FS3Skills.starting_skills_check(@char)
           review.should eq "fs3skills.starting_skills_check                    chargen.ok"
         end

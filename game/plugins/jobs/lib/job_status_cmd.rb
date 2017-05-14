@@ -14,7 +14,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.number, self.value ],
-          help: 'jobs'
+          help: 'jobs manage'
         }
       end
 

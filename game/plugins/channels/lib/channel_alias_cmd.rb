@@ -14,7 +14,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name, self.alias ],
-          help: 'channels'
+          help: 'channels talk'
         }
       end
       

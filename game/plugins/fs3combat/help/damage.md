@@ -6,6 +6,7 @@ aliases:
 - heal
 - healing
 - hospitals
+- damage
 ---
 # FS3 Combat - Damage
 

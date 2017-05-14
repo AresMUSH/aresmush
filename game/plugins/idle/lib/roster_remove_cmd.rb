@@ -13,7 +13,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.name ],
-          help: 'roster'
+          help: 'roster admin'
         }
       end
       

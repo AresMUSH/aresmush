@@ -16,7 +16,7 @@ aliases:
 ---
 # FS3 - Abilities
 
-The FS3 Abilities commands are used to set yourself up during character creation.  For more help with abilities, see http://aresmush.com/fs3/fs3-3/chargen/.
+The FS3 Abilities commands are used to set yourself up during character creation.  For more help with abilities, see the [FS3 Player's Guide](http://aresmush.com/fs3/fs3-3/chargen/).
 
 To get started, or at any point you wish to reset yourself, use the reset command.
 
