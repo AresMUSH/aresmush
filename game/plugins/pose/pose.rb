@@ -11,6 +11,7 @@ load "lib/pose_model.rb"
 load "lib/quote_color_cmd.rb"
 load "lib/repose_cmd.rb"
 load "lib/repose_clear_cmd.rb"
+load "lib/repose_drop_cmd.rb"
 load "lib/repose_nudge_cmd.rb"
 load "lib/repose_order_cmd.rb"
 load "lib/repose_set_cmd.rb"
@@ -63,6 +64,8 @@ module AresMUSH
           return ReposeCmd
         when "clear"
           return ReposeClearCmd
+        when "drop"
+          return ReposeDropCmd
         when "nudge"
           return ReposeNudgeCmd
         when "on", "off"
@@ -90,6 +93,8 @@ module AresMUSH
         return CronEventHandler
       when "GameStartedEvent"
         return GameStartedEventHandler
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
       end
       nil
     end

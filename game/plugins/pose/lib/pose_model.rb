@@ -5,6 +5,7 @@ module AresMUSH
     attribute :pose_autospace, :default => "%r"
     attribute :pose_quote_color
     attribute :repose_nudge, :type => DataType::Boolean, :default => true
+    attribute :repose_nudge_muted, :type => DataType::Boolean
   end
   
   class PoseOrder < Ohm::Model
