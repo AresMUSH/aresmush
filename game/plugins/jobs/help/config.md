@@ -45,7 +45,7 @@ You can add more status steps to your workflow.
 You can also set a color for each job.  This can be changed at will.  For example, NEW jobs are green by default:
 
         NEW:
-            color: "%xg"
+            color: "\%xg"
 
 ### Special Status Values
 

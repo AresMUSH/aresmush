@@ -25,8 +25,8 @@ You can disable either or both of these timers by commenting out or removing the
 You can configure which colors are used to display different status values in the who list and other systems.  For example, the following configuration uses red for IC and highlighted blue for OOC.
 
     colors:
-        IC: "%xr"
-        OOC: "%xh%xb"
+        IC: "\%xr"
+        OOC: "\%xh\%xb"
 
 ## AFK Cron Job
 
