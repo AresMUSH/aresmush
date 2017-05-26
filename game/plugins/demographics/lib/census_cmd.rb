@@ -22,8 +22,14 @@ module AresMUSH
           template = GenderCensusTemplate.new
         elsif (self.name == "Ranks" || self.name == "Rank")
           template = RankCensusTemplate.new
-        elsif (self.name == "Skills" || self.name == "Skill")
-          template = SkillsCensusTemplate.new
+        elsif (self.name.start_with?("Skill"))
+          type = self.name.after(" ").titlecase
+          types = [ 'Action', 'Background', 'Language' ]
+          if (!types.include?(type))
+            client.emit_failure t('demographics.invalid_skill_census_type', :types => types)
+            return
+          end
+          template = SkillsCensusTemplate.new(type)
         else
           group = Demographics.get_group(self.name)
           if (!group)
