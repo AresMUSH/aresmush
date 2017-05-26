@@ -10,10 +10,6 @@ module AresMUSH
         super File.dirname(__FILE__) + "/group_census.erb"
       end
       
-      def chars
-        Idle::Api.active_chars.map { |c| c.name }
-      end
-      
       def title
         is_freeform ? t('demographics.census_title_top_20', :name => self.name) : 
             t('demographics.group_census_title', :name => self.name)
