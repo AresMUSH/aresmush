@@ -175,6 +175,22 @@ fs3combat:
             allowed_specials: 
                 - 'Ap'
                 - 'Scope'
+                
+        Sniper Rifle:
+            description: "Sniper Rifle"
+            skill: Firearms
+            lethality: 0
+            penetration: 10
+            weapon_type: Ranged
+            is_automatic: false
+            ammo: 10
+            recoil: 0
+            damage_type: Physical
+            accuracy: 2
+            has_shrapnel: false
+            allowed_specials: 
+                - 'Ap'
+                - 'Scope'
 
         Shotgun:
             description: "Shotgun using solid shot"
