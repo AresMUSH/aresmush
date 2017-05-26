@@ -6,7 +6,7 @@ module AresMUSH
       
       
       def check_points
-        return t('fs3combat.no_luck') if enactor.luck <= 1
+        return t('fs3combat.no_luck') if enactor.luck < 1
         return nil
       end
     

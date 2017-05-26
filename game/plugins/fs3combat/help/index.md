@@ -41,7 +41,6 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 [Actions](/help/fs3combat/actions)
 [Damage](/help/fs3combat/damage)
 [Gear](/help/fs3combat/gear)
-[Luck](/help/fs3combat/luck)
 [Organizing](/help/fs3combat/org)
 
 ## Admin Topics

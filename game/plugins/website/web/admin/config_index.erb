@@ -5,7 +5,7 @@
 <h1>Game Config</h1>
 
 <ul>
-    <% @game_config.each do |f| %>
+    <% @game_config.sort.each do |f| %>
     <li><a href="/admin/config/edit?path=<%= f %>"><%= File.basename(f) %></a></li>
     <% end %>
 </ul>
@@ -13,7 +13,7 @@
 <h1>Plugin Config</h1>
     <blockquote>
         Quick Links:
-        <% @plugin_config.keys.each do |p| %>
+        <% @plugin_config.keys.sort.each do |p| %>
         <a href="#<%= p %>"><%= p %></a> | 
         <% end %>
     </blockquote>

@@ -98,7 +98,7 @@ module AresMUSH
     end
     
     def self.make_ko_roll(combatant)
-      pc_mod = combatant.is_npc? ? 0 : 3
+      pc_mod = combatant.is_npc? ? 0 : Global.read_config("fs3combat", "pc_knockout_bonus")
 
       composure = Global.read_config("fs3combat", "composure_skill")
       
@@ -119,7 +119,7 @@ module AresMUSH
       roll
     end
         
-    def self.ai_action(combat, client, combatant)
+    def self.ai_action(combat, client, combatant, enactor = nil)
       if (combatant.is_subdued?)
         FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::EscapeAction, "")
       elsif (!FS3Combat.check_ammo(combatant, 1))
@@ -136,9 +136,9 @@ module AresMUSH
           else
             action_klass = FS3Combat::AttackAction
           end
-          FS3Combat.set_action(client, nil, combat, combatant, action_klass, target.name)
+          FS3Combat.set_action(client, enactor, combat, combatant, action_klass, target.name)
         else
-          FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::PassAction, "")
+          FS3Combat.set_action(client, enactor, combat, combatant, FS3Combat::PassAction, "")
         end
       end   
     end
@@ -180,7 +180,7 @@ module AresMUSH
         severity = -10
       end
       
-      npc = combatant.is_npc? ? 30 : 0
+      npc = combatant.is_npc? ? Global.read_config("fs3combat", "npc_lethality_mod") : 0
       special = combatant.damage_lethality_mod + npc
       
       total = random + severity + lethality - armor + special

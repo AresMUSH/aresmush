@@ -2,6 +2,9 @@ fs3combat:
 
     default_type: Soldier
     
+    pc_knockout_bonus: 3
+    npc_lethality_mod: 30
+    
     combatant_types:
 
         # ----------------------------------------
@@ -51,6 +54,7 @@ fs3combat:
                      
     shortcuts:
         "weapons": "weapon"
+        "combat/skill": "combat/summary"
         "combat/skills": "combat/summary"
         "combat/slackers": "combat/summary"
         "vehicles": "vehicle"

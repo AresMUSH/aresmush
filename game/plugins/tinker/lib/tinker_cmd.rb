@@ -5,9 +5,9 @@ module AresMUSH
             
       def parse_args
       end
-      
+
       def check_can_manage
-        return t('dispatcher.not_allowed') if !enactor.can_manage_game?
+        return t('dispatcher.not_allowed') if !enactor.has_permission?("tinker")
         return nil
       end
       

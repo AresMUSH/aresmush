@@ -7,29 +7,29 @@ fs3combat:
             Piloting: 4
             Melee: 6
             Demolitions: 6
-            Composure: 4
+            Composure: 6
             Alertness: 4
             Athletics: 4
             Medicine: 4
             Reflexes: 3
         Henchman:
             Default: 6
-            Firearms: 8
-            Gunnery: 8
+            Firearms: 9
+            Gunnery: 9
             Piloting: 6
-            Melee: 8
+            Melee: 9
             Demolitions: 8
-            Composure: 6
+            Composure: 8
             Alertness: 6
             Athletics: 6
             Medicine: 6
             Reflexes: 5
         Boss:
             Default: 8
-            Firearms: 10
-            Gunnery: 10
+            Firearms: 11
+            Gunnery: 11
             Piloting: 8
-            Melee: 10
+            Melee: 11
             Demolitions: 10
             Composure: 10
             Alertness: 8

@@ -21,9 +21,9 @@ module AresMUSH
       def resolve
         FS3Combat.check_for_unko(self.target)
         if (self.target.is_ko)
-          message = t('fs3combat.rally_resolution_failed', :target => print_target_names)
+          message = t('fs3combat.rally_resolution_failed', :target => print_target_names, :name => self.name)
         else
-          message = t('fs3combat.rally_resolution_success', :target => print_target_names)
+          message = t('fs3combat.rally_resolution_success', :target => print_target_names, :name => self.name)
         end
         
         [ message ]
