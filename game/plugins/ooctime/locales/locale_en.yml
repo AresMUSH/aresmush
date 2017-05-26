@@ -5,6 +5,6 @@ en:
         ic_time: "IC Time:" 
         ic_time_ratio_1_1: "IC Time passes at a ratio of 1:1 compared to real time."
         timezone: "Your local timezone is set to %xh%{timezone}%xn."
-        default_timezone_set: "Your timezone has been set to %{timezone}.  See 'help time' if you would ike to change it.  Events, bbs posts, and other MUSH dates and times will be displayed in that timezone."
+        default_timezone_set: "Your timezone has been set to %{timezone}.  See 'help time' if you would like to change it.  Events, bbs posts, and other MUSH dates and times will be displayed in that timezone."
         invalid_timezone: "That is not a valid timezone.  See 'help time'."
         timezone_set: "You set your timezone to %{timezone}.  Events, bbs posts, and other MUSH dates and times will be displayed in that timezone."

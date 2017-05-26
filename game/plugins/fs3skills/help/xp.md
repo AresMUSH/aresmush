@@ -4,6 +4,7 @@ summary: Experience points.
 aliases:
 - experience
 - improvement
+- xp
 ---
 Experience Points (XP) are gained periodically to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.  
 

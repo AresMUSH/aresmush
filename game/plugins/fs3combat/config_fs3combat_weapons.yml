@@ -32,7 +32,20 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
-            
+
+        Grenade Launcher:
+            description: "Grenade Launcher"
+            skill: Gunnery
+            lethality: 0
+            penetration: 6
+            weapon_type: Explosive
+            is_automatic: false
+            ammo: 4
+            recoil: 0
+            damage_type: Physical
+            accuracy: 0
+            has_shrapnel: true
+                        
         Mine:
             description: "Mine or other anti-personnel explosive"
             skill: Demolitions
@@ -49,11 +62,24 @@ fs3combat:
         Missile:
             description: "Guided Anti-Vehicle Missile"
             skill: Gunnery
-            lethality: 75
+            lethality: 80
             penetration: 20
             weapon_type: Ranged
             is_automatic: false
-            ammo: 4
+            ammo: 2
+            recoil: 0
+            damage_type: Physical
+            accuracy: 3
+            has_shrapnel: false
+            
+        Talons:
+            description: "Unguided Anti-Vehicle Rockets"
+            skill: Gunnery
+            lethality: 0
+            penetration: 12
+            weapon_type: Ranged
+            is_automatic: false
+            ammo: 20
             recoil: 0
             damage_type: Physical
             accuracy: 0
@@ -110,7 +136,7 @@ fs3combat:
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
-            recoil: 2
+            recoil: 4
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
@@ -142,7 +168,7 @@ fs3combat:
             weapon_type: Ranged
             is_automatic: true
             ammo: 20
-            recoil: 1
+            recoil: 3
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
@@ -173,7 +199,7 @@ fs3combat:
             weapon_type: Ranged
             is_automatic: true
             ammo: 30
-            recoil: 1
+            recoil: 4
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
@@ -265,7 +291,7 @@ fs3combat:
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
-            recoil: 3
+            recoil: 6
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
@@ -293,7 +319,7 @@ fs3combat:
             weapon_type: Ranged
             is_automatic: true
             # ammo: 0
-            recoil: 1
+            recoil: 6
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
@@ -311,7 +337,7 @@ fs3combat:
             penetration: 6
         Bipod:
             description: "Bipod Brace"
-            recoi: -2
+            recoi: -3
         Scope: 
             description: "Sniper scope"
             accuracy: 2

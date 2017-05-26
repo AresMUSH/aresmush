@@ -14,5 +14,13 @@ module AresMUSH
         Pose.reset_reposes
       end
     end
+    
+    class CharConnectedEventHandler
+      def on_event(event)
+        if (event.char.repose_nudge_muted)
+          event.char.update(repose_nudge_muted: false)
+        end
+      end
+    end
   end
 end

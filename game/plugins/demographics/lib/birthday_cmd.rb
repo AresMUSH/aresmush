@@ -61,7 +61,7 @@ module AresMUSH
             :birthdate => ICTime::Api.ic_datestr(bday), 
             :age => model.age)
           else
-            client.emit_success t('demographics.admin_property_set', :name => self.name, :property => "birthdate", :value => self.actor)
+            client.emit_success t('demographics.admin_property_set', :name => self.name, :property => "birthdate", :value => self.date_str)
           end
         end
         

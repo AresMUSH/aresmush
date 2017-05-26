@@ -216,6 +216,7 @@ module AresMUSH
           @combatant.stub(:name) { "Bob" }
           @combatant.stub(:total_damage_mod) { -2 }
           @combatant.stub(:is_npc?) { true }
+          Global.stub(:read_config).with("fs3combat", "pc_knockout_bonus") { 3 }
         end
         
         it "should roll vehicle toughness if in a vehicle" do

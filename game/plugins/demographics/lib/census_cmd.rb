@@ -18,8 +18,12 @@ module AresMUSH
             return
           end
           template = CompleteCensusTemplate.new(paginator)
-        elsif (self.name == "Gender")
+        elsif (self.name == "Genders" || self.name == "Gender")
           template = GenderCensusTemplate.new
+        elsif (self.name == "Ranks" || self.name == "Rank")
+          template = RankCensusTemplate.new
+        elsif (self.name == "Skills" || self.name == "Skill")
+          template = SkillsCensusTemplate.new
         else
           group = Demographics.get_group(self.name)
           if (!group)

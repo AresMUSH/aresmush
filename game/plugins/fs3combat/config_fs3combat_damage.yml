@@ -15,7 +15,7 @@ fs3combat:
     healing_points:
         HEAL: 0
         GRAZE: 3
-        FLESH: 10
-        IMPAIR: 14
-        INCAP: 30
+        FLESH: 7
+        IMPAIR: 10
+        INCAP: 20
             

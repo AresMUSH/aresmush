@@ -39,7 +39,9 @@ fs3combat:
             weapons:
                 - Kew
                 - Ecm
+                - Kew
                 - Missile
+                - Talons
                 - Rocket
             dodge: 0
 
@@ -50,8 +52,8 @@ fs3combat:
             hitloc_chart: Transport
             armor: Heavy Raider
             weapons:
-                - Kew
                 - Missile
+                - Kew
                 - Rocket
             dodge: 0
 

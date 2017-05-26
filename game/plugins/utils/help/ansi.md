@@ -21,13 +21,13 @@ The 'colors' command will show you all available colors.
 
 Ansi codes can be nested within each other.
 
-    \%xrRed on black\%xBRed on Blue\%xnBack to normal
-    %xrRed on black%xBRed on Blue%xnBack to normal
+  \%xrRed on black\%xBRed on Blue\%xnBack to normal
+  %xrRed on black%xBRed on Blue%xnBack to normal
 
 And codes like bold and underline can be stacked with other colors.
 
-    \%xh%xbHighlighted blue.\%xn
-    %xh%xbHighlighted blue.%xn
+  \%xh\%xbHighlighted blue.\%xn
+  %xh%xbHighlighted blue.%xn
 
 Additional ansi codes include:
 

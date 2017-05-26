@@ -49,7 +49,7 @@ module AresMUSH
         client.emit_success t('fs3combat.choosing_ai_actions')
         
         npcs.each_with_index do |c, i|
-          FS3Combat.ai_action(combat, client, c)
+          FS3Combat.ai_action(combat, client, c, enactor)
         end
       end
     end

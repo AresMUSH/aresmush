@@ -50,11 +50,11 @@ module AresMUSH
         
       next_up_order = repose.sorted_orders.first
       next_up_char = next_up_order.character
-      
+
       if ((next_up_char.room != room) || !next_up_char.client)
         next_up_order.delete
         Pose.notify_next_person(room)
-      elsif (next_up_char.repose_nudge)
+      elsif (next_up_char.repose_nudge && !next_up_char.repose_nudge_muted)
         next_up_char.client.emit_ooc t('pose.repose_your_turn')
       else
         

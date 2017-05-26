@@ -40,6 +40,13 @@ module AresMUSH
       end
       
       def handle
+        taken = Character.all.select { |c| c.actor.upcase == self.actor.upcase }
+        if (taken.first)
+          client.emit_failure t('demographics.actor_taken')
+          return
+        end
+
+
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           
           model.update_demographic("actor", self.actor)

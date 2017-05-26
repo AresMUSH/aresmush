@@ -30,6 +30,7 @@ module AresMUSH
         
         combat.emit t('fs3combat.starting_turn_resolution', :name => enactor_name)
         combat.update(turn_in_progress: true)
+        combat.update(everyone_posed: false)
 
         Global.dispatcher.spawn("Combat Turn", client) do
           begin

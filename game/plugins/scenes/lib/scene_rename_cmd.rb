@@ -37,7 +37,7 @@ module AresMUSH
         end
         
         scene.room.update(name: "Scene #{scene.id} - #{self.name}")
-        client.emit_success t('scenes.scene_rename')
+        scene.room.emit_ooc t('scenes.scene_rename', :enactor_name => enactor_name, :scene_name => self.name)
       end
     end
   end

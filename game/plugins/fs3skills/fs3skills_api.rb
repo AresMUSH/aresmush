@@ -72,6 +72,10 @@ module AresMUSH
       def self.dice_rolled(char, ability)
         FS3Skills.dice_to_roll_for_ability(char, RollParams.new(ability))
       end
+      
+      def self.skills_census
+        FS3Skills.skills_census
+      end
     end
   end
 end

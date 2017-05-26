@@ -7,9 +7,15 @@ module AresMUSH
       attr_accessor :ammo, :name
       
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        self.name = titlecase_arg(args.arg1)
-        self.ammo = [ 0, integer_arg(args.arg2) ].max
+        if (cmd.args =~ /\=/)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.name = titlecase_arg(args.arg1)
+          self.ammo = integer_arg(args.arg2)
+        else
+          self.name = enactor_name
+          self.ammo = integer_arg(cmd.args)
+        end
+        self.ammo = [ 0, self.ammo ].max
       end
 
       def required_args
@@ -22,11 +28,6 @@ module AresMUSH
       
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
-          
-          if (combat.organizer != enactor)
-            client.emit_failure t('fs3combat.only_organizer_can_do')
-            return
-          end
           
           combatant.update(ammo: self.ammo)
           combat.emit t('fs3combat.ammo_set', :name => self.name, :ammo => self.ammo)

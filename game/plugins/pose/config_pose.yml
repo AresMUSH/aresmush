@@ -13,3 +13,4 @@ pose:
         "po" : "repose/order"
         "repose/notify" : "repose/nudge"
         "repose/log" : "repose/all"
+        "repose/reset": "repose/clear"
