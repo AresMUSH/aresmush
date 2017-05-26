@@ -1,0 +1,10 @@
+<%= line %>		
+%xh<%= t('demographics.skill_census_title') %>%xn		
+<%= line 2 %>	
+
+<% skills.each do |name, people| %>
+%xh<%= name %>%xn
+<%= people.sort_by{ |p| p.after(":")}.join(", ")%>
+
+<% end %>
+<%= line %> 

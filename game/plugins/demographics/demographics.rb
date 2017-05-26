@@ -19,6 +19,8 @@ load "templates/gender_census_template.rb"
 load "templates/group_census_template.rb"
 load "templates/group_detail_template.rb"
 load "templates/group_list_template.rb"
+load "templates/skills_census_template.rb"
+load "templates/rank_census_template.rb"
 
 module AresMUSH
   module Demographics

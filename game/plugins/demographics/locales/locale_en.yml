@@ -2,6 +2,7 @@ en:
     demographics:
         actor_not_set: None Set
         actors_title: Actors
+        actor_taken: That actor is already taken.
 
         admin_property_set: "You set %{name}'s %{property} to %{value}."
         use_birthday_instead: "Use the birthday command to set someone's age or birthday."
@@ -41,6 +42,8 @@ en:
         census_title_top_20: "%{name} Census (Top 20)"
         group_census_title: "%{name} Census"
         gender_census_title: "Gender Census"
+        skill_census_title: "Skill Census"
+        rank_census_title: "Rank Census"
         full_census_title: "Name                 Gender    Position              Callsign"
         
         census_groups: "Census Groups Available"
