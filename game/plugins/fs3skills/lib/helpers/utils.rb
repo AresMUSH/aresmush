@@ -53,5 +53,36 @@ module AresMUSH
         return :background
       end        
     end
+    
+    def self.skills_census
+      skills = {}
+      Idle::Api.active_chars.each do |c|
+        c.fs3_action_skills.each do |a|
+          add_to_hash(skills, c, a)
+        end
+
+        c.fs3_background_skills.each do |a|
+          add_to_hash(skills, c, a)
+        end
+        
+        c.fs3_languages.each do |a|
+          add_to_hash(skills, c, a)
+        end
+      end
+      skills = skills.select { |name, people| people.count > 2 }
+      skills = skills.sort_by { |name, people| [0-people.count, name] }
+      skills
+    end
+    
+    
+    private
+    
+    def self.add_to_hash(hash, char, skill)
+      if (hash[skill.name])
+        hash[skill.name] << "#{char.name}:#{skill.rating}"
+      else
+        hash[skill.name] = ["#{char.name}:#{skill.rating}"]
+      end
+    end  
   end
 end
