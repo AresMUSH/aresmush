@@ -1,7 +1,7 @@
 login:    
     
     suspect_sites:
-        - localhost
+        - "delete me and put a real site here"
 
     banned_sites:
         - "delete me and put a real site here"
