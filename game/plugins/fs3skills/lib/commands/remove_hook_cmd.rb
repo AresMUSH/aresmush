@@ -33,6 +33,7 @@ module AresMUSH
             hook.delete
             client.emit_success t('fs3skills.hook_removed', :name => self.name)
           end
+        end
       end
     end
   end
