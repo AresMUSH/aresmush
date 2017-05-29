@@ -45,7 +45,12 @@
             <p>Welcome, <%= @user.name %>.</p>
             <p><a href="/logout">Logout</a> </p>
             <% else %>
-            <p><a href="/login">Login</a> | <a href="/register">Register</a>  </p>
+            <p><a href="/login">Login</a> 
+                <% if enable_registration %>
+                | <a href="/register">Register</a>  
+                <% end %>
+            </p>
+                
             <% end %>
             </div>
         </div>

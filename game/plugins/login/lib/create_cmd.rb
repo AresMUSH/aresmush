@@ -33,6 +33,11 @@ module AresMUSH
         return Character.check_password(password)
       end
       
+      def check_banned
+        return t('login.site_blocked') if Login.is_banned?(client)
+        return nil
+      end
+      
       def handle
         terms_of_service = Login.terms_of_service
         if (terms_of_service && client.program[:tos_accepted].nil?)

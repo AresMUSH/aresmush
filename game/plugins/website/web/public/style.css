@@ -131,6 +131,7 @@ form {
     color: #888;
     font-style: italic;
     font-size: 0.9em;
+    padding-left: 5px;
 }
 
 .ace-editor { 

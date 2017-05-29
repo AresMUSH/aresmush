@@ -9,7 +9,13 @@
         <input type="submit">
         
     </form>
-        <p>Don't have a character yet?  <a href="/register">Create one</a>.
+        <p>Don't have a character yet?  
+            <% if enable_registration %>
+                <a href="/register">Create one</a>.
+            <% else %>
+               Create one from inside the game first.
+            <% end %>
+        </p>
     </div>
 </div>
 
