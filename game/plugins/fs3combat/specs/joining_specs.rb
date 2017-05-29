@@ -28,7 +28,7 @@ module AresMUSH
           Npc.should_receive(:create).with(name: "Bob", combat: @combat) { npc }
           Combatant.should_receive(:create) do |params|
             params[:combatant_type].should eq "soldier"
-            params[:team].should eq 2
+            params[:team].should eq 9
             params[:npc].should eq npc
             params[:combat].should eq @combat
           end

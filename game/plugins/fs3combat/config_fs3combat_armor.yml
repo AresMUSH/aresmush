@@ -8,101 +8,101 @@ fs3combat:
         Tactical:
             description: "Military-Grade Kevlar Vest and Helmet"
             protection: 
-                Head: 6
-                Neck: 6
-                Chest: 8
-                Abdomen: 8
+                Head: 3
+                Neck: 3
+                Chest: 4
+                Abdomen: 4
 
         Police:
             description: "Police-Grade Kevlar Vest"
             protection: 
-                Chest: 7
-                Abdomen: 6
+                Chest: 3
+                Abdomen: 3
 
         Centurion:
             description: "Cylon Centurion Armor"
             protection:
-                Head: 6
-                Neck: 6
-                Chest: 10
-                Abdomen: 10
-                Left Arm: 8
-                Right Arm: 8
-                Left Hand: 6
-                Right Hand: 6
-                Left Leg: 10
-                Right Leg: 10
-                Left Foot: 8
-                Right Foot: 8
+                Head: 3
+                Neck: 3
+                Chest: 5
+                Abdomen: 5
+                Left Arm: 4
+                Right Arm: 4
+                Left Hand: 3
+                Right Hand: 3
+                Left Leg: 5
+                Right Leg: 5
+                Left Foot: 4
+                Right Foot: 4
 
         Cylon:
             description: "Cylon (Non-Centurion) Skeleton"
             protection:
-                Head: 4
-                Neck: 4
-                Chest: 6
-                Abdomen: 6
-                Left Arm: 4
-                Right Arm: 4
-                Left Leg: 6
-                Left Hand: 2
-                Right Hand: 2
-                Left Leg: 4
-                Right Leg: 4
-                Left Foot: 4
-                Right Foot: 4
+                Head: 2
+                Neck: 2
+                Chest: 3
+                Abdomen: 3
+                Left Arm: 2
+                Right Arm: 2
+                Left Leg: 3
+                Left Hand: 1
+                Right Hand: 1
+                Left Leg: 2
+                Right Leg: 2
+                Left Foot: 2
+                Right Foot: 2
                 
         Viper:
             description: "Viper Vehicle Armor"
             protection:
-                Body: 15
-                Engine: 15
-                Tail: 12
-                Wing: 12
-                Weapon: 10
-                Nose: 12
-                Cockpit: 7
-                Controls: 10
+                Body: 4
+                Engine: 4
+                Tail: 3
+                Wing: 3
+                Weapon: 2
+                Nose: 3
+                Cockpit: 2
+                Controls: 4
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
             protection:
-                Body: 12
-                Engine: 12
-                Tail: 9
-                Wing: 9
-                Weapon: 7
-                Nose: 9
-                Cockpit: 5
-                Controls: 9
+                Body: 3
+                Engine: 3
+                Tail: 3
+                Wing: 3
+                Weapon: 2
+                Nose: 3
+                Cockpit: 2
+                Controls: 3
 
         Raptor:
             description: "Raptor Vehicle Armor"
             protection:
-                Body: 18
-                Engine: 18
-                Tail: 15
-                Wing: 15
-                Weapon: 13
-                Nose: 15
-                Cockpit: 10
-                Controls: 13
+                Body: 5
+                Engine: 5
+                Tail: 5
+                Wing: 4
+                Weapon: 4
+                Nose: 5
+                Cockpit: 3
+                Controls: 4
 
         Heavy Raider:
             description: "Cylon Heavy Raider Vehicle Armor"
             protection:
-                Body: 18
-                Engine: 18
-                Tail: 15
-                Wing: 15
-                Weapon: 13
-                Nose: 15
-                Cockpit: 10
-                Controls: 13
+                Body: 5
+                Engine: 5
+                Tail: 5
+                Wing: 4
+                Weapon: 4
+                Nose: 5
+                Cockpit: 3
+                Controls: 4
 
         AA Battery:
             description: "Anti-Aircraft Battery"
             protection:
-                Body: 8
-                Controls: 8
-                Weapon: 8
+                Body: 2
+                Controls: 2
+                Weapon: 2
