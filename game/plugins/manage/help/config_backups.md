@@ -34,7 +34,7 @@ You'll need your AWS access key, bucket name and the code for the region your bu
 
 You can configure the number of backups the game keeps.  By default this is 5.  Older backups are automatically deleted.
 
-You can also configure when backups are done.  By default it's early morning, after peak MU* times.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
+You can also configure when backups are done.  By default it's early morning, after peak MU* times.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/code/configuring-cron) for help if you want to change this.
 
 ### Database File Path
 

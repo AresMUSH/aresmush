@@ -4,7 +4,9 @@
 
 <% skills.each do |name, people| %>
 %xh<%= name %>%xn
-<%= people.sort_by{ |p| p.after(":")}.join(", ")%>
+<% people_skills(people).sort.each do |rating, names|  %>
+   <%= rating %>: <%= names.join(', ') %>
+<% end %>
 
 <% end %>
 <%= line %> 
