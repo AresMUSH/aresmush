@@ -11,6 +11,7 @@
 %xh<%= left( t('profile.eyes_title'), 12 ) %>%xn <%= left( eyes, 25 ) %>
 %xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) -%>
 %xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( birthdate, 25 ) %>
+%xh<%= left( t('profile.wiki_title'), 12) %>%xn <%= wiki %>
 <%= line 2 %>
 %xh<%= left( t('profile.colony_title'), 12 ) %>%xn <%= left( colony, 25 ) -%>
 %xh<%= left( t('profile.position_title'), 12 ) %>%xn <%= left( position, 25 ) %>
@@ -25,8 +26,7 @@
 %xh<%= left( t('profile.alts'), 12 ) %>%xn <%= alts %>
 <% if char.handle %>
 <%= line 2 %>
-%xh<%= left( t('profile.handle'), 12 ) %>%xn @<%= handle_name %>
-%xh<%= left( t('profile.handle_profile'), 12 ) %>%xn <%= handle_profile %>
+%xh<%= left( t('profile.handle'), 12 ) %>%xn @<%= handle_name %> - <%= handle_profile %>
 <% end %>
 <% if custom_profile %>
 <% char.profile.each do |name, value| %>

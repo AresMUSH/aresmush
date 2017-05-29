@@ -25,6 +25,12 @@ module AresMUSH
         end
         rating
       end
+      
+      
+      def vehicles
+        combat.vehicles.sort_by(:name, :order => "ALPHA" ).map { |v| v.name }.join(" ")
+      end
+      
     end
   end
 end

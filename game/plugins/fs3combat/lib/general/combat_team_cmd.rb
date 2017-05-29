@@ -25,7 +25,7 @@ module AresMUSH
       end
 
       def check_team
-        return t('fs3combat.invalid_team') if self.team < 1 || self.team > 5
+        return t('fs3combat.invalid_team') if self.team < 1 || self.team > 9
         return nil
       end
       

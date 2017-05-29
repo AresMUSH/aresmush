@@ -54,10 +54,6 @@ module AresMUSH
         v.passengers.map { |p| p.name }.join(",")
       end
       
-      def vehicles
-        combat.vehicles.sort_by(:name, :order => "ALPHA" ).map { |v| v.name }.join(" ")
-      end
-      
       def non_combatants
         @combat.non_combatants.map { |c| c.name}.join(", ")
       end

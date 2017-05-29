@@ -26,4 +26,4 @@ A character gets 1 healing point per day by default, and 2 if they're in a hospi
 
 ## Healing Cron Job
 
-You can configure when the healing code runs.  By default it runs daily after midnight.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
+You can configure when the healing code runs.  By default it runs daily after midnight.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/code/configuring-cron) for help if you want to change this.

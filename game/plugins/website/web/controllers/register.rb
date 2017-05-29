@@ -9,6 +9,12 @@ module AresMUSH
     end
     
     post '/register' do
+      
+      if (!enable_registration)
+        flash[:error] = "Web registration is disabled.  Please create a character in the game."
+        redirect '/'
+      end
+      
       name = params[:name]
       pw = params[:password]
       confirm_pw = params[:confirm_password]

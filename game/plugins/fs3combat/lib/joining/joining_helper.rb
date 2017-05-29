@@ -35,7 +35,7 @@ module AresMUSH
         npc = Npc.create(name: name, combat: combat)
         combatant = Combatant.create(:combatant_type => combatant_type, 
         :npc => npc,
-        :team =>  2,
+        :team =>  9,
         :combat => combat)
       end
       combat.emit t('fs3combat.has_joined', :name => name, :type => combatant_type)

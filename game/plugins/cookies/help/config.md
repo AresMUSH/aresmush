@@ -15,7 +15,7 @@ To configure the Cookies plugin:
 
 ## Cookie Award Cron Job
 
-The game will periodically tally and award cookies.  There is a cron job to control when this happens.  By default it does this every Friday night.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
+The game will periodically tally and award cookies.  There is a cron job to control when this happens.  By default it does this every Friday night.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/code/configuring-cron) for help if you want to change this.
 
 ## Cookie Board
 

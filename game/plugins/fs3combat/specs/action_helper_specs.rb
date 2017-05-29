@@ -44,7 +44,7 @@ module AresMUSH
 
         it "should not reset aiming if they're still aiming" do 
           @combatant.stub(:is_aiming?) { true }
-          @combatant.stub(:action_klass) { "AimAction" }
+          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::AimAction" }
           @combatant.should_not_receive(:update).with(aim_target: nil)
           FS3Combat.reset_for_new_turn(@combatant)
         end
@@ -460,6 +460,7 @@ module AresMUSH
           @combatant.stub(:armor) { "Tactical" }
           FS3Skills::Api.stub(:one_shot_die_roll) { { successes: 0 } }
           FS3Combat.stub(:weapon_stat) { 5 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 3 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 2 } }
         end
 
@@ -487,33 +488,28 @@ module AresMUSH
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
-        it "should roll the penetration dice" do
-          FS3Combat.should_receive(:weapon_stat).with("Rifle", "penetration") { 5 }
-          FS3Combat.should_receive(:armor_stat).with("Tactical", "protection") { { "Head" => 2 } }
-          
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3)
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
-        end
-        
         it "should bypass armor if pen wins by enough" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 3 } }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 } }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 0 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
-        it "should be stopped by armor if protect wins by enough" do
+        it "should reduce by a lot with high protection roll" do
           FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 0 } }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 100
+          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 2 } }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 90
         end
 
-        it "should randomize protection if no decisive winner" do
-          FS3Combat.stub(:rand) { 29 }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 }  }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 29
+        it "should reduce by some with low protection roll " do
+          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 0 } }
+          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 1 } }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 60
         end
 
         it "should add in attacker successes" do
           FS3Skills::Api.stub(:one_shot_die_roll).with(4) { { successes: 3 }  }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 0
+          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 1 } }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 15
         end
       end
       

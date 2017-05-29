@@ -30,6 +30,10 @@ module AresMUSH
         @user != nil
       end
       
+      def enable_registration
+        return Global.read_config("login", "allow_web_registration")
+      end
+      
       def is_admin?
         @user != nil && @user.is_admin?
       end

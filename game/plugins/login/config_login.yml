@@ -1,8 +1,13 @@
 login:    
     
     suspect_sites:
+        - localhost
+
+    banned_sites:
         - "delete me and put a real site here"
         
+    allow_web_registration: true
+    
     suspect_category: "MISC"
 
     guest_role: "guest"

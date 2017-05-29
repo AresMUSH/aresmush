@@ -72,7 +72,7 @@ en:
         use_vehicle_type_cmd: "Join as a soldier first and then use the combat/vehicle command to get in a vehicle."
         joined_vehicle: "%{name} is now a %{type} in %{vehicle}."
 
-        invalid_team: "Teams must be numbers between 1 and 5."
+        invalid_team: "Teams must be numbers between 1 and 9."
         team_set: "%{name} is now on Team %{team}."
         team_header: "-- Team %{team} --"
         
