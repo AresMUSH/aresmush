@@ -34,6 +34,10 @@ module AresMUSH
       def self.submit_app(char)
         Chargen.submit_app(char)
       end
+      
+      def self.approved_chars
+        Character.all.select { |c| c.is_approved? && !c.idled_out? }
+      end
     end    
   end
 end

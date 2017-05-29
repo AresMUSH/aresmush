@@ -55,7 +55,6 @@ module AresMUSH
         input = strip_control_chars(input)
         @client.handle_input(input)
       rescue Exception => e
-        puts "ERROR #{e}"
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end

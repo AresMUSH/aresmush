@@ -33,7 +33,7 @@ module AresMUSH
     
     def self.reset_for_new_turn(combatant)
       # Reset aim if they've done anything other than aiming. 
-      if (combatant.is_aiming? && combatant.action_klass != "AimAction")
+      if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
         combatant.log "Reset aim for #{combatant.name}."
         combatant.update(aim_target: nil)
       end
@@ -145,7 +145,7 @@ module AresMUSH
     
     def self.find_ai_target(combat, attacker)
       attacking_team = attacker.team
-      default_targets = [ 1, 2, 3, 4, 5]
+      default_targets = [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
       default_targets.delete(attacking_team)
       team_targets = combat.team_targets[attacking_team.to_s] || default_targets
       
@@ -217,22 +217,18 @@ module AresMUSH
             
       # Armor doesn't cover this hit location
       return 0 if !protect
-
-      dice = [1, pen - protect].max + attacker_net_successes
       
-      pen_roll = FS3Skills::Api.one_shot_die_roll(dice)[:successes]
+      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
+      protection = 30 * (protect_roll + 1)
       
-      margin = pen_roll
-      if (margin > 2)
-        protection = 0
-      elsif (margin < 1)
-        protection = 100
-      else
-        protection = rand(50)
-      end
+      pen_dice = pen + attacker_net_successes
+      pen_roll = FS3Skills::Api.one_shot_die_roll(pen_dice)[:successes]
+      
+      protection = protection - (15 * pen_roll)
+      protection = [0, protection].max
       
       combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen} protect=#{protect} pen_roll=#{pen_roll} result=#{protection}"
+      " pen=#{pen} protect=#{protect} pen_roll=#{pen_roll} protect_roll=#{protect_roll} result=#{protection}"
       
       protection
     end

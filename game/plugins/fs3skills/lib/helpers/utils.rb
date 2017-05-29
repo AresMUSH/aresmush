@@ -56,7 +56,7 @@ module AresMUSH
     
     def self.skills_census(skill_type)
       skills = {}
-      Idle::Api.active_chars.each do |c|
+      Chargen::Api.approved_chars.each do |c|
         
         if (skill_type == "Action")
           c.fs3_action_skills.each do |a|

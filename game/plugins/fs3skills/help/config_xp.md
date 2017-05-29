@@ -20,7 +20,7 @@ You should read the article [Tweaking FS3](http://aresmush.com/fs3/fs3-3/tweakin
 
 ## XP Schedule and Base Award
 
-The game will periodically award all approved/active characters XP.  By default this happens weekly on Saturday evenings.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
+The game will periodically award all approved/active characters XP.  By default this happens weekly on Saturday evenings.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/code/configuring-cron) for help if you want to change this.
 
 Each time the cron job runs, it will dole out the number of XP specified in **periodic\_xp**.
 

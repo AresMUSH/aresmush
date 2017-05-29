@@ -80,6 +80,6 @@ You can change your calendar's timezone on the Teamup website by visiting the ad
 
 ### Events Refresh Cron Job
 
-The game will periodically get the latest events from the calendar.  There is a cron job to control when this happens.  By default it does this every hour.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
+The game will periodically get the latest events from the calendar.  There is a cron job to control when this happens.  By default it does this every hour.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/code/configuring-cron) for help if you want to change this.
 
 You can also manually refresh the events at any time by typing `events/refresh` in game.

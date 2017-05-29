@@ -44,6 +44,7 @@ en:
         callsign_title: "Callsign:"
         unread_mail: "Unread Mail:"
         unread_message_count: "%{num} Messages"
+        wiki_title: "Wiki:"
         
         description: "Description"
         

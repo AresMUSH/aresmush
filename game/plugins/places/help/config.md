@@ -18,4 +18,4 @@ You can configure the color that highlights the place name when something happen
 
 ## Places Cleanup Cron Job
 
-The game will periodically clear out empty places from rooms.  There is a cron job to control when this happens.  By default it does this every hour.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/configuring-cron) for help if you want to change this.
+The game will periodically clear out empty places from rooms.  There is a cron job to control when this happens.  By default it does this every hour.  See the [Cron Job Tutorial](http://www.aresmush.com/tutorials/code/configuring-cron) for help if you want to change this.

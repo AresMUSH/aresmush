@@ -26,7 +26,7 @@ module AresMUSH
     
     def self.census_by(&block)
       counts = {}
-      Idle::Api.active_chars.each do |c|
+      Chargen::Api.approved_chars.each do |c|
         val = yield(c)
         if (val)
           count = counts.has_key?(val) ? counts[val] : 0

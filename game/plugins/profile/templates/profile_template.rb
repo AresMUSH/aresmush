@@ -118,6 +118,11 @@ module AresMUSH
         t('profile.unread_message_count', :num => @char.num_unread_mail)
       end
       
+      def website
+        game_site = Global.read_config("game", "website")
+        "#{game_site}/char:#{@char.name}"
+      end
+      
       def handle_profile
         arescentral = Global.read_config("arescentral", "arescentral_url")
         "#{arescentral}/handle/#{@char.handle.name}"

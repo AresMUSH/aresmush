@@ -11,13 +11,10 @@ module AresMUSH
       #end
     
       def find_any_by_id(id)
-        puts "Finding #{id} in #{self.class.name} #{self.dbref_prefix}"
         prefix = id.after("#").before("-")
         if (prefix == self.dbref_prefix)
-          puts "ID: #{id.after("-")}"
           return [self[id.after("-")]]
         else
-          puts "Not matched id #{prefix}  my id #{self.dbref_prefix}"
           return []
         end
       end

@@ -35,7 +35,6 @@ module AresMUSH
         Global.logger.info("Character Created: #{char.name}")
         
         if (client)
-          Login.update_site_info(client, char)
           Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => char.name)
         end
       end

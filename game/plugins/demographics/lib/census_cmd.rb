@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def handle   
-        chars = Idle::Api.active_chars
+        chars = Chargen::Api.approved_chars
         if (!self.name)
           paginator = Paginator.paginate(chars.sort_by { |c| c.name }, cmd.page, 20)
           if (paginator.out_of_bounds?)
@@ -26,7 +26,7 @@ module AresMUSH
           type = self.name.after(" ").titlecase
           types = [ 'Action', 'Background', 'Language' ]
           if (!types.include?(type))
-            client.emit_failure t('demographics.invalid_skill_census_type', :types => types)
+            client.emit_failure t('demographics.invalid_skill_census_type', :types => types.join(","))
             return
           end
           template = SkillsCensusTemplate.new(type)

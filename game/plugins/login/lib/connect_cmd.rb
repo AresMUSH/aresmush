@@ -24,6 +24,11 @@ module AresMUSH
         return nil
       end
 
+      def check_banned
+        return t('login.site_blocked') if Login.is_banned?(client)
+        return nil
+      end
+      
       def handle
         return if self.charname.downcase == "guest"
         

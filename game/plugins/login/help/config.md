@@ -1,6 +1,10 @@
 ---
 toc: ~admin~ Configuring the Plugins
 summary: Configuring the login system.
+aliases:
+- siteban
+- ban
+- suspect
 ---
 # Configuring the Login System
 
@@ -41,15 +45,19 @@ To configure the rest of the Login plugin:
 3. Edit `config_login.yml`
 
 
+### Allow Web Registration
+
+By default, players can create characters from the web portal.  This assumes that you've got Recaptcha enabled to prevent bots, and that you're not being routinely trolled.   If you wish to lock this down, you can set `allow_web_registration` to 'false'.
+
 ### Disabling Terms of Service
 
 You can disable the terms of service completely by setting `use_terms_of_service` to false.
 
-### Suspects
+### Suspects and Bans
 
-Ares does not support an outright siteban because these days people mostly use dynamic or shared IPs, making it hard to pinpoint a particular person's IP address.
+You can register certain IPs or hostnames as "suspect" and you'll be alerted (via a job) when a new character is created from one of these sites.  Banned sites work similarly but they actually prevent the character from logging in at all.
 
-Instead you can register certain IPs or hostnames as "suspect" and you'll be alerted (via a job) when a new character is created from one of these sites.  You can use part of a hostname - often only the last bit is meaningful.
+> **Tip:** You can use part of a hostname - often only the last bit is meaningful - but be careful about making it too broad.  Blocking a generic verizon or comcast host could end up blocking an entire region of players.
 
 Here is an example:
 
