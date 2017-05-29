@@ -82,11 +82,6 @@ module AresMUSH
           @login_events = CharCreatedEventHandler.new
         end
         
-        it "should update the site info" do
-          Login.should_receive(:update_site_info).with(@event_client, @event_char) {}
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
-        end
-        
         it "should announce the char" do
           client_monitor.should_receive(:emit_all_ooc).with("announce_char_created")
           @login_events.on_event CharCreatedEvent.new(@event_client, @event_char)
