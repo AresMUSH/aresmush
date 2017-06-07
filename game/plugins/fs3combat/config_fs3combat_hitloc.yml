@@ -75,5 +75,10 @@ fs3combat:
                 - Weapon
             crew_areas: 
                 - Crew
+        Target:
+            areas:
+                Bullseye: [ 'Ring 3', 'Ring 3', 'Ring 3', 'Ring 3', 'Ring 2', 'Ring 2', 'Ring 2', 'Ring 1', 'Ring 1', 'Bullsye']
+            vital_areas: []
+            critical_areas: []
             
                 

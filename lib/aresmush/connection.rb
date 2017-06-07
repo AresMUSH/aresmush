@@ -49,11 +49,19 @@ module AresMUSH
     
     def receive_data(data)
       begin
-        input = @negotiator.handle_input(data)
-        return if !input
+        return if !data
+                
+        parts = data.split(/\r|\n/)
+        parts.each do |part|
+          input = @negotiator.handle_input(part)
+          if (!input)
+            puts "Nothing to handle"
+            return
+          end
 
-        input = strip_control_chars(input)
-        @client.handle_input(input)
+          input = strip_control_chars(input)
+          @client.handle_input("#{input}\n")
+        end
       rescue Exception => e
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
@@ -74,5 +82,50 @@ module AresMUSH
       stripped = stripped.gsub(/\0/,"")
       stripped.gsub(/\^@/,"")
     end   
+    
+    def telnet_debug(part)
+      chars = part.split("").map { |c| c.ord }
+      
+      special = {
+      255 => "IOC",
+      253 => "DO",
+      254 => "DON'T",
+      251 => "WILL",
+      252 => "WON'T",
+      241 => "NOP",
+      250 => "SUBNEG",
+      240 => "ENDSUB",
+      1 => "REQ",
+      42 => "CHARSET",
+      31 => "NAWS",
+      '\r'.ord => "CR",
+      '\n'.ord => "LF",
+      20 => "_"
+      }
+
+
+      output = []
+      chars.each do |c|
+        val = c.to_i
+
+        if (special[val])
+           txt = special[val]
+        else
+           txt = val.chr
+        end
+
+        if (val == 0 || val == 255)
+          output << "\n"
+        end
+
+        output << "#{c} (#{txt})"
+
+      end
+
+      puts "---------------"
+      puts part.inspect
+      puts output.join(" ")
+      
+    end
   end
 end

@@ -104,10 +104,6 @@ module AresMUSH
         return SheetCmd
       when "ability"
         return SetAbilityCmd
-      when "language"
-        if (cmd.switch_is?("add") || cmd.switch_is?("remove"))
-          return SetLanguageCmd
-        end
       when "xp"
         case cmd.switch
         when "award"

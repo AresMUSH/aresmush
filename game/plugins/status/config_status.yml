@@ -8,7 +8,7 @@ status:
         ADM: "%xb"
         
     minutes_before_idle: 120
-    minutes_before_idle_disconnect: 720
+    minutes_before_idle_disconnect: 300
     
     afk_cron:
         #date: 1
