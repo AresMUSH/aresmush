@@ -19,6 +19,7 @@ load "lib/commands/luck_award_cmd.rb"
 load "lib/commands/luck_spend_cmd.rb"
 load "lib/commands/char_backup_command.rb"
 load "lib/commands/sheet_cmd.rb"
+load "lib/commands/qual_cmd.rb"
 load "lib/helpers/chargen.rb"
 load "lib/helpers/formatting.rb"
 load "lib/helpers/luck.rb"
@@ -115,6 +116,8 @@ module AresMUSH
         else
           return XpCmd
         end
+      when "qual"
+        return QualCmd
       end
       
       nil
