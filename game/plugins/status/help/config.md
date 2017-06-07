@@ -14,9 +14,7 @@ To configure the Status plugin:
 
 ## Idle Timers
 
-You can configure how long someone must be idle before they are automatically considered AFK.  By default this is a few hours.
-
-You can also configure how long someone must be idle before they are automatically disconnected from the game.  By default this is twelve hours.
+You can configure how long someone must be idle before they are automatically considered AFK and how long someone must be idle before they are automatically disconnected from the game. 
 
 You can disable either or both of these timers by commenting out or removing the line from the configuration file.
 

@@ -9,7 +9,7 @@ ranks:
         Navy:
             Officer:
                 Ensign: true
-                Lieutenant JG: true
+                Lieutenant Jg: true
                 Lieutenant: true
                 Captain: true
                 Major: false
@@ -32,7 +32,7 @@ ranks:
         Marines:
             Officer:
                 Ensign: false
-                Lieutenant JG: false
+                Lieutenant Jg: false
                 Lieutenant: false
                 Captain: false
                 Major: false

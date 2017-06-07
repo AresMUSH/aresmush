@@ -12,6 +12,6 @@ fs3skills:
         "hook/delete": "hook/remove"
         "spec": "specialty"
         "sheet2": "profile"
-        "skills": "abilities2"
+        "skills": "abilities"
         "attributes": "abilities"
-        "languages": "abilities4"
+        "languages": "abilities"
