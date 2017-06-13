@@ -43,9 +43,14 @@ module AresMUSH
       
       it "should strip null control codes" do
         @client.should_receive(:handle_input).with("test")
-        @connection.receive_data("test^@\0")    
+        @connection.receive_data("test^@\0")
       end
       
+      it "should handle multiple commands" do
+        @client.should_receive(:handle_input).with("test1\n")
+        @client.should_receive(:handle_input).with("test2\n")
+        @connection.receive_data("test1\ntest2")
+      end
       
       it "should convert control code newline to newline" do
         client = double
