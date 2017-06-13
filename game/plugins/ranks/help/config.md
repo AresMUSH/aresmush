@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Plugins
+toc: ~config~ Configuring the Plugins
 summary: Configuring the ranks system.
 ---
 # Configuring the Ranks System

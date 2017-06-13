@@ -1,12 +1,12 @@
 ---
-toc: ~admin~ Configuring the Game
+toc: ~config~ Configuring the Game
 summary: Configuring secret codes.
 ---
 # Configuring Secret Codes
 
 > **Permission Required:** Configuring the game requires the Admin role.
 
-The secret codes are stored in a special file so that you don't accidentally commit them to source control if you're using 'git'.  
+Passwords and other secret codes used by the game are stored in a special file so that you don't accidentally commit them to a public source control system if you're using 'git'.  
 
 To configure the game secrets:
 

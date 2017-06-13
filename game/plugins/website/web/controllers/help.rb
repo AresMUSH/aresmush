@@ -13,7 +13,8 @@ module AresMUSH
         if (show_full)
           @topics[toc] = Help.toc_topics(toc)
         else
-          @topics[toc] = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
+          index_topics = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
+          @topics[toc] = index_topics
         end
       end
       

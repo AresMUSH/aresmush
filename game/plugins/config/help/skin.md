@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Game
+toc: ~config~ Configuring the Game
 summary: Configuring the game skin (lines).
 ---
 # Configuring the Game Skin (Lines)

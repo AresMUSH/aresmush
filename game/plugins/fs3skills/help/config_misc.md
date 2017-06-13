@@ -1,5 +1,5 @@
 ---
-toc: Configuring FS3
+toc: ~config~ Configuring FS3 Skills
 summary: Configuring FS3 luck and miscellaneous.
 ---
 # Configuring FS3 - Luck and Miscellaneous

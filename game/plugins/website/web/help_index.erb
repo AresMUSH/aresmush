@@ -1,21 +1,28 @@
 <h1>Help Index</h1>
 
-<p>This page shows the in-game help files.  For more tutorials, see <a href="http://aresmush.com">AresMUSH.com</a>.</p>
+<p>This page shows the in-game help files.  For general tutorials, see <a href="http://aresmush.com">AresMUSH.com</a>.</p>
 
-<div class="btn btn-default"><a href="/help?list=full">Expand Help List</a></div>
+<blockquote>This list shows the top-level help topics.  You can also view the <a href="/help?list=full">expanded list</a> of all help topics. </blockquote>
+<a href="/help?list=full"><div class="btn btn-default">Expand Help List</div></a>
 
 <p/>
-<ul>
 
 <% @topics.each do |toc, topics| %>
 
-  <% topics.each do |name, data| %>
-    <li>
-    
-    <a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>">
-    <%= name.titleize %></a> - <%= data['summary'] %>
-   </li>
- <% end %>
+  <h2><%= toc %></h2>
+
+  <% if topics.count > 0 %>
+
+    <ul>
+    <% topics.each do |name, data| %>
+        <li>
+        <a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>">
+        <%= name.titleize %></a> - <%= data['summary'] %>
+        </li>
+     <% end %>
+    </ul>
+  <%else%> 
+     <p>No top-level topics.  See the <a href="/help?list=full">expanded help list</a>.</p>
+   <% end %>
 <% end %>
 
-</ul>

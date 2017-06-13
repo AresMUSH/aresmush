@@ -1,5 +1,5 @@
 ---
-toc: Configuring FS3 Combat
+toc: ~config~ Configuring FS3 Combat
 summary: Configuring FS3 Combat vehicles.
 ---
 # Configuring FS3 Combat - Vehicles

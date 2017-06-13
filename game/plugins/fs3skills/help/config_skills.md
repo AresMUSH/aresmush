@@ -1,5 +1,5 @@
 ---
-toc: Configuring FS3
+toc: ~config~ Configuring FS3 Skills
 summary: Configuring FS3 skills list.
 ---
 # Configuring FS3 - Skills List

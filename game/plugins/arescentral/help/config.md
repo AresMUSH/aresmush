@@ -1,6 +1,6 @@
 ---
-toc: ~admin~ Configuring the Plugins
-summary: Configuring AresCentral.
+toc: ~config~ Configuring the Plugins
+summary: Configuring the communication with AresCentral.
 ---
 # AresCentral - Configuration
 

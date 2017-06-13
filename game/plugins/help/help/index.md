@@ -4,11 +4,13 @@ summary: Getting help.
 ---
 # Help System
 
-The MUSH help system is here to help you learn how to play.
+If you are looking for basic help about how the game is played, check out the [MUSH 101 Tutorial](http://www.aresmush.com/mush-101)
 
-The best way to get help is through the Web Portal.  Type `website` to get the address.
+The MUSH help system is here to help you learn how to use the in-game commands.  You can view the help files in the game using the `help` command, or on the game's Web Portal.  The Web Portal help files are prettier and have hyperlinks that make them easier to read.  
 
-Throughout the help files, you'll find hyperlinks to other help topics.  On the Web Portal, you can just click and follow the links.  In the game, they will appear like so:  [Example](/help/login/connect) and you will have to type `help login connect` (without the slashes).
+> **Tip:** Type `website` to get the address for the Web Portal.
+
+If you're viewing help commands inside the game, the hyperlinks will appear in plain text like: "See \[Connecting to the Game\](/help/login/connect)".  You will have to type `help login connect` (without the slashes) to view that help file.
 
 `help, help2, help3, etc.` - Shows each page of help topics.
 `help <topic name>` - Views a help topic.

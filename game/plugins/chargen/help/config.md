@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Plugins
+toc: ~config~ Configuring the Plugins
 summary: Configuring character generation.
 ---
 # Configuring the Chargen System

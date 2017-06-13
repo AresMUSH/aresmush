@@ -1,5 +1,5 @@
 ---
-toc: Configuring FS3 Combat
+toc: ~config~ Configuring FS3 Combat
 summary: Configuring miscellaneous FS3 Combat options.
 ---
 # Configuring FS3 Combat - Miscellaneous

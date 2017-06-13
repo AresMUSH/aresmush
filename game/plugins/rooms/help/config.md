@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Plugins
+toc: ~config~ Configuring the Plugins
 summary: Configuring the rooms system.
 ---
 # Configuring the Rooms System

@@ -1,6 +1,7 @@
 <%= line %>
 <% paginator.items.each do |section| %>
 %xg<%= section %>%xn
+
 <% section_topics(section).each do |title, data| %>
      %xh<%= title.titleize %>%xn - <%= data['summary'] %>
 <% end %>

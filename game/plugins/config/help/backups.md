@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Configuring the Game
+toc: ~config~ Configuring the Game
 summary: Backing up the game.
 alias:
 - dbbackup
@@ -8,11 +8,7 @@ alias:
 
 > **Permission Required:** Performing backups requires the Admin role and (in some cases) access to the server shell.
 
-It's important to make backups of your game database and code.  There are many ways to do this.  A few are discussed here.
-
-## Backup Strategies
-
-There are several ways to back up your game, so you can choose the one that works best for you.  See the AresMUSH.com tutorial [Backing Up The Game](http://aresmush.com/tutorials/manage/backups) for more information.
+It's important to make backups of your game database and code.  There are several ways to back up your game, so you can choose the one that works best for you.  See the AresMUSH.com tutorial [Backing Up The Game](http://aresmush.com/tutorials/manage/backups) for more information.
 
 ## S3 Backups
 

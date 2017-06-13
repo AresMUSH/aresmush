@@ -1,17 +1,19 @@
 ---
-toc: ~admin~ Configuring the Game
-summary: Configuring the game details.
+toc: ~config~ Configuring the Game
+summary: Configuring the game directory information.
 ---
-# Configuring the Game Details
+# Configuring the Game Directory Information
 
 > **Permission Required:** Configuring the game requires the Admin role.
+
+You can configure basic information about your game.  This information is used in the AresMUSH games directory.  
 
 To configure the game preferencse:
 
 1. Go to the Web Portal's Admin screen.  
 2. Select 'Game Info'.
 
-You can configure basic information about your game.  This information is used in the AresMUSH games directory.
+This information includes:
 
 * Name - Your game's name.
 * Description - A short blurb about your game (optional).

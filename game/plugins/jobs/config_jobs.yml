@@ -35,6 +35,7 @@ jobs:
         "job/comment": "job/discuss"
         "job/submit" : "job/create"
         "job/reply" : "job/respond"
+        "job/open" : "job/handle"
         
         "job/all" : "job/filter all"
         "job/mine" : "job/filter mine"
