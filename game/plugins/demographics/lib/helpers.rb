@@ -73,6 +73,11 @@ module AresMUSH
         missing << "%xy%xh#{t('demographics.gender_set_to_other')}%xn"
       end
       
+      age_error = Demographics.check_age(char.age)
+      if (age_error)
+        missing << "%xr%xh< #{age_error}> %xn"
+      end
+      
       Demographics.all_groups.keys.each do |g|
         if (char.group(g).nil?)
           missing << t('chargen.are_you_sure', :missing => g)

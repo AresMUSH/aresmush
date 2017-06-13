@@ -47,13 +47,6 @@ module AresMUSH
           end
         
           age = Demographics.calculate_age(bday)
-          age_error = Demographics.check_age(age)
-        
-          if (age_error)
-            client.emit_failure age_error
-            return
-          end
-        
           model.update_demographic(:birthdate, bday)
 
           if (self.name == enactor_name)

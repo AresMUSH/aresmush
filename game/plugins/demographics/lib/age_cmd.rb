@@ -13,11 +13,6 @@ module AresMUSH
         }
       end
          
-      def check_age        
-        return t('demographics.invalid_age') if !self.age.is_integer?
-        return Demographics.check_age(self.age.to_i)
-      end
-      
       def check_chargen_locked
         Chargen::Api.check_chargen_locked(enactor)
       end
