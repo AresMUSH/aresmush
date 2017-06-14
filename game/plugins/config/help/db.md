@@ -14,6 +14,6 @@ To configure the database:
 1. Go to the Web Portal's Admin screen.  
 2. Select 'Advanced Config'.
 3. Select `database.yml` to edit the database URL -or- select `secrets.yml` to edit the password.
-4. Shut down and restart the game.
+4. Shut down and restart the game.  (See the tutorials at [aresmush.com](http://www.aresmush.com) if you need help doing this.)
 
 > **Important!** Database configuration changes will not take effect until the game is restarted.

@@ -10,7 +10,9 @@ module AresMUSH
     end
     
     def self.can_boot?(actor)
-      actor.has_permission?("boot")
+      # Limit to admins or approved non-admins to prevent trolls from using it.
+      not_new = actor.has_permission?("manage_login") || actor.is_approved?
+      actor.has_permission?("boot") && not_new
     end
     
     def self.wants_announce(listener, connector)
@@ -49,6 +51,8 @@ module AresMUSH
     
     def self.check_for_suspect(char)
       suspects = Global.read_config("login", "suspect_sites")
+      return false if !suspects
+      
       suspects.each do |s|
         if (char.is_site_match?(s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
@@ -62,6 +66,8 @@ module AresMUSH
     
     def self.is_banned?(client)
       suspects = Global.read_config("login", "banned_sites")
+      return false if !suspects
+      
       ip = client.ip_addr
       hostname = client.hostname ? client.hostname.downcase : ""
       

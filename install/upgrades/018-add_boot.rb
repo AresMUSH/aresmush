@@ -4,7 +4,9 @@ module AresMUSH
   puts "Adding boot permission to everyone."
   puts "======================================================================="
     
-  everyone = Role.find_one_by_name("approved")
-  everyone.update(permissions: ["boot"] )
+  everyone = Role.find_one_by_name("everyone")
+  permissions = everyone.permissions
+  permissions << "boot"
+  everyone.update(permissions: permissions )
   puts "Upgrade complete!"
 end

@@ -57,13 +57,19 @@ You can disable the terms of service completely by setting `use_terms_of_service
 
 You can register certain IPs or hostnames as "suspect" and you'll be alerted (via a job) when a new character is created from one of these sites.  Banned sites work similarly but they actually prevent the character from logging in at all.
 
-> **Tip:** You can use part of a hostname - often only the last bit is meaningful - but be careful about making it too broad.  Blocking a generic verizon or comcast host could end up blocking an entire region of players.
+Use `findsite <name>` to find a character's IP and host information.
+
+> **Tip:** You can use part of a hostname - often only the last bit is meaningful - but be careful about making it too broad.  Blocking a generic verizon or comcast host could end up blocking an entire region of players. 
 
 Here is an example:
 
-    suspect_sites:
+    banned_sites:
         - 192.168.1.1
-        - verizon.net  
+    suspect_sites:
+        - abc123.verizon.net
+        - def456.comcast.net
+
+To remove a ban or suspect site, just remove it from the list.
 
 ### Trouble Job Category
 

@@ -1,4 +1,5 @@
 module AresMUSH
+  # Client may be nil for automated activities
   def self.with_error_handling(client, desc, &block)
     begin
       begin

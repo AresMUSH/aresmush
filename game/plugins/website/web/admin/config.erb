@@ -14,7 +14,7 @@
 
 <% if @plugin %>
 <p>
-    <p><a href="http://aresmush.com/plugins/<%= @plugin %>" target="_blank"><%= @plugin.titlecase %> Info & Tutorials</a></p>
+    <p><a href="/help/<%= @plugin %>/index" target="_blank">Configuration Help</a></p>
 </p>
 <% end %>
 <form method="POST" action="/admin/config/update">
