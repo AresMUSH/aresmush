@@ -1,6 +1,6 @@
-<%= line %>
+<%= header %>
 %xh<%= t('channels.channels_title') %>%xn
-<%= line 2 %>
+<%= divider %>
 <% channels.each do |c| %>
 <%= channel_on_indicator(c) -%>
  <%= left(channel_name(c),25) -%>
@@ -8,7 +8,7 @@
  <%= channel_announce(c) -%>
    <%= channel_roles(c) %>
 <% end %>
-<%= line 2 %>
+<%= divider %>
 %xh<%= t('channels.channel_aliases') %>%xn
 
 <% channels.each do |c| %>
@@ -18,4 +18,4 @@
 <% end %>
 
 <%= t('channels.alias_notice') %>
-<%= line %>
+<%= footer %>

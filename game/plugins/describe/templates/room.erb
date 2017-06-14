@@ -1,14 +1,14 @@
-<%= line %>
+<%= header %>
 <%= left(room.name, 40) %> <%= right(area, 37) %>
 <%= ooc_time %> ~ <%= ic_time %>
-<%= line 2 %>
+<%= divider %>
 <%= room.description %>
 <% if details %>
 
 %xh<%= t('describe.details_available') %>%xn <%= details %>
 <% end %>
 <% if room.scene_set %>
-<%= line 2 %>
+<%= divider %>
 %xg<%= t('describe.scene_set_title')%>%xn
 %xh<%= room.scene_set %>%xn
 <% end %>
@@ -16,7 +16,7 @@
 
 %xy<%= center( t('describe.repose_active'), 78 )%>%xn
 <% end %>
-<%= line 2 %>
+<%= divider %>
 %xg<%= t('describe.players_title') %>%xn
 <% online_chars.each do |c| -%>
 %xh<%= c.name %>%xn <%= char_shortdesc(c)%> <%= char_afk(c) %>
@@ -34,4 +34,4 @@
 <% end %>
 
 <% end %>
-<%= line %>
+<%= footer %>

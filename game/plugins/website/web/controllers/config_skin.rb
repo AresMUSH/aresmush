@@ -11,10 +11,10 @@ module AresMUSH
       
       @skin = Global.read_config("skin")
       
-      @skin['line1'] =@params[:line1]
-      @skin['line2'] =@params[:line2]
-      @skin['line3'] =@params[:line3]
-      @skin['line4'] =@params[:line4]
+      @skin['header'] =@params[:header]
+      @skin['footer'] =@params[:footer]
+      @skin['divider'] =@params[:divider]
+      @skin['plain'] =@params[:plain]
       
       config = {
         'skin' => @skin

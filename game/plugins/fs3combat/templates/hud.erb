@@ -1,9 +1,9 @@
-<%= line %>
+<%= header %>
 %xh<%= left( title, 39) %><%= right( organizer, 39 ) %>
 <% if !combat.is_real %>
 %xg<%= t('fs3combat.combat_mock_notice') %>%xn
 <% end %>
-<%= line 2 %>
+<%= divider %>
 <%= t('fs3combat.hud_subtitle') %>
 <% teams.each do |team, members| %>
 %xg<%= t('fs3combat.team_header', :team => team) %>%xn
@@ -15,7 +15,7 @@
 <%= format_action(combatant) %>
 <% end %>
 <% end %>
-<%= line 2 %>
+<%= divider %>
 %xh<%= t('fs3combat.observers_title') %>%xn
 <%= non_combatants %>
-<%= line %>
+<%= footer %>

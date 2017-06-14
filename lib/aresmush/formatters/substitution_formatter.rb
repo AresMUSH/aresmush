@@ -6,17 +6,7 @@ module AresMUSH
       # Do the lines first in case they themselves have special chars in them
       # One crazy regex for efficiency's sake.  Looks for codes not preceded by a 
       # single backslash.
-      str = str.gsub(/((?<!\\)%[lL][1234])/, 
-      {
-        "%l1" => Line.show("1"),
-        "%L1" => Line.show("1"),
-        "%l2" => Line.show("2"),
-        "%L2" => Line.show("2"),
-        "%l3" => Line.show("3"),
-        "%L3" => Line.show("3"),
-        "%l4" => Line.show("4"),
-        "%L4" => Line.show("4")
-        })
+      str = str.gsub(/((?<!\\)%[l][hfdp12])/i) { |match| Line.show( match[2..-1] )}
 
       tokens = tokenize(str, enable_fansi)
 

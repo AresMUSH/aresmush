@@ -24,7 +24,7 @@ module AresMUSH
         @tag
       end
       
-      def header
+      def mail_header
         @show_from ? t('mail.inbox_title') : t('mail.sent_title') 
       end
       

@@ -38,7 +38,7 @@ module AresMUSH
           end
         end
         
-        client.emit BorderedDisplay.text str, t('login.activity_header'), false,  "%l2%R#{t('login.activity_footer')}"
+        client.emit BorderedDisplay.text str, t('login.activity_header'), false,  "%ld%R#{t('login.activity_footer')}"
       end
       
       def graph(num)

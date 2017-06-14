@@ -26,7 +26,7 @@ If you did want to page someone one of the special codes, just put a \ in front 
     \%r - A linebreak
     \%b - A single blank space
     \%t - Five blank spaces (like a tab)
-    \%l1, \%l2, \%l3, \%l4 - One of the border lines - line1, 2, 3 or 4.
+    \%lh, \%lf, \%ld, \%la - One of the border lines - header, footer, divider, alt-divider
 
 \%x or \%c are used for ansi color.  See [Ansi](/help/utils/ansi).
 

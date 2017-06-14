@@ -85,7 +85,7 @@ module AresMUSH
           end
           
           it "should emit the confirmation message" do
-            @client.should_receive(:emit).with("%l1%rmanage.confirm_object_destroy%r%l1")
+            @client.should_receive(:emit).with("%lh%rmanage.confirm_object_destroy%r%lf")
             @handler.handle
           end
         end

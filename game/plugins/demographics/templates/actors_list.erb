@@ -1,9 +1,9 @@
-<%= line %>		
+<%= header %>		
 %xh<%= t('demographics.actors_title') %>%xn		
-<%= line 2 %>	
+<%= divider %>	
 <% paginator.page_items.each do |p| %>
 <%= left(p.name, 27) -%>		
  <%= p.actor %>		
 <% end %>
 <%= line_with_text paginator.page_marker %>
-<%= line %> 
+<%= footer %> 

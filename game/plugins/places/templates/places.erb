@@ -1,8 +1,8 @@
-%l1
+%lh
 %xh<%= t('places.places_title') %>%xn
 <% @room.places.each do |p| %>
 
 %xh<%= p.name %>%xn
 <%= character_names(p) %>
 <% end %>
-%l1
+%lf
