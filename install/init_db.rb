@@ -70,6 +70,7 @@ module AresMUSH
       admin_role = Role.create(name: "admin", is_restricted: true)
       admin_role.save
       everyone_role = Role.create(name: "everyone")
+      everyone_role.update(permissions: ["go_home", "boot"] )
       everyone_role.save
       builder_role = Role.create(name: "builder")
       builder_role.save
