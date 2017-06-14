@@ -23,8 +23,14 @@ module AresMUSH
         }
       end
       
-      def handle        
-        Bbs.post(self.board_name, self.subject, self.message, enactor, client)
+      def handle   
+        if (self.board_name.to_i > 0 && self.subject.to_i > 0)
+          Bbs.with_a_post(self.board_name, self.subject, client, enactor) do |board, post|
+            Bbs.reply(board, post, enactor, self.message, client)
+          end
+        else
+          Bbs.post(self.board_name, self.subject, self.message, enactor, client)
+        end
       end
     end
   end

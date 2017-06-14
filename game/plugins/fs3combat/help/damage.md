@@ -30,6 +30,7 @@ For more longer-term healing, doctors/healers can use the heal command.  You wil
 `heal/start <name>` - Takes someone as a patient.
 `heal/start <name>` - Removes a patient.
 `heal/list` - Shows your patients.
+`heal/scan` - Find injured patients who might need your services.
 
 ## Hospitals
 

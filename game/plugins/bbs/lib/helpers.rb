@@ -114,6 +114,25 @@ module AresMUSH
         :author => client ? author.name : t('bbs.system_author'))
       end
     end
+    
+    def self.reply(board, post, author, reply, client = nil)
+      if (!Bbs.can_write_board?(author, board))
+        if (client)
+          client.emit_failure(t('bbs.cannot_post'))
+        end
+        return
+      end
+
+      reply = BbsReply.create(author: author, bbs_post: post, message: reply)
+        
+      post.mark_unread
+      Bbs.mark_read_for_player(author, post)
+        
+      Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, 
+      :board => board.name, 
+      :reference => post.reference_str,
+      :author => author.name)
+    end
   end
 end
   
