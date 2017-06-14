@@ -70,12 +70,15 @@ module AresMUSH
       admin_role = Role.create(name: "admin", is_restricted: true)
       admin_role.save
       everyone_role = Role.create(name: "everyone")
-      everyone_role.update(permissions: ["go_home", "boot"] )
+      everyone_role.update(permissions: ["go_home"] )
       everyone_role.save
       builder_role = Role.create(name: "builder")
       builder_role.save
       guest_role = Role.create(name: "guest")
       guest_role.save
+      approved_role = Role.create(name: "approved")
+      approved_role.update(permissions: ["boot"] )
+      approved_role.save
       
       puts "Creating OOC chars."
       

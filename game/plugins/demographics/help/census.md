@@ -14,6 +14,6 @@ There's also a census to see a breakdown of characters by gender, skills, or ran
 `census skills <type>` - Shows a summary of skills.  Type can be Action, Background or Language.
 `census ranks` - Counts characters by rank.
 
-You can also see a breakdown of characters from a particupar group, like a faction.  See [Groups](/help/demographics/groups) for information about what groups are available.
+You can also see a breakdown of characters from a particular group, like a faction.  See [Groups](/help/demographics/groups) for information about what groups are available.
 
 `census <group>` - Counts characters by group.

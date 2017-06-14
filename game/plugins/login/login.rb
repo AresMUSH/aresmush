@@ -1,6 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/activity_cmd.rb"
 load "lib/alias_cmd.rb"
+load "lib/boot_cmd.rb"
 load "lib/connect_cmd.rb"
 load "lib/create_cmd.rb"
 load "lib/email_set_cmd.rb"
@@ -52,6 +53,8 @@ module AresMUSH
         return ActivityCmd
       when "alias"
         return AliasCmd
+      when "boot"
+        return BootCmd
       when "create"
         return CreateCmd
       when "email"

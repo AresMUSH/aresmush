@@ -16,3 +16,4 @@ pose:
         "repose/reset": "repose/clear"
         "whisper": "pemit"
         "whisp": "pemit"
+        "mutter": "pemit"

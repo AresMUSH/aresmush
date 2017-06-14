@@ -1,5 +1,5 @@
 module AresMUSH
-  module Manage
+  module Login
     class BootCmd
       include CommandHandler
       
@@ -25,14 +25,19 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |bootee|
           boot_client = bootee.client
           if (!boot_client)
-            client.emit_failure t('manage.cant_boot_disconnected_player')
+            client.emit_failure t('login.cant_boot_disconnected_player')
             return
           end
           
-          boot_client.emit_failure t('manage.you_have_been_booted', :booter => enactor.name)
+          boot_client.emit_failure t('login.you_have_been_booted', :booter => enactor.name)
           boot_client.disconnect
           
-          Global.logger.warn "#{bootee.name} booted by #{client}."
+          Global.logger.warn "#{bootee.name} booted by #{enactor_name}.  IP: #{bootee.last_ip}  Host: #{bootee.last_hostname}"
+          
+          Jobs::Api.create_job(Global.read_config("login", "trouble_category"), 
+            t('login.boot_title'), 
+            t('login.boot_message', :booter => enactor.name, :bootee => bootee.name), 
+            enactor)
         end
       end
     end

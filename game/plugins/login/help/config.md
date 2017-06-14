@@ -65,7 +65,9 @@ Here is an example:
         - 192.168.1.1
         - verizon.net  
 
-You can also configure which job category is used when the system creates a job for a suspect alert.  By default it's the MISC category.
+### Trouble Job Category
+
+You can also configure which job category is used when the system creates a job for a suspect or boot alert.  By default it's the MISC category.
 
 ### Guest Role
 

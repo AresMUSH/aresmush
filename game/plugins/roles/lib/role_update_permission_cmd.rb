@@ -1,6 +1,6 @@
 module AresMUSH
   module Roles
-    class RolePermissionCmd
+    class RoleAddPermissionCmd
       include CommandHandler
       
       attr_accessor :name, :permission, :remove_permission
@@ -9,16 +9,7 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = trim_arg(args.arg1)
         self.permission = trim_arg(args.arg2)
-        
-        if (self.permission)
-          self.permission = self.permission.downcase
-          if self.permission.start_with?("!")
-            self.permission = self.permission.after("!")
-            self.remove_permission = true
-          end
-        else
-          self.remove_permission = false
-        end
+        self.remove_permission = cmd.switch_is?("removepermission")
       end
       
       def required_args
@@ -33,15 +24,16 @@ module AresMUSH
         return nil
       end
       
-      def check_role_exists
-        return t('roles.role_does_not_exist') if !Role.found?(self.name)
-        return nil
-      end
-      
       def handle  
         role = Role.find_one_by_name(self.name)
+        
+        if (!role)
+          client.emit_failure t('roles.role_does_not_exist')
+          return
+        end
+        
         permissions = role.permissions
-        if (remove_permission)
+        if (self.remove_permission)
           permissions.delete(self.permission)
         else
           permissions << self.permission

@@ -22,6 +22,7 @@ The login plugin handles everything you need to connect to the game, create a ch
 [Keeping Your Connection Alive](/help/login/keepalive)
 [Watching Other Characters Connect](/help/login/watch)
 [Viewing Game Activity](/help/login/activity)
+[Booting Trolls](/help/login/boot)
 
 ## Admin Topics
 

@@ -8,7 +8,7 @@ load "lib/role_create_cmd.rb"
 load "lib/role_delete_cmd.rb"
 load "lib/roles_cmd.rb"
 load "lib/roles_model.rb"
-load "lib/role_permission_cmd.rb"
+load "lib/role_update_permission_cmd.rb"
 load "lib/roles_remove_cmd.rb"
 load "roles_events.rb"
 load "roles_api.rb"
@@ -57,8 +57,8 @@ module AresMUSH
           return RoleCreateCmd
         when "delete"
           return RoleDeleteCmd  
-        when "permission"
-          return RolePermissionCmd        
+        when "addpermission", "removepermission"
+          return RoleUpdatePermissionCmd        
         when nil
           return RolesCmd
         end

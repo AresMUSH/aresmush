@@ -8,7 +8,7 @@ login:
         
     allow_web_registration: true
     
-    suspect_category: "MISC"
+    trouble_category: "MISC"
 
     guest_role: "guest"
     
@@ -25,3 +25,4 @@ login:
         "con" : "connect"
         "newpassword": "password/reset"
         "conn": "connect"
+        "kick": "boot"

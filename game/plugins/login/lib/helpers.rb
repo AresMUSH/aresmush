@@ -9,6 +9,10 @@ module AresMUSH
       actor.has_permission?("manage_login")
     end
     
+    def self.can_boot?(actor)
+      actor.has_permission?("boot")
+    end
+    
     def self.wants_announce(listener, connector)
       return false if !listener
       return true if listener.login_watch == "all"
@@ -48,7 +52,7 @@ module AresMUSH
       suspects.each do |s|
         if (char.is_site_match?(s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          Jobs::Api.create_job(Global.read_config("login", "suspect_category"), 
+          Jobs::Api.create_job(Global.read_config("login", "trouble_category"), 
             t('login.suspect_login_title'), 
             t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
             Game.master.system_character)

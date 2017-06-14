@@ -5,6 +5,8 @@ aliases:
 - nospoof
 - emit
 - pemit
+- whisper
+- mutter
 ---
 # Emits
 
@@ -16,7 +18,7 @@ Emits allow you to send messages to the room you're in.  There are several comma
 `emit Go Bob!` or `\Go Bob!` - Go Bob!
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
 
-## Private Emits
+## Private Emits / Whispers
 
 The `pemit` command lets you make a private emit only to certain characters.
 

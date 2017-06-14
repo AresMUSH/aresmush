@@ -22,7 +22,7 @@ Permissions are assigned to roles, and allow you to further refine what people w
 
 > **Tip:** Characters with the Admin role have all permissions automatically.  If you don't want to fuss with multiple levels of staff, you don't need to worry about permissions.
 
-Each plugin defines its own permissions and what commands require them.  The help files tell you what permissions are needed.  For example - at the top of this file it tells you that the manage_roles permissions is needed to do 
+Each plugin defines its own permissions and what commands require them.  The help files tell you what permissions are needed.  For example - at the top of this file it tells you that the manage_roles permissions is needed to access these commands.
 
 For example:  You might create a 'builder' role and assign it the 'build' and 'teleport' permissions.  Then all builders would be able to build rooms/exits and teleport around without having access to all other admin commands.  You might also create an 'app_staff' role that had application permissions but not building permissions.  It's completely flexible.
 
@@ -49,7 +49,10 @@ You can assign roles to people.
 
 ## Assigning Permissions to Roles
 
+Once a role exists, you can add and remove permissions to it.
 
+`role/addpermission <role>=<permission>` - Adds a permission to a role.
+`role/removepermission <role>=<permission>` - Removes a permission from a role.
 
 ## Admin Notes
 
