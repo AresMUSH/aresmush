@@ -16,3 +16,5 @@ fs3skills:
         "skills": "abilities"
         "attributes": "abilities"
         "languages": "abilities"
+        "practice": "learn"
+        "train": "learn"

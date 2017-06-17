@@ -27,7 +27,7 @@ module AresMUSH
         job.is_unread?(@char) ? t('jobs.unread_marker') : ""
       end
       
-      def footer
+      def jobs_footer
         page = " #{@paginator.page_marker} "
         filter = " #{t('jobs.job_filter_active', :filter => @char.jobs_filter)} "
         "#{center(filter, 34, '-')}#{center('', 10, '-')}#{center(page, 34, '-')}"

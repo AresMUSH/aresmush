@@ -3,10 +3,15 @@ de:
         zero: "Keine spieler angeschlossen."
         one: "Ein spieler angeschlossen."
         other: "%{count} spieler angeschlossen."
-    server_start: "Server gestarten bei %{host}:%{port}..."
-    welcome: "Wilkommen bei AresMUSH!"
+        
+    client:
+        welcome: "Wilkommen bei AresMUSH!"
 
     number:
         separator: ','
 
       
+    pages:
+        page_x_of_y: "%xhSeite %{x} von %{y}%xH"
+        not_that_many_pages: "Diese Seite besteht nicht."
+        no_items: "Keine Seiten."
