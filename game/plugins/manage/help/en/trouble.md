@@ -2,7 +2,6 @@
 toc: ~admin~ Managing Game
 summary: Dealing with troublesome players.
 aliases:
-- boot
 - findsite
 - ban
 - siteban
