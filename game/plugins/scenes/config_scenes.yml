@@ -4,3 +4,8 @@ scenes:
      #day_of_week: Sat
      #hour: 21
      minute: 00
+     
+        
+    shortcuts:
+        "scene/close" : "scene/stop"
+        "scene/end" : "scene/stop"

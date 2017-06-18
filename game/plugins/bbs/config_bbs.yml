@@ -8,6 +8,7 @@ bbs:
         "bbcatchup" : "bbs/catchup"
         "bbedit" : "bbs/edit"
         "bbreply" : "bbs/reply"
+        "bbcomment" : "bbs/reply"
         "bbremove" : "bbs/delete"
         "bbmove" : "bbs/move"
         "bbs/remove": "bbs/delete"
