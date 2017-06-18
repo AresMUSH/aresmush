@@ -8,101 +8,101 @@ fs3combat:
         Tactical:
             description: "Military-Grade Kevlar Vest and Helmet"
             protection: 
-                Head: 3
-                Neck: 3
-                Chest: 4
-                Abdomen: 4
+                Head: 6
+                Neck: 4
+                Chest: 8
+                Abdomen: 6
 
         Police:
             description: "Police-Grade Kevlar Vest"
             protection: 
-                Chest: 3
-                Abdomen: 3
+                Chest: 5
+                Abdomen: 4
 
         Centurion:
             description: "Cylon Centurion Armor"
             protection:
-                Head: 3
-                Neck: 3
-                Chest: 5
-                Abdomen: 5
-                Left Arm: 4
-                Right Arm: 4
-                Left Hand: 3
-                Right Hand: 3
-                Left Leg: 5
-                Right Leg: 5
+                Head: 6
+                Neck: 6
+                Chest: 8
+                Abdomen: 8
+                Left Arm: 6
+                Right Arm: 6
+                Left Hand: 4
+                Right Hand: 4
+                Left Leg: 8
+                Right Leg: 8
                 Left Foot: 4
                 Right Foot: 4
 
         Cylon:
             description: "Cylon (Non-Centurion) Skeleton"
             protection:
-                Head: 2
-                Neck: 2
-                Chest: 3
-                Abdomen: 3
+                Head: 4
+                Neck: 4
+                Chest: 4
+                Abdomen: 4
                 Left Arm: 2
                 Right Arm: 2
-                Left Leg: 3
-                Left Hand: 1
-                Right Hand: 1
-                Left Leg: 2
-                Right Leg: 2
+                Left Leg: 4
+                Left Hand: 2
+                Right Hand: 2
+                Left Leg: 4
+                Right Leg: 4
                 Left Foot: 2
                 Right Foot: 2
                 
         Viper:
             description: "Viper Vehicle Armor"
             protection:
-                Body: 4
-                Engine: 4
-                Tail: 3
-                Wing: 3
+                Body: 6
+                Engine: 6
+                Tail: 4
+                Wing: 4
                 Weapon: 2
-                Nose: 3
+                Nose: 4
                 Cockpit: 2
                 Controls: 4
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
             protection:
-                Body: 3
-                Engine: 3
-                Tail: 3
-                Wing: 3
+                Body: 6
+                Engine: 6
+                Tail: 4
+                Wing: 4
                 Weapon: 2
-                Nose: 3
+                Nose: 4
                 Cockpit: 2
-                Controls: 3
+                Controls: 4
 
         Raptor:
             description: "Raptor Vehicle Armor"
             protection:
-                Body: 5
-                Engine: 5
-                Tail: 5
-                Wing: 4
-                Weapon: 4
-                Nose: 5
-                Cockpit: 3
-                Controls: 4
+                Body: 8
+                Engine: 8
+                Tail: 6
+                Wing: 6
+                Weapon: 6
+                Nose: 6
+                Cockpit: 4
+                Controls: 6
 
         Heavy Raider:
             description: "Cylon Heavy Raider Vehicle Armor"
             protection:
-                Body: 5
-                Engine: 5
-                Tail: 5
-                Wing: 4
-                Weapon: 4
-                Nose: 5
-                Cockpit: 3
-                Controls: 4
+                Body: 8
+                Engine: 8
+                Tail: 6
+                Wing: 6
+                Weapon: 6
+                Nose: 6
+                Cockpit: 4
+                Controls: 6
 
         AA Battery:
             description: "Anti-Aircraft Battery"
             protection:
-                Body: 2
-                Controls: 2
-                Weapon: 2
+                Body: 4
+                Controls: 4
+                Weapon: 4
