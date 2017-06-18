@@ -62,14 +62,7 @@ module AresMUSH
     
     def load_plugin_help(plugin_module)
       plugin_name = plugin_module.to_s.after("::")
-      current_locale = Global.locale.locale.to_s
-      default_locale = Global.locale.default_locale.to_s
-      locales = [current_locale]
-      if (current_locale != default_locale)
-        locales << default_locale
-      end
-      
-      locales.each do |locale|
+      Global.locale.locale_order.each do |locale|
         help_files = self.help_files(plugin_module, locale)
         help_files.each do |path|              
           Global.help_reader.load_help_file path, plugin_name

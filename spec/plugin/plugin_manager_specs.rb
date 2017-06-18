@@ -59,8 +59,7 @@ module AresMUSH
         Dir.stub(:[]).with("A/help/en/**.md") { [ "h1", "h2" ] }
         plugin.stub(:plugin_dir) { "A" }
         plugin.stub(:to_s) { "AresMUSH::A" }
-        locale.stub(:locale) { "en" }
-        locale.stub(:default_locale) { "en" }
+        locale.stub(:locale_order) { ["en"] }
         help_reader.should_receive(:load_help_file).with("h1", "A")
         help_reader.should_receive(:load_help_file).with("h2", "A")
         @manager.load_plugin_help plugin
@@ -72,8 +71,7 @@ module AresMUSH
         Dir.stub(:[]).with("A/help/de/**.md") { [ "de/h1" ] }
         plugin.stub(:plugin_dir) { "A" }
         plugin.stub(:to_s) { "AresMUSH::A" }
-        locale.stub(:locale) { "de" }
-        locale.stub(:default_locale) { "en" }
+        locale.stub(:locale_order) { ["de", "en"] }
         help_reader.should_receive(:load_help_file).with("de/h1", "A").ordered
         help_reader.should_receive(:load_help_file).with("en/h1", "A").ordered
         help_reader.should_receive(:load_help_file).with("en/h2", "A").ordered
