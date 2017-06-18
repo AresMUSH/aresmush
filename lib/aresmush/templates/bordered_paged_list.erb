@@ -1,0 +1,11 @@
+<%= header %><% title_line -%>
+<% if subtitle %>
+
+%xh<%= subtitle %>%xn
+<%= divider %><% end %>
+<% list.each do |l| %>
+<%= l %>
+<% end %><% if subfooter %><%= subfooter %>
+<% end %>
+<%= page_marker%>
+<%= footer %>

@@ -10,6 +10,14 @@
     <% end %>
 </ul>
 
+<h1>Game Help</h1>
+
+<ul>
+    <% @game_help.sort.each do |f| %>
+    <li><a href="/admin/config/edit?path=<%= f %>"><%= File.basename(f) %></a></li>
+    <% end %>
+</ul>
+
 <h1>Plugin Config</h1>
     <blockquote>
         Quick Links:

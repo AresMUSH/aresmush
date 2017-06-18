@@ -23,6 +23,17 @@ module AresMUSH
       I18n.default_locale
     end
     
+    # Returns the current locale first, followed by the default locale if it's different.
+    def locale_order
+      current_locale = locale.to_s
+      default_locale = default_locale.to_s
+      locales = [current_locale]
+      if (current_locale != default_locale)
+        locales << default_locale
+      end
+      locales
+    end
+    
     def setup
       reset_load_path
       reload

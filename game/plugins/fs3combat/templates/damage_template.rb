@@ -31,7 +31,8 @@ module AresMUSH
       end
             
       def healed_by
-        @char.doctors.map { |h| h.name }.join(", ")
+        docs = @char.doctors.map { |h| h.name }
+        docs.count > 0 ? docs.join(", ") : t('global.none')
       end
       
       def wound_mod

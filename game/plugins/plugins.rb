@@ -11,7 +11,6 @@ module AresMUSH
         "bbs", 
         "channels", 
         "chargen", 
-        "config",
         "cookies", 
         "custom",
         "demographics", 
