@@ -1,3 +1,12 @@
+if [[ $EUID == 0 ]]; then
+   echo "This script should not be run as root.  Log out and log back in with your ares user." 
+   exit 1
+fi
+
+echo "cd aresmush" > onboot.sh
+echo "bin/startares&" >> onboot.sh
+chmod +x onboot.sh
+
 if [[ $# -eq 0 ]] ; then
     echo 'You need to specify the GitHub clone URL.'
     exit 1

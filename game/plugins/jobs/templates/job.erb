@@ -1,4 +1,4 @@
-<%= line %>
+<%= header %>
 %xh<%= center( title, 78 ) %>%xn
 
 %xh<%= left( t('jobs.category_title'), 15 ) %>%xn <%= job.category %>    
@@ -11,8 +11,8 @@
 <%= job.description %>
 <% replies.each_with_index do |r, index| -%> 
 
-<%= line 2 %>
+<%= divider %>
 (<%= index + 1 %>) <%= reply_admin_only(r) %><%= reply_title(r) %>
 <%= r.message %>
 <% end %>
-<%= line %>
+<%= footer %>

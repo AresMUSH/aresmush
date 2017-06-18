@@ -3,6 +3,8 @@ require 'aws-sdk'
 module AresMUSH
   module Manage
     class AwsBackup
+      
+      # Client may be nil for nightly automated backup
       def backup(client)
         
         Global.dispatcher.spawn("Performing backup.", client) do

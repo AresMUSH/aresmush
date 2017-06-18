@@ -9,7 +9,7 @@ module AresMUSH
       def parse_args
         # Admin version
         if (cmd.args =~ /\=/)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
           self.name = titlecase_arg(args.arg1)
           self.actor = titlecase_arg(args.arg2)
         # Self version
@@ -21,7 +21,7 @@ module AresMUSH
       
       def required_args
         {
-          args: [ self.name, self.actor ],
+          args: [ self.name ],
           help: 'actors'
         }
       end
@@ -40,12 +40,13 @@ module AresMUSH
       end
       
       def handle
-        taken = Character.all.select { |c| c.actor.upcase == self.actor.upcase }
-        if (taken.first)
-          client.emit_failure t('demographics.actor_taken')
-          return
+        if (self.actor)
+          taken = Character.all.select { |c| c.actor.upcase == self.actor.upcase }
+          if (taken.first)
+            client.emit_failure t('demographics.actor_taken')
+            return
+          end
         end
-
 
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           

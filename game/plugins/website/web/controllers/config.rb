@@ -8,11 +8,11 @@ module AresMUSH
         plugin_name = p.to_s.after('::').downcase
         
         @plugin_config[plugin_name] = {}
-        @plugin_config[plugin_name]["help"] = Global.plugin_manager.help_files(p).map { |f| File.join("plugins", plugin_name, f) }
+        @plugin_config[plugin_name]["help"] = Global.plugin_manager.help_files(p).map { |f| f.gsub(game_path, "") }
         @plugin_config[plugin_name]["locale"] = p.locale_files.map { |f| File.join("plugins", plugin_name, f) }
         @plugin_config[plugin_name]["config"] = p.config_files.map { |f| File.join("plugins", plugin_name, f) }
         
-        template_files = Dir[File.join(game_path, "plugins", plugin_name, "templates", "**.erb")]
+        template_files = Dir[File.join(game_path, "plugins", plugin_name, "templates", "**")]
         @plugin_config[plugin_name]["templates"] = template_files.map { |f| f.gsub(game_path, "") }
         
       end

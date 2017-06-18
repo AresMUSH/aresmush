@@ -1,9 +1,0 @@
-connection_established(client)
-- When an anonymous client connects
-
-
-char_connected(client)
-- When a char logs in (no longer anonymous)
-
-
-NOTE!  Don't use event machine directly - always go through dispatcher

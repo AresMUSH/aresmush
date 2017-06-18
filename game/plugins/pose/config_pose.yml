@@ -14,3 +14,6 @@ pose:
         "repose/notify" : "repose/nudge"
         "repose/log" : "repose/all"
         "repose/reset": "repose/clear"
+        "whisper": "pemit"
+        "whisp": "pemit"
+        "mutter": "pemit"

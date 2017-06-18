@@ -1,6 +1,6 @@
-<%= line %>		
+<%= header %>		
 %xh<%= t('bbs.boards_list_title') %>%xn		
-<%= line 2 %>		
+<%= divider %>		
 <% boards.each_with_index do |b, i| -%> 		
 <%= right(num(i), 3) -%>		
  <%= center(unread(b),5) -%>		
@@ -8,4 +8,4 @@
  <%= left(b.description,33)  -%> 		
  <%= center(permission(b), 5) %> 		
 <% end %>		
-<%= line %> 
+<%= footer %> 

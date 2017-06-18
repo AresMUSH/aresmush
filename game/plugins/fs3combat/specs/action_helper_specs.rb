@@ -448,7 +448,7 @@ module AresMUSH
   
         it "should account for armor" do
           FS3Combat.stub(:rand) { 24 }
-          FS3Combat.determine_damage(@combatant, "Chest", "Knife", 5).should eq "GRAZE"
+          FS3Combat.determine_damage(@combatant, "Chest", "Knife", -5).should eq "GRAZE"
         end
       end
       
@@ -616,17 +616,17 @@ module AresMUSH
         end
         
         it "should resolve the attack" do
-          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, false)
+          FS3Combat.should_receive(:resolve_attack).with(@combatant, "A", @target, "Knife", 2, nil, false)
           FS3Combat.attack_target(@combatant, @target)
         end
         
         it "should resolve the attack with a called shot and mod" do
-          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, "Head", false)
+          FS3Combat.should_receive(:resolve_attack).with(@combatant, "A", @target, "Knife", 2, "Head", false)
           FS3Combat.attack_target(@combatant, @target, 3, "Head")
         end
         
         it "should resolve the attack with a crew hit" do
-          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, true)
+          FS3Combat.should_receive(:resolve_attack).with(@combatant, "A", @target, "Knife", 2, nil, true)
           FS3Combat.attack_target(@combatant, @target, 3, nil, true)
         end
         
@@ -635,7 +635,7 @@ module AresMUSH
           vehicle = double
           @target.stub(:riding_in) { vehicle }
           vehicle.stub(:pilot) { pilot }
-          FS3Combat.should_receive(:resolve_attack).with("A", pilot, "Knife", 2, nil, false)
+          FS3Combat.should_receive(:resolve_attack).with(@combatant, "A", pilot, "Knife", 2, nil, false)
           FS3Combat.attack_target(@combatant, @target)
         end
 
@@ -644,7 +644,7 @@ module AresMUSH
           vehicle = double
           @target.stub(:riding_in) { vehicle }
           vehicle.stub(:pilot) { nil }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target, "Knife", 2, nil, false)
+          FS3Combat.should_receive(:resolve_attack).with(@combatant, "A", @target, "Knife", 2, nil, false)
           FS3Combat.attack_target(@combatant, @target)
         end
       end
@@ -654,6 +654,7 @@ module AresMUSH
         
         before do
           @target = double
+          @combatant = double
           FS3Combat.stub(:determine_armor) { 0 }
           FS3Combat.stub(:determine_damage) { "GRAZE" }
           FS3Combat.stub(:weapon_is_stun?) { false }
@@ -663,59 +664,67 @@ module AresMUSH
           @target.stub(:name) { "D" }
           @target.stub(:add_stress)
           @target.stub(:update).with(freshly_damaged: true)
+          @combatant.stub(:luck) { "" }
         end
             
         
         it "should determine hit location if no called shot" do
           FS3Combat.should_receive(:determine_hitloc).with(@target, 0, nil, false) { "Head" }
-          FS3Combat.resolve_attack("A", @target, "Knife")
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
         end
 
         it "should determine hit location if called shot" do
           FS3Combat.should_receive(:determine_hitloc).with(@target, 0, "Arm", false) { "Hand" }
-          FS3Combat.resolve_attack("A", @target, "Knife", 0, "Arm")
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife", 0, "Arm")
         end
         
         it "should return armor message if stopped by armor" do
           FS3Combat.should_receive(:determine_armor).with(@target, "Chest", "Knife", 2) { 110 }
-          FS3Combat.resolve_attack("A", @target, "Knife", 2).should eq ["fs3combat.attack_stopped_by_armor"]
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife", 2).should eq ["fs3combat.attack_stopped_by_armor"]
         end
         
         it "should reduce damage if armor slowed the attack" do
           FS3Combat.stub(:determine_armor) { 22 }
-          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 22, false) { "INCAP" }
-          FS3Combat.resolve_attack("A", @target, "Knife")
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", -22, false) { "INCAP" }
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
+        end
+        
+        it "should add luck to damage if luck spent on attack" do
+          FS3Combat.stub(:determine_armor) { 22 }
+          @combatant.stub(:luck) { "Attack" }
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 8, false) { "INCAP" }
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
         end
         
         it "should inflict damage" do
           @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false, false)
-          FS3Combat.resolve_attack("A", @target, "Knife")
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
         end      
         
         it "should mark as freshly damaged" do
           FS3Combat.stub(:determine_damage) { "FLESH" }
           @target.should_receive(:update).with(freshly_damaged: true)
-          FS3Combat.resolve_attack("A", @target, "Knife")
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
         end
         
         it "should not mark as freshly damaged for a graze wound" do
           FS3Combat.stub(:determine_damage) { "GRAZE" }
           @target.should_not_receive(:update).with(freshly_damaged: true)
-          FS3Combat.resolve_attack("A", @target, "Knife")
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
         end
 
         it "should return a hit message" do
-          FS3Combat.resolve_attack("A", @target, "Knife").should eq ["fs3combat.attack_hits"]
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife").should eq ["fs3combat.attack_hits"]
         end
         
         it "should add a stress point" do
           @target.should_receive(:add_stress).with(1)
-          FS3Combat.resolve_attack("A", @target, "Knife").should eq ["fs3combat.attack_hits"]
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife").should eq ["fs3combat.attack_hits"]
         end
         
         it "should pass along a crew hit" do
           @target.should_receive(:inflict_damage).with("GRAZE", "Knife - Chest", false, true)
-          FS3Combat.resolve_attack("A", @target, "Knife", 0, nil, true).should eq ["fs3combat.attack_hits"]
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife", 0, nil, true).should eq ["fs3combat.attack_hits"]
         end
       end
       
@@ -753,9 +762,9 @@ module AresMUSH
           @target.stub(:vehicle) { @vehicle }
           @vehicle.stub(:passengers) { [p1] }
           @vehicle.stub(:pilot) { p2 }
-          FS3Combat.should_receive(:resolve_attack).with(t('fs3combat.crew_hit'), p1, "Shrapnel", 0, nil, true) { ["a1"]}
-          FS3Combat.should_receive(:resolve_attack).with(t('fs3combat.crew_hit'), p1, "Shrapnel", 0, nil, true) { ["a2"]}
-          FS3Combat.should_receive(:resolve_attack).with(t('fs3combat.crew_hit'), p2, "Shrapnel", 0, nil, true) { ["a3"]}
+          FS3Combat.should_receive(:resolve_attack).with(nil, t('fs3combat.crew_hit'), p1, "Shrapnel", 0, nil, true) { ["a1"]}
+          FS3Combat.should_receive(:resolve_attack).with(nil, t('fs3combat.crew_hit'), p1, "Shrapnel", 0, nil, true) { ["a2"]}
+          FS3Combat.should_receive(:resolve_attack).with(nil, t('fs3combat.crew_hit'), p2, "Shrapnel", 0, nil, true) { ["a3"]}
 
           FS3Combat.resolve_possible_crew_hit(@target, "Cockpit", "IMPAIR").should eq ["a1", "a2", "a3"]
         end

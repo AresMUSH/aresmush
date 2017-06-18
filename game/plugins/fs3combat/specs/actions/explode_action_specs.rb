@@ -90,12 +90,12 @@ module AresMUSH
           FS3Combat.should_receive(:attack_target).with(@combatant, @target1) { ["result1"] }
           FS3Combat.should_receive(:attack_target).with(@combatant, @target2) { ["result2"] }
           FS3Combat.should_receive(:attack_target).with(@combatant, @target3) { ["result3"] }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel1"] }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel2"] }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel3"] }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target2, "Shrapnel" ) { ["shrapnel4"] }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target3, "Shrapnel" ) { ["shrapnel5"] }
-          FS3Combat.should_receive(:resolve_attack).with("A", @target3, "Shrapnel" ) { ["shrapnel6"] }
+          FS3Combat.should_receive(:resolve_attack).with(nil, "A", @target2, "Shrapnel" ) { ["shrapnel1"] }
+          FS3Combat.should_receive(:resolve_attack).with(nil, "A", @target2, "Shrapnel" ) { ["shrapnel2"] }
+          FS3Combat.should_receive(:resolve_attack).with(nil, "A", @target2, "Shrapnel" ) { ["shrapnel3"] }
+          FS3Combat.should_receive(:resolve_attack).with(nil, "A", @target2, "Shrapnel" ) { ["shrapnel4"] }
+          FS3Combat.should_receive(:resolve_attack).with(nil, "A", @target3, "Shrapnel" ) { ["shrapnel5"] }
+          FS3Combat.should_receive(:resolve_attack).with(nil, "A", @target3, "Shrapnel" ) { ["shrapnel6"] }
           resolutions = @action.resolve
           resolutions.should eq [ "fs3combat.explode_resolution_message", "result1", "result2", "shrapnel1",
             "shrapnel2", "shrapnel3", "shrapnel4", "result3", "shrapnel5", "shrapnel6" ]

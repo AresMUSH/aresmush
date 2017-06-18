@@ -1,6 +1,6 @@
-<%= line %>
+<%= header %>
 %xh<%= center( t('login.notices_title'), 78 ) %>%xn
-%l2
+%ld
 <%= mail %>
 <% alts.each do |a| %>
 <% if has_alt_mail(a) %>
@@ -14,10 +14,10 @@
 %xh%xM<%= approval_notice %>%xn
 <% end %>
 
-%l2
+%ld
 %xh<%= center( t('login.upcoming_events_title'), 78 ) %>%xn
-%l2
+%ld
 <% events.each do |ev| %>
 <%= ev.color -%><%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)%xn
 <% end %>
-<%= line %>
+<%= footer %>

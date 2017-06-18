@@ -1,7 +1,7 @@
-<%= line %>
+<%= header %>
 %xh<%= char.name%>%xn
 <%= military_name(char) %>
-<%= line 2 %>
+<%= divider %>
 
 <%= char.description %>
 <% if details %>
@@ -9,6 +9,6 @@
 %xh<%= t('describe.details_available') %>%xn <%= details %>
 <% end %>
 
-<%= line 2 %>
+<%= divider %>
 %xh<%= t('describe.played_by') %>%xn <%= actor(char) %>
-<%= line %>
+<%= footer %>

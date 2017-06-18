@@ -104,6 +104,22 @@ module AresMUSH
       Global.client_monitor.connection_closed self
     end
 
+    def find_char
+      @char_id ? Character[@char_id] : nil
+    end
+    
+    def logged_in?
+      @char_id
+    end
+    
+    def reset_program
+      @program = {}
+    end
+
+
+    # -------------------------------
+    # Deprecated methods.  Do not use
+    # -------------------------------
     def char
       raise "Someone still trying to use client.char"
     end  
@@ -116,16 +132,5 @@ module AresMUSH
       raise "Someone still trying to use client.room"
     end
     
-    def find_char
-      @char_id ? Character[@char_id] : nil
-    end
-    
-    def logged_in?
-      @char_id
-    end
-    
-    def reset_program
-      @program = {}
-    end
   end
 end

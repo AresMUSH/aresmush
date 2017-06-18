@@ -37,10 +37,7 @@ en:
         cannot_destroy_special_chars: "You can't destroy that character.  They're special."
         no_destroy_in_progress: "You weren't trying to destroy anything."
         cannot_destroy_in_combat: "You can't destroy a character who is in combat.  Make them leave combat first."
-        
-        cant_boot_disconnected_player: "You can't boot someone who's not online."
-        you_have_been_booted: "You have been given the boot by %{booter}.  Please play nice."
-        
+                
         findsite_title: "Possible site matches for %{search}"
         findsite_player_info: "Hostname: %{hostname} IP: %{ip}"
         findsite_failed_lookup: "Failed to look up host or IP information for %{target}.  Findsite results may be incomplete."

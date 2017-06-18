@@ -1,6 +1,6 @@
-<%= line %>
+<%= header %>
 %xh<%= t('jobs.jobs_list_title') %>%xn
-<%= line 2 %>
+<%= divider %>
 <% if !paginator.out_of_bounds? %>
 <% paginator.items.each do |job| %>
 <%= right( job.number.to_s, 4) -%>
@@ -11,9 +11,9 @@
 <%= left( handler(job), 18) -%>
 <%= job.category %>
 <% end %>
-%l2
+%ld
 <% end %>
-<%= footer %>
-%l2
+<%= jobs_footer %>
+%ld
 <%= t('jobs.job_filter_tip') %>
-<%= line %>
+<%= footer %>

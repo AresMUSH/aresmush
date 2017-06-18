@@ -10,8 +10,11 @@ fs3skills:
     shortcuts:
         "hooks": "hook"
         "hook/delete": "hook/remove"
+        "hook/set" : "hook/add"
         "spec": "specialty"
         "sheet2": "profile"
         "skills": "abilities"
         "attributes": "abilities"
         "languages": "abilities"
+        "practice": "learn"
+        "train": "learn"

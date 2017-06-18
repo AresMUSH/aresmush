@@ -15,8 +15,16 @@ module AresMUSH
       SubstitutionFormatter.right(str, width, pad_char)
     end
     
-    def line(number = 1)
-      "%l#{number}"
+    def header
+      "%lh"
+    end
+    
+    def footer
+      "%lf"
+    end
+    
+    def divider
+      "%ld"
     end
     
     def line_with_text(text)

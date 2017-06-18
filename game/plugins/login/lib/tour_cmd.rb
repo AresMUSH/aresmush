@@ -23,7 +23,7 @@ module AresMUSH
         client.char_id = guest.id
         terms_of_service = Login.terms_of_service
         if (terms_of_service)
-          client.emit "%l1%r#{terms_of_service}%r%l1"
+          client.emit BorderedDisplay.text "#{terms_of_service}"
         end
         
         Global.dispatcher.queue_timer(2, "Tell guest their name", client) do

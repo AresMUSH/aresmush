@@ -33,7 +33,7 @@ module AresMUSH
           if (FS3Combat.weapon_stat(self.combatant.weapon, "has_shrapnel"))      
             shrapnel = rand(5)
             shrapnel.times.each do |s|
-              messages.concat FS3Combat.resolve_attack(self.combatant.name, target, "Shrapnel")
+              messages.concat FS3Combat.resolve_attack(nil, self.combatant.name, target, "Shrapnel")
             end
           end
         end

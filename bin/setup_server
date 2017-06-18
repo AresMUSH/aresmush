@@ -1,3 +1,8 @@
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+
 # Need to let the redis service update its own config files so we can use the 
 # redis config commands.
 sudo chown redis /etc/redis/redis.conf
@@ -5,6 +10,9 @@ sudo chgrp redis /etc/redis/redis.conf
 
 # Make sure we have the latest packages.
 apt-get update
+
+# SSL package needs this
+apt-get install -y binutils
 
 # We need git to manage the source code.
 apt-get install -y git
@@ -36,7 +44,7 @@ addgroup www
 usermod -a -G sudo,www,redis ares
 
 # Have the game server start when the server reboots
-echo "/home/ares/aresmush/bin/startares&" > /root/onboot.sh
+echo "sudo -u ares -i '/home/ares/onboot.sh'" > /root/onboot.sh
 chmod +x /root/onboot.sh
 
 echo "User ares created with password $PASSWD.  You will need it in a minute.  Please refer back to the installation instructions for the next steps."

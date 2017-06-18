@@ -55,16 +55,19 @@ module AresMUSH
       end
     end
     
-    def help_files(plugin_module)
-      search = File.join(plugin_module.plugin_dir, "help", "**.md")
+    def help_files(plugin_module, locale)
+      search = File.join(plugin_module.plugin_dir, "help", locale, "**.md")
       Dir[search]
     end
     
     def load_plugin_help(plugin_module)
       plugin_name = plugin_module.to_s.after("::")
-      help_files = self.help_files(plugin_module)
-      help_files.each do |path|              
-        Global.help_reader.load_help_file path, plugin_name
+      
+      [Global.locale.locale.to_s, Global.locale.default_locale.to_s].each do |locale|
+        help_files = self.help_files(plugin_module, locale)
+        help_files.each do |path|              
+          Global.help_reader.load_help_file path, plugin_name
+        end
       end
     end
     

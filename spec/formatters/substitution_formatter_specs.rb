@@ -26,24 +26,29 @@ module AresMUSH
         SubstitutionFormatter.format("Test%tTest2%TTest3").should eq "Test     Test2     Test3"
       end
 
-      it "should replace %l1 with line1" do
-        Line.stub(:show).with("1") { "---" }
-        SubstitutionFormatter.format("Test%l1Test").should eq "Test---Test"
+      it "should replace %lh with header" do
+        Line.stub(:show).with("h") { "---" }
+        SubstitutionFormatter.format("Test%lhTest").should eq "Test---Test"
       end    
 
-      it "should replace %l2 with line2" do
-        Line.stub(:show).with("2") { "---" }
-        SubstitutionFormatter.format("Test%l2Test").should eq "Test---Test"
+      it "should replace %lf with footer" do
+        Line.stub(:show).with("f") { "---" }
+        SubstitutionFormatter.format("Test%lfTest").should eq "Test---Test"
       end    
 
-      it "should replace %l3 with line3" do
-        Line.stub(:show).with("3") { "---" }
-        SubstitutionFormatter.format("Test%l3Test").should eq "Test---Test"
+      it "should replace %ld with divider" do
+        Line.stub(:show).with("d") { "---" }
+        SubstitutionFormatter.format("Test%ldTest").should eq "Test---Test"
       end    
 
-      it "should replace %l4 with line4" do
-        Line.stub(:show).with("4") { "---" }
-        SubstitutionFormatter.format("Test%l4Test").should eq "Test---Test"
+      it "should replace %lp with plain line" do
+        Line.stub(:show).with("p") { "---" }
+        SubstitutionFormatter.format("Test%lpTest").should eq "Test---Test"
+      end  
+      
+      it "should replace %LP with plain line (case doesn't matter)" do
+        Line.stub(:show).with("P") { "---" }
+        SubstitutionFormatter.format("Test%LPTest").should eq "Test---Test"
       end    
       
       it "should replace %x! with a random color" do

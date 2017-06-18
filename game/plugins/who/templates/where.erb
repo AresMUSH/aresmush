@@ -1,6 +1,6 @@
-<%= line %>
+<%= header %>
 <%= center( mush_name, 78 ) %>
-<%= line 2 %>
+<%= divider %>
 %xh<%= t('who.where_header') %>%xn
 <% chars_by_room.each do |c| %>
 <%= status_color(c) %><%= left( status(c), 7 ) %><%= "%xn" -%>
@@ -9,6 +9,6 @@
 <%= left( connected(c), 7 ) -%>
 <%= idle(c) %>
 <% end %>
-<%= line 2 %>
+<%= divider %>
 %xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
-<%= line %>
+<%= footer %>

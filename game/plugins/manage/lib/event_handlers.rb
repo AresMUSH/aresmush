@@ -6,7 +6,7 @@ module AresMUSH
         return if !Cron.is_cron_match?(config, event.time)
         
         backup = AwsBackup.new
-        error = backup.backup(event.client)
+        error = backup.backup(nil)
       end
     end    
   end

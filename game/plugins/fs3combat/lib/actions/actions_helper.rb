@@ -166,11 +166,11 @@ module AresMUSH
       combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
-    def self.determine_damage(combatant, hitloc, weapon, armor = 0, crew_hit = false)
+    def self.determine_damage(combatant, hitloc, weapon, mod = 0, crew_hit = false)
       random = rand(100)
       
       lethality = FS3Combat.weapon_stat(weapon, "lethality")
-      
+                  
       case FS3Combat.hitloc_severity(combatant, hitloc, crew_hit)
       when "Critical"
         severity = 30
@@ -181,9 +181,9 @@ module AresMUSH
       end
       
       npc = combatant.is_npc? ? Global.read_config("fs3combat", "npc_lethality_mod") : 0
-      special = combatant.damage_lethality_mod + npc
+      npc_mod = combatant.damage_lethality_mod + npc
       
-      total = random + severity + lethality - armor + special
+      total = random + severity + lethality + mod + npc_mod
       
       if (total < 20)
         damage = "GRAZE"
@@ -196,7 +196,7 @@ module AresMUSH
       end
       
       combatant.log "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
-      " lth=#{lethality} special=#{special} arm=#{armor} rand=#{random} total=#{total} dmg=#{damage}"
+      " lth=#{lethality} npc=#{npc_mod} mod=#{mod} rand=#{random} total=#{total} dmg=#{damage}"
       
       damage
     end
@@ -305,22 +305,24 @@ module AresMUSH
       
       attacker_net_successes = margin[:attacker_net_successes]
             
-      FS3Combat.resolve_attack(combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
+      FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
     end
     
-    
-    def self.resolve_attack(attacker_name, target, weapon, attacker_net_successes = 0, called_shot = nil, crew_hit = false)
+    # Attacker may be nil for automated attacks like shrapnel
+    def self.resolve_attack(attacker, attack_name, target, weapon, attacker_net_successes = 0, called_shot = nil, crew_hit = false)
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
       armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
         
       if (armor >= 100)
-        message = t('fs3combat.attack_stopped_by_armor', :name => attacker_name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
+        message = t('fs3combat.attack_stopped_by_armor', :name => attack_name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
         return [message]
       end
                   
       reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
+
+      luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
           
-      damage = FS3Combat.determine_damage(target, hitloc, weapon, armor, crew_hit)
+      damage = FS3Combat.determine_damage(target, hitloc, weapon, luck_mod - armor, crew_hit)
           
       is_stun = FS3Combat.weapon_is_stun?(weapon)
       desc = "#{weapon} - #{hitloc}"
@@ -336,7 +338,7 @@ module AresMUSH
       messages = []
       
       messages << t('fs3combat.attack_hits', 
-                    :name => attacker_name, 
+                    :name => attack_name, 
                     :weapon => weapon,
                     :target => target.name,
                     :hitloc => hitloc,
@@ -372,7 +374,7 @@ module AresMUSH
                 
         target.log "Crew area hit. #{p.name} shrapnel=#{shrapnel}"
         shrapnel.times.each do |s|
-          messages.concat FS3Combat.resolve_attack(t('fs3combat.crew_hit'), p, "Shrapnel", 0, nil, true)
+          messages.concat FS3Combat.resolve_attack(nil, t('fs3combat.crew_hit'), p, "Shrapnel", 0, nil, true)
         end
       end
       

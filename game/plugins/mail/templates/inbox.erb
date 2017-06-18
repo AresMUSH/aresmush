@@ -1,7 +1,7 @@
-<%= line %>
+<%= header %>
 %xh%x![ <%= tag_title %> ]%xn
-%xh<%= header %>%xn
-<%= line 2 %>
+%xh<%= mail_header %>%xn
+<%= divider %>
 <% messages.each_with_index do |msg, i| %>
 <%= right( (i + 1).to_s, 3 ) -%>
 <%= left( tags(msg), 9 ) -%>
@@ -10,10 +10,10 @@
 <%= date(msg) %>
 <% end %>
 <% if filters_enabled %>
-<%= line 2 %>
+<%= divider %>
 <%= t('mail.filters_notice') %>
 <% end %>
 <% if is_sent_mail %>
 <%= t('mail.sent_mail_notice') %>
 <% end %>
-<%= line %>
+<%= footer %>

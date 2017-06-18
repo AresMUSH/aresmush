@@ -35,14 +35,11 @@
       };
       json = JSON.stringify(cmd);
       ws.send(json);
-      $('#sendMsg').val('');
     };
     $(window).blur(function(){
-        console.log("Blurred");
         window_visible = false;
     });
     $(window).focus(function(){
-        console.log("Focused");
         window_visible = true;
     });
     connect = function() {
@@ -95,11 +92,29 @@
       $('button.tourButton').hide();
       $('button.whoButton').hide();
     };
+    on_text_event = function(e, control) {
+        var msg;
+        if (connected === false) {
+          debug('Not connected!');
+          return;
+        }
+        if (e.which === 13) {
+          send_and_clear_input(control);
+          return false;
+        }
+    };
+    send_and_clear_input = function(control) {
+        msg = $(control).val();
+        send_input(msg);
+        $(control).val('');
+    };
     $('button.sendButton').click(function() {
-      var msg;
-      msg = $('#sendMsg').val();
-      send_input(msg);
+      send_and_clear_input('#sendMsg');
       document.getElementById("sendMsg").focus();
+    });
+    $('button.sendButton2').click(function() {
+      send_and_clear_input('#sendMsg2');
+      document.getElementById("sendMsg2").focus();
     });
     $('button.disconnectButton').click(function() {
       send_input('quit');
@@ -126,16 +141,10 @@
       document.getElementById("sendMsg").focus();
     });
     $('#sendMsg').keypress(function(e) {
-      var msg;
-      if (connected === false) {
-        debug('Not connected!');
-        return;
-      }
-      if (e.which === 13) {
-        msg = $('#sendMsg').val();
-        send_input(msg);
-        return false;
-      }
+        return on_text_event(e, '#sendMsg');
+    });
+    $('#sendMsg2').keypress(function(e) {
+        return on_text_event(e, '#sendMsg2');
     });
   });
 

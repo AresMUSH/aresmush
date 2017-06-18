@@ -6,6 +6,7 @@ module AresMUSH
       
       def handle
         list = Character.all.select { |c| c.demographic(:actor) && !c.demographic(:actor).blank? }
+        list = list.sort_by { |c| c.actor ? c.actor.split(" ")[-1] : ""  }
         
         paginator = Paginator.paginate(list, cmd.page, 15)
         

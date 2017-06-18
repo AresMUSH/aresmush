@@ -20,7 +20,6 @@ load "lib/game/version_cmd.rb"
 load "lib/aws_backup.rb"
 load "lib/event_handlers.rb"
 load "lib/helpers.rb"
-load "lib/trouble/boot_cmd.rb"
 load "lib/trouble/findsite_cmd.rb"
 load "manage_api.rb"
 load "manage_events.rb"
@@ -56,8 +55,6 @@ module AresMUSH
         return AnnounceCmd
       when "dbbackup"
         return BackupCmd
-      when "boot"
-        return BootCmd
       when "config"
         case cmd.switch
         when nil

@@ -51,12 +51,12 @@ module AresMUSH
     describe :text do
       it "should allow the title to be optional" do
         output = BorderedDisplay.text("TEXT")
-        output.should eq "%l1%rTEXT%r%l1"
+        output.should eq "%lh%rTEXT%r%lf"
       end
       
       it "should border the text and title with lines" do
         output = BorderedDisplay.text("TEXT", "TITLE")
-        output.should eq "%l1%r%xhTITLE%xn%r%rTEXT%r%l1"
+        output.should eq "%lh%r%xhTITLE%xn%r%rTEXT%r%lf"
       end
     end
   end

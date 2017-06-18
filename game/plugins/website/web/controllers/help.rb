@@ -13,7 +13,8 @@ module AresMUSH
         if (show_full)
           @topics[toc] = Help.toc_topics(toc)
         else
-          @topics[toc] = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
+          index_topics = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
+          @topics[toc] = index_topics
         end
       end
       
@@ -31,8 +32,9 @@ module AresMUSH
 
     get '/help/:plugin/:topic' do |plugin, topic|
       @topic = topic.titlecase
-      path = File.join( AresMUSH.game_path, "plugins", plugin, "help", "#{topic}.md" )
-      md = MarkdownFile.new(path)
+      
+      help = Help::Api.help_topics.select { |k, v| v['plugin'] == plugin && v['topic'] == topic }
+      md = MarkdownFile.new(help.values.first['path'])
       text = ClientFormatter.format md.contents, false
       formatter = MarkdownFormatter.new
       @help =  formatter.to_html(text)

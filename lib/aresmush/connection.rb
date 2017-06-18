@@ -51,16 +51,21 @@ module AresMUSH
       begin
         return if !data
                 
-        parts = data.split(/\r|\n/)
+
+        if (data =~ /.+[\r|\n].+/)
+          parts = data.split(/\r|\n/).map { |p| "#{p}\n"}
+        else
+          parts = [ data ]
+        end
+        
         parts.each do |part|
           input = @negotiator.handle_input(part)
           if (!input)
-            puts "Nothing to handle"
             return
           end
 
-          input = strip_control_chars(input)
-          @client.handle_input("#{input}\n")
+          input = strip_control_chars(input)          
+          @client.handle_input(input)
         end
       rescue Exception => e
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."

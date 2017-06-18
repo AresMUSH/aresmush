@@ -1,7 +1,7 @@
 module AresMUSH
   module BorderedDisplay
     def self.text(text, title = nil, leading_newline = true, footer = nil)
-      output = "%l1"
+      output = "%lh"
       if (title)
         output << "%r%xh#{title}%xn%r"
       end
@@ -12,7 +12,7 @@ module AresMUSH
         output << "%r#{footer}"
       end
       
-      output << "%r%l1"
+      output << "%r%lf"
       return output
     end
   
@@ -29,7 +29,7 @@ module AresMUSH
     
     def self.subtitled_list(items, title, subtitle, footer = nil)
       output = "%xh#{subtitle}%xn"
-      output << "%R%l2"
+      output << "%R%ld"
       
       if (items)
         items.each do |i|

@@ -30,6 +30,7 @@ load "lib/common_checks.rb"
 load "lib/damage/damage_cmd.rb"
 load "lib/damage/damage_cron_handler.rb"
 load "lib/damage/damage_helper.rb"
+load "lib/damage/heal_scan_cmd.rb"
 load "lib/damage/heal_start_cmd.rb"
 load "lib/damage/heal_stop_cmd.rb"
 load "lib/damage/healing_cmd.rb"
@@ -144,6 +145,8 @@ module AresMUSH
            return HealStopCmd
          when "list"
            return HealingCmd
+         when "scan"
+           return HealScanCmd
          end
        when "hospital"
          case cmd.switch

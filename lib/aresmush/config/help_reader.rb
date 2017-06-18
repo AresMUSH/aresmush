@@ -13,10 +13,17 @@ module AresMUSH
       md.load_file
       meta = md.metadata
       if (meta)
+        topic = File.basename(file, ".md").downcase
         meta["path"] = file
         meta["plugin"] = plugin.downcase
-        meta["topic"] = File.basename(file, ".md").downcase
-        self.help[file] = meta
+        meta["topic"] = topic
+        
+        existing_topics = self.help.select { | file, meta | meta['topic'] == topic && meta["plugin"] == plugin.downcase }
+        if (existing_topics.count > 0)
+          Global.logger.warn "Skipping help file #{file} - topic already exists."
+        else
+          self.help[file] = meta
+        end
       else
         Global.logger.warn "Skipping help file #{file} - missing metadata."
       end

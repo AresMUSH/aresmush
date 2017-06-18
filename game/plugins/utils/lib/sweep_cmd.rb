@@ -7,7 +7,7 @@ module AresMUSH
       
       def handle
         outside = enactor_room.way_out
-        footer = !outside ? nil : "%l2%R" + t('sweep.kick_allowed')
+        footer = !outside ? nil : "%ld%R" + t('sweep.kick_allowed')
         
         client.emit footer
         snoopers = enactor_room.characters.select { |c| !c.is_online? }

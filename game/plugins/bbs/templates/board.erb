@@ -1,7 +1,7 @@
-<%= line %>		
+<%= header %>		
 %xh<%= board.board_index %> - <%= board.name %>%xn
 <%= board.description %>		
-<%= line 2 %>		
+<%= divider %>		
 <% posts.each_with_index do |p, i| -%> 		
 <%= right(num(i),3) -%>		
  <%= center(unread(p),5) -%>		
@@ -9,6 +9,6 @@
  <%= left(author(p),25) -%> 		
  <%= date(p) %> 		
 <% end %>		
-<%= line 2 %>		
+<%= divider %>		
 <%= can_read %>   <%= can_post %>		
-<%= line %>
+<%= footer %>

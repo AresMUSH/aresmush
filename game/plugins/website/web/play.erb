@@ -18,8 +18,10 @@
         <input type="hidden" id="charId" name="charId" value="<%= @user ? @user.id : ' ' %>">
         <input type="hidden" id="charToken" name="charToken" value="<%= @user ? @user.login_api_token : ' ' %>">
         <textarea id="sendMsg"></textarea>
-     <button class="sendButton btn-primary btn">Send Text</button>
-        
+        <button class="sendButton btn-primary btn">Send Text</button>
+
+        <textarea id="sendMsg2"></textarea>
+        <button class="sendButton2 btn-primary btn">Send Text</button>
         <div id="debug"></div>
         
         

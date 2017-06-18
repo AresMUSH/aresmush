@@ -31,7 +31,7 @@ module AresMUSH
       end
             
       def healed_by
-        @char.healed_by.map { |h| }
+        @char.doctors.map { |h| h.name }.join(", ")
       end
       
       def wound_mod
