@@ -56,11 +56,27 @@ module AresMUSH
     describe :load_plugin_help do
       it "should load all the plugin help files" do
         plugin = double
-        Dir.stub(:[]).with("A/help/**.md") { [ "h1", "h2" ] }
+        Dir.stub(:[]).with("A/help/en/**.md") { [ "h1", "h2" ] }
         plugin.stub(:plugin_dir) { "A" }
         plugin.stub(:to_s) { "AresMUSH::A" }
+        locale.stub(:locale) { "en" }
+        locale.stub(:default_locale) { "en" }
         help_reader.should_receive(:load_help_file).with("h1", "A")
         help_reader.should_receive(:load_help_file).with("h2", "A")
+        @manager.load_plugin_help plugin
+      end
+      
+      it "should read the specific locale and the default one" do
+        plugin = double
+        Dir.stub(:[]).with("A/help/en/**.md") { [ "en/h1", "en/h2" ] }
+        Dir.stub(:[]).with("A/help/de/**.md") { [ "de/h1" ] }
+        plugin.stub(:plugin_dir) { "A" }
+        plugin.stub(:to_s) { "AresMUSH::A" }
+        locale.stub(:locale) { "de" }
+        locale.stub(:default_locale) { "en" }
+        help_reader.should_receive(:load_help_file).with("de/h1", "A").ordered
+        help_reader.should_receive(:load_help_file).with("en/h1", "A").ordered
+        help_reader.should_receive(:load_help_file).with("en/h2", "A").ordered
         @manager.load_plugin_help plugin
       end
     end 
