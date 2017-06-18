@@ -218,19 +218,21 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
       
-      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
-      protection = 30 * (protect_roll + 1)
       
-      pen_dice = pen + attacker_net_successes
-      pen_roll = FS3Skills::Api.one_shot_die_roll(pen_dice)[:successes]
+      # minimum 10% 
+      pen_chance = [ (pen + attacker_net_successes - protect) * 10, 10 ].max
+      pen_roll = rand(100) 
       
-      protection = protection - (15 * pen_roll)
-      protection = [0, protection].max
+      if (pen_roll <= pen_chance)
+        armor_reduction = 0
+      else
+        armor_reduction = rand(protect * 5) 
+      end
       
       combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen} protect=#{protect} pen_roll=#{pen_roll} protect_roll=#{protect_roll} result=#{protection}"
+      " pen=#{pen} protect=#{protect} pen_chance=#{pen_chance} pen_roll=#{pen_roll} result=#{armor_reduction}"
       
-      protection
+      armor_reduction
     end
     
     def self.stopped_by_cover?(attacker_net_successes, combatant)
@@ -313,6 +315,7 @@ module AresMUSH
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
       armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
         
+      
       if (armor >= 100)
         message = t('fs3combat.attack_stopped_by_armor', :name => attack_name, :weapon => weapon, :target => target.name, :hitloc => hitloc) 
         return [message]

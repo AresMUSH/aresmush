@@ -489,27 +489,27 @@ module AresMUSH
         end
         
         it "should bypass armor if pen wins by enough" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 2 } }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 0 } }
+          # 3 - 2 = 10% chance of penetration
+          FS3Combat.stub(:rand) { 10 }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
-        it "should reduce by a lot with high protection roll" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 0 } }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 2 } }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 90
+        it "should reduce by random protection roll if not bypassed" do
+          FS3Combat.stub(:rand).with(100) { 51 }
+          FS3Combat.stub(:rand).with(10) { 5 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 5
         end
 
-        it "should reduce by some with low protection roll " do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(3) { { successes: 0 } }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 1 } }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 60
+        it "should add in attacker successes for successful pen" do
+          # 3 + 2 - 2 = 30% chance of penetration
+          FS3Combat.stub(:rand) { 30 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 2).should eq 0
         end
-
-        it "should add in attacker successes" do
-          FS3Skills::Api.stub(:one_shot_die_roll).with(4) { { successes: 3 }  }
-          FS3Skills::Api.stub(:one_shot_die_roll).with(2) { { successes: 1 } }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 1).should eq 15
+        
+        it "should add in attacker successes for unsuccessful pen" do
+          FS3Combat.stub(:rand).with(100) { 31 }
+          FS3Combat.stub(:rand).with(10) { 5 }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 2).should eq 5
         end
       end
       
