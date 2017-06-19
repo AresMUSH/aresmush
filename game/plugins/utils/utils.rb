@@ -20,6 +20,12 @@ load "lib/sweep_cmd.rb"
 load "lib/sweep_kick_cmd.rb"
 load "lib/utils_model.rb"
 
+load 'templates/bordered_display_template.rb'
+load 'templates/bordered_list_template.rb'
+load 'templates/bordered_paged_list_template.rb'
+load 'templates/bordered_table_template.rb'
+load 'templates/simple_notification_template.rb'
+
 module AresMUSH
   module Utils
     def self.plugin_dir
