@@ -55,7 +55,8 @@ module AresMUSH
         matches = Character.all.select { |c| Login::Api.is_site_match?(c, ip, hostname) }
         found = matches.map { |m| "#{m.name.ljust(25)} #{m.last_ip} #{m.last_hostname}" }
         
-        client.emit BorderedDisplay.list found, title
+        template = BorderedListTemplate.new found, title
+        client.emit template.render
       end
       
     end

@@ -9,7 +9,8 @@ module AresMUSH
           all_tags = all_tags.concat(msg.tags || [])
         end
         
-        client.emit BorderedDisplay.list all_tags.uniq.sort, t('mail.all_tags')
+        template = BorderedListTemplate.new all_tags.uniq.sort, t('mail.all_tags')
+        client.emit template.render
       end
     end
   end

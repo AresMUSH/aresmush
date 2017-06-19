@@ -5,7 +5,8 @@ module AresMUSH
       
       def handle
         list = enactor.notes.map { |k, v| "%ld%R%xh#{k}%xn%R#{v}%R"}
-        client.emit BorderedDisplay.list list, t('notes.notes_title')
+        template = BorderedListTemplate.new list, t('notes.notes_title')
+        client.emit template.render
       end
     end
   end

@@ -12,7 +12,8 @@ module AresMUSH
           next if !weather
           list << "%xh#{name}:%xn%r#{weather}"
         end
-        client.emit BorderedDisplay.text list.join("%R%R")
+        template = BorderedDisplayTemplate.new list.join("%R%R")
+        client.emit template.render
       end
     end
   end

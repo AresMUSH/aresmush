@@ -6,7 +6,8 @@ module AresMUSH
       
       def handle
         list = enactor.shortcuts.map { |k, v| "#{k}: #{v}"}
-        client.emit BorderedDisplay.list list, t('shortcuts.shortcuts_title')
+        template = BorderedListTemplate.new list, t('shortcuts.shortcuts_title')
+        client.emit template.render
       end
     end
   end

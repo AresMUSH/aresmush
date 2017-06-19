@@ -69,7 +69,8 @@ module AresMUSH
         
         client.program.delete(:idle_queue)
         
-        client.emit BorderedDisplay.list report
+        template = BorderedListTemplate.new report
+        client.emit template.render
         
         Bbs::Api.system_post(
           Global.read_config("idle", "idle_board"), 

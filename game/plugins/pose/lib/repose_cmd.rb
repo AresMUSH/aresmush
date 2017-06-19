@@ -25,7 +25,9 @@ module AresMUSH
         if (!self.all)
           poses = poses[-8, 8] || poses
         end
-        client.emit BorderedDisplay.list poses.map { |p| "#{p}%R"}, t('pose.repose_list')
+        
+        template = BorderedListTemplate.new poses.map { |p| "#{p}%R"}, t('pose.repose_list')
+        client.emit template.render
       end
     end
   end

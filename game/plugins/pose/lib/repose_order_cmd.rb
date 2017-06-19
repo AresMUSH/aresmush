@@ -12,7 +12,9 @@ module AresMUSH
         repose = enactor.room.repose_info
         poses = repose.sorted_orders
         list = poses.map { |p| "#{p.character.name.ljust(30)} #{last_posed(p.time)}"}
-        client.emit BorderedDisplay.list list, t('pose.repose_order_title')
+
+        template = BorderedListTemplate.new list, t('pose.repose_order_title')
+        client.emit template.render
       end
       
       def last_posed(time)

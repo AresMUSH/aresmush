@@ -44,7 +44,8 @@ module AresMUSH
         paginator = Paginator.paginate(jobs, cmd.page, 20)        
         template = JobsListTemplate.new(enactor, paginator)
         if (paginator.out_of_bounds?)
-          client.emit BorderedDisplay.text(t('pages.not_that_many_pages'))
+          template = BorderedDisplayTemplate.new t('pages.not_that_many_pages')
+          client.emit template.render
         else
           template = JobsListTemplate.new(enactor, paginator)
           client.emit template.render

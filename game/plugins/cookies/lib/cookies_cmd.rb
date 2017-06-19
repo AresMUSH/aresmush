@@ -11,7 +11,9 @@ module AresMUSH
           cookies_given = cookie_recipients.map { |c| c.recipient.name }.join(", ")
           cookies_given = t('cookies.cookies_given_this_week', :cookies => cookies_given)
         end
-        client.emit BorderedDisplay.text "#{cookies_given}"
+        
+        template = BorderedDisplayTemplate.new "#{cookies_given}"
+        client.emit template.render
       end
     end
   end

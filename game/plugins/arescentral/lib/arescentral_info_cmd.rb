@@ -11,7 +11,9 @@ module AresMUSH
       def handle
         text = "#{t('arescentral.game_id')} #{Game.master.api_game_id}"
         text << "%R#{t('arescentral.api_key')} #{Game.master.api_key}"
-        client.emit BorderedDisplay.text text
+        
+        template = BorderedDisplayTemplate.new text
+        client.emit template.render
       end      
     end
   end

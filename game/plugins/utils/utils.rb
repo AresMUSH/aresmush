@@ -24,7 +24,6 @@ load 'templates/bordered_display_template.rb'
 load 'templates/bordered_list_template.rb'
 load 'templates/bordered_paged_list_template.rb'
 load 'templates/bordered_table_template.rb'
-load 'templates/simple_notification_template.rb'
 
 module AresMUSH
   module Utils

@@ -11,7 +11,7 @@ module AresMUSH
       def handle
         sites = {}
         Character.all.each do |c|
-          host = c.last_hostname
+          host = c.last_hostname || t('global.none')
           if (sites.has_key?(host))
             sites[host] << c.name
           else
@@ -20,7 +20,8 @@ module AresMUSH
         end
 
         list = sites.select{ |k,v| v.count > 1 }.map { |k, v| "#{v.join(', ')}%R%T#{k}" }
-        client.emit BorderedDisplay.list(list)
+        template = BorderedListTemplate.new list
+        client.emit template.render
         
       end
     end

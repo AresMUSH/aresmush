@@ -22,7 +22,9 @@ module AresMUSH
       def handle
         title = t('manage.config_section', :name => self.section)
         json = Global.read_config(self.section)
-        client.emit BorderedDisplay.text(JSON.pretty_generate(json), title)
+
+        template = BorderedDisplayTemplate.new JSON.pretty_generate(json), title
+        client.emit template.render
       end
     end
   end
