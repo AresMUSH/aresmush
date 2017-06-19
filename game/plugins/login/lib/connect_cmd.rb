@@ -48,6 +48,8 @@ module AresMUSH
                 if (response.is_success? && response.data["matched"])
                   client.emit_ooc t('login.temp_password_set', :password => self.password)
                   char.change_password self.password
+      	      	  char.update(login_failures: 0)
+                  temp_reset = true                  
                 end
               end
             end
