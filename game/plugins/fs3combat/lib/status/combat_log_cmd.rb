@@ -6,7 +6,11 @@ module AresMUSH
       attr_accessor :page
          
       def parse_args
-        self.page = cmd.args ? cmd.args.to_i : 1
+        if (!cmd.args)
+          self.page = cmd.switch.gsub("log", "").to_i
+        else
+          self.page = cmd.args ? cmd.args.to_i : 1
+        end
       end
       
       def handle

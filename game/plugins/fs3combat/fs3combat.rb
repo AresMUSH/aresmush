@@ -228,6 +228,9 @@ module AresMUSH
          when nil
            return CombatHudCmd
          else
+           if (cmd.switch.start_with?("log"))
+             return CombatLogCmd
+           end
            return CombatActionCmd
          end
        end

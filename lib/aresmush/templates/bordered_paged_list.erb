@@ -1,11 +1,8 @@
-<%= header %><% title_line -%>
-<% if subtitle %>
-
-%xh<%= subtitle %>%xn
-<%= divider %><% end %>
-<% list.each do |l| %>
+<%= header %>
+<%= "%xh#{title}%xn%r%r" if title -%>
+<%= "%xh#{subtitle}%xn%r" if subtitle -%>
+<% @paginator.page_items.each do |l| %>
 <%= l %>
-<% end %><% if subfooter %><%= subfooter %>
-<% end %>
-<%= page_marker%>
+<% end %><%= "#{subfooter}%r" if subfooter -%>
+<%= line_with_text page_marker%>
 <%= footer %>

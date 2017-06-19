@@ -1,5 +1,6 @@
 <%= header %>
-<% title_line -%>
+<%= "%xh#{title}%xn%r%r" if title -%>
+<%= "%xh#{subtitle}%xn%r" if subtitle -%>
 <%= text %>
-<% if subfooter %><%= subfooter %>
-<% end %><%= footer %>
+<%= "#{subfooter}%r" if subfooter -%>
+<%= footer %>

@@ -1,11 +1,7 @@
-<%= header %><% if title %>
-<% if leading_newline %>
-<% end %>%xh<%= title %>%xn<% end %>
-<% if subtitle %>
-
-%xh<%= subtitle %>%xn
-<%= divider %><% end %>
+<%= header %>
+<%= "%xh#{title}%xn%r%r" if title -%>
+<%= "%xh#{subtitle}%xn%r" if subtitle -%>
 <% list.each do |l| %>
 <%= l %>
-<% end %><% if subfooter %><%= subfooter %>
-<% end %><%= footer %>
+<% end %><%= "#{subfooter}%r" if subfooter -%>
+<%= footer %>
