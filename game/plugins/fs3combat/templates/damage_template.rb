@@ -3,11 +3,11 @@ module AresMUSH
     class DamageTemplate < ErbTemplateRenderer
 
 
-      attr_accessor :damage, :char
+      attr_accessor :damage, :target
       
-      def initialize(char)
-        @char = char
-        @damage = char.damage
+      def initialize(target)
+        @target = target
+        @damage = target.damage
         super File.dirname(__FILE__) + "/damage.erb"
       end      
       
@@ -31,18 +31,19 @@ module AresMUSH
       end
             
       def healed_by
-        docs = @char.doctors.map { |h| h.name }
+        return t('global.none') if @target.class != AresMUSH::Character
+        docs = @target.doctors.map { |h| h.name }
         docs.count > 0 ? docs.join(", ") : t('global.none')
       end
       
       def wound_mod
-        FS3Combat.total_damage_mod(char)
+        FS3Combat.total_damage_mod(target)
       end
       
       def vehicle_notice
-        combat = @char.combat
+        combat = @target.combat
         return nil if !combat
-        combatant = combat.find_combatant(@char.name)
+        combatant = combat.find_combatant(@target.name)
         return nil if !combatant
         vehicle = combatant.vehicle
         vehicle ? t('fs3combat.vehicle_damage_notice', :name => vehicle.name) : nil
