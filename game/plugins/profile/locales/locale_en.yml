@@ -45,6 +45,7 @@ en:
         unread_mail: "Unread Mail:"
         unread_message_count: "%{num} Messages"
         wiki_title: "Wiki:"
+        icon_title: "Icon:"
         
         description: "Description"
         

@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
+load 'web/controllers/bbs.rb'
 load 'web/controllers/web.rb'
 load 'web/controllers/help.rb'
 load 'web/controllers/chargen.rb'
@@ -15,7 +16,9 @@ load 'web/controllers/game_info.rb'
 load 'web/controllers/admin.rb'
 load 'web/controllers/logs.rb'
 load 'web/controllers/login.rb'
+load 'web/controllers/mail.rb'
 load 'web/controllers/register.rb'
+load 'web/controllers/scenes.rb'
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'

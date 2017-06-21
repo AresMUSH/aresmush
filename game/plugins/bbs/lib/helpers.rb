@@ -11,7 +11,9 @@ module AresMUSH
     
     def self.can_read_board?(char, board)
       roles = board.read_roles.to_a
-      !roles || roles.empty? || char.has_any_role?(roles) || can_manage_bbs?(char)
+      everyone = Role.find_one_by_name("Everyone")
+      char_can_read = char ? (char.has_any_role?(roles) || can_manage_bbs?(char)) : false
+      !roles || roles.empty? || char_can_read || roles.include?(everyone)
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -100,18 +102,20 @@ module AresMUSH
           end
         end
       
-        post = BbsPost.create(bbs_board: board, 
-        subject: subject, 
-        message: message, author: author)
+        new_post = BbsPost.create(bbs_board: board, 
+          subject: subject, 
+          message: message, author: author)
         
         if (client)
-          Bbs.mark_read_for_player(author, post)
+          Bbs.mark_read_for_player(author, new_post)
         end
                 
         Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 
         :board => board.name, 
-        :reference => post.reference_str,
+        :reference => new_post.reference_str,
         :author => client ? author.name : t('bbs.system_author'))
+
+        new_post
       end
     end
     

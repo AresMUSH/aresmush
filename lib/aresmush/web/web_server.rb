@@ -70,6 +70,8 @@ module AresMUSH
           unless send("is_#{type}?")
             if (type == :admin)
               flash[:error] = "Please log in with an admin account."
+            elsif (type == :approved)
+              flash[:error] = "You must be approved first."
             else
               flash[:error] = "Please log in first"
             end
@@ -81,7 +83,7 @@ module AresMUSH
     
     helpers do
       def find_template(views, name, engine, &block)
-        views = Plugins.all_plugins.map { |p| File.join(PluginManager.plugin_path, p, 'web') }
+        views = Plugins.all_plugins.map { |p| File.join(PluginManager.plugin_path, p, 'web', 'views') }
         views.each { |v| super(v, name, engine, &block) }
       end
     end

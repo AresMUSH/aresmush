@@ -43,7 +43,7 @@
             <div class="col-md-6 text-right user-bar">
             <% if @user %>
             <p>Welcome, <%= @user.name %>.</p>
-            <p><a href="/logout">Logout</a> </p>
+            <p><a href="/mail">Mail</a> | <a href="/logout">Logout</a> </p>
             <% else %>
             <p><a href="/login">Login</a> 
                 <% if enable_registration %>
@@ -65,12 +65,14 @@
                 <ul class="nav navbar-nav">
                   <li><a href="/">Home</a></li>
 
-                  <% if !is_approved? %>
+                  <% if !is_approved? && !is_admin? %>
                   <li><a href="/chargen">Chargen</a></li>
                   <% end %>
                   
                   <li><a href="/play">Play</a></li>
                   <li><a href="/chars">Characters</a></li>
+                  <li><a href="/bbs">Boards</a></li> 
+                  <li><a href="/scenes">Scenes</a></li> 
                   <li><a href="/help">Help</a></li> 
                   <% if is_admin? %>
                   <li><a href="/admin">Admin</a></li>

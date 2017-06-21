@@ -47,5 +47,13 @@ module AresMUSH
     attribute :tags, :type => DataType::Array
     
     index :read
+    
+    def author_name
+      !self.author ? t('mail.deleted_author') : self.author.name
+    end
+    
+    def created_date_str(viewer)
+      OOCTime::Api.local_short_timestr(viewer, self.created_at)
+    end
   end
 end

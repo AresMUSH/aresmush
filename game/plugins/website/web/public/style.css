@@ -69,6 +69,9 @@ form {
     font-family:Consolas,Monaco,Lucida Console,monospace;
 }
 
+td {
+        padding: 5px;
+}
 
  .loginDisplay
  {
@@ -174,4 +177,46 @@ pre code {
     -webkit-margin-after: 1em;
     -webkit-margin-start: 40px;
     -webkit-margin-end: 40px;
+}
+
+.scene-pose {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 15px;
+}
+
+.scene-pose-header {
+    font-size: .8em;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.scene-system-pose {
+    margin: 15px;
+    margin-left: 25px;
+    color: #999;
+    font-style: italic;
+}
+
+.pose-profile-icon {
+    width: 50px;
+    height: 50px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    margin: 2px;
+}
+
+.log-icon {
+    width: 150px;
+    height: 150px;
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: none; }
+
+.wiki-log {
+    background-color: black;
+    color: white;
+    padding: 20px;
 }

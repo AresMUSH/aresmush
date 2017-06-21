@@ -26,7 +26,7 @@
         <% end %>
     </blockquote>
 
-    <% @plugin_config.keys.each do |p| %>
+    <% @plugin_config.keys.sort.each do |p| %>
         <hr/>
         <a name="<%= p %>"></a>
         <h3><%= p %></h3>

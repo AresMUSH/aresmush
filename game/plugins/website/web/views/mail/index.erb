@@ -1,0 +1,57 @@
+<h1>Mail - <%= @tag %></h1>
+
+[ <a href="/mail">Inbox</a> ]
+<% @tags.each do |t| %>
+[ <a href="/mail?tag=<%= t %>"><%= t %></a> ]
+<% end %>
+<table class="table table-striped">
+
+<thead>
+    <tr>
+        <th>Subject</th>
+        <% if @tag == AresMUSH::Mail.sent_tag %>
+            <th>To</th>
+        <% else %>
+            <th>From</th>
+        <% end %>
+        <th>Sent</th>
+    </tr>
+</thead>
+        
+<% @mail.each do |m| %>
+
+<tr>
+    <td>
+        <a href="/mail/<%= m.id %>"><%= m.subject %></a>
+    </td>
+    
+    <td>
+        <% if @tag == AresMUSH::Mail.sent_tag %>
+            <%= m.to_list %>
+        <% else %>
+            <%= m.author_name %>
+        <% end %>
+    </td>
+    <td>
+        <%= m.created_date_str(@user) %>
+    </td>
+</td>
+
+<% end %>
+
+</table>
+
+
+<h3>New Message</h3>
+
+    <form method="POST" action="/mail/send">
+        <p><b>To:</b></p>
+        <p><input type="text" name="to"></p>
+
+        <p><b>Subject:</b></p>
+        <p><input type="text" name="subject"></p>
+
+        <textarea name="message" cols=100></textarea>
+        <p><input type="submit"></p>
+        
+    </form>

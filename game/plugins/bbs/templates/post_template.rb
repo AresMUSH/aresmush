@@ -23,7 +23,7 @@ module AresMUSH
       end
       
       def date
-        OOCTime::Api.local_long_timestr(@enactor, @post.created_at)
+        @post.created_date_str(@enactor)
       end
       
       def reply_title(reply)

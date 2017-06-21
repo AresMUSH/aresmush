@@ -33,7 +33,7 @@ module AresMUSH
       end
       
       def date(msg)
-        OOCTime::Api.local_short_timestr(@enactor, msg.created_at)
+        msg.created_date_str(@enactor)
       end
       
       # Message sent to or sent from, depending on the inbox mode.
@@ -42,7 +42,7 @@ module AresMUSH
       end
       
       def author(msg)
-        !msg.author ? t('mail.deleted_author') : msg.author.name
+        msg.author_name
       end
       
       # Message sent to.  Note that this is just the individual recipient of THIS delivery,

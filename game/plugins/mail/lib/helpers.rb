@@ -16,6 +16,14 @@ module AresMUSH
       "Archive"
     end
         
+    def self.all_tags(char)
+      all_tags = []
+      char.mail.each do |msg|
+        all_tags = all_tags.concat(msg.tags || [])
+      end
+      all_tags.uniq
+    end
+    
     def self.filtered_mail(char)
       filter = char.mail_filter || Mail.inbox_tag
       if (filter.start_with?("review"))
@@ -119,7 +127,7 @@ module AresMUSH
         delivery.update(tags: tags)
         
         receive_client = r.client
-        if (receive_client && receive_client != client)
+        if (receive_client && r != author)
           receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)
         end
       end

@@ -1,0 +1,10 @@
+<h1>Edit Pose</h1>
+
+    <form method="POST" action="/scene/pose/<%= @pose.id %>/edit">
+        
+
+    <textarea name="pose" rows="10" cols="100"><%= format_input_for_html(@pose.pose) %></textarea>
+
+        <p><input type="submit" value="Yes"></p>
+        
+    </form>

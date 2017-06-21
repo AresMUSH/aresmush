@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp    
     
     get '/login' do
-      erb :login
+      erb :"login"
     end  
     
     get "/logout" do

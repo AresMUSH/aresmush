@@ -22,7 +22,7 @@ module AresMUSH
     error do
       Global.logger.error env['sinatra.error']
       @error = env['sinatra.error'].message
-      erb :error 
+      erb :"error"
     end
     
     helpers do
@@ -39,7 +39,7 @@ module AresMUSH
       end
       
       def is_approved?
-        @user != nil && @user.is_approved?
+        @user != nil && (@user.is_approved? || @user.is_admin?)
       end
 
       def game_name
@@ -56,14 +56,23 @@ module AresMUSH
         "#{host} port #{port}"
       end
 
+      # Takes something from a text box and replaces carriage returns with %r's for MUSH.
       def format_input_for_mush(input)
         return nil if !input
         input.gsub(/\r\n/, '%r')
       end
-      
+
+      # Takes MUSH text and formats it for a text box with %r's becoming line breaks.      
       def format_input_for_html(input)
         return nil if !input
         input.gsub(/%r/i, '&#013;&#010;')
+      end
+      
+      # Takes MUSH text and formats it for display in a div, with %r's becoming HTML breaks.
+      def format_output_for_html(output)
+        return nil if !output
+        text = AresMUSH::ClientFormatter.format output, false
+        text.strip.gsub(/[\r\n]/i, '<br/>')
       end
       
       def titlecase_arg(input)
@@ -82,11 +91,11 @@ module AresMUSH
     get '/' do
       @events = Events::Api.upcoming_events
       @calendar = Events.calendar_view_url
-      erb :index
+      erb :"index"
     end  
     
     get "/play" do
-      erb :play
+      erb :"play"
     end
     
   end
