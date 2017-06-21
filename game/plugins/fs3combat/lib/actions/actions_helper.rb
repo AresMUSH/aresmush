@@ -83,7 +83,7 @@ module AresMUSH
         combatant.update(is_ko: true)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
-        combatant.combat.emit t('fs3combat.is_koed', :name => combatant.name)
+        combatant.combat.emit t('fs3combat.is_koed', :name => combatant.name), nil, true
       end
     end
       
@@ -93,7 +93,7 @@ module AresMUSH
       
       if (roll > 0)
         combatant.update(is_ko: false)
-        combatant.combat.emit t('fs3combat.is_no_longer_koed', :name => combatant.name)
+        combatant.combat.emit t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
       end
     end
     

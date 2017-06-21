@@ -15,7 +15,8 @@ module AresMUSH
       end
       
       def title
-        t('fs3combat.combat_hud_header', :num => @combat.id)
+        scene = @combat.scene ? @combat.scene.id : t('global.none')
+        t('fs3combat.combat_hud_header', :num => @combat.id, :scene => scene)
       end
        
       def teams

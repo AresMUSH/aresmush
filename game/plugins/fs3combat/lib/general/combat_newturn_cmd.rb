@@ -45,7 +45,7 @@ module AresMUSH
             
               messages = c.action.resolve
               messages.each do |m|
-                combat.emit m
+                combat.emit m, nil, true
               end
               
             end

@@ -8,7 +8,8 @@ module AresMUSH
     attribute :first_turn, :type => DataType::Boolean, :default => true
     attribute :team_targets, :type => DataType::Hash, :default => {}
     attribute :everyone_posed, :type => DataType::Boolean, :default => false
-    
+
+    reference :scene, "AresMUSH::Scene"
     reference :organizer, "AresMUSH::Character"
     collection :combatants, "AresMUSH::Combatant"
     collection :vehicles, "AresMUSH::Vehicle"
@@ -54,10 +55,14 @@ module AresMUSH
       self.vehicles.select { |v| v.name.upcase == name.upcase }.first
     end
 
-    def emit(message, npcmaster = nil)
+    def emit(message, npcmaster = nil, add_to_scene = false)
       message = message + "#{npcmaster}"
       log(message)
       self.combatants.each { |c| c.emit(message) }
+      
+      if (add_to_scene && self.scene)
+        Scenes::Api.add_pose(self.scene.id, message)
+      end
     end
       
     def emit_to_organizer(message, npcmaster = nil)

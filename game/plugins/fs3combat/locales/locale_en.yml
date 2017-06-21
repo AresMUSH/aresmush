@@ -44,6 +44,9 @@ en:
         
         vehicle_damage_notice: "This character is in a vehicle.  See 'damage %{name}' for damage to the vehicle."
         
+        invalid_scene: "Invalid scene number."
+        scene_set: "You link this combat to scene %{scene}."
+        
         # ----------------------------
         # COMBAT LIST
         # ----------------------------
@@ -211,7 +214,7 @@ en:
         # HUD
         # ----------------------------
         
-        combat_hud_header: "Combat %{num}"
+        combat_hud_header: "Combat %{num} (Scene: %{scene})"
         combat_hud_organizer: "Organized by %{org}"
         combat_mock_notice: "** Mock Combat.  Damage is temporary. **"
         observers_title: "Observers"

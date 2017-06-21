@@ -34,3 +34,6 @@ This is a quick reference for combat organizer commands.
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
 
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
+
+`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
+    This will happen automatically as soon as someone poses.

@@ -76,6 +76,11 @@ module AresMUSH
         if (channel)
           Channels::Api.send_to_channel(channel, message)
         end
+        
+        if (room.scene)
+          Scenes::Api.add_pose(room.scene.id, message)
+        end
+        
       end
       Global.logger.info "FS3 roll results: #{message}"
     end

@@ -9,6 +9,10 @@ module AresMUSH
         combatant.update(posed: true)
         combat = combatant.combat
         
+        if (!combat.scene && enactor.room.scene)
+          combat.update(scene: enactor.room.scene)
+        end
+
         slackers = combat.active_combatants.select { |c| !c.is_npc? && !c.posed && !c.is_ko }
         if (slackers.empty? && !combat.everyone_posed)
           combat.emit_to_organizer t('fs3combat.everyone_posed')
