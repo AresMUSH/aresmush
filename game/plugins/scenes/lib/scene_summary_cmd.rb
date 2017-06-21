@@ -1,32 +1,29 @@
 module AresMUSH
   module Scenes
-    class ScenePrivacyCmd
+    class SceneSummaryCmd
       include CommandHandler
       
-      attr_accessor :privacy, :scene_num
+      attr_accessor :summary, :scene_num
       
       def parse_args
         if (cmd.args =~ /\=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         
           self.scene_num = integer_arg(args.arg1)
-          self.privacy = titlecase_arg(args.arg2)
+          self.summary = titlecase_arg(args.arg2)
         else
+          args = cmd.parse_args(ArgParser.arg1_slash_optional_arg2)
+
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
-          self.privacy = titlecase_arg(cmd.args)
+          self.summary = titlecase_arg(cmd.args)
         end
       end
       
       def required_args
         {
-          args: [ self.scene_num, self.privacy ],
+          args: [ self.scene_num, self.summary ],
           help: 'scenes info'
         }
-      end
-      
-      def check_privacy
-        return t('scenes.invalid_privacy') if !Scenes.is_valid_privacy(self.privacy)
-        return nil
       end
       
       def handle
@@ -41,12 +38,9 @@ module AresMUSH
           return
         end
         
-        scene.update(private_scene: self.privacy == "Private")
-        if (scene.private_scene)        
-          client.emit_success t('scenes.scene_marked_private')
-        else
-          client.emit_success t('scenes.scene_marked_public')
-        end
+       
+        scene.update(summary: self.summary)
+        client.emit_success t('scenes.summary_set')
       end
     end
   end

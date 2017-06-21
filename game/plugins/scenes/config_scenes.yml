@@ -9,3 +9,5 @@ scenes:
     shortcuts:
         "scene/close" : "scene/stop"
         "scene/end" : "scene/stop"
+        "scene/name" : "scene/title"
+        "scene/rename" : "scene/title"

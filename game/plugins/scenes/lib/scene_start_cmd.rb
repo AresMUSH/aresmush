@@ -3,18 +3,18 @@ module AresMUSH
     class SceneStartCmd
       include CommandHandler
       
-      attr_accessor :location, :privacy
+      attr_accessor :title, :privacy
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
-        self.location = titlecase_arg(args.arg1)
+        self.title = titlecase_arg(args.arg1)
         self.privacy = titlecase_arg(args.arg2) || "Public"
       end
       
       def required_args
         {
-          args: [ self.location, self.privacy ],
-          help: 'scenes'
+          args: [ self.title, self.privacy ],
+          help: 'scenes creating'
         }
       end
 
@@ -24,17 +24,10 @@ module AresMUSH
       end
             
       def handle
-        result = ClassTargetFinder.find(self.location, Room, enactor)
-        if (result.found?)
-          self.location = result.target.name  
-          description = result.target.description   
-        end
-        
-        scene = Scene.create(owner: enactor, location: self.location, private_scene: self.privacy == "Private")
-        room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.location}")
+        scene = Scene.create(owner: enactor, title: self.title, private_scene: self.privacy == "Private")
+        room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.title}")
         ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
         scene.update(room: room)
-        room.create_desc("current", description)
         Pose.enable_repose(room)
         Rooms.move_to(client, enactor, room)
       end

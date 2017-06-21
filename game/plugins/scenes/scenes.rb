@@ -4,13 +4,16 @@ load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/scene_model.rb"
 load "lib/scene_join_cmd.rb"
+load "lib/scene_location_cmd.rb"
 load "lib/scene_privacy_cmd.rb"
-load "lib/scene_rename_cmd.rb"
+load "lib/scene_title_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_start_cmd.rb"
+load "lib/scene_summary_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
+load "scenes_api.rb"
 
 module AresMUSH
   module Scenes
@@ -43,14 +46,18 @@ module AresMUSH
         case cmd.switch
         when "join"
           return SceneJoinCmd
+        when "location"
+          return SceneLocationCmd
         when "set"
           return SceneSetCmd
         when "start"
           return SceneStartCmd
         when "stop"
           return SceneStopCmd
-        when "rename"
-          return SceneRenameCmd
+        when "summary"
+          return SceneSummaryCmd
+        when "title"
+          return SceneTitleCmd
         when "privacy"
           return ScenePrivacyCmd
         end

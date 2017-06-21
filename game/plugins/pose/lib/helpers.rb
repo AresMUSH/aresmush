@@ -22,6 +22,10 @@ module AresMUSH
     
     def self.add_repose(room, enactor, pose)
       return if !room.repose_on?
+
+      if (room.scene)
+        Scenes::Api.add_pose(room.scene.id, pose, enactor)
+      end
       
       repose = room.repose_info
       

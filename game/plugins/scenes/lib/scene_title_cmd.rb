@@ -1,6 +1,6 @@
 module AresMUSH
   module Scenes
-    class SceneRenameCmd
+    class SceneTitleCmd
       include CommandHandler
       
       attr_accessor :name, :scene_num
@@ -20,7 +20,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.scene_num, self.name ],
-          help: 'scenes'
+          help: 'scenes info'
         }
       end
       
@@ -36,8 +36,14 @@ module AresMUSH
           return
         end
         
-        scene.room.update(name: "Scene #{scene.id} - #{self.name}")
-        scene.room.emit_ooc t('scenes.scene_rename', :enactor_name => enactor_name, :scene_name => self.name)
+        scene.update(title: self.name)
+        if (scene.room)          
+          scene.room.update(name: "Scene #{scene.id} - #{self.name}")
+          scene.room.emit_ooc t('scenes.scene_rename_announce', :enactor_name => enactor_name, :scene_name => self.name)
+        else
+          client.emit_ooc t('scenes.scene_renamed')
+        end
+        
       end
     end
   end
