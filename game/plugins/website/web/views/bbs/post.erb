@@ -23,6 +23,7 @@
 <% end %>
 
 <% if can_write_bbs?(@board) %>
+<div class="inline-response">
 <h3>Add Reply</h3>
 
     <form method="POST" action="/bbs/reply">
@@ -31,5 +32,5 @@
         <p><input type="submit"></p>
         
     </form>
-    
+</div>
 <% end %>

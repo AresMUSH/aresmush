@@ -18,6 +18,12 @@ module AresMUSH
         c.emit_ooc msg
       end
     end
+    
+    def notify_web_clients(type, msg, char = nil)
+      @clients.each do |c|
+        c.web_notify type, msg, char
+      end
+    end
 
     def connection_established(connection)
       begin

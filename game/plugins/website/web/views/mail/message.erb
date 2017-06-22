@@ -48,13 +48,16 @@
 </div>
 
 <% if @mail.author %>
+
+<div class="inline-response">
+
 <h3>Reply</h3>
 <p><b>To:</b> <%= @mail.author_name %></p>
 <p><b>Subject:</b> Re: <%= @mail.subject %></p>
     <form method="POST" action="/mail/reply">
         <textarea name="message" cols=100></textarea>
         <input type="hidden" name="mail_id" value=<%= @mail.id %>>
-        <p><input type="submit"></p>
-        
+        <p><input type="submit"></p>  
     </form>
+</div>
 <% end %>

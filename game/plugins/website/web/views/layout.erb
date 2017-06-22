@@ -13,12 +13,28 @@
     <script src="/javascripts/jquery.bootstrap-growl.min.js"></script>
     -->
        
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://use.fontawesome.com/ee2438614b.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
   
+  <script src="//cdn.jsdelivr.net/alertifyjs/1.10.0/alertify.min.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css"/>
+  <!-- Default theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/default.min.css"/>
+  <!-- Semantic UI theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/semantic.min.css"/>
+  <!-- Bootstrap theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/bootstrap.min.css"/>
+
+  
+  
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/config.js"></script>
+  <script src="/notify.js"></script>
   <script src="/ansi.js"></script>
   <script src="/ansi_up.js"></script>
 
@@ -43,7 +59,11 @@
             <div class="col-md-6 text-right user-bar">
             <% if @user %>
             <p>Welcome, <%= @user.name %>.</p>
-            <p><a href="/mail">Mail</a> | <a href="/logout">Logout</a> </p>
+            <p><a href="/mail">Mail 
+                
+                <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
+            
+            </a> | <a href="/logout">Logout</a> </p>
             <% else %>
             <p><a href="/login">Login</a> 
                 <% if enable_registration %>
@@ -104,6 +124,9 @@
       <div class="row">
           <div class="col-md-12 footer">
               Running <a href="http://www.aresmush.com">AresMUSH</a> version <%= AresMUSH.version %>.
+              
+              <input type="hidden" id="charId" name="charId" value="<%= @user ? @user.id : ' ' %>">
+              
            </div>
       </div>
               

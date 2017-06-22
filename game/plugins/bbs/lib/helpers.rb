@@ -109,11 +109,13 @@ module AresMUSH
         if (client)
           Bbs.mark_read_for_player(author, new_post)
         end
-                
+               
+        author_name = client ? author.name : t('bbs.system_author')
         Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 
-        :board => board.name, 
-        :reference => new_post.reference_str,
-        :author => client ? author.name : t('bbs.system_author'))
+                :board => board.name, 
+                :reference => new_post.reference_str,
+                :author => author_name)
+        Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_post', :subject => subject, :author => author_name)
 
         new_post
       end
@@ -133,9 +135,10 @@ module AresMUSH
       Bbs.mark_read_for_player(author, post)
         
       Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, 
-      :board => board.name, 
-      :reference => post.reference_str,
-      :author => author.name)
+        :board => board.name, 
+        :reference => post.reference_str,
+        :author => author.name)
+      Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_reply', :subject => post.subject, :author => author.name)
     end
   end
 end

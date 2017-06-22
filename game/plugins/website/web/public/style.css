@@ -220,3 +220,20 @@ a:hover { text-decoration: none; }
     color: white;
     padding: 20px;
 }
+
+.inline-response {
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
+.inline-response form {
+    padding-bottom: 20px;
+}
+
+.label-pill {
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 20rem;
+}

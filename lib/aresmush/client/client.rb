@@ -66,6 +66,10 @@ module AresMUSH
       @connection.send_data "#{msg}\r\n"
     end
     
+    def web_notify(type, message, char = nil)
+      @connection.web_notify type, message, char
+    end
+    
     def idle_secs
       (Time.now - self.last_activity).to_i
     end

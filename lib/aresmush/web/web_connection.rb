@@ -32,6 +32,19 @@ module AresMUSH
       end
     end
     
+    
+    def web_notify(type, message, char = nil)
+      data = {
+        type: "notification",
+        args: {
+          character: char ? char.id : nil,
+          notification_type: type,
+          message: message
+        }
+      }
+      send_data data.to_json.to_s
+    end
+    
     def send_formatted(msg, enable_fansi = false)
        # Strip out < and > - may need to strip other things in the future
       send_data ClientFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')

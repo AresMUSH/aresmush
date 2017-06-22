@@ -48,6 +48,10 @@ module AresMUSH
     
     index :read
     
+    def mark_read
+      self.update(read: true)
+    end
+    
     def author_name
       !self.author ? t('mail.deleted_author') : self.author.name
     end

@@ -22,6 +22,10 @@
 
 <tr>
     <td>
+        <% if !m.read %>
+            <i class="fa fa-flag" aria-hidden="true"></i>
+        <% end %>
+        
         <a href="/mail/<%= m.id %>"><%= m.subject %></a>
     </td>
     
@@ -41,6 +45,7 @@
 
 </table>
 
+<div class="inline-response">
 
 <h3>New Message</h3>
 
@@ -55,3 +60,4 @@
         <p><input type="submit"></p>
         
     </form>
+</div>
