@@ -15,6 +15,6 @@ If you're viewing help commands inside the game, the hyperlinks will appear in p
 `help, help2, help3, etc.` - Shows each page of help topics.
 `help <topic name>` - Views a help topic.
 
-> **Tip:**  Many commands show a "page x of y" message at the bottom of the command text.  You can use a number after the command name to see each page - e.g., help, help2, help3, etc.
+> **Tip:**  Many commands show a "page x of y" message at the bottom of the command text.  You can use a number after the command name to see each page - e.g., help, help2, help3, etc.  This works with commands that have switches too, so you can do requests2/all.
 
 
