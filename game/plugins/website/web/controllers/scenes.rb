@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp
    
     get '/scenes' do
-      @scenes = Scene.all.select { |s| !s.private_scene }
+      @scenes = Scene.all.select { |s| !s.private_scene }.sort_by { |s| s.created_at }.reverse
       erb :"scenes/index"
     end
     

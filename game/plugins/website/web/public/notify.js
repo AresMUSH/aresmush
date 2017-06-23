@@ -4,7 +4,20 @@
         notification_socket = new WebSocket(`ws://${config.host}:${config.port}/websocket`);
           
         notification_socket.onmessage = function(evt) {
-            var data = JSON.parse(evt.data);
+            var data;
+            
+            try
+            {
+               data = JSON.parse(evt.data);
+            }
+            catch(e)
+            {
+                data = null;
+            }
+            
+            if (!data) {
+                return;
+            }
             
             var recipient = data.args.character;
             var charId = $('#charId').val();

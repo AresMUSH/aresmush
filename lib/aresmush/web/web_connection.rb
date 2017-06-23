@@ -1,7 +1,8 @@
 module AresMUSH
 
   class WebConnection
-    attr_accessor :client, :websocket, :ip_addr, :ready_callback
+    attr_accessor :websocket, :ip_addr, :ready_callback
+    attr_reader :client
     
     def initialize(websocket, &ready_callback)
       self.websocket = websocket
@@ -22,6 +23,10 @@ module AresMUSH
       rescue Exception => e
         Global.logger.warn "Error opening connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
+    end
+    
+    def connect_client(client)
+      @client = client
     end
     
     def send_data(msg)

@@ -1,0 +1,16 @@
+<h1>Combats</h1>
+
+<table class="table table-striped">
+<tbody>
+<% @combats.each do |c| %>
+<tr><td>
+    <a href="/combat/<%= c.id %>"><%= c.id %></a>
+</td>
+
+<td>
+    <%= c.organizer.name %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>

@@ -5,6 +5,27 @@ fs3combat:
     pc_knockout_bonus: 3
     npc_lethality_mod: 30
     
+    stances:
+        Aggressive:
+            attack_mod: 3
+            defense_mod: -3
+        Normal:
+            attack_mod: 0
+            defense_mod: 0
+        Defensive:
+            attack_mod: -1
+            defense_mod: 1
+        Evade:
+            attack_mod: -3
+            defense_mod: 3
+        Cover:
+            attack_mod: 0
+            defense_mod: 0
+        Hidden:
+            attack_mod: 0
+            defense_mod: 0
+        
+        
     combatant_types:
 
         # ----------------------------------------
@@ -65,6 +86,8 @@ fs3combat:
         "combat/skill": "combat/summary"
         "combat/skills": "combat/summary"
         "combat/slackers": "combat/summary"
+        "combat/add" : "combat/join"
+        "combat/remove" : "combat/leave"
         "vehicles": "vehicle"
         "hospitals": "hospital/list"
         "healing": "heal/list"

@@ -30,7 +30,7 @@ Demographics commands are used to set your basic character info.  Some items may
 `eyes <eye color>`
 `skin <complexion>`
 `birthdate <mm/dd/yyyy>` or `age <years>`
-`callsign <name>` - Callsign for pilots and other military chars.
+`callsign <name>` - Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
 `actor/set <name>` - Set your actor.  Leave blank to clear it.
 
 `actors` - Show taken actors.

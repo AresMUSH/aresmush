@@ -28,7 +28,7 @@ module AresMUSH
     describe :receive_data do
       before do
         @client = double
-        @connection.client = @client
+        @connection.connect_client @client
         negotiator = double
         @connection.negotiator = negotiator
         negotiator.stub(:handle_input) do |data|
@@ -54,7 +54,7 @@ module AresMUSH
       
       it "should convert control code newline to newline" do
         client = double
-        @connection.client = client
+        @connection.connect_client client
         client.should_receive(:handle_input).with("test\n")
         @connection.receive_data("test^M")    
       end
@@ -63,7 +63,7 @@ module AresMUSH
     describe :unbind do
       it "should notify the client that it disconnected" do
         client = double
-        @connection.client = client
+        @connection.connect_client client
         client.should_receive(:connection_closed)
         @connection.unbind
       end

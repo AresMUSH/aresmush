@@ -90,9 +90,21 @@
                   <% end %>
                   
                   <li><a href="/play">Play</a></li>
-                  <li><a href="/chars">Characters</a></li>
                   <li><a href="/bbs">Boards</a></li> 
-                  <li><a href="/scenes">Scenes</a></li> 
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Directory <span class="caret">
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/scenes">Scenes</a></li> 
+                      <li><a href="/chars">Characters</a></li>
+                      <li><a href="/combat">Combats</a></li>
+                    </ul>
+                  </li>
+                  
+                  
                   <li><a href="/help">Help</a></li> 
                   <% if is_admin? %>
                   <li><a href="/admin">Admin</a></li>

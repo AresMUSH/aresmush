@@ -41,7 +41,7 @@ module AresMUSH
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      
+            
       combatant.update(posed: false)
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)
@@ -51,6 +51,9 @@ module AresMUSH
       
       if (combatant.is_ko && combatant.is_npc?)
         FS3Combat.leave_combat(combatant.combat, combatant)
+      else
+        # Be sure to do this AFTER checking for KO up above.
+        combatant.update(damaged_by: [])
       end
     end
     
@@ -83,7 +86,8 @@ module AresMUSH
         combatant.update(is_ko: true)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
-        combatant.combat.emit t('fs3combat.is_koed', :name => combatant.name), nil, true
+        damaged_by = combatant.damaged_by.join(", ")
+        combatant.combat.emit t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
       end
     end
       
@@ -332,8 +336,13 @@ module AresMUSH
 
       target.inflict_damage(damage, desc, is_stun, crew_hit)
 
+
       if (damage != "GRAZE")
         target.update(freshly_damaged: true)
+        
+        damaged_by = target.damaged_by
+        damaged_by << attack_name
+        target.update(damaged_by: damaged_by.uniq)
       end
             
       target.add_stress(1)

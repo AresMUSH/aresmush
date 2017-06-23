@@ -33,16 +33,8 @@ module AresMUSH
         case c.stance
         when "Normal"
           text = ""
-        when "Aggressive"
-          text = "(AGG)"
-        when "Defensive"
-          text = "(DEF)"
-        when "Evade"
-          text = "(EVA)"
-        when "Cover"
-          text = "(COV)"
-        when "Hidden"
-          text = "(HID)"
+        else          
+          text = "(#{c.stance[0,3].upcase})"
         end
         text
       end
