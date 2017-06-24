@@ -29,11 +29,6 @@ This game uses the FS3 skills system, Third Edition.  The complete rulebook can 
 
 [Managing Abilities](/help/fs3skills/admin)
 
-[Configuring FS3 - Skill List](/help/fs3skills/config_skills)
-[Configuring FS3 - Chargen](/help/fs3skills/config_chargen)
-[Configuring FS3 - Experience (XP)](/help/fs3skills/config_xp)
-[Configuring FS3 - Luck and Miscellaneous](/help/fs3skills/config_misc)
-
 ## Copyright
 
 The FS3 System Copyright 2007 by Linda Naughton (aka Faraday) and is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (http://creativecommons.org/licenses/by-nc-sa/4.0/).

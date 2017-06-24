@@ -18,7 +18,3 @@ The game's Web Portal allows you to do several things:
 Admins can also configure the game and perform various admin-related functions through the Web Portal.
 
 Type `website` to get the address to the Web Portal.
-
-## Admin Topics
-
-[Configuring the Website](/help/website/config)

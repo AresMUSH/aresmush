@@ -10,9 +10,9 @@ Those with the proper permissions can adjust skills, luck and XP.
 
 ## Viewing Sheets
 
-Some games may have multiple pages of the character sheet, and some pages might be configured to be private.  (See [Configuring FS3](/help/fs3skills/config) for more information.)
+Some games may have multiple pages of the character sheet, and some pages might be configured to be private.  Private sheets can only be viewed by people with the `view_sheets` permission.
 
-Private sheets can only be viewed by people with the `view_sheets` permission.
+`sheet <name>`
 
 ## Roll Results
 

@@ -33,4 +33,3 @@ Player Bits are special characters that are OOC only.
 ## Admin Topics
 
 [NPCs](/help/status/npc)
-[Configuring the Status System](/help/status/config)

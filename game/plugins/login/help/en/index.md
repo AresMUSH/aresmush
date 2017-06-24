@@ -27,4 +27,3 @@ The login plugin handles everything you need to connect to the game, create a ch
 ## Admin Topics
 
 [Managing Login Information](/help/login/admin)
-[Configuring the Login System](/help/login/config)

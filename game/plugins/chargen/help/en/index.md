@@ -25,4 +25,3 @@ To start chargen in the game, type `cg/start`.  You can access the chargen comma
 ## Admin Topics
 
 [Managing Apps](/help/chargen/admin) - Managing applications.
-[Configuring Chargen](/help/chargen/config) - Configuring the chargen system.

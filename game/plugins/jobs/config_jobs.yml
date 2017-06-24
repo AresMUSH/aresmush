@@ -5,6 +5,7 @@ jobs:
         - BUG
         - CODE
         - MISC
+        - PLOT
         - REQ
         - RP
 

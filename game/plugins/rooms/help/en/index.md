@@ -31,7 +31,3 @@ You can use the `go` command to move through an exit, or just use the exit name 
 [Locking Exits](/help/rooms/lock)
 [Building](/help/rooms/building)
 [Room Setup](/help/rooms/setup)
-
-### Admin
-
-[Configuring the Rooms System](/help/rooms/config)

@@ -33,7 +33,3 @@ If someone is annoying you so much you feel the need to block them, you should r
 If you don't want to be bothered by pages at all, you can mark yourself as 'do not disturb' and incoming pages will be blocked with a message to the sender.
 
 `page/dnd <on or off>`
-
-## Admin Topics
-
-[Configuring the Page System](/help/page/config)
