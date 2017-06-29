@@ -1,20 +1,8 @@
 pose:
     ooc_color: "%xc"
-    
-    repose_enabled: true
-
-    cron:
-        #date: 1
-        #day_of_week: Sat
-        #hour: 21
-        minute: 30
         
     shortcuts:
         "po" : "repose/order"
-        "repose/notify" : "repose/nudge"
-        "repose/log" : "repose/all"
-        "repose/reset": "repose/clear"
-        "repose/gag": "repose/nudge mute"
         "whisper": "pemit"
         "whisp": "pemit"
         "mutter": "pemit"

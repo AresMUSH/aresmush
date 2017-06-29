@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     class ReposeOrderCmd
       include CommandHandler
       

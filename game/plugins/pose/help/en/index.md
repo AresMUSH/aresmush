@@ -21,4 +21,3 @@ aliases:
 [Formatting Poses](/help/pose/format)
 [Emits](/help/pose/emit)
 [OOC Asides](/help/pose/ooc)
-[Repose and Pose Order](/help/pose/repose)

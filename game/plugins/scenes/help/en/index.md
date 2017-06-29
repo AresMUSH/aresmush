@@ -18,3 +18,4 @@ The scenes system lets you spawn a room for a scene.  You can indicate whether t
 [Creating and Joining Scenes](/help/scenes/creating)
 [Setting Scene Info](/help/scenes/info)
 [Scene Logging](/help/scenes/logging)
+[Repose and Pose Order](/help/pose/repose)

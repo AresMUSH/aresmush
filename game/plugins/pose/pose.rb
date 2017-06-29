@@ -1,7 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 load "pose_api.rb"
 load "lib/autospace_cmd.rb"
-load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/nospoof_cmd.rb"
 load "lib/pemit_cmd.rb"
@@ -9,13 +8,7 @@ load "lib/pose_catcher_cmd.rb"
 load "lib/pose_cmd.rb"
 load "lib/pose_model.rb"
 load "lib/quote_color_cmd.rb"
-load "lib/repose_cmd.rb"
-load "lib/repose_clear_cmd.rb"
-load "lib/repose_catcher_cmd.rb"
-load "lib/repose_drop_cmd.rb"
-load "lib/repose_nudge_cmd.rb"
-load "lib/repose_order_cmd.rb"
-load "lib/repose_set_cmd.rb"
+
 
 module AresMUSH
   module Pose
@@ -59,27 +52,12 @@ module AresMUSH
         return PoseCmd
       when "pose"
         if (cmd.switch)
-          return ReposeCatcherCmd
+          return nil
         else
           return PoseCmd
         end
       when "quotecolor"
         return QuoteColorCmd
-      when "repose"
-        case cmd.switch
-        when nil, "all"
-          return ReposeCmd
-        when "clear"
-          return ReposeClearCmd
-        when "drop"
-          return ReposeDropCmd
-        when "nudge"
-          return ReposeNudgeCmd
-        when "on", "off"
-          return ReposeSetCmd
-        when "order"
-          return ReposeOrderCmd
-        end
       end
       
       if (cmd.raw.start_with?("\"") ||
@@ -95,14 +73,6 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
-      case event_name
-      when "CronEvent"
-        return CronEventHandler
-      when "GameStartedEvent"
-        return GameStartedEventHandler
-      when "CharConnectedEvent"
-        return CharConnectedEventHandler
-      end
       nil
     end
   end

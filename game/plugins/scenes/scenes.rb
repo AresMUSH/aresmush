@@ -12,6 +12,12 @@ load "lib/scene_start_cmd.rb"
 load "lib/scene_summary_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
+load "lib/repose_cmd.rb"
+load "lib/repose_clear_cmd.rb"
+load "lib/repose_drop_cmd.rb"
+load "lib/repose_nudge_cmd.rb"
+load "lib/repose_order_cmd.rb"
+load "lib/repose_set_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "scenes_api.rb"
 
@@ -42,6 +48,22 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "repose"
+        case cmd.switch
+        when nil, "all"
+          return ReposeCmd
+        when "clear"
+          return ReposeClearCmd
+        when "drop"
+          return ReposeDropCmd
+        when "nudge"
+          return ReposeNudgeCmd
+        when "on", "off"
+          return ReposeSetCmd
+        when "order"
+          return ReposeOrderCmd
+        end
+        
       when "scene"
         case cmd.switch
         when "join"
@@ -64,7 +86,6 @@ module AresMUSH
       when "scenes"
         return ScenesCmd
       end
-      
       nil
     end
 
@@ -72,6 +93,10 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return CronEventHandler
+      when "GameStartedEvent"
+        return GameStartedEventHandler
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
       end
       nil
     end
