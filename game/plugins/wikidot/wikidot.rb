@@ -1,19 +1,21 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/profile_add_cmd.rb"
-load "lib/profile_cmd.rb"
-load "lib/profile_delete_cmd.rb"
-load "lib/profile_edit_cmd.rb"
-load "lib/profile_model.rb"
-load "templates/profile_template.rb"
+
+load "lib/character_page_cmd.rb"
+load "lib/log_page_cmd.rb"
+load "lib/log_types_cmd.rb"
+load "lib/helpers.rb"
+load "templates/log_template.rb"
+load "templates/char_template.rb"
+load "wiki_api.rb"
 
 module AresMUSH
-  module Profile
+  module Wikidot
     def self.plugin_dir
       File.dirname(__FILE__)
     end
  
     def self.shortcuts
-      Global.read_config("profile", "shortcuts")
+      {}
     end
  
     def self.load_plugin
@@ -24,7 +26,7 @@ module AresMUSH
     end
     
     def self.config_files
-      [ "config_profile.yml" ]
+      [ "config_wikidot.yml" ]
     end
  
     def self.locale_files
@@ -32,17 +34,15 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd, enactor)
-      case cmd.root
-      when "profile"
+      case cmd.root      
+      when "wiki"
         case cmd.switch
-        when "add"
-          return ProfileAddCmd
-        when "delete"
-          return ProfileDeleteCmd
-        when "edit"
-          return ProfileEditCmd
-        when nil
-          return ProfileCmd
+        when "char"
+          return CharacterPageCmd
+        when "log"
+          return LogPageCmd
+        when "logtypes"
+          return LogTypesCmd
         end
       end
       nil

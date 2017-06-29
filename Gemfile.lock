@@ -93,6 +93,7 @@ GEM
     timezone (0.3.11)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    wikidot-api (0.0.6)
 
 PLATFORMS
   ruby
@@ -120,6 +121,7 @@ DEPENDENCIES
   sinatra-reloader (~> 1.0)
   thin (~> 1.7.0)
   timezone (~> 0.3.2)
+  wikidot-api (~> 0.0.6)
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

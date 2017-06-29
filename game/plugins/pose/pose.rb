@@ -11,6 +11,7 @@ load "lib/pose_model.rb"
 load "lib/quote_color_cmd.rb"
 load "lib/repose_cmd.rb"
 load "lib/repose_clear_cmd.rb"
+load "lib/repose_catcher_cmd.rb"
 load "lib/repose_drop_cmd.rb"
 load "lib/repose_nudge_cmd.rb"
 load "lib/repose_order_cmd.rb"
@@ -54,8 +55,14 @@ module AresMUSH
         if (cmd.args)
           return PoseCmd
         end
-      when "emit", "pose", "say"        
+      when "emit", "say"
         return PoseCmd
+      when "pose"
+        if (cmd.switch)
+          return ReposeCatcherCmd
+        else
+          return PoseCmd
+        end
       when "quotecolor"
         return QuoteColorCmd
       when "repose"

@@ -24,7 +24,10 @@ module AresMUSH
       end
             
       def handle
-        scene = Scene.create(owner: enactor, title: self.title, private_scene: self.privacy == "Private")
+        scene = Scene.create(owner: enactor, 
+            title: self.title, 
+            private_scene: self.privacy == "Private",
+            ictime: ICTime::Api.ic_datestr(ICTime::Api.ictime))
         room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.title}")
         ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
         scene.update(room: room)

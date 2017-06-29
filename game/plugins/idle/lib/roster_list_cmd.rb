@@ -10,7 +10,9 @@ module AresMUSH
       end
       
       def handle
-        roster = Character.all.select { |c| c.on_roster? }.sort { |a,b| [a.group('Position'), a.name] <=> [b.group('Position'), b.name] }
+        roster = Character.all
+           .select { |c| c.on_roster? }
+           .sort { |a,b| [a.group('Position') || "", a.name] <=> [b.group('Position') || "", b.name] }
         paginator = Paginator.paginate(roster, cmd.page, 25)
         
         if (paginator.out_of_bounds?)

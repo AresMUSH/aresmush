@@ -2,7 +2,17 @@
     $(document).ready(function() {
         var notification_socket = null;
         notification_socket = new WebSocket(`ws://${config.host}:${config.port}/websocket`);
-          
+        
+        notification_socket.onopen = function() {          
+          var charId = $('#charId').val();
+            cmd = {
+              'type': 'identify',
+              'data': { 'id': charId }
+            };
+            json = JSON.stringify(cmd);
+            return notification_socket.send(json);
+        };
+        
         notification_socket.onmessage = function(evt) {
             var data;
             

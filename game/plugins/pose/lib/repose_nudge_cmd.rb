@@ -19,7 +19,7 @@ module AresMUSH
       
       def check_status
         return nil if self.muted
-        return self.option.validate
+        return t('pose.repose_nudge_options') if self.option.validate
       end
       
       def handle

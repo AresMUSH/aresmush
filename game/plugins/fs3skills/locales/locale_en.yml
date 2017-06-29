@@ -97,7 +97,8 @@ en:
         # ------------------------------------------------------
         
         invalid_luck_points: "That is not a valid number of luck points."
-        luck_awarded: "You award %{luck} luck points to %{name}."
+        luck_awarded: "%{luck} luck points awarded to %{name} for %{reason}."
+        luck_award_mail_subject: 
         not_enough_points: "You don't have that many luck points."
         #luck_point_spent: 
         #    one: "%{name} spends a luck point!"

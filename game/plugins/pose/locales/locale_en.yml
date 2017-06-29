@@ -22,6 +22,8 @@ en:
         repose_nudge_on: "You will now be notified when it's your turn to pose.  Note: This only functions when the repose system is turned on in a room and there are more than two characters posing."
         repose_nudge_off: "You will no longer be notified when it's your turn to pose."
         repose_nudge_muted: "Repose notifications are muted until your next login."
+        repose_nudge_options: "Use on, off or mute."
+        repose_catcher: "Invalid command.  Maybe you meant repose instead of pose?"
         
         quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
         quote_color_cleared: "Quotation color cleared."

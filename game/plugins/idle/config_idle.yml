@@ -18,7 +18,7 @@ idle:
     default_contact: "Admin"
 
     roster_welcome_msg: "Welcome!  You may wish to check your %xcnotes%xn, %xcprofile%xn and wiki page for any notes left by the prior player.  Type %xhonstage%xn to go forth and RP."
-    
+            
     shortcuts:
         "idle/add": "idle/action"
         "roster/update": "roster/add"

@@ -41,7 +41,8 @@ module AresMUSH
         "utils", 
         "weather", 
         "website",
-        "who"   
+        "who",
+        "wikidot"
       ]
     end
   end

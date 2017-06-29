@@ -111,10 +111,17 @@ module AresMUSH
         end
                
         author_name = client ? author.name : t('bbs.system_author')
-        Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 
+        message = t('bbs.new_post', :subject => subject, 
                 :board => board.name, 
                 :reference => new_post.reference_str,
                 :author => author_name)
+                
+        Global.client_monitor.logged_in.each do |other_client, other_char|
+          if (Bbs.can_read_board?(other_char, board))
+            other_client.emit_ooc message
+          end
+        end
+        
         Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_post', :subject => subject, :author => author_name)
 
         new_post

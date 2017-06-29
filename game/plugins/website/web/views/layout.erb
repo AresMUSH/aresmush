@@ -138,6 +138,7 @@
               Running <a href="http://www.aresmush.com">AresMUSH</a> version <%= AresMUSH.version %>.
               
               <input type="hidden" id="charId" name="charId" value="<%= @user ? @user.id : ' ' %>">
+              <input type="hidden" id="charToken" name="charToken" value="<%= @user ? @user.login_api_token : ' ' %>">
               
            </div>
       </div>

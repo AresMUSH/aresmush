@@ -39,7 +39,7 @@ module AresMUSH
     def window_height
       @connection.window_height
     end
-    
+
     def enable_fansi
       return false if !@char_id
       char = find_char

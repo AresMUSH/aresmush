@@ -61,7 +61,14 @@ module AresMUSH
           return ActorCatcherCmd
         end
       when "actors"
-        return ActorsListCmd
+        case cmd.switch
+        when "set"
+          return ActorSetCmd
+        when "search"
+          return ActorSearchCmd
+        else
+          return ActorsListCmd
+        end
       when "age"
         return AgeCmd 
       when "birthdate"

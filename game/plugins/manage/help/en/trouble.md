@@ -28,4 +28,4 @@ The findsite command will help you find characters with similar IP address, whic
 
 ## Suspects and Bans
 
-You can mark certain IP addresses and/or hostnames as suspect sites, or ban them completely.  See the tutorial on [Configuring the Login System](http://aresmush.com/config/login) for details.
+You can mark certain IP addresses and/or hostnames as suspect sites, or ban them completely.  See the tutorial on [Configuring the Login System](http://aresmush.com/tutorials/config/login) for details.

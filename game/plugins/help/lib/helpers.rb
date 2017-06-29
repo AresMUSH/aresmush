@@ -47,10 +47,18 @@ module AresMUSH
         end
       end
       
+      # Match exact topic
       matches = all_keys.select { |k, v| k == search }
       return matches.values.uniq if matches.count > 0
 
+      # Match partial topic - 'help comb' finds 'help combat'
       matches = all_keys.select { |k, v| k =~ /#{search}/ }
+      return matches.values.uniq if matches.count > 0
+      
+      # Matches the main topic 
+      # (e.g. if 'help combat foo' not found it falls back to 'help combat')
+      main_topic = search.first(' ').strip
+      matches = all_keys.select { |k, v| k == main_topic }
       matches.values.uniq
     end
     

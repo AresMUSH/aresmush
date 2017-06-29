@@ -10,7 +10,16 @@ module AresMUSH
       ["Public", "Private"].include?(privacy)
     end
     
+    def self.can_access_scene?(actor, scene)
+      return true if Scenes.can_manage_scene(actor, scene)
+      return true if !scene.is_private?
+      return scene.participants.include?(actor)
+    end
+    
+    
     def self.stop_scene(scene)
+      return if scene.completed
+      
       scene.room.characters.each do |c|
         connected_client = c.client
         if (connected_client)
@@ -39,5 +48,28 @@ module AresMUSH
       scene.scene_poses.each { |p| p.delete }
     end
     
+    def self.get_log(scene_id, actor)
+      scene = Scene[scene_id]
+      if (!scene)
+        return { log: nil, error: t('scenes.scene_not_found') }
+      end
+      
+      if (!Scenes.can_access_scene?(actor, scene))
+        return { log: nil, error: t('scenes.access_not_allowed') }
+      end
+      
+      log = SceneLog.new
+      log.ictime = scene.ictime
+      log.title = scene.title
+      log.location = scene.location
+      log.summary = scene.summary
+      log.participants = scene.participants
+      log.poses = []
+      
+      scene.scene_poses.each do |p|
+        log.poses << SceneLogPose.new(p)
+      end
+      return { log: log, error: nil }
+    end
   end
 end

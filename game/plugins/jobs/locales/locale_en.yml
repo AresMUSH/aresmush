@@ -50,6 +50,7 @@ en:
         
         mail_sent: "You send a mail message to %{names}."
         mail_comment: "Mail sent to %{names}:%R%{message}"
+        mail_job_title: "Job Notice - %{title}"
         
         reply_deleted: "Reply deleted."
         invalid_reply_number: "That is not a valid reply number."

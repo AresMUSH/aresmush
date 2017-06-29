@@ -1,12 +1,12 @@
 module AresMUSH
-  module Profile
-    class WikiTemplate < ErbTemplateRenderer
+  module Wikidot
+    class CharTemplate < ErbTemplateRenderer
       
       attr_accessor :char
       
       def initialize(char)
         @char = char
-        super File.dirname(__FILE__) + "/wiki.erb"
+        super File.dirname(__FILE__) + "/char.erb"
       end
       
       def fullname

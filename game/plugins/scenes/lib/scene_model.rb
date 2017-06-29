@@ -15,9 +15,15 @@ module AresMUSH
     attribute :completed
     attribute :location
     attribute :summary
+    attribute :ictime, :type => DataType::Date
     
     collection :scene_poses, "AresMUSH::ScenePose"
     
+    before_delete :delete_poses
+    
+    def is_private?
+      self.private_scene
+    end
     
     def created_date_str(char)
       OOCTime::Api.local_short_timestr(char, self.created_at)
@@ -27,6 +33,10 @@ module AresMUSH
       scene_poses.select { |s| !s.is_system_pose? && !s.is_gm_pose? }
           .map { |s| s.character }
           .uniq { |c| c.id }
+    end
+    
+    def delete_poses
+      scene_poses.each { |p| p.delete }
     end
   end
   

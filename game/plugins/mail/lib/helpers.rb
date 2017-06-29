@@ -24,8 +24,7 @@ module AresMUSH
       all_tags.uniq
     end
     
-    def self.filtered_mail(char)
-      filter = char.mail_filter || Mail.inbox_tag
+    def self.filtered_mail(char, filter = Mail.inbox_tag)
       if (filter.start_with?("review"))
         sent_to = Character.find_one_by_name(filter.after(" "))
         return char.sent_mail_to(sent_to)
@@ -36,7 +35,7 @@ module AresMUSH
     end
     
     def self.with_a_delivery(client, enactor, num, &block)
-      list = Mail.filtered_mail(enactor)      
+      list = Mail.filtered_mail(enactor, enactor.mail_filter)      
       Mail.with_a_delivery_from_a_list client, num, list, &block
     end
     

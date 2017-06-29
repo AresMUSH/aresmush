@@ -35,7 +35,7 @@ You can also adjust hooks:
 
 You can award luck points.
 
-`luck/award <name>=<number of luck points>`
+`luck/award <name>=<number of luck points>/<reason>`
 
 ## Managing XP
 

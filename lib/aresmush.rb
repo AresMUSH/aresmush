@@ -39,6 +39,8 @@ require 'thin'
 require 'erubis'
 require 'json'
 require 'redcarpet'
+require "wikidot_api"
+
 
 require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'

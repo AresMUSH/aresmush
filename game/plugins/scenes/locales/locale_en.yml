@@ -20,6 +20,7 @@ en:
         location_set: "Scene location changed:%R%{description}"
         summary_set: "Scene summary set."
         scene_renamed: "Scene renamed."
+        access_not_allowed: "You do not have access to that scene."
         
         public: "Public"
         private: "Private"

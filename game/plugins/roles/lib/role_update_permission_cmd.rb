@@ -1,6 +1,6 @@
 module AresMUSH
   module Roles
-    class RoleAddPermissionCmd
+    class RoleUpdatePermissionCmd
       include CommandHandler
       
       attr_accessor :name, :permission, :remove_permission

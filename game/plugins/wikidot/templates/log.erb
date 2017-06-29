@@ -1,0 +1,27 @@
+><%= summary %>
+
+[[div class="log-wrapper"]]
+
+[[include LogInfoBox
+|summary=<%= summary %>
+|location=<%= location %>
+|related=TODO: None 
+]]
+
+[[include LogPlayerTop]]
+
+<% log.participants.each do |c| %>
+[[include LogIcon name=<%= c.name %>]]
+<% end %>
+[[include LogPlayerBottom]]
+
+[[/div]]
+    
+<% log.poses.each do |p| %>
+
+<% if p.is_system %>
+[[span class="fs3combat"]]//<%= format_pose(p.pose) %>//[[/span]]
+<% else %>
+<%= format_pose(p.pose) %>
+<% end %>
+<% end %>
