@@ -2,6 +2,9 @@ $:.unshift File.dirname(__FILE__)
 
 load "lib/event_handlers.rb"
 load "lib/helpers.rb"
+load "lib/log_cmd.rb"
+load "lib/log_clear_cmd.rb"
+load "lib/log_enable_cmd.rb"
 load "lib/scene_model.rb"
 load "lib/scene_join_cmd.rb"
 load "lib/scene_location_cmd.rb"
@@ -12,12 +15,6 @@ load "lib/scene_start_cmd.rb"
 load "lib/scene_summary_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
-load "lib/repose_cmd.rb"
-load "lib/repose_clear_cmd.rb"
-load "lib/repose_drop_cmd.rb"
-load "lib/repose_nudge_cmd.rb"
-load "lib/repose_order_cmd.rb"
-load "lib/repose_set_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "scenes_api.rb"
 
@@ -48,22 +45,7 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when "repose"
-        case cmd.switch
-        when nil
-          return ReposeCmd
-        when "clear"
-          return ReposeClearCmd
-        when "drop"
-          return ReposeDropCmd
-        when "nudge"
-          return ReposeNudgeCmd
-        when "on", "off"
-          return ReposeSetCmd
-        when "order"
-          return ReposeOrderCmd
-        end
-        
+
       when "scene"
         case cmd.switch
         when nil
@@ -85,7 +67,15 @@ module AresMUSH
         when "privacy"
           return ScenePrivacyCmd
         end
-        
+      when "log"
+        case cmd.switch
+        when "clear"
+          return LogClearCmd
+        when "on", "off"
+          return LogEnableCmd
+        when nil
+          return LogCmd
+        end
       end
       nil
     end

@@ -2,7 +2,11 @@ pose:
     ooc_color: "%xc"
         
     shortcuts:
-        "po" : "repose/order"
+        "pose/notify" : "pose/nudge"
+        "pose/remove" : "pose/drop"
+        "po" : "pose"
+        
         "whisper": "pemit"
         "whisp": "pemit"
         "mutter": "pemit"
+        "repose": "pose"

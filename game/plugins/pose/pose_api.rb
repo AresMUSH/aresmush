@@ -10,11 +10,12 @@ module AresMUSH
   end
   
   class PoseEvent
-    attr_accessor :enactor, :pose, :is_emit
-    def initialize(enactor, pose, is_emit)
+    attr_accessor :enactor, :pose, :is_emit, :is_ooc
+    def initialize(enactor, pose, is_emit, is_ooc)
       @enactor = enactor
       @pose = pose
       @is_emit = is_emit
+      @is_ooc = is_ooc
     end
   end
 end

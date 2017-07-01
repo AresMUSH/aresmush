@@ -1,6 +1,6 @@
 module AresMUSH
-  module Scenes
-    class ReposeDropCmd
+  module Pose
+    class PoseDropCmd
       include CommandHandler
       
       attr_accessor :name
@@ -18,18 +18,12 @@ module AresMUSH
         
       def handle
         
-        if (!enactor.room.repose_on?)
-          client.emit_failure t('pose.repose_off')
-          return
-        end
-        
-        order = enactor_room.repose_info.pose_orders.select { |p| p.character.name_upcase == self.name.upcase }.first
-        if (!order)
+        if (!enactor_room.pose_order.include?(self.name))
           client.emit_failure t('pose.not_in_pose_order', :name => self.name)
           return
         end
         
-        order.delete
+        enactor_room.remove_from_pose_order(self.name)        
         enactor_room.emit_ooc t('pose.pose_order_dropped', :name => enactor_name, :dropped => self.name)
         Pose.notify_next_person(enactor_room)
       end

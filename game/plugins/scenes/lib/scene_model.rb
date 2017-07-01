@@ -1,9 +1,4 @@
 module AresMUSH
-  class Character
-    attribute :repose_nudge, :type => DataType::Boolean, :default => true
-    attribute :repose_nudge_muted, :type => DataType::Boolean
-  end
-  
   class Room
     reference :scene, "AresMUSH::Scene"
     attribute :scene_set

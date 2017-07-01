@@ -8,3 +8,12 @@ en:
 
         quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
         quote_color_cleared: "Quotation color cleared."
+        
+        pose_order_title: "Name                        Last Posed"
+        pose_your_turn: "It's your turn to pose."        
+        pose_nudge_on: "You will now be notified when it's your turn to pose.  Note: This only functions when the repose system is turned on in a room and there are more than two characters posing."
+        pose_nudge_off: "You will no longer be notified when it's your turn to pose."
+        pose_nudge_muted: "Pose notifications are muted until your next login."
+        pose_nudge_options: "Use on, off or mute."
+        not_in_pose_order: "%{name} is not in the pose order."
+        pose_order_dropped: "%{name} has removed %{dropped} from the pose order."

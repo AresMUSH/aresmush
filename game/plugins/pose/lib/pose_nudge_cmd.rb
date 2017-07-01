@@ -1,6 +1,6 @@
 module AresMUSH
-  module Scenes
-    class ReposeNudgeCmd
+  module Pose
+    class PoseNudgeCmd
       include CommandHandler
            
       attr_accessor :option, :muted
@@ -19,17 +19,17 @@ module AresMUSH
       
       def check_status
         return nil if self.muted
-        return t('pose.repose_nudge_options') if self.option.validate
+        return t('pose.pose_nudge_options') if self.option.validate
       end
       
       def handle
         if (self.muted)
-          enactor.update(repose_nudge_muted: true)
-          client.emit_success t('pose.repose_nudge_muted')
+          enactor.update(pose_nudge_muted: true)
+          client.emit_success t('pose.pose_nudge_muted')
         else
-          enactor.update(repose_nudge_muted: false)
-          enactor.update(repose_nudge: self.option.is_on?)
-          client.emit_success t("pose.repose_nudge_#{self.option.is_on? ? 'on' : 'off'}")
+          enactor.update(pose_nudge_muted: false)
+          enactor.update(pose_nudge: self.option.is_on?)
+          client.emit_success t("pose.pose_nudge_#{self.option.is_on? ? 'on' : 'off'}")
         end
       end
     end

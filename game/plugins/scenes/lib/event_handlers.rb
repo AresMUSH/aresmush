@@ -9,8 +9,8 @@ module AresMUSH
     
     class CharConnectedEventHandler
       def on_event(event)
-        if (event.char.repose_nudge_muted)
-          event.char.update(repose_nudge_muted: false)
+        if (event.char.pose_nudge_muted)
+          event.char.update(pose_nudge_muted: false)
         end
       end
     end

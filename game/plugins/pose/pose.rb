@@ -1,12 +1,16 @@
 $:.unshift File.dirname(__FILE__)
 load "pose_api.rb"
 load "lib/autospace_cmd.rb"
+load "lib/event_handlers.rb"
 load "lib/helpers.rb"
 load "lib/nospoof_cmd.rb"
 load "lib/pemit_cmd.rb"
 load "lib/pose_catcher_cmd.rb"
 load "lib/pose_cmd.rb"
 load "lib/pose_model.rb"
+load "lib/pose_drop_cmd.rb"
+load "lib/pose_nudge_cmd.rb"
+load "lib/pose_order_cmd.rb"
 load "lib/quote_color_cmd.rb"
 
 
@@ -51,11 +55,21 @@ module AresMUSH
       when "emit", "say"
         return PoseCmd
       when "pose"
-        if (cmd.switch)
-          return nil
-        else
-          return PoseCmd
+        case cmd.switch
+        when nil
+          if (cmd.args)
+            return PoseCmd
+          else
+            return PoseOrderCmd
+          end
+        when "drop"
+          return PoseDropCmd
+        when "nudge"
+          return PoseNudgeCmd
+        when "order"
+          return PoseOrderCmd
         end
+        
       when "quotecolor"
         return QuoteColorCmd
       end

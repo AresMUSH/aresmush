@@ -4,18 +4,23 @@ summary: Starting scenes.
 ---
 # Scenes
 
-The scenes system lets you spawn a room for a scene.  You can indicate whether the scene is public (meaning anyone is invited to join) or private.
+While you can always do free-form RP on the grid or in the RP room, there are a variety of features available to you if you use the **Scenes** system to manage your RP scene.  Some features that the scenes system provides:
+
+* Creating temprooms for private scenes or places not on the grid.
+* Advertising your scene as public so others know they're welcome to join.
+* Capture a log of poses, skill rolls and combat messages without the OOC spam.
+* Share a log to the game's web portal and/or wiki (if enabled).
 
 ## Quick Reference - Common Commands
 
-`scene/start <name>=<private/public>` - Starts a scene.
-`scene/stop [<#>]` - Stops a scene and recycles the room.
 `scenes` - Lists scenes.
-`scene/join <#>` - Joins a scene.
+`scene/start` - Starts a scene in your current room.
+`scene/start <name>=<location>/<private/public>` - Starts a scene in a temp room.
+`scene/join <#>` - Joins a public scene.
+`scene/stop` - Stops a scene.
 
 ## Other Topics
 
 [Creating and Joining Scenes](/help/scenes/creating)
-[Setting Scene Info](/help/scenes/info)
 [Scene Logging](/help/scenes/logging)
-[Repose and Pose Order](/help/pose/repose)
+[Repose and Pose Order](/help/scenes/repose)

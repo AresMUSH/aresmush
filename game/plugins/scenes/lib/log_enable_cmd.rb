@@ -13,10 +13,6 @@ module AresMUSH
         return self.option.validate
       end
       
-      def check_repose_enabled
-        return t('pose.repose_disabled') if !Pose.repose_enabled
-      end
-      
       def handle
         room = enactor.room
         repose = room.repose_info

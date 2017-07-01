@@ -11,7 +11,7 @@ aliases:
 
 # Creating and Joining a Scene
 
-When you start a scene, it takes you to a new room exclusively for that scene.
+When you start a scene, you can request a temporary room or 
 
 `scene/start <title>[=<private/public>]` - Starts a scene.
 `scene/stop [<#>]` - Stops a scene and recycles the room.

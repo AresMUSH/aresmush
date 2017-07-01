@@ -31,7 +31,7 @@ module AresMUSH
   
   class Room
     def repose_on?
-      Pose.repose_enabled && self.repose_info && self.repose_info.enabled
+      self.repose_info && self.repose_info.enabled
     end
   end
   
