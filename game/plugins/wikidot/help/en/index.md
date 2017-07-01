@@ -24,5 +24,4 @@ You can also create wiki logs for scenes run through the [Scenes](/help/scenes) 
 
 > **Tip:**  Scene logging must be enabled for this to work.  For a private scene, make sure to do this before the scene ends, otherwise the poses will be lost.  Public scene poses are kept even after the scene ends.
 
-`wiki/log <scene#>=<scene type>` - Creates a wiki page for a scene log.
-`wiki/logtypes` - Views available scene types.
+`wiki/log <scene#>` - Creates a wiki page for a scene log.

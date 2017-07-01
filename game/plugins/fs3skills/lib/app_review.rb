@@ -47,6 +47,23 @@ module AresMUSH
       error = FS3Skills.check_attr_points(char)
       too_high << error if error
       
+      all_skills = char.fs3_background_skills.map { |s| s.name }
+      all_skills.concat char.fs3_action_skills.select { |s| s.rating > 1 }.map { |s| s.name }
+      all_skills.concat char.fs3_languages.map { |s| s.name }
+      
+      uncommon_skills = Global.read_config("fs3skills", "uncommon_skills")
+      uncommon_skills.each do |s|
+        if (all_skills.include?(s))
+          too_high << t('fs3skills.unusual_skill', :skill => s)
+        end
+      end
+          
+      char.fs3_background_skills.each do |b|
+        if (b.rating > 1)
+          too_high << t('fs3skills.high_bg', :skill => b.name)
+        end
+      end
+      
       if (too_high.count == 0)
         Chargen::Api.format_review_status(message, t('chargen.ok'))
       else
@@ -96,7 +113,6 @@ module AresMUSH
           end
         end
       end
-      
       
       char.fs3_action_skills.each do |a|
         config = FS3Skills.action_skill_config(a.name)

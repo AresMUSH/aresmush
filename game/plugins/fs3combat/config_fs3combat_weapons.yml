@@ -11,7 +11,7 @@ fs3combat:
             description: "Flashbang Hand Grenade which blinds/deafens human targets for 5 secs.  No effect on Centurions."
             skill: Athletics
             lethality: 0
-            penetration: 10
+            penetration: 8
             weapon_type: Suppressive
             is_automatic: false
             # ammo: 0
@@ -24,7 +24,7 @@ fs3combat:
             description: "Fragmentation Hand Grenade"
             skill: Athletics
             lethality: 0
-            penetration: 10
+            penetration: 8
             weapon_type: Explosive
             is_automatic: false
             # ammo: 0
@@ -37,7 +37,7 @@ fs3combat:
             description: "Grenade Launcher"
             skill: Gunnery
             lethality: 0
-            penetration: 10
+            penetration: 8
             weapon_type: Explosive
             is_automatic: false
             ammo: 4
@@ -50,7 +50,7 @@ fs3combat:
             description: "Mine or other anti-personnel explosive"
             skill: Demolitions
             lethality: 20
-            penetration: 10
+            penetration: 8
             weapon_type: Explosive
             is_automatic: false
             # ammo: 0
@@ -76,7 +76,7 @@ fs3combat:
             description: "Unguided Anti-Vehicle Rockets"
             skill: Gunnery
             lethality: 0
-            penetration: 6
+            penetration: 8
             weapon_type: Ranged
             is_automatic: false
             ammo: 20
@@ -89,7 +89,7 @@ fs3combat:
             description: "Unguided Anti-Personnel Rocket"
             skill: Gunnery
             lethality: 20
-            penetration: 10
+            penetration: 8
             weapon_type: Explosive
             is_automatic: false
             ammo: 4
@@ -303,7 +303,7 @@ fs3combat:
             description: "Heavy machinegun."
             skill: Firearms
             lethality: 0
-            penetration: 8
+            penetration: 7
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
@@ -318,7 +318,20 @@ fs3combat:
             description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
             skill: Gunnery
             lethality: 0
-            penetration: 6
+            penetration: 8
+            weapon_type: Ranged
+            is_automatic: false
+            # ammo: 0
+            recoil: 0
+            damage_type: Physical
+            accuracy: 0
+            has_shrapnel: false
+            
+        Cannon:
+            description: "Tank cannon."
+            skill: Gunnery
+            lethality: 0
+            penetration: 10
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0

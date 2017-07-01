@@ -31,6 +31,10 @@ module AresMUSH
       end
     end
     
+    def self.damage_table
+      Global.read_config("fs3combat", "damage_table")
+    end
+    
     def self.reset_for_new_turn(combatant)
       # Reset aim if they've done anything other than aiming. 
       if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
@@ -169,7 +173,7 @@ module AresMUSH
       combatant.update(action_args: args)
       combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
     end
-    
+
     def self.determine_damage(combatant, hitloc, weapon, mod = 0, crew_hit = false)
       random = rand(100)
       
@@ -181,7 +185,7 @@ module AresMUSH
       when "Vital"
         severity = 0
       else
-        severity = -10
+        severity = -30
       end
       
       npc = combatant.is_npc? ? Global.read_config("fs3combat", "npc_lethality_mod") : 0
@@ -189,11 +193,11 @@ module AresMUSH
       
       total = random + severity + lethality + mod + npc_mod
       
-      if (total < 20)
+      if (total < FS3Combat.damage_table["GRAZE"])
         damage = "GRAZE"
-      elsif (total < 60)
+      elsif (total < FS3Combat.damage_table["FLESH"])
         damage = "FLESH"
-      elsif (total <100)
+      elsif (total < FS3Combat.damage_table["IMPAIR"])
         damage = "IMPAIR"
       else
         damage = "INCAP"
@@ -228,7 +232,7 @@ module AresMUSH
       pen_roll = rand(100) 
       
       if (pen_roll <= pen_chance)
-        armor_reduction = 0
+        armor_reduction = 1
       else
         armor_reduction = rand(protect * 5) 
       end

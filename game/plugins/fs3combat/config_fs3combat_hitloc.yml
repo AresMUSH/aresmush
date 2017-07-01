@@ -62,6 +62,44 @@ fs3combat:
             crew_areas:
                 - Cockpit
                 - Cabin
+
+        Truck:
+            areas:
+                Body: [ 'Wheel', 'Bed', 'Bed', 'Engine', 'Cab', 'Cab', 'Body', 'Body', 'Body', 'Body' ]
+                Engine: [ 'Wheel', 'Wheel', 'Cab', 'Cab', 'Body', 'Body', 'Engine', 'Engine', 'Engine', 'Engine' ]
+                Cab: [ 'Wheel', 'Bed', 'Engine', 'Engine', 'Body', 'Body', 'Body', 'Cab', 'Cab', 'Cab' ]
+                Bed: [ 'Cab', 'Wheel', 'Engine', 'Engine', 'Body', 'Body', 'Body', 'Bed', 'Bed', 'Bed' ]
+                Wheel: [ 'Cab', 'Cab', 'Engine', 'Engine', 'Body', 'Body', 'Wheel', 'Wheel', 'Wheel', 'Wheel' ]
+            vital_areas:
+                - Body
+                - Wheel
+            critical_areas:
+                - Cab
+                - Engine
+            crew_areas: 
+                - Cab
+                - Bed
+                - Body
+             
+        Tank:
+            areas:
+                Body: [ 'Track', 'Track', 'Engine', 'Engine', 'Weapon', 'Weapon', 'Body', 'Body', 'Body', 'Body' ]
+                Engine: [ 'Track', 'Track', 'Weapon', 'Weapon', 'Body', 'Body', 'Engine', 'Engine', 'Engine', 'Engine' ]
+                Weapon: [ 'Track', 'Track', 'Engine', 'Engine', 'Body', 'Body', 'Body', 'Weapon', 'Weapon', 'Weapon' ]
+                Track: [ 'Weapon', 'Weapon', 'Engine', 'Engine', 'Body', 'Body', 'Track', 'Track', 'Track', 'Track' ]
+                Side: [ 'Weapon', 'Track', 'Track', 'Body', 'Body', 'Body', 'Side', 'Side', 'Side', 'Side' ]
+
+            vital_areas:
+                - Body
+                - Track
+                - Side
+            critical_areas:
+                - Weapon
+                - Engine
+            crew_areas: 
+                - Body
+
+                                   
         AA Battery:
             areas:
                 Weapon: [ 'Crew', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Weapon', 'Weapon', 'Weapon' ]
@@ -75,6 +113,7 @@ fs3combat:
                 - Weapon
             crew_areas: 
                 - Crew
+
         Target:
             areas:
                 Bullseye: [ 'Ring 3', 'Ring 3', 'Ring 3', 'Ring 3', 'Ring 2', 'Ring 2', 'Ring 2', 'Ring 1', 'Ring 1', 'Bullsye']

@@ -18,6 +18,13 @@ fs3skills:
     max_attr_above_4: 1
     max_attributes: 16
     
+    uncommon_skills:
+        - Celtan
+        - Scorpian
+        - Sagittaran
+        - Gemenese
+        - Demolitions
+
     starting_skills:
         Everyone:
             skills:

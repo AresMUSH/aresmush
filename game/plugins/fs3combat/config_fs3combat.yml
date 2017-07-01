@@ -2,22 +2,22 @@ fs3combat:
 
     default_type: Soldier
     
-    pc_knockout_bonus: 3
-    npc_lethality_mod: 30
-    
     stances:
         Aggressive:
-            attack_mod: 3
-            defense_mod: -3
+            attack_mod: 2
+            defense_mod: -2
+        Reckless:
+            attack_mod: 4
+            defense_mod: -4
         Normal:
             attack_mod: 0
             defense_mod: 0
         Defensive:
-            attack_mod: -1
-            defense_mod: 1
-        Evade:
-            attack_mod: -3
-            defense_mod: 3
+            attack_mod: -2
+            defense_mod: 2
+        Evasive:
+            attack_mod: -4
+            defense_mod: 4
         Cover:
             attack_mod: 0
             defense_mod: 0
@@ -60,6 +60,11 @@ fs3combat:
             armor: Centurion
             hitloc: Humanoid
             defense_skill: Reflexes
+        Cylon:
+            weapon: Pistol
+            armor: Cylon
+            hitloc: Humanoid
+            defense_skill: Reflexes
         Viper:
             vehicle: Viper
             hitloc: Humanoid
@@ -80,7 +85,7 @@ fs3combat:
            hitloc: Target
            weapon: Unarmed
            defense_skill: None
-                     
+            
     shortcuts:
         "weapons": "weapon"
         "combat/skill": "combat/summary"

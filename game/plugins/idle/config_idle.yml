@@ -3,7 +3,17 @@ idle:
         - admin
         - builder
         - guest
-
+        
+    cron:
+        date: 1
+        #day_of_week: Fri
+        hour: 15
+        minute: 00
+        
+    monthly_reminder_title: "Monthly Chores"
+    monthly_reminder: "It's time to run the idle sweep!"
+    reminder_category: "MISC"
+    
     use_roster: true
     
     idle_board: "Announcements"

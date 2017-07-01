@@ -4,6 +4,8 @@ ranks:
                 
     rank_group: Faction
     
+    rank_rows: 9
+    
     ranks:
         
         Navy:

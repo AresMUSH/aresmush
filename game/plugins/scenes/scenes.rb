@@ -50,7 +50,7 @@ module AresMUSH
       case cmd.root
       when "repose"
         case cmd.switch
-        when nil, "all"
+        when nil
           return ReposeCmd
         when "clear"
           return ReposeClearCmd
@@ -66,6 +66,8 @@ module AresMUSH
         
       when "scene"
         case cmd.switch
+        when nil
+          return ScenesCmd
         when "join"
           return SceneJoinCmd
         when "location"
@@ -83,8 +85,7 @@ module AresMUSH
         when "privacy"
           return ScenePrivacyCmd
         end
-      when "scenes"
-        return ScenesCmd
+        
       end
       nil
     end

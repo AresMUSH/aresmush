@@ -93,6 +93,8 @@ module AresMUSH
       case event_name
       when "CharConnectedEvent"
         return CharConnectedEventHandler
+      when "CronEvent"
+        return CronEventHandler
       end
       nil
     end

@@ -28,7 +28,7 @@ module AresMUSH
     it "should tell the connection what its client is" do
       client = double
       Client.stub(:new) { client }
-      @connection.should_receive(:client=).with(client)
+      @connection.should_receive(:connect_client).with(client)
       @factory.create_client(@connection)
     end
 

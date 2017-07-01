@@ -22,7 +22,7 @@ fs3skills:
             linked_attr: Reflexes
         -
             name: Gunnery
-            desc: "Vehicle and heavy weapons."
+            desc: "Vehicle/special weapons (cannons, rockets/missiles, ECM packages)."
             linked_attr: Reflexes
         -
             name: Medicine

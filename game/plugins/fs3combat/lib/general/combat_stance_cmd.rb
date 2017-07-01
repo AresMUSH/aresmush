@@ -16,7 +16,9 @@ module AresMUSH
           self.stance = titlecase_arg(cmd.args)
         end
         
-        self.stance = FS3Combat.stances.keys.select { |s| s.start_with? self.stance }.first
+        if (self.stance)
+          self.stance = FS3Combat.stances.keys.select { |s| s.start_with? self.stance }.first
+        end
       end
 
       def required_args

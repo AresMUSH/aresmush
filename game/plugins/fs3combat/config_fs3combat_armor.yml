@@ -57,24 +57,24 @@ fs3combat:
             protection:
                 Body: 6
                 Engine: 6
-                Tail: 4
-                Wing: 4
-                Weapon: 2
-                Nose: 4
-                Cockpit: 2
-                Controls: 4
+                Tail: 6
+                Wing: 6
+                Weapon: 4
+                Nose: 6
+                Cockpit: 4
+                Controls: 6
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
             protection:
                 Body: 6
                 Engine: 6
-                Tail: 4
-                Wing: 4
-                Weapon: 2
-                Nose: 4
-                Cockpit: 2
-                Controls: 4
+                Tail: 6
+                Wing: 6
+                Weapon: 4
+                Nose: 6
+                Cockpit: 4
+                Controls: 6
 
         Raptor:
             description: "Raptor Vehicle Armor"
@@ -100,9 +100,34 @@ fs3combat:
                 Cockpit: 4
                 Controls: 6
 
+        Tank:
+            description: "Tank Armor"
+            protection:
+                Body: 10
+                Engine: 10
+                Weapon: 10
+                Track: 6
+                Side: 8
+
+        Apc:
+            description: "Light Armored Vehicle Armor"
+            protection:
+                Body: 8
+                Engine: 8
+                Weapon: 6
+                Track: 6
+                Side: 6
+
+        Truck:
+            description: "Cylon Heavy Raider Vehicle Armor"
+            protection:
+                Body: 6
+                Cab: 3
+                Engine: 6
+            
         AA Battery:
             description: "Anti-Aircraft Battery"
             protection:
-                Body: 4
+                Body: 6
                 Controls: 4
                 Weapon: 4

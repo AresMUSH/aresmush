@@ -6,6 +6,7 @@ scenes:
      minute: 00
              
     shortcuts:
+        "scenes": "scene"
         "scene/close" : "scene/stop"
         "scene/end" : "scene/stop"
         "scene/name" : "scene/title"
