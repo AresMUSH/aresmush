@@ -10,124 +10,125 @@ fs3combat:
             protection: 
                 Head: 6
                 Neck: 4
-                Chest: 8
+                Chest: 7
                 Abdomen: 6
 
         Police:
             description: "Police-Grade Kevlar Vest"
             protection: 
-                Chest: 5
-                Abdomen: 4
+                Chest: 6
+                Abdomen: 5
 
         Centurion:
             description: "Cylon Centurion Armor"
             protection:
-                Head: 6
-                Neck: 6
+                Head: 7
+                Neck: 7
                 Chest: 8
                 Abdomen: 8
                 Left Arm: 6
                 Right Arm: 6
-                Left Hand: 4
-                Right Hand: 4
-                Left Leg: 8
-                Right Leg: 8
-                Left Foot: 4
-                Right Foot: 4
+                Left Hand: 5
+                Right Hand: 5
+                Left Leg: 7
+                Right Leg: 7
+                Left Foot: 5
+                Right Foot: 5
 
         Cylon:
             description: "Cylon (Non-Centurion) Skeleton"
             protection:
-                Head: 4
-                Neck: 4
-                Chest: 4
-                Abdomen: 4
-                Left Arm: 2
-                Right Arm: 2
-                Left Leg: 4
-                Left Hand: 2
-                Right Hand: 2
-                Left Leg: 4
-                Right Leg: 4
-                Left Foot: 2
-                Right Foot: 2
+                Head: 5
+                Neck: 6
+                Chest: 6
+                Abdomen: 6
+                Left Arm: 4
+                Right Arm: 4
+                Left Hand: 5
+                Right Hand: 4
+                Left Leg: 5
+                Right Leg: 5
+                Left Foot: 4
+                Right Foot: 4
                 
         Viper:
             description: "Viper Vehicle Armor"
             protection:
-                Body: 6
-                Engine: 6
-                Tail: 6
-                Wing: 6
-                Weapon: 4
-                Nose: 6
-                Cockpit: 4
+                Body: 7
+                Engine: 7
+                Tail: 7
+                Wing: 7
+                Weapon: 6
+                Nose: 7
+                Cockpit: 5
                 Controls: 6
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
             protection:
-                Body: 6
-                Engine: 6
-                Tail: 6
-                Wing: 6
-                Weapon: 4
-                Nose: 6
-                Cockpit: 4
+                Body: 7
+                Engine: 7
+                Tail: 7
+                Wing: 7
+                Weapon: 6
+                Nose: 7
+                Cockpit: 5
                 Controls: 6
 
         Raptor:
             description: "Raptor Vehicle Armor"
             protection:
-                Body: 8
-                Engine: 8
-                Tail: 6
-                Wing: 6
+                Body: 10
+                Engine: 10
+                Tail: 8
+                Wing: 8
                 Weapon: 6
-                Nose: 6
-                Cockpit: 4
-                Controls: 6
+                Nose: 8
+                Cockpit: 5
+                Controls: 8
 
         Heavy Raider:
             description: "Cylon Heavy Raider Vehicle Armor"
             protection:
-                Body: 8
-                Engine: 8
-                Tail: 6
-                Wing: 6
+                Body: 10
+                Engine: 10
+                Tail: 8
+                Wing: 8
                 Weapon: 6
-                Nose: 6
-                Cockpit: 4
-                Controls: 6
+                Nose: 8
+                Cockpit: 5
+                Controls: 8
 
         Tank:
             description: "Tank Armor"
             protection:
-                Body: 10
-                Engine: 10
+                Body: 22
+                Engine: 22
                 Weapon: 10
-                Track: 6
-                Side: 8
+                Track: 15
+                Side: 15
+                Cabin: 22
 
         Apc:
             description: "Light Armored Vehicle Armor"
             protection:
-                Body: 8
-                Engine: 8
+                Body: 12
+                Engine: 12
                 Weapon: 6
-                Track: 6
-                Side: 6
+                Track: 8
+                Side: 10
+                Cabin: 12
 
         Truck:
             description: "Cylon Heavy Raider Vehicle Armor"
             protection:
-                Body: 6
-                Cab: 3
-                Engine: 6
+                Body: 7
+                Cab: 6
+                Engine: 8
             
         AA Battery:
             description: "Anti-Aircraft Battery"
             protection:
-                Body: 6
-                Controls: 4
-                Weapon: 4
+                Body: 7
+                Controls: 7
+                Weapon: 6

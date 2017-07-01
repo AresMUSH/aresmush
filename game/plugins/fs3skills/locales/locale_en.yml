@@ -90,6 +90,7 @@ en:
         missing_specialty: "%xh%xy< Missing specialty for %{skill}. >%xn"
         missing_group_specialty: "%xh%xy< Missing %{spec} specialty for %{skill}. >%xn"
         too_many_attributes: "%xh%xy< Too many points on attributes. (%{max} max) >%xn"
+        unusual_abilities_check: "Checking for unusual skills."
         unusual_skill: "%xh%xy< %{skill} is an unusual skill.  Be sure there's good reason for it. >%xn"
         high_bg: "%xh%xy< Are you really good enough to get paid for %{skill}? >%xn"
 

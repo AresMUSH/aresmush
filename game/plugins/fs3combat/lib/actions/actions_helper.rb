@@ -227,18 +227,25 @@ module AresMUSH
       return 0 if !protect
       
       
-      # minimum 10% 
-      pen_chance = [ (pen + attacker_net_successes - protect) * 10, 10 ].max
-      pen_roll = rand(100) 
+      pen_roll = FS3Skills::Api.one_shot_die_roll(pen + attacker_net_successes)[:successes]
+      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
       
-      if (pen_roll <= pen_chance)
-        armor_reduction = 1
+      margin = pen_roll - protect_roll
+      
+      if (margin >= 3)
+        armor_reduction = 0
+      elsif (margin >= 2)
+        armor_reduction = rand(1, 25)
+      elsif (margin >= 0)
+        armor_reduction = rand(26, 50)
+      elsif (margin >= -1)
+        armor_reduction = rand(51, 99)
       else
-        armor_reduction = rand(protect * 5) 
+        armor_reduction = 100
       end
       
       combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen} protect=#{protect} pen_chance=#{pen_chance} pen_roll=#{pen_roll} result=#{armor_reduction}"
+      " pen=#{pen} protect=#{protect} pen_roll=#{pen_roll} protect_roll=#{protect_roll} result=#{armor_reduction}"
       
       armor_reduction
     end

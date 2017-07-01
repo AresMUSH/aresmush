@@ -79,7 +79,6 @@ fs3combat:
             crew_areas: 
                 - Cab
                 - Bed
-                - Body
              
         Tank:
             areas:
@@ -88,6 +87,7 @@ fs3combat:
                 Weapon: [ 'Track', 'Track', 'Engine', 'Engine', 'Body', 'Body', 'Body', 'Weapon', 'Weapon', 'Weapon' ]
                 Track: [ 'Weapon', 'Weapon', 'Engine', 'Engine', 'Body', 'Body', 'Track', 'Track', 'Track', 'Track' ]
                 Side: [ 'Weapon', 'Track', 'Track', 'Body', 'Body', 'Body', 'Side', 'Side', 'Side', 'Side' ]
+                Cabin: [ 'Side', 'Side', 'Track', 'Track', 'Body', 'Body', 'Body', 'Cabin', 'Cabin', 'Cabin' ]
 
             vital_areas:
                 - Body
@@ -97,7 +97,7 @@ fs3combat:
                 - Weapon
                 - Engine
             crew_areas: 
-                - Body
+                - Cabin
 
                                    
         AA Battery:

@@ -193,6 +193,54 @@ module AresMUSH
           review.should eq "fs3skills.starting_skills_check                    chargen.ok"
         end
       end
+      
+
+      describe :unusual_skills_check do
+        before do 
+          @char = double
+          @char.stub(:fs3_background_skills) { [] }
+          @char.stub(:fs3_action_skills) { [] }
+          @char.stub(:fs3_languages) { [] }
+          Global.stub(:read_config).with("fs3skills", "unusual_skills") { [ "A" ] }
+        end
+
+        it "should warn if char has an unusual action skill above everyman" do
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "A", rating: 2) ] }
+          review = FS3Skills.unusual_skills_check(@char)
+          review.should eq "fs3skills.unusual_abilities_check%r%Tfs3skills.unusual_skill"
+        end
+
+        it "should not warn if char has an unusual action skill at everyman" do
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(name: "A", rating: 1) ] }
+          review = FS3Skills.unusual_skills_check(@char)
+          review.should eq "fs3skills.unusual_abilities_check                  chargen.ok"
+        end
+        
+        it "should warn if char has an unusual background skill" do
+          @char.stub(:fs3_background_skills) { [ FS3BackgroundSkill.new(name: "A", rating: 1) ] }
+          review = FS3Skills.unusual_skills_check(@char)
+          review.should eq "fs3skills.unusual_abilities_check%r%Tfs3skills.unusual_skill"
+        end
+        
+        it "should warn if char has an unusual language skill" do
+          @char.stub(:fs3_languages) { [ FS3Language.new(name: "A", rating: 1) ] }
+          review = FS3Skills.unusual_skills_check(@char)
+          review.should eq "fs3skills.unusual_abilities_check%r%Tfs3skills.unusual_skill"
+        end
+        
+        it "should warn if char has a high background skill" do
+          @char.stub(:fs3_background_skills) { [ FS3BackgroundSkill.new(name: "B", rating: 2)]}
+          review = FS3Skills.unusual_skills_check(@char)
+          review.should eq "fs3skills.unusual_abilities_check%r%Tfs3skills.high_bg"
+        end
+        
+        it "should be OK if no unusual skills present" do
+          review = FS3Skills.unusual_skills_check(@char)
+          review.should eq "fs3skills.unusual_abilities_check                  chargen.ok"
+        end
+        
+      end
+      
     end
   end
 end
