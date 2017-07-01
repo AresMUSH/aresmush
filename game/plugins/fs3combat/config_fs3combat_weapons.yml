@@ -63,7 +63,7 @@ fs3combat:
             description: "Guided Anti-Vehicle Missile"
             skill: Gunnery
             lethality: 80
-            penetration: 10
+            penetration: 17
             weapon_type: Ranged
             is_automatic: false
             ammo: 2
@@ -76,7 +76,7 @@ fs3combat:
             description: "Unguided Anti-Vehicle Rockets"
             skill: Gunnery
             lethality: 0
-            penetration: 8
+            penetration: 12
             weapon_type: Ranged
             is_automatic: false
             ammo: 20
@@ -102,7 +102,7 @@ fs3combat:
             description: "Anti-Vehicle explosive"
             skill: Demolitions
             lethality: 15
-            penetration: 10
+            penetration: 25
             weapon_type: Explosive
             is_automatic: false
             # ammo: 0
@@ -115,7 +115,7 @@ fs3combat:
             description: "Random Shrapnel"
             skill: 3
             lethality: 0
-            penetration: 2
+            penetration: 5
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0
@@ -149,7 +149,7 @@ fs3combat:
             description: "Pistol"
             skill: Firearms
             lethality: 0
-            penetration: 4
+            penetration: 5
             weapon_type: Ranged
             is_automatic: false
             ammo: 10
@@ -257,7 +257,7 @@ fs3combat:
             description: "Knife"
             skill: Melee
             lethality: -5
-            penetration: 2
+            penetration: 4
             weapon_type: Melee
             is_automatic: false
             # ammo: 0
@@ -303,7 +303,7 @@ fs3combat:
             description: "Heavy machinegun."
             skill: Firearms
             lethality: 0
-            penetration: 7
+            penetration: 8
             weapon_type: Ranged
             is_automatic: true
             ammo: 100
@@ -318,7 +318,7 @@ fs3combat:
             description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
             skill: Gunnery
             lethality: 0
-            penetration: 8
+            penetration: 10
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0
@@ -331,7 +331,7 @@ fs3combat:
             description: "Tank cannon."
             skill: Gunnery
             lethality: 0
-            penetration: 10
+            penetration: 23
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0

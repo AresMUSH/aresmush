@@ -45,7 +45,7 @@ module AresMUSH
         
     # Rolls a number of FS3 dice and returns the raw die results.
     def self.roll_dice(dice)
-      if (dice > 25)
+      if (dice > 30)
         Global.logger.warn "Attempt to roll #{dice} dice."
         # Hey if they're rolling this many dice they ought to succeed spectacularly.
         return [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
