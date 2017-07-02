@@ -5,7 +5,10 @@ module AresMUSH
       
       def handle
         list = FS3Combat.combats.map { |c| format_combat(c)}
-        client.emit BorderedDisplay.subtitled_list list, t('fs3combat.active_combats'), t('fs3combat.active_combats_titlebar')
+        template = BorderedListTemplate.new list, t('fs3combat.active_combats'), nil, t('fs3combat.active_combats_titlebar')
+        client.emit template.render
+        
+        
       end
       
       def format_combat(combat)

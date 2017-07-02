@@ -13,8 +13,9 @@ module AresMUSH
         end
         
         list = damage.sort_by { |k, v| v }.map { |name, damage_mod| "#{name.ljust(30)} #{damage_mod}" }
-        client.emit BorderedDisplay.subtitled_list list, t('fs3combat.damage_scan_title'), t('fs3combat.damage_scan_subtitle')
-          
+        
+        template = BorderedListTemplate.new list, t('fs3combat.damage_scan_title'), nil, t('fs3combat.damage_scan_subtitle')
+        client.emit template.render
       end
       
 
