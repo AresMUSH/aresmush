@@ -39,15 +39,17 @@ module AresMUSH
             
           when "title"
             scene.update(title: self.value)
-            if (scene.temp_room)
-              scene.room.update(name: "Scene #{scene.id} - #{title}")
-            end
             
           when "summary"
             scene.update(summary: self.value)
             
           when "location"
             scene.update(location: self.value)
+            
+            if (scene.temp_room)
+              scene.room.update(name: "Scene #{scene.id} - #{self.value}")
+            end
+            
             
           when "type"
             if (!Scenes.scene_types.include?(self.value))
