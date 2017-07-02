@@ -33,7 +33,7 @@ module AresMUSH
             return
           end
           
-          if (!Scenes.can_access_scene(enactor, scene))
+          if (!Scenes.can_access_scene?(enactor, scene))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
