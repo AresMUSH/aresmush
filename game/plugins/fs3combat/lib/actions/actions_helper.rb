@@ -225,27 +225,23 @@ module AresMUSH
             
       # Armor doesn't cover this hit location
       return 0 if !protect
-      
-      
-      pen_roll = FS3Skills::Api.one_shot_die_roll(pen + attacker_net_successes)[:successes]
-      protect_roll = FS3Skills::Api.one_shot_die_roll(protect)[:successes]
-      
-      margin = pen_roll - protect_roll
-      
-      if (margin >= 3)
+      random_die = rand(8)
+      result = random_die + attacker_net_successes + pen - protect
+            
+      if (result >= 8) # 8-9
         armor_reduction = 0
-      elsif (margin >= 2)
-        armor_reduction = rand(1..25)
-      elsif (margin >= 0)
-        armor_reduction = rand(26..50)
-      elsif (margin >= -1)
-        armor_reduction = rand(51..99)
-      else
+      elsif (result >= 6) # 6-7
+        armor_reduction = rand(25)
+      elsif (result >= 4) # 4-5
+        armor_reduction = rand(25) + 25
+      elsif (result >= 2) # 2-3
+        armor_reduction = rand(50) + 50
+      else # 0-1
         armor_reduction = 100
       end
       
-      combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
-      " pen=#{pen} protect=#{protect} pen_roll=#{pen_roll} protect_roll=#{protect_roll} result=#{armor_reduction}"
+     combatant.log "Determined armor: loc=#{hitloc} weapon=#{weapon} net=#{attacker_net_successes}" +
+      " pen=#{pen} protect=#{protect} random=#{random_die} result=#{result} reduction=#{armor_reduction}"
       
       armor_reduction
     end
