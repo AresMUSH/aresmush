@@ -463,8 +463,6 @@ module AresMUSH
           @combatant.stub(:armor) { "Tactical" }
           FS3Skills::Api.stub(:one_shot_die_roll) { { successes: 0 } }
           FS3Combat.stub(:weapon_stat) { 5 }
-          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
-          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
         end
 
         it "should return no protection if no armor" do
@@ -491,43 +489,49 @@ module AresMUSH
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
-        it "should bypass armor if pen wins crushing victory" do
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 3 } }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 0 } }
+        it "should bypass armor if weapon wins by enough" do
+          FS3Combat.stub(:rand).with(10) { 6 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
-        it "should provide minimum armor if pen wins solid victory" do
-          FS3Combat.stub(:rand).with(1..25) { 24 }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 3 } }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 1 } }
+        it "should provide minimum armor xxx" do
+          FS3Combat.stub(:rand).with(10) { 4 }
+          FS3Combat.stub(:rand).with(25) { 24 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 24
         end
 
-        it "should provide some armor if pen wins marginal victory/draw" do
-          FS3Combat.stub(:rand).with(26..50) { 44 }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 2 } }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 2 } }
+        it "should provide some armor" do
+          FS3Combat.stub(:rand).with(10) { 2 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
+          FS3Combat.stub(:rand).with(25) { 19 }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 44
         end
 
-        it "should provide extra armor if armor wins" do
-          FS3Combat.stub(:rand).with(51..99) { 65 }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 3 } }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 4 } }
+        it "should provide extra armor" do
+          FS3Combat.stub(:rand).with(10) { 0 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
+          FS3Combat.stub(:rand).with(50) { 15 }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 65
         end
 
         it "should stop attack if armor wins by enough" do
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 1 } }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 4 } }
+          FS3Combat.stub(:rand).with(10) { 1 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 6 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 100
         end
 
         it "should add in attacker successes for to pen roll" do
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(7) { { successes: 1 } }
-          FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 4 } }
-          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 2).should eq 100
+          FS3Combat.stub(:rand).with(10) { 8 }
+          FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 3 }
+          FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 5 } }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 2).should eq 0
         end        
       end
       
