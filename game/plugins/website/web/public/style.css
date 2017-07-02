@@ -221,6 +221,11 @@ a:hover { text-decoration: none; }
     padding: 20px;
 }
 
+.profile-gallery {
+    float: left;
+    padding: 10px;
+}
+
 .inline-response {
     border: 1px solid #ccc;
     margin: 20px;
