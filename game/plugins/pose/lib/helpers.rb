@@ -29,7 +29,7 @@ module AresMUSH
       next_up_char = Character.find_one_by_name(next_up_name)
       
       if ((next_up_char.room != room) || !next_up_char.client)
-        enactor_room.remove_from_pose_order(next_up_name)
+        room.remove_from_pose_order(next_up_name)
         Pose.notify_next_person(room)
       elsif (next_up_char.pose_nudge && !next_up_char.pose_nudge_muted)
         next_up_char.client.emit_ooc t('pose.pose_your_turn')      
