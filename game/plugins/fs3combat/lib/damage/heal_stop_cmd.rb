@@ -9,6 +9,13 @@ module AresMUSH
         self.name = titlecase_arg(cmd.args)
       end
       
+      def required_args
+        {
+          args: [ self.name ],
+          help: 'damage'
+        }
+      end
+      
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           healing = Healing.find(character_id: enactor.id).combine(patient_id: model.id).first
