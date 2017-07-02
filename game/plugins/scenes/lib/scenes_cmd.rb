@@ -12,7 +12,7 @@ module AresMUSH
       def handle
         if (show_all)
           scenes = Scene.all
-          list = scenes.map { |s| "#{s.id} - #{s.title} (#{s.owner.name})"}
+          list = scenes.map { |s| "#{s.id} - #{s.title || s.location} (#{s.owner.name})"}
           template = BorderedPagedListTemplate.new list, cmd.page, 25, t('scenes.scenes_title')
           
         else
