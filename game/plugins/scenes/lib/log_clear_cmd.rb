@@ -14,13 +14,6 @@ module AresMUSH
         
       end
       
-      def required_args
-        {
-          args: [ self.scene_num ],
-          help: 'scenes logging'
-        }
-      end
-      
       def handle
         
         Scenes.with_a_scene(self.scene_num, client) do |scene|

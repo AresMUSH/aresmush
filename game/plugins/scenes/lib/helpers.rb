@@ -21,6 +21,11 @@ module AresMUSH
     end
     
     def self.with_a_scene(scene_id, client, &block)
+      if (!scene_id)
+        client.emit_failure t('scenes.scene_not_specified')
+        return
+      end
+      
       scene = Scene[scene_id]
       if (!scene)
         client.emit_failure t('scenes.scene_not_found')
