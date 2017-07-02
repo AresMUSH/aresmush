@@ -14,6 +14,7 @@ load "lib/commands/roll_cmd.rb"
 load "lib/commands/roll_opposed_cmd.rb"
 load "lib/commands/set_ability_cmd.rb"
 load "lib/commands/xp_award_cmd.rb"
+load "lib/commands/xp_undo_cmd.rb"
 load "lib/commands/xp_cmd.rb"
 load "lib/commands/luck_award_cmd.rb"
 load "lib/commands/luck_spend_cmd.rb"
@@ -107,7 +108,9 @@ module AresMUSH
       when "xp"
         case cmd.switch
         when "award"
-          return XpAwardCmd         
+          return XpAwardCmd    
+        when "undo"
+          return XpUndoCmd     
         else
           return XpCmd
         end

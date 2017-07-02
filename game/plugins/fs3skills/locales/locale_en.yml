@@ -149,3 +149,4 @@ en:
         xp_job_title: "XP Spent - %{name}"
         xp_raised_job: "%{name} raised %{ability} to %{rating} with XP."
         must_be_approved: "You must be approved before you can spend XP."
+        xp_undone: "You undo %{name}'s XP spend on %{skill} and refund them 1XP."

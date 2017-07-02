@@ -14,6 +14,8 @@ module AresMUSH
       @aws_bucket = Global.read_config("secrets", "aws", "bucket")
       @aws_region = Global.read_config("secrets", "aws", "region")
       
+      @wikidot_api_key = Global.read_config("secrets", "wikidot", "api_key")
+      
       erb :"admin/config_secrets"
     end
     
@@ -38,6 +40,9 @@ module AresMUSH
         'secret_key' => @params[:aws_secret_key],
         'bucket' => @params[:aws_bucket],
         'region' => @params[:aws_region]
+      }
+      @secrets['wikidot'] = {
+        'api_key' => @params[:wikidot_api_key]
       }
       
       config = {
