@@ -3,16 +3,16 @@ module AresMUSH
     class SceneStartCmd
       include CommandHandler
       
-      attr_accessor :title, :privacy, :temp
+      attr_accessor :location, :privacy, :temp
       
       def parse_args
         if (cmd.args)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-          self.title = titlecase_arg(args.arg1)
+          self.location = titlecase_arg(args.arg1)
           self.privacy = titlecase_arg(args.arg2)
           self.temp = true
         else
-          self.title = enactor_room.name
+          self.location = enactor_room.name
           self.privacy = enactor_room.room_type == "IC" ? "Public" : "Private"
           self.temp = false
         end
@@ -20,7 +20,7 @@ module AresMUSH
       
       def required_args
         {
-          args: [ self.title, self.privacy ],
+          args: [ self.location, self.privacy ],
           help: 'scenes creating'
         }
       end
@@ -38,14 +38,13 @@ module AresMUSH
         end
         
         scene = Scene.create(owner: enactor, 
-            title: self.title, 
+            location: self.location, 
             private_scene: self.privacy == "Private",
-            location: self.temp ? nil : enactor_room.name,
             temp_room: self.temp,
             icdate: ICTime::Api.ictime.strftime("%Y-%m-%d"))
             
         if (self.temp)
-          room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.title}")
+          room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.location}")
           ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
           Rooms.move_to(client, enactor, room)
         else

@@ -15,8 +15,11 @@ module AresMUSH
       
       if (!is_ooc)
         Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc)
-        enactor.room.update_pose_order(enactor.name)
-        Pose.notify_next_person(enactor.room)
+
+        if (room.room_type != "OOC")
+          enactor.room.update_pose_order(enactor.name)
+          Pose.notify_next_person(enactor.room)
+        end
       end
     end
         
