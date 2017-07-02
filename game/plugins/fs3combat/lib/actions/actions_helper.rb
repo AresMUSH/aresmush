@@ -235,11 +235,11 @@ module AresMUSH
       if (margin >= 3)
         armor_reduction = 0
       elsif (margin >= 2)
-        armor_reduction = rand(1, 25)
+        armor_reduction = rand(1..25)
       elsif (margin >= 0)
-        armor_reduction = rand(26, 50)
+        armor_reduction = rand(26..50)
       elsif (margin >= -1)
-        armor_reduction = rand(51, 99)
+        armor_reduction = rand(51..99)
       else
         armor_reduction = 100
       end

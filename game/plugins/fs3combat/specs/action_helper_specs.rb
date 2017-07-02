@@ -498,21 +498,21 @@ module AresMUSH
         end
         
         it "should provide minimum armor if pen wins solid victory" do
-          FS3Combat.stub(:rand).with(1, 25) { 24 }
+          FS3Combat.stub(:rand).with(1..25) { 24 }
           FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 3 } }
           FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 1 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 24
         end
 
         it "should provide some armor if pen wins marginal victory/draw" do
-          FS3Combat.stub(:rand).with(26, 50) { 44 }
+          FS3Combat.stub(:rand).with(26..50) { 44 }
           FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 2 } }
           FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 2 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 44
         end
 
         it "should provide extra armor if armor wins" do
-          FS3Combat.stub(:rand).with(51, 99) { 65 }
+          FS3Combat.stub(:rand).with(51..99) { 65 }
           FS3Skills::Api.should_receive(:one_shot_die_roll).with(5) { { successes: 3 } }
           FS3Skills::Api.should_receive(:one_shot_die_roll).with(3) { { successes: 4 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 65
