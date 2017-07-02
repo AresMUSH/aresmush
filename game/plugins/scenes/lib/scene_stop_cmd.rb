@@ -13,13 +13,6 @@ module AresMUSH
         end
       end
       
-      def required_args
-        {
-          args: [ self.scene_num ],
-          help: 'scenes creating'
-        }
-      end
-      
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
           if (!Scenes.can_manage_scene(enactor, scene))

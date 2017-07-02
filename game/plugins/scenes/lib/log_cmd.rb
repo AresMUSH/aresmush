@@ -15,13 +15,6 @@ module AresMUSH
         self.all = cmd.switch_is?("all")
       end
       
-      def required_args
-        {
-          args: [ self.scene_num ],
-          help: 'scenes logging'
-        }
-      end
-      
       def handle
         
         if (cmd.args)
