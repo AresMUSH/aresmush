@@ -6,6 +6,7 @@ aliases:
 - repose
 - scene share
 - scene unshare
+- log
 ---
 # Scene Logging
 
