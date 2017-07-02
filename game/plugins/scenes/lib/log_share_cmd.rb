@@ -33,11 +33,6 @@ module AresMUSH
             return
           end
           
-          if (!Scenes.can_manage_scene(enactor, scene))
-            client.emit_failure t('dispatcher.not_allowed')
-            return
-          end
-          
           scene.update(shared: self.share)
           message = self.share ? t('scenes.log_shared', :name => enactor_name) : 
               t('scenes.log_unshared', :name => enactor_name)
