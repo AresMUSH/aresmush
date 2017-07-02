@@ -36,7 +36,7 @@ module AresMUSH
       end
       
       def self.approved_chars
-        Character.all.select { |c| c.is_approved? && !c.idled_out? }
+        Idle::Api.active_chars.select { |c| c.is_approved? }
       end
     end    
   end
