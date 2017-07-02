@@ -4,6 +4,6 @@ wikidot:
     character_category: char
     log_date_format: "%Y-%m-%d"
     
-    log_types:
-        - social
-        - event
+    shortcuts:
+        "log/wiki" : "wiki/log"
+        "scene/wiki" : "wiki/log"

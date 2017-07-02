@@ -78,7 +78,7 @@ module AresMUSH
         end
         
         if (room.scene)
-          Scenes::Api.add_pose(room.scene.id, message)
+          Scenes::Api.add_pose(room.scene, message)
         end
         
       end

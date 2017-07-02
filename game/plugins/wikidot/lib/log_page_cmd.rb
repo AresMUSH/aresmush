@@ -3,47 +3,50 @@ module AresMUSH
     class LogPageCmd
       include CommandHandler
       
-      attr_accessor :scene, :log_type
+      attr_accessor :scene
 
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        
-        self.scene = args.arg1
-        self.log_type = downcase_arg(args.arg2)
+        self.scene = integer_arg(cmd.args)
       end
       
       def required_args
         {
-          args: [ self.scene, self.log_type ],
+          args: [ self.scene ],
           help: 'wiki'
         }
       end
       
-      def check_log_type
-        if (!Wikidot.log_types.include?(self.log_type))          
-          return t('wikidot.invalid_log_type', :types => Wikidot.log_types.join(", "))
-        end
-        
-        return nil
-      end
-      
       def handle
-        result = Scenes.get_log(self.scene, enactor)
-        
-        if (result[:error])
-          client.emit_failure result[:error]
+        scene = Scene[self.scene]
+        if (!scene)
+          client.emit_failure t('scenes.scene_not_found')
           return
         end
         
-        log = result[:log]
-        template =  LogTemplate.new(log)
-        content = template.render
-        tags = Wikidot.log_tags(log, self.log_type)
-        icdate = log.ictime ? Wikidot.format_log_date(log.ictime) : "TODO DATE"
-        
-        title = "#{icdate} - #{log.title}"
-        page_name = Wikidot.log_page_name(title, self.log_type)
+        if (!Scenes.can_access_scene?(enactor, scene))
+          client.emit_failure t('scenes.access_not_allowed')
+          return
+        end
 
+        if (!scene.completed)
+          client.emit_failure t('wikidot.only_completed_logs')
+          return
+        end
+        
+        if (!scene.all_info_set?)
+          client.emit_failure t('scenes.scene_info_missing', :title => scene.title || "??", 
+             :summary => scene.summary || "??", 
+             :type => scene.scene_type || "??", 
+             :location => scene.location || "??")
+          return
+        end
+        
+        template =  LogTemplate.new(scene)
+        content = template.render
+        tags = Wikidot.log_tags(scene)
+        
+        title = "#{scene.icdate} - #{scene.title}"
+        page_name = Wikidot.log_page_name(scene)        
         client.emit_ooc t('wikidot.creating_page')
 
         Global.dispatcher.spawn("Creating wiki log page", client) do

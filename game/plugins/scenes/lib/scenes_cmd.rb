@@ -10,11 +10,15 @@ module AresMUSH
       end
       
       def handle
-        scenes = Scene.all
-        if (!show_all)
-          scenes = scenes.select { |s| !s.completed }
+        if (show_all)
+          scenes = Scene.all
+          list = scenes.map { |s| "#{s.id} - #{s.title} (#{s.owner.name})"}
+          template = BorderedPagedListTemplate.new list, cmd.page, 25, t('scenes.scenes_title')
+          
+        else
+          scenes = Scene.all.select { |s| !s.completed }
+          template = SceneListTemplate.new(scenes)
         end
-        template = SceneListTemplate.new(scenes)
         client.emit template.render
       end
     end

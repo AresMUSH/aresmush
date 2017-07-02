@@ -1,28 +1,20 @@
 module AresMUSH
   module Scenes
-    
-    class GameStartedEventHandler
+    class PoseEventHandler
       def on_event(event)
-        Pose.reset_reposes
-      end
-    end
-    
-    class CharConnectedEventHandler
-      def on_event(event)
-        if (event.char.pose_nudge_muted)
-          event.char.update(pose_nudge_muted: false)
+        enactor = event.enactor
+        scene = enactor.room.scene
+        if (scene && !event.is_ooc)
+          Scenes.add_pose(scene, event.pose, enactor)
         end
       end
     end
-    
     
     class CronEventHandler
       def on_event(event)
         config = Global.read_config("scenes", "cron")
         return if !Cron.is_cron_match?(config, event.time)
-        
-        Pose.reset_reposes
-        
+                
         rooms = Room.all.select { |r| !!r.scene_set || !!r.scene }
         rooms.each do |r|
           if (r.clients.empty? && r.scene_set)

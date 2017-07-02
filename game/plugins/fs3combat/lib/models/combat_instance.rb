@@ -61,7 +61,7 @@ module AresMUSH
       self.combatants.each { |c| c.emit(message) }
       
       if (add_to_scene && self.scene)
-        Scenes::Api.add_pose(self.scene.id, message)
+        Scenes::Api.add_pose(self.scene, message)
       end
     end
       

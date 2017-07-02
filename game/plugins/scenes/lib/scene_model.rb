@@ -2,7 +2,6 @@ module AresMUSH
   class Room
     reference :scene, "AresMUSH::Scene"
     attribute :scene_set
-    reference :repose_info, "AresMUSH::ReposeInfo"
   end
   
   class Scene < Ohm::Model
@@ -13,10 +12,14 @@ module AresMUSH
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean
+    attribute :temp_room, :type => DataType::Boolean
     attribute :completed
+    attribute :scene_type
     attribute :location
     attribute :summary
-    attribute :ictime, :type => DataType::Date
+    attribute :shared
+    attribute :logging_enabled, :type => DataType::Boolean, :default => true
+    attribute :icdate
     
     collection :scene_poses, "AresMUSH::ScenePose"
     
@@ -38,6 +41,10 @@ module AresMUSH
     
     def delete_poses
       scene_poses.each { |p| p.delete }
+    end
+    
+    def all_info_set?
+      self.title && self.location && self.scene_type && self.summary
     end
   end
   
@@ -64,35 +71,6 @@ module AresMUSH
   end
   
   
-  class PoseOrder < Ohm::Model
-    include ObjectModel
-    
-    attribute :time, :type => DataType::Time
-
-    reference :character, "AresMUSH::Character"
-    reference :repose_info, "AresMUSH::ReposeInfo"
-  end
-  
-  class ReposeInfo < Ohm::Model
-    include ObjectModel
-    
-    reference :room, "AresMUSH::Room"
-    
-    attribute :first_turn, :type => DataType::Boolean, :default => true
-    attribute :poses, :type => DataType::Array, :default => []
-    attribute :enabled, :type => DataType::Boolean, :default => true
-    collection :pose_orders, "AresMUSH::PoseOrder"
-    
-    def reset
-      pose_orders.each { |po| po.delete }
-      self.update(poses: [])
-      self.update(first_turn: true)
-    end
-    
-    def sorted_orders
-      self.pose_orders.to_a.sort { |p1, p2| p1.time <=> p2.time }
-    end
-  end
   
   
 end

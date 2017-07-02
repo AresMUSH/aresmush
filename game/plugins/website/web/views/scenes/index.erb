@@ -22,6 +22,12 @@
         <span class="label label-warning">In Progress</span>
         <% end %>
         
+        <% if s.scene_type == 'Event' %>
+        <span class="label label-danger">Event</span>
+        <% else %>
+        <span class="label label-info">Social</span>
+        <% end %>
+        
         <p><%= s.summary %></p>
         </td>
         <td>

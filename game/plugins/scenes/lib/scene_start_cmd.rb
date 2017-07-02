@@ -3,12 +3,19 @@ module AresMUSH
     class SceneStartCmd
       include CommandHandler
       
-      attr_accessor :title, :privacy
+      attr_accessor :title, :privacy, :temp
       
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
-        self.title = titlecase_arg(args.arg1)
-        self.privacy = titlecase_arg(args.arg2) || "Public"
+        if (cmd.args)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.title = titlecase_arg(args.arg1)
+          self.privacy = titlecase_arg(args.arg2)
+          self.temp = true
+        else
+          self.title = enactor_room.name
+          self.privacy = enactor_room.room_type == "IC" ? "Public" : "Private"
+          self.temp = false
+        end
       end
       
       def required_args
@@ -19,20 +26,34 @@ module AresMUSH
       end
 
       def check_privacy
-        return t('scenes.invalid_privacy') if !Scenes.is_valid_privacy(self.privacy)
+        return t('scenes.invalid_privacy') if !Scenes.is_valid_privacy?(self.privacy)
         return nil
       end
             
       def handle
+        
+        if (!self.temp && enactor_room.room_type == "OOC")
+          client.emit_failure t('scenes.no_scene_in_ooc_room')
+          return
+        end
+        
         scene = Scene.create(owner: enactor, 
             title: self.title, 
             private_scene: self.privacy == "Private",
-            ictime: ICTime::Api.ic_datestr(ICTime::Api.ictime))
-        room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.title}")
-        ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
+            location: self.temp ? nil : enactor_room.name,
+            temp_room: self.temp,
+            icdate: ICTime::Api.ictime.strftime("%Y-%m-%d"))
+            
+        if (self.temp)
+          room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.title}")
+          ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
+          Rooms.move_to(client, enactor, room)
+        else
+          room = enactor_room
+          room.update(scene: scene)
+          room.emit_ooc t('scenes.announce_scene_start', :name => enactor_name)
+        end
         scene.update(room: room)
-        Pose.enable_repose(room)
-        Rooms.move_to(client, enactor, room)
       end
     end
   end

@@ -12,6 +12,12 @@ module AresMUSH
       def handle
                         
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+          
+          if (!model.is_approved?)
+            client.emit_failure t('wikidot.only_approved_chars')
+            return
+          end
+          
           template =  CharTemplate.new(model)
           content = template.render
           tags = Wikidot.character_tags(model)

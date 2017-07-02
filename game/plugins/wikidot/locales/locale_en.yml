@@ -7,7 +7,6 @@ en:
         template_provided: "Above is a template you can copy/paste in whole or in part to the wiki page."
         page_tags: "Copy this to the page tags after the page is created:%xn %{tags}"
         creating_page: "Creating page.  Please wait."
-        log_types: "Available log types are: %{types}."
-        invalid_log_type: "That is not a valid log type.  Try one of these: %{types}."
         
-        
+        only_approved_chars: "Only approved characters can get a wiki page."
+        only_completed_logs: "Only completed logs can get a wiki page."

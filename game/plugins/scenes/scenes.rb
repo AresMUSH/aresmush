@@ -5,14 +5,13 @@ load "lib/helpers.rb"
 load "lib/log_cmd.rb"
 load "lib/log_clear_cmd.rb"
 load "lib/log_enable_cmd.rb"
+load "lib/log_share_cmd.rb"
+load "lib/scene_types_cmd.rb"
 load "lib/scene_model.rb"
+load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
-load "lib/scene_location_cmd.rb"
-load "lib/scene_privacy_cmd.rb"
-load "lib/scene_title_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_start_cmd.rb"
-load "lib/scene_summary_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
@@ -48,24 +47,22 @@ module AresMUSH
 
       when "scene"
         case cmd.switch
-        when nil
+        when nil, "all"
           return ScenesCmd
         when "join"
           return SceneJoinCmd
-        when "location"
-          return SceneLocationCmd
+        when "location", "privacy", "summary", "title", "type"
+          return SceneInfoCmd
         when "set"
           return SceneSetCmd
         when "start"
           return SceneStartCmd
         when "stop"
           return SceneStopCmd
-        when "summary"
-          return SceneSummaryCmd
-        when "title"
-          return SceneTitleCmd
-        when "privacy"
-          return ScenePrivacyCmd
+        when "types"
+          return SceneTypesCmd
+        when "log"
+          return LogCmd
         end
       when "log"
         case cmd.switch
@@ -73,7 +70,9 @@ module AresMUSH
           return LogClearCmd
         when "on", "off"
           return LogEnableCmd
-        when nil
+        when "share", "unshare"
+          return LogShareCmd
+        when nil, "all"
           return LogCmd
         end
       end
@@ -84,10 +83,8 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return CronEventHandler
-      when "GameStartedEvent"
-        return GameStartedEventHandler
-      when "CharConnectedEvent"
-        return CharConnectedEventHandler
+      when "PoseEvent"
+        return PoseEventHandler
       end
       nil
     end

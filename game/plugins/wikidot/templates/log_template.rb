@@ -2,19 +2,19 @@ module AresMUSH
   module Wikidot
     class LogTemplate < ErbTemplateRenderer
       
-      attr_accessor :log
+      attr_accessor :scene
       
-      def initialize(log)
-        @log = log
+      def initialize(scene)
+        @scene = scene
         super File.dirname(__FILE__) + "/log.erb"
       end
       
       def summary
-        @log.summary || "TODO: Summary goes here."
+        @scene.summary || "TODO: Summary goes here."
       end
       
       def location
-        @log.location || "TODO: Location" 
+        @scene.location || "TODO: Location" 
       end
       
       def format_pose(pose)

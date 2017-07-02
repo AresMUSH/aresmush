@@ -76,7 +76,7 @@ module AresMUSH
       end
 
       def hooks
-        @char.fs3_hooks.map { |h| "%R* **#{h.name}** - #{h.description}" }.join
+        @char.fs3_hooks.map { |h| "\n* **#{h.name}** - #{h.description}" }.join
       end
     end
   end

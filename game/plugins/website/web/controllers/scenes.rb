@@ -2,20 +2,19 @@ module AresMUSH
   class WebApp
    
     get '/scenes' do
-      @scenes = Scene.all.select { |s| !s.private_scene }.sort_by { |s| s.created_at }.reverse
+      @scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.created_at }.reverse
       erb :"scenes/index"
     end
     
     get '/scene/:id' do |id|
       @scene = Scene[id]
       
-      erb :"scenes/log"
-    end
-    
-    get '/scene/:id/wiki' do |id|
-      @scene = Scene[id]
+      if (!@scene.shared)
+        flash[:error] = "That scene has not been shared."
+        redirect "/scenes"
+      end
       
-      erb :"scenes/wiki"
+      erb :"scenes/log"
     end
     
     get '/scene/pose/:id/delete' do |id|

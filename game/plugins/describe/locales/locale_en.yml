@@ -30,7 +30,7 @@ en:
        exits_title: "Exits:"
        no_way_out: "No way out!"
        
-       repose_active: "+++ The repose system is active in this room. +++"
+       repose_active: "+++ The scene log is active in this room. +++"
        
        no_such_detail: "No such detail available."
        detail_deleted: "Detail deleted."

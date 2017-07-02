@@ -1,19 +1,37 @@
 module AresMUSH
   module Scenes
-    class ReposeClearCmd
+    class LogClearCmd
       include CommandHandler
             
+      attr_accessor :scene_num
+      
+      def parse_args
+        if (cmd.args)
+          self.scene_num = integer_arg(cmd.args)
+        else
+          self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
+        end
+        
+      end
+      
+      def required_args
+        {
+          args: [ self.scene_num ],
+          help: 'scenes logging'
+        }
+      end
+      
       def handle
-        if (!enactor.room.repose_on?)
-          client.emit_failure t('pose.repose_off')
-          return
+        
+        Scenes.with_a_scene(self.scene_num, client) do |scene|
+          if (!scene.logging_enabled)
+            client.emit_failure t('scenes.logging_not_enabled')
+            return
+          end
+        
+          scene.delete_poses
+          scene.room.emit_ooc t('scenes.log_cleared')
         end
-
-        enactor.room.repose_info.reset
-        if (enactor.room.scene)
-          Scenes::Api.reset_poses(enactor.room.scene.id)
-        end
-        client.emit_success t('pose.repose_cleared')
       end
     end
   end

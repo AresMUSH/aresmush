@@ -2,7 +2,6 @@ $:.unshift File.dirname(__FILE__)
 
 load "lib/character_page_cmd.rb"
 load "lib/log_page_cmd.rb"
-load "lib/log_types_cmd.rb"
 load "lib/helpers.rb"
 load "templates/log_template.rb"
 load "templates/char_template.rb"
@@ -15,7 +14,7 @@ module AresMUSH
     end
  
     def self.shortcuts
-      {}
+      Global.read_config("wikidot", "shortcuts")
     end
  
     def self.load_plugin
@@ -41,8 +40,6 @@ module AresMUSH
           return CharacterPageCmd
         when "log"
           return LogPageCmd
-        when "logtypes"
-          return LogTypesCmd
         end
       end
       nil
