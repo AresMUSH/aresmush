@@ -15,7 +15,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 
 `scenes` - Lists scenes.
 `scene/start` - Starts a scene in your current room.
-`scene/start <title>=<location>/<private/public>` - Starts a scene in a temp room.
+`scene/start <location name>=<private/public>` - Starts a scene in a temp room.
 `scene/join <#>` - Joins a public scene.
 `scene/stop` - Stops a scene.
 
