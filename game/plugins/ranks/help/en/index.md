@@ -19,7 +19,3 @@ As part of character creation, you can set your rank.
 Admins and people with the `manage_ranks` permission can set someone else's rank, including restricted ranks that are not available in chargen.
 
 `rank <name>=<rank>`
-
-## Admin Topics
-
-[Configuring the Ranks System](/help/ranks/config)

@@ -4,9 +4,7 @@ load "lib/profile_cmd.rb"
 load "lib/profile_delete_cmd.rb"
 load "lib/profile_edit_cmd.rb"
 load "lib/profile_model.rb"
-load "lib/wiki_cmd.rb"
 load "templates/profile_template.rb"
-load "templates/wiki_template.rb"
 
 module AresMUSH
   module Profile
@@ -46,8 +44,6 @@ module AresMUSH
         when nil
           return ProfileCmd
         end
-      when "wiki"
-        return WikiCmd
       end
       nil
     end

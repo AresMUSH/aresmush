@@ -17,7 +17,9 @@ module AresMUSH
           list << "#{fg}%t%t%t#{bg}"
         end
         
-        client.emit BorderedDisplay.paged_list(list, cmd.page, 25, t('ansi.colors_title'), t('ansi.x_or_c'))
+        
+        template = BorderedPagedListTemplate.new list, cmd.page, 25, t('ansi.colors_title'), t('ansi.x_or_c')
+        client.emit template.render
       end
     end
   end

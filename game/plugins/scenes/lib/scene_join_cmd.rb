@@ -12,7 +12,7 @@ module AresMUSH
       def required_args
         {
           args: [ self.scene_num ],
-          help: 'scenes'
+          help: 'scenes creating'
         }
       end
       
@@ -28,6 +28,7 @@ module AresMUSH
           client.emit_failure t('scenes.scene_is_private')
           return
         end
+        client.emit_ooc t('scenes.scene_about_to_join')
         
         scene.room.emit_ooc t('scenes.scene_pending_join', :name => enactor_name)
         

@@ -13,6 +13,7 @@ load "lib/census_cmd.rb"
 load "lib/group_set_cmd.rb"
 load "lib/groups_cmd.rb"
 load "lib/groups_detail_cmd.rb"
+load "lib/icon_cmd.rb"
 load "templates/actors_list.rb"
 load "templates/complete_census_template.rb"
 load "templates/gender_census_template.rb"
@@ -60,7 +61,14 @@ module AresMUSH
           return ActorCatcherCmd
         end
       when "actors"
-        return ActorsListCmd
+        case cmd.switch
+        when "set"
+          return ActorSetCmd
+        when "search"
+          return ActorSearchCmd
+        else
+          return ActorsListCmd
+        end
       when "age"
         return AgeCmd 
       when "birthdate"
@@ -69,6 +77,8 @@ module AresMUSH
         return BasicDemographicCmd
       when "census"
         return CensusCmd
+      when "icon"
+        return IconCmd
       when "group"
         case cmd.switch
         when "set"

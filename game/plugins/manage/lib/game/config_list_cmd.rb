@@ -9,7 +9,8 @@ module AresMUSH
       end
       
       def handle
-        client.emit BorderedDisplay.table(Global.config_reader.config.keys.sort, 25, t('manage.config_sections'))
+        template = BorderedTableTemplate.new Global.config_reader.config.keys.sort, 25, t('manage.config_sections')
+        client.emit template.render
       end
     end
   end

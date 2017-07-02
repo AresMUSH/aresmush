@@ -28,7 +28,7 @@ For first aid/treatment immediately after an injury, medics can use the treat co
 For more longer-term healing, doctors/healers can use the heal command.  You will continue healing someone until they are well.  
 
 `heal/start <name>` - Takes someone as a patient.
-`heal/start <name>` - Removes a patient.
+`heal/stop <name>` - Removes a patient.
 `heal/list` - Shows your patients.
 `heal/scan` - Find injured patients who might need your services.
 

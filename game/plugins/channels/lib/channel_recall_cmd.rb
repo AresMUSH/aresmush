@@ -29,7 +29,9 @@ module AresMUSH
           total_messages = channel.messages.count
           start_message = [ (total_messages - self.num_messages), 0 ].max
           messages = channel.messages[start_message, total_messages].map { |m| " #{m}" }
-          client.emit BorderedDisplay.list messages, t('channels.recall_history', :name => channel.display_name(false))
+
+          template = BorderedListTemplate.new messages, t('channels.recall_history', :name => channel.display_name(false))
+          client.emit template.render
         end
       end
     end  

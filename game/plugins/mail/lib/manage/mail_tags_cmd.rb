@@ -5,11 +5,10 @@ module AresMUSH
       
       def handle
         all_tags = []
-        enactor.mail.each do |msg|
-          all_tags = all_tags.concat(msg.tags || [])
-        end
+        Mail.all_tags(enactor)
         
-        client.emit BorderedDisplay.list all_tags.uniq.sort, t('mail.all_tags')
+        template = BorderedListTemplate.new all_tags.uniq.sort, t('mail.all_tags')
+        client.emit template.render
       end
     end
   end

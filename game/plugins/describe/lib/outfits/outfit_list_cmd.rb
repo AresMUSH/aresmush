@@ -5,7 +5,8 @@ module AresMUSH
       
       def handle
         outfits = enactor.outfits.map { |d| d.name }
-        client.emit BorderedDisplay.list(outfits, t('describe.your_outfits'))
+        template = BorderedListTemplate.new outfits, t('describe.your_outfits')
+        client.emit template.render
       end
     end
   end

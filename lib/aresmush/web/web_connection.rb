@@ -1,7 +1,8 @@
 module AresMUSH
 
   class WebConnection
-    attr_accessor :client, :websocket, :ip_addr, :ready_callback
+    attr_accessor :websocket, :ip_addr, :ready_callback
+    attr_reader :client, :char_id
     
     def initialize(websocket, &ready_callback)
       self.websocket = websocket
@@ -24,11 +25,29 @@ module AresMUSH
       end
     end
     
+    def connect_client(client)
+      @client = client
+    end
+    
     def send_data(msg)
       begin
         self.websocket.send msg
       rescue Exception => e
         # This happens all the time when you close your browser tab or disconnect, so just ignore it.
+      end
+    end
+    
+    def web_notify(type, message, char = nil)
+      if (!char || @char_id == char.id)  
+        data = {
+          type: "notification",
+          args: {
+            character: char ? char.id : nil,
+            notification_type: type,
+            message: message
+          }
+        }
+        send_data data.to_json.to_s
       end
     end
     
@@ -55,8 +74,10 @@ module AresMUSH
         json_input = JSON.parse(data)
         if (json_input["type"] == "input")
           @client.handle_input(json_input["message"] + "\r\n")
+        elsif (json_input["type"] == "identify")
+          data = json_input["data"]
+          @char_id = data ? data["id"] : nil
         elsif (json_input["type"] == "cmd")
-          Global.logger.debug "Cmd input #{json_input}"
           Global.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
         else
           Global.logger.warn "Unexpected input from web client: #{data}"

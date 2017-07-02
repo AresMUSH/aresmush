@@ -17,18 +17,16 @@ module AresMUSH
       end
       
       def handle
-        char = Character.find_one_by_name(self.name)
-        if (!char)
-          char = Character.all.select { |c|( c.demographic('fullname') || "").upcase =~ /#{self.name}/ }.first
-        end
-        if (!char)
-          char = Character.all.select { |c| (c.demographic('callsign') || "").upcase == self.name }.first
-        end
+        chars = Character.find_any_by_name(self.name)
+        chars.concat Character.all.select { |c|( c.demographic('fullname') || "").upcase =~ /#{self.name}/ }
+        chars.concat Character.all.select { |c| (c.demographic('callsign') || "").upcase == self.name }
         
-        if (!char)
+        if (chars.empty?)
           client.emit_failure t('db.object_not_found')
         else
-          client.emit_ooc "#{char.name}: #{Ranks::Api.military_name(char)}"
+          list = chars.uniq.map { |char| "#{char.name}: #{Ranks::Api.military_name(char)}" }
+          template = BorderedListTemplate.new list
+          client.emit template.render
         end
       end      
     end

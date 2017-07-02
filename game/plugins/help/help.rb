@@ -16,6 +16,14 @@ module AresMUSH
     end
  
     def self.load_plugin
+    
+      AresMUSH.with_error_handling(nil, "Loading help.") do
+        Global.help_reader.clear_help
+        Plugins.all_plugins.each do |p|
+          Global.plugin_manager.load_plugin_help_by_name p
+        end
+      end
+      
       self
     end
  

@@ -16,7 +16,7 @@
 %xg<%= t('describe.scene_set_title')%>%xn
 %xh<%= room.scene_set %>%xn
 <% end %>
-<% if repose_on %>
+<% if logging_enabled %>
 
 %xy<%= center( t('describe.repose_active'), 78 )%>%xn
 <% end %>
@@ -32,7 +32,7 @@
 <% end %>
 <% if exits.count == 0 %>No way out!<% end %>
 <% if is_foyer %>
-<%= line 2 -%>
+<%= divider -%>
 <% foyer_exits.each_with_index do |e, i| %>
 <%= foyer_status(e, i) -%>
 <% end %>

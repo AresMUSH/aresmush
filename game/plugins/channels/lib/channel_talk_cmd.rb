@@ -38,6 +38,10 @@ module AresMUSH
           num = self.msg.after("last")
           limit = num.blank? ? "" : "=#{integer_arg(num)}"
           cmd = Command.new("channel/recall #{self.channel.name}#{limit}")
+        elsif (self.msg =~ /^recall[ \d]*$/)
+          num = self.msg.after("recall")
+          limit = num.blank? ? "" : "=#{integer_arg(num)}"
+          cmd = Command.new("channel/recall #{self.channel.name}#{limit}")
         end
         
         if (cmd)

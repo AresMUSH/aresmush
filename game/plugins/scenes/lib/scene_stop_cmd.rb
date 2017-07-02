@@ -16,24 +16,24 @@ module AresMUSH
       def required_args
         {
           args: [ self.scene_num ],
-          help: 'scenes'
+          help: 'scenes creating'
         }
       end
       
       def handle        
-        scene = Scene[self.scene_num]
-        if (!scene)
-          client.emit_failure t('scenes.scene_not_found')    
-          return
-        end
+        Scenes.with_a_scene(self.scene_num, client) do |scene|
+          if (!Scenes.can_manage_scene(enactor, scene))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
         
-        if (!Scenes.can_manage_scene(enactor, scene))
-          client.emit_failure t('dispatcher.not_allowed')
-          return
+          Scenes.stop_scene(scene)
+          if (scene.is_private?)
+            client.emit_success t('scenes.scene_stopped')
+          else
+            client.emit_success t('scenes.scene_stopped_and_shared')
+          end
         end
-        
-        Scenes.stop_scene(scene)
-        client.emit_success t('scenes.scene_stopped')
       end
     end
   end

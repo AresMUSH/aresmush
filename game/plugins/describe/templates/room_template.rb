@@ -36,8 +36,8 @@ module AresMUSH
         .map { |d| d.name }.join(", ")
       end
       
-      def repose_on
-        @room.repose_on?
+      def logging_enabled
+        @room.logging_enabled?
       end
       
       # Short IC date/time string

@@ -11,10 +11,14 @@ module AresMUSH
       
       def handle
         room = enactor.room
-        scene_set = room.scene_set
         
         if (self.set)
           room.update(scene_set: self.set)
+          
+          if (room.scene)
+            Scenes.add_pose(room.scene, self.set, enactor)
+          end
+            
           client.emit_success t('scenes.scene_set')
         else
           room.update(scene_set: nil)

@@ -26,4 +26,3 @@ Channels are public forums for out-of-character communication.  Each game will h
 ## Admin Topics
 
 [Managing Channels](/help/channels/admin)
-[Configuring the Channel System](/help/channels/config)

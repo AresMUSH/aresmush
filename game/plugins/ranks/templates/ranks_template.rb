@@ -29,6 +29,10 @@ module AresMUSH
         allowed = rank[1]
         allowed ? name : "%xx%xh#{name}%xn"
       end
+      
+      def rank_rows
+        [ officer_ranks.count, enlisted_ranks.count ].max
+      end
     end
   end
 end

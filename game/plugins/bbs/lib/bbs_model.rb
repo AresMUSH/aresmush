@@ -99,6 +99,14 @@ module AresMUSH
     def board_index
       self.bbs_board.board_index
     end
+    
+    def created_date_str(char)
+      OOCTime::Api.local_long_timestr(char, self.created_at)
+    end
+    
+    def created_date_str_short(char)
+      OOCTime::Api.local_short_timestr(char, self.created_at)
+    end
   end
   
   class BbsReply < Ohm::Model
@@ -116,5 +124,9 @@ module AresMUSH
     def author_name
       !self.author ? t('bbs.deleted_author') : self.author.name
     end
+    
+    def created_date_str(char)
+      OOCTime::Api.local_long_timestr(char, self.created_at)
+    end    
   end
 end

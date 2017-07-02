@@ -36,7 +36,7 @@ module AresMUSH
           @main_char.stub(:room) { @room }
           @admin_char.stub(:room) { @room }
           @nonadmin_char.stub(:room) { @room }
-    
+              
           client_monitor = double
           Global.stub(:client_monitor) { client_monitor }
           client_monitor.stub(:logged_in) { 
@@ -65,8 +65,13 @@ module AresMUSH
         end
   
         context "public roll" do
-          it "should emit to the room" do
+          before do
             Channels::Api.stub(:send_to_channel)
+            @room.stub(:scene) { nil }
+            @room.stub(:emit)
+          end
+          
+          it "should emit to the room" do
             @admin_char.stub(:room) { nil }
             @admin_client.should_not_receive(:emit).with("test")
             @nonadmin_client.should_not_receive(:emit).with("test")
@@ -76,7 +81,13 @@ module AresMUSH
     
           it "should emit to the channel" do
             Channels::Api.should_receive(:send_to_channel).with("FS3 Chan", "test")
-            @room.stub(:emit)
+            FS3Skills.emit_results("test", @main_client, @room, false)
+          end
+          
+          it "should emit to the scene" do
+            scene = double
+            @room.stub(:scene) { scene }
+            Scenes::Api.should_receive(:add_pose).with(scene, "test")
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
         end
@@ -107,7 +118,7 @@ module AresMUSH
         end
         
         it "should not allow giant die rolls" do
-          FS3Skills.roll_dice(99).should eq [8, 8, 8, 8, 8, 8, 8, 8]
+          FS3Skills.roll_dice(99).should eq [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
         end
       end
     

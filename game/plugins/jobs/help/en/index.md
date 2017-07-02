@@ -35,4 +35,3 @@ Admins can convert a mail mssage into a job.  See [Mail](/help/mail) for detail.
 [Viewing Jobs](/help/jobs/view)
 [Managing Jobs](/help/jobs/manage)
 [Jobs Archive](/help/jobs/archive)
-[Configuring the Jobs System](/help/jobs/config)

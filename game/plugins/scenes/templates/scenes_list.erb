@@ -2,11 +2,17 @@
 %xh<%= t('scenes.scenes_title')%>%xn
 <% scenes.each do |scene| %>
 <%= divider %>
-%xh<%= scene.room.name %>%xn <<%= privacy(scene) %>>  <%= organizer(scene) %>
+%xh#<%= scene.id %> - <%= scene.title %>%xn <<%= privacy(scene) %>>  <%= organizer(scene) %>
+<%= left( t('scenes.location_title'), 10 ) %> <%= scene.location %>
+<%= left( t('scenes.scene_type_title'), 10 ) %> <%= scene.scene_type %>
 <%= left( t('scenes.players_title'), 10 ) %> <%= characters(scene) %>
-<% if scene.room.scene_set && !scene.private_scene %>
+<% if scene.room && scene.room.scene_set && !scene.private_scene %>
 
 <%= scene.room.scene_set%>
+<% end %>
+<% if scene.summary && !scene.private_scene %>
+
+<%= scene.summary%>
 <% end %>
 <% end %>
 <%= footer %>

@@ -1,0 +1,36 @@
+<h1><%= @post.subject %></h1>
+<p><a href="/bbs/<%= @board.id %>"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Board</a></p>
+
+<p><i>By <%= @post.author_name %> @ <%= @post.created_date_str(@user) %></i></p>
+
+<div class="ansi">
+    <%= format_output_for_html @post.message %>
+</div>
+
+<hr/>
+
+<% @post.bbs_replies.each do |r| %>
+ <div>
+     
+     <p><i><%= r.author_name %> @ <%= r.created_date_str(@user) %></i></p>
+
+     <div class="ansi">
+         <%= format_output_for_html r.message %>
+     </div>
+     
+     <hr/>
+  </div>
+<% end %>
+
+<% if can_write_bbs?(@board) %>
+<div class="inline-response">
+<h3>Add Reply</h3>
+
+    <form method="POST" action="/bbs/reply">
+        <textarea name="message" cols=100></textarea>
+        <input type="hidden" name="post_id" value=<%= @post.id %>>
+        <p><input type="submit"></p>
+        
+    </form>
+</div>
+<% end %>

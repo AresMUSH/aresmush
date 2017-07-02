@@ -11,10 +11,14 @@ module AresMUSH
       def handle
         composition = enactor.mail_composition
         
-        client.emit BorderedDisplay.text t('mail.proof', 
+        text = t('mail.proof', 
         :to => composition.to_list.join(" "), 
         :subject => composition.subject,
         :body => composition.body)
+        
+        template = BorderedDisplayTemplate.new text
+        client.emit template.render
+        
       end
     end
   end

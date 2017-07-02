@@ -16,8 +16,15 @@ module AresMUSH
       "Archive"
     end
         
-    def self.filtered_mail(char)
-      filter = char.mail_filter || Mail.inbox_tag
+    def self.all_tags(char)
+      all_tags = []
+      char.mail.each do |msg|
+        all_tags = all_tags.concat(msg.tags || [])
+      end
+      all_tags.uniq
+    end
+    
+    def self.filtered_mail(char, filter = Mail.inbox_tag)
       if (filter.start_with?("review"))
         sent_to = Character.find_one_by_name(filter.after(" "))
         return char.sent_mail_to(sent_to)
@@ -28,7 +35,7 @@ module AresMUSH
     end
     
     def self.with_a_delivery(client, enactor, num, &block)
-      list = Mail.filtered_mail(enactor)      
+      list = Mail.filtered_mail(enactor, enactor.mail_filter)      
       Mail.with_a_delivery_from_a_list client, num, list, &block
     end
     
@@ -119,10 +126,15 @@ module AresMUSH
         delivery.update(tags: tags)
         
         receive_client = r.client
-        if (receive_client && receive_client != client)
-          receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)
+        if (r != author)
+          if (receive_client)
+            receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)
+          end
+          Global.client_monitor.notify_web_clients :new_mail, t('mail.web_new_mail', :subject => subject, :from => author.name), r
         end
       end
+      
+      
       
       return true
     end

@@ -40,7 +40,8 @@ module AresMUSH
           
         objects = objects.sort { |a,b| a.name_upcase <=> b.name_upcase}
         objects = objects.map { |r| "#{r.dbref.ljust(6)} #{r.name}"}
-        client.emit BorderedDisplay.list(objects, t('manage.find_results'))
+        template = BorderedListTemplate.new objects, t('manage.find_results')
+        client.emit template.render
       end
     end
   end

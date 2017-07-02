@@ -45,9 +45,24 @@
     connect = function() {
       ws = new WebSocket(`ws://${config.host}:${config.port}/websocket`);
       ws.onmessage = function(evt) {
-        var cleanData, html;
-        cleanData = evt.data;
-        html = ansi_up.ansi_to_html(cleanData);
+        var html, is_json;
+        var data = evt.data;
+        try
+        {
+           data = JSON.parse(evt.data);
+           is_json = true;
+        }
+        catch(e)
+        {
+            data = evt.data;
+            is_json = false;
+        }
+        
+        if (is_json) {
+            return;
+        }
+        
+        html = ansi_up.ansi_to_html(data);
         $('#console').append('<p><pre>' + html + '</pre></p>');
         $('#console').stop().animate({
           scrollTop: $('#console')[0].scrollHeight

@@ -10,9 +10,21 @@ module AresMUSH
         # Admin version
         if (cmd.args =~ /\//)
           args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
-          self.name = titlecase_arg(args.arg1)
+          
           self.property = downcase_arg(args.arg2)
-          self.value = titlecase_arg(args.arg3)
+
+          # If the first part after the / isn't a demographic name then the / must be
+          # part of the value.
+          if (Global.read_config("demographics", "demographics").include?(self.property))
+            self.name = titlecase_arg(args.arg1)
+            self.value = titlecase_arg(args.arg3)
+          else
+            args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+            self.name = enactor.name
+            self.property = downcase_arg(args.arg1)
+            self.value = titlecase_arg(args.arg2)
+          end
+            
         # Self version
         else
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)

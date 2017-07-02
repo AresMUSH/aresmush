@@ -7,8 +7,9 @@ module AresMUSH
         true
       end
       
-      def handle
-        client.emit BorderedDisplay.text t('manage.version', :version => AresMUSH.version)
+      def handle        
+        template = BorderedDisplayTemplate.new t('manage.version', :version => AresMUSH.version)
+        client.emit template.render
       end
     end
   end

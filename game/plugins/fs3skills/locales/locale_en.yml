@@ -90,6 +90,9 @@ en:
         missing_specialty: "%xh%xy< Missing specialty for %{skill}. >%xn"
         missing_group_specialty: "%xh%xy< Missing %{spec} specialty for %{skill}. >%xn"
         too_many_attributes: "%xh%xy< Too many points on attributes. (%{max} max) >%xn"
+        unusual_abilities_check: "Checking for unusual skills."
+        unusual_skill: "%xh%xy< %{skill} is an unusual skill.  Be sure there's good reason for it. >%xn"
+        high_bg: "%xh%xy< Are you really good enough to get paid for %{skill}? >%xn"
 
 
         # ------------------------------------------------------
@@ -97,7 +100,8 @@ en:
         # ------------------------------------------------------
         
         invalid_luck_points: "That is not a valid number of luck points."
-        luck_awarded: "You award %{luck} luck points to %{name}."
+        luck_awarded: "%{luck} luck points awarded to %{name} for %{reason}."
+        luck_award_mail_subject: 
         not_enough_points: "You don't have that many luck points."
         #luck_point_spent: 
         #    one: "%{name} spends a luck point!"

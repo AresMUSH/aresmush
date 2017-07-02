@@ -50,7 +50,7 @@ module AresMUSH
         end
       elsif (chars[0].ord == WONT)
         chars.shift # Ditch the won't code
-        op = chars.shift.org
+        op = chars.shift.ord
       elsif (chars[0].ord == NOP)
         # Do nothing
         chars.shift

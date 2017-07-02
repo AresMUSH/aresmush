@@ -28,11 +28,14 @@ en:
         post_deleted: "Post %{num} deleted from %{board}."
         post_moved: "Post moved."
         board_renamed: "Board renamed."
-        
         scan_title: "Unread Posts"
         
         new_post: "%xnNew BBS post %xh%{subject}%xn %{reference} posted to %xh%{board}%xn by %{author}. %xh%xx(bbs/new)%xn" 
+        web_new_post: "New BBS post: %{subject} by %{author}."
+
         new_reply: "%xn%{author} replied to BBS post %xh%{subject}%xn %{reference} on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
+        web_new_reply: "New BBS reply: %{subject} by %{author}."
+
         new_edit: "%xn%{author} edited BBS post %xh%{subject}%xn %{reference} on %xh%{board}%xn. %xh%xx(bbs/new)%xn"
         caught_up: "All posts on %{board} marked as read."
         caught_up_all: "All posts on all boards marked as read."

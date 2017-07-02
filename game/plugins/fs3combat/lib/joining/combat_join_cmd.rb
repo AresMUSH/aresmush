@@ -43,7 +43,7 @@ module AresMUSH
         combat = FS3Combat.find_combat_by_number(client, self.num)
         return if !combat
         
-        type = self.combatant_type || Global.read_config("fs3combat", "default_type")
+        type = self.combatant_type || FS3Combat.default_combatant_type
         
         self.names.each_with_index do |n, i|
           FS3Combat.join_combat(combat, n, type, enactor, client)

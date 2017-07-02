@@ -5,7 +5,7 @@ module AresMUSH
     get '/register' do
       tos = Login.terms_of_service
       @tos = tos ? ClientFormatter.format(tos) : nil
-      erb :register
+      erb :"register"
     end
     
     post '/register' do

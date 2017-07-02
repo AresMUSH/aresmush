@@ -14,103 +14,26 @@ module AresMUSH
       end
       
       if (!is_ooc)
-        Pose.add_repose(room, enactor, pose)
-        Pose.notify_next_person(room)
-        Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit)
+        Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc)
+        enactor.room.update_pose_order(enactor.name)
+        Pose.notify_next_person(enactor.room)
       end
     end
-    
-    def self.add_repose(room, enactor, pose)
-      return if !room.repose_on?
-      
-      repose = room.repose_info
-      
-      order = repose.pose_orders 
-      enactor_order = order.find(character_id: enactor.id).first
-      if (enactor_order)
-        enactor_order.update(time: Time.now)
         
-        # Soeone has acted twice, so we'll assume this is the pose order.
-        repose.update(first_turn: false)
-      else
-        PoseOrder.create(repose_info: repose, character: enactor, time: Time.now)
-      end
-
-      poses = repose.poses || []
-      poses << pose
-      repose.update(poses: poses)
-    end
-    
     def self.notify_next_person(room)
-      return if !room.repose_on?
-      
-      repose = room.repose_info
-      return if repose.first_turn
-      return if repose.sorted_orders.count < 3
+      return if room.pose_order.count < 3
         
-      next_up_order = repose.sorted_orders.first
-      next_up_char = next_up_order.character
-
+      poses = room.sorted_pose_order
+            
+      next_up_name = poses.first[0]
+      next_up_char = Character.find_one_by_name(next_up_name)
+      
       if ((next_up_char.room != room) || !next_up_char.client)
-        next_up_order.delete
+        enactor_room.remove_from_pose_order(next_up_name)
         Pose.notify_next_person(room)
-      elsif (next_up_char.repose_nudge && !next_up_char.repose_nudge_muted)
-        next_up_char.client.emit_ooc t('pose.repose_your_turn')
-      else
-        
+      elsif (next_up_char.pose_nudge && !next_up_char.pose_nudge_muted)
+        next_up_char.client.emit_ooc t('pose.pose_your_turn')      
       end
-    end
-    
-    def self.repose_enabled
-      Global.read_config("pose", "repose_enabled")
-    end
-    
-    def self.reset_reposes
-      # Don't clear poses in rooms with active people.
-      active_rooms = Global.client_monitor.logged_in.map { |client, char| char.room }
-
-
-      rooms = Room.find(room_type: "IC").union(room_type: "RPR").group_by { |r| r.repose_on? }
-      enabled_rooms = rooms[true] || []
-      disabled_rooms = rooms[false] || []
-
-      enabled_rooms.each do |r|
-        next if active_rooms.include?(r)
-        next if r.scene
-        
-        r.repose_info.reset
-      end
-    
-      
-      disabled_rooms.each do |r|
-        next if active_rooms.include?(r)
-        Pose.reset_repose(r)
-      end
-    end
-    
-    def self.reset_repose(room)
-      repose = room.repose_info
-      
-      if (room.room_type == "IC" || room.room_type == "RPR")
-        if (repose)
-          repose.update(enabled: true)
-        else
-          repose = ReposeInfo.create(room: room, enabled: true)
-          room.update(repose_info: repose)
-        end
-      elsif (repose)
-        repose.delete
-      end
-    end
-    
-    def self.enable_repose(room)
-      return if (room.repose_on?)
-      repose = room.repose_info
-      if (!repose)
-        repose = ReposeInfo.create(room: room, poses: [])
-        room.update(repose_info: repose)
-      end
-      repose.update(enabled: true)
     end
     
     def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)

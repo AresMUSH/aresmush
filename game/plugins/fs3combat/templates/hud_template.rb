@@ -15,7 +15,8 @@ module AresMUSH
       end
       
       def title
-        t('fs3combat.combat_hud_header', :num => @combat.id)
+        scene = @combat.scene ? @combat.scene.id : t('global.none')
+        t('fs3combat.combat_hud_header', :num => @combat.id, :scene => scene)
       end
        
       def teams
@@ -32,16 +33,8 @@ module AresMUSH
         case c.stance
         when "Normal"
           text = ""
-        when "Aggressive"
-          text = "(AGG)"
-        when "Defensive"
-          text = "(DEF)"
-        when "Evade"
-          text = "(EVA)"
-        when "Cover"
-          text = "(COV)"
-        when "Hidden"
-          text = "(HID)"
+        else          
+          text = "(#{c.stance[0,3].upcase})"
         end
         text
       end

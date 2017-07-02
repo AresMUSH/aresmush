@@ -6,7 +6,9 @@ module AresMUSH
       def handle
         hospitals = Room.find(is_hospital: true)
         list = hospitals.map { |h| h.name }
-        client.emit BorderedDisplay.list list, t('fs3combat.hospitals_title')
+        
+        template = BorderedListTemplate.new list, t('fs3combat.hospitals_title')
+        client.emit template.render
       end
     end
   end

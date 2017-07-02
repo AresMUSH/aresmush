@@ -19,7 +19,3 @@ Once the place is created, people can join it.   Places code is designed to **hi
 `place/leave` - Leaves your place.
 `place/delete <title>` - Removes a place from the room.
 `place/emit <title>=<emit>` - Emits from a place you're not at.
-
-## Admin Topics
-
-[Configuring the Places System](/help/places/config)

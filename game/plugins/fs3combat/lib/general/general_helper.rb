@@ -9,6 +9,14 @@ module AresMUSH
       Global.read_config("fs3combat", "combatant_types")
     end
     
+    def self.stances
+      Global.read_config("fs3combat", "stances")
+    end
+    
+    def self.default_combatant_type
+      Global.read_config("fs3combat", "default_type")
+    end
+    
     def self.passenger_types
       [ "Pilot", "Passenger" ]
     end
@@ -59,7 +67,7 @@ module AresMUSH
         order << { :combatant => c.id, :name => c.name, :roll => roll }
       end
       combat.log "Combat initiative rolls: #{order.map { |o| "#{o[:name]}=#{o[:roll]}" }}"
-      order.sort_by { |c| c[:roll] }.map { |c| c[:combatant] }.reverse
+      order.sort_by { |c| [c[:roll], rand(10)] }.map { |c| c[:combatant] }.reverse
     end
     
     def self.with_a_combatant(name, client, enactor, &block)      

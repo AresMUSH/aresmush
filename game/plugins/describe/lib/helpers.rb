@@ -24,6 +24,16 @@ module AresMUSH
       template
     end
     
+    def self.create_or_update_desc(model, description, type = :current)
+      desc = model.descs_of_type(type).first
+    
+      if (!desc)
+        desc = model.create_desc(type,  description)
+      else
+        desc.update(description: description)
+      end
+    end
+    
     def self.app_review(char)
       has_desc = char.current_desc && !char.current_desc.description.to_s.empty?
       error = has_desc ? t('chargen.ok') : t('chargen.not_set')

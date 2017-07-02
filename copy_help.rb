@@ -58,17 +58,22 @@ if (!Dir.exist?(help_dir))
   Dir.mkdir help_dir
 end
 
+
 plugins = Dir['game/plugins/*']
 plugin_names = []
+
 plugins.each do |p|
   next if !File.directory?(p)
   plugin_name = File.basename(p)
   plugin_help_dir = "#{help_dir}/#{plugin_name}"
+
+  help_files = Dir["#{p}/help/en/*.md"]
+  next if help_files.empty?
+
   plugin_names << plugin_name
   if (!Dir.exist?(plugin_help_dir))
     Dir.mkdir plugin_help_dir
   end
-  help_files = Dir["#{p}/help/*.md"]
   
   puts "Processing #{p}..."
   help_files.each do |h|

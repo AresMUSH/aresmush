@@ -21,7 +21,7 @@ module AresMUSH
           enactor.spend_luck(1)
           combatant.update(is_ko: false)
           
-          combat.emit t('fs3combat.back_in_the_fight', :name => enactor_name)
+          combat.emit t('fs3combat.back_in_the_fight', :name => enactor_name), nil, true
         end
       end
     end

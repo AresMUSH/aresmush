@@ -30,6 +30,7 @@ en:
         
         demo_review: Checking all demographics are set.
         gender_set_to_other: "< Gender is set to 'Other'.  Is that correct? >"
+        icon_set: "Icon set."
         
         group_types_title: "Group Types"
         invalid_group_type: "Not a valid group type.  See 'groups'."

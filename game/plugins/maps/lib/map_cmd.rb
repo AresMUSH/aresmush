@@ -15,7 +15,8 @@ module AresMUSH
         if (!map)
           client.emit_failure t('maps.no_such_map', :name => self.area)
         else
-          client.emit BorderedDisplay.text map.map_text, t('maps.map_title', :area => self.area)
+          template = BorderedDisplayTemplate.new map.map_text, t('maps.map_title', :area => self.area)
+          client.emit template.render
         end
       end
     end

@@ -2,15 +2,20 @@ $:.unshift File.dirname(__FILE__)
 
 load "lib/event_handlers.rb"
 load "lib/helpers.rb"
+load "lib/log_cmd.rb"
+load "lib/log_clear_cmd.rb"
+load "lib/log_enable_cmd.rb"
+load "lib/log_share_cmd.rb"
+load "lib/scene_types_cmd.rb"
 load "lib/scene_model.rb"
+load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
-load "lib/scene_privacy_cmd.rb"
-load "lib/scene_rename_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
+load "scenes_api.rb"
 
 module AresMUSH
   module Scenes
@@ -39,25 +44,38 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+
       when "scene"
         case cmd.switch
+        when nil, "all"
+          return ScenesCmd
         when "join"
           return SceneJoinCmd
+        when "location", "privacy", "summary", "title", "type"
+          return SceneInfoCmd
         when "set"
           return SceneSetCmd
         when "start"
           return SceneStartCmd
         when "stop"
           return SceneStopCmd
-        when "rename"
-          return SceneRenameCmd
-        when "privacy"
-          return ScenePrivacyCmd
+        when "types"
+          return SceneTypesCmd
+        when "log"
+          return LogCmd
         end
-      when "scenes"
-        return ScenesCmd
+      when "log"
+        case cmd.switch
+        when "clear"
+          return LogClearCmd
+        when "on", "off"
+          return LogEnableCmd
+        when "share", "unshare"
+          return LogShareCmd
+        when nil, "all"
+          return LogCmd
+        end
       end
-      
       nil
     end
 
@@ -65,6 +83,8 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return CronEventHandler
+      when "PoseEvent"
+        return PoseEventHandler
       end
       nil
     end

@@ -1,0 +1,43 @@
+<h1>Scenes</h1>
+
+<table class="table table-striped">
+
+
+<thead>
+    <tr>
+        <th>Scene</th>
+        <th>Date</th>
+        <th>Participants</th>
+    </tr>
+</thead>
+
+<tbody>
+
+<% @scenes.each do |s| %>
+    <tr>
+        <td>
+        <a href="/scene/<%= s.id %>"><%= s.title %></a>
+        
+        <% if !s.completed %>
+        <span class="label label-warning">In Progress</span>
+        <% end %>
+        
+        <% if s.scene_type == 'Event' %>
+        <span class="label label-danger">Event</span>
+        <% else %>
+        <span class="label label-info">Social</span>
+        <% end %>
+        
+        <p><%= s.summary %></p>
+        </td>
+        <td>
+            <%= s.created_date_str(@user) %>
+        </td>
+        <td>
+            <%= s.participants.map { |p| p.name }.join(", ")%>
+        </td>
+    </tr>
+<% end %>
+
+</tbody>
+</table>

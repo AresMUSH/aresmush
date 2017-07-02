@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp
     get '/chars' do
       @chars = Chargen::Api.approved_chars.sort_by { |c| c.name }
-      erb :chars_index
+      erb :"chars/index"
     end
     
     get '/char/:id' do |id|
@@ -12,7 +12,7 @@ module AresMUSH
         redirect '/chars'
       end
       
-      erb :char
+      erb :"chars/char"
     end
   end
 end

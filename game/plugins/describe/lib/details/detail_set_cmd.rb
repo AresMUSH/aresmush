@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :name, :target, :desc
 
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.target = trim_arg(args.arg1)
         self.name = titlecase_arg(args.arg2)
         self.desc = args.arg3

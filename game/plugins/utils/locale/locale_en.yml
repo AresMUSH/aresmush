@@ -24,7 +24,7 @@ en:
     shortcuts:
         shortcut_deleted: "Shortcut deleted."
         shortcut_added: "Shortcut added."
-        shortcuts_title: "Shortcuts"
+        shortcuts_title: "Personal Shortcuts"
         shortcut_does_not_exist: "That shortcut does not exist."
     notes:
         note_added: "Note added."

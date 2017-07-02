@@ -4,3 +4,21 @@ scenes:
      #day_of_week: Sat
      #hour: 21
      minute: 00
+    
+    scene_types:
+        - Social
+        - Event
+                     
+    shortcuts:
+        "scenes": "scene"
+        "scene/close" : "scene/stop"
+        "scene/end" : "scene/stop"
+        "scene/name" : "scene/title"
+        "scene/rename" : "scene/title"
+        "repose/notify" : "repose/nudge"
+        "repose/log" : "repose/all"
+        "repose/reset": "repose/clear"
+        "repose/gag": "repose/nudge mute"
+        "scene/unshare" : "log/unshare"
+        "scene/share" : "log/share"
+        "scene/log" : "log"

@@ -28,13 +28,8 @@ module AresMUSH
           end
           
           type = cmd.root_is?("shortdesc") ? :short : :current
-          desc = model.descs_of_type(type).first
-        
-          if (!desc)
-            desc = model.create_desc(type,  self.description)
-          else
-            desc.update(description: self.description)
-          end
+          Describe.create_or_update_desc(model, self.description, type)
+          
           client.emit_success(t('describe.desc_set', :name => model.name))
         end
       end

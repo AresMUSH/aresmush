@@ -12,7 +12,3 @@ Players can manage their [handles](http://aresmush.com/handles) and preferences.
 
 [Player Handles](/help/arescentral/handles)
 [Alternate Characters](/help/arescentral/alts)
-
-## Admin Topics
-
-[Configuring AresCentral](/help/arescentral/config)

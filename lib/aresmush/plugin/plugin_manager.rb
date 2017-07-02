@@ -72,13 +72,20 @@ module AresMUSH
     
     def unload_plugin(name)
       Global.logger.info "Unloading #{name}"
+      
+
       module_name = find_plugin_const(name)
       if (!module_name)
         raise SystemNotFoundException
       end
+
+      plugin_module = Object.const_get("AresMUSH::#{module_name}")
+      if (!plugins.include?(plugin_module))
+        raise SystemNotFoundException
+      end
+
       Global.config_reader.config.delete name
       Global.help_reader.unload_help(name.downcase)
-      plugin_module = Object.const_get("AresMUSH::#{module_name}")
       @plugins.delete plugin_module
       AresMUSH.send(:remove_const, module_name)
     end

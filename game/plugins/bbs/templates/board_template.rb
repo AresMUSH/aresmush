@@ -47,7 +47,7 @@ module AresMUSH
       end
       
       def date(post)
-        OOCTime::Api.local_short_timestr(@enactor, post.created_at)
+        post.created_date_str_short(@enactor)
       end
     end
     

@@ -23,4 +23,3 @@ In addition to allowing you to designate game admins, the Roles system lets you 
 ## Admin Topics
 
 [Managing Roles](/help/roles/manage)
-[Configuring the Roles System](/help/roles/config)

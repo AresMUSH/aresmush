@@ -18,6 +18,12 @@ module AresMUSH
         c.emit_ooc msg
       end
     end
+    
+    def notify_web_clients(type, msg, char = nil)
+      @clients.each do |c|
+        c.web_notify type, msg, char
+      end
+    end
 
     def connection_established(connection)
       begin
@@ -25,14 +31,12 @@ module AresMUSH
         @clients << client
         client.connected
         Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
-        Global.logger.info("Client connected from #{connection.ip_addr}. ID=#{client.id}.")
       rescue Exception => e
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
     end
     
     def connection_closed(client)
-      Global.logger.info("Client #{client.id} disconnected.")
       @clients.delete client
       Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (client.logged_in?)

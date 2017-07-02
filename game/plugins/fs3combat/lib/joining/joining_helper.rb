@@ -19,9 +19,10 @@ module AresMUSH
       return match
     end
     
+    # client may be nil from web
     def self.join_combat(combat, name, combatant_type, enactor, client)
       if FS3Combat.is_in_combat?(name)
-        client.emit_failure t('fs3combat.already_in_combat', :name => name) 
+        client.emit_failure t('fs3combat.already_in_combat', :name => name)  if client
         return nil
       end
       

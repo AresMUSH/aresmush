@@ -1,8 +1,8 @@
 module AresMUSH
 
   class Connection < EventMachine::Connection
-    attr_accessor :client, :window_width, :window_height
-    attr_reader :ip_addr
+    attr_accessor :window_width, :window_height
+    attr_reader :ip_addr, :client
     
     # For unit testing only
     attr_accessor :negotiator
@@ -16,7 +16,7 @@ module AresMUSH
 
         @negotiator.send_naws_request
         @negotiator.send_charset_request
-        
+                
       rescue Exception => e
         Global.logger.warn "Could not decode IP address.  error=#{e} backtrace=#{e.backtrace[0,10]}"
         @ip_addr = "0.0.0.0"
@@ -26,6 +26,12 @@ module AresMUSH
     def ping
       send_data ANSI.reset
     end
+    
+    def connect_client(client)
+      Global.logger.info("Client connected from #{@ip_addr}. ID=#{client.id}.")
+      @client = client
+    end
+    
     
     def send_data(msg)
       begin
@@ -41,6 +47,7 @@ module AresMUSH
     
     def close_connection(after_writing = false)
       begin
+        Global.logger.info("Client #{self.client.id} disconnected.")
         super
       rescue Exception => e
         Global.logger.warn "Couldn't close connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
@@ -79,6 +86,10 @@ module AresMUSH
         Global.logger.warn "Error closing connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end  
+    
+    def web_notify(type, message, char = nil)
+      # Nothing - not a web connection
+    end
     
     private 
     

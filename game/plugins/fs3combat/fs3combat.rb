@@ -57,6 +57,7 @@ load "lib/general/combat_luck_cmd.rb"
 load "lib/general/combat_mod_cmd.rb"
 load "lib/general/combat_newturn_cmd.rb"
 load "lib/general/combat_randtarget_cmd.rb"
+load "lib/general/combat_scene_cmd.rb"
 load "lib/general/combat_stance_cmd.rb"
 load "lib/general/combat_team_cmd.rb"
 load "lib/general/combat_transfer_cmd.rb"
@@ -203,6 +204,8 @@ module AresMUSH
            return CombatNewTurnCmd
          when "randtarget"
            return CombatRandTargetCmd
+         when "scene"
+           return CombatSceneCmd
          when "skill"
            return CombatNpcSkillCmd
          when "stance"
@@ -228,6 +231,9 @@ module AresMUSH
          when nil
            return CombatHudCmd
          else
+           if (cmd.switch.start_with?("log"))
+             return CombatLogCmd
+           end
            return CombatActionCmd
          end
        end

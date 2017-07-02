@@ -24,9 +24,9 @@ module AresMUSH
       end
       
       if (show_full)
-        erb :help_full_index
+        erb :"help/help_full_index"
       else
-        erb :help_index
+        erb :"help/help_index"
       end
     end
 
@@ -34,11 +34,17 @@ module AresMUSH
       @topic = topic.titlecase
       
       help = Help::Api.help_topics.select { |k, v| v['plugin'] == plugin && v['topic'] == topic }
+      
+      if (help.keys.count == 0)
+        flash[:error] = "Help topic not found!"
+        redirect "/help"
+      end
+      
       md = MarkdownFile.new(help.values.first['path'])
       text = ClientFormatter.format md.contents, false
       formatter = MarkdownFormatter.new
       @help =  formatter.to_html(text)
-      erb :help
+      erb :"help/help"
     end
   end
 end

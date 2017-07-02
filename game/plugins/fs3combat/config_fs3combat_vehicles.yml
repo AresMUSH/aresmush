@@ -56,7 +56,37 @@ fs3combat:
                 - Kew
                 - Rocket
             dodge: 0
+            
+        Tank:
+            description: "Ground battle tank."
+            pilot_skill: Piloting
+            toughness: 3
+            hitloc_chart: Tank
+            armor: Tank
+            weapons:
+                - Cannon
+            dodge: 0
 
+        Apc:
+            description: "Armored troop transport."
+            pilot_skill: Piloting
+            toughness: 2
+            hitloc_chart: Tank
+            armor: Apc
+            weapons:
+                - Hmg
+            dodge: 0
+
+        Truck:
+            description: "Unarmored truck"
+            pilot_skill: Piloting
+            toughness: 0
+            hitloc_chart: Truck
+            armor: Truck
+            weapons:
+               - Unarmed
+            dodge: 0
+            
         AA Battery:
             description: "Anti-Aircraft Battery"
             pilot_skill: Piloting

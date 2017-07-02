@@ -6,7 +6,11 @@ module AresMUSH
       attr_accessor :page
          
       def parse_args
-        self.page = cmd.args ? cmd.args.to_i : 1
+        if (!cmd.args)
+          self.page = [ cmd.switch.gsub("log", "").to_i, 1].max
+        else
+          self.page = cmd.args ? cmd.args.to_i : 1
+        end
       end
       
       def handle
@@ -21,7 +25,9 @@ module AresMUSH
         else
           list = []
         end
-        client.emit BorderedDisplay.paged_list(list, self.page, 25, t('fs3combat.log_title'))
+        
+        template = BorderedPagedListTemplate.new list, self.page, 25, t('fs3combat.log_title')
+        client.emit template.render
       end
     end
   end

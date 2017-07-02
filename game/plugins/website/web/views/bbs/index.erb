@@ -1,0 +1,17 @@
+<h1>Bulletin Boards</h1>
+
+<table class="table table-striped">
+<tbody>
+<% @boards.each do |b| %>
+  <% if can_read_bbs?(b) %>
+    <tr><td>
+        <% if @user && b.has_unread?(@user) %>
+            <i class="fa fa-flag" aria-hidden="true"></i>
+        <% end %>
+        
+        <a href="/bbs/<%= b.id %>"><%= b.name %></a>
+    </td></tr>
+  <% end %>
+<% end %>
+</tbody>
+</table>

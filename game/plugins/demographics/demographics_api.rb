@@ -1,5 +1,8 @@
 module AresMUSH
   class Character
+    
+    attribute :icon
+    
     def age
       Demographics.calculate_age(demographic(:birthdate))
     end

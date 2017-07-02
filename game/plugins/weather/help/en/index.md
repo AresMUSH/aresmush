@@ -15,7 +15,3 @@ The current IC weather for your area shows up in room descriptions, but you can 
 You can manually override the weather.  This will take effect until the next automatic weather change.
 
 `weather/set <area>=<temperature>/<weather condition>`
-
-## Admin Topics
-
-[Configuring the Weather System](/help/weather/config)

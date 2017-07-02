@@ -10,10 +10,9 @@ module AresMUSH
         footer = !outside ? nil : "%ld%R" + t('sweep.kick_allowed')
         
         client.emit footer
-        snoopers = enactor_room.characters.select { |c| !c.is_online? }
-        client.emit BorderedDisplay.list snoopers.map { |c| c.name },
-          t('sweep.listening_chars'),
-          footer
+        snoopers = enactor_room.characters.select { |c| !c.is_online? }.map { |c| c.name }
+        template = BorderedListTemplate.new snoopers, t('sweep.listening_chars'), footer
+        client.emit template.render
       end
     end
   end

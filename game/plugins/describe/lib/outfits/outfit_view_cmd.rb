@@ -16,7 +16,8 @@ module AresMUSH
           return
         end
         
-        client.emit BorderedDisplay.text(outfit.description, t('describe.outfit', :name => self.name))
+        template = BorderedDisplayTemplate.new outfit.description, t('describe.outfit', :name => self.name)
+        client.emit template.render
       end
     end    
   end

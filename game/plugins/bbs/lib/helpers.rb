@@ -11,7 +11,9 @@ module AresMUSH
     
     def self.can_read_board?(char, board)
       roles = board.read_roles.to_a
-      !roles || roles.empty? || char.has_any_role?(roles) || can_manage_bbs?(char)
+      everyone = Role.find_one_by_name("Everyone")
+      char_can_read = char ? (char.has_any_role?(roles) || can_manage_bbs?(char)) : false
+      !roles || roles.empty? || char_can_read || roles.include?(everyone)
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -100,18 +102,29 @@ module AresMUSH
           end
         end
       
-        post = BbsPost.create(bbs_board: board, 
-        subject: subject, 
-        message: message, author: author)
+        new_post = BbsPost.create(bbs_board: board, 
+          subject: subject, 
+          message: message, author: author)
         
         if (client)
-          Bbs.mark_read_for_player(author, post)
+          Bbs.mark_read_for_player(author, new_post)
         end
+               
+        author_name = client ? author.name : t('bbs.system_author')
+        message = t('bbs.new_post', :subject => subject, 
+                :board => board.name, 
+                :reference => new_post.reference_str,
+                :author => author_name)
                 
-        Global.client_monitor.emit_all_ooc t('bbs.new_post', :subject => subject, 
-        :board => board.name, 
-        :reference => post.reference_str,
-        :author => client ? author.name : t('bbs.system_author'))
+        Global.client_monitor.logged_in.each do |other_client, other_char|
+          if (Bbs.can_read_board?(other_char, board))
+            other_client.emit_ooc message
+          end
+        end
+        
+        Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_post', :subject => subject, :author => author_name)
+
+        new_post
       end
     end
     
@@ -129,9 +142,10 @@ module AresMUSH
       Bbs.mark_read_for_player(author, post)
         
       Global.client_monitor.emit_all_ooc t('bbs.new_reply', :subject => post.subject, 
-      :board => board.name, 
-      :reference => post.reference_str,
-      :author => author.name)
+        :board => board.name, 
+        :reference => post.reference_str,
+        :author => author.name)
+      Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_reply', :subject => post.subject, :author => author.name)
     end
   end
 end

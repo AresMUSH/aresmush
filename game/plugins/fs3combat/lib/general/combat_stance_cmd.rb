@@ -16,7 +16,9 @@ module AresMUSH
           self.stance = titlecase_arg(cmd.args)
         end
         
-        self.stance = self.stances.select { |s| s.start_with? self.stance }.first
+        if (self.stance)
+          self.stance = FS3Combat.stances.keys.select { |s| s.start_with? self.stance }.first
+        end
       end
 
       def required_args
@@ -25,13 +27,9 @@ module AresMUSH
           help: 'combat'
         }
       end
-
-      def stances
-        ['Aggressive', 'Normal', 'Defensive', 'Evade', 'Cover', 'Hidden']
-      end
       
       def check_stance        
-        return t('fs3combat.invalid_stance') if !stances.include?(self.stance)
+        return t('fs3combat.invalid_stance') if !FS3Combat.stances.keys.include?(self.stance)
         return nil
       end
       

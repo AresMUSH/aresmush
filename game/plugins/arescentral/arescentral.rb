@@ -35,7 +35,7 @@ module AresMUSH
       case cmd.root
       when "arescentral"
         case cmd.switch
-        when "info"
+        when "info", nil
           return AresCentralInfoCmd
         end
         

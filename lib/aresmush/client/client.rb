@@ -39,7 +39,7 @@ module AresMUSH
     def window_height
       @connection.window_height
     end
-    
+
     def enable_fansi
       return false if !@char_id
       char = find_char
@@ -64,6 +64,10 @@ module AresMUSH
     
     def emit_raw(msg)
       @connection.send_data "#{msg}\r\n"
+    end
+    
+    def web_notify(type, message, char = nil)
+      @connection.web_notify type, message, char
     end
     
     def idle_secs

@@ -48,6 +48,8 @@ module AresMUSH
                 if (response.is_success? && response.data["matched"])
                   client.emit_ooc t('login.temp_password_set', :password => self.password)
                   char.change_password self.password
+      	      	  char.update(login_failures: 0)
+                  temp_reset = true                  
                 end
               end
             end
@@ -69,7 +71,8 @@ module AresMUSH
           terms_of_service = Login::Api.terms_of_service
           if (terms_of_service && !char.terms_of_service_acknowledged  && !client.program[:tos_accepted])
             client.program[:login_cmd] = cmd
-            client.emit BorderedDisplay.text "#{terms_of_service}%r#{t('login.tos_agree')}"
+            template = BorderedDisplayTemplate.new "#{terms_of_service}%r#{t('login.tos_agree')}"
+            client.emit template.render
             return
           end
         

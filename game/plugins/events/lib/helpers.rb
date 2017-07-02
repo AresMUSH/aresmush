@@ -14,9 +14,21 @@ module AresMUSH
 
         Global.logger.debug "Loading events from Teamup."
         teamup = TeamupApi.new
+        
+        old_events = event_titles
+        
         self.last_events = teamup.get_events(startDate, endDate)
         self.last_event_time = Time.now
+        
+        if (old_events != event_titles)
+          Global.client_monitor.emit_all_ooc t('events.new_events')
+        end
       end
+    end
+    
+    def self.event_titles
+      return [] if !self.last_events
+      self.last_events.map { |e| "#{e.title} #{e.start_datetime_standard}"}
     end
     
     def self.calendar_view_url

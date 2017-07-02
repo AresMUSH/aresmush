@@ -10,7 +10,7 @@ For example, if your character has a ring, you might create a really detailed de
 
 > **Tip:** Details take the place of desc-placeholder objects that one might find in other MUSH servers.
 
-`detail/set <name>/<detail title>=<description>`
+`detail/set <name>=<detail title>/<description>`
 `detail/delete <name>/<detail title>`
 `detail/edit <name>/<detail title>` - Grabs the existing detail into your input buffer.
 

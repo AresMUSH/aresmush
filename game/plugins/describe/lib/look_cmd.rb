@@ -53,7 +53,9 @@ module AresMUSH
         end
         title = t('describe.detail_title', :name => model.name, :detail => detail_name)
         desc = model.detail(detail_name).description
-        client.emit BorderedDisplay.text desc, title
+        
+        template = BorderedDisplayTemplate.new desc, title
+        client.emit template.render
       end   
     end
   end

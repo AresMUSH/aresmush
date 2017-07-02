@@ -39,6 +39,8 @@ require 'thin'
 require 'erubis'
 require 'json'
 require 'redcarpet'
+require "wikidot_api"
+
 
 require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'
@@ -73,7 +75,6 @@ require 'aresmush/formatters/pose_formatter.rb'
 require 'aresmush/formatters/progress_bar_formatter.rb'
 require 'aresmush/formatters/random_colorizer.rb'
 require 'aresmush/formatters/substitution_formatter.rb'
-require 'aresmush/formatters/bordered_display.rb'
 require 'aresmush/global.rb'
 require 'aresmush/hash_reader.rb'
 require 'aresmush/json_args.rb'

@@ -1,10 +1,20 @@
 module AresMUSH
   module Scenes
+    class PoseEventHandler
+      def on_event(event)
+        enactor = event.enactor
+        scene = enactor.room.scene
+        if (scene && !event.is_ooc)
+          Scenes.add_pose(scene, event.pose, enactor)
+        end
+      end
+    end
+    
     class CronEventHandler
       def on_event(event)
         config = Global.read_config("scenes", "cron")
-        #return if !Cron.is_cron_match?(config, event.time)
-        
+        return if !Cron.is_cron_match?(config, event.time)
+                
         rooms = Room.all.select { |r| !!r.scene_set || !!r.scene }
         rooms.each do |r|
           if (r.clients.empty? && r.scene_set)

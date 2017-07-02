@@ -26,7 +26,8 @@ module AresMUSH
         if (found.count == 1)
           display_help(found.first)
         elsif (found.count > 1)
-          client.emit BorderedDisplay.list(found, t('help.not_found_alternatives', :topic => self.topic))
+          template = BorderedListTemplate.new found, t('help.not_found_alternatives', :topic => self.topic)
+          client.emit template.render
         else
           client.emit_failure t('help.not_found', :topic => self.topic)
         end
@@ -42,7 +43,9 @@ module AresMUSH
         text = Help.topic_contents(topic)
         markdown = MarkdownFormatter.new
         display = markdown.to_mush(text).chomp
-        client.emit BorderedDisplay.text display
+
+        template = BorderedDisplayTemplate.new display
+        client.emit template.render
       end
     end
   end

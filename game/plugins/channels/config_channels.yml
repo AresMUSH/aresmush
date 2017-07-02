@@ -11,6 +11,8 @@ channels:
     shortcuts:
         "chan": "channel"
         "channels": "channel"
+        "comlist": "channel"
+        "clist": "channel"
         "channel/describe": "channel/desc"
         "channel/gag": "channel/mute"
         "channel/ungag": "channel/unmute"

@@ -1,0 +1,12 @@
+en:
+    wikidot:
+        autopost_disabled: "Automatic posting to the wiki is not enabled."
+        page_creation_failed: "Page creation failed: %{error}."
+        page_creation_successful: "Page created."
+        page_already_exists: "That page already exists, and may have other content that would be overwritten if you auto-generated it again."
+        template_provided: "Above is a template you can copy/paste in whole or in part to the wiki page."
+        page_tags: "Copy this to the page tags after the page is created:%xn %{tags}"
+        creating_page: "Creating page.  Please wait."
+        
+        only_approved_chars: "Only approved characters can get a wiki page."
+        only_completed_logs: "Only completed logs can get a wiki page."

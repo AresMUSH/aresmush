@@ -16,6 +16,8 @@ module AresMUSH
     end
  
     def self.load_plugin
+      Weather.current_weather = {}
+      Weather.change_all_weathers
       self
     end
  

@@ -2,7 +2,7 @@
 %xh<%= t('ranks.ranks_title', :group => name) %>%xn
 
 %xh     <%= t('ranks.enlisted') %>                           <%= t('ranks.officer') %>%xn
-<% 9.times do |level| %>
+<% rank_rows.times do |level| %>
 <%= left( level + 1, 5 ) -%>
 <%= left( rank(enlisted_ranks, level), 34 ) %> <%= rank(officer_ranks, level)  %>
 <% end %>

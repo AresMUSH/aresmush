@@ -33,6 +33,8 @@ module AresMUSH
 
     reference :piloting, "AresMUSH::Vehicle"
     reference :riding_in, "AresMUSH::Vehicle"
+    
+    attribute :damaged_by, :type => DataType::Array, :default => []
         
     before_delete :cleanup
     
@@ -117,32 +119,24 @@ module AresMUSH
     end
       
     def attack_stance_mod
-      case self.stance
-      when "Aggressive"
-        3
-      when "Evade"
-        -3
-      when "Defensive"
-        -1
-      else
-        0
-      end
+      stance_config = FS3Combat.stances[self.stance]
+      return 0 if !stance_config
+      stance_config["attack_mod"]
     end
     
     def defense_stance_mod
-      case self.stance
-      when "Aggressive"
-        -3
-      when "Evade"
-        3
-      when "Defensive"
-        1
-      else
-        0
-      end
+      stance_config = FS3Combat.stances[self.stance]
+      return 0 if !stance_config
+      stance_config["defense_mod"]
     end
     
     def clear_mock_damage
+      # Paranoia - should never happen unless there's a bug, but if it does happen it'll
+      # prevent us from deleting the object.  So guard against it.
+      if (!self.npc && !self.character)
+        return
+      end
+      
       wounds = self.is_npc? ? self.npc.damage : self.character.damage
       wounds.each do |d|
         if (d.is_mock)

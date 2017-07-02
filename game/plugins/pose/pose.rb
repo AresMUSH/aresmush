@@ -8,13 +8,11 @@ load "lib/pemit_cmd.rb"
 load "lib/pose_catcher_cmd.rb"
 load "lib/pose_cmd.rb"
 load "lib/pose_model.rb"
+load "lib/pose_drop_cmd.rb"
+load "lib/pose_nudge_cmd.rb"
+load "lib/pose_order_cmd.rb"
 load "lib/quote_color_cmd.rb"
-load "lib/repose_cmd.rb"
-load "lib/repose_clear_cmd.rb"
-load "lib/repose_drop_cmd.rb"
-load "lib/repose_nudge_cmd.rb"
-load "lib/repose_order_cmd.rb"
-load "lib/repose_set_cmd.rb"
+
 
 module AresMUSH
   module Pose
@@ -54,25 +52,26 @@ module AresMUSH
         if (cmd.args)
           return PoseCmd
         end
-      when "emit", "pose", "say"        
+      when "emit", "say"
         return PoseCmd
+      when "pose"
+        case cmd.switch
+        when nil
+          if (cmd.args)
+            return PoseCmd
+          else
+            return PoseOrderCmd
+          end
+        when "drop"
+          return PoseDropCmd
+        when "nudge"
+          return PoseNudgeCmd
+        when "order"
+          return PoseOrderCmd
+        end
+        
       when "quotecolor"
         return QuoteColorCmd
-      when "repose"
-        case cmd.switch
-        when nil, "all"
-          return ReposeCmd
-        when "clear"
-          return ReposeClearCmd
-        when "drop"
-          return ReposeDropCmd
-        when "nudge"
-          return ReposeNudgeCmd
-        when "on", "off"
-          return ReposeSetCmd
-        when "order"
-          return ReposeOrderCmd
-        end
       end
       
       if (cmd.raw.start_with?("\"") ||
@@ -89,10 +88,6 @@ module AresMUSH
 
     def self.get_event_handler(event_name) 
       case event_name
-      when "CronEvent"
-        return CronEventHandler
-      when "GameStartedEvent"
-        return GameStartedEventHandler
       when "CharConnectedEvent"
         return CharConnectedEventHandler
       end

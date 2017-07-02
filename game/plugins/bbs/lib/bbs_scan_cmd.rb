@@ -17,8 +17,9 @@ module AresMUSH
         
         list = unread.map { |u| "#{u.reference_str} #{u.bbs_board.name} - #{u.subject}"}
         
-        client.emit BorderedDisplay.list list, t('bbs.scan_title')
         
+        template = BorderedListTemplate.new list, t('bbs.scan_title')
+        client.emit template.render
       end
     end
   end

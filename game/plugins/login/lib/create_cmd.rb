@@ -42,7 +42,10 @@ module AresMUSH
         terms_of_service = Login.terms_of_service
         if (terms_of_service && client.program[:tos_accepted].nil?)
           client.program[:login_cmd] = cmd
-          client.emit BorderedDisplay.text "#{terms_of_service}%r#{t('login.tos_agree')}"
+
+          template = BorderedDisplayTemplate.new "#{terms_of_service}%r#{t('login.tos_agree')}"
+          client.emit template.render
+
           return
         end
         
