@@ -18,6 +18,7 @@ module AresMUSH
           config_reader.stub(:clear_config)
           config_reader.stub(:load_game_config)
           config_reader.stub(:validate_game_config)
+          help_reader.stub(:load_game_help)
           plugin_manager.stub(:load_plugin_config)
           plugin_manager.stub(:validate_plugin_config)
           @plugin = double
