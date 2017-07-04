@@ -17,8 +17,19 @@ module AresMUSH
       "#{category}#{char_name}"
     end
     
+    def self.log_page_title(scene)
+      "#{scene.icdate} - #{scene.title}"
+    end
+    
+    def self.log_page_category(scene)
+      categories = AresMUSH::Global.read_config('wikidot', 'log_categories' )
+      categories[scene.scene_type] || "log"
+    end
+    
     def self.log_page_name(scene)
-      "#{scene.scene_type}:#{scene.title}"
+      title = Wikidot.log_page_title(scene)
+      category = Wikidot.log_page_category(scene)
+      "#{category}:#{title}"
     end
     
     def self.character_tags(char)

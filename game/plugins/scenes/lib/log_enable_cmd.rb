@@ -11,18 +11,14 @@ module AresMUSH
         else
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
         end
-        self.option = OnOffOption.new(cmd.switch)
+        self.option = cmd.switch_is?("startlog")
       end
       
       def required_args
         {
-          args: [ self.option ],
+          args: [ self.scene_num ],
           help: 'scenes logging'
         }
-      end
-      
-      def check_option
-        return self.option.validate
       end
       
       def handle
@@ -39,7 +35,7 @@ module AresMUSH
             return
           end
         
-          if (self.option.is_on?)
+          if (self.option)
             if (scene.logging_enabled)
               client.emit_ooc t('scenes.logging_already_on')
             else

@@ -22,6 +22,7 @@ module AresMUSH
     def self.add_to_roster(char, contact = nil)
       char.update(roster_contact: contact || Global.read_config("idle", "default_contact"))
       char.update(idle_state: "Roster")
+      char.update(xp: 0)
       # Reset their password.
       Login::Api.set_random_password(char)
       # Remove their handle.              

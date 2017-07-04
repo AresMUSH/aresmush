@@ -16,6 +16,7 @@ load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
+load "templates/scenes_summary_template.rb"
 load "scenes_api.rb"
 
 module AresMUSH
@@ -62,19 +63,14 @@ module AresMUSH
           return SceneStopCmd
         when "types"
           return SceneTypesCmd
-        when "log"
+        when "log", "repose"
           return LogCmd
-        end
-      when "log"
-        case cmd.switch
-        when "clear"
+        when "clearlog"
           return LogClearCmd
-        when "on", "off"
+        when "startlog", "stoplog"
           return LogEnableCmd
         when "share", "unshare"
           return LogShareCmd
-        when nil, "all"
-          return LogCmd
         end
       end
       nil

@@ -63,7 +63,7 @@ module AresMUSH
         self.config = self.config.merge_yaml(file)
       rescue Exception => ex
         # Turn mysterious YAML errors into something a little more useful.
-        raise "Error reading YAML from #{file}.  See http://aresmush.com/tutorials/code/yaml/ for troubleshooting help: #{ex}"
+        raise "Error reading YAML from #{file}.  See http://aresmush.com/tutorials for troubleshooting help: #{ex}"
       end
     end
     

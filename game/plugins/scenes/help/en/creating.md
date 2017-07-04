@@ -13,7 +13,14 @@ aliases:
 When you start a scene, you can create a temporary room or start one in the room you're in.  Temp rooms are automatically recycled when the scene ends.
 
 `scene/start` - Starts a scene in your current room.
-`scene/start <location name>=<private/public>` - Starts a scene in a temp room.
+`scene/start [<area>/]<location name>=<private/public>` - Starts a scene in a temp room.
+
+> **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
+
+## Stopping a Scene
+
+You should stop a scene when it's over.  Scenes with empty rooms will be stopped automatically at some point.
+
 `scene/stop [<#>]` - Stops a scene and recycles the room (if it was a temporary one).
 
 > **Tip:** Admins and characters with the `manage_scenes` permission can stop other people's scenes.

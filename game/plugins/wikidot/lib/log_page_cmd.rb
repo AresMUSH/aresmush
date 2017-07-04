@@ -45,7 +45,7 @@ module AresMUSH
         content = template.render
         tags = Wikidot.log_tags(scene)
         
-        title = "#{scene.icdate} - #{scene.title}"
+        title = Wikidot.log_page_title(scene)
         page_name = Wikidot.log_page_name(scene)        
         client.emit_ooc t('wikidot.creating_page')
 

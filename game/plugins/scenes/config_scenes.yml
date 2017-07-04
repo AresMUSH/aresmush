@@ -19,14 +19,14 @@ scenes:
         "repose/log" : "repose/all"
         "repose/reset": "repose/clear"
         "repose/gag": "repose/nudge mute"
-        "scene/unshare" : "log/unshare"
-        "scene/share" : "log/share"
-        "scene/log" : "log"
         "logs": "scene"
+        "log/on": "scene/startlog"
+        "log/off": "scene/stoplog"
+        "log/clear": "scene/clearlog"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"
         "repose/notify" : "pose/notify"
         "repose/drop" : "pose/drop"
         "repose/order" : "pose/order"
-        "repose": "log"
+        "repose": "scene/repose"

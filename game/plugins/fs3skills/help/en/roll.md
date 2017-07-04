@@ -3,6 +3,7 @@ toc: FS3
 summary: Ability rolls.
 aliases:
 - opposed
+- roll
 ---
 # FS3 - Ability Rolls
 

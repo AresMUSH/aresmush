@@ -38,6 +38,10 @@ module AresMUSH
           combatant.update(stance: stance)
           message = t('fs3combat.stance_changed', :stance => self.stance, :name => self.name, :poss => combatant.poss_pronoun)
           combat.emit message, FS3Combat.npcmaster_text(name, enactor)
+          
+          if (combatant.riding_in)
+            client.emit_ooc t('fs3combat.passenger_stance_warning')
+          end
         end
       end
     end

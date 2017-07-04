@@ -18,15 +18,15 @@ The scenes system can capture a RP log automatically for you.  The log will cont
 
 During the scene, you can refer back to the log for a quick catch-up if you joined late or missed poses.  You can also spam yourself with the entire log.  This is most useful for capturing a clean log to your client.
 
-`log [scene #]` - Quick log catch-up.
-`log/all [scene #]` - Spam yourself with the entire log.
+`scene/repose [scene #]` - Quick log catch-up.
+`scene/log [scene #]` - Spam yourself with the entire log.
 
 ## Sharing the Log
 
 At any point during the scene, you can share the log.  This makes it visible on the game's web portal (see [Website](/help/website)).  Sharing a big event scene while it's still in-progress allows spectators to follow it on the web even if they're not participating.
 
-`log/share [scene #]` - Shares the log to the web portal.
-`log/unshare [scene #]` - Unshares a log.
+`scene/share [scene #]` - Shares the log to the web portal.
+`scene/unshare [scene #]` - Unshares a log.
 
 ## Posting the Log
 
@@ -34,8 +34,8 @@ If your game uses a wiki, the wiki system will let you either automatically post
 
 ## Clearing the Log
 
-If for some reason you don't want a scene logged at all, you can turn logging on and off.  You can also clear all poses from the log.
+The log starts automatically when a scene is started.  If for some reason you don't want a scene logged, you can turn logging on and off.  You can also clear all poses from the log.
 
-`log/on [scene #]`
-`log/off [scene #]`
-`log/clear [scene #]`
+`scene/startlog [scene #]`
+`scene/stoplog [scene #]`
+`scene/clearlog [scene #]`

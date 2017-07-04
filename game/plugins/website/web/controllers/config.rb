@@ -38,7 +38,7 @@ module AresMUSH
           YAML::load(@config)
         end
       rescue Exception => ex
-        @error = "There's a problem with the format of your YAML file.  Please check your formatting and review the tips in the <a href=\"http://www.aresmush.com\">YAML configuration tutorial</a>.  Error: #{ex}"
+        @error = "There's a problem with the format of your YAML file.  See the <a href=\"http://www.aresmush.com/tutorials\">Troubleshooting YAML tutorial</a> for help.  Error: #{ex}"
       end
       
       erb :"admin/config"
