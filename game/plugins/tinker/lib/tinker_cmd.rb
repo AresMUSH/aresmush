@@ -1,5 +1,7 @@
 module AresMUSH
+
   module Tinker
+    
     class TinkerCmd
       include CommandHandler
             

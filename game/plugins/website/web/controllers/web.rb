@@ -75,6 +75,14 @@ module AresMUSH
         text.strip.gsub(/[\r\n]/i, '<br/>')
       end
       
+      def format_markdown_for_html(output)
+        renderer = Redcarpet::Render::HTML.new(escape_html: true, hard_wrap: true, 
+              autolink: true, safe_links_only: true)    
+        html = Redcarpet::Markdown.new(renderer)
+        text = html.render output
+        format_output_for_html(text)
+      end
+      
       def titlecase_arg(input)
         return nil if !input
         input.titlecase

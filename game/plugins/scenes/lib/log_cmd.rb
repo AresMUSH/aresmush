@@ -17,7 +17,7 @@ module AresMUSH
       
       def handle
         
-        if (cmd.args)
+        if (self.scene_num == 0)
           client.emit_failure t('scenes.maybe_meant_on_off')
           return
         end

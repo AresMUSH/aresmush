@@ -66,6 +66,7 @@ module AresMUSH
         weapon = @params["#{c.id}-weapon"]
         selected_specials = @params["#{c.id}-weaponspec"] || []
         armor = @params["#{c.id}-armor"]
+        armor = armor == "None" ? nil : armor
         npc = @params["#{c.id}-npc"]
 
         if (team != c.team)
