@@ -1,13 +1,5 @@
 module AresMUSH
   module Weather
-    class WeatherGameStartedEventHandler
-      def on_event(event) 
-        Weather.current_weather = {}
-        Weather.change_all_weathers
-      end
-
-    end
-    
     class WeatherCronEventHandler
       def on_event(event)
         config = Global.read_config("weather", "cron")

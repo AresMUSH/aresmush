@@ -1,12 +1,12 @@
 module AresMUSH
-  class RolesChangedEvent
+  class RoleChangedEvent
     attr_accessor :char
     def initialize(char)
       self.char = char
     end
   end
   
-  class RolesDeletedEvent
+  class RoleDeletedEvent
     attr_accessor :role_id
     
     def initialize(role_id)

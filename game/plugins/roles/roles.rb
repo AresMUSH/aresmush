@@ -1,7 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/admin_list_cmd.rb"
 load "lib/admin_note_cmd.rb"
-load "lib/event_handlers.rb"
+load "lib/char_created_event_handler.rb"
 load "lib/helpers.rb"
 load "lib/roles_assign_cmd.rb"
 load "lib/role_create_cmd.rb"

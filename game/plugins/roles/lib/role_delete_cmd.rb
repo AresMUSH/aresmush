@@ -28,7 +28,7 @@ module AresMUSH
       
       def handle  
         role = Role.find_one_by_name(self.name)
-        Global.dispatcher.queue_event RolesDeletedEvent.new(role.id)
+        Global.dispatcher.queue_event RoleDeletedEvent.new(role.id)
         role.delete
         client.emit_success t('roles.role_deleted', :name => self.name)
       end

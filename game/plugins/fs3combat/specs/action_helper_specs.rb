@@ -490,14 +490,14 @@ module AresMUSH
         end
         
         it "should bypass armor if weapon wins by enough" do
-          FS3Combat.stub(:rand).with(10) { 6 }
+          FS3Combat.stub(:rand).with(8) { 6 }
           FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 0
         end
         
         it "should provide minimum armor xxx" do
-          FS3Combat.stub(:rand).with(10) { 4 }
+          FS3Combat.stub(:rand).with(8) { 4 }
           FS3Combat.stub(:rand).with(25) { 24 }
           FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
@@ -505,7 +505,7 @@ module AresMUSH
         end
 
         it "should provide some armor" do
-          FS3Combat.stub(:rand).with(10) { 2 }
+          FS3Combat.stub(:rand).with(8) { 2 }
           FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
           FS3Combat.stub(:rand).with(25) { 19 }
@@ -513,7 +513,7 @@ module AresMUSH
         end
 
         it "should provide extra armor" do
-          FS3Combat.stub(:rand).with(10) { 0 }
+          FS3Combat.stub(:rand).with(8) { 0 }
           FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 3 } }
           FS3Combat.stub(:rand).with(50) { 15 }
@@ -521,14 +521,14 @@ module AresMUSH
         end
 
         it "should stop attack if armor wins by enough" do
-          FS3Combat.stub(:rand).with(10) { 1 }
+          FS3Combat.stub(:rand).with(8) { 1 }
           FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 5 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 6 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0).should eq 100
         end
 
         it "should add in attacker successes for to pen roll" do
-          FS3Combat.stub(:rand).with(10) { 8 }
+          FS3Combat.stub(:rand).with(8) { 8 }
           FS3Combat.stub(:weapon_stat).with("Rifle", "penetration") { 3 }
           FS3Combat.stub(:armor_stat).with("Tactical", "protection") { { "Head" => 5 } }
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 2).should eq 0

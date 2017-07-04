@@ -1,7 +1,9 @@
 $:.unshift File.dirname(__FILE__)
 load "connector.rb"
 load "lib/arescentral_info_cmd.rb"
-load "lib/event_handlers.rb"
+load "lib/char_connected_event_handler.rb"
+load "lib/cron_event_handler.rb"
+load "lib/game_started_event_handler.rb"
 load "lib/handle_link_cmd.rb"
 load "lib/game_reg.rb"
 load "arescentral_api.rb"

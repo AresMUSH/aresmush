@@ -15,7 +15,7 @@ load "lib/bbs_reply_cmd.rb"
 load "lib/bbs_delete_reply_cmd.rb"
 load "lib/bbs_scan_cmd.rb"
 load "lib/helpers.rb"
-load "lib/event_handlers.rb"
+load "lib/role_deleted_event_handler.rb"
 load "lib/management/bbs_attribute_cmd.rb"
 load "lib/management/bbs_create_board_cmd.rb"
 load "lib/management/bbs_delete_board_cmd.rb"
@@ -103,8 +103,8 @@ module AresMUSH
 
     def self.get_event_handler(event_name) 
       case event_name
-      when "RolesDeletedEvent"
-        return RolesDeletedEventHandler
+      when "RoleDeletedEvent"
+        return RoleDeletedEventHandler
       end
       
       nil

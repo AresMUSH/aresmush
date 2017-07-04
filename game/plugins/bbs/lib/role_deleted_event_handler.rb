@@ -1,6 +1,6 @@
 module AresMUSH
   module Bbs
-    class RolesDeletedEventHandler
+    class RoleDeletedEventHandler
       def on_event(event)
         BbsBoard.all.each do |board|
           board.read_roles.each do |r|

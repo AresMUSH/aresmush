@@ -1,6 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/helpers.rb"
-load "lib/login_events.rb"
+load "lib/char_created_event_handler.rb"
 load "lib/time_cmd.rb"
 load "lib/time_model.rb"
 load "lib/timezone_cmd.rb"

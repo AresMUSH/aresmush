@@ -2,7 +2,8 @@ $:.unshift File.dirname(__FILE__)
 load "lib/helpers.rb"
 load "lib/weather_change_cmd.rb"
 load "lib/weather_cmd.rb"
-load "lib/weather_events.rb"
+load "lib/cron_event_handler.rb"
+load "lib/game_started_event_handler.rb"
 load "weather_api.rb"
 
 module AresMUSH
