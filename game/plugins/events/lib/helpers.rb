@@ -15,12 +15,12 @@ module AresMUSH
         Global.logger.debug "Loading events from Teamup."
         teamup = TeamupApi.new
         
-        old_events = event_titles
+        old_event_titles = event_titles
         
         self.last_events = teamup.get_events(startDate, endDate)
         self.last_event_time = Time.now
         
-        if (old_events != event_titles)
+        if (old_event_titles != event_titles)
           Global.client_monitor.emit_all_ooc t('events.new_events')
         end
       end

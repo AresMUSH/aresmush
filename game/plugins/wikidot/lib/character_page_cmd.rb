@@ -23,6 +23,12 @@ module AresMUSH
           tags = Wikidot.character_tags(model)
           page_name = Wikidot.character_page_name(model.name)
 
+          icon_format = Global.read_config("wikidot", "icon_url")
+          if (!icon_format.blank?)
+            icon_name = icon_format % { :name => model.name, :site => Wikidot.site_name }
+            model.update(icon: icon_name)
+          end
+          
           client.emit_ooc t('wikidot.creating_page')
 
           Global.dispatcher.spawn("Creating wiki character page", client) do

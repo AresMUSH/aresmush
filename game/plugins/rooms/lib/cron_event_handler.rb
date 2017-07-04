@@ -1,20 +1,5 @@
 module AresMUSH
   module Rooms
-    class CharConnectedEventHandler
-      def on_event(event)
-        Rooms.emit_here_desc(event.client, event.char)
-      end
-    end
-    
-    class CharDisconnectedEventHandler      
-      def on_event(event)
-        client = event.client
-        if (event.char.is_guest?)
-          Rooms.move_to(client, event.char, Game.master.welcome_room)
-        end
-      end  
-    end
-    
     class CronEventHandler
       def on_event(event)
         config = Global.read_config("rooms", "room_lock_cron")

@@ -22,6 +22,7 @@ scenes:
         "scene/unshare" : "log/unshare"
         "scene/share" : "log/share"
         "scene/log" : "log"
+        "logs": "scene"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"

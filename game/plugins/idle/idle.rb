@@ -3,7 +3,8 @@ load "idle_api.rb"
 load "lib/helpers.rb"
 load "lib/idle_action_cmd.rb"
 load "lib/idle_execute_cmd.rb"
-load 'lib/event_handling.rb'
+load 'lib/char_connected_event_handler.rb'
+load 'lib/cron_event_handler.rb'
 load "lib/idle_model.rb"
 load "lib/idle_queue_cmd.rb"
 load "lib/idle_remove_cmd.rb"

@@ -40,6 +40,8 @@ module AresMUSH
         scene = Scene.create(owner: enactor, 
             location: self.location, 
             private_scene: self.privacy == "Private",
+            scene_type: Scenes.scene_types.first,
+            title: self.location,
             temp_room: self.temp,
             icdate: ICTime::Api.ictime.strftime("%Y-%m-%d"))
             

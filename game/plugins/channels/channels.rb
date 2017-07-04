@@ -10,7 +10,11 @@ load "lib/channel_recall_cmd.rb"
 load "lib/channel_talk_cmd.rb"
 load "lib/channel_title_cmd.rb"
 load "lib/channel_who_cmd.rb"
-load "lib/event_handling.rb"
+load "lib/char_connected_event_handler.rb"
+load "lib/char_disconnected_event_handler.rb"
+load "lib/char_created_event_handler.rb"
+load "lib/role_changed_event_handler.rb"
+load "lib/role_deleted_event_handler.rb"
 load "lib/helpers.rb"
 load "lib/management/channel_attribute_cmd.rb"
 load "lib/management/channel_create_cmd.rb"
@@ -96,10 +100,10 @@ module AresMUSH
         return CharConnectedEventHandler
       when "CharDisconnectedEvent"
         return CharDisconnectedEventHandler
-      when "RolesChangedEvent"
-        return RolesChangedEventHandler
-      when "RolesDeletedEvent"
-        return RolesDeletedEventHandler
+      when "RoleChangedEvent"
+        return RoleChangedEventHandler
+      when "RoleDeletedEvent"
+        return RoleDeletedEventHandler
       end
       nil
     end

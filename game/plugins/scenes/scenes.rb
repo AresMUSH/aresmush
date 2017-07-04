@@ -1,6 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
-load "lib/event_handlers.rb"
+load "lib/pose_event_handler.rb"
+load "lib/cron_event_handler.rb"
 load "lib/helpers.rb"
 load "lib/log_cmd.rb"
 load "lib/log_clear_cmd.rb"
