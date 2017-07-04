@@ -28,11 +28,13 @@ module AresMUSH
             return
           end
           poses = scene.scene_poses.to_a
+          footer = nil
           if (!self.all)
             poses = poses[-8, 8] || poses
+            footer = "%ld%R" + t('scenes.log_list_short_footer')
           end
         
-          template = BorderedListTemplate.new poses.map { |p| "#{p.pose}%R"}, t('scenes.log_list')
+          template = BorderedListTemplate.new poses.map { |p| "#{p.pose}%R"}, t('scenes.log_list'), footer
           client.emit template.render
         end
       end

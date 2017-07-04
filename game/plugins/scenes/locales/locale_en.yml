@@ -37,6 +37,9 @@ en:
         logging_turned_off: "%{name} has turned off the scene log in this room."
         scene_info_updated_announce: "%{name} has updated the scene's %{setting} to %{value}."
         scene_info_updated: "You update the scene info."
+        
+        log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `log/all`."
+        scene_active_footer: "Only active scenes are shown.  For completed scenes, use `scenes/all`."
 
         log_shared: "The log has been shared, and will now appear on the web portal."
         log_unshared: "The log is no longer being shared on the web portal."
