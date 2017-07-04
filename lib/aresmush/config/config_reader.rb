@@ -58,6 +58,7 @@ module AresMUSH
     end
     
     def load_config_file(file)
+      Global.logger.debug "Loading config from #{file}."
       self.config = self.config.merge_yaml(file)
     end
     

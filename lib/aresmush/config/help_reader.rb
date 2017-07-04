@@ -4,6 +4,10 @@ module AresMUSH
     attr_accessor :help
     
     def initialize
+      self.clear_help
+    end
+    
+    def clear_help
       self.help = {}
     end
     
