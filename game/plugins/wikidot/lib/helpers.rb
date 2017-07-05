@@ -22,7 +22,15 @@ module AresMUSH
     end
     
     def self.character_tags(char)
-      [ char.name, "character" ]
+      tags = [ char.name, 
+            "character", 
+            char.demographic(:colony), 
+            char.group("Faction"), 
+            char.group("Position") ]
+      if (char.handle)
+        tags << "player:#{char.handle.name}"
+      end
+      tags.map { |t| t ? t.split.join("-").downcase : nil }
     end
     
     def self.log_tags(scene)

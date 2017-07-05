@@ -5,7 +5,7 @@ channels:
     default_channels:
         - Questions
         - Chat
-        - Galactica
+        - Game
         - RP Requests
 
     shortcuts:

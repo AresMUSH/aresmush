@@ -38,7 +38,9 @@ module AresMUSH
           else
             badge = "None"
           end
-          enactor_room.emit BorderedDisplay.text "Qualification Results - #{model.name} - #{self.skill}: \n\nAttempt 1: #{a1[:results]}\nAttempt 2: #{a2[:results]} \nAttempt 3: #{a3[:results]}\n\nFinal Score: #{total}\n\nBadge: #{badge}"
+          message = "Qualification Results - #{model.name} - #{self.skill}: \n\nAttempt 1: #{a1[:results]}\nAttempt 2: #{a2[:results]} \nAttempt 3: #{a3[:results]}\n\nFinal Score: #{total}\n\nBadge: #{badge}"
+          template = BorderedDisplayTemplate.new message
+          enactor_room.emit template.render
         end
       end
       
