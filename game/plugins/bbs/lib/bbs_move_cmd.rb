@@ -21,7 +21,7 @@ module AresMUSH
       
       def handle
         Bbs.with_a_post(self.board_name, self.num, client, enactor) do |board, post|
-          if (!Bbs.can_edit_post(enactor, post))
+          if (!Bbs.can_edit_post?(enactor, post))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

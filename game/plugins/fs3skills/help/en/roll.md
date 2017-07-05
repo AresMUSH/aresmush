@@ -4,6 +4,7 @@ summary: Ability rolls.
 aliases:
 - opposed
 - roll
+- rolls
 ---
 # FS3 - Ability Rolls
 

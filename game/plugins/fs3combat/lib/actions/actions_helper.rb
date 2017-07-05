@@ -377,7 +377,9 @@ module AresMUSH
       return [] if (!crew_hitlocs.include?(hitloc))
 
       people = vehicle.passengers.to_a
-      people << vehicle.pilot
+      if (vehicle.pilot)
+        people << vehicle.pilot
+      end
       
       people.each do |p|
         case damage

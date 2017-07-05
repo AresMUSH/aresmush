@@ -7,6 +7,7 @@ aliases:
 - pemit
 - whisper
 - mutter
+- setpose
 ---
 # Emits
 
@@ -23,6 +24,12 @@ Emits allow you to send messages to the room you're in.  There are several comma
 The `pemit` command lets you make a private emit only to certain characters.
 
 `pemit <list of names>=<message>`
+
+## Set Pose
+
+Storytellers can mark an emit as a set pose.  It will be set off with a border on the game, and highlighted in scene and wiki logs.
+
+`emit/set <set pose>`
 
 ## Nospoof
 

@@ -23,7 +23,7 @@ module AresMUSH
       
       def visible_alts(handle_name)
         handle = Handle.find_one_by_name(handle_name)
-        visible_alts = AresCentral::Api.alts_of(handle)
+        visible_alts = AresCentral.alts_of(handle)
         visible_alts.empty? ? nil : visible_alts.map { |a| a.name }.join(" ")
       end
       

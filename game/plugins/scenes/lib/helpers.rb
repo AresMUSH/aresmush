@@ -62,9 +62,9 @@ module AresMUSH
       scene.update(completed: true)
     end
     
-    def self.add_pose(scene, pose, character = Game.master.system_character)
+    def self.add_pose(scene, pose, character = Game.master.system_character, is_setpose = nil)
       return if !scene.logging_enabled
-      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene)
+      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose)
     end
     
     def self.set_scene_location(scene, location)

@@ -7,6 +7,7 @@ load "lib/nospoof_cmd.rb"
 load "lib/pemit_cmd.rb"
 load "lib/pose_catcher_cmd.rb"
 load "lib/pose_cmd.rb"
+load "lib/set_pose_cmd.rb"
 load "lib/pose_model.rb"
 load "lib/pose_drop_cmd.rb"
 load "lib/pose_nudge_cmd.rb"
@@ -52,7 +53,14 @@ module AresMUSH
         if (cmd.args)
           return PoseCmd
         end
-      when "emit", "say"
+      when "emit"
+        case cmd.switch
+        when "set"
+          return SetPoseCmd
+        else
+          return PoseCmd
+        end
+      when "say"
         return PoseCmd
       when "pose"
         case cmd.switch

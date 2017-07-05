@@ -54,6 +54,11 @@ module AresMUSH
     reference :character, "AresMUSH::Character"
     reference :scene, "AresMUSH::Scene"
     attribute :pose
+    attribute :is_setpose, :type => DataType::Boolean
+    
+    def is_setpose?
+      self.is_setpose
+    end
     
     def is_system_pose?
       self.character == Game.master.system_character
