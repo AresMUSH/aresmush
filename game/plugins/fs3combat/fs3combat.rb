@@ -87,8 +87,6 @@ load "templates/hud_template.rb"
 load "templates/summary_template.rb"
 load "templates/types_template.rb"
 
-load "public/fs3combat_api.rb"
-
 module AresMUSH
   module FS3Combat
     def self.plugin_dir

@@ -4,24 +4,33 @@ module AresMUSH
       include CommandHandler
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :name, :action_args, :combat_command
+      attr_accessor :names, :action_args, :combat_command
            
       def parse_args
         if (cmd.args =~ /\=/)
-          self.name = InputFormatter.titlecase_arg(cmd.args.before("="))
+          self.names = InputFormatter.titlecase_arg(cmd.args.before("="))
           self.action_args = cmd.args.after("=")
         else
-          self.name = enactor.name
+          self.names = enactor.name
           self.action_args = cmd.args
         end
+        
+        self.names = self.names ? self.names.split(/[ ,]/) : nil
+        
         self.combat_command = cmd.switch ? cmd.switch.downcase : nil
       end
       
       def check_can_act
         return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
-        return t('fs3combat.cannot_act_while_koed') if (enactor.combatant.is_ko && self.name == enactor.name)
-        return t('fs3combat.you_are_a_noncombatant') if (enactor.combatant.is_noncombatant? && self.name == enactor_name)
+        return t('fs3combat.cannot_act_while_koed') if (acting_for_self && enactor.combatant.is_ko)
+        return t('fs3combat.you_are_a_noncombatant') if (acting_for_self && enactor.combatant.is_noncombatant?)
         return nil
+      end
+      
+      def acting_for_self
+        self.names &&
+        self.names.count == 1 &&
+        self.names[0] == enactor_name
       end
       
       def handle
@@ -31,13 +40,15 @@ module AresMUSH
           return
         end
         
-        if (enactor.combatant.is_subdued? && self.combat_command != "escape")
-          client.emit_failure t('fs3combat.must_escape_first') 
-          return
-        end
+        self.names.each do |name|
         
-        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
-          FS3Combat.set_action(client, enactor, combat, combatant, action_klass, self.action_args)
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
+            if (combatant.is_subdued? && self.combat_command != "escape")
+              client.emit_failure t('fs3combat.must_escape_first') 
+              next
+            end
+            FS3Combat.set_action(client, enactor, combat, combatant, action_klass, self.action_args)
+          end
         end
       end
     end
