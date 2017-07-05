@@ -8,6 +8,10 @@ module AresMUSH
       self.friendships.each { |f| f.delete }
     end
     
+    def is_friend?(potential_friend)
+      self.has_friended_char_or_handle?(potential_friend)
+    end
+    
     def friends
       friendships.map { |f| f.friend }
     end

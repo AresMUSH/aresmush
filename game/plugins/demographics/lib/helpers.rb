@@ -53,7 +53,7 @@ module AresMUSH
     
     def self.calculate_age(dob)
       return 0 if !dob
-      now = ICTime::Api.ictime
+      now = ICTime.ictime
       now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
     end
     

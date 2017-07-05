@@ -2,10 +2,6 @@ module AresMUSH
   module Events
 
     mattr_accessor :last_events, :last_event_time
-
-    def self.upcoming_events
-      self.last_events || []
-    end
     
     def self.refresh_events(days_ahead)
       Global.dispatcher.spawn("Loading Teamup Events", nil) do
@@ -29,11 +25,6 @@ module AresMUSH
     def self.event_titles
       return [] if !self.last_events
       self.last_events.map { |e| "#{e.title} #{e.start_datetime_standard}"}
-    end
-    
-    def self.calendar_view_url
-      calendar = Global.read_config("secrets", "events", "calendar")
-      "https://teamup.com/#{calendar}"
     end
   end
 end

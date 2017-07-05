@@ -40,7 +40,7 @@ module AresMUSH
           Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
           Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
           
-          desc = Describe::Api.desc_template(model, enactor)
+          desc = Describe.desc_template(model, enactor)
           client.emit desc.render
         end
       end

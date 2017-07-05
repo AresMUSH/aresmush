@@ -33,7 +33,7 @@ module AresMUSH
     get '/help/:plugin/:topic' do |plugin, topic|
       @topic = topic.titlecase
       
-      help = Help::Api.help_topics.select { |k, v| v['plugin'] == plugin && v['topic'] == topic }
+      help = Help.all_help_topics.select { |k, v| v['plugin'] == plugin && v['topic'] == topic }
       
       if (help.keys.count == 0)
         flash[:error] = "Help topic not found!"

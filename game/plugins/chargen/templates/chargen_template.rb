@@ -28,7 +28,7 @@ module AresMUSH
       
       def help
         help_file = @stage["help"]
-        contents = help_file ? Help::Api.get_help(help_file) : nil
+        contents = help_file ? Help.get_help(help_file) : nil
         contents ? @markdown.to_mush(contents) : nil 
       end
       

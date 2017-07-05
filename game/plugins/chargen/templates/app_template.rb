@@ -28,7 +28,7 @@ module AresMUSH
       end
        
       def desc
-        Describe::Api.app_review(@char)
+        Describe.app_review(@char)
       end
      
       def ranks

@@ -84,7 +84,7 @@ module AresMUSH
       
       if (scene.temp_room)
         scene.room.update(name: "Scene #{scene.id} - #{location}")
-        Describe::Api.create_or_update_desc(scene.room, description)
+        Describe.update_current_desc(scene.room, description)
       end
       
       return message

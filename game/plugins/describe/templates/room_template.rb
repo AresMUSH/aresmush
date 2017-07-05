@@ -41,7 +41,7 @@ module AresMUSH
       
       # Short IC date/time string
       def ic_time
-        ICTime::Api.ic_datestr ICTime::Api.ictime
+        ICTime.ic_datestr ICTime.ictime
       end
       
       def area

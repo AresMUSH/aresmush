@@ -13,7 +13,7 @@ module AresMUSH
         @game = double
         Game.stub(:master) { @game }
 
-        Describe::Api.stub(:desc_template)
+        Describe.stub(:desc_template)
         @room.stub(:emit_ooc)
         
         AresMUSH::Locale.stub(:translate).with("rooms.char_has_arrived", { :name => "Bob" }) { "char_has_arrived" }

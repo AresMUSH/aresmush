@@ -36,7 +36,7 @@ module AresMUSH
       end
       
       def events
-        Events::Api.upcoming_events
+        Events.upcoming_events
       end
       
       def start_time_local(event)

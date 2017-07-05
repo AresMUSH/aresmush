@@ -44,7 +44,7 @@ module AresMUSH
       
       def birthdate
         dob = @char.demographic(:birthdate)
-        !dob ? "" : ICTime::Api.ic_datestr(dob)
+        !dob ? "" : ICTime.ic_datestr(dob)
       end
       
       def callsign

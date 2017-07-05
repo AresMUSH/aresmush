@@ -56,7 +56,7 @@ module AresMUSH
     # You can make this fancier to account for months like March which are
     # split across seasons.
     def self.season_for_area(area)
-      case ICTime::Api.ictime.month
+      case ICTime.ictime.month
       when 12, 1, 2
         'winter'
       when 3, 4, 5
@@ -76,7 +76,7 @@ module AresMUSH
       return nil if weather.empty?
 
       season = Weather.season_for_area(area)
-      time_of_day = ICTime::Api.time_of_day(ICTime::Api.ictime)
+      time_of_day = ICTime.time_of_day(ICTime.ictime)
       temperature = weather[:temperature]
       condition = weather[:condition]
       

@@ -97,7 +97,7 @@ module AresMUSH
     end
 
     get '/' do
-      @events = Events::Api.upcoming_events
+      @events = Events.upcoming_events
       @calendar = Events.calendar_view_url
       erb :"index"
     end  

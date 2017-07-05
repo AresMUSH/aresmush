@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def ic_time
-        ICTime::Api.ic_long_timestr ICTime::Api.ictime
+        ICTime.ic_long_timestr ICTime.ictime
       end
       
       def timezone

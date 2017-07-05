@@ -43,7 +43,7 @@ module AresMUSH
             scene_type: Scenes.scene_types.first,
             title: self.location,
             temp_room: self.temp,
-            icdate: ICTime::Api.ictime.strftime("%Y-%m-%d"))
+            icdate: ICTime.ictime.strftime("%Y-%m-%d"))
             
         if (self.temp)
           room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.location}")

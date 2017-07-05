@@ -120,7 +120,7 @@ module AresMUSH
       
       age = params[:age].to_i
       if (!Demographics.check_age(age))
-        bday = Date.new ICTime::Api.ictime.year - age, ICTime::Api.ictime.month, ICTime::Api.ictime.day
+        bday = Date.new ICTime.ictime.year - age, ICTime.ictime.month, ICTime.ictime.day
         bday = bday - rand(364)
         @user.update_demographic :birthdate, bday
       end
