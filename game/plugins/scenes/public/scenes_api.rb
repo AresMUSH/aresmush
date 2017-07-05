@@ -54,7 +54,7 @@ module AresMUSH
     def self.set_scene_location(scene, location)
       matched_rooms = Room.all.select { |r| Scenes.format_room_name_for_match(r, location) =~ /#{location.upcase}/ }
 
-      if (matched_rooms.count != 1)
+      if (matched_rooms.count == 0)
         description = location
       else
         room = matched_rooms.first
@@ -66,7 +66,7 @@ module AresMUSH
       message = t('scenes.location_set', :description => description)
       Scenes.add_pose(scene, message, Game.master.system_character)
       
-      if (scene.temp_room)
+      if (scene.temp_room && scene.room)
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         Describe.update_current_desc(scene.room, description)
       end

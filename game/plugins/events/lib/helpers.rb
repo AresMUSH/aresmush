@@ -17,7 +17,15 @@ module AresMUSH
         self.last_event_time = Time.now
         
         if (old_event_titles != event_titles)
-          Global.client_monitor.emit_all_ooc t('events.new_events')
+          new_events = event_titles - old_event_titles 
+          cancelled_events = old_event_titles - event_titles
+          
+          if (new_events.count > 0)
+            Global.client_monitor.emit_all_ooc t('events.new_events', :events => new_events.join("%r- "))
+          end
+          if (cancelled_events.count > 0)
+            Global.client_monitor.emit_all_ooc t('events.cancelled_events', :events => cancelled_events.join("%r- "))
+          end
         end
       end
     end
