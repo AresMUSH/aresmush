@@ -35,7 +35,7 @@ module AresMUSH
         
         return if awards.blank?
         
-        Bbs::Api.system_post(
+        Bbs.system_post(
           Global.read_config("cookies", "cookie_board"),
           t('cookies.weekly_award_title'), 
           awards.chomp)

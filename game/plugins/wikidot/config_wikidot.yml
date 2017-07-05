@@ -3,6 +3,10 @@ wikidot:
     autopost_enabled: true
     character_category: char
     icon_url: "http://%{site}.wdfiles.com/local--files/log-icons/%{name}_icon.png"
+    log_categories:
+        Social: log
+        Event: event
     shortcuts:
         "log/wiki" : "wiki/log"
         "scene/wiki" : "wiki/log"
+        "scene/post" : "wiki/log"

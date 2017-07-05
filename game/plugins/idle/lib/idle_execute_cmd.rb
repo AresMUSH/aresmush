@@ -72,7 +72,7 @@ module AresMUSH
         template = BorderedListTemplate.new report
         client.emit template.render
         
-        Bbs::Api.system_post(
+        Bbs.system_post(
           Global.read_config("idle", "idle_board"), 
           t('idle.idle_bbs_subject'), 
           t('idle.idle_bbs_body', :report => report.join("%R")))

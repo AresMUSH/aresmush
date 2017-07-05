@@ -19,3 +19,5 @@ You can control several properties about the scene.  These are used for [Scene L
 `scene/location [<#>=]=[<area>/]<location>` - Sets the scene location.
 `scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types.
 `scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
+
+> **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.

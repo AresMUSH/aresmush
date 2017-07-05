@@ -6,7 +6,7 @@ load "lib/cron_event_handler.rb"
 load "lib/game_started_event_handler.rb"
 load "lib/handle_link_cmd.rb"
 load "lib/game_reg.rb"
-load "arescentral_api.rb"
+load "api/arescentral_api.rb"
 
 module AresMUSH
   module AresCentral

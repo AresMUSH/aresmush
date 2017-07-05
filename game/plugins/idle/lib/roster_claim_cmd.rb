@@ -48,7 +48,7 @@ module AresMUSH
           return if !bbs
           return if bbs.blank?
         
-          Bbs::Api.post(bbs, 
+          Bbs.post(bbs, 
             t('idle.roster_bbs_subject'), 
             t('idle.roster_bbs_body', :name => model.name), 
             Game.master.system_character)

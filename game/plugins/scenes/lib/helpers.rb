@@ -62,9 +62,41 @@ module AresMUSH
       scene.update(completed: true)
     end
     
-    def self.add_pose(scene, pose, character = Game.master.system_character)
+    def self.add_pose(scene, pose, character = Game.master.system_character, is_setpose = nil)
       return if !scene.logging_enabled
-      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene)
+      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose)
     end
+    
+    def self.set_scene_location(scene, location)
+      matched_rooms = Room.all.select { |r| Scenes.format_room_name_for_match(r, location) =~ /#{location.upcase}/ }
+
+      if (matched_rooms.count == 0)
+        description = location
+      else
+        room = matched_rooms.first
+        description = "%xh#{room.name}%xn%R#{room.description}"
+      end
+      
+      scene.update(location: location)
+      
+      message = t('scenes.location_set', :description => description)
+      Scenes.add_pose(scene, message, Game.master.system_character)
+      
+      if (scene.temp_room)
+        scene.room.update(name: "Scene #{scene.id} - #{location}")
+        Describe::Api.create_or_update_desc(scene.room, description)
+      end
+      
+      return message
+    end
+    
+    def self.format_room_name_for_match(room, name)
+      if (name =~ /\//)
+        return "#{room.area}/#{room.name}".upcase
+      else
+        return room.name.upcase
+      end
+    end
+    
   end
 end

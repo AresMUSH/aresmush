@@ -78,6 +78,12 @@ module AresMUSH
       def hooks
         @char.fs3_hooks.map { |h| "\n* **#{h.name}** - #{h.description}" }.join
       end
+      
+      def format_bg(bg)
+        colorized = ClientFormatter.format bg
+        decolorized = colorized.gsub(/\e\[(\d+)(;\d+)*m/, '')
+        decolorized
+      end
     end
   end
 end

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def alts
-        AresCentral::Api.alts(@char).select { |a| a != @char }
+        AresCentral.alts(@char).select { |a| a != @char }
       end
       
       def has_alt_mail(alt)
@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def bbs
-        @char.has_unread_bbs? ? t('login.unread_bbs') : t('login.no_unread_bbs')
+        Bbs.has_unread_bbs?(@char) ? t('login.unread_bbs') : t('login.no_unread_bbs')
       end
       
       def jobs_or_requests

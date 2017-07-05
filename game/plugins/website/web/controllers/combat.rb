@@ -79,13 +79,7 @@ module AresMUSH
           @combat.emit "#{c.name} has changed stance to #{stance}. (by #{@user.name})"
         end
         
-        old_weapon = c.weapon
-        
-        if (weapon != c.weapon_name)
-          c.update(weapon_name: weapon)
-        end
-
-        allowed_specials = FS3Combat.weapon_stat(c.weapon, "allowed_specials") || []
+        allowed_specials = FS3Combat.weapon_stat(weapon, "allowed_specials") || []
         weapon_specials = []
         selected_specials.each do |w|
           if (!allowed_specials.include?(w))
@@ -94,10 +88,9 @@ module AresMUSH
             weapon_specials << w
           end
         end
-        c.update(weapon_specials: weapon_specials)
 
-        if (old_weapon != c.weapon)
-          @combat.emit "#{c.name} has changed weapons to #{c.weapon}. (by #{@user.name})"
+        if (c.weapon_name != weapon || c.weapon_specials != weapon_specials)
+          FS3Combat.set_weapon(@user, c, weapon, weapon_specials)
         end
         
         if (armor != c.armor)

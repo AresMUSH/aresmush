@@ -59,6 +59,13 @@ module AresMUSH
       search = File.join(plugin_module.plugin_dir, "help", locale, "**.md")
       Dir[search]
     end
+
+    def load_plugin_help_by_name(name)
+      module_name = find_plugin_const(name)
+      return if (!module_name)
+      plugin_module = Object.const_get("AresMUSH::#{module_name}")
+      load_plugin_help plugin_module
+    end
     
     def load_plugin_help(plugin_module)
       plugin_name = plugin_module.to_s.after("::")

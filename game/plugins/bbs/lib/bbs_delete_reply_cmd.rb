@@ -26,7 +26,7 @@ module AresMUSH
             client.emit_failure t('bbs.invalid_reply_number')
             return
           end
-          if (!Bbs.can_edit_post(enactor, reply))
+          if (!Bbs.can_edit_post?(enactor, reply))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

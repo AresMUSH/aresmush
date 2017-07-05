@@ -11,10 +11,9 @@ module AresMUSH
       
       def handle
         if (show_all)
-          scenes = Scene.all
-          list = scenes.map { |s| "#{s.id} - #{s.title || s.location} (#{s.owner.name})"}
-          template = BorderedPagedListTemplate.new list, cmd.page, 25, t('scenes.scenes_title')
-          
+          scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }
+          paginator = Paginator.paginate(scenes, cmd.page, 15)
+          template = SceneSummaryTemplate.new(paginator)
         else
           scenes = Scene.all.select { |s| !s.completed }
           template = SceneListTemplate.new(scenes)

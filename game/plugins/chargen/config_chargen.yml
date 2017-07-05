@@ -38,7 +38,7 @@ chargen:
         alts:
             tutorial: 'alts.md'
         wiki:
-            help: profile wiki
+            help: wikidot
         profile:
             help: profile
         lastwill:

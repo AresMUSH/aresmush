@@ -12,16 +12,10 @@ module AresMUSH
         else
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
         end
-        self.all = cmd.switch_is?("all")
+        self.all = !cmd.switch_is?("repose")
       end
       
-      def handle
-        
-        if (self.scene_num == 0)
-          client.emit_failure t('scenes.maybe_meant_on_off')
-          return
-        end
-        
+      def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
           if (!scene.logging_enabled)
             client.emit_failure t('scenes.logging_not_enabled')

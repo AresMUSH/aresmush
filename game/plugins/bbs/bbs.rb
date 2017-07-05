@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-load "bbs_api.rb"
+load "api/bbs_api.rb"
 load "lib/bbs_archive_cmd.rb"
 load "lib/bbs_board_cmd.rb"
 load "lib/bbs_catchup_cmd.rb"

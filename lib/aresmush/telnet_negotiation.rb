@@ -31,7 +31,7 @@ module AresMUSH
         chars.shift # Ditch the sub-nego flag
           
         negotiation_options = []
-        while (chars[0].ord != END_SUB_NEGOTIATION)
+        while (chars[0] && chars[0].ord != END_SUB_NEGOTIATION)
           negotiation_options << chars.shift.ord
         end
         chars.shift # Ditch the end-nego flag
