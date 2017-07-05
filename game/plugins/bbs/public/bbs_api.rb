@@ -76,7 +76,9 @@ module AresMUSH
           end
         end
         
-        Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_post', :subject => subject, :author => author_name)
+        Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_post', :subject => subject, :author => author_name) do |char|
+          Bbs.can_read_board?(char, board)
+        end
 
         new_post
       end
@@ -102,7 +104,9 @@ module AresMUSH
       :reference => post.reference_str,
       :author => author.name)
       
-      Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_reply', :subject => post.subject, :author => author.name)
+      Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_reply', :subject => post.subject, :author => author.name) do |char|
+          Bbs.can_read_board?(char, board)
+        end
     end
   end
 end

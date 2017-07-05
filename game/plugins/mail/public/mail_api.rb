@@ -42,7 +42,9 @@ module AresMUSH
           if (receive_client)
             receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)
           end
-          Global.client_monitor.notify_web_clients :new_mail, t('mail.web_new_mail', :subject => subject, :from => author.name), r
+          Global.client_monitor.notify_web_clients :new_mail, t('mail.web_new_mail', :subject => subject, :from => author.name)  do |char|
+            char == r
+          end
         end
       end
       return true

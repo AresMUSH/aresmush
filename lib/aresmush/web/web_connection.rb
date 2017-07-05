@@ -2,7 +2,7 @@ module AresMUSH
 
   class WebConnection
     attr_accessor :websocket, :ip_addr, :ready_callback
-    attr_reader :client, :char_id
+    attr_reader :client, :web_char_id
     
     def initialize(websocket, &ready_callback)
       self.websocket = websocket
@@ -37,18 +37,15 @@ module AresMUSH
       end
     end
     
-    def web_notify(type, message, char = nil)
-      if (!char || @char_id == char.id)  
-        data = {
-          type: "notification",
-          args: {
-            character: char ? char.id : nil,
-            notification_type: type,
-            message: message
-          }
+    def web_notify(type, message)
+      data = {
+        type: "notification",
+        args: {
+          notification_type: type,
+          message: message
         }
-        send_data data.to_json.to_s
-      end
+      }
+      send_data data.to_json.to_s
     end
     
     def send_formatted(msg, enable_fansi = false)
@@ -76,7 +73,7 @@ module AresMUSH
           @client.handle_input(json_input["message"] + "\r\n")
         elsif (json_input["type"] == "identify")
           data = json_input["data"]
-          @char_id = data ? data["id"] : nil
+          @web_char_id = data ? data["id"] : nil
         elsif (json_input["type"] == "cmd")
           Global.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
         else
