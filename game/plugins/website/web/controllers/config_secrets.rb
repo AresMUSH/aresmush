@@ -52,7 +52,7 @@ module AresMUSH
     
       
       flash[:info] = "Saved!"
-      Manage::Api.reload_config
+      Manage.reload_config
       
       redirect '/admin'
     end

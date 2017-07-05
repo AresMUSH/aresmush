@@ -32,7 +32,7 @@ module AresMUSH
             return
           end
           
-          Utils::Api.grab client, enactor, "detail/set #{self.target}/#{self.name}=#{detail.description}"
+          Utils.grab client, enactor, "detail/set #{self.target}/#{self.name}=#{detail.description}"
         end
       end
       

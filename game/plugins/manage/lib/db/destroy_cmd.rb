@@ -23,7 +23,7 @@ module AresMUSH
             return
           end
         
-          if (Rooms::Api.is_special_room?(target))
+          if (Rooms.is_special_room?(target))
             client.emit_failure(t('manage.cannot_destroy_special_rooms'))
             return
           end
@@ -33,7 +33,7 @@ module AresMUSH
             return
           end
           
-          if (target.class == "AresMUSH::Character" && FS3Combat::Api.is_in_combat?(target))
+          if (target.class == "AresMUSH::Character" && FS3Combat.is_in_combat?(target))
             client.emit_failure t('manage.cannot_destroy_in_combat')
             return
           end

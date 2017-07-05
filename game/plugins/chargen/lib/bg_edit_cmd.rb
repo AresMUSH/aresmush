@@ -20,9 +20,9 @@ module AresMUSH
           end
           
           if (self.target == enactor_name)
-            Utils::Api.grab client, enactor, "bg/set #{model.background}"
+            Utils.grab client, enactor, "bg/set #{model.background}"
           else
-            Utils::Api.grab client, enactor, "bg/set #{target}=#{model.background}"
+            Utils.grab client, enactor, "bg/set #{target}=#{model.background}"
           end
         end
       end

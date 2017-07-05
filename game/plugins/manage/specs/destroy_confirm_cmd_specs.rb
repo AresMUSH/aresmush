@@ -88,13 +88,13 @@ module AresMUSH
               client_in_room = double
               @char_in_room.stub(:client) { client_in_room }
               client_in_room.should_receive(:emit_ooc).with("manage.room_being_destroyed")
-              Rooms::Api.should_receive(:send_to_welcome_room).with(client_in_room, @char_in_room)
+              Rooms.should_receive(:send_to_welcome_room).with(client_in_room, @char_in_room)
               @handler.handle
             end
           
             it "should move them to the welcome room" do
               @char_in_room.stub(:client) { nil }
-              Rooms::Api.should_receive(:send_to_welcome_room).with(nil, @char_in_room)
+              Rooms.should_receive(:send_to_welcome_room).with(nil, @char_in_room)
               @handler.handle
             end
           end

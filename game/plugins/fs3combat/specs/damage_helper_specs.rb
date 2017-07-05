@@ -51,7 +51,7 @@ module AresMUSH
           FS3Combat.stub(:is_in_hospital?) { false }
           @char.stub(:doctors) { [] }
           @char.stub(:damage) { @wounds }
-          FS3Skills::Api.stub(:one_shot_roll) { { :successes => 0 } }
+          FS3Skills.stub(:one_shot_roll) { { :successes => 0 } }
         end
         
         it "should apply a base of 1 healing point to each wound" do
@@ -61,7 +61,7 @@ module AresMUSH
         end
         
         it "should add a recovery roll to the healing points" do
-          FS3Skills::Api.should_receive(:one_shot_roll) do |client, char, roll_params|
+          FS3Skills.should_receive(:one_shot_roll) do |client, char, roll_params|
             client.should be_nil
             char.should eq @char
             roll_params.ability.should eq "Body"
@@ -93,7 +93,7 @@ module AresMUSH
           doctor.stub(:name) { "Dr. Carter" }
           FS3Combat.stub(:is_in_hospital?) { true }
           @char.stub(:doctors) { [doctor] }
-          FS3Skills::Api.stub(:one_shot_roll) { { :successes => 3 } }
+          FS3Skills.stub(:one_shot_roll) { { :successes => 3 } }
           FS3Combat.should_receive(:heal).with(@damage1, 2)
           FS3Combat.should_receive(:heal).with(@damage2, 2)
           FS3Combat.heal_wounds(@char)

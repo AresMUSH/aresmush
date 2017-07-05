@@ -8,6 +8,14 @@ module AresMUSH
     
     before_delete :delete_mail
     
+    def has_unread_mail?
+      !unread_mail.empty?
+    end
+    
+    def num_unread_mail
+      unread_mail.count
+    end
+    
     def delete_mail
       self.mail_composition.delete if self.mail_composition
       self.mail.each { |m| m.delete }
@@ -57,7 +65,7 @@ module AresMUSH
     end
     
     def created_date_str(viewer)
-      OOCTime::Api.local_short_timestr(viewer, self.created_at)
+      OOCTime.local_short_timestr(viewer, self.created_at)
     end
   end
 end

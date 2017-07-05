@@ -27,7 +27,7 @@ module AresMUSH
         end
         
         
-        Pose::Api.emit(enactor, self.emit, self.name)
+        Pose.emit(enactor, self.emit, self.name)
       end
     end
   end

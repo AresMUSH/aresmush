@@ -67,7 +67,7 @@ module AresMUSH
         redirect "/admin/config/edit?path=#{path}&plugin=#{plugin}"
       else
         flash[:info] = "Saved!"
-        Manage::Api.reload_config
+        Manage.reload_config
         redirect params[:return_url] || '/config'
       end
     end

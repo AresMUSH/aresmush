@@ -98,7 +98,7 @@ module AresMUSH
         if (@char.client)
           t('profile.currently_connected')
         else
-          OOCTime::Api.local_long_timestr(@enactor, @char.last_on)
+          OOCTime.local_long_timestr(@enactor, @char.last_on)
         end
       end
       

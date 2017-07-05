@@ -87,7 +87,7 @@ module AresMUSH
           it "should emit to the scene" do
             scene = double
             @room.stub(:scene) { scene }
-            Scenes::Api.should_receive(:add_pose).with(scene, "test")
+            Scenes.should_receive(:add_pose).with(scene, "test")
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
         end

@@ -4,7 +4,7 @@ load "lib/weather_change_cmd.rb"
 load "lib/weather_cmd.rb"
 load "lib/cron_event_handler.rb"
 load "lib/game_started_event_handler.rb"
-load "weather_api.rb"
+load "public/weather_api.rb"
 
 module AresMUSH
   module Weather

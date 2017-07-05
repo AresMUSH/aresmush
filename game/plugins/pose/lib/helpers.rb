@@ -47,7 +47,7 @@ module AresMUSH
       
       if (place_name)
         same_place = (char.place ? char.place.name : nil) == place_name
-        place_title = Places::Api.place_title(place_name, same_place)
+        place_title = Places.place_title(place_name, same_place)
       else
         place_title = is_ooc ? "" : enactor.place_title(char)
       end

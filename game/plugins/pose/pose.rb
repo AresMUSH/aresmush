@@ -1,5 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "pose_api.rb"
 load "lib/autospace_cmd.rb"
 load "lib/char_connected_event_handler.rb"
 load "lib/helpers.rb"
@@ -8,11 +7,12 @@ load "lib/pemit_cmd.rb"
 load "lib/pose_catcher_cmd.rb"
 load "lib/pose_cmd.rb"
 load "lib/set_pose_cmd.rb"
-load "lib/pose_model.rb"
 load "lib/pose_drop_cmd.rb"
 load "lib/pose_nudge_cmd.rb"
 load "lib/pose_order_cmd.rb"
 load "lib/quote_color_cmd.rb"
+load "public/pose_api.rb"
+load "public/pose_model.rb"
 
 
 module AresMUSH

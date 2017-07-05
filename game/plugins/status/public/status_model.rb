@@ -1,5 +1,13 @@
 module AresMUSH
   class Character
+    reference :last_ic_location, "AresMUSH::Room"
+
+    attribute :afk_message
+    attribute :is_afk, :type => DataType::Boolean
+    attribute :is_on_duty, :type => DataType::Boolean, :default => true
+    attribute :is_playerbit, :type => DataType::Boolean
+    attribute :is_npc, :type => DataType::Boolean
+    
     def is_afk?
       is_afk
     end
@@ -42,23 +50,4 @@ module AresMUSH
       self.is_afk? ? self.afk_message : ""
     end
   end
-
-  module Status
-    module Api
-      def self.status_color(status)
-        Status.status_color(status)
-      end
-    
-      def self.is_idle?(client)
-        Status.is_idle?(client)
-      end
-      
-      def self.update_last_ic_location(char)
-        if (char.room.room_type == "IC")
-          char.update(last_ic_location: char.room)
-        end
-      end
-      
-    end
-  end  
 end

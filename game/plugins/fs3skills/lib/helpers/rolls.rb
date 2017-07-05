@@ -15,33 +15,7 @@ module AresMUSH
       roll
     end
     
-    # Makes an ability roll and returns a hash with the successes and success title.
-    # Good for automated systems where you only care about the final result and don't need
-    # to know the raw die roll.
-    def self.one_shot_roll(client, char, roll_params)
-      roll = FS3Skills.roll_ability(client, char, roll_params)
-      roll_result = FS3Skills.get_success_level(roll)
-      success_title = FS3Skills.get_success_title(roll_result)
-      
-      {
-        :successes => roll_result,
-        :success_title => success_title
-      }
-    end
-    
-    # Rolls a raw number of dice.
-    def self.one_shot_die_roll(dice)
-      roll = FS3Skills.roll_dice(dice)
-      roll_result = FS3Skills.get_success_level(roll)
-      success_title = FS3Skills.get_success_title(roll_result)
 
-      Global.logger.info "Rolling raw dice=#{dice} result=#{roll}"
-      
-      {
-        :successes => roll_result,
-        :success_title => success_title
-      }
-    end
         
     # Rolls a number of FS3 dice and returns the raw die results.
     def self.roll_dice(dice)
@@ -78,7 +52,7 @@ module AresMUSH
         end
         
         if (room.scene)
-          Scenes::Api.add_pose(room.scene, message)
+          Scenes.add_pose(room.scene, message)
         end
         
       end

@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def abilities
-        FS3Skills::Api.app_review(@char)
+        FS3Skills.app_review(@char)
       end
       
       def demographics
@@ -32,7 +32,7 @@ module AresMUSH
       end
      
       def ranks
-        Ranks::Api.app_review(@char)
+        Ranks.app_review(@char)
       end
      
       def job_info

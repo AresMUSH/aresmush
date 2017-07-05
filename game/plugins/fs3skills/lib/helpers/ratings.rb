@@ -1,10 +1,6 @@
 module AresMUSH
   module FS3Skills
-    def self.ability_rating(char, ability_name)
-      ability = FS3Skills.find_ability(char, ability_name)
-      ability ? ability.rating : 0
-    end
-    
+
     def self.find_ability(char, ability_name)
       ability_name = ability_name.titlecase
       ability_type = FS3Skills.get_ability_type(ability_name)

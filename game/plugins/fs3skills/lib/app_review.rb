@@ -1,23 +1,6 @@
 module AresMUSH
   module FS3Skills
     
-    def self.app_review(char)
-      text = FS3Skills.total_point_review(char)
-      text << "%r"
-      text << FS3Skills.ability_rating_review(char)
-      text << "%r"
-      text << FS3Skills.backgrounds_review(char)
-      text << "%r%r"
-      text << FS3Skills.starting_language_review(char)
-      text << "%r"
-      text << FS3Skills.starting_skills_check(char)
-      text << "%r"
-      text << FS3Skills.unusual_skills_check(char)
-      text << "%r"
-      text << FS3Skills.hook_review(char)
-      text
-    end
-    
     def self.hook_review(char)
       FS3Skills.min_item_review(char.fs3_hooks.count, "min_hooks", "fs3skills.hooks_added")      
     end

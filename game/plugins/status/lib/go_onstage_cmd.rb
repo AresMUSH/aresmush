@@ -15,13 +15,13 @@ module AresMUSH
         # No need to save because move will do it.
         enactor.room.emit_ooc t('status.go_ic', :name => enactor.name)
         icloc.emit_ooc t('status.go_ic', :name => enactor.name)
-        Rooms::Api.move_to(client, enactor, icloc)
+        Rooms.move_to(client, enactor, icloc)
       end
       
       def get_icloc(char)
         icloc = enactor.last_ic_location
         if (!icloc || cmd.switch_is?("reset"))
-          icloc = Rooms::Api.ic_start_room
+          icloc = Rooms.ic_start_room
         end
         icloc
       end

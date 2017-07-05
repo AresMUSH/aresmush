@@ -30,9 +30,34 @@ module AresMUSH
     attribute :room_owner
          
     index :room_type
+    
+    def grid_x
+      self.room_grid_x
+    end
+    
+    def grid_y
+      self.room_grid_y
+    end
+    
+    def area
+      self.room_area
+    end
+    
+    def is_foyer?
+      self.room_is_foyer
+    end
+    
+    def owned_by?(char)
+      self.room_owner == char.id
+    end
   end
   
   class Exit    
     attribute :lock_keys, :type => DataType::Array, :default => []
+    
+    def allow_passage?(char)
+      return false if (self.lock_keys == Rooms.interior_lock)
+      return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
+    end
   end
 end

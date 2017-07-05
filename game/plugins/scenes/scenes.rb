@@ -8,7 +8,6 @@ load "lib/log_clear_cmd.rb"
 load "lib/log_enable_cmd.rb"
 load "lib/log_share_cmd.rb"
 load "lib/scene_types_cmd.rb"
-load "lib/scene_model.rb"
 load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
 load "lib/scene_set_cmd.rb"
@@ -17,7 +16,8 @@ load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "templates/scenes_summary_template.rb"
-load "scenes_api.rb"
+load "public/scenes_api.rb"
+load "public/scene_model.rb"
 
 module AresMUSH
   module Scenes

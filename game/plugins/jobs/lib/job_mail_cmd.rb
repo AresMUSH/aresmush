@@ -21,7 +21,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(client, self.number) do |job|  
-          Mail::Api.send_mail(self.names, t('jobs.mail_job_title', :title => job.title), self.message, client, enactor)
+          Mail.send_mail(self.names, t('jobs.mail_job_title', :title => job.title), self.message, client, enactor)
           display_names = self.names.join(" ")
           
           # Create an admin-only comment for the mail   

@@ -7,11 +7,10 @@ load "lib/roles_assign_cmd.rb"
 load "lib/role_create_cmd.rb"
 load "lib/role_delete_cmd.rb"
 load "lib/roles_cmd.rb"
-load "lib/roles_model.rb"
 load "lib/role_update_permission_cmd.rb"
 load "lib/roles_remove_cmd.rb"
-load "roles_events.rb"
-load "roles_api.rb"
+load "public/roles_events.rb"
+load "public/roles_model.rb"
 load "templates/admin_template.rb"
 
 module AresMUSH

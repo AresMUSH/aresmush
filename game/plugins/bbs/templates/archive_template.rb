@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def date(post)
-        OOCTime::Api.local_long_timestr(@enactor, post.created_at)
+        OOCTime.local_long_timestr(@enactor, post.created_at)
       end
       
       def author(post)
@@ -22,7 +22,7 @@ module AresMUSH
       
       def reply_title(reply)
         rauthor = !reply.author ? t('bbs.deleted_author') : reply.author.name
-        rdate = OOCTime::Api.local_long_timestr(@enactor, reply.created_at)
+        rdate = OOCTime.local_long_timestr(@enactor, reply.created_at)
         t('bbs.reply_title', :name => rauthor, :date => rdate)
       end
     end

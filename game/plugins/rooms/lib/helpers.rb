@@ -33,23 +33,5 @@ module AresMUSH
       [ "INTERIOR_LOCK" ]
     end
     
-    def self.move_to(client, char, room, exit_name = nil?)
-      current_room = char.room
-      Status::Api.update_last_ic_location(char)
-      Places::Api.clear_place(char)
-      
-      if (exit_name)
-        current_room.emit_ooc t('rooms.char_has_left_through_exit', :name => char.name, :room => room.name, :exit => exit_name)
-      else
-        current_room.emit_ooc t('rooms.char_has_left', :name => char.name)
-      end
-      
-      char.update(room: room)
-      if (client)
-        Rooms.emit_here_desc(client, char)
-      end
-      
-      room.emit_ooc t('rooms.char_has_arrived', :name => char.name)
-    end
   end
 end

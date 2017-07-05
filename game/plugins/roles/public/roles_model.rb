@@ -1,5 +1,7 @@
 module AresMUSH
   class Character
+    attribute :role_admin_note
+    
     def has_permission?(name)
       self.is_admin? || self.roles.any? { |r| r.has_permission?(name) }
     end
@@ -19,5 +21,5 @@ module AresMUSH
     def is_master_admin?
       self == Game.master.master_admin
     end
-  end
+  end  
 end

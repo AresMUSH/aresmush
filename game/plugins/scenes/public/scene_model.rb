@@ -30,7 +30,7 @@ module AresMUSH
     end
     
     def created_date_str(char)
-      OOCTime::Api.local_short_timestr(char, self.created_at)
+      OOCTime.local_short_timestr(char, self.created_at)
     end
     
     def participants
@@ -74,8 +74,4 @@ module AresMUSH
       return false
     end
   end
-  
-  
-  
-  
 end
