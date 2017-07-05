@@ -25,6 +25,10 @@ module AresMUSH
       FS3Skills.modify_xp(self, -amount)
     end
     
+    def reset_xp
+      self.update(fs3_xp: 0)
+    end
+    
     def roll_ability(ability, mod = 0)
       FS3Skills.one_shot_roll(nil, self, FS3Skills::RollParams.new(ability, mod))
     end
