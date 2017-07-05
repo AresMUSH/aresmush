@@ -1,6 +1,6 @@
 module AresMUSH
   module Describe
-    def self.get_desc_template(model, enactor)     
+    def self.desc_template(model, enactor)     
       if (model.class == Room)
         template = RoomTemplate.new(model, enactor)
       elsif (model.class == Character)

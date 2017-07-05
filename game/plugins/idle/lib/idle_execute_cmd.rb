@@ -48,7 +48,7 @@ module AresMUSH
               Idle.add_to_roster(idle_char)
             when "Npc"
               idle_char.update(is_npc: true)
-              Login::Api.set_random_password(idle_char)
+              Login.set_random_password(idle_char)
             when "Warn"
               Global.logger.debug "#{idle_char.name} idle warned."
               idle_char.update(idle_warned: true)
@@ -62,7 +62,7 @@ module AresMUSH
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
               idle_char.update(idle_state: action)
-              Login::Api.set_random_password(idle_char)
+              Login.set_random_password(idle_char)
             end
           end
         end

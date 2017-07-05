@@ -28,27 +28,6 @@ module AresMUSH
       char.update(last_on: Time.now)
     end
     
-    # Checks to see if either the IP or hostname is a match with the specified string.
-    # For IP we check the first few numbers because they're most meaningful.  
-    # For the hostname, it's reversed.
-    def self.is_site_match?(char_ip, char_host, ip, hostname)
-      host_search = hostname.chars.last(20).join.to_s.downcase
-      ip_search = ip.chars.first(10).join.to_s
-
-      ip = char_ip || ""
-      host = char_host || ""
-      
-      return true if !ip_search.blank? && ip.include?(ip_search)
-      return true if !host_search.blank? && host.include?(host_search)
-      return false
-    end
-
-    def self.terms_of_service
-      use_tos = Global.read_config("login", "use_terms_of_service") 
-      tos_filename = "game/files/tos.txt"
-      return use_tos ? File.read(tos_filename, :encoding => "UTF-8") : nil
-    end
-    
     def self.check_for_suspect(char)
       suspects = Global.read_config("login", "suspect_sites")
       return false if !suspects
@@ -56,7 +35,7 @@ module AresMUSH
       suspects.each do |s|
         if (char.is_site_match?(s, s))
           Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          Jobs::Api.create_job(Global.read_config("login", "trouble_category"), 
+          Jobs.create_job(Global.read_config("login", "trouble_category"), 
             t('login.suspect_login_title'), 
             t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
             Game.master.system_character)
@@ -90,21 +69,6 @@ module AresMUSH
     
     def self.announce_connection(client, char)
       Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
-    end
-      
-    def self.login_char(char, client)
-      # Handle reconnect
-      existing_client = char.client
-      client.char_id = char.id
-      
-      if (existing_client)
-        existing_client.emit_ooc t('login.disconnected_by_reconnect')
-        existing_client.disconnect
-
-        Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
-      else
-        announce_connection(client, char)
-      end
     end
   end
 end

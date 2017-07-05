@@ -24,7 +24,7 @@ module AresMUSH
       char.update(idle_state: "Roster")
       char.reset_xp
       # Reset their password.
-      Login::Api.set_random_password(char)
+      Login.set_random_password(char)
       # Remove their handle.              
       if (char.handle)
         char.handle.delete

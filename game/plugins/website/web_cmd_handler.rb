@@ -6,7 +6,7 @@ module AresMUSH
           data = event.data
           char = Character[data["id"]]
           if (char.is_valid_api_token?(data["login_api_token"]))
-            Login::Api.login_char(char, event.client)
+            Login.login_char(char, event.client)
           else
             event.client.emit_failure t('login.no_auto_login_time_expired')
           end

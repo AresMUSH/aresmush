@@ -1,11 +1,9 @@
 $:.unshift File.dirname(__FILE__)
-load "idle_api.rb"
 load "lib/helpers.rb"
 load "lib/idle_action_cmd.rb"
 load "lib/idle_execute_cmd.rb"
 load 'lib/char_connected_event_handler.rb'
 load 'lib/cron_event_handler.rb'
-load "lib/idle_model.rb"
 load "lib/idle_queue_cmd.rb"
 load "lib/idle_remove_cmd.rb"
 load "lib/idle_set_cmd.rb"
@@ -18,6 +16,8 @@ load "lib/roster_note_cmd.rb"
 load "lib/roster_restrict_cmd.rb"
 load "lib/roster_remove_cmd.rb"
 load "lib/roster_view_cmd.rb"
+load "public/idle_api.rb"
+load "public/idle_model.rb"
 load "templates/idle_queue_template.rb"
 load "templates/roster_list_template.rb"
 load "templates/roster_detail_template.rb"

@@ -68,7 +68,7 @@ module AresMUSH
             return 
           end
 
-          terms_of_service = Login::Api.terms_of_service
+          terms_of_service = Login.terms_of_service
           if (terms_of_service && !char.terms_of_service_acknowledged  && !client.program[:tos_accepted])
             client.program[:login_cmd] = cmd
             template = BorderedDisplayTemplate.new "#{terms_of_service}%r#{t('login.tos_agree')}"

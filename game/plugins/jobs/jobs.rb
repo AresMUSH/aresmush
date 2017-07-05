@@ -1,5 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "jobs_api.rb"
 
 # Must be loaded before other job commands
 load "lib/single_job_cmd.rb"
@@ -19,7 +18,6 @@ load "lib/job_search_cmd.rb"
 load "lib/job_status_cmd.rb"
 load "lib/jobs_backup_cmd.rb"
 load "lib/jobs_catchup.rb"
-load "lib/jobs_model.rb"
 load "lib/jobs_filter_cmd.rb"
 load "lib/job_mail_cmd.rb"
 load "lib/jobs_new_cmd.rb"
@@ -29,6 +27,8 @@ load "lib/purge_jobs_cmd.rb"
 load "lib/request_comment_cmd.rb"
 load "lib/view_job_cmd.rb"
 load "lib/view_request_cmd.rb"
+load "public/jobs_api.rb"
+load "public/jobs_model.rb"
 load "templates/job_template.rb"
 load "templates/jobs_list_template.rb"
 

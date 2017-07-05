@@ -35,7 +35,7 @@ module AresMUSH
             return
           end
 
-          password = Login::Api.set_random_password(model)
+          password = Login.set_random_password(model)
           model.update(idle_state: nil)
           model.update(terms_of_service_acknowledged: nil)
           

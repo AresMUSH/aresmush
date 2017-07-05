@@ -16,7 +16,7 @@ module AresMUSH
       def handle
         job = enactor.approval_job
         
-        Jobs::Api.change_job_status(enactor,
+        Jobs.change_job_status(enactor,
           job,
           Global.read_config("chargen", "jobs", "app_hold_status"),
           t('chargen.app_job_unsubmitted'))

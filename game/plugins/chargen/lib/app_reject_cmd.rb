@@ -39,7 +39,7 @@ module AresMUSH
           
           model.update(chargen_locked: false)
           
-          Jobs::Api.change_job_status(enactor,
+          Jobs.change_job_status(enactor,
             job,
             Global.read_config("chargen", "jobs", "app_hold_status"),
             "#{Global.read_config("chargen", "messages", "rejection")}%R%R#{self.message}")

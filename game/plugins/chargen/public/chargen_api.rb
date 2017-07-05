@@ -39,7 +39,7 @@ module AresMUSH
       job = char.approval_job
       
       if (!job)
-        result = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+        result = Jobs.create_job(Global.read_config("chargen", "jobs", "app_category"), 
           t('chargen.application_title', :name => char.name), 
           t('chargen.app_job_submitted'), 
           char)
@@ -53,7 +53,7 @@ module AresMUSH
         return t('chargen.app_submitted')
       else
         char.update(chargen_locked: true)
-        Jobs::Api.change_job_status(char,
+        Jobs.change_job_status(char,
           job,
           Global.read_config("chargen", "jobs", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))
@@ -62,7 +62,7 @@ module AresMUSH
     end    
       
     def self.approved_chars
-      Idle::Api.active_chars.select { |c| c.is_approved? }
+      Idle.active_chars.select { |c| c.is_approved? }
     end
   end
 end

@@ -12,6 +12,11 @@ module AresMUSH
     attribute :terms_of_service_acknowledged, :type => DataType::Time
     attribute :last_ip
     attribute :last_hostname
+    attribute :last_on, :type => DataType::Time
+  
+    def is_guest?
+      self.has_any_role?(Login.guest_role)
+    end
     
     def is_site_match?(ip, hostname)
       Login.is_site_match?(self.last_ip, self.last_hostname, ip, hostname)
