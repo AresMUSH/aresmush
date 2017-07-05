@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def approval_status
-        Chargen::Api.approval_status(@char)
+        Chargen.approval_status(@char)
       end
       
       def fullname
@@ -81,7 +81,7 @@ module AresMUSH
       end
       
       def status
-        Chargen::Api.approval_status(@char)
+        Chargen.approval_status(@char)
       end
       
       def alts

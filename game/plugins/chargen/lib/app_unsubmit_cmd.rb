@@ -9,12 +9,12 @@ module AresMUSH
       end
       
       def check_approval_job
-        return t('chargen.you_have_not_submitted_app') if !Chargen.approval_job(enactor)
+        return t('chargen.you_have_not_submitted_app') if !enactor.approval_job
         return nil
       end
       
       def handle
-        job = Chargen.approval_job(enactor)
+        job = enactor.approval_job
         
         Jobs::Api.change_job_status(enactor,
           job,

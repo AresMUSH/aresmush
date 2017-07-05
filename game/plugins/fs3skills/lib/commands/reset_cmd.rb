@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
 
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(enactor)
+        Chargen.check_chargen_locked(enactor)
       end
 
       def handle

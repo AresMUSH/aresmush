@@ -32,7 +32,7 @@ module AresMUSH
       end
       
       def approval_notice
-        Chargen::Api.approval_job_notice(@char)
+        Chargen.approval_job_notice(@char)
       end
       
       def events

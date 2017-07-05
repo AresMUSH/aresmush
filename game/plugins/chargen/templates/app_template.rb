@@ -36,7 +36,7 @@ module AresMUSH
       end
      
       def job_info
-        job = Chargen.approval_job(@char)
+        job = @char.approval_job
         if (job)
           number =job.number
           if (@enactor == @char)

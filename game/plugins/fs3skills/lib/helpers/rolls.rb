@@ -74,7 +74,7 @@ module AresMUSH
         room.emit message
         channel = Global.read_config("fs3skills", "roll_channel")
         if (channel)
-          Channels::Api.send_to_channel(channel, message)
+          Channels.send_to_channel(channel, message)
         end
         
         if (room.scene)

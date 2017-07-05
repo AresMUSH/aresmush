@@ -204,7 +204,7 @@ module AresMUSH
       
       
       if (params['submit-app'])
-        Chargen::Api.submit_app(@user)
+        Chargen.submit_app(@user)
         flash[:info] = "Your application has been submitted.  You must log into the game to check on its status."
         redirect "/char/#{@user.id}"
       end

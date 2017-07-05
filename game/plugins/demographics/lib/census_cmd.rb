@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def handle   
-        chars = Chargen::Api.approved_chars
+        chars = Chargen.approved_chars
         if (!self.name)
           paginator = Paginator.paginate(chars.sort_by { |c| c.name }, cmd.page, 20)
           if (paginator.out_of_bounds?)

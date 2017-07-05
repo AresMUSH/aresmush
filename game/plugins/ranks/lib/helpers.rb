@@ -66,7 +66,7 @@ module AresMUSH
         status = t('chargen.ok')
       end
       
-      Chargen::Api.format_review_status(message, status)
+      Chargen.format_review_status(message, status)
     end
     
   end

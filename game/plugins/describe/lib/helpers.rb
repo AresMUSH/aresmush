@@ -37,7 +37,7 @@ module AresMUSH
     def self.app_review(char)
       has_desc = char.current_desc && !char.current_desc.description.to_s.empty?
       error = has_desc ? t('chargen.ok') : t('chargen.not_set')
-      Chargen::Api.format_review_status t('describe.description_review'), error
+      Chargen.format_review_status t('describe.description_review'), error
     end
     
     def self.update_current_desc(char, text)

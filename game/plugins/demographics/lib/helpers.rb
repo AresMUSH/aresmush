@@ -26,7 +26,7 @@ module AresMUSH
     
     def self.census_by(&block)
       counts = {}
-      Chargen::Api.approved_chars.each do |c|
+      Chargen.approved_chars.each do |c|
         val = yield(c)
         if (val)
           count = counts.has_key?(val) ? counts[val] : 0
@@ -85,7 +85,7 @@ module AresMUSH
       end
       
       if (missing.count == 0)
-        Chargen::Api.format_review_status(message, t('chargen.ok'))
+        Chargen.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%R%T#{m}" }.join
         "#{message}%r#{error}"

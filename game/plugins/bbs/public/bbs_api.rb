@@ -42,13 +42,10 @@ module AresMUSH
         post.mark_read(alt)
       end
     end
-    def self.system_post_to_bbs_if_configured(configured_board, subject, message)
-      return if !configured_board
-      return if configured_board.blank?
     
-      Bbs.post(configured_board, subject, message, Game.master.system_character)
-    end
     
+    # Client may be nil for automated bbposts.  Otherwise it will be used
+    # to emit error messages.
     def self.post(board_name, subject, message, author, client = nil)
       Bbs.with_a_board(board_name, client, author) do |board|
       
@@ -85,6 +82,8 @@ module AresMUSH
       end
     end
     
+    # Client may be nil for automated bbposts.  Otherwise it will be used
+    # to emit error messages.
     def self.reply(board, post, author, reply, client = nil)
       if (!Bbs.can_write_board?(author, board))
         if (client)
@@ -102,6 +101,7 @@ module AresMUSH
       :board => board.name, 
       :reference => post.reference_str,
       :author => author.name)
+      
       Global.client_monitor.notify_web_clients :new_bbs_post, t('bbs.web_new_reply', :subject => post.subject, :author => author.name)
     end
   end

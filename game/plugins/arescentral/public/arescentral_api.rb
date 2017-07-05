@@ -1,5 +1,8 @@
 module AresMUSH
   module AresCentral
+    
+    # Emits a standard warning message to a client whenever they change a 
+    # preference that will be overridden by their AresCentral preferences.
     def self.warn_if_setting_linked_preference(client, enactor)
       if (enactor.handle)
         client.emit_ooc t('arescentral.setting_preference_on_linked_char')

@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     get '/chars' do
-      @chars = Chargen::Api.approved_chars.sort_by { |c| c.name }
+      @chars = Chargen.approved_chars.sort_by { |c| c.name }
       erb :"chars/index"
     end
     

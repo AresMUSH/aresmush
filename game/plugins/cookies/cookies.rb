@@ -2,9 +2,10 @@ $:.unshift File.dirname(__FILE__)
 load "lib/cookie_cmd.rb"
 load "lib/cookie_cron_handler.rb"
 load "lib/cookie_here_cmd.rb"
-load "lib/cookie_model.rb"
 load "lib/cookies_cmd.rb"
 load "lib/helpers.rb"
+load "public/cookie_award.rb"
+load "public/cookie_char.rb"
 
 module AresMUSH
   module Cookies

@@ -66,7 +66,7 @@ module AresMUSH
   
         context "public roll" do
           before do
-            Channels::Api.stub(:send_to_channel)
+            Channels.stub(:send_to_channel)
             @room.stub(:scene) { nil }
             @room.stub(:emit)
           end
@@ -80,7 +80,7 @@ module AresMUSH
           end
     
           it "should emit to the channel" do
-            Channels::Api.should_receive(:send_to_channel).with("FS3 Chan", "test")
+            Channels.should_receive(:send_to_channel).with("FS3 Chan", "test")
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
           

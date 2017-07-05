@@ -24,7 +24,7 @@ module AresMUSH
       
       def check_chargen_locked
         return nil if Ranks.can_manage_ranks?(enactor)
-        Chargen::Api.check_chargen_locked(enactor)
+        Chargen.check_chargen_locked(enactor)
       end
       
       def handle

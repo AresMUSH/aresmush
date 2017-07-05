@@ -31,7 +31,7 @@ module AresMUSH
           end
           
           
-          job = Chargen.approval_job(model)
+          job = model.approval_job
           if (!job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
             return
