@@ -70,7 +70,7 @@ module AresMUSH
     def self.set_scene_location(scene, location)
       matched_rooms = Room.all.select { |r| Scenes.format_room_name_for_match(r, location) =~ /#{location.upcase}/ }
 
-      if (matched_rooms.count == 0)
+      if (matched_rooms.count != 1)
         description = location
       else
         room = matched_rooms.first
