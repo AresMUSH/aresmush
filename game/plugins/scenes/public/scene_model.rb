@@ -22,6 +22,7 @@ module AresMUSH
     attribute :icdate
     
     collection :scene_poses, "AresMUSH::ScenePose"
+    set :participants, "AresMUSH::Character"
     
     before_delete :delete_poses
     
@@ -37,7 +38,7 @@ module AresMUSH
       scene_poses.to_a.sort_by { |p| p.sort_order }
     end
     
-    def participants
+    def auto_participants
       scene_poses.select { |s| !s.is_system_pose? && !s.is_gm_pose? }
           .map { |s| s.character }
           .uniq { |c| c.id }

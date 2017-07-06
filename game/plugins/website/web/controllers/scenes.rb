@@ -31,6 +31,17 @@ module AresMUSH
       erb :"scenes/edit_scene"
     end
     
+    get '/scene/:id/participants' do |id|
+      @scene = Scene[id]
+      
+      if (!@scene.shared)
+        flash[:error] = "That scene has not been shared."
+        redirect "/scenes"
+      end
+      
+      erb :"scenes/edit_participants"
+    end
+    
     get '/scene/:id/pose/add' do |id|
       @scene = Scene[id]
       
@@ -132,6 +143,37 @@ module AresMUSH
       erb :"/scenes/edit_pose"
     end
     
+    get '/scene/:scene_id/participants/delete/:char_id' do |scene_id, char_id|
+      @scene = Scene[scene_id]
+      @char = Character[char_id]
+      if (!Scenes.can_access_scene?(@user, @scene))
+        flash[:error] = "You are not allowed to do that."
+        redirect "/scene/#{@scene.id}"
+      end
+      
+      @scene.participants.delete @char
+      redirect "/scene/#{@scene.id}/participants"
+    end
+    
+    post '/scene/:scene_id/participants/add' do |scene_id|
+      @scene = Scene[scene_id]
+      
+      char_id = params[:character]
+      if (!char_id)
+        flash[:error] = "No character selected."
+        redirect "/scene/#{@scene.id}/participants"
+      end
+      
+      @char = Character[char_id]
+      if (!Scenes.can_access_scene?(@user, @scene))
+        flash[:error] = "You are not allowed to do that."
+        redirect "/scene/#{@scene.id}"
+      end
+      
+      @scene.participants.add @char
+      redirect "/scene/#{@scene.id}/participants"
+    end
+    
     post '/scene/:id/pose/add', :auth => :approved do |id|
       @scene = Scene[id]
       
@@ -183,7 +225,9 @@ module AresMUSH
       
       char_id = params[:character]
       if (char_id != @pose.character.id)
-        @pose.update(character: Character[char_id])
+        char = Character[char_id]
+        @pose.update(character: char)
+        @pose.scene.participants.add char
       end
       
       flash[:info] = "Updated!"
@@ -218,7 +262,8 @@ module AresMUSH
       title: params[:title],
       icdate: params[:icdate],
       shared: true,
-      completed: true
+      completed: true,
+      owner: @user
       )
       
       Scenes.add_pose(@scene, params[:log], @user)

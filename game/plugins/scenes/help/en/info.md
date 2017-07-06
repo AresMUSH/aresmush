@@ -26,7 +26,9 @@ You can control several properties about the scene.  These are used for [Scene L
 
 ## Participants
 
-The log system automatically tracks who participated in the scene.  Sometimes, though, you'll be emitting a character from another character (spoofing them).  You can attribute individual poses to different people through the Web Portal.  If you want to just replace all instances of one character with another, you can use the scene spoof command.  For example, if you had emitted Bob from Harry throughout the log, you can switch all of Harry's poses to Bob.  
+The log system automatically tracks who participated in the scene.  You can edit this through the web portal.
+
+Sometimes, though, you'll be emitting a character from another character (spoofing them). If you want to just replace all instances of one character with another, you can use the scene spoof command.  For example, if you had emitted Bob from Harry throughout the log, you can switch all of Harry's poses to Bob.  
 
 `scene/spoof <#>=<original char>/<new char>`
 

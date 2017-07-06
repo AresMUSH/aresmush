@@ -45,6 +45,10 @@ module AresMUSH
         scene.update(room: nil)
       end
       
+      scene.auto_participants.each do |p|
+        scene.participants.add p
+      end
+      
       if (!scene.private_scene)
         scene.update(shared: true)
       end
