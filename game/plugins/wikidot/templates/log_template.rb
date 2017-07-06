@@ -22,7 +22,7 @@ module AresMUSH
         decolorized = colorized.gsub(/\e\[(\d+)(;\d+)*m/, '')
           
         if (scene_pose.is_system_pose?)
-          return "[[span class=\"system\"]]//#{decolorized}//[[/span]]"
+          return decolorized.split(/[\r\n]/).map { |d| "[[span class=\"system\"]]//#{d}//[[/span]]" }.join("\n")
         elsif (scene_pose.is_setpose?)
           return decolorized.split(/[\r\n]/).join("\n> ")
         else

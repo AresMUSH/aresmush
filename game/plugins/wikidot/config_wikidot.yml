@@ -6,6 +6,7 @@ wikidot:
     log_categories:
         Social: log
         Event: event
+        Vignette: vignette
     shortcuts:
         "log/wiki" : "wiki/log"
         "scene/wiki" : "wiki/log"

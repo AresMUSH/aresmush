@@ -1,6 +1,9 @@
 module AresMUSH
   class WebApp
-   
+    def can_access_scene?(scene)
+      Scenes.can_access_scene?(@user, scene)
+    end
+    
     get '/scenes' do
       @scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.created_at }.reverse
       erb :"scenes/index"
@@ -15,6 +18,17 @@ module AresMUSH
       end
       
       erb :"scenes/log"
+    end
+    
+    get '/scene/:id/edit' do |id|
+      @scene = Scene[id]
+      
+      if (!@scene.shared)
+        flash[:error] = "That scene has not been shared."
+        redirect "/scenes"
+      end
+      
+      erb :"scenes/edit_scene"
     end
     
     get '/scene/:id/pose/add' do |id|
@@ -35,6 +49,10 @@ module AresMUSH
         redirect "/scene/#{@pose.scene.id}"
       end
       erb :"scenes/delete_pose"
+    end
+    
+    get '/scenes/create', :auth => :approved do 
+      erb :"scenes/create_scene"
     end
     
     get '/scene/pose/:id/moveup' do |id|
@@ -163,8 +181,50 @@ module AresMUSH
       @pose.update(pose: text)
       @pose.update(is_setpose: params[:is_setpose])
       
+      char_id = params[:character]
+      if (char_id != @pose.character.id)
+        @pose.update(character: Character[char_id])
+      end
+      
       flash[:info] = "Updated!"
       redirect "/scene/#{@pose.scene.id}"
+    end
+    
+    post '/scene/:id/edit', :auth => :approved do |id|
+      @scene = Scene[id]
+      
+      if (!Scenes.can_access_scene?(@user, @scene))
+        flash[:error] = "You are not allowed to do that."
+        redirect "/scene/#{id}"
+      end
+      
+      
+      @scene.update(location: params[:location])
+      @scene.update(summary: params[:summary])
+      @scene.update(scene_type: params[:scene_type])
+      @scene.update(title: params[:title])
+      @scene.update(icdate: params[:icdate])
+      
+      flash[:info] = "Scene updated!"
+      redirect "/scene/#{id}"
+    end
+    
+    post '/scenes/create', :auth => :approved do
+      
+      @scene = Scene.create(
+      location: params[:location],
+      summary: params[:summary],
+      scene_type: params[:scene_type],
+      title: params[:title],
+      icdate: params[:icdate],
+      shared: true,
+      completed: true
+      )
+      
+      Scenes.add_pose(@scene, params[:log], @user)
+      
+      flash[:info] = "Scene created!"
+      redirect "/scene/#{@scene.id}"
     end
     
   end

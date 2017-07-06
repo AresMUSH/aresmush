@@ -1,5 +1,13 @@
 <h1>Scenes</h1>
 
+<% if is_approved? %>
+
+<p>
+    <a href="/scenes/create" class="btn btn-primary">Create Scene</a>
+</p>
+
+<% end %>
+
 <table class="table table-striped">
 
 
@@ -22,16 +30,15 @@
         <span class="label label-warning">In Progress</span>
         <% end %>
         
-        <% if s.scene_type == 'Event' %>
-        <span class="label label-danger">Event</span>
-        <% else %>
-        <span class="label label-info">Social</span>
-        <% end %>
+       <span class="label label-info 
+        scene-<%= s.scene_type ? s.scene_type.downcase : "unknown" %>">
+            <%= s.scene_type %></span>
+       
         
         <p><%= s.summary %></p>
         </td>
         <td>
-            <%= s.created_date_str(@user) %>
+            <%= s.icdate %>
         </td>
         <td>
             <%= s.participants.map { |p| p.name }.join(", ")%>

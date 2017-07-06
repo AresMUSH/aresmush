@@ -192,6 +192,7 @@ pre code {
 }
 
 .scene-system-pose {
+    padding: 10px;
     margin: 15px;
     margin-left: 25px;
     color: #999;
@@ -241,4 +242,16 @@ a:hover { text-decoration: none; }
   padding-right: .6em;
   padding-left: .6em;
   border-radius: 20rem;
+}
+
+.scene-event {
+    background-color: #337ab7;
+}
+
+.scene-social {
+    background-color: #5cb85c;
+}
+
+.scene-vignette {
+    background-color: #f0ad4e;
 }

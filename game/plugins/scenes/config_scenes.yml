@@ -8,6 +8,7 @@ scenes:
     scene_types:
         - Social
         - Event
+        - Vignette
                      
     shortcuts:
         "scenes": "scene"

@@ -6,11 +6,17 @@
         <% else %>
         <span class="label label-warning">In Progress</span>
         <% end %>
+        
+        <span class="label label-info 
+         scene-<%= @scene.scene_type ? @scene.scene_type.downcase : "unknown" %>">
+             <%= @scene.scene_type %></span>
     </h3>
 
     <hr/>
 
     <p><b>Summary:</b> <%= @scene.summary %></p>
+
+    <p><b>Date:</b> <%= @scene.icdate %></p>
 
     <p><b>Location:</b> <%= @scene.location %></p>
     
@@ -34,6 +40,7 @@
     <% if p.is_system_pose? %>
         <div class="scene-system-pose">
 
+             <div class="scene-pose-header">
                  <div class="pull-right">
                      <% if @scene.completed && p.can_edit?(@user) %>
                          <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
@@ -43,7 +50,7 @@
                             <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     <% end %>
                  </div>
-                 
+            </div>
             <div class="ansi">
                 <%= format_markdown_for_html p.pose %>
             </div>
@@ -65,7 +72,7 @@
                  </a>   
                  
                  <div class="pull-right">
-                     <% if @scene.completed && p.can_edit?(@user) %>
+                     <% if p.can_edit?(@user) %>
                          <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
                           | <a href="/scene/pose/<%= p.id %>/moveup"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
                            | <a href="/scene/pose/<%= p.id %>/movedown"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>                            
@@ -87,8 +94,11 @@
 <% end %>
     
 
-<% if @scene.completed %>
+<% if can_access_scene?(@scene) && is_approved? %>
 
-<p><a href="/scene/<%= @scene.id %>/pose/add" class="btn btn-primary">Add Pose</a></p>
+<p>
+    <a href="/scene/<%= @scene.id %>/pose/add" class="btn btn-primary">Add Pose</a>
+    <a href="/scene/<%= @scene.id %>/edit" class="btn btn-default">Edit Scene</a>
+</p>
 
 <% end %>
