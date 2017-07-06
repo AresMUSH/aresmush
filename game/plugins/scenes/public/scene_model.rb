@@ -33,6 +33,10 @@ module AresMUSH
       OOCTime.local_short_timestr(char, self.created_at)
     end
     
+    def poses_in_order
+      scene_poses.to_a.sort_by { |p| p.sort_order }
+    end
+    
     def participants
       scene_poses.select { |s| !s.is_system_pose? && !s.is_gm_pose? }
           .map { |s| s.character }
@@ -55,6 +59,11 @@ module AresMUSH
     reference :scene, "AresMUSH::Scene"
     attribute :pose
     attribute :is_setpose, :type => DataType::Boolean
+    attribute :order
+    
+    def sort_order
+      self.order ? self.order.to_i : self.id.to_i
+    end
     
     def is_setpose?
       self.is_setpose

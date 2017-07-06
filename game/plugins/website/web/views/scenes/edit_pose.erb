@@ -2,9 +2,18 @@
 
     <form method="POST" action="/scene/pose/<%= @pose.id %>/edit">
         
-
+        
+    <p>
     <textarea name="pose" rows="10" cols="100"><%= format_input_for_html(@pose.pose) %></textarea>
+    </p>
 
-        <p><input type="submit" value="Yes"></p>
+
+    <p>
+          <input type="checkbox" name="is_setpose" value="is_setpose" 
+                 <% if @pose.is_setpose? %> checked <% end %>> Set Pose?
+             </p>
+
+
+        <p><input type="submit" value="Save"></p>
         
     </form>

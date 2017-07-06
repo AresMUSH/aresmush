@@ -29,20 +29,23 @@
     
     <hr/>
         
-<% @scene.scene_poses.each do |p| %>
+<% @scene.poses_in_order.each do |p| %>
     
     <% if p.is_system_pose? %>
         <div class="scene-system-pose">
 
                  <div class="pull-right">
-                     <% if p.can_edit?(@user) %>
-                         <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> | 
-                         <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                     <% if @scene.completed && p.can_edit?(@user) %>
+                         <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
+                          | <a href="/scene/pose/<%= p.id %>/moveup"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                           | <a href="/scene/pose/<%= p.id %>/movedown"><i class="fa fa-arrow-down" aria-hidden="true"></i></a> 
+                           | 
+                            <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     <% end %>
                  </div>
                  
             <div class="ansi">
-                <%= format_markdown_for_html p.pose %>x
+                <%= format_markdown_for_html p.pose %>
             </div>
         </div>
     
@@ -62,9 +65,12 @@
                  </a>   
                  
                  <div class="pull-right">
-                     <% if p.can_edit?(@user) %>
-                         <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> | 
-                         <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                     <% if @scene.completed && p.can_edit?(@user) %>
+                         <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
+                          | <a href="/scene/pose/<%= p.id %>/moveup"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                           | <a href="/scene/pose/<%= p.id %>/movedown"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>                            
+                           | 
+                             <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     <% end %>
                  </div>
             </div>
@@ -80,3 +86,9 @@
     
 <% end %>
     
+
+<% if @scene.completed %>
+
+<p><a href="/scene/<%= @scene.id %>/pose/add" class="btn btn-primary">Add Pose</a></p>
+
+<% end %>
