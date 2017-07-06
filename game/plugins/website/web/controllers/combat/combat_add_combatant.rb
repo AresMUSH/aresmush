@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
 
-    post '/combat/:id/addcombatant' do |id|
+    post '/combat/:id/addcombatant', :auth => :approved do |id|
       @combat = Combat[id]
       if (@combat.organizer != @user && !is_admin?)
         flash[:error] = "Only the combat organizer can manage combat."

@@ -13,7 +13,7 @@ load 'web/controllers/bbs/bbs_read_board.rb'
 load 'web/controllers/bbs/bbs_read_post.rb'
 load 'web/controllers/bbs/bbs_reply.rb'
 
-load 'web/controllers/characters/characters.rb'
+load 'web/controllers/chars/chars.rb'
 
 load 'web/controllers/chargen/chargen.rb'
 load 'web/controllers/chargen/chargen_save.rb'

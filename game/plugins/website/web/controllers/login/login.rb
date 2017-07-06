@@ -1,16 +1,16 @@
 module AresMUSH
   class WebApp    
     
-    get '/login' do
+    get '/login', :auth => :not_user  do
       erb :"login"
     end  
     
-    get "/logout" do
+    get "/logout", :auth => :user do
       session.clear
       redirect to('/')
     end
     
-    post '/login' do
+    post '/login', :auth => :not_user  do
       name = params[:name]
       pw = params[:password]
       char = Character.find_one_by_name(name)

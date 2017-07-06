@@ -1,12 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/chargen' do
-      if (!@user)
-        flash[:error] = "You need to log in first."
-        redirect "/"
-      end
-        
+    get '/chargen', :auth => :user do
       
       if (@user.is_approved?)
         flash[:error] = "You are already approved."

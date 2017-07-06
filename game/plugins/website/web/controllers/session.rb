@@ -31,6 +31,10 @@ module AresMUSH
       def is_approved?
         @user != nil && (@user.is_approved? || @user.is_admin?)
       end
+      
+      def is_not_user?
+        @user == nil
+      end
     end
     
   end

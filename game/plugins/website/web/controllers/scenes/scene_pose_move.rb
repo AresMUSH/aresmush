@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/scene/pose/:id/moveup' do |id|
+    get '/scene/pose/:id/moveup', :auth => :approved do |id|
       @pose = ScenePose[id]
       if (!@pose.can_edit?(@user))
         flash[:error] = "You are not allowed to do that."
@@ -35,7 +35,7 @@ module AresMUSH
     end
     
     
-    get '/scene/pose/:id/movedown' do |id|
+    get '/scene/pose/:id/movedown', :auth => :approved do |id|
       @pose = ScenePose[id]
       if (!@pose.can_edit?(@user))
         flash[:error] = "You are not allowed to do that."

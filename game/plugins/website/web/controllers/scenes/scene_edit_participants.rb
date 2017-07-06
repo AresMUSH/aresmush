@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
         
-    get '/scene/:id/participants' do |id|
+    get '/scene/:id/participants', :auth => :approved do |id|
       @scene = Scene[id]
       
       if (!@scene.shared)

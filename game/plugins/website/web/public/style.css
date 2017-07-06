@@ -255,3 +255,7 @@ a:hover { text-decoration: none; }
 .scene-vignette {
     background-color: #f0ad4e;
 }
+
+.clearfix {
+    clear: both;
+}

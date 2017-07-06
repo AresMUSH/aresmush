@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     get '/chars' do
-      @chars = Chargen.approved_chars.sort_by { |c| c.name }
+      @factions = Chargen.approved_chars.group_by { |c| c.group("Faction") }
       erb :"chars/index"
     end
     

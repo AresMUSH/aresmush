@@ -2,13 +2,13 @@ module AresMUSH
   class WebApp    
     
     
-    get '/register' do
+    get '/register', :auth => :not_user do
       tos = Login.terms_of_service
       @tos = tos ? ClientFormatter.format(tos) : nil
       erb :"register"
     end
     
-    post '/register' do
+    post '/register', :auth => :not_user do
       
       if (!enable_registration)
         flash[:error] = "Web registration is disabled.  Please create a character in the game."

@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    post '/scene/:scene_id/participants/add' do |scene_id|
+    post '/scene/:scene_id/participants/add', :auth => :approved do |scene_id|
       @scene = Scene[scene_id]
       
       char_id = params[:character]
