@@ -1,56 +1,5 @@
 module AresMUSH
   class WebApp
-    
-    helpers do
-      def combatants_by_team(combat)
-        combat.active_combatants.sort_by{|c| c.team}.group_by {|c| c.team}
-      end
-    end
-    
-    get '/combat' do
-      @combats = Combat.all
-      erb :"combat/index"
-    end
-    
-    get '/combat/:id' do |id|
-      @combat = Combat[id]
-      erb :"combat/combat"
-    end
-    
-    get '/combat/:id/manage' do |id|
-      @combat = Combat[id]
-      if (@combat.organizer != @user && !is_admin?)
-        flash[:error] = "Only the combat organizer can manage combat."
-        redirect "/combat/#{id}"
-      end
-      
-      erb :"combat/manage"
-    end
-    
-    post '/combat/:id/addcombatant' do |id|
-      @combat = Combat[id]
-      if (@combat.organizer != @user && !is_admin?)
-        flash[:error] = "Only the combat organizer can manage combat."
-        redirect "/combat/#{id}"
-      end
-
-      name = @params[:name]
-      if (name.blank?)
-        flash[:error] = "You must specify a combatant name."
-        redirect "/combat/#{id}/manage"
-      end
-      
-      combatant = FS3Combat.join_combat(@combat, name, @params[:type], @user, nil)
-      if (combatant)
-        flash[:info] = "Combatant added!"
-      else
-        flash[:error] = "There was a problem adding #{name} to the combat."
-      end
-      
-      redirect "/combat/#{id}/manage"
-      
-    end
-    
     post '/combat/:id/update' do |id|
       @combat = Combat[id]
       if (@combat.organizer != @user && !is_admin?)
@@ -111,5 +60,6 @@ module AresMUSH
       end
       redirect "/combat/#{id}/manage"
     end
+    
   end
 end
