@@ -28,7 +28,7 @@ en:
        owner_set: "You set the room's owner."
        owner_cleared: "You remove the room's owner."
        
-       area_set: "You set the room's area."
+       area_set: "You set the room's area to %{area}."
        area_cleared: "You clear the room's area."
        grid_set: "You set the room's grid coordinates."
        grid_cleared: "You clear the room's grid coordinates."

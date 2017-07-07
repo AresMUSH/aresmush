@@ -1,0 +1,22 @@
+<h1>Locations</h1>
+
+<% @areas.sort_by { |k, v| k || "" }.each do |area, area_rooms| %>
+
+  <hr />
+
+<h2><%= area %></h2>
+
+<div>
+     <ul> 
+  <% area_rooms.sort_by { |r| r.name }.each do |room| %>
+      <li><a href="/location/<%= room.id %>"><%= room.name %></a></li>
+     
+     
+  <% end %>
+    </ul>
+
+</div>
+
+  
+  
+<% end %>

@@ -38,6 +38,8 @@ load 'web/controllers/config/config_game_info.rb'
 load 'web/controllers/help/help.rb'
 load 'web/controllers/help/help_topic.rb'
 
+load 'web/controllers/locations/locations.rb'
+
 load 'web/controllers/login/login.rb'
 load 'web/controllers/login/register.rb'
 
