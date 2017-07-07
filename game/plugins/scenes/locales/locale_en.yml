@@ -20,7 +20,7 @@ en:
         scene_already_completed: "That scene is already over."
         announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene here."
         location_set: "Scene location changed:%R%R%{description}"
-        
+        scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the wiki/web portal.  Just do `scene/start` if you want to start one."
         public: "Public"
         private: "Private"
         

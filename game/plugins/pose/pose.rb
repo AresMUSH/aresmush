@@ -13,6 +13,7 @@ load "lib/pose_order_cmd.rb"
 load "lib/quote_color_cmd.rb"
 load "public/pose_api.rb"
 load "public/pose_model.rb"
+load "public/pose_event.rb"
 
 
 module AresMUSH

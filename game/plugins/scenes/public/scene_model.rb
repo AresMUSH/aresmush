@@ -2,6 +2,7 @@ module AresMUSH
   class Room
     reference :scene, "AresMUSH::Scene"
     attribute :scene_set
+    attribute :scene_nag, :type => DataType::Boolean, :default => true
   end
   
   class Scene < Ohm::Model

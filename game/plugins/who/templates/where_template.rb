@@ -22,13 +22,21 @@ module AresMUSH
         room = char.room
         name = Who.who_room_name(char)
         if (room.scene)
-          if (room.scene.private_scene)
-            name = "(S#{room.scene.id}) #{t('who.private')}"
+          if (room.scene.temp_room)
+            if (room.scene.private_scene)
+              return "(S#{room.scene.id}) #{t('who.private')}"
+            else
+              return "(S#{room.scene.id})#{name.after('-')} %xg<#{t('who.public')}>%xn"
+            end
           else
-             name = "(S#{room.scene.id})#{name.after('-')} %xg<#{t('who.public')}>%xn"
+            if (room.scene.private_scene)
+              return name
+            else
+              return "#{name}  %xg<#{t('who.public')}>%xn"
+            end
           end
         else
-          name
+          return name
         end
       end
       
