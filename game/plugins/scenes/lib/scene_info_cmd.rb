@@ -69,7 +69,14 @@ module AresMUSH
           client.emit_failure t('scenes.invalid_privacy')
           return false
         end
-        scene.update(private_scene: self.value == "Private")
+        
+        is_private = self.value == "Private"
+        
+        if (is_private && scene.room.room_type == "IC")
+          client.emit_failure t('scenes.private_scene_in_public_room')
+        end
+        
+        scene.update(private_scene: is_private)
         return true
       end
         

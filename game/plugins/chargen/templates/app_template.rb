@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def demographics
-        Demographics::Api.app_review(@char)
+        Demographics.app_review(@char)
       end
        
       def bg

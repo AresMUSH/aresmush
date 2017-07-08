@@ -37,6 +37,11 @@ module AresMUSH
           return
         end
         
+        if (enactor_room.scene)
+          client.emit_failure t('scenes.scene_already_going')
+          return
+        end
+        
         scene = Scene.create(owner: enactor, 
             location: self.location, 
             private_scene: self.privacy == "Private",

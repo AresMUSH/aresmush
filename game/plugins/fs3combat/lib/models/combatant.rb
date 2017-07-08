@@ -162,7 +162,7 @@ module AresMUSH
     end
     
     def poss_pronoun
-      self.is_npc? ? t('demographics.other_possessive') : Demographics::Api.possessive_pronoun(self.character)
+      self.is_npc? ? t('demographics.other_possessive') : Demographics.possessive_pronoun(self.character)
     end
     
     def emit(message)

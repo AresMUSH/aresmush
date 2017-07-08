@@ -54,6 +54,7 @@ module AresMUSH
         scene.update(shared: true)
       end
       scene.update(completed: true)
+      scene.update(date_completed: Date.now)
     end
     
     def self.set_scene_location(scene, location)
