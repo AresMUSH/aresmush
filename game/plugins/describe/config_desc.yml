@@ -9,3 +9,7 @@ describe:
         "detail/add" : "detail/set"
         "detail/create" : "detail/set"
         "detail/remove" : "detail/delete"
+        "view/add" : "detail/set"
+        "view/create" : "detail/set"
+        "view/remove" : "detail/delete"
+        "view": "look"
