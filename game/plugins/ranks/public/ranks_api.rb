@@ -20,7 +20,7 @@ module AresMUSH
       last_name = fullname.rest(" ")
       rank_str = char.rank ? "#{char.rank} " : ""
       callsign = char.demographic(:callsign)
-      callsign_str =  callsign ? "\"#{callsign}\" " : ""
+      callsign_str =  callsign.blank? ? "" : "\"#{callsign}\" "
       "#{rank_str}#{first_name} #{callsign_str}#{last_name}"
     end
   end

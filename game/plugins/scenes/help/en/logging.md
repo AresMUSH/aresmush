@@ -3,6 +3,7 @@ toc: Scenes
 summary: Scene logging.
 aliases:
 - scene log
+- scene repose
 - repose
 - scene share
 - scene unshare
