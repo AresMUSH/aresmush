@@ -21,8 +21,9 @@ load "lib/aws_backup.rb"
 load "lib/cron_event_handler.rb"
 load "lib/helpers.rb"
 load "lib/trouble/findsite_cmd.rb"
-load "manage_api.rb"
-load "manage_events.rb"
+load "public/manage_api.rb"
+load "public/manage_events.rb"
+load "public/manage_model.rb"
 
 module AresMUSH
   module Manage

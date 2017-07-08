@@ -54,7 +54,7 @@ module AresMUSH
           end
 
           # Reset their password and handle
-          Login::Api.set_random_password(model)
+          Login.set_random_password(model)
           if (model.handle)
             model.handle.delete
           end

@@ -21,7 +21,7 @@ module AresMUSH
             client.emit_failure t('scenes.logging_not_enabled')
             return
           end
-          poses = scene.scene_poses.to_a
+          poses = scene.poses_in_order.to_a
           footer = nil
           if (!self.all)
             poses = poses[-8, 8] || poses

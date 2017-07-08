@@ -43,19 +43,20 @@ module AresMUSH
             scene_type: Scenes.scene_types.first,
             title: self.location,
             temp_room: self.temp,
-            icdate: ICTime::Api.ictime.strftime("%Y-%m-%d"))
+            icdate: ICTime.ictime.strftime("%Y-%m-%d"))
             
         if (self.temp)
           room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.location}")
           ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
+          scene.update(room: room)
           Scenes.set_scene_location(scene, self.location)
           Rooms.move_to(client, enactor, room)
         else
           room = enactor_room
           room.update(scene: scene)
+          scene.update(room: room)
           room.emit_ooc t('scenes.announce_scene_start', :privacy => self.privacy, :name => enactor_name)
         end
-        scene.update(room: room)
       end
     end
   end

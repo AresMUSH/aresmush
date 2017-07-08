@@ -22,7 +22,7 @@ module AresMUSH
           Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
           Global.dispatcher.queue_command(client, Command.new("info #{model.name}"))
           
-          template = Describe::Api.desc_template(model, enactor)
+          template = Describe.desc_template(model, enactor)
           client.emit template.render
         end
       end

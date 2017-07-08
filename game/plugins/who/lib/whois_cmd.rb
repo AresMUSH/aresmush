@@ -24,7 +24,7 @@ module AresMUSH
         if (chars.empty?)
           client.emit_failure t('db.object_not_found')
         else
-          list = chars.uniq.map { |char| "#{char.name}: #{Ranks::Api.military_name(char)}" }
+          list = chars.uniq.map { |char| "#{char.name}: #{Ranks.military_name(char)}" }
           template = BorderedListTemplate.new list
           client.emit template.render
         end

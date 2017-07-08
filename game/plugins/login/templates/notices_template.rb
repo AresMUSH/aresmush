@@ -32,11 +32,11 @@ module AresMUSH
       end
       
       def approval_notice
-        Chargen::Api.approval_job_notice(@char)
+        Chargen.approval_job_notice(@char)
       end
       
       def events
-        Events::Api.upcoming_events
+        Events.upcoming_events
       end
       
       def start_time_local(event)

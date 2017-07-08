@@ -8,16 +8,17 @@ load "lib/log_clear_cmd.rb"
 load "lib/log_enable_cmd.rb"
 load "lib/log_share_cmd.rb"
 load "lib/scene_types_cmd.rb"
-load "lib/scene_model.rb"
 load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
 load "lib/scene_set_cmd.rb"
+load "lib/scene_spoof_cmd.rb"
 load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "templates/scenes_summary_template.rb"
-load "scenes_api.rb"
+load "public/scenes_api.rb"
+load "public/scene_model.rb"
 
 module AresMUSH
   module Scenes
@@ -53,12 +54,14 @@ module AresMUSH
           return ScenesCmd
         when "join"
           return SceneJoinCmd
-        when "location", "privacy", "summary", "title", "type"
+        when "location", "privacy", "summary", "title", "type", "icdate"
           return SceneInfoCmd
         when "set"
           return SceneSetCmd
         when "start"
           return SceneStartCmd
+        when "spoof"
+          return SceneSpoofCmd
         when "stop"
           return SceneStopCmd
         when "types"

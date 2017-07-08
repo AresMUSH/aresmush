@@ -38,7 +38,7 @@ module AresMUSH
             if (connected_client)
               connected_client.emit_ooc t('manage.room_being_destroyed')
             end
-            Rooms::Api.send_to_welcome_room(connected_client, c)
+            Rooms.send_to_welcome_room(connected_client, c)
           end
         end
         target.delete

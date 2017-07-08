@@ -62,7 +62,7 @@ module AresMUSH
       
       def start_time_local(enactor)
         time = self.starts
-        local_time = OOCTime::Api.local_long_timestr(enactor, time.to_time)
+        local_time = OOCTime.local_long_timestr(enactor, time.to_time)
         notice = self.all_day ? " (#{t('events.all_day')})" : ""
         "#{local_time}#{notice}"
       end

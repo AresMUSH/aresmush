@@ -28,7 +28,7 @@ module AresMUSH
       
       def reply_title(reply)
         name = reply.author_name
-        date = OOCTime::Api.local_long_timestr(@enactor, reply.created_at)
+        date = OOCTime.local_long_timestr(@enactor, reply.created_at)
         t('bbs.reply_title', :name => name, :date => date)
       end
     end

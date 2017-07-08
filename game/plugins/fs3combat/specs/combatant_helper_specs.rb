@@ -329,6 +329,9 @@ module AresMUSH
           @combatant.stub(:roll_ability) { 2 }
           @combatant.stub(:total_damage_mod) { 0 } 
           @combatant.stub(:luck)
+          @combatant.stub(:action_klass) { "" }
+          @combatant.stub(:weapon) { "" }
+          FS3Combat.stub(:weapon_stat) { 0 }
         end
         
         it "should roll the init ability" do
@@ -352,6 +355,38 @@ module AresMUSH
           @combatant.stub(:luck) {"Attack"}
           @combatant.should_receive(:roll_ability).with("init", 0) { 1 }
           FS3Combat.roll_initiative(@combatant, "init").should eq 1
+        end
+        
+        it "should add in a weapon modifier" do 
+          @combatant.stub(:weapon) { "Rapier" }
+          FS3Combat.should_receive(:weapon_stat).with("Rapier", "init_mod") { 2 }
+          @combatant.should_receive(:roll_ability).with("init", 2) { 3 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+        end
+        
+        it "should default to 0 for weapon mod" do
+          @combatant.stub(:weapon) { "Rapier" }
+          FS3Combat.should_receive(:weapon_stat).with("Rapier", "init_mod") { nil }
+          @combatant.should_receive(:roll_ability).with("init", 0) { 1 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 1
+        end
+        
+        it "should apply mod for suppress action" do
+          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::SuppressAction" }
+          @combatant.should_receive(:roll_ability).with("init", 2) { 4 }                  
+          FS3Combat.roll_initiative(@combatant, "init").should eq 4
+        end
+        
+        it "should apply mod for distract action" do
+          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::DistractAction" }
+          @combatant.should_receive(:roll_ability).with("init", 2) { 4 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 4
+        end
+        
+        it "should not apply mod for regular actions" do
+          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::AttackAction" }
+          @combatant.should_receive(:roll_ability).with("init", 0) { 2 }
+          FS3Combat.roll_initiative(@combatant, "init").should eq 2
         end
       end
       

@@ -42,7 +42,7 @@ module AresMUSH
       
       # Short IC date/time string
       def ic_time
-        ICTime::Api.ic_datestr ICTime::Api.ictime
+        ICTime.ic_datestr ICTime.ictime
       end
       
       def area
@@ -55,12 +55,12 @@ module AresMUSH
       end
       
       def weather
-         w = Weather::Api.weather_for_area(@room.area)
+         w = Weather.weather_for_area(@room.area)
          w ? "#{w}%R" : nil
       end
       
       def ooc_time
-        OOCTime::Api.local_short_timestr(@enactor, Time.now)
+        OOCTime.local_short_timestr(@enactor, Time.now)
       end
       
       def foyer_exits
@@ -102,7 +102,7 @@ module AresMUSH
             msg = "#{msg} %xy#{afk_message}%xn"
           end
           msg
-        elsif (char.client && Status::Api.is_idle?(char.client))
+        elsif (char.client && Status.is_idle?(char.client))
           "%xy%xh<#{t('describe.idle')}>%xn"
         else
           ""

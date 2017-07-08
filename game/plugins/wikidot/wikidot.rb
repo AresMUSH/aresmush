@@ -5,7 +5,7 @@ load "lib/log_page_cmd.rb"
 load "lib/helpers.rb"
 load "templates/log_template.rb"
 load "templates/char_template.rb"
-load "wiki_api.rb"
+load "public/wiki_api.rb"
 
 module AresMUSH
   module Wikidot

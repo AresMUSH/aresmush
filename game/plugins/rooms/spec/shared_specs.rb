@@ -29,7 +29,7 @@ module AresMUSH
           char = double
           room = double
           template = double
-          Describe::Api.should_receive(:desc_template).with(room, char) { template }
+          Describe.should_receive(:desc_template).with(room, char) { template }
           template.should_receive(:render) { "room desc" }
           char.stub(:room) { room }
           client.should_receive(:emit).with("room desc")

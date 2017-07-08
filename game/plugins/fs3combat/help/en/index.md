@@ -34,7 +34,9 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 `combat/hero` - Spends a luck point to un-KO yourself.
 `combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
 
-**You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, +combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, +combat/pass Bob=**
+> **Tip:** You can always specify a NPC or player name in front of any join or action command to make them do something.  For example, combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, combat/pass Bob=
+>
+> Most commands support multiple names as well, so you can do: combat/attack A B=C
 
 ## Topics
 

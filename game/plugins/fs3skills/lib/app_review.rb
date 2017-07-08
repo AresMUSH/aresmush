@@ -1,23 +1,6 @@
 module AresMUSH
   module FS3Skills
     
-    def self.app_review(char)
-      text = FS3Skills.total_point_review(char)
-      text << "%r"
-      text << FS3Skills.ability_rating_review(char)
-      text << "%r"
-      text << FS3Skills.backgrounds_review(char)
-      text << "%r%r"
-      text << FS3Skills.starting_language_review(char)
-      text << "%r"
-      text << FS3Skills.starting_skills_check(char)
-      text << "%r"
-      text << FS3Skills.unusual_skills_check(char)
-      text << "%r"
-      text << FS3Skills.hook_review(char)
-      text
-    end
-    
     def self.hook_review(char)
       FS3Skills.min_item_review(char.fs3_hooks.count, "min_hooks", "fs3skills.hooks_added")      
     end
@@ -51,7 +34,7 @@ module AresMUSH
       
       
       if (too_high.count == 0)
-        Chargen::Api.format_review_status(message, t('chargen.ok'))
+        Chargen.format_review_status(message, t('chargen.ok'))
       else
         error = too_high.collect { |m| "%T#{m}" }.join("%R")
         "#{message}%r#{error}"
@@ -80,7 +63,7 @@ module AresMUSH
       end
       
       if (too_high.count == 0)
-        Chargen::Api.format_review_status(message, t('chargen.ok'))
+        Chargen.format_review_status(message, t('chargen.ok'))
       else
         error = too_high.collect { |m| "%T#{m}" }.join("%R")
         "#{message}%r#{error}"
@@ -97,14 +80,14 @@ module AresMUSH
       points =  AbilityPointCounter.total_points(char)
       max = Global.read_config("fs3skills", "max_ap")
       error = points > max ? t('chargen.too_many') : t('chargen.ok')
-      Chargen::Api.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
+      Chargen.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end
     
     def self.starting_language_review(char)
       starting_languages = Global.read_config("fs3skills", "starting_languages")
       missing = starting_languages.select { |l| FS3Skills.ability_rating(char, l) < 3 }
       error = missing.count > 0 ? t('chargen.are_you_sure', :missing => missing.join(" ")) : t('chargen.ok')
-      Chargen::Api.format_review_status(t('fs3skills.language_check'), error)
+      Chargen.format_review_status(t('fs3skills.language_check'), error)
     end
     
     def self.starting_skills_check(char)
@@ -138,7 +121,7 @@ module AresMUSH
       
       
       if (missing.count == 0)
-        Chargen::Api.format_review_status(message, t('chargen.ok'))
+        Chargen.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%T#{m}" }.join("%R")
         "#{message}%r#{error}"
@@ -160,7 +143,7 @@ module AresMUSH
     def self.min_item_review(count, min_config_option_name, prompt)
       min = Global.read_config("fs3skills", min_config_option_name)
       error = count < min ? t('chargen.not_enough') : t('chargen.ok')
-      Chargen::Api.format_review_status(t(prompt, :num => count, :min => min), error)
+      Chargen.format_review_status(t(prompt, :num => count, :min => min), error)
     end
     
   end

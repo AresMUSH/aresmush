@@ -10,4 +10,5 @@ en:
         where_title: "Where:"
         
         events_refreshed: "It takes a moment for the events to refresh from the calendar server.  Try the `events` command in a few seconds."
-        new_events: "New events have been scheduled or updated!"
+        new_events: "New events have been scheduled or updated!%R- %{events}"
+        cancelled_events:  "Events have been cancelled.%R- %{events}"

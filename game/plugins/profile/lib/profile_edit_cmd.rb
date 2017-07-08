@@ -20,7 +20,7 @@ module AresMUSH
         value = enactor.profile[self.field]
         text = value || ""
         
-        Utils::Api.grab client, enactor, "profile/set #{self.field}=#{text}"
+        Utils.grab client, enactor, "profile/set #{self.field}=#{text}"
       end
         
     end

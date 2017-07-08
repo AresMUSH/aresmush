@@ -33,7 +33,7 @@ module AresMUSH
       end
       
       def check_chargen_locked
-        Chargen::Api.check_chargen_locked(enactor)
+        Chargen.check_chargen_locked(enactor)
       end
       
       def handle
@@ -51,7 +51,7 @@ module AresMUSH
 
           if (self.name == enactor_name)
             client.emit_success t('demographics.birthdate_set', 
-            :birthdate => ICTime::Api.ic_datestr(bday), 
+            :birthdate => ICTime.ic_datestr(bday), 
             :age => model.age)
           else
             client.emit_success t('demographics.admin_property_set', :name => self.name, :property => "birthdate", :value => self.date_str)

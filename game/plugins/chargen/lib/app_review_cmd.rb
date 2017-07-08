@@ -29,7 +29,7 @@ module AresMUSH
           end
           
           
-          job = Chargen.approval_job(model)
+          job = model.approval_job
           if (!job)
             client.emit_failure t('chargen.no_app_submitted', :name => model.name)
             return
@@ -40,7 +40,7 @@ module AresMUSH
           Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
           Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
           
-          desc = Describe::Api.desc_template(model, enactor)
+          desc = Describe.desc_template(model, enactor)
           client.emit desc.render
         end
       end

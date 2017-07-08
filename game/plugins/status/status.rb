@@ -7,8 +7,8 @@ load "lib/go_onstage_cmd.rb"
 load "lib/helpers.rb"
 load "lib/npc_cmd.rb"
 load "lib/playerbit_cmd.rb"
-load "lib/status_model.rb"
-load "status_api.rb"
+load "public/status_model.rb"
+load "public/status_api.rb"
 
 module AresMUSH
   module Status

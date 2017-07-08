@@ -32,49 +32,65 @@ module AresMUSH
 
           case self.setting
           when "privacy"
-            set_privacy(scene)
+            success = set_privacy(scene)
+            
+          when "icdate"
+            success = set_icdate(scene)
             
           when "title"
             scene.update(title: self.value)
+            success = true
             
           when "summary"
             scene.update(summary: self.value)
+            success = true
             
           when "location"
-            set_location(scene)
+            success = set_location(scene)
             
           when "type"
-            set_type(scene)
+            success = set_type(scene)
           end
           
-          if (scene.room)
-            scene.room.emit_ooc t('scenes.scene_info_updated_announce', :name => enactor_name, 
-            :value => self.value, :setting => self.setting)
-          end
-          if (enactor_room != scene.room)
-            client.emit_success t('scenes.scene_info_updated')
+          if (success)
+            if (scene.room)
+              scene.room.emit_ooc t('scenes.scene_info_updated_announce', :name => enactor_name, 
+              :value => self.value, :setting => self.setting)
+            end
+            if (enactor_room != scene.room)
+              client.emit_success t('scenes.scene_info_updated')
+            end
           end
         end
       end
       
       def set_privacy(scene)
-        if (self.setting == "privacy")
-          if (!Scenes.is_valid_privacy?(self.value))
-            client.emit_failure t('scenes.invalid_privacy')
-            return
-          end
-          scene.update(private_scene: self.value == "Private")
+        if (!Scenes.is_valid_privacy?(self.value))
+          client.emit_failure t('scenes.invalid_privacy')
+          return false
         end
+        scene.update(private_scene: self.value == "Private")
+        return true
       end
         
       def set_type(scene)
         if (!Scenes.scene_types.include?(self.value))
           client.emit_failure t('scenes.invalid_scene_type', 
           :types => Scenes.scene_types.join(", "))
-          return
+          return false
         end
         
         scene.update(scene_type: self.value)
+        return true
+      end
+
+      def set_icdate(scene)
+        if (self.value !~ /\d\d\d\d-\d\d-\d\d/)
+          client.emit_failure t('scenes.invalid_icdate_format')
+          return false
+        end
+        scene.update(icdate: self.value)
+        return true
       end
       
       def set_location(scene)
@@ -87,6 +103,7 @@ module AresMUSH
         if (scene.room != enactor_room)
           client.emit_ooc message
         end
+        return true
       end
       
     end

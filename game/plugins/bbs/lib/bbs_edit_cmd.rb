@@ -28,7 +28,7 @@ module AresMUSH
           end
             
           if (!self.new_text)
-            Utils::Api.grab client, enactor, "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
+            Utils.grab client, enactor, "bbs/edit #{self.board_name}/#{self.num}=#{post.message}"
           else
             post.update(message: self.new_text)
             post.mark_unread

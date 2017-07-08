@@ -1,0 +1,44 @@
+<h1>Edit Scene</h1>
+
+    <form method="POST" action="/scene/<%= @scene.id %>/edit">
+        
+
+    <p>
+    <label for="title" class="col-xs-2 col-form-label">Title:</label>
+    
+    <input type="text" name="title" size="100" value="<%= @scene.title %>"/>
+    </p>
+    
+    <p>
+    <label for="location" class="col-xs-2 col-form-label">Location:</label>
+    
+    <input type="text" name="location" size="100" value="<%= @scene.location %>"/>
+    </p>
+    
+    
+    <p>
+    <label for="icdate" class="col-xs-2 col-form-label">IC Date:</label>
+    
+    <input type="text" name="icdate" size="100" value="<%= @scene.icdate %>"/>
+    </p>
+
+    <p>
+    <label for="scene_type" class="col-xs-2 col-form-label">Scene Type:</label>
+    
+            <select name="scene_type">
+              <% AresMUSH::Scenes.scene_types. each do |type| %>
+              <option value="<%= type %>" <% if @scene.scene_type == type %> selected <% end %> ><%= type %></option>
+              <% end %>
+            </select>
+    </p>
+    
+        
+    <p>
+    <label for="summary" class="col-xs-2 col-form-label">Summary:</label>
+    <textarea name="summary" rows="5" cols="100"><%= format_input_for_html(@scene.summary) %></textarea>
+    </p>
+
+
+        <p><input type="submit" value="Save"></p>
+        
+    </form>

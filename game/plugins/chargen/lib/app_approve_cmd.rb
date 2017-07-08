@@ -35,7 +35,7 @@ module AresMUSH
             return
           end
           
-          Jobs::Api.close_job(enactor, job, Global.read_config("chargen", "messages", "approval"))
+          Jobs.close_job(enactor, job, Global.read_config("chargen", "messages", "approval"))
           
           model.update(is_approved: true)
           model.update(approval_job: nil)
@@ -50,7 +50,7 @@ module AresMUSH
             t('chargen.approval_bbs_subject', :name => model.name), 
             bbs_body)
             
-          Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+          Jobs.create_job(Global.read_config("chargen", "jobs", "app_category"), 
              t('chargen.approval_bbs_subject', :name => model.name), 
              Global.read_config("chargen", "messages", "post_approval"), 
              Game.master.system_character)

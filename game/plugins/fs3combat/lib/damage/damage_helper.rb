@@ -43,7 +43,7 @@ module AresMUSH
         :description => desc,
         :current_severity => severity,
         :initial_severity => severity,
-        :ictime_str => ICTime::Api.ic_datestr(ICTime::Api.ictime),
+        :ictime_str => ICTime.ic_datestr(ICTime.ictime),
         :healing_points => FS3Combat.healing_points(severity),
         :is_stun => is_stun, 
         :is_mock => is_mock
@@ -102,7 +102,7 @@ module AresMUSH
        
        ability = Global.read_config("fs3combat", "recovery_skill")
        roll_params = FS3Skills::RollParams.new(ability)
-       recovery_roll = FS3Skills::Api.one_shot_roll(nil, char, roll_params)
+       recovery_roll = FS3Skills.one_shot_roll(nil, char, roll_params)
        in_hospital = FS3Combat.is_in_hospital?(char)
        doctors = char.doctors.map { |d| d.name }
        

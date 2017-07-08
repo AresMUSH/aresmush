@@ -8,7 +8,7 @@ module AresMUSH
         periodic_xp = Global.read_config("fs3skills", "periodic_xp")
         max_xp = Global.read_config("fs3skills", "max_xp_hoard")
         
-        approved = Chargen::Api.approved_chars
+        approved = Chargen.approved_chars
         approved.each do |a|
           FS3Skills.modify_xp(a, periodic_xp)
         end

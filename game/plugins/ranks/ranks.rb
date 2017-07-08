@@ -2,8 +2,8 @@ $:.unshift File.dirname(__FILE__)
 load "lib/helpers.rb"
 load "lib/rank_set_cmd.rb"
 load "lib/ranks_cmd.rb"
-load "lib/ranks_model.rb"
-load "ranks_api.rb"
+load "public/ranks_model.rb"
+load "public/ranks_api.rb"
 load "templates/ranks_template.rb"
 
 module AresMUSH

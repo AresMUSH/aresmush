@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def approval_status
-        Chargen::Api.approval_status(@char)
+        Chargen.approval_status(@char)
       end
       
       def fullname
@@ -53,7 +53,7 @@ module AresMUSH
 
       def birthdate
         dob = @char.demographic(:birthdate)
-        !dob ? "" : ICTime::Api.ic_datestr(dob)
+        !dob ? "" : ICTime.ic_datestr(dob)
       end
 
       def faction
@@ -81,7 +81,7 @@ module AresMUSH
       end
       
       def status
-        Chargen::Api.approval_status(@char)
+        Chargen.approval_status(@char)
       end
       
       def alts
@@ -98,7 +98,7 @@ module AresMUSH
         if (@char.client)
           t('profile.currently_connected')
         else
-          OOCTime::Api.local_long_timestr(@enactor, @char.last_on)
+          OOCTime.local_long_timestr(@enactor, @char.last_on)
         end
       end
       

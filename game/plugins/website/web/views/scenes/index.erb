@@ -1,43 +1,31 @@
 <h1>Scenes</h1>
 
-<table class="table table-striped">
+<% if is_approved? %>
 
+<p>
+    <a href="/scenes/create" class="btn btn-primary">Create Scene</a>
+</p>
 
-<thead>
-    <tr>
-        <th>Scene</th>
-        <th>Date</th>
-        <th>Participants</th>
-    </tr>
-</thead>
-
-<tbody>
-
-<% @scenes.each do |s| %>
-    <tr>
-        <td>
-        <a href="/scene/<%= s.id %>"><%= s.title %></a>
-        
-        <% if !s.completed %>
-        <span class="label label-warning">In Progress</span>
-        <% end %>
-        
-        <% if s.scene_type == 'Event' %>
-        <span class="label label-danger">Event</span>
-        <% else %>
-        <span class="label label-info">Social</span>
-        <% end %>
-        
-        <p><%= s.summary %></p>
-        </td>
-        <td>
-            <%= s.created_date_str(@user) %>
-        </td>
-        <td>
-            <%= s.participants.map { |p| p.name }.join(", ")%>
-        </td>
-    </tr>
 <% end %>
 
-</tbody>
-</table>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#recent">Recent</a></li>
+  
+  <% @scene_types.each do |type| %>
+      <li><a data-toggle="tab" href="#<%= type %>"><%= type %></a></li>
+  <% end %>
+</ul>
+
+<div class="tab-content">
+  <div id="recent" class="tab-pane fade in active">
+    <h3>Recent</h3>
+    <p><%= erb :"scenes/scene_list", :locals => { scenes: @scenes[0..15] } %></p>
+  </div>
+  <% @scene_types.each do |type| %>
+  <div id="<%= type %>" class="tab-pane fade">
+    <h3><%= type %></h3>
+    <p><%= erb :"scenes/scene_list", :locals => {  scenes: scenes_of_type(type) } %></p>
+  </div>
+  <% end %>
+</div>

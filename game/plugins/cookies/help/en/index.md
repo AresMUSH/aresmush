@@ -14,4 +14,5 @@ The only tangible reward for cookies is that you get a fraction of a luck point 
 
 `cookie <list of names>` - Give a cookie.
 `cookie/here` - Give cookies to everyone in the room (handy for big scenes)
-`cookies` - Sees cookies you have given and received.
+`cookies` - Sees cookies you have given out this week.
+`cookies/total` - Shows how many cookies you've ever gotten.

@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def date
-        OOCTime::Api.local_long_timestr(@enactor, @message.created_at)
+        OOCTime.local_long_timestr(@enactor, @message.created_at)
       end
       
       # Some of these fields are redundant, but the forward template needs them.

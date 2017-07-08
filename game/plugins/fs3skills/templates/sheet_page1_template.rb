@@ -10,7 +10,7 @@ module AresMUSH
       end
      
       def approval_status
-        Chargen::Api.approval_status(@char)
+        Chargen.approval_status(@char)
       end
       
       def luck

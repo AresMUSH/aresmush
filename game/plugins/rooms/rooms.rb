@@ -26,8 +26,8 @@ load "lib/helpers.rb"
 load "lib/char_connected_event_handler.rb"
 load "lib/char_disconnected_event_handler.rb"
 load "lib/cron_event_handler.rb"
-load "lib/room_model.rb"
-load "rooms_api.rb"
+load "public/room_model.rb"
+load "public/rooms_api.rb"
 
 module AresMUSH
   module Rooms

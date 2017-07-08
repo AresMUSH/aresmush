@@ -35,14 +35,14 @@ module AresMUSH
             return
           end
 
-          password = Login::Api.set_random_password(model)
+          password = Login.set_random_password(model)
           model.update(idle_state: nil)
           model.update(terms_of_service_acknowledged: nil)
           
           client.emit_success t('idle.roster_claimed', :name => model.name, :password => password)
           
           welcome_message = Global.read_config("idle", "roster_welcome_msg")
-          Mail::Api.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)          
+          Mail.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)          
           
           bbs = Global.read_config("idle", "arrivals_board")
           return if !bbs

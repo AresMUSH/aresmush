@@ -9,7 +9,7 @@ module AresMUSH
       end
     
       def status_color(char)
-        Status::Api.status_color(status(char))
+        Status.status_color(status(char))
       end
       
       def status(char)

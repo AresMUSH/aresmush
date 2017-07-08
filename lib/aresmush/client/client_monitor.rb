@@ -19,9 +19,27 @@ module AresMUSH
       end
     end
     
-    def notify_web_clients(type, msg, char = nil)
+    # trigger_block is a block that tells whether a particular web client
+    # should receive a notification based on their character.  
+    # 
+    # If you want everyone to receive the notice, pass a block that always
+    # returns true.
+    #     notify_web_clients(type, msg) do |char|
+    #        true
+    #     end
+    #
+    # If you want to only notify clients that can do something, pass a block
+    # that checks a method based on the character.
+    #
+    #    notify_web_clients(type, msg) do |char|
+    #        char.can_do_something?
+    #    end
+    def notify_web_clients(type, msg, &trigger_block)
       @clients.each do |c|
-        c.web_notify type, msg, char
+        
+        if ( yield Character[c.web_char_id] )
+          c.web_notify type, msg
+        end
       end
     end
 

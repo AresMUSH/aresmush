@@ -16,7 +16,7 @@ module AresMUSH
           return
         end
         
-        Utils::Api.grab client, enactor, "outfit/set #{self.name}=#{outfit.description}"
+        Utils.grab client, enactor, "outfit/set #{self.name}=#{outfit.description}"
       end
     end    
   end

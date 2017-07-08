@@ -22,13 +22,21 @@ module AresMUSH
         room = char.room
         name = Who.who_room_name(char)
         if (room.scene)
-          if (room.scene.private_scene)
-            name = "(S#{room.scene.id}) #{t('who.private')}"
+          if (room.scene.temp_room)
+            if (room.scene.private_scene)
+              return "(S#{room.scene.id}) #{t('who.private')}"
+            else
+              return "(S#{room.scene.id})#{name.after('-')} %xg<#{t('who.public')}>%xn"
+            end
           else
-             name = "(S#{room.scene.id})#{name.after('-')} %xg<#{t('who.public')}>%xn"
+            if (room.scene.private_scene)
+              return name
+            else
+              return "#{name}  %xg<#{t('who.public')}>%xn"
+            end
           end
         else
-          name
+          return name
         end
       end
       
@@ -36,7 +44,7 @@ module AresMUSH
         groups = {}
         self.online_chars.each do |c|
           room = room_name(c)
-          idle = c.is_afk? || Status::Api.is_idle?(c.client)
+          idle = c.is_afk? || Status.is_idle?(c.client)
           name = idle ? "%xh%xx#{c.name}%xn" : c.name
           if (groups.has_key?(room))
             groups[room] << name

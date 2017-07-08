@@ -1,11 +1,10 @@
 $:.unshift File.dirname(__FILE__)
-load "friends_api.rb"
 load "lib/friend_add_cmd.rb"
 load "lib/friend_note_cmd.rb"
 load "lib/friend_remove_cmd.rb"
 load "lib/friends_cmd.rb"
-load "lib/friends_model.rb"
 load "lib/helpers.rb"
+load "public/friends_model.rb"
 load "templates/friends_template.rb"
 
 module AresMUSH

@@ -1,0 +1,48 @@
+<h1>Create Scene</h1>
+
+    <form method="POST" action="/scenes/create">
+        
+
+    <p>
+    <label for="title" class="col-xs-2 col-form-label">Title:</label>
+    
+    <input type="text" name="title" size="100" value=""/>
+    </p>
+    
+    <p>
+    <label for="location" class="col-xs-2 col-form-label">Location:</label>
+    
+    <input type="text" name="location" size="100" value=""/>
+    </p>
+    
+    
+    <p>
+    <label for="icdate" class="col-xs-2 col-form-label">IC Date:</label>
+    
+    <input type="text" name="icdate" size="100" value=""/>
+    </p>
+
+    <p>
+    <label for="scene_type" class="col-xs-2 col-form-label">Scene Type:</label>
+    
+            <select name="scene_type">
+              <% AresMUSH::Scenes.scene_types. each do |type| %>
+              <option value="<%= type %>"><%= type %></option>
+              <% end %>
+            </select>
+    </p>
+    
+        
+    <p>
+    <label for="summary" class="col-xs-2 col-form-label">Summary:</label>
+    <textarea name="summary" rows="10" cols="100"></textarea>
+    </p>
+
+    <p>
+    <label for="log" class="col-xs-2 col-form-label">Log:</label>
+    <textarea name="log" rows="20" cols="100"></textarea>
+    </p>
+
+        <p><input type="submit" value="Save"></p>
+        
+    </form>

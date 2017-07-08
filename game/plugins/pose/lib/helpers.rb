@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       if (!is_ooc)
-        Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, false)
+        Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, false)
 
         if (room.room_type != "OOC")
           enactor.room.update_pose_order(enactor.name)
@@ -47,7 +47,7 @@ module AresMUSH
       
       if (place_name)
         same_place = (char.place ? char.place.name : nil) == place_name
-        place_title = Places::Api.place_title(place_name, same_place)
+        place_title = Places.place_title(place_name, same_place)
       else
         place_title = is_ooc ? "" : enactor.place_title(char)
       end

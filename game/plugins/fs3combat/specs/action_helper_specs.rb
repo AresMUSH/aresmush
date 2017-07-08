@@ -461,7 +461,7 @@ module AresMUSH
           @combatant.stub(:log)
           @combatant.stub(:vehicle) { nil }
           @combatant.stub(:armor) { "Tactical" }
-          FS3Skills::Api.stub(:one_shot_die_roll) { { successes: 0 } }
+          FS3Skills.stub(:one_shot_die_roll) { { successes: 0 } }
           FS3Combat.stub(:weapon_stat) { 5 }
         end
 

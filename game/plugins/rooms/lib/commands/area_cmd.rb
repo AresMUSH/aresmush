@@ -20,7 +20,7 @@ module AresMUSH
           message = t('rooms.area_cleared')
         else
           enactor_room.update(room_area: self.name)
-          message = t('rooms.area_set')
+          message = t('rooms.area_set', :area => self.name)
         end
         client.emit_success message
       end

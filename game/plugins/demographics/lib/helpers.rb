@@ -26,7 +26,7 @@ module AresMUSH
     
     def self.census_by(&block)
       counts = {}
-      Chargen::Api.approved_chars.each do |c|
+      Chargen.approved_chars.each do |c|
         val = yield(c)
         if (val)
           count = counts.has_key?(val) ? counts[val] : 0
@@ -53,7 +53,7 @@ module AresMUSH
     
     def self.calculate_age(dob)
       return 0 if !dob
-      now = ICTime::Api.ictime
+      now = ICTime.ictime
       now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
     end
     
@@ -85,7 +85,7 @@ module AresMUSH
       end
       
       if (missing.count == 0)
-        Chargen::Api.format_review_status(message, t('chargen.ok'))
+        Chargen.format_review_status(message, t('chargen.ok'))
       else
         error = missing.collect { |m| "%R%T#{m}" }.join
         "#{message}%r#{error}"

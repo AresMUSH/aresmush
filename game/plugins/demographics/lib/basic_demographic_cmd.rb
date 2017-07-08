@@ -58,7 +58,7 @@ module AresMUSH
         return nil if Demographics.can_set_demographics?(enactor)
         enabled_after_cg = Global.read_config("demographics", "editable_properties")
         return nil if enabled_after_cg.include?(self.property)
-        Chargen::Api.check_chargen_locked(enactor)
+        Chargen.check_chargen_locked(enactor)
       end
          
       def check_gender

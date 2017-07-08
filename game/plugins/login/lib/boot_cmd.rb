@@ -34,7 +34,7 @@ module AresMUSH
           
           Global.logger.warn "#{bootee.name} booted by #{enactor_name}.  IP: #{bootee.last_ip}  Host: #{bootee.last_hostname}"
           
-          Jobs::Api.create_job(Global.read_config("login", "trouble_category"), 
+          Jobs.create_job(Global.read_config("login", "trouble_category"), 
             t('login.boot_title'), 
             t('login.boot_message', :booter => enactor.name, :bootee => bootee.name), 
             enactor)

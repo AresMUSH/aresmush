@@ -66,8 +66,8 @@ module AresMUSH
       @connection.send_data "#{msg}\r\n"
     end
     
-    def web_notify(type, message, char = nil)
-      @connection.web_notify type, message, char
+    def web_notify(type, message)
+      @connection.web_notify type, message
     end
     
     def idle_secs
@@ -120,6 +120,9 @@ module AresMUSH
       @program = {}
     end
 
+    def web_char_id
+      @connection.web_char_id
+    end
 
     # -------------------------------
     # Deprecated methods.  Do not use

@@ -16,7 +16,7 @@ module AresMUSH
     
     # Fullname with rank and callsign, if set.  (e.g. Commander William "Husker" Adama)
     def military_name(char)
-      Ranks::Api.military_name(char)
+      Ranks.military_name(char)
     end
     
     def fullname(char)

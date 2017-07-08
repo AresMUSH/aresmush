@@ -2,9 +2,11 @@ $:.unshift File.dirname(__FILE__)
 load "lib/cookie_cmd.rb"
 load "lib/cookie_cron_handler.rb"
 load "lib/cookie_here_cmd.rb"
-load "lib/cookie_model.rb"
+load "lib/cookies_total_cmd.rb"
 load "lib/cookies_cmd.rb"
 load "lib/helpers.rb"
+load "public/cookie_award.rb"
+load "public/cookie_model.rb"
 
 module AresMUSH
   module Cookies
@@ -37,6 +39,8 @@ module AresMUSH
       case cmd.switch
       when "here"
         return CookieHereCmd
+      when "total"
+        return CookiesTotalCmd
       when nil
         if (cmd.args)
           return CookieCmd

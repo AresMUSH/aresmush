@@ -1,0 +1,14 @@
+<h1>Add Pose</h1>
+
+<blockquote>
+    <b>Note!</b> Poses added here will not be emitted to the game.  This feature is only intended for adding missing poses to a log.
+</blockquote>
+
+    <form method="POST" action="/scene/<%= @scene.id %>/pose/add">
+        
+
+    <textarea name="pose" rows="10" cols="100"></textarea>
+
+        <p><input type="submit" value="Save"></p>
+        
+    </form>

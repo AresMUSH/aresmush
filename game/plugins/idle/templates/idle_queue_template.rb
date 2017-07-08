@@ -31,7 +31,7 @@ module AresMUSH
       
       def last_on(entry)
         char = entry[:char]
-        str = OOCTime::Api.local_short_timestr(@enactor, char.last_on)
+        str = OOCTime.local_short_timestr(@enactor, char.last_on)
         if (char.idle_warned)
           str += '*'
         end

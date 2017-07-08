@@ -17,13 +17,13 @@ module AresMUSH
       end
       
       def check_can_create_jobs
-        return t('dispatcher.not_allowed') if !Jobs::Api.can_access_jobs?(enactor)
+        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         nil
       end
        
       def handle
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          Jobs::Api.create_job(Jobs.request_category, 
+          Jobs.create_job(Jobs.request_category, 
           delivery.subject,
           delivery.body,
           delivery.author)

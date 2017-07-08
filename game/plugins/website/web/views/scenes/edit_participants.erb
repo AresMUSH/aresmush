@@ -1,0 +1,29 @@
+<h1>Edit Participants</h1>
+
+   <% @scene.participants.each do |p| %>
+   <p><%= p.name %>  <a href="/scene/<%= @scene.id %>/participants/delete/<%= p.id %>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+   
+   </p>
+   <% end %>
+
+
+        
+
+    <form method="POST" action="/scene/<%= @scene.id %>/participants/add">
+       
+        <select name="character">
+          <% AresMUSH::Chargen.approved_chars.sort_by { |c| c.name }.each do |c| %>
+          <% if !@scene.participants.include?(c) %>
+              <option value="<%= c.id %>"><%= c.name %></option>
+          <% end %>
+          <% end %>
+         
+        <p><input type="submit" value="Add New"></p>
+        
+    </form>
+    
+    
+    <p>
+        <a href="/scene/<%= @scene.id %>" class="btn btn-primary">Return to Scene</a>
+    </p>
+    

@@ -1,5 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "utils_api.rb"
 load "lib/autospace_cmd.rb"
 load "lib/colors_cmd.rb"
 load "lib/condition_cmd.rb"
@@ -19,7 +18,8 @@ load "lib/save_cmd.rb"
 load "lib/set_catcher_cmd.rb"
 load "lib/sweep_cmd.rb"
 load "lib/sweep_kick_cmd.rb"
-load "lib/utils_model.rb"
+load "public/utils_model.rb"
+load "public/utils_api.rb"
 
 load 'templates/bordered_display_template.rb'
 load 'templates/bordered_list_template.rb'

@@ -9,10 +9,6 @@ module AresMUSH
       Chargen.format_review_status t('chargen.background_review'), error
     end
     
-    def self.format_review_status(msg, error)
-      "#{msg.ljust(50)} #{error}"
-    end
-    
     def self.can_manage_bgs?(actor)
       actor.has_permission?("can_approve")
     end     
@@ -20,31 +16,6 @@ module AresMUSH
     def self.can_view_bgs?(actor)
       Chargen.can_manage_bgs?(actor) || actor.has_permission?("view_bgs")
     end      
-    
-    def self.approval_status(char)
-      if (char.on_roster?)
-        status = "%xb%xh#{t('chargen.rostered')}%xn"
-      elsif (char.is_npc?)
-        status = "%xb%xh#{t('chargen.npc')}%xn"
-      elsif (char.idled_out?)
-        status = "%xr%xh#{t('chargen.idled_out', :status => char.idled_out_reason)}%xn"
-      elsif (!char.is_approved?)
-        status = "%xr%xh#{t('chargen.unapproved')}%xn"
-      else
-        status = "%xg%xh#{t('chargen.approved')}%xn"
-      end        
-      status
-    end
-    
-    def self.check_chargen_locked(char)
-      return t('chargen.cant_be_changed') if char.is_approved?
-      return t('chargen.app_in_progress') if char.chargen_locked
-      return nil
-    end
-    
-    def self.is_in_stage?(char, stage_name)
-      Chargen.stage_name(char) == stage_name
-    end
     
     def self.can_edit_bg?(actor, model, client)
       if (model.is_approved? && !Chargen.can_manage_bgs?(actor))
@@ -71,44 +42,8 @@ module AresMUSH
     end
     
     def self.stage_name(char)
-      stage = Chargen.chargen_stage(char)
+      stage = char.chargen_stage
       stage ? Chargen.stages.keys[stage] : nil
-    end
-    
-    def self.chargen_stage(char)
-      char.chargen_stage
-    end
-    
-    def self.approval_job(char)
-      char.approval_job
-    end
-    
-    def self.submit_app(char)
-      job = char.approval_job
-      
-      if (!job)
-        result = Jobs::Api.create_job(Global.read_config("chargen", "jobs", "app_category"), 
-          t('chargen.application_title', :name => char.name), 
-          t('chargen.app_job_submitted'), 
-          char)
-      
-        if (result[:error])
-          raise "Problem submitting application: #{job[:error]}"
-        end
-        job = result[:job]
-        char.update(chargen_locked: true)
-        char.update(approval_job: job)
-        return t('chargen.app_submitted')
-      else
-        char.update(chargen_locked: true)
-        Jobs::Api.change_job_status(char,
-          job,
-          Global.read_config("chargen", "jobs", "app_resubmit_status"),
-          t('chargen.app_job_resubmitted'))
-        return t('chargen.app_resubmitted')
-      end
-    end
-    
-    
+    end    
   end
 end

@@ -3,9 +3,14 @@ module AresMUSH
     class PoseEventHandler
       def on_event(event)
         enactor = event.enactor
-        scene = enactor.room.scene
-        if (scene && !event.is_ooc)
+        room = enactor.room
+        scene = room.scene
+                
+        if (scene)
           Scenes.add_pose(scene, event.pose, enactor, event.is_setpose)
+        elsif (room.scene_nag && room.room_type != "OOC")
+          room.emit_ooc t('scenes.scene_nag')
+          room.update(scene_nag: false)
         end
       end
     end

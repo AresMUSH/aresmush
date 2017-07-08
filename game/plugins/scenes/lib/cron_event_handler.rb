@@ -5,11 +5,16 @@ module AresMUSH
         config = Global.read_config("scenes", "cron")
         return if !Cron.is_cron_match?(config, event.time)
                 
-        rooms = Room.all.select { |r| !!r.scene_set || !!r.scene }
+        rooms = Room.all.select { |r| !!r.scene_set || !!r.scene || !r.scene_nag}
         rooms.each do |r|
-          if (r.clients.empty? && r.scene_set)
-            Global.logger.debug("Clearing scene set on #{r.name}")
-            r.update(scene_set: nil)
+          if (r.clients.empty?)
+            if (r.scene_set)
+              r.update(scene_set: nil)
+            end
+            
+            if (!r.scene_nag)
+              r.update(scene_nag: true)
+            end
           end
           
           if (r.characters.empty? && r.scene)

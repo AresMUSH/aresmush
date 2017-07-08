@@ -34,7 +34,7 @@ module AresMUSH
       
       def check_chargen_locked
         return nil if Demographics.can_set_group?(enactor)
-        Chargen::Api.check_chargen_locked(enactor)
+        Chargen.check_chargen_locked(enactor)
       end
       
       def handle   

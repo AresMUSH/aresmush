@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def check_can_advance
-        return t('chargen.not_started') if !Chargen.chargen_stage(enactor)
+        return t('chargen.not_started') if !enactor.chargen_stage
         return nil
       end
       
