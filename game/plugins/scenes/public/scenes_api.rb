@@ -18,6 +18,7 @@ module AresMUSH
     end
     
     def self.can_access_scene?(actor, scene)
+      return !scene.is_private? if !actor
       return true if Scenes.can_manage_scene(actor, scene)
       return true if !scene.is_private?
       return scene.participants.include?(actor)
