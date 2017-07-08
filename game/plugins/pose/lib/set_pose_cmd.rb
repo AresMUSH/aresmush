@@ -17,8 +17,8 @@ module AresMUSH
           line = "%R%xh%xc%% ----------------------%xn%R"
           client.emit "#{line}%R#{pose}%R#{line}"
           
-          Global.dispatcher.queue_event PoseEvent.new(enactor, formatted_pose, true, true)          
         end
+        Global.dispatcher.queue_event PoseEvent.new(enactor, formatted_pose, true, true)          
       end
       
       def log_command

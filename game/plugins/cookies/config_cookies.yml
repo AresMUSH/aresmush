@@ -11,3 +11,5 @@ cookies:
     
     shortcuts:
         "cookies": "cookie"
+        "i" : "cookie/total"
+        "inv" : "cookie/total"

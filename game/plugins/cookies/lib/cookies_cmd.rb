@@ -12,7 +12,9 @@ module AresMUSH
           cookies_given = t('cookies.cookies_given_this_week', :cookies => cookies_given)
         end
         
-        template = BorderedDisplayTemplate.new "#{cookies_given}"
+        cookies_total = t('cookies.cookies_total', :cookies => enactor.total_cookies)
+        list = [ cookies_given, "", cookies_total ]
+        template = BorderedListTemplate.new list
         client.emit template.render
       end
     end
