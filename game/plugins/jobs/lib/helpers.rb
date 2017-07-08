@@ -8,10 +8,6 @@ module AresMUSH
       Global.read_config("jobs", "status").keys
     end
     
-    def self.request_category
-      Global.read_config("jobs", "request_category")
-    end
-    
     def self.closed_jobs
       Job.all.select { |j| !j.is_open? }
     end
