@@ -8,12 +8,13 @@
 
 <div>
       
-  <% faction_chars.group_by { |c| c.group('Position') }.each do |position, chars| %>
+  <% faction_chars.group_by { |c| c.group('Position') }.sort.each do |position, chars| %>
   
      <div>
+
+        <h3><%= position %></h3>
          
      <% chars.sort_by { |c| c.name }.each do |c| %>
-        <h3><%= position %></h3>
     
         <div class="profile-gallery">
             <% if c.icon %>
