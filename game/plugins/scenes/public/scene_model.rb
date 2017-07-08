@@ -10,6 +10,7 @@ module AresMUSH
     
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
+    attribute :date_completed, :type => DataType::Date
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean

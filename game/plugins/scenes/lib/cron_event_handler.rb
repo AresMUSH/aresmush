@@ -15,13 +15,26 @@ module AresMUSH
             if (!r.scene_nag)
               r.update(scene_nag: true)
             end
-          end
-          
-          if (r.characters.empty? && r.scene)
-            Global.logger.debug("Stopping scene in #{r.name}")
-            Scenes.stop_scene(r.scene)
+            
+            if (stop_empty_scene(r))
+              Global.logger.debug("Stopping scene in #{r.name}")
+              Scenes.stop_scene(r.scene)
+            end
           end
         end
+        
+        # Completed scenes that haven't been shared are deleted after a few days.
+        Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
+          if (DateTime.now.to_date - s.date_completed > 3)
+            Global.logger.warn "Delete Scene - #{s.id} #{s.date_completed}"
+          end
+        end
+      end
+      
+      def stop_empty_scene(room)
+        return false if !room.scene
+        return true if room.characters.empty?
+        return room.scene.temp_room
       end
     end
   end
