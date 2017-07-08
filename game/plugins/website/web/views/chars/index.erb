@@ -5,7 +5,7 @@
 <ul class="nav nav-tabs">
   
   <% @factions.each_with_index do |(faction, faction_chars), i| %>
-      <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= faction %>"><%= faction %></a></li>
+      <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= faction.gsub(/ /, '')  %>"><%= faction %></a></li>
   <% end %>
 </ul>
 
@@ -13,7 +13,7 @@
   
   <% @factions.each_with_index do |(faction, faction_chars), i| %>
 
-  <div id="<%= faction %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
+  <div id="<%= faction.gsub(/ /, '')  %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
     
     <% faction_chars.group_by { |c| c.group('Position') }.sort.each do |position, chars| %>
   
@@ -36,9 +36,10 @@
           <% end %>
       
        </div>
+
+     <div class="clearfix"> </div>
      <% end %>
      
-     <div class="clearfix"> </div>
      
         
   </div>
