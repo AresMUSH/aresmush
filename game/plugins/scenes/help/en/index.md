@@ -24,3 +24,4 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 [Creating and Joining Scenes](/help/scenes/creating)
 [Scene Logging](/help/scenes/logging)
 [Repose and Pose Order](/help/scenes/repose)
+[Editing Logs](/help/scenes/editing)

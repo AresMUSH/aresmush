@@ -25,6 +25,9 @@ en:
         private: "Private"
         scene_already_going: "There's already a scene going in this room.  You have to stop it first."
         private_scene_in_public_room: "Having a private scene on the public grid is poor form, unless of course you're in a private room."
+        amended_pose: "%{name} has amended their last pose:%R%{pose}"
+        no_pose_found: "You haven't posed yet."
+        deleted_pose: "%{name} has retracted their previous pose: %{pose}"
         
         scene_types: "Available scene types are: %{types}."
         invalid_scene_type: "That is not a valid scene type.  Try one of these: %{types}."

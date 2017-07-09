@@ -1,6 +1,12 @@
 ---
 toc: Scenes
 summary: Setting scene info.
+aliases:
+- scene location
+- scene title
+- scene summary
+- scene date
+- scene set
 ---
 # Scene Info
 
@@ -23,13 +29,3 @@ You can control several properties about the scene.  These are used for [Scene L
 `scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
-
-## Participants
-
-The log system automatically tracks who participated in the scene.  You can edit this through the web portal.
-
-Sometimes, though, you'll be emitting a character from another character (spoofing them). If you want to just replace all instances of one character with another, you can use the scene spoof command.  For example, if you had emitted Bob from Harry throughout the log, you can switch all of Harry's poses to Bob.  
-
-`scene/spoof <#>=<original char>/<new char>`
-
-> **Tip:** A spoof replacement can only be done on completed logs.

@@ -21,7 +21,8 @@ module AresMUSH
       return !scene.is_private? if !actor
       return true if Scenes.can_manage_scene(actor, scene)
       return true if !scene.is_private?
-      return scene.participants.include?(actor)
+      return true if scene.participants.include?(actor)
+      return scene.auto_participants.include?(actor)
     end
     
     
