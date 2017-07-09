@@ -1,9 +1,8 @@
 scenes:
     cron:
-     #date: 1
-     #day_of_week: Sat
-     #hour: 21
-     minute: 00
+     minute: 
+         - 15
+         - 45
     
     scene_types:
         - Social

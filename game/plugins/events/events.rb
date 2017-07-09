@@ -1,7 +1,8 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/events_cmd.rb"
 load "lib/event_detail_cmd.rb"
-load "lib/events_cron_handler.rb"
+load "lib/cron_event_handler.rb"
+load "lib/game_started_event_handler.rb"
 load "lib/helpers.rb"
 load "lib/teamup.rb"
 load "public/events_api.rb"
@@ -50,6 +51,8 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return CronEventHandler
+      when "GameStartedEvent"
+        return GameStartedEventHandler
       end
       nil
     end

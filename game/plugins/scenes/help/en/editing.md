@@ -5,6 +5,7 @@ aliases:
 - scene spoof
 - scene edit
 - scene replace
+- scene undo
 ---
 # Editing Scene Logs
 

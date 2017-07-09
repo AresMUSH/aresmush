@@ -3,7 +3,7 @@ module AresMUSH
 
     mattr_accessor :last_events, :last_event_time
     
-    def self.refresh_events(days_ahead)
+    def self.refresh_events(days_ahead = 14)
       Global.dispatcher.spawn("Loading Teamup Events", nil) do
         startDate = DateTime.now
         endDate = startDate + days_ahead
@@ -25,10 +25,7 @@ module AresMUSH
         self.last_events.each do |e|
           new_events[e.title] = e.start_datetime_standard
         end
-        
-        puts old_events.inspect
-        puts new_events.inspect
-        
+                
         cancelled_events = old_events.keys - new_events.keys
         added_events = new_events.keys - old_events.keys
         updated_events = (new_events.keys & old_events.keys).select { |k| old_events[k] != new_events[k] }

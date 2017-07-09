@@ -60,7 +60,5 @@ weather:
         North: polar
      
     cron:
-        #date: 1
-        #day_of_week: Sat
-        #hour: 21
-        minute: 00
+        minute: 
+            - 00

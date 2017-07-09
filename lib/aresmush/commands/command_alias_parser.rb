@@ -14,11 +14,11 @@ module AresMUSH
           update_cmd(cmd, root, roots_config[root])
         end
       end
-      
+            
       full_config = shortcut_config.select { |s| s.include?('/')}
       if (full_config)
-        full_config.each do |find_str, replace_str|
-          if (cmd.raw.start_with?("#{cmd.prefix}#{find_str}"))
+        full_config.each do |find_str, replace_str|          
+          if compare_root_and_switch(cmd, find_str)
             update_cmd(cmd, find_str, replace_str)
           end
         end
@@ -26,11 +26,26 @@ module AresMUSH
 
       if (enactor)
         enactor.shortcuts.each do |find_str, replace_str|
-          if (cmd.raw.start_with?("#{cmd.prefix}#{find_str}"))
+          if compare_root_and_switch(cmd, find_str)
             update_cmd(cmd, find_str, replace_str)
           end
         end
       end
+    end
+    
+    def self.compare_root_and_switch(cmd, compare_str)
+      if (cmd.switch)
+        root_and_switch = "#{cmd.root}/#{cmd.switch}"
+      else
+        root_and_switch = "#{cmd.root}"
+      end
+      
+      if (root_and_switch == "#{cmd.prefix}#{compare_str}")
+        return true
+      else
+        return false
+      end
+      
     end
     
     def self.update_cmd(cmd, find_str, replace_str)

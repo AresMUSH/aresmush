@@ -1,9 +1,11 @@
 cookies:
     cron:
-        #date: 1
-        day_of_week: Fri
-        hour: 22
-        minute: 00
+        day_of_week: 
+            - Fri
+        hour: 
+            - 22
+        minute: 
+            - 00
     
     cookie_board: "Cookie Awards"
     

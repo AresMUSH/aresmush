@@ -6,7 +6,5 @@ events:
         "events" : "event"
         
     cron:
-        #date: 1
-        #day_of_week: Fri
-        #hour: 22
-        minute: 22
+        minute: 
+            - 22

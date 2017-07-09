@@ -92,6 +92,14 @@ module AresMUSH
         cmd.args.should eq "xyz"
       end
           
+      it "should NOT substitute a partial match on a switch" do
+        cmd = Command.new("b/ccc foo")
+        CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
+        cmd.root.should eq "b"
+        cmd.switch.should eq "ccc"
+        cmd.args.should eq "foo"
+      end
+      
       it "should substitute a full commmand with args" do
         cmd = Command.new("m bar")
         CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)

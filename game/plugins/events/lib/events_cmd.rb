@@ -6,7 +6,7 @@ module AresMUSH
 
       def handle
         if (cmd.switch_is?("refresh"))
-          Events.refresh_events(14)
+          Events.refresh_events
           client.emit_success t('events.events_refreshed')
           return
         end

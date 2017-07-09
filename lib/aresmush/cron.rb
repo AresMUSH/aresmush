@@ -11,16 +11,26 @@ module AresMUSH
     end
     
     def self.is_cron_match?(cron_spec, time)
-      return false if !test_match(cron_spec["date"], time.day)
-      return false if !test_match(convert_weekday(cron_spec["day_of_week"]), time.wday)
-      return false if !test_match(cron_spec["hour"], time.hour)
-      return false if !test_match(cron_spec["minute"], time.min)
+      return false if !test_match(cron_spec["date"], time.day, :date)
+      return false if !test_match(cron_spec["day_of_week"], time.wday, :day_of_week)
+      return false if !test_match(cron_spec["hour"], time.hour, :hour)
+      return false if !test_match(cron_spec["minute"], time.min, :min)
       return true
     end
     
-    def self.test_match(cron_component, time_component)
+    def self.test_match(cron_component, time_component, component_type)
       return true if !cron_component
-      return cron_component == time_component
+
+      case component_type
+      when :date, :hour, :min
+        cron_component = cron_component.map { |c| c.to_i }
+      when :day_of_week
+        cron_component = cron_component.map { |c| convert_weekday(c) }
+      else
+        raise "Invalid cron component: #{component_type}"
+      end
+      
+      return cron_component.include?(time_component)
     end
     
     def self.convert_weekday(weekday)
