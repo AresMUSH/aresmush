@@ -10,6 +10,8 @@ load "lib/log_share_cmd.rb"
 load "lib/scene_types_cmd.rb"
 load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
+load "lib/scene_replace_cmd.rb"
+load "lib/scene_undo_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_spoof_cmd.rb"
 load "lib/scene_start_cmd.rb"
@@ -56,6 +58,10 @@ module AresMUSH
           return SceneJoinCmd
         when "location", "privacy", "summary", "title", "type", "icdate"
           return SceneInfoCmd
+        when "undo"
+          return SceneUndoCmd
+        when "replace"
+          return SceneReplaceCmd
         when "set"
           return SceneSetCmd
         when "start"

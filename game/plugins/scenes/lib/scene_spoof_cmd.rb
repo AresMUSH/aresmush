@@ -14,7 +14,7 @@ module AresMUSH
       
       def required_args
         {
-          args: [ self.scene_num, self.old_name, self.new_name ],
+          args: [ self.old_name, self.new_name ],
           help: 'scenes info'
         }
       end

@@ -24,6 +24,7 @@ scenes:
         "log/on": "scene/startlog"
         "log/off": "scene/stoplog"
         "log/clear": "scene/clearlog"
+        "log/undo" : "scene/undo"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"

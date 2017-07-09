@@ -5,6 +5,11 @@ module AresMUSH
       actor.has_permission?("manage_game")
     end
     
+    def self.can_announce?(actor)
+      return false if !actor
+      actor.has_permission?("announce")
+    end
+    
     def self.can_manage_rooms?(actor)
       return false if !actor
       actor.has_permission?("build") || self.can_manage_game?(actor)

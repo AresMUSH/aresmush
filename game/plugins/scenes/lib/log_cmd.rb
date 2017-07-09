@@ -21,6 +21,12 @@ module AresMUSH
             client.emit_failure t('scenes.logging_not_enabled')
             return
           end
+          
+          if (!Scenes.can_access_scene?(enactor, scene) && enactor.room != scene.room)
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+          
           poses = scene.poses_in_order.to_a
           footer = nil
           if (!self.all)

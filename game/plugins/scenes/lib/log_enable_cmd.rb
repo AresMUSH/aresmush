@@ -13,14 +13,7 @@ module AresMUSH
         end
         self.option = cmd.switch_is?("startlog")
       end
-      
-      def required_args
-        {
-          args: [ self.scene_num ],
-          help: 'scenes logging'
-        }
-      end
-      
+           
       def handle
         
         Scenes.with_a_scene(self.scene_num, client) do |scene|          
