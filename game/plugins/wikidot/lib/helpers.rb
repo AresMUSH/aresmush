@@ -35,8 +35,8 @@ module AresMUSH
     def self.character_tags(char)
       tags = [ char.name, 
             "character", 
-            char.demographic(:colony), 
-            char.group("Faction"), 
+            char.group("Colony"), 
+            char.group("Department"),
             char.group("Position") ]
       if (char.handle)
         tags << "player:#{char.handle.name}"
