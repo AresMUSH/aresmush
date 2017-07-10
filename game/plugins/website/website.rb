@@ -87,7 +87,7 @@ module AresMUSH
     end
  
     def self.config_files
-      [  ]
+      [ "config_website.yml" ]
     end
  
     def self.locale_files

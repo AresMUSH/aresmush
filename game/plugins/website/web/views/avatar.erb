@@ -1,0 +1,12 @@
+<% if char %>
+
+  <% if char.icon %>
+  <a href="/char/<%= char.id %>">
+    <img class="pose-profile-icon" src="<%= char.icon %>" />
+   </a>
+ <% end %>
+ 
+ <a href="/char/<%= char.id %>">
+     <%= char.name %>
+  </a>
+<% end %>

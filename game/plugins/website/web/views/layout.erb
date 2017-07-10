@@ -52,9 +52,14 @@
 <body>
     <div class="container">
 
+    <div class="header-wrap">
+
+      <div class="title-wrap">
+        
         <div class="row">
             <div class="col-md-6">
-                <h1 class="site-title"><%= game_name %></h1>
+                <div class="site-title"><a href="/"><%= game_name %></a></div>
+                <div class="site-subtitle"><%= game_address %></div>
             </div>
             <div class="col-md-6 text-right user-bar">
             <% if @user %>
@@ -75,64 +80,122 @@
             </div>
         </div>
         
-        <div class="row">
+        
+      </div>
+      
+        <nav class="navbar navbar-inverse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">Home</a></li>
+
+              <% if !is_approved? && !is_admin? %>
+              <li><a href="/chargen">Chargen</a></li>
+              <% end %>
           
-            <div class="col-md-12">
+              <li><a href="/play">Play</a></li>
+              <li><a href="/bbs">Boards</a></li> 
+          
+          
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Directory <span class="caret">
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/scenes">Scenes</a></li> 
+                  <li><a href="/chars">Characters</a></li>
+                  <li><a href="/locations">Locations</a></li>
+                  <li><a href="/combat">Combats</a></li>
+                </ul>
+              </li>
+          
+          
+              <li><a href="/help">Help</a></li> 
+              <% if is_admin? %>
+              <li><a href="/admin">Admin</a></li>
+              <% end %>
+              <li><a href="<%= game_website %>">Main Site</a></li> 
+            </ul>
+        </nav>
+    </div>
+    
+        
+        <div class="body-wrap">
+             
+            <div class="row">
+          
+                <div class="col-md-9 body-container">
               
                         
                         
-            <nav class="navbar navbar-inverse">
-                <ul class="nav navbar-nav">
-                  <li><a href="/">Home</a></li>
+                
 
-                  <% if !is_approved? && !is_admin? %>
-                  <li><a href="/chargen">Chargen</a></li>
-                  <% end %>
-                  
-                  <li><a href="/play">Play</a></li>
-                  <li><a href="/bbs">Boards</a></li> 
-                  
-                  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Directory <span class="caret">
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/scenes">Scenes</a></li> 
-                      <li><a href="/chars">Characters</a></li>
-                      <li><a href="/locations">Locations</a></li>
-                      <li><a href="/combat">Combats</a></li>
-                    </ul>
-                  </li>
-                  
-                  
-                  <li><a href="/help">Help</a></li> 
-                  <% if is_admin? %>
-                  <li><a href="/admin">Admin</a></li>
-                  <% end %>
-                  <li><a href="<%= game_website %>">Main Site</a></li> 
-                </ul>
-            </nav>
-
-                <% if flash[:info] %>
-                <div class="alert alert-info">                
-                    <%= styled_flash %>      
-                </div>
-                <% end %>
+                    <% if flash[:info] %>
+                    <div class="alert alert-info">                
+                        <%= styled_flash %>      
+                    </div>
+                    <% end %>
 
                     
-                <% if flash[:error] %>
-                <div class="alert alert-danger">                
-                    <%= styled_flash %>      
-                </div>
-                <% end %>
+                    <% if flash[:error] %>
+                    <div class="alert alert-danger">                
+                        <%= styled_flash %>      
+                    </div>
+                    <% end %>
                   
-                <%= yield %>
+                    <%= yield %>
               
-            </div>
-                                      
-        </div>
+                </div>
+                   
+                   <div class="col-md-3">    
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Play on the Web <i class="fa fa-globe" aria-hidden="true"></i></h2>
+                               
+                           </div>
+            
+                           <p>The <a href="/play">web client</a> allows you to play the game from many web browsers.</p>
+                       </div>
+
+
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Play with a Client <i class="fa fa-desktop" aria-hidden="true"></i></h2>
+                           </div>
+                           <p>Connect to the game via your favorite MU client at <b><%= game_address %></b>.  AresMUSH works well with <a href="http://www.potatomushclient.com/">Potato</a>.</p>
+            
+                       </div>
         
+                      
+                       
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Recent Scenes <i class="fa fa-book" aria-hidden="true"></i></h2>
+                               
+                           </div>
+                           <% @recent_scenes.each do |s| %>
+                           <p><a href="/scene/<%= s.id %>"><%= s.icdate%> - <%= s.title %></a>  
+                               <%= erb :"scenes/scene_tag", :locals => { scene: s } %><br/></p>
+                           <% end %>
+            
+                           <a href="/scenes">All Scenes</a>
+                       </div>
+                       
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Upcoming Events <i class="fa fa-calendar" aria-hidden="true"></i></h2>
+                               
+                           </div>
+                           <% @events.each do |e| %>
+                           <p><b><%= e.title %></b><br/><%= e.start_datetime_standard %></p>
+                           <% end %>
+            
+                           <a href="<%= @calendar %>">Full Calendar</a>
+                       </div>
+                       
+                       
+                    </div>
+                                      
+            </div>
+        </div>
     
       <div class="row">
           <div class="col-md-12 footer">
@@ -143,7 +206,7 @@
               
            </div>
       </div>
-              
+          
     </div>
     
 </body>

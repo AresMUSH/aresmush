@@ -11,6 +11,13 @@ module AresMUSH
       erb :"error"
     end
     
+    before "*" do
+      @events = Events.upcoming_events
+      @calendar = Events.calendar_view_url
+      @recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.created_at }.reverse[1..10]
+      
+    end
+      
     helpers do
 
       def game_name
@@ -30,8 +37,8 @@ module AresMUSH
     end
 
     get '/' do
-      @events = Events.upcoming_events
-      @calendar = Events.calendar_view_url
+      @website_welcome = Global.read_config('website', 'website_welcome')
+      @website_tagline = Global.read_config('website', 'website_tagline')
       erb :"index"
     end  
     
