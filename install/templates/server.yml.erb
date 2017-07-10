@@ -1,14 +1,8 @@
 server:
-    # The host name for your game.
     hostname: <%= @host_name %>
 
-    # The port number your game will listen on
     port: <%= @host_port %>
     
-    # These two ports are used for the game's web interface.  
-    # The web server port is the one you connect to directly.  80 is the standard port, but 
-    # that might not be available on some systems.  8181 is usually safe.
-    # The web socket port is the one the web client connects to.  It must be different than
-    # both the web server and regular port.
     websocket_port: <%= @websocket_port %>
+
     webserver_port: <%= @webserver_port %>

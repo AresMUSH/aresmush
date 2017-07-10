@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-gem 'ansi', '~> 1.4.3'
+gem 'ansi', '~> 1.5'
 
 gem 'bson', '~> 3.0'
 gem 'activesupport', '> 4' 
