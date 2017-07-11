@@ -11,10 +11,8 @@ status:
     minutes_before_idle_disconnect: 300
     
     afk_cron:
-        #date: 1
-        #day_of_week: Sat
-        #hour: 21
-        minute: 20
+        minute: 
+            - 20
 
     shortcuts:
         "ic" : "onstage"

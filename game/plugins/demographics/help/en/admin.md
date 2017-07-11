@@ -8,7 +8,7 @@ summary: Managing demographics.
 
 You can set any of the basic character demographics (fullname, gender, etc.) on another character.
 
-`demographic <name>/<field>=<value>`
+`demographic <name>=<field>/<value>`
 
 You can also set up a link to someone's log icon, which is used by the web portal.
 

@@ -15,14 +15,15 @@ module AresMUSH
           help: 'boot'
         }
       end
-      
-      def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
-        return nil
-      end
 
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |bootee|
+          
+          if (bootee.is_admin? && !enactor.is_admin?)
+            client.emit_failure t('login.cant_boot_admin')
+            return
+          end
+          
           boot_client = bootee.client
           if (!boot_client)
             client.emit_failure t('login.cant_boot_disconnected_player')

@@ -25,8 +25,8 @@ module AresMUSH
         
         # Completed scenes that haven't been shared are deleted after a few days.
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
-          if (DateTime.now.to_date - s.date_completed > 3)
-            Global.logger.warn "Delete Scene - #{s.id} #{s.date_completed}"
+          if (DateTime.now.to_date - scene.date_completed > 3)
+            Global.logger.warn "Delete Scene - #{scene.id} #{scene.date_completed}"
           end
         end
       end

@@ -5,6 +5,12 @@ module AresMUSH
     attribute :scene_nag, :type => DataType::Boolean, :default => true
   end
   
+  class Character
+    def scenes_starring
+      Scene.all.select { |s| s.participants.include?(self) }
+    end
+  end
+  
   class Scene < Ohm::Model
     include ObjectModel
     

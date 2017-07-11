@@ -1,9 +1,9 @@
 arescentral:
     cron:
-        #date: 1
-        #day_of_week: Sat
-        hour: 04
-        minute: 00
+        hour: 
+            - 04
+        minute: 
+            - 00
         
     arescentral_url: "http://arescentral.aresmush.com"
     #arescentral_url: "http://localhost:9292"

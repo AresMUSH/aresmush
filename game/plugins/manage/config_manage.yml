@@ -2,10 +2,10 @@ manage:
     backups_to_keep: 5
     
     backup_cron:
-        #date: 1
-        #day_of_week: Fri
-        hour: 06
-        minute: 00
+        hour: 
+            - 06
+        minute: 
+            - 00
         
     shortcuts:
         "ex": "examine"

@@ -1,9 +1,9 @@
 fs3combat:
     healing_cron:
-        #date: 1
-        #day_of_week: Sat
-        hour: 00
-        minute: 47
+        hour: 
+            - 00
+        minute: 
+            - 47
     
     damage_mods:
         HEAL: 0.0

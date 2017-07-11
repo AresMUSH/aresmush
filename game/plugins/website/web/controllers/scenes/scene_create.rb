@@ -18,6 +18,8 @@ module AresMUSH
       owner: @user
       )
       
+      @scene.participants.add @user
+      
       Scenes.add_pose(@scene, params[:log], @user)
       
       flash[:info] = "Scene created!"

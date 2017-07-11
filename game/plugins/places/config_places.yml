@@ -1,9 +1,7 @@
 places:
     cron:
-        #date: 1
-        #day_of_week: Fri
-        #hour: 22
-        minute: 05
+        minute: 
+            - 05
         
     same_place_color: "%xc%xB"
     

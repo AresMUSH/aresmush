@@ -1,27 +1,28 @@
     <h1><%= @scene.title %>  </h1>
         
-        <h3>
+<div class="row log-wrap">
+       
+       <div class="log-box">
+           
+    <p><%= @scene.summary %></p>
+
+    <p><b>Date:</b> <%= @scene.icdate %></p>
+
+    <p><b>Location:</b> <%= @scene.location %></p>
+        
+        <div>
         <% if @scene.completed %>
         <span class="label label-success">Completed</span>
         <% else %>
         <span class="label label-warning">In Progress</span>
         <% end %>
         
-        <span class="label label-info 
-         scene-<%= @scene.scene_type ? @scene.scene_type.downcase : "unknown" %>">
-             <%= @scene.scene_type %></span>
-    </h3>
-
-    <hr/>
-
-    <p><b>Summary:</b> <%= @scene.summary %></p>
-
-    <p><b>Date:</b> <%= @scene.icdate %></p>
-
-    <p><b>Location:</b> <%= @scene.location %></p>
+        <%= erb :"scenes/scene_tag", :locals => { scene: @scene } %>
+         </div>
     
-    <p><b>Participants:</b></p>
+    </div>
     
+    <div class="log-participants-box">
     <% @scene.participants.each do |c| %>
     <a href="/char/<%= c.id %>">
         <% if c.icon %>
@@ -31,9 +32,10 @@
         <% end %>
         </a>
     <% end %>
+    </div>
     
-    
-    <hr/>
+</div>
+
         
 <% @scene.poses_in_order.each do |p| %>
     
@@ -61,16 +63,6 @@
         <div class="scene-pose">
 
             <div class="scene-pose-header">
-                <% if p.character.icon %>
-                 <a href="/char/<%= p.character.id %>">
-                   <img class="pose-profile-icon" src="<%= p.character.icon %>" />
-                  </a>
-                <% end %>
-                
-                <a href="/char/<%= p.character.id %>">
-                    <%= p.character.name %> 
-                 </a>   
-                 
                  <div class="pull-right">
                      <% if p.can_edit?(@user) %>
                          <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
@@ -96,10 +88,10 @@
 
 <% if can_access_scene?(@scene) && is_approved? %>
 
-<p>
+<div class="pull-right">
     <a href="/scene/<%= @scene.id %>/pose/add" class="btn btn-primary">Add Pose</a>
     <a href="/scene/<%= @scene.id %>/edit" class="btn btn-default">Edit Scene Info</a>
     <a href="/scene/<%= @scene.id %>/participants" class="btn btn-default">Edit Participants</a>
-</p>
+</div>
 
 <% end %>

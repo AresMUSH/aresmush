@@ -22,6 +22,8 @@ source /home/ares/.rvm/scripts/rvm
 
 rvm use ruby-2.3.0
 
+gem install bundler
+
 git clone $1
 
 cd aresmush

@@ -7,12 +7,12 @@ module AresMUSH
 
       def parse_args        
         if (cmd.args =~ /.+\/.+\=.+/)
-          args = cmd.parse_args( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>[^\=]+)/)
+          args = cmd.parse_args( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<reply>.+)/)
           self.board_name = titlecase_arg(args.name)
           self.num = trim_arg(args.num)
           self.reply = args.reply
         elsif (cmd.args =~ /.+\=.+\/.+/)
-          args = cmd.parse_args( /(?<name>[^\=]+)\=(?<num>[^\=]+)\/(?<reply>[^\=]+)/)
+          args = cmd.parse_args( /(?<name>[^\=]+)\=(?<num>[^\=]+)\/(?<reply>.+)/)
           self.board_name = titlecase_arg(args.name)
           self.num = trim_arg(args.num)
           self.reply = args.reply

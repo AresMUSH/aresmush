@@ -8,7 +8,7 @@ module AresMUSH
       print "Database url > "
       db_url = STDIN.gets.chomp
 
-      print "\nDatabase password > "
+      print "\nCreate a database password > "
       db_password = STDIN.gets.chomp
       
       template_data =
@@ -21,8 +21,13 @@ module AresMUSH
       File.open(File.join(AresMUSH.game_path, 'config', 'database.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
+      
+      template = Erubis::Eruby.new(File.read(File.join(template_path, 'secrets.yml.erb'), :encoding => "UTF-8"))
+      File.open(File.join(AresMUSH.game_path, 'config', 'secrets.yml'), 'w') do |f|
+        f.write(template.evaluate(template_data))
+      end
   
-      puts "\nGreat.  Now we'll gather some server information."
+      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/install-ares/basic-config for help with these options."
   
       print "\nServer hostname > "
       server_host = STDIN.gets.chomp
@@ -94,11 +99,6 @@ module AresMUSH
       
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'game.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'game.yml'), 'w') do |f|
-        f.write(template.evaluate(template_data))
-      end
-
-      template = Erubis::Eruby.new(File.read(File.join(template_path, 'secrets.yml.erb'), :encoding => "UTF-8"))
-      File.open(File.join(AresMUSH.game_path, 'config', 'secrets.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
   

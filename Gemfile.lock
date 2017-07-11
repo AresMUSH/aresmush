@@ -7,7 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    ansi (1.4.3)
+    ansi (1.5.0)
     aws-sdk (2.9.11)
       aws-sdk-resources (= 2.9.11)
     aws-sdk-core (2.9.11)
@@ -100,7 +100,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (> 4)
-  ansi (~> 1.4.3)
+  ansi (~> 1.5)
   aws-sdk (~> 2.9.11)
   bcrypt (~> 3.1.2)
   bson (~> 3.0)

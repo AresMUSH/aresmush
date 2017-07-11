@@ -15,10 +15,8 @@ login:
     use_terms_of_service: true
 
     activity_cron:
-        #date: 1
-        #day_of_week: Fri
-        #hour: 22
-        minute: 00
+        minute: 
+            - 00
         
     shortcuts:
         "logout" : "quit"

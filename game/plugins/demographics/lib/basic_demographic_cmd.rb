@@ -9,12 +9,12 @@ module AresMUSH
       def parse_args
         # Admin version
         if (cmd.args =~ /\//)
-          args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
           
           self.property = downcase_arg(args.arg2)
 
-          # If the first part after the / isn't a demographic name then the / must be
-          # part of the value.
+          # If the first part after the / isn't a demographic name then this isn't an admin
+          # command after all - it's just a demographic with a slash in the value.
           if (Global.read_config("demographics", "demographics").include?(self.property))
             self.name = titlecase_arg(args.arg1)
             self.value = titlecase_arg(args.arg3)

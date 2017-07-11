@@ -57,6 +57,7 @@ en:
        
        cant_boot_disconnected_player: "You can't boot someone who's not online."
        you_have_been_booted: "You have been given the boot by %{booter}.  Please play nice."
+       cant_boot_admin: "Nice try.  You can't boot an admin character!"
        
        boot_title: "Character Booted"
        boot_message: "%{booter} has booted %{bootee}.  Check the game log for the troll's IP and host info."

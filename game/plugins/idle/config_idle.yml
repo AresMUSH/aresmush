@@ -5,10 +5,12 @@ idle:
         - guest
         
     cron:
-        date: 1
-        #day_of_week: Fri
-        hour: 15
-        minute: 00
+        date: 
+            - 1
+        hour: 
+            - 15
+        minute: 
+            - 00
         
     monthly_reminder_title: "Monthly Chores"
     monthly_reminder: "It's time to run the idle sweep!"
