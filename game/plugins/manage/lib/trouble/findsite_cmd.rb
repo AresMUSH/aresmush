@@ -52,7 +52,7 @@ module AresMUSH
 
         title = "#{title}%r#{t('manage.findsite_player_info', :ip => ip, :hostname => hostname)}"
         
-        matches = Character.all.select { |c| Login.is_site_match?(c, ip, hostname) }
+        matches = Character.all.select { |c| Login.is_site_match?(c.ip, c.hostname, ip, hostname) }
         found = matches.map { |m| "#{m.name.ljust(25)} #{m.last_ip} #{m.last_hostname}" }
         
         template = BorderedListTemplate.new found, title
