@@ -2,7 +2,7 @@
 
 <div class="alert alert-warning">This section is for experienced users.  Please read the AresMUSH.com tutorials before attempting to configure your game here.</div>
 
-<h1>Game Config</h1>
+<h2>Game Config</h2>
 
 <ul>
     <% @game_config.sort.each do |f| %>
@@ -10,15 +10,7 @@
     <% end %>
 </ul>
 
-<h1>Game Help</h1>
-
-<ul>
-    <% @game_help.sort.each do |f| %>
-    <li><a href="/admin/config/edit?path=<%= f %>"><%= File.basename(f) %></a></li>
-    <% end %>
-</ul>
-
-<h1>Plugin Config</h1>
+<h2>Plugin Config</h2>
     <blockquote>
         Quick Links:
         <% @plugin_config.keys.sort.each do |p| %>

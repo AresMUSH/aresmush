@@ -236,7 +236,7 @@
          </div>
          <div class="panel-body">
             <ul>
-              <% @char.scenes_starring.reverse.each do |s| %>
+              <% @char.scenes_starring.select { |s| s.shared }.reverse.each do |s| %>
               <li><a href="/scene/<%= s.id %>"><%= s.icdate %> - <%= s.title %></a> 
               <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
                </li>

@@ -29,8 +29,8 @@ module AresMUSH
         end
 
         if (!scene.completed)
-          #client.emit_failure t('wikidot.only_completed_logs')
-          #return
+          client.emit_failure t('wikidot.only_completed_logs')
+          return
         end
         
         if (!scene.all_info_set?)

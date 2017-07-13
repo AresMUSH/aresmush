@@ -18,7 +18,7 @@ module AresMUSH
       
       def handle
         Scenes.with_a_scene(self.scene_num, client) do |scene|
-          can_join = Scenes.can_manage_scene(enactor, scene) || !scene.private_scene        
+          can_join = Scenes.can_access_scene(enactor, scene) || !scene.private_scene        
           if (!can_join)
             client.emit_failure t('scenes.scene_is_private')
             return

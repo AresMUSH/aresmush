@@ -27,6 +27,7 @@ en:
         responded_to_job: "%{name} has responded to job #%{number} \"%{title}\"."
         updated_job: "%{name} has updated job #%{number} \"%{title}\"."
         requests_cmd_hint: "Use the requests command to view your requests."
+        request_use_respond: "I think you meant to respond to a request.  Use request/respond <#>=<msg>"
         
         closed_job: "%{name} has closed this job."
         changed_job_status: "%{name} has changed the job status to \"%{status}\"."

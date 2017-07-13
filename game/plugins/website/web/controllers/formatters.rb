@@ -23,6 +23,7 @@ module AresMUSH
       end
       
       def format_markdown_for_html(output)
+        return nil if !output
         renderer = Redcarpet::Render::HTML.new(escape_html: true, hard_wrap: true, 
               autolink: true, safe_links_only: true)    
         html = Redcarpet::Markdown.new(renderer)

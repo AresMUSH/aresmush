@@ -105,7 +105,7 @@ module AresMUSH
          
        when "request"
          case cmd.switch
-         when "comment"
+         when "respond"
            return RequestCommentCmd
          when "all"
            return ListRequestsCmd

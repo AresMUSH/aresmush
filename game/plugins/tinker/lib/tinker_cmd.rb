@@ -14,6 +14,8 @@ module AresMUSH
       end
       
       def handle
+        template = LineWithTextTemplate.new("TEST")
+        client.emit template.render
         client.emit_success "Done!"
       end
 

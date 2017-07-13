@@ -87,7 +87,7 @@ module AresMUSH
     end
     
     def can_edit?(actor)
-      return true if Scenes.can_manage_scene(actor, self.scene)
+      return true if Scenes.can_access_scene(actor, self.scene)
       return true if actor == self.character
       return false
     end

@@ -14,7 +14,7 @@ module AresMUSH
     before "*" do
       @events = Events.upcoming_events
       @calendar = Events.calendar_view_url
-      @recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.created_at }.reverse[1..10] || []
+      @recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.created_at }.reverse[0..10] || []
       
     end
       

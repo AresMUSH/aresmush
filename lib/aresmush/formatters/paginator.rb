@@ -24,6 +24,12 @@ module AresMUSH
     def page_marker
       t('pages.page_x_of_y', :x => self.current_page, :y => self.total_pages)
     end
+    
+    def page_footer
+      # This template is defined in the utils plugin so it can be easily customized
+      template = PageFooterTemplate.new(page_marker)
+      template.render
+    end
   end
   
   module Paginator
