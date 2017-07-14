@@ -2,28 +2,37 @@
         
 <div class="row log-wrap">
        
-       <div class="log-box">
-           
-    <p><%= @scene.summary %></p>
+    <div class="log-box">
+       
+        <p><%= @scene.summary %></p>
 
-    <p><b>Date:</b> <%= @scene.icdate %></p>
+        <p><b>Date:</b> <%= @scene.icdate %></p>
 
-    <p><b>Location:</b> <%= @scene.location %></p>
+        <p><b>Location:</b> <%= @scene.location %></p>
+
+
+        <p><b>Related Scenes:</b> 
+            <% if @scene.related_scenes.any? %>
+              <% @scene.related_scenes.each_with_index do |s, i| %>
+                  <a href="/scene/<%= s.id %>"><%= s.title %></a><%= ',' if show_related_scene_comma(i) %>
+              <% end %>
+            <% else %>
+               None
+            <% end %>
         
         <div>
-        <% if @scene.completed %>
-        <span class="label label-success">Completed</span>
-        <% else %>
-        <span class="label label-warning">In Progress</span>
-        <% end %>
-        
-        <%= erb :"scenes/scene_tag", :locals => { scene: @scene } %>
+            <% if @scene.completed %>
+            <span class="label label-success">Completed</span>
+            <% else %>
+            <span class="label label-warning">In Progress</span>
+            <% end %>
+
+            <%= erb :"scenes/scene_tag", :locals => { scene: @scene } %>
          </div>
-    
     </div>
     
     <div class="log-participants-box">
-    <% @scene.participants.each do |c| %>
+    <% @scene.participants.to_a.sort_by { |c| c.name }.each do |c| %>
     <a href="/char/<%= c.id %>">
         <% if c.icon %>
          <img class="log-icon" src="<%= c.icon %>" title="<%= c.name %>" />

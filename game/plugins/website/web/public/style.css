@@ -478,3 +478,7 @@ a:hover { text-decoration: none; }
     background-color: #182334;
     border-color: #182334;
 }
+
+ul.char-ability-list { 
+  list-style-type: square;  
+}

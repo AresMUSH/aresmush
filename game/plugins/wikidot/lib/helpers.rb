@@ -18,7 +18,7 @@ module AresMUSH
     end
     
     def self.log_page_title(scene)
-      "#{scene.icdate} - #{scene.title}"
+      "#{scene.date_title}"
     end
     
     def self.log_page_category(scene)

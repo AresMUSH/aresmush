@@ -38,7 +38,12 @@
     <textarea name="summary" rows="5" cols="100"><%= format_input_for_html(@scene.summary) %></textarea>
     </p>
 
+    <p>
+        <a href="/scene/<%= @scene.id %>/participants" target="_blank">Edit Participants</a> | 
+        <a href="/scene/<%= @scene.id %>/related" target="_blank">Edit Related Scenes</a>
+    </p>
 
-        <p><input type="submit" value="Save"></p>
+
+        <p> <a href="/scene/<%= @scene.id %>" class="btn btn-default">Return to Scene</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
         
     </form>

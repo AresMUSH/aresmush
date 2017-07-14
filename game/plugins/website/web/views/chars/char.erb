@@ -208,16 +208,14 @@
   
   <div id="sheet" class="tab-pane fade">
 
-      <div class="ansi">
-          <pre><%= format_output_for_html AresMUSH::FS3Skills::SheetPage1Template.new(@char, nil).render %></pre>
-      </div>
+          <%= erb :"chars/fs3_sheet" %></p>
+          
       
   </div>
   <div id="damage" class="tab-pane fade">
 
-      <div class="ansi">
-          <pre><%= format_output_for_html AresMUSH::FS3Combat::DamageTemplate.new(@char).render %></pre>
-      </div>
+      <%= erb :"chars/fs3_damage" %></p>
+      
 
   </div>
 </div>
@@ -237,7 +235,7 @@
          <div class="panel-body">
             <ul>
               <% @char.scenes_starring.select { |s| s.shared }.reverse.each do |s| %>
-              <li><a href="/scene/<%= s.id %>"><%= s.icdate %> - <%= s.title %></a> 
+              <li><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
               <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
                </li>
               <% end %>

@@ -1,8 +1,14 @@
 scenes:
-    cron:
-     minute: 
+    room_cleanup_cron:
+        minute: 
          - 15
          - 45
+
+    unshared_scene_cleanup_cron:
+        hour: 
+            - 22
+        minute: 
+            - 02
     
     scene_types:
         - Social

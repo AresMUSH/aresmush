@@ -172,7 +172,7 @@
                                
                            </div>
                            <% @recent_scenes.each do |s| %>
-                           <p><a href="/scene/<%= s.id %>"><%= s.icdate%> - <%= s.title %></a>  
+                           <p><a href="/scene/<%= s.id %>"><%= s.date_title %></a>  
                                <%= erb :"scenes/scene_tag", :locals => { scene: s } %><br/></p>
                            <% end %>
             

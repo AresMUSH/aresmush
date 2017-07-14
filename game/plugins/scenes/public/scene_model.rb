@@ -27,8 +27,10 @@ module AresMUSH
     attribute :summary
     attribute :shared
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
+    attribute :deletion_warned, :type => DataType::Boolean, :default => true
     attribute :icdate
     
+    set :related_scenes, "AresMUSH::Scene"
     collection :scene_poses, "AresMUSH::ScenePose"
     set :participants, "AresMUSH::Character"
     
@@ -52,12 +54,22 @@ module AresMUSH
           .uniq { |c| c.id }
     end
     
+    def all_participant_names
+      scene_poses.select { |s| !s.is_system_pose? }
+          .map { |s| s.character.name }
+          .uniq
+    end
+    
     def delete_poses
       scene_poses.each { |p| p.delete }
     end
     
     def all_info_set?
       self.title && self.location && self.scene_type && self.summary
+    end
+    
+    def date_title
+      "#{self.icdate} - #{self.title}"
     end
   end
   
@@ -87,7 +99,7 @@ module AresMUSH
     end
     
     def can_edit?(actor)
-      return true if Scenes.can_access_scene(actor, self.scene)
+      return true if Scenes.can_access_scene?(actor, self.scene)
       return true if actor == self.character
       return false
     end
