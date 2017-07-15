@@ -2,6 +2,16 @@ module AresMUSH
   class WebApp    
     
     helpers do
+      
+      def icon_for_name(name)
+        char = Character.find_one_by_name(name)
+        if (char)
+          icon = char.icon
+        else
+          icon = nil
+        end
+        icon || "/noicon.png"
+      end
 
       # Takes something from a text box and replaces carriage returns with %r's for MUSH.
       def format_input_for_mush(input)
@@ -28,7 +38,17 @@ module AresMUSH
               autolink: true, safe_links_only: true)    
         html = Redcarpet::Markdown.new(renderer)
         text = html.render output
-        format_output_for_html(text)
+        text = text.gsub(/\&quot\;/i, '"')
+        text = text.gsub(/\[\[div([^\]]*)\]\]/i, '<div \1>')
+        text = text.gsub(/\[\[span([^\]]*)\]\]/i, '<span \1>')
+        
+        #text = text.gsub(/\[\[div (class|style)=\&quot\;([^\]]*)\&quot\;\]\]/i, '<div \1="\2">')
+        #text = text.gsub(/\[\[div\]\]/i, '<div>')
+        text = text.gsub(/\[\[\/div\]\]/i, "</div>")
+        text = text.gsub(/\[\[\/span\]\]/i, "</span>")
+        text = text.gsub(/%r/i, "<br/>")
+        text = AresMUSH::ClientFormatter.format text, false
+        text
       end
       
       def titlecase_arg(input)

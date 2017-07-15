@@ -5,7 +5,7 @@
 <ul class="nav nav-tabs">
   
   <% @factions.each_with_index do |(faction, faction_chars), i| %>
-      <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= faction.gsub(/ /, '')  %>"><%= faction %></a></li>
+      <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= faction.parameterize('_')  %>"><%= faction %></a></li>
   <% end %>
 </ul>
 
@@ -13,7 +13,7 @@
   
   <% @factions.each_with_index do |(faction, faction_chars), i| %>
 
-  <div id="<%= faction.gsub(/ /, '')  %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
+  <div id="<%= faction.parameterize('_') %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
     
     <% if @npcs[faction] && @npcs[faction].any? %>
         <%= erb :"chars/faction_group_list", :locals => { chars: @npcs[faction], position: "NPCs" } %>

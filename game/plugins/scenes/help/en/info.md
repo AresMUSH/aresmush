@@ -21,6 +21,8 @@ You can control several properties about the scene.  These are used for [Scene L
 
 > **Tip:** Scene sets on empty rooms will be cleared periodically.
 
+You can see the current scene info by typing `scene <#>.`
+
 `scene/title [<#>=]<title>` - Sets the scene title.
 `scene/summary [<#>=]<summary>` - Sets the scene summary.
 `scene/icdate [<#>=]<icdate>` - Sets the scene date.

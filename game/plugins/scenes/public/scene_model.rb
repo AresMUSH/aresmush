@@ -29,6 +29,7 @@ module AresMUSH
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
     attribute :deletion_warned, :type => DataType::Boolean, :default => true
     attribute :icdate
+    attribute :log
     
     set :related_scenes, "AresMUSH::Scene"
     collection :scene_poses, "AresMUSH::ScenePose"
@@ -70,6 +71,10 @@ module AresMUSH
     
     def date_title
       "#{self.icdate} - #{self.title}"
+    end
+    
+    def owner_name
+      self.owner ? self.owner.name : t('scenes.organizer_deleted')
     end
   end
   

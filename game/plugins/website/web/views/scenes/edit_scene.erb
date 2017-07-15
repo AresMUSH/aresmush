@@ -44,6 +44,12 @@
     </p>
 
 
+    <p>
+    <textarea name="log" rows="25" cols="100"><%= format_input_for_html(@scene.log) %></textarea>
+    </p>
+
+
+
         <p> <a href="/scene/<%= @scene.id %>" class="btn btn-default">Return to Scene</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
         
     </form>

@@ -51,11 +51,8 @@ load 'web/controllers/mail/mail_send.rb'
 load 'web/controllers/scenes/scene_add_pose.rb'
 load 'web/controllers/scenes/scene_create.rb'
 load 'web/controllers/scenes/scene_edit_participants.rb'
-load 'web/controllers/scenes/scene_edit_pose.rb'
 load 'web/controllers/scenes/scene_edit_related.rb'
 load 'web/controllers/scenes/scene_edit.rb'
-load 'web/controllers/scenes/scene_pose_delete.rb'
-load 'web/controllers/scenes/scene_pose_move.rb'
 load 'web/controllers/scenes/scenes.rb'
 
 

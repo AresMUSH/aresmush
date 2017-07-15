@@ -20,7 +20,7 @@ module AresMUSH
         redirect "/scene/#{id}"
       end
       
-      
+      @scene.update(log: params[:log])
       @scene.update(location: params[:location])
       @scene.update(summary: params[:summary])
       @scene.update(scene_type: params[:scene_type])

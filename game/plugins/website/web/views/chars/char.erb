@@ -3,16 +3,13 @@
 
 <div class="row profile-wrap">
     <div class="col-sm-3">
-            <img src="<%= @char.icon %> " style="width:200px"/>
+            <img src="<%= @char.icon %> " class="profile-image"/>
     </div>
 
     <div class="col-sm-1">
     </div>
     
-    <div class="col-sm-8 profile-box">
-        
-
-        
+    <div class="col-sm-8 profile-box">        
 
         <div class="profile-title">
                     <%= AresMUSH::Ranks.military_name(@char) %>
@@ -226,6 +223,15 @@
     </div>
 </div>
 
+ <%= erb :"chars/relationships", :locals => { categories: AresMUSH::Profile.relationships_by_category(@char) } %></p>
+ 
+ 
+ <div class="row">
+     <div class="col">
+         &nbsp;
+     </div>
+ </div>
+ 
 <div class="row">
    <div class="col col-sm-12">
        <div class="panel panel-default">

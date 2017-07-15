@@ -48,53 +48,9 @@
 <p><a href="/scenes"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Scenes</a></p>
 
 
-<% @scene.poses_in_order.each do |p| %>
-    
-    <% if p.is_system_pose? %>
-        <div class="scene-system-pose">
-
-             <div class="scene-pose-header">
-                 <div class="pull-right">
-                     <% if @scene.completed && p.can_edit?(@user) %>
-                         <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
-                          | <a href="/scene/pose/<%= p.id %>/moveup"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-                           | <a href="/scene/pose/<%= p.id %>/movedown"><i class="fa fa-arrow-down" aria-hidden="true"></i></a> 
-                           | 
-                            <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <% end %>
-                 </div>
-            </div>
-            <div class="ansi">
-                <%= format_markdown_for_html p.pose %>
-            </div>
-        </div>
-    
-    <% else %>
-    
-        <div class="scene-pose">
-
-            <div class="scene-pose-header">
-                 <div class="pull-right">
-                     <% if p.can_edit?(@user) %>
-                         <a href="/scene/pose/<%= p.id %>/edit"><i class="fa fa-edit" aria-hidden="true"></i></a> 
-                          | <a href="/scene/pose/<%= p.id %>/moveup"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-                           | <a href="/scene/pose/<%= p.id %>/movedown"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>                            
-                           | 
-                             <a href="/scene/pose/<%= p.id %>/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <% end %>
-                 </div>
-            </div>
-    
-            <div class="ansi">
-                <% if p.is_setpose? %> <blockquote> <% end %>
-                <%= format_markdown_for_html p.pose %>
-                <% if p.is_setpose? %> </blockquote> <% end %>
-            </div>
-        </div>
-    
-    <% end %>
-    
-<% end %>
+<div class="ansi scene-log">
+    <%= format_markdown_for_html @scene.log %>
+</div>
     
 
 <% if can_access_scene?(@scene) && is_approved? %>

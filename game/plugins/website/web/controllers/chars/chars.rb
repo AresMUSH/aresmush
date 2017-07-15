@@ -16,8 +16,14 @@ module AresMUSH
     get '/char/:id' do |id|
       @char = Character[id]
       if (!@char)
-        flash[:error] = "Character not found."
-        redirect '/chars'
+        
+        # Also support name lookup
+        @char = Character.find_one_by_name(id)
+        
+        if (!@char)
+          flash[:error] = "Character not found."
+          redirect '/chars'
+        end
       end
       
       erb :"chars/char"

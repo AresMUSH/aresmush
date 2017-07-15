@@ -25,6 +25,16 @@ module AresMUSH
         
         Scenes.with_a_scene(self.scene_num, client) do |scene|          
           
+          if (!Scenes.can_access_scene?(enactor, scene))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+          
+          if (!scene.completed)
+            client.emit_failure t('scenes.cant_share_until_completed')
+            return
+          end
+          
           if (!scene.all_info_set?)
             client.emit_failure t('scenes.scene_info_missing', :title => scene.title || "??", 
                :summary => scene.summary || "??", 
@@ -33,12 +43,9 @@ module AresMUSH
             return
           end
           
-          if (!Scenes.can_access_scene?(enactor, scene))
-            client.emit_failure t('dispatcher.not_allowed')
-            return
-          end
-          
           scene.update(shared: self.share)
+          Scenes.convert_to_log(scene)
+          
           message = self.share ? t('scenes.log_shared', :name => enactor_name) : 
               t('scenes.log_unshared', :name => enactor_name)
 

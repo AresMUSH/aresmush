@@ -10,11 +10,11 @@ module AresMUSH
       end
       
       def characters(scene)
-        scene.participants.map{ |c| c.name }.join(", ")
+        scene.auto_participants.map{ |c| c.name }.join(", ")
       end
       
       def organizer(scene)
-        scene.owner.name
+        scene.owner_name
       end
       
       def privacy(scene)

@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def organizer(scene)
-        "(#{t('scenes.organizer_title', :name => scene.owner.name )})"
+        "(#{t('scenes.organizer_title', :name => scene.owner_name )})"
       end
       
       def privacy(scene)

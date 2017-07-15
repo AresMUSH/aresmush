@@ -12,7 +12,7 @@ module AresMUSH
         else
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
         end
-        self.all = !cmd.switch_is?("repose")
+        self.all = cmd.switch_is?("log")
       end
       
       def handle        
@@ -22,19 +22,14 @@ module AresMUSH
             return
           end
           
-          if (!Scenes.can_access_scene?(enactor, scene) && enactor.room != scene.room)
+          can_access = Scenes.can_access_scene?(enactor, scene) || 
+            ((enactor.room == scene.room ) && !scene.completed)
+          if (!can_access)
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
           
-          poses = scene.poses_in_order.to_a
-          footer = nil
-          if (!self.all)
-            poses = poses[-8, 8] || poses
-            footer = "%ld%R" + t('scenes.log_list_short_footer')
-          end
-        
-          template = BorderedListTemplate.new poses.map { |p| "#{p.pose}%R"}, t('scenes.log_list'), footer
+          template = SceneLogTemplate.new scene, !self.all
           client.emit template.render
         end
       end

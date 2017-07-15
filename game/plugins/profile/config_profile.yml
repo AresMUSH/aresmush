@@ -5,3 +5,6 @@ profile:
         "profile/set": "profile/add"
         "nfo": "profile"
         "alts": "profile"
+        "profile/remove" : "profile/delete"
+        "relationships" : "relationship"
+        "relationship/remove" : "relationship/delete"

@@ -49,4 +49,9 @@ en:
         
         description: "Description"
         
+        relationship_set: "Relationship with %{name} set."
+        relationship_deleted: "Relationship with %{name} deleted."
+        relationship_not_found: "Relationship with %{name} not found."
+        
+        
         none: "None"

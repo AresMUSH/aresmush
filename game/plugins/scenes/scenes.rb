@@ -19,6 +19,7 @@ load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "templates/scenes_summary_template.rb"
+load "templates/scene_log_template.rb"
 load "public/scenes_api.rb"
 load "public/scene_model.rb"
 
@@ -52,8 +53,14 @@ module AresMUSH
 
       when "scene"
         case cmd.switch
-        when nil, "all"
+        when "all"
           return ScenesCmd
+        when nil
+          if (cmd.args)
+            return LogCmd
+          else
+            return ScenesCmd
+          end
         when "join"
           return SceneJoinCmd
         when "location", "privacy", "summary", "title", "type", "icdate"

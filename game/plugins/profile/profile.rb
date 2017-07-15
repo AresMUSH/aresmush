@@ -3,8 +3,13 @@ load "lib/profile_add_cmd.rb"
 load "lib/profile_cmd.rb"
 load "lib/profile_delete_cmd.rb"
 load "lib/profile_edit_cmd.rb"
-load "lib/profile_model.rb"
+load "lib/relationship_add_cmd.rb"
+load "lib/relationship_delete_cmd.rb"
+load "lib/relationships_cmd.rb"
+load "public/profile_model.rb"
+load "public/profile_api.rb"
 load "templates/profile_template.rb"
+load "templates/relationships_template.rb"
 
 module AresMUSH
   module Profile
@@ -43,6 +48,15 @@ module AresMUSH
           return ProfileEditCmd
         when nil
           return ProfileCmd
+        end
+      when "relationship"
+        case cmd.switch
+        when "add"
+          return RelationshipAddCmd
+        when "delete"
+          return RelationshipDeleteCmd
+        when nil
+          return RelationshipsCmd
         end
       end
       nil
