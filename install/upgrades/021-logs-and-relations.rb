@@ -9,7 +9,10 @@ module AresMUSH
     s.update(log: Scenes.convert_to_log(s))
   end
 
-  Character.all.each { |c| c.update(relationships: {})}
+  Character.all.each do |c| 
+    c.update(relationships: {})
+    c.update(relationships_category_order: [])
+  end    
 
   puts "Upgrade complete!"
 end

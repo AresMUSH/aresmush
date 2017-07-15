@@ -5,9 +5,11 @@ load "lib/profile_delete_cmd.rb"
 load "lib/profile_edit_cmd.rb"
 load "lib/relationship_add_cmd.rb"
 load "lib/relationship_delete_cmd.rb"
+load "lib/relationship_move_cmd.rb"
+load "lib/relationships_order_cmd.rb"
 load "lib/relationships_cmd.rb"
+load "lib/helpers.rb"
 load "public/profile_model.rb"
-load "public/profile_api.rb"
 load "templates/profile_template.rb"
 load "templates/relationships_template.rb"
 
@@ -55,6 +57,10 @@ module AresMUSH
           return RelationshipAddCmd
         when "delete"
           return RelationshipDeleteCmd
+        when "move"
+          return RelationshipMoveCmd
+        when "order"
+          return RelationshipsOrderCmd
         when nil
           return RelationshipsCmd
         end
