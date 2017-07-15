@@ -22,7 +22,14 @@ module AresMUSH
         redirect "/scene/#{@scene.id}"
       end
       
-      @scene.related_scenes.delete @related
+      link = @scene.find_link(@related)
+      if (!link)
+        flash[:error] = "There is no relation between those scenes."
+        redirect "/scene/#{@scene.id}"
+      end
+      
+      link.delete
+      
       redirect "/scene/#{@scene.id}/related"
     end
     
@@ -51,7 +58,13 @@ module AresMUSH
         redirect "/scene/#{@scene.id}/related"
       end
       
-      @scene.related_scenes.add @related
+      link = @scene.find_link(@related)
+      if (link)
+        flash[:error] = "Those scenes are already related."
+        redirect "/scene/#{@scene.id}"
+      end
+      
+      SceneLink.create(log1: @scene, log2: @related)
       redirect "/scene/#{@scene.id}/related"    
     end
   end

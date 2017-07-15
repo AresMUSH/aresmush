@@ -31,8 +31,8 @@ module AresMUSH
     attribute :icdate
     attribute :log
     
-    set :related_scenes, "AresMUSH::Scene"
     collection :scene_poses, "AresMUSH::ScenePose"
+    
     set :participants, "AresMUSH::Character"
     
     before_delete :delete_poses
@@ -76,6 +76,22 @@ module AresMUSH
     def owner_name
       self.owner ? self.owner.name : t('scenes.organizer_deleted')
     end
+    
+    def related_scenes
+      links1 = SceneLink.find(log1_id: self.id)
+      links2 = SceneLink.find(log2_id: self.id)
+      list1 = links1.map { |l| l.log2 }
+      list2 = links2.map { |l| l.log1 }
+      list1.concat(list2).uniq
+    end
+    
+    def find_link(other_scene)
+      link = SceneLink.find(log1_id: self.id).combine(log2_id: other_scene.id).first
+      if (!link)
+        link = SceneLink.find(log1_id: other_scene.id).combine(log2_id: self.id).first
+      end
+      link
+    end
   end
   
   class ScenePose < Ohm::Model
@@ -108,5 +124,13 @@ module AresMUSH
       return true if actor == self.character
       return false
     end
+  end
+  
+  class SceneLink < Ohm::Model
+    reference :log1, "AresMUSH::Scene"
+    reference :log2, "AresMUSH::Scene"
+    
+    index :log1
+    index :log2
   end
 end

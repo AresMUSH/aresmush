@@ -10,6 +10,7 @@ module AresMUSH
         char.scenes_starring.select { |s| s.scene_type == type}
       end
     end
+    
     get '/chars' do
       @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group("Faction") || "" }
       @factions = Chargen.approved_chars.group_by { |c| c.group("Faction") || "" }
