@@ -1,16 +1,21 @@
 
 <ul class="nav nav-tabs">
-    <% categories.each_with_index do |(category, relations), i| %>
-    <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= category.parameterize('_') %>"><%= category %></a></li>
+    <li class="active"><a data-toggle="tab" href="#relationshipindex">+</a></li>
+    <% categories.each do |category, relations| %>
+    <li><a data-toggle="tab" href="#<%= category.parameterize('_') %>"><%= category %></a></li>
     <% end %>
 </ul>
 
 
 <div class="tab-content">
-  
-  <% categories.each_with_index do |(category, relations), i| %>
 
-  <div id="<%= category.parameterize('_') %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
+  <div id="relationshipindex" class="tab-pane fade in active">
+      <div class="tab-cover">Relationships</div>
+  </div>
+  
+  <% categories.each do |category, relations| %>
+
+  <div id="<%= category.parameterize('_') %>" class="tab-pane fade">
     
     <% relations.sort.each do |name, data| %>
         

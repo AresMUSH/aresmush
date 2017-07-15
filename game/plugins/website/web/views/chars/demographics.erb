@@ -1,0 +1,167 @@
+    <div class="col-sm-3">
+            <img src="<%= @char.icon %> " class="profile-image"/>
+    </div>
+
+    <div class="col-sm-1">
+    </div>
+    
+    <div class="col-sm-8 profile-box">        
+
+        <div class="profile-title">
+                    <%= AresMUSH::Ranks.military_name(@char) %>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Fullname:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:fullname) %>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Rank:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.rank %>
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Position:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.group("Position") %>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Faction:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.group("Faction") %>
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Department:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.group("Department") %>
+            </div>
+        </div>
+        
+        
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Callsign:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:callsign) %>
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Colony:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.group("Colony") %>
+            </div>
+        </div>
+        
+        
+        
+        <div class="profile-divider">
+        </div>
+        
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Age:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.age %>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Birthdate:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:birthdate) %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Gender:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:gender) %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Height:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:height) %>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Physique:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:physique) %>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Hair:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:hair) %>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Eyes:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.demographic(:eyes) %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Played By:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.actor %>
+            </div>
+        </div>
+
+        
+    </div>

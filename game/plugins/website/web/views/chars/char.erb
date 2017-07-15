@@ -2,187 +2,23 @@
 
 
 <div class="row profile-wrap">
-    <div class="col-sm-3">
-            <img src="<%= @char.icon %> " class="profile-image"/>
-    </div>
-
-    <div class="col-sm-1">
-    </div>
-    
-    <div class="col-sm-8 profile-box">        
-
-        <div class="profile-title">
-                    <%= AresMUSH::Ranks.military_name(@char) %>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Fullname:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:fullname) %>
-            </div>
-        </div>
-        
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Rank:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.rank %>
-            </div>
-        </div>
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Position:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Position") %>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Faction:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Faction") %>
-            </div>
-        </div>
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Department:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Department") %>
-            </div>
-        </div>
-        
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Callsign:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:callsign) %>
-            </div>
-        </div>
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Colony:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Colony") %>
-            </div>
-        </div>
-        
-        
-        
-        <div class="profile-divider">
-        </div>
-        
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Age:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.age %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Birthdate:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:birthdate) %>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Gender:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:gender) %>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Height:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:height) %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Physique:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:physique) %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Hair:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:hair) %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Eyes:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:eyes) %>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Played By:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.actor %>
-            </div>
-        </div>
-
-        
-    </div>
-
-   
+    <%= erb :"chars/demographics" %>
 </div>
 
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
-  <li><a data-toggle="tab" href="#bg">Background</a></li>
+  <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
+  <li><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
   <li><a data-toggle="tab" href="#sheet">Sheet</a></li>
   <li><a data-toggle="tab" href="#damage">Damage</a></li>
 </ul>
 
 <div class="tab-content">
-  <div id="hooks" class="tab-pane fade in active">
+  <div id="systeminfo" class="tab-pane fade in active">
+      <div class="tab-cover">System Information</div>
+  </div>
+        
+  <div id="hooks" class="tab-pane fade">
       
       <p>
           
@@ -195,13 +31,6 @@
      </p>
   </div>
   
-  <div id="bg" class="tab-pane fade">
-      
-      <div class="ansi">
-
-          <%= format_output_for_html @char.background %>
-     </div>
-  </div>
   
   <div id="sheet" class="tab-pane fade">
 
@@ -232,22 +61,5 @@
      </div>
  </div>
  
-<div class="row">
-   <div class="col col-sm-12">
-       <div class="panel panel-default">
-         <div class="panel-heading">
-            Logs
-         </div>
-         <div class="panel-body">
-            <ul>
-              <% @char.scenes_starring.select { |s| s.shared }.reverse.each do |s| %>
-              <li><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
-              <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
-               </li>
-              <% end %>
-            </ul>
-         </div>
-       </div>
-   </div>
-</div>
-
+        <%= erb :"chars/logs" %></p>
+  
