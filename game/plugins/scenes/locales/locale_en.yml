@@ -61,3 +61,11 @@ en:
         log_unshared: "The log is no longer being shared on the web portal."
         
         scene_info_missing: "You can't share the log until all the scene info is set.  Title: %{title}, Location: %{location}, Type: %{type}, Summary: %{summary}."
+        
+        cant_delete_in_progress_scene: "You can't delete a scene that's in progress.  Stop it first."
+        cant_delete_shared_scene: "You can't delete a scene that has been shared to the web portal.  Unshare it first - but then nobody will be able to read it any more."
+        scene_deleted: "Scene deleted."
+        
+        cant_restart_in_progress_scene: "You can't restart a scene that's already going."
+        cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
+        scene_restarted: "Scene restarted."

@@ -6,7 +6,7 @@ module AresMUSH
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose)
     end
     
-    def self.can_manage_scene(actor, scene)
+    def self.can_manage_scene?(actor, scene)
       return false if !actor
       (scene.owner == actor) || 
       actor.has_permission?("manage_scenes")
@@ -19,7 +19,7 @@ module AresMUSH
     
     def self.can_access_scene?(actor, scene)
       return !scene.is_private? if !actor
-      return true if Scenes.can_manage_scene(actor, scene)
+      return true if Scenes.can_manage_scene?(actor, scene)
       return true if !scene.is_private?
       return true if scene.participants.include?(actor)
       return scene.auto_participants.include?(actor)

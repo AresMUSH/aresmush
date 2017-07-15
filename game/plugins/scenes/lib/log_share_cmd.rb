@@ -35,7 +35,7 @@ module AresMUSH
             return
           end
           
-          if (!scene.all_info_set?)
+          if (self.share && !scene.all_info_set?)
             client.emit_failure t('scenes.scene_info_missing', :title => scene.title || "??", 
                :summary => scene.summary || "??", 
                :type => scene.scene_type || "??", 
