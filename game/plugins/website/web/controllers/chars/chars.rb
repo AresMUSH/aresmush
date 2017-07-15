@@ -6,6 +6,9 @@ module AresMUSH
         format_output_for_html FS3Combat.display_severity(severity)
       end
       
+      def char_scenes_by_type(char, type)
+        char.scenes_starring.select { |s| s.scene_type == type}
+      end
     end
     get '/chars' do
       @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group("Faction") || "" }

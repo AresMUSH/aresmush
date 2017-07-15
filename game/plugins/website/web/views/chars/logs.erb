@@ -1,6 +1,8 @@
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#scenesindex">+</a></li>
-    <li><a data-toggle="tab" href="#logs">Logs</a></li>
+    <% AresMUSH::Scenes.scene_types.each do |type| %>
+        <li><a data-toggle="tab" href="#<%= type.parameterize('_') %>"><%= type %></a></li>
+    <% end %>
 </ul>
 
 
@@ -10,10 +12,12 @@
       <div class="tab-cover">Scenes</div>
   </div>
   
-  <div id="logs" class="tab-pane fade ">
+  <% AresMUSH::Scenes.scene_types.each do |type| %>
+  
+  <div id="<%= type.parameterize('_') %>" class="tab-pane fade ">
   
       <ul>
-        <% @char.scenes_starring.select { |s| s.shared }.reverse.each do |s| %>
+        <% char_scenes_by_type(@char, type).select { |s| s.shared }.reverse.each do |s| %>
         <li><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
         <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
          </li>
@@ -21,5 +25,8 @@
       </ul>
       
   </div>
+  
+  <% end %>
+  
  </div>
   
