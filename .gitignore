@@ -31,3 +31,4 @@ game/db/mongo.conf
 game/db/data
 game/db/*.log
 game/db/*.pid
+game/plugins/website/web/public/files
