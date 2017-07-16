@@ -15,7 +15,7 @@ module AresMUSH
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           
           # Catch the common mistake of last-paging someone a link.
-          if (args.arg1 && args.arg1.include?("http://"))
+          if (args.arg1 && (args.arg1.include?("http://") || args.arg1.include?("https://")) )
             self.names = enactor.last_paged
             self.message = "#{args.arg1}=#{args.arg2}"
           else

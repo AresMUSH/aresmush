@@ -8,6 +8,11 @@ module AresMUSH
       def scenes_of_type(type)
         @scenes.select { |s| s.scene_type == type }
       end
+      
+      def show_related_scene_comma(index)
+        count = @scene.related_scenes.count
+        count > 1 && index != count - 1
+      end
     end
     
     get '/scenes' do

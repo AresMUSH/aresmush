@@ -3,7 +3,7 @@ fs3skills:
     free_languages: 5
     free_backgrounds: 6
     
-    min_backgrounds: 1
+    min_backgrounds: 2
     min_hooks: 1
 
     max_skill_rating: 7
@@ -11,11 +11,15 @@ fs3skills:
     
     max_ap: 45
     
-    max_skills_above_4: 3
-    max_skills_above_6: 1
+    max_skills_at_or_above:
+        5: 3
+        6: 2
+        7: 1
     
-    max_attr_above_3: 2
-    max_attr_above_4: 1
+    max_attrs_at_or_above: 
+        4: 2
+        5: 1
+
     max_attributes: 16
     
     unusual_skills:

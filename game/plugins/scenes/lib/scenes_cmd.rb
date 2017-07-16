@@ -11,11 +11,11 @@ module AresMUSH
       
       def handle
         if (show_all)
-          scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }
+          scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }.reverse
           paginator = Paginator.paginate(scenes, cmd.page, 25)
           template = SceneSummaryTemplate.new(paginator)
         else
-          scenes = Scene.all.select { |s| !s.completed }
+          scenes = Scene.all.select { |s| !s.completed }.reverse
           template = SceneListTemplate.new(scenes)
         end
         client.emit template.render

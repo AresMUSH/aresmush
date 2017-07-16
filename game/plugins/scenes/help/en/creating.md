@@ -19,11 +19,13 @@ When you start a scene, you can create a temporary room or start one in the room
 
 ## Stopping a Scene
 
-You should stop a scene when it's over.  Scenes with empty rooms will be stopped automatically at some point.
+You should stop a scene when it's over.  Scenes with empty rooms will be stopped automatically at some point.  The scene organizer can also delete a scene.  If you accidentally stop a scene, you can restart it in a temp room.
 
 `scene/stop [<#>]` - Stops a scene and recycles the room (if it was a temporary one).
+`scene/delete <#>` - Deletes a scene.
+`scene/restart <#>` - Restarts a scene.
 
-> **Tip:** Admins and characters with the `manage_scenes` permission can stop other people's scenes.
+> **Tip:** Admins and characters with the `manage_scenes` permission can stop and delete other people's scenes.
 
 ## Scene Privacy
 

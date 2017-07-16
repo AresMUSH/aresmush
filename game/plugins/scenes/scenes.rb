@@ -8,9 +8,11 @@ load "lib/log_clear_cmd.rb"
 load "lib/log_enable_cmd.rb"
 load "lib/log_share_cmd.rb"
 load "lib/scene_types_cmd.rb"
+load "lib/scene_delete_cmd.rb"
 load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
 load "lib/scene_replace_cmd.rb"
+load "lib/scene_restart_cmd.rb"
 load "lib/scene_undo_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_spoof_cmd.rb"
@@ -19,6 +21,7 @@ load "lib/scene_stop_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "templates/scenes_summary_template.rb"
+load "templates/scene_log_template.rb"
 load "public/scenes_api.rb"
 load "public/scene_model.rb"
 
@@ -52,16 +55,26 @@ module AresMUSH
 
       when "scene"
         case cmd.switch
-        when nil, "all"
+        when "all"
           return ScenesCmd
+        when nil
+          if (cmd.args)
+            return LogCmd
+          else
+            return ScenesCmd
+          end
         when "join"
           return SceneJoinCmd
         when "location", "privacy", "summary", "title", "type", "icdate"
           return SceneInfoCmd
+        when "delete"
+          return SceneDeleteCmd
         when "undo"
           return SceneUndoCmd
         when "replace"
           return SceneReplaceCmd
+        when "restart"
+          return SceneRestartCmd
         when "set"
           return SceneSetCmd
         when "start"

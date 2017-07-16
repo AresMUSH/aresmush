@@ -14,7 +14,9 @@ module AresMUSH
         old_events = {}
         if (self.last_events)
           self.last_events.each do |e|
-            old_events[e.title] = e.start_datetime_standard
+            if (e.start_datetime_standard > DateTime.now)
+              old_events[e.title] = e.start_datetime_standard
+            end
           end
         end
         

@@ -29,8 +29,8 @@ module AresMUSH
         end
 
         if (!scene.completed)
-          #client.emit_failure t('wikidot.only_completed_logs')
-          #return
+          client.emit_failure t('wikidot.only_completed_logs')
+          return
         end
         
         if (!scene.all_info_set?)
@@ -41,13 +41,14 @@ module AresMUSH
           return
         end
         
+        scene.update(shared:true)
         template =  LogTemplate.new(scene)
         content = template.render
         tags = Wikidot.log_tags(scene)
         
         title = Wikidot.log_page_title(scene)
         page_name = Wikidot.log_page_name(scene)        
-        client.emit_ooc t('wikidot.creating_page')
+        client.emit_ooc t('wikidot.creating_log_page')
 
         Global.dispatcher.spawn("Creating wiki log page", client) do
             

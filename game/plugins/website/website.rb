@@ -14,6 +14,7 @@ load 'web/controllers/bbs/bbs_read_post.rb'
 load 'web/controllers/bbs/bbs_reply.rb'
 
 load 'web/controllers/chars/chars.rb'
+load 'web/controllers/chars/edit_char.rb'
 
 load 'web/controllers/chargen/chargen.rb'
 load 'web/controllers/chargen/chargen_save.rb'
@@ -48,21 +49,18 @@ load 'web/controllers/mail/mail_message.rb'
 load 'web/controllers/mail/mail_reply.rb'
 load 'web/controllers/mail/mail_send.rb'
 
-load 'web/controllers/scenes/scene_add_participant.rb'
 load 'web/controllers/scenes/scene_add_pose.rb'
 load 'web/controllers/scenes/scene_create.rb'
-load 'web/controllers/scenes/scene_delete_participant.rb'
 load 'web/controllers/scenes/scene_edit_participants.rb'
-load 'web/controllers/scenes/scene_edit_pose.rb'
+load 'web/controllers/scenes/scene_edit_related.rb'
 load 'web/controllers/scenes/scene_edit.rb'
-load 'web/controllers/scenes/scene_pose_delete.rb'
-load 'web/controllers/scenes/scene_pose_move.rb'
 load 'web/controllers/scenes/scenes.rb'
 
 
 load 'web/controllers/session.rb'
 load 'web/controllers/web.rb'
 load 'web/controllers/formatters.rb'
+load 'web/controllers/files.rb'
 
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'

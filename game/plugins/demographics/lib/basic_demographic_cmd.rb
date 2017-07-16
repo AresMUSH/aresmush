@@ -9,7 +9,7 @@ module AresMUSH
       def parse_args
         # Admin version
         if (cmd.args =~ /\//)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
           
           self.property = downcase_arg(args.arg2)
 
@@ -27,7 +27,7 @@ module AresMUSH
             
         # Self version
         else
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
           self.name = enactor.name
           self.property = downcase_arg(args.arg1)
           self.value = titlecase_arg(args.arg2)
@@ -36,7 +36,7 @@ module AresMUSH
       
       def required_args
         {
-          args: [ self.name, self.property, self.value ],
+          args: [ self.name, self.property ],
           help: 'demographics'
         }
       end

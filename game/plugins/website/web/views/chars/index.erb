@@ -1,47 +1,28 @@
 <h1>Characters</h1>
 
-
-
 <ul class="nav nav-tabs">
   
-  <% @factions.each_with_index do |(faction, faction_chars), i| %>
-      <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= faction.gsub(/ /, '')  %>"><%= faction %></a></li>
+  <% @groups.each_with_index do |(group, group_data), i| %>
+      <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= group.parameterize('_')  %>"><%= group %></a></li>
   <% end %>
 </ul>
 
 <div class="tab-content">
   
-  <% @factions.each_with_index do |(faction, faction_chars), i| %>
+  <% @groups.each_with_index do |(group, group_data), i| %>
 
-  <div id="<%= faction.gsub(/ /, '')  %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
+  <div id="<%= group.parameterize('_') %>" class="tab-pane fade in <%= 'active' if i == 0 %>">
     
-    <% faction_chars.group_by { |c| c.group('Position') }.sort.each do |position, chars| %>
+    <% if @npcs[group] && @npcs[group].any? %>
+        <%= erb :"chars/group_list", :locals => { chars: @npcs[group], title: "NPCs" } %>
+    <% end %>
+    
+    <% subgroup_chars(group_data).each do |subgroup, chars| %>
   
-       <div>
-
-          <h3><%= position %></h3>
-         
-          <% chars.sort_by { |c| c.name }.each do |c| %>
-    
-          <div class="profile-gallery">
-              <% if c.icon %>
-               <a href="/char/<%= c.id %>">
-                <img class="log-icon" src="<%= c.icon %>" 
-                   title="<%= c.name %> - <%= c.group('Position') %>" />
-               </a>
-               <% else %>
-               <a href="/char/<%= c.id %>"><%= c.name %></a>
-               <% end %>
-          </div>
-          <% end %>
-      
-       </div>
-
-     <div class="clearfix"> </div>
-     <% end %>
-     
-     
+          <%= erb :"chars/group_list", :locals => { chars: chars, title: subgroup } %>
         
+     <% end %>
+             
   </div>
   <% end %>
 </div>
