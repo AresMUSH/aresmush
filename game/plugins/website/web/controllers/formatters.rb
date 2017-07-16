@@ -38,7 +38,7 @@ module AresMUSH
         allow_html = Global.read_config('website', 'allow_html_in_markdown')
         renderer = Redcarpet::Render::HTML.new(escape_html: !allow_html, hard_wrap: true, 
               autolink: true, safe_links_only: true)    
-        html = Redcarpet::Markdown.new(renderer)
+        html = Redcarpet::Markdown.new(renderer, tables: true)
         text = AresMUSH::ClientFormatter.format output, false
         text = html.render text
         text = text.gsub(/\&quot\;/i, '"')

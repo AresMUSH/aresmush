@@ -1,4 +1,4 @@
-<h1>Edit Scene</h1>
+<h1>Edit Scene <%= @scene.id %></h1>
 
     <form method="POST" action="/scene/<%= @scene.id %>/edit">
         
@@ -38,8 +38,11 @@
     <textarea name="summary" rows="5" cols="100"><%= format_input_for_html(@scene.summary) %></textarea>
     </p>
 
+    <div class="hint">Edit participants and related scenes back on the scene page.</div>
+    <br/>
+    
     <p>
-    <textarea name="log" rows="25" cols="100"><%= format_input_for_html(@scene.log) %></textarea>
+    <textarea name="log" rows="25" cols="125"><%= format_input_for_html(@scene.log) %></textarea>
     </p>
 
 

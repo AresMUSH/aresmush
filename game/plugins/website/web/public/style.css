@@ -365,10 +365,10 @@ GENERAL UTILITIES
 }
 
 .hint { 
-    color: #888;
+    color: #995800;
     font-style: italic;
-    font-size: 0.9em;
-    padding-left: 5px;
+    font-weight: bold;
+    padding-left: 10px;
 }
 
 /* -------------------------
