@@ -6,7 +6,10 @@ module AresMUSH
     
     
   Scene.all.each do |s|
-    s.update(log: Scenes.convert_to_log(s))
+    if (s.shared)
+      log = SceneLog.create(scene: s, log: Scenes.convert_to_log(s))
+      s.update(scene_log: log)
+    end    
   end
 
   Character.all.each do |c| 

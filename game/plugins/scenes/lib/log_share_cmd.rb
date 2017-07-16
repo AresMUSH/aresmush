@@ -44,7 +44,14 @@ module AresMUSH
           end
           
           scene.update(shared: self.share)
-          Scenes.convert_to_log(scene)
+          
+          log = Scenes.convert_to_log(scene)
+          if (scene.scene_log)
+            scene.scene_log.update(log: log)
+          else
+            scene_log = SceneLog.create(scene: scene, log: log)
+            scene.update(scene_log: scene_log)
+          end
           
           message = self.share ? t('scenes.log_shared', :name => enactor_name) : 
               t('scenes.log_unshared', :name => enactor_name)
