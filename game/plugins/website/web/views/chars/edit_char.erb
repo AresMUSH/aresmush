@@ -31,24 +31,84 @@
         <p/>
     <% @char.profile.each_with_index do |(section, data), i| %>
     
-    <p>
-    <input type="text" name="profiletitle-<%=i%>" size="100" value="<%= section %>"/>
-    </p>
-    <p>
-    <textarea name="profile-<%=i%>" rows="5" cols="100"><%= format_input_for_html(data) %></textarea>
-    </p>
-    
+    <div class="panel panel-info">
+        <div class="panel-body">
+            
+        <p>
+        <label for="profiletitle-<%=i%>" class="col-xs-2 col-form-label">Title:</label> 
+        <input type="text" name="profiletitle-<%=i%>" size="50" value="<%= section %>"/>
+        </p>
+        <p>
+        <textarea name="profile-<%=i%>" rows="5" cols="100"><%= format_input_for_html(data) %></textarea>
+        </p>
+        </div>
+    </div>
     <% end %>
     
-    <h2>Add New Section</h2>
-    <div class="hint">You can edit the page multiple times, adding one new section each time.</div>
-        <p/>
-    <p>
-    <input type="text" name="profiletitle-new" size="100" value=""/>
-    </p>
-    <p>
-    <textarea name="profile-new" rows="5" cols="100"></textarea>
-    </p>
+    <div class="panel panel-info">
+        <div class="panel-body">
+    
+        <p>
+            <label for="profiletitle-new" class="col-xs-2 col-form-label">New Section Title:</label>         
+        
+        <input type="text" name="profiletitle-new" size="50" value=""/>
+    
+        <div class="hint">If you want to add more than one new section, you'll need to edit and save the page multiple times.</div>
+    
+        </p>
+        <p>
+        <textarea name="profile-new" rows="5" cols="100"></textarea>
+        </p>
+     </div>
+ </div>   
+    
+    <h2>Relationships</h2>
+    
+    
+    <% @char.relationships.each_with_index do |(name, data), i| %>
+    
+    <div class="panel panel-info">
+        <div class="panel-body">
+        <p>
+        <label for="relationname-<%=i%>" class="col-xs-2 col-form-label">Name:</label> 
+        <input type="text" name="relationname-<%=i%>" size="50" value="<%= name %>"/>
+        </p>
+        <p>
+        <label for="relationcat-<%=i%>" class="col-xs-2 col-form-label">Category:</label>     
+        <input type="text" name="relationcat-<%=i%>" size="50" value="<%= data['category'] %>"/>
+        </p>
+        <p>
+        <textarea name="relationdetail-<%=i%>" rows="5" cols="100"><%= format_input_for_html data['relationship'] %></textarea>
+    
+        </p>
+        </div>
+    </div>
+
+    
+    <% end %>
+
+    <div class="panel panel-info">
+        <div class="panel-body">    
+       <p>
+           <label for="relationname-new" class="col-xs-2 col-form-label">Name:</label>         
+       
+       <input type="text" name="relationname-new" size="50" value=""/>
+      
+       </p>
+       <p>
+       <label for="relationcat-new" class="col-xs-2 col-form-label">Category:</label>     
+       <input type="text" name="relationcat-new" size="50" value=""/>
+   
+       <div class="hint">If you want to add more than one new relationship, you'll need to edit and save the page multiple times.
+       </div>
+       </p>
+   
+       <p>
+       <textarea name="relationdetail-new" rows="5" cols="100"></textarea>
+   
+       </p>
+        </div>
+    </div> 
     
     <p> <a href="/char/<%= @char.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
     

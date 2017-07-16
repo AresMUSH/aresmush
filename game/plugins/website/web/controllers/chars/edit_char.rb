@@ -30,16 +30,21 @@ module AresMUSH
             
       demographics = {}
       profile = {}
+      relationships = {}
       
       params.each do |k, v|
         if (k.start_with?('profiletitle-') && !v.blank?)
           name = k.after('-')
           profile[v] = params["profile-#{name}"]
-        end
-        
-        if (k.start_with?('demo-'))
+        elsif (k.start_with?('demo-'))
           name = k.after('-')
           demographics[name] = v
+        elsif (k.start_with?('relationname-') && !v.blank?)
+          name = k.after('-')
+          relationships[v] = { 
+            'category' => params["relationcat-#{name}"],
+            'relationship' => params["relationdetail-#{name}"]
+          }
         end
       end
       
@@ -48,7 +53,7 @@ module AresMUSH
       end
       
       @char.update(profile: profile)
-      
+      @char.update(relationships: relationships)
       
       flash[:info] = "Character updated!"
       redirect "/char/#{id}"
