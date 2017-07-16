@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def players
-        @scene.auto_participants.map { |p| p.name }.join(",")
+        @scene.participants.map { |p| p.name }.join(",")
       end
       
       def log_footer

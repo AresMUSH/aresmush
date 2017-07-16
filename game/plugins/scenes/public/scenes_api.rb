@@ -4,6 +4,9 @@ module AresMUSH
     def self.add_pose(scene, pose, character = Game.master.system_character, is_setpose = nil)
       return if !scene.logging_enabled
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose)
+      if (!scene_pose.is_gm_pose? && !scene_pose.is_system_pose?)
+        scene.participants.add character
+      end
     end
     
     def self.can_manage_scene?(actor, scene)
@@ -21,8 +24,7 @@ module AresMUSH
       return !scene.is_private? if !actor
       return true if Scenes.can_manage_scene?(actor, scene)
       return true if !scene.is_private?
-      return true if scene.participants.include?(actor)
-      return scene.auto_participants.include?(actor)
+      scene.participants.include?(actor)
     end
     
     
@@ -47,12 +49,8 @@ module AresMUSH
         scene.update(room: nil)
       end
       
-      scene.auto_participants.each do |p|
-        scene.participants.add p
-      end
-      
       if (!scene.private_scene)
-        scene.update(shared: true)
+        Scenes.share_scene(scene)
       end
       scene.update(completed: true)
       scene.update(date_completed: DateTime.now)

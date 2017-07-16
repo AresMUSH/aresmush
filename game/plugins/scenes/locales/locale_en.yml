@@ -63,9 +63,9 @@ en:
         scene_info_missing: "You can't share the log until all the scene info is set.  Title: %{title}, Location: %{location}, Type: %{type}, Summary: %{summary}."
         
         cant_delete_in_progress_scene: "You can't delete a scene that's in progress.  Stop it first."
-        cant_delete_shared_scene: "You can't delete a scene that has been shared to the web portal.  Unshare it first - but then nobody will be able to read it any more."
+        cant_delete_shared_scene: "You can't delete a scene that has been shared to the web portal.  Unshare it first.  You will also need to delete it from the wiki manually (if it was posted there too)."
         scene_deleted: "Scene deleted."
         
         cant_restart_in_progress_scene: "You can't restart a scene that's already going."
-        cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
+        cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first.  You will have to re-do any fixes that were made on the web portal and re-sync the page to the wiki (if it was posted there too)."
         scene_restarted: "Scene restarted."
