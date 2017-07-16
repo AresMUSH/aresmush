@@ -49,7 +49,6 @@ module AresMUSH
         #text = text.gsub(/\[\[div\]\]/i, '<div>')
         text = text.gsub(/\[\[\/div\]\]/i, "</div>")
         text = text.gsub(/\[\[\/span\]\]/i, "</span>")
-        text = text.gsub(/%r/i, "<br/>")
         text
       end
       

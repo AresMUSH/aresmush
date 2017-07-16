@@ -31,12 +31,14 @@ module AresMUSH
     def self.convert_to_log(scene)
       log = ""
       scene.scene_poses.each do |pose|
+      formatted_pose = pose.pose || ""
+      formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
         if (pose.is_system_pose?)
-          log << "[[div class=\"scene-system-pose\"]]#{pose.pose}[[/div]]"
+          log << "[[div class=\"scene-system-pose\"]]#{formatted_pose}[[/div]]"
         elsif (pose.is_setpose?)
-          log << "[[div class=\"scene-set-pose\"]]#{pose.pose}[[/div]]"
+          log << "[[div class=\"scene-set-pose\"]]#{formatted_pose}[[/div]]"
         else
-          log << pose.pose
+          log << formatted_pose
         end
         log << "\n\n"
       end
