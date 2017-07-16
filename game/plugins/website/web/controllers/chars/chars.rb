@@ -13,6 +13,10 @@ module AresMUSH
       def can_manage_char?(char)
         @user && (@user == char || @user.is_admin?)
       end
+      
+      def profile_image_url(char)
+        !char.profile_image.blank? ? "/files/#{char.profile_image}" : char.icon
+      end
     end
     
     get '/chars' do

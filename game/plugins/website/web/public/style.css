@@ -517,6 +517,7 @@ CHARACTERS SCREEN
 .profile-gallery {
     float: left;
     padding: 10px;
+    width: 150px;
 }
 
 .profile-box { 

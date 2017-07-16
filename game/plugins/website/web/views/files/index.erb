@@ -1,0 +1,16 @@
+<h1>Files</h1>
+
+<% @files.each do |file| %>
+<p><a href="/files/<%= File.basename(file) %>"><%= File.basename(file) %></a> 
+    <%= file_size_kb(file) %>kB 
+    <a href="/file/delete?file=<%= file %>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+</p>
+<% end %>
+
+<hr/>
+
+<% if is_approved? %>
+  <div class="pull-right">
+      <a href="/files/upload" class="btn btn-primary">Upload New</a>
+  </div>
+<% end %>

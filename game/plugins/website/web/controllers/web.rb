@@ -45,6 +45,5 @@ module AresMUSH
     get "/play" do
       erb :"play"
     end
-    
   end
 end

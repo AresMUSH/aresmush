@@ -3,6 +3,21 @@
 <form method="POST" action="/char/<%= @char.id %>/edit">
     
     <p>
+    <label for="profileimage" class="col-xs-2 col-form-label">Profile Image:</label>
+   
+    <div>
+    <select name="profileimage">
+        <option value=""></option>
+      <% uploaded_file_names.each do |f| %>
+          <option value="<%= f %>" <%= "selected" if @char.profile_image == f %>><%= f %></option>
+      <% end %>
+     </select>
+      <div class="hint">Upload new files <a href="/files" target="blank">here</a>.</div>
+      </div>
+  
+    </p>
+    
+    <p>
     <label for="demo-fullname" class="col-xs-2 col-form-label">Full Name:</label>
     
     <input type="text" name="demo-fullname" size="100" value="<%= @char.demographic('fullname') %>"/>
@@ -109,6 +124,15 @@
        </p>
         </div>
     </div> 
+    
+    
+    <h2>Gallery</h2>
+    <div class="hint">Enter filenames from <a href="/files" target="blank">here</a>, one per line.</div>
+    <p>
+    <textarea name="gallery" rows="5" cols="50"><%= @char.profile_gallery %></textarea>
+
+    </p>
+    
     
     <p> <a href="/char/<%= @char.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
     

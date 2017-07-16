@@ -60,6 +60,7 @@ load 'web/controllers/scenes/scenes.rb'
 load 'web/controllers/session.rb'
 load 'web/controllers/web.rb'
 load 'web/controllers/formatters.rb'
+load 'web/controllers/files.rb'
 
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'

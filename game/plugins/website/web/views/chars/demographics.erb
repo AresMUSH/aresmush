@@ -1,5 +1,7 @@
     <div class="col-sm-3">
-            <img src="<%= @char.icon %> " class="profile-image"/>
+            <a href="<%= profile_image_url(@char) %>">
+                <img src="<%= profile_image_url(@char) %> " class="profile-image"/>
+            </a>
     </div>
 
     <div class="col-sm-1">

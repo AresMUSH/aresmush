@@ -54,6 +54,8 @@ module AresMUSH
       
       @char.update(profile: profile)
       @char.update(relationships: relationships)
+      @char.update(profile_image: params[:profileimage])
+      @char.update(profile_gallery: params[:gallery])
       
       flash[:info] = "Character updated!"
       redirect "/char/#{id}"
