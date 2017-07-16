@@ -39,16 +39,16 @@ module AresMUSH
             badge = "None"
           end
           message = "Qualification Results - #{model.name} - #{self.skill}: \n\nAttempt 1: #{a1[:results]}\nAttempt 2: #{a2[:results]} \nAttempt 3: #{a3[:results]}\n\nFinal Score: #{total}\n\nBadge: #{badge}"
-          template = BorderedDisplayTemplate.new message
+          template = BorderedDisplayTemplate.new message, nil, "%R%ld%RNote: Only qualifications run by staff count for awards."
           enactor_room.emit template.render
         end
       end
       
       def score_attempt(char)
-        base = FS3Skills::Api.ability_rating(char, self.skill) * 10
-        r1 = FS3Skills::Api.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
-        r2 = FS3Skills::Api.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
-        r3 = FS3Skills::Api.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
+        base = FS3Skills.ability_rating(char, self.skill) * 10
+        r1 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
+        r2 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
+        r3 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
         
         score = base + roll_points(r1) + roll_points(r2) + roll_points(r3)
         score = [ 100, score ].min
