@@ -6,60 +6,36 @@
 </div>
 
 
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
-  <li><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
-  <li><a data-toggle="tab" href="#sheet">Sheet</a></li>
-  <li><a data-toggle="tab" href="#damage">Damage</a></li>
-</ul>
-
-<div class="tab-content">
-  <div id="systeminfo" class="tab-pane fade in active">
-      <div class="tab-cover">System Information</div>
-  </div>
-        
-  <div id="hooks" class="tab-pane fade">
-      
-      <p>
-          
-                <ul>
-                <% @char.fs3_hooks.each do |h| %>
-                <li><b><%= h.name %></b> - <%= h.description %></li>
-                <% end %>
-                </ul>
-                
-     </p>
-  </div>
-  
-  
-  <div id="sheet" class="tab-pane fade">
-
-          <%= erb :"chars/fs3_sheet" %></p>
-          
-      
-  </div>
-  <div id="damage" class="tab-pane fade">
-
-      <%= erb :"chars/fs3_damage" %></p>
-      
-
-  </div>
+<div class="profile-tab">
+        <%= erb :"chars/profile" %></p>
 </div>
 
-<div class="row">
-    <div class="col">
-        &nbsp;
-    </div>
+
+<div class="profile-tab">
+
+        <%= erb :"chars/system_info" %></p>
 </div>
+
+
+<div class="profile-tab">
 
  <%= erb :"chars/relationships", :locals => { categories: AresMUSH::Profile.relationships_by_category(@char) } %></p>
  
- 
- <div class="row">
-     <div class="col">
-         &nbsp;
-     </div>
  </div>
  
-        <%= erb :"chars/logs" %></p>
+ <div class="profile-tab">
+ 
+    <%= erb :"chars/logs" %></p>
+
+ </div>
   
+  
+    
+
+  <% if can_manage_char?(@char) %>
+
+  <div class="pull-right">
+      <a href="/char/<%= @char.id %>/edit" class="btn btn-primary">Edit</a>
+  </div>
+
+  <% end %>

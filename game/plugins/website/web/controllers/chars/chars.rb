@@ -9,6 +9,10 @@ module AresMUSH
       def char_scenes_by_type(char, type)
         char.scenes_starring.select { |s| s.scene_type == type}
       end
+      
+      def can_manage_char?(char)
+        @user && (@user == char || @user.is_admin?)
+      end
     end
     
     get '/chars' do

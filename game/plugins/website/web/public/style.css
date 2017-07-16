@@ -583,3 +583,8 @@ ul.char-ability-list {
     font-variant: small-caps;
     text-align: center;
 }
+
+.profile-tab { 
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

@@ -1,0 +1,56 @@
+<h1>Edit <%= @char.name %></h1>
+
+<form method="POST" action="/char/<%= @char.id %>/edit">
+    
+    <p>
+    <label for="demo-fullname" class="col-xs-2 col-form-label">Full Name:</label>
+    
+    <input type="text" name="demo-fullname" size="100" value="<%= @char.demographic('fullname') %>"/>
+    </p>
+
+    <p>
+    <label for="demo-callsign" class="col-xs-2 col-form-label">Callsign:</label>
+    
+    <input type="text" name="demo-callsign" size="100" value="<%= @char.demographic('callsign') %>"/>
+    </p>
+    
+    <p>
+    <label for="demo-hair" class="col-xs-2 col-form-label">Hair:</label>
+    
+    <input type="text" name="demo-hair" size="100" value="<%= @char.demographic('hair') %>"/>
+    </p>
+    
+    <p>
+    <label for="demo-eyes" class="col-xs-2 col-form-label">Eyes:</label>
+    
+    <input type="text" name="demo-eyes" size="100" value="<%= @char.demographic('eyes') %>"/>
+    </p>
+    
+    <h2>Profile Sections</h2>
+    <div class="hint">To delete a section, just leave its title blank.</div>
+        <p/>
+    <% @char.profile.each_with_index do |(section, data), i| %>
+    
+    <p>
+    <input type="text" name="profiletitle-<%=i%>" size="100" value="<%= section %>"/>
+    </p>
+    <p>
+    <textarea name="profile-<%=i%>" rows="5" cols="100"><%= format_input_for_html(data) %></textarea>
+    </p>
+    
+    <% end %>
+    
+    <h2>Add New Section</h2>
+    <div class="hint">You can edit the page multiple times, adding one new section each time.</div>
+        <p/>
+    <p>
+    <input type="text" name="profiletitle-new" size="100" value=""/>
+    </p>
+    <p>
+    <textarea name="profile-new" rows="5" cols="100"></textarea>
+    </p>
+    
+    <p> <a href="/char/<%= @char.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
+    
+</form>
+

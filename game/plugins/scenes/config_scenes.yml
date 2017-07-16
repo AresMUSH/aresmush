@@ -30,6 +30,7 @@ scenes:
         "log/off": "scene/stoplog"
         "log/clear": "scene/clearlog"
         "log/undo" : "scene/undo"
+        "scene/emit" : "emit/set"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"

@@ -19,7 +19,7 @@ You can control several properties about the scene.  These are used for [Scene L
 * IC Date - When it happened.  (defaults to the date when the scene started)
 * Scene Set - (Optional) A temporary description added to the base room desc.
 
-> **Tip:** Scene sets on empty rooms will be cleared periodically.
+> **Tip:** You can also use scene/emit to emit a highlighted set pose that isn't saved to the room desc.  Scene sets on empty rooms will be cleared periodically.
 
 You can see the current scene info by typing `scene <#>.`
 

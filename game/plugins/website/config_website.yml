@@ -2,3 +2,5 @@ website:
     website_tagline: "The First Battlestar"
     
     website_welcome: "BSG: Unification MUSH is set during the First Cylon War, 50 years prior to the series. William Adama is still a teenager, the 12 colonies of Kobol have only just recently united under a common banner, and the humans are losing the war."
+    
+    allow_html_in_markdown: true

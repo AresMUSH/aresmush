@@ -1,0 +1,39 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
+  <li><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
+  <li><a data-toggle="tab" href="#sheet">Sheet</a></li>
+  <li><a data-toggle="tab" href="#damage">Damage</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="systeminfo" class="tab-pane fade in active">
+      <div class="tab-cover">System Information</div>
+  </div>
+        
+  <div id="hooks" class="tab-pane fade">
+      
+      <p>
+          
+                <ul>
+                <% @char.fs3_hooks.each do |h| %>
+                <li><b><%= h.name %></b> - <%= h.description %></li>
+                <% end %>
+                </ul>
+                
+     </p>
+  </div>
+  
+  
+  <div id="sheet" class="tab-pane fade">
+
+          <%= erb :"chars/fs3_sheet" %></p>
+          
+      
+  </div>
+  <div id="damage" class="tab-pane fade">
+
+      <%= erb :"chars/fs3_damage" %></p>
+      
+
+  </div>
+</div>
