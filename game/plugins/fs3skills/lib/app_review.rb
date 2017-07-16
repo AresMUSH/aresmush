@@ -13,21 +13,17 @@ module AresMUSH
       too_high = []
       message = t('fs3skills.ability_ratings_check')
 
-      error = FS3Skills.check_high_abilities(char.fs3_action_skills, 5, 
-        'max_skills_above_4', 'fs3skills.action_skills_above')
-      too_high << error if error
+      max_skills = Global.read_config('fs3skills', 'max_skills_at_or_above')
+      max_skills.each do |rating, limit|
+        error = FS3Skills.check_high_abilities(char.fs3_action_skills, rating, limit, 'fs3skills.action_skills_above')
+        too_high << error if error
+      end
       
-      error = FS3Skills.check_high_abilities(char.fs3_action_skills, 7, 
-         'max_skills_above_6', 'fs3skills.action_skills_above')
-      too_high << error if error
-
-      error = FS3Skills.check_high_abilities(char.fs3_attributes, 4, 
-         'max_attr_above_3', 'fs3skills.attributes_above')
-      too_high << error if error
-      
-      error = FS3Skills.check_high_abilities(char.fs3_attributes, 5, 
-         'max_attr_above_4', 'fs3skills.attributes_above')
-      too_high << error if error
+      max_attrs = Global.read_config('fs3skills', 'max_attrs_at_or_above')
+      max_attrs.each do |rating, limit|
+        error = FS3Skills.check_high_abilities(char.fs3_attributes, rating, limit, 'fs3skills.attributes_above')
+        too_high << error if error
+      end      
 
       error = FS3Skills.check_attr_points(char)
       too_high << error if error
@@ -128,12 +124,11 @@ module AresMUSH
       end
     end
     
-    def self.check_high_abilities(abilities, high_rating, max_config_option_name, prompt)
+    def self.check_high_abilities(abilities, top_rating, num_abiliies_max, prompt)
       ratings = abilities.map { |a| a.rating }
-      count = ratings.inject(0) { |count, a| count + (a >= high_rating ? 1 : 0) }
-      max = Global.read_config("fs3skills", max_config_option_name)
-      if (count > max)
-        prompt = t(prompt, :num => count, :max => max, :high_rating => high_rating)
+      count = ratings.inject(0) { |count, a| count + (a >= top_rating ? 1 : 0) }
+      if (count > num_abiliies_max)
+        prompt = t(prompt, :num => count, :max => num_abiliies_max, :high_rating => top_rating)
         return prompt
       else
         return nil

@@ -79,6 +79,15 @@ module AresMUSH
         cracked[:switch].should eq "sw"
         cracked[:args].should eq nil        
       end
+      
+      it "should be able to crack a root with page after the switch xxx" do
+        cracked = CommandCracker.crack("test/sw2")
+        cracked[:prefix].should eq nil
+        cracked[:root].should eq "test"
+        cracked[:page].should eq 2
+        cracked[:switch].should eq "sw"
+        cracked[:args].should eq nil        
+      end
 
       it "should be able to crack a root followed by a slash and switch and arg" do
         cracked = CommandCracker.crack("test/sw arg")

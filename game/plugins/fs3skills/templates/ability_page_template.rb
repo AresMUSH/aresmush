@@ -10,8 +10,10 @@ module AresMUSH
         super File.dirname(__FILE__) + file
       end
       
-      def page_marker
-        t('pages.page_x_of_y', :x => @data[:page], :y => @data[:num_pages])
+      def page_footer
+        footer = t('pages.page_x_of_y', :x => @data[:page], :y => @data[:num_pages])
+        template = PageFooterTemplate.new(footer)
+        template.render
       end
     end
   end

@@ -1,0 +1,37 @@
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#relationshipindex">+</a></li>
+    <% categories.each do |category, relations| %>
+    <li><a data-toggle="tab" href="#<%= category.parameterize('_') %>"><%= category %></a></li>
+    <% end %>
+</ul>
+
+
+<div class="tab-content">
+
+  <div id="relationshipindex" class="tab-pane fade in active">
+      <div class="tab-cover">Relationships</div>
+  </div>
+  
+  <% categories.each do |category, relations| %>
+
+  <div id="<%= category.parameterize('_') %>" class="tab-pane fade">
+    
+    <% relations.sort.each do |name, data| %>
+        
+        <div class="row relationship-row">
+            <div class="col col-xs-2">
+                <a href="/char/<%= name %>"><img src="<%= icon_for_name(name) %>" class="relationship-image"/></a>
+            </div>
+            
+            <div class="col col-xs-10 ansi">
+                <i><%= name %></i>
+                <%= format_markdown_for_html data['relationship'] %>
+            </div>
+        </div>
+        
+     <% end %>
+             
+  </div>
+  <% end %>
+</div>

@@ -257,7 +257,7 @@ module AresMUSH
       end
       
       roll = rand(100) 
-      result = roll > cover_chance
+      result = roll < cover_chance
             
       combatant.log "Determined cover: net=#{attacker_net_successes}" +
             " chance=#{cover_chance} roll=#{roll} result=#{result}"

@@ -28,14 +28,9 @@ module AresMUSH
     end
     
     def line_with_text(text)
-      padding = "-"
-      left_spacer = " ["
-      right_spacer = "] "
-      
-      str = "#{left_spacer}#{text}#{right_spacer}"
-      "%x!#{left('', 5, padding)}" +
-         "#{left(str, 25, padding)}" +
-         "#{right('', 48, padding)}%xn"
+      # This template is defined in the utils plugin so it can be customized.
+      template = LineWithTextTemplate.new(text)
+      template.render
     end
     
     # This works with Erubis templates; now depracated.

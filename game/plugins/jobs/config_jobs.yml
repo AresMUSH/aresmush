@@ -33,6 +33,7 @@ jobs:
 
         "jobs": "job"
         "requests": "request"
+        "request/comment" : "request/respond"
         "job/comment": "job/discuss"
         "job/submit" : "job/create"
         "job/reply" : "job/respond"

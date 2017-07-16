@@ -1,0 +1,10 @@
+<%= header %>
+<% categories.each do |category, relations| %>
+%xh%x!<%= category %>%xn
+<%= divider %>
+<% relations.sort.each do |name, data| %>
+%xh<%= name %>:%xn <%= data['relationship'] %>
+
+<% end %>
+<% end %>
+<%= footer %>

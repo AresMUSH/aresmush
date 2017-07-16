@@ -14,6 +14,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 ## Quick Reference - Common Commands
 
 `scenes` - Lists scenes.
+`scene <#>` - Sees scene info.
 `scene/start` - Starts a scene in your current room.
 `scene/start <location name>=<private/public>` - Starts a scene in a temp room.
 `scene/join <#>` - Joins a public scene.

@@ -1,0 +1,26 @@
+<h1>Edit Related Scenes</h1>
+
+   <% @scene.related_scenes.each do |s| %>
+   <p><%= s.date_title %>  <a href="/scene/<%= @scene.id %>/related/delete/<%= s.id %>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+   
+   </p>
+   <% end %>
+
+    <form method="POST" action="/scene/<%= @scene.id %>/related/add">
+       
+        <select name="scene">
+          <% @available_scenes.each do |s| %>
+          <% if !@scene.related_scenes.include?(s) %>
+              <option value="<%= s.id %>"><%= s.date_title %></option>
+          <% end %>
+          <% end %>
+         
+        <p><input type="submit" value="Add New"></p>
+        
+    </form>
+    
+    
+    <p>
+        <a href="/scene/<%= @scene.id %>" class="btn btn-primary">Return to Scene</a>
+    </p>
+    

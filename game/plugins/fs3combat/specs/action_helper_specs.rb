@@ -383,11 +383,21 @@ module AresMUSH
           FS3Combat.stopped_by_cover?(3, @combatant).should be false
         end
         
-        it "should adjust percent chance of cover based on attack roll" do
-          FS3Combat.stub(:rand) { 26 }
-          FS3Combat.stopped_by_cover?(2, @combatant).should be true
-          FS3Combat.stopped_by_cover?(1, @combatant).should be false
+        it "should have 50% cover for a marginal attack roll" do
+          FS3Combat.stub(:rand) { 51 }
           FS3Combat.stopped_by_cover?(0, @combatant).should be false
+          FS3Combat.stopped_by_cover?(1, @combatant).should be false
+          FS3Combat.stub(:rand) { 49 }
+          FS3Combat.stopped_by_cover?(0, @combatant).should be true
+          FS3Combat.stopped_by_cover?(1, @combatant).should be true
+        end
+        
+        it "should have 25% cover for a decent attack roll" do
+
+          FS3Combat.stub(:rand) { 26 }
+          FS3Combat.stopped_by_cover?(2, @combatant).should be false
+          FS3Combat.stub(:rand) { 24 }
+          FS3Combat.stopped_by_cover?(2, @combatant).should be true
         end
       end
       

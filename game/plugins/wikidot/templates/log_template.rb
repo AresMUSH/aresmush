@@ -10,11 +10,11 @@ module AresMUSH
       end
       
       def summary
-        @scene.summary || "TODO: Summary goes here."
+        @scene.summary
       end
       
       def location
-        @scene.location || "TODO: Location" 
+        @scene.location
       end
       
       def format_pose(scene_pose)
@@ -24,7 +24,8 @@ module AresMUSH
         if (scene_pose.is_system_pose?)
           return decolorized.split(/[\r\n]/).map { |d| "[[span class=\"system\"]]//#{d}//[[/span]]" }.join("\n")
         elsif (scene_pose.is_setpose?)
-          return decolorized.split(/[\r\n]/).join("\n> ")
+          decolorized = decolorized.split(/[\r\n]/).join("\n> ")
+          return "> #{decolorized}"
         else
           return decolorized
         end

@@ -4,6 +4,6 @@
 <% @paginator.page_items.each do |l| %>
 <%= l %>
 <% end %>
-<%= line_with_text page_marker%>
+<%= @paginator.page_footer %>
 <%= "#{subfooter}%r" if subfooter -%>
 <%= footer %>

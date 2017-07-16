@@ -1,8 +1,14 @@
 scenes:
-    cron:
-     minute: 
+    room_cleanup_cron:
+        minute: 
          - 15
          - 45
+
+    unshared_scene_cleanup_cron:
+        hour: 
+            - 22
+        minute: 
+            - 02
     
     scene_types:
         - Social
@@ -24,6 +30,7 @@ scenes:
         "log/off": "scene/stoplog"
         "log/clear": "scene/clearlog"
         "log/undo" : "scene/undo"
+        "scene/emit" : "emit/set"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"

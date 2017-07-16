@@ -15,3 +15,4 @@ Each character has a **character profile** showing various information.  Any IC 
 
 [Managing Your Profile](/help/profile/manage)
 [Starting a Wiki Page](/help/profile/wiki)
+[Tracking IC Relationships](/help/profile/relationships)

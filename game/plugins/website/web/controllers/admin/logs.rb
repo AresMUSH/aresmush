@@ -9,6 +9,7 @@ module AresMUSH
     end
     
     get '/admin/log/:file', :auth => :admin do |file|
+      @name = file
       @lines = File.readlines(File.join(AresMUSH.game_path, "logs", file)).reverse
       erb :"admin/log"
     end

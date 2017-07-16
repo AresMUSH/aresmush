@@ -85,7 +85,7 @@ module AresMUSH
         @hooks["hook slot #{m+1}"] = ''
       end
       
-      erb :"chargen"
+      erb :"chargen/chargen"
     end
     
   end

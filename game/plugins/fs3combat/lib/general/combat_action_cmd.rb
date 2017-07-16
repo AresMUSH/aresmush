@@ -10,6 +10,9 @@ module AresMUSH
         if (cmd.args =~ /\=/)
           self.names = InputFormatter.titlecase_arg(cmd.args.before("="))
           self.action_args = cmd.args.after("=")
+        elsif (cmd.args && one_word_command)
+          self.names = InputFormatter.titlecase_arg(cmd.args)
+          self.action_args = ""
         else
           self.names = enactor.name
           self.action_args = cmd.args
@@ -18,6 +21,11 @@ module AresMUSH
         self.names = self.names ? self.names.split(/[ ,]/) : nil
         
         self.combat_command = cmd.switch ? cmd.switch.downcase : nil
+      end
+      
+      def one_word_command
+        switch = cmd.switch ? cmd.switch.downcase : nil
+        switch == "pass" || switch == "reload" || switch == "evade"
       end
       
       def check_can_act
