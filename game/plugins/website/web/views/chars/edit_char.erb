@@ -42,7 +42,7 @@
     </p>
     
     <h2>Profile Sections</h2>
-    <div class="hint">To delete a section, just leave its title blank.</div>
+    <div class="hint">To delete a section, just leave its title blank.  If you want to add more than one new section, you'll need to edit and save the page multiple times.  You can also edit profile files in the game (help profile).</div>
         <p/>
     <% @char.profile.each_with_index do |(section, data), i| %>
     
@@ -67,9 +67,7 @@
             <label for="profiletitle-new" class="col-xs-2 col-form-label">New Section Title:</label>         
         
         <input type="text" name="profiletitle-new" size="50" value=""/>
-    
-        <div class="hint">If you want to add more than one new section, you'll need to edit and save the page multiple times.</div>
-    
+        
         </p>
         <p>
         <textarea name="profile-new" rows="5" cols="100"></textarea>
@@ -79,6 +77,8 @@
     
     <h2>Relationships</h2>
     
+    <div class="hint">To delete a relationship, just leave the name blank.  If you want to add more than one new relationship, you'll need to edit and save the page multiple times.  You can also edit relationships in the game (help relationships).</div>
+    <p/>
     
     <% @char.relationships.each_with_index do |(name, data), i| %>
     
@@ -114,8 +114,6 @@
        <label for="relationcat-new" class="col-xs-2 col-form-label">Category:</label>     
        <input type="text" name="relationcat-new" size="50" value=""/>
    
-       <div class="hint">If you want to add more than one new relationship, you'll need to edit and save the page multiple times.
-       </div>
        </p>
    
        <p>
