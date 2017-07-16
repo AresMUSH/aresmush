@@ -32,6 +32,7 @@ module AresMUSH
     attribute :log
     
     collection :scene_poses, "AresMUSH::ScenePose"
+    reference :scene_log, "AresMUSH::SceneLog"
     
     set :participants, "AresMUSH::Character"
     
@@ -94,6 +95,13 @@ module AresMUSH
     end
   end
   
+  class SceneLog < Ohm::Model
+    include ObjectModel
+    
+    attribute :log
+    reference :scene, "AresMUSH::Scene"
+  end
+    
   class ScenePose < Ohm::Model
     include ObjectModel
 
