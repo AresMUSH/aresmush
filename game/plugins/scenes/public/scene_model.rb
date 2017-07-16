@@ -49,13 +49,7 @@ module AresMUSH
     def poses_in_order
       scene_poses.to_a.sort_by { |p| p.sort_order }
     end
-    
-    def auto_participants
-      scene_poses.select { |s| !s.is_system_pose? && !s.is_gm_pose? }
-          .map { |s| s.character }
-          .uniq { |c| c.id }
-    end
-    
+        
     def all_participant_names
       scene_poses.select { |s| !s.is_system_pose? }
           .map { |s| s.character.name }
@@ -64,6 +58,9 @@ module AresMUSH
     
     def delete_poses
       scene_poses.each { |p| p.delete }
+      if (self.scene_log)
+        self.scene_log.delete
+      end
     end
     
     def all_info_set?
