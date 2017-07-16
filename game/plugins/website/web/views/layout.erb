@@ -112,12 +112,11 @@
               <% if is_admin? %>
               <li><a href="/admin">Admin</a></li>
               <% end %>
-              <li><a href="<%= game_website %>">Main Site</a></li> 
+              <li><a href="<%= game_website %>">Wiki</a></li> 
             </ul>
         </nav>
+
     </div>
-    
-        
         <div class="body-wrap">
              
             <div class="row">
@@ -144,6 +143,9 @@
                 </div>
                    
                    <div class="col-md-3">    
+
+		     <%= erb :"search" %>
+
                        <div class="sidebar-box">
                            <div class="sidebar-heading">
                                <h2>Play on the Web <i class="fa fa-globe" aria-hidden="true"></i></h2>
