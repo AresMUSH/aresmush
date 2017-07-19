@@ -37,7 +37,7 @@ module AresMUSH
     end
     
     def self.log_tags(scene)
-      tags = scene.participants.map { |p| p.name }
+      tags = scene.participant_names
       tags << "log"
       tags << scene.scene_type
       tags

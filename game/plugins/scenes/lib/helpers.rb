@@ -28,18 +28,6 @@ module AresMUSH
       end
     end
     
-    def self.share_scene(scene)
-      scene.update(shared: true)
-      
-      log = Scenes.convert_to_log(scene)
-      if (scene.scene_log)
-        scene.scene_log.update(log: log)
-      else
-        scene_log = SceneLog.create(scene: scene, log: log)
-        scene.update(scene_log: scene_log)
-      end
-    end
-    
     def self.convert_to_log(scene)
       log = ""
       scene.scene_poses.each do |pose|

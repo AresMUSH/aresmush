@@ -24,7 +24,7 @@ BASIC CONTAINERS
 
 .header-wrap
 {
-    background: url('/background.png');
+    background: url('/images/background.png');
     height: 200px;   
     background-position: center; 
 }
@@ -184,6 +184,17 @@ pre code {
     -webkit-margin-end: 40px;
 }
 
+th {
+    background-color: #394252;
+    color: white;
+    padding: 8px;
+}
+
+td {
+   border-bottom: 1px solid #ccc;
+   padding: 8px;
+}
+
 /* -------------------------
 BOOTSTRAP OVERRIDES
 ------------------------- */
@@ -247,6 +258,7 @@ form.gsc-search-box {
     padding: 0px;
 }
 
+
 /* Fixes the search box icon */
 .cse .gsc-search-button input.gsc-search-button-v2,
     input.gsc-search-button-v2 {
@@ -262,6 +274,44 @@ input.gsc-input::placeholder {
     color: white;
 }
 
+table.gsc-search-box td {
+    vertical-align: top !important;
+    border: none;
+    padding: 3px;
+}
+
+
+/* --------------------------
+YOUTUBE MUSIC PLAYER
+---------------------------*/
+
+.musicplayer-button {
+    cursor:pointer;
+    border:none;
+    background:transparent;
+    outline:none;
+    display:inline;
+}
+
+.musicplayer-frame, .musicplayer-preload  {
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    visibility:hidden;
+    position:absolute;
+    display:inline
+}
+
+.musicplayer-wrap {
+    border-bottom: 1px solid #ddd;
+    margin: 5px;
+}
+
+.musicplayer-description {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
 
 /* -------------------------
 HEADER
@@ -523,7 +573,7 @@ SCENES SCREEN
     background-position:left top;
     background-size: stretch;
     background-repeat: no-repeat;
-    background-image:url('/box-bg.png');
+    background-image:url('/images/box-bg.png');
 }
 
 .log-participants-box {
@@ -579,7 +629,7 @@ CHARACTERS SCREEN
     background-position:left top;
     background-size: stretch;
     background-repeat: no-repeat;
-    background-image:url('/box-bg.png');
+    background-image:url('/images/box-bg.png');
 }
 
 ul.char-ability-list { 
@@ -609,4 +659,11 @@ ul.char-ability-list {
 .profile-tab { 
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 1.75em;
+  }
 }

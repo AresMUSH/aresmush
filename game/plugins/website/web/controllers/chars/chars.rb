@@ -46,5 +46,16 @@ module AresMUSH
       
       erb :"chars/char"
     end
+    
+    get '/char/:id/source' do |id|
+      @char = Character[id]
+      
+      if (!@char)
+        flash[:error] = "Character not found."
+        redirect '/chars'
+      end
+      
+      erb :"chars/source"
+    end
   end
 end

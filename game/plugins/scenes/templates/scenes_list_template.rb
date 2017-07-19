@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def characters(scene)
-        scene.participants.map{ |c| c.name }.join(", ")
+        scene.participant_names.join(", ")
       end
       
       def organizer(scene)

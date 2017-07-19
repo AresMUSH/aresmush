@@ -19,10 +19,10 @@ module AresMUSH
       
       def format_pose(scene_pose)
         colorized = ClientFormatter.format scene_pose.pose
-        decolorized = colorized.gsub(/\e\[(\d+)(;\d+)*m/, '')
+        decolorized = AnsiFormatter.strip_ansi colorized
           
         if (scene_pose.is_system_pose?)
-          return decolorized.split(/[\r\n]/).map { |d| "[[span class=\"system\"]]//#{d}//[[/span]]" }.join("\n")
+          return decolorized.split(/[\r\n]/).map { |d| "[[span class=\"system\"]]//#{d.strip}//[[/span]]" }.join("\n")
         elsif (scene_pose.is_setpose?)
           decolorized = decolorized.split(/[\r\n]/).join("\n> ")
           return "> #{decolorized}"

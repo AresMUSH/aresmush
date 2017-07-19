@@ -49,7 +49,6 @@ load 'web/controllers/mail/mail_message.rb'
 load 'web/controllers/mail/mail_reply.rb'
 load 'web/controllers/mail/mail_send.rb'
 
-load 'web/controllers/scenes/scene_add_pose.rb'
 load 'web/controllers/scenes/scene_create.rb'
 load 'web/controllers/scenes/scene_edit_participants.rb'
 load 'web/controllers/scenes/scene_edit_related.rb'

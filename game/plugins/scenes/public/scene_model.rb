@@ -17,6 +17,7 @@ module AresMUSH
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
     attribute :date_completed, :type => DataType::Date
+    attribute :date_shared, :type => DataType::Date
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean
@@ -81,6 +82,10 @@ module AresMUSH
       list1 = links1.map { |l| l.log2 }
       list2 = links2.map { |l| l.log1 }
       list1.concat(list2).uniq
+    end
+    
+    def participant_names
+      self.participants.sort { |p| p.name }.map { |p| p.name }
     end
     
     def find_link(other_scene)

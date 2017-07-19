@@ -10,7 +10,7 @@ module AresMUSH
         else
           icon = nil
         end
-        icon || "/noicon.png"
+        icon || "/images/noicon.png"
       end
 
       # Takes something from a text box and replaces carriage returns with %r's for MUSH.
@@ -29,14 +29,14 @@ module AresMUSH
       def format_output_for_html(output)
         return nil if !output
         text = AresMUSH::ClientFormatter.format output, false
-        text.strip.gsub(/[\r\n]/i, '<br/>')
+        text.strip.gsub(/[\r]/i, '<br/>')
       end
       
       def format_markdown_for_html(output)
         return nil if !output
         
         allow_html = Global.read_config('website', 'allow_html_in_markdown')
-        renderer = Redcarpet::Render::HTML.new(escape_html: !allow_html, hard_wrap: true, 
+        renderer = HTMLWithWikiItalics.new(escape_html: !allow_html, hard_wrap: true, 
               autolink: true, safe_links_only: true)    
         html = Redcarpet::Markdown.new(renderer, tables: true)
         text = AresMUSH::ClientFormatter.format output, false
@@ -45,11 +45,21 @@ module AresMUSH
         text = text.gsub(/\[\[div([^\]]*)\]\]/i, '<div \1>')
         text = text.gsub(/\[\[span([^\]]*)\]\]/i, '<span \1>')
         
+        text = text.gsub(/\[\[musicplayer ([^\]]*)\]\]/i) { music_player(Regexp.last_match[1]) }
+        
         #text = text.gsub(/\[\[div (class|style)=\&quot\;([^\]]*)\&quot\;\]\]/i, '<div \1="\2">')
         #text = text.gsub(/\[\[div\]\]/i, '<div>')
         text = text.gsub(/\[\[\/div\]\]/i, "</div>")
-        text = text.gsub(/\[\[\/span\]\]/i, "</span>")
+        text = text.gsub(/\[\[\/span\]\]/i, "</span>")        
         text
+      end
+
+      def music_player(input)
+        puts input.inspect
+        erb :"chars/music_player", :locals => { 
+            youtubecode: input.before(' '), 
+            description: input.after(' '),
+            id: SecureRandom.uuid.gsub('-','') }
       end
       
       def titlecase_arg(input)

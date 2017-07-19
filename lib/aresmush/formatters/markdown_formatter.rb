@@ -109,6 +109,16 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
   end
 end
 
+# Enables the //italics// format that everyone is used to.
+class HTMLWithWikiItalics < Redcarpet::Render::HTML
+  def preprocess(full_document)
+    full_document.gsub(/\/\/([^\/\r\n]+)\/\//) do
+      "*#{$1}*"
+    end
+  end
+end
+
+
 class MarkdownFormatter
   def initialize
     options = {
@@ -121,7 +131,7 @@ class MarkdownFormatter
     mu_renderer = MarkdownToMURenderer.new
     @mush = Redcarpet::Markdown.new(mu_renderer, options)
     
-    html_renderer = Redcarpet::Render::HTML.new(hard_wrap: true, autolink: true, safe_links_only: true)    
+    html_renderer = HTMLWithWikiItalics.new(hard_wrap: true, autolink: true, safe_links_only: true)    
     @html = Redcarpet::Markdown.new(html_renderer, options)
   end
   

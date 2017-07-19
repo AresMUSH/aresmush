@@ -16,7 +16,7 @@ module AresMUSH
     end
     
     get '/scenes' do
-      @scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.created_at }.reverse
+      @scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse
       @scene_types = Scenes.scene_types
       erb :"scenes/index"
     end
@@ -28,6 +28,8 @@ module AresMUSH
         flash[:error] = "That scene has not been shared."
         redirect "/scenes"
       end
+
+      @page_title = @scene.date_title
       
       erb :"scenes/log"
     end

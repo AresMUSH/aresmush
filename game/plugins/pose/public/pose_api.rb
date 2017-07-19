@@ -14,5 +14,9 @@ module AresMUSH
     def self.emit(enactor, pose, place_name = nil)
       Pose.emit_pose(enactor, pose, true, false, place_name)
     end
+    
+    def self.colorize_quotes(enactor, pose, recipient)
+      Pose.custom_format(pose, recipient, enactor)
+    end
   end
 end

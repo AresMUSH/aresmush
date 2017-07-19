@@ -56,6 +56,22 @@ module AresMUSH
       scene.update(date_completed: DateTime.now)
     end
     
+    def self.share_scene(scene)
+      return if !scene.completed
+      
+      scene.update(shared: true)
+      scene.update(date_shared: DateTime.now)
+      
+      log = Scenes.convert_to_log(scene)
+      if (scene.scene_log)
+        scene.scene_log.update(log: log)
+      else
+        scene_log = SceneLog.create(scene: scene, log: log)
+        scene.update(scene_log: scene_log)
+      end
+    end
+    
+    
     def self.set_scene_location(scene, location)
       matched_rooms = Room.all.select { |r| !r.scene && Scenes.format_room_name_for_match(r, location) =~ /#{location.upcase}/ }
 

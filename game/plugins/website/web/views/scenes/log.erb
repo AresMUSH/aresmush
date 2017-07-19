@@ -1,4 +1,4 @@
-    <h1><%= @scene.title %>  </h1>
+    <h1><%= @scene.date_title %>  </h1>
         
 <div class="row log-wrap">
        
@@ -56,8 +56,7 @@
 <% if can_access_scene?(@scene) && is_approved? %>
 
 <div class="pull-right">
-    <a href="/scene/<%= @scene.id %>/pose/add" class="btn btn-primary">Add Pose</a>
-    <a href="/scene/<%= @scene.id %>/edit" class="btn btn-default">Edit Scene</a>
+    <a href="/scene/<%= @scene.id %>/edit" class="btn btn-primary">Edit Scene</a>
     <a href="/scene/<%= @scene.id %>/related" class="btn btn-default">Edit Related Scenes</a>
     <a href="/scene/<%= @scene.id %>/participants" class="btn btn-default">Edit Participants</a>
 </div>

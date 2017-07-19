@@ -31,6 +31,7 @@ scenes:
         "log/clear": "scene/clearlog"
         "log/undo" : "scene/undo"
         "scene/emit" : "emit/set"
+        "scene/proxy" : "scene/spoof"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"

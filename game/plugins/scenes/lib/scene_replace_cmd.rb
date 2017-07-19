@@ -29,7 +29,14 @@ module AresMUSH
           end
             
           last_pose.update(pose: self.pose)
-          scene.room.emit_ooc t('scenes.amended_pose', :name => enactor_name, :pose => self.pose)
+          
+          scene.room.characters.each do |char|
+            client = char.client
+            next if !client
+            alert = "%xr*** #{t('scenes.amended_pose', :name => enactor_name)} ***%xn"
+            formatted_pose = Pose.colorize_quotes enactor, self.pose, char
+            client.emit "#{alert}#{formatted_pose}"
+          end
         end
       end
     end

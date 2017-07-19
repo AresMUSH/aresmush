@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= game_name %></title>
+    <title><%= game_name %><%= @page_title ? " - #{@page_title}" : "" %></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -33,10 +33,10 @@
   
   
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="/config.js"></script>
-  <script src="/notify.js"></script>
-  <script src="/ansi.js"></script>
-  <script src="/ansi_up.js"></script>
+  <script src="/scripts/config.js"></script>
+  <script src="/scripts/notify.js"></script>
+  <script src="/scripts/ansi.js"></script>
+  <script src="/scripts/ansi_up.js"></script>
 
   <script>
   $( function() {
@@ -44,8 +44,9 @@
   } );
   </script>
   
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/custom_style.css">
+    <link rel="stylesheet" type="text/css" href="/styles/ansi.css">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="/styles/custom_style.css">
 
 </head>
 
@@ -147,6 +148,9 @@
                 </div>
                    
                    <div class="col-md-3">    
+                       
+                           <%= erb :"search" %>
+                       
                        <div class="sidebar-box">
                            <div class="sidebar-heading">
                                <h2>Play on the Web <i class="fa fa-globe" aria-hidden="true"></i></h2>
