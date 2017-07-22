@@ -20,7 +20,7 @@ module AresMUSH
           end
         end
         
-        self.last_events = teamup.get_events(startDate, endDate)
+        self.last_events = teamup.get_events(startDate, endDate).select { |e| e.start_datetime_standard > DateTime.now }
         self.last_event_time = Time.now
         
         new_events = {}

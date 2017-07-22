@@ -24,7 +24,8 @@ BASIC CONTAINERS
 
 .header-wrap
 {
-    background: url('/background.png');
+    background: url('/images/background.png');
+    background-size: cover;
     height: 200px;   
     background-position: center; 
 }
@@ -184,6 +185,26 @@ pre code {
     -webkit-margin-end: 40px;
 }
 
+th {
+    background-color: #182334;
+    color: white;
+    padding: 8px;
+}
+
+td {
+   border-bottom: 1px solid #ccc;
+   padding: 8px;
+}
+
+textarea {
+    width: 98%;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
 /* -------------------------
 BOOTSTRAP OVERRIDES
 ------------------------- */
@@ -239,6 +260,11 @@ BOOTSTRAP OVERRIDES
     border-color: #182334;
 }
 
+.btn-info { 
+    background-color: #995800;
+    border-color: #995800;
+}
+
 /* -------------------------
 GOOGLE SEARCH OVERRIDES
 ------------------------- */
@@ -246,6 +272,7 @@ GOOGLE SEARCH OVERRIDES
 form.gsc-search-box {
     padding: 0px;
 }
+
 
 /* Fixes the search box icon */
 .cse .gsc-search-button input.gsc-search-button-v2,
@@ -262,6 +289,44 @@ input.gsc-input::placeholder {
     color: white;
 }
 
+table.gsc-search-box td {
+    vertical-align: top !important;
+    border: none;
+    padding: 3px;
+}
+
+
+/* --------------------------
+YOUTUBE MUSIC PLAYER
+---------------------------*/
+
+.musicplayer-button {
+    cursor:pointer;
+    border:none;
+    background:transparent;
+    outline:none;
+    display:inline;
+}
+
+.musicplayer-frame, .musicplayer-preload  {
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    visibility:hidden;
+    position:absolute;
+    display:inline
+}
+
+.musicplayer-wrap {
+    border-bottom: 1px solid #ddd;
+    margin: 5px;
+}
+
+.musicplayer-description {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
 
 /* -------------------------
 HEADER
@@ -365,10 +430,26 @@ GENERAL UTILITIES
 }
 
 .hint { 
-    color: #888;
+    color: #bbb;
     font-style: italic;
-    font-size: 0.9em;
-    padding-left: 5px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.image-container {
+    padding: 5px;
+}
+
+.image-container.center img {
+    display: block;
+    margin-left: auto;
+        margin-right: auto;
+}
+
+.image-container.right img {
+    display: block;
+    margin-left: auto;
+        margin-right: 0;
 }
 
 /* -------------------------
@@ -380,6 +461,11 @@ HOME SCREEN
     background-color: #fff;
     font-weight: bold;
     text-align: center;
+}
+
+.jumbotron img {
+   max-width: 70%;
+   width: 400px;
 }
 
 .jumbotron-tagline
@@ -477,8 +563,6 @@ SCENES SCREEN
 }
 
 .scene-system-pose {
-    padding: 10px;
-    margin: 15px;
     margin-left: 25px;
     color: #999;
     font-style: italic;
@@ -523,9 +607,9 @@ SCENES SCREEN
     margin:5px;
     padding:15px; 
     background-position:left top;
-    background-size: stretch;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-image:url('/box-bg.png');
+    background-image:url('/images/box-bg.png');
 }
 
 .log-participants-box {
@@ -579,9 +663,9 @@ CHARACTERS SCREEN
     margin:5px;
     padding:15px; 
     background-position:left top;
-    background-size: stretch;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-image:url('/box-bg.png');
+    background-image:url('/images/box-bg.png');
 }
 
 ul.char-ability-list { 
@@ -611,4 +695,11 @@ ul.char-ability-list {
 .profile-tab { 
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 1.75em;
+  }
 }

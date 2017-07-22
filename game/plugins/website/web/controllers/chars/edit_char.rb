@@ -28,6 +28,8 @@ module AresMUSH
         reedirect "/char/#{id}"
       end
             
+      puts params
+            
       demographics = {}
       profile = {}
       relationships = {}

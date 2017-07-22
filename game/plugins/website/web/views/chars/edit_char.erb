@@ -1,137 +1,44 @@
+<script src="/scripts/edit_char.js"></script>
+
 <h1>Edit <%= @char.name %></h1>
 
 <form method="POST" action="/char/<%= @char.id %>/edit">
     
-    <p>
-    <label for="profileimage" class="col-xs-2 col-form-label">Profile Image:</label>
-   
-    <div>
-    <select name="profileimage">
-        <option value=""></option>
-      <% uploaded_file_names.each do |f| %>
-          <option value="<%= f %>" <%= "selected" if @char.profile_image == f %>><%= f %></option>
-      <% end %>
-     </select>
-      <div class="hint">Upload new files <a href="/files" target="blank">here</a>.</div>
+    
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#demographics">Demographics</a></li>
+        <li><a data-toggle="tab" href="#profile">Profile</a></li>
+        <li><a data-toggle="tab" href="#relationships">Relationships</a></li>
+        <li><a data-toggle="tab" href="#gallery">Gallery</a></li>
+    </ul>
+    
+    
+
+    <div class="tab-content">
+
+      <div id="demographics" class="tab-pane fade in active">
+          <%= erb :"chars/edit_demographics" %>
       </div>
-  
-    </p>
-    
-    <p>
-    <label for="demo-fullname" class="col-xs-2 col-form-label">Full Name:</label>
-    
-    <input type="text" name="demo-fullname" size="100" value="<%= @char.demographic('fullname') %>"/>
-    </p>
-
-    <p>
-    <label for="demo-callsign" class="col-xs-2 col-form-label">Callsign:</label>
-    
-    <input type="text" name="demo-callsign" size="100" value="<%= @char.demographic('callsign') %>"/>
-    </p>
-    
-    <p>
-    <label for="demo-hair" class="col-xs-2 col-form-label">Hair:</label>
-    
-    <input type="text" name="demo-hair" size="100" value="<%= @char.demographic('hair') %>"/>
-    </p>
-    
-    <p>
-    <label for="demo-eyes" class="col-xs-2 col-form-label">Eyes:</label>
-    
-    <input type="text" name="demo-eyes" size="100" value="<%= @char.demographic('eyes') %>"/>
-    </p>
-    
-    <h2>Profile Sections</h2>
-    <div class="hint">To delete a section, just leave its title blank.</div>
-        <p/>
-    <% @char.profile.each_with_index do |(section, data), i| %>
-    
-    <div class="panel panel-info">
-        <div class="panel-body">
-            
-        <p>
-        <label for="profiletitle-<%=i%>" class="col-xs-2 col-form-label">Title:</label> 
-        <input type="text" name="profiletitle-<%=i%>" size="50" value="<%= section %>"/>
-        </p>
-        <p>
-        <textarea name="profile-<%=i%>" rows="5" cols="100"><%= format_input_for_html(data) %></textarea>
-        </p>
-        </div>
-    </div>
-    <% end %>
-    
-    <div class="panel panel-info">
-        <div class="panel-body">
-    
-        <p>
-            <label for="profiletitle-new" class="col-xs-2 col-form-label">New Section Title:</label>         
-        
-        <input type="text" name="profiletitle-new" size="50" value=""/>
-    
-        <div class="hint">If you want to add more than one new section, you'll need to edit and save the page multiple times.</div>
-    
-        </p>
-        <p>
-        <textarea name="profile-new" rows="5" cols="100"></textarea>
-        </p>
-     </div>
- </div>   
-    
-    <h2>Relationships</h2>
-    
-    
-    <% @char.relationships.each_with_index do |(name, data), i| %>
-    
-    <div class="panel panel-info">
-        <div class="panel-body">
-        <p>
-        <label for="relationname-<%=i%>" class="col-xs-2 col-form-label">Name:</label> 
-        <input type="text" name="relationname-<%=i%>" size="50" value="<%= name %>"/>
-        </p>
-        <p>
-        <label for="relationcat-<%=i%>" class="col-xs-2 col-form-label">Category:</label>     
-        <input type="text" name="relationcat-<%=i%>" size="50" value="<%= data['category'] %>"/>
-        </p>
-        <p>
-        <textarea name="relationdetail-<%=i%>" rows="5" cols="100"><%= format_input_for_html data['relationship'] %></textarea>
-    
-        </p>
-        </div>
-    </div>
-
-    
-    <% end %>
-
-    <div class="panel panel-info">
-        <div class="panel-body">    
-       <p>
-           <label for="relationname-new" class="col-xs-2 col-form-label">Name:</label>         
-       
-       <input type="text" name="relationname-new" size="50" value=""/>
       
-       </p>
-       <p>
-       <label for="relationcat-new" class="col-xs-2 col-form-label">Category:</label>     
-       <input type="text" name="relationcat-new" size="50" value=""/>
-   
-       <div class="hint">If you want to add more than one new relationship, you'll need to edit and save the page multiple times.
-       </div>
-       </p>
-   
-       <p>
-       <textarea name="relationdetail-new" rows="5" cols="100"></textarea>
-   
-       </p>
-        </div>
-    </div> 
+      <div id="profile" class="tab-pane fade in">
+          <%= erb :"chars/edit_profile" %>
+      </div>
+    
+      <div id="relationships" class="tab-pane fade in">
+          
+          <%= erb :"chars/edit_relationships" %>
+          
+      </div>
+      
+      
+      <div id="gallery" class="tab-pane fade in">
+          <%= erb :"chars/edit_gallery" %>
+      </div>
+  </div>
     
     
-    <h2>Gallery</h2>
-    <div class="hint">Enter filenames from <a href="/files" target="blank">here</a>, one per line.</div>
-    <p>
-    <textarea name="gallery" rows="5" cols="50"><%= @char.profile_gallery %></textarea>
-
-    </p>
+    
+    
     
     
     <p> <a href="/char/<%= @char.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>

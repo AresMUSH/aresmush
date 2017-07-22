@@ -41,7 +41,10 @@ module AresMUSH
           return
         end
         
-        scene.update(shared:true)
+        if (!scene.shared)
+          Scenes.share_scene(scene)
+        end
+        
         template =  LogTemplate.new(scene)
         content = template.render
         tags = Wikidot.log_tags(scene)

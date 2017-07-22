@@ -17,6 +17,7 @@ module AresMUSH
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
     attribute :date_completed, :type => DataType::Date
+    attribute :date_shared, :type => DataType::Date
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean
@@ -32,10 +33,11 @@ module AresMUSH
     attribute :log
     
     collection :scene_poses, "AresMUSH::ScenePose"
+    reference :scene_log, "AresMUSH::SceneLog"
     
     set :participants, "AresMUSH::Character"
     
-    before_delete :delete_poses
+    before_delete :delete_scene_references
     
     def is_private?
       self.private_scene
@@ -48,17 +50,18 @@ module AresMUSH
     def poses_in_order
       scene_poses.to_a.sort_by { |p| p.sort_order }
     end
-    
-    def auto_participants
-      scene_poses.select { |s| !s.is_system_pose? && !s.is_gm_pose? }
-          .map { |s| s.character }
-          .uniq { |c| c.id }
-    end
-    
+        
     def all_participant_names
       scene_poses.select { |s| !s.is_system_pose? }
           .map { |s| s.character.name }
           .uniq
+    end
+    
+    def delete_scene_references
+      delete_poses
+      if (self.scene_log)
+        self.scene_log.delete
+      end
     end
     
     def delete_poses
@@ -85,6 +88,10 @@ module AresMUSH
       list1.concat(list2).uniq
     end
     
+    def participant_names
+      self.participants.sort { |p| p.name }.map { |p| p.name }
+    end
+    
     def find_link(other_scene)
       link = SceneLink.find(log1_id: self.id).combine(log2_id: other_scene.id).first
       if (!link)
@@ -94,6 +101,13 @@ module AresMUSH
     end
   end
   
+  class SceneLog < Ohm::Model
+    include ObjectModel
+    
+    attribute :log
+    reference :scene, "AresMUSH::Scene"
+  end
+    
   class ScenePose < Ohm::Model
     include ObjectModel
 

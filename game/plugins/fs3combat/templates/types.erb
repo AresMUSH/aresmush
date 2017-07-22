@@ -5,6 +5,7 @@
 <% list.each do |name, info| %>
 <%= left( name, 20 ) -%> 
 <%= left( field(info, 'weapon' ), 20 ) -%> 
-<%= field(info, 'armor') %>
+<%= left( field(info, 'armor'), 20 ) -%>
+<%= left( field(info, 'vehicle'), 20 ) %>
 <% end %>
 <%= footer %>

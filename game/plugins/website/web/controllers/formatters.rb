@@ -10,7 +10,7 @@ module AresMUSH
         else
           icon = nil
         end
-        icon || "/noicon.png"
+        icon || "/images/noicon.png"
       end
 
       # Takes something from a text box and replaces carriage returns with %r's for MUSH.
@@ -29,29 +29,60 @@ module AresMUSH
       def format_output_for_html(output)
         return nil if !output
         text = AresMUSH::ClientFormatter.format output, false
-        text.strip.gsub(/[\r\n]/i, '<br/>')
+        text.strip.gsub(/[\r]/i, '<br/>')
       end
       
       def format_markdown_for_html(output)
         return nil if !output
         
-        allow_html = Global.read_config('website', 'allow_html_in_markdown')
-        renderer = Redcarpet::Render::HTML.new(escape_html: !allow_html, hard_wrap: true, 
-              autolink: true, safe_links_only: true)    
-        html = Redcarpet::Markdown.new(renderer)
-        text = AresMUSH::ClientFormatter.format output, false
-        text = html.render text
-        text = text.gsub(/\&quot\;/i, '"')
-        text = text.gsub(/\[\[div([^\]]*)\]\]/i, '<div \1>')
-        text = text.gsub(/\[\[span([^\]]*)\]\]/i, '<span \1>')
+        music_player = Proc.new do |input|
+          return "" if !input
+          text = erb :"chars/music_player", :locals => { 
+              youtubecode: input.before(' '), 
+              description: input.after(' '),
+              id: SecureRandom.uuid.gsub('-','') }
+          text
+        end
         
-        #text = text.gsub(/\[\[div (class|style)=\&quot\;([^\]]*)\&quot\;\]\]/i, '<div \1="\2">')
-        #text = text.gsub(/\[\[div\]\]/i, '<div>')
-        text = text.gsub(/\[\[\/div\]\]/i, "</div>")
-        text = text.gsub(/\[\[\/span\]\]/i, "</span>")
-        text = text.gsub(/%r/i, "<br/>")
+        image = Proc.new do |input|
+          return "" if !input
+          style = ""
+          source = ""
+          align = nil
+          options = input.split(' ')
+          options.each do |opt|
+            option_name = opt.before('=') || ""
+            option_value = opt.after('=') || ""
+            
+            case option_name.downcase.strip
+            when 'width'
+              style << " width:#{option_value};"
+            when 'height'
+              style << " height:#{option_value};"
+            when 'center', 'left', 'right'
+              align = opt.strip
+            when 'source', 'src'
+              source = option_value.strip
+            else
+              source = opt.strip
+            end
+          end
+          
+          erb :"image", :locals => {
+            source: source,
+            style: style, 
+            align: align
+          }
+        end
+        
+        allow_html = Global.read_config('website', 'allow_html_in_markdown')
+        text = AresMUSH::ClientFormatter.format output, false
+        html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, { musicplayer: music_player, image: image})
+        text = html_formatter.to_html text
+        #text = text.gsub(/\[\[musicplayer ([^\]]*)\]\]/i) { music_player(Regexp.last_match[1]) }
         text
       end
+
       
       def titlecase_arg(input)
         return nil if !input

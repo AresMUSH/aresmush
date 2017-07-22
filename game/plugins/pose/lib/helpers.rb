@@ -1,5 +1,6 @@
 module AresMUSH
   module Pose
+    
     def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil)
       room = enactor.room
       
@@ -8,8 +9,9 @@ module AresMUSH
         pose = "#{color}<OOC>%xn #{pose}"
       end
       
-      Global.client_monitor.logged_in.each do |client, char|
-        next if char.room != enactor.room
+      enactor.room.characters.each do |char|
+        client = char.client
+        next if !client
         client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc, place_name)
       end
       
@@ -22,7 +24,7 @@ module AresMUSH
         end
       end
     end
-        
+
     def self.notify_next_person(room)
       return if room.pose_order.count < 3
         

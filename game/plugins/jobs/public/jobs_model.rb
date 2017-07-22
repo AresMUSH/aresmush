@@ -67,6 +67,10 @@ module AresMUSH
     def is_open?
       self.status != "DONE"
     end
+    
+    def created_date_str(char)
+      OOCTime.local_long_timestr(char, self.created_at)
+    end
   end
   
   class JobReply < Ohm::Model
@@ -80,6 +84,10 @@ module AresMUSH
     
     def admin_only?
       self.admin_only
+    end
+    
+    def created_date_str(char)
+      OOCTime.local_long_timestr(char, self.created_at)
     end
   end
 end

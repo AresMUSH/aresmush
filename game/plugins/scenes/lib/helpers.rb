@@ -28,18 +28,48 @@ module AresMUSH
       end
     end
     
-    def self.convert_to_log(scene)
+    def self.create_or_update_log(scene)
+      if (scene.scene_log)
+        addendum = Scenes.build_log_text(scene)
+        new_log = "#{scene.scene_log.log}\n\n#{addendum}"
+        scene.scene_log.update(log: new_log)
+      else
+        log = Scenes.build_log_text(scene)
+        scene_log = SceneLog.create(scene: scene, log: log)
+        scene.update(scene_log: scene_log)
+      end
+      
+      # Clean up poses
+      scene.delete_poses      
+    end
+    
+    def self.build_log_text(scene)
       log = ""
+      div_started = false
       scene.scene_poses.each do |pose|
+        formatted_pose = pose.pose || ""
+        formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
         if (pose.is_system_pose?)
-          log << "[[div class=\"scene-system-pose\"]]#{pose.pose}[[/div]]"
+          if (!div_started)
+            log << "[[div class=\"scene-system-pose\"]]\n"
+            div_started = true
+          end
+          log << formatted_pose
         elsif (pose.is_setpose?)
-          log << "[[div class=\"scene-set-pose\"]]#{pose.pose}[[/div]]"
+          log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]"
         else
-          log << pose.pose
+          if (div_started)
+            log << "\n[[/div]]"
+            div_started = false
+          end
+          log << formatted_pose
         end
         log << "\n\n"
       end
+      if (div_started)
+        log << "\n[[/div]]"
+      end
+      
       log
     end
     

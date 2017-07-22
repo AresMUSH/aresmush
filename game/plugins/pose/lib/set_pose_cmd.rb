@@ -9,14 +9,14 @@ module AresMUSH
         self.pose = cmd.args
       end
       
-      def handle
+      def handle        
+        enactor.room.characters.each do |char|
+          client = char.client
+          next if !client
         
-        Global.client_monitor.logged_in.each do |client, char|
-          next if char.room != enactor.room
           formatted_pose = Pose.custom_format(self.pose, char, enactor, true, false)
           line = "%R%xh%xc%% ----------------------%xn%R"
           client.emit "#{line}%R#{pose}%R#{line}"
-          
         end
         Global.dispatcher.queue_event PoseEvent.new(enactor, self.pose, true, true)          
       end

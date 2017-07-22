@@ -48,10 +48,10 @@ module AresMUSH
       end
       
       tempfile = file[:tempfile]
-      name = file[:filename]
+      name = params[:filename]
       
       if (!tempfile || !name)
-        flash[:error] = "No file selected."
+        flash[:error] = "Missing file or filename."
         redirect '/files/upload'
       end
       

@@ -2,10 +2,22 @@
 
 <form method="POST" action="/files/upload" enctype="multipart/form-data">
 
+<div class="panel panel-info">
+<div class="panel-body">
+<div class="hint">To make your files easier to find, it is suggested that you put the character/page name at the front (e.g. Faraday1.jpg).</div>
+
+    <p>
+    <label for="filename" class="col-xs-2 col-form-label">File Name:</label>
+
+    <input type="text" name="filename" size="25" value=""/>
+    </p>
+
 <p>
 <input type="file" name="file"/>
 </p>
-
-<input type="submit">
+<br/>
+<input type="submit" class="btn btn-primary" value="Upload">
+</div>
+</div>
 
 </form>

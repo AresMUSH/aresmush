@@ -25,7 +25,7 @@ module AresMUSH
               r.update(scene_nag: true)
             end
             
-            if (stop_empty_scene(r))
+            if (should_stop_empty_scene(r))
               Global.logger.debug("Stopping scene in #{r.name}")
               Scenes.stop_scene(r.scene)
             end
@@ -43,13 +43,13 @@ module AresMUSH
           elsif (elapsed_days > 5 && !scene.deletion_warned)
             message = t('scenes.scene_delete_warn', :id => scene.id, :title => scene.title)
             #Mail.send_mail(scene.all_participant_names, t('scenes.scene_delete_warn_subject'), message, nil)
-            Mail.send_mail([Character.find_one_by_name("Faraday")], t('scenes.scene_delete_warn_subject'), message, nil)
+            Mail.send_mail(["Faraday"], t('scenes.scene_delete_warn_subject'), message, nil)
             scene.update(deletion_warned: true)
           end
         end
       end
       
-      def stop_empty_scene(room)
+      def should_stop_empty_scene(room)
         return false if !room.scene
         return true if room.characters.empty?
         return room.scene.temp_room

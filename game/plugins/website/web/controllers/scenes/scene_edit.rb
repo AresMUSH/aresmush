@@ -3,6 +3,7 @@ module AresMUSH
     
     get '/scene/:id/edit', :auth => :approved do |id|
       @scene = Scene[id]
+      @log = @scene.scene_log
       
       if (!@scene.shared)
         flash[:error] = "That scene has not been shared."
@@ -20,7 +21,7 @@ module AresMUSH
         redirect "/scene/#{id}"
       end
       
-      @scene.update(log: params[:log])
+      @scene.scene_log.update(log: params[:log])
       @scene.update(location: params[:location])
       @scene.update(summary: params[:summary])
       @scene.update(scene_type: params[:scene_type])

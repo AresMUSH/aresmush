@@ -1,0 +1,38 @@
+<p>
+    <label for="profileimage" class="col-xs-2 col-form-label">Profile Image:</label>
+   
+    <div>
+        <select name="profileimage">
+            <option value=""></option>
+            <% uploaded_file_names.each do |f| %>
+            <option value="<%= f %>" <%= "selected" if @char.profile_image == f %>><%= f %></option>
+            <% end %>
+        </select>
+        <div class="hint">Upload new files <a href="/files" target="blank">here</a>.</div>
+    </div>
+  
+</p>
+    
+<p>
+    <label for="demo-fullname" class="col-xs-2 col-form-label">Full Name:</label>
+    
+    <input type="text" name="demo-fullname" size="100" value="<%= @char.demographic('fullname') %>"/>
+</p>
+
+<p>
+    <label for="demo-callsign" class="col-xs-2 col-form-label">Callsign:</label>
+    
+    <input type="text" name="demo-callsign" size="100" value="<%= @char.demographic('callsign') %>"/>
+</p>
+    
+<p>
+    <label for="demo-hair" class="col-xs-2 col-form-label">Hair:</label>
+    
+    <input type="text" name="demo-hair" size="100" value="<%= @char.demographic('hair') %>"/>
+</p>
+    
+<p>
+    <label for="demo-eyes" class="col-xs-2 col-form-label">Eyes:</label>
+    
+    <input type="text" name="demo-eyes" size="100" value="<%= @char.demographic('eyes') %>"/>
+</p>

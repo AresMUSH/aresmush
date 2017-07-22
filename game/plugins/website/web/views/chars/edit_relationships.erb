@@ -1,0 +1,51 @@
+<h3>Relationships</h3>
+
+<div class="hint">You can also edit relationships in the game (help relationships).</div>
+<p/>
+
+<div id="relation-container">
+    
+<% @char.relationships.each_with_index do |(name, data), i| %>
+
+<div class="panel panel-info">
+    <div class="panel-body">
+        <div class="pull-right"><a id="delete-relation"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+        
+        <div class="row">
+            <label for="relationname-<%=i%>" class="col-xs-2 col-form-label">Name:</label> 
+            <input type="text" name="relationname-<%=i%>" class="col-xs-2" size="50" value="<%= name %>"/>
+        
+            <label for="relationcat-<%=i%>" class="col-xs-2 col-form-label">Category:</label>     
+            <input type="text" name="relationcat-<%=i%>"  class="col-xs-2" size="50" value="<%= data['category'] %>"/>
+        </div>
+        <p>
+            <textarea name="relationdetail-<%=i%>" rows="2"><%= format_input_for_html data['relationship'] %></textarea>
+
+        </p>
+    </div>
+</div>
+
+
+<% end %>
+
+<div class="panel panel-info" style="display:none" id="new-relation-field">
+    <div class="panel-body">    
+        <div class="pull-right"><a id="delete-relation"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+        <div class="row">
+            <label for="relationname-new" class="col-xs-2 col-form-label">Name:</label>         
+            <input type="text" name="relationname-new" class="col-xs-2" size="50" value=""/>
+
+            <label for="relationcat-new" class="col-xs-2 col-form-label">Category:</label>     
+            <input type="text" name="relationcat-new" class="col-xs-2" size="50" value=""/>
+        </div>
+
+        <p>
+            <textarea name="relationdetail-new" rows="2"></textarea>
+
+        </p>
+    </div>
+</div> 
+
+</div>
+
+<p><a class="btn-info btn" id="add-relation">Add New Relationship</a></p>
