@@ -30,17 +30,13 @@ module AresMUSH
     
     def self.create_or_update_log(scene)
       if (scene.scene_log)
-        addendum = Scenes.build_log_text(scene)
-        new_log = "#{scene.scene_log.log}\n\n#{addendum}"
+        new_log = Scenes.build_log_text(scene)
         scene.scene_log.update(log: new_log)
       else
         log = Scenes.build_log_text(scene)
         scene_log = SceneLog.create(scene: scene, log: log)
         scene.update(scene_log: scene_log)
       end
-      
-      # Clean up poses
-      scene.delete_poses      
     end
     
     def self.build_log_text(scene)
