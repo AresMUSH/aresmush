@@ -14,9 +14,9 @@ en:
         organizer_deleted: "(Organizer Deleted)"
         
         scene_ending: "The scene is ending."
-        scene_stopped: "The scene has ended."
-        scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."
+        scene_stopped: "The scene has ended.  To share it to the web portal and wiki, set the scene info (help scene info) and then use `wiki/log %{scene_id}` to share it."
         scene_stopped_and_shared: "The scene has ended.  Since it is a public scene, it has been automatically shared to the web portal with title '%{title}'.  If you want to share it to the wiki as well, you can use wiki/log %{id}.  To un-share it, use scene/unshare %{id}."
+        scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."
         scene_not_found: "Scene not found."
         invalid_privacy: "Invalid privacy setting.  Please use 'public' or 'private'."
         scene_is_private: "That scene is private.  You must request a meetme from one of the participants to join."
@@ -31,9 +31,9 @@ en:
         private: "Private"
         scene_already_going: "There's already a scene going in this room.  You have to stop it first."
         private_scene_in_public_room: "Having a private scene on the public grid is poor form, unless of course you're in a private room."
-        amended_pose: "%{name} has amended their last pose."
+        amended_pose: "%{name} has amended %{pronoun} last pose."
         no_pose_found: "You haven't posed yet."
-        deleted_pose: "%{name} has retracted their previous pose."
+        deleted_pose: "%{name} has retracted %{pronoun} previous pose."
         
         scene_types: "Available scene types are: %{types}."
         invalid_scene_type: "That is not a valid scene type.  Try one of these: %{types}."

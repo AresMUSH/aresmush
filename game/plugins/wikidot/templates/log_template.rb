@@ -17,18 +17,12 @@ module AresMUSH
         @scene.location
       end
       
-      def format_pose(scene_pose)
-        colorized = ClientFormatter.format scene_pose.pose
-        decolorized = AnsiFormatter.strip_ansi colorized
-          
-        if (scene_pose.is_system_pose?)
-          return decolorized.split(/[\r\n]/).map { |d| "[[span class=\"system\"]]//#{d.strip}//[[/span]]" }.join("\n")
-        elsif (scene_pose.is_setpose?)
-          decolorized = decolorized.split(/[\r\n]/).join("\n> ")
-          return "> #{decolorized}"
-        else
-          return decolorized
-        end
+      def log
+        text = ClientFormatter.format @scene.scene_log.log, false
+        text = AnsiFormatter.strip_ansi text
+        text = text.gsub('&lt;', '<')
+        text = text.gsub('&gt;', '>')
+        text
       end
     end
   end

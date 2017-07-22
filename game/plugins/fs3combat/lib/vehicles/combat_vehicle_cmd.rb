@@ -36,6 +36,11 @@ module AresMUSH
       def handle
         combat = enactor.combat
         
+        combatant = combat.find_combatant(self.vehicle)
+        if (combatant && combatant.vehicle)
+          self.vehicle = combatant.vehicle.name
+        end
+        
         self.names.each do |name|
           vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
               

@@ -111,8 +111,18 @@
           
           
               <li><a href="/help">Help</a></li> 
-              <% if is_admin? %>
-              <li><a href="/admin">Admin</a></li>
+              
+              <% if is_admin? %>              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin <span class="caret">
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/jobs">Jobs</a></li> 
+                  <li><a href="/admin">Setup</a></li>
+                  <li><a href="/admin/logs">Logs</a></li>
+                </ul>
+              </li>
               <% end %>
               <li><a href="<%= game_website %>">Wiki</a></li> 
             </ul>

@@ -56,21 +56,11 @@ module AresMUSH
       scene.update(date_completed: DateTime.now)
     end
     
-    def self.share_scene(scene)
-      return if !scene.completed
-      
+    def self.share_scene(scene)      
       scene.update(shared: true)
       scene.update(date_shared: DateTime.now)
-      
-      log = Scenes.convert_to_log(scene)
-      if (scene.scene_log)
-        scene.scene_log.update(log: log)
-      else
-        scene_log = SceneLog.create(scene: scene, log: log)
-        scene.update(scene_log: scene_log)
-      end
+      Scenes.create_or_update_log(scene)
     end
-    
     
     def self.set_scene_location(scene, location)
       matched_rooms = Room.all.select { |r| !r.scene && Scenes.format_room_name_for_match(r, location) =~ /#{location.upcase}/ }
@@ -89,7 +79,6 @@ module AresMUSH
       scene.update(location: location)
 
       message = t('scenes.location_set', :description => description)
-      Scenes.add_pose(scene, message, Game.master.system_character)
       if (scene.temp_room && scene.room)
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         Describe.update_current_desc(scene.room, description)

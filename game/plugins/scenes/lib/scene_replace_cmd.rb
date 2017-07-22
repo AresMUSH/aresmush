@@ -33,7 +33,9 @@ module AresMUSH
           scene.room.characters.each do |char|
             client = char.client
             next if !client
-            alert = "%xr*** #{t('scenes.amended_pose', :name => enactor_name)} ***%xn"
+            message = t('scenes.amended_pose', :name => enactor_name,
+                          :pronoun => Demographics.possessive_pronoun(enactor) )
+            alert = "%xr*** #{message} ***%xn"
             formatted_pose = Pose.colorize_quotes enactor, self.pose, char
             client.emit "#{alert}#{formatted_pose}"
           end

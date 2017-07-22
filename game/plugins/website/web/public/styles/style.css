@@ -25,6 +25,7 @@ BASIC CONTAINERS
 .header-wrap
 {
     background: url('/images/background.png');
+    background-size: cover;
     height: 200px;   
     background-position: center; 
 }
@@ -185,7 +186,7 @@ pre code {
 }
 
 th {
-    background-color: #394252;
+    background-color: #182334;
     color: white;
     padding: 8px;
 }
@@ -194,6 +195,15 @@ td {
    border-bottom: 1px solid #ccc;
    padding: 8px;
 }
+
+textarea {
+    width: 98%;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 
 /* -------------------------
 BOOTSTRAP OVERRIDES
@@ -248,6 +258,11 @@ BOOTSTRAP OVERRIDES
 .btn-primary {
     background-color: #182334;
     border-color: #182334;
+}
+
+.btn-info { 
+    background-color: #995800;
+    border-color: #995800;
 }
 
 /* -------------------------
@@ -415,10 +430,26 @@ GENERAL UTILITIES
 }
 
 .hint { 
-    color: #995800;
+    color: #bbb;
     font-style: italic;
     font-weight: bold;
     padding-left: 10px;
+}
+
+.image-container {
+    padding: 5px;
+}
+
+.image-container.center img {
+    display: block;
+    margin-left: auto;
+        margin-right: auto;
+}
+
+.image-container.right img {
+    display: block;
+    margin-left: auto;
+        margin-right: 0;
 }
 
 /* -------------------------
@@ -430,6 +461,11 @@ HOME SCREEN
     background-color: #fff;
     font-weight: bold;
     text-align: center;
+}
+
+.jumbotron img {
+   max-width: 70%;
+   width: 400px;
 }
 
 .jumbotron-tagline
@@ -571,7 +607,7 @@ SCENES SCREEN
     margin:5px;
     padding:15px; 
     background-position:left top;
-    background-size: stretch;
+    background-size: cover;
     background-repeat: no-repeat;
     background-image:url('/images/box-bg.png');
 }
@@ -627,7 +663,7 @@ CHARACTERS SCREEN
     margin:5px;
     padding:15px; 
     background-position:left top;
-    background-size: stretch;
+    background-size: cover;
     background-repeat: no-repeat;
     background-image:url('/images/box-bg.png');
 }

@@ -41,7 +41,9 @@ module AresMUSH
           return
         end
         
-        Scenes.share_scene(scene)
+        if (!scene.shared)
+          Scenes.share_scene(scene)
+        end
         
         template =  LogTemplate.new(scene)
         content = template.render
