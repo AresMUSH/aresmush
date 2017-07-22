@@ -13,9 +13,7 @@ module AresMUSH
       end
       
       md = MarkdownFile.new(help.values.first['path'])
-      text = ClientFormatter.format md.contents, false
-      formatter = MarkdownFormatter.new
-      @help =  formatter.to_html(text)
+      @help =  format_markdown_for_html(md.contents)
       erb :"help/help"
     end
     

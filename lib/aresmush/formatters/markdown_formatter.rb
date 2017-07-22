@@ -109,6 +109,8 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
   end
 end
 
+
+
 class MarkdownFormatter
   def initialize
     options = {
@@ -118,19 +120,11 @@ class MarkdownFormatter
             fenced_code_blocks: true
         }
 
-    mu_renderer = MarkdownToMURenderer.new
-    @mush = Redcarpet::Markdown.new(mu_renderer, options)
-    
-    html_renderer = Redcarpet::Render::HTML.new(hard_wrap: true, autolink: true, safe_links_only: true)    
-    @html = Redcarpet::Markdown.new(html_renderer, options)
+    renderer = MarkdownToMURenderer.new
+    @engine = Redcarpet::Markdown.new(mu_renderer, options)
   end
   
   def to_mush(markdown)
-    @mush.render markdown
+    @engine.render markdown
   end
-  
-  def to_html(markdown)
-    @html.render markdown
-  end
-  
 end

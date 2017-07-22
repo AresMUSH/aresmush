@@ -20,8 +20,11 @@ module AresMUSH
       return config[key]["color"]
     end
     
-    def self.filtered_jobs(char)
-      case (char.jobs_filter)
+    def self.filtered_jobs(char, filter = nil)
+      if (!filter)
+        filter = char.jobs_filter
+      end
+      case filter
       when "ALL"
         jobs = Job.all.to_a
       when "ACTIVE"
@@ -89,6 +92,12 @@ module AresMUSH
           other_client.emit_ooc message + "  " + t('jobs.requests_cmd_hint')
         end
       end
+      
+      
+      Global.client_monitor.notify_web_clients :new_job, message do |char|
+         char && Jobs.can_access_jobs?(char)
+      end
+        
     end
   end
 end

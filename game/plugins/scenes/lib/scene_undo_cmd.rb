@@ -23,7 +23,10 @@ module AresMUSH
           old_pose = last_pose.pose
             
           last_pose.delete
-          scene.room.emit_ooc t('scenes.deleted_pose', :name => enactor_name, :pose => old_pose)
+          message = t('scenes.deleted_pose', :name => enactor_name,
+                        :pronoun => Demographics.possessive_pronoun(enactor))
+          
+          scene.room.emit "%xr*** #{message} ***%xn"
         end
       end
     end

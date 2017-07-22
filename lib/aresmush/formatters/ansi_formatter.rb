@@ -297,6 +297,11 @@ module AresMUSH
       }
     end
     
+    def self.strip_ansi(str)
+      return "" if !str
+      str.gsub(/\e\[(\d+)(;\d+)*m/, '')
+    end
+    
     # Given a string like %xb or %c102, returns the appropriate ansified string, 
     # or nil if ansi code is not valid.
     def self.get_code(str, enable_fansi = true)

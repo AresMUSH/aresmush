@@ -7,7 +7,7 @@ module AresMUSH
     
   Scene.all.each do |s|
     if (s.shared)
-      log = SceneLog.create(scene: s, log: Scenes.convert_to_log(s))
+      log = SceneLog.create(scene: s, log: Scenes.build_log_text(s))
       s.update(scene_log: log)
     end    
   end

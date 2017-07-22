@@ -7,7 +7,7 @@
       return function(count, div) {
         var html, text;
         text = div.innerHTML;
-        html = ansi_up.ansi_to_html(text);
+        html = ansi_up.ansi_to_html(text, { use_classes: true });
         return div.innerHTML = html;
       };
     })(this));

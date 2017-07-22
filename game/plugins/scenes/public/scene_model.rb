@@ -17,6 +17,7 @@ module AresMUSH
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
     attribute :date_completed, :type => DataType::Date
+    attribute :date_shared, :type => DataType::Date
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean
@@ -36,7 +37,7 @@ module AresMUSH
     
     set :participants, "AresMUSH::Character"
     
-    before_delete :delete_poses
+    before_delete :delete_scene_references
     
     def is_private?
       self.private_scene
@@ -56,11 +57,15 @@ module AresMUSH
           .uniq
     end
     
-    def delete_poses
-      scene_poses.each { |p| p.delete }
+    def delete_scene_references
+      delete_poses
       if (self.scene_log)
         self.scene_log.delete
       end
+    end
+    
+    def delete_poses
+      scene_poses.each { |p| p.delete }
     end
     
     def all_info_set?
@@ -81,6 +86,10 @@ module AresMUSH
       list1 = links1.map { |l| l.log2 }
       list2 = links2.map { |l| l.log1 }
       list1.concat(list2).uniq
+    end
+    
+    def participant_names
+      self.participants.sort { |p| p.name }.map { |p| p.name }
     end
     
     def find_link(other_scene)

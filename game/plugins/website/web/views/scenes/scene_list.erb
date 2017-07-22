@@ -31,7 +31,7 @@
             <%= s.icdate %>
         </td>
         <td>
-            <%= s.participants.map { |p| p.name }.join(", ")%>
+            <%= s.participant_names.join(", ")%>
         </td>
     </tr>
 <% end %>

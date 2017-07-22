@@ -39,6 +39,12 @@ load 'web/controllers/config/config_game_info.rb'
 load 'web/controllers/help/help.rb'
 load 'web/controllers/help/help_topic.rb'
 
+load 'web/controllers/jobs/job_create.rb'
+load 'web/controllers/jobs/job_reply.rb'
+load 'web/controllers/jobs/job.rb'
+load 'web/controllers/jobs/jobs_index.rb'
+
+
 load 'web/controllers/locations/locations.rb'
 
 load 'web/controllers/login/login.rb'
@@ -49,7 +55,6 @@ load 'web/controllers/mail/mail_message.rb'
 load 'web/controllers/mail/mail_reply.rb'
 load 'web/controllers/mail/mail_send.rb'
 
-load 'web/controllers/scenes/scene_add_pose.rb'
 load 'web/controllers/scenes/scene_create.rb'
 load 'web/controllers/scenes/scene_edit_participants.rb'
 load 'web/controllers/scenes/scene_edit_related.rb'
@@ -62,6 +67,7 @@ load 'web/controllers/web.rb'
 load 'web/controllers/formatters.rb'
 load 'web/controllers/files.rb'
 
+load 'wiki_markdown_formatter.rb'
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'

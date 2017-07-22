@@ -81,8 +81,7 @@ module AresMUSH
       
       def format_bg(bg)
         colorized = ClientFormatter.format bg
-        decolorized = colorized.gsub(/\e\[(\d+)(;\d+)*m/, '')
-        decolorized
+        AnsiFormatter.strip_ansi colorized
       end
     end
   end
