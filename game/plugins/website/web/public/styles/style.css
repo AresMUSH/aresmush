@@ -158,7 +158,7 @@ blockquote{
     background-color: #F8F8F8;
     color: #;
     border: 0px;
-    border-left: 1px solid red;
+    border-left: 1px solid #995800;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
     -webkit-margin-start: 40px;
@@ -566,6 +566,13 @@ SCENES SCREEN
     margin-left: 25px;
     color: #999;
     font-style: italic;
+}
+
+.scene-set-pose {
+    margin-left: 25px;
+    border-left: 1px solid #995800;
+    font-style: italic;
+    padding: 0px 10px 10px 10px;
 }
 
 .scene-log {
