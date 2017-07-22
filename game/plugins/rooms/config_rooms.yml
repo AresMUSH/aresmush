@@ -13,3 +13,5 @@ rooms:
         "dig/tel" : "build"
         "mjoin" : "meetme/join"
         "msummon" : "meetme/bring"
+        "room/type" : "roomtype"
+        "room/area" : "area"
