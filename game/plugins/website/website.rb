@@ -39,6 +39,7 @@ load 'web/controllers/config/config_game_info.rb'
 load 'web/controllers/help/help.rb'
 load 'web/controllers/help/help_topic.rb'
 
+load 'web/controllers/jobs/job_close.rb'
 load 'web/controllers/jobs/job_create.rb'
 load 'web/controllers/jobs/job_reply.rb'
 load 'web/controllers/jobs/job.rb'

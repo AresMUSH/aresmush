@@ -1,3 +1,7 @@
+<h1><%= @char.name %> Page Source</h1>
+
+<h2>Profile</h2>
+
     <% @char.profile.each do |section, data| %>
         
         
@@ -10,6 +14,25 @@
             
                 <div class="ansi">
                 <%= format_output_for_html data %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+<h2>Relationships</h2>
+
+    <% @char.relationships.each do |section, data| %>
+        
+        
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <%= section %>
+            </div>
+            
+            <div class="panel-body">
+            
+                <div class="ansi">
+                <%= format_output_for_html data['relationship'] %>
                 </div>
             </div>
         </div>
