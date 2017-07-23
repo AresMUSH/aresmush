@@ -1,7 +1,7 @@
 module AresMUSH
   module Events
-    def self.upcoming_events
-      self.last_events || []
+    def self.upcoming_events(days_ahead = 14)
+      Event.sorted_events.select { |e| e.is_upcoming?(days_ahead) }
     end
         
     def self.calendar_view_url

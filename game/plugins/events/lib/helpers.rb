@@ -1,60 +1,37 @@
 module AresMUSH
   module Events
-
-    mattr_accessor :last_events, :last_event_time
+    def self.can_manage_events?(actor)
+      actor.has_permission?("manage_events")
+    end
     
-    def self.refresh_events(days_ahead = 14)
-      Global.dispatcher.spawn("Loading Teamup Events", nil) do
-        startDate = DateTime.now
-        endDate = startDate + days_ahead
-
-        Global.logger.debug "Loading events from Teamup."
-        teamup = TeamupApi.new
+    def self.parse_date_time_desc(str)
+      begin
+        split = str.split('/')
+        date_format = Global.read_config("date_and_time", "short_date_format")
+        date = Date.strptime(split[0..2].join('/'), date_format)
+        time = split[3]
+        desc = split[4..-1].join("/")
         
-        old_events = {}
-        if (self.last_events)
-          self.last_events.each do |e|
-            if (e.start_datetime_standard > DateTime.now)
-              old_events[e.title] = e.start_datetime_standard
-            end
-          end
-        end
+        return date, time, desc, nil
+      rescue Exception => e
+        puts e
+        error = t('events.invalid_event_date', 
+                   :format_str => Global.read_config("date_and_time", "date_entry_format_help"))
         
-        self.last_events = teamup.get_events(startDate, endDate).select { |e| e.start_datetime_standard > DateTime.now }
-        self.last_event_time = Time.now
-        
-        new_events = {}
-        self.last_events.each do |e|
-          new_events[e.title] = e.start_datetime_standard
-        end
-                
-        cancelled_events = old_events.keys - new_events.keys
-        added_events = new_events.keys - old_events.keys
-        updated_events = (new_events.keys & old_events.keys).select { |k| old_events[k] != new_events[k] }
-        
-
-        list = []
-        added_events.each do |event| 
-          list << "#{t('events.event_added')} #{event} @ #{new_events[event]}"
-        end
-        
-        updated_events.each do |event| 
-          list << "#{t('events.event_updated')} #{event} @ #{new_events[event]}"
-        end
-        
-        cancelled_events.each do |event| 
-          list << "#{t('events.event_cancelled')} #{event} @ #{old_events[event]}"
-        end
-        
-        if (list.any?)
-          Global.client_monitor.emit_all_ooc t('events.new_events', :events => list.join("%r%% - "))
-        end
+        return nil, nil, nil, error
       end
     end
     
-    def self.event_titles
-      return [] if !self.last_events
-      self.last_events.map { |e| "#{e.title} #{e.start_datetime_standard}"}
+    
+    def self.with_an_event(num, client, enactor, &block)
+      events = Events.upcoming_events
+      if (num < 0 || num > events.count)
+        client.emit_failure t('events.invalid_event')
+        return
+      end
+      
+      yield events.to_a[num - 1]
     end
+    
   end
 end
