@@ -76,7 +76,7 @@ fs3combat:
             description: "Unguided Anti-Vehicle Rockets"
             skill: Gunnery
             lethality: 0
-            penetration: 12
+            penetration: 9
             weapon_type: Ranged
             is_automatic: false
             ammo: 20
@@ -269,13 +269,13 @@ fs3combat:
         Unarmed:
             description: "Unarmed"
             skill: Melee
-            lethality: 0
+            lethality: -20
             penetration: 0
             weapon_type: Melee
             is_automatic: false
             # ammo: 0
             recoil: 0
-            damage_type: Stun
+            damage_type: Physical
             accuracy: 0
             has_shrapnel: false
             allowed_specials: 
@@ -318,7 +318,7 @@ fs3combat:
             description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."
             skill: Gunnery
             lethality: 0
-            penetration: 10
+            penetration: 9
             weapon_type: Ranged
             is_automatic: false
             # ammo: 0
