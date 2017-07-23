@@ -43,6 +43,25 @@ module AresMUSH
           redirect '/chars'
         end
       end
+            
+      @tab = params[:tab] || "None"
+      @page = params[:page] ? params[:page].to_i : 1
+      
+      if (@tab != "None")
+        list = @char.scenes_starring.select { |s| s.scene_type == @tab}
+          .select { |s| s.shared }
+          .sort_by { |s| s.date_shared || s.created_at }
+          .reverse
+      
+        paginator = AresMUSH::Paginator.paginate list, @page, 2
+        @scenes = paginator.items
+        @pages = paginator.total_pages
+      
+        if (paginator.out_of_bounds?)
+          flash[:error] = "There aren't that many pages."
+          redirect "/char/#{id}"
+        end
+      end
       
       erb :"chars/char"
     end

@@ -16,7 +16,25 @@ module AresMUSH
     end
     
     get '/scenes' do
-      @scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse
+      @page = params[:page] ? params[:page].to_i : 1
+      @tab = params[:tab] || "Recent"
+      
+      list = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse
+      if (@tab == "Recent")
+        list = list[0..15]
+      else
+        list = list.select { |s| s.scene_type == @tab }
+      end
+      
+      paginator = AresMUSH::Paginator.paginate list, @page, 25
+      @scenes = paginator.items
+      @pages = paginator.total_pages
+      
+      if (paginator.out_of_bounds?)
+        flash[:error] = "There aren't that many pages."
+        redirect "/scenes"
+      end
+      
       @scene_types = Scenes.scene_types
       erb :"scenes/index"
     end
