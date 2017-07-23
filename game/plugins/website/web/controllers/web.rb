@@ -45,5 +45,11 @@ module AresMUSH
     get "/play" do
       erb :"play"
     end
+    
+    get '/styles/:name.css' do |name|
+      content_type 'text/css', :charset => 'utf-8'
+      scss(:"styles/#{name}", Compass.sass_engine_options )
+    end
+    
   end
 end
