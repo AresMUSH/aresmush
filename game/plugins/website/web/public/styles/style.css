@@ -704,6 +704,13 @@ ul.char-ability-list {
     padding-bottom: 15px;
 }
 
+.char-scene-list li {
+    display: inline;
+}
+
+
+/*.char-scene-list li:before { content: "\2666  "; }*/
+
 
 @media only screen and (max-width: 768px) {
   body {

@@ -16,67 +16,16 @@
   
     <div id="<%= type.parameterize('_') %>" class="tab-pane fade ">
   
-        <ul>
+        <div class="row">
             <% char_scenes_by_type(@char, type).select { |s| s.shared }.reverse.each do |s| %>
-            <li><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
+            <div class="col col-xs-4"><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
                 <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
-            </li>
+            </div>
             <% end %>
-        </ul>
+        </div>
       
     </div>
   
     <% end %>
   
-</div>
-      
-
-<a name="scenes"></a>
-
-<ul class="nav nav-tabs">
-    <li class="<%= 'active' if @tab == "None" %>"><a href="/char/<%= @char.id %>">+</a></li>
-  
-    <% AresMUSH::Scenes.scene_types.each do |type| %>
-    <li class="<%= 'active' if @tab == type %>"><a href="/char/<%= @char.id %>?tab=<%= type %>"><%= type %></a></li>
-    <% end %>
-</ul>
-
-
-<div class="tab-content">
-
-    <% if @tab == "None" %>
-    <div>
-        <div class="tab-cover">Scenes</div>
-    </div>
-  
-    <% else %>
-
-    <div class="tab-pane active">
-
-        <ul>
-            <% @scenes.each do |s| %>
-            <li><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
-                <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
-            </li>
-            <% end %>
-        </ul> 
-
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-    
-                <% @pages.times do |p| %>
-                <% if p + 1 == @page %>
-                    <li class="active">
-                <% else %>
-                    <li>
-                <% end %>
-                <a href="/char/<%= @char.id %>?tab=<%= @tab %>&page=<%= p + 1 %>"><%= p + 1 %></a></li>
-                <% end %>
-    
-            </ul>
-        </nav>
-  
-    </div>
-
-    <% end %>
 </div>
