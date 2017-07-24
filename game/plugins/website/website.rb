@@ -35,6 +35,8 @@ load 'web/controllers/config/config_names.rb'
 load 'web/controllers/config/config_fs3combat.rb'
 load 'web/controllers/config/config_fs3skills.rb'
 load 'web/controllers/config/config_game_info.rb'
+load 'web/controllers/config/config_web.rb'
+
 
 load 'web/controllers/events/events.rb'
 

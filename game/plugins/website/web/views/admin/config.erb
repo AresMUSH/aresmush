@@ -10,7 +10,7 @@
 </div>
 <% end %>
 
-<h1><%= @path %></h1>
+<h1><%= File.basename(@path) %></h1>
 
 <% if @plugin %>
 <p>
@@ -18,7 +18,7 @@
 </p>
 <% end %>
 <form method="POST" action="/admin/config/update">
-<div id="editor" class="ace-editor"><%= @config %></div>
+<div id="editor" class="ace-editor"><%= Rack::Utils.escape_html @config %></div>
 <input type="hidden" id="contents" name="contents" />
 <input type="hidden" id="path" name="path" value="<%= @path %>" />
 <input type="hidden" name="plugin" value="<%= @plugin %>" />
