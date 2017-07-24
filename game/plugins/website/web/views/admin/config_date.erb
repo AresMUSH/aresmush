@@ -15,7 +15,7 @@
         
         <div class="form-group row">
     
-        <label for="short_date_format" class="col-xs-2 col-form-label">Short Date Format:</label> 
+        <label for="short_date_format" class="col-xs-3 col-form-label">Short Date Format:</label> 
         <input type="text" name="short_date_format" size="100" value="<%= @date['short_date_format'] %>"/>
         <div class="hint">American: %m/%d/%Y  &nbsp; &nbsp; &nbsp; Euro: %d-%m-%Y</div>
 
@@ -23,7 +23,7 @@
 
         <div class="form-group row">
     
-        <label for="long_date_format" class="col-xs-2 col-form-label">Long Date Format:</label> 
+        <label for="long_date_format" class="col-xs-3 col-form-label">Long Date Format:</label> 
         <input type="text" name="long_date_format" size="100" value="<%= @date['long_date_format'] %>"/>
         <div class="hint">American: %a %b %d, %Y %l:%M%P  &nbsp; &nbsp; &nbsp; Euro: %d-%m-%Y %k%M</div>
 
@@ -31,17 +31,34 @@
 
         <div class="form-group row">
     
-        <label for="time_format" class="col-xs-2 col-form-label">Time Format:</label> 
+        <label for="time_format" class="col-xs-3 col-form-label">Time Format:</label> 
         <input type="text" name="time_format" size="100" value="<%= @date['time_format'] %>"/>
         <div class="hint">American: %l:%M%P  &nbsp; &nbsp; &nbsp; Euro: %k%M</div>
 
         </div>
 
+        
         <div class="form-group row">
     
-        <label for="date_entry_format_help" class="col-xs-2 col-form-label">Date Entry Format Help:</label> 
+        <label for="date_and_time_entry_format" class="col-xs-3 col-form-label">Date/Time Entry Format:</label> 
+        <input type="text" name="date_and_time_entry_format" size="100" value="<%= @date['date_and_time_entry_format'] %>"/>
+        <div class="hint">American: %m/%d/%Y %H:%M%p  &nbsp; &nbsp; &nbsp; Euro: %d-%m-%Y %k%M</div>
+
+        </div>
+        
+        <div class="form-group row">
+    
+        <label for="date_entry_format_help" class="col-xs-3 col-form-label">Date Entry Format Help:</label> 
         <input type="text" name="date_entry_format_help" size="100" value="<%= @date['date_entry_format_help'] %>"/>
         <div class="hint">American: mm/dd/yyyy  &nbsp; &nbsp; &nbsp; Euro: yyyy-mm-dd</div>
+
+        </div>
+        
+        <div class="form-group row">
+    
+        <label for="date_and_time_entry_format_help" class="col-xs-3 col-form-label">Date/Time Entry Format Help:</label> 
+        <input type="text" name="date_and_time_entry_format_help" size="100" value="<%= @date['date_and_time_entry_format_help'] %>"/>
+        <div class="hint">American: mm/dd/yyyy hh:mm(am/pm)  &nbsp; &nbsp; &nbsp; Euro: yyyy-mm-dd hh:mm</div>
 
         </div>
         

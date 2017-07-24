@@ -17,3 +17,6 @@ date_and_time:
     date_entry_format_help: "mm/dd/yyyy"
     # European style
     # date_entry_format_help: "yyyy-mm-dd"
+    
+    date_and_time_entry_format: "%m/%d/%Y %l:%M%p"
+    date_and_time_entry_format_help: "mm/dd/yyyy hh:mm<am or pm>"

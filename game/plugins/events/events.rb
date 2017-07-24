@@ -47,6 +47,8 @@ module AresMUSH
           else
             return EventsCmd
           end
+        when "all"
+          return EventsCmd
         when "create"
           return EventCreateCmd
         when "edit"

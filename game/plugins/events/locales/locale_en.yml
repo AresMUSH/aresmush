@@ -7,8 +7,11 @@ en:
         who_title: "Who:"
         where_title: "Where:"
         
-        event_deleted: "Event deleted."
-        event_updated: "Event updated."
-        event_created: "Event created."
+        event_deleted: "%{name} has deleted event %{title}."
+        event_updated: "%{name} has updated event %{title} - %{starts}."
+        event_created: "%{name} has created a new event: %{title} - %{starts}."
         
         invalid_event_date: "Invalid event date format.  The date needs to be in this form: %{format_str}"
+        
+        event_starting_soon:  "Reminder: Event %{title} is starting at %{starts}."
+        

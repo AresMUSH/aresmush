@@ -6,9 +6,6 @@ module AresMUSH
       @recaptcha_secret = Global.read_config("secrets", "recaptcha", "secret")
       @recaptcha_site_key = Global.read_config("secrets", "recaptcha", "site_key")
       
-      @events_calendar = Global.read_config("secrets", "events", "calendar")
-      @events_api_key = Global.read_config("secrets", "events", "api_key")
-      
       @aws_key_id = Global.read_config("secrets", "aws", "key_id")
       @aws_secret_key = Global.read_config("secrets", "aws", "secret_key")
       @aws_bucket = Global.read_config("secrets", "aws", "bucket")
@@ -26,11 +23,7 @@ module AresMUSH
       # ----------------
       # Secrets
       # ----------------
-      
-      @secrets['events'] = {
-        'calendar' => @params[:events_calendar],
-        'api_key' => @params[:events_api_key]
-      }
+            
       @secrets['recaptcha'] = {
         'secret' => @params[:recaptcha_secret],
         'site_key' => @params[:recaptcha_site_key]

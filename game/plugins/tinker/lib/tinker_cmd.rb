@@ -14,6 +14,7 @@ module AresMUSH
       end
       
       def handle
+        Event.all.each { |e| client.emit e.inspect }
         client.emit_success "Done!"
       end
 

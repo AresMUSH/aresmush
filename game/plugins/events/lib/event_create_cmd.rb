@@ -20,20 +20,20 @@ module AresMUSH
       end
       
       def handle
-        date, time, desc, error = Events.parse_date_time_desc(self.date_time_desc)
+        datetime, desc, error = Events.parse_date_time_desc(self.date_time_desc)
         
         if (error)
           client.emit_failure error
           return
         end
         
-        Event.create(title: self.title, 
-          time: time, 
+        event = Event.create(title: self.title, 
+          starts: datetime, 
           description: desc,
-          date: date, 
           character: enactor)
           
-        client.emit_success t('events.event_created')
+          Global.client_monitor.emit_all_ooc t('events.event_created', :title => event.title,
+             :starts => event.start_time_standard, :name => enactor_name)
       end
     end
   end

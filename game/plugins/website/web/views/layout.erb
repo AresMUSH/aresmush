@@ -203,10 +203,11 @@
                                
                            </div>
                            <% @events.each do |e| %>
-                           <p><b><%= e.title %></b><br/><%= e.start_datetime_standard %></p>
+                           <p><b><a href="/event/<%= e.id %>"><%= e.title %></a></b><br/><%= e.start_datetime_standard %></p>
                            <% end %>
-            
-                           <a href="<%= @calendar %>">Full Calendar</a>
+                           
+                           <a href="/events">All Events</a>
+                           
                        </div>
                        
                        

@@ -20,7 +20,8 @@ module AresMUSH
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
           if (Events.can_manage_events?(enactor) || enactor == event.character)
-            grab_text = "#{event.title}/#{event.date.month}/#{event.date.day}/#{event.date.year}/#{event.time}/#{event.description}"
+            start_time = OOCTime.format_date_time_for_entry(event.starts)
+            grab_text = "#{event.title}/#{start_time}/#{event.description}"
             Utils.grab client, enactor, "event/update #{self.num}=#{grab_text}"
           else
             client.emit_failure t('dispatcher.not_allowed')

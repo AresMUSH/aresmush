@@ -11,9 +11,9 @@ The events system is an in-game calendar that lets you schedule events.
 
 You can create and edit your own events.  Characters with the `manage_events` permission can edit other peoples' events too.
 
-`event/create <title>=<date>/<time>/<description>`
+`event/create <title>=<date and time>/<description>`
 `event/edit <#>` - Grabs the current event into your edit buffer (see help edit)
-`event/update <#>=<title>/<date>/<time>/<description>`
+`event/update <#>=<title>/<date and time>/<description>`
 `event/delete <#>`
 
 Events are color coded based on how close they are.
