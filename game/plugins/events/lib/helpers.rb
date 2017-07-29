@@ -10,6 +10,7 @@ module AresMUSH
         date = split[0..2].join('/')
         desc = split[3..-1].join("/")
         date_time = OOCTime.parse_datetime(date.strip.downcase)
+        
         return date_time, desc, nil
       rescue Exception => e
         error = t('events.invalid_event_date', 

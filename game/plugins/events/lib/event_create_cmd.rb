@@ -33,7 +33,7 @@ module AresMUSH
           character: enactor)
           
           Global.client_monitor.emit_all_ooc t('events.event_created', :title => event.title,
-             :starts => event.start_time_standard, :name => enactor_name)
+             :starts => event.start_datetime_standard, :name => enactor_name)
       end
     end
   end
