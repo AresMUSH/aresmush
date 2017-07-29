@@ -31,7 +31,15 @@ module AresMUSH
         template_files = Dir[File.join(game_path, "plugins", plugin_name, "templates", "**", "*")]
         @plugin_config[plugin_name]["templates"] = template_files.map { |f| f.gsub(game_path, "") }
         
+        
       end
+      
+      template_files = Dir[File.join(game_path, "plugins", 'website', "web", "views", "**", "*")]
+      @plugin_config['website']["templates"] = template_files
+          .select { |f| !File.directory?(f) }
+          .map { |f| f.gsub(game_path, "") }
+      
+      
       erb :"admin/config_index"
     end
 

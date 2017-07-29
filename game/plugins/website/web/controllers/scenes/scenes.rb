@@ -36,7 +36,7 @@ module AresMUSH
       end
       
       @scene_types = Scenes.scene_types
-      erb :"scenes/index"
+      erb :"scenes/scenes_index"
     end
     
     get '/scene/:id' do |id|

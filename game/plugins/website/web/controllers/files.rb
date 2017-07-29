@@ -20,7 +20,7 @@ module AresMUSH
     
     get '/files' do
       @files = uploaded_files
-      erb :"files/index"
+      erb :"files/files_index"
     end
     
     get '/files/upload', :auth => :approved  do
@@ -49,6 +49,7 @@ module AresMUSH
       
       tempfile = file[:tempfile]
       name = params[:filename]
+      allow_overwrite = params[:allow_overwrite].to_bool
       
       if (!tempfile || !name)
         flash[:error] = "Missing file or filename."
@@ -63,7 +64,7 @@ module AresMUSH
       
       file_path = File.join(upload_path, name)
       
-      if (File.exists?(file_path))
+      if (File.exists?(file_path) && !allow_overwrite)
         flash[:error] = "That file already exists."
         redirect '/files'
       end

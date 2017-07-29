@@ -17,7 +17,7 @@ module AresMUSH
       @mail = @user.mail.select { |d| d.tags && d.tags.include?(@tag) }
       @mail.sort_by { |m| m.created_at }
               
-      erb :"mail/index"
+      erb :"mail/mail_index"
     end
   end
 end

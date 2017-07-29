@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def postprocess(text)
-        text = text.gsub(/\/\/([^\/\r\n]+)\/\//, '*\1*')
+        text = text.gsub(/\/\/([^\/\r\n]+)\/\//, '<em>\1</em>')
         text = text.gsub(/\&quot\;/i, '"')
         text = text.gsub(/\[\[div([^\]]*)\]\]/i, '<div \1>')
         text = text.gsub(/\[\[span([^\]]*)\]\]/i, '<span \1>')

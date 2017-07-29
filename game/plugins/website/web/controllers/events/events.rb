@@ -3,7 +3,7 @@ module AresMUSH
     
     get '/events' do
       @events = AresMUSH::Events.upcoming_events              
-      erb :"events/index"
+      erb :"events/events_index"
     end
     
     get '/event/:id' do |id|

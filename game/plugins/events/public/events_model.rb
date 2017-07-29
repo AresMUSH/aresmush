@@ -23,13 +23,12 @@ module AresMUSH
     end
     
     def is_upcoming?(days)
-      days_away = (self.starts.to_date - DateTime.now.to_date)
+      days_away = time_until_event / 86400.0
       days_away > 0 && days_away < days
     end
     
     def is_past?
-      days_away = (self.starts.to_date - DateTime.now.to_date)
-      days_away < 0
+      time_until_event < 0
     end    
     
     def time_until_event
@@ -55,7 +54,6 @@ module AresMUSH
       local_time = OOCTime.local_long_timestr(enactor, starts)
       "#{local_time}"
     end
-    
     
     def start_time_standard
       timezone = Global.read_config("events", "calendar_timezone")

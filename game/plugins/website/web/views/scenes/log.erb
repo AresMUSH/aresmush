@@ -52,6 +52,8 @@
     <%= format_markdown_for_html @scene.scene_log.log %>
 </div>
     
+<p><a href="/scenes"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Scenes</a></p>
+
 
 <% if can_access_scene?(@scene) && is_approved? %>
 
