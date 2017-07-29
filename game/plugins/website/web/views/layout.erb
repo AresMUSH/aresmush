@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= game_name %><%= @page_title ? " - #{@page_title}" : "" %></title>
+    <title><%= @page_title || game_name %></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -69,7 +69,9 @@
                 
                 <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
             
-            </a> | <a href="/logout">Logout</a> </p>
+            </a> 
+            | <a href="/char/<%= @user.id %>">Profile</a>
+            | <a href="/logout">Logout</a> </p>
             <% else %>
             <p><a href="/login">Login</a> 
                 <% if enable_registration %>
@@ -121,6 +123,7 @@
                   <li><a href="/jobs">Jobs</a></li> 
                   <li><a href="/admin">Setup</a></li>
                   <li><a href="/admin/logs">Logs</a></li>
+                  <li><a href="/admin/tinker">Tinker</a></li>
                 </ul>
               </li>
               <% end %>
@@ -200,10 +203,11 @@
                                
                            </div>
                            <% @events.each do |e| %>
-                           <p><b><%= e.title %></b><br/><%= e.start_datetime_standard %></p>
+                           <p><b><a href="/event/<%= e.id %>"><%= e.title %></a></b><br/><%= e.start_datetime_standard %></p>
                            <% end %>
-            
-                           <a href="<%= @calendar %>">Full Calendar</a>
+                           
+                           <a href="/events">All Events</a>
+                           
                        </div>
                        
                        

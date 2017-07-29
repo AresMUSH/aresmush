@@ -12,7 +12,7 @@ module AresMUSH
     
     get '/bbs' do
       @boards = BbsBoard.all_sorted
-      erb :"bbs/index"
+      erb :"bbs/bbs_index"
     end
     
   end

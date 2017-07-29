@@ -62,6 +62,14 @@ module AresMUSH
       register Sinatra::Flash
       enable :sessions
       set :public_folder, File.join(AresMUSH.game_path, 'plugins', 'website', 'web', 'public')
+      
+      Compass.configuration do |config|
+         config.project_path = File.join(AresMUSH.game_path, 'plugins', 'website', 'web')
+         config.sass_dir = 'styles'
+       end
+
+       set :sass, Compass.sass_engine_options
+       set :scss, Compass.sass_engine_options
     end
     
     register do

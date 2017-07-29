@@ -1,16 +1,17 @@
 en:
     events:
         events_title: "Events in the Next 14 Days"
-        url_title: "To add/edit events or access the full calendar, go to:"
-        all_day: "All Day Event"
         invalid_event: "That is not a valid event number."
         
         starts_at_title: "Starts At:"
         who_title: "Who:"
         where_title: "Where:"
         
-        events_refreshed: "It takes a moment for the events to refresh from the calendar server.  Try the `events` command in a few seconds."
-        new_events: "New events have been scheduled or updated!%R%%% - %{events}"
-        event_added: "(added)"
-        event_cancelled: "(cancelled)"
-        event_updated: "(updated)"
+        event_deleted: "%{name} has deleted event %{title}."
+        event_updated: "%{name} has updated event %{title} - %{starts}."
+        event_created: "%{name} has created a new event: %{title} - %{starts}."
+        
+        invalid_event_date: "Invalid event date format.  The date needs to be in this form: %{format_str}"
+        
+        event_starting_soon:  "Reminder: Event %{title} is starting at %{starts}."
+        

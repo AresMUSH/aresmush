@@ -13,7 +13,6 @@ module AresMUSH
     
     before "*" do
       @events = Events.upcoming_events
-      @calendar = Events.calendar_view_url
       @recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse[0..10] || []
       
     end
@@ -45,5 +44,11 @@ module AresMUSH
     get "/play" do
       erb :"play"
     end
+    
+    get '/styles/:name.css' do |name|
+      content_type 'text/css', :charset => 'utf-8'
+      scss(:"styles/#{name}", Compass.sass_engine_options )
+    end
+    
   end
 end

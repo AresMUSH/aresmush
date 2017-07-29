@@ -1,7 +1,9 @@
 module AresMUSH
   module FS3Combat
     def self.damage_severities
-      [ 'HEAL', 'GRAZE', 'FLESH', 'IMPAIR', 'INCAP' ]
+      # Deliberately leaves off GRAZE wounds as they're not tracked and shouldn't
+      # ever be assigned through damage/inflict.
+      [ 'HEAL', 'FLESH', 'IMPAIR', 'INCAP' ]
     end
     
     def self.can_manage_damage?(actor)
@@ -39,6 +41,9 @@ module AresMUSH
     def self.inflict_damage(target, severity, desc, is_stun = false, is_mock = false)
       Global.logger.info "Damage inflicted on #{target.name}: #{desc} #{severity} stun=#{is_stun}"
 
+      # Graze wounds aren't saved.
+      return if severity == "GRAZE"
+      
       params = {
         :description => desc,
         :current_severity => severity,
@@ -163,7 +168,10 @@ module AresMUSH
        return if healing == 0
 
        if (wound.is_stun)
-         points = points * 3
+         wound.update(current_severity: "HEAL")
+         wound.update(healing_points: 0)
+         wound.update(healed: true)
+         return
        end
        
        healing = healing - points      

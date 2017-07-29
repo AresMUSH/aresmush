@@ -1,4 +1,5 @@
 tinkerfoo.rb
+.sass-cache
 *.log
 secrets.yml
 errors.txt

@@ -35,6 +35,7 @@ require 'sinatra/base'
 require "sinatra/reloader"
 require 'sinatra/flash'
 require 'thin'
+require 'compass'
 
 require 'erubis'
 require 'json'

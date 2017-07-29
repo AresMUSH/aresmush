@@ -35,10 +35,16 @@ load 'web/controllers/config/config_names.rb'
 load 'web/controllers/config/config_fs3combat.rb'
 load 'web/controllers/config/config_fs3skills.rb'
 load 'web/controllers/config/config_game_info.rb'
+load 'web/controllers/config/config_web.rb'
+load 'web/controllers/config/config_webfiles.rb'
+
+
+load 'web/controllers/events/events.rb'
 
 load 'web/controllers/help/help.rb'
 load 'web/controllers/help/help_topic.rb'
 
+load 'web/controllers/jobs/job_close.rb'
 load 'web/controllers/jobs/job_create.rb'
 load 'web/controllers/jobs/job_reply.rb'
 load 'web/controllers/jobs/job.rb'

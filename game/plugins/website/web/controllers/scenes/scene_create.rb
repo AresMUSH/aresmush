@@ -21,7 +21,7 @@ module AresMUSH
       @scene.participants.add @user
       
       log = SceneLog.create(scene: @scene, log: params[:log])
-      @scene.update(log: log)
+      @scene.update(scene_log: log)
       
       flash[:info] = "Scene created!"
       redirect "/scene/#{@scene.id}"

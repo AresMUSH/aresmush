@@ -103,7 +103,7 @@ module AresMUSH
       
       describe :heal do
         before do
-          Global.stub(:read_config).with("fs3combat", "healing_points", "GRAZE") { 5 }
+          Global.stub(:read_config).with("fs3combat", "healing_points", "FLESH") { 5 }
           Global.stub(:read_config).with("fs3combat", "healing_points", "HEAL") { 0 }
           @damage = double
           @damage.stub(:is_stun) { false }
@@ -123,26 +123,27 @@ module AresMUSH
           FS3Combat.heal(@damage, 2)          
         end
         
-        it "should triple healing points for a stun wound" do
+        it "should heal stun wounds overnight" do
           @damage.stub(:healing_points) { 8 }
           @damage.stub(:is_stun) { true }
-          @damage.should_receive(:update).with(healing_points: 2)
+          @damage.should_receive(:update).with(healing_points: 0)
           @damage.should_receive(:update).with(healed: true)
+          @damage.should_receive(:update).with(current_severity: "HEAL")
           FS3Combat.heal(@damage, 2)          
         end
         
         it "should lower severity and reset points when a wound gets enough healing points" do
           @damage.stub(:healing_points) { 2 }
-          @damage.stub(:current_severity) { "FLESH" }
+          @damage.stub(:current_severity) { "IMPAIR" }
           @damage.should_receive(:update).with(healing_points: 5)
           @damage.should_receive(:update).with(healed: true)
-          @damage.should_receive(:update).with(current_severity: "GRAZE")
+          @damage.should_receive(:update).with(current_severity: "FLESH")
           FS3Combat.heal(@damage, 2)  
         end
         
         it "should reset healing points for a healed wound" do
           @damage.stub(:healing_points) { 2 }
-          @damage.stub(:current_severity) { "GRAZE" }
+          @damage.stub(:current_severity) { "FLESH" }
           @damage.should_receive(:update).with(healing_points: 0)
           @damage.should_receive(:update).with(healed: true)
           @damage.should_receive(:update).with(current_severity: "HEAL")
@@ -157,7 +158,7 @@ module AresMUSH
           @damage2 = double
           @damage3 = double
           
-          @damage1.stub(:current_severity) { "GRAZE" }
+          @damage1.stub(:current_severity) { "FLESH" }
           @damage2.stub(:current_severity) { "INCAP" }
           @damage3.stub(:current_severity) { "IMPAIR" }
           

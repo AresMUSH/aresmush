@@ -5,6 +5,10 @@
 
 <p><i><%= @job.created_date_str(@user) %></i></p>
 
+<p><label class="job-status-<%= @job.status %>"><%= @job.status %></label></p>
+
+<hr/>
+
 <div class="ansi">
     <%= format_output_for_html @job.description %>
 </div>
@@ -44,3 +48,6 @@
         
     </form>
 </div>
+
+        <a href="/job/<%= @job.id %>/close" class="btn btn-primary">Close Job</a></p>
+

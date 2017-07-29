@@ -1,0 +1,36 @@
+<h1>Scenes</h1>
+
+<% if is_approved? %>
+
+<div class="pull-right">
+    <a href="/scenes/create" class="btn btn-primary">Create Scene</a>
+</div>
+
+<% end %>
+
+<ul class="nav nav-tabs">
+  <li class="<%= 'active' if @tab == "Recent" %>"><a href="/scenes?tab=Recent">Recent</a></li>
+  
+  <% @scene_types.each do |type| %>
+      <li class="<%= 'active' if @tab == type %>"><a href="/scenes?tab=<%= type %>"><%= type %></a></li>
+  <% end %>
+</ul>
+
+    <p><%= erb :"scenes/scene_list", :locals => { scenes: @scenes } %></p>
+ 
+
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    
+     <% @pages.times do |p| %>
+      <% if p + 1 == @page %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <a href="/scenes?tab=<%= @tab %>&page=<%= p + 1 %>"><%= p + 1 %></a></li>
+    <% end %>
+    
+  </ul>
+</nav>
+

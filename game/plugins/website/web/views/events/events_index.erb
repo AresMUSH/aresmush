@@ -1,0 +1,32 @@
+<h1>Events</h1>
+
+
+<table class="table table-striped">
+
+<thead>
+    <tr>
+        <th>Title</th>
+        <th>Organizer</th>
+        <th>Date/Time</th>
+    </tr>
+</thead>
+        
+<% @events.each do |e| %>
+
+<tr>
+    <td>
+        
+        <a href="/event/<%= e.id %>"><%= e.title %></a>
+    </td>
+    
+    <td>
+        <%= e.organizer_name %>
+    </td>
+    <td>
+        <%= e.start_time_local(@user) %> (<%= e.start_time_standard %>)
+    </td>
+</td>
+
+<% end %>
+
+</table>
