@@ -1,0 +1,29 @@
+<h1><%= @event.title %></h1>
+
+<p><a href="/events"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Events</a></p>
+
+<table>
+    <tr>
+        <td>
+            <b>Organizer:</b> 
+        </td>
+        <td>
+            <%= @event.organizer_name %>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <b>Starts:</b>
+        </td>
+        <td>
+             <%= @event.start_time_local(@user) %> (<%= @event.start_time_standard %>)
+        </td>
+    </tr>
+    
+</table>
+<hr/>
+    
+<div class="ansi">
+    <%= format_markdown_for_html @event.description %>
+</div>

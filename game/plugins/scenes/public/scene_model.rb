@@ -37,7 +37,7 @@ module AresMUSH
     
     set :participants, "AresMUSH::Character"
     
-    before_delete :delete_scene_references
+    before_delete :delete_poses
     
     def is_private?
       self.private_scene
@@ -57,15 +57,11 @@ module AresMUSH
           .uniq
     end
     
-    def delete_scene_references
-      delete_poses
+    def delete_poses
+      scene_poses.each { |p| p.delete }
       if (self.scene_log)
         self.scene_log.delete
       end
-    end
-    
-    def delete_poses
-      scene_poses.each { |p| p.delete }
     end
     
     def all_info_set?

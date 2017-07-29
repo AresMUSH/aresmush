@@ -1,9 +1,11 @@
+@import 'colors';
+
 /* -------------------------
 BASIC CONTAINERS
 ------------------------- */
 
 .container {
-    background-color: #ccc;
+    background-color: $gutter-color;
     margin: 0;
     width: 100%;
     padding-left: 25px;
@@ -13,7 +15,7 @@ BASIC CONTAINERS
 ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
-    background-color: gray;
+    background-color: $gutter-color;
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
@@ -33,7 +35,7 @@ BASIC CONTAINERS
 .title-wrap
 {    
     height: 149px;   
-    color: white;
+    color: $primary-words-color;
     padding: 10px;
     padding-left: 20px;    
     padding-top: 21px;
@@ -45,7 +47,7 @@ BASIC CONTAINERS
 .body-wrap
 {
     padding: 0px 0px 0px 20px;
-    background-color: #fff;
+    background-color: $background-color;
 }
 
 .body-container {
@@ -63,33 +65,33 @@ NAVIGATION
 ------------------------- */
 
 a {
-    color: #995800;    
+    color: $secondary-color;    
     text-decoration: none;
 }
 
 a:hover,
 a:focus{
-    color: #182334;
+    color: $primary-color;
     text-decoration: none;
 }
 
 .user-bar a {
-    color: #fff;
+    color: $primary-words-color;
 }
 
 .header-wrap nav
 {
-    background-color: rgba(24, 35, 52, .45);
+    background-color: rgba(0, 0, 0, .45);
     border: none;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color: white;
+    color: $primary-words-color;
 }
 .navbar-inverse .navbar-nav>li>a:hover {
-    color: #999999;
+    color: $secondary-color;
 }
 
 
@@ -100,11 +102,11 @@ GENERAL HTML ELEMENTS
 
 h1
 {
-    background-color: #182334;
+    background-color: $primary-color;
     padding: .1em 1.2em;
-    color: white;
+    color: $primary-words-color;
     font-weight: normal;
-    border: 3px solid #61718c;
+    border: 3px solid $primary-outline-color;
     letter-spacing: 0.1em;
     -moz-border-radius: 0px 25px;
     -webkit-border-radius: 0px 25px;
@@ -146,7 +148,11 @@ pre {
 .ace-editor { 
     position: relative;
     height: 500px;
-    width: 1000px
+    width: 100%;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
@@ -156,9 +162,8 @@ blockquote{
 	padding: 10px;	
     font-size: 1em;
     background-color: #F8F8F8;
-    color: #;
     border: 0px;
-    border-left: 1px solid red;
+    border-left: 1px solid $secondary-color;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
     -webkit-margin-start: 40px;
@@ -166,7 +171,7 @@ blockquote{
 }
 
 pre code { 
-	border: 2px solid #001D1D;
+	border: 2px solid $secondary-color;
     border-radius: 5px;
 	background-color: black;
     font-size: 1em;
@@ -186,19 +191,20 @@ pre code {
 }
 
 th {
-    background-color: #182334;
+    background-color: $primary-color;
     color: white;
     padding: 8px;
 }
 
 td {
-   border-bottom: 1px solid #ccc;
+   border-bottom: 1px solid $border-color;
    padding: 8px;
 }
 
 textarea {
     width: 98%;
     padding: 5px;
+    margin: 10px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -218,51 +224,49 @@ BOOTSTRAP OVERRIDES
 
 
 .nav-tabs>li>a {
-    border: 1px solid #ddd;
+    border: 1px solid $border-color;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-    background-color: #182334;
+    background-color: $primary-color;
     color: white;
-    margin: 2px:
-    
+    margin: 2px;
 }
 
 .tab-content {
-    border: 1px solid #ddd;
-    border-top: 2px solid #182334;
+    border: 1px solid $border-color;
+    border-top: 2px solid $primary-color;
     padding: 10px;
     min-height: 50px;
 }
 
 .panel-primary { 
-    border-color: #182334;
+    border-color: $primary-color;
 }
 
 .panel-primary>.panel-heading {
-    background-color: #182334;
-    border-color: #182334;
+    background-color: $primary-color;
+    border-color: $primary-color;
 }
 
 .panel-info { 
-    border-color: #ddd;
+    border-color: $border-color;
 }
 
 .panel-info>.panel-heading {
-    background-color: #ddd;
-    border-color: #ddd;
-    color: #666;
+    background-color: $border-color;
+    border-color: $border-color;
 }
 
 
 .btn-primary {
-    background-color: #182334;
-    border-color: #182334;
+    background-color: $primary-color;
+    border-color: $primary-color;
 }
 
 .btn-info { 
-    background-color: #995800;
-    border-color: #995800;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
 }
 
 /* -------------------------
@@ -318,7 +322,7 @@ YOUTUBE MUSIC PLAYER
 }
 
 .musicplayer-wrap {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $border-color;
     margin: 5px;
 }
 
@@ -343,19 +347,13 @@ HEADER
 
 .site-title a, .site-title a:hover, .site-title a:active
 {
-    color: white;
+    color: $primary-words-color;
     text-decoration: none;
 }
 
 
 .user-bar {
     margin-top: 15px;
-}
-
-.ui-widget-header {
-    
-    border: 1px solid #337ab7;
-    background: #337ab7;
 }
 
 .loginDisplay
@@ -369,8 +367,8 @@ FOOTER
 
 .footer {
     font-size: 0.9em;
-    color: #999;    
-    border-top: 1px solid #999;
+    color: $faded-text-color;    
+    border-top: 1px solid $faded-text-color;
     margin-top: 40px;
     padding-top: 10px;
 }
@@ -381,8 +379,8 @@ SIDEBAR
 ------------------------- */
 
 .sidebar-box {
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
     padding: 10px;
     margin: 2px;
     font-size: .9em;
@@ -396,7 +394,7 @@ SIDEBAR
 .sidebar-heading h2 {
     text-align: center;
     font-size: 1.5em;
-    color: #999;
+    color: $faded-text-color;
 }
 
 /* -------------------------
@@ -419,7 +417,7 @@ GENERAL UTILITIES
 
 
 .inline-response {
-    border: 1px solid #ccc;
+    border: 1px solid $border-color;
     margin: 20px;
     padding-left: 20px;
     margin-top: 30px;
@@ -430,13 +428,21 @@ GENERAL UTILITIES
 }
 
 .hint { 
-    color: #bbb;
+    color: $faded-text-color;
     font-style: italic;
     font-weight: bold;
     padding-left: 10px;
 }
 
+.tinyhint { 
+    color: $faded-text-color;
+    font-style: italic;
+    padding-left: 10px;
+    font-size: .8em;
+}
+
 .image-container {
+    max-width: 80%;
     padding: 5px;
 }
 
@@ -452,13 +458,15 @@ GENERAL UTILITIES
         margin-right: 0;
 }
 
+
+
 /* -------------------------
 HOME SCREEN
 ------------------------- */
 
 .jumbotron
 {
-    background-color: #fff;
+    background-color: $background-color;
     font-weight: bold;
     text-align: center;
 }
@@ -479,8 +487,8 @@ HOME SCREEN
 }
 
 .splash-box {
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
     min-height: 200px;
 }
 
@@ -532,7 +540,7 @@ CHARGEN SCREEN
 ------------------------- */
 
 .cg-tip { 
-    color: #888;
+    color: $faded-text-color;
     font-style: italic;
     font-size: 1em;
 }
@@ -552,25 +560,32 @@ SCENES SCREEN
 
 .scene-pose {
     padding: 10px;
-    border: 1px dashed #eee;
+    border: 1px dashed $border-color;
     margin: 15px;
 }
 
 .scene-pose-header {
     font-size: .8em;
-    color: #999;
+    color: $faded-text-color;
     margin-bottom: 20px;
 }
 
 .scene-system-pose {
     margin-left: 25px;
-    color: #999;
+    color: $faded-text-color;
     font-style: italic;
 }
 
+.scene-set-pose {
+    margin-left: 25px;
+    border-left: 1px solid $secondary-color;
+    font-style: italic;
+    padding: 0px 10px 10px 10px;
+}
+
 .scene-log {
-    border: 1px dashed #eee;
-    margin: 15px;
+    border: 1px solid $border-color;
+    margin: 2px;
     padding: 10px;
 }
 
@@ -602,7 +617,7 @@ SCENES SCREEN
 
 .log-wrap {
     border-radius: 8px;
-    border: 1px solid #61718c; 
+    border: 1px solid $primary-outline-color; 
     background-color: #394252;
     margin:5px;
     padding:15px; 
@@ -636,29 +651,29 @@ CHARACTERS SCREEN
 }
 
 .profile-box .row {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $border-color;
     margin: 10px;
     padding: 3px;
 }
 
 .profile-title {
-    background-color: #182334;
-    color: white;
+    background-color: $primary-color;
+    color: $primary-words-color;
     padding: 20px;
     margin: 0;
     font-size: 1.5em;
 }
 
 .profile-divider {
-    background-color: #182334;
-    color: white;
+    background-color: $primary-color;
+    color: $primary-words-color;
     padding: 5px;
     margin: 0;
 }
 
 .profile-wrap {
     border-radius: 8px;
-    border: 1px solid #61718c; 
+    border: 1px solid $primary-outline-color; 
     background-color: #394252;
     margin:5px;
     padding:15px; 
@@ -683,7 +698,7 @@ ul.char-ability-list {
 .relationship-row {
     margin: 10px;
     padding: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid $border-color;
 }
 
 .tab-cover {
@@ -696,6 +711,13 @@ ul.char-ability-list {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.char-scene-list li {
+    display: inline;
+}
+
+
+/*.char-scene-list li:before { content: "\2666  "; }*/
 
 
 @media only screen and (max-width: 768px) {

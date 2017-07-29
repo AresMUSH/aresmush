@@ -4,17 +4,25 @@ summary: Game events.
 ---
 # Events
 
-AresMUSH integrates with Teamup Calendar (http://www.teamup.com/), an app for managing events online.  You can access the full game calendar from the web (see the `events` command or the game wiki for a link) or a mobile app. 
-
-The game provides a limited view of upcoming events. 
+The events system is an in-game calendar that lets you schedule events.
 
 `events`  - Lists upcoming events
 `event <#>` - Views an event
 
-Events are color coded based on how close they are.  G
+Events are color coded based on how close they are.
 
 * Green = within 24 hours
 * Yellow = within 48 hours
 * Bold = within 7 days
 
-Note: It may take a few minutes before an event added online appears in the game.  If you make a change on the web page and want it to show up right away, use `events/refresh`.
+## Creating and Deleting Events
+
+You can create and edit your own events.  Characters with the `manage_events` permission can edit other peoples' events too.
+
+`event/create <title>=<date and time>/<description>`
+`event/edit <#>` - Grabs the current event into your edit buffer (see help edit)
+`event/update <#>=<title>/<date and time>/<description>`
+`event/delete <#>`
+
+If you accidentally put an event in the past, `events/all` will show past ones as well.  Past events are periodically deleted.
+

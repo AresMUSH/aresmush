@@ -7,4 +7,7 @@ events:
         
     cron:
         minute: 
-            - 22
+            - 0
+            - 15
+            - 30
+            - 45

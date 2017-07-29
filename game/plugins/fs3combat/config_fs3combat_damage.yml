@@ -7,17 +7,15 @@ fs3combat:
     
     damage_mods:
         HEAL: 0.0
-        GRAZE: 0.0
         FLESH: 0.25
-        IMPAIR: 1.0
-        INCAP: 4.0
+        IMPAIR: 2.0
+        INCAP: 7.0
     
     healing_points:
         HEAL: 0
-        GRAZE: 3
         FLESH: 7
         IMPAIR: 10
-        INCAP: 10
+        INCAP: 5
     
     pc_knockout_bonus: 1
     npc_lethality_mod: 30

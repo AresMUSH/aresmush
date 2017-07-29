@@ -121,7 +121,7 @@ class MarkdownFormatter
         }
 
     renderer = MarkdownToMURenderer.new
-    @engine = Redcarpet::Markdown.new(mu_renderer, options)
+    @engine = Redcarpet::Markdown.new(renderer, options)
   end
   
   def to_mush(markdown)

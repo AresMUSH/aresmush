@@ -14,6 +14,8 @@ module AresMUSH
       @date['long_date_format'] = @params[:long_date_format]
       @date['time_format'] = @params[:time_format]
       @date['date_entry_format_help'] = @params[:date_entry_format_help]
+      @date['date_and_time_entry_format'] = @params[:date_and_time_entry_format]
+      @date['date_and_time_entry_format_help'] = @params[:date_and_time_entry_format_help]
       
       config = { 
         "date_and_time" => @date

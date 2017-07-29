@@ -1,11 +1,14 @@
 $:.unshift File.dirname(__FILE__)
 load "lib/events_cmd.rb"
 load "lib/event_detail_cmd.rb"
+load "lib/event_create_cmd.rb"
+load "lib/event_edit_cmd.rb"
+load "lib/event_delete_cmd.rb"
+load "lib/event_update_cmd.rb"
 load "lib/cron_event_handler.rb"
-load "lib/game_started_event_handler.rb"
 load "lib/helpers.rb"
-load "lib/teamup.rb"
 load "public/events_api.rb"
+load "public/events_model.rb"
 load "templates/events_list_template.rb"
 load "templates/event_detail_template.rb"
 
@@ -37,10 +40,23 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "event"
-        if (cmd.args)
-          return EventDetailCmd
-        else
+        case cmd.switch
+        when nil
+          if (cmd.args)
+            return EventDetailCmd
+          else
+            return EventsCmd
+          end
+        when "all"
           return EventsCmd
+        when "create"
+          return EventCreateCmd
+        when "edit"
+          return EventEditCmd
+        when "delete"
+          return EventDeleteCmd
+        when "update"
+          return EventUpdateCmd
         end
       end
       
@@ -51,8 +67,6 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return CronEventHandler
-      when "GameStartedEvent"
-        return GameStartedEventHandler
       end
       nil
     end

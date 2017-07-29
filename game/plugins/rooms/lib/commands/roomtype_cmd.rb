@@ -30,7 +30,6 @@ module AresMUSH
       def handle
         room = enactor_room
         room.update(room_type: self.name.upcase)
-        Pose.reset_repose(room)
         client.emit_success t('rooms.room_type_set')
       end
     end
