@@ -4,6 +4,8 @@ events:
     # NOTE: The calendar ID and API key are configured in the game/config/secrets.yml file
     shortcuts:
         "events" : "event"
+        "event/add" : "event/create"
+        "event/remove" : "event/delete"
         
     cron:
         minute: 
