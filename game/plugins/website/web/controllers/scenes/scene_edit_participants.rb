@@ -9,6 +9,7 @@ module AresMUSH
         redirect "/scenes"
       end
       
+      @available_chars = AresMUSH::Character.all.select { |c| c.is_approved? }.sort_by { |c| c.name }
       erb :"scenes/edit_participants"
     end
     
