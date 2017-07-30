@@ -34,7 +34,7 @@ module AresMUSH
         flash[:error] = "There aren't that many pages."
         redirect "/scenes"
       end
-      
+      @page_title = "Scenes"
       @scene_types = Scenes.scene_types
       erb :"scenes/scenes_index"
     end

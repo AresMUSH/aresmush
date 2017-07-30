@@ -54,8 +54,8 @@ module AresMUSH
       end
       
       def weather
-         w = Weather.weather_for_area(@room.area)
-         w ? "#{w}%R" : nil
+        w = Weather.weather_for_area(@room.area)
+        w ? "#{w}%R" : nil
       end
       
       def ooc_time
@@ -114,7 +114,11 @@ module AresMUSH
       
       def exit_destination(e)
         locked =  e.allow_passage?(@enactor) ? "" : "%xr*#{t('describe.locked')}*%xn "
-        name = e.dest ? e.dest.name : t('describe.nowhere')
+        if (e.dest)
+          name = e.description ? e.description : e.dest.name
+        else
+          name = t('describe.nowhere')
+        end
         "#{locked}#{name}"
       end
       
