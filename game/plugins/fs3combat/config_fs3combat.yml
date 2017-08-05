@@ -55,7 +55,7 @@ fs3combat:
         Centurion:
             weapon: LMG
             weapon_specials: 
-                - Tripod
+                - Bipod
             armor: Centurion
             hitloc: Humanoid
             defense_skill: Reflexes

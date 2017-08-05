@@ -348,7 +348,7 @@ fs3combat:
     weapon specials:
         Ap:
             description: "Armor Piercing Rounds"
-            penetration: 3
+            penetration: 2
         Bipod:
             description: "Bipod Brace"
             recoi: -3

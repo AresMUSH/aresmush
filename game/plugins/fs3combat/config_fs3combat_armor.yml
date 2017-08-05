@@ -8,72 +8,72 @@ fs3combat:
         Tactical:
             description: "Military-Grade Kevlar Vest and Helmet"
             protection: 
-                Head: 6
-                Neck: 4
-                Chest: 7
-                Abdomen: 6
+                Head: 7
+                Neck: 5
+                Chest: 8
+                Abdomen: 7
 
         Police:
             description: "Police-Grade Kevlar Vest"
             protection: 
-                Chest: 6
-                Abdomen: 5
+                Chest: 7
+                Abdomen: 6
 
         Centurion:
             description: "Cylon Centurion Armor"
             protection:
-                Head: 7
-                Neck: 7
-                Chest: 8
-                Abdomen: 8
-                Left Arm: 6
-                Right Arm: 6
-                Left Hand: 5
-                Right Hand: 5
-                Left Leg: 7
-                Right Leg: 7
-                Left Foot: 5
-                Right Foot: 5
+                Head: 9
+                Neck: 9
+                Chest: 10
+                Abdomen: 10
+                Left Arm: 8
+                Right Arm: 8
+                Left Hand: 7
+                Right Hand: 7
+                Left Leg: 9
+                Right Leg: 9
+                Left Foot: 7
+                Right Foot: 7
 
         Cylon:
             description: "Cylon (Non-Centurion) Skeleton"
             protection:
-                Head: 5
-                Neck: 6
-                Chest: 6
-                Abdomen: 6
-                Left Arm: 4
-                Right Arm: 4
-                Left Hand: 5
-                Right Hand: 4
-                Left Leg: 5
-                Right Leg: 5
-                Left Foot: 4
-                Right Foot: 4
+                Head: 6
+                Neck: 7
+                Chest: 7
+                Abdomen: 7
+                Left Arm: 5
+                Right Arm: 5
+                Left Hand: 6
+                Right Hand: 5
+                Left Leg: 6
+                Right Leg: 6
+                Left Foot: 5
+                Right Foot: 5
                 
         Viper:
             description: "Viper Vehicle Armor"
             protection:
-                Body: 7
-                Engine: 7
-                Tail: 7
-                Wing: 7
-                Weapon: 6
-                Nose: 7
-                Cockpit: 5
-                Controls: 6
+                Body: 8
+                Engine: 8
+                Tail: 8
+                Wing: 8
+                Weapon: 7
+                Nose: 8
+                Cockpit: 6
+                Controls: 7
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
             protection:
-                Body: 7
-                Engine: 7
-                Tail: 7
-                Wing: 7
-                Weapon: 6
-                Nose: 7
-                Cockpit: 5
-                Controls: 6
+                Body: 8
+                Engine: 8
+                Tail: 8
+                Wing: 8
+                Weapon: 7
+                Nose: 8
+                Cockpit: 6
+                Controls: 7
 
         Raptor:
             description: "Raptor Vehicle Armor"
@@ -84,7 +84,7 @@ fs3combat:
                 Wing: 8
                 Weapon: 6
                 Nose: 8
-                Cockpit: 5
+                Cockpit: 6
                 Controls: 8
 
         Heavy Raider:
@@ -96,7 +96,7 @@ fs3combat:
                 Wing: 8
                 Weapon: 6
                 Nose: 8
-                Cockpit: 5
+                Cockpit: 6
                 Controls: 8
 
         Tank:
