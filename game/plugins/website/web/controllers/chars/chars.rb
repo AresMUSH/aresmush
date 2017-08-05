@@ -25,9 +25,9 @@ module AresMUSH
     end
     
     get '/chars' do
-      @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group("Faction") || "" }
-      @roster = Character.all.select { |c| c.on_roster? }
       group = Global.read_config("website", "character_gallery_group") || "Faction"
+      @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group(group) || "" }
+      @roster = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
       @groups = Chargen.approved_chars.group_by { |c| c.group(group) || "" }.sort
       @page_title = "Characters"
       

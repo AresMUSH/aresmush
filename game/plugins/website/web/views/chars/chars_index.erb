@@ -29,6 +29,11 @@
   <% end %>
   
   <div id="roster" class="tab-pane fade in">
-      <%= erb :"chars/group_list", :locals => { chars: @roster, title: "Roster" } %>
+      <h2>Roster</h2>
+
+      <% @roster.each_with_index do |(group, group_data), i| %>
+            <%= erb :"chars/group_list", :locals => { chars: group_data, title: group } %>
+      <% end %>
   </div>
+
 </div>
