@@ -18,7 +18,7 @@ fs3combat:
         INCAP: 5
     
     pc_knockout_bonus: 1
-    npc_lethality_mod: 30
+    npc_lethality_mod: 15
     
     damage_table:
         GRAZE: 20
