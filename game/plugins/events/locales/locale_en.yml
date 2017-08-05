@@ -4,7 +4,7 @@ en:
         invalid_event: "That is not a valid event number."
         
         starts_at_title: "Starts At:"
-        who_title: "Who:"
+        who_title: "Organizer:"
         where_title: "Where:"
         
         event_deleted: "%{name} has deleted event %{title}."
