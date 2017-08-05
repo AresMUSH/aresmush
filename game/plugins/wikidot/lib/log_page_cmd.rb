@@ -45,39 +45,8 @@ module AresMUSH
           Scenes.share_scene(scene)
         end
         
-        template =  LogTemplate.new(scene)
-        content = template.render
-        tags = Wikidot.log_tags(scene)
-        
-        title = Wikidot.log_page_title(scene)
-        page_name = Wikidot.log_page_name(scene)        
         client.emit_ooc t('wikidot.creating_log_page')
-
-        Global.dispatcher.spawn("Creating wiki log page", client) do
-            
-          page_exists = Wikidot.page_exists?(page_name)
-                        
-          if (Wikidot.autopost_enabled? && !page_exists)
-            error = Wikidot.create_page(page_name, title, content, tags)
-            if (error)
-              client.emit_failure error
-            else
-              client.emit_success t('wikidot.page_creation_successful')
-            end
-          else
-            message = ""
-            if (page_exists)
-              message << t('wikidot.page_already_exists')
-              message << "%r%% "
-            end
-            message << t('wikidot.template_provided')
-            message << "%r%% "
-            message << t('wikidot.page_tags', :tags => tags.join(" "))
-
-            client.emit content
-            client.emit_ooc message
-          end
-        end
+        Wikidot.create_log(scene, client, true)
       end
     end
   end

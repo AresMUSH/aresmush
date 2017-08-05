@@ -79,7 +79,7 @@ module AresMUSH
         case cmd.switch
         when "reset"
           return PasswordResetCmd
-        when nil
+        when nil, "set"
           return PasswordSetCmd
         end
       when "quit"

@@ -12,8 +12,8 @@ module AresMUSH
     end
     
     before "*" do
-      @events = Events.upcoming_events
-      @recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse[0..10] || []
+      @sidebar_upcoming_events = Events.upcoming_events
+      @sidebar_recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse[0..10] || []
       
     end
       

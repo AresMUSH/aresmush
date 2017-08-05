@@ -22,7 +22,7 @@ You can create a room and optionally specify an outgoing exit (from your current
 
 `build <name>[=<outgoing exit name>,<return exit name>]` - Creates a room.
 
-> **Tip:** In Ares, exits have only a single name so there is no exit;alias;alias syntax.  Any exit named "O" is automatically aliased to "Out".
+> **Tip:** In Ares, exits have only a single name so there is no exit;alias;alias syntax.  Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit.
 
 ## Creating Exits
 
@@ -35,6 +35,8 @@ Once you have an exit, you can change the source or destination rooms that it's 
 `link <exit>=<destination>` - Links an exit to a room.
 `link/source <exit>=<source>` - Changes the exit's source.  The destination will be the current room.
 `unlink <exit>` - Unlinks an exit from its destination.
+
+> **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a description.
 
 ## Finding Rooms
 

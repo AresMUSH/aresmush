@@ -24,3 +24,4 @@ login:
         "newpassword": "password/reset"
         "conn": "connect"
         "kick": "boot"
+        "password/change" : "password/set"

@@ -1,6 +1,6 @@
 module AresMUSH
   module Scenes
-    class LogShareCmd
+    class SceneShareCmd
       include CommandHandler
       
       attr_accessor :scene_num, :share
@@ -45,6 +45,10 @@ module AresMUSH
           
           if (self.share)
             Scenes.share_scene(scene)
+            
+            if (Global.read_config('scenes', 'wiki_auto_share'))
+              Wikidot.create_log(scene, client, false)
+            end
           else
             scene.update(shared: false)
           end          

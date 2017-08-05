@@ -5,11 +5,11 @@
 <% paginator.items.each do |job| %>
 <%= right( job.number.to_s, 4) -%>
     %xh<%= left( unread_status(job), 4 ) %><%= "%xn" -%>
-<%= status_color(job) %><%= left( job.status, 7) %><%= "%xn" -%>
+<%= category_color(job) %><%= left( job.category, 7) %><%= "%xn" -%>
 <%= left( job.title, 19) -%>
 <%= left( submitter(job), 17) -%>
 <%= left( handler(job), 18) -%>
-<%= job.category %>
+<%= status_color(job) %><%= left( job.status, 7) %><%= "%xn" %>
 <% end %>
 %ld
 <% end %>

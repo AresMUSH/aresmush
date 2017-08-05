@@ -1,7 +1,7 @@
 module AresMUSH
   module Jobs    
     def self.categories
-      Global.read_config("jobs", "categories").map { |c| c.upcase }
+      Global.read_config("jobs", "categories").keys.map { |c| c.upcase }
     end
     
     def self.status_vals
@@ -10,6 +10,14 @@ module AresMUSH
     
     def self.closed_jobs
       Job.all.select { |j| !j.is_open? }
+    end
+    
+    def self.category_color(category)
+      return "" if !category
+      config = Global.read_config("jobs", "categories")
+      key = config.keys.find { |k| k.downcase == category.downcase }
+      reutrn "%xh" if !key
+      return config[key]["color"]
     end
     
     def self.status_color(status)

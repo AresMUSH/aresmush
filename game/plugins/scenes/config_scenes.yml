@@ -9,6 +9,11 @@ scenes:
             - 22
         minute: 
             - 02
+            
+    unsared_scene_deletion_days: 14
+    unshared_scene_warning_days: 7
+    
+    wiki_auto_share: true
     
     scene_types:
         - Social

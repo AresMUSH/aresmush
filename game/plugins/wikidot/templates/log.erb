@@ -10,7 +10,7 @@
 
 [[include LogPlayerTop]]
 
-<% scene.participant_names.each do |name| %>
+<% scene.participant_names.sort.each do |name| %>
 [[include LogIcon name=<%= name %>]]
 <% end %>
 [[include LogPlayerBottom]]

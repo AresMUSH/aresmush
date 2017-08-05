@@ -14,14 +14,14 @@ module AresMUSH
         return nil
       end
           
-      def check_permission
-        return nil if self.target == enactor_name
-        return nil if Chargen.can_view_bgs?(enactor)
-        return t('chargen.no_permission_to_view_bg')
-      end
-      
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+          
+          if (model != enactor && !Chargen.can_view_bgs?(enactor) && !model.on_roster?)
+            client.emit_failure t('chargen.no_permission_to_view_bg')
+            return
+          end
+          
           template = BgTemplate.new(model, model.background)
           client.emit template.render
         end

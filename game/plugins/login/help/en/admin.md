@@ -12,9 +12,9 @@ Admins and people with the appropriate permissions can manage another character'
 
 ## Resetting a Password
 
-You can reset someone's password if they've forgotten it.
+You can reset someone's password if they've forgotten it.  It will choose a random new password and tell it to you.
 
-`password/reset <name>=<new password>`
+`password/reset <name>`
 
 ## Changing Names and Aliases
 

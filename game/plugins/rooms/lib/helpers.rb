@@ -23,7 +23,7 @@ module AresMUSH
     
     def self.can_go_home?(actor)
       actor.has_permission?("go_home")
-    end
+    end    
     
     def self.room_types
       [ 'IC', 'OOC', 'RPR' ]

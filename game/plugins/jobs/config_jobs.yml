@@ -1,13 +1,21 @@
 jobs:
     categories:
-        - APP
-        - BUILD
-        - BUG
-        - CODE
-        - MISC
-        - PLOT
-        - REQ
-        - RP
+        APP:
+            color: "%xy"
+        BUILD:
+            color: "%xc"
+        BUG:
+            color: "%xm"
+        CODE:
+            color: "%xm"
+        MISC:
+            color: ""
+        PLOT:
+            color: "%xc"
+        REQ:
+            color: "%xr"
+        RP:
+            color: "%xc"
 
     status:
         NEW:
@@ -15,7 +23,7 @@ jobs:
         OPEN:
             color: "%xb"
         HOLD:
-            color: "%xr"
+            color: "%xx%xh"
         DONE:
             color: "%xy"
     

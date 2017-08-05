@@ -3,11 +3,12 @@ module AresMUSH
     class SceneReplaceCmd
       include CommandHandler
       
-      attr_accessor :pose, :scene_num
+      attr_accessor :pose, :scene_num, :silent
       
       def parse_args
         self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
         self.pose = cmd.args
+        self.silent = cmd.switch_is?("typo")
       end
       
       def required_args
@@ -30,17 +31,27 @@ module AresMUSH
             
           last_pose.update(pose: self.pose)
           
-          scene.room.characters.each do |char|
-            client = char.client
-            next if !client
-            message = t('scenes.amended_pose', :name => enactor_name,
-                          :pronoun => Demographics.possessive_pronoun(enactor) )
-            alert = "%xr*** #{message} ***%xn"
-            formatted_pose = Pose.colorize_quotes enactor, self.pose, char
-            client.emit "#{alert}#{formatted_pose}"
+          self.emit_replacement(enactor, client)
+          
+          if (!self.silent)
+            scene.room.characters.each do |char|
+              other_client = char.client
+              next if !other_client
+              next if char == enactor
+              self.emit_replacement(char, other_client)
+            end
           end
         end
       end
+      
+      def emit_replacement(char, other_client)
+        message = t('scenes.amended_pose', :name => enactor_name,
+                      :pronoun => Demographics.possessive_pronoun(enactor) )
+        alert = "%xr*** #{message} ***%xn"
+        formatted_pose = Pose.colorize_quotes enactor, self.pose, char
+        other_client.emit "#{alert}#{formatted_pose}"
+      end
+      
     end
   end
 end

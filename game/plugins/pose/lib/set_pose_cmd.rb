@@ -15,7 +15,7 @@ module AresMUSH
           next if !client
         
           formatted_pose = Pose.custom_format(self.pose, char, enactor, true, false)
-          line = "%R%xh%xc%% ----------------------%xn%R"
+          line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
           client.emit "#{line}%R#{pose}%R#{line}"
         end
         Global.dispatcher.queue_event PoseEvent.new(enactor, self.pose, true, true)          

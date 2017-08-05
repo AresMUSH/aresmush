@@ -1,10 +1,9 @@
 module AresMUSH
   module Scenes
-    class LogCmd
+    class SceneLogCmd
       include CommandHandler
       
-      attr_accessor :all
-      attr_accessor :scene_num
+      attr_accessor :all, :scene_num
       
       def parse_args
         if (cmd.args)

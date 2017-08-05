@@ -21,14 +21,13 @@ module AresMUSH
     
     
     def self.with_an_event(num, client, enactor, &block)
-      event = Event[num]
-      if (!event)
+      events = Event.sorted_events
+      if (num < 0 || num > events.count)
         client.emit_failure t('events.invalid_event')
         return
       end
       
-      yield event
-    end
-    
+      yield events.to_a[num - 1]
+    end    
   end
 end

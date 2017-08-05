@@ -66,18 +66,10 @@ module AresMUSH
           return [find_result.target]
         end
         
-        matched_rooms = Room.all.select { |r| format_room_name_for_match(r) =~ /#{self.destination.upcase}/ }
-                
-        return matched_rooms
+        matches = Room.find_by_name_and_area self.destination                
+        return matches
       end
       
-      def format_room_name_for_match(room)
-        if (self.destination =~ /\//)
-          return "#{room.area}/#{room.name}".upcase
-        else
-          return room.name.upcase
-        end
-      end
       
       def find_targets
         if (self.names.empty?)

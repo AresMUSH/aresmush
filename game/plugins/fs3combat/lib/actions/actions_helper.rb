@@ -334,9 +334,17 @@ module AresMUSH
                   
       reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
 
-      luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
+      attack_luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
+      
+      defense_luck_mod = target.luck == "Defense" ? 30 : 0 
           
-      damage = FS3Combat.determine_damage(target, hitloc, weapon, luck_mod - armor, crew_hit)
+      hit_mod = [(attacker_net_successes - 1) * 10, 0].max
+      
+      total_damage_mod = hit_mod + attack_luck_mod - defense_luck_mod - armor
+      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} defense_luck=#{defense_luck_mod} armor=#{armor} total=#{total_damage_mod}"
+      
+      
+      damage = FS3Combat.determine_damage(target, hitloc, weapon, total_damage_mod, crew_hit)
           
       is_stun = FS3Combat.weapon_is_stun?(weapon)
       desc = "#{weapon} - #{hitloc}"
