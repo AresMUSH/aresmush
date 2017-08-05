@@ -51,7 +51,8 @@ module AresMUSH
           ability.update(xp: 0)
           FS3Skills.set_ability(client, char, name, ability.rating + 1)
           message = t('fs3skills.xp_raised_job', :name => char.name, :ability => name, :rating => ability.rating + 1)
-          Jobs.create_job("REQ", t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)
+          category = Jobs.system_category
+          Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)
         else
           client.emit_success t('fs3skills.xp_spent', :name => name)
         end

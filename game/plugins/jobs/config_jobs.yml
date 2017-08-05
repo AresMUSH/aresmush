@@ -16,6 +16,8 @@ jobs:
             color: "%xr"
         RP:
             color: "%xc"
+        SYS:
+            color: "%xh"
 
     status:
         NEW:
@@ -32,6 +34,8 @@ jobs:
     closed_status: "DONE"
     
     request_category: "REQ"
+    
+    system_category: "SYS"
         
     shortcuts:
         # These must come first before the jobs -> job conversion
