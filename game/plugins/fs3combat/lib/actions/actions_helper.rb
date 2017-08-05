@@ -338,7 +338,7 @@ module AresMUSH
       
       defense_luck_mod = target.luck == "Defense" ? 30 : 0 
           
-      hit_mod = [(attacker_net_successes - 1) * 10, 0].max
+      hit_mod = [(attacker_net_successes - 1) * 5, 0].max
       
       total_damage_mod = hit_mod + attack_luck_mod - defense_luck_mod - armor
       target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} defense_luck=#{defense_luck_mod} armor=#{armor} total=#{total_damage_mod}"
