@@ -7,6 +7,6 @@ website:
     
     max_upload_size_kb: 500
     
-    character_gallery_group: 'Faction'
+    character_gallery_group: 'Department'
     
     character_gallery_subgroup: 'Position'
