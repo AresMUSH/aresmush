@@ -29,7 +29,8 @@ module AresMUSH
       def format_output_for_html(output)
         return nil if !output
         text = AresMUSH::ClientFormatter.format output, false
-        text.strip.gsub(/[\r]/i, '<br/>')
+        puts text
+        text.strip.gsub(/[\n]/i, '<br/>')
       end
       
       def format_markdown_for_html(output)

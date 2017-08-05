@@ -24,5 +24,3 @@ You can create and edit your own events.  Characters with the `manage_events` pe
 `event/update <#>=<title>/<date and time>/<description>`
 `event/delete <#>`
 
-If you accidentally put an event in the past, `events/all` will show past ones as well.  Past events are periodically deleted.
-

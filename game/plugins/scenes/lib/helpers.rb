@@ -20,14 +20,6 @@ module AresMUSH
       yield scene
     end    
     
-    def self.format_room_name_for_match(room, search_name)
-      if (search_name =~ /\//)
-        return "#{room.area}/#{room.name}".upcase
-      else
-        return room.name.upcase
-      end
-    end
-    
     def self.create_or_update_log(scene)
       if (scene.scene_log)
         new_log = Scenes.build_log_text(scene)

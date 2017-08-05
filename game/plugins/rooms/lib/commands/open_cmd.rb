@@ -25,16 +25,16 @@ module AresMUSH
       end
       
       def handle
-        dest = nil
+        room = nil
         if (self.dest)
-          find_result = ClassTargetFinder.find(self.dest, Room, enactor)
-          if (!find_result.found?)
-            client.emit_failure(find_result.error)
+          matched_rooms = Room.find_by_name_and_area self.dest
+          if (matched_rooms.count != 1)
+            client.emit_failure matched_rooms.count == 0 ? t('db.object_not_found') : t('db.object_ambiguous')
             return
           end
-          dest = find_result.target
+          room = matched_rooms.first
         end
-        client.emit_success Rooms.open_exit(self.name, enactor_room, dest)
+        client.emit_success Rooms.open_exit(self.name, enactor_room, room)
       end
     end
   end

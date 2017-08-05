@@ -3,21 +3,22 @@ $:.unshift File.dirname(__FILE__)
 load "lib/pose_event_handler.rb"
 load "lib/cron_event_handler.rb"
 load "lib/helpers.rb"
-load "lib/log_cmd.rb"
-load "lib/log_clear_cmd.rb"
-load "lib/log_enable_cmd.rb"
-load "lib/log_share_cmd.rb"
-load "lib/scene_types_cmd.rb"
+load "lib/scene_addpose_cmd.rb"
+load "lib/scene_clearlog_cmd.rb"
 load "lib/scene_delete_cmd.rb"
+load "lib/scene_enablelog_cmd.rb"
 load "lib/scene_info_cmd.rb"
 load "lib/scene_join_cmd.rb"
+load "lib/scene_log_cmd.rb"
 load "lib/scene_replace_cmd.rb"
 load "lib/scene_restart_cmd.rb"
 load "lib/scene_undo_cmd.rb"
 load "lib/scene_set_cmd.rb"
+load "lib/scene_share_cmd.rb"
 load "lib/scene_spoof_cmd.rb"
 load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
+load "lib/scene_types_cmd.rb"
 load "lib/scenes_cmd.rb"
 load "templates/scenes_list_template.rb"
 load "templates/scenes_summary_template.rb"
@@ -63,6 +64,8 @@ module AresMUSH
           else
             return ScenesCmd
           end
+        when "addpose"
+          return SceneAddPoseCmd
         when "join"
           return SceneJoinCmd
         when "location", "privacy", "summary", "title", "type", "icdate"
@@ -71,7 +74,7 @@ module AresMUSH
           return SceneDeleteCmd
         when "undo"
           return SceneUndoCmd
-        when "replace"
+        when "replace", "typo"
           return SceneReplaceCmd
         when "restart"
           return SceneRestartCmd
@@ -86,13 +89,13 @@ module AresMUSH
         when "types"
           return SceneTypesCmd
         when "log", "repose"
-          return LogCmd
+          return SceneLogCmd
         when "clearlog"
-          return LogClearCmd
+          return SceneLogClearCmd
         when "startlog", "stoplog"
-          return LogEnableCmd
+          return SceneLogEnableCmd
         when "share", "unshare"
-          return LogShareCmd
+          return SceneShareCmd
         end
       end
       nil

@@ -95,7 +95,6 @@
               <% end %>
           
               <li><a href="/play">Play</a></li>
-              <li><a href="/bbs">Boards</a></li> 
           
           
               <li class="nav-item dropdown">
@@ -104,6 +103,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="/scenes">Scenes</a></li> 
+                  <li><a href="/bbs">Boards</a></li> 
                   <li><a href="/chars">Characters</a></li>
                   <li><a href="/locations">Locations</a></li>
                   <li><a href="/combat">Combats</a></li>
@@ -189,7 +189,7 @@
                                <h2>Recent Scenes <i class="fa fa-book" aria-hidden="true"></i></h2>
                                
                            </div>
-                           <% @recent_scenes.each do |s| %>
+                           <% @sidebar_recent_scenes.each do |s| %>
                            <p><a href="/scene/<%= s.id %>"><%= s.date_title %></a>  
                                <%= erb :"scenes/scene_tag", :locals => { scene: s } %><br/></p>
                            <% end %>
@@ -202,7 +202,7 @@
                                <h2>Upcoming Events <i class="fa fa-calendar" aria-hidden="true"></i></h2>
                                
                            </div>
-                           <% @events.each do |e| %>
+                           <% @sidebar_upcoming_events.each do |e| %>
                            <p><b><a href="/event/<%= e.id %>"><%= e.title %></a></b><br/><%= e.start_datetime_standard %></p>
                            <% end %>
                            

@@ -1,6 +1,6 @@
 module AresMUSH
   module Scenes
-    class LogClearCmd
+    class SceneLogClearCmd
       include CommandHandler
             
       attr_accessor :scene_num

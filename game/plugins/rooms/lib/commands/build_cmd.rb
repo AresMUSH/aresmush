@@ -30,7 +30,7 @@ module AresMUSH
       end
       
       def handle
-        room = AresMUSH::Room.create(:name => name)
+        room = AresMUSH::Room.create(:name => name, :room_area => enactor_room.room_area)
         client.emit_success(t('rooms.room_created', :name => name))
         
         if (!self.exit.empty?)

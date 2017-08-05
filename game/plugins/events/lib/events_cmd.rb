@@ -5,12 +5,7 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        if (cmd.switch_is?("all"))        
-          events = Event.all
-        else
-          events = Events.upcoming_events
-        end
-        template = EventsListTemplate.new(events, enactor)
+        template = EventsListTemplate.new(Event.sorted_events, enactor)
         client.emit template.render
       end
     end

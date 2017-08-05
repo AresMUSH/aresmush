@@ -11,7 +11,7 @@ aliases:
 
 The [Scene Log](/help/scenes/logging) automatically captures poses from a scene (unless you turn it off).  Sometimes these poses have problems.
 
-## Editing a Pose
+## Editing Poses
 
 You can edit and delete your poses through the Web Portal, and even attribute them to other characters (handy if you're emitting from one of your alts).  
 
@@ -19,9 +19,17 @@ For a quick correction, you can also replace your **previous pose** with a corre
 
 `scene/replace <text in the form of an emit>`
 
+To do it silently (for a small typo that isn't worth emitting to everyone in the room) you can do:
+
+`scene/typo <text in the form of an emit>`
+
 You can also just delete your last pose completely.
 
 `scene/undo`
+
+You can also add a missing pose to the scene log (for example - one that happened before the scene log was started).  This will not emit to the other participants:
+
+`scene/addpose <emit>`
 
 ## Participants
 

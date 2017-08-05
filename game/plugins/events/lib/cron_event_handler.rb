@@ -6,7 +6,8 @@ module AresMUSH
         return if !Cron.is_cron_match?(config, event.time)
         
         Event.all.each do |e|
-          if (!e.reminded && e.time_until_event < (60 * 20))
+          time_until_event = e.time_until_event
+          if (!e.reminded &&  time_until_event < (60 * 20) && time_until_event > 0)
             Global.client_monitor.emit_all_ooc t('events.event_starting_soon', :title => e.title,
                :starts => e.start_time_standard)
              e.update(reminded: true)

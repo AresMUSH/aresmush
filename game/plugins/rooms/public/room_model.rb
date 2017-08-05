@@ -50,6 +50,19 @@ module AresMUSH
     def owned_by?(char)
       self.room_owner == char.id
     end
+    
+    def self.find_by_name_and_area(search, enactor_room = nil)
+      return [enactor_room] if search == "here" && enactor_room
+      Room.all.select { |r| r.format_room_name_for_area_match(search) == (search || "").upcase }
+    end
+    
+    def format_room_name_for_area_match(search)
+      if (search =~ /\//)
+        return "#{self.area}/#{self.name}".upcase
+      else
+        return self.name.upcase
+      end
+    end
   end
   
   class Exit    

@@ -48,10 +48,7 @@ module AresMUSH
         scene.room.update(scene: nil)
         scene.update(room: nil)
       end
-      
-      if (!scene.private_scene)
-        Scenes.share_scene(scene)
-      end
+
       scene.update(completed: true)
       scene.update(date_completed: DateTime.now)
     end
@@ -63,8 +60,8 @@ module AresMUSH
     end
     
     def self.set_scene_location(scene, location)
-      matched_rooms = Room.all.select { |r| !r.scene && Scenes.format_room_name_for_match(r, location) =~ /#{location.upcase}/ }
-
+      matched_rooms = Room.find_by_name_and_area location
+      
       if (matched_rooms.count == 1)
         room = matched_rooms.first
         if (room.scene && room.scene.temp_room)

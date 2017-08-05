@@ -1,6 +1,6 @@
 module AresMUSH
   module Scenes
-    class LogEnableCmd
+    class SceneLogEnableCmd
       include CommandHandler
       
       attr_accessor :scene_num, :option

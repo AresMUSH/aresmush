@@ -35,7 +35,7 @@ module AresMUSH
              event.update(description: desc)
              
              Global.client_monitor.emit_all_ooc t('events.event_updated', :title => event.title,
-                :starts => event.start_time_standard, :name => enactor_name)
+                :starts => event.start_datetime_standard, :name => enactor_name)
            else
              client.emit_failure t('dispatcher.not_allowed')
            end 

@@ -21,11 +21,7 @@ module AresMUSH
           end
         
           Scenes.stop_scene(scene)
-          if (scene.is_private?)
-            client.emit_success t('scenes.scene_stopped', :id => scene.id)
-          else
-            client.emit_success t('scenes.scene_stopped_and_shared', :id => scene.id, :title => scene.title)
-          end
+          client.emit_success t('scenes.scene_stopped', :id => scene.id)
         end
       end
     end

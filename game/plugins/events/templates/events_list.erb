@@ -2,7 +2,7 @@
 %xh<%= t('events.events_title') %>%xn
 
 <% events.each_with_index do |ev, i| %>
-<%= left(ev.id, 4) %><%= ev.color -%>
+<%= left(i + 1, 4) %><%= ev.color -%>
 <%= left( ev.title, 30 ) -%>
  <%= start_time_local(ev) -%>
  (<%= start_time_standard(ev) %>)%xn
