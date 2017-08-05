@@ -31,9 +31,11 @@ module AresMUSH
           
           total = final[0] + final[1]
 
-          if (total >= 160)
+          if (total >= 190)
+            badge = "%xrMaster%xn"
+          elsif (total >= 160)
             badge = "%xyExpert%xn"
-          elsif (total >= 120)
+          elsif (total >= 100)
             badge = "%xgBasic%xn"
           else
             badge = "None"
