@@ -1,19 +1,19 @@
 jobs:
     categories:
         APP:
-            color: "%xy"
+            color: "%xm"
         BUILD:
             color: "%xc"
         BUG:
-            color: "%xm"
+            color: "%xy"
         CODE:
-            color: "%xm"
+            color: "%xy"
         MISC:
-            color: ""
+            color: "%xh"
         PLOT:
             color: "%xc"
         REQ:
-            color: "%xr"
+            color: "%xm"
         RP:
             color: "%xc"
         SYS:
