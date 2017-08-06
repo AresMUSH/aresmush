@@ -733,8 +733,7 @@ module AresMUSH
         end
         
         it "should add success to damage" do
-          FS3Combat.stub(:determine_armor) { 10 }
-          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 20, false) { "INCAP" }
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 25, false) { "INCAP" }
           FS3Combat.resolve_attack(@combatant, "A", @target, "Knife", 4)
         end
         
