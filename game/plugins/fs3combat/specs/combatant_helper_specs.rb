@@ -314,13 +314,13 @@ module AresMUSH
           FS3Combat.determine_hitloc(@combatant, -2).should eq "A"
         end
         
-        it "should return the exact hit location if called shot and net > 3" do
-          FS3Combat.determine_hitloc(@combatant, 4, "Head").should eq "Head"
+        it "should return the exact hit location if called shot and net >= 3" do
+          FS3Combat.determine_hitloc(@combatant, 3, "Head").should eq "Head"
         end
         
-        it "should use the called shot hitloc chart if called shot and net <= 3" do
+        it "should use the called shot hitloc chart if called shot and net < 3" do
           FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 3, "Head").should eq "G"
+          FS3Combat.determine_hitloc(@combatant, 2, "Head").should eq "F"
         end
       end
       
