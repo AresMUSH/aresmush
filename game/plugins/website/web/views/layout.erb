@@ -13,6 +13,7 @@
     <script src="/javascripts/jquery.bootstrap-growl.min.js"></script>
     -->
        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -51,87 +52,43 @@
 </head>
 
 <body>
-    <div class="container">
 
-    <div class="header-wrap">
-
-      <div class="title-wrap">
-        
-        <div class="row">
-            <div class="col-md-6">
-                <div class="site-title"><a href="/"><%= game_name %></a></div>
-                <div class="site-subtitle"><%= game_address %></div>
-            </div>
-            <div class="col-md-6 text-right user-bar">
-            <% if @user %>
-            <p>Welcome, <%= @user.name %>.</p>
-            <p><a href="/mail">Mail 
-                
-                <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
-            
-            </a> 
-            | <a href="/char/<%= @user.id %>">Profile</a>
-            | <a href="/logout">Logout</a> </p>
-            <% else %>
-            <p><a href="/login">Login</a> 
-                <% if enable_registration %>
-                | <a href="/register">Register</a>  
-                <% end %>
-            </p>
-                
-            <% end %>
-            </div>
+   <div class="header-wrap">
+       <div class="title-wrap">
+       
+               <div class="row">
+           <div class="col-md-6">
+               <div class="site-title"><a href="/"><%= game_name %></a></div>
+               <div class="site-subtitle"><%= game_address %></div>
+           </div>
+           <div class="col-md-6 text-right user-bar">
+           <% if @user %>
+           <p>Welcome, <%= @user.name %>.</p>
+           <p><a href="/mail">Mail 
+               
+               <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
+           
+           </a> 
+           | <a href="/char/<%= @user.id %>">Profile</a>
+           | <a href="/logout">Logout</a> </p>
+           <% else %>
+           <p><a href="/login">Login</a> 
+               <% if enable_registration %>
+               | <a href="/register">Register</a>  
+               <% end %>
+           </p>
+               
+           <% end %>
+           </div>
+       </div>
+       
         </div>
-        
-        
-      </div>
-      
-        <nav class="navbar navbar-inverse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/">Home</a></li>
 
-              <% if !is_approved? && !is_admin? %>
-              <li><a href="/chargen">Chargen</a></li>
-              <% end %>
-          
-              <li><a href="/play">Play</a></li>
-          
-          
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Directory <span class="caret">
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="/scenes">Scenes</a></li> 
-                  <li><a href="/bbs">Boards</a></li> 
-                  <li><a href="/chars">Characters</a></li>
-                  <li><a href="/locations">Locations</a></li>
-                  <li><a href="/combat">Combats</a></li>
-                  <li><a href="/files">Files</a></li>
-                </ul>
-              </li>
-          
-          
-              <li><a href="/help">Help</a></li> 
-              
-              <% if is_admin? %>              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Admin <span class="caret">
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="/jobs">Jobs</a></li> 
-                  <li><a href="/admin">Setup</a></li>
-                  <li><a href="/admin/logs">Logs</a></li>
-                  <li><a href="/admin/tinker">Tinker</a></li>
-                </ul>
-              </li>
-              <% end %>
-              <li><a href="<%= game_website %>">Wiki</a></li> 
-            </ul>
-        </nav>
+    <%= erb :"navbar" %>
+
     </div>
     
+    <div class="container">
         
         <div class="body-wrap">
              
@@ -161,6 +118,7 @@
                 </div>
                    
                    <div class="col-md-3">    
+                       <div class="clearfix"></div>
                        
                            <%= erb :"search" %>
                        

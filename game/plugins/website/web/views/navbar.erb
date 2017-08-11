@@ -1,0 +1,58 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-brand" href="#"></a>
+        </div>
+                 
+        <div class="collapse navbar-collapse" id="myNavbar">
+                 
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+
+                <% if !is_approved? && !is_admin? %>
+                <li><a href="/chargen">Chargen</a></li>
+                <% end %>
+          
+                <li><a href="/play">Play</a></li>
+          
+          
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Directory <span class="caret"/> </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/scenes">Scenes</a></li> 
+                        <li><a href="/bbs">Boards</a></li> 
+                        <li><a href="/chars">Characters</a></li>
+                        <li><a href="/locations">Locations</a></li>
+                        <li><a href="/combat">Combats</a></li>
+                        <li><a href="/files">Files</a></li>
+                    </ul>
+                </li>
+          
+          
+                <li><a href="/help">Help</a></li> 
+              
+                <% if is_admin? %>              
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"/></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/jobs">Jobs</a></li> 
+                        <li><a href="/admin">Setup</a></li>
+                        <li><a href="/admin/logs">Logs</a></li>
+                        <li><a href="/admin/tinker">Tinker</a></li>
+                    </ul>
+                </li>
+                <% end %>
+                    
+                    
+                <li><a href="<%= game_website %>">Wiki</a></li> 
+                    
+            </ul>
+                    
+        </div>            
+    </div>
+</nav>

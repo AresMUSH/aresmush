@@ -28,7 +28,7 @@ BASIC CONTAINERS
 {
     background: url('/images/background.png');
     background-size: cover;
-    height: 200px;   
+    min-height: 200px;   
     background-position: center; 
 }
 
@@ -46,7 +46,7 @@ BASIC CONTAINERS
 
 .body-wrap
 {
-    padding: 0px 0px 0px 20px;
+    padding: 0px 20px 0px 20px;
     background-color: $background-color;
 }
 
@@ -215,6 +215,9 @@ textarea {
 BOOTSTRAP OVERRIDES
 ------------------------- */
 
+.navbar {
+    margin-bottom: 0px;
+}
 
 .label-pill {
   padding-right: .6em;
@@ -230,7 +233,6 @@ BOOTSTRAP OVERRIDES
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
     background-color: $primary-color;
     color: white;
-    margin: 2px;
 }
 
 .tab-content {
@@ -309,7 +311,7 @@ YOUTUBE MUSIC PLAYER
     border:none;
     background:transparent;
     outline:none;
-    display:inline;
+    display:block; 
 }
 
 .musicplayer-frame, .musicplayer-preload  {
@@ -318,7 +320,7 @@ YOUTUBE MUSIC PLAYER
     overflow:hidden;
     visibility:hidden;
     position:absolute;
-    display:inline
+    display:inline 
 }
 
 .musicplayer-wrap {
@@ -724,9 +726,3 @@ ul.char-ability-list {
 
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
-
-@media only screen and (max-width: 768px) {
-  body {
-    font-size: 1.75em;
-  }
-}
