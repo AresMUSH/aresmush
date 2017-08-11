@@ -1,6 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 load "connector.rb"
-load "lib/arescentral_info_cmd.rb"
 load "lib/char_connected_event_handler.rb"
 load "lib/cron_event_handler.rb"
 load "lib/game_started_event_handler.rb"
@@ -35,12 +34,6 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)      
       case cmd.root
-      when "arescentral"
-        case cmd.switch
-        when "info", nil
-          return AresCentralInfoCmd
-        end
-        
       when "handle"
         case cmd.switch
         when "link"
