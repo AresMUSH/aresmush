@@ -88,7 +88,7 @@ module AresMUSH
     end
     
     def self.determine_hitloc(combatant, attacker_net_successes, called_shot = nil, crew_hit = nil)
-      return called_shot if (called_shot && attacker_net_successes > 3)
+      return called_shot if (called_shot && attacker_net_successes > 2)
 
       hitloc_chart = FS3Combat.hitloc_areas(combatant, crew_hit)
             

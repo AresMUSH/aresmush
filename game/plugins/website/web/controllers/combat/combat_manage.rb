@@ -9,7 +9,6 @@ module AresMUSH
       end
       
       erb :"combat/manage"
-    end
-        
+    end    
   end
 end
