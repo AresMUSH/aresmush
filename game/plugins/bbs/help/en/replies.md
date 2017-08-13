@@ -1,6 +1,6 @@
 ---
+toc: Communicating
 summary: Replying to BBS messages.
-toc: Bulletin Boards
 ---
 # BBS - Replying to Posts
 

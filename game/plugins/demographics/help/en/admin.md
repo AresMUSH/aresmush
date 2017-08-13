@@ -1,6 +1,6 @@
 ---
-toc: ~admin~ Managing Game
-summary: Managing demographics.
+toc: ~admin~ Managing the Game
+summary: Managing your character's demographics.
 ---
 # Managing Demographics
 

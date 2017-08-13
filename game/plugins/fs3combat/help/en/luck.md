@@ -1,5 +1,5 @@
 ---
-toc: FS3 Combat
+toc: FS3
 summary: Using luck in combat.
 aliases:
 - combat luck

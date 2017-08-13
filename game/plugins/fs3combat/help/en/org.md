@@ -1,5 +1,5 @@
 ---
-toc: FS3 Combat
+toc: FS3
 summary: Commands for combat organizers.
 ---
 # FS3 Combat - Organizing

@@ -8,13 +8,18 @@ module AresMUSH
       end            
       
       def handle        
-        list = Help.toc
-        paginator = Paginator.paginate(list, cmd.page, 5)
+        toc_list = {}
+        Help.toc.each do |toc|
+          index_topics = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
+          toc_list[toc] = index_topics
+        end
+        
+        paginator = Paginator.paginate(toc_list.keys, cmd.page, 8)
         
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg
         else
-          template = HelpListTemplate.new(paginator)
+          template = HelpListTemplate.new(paginator, toc_list)
           client.emit template.render        
         end
       end

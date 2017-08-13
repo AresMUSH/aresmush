@@ -1,6 +1,6 @@
 ---
 toc: Community
-summary: AresMUSH social hub.
+summary: Connecting to the AresCentral social hub.
 ---
 # AresCentral
 

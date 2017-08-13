@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :topic
       
       def parse_args
-        self.topic = strip_prefix(titlecase_arg(cmd.args))
+        self.topic = cmd.args
       end
 
       def required_args
@@ -22,15 +22,33 @@ module AresMUSH
       end
       
       def handle
-        found = Help.find_topic(self.topic)
-        if (found.count == 1)
-          display_help(found.first)
-        elsif (found.count > 1)
-          template = BorderedListTemplate.new found, t('help.not_found_alternatives', :topic => self.topic)
-          client.emit template.render
-        else
-          client.emit_failure t('help.not_found', :topic => self.topic)
+        command_text = strip_prefix(self.topic).downcase
+        command_text = command_text.gsub(' ', '/')
+        fake_cmd = Command.new(command_text)
+        CommandAliasParser.substitute_aliases(enactor, fake_cmd, Global.plugin_manager.shortcuts)
+        Global.plugin_manager.plugins.each do |p|
+          handler_class = p.get_cmd_handler(client, fake_cmd, enactor)
+          if (handler_class)
+            handler = handler_class.new(nil, nil, nil)
+            client.emit "%xh%xx%%%xn #{handler.help_text}"
+            return
+          end
         end
+        
+        topics = Help.find_topic(self.topic)
+        if (topics.any?)
+          
+          help_url = topics.map { |t| Help.topic_url(t) }.join(', ')
+        else
+          help_url = "#{Game.web_portal_url}/help"
+          
+          plugin_names = Global.plugin_manager.plugins.map { |p| p.to_s.after("::").downcase}
+          if (plugin_names.include?(fake_cmd.root))
+            help_url = "#{help_url}/#{fake_cmd.root}"
+          end
+        end
+        
+        client.emit_failure t('help.no_help_found', :command => self.topic, :url => help_url)
       end
         
       def strip_prefix(arg)

@@ -17,5 +17,16 @@ module AresMUSH
       return true if char == master_admin
       return false
     end
+    
+    def self.wiki_url
+      Global.read_config("game", "website")
+    end
+    
+    def self.web_portal_url
+      port = Global.read_config("server", "webserver_port")
+      host = Global.read_config("server", "hostname")
+      "http://#{host}:#{port}"
+    end
+    
   end
 end

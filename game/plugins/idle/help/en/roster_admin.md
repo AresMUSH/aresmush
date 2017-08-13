@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Managing Game
+toc: ~admin~ Managing the Game
 summary: Managing the roster.
 ---
 # Managing the Roster

@@ -23,7 +23,7 @@ module AresMUSH
     
     def parse_args(args_regex)
       ArgParser.parse(args_regex, @args)
-    end
+    end    
     
     def to_s
       "#{@raw}"

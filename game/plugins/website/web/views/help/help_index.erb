@@ -14,10 +14,10 @@
   <% if topics.count > 0 %>
 
     <ul>
-    <% topics.each do |name, data| %>
+    <% topics.sort.each do |name, data| %>
         <li>
         <a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>">
-        <%= name.titleize %></a> - <%= data['summary'] %>
+        <%= data['summary'] %></a>
         </li>
      <% end %>
     </ul>

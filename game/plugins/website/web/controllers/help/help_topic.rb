@@ -1,6 +1,9 @@
 module AresMUSH
   class WebApp
 
+    get '/help/:plugin' do |plugin|
+      redirect "/help/#{plugin}/index"
+    end
 
     get '/help/:plugin/:topic' do |plugin, topic|
       @topic = topic.titlecase

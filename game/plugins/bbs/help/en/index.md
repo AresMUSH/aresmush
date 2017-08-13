@@ -1,6 +1,6 @@
 ---
-toc: Bulletin Boards
-summary: Bulletin boards.
+toc: Communicating
+summary: Using the bulletin board system.
 aliases:
 - bbread
 - bbpost

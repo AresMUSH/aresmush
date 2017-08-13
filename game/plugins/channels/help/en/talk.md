@@ -1,5 +1,5 @@
 ---
-toc: Channels
+toc: Communicating
 summary: Talking on channels.
 ---
 # Talking on Channels

@@ -1,6 +1,6 @@
 ---
-toc: Channels
-summary: Public chat channels.
+toc: Communicating
+summary: Using the public chat channels.
 aliases:
 - chat
 - comsys

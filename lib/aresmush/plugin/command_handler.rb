@@ -25,6 +25,16 @@ module AresMUSH
       handle
     end
         
+    # Override this with a simple help syntax for your command.  Do not include long
+    # explanations; those are better suited to the tutorials.  Use `` around the actual
+    # command part so it gets formatted properly.
+    # Example:  
+    #    def help
+    #      "`bbs` - Lists all bbs boards"
+    #    end
+    def help
+      t('dispatcher.no_help_available')
+    end
     
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
@@ -58,7 +68,7 @@ module AresMUSH
       
       if (required_args)
         required_args[:args].each do |arg|
-          return t('dispatcher.invalid_syntax', :command => required_args[:help]) if "#{arg}".strip.length == 0
+          return t('dispatcher.invalid_syntax', :help => help_text) if "#{arg}".strip.length == 0
         end
       end
       
@@ -163,5 +173,17 @@ module AresMUSH
     def split_and_titlecase_arg(arg, split = " ")
       arg ? arg.split(split).map { |a| titlecase_arg(a) } : nil
     end
+    
+    def help_text
+      name = self.class.parent.to_s.after("::")
+      web = Game.web_portal_url
+      url = "#{web}/help/#{name.downcase}/index"
+      
+      markdown = MarkdownFormatter.new
+      text = markdown.to_mush help.split("%R").join("%R%xh%xx%%%xn ")
+      text = text.strip      
+      t('dispatcher.command_help', :help => text, :tutorial => url)
+    end
+    
   end
 end

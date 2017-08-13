@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Managing Game
+toc: ~admin~ Managing the Game
 summary: Idle sweeping old characters.
 ---
 # Idle Sweeping Old Characters

@@ -5,6 +5,11 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :new_text
 
+      def help
+        "`bbs/edit <board>/<post #>=<new text>` - Replaces post text with the new text.%R" +
+        "`bbs/edit <board>/<post #>` - Grabs the existing post text into your input buffer."
+      end
+      
       def parse_args
         args = cmd.parse_args( /(?<name>[^\/]+)\/(?<num>[^\=]+)\=?(?<new_text>.+)?/)
         self.board_name = titlecase_arg(args.name)
@@ -12,7 +17,7 @@ module AresMUSH
         self.new_text = args.new_text
       end
       
-      def required_args
+      def required_args        
         {
           args: [ self.board_name, self.num ],
           help: 'bbs posting'

@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :board_name, :subject, :message
       
+      def help
+        "`bbs/post <board name or number>=<title>/<body>` - Writes a new post."
+      end
+      
       def parse_args
         if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
           args = cmd.parse_args(/(?<name>[^\=]+)=(?<subject>[^\/]+)\/(?<message>.+)/)

@@ -1,6 +1,6 @@
 ---
-toc: ~admin~ Managing Game
-summary: Managing approvals.
+toc: ~admin~ Managing the Game
+summary: Managing character applications.
 ---
 # Managing Applications
 

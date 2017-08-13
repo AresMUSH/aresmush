@@ -1,6 +1,6 @@
 ---
 toc: Character Creation
-summary: Review character status and submit for approval.
+summary: Submitting your character for approval.
 order: 2
 aliases:
 - submit

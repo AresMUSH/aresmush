@@ -104,7 +104,7 @@ module AresMUSH
         Global.logger.error("Error handling event: event=#{event} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
     end
-    
+        
     private
     
     def with_error_handling(client, cmd, &block)

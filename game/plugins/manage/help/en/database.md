@@ -1,5 +1,5 @@
 ---
-toc: ~admin~ Managing Game
+toc: ~admin~ Managing the Game
 summary: Examining and manipulating the database.
 aliases:
 - examine

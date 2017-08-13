@@ -5,6 +5,10 @@ module AresMUSH
            
       attr_accessor :name
 
+      def help
+        "`bbs/deleteboard <board>` - Deletes a board."
+      end
+      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

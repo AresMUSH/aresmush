@@ -1,6 +1,6 @@
 ---
 toc: Community
-summary: Alternate characters.
+summary: Registering alternate characters.
 ---
 # Alternate Characters
 

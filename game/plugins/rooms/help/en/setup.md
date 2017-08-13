@@ -1,5 +1,5 @@
 ---
-toc: Grid
+toc: ~admin~ Building
 summary: Room setup.
 aliases:
 - area

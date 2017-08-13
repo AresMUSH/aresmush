@@ -1,5 +1,5 @@
 ---
-toc: Channels
+toc: Communicating
 summary: Managing channels.
 ---
 # Managing Channels

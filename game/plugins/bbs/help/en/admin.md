@@ -1,5 +1,5 @@
 ---
-toc: Bulletin Boards
+toc: ~admin~ Managing the Game
 summary: Managing bulletin boards.
 aliases:
 - bbwiz

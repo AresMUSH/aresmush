@@ -1,6 +1,6 @@
 ---
 toc: Character Creation
-summary: Setting basic character info.
+summary: Setting basic character demographics.
 order: 2
 aliases:
 - fullname

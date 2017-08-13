@@ -1,5 +1,5 @@
 ---
-toc: Grid
+toc: Getting Around
 summary: Getting around the grid.
 aliases:
 - getting around

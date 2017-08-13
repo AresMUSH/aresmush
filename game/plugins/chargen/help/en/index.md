@@ -1,6 +1,6 @@
 ---
 toc: Character Creation
-summary: Character creation walkthrough.
+summary: Creating your character.
 order: 1
 ---
 # Character Creation

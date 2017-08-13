@@ -1,6 +1,6 @@
 ---
+toc: Communicating
 summary: Posting BBS messages.
-toc: Bulletin Boards
 ---
 # BBS - Posting to Boards
 

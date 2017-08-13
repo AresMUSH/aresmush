@@ -1,5 +1,5 @@
 ---
-toc: FS3 Combat
+toc: FS3
 summary: Run-down of all combat actions.
 ---
 # FS3 Combat - Actions

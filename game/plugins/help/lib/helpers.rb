@@ -23,6 +23,10 @@ module AresMUSH
       all_topics.select { |k, v| v["toc"] == toc }.sort_by { |k, v| [ v["order"] || 50, v["topic"] ] }
     end    
     
+    def self.topic_url(topic)
+      "#{Game.web_portal_url}/help/#{topic.gsub(' ', '/')}"
+    end
+    
     def self.find_topic(topic)
       index = Help.index
       search = topic.downcase

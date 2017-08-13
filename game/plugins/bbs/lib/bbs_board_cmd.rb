@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :board_name
 
+      def help
+        "`bbs <board name or number>` - Lists posts on the selected board."
+      end
+      
       def parse_args
         self.board_name = titlecase_arg(cmd.args)
       end

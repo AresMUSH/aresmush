@@ -27,6 +27,10 @@ module AresMUSH
     class BbsDescCmd
       include BbsAttributeCmd
     
+      def help
+        "`bbs/describe <board>=<description>` - Describes a board."
+      end
+      
       def handle
         Bbs.with_a_board(name, client, enactor) do |board|        
           board.update(description: self.attribute)
@@ -37,6 +41,10 @@ module AresMUSH
     
     class BbsOrderCmd
       include BbsAttributeCmd    
+    
+      def help
+        "`bbs/order <board>=<order>` - Changes which order a board appears in."
+      end
     
       def check_number
         return t('bbs.invalid_board_number') if !self.attribute.is_integer?
@@ -54,6 +62,10 @@ module AresMUSH
     class BbsRenameCmd
       include BbsAttributeCmd
     
+      def help
+        "`bbs/renameboard <board>=<new name>` - Renames a board."
+      end
+    
       def handle
         Bbs.with_a_board(name, client, enactor) do |board|        
           board.update(name: self.attribute)
@@ -64,6 +76,11 @@ module AresMUSH
     
     class BbsRolesCmd
       include BbsAttributeCmd
+    
+      def help
+        "`bbs/readroles <board>=<roles that can read it, or 'everyone'>` - Sets up who can read a board%R" +
+        "`bbs/writeroles <board>=<roles that can write to it, or 'everyone'>` - Sets up who can post to a board."
+      end
     
       def check_roles
         if (self.attribute == "none" || !self.attribute)

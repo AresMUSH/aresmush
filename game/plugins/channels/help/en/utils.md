@@ -1,6 +1,6 @@
 ---
-toc: Channels
-summary: Advanced channel commands.
+toc: Communicating
+summary: Using advanced channel commands.
 ---
 # Channel Utilities
 

@@ -1,6 +1,6 @@
 ---
 toc: Community
-summary: Player handles - OOC identity.
+summary: Creating a player handle.
 ---
 # AresCentral - Player Handles
 

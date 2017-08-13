@@ -1,5 +1,5 @@
 ---
-toc: FS3 Combat
+toc: FS3
 summary: Combat damage and healing.
 aliases:
 - treat

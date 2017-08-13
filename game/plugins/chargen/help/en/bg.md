@@ -1,6 +1,6 @@
 ---
 toc: Character Creation
-summary: Character backgrounds.
+summary: Setting your character's background.
 order: 2
 ---
 # Backgrounds

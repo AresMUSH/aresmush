@@ -1,6 +1,6 @@
 ---
+toc: Communicating
 summary: Reading BBS messages.
-toc: Bulletin Boards
 ---
 # BBS - Reading Boards
 
