@@ -175,9 +175,8 @@ module AresMUSH
     end
     
     def help_text
-      name = self.class.parent.to_s.after("::")
       web = Game.web_portal_url
-      url = "#{web}/help/#{name.downcase}/index"
+      url = "#{web}/help"
       
       markdown = MarkdownFormatter.new
       text = markdown.to_mush help.split("%R").join("%R%xh%xx%%%xn ")

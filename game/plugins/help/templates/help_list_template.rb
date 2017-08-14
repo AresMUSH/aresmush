@@ -19,8 +19,8 @@ module AresMUSH
         Game.web_portal_url
       end
       
-      def topic_url(name)
-        Help.topic_url(name)
+      def topic_url(plugin, name)
+        Help.topic_url(plugin, name)
       end
       
     end

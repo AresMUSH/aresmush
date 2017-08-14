@@ -27,7 +27,7 @@ You can change the order that the boards are displayed in by assigning each an o
 
 ## Access Roles
 
-Access to bulletin boards is done by role.  You can define a role in the [Roles System](/help/roles) and then give that role read and/or write permissions to a board.  
+Access to bulletin boards is done by role.  You can define a role in the [Roles System](/help/roles/roles) and then give that role read and/or write permissions to a board.  
 
 Posting and replying to a board requires 'write' permissions.
 

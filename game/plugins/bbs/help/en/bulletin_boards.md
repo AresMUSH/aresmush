@@ -52,7 +52,7 @@ The game will tell you when someone has posted a new message to the BBS.  You wi
 
 If you've already read the post on another character, or you're just not interested in posts to a particular board, you can use the catchup command to mark all posts on a board as read.
 
-> Tip:  If you link your characters to a [Player Handle](/help/handles), the game will automatically mark a post as read on all your characters when you read it on one.
+> Tip:  If you link your characters to a [Player Handle](/help/arescentral/handles), the game will automatically mark a post as read on all your characters when you read it on one.
 
 `bbs/new` - Reads the first unread message on any board.
 `bbs/catchup <board>` - Marks all unread messages as read.

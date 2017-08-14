@@ -35,9 +35,9 @@ module AresMUSH
           end
         end
         
-        topics = Help.find_topic(self.topic)
+        topics = Help.find_topic(self.topic)        
         if (topics.any?)
-          help_url = topics.map { |t| Help.topic_url(t) }.join(', ')
+          help_url = topics.map { |t| Help.topic_url(Help.index[t]['plugin'], t) }.join(', ')
         else
           help_url = "#{Game.web_portal_url}/help"
         end
@@ -49,15 +49,6 @@ module AresMUSH
         return nil if !arg
         cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(arg)
         !cracked ? nil : cracked[:rest]
-      end
-            
-      def display_help(topic)
-        text = Help.topic_contents(topic)
-        markdown = MarkdownFormatter.new
-        display = markdown.to_mush(text).chomp
-
-        template = BorderedDisplayTemplate.new display
-        client.emit template.render
       end
     end
   end
