@@ -68,7 +68,15 @@ module AresMUSH
       
       if (required_args)
         required_args[:args].each do |arg|
-          return t('dispatcher.invalid_syntax', :help => help_text) if "#{arg}".strip.length == 0
+          
+          if "#{arg}".strip.length == 0
+            markdown = MarkdownFormatter.new
+            formatted_help = markdown.to_mush help
+            
+            return t('dispatcher.invalid_syntax', 
+               :help => formatted_help.strip.split("%R").join("%R%xh%xx%%%xn "),
+               :url => "#{Game.web_portal_url}/help" ) 
+          end
         end
       end
       
@@ -173,16 +181,5 @@ module AresMUSH
     def split_and_titlecase_arg(arg, split = " ")
       arg ? arg.split(split).map { |a| titlecase_arg(a) } : nil
     end
-    
-    def help_text
-      web = Game.web_portal_url
-      url = "#{web}/help"
-      
-      markdown = MarkdownFormatter.new
-      text = markdown.to_mush help.split("%R").join("%R%xh%xx%%%xn ")
-      text = text.strip      
-      t('dispatcher.command_help', :help => text, :tutorial => url)
-    end
-    
   end
 end

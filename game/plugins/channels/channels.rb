@@ -81,6 +81,8 @@ module AresMUSH
           return ChannelRenameCmd
         when "roles"
           return ChannelRolesCmd
+        when "talk"
+          return ChannelTalkCmd
         when "title"
           return ChannelTitleCmd
         when "who"

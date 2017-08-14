@@ -4,6 +4,10 @@ module AresMUSH
       include CommandHandler
       include TemplateFormatters           
       
+      def help
+        "`channels` - Lists channels and their descriptions"
+      end
+      
       def handle   
         all_channels = Channel.all.sort_by(:name_upcase, :order => 'ALPHA')
         template = ChannelListTemplate.new(all_channels, enactor)

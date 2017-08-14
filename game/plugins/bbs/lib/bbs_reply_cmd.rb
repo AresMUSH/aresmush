@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :board_name, :num, :reply
 
       def help
-        "`bbs/reply <board name or number>/<post number>=<reply>` - Replies to a bbs post.%R" +
+        "`bbs/reply <board name or number>/<post number>=<reply>` - Replies to a bbs post.\n" +
         "`bbs/reply <reply>` - Replies to the last post you read." 
       end
       

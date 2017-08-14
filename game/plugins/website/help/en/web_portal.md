@@ -1,5 +1,5 @@
 ---
-toc: Web Portal
+toc: 1 - Getting Started
 summary: Using the game's web portal.
 aliases:
 - web portal

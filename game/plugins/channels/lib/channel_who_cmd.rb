@@ -5,15 +5,16 @@ module AresMUSH
            
       attr_accessor :name
 
+      def help
+        "`channel/who <channel>` - Shows who's on the channel"
+      end
+      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'channels utils'
-        }
+        [ self.name ]
       end
       
       def handle

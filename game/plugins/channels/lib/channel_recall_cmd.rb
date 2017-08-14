@@ -5,6 +5,10 @@ module AresMUSH
            
       attr_accessor :name, :num_messages
 
+      def help
+        "`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel."
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = args.arg1
@@ -12,10 +16,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'channels utils'
-        }
+        [ self.name ]
       end
       
       def check_number

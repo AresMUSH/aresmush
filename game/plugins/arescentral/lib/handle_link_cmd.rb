@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :handle_name, :link_code
 
       def help
-        "`handle/link <handle name>=<link code>` - Links this character to your player handle, using the link code obtained from http://arescentral.aresmush.com"
+        "`handle/link <handle name>=<link code>` - Links this character to your player handle, using the link code obtained from AresCentral."
       end
       
       def parse_args

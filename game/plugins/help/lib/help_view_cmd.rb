@@ -22,33 +22,26 @@ module AresMUSH
       end
       
       def handle
-        command_text = strip_prefix(self.topic).downcase
-        command_text = command_text.gsub(' ', '/')
-        fake_cmd = Command.new(command_text)
-        CommandAliasParser.substitute_aliases(enactor, fake_cmd, Global.plugin_manager.shortcuts)
-        Global.plugin_manager.plugins.each do |p|
-          handler_class = p.get_cmd_handler(client, fake_cmd, enactor)
-          if (handler_class)
-            handler = handler_class.new(nil, nil, nil)
-            client.emit "%xh%xx%%%xn #{handler.help_text}"
-            return
-          end
+        
+        command_help = Help.command_help(self.topic)
+        help_url = "#{Game.web_portal_url}/help"
+        
+        if (command_help)
+          markdown = MarkdownFormatter.new
+          template = BorderedDisplayTemplate.new markdown.to_mush(command_help),
+                t('help.help_topic_header', :command => self.topic),
+                t('help.help_topic_footer', :url => help_url)
+
+          client.emit template.render
+          return
         end
         
         topics = Help.find_topic(self.topic)        
         if (topics.any?)
           help_url = topics.map { |t| Help.topic_url(Help.index[t]['plugin'], t) }.join(', ')
-        else
-          help_url = "#{Game.web_portal_url}/help"
         end
         
         client.emit_failure t('help.no_help_found', :command => self.topic, :url => help_url)
-      end
-        
-      def strip_prefix(arg)
-        return nil if !arg
-        cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(arg)
-        !cracked ? nil : cracked[:rest]
       end
     end
   end

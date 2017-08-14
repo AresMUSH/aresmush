@@ -24,27 +24,19 @@ Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firs
       3       Cookie Awards                                                   rw   
     +==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+
 
+The 'rw' on the end tells you whether you can read and/or write to the board.
+
 ## Reading Boards
 
 ### Listing Boards
 
 The game has a variety of bulletin boards, each with a different purpose.  You can see the list of boards and their descriptions.
 
-`bbs` - Lists available boards.
-
-The 'rw' on the end tells you whether you can read and/or write to the board.
-
-### Viewing the Board Summary
-
 To read a board, you need to use the `bbs` command with the board name or number.  To read the announcements board you could use either `bbs 1` or `bbs announcements`.  You can also use part of the name as long as it's enough to distinguish which board you're after:  `bbs announce`.  This will show you the board's summary and a list of posts.
-
-`bbs <board>` - Lists posts on the selected board.
-
-### Reading a Post
 
 To read a specific post, you use the board name/number and post number.  To read the first message on the Announcements board, you could use `bbs 1/1` or `bbs announce/1`.
 
-`bbs <board>/<post #>` - Reads the selected post.
+[[help bbs]]
 
 ### Reading New Posts
 
@@ -54,14 +46,14 @@ If you've already read the post on another character, or you're just not interes
 
 > Tip:  If you link your characters to a [Player Handle](/help/arescentral/handles), the game will automatically mark a post as read on all your characters when you read it on one.
 
-`bbs/new` - Reads the first unread message on any board.
-`bbs/catchup <board>` - Marks all unread messages as read.
+[[help bbs/new]] 
+[[help bbs/catchup]]
 
 ## Posting to a Board
 
 To post a message to a board, you use the `bbs/post` command with the board name/number, a title and a message.
 
-`bbs/post <board>=<title>/<body>` - Writes a new post.
+[[help bbs/post]]
 
 ### Editing a Post
 
@@ -69,20 +61,19 @@ If you need to edit a post after it's been posted, you can use the edit command 
 
 If your client supports the [Edit Feature](/help/utils/edit), you can use the edit command with just the board and post number to grab the post text into your client's input buffer: `bbs/edit 1/6`
 
-`bbs/edit <board>/<post #>=<new text>` - Replaces post text with the new text.
-`bbs/edit <board>/<post #>` - Grabs the existing post text into your input buffer.
+[[help bbs/edit]]
 
 ### Moving a Post
 
 You can move a post from one board to another using the move command.  Just specify the original board and post number, and the new board name/number.
 
-`bbs/move <board>/<post #>=<new board>` - Moves a post from one board to another.
+[[help bbs/move]]
 
 ### Deleting a Post
 
 To delete a post completely, including all of its replies, use the delete command with the board name/number and post number.
 
-`bbs/delete <board>/<post #>` - Deletes a post
+[[help bbs/delete]]
 
 ## Replying to Posts
 
@@ -92,8 +83,12 @@ To reply to a message, use the board name/number, post number and your response:
 
 If you've just read a post, you can reply to it without specifying the name and number.  Just give a message and it will reply to the last post you've read: `bbs/reply My reply.`
 
+[[help bbs/reply]]
+
 ### Deleting Replies
 
 You cannot edit a reply once it's been posted, but you can delete it and try again.  Use the deletereply command with the board, post and reply number:  `bbs/deletereply 3/4=1`
 
 Board administrators with the **can\_manage\_board** permission are able to delete other people's replies.
+
+[[help bbs/deletereply]]

@@ -4,9 +4,17 @@ module AresMUSH
     
     # Enables the //italics// format that everyone is used to.
     class HTMLWithWikiExtensions < Redcarpet::Render::HTML
-      def initialize(tag_blocks, options)
-        @tag_blocks = tag_blocks
+      def initialize(pre_tag_blocks, post_tag_blocks, options)
+        @pre_tag_blocks = pre_tag_blocks
+        @post_tag_blocks = post_tag_blocks
         super options
+      end
+      
+      def preprocess(text)
+        @pre_tag_blocks.each do |tag, block|
+          text = text.gsub(/\[\[#{tag} ([^\]]*)\]\]/i) { block.call(Regexp.last_match[1]) }
+        end
+        text
       end
       
       def postprocess(text)
@@ -17,7 +25,7 @@ module AresMUSH
         text = text.gsub(/\[\[\/div\]\]/i, "</div>")
         text = text.gsub(/\[\[\/span\]\]/i, "</span>")        
 
-        @tag_blocks.each do |tag, block|
+        @post_tag_blocks.each do |tag, block|
           text = text.gsub(/\[\[#{tag} ([^\]]*)\]\]/i) { block.call(Regexp.last_match[1]) }
         end
         
@@ -26,7 +34,7 @@ module AresMUSH
     end
 
     class WikiMarkdownFormatter
-      def initialize(escape_html, tag_blocks)
+      def initialize(escape_html, pre_tag_blocks, post_tag_blocks)
         
         options = {
                 tables: true,
@@ -35,7 +43,7 @@ module AresMUSH
                 fenced_code_blocks: true
             }
             
-        renderer = HTMLWithWikiExtensions.new(tag_blocks, 
+        renderer = HTMLWithWikiExtensions.new(pre_tag_blocks, post_tag_blocks, 
             hard_wrap: true, 
             autolink: true, 
             safe_links_only: true,

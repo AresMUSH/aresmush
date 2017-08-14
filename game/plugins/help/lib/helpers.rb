@@ -54,6 +54,22 @@ module AresMUSH
       return matches.values.uniq if matches.count > 0
     end
     
+    def self.command_help(command)
+      command_text = strip_prefix(command).downcase
+      command_text = command_text.gsub(' ', '/')
+      fake_cmd = Command.new(command_text)
+      CommandAliasParser.substitute_aliases(nil, fake_cmd, Global.plugin_manager.shortcuts)
+      Global.plugin_manager.plugins.each do |p|
+        handler_class = p.get_cmd_handler(Client.new(0, DummyConnection.new), fake_cmd, nil)
+        if (handler_class)
+          handler = handler_class.new(nil, nil, nil)
+          return handler.help
+        end
+      end
+      
+      return nil
+    end
+    
     def self.topic_contents(topic_key)
       Global.logger.debug "Reading help file #{topic_key}"
       index = Help.index
@@ -62,6 +78,18 @@ module AresMUSH
       path = topic["path"]
       md = MarkdownFile.new(path)
       md.contents
+    end
+    
+    def self.strip_prefix(arg)
+      return nil if !arg
+      cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(arg)
+      !cracked ? nil : cracked[:rest]
+    end
+    
+    class DummyConnection
+      def ip_addr
+        ""
+      end
     end
   end
 end

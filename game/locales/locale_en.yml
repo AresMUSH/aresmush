@@ -18,7 +18,7 @@ en:
         cmd_no_args: "This command does not take any arguments."
         cmd_no_switches: "This command does not take any switches (/whatever)."
         cmd_invalid_switch: "That is not a valid switch (/whatever) for this command."
-        invalid_syntax: "That is not the right command format.  Try this:%R%xn%xh%xx%%%%%xn %{help}"
+        invalid_syntax: "That is not the right command format.  Try this:%R%xn%xh%xx%%%%%xn %{help}%R%xh%xx%%%%%xn Get more help at the web portal: %{url}"
         invalid_on_off_option: "Please use 'on' or 'off'."
         stale_object_error: "Someone else changed that object at the same time.  Please try again."
         no_help_available: "No help is available for this command."

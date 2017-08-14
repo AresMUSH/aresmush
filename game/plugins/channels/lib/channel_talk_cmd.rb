@@ -5,6 +5,10 @@ module AresMUSH
            
       attr_accessor :channel, :msg
       
+      def help
+        "`<channel name> <message>` - Talks on a channel."
+      end
+      
       def parse_args
         self.msg = cmd.args
       end
@@ -15,6 +19,11 @@ module AresMUSH
       
       def handle
         self.channel = Channels.channel_for_alias(enactor, cmd.root)
+        if !self.channel
+          client.emit_failure t('dispatcher.huh')
+          return
+        end
+        
         options = Channels.get_channel_options(enactor, self.channel)
         
         # To support MUX-style command syntax, messages can trigger other

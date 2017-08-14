@@ -5,6 +5,10 @@ module AresMUSH
            
       attr_accessor :name, :alias
 
+      def help
+        "`channel/join <channel>[=<alias>]` - Joins a channel"
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = titlecase_arg(args.arg1)
@@ -12,10 +16,7 @@ module AresMUSH
       end
           
       def required_args
-        {
-          args: [ self.name ],
-          help: 'channels talk'
-        }
+        [ self.name ]
       end
         
       def handle
