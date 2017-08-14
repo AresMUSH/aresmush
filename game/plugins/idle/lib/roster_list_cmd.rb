@@ -4,6 +4,11 @@ module AresMUSH
     class RosterListCmd
       include CommandHandler
       
+      def help
+        "`roster` - Views a list of rostered characters.\n" + 
+        "`roster <name>` - Views details about a character."
+      end
+      
       def check_roster_enabled
         return t('idle.roster_disabled') if !Idle.roster_enabled?
         return nil

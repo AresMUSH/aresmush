@@ -3,17 +3,16 @@ module AresMUSH
     class HelpListTemplate < ErbTemplateRenderer
 
 
-      attr_accessor :paginator, :toc_list
+      attr_accessor :paginator
       
-      def initialize(paginator, toc_list)
+      def initialize(paginator)
         @paginator = paginator
-        @toc_list = toc_list
         super File.dirname(__FILE__) + "/help_list.erb"
       end
       
       def section_topics(section)
-        toc_list[section]
-      end      
+        Help.toc_section_topic_data(section)
+      end            
       
       def web_portal_url
         Game.web_portal_url

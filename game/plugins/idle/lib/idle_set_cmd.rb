@@ -6,6 +6,10 @@ module AresMUSH
       
       attr_accessor :name, :status
 
+      def help
+        "`idle/set <name>=<Dead, Gone, None>` - Sets someone's status without running through the idle queue or making a post."
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = titlecase_arg(args.arg1)
@@ -13,10 +17,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.status ],
-          help: 'idle admin'
-        }
+        [ self.name, self.status ]
       end
       
       
@@ -26,7 +27,7 @@ module AresMUSH
       end
       
       def check_action
-        actions = [ 'Nothing', 'Dead', 'Gone', 'Npc' ]
+        actions = [ 'None', 'Dead', 'Gone', 'Npc' ]
         return t('idle.use_roster_cmd') if self.status == 'Roster'
         
         return t('idle.invalid_action', :actions => actions.join(" ")) if !actions.include?(self.status)
@@ -45,7 +46,7 @@ module AresMUSH
             return
           end
           
-          if (self.status == 'Nothing')
+          if (self.status == 'None')
             model.update(idle_state: nil)
           elsif (self.status == 'Npc')
             model.update(is_npc: true)

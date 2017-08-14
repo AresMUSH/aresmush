@@ -18,10 +18,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.names, self.team ],
-          help: 'combat org'
-        }
+        [ self.names, self.team ]
       end
 
       def check_team

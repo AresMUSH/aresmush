@@ -3,6 +3,12 @@ module AresMUSH
     class ListRequestsCmd
       include CommandHandler
 
+      def help
+        "`requests` - Views your active requests\n" + 
+        "`request <#>` - Views details of a request.\n" + 
+        "`requests/all` - Views all of your requests, even closed ones."
+      end
+      
       def handle
         requests = cmd.switch_is?("all") ? 
           enactor.jobs.to_a : 

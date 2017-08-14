@@ -3,6 +3,11 @@ module AresMUSH
     class CookiesCmd
       include CommandHandler
       
+      def help
+        "`cookie <list of names>` - Give a cookie.\n" +
+        "`cookies` - Sees cookies you have given out this week."        
+      end
+      
       def handle
         cookie_recipients = enactor.cookies_given
         if (cookie_recipients.empty?)

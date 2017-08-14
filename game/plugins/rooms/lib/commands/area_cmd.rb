@@ -17,10 +17,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'rooms setup'
-        }
+        [ self.name ]
       end
       
       def check_can_build

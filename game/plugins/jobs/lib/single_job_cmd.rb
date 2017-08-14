@@ -6,10 +6,7 @@ module AresMUSH
       attr_accessor :number
 
       def required_args
-        {
-          args: [ self.number ],
-          help: 'jobs'
-        }
+        [ self.number ]
       end
       
       def check_number

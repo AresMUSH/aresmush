@@ -5,15 +5,16 @@ module AresMUSH
       
       attr_accessor :option
 
+      def help
+        "`watch <all, none, friends>` - Whose connect messages do you see."
+      end
+      
       def parse_args
         self.option = !cmd.args ? nil : cmd.args.downcase
       end
 
       def required_args
-        {
-          args: [ self.option ],
-          help: 'watch'
-        }
+        [ self.option ]
       end
       
       def check_option

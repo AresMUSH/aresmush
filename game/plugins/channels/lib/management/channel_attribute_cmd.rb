@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.attribute ],
-          help: 'channels admin'
-        }
+        [ self.name, self.attribute ]
       end
       
       def check_can_manage

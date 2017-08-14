@@ -4,6 +4,10 @@ module AresMUSH
     class IdleExecuteCmd
       include CommandHandler
 
+      def help
+        "`idle/execute` - Takes care of the actions and posts a summary to the BBS."
+      end
+      
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')
@@ -22,7 +26,7 @@ module AresMUSH
           chars = ids.map { |id, action| Character[id] }
 
           # Don't log destroyed chars who never hit the grid
-          if (action != "Destroy" && action != "Nothing")   
+          if (action != "Destroy")   
             title = t("idle.idle_#{action.downcase}")
             color = Idle.idle_action_color(action)
             report << "%r#{color}#{title}%xn"
@@ -30,13 +34,13 @@ module AresMUSH
           
           chars.sort_by { |c| c.name }.each do |idle_char|
 
-            if (action != "Destroy" && action != "Nothing")   
+            if (action != "Destroy")   
               report << idle_char.name 
-              
-              # Remove their handle.              
-              if (idle_char.handle)
-                idle_char.handle.delete
-              end
+            end
+            
+            # Remove their handle.              
+            if (idle_char.handle)
+              idle_char.handle.delete
             end
             
             case action
@@ -52,13 +56,6 @@ module AresMUSH
             when "Warn"
               Global.logger.debug "#{idle_char.name} idle warned."
               idle_char.update(idle_warned: true)
-            when "Nothing"
-              # Do nothing
-            when "Reset"
-              # Reset their idle status
-              idle_char.update(idle_warned: false)
-              idle_char.update(is_npc: false)
-              idle_char.update(idle_state: nil)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
               idle_char.update(idle_state: action)

@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.body ],
-          help: 'mail composition'
-        }
+        [ self.body ]
       end
       
       def check_composing_mail

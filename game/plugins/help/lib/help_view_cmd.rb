@@ -6,42 +6,36 @@ module AresMUSH
 
       attr_accessor :topic
       
+      def help
+        "`help` - List help files.\n" +
+        "`help <command>` - Shows help for a command."
+      end
+      
       def parse_args
         self.topic = cmd.args
       end
 
       def required_args
-        {
-          args: [ self.topic ],
-          help: 'help'
-        }
+        [ self.topic ]
       end
       
       def allow_without_login
         true
       end
       
-      def handle
-        
-        command_help = Help.command_help(self.topic)
-        help_url = "#{Game.web_portal_url}/help"
-        
-        if (command_help)
+      def handle               
+        topics = Help.find_topic(self.topic)
+        if (topics.count == 1)
+          topic = topics.first
+          md_contents = Help.topic_contents(topic)
           markdown = MarkdownFormatter.new
-          template = BorderedDisplayTemplate.new markdown.to_mush(command_help),
-                t('help.help_topic_header', :command => self.topic),
-                t('help.help_topic_footer', :url => help_url)
-
+          template = BorderedDisplayTemplate.new markdown.to_mush(md_contents)
           client.emit template.render
-          return
+        elsif (topics.count == 0)
+          client.emit_failure t('help.not_found', :topic => self.topic)
+        else
+          client.emit_failure t('help.not_found_alternatives', :topic => self.topic, :alts => topics.join(", "))
         end
-        
-        topics = Help.find_topic(self.topic)        
-        if (topics.any?)
-          help_url = topics.map { |t| Help.topic_url(Help.index[t]['plugin'], t) }.join(', ')
-        end
-        
-        client.emit_failure t('help.no_help_found', :command => self.topic, :url => help_url)
       end
     end
   end

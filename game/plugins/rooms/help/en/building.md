@@ -54,7 +54,7 @@ If you lose track of rooms you've created, you may need to use the database comm
 `rooms`- Lists all rooms
 `rooms <search>` - Search for rooms.
 
-See the [Database Help](/help/manage/database) file for more information.
+See the [Database Help](/help/database) file for more information.
 
 ## Special Rooms
 

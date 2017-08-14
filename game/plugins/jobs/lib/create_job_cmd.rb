@@ -5,6 +5,10 @@ module AresMUSH
 
       attr_accessor :title, :description, :category
       
+      def help
+        "`job/create <category>=<title>/<description>` - Creates a new job."
+      end
+      
       def parse_args
         if (cmd.args !~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
@@ -24,10 +28,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.title, self.description, self.category ],
-          help: 'jobs manage'
-        }
+        [ self.title, self.description, self.category ]
       end
       
       def check_can_access

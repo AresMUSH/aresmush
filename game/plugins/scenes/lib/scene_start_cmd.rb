@@ -19,10 +19,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.location, self.privacy ],
-          help: 'scenes creating'
-        }
+        [ self.location, self.privacy ]
       end
 
       def check_privacy

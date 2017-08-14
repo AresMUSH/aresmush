@@ -4,6 +4,10 @@ module AresMUSH
     class ActorsListCmd
       include CommandHandler
       
+      def help
+        "`actors` - Show taken actors."
+      end
+      
       def handle
         list = Character.all.select { |c| c.demographic(:actor) && !c.demographic(:actor).blank? }
         list = list.sort_by { |c| c.actor ? c.actor.split(" ")[-1] : ""  }

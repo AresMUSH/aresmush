@@ -3,6 +3,10 @@ module AresMUSH
     class ChargenStartCmd
       include CommandHandler
 
+      def help
+        "`chargen/start` - Starts chargen."
+      end
+      
       def handle
         enactor.update(chargen_stage: 0)
 

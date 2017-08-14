@@ -5,6 +5,10 @@ module AresMUSH
 
       attr_accessor :names, :message
       
+      def help
+        "`job/mail <#>=<recipients>/<message>` - Sets a response (admins and submitter may view) on the job and sends that response in mail to the recipients."
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.number = trim_arg(args.arg1)
@@ -13,10 +17,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.number, self.names, self.message ],
-          help: 'jobs manage'
-        }
+        [ self.number, self.names, self.message ]
       end
       
       def handle

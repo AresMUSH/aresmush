@@ -5,6 +5,11 @@ module AresMUSH
            
       attr_accessor :names
       
+      def help
+        "`cookie <list of names>` - Give a cookie.\n" +
+        "`cookies` - Sees cookies you have given out this week."
+      end
+      
       def parse_args
         if (!cmd.args)
           self.names = []
@@ -14,10 +19,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.names ],
-          help: 'cookies'
-        }
+        [ self.names ]
       end
       
       def handle

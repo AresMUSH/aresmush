@@ -80,7 +80,7 @@ You can delete mail messages.  Technically this doesn't delete it right away, bu
 `mail/undelete <#>` - Recovers a message from the trash.
 `mail/emptytrash` - Permanently deletes messages in the trash.
 
-Instead of deleting a mail message, you can archive it.  See `help mail tags`.
+Instead of deleting a mail message, you can archive it.
 
 `mail/archive <#>` - Clears current tags and applies the Archive tag instead.
 

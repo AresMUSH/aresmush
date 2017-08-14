@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'open'
-        }
+        [ self.name ]
       end
       
       def check_can_build

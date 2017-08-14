@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :target, :background
  
+      def help
+        "`bg/set <background>` - Sets your background."
+      end
+      
       def parse_args
         # Starts with a character name and equals - since names can't have
         # spaces we can check for that.  This allows the BG itself to contain ='s.
@@ -18,10 +22,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target, self.background ],
-          help: 'bg'
-        }
+        [ self.target, self.background ]
       end
 
       def check_chargen_locked

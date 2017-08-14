@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.message ],
-          help: 'announce'
-        }
+        [ self.message ]
       end
       
       def check_can_manage

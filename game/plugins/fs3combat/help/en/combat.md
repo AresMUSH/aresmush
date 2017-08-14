@@ -17,8 +17,8 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 For full command syntax, view the following topics.
 
-[Setting Actions](/help/fs3combat/combat_actions)
-[Viewing and Treating Damage](/help/fs3combat/damage)
-[Selecting Gear](/help/fs3combat/gear)
-[Using Luck](/help/fs3combat/combat_luck)
-[Organizing Combats](/help/fs3combat/combat_org)
+[Setting Actions](/help/combat_actions)
+[Viewing and Treating Damage](/help/damage)
+[Selecting Gear](/help/gear)
+[Using Luck](/help/combat_luck)
+[Organizing Combats](/help/combat_org)

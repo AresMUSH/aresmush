@@ -5,15 +5,16 @@ module AresMUSH
       
       attr_accessor :name
 
+      def help
+        "`last <name>` - View someone's last online time."
+      end
+      
       def parse_args
         self.name = trim_arg(cmd.args)
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'last'
-        }
+        [ self.name ]
       end
       
       def handle

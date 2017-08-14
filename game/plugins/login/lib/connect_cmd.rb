@@ -5,6 +5,10 @@ module AresMUSH
 
       attr_accessor :charname, :password
       
+      def connect
+        "`connect <name> <password>` - Connects to a character."
+      end
+      
       def parse_args
         self.charname = cmd.args ? trim_arg(cmd.args.before(" ")) : nil
         self.password = cmd.args ? cmd.args.after(" ") : nil

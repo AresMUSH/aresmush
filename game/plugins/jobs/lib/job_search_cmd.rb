@@ -5,6 +5,10 @@ module AresMUSH
 
       attr_accessor :category, :value
 
+      def help
+        "`jobs/search <category>=<value>` - Searches old jobs.  Category to search may be 'title' or 'submitter'."
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.category = downcase_arg(args.arg1)
@@ -12,10 +16,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.category, self.value ],
-          help: 'jobs archive'
-        }
+        [ self.category, self.value ]
       end
       
       def check_category

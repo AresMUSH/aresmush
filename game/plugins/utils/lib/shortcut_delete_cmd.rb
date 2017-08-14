@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.shortcut ],
-          help: 'shortcuts'
-        }
+        [ self.shortcut ]
       end
       
       def handle

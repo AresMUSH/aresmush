@@ -23,10 +23,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.weapon ],
-          help: 'combat'
-        }
+        [ self.name, self.weapon ]
       end
       
       def check_special_allowed

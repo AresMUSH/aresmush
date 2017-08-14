@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :alias, :name
       
+      def help
+        "`alias <name>` - Sets your alias.  Leave blank to clear it."
+      end
+      
       def parse_args
         if (cmd.args =~ /\=/ )
           self.name = trim_arg(cmd.args.before("="))

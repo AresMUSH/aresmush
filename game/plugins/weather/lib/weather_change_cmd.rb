@@ -14,10 +14,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.temp, self.condition, self.area ],
-          help: 'weather'
-        }
+        [ self.temp, self.condition, self.area ]
       end
       
       def check_can_change_weather

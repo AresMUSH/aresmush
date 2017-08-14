@@ -44,7 +44,7 @@ The game will tell you when someone has posted a new message to the BBS.  You wi
 
 If you've already read the post on another character, or you're just not interested in posts to a particular board, you can use the catchup command to mark all posts on a board as read.
 
-> Tip:  If you link your characters to a [Player Handle](/help/arescentral/handles), the game will automatically mark a post as read on all your characters when you read it on one.
+> Tip:  If you link your characters to a [Player Handle](/help/handles), the game will automatically mark a post as read on all your characters when you read it on one.
 
 [[help bbs/new]] 
 [[help bbs/catchup]]
@@ -59,7 +59,7 @@ To post a message to a board, you use the `bbs/post` command with the board name
 
 If you need to edit a post after it's been posted, you can use the edit command with the board name/number and the post number.  This will replace the post title and message with the new text.
 
-If your client supports the [Edit Feature](/help/utils/edit), you can use the edit command with just the board and post number to grab the post text into your client's input buffer: `bbs/edit 1/6`
+If your client supports the [Edit Feature](/help/edit), you can use the edit command with just the board and post number to grab the post text into your client's input buffer: `bbs/edit 1/6`
 
 [[help bbs/edit]]
 

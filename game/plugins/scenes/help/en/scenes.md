@@ -22,7 +22,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 * Capture a log of poses, skill rolls and combat messages without the OOC spam.
 * Share a log to the game's web portal and/or wiki (if enabled).
 
-The scene system automatically maintains a log of the scene, including combat and skill roll messages.   See [Scene Logging](/help/scenes/logging) for more information.
+The scene system automatically maintains a log of the scene, including combat and skill roll messages.   See [Scene Logging](/help/logging) for more information.
 
 ## Starting  a Scene
 
@@ -43,14 +43,14 @@ A scene can either be public (anyone's invited) or private.  Scenes on the grid 
 
 ## Joining Scenes
 
-To join a public scene, you can use the scene/join command.  To join a private scene, you'll need a meetme (see [Meetme](/help/rooms/meetme).
+To join a public scene, you can use the scene/join command.  To join a private scene, you'll need a meetme (see [Meetme](/help/meetme).
 
 `scenes` - Lists scenes.
 `scene/join <#>` - Joins a scene.
 
 ## Setting Scene Info
 
-You can control several properties about the scene.  These are used for [Scene Logging](/help/scenes/logging) and to advise the participants about what's going on.
+You can control several properties about the scene.  These are used for [Scene Logging](/help/logging) and to advise the participants about what's going on.
 
 * Location - Setting the scene's location copies over the description from another room.
 * Title - Scene title.

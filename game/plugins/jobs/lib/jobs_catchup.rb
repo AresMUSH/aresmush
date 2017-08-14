@@ -3,6 +3,10 @@ module AresMUSH
     class JobsCatchupCmd
       include CommandHandler
       
+      def help
+        "`jobs/catchup` - Marks all jobs as read."
+      end
+      
       def check_can_access
         return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         return nil

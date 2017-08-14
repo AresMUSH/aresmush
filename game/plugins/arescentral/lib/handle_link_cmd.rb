@@ -16,10 +16,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.handle_name, self.link_code ],
-          help: 'handle'
-        }
+        [ self.handle_name, self.link_code ]
       end
       
       def check_guest

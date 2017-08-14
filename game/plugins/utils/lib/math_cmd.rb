@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.expression ],
-          help: 'math'
-        }
+        [ self.expression ]
       end
       
       def handle

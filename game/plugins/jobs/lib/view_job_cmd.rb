@@ -3,6 +3,11 @@ module AresMUSH
     class ViewJobCmd
       include SingleJobCmd
       
+      def help
+        "`jobs` - Lists jobs\n" +
+        "`job <#>` - Views a job."
+      end
+      
       def parse_args
         self.number = trim_arg(cmd.args)
       end

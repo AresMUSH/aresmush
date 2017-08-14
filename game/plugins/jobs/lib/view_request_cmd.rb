@@ -5,15 +5,18 @@ module AresMUSH
 
       attr_accessor :number
 
+      def help
+        "`requests` - Views your active requests\n" + 
+        "`request <#>` - Views details of a request.\n" + 
+        "`requests/all` - Views all of your requests, even closed ones."
+      end
+      
       def parse_args
         self.number = trim_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.number ],
-          help: 'requests'
-        }
+        [ self.number ]
       end
       
       def check_number

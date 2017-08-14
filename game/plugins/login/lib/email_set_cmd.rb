@@ -5,15 +5,16 @@ module AresMUSH
       
       attr_accessor :email
 
+      def help
+        "`email/set <email>` - Changes the email registered with your account."
+      end
+      
       def parse_args
         self.email = trim_arg(cmd.args)
       end
 
       def required_args
-        {
-          args: [ self.email ],
-          help: 'email'
-        }
+       [ self.email ]
       end
       
       def check_email_format

@@ -27,10 +27,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.reply ],
-          help: 'bbs replies'
-        }
+        [ self.reply ]
       end
       
       def handle

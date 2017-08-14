@@ -4,6 +4,10 @@ module AresMUSH
     class IdleStartCmd
       include CommandHandler
       
+      def help
+        "`idle/start` - Builds up a list of idle players."
+      end
+      
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')
@@ -22,7 +26,7 @@ module AresMUSH
           idle_timeout = Global.read_config("idle", "days_before_idle")
           if (idle_secs / 86400 > idle_timeout)
             if (c.is_approved?)
-              client.program[:idle_queue][c.id] = "Gone"
+              client.program[:idle_queue][c.id] = "Warn"
             else
               client.program[:idle_queue][c.id] = "Destroy"
             end

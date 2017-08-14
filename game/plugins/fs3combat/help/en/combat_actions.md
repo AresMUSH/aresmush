@@ -4,7 +4,7 @@ summary: Choosing actions in combat.
 ---
 # FS3 Combat - Actions
 
-This is a quick reference for combat action commands.  For more details, see [Combat](/help/fs3combat/combat).
+This is a quick reference for combat action commands.  For more details, see [Combat](/help/combat).
 
 > **Tip:** You can always specify a NPC or player name in front of any action command to make them do something.  For example, combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, combat/pass Bob=
 >

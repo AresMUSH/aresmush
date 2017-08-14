@@ -5,6 +5,7 @@ aliases:
 - grab
 - FugueEdit
 - decompile
+- editing
 ---
 # Editing Game Text
 

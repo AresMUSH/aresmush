@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target ],
-          help: 'findsite'
-        }
+        [ self.target ]
       end
       
       def check_can_manage

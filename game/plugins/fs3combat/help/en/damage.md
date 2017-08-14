@@ -10,7 +10,7 @@ aliases:
 ---
 # FS3 Combat - Damage
 
-This is a quick reference for the combat damage commands.  For more details, see [Combat](/help/fs3combat/combat).
+This is a quick reference for the combat damage commands.  For more details, see [Combat](/help/combat).
  
 `damage` - Views your damage. 
 `damage <name>` - Views someone else's damage.

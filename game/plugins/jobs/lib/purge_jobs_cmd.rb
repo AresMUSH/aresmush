@@ -3,6 +3,10 @@ module AresMUSH
     class PurgeJobsCmd
       include CommandHandler
       
+      def help
+        "`jobs/purge` - Deletes all closed jobs."
+      end
+      
       def handle
         client.emit_failure t('jobs.confirm_purge')
       end

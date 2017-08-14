@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.load_target ],
-          help: 'load'
-        }
+        [ self.load_target ]
       end
       
       def check_plugin_name

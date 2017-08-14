@@ -6,6 +6,10 @@ module AresMUSH
             
       attr_accessor :name, :target, :desc
 
+      def help
+        "`detail/set <name>=<detail title>/<description>`"
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.target = trim_arg(args.arg1)
@@ -14,10 +18,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target, self.desc, self.name ],
-          help: 'detail'
-        }
+        [ self.target, self.desc, self.name ]
       end
       
       def handle

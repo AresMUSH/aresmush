@@ -5,15 +5,16 @@ module AresMUSH
       
       attr_accessor :name
       
+      def help
+        "`password/reset <name>`"
+      end
+      
       def parse_args
         self.name = trim_arg(cmd.args)
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'login admin'
-        }
+        [ self.name ]
       end
       
       def check_can_reset

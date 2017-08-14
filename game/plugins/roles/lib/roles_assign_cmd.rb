@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.role ],
-          help: 'roles manage'
-        }
+        [ self.name, self.role ]
       end
       
       def check_can_assign_role

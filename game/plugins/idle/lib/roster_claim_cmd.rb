@@ -6,15 +6,16 @@ module AresMUSH
       
       attr_accessor :name
       
+      def help
+        "`roster/claim <name>` - Claims a character."
+      end
+      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end
        
       def required_args
-        {
-          args: [ self.name ],
-          help: 'roster'
-        }
+        [ self.name ]
       end
       
       def check_roster_enabled

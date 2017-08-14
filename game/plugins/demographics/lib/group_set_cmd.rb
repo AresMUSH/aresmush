@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :name, :value, :group_name
 
+      def help
+        "`group/set <group type>=<option>` - Sets your group option for a group type."
+      end
+      
       def parse_args
         if (cmd.args =~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
@@ -20,10 +24,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.group_name ],
-          help: 'groups'
-        }
+        [ self.name, self.group_name ]
       end
       
       def check_can_set

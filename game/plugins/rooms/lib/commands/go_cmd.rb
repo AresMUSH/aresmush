@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.destination ],
-          help: 'go'
-        }
+        [ self.destination ]
       end
       
       def handle

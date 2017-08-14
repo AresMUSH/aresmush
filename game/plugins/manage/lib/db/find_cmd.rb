@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.search_class ],
-          help: 'find'
-        }
+        [ self.search_class ]
       end
       
       def handle

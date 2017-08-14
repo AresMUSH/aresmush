@@ -80,7 +80,6 @@ module AresMUSH
     def unload_plugin(name)
       Global.logger.info "Unloading #{name}"
       
-
       module_name = find_plugin_const(name)
       if (!module_name)
         raise SystemNotFoundException

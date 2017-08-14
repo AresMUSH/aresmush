@@ -3,6 +3,10 @@ module AresMUSH
     class TosResetCmd
       include CommandHandler
       
+      def help
+        "`tos/reset` - Resets all terms of service acknowledgements."
+      end
+      
       def check_can_reset
         return t('dispatcher.not_allowed')  if !Login.can_manage_login?(enactor)
         return nil

@@ -1,5 +1,11 @@
-<div class="ansi">
+<script src="/scripts/jquery.mark.min.js"></script>
+<script src="/scripts/help.js"></script>
+
+<input type="text" name="keyword" value="<%= @search %>" style="display:none"></input>
+
+<div class="ansi" id="help">
     <%= @help %>
 </div>
 
+<hr/>
 <p><a href="/help"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Help</a></p>

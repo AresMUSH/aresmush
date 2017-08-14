@@ -5,6 +5,12 @@ module AresMUSH
       
       attr_accessor :target, :detail
       
+      def help
+        "`look <name>`\n" + 
+        "`look`  (shortcut for looking at 'here')\n" + 
+        "`look <name>/<detail>` - Looks at a detail on something."
+      end
+      
       def parse_args
         if (cmd.args =~ /\//)
           args = cmd.parse_args(ArgParser.arg1_slash_arg2)

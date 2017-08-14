@@ -5,15 +5,16 @@ module AresMUSH
       
       attr_accessor :name
 
+      def help
+        "`friend/add <name>` - Adds a friend."
+      end
+      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'friends'
-        }
+        [ self.name ]
       end
       
       def handle

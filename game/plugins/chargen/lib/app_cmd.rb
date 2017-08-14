@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :name
 
+      def help
+        "`app` - Shows a summary of your character application and any issues."
+      end
+      
       def parse_args
         self.name = !cmd.args ? enactor_name : trim_arg(cmd.args)
       end

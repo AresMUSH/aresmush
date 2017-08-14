@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.option, self.name ],
-          help: 'npc'
-        }
+        [ self.option, self.name ]
       end
       
       def check_can_manage_npcs

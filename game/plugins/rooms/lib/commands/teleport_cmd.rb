@@ -18,10 +18,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.destination ],
-          help: 'teleport'
-        }
+        [ self.destination ]
       end
       
       def check_can_teleport

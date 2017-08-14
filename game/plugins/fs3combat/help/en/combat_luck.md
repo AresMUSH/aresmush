@@ -6,7 +6,7 @@ aliases:
 ---
 # FS3 Combat - Luck
 
-Luck points (see [Luck](/help/fs3skills/luck)) have special effects in combat.
+Luck points (see [Luck](/help/luck)) have special effects in combat.
 
 ## Bonus Dice
 

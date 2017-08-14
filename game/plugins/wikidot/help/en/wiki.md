@@ -18,6 +18,6 @@ If your game allows, you can auto-create a character's wiki page.  If your game 
 
 ## Log Page
 
-You can also create wiki logs for scenes run through the [Scenes](/help/scenes/scenes) system.  As with character wiki pages, this command will either auto-create the page on the wiki or present you with a template (suitable for copy/paste), depending on your game's settings.
+You can also create wiki logs for scenes run through the [Scenes](/help/scenes) system.  As with character wiki pages, this command will either auto-create the page on the wiki or present you with a template (suitable for copy/paste), depending on your game's settings.
 
 `wiki/log <scene#>` - Creates a wiki page for a scene log.

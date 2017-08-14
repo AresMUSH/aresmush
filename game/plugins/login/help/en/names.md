@@ -21,4 +21,4 @@ After you're approved, only admins can change your name.  This is because changi
 
 A character can also have a single nickname/alias.  You can use it anywhere that you use a character's name.
 
-`alias <name>` - Sets your alias.  Leave blank to clear it.
+[[help alias]]

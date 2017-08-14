@@ -7,7 +7,7 @@ aliases:
 ---
 # Time
 
-Ares will display all dates and times according to your local timezone.  If you have a player handle, your timezone is managed in AresCentral.  See `help handles`.  Otherwise you can change it at any time using:
+Ares will display all dates and times according to your local timezone.  If you have a player handle, your timezone is managed in AresCentral.  See [Handles](/help/handles).  Otherwise you can change it at any time using:
 
 `timezone <name>` - Sets your timezone.
 

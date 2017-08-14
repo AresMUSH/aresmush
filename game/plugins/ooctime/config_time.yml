@@ -3,5 +3,4 @@ ooctime:
     default_timezone: "America/New_York"
     
     shortcuts:
-       "ictime": "time"
        "ooctime": "time"

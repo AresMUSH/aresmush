@@ -41,10 +41,7 @@ module AresMUSH
         
         attr_accessor :foo, :bar
         def required_args
-          {
-            args: [ self.foo, self.bar ],
-            help: 'test'
-          }
+          [ self.foo, self.bar ]
         end
         
         def handle

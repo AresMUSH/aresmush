@@ -59,14 +59,14 @@ Sometimes, though, you'll be emitting a character from another character (spoofi
 
 ## Sharing the Log
 
-At any point during the scene, you can share the log.  This makes it visible on the game's web portal (see [Website](/help/website/web_portal)).  Sharing a big event scene while it's still in-progress allows spectators to follow it on the web even if they're not participating.
+At any point during the scene, you can share the log.  This makes it visible on the game's web portal (see [Website](/help/web_portal)).  Sharing a big event scene while it's still in-progress allows spectators to follow it on the web even if they're not participating.
 
 `scene/share [scene #]` - Shares the log to the web portal.
 `scene/unshare [scene #]` - Unshares a log.
 
 ## Posting the Log
 
-If your game uses a wiki, the wiki system will let you either automatically post the log to the wiki (if enabled), or to get the wiki text to copy paste.  See [Wiki](/help/wikidot/wiki) for more information.
+If your game uses a wiki, the wiki system will let you either automatically post the log to the wiki (if enabled), or to get the wiki text to copy paste.  See [Wiki](/help/wiki) for more information.
 
 ## Clearing the Log
 

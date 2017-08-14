@@ -5,15 +5,16 @@ module AresMUSH
       
       attr_accessor :name
       
+      def help
+        "`app/unapprove <name>` - Unapproves someone."
+      end
+      
       def parse_args
         self.name = trim_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'chargen admin'
-        }
+        [ self.name ]
       end
 
       def check_permission

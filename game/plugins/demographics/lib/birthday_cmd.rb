@@ -5,6 +5,10 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name, :date_str
+
+      def help
+        "`birthdate <mm/dd/yyyy>` or `age <years>`"
+      end
             
       def parse_args
         # Admin version
@@ -20,10 +24,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.date_str ],
-          help: 'demographics'
-        }
+        [ self.name, self.date_str ]
       end
                 
       def check_is_allowed

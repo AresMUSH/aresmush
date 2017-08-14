@@ -1,14 +1,16 @@
 module AresMUSH
   class HelpReader
     
-    attr_accessor :help
+    attr_accessor :help_file_index, :help_toc, :help_keys
     
     def initialize
       self.clear_help
     end
     
     def clear_help
-      self.help = {}
+      self.help_file_index = {}
+      self.help_toc = {}
+      self.help_keys = {}
     end
     
     def load_game_help
@@ -33,12 +35,26 @@ module AresMUSH
         meta["path"] = file
         meta["plugin"] = plugin_title
         meta["topic"] = topic
+        toc = meta["toc"]
         
-        existing_topics = self.help.select { | file, meta | meta['topic'] == topic && meta["plugin"] == plugin_title }
-        if (existing_topics.count > 0)
+        if self.help_file_index.has_key?(topic)
           Global.logger.warn "Skipping help file #{file} - topic already exists."
         else
-          self.help[file] = meta
+          self.help_file_index[topic] = meta
+          if (self.help_toc.has_key?(toc))            
+            self.help_toc[toc] << topic
+          else
+            self.help_toc[toc] = [ topic ]
+          end
+          self.help_keys[topic] = topic
+          if (topic.end_with?('s'))
+            self.help_keys[topic.chop] = topic
+          else 
+            self.help_keys["#{topic}s"] = topic
+          end
+          (meta['aliases'] || []).each do |a|
+            self.help_keys[a] = topic
+          end
         end
       else
         Global.logger.warn "Skipping help file #{file} - missing metadata."
@@ -46,8 +62,18 @@ module AresMUSH
     end
     
     def unload_help(plugin)
-      topics = self.help.select { |k, v| v["plugin"] == plugin }
-      topics.each { |k, v| self.help.delete(k) }
+      topics = self.help_file_index.select { |k, v| v["plugin"] == plugin }
+      topics.each do |topic, val| 
+        self.help_file_index.delete topic
+        self.help_toc.each do |toc, val|
+          if (self.help_toc[toc].include?(topic))
+            self.help_toc[toc].delete topic
+          end
+        end
+      end
+      
+      keys = self.help_keys.select { |k, v| topics.include?(v) }
+      keys.each { |k| self.help_keys.delete k }
     end
     
     private

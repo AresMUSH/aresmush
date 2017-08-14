@@ -5,6 +5,10 @@ module AresMUSH
 
       attr_accessor :title, :description
 
+      def help
+        "`request <title>=<description>` - Submits a request"
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.title = trim_arg(args.arg1)
@@ -12,10 +16,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.title, self.description ],
-          help: 'requests'
-        }
+        [ self.title, self.description ]
       end
       
       def handle

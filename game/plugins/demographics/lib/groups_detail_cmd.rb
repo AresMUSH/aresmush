@@ -5,15 +5,17 @@ module AresMUSH
       
       attr_accessor :name
 
+      def help
+        "`groups` - List all group types.\n" +
+        "`group <type>` - Shows options available for a group type."
+      end
+
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'groups'
-        }
+        [ self.name ]
       end
       
       def handle

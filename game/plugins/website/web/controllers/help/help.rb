@@ -1,18 +1,18 @@
 module AresMUSH
   class WebApp
-    get '/help' do
+    get '/help/?' do
       @topics = {}
       
-      Help.toc.each do |toc|
-        @topics[toc] = Help.toc_topics(toc)
+      if params['root']
+        redirect "/help/#{params['root']} #{params['switch']}?search=#{params['switch']}"
       end
       
-      uncategorized =  Help.toc_topics(nil)
-      if (uncategorized.count > 0)
-        @topics["Uncategorized"] = uncategorized
+      Help.toc.keys.sort.each do |toc|
+        @topics[toc] = Help.toc_section_topic_data(toc)
       end
       
       erb :"help/help_index"
     end
+    
   end
 end

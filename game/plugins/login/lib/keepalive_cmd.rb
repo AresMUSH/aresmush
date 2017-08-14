@@ -3,6 +3,10 @@ module AresMUSH
     class KeepaliveCmd
       include CommandHandler
 
+      def help
+        "`keepalive` or `@@` - Sends an empty command to the game."
+      end
+      
       def allow_without_login
         true
       end

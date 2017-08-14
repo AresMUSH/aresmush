@@ -13,10 +13,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.luck, self.reason ],
-          help: 'luck'
-        }
+        [ self.name, self.luck, self.reason ]
       end
       
       def check_luck

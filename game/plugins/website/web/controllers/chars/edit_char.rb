@@ -27,9 +27,7 @@ module AresMUSH
         flash[:error] = "You can only edit approved characters."
         reedirect "/char/#{id}"
       end
-            
-      puts params
-            
+                        
       demographics = {}
       profile = {}
       relationships = {}

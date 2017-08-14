@@ -10,10 +10,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'vehicles'
-        }
+        [ self.name ]
       end
       
       def check_vehicle_exists

@@ -6,6 +6,11 @@ module AresMUSH
       
       attr_accessor :will   
       
+      def help
+        "`lastwill` - Views your last will instructions.\n" +
+        "`lastwill <instructions>` - Sets your last will instructions."
+      end
+      
       def parse_args
         self.will = cmd.args
       end

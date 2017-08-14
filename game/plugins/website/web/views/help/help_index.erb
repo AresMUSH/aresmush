@@ -10,7 +10,7 @@
 <% topics.sort_by { |name, data| [ data['order'] || 99, name ] }.each do |name, data| %>
 <li>
     
-<a href="/help/<%= data['plugin'] %>/<%= data['topic'] %>">
+<a href="/help/<%= data['topic'] %>">
     <%= name.titleize %></a> - <%= data['summary'] %>
 </li>
 <% end %>

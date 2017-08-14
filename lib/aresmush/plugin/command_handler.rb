@@ -67,15 +67,10 @@ module AresMUSH
       end
       
       if (required_args)
-        required_args[:args].each do |arg|
+        required_args.each do |arg|
           
-          if "#{arg}".strip.length == 0
-            markdown = MarkdownFormatter.new
-            formatted_help = markdown.to_mush help
-            
-            return t('dispatcher.invalid_syntax', 
-               :help => formatted_help.strip.split("%R").join("%R%xh%xx%%%xn "),
-               :url => "#{Game.web_portal_url}/help" ) 
+          if "#{arg}".strip.length == 0            
+            return t('dispatcher.invalid_syntax', :url => "#{Game.web_portal_url}/help/#{cmd.root}?search=#{cmd.switch}") 
           end
         end
       end

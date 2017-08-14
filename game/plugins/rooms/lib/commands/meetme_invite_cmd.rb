@@ -14,10 +14,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.names ],
-          help: 'meetme'
-        }
+        [ self.names ]
       end
       
       def check_target

@@ -18,10 +18,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.armor ],
-          help: 'combat'
-        }
+        [ self.name, self.armor ]
       end
       
       def check_valid_armor

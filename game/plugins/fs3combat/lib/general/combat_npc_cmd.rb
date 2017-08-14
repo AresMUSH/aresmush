@@ -13,10 +13,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.level ],
-          help: 'combat org'
-        }
+        [ self.level ]
       end
       
       def check_reason

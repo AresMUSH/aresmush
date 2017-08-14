@@ -2,7 +2,10 @@ module AresMUSH
   module Login
     class ActivityCmd
       include CommandHandler
-    
+      
+      def help
+        "`activity` - Views game activity."
+      end
     
       def handle
         

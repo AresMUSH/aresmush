@@ -3,6 +3,10 @@ module AresMUSH
     class QuitCmd
       include CommandHandler
 
+      def help
+        "`quit` - Disconnects from the game."
+      end
+      
       def allow_without_login
         true
       end

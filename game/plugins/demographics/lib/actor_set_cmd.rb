@@ -6,6 +6,10 @@ module AresMUSH
 
       attr_accessor :name, :actor
 
+      def help
+        "`actor/set <name>` - Set your actor.  Leave blank to clear it."
+      end
+      
       def parse_args
         # Admin version
         if (cmd.args =~ /\=/)
@@ -20,10 +24,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'actors'
-        }
+        [ self.name ]
       end
         
       def check_is_allowed

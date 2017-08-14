@@ -6,15 +6,16 @@ module AresMUSH
       
       attr_accessor :num
 
+      def help
+        "`event/edit <#>` - Grabs the current event into your edit buffer (see help edit)"
+      end
+      
       def parse_args
         self.num = integer_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.num ],
-          help: 'events'
-        }
+        [ self.num ]
       end
       
       def handle

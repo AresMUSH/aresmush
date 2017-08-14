@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :target
       
+      def help
+        "`bg` - Views your background."
+      end
+      
       def parse_args
         self.target = !cmd.args ? enactor_name : trim_arg(cmd.args)
       end

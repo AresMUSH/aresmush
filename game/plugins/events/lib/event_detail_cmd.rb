@@ -5,17 +5,20 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :num
+      
+      def help
+        "`events`  - Lists upcoming events\n" +
+        "`event <#>` - Views an event"
+      end
 
       def parse_args
         self.num = cmd.args ? cmd.args.to_i : nil
       end
       
       def required_args
-        {
-          args: [ self.num ],
-          help: 'events'
-        }
+        [ self.num ]
       end
+      
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
           template = EventDetailTemplate.new(event, enactor)

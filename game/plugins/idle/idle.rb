@@ -55,7 +55,7 @@ module AresMUSH
           return IdleActionCmd
         when "execute"
           return IdleExecuteCmd
-        when "queue"
+        when "queue", nil
           return IdleQueueCmd
         when "remove"
           return IdleRemoveCmd

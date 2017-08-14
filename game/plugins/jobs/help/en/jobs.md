@@ -14,8 +14,8 @@ The Jobs system is used by the game administrators to track work requests and to
 
 The jobs list shows you the jobs. 
 
-`jobs` - Lists jobs
-`job <#>` - Views a job.
+[[help jobs]]
+[[help jobs/catchup]]
 
 ## Filtering  Jobs
 
@@ -30,8 +30,7 @@ Valid filters are:
 * Mine - Jobs that are open and assigned to you.
 * (Category Name) - Jobs in the given category.
 
-`jobs/filer <flter>` - Filters the jobs list.
-`jobs/all`, `jobs/mine`, `jobs/active` - Shortcuts for the common filters.
+[[help jobs/filter]]
 
 ## Job Workflow
 
@@ -46,50 +45,45 @@ The basic workflow for jobs goes like this:
 
 Jobs can be created by players using the `request` command, by coded systems (e.g. apps), or manually.
 
-`job/create <category>=<title>/<description>` - Creates a new job
-        Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
+[[help job/create]]
 
 ## Changing Job Status
 
 You can change various attributes about the job, including its status and who it's assigned to.
 
-`job/assign <#>=<player>`                  `job/handle <#>` 
-`job/status <#>=<status>`                  `job/cat <#>=<category>` 
-`job/title <#>=<title>`   
-        Default status values are NEW, OPEN, HOLD (job on hold) and DONE.
+[[help job/assign]]
+[[help job/handle]]
+[[help job/status]]
+[[help job/title]]
+[[help job/cat]]   
 
 ## Adding Job Comments
 
 There are two ways for admins to comment upon a job.  A `discuss` comment is for admin eyes only, and will never be seen by the original submitter.  A `respond` comment is **viewable by the submitter**.
 
-`job/discuss <#>=<comment>` - Comments on a job (only admins may view)
-`job/respond <#>=<message>` - Comments on a job (admins and submitter may view)
-`job/deletereply <#>=<reply#>` - Deletes a reply.
+[[help job/comment]]
+[[help job/deletereply]]
 
 Players can automatically see responses on their own requests; there's no need to send them mail.  But if you want to send a mail related to a job that wasn't their own request, you can use the `job/mail` command to add a comment to the job and send that comment in a mail message.
 
-`job/mail <#>=<recipients>/<message>` - Sets a response (admins and submitter may view) on the job and sends that response in mail to the recipients.
+[[help job/mail]]
 
 ## Closing Jobs
 
 When you're done with the job, close it and it will be archived.
 
-`job/close <#>` - Closes a job
-`job/close <#>=<message>` - Closes a job with a comment to the original submitter.
+[[help job/close]]
 
 ## Old  Jobs
 
 Closed jobs in Ares are not archived to a BBS, as they are in some other systems.  Instead they stay around in the jobs system forever (or until you manually purge them).  This allows you to reopen and easily find old jobs.
 
-Once a job is closed, you will only see it if it has new activity or you use the /all option:
+Once a job is closed, you will only see it if it has new activity or you use the /all option on the jobs list.  You can also search for a job.
 
-`jobs/all` - Lists all jobs, even closed ones.
-
-`jobs/search <category>=<value>` - Searches old jobs
-        Category to search may be 'title' or 'submitter'.
+[[help job/search]]
 
 If you run out of database space or want to archive your jobs offline, you can log the closed ones to a file and purge them.
 
-`jobs/backup` - Prints out closed jobs, which you can save to a log file.
-`jobs/purge` - Deletes all closed jobs.
-`job/delete <#>` - Deletes a particular job.
+[[help jobs/backup]]
+[[help jobs/purge]]
+[[help job/delete]]

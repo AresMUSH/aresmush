@@ -13,6 +13,7 @@ load "lib/outfits/outfit_edit_cmd.rb"
 load "lib/outfits/outfit_list_cmd.rb"
 load "lib/outfits/outfit_set_cmd.rb"
 load "lib/outfits/outfit_view_cmd.rb"
+load "lib/shortdesc_cmd.rb"
 load "lib/wear_cmd.rb"
 load "public/describe_api.rb"
 load "public/desc_model.rb"
@@ -49,7 +50,7 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when "describe", "shortdesc"
+      when "describe"
         case cmd.switch
         when "edit"
           return DescEditCmd
@@ -58,6 +59,8 @@ module AresMUSH
         when nil
           return DescCmd
         end
+      when "shortdesc"
+        return ShortdescCmd
       when "detail"
         case cmd.switch
         when "delete"

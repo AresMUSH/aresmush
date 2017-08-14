@@ -19,7 +19,7 @@ If you are very idle or marked Away From the Keyboard, people paging you will be
 
 ## Page Format
 
-You can customize the appearance of pages by changing the color (see `help colors`) of the %% at the beginning as well as autospace text that appears before every page (such as a blank line or other marker).
+You can customize the appearance of pages by changing the color (see [Colors](/help/colors)) of the %% at the beginning as well as autospace text that appears before every page (such as a blank line or other marker).
 
 `page/autospace <text before pages>`
 `page/color <ansi code>`

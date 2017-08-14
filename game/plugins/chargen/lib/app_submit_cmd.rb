@@ -3,6 +3,10 @@ module AresMUSH
     class AppSubmitCmd
       include CommandHandler
             
+      def help
+        "`app/submit` - Submits your application."
+      end
+      
       def check_approval
         return t('chargen.you_are_already_approved') if enactor.is_approved?
         return nil

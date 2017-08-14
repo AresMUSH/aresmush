@@ -5,6 +5,12 @@ module AresMUSH
       
       attr_accessor :offset
       
+      def help
+        "`cg/start` - Starts chargen.\n" +
+        "`cg/next` and `cg/prev` - Navigates the stages in chargen.\n" +
+        "`cg` - View the current chargen page again."
+      end
+      
       def parse_args
         if (!cmd.switch)
           self.offset = 0

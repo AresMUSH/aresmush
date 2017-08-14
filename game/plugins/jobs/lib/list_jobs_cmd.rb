@@ -3,6 +3,12 @@ module AresMUSH
     class ListJobsCmd
       include CommandHandler
       
+      def help
+        "`jobs` - Lists jobs\n" +
+        "`job <#>` - Views a job.\n" + 
+        "`jobs/all` - Lists all jobs, even closed ones."
+      end
+      
       def check_can_access
         return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         return nil

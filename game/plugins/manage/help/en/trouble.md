@@ -15,7 +15,7 @@ Unfortunately, you will sometimes have to deal with troublesome players.  These 
 
 ## Booting Characters
 
-If someone is causing a ruckus or gets stuck online or something, you can disconnect them.  See [Boot](/help/login/boot) for more info.
+If someone is causing a ruckus or gets stuck online or something, you can disconnect them.  See [Boot](/help/boot) for more info.
 
 ## Findsite
 

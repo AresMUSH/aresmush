@@ -6,6 +6,10 @@ module AresMUSH
       
       attr_accessor :num, :title, :date_time_desc
 
+      def help
+        "`event/update <#>=<title>/<date and time>/<description>`"
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.num = integer_arg(args.arg1)
@@ -14,10 +18,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.num, self.title, self.date_time_desc ],
-          help: 'events'
-        }
+        [ self.num, self.title, self.date_time_desc ]
       end
       
       def handle

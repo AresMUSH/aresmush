@@ -6,11 +6,12 @@ module AresMUSH
       
       attr_accessor :age
 
+      def help
+        "`birthdate <mm/dd/yyyy>` or `age <years>`"
+      end
+      
       def required_args
-        {
-          args: [ self.age ],
-          help: 'age'
-        }
+        [ self.age ]
       end
          
       def check_chargen_locked

@@ -10,10 +10,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'weapons'
-        }
+        [ self.name ]
       end
       
       def check_weapon_exists

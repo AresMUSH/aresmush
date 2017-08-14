@@ -5,15 +5,16 @@ module AresMUSH
 
       attr_accessor :option
 
+      def help
+        "`keepalive <on or off>` - Turns the periodic client ping on or off."
+      end
+      
       def parse_args
         self.option = OnOffOption.new(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.option ],
-          help: 'keepalive'
-        }
+        [ self.option ]
       end
       
       def check_status

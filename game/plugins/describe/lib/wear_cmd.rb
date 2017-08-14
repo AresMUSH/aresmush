@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :names
       
+      def help
+        "`wear <list of outfits>` - Wear outfits."
+      end
+      
       def parse_args
         if cmd.args
           self.names = cmd.args.split(' ').map { |n| titlecase_arg(n) }

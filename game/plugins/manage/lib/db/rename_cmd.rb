@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target, self.name ],
-          help: 'rename'
-        }
+        [ self.target, self.name ]
       end
       
       def handle

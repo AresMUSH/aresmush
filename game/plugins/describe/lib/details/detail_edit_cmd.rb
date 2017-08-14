@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :name, :target
       
+      def help
+        "`detail/edit <name>/<detail title>` - Grabs the existing detail into your input buffer."
+      end
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_slash_arg2)
         self.target = trim_arg(args.arg1)
@@ -12,10 +16,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target, self.name ],
-          help: 'detail'
-        }
+        [ self.target, self.name ]
       end
       
       def handle

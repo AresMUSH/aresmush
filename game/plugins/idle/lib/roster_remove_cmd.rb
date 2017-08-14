@@ -6,15 +6,16 @@ module AresMUSH
       
       attr_accessor :name
       
+      def help
+        "`roster/remove <name>` - Removes someone from the roster."
+      end
+      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'roster admin'
-        }
+        [ self.name ]
       end
       
       def check_roster_enabled

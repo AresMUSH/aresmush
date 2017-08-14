@@ -5,6 +5,10 @@ module AresMUSH
       
       attr_accessor :target
 
+      def help
+        "`bg/edit` - Grabs the existing background text into your input buffer."
+      end
+      
       def parse_args
         if (!cmd.args)
           self.target = enactor_name

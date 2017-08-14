@@ -4,6 +4,10 @@ module AresMUSH
     class IdleQueueCmd
       include CommandHandler
       
+      def help
+        "`idle` - Review everyone's actions."
+      end
+      
       def check_idle_in_progress
         return t('idle.idle_not_started') if !client.program[:idle_queue]
         return nil
