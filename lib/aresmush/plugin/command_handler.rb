@@ -24,17 +24,6 @@ module AresMUSH
       end
       handle
     end
-        
-    # Override this with a simple help syntax for your command.  Do not include long
-    # explanations; those are better suited to the tutorials.  Use `` around the actual
-    # command part so it gets formatted properly.
-    # Example:  
-    #    def help
-    #      "`bbs` - Lists all bbs boards"
-    #    end
-    def help
-      t('dispatcher.no_help_available')
-    end
     
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 

@@ -3,10 +3,6 @@ module AresMUSH
     class BbsDeleteBoardConfirmCmd
       include CommandHandler
       
-      def help
-        "`bbs/deleteboard <board>` - Deletes a board."
-      end
-      
       def check_can_manage
         return t('dispatcher.not_allowed') if !Bbs.can_manage_bbs?(enactor)
         return nil

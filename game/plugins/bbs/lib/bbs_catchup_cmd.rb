@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :board_name
       
-      def help
-        "`bbs/catchup <board name or number>` - Marks all unread messages as read."
-      end
-      
       def parse_args
         self.board_name = cmd.args ? titlecase_arg(cmd.args) : "All"
       end

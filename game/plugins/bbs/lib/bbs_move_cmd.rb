@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :board_name, :num, :new_board_name
       
-      def help
-        "`bbs/move <board name or number>/<post #>=<new board>` - Moves a post from one board to another."
-      end
-      
       def parse_args
         args = cmd.parse_args( /(?<name>[^\=]+)\/(?<num>[^\=]+)\=(?<new_board>[^\=]+)/)
         self.board_name = titlecase_arg(args.name)

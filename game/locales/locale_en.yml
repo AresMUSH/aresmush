@@ -21,8 +21,6 @@ en:
         invalid_syntax: "That is not the right command format.  Get help at the web portal: %{url}"
         invalid_on_off_option: "Please use 'on' or 'off'."
         stale_object_error: "Someone else changed that object at the same time.  Please try again."
-        no_help_available: "No help is available for this command."
-        command_help: "%xn%{help}%R%xh%xx%%%%%xn Get more help at the web portal: %{tutorial}"
     
     db:
         object_not_found: Nothing found with that name.

@@ -3,11 +3,8 @@ module AresMUSH
     class BbsScanCmd
       include CommandHandler
       
-      def help
-        "`bbs/scan` - Scans boards for unread posts."
-      end
-      
       def handle
+        
         unread = []
         BbsBoard.all_sorted.each do |b|
           unread.concat b.unread_posts(enactor)

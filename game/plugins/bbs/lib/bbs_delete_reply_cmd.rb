@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :board_name, :post_num, :reply_num
 
-      def help
-        "`bbs/deletereply <board name or number>/<post number>=<reply number>` - Deletes a bbs reply."
-      end
-      
       def parse_args        
         args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
         self.board_name = trim_arg(args.arg1)

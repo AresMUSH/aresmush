@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :board_name
       
-      def help
-        "`bbs/archive <board>` - Prints out messages from a board so you can log them to a file."
-      end
-      
       def parse_args
         self.board_name = titlecase_arg(cmd.args)
       end

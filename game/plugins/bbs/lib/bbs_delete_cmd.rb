@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :board_name, :num
       
-      def help
-        "`bbs/delete <board name or number>/<post number>` - Deletes a post"
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_slash_arg2)
         self.board_name = titlecase_arg(args.arg1)

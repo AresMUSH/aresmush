@@ -5,11 +5,6 @@ module AresMUSH
       
       attr_accessor :board_name, :num
       
-      def help
-        "`bbs <board name or number>/<post #>` - Reads the selected post.%R" + 
-        "`bbs` - Lists available boards."
-      end
-      
       def parse_args
         args = cmd.parse_args( /(?<name>[^\=]+)\/(?<num>.+)/)
         self.board_name = titlecase_arg(args.name)

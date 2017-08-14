@@ -3,10 +3,6 @@ module AresMUSH
     class BbsNewCmd
       include CommandHandler
       
-      def help
-        "`bbs/new` - Reads the first unread message on any board."
-      end
-      
       def handle
         first_unread = nil
         board = nil
