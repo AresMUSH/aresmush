@@ -1,6 +1,6 @@
 ---
 toc: Getting Around
-summary: Get home.
+summary: Getting home quickly.
 aliases:
 - work
 ---

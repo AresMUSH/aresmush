@@ -1,6 +1,6 @@
 ---
 toc: Miscellaneous
-summary: Formatting and substition codes.
+summary: Using formatting and substition codes.
 aliases:
 - subs
 - formatting

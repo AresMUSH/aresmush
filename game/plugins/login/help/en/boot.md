@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Miscellaneous
 summary: Booting trolls.
 aliases:
 - boot

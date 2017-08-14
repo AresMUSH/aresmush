@@ -20,7 +20,7 @@ module AresMUSH
       end
       
       def topic_url(name)
-        "#{web_portal_url}/help/#{name}"
+        Help.topic_url(name)
       end
       
     end

@@ -1,6 +1,6 @@
 ---
 toc: Community
-summary: Recognizing your fellow players.
+summary: Rewarding RP with cookies.
 aliases:
 - cookie
 - nom

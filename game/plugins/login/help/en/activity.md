@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Community
 summary: Viewing game activity.
 ---
 # Viewing Game Activity

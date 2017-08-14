@@ -1,7 +1,6 @@
 ---
 toc: Character Creation
-summary: Setting your character's groups/affiliations.
-order: 2
+summary: Viewing and setting character groups/affiliations.
 aliases:
 - org
 - orgs

@@ -1,6 +1,7 @@
 ---
 toc: Descriptions
 summary: Looking around.
+order: 1
 aliases:
 - adesc
 - glance

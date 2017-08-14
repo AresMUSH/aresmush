@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Miscellaneous
 summary: Keeping your connection alive.
 ---
 # Keeping Your Connection Alive

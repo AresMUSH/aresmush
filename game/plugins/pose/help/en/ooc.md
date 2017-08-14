@@ -1,6 +1,6 @@
 ---
 toc: Scenes
-summary: OOC Asides.
+summary: Making OOC Asides.
 aliases:
 - sooc
 ---

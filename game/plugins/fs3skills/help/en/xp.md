@@ -1,6 +1,6 @@
 ---
 toc: FS3
-summary: Experience points.
+summary: Improving your character with experience.
 aliases:
 - experience
 - improvement

@@ -1,6 +1,6 @@
 ---
 toc: ~admin~ Coding
-summary: Server version control commands.
+summary: Using server-side version control.
 ---
 # Git
 

@@ -1,5 +1,5 @@
 ---
-toc: Getting Around
+toc: ~admin~ Building
 summary: Teleporting to rooms.
 aliases:
 - teleport

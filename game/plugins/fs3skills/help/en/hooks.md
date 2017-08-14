@@ -1,6 +1,6 @@
 ---
 toc: FS3
-summary: Character RP Hooks
+summary: Setting RP hooks.
 ---
 # FS3 - RP Hooks
 

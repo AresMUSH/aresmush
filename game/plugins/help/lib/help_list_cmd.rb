@@ -10,8 +10,7 @@ module AresMUSH
       def handle        
         toc_list = {}
         Help.toc.each do |toc|
-          index_topics = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
-          toc_list[toc] = index_topics
+          toc_list[toc] = Help.toc_topics(toc)
         end
         
         paginator = Paginator.paginate(toc_list.keys, cmd.page, 8)

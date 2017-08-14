@@ -1,6 +1,6 @@
 ---
 toc: Miscellaneous
-summary: Easily grab and edit text from the game.
+summary: Grabbing and editing text from the game.
 aliases:
 - grab
 - FugueEdit

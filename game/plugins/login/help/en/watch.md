@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Miscellaneous
 summary: Watching other characters connect.
 aliases:
 - last

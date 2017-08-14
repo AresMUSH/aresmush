@@ -19,20 +19,12 @@ module AresMUSH
            all_help.select { |h, v| v["locale"] == locale }.each do |path, value|
            
              file_name = File.basename( value["path"], ".md" ).gsub('_', ' ')
-             plugin = value["plugin"]
-             if (file_name == "index")
-               key = plugin
-               value["order"] = value["order"] || 1
-               if (!value["aliases"])
-                 value["aliases"] = [ file_name ]
-               else
-                 value["aliases"] << file_name
-               end
-             else
-               key = "#{plugin} #{file_name}"
+             
+             if (Help.help_topics.has_key?(file_name))
+               Global.logger.warn "Duplicate help entry: #{file_name}"
              end
-           
-             Help.help_topics[key] = value
+             
+             Help.help_topics[file_name] = value
            end
          end
       end

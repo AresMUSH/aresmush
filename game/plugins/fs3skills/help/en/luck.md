@@ -1,6 +1,6 @@
 ---
 toc: FS3
-summary: Lucky breaks.
+summary: Using luck points.
 ---
 # FS3 - Luck
 

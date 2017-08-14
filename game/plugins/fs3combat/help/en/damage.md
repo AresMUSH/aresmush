@@ -1,6 +1,6 @@
 ---
-toc: FS3
-summary: Combat damage and healing.
+toc: FS3 Combat
+summary: Viewing and treating wounds.
 aliases:
 - treat
 - heal
@@ -10,7 +10,7 @@ aliases:
 ---
 # FS3 Combat - Damage
 
-This is a quick reference for the combat damage commands.
+This is a quick reference for the combat damage commands.  For more details, see [Combat](/help/fs3combat/combat).
  
 `damage` - Views your damage. 
 `damage <name>` - Views someone else's damage.

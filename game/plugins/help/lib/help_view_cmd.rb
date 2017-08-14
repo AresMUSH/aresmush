@@ -37,15 +37,9 @@ module AresMUSH
         
         topics = Help.find_topic(self.topic)
         if (topics.any?)
-          
           help_url = topics.map { |t| Help.topic_url(t) }.join(', ')
         else
           help_url = "#{Game.web_portal_url}/help"
-          
-          plugin_names = Global.plugin_manager.plugins.map { |p| p.to_s.after("::").downcase}
-          if (plugin_names.include?(fake_cmd.root))
-            help_url = "#{help_url}/#{fake_cmd.root}"
-          end
         end
         
         client.emit_failure t('help.no_help_found', :command => self.topic, :url => help_url)

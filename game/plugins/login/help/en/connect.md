@@ -1,6 +1,7 @@
 ---
-toc: Login
-summary: Logging in.
+toc: 1 - Getting Started
+summary: Connecting and disconnecting.
+order: 2
 aliases:
 - connect
 - tour
@@ -17,9 +18,15 @@ There are a number of 'guest' characters available that you can borrow just to l
 
 `tour`
 
+## Creating a Character
+
+When you're ready, you'll want to create your own character.  Your character name can be your first or last name.  Multi-word names are not permitted.  You should take care to consider the game's theme when choosing your name.  
+
+`create <name> <password>`
+
 ## Connecting to a Character
 
-Once your character is created, you can connect to them from the login screen.  For help creating a character see [Creating a Character](/help/login/create).
+Once your character is created, you can connect to them from the login screen.
 
 `connect <name> <password>`
 
