@@ -12,3 +12,4 @@ en:
         
         help_topic_header: "Help for '%{command}'"
         help_topic_footer: "Get more help at the web portal: %{url}"
+        view_help_online: "AresMUSH help files are best viewed online at the web portal: %{url}.  To see the in-game help, use 'help/detail %{topic}'."

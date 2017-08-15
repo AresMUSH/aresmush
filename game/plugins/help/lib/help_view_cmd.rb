@@ -4,10 +4,11 @@ module AresMUSH
     class HelpViewCmd
       include CommandHandler
 
-      attr_accessor :topic
+      attr_accessor :topic, :show_detail
       
       def parse_args
         self.topic = cmd.args
+        self.show_detail = cmd.switch_is?("detail")
       end
 
       def required_args
@@ -18,18 +19,30 @@ module AresMUSH
         true
       end
       
-      def handle               
+      def handle
+        self.topic = Help.strip_prefix(self.topic).gsub('/', ' ')
+               
         topics = Help.find_topic(self.topic)
         if (topics.count == 1)
-          topic = topics.first
-          md_contents = Help.topic_contents(topic)
-          markdown = MarkdownFormatter.new
-          template = BorderedDisplayTemplate.new markdown.to_mush(md_contents)
-          client.emit template.render
+          found_topic = topics.first
+          
+          if (self.show_detail)
+            md_contents = Help.topic_contents(found_topic)
+            markdown = MarkdownFormatter.new
+            template = BorderedDisplayTemplate.new markdown.to_mush(md_contents)
+            client.emit template.render
+          else
+            client.emit_ooc t('help.view_help_online', 
+                :url => Help.topic_url(found_topic, self.topic.rest(' ')),
+                :topic => self.topic)
+          end
+          
         elsif (topics.count == 0)
           client.emit_failure t('help.not_found', :topic => self.topic)
+          
         else
-          client.emit_failure t('help.not_found_alternatives', :topic => self.topic, :alts => topics.join(", "))
+          alts = topics.map { |t| "%% #{Help.topic_url(t)}" }
+          client.emit_failure t('help.not_found_alternatives', :topic => self.topic, :alts => topics.join("%R"))
         end
       end
     end

@@ -1,8 +1,10 @@
 module AresMUSH
   module Help    
     
-    def self.topic_url(plugin, topic)
-      "#{Game.web_portal_url}/help/#{plugin}/#{topic.gsub(' ', '_')}"
+    def self.topic_url(topic, search = nil)
+      topic = topic.gsub('/', ' ')
+      search_param = search.blank? ? "" : "?search=#{search}"
+      "#{Game.web_portal_url}/help/#{topic}#{search_param}"
     end
     
     def self.toc
