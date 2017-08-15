@@ -9,7 +9,7 @@ module AresMUSH
       
     end
     
-    get '/admin/config_web_header_bg', :auth => :admin do
+    get '/admin/config_web_header_bg/?', :auth => :admin do
       @name = "Web Header"
       @hint = "Displayed as the background across the top header."
       @dest_path = website_file_path
@@ -17,7 +17,7 @@ module AresMUSH
       erb :"admin/upload"
     end
     
-    get '/admin/config_web_box_bg', :auth => :admin do
+    get '/admin/config_web_box_bg/?', :auth => :admin do
       @name = "Web Char/Log Box Background"
       @hint = "Displayed as a background on log and character info boxes."
       @dest_path = website_file_path
@@ -26,7 +26,7 @@ module AresMUSH
     end
     
     
-    get '/admin/config_web_home_image', :auth => :admin do
+    get '/admin/config_web_home_image/?', :auth => :admin do
       @name = "Web Home Image"
       @hint = "Displayed on the home page."
       @dest_path = website_file_path

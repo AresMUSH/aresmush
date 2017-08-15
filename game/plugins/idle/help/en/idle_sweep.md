@@ -27,6 +27,7 @@ There are several idle actions available:
 `idle` - Review everyone's actions.
 `idle/action <name>=<action>` - Decides what to do with someone.
         Note: If someone isn't already on the list, this will add them.
+        You can also use idle/gone, idle/warn, etc.
 `idle/remove <name>` - Removes someone from the list.
 `idle/execute` - Takes care of the actions and posts a summary to the BBS.
 

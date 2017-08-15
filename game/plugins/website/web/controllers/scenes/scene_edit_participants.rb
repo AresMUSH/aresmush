@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
         
-    get '/scene/:id/participants', :auth => :approved do |id|
+    get '/scene/:id/participants/?', :auth => :approved do |id|
       @scene = Scene[id]
       
       if (!@scene.shared)
@@ -13,7 +13,7 @@ module AresMUSH
       erb :"scenes/edit_participants"
     end
     
-    get '/scene/:scene_id/participants/delete/:char_id', :auth => :approved do |scene_id, char_id|
+    get '/scene/:scene_id/participants/delete/:char_id/?', :auth => :approved do |scene_id, char_id|
       @scene = Scene[scene_id]
       @char = Character[char_id]
       if (!Scenes.can_access_scene?(@user, @scene))

@@ -15,7 +15,7 @@ module AresMUSH
       end
     end
     
-    get '/scenes' do
+    get '/scenes/?' do
       @page = params[:page] ? params[:page].to_i : 1
       @tab = params[:tab] || "Recent"
       
@@ -39,7 +39,7 @@ module AresMUSH
       erb :"scenes/scenes_index"
     end
     
-    get '/scene/:id' do |id|
+    get '/scene/:id/?' do |id|
       @scene = Scene[id]
       
       if (!@scene.shared)

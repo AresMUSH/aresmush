@@ -12,7 +12,7 @@ load "lib/lastwill_cmd.rb"
 load "lib/roster_add_cmd.rb"
 load "lib/roster_claim_cmd.rb"
 load "lib/roster_list_cmd.rb"
-load "lib/roster_note_cmd.rb"
+load "lib/roster_data_cmd.rb"
 load "lib/roster_restrict_cmd.rb"
 load "lib/roster_remove_cmd.rb"
 load "lib/roster_view_cmd.rb"
@@ -51,7 +51,7 @@ module AresMUSH
       case cmd.root
       when "idle"
         case cmd.switch
-        when "action"
+        when "action", "gone", "npc", "dead", "warn", "roster"
           return IdleActionCmd
         when "execute"
           return IdleExecuteCmd
@@ -72,8 +72,8 @@ module AresMUSH
           return RosterAddCmd
         when "claim"
           return RosterClaimCmd
-        when "note"
-          return RosterNoteCmd
+        when "note", "contact", "played"
+          return RosterDataCmd
         when "remove"
           return RosterRemoveCmd
         when "restrict"

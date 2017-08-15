@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/admin/config_date', :auth => :admin do
+    get '/admin/config_date/?', :auth => :admin do
       @date = Global.read_config("date_and_time")
       
       erb :"admin/config_date"

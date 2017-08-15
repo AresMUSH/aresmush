@@ -56,6 +56,8 @@ en:
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
         hud_subtitle: "%xhCombatant      Damage  Weapon(ammo)   Vehicle          Action(stance)%xn"
+        marked_idle: "%{name} has been marked idle."
+        marked_unidle: "%{name} has been marked un-idle."
         
         # ----------------------------
         # START, STOP, JOIN, LEAVE
@@ -308,7 +310,7 @@ en:
         explode_action_msg_long: "%{name} will blow up %{targets}."
         explode_action_msg_short: "Explode %{targets}"
         explode_resolution_message: "%{name} uses %{weapon}.  EXPLOSION!"
-        
+        concussion_from: "%{weapon}(Concussion)"
         # ----------------------------
         # PASS
         # ----------------------------

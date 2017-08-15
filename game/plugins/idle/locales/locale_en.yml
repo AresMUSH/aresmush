@@ -33,6 +33,7 @@ en:
         roster_column_titles: "Name                   Gender    Position            Faction"
         not_on_roster: "%{name} is not on the roster."
         removed_from_roster: "%{name} has been removed from the roster."
+        played_before: "Previously Played?:"
         played_by: "Played By:"
         wiki_page: "Wiki Page:"
         notes: "Notes:"

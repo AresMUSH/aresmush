@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
 
-    get '/help/:topic' do |topic|
+    get '/help/:topic/?' do |topic|
       topic = Help.find_topic(topic)
       
       if (!topic == 0)
@@ -15,7 +15,7 @@ module AresMUSH
       erb :"help/help"
     end
 
-    get '/help/:plugin/:topic' do |plugin, topic|
+    get '/help/:plugin/:topic/?' do |plugin, topic|
       redirect "/help/#{topic}"
     end
     

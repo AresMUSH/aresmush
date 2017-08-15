@@ -28,7 +28,7 @@ module AresMUSH
     attribute :summary
     attribute :shared
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
-    attribute :deletion_warned, :type => DataType::Boolean, :default => true
+    attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
     attribute :log
     

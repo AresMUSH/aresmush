@@ -732,3 +732,24 @@ ul.char-ability-list {
 
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
+@media (max-width:800px)  { 
+
+.profile-wrap { 
+    padding: 10px; 
+}
+
+.profile-box { 
+    padding: 10px;
+    margin: 10px;
+}
+
+.log-wrap { 
+    padding: 10px;
+}
+
+.log-box { 
+    padding: 10px;
+    margin: 10px;
+}
+    
+    }

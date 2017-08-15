@@ -6,6 +6,7 @@ module AresMUSH
     attribute :roster_contact
     attribute :roster_notes
     attribute :roster_restricted, :type => DataType::Boolean
+    attribute :roster_played, :type => DataType::Boolean
     
     def idled_out?
       !!self.idle_state

@@ -24,7 +24,7 @@ module AresMUSH
       end
     end
     
-    get '/chars' do
+    get '/chars/?' do
       group = Global.read_config("website", "character_gallery_group") || "Faction"
       @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group(group) || "" }
       @roster = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
@@ -34,7 +34,7 @@ module AresMUSH
       erb :"chars/chars_index"
     end
     
-    get '/char/:id' do |id|
+    get '/char/:id/?' do |id|
       @char = Character[id]
       if (!@char)
         
@@ -51,7 +51,7 @@ module AresMUSH
       erb :"chars/char"
     end
     
-    get '/char/:id/source' do |id|
+    get '/char/:id/source/?' do |id|
       @char = Character[id]
       
       if (!@char)

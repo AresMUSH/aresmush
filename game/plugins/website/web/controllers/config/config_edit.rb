@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/admin/config/edit', :auth => :admin do
+    get '/admin/config/edit/?', :auth => :admin do
       
       @path = params[:path]
       @plugin = params[:plugin]

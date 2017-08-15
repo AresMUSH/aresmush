@@ -16,10 +16,6 @@
         <td>
         <a href="/scene/<%= s.id %>"><%= s.title %></a>
         
-        <% if !s.completed %>
-        <span class="label label-warning">In Progress</span>
-        <% end %>
-        
        <span class="label label-info 
         scene-<%= s.scene_type ? s.scene_type.downcase : "unknown" %>">
             <%= s.scene_type %></span>

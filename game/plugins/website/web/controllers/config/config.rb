@@ -10,7 +10,7 @@ module AresMUSH
       
     end
     
-    get '/admin/config', :auth => :admin do
+    get '/admin/config/?', :auth => :admin do
       game_path = AresMUSH.game_path
       @game_config = ConfigReader.config_files.map { |f| f.gsub(game_path, "") }
       @game_help = Dir[File.join(game_path, "help", "**", "*.md")].map { |f| f.gsub(game_path, "") }

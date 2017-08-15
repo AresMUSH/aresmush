@@ -1,19 +1,20 @@
 module AresMUSH
 
   module Idle
-    class RosterNoteCmd
+    class RosterDataCmd
       include CommandHandler
       
-      attr_accessor :name, :notes
+      attr_accessor :name, :value, :property
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = titlecase_arg(args.arg1)
-        self.notes = args.arg2
+        self.value = args.arg2
+        self.property = downcase_arg(cmd.switch)
       end
        
       def required_args
-        [ self.name, self.notes ]
+        [ self.name ]
       end
       
       def check_roster_enabled
@@ -33,7 +34,17 @@ module AresMUSH
             return
           end
 
-          model.update(roster_notes: self.notes)
+          case self.property
+          when "note"
+            model.update(roster_notes: self.value)
+          when "contact"
+            model.update(roster_contact: self.value)
+          when "played"
+            model.update(roster_played: self.value.to_bool)
+          else
+            raise "Unrecognized roster property: #{self.property}"
+          end
+            
           client.emit_success t('idle.roster_updated')
         end
       end

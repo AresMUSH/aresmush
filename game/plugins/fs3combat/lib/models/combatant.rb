@@ -11,6 +11,7 @@ module AresMUSH
     attribute :stance, :default => "Normal"
     attribute :armor
     attribute :is_ko, :type => DataType::Boolean
+    attribute :idle, :type => DataType::Boolean
     attribute :luck
     attribute :distraction, :type => DataType::Integer, :default => 0
     attribute :ammo, :type => DataType::Integer

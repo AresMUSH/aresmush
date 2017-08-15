@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
         
-    get '/scene/:id/related', :auth => :approved do |id|
+    get '/scene/:id/related/?', :auth => :approved do |id|
       @scene = Scene[id]
       @available_scenes = Scene.all.to_a.select { |s| s.shared && s.id != id }.sort_by { |s| s.icdate }.reverse
       if (!@scene.shared)
@@ -13,7 +13,7 @@ module AresMUSH
     end
     
     
-    get '/scene/:scene_id/related/delete/:related_id', :auth => :approved do |scene_id, related_id|
+    get '/scene/:scene_id/related/delete/:related_id/?', :auth => :approved do |scene_id, related_id|
       @scene = Scene[scene_id]
       @related = Scene[related_id]
       

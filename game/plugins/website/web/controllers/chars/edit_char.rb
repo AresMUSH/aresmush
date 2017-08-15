@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/char/:id/edit', :auth => :approved do |id|
+    get '/char/:id/edit/?', :auth => :approved do |id|
       @char = Character[id]
       if (!@char)
         flash[:error] = "Character not found."

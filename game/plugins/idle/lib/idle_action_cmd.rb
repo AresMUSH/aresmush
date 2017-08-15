@@ -7,9 +7,14 @@ module AresMUSH
       attr_accessor :name, :action
 
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        self.name = titlecase_arg(args.arg1)
-        self.action = titlecase_arg(args.arg2)
+        if (cmd.switch_is?("action"))
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          self.name = titlecase_arg(args.arg1)
+          self.action = titlecase_arg(args.arg2)
+        else
+          self.name = titlecase_arg(cmd.args)
+          self.action = titlecase_arg(cmd.switch)
+        end
       end
       
       def required_args

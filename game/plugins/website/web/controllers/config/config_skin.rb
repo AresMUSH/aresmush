@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/admin/config_skin', :auth => :admin do
+    get '/admin/config_skin/?', :auth => :admin do
       
       @skin = Global.read_config("skin")      
       

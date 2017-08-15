@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp    
     
     
-    get '/register', :auth => :not_user do
+    get '/register/?', :auth => :not_user do
       tos = Login.terms_of_service
       @tos = tos ? ClientFormatter.format(tos) : nil
       erb :"register"

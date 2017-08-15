@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/admin/config_secrets', :auth => :admin do    
+    get '/admin/config_secrets/?', :auth => :admin do    
       @secrets = Global.read_config("secrets")
       
       @recaptcha_secret = Global.read_config("secrets", "recaptcha", "secret")

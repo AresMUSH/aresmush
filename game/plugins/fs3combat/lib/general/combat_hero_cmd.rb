@@ -20,6 +20,10 @@ module AresMUSH
           
           enactor.spend_luck(1)
           combatant.update(is_ko: false)
+          wound = FS3Combat.worst_treatable_wound(enactor)
+          if (wound)
+            FS3Combat.heal(wound, 1)
+          end
           
           combat.emit t('fs3combat.back_in_the_fight', :name => enactor_name), nil, true
         end

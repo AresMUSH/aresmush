@@ -7,7 +7,7 @@ module AresMUSH
       end
     end
     
-    get '/combat' do
+    get '/combat/?' do
       @combats = Combat.all
       erb :"combat/combat_index"
     end
