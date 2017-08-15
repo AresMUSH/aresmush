@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/admin/tinker', :auth => :admin do
+    get '/admin/tinker/?', :auth => :admin do
       @code = File.read(tinker_cmd_path)
       erb :"admin/tinker"
     end

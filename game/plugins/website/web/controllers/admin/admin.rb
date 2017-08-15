@@ -6,7 +6,7 @@ module AresMUSH
       end
     end
     
-    get '/admin', :auth => :admin do
+    get '/admin/?', :auth => :admin do
       @reboot_required = File.exist?('/var/run/reboot-required')
       erb :"admin/admin_index"
     end

@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :name, :actor
-
+      
       def parse_args
         # Admin version
         if (cmd.args =~ /\=/)
@@ -20,10 +20,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'actors'
-        }
+        [ self.name ]
       end
         
       def check_is_allowed

@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Community
 summary: Viewing game activity.
 ---
 # Viewing Game Activity
@@ -8,4 +8,4 @@ AresMUSH keeps track of how many people are logged in, and can display a summary
 
 Game activity is also reported to [AresCentral](http://arescentral.aresmush.com) and visible on the game summary there.
 
-`activity` - Views game activity.
+`activity` - Views a graph of game activity.

@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.board_name ],
-          help: 'bbs admin'
-        }
+        [ self.board_name ]
       end
       
       def handle

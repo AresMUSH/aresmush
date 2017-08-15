@@ -1,5 +1,5 @@
 ---
-toc: Grid
+toc: ~admin~ Building
 summary: Creating rooms.
 aliases:
 - build
@@ -38,6 +38,15 @@ Once you have an exit, you can change the source or destination rooms that it's 
 
 > **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a description.
 
+## Locking Exits
+
+> **Permissions Required:** This command requires the Admin role or the 'build' permission.
+
+Builders can also lock exits to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel admin" so only rebels and admins could use it.  Role locks are not limited to interior rooms; any exit can be locked.
+
+`lock <exit>=<list of roles who are allowed in>`
+`unlock <exit>`
+
 ## Finding Rooms
 
 If you lose track of rooms you've created, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  
@@ -45,7 +54,7 @@ If you lose track of rooms you've created, you may need to use the database comm
 `rooms`- Lists all rooms
 `rooms <search>` - Search for rooms.
 
-See the [Database Help](/help/manage/database) file for more information.
+See the [Database Help](/help/database) file for more information.
 
 ## Special Rooms
 

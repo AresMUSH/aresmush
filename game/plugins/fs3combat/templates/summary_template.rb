@@ -12,7 +12,16 @@ module AresMUSH
       
       def slack(c)
         acted = !c.action ? '%xh%xr**%xn' : '%xg++%xn'
-        posed = c.is_npc? ? '%xg--%xn' : (c.posed ? '%xg++%xn' : '%xh%xr**%xn')
+        
+        if (c.is_npc?)
+          posed = '%xg--%xn'
+        elsif (c.idle)
+          posed = '%xx%xhxx%xn'
+        elsif (c.posed)
+          posed = '%xg++%xn'
+        else
+          posed = '%xh%xr**%xn'
+        end
         "#{acted} / #{posed}   "
       end
       

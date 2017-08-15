@@ -109,6 +109,8 @@ module AresMUSH
            return RequestCommentCmd
          when "all"
            return ListRequestsCmd
+         when "create"
+           return CreateRequestCmd
          when nil
            if (!cmd.args)
              return ListRequestsCmd

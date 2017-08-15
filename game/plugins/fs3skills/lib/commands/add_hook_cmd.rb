@@ -22,10 +22,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.char_name, self.name, self.desc ],
-          help: 'hooks'
-        }
+        [ self.char_name, self.name, self.desc ]
       end
       
       def check_name_for_dots

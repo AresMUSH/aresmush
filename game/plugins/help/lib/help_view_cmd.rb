@@ -4,17 +4,15 @@ module AresMUSH
     class HelpViewCmd
       include CommandHandler
 
-      attr_accessor :topic
+      attr_accessor :topic, :show_detail
       
       def parse_args
-        self.topic = strip_prefix(titlecase_arg(cmd.args))
+        self.topic = cmd.args
+        self.show_detail = cmd.switch_is?("detail")
       end
 
       def required_args
-        {
-          args: [ self.topic ],
-          help: 'help'
-        }
+        [ self.topic ]
       end
       
       def allow_without_login
@@ -22,30 +20,30 @@ module AresMUSH
       end
       
       def handle
-        found = Help.find_topic(self.topic)
-        if (found.count == 1)
-          display_help(found.first)
-        elsif (found.count > 1)
-          template = BorderedListTemplate.new found, t('help.not_found_alternatives', :topic => self.topic)
-          client.emit template.render
-        else
+        self.topic = Help.strip_prefix(self.topic).gsub('/', ' ')
+               
+        topics = Help.find_topic(self.topic)
+        if (topics.count == 1)
+          found_topic = topics.first
+          
+          if (self.show_detail)
+            md_contents = Help.topic_contents(found_topic)
+            markdown = MarkdownFormatter.new
+            template = BorderedDisplayTemplate.new markdown.to_mush(md_contents)
+            client.emit template.render
+          else
+            client.emit_ooc t('help.view_help_online', 
+                :url => Help.topic_url(found_topic, self.topic.rest(' ')),
+                :topic => self.topic)
+          end
+          
+        elsif (topics.count == 0)
           client.emit_failure t('help.not_found', :topic => self.topic)
+          
+        else
+          alts = topics.map { |t| "%% #{Help.topic_url(t)}" }
+          client.emit_failure t('help.not_found_alternatives', :topic => self.topic, :alts => topics.join("%R"))
         end
-      end
-        
-      def strip_prefix(arg)
-        return nil if !arg
-        cracked = /^(?<prefix>[\/\+\=\@]?)(?<rest>.+)/.match(arg)
-        !cracked ? nil : cracked[:rest]
-      end
-            
-      def display_help(topic)
-        text = Help.topic_contents(topic)
-        markdown = MarkdownFormatter.new
-        display = markdown.to_mush(text).chomp
-
-        template = BorderedDisplayTemplate.new display
-        client.emit template.render
       end
     end
   end

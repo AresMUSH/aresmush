@@ -15,10 +15,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'combat'
-        }
+        [ self.name ]
       end
       
       def handle

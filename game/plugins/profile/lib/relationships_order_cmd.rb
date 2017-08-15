@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.list ],
-          help: 'relationship'
-        }
+        [ self.list ]
       end
       
       def check_for_commas

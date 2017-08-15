@@ -20,10 +20,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.date_str ],
-          help: 'demographics'
-        }
+        [ self.name, self.date_str ]
       end
                 
       def check_is_allowed

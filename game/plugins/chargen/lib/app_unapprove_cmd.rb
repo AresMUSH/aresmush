@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'chargen admin'
-        }
+        [ self.name ]
       end
 
       def check_permission

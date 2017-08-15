@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.number, self.value ],
-          help: 'jobs manage'
-        }
+        [ self.number, self.value ]
       end
       
       def handle
@@ -33,7 +30,7 @@ module AresMUSH
     
     class ChangeTitleCmd
       include ChangeJobCmd
-
+      
       def update_value(job)
         job.update(title: self.value)
       end

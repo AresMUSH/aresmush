@@ -32,10 +32,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.number ],
-          help: 'combat org'
-        }
+        [ self.name, self.number ]
       end
       
       def handle

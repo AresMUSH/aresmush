@@ -1,6 +1,6 @@
 ---
-toc: Grid
-summary: Get home.
+toc: Getting Around
+summary: Getting home quickly.
 aliases:
 - work
 ---

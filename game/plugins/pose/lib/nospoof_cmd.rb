@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.option ],
-          help: 'nospoof'
-        }
+        [ self.option ]
       end
       
       def check_status

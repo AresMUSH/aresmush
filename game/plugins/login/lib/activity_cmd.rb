@@ -3,7 +3,6 @@ module AresMUSH
     class ActivityCmd
       include CommandHandler
     
-    
       def handle
         
         # 0 = 0-3

@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name
-
+      
       def parse_args
         self.name = !cmd.args ? enactor_name : trim_arg(cmd.args)
       end

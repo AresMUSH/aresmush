@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.scene ],
-          help: 'wiki'
-        }
+        [ self.scene ]
       end
       
       def handle

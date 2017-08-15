@@ -1,5 +1,5 @@
 ---
-toc: Status
+toc: Miscellaneous
 summary: Going AFK.
 aliases:
 - away

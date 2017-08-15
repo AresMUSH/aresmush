@@ -19,10 +19,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.roll_str ],
-          help: 'roll'
-        }
+        [ self.name, self.roll_str ]
       end
       
       def handle

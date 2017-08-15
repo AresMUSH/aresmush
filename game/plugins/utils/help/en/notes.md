@@ -1,6 +1,6 @@
 ---
 toc: Miscellaneous
-summary: In-game notepad.
+summary: Saving notes with your character.
 aliases:
 - set
 ---

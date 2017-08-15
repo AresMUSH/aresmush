@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.alias ],
-          help: 'channels talk'
-        }
+        [ self.name, self.alias ]
       end
       
       def handle

@@ -1,5 +1,5 @@
 ---
-toc: Status
+toc: ~admin~ Managing the Game
 summary: Designating a character as a NPC.
 ---
 # NPCs

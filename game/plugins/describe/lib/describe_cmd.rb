@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :target, :description
-
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.target = trim_arg(args.arg1)
@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target, self.description ],
-          help: 'descs'
-        }
+        [ self.target, self.description ]
       end
       
       def handle

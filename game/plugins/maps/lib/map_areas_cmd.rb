@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.areas ],
-          help: 'maps'
-        }
+        [ self.name, self.areas ]
       end
       
       def handle

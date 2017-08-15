@@ -2,7 +2,7 @@ module AresMUSH
   module Login
     class TosCmd
       include CommandHandler
-        
+      
       def allow_without_login
         true
       end

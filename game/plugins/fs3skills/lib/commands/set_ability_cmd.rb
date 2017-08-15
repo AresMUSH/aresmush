@@ -21,10 +21,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.ability_name, self.rating ],
-          help: 'abilities'
-        }
+        [ self.name, self.ability_name, self.rating ]
       end
       
       def check_valid_rating

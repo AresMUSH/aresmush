@@ -21,12 +21,6 @@
             <% end %>
         
         <div>
-            <% if @scene.completed %>
-            <span class="label label-success">Completed</span>
-            <% else %>
-            <span class="label label-warning">In Progress</span>
-            <% end %>
-
             <%= erb :"scenes/scene_tag", :locals => { scene: @scene } %>
          </div>
     </div>

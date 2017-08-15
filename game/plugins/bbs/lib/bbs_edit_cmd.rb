@@ -12,11 +12,8 @@ module AresMUSH
         self.new_text = args.new_text
       end
       
-      def required_args
-        {
-          args: [ self.board_name, self.num ],
-          help: 'bbs posting'
-        }
+      def required_args        
+        [ self.board_name, self.num ]
       end
       
       def handle

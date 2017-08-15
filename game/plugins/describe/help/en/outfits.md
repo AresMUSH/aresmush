@@ -1,9 +1,10 @@
 ---
 toc: Descriptions
-summary: Your character's wardrobe.
+summary: Expanding your character's wardrobe.
 aliases:
 - wear
 - multi desc
+- multidesc
 ---
 # Outfits
 

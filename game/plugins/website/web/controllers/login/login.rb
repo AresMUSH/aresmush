@@ -1,11 +1,11 @@
 module AresMUSH
   class WebApp    
     
-    get '/login', :auth => :not_user  do
+    get '/login/?', :auth => :not_user  do
       erb :"login"
     end  
     
-    get "/logout", :auth => :user do
+    get "/logout/?", :auth => :user do
       session.clear
       redirect to('/')
     end

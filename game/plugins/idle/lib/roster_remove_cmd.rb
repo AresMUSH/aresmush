@@ -11,10 +11,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'roster admin'
-        }
+        [ self.name ]
       end
       
       def check_roster_enabled

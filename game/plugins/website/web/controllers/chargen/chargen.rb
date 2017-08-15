@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/chargen', :auth => :user do
+    get '/chargen/?', :auth => :user do
       
       if (@user.is_approved?)
         flash[:error] = "You are already approved."

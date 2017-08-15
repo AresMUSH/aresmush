@@ -18,16 +18,16 @@ module AresMUSH
       end
     end
     
-    get '/files' do
+    get '/files/?' do
       @files = uploaded_files
       erb :"files/files_index"
     end
     
-    get '/files/upload', :auth => :approved  do
+    get '/files/upload/?', :auth => :approved  do
       erb :"files/upload"
     end
     
-    get '/file/delete', :auth => :approved do
+    get '/file/delete/?', :auth => :approved do
       file = params[:file]
       if (!File.exists?(file))
         flash[:error] = "File doesn't exist."

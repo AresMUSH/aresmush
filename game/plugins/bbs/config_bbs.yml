@@ -12,6 +12,7 @@ bbs:
         "bbremove" : "bbs/delete"
         "bbmove" : "bbs/move"
         "bbs/remove": "bbs/delete"
+        "bbs/read" : "bbs"
         "bbnewgroup" : "bbs/createboard"
         "bbcleargroup" : "bbs/deleteboard"
         "bbarchive" : "bbs/archive"

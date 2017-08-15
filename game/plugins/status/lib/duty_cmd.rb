@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.status ],
-          help: 'duty'
-        }
+        [ self.status ]
       end
       
       def check_can_be_on_duty

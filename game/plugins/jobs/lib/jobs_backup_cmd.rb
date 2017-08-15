@@ -2,7 +2,7 @@ module AresMUSH
   module Jobs
     class JobsBackupCmd
       include CommandHandler
-
+      
       def check_too_many_jobs
         closed = Jobs.closed_jobs
         return t('jobs.no_closed_jobs') if closed.count == 0

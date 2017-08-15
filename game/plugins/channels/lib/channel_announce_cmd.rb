@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.option, self.name ],
-          help: 'channels utils'
-        }
+        [ self.option, self.name ]
       end
       
       def check_option

@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :title, :date_time_desc
-
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.title = titlecase_arg(args.arg1)
@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.title, self.date_time_desc ],
-          help: 'events'
-        }
+        [ self.title, self.date_time_desc ]
       end
       
       def handle

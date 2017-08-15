@@ -22,10 +22,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.names, self.vehicle, self.passenger_type ],
-          help: 'combat'
-        }
+        [ self.names, self.vehicle, self.passenger_type ]
       end
       
       def check_in_combat

@@ -5,12 +5,9 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :age
-
+      
       def required_args
-        {
-          args: [ self.age ],
-          help: 'age'
-        }
+        [ self.age ]
       end
          
       def check_chargen_locked

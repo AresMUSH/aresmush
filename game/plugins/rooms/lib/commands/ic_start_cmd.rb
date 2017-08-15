@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.dest ],
-          help: 'icstart'
-        }
+        [ self.dest ]
       end
       
       def check_can_build

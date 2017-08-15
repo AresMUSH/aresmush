@@ -10,7 +10,7 @@ module AresMUSH
       end
     end
       
-    get '/mail', :auth => :approved do
+    get '/mail/?', :auth => :approved do
       @tag = params[:tag] || Mail.inbox_tag
         
       @tags = Mail.all_tags(@user).select { |t| t != Mail.inbox_tag }.sort

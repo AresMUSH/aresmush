@@ -363,9 +363,15 @@ module AresMUSH
       
       messages = []
       
+      if (FS3Combat.weapon_stat(weapon, 'weapon_type') == "Explosive")
+        weapon_name = t('fs3combat.concussion_from', :weapon => weapon)
+      else
+        weapon_name = weapon
+      end
+      
       messages << t('fs3combat.attack_hits', 
                     :name => attack_name, 
-                    :weapon => weapon,
+                    :weapon => weapon_name,
                     :target => target.name,
                     :hitloc => hitloc,
                     :armor => reduced_by_armor,

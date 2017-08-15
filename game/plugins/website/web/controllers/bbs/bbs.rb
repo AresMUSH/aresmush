@@ -10,7 +10,7 @@ module AresMUSH
       end
     end
     
-    get '/bbs' do
+    get '/bbs/?' do
       @boards = BbsBoard.all_sorted
       erb :"bbs/bbs_index"
     end

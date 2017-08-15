@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.pose ],
-          help: 'scene replace'
-        }
+        [ self.pose ]
       end
       
       def handle        

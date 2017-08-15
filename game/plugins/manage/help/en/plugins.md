@@ -6,8 +6,6 @@ aliases:
 - unload
 - plugin
 - config
-- announce
-- wall
 - reload
 ---
 # Managing Plugins

@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/admin/logs', :auth => :admin do
+    get '/admin/logs/?', :auth => :admin do
       @logs = Dir[File.join(AresMUSH.game_path, "logs", "**")].sort.reverse
             
       latest_log = File.readlines(@logs[0]).to_s
@@ -8,7 +8,7 @@ module AresMUSH
       erb :"admin/logs_index"
     end
     
-    get '/admin/log/:file', :auth => :admin do |file|
+    get '/admin/log/:file/?', :auth => :admin do |file|
       @name = file
       @lines = File.readlines(File.join(AresMUSH.game_path, "logs", file)).reverse
       erb :"admin/log"

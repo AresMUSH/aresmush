@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Miscellaneous
 summary: Changing your password.
 ---
 # Changing Your Password

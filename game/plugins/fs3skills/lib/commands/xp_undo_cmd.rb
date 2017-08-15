@@ -13,10 +13,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.skill ],
-          help: 'xp'
-        }
+        [ self.name, self.skill ]
       end
       
       def check_can_award

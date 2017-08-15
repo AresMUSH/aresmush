@@ -692,6 +692,7 @@ module AresMUSH
           FS3Combat.stub(:weapon_is_stun?) { false }
           FS3Combat.stub(:determine_hitloc) { "Chest" }
           FS3Combat.stub(:resolve_possible_crew_hit) { [] }
+          FS3Combat.stub(:weapon_stat) { "x" }
           @target.stub(:log)
           @target.stub(:inflict_damage)
           @target.stub(:name) { "D" }

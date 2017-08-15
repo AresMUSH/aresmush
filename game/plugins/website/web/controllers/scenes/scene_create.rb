@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/scenes/create', :auth => :approved do 
+    get '/scenes/create/?', :auth => :approved do 
       erb :"scenes/create_scene"
     end
     

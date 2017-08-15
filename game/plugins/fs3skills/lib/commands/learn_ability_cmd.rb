@@ -11,10 +11,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name ],
-          help: 'xp'
-        }
+        [ self.name ]
       end
       
       def check_chargen_locked

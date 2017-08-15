@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.old_name, self.new_name ],
-          help: 'places'
-        }
+        [ self.old_name, self.new_name ]
       end
             
       def handle

@@ -15,10 +15,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.num, self.desc, self.severity ],
-          help: 'damage'
-        }
+        [ self.name, self.num, self.desc, self.severity ]
       end
       
       def check_severity

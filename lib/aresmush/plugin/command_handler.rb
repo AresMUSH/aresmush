@@ -24,7 +24,6 @@ module AresMUSH
       end
       handle
     end
-        
     
     # Override this to perform any advanced argument processing.  For example, if your 
     # command is in the form foo/bar arg1=arg2, you can split up arg1 and arg2 by 
@@ -57,8 +56,11 @@ module AresMUSH
       end
       
       if (required_args)
-        required_args[:args].each do |arg|
-          return t('dispatcher.invalid_syntax', :command => required_args[:help]) if "#{arg}".strip.length == 0
+        required_args.each do |arg|
+          
+          if "#{arg}".strip.length == 0            
+            return t('dispatcher.invalid_syntax', :url => "#{Game.web_portal_url}/help/#{cmd.root}?search=#{cmd.switch}") 
+          end
         end
       end
       

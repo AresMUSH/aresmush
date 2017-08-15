@@ -21,10 +21,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.names, self.num ],
-          help: 'combat'
-        }
+        [ self.names, self.num ]
       end
       
       def check_commas

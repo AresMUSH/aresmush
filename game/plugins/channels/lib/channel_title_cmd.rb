@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
            
       attr_accessor :name, :title
-
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = titlecase_arg(args.arg1)
@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'channels utils'
-        }
+        [ self.name ]
       end
       
       def handle

@@ -1,6 +1,6 @@
 ---
 toc: Miscellaneous
-summary: Asides to yourself.
+summary: Echoing text to yourself.
 aliases:
 - think
 ---

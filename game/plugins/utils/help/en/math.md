@@ -1,6 +1,6 @@
 ---
 toc: Miscellaneous
-summary: In-game calculator.
+summary: Using the in-game calculator.
 aliases:
 - calculator
 ---

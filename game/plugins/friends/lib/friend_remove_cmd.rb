@@ -4,16 +4,13 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name
-
+      
       def parse_args
         self.name = cmd.args
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'friends'
-        }
+        [ self.name ]
       end
       
       def handle

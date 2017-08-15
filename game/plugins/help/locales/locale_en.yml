@@ -2,9 +2,14 @@ en:
     help:
         toc: "%{category} Topics"
         topic: "%{category}: %{topic}"
-        not_found_alternatives: "No topic found for '%{topic}'.  Maybe you meant one of these?"
+        not_found_alternatives: "No topic found for '%{topic}'.  Maybe you meant one of these? %{alts}"
         not_found: "No help found for '%{topic}.'"
         error_loading_help: "Error loading help %{topic}: %{error}."
         other_help_libraries: "Help Libraries:"
         unrecognized_help_library: "That is not a valid help library."
         web_help_tip: "The help files are best viewed on the web portal.  See %xhhelp website%xn."
+        no_help_found: "Command %{command} not found.  For more help, see the web portal.  You may be looking for one of these topics: %{url}."
+        
+        help_topic_header: "Help for '%{command}'"
+        help_topic_footer: "Get more help at the web portal: %{url}"
+        view_help_online: "AresMUSH help files are best viewed online at the web portal: %{url}.  To see the in-game help, use 'help/detail %{topic}'."

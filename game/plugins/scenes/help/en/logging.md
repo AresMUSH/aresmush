@@ -9,6 +9,10 @@ aliases:
 - scene unshare
 - log
 - scene sharing
+- scene spoof
+- scene edit
+- scene replace
+- scene undo
 ---
 # Scene Logging
 
@@ -23,9 +27,39 @@ During the scene, you can refer back to the log for a quick catch-up if you join
 `scene/repose [scene #]` - Quick log catch-up.
 `scene/log [scene #]` - Spam yourself with the entire log.
 
+## Editing Poses
+
+You can edit and delete your poses through the Web Portal, and even attribute them to other characters (handy if you're emitting from one of your alts).  
+
+For a quick correction, you can also replace your **previous pose** with a corrected one.  Format it like an emit:
+
+`scene/replace <text in the form of an emit>`
+
+To do it silently (for a small typo that isn't worth emitting to everyone in the room) you can do:
+
+`scene/typo <text in the form of an emit>`
+
+You can also just delete your last pose completely.
+
+`scene/undo`
+
+You can also add a missing pose to the scene log (for example - one that happened before the scene log was started).  This will not emit to the other participants:
+
+`scene/addpose <emit>`
+
+## Editing Participants
+
+The log system automatically tracks who participated in the scene.  You can edit this through the web portal.
+
+Sometimes, though, you'll be emitting a character from another character (spoofing them). If you want to just replace all instances of one character with another, you can use the scene spoof command.  For example, if you had emitted Bob from Harry throughout the log, you can switch all of Harry's poses to Bob.  
+
+`scene/spoof <#>=<original char>/<new char>`
+
+> **Tip:** The spoof replacement only applies to past emits, not future ones.  It is best to use it on a completed log.
+
 ## Sharing the Log
 
-At any point during the scene, you can share the log.  This makes it visible on the game's web portal (see [Website](/help/website)).  Sharing a big event scene while it's still in-progress allows spectators to follow it on the web even if they're not participating.
+At any point during the scene, you can share the log.  This makes it visible on the game's web portal (see [Website](/help/web_portal)).  Sharing a big event scene while it's still in-progress allows spectators to follow it on the web even if they're not participating.
 
 `scene/share [scene #]` - Shares the log to the web portal.
 `scene/unshare [scene #]` - Unshares a log.

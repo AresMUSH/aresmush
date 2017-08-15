@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :charname, :password
-
+      
       def parse_args
         # After agreeing to TOS, this is already cracked.
         if (cmd.args.class != AresMUSH::HashReader)

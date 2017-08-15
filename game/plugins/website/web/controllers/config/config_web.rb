@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
      
-    get '/admin/config_web', :auth => :admin do
+    get '/admin/config_web/?', :auth => :admin do
       @config = Global.read_config("website")
       
       erb :"admin/config_web"

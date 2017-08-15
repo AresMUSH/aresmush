@@ -1,6 +1,6 @@
 ---
 toc: Community
-summary: See what other characters are out there.
+summary: Seeing what other characters are out there.
 ---
 # Census
 

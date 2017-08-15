@@ -5,16 +5,13 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :num
-
+      
       def parse_args
         self.num = integer_arg(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.num ],
-          help: 'events'
-        }
+        [ self.num ]
       end
       
       def handle

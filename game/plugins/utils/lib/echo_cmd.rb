@@ -14,10 +14,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.message ],
-          help: 'echo'
-        }
+        [ self.message ]
       end
       
       def handle

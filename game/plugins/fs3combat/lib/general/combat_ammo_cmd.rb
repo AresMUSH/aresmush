@@ -19,10 +19,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.ammo ],
-          help: 'combat org'
-        }
+        [ self.ammo ]
       end
       
       

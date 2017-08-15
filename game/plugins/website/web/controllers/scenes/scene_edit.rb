@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/scene/:id/edit', :auth => :approved do |id|
+    get '/scene/:id/edit/?', :auth => :approved do |id|
       @scene = Scene[id]
       @log = @scene.scene_log
       

@@ -76,6 +76,7 @@ load "lib/pose_handler.rb"
 load "lib/status/combat_hud_cmd.rb"
 load "lib/status/combat_summary_cmd.rb"
 load "lib/status/combat_log_cmd.rb"
+load "lib/status/combat_idle_cmd.rb"
 load "lib/vehicles/combat_disembark_cmd.rb"
 load "lib/vehicles/combat_vehicle_cmd.rb"
 load "lib/vehicles/vehicles_helper.rb"
@@ -188,6 +189,8 @@ module AresMUSH
            return CombatDisembarkCmd
          when "hero"
            return CombatHeroCmd
+         when "idle"
+           return CombatIdleCmd
          when "join"
            return CombatJoinCmd
          when "leave"

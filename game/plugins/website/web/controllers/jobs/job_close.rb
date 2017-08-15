@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/job/:id/close', :auth => :admin do |id|
+    get '/job/:id/close/?', :auth => :admin do |id|
       @job = Job[id]      
       Jobs.close_job(@user, @job, message = nil)
          

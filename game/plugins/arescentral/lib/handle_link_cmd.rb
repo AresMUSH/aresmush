@@ -5,6 +5,7 @@ module AresMUSH
       
       attr_accessor :handle_name, :link_code
 
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.handle_name = trim_arg(args.arg1)
@@ -12,10 +13,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.handle_name, self.link_code ],
-          help: 'handle'
-        }
+        [ self.handle_name, self.link_code ]
       end
       
       def check_guest

@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/admin/fs3_combat', :auth => :admin do
+    get '/admin/fs3_combat/?', :auth => :admin do
       
       @skills = {
         "treat_skill" => Global.read_config("fs3combat", "treat_skill"),

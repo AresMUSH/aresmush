@@ -5,7 +5,7 @@ module AresMUSH
       
       attr_accessor :old_password
       attr_accessor :new_password
-
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.old_password = args.arg1
@@ -13,10 +13,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.old_password, self.new_password ],
-          help: 'password'
-        }
+        [ self.old_password, self.new_password ]
       end
       
       def check_new_password

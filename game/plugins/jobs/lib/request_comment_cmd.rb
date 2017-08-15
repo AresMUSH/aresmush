@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.number, self.message ],
-          help: 'requests'
-        }
+        [ self.number, self.message ]
       end
       
       def check_number

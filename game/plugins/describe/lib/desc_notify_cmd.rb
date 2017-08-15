@@ -4,16 +4,13 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :option
-
+      
       def parse_args
         self.option = OnOffOption.new(cmd.args)
       end
       
       def required_args
-        {
-          args: [ self.option ],
-          help: 'look'
-        }
+        [ self.option ]
       end
       
       def check_status

@@ -10,10 +10,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.num ],
-          help: 'mail'
-        }
+        [ self.num ]
       end
        
       def handle

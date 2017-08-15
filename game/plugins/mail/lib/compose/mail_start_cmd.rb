@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.names, self.subject ],
-          help: 'mail composition'
-        }
+        [ self.names, self.subject ]
       end
       
       def handle

@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.note ],
-          help: 'roles manage'
-        }
+        [ self.note ]
       end
       
       def handle

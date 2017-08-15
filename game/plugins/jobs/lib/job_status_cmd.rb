@@ -4,7 +4,7 @@ module AresMUSH
       include SingleJobCmd
   
       attr_accessor :value
-  
+      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.number = trim_arg(args.arg1)
@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.number, self.value ],
-          help: 'jobs manage'
-        }
+        [ self.number, self.value ]
       end
 
       def check_status

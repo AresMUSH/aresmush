@@ -13,10 +13,7 @@ module AresMUSH
       end
        
       def required_args
-        {
-          args: [ self.name, self.option ],
-          help: 'roster admin'
-        }
+        [ self.name, self.option ]
       end
       
       def check_option

@@ -11,10 +11,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target ],
-          help: 'descs'
-        }
+        [ self.target ]
       end
       
       def handle

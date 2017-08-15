@@ -15,10 +15,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.share],
-          help: 'scenes logging'
-        }
+        [ self.share]
       end
       
       def handle

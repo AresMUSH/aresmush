@@ -1,4 +1,6 @@
 $:.unshift File.dirname(__FILE__)
+
+load "lib/ictime_cmd.rb"
 load "public/ictime_api.rb"
 
 module AresMUSH
@@ -27,6 +29,11 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd, enactor)
+      case cmd.root
+      when "ictime"
+        return IctimeCmd
+      end
+      
       nil
     end
 

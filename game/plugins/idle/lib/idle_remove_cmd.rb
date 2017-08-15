@@ -11,10 +11,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name ],
-          help: 'idle admin'
-        }
+        [ self.name ]
       end
       
       def check_can_manage

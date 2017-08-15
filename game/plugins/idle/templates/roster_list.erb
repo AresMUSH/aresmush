@@ -6,7 +6,7 @@
 <%= left( r.name, 20 ) -%>
 <%= center( r.demographic('gender'), 13 ) -%>
 <%= left( r.group("Position"), 20 ) -%>
-<%= r.roster_notes %>
+<%= left( r.group("Faction"), 20 ) %>
 <% end %>
 <%= paginator.page_footer %>
 <%= t('idle.star_means_contact_required')%>

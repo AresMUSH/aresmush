@@ -11,8 +11,17 @@ module AresMUSH
       end
       
       def section_topics(section)
-        Help.toc_topics(section)
-      end      
+        Help.toc_section_topic_data(section)
+      end            
+      
+      def web_portal_url
+        Game.web_portal_url
+      end
+      
+      def topic_url(name)
+        Help.topic_url(name)
+      end
+      
     end
   end
 end

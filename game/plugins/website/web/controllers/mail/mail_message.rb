@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     
-    get '/mail/:id', :auth => :approved do |id|
+    get '/mail/:id/?', :auth => :approved do |id|
       @mail = MailMessage[id]
       @mail.mark_read
       erb :"mail/message"

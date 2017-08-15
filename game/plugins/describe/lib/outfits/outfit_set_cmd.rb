@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.desc ],
-          help: 'outfit'
-        }
+        [ self.name, self.desc ]
       end
       
       def check_single_word_names

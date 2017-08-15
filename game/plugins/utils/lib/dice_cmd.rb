@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.num, self.sides ],
-          help: 'die'
-        }
+        [ self.num, self.sides ]
       end
       
       def check_too_many_dice

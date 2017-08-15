@@ -18,33 +18,33 @@ chargen:
         app:
             tutorial: 'app command.md'
         sheet:
-            help: 'fs3skills sheet'
+            help: 'sheets'
         demographics:
             help: demographics
         groups:
-            help: demographics groups
+            help: groups
         ranks:
             help: ranks
         background:
-            help: chargen bg
+            help: backgrounds
         abilities:
-            help: fs3skills abilities
+            help: 'fs3 skills'
         hooks:
-            help: fs3skills hooks
+            help: hooks
         desc:
-            help: describe
+            help: descriptions
         handles:
-            help: arescentral handles
+            help: handles
         alts:
             tutorial: 'alts.md'
         wiki:
-            help: wikidot
+            help: wiki
         profile:
             help: profile
         lastwill:
-            help: idle
+            help: 'idle out'
         review:
-            help: chargen app
+            help: apps
     shortcuts:
         "chargen" : "cg"
         "cg/back": "cg/prev"

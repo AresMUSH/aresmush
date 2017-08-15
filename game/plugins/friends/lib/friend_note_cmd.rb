@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.note ],
-          help: 'friends'
-        }
+        [ self.name, self.note ]
       end
       
       def handle

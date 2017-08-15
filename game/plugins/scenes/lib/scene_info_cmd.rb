@@ -18,10 +18,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.value ],
-          help: 'scenes info'
-        }
+        [ self.value ]
       end
       
       def handle

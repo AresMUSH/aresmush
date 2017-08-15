@@ -2,7 +2,7 @@ module AresMUSH
   module Chargen
     class ChargenStartCmd
       include CommandHandler
-
+      
       def handle
         enactor.update(chargen_stage: 0)
 

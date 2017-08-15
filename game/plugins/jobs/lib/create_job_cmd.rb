@@ -24,10 +24,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.title, self.description, self.category ],
-          help: 'jobs manage'
-        }
+        [ self.title, self.description, self.category ]
       end
       
       def check_can_access

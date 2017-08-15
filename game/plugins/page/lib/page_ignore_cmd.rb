@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.option ],
-          help: 'page'
-        }
+        [ self.name, self.option ]
       end
       
       def check_status

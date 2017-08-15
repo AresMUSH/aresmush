@@ -10,10 +10,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.filter ],
-          help: 'jobs view'
-        }
+        [ self.filter ]
       end
       
       def check_can_access

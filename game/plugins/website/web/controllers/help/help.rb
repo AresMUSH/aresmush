@@ -1,33 +1,18 @@
 module AresMUSH
   class WebApp
-    get '/help' do
+    get '/help/?' do
       @topics = {}
       
-      if (params[:list])
-        show_full = true
-      else
-        show_full = false
+      if params['root']
+        redirect "/help/#{params['root']} #{params['switch']}?search=#{params['switch']}"
       end
       
-      Help.toc.each do |toc|
-        if (show_full)
-          @topics[toc] = Help.toc_topics(toc)
-        else
-          index_topics = Help.toc_topics(toc).select { |k, v| v['topic'] == 'index' }
-          @topics[toc] = index_topics
-        end
+      Help.toc.keys.sort.each do |toc|
+        @topics[toc] = Help.toc_section_topic_data(toc)
       end
       
-      uncategorized =  Help.toc_topics(nil)
-      if (uncategorized.count > 0)
-        @topics["Uncategorized"] = uncategorized
-      end
-      
-      if (show_full)
-        erb :"help/help_full_index"
-      else
-        erb :"help/help_index"
-      end
+      erb :"help/help_index"
     end
+    
   end
 end

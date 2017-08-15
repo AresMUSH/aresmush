@@ -2,6 +2,8 @@
 toc: Miscellaneous
 summary: Create your own command shortcuts.
 ---
+# Creating Command Shortcuts
+
 You can create your own shortcuts for commands.  
 
 `shortcuts` - List your shortcuts.

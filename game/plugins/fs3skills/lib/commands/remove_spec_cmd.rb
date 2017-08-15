@@ -13,10 +13,7 @@ module AresMUSH
       end
 
       def required_args
-        {
-          args: [ self.name, self.specialty ],
-          help: 'abilities'
-        }
+        [ self.name, self.specialty ]
       end
       
       def handle

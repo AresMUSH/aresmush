@@ -1,11 +1,11 @@
 module AresMUSH
   class WebApp
-    get '/locations' do
+    get '/locations/?' do
       @areas = Room.all.group_by { |r| r.area }
       erb :"locations/locations_index"
     end
     
-    get '/location/:id' do |id|
+    get '/location/:id/?' do |id|
       @room = Room[id]
       if (!@room)
         flash[:error] = "Location not found."

@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/char/:id/edit', :auth => :approved do |id|
+    get '/char/:id/edit/?', :auth => :approved do |id|
       @char = Character[id]
       if (!@char)
         flash[:error] = "Character not found."
@@ -27,9 +27,7 @@ module AresMUSH
         flash[:error] = "You can only edit approved characters."
         reedirect "/char/#{id}"
       end
-            
-      puts params
-            
+                        
       demographics = {}
       profile = {}
       relationships = {}

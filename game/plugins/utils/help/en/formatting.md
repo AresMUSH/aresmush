@@ -1,6 +1,6 @@
 ---
 toc: Miscellaneous
-summary: Formatting and substition codes.
+summary: Using formatting and substition codes.
 aliases:
 - subs
 - formatting
@@ -28,7 +28,7 @@ If you did want to page someone one of the special codes, just put a \ in front 
     \%t - Five blank spaces (like a tab)
     \%lh, \%lf, \%ld, \%la - One of the border lines - header, footer, divider, alt-divider
 
-\%x or \%c are used for ansi color.  See [Ansi](/help/utils/ansi).
+\%x or \%c are used for ansi color.  See [Ansi](/help/ansi).
 
 ## Functions
 

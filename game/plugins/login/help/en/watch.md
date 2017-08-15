@@ -1,5 +1,5 @@
 ---
-toc: Login
+toc: Miscellaneous
 summary: Watching other characters connect.
 aliases:
 - last
@@ -10,7 +10,7 @@ You will always be notified when people log in to the room you're in.  However, 
 
 ## Connection Notifications
 
-The game can tell you when people have connected and disconnected by saying: "SoAndSo has connected."  You can turn these messages on or off, or have it only notify you when your friends come and go. See `help friends` for more info on managing your friends list.
+The game can tell you when people have connected and disconnected by saying: "SoAndSo has connected."  You can turn these messages on or off, or have it only notify you when your friends come and go. See [Friends](/help/friends) for more info on managing your friends list.
 
 `watch <all, none, friends>` - Whose connect messages do you see.
 

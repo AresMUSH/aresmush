@@ -13,10 +13,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.number, self.names, self.message ],
-          help: 'jobs manage'
-        }
+        [ self.number, self.names, self.message ]
       end
       
       def handle

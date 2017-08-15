@@ -12,10 +12,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.name, self.category ],
-          help: 'relationship'
-        }
+        [ self.name, self.category ]
       end
       
       def handle

@@ -10,10 +10,7 @@ module AresMUSH
       end
       
       def required_args
-        {
-          args: [ self.target ],
-          help: 'boot'
-        }
+        [ self.target ]
       end
 
       def handle

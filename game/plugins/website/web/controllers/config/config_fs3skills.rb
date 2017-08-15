@@ -1,6 +1,6 @@
 module AresMUSH
   class WebApp
-    get '/admin/fs3_skills', :auth => :admin do
+    get '/admin/fs3_skills/?', :auth => :admin do
       
       @action_skills = Global.read_config("fs3skills", "action_skills").to_a
       count = @action_skills.count

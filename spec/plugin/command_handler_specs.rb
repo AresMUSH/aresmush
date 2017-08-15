@@ -41,10 +41,7 @@ module AresMUSH
         
         attr_accessor :foo, :bar
         def required_args
-          {
-            args: [ self.foo, self.bar ],
-            help: 'test'
-          }
+          [ self.foo, self.bar ]
         end
         
         def handle
@@ -83,8 +80,10 @@ module AresMUSH
         @char.stub(:room) { @room }
         @cmd.stub(:raw) { "raw" }
         @cmd.stub(:switch) { nil }
+        @cmd.stub(:root) { "root" }
         @char.stub(:name) { "Bob" }
         @client.stub(:logged_in?) { true }
+        Game.stub(:web_portal_url) { "url" }
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
