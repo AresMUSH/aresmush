@@ -3,11 +3,7 @@ module AresMUSH
     class DetailDeleteCmd
       include CommandHandler
            
-      attr_accessor :target, :name     
-      
-      def help
-        "`detail/delete <name>/<detail title>`"
-      end
+      attr_accessor :target, :name
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_slash_arg2)

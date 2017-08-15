@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name
-
-      def help
-        "`friend/remove <name>` - Removes a friend."
-      end
       
       def parse_args
         self.name = cmd.args

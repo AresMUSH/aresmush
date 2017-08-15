@@ -14,11 +14,11 @@ Every character, room and exit has a description that tells you what your charac
 
 You can set a description on yourself and on any room that you own.  
 
-[[help describe]]
+`describe <name>=<description>` - Describes something
 
 If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab the existing description into your client's input buffer.
 
-[[help desc/edit]]
+`describe/edit <name>` - Grabs the existing description into your input buffer.
 
 ## Describe Permissions
 
@@ -28,7 +28,8 @@ If you have the `desc_places` permission (typically given to builder characters)
 
 Characters have a short description that shows up in things like the glance command and the character list in room descriptions.  You set this separately from your main desc.
 
-[[help shortdesc]]
+`shortdesc <name>=<description>` - Sets your short desc.
+`shortdesc/edit <name>` - Grabs an existing short desc into your input buffer.
 
 ## Outfits and Details
 

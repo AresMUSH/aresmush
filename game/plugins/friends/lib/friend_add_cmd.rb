@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name
-
-      def help
-        "`friend/add <name>` - Adds a friend."
-      end
       
       def parse_args
         self.name = titlecase_arg(cmd.args)

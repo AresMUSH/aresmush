@@ -2,10 +2,6 @@ module AresMUSH
   module Jobs
     class JobsBackupCmd
       include CommandHandler
-
-      def help
-        "`jobs/backup` - Prints out closed jobs, which you can save to a log file."
-      end
       
       def check_too_many_jobs
         closed = Jobs.closed_jobs

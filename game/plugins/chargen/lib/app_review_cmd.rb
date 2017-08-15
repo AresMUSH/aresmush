@@ -5,11 +5,6 @@ module AresMUSH
       
       attr_accessor :name, :message
       
-      def help
-        "`app <name>` - Reviews someone's application, showing any chargen errors or warnings.\n" +
-        "`app/review <name>` - Quick command to review app, background, profile and sheet all at once."
-      end
-      
       def parse_args
         self.name = trim_arg(cmd.args)
       end

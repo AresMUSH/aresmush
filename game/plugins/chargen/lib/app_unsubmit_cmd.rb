@@ -3,10 +3,6 @@ module AresMUSH
     class AppUnsubmitCmd
       include CommandHandler
       
-      def help
-        "`app/unsubmit` - Un-submit your application."
-      end
-      
       def check_approval
         return t('chargen.you_are_already_approved') if enactor.is_approved?
         return nil

@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :name
-
-      def help
-        "`actors/search <name>` - Search the actors list."
-      end
       
       def parse_args
         self.name = trim_arg(cmd.args)

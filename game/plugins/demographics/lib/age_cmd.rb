@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :age
-
-      def help
-        "`birthdate <mm/dd/yyyy>` or `age <years>`"
-      end
       
       def required_args
         [ self.age ]

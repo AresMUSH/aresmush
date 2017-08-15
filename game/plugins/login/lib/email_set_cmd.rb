@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :email
-
-      def help
-        "`email/set <email>` - Changes the email registered with your account."
-      end
       
       def parse_args
         self.email = trim_arg(cmd.args)

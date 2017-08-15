@@ -5,10 +5,6 @@ module AresMUSH
 
       attr_accessor :title, :description, :category
       
-      def help
-        "`job/create <category>=<title>/<description>` - Creates a new job."
-      end
-      
       def parse_args
         if (cmd.args !~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)

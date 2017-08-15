@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :num
-
-      def help
-        "`event/delete <#>`"
-      end
       
       def parse_args
         self.num = integer_arg(cmd.args)

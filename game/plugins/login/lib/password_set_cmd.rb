@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :old_password
       attr_accessor :new_password
-
-      def help
-        "`password <oldpassword>=<newpassword>` - Changes your password."
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)

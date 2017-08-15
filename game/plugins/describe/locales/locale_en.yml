@@ -42,7 +42,6 @@ en:
        foyer_room_free: "%xgOpen%xn"
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
-       shortdesc_only_chars: "Short descs are only for characters."
        
        notify_set: "You turn the notifications when someone looks at you %{status}."
        

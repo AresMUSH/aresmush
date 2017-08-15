@@ -68,7 +68,7 @@ module AresMUSH
           return EmailViewCmd
         end
       when "keepalive"
-        if (cmd.args || cmd.switch_is?("set"))
+        if (cmd.args)
           return KeepaliveSetCmd
         else
           return KeepaliveCmd

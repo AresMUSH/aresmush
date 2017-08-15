@@ -30,10 +30,6 @@ module AresMUSH
     
     class ChangeTitleCmd
       include ChangeJobCmd
-
-      def help
-        "`job/title <#>=<title>` - Changes a job's title."
-      end
       
       def update_value(job)
         job.update(title: self.value)
@@ -42,10 +38,6 @@ module AresMUSH
     
     class ChangeCategoryCmd
       include ChangeJobCmd
-      
-      def help
-        "`job/cat <#>=<category>` - Changes a job's category."
-      end
       
       def check_category
         return nil if !self.value

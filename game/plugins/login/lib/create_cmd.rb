@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :charname, :password
-
-      def help
-        "`create <name> <password>` - Creates a new character."
-      end
       
       def parse_args
         # After agreeing to TOS, this is already cracked.

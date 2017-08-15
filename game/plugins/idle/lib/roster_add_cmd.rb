@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :name, :contact
       
-      def help
-        "`roster/add <name>[=<contact>]` - Adds someone to the roster.  Contact is optional."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = titlecase_arg(args.arg1)

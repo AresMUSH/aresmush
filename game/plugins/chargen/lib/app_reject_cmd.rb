@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :name, :message
       
-      def help
-        "`app/reject <name>=<message>` - Unlocks them so they can make changes."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = trim_arg(args.arg1)

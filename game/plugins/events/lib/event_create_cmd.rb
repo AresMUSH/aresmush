@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :title, :date_time_desc
-
-      def help
-        "`event/create <title>=<date and time>/<description>`"
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)

@@ -3,10 +3,6 @@ module AresMUSH
     class TourCmd
       include CommandHandler
 
-      def tour
-        "`tour` - Log on with a guest character."
-      end
-      
       def allow_without_login
         true
       end

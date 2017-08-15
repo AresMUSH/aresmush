@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :target
       
-      def help
-        "`boot <name>` - Forcibly disconnects a player."
-      end
-      
       def parse_args
         self.target = trim_arg(cmd.args)
       end

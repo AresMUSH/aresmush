@@ -5,11 +5,6 @@ module AresMUSH
            
       attr_accessor :name
       
-      def help
-        "`channel/mute <channel>` - Mutes channel messages temporarily.\n" + 
-        "`channel/unmute <channel>` - Unmutes channel messages."
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

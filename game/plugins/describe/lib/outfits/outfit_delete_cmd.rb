@@ -5,10 +5,6 @@ module AresMUSH
            
       attr_accessor :name
       
-      def help
-        "`outfit/delete <name>` - Deletes an outfit."
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

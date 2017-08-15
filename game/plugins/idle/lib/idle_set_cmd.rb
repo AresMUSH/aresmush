@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name, :status
-
-      def help
-        "`idle/set <name>=<Dead, Gone, None>` - Sets someone's status without running through the idle queue or making a post."
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)

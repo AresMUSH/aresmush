@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
            
       attr_accessor :name, :title
-
-      def help
-        "`channel/title <channel>=<title>` - Sets your channel title."
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)

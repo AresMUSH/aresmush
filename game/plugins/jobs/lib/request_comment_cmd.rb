@@ -5,10 +5,6 @@ module AresMUSH
 
       attr_accessor :number, :message
       
-      def help
-        "`request/respond <#>=<comment>` - Adds a comment to a request."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.number = trim_arg(args.arg1)

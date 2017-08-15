@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :name, :note
       
-      def help
-        "`friend/note <name>=<note>` - Adds a note to your friend."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = args.arg1

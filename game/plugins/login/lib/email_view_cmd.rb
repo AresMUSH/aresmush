@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :name
-
-      def help
-        "`email` - Views your registered email"
-      end
       
       def parse_args
         self.name = !cmd.args ? enactor_name : trim_arg(cmd.args)

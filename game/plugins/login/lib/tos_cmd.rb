@@ -2,10 +2,6 @@ module AresMUSH
   module Login
     class TosCmd
       include CommandHandler
-        
-      def help
-        "`tos/agree` - Acknowledge the terms of service."
-      end
       
       def allow_without_login
         true

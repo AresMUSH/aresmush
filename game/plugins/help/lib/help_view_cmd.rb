@@ -6,11 +6,6 @@ module AresMUSH
 
       attr_accessor :topic
       
-      def help
-        "`help` - List help files.\n" +
-        "`help <command>` - Shows help for a command."
-      end
-      
       def parse_args
         self.topic = cmd.args
       end

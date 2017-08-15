@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :name
       
-      def help
-        "`idle/remove <name>` - Removes someone from the idle queue"
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :name, :value, :group_name
-
-      def help
-        "`group/set <group type>=<option>` - Sets your group option for a group type."
-      end
       
       def parse_args
         if (cmd.args =~ /\//)

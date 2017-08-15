@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :target, :background
- 
-      def help
-        "`bg/set <background>` - Sets your background."
-      end
       
       def parse_args
         # Starts with a character name and equals - since names can't have

@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :target
       
-      def help
-        "`describe/edit <name>` - Grabs the existing description into your input buffer"
-      end
-      
       def parse_args
         self.target = trim_arg(cmd.args)
       end

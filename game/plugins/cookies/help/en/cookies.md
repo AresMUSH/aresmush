@@ -12,6 +12,7 @@ Cookies are a fun way to appreciate your fellow players for playing with you.  W
 
 The only tangible reward for cookies is that you get a fraction of a luck point per cookie received.  You also may get recognized on the weekly "top cookie earner" bbpost, if your game has it set up.
 
-[[help cookie]]
-[[help cookie/here]]
-[[help cookies/total]]
+`cookie <list of names>` - Give a cookie.
+`cookie/here` - Give cookies to everyone in the room (handy for big scenes)
+`cookies` - Sees cookies you have given out this week.
+`cookies/total` - Shows how many cookies you've ever gotten.

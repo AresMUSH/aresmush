@@ -5,11 +5,6 @@ module AresMUSH
       
       attr_accessor :message
       
-      def help
-        "`job/close <#>` - Closes a job\n" + 
-        "`job/close <#>=<message>` - Closes a job with a comment to the original submitter."
-      end
-
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.number = trim_arg(args.arg1)

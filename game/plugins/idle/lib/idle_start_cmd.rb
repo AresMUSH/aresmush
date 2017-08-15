@@ -4,10 +4,6 @@ module AresMUSH
     class IdleStartCmd
       include CommandHandler
       
-      def help
-        "`idle/start` - Builds up a list of idle players."
-      end
-      
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)
         return t('dispatcher.not_allowed')

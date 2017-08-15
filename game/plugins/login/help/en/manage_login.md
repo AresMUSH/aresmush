@@ -14,7 +14,7 @@ Admins and people with the appropriate permissions can manage another character'
 
 You can reset someone's password if they've forgotten it.  It will choose a random new password and tell it to you.
 
-[[help password/reset]]
+`password/reset <name>`
 
 ## Changing Names and Aliases
 
@@ -33,4 +33,4 @@ You can also view someone's email.
 
 You can change the terms of service in the configuration section of the game's web portal.  When you make substantial changes, you may want to require everyone to re-acknowledge the TOS.  You can reset all prior acknowledgements.
 
-[[help tos/reset]]
+`tos/reset` - Resets the terms of service acknowledgements.

@@ -13,7 +13,7 @@ Channels are public forums for out-of-character communication.  Each game will h
 
 You can see available channels and their descriptions using the `channels` command.  This also tells you at a glance what channels you've joined and what commands are used to talk on them, which we'll discuss in a moment.
 
-[[help channels]]
+`channels` - Lists channels and their descriptions
 
     +==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+
     Channel                       Description             Announce  Restricted To
@@ -34,8 +34,8 @@ Some channels are restricted.  You can only use them if you have one of the role
 
 You will only see messages on channels you join, and you may leave those channels at any time. 
 
-[[help channel/join]]
-[[help channel/leave]]
+`channel/join <channel>[=<alias>]` - Joins a channel.
+`channel/leave <channel>` - Leaves a channel.
 
 > **Tip:** AresMUSH also supports the MUX-style channel commands, so you can use the keywords "on", "off", "who", "last", "mute", and "unmute" with the channel alias.  For example:  `pub who`.
 
@@ -49,7 +49,7 @@ When someone says something on a channel, you'll see the message prefixed by the
 
 You can talk on a channel using the full channel name followed by the message.  For example: `chat hello`
 
-[[help channel/talk]]
+`<channel name> <message>` - Talks on a channel.
 
 ## Channel Aliases
 
@@ -57,11 +57,12 @@ It's convenient to have shorter commands to talk on channels so you don't have t
 
 The system will set you up with some channel aliases by default, which you can see on the `channels` command list.  You can change your aliases at any time, and can even set multiple aliases for a single channel.
 
-[[help channel/alias]]
+`<channel alias> <message>` - Talks on a channel using the alias.
+`channel/alias <channel>=<alias>` - Changes the alias.  You can use multiple aliases, separated by spaces.
 
 You can also set the alias when you first join a channel.
 
-[[help channel/join]]
+`channel/join <channel>[=<alias>]`
 
 > **Tip:** Take care to avoid channel aliases that overlap with other commands, like 'n' for north or 'p' for page.  Remember that AresMUSH ignores prefixes like '+' on commands.
 
@@ -71,13 +72,14 @@ You can configure an optional title to appear in front of your name when you tal
 
     <Chat> Captain Faraday says, "Hello."
 
-[[help channel/title]]
+`channel/title <channel>=<title>`.
 
 ## Mute
 
 Channels sometimes get spammy, or distract you when you're RPing.  You can temporarily mute a channel without actually leaving it.  Mute is cleared when you disconnect.  You can use 'all' for the channel name to mute/unmute all channels at once.
 
-[[help channel/mute]]
+`channel/mute <channel>` - Silences a channel temporarily.
+`channel/unmute <channel>` - Un-silences a channel.
 
 > Note:  'Mute' is the gagging feature on AresMUSH.  For the MUX version that mutes only connection messages, use the 'channel/announce' command.
 
@@ -85,16 +87,16 @@ Channels sometimes get spammy, or distract you when you're RPing.  You can tempo
 
 You can see who's on a channel, and whether they're currently listening or muted.
 
-[[help channel/who]]
+`channel/who <channel>` - Shows who's on the channel
 
 ## Connection Announcements
 
 By default, the game will show you who has connected and disconnected from a channel, so you can greet people and stop having a conversation with someone who is no longer there.  If you don't want to see those messages, you can turn them on or off for a particular channel.
 
-[[help channel/announce]]
+`channel/announce <channel>=<on/off>` - Turns connection messages on or off.
 
 ## Recall
 
 Channels save a history of the last twenty-five messages.  You can review them using the recall command.  Specifying the number of messages to review is optional.
 
-[[help channel/recall]]
+`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.

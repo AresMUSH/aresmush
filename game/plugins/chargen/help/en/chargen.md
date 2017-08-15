@@ -11,4 +11,6 @@ You can do chargen either on the [Web Portal](/help/web_portal) or in-game.  The
  
 You can access the chargen commands from anywhere on the game.  The chargen tutorial will prompt you step by step.
 
-[[help cg]]
+`cg/start` - Starts chargen.
+`cg/next` and `cg/prev` - Navigates the stages in chargen.
+`cg` - View the current chargen page again.

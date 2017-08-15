@@ -5,10 +5,6 @@ module AresMUSH
       
       attr_accessor :name
       
-      def help
-        "`app/approve <name>` - Approves a character."
-      end
-      
       def parse_args
         self.name = trim_arg(cmd.args)
       end

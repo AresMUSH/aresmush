@@ -6,18 +6,6 @@ module AresMUSH
       
       attr_accessor :name, :value, :property
 
-      def help
-        "`fullname <name>`\n" + 
-        "`gender <male/female/other>`\n" +
-        "`height <height>`\n" +
-        "`physique <build/body type - athletic, wiry, slim, pudgy, etc.>`\n" +
-        "`hair <hair color>`\n" +
-        "`eyes <eye color>`\n" +
-        "`skin <complexion>`\n" +
-        "`birthdate <mm/dd/yyyy>` or `age <years>`\n" +
-        "`callsign <name>` - Callsign for pilots.  Non-pilots may leave blank or enter a nickname."
-      end
-      
       def parse_args
         # Admin version
         if (cmd.args =~ /\//)

@@ -4,10 +4,6 @@ module AresMUSH
       include SingleJobCmd
   
       attr_accessor :value
-  
-      def help
-        "`job/status <#>=<status>` - Changes a job's status."
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)

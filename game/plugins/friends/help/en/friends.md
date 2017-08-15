@@ -6,10 +6,10 @@ summary: Interacting with your friends.
 
 The Friends system helps you to interact with people you have designated as your friends.
 
-[[help friends]]
-[[help friend/add]]
-[[help friend/remove]]
-[[help friend/note]]
+`friends` - Shows your friends list.
+`friend/add <name>` - Adds a friend.
+`friend/remove <name>` - Removes a friend.
+`friend/note <name>=<note>` - Adds a note to your friend.
 
 You can use the friends list to control whose connect/disconnect messages you see.  See [Watch](/help/watch).
 

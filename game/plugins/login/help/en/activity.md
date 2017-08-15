@@ -8,4 +8,4 @@ AresMUSH keeps track of how many people are logged in, and can display a summary
 
 Game activity is also reported to [AresCentral](http://arescentral.aresmush.com) and visible on the game summary there.
 
-[[help activity]]
+`activity` - Views a graph of game activity.

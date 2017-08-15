@@ -3,11 +3,6 @@ module AresMUSH
     class HelpListCmd
       include CommandHandler
       
-      def help
-        "`help` - List help files.\n" +
-        "`help <command>` - Shows help for a command."
-      end
-      
       def allow_without_login
         true
       end            

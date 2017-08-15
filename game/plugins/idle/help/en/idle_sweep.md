@@ -22,18 +22,20 @@ There are several idle actions available:
 
 > **Tip:** We recommend that you **not** destroy idled-out players once they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used could mess up the game wiki references.  Database space should not be an issue unless your game is ginormous. (If it becomes a problem, you can always purge people at that point.)
 
-[[help idle/start]]
-[[help idle/action]]
-[[help idle]]
-[[help idle/execute]]
-[[help idle/remove]]
+
+`idle/start` - Builds up a list of idle players.
+`idle` - Review everyone's actions.
+`idle/action <name>=<action>` - Decides what to do with someone.
+        Note: If someone isn't already on the list, this will add them.
+`idle/remove <name>` - Removes someone from the list.
+`idle/execute` - Takes care of the actions and posts a summary to the BBS.
 
 ## Setting Idle Status Directly
 
 Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/set` command.  Only 'Dead' and 'Gone' are valid options here.  If you just want to mark someone as a NPC, use the [NPC](/help/npc) command.  To add or remove someone from the roster, use the [Roster](/help/manage_roster) commands.
 
-[[help idle/set]]
+`idle/set <name>=<status>` - Sets someone's status without running through the idle queue 
 
 ## Rostered Characters
 
-For help managing the roster, see [Managing the Roster](/help/roster_admin)
+For help managing the roster, see [Managing the Roster](/help/manage_roster)

@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
             
       attr_accessor :name, :target, :desc
-
-      def help
-        "`detail/set <name>=<detail title>/<description>`"
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)

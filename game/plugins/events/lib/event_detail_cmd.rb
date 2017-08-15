@@ -5,11 +5,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :num
-      
-      def help
-        "`events`  - Lists upcoming events\n" +
-        "`event <#>` - Views an event"
-      end
 
       def parse_args
         self.num = cmd.args ? cmd.args.to_i : nil

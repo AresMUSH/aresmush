@@ -5,11 +5,6 @@ module AresMUSH
 
       attr_accessor :message, :admin_only
       
-      def help
-        "`job/discuss <#>=<comment>` - Comments on a job (only admins may view)\n" +
-        "`job/respond <#>=<message>` - Comments on a job (admins and submitter may view)"
-      end
-      
       def parse_args
         # Has to be done first!  Crack will reset command aliases.
         self.admin_only = cmd.switch_is?("discuss")

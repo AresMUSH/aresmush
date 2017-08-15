@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
            
       attr_accessor :name, :num_messages
-
-      def help
-        "`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel."
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)

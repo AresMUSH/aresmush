@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :option
-
-      def help
-        "`desc/notify <on or off>` - Turns the notification when someone looks at you on or off."
-      end
       
       def parse_args
         self.option = OnOffOption.new(cmd.args)

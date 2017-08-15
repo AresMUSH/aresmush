@@ -5,11 +5,6 @@ module AresMUSH
       
       attr_accessor :assignee
       
-      def help
-        "`job/handle <#>` - Assign a job to yourself.\n" + 
-        "`job/assign <#>=<player>` - Assign a job to someone else."
-      end
-      
       def parse_args
         if (cmd.args =~ /\=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)

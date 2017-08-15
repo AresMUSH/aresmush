@@ -3,10 +3,6 @@ module AresMUSH
   module Idle
     class IdleExecuteCmd
       include CommandHandler
-
-      def help
-        "`idle/execute` - Takes care of the actions and posts a summary to the BBS."
-      end
       
       def check_can_manage
         return nil if Idle.can_idle_sweep?(enactor)

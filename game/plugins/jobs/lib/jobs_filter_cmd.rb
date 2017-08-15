@@ -5,11 +5,6 @@ module AresMUSH
       
       attr_accessor :filter
       
-      def help
-        "`jobs/filer <flter>` - Filters the jobs list.\n" + 
-        "`jobs/all`, `jobs/mine`, `jobs/active` - Shortcuts for the common filters."
-      end
-      
       def parse_args
         self.filter = cmd.args ? trim_arg(cmd.args.upcase) : nil
       end

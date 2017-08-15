@@ -5,11 +5,6 @@ module AresMUSH
            
       attr_accessor :name
       
-      def help
-        "`outfits` - Lists outfits\n" + 
-        "`outfit <name>` - Views an outfit."
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

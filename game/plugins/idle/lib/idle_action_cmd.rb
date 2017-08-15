@@ -6,11 +6,6 @@ module AresMUSH
       
       attr_accessor :name, :action
 
-      def help
-        "`idle/action <name>=<action>` - Decides what to do with someone.\n" +
-        "Note: If someone isn't already on the list, this will add them."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = titlecase_arg(args.arg1)

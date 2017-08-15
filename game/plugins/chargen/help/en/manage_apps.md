@@ -19,14 +19,16 @@ There's a single approval job throughout the process, making it easier to keep t
 
 Application managers can quickly review the character's background, sheet, profile and description.
 
-[[help app/review]]
+`app <name>` - Reviews someone's application, showing any chargen errors or warnings.
+`app/review <name>` - Quick command to review app, background, profile and sheet all at once.
 
 ## Approving and Rejecting a Character
 
 Once you've reviewed a character, you can approve or reject their application.
 
-[[help app/approve]]
-[[help app/reject]]
+`app/approve <name>` - Approves a character.
+`app/reject <name>=<message>` - Rejects a character and unlocks them so they can make changes.
+
 
 ## Editing Backgrounds
 
@@ -40,5 +42,5 @@ Application managers can view and edit other character backgrounds, in case you 
 
 If you ever make a mistake and accidentally approve someone, you can unapprove them.
 
-[[help app/unapprove]]
+`app/unapprove <name>` - Unapproves someone.
 

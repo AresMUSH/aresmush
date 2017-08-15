@@ -3,10 +3,6 @@ module AresMUSH
     class DeleteJobCmd
       include SingleJobCmd
       
-      def help
-        "`job/delete <#>` - Deletes a particular job."
-      end
-      
       def parse_args
         self.number = trim_arg(cmd.args)
       end

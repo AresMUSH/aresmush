@@ -5,10 +5,6 @@ module AresMUSH
            
       attr_accessor :name, :alias
 
-      def help
-        "`channel/alias <channel>=<alias>` - Changes the alias.  You can use multiple aliases, separated by spaces."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = titlecase_arg(args.arg1)

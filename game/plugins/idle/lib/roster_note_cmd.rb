@@ -6,10 +6,6 @@ module AresMUSH
       
       attr_accessor :name, :notes
       
-      def help
-        "`roster/notes <name>=<notes>` - Adds roster notes."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = titlecase_arg(args.arg1)

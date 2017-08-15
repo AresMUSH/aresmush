@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :name, :actor
-
-      def help
-        "`actor/set <name>` - Set your actor.  Leave blank to clear it."
-      end
       
       def parse_args
         # Admin version

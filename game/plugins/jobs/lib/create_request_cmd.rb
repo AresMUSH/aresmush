@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
 
       attr_accessor :title, :description
-
-      def help
-        "`request <title>=<description>` - Submits a request"
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)

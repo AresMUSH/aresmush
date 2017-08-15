@@ -5,10 +5,6 @@ module AresMUSH
 
       attr_accessor :reply_num
       
-      def help
-        "`job/deletereply <#>=<reply#>` - Deletes a reply."
-      end
-      
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.number = trim_arg(args.arg1)

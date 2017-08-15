@@ -5,10 +5,6 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :target, :description
-
-      def help
-        "`describe <name>=<description>` - Describes something."
-      end
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
@@ -28,7 +24,9 @@ module AresMUSH
             return
           end
           
-          Describe.create_or_update_desc(model, self.description, :current)          
+          type = cmd.root_is?("shortdesc") ? :short : :current
+          Describe.create_or_update_desc(model, self.description, type)
+          
           client.emit_success(t('describe.desc_set', :name => model.name))
         end
       end

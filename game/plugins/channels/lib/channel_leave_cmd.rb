@@ -5,10 +5,6 @@ module AresMUSH
            
       attr_accessor :name
       
-      def help
-        "`channel/leave <channel>` - Leaves a channel."
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

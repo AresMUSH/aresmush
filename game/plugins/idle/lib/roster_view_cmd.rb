@@ -6,11 +6,6 @@ module AresMUSH
       
       attr_accessor :name
 
-      def help
-        "`roster` - Views a list of rostered characters.\n" + 
-        "`roster <name>` - Views details about a character."
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

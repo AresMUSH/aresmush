@@ -12,10 +12,11 @@ You will always be notified when people log in to the room you're in.  However, 
 
 The game can tell you when people have connected and disconnected by saying: "SoAndSo has connected."  You can turn these messages on or off, or have it only notify you when your friends come and go. See [Friends](/help/friends) for more info on managing your friends list.
 
-[[help watch]]
+`watch <all, none, friends>` - Whose connect messages do you see.
 
 ## Last Online
 
 You can use the `last` command to see when someone was last online.
 
-[[help last]]
+`last <name>` - View someone's last online time.
+

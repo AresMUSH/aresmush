@@ -5,14 +5,6 @@ module AresMUSH
       
       attr_accessor :name
      
-      def help
-        "`census` - Lists all characters.\n" +
-        "`census gender` - Counts characters by gender.\n" +
-        "`census skills <type>` - Shows a summary of skills.  Type can be Action, Background or Language.\n" +
-        "`census ranks` - Counts characters by rank.\n" +
-        "`census <group>` - Counts characters by group."
-      end
-      
       def parse_args
         self.name = titlecase_arg(cmd.args)
       end

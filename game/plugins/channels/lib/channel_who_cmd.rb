@@ -4,10 +4,6 @@ module AresMUSH
       include CommandHandler
            
       attr_accessor :name
-
-      def help
-        "`channel/who <channel>` - Shows who's on the channel"
-      end
       
       def parse_args
         self.name = titlecase_arg(cmd.args)
