@@ -1,14 +1,12 @@
-    <div class="col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12 col-xs-12">
             <a href="<%= profile_image_url(@char) %>">
                 <img src="<%= profile_image_url(@char) %> " class="profile-image"/>
             </a>
     </div>
 
-    <div class="col-md-1 col-sm-12">
-    </div>
-    
-    <div class="col-md-7 col-sm-12 profile-box">        
+    <div class="col-md-8 col-sm-12 col-xs-12">        
 
+        <div class="profile-box">
         <div class="profile-title">
                     <%= AresMUSH::Ranks.military_name(@char) %>
         </div>
@@ -165,5 +163,6 @@
             </div>
         </div>
 
+        </div>
         
     </div>

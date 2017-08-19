@@ -40,7 +40,9 @@
     </div>
     
 
-  <div class="pull-right">
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
   <% if can_manage_char?(@char) %>
 
       <a href="/char/<%= @char.id %>/edit" class="btn btn-primary">Edit</a>
@@ -48,4 +50,5 @@
   <% end %>
       <a href="/char/<%= @char.id %>/source" class="btn btn-default">View Source</a>
   </div>
-  
+  </div>
+</div>

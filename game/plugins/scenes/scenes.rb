@@ -60,7 +60,7 @@ module AresMUSH
           return ScenesCmd
         when nil
           if (cmd.args)
-            return LogCmd
+            return SceneLogCmd
           else
             return ScenesCmd
           end

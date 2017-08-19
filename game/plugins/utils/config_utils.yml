@@ -6,3 +6,4 @@ utils:
         "shortcut/remove": "shortcut/delete"
         "note/remove" : "note/delete"
         "note/update" : "note/add"
+        "die" : "dice"

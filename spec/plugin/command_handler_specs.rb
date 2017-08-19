@@ -82,8 +82,8 @@ module AresMUSH
         @cmd.stub(:switch) { nil }
         @cmd.stub(:root) { "root" }
         @char.stub(:name) { "Bob" }
+        @cmd.stub(:root_plus_switch) { "root/switch" }
         @client.stub(:logged_in?) { true }
-        Game.stub(:web_portal_url) { "url" }
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       

@@ -59,7 +59,7 @@ module AresMUSH
         required_args.each do |arg|
           
           if "#{arg}".strip.length == 0            
-            return t('dispatcher.invalid_syntax', :url => "#{Game.web_portal_url}/help/#{cmd.root}?search=#{cmd.switch}") 
+            return t('dispatcher.invalid_syntax', :cmd => @cmd.root_plus_switch) 
           end
         end
       end

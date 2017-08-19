@@ -75,9 +75,14 @@ a:focus{
     text-decoration: none;
 }
 
+.user-bar { 
+    padding-right: 10px;
+}
+
 .user-bar a {
     color: $primary-words-color;
 }
+
 
 .header-wrap nav
 {
@@ -93,7 +98,6 @@ a:focus{
 .navbar-inverse .navbar-nav>li>a:hover {
     color: $secondary-color;
 }
-
 
 /* -------------------------
 GENERAL HTML ELEMENTS
@@ -697,10 +701,14 @@ ul.char-ability-list {
 
 .profile-image {
     width: 200px;
+    margin: auto;
+    display: block;
 }
 
 .relationship-image {
     width: 100px;
+    margin: auto;
+    display: block;
 }
 
 .relationship-row {

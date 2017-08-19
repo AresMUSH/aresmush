@@ -21,6 +21,7 @@ en:
     dice:
         too_many_dice: "You can't roll that many dice."
         no_zero_dice: "You can't roll zero dice."
+        rolls_dice: "%{name} rolls %{dice}: %{results}."
     shortcuts:
         shortcut_deleted: "Shortcut deleted."
         shortcut_added: "Shortcut added."

@@ -57,14 +57,15 @@
        <div class="title-wrap">
        
                <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-6 col-sm-4 col-xs-4">
                <div class="site-title"><a href="/"><%= game_name %></a></div>
                <div class="site-subtitle"><%= game_address %></div>
            </div>
-           <div class="col-md-6 text-right user-bar">
-           <% if @user %>
-           <p>Welcome, <%= @user.name %>.</p>
-           <p><a href="/mail">Mail 
+           <div class="col-md-6 col-sm-8 col-xs-8">
+               <div class="text-right user-bar">
+                   <% if @user %>
+                   <p>Welcome, <%= @user.name %>.</p>
+                   <p><a href="/mail">Mail 
                
                <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
            
@@ -79,6 +80,7 @@
            </p>
                
            <% end %>
+               </div>
            </div>
        </div>
        
