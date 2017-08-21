@@ -7,12 +7,12 @@
     
           <div class="profile-gallery">
               <% if c.icon %>
-               <a href="/char/<%= c.id %>">
+               <a href="<%= char_page_url(c) %>">
                 <img class="log-icon" src="<%= c.icon %>" 
                    title="<%= c.name %>" />
                </a>
                <% else %>
-               <a href="/char/<%= c.id %>"><%= c.name %></a>
+               <a href="<%= char_page_url(c) %>"><%= c.name %></a>
                <% end %>
           </div>
           <% end %>

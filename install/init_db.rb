@@ -158,6 +158,12 @@ module AresMUSH
       channel.roles.add admin_role
       channel.save
   
+  
+      puts "Creating wiki."
+      
+      home = WikiPage.create(name: "home")
+      WikiPageVersion.create(page: home, text: "Wiki home page")
+        
       puts "Install complete."
     end
   end

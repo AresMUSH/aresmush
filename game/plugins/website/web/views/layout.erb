@@ -70,7 +70,7 @@
                <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
            
            </a> 
-           | <a href="/char/<%= @user.id %>">Profile</a>
+           | <a href="<%= char_page_url(@user) %>">Profile</a>
            | <a href="/logout">Logout</a> </p>
            <% else %>
            <p><a href="/login">Login</a> 

@@ -8,6 +8,17 @@
     <%= erb :"chars/demographics" %>
 </div>
 
+<% if @idle_message %>
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body idle-message">
+                <%= @idle_message %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
 
 <div class="profile-tab">
         <%= erb :"chars/profile" %></p>
@@ -45,10 +56,10 @@
         <div class="pull-right">
   <% if can_manage_char?(@char) %>
 
-      <a href="/char/<%= @char.id %>/edit" class="btn btn-primary">Edit</a>
+      <a href="<%= char_page_url(@char) %>/edit" class="btn btn-primary">Edit</a>
 
   <% end %>
-      <a href="/char/<%= @char.id %>/source" class="btn btn-default">View Source</a>
+      <a href="<%= char_page_url(@char) %>/source" class="btn btn-default">View Source</a>
   </div>
   </div>
 </div>

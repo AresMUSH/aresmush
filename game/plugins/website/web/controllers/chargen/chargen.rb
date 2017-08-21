@@ -5,12 +5,12 @@ module AresMUSH
       
       if (@user.is_approved?)
         flash[:error] = "You are already approved."
-        redirect "/char/#{@user.id}"
+        redirect char_page_url(@user)
       end
       
       if (Chargen.check_chargen_locked(@user))
         flash[:error] = "Unsubmit your app (in-game) before making changes."
-        redirect "/char/#{@user.id}"
+        redirect char_page_url(@user)
       end
       
       @factions = Demographics.get_group("Faction")

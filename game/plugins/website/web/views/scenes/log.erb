@@ -27,7 +27,7 @@
     
     <div class="log-participants-box">
     <% @scene.participants.to_a.sort_by { |c| c.name }.each do |c| %>
-    <a href="/char/<%= c.id %>">
+    <a href="<%= char_page_url(c) %>">
         <% if c.icon %>
          <img class="log-icon" src="<%= c.icon %>" title="<%= c.name %>" />
         <% else %>

@@ -717,6 +717,12 @@ ul.char-ability-list {
     border: 1px solid $border-color;
 }
 
+.idle-message {
+    color: white;
+    background-color: $secondary-color;
+    text-align: center;
+}
+
 .tab-cover {
     font-size: 2em;
     font-variant: small-caps;

@@ -1,7 +1,7 @@
 module AresMUSH
   class WebApp
     get '/char/:id/edit/?', :auth => :approved do |id|
-      @char = Character[id]
+      @char = Character.find_one_by_name(id)
       if (!@char)
         flash[:error] = "Character not found."
         redirect '/chars'
@@ -11,7 +11,7 @@ module AresMUSH
     end
     
     post '/char/:id/edit', :auth => :approved do |id|
-      @char = Character[id]
+      @char = Character.find_one_by_name(id)
       
       if (!@char)
         flash[:error] = "Character not found."
@@ -25,7 +25,7 @@ module AresMUSH
       
       if (!@char.is_approved?)
         flash[:error] = "You can only edit approved characters."
-        reedirect "/char/#{id}"
+        reedirect char_page_url(@char)
       end
                         
       demographics = {}
@@ -58,7 +58,7 @@ module AresMUSH
       @char.update(profile_gallery: params[:gallery])
       
       flash[:info] = "Character updated!"
-      redirect "/char/#{id}"
+      redirect char_page_url(@char)
     end
   end
 end

@@ -11,10 +11,32 @@ module AresMUSH
       end
       
       def preprocess(text)
+      
+        text = text.gsub(/\[\[tabnavlist\]\]/i, '<ul class="nav nav-tabs">')
+        text = text.gsub(/\[\[\/tabnavlist\]\]/i, '</ul>')
+        
+        text = text.gsub(/\[\[tabnav ([^\]]*)\]\]/i) do |input|
+          name = Regexp.last_match[1]
+          id = (name || "").gsub(' ', '-').downcase
+          "<li><a data-toggle=\"tab\" href=\"##{id}\">#{name}</a></li>" 
+        end
+                
         @pre_tag_blocks.each do |tag, block|
           text = text.gsub(/\[\[#{tag} ([^\]]*)\]\]/i) { block.call(Regexp.last_match[1]) }
         end
         text
+      end
+      
+      def wiki_url(text)
+        if (text =~ /\|/)
+          url = text.before('|')
+          link = text.after('|')
+        else
+          url = text
+          link = text
+        end
+        
+        "<a href=\"/wiki/#{url}\">#{link}</a>"
       end
       
       def postprocess(text)
@@ -24,7 +46,18 @@ module AresMUSH
         text = text.gsub(/\[\[span([^\]]*)\]\]/i, '<span \1>')
         text = text.gsub(/\[\[\/div\]\]/i, "</div>")
         text = text.gsub(/\[\[\/span\]\]/i, "</span>")        
-
+        text = text.gsub(/\[\[tabview\]\]/i, '<div class="tab-content">')
+        text = text.gsub(/\[\[\/tabview\]\]/i, '</div>')
+        text = text.gsub(/\[\[\/tab\]\]/i, '</div>')
+        
+        text = text.gsub(/\[\[\[([^\]]*)\]\]\]/i) { wiki_url(Regexp.last_match[1]) }
+                        
+        text = text.gsub(/\[\[tab ([^\]]*)\]\]/i) do |input|
+          id = (Regexp.last_match[1] || "").gsub(' ', '-').downcase
+          "<div id=\"#{id}\" class=\"tab-pane fade in\">"
+        end
+        
+        
         @post_tag_blocks.each do |tag, block|
           text = text.gsub(/\[\[#{tag} ([^\]]*)\]\]/i) { block.call(Regexp.last_match[1]) }
         end

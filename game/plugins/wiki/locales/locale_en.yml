@@ -1,0 +1,3 @@
+en:
+    wiki:
+        page_not_found: "Page %{name} not found."

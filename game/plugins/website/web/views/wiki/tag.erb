@@ -1,0 +1,7 @@
+<h1>Pages Tagged - <%= @tag %></h1>
+
+<ul>
+<% @pages.each do |page| %>
+<li><a href="/wiki/<%= page.name %>"><%= page.display_title %></a></li>
+<% end %>
+</ul>

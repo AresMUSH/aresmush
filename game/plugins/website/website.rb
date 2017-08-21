@@ -67,6 +67,8 @@ load 'web/controllers/scenes/scene_edit_related.rb'
 load 'web/controllers/scenes/scene_edit.rb'
 load 'web/controllers/scenes/scenes.rb'
 
+load 'web/controllers/wiki/edit_create_page.rb'
+load 'web/controllers/wiki/catchall.rb'
 
 load 'web/controllers/session.rb'
 load 'web/controllers/web.rb'

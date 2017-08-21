@@ -29,7 +29,7 @@ module AresMUSH
     
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
-      
+            
       if (name_or_id.start_with?("#"))
         return find_any_by_id(name_or_id)
       end
@@ -37,8 +37,11 @@ module AresMUSH
       find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase).to_a
     end
 
-    def self.find_one_by_name(name)
-      find_any_by_name(name).first
+    def self.find_one_by_name(name_or_id)      
+      char = Character[name_or_id]
+      return char if char
+      
+      find_any_by_name(name_or_id).first
     end
     
     def self.found?(name)

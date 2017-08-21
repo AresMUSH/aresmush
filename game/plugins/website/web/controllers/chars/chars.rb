@@ -35,24 +35,40 @@ module AresMUSH
     end
     
     get '/char/:id/?' do |id|
-      @char = Character[id]
+      @char = Character.find_one_by_name(id)
+        
       if (!@char)
-        
-        # Also support name lookup
-        @char = Character.find_one_by_name(id)
-        
-        if (!@char)
-          flash[:error] = "Character not found."
-          redirect '/chars'
-        end
+        flash[:error] = "Character not found."
+        redirect '/chars'
       end
       @page_title = @char.name
+      
+      case @char.idle_state
+      when "Roster"
+        @idle_message = "This character is on the roster."
+      when "Gone"
+        @idle_message = "This character is retired."
+      when "Dead"
+        @idle_message = "This character is deceased."
+      else
+        if (@char.is_npc?)
+          @idle_message = "This character is a NPC."
+        elsif (@char.is_admin?)
+          @idle_message = "This character is a game administrator."
+        elsif (@char.is_playerbit?)
+          @idle_message = "This character is a player bit."
+        elsif (!@char.is_approved?)
+          @idle_message = "This character is not yet approved."
+        else
+          @idle_message = nil
+        end
+      end
             
       erb :"chars/char"
     end
     
     get '/char/:id/source/?' do |id|
-      @char = Character[id]
+      @char = Character.find_one_by_name(id)
       
       if (!@char)
         flash[:error] = "Character not found."

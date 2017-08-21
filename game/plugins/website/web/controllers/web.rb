@@ -32,7 +32,11 @@ module AresMUSH
         port = AresMUSH::Global.read_config('server', 'port' )
         "#{host} port #{port}"
       end
-
+      
+      def char_page_url(char)
+        "/char/#{char.name.downcase}"
+      end
+      
     end
 
     get '/' do

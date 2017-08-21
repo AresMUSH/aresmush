@@ -44,6 +44,14 @@ module AresMUSH
           text
         end
         
+        do_include = Proc.new do |input|
+          begin
+            erb "/wiki/#{input}".to_sym
+          rescue
+            "<div class=\"alert alert-danger\">Include not found: #{input}</div>"
+          end
+        end
+        
         image = Proc.new do |input|
           return "" if !input
           style = ""
@@ -77,7 +85,11 @@ module AresMUSH
         
         allow_html = Global.read_config('website', 'allow_html_in_markdown')
         text = AresMUSH::ClientFormatter.format output, false
-        html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, {}, { musicplayer: music_player, image: image })
+        html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, {},
+         { musicplayer: music_player, 
+           image: image, 
+           include: do_include
+         })
         text = html_formatter.to_html text
         #text = text.gsub(/\[\[musicplayer ([^\]]*)\]\]/i) { music_player(Regexp.last_match[1]) }
         text
