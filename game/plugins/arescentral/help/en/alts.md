@@ -9,3 +9,4 @@ AresMUSH considers "alts" to be charactrs who are linked to your %xhplayer handl
 Handles are completely optional!  Whether or not you have a player handle, if you have more than one character you must register them on the wiki:
 
 http://bsgunificationmush.wikidot.com/players
+
