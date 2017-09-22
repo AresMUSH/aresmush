@@ -2,9 +2,9 @@ game:
     name: "Local Test"
 
     category: Social
-    
+
     description: "AresMUSH test site."
-    
+
     website: "http://aresmush.com"
-        
+
     public_game: false

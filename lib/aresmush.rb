@@ -2,7 +2,7 @@ module AresMUSH
   def self.game_path
     File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
   end
-  
+
   def self.version
     File.read(File.join(game_path, "version.txt"))
   end
@@ -19,7 +19,7 @@ require 'active_support/all'
 require 'ohm'
 require "ohm/json"
 require 'i18n'
-require "i18n/backend/fallbacks" 
+require "i18n/backend/fallbacks"
 require 'log4r'
 require 'log4r/yamlconfigurator'
 include Log4r
@@ -32,7 +32,7 @@ require 'net/http'
 require 'html2markdown'
 
 require 'sinatra/base'
-require "sinatra/reloader"
+require 'sinatra/reloader'
 require 'sinatra/flash'
 require 'thin'
 require 'compass'
@@ -40,7 +40,7 @@ require 'compass'
 require 'erubis'
 require 'json'
 require 'redcarpet'
-require "wikidot_api"
+require 'wikidot_api'
 
 
 require 'aresmush/bootstrapper'

@@ -11,7 +11,7 @@ logger:
         - stdout
         - file
 
-  # define all outputters (incl. formatters)      
+  # define all outputters (incl. formatters)
   outputters:
       - type     : StdoutOutputter
         name     : stdout
@@ -27,4 +27,4 @@ logger:
         formatter:
           date_pattern: '%Y-%m-%d %H:%M:%S'
           pattern     : '%d %l - %M '
-          type        : PatternFormatter      
+          type        : PatternFormatter
