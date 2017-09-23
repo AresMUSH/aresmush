@@ -16,7 +16,7 @@ module AresMUSH
       def handle
         profile = enactor.profile
         profile.delete self.field
-        enactor.update(profile: profile)
+        enactor.set_profile(profile)
         client.emit_success t('profile.custom_profile_cleared', :field => self.field)
       end
     end

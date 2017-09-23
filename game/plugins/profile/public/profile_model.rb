@@ -5,5 +5,12 @@ module AresMUSH
     attribute :relationships_category_order, :type => DataType::Array, :default => []
     attribute :profile_image
     attribute :profile_gallery
+    attribute :profile_last_edited, :type => DataType::Date
+    attribute :profile_tags, :type => DataType::Array, :default => []
+    
+    def set_profile(new_profile)
+      self.update(profile: new_profile)
+      self.update(profile_last_edited: DateTime.now)
+    end
   end
 end
