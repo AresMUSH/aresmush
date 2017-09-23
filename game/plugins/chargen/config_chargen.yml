@@ -28,7 +28,7 @@ chargen:
         background:
             help: backgrounds
         abilities:
-            help: 'fs3 skills'
+            help: 'fs3_skills'
         hooks:
             help: hooks
         desc:
@@ -40,7 +40,7 @@ chargen:
         profile:
             help: profile
         lastwill:
-            help: 'idle out'
+            help: 'idle_out'
         review:
             help: apps
     shortcuts:
