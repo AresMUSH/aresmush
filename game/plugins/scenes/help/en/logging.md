@@ -13,12 +13,23 @@ aliases:
 - scene edit
 - scene replace
 - scene undo
+- scenes unshared
+- unshared
+- share
+- sharing
 ---
 # Scene Logging
 
 The scenes system can capture a RP log automatically for you.  The log will contain poses, skill rolls and combat results but not OOC spam.
 
 > **Tip:** All scene log commands can accept a scene number, or be used on your current scene if you don't specify a number.
+
+## Finding Scenes
+
+For many of the scene log commands, you need to know the scene's number. 
+
+`scenes/all` - Lists all scenes you have access to.
+`scenes/unshared` - Lists all scenes you have access to that haven't been shared yet.
 
 ## Viewing the Log
 
@@ -49,13 +60,10 @@ You can also add a missing pose to the scene log (for example - one that happene
 
 ## Editing Participants
 
-The log system automatically tracks who participated in the scene.  You can edit this through the web portal.
+The log system automatically tracks who participated in the scene.   You can add and remove participants.
 
-Sometimes, though, you'll be emitting a character from another character (spoofing them). If you want to just replace all instances of one character with another, you can use the scene spoof command.  For example, if you had emitted Bob from Harry throughout the log, you can switch all of Harry's poses to Bob.  
-
-`scene/spoof <#>=<original char>/<new char>`
-
-> **Tip:** The spoof replacement only applies to past emits, not future ones.  It is best to use it on a completed log.
+`scene/addchar <#>=<char>`
+`scene/removechar <#>=<char>`
 
 ## Sharing the Log
 
