@@ -7,6 +7,7 @@ aliases:
 - tour
 - quit
 - guest
+- login
 ---
 # Connecting and Disconnecting
 

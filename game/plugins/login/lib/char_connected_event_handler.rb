@@ -4,10 +4,11 @@ module AresMUSH
       def on_event(event)
         client = event.client
         char = event.char
-        Global.logger.info("Character Connected: #{char.name}")
         
         first_login = !char.last_ip
         Login.update_site_info(client, char)
+
+        Global.logger.info("Character Connected: #{char.name} #{char.last_ip} #{char.last_hostname}")
         
         if (first_login)
           Login.check_for_suspect(char)
