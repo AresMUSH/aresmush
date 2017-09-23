@@ -13,7 +13,7 @@ module AresMUSH
         roster = Character.all
            .select { |c| c.on_roster? }
            .sort { |a,b| [a.group('Position') || "", a.name] <=> [b.group('Position') || "", b.name] }
-        paginator = Paginator.paginate(roster, cmd.page, 12)
+        paginator = Paginator.paginate(roster, cmd.page, 8)
         
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg
