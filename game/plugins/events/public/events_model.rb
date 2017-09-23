@@ -7,8 +7,19 @@ module AresMUSH
     attribute :description
     attribute :starts, :type => DataType::Time
     attribute :reminded, :type => DataType::Boolean
-        
+    attribute :ical_uid
+    
     reference :character, "AresMUSH::Character"
+    
+    before_save :set_uid
+    
+    def set_uid
+      if (!self.ical_uid)
+        host = Global.read_config('server', 'hostname' )
+        game = Global.read_config('game', 'name' )
+        self.ical_uid = "#{SecureRandom.uuid}@#{game}-#{host}"
+      end
+    end
     
     def organizer_name
       self.character ? self.character.name : ""
@@ -70,7 +81,7 @@ module AresMUSH
     
     
     def date_str
-      self.starts.strftime(Global.read_config("date_and_time", "date_and_time_format"))
+      self.starts.strftime(Global.read_config("date_and_time", "short_date_format"))
     end
   end
 end
