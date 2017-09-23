@@ -23,13 +23,6 @@ module AresMUSH
       page
     end
     
-    def sanitize_filename(filename)
-      filename = filename.strip
-      filename = filename.gsub(/^.*(\\|\/)/, '')
-      filename = filename.gsub(/[^0-9A-Za-z.\-]/, '_')
-      filename
-    end
-    
     def tags_text
       self.tags.join(" ")
     end
@@ -57,7 +50,7 @@ module AresMUSH
     
     
     def save_upcase
-      self.name = sanitize_filename(self.name)
+      self.name = FilenameSanitizer.sanitize(self.name)
       self.name_upcase = self.name ? self.name.upcase : nil
     end
     

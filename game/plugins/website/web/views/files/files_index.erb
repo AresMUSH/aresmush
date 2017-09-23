@@ -1,9 +1,9 @@
 <h1>Files</h1>
 
-<% @files.each do |file| %>
-<p><a href="/files/<%= File.basename(file) %>"><%= File.basename(file) %></a> 
-    <%= file_size_kb(file) %>kB 
-    <a href="/file/delete?file=<%= file %>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+<p>This central file directory allows you to upload images that can be used on character, scene and wiki pages.  For help using images in markdown text throughout the site, see the <a href="/help/markdown">markdown reference</a>.</p>
+
+<% @files.sort.each do |file| %>
+<p><a href="/file/detail?file=<%= File.basename(file) %>"><%= File.basename(file) %></a> <%= file_size_kb(file) %>kB 
 </p>
 <% end %>
 

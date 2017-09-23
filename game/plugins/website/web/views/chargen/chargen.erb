@@ -2,351 +2,39 @@
 
 <p>The online character creation tool will guide you through creating your character.</p>
 
-
-
 <form method="POST" action="/chargen">
                
-             <div class="panel panel-warning">
+    <div class="panel panel-warning">
     
-                 <div class="panel-heading">
-                     Save Progress
-                 </div>
+        <div class="panel-heading">
+            Save Progress
+        </div>
     
-                 <div class="panel-body">
+        <div class="panel-body">
 
-                   <p>Changes you make here are not made in-game until you click the <b>Save</b> button or switch tabs.  Use the <b>App Status</b> tab to make sure there are no issues with your character and to submit them for approval when you're done. </p>
+            <p>Changes you make here are not made in-game until you click the <b>Save</b> button or switch tabs.  Use the <b>App Status</b> tab to make sure there are no issues with your character and to submit them for approval when you're done. </p>
                 
-                  <p>
-                  <button type="submit" name="save" class="btn btn-warning">Save</button>
-                  </p>
+            <p>
+                <button type="submit" name="save" class="btn btn-warning">Save</button>
+            </p>
 
-                 </div>
-             </div>     
+        </div>
+    </div>     
 
 
-                  <button type="submit" name="tab" value="app" class="btn btn-primary">App Status</button>
-                  <button type="submit" name="tab" value="demo" class="btn btn-primary">Demographics</button>
-                  <button type="submit" name="tab" value="groups" class="btn btn-primary">Groups</button>
-                  <button type="submit" name="tab" value="bg" class="btn btn-primary">Background</button>
-                  <button type="submit" name="tab" value="abilities" class="btn btn-primary">Abilities</button>
-                  <button type="submit" name="tab" value="hooks" class="btn btn-primary">RP Hooks</button>
+    <button type="submit" name="tab" value="app" class="btn btn-primary">App Status</button>
+    <button type="submit" name="tab" value="demo" class="btn btn-primary">Demographics</button>
+    <button type="submit" name="tab" value="groups" class="btn btn-primary">Groups</button>
+    <button type="submit" name="tab" value="bg" class="btn btn-primary">Background</button>
+    <button type="submit" name="tab" value="abilities" class="btn btn-primary">Abilities</button>
+    <button type="submit" name="tab" value="hooks" class="btn btn-primary">RP Hooks</button>
        
-
-          <div class="panel panel-info <% if @params[:tab] != "app" && @params[:tab] %> hidden <% end %> ">
     
-              <div class="panel-body">
-        
-                  <pre class="ansi app-status"><%= @app %></pre>
-            
-                  <div class="panel panel-success">
-    
-                      <div class="panel-heading">
-                          All Done?
-                      </div>
-    
-                      <div class="panel-body">
-
-                        <p>If everything looks OK with your application, you can submit it for approval.  You'll need to log into the game itself to check on the status of your app. </p>
-                
-                       <p>
-                       <button type="submit" name="submit-app" class="btn btn-success">Submit Application</button>
-                       </p>
-
-                      </div>
-                  </div>
-            
-              </div>
-          </div>
-
-          <div class="panel panel-info <% if @params[:tab] != "demo" %> hidden <% end %>">
-    
-              <div class="panel-body">
-
-                  <% [:fullname, :hair, :eyes, :skin, :height, :physique, :callsign, :actor ].each do |demo| %>
-                  <div class="form-group row">
-    
-                  <label for="<%= demo %>" class="col-xs-2 col-form-label"><%= demo.to_s.titlecase %>:</label> 
-                  <input type="text" name="<%= demo %>" size="100" value="<%= @user.demographic(demo) %>"/>
-
-                  </div>
-                  <% end %>
-        
-                  <div class="form-group row">
-    
-                  <label for="age" class="col-xs-2 col-form-label">Age:</label> 
-                  <input type="text" name="age" size="100" value="<%= @user.age %>"/>
-
-                  </div>
-        
-                  <div class="form-group row">
-
-                  <label for="gender" class="col-xs-2 col-form-label">Gender:</label> 
-
-                  <select name="gender">
-                    <% [ 'Male', 'Female', 'Other' ]. each do |gender| %>
-                    <option value="<%= gender %>" <% if @user.demographic(:gender) == gender %> selected <% end %> ><%= gender %></option>
-                    <% end %>
-                  </select>
-                  </div>
-
-              </div>
-          </div>
-
-          <div class="panel panel-info <% if @params[:tab] != "groups" %> hidden <% end %>">
-    
-              <div class="panel-body">
-
-                  <div class="form-group row">
-                  <label for="faction" class="col-xs-2 col-form-label">Faction:</label> 
-                  <select name="faction">
-                    <% @factions['values'].each do |k, v| %>
-                    <option value="<%= k %>" <% if @user.group("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                    <% end %>
-                  </select>
-                  <p class="cg-tip"><%= @factions['desc']%></p>
-                  </div>
-
-                  <div class="form-group row">
-                  <label for="position" class="col-xs-2 col-form-label">Position:</label> 
-                  <select name="position">
-                    <% @positions['values'].each do |k, v| %>
-                    <option value="<%= k %>" <% if @user.group("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                    <% end %>
-                  </select>
-                  <p class="cg-tip"><%= @positions['desc']%></p>
-        
-                  </div>
-        
-                  <div class="form-group row">
-                  <label for="department" class="col-xs-2 col-form-label">Department:</label> 
-                  <select name="department">
-                    <% @departments['values'].each do |k, v| %>
-                    <option value="<%= k %>" <% if @user.group("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                    <% end %>
-                  </select>
-                  <p class="cg-tip"><%= @departments['desc']%></p>
-                  </div>
-
-                  <div class="form-group row">
-                  <label for="colony" class="col-xs-2 col-form-label">Colony:</label> 
-                  <select name="colony">
-                    <% @colonies['values'].each do |k, v| %>
-                    <option value="<%= k %>" <% if @user.group("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                    <% end %>
-                  </select>
-                  <p class="cg-tip"><%= @colonies['desc']%></p>
-                  </div>
-        
-                  <div class="form-group row">
-                  <label for="rank" class="col-xs-2 col-form-label">Rank:</label> 
-                  <select name="rank">
-                    <% @ranks.each do |k| %>
-                    <option value="<%= k %>" <% if @user.rank == k %> selected <% end %> ><%= k %></option>
-                    <% end %>
-                  </select>
-            
-                  <p class="cg-tip">Available ranks vary by faction.  See the wiki for details.</p>
-                  </div>
-
-              </div>
-          </div>
-
-          <div class="panel panel-info <% if @params[:tab] != "bg" %> hidden <% end %>">
-
-
-              <div class="panel-body">
-
-                  <div class="panel panel-info">
-    
-                  <div class="panel-heading">
-                      Description
-                  </div>
-    
-                  <div class="panel-body">
-        
-
-                      <textarea name="description" rows="10"><%= format_input_for_html(@user.description) %></textarea>
-        
-                      <p class="cg-tip">This is your main description.  You can also add details (like expanded descriptions for jewelry, tattoos, etc.) and a shorter desc that appears in the room summary.  See 'help desc' in game.</p>
-        
-                  </div>
-              
-
-                  </div>
-             
-
-                  <div class="panel panel-info">
-    
-              <div class="panel-heading">
-                  Background
-              </div>
-    
-              <div class="panel-body">
-        
-
-                  <textarea name="background" rows="10"><%= format_input_for_html(@user.background) %></textarea>
-        
-                  <p class="cg-tip">You don't need to write a novel.  Just cover the basics: who you are, why are you here, and is there anything noteworthy about you.  Be sure to explain any unusual skills.</p>
-        
-              </div>
-          </div>
-              </div>
-          </div>
-
-          <div class="panel panel-info <% if @params[:tab] != "abilities" %> hidden <% end %>">
-    
-               <div class="panel-body">
-    
-                   <div class="alert alert-danger">Reset will erase all of your current skills and attributes and set starting levels based on your selected groups (position/faction/etc.).  Your other demographic and group information will be saved.
-                     <p><button type="submit" name="reset" class="btn btn-danger">Reset Abilities</button></p>
-                     </div>
-      
-                     <div class="panel panel-info">
-                       <div class="panel-heading">
-                           Attributes
-                       </div>
-    
-                       <div class="panel-body">
-                           <p class="cg-tip">Attributes represent basic abilities that everyone has to some extent. Attributes boost related skills, and come into play when no skill directly applies.  See <a href="http://aresmush.com/fs3/fs3-3/chargen/#attributes">FS3 Attributes</a> for details.</p>
-
-                           <% @fs3_attrs.each_with_index do |a, i| %>
-                           <% attr_name = a['name'] %>
-                           <div class="form-group row">
-                           <label for="attr-<%= i %>" class="col-xs-2 col-form-label"><%= attr_name %>:</label> 
-                           <select name="attr-<%= i %>">
-                             <% @fs3_attr_ratings.each do |num, desc| %>
-                             <option value="<%= num %>" 
-                                 <% if AresMUSH::FS3Skills.ability_rating(@user, attr_name) == num %> selected <% end %> >
-                                 <%= desc %></option>
-                             <% end %>
-                           </select>
-                           <p class="cg-tip"><%= a['desc'] %></p>
-                           </div>
-        
-                           <% end %>
-        
-                       </div>
-                   </div>
-
-                   <div class="panel panel-info">
-    
-                       <div class="panel-heading">
-                           Action Skills
-                       </div>
-    
-                       <div class="panel-body">
-                           <p class="cg-tip">Action Skills represent your ability in areas deemed important for gameplay. See <a href="http://aresmush.com/fs3/fs3-3/chargen/#action-skills">FS3 Action Skills</a> for details.</p>
-
-                           <% @fs3_action_skills.each_with_index do |a, i| %>
-                           <% skill = a['name'] %>
-                           <div class="form-group row">
-                           <label for="action-<%= i %>" class="col-xs-2 col-form-label"><%= skill %>:</label> 
-                           <select name="action-<%= i %>">
-                             <% @fs3_action_skill_ratings.each do |num, desc| %>
-                             <option value="<%= num %>" 
-                                 <% if AresMUSH::FS3Skills.ability_rating(@user, skill) == num %> selected <% end %> >
-                                 <%= desc %></option>
-                             <% end %>
-                           </select>
-                           <p class="cg-tip"><%= a['desc'] %></p>
-                           </div>
-                           <% end %>
-        
-                       </div>
-                   </div>
-
-                   <div class="panel panel-info">
-    
-                       <div class="panel-heading">
-                           Specialties
-                       </div>
-    
-                       <div class="panel-body">
-                           <p class="cg-tip">Some action skills require a specialty. See <a href="http://aresmush.com/fs3/fs3-3/chargen/#action-skills">FS3 Action Skills</a> for details.</p>
-                           <p class="alert alert-info">You only need a specialty if your rating is Fair or higher.</p>
-                           <% @fs3_specialties.each_with_index do |(name, specialties), i| %>
-                              <br/> <b><%= name %>: </b> 
-                              <% specialties.each do |spec| %>
-                                <input type="checkbox" name="spec-<%= i %>[]" value="<%= spec %>" 
-                                <% if @fs3_current_specialties[name] && @fs3_current_specialties[name].include?(spec) %> checked <% end %>> <%= spec %> 
-                              <% end %>
-                           <% end %>
-        
-                       </div>
-                   </div>
-    
-                   <div class="panel panel-info">
-    
-                       <div class="panel-heading">
-                           Background Skills
-                       </div>
-    
-                       <div class="panel-body">
-                           <p class="cg-tip">Background Skills represent arts, sports, hobbies, professions and any other skills not covered by Action Skills.  Background Skills are free-form, so there is no specific list. You can pick anything from Singing to Underwater Basketweaving. See <a href="http://aresmush.com/fs3/fs3-3/chargen/#background-skills">FS3 Background Skills</a> for details.</p>
-                       <p class="cg-tip">Replace 'skill slot #' with the name of your skill.  To remove a background skill, set its rating to Everyman.</p>
-
-                           <% @fs3_bg_skills.each_with_index do |(name, rating), i| %>
-                           <div class="form-group row">
-                           <input name="bg-name-<%= i %>" type="text" size="20" class="col-xs-2 col-form-label" value="<%= name %>" />
-                           <select name="bg-rating-<%= i %>">
-                             <% @fs3_bg_skill_ratings.each do |num, desc| %>
-                             <option value="<%= num %>" 
-                                 <% if AresMUSH::FS3Skills.ability_rating(@user, name) == num %> selected <% end %> >
-                                 <%= desc %></option>
-                             <% end %>
-                           </select>
-                           </div>
-                           <% end %>
-        
-                       </div>
-                   </div>
-
-                   <div class="panel panel-info">
-    
-                       <div class="panel-heading">
-                           Languages
-                       </div>
-    
-                       <div class="panel-body">
-                           <p class="cg-tip">Languages represent your ability to speak and read other languages.  Languages have a descriptive rating. See <a href="http://aresmush.com/fs3/fs3-3/chargen/#languages">FS3 Languages</a> for details.</p>
-                       <p class="cg-tip">To remove a language, set its rating to Everyman.</p>
-
-                           <% @fs3_languages.each_with_index do |name, i| %>
-                           <div class="form-group row">
-                           <label for="lang-<%= i %>" class="col-xs-2 col-form-label"><%= name %>:</label> 
-                           <select name="lang-<%= i %>">
-                             <% @fs3_lang_skill_ratings.each do |num, desc| %>
-                             <option value="<%= num %>" 
-                                 <% if AresMUSH::FS3Skills.ability_rating(@user, name) == num %> selected <% end %> >
-                                 <%= desc %></option>
-                             <% end %>
-                           </select>
-                           </div>
-                           <% end %>
-                       </div>
-                   </div>
-              
-             </div>
-          </div>
-
-
-          <div class="panel panel-info <% if @params[:tab] != "hooks" %> hidden <% end %>">
-    
-              <div class="panel-body">
-                            
-              <p class="cg-tip">To help you flesh out your character, FS3 requres you to set RP Hooks.  These are interesting things about your character that others can "hook" into for RP. This could be an odd personality quirk, a reputation your character has, or anything else that might inspire someone to connect with you.  Looking around at other character's sheets can be a good way to get inspiration for RP Hooks.</p>
-              <p class="cg-tip">Replace 'hook slot #' with the name of your hook and fill in the description.  To remove a hook, just leave its description blank.</p>
-
-              <% @hooks.each_with_index do |(name, desc), i| %>
-              <div class="form-group row">
-              <input type="text" name="hook-name-<%= i %>" size="20" class="col-xs-2 col-form-label" value="<%= name %>" />
-              <input type="text" name="hook-desc-<%= i %>" size="100" value="<%= desc %>" />
-              </div>
-              <% end %>
-        
-        
-              </div>
-          </div>
-
+    <%= erb :"/chargen/chargen_app" %>
+    <%= erb :"/chargen/chargen_demo" %>
+    <%= erb :"/chargen/chargen_groups" %>
+    <%= erb :"/chargen/chargen_bg" %>
+    <%= erb :"/chargen/chargen_fs3" %>
+    <%= erb :"/chargen/chargen_hooks" %>
 
 </form>

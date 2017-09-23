@@ -1,0 +1,19 @@
+<script src="/scripts/create_event.js"></script>
+
+<h1>Edit Event</h1>
+
+
+    <form method="POST" action="/event/<%= @event.id %>/edit">
+        <p><b>Title:</b></p>
+        <p><input type="text" name="title" value="<%= @event.title %>"></p>
+
+        <p><b>Date:</b></p>
+        <p><input type="text" id="datepicker" name="date" value="<%= @event.date_str %>"></p>
+
+        <p><b>Start Time:</b></p>
+        <p><input type="text" name="time" value="<%= @event.start_time_standard %>"></p>
+
+        <textarea name="description"><%= format_input_for_html @event.description %></textarea>
+        <p><input type="submit"></p>
+        
+    </form>

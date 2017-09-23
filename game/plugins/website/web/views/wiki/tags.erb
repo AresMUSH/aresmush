@@ -1,7 +1,7 @@
 <h1>All Tags</h1>
 
 <ul>
-<% @tags.each do |tag| %>
+<% @tags.sort.each do |tag| %>
   <li><a href="/wiki/tag/<%= tag %>"><%= tag %></a></li>
 <% end %>
 

@@ -1,0 +1,18 @@
+<h1>Actors</h1>
+
+<p>It's fun to imagine the game as a TV show with actors playing the various characters.  This is a list of who's playing who.  See <a href="/help/actors">help actors</a> for more information.</p>
+
+<table class="table table-striped">
+<thead>
+    <th>Actor</th>
+    <th>Character</th>
+</thead>
+<tbody>
+<% @actors.sort.each do |actor, char| %>
+<tr>
+    <td><%= actor %></td>
+    <td><%= char %></td>
+<% end %>
+</tbody>
+
+</table>

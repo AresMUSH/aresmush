@@ -1,6 +1,5 @@
 <h1>Events</h1>
 
-
 <table class="table table-striped">
 
 <thead>
@@ -30,3 +29,18 @@
 <% end %>
 
 </table>
+
+<div class="alert alert-info">If you're using an iCalendar-compatible calendar app like Outlook or Apple iCal, you can add the game's iCal feed to your app and it will automatically load events into your calendar: <a href="/events/ical"><%= AresMUSH::Game.web_portal_url %>/events/ical</a>.</div>
+
+
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+ 
+  <% if is_approved? %>
+      <a href="/event/create" class="btn btn-primary">Add New</a>
+  <% end %>
+
+  </div>
+  </div>
+</div>

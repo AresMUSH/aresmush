@@ -22,8 +22,23 @@
     </tr>
     
 </table>
-<hr/>
+
+<br/>
     
 <div class="ansi">
     <%= format_markdown_for_html @event.description %>
+</div>
+
+
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+  <% if can_manage_event?(@event) %>
+
+      <a href="/event/<%= @event.id %>/delete" class="btn btn-warning">Delete</a>
+      <a href="/event/<%= @event.id %>/edit" class="btn btn-primary">Edit</a>
+  <% end %>
+      
+  </div>
+  </div>
 </div>

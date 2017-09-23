@@ -1,0 +1,19 @@
+<script src="/scripts/create_event.js"></script>
+
+<h1>New Event</h1>
+
+
+    <form method="POST" action="/event/create">
+        <p><b>Title:</b></p>
+        <p><input type="text" name="title"></p>
+
+        <p><b>Date:</b></p>
+        <p><input type="text" id="datepicker" name="date"></p>
+
+        <p><b>Start Time:</b></p>
+        <p><input type="text" name="time"></p>
+
+        <textarea name="description"></textarea>
+        <p><input type="submit"></p>
+        
+    </form>

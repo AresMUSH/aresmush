@@ -1,6 +1,5 @@
 module AresMUSH
   class WebApp
-    
     post '/bbs/reply', :auth => :approved do
       id = params[:post_id]
       message = format_input_for_mush params[:message]

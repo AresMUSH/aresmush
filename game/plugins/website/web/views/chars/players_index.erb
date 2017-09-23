@@ -1,0 +1,16 @@
+<h1>Players</h1>
+
+<p>This page lists players and their characters (or 'alts').  </p>
+
+<div class="alert alert-info">
+    There are two ways to get your characters to show up here: 
+    <ul>
+        <li>Link a character to your <a href="/help/handles">AresMUSH player handle</a>.</li>
+        <li>If you do not have a handle, add a <a href="/help/website/web_chars">profile tag</a> to your character's web portal profile in the form <code>player:&lt;playername&gt;</code>.  Player name can be either your main character's name or some other moniker used to tie your characters together.</li>
+    </ul>
+</div>
+
+<% @players.sort.each do |handle, alts| %>
+<h2><%= handle %></h2>
+<%= erb :"chars/group_list", :locals => { chars: alts, title: "" } %>
+<% end %>

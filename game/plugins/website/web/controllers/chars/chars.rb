@@ -11,11 +11,15 @@ module AresMUSH
       end
       
       def can_manage_char?(char)
-        @user && (@user == char || @user.is_admin?)
+        return false if !@user
+        return true if @user.is_admin?
+        return true if @user == char
+        
+        return AresCentral.is_alt?(@user, char)
       end
       
       def profile_image_url(char)
-        !char.profile_image.blank? ? "/files/#{char.profile_image}" : char.icon
+        !char.profile_image.blank? ? "/files/#{char.profile_image}" : "/images/noicon.png"
       end
       
       def subgroup_chars(group_data)
@@ -24,12 +28,43 @@ module AresMUSH
       end
     end
     
+    get '/actors/?' do
+      @actors = Character.all.select { |c| !c.demographic(:actor).blank? }.map{ |c| [c.demographic(:actor), c.name ] }.to_h
+      erb :"chars/actors_index"
+    end
+    
+    get '/players/?' do
+      @players = Handle.all.map { |h| [h.name, AresCentral.alts_of(h)]}.to_h
+      
+      Character.all.each do |c|
+        next if c.handle
+        player_tag = c.profile_tags.select { |t| t.start_with?("player") }.first
+        next if !player_tag
+        
+        player_tag = player_tag.after(":").titleize
+        if (@players.has_key?(player_tag))
+          @players[player_tag] << c
+        else
+          @players[player_tag] = [ c ]
+        end
+      end
+      
+      puts @players.keys
+            
+      erb :"chars/players_index"
+    end
+    
+    get '/roster/?' do
+      group = Global.read_config("website", "character_gallery_group") || "Faction"
+      @roster = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
+      erb :"chars/roster_index"
+    end
+    
     get '/chars/?' do
       group = Global.read_config("website", "character_gallery_group") || "Faction"
       @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group(group) || "" }
-      @roster = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
       @groups = Chargen.approved_chars.group_by { |c| c.group(group) || "" }.sort
-      @page_title = "Characters"
+      @page_title = "Characters - #{game_name}"
       
       erb :"chars/chars_index"
     end
@@ -41,11 +76,11 @@ module AresMUSH
         flash[:error] = "Character not found."
         redirect '/chars'
       end
-      @page_title = @char.name
+      @page_title = "#{@char.name} - #{game_name}"
       
       case @char.idle_state
       when "Roster"
-        @idle_message = "This character is on the roster."
+        @idle_message = "This character is on the roster.<br/>#{@char.roster_notes}"
       when "Gone"
         @idle_message = "This character is retired."
       when "Dead"
@@ -75,7 +110,7 @@ module AresMUSH
         redirect '/chars'
       end
       
-      @page_title = @char.name
+      @page_title = "#{@char.name} - #{game_name}"
       
       erb :"chars/source"
     end

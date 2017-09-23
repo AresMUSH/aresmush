@@ -1,8 +1,8 @@
 <% if char %>
 
-  <% if char.icon %>
+  <% if char.profile_image %>
   <a href="<%= char_page_url(char) %>">
-    <img class="small-profile-icon" src="<%= char.icon %>" />
+    <img class="small-profile-icon" src="<%= profile_image_url(char) %>" />
    </a>
  <% end %>
  

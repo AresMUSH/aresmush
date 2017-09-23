@@ -1,0 +1,58 @@
+<div class="panel panel-info <% if @params[:tab] != "groups" %> hidden <% end %>">
+    
+    <div class="panel-body">
+
+        <div class="form-group row">
+            <label for="faction" class="col-xs-2 col-form-label">Faction:</label> 
+            <select name="faction">
+                <% @factions['values'].each do |k, v| %>
+                <option value="<%= k %>" <% if @user.group("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+                <% end %>
+            </select>
+            <p class="cg-tip"><%= @factions['desc']%></p>
+        </div>
+
+        <div class="form-group row">
+            <label for="position" class="col-xs-2 col-form-label">Position:</label> 
+            <select name="position">
+                <% @positions['values'].each do |k, v| %>
+                <option value="<%= k %>" <% if @user.group("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+                <% end %>
+            </select>
+            <p class="cg-tip"><%= @positions['desc']%></p>
+        
+        </div>
+        
+        <div class="form-group row">
+            <label for="department" class="col-xs-2 col-form-label">Department:</label> 
+            <select name="department">
+                <% @departments['values'].each do |k, v| %>
+                <option value="<%= k %>" <% if @user.group("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+                <% end %>
+            </select>
+            <p class="cg-tip"><%= @departments['desc']%></p>
+        </div>
+
+        <div class="form-group row">
+            <label for="colony" class="col-xs-2 col-form-label">Colony:</label> 
+            <select name="colony">
+                <% @colonies['values'].each do |k, v| %>
+                <option value="<%= k %>" <% if @user.group("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+                <% end %>
+            </select>
+            <p class="cg-tip"><%= @colonies['desc']%></p>
+        </div>
+        
+        <div class="form-group row">
+            <label for="rank" class="col-xs-2 col-form-label">Rank:</label> 
+            <select name="rank">
+                <% @ranks.each do |k| %>
+                <option value="<%= k %>" <% if @user.rank == k %> selected <% end %> ><%= k %></option>
+                <% end %>
+            </select>
+            
+            <p class="cg-tip">Available ranks vary by faction.  See the wiki for details.</p>
+        </div>
+
+    </div>
+</div>

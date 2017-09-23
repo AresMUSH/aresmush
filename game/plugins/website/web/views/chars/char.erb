@@ -49,6 +49,14 @@
        <%= erb :"chars/gallery" %></p>
 
     </div>
+
+
+<hr/>
+
+<b>Tags:</b>  
+<% @char.profile_tags.each do |tag| %>
+  <a href="/wiki/tag/<%= tag %>"><%= tag %></a>
+<% end %>
     
 
 <div class="row">

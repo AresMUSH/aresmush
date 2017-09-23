@@ -17,7 +17,7 @@ module AresMUSH
       contents = Help.topic_contents(topic)
       @help =  format_markdown_for_html(contents)
       @search = params[:search]
-      @page_title = "Help - #{topic.titleize}"
+      @page_title = "Help - #{topic.titleize} - #{game_name}"
       erb :"help/help"
     end
 

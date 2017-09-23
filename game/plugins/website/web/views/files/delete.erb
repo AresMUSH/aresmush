@@ -1,0 +1,19 @@
+<h1>Delete File</h1>
+
+<div class="alert alert-danger">Deleting a file is permanent.  There is no undo.  Are you sure?</div>
+
+    <div class="row">
+        <div class="col col-xs-12">
+            <div class="pull-right">
+    
+    <p> <a href="/file/detail?file=<%= @file %>" class="btn btn-default">Cancel</a>  
+        <a href="/file/delete/confirm?file=<%= @file %>" class="btn btn-primary" type="submit">Delete</a> </p>
+    
+</div>
+</div>
+</div>
+
+<hr/>
+
+<img src="/files/<%= @file %>" class="image-container" />
+

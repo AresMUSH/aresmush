@@ -1,19 +1,30 @@
 module AresMUSH
   class WebApp
-   
+    helpers do
+      def recent_changes
+        WikiPageVersion.all.to_a.reverse[0..200]
+      end
+    
+      def unique_recent_page_changes
+        WikiPageVersion.all.to_a.reverse[0..200].uniq { |w| w.wiki_page }
+      end  
+    end
+    
     get '/wiki/?' do 
       redirect '/wiki/home'
     end
     
     get '/wiki/all/?' do
-      @tag = "All Pages"
+      @title = "All Pages"
       @pages = WikiPage.all.to_a.sort_by { |p| p.display_title }
-      erb :"wiki/tag"
+      erb :"wiki/all_pages"
     end
     
     get '/wiki/tag/:tag/?' do |tag|
       @tag = tag.titlecase
       @pages = WikiPage.all.select { |p| p.tags.include?(tag.downcase) }.sort_by { |p| p.display_title }
+      @chars = Character.all.select { |c| c.profile_tags.include?(tag.downcase) }.sort_by { |c| c.name }
+      @scenes = Scene.all.select { |s| s.tags.include?(tag.downcase) }.sort_by { |s| s.date_title }
   
       erb :"wiki/tag"
     end
@@ -23,14 +34,30 @@ module AresMUSH
       WikiPage.all.each do |p|
         @tags = @tags.concat p.tags
       end
+      Character.all.each do |c|
+        @tags = @tags.concat c.profile_tags
+      end
+      Scene.all.each do |s|
+        @tags = @tags.concat s.tags
+      end
+      
+      @tags = @tags.uniq
   
       erb :"wiki/tags"
     end
     
+    get '/wiki/recent_changes/?' do
+      @recent = Wiki.recent_changes
+      
+      erb :"wiki/recent_changes"
+    end
+    
     get '/wiki/create', :auth => :approved do
       @name = params[:name] || ""
-      @title =@name.titleize
-      
+      @title = @name.titleize
+      if (@title =~ /:/)
+        @title = @title.after(":")
+      end
       erb :"wiki/create_page"
     end
     
@@ -43,7 +70,7 @@ module AresMUSH
         redirect '/wiki'
       end
       
-      @page_title = @page.display_title  
+      @page_title = "#{@page.display_title} - #{game_name}"
             
       erb :"wiki/page_source"
     end
@@ -75,7 +102,7 @@ module AresMUSH
         redirect '/wiki'
       end
       
-      WikiPageVersion.create(wiki_page: @page, text: @version.text)
+      WikiPageVersion.create(wiki_page: @page, text: @version.text, character: @user)
       
       flash[:info] = "Page updated!"
       redirect "/wiki/#{@page.name}"
@@ -112,7 +139,7 @@ module AresMUSH
         redirect "/wiki/create?name=#{name_or_id}"
       end
             
-      @page_title = @page.display_title  
+      @page_title = "#{@page.display_title} - #{game_name}"
             
       erb :"wiki/page"
     end

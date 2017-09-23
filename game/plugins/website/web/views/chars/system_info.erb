@@ -1,6 +1,11 @@
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
   <li><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
+  <% if @char.on_roster? %>
+ <li><a data-toggle="tab" href="#bg">Background</a></li>
+ 
+  <% end %>
+  
   <li><a data-toggle="tab" href="#sheet">Sheet</a></li>
   <li><a data-toggle="tab" href="#damage">Damage</a></li>
 </ul>
@@ -13,16 +18,25 @@
   <div id="hooks" class="tab-pane fade">
       
       <p>
-          
+          <div class="ansi">
                 <ul>
                 <% @char.fs3_hooks.each do |h| %>
-                <li><b><%= h.name %></b> - <%= h.description %></li>
+                <li><b><%= h.name %></b> - <%= format_output_for_html h.description %></li>
                 <% end %>
                 </ul>
-                
+          </div>
      </p>
   </div>
   
+  
+  <% if @char.on_roster? %>
+  <div id="bg" class="tab-pane fade">
+      <div class="ansi">
+          <%= format_output_for_html @char.background %></p>
+      </div>
+      
+  </div>
+  <% end %>
   
   <div id="sheet" class="tab-pane fade">
 

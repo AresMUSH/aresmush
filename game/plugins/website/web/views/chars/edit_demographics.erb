@@ -1,17 +1,5 @@
-<p>
-    <label for="profileimage" class="col-xs-2 col-form-label">Profile Image:</label>
-   
-    <div>
-        <select name="profileimage">
-            <option value=""></option>
-            <% uploaded_file_names.each do |f| %>
-            <option value="<%= f %>" <%= "selected" if @char.profile_image == f %>><%= f %></option>
-            <% end %>
-        </select>
-        <div class="hint">Upload new files <a href="/files" target="blank">here</a>.</div>
-    </div>
-  
-</p>
+<h3>Demographics</h3>
+
     
 <p>
     <label for="demo-fullname" class="col-xs-2 col-form-label">Full Name:</label>
@@ -36,3 +24,20 @@
     
     <input type="text" name="demo-eyes" size="100" value="<%= @char.demographic('eyes') %>"/>
 </p>
+
+<p>
+    <label for="profileimage" class="col-xs-2 col-form-label">Profile Image:</label>
+     
+     <!-- 
+     <select id="profileimage-select" name="profileimage-select">
+         <option value=""></option>
+         <% uploaded_file_names.each do |f| %>
+         <option value="<%= f %>" <%= "selected" if @char.profile_image == f %>><%= f %></option>
+         <% end %>
+     </select>
+     -->
+     
+    <input type="text" name="profileimage" id="profileimage" size="100" value="<%= @char.profile_image %>"/>
+</p>
+
+<div class="hint">Upload a profile image in the Files section below and then enter its filename.</div>

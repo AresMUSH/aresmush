@@ -3,7 +3,7 @@ module AresMUSH
     post '/combat/:id/update', :auth => :approved do |id|
       @combat = Combat[id]
       if (@combat.organizer != @user && !is_admin?)
-        flash[:error] = "Only the combat organizer can manage combat."
+        flash[:error] = "Only the combat organizer can setup combat."
         redirect "/combat/#{id}"
       end
 

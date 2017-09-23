@@ -26,7 +26,7 @@ module AresMUSH
       end
         
       @page.update(tags: tags, title: title, name: name)
-      WikiPageVersion.create(wiki_page: @page, text: text)
+      WikiPageVersion.create(wiki_page: @page, text: text, character: @user)
       
       redirect "/wiki/#{@page.name}"
     end
@@ -50,7 +50,7 @@ module AresMUSH
       end
       
       new_page = WikiPage.create(title: title, name: name, tags: tags)
-      WikiPageVersion.create(wiki_page: new_page, text: text)
+      WikiPageVersion.create(wiki_page: new_page, text: text, character: @user)
       
       redirect "/wiki/#{new_page.name}"
     end

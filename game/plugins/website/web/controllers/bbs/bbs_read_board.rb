@@ -1,6 +1,5 @@
 module AresMUSH
-  class WebApp
-    
+  class WebApp    
     get '/bbs/:id/?' do |id|
       @board = BbsBoard[id]
       if (!can_read_bbs?(@board))
@@ -10,6 +9,5 @@ module AresMUSH
         
       erb :"bbs/board"
     end
-    
   end
 end
