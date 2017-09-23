@@ -8,7 +8,8 @@
 <%= center( r.demographic('gender'), 13 ) -%>
 <%= left( r.group("Position"), 20 ) -%>
 <%= left( r.group("Faction"), 20 ) %>
-   <%= r.roster_notes %>
+   <% if r.roster_notes %><%= r.roster_notes %><% end %>
+   
 <% end %>
 <%= paginator.page_footer %>
 %xh<%= t('idle.roster_url_hint', :url => roster_url) %>%xn
