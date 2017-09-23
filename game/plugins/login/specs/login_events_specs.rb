@@ -32,6 +32,7 @@ module AresMUSH
       describe :on_char_connected_event do
         before do
           @event_char.stub(:last_ip) { "127" }
+          @event_char.stub(:last_hostname) { "localhost" }
           Login.stub(:update_site_info) {}
           @login_events = CharConnectedEventHandler.new
           @room_client.stub(:emit_success)

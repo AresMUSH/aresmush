@@ -1,0 +1,31 @@
+<h1><%= @page.display_title %></h1>
+
+<div class="ansi">
+<%= format_markdown_for_html @page.text %>
+</div>
+
+<hr/>
+
+<b>Tags:</b>  
+<% @page.tags.each do |tag| %>
+  <a href="/wiki/tag/<%= tag %>"><%= tag %></a>
+<% end %>
+
+
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+ 
+  <% if is_admin? %>
+      <a href="/wiki/<%= @page.name %>/delete" class="btn btn-warning">Delete</a>
+  <% end %>
+      <a href="/wiki/<%= @page.name %>/source/<%= @page.current_version.id %>" class="btn btn-default">Source/History</a>
+      
+      <% if is_approved? %>
+
+          <a href="/wiki/<%= @page.name %>/edit" class="btn btn-primary">Edit</a>
+
+      <% end %>
+  </div>
+  </div>
+</div>

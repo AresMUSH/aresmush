@@ -1,0 +1,24 @@
+<h1>Tag - <%= @tag %></h1>
+
+<h2>Pages</h2>
+<ul>
+<% @pages.each do |page| %>
+<li><a href="/wiki/<%= page.name %>"><%= page.display_title %></a></li>
+<% end %>
+</ul>
+
+<h2>Scenes</h2>
+
+<ul>
+<% @scenes.each do |scene| %>
+<li><a href="/scene/<%= scene.id %>"><%= scene.date_title %></a></li>
+<% end %>
+</ul>
+
+<h2>Characters</h2>
+
+<ul>
+<% @chars.each do |char| %>
+<li><a href="/char/<%= char.name %>"><%= char.name %></a></li>
+<% end %>
+</ul>

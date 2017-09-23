@@ -4,6 +4,8 @@
     ws = null;
     connected = false;
     window_visible = true;
+    idle_keepalive_ms = 60000;
+    keepalive_interval = null;
     
     $('button.disconnectButton').hide();
     $('button.connectButton').show();
@@ -42,8 +44,19 @@
     $(window).focus(function(){
         window_visible = true;
     });
+    idleKeepalive = function() {
+        if (connected) {
+            send_input("keepalive");
+        }
+        else {
+            clearInterval(keepalive_interval);
+        }
+    };
+    
     connect = function() {
       ws = new WebSocket(`ws://${config.host}:${config.port}/websocket`);
+      keepalive_interval = window.setInterval(function(){ idleKeepalive() }, idle_keepalive_ms);        
+          
       ws.onmessage = function(evt) {
         var html, is_json;
         var data = evt.data;

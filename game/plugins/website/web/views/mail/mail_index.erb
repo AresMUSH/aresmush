@@ -45,19 +45,17 @@
 
 </table>
 
-<div class="inline-response">
 
-<h3>New Message</h3>
 
-    <form method="POST" action="/mail/send">
-        <p><b>To:</b></p>
-        <p><input type="text" name="to"></p>
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+ 
+      <% if is_approved? %>
 
-        <p><b>Subject:</b></p>
-        <p><input type="text" name="subject"></p>
+          <a href="/mail/compose" class="btn btn-primary">Send Mail</a>
 
-        <textarea name="message"></textarea>
-        <p><input type="submit"></p>
-        
-    </form>
+      <% end %>
+  </div>
+  </div>
 </div>

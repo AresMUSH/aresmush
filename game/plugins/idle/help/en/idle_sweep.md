@@ -18,7 +18,6 @@ There are several idle actions available:
     Dead - Mark that they're dead.
     Roster - Put them on the roster.
     Warn - Notify them they're in danger of idling out.  This is the default for approved characters.
-    Reset - Clear their idle status.
 
 > **Tip:** We recommend that you **not** destroy idled-out players once they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used could mess up the game wiki references.  Database space should not be an issue unless your game is ginormous. (If it becomes a problem, you can always purge people at that point.)
 
@@ -33,9 +32,9 @@ There are several idle actions available:
 
 ## Setting Idle Status Directly
 
-Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/set` command.  Only 'Dead' and 'Gone' are valid options here.  If you just want to mark someone as a NPC, use the [NPC](/help/npc) command.  To add or remove someone from the roster, use the [Roster](/help/manage_roster) commands.
+Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/set` command.  Only 'Dead' and 'Gone' are valid options here.  If you just want to mark someone as a NPC, use the [NPC](/help/npc) command.  To add or remove someone from the roster, use the [Roster](/help/manage_roster) commands.   You can also clear someone's idle status by setting it to 'None'.
 
-`idle/set <name>=<status>` - Sets someone's status without running through the idle queue 
+`idle/set <name>=<status>` - Sets someone's status without running through the idle queue.
 
 ## Rostered Characters
 

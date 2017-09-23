@@ -34,11 +34,6 @@ module AresMUSH
               report << idle_char.name 
             end
             
-            # Remove their handle.              
-            if (idle_char.handle)
-              idle_char.handle.delete
-            end
-            
             case action
             when "Destroy"
               Global.logger.debug "#{idle_char.name} deleted for idling out."
@@ -48,14 +43,14 @@ module AresMUSH
               Idle.add_to_roster(idle_char)
             when "Npc"
               idle_char.update(is_npc: true)
-              Login.set_random_password(idle_char)
+              Idle.idle_cleanup(idle_char)
             when "Warn"
               Global.logger.debug "#{idle_char.name} idle warned."
               idle_char.update(idle_warned: true)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
               idle_char.update(idle_state: action)
-              Login.set_random_password(idle_char)
+              Idle.idle_cleanup(idle_char)
             end
           end
         end

@@ -1,0 +1,34 @@
+<div class="panel panel-info <% if @params[:tab] != "demo" %> hidden <% end %>">
+    
+    <div class="panel-body">
+
+        <% [:fullname, :hair, :eyes, :skin, :height, :physique, :callsign, :actor ].each do |demo| %>
+        
+        <div class="form-group row">
+    
+            <label for="<%= demo %>" class="col-xs-2 col-form-label"><%= demo.to_s.titlecase %>:</label> 
+            <input type="text" name="<%= demo %>" size="100" value="<%= @user.demographic(demo) %>"/>
+
+        </div>
+        <% end %>
+        
+        <div class="form-group row">
+    
+            <label for="age" class="col-xs-2 col-form-label">Age:</label> 
+            <input type="text" name="age" size="100" value="<%= @user.age %>"/>
+
+        </div>
+        
+        <div class="form-group row">
+
+            <label for="gender" class="col-xs-2 col-form-label">Gender:</label> 
+
+            <select name="gender">
+                <% [ 'Male', 'Female', 'Other' ]. each do |gender| %>
+                <option value="<%= gender %>" <% if @user.demographic(:gender) == gender %> selected <% end %> ><%= gender %></option>
+                <% end %>
+            </select>
+        </div>
+
+    </div>
+</div>

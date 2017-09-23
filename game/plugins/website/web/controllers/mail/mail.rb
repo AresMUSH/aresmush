@@ -10,6 +10,16 @@ module AresMUSH
       end
     end
       
+    get '/mail/compose', :auth => :approved do
+      erb :"mail/new_mail"
+    end
+  
+    get '/mail/:id/?', :auth => :approved do |id|
+      @mail = MailMessage[id]
+      @mail.mark_read
+      erb :"mail/message"
+    end    
+    
     get '/mail/?', :auth => :approved do
       @tag = params[:tag] || Mail.inbox_tag
         

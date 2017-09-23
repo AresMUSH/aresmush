@@ -1,6 +1,5 @@
 module AresMUSH
   class WebApp
-    
     get '/bbs/:board_id/:post_id/?' do |board_id, post_id|
       @board = BbsBoard[board_id]
       @post = BbsPost[post_id]
@@ -16,6 +15,5 @@ module AresMUSH
       
       erb :"bbs/post"
     end
-    
   end
 end

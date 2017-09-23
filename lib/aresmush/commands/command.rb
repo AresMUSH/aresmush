@@ -42,5 +42,8 @@ module AresMUSH
       @switch == switch
     end
   
+    def root_plus_switch
+      root_only? ? @root : "#{@root}/#{@switch}"
+    end
   end
 end

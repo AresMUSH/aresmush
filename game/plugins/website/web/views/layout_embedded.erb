@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= erb :"header"%>
+
+</head>
+
+<body>
+    
+    <% if flash[:info] %>
+    <div class="alert alert-info">                
+        <%= styled_flash %>      
+    </div>
+    <% end %>
+
+    
+    <% if flash[:error] %>
+    <div class="alert alert-danger">                
+        <%= styled_flash %>      
+    </div>
+    <% end %>
+    
+<%= yield %>
+</body>
+</html>

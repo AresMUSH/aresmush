@@ -6,7 +6,8 @@
     <form method="POST" action="/login">
         <p>Name: <input type="text" name="name" autofocus></p>
         <p>Password: <input type="password" name="password"></p>
-        <input type="submit">
+        <input type="hidden" name="redirect" value="<%= @redirect %>"/>
+        <input type="submit" />
         
     </form>
         <p>Don't have a character yet?  

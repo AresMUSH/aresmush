@@ -1,0 +1,25 @@
+<div class="panel panel-info <% if @params[:tab] != "app" && @params[:tab] %> hidden <% end %> ">
+    
+    <div class="panel-body">
+        
+        <pre class="ansi app-status"><%= @app %></pre>
+            
+        <div class="panel panel-success">
+    
+            <div class="panel-heading">
+                All Done?
+            </div>
+    
+            <div class="panel-body">
+
+                <p>If everything looks OK with your application, you can submit it for approval.  You'll need to log into the game itself to check on the status of your app. </p>
+                
+                <p>
+                    <button type="submit" name="submit-app" class="btn btn-success">Submit Application</button>
+                </p>
+
+            </div>
+        </div>
+            
+    </div>
+</div>

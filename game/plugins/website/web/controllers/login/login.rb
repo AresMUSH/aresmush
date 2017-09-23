@@ -2,6 +2,7 @@ module AresMUSH
   class WebApp    
     
     get '/login/?', :auth => :not_user  do
+      @redirect = params[:redirect]
       erb :"login"
     end  
     
@@ -26,7 +27,7 @@ module AresMUSH
         char.update(login_api_token: Character.random_link_code)
         char.update(login_api_token_expiry: Time.now + 86400)
         flash[:info] = "Welcome, #{char.name}!"
-        redirect '/'
+        redirect params[:redirect] || '/'
       end
     end
   end

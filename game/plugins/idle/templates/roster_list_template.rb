@@ -12,6 +12,11 @@ module AresMUSH
       def approved(char)
         char.is_approved? ? t('global.y') : t('global.n')
       end
+
+      def name(char)
+        restricted = char.roster_restricted ? "(*)" : ""
+        "#{char.name}#{restricted}"
+      end
       
       def contact(char)
         restricted = char.roster_restricted ? "(*)" : ""

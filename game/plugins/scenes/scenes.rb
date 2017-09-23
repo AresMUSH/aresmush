@@ -4,6 +4,7 @@ load "lib/pose_event_handler.rb"
 load "lib/cron_event_handler.rb"
 load "lib/helpers.rb"
 load "lib/scene_addpose_cmd.rb"
+load "lib/scene_char_cmd.rb"
 load "lib/scene_clearlog_cmd.rb"
 load "lib/scene_delete_cmd.rb"
 load "lib/scene_enablelog_cmd.rb"
@@ -15,7 +16,6 @@ load "lib/scene_restart_cmd.rb"
 load "lib/scene_undo_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_share_cmd.rb"
-load "lib/scene_spoof_cmd.rb"
 load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scene_types_cmd.rb"
@@ -60,10 +60,12 @@ module AresMUSH
           return ScenesCmd
         when nil
           if (cmd.args)
-            return LogCmd
+            return SceneLogCmd
           else
             return ScenesCmd
           end
+        when "addchar", "removechar"
+          return SceneCharCmd
         when "addpose"
           return SceneAddPoseCmd
         when "join"
@@ -82,8 +84,6 @@ module AresMUSH
           return SceneSetCmd
         when "start"
           return SceneStartCmd
-        when "spoof"
-          return SceneSpoofCmd
         when "stop"
           return SceneStopCmd
         when "types"
@@ -96,6 +96,8 @@ module AresMUSH
           return SceneLogEnableCmd
         when "share", "unshare"
           return SceneShareCmd
+        when "unshared"
+          return ScenesCmd
         end
       end
       nil

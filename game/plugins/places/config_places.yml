@@ -6,4 +6,5 @@ places:
     same_place_color: "%xc%xB"
     
     shortcuts:
-        "place/create" : "place/join"
+        "places" : "place"
+        

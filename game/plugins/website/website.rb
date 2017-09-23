@@ -39,6 +39,8 @@ load 'web/controllers/config/config_web.rb'
 load 'web/controllers/config/config_webfiles.rb'
 
 
+load 'web/controllers/fs3/fs3.rb'
+
 load 'web/controllers/events/events.rb'
 
 load 'web/controllers/help/help.rb'
@@ -57,7 +59,6 @@ load 'web/controllers/login/login.rb'
 load 'web/controllers/login/register.rb'
 
 load 'web/controllers/mail/mail.rb'
-load 'web/controllers/mail/mail_message.rb'
 load 'web/controllers/mail/mail_reply.rb'
 load 'web/controllers/mail/mail_send.rb'
 
@@ -67,17 +68,23 @@ load 'web/controllers/scenes/scene_edit_related.rb'
 load 'web/controllers/scenes/scene_edit.rb'
 load 'web/controllers/scenes/scenes.rb'
 
+load 'web/controllers/wiki/edit_create_page.rb'
+load 'web/controllers/wiki/wiki.rb'
 
 load 'web/controllers/session.rb'
 load 'web/controllers/web.rb'
 load 'web/controllers/formatters.rb'
 load 'web/controllers/files.rb'
 
+load "models/wiki_page.rb"
+load "models/wiki_page_version.rb"
+
 load 'wiki_markdown_formatter.rb'
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'
 load 'website_cmd.rb'
+load 'filename_sanitizer.rb'
 
 module AresMUSH
   module Website
@@ -101,11 +108,12 @@ module AresMUSH
     end
  
     def self.locale_files
-      [ ]
+      []
     end
  
     def self.get_cmd_handler(client, cmd, enactor)       
-      if (cmd.root == "website")
+      case cmd.root      
+      when "website"
         return WebsiteCmd
       end
       

@@ -1,0 +1,42 @@
+
+<div class="panel panel-info <% if @params[:tab] != "bg" %> hidden <% end %>">
+
+
+    <div class="panel-body">
+
+        <div class="panel panel-info">
+    
+            <div class="panel-heading">
+                Description
+            </div>
+    
+            <div class="panel-body">
+        
+
+                <textarea name="description" rows="10"><%= format_input_for_html(@user.description) %></textarea>
+        
+                <p class="cg-tip">This is your main description.  You can also add details (like expanded descriptions for jewelry, tattoos, etc.) and a shorter desc that appears in the room summary.  See <a href="/help/describe">help desc</a>.</p>
+        
+            </div>
+              
+
+        </div>
+             
+
+        <div class="panel panel-info">
+    
+            <div class="panel-heading">
+                Background
+            </div>
+    
+            <div class="panel-body">
+        
+
+                <textarea name="background" rows="10"><%= format_input_for_html(@user.background) %></textarea>
+        
+                <p class="cg-tip">You don't need to write a novel.  Just cover the basics: who you are, why are you here, and is there anything noteworthy about you.  Be sure to explain any unusual skills.</p>
+        
+            </div>
+        </div>
+    </div>
+</div>

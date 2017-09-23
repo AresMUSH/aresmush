@@ -1,53 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= @page_title || game_name %></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-   <!-- 
-    <link rel="stylesheet" href="/javascripts/jquery-ui-1.11.4/jquery-ui.min.css">
-    <script src="/javascripts/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
-    <script src="/javascripts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-    <script src="/javascripts/jquery.bootstrap-growl.min.js"></script>
-    -->
-       
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://use.fontawesome.com/ee2438614b.js"></script>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-  
-  <script src="//cdn.jsdelivr.net/alertifyjs/1.10.0/alertify.min.js"></script>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css"/>
-  <!-- Default theme -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/default.min.css"/>
-  <!-- Semantic UI theme -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/semantic.min.css"/>
-  <!-- Bootstrap theme -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/bootstrap.min.css"/>
-
-  
-  
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="/scripts/config.js"></script>
-  <script src="/scripts/notify.js"></script>
-  <script src="/scripts/ansi.js"></script>
-  <script src="/scripts/ansi_up.js"></script>
-
-  <script>
-  $( function() {
-    $( "#tabs" ).tabs();
-  } );
-  </script>
-  
-    <link rel="stylesheet" type="text/css" href="/styles/ansi.css">
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="/styles/custom_style.css">
+    <%= erb :"header"%>
 
 </head>
 
@@ -57,28 +11,30 @@
        <div class="title-wrap">
        
                <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-6 col-sm-4 col-xs-4">
                <div class="site-title"><a href="/"><%= game_name %></a></div>
                <div class="site-subtitle"><%= game_address %></div>
            </div>
-           <div class="col-md-6 text-right user-bar">
-           <% if @user %>
-           <p>Welcome, <%= @user.name %>.</p>
-           <p><a href="/mail">Mail 
+           <div class="col-md-6 col-sm-8 col-xs-8">
+               <div class="text-right user-bar">
+                   <% if @user %>
+                   <p>Welcome, <%= @user.name %>.</p>
+                   <p><a href="/mail">Mail 
                
                <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
            
            </a> 
-           | <a href="/char/<%= @user.id %>">Profile</a>
+           | <a href="<%= char_page_url(@user) %>">Profile</a>
            | <a href="/logout">Logout</a> </p>
            <% else %>
-           <p><a href="/login">Login</a> 
+           <p><a href="/login?redirect=<%= request.path %>">Login</a> 
                <% if enable_registration %>
                | <a href="/register">Register</a>  
                <% end %>
            </p>
                
            <% end %>
+               </div>
            </div>
        </div>
        
@@ -120,54 +76,8 @@
                    <div class="col-md-3">    
                        <div class="clearfix"></div>
                        
-                           <%= erb :"search" %>
-                       
-                       <div class="sidebar-box">
-                           <div class="sidebar-heading">
-                               <h2>Play on the Web <i class="fa fa-globe" aria-hidden="true"></i></h2>
-                               
-                           </div>
-            
-                           <p>The <a href="/play">web client</a> allows you to play the game from many web browsers.</p>
-                       </div>
-
-
-                       <div class="sidebar-box">
-                           <div class="sidebar-heading">
-                               <h2>Play with a Client <i class="fa fa-desktop" aria-hidden="true"></i></h2>
-                           </div>
-                           <p>Connect to the game via your favorite MU client at <b><%= game_address %></b>.  AresMUSH works well with <a href="http://www.potatomushclient.com/">Potato</a>.</p>
-            
-                       </div>
-        
-                      
-                       
-                       <div class="sidebar-box">
-                           <div class="sidebar-heading">
-                               <h2>Recent Scenes <i class="fa fa-book" aria-hidden="true"></i></h2>
-                               
-                           </div>
-                           <% @sidebar_recent_scenes.each do |s| %>
-                           <p><a href="/scene/<%= s.id %>"><%= s.date_title %></a>  
-                               <%= erb :"scenes/scene_tag", :locals => { scene: s } %><br/></p>
-                           <% end %>
-            
-                           <a href="/scenes">All Scenes</a>
-                       </div>
-                       
-                       <div class="sidebar-box">
-                           <div class="sidebar-heading">
-                               <h2>Upcoming Events <i class="fa fa-calendar" aria-hidden="true"></i></h2>
-                               
-                           </div>
-                           <% @sidebar_upcoming_events.each do |e| %>
-                           <p><b><a href="/event/<%= e.id %>"><%= e.title %></a></b><br/><%= e.start_datetime_standard %></p>
-                           <% end %>
+                           <%= erb :"sidebar" %>
                            
-                           <a href="/events">All Events</a>
-                           
-                       </div>
-                       
                        
                     </div>
                                       

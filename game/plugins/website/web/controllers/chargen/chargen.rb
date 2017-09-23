@@ -5,12 +5,12 @@ module AresMUSH
       
       if (@user.is_approved?)
         flash[:error] = "You are already approved."
-        redirect "/char/#{@user.id}"
+        redirect char_page_url(@user)
       end
       
       if (Chargen.check_chargen_locked(@user))
         flash[:error] = "Unsubmit your app (in-game) before making changes."
-        redirect "/char/#{@user.id}"
+        redirect char_page_url(@user)
       end
       
       @factions = Demographics.get_group("Faction")
@@ -33,8 +33,8 @@ module AresMUSH
       
       @fs3_action_skills = FS3Skills.action_skills
       @fs3_action_skill_ratings = {
-        0 => "Unskilled", 1 => "Everyman", 2 => "Amateur", 3 => "Fair", 4 => "Good",
-        5 => "Great", 6 => "Expert", 7 => "Elite", 8 => "Legendary"
+        1 => "Everyman", 2 => "Fair", 3 => "Competent", 4 => "Good",
+        5 => "Great", 6 => "Exceptional", 7 => "Amazing"
       }
       
       @fs3_specialties = {}

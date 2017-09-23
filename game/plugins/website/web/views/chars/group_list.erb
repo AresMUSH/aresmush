@@ -6,14 +6,7 @@
           <% chars.sort_by { |c| c.name }.each do |c| %>
     
           <div class="profile-gallery">
-              <% if c.icon %>
-               <a href="/char/<%= c.id %>">
-                <img class="log-icon" src="<%= c.icon %>" 
-                   title="<%= c.name %>" />
-               </a>
-               <% else %>
-               <a href="/char/<%= c.id %>"><%= c.name %></a>
-               <% end %>
+              <%= erb :"/char_icon", :locals => { char: c } %>
           </div>
           <% end %>
       

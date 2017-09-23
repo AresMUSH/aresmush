@@ -1,0 +1,17 @@
+<h1>Recent Changes</h1>
+
+<table class="table table-striped">
+    
+    
+<% @recent.each do |r| %>
+
+<tr>
+    <td><%= r.created_at %></td>
+    <td><a href="/wiki/<%= r.wiki_page.name %>"><%= r.wiki_page.title %></a></td>
+    <td><%= r.author_name %></td>
+</tr>
+
+<% end %>
+
+
+</table>

@@ -32,7 +32,12 @@
             </select>
     </p>
     
-        
+
+    
+    <p>
+        <label for="tags" class="col-xs-2 col-form-label">Tags:</label>
+        <input type="text" name="tags" size="100" value="<%= @scene.tags.join(" ") %>"/>
+    </p>        
     <p>
     <label for="summary" class="col-xs-2 col-form-label">Summary:</label>
     <textarea name="summary" rows="5"><%= format_input_for_html(@scene.summary) %></textarea>
@@ -44,9 +49,8 @@
     <p>
     <textarea name="log" rows="25"><%= format_input_for_html(@scene.scene_log.log) %></textarea>
     </p>
-
-
-
+    
         <p> <a href="/scene/<%= @scene.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
         
     </form>
+    

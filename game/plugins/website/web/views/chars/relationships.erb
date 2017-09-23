@@ -20,11 +20,11 @@
     <% relations.sort.each do |name, data| %>
         
         <div class="row relationship-row">
-            <div class="col col-xs-5 col-md-3">
-                <a href="/char/<%= name %>"><img src="<%= icon_for_name(name) %>" class="relationship-image"/></a>
+            <div class="col col-xs-12 col-sm-3">
+                <a href="/char/<%= name.downcase %>"><img src="<%= icon_for_name(name) %>" class="relationship-image"/></a>
             </div>
             
-            <div class="col col-xs-6 col-md-8 ansi">
+            <div class="col col-xs-12 col-sm-8 ansi">
                 <i><%= name %></i>
                 <%= format_markdown_for_html data['relationship'] %>
             </div>

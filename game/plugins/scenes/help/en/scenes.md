@@ -45,7 +45,7 @@ A scene can either be public (anyone's invited) or private.  Scenes on the grid 
 
 To join a public scene, you can use the scene/join command.  To join a private scene, you'll need a meetme (see [Meetme](/help/meetme).
 
-`scenes` - Lists scenes.
+`scenes` - Lists active scenes.
 `scene/join <#>` - Joins a scene.
 
 ## Setting Scene Info
@@ -82,5 +82,7 @@ You should stop a scene when it's over.  Scenes with empty rooms will be stopped
 
 > **Tip:** Admins and characters with the `manage_scenes` permission can stop and delete other people's scenes.
 
+## Logging and Poses
 
+For help with scene logs, including the pose editing commands, see [Scene Logging](/help/logging).
 

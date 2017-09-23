@@ -88,7 +88,7 @@ fs3combat:
         Rocket:
             description: "Unguided Anti-Personnel Rocket"
             skill: Gunnery
-            lethality: 20
+            lethality: 40
             penetration: 8
             weapon_type: Explosive
             is_automatic: false
@@ -302,7 +302,7 @@ fs3combat:
         Hmg:
             description: "Heavy machinegun."
             skill: Firearms
-            lethality: 0
+            lethality: 20
             penetration: 8
             weapon_type: Ranged
             is_automatic: true
@@ -313,6 +313,7 @@ fs3combat:
             has_shrapnel: false
             allowed_specials: 
                 - 'Ap'
+                - 'Bipod'
             
         Kew:
             description: "KEW Assault Cannon.  This is a chain gun and always burst fires, so that's factored into the damage."

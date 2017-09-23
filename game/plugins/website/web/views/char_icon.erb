@@ -1,0 +1,26 @@
+<div class="char-icon-container">
+    
+<% if char.profile_image %>
+
+    <div class="log-icon-container">
+        <a href="<%= char_page_url(char) %>">
+            <img class="log-icon" src="<%= profile_image_url(char) %>" />
+        </a>
+    </div>
+
+    <div class="log-icon-title-container">
+        <div class="log-icon-title">
+         <%= char.name %>
+        </div>
+    </div>
+
+
+<% else %>
+
+<a href="<%= char_page_url(char) %>">
+ <%= char.name %>
+</a>
+
+<% end %>
+
+</div>

@@ -16,7 +16,8 @@ module AresMUSH
     def demographic(key)
       name = key.to_s
       return self.birthdate if name == "birthdate"
-      return self.demographics[name]
+      demo = self.demographics[name]
+      return demo.blank? ? nil : demo
     end
     
     def update_demographic(key, value)

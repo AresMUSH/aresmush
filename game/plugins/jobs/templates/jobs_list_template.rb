@@ -5,9 +5,10 @@ module AresMUSH
       
       attr_accessor :paginator
       
-      def initialize(char, paginator)
+      def initialize(char, paginator, filter = nil)
         @char = char
         @paginator = paginator
+        @filter = filter || @char.jobs_filter
         super File.dirname(__FILE__) + "/jobs_list.erb"
       end
       
@@ -33,7 +34,7 @@ module AresMUSH
       
       def jobs_footer
         page = " #{@paginator.page_marker} "
-        filter = " #{t('jobs.job_filter_active', :filter => @char.jobs_filter)} "
+        filter = " #{t('jobs.job_filter_active', :filter => @filter)} "
         "#{center(filter, 34, '-')}#{center('', 10, '-')}#{center(page, 34, '-')}"
       end
     end

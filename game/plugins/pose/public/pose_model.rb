@@ -14,6 +14,12 @@ module AresMUSH
     def autospace=(value)
       self.update(pose_autospace: value)
     end
+    
+    def last_posed
+      last_pose_time = self.room.pose_order[self.name]
+      return nil if !last_pose_time
+      TimeFormatter.format(Time.now - Time.parse(last_pose_time))
+    end
   end
   
   class Room

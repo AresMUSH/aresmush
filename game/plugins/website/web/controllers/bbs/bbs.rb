@@ -14,6 +14,5 @@ module AresMUSH
       @boards = BbsBoard.all_sorted
       erb :"bbs/bbs_index"
     end
-    
   end
 end

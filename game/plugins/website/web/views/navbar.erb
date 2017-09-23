@@ -13,29 +13,71 @@
                  
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
+                                
+               
+          
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="playnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Play <span class="caret"/> </a>
+              <ul class="dropdown-menu">
+                  <li><a href="/chargen">Character Creation</a></li>
+                  <li><a href="/play">Web Client</a></li>
+                  <li><a href="/who">Who's Online</a></li> 
+              </ul>
+          </li>
+          
 
-                <% if !is_approved? && !is_admin? %>
-                <li><a href="/chargen">Chargen</a></li>
-                <% end %>
-          
-                <li><a href="/play">Play</a></li>
-          
+               
+
           
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Directory <span class="caret"/> </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/scenes">Scenes</a></li> 
-                        <li><a href="/bbs">Boards</a></li> 
                         <li><a href="/chars">Characters</a></li>
-                        <li><a href="/locations">Locations</a></li>
+                        <% if AresMUSH::Idle.roster_enabled? %>
+                        <li><a href="/roster">Roster</a></li> 
+                        <% end %>
+                        <li><a href="/actors">Actors</a></li>
+                        <li><a href="/players">Players</a></li>
+                        <li><hr></li>
+                        <li><a href="/scenes">Scenes</a></li> 
                         <li><a href="/combat">Combats</a></li>
+                        <li><a href="/locations">Locations</a></li>
+                        <li><hr></li>
+                        <li><a href="/bbs">Boards</a></li> 
+                        <li><a href="/events">Events</a></li> 
+                        <li><hr></li>
                         <li><a href="/files">Files</a></li>
                     </ul>
                 </li>
           
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="fs3nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> FS3 <span class="caret"/> </a>
+              <ul class="dropdown-menu">
+                  <li><a href="/fs3/skills">Skills List</a></li>
+                  <li><a href="/fs3/gear">Gear List</a></li>
+                  <li><hr></li>
+                  <li><a href="http://aresmush.com/fs3/fs3-3">Player's Guide</a></li>
+                  <li><a href="http://aresmush.com/fs3/fs3-3/roll-quickref">Rolls Quick Reference</a></li>
+                  <li><a href="http://aresmush.com/fs3/fs3-3/combat-quickref">Combat Quick Reference</a></li>
+                  <li><a href="http://aresmush.com/fs3/fs3-3/combat-walkthrough">Interactive Combat Walkthrough</a></li>
+                  
+              </ul>
+          </li>
           
-                <li><a href="/help">Help</a></li> 
-              
+          
+          
+          
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="helpnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Help <span class="caret"/> </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/help/web_portal">Web Portal Help</a></li>
+                        <li><a href="/help">Game Commands</a></li>
+                        <li><a href="/help/markdown">Markdown Reference</a></li>
+                        <li><a href="http://aresmush.com/mush-101">What is a MUSH?</a></li>
+                    </ul>
+                </li>
+                
+                              
                 <% if is_admin? %>              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"/></a>
@@ -48,9 +90,8 @@
                 </li>
                 <% end %>
                     
-                    
-                <li><a href="<%= game_website %>">Wiki</a></li> 
-                    
+                 <%= erb :"wiki_nav" %>
+                                    
             </ul>
                     
         </div>            

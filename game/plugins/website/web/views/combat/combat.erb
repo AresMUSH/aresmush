@@ -3,7 +3,7 @@
 <p><i>Organized by <%= @combat.organizer.name %></i></p>
 
 <% if @user == @combat.organizer || is_admin? %>
-  <p><a href="/combat/<%= @combat.id %>/manage" >[ Manage Combat ]</a></p>
+  <p><a href="/combat/<%= @combat.id %>/manage" >[ Setup Combat ]</a></p>
 <% end %>
 
 <table class="table">

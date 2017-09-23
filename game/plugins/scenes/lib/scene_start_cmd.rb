@@ -43,7 +43,6 @@ module AresMUSH
             location: self.location, 
             private_scene: self.privacy == "Private",
             scene_type: Scenes.scene_types.first,
-            title: self.location,
             temp_room: self.temp,
             icdate: ICTime.ictime.strftime("%Y-%m-%d"))
             

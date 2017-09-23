@@ -18,5 +18,11 @@ module AresMUSH
       return [] if !handle
       Character.find_by_handle(handle).select { |c| c }
     end
+    
+    def self.is_alt?(char1, char2)
+      return false if !char1.handle
+      return false if !char2.handle
+      char1.handle.id == char2.handle.id
+    end
   end
 end

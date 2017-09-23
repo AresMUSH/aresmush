@@ -13,7 +13,7 @@ module AresMUSH
         return nil
       end
       
-      def handle
+      def handle        
         client.emit_success "Done!"
       end
 

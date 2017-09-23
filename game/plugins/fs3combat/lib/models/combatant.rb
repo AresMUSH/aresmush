@@ -26,7 +26,7 @@ module AresMUSH
     attribute :defense_mod, :type => DataType::Integer, :default => 0
     attribute :attack_mod, :type => DataType::Integer, :default => 0
     
-    reference :subdued_by, "AresMUSH::Character"
+    reference :subdued_by, "AresMUSH::Combatant"
     reference :aim_target, "AresMUSH::Combatant"
     reference :character, "AresMUSH::Character"
     reference :combat, "AresMUSH::Combat"
@@ -70,7 +70,7 @@ module AresMUSH
     end
     
     def is_subduing?(target)
-      self.action && self.action.class == SubdueAction && self.action.targets && self.action.target == target
+      self.action && self.action.class == FS3Combat::SubdueAction && self.action.targets && self.action.target == target
     end
     
     def is_aiming?

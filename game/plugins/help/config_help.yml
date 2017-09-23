@@ -3,3 +3,4 @@ help:
         "shelp" : "help"
         "ahelp" : "help"
         "bhelp" : "help"
+        "help/view" : "help/detail"

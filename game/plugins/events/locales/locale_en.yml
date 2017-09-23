@@ -14,4 +14,5 @@ en:
         invalid_event_date: "Invalid event date format.  The date needs to be in this form: %{format_str}"
         
         event_starting_soon:  "Reminder: Event %{title} is starting at %{starts}."
+        events_updated: "Events have been updated."
         

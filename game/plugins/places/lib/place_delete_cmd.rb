@@ -14,15 +14,15 @@ module AresMUSH
       end
       
       def handle
-        place = enactor_room.places.find(name: self.name).first
+        place = Places.find_place(enactor, self.name)
         
         if (!place)
-          client.emit_failure t('places.place_doesnt_exit')
+          client.emit_failure t('places.place_doesnt_exist')
           return
         end
         
         place.delete
-        client.emit_success t('places.place_deleted', :name => enactor.name, :place_name => self.name)
+        client.emit_success t('places.place_deleted', :name => enactor.name, :place_name => place.name)
       end
     end
   end

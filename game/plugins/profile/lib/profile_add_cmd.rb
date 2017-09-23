@@ -18,7 +18,7 @@ module AresMUSH
       def handle
         profile = enactor.profile
         profile[self.field] = self.value
-        enactor.update(profile: profile)        
+        enactor.set_profile(profile)
         client.emit_success t('profile.custom_profile_set', :field => self.field)
       end
     end

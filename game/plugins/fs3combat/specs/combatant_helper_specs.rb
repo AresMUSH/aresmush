@@ -370,16 +370,22 @@ module AresMUSH
           @combatant.should_receive(:roll_ability).with("init", 0) { 1 }
           FS3Combat.roll_initiative(@combatant, "init").should eq 1
         end
-        
+
+        it "should apply mod for subdue action" do
+          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::SubdueAction" }
+          @combatant.should_receive(:roll_ability).with("init", 3) { 4 }                  
+          FS3Combat.roll_initiative(@combatant, "init").should eq 4
+        end
+                
         it "should apply mod for suppress action" do
           @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::SuppressAction" }
-          @combatant.should_receive(:roll_ability).with("init", 2) { 4 }                  
+          @combatant.should_receive(:roll_ability).with("init", 3) { 4 }                  
           FS3Combat.roll_initiative(@combatant, "init").should eq 4
         end
         
         it "should apply mod for distract action" do
           @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::DistractAction" }
-          @combatant.should_receive(:roll_ability).with("init", 2) { 4 }
+          @combatant.should_receive(:roll_ability).with("init", 3) { 4 }
           FS3Combat.roll_initiative(@combatant, "init").should eq 4
         end
         

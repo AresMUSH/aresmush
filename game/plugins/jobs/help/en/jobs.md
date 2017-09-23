@@ -17,6 +17,10 @@ The jobs list shows you the jobs.
 `jobs` - Lists jobs
 `job <#>` - Views a job.
 
+By default the jobs list only shows active jobs.  You can look at old ones too:
+
+`jobs/all` - Shows all jobs, even old ones.  Add a number after 'all' to see additional pages (e.g. jobs/all2, jobs/all3, etc.)
+
 ## Filtering  Jobs
 
 You can change what jobs you see in the jobs list.  If you're a coder, you could set your filter to only show jobs in the CODE category.  Or you might set the filter so it only shows jobs that are assigned to you.
@@ -26,12 +30,11 @@ You can change what jobs you see in the jobs list.  If you're a coder, you could
 Valid filters are:
 
 * Active - Jobs that are open and/or have new activity since you last looked.  This is the default filter.
-* All - All jobs, open or closed.
 * Mine - Jobs that are open and assigned to you.
 * (Category Name) - Jobs in the given category.
 
 `jobs/filer <flter>` - Filters the jobs list.
-`jobs/all`, `jobs/mine`, `jobs/active` - Shortcuts for the common filters.
+`jobs/mine`, `jobs/active` - Shortcuts for the common filters.
 
 ## Job Workflow
 

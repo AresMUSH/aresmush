@@ -9,6 +9,7 @@
         <li class="active"><a data-toggle="tab" href="#demographics">Demographics</a></li>
         <li><a data-toggle="tab" href="#profile">Profile</a></li>
         <li><a data-toggle="tab" href="#relationships">Relationships</a></li>
+        <li><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
         <li><a data-toggle="tab" href="#gallery">Gallery</a></li>
     </ul>
     
@@ -16,32 +17,67 @@
 
     <div class="tab-content">
 
-      <div id="demographics" class="tab-pane fade in active">
-          <%= erb :"chars/edit_demographics" %>
-      </div>
+        <div id="demographics" class="tab-pane fade in active">
+            <%= erb :"chars/edit_demographics" %>
+        </div>
       
-      <div id="profile" class="tab-pane fade in">
-          <%= erb :"chars/edit_profile" %>
-      </div>
+        <div id="profile" class="tab-pane fade in">
+            <%= erb :"chars/edit_profile" %>
+        </div>
     
-      <div id="relationships" class="tab-pane fade in">
+        <div id="relationships" class="tab-pane fade in">
           
-          <%= erb :"chars/edit_relationships" %>
+            <%= erb :"chars/edit_relationships" %>
           
-      </div>
+        </div>
+      
+        <div id="hooks" class="tab-pane fade in">
+            <%= erb :"chars/edit_hooks" %>
+          
+        </div>
       
       
-      <div id="gallery" class="tab-pane fade in">
-          <%= erb :"chars/edit_gallery" %>
-      </div>
-  </div>
+        <div id="gallery" class="tab-pane fade in">
+            <%= erb :"chars/edit_gallery" %>
+        </div>
+    </div>
     
+    <br/>
+        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Character Tags
+        </div>
+        <div class="panel-body">
+            <input type="text" name="tags" size="100" value="<%= @char.profile_tags.join(" ") %>"/>
+        </div>
+    </div>
     
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Files
+        </div>
+        <div class="panel-body">
+            <a href="/files" target="blank">View All Files</a>
+            <br/>
+            <a href="#" id="show-file-upload">Show File Upload <i class="fa fa-caret-square-o-down" aria-hidden="true"></i></a>
+
+            <a href="#" id="hide-file-upload">Hide File Upload <i class="fa fa-caret-square-o-up" aria-hidden="true"></i></a>
+            
+            <iframe id="file-upload-frame" width="100%" height="300px" src="/files/upload-snippet?prefix=<%= @char.name %>" ></iframe>
+                
+        </div>
+    </div>
     
+    <div class="row">
+        <div class="col col-xs-12">
+            <div class="pull-right">
     
+                <p> <a href="<%= char_page_url(@char) %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
     
-    
-    <p> <a href="/char/<%= @char.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
+            </div>
+        </div>
+    </div>
     
 </form>
 

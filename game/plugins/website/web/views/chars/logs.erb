@@ -18,9 +18,7 @@
   
         <div class="row">
             <% char_scenes_by_type(@char, type).select { |s| s.shared }.reverse.each do |s| %>
-            <div class="col col-xs-4"><a href="/scene/<%= s.id %>"><%= s.date_title %></a> 
-                <%= erb :"scenes/scene_tag", :locals => { scene: s } %>
-            </div>
+            <div class="col col-xs-4"><a href="/scene/<%= s.id %>"><%= s.date_title %></a> </div>
             <% end %>
         </div>
       

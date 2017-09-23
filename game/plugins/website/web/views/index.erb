@@ -2,6 +2,28 @@
             <img src="/images/jumbotron.png" />
             <div class="jumbotron-tagline"><%= @website_tagline %></div>
             <div class="ansi"><%= format_markdown_for_html @website_welcome %></div>
-            <p>This is the <b>Web Portal</b>, which integrates directly with the game to let you create a character, play from the web, read bulletin boards and scenes, access help files and more.  You can also visit the game's main website at <a href="<%= game_website %>"><%= game_website %></a>.
+            <p>This is <b>Web Portal</b>, which lets you interact with the game from a web browser.  You can create your character online, view and edit character profiles, browse the game's wiki, read scene logs and more!
         </div>
+        
+        
+        <div class="row">
+        <div class="splash-box col col-xs-6">
+            <div class="sidebar-heading">
+                <h2>Play on the Web <i class="fa fa-globe" aria-hidden="true"></i></h2>
+                
+            </div>
+
+            <p>The <a href="/play">web client</a> allows you to play the game from many web browsers.</p>
+        </div>
+
+
+        <div class="splash-box col col-xs-6">
+            <div class="sidebar-heading">
+                <h2>Play with a Client <i class="fa fa-desktop" aria-hidden="true"></i></h2>
+            </div>
+            <p>Connect to the game via your favorite MU client at <b><%= game_address %></b>.  AresMUSH works well with <a href="http://www.potatomushclient.com/">Potato</a>.</p>
+
+        </div>
+      </div>
+        
         

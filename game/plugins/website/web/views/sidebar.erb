@@ -1,0 +1,53 @@
+                           <%= erb :"search" %>
+                       
+                       
+                      <div class="sidebar-box">
+                          <div class="sidebar-heading">
+                              <h2>Upcoming Events <i class="fa fa-calendar" aria-hidden="true"></i></h2>
+                              
+                          </div>
+                          <% @sidebar_upcoming_events.each do |e| %>
+                          <p><b><a href="/event/<%= e.id %>"><%= e.title %></a></b><br/><%= e.start_datetime_standard %></p>
+                          <% end %>
+                           <br/>
+                          <p><a href="/events">All Events</a></p>
+                          
+                      </div>
+                       
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Recent Scenes <i class="fa fa-book" aria-hidden="true"></i></h2>
+                               
+                           </div>
+                           <% @sidebar_recent_scenes.each do |s| %>
+                           <p><a href="/scene/<%= s.id %>"><%= s.date_title %></a>  
+                               <%= erb :"scenes/scene_tag", :locals => { scene: s } %><br/></p>
+                           <% end %>
+                           <br/>
+                           <p><a href="/scenes">All Scenes</a></p>
+                       </div>
+                       
+                       
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Recent Wiki Changes <i class="fa fa-file-text-o" aria-hidden="true"></i></h2>
+                               
+                           </div>
+                           <% @sidebar_recent_wiki.each do |w| %>
+                           <p><a href="/wiki/<%= w.wiki_page.name %>"><%= w.wiki_page.title %></a></p>
+                           <% end %>
+                           <br/>
+                           <p><a href="/wiki/recent_changes">All Changes</a></p>
+                       </div>
+                       
+                       <div class="sidebar-box">
+                           <div class="sidebar-heading">
+                               <h2>Recent Profile Updates <i class="fa fa-users" aria-hidden="true"></i></h2>
+                               
+                           </div>
+                           <% @sidebar_recent_profiles.each do |c| %>
+                           <p><a href="/char/<%= c.name %>"><%= c.name %></a></p>
+                           <% end %>
+                           <br/>
+                           <p><a href="/chars">All Characters</a></p>
+                       </div>

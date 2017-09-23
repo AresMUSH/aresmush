@@ -7,13 +7,13 @@ en:
         good_rating: "Good"
         great_rating: "Great"
         exceptional_rating: "Exceptional"
-        fair_rating: "Fair"
-        expert_rating: "Expert"
-        elite_rating: "Elite"
-        legendary_rating: "Legendary"
+        
+        
         everyman_rating: "Everyman"
-        unskilled_rating: "Unskilled"
-        amateur_rating: "Amateur"
+        fair_rating: "Fair"
+        competent_rating: "Competent"
+        amazing_rating: "Amazing"
+        legendary_rating: "Legendary"
         
         # Background Skill Ratings
         interest_rating: "Interest"
@@ -92,7 +92,7 @@ en:
         too_many_attributes: "%xh%xr< Too many points on attributes. (%{max} max) >%xn"
         unusual_abilities_check: "Checking for unusual skills."
         unusual_skill: "%xh%xy< %{skill} is an unusual skill.  Be sure there's good reason for it. >%xn"
-        high_bg: "%xh%xy< %{skill} is at a professional level.  Be sure there's good reason for it. >%xn"
+        high_bg: "%xh%xy< %{skill} is pretty high for a hobby.  Be sure there's good reason for it. >%xn"
 
 
         # ------------------------------------------------------

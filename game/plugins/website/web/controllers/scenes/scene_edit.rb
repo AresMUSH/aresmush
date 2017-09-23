@@ -28,9 +28,39 @@ module AresMUSH
       @scene.update(title: params[:title])
       @scene.update(icdate: params[:icdate])
       
+      tags = params[:tags] || ""
+      @scene.update(tags: tags.split(" ").map { |t| t.downcase })
+      
       flash[:info] = "Scene updated!"
       redirect "/scene/#{id}"
     end
+    
+    get '/scene/:id/delete', :auth => :admin do |id|
+      @scene = Scene[id]
+      if (!@scene)
+        flash[:error] = "That scene does not exist!"
+        redirect "/scenes"
+      end
+
+      if (!@scene.shared)
+        flash[:error] = "That scene has not been shared."
+        redirect "/scenes"
+      end
+      
+      erb :"/scenes/delete_scene"
+    end
+    
+    get '/scene/:id/delete/confirm', :auth => :admin do |id|
+      @scene = Scene[id]
+      if (!@scene)
+        flash[:error] = "That scene does not exist!"
+        redirect "/scenes"
+      end
+      @scene.delete
+      flash[:info] = "Scene deleted!"
+      redirect "/scenes"
+    end
+    
     
   end
 end

@@ -1,8 +1,5 @@
 <h3>Relationships</h3>
 
-<div class="hint">You can also edit relationships in the game (help relationships).</div>
-<p/>
-
 <div id="relation-container">
     
 <% @char.relationships.each_with_index do |(name, data), i| %>
@@ -47,5 +44,18 @@
 </div> 
 
 </div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        Category Order
+    </div>
+    <div class="panel-body">
+        <p>List the relationship category names in the order you want them to appear, separated by commas.</p>
+        <p>
+            <input type="text" name="relationship_category_order" class="col-xs-2" size="50" value="<%= @char.relationships_category_order.join(", ") %>"/>
+        </p>
+    </div>
+</div>
+
 
 <p><a class="btn-info btn" id="add-relation">Add New Relationship</a></p>

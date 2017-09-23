@@ -1,0 +1,37 @@
+<h1><%= @page.display_title %> Source</h1>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Other Versions
+    </div>
+
+<ol>
+    <% @page.wiki_page_versions.to_a.reverse.each do |version| %>
+    <li><a href="/wiki/<%= @page.name %>/source/<%= version.id %>"><%= version.created_at %></a> (<%= version.author_name %>)</li>
+    <% end %>
+</ol>
+
+</div>
+
+
+<div class="ansi">
+<%= format_output_for_html @version.text %>
+</div>
+
+<hr/>
+
+  <% if is_approved? %>
+
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+
+      <a href="/wiki/<%= @page.name %>/revert/<%= @version.id %>" class="btn btn-warning">Revert to This Version</a>
+
+  </div>
+  </div>
+</div>
+  <% end %>     
+
+
+<a href="/wiki/<%= @page.name %>"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Page</a>

@@ -159,22 +159,20 @@ module AresMUSH
     
     def rating_name
       case rating
-      when 0 
-        return t('fs3skills.unskilled_rating')
       when 1
         return t('fs3skills.everyman_rating')
       when 2
-        return t('fs3skills.amateur_rating')
-      when 3
         return t('fs3skills.fair_rating')
+      when 3
+        return t('fs3skills.competent_rating')
       when 4
         return t('fs3skills.good_rating')
       when 5
         return t('fs3skills.great_rating')
       when 6
-        return t('fs3skills.expert_rating')
+        return t('fs3skills.exceptional_rating')
       when 7
-        return t('fs3skills.elite_rating')
+        return t('fs3skills.amazing_rating')
       when 8
         return t('fs3skills.legendary_rating')
       end
@@ -200,11 +198,11 @@ module AresMUSH
       when 0
         return t('fs3skills.everyman_rating')
       when 1
-        return t('fs3skills.interest_rating')
+        return t('fs3skills.fair_rating')
       when 2
-        return t('fs3skills.proficiency_rating')
+        return t('fs3skills.good_rating')
       when 3
-        return t('fs3skills.expertise_rating')
+        return t('fs3skills.exceptional_rating')
       end
     end
   end

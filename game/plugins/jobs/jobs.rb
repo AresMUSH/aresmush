@@ -21,6 +21,7 @@ load "lib/jobs_catchup.rb"
 load "lib/jobs_filter_cmd.rb"
 load "lib/job_mail_cmd.rb"
 load "lib/jobs_new_cmd.rb"
+load "lib/job_unread_cmd.rb"
 load "lib/list_jobs_cmd.rb"
 load "lib/list_requests_cmd.rb"
 load "lib/purge_jobs_cmd.rb"
@@ -61,6 +62,8 @@ module AresMUSH
        case cmd.root
        when "job"
          case cmd.switch
+         when "all"
+           return ListJobsCmd
          when "backup"
            return JobsBackupCmd
          when "cat"
@@ -95,6 +98,8 @@ module AresMUSH
            return JobStatusCmd
          when "title"
            return ChangeTitleCmd
+         when "unread"
+           return JobUnreadCmd
          when nil
            if (cmd.args)
              return ViewJobCmd

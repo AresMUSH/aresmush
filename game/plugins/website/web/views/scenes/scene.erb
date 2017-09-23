@@ -26,17 +26,18 @@
     </div>
     
     <div class="log-participants-box">
+        
     <% @scene.participants.to_a.sort_by { |c| c.name }.each do |c| %>
-    <a href="/char/<%= c.id %>">
-        <% if c.icon %>
-         <img class="log-icon" src="<%= c.icon %>" title="<%= c.name %>" />
-        <% else %>
-         <%= c.name %>
-        <% end %>
-        </a>
+        <div class="profile-gallery">    
+            <%= erb :"/char_icon", :locals => { char: c } %>    
+        </div>
     <% end %>
+    
     </div>
     
+    <div class="clearfix"> </div>
+
+
 </div>
 
 <p><a href="/scenes"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Scenes</a></p>
@@ -46,15 +47,29 @@
     <%= format_markdown_for_html @scene.scene_log.log %>
 </div>
     
+    <br/>
+<p>
+    <b>Tags:</b>  
+    <% @scene.tags.each do |tag| %>
+      <a href="/wiki/tag/<%= tag %>"><%= tag %></a>
+    <% end %>
+   </p>
+    
 <p><a href="/scenes"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Scenes</a></p>
 
 
 <% if can_access_scene?(@scene) && is_approved? %>
 
-<div class="pull-right">
-    <a href="/scene/<%= @scene.id %>/edit" class="btn btn-primary">Edit Scene</a>
-    <a href="/scene/<%= @scene.id %>/related" class="btn btn-default">Edit Related Scenes</a>
-    <a href="/scene/<%= @scene.id %>/participants" class="btn btn-default">Edit Participants</a>
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+        <% if is_admin? %>
+        <a href="/scene/<%= @scene.id %>/delete" class="btn btn-warning">Delete Scene</a>
+        <% end %>
+        <a href="/scene/<%= @scene.id %>/edit" class="btn btn-primary">Edit Scene</a>
+        <a href="/scene/<%= @scene.id %>/related" class="btn btn-default">Edit Related Scenes</a>
+        <a href="/scene/<%= @scene.id %>/participants" class="btn btn-default">Edit Participants</a>
+        </div>
+    </div>
 </div>
-
 <% end %>

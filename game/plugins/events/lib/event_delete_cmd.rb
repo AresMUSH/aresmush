@@ -17,11 +17,8 @@ module AresMUSH
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
           
-           if (Events.can_manage_events?(enactor) || enactor == event.character)
-             event.delete
-             Global.client_monitor.emit_all_ooc t('events.event_deleted', :title => event.title,
-                :starts => event.start_time_standard, :name => enactor_name)
-             
+          if (Events.can_manage_event(enactor, event))
+            Events.delete_event(event, enactor)             
            else
              client.emit_failure t('dispatcher.not_allowed')
            end 

@@ -1,0 +1,18 @@
+<h1><%= @name %></h1>
+
+<div class="ansi">
+    
+<table class="table table-striped">
+    
+<% @data.each do |key, value| %>
+
+<tr>
+    <td><%= key.titleize %></td>
+    <td><%= format_output_for_html AresMUSH::FS3Combat.gear_detail(value).to_s %></td>
+</tr>
+
+<% end %>
+
+</table>
+
+</div>

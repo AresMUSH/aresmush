@@ -1,0 +1,39 @@
+<h1><%= @page.display_title %></h1>
+
+<form method="POST" action="/wiki/<%= @page.id %>/edit">
+
+<% if !@page.is_special_page? %>
+    <p>
+        <label for="name" class="col-xs-2 col-form-label">Page Name:</label>
+        <input type="text" name="name" size="100" value="<%= @page.name %>"/>
+    </p>
+<% else %>
+
+<input type="hidden" name="name" size="100" value="<%= @page.name %>"/>
+
+<% end %>
+    
+    <p>
+        <label for="title" class="col-xs-2 col-form-label">Title:</label>
+        <input type="text" name="title" size="100" value="<%= @page.display_title %>"/>
+    </p>
+
+    <p>
+        <label for="tags" class="col-xs-2 col-form-label">Tags:</label>
+        <input type="text" name="tags" size="100" value="<%= @page.tags_text %>"/>
+    </p>
+    
+    <textarea name="text" rows="20"><%= format_input_for_html(@page.text) %></textarea>
+    
+        
+    <div class="row">
+        <div class="col col-xs-12">
+            <div class="pull-right">
+    
+    <p> <a href="/wiki/<%= @page.name %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
+    
+</div>
+</div>
+</div>
+    
+</form>

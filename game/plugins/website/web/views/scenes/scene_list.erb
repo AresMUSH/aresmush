@@ -4,7 +4,6 @@
 <thead>
     <tr>
         <th>Scene</th>
-        <th>Date</th>
         <th>Participants</th>
     </tr>
 </thead>
@@ -14,7 +13,7 @@
 <% scenes.each do |s| %>
     <tr>
         <td>
-        <a href="/scene/<%= s.id %>"><%= s.title %></a>
+        <a href="/scene/<%= s.id %>"><%= s.icdate %> - <%= s.title %></a>
         
        <span class="label label-info 
         scene-<%= s.scene_type ? s.scene_type.downcase : "unknown" %>">
@@ -22,9 +21,6 @@
        
         
         <p><%= s.summary %></p>
-        </td>
-        <td>
-            <%= s.icdate %>
         </td>
         <td>
             <%= s.participant_names.join(", ")%>

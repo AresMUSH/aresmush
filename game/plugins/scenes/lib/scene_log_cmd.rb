@@ -14,7 +14,7 @@ module AresMUSH
         self.all = cmd.switch_is?("log")
       end
       
-      def handle        
+      def handle    
         Scenes.with_a_scene(self.scene_num, client) do |scene|
           if (!scene.logging_enabled)
             client.emit_failure t('scenes.logging_not_enabled')

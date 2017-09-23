@@ -5,8 +5,9 @@
   <% @groups.each_with_index do |(group, group_data), i| %>
       <li class="<%= 'active' if i == 0 %>"><a data-toggle="tab" href="#<%= group.parameterize('_')  %>"><%= group %></a></li>
   <% end %>
-  <li ><a data-toggle="tab" href="#roster">Roster</a></li>
-  
+  <% if AresMUSH::Idle.roster_enabled? %>
+      <li ><a data-toggle="tab" href="#roster">Roster</a></li>
+  <% end %>
 </ul>
 
 <div class="tab-content">
@@ -28,12 +29,12 @@
   </div>
   <% end %>
   
+  <% if AresMUSH::Idle.roster_enabled? %>
   <div id="roster" class="tab-pane fade in">
       <h2>Roster</h2>
 
-      <% @roster.each_with_index do |(group, group_data), i| %>
-            <%= erb :"chars/group_list", :locals => { chars: group_data, title: group } %>
-      <% end %>
+      See <a href="/roster">Roster</a> for ready-made characters on the roster.
   </div>
+  <% end %>
 
 </div>

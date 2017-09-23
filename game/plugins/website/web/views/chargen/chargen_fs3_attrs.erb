@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        Attributes
+    </div>
+    
+    <div class="panel-body">
+        <p class="cg-tip">Attributes represent basic abilities that everyone has to some extent. Attributes boost related skills, and come into play when no skill directly applies.  See <a href="http://aresmush.com/fs3/fs3-3/chargen/#attributes">FS3 Attributes</a> for details.</p>
+
+        <% @fs3_attrs.each_with_index do |a, i| %>
+        <% attr_name = a['name'] %>
+        <div class="form-group row">
+            <label for="attr-<%= i %>" class="col-xs-2 col-form-label"><%= attr_name %>:</label> 
+            <select name="attr-<%= i %>">
+                <% @fs3_attr_ratings.each do |num, desc| %>
+                <option value="<%= num %>" 
+                    <% if AresMUSH::FS3Skills.ability_rating(@user, attr_name) == num %> selected <% end %> >
+                    <%= desc %>
+                </option>
+                <% end %>
+            </select>
+            <p class="cg-tip"><%= a['desc'] %></p>
+        </div>
+        
+        <% end %>
+        
+    </div>
+</div>

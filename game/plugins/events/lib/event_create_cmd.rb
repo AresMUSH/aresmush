@@ -24,13 +24,7 @@ module AresMUSH
           return
         end
         
-        event = Event.create(title: self.title, 
-          starts: datetime, 
-          description: desc,
-          character: enactor)
-          
-          Global.client_monitor.emit_all_ooc t('events.event_created', :title => event.title,
-             :starts => event.start_datetime_standard, :name => enactor_name)
+        Events.create_event
       end
     end
   end

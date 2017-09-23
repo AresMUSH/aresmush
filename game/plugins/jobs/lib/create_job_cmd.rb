@@ -8,9 +8,18 @@ module AresMUSH
       def parse_args
         if (cmd.args !~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          
           self.title = trim_arg(args.arg1)
-          self.description = args.arg2
-          self.category = Jobs.request_category
+
+          # If first arg is a category, then second arg is the title
+          if (Jobs.categories.include?(title.upcase))
+            self.description = "--"
+            self.category = self.title
+            self.title = trim_arg(args.arg2)
+          else            
+            self.description = args.arg2
+            self.category = Jobs.request_category
+          end
         else          
           if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
             args = cmd.parse_args(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)

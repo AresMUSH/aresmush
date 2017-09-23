@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+    
+    <div class="panel-heading">
+        Action Skills
+    </div>
+    
+    <div class="panel-body">
+        <p class="cg-tip">Action Skills represent your ability in areas deemed important for gameplay. See <a href="http://aresmush.com/fs3/fs3-3/chargen/#action-skills">FS3 Action Skills</a> for details.</p>
+
+        <% @fs3_action_skills.each_with_index do |a, i| %>
+        <% skill = a['name'] %>
+        <div class="form-group row">
+            <label for="action-<%= i %>" class="col-xs-2 col-form-label"><%= skill %>:</label> 
+            <select name="action-<%= i %>">
+                <% @fs3_action_skill_ratings.each do |num, desc| %>
+                <option value="<%= num %>" 
+                    <% if AresMUSH::FS3Skills.ability_rating(@user, skill) == num %> selected <% end %> >
+                    <%= desc %>
+                </option>
+                <% end %>
+            </select>
+            <p class="cg-tip"><%= a['desc'] %></p>
+        </div>
+        <% end %>
+        
+    </div>
+</div>

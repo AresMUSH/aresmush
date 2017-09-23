@@ -45,7 +45,7 @@ en:
         
         logging_not_enabled: "The scene log is not on."
         log_cleared: "You clear the scene log."
-        log_list: "Scene Log"
+        scene_log_title: "Scene Log %{id}"
         no_scene_in_ooc_room: "Scenes are not available in OOC rooms."
         logging_already_on: "The scene log is already on."
         logging_already_off: "The scene log is already off."
@@ -53,8 +53,9 @@ en:
         logging_turned_off: "%{name} has turned off the scene log in this room."
         scene_info_updated_announce: "%{name} has updated the scene's %{setting} to %{value}."
         scene_info_updated: "You update the scene info."
-        scene_char_replaced: "%{old_name} has been replaced by %{new_name} in scene %{id}."
-        
+        scene_char_added: "%{name} has been added to the scene."
+        scene_char_removed: "%{name} has been removed from the scene."
+                
         log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
         scene_active_footer: "Only active scenes are shown.  For completed scenes, use `scenes/all`."
 

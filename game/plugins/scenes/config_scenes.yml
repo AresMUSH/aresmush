@@ -25,6 +25,7 @@ scenes:
         "scene/close" : "scene/stop"
         "scene/end" : "scene/stop"
         "scene/name" : "scene/title"
+        "scene/info" : "scene"
         "scene/rename" : "scene/title"
         "repose/notify" : "repose/nudge"
         "repose/log" : "repose/all"
@@ -40,6 +41,7 @@ scenes:
         "scene/amend" : "scene/replace"
         "pose/undo": "scene/undo"
         "pose/replace" : "scene/replace"
+        "scene/deletechar" : "scene/removechar"
         
         # Some cross-over with the old repose system.
         "repose/nudge" : "pose/nudge"

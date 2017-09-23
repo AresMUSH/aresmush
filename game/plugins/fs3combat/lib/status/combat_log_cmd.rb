@@ -7,7 +7,7 @@ module AresMUSH
          
       def parse_args
         if (!cmd.args)
-          self.page = [ cmd.switch.gsub("log", "").to_i, 1].max
+          self.page = cmd.page
         else
           self.page = cmd.args ? cmd.args.to_i : 1
         end

@@ -14,7 +14,8 @@ Once the place is created, people can join it.   Places code is designed to **hi
 
 
 `places` - Lists places.
-`place/join <title>` - Creates a new place or joins an existing one.
+`place/create <title>` - Creates a place.
+`place/join <title>` - Joins an existing place.
 `place/rename <old title>=<new title>` - Renames a place
 `place/leave` - Leaves your place.
 `place/delete <title>` - Removes a place from the room.

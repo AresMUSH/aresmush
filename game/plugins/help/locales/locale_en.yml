@@ -11,5 +11,7 @@ en:
         no_help_found: "Command %{command} not found.  For more help, see the web portal.  You may be looking for one of these topics: %{url}."
         
         help_topic_header: "Help for '%{command}'"
-        help_topic_footer: "Get more help at the web portal: %{url}"
-        view_help_online: "AresMUSH help files are best viewed online at the web portal: %{url}.  To see the in-game help, use 'help/detail %{topic}'."
+        help_topic_footer: "View help online at the web portal: %{url}"
+        view_help_online: "AresMUSH help files are best viewed online at the web portal: %{url}.  To see the in-game help, use 'help/view %{topic}'."
+        command_help_title: "Command Quick Reference"
+        command_help_footer: "For more help, use %xchelp/detail %{topic}%xn or visit the web portal: %{url}."

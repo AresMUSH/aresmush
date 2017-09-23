@@ -1,12 +1,6 @@
 <h1>Scenes</h1>
 
-<% if is_approved? %>
-
-<div class="pull-right">
-    <a href="/scenes/create" class="btn btn-primary">Create Scene</a>
-</div>
-
-<% end %>
+<p>The scenes archive catalogs roleplay scenes from the game.  A scene must be completed and shared before it will show up here.  See <a href="/help/scenes">help scenes</a> for more information.</p>
 
 <ul class="nav nav-tabs">
   <li class="<%= 'active' if @tab == "Recent" %>"><a href="/scenes?tab=Recent">Recent</a></li>
@@ -33,4 +27,16 @@
     
   </ul>
 </nav>
+
+<% if is_approved? %>
+
+<div class="row">
+    
+    <div class="col pull-right">
+        <a href="/scenes/create" class="btn btn-primary">Create Scene</a>
+    </div>
+    
+</div>
+
+<% end %>
 
