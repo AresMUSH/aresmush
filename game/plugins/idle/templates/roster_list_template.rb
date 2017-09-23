@@ -22,6 +22,11 @@ module AresMUSH
         restricted = char.roster_restricted ? "(*)" : ""
         "#{char.roster_contact}#{restricted}"
       end
+      
+      def roster_url
+        "#{Game.web_portal_url}/roster"
+      end
+      
     end
   end
 end
