@@ -11,9 +11,9 @@ Once you're approved, you can edit your character's web portal profile.  To edit
 
 Basic information will be automatically filled in from the game - name, demographics, etc.  When your character has a birthday, your age will automatically update.
 
-## Adding a Profile Image
+## Adding a Profile Image and Icon
 
-To set your character's profile image - which is also the avatar (or "log icon") used in scenes and the character gallery - you must first upload it to the [File Repository](/files).  Once it's there, you'll be able to select the image from the drop-down list.
+See [Setting Your Web Portal Icon](/help/web_icon).
 
 ## Adding Profile Sections
 
