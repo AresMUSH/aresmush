@@ -12,6 +12,7 @@ fs3combat:
             Athletics: 4
             Medicine: 4
             Reflexes: 3
+            Wounds: 25
         Henchman:
             Default: 6
             Firearms: 9
@@ -24,6 +25,7 @@ fs3combat:
             Athletics: 6
             Medicine: 6
             Reflexes: 5
+            Wounds: 20
         Boss:
             Default: 8
             Firearms: 11
@@ -36,3 +38,4 @@ fs3combat:
             Athletics: 8
             Medicine: 8
             Reflexes: 7
+            Wounds: 15

@@ -108,8 +108,9 @@ module AresMUSH
       luck_mod = combatant.luck == "Initiative" ? 3 : 0
       action_mod = 0
       if (combatant.action_klass == "AresMUSH::FS3Combat::SuppressAction" ||
-          combatant.action_klass == "AresMUSH::FS3Combat::DistractAction")
-          action_mod = 2
+          combatant.action_klass == "AresMUSH::FS3Combat::DistractAction" || 
+          combatant.action_klass == "AresMUSH::FS3Combat::SubdueAction")
+          action_mod = 3
       end
       weapon_mod = FS3Combat.weapon_stat(combatant.weapon, "init_mod") || 0
       roll = combatant.roll_ability(ability, weapon_mod + action_mod + luck_mod + combatant.total_damage_mod)

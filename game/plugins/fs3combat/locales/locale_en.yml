@@ -54,7 +54,7 @@ en:
         active_combats: "Active Combats"
         active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
-        summary_title: "Combatant       Act/Pose Skill   Weapon           Armor            Stance"
+        summary_title: "Combatant       Act/Pose   Skill    Weapon           Armor            Stance"
         hud_subtitle: "%xhCombatant      Damage  Weapon(ammo)   Vehicle          Action(stance)%xn"
         marked_idle: "%{name} has been marked idle."
         marked_unidle: "%{name} has been marked un-idle."
@@ -350,6 +350,7 @@ en:
         escape_action_msg_short: "Escape %{target}"
         escape_action_success: "%{name} escapes from %{target}."
         escape_action_failed: "%{name} tries to escape from %{target} but is still subdued."
+        must_escape_first: "Subdued characters must escape first."
         
         
         # ----------------------------

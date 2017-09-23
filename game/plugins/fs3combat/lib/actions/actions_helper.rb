@@ -188,7 +188,7 @@ module AresMUSH
         severity = -30
       end
       
-      npc = combatant.is_npc? ? Global.read_config("fs3combat", "npc_lethality_mod") : 0
+      npc = combatant.is_npc? ? combatant.npc.wound_modifier : 0
       npc_mod = combatant.damage_lethality_mod + npc
       
       total = random + severity + lethality + mod + npc_mod
