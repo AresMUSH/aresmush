@@ -44,3 +44,4 @@ en:
         roster_bbs_subject: "Roster Character Claimed"
         roster_bbs_body: "%{name} has been claimed off the roster."
         roster_welcome_msg_subject: "Welcome!"
+        roster_url_hint: "The roster can be viewed more easily on the web portal: %{url}."

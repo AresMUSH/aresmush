@@ -16,7 +16,7 @@
         <th>Special Notes</th>
     </thead>
     <tbody>
-    <% chars.each do |c| %>
+    <% chars.sort_by { |c| c.name }.each do |c| %>
     
     <tr>
         <td>
