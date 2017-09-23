@@ -4,6 +4,7 @@ module AresMUSH
     attribute :relationships, :type => DataType::Hash, :default => {}
     attribute :relationships_category_order, :type => DataType::Array, :default => []
     attribute :profile_image
+    attribute :profile_icon
     attribute :profile_gallery
     attribute :profile_last_edited, :type => DataType::Date
     attribute :profile_tags, :type => DataType::Array, :default => []
