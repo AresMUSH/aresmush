@@ -10,10 +10,6 @@ You can set any of the basic character demographics (fullname, gender, etc.) on 
 
 `demographic <name>=<field>/<value>`
 
-You can also set up a link to someone's log icon, which is used by the web portal.
-
-`icon <name>=<url>` - Link to a character's log icon.
-
 ## Setting Age or Birthday
 
 Use the special birthday command to set someone else's age or birthdate.

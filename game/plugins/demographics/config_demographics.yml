@@ -41,9 +41,8 @@ demographics:
             desc: "The ship is divided into several departments.  See the wiki for details."
             values:
                 Air Wing: "Viper and Raptor crews and deckhands. (Officers and Enlisted)"
-                Medical: "Patching up the holes. (Officers and Enlisted)"
                 Marines: "Boots on the ground. (Enlisted only)"
-                Operations: "Support personnel - CIC, engineering, weapons, etc. (Officers and Enlisted)"
+                Support: "Support personnel - Deck crew, medical. (Officers and Enlisted)"
         Colony:
             desc: "Your character's home world."
             values:
