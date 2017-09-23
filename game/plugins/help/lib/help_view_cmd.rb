@@ -29,27 +29,21 @@ module AresMUSH
           found_topic = topics.first
           formatter = MarkdownFormatter.new
           md_contents = Help.topic_contents(found_topic)
+          help_url = Help.topic_url(found_topic, search_topic.rest(' '))
           
-          if (self.show_detail)
-            template = BorderedDisplayTemplate.new formatter.to_mush(md_contents)
+          lines = md_contents.split("\n")            
+          matching_lines = lines.select { |l| l.start_with?("`#{match_topic}")}
+          
+          if (matching_lines.empty? || self.show_detail)
+            footer = "%ld%R#{t('help.help_topic_footer', :url => help_url)}"
+            template = BorderedDisplayTemplate.new formatter.to_mush(md_contents), nil, footer
             client.emit template.render
-          else
-            lines = md_contents.split("\n")
-            help_url = Help.topic_url(found_topic, search_topic.rest(' '))
-            
-            matching_lines = lines.select { |l| l.start_with?("`#{match_topic}")}
-            if (matching_lines.empty?)
-              client.emit_ooc t('help.view_help_online', 
-                  :url => help_url,
-                  :topic => search_topic)
-            else            
-              help_tip = t('help.command_help', 
-                 :url => help_url,
-                 :topic => search_topic)
-              matching_lines << help_tip 
-              client.emit matching_lines.map { |l| "%xx%xh%%%xn #{formatter.to_mush(l).strip}" }.join("\n")
-            end    
-          end
+          else            
+            list = matching_lines.map { |l| formatter.to_mush(l).strip }
+            footer = "%ld%R#{t('help.command_help_footer', :url => help_url, :topic => search_topic)}"
+           template = BorderedListTemplate.new list, t('help.command_help_title'), footer
+           client.emit template.render
+          end    
           
         elsif (topics.count == 0)
           client.emit_failure t('help.not_found', :topic => self.topic)          
