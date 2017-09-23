@@ -10,5 +10,14 @@ module AresMUSH
     def self.clear_place(char)
       char.place.delete if char.place
     end
+    
+    def self.find_place(char, place_name)
+      return nil if !place_name
+      
+      place = char.room.places.find(name_upcase: place_name.upcase).first
+      return place if place
+      
+      char.room.places.select { |p| p.name_upcase.start_with?(place_name.upcase) }.first
+    end
   end
 end

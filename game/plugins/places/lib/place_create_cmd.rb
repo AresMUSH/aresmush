@@ -1,6 +1,6 @@
 module AresMUSH
   module Places
-    class PlaceJoinCmd
+    class PlaceCreateCmd
       include CommandHandler
       
       attr_accessor :name
@@ -16,13 +16,14 @@ module AresMUSH
       def handle
         place = Places.find_place(enactor, self.name)
       
-        if (!place)
-          client.emit_failure t('places.place_doesnt_exist')
+        if (place)
+          client.emit_failure t('places.place_already_exists')
           return
         end
-        
+          
+        place = Place.create(name: self.name, room: enactor_room)
         enactor.update(place: place)
-        enactor_room.emit_ooc t('places.place_joined', :name => enactor.name, :place_name => place.name)
+        enactor_room.emit_ooc t('places.place_created', :name => enactor.name, :place_name => self.name)
       end
     end
   end
