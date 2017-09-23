@@ -66,7 +66,7 @@ module AresMUSH
     def self.get_min_rating(ability_type)
       case ability_type
       when :action
-        min_rating = 0
+        min_rating = 1
       when :background
         min_rating = 0
       when :language

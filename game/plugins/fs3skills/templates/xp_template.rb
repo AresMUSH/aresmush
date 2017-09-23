@@ -27,6 +27,8 @@ module AresMUSH
       end
       
       def progress(a)
+        can_raise = FS3Skills.can_learn_further?(a.name, a.rating)
+        return ".........." if !can_raise
         ProgressBarFormatter.format(a.xp, a.xp_needed)
       end
       

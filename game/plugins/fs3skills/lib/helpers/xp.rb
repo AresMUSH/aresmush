@@ -18,14 +18,11 @@ module AresMUSH
     def self.xp_needed(ability_name, rating)
       ability_type = FS3Skills.get_ability_type(ability_name)
       costs = Global.read_config("fs3skills", "xp_costs")
-      costs[ability_type.to_s][rating] || 99
+      costs[ability_type.to_s][rating] || nil
     end
     
-    def self.can_learn_further?(name, rating)
-      ability_type = FS3Skills.get_ability_type(name)
-      max_rating = FS3Skills.get_max_rating(ability_type)
-
-      rating < max_rating
+    def self.can_learn_further?(ability_name, rating)
+      self.xp_needed(ability_name, rating) != nil
     end
     
     def self.learn_ability(client, char, name)

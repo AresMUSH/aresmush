@@ -1,4 +1,6 @@
 fs3skills:
+    action_skills_blurb: "Action Skills represent your ability in areas deemed important for gameplay.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills) for details."
+    
     action_skills:
         -
             name: Alertness
@@ -26,7 +28,7 @@ fs3skills:
             linked_attr: Reflexes
         -
             name: Medicine
-            desc: "Tending to the ill and injured. Requires Specialty: Doctor, Surgeon, Nurse, Medic, Other"
+            desc: "Tending to the ill and injured."
             linked_attr: Wits
             specialties:
                 - Doctor
@@ -40,7 +42,7 @@ fs3skills:
             linked_attr: Brawn
         -
             name: Piloting
-            desc: "Flying air and spacecraft. Requires Specialty: Viper, Raptor, Shuttle"
+            desc: "Flying air and spacecraft."
             linked_attr: Reflexes
             specialties:
                 - Viper

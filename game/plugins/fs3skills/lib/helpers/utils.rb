@@ -24,6 +24,10 @@ module AresMUSH
       Global.read_config("fs3skills", "languages")
     end
     
+    def self.background_skills
+      Global.read_config("fs3skills", "background_skills")
+    end
+    
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }
     end
@@ -38,6 +42,22 @@ module AresMUSH
 
     def self.action_skill_config(name)
       FS3Skills.action_skills.find { |s| s["name"].upcase == name.upcase }
+    end
+    
+    def self.attr_blurb
+      Global.read_config("fs3skills", "attributes_blurb")
+    end
+    
+    def self.action_blurb
+      Global.read_config("fs3skills", "action_skills_blurb")
+    end
+    
+    def self.bg_blurb
+      Global.read_config("fs3skills", "bg_skills_blurb")
+    end
+    
+    def self.language_blurb
+      Global.read_config("fs3skills", "language_blurb")
     end
     
     # Returns the type (attribute, action, etc) for a skill being rolled.

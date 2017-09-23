@@ -38,7 +38,7 @@ module AresMUSH
         
         it "should allow min ratings" do
           FS3Skills.check_rating("Brawn", 1).should be_nil
-          FS3Skills.check_rating("Firearms", 0).should be_nil
+          FS3Skills.check_rating("Firearms", 1).should be_nil
           FS3Skills.check_rating("English", 0).should be_nil
           FS3Skills.check_rating("Basketweaving", 0).should be_nil
         end

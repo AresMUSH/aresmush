@@ -1,5 +1,5 @@
 <%= header %>
-%xhAttributes%xn represent basic abilities that everyone has to some extent. Attributes boost related skills, and come into play when no skill directly applies.  Attributes are rated from 1-5. See [FS3: Attributes](http://aresmush.com/fs3/fs3-3/chargen/#attributes) for details.
+<%= attr_blurb %>
 
 <% data[:attrs].each do |a| %>
 <%= left( a['name'], 14)  %> <%= a['desc'] %>

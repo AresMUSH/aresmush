@@ -1,5 +1,5 @@
 <%= header %>
-%xhAction Skills%xn represent your ability in areas deemed important for gameplay.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills) for details.
+<%= action_blurb %>
 
 <% data[:skills].each do |s| %>
 <%= left( s['name'], 14) %> <%= s['desc'] %> (<%= s['linked_attr'] %>)
