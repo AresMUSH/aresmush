@@ -5,12 +5,20 @@ module AresMUSH
       
       def icon_for_name(name)
         char = Character.find_one_by_name(name)
+        icon_for_char(char)
+      end
+      
+      def icon_for_char(char)
         if (char)
-          icon = "/files/#{char.profile_image}"
+          icon = char.profile_icon
+          if (icon.blank?)
+            icon = char.profile_image
+          end
         else
           icon = nil
         end
-        icon || "/images/noicon.png"
+        
+        icon.blank? ? "/images/noicon.png" : "/files/#{icon}"
       end
 
       # Takes something from a text box and replaces carriage returns with %r's for MUSH.

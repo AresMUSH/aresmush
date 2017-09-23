@@ -50,7 +50,7 @@ module AresMUSH
     
     
     def save_upcase
-      self.name = FilenameSanitizer.sanitize(self.name)
+      self.name = AresMUSH::Website::FilenameSanitizer.sanitize(self.name)
       self.name_upcase = self.name ? self.name.upcase : nil
     end
     

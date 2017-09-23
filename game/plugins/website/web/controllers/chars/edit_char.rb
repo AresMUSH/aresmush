@@ -62,6 +62,7 @@ module AresMUSH
       @char.set_profile(profile)
       @char.update(relationships: relationships)
       @char.update(profile_image: params[:profileimage])
+      @char.update(profile_icon: params[:profileicon])
       @char.update(profile_gallery: params[:gallery])
       
       tags = params[:tags] || ""
