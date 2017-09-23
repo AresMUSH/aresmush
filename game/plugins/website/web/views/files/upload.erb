@@ -17,9 +17,19 @@
     <input type="hidden" id="prefix" value="<%= @prefix %>" />
     </p>
 
+
+    <p>
+    <label for="allow_overwrite" class="col-xs-2 col-form-label">Overwrite?</label>
+
+    <input type="checkbox" name="allow_overwrite" />
+    </p>
+
+
 <p>
 <input type="file" id="fileselect" name="file"/>
+<% if @redirect_url %>
 <input type="hidden" name="redirect" value="<%= @redirect_url %>?<%= @params.map { |k, v| "#{k}=#{v}"}.join('&') %>" />
+<% end %>
 </p>
 <br/>
 <input type="submit" class="btn btn-primary" value="Upload">

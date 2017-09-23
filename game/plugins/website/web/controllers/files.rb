@@ -120,6 +120,7 @@ module AresMUSH
     post '/files/upload', :auth => :approved  do
       file = params[:file]
       redirect_url = params[:redirect]
+      
       if (redirect_url.blank?)
         redirect_url = "/files/upload"
       end
@@ -131,8 +132,8 @@ module AresMUSH
       
       tempfile = file[:tempfile]
       name = AresMUSH::Website::FilenameSanitizer.sanitize params[:filename]
-      allow_overwrite = params[:allow_overwrite] ? params[:allow_overwrite].to_bool : false
-      
+      allow_overwrite = params[:allow_overwrite] ? params[:allow_overwrite] : false
+            
       if (!tempfile || name.blank?)
         flash[:error] = "Missing file or filename."
         redirect redirect_url
