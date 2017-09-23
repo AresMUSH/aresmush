@@ -6,9 +6,7 @@
 <div class="row">
     <div class="col col-xs-12">
         <div class="pull-right">
-        <% if is_admin? %>
         <a href="/file/delete?file=<%= @file %>" class="btn btn-warning">Delete</a>
-        <% end %>
         <a href="/file/rename?file=<%= @file %>" class="btn btn-default">Rename</a>
         </div>
     </div>
