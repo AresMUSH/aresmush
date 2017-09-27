@@ -79,6 +79,7 @@ load 'web/controllers/files.rb'
 load "models/wiki_page.rb"
 load "models/wiki_page_version.rb"
 
+load 'wiki_markdown/tag_match_helper.rb'
 load 'wiki_markdown/char_gallery.rb'
 load 'wiki_markdown/div_block.rb'
 load 'wiki_markdown/image.rb'
