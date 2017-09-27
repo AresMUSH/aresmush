@@ -1,7 +1,9 @@
 <h3>Relationships</h3>
 
 <div id="relation-container">
-    
+
+<p class="hint">For each relationship, list a name and description.  Category and order are optional.</p>
+ 
 <% @char.relationships.each_with_index do |(name, data), i| %>
 
 <div class="panel panel-info">
@@ -9,11 +11,14 @@
         <div class="pull-right"><a id="delete-relation"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
         
         <div class="row">
-            <label for="relationname-<%=i%>" class="col-xs-2 col-form-label">Name:</label> 
+            <label for="relationname-<%=i%>" class="col-xs-1 col-form-label">Name:</label> 
             <input type="text" name="relationname-<%=i%>" class="col-xs-2" size="50" value="<%= name %>"/>
         
             <label for="relationcat-<%=i%>" class="col-xs-2 col-form-label">Category:</label>     
             <input type="text" name="relationcat-<%=i%>"  class="col-xs-2" size="50" value="<%= data['category'] %>"/>
+
+            <label for="relationorder-<%=i%>" class="col-xs-1 col-form-label">Order:</label>     
+            <input type="text" name="relationorder-<%=i%>"  class="col-xs-1" size="25" value="<%= data['order'] %>"/>
         </div>
         <p>
             <textarea name="relationdetail-<%=i%>" rows="2"><%= format_input_for_html data['relationship'] %></textarea>
@@ -29,11 +34,15 @@
     <div class="panel-body">    
         <div class="pull-right"><a id="delete-relation"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
         <div class="row">
-            <label for="relationname-new" class="col-xs-2 col-form-label">Name:</label>         
+            <label for="relationname-new" class="col-xs-1 col-form-label">Name:</label>         
             <input type="text" name="relationname-new" class="col-xs-2" size="50" value=""/>
 
             <label for="relationcat-new" class="col-xs-2 col-form-label">Category:</label>     
-            <input type="text" name="relationcat-new" class="col-xs-2" size="50" value=""/>
+            <input type="text" name="relationcat-new" class="col-xs-2" size="50" value="Associates"/>
+            
+            <label for="relationorder-new" class="col-xs-1 col-form-label">Order:</label>     
+            <input type="text" name="relationorder-new"  class="col-xs-1" size="25" value=""/>
+                        
         </div>
 
         <p>
@@ -45,12 +54,17 @@
 
 </div>
 
+
+<p><a class="btn-info btn" id="add-relation">Add New Relationship</a></p>
+
+<br/>
+
 <div class="panel panel-info">
     <div class="panel-heading">
         Category Order
     </div>
     <div class="panel-body">
-        <p>List the relationship category names in the order you want them to appear, separated by commas.</p>
+        <p class="hint">List the relationship category names in the order you want them to appear, separated by commas.</p>
         <p>
             <input type="text" name="relationship_category_order" class="col-xs-2" size="50" value="<%= @char.relationships_category_order.join(", ") %>"/>
         </p>
@@ -58,4 +72,3 @@
 </div>
 
 
-<p><a class="btn-info btn" id="add-relation">Add New Relationship</a></p>

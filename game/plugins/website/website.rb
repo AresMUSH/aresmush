@@ -79,7 +79,19 @@ load 'web/controllers/files.rb'
 load "models/wiki_page.rb"
 load "models/wiki_page_version.rb"
 
-load 'wiki_markdown_formatter.rb'
+load 'wiki_markdown/char_gallery.rb'
+load 'wiki_markdown/div_block.rb'
+load 'wiki_markdown/image.rb'
+load 'wiki_markdown/include.rb'
+load 'wiki_markdown/music_player.rb'
+load 'wiki_markdown/page_list.rb'
+load 'wiki_markdown/scene_list.rb'
+load 'wiki_markdown/span_block.rb'
+load 'wiki_markdown/wikidot_compatibility.rb'
+load 'wiki_markdown/markdown_finalizer.rb'
+load 'wiki_markdown/wiki_markdown_extensions.rb'
+load 'wiki_markdown/wiki_markdown_formatter.rb'
+
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'

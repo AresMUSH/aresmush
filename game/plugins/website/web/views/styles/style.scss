@@ -780,8 +780,15 @@ ul.char-ability-list {
     padding-bottom: 15px;
 }
 
-.char-scene-list li {
-    display: inline;
+.char-scene-list {
+    max-width: 50%;
+    span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        max-width: 100%;
+    }
 }
 
 .relaedScenesList, .participantsList {

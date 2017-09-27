@@ -1,0 +1,57 @@
+<script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+<script type="text/javascript" src="/scripts/music_player.js"></script>
+
+<h1><%= @char.name %></h1>
+
+
+<div class="row profile-wrap">
+
+
+    <div class="col-md-4 col-sm-12 col-xs-12">
+            <a href="<%= profile_image_url(@char) %>">
+                <img src="<%= profile_image_url(@char) %> " class="profile-image"/>
+            </a>
+    </div>
+
+    <div class="col-md-8 col-sm-12 col-xs-12">        
+
+
+        <% if @char.handle %>
+            <div class="profile-box">
+                
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                            <b>Player Handle:</b> 
+                    </div>
+                    <div class="col-sm-9">
+                            <%= @char.handle.name %>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                            <b>Profile:</b> 
+                    </div>
+                    <div class="col-sm-9">
+                          <p>View at <a href="http://arescentral.aresmush.com/handle/<%= @char.handle.name %>">AresCentral</a>.</p>  
+                    </div>
+                </div>
+                
+                
+               
+            </div>
+        <% end %>
+    </div>
+
+
+
+</div>
+
+
+<div class="profile-tab">
+
+    <%= erb :"chars/group_list", :locals => { chars: @char.alts, title: "Characters" } %>
+        
+</div>
