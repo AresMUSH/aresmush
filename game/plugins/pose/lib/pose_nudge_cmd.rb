@@ -7,7 +7,7 @@ module AresMUSH
 
       def parse_args
         self.option = OnOffOption.new(cmd.args)
-        self.muted = cmd.args ? cmd.args.downcase == "mute" : false
+        self.muted = cmd.args ? (cmd.args.downcase == "mute" || cmd.args.downcase == "gag") : false
       end
       
       def required_args

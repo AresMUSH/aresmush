@@ -37,6 +37,7 @@ module AresMUSH
             case action
             when "Destroy"
               Global.logger.debug "#{idle_char.name} deleted for idling out."
+              Idle.idle_cleanup(idle_char)
               idle_char.delete
             when "Roster"
               Global.logger.debug "#{idle_char.name} added to roster."

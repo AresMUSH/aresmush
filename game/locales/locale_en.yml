@@ -86,5 +86,5 @@ en:
         game_not_found: "Game not found."  
         
     web:  
-        website_address: "Visit %{portal} to access the game's Web Portal and %{wiki} for the game's Wiki/Website."
+        website_address: "Visit %{portal} to access the game's Web Portal."
 

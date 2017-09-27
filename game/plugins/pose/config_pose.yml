@@ -5,7 +5,6 @@ pose:
         "pose/notify" : "pose/nudge"
         "pose/remove" : "pose/drop"
         "po" : "pose"
-        "pose/nudge gag" : "pose/nudge mute"
         
         "whisper": "pemit"
         "whisp": "pemit"

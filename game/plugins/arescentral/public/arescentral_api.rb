@@ -1,4 +1,10 @@
 module AresMUSH
+  class Character
+    def alts
+      AresCentral.alts(self)
+    end
+  end
+  
   module AresCentral
     
     # Emits a standard warning message to a client whenever they change a 

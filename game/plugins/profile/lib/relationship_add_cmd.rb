@@ -18,7 +18,13 @@ module AresMUSH
       
       def handle
         relations = enactor.relationships
-        relations[self.name] = { :category => self.category, :relationship => self.relationship }
+        if (relations.has_key?(self.name)) 
+          order = relations[self.name]['order']
+        else
+          order = nil
+        end
+        
+        relations[self.name] = { :category => self.category, :relationship => self.relationship, :order => order }
         enactor.update(relationships: relations)
         client.emit_success t('profile.relationship_set', :name => self.name)
       end

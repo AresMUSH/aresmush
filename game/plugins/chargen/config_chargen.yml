@@ -28,9 +28,7 @@ chargen:
         background:
             help: backgrounds
         abilities:
-            help: 'fs3_skills'
-        hooks:
-            help: hooks
+            help: skills
         desc:
             help: descriptions
         handles:
