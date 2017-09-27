@@ -44,9 +44,9 @@ en:
         invalid_specialty_skill: "That skill cannot have a specialty."
         invalid_specialty: "That is not a valid specialty for that skill.  Try one of these: %{names}."
         specialty_added: "Specialty %{name} added."
-        specialty_not_found: "You don't have that specialty."
+        specialty_not_found: "%{name} doesn't have that specialty."
         specialty_removed: "Specialty %{name} removed."
-        specialty_already_exists: "You already have that specialty."
+        specialty_already_exists: "%{name} already has that specialty."
         
         # Reset
         reset_complete: "Reset complete.  Note that nothing comes for free, so even default items cost character points."
