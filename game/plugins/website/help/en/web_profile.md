@@ -7,7 +7,7 @@ summary: Editing your character profile on the web.
 
 Once you're approved, you can edit your character's web portal profile.  To edit your profile, log in to the web portal and and click the 'Profile' link at the top.  Then go to the bottom of the page and click 'Edit'.
 
-> **Tip:** You may only edit your own character's profile.  If you are using a player handle, you may also alts linked to your handle.
+> **Tip:** You may only edit your own character's profile.  If you are using a player handle, you may also edit alts linked to your handle.
 
 Basic information will be automatically filled in from the game - name, demographics, etc.  When your character has a birthday, your age will automatically update.
 

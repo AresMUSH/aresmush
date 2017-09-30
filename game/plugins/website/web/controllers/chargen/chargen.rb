@@ -67,7 +67,7 @@ module AresMUSH
         end
       
         @fs3_bg_skill_ratings = { 
-          0 => "Everyman", 1 => "Interest", 2 => "Proficiency", 3 => "Expertise"
+          0 => "Everyman", 1 => "Fair", 2 => "Good", 3 => "Exceptional"
         }
       
         @fs3_languages = FS3Skills.language_names

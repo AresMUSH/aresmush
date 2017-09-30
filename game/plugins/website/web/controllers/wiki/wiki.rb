@@ -143,7 +143,5 @@ module AresMUSH
             
       erb :"wiki/page"
     end
-    
-        
   end
 end

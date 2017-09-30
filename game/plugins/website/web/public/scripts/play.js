@@ -102,14 +102,14 @@
       $('button.tourButton').show();
       $('button.whoButton').show();
       document.getElementById("sendMsg").focus();
-      charId = $('#charId').val();
-      charToken = $('#charToken').val();
-      if (charId !== ' ') {
-        data = {
-          'id': "" + charId,
-          'login_api_token': "" + charToken
-        };
-        send_cmd('connect', data);
+      //charId = $('#charId').val();
+      //charToken = $('#charToken').val();
+      //if (charId !== ' ') {
+        //data = {
+        //  'id': "" + charId,
+        //  'login_api_token': "" + charToken
+            //};
+        //send_cmd('connect', data);
       }
     };
     on_disconnect = function() {
