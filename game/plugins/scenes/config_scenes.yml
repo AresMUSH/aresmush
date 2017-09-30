@@ -5,13 +5,15 @@ scenes:
          - 45
 
     unshared_scene_cleanup_cron:
+        day_of_week:
+            - Fri
         hour: 
             - 22
         minute: 
             - 02
             
-    unsared_scene_deletion_days: 14
-    unshared_scene_warning_days: 7
+    unsared_scene_deletion_days: 20
+    unshared_scene_warning_days: 13
     
     wiki_auto_share: true
     

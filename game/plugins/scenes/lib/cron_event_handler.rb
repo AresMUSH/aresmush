@@ -41,13 +41,12 @@ module AresMUSH
         
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
           elapsed_days = DateTime.now.to_date - scene.date_completed
-          if (elapsed_days > delete_days)
+          if (elapsed_days > delete_days  && scene.deletion_warned)
             Global.logger.info "Deleting scene #{scene.id} - #{scene.title} completed #{scene.date_completed}"
-            #scene.delete
+            scene.delete
           elsif (elapsed_days > warn_days && !scene.deletion_warned)
             message = t('scenes.scene_delete_warn', :id => scene.id, :title => scene.title)
-            #Mail.send_mail(scene.all_participant_names, t('scenes.scene_delete_warn_subject'), message, nil)
-            Mail.send_mail(["Faraday"], t('scenes.scene_delete_warn_subject'), message, nil)
+            Mail.send_mail(scene.all_participant_names, t('scenes.scene_delete_warn_subject'), message, nil)
             scene.update(deletion_warned: true)
           end
         end
