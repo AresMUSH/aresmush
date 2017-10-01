@@ -6,6 +6,7 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :title
+    attribute :html
 
     attribute :tags, :type => DataType::Array, :default => []
 
@@ -16,6 +17,7 @@ module AresMUSH
     before_delete :delete_versions
     
     def self.find_by_name_or_id(name_or_id)
+      name_or_id = name_or_id.gsub(' ', '-').downcase
       page = WikiPage[name_or_id]
       if (!page)
         page = find_one_by_name(name_or_id)

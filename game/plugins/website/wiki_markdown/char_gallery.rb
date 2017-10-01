@@ -7,6 +7,8 @@ module AresMUSH
       
       def self.parse(matches, sinatra)
         input = matches[1]
+        return "" if !input
+        
         helper = TagMatchHelper.new(input)
         
         matches = Character.all.select { |c| 
@@ -18,7 +20,7 @@ module AresMUSH
         sinatra.erb :"chars/group_list", :locals => {
           chars: matches,
           title: ""
-        }
+        }, :layout => false
       end
     end
   end

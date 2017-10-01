@@ -20,7 +20,7 @@ module AresMUSH
     
     get '/files/?' do
       @page = params[:page] ? params[:page].to_i : 1
-      paginator = AresMUSH::Paginator.paginate uploaded_files, @page, 2
+      paginator = AresMUSH::Paginator.paginate uploaded_files, @page, 25
       @files = paginator.items
       @pages = paginator.total_pages
       

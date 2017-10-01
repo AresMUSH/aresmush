@@ -23,19 +23,18 @@
 </tbody>
 </table>
 
-<% if can_write_bbs?(@board) %>
-<div class="inline-response">
 
-<h3>Add Post</h3>
 
-    <form method="POST" action="/bbs/post">
-        <p>Subject:</p>
-        <p><input type="text" name="subject"></p>
-        <p>Message:</p>
-        <textarea name="message"></textarea>
-        <input type="hidden" name="board_id" value=<%= @board.id %>>
-        <p><input type="submit"></p>
-        
-    </form>
+
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+ 
+          <% if can_write_bbs?(@board) %>
+
+          <a href="/bbs/<%= @board.id %>/post" class="btn btn-primary">Add Post</a>
+
+      <% end %>
+  </div>
+  </div>
 </div>
-<% end %>

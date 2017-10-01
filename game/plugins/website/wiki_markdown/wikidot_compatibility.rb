@@ -8,6 +8,9 @@ module AresMUSH
       def self.parse(matches, sinatra)
         url = matches[1]
         link_text = matches[2]
+
+        return "" if !url || !link_text
+
         "[#{link_text}](http#{url})"
       end
     end
@@ -19,6 +22,8 @@ module AresMUSH
       
       def self.parse(matches, sinatra)
         text = matches[1]
+        return "" if !text
+
         if (text =~ /\|/)
           url = text.before('|')
           link = text.after('|')
@@ -31,7 +36,12 @@ module AresMUSH
           link = link.after(":")
         end
         
-        "<a href=\"/wiki/#{url}\">#{link}</a>"
+        url = url.downcase.gsub(' ', '-')
+        if (url.start_with?("char:"))
+          "<a href=\"/char/#{url.after(':')}\">#{link}</a>"
+        else
+          "<a href=\"/wiki/#{url}\">#{link}</a>"
+        end
       end
     end
     
@@ -42,8 +52,36 @@ module AresMUSH
       
       def self.parse(matches, sinatra)
         text = matches[1]
+        return "" if !text
+
         "<em>#{text}</em>"
       end
     end
+    
+    class WikidotHeading
+      def self.regex
+       /^([\+]+) /
+      end
+      
+      def self.parse(matches, sinatra)
+        heading = matches[1]
+        return "" if !heading
+
+        "##{heading.gsub("+", "#")} "
+      end
+    end
+    
+    class WikidotAnchor
+      def self.regex
+        /^\[\[#(.+)\]\]/i
+      end
+      
+      def self.parse(matches, sinatra)
+        url = matches[1]
+        return "" if !url
+
+        "<a name=\"#{url.downcase.strip}\"></a>"
+      end
+    end    
   end
 end

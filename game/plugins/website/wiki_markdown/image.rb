@@ -8,6 +8,7 @@ module AresMUSH
       def self.parse(matches, sinatra)
         input = matches[1]
         return "" if !input
+        
         style = ""
         source = ""
         align = nil
@@ -34,7 +35,7 @@ module AresMUSH
           source: source,
           style: style, 
           align: align
-        }
+          }, :layout => false
       end
     end
   end

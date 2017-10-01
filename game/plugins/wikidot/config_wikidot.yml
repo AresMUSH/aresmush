@@ -1,5 +1,5 @@
 wikidot:
-    site_name: faralogarchive
+    site_name: bsgunificationmush
     autopost_enabled: true
     character_category: char
     icon_url: "http://%{site}.wdfiles.com/local--files/log-icons/%{name}_icon.png"

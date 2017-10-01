@@ -2,18 +2,18 @@ module AresMUSH
   module Website
     class StartDivBlockMarkdownExtension
       def self.regex
-        /\[\[div([^\]]*)\]\]/i
+        /(<p>)?(<br>)?\[\[div([^\]]*)\]\](<\/?br\/?>)?(<\/p>)?/i
       end
       
       def self.parse(matches, sinatra)
-        input = matches[1]
+        input = matches[3]
         "<div #{input}>"
       end
     end
     
     class EndDivBlockMarkdownExtension
       def self.regex
-        /\[\[\/div\]\]/i
+        /(<p>)?(<br>)?\[\[\/div\]\](<\/?br\/?>)?(<\/p>)?/i
       end
       
       def self.parse(matches, sinatra)

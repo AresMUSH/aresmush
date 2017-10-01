@@ -8,6 +8,8 @@ module AresMUSH
       
       def char_scenes_by_type(char, type)
         char.scenes_starring.select { |s| s.scene_type == type}
+            .select { |s| s.shared }
+            .sort_by { |s| s.icdate }
       end
       
       def can_manage_char?(char)
@@ -73,11 +75,12 @@ module AresMUSH
     
     get '/char/:id/?' do |id|
       @char = Character.find_one_by_name(id)
-        
+              
       if (!@char)
         flash[:error] = "Character not found."
         redirect '/chars'
       end
+      
       @page_title = "#{@char.name} - #{game_name}"
       
       case @char.idle_state

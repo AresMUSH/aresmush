@@ -1,0 +1,6 @@
+en:
+    website:  
+        website_address: "Visit %{portal} to access the game's Web Portal."
+        rebuilding_wiki: "Rebuilding wiki pages.  Please wait..."
+        rebuilding_done: "Wiki rebuild complete."
+        rebuilding_requires_wiki_load: "You have to visit at least one web portal page before using this command."

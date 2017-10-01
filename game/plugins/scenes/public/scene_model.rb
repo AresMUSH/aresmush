@@ -16,8 +16,8 @@ module AresMUSH
     
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
-    attribute :date_completed, :type => DataType::Date
-    attribute :date_shared, :type => DataType::Date
+    attribute :date_completed, :type => DataType::Time
+    attribute :date_shared, :type => DataType::Time
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean

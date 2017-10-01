@@ -1,6 +1,5 @@
 module AresMUSH
   class WebApp    
-    
     configure do
       disable :show_exceptions      
     end

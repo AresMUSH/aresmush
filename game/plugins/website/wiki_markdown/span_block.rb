@@ -7,6 +7,8 @@ module AresMUSH
       
       def self.parse(matches, sinatra)
         input = matches[1]
+        return "" if !input
+
         "<span #{input}>"
       end
     end

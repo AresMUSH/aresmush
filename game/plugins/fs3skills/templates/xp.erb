@@ -1,5 +1,5 @@
 <%= header %>
-%xh<%= t('fs3skills.xp_summary') %>%xn
+%xh<%= t('fs3skills.xp_summary', :name => char.name ) %>%xn
 
 %xh<%= t('fs3skills.xp_progress_title')%>%xn
 <% char.fs3_attributes.each do |a| %>

@@ -1,6 +1,7 @@
 module AresMUSH
-  class WebApp
+  class WebApp    
     helpers do
+     
       def recent_changes
         WikiPageVersion.all.to_a.reverse[0..200]
       end
@@ -52,7 +53,12 @@ module AresMUSH
       erb :"wiki/recent_changes"
     end
     
-    get '/wiki/create', :auth => :approved do
+    get '/wiki/create/?' do
+      if (!is_approved?)
+        flash[:error] = "Page not found.  You must be approved to create new pages."
+        redirect '/wiki'
+      end
+      
       @name = params[:name] || ""
       @title = @name.titleize
       if (@title =~ /:/)
@@ -132,6 +138,10 @@ module AresMUSH
     ## Make sure this route is always at the end of the file.
     
     get '/wiki/:page/?' do |name_or_id|
+      if (name_or_id =~ / /)
+        redirect "/wiki/#{name_or_id.gsub(' ', '-').downcase}"
+      end
+      
       @page = WikiPage.find_by_name_or_id(name_or_id)
       
       if (!@page)
@@ -140,6 +150,16 @@ module AresMUSH
       end
             
       @page_title = "#{@page.display_title} - #{game_name}"
+      
+      @dynamic_page = Website::WikiMarkdownExtensions.is_dynamic_page?(@page.text)
+                  
+      # Update cached version.      
+      if (@page.html && !@dynamic_page)
+        @page_html = @page.html
+      else
+        @page_html = format_markdown_for_html @page.text
+        @page.update(html: @page_html)
+      end
             
       erb :"wiki/page"
     end

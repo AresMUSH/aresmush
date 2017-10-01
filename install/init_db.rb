@@ -163,7 +163,8 @@ module AresMUSH
       
       home = WikiPage.create(name: "home")
       WikiPageVersion.create(wiki_page: home, text: "Wiki home page", character: Game.master.system_character)
-        
+      Website.update_wiki(home)
+      
       puts "Install complete."
     end
   end

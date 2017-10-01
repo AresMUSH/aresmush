@@ -117,8 +117,8 @@ module AresMUSH
         flash[:info] = "Your application has been submitted.  You must log into the game to check on its status."
         redirect char_page_url(@user)
       end
-  
-      redirect  to "/chargen?tab=#{@params[:tab]}"
+        
+      redirect "/chargen?tab=#{params[:tab] || 'abilities'}"
     end
   end
 end
