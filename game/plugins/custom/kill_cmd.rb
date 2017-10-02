@@ -1,5 +1,5 @@
 module AresMUSH
-  class VictoryKill
+  class VictoryKill < Ohm::Model
     reference :character, "AresMUSH::Character"
     reference :scene, "AresMUSH::Scene"   
     attribute :victory 
