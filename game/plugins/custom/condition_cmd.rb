@@ -3,7 +3,7 @@ module AresMUSH
       attribute :ship_condition
   end
 
-  module Utils
+  module Custom
     class ConditionCmd
       include CommandHandler
       

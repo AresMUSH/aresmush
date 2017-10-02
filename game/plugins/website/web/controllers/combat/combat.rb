@@ -12,5 +12,9 @@ module AresMUSH
       erb :"combat/combat_index"
     end
     
+    get '/kills/?' do
+      @kills = VictoryKill.all.group_by { |k| k.character }
+      erb :"combat/kills"
+    end
   end
 end

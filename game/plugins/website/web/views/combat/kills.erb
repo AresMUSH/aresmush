@@ -1,0 +1,5 @@
+<h1>Kills</h1>
+
+<% @kills.each do |char, victories| %>
+<%= char.name %> - <%= victories.count %>
+<% end %>

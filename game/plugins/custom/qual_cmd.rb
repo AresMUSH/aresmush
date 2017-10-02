@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module FS3Skills
+  module Custom
     class QualCmd
       include CommandHandler
       
