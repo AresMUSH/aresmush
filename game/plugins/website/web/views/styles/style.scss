@@ -466,7 +466,8 @@ GENERAL UTILITIES
 .image-container.center img {
     display: block;
     margin-left: auto;
-        margin-right: auto;
+    margin-right: auto;
+    max-width: 100%;
 }
 
 .image-container.right img {

@@ -98,6 +98,19 @@ module AresMUSH
       erb :"wiki/edit_page"
     end
     
+    get '/wiki/:page/rebuild/?', :auth => :approved  do |name_or_id|
+      
+      @page = WikiPage.find_by_name_or_id(name_or_id)
+      
+      if (!@page)
+        flash[:error] = "Page not found!"
+        redirect '/wiki'
+      end
+      
+      @page.update(html: nil)
+      redirect "/wiki/#{@page.name}"
+    end
+    
    
     get '/wiki/:page/revert/:version/?', :auth => :approved  do |name_or_id, version_id|
       @page = WikiPage.find_by_name_or_id(name_or_id)

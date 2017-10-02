@@ -26,6 +26,7 @@
       
       <% if is_approved? %>
 
+          <a href="/wiki/<%= @page.name %>/rebuild" class="btn btn-default">Rebuild</a>
           <a href="/wiki/<%= @page.name %>/edit" class="btn btn-primary">Edit</a>
 
       <% end %>
