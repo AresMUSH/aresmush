@@ -23,12 +23,26 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+          
           ability = FS3Skills.find_ability(model, self.skill)
           if (!ability)
             client.emit_failure t('fs3skills.ability_not_found')
             return
           end
-          ability.update(xp: ability.xp - 1)
+          if (ability.xp > 0)
+            ability.update(xp: ability.xp - 1)
+          else
+            new_rating = ability.rating - 1
+            FS3Skills.set_ability(client, model, self.skill, new_rating)
+            ability = FS3Skills.find_ability(model, self.skill)
+            if (ability)
+              new_xp = (FS3Skills.xp_needed(self.skill, new_rating) || 1) - 1
+              if (new_xp == 1)
+               new_xp = 0
+              end
+              ability.update(xp: new_xp)
+            end
+          end
           ability.update(last_learned: nil)
           model.award_xp 1
           client.emit_success t('fs3skills.xp_undone', :name => model.name, :skill => self.skill)

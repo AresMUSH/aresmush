@@ -9,6 +9,10 @@
 <h2><%= area %></h2>
 
 <div>
+    <% if AresMUSH::Maps.get_map_for_area(area) %>
+<p>    [ <a href="/map/<%= AresMUSH::Maps.get_map_for_area(area).id %>">Map</a> ]</p>
+    
+    <% end %>
      <ul> 
   <% area_rooms.sort_by { |r| r.name }.each do |room| %>
       <li><a href="/location/<%= room.id %>"><%= room.name %></a></li>

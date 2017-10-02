@@ -47,6 +47,8 @@
         relationName.attr('name', 'relationname-new' + relationCount);
         var relationCat = newDiv.find("input[name=relationcat-new]");
         relationCat.attr('name', 'relationcat-new' + relationCount);
+        var relationOrder = newDiv.find("input[name=relationorder-new]");
+        relationOrder.attr('name', 'relationorder-new' + relationCount);
         var textArea = newDiv.find("textarea")
         textArea.attr('name', 'relationdetail-new' + relationCount);
         newDiv.css('display', 'block');

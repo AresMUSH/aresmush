@@ -1,4 +1,5 @@
 module AresMUSH
+  mattr_accessor :web_server
   
   class WebAppLoader
 
@@ -49,15 +50,21 @@ module AresMUSH
         signals: false,
       })
     
+    
     end
   end
 
   # Our simple hello-world app
   class WebApp < Sinatra::Base
+    def initialize
+      AresMUSH::web_server = self
+      super
+    end
+      
     # threaded - False: Will take requests on the reactor thread
     #            True:  Will queue request for background thread
     configure do
-      set :threaded, false
+      set :threaded, true #false
       register Sinatra::Reloader
       register Sinatra::Flash
       enable :sessions

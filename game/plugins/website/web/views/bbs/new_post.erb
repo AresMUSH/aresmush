@@ -1,0 +1,11 @@
+<h1>Post to <%= @board.name %></h1>
+
+<form method="POST" action="/bbs/post">
+    <p>Subject:</p>
+    <p><input type="text" name="subject"></p>
+    <p>Message:</p>
+    <textarea name="message"></textarea>
+    <input type="hidden" name="board_id" value=<%= @board.id %>>
+    <p><input type="submit"></p>
+        
+</form>

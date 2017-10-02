@@ -1,7 +1,5 @@
 module AresMUSH
-  class WebApp
-   
-    
+  class WebApp   
     post '/wiki/:page/edit', :auth => :approved  do |name_or_id|
       @page = WikiPage.find_by_name_or_id(name_or_id)
       
@@ -25,8 +23,14 @@ module AresMUSH
         redirect "/wiki/#{@page.name}"
       end
         
-      @page.update(tags: tags, title: title, name: name)
+      @page.update(tags: tags, title: title, name: name, html: nil)
       WikiPageVersion.create(wiki_page: @page, text: text, character: @user)
+
+      # Reset HTML of any pages that include this one
+      WikiPage.all.select { |p| p.text =~ /\[\[include #{@page.name}/i }.each do |ref|
+        puts "Resetting #{ref.name}"
+        ref.update(html: nil)
+      end
       
       redirect "/wiki/#{@page.name}"
     end
@@ -49,7 +53,7 @@ module AresMUSH
         redirect '/wiki/create'
       end
       
-      new_page = WikiPage.create(title: title, name: name, tags: tags)
+      new_page = WikiPage.create(title: title, name: name, tags: tags, html: nil)
       WikiPageVersion.create(wiki_page: new_page, text: text, character: @user)
       
       redirect "/wiki/#{new_page.name}"

@@ -7,6 +7,26 @@
 
 <body>
 
+
+<!-- Bootstrap CSS local fallback.  Must live in body tag.  -->
+<div class="hidden" id="bootstrapCssTest"></div>
+    <script type="text/javascript">
+
+    if ($('#bootstrapCssTest').is(':visible') === true) {
+        $('<link href="/styles/bootstrap.css" rel="stylesheet" type="text/css" />').prependTo('head');
+    }
+</script>
+    
+<!-- JQuery UI CSS fallback. Must live in body tag. -->
+<div class="ui-helper-hidden"></div>
+  <script>
+      $(function () {
+          if ($('.ui-helper-hidden:first').is(':visible') === true) {
+              $('<link rel="stylesheet" type="text/css" href="/styles/jquery-ui.css" />').prependTo('head');
+          }
+      });
+  </script>  
+    
    <div class="header-wrap">
        <div class="title-wrap">
        
@@ -88,8 +108,8 @@
           <div class="col-md-12 footer">
               Running <a href="http://www.aresmush.com">AresMUSH</a> version <%= AresMUSH.version %>.
               
-              <input type="hidden" id="charId" name="charId" value="<%= @user ? @user.id : ' ' %>">
-              <input type="hidden" id="charToken" name="charToken" value="<%= @user ? @user.login_api_token : ' ' %>">
+              <input type="hidden" id="charId" name="charId" value="<%= session[:user_id] %>">
+              <input type="hidden" id="charToken" name="charToken" value="<%= session[:login_token] %>">
               
            </div>
       </div>

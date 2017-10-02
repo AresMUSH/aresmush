@@ -43,8 +43,9 @@ module AresMUSH
         elsif (k.start_with?('relationname-') && !v.blank?)
           name = k.after('-')
           relationships[v.titleize] = { 
-            'category' => params["relationcat-#{name}"],
-            'relationship' => params["relationdetail-#{name}"]
+            'category' => params["relationcat-#{name}"].blank? ? "Associates" : params["relationcat-#{name}"].titleize,
+            'relationship' => params["relationdetail-#{name}"],
+            'order' => params["relationorder-#{name}"].blank? ? nil : params["relationorder-#{name}"].to_i
           }
         elsif (k.start_with?('hookname-') && !v.blank?)
           name = k.after('-')

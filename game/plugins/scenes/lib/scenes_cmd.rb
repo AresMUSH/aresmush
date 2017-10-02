@@ -22,10 +22,10 @@ module AresMUSH
           template = SceneListTemplate.new(scenes)
         else
           
-          scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }.reverse
+          scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }.sort_by { |s| s.id.to_i }.reverse
           
           if (self.mode == :unshared)
-            scenes = scenes.select { |s| !s.shared }
+            scenes = scenes.select { |s| !s.shared && s.participants.include?(enactor) }.sort_by { |s| s.id.to_i }.reverse
           end
           
           paginator = Paginator.paginate(scenes, cmd.page, 25)

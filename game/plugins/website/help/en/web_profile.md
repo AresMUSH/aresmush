@@ -7,7 +7,7 @@ summary: Editing your character profile on the web.
 
 Once you're approved, you can edit your character's web portal profile.  To edit your profile, log in to the web portal and and click the 'Profile' link at the top.  Then go to the bottom of the page and click 'Edit'.
 
-> **Tip:** You may only edit your own character's profile.  If you are using a player handle, you may also alts linked to your handle.
+> **Tip:** You may only edit your own character's profile.  If you are using a player handle, you may also edit alts linked to your handle.
 
 Basic information will be automatically filled in from the game - name, demographics, etc.  When your character has a birthday, your age will automatically update.
 
@@ -21,7 +21,15 @@ You can set up your own custom profile sections.  Each section can contain [mark
 
 ## Adding Relationships
 
-The web portal will display your character's relationships.  Each relationship can contain a name, category and a description.  The description can contain [markdown  text](/help/website/markdown).  You can also edit relationships in the game (see [Relationships](/help/relationships)).  
+The web portal will display your character's relationships.  You can add relationships for both PCs and NPCs simply by listing a name.  If the name matches a PC, it will automatically link to their character profile.
+
+You can describe each relationship using [markdown text](/help/website/markdown).  
+
+You can organize your relationships into categories (e.g. friends, acquaintances, adversaries) and control the order people appear within a category.   You can also organize the categories themselves. 
+
+> **Tip:** You can specify orders for some, all or none of the categories and relationships.  Anything without an order set will appear at the end, sorted by name.
+
+You can also edit relationships in the game (see [Relationships](/help/relationships)).  
 
 ## Adding Images to Your Gallery
 

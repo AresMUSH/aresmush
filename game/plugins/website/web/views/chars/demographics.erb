@@ -162,7 +162,19 @@
                     <%= @char.actor %>
             </div>
         </div>
-
+        
+        <% if @char.handle %>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Player:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <a href="http://arescentral.aresmush.com/handle/<%= @char.handle%>"><%= @char.handle %></a>
+            </div>
+        </div>
+        
+        <% end %>
         </div>
         
     </div>

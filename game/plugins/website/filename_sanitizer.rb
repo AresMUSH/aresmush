@@ -5,7 +5,7 @@ module AresMUSH
         filename = filename.strip
         filename = filename.gsub(/^.*(\\|\/)/, '')
         filename = filename.gsub(/[^0-9A-Za-z.:\-]/, '_')
-        filename
+        filename.downcase
       end
     end
   end

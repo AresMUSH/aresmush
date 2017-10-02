@@ -2,12 +2,28 @@
 
 <p>This central file directory allows you to upload images that can be used on character, scene and wiki pages.  For help uploading and using images, see the <a href="/help/web_files">online help</a>.</p>
 
+
 <% @files.sort.each do |file| %>
 <p><a href="/file/detail?file=<%= File.basename(file) %>"><%= File.basename(file) %></a> <%= file_size_kb(file) %>kB 
 </p>
 <% end %>
 
 <hr/>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    
+     <% @pages.times do |p| %>
+      <% if p + 1 == @page %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <a href="/files?page=<%= p + 1 %>"><%= p + 1 %></a></li>
+    <% end %>
+    
+  </ul>
+</nav>
 
 <% if is_approved? %>
   <div class="pull-right">

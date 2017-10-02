@@ -12,7 +12,7 @@
 </thead>
 
 <tbody>
-<% AresMUSH::FS3Combat.weapons.each do |name, data| %>
+<% AresMUSH::FS3Combat.weapons.sort.each do |name, data| %>
 <tr>
     <td><a href="/fs3/gear/weapon?name=<%= name %>"><%= name %></a></td> 
     <td><%= data['description'] %></td>
@@ -32,7 +32,7 @@
 </thead>
 
 <tbody>
-<% AresMUSH::FS3Combat.armors.each do |name, data| %>
+<% AresMUSH::FS3Combat.armors.sort.each do |name, data| %>
 <tr>
     <td><a href="/fs3/gear/armor?name=<%= name %>"><%= name %></a></td> 
     <td><%= data['description'] %></td>
@@ -52,7 +52,7 @@
 </thead>
 
 <tbody>
-<% AresMUSH::FS3Combat.vehicles.each do |name, data| %>
+<% AresMUSH::FS3Combat.vehicles.sort.each do |name, data| %>
 <tr>
     <td><a href="/fs3/gear/vehicle?name=<%= name %>"><%= name %></a></td> 
     <td><%= data['description'] %></td>

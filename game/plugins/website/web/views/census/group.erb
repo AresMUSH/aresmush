@@ -1,0 +1,28 @@
+<h1><%= @title %></h1>
+
+[ <a href="/census">All</a> ]
+<% census_types.each do |c| %>
+[ <a href="/census/<%= c %>"><%= c.titleize %></a> ]
+<% end %>
+
+<table class="table table-striped">
+    <tr>
+        <th>Group</th>
+        <th>Count</th>
+        <th>Characters</th>
+    </tr>
+    
+    
+<% @groups.sort_by { |g, chars| g || "" }.each do |g, chars| %>
+
+<tr>
+    <td><%= g %></td>
+    <td><%= chars.count %></td>
+    <td>
+        <%= chars.map { |c| c.name }.sort.join(', ') %>
+    </td>
+</tr>
+
+<% end %>
+
+</table>

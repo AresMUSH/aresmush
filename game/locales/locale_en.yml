@@ -84,7 +84,3 @@ en:
         sending_to_remote: "Sending message to AresCentral.  This may take a moment."
         api_cipher_error: "Error communicating with AresCentralr.  Please contact the admin if the problem persists."
         game_not_found: "Game not found."  
-        
-    web:  
-        website_address: "Visit %{portal} to access the game's Web Portal and %{wiki} for the game's Wiki/Website."
-

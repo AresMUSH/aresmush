@@ -2,7 +2,7 @@ chargen:
     messages:
         approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP.  You can also use the %xcwiki%xn command to create a character page on the game wiki:  http://bsgunificationmush.wikidot.com/.  To join the wiki, use the password %xhphoenix%xn."
         rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp app%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
-        post_approval: "Please create a wiki page and icon for them."
+        post_approval: "Please make sure they have a profile image for their log icon."
         welcome: "Please welcome %{name}, our latest %{position} to be approved!"
     
     arrivals_board: "New Arrivals"
@@ -28,9 +28,7 @@ chargen:
         background:
             help: backgrounds
         abilities:
-            help: 'fs3_skills'
-        hooks:
-            help: hooks
+            help: skills
         desc:
             help: descriptions
         handles:

@@ -1,6 +1,5 @@
 module AresMUSH
   class WebApp    
-    
     configure do
       disable :show_exceptions      
     end
@@ -19,7 +18,7 @@ module AresMUSH
       @sidebar_upcoming_events = Events.upcoming_events[0..5]
       @sidebar_recent_wiki = unique_recent_page_changes[0..9]
       @sidebar_recent_scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse[0..9] || []
-      @sidebar_recent_profiles = Character.all.to_a.sort_by{ |c| c.profile_last_edited || c.created_at }.reverse[0..5]
+      @sidebar_recent_profiles = Chargen.approved_chars.to_a.sort_by{ |c| c.profile_last_edited || c.created_at }.reverse[0..5]
       
     end
       

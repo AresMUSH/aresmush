@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def bg_blurb
-        FS3Skils.bg_blurb
+        FS3Skills.bg_blurb
       end
       
       def lang_blurb

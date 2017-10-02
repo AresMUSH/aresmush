@@ -14,5 +14,15 @@ module AresMUSH
       
       erb :"locations/detail"
     end
+    
+    get '/map/:id/?' do |id|
+      @map = GameMap[id]
+      if (!@map)
+        flash[:error] = "Map not found"
+        redirect '/locations'
+      end
+      
+      erb :"locations/map"
+    end
   end
 end

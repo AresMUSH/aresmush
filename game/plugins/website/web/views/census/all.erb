@@ -1,0 +1,28 @@
+<h1>Character Census</h1>
+
+[ <a href="/census">All</a> ]
+<% census_types.each do |c| %>
+[ <a href="/census/<%= c %>"><%= c.titleize %></a> ]
+<% end %>
+
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Position</th>
+        <th>Callsign</th>
+    </tr>
+    
+    
+<% @chars.each do |c| %>
+
+<tr>
+    <td><%= c.name %></td>
+    <td><%= c.demographic(:gender) %></td>
+    <td><%= c.group('Position') %></td>
+    <td><%= c.demographic(:callsign) %></td>
+</tr>
+
+<% end %>
+
+</table>

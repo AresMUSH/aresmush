@@ -9,9 +9,9 @@ load 'web/controllers/admin/logs.rb'
 
 load 'web/controllers/bbs/bbs.rb'
 load 'web/controllers/bbs/bbs_post.rb'
-load 'web/controllers/bbs/bbs_read_board.rb'
-load 'web/controllers/bbs/bbs_read_post.rb'
 load 'web/controllers/bbs/bbs_reply.rb'
+
+load 'web/controllers/census/census.rb'
 
 load 'web/controllers/chars/chars.rb'
 load 'web/controllers/chars/edit_char.rb'
@@ -79,15 +79,30 @@ load 'web/controllers/files.rb'
 load "models/wiki_page.rb"
 load "models/wiki_page_version.rb"
 
-load 'wiki_markdown_formatter.rb'
+load 'wiki_markdown/tag_match_helper.rb'
+load 'wiki_markdown/char_gallery.rb'
+load 'wiki_markdown/div_block.rb'
+load 'wiki_markdown/image.rb'
+load 'wiki_markdown/include.rb'
+load 'wiki_markdown/music_player.rb'
+load 'wiki_markdown/page_list.rb'
+load 'wiki_markdown/scene_list.rb'
+load 'wiki_markdown/span_block.rb'
+load 'wiki_markdown/wikidot_compatibility.rb'
+load 'wiki_markdown/markdown_finalizer.rb'
+load 'wiki_markdown/wiki_markdown_extensions.rb'
+load 'wiki_markdown/wiki_markdown_formatter.rb'
+
 load 'web_cmd_handler.rb'
 load 'web_config_updated_handler.rb'
 load 'recaptcha_helper.rb'
 load 'website_cmd.rb'
+load 'wiki_rebuild_cmd.rb'
 load 'filename_sanitizer.rb'
 
 module AresMUSH
   module Website
+        
     def self.plugin_dir
       File.dirname(__FILE__)
     end
@@ -108,13 +123,18 @@ module AresMUSH
     end
  
     def self.locale_files
-      []
+      [ "locales/locale_en.yml"]
     end
  
     def self.get_cmd_handler(client, cmd, enactor)       
       case cmd.root      
       when "website"
         return WebsiteCmd
+      when "wiki"
+        case cmd.switch
+        when "rebuild"
+          return WikiRebuildCmd
+        end
       end
       
       nil

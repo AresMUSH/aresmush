@@ -17,7 +17,7 @@
 
   <div id="<%= category.parameterize('_') %>" class="tab-pane fade">
     
-    <% relations.sort.each do |name, data| %>
+    <% relations.sort_by { |name, data| [ data['order'] || 99, name ] }.each do |name, data| %>
         
         <div class="row relationship-row">
             <div class="col col-xs-12 col-sm-3">

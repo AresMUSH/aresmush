@@ -13,6 +13,6 @@ Various places on the website will use a mini version of your profile image, whi
 
 The web portal will try to scale down the profile image as best it can, but sometimes it just doesn't work very well.  If this happens to you, you can upload a dedicated profile icon for your character.
 
-> **Tip:** Profile icons should ideally be square and around 300x300 pixels.
+> **Tip:** Icons should ideally be square and around 300x300 pixels.  The main profile image can be any size/dimensions.
 
 Both the profile image and icon can be set by editing your [Character Profile](/help/web_profile).  You'll first need to upload the file to the [Files Repository](/help/web_files).  

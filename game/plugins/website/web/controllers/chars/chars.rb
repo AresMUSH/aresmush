@@ -8,6 +8,8 @@ module AresMUSH
       
       def char_scenes_by_type(char, type)
         char.scenes_starring.select { |s| s.scene_type == type}
+            .select { |s| s.shared }
+            .sort_by { |s| s.icdate }
       end
       
       def can_manage_char?(char)
@@ -48,9 +50,7 @@ module AresMUSH
           @players[player_tag] = [ c ]
         end
       end
-      
-      puts @players.keys
-            
+                  
       erb :"chars/players_index"
     end
     
@@ -69,13 +69,18 @@ module AresMUSH
       erb :"chars/chars_index"
     end
     
+    get %r{/char\:([\w]+)/?} do |id|
+      redirect "/char/#{id}"
+    end
+    
     get '/char/:id/?' do |id|
       @char = Character.find_one_by_name(id)
-        
+              
       if (!@char)
         flash[:error] = "Character not found."
         redirect '/chars'
       end
+      
       @page_title = "#{@char.name} - #{game_name}"
       
       case @char.idle_state
@@ -98,8 +103,12 @@ module AresMUSH
           @idle_message = nil
         end
       end
-            
-      erb :"chars/char"
+      
+      if (@char.is_admin? || @char.is_playerbit?)
+        erb :"chars/player"
+      else
+        erb :"chars/char"
+      end
     end
     
     get '/char/:id/source/?' do |id|
