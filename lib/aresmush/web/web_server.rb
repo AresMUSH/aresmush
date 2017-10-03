@@ -7,7 +7,7 @@ module AresMUSH
     def run(opts = {})
 
       # define some defaults for our app
-      server  = opts[:server] || 'webrick'
+      server  = opts[:server] || 'thin'
       host    = opts[:host]   || '0.0.0.0'
       port    = opts[:port]   || '8181'
       web_app = WebApp
