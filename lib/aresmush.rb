@@ -34,7 +34,7 @@ require 'html2markdown'
 require 'sinatra/base'
 require "sinatra/reloader"
 require 'sinatra/flash'
-require 'thin'
+require 'webrick'
 require 'compass'
 
 require 'erubis'

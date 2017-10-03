@@ -160,5 +160,9 @@ module AresMUSH
       flash[:info] = "File uploaded!"
       redirect redirect_url
     end
+    
+    get '/files/:name/' do |name|
+      send_file "/files/#{name.downcase}"
+    end
   end
 end
