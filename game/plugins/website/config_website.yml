@@ -5,7 +5,7 @@ website:
     
     allow_html_in_markdown: true
     
-    max_upload_size_kb: 500
+    max_upload_size_kb: 1000
     
     character_gallery_group: 'Faction'
     

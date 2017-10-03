@@ -31,6 +31,11 @@ module AresMUSH
           end
         end
       
+        source = source.downcase.strip
+        if (!source.start_with?('/files'))
+          source = "/files/#{source}"
+        end
+        
         sinatra.erb :"image", :locals => {
           source: source,
           style: style, 

@@ -164,10 +164,10 @@ module AresMUSH
             
       @page_title = "#{@page.display_title} - #{game_name}"
       
-      @dynamic_page = Website::WikiMarkdownExtensions.is_dynamic_page?(@page.text)
+      dynamic_page = Website::WikiMarkdownExtensions.is_dynamic_page?(@page.text)
                   
       # Update cached version.      
-      if (@page.html && !@dynamic_page)
+      if (@page.html && !dynamic_page)
         @page_html = @page.html
       else
         @page_html = format_markdown_for_html @page.text
