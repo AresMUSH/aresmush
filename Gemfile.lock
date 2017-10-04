@@ -111,7 +111,6 @@ GEM
     timezone (0.3.11)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    webrick (1.3.1)
     wikidot-api (0.0.6)
 
 PLATFORMS
@@ -141,7 +140,6 @@ DEPENDENCIES
   sinatra-reloader (~> 1.0)
   thin (~> 1.7.0)
   timezone (~> 0.3.2)
-  webrick
   wikidot-api (~> 0.0.6)
 
 BUNDLED WITH

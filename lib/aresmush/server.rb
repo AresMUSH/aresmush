@@ -28,10 +28,6 @@ module AresMUSH
           end
         end
         
-        webserver_port = Global.read_config("server", "webserver_port")
-        web = WebAppLoader.new
-        web.run(port: webserver_port)
-        
         websocket_port = Global.read_config("server", "websocket_port")
           EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
             AresMUSH.with_error_handling(nil, "Web connection established") do
