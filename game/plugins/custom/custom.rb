@@ -3,6 +3,7 @@ $:.unshift File.dirname(__FILE__)
 load "qual_cmd.rb"
 load "condition_cmd.rb"
 load "kill_cmd.rb"
+load "award_cmd.rb"
 
 module AresMUSH
   module Custom
@@ -31,6 +32,12 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "award"
+        if (cmd.switch_is?("remove"))
+          return AwardRemoveCmd
+        else
+          return AwardCmd
+        end
       when "condition"
         return ConditionCmd
       when "qual"

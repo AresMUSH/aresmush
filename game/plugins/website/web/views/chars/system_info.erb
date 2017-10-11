@@ -1,13 +1,15 @@
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
-  <li><a data-toggle="tab" href="#hooks">RP Hooks</a></li>
-  <% if @char.on_roster? %>
- <li><a data-toggle="tab" href="#bg">Background</a></li>
+  <li><a data-toggle="tab" href="#systemhooks">RP Hooks</a></li>
+  <% if @char.on_roster? || @char.bg_shared %>
+ <li><a data-toggle="tab" href="#systembg">Background</a></li>
  
   <% end %>
   
-  <li><a data-toggle="tab" href="#sheet">Sheet</a></li>
-  <li><a data-toggle="tab" href="#damage">Damage</a></li>
+  <li><a data-toggle="tab" href="#systemsheet">Sheet</a></li>
+  <li><a data-toggle="tab" href="#systemawards">Awards</a></li>
+  <li><a data-toggle="tab" href="#systemkills">Kills</a></li>
+  <li><a data-toggle="tab" href="#systemdamage">Damage</a></li>
 </ul>
 
 <div class="tab-content">
@@ -15,7 +17,7 @@
       <div class="tab-cover">System Information</div>
   </div>
         
-  <div id="hooks" class="tab-pane fade">
+  <div id="systemhooks" class="tab-pane fade">
       
       <p>
           <div class="ansi">
@@ -29,8 +31,8 @@
   </div>
   
   
-  <% if @char.on_roster? %>
-  <div id="bg" class="tab-pane fade">
+  <% if @char.on_roster? || @char.bg_shared %>
+  <div id="systembg" class="tab-pane fade">
       <div class="ansi">
           <%= format_output_for_html @char.background %></p>
       </div>
@@ -38,13 +40,28 @@
   </div>
   <% end %>
   
-  <div id="sheet" class="tab-pane fade">
+  <div id="systemsheet" class="tab-pane fade">
 
           <%= erb :"chars/fs3_sheet" %></p>
           
       
   </div>
-  <div id="damage" class="tab-pane fade">
+
+  <div id="systemawards" class="tab-pane fade">
+
+          <%= erb :"chars/awards" %></p>
+          
+      
+  </div>
+
+  <div id="systemkills" class="tab-pane fade">
+
+          <%= erb :"chars/kills" %></p>
+          
+      
+  </div>
+
+  <div id="systemdamage" class="tab-pane fade">
 
       <%= erb :"chars/fs3_damage" %></p>
       

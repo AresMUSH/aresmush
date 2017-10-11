@@ -37,6 +37,7 @@ module AresMUSH
           end
           
           VictoryKill.create(victory: self.victory, character: model, scene: scene)
+          client.emit "Kill created."
         end
       end
     end

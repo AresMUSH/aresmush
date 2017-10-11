@@ -13,7 +13,8 @@ module AresMUSH
     end
     
     get '/kills/?' do
-      @kills = VictoryKill.all.group_by { |k| k.character }
+      @scoreboard = VictoryKill.all.select { |k| !k.character.idle_state }.group_by { |k| k.character }.sort_by { |char, victories| victories.count }.reverse
+      @scenes = VictoryKill.all.group_by { |k| k.scene }.sort_by { |scene, victories| scene.icdate }.reverse
       erb :"combat/kills"
     end
   end

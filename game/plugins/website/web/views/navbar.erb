@@ -13,8 +13,7 @@
                  
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
-                                
-               
+                                               
           
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="playnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Play <span class="caret"/> </a>
@@ -26,7 +25,8 @@
           </li>
           
 
-               
+                                <%= erb :"game_nav" %>
+
 
           
                 <li class="nav-item dropdown">
@@ -44,6 +44,9 @@
                         <li><a href="/combat">Combats</a></li>
                         <li><a href="/locations">Locations</a></li>
                         <li><hr></li>
+                        <li><a href="/kills">Kills</a></li>
+                        <li><a href="/wiki/bunks">Bunks</a></li>
+                        <li><hr></li>
                         <li><a href="/bbs">Boards</a></li> 
                         <li><a href="/events">Events</a></li> 
                         <li><hr></li>
@@ -54,6 +57,11 @@
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="fs3nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> FS3 <span class="caret"/> </a>
               <ul class="dropdown-menu">
+	          <li><a href="/wiki/fs3">FS3 Overview</a></li>
+	          <li><a href="/wiki/fs3:chargen">Character Creation</a></li>
+	          <li><a href="/wiki/fs3:rolle">Ability Rolls</a></li>
+	          <li><a href="/wiki/fs3:combat">Combat</a></li>
+                  <li><hr></li>
                   <li><a href="/fs3/skills">Skills List</a></li>
                   <li><a href="/fs3/gear">Gear List</a></li>
                   <li><hr></li>
@@ -65,6 +73,7 @@
               </ul>
           </li>
           
+                 <%= erb :"wiki_nav" %>
           
           
           
@@ -91,7 +100,6 @@
                 </li>
                 <% end %>
                     
-                 <%= erb :"wiki_nav" %>
                                     
             </ul>
                     
