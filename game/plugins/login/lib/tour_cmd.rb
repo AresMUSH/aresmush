@@ -31,7 +31,7 @@ module AresMUSH
           client.emit_success t('login.guest_name', :name => guest.name)
         end
         
-        Global.dispatcher.queue_event CharConnectedEvent.new(client, guest)
+        Global.dispatcher.queue_event CharConnectedEvent.new(client, guest.id)
       end
     end
   end

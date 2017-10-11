@@ -2,7 +2,7 @@ module AresMUSH
   module Jobs
     class CharConnectedEventHandler
       def on_event(event)
-        char = event.char
+        char = Character[event.char_id]
         client = event.client
         
         return if !Jobs.can_access_jobs?(char)

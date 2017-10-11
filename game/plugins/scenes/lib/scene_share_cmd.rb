@@ -41,11 +41,7 @@ module AresMUSH
           end
           
           if (self.share)
-            Scenes.share_scene(scene)
-            
-            if (Global.read_config('scenes', 'wiki_auto_share'))
-              Wikidot.create_log(scene, client, false)
-            end
+            Scenes.share_scene(scene)            
           else
             scene.update(shared: false)
           end          

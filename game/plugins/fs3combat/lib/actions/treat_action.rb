@@ -7,6 +7,16 @@ module AresMUSH
         return error if error
         
         return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        
+        wound = FS3Combat.worst_treatable_wound(self.target.associated_model)
+        if (!wound)
+          return t('fs3combat.target_has_no_treatable_wounds', :name => self.target.name)
+        end
+        
+        if (!self.target.is_passing?)
+          return t('fs3combat.patient_must_pass')
+        end
+        
         return nil
       end
       

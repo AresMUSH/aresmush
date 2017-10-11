@@ -1,10 +1,11 @@
 help_version = ARGV[0]
-filename_friendly_help_version = help_version.gsub(".", "-")
 
 if (!help_version)
-  raise "Specify a help file version."
+  puts "USAGE:  copy_help <version>  (e.g. 1.0)"
   exit
 end
+
+filename_friendly_help_version = help_version.gsub(".", "-")
 
 module AresMUSH
   module Global

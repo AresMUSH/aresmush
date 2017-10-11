@@ -1,36 +1,28 @@
-calendar.ics
-tinkerfoo.rb
-.sass-cache
-*.log
+# Secret files
+# -----------------------------
 secrets.yml
-errors.txt
-save_pid.txt
-.DS_Store
 real_database.yml
-*.gem
-*.rbc
-.bundle
-.config
-coverage
-InstalledFiles
-lib/bundler/man
-pkg
-html
-rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
-todo.txt
-logs/
-killares
 
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
-game/db/mongo.conf
-game/db/data
-game/db/*.log
-game/db/*.pid
+# Logs and errors
+# -----------------------------
+*.log
+errors.txt
+logs/
+
+# Generated files
+# -----------------------------
+calendar.ics
+.sass-cache
+.DS_Store
+tmp/restart.txt
+
+# Process ID scripts
+# -----------------------------
+save_pid.txt
+killares
+*.pid
+*.pid.lock
+
+# Website file storage
+# -----------------------------
 game/plugins/website/web/public/files

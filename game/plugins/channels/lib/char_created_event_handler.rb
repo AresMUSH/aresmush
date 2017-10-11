@@ -3,7 +3,7 @@ module AresMUSH
     class CharCreatedEventHandler
       def on_event(event)
         client = event.client
-        char = event.char
+        char = Character[event.char_id]
         
         Channels.add_to_default_channels(client, char)
         if (client)

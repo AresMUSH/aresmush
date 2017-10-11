@@ -10,6 +10,7 @@ module AresMUSH
         char.scenes_starring.select { |s| s.scene_type == type}
             .select { |s| s.shared }
             .sort_by { |s| s.icdate }
+            .reverse
       end
       
       def can_manage_char?(char)

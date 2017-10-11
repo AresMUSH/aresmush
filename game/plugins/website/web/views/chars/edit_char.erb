@@ -58,8 +58,9 @@
             Files
         </div>
         <div class="panel-body">
-            <a href="/files" target="blank">View All Files</a>
+            <%= @files.join(", ") %>
             <br/>
+            <p><a href="/files" target="blank">View All Files</a></p>
             <a href="#" id="show-file-upload">Show File Upload <i class="fa fa-caret-square-o-down" aria-hidden="true"></i></a>
 
             <a href="#" id="hide-file-upload">Hide File Upload <i class="fa fa-caret-square-o-up" aria-hidden="true"></i></a>

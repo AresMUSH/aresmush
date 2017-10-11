@@ -48,7 +48,7 @@ module AresMUSH
     end
     
     get '/wiki/recent_changes/?' do
-      @recent = Wiki.recent_changes
+      @recent = recent_changes
       
       erb :"wiki/recent_changes"
     end
@@ -81,6 +81,28 @@ module AresMUSH
       erb :"wiki/page_source"
     end
     
+    get '/wiki/:page/preview/?', :auth => :approved  do |name_or_id|
+      
+      @page = WikiPage.find_by_name_or_id(name_or_id)
+      
+      if (!@page)
+        flash[:error] = "Page not found!"
+        redirect '/wiki'
+      end
+      
+      if (@page.is_special_page? && !is_admin?)
+        flash[:error] = "You are not allowed to do that."
+        redirect '/wiki'
+      end
+      
+      @text = @page.preview['text']
+      @name = @page.preview['name']
+      @title = @page.preview['title']
+      @tags = @page.preview['tags']
+      
+      erb :"wiki/edit_page"
+    end
+    
     get '/wiki/:page/edit/?', :auth => :approved  do |name_or_id|
       
       @page = WikiPage.find_by_name_or_id(name_or_id)
@@ -94,6 +116,11 @@ module AresMUSH
         flash[:error] = "You are not allowed to do that."
         redirect '/wiki'
       end
+      
+      @text = @page.text
+      @name = @page.name
+      @title = @page.display_title
+      @tags = @page.tags_text
       
       erb :"wiki/edit_page"
     end

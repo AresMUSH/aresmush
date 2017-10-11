@@ -58,7 +58,7 @@ module AresMUSH
       @clients.delete client
       Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (client.logged_in?)
-        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char)
+        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char.id)
       end        
     end
     

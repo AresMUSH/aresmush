@@ -110,7 +110,7 @@
         //  'login_api_token': "" + charToken
             //};
         //send_cmd('connect', data);
-      }
+      //}
     };
     on_disconnect = function() {
       connected = false;

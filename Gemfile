@@ -24,4 +24,5 @@ gem 'sinatra-reloader', '~> 1.0'
 gem 'sinatra-flash', '~> 0.3.0'
 gem 'compass', '~> 1.0.3'
 gem 'aws-sdk', '~> 2.9.11'
-gem 'wikidot-api', '~> 0.0.6'
+gem "passenger", "~> 5.0.25", require: "phusion_passenger/rack_handler"
+gem 'redis-rack', '~> 2.0.2'

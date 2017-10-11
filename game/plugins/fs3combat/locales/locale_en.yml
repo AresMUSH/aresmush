@@ -19,8 +19,11 @@ en:
         impaired_wound: "%xyImpaired%xn"
         incap_wound: "%xrIncapacitated%xn"
         
+        patient_must_pass: "Patients must pass in order to be treated."
+        cant_treat_while_fighting: "%{healer} attempts to treat %{patient} but they're moving around too much."
         cant_treat_self: "You can't treat yourself!"
         no_treatable_wounds: "%{healer} attempts to treat %{patient}, but they have no treatable wounds."
+        target_has_no_treatable_wounds: "%{name} has no treatable wounds."
         use_combat_treat_instead: "You cannot use this command in combat.  Use combat/treat instead."
         must_wait_to_treat: "You must wait a few minutes before you can treat again."
         treat_success: "%{healer} tends to %{patient} and treats their worst wound successfully."
@@ -136,6 +139,7 @@ en:
         not_koed: "You are not KOed!"
         back_in_the_fight: "%{name} spends a luck point and is back in the fight!"
         ko_status: "-KO-"
+        target_not_koed: "Target is not KOed."
         
         # ----------------------------
         # TYPES

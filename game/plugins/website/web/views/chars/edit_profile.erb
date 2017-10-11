@@ -1,4 +1,17 @@
+<h3>Background</h3>
+
+<p>
+     <label for="share_bg" class="col-xs-2 col-form-label">Share Background?</label>
+     <input type="checkbox" name="share_bg" checked="<%= @char.bg_shared %>"/>    
+</p>
+
+<div class="hint">This will automatically show your background in the System Information section.  Alternately, you can create an abridged or expanded bio in your custom profile.</div>
+
+
+
 <h3>Profile Sections</h3>
+
+
 <div id="profile-container">
 
 <% @char.profile.each_with_index do |(section, data), i| %>

@@ -3,7 +3,7 @@ module AresMUSH
     class CharDisconnectedEventHandler
       def on_event(event)
         client = event.client
-        char = event.char
+        char = Character[event.char_id]
         channels = char.channels
         
         Global.client_monitor.logged_in.each do |other_client, other_char|
