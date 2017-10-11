@@ -37,7 +37,7 @@ Posting and replying to a board requires 'write' permissions.
 
 ## Archiving a Board
 
-You can archive the messages from a bulletin board for offline storage.  The default format is suitable for a wikidot wiki page.
+You can archive the messages from a bulletin board for offline storage.  The default format is suitable for a wiki page.
 
 `bbs/archive <board>` - Prints out messages so you can log them to a file.
 

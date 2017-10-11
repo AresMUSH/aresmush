@@ -7,6 +7,11 @@ module AresMUSH
         return error if error
         
         return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        
+        if (!self.target.is_ko)
+          return t('fs3combat.target_not_koed')
+        end
+        
         return nil
       end
       

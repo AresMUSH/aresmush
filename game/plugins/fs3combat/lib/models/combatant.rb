@@ -73,6 +73,10 @@ module AresMUSH
       self.action && self.action.class == FS3Combat::SubdueAction && self.action.targets && self.action.target == target
     end
     
+    def is_passing?
+      !self.action || self.action.class == FS3Combat::PassAction
+    end
+    
     def is_aiming?
       !!self.aim_target
     end

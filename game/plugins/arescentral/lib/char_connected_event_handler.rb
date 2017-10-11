@@ -3,7 +3,7 @@ module AresMUSH
   
     class CharConnectedEventHandler
       def on_event(event)
-        char = event.char
+        char = Character[event.char_id]
         return if !char.handle
         
          AresMUSH.with_error_handling(event.client, "Syncing handle with AresCentral.") do

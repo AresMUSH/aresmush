@@ -5,6 +5,8 @@ aliases:
 - autospace
 - saycolor
 - quotecolor
+- textcolor
+- posecolor
 ---
 # Formatting Poses
 

@@ -22,17 +22,28 @@ module AresMUSH
         flash[:error] = "Page name cannot be empty."
         redirect "/wiki/#{@page.name}"
       end
-        
-      @page.update(tags: tags, title: title, name: name, html: nil)
-      WikiPageVersion.create(wiki_page: @page, text: text, character: @user)
-
-      # Reset HTML of any pages that include this one
-      WikiPage.all.select { |p| p.text =~ /\[\[include #{@page.name}/i }.each do |ref|
-        puts "Resetting #{ref.name}"
-        ref.update(html: nil)
-      end
       
-      redirect "/wiki/#{@page.name}"
+      if params[:preview]
+        preview_data = {
+          text: text,
+          tags: params[:tags],
+          title: title,
+          name: name          
+        }        
+        @page.update(preview: preview_data)
+        redirect "/wiki/#{@page.name}/preview"
+      else
+        @page.update(tags: tags, title: title, name: name, html: nil)
+        WikiPageVersion.create(wiki_page: @page, text: text, character: @user)
+        
+        # Reset HTML of any pages that include this one
+        WikiPage.all.select { |p| p.text =~ /\[\[include #{@page.name}/i }.each do |ref|
+          puts "Resetting #{ref.name}"
+          ref.update(html: nil)
+        end
+      
+        redirect "/wiki/#{@page.name}"
+      end
     end
     
     

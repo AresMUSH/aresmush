@@ -50,7 +50,7 @@ module AresMUSH
         end
         char.save
         
-        Global.dispatcher.queue_event CharCreatedEvent.new(nil, char)
+        Global.dispatcher.queue_event CharCreatedEvent.new(nil, char.id)
         
         session[:user_id] = char.id
         flash[:info] = "Welcome, #{char.name}!"

@@ -23,6 +23,7 @@ module AresMUSH
       Global.dispatcher = dispatcher
       Global.locale = locale
       Global.help_reader = help_reader
+      Global.database = @db
     end
     
     def start

@@ -13,5 +13,6 @@ bootstrapper.config_reader.load_game_config
 bootstrapper.db.load_config
 
 webserver_port = AresMUSH::Global.read_config("server", "webserver_port")
-web = AresMUSH::WebAppLoader.new
-web.run(port: webserver_port)
+#web = AresMUSH::WebAppLoader.new
+#web.run(port: webserver_port)
+run AresMUSH::WebApp

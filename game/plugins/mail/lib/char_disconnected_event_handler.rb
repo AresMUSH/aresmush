@@ -3,7 +3,7 @@ module AresMUSH
     class CharDisconnectedEventHandler
       def on_event(event)
         client = event.client
-        char = event.char
+        char = Character[event.char_id]
       
         char.update(mail_filter:  Mail.inbox_tag)
       
