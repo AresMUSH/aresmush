@@ -1,52 +1,24 @@
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
-  <li><a data-toggle="tab" href="#systemhooks">RP Hooks</a></li>
-  <% if @char.on_roster? || @char.bg_shared %>
-  <li><a data-toggle="tab" href="#systembg">Background</a></li> 
+  <% if @char.on_roster? %>
+ <li><a data-toggle="tab" href="#bg">Background</a></li>
+
   <% end %>
-  
-  <li><a data-toggle="tab" href="#systemsheet">Sheet</a></li>
-  <li><a data-toggle="tab" href="#systemdamage">Damage</a></li>
+
+  <li><a data-toggle="tab" href="#sheet">Sheet</a></li>
 </ul>
 
 <div class="tab-content">
   <div id="systeminfo" class="tab-pane fade in active">
       <div class="tab-cover">System Information</div>
   </div>
-        
-  <div id="systemhooks" class="tab-pane fade">
-      
-      <p>
-          <div class="ansi">
-                <ul>
-                <% @char.fs3_hooks.each do |h| %>
-                <li><b><%= h.name %></b> - <%= format_output_for_html h.description %></li>
-                <% end %>
-                </ul>
-          </div>
-     </p>
-  </div>
-  
-  
-  <% if @char.on_roster? || @char.bg_shared %>
-  <div id="systembg" class="tab-pane fade">
+
+  <% if @char.on_roster? %>
+  <div id="bg" class="tab-pane fade">
       <div class="ansi">
           <%= format_output_for_html @char.background %></p>
       </div>
-      
+
   </div>
   <% end %>
-  
-  <div id="systemsheet" class="tab-pane fade">
-
-          <%= erb :"chars/fs3_sheet" %></p>
-          
-      
-  </div>
-  <div id="systemdamage" class="tab-pane fade">
-
-      <%= erb :"chars/fs3_damage" %></p>
-      
-
-  </div>
 </div>
