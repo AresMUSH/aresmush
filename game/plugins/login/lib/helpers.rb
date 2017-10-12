@@ -68,7 +68,7 @@ module AresMUSH
     end
     
     def self.announce_connection(client, char)
-      Global.dispatcher.queue_event CharConnectedEvent.new(client, char)
+      Global.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
     end
   end
 end

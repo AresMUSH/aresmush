@@ -21,6 +21,11 @@ module AresMUSH
       @sidebar_recent_profiles = Chargen.approved_chars.to_a.sort_by{ |c| c.profile_last_edited || c.created_at }.reverse[0..5]
       
     end
+    
+    not_found do
+      status 404
+      erb :not_found
+    end
       
     helpers do
 

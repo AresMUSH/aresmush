@@ -3,7 +3,7 @@
 <p>This central file directory allows you to upload images that can be used on character, scene and wiki pages.  For help uploading and using images, see the <a href="/help/web_files">online help</a>.</p>
 
 
-<% @files.sort.each do |file| %>
+<% @files.each do |file| %>
 <p><a href="/file/detail?file=<%= File.basename(file) %>"><%= File.basename(file) %></a> <%= file_size_kb(file) %>kB 
 </p>
 <% end %>

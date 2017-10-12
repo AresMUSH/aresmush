@@ -6,6 +6,11 @@ module AresMUSH
   def self.version
     File.read(File.join(game_path, "version.txt"))
   end
+  
+  def self.root_path
+    File.expand_path(File.join(File.dirname(__FILE__), ".."))
+  end
+  
 end
 
 raise 'Ruby version must be greater than 2.0' unless  RUBY_VERSION.to_f >= 2.0
@@ -36,11 +41,11 @@ require "sinatra/reloader"
 require 'sinatra/flash'
 require 'thin'
 require 'compass'
+require 'redis-rack'
 
 require 'erubis'
 require 'json'
 require 'redcarpet'
-require "wikidot_api"
 
 
 require 'aresmush/bootstrapper'

@@ -24,10 +24,8 @@
                   <li><a href="/who">Who's Online</a></li>
               </ul>
           </li>
-
-
-
-
+             
+                 <%= erb :"game_nav" %>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Directory <span class="caret"/> </a>
@@ -59,7 +57,7 @@
                         <li><a href="/help/markdown">Markdown Reference</a></li>
                         <li><a href="http://aresmush.com/mush-101" target="_blank">What is a MUSH? <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                     </ul>
-                </li>              
+                </li>
 
                 <% if is_admin? %>
                 <li class="nav-item dropdown">
@@ -72,9 +70,6 @@
                     </ul>
                 </li>
                 <% end %>
-
-                 <%= erb :"wiki_nav" %>
-
             </ul>
 
         </div>

@@ -3,7 +3,7 @@ module AresMUSH
     class CharConnectedEventHandler
       def on_event(event)
         client = event.client
-        char = event.char
+        char = Character[event.char_id]
         
         first_login = !char.last_ip
         Login.update_site_info(client, char)
@@ -23,7 +23,7 @@ module AresMUSH
         end
         
         Global.dispatcher.queue_timer(1, "Login notices", client) do 
-          template = NoticesTemplate.new(event.char)
+          template = NoticesTemplate.new(char)
           client.emit template.render
         end
       end

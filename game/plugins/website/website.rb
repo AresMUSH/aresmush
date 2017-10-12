@@ -2,8 +2,6 @@ $:.unshift File.dirname(__FILE__)
 
 load 'web/controllers/admin/admin.rb'
 load 'web/controllers/admin/shutdown.rb'
-load 'web/controllers/admin/tinker_reset.rb'
-load 'web/controllers/admin/tinker_update.rb'
 load 'web/controllers/admin/tinker.rb'
 load 'web/controllers/admin/logs.rb'
 
@@ -107,6 +105,7 @@ module AresMUSH
     end
 
     def self.load_plugin
+      FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
       self
     end
 

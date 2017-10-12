@@ -3,7 +3,7 @@ module AresMUSH
     class CharCreatedEventHandler
       def on_event(event)
         client = event.client
-        char = event.char
+        char = Character[event.char_id]
         Global.logger.info("Character Created: #{char.name}")
         
         if (client)

@@ -9,7 +9,7 @@ module AresMUSH
         if (cmd.args !~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           
-          self.title = trim_arg(args.arg1)
+          self.title = trim_arg(args.arg1) || cmd.args
 
           # If first arg is a category, then second arg is the title
           if (Jobs.categories.include?(title.upcase))
@@ -17,7 +17,7 @@ module AresMUSH
             self.category = self.title
             self.title = trim_arg(args.arg2)
           else            
-            self.description = args.arg2
+            self.description = args.arg2 || "--"
             self.category = Jobs.request_category
           end
         else          

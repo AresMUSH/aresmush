@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class WikidotExternalLinkMarkdownExtension
       def self.regex
-        /[^`]\[http([^\] ]*) ([^\]]*)\]/i
+        /\[http([^\] ]*) ([^\]]*)\]/i
       end
       
       def self.parse(matches, sinatra)
@@ -12,6 +12,16 @@ module AresMUSH
         return "" if !url || !link_text
 
         "[#{link_text}](http#{url})"
+      end
+    end
+    
+    class WikidotHtml
+      def self.regex
+        /\[\[\/?html\]\]/i
+      end
+      
+      def self.parse(matches, sinatra)
+        ""
       end
     end
     
@@ -68,6 +78,26 @@ module AresMUSH
         return "" if !heading
 
         "##{heading.gsub("+", "#")} "
+      end
+    end
+    
+    class WikidotCenter
+      def self.regex
+        /\[\[=\]\]/
+      end
+      
+      def self.parse(matches, sinatra)
+        "[[div class=\"centered\"]]"
+      end
+    end
+    
+    class WikidotEndCenter
+      def self.regex
+       /\[\[\/=\]\]/
+      end
+      
+      def self.parse(matches, sinatra)
+        "[[/div]]"
       end
     end
     
