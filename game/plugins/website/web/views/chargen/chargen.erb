@@ -3,38 +3,30 @@
 <p>The online character creation tool will guide you through creating your character.</p>
 
 <form method="POST" action="/chargen">
-               
+
     <div class="panel panel-warning">
-    
+
         <div class="panel-heading">
             Save Progress
         </div>
-    
+
         <div class="panel-body">
 
             <p>Changes you make here are not made in-game until you click the <b>Save</b> button or switch tabs.  Use the <b>App Status</b> tab to make sure there are no issues with your character and to submit them for approval when you're done. </p>
-                
+
             <p>
                 <button type="submit" name="save" class="btn btn-warning">Save</button>
             </p>
 
         </div>
-    </div>     
+    </div>
 
 
     <button type="submit" name="tab" value="app" class="btn btn-primary">App Status</button>
-    <button type="submit" name="tab" value="demo" class="btn btn-primary">Demographics</button>
-    <button type="submit" name="tab" value="groups" class="btn btn-primary">Groups</button>
-    <button type="submit" name="tab" value="bg" class="btn btn-primary">Background</button>
-    <button type="submit" name="tab" value="abilities" class="btn btn-primary">Abilities</button>
-    <button type="submit" name="tab" value="hooks" class="btn btn-primary">RP Hooks</button>
-       
-    
+
+
+
     <%= erb :"/chargen/chargen_app" %>
     <%= erb :"/chargen/chargen_demo" %>
-    <%= erb :"/chargen/chargen_groups" %>
-    <%= erb :"/chargen/chargen_bg" %>
-    <%= erb :"/chargen/chargen_fs3" %>
-    <%= erb :"/chargen/chargen_hooks" %>
 
 </form>

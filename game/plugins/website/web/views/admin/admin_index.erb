@@ -4,128 +4,112 @@
     <div class="panel-heading">
         Basic Setup
     </div>
-    
+
     <div class="panel-body">
-        
+
         <p>
         <a href="/admin/game_info" class="btn btn-default">Game Info</a>
         <a href="/admin/config_date" class="btn btn-default">Date/Time Formats</a>
         <a href="/admin/config_names" class="btn btn-default">Restricted Names</a>
         <a href="/admin/config_skin" class="btn btn-default">Skin / Lines</a>
         <a href="/admin/config_secrets" class="btn btn-default">Secret Codes</a>
-        </p>       
-        
+        </p>
+
     </div>
 </div>
-
-
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        FS3 Setup
-    </div>
-    
-    <div class="panel-body">
-        
-               <p>
-               <a href="/admin/fs3_skills" class="btn btn-default">FS3 Skills</a>
-               <a href="/admin/fs3_combat" class="btn btn-default">FS3 Combat</a>
-               </p>
-        
-            </div>
-        </div>
         
 
 <div class="panel panel-primary">
     <div class="panel-heading">
         Game Files
     </div>
-    
-    <div class="panel-body">      
-        
+
+    <div class="panel-body">
+
         <p>
         <a href="/admin/config/edit?path=files/connect.txt&return_url=/admin" class="btn btn-default">Connect Screen</a>
         <a href="/admin/config/edit?path=files/tos.txt&return_url=/admin" class="btn btn-default">Terms of Service</a>
-        
+
         </p>
-        
-        
+
+
     </div>
 </div>
-        
+
 <div class="panel panel-primary">
     <div class="panel-heading">
         Web Portal Setup
     </div>
-    
+
     <div class="panel-body">
-        
+
                 <p>
-              
+
                 <a href="/admin/config/edit?path=plugins/website/web/views/styles/colors.scss&return_url=/admin" class="btn btn-default">Colors</a>
                 <a href="/admin/config/edit?path=plugins/website/web/views/styles/custom_style.scss&return_url=/admin" class="btn btn-default">Custom Styles</a>
-        
+
            <a href="/admin/config/edit?path=plugins/website/web/views/search.erb&return_url=/admin" class="btn btn-default">Search</a>
-        
+
         <a href="/admin/config_web" class="btn btn-default">Options</a>
         </p>
-    
-     
+
+
             </div>
         </div>
-        
-        
+
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Web Portal Images
             </div>
-    
+
             <div class="panel-body">
-                              
+
                 <p>
-        
+
                 <a href="/admin/config_web_header_bg" class="btn btn-default">Header Background</a>
                 <a href="/admin/config_web_box_bg" class="btn btn-default">Log/Char Background</a>
                 <a href="/admin/config_web_home_image" class="btn btn-default">Home Image</a>
 
                 <a href="/admin/config_web_favicon" class="btn btn-default">Favicon</a>
-        
+
             </p>
-        
+
                     </div>
                 </div>
-                
+
 
 <div class="panel panel-primary">
     <div class="panel-heading">
         Code and Configuration
     </div>
-    
+
     <div class="panel-body">
-               
+
         <a href="/admin/config" class="btn btn-default">Advanced Config</a>
 
-                
+
     </div>
 </div>
 
-    
+
 <div class="panel panel-primary">
     <div class="panel-heading">
         Admin Tasks
     </div>
-    
+
     <div class="panel-body">
-        
+
         <% if @reboot_required %>
             <div class="alert alert-warning">
               <strong>Reboot Required!</strong> Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please reboot at your earliest convenience.
             </div>
         <% end %>
-        
+
 
     <div class="alert alert-danger">
         <p>This button will kill your game process.  This is a rough way to shut down the game, and should only be used if the in-game <code>shutdown</code> command isn't working.  You will have to log into the server shell to restart the game.</p>
-        
+
         <p><a href="/admin/shutdown" class="btn btn-danger">Hard Shutdown</a></p>
     </div>
 

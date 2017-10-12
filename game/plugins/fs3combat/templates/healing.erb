@@ -1,9 +1,0 @@
-<%= header %>
-<%= t('fs3combat.healing_patients') %>
-<% @char.patients.each do |h| %>
-<%= left( h.name, 13 ) -%>
-<%= damage_mod(h) %>
-<% end %>
-
-%xh<%= t('fs3combat.max_patients', :max => max_patients) %>%xn
-<%= footer %>
