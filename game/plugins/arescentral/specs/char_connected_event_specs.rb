@@ -11,7 +11,11 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing
         @connector = double
         @handler = CharConnectedEventHandler.new
-        @event = CharConnectedEvent.new(@client, @char)
+        
+        @char_id = 111
+        Character.stub(:[]).with(@char_id) { @char }
+        
+        @event = CharConnectedEvent.new(@client, @char_id)
         AresCentral::AresConnector.stub(:new) { @connector }
       end
       
