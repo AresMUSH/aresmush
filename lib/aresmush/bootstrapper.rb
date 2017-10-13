@@ -45,7 +45,7 @@ module AresMUSH
       begin
         game = Game.master
       rescue Exception => e
-        raise "Error connecting to database. Check your database configuration: #{e}"
+        raise "Error connecting to database. Check your database configuration."
       end
             
       Global.logger.debug Global.config_reader.config

@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def profile_image_url(char)
-        !char.profile_image.blank? ? "/files/#{char.profile_image}" : "/images/noicon.png"
+        !char.profile_image.blank? ? "/files/#{char.profile_image}" : "/theme_images/noicon.png"
       end
       
       def subgroup_chars(group_data)

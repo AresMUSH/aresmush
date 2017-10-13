@@ -11,7 +11,7 @@ The Request system is used to submit requests to the admins. You can track the s
 `requests/all` - Views all of your requests, even closed ones.  
 
 `request <#>` - Views details of a request.
-`request/respond <#>=<comment>` - Adds a comment to a +request.
+`request/respond <#>=<comment>` - Adds a comment to a request.
 
 > **Tip:** You can see multiple pages with requests2, requests3, etc.  This works with switches too, like requests2/all, requests3/all, etc.
 

@@ -18,7 +18,7 @@ module AresMUSH
           icon = nil
         end
         
-        icon.blank? ? "/images/noicon.png" : "/files/#{icon}"
+        icon.blank? ? "/theme_images/noicon.png" : "/files/#{icon}"
       end
 
       # Takes something from a text box and replaces carriage returns with %r's for MUSH.

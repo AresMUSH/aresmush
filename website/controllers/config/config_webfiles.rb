@@ -4,7 +4,7 @@ module AresMUSH
     helpers do
       
       def website_file_path
-        File.join(AresMUSH.game_path, 'plugins', 'website', 'web', 'public', 'images')
+        AresMUSH.website_theme_image_path
       end
       
     end

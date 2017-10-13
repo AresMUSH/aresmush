@@ -13,7 +13,7 @@ The web chargen is far easier than the in-game one.  All the stages are together
 
 The "App Status" tab will show you how many Ability Points you've spent, as well as any issues that may hold up your application.
 
-![App Review](/images/chargen_app_review.png)
+![App Review](/theme_images/chargen_app_review.png)
 
 ## Setting Character Information
 

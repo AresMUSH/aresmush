@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp 
     helpers do
       def upload_path
-        File.join(AresMUSH.game_path, 'plugins', 'website', 'web', 'public', 'files')
+        AresMUSH.website_files_path
       end
       
       def file_size_kb(file)

@@ -3,9 +3,11 @@ require 'bundler'
 
 Bundler.require
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'website'))
 
 require 'aresmush'
+require 'website'
 
 bootstrapper = AresMUSH::Bootstrapper.new
 AresMUSH::Global.plugin_manager.load_all

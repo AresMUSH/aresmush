@@ -25,4 +25,4 @@ killares
 
 # Website file storage
 # -----------------------------
-game/plugins/website/web/public/files
+website/public/files

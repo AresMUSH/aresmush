@@ -11,6 +11,31 @@ module AresMUSH
     File.expand_path(File.join(File.dirname(__FILE__), ".."))
   end
   
+  def self.website_path
+    File.join(AresMUSH.root_path, 'website')
+  end
+  
+  def self.website_public_path
+    File.join(AresMUSH.website_path, 'public')
+  end
+
+  def self.website_views_path
+    File.join(AresMUSH.website_path, 'views')
+  end
+  
+  def self.website_files_path
+    File.join(AresMUSH.website_public_path, 'files')
+  end
+
+  def self.website_theme_image_path
+    File.join(AresMUSH.website_public_path, 'theme_images')
+  end
+  
+  def self.website_scripts_path
+    File.join(AresMUSH.website_public_path, 'scripts')
+  end
+  
+  
 end
 
 raise 'Ruby version must be greater than 2.0' unless  RUBY_VERSION.to_f >= 2.0
@@ -113,5 +138,4 @@ require 'aresmush/templates/template_formatters.rb'
 require 'aresmush/templates/template_renderer.rb'
 require 'aresmush/server.rb'
 require 'aresmush/telnet_negotiation.rb'
-require 'aresmush/web/web_server.rb'
 require 'aresmush/web/web_connection.rb'

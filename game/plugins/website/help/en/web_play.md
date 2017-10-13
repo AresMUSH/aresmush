@@ -9,7 +9,7 @@ The web portal provides a wealth of information and tools for interacting with t
 
 Fortunately, the web portal also provides a simple web client that lets you do this from your web browser.
 
-![Web Client](/images/web_client.png)
+![Web Client](/theme_images/web_client.png)
 
 The web client doesn't have any of the bells and whistles of Atlantis or Potato, but it's good in a pinch if you can't connect from your full client.
 

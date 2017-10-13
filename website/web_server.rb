@@ -41,7 +41,7 @@ module AresMUSH
       #enable :sessions
       register Sinatra::Flash
       disable :sessions
-      set :public_folder, File.join(AresMUSH.game_path, 'plugins', 'website', 'web', 'public')
+      set :public_folder, AresMUSH.website_public_path
 
       db_config = YAML.load(File.read(File.join(AresMUSH.game_path, 'config', 'database.yml')))
       secret_config = YAML.load(File.read(File.join(AresMUSH.game_path, 'config', 'secrets.yml')))
@@ -51,7 +51,7 @@ module AresMUSH
       use Rack::Session::Redis, :redis_server => "#{redis_url}/0/rack:session"
       
       Compass.configuration do |config|
-         config.project_path = File.join(AresMUSH.game_path, 'plugins', 'website', 'web')
+         config.project_path = AresMUSH.website_path
          config.sass_dir = 'styles'
        end
 
@@ -78,7 +78,7 @@ module AresMUSH
     
     helpers do
       def find_template(views, name, engine, &block)
-        views = Plugins.all_plugins.map { |p| File.join(PluginManager.plugin_path, p, 'web', 'views') }
+        views = Plugins.all_plugins.map { |p| AresMUSH.website_views_path }
         views.each { |v| super(v, name, engine, &block) }
       end
     end
