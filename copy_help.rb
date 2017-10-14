@@ -16,10 +16,10 @@ end
 
 require 'fileutils'
 require 'ansi'
-require_relative 'lib/aresmush/formatters/line.rb'
-require_relative 'lib/aresmush/formatters/ansi_formatter.rb'
-require_relative 'lib/aresmush/formatters/client_formatter.rb'
-require_relative 'lib/aresmush/formatters/substitution_formatter.rb'
+require_relative 'engine/aresmush/formatters/line.rb'
+require_relative 'engine/aresmush/formatters/ansi_formatter.rb'
+require_relative 'engine/aresmush/formatters/client_formatter.rb'
+require_relative 'engine/aresmush/formatters/substitution_formatter.rb'
 
 class String
   def titlecase

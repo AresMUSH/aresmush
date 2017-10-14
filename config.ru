@@ -3,7 +3,7 @@ require 'bundler'
 
 Bundler.require
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'engine'))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'website'))
 
 require 'aresmush'
