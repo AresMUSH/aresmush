@@ -5,6 +5,7 @@
   <li><a data-toggle="tab" href="#systembg">Background</a></li> 
   <% end %>
   
+  <li><a data-toggle="tab" href="#systemdesc">Description</a></li>
   <li><a data-toggle="tab" href="#systemsheet">Sheet</a></li>
   <li><a data-toggle="tab" href="#systemdamage">Damage</a></li>
 </ul>
@@ -31,21 +32,30 @@
   <% if @char.on_roster? || @char.bg_shared %>
   <div id="systembg" class="tab-pane fade">
       <div class="ansi">
-          <%= format_output_for_html @char.background %></p>
+          <%= format_output_for_html @char.background %>
       </div>
       
   </div>
   <% end %>
   
+  <div id="systemdesc" class="tab-pane fade">
+
+         <div class="ansi"> 
+             <%= format_output_for_html @char.description %>
+            </div>
+          
+      
+  </div>
+  
   <div id="systemsheet" class="tab-pane fade">
 
-          <%= erb :"chars/fs3_sheet" %></p>
+          <%= erb :"chars/fs3_sheet" %>
           
       
   </div>
   <div id="systemdamage" class="tab-pane fade">
 
-      <%= erb :"chars/fs3_damage" %></p>
+      <%= erb :"chars/fs3_damage" %>
       
 
   </div>

@@ -51,13 +51,7 @@ module AresMUSH
 
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
-    end
-    
-    def self.share_scene(scene)      
-      scene.update(shared: true)
-      scene.update(date_shared: Time.now)
-      Scenes.create_or_update_log(scene)
-    end
+    end    
     
     def self.set_scene_location(scene, location)
       matched_rooms = Room.find_by_name_and_area location

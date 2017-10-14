@@ -36,7 +36,7 @@ module AresMUSH
               scene.room.emit_ooc t('scenes.logging_turned_on', :name => enactor_name)
             end
           else
-            scene.delete_poses
+            scene.delete_poses_and_log
             if (!scene.logging_enabled)
               client.emit_ooc t('scenes.logging_already_off')
             else

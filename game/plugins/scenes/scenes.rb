@@ -16,6 +16,7 @@ load "lib/scene_restart_cmd.rb"
 load "lib/scene_undo_cmd.rb"
 load "lib/scene_set_cmd.rb"
 load "lib/scene_share_cmd.rb"
+load "lib/scene_unshare_cmd.rb"
 load "lib/scene_start_cmd.rb"
 load "lib/scene_stop_cmd.rb"
 load "lib/scene_types_cmd.rb"
@@ -94,8 +95,10 @@ module AresMUSH
           return SceneLogClearCmd
         when "startlog", "stoplog"
           return SceneLogEnableCmd
-        when "share", "unshare"
+        when "share"
           return SceneShareCmd
+        when "unshare"
+          return SceneUnshareCmd
         when "unshared"
           return ScenesCmd
         end

@@ -20,15 +20,14 @@ module AresMUSH
       yield scene
     end    
     
-    def self.create_or_update_log(scene)
+    def self.create_log(scene)
       if (scene.scene_log)
-        new_log = Scenes.build_log_text(scene)
-        scene.scene_log.update(log: new_log)
-      else
-        log = Scenes.build_log_text(scene)
-        scene_log = SceneLog.create(scene: scene, log: log)
-        scene.update(scene_log: scene_log)
+        scene.scene_log.delete
       end
+      log = Scenes.build_log_text(scene)
+      scene_log = SceneLog.create(scene: scene, log: log)
+      scene.update(scene_log: scene_log)
+      scene.scene_poses.each { |p| p.delete }  
     end
     
     def self.build_log_text(scene)

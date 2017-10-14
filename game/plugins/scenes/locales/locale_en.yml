@@ -26,7 +26,7 @@ en:
         scene_already_completed: "That scene is already over."
         announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene here."
         location_set: "Scene location changed:%R%R%{description}"
-        scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the wiki/web portal.  Just do `scene/start` if you want to start one."
+        scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the web portal.  Just do `scene/start` if you want to start one."
         public: "Public"
         private: "Private"
         scene_already_going: "There's already a scene going in this room.  You have to stop it first."
@@ -56,6 +56,9 @@ en:
         scene_char_added: "%{name} has been added to the scene."
         scene_char_removed: "%{name} has been removed from the scene."
                 
+        scene_already_shared: "That scene is already shared."
+        scene_not_shared: "That scene is not shared."
+        
         log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
         scene_active_footer: "Only active scenes are shown.  For completed scenes, use `scenes/all`."
 
@@ -65,9 +68,9 @@ en:
         scene_info_missing: "You can't share the log until all the scene info is set.  Title: %{title}, Location: %{location}, Type: %{type}, Summary: %{summary}."
         
         cant_delete_in_progress_scene: "You can't delete a scene that's in progress.  Stop it first."
-        cant_delete_shared_scene: "You can't delete a scene that has been shared to the web portal.  Unshare it first.  You will also need to delete it from the wiki manually (if it was posted there too)."
+        cant_delete_shared_scene: "You can't delete a scene that has been shared to the web portal.  Unshare it first."
         scene_deleted: "Scene deleted."
         
         cant_restart_in_progress_scene: "You can't restart a scene that's already going."
-        cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first.  You will have to re-do any fixes that were made on the web portal and re-sync the page to the wiki (if it was posted there too)."
+        cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
         scene_restarted: "Scene restarted."

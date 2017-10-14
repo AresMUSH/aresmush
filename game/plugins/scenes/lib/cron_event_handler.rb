@@ -8,9 +8,9 @@ module AresMUSH
         end
         
         config = Global.read_config("scenes", "unshared_scene_cleanup_cron")
-        if Cron.is_cron_match?(config, event.time)
+         if Cron.is_cron_match?(config, event.time)
           delete_unshared_scenes
-        end
+         end
       end
 
       def clear_rooms
@@ -40,7 +40,9 @@ module AresMUSH
         delete_days = Global.read_config('scenes', 'unsared_scene_deletion_days')
         
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
-          elapsed_days = DateTime.now.to_date - scene.date_completed
+          
+          puts "#{warn_days} -- #{delete_days} --- #{scene.date_completed} --- #{Time.now}"
+          elapsed_days = Time.now - scene.date_completed
           if (elapsed_days > delete_days  && scene.deletion_warned)
             Global.logger.info "Deleting scene #{scene.id} - #{scene.title} completed #{scene.date_completed}"
             scene.delete
