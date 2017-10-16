@@ -37,12 +37,6 @@ module AresMUSH
       it "should trim a string that's too long" do
         center("FOOBAR", 5).should eq "FOOBA"
       end
-    end
-    
-    describe :line_with_text do
-      it "should render the line with text" do
-        line_with_text("ABC").should eq "%x!-----[ABC]--------------------------------------------------------------------%xn"
-      end
-    end
+    end    
   end
 end

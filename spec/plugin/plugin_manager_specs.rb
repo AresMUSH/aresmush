@@ -12,13 +12,6 @@ module AresMUSH
       AresMUSH.stub(:game_path) { "/game" }      
       @manager = PluginManager.new
     end
-
-    describe :plugin_path do
-      it "should be the game dir plus the plugin dir" do
-       AresMUSH.stub(:game_path) { "game" }
-       PluginManager.plugin_path.should eq File.join("game", "plugins")
-      end
-    end
     
     describe :load_plugin_config do
       it "should load all the plugin config files" do

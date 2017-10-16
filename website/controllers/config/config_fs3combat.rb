@@ -26,7 +26,7 @@ module AresMUSH
         "fs3combat" => skills
         
       }
-      output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3combat', 'config_fs3combat_skills.yml')
+      output_path = File.join(AresMUSH.plugin_path, 'fs3combat', 'config_fs3combat_skills.yml')
       write_config_file output_path, config.to_yaml
       
       

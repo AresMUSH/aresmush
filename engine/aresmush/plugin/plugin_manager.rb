@@ -9,13 +9,9 @@ module AresMUSH
     end
     
     attr_reader :plugins
-    
-    def self.plugin_path
-      File.join(AresMUSH.game_path, "plugins")
-    end
-    
+        
     def load_all
-      load File.join(PluginManager.plugin_path, "plugins.rb")
+      load File.join(AresMUSH.plugin_path, "plugins.rb")
       Plugins.all_plugins.each do |p|
         load_plugin p
       end
@@ -23,7 +19,7 @@ module AresMUSH
     
     def load_plugin(name)
       Global.logger.info "Loading #{name}"
-      plugin_loader = File.join(PluginManager.plugin_path, name, "#{name}.rb")
+      plugin_loader = File.join(AresMUSH.plugin_path, name, "#{name}.rb")
       load plugin_loader
       module_name = find_plugin_const(name)
       if (!module_name)

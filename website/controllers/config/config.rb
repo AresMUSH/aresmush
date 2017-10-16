@@ -12,6 +12,8 @@ module AresMUSH
     
     get '/admin/config/?', :auth => :admin do
       game_path = AresMUSH.game_path
+      plugin_path = AresMUSH.plugin_path
+
       @game_config = ConfigReader.config_files.map { |f| f.gsub(game_path, "") }
       @game_help = Dir[File.join(game_path, "help", "**", "*.md")].map { |f| f.gsub(game_path, "") }
       @plugin_config = {}
@@ -19,16 +21,16 @@ module AresMUSH
         plugin_name = p.to_s.after('::').downcase
         
         @plugin_config[plugin_name] = {}
-        help_files = Dir[File.join(game_path, "plugins", plugin_name, "help", "**", "*.md")]
+        help_files = Dir[File.join(plugin_path, plugin_name, "help", "**", "*.md")]
         @plugin_config[plugin_name]["help"] = help_files.map { |f| f.gsub(game_path, "") }
 
 
-        locale_files = Dir[File.join(game_path, "plugins", plugin_name, "locales", "*.yml")]
+        locale_files = Dir[File.join(plugin_path, plugin_name, "locales", "*.yml")]
         @plugin_config[plugin_name]["locale"] = locale_files.map { |f| f.gsub(game_path, "") }
         
         @plugin_config[plugin_name]["config"] = p.config_files.map { |f| File.join("plugins", plugin_name, f) }
         
-        template_files = Dir[File.join(game_path, "plugins", plugin_name, "templates", "**", "*")]
+        template_files = Dir[File.join(plugin_path, plugin_name, "templates", "**", "*")]
         @plugin_config[plugin_name]["templates"] = template_files.map { |f| f.gsub(game_path, "") }
         
         

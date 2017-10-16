@@ -54,7 +54,7 @@ module AresMUSH
         }
         
       }
-      output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3skills', 'config_fs3skills_action.yml')
+      output_path = File.join(AresMUSH.plugin_path, 'fs3skills', 'config_fs3skills_action.yml')
       write_config_file output_path, config.to_yaml
       
       
@@ -74,7 +74,7 @@ module AresMUSH
         }
         
       }
-      output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3skills', 'config_fs3skills_attrs.yml')
+      output_path = File.join(AresMUSH.plugin_path, 'fs3skills', 'config_fs3skills_attrs.yml')
       write_config_file output_path, config.to_yaml
       
       
@@ -94,7 +94,7 @@ module AresMUSH
         }
         
       }
-      output_path = File.join(AresMUSH.game_path, 'plugins', 'fs3skills', 'config_fs3skills_langs.yml')
+      output_path = File.join(AresMUSH.plugin_path, 'fs3skills', 'config_fs3skills_langs.yml')
       write_config_file output_path, config.to_yaml
       
 

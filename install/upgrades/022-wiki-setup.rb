@@ -1,5 +1,5 @@
 module AresMUSH
-  load "/home/ares/aresmush/game/plugins/website/filename_sanitizer.rb"
+  load "/home/ares/aresmush/plugins/website/filename_sanitizer.rb"
   
   puts "======================================================================="
   puts "Creating wiki starter pages."

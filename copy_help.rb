@@ -60,7 +60,7 @@ if (!Dir.exist?(help_dir))
 end
 
 
-plugins = Dir['game/plugins/*']
+plugins = Dir['plugins/*']
 plugin_names = []
 
 plugins.each do |p|

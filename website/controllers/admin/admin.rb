@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp
     helpers do
       def tinker_cmd_path
-        File.join(AresMUSH.game_path, 'plugins', 'tinker', 'lib', 'tinker_cmd.rb')
+        File.join(AresMUSH.plugin_path, 'tinker', 'lib', 'tinker_cmd.rb')
       end
     end
     

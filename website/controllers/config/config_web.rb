@@ -17,7 +17,7 @@ module AresMUSH
       config = { 
         "website" => @config
       }
-      write_config_file File.join(AresMUSH.game_path, 'plugins', 'website', 'config_website.yml'), config.to_yaml
+      write_config_file File.join(AresMUSH.plugin_path, 'website', 'config_website.yml'), config.to_yaml
       
       flash[:info] = "Saved!"
       Manage.reload_config

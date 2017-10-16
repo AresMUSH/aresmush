@@ -1,4 +1,4 @@
 -c 
 -I . 
---pattern spec/**/*_spec*.rb,game/**/*_spec*.rb
+--pattern spec/**/*_spec*.rb,plugins/**/*_spec*.rb
 --require spec_helper

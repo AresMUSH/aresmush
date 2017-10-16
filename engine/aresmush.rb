@@ -1,7 +1,4 @@
 module AresMUSH
-  def self.game_path
-    File.expand_path(File.join(File.dirname(__FILE__), "..", "game"))
-  end
   
   def self.version
     File.read(File.join(game_path, "version.txt"))
@@ -9,6 +6,14 @@ module AresMUSH
   
   def self.root_path
     File.expand_path(File.join(File.dirname(__FILE__), ".."))
+  end
+  
+  def self.plugin_path
+    File.join(AresMUSH.root_path, "plugins")
+  end
+  
+  def self.game_path
+    File.join(AresMUSH.root_path, "game")
   end
   
   def self.website_path

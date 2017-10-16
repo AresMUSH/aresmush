@@ -95,6 +95,14 @@ module AresMUSH
       self.roles.include?(role)
     end
         
+    def has_any_role?(names)
+      if (!names.respond_to?(:any?))
+        has_role?(names)
+      else
+        names.any? { |n| has_role?(n) }
+      end
+    end
+    
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
       self.alias_upcase = self.alias ? self.alias.upcase : nil
