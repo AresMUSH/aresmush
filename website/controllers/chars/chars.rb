@@ -31,11 +31,6 @@ module AresMUSH
       end
     end
     
-    get '/actors/?' do
-      @actors = Character.all.select { |c| !c.demographic(:actor).blank? }.map{ |c| [c.demographic(:actor), c.name ] }.to_h
-      erb :"chars/actors_index"
-    end
-    
     get '/roster/?' do
       group = Global.read_config("website", "character_gallery_group") || "Faction"
       @roster = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }

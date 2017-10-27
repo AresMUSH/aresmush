@@ -1,20 +1,16 @@
 module AresMUSH
   class WebApp
-    
-    get '/fs3/skills/?' do      
-      erb :"fs3/skills"
+        
+    get '/combat/gear/?' do
+      erb :"combat/gear"
     end
     
-    get '/fs3/gear/?' do
-      erb :"fs3/gear"
-    end
-    
-    get '/fs3/gear/:type/?' do |type|
+    get '/combat/gear/:type/?' do |type|
       @name = params[:name]
       
       if (@name.blank?)
         flash[:error] = "Invalid gear type."
-        redirect "/fs3/gear"
+        redirect "/combat/gear"
       end
       
       case (type || "").downcase
@@ -26,10 +22,10 @@ module AresMUSH
         @data = FS3Combat.vehicle(@name)
       else
         flash[:error] = "Invalid gear type."
-        redirect "/fs3/gear"
+        redirect "/combat/gear"
       end
       
-      erb :"fs3/gear_detail"
+      erb :"combat/gear_detail"
     end
     
   end

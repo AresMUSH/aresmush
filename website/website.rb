@@ -8,17 +8,10 @@ load 'controllers/admin/tinker.rb'
 load 'controllers/admin/logs.rb'
 
 
-load 'controllers/census/census.rb'
 
 load 'controllers/chars/chars.rb'
 load 'controllers/chars/edit_char.rb'
 
-
-load 'controllers/combat/combat.rb'
-load 'controllers/combat/combat_add_combatant.rb'
-load 'controllers/combat/combat_manage_save.rb'
-load 'controllers/combat/combat_manage.rb'
-load 'controllers/combat/combat_view.rb'
 
 load 'controllers/config/config.rb'
 load 'controllers/config/config_edit.rb'
@@ -34,9 +27,6 @@ load 'controllers/config/config_web.rb'
 load 'controllers/config/config_webfiles.rb'
 
 
-load 'controllers/fs3/fs3.rb'
-
-load 'controllers/events/events.rb'
 
 load 'controllers/help/help.rb'
 load 'controllers/help/help_topic.rb'
