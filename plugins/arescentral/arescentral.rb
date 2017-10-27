@@ -6,8 +6,8 @@ load "engine/game_started_event_handler.rb"
 load "engine/handle_link_cmd.rb"
 load "lib/connector.rb"
 load "lib/game_reg.rb"
-load "models/arescentral_model.rb"
-load "api/arescentral_api.rb"
+load "lib/arescentral_api.rb"
+load "lib/arescentral_model.rb"
 load 'web/controllers/players.rb'
 
 
