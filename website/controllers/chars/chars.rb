@@ -36,25 +36,6 @@ module AresMUSH
       erb :"chars/actors_index"
     end
     
-    get '/players/?' do
-      @players = Handle.all.map { |h| [h.name, AresCentral.alts_of(h)]}.to_h
-      
-      Character.all.each do |c|
-        next if c.handle
-        player_tag = c.profile_tags.select { |t| t.start_with?("player") }.first
-        next if !player_tag
-        
-        player_tag = player_tag.after(":").titleize
-        if (@players.has_key?(player_tag))
-          @players[player_tag] << c
-        else
-          @players[player_tag] = [ c ]
-        end
-      end
-                  
-      erb :"chars/players_index"
-    end
-    
     get '/roster/?' do
       group = Global.read_config("website", "character_gallery_group") || "Faction"
       @roster = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
@@ -82,6 +63,10 @@ module AresMUSH
         redirect '/chars'
       end
       
+      if (@char.is_admin? || @char.is_playerbit?)
+        redirect "/player/#{@char.name}"
+      end
+      
       @page_title = "#{@char.name} - #{game_name}"
       
       case @char.idle_state
@@ -105,11 +90,7 @@ module AresMUSH
         end
       end
       
-      if (@char.is_admin? || @char.is_playerbit?)
-        erb :"chars/player"
-      else
-        erb :"chars/char"
-      end
+      erb :"chars/char"
     end
     
     get '/char/:id/source/?' do |id|

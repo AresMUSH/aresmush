@@ -13,6 +13,9 @@ module AresMUSH
           
           begin
             response = connector.sync_handle(char.handle.handle_id, char.name, char.id)
+            
+            # Update character reference since it may have been awhile since the response came in.
+            char = Character[event.char_id]
 
             if (response.is_success?)
               if (response.data["linked"])

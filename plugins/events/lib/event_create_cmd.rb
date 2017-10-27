@@ -24,7 +24,7 @@ module AresMUSH
           return
         end
         
-        Events.create_event
+        Events.create_event(enactor, self.title, datetime, desc)
       end
     end
   end
