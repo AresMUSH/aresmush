@@ -1,15 +1,16 @@
 $:.unshift File.dirname(__FILE__)
+load "engine/hide_cmd.rb"
+load "engine/where_cmd.rb"
+load "engine/who_cmd.rb"
+load "engine/who_events.rb"
+load "engine/whois_cmd.rb"
+load "engine/templates/char_who_fields.rb"
+load "engine/templates/common_who_fields.rb"
+load "engine/templates/where_template.rb"
+load "engine/templates/who_template.rb"
+load "lib/who_model.rb"
 load "lib/helpers.rb"
-load "lib/hide_cmd.rb"
-load "lib/where_cmd.rb"
-load "lib/who_cmd.rb"
-load "lib/who_events.rb"
-load "lib/whois_cmd.rb"
-load "public/who_model.rb"
-load "templates/char_who_fields.rb"
-load "templates/common_who_fields.rb"
-load "templates/where_template.rb"
-load "templates/who_template.rb"
+load "web/who.rb"
 
 module AresMUSH
   module Who

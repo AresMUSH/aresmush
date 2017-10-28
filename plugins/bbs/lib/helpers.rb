@@ -7,11 +7,13 @@ module AresMUSH
     end
 
     def self.can_write_board?(char, board)
+      return false if !board
       roles = board.write_roles.to_a
       !roles || roles.empty? || char.has_any_role?(roles) || can_manage_bbs?(char)
     end
     
     def self.can_read_board?(char, board)
+      return false if !board
       roles = board.read_roles.to_a
       everyone = Role.find_one_by_name("Everyone")
       char_can_read = char ? (char.has_any_role?(roles) || can_manage_bbs?(char)) : false
@@ -19,6 +21,7 @@ module AresMUSH
     end
             
     def self.can_edit_post?(char, post)
+      return false if !post
       post.authored_by?(char) || can_manage_bbs?(char)
     end
     

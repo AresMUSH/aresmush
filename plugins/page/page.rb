@@ -1,9 +1,9 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/page_cmd.rb"
-load "lib/page_dnd.rb"
-load "lib/page_autospace_cmd.rb"
-load "lib/page_color_cmd.rb"
-load "lib/page_ignore_cmd.rb"
+load "engine/page_cmd.rb"
+load "engine/page_dnd.rb"
+load "engine/page_autospace_cmd.rb"
+load "engine/page_color_cmd.rb"
+load "engine/page_ignore_cmd.rb"
 load "lib/page_model.rb"
 
 module AresMUSH

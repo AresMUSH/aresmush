@@ -1,13 +1,11 @@
 $:.unshift File.dirname(__FILE__)
 
-load "models/wiki_page.rb"
-load "models/wiki_page_version.rb"
+load "lib/wiki_page.rb"
+load "lib/wiki_page_version.rb"
 
-
-load 'web_cmd_handler.rb'
-load 'web_config_updated_handler.rb'
-load 'website_cmd.rb'
-load 'wiki_rebuild_cmd.rb'
+load 'engine/web_cmd_handler.rb'
+load 'engine/web_config_updated_handler.rb'
+load 'engine/website_cmd.rb'
 
 module AresMUSH
   module Website
@@ -40,11 +38,6 @@ module AresMUSH
       case cmd.root      
       when "website"
         return WebsiteCmd
-      when "wiki"
-        case cmd.switch
-        when "rebuild"
-          return WikiRebuildCmd
-        end
       end
       
       nil

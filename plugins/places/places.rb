@@ -1,15 +1,15 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/cron_event_handler.rb"
-load "lib/place_create_cmd.rb"
-load "lib/place_emit_cmd.rb"
-load "lib/place_delete_cmd.rb"
-load "lib/place_join_cmd.rb"
-load "lib/place_leave_cmd.rb"
-load "lib/place_rename_cmd.rb"
-load "lib/places_cmd.rb"
-load "public/places_api.rb"
-load "public/places_model.rb"
-load "templates/places_template.rb"
+load "engine/cron_event_handler.rb"
+load "engine/place_create_cmd.rb"
+load "engine/place_emit_cmd.rb"
+load "engine/place_delete_cmd.rb"
+load "engine/place_join_cmd.rb"
+load "engine/place_leave_cmd.rb"
+load "engine/place_rename_cmd.rb"
+load "engine/places_cmd.rb"
+load "engine/templates/places_template.rb"
+load "lib/places_api.rb"
+load "lib/places_model.rb"
 
 module AresMUSH
   module Places

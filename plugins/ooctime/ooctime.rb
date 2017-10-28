@@ -1,10 +1,10 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/char_created_event_handler.rb"
-load "lib/time_cmd.rb"
-load "lib/timezone_cmd.rb"
-load "public/time_model.rb"
-load "public/ooctime_api.rb"
-load "templates/time_template.rb"
+load "engine/char_created_event_handler.rb"
+load "engine/time_cmd.rb"
+load "engine/timezone_cmd.rb"
+load "engine/templates/time_template.rb"
+load "lib/time_model.rb"
+load "lib/ooctime_api.rb"
 
 module AresMUSH
   module OOCTime

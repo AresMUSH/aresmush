@@ -4,14 +4,7 @@ load 'web_server.rb'
 
 load 'controllers/admin/admin.rb'
 load 'controllers/admin/shutdown.rb'
-load 'controllers/admin/tinker.rb'
 load 'controllers/admin/logs.rb'
-
-
-
-load 'controllers/chars/chars.rb'
-load 'controllers/chars/edit_char.rb'
-
 
 load 'controllers/config/config.rb'
 load 'controllers/config/config_edit.rb'
@@ -20,38 +13,9 @@ load 'controllers/config/config_date.rb'
 load 'controllers/config/config_secrets.rb'
 load 'controllers/config/config_skin.rb'
 load 'controllers/config/config_names.rb'
-load 'controllers/config/config_fs3combat.rb'
-load 'controllers/config/config_fs3skills.rb'
 load 'controllers/config/config_game_info.rb'
 load 'controllers/config/config_web.rb'
 load 'controllers/config/config_webfiles.rb'
-
-
-
-load 'controllers/help/help.rb'
-load 'controllers/help/help_topic.rb'
-
-load 'controllers/jobs/job_close.rb'
-load 'controllers/jobs/job_create.rb'
-load 'controllers/jobs/job_reply.rb'
-load 'controllers/jobs/job.rb'
-load 'controllers/jobs/jobs_index.rb'
-
-
-load 'controllers/locations/locations.rb'
-
-load 'controllers/login/login.rb'
-load 'controllers/login/register.rb'
-
-load 'controllers/mail/mail.rb'
-load 'controllers/mail/mail_reply.rb'
-load 'controllers/mail/mail_send.rb'
-
-load 'controllers/scenes/scene_create.rb'
-load 'controllers/scenes/scene_edit_participants.rb'
-load 'controllers/scenes/scene_edit_related.rb'
-load 'controllers/scenes/scene_edit.rb'
-load 'controllers/scenes/scenes.rb'
 
 load 'controllers/wiki/edit_create_page.rb'
 load 'controllers/wiki/wiki.rb'

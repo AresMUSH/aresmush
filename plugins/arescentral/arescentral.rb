@@ -8,7 +8,7 @@ load "lib/connector.rb"
 load "lib/game_reg.rb"
 load "lib/arescentral_api.rb"
 load "lib/arescentral_model.rb"
-load 'web/controllers/players.rb'
+load 'web/players.rb'
 
 
 module AresMUSH

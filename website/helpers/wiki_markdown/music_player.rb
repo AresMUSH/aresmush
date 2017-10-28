@@ -9,7 +9,7 @@ module AresMUSH
         input = matches[1]
         return "" if !input
 
-        sinatra.erb :"chars/music_player", :locals => { 
+        sinatra.erb :"music_player", :locals => { 
           youtubecode: input.before(' '), 
           description: input.after(' '),
           id: SecureRandom.uuid.gsub('-','') 

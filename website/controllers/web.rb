@@ -62,12 +62,5 @@ module AresMUSH
       content_type 'text/css', :charset => 'utf-8'
       scss(:"styles/#{name}", Compass.sass_engine_options )
     end
-    
-    get '/who/?' do
-      @who =  Global.client_monitor.logged_in.map { |client, char| char }
-      @scenes = Scene.all.select { |s| !s.completed }
-      erb :"who"
-    end
-    
   end
 end

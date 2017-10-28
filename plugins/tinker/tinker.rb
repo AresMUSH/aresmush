@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
-load "lib/tinker_cmd.rb"
+load "engine/tinker_cmd.rb"
+load "web/tinker.rb"
 
 module AresMUSH
   module Tinker
