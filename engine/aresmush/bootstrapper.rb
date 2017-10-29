@@ -40,8 +40,9 @@ module AresMUSH
       @db.load_config
       @locale.setup
       @plugin_manager.load_all
+
       @help_reader.load_game_help
-                  
+                
       begin
         game = Game.master
       rescue Exception => e

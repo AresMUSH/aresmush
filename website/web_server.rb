@@ -51,7 +51,7 @@ module AresMUSH
       use Rack::Session::Redis, :redis_server => "#{redis_url}/0/rack:session"
       
       Compass.configuration do |config|
-         config.project_path = AresMUSH.website_path
+         config.project_path = AresMUSH.website_views_path
          config.sass_dir = 'styles'
        end
 
