@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[engine]))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
+require 'aresmush'
 require 'engine'
 require 'erubis'
 require 'rspec'

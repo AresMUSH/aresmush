@@ -1,9 +1,10 @@
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
-require "aresmush"
+require "engine"
 
 def self.plugin_files(name = "*")
-  dir = File.join(File.dirname(__FILE__), "*", "**", "*.rb")
+  dir = File.join(File.dirname(__FILE__), "*", "*.rb")
   all_files = Dir[dir]  
   all_files.select { |f| !/_spec[s]*.rb*/.match(f) }
 end
