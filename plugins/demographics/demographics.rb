@@ -21,8 +21,8 @@ load "engine/templates/rank_census_template.rb"
 load "lib/helpers.rb"
 load "lib/demographics_api.rb"
 load "lib/demo_char.rb"
-load 'web/census.rb'
-load 'web/actors.rb'
+load "web/census.rb"
+load "web/actors.rb"
 
 module AresMUSH
   module Demographics

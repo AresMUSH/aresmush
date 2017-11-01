@@ -17,10 +17,10 @@ load "engine/save_cmd.rb"
 load "engine/set_catcher_cmd.rb"
 load "engine/sweep_cmd.rb"
 load "engine/sweep_kick_cmd.rb"
-load 'engine/templates/bordered_display_template.rb'
-load 'engine/templates/bordered_list_template.rb'
-load 'engine/templates/bordered_paged_list_template.rb'
-load 'engine/templates/bordered_table_template.rb'
+load "engine/templates/bordered_display_template.rb"
+load "engine/templates/bordered_list_template.rb"
+load "engine/templates/bordered_paged_list_template.rb"
+load "engine/templates/bordered_table_template.rb"
 load "engine/templates/line_with_text_template.rb"
 load "engine/templates/page_footer.rb"
 load "lib/utils_model.rb"

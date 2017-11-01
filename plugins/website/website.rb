@@ -3,9 +3,9 @@ $:.unshift File.dirname(__FILE__)
 load "lib/wiki_page.rb"
 load "lib/wiki_page_version.rb"
 
-load 'engine/web_cmd_handler.rb'
-load 'engine/web_config_updated_handler.rb'
-load 'engine/website_cmd.rb'
+load "engine/web_cmd_handler.rb"
+load "engine/web_config_updated_handler.rb"
+load "engine/website_cmd.rb"
 
 module AresMUSH
   module Website

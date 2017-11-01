@@ -35,8 +35,8 @@ load "lib/utils.rb"
 load "lib/xp.rb"
 load "lib/fs3skills_api.rb"
 load "lib/skills_model.rb"
-load 'web/skills.rb'
-load 'web/config_fs3skills.rb'
+load "web/skills.rb"
+load "web/config_fs3skills.rb"
 
 module AresMUSH
   module FS3Skills

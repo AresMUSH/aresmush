@@ -4,8 +4,8 @@ load "engine/help_view_cmd.rb"
 load "engine/templates/help_list_template.rb"
 load "lib/help_api.rb"
 load "lib/helpers.rb"
-load 'web/help.rb'
-load 'web/help_topic.rb'
+load "web/help.rb"
+load "web/help_topic.rb"
 
 module AresMUSH
   module Help

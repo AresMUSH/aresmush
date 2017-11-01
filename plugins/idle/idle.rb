@@ -1,8 +1,8 @@
 $:.unshift File.dirname(__FILE__)
 load "engine/idle_action_cmd.rb"
 load "engine/idle_execute_cmd.rb"
-load 'engine/char_connected_event_handler.rb'
-load 'engine/cron_event_handler.rb'
+load "engine/char_connected_event_handler.rb"
+load "engine/cron_event_handler.rb"
 load "engine/idle_queue_cmd.rb"
 load "engine/idle_remove_cmd.rb"
 load "engine/idle_set_cmd.rb"

@@ -24,8 +24,8 @@ load "engine/templates/notices_template.rb"
 load "lib/helpers.rb"
 load "lib/login_model.rb"
 load "lib/login_api.rb"
-load 'web/login.rb'
-load 'web/register.rb'
+load "web/login.rb"
+load "web/register.rb"
 
 module AresMUSH
   module Login

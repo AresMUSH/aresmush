@@ -26,9 +26,9 @@ load "lib/helpers.rb"
 load "lib/bbs_board.rb"
 load "lib/bbs_reply.rb"
 load "lib/bbs_post.rb"
-load 'web/bbs.rb'
-load 'web/bbs_post.rb'
-load 'web/bbs_reply.rb'
+load "web/bbs.rb"
+load "web/bbs_post.rb"
+load "web/bbs_reply.rb"
 
 
 module AresMUSH

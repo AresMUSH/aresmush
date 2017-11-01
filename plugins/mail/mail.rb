@@ -29,9 +29,9 @@ load "engine/templates/message_template.rb"
 load "lib/helpers.rb"
 load "lib/mail_model.rb"
 load "lib/mail_api.rb"
-load 'web/mail.rb'
-load 'web/mail_reply.rb'
-load 'web/mail_send.rb'
+load "web/mail.rb"
+load "web/mail_reply.rb"
+load "web/mail_send.rb"
 
 module AresMUSH
   module Mail

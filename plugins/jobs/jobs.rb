@@ -31,11 +31,11 @@ load "engine/templates/jobs_list_template.rb"
 load "lib/helpers.rb"
 load "lib/jobs_api.rb"
 load "lib/jobs_model.rb"
-load 'web/job_close.rb'
-load 'web/job_create.rb'
-load 'web/job_reply.rb'
-load 'web/job.rb'
-load 'web/jobs_index.rb'
+load "web/job_close.rb"
+load "web/job_create.rb"
+load "web/job_reply.rb"
+load "web/job.rb"
+load "web/jobs_index.rb"
 
 module AresMUSH
   module Jobs

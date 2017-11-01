@@ -26,11 +26,11 @@ load "engine/templates/scenes_summary_template.rb"
 load "engine/templates/scene_log_template.rb"
 load "lib/scenes_api.rb"
 load "lib/scene_model.rb"
-load 'web/scene_create.rb'
-load 'web/scene_edit_participants.rb'
-load 'web/scene_edit_related.rb'
-load 'web/scene_edit.rb'
-load 'web/scenes.rb'
+load "web/scene_create.rb"
+load "web/scene_edit_participants.rb"
+load "web/scene_edit_related.rb"
+load "web/scene_edit.rb"
+load "web/scenes.rb"
 
 module AresMUSH
   module Scenes

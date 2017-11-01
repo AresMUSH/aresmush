@@ -19,8 +19,8 @@ load "lib/chargen_stage_locks.rb"
 load "lib/helpers.rb"
 load "lib/chargen_api.rb"
 load "lib/chargen_model.rb"
-load 'web/chargen.rb'
-load 'web/chargen_save.rb'
+load "web/chargen.rb"
+load "web/chargen_save.rb"
 
 module AresMUSH
   module Chargen

@@ -89,13 +89,13 @@ load "engine/templates/hud_template.rb"
 load "engine/templates/summary_template.rb"
 load "engine/templates/types_template.rb"
 
-load 'web/gear.rb'
-load 'web/combat_add_combatant.rb'
-load 'web/combat_manage_save.rb'
-load 'web/combat_manage.rb'
-load 'web/combat_view.rb'
-load 'web/combat.rb'
-load 'web/config_fs3combat.rb'
+load "web/gear.rb"
+load "web/combat_add_combatant.rb"
+load "web/combat_manage_save.rb"
+load "web/combat_manage.rb"
+load "web/combat_view.rb"
+load "web/combat.rb"
+load "web/config_fs3combat.rb"
 
 
 module AresMUSH

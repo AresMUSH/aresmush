@@ -11,7 +11,7 @@ load "engine/templates/event_detail_template.rb"
 load "lib/helpers.rb"
 load "lib/events_api.rb"
 load "lib/events_model.rb"
-load 'web/events.rb'
+load "web/events.rb"
 
 module AresMUSH
   module Events
