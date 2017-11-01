@@ -40,7 +40,7 @@ module AresMUSH
           # Swallow this error.  Just means you're loading a plugin for the very first time.
         end
 
-        Global.plugin_manager.load_plugin("tinker")
+        Global.plugin_manager.load_plugin("tinker", :engine)
         flash[:info] = "The tinker code has been updated.  You can now run it in-game with the 'tinker' command."
         
       rescue Exception => ex

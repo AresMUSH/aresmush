@@ -37,7 +37,7 @@ module AresMUSH
           rescue SystemNotFoundException
             # Swallow this error.  Just means you're loading a plugin for the very first time.
           end
-          Global.plugin_manager.load_plugin(load_target)
+          Global.plugin_manager.load_plugin(load_target, :engine)
           Help.reload_help
           Global.locale.reload
           Global.dispatcher.queue_event ConfigUpdatedEvent.new

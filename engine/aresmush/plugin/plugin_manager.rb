@@ -10,17 +10,37 @@ module AresMUSH
     
     attr_reader :plugins
         
-    def load_all
+    def load_all(web_or_engine)
       load File.join(AresMUSH.plugin_path, "plugins.rb")
       Plugins.all_plugins.each do |p|
-        load_plugin p
+        load_plugin p, web_or_engine
       end
     end
     
-    def load_plugin(name)
+    def load_plugin(name, web_or_engine)
       Global.logger.info "Loading #{name}"
-      plugin_loader = File.join(AresMUSH.plugin_path, name, "#{name}.rb")
-      load plugin_loader
+
+      plugin_file = File.join(AresMUSH.plugin_path, name, "#{name}.rb")
+      if (File.exists?(plugin_file))
+        load plugin_file
+      else
+        Global.logger.warn "Plugin loader file #{name} does not exist."
+      end
+      
+      library_file = File.join(AresMUSH.plugin_path, name, "lib", "#{name}.rb")
+      if (File.exists?(library_file))
+        load library_file
+      else
+        Global.logger.warn "Plugin library file for #{name} does not exist."
+      end
+      
+      target_file = File.join(AresMUSH.plugin_path, name, web_or_engine.to_s, "#{name}.rb")
+      if (File.exists?(target_file))
+        load target_file
+      else
+        Global.logger.warn "Plugin web file for #{name} does not exist."
+      end
+      
       module_name = find_plugin_const(name)
       if (!module_name)
         raise SystemNotFoundException.new("Can't find a module for #{name}.")

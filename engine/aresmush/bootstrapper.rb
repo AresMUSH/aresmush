@@ -39,7 +39,7 @@ module AresMUSH
 
       @db.load_config
       @locale.setup
-      @plugin_manager.load_all
+      @plugin_manager.load_all(:engine)
 
       @help_reader.load_game_help
                 

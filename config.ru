@@ -12,7 +12,7 @@ require 'engine'
 require 'website'
 
 bootstrapper = AresMUSH::Bootstrapper.new
-AresMUSH::Global.plugin_manager.load_all
+AresMUSH::Global.plugin_manager.load_all(:website)
 bootstrapper.config_reader.load_game_config
 bootstrapper.db.load_config
 

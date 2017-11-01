@@ -33,7 +33,7 @@ module AresMUSH
     def self.build_log_text(scene)
       log = ""
       div_started = false
-      scene.scene_poses.each do |pose|
+      scene.poses_in_order.to_a.each do |pose|
         formatted_pose = pose.pose || ""
         formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
         if (pose.is_system_pose?)
