@@ -50,7 +50,7 @@ module AresMUSH
     
     def send_formatted(msg, enable_fansi = false)
        # Strip out < and > - may need to strip other things in the future
-      send_data ClientFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
+      send_data MushFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
     end
     
     # Just announces that the websocket was closed.

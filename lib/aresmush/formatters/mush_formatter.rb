@@ -1,6 +1,6 @@
 module AresMUSH
 
-  class ClientFormatter
+  class MushFormatter
 
     def self.format(msg, enable_fansi = true)
       # Take escaped backslashes out of the equation for a moment because
