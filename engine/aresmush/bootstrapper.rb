@@ -29,7 +29,9 @@ module AresMUSH
     def web_start
       # Order here is important!
       @config_reader.load_game_config      
-      @ares_logger.start
+      @ares_logger.start("web")
+      Global.ares_logger = @ares_logger
+
       @db.load_config
       @locale.setup
       @plugin_manager.load_all(:web)
@@ -44,7 +46,9 @@ module AresMUSH
       
       # Order here is important!
       @config_reader.load_game_config      
-      @ares_logger.start
+      @ares_logger.start("engine")
+
+      Global.ares_logger = @ares_logger
 
       @db.load_config
       @locale.setup
