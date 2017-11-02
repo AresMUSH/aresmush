@@ -1,17 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/events_cmd.rb"
-load "engine/event_detail_cmd.rb"
-load "engine/event_create_cmd.rb"
-load "engine/event_edit_cmd.rb"
-load "engine/event_delete_cmd.rb"
-load "engine/event_update_cmd.rb"
-load "engine/cron_event_handler.rb"
-load "engine/templates/events_list_template.rb"
-load "engine/templates/event_detail_template.rb"
-load "lib/helpers.rb"
-load "lib/events_api.rb"
-load "lib/events_model.rb"
-load "web/events.rb"
 
 module AresMUSH
   module Events

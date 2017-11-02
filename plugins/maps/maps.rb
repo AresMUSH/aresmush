@@ -1,12 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/map_cmd.rb"
-load "engine/maps_cmd.rb"
-load "engine/maps_model.rb"
-load "engine/map_create_cmd.rb"
-load "engine/map_delete_cmd.rb"
-load "engine/map_areas_cmd.rb"
-load "lib/helpers.rb"
-load "web/maps.rb"
 
 module AresMUSH
   module Maps

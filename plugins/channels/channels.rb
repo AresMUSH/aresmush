@@ -1,29 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-load "engine/channel_alias_cmd.rb"
-load "engine/channel_announce_cmd.rb"
-load "engine/channel_mute_cmd.rb"
-load "engine/channel_join_cmd.rb"
-load "engine/channel_leave_cmd.rb"
-load "engine/channel_list_cmd.rb"
-load "engine/channel_recall_cmd.rb"
-load "engine/channel_talk_cmd.rb"
-load "engine/channel_title_cmd.rb"
-load "engine/channel_who_cmd.rb"
-load "engine/char_connected_event_handler.rb"
-load "engine/char_disconnected_event_handler.rb"
-load "engine/char_created_event_handler.rb"
-load "engine/role_changed_event_handler.rb"
-load "engine/role_deleted_event_handler.rb"
-load "engine/management/channel_attribute_cmd.rb"
-load "engine/management/channel_create_cmd.rb"
-load "engine/management/channel_delete_cmd.rb"
-load "engine/templates/channel_list_template.rb"
-load "lib/helpers.rb"
-load "lib/channel_api.rb"
-load "lib/channel.rb"
-load "lib/channel_options.rb"
-load "lib/channel_char.rb"
 
 module AresMUSH
   module Channels

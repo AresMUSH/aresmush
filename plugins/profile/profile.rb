@@ -1,19 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/profile_add_cmd.rb"
-load "engine/profile_cmd.rb"
-load "engine/profile_delete_cmd.rb"
-load "engine/profile_edit_cmd.rb"
-load "engine/relationship_add_cmd.rb"
-load "engine/relationship_delete_cmd.rb"
-load "engine/relationship_move_cmd.rb"
-load "engine/relationships_order_cmd.rb"
-load "engine/relationships_cmd.rb"
-load "engine/templates/profile_template.rb"
-load "engine/templates/relationships_template.rb"
-load "lib/helpers.rb"
-load "lib/profile_model.rb"
-load "web/chars.rb"
-load "web/edit_char.rb"
 
 module AresMUSH
   module Profile

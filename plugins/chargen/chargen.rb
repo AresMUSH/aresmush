@@ -1,26 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-load "engine/app_approve_cmd.rb"
-load "engine/app_cmd.rb"
-load "engine/app_reject_cmd.rb"
-load "engine/app_review_cmd.rb"
-load "engine/app_submit_cmd.rb"
-load "engine/app_unapprove_cmd.rb"
-load "engine/app_unsubmit_cmd.rb"
-load "engine/bg_edit_cmd.rb"
-load "engine/bg_set_cmd.rb"
-load "engine/bg_view_cmd.rb"
-load "engine/chargen_next_prev_cmd.rb"
-load "engine/chargen_start_cmd.rb"
-load "engine/templates/bg_template.rb"
-load "engine/templates/chargen_template.rb"
-load "engine/templates/app_template.rb"
-load "lib/chargen_stage_locks.rb"
-load "lib/helpers.rb"
-load "lib/chargen_api.rb"
-load "lib/chargen_model.rb"
-load "web/chargen.rb"
-load "web/chargen_save.rb"
 
 module AresMUSH
   module Chargen

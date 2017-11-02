@@ -1,19 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/autospace_cmd.rb"
-load "engine/char_connected_event_handler.rb"
-load "engine/nospoof_cmd.rb"
-load "engine/pemit_cmd.rb"
-load "engine/pose_catcher_cmd.rb"
-load "engine/pose_cmd.rb"
-load "engine/set_pose_cmd.rb"
-load "engine/pose_drop_cmd.rb"
-load "engine/pose_nudge_cmd.rb"
-load "engine/pose_order_cmd.rb"
-load "engine/quote_color_cmd.rb"
-load "lib/helpers.rb"
-load "lib/pose_api.rb"
-load "lib/pose_model.rb"
-load "lib/pose_event.rb"
 
 
 module AresMUSH

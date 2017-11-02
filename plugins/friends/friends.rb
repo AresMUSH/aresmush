@@ -1,11 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/friend_add_cmd.rb"
-load "engine/friend_note_cmd.rb"
-load "engine/friend_remove_cmd.rb"
-load "engine/friends_cmd.rb"
-load "engine/templates/friends_template.rb"
-load "lib/helpers.rb"
-load "lib/friends_model.rb"
 
 module AresMUSH
   module Friends

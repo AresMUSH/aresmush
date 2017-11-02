@@ -1,14 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/afk_cron_handler.rb"
-load "engine/duty_cmd.rb"
-load "engine/go_afk_cmd.rb"
-load "engine/go_offstage_cmd.rb"
-load "engine/go_onstage_cmd.rb"
-load "engine/npc_cmd.rb"
-load "engine/playerbit_cmd.rb"
-load "lib/helpers.rb"
-load "lib/status_model.rb"
-load "lib/status_api.rb"
 
 module AresMUSH
   module Status

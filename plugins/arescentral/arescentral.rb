@@ -1,14 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-load "engine/char_connected_event_handler.rb"
-load "engine/cron_event_handler.rb"
-load "engine/game_started_event_handler.rb"
-load "engine/handle_link_cmd.rb"
-load "lib/connector.rb"
-load "lib/game_reg.rb"
-load "lib/arescentral_api.rb"
-load "lib/arescentral_model.rb"
-load "web/players.rb"
 
 
 module AresMUSH

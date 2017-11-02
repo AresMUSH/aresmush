@@ -5,7 +5,7 @@ module AresMUSH
       
       @path = params[:path]
       @plugin = params[:plugin]
-      @config = File.read(File.join(AresMUSH.game_path, @path))
+      @config = File.read(File.join(AresMUSH.root_path, @path))
       @error = nil      
       @return_url = params[:return_url] || '/admin/config'
       

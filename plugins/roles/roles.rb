@@ -1,17 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/admin_list_cmd.rb"
-load "engine/admin_note_cmd.rb"
-load "engine/char_created_event_handler.rb"
-load "engine/roles_assign_cmd.rb"
-load "engine/role_create_cmd.rb"
-load "engine/role_delete_cmd.rb"
-load "engine/roles_cmd.rb"
-load "engine/role_update_permission_cmd.rb"
-load "engine/roles_remove_cmd.rb"
-load "engine/templates/admin_template.rb"
-load "lib/roles_events.rb"
-load "lib/roles_model.rb"
-load "lib/helpers.rb"
 
 module AresMUSH
   module Roles

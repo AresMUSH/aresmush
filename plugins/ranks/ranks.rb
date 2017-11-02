@@ -1,10 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/rank_set_cmd.rb"
-load "engine/ranks_cmd.rb"
-load "engine/templates/ranks_template.rb"
-load "lib/ranks_model.rb"
-load "lib/ranks_api.rb"
-load "lib/helpers.rb"
 
 module AresMUSH
   module Ranks

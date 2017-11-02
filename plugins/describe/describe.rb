@@ -1,26 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/desc_edit_cmd.rb"
-load "engine/describe_cmd.rb"
-load "engine/desc_notify_cmd.rb"
-load "engine/glance_cmd.rb"
-load "engine/details/detail_delete_cmd.rb"
-load "engine/details/detail_edit_cmd.rb"
-load "engine/details/detail_set_cmd.rb"
-load "engine/look_cmd.rb"
-load "engine/outfits/outfit_delete_cmd.rb"
-load "engine/outfits/outfit_edit_cmd.rb"
-load "engine/outfits/outfit_list_cmd.rb"
-load "engine/outfits/outfit_set_cmd.rb"
-load "engine/outfits/outfit_view_cmd.rb"
-load "engine/wear_cmd.rb"
-load "engine/templates/char_desc_template_fields.rb"
-load "engine/templates/character_template.rb"
-load "engine/templates/exit_template.rb"
-load "engine/templates/glance_template.rb"
-load "engine/templates/room_template.rb"
-load "lib/helpers.rb"
-load "lib/describe_api.rb"
-load "lib/desc_model.rb"
 
 module AresMUSH
   module Describe

@@ -1,27 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/idle_action_cmd.rb"
-load "engine/idle_execute_cmd.rb"
-load "engine/char_connected_event_handler.rb"
-load "engine/cron_event_handler.rb"
-load "engine/idle_queue_cmd.rb"
-load "engine/idle_remove_cmd.rb"
-load "engine/idle_set_cmd.rb"
-load "engine/idle_start_cmd.rb"
-load "engine/lastwill_cmd.rb"
-load "engine/roster_add_cmd.rb"
-load "engine/roster_claim_cmd.rb"
-load "engine/roster_list_cmd.rb"
-load "engine/roster_data_cmd.rb"
-load "engine/roster_restrict_cmd.rb"
-load "engine/roster_remove_cmd.rb"
-load "engine/roster_view_cmd.rb"
-load "engine/templates/idle_queue_template.rb"
-load "engine/templates/roster_list_template.rb"
-load "engine/templates/roster_detail_template.rb"
-load "lib/helpers.rb"
-load "lib/idle_api.rb"
-load "lib/idle_model.rb"
-load "web/idle.rb"
 
 module AresMUSH
   module Idle

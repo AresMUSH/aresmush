@@ -1,12 +1,4 @@
 $:.unshift File.dirname(__FILE__)
-load "engine/cookie_cmd.rb"
-load "engine/cookie_cron_handler.rb"
-load "engine/cookie_here_cmd.rb"
-load "engine/cookies_total_cmd.rb"
-load "engine/cookies_cmd.rb"
-load "lib/helpers.rb"
-load "lib/cookie_award.rb"
-load "lib/cookie_model.rb"
 
 module AresMUSH
   module Cookies

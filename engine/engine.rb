@@ -1,5 +1,11 @@
 require_relative '../lib/aresmush.rb'
 
+module AresMUSH
+  def self.logs_path
+    File.join(AresMUSH.game_path, "logs", "engine")
+  end
+end
+
 require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'
 require 'aresmush/client/client.rb'

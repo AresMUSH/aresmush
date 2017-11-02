@@ -26,6 +26,15 @@ module AresMUSH
       Global.database = @db
     end
     
+    def web_start
+      # Order here is important!
+      @config_reader.load_game_config      
+      @ares_logger.start
+      @db.load_config
+      @locale.setup
+      @plugin_manager.load_all(:web)
+    end
+    
     def start
                         
       # Configure a trap for exiting.

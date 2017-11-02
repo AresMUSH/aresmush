@@ -1,7 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-load "engine/ictime_cmd.rb"
-load "lib/ictime_api.rb"
 
 module AresMUSH
   module ICTime

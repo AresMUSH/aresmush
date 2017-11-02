@@ -9,8 +9,17 @@
         <% end %>
         
 
+<h2>Website Logs</h2>
 <ul>
-<% @logs.each_with_index do |l| %>
-    <li><a href="/admin/log/<%= File.basename(l) %>"><%= File.basename(l) %></a></li>
+<% @web_logs.each_with_index do |l| %>
+    <li><a href="/admin/log/web/<%= File.basename(l) %>"><%= File.basename(l) %></a></li>
+<% end %>
+</ul>
+
+
+<h2>Engine Logs</h2>
+<ul>
+<% @engine_logs.each_with_index do |l| %>
+    <li><a href="/admin/log/engine/<%= File.basename(l) %>"><%= File.basename(l) %></a></li>
 <% end %>
 </ul>

@@ -18,27 +18,27 @@ module AresMUSH
     end
     
     def load_plugin(name, web_or_engine)
-      Global.logger.info "Loading #{name}"
+      Global.logger.info "Loading #{name} for #{web_or_engine}"
 
       plugin_file = File.join(AresMUSH.plugin_path, name, "#{name}.rb")
       if (File.exists?(plugin_file))
         load plugin_file
       else
-        Global.logger.warn "Plugin loader file #{name} does not exist."
+        Global.logger.debug "Plugin loader file #{name} does not exist."
       end
       
-      library_file = File.join(AresMUSH.plugin_path, name, "lib", "#{name}.rb")
+      library_file = File.join(AresMUSH.plugin_path, name, "lib", "init.rb")
       if (File.exists?(library_file))
         load library_file
       else
-        Global.logger.warn "Plugin library file for #{name} does not exist."
+        Global.logger.debug "Plugin library file for #{name} does not exist."
       end
       
-      target_file = File.join(AresMUSH.plugin_path, name, web_or_engine.to_s, "#{name}.rb")
+      target_file = File.join(AresMUSH.plugin_path, name, web_or_engine.to_s, "init.rb")
       if (File.exists?(target_file))
         load target_file
       else
-        Global.logger.warn "Plugin web file for #{name} does not exist."
+        Global.logger.debug "Plugin web file for #{name} does not exist."
       end
       
       module_name = find_plugin_const(name)
@@ -57,6 +57,9 @@ module AresMUSH
       plugin_module.config_files.each do |config|
         Global.config_reader.load_config_file File.join(plugin_module.plugin_dir, config)
       end
+      
+      # Force the website to restart next time
+      FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
     end
     
     def validate_plugin_config(plugin_module)

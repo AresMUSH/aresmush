@@ -1,41 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 # Must be loaded before other job commands
-load "engine/single_job_cmd.rb"
 
-load "engine/change_job_cmd.rb"
-load "engine/close_job_cmd.rb"
-load "engine/create_job_cmd.rb"
-load "engine/create_request_cmd.rb"
-load "engine/delete_job_cmd.rb"
-load "engine/char_connected_event_handler.rb"
-load "engine/handle_job_cmd.rb"
-load "engine/job_comment_cmd.rb"
-load "engine/job_delete_reply_cmd.rb"
-load "engine/job_search_cmd.rb"
-load "engine/job_status_cmd.rb"
-load "engine/jobs_backup_cmd.rb"
-load "engine/jobs_catchup.rb"
-load "engine/jobs_filter_cmd.rb"
-load "engine/job_mail_cmd.rb"
-load "engine/jobs_new_cmd.rb"
-load "engine/job_unread_cmd.rb"
-load "engine/list_jobs_cmd.rb"
-load "engine/list_requests_cmd.rb"
-load "engine/purge_jobs_cmd.rb"
-load "engine/request_comment_cmd.rb"
-load "engine/view_job_cmd.rb"
-load "engine/view_request_cmd.rb"
-load "engine/templates/job_template.rb"
-load "engine/templates/jobs_list_template.rb"
-load "lib/helpers.rb"
-load "lib/jobs_api.rb"
-load "lib/jobs_model.rb"
-load "web/job_close.rb"
-load "web/job_create.rb"
-load "web/job_reply.rb"
-load "web/job.rb"
-load "web/jobs_index.rb"
 
 module AresMUSH
   module Jobs
