@@ -16,7 +16,7 @@ module AresMUSH
         error = true
       end
       
-      File.open(File.join(AresMUSH.game_path, path), 'w') do |f|
+      File.open(File.join(AresMUSH.root_path, path), 'w') do |f|
         f.write config
       end
       

@@ -21,7 +21,7 @@ module AresMUSH
   end
   
   def self.website_public_path
-    File.join(AresMUSH.website_path, 'public')
+    AresMUSH.game_path
   end
 
   def self.website_views_path
