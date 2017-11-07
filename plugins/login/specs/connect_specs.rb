@@ -86,7 +86,7 @@ module AresMUSH
      
         context "success" do
           before do
-            @found_char.stub(:client) { nil }
+            Login.stub(:find_client).with(@found_char) { nil }
             @found_char.stub(:id) { 3 }
             Character.should_receive(:find_any_by_name) { [ @found_char ] }
             @found_char.stub(:compare_password).with("password") { true }  
@@ -97,7 +97,7 @@ module AresMUSH
           
           it "should disconnect an existing client" do
             other_client = double
-            @found_char.stub(:client) { other_client }
+            Login.stub(:find_client).with(@found_char) { other_client }
             other_client.should_receive(:emit_ooc).with('login.disconnected_by_reconnect')
             other_client.should_receive(:disconnect)
             dispatcher.stub(:queue_timer)

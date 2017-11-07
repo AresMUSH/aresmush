@@ -16,7 +16,7 @@ module AresMUSH
         before do
           @target = Character.new
           @target.stub(:id) { "X" }
-          @target.stub(:is_online?) { false }
+          Login.stub(:is_online?).with(@target) { false }
           ClassTargetFinder.stub(:find).with("X", @target.class, @enactor) { FindResult.new(@target, nil) }
           @client.stub(:program) { { :destroy_target => @target.id, 
                :destroy_class => @target.class,
@@ -33,7 +33,7 @@ module AresMUSH
           end
 
           it "should emit failure if trying to destroy a char who's online" do
-            @target.stub(:is_online?) { true }
+            Login.stub(:is_online?).with(@target) { true }
             @client.should_receive(:emit_failure).with("manage.cannot_destroy_online")
             @handler.handle
           end
@@ -86,14 +86,14 @@ module AresMUSH
             it "should tell an online char they're being moved and move them" do
               # Match up a client to the character
               client_in_room = double
-              @char_in_room.stub(:client) { client_in_room }
+              Login.stub(:find_client).with(@char_in_room) { client_in_room }
               client_in_room.should_receive(:emit_ooc).with("manage.room_being_destroyed")
               Rooms.should_receive(:send_to_welcome_room).with(client_in_room, @char_in_room)
               @handler.handle
             end
           
             it "should move them to the welcome room" do
-              @char_in_room.stub(:client) { nil }
+              Login.stub(:find_client).with(@char_in_room) { nil }
               Rooms.should_receive(:send_to_welcome_room).with(nil, @char_in_room)
               @handler.handle
             end

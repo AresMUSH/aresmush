@@ -17,7 +17,7 @@ module AresMUSH
       
       client.emit_success t('cookies.cookie_given', :name => recipient.name)
 
-      other_client = recipient.client
+      other_client = Login.find_client(recipient)
       if (other_client)
         other_client.emit_ooc t('cookies.cookie_received', :name => giver.name)
       end

@@ -37,7 +37,7 @@ module AresMUSH
         
         combat.update(team_targets: team_targets)
 
-        combat.emit_to_organizer t('fs3combat.team_target_set', :team => self.team, :targets => self.targets.join(", "))
+        FS3Combat.emit_to_organizer combat, t('fs3combat.team_target_set', :team => self.team, :targets => self.targets.join(", "))
       end
     end
   end

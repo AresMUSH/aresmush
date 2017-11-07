@@ -51,8 +51,8 @@ module AresMUSH
           
           if (success)
             if (scene.room)
-              scene.room.emit_ooc t('scenes.scene_info_updated_announce', :name => enactor_name, 
-              :value => self.value, :setting => self.setting)
+              Rooms.emit_ooc_to_room(scene.room, t('scenes.scene_info_updated_announce', :name => enactor_name, 
+                :value => self.value, :setting => self.setting))
             end
             if (enactor_room != scene.room)
               client.emit_success t('scenes.scene_info_updated')
@@ -101,7 +101,7 @@ module AresMUSH
         message = Scenes.set_scene_location(scene, self.value)
         
         if (scene.room)
-          scene.room.emit message
+          Rooms.emit_to_room(scene.room, message)
         end
         
         if (scene.room != enactor_room)

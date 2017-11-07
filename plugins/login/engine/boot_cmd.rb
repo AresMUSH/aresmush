@@ -21,7 +21,7 @@ module AresMUSH
             return
           end
           
-          boot_client = bootee.client
+          boot_client = Login.find_client(bootee)
           if (!boot_client)
             client.emit_failure t('login.cant_boot_disconnected_player')
             return

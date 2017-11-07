@@ -14,7 +14,7 @@ module AresMUSH
         Game.stub(:master) { @game }
 
         Describe.stub(:desc_template)
-        @room.stub(:emit_ooc)
+        Rooms.stub(:emit_ooc_to_room)
         
         @char = double
         @char_id = 111

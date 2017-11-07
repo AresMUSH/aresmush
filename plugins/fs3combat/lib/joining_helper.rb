@@ -39,7 +39,7 @@ module AresMUSH
         :team =>  9,
         :combat => combat)
       end
-      combat.emit t('fs3combat.has_joined', :name => name, :type => combatant_type)
+      FS3Combat.emit_to_combat combat, t('fs3combat.has_joined', :name => name, :type => combatant_type)
       
       vehicle_type = FS3Combat.combatant_type_stat(combatant_type, "vehicle")
       
@@ -54,7 +54,7 @@ module AresMUSH
     end
         
     def self.leave_combat(combat, combatant)
-      combat.emit t('fs3combat.has_left', :name => combatant.name)
+      FS3Combat.emit_to_combat combat, t('fs3combat.has_left', :name => combatant.name)
       combatant.delete
     end
   end

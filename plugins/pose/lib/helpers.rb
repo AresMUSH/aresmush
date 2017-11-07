@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       enactor.room.characters.each do |char|
-        client = char.client
+        client = Login.find_client(char)
         next if !client
         client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc, place_name)
       end
@@ -32,12 +32,13 @@ module AresMUSH
             
       next_up_name = poses.first[0]
       next_up_char = Character.find_one_by_name(next_up_name)
+      next_up_client = Login.find_client(next_up_char)
       
-      if ((next_up_char.room != room) || !next_up_char.client)
+      if ((next_up_char.room != room) || !next_up_client)
         room.remove_from_pose_order(next_up_name)
         Pose.notify_next_person(room)
       elsif (next_up_char.pose_nudge && !next_up_char.pose_nudge_muted)
-        next_up_char.client.emit_ooc t('pose.pose_your_turn')      
+        next_up_client.emit_ooc t('pose.pose_your_turn')      
       end
     end
     

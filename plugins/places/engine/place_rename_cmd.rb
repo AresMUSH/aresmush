@@ -25,8 +25,8 @@ module AresMUSH
         
         self.old_name = place.name
         place.update(name: new_name)
-        enactor_room.emit_ooc t('places.renamed_place', :name => enactor.name, 
-          :old_name => self.old_name, :new_name => self.new_name)
+        Rooms.emit_ooc_to_room(enactor_room, t('places.renamed_place', :name => enactor.name, 
+          :old_name => self.old_name, :new_name => self.new_name))
       end
     end
   end

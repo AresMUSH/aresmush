@@ -11,7 +11,7 @@ module AresMUSH
       
       def handle        
         enactor.room.characters.each do |char|
-          client = char.client
+          client = Login.find_client(char)
           next if !client
         
           formatted_pose = Pose.custom_format(self.pose, char, enactor, true, false)

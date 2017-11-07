@@ -25,7 +25,7 @@ module AresMUSH
             FS3Combat.heal(wound, 1)
           end
           
-          combat.emit t('fs3combat.back_in_the_fight', :name => enactor_name), nil, true
+          FS3Combat.emit_to_combat combat, t('fs3combat.back_in_the_fight', :name => enactor_name), nil, true
         end
       end
     end

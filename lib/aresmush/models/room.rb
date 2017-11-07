@@ -50,18 +50,6 @@ module AresMUSH
       return out
     end
     
-    def clients
-      characters.select { |c| c.is_online? }.map { |c| c.client }
-    end
-    
-    def emit(msg)
-      clients.each { |c| c.emit(msg) }
-    end
-    
-    def emit_ooc(msg)
-      clients.each { |c| c.emit_ooc(msg) }
-    end
-        
     def has_exit?(name)
       !get_exit(name).nil?
     end

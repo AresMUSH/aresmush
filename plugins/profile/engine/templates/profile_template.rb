@@ -95,7 +95,7 @@ module AresMUSH
       end
       
       def last_on
-        if (@char.client)
+        if (Login.is_online?(@char))
           t('profile.currently_connected')
         else
           OOCTime.local_long_timestr(@enactor, @char.last_on)

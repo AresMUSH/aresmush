@@ -39,19 +39,6 @@ module AresMUSH
       include_markers ? Channels.name_with_markers(display) : display
     end
     
-    def emit(msg)
-      message_with_title = "#{display_name} #{msg}"
-      add_to_history message_with_title
-      characters.each do |c|
-        if (!Channels.is_muted?(c, self))
-          client = c.client
-          if (client)
-            client.emit message_with_title
-          end
-        end
-      end
-    end
-    
     def add_to_history(msg)
       return if !self.recall_enabled
       new_messages = (self.messages << msg)
@@ -59,13 +46,7 @@ module AresMUSH
         new_messages.shift
       end
       self.update(messages: new_messages)
-    end
-      
-    
-    def pose(name, msg)
-      formatted_msg = PoseFormatter.format(name, msg)
-      emit formatted_msg
-    end
+    end      
     
     def self.find_one_with_partial_match(name)
       channel = Channel.find_one_by_name(name)

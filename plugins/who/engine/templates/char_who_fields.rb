@@ -29,11 +29,11 @@ module AresMUSH
       end
       
       def idle(char)
-        TimeFormatter.format(char.client.idle_secs)
+        TimeFormatter.format(Login.find_client(char).idle_secs)
       end   
 
       def connected(char)
-        TimeFormatter.format(char.client.connected_secs)
+        TimeFormatter.format(Login.find_client(char).connected_secs)
       end   
 
       def room(char)

@@ -21,7 +21,7 @@ module AresMUSH
       def handle
         
         enactor.spend_luck(1)
-        enactor_room.emit_ooc t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
+        Rooms.emit_ooc_to_room(enactor_room, t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason))
           
         Global.logger.info "#{enactor_name} spent luck on #{reason}."
       end

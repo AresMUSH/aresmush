@@ -21,7 +21,7 @@ module AresMUSH
         end
         
         enactor_room.remove_from_pose_order(self.name)        
-        enactor_room.emit_ooc t('pose.pose_order_dropped', :name => enactor_name, :dropped => self.name)
+        Rooms.emit_ooc_to_room(enactor_room, t('pose.pose_order_dropped', :name => enactor_name, :dropped => self.name))
         Pose.notify_next_person(enactor_room)
       end
     end

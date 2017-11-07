@@ -54,25 +54,6 @@ module AresMUSH
     def find_vehicle_by_name(name)
       self.vehicles.select { |v| v.name.upcase == name.upcase }.first
     end
-
-    def emit(message, npcmaster = nil, add_to_scene = false)
-      message = message + "#{npcmaster}"
-      log(message)
-      self.combatants.each { |c| c.emit(message) }
-      
-      if (add_to_scene && self.scene)
-        Scenes.add_pose(self.scene, message)
-      end
-    end
-      
-    def emit_to_organizer(message, npcmaster = nil)
-      message = message + " (#{npcmaster})" if npcmaster
-        
-      client = self.organizer.client
-      if (client)
-        client.emit t('fs3combat.organizer_emit', :message => message)
-      end
-    end
     
     def log(msg)
       if (!self.debug_log)

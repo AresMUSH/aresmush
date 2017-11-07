@@ -32,7 +32,7 @@ module AresMUSH
           
           if (!self.silent)
             scene.room.characters.each do |char|
-              other_client = char.client
+              other_client = Login.find_client(char)
               next if !other_client
               next if char == enactor
               self.emit_replacement(char, other_client)

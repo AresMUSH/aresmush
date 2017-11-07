@@ -112,13 +112,13 @@ module AresMUSH
 
       message = t('fs3combat.weapon_changed', :name => combatant.name, 
         :weapon => combatant.weapon)
-      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
+      FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
     def self.set_armor(enactor, combatant, armor)
       combatant.update(armor: armor ? armor.titlecase : nil)
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
-      combatant.combat.emit message, FS3Combat.npcmaster_text(combatant.name, enactor)
+      FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
   end
 end

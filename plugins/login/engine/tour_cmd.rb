@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def handle
-        guest = Login.guests.sort_by{ |g| g.name }.select { |g| !g.is_online? }
+        guest = Login.guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }
         if (guest.empty?)
           client.emit_ooc t('login.all_guests_taken')
           return

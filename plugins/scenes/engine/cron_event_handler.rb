@@ -16,7 +16,7 @@ module AresMUSH
       def clear_rooms
         rooms = Room.all.select { |r| !!r.scene_set || !!r.scene || !r.scene_nag}
         rooms.each do |r|
-          if (r.clients.empty?)
+          if (Rooms.clients_in_room(r).empty?)
             if (r.scene_set)
               r.update(scene_set: nil)
             end

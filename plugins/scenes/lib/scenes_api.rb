@@ -32,7 +32,7 @@ module AresMUSH
       return if scene.completed
       
       scene.room.characters.each do |c|
-        connected_client = c.client
+        connected_client = Login.find_client(c)
         if (connected_client)
           connected_client.emit_ooc t('scenes.scene_ending')
         end

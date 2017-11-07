@@ -30,10 +30,10 @@ module AresMUSH
           old_pilot.update(piloting: nil)
           old_pilot.update(riding_in: vehicle)
         end
-        combat.emit t('fs3combat.new_pilot', :name => combatant.name, :vehicle => vehicle.name)
+        FS3Combat.emit_to_combat combat, t('fs3combat.new_pilot', :name => combatant.name, :vehicle => vehicle.name)
       else
         combatant.update(riding_in: vehicle)
-        combat.emit t('fs3combat.new_passenger', :name => combatant.name, :vehicle => vehicle.name)
+        FS3Combat.emit_to_combat combat, t('fs3combat.new_passenger', :name => combatant.name, :vehicle => vehicle.name)
       end
     end
     
@@ -49,7 +49,7 @@ module AresMUSH
        end
        FS3Combat.set_default_gear(nil, combatant, Global.read_config("fs3combat", "default_type"))
        
-       combat.emit t('fs3combat.disembarks_vehicle', :name => combatant.name, :vehicle => vehicle.name)
+       FS3Combat.emit_to_combat combat, t('fs3combat.disembarks_vehicle', :name => combatant.name, :vehicle => vehicle.name)
     end
     
     def self.vehicle_dodge_mod(combatant)

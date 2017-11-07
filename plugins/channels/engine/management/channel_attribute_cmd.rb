@@ -80,7 +80,7 @@ module AresMUSH
             roles.each { |r| channel.roles.add Role.find_one_by_name(r) }
           end
         
-          channel.emit t('channels.roles_changed_by', :name => enactor_name)
+          Channels.emit_to_channel channel, t('channels.roles_changed_by', :name => enactor_name)
         
           channel.characters.each do |c|
             if (!Channels.can_use_channel(c, channel))

@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
-        
+
       describe :find_combat_by_number do
         before do
           @combat1 = double
@@ -33,6 +33,77 @@ module AresMUSH
           FS3Combat.find_combat_by_number(@client, 2).should eq @combat2
         end
         
+      end
+    end
+    
+    
+    describe :emit do
+      before do
+        @instance = double
+        @bob = double
+        @harvey = double
+        @bob_client = double
+        @harvey_client = double
+        
+        @bob.stub(:name) { "Bob" }
+        @harvey.stub(:name) { "Harvey" }
+        
+        @bob.stub(:client) { @bob_client }
+        @harvey.stub(:client) { @harvey_client }
+        @instance.stub(:combatants) { [ @bob, @harvey ] }
+        @instance.stub(:log) { }
+        @instance.stub(:organizer) { @harvey }
+        
+        AresMUSH::Locale.stub(:translate).with("fs3combat.combat_emit", { :message => "Test" }) { "Test" }        
+        AresMUSH::Locale.stub(:translate).with("fs3combat.combat_emit", { :message => "Test (Master)" }) { "Test (Master)" }
+      end
+      
+      it "should emit to everyone" do
+        FS3Combat.should_receive(:emit_to_combatant).with(@bob, "Test")
+        FS3Combat.should_receive(:emit_to_combatant).with(@harvey, "Test")
+        FS3Combat.emit_to_combat(@instance, "Test")
+      end
+      
+      it "should tack on the npcmaster's name if specified" do
+        FS3Combat.should_receive(:emit_to_combatant).with(@bob, "Test (Master)")
+        FS3Combat.should_receive(:emit_to_combatant).with(@harvey, "Test (Master)")
+        FS3Combat.emit_to_combat(@instance, "Test", " (Master)")
+      end    
+      
+    end
+    
+    describe :emit_to_organizer do
+    
+      before do
+        @instance = double
+        @bob = double
+        @harvey = double
+        @bob_client = double
+        @harvey_client = double
+      
+        @bob.stub(:name) { "Bob" }
+        @harvey.stub(:name) { "Harvey" }
+              
+        @instance.stub(:combatants) { [ @bob, @harvey ] }
+        @instance.stub(:log) { }
+        @instance.stub(:organizer) { @harvey }
+      
+        Login.stub(:find_client).with(@harvey) { @harvey_client }
+        Login.stub(:find_client).with(@bob) { @bob_client }
+      
+        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test" }) { "test emit" }        
+        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test (Master)" }) { "test with master" }        
+      end
+      
+      it "should emit to the organizer only" do
+        @harvey_client.should_receive(:emit).with("test emit")
+        @bob_client.should_not_receive(:emit)
+        FS3Combat.emit_to_organizer(@instance, "Test")
+      end
+      
+      it "should tack on the npcmaster's name if specified" do
+        @harvey_client.should_receive(:emit).with("test with master")
+        FS3Combat.emit_to_organizer(@instance, "Test", "Master")
       end
     end
     

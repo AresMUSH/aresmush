@@ -26,7 +26,7 @@ module AresMUSH
         end
         
         if (target.class == Character)
-          if (target.is_online?)
+          if (Login.is_online?(target))
             client.emit_failure t('manage.cannot_destroy_online')
             return
           end
@@ -34,7 +34,7 @@ module AresMUSH
         
         if (target.class == Room)
           target.characters.each do |c|
-            connected_client = c.client
+            connected_client = Login.find_client(c)
             if (connected_client)
               connected_client.emit_ooc t('manage.room_being_destroyed')
             end

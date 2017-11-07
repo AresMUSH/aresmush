@@ -21,21 +21,6 @@ module AresMUSH
       @char3.stub(:room) { double }
     end
     
-    describe :emit do
-      it "should emit to all clients in the room" do
-        @char1.stub(:is_online?) { true }
-        @char2.stub(:is_online?) { true }
-        @char3.stub(:is_online?) { false }
-        @char1.stub(:client) { @client1 }
-        @char2.stub(:client) { @client2 }
-        @room.stub(:characters) { [ @char1, @char2, @char3 ]}
-        @client1.should_receive(:emit).with("Test")
-        @client2.should_receive(:emit).with("Test")
-        @client3.should_not_receive(:emit)
-        @room.emit("Test")        
-      end
-    end
-    
     describe :get_exit do
       it "should return exit if exit exists - case-insensitive" do
         exit1 = Exit.new(:name_upcase => "A",)

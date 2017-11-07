@@ -20,12 +20,12 @@ module AresMUSH
 
         if (team != c.team)
           c.update(team: team)
-          @combat.emit "#{c.name} is now on Team #{team}. (by #{@user.name})"
+          FS3Combat.emit_to_combat @combat, "#{c.name} is now on Team #{team}. (by #{@user.name})"
         end
         
         if (stance != c.stance)
           c.update(stance: stance)
-          @combat.emit "#{c.name} has changed stance to #{stance}. (by #{@user.name})"
+          FS3Combat.emit_to_combat @combat, "#{c.name} has changed stance to #{stance}. (by #{@user.name})"
         end
         
         allowed_specials = FS3Combat.weapon_stat(weapon, "allowed_specials") || []

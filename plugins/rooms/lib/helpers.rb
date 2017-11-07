@@ -33,5 +33,23 @@ module AresMUSH
       [ "INTERIOR_LOCK" ]
     end
     
+    def self.clients_in_room(room)
+      clients = []
+      Global.client_monitor.clients.each do |c|
+        char = c.find_char
+        if (char && char.room == room)
+          clients << c
+        end
+      end
+      clients
+    end
+    
+    def self.emit_to_room(room, message)
+      Rooms.clients_in_room(room).each { |c| c.emit message }
+    end
+
+    def self.emit_ooc_to_room(room, message)
+      Rooms.clients_in_room(room).each { |c| c.emit_ooc message }
+    end
   end
 end

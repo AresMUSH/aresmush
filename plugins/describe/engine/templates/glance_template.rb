@@ -13,7 +13,7 @@ module AresMUSH
       
       # List of online characters, sorted by name.      
       def online_chars
-        @room.characters.select { |c| c.is_online? }.sort_by { |c| c.name }
+        @room.characters.select { |c| Login.is_online?(c) }.sort_by { |c| c.name }
       end
         
       def glance(char)

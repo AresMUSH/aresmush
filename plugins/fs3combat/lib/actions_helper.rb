@@ -91,7 +91,7 @@ module AresMUSH
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")
-        combatant.combat.emit t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
+        FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
       end
     end
       
@@ -101,7 +101,7 @@ module AresMUSH
       
       if (roll > 0)
         combatant.update(is_ko: false)
-        combatant.combat.emit t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
+        FS3Combat.emit_to_combat combat.combat, t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
       end
     end
     
@@ -171,7 +171,7 @@ module AresMUSH
       end
       combatant.update(action_klass: action_klass)
       combatant.update(action_args: args)
-      combat.emit "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
+      FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
     end
 
     def self.determine_damage(combatant, hitloc, weapon, mod = 0, crew_hit = false)

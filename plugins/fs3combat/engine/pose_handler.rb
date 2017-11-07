@@ -15,7 +15,7 @@ module AresMUSH
 
         slackers = combat.active_combatants.select { |c| !c.is_npc? && !c.posed && !c.is_ko && !c.idle }
         if (slackers.empty? && !combat.everyone_posed)
-          combat.emit_to_organizer t('fs3combat.everyone_posed')
+          FS3Combat.emit_to_organizer combat, t('fs3combat.everyone_posed')
           combat.update(everyone_posed: true)
         end
       end

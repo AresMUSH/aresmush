@@ -37,7 +37,7 @@ module AresMUSH
         end
         delivery.update(tags: tags)
         
-        receive_client = r.client
+        receive_client = Login.find_client(r)
         if (r != author)
           if (receive_client)
             receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)

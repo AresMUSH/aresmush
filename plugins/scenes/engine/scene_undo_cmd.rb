@@ -26,7 +26,7 @@ module AresMUSH
           message = t('scenes.deleted_pose', :name => enactor_name,
                         :pronoun => Demographics.possessive_pronoun(enactor))
           
-          scene.room.emit "%xr*** #{message} ***%xn"
+          Rooms.emit_to_room(scene.room, "%xr*** #{message} ***%xn")
         end
       end
     end

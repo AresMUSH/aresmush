@@ -19,7 +19,7 @@ module AresMUSH
         if (self.going)
           Rooms.move_to(client, enactor, inviter.room)
         else
-          Rooms.move_to(inviter.client, inviter, enactor_room)
+          Rooms.move_to(Login.find_client(inviter), inviter, enactor_room)
         end
       end
     end

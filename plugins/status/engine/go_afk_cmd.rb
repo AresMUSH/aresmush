@@ -13,7 +13,7 @@ module AresMUSH
         if (self.message == "off")
           enactor.update(afk_message: "")
           enactor.update(is_afk: false)
-          enactor.room.emit_ooc t('status.no_longer_afk', :name => enactor.name)
+          Rooms.emit_ooc_to_room(enactor.room, t('status.no_longer_afk', :name => enactor.name))
           return
         end
           
@@ -22,7 +22,7 @@ module AresMUSH
         if (enactor.room.room_type == "IC")
           enactor.update(last_ic_location: enactor.room)
         end
-        enactor.room.emit_ooc t('status.go_afk', :name => enactor.name, :message => self.message)
+        Rooms.emit_ooc_to_room(enactor.room, t('status.go_afk', :name => enactor.name, :message => self.message))
       end
     end
   end

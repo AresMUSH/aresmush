@@ -47,7 +47,7 @@ module AresMUSH
             @chars_stub.stub(:<<) {}
             @channel.stub(:characters) { @chars_stub }
             @channel.stub(:save)
-            @channel.stub(:emit) {}
+            Channels.stub(:emit_to_channel) {}
             @char.stub(:name) { "Bob" }
           end
           

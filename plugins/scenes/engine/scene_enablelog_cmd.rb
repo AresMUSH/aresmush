@@ -33,7 +33,7 @@ module AresMUSH
               client.emit_ooc t('scenes.logging_already_on')
             else
               scene.update(logging_enabled: true)
-              scene.room.emit_ooc t('scenes.logging_turned_on', :name => enactor_name)
+              Rooms.emit_ooc_to_room(scene.room, t('scenes.logging_turned_on', :name => enactor_name))
             end
           else
             scene.delete_poses_and_log
@@ -41,7 +41,7 @@ module AresMUSH
               client.emit_ooc t('scenes.logging_already_off')
             else
               scene.update(logging_enabled: false)
-              scene.room.emit_ooc t('scenes.logging_turned_off', :name => enactor_name)
+              Rooms.emit_ooc_to_room(scene.room, t('scenes.logging_turned_off', :name => enactor_name))
             end
           end
         end

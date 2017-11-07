@@ -14,7 +14,7 @@ module AresMUSH
         end
         
         enactor_room.characters.each do |c|
-          other_client = c.client
+          other_client = Login.find_client(c)
           if (!other_client)
             Rooms.move_to(nil, c, outside.dest)
           elsif (other_client.idle_secs > 3600)

@@ -43,6 +43,14 @@ module AresMUSH
       end
     end
     
+    def self.find_client(char)
+      Global.client_monitor.find_client(char)
+    end
+    
+    def self.is_online?(char)
+      !!Login.find_client(char)
+    end
+    
     def self.is_banned?(client)
       suspects = Global.read_config("login", "banned_sites")
       return false if !suspects

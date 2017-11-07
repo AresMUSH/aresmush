@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def status(a)
-        if (a.client)
+        if (Login.is_online?(a))
           connected = a.is_on_duty? ? t('roles.connected_on_duty') : t('roles.connected_off_duty')
         else
           connected = t('roles.offline')

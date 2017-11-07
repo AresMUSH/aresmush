@@ -20,7 +20,7 @@ module AresMUSH
           end
           
           line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
-          room.emit "#{line}%R#{self.set}%R#{line}"
+          Rooms.emit_to_room(room, "#{line}%R#{self.set}%R#{line}")
         else
           room.update(scene_set: nil)
           client.emit_success t('scenes.scene_set_cleared')

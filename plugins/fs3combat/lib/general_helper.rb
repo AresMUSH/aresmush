@@ -29,6 +29,33 @@ module AresMUSH
       FS3Combat.combats.select { |c| c.has_combatant?(name) }.first
     end
     
+
+    def self.emit_to_combat(combat, message, npcmaster = nil, add_to_scene = false)
+      message = message + "#{npcmaster}"
+      combat.log(message)
+      combat.combatants.each { |c| FS3Combat.emit_to_combatant(c, message) }
+      
+      if (add_to_scene && combat.scene)
+        Scenes.add_pose(combat.scene, message)
+      end
+    end
+      
+    def self.emit_to_organizer(combat, message, npcmaster = nil)
+      message = message + " (#{npcmaster})" if npcmaster
+        
+      client = Login.find_client(combat.organizer)
+      if (client)
+        client.emit t('fs3combat.organizer_emit', :message => message)
+      end
+    end
+    
+    def self.emit_to_combatant(combatant, message)
+      client = combatant.client
+      return if !client
+      client_message = message.gsub(/#{combatant.name}/, "%xh%xc#{combatant.name}%xn")
+      client.emit t('fs3combat.combat_emit', :message => client_message)
+    end
+    
     def self.combatant_type_stat(type, stat)
       type_config = FS3Combat.combatant_types[type]
       type_config[stat]

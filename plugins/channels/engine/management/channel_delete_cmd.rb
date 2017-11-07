@@ -20,7 +20,7 @@ module AresMUSH
       
       def handle
         Channels.with_a_channel(name, client) do |channel|
-          channel.emit t('channels.channel_being_deleted', :name => enactor_name)
+          Channels.emit_to_channel channel, t('channels.channel_being_deleted', :name => enactor_name)
           channel.delete
           client.emit_success t('channels.channel_deleted')
         end

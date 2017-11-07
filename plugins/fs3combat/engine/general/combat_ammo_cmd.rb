@@ -27,7 +27,7 @@ module AresMUSH
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
           
           combatant.update(ammo: self.ammo)
-          combat.emit t('fs3combat.ammo_set', :name => self.name, :ammo => self.ammo)
+          FS3Combat.emit_to_combat combat, t('fs3combat.ammo_set', :name => self.name, :ammo => self.ammo)
         end
       end
     end

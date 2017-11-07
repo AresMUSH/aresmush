@@ -124,15 +124,7 @@ module AresMUSH
       end
       
       return display_name
-    end
-    
-    def client
-      Global.client_monitor.find_client(self)
-    end
-    
-    def is_online?
-      !self.client.nil?
-    end
+    end    
     
     def self.random_link_code
       (0...8).map { (65 + rand(26)).chr }.join

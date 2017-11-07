@@ -25,7 +25,7 @@ module AresMUSH
           end
           
           combat.update(organizer: model)
-          combat.emit t('fs3combat.combat_transferred', :name => self.name)
+          FS3Combat.emit_to_combat combat, t('fs3combat.combat_transferred', :name => self.name)
         end
         
       end

@@ -32,7 +32,7 @@ module AresMUSH
           
           combatant.update(luck: self.reason)
           
-          combat.emit t('fs3combat.spending_luck', :name => enactor_name, :reason => self.reason)
+          FS3Combat.emit_to_combat combat, t('fs3combat.spending_luck', :name => enactor_name, :reason => self.reason)
         end
       end
     end

@@ -49,6 +49,11 @@ module AresMUSH
           other_client2 = nil
           ClassTargetFinder.should_receive(:find).with("someone", Character, @enactor) { FindResult.new(other_char1, nil) }
           ClassTargetFinder.should_receive(:find).with("someone else", Character, @enactor) { FindResult.new(other_char2, nil) }
+          
+          Login.stub(:is_online?).with(other_char1) { true }
+          Login.stub(:is_online?).with(other_char2) { false }
+          Login.stub(:find_client).with(other_char1) { other_client1 }
+          Login.stub(:find_client).with(other_char2) { nil }
           other_char1.stub(:client) { other_client1 }
           other_char2.stub(:client) { nil }
           result =  

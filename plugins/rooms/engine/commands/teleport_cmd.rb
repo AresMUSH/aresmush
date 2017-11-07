@@ -80,7 +80,7 @@ module AresMUSH
               client.emit_failure t('rooms.cant_find_that_to_teleport', :name => n)
               return []
             end
-            target = { :char => find_result.target, :client => find_result.target.client }
+            target = { :char => find_result.target, :client => Login.find_client(find_result.target) }
             targets << target
           end
         end

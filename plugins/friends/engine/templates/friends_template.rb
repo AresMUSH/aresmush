@@ -29,7 +29,7 @@ module AresMUSH
       
       def friend_last_on(friendship)
         char = friendship.friend
-        if (char.client)
+        if (Login.is_online?(char))
           connected = t('friends.connected')
         else
           connected = OOCTime.local_long_timestr(@enactor, char.last_on)

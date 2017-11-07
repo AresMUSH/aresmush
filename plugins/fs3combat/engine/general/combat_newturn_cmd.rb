@@ -23,12 +23,12 @@ module AresMUSH
           combat.active_combatants.select { |c| c.is_npc? && !c.action }.each_with_index do |c, i|
             FS3Combat.ai_action(combat, client, c)
           end
-          combat.emit t('fs3combat.new_turn', :name => enactor_name)
+          FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor_name)
           combat.update(first_turn: false)
           return
         end
         
-        combat.emit t('fs3combat.starting_turn_resolution', :name => enactor_name)
+        FS3Combat.emit_to_combat combat, t('fs3combat.starting_turn_resolution', :name => enactor_name)
         combat.update(turn_in_progress: true)
         combat.update(everyone_posed: false)
 
@@ -45,7 +45,7 @@ module AresMUSH
             
               messages = c.action.resolve
               messages.each do |m|
-                combat.emit m, nil, true
+                FS3Combat.emit_to_combat combat, m, nil, true
               end
               
             end
@@ -57,7 +57,7 @@ module AresMUSH
             # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
             combat.active_combatants.each { |c| c.action }
       
-            combat.emit t('fs3combat.new_turn', :name => enactor_name)
+            FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor_name)
           ensure
             combat.update(turn_in_progress: false)
           end

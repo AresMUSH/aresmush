@@ -57,7 +57,7 @@ module AresMUSH
       error = a.prepare
       if (error)
         self.combat.log "Action Reset: #{self.name} #{self.action_klass} #{self.action_args} #{error}"
-        self.combat.emit t('fs3combat.resetting_action', :name => self.name, :error => error)
+        FS3Combat.emit_to_combat self.combat, t('fs3combat.resetting_action', :name => self.name, :error => error)
         self.update(action_klass: nil)
         self.update(action_args: nil)
         return nil
@@ -102,7 +102,7 @@ module AresMUSH
     end
     
     def client
-      self.character ? self.character.client : nil
+      self.character ? Login.find_client(self.character) : nil
     end
     
     # NOTE!  This is reported as a negative number.
@@ -168,12 +168,6 @@ module AresMUSH
     
     def poss_pronoun
       self.is_npc? ? t('demographics.other_possessive') : Demographics.possessive_pronoun(self.character)
-    end
-    
-    def emit(message)
-      return if !self.client
-      client_message = message.gsub(/#{self.name}/, "%xh%xc#{self.name}%xn")
-      client.emit t('fs3combat.combat_emit', :message => client_message)
     end
     
     def log(msg)

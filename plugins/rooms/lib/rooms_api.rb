@@ -7,9 +7,9 @@ module AresMUSH
       Places.clear_place(char)
       
       if (exit_name)
-        current_room.emit_ooc t('rooms.char_has_left_through_exit', :name => char.name, :room => room.name, :exit => exit_name)
+        Rooms.emit_ooc_to_room(current_room, t('rooms.char_has_left_through_exit', :name => char.name, :room => room.name, :exit => exit_name))
       else
-        current_room.emit_ooc t('rooms.char_has_left', :name => char.name)
+        Rooms.emit_ooc_to_room(current_room, t('rooms.char_has_left', :name => char.name))
       end
       
       char.update(room: room)
@@ -17,7 +17,7 @@ module AresMUSH
         Rooms.emit_here_desc(client, char)
       end
       
-      room.emit_ooc t('rooms.char_has_arrived', :name => char.name)
+      Rooms.emit_ooc_to_room(room, t('rooms.char_has_arrived', :name => char.name))
     end
     
     def self.is_special_room?(room)

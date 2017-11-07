@@ -51,10 +51,28 @@ module AresMUSH
       chars = channel.characters.sort_by(:name_upcase, :order => "ALPHA")
       online_chars = []
       chars.each do |c|
-        next if !c.is_online?
+        next if !Login.is_online?(c)
         online_chars << c
       end
       online_chars
+    end
+    
+    def self.emit_to_channel(channel, msg)
+      message_with_title = "#{channel.display_name} #{msg}"
+      channel.add_to_history message_with_title
+      channel.characters.each do |c|
+        if (!Channels.is_muted?(c, channel))
+          client = Login.find_client(c)
+          if (client)
+            client.emit message_with_title
+          end
+        end
+      end
+    end
+    
+    def self.pose_to_channel(channel, name, msg)
+      formatted_msg = PoseFormatter.format(name, msg)
+      Channels.emit_to_channel channel, formatted_msg
     end
     
     def self.mute_text(char, channel)
@@ -62,7 +80,7 @@ module AresMUSH
     end
     
     def self.leave_channel(char, channel)
-      channel.emit t('channels.left_channel', :name => char.name)
+      Channels.emit_to_channel channel, t('channels.left_channel', :name => char.name)
       channel.characters.delete char
     end
     
@@ -140,7 +158,7 @@ module AresMUSH
           channel.characters << char
           
           if (client)
-            channel.emit t('channels.joined_channel', :name => char.name)
+            Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
           end
         end
       end
@@ -196,7 +214,7 @@ module AresMUSH
         end
 
         channel.characters << char
-        channel.emit t('channels.joined_channel', :name => char.name)
+        Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
       end
     end
   end

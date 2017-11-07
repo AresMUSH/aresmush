@@ -26,7 +26,7 @@ module AresMUSH
       
       # List of online characters, sorted by name.      
       def online_chars
-        @room.characters.select { |c| c.is_online? }.sort_by { |c| c.name }
+        @room.characters.select { |c| Login.is_online?(c) }.sort_by { |c| c.name }
       end
       
       # Available detail views.
@@ -77,7 +77,7 @@ module AresMUSH
           status = t('describe.foyer_room_locked')
         elsif (chars.count == 0)
           status = t('describe.foyer_room_free')
-        elsif (chars.select { |c| c.client }.count > 0 )
+        elsif (chars.select { |c| Login.find_client(c) }.count > 0 )
           status = t('describe.foyer_room_in_use')
         else
           status = t('describe.foyer_room_occupied')
@@ -94,6 +94,7 @@ module AresMUSH
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)
+        client = Login.find_client(char)
         if (char.is_afk?)
           msg = "%xy%xh<#{t('describe.afk')}>%xn"
           afk_message = char.afk_display
@@ -101,7 +102,7 @@ module AresMUSH
             msg = "#{msg} %xy#{afk_message}%xn"
           end
           msg
-        elsif (char.client && Status.is_idle?(char.client))
+        elsif (client && Status.is_idle?(client))
           "%xy%xh<#{t('describe.idle')}>%xn"
         else
           ""
