@@ -54,7 +54,7 @@ module AresMUSH
           @combatant.stub(:update)
           @vehicle.stub(:pilot) { nil }
           @vehicle.stub(:vehicle_type) { "Viper" }
-          @combat.stub(:emit)
+          FS3Combat.stub(:emit_to_combat)
           @vehicle.stub(:update)
 
           FS3Combat.stub(:set_weapon)
@@ -90,7 +90,7 @@ module AresMUSH
           end
         
           it "should emit to combat" do
-            @combat.should_receive(:emit).with("fs3combat.new_pilot")
+            FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.new_pilot")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
         end
@@ -102,7 +102,7 @@ module AresMUSH
           end
           
           it "should emit to combat" do
-            @combat.should_receive(:emit).with("fs3combat.new_passenger")
+            FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.new_passenger")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
         end
@@ -116,7 +116,7 @@ module AresMUSH
         
           @vehicle.stub(:name) { "Viper-1" }
           @combatant.stub(:name) { "Bob" }
-          @combat.stub(:emit)
+          FS3Combat.stub(:emit_to_combat)
           @combatant.stub(:update)
           @vehicle.stub(:update)
           
@@ -133,7 +133,7 @@ module AresMUSH
         
         it "should emit to combat" do
           @combatant.stub(:piloting) { @vehicle }
-          @combat.should_receive(:emit).with("fs3combat.disembarks_vehicle")
+          FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.disembarks_vehicle")
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
       

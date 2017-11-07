@@ -151,7 +151,7 @@ module AresMUSH
           @combatant.should_receive(:update).with(action_args: nil)
           @combatant.should_receive(:update).with(is_ko: true)
           @combatant.stub(:combat) { combat }
-          combat.should_receive(:emit).with("fs3combat.is_koed", nil, true)
+          FS3Combat.should_receive(:emit_to_combat).with(combat, "fs3combat.is_koed", nil, true)
           FS3Combat.check_for_ko(@combatant)
         end
         
@@ -164,7 +164,7 @@ module AresMUSH
           @combatant.should_receive(:update).with(action_args: nil)
           @combatant.should_receive(:update).with(is_ko: true)
           @combatant.stub(:combat) { combat }
-          combat.should_receive(:emit).with("fs3combat.is_koed", nil, true)
+          FS3Combat.should_receive(:emit_to_combat).with(combat, "fs3combat.is_koed", nil, true)
           FS3Combat.check_for_ko(@combatant)
         end
         
@@ -205,7 +205,7 @@ module AresMUSH
           @combatant.should_receive(:update).with(is_ko: false)
           FS3Combat.should_receive(:make_ko_roll).with(@combatant, 3) { 1 }
           @combatant.stub(:combat) { combat }
-          combat.should_receive(:emit).with("fs3combat.is_no_longer_koed", nil, true)
+          FS3Combat.should_receive(:emit_to_combat).with(combat, "fs3combat.is_no_longer_koed", nil, true) {}
           FS3Combat.check_for_unko(@combatant)
         end
       end

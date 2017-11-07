@@ -19,33 +19,13 @@ module AresMUSH
           @main_client = double
           @main_char = double
           SpecHelpers.setup_mock_client(@main_client, @main_char)
-    
-          @admin_client = double
-          @admin_char = double
-          SpecHelpers.setup_mock_client(@admin_client, @admin_char)
-    
-          @nonadmin_client = double
-          @nonadmin_char = double 
-          SpecHelpers.setup_mock_client(@nonadmin_client, @nonadmin_char)
-    
+              
           FS3Skills.stub(:receives_roll_results?).with(@main_char) { true }
-          FS3Skills.stub(:receives_roll_results?).with(@admin_char) { true }
-          FS3Skills.stub(:receives_roll_results?).with(@nonadmin_char) { false }
     
           @room = double
           @main_char.stub(:room) { @room }
-          @admin_char.stub(:room) { @room }
-          @nonadmin_char.stub(:room) { @room }
-              
-          client_monitor = double
-          Global.stub(:client_monitor) { client_monitor }
-          client_monitor.stub(:logged_in) { 
-            {
-              @admin_client => @admin_char,
-              @main_client => @main_char,
-              @nonadmin_client => @nonadmin_char
-            } 
-          }
+          @main_client.stub(:emit)
+          Rooms.stub(:emit_to_room)
         end
   
         context "private roll" do
@@ -54,12 +34,13 @@ module AresMUSH
             FS3Skills.emit_results("test", @main_client, @room, true)
           end
     
-          it "should not emit to the room or anyone else" do
-            @room.should_not_receive(:emit).with("test")
-            @admin_client.should_not_receive(:emit).with("test")
-            @nonadmin_client.should_not_receive(:emit).with("test")
-            @main_client.stub(:emit)
-            @admin_client.stub(:emit)
+          it "should not emit to the room" do
+            Rooms.should_not_receive(:emit_to_room).with("test")
+            FS3Skills.emit_results("test", @main_client, @room, true)
+          end
+          
+          it "should emit to the channel" do
+            Channels.should_not_receive(:send_to_channel).with("FS3 Chan", "test")
             FS3Skills.emit_results("test", @main_client, @room, true)
           end
         end
@@ -68,14 +49,10 @@ module AresMUSH
           before do
             Channels.stub(:send_to_channel)
             @room.stub(:scene) { nil }
-            @room.stub(:emit)
           end
           
           it "should emit to the room" do
-            @admin_char.stub(:room) { nil }
-            @admin_client.should_not_receive(:emit).with("test")
-            @nonadmin_client.should_not_receive(:emit).with("test")
-            @room.should_receive(:emit).with("test")
+            Rooms.should_receive(:emit_to_room).with(@room, "test")
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
     

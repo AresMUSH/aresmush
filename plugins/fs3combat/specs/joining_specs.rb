@@ -7,8 +7,7 @@ module AresMUSH
           @enactor = double
           @client = double
           
-          @combat.stub(:emit)
-          
+          FS3Combat.stub(:emit_to_combat) {}
           FS3Combat.stub(:is_in_combat?) { false }
           ClassTargetFinder.stub(:find) { FindResult.new(nil, "error") }
           FS3Combat.stub(:combatant_type_stat) { nil }
@@ -65,7 +64,7 @@ module AresMUSH
           combatant = double
           Npc.stub(:create)
           Combatant.stub(:create) { combatant }
-          @combat.should_receive(:emit).with("fs3combat.has_joined")
+          FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.has_joined")
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
         

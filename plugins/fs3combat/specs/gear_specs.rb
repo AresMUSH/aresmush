@@ -82,7 +82,7 @@ module AresMUSH
       describe :set_weapon do
         before do
           @combatant.stub(:combat) { @combat }
-          @combat.stub(:emit)
+          FS3Combat.stub(:emit_to_combat) {}
           FS3Combat.stub(:npcmaster_text) { "npcmaster" }
           @combatant.stub(:update)
           FS3Combat.stub(:weapon_stat)
@@ -118,7 +118,7 @@ module AresMUSH
         end
         
         it "should emit to combat" do
-          @combat.should_receive(:emit).with("fs3combat.weapon_changed", "npcmaster")
+          FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.weapon_changed", "npcmaster")
           FS3Combat.set_weapon(@enactor, @combatant, "rifle", [ "s1", "s2" ])
         end
       end

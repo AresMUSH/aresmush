@@ -101,7 +101,7 @@ module AresMUSH
       
       if (roll > 0)
         combatant.update(is_ko: false)
-        FS3Combat.emit_to_combat combat.combat, t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
+        FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
       end
     end
     
