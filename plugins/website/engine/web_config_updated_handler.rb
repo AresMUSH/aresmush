@@ -16,7 +16,7 @@ module AresMUSH
         
         file_path = File.join(AresMUSH.root_path, 'Passengerfile.json')        
         config = JSON.parse(File.read(file_path))
-        config['port'] = Global.read_config("server", "webserver_port")
+        config['port'] = Global.read_config("server", "web_portal_port")
         
         File.open(file_path, 'w') do |f|
           f.write JSON.pretty_generate(config)

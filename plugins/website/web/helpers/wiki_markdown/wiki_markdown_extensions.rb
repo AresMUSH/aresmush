@@ -12,7 +12,8 @@ module AresMUSH
           WikidotAnchor,
           WikidotCenter,
           WikidotEndCenter,
-          WikidotHtml
+          WikidotHtml,
+          SpeechBracketExtension
         ]
       end
       

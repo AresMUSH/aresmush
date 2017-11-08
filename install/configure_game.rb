@@ -37,9 +37,12 @@ module AresMUSH
 
       print "\nServer web socket port> "
       websocket_port = STDIN.gets.chomp
+      
+      print "\nServer engine API port> "      
+      engine_api_port = STDIN.gets.chomp
 
       print "\nServer website port> "
-      webserver_port = STDIN.gets.chomp
+      web_portal_port = STDIN.gets.chomp
 
       print "\nMUSH Name > "
       mush_name = STDIN.gets.chomp
@@ -84,7 +87,8 @@ module AresMUSH
         "host_name" => server_host,
         "host_port" => server_port,
         "websocket_port" => websocket_port,
-        "webserver_port" => webserver_port,
+        "web_portal_port" => web_portal_port,
+        "engine_api_port" => engine_api_port,
         "mush_name" => mush_name,
         "category" => category,
         "game_desc" => game_desc,
