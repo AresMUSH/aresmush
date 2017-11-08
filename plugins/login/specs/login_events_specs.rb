@@ -21,6 +21,7 @@ module AresMUSH
         @room_char.stub(:room) { @room }
         @room_char.stub(:name) { "Bob" }
         client_monitor.stub(:logged_in) { { @room_client => @room_char } }
+        notifier.stub(:notify_ooc)
         Login.stub(:wants_announce) { false }
         
         @event_char = double
@@ -87,7 +88,7 @@ module AresMUSH
         end
         
         it "should announce the char" do
-          client_monitor.should_receive(:emit_all_ooc).with("announce_char_created")
+          notifier.should_receive(:notify_ooc).with(:char_created, "announce_char_created")
           @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
         end
       end

@@ -14,7 +14,7 @@ module AresMUSH
           Login.check_for_suspect(char)
         end
         
-        Global.client_monitor.logged_in.each do |other_client, other_char|
+        Engine.client_monitor.logged_in.each do |other_client, other_char|
           if (other_char.room == char.room)
             other_client.emit_success t('login.announce_char_connected_here', :name => char.name)
           elsif (Login.wants_announce(other_char, char))
@@ -22,7 +22,7 @@ module AresMUSH
           end
         end
         
-        Global.dispatcher.queue_timer(1, "Login notices", client) do 
+        Engine.dispatcher.queue_timer(1, "Login notices", client) do 
           template = NoticesTemplate.new(char)
           client.emit template.render
         end

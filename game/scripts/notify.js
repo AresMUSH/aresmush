@@ -33,7 +33,8 @@
             var charId = $('#charId').val();
 
             if (!recipient || recipient === charId) {
-                alertify.notify(data.args.message, 'success', 10);
+                var formatted_msg = ansi_up.ansi_to_html(data.args.message, { use_classes: true });
+                alertify.notify(formatted_msg, 'success', 10);
                 
                 if (data.args.notification_type == "new_mail") {
                     var mail_badge = $('#mailBadge');

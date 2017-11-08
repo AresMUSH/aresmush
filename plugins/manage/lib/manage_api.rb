@@ -17,7 +17,7 @@ module AresMUSH
           Global.logger.debug "Loading plugin config for #{p}."
           Global.plugin_manager.load_plugin_config p
         end
-        Global.dispatcher.queue_event ConfigUpdatedEvent.new
+        Engine.dispatcher.queue_event ConfigUpdatedEvent.new
         
         return nil
       rescue Exception => e

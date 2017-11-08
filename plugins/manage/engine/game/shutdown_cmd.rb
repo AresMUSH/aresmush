@@ -9,8 +9,11 @@ module AresMUSH
       end
 
       def handle
-        Global.client_monitor.clients.each do |c|
-          c.emit_ooc t('manage.shutdown', :name => enactor_name)
+        Global.notifier.notify_ooc(:shutdown, t('manage.shutdown', :name => enactor_name)) do |char|
+          true
+        end
+        
+        Engine.client_monitor.clients.each do |c|
           c.disconnect
         end
         

@@ -24,21 +24,26 @@ module AresMUSH
                 
         EventMachine::start_server(host, port, Connection) do |connection|
           AresMUSH.with_error_handling(nil, "Connection established") do
-            Global.client_monitor.connection_established(connection)
+            Engine.client_monitor.connection_established(connection)
           end
         end
+        
+        engine_api_port = Global.read_config("server", "engine_api_port")
+        web = EngineApiLoader.new
+        web.run(port: engine_api_port)
         
         websocket_port = Global.read_config("server", "websocket_port")
           EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
             AresMUSH.with_error_handling(nil, "Web connection established") do
               WebConnection.new(websocket) do |connection|
-                Global.client_monitor.connection_established(connection)
+                Engine.client_monitor.connection_established(connection)
               end
             end
           end
+           
         Global.logger.info "Websocket started on #{host}:#{websocket_port}."
         Global.logger.info "Server started on #{host}:#{port}."
-        Global.dispatcher.queue_event GameStartedEvent.new
+        Engine.dispatcher.queue_event GameStartedEvent.new
       end
     end
   end

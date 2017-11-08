@@ -18,23 +18,13 @@ module AresMUSH
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.
       Global.config_reader = config_reader
-      Global.client_monitor = client_monitor
       Global.plugin_manager = plugin_manager
-      Global.dispatcher = dispatcher
       Global.locale = locale
       Global.help_reader = help_reader
       Global.database = @db
-    end
-    
-    def web_start
-      # Order here is important!
-      @config_reader.load_game_config      
-      @ares_logger.start("web")
-      Global.ares_logger = @ares_logger
-
-      @db.load_config
-      @locale.setup
-      @plugin_manager.load_all(:web)
+      Global.notifier = EngineNotifier.new      
+      Engine.client_monitor = client_monitor
+      Engine.dispatcher = dispatcher
     end
     
     def start

@@ -94,7 +94,7 @@ module AresMUSH
         input.force_encoding(Encoding::UTF_8)
         input.scrub! if !input.valid_encoding?
         input.split("\n").each do |i|
-          Global.dispatcher.queue_command(self, Command.new(i))
+          Engine.dispatcher.queue_command(self, Command.new(i))
         end
         
         self.input_buffer = ""
@@ -105,7 +105,7 @@ module AresMUSH
 
     # Responds to a disconnect from any sort of source - socket error, client-initated, etc.
     def connection_closed
-      Global.client_monitor.connection_closed self
+      Engine.client_monitor.connection_closed self
     end
 
     def find_char

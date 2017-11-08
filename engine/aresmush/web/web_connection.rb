@@ -69,13 +69,14 @@ module AresMUSH
     def receive_data(data)
       begin
         json_input = JSON.parse(data)
+        
         if (json_input["type"] == "input")
           @client.handle_input(json_input["message"] + "\r\n")
         elsif (json_input["type"] == "identify")
           data = json_input["data"]
           @web_char_id = data ? data["id"] : nil
         elsif (json_input["type"] == "cmd")
-          Global.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
+          Engine.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
         else
           Global.logger.warn "Unexpected input from web client: #{data}"
         end

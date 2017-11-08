@@ -31,7 +31,7 @@ module AresMUSH
         existing_client.emit_ooc t('login.disconnected_by_reconnect')
         existing_client.disconnect
 
-        Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
+        Engine.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
       else
         announce_connection(client, char)
       end

@@ -8,9 +8,14 @@ module AresMUSH
         Event.all.each do |e|
           time_until_event = e.time_until_event
           if (!e.reminded &&  time_until_event < (60 * 20) && time_until_event > 0)
-            Global.client_monitor.emit_all_ooc t('events.event_starting_soon', :title => e.title,
+            
+            message = t('events.event_starting_soon', :title => e.title,
                :starts => e.start_time_standard)
-             e.update(reminded: true)
+               
+            Global.notifier.notify_ooc(:event_starting, message) do |char|
+              true
+            end
+            e.update(reminded: true)
           end
           
           if (e.time_until_event < 0)

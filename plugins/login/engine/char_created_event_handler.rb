@@ -6,8 +6,8 @@ module AresMUSH
         char = Character[event.char_id]
         Global.logger.info("Character Created: #{char.name}")
         
-        if (client)
-          Global.client_monitor.emit_all_ooc t('login.announce_char_created', :name => char.name)
+        Global.notifier.notify_ooc(:char_created, t('login.announce_char_created', :name => char.name)) do |char|
+          true
         end
       end
     end

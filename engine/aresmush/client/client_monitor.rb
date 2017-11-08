@@ -7,38 +7,27 @@ module AresMUSH
 
     attr_reader :clients, :client_id
 
-    def emit_all(msg)
+    def emit_all(msg, &trigger_block)
       @clients.each do |c|
-        c.emit msg
+        if ( yield c.find_char )
+          c.emit msg
+        end
       end
     end
     
-    def emit_all_ooc(msg)
+    def emit_all_ooc(msg, &trigger_block)
       @clients.each do |c|
-        c.emit_ooc msg
+        if ( yield c.find_char )
+          c.emit_ooc msg
+        end
       end
     end
     
-    # trigger_block is a block that tells whether a particular web client
-    # should receive a notification based on their character.  
-    # 
-    # If you want everyone to receive the notice, pass a block that always
-    # returns true.
-    #     notify_web_clients(type, msg) do |char|
-    #        true
-    #     end
-    #
-    # If you want to only notify clients that can do something, pass a block
-    # that checks a method based on the character.
-    #
-    #    notify_web_clients(type, msg) do |char|
-    #        char.can_do_something?
-    #    end
     def notify_web_clients(type, msg, &trigger_block)
-      @clients.each do |c|
-        
+      @clients.each do |c|        
         if ( yield Character[c.web_char_id] )
-          c.web_notify type, msg
+          formatted_msg = MushFormatter.format(msg, false)
+          c.web_notify type, formatted_msg
         end
       end
     end
@@ -48,7 +37,7 @@ module AresMUSH
         client = @client_factory.create_client(connection)
         @clients << client
         client.connected
-        Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
+        Engine.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
       rescue Exception => e
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
@@ -56,9 +45,9 @@ module AresMUSH
     
     def connection_closed(client)
       @clients.delete client
-      Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
+      Engine.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (client.logged_in?)
-        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char.id)
+        Engine.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char.id)
       end        
     end
     

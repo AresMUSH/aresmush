@@ -20,7 +20,10 @@ module AresMUSH
       
       def handle
         msg = PoseFormatter.format(enactor_name, self.message)
-        Global.client_monitor.emit_all t('manage.announce', :message => msg)
+        
+        Global.notifier.notify(:announcement, t('manage.announce', :message => msg)) do |char|
+          true
+        end
       end
     end
   end

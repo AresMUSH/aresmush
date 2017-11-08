@@ -5,14 +5,14 @@ module AresMUSH
       author = author || Game.master.system_character
       recipients = []
       names.each do |name|
-        result = ClassTargetFinder.find(name, Character, client)
-        if (!result.found?)
+        recipient = Character.find_one_by_name(name)
+        if (!recipient)
           if (client)
             client.emit_failure(t('mail.invalid_recipient', :name => name))
           end
           return false
         end
-        recipients << result.target
+        recipients << recipient
       end
       
       copy_sent = author.copy_sent_mail
@@ -35,18 +35,13 @@ module AresMUSH
         else
           tags << Mail.inbox_tag
         end
-        delivery.update(tags: tags)
-        
-        receive_client = Login.find_client(r)
-        if (r != author)
-          if (receive_client)
-            receive_client.emit_ooc t('mail.new_mail', :from => author.name, :subject => subject)
-          end
-          Global.client_monitor.notify_web_clients :new_mail, t('mail.web_new_mail', :subject => subject, :from => author.name)  do |char|
-            char == r
-          end
-        end
+        delivery.update(tags: tags)  
       end
+      
+      Global.notifier.notify_ooc(:new_mail, t('mail.new_mail', :from => author.name, :subject => subject)) do |char|
+        recipients.include?(char) && char != author
+      end
+      
       return true
     end
   end

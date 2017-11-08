@@ -15,7 +15,7 @@ module AresMUSH
       def handle
         pending_cmd = client.program[:login_cmd]
         client.program[:tos_accepted] = true
-        Global.dispatcher.queue_command(client, pending_cmd)
+        Engine.dispatcher.queue_command(client, pending_cmd)
       end
     end
   end

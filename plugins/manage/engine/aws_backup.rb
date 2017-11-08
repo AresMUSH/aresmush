@@ -7,7 +7,7 @@ module AresMUSH
       # Client may be nil for nightly automated backup
       def backup(client)
         
-        Global.dispatcher.spawn("Performing backup.", client) do
+        Engine.dispatcher.spawn("Performing backup.", client) do
           region = Global.read_config("secrets", "aws", "region")
           bucket_name = Global.read_config("secrets", "aws", "bucket")
           key_id = Global.read_config("secrets", "aws", "key_id")

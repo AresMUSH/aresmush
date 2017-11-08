@@ -90,22 +90,12 @@ module AresMUSH
     end
         
     def self.notify(job, message, author, notify_submitter = true)
-      Global.client_monitor.logged_in.each do |other_client, other_char|
-        job.readers.each { |r| job.readers.delete r }
-        job.readers.add author
-        
-        if (Jobs.can_access_jobs?(other_char))
-          other_client.emit_ooc message
-        elsif (notify_submitter && (other_char == job.author))
-          other_client.emit_ooc message + "  " + t('jobs.requests_cmd_hint')
-        end
-      end
-      
-      
-      Global.client_monitor.notify_web_clients :new_job, message do |char|
-         char && Jobs.can_access_jobs?(char)
-      end
-        
+      job.readers.each { |r| job.readers.delete r }
+      job.readers.add author
+
+      Global.notifier.notify_ooc(:job_update, message) do |char|
+        Jobs.can_access_jobs?(char)
+      end      
     end
   end
 end

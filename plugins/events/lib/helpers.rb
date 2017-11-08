@@ -43,8 +43,12 @@ module AresMUSH
       description: desc,
       character: enactor)
         
-      Global.client_monitor.emit_all_ooc t('events.event_created', :title => event.title,
-      :starts => event.start_datetime_standard, :name => enactor.name)
+      message = t('events.event_created', :title => event.title,
+        :starts => event.start_datetime_standard, :name => enactor.name)
+        
+      Global.notifier.notify_ooc(:event_created, message) do |char|
+        true
+      end
 
       Events.events_updated
 
@@ -53,9 +57,11 @@ module AresMUSH
    
     def self.delete_event(event, enactor)
       event.delete
-      Global.client_monitor.emit_all_ooc t('events.event_deleted', :title => event.title,
-      :starts => event.start_time_standard, :name => enactor.name)
-
+      message = t('events.event_deleted', :title => event.title,
+        :starts => event.start_time_standard, :name => enactor.name)
+      Global.notifier.notify_ooc(:event_deleted, message) do |char|
+        true
+      end
       Events.events_updated
     end
    
@@ -64,9 +70,12 @@ module AresMUSH
       event.update(starts: datetime)
       event.update(description: desc)
      
-      Global.client_monitor.emit_all_ooc t('events.event_updated', :title => event.title,
-      :starts => event.start_datetime_standard, :name => enactor.name)
+      message = t('events.event_updated', :title => event.title,
+        :starts => event.start_datetime_standard, :name => enactor.name)
       
+      Global.notifier.notify_ooc(:event_updated, message) do |char|
+        true
+      end
       Events.events_updated
     end
    
@@ -75,11 +84,6 @@ module AresMUSH
     end
     
     def self.events_updated
-      
-      Global.client_monitor.notify_web_clients :new_events, t('events.events_updated') do |char|
-        true
-      end
-        
       File.open(Events.ical_path, 'w') do |f|
         f.puts "BEGIN:VCALENDAR"
         f.puts "VERSION:2.0"

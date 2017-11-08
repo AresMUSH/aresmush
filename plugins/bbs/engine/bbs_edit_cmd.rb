@@ -29,10 +29,14 @@ module AresMUSH
           else
             post.update(message: self.new_text)
             post.mark_unread
-            Global.client_monitor.emit_all_ooc t('bbs.new_edit', :subject => post.subject, 
-            :board => board.name, 
-            :reference => post.reference_str,
-            :author => enactor_name)
+            notification = t('bbs.new_edit', :subject => post.subject, 
+              :board => board.name, 
+              :reference => post.reference_str,
+              :author => enactor_name)
+            
+            Global.notifier.notify_ooc(:bbs_edited, notification) do |char|
+              Bbs.can_read_board?(char, board)
+            end
             
             Bbs.mark_read_for_player(enactor, post)
             

@@ -46,7 +46,7 @@ module AresMUSH
     # For example, this will emit "Task complete!" after doing the long task.
     #
     #     callback = Proc.new { |text| client.emit text }
-    #     Global.dispatcher.spawn("Doing something", client, callback) do
+    #     Engine.dispatcher.spawn("Doing something", client, callback) do
     #         do_some_long_task
     #         "Task complete!"
     #     end

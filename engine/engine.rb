@@ -1,6 +1,5 @@
 require_relative '../lib/aresmush.rb'
 
-require 'aresmush/bootstrapper'
 require 'aresmush/client/client_monitor'
 require 'aresmush/client/client.rb'
 require 'aresmush/client/client_factory.rb'
@@ -13,8 +12,8 @@ require 'aresmush/commands/dispatcher.rb'
 require 'aresmush/commands/global_events.rb'
 require 'aresmush/connection.rb'
 require 'aresmush/cron.rb'
-require 'aresmush/global.rb'
-require 'aresmush/plugin/plugin_manager.rb'
+require 'aresmush/engine_bootstrapper.rb'
+require 'aresmush/engine_notifier.rb'
 require 'aresmush/plugin/command_handler.rb'
 require 'aresmush/plugin_helpers/class_target_finder.rb'
 require 'aresmush/plugin_helpers/any_target_finder.rb'
@@ -27,3 +26,11 @@ require 'aresmush/templates/template_renderer.rb'
 require 'aresmush/server.rb'
 require 'aresmush/telnet_negotiation.rb'
 require 'aresmush/web/web_connection.rb'
+require 'aresmush/web/engine_api_server.rb'
+
+module AresMUSH
+  
+  module Engine
+    mattr_accessor :client_monitor, :plugin_manager, :dispatcher
+  end
+end

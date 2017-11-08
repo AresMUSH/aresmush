@@ -1,6 +1,7 @@
 module AresMUSH
   module FS3Combat
     describe FS3Combat do
+      include GlobalTestHelper
 
       describe :find_combat_by_number do
         before do
@@ -42,69 +43,50 @@ module AresMUSH
         @instance = double
         @bob = double
         @harvey = double
-        @bob_client = double
-        @harvey_client = double
-        
         @bob.stub(:name) { "Bob" }
         @harvey.stub(:name) { "Harvey" }
-        
-        @bob.stub(:client) { @bob_client }
-        @harvey.stub(:client) { @harvey_client }
+        @harvey.stub(:character) { double }
+        @bob.stub(:character) { double }
         @instance.stub(:combatants) { [ @bob, @harvey ] }
         @instance.stub(:log) { }
+        @instance.stub(:organizer) { @harvey }
+        
+        @notifier = double
+        Global.stub(:notifier) { @notifier }
         @instance.stub(:organizer) { @harvey }
         
         AresMUSH::Locale.stub(:translate).with("fs3combat.combat_emit", { :message => "Test" }) { "Test" }        
         AresMUSH::Locale.stub(:translate).with("fs3combat.combat_emit", { :message => "Test (Master)" }) { "Test (Master)" }
+        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test" }) { "org emit" }        
+        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test (Master)" }) { "org (Master)" }        
       end
       
-      it "should emit to everyone" do
-        FS3Combat.should_receive(:emit_to_combatant).with(@bob, "Test")
-        FS3Combat.should_receive(:emit_to_combatant).with(@harvey, "Test")
-        FS3Combat.emit_to_combat(@instance, "Test")
+      context "emit" do
+        it "should emit to everyone" do
+          @notifier.should_receive(:notify).with(:combat, "Test")
+          @notifier.should_receive(:notify).with(:combat, "Test")
+          FS3Combat.emit_to_combat(@instance, "Test")
+        end
+      
+        it "should tack on the npcmaster's name if specified" do
+          @notifier.should_receive(:notify).with(:combat, "Test (Master)")
+          @notifier.should_receive(:notify).with(:combat, "Test (Master)")
+          FS3Combat.emit_to_combat(@instance, "Test", " (Master)")
+        end    
       end
       
-      it "should tack on the npcmaster's name if specified" do
-        FS3Combat.should_receive(:emit_to_combatant).with(@bob, "Test (Master)")
-        FS3Combat.should_receive(:emit_to_combatant).with(@harvey, "Test (Master)")
-        FS3Combat.emit_to_combat(@instance, "Test", " (Master)")
-      end    
+      context "emit to organizer" do
+        it "should emit to the organizer" do
+          @notifier.should_receive(:notify).with(:combat, "org emit")
+          FS3Combat.emit_to_organizer(@instance, "Test")
+        end
       
-    end
-    
-    describe :emit_to_organizer do
-    
-      before do
-        @instance = double
-        @bob = double
-        @harvey = double
-        @bob_client = double
-        @harvey_client = double
-      
-        @bob.stub(:name) { "Bob" }
-        @harvey.stub(:name) { "Harvey" }
-              
-        @instance.stub(:combatants) { [ @bob, @harvey ] }
-        @instance.stub(:log) { }
-        @instance.stub(:organizer) { @harvey }
-      
-        Login.stub(:find_client).with(@harvey) { @harvey_client }
-        Login.stub(:find_client).with(@bob) { @bob_client }
-      
-        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test" }) { "test emit" }        
-        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test (Master)" }) { "test with master" }        
+        it "should tack on the npcmaster's name if specified" do
+          @notifier.should_receive(:notify).with(:combat, "org (Master)")
+          FS3Combat.emit_to_organizer(@instance, "Test", "Master")
+        end
       end
       
-      it "should emit to the organizer only" do
-        @harvey_client.should_receive(:emit).with("test emit")
-        @bob_client.should_not_receive(:emit)
-        FS3Combat.emit_to_organizer(@instance, "Test")
-      end
-      
-      it "should tack on the npcmaster's name if specified" do
-        @harvey_client.should_receive(:emit).with("test with master")
-        FS3Combat.emit_to_organizer(@instance, "Test", "Master")
-      end
     end
     
     describe :get_initiative_order do
