@@ -20,8 +20,7 @@ module AresMUSH
       write_config_file File.join(AresMUSH.plugin_path, 'website', 'config_website.yml'), config.to_yaml
       
       flash[:info] = "Saved!"
-      Manage.reload_config
-      
+      reload_config
       redirect '/admin'
     end
         

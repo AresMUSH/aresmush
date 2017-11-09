@@ -59,9 +59,21 @@ module AresMUSH
         config = double
         @reader.stub(:config) { config }
         
+        @reader.stub(:validate_config_file).with("a") { true }
+        @reader.stub(:validate_config_file).with("b") { true }
         config.should_receive(:merge_yaml).with("a")
         config.should_receive(:merge_yaml).with("b")
+        @reader.load_game_config 
+      end 
+      
+      it "should not read a game config file that has an error" do        
+        config = double
+        @reader.stub(:config) { config }
         
+        @reader.stub(:validate_config_file).with("a") { true }
+        @reader.stub(:validate_config_file).with("b").and_raise("error")
+        config.should_receive(:merge_yaml).with("a")
+        config.should_not_receive(:merge_yaml).with("b")
         @reader.load_game_config 
       end  
     end

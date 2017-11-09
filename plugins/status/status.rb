@@ -17,14 +17,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.config_files
-      [ "config_status.yml" ]
-    end
- 
-    def self.locale_files
-      [ "locales/locale_en.yml" ]
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "duty"
@@ -48,6 +40,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name) 
+      case event_name
+      when "CharDisconnectedEvent"
+        return CharDisconnectedEventHandler
+      end
       nil
     end
   end

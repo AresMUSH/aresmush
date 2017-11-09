@@ -46,6 +46,7 @@ module AresMUSH
         combatant.update(subdued_by: nil)
       end
             
+      combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)

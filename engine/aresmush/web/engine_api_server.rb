@@ -32,24 +32,8 @@ module AresMUSH
     #            True:  Will queue request for background thread
     configure do
       set :threaded, true #false
-    end
+    end    
     
-    post '/api/notify' do
-      type = params['type']
-      char_ids = (params['chars'] || '').split(',')
-      msg = params['message']
-      ooc = params['ooc'].to_bool
-
-      if (ooc)
-        Global.notifier.notify_ooc(type, msg) do |char|
-          char && char_ids.include?(char.id)
-        end
-      else
-        Global.notifier.notify(type, msg) do |char|
-          char && char_ids.include?(char.id)
-        end
-      end      
-      {}.to_json
-    end
+    # The actual API methods are defined in the AresCentral plugin.
   end
 end

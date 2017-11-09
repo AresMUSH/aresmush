@@ -26,13 +26,10 @@ module AresMUSH
     end
     
     def send_notification(type, msg, ooc, &trigger_block)
-      port = Global.read_config("server", "engine_api_port")
-      host = Global.read_config("server", "hostname")
+      
       char_ids = Character.all.select { |c| yield c }.map { |c| c.id }
-     
-      args = { :type => type, :ooc => ooc, :chars => char_ids.join(','), :message => msg }
-      rest = AresMUSH::RestConnector.new("http://#{host}:#{port}")    
-      rest.post("/api/notify", args)  
+      connector = AresMUSH::EngineApiConnector.new
+      connector.notify(type, msg, ooc, char_ids)
     end
   end
 end

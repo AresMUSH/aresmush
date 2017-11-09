@@ -75,7 +75,7 @@ en:
         unknown_roll_params: "Unable to figure out what you're trying to roll."
 
         npc: "%{name} (a NPC)"
-        numbers_only_for_npc_skills: "Use a number for a NPC skill, like Henchman/3."
+        numbers_only_for_npc_skills: "Use a number for a NPC skill, like Badguy/3."
 
         # Review
         total_points_spent: "%{total} total points spent. (%{max} max)"

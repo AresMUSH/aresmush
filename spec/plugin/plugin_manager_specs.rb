@@ -17,9 +17,9 @@ module AresMUSH
       it "should load all the plugin config files" do
         plugin = double
         plugin.stub(:plugin_dir) { "A" }
-        plugin.stub(:config_files) { [ "c1", "c2" ]}
-        config_reader.should_receive(:load_config_file).with("A/c1")
-        config_reader.should_receive(:load_config_file).with("A/c2")
+        Dir.stub(:[]).with("A/config_**.yml") { [ "c1", "c2" ]}
+        config_reader.should_receive(:load_config_file).with("c1")
+        config_reader.should_receive(:load_config_file).with("c2")
         @manager.load_plugin_config plugin
       end      
     end
@@ -28,20 +28,33 @@ module AresMUSH
       it "should check the plugin config files" do
         plugin = double
         plugin.stub(:plugin_dir) { "A" }
-        plugin.stub(:config_files) { [ "c1", "c2" ]}
-        config_reader.should_receive(:validate_config_file).with("A/c1").and_raise("error")
-        config_reader.should_not_receive(:validate_config_file).with("A/c2")
+        Dir.stub(:[]).with("A/config_**.yml") { [ "c1", "c2" ]}
+        config_reader.should_receive(:validate_config_file).with("c1").and_raise("error")
+        config_reader.should_not_receive(:validate_config_file).with("c2")
         expect { @manager.validate_plugin_config plugin }.to raise_error("error")
       end
     end
     
     describe :load_plugin_locale do
-      it "should load all the plugin config files" do
+      it "should load all the plugin config files for all locales in order" do
         plugin = double
         plugin.stub(:plugin_dir) { "A" }
-        plugin.stub(:locale_files) { [ "l1", "l2" ]}
-        locale.should_receive(:add_locale_file).with("A/l1")
-        locale.should_receive(:add_locale_file).with("A/l2")
+        locale.stub(:locale_order) { [ "l1", "l2" ]}
+        File.stub(:exists?).with("A/locales/locale_l1.yml") { true }
+        File.stub(:exists?).with("A/locales/locale_l2.yml") { true }
+        locale.should_receive(:add_locale_file).with("A/locales/locale_l1.yml")
+        locale.should_receive(:add_locale_file).with("A/locales/locale_l2.yml")
+        @manager.load_plugin_locale plugin
+      end
+      
+      it "should not load a plugin file if it doesn't exist" do
+        plugin = double
+        plugin.stub(:plugin_dir) { "A" }
+        locale.stub(:locale_order) { [ "l1", "l2" ]}
+        File.stub(:exists?).with("A/locales/locale_l1.yml") { true }
+        File.stub(:exists?).with("A/locales/locale_l2.yml") { false }
+        locale.should_receive(:add_locale_file).with("A/locales/locale_l1.yml")
+        locale.should_not_receive(:add_locale_file).with("A/locales/locale_l2.yml")
         @manager.load_plugin_locale plugin
       end
     end    

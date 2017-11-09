@@ -31,6 +31,7 @@ module AresMUSH
           end
           if (ability.xp > 0)
             ability.update(xp: ability.xp - 1)
+            ability.update(last_learned: nil)
           else
             new_rating = ability.rating - 1
             FS3Skills.set_ability(client, model, self.skill, new_rating)
@@ -41,9 +42,9 @@ module AresMUSH
                new_xp = 0
               end
               ability.update(xp: new_xp)
+              ability.update(last_learned: nil)
             end
           end
-          ability.update(last_learned: nil)
           model.award_xp 1
           client.emit_success t('fs3skills.xp_undone', :name => model.name, :skill => self.skill)
         end

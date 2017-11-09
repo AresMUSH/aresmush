@@ -10,6 +10,7 @@ require 'aresmush'
 require 'web_server.rb'
 require 'web_bootstrapper.rb'
 require 'web_notifier.rb'
+require 'engine_api_connector.rb'
 
 bootstrapper = AresMUSH::WebBootstrapper.new
 bootstrapper.start

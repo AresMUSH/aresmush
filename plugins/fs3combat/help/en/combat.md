@@ -99,7 +99,7 @@ Admins or builders with the `setup_hospitals` permission can designate rooms as 
 Admins, combat organizers, and characters with the manage_damage permission can add or modify damage.
 
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
-`damage/modify <name>/<damage #>=<description>/<severity>` - Modifies damage.
+`damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.
 `damage/delete <name>/<damage #>` - Deletes damage.
 
 ## Gear
@@ -150,7 +150,7 @@ This is a quick reference for combat organizer commands.   You may also want to 
 `combat/summary` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
 `combat/idle <name>` - Sets someone as idle/not idle.  They won't be counted in pose tracking until you use the command on them again.
 
-`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Boss
+`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Miniboss, Boss
 
 `combat/team <list of names>=<team#>` - Switches teams. 
 `combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 

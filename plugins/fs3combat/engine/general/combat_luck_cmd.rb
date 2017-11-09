@@ -20,15 +20,19 @@ module AresMUSH
         return nil
       end
       
-      def check_points
-        return t('fs3combat.no_luck') if enactor.luck < 1
-        return nil
-      end
-      
       def handle
         FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
           
-          enactor.spend_luck(1)
+          client.emit combatant.luck
+          
+          if (!combatant.luck)
+            if (enactor.luck >= 1)
+              enactor.spend_luck(1)
+            else
+              client.emit_failure t('fs3combat.no_luck')
+              return
+            end
+          end
           
           combatant.update(luck: self.reason)
           

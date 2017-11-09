@@ -2,7 +2,8 @@ module AresMUSH
   class WebApp
 
     get '/who/?' do
-      @who =  Engine.client_monitor.logged_in.map { |client, char| char }
+      connector = AresMUSH::EngineApiConnector.new
+      @who =  connector.who.map { |n| Character.find_one_by_name(n) }
       @scenes = Scene.all.select { |s| !s.completed }
       erb :"who"
     end

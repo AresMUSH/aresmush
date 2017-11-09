@@ -23,10 +23,7 @@ module AresMUSH
         "config_fs3skills_langs.yml", "config_fs3skills_bg.yml" ]
     end
  
-    def self.locale_files
-      [ "locales/locale_en.yml" ]
-    end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "abilities"

@@ -23,8 +23,7 @@ module AresMUSH
       write_config_file File.join(AresMUSH.game_path, 'config', 'date_and_time.yml'), config.to_yaml
       
       flash[:info] = "Saved!"
-      Manage.reload_config
-      
+      reload_config      
       redirect '/admin'
     end
         

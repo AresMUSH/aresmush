@@ -21,10 +21,7 @@ module AresMUSH
       [ "config_idle.yml"]
     end
     
-    def self.locale_files
-      [ "locales/locale_en.yml" ]
-    end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "idle"

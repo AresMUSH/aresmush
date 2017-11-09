@@ -21,10 +21,7 @@ module AresMUSH
       [ ]
     end
  
-    def self.locale_files
-      [ "locales/locale_en.yml" ]
-    end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       if (cmd.root_is?("tinker"))
         return TinkerCmd

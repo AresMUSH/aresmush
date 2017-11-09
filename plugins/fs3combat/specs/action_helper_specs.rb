@@ -16,8 +16,14 @@ module AresMUSH
           @combatant.stub(:freshly_damaged) { false }
           @combatant.stub(:action_klass) { nil }
           @combatant.stub(:is_ko) { false }
+          @combatant.stub(:luck) { "Defense" }
           FS3Combat.stub(:reset_stress)
           FS3Combat.stub(:check_for_ko)
+        end
+        
+        it "should reset luck spent" do
+          @combatant.should_receive(:update).with(luck: nil)
+          FS3Combat.reset_for_new_turn(@combatant)
         end
         
         it "should reset posed" do

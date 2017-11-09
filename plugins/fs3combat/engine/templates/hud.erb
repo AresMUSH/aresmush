@@ -10,8 +10,8 @@
 <% members.each do |combatant| %>
 <%= left( combatant.name, 15 ) -%>
 <%= left( format_damage(combatant), 8 ) -%>
-<%= left( format_weapon(combatant), 15 ) -%>
-<%= left( format_vehicle(combatant), 17 ) -%>
+<%= left( format_weapon(combatant), 19 ) -%>
+<%= left( format_vehicle(combatant), 16 ) -%>
 <%= format_action(combatant) %>
 <% end %>
 <% end %>

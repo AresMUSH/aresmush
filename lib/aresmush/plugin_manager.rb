@@ -54,8 +54,9 @@ module AresMUSH
     end
     
     def load_plugin_config(plugin_module)
-      plugin_module.config_files.each do |config|
-        Global.config_reader.load_config_file File.join(plugin_module.plugin_dir, config)
+      config_files(plugin_module).each do |config|
+        puts config
+        Global.config_reader.load_config_file config
       end
       
       # Force the website to restart next time
@@ -63,17 +64,26 @@ module AresMUSH
     end
     
     def validate_plugin_config(plugin_module)
-      plugin_module.config_files.each do |config|
-        Global.config_reader.validate_config_file File.join(plugin_module.plugin_dir, config)
+      config_files(plugin_module).each do |config|
+        Global.config_reader.validate_config_file config
       end
     end
     
     def load_plugin_locale(plugin_module)
-      plugin_module.locale_files.each do |locale|   
-        Global.locale.add_locale_file File.join(plugin_module.plugin_dir, locale)
+      Global.locale.locale_order.each do |locale|
+        file = File.join(plugin_module.plugin_dir, "locales", "locale_#{locale}.yml")
+        if File.exists?(file)
+          Global.locale.add_locale_file file
+        end
       end
     end
-    
+
+    def config_files(plugin_module)
+      search = File.join(plugin_module.plugin_dir, "config_**.yml")
+      Dir[search]
+    end
+
+        
     def help_files(plugin_module, locale)
       search = File.join(plugin_module.plugin_dir, "help", locale, "**.md")
       Dir[search]

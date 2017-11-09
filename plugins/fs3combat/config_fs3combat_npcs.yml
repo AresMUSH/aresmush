@@ -8,13 +8,19 @@ fs3combat:
             Wounds: 30
         Henchman:
             Default: 6
-            Firearms: 7
-            Gunnery: 7
-            Melee: 7
-            Wounds: 25
-        Boss:
+            Firearms: 8
+            Gunnery: 8
+            Melee: 8
+            Wounds: 20
+        Miniboss:
             Default: 9
             Firearms: 11
             Gunnery: 11
             Melee: 11
-            Wounds: 20
+            Wounds: 15            
+        Boss:
+            Default: 11
+            Firearms: 13
+            Gunnery: 13
+            Melee: 13
+            Wounds: 0
