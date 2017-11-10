@@ -34,7 +34,7 @@ module AresMUSH
         Global.logger.debug "Plugin library file for #{name} does not exist."
       end
       
-      target_file = File.join(AresMUSH.plugin_path, name, web_or_engine.to_s, "init.rb")
+      target_file = File.join(AresMUSH.plugin_path, name, web_or_engine.to_s, "_load.rb")
       if (File.exists?(target_file))
         load target_file
       else
