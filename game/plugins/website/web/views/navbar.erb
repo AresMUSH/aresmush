@@ -18,9 +18,11 @@
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="playnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Play <span class="caret"/> </a>
               <ul class="dropdown-menu">
+                        <li><a href="/wiki/getting-started">Getting Started</a></li> 
+                        <li><a href="/wiki/what-should-i-play">What Should I Play?</a></li> 
+                        <li><a href="/wiki/policies">Policies</a></li> 
                   <li><a href="/chargen">Character Creation</a></li>
                   <li><a href="/play">Web Client</a></li>
-                  <li><a href="/who">Who's Online</a></li> 
               </ul>
           </li>
           
@@ -30,6 +32,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dirnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Directory <span class="caret"/> </a>
                     <ul class="dropdown-menu">
+                        <li><a href="/who">Who's Online</a></li> 
                         <li><a href="/chars">Characters</a></li>
                         <% if AresMUSH::Idle.roster_enabled? %>
                         <li><a href="/roster">Roster</a></li> 
@@ -44,6 +47,7 @@
                         <li><hr></li>
                         <li><a href="/kills">Kills</a></li>
                         <li><a href="/wiki/bunks">Bunks</a></li>
+                        <li><a href="/wiki/npcs">NPCs</a></li>
                         <li><hr></li>
                         <li><a href="/bbs">Boards</a></li> 
                         <li><a href="/events">Events</a></li> 
@@ -57,7 +61,7 @@
               <ul class="dropdown-menu">
 	          <li><a href="/wiki/fs3">FS3 Overview</a></li>
 	          <li><a href="/wiki/fs3:chargen">Character Creation</a></li>
-	          <li><a href="/wiki/fs3:rolle">Ability Rolls</a></li>
+	          <li><a href="/wiki/fs3:rolls">Ability Rolls</a></li>
 	          <li><a href="/wiki/fs3:combat">Combat</a></li>
                   <li><hr></li>
                   <li><a href="/fs3/skills">Skills List</a></li>
@@ -72,9 +76,6 @@
           </li>
           
                  <%= erb :"wiki_nav" %>
-          
-          <%= erb :"wiki_nav" %>
-          
           
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="helpnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Help <span class="caret"/> </a>

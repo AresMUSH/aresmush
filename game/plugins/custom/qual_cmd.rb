@@ -4,12 +4,13 @@ module AresMUSH
     class QualCmd
       include CommandHandler
       
-      attr_accessor :name, :skill
+      attr_accessor :name, :skill, :mod
 
       def parse_args
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)          
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
           self.name = trim_arg(args.arg1)
           self.skill = titlecase_arg(args.arg2)
+          self.mod = integer_arg(args.arg3)
       end
       
       def required_args
@@ -40,7 +41,7 @@ module AresMUSH
           else
             badge = "None"
           end
-          message = "Qualification Results - #{model.name} - #{self.skill}: \n\nAttempt 1: #{a1[:results]}\nAttempt 2: #{a2[:results]} \nAttempt 3: #{a3[:results]}\n\nFinal Score: #{total}\n\nBadge: #{badge}"
+          message = "Qualification Results - #{model.name} - #{self.skill} mod:#{self.mod}: \n\nAttempt 1: #{a1[:results]}\nAttempt 2: #{a2[:results]} \nAttempt 3: #{a3[:results]}\n\nFinal Score: #{total}\n\nBadge: #{badge}"
           template = BorderedDisplayTemplate.new message, nil, "%R%ld%RNote: Only qualifications run by staff count for awards."
           enactor_room.emit template.render
         end
@@ -48,9 +49,9 @@ module AresMUSH
       
       def score_attempt(char)
         base = FS3Skills.ability_rating(char, self.skill) * 10
-        r1 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
-        r2 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
-        r3 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill))
+        r1 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill, self.mod))
+        r2 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill, self.mod))
+        r3 = FS3Skills.one_shot_roll(client, char, FS3Skills::RollParams.new(self.skill, self.mod))
         
         score = base + roll_points(r1) + roll_points(r2) + roll_points(r3)
         score = [ 100, score ].min

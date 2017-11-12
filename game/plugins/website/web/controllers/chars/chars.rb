@@ -97,6 +97,12 @@ module AresMUSH
         @badge_images = badge_display.map { |b| "#{b}.png".downcase.gsub(" ", "-") }
 
         if ( sac > 0)
+          if (sac > 16)
+            n = sac / 16
+            n.times.each { |x| @medal_images << "sacrifice16.png" }
+            sac = sac - (n * 16)
+          end
+
           @medal_images << "sacrifice#{sac}.png"
         end
       end
