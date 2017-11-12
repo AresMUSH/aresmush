@@ -11,7 +11,7 @@ module AresMUSH
     end
  
     def self.load_plugin
-      #Help.reload_help
+      Help.reload_help
       self
     end
  

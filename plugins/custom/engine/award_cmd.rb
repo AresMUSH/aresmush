@@ -1,14 +1,5 @@
 module AresMUSH
-  class MedalAward < Ohm::Model
-    reference :character, "AresMUSH::Character"
-    attribute :award
-    attribute :citation
-  end
   
-  class Character
-    collection :awards, "AresMUSH::MedalAward"
-  end
-
   module Custom
     class AwardCmd
       include CommandHandler

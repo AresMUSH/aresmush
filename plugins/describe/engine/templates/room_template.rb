@@ -1,4 +1,3 @@
-# %x!<%= center( condition_notice, 78 ) %>%xn
 module AresMUSH
   module Describe
     # Template for a room.

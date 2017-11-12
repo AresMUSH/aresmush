@@ -6,17 +6,17 @@ module AresMUSH
       user_id = session[:user_id]
       @user = user_id ? Character[user_id] : nil
       
-      #if (@user && (@user.login_api_token != session[:login_token]))
-      #  flash[:error] = "Please log in again."
-      #  session.clear
-      #  redirect to('/')
-      #end
+      if (@user && (@user.login_api_token != session[:login_token]))
+        flash[:error] = "Please log in again."
+        session.clear
+        redirect to('/')
+      end
       
-      #if (@user && @user.login_api_token_expiry < Time.now)
-      #  flash[:error] = "Your session has expired.  Please log in again."
-      #  session.clear
-      #  redirect to('/')
-      #end
+      if (@user && @user.login_api_token_expiry < Time.now)
+        flash[:error] = "Your session has expired.  Please log in again."
+        session.clear
+        redirect to('/')
+      end
       
       @recaptcha = AresMUSH::Website::RecaptchaHelper.new
     end

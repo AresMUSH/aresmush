@@ -1,14 +1,5 @@
 module AresMUSH
-  class VictoryKill < Ohm::Model
-    reference :character, "AresMUSH::Character"
-    reference :scene, "AresMUSH::Scene"   
-    attribute :victory 
-  end
   
-  class Character
-    collection :kills, "AresMUSH::VictoryKill"
-  end
-
   module Custom
     class KillCmd
       include CommandHandler

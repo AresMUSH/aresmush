@@ -2,6 +2,6 @@ Character creation (aka chargen) here works a little differently than what you m
 
 Please read the chargen primer on the game wiki before you begin:  
 
-http://bsgunificationmush.wikidot.com/fs3
+http://bsgu.aresmush.com/wiki/fs3:chargen
 
 You can go back and forth through the steps of chargen as much as you want using %xccg/next%xn and %xccg/prev%xn.

@@ -1,5 +1,5 @@
 Alts
 -------
-Whether or not you have a player handle, if you have more than one character you must register them on the wiki:
+Alt registration is required here.  If you have an AresMUSH player handle, your linked characters are automatically registered as alts.  
 
-http://bsgunificationmush.wikidot.com/players
+If you don't have a player handle, you must manually register your alts on the web portal as explained here: http://bsgu.aresmush.com/players

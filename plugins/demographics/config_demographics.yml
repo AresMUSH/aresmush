@@ -1,10 +1,7 @@
 demographics:
-    # Enforce minimum and maximum age limits in chargen
     min_age: 18
     max_age: 65
 
-    # Names of properties that will be checked for during chargen.  Be sure to use
-    # the exact names of the code properties in demo_model.rb
     required_properties:
         - actor
         - hair

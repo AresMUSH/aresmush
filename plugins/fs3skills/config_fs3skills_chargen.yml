@@ -30,7 +30,6 @@ fs3skills:
         - Demolitions
 
     starting_skills:
-        # Comment this out if it's not applicable.
         Everyone:
             skills:
                 Alertness: 2

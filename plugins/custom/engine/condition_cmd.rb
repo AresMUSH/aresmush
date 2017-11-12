@@ -1,7 +1,4 @@
 module AresMUSH
-  class Game
-      attribute :ship_condition
-  end
 
   module Custom
     class ConditionCmd
