@@ -4,12 +4,18 @@ logger:
 
   # define all loggers ...
   loggers:
-    - name      : ares
+    - name      : engine
       level     : DEBUG
       trace     : 'true'
       outputters:
         - stdout
-        - file
+        - engine_file
+    - name      : web
+      level     : DEBUG
+      trace     : 'true'
+      outputters:
+        - stdout
+        - web_file
 
   # define all outputters (incl. formatters)      
   outputters:
@@ -20,10 +26,19 @@ logger:
           pattern     : '%d %l - %M '
           type        : PatternFormatter
       - type     : RollingFileOutputter
-        name     : file
+        name     : web_file
         max_backups : '10'
         maxsize: 250000,
-        filename : 'game/logs/log.txt'
+        filename : 'game/logs/web/log.txt'
+        formatter:
+          date_pattern: '%Y-%m-%d %H:%M:%S'
+          pattern     : '%d %l - %M '
+          type        : PatternFormatter      
+      - type     : RollingFileOutputter
+        name     : engine_file
+        max_backups : '10'
+        maxsize: 250000,
+        filename : 'game/logs/engine/log.txt'
         formatter:
           date_pattern: '%Y-%m-%d %H:%M:%S'
           pattern     : '%d %l - %M '

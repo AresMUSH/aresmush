@@ -95,6 +95,14 @@ module AresMUSH
       self.roles.include?(role)
     end
         
+    def has_any_role?(names)
+      if (!names.respond_to?(:any?))
+        has_role?(names)
+      else
+        names.any? { |n| has_role?(n) }
+      end
+    end
+    
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
       self.alias_upcase = self.alias ? self.alias.upcase : nil
@@ -116,15 +124,7 @@ module AresMUSH
       end
       
       return display_name
-    end
-    
-    def client
-      Global.client_monitor.find_client(self)
-    end
-    
-    def is_online?
-      !self.client.nil?
-    end
+    end    
     
     def self.random_link_code
       (0...8).map { (65 + rand(26)).chr }.join

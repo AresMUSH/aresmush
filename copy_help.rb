@@ -16,10 +16,10 @@ end
 
 require 'fileutils'
 require 'ansi'
-require_relative 'lib/aresmush/formatters/line.rb'
-require_relative 'lib/aresmush/formatters/ansi_formatter.rb'
-require_relative 'lib/aresmush/formatters/client_formatter.rb'
-require_relative 'lib/aresmush/formatters/substitution_formatter.rb'
+require_relative 'engine/aresmush/formatters/line.rb'
+require_relative 'engine/aresmush/formatters/ansi_formatter.rb'
+require_relative 'engine/aresmush/formatters/client_formatter.rb'
+require_relative 'engine/aresmush/formatters/substitution_formatter.rb'
 
 class String
   def titlecase
@@ -60,7 +60,7 @@ if (!Dir.exist?(help_dir))
 end
 
 
-plugins = Dir['game/plugins/*']
+plugins = Dir['plugins/*']
 plugin_names = []
 
 plugins.each do |p|

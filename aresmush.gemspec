@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.summary     = "AresMUSH MUSH server."
   s.description = "A new breed of MUSHes."
   s.authors     = ["lynnfaraday@github"]
-  s.files       = Dir.glob("{bin,lib,spec}/**/*")
+  s.files       = Dir.glob("{bin,engine,spec}/**/*")
   s.homepage    = 'http://github.com/lynnfaraday/aresmush'
   s.platform    = Gem::Platform::RUBY
 #  s.add_runtime_dependency "ansi", '~> 1.4.3'

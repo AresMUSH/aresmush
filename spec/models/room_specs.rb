@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
 require "aresmush"
 
@@ -19,21 +19,6 @@ module AresMUSH
       @char1.stub(:room) { @room }
       @char2.stub(:room) { @room }
       @char3.stub(:room) { double }
-    end
-    
-    describe :emit do
-      it "should emit to all clients in the room" do
-        @char1.stub(:is_online?) { true }
-        @char2.stub(:is_online?) { true }
-        @char3.stub(:is_online?) { false }
-        @char1.stub(:client) { @client1 }
-        @char2.stub(:client) { @client2 }
-        @room.stub(:characters) { [ @char1, @char2, @char3 ]}
-        @client1.should_receive(:emit).with("Test")
-        @client2.should_receive(:emit).with("Test")
-        @client3.should_not_receive(:emit)
-        @room.emit("Test")        
-      end
     end
     
     describe :get_exit do

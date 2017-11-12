@@ -26,6 +26,7 @@ end
 module AresMUSH
   
   module SpecHelpers
+        
     def self.stub_translate_for_testing
       # Simple helper to stub out translations.  Only works well if you 
       # have a simple string because it doesn't do anything with the args
@@ -41,7 +42,7 @@ module AresMUSH
   end  
   
   module GlobalTestHelper
-    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :help_reader
+    attr_accessor :config_reader, :client_monitor, :plugin_manager, :dispatcher, :locale, :help_reader, :notifier
     
     def stub_global_objects
       @config_reader = double
@@ -50,11 +51,13 @@ module AresMUSH
       @dispatcher = double
       @locale = double
       @help_reader = double
+      @notifier = double
       
+      Global.stub(:notifier) { @notifier }
       Global.stub(:config_reader) { @config_reader }
-      Global.stub(:client_monitor) { @client_monitor }
+      Engine.stub(:client_monitor) { @client_monitor }
+      Engine.stub(:dispatcher) { @dispatcher }
       Global.stub(:plugin_manager) { @plugin_manager }
-      Global.stub(:dispatcher) { @dispatcher }
       Global.stub(:locale) { @locale }
       Global.stub(:help_reader) { @help_reader }
     end

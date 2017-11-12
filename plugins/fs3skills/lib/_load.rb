@@ -1,0 +1,15 @@
+$:.unshift File.dirname(__FILE__)
+
+load "app_review.rb"
+load "starting_skills.rb"
+load "ability_point_counter.rb"
+load "chargen.rb"
+load "formatting.rb"
+load "luck.rb"
+load "parse_rolls.rb"
+load "ratings.rb"
+load "rolls.rb"
+load "utils.rb"
+load "xp.rb"
+load "fs3skills_api.rb"
+load "skills_model.rb"

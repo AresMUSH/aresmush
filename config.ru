@@ -3,16 +3,16 @@ require 'bundler'
 
 Bundler.require
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'website'))
 
 require 'aresmush'
+require 'web_server.rb'
+require 'web_bootstrapper.rb'
+require 'web_notifier.rb'
+require 'engine_api_connector.rb'
 
-bootstrapper = AresMUSH::Bootstrapper.new
-AresMUSH::Global.plugin_manager.load_all
-bootstrapper.config_reader.load_game_config
-bootstrapper.db.load_config
+bootstrapper = AresMUSH::WebBootstrapper.new
+bootstrapper.start
 
-webserver_port = AresMUSH::Global.read_config("server", "webserver_port")
-#web = AresMUSH::WebAppLoader.new
-#web.run(port: webserver_port)
 run AresMUSH::WebApp

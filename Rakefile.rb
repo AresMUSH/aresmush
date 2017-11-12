@@ -1,6 +1,8 @@
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[engine]))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'aresmush'
+require 'engine'
 require 'erubis'
 require 'rspec'
 require 'rspec/core/rake_task'
@@ -11,7 +13,7 @@ require_relative 'install/configure_game.rb'
 
 def minimal_boot
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all
+  AresMUSH::Global.plugin_manager.load_all(:engine)
   bootstrapper.config_reader.load_game_config
   bootstrapper.db.load_config
 end
@@ -60,7 +62,7 @@ begin
   RSpec::Core::RakeTask.new(:spec, :tag) do |t, task_args|
     tag = task_args[:tag]
     if (tag)
-      t.pattern = "spec/**/*_specs.rb,spec/**/*_spec.rb,game/plugins/**/*_specs.rb,game/plugins/**/*_spec.rb"
+      t.pattern = "spec/**/*_specs.rb,spec/**/*_spec.rb,plugins/**/*_specs.rb,plugins/**/*_spec.rb"
       t.rspec_opts = "--example #{tag}"
     end
   end
@@ -73,7 +75,7 @@ begin
   require 'rspec/core/rake_task'
 
   RSpec::Core::RakeTask.new('spec:unit', :tag) do |t, task_args|
-    t.pattern = "spec/**/*_specs.rb,spec/**/*_spec.rb,game/plugins/**/*_specs.rb,game/plugins/**/*_spec.rb"
+    t.pattern = "spec/**/*_specs.rb,spec/**/*_spec.rb,plugins/**/*_specs.rb,plugins/**/*_spec.rb"
     t.rspec_opts = "--tag ~dbtest"
   end
 rescue LoadError
@@ -92,7 +94,7 @@ end
 #  templates = plugin_files.select { |f| f =~ /template/ }
    
 #  rdoc.rdoc_files = templates
-#  rdoc.rdoc_files.include("game/plugins/**/*.rb")
+#  rdoc.rdoc_files.include("plugins/**/*.rb")
 #  rdoc.rdoc_files.exclude("^((?!Template).)*$")
 #end
 

@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
 require "aresmush"
 
@@ -12,7 +12,7 @@ module AresMUSH
         @client2 = double
         @char1 = double
         @char2 = double
-        Global.stub(:client_monitor) { @client_monitor }
+        Engine.stub(:client_monitor) { @client_monitor }
         SpecHelpers.stub_translate_for_testing
       end
      

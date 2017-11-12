@@ -1,0 +1,79 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
+  <li><a data-toggle="tab" href="#systemhooks">RP Hooks</a></li>
+  <% if @char.on_roster? || @char.bg_shared %>
+  <li><a data-toggle="tab" href="#systembg">Background</a></li>
+  <% end %>
+  
+  <li><a data-toggle="tab" href="#systemdesc">Description</a></li>
+  <li><a data-toggle="tab" href="#systemsheet">Sheet</a></li>
+  <li><a data-toggle="tab" href="#systemawards">Awards</a></li>
+  <li><a data-toggle="tab" href="#systemkills">Kills</a></li>
+  <li><a data-toggle="tab" href="#systemdamage">Damage</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="systeminfo" class="tab-pane fade in active">
+      <div class="tab-cover">System Information</div>
+  </div>
+        
+  <div id="systemhooks" class="tab-pane fade">
+      
+      <p>
+          <div class="ansi">
+                <ul>
+                <% @char.fs3_hooks.each do |h| %>
+                <li><b><%= h.name %></b> - <%= format_output_for_html h.description %></li>
+                <% end %>
+                </ul>
+          </div>
+     </p>
+  </div>
+  
+  
+  <% if @char.on_roster? || @char.bg_shared %>
+  <div id="systembg" class="tab-pane fade">
+      <div class="ansi">
+          <%= format_output_for_html @char.background %>
+      </div>
+      
+  </div>
+  <% end %>
+  
+  <div id="systemdesc" class="tab-pane fade">
+
+         <div class="ansi"> 
+             <%= format_output_for_html @char.description %>
+            </div>
+          
+      
+  </div>
+  
+  <div id="systemsheet" class="tab-pane fade">
+
+          <%= erb :"fs3/char_sheet" %>
+          
+      
+  </div>
+
+  <div id="systemawards" class="tab-pane fade">
+
+          <%= erb :"chars/awards" %></p>
+          
+      
+  </div>
+
+  <div id="systemkills" class="tab-pane fade">
+
+          <%= erb :"chars/kills" %></p>
+          
+      
+  </div>
+
+  <div id="systemdamage" class="tab-pane fade">
+
+      <%= erb :"combat/char_damage" %>
+      
+
+  </div>
+</div>

@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
 require "aresmush"
 
@@ -19,7 +19,7 @@ module AresMUSH
     
     describe :send_formatted do
       it "should format the message before sending" do
-        ClientFormatter.should_receive(:format).with("test", true) { "TEST" }
+        MushFormatter.should_receive(:format).with("test", true) { "TEST" }
         @connection.should_receive(:send_data).with("TEST")
         @connection.send_formatted("test")
       end

@@ -1,0 +1,50 @@
+$:.unshift File.dirname(__FILE__)
+
+module AresMUSH
+  module Places
+    def self.plugin_dir
+      File.dirname(__FILE__)
+    end
+ 
+    def self.shortcuts
+      Global.read_config("places", "shortcuts")
+    end
+ 
+    def self.load_plugin
+      self
+    end
+ 
+    def self.unload_plugin
+    end
+    
+    def self.get_cmd_handler(client, cmd, enactor)
+       case cmd.root
+       when "place"
+         case cmd.switch
+         when nil
+           return PlacesCmd
+         when "create"
+           return PlaceCreateCmd
+         when "emit"
+           return PlaceEmitCmd
+         when "delete"
+           return PlaceDeleteCmd
+         when "join"
+           return PlaceJoinCmd
+         when "leave"
+           return PlaceLeaveCmd
+         when "rename"
+           return PlaceRenameCmd
+         end
+       end
+    end
+
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
+      nil
+    end
+  end
+end

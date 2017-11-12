@@ -1,0 +1,32 @@
+module AresMUSH
+  module Login
+    class CharConnectedEventHandler
+      def on_event(event)
+        client = event.client
+        char = Character[event.char_id]
+        
+        first_login = !char.last_ip
+        Login.update_site_info(client, char)
+
+        Global.logger.info("Character Connected: #{char.name} #{char.last_ip} #{char.last_hostname}")
+        
+        if (first_login)
+          Login.check_for_suspect(char)
+        end
+        
+        Engine.client_monitor.logged_in.each do |other_client, other_char|
+          if (other_char.room == char.room)
+            other_client.emit_success t('login.announce_char_connected_here', :name => char.name)
+          elsif (Login.wants_announce(other_char, char))
+            other_client.emit_ooc t('login.announce_char_connected', :name => char.name)
+          end
+        end
+        
+        Engine.dispatcher.queue_timer(1, "Login notices", client) do 
+          template = NoticesTemplate.new(char)
+          client.emit template.render
+        end
+      end
+    end
+  end
+end

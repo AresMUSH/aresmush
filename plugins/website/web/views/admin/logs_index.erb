@@ -1,0 +1,25 @@
+<h1>Logs</h1>
+
+<p>Coders use log files to troubleshoot code problems.  They contain detailed information about what the code is doing.  Some commands (pages, poses, channel chat, connect passwords) are <b>not</b> logged, for player privacy.</p>
+
+        <% if @error_alert %>
+            <div class="alert alert-warning">
+              <strong>Errors in log!</strong> Your most recent log file contains some error or warning notices.  You may want to check that out.  Open the log and search for 'ERROR' or 'WARN'.
+            </div>
+        <% end %>
+        
+
+<h2>Website Logs</h2>
+<ul>
+<% @web_logs.each_with_index do |l| %>
+    <li><a href="/admin/log/web/<%= File.basename(l) %>"><%= File.basename(l) %></a></li>
+<% end %>
+</ul>
+
+
+<h2>Engine Logs</h2>
+<ul>
+<% @engine_logs.each_with_index do |l| %>
+    <li><a href="/admin/log/engine/<%= File.basename(l) %>"><%= File.basename(l) %></a></li>
+<% end %>
+</ul>

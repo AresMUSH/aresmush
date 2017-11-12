@@ -1,0 +1,58 @@
+<h1>Character Generation</h1>
+
+<p>The online character creation tool will guide you through creating your character.</p>
+
+<form method="POST" action="/chargen">
+               
+    
+    <button type="submit" name="tab" value="demo" class="btn btn-primary">Demographics</button>
+    <button type="submit" name="tab" value="groups" class="btn btn-primary">Groups</button>
+    <button type="submit" name="tab" value="bg" class="btn btn-primary">Background</button>
+    <button type="submit" name="tab" value="abilities" class="btn btn-primary">Abilities</button>
+    <button type="submit" name="tab" value="hooks" class="btn btn-primary">RP Hooks</button>
+       
+    
+    <%= erb :"/chargen/chargen_demo" %>
+    <%= erb :"/chargen/chargen_groups" %>
+    <%= erb :"/chargen/chargen_bg" %>
+    <%= erb :"/chargen/chargen_fs3" %>
+    <%= erb :"/chargen/chargen_hooks" %>
+    
+    <div class="panel panel-warning">
+    
+        <div class="panel-heading">
+            Save Progress
+        </div>
+    
+        <div class="panel-body">
+
+            <p>Changes you make here are not made in-game until you click the <b>Save</b> button or switch tabs.  Review your app for errors down below and submit your character for approval when you're done. </p>
+                
+            <p>
+                <button type="submit" name="save" class="btn btn-warning">Save</button>
+            </p>
+
+        </div>
+    </div>     
+
+    <%= erb :"/chargen/chargen_app" %>
+
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+            All Done?
+        </div>
+
+        <div class="panel-body">
+
+            <p>If everything looks OK with your application, you can submit it for approval.  You'll need to log into the game itself to check on the status of your app. </p>
+            
+            <p>
+                <button type="submit" name="submit-app" class="btn btn-success">Submit Application</button>
+            </p>
+
+        </div>
+    </div>
+    
+
+</form>

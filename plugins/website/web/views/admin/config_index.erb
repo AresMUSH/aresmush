@@ -1,0 +1,38 @@
+<h1>Advanced configuration</h1>
+
+<p>Here you can edit your game's configuration files.</p>
+
+<div class="alert alert-warning">This section contains advanced configuration options.  Please read the AresMUSH.com tutorials before attempting to configure your game here.</div>
+
+<h2>Game Config</h2>
+
+<ul>
+    <% @game_config.sort.each do |f| %>
+    <li><a href="/admin/config/edit?path=<%= f %>"><%= File.basename(f) %></a></li>
+    <% end %>
+</ul>
+
+<h2>Plugin Config</h2>
+    <blockquote>
+        Quick Links:
+        <% @plugin_config.keys.sort.each do |p| %>
+        <a href="#<%= p %>"><%= p %></a> | 
+        <% end %>
+    </blockquote>
+
+    <% @plugin_config.keys.sort.each do |p| %>
+        <hr/>
+        <a name="<%= p %>"></a>
+        <h3><%= p %></h3>
+
+            <p><a href="/help/<%= p %>/index" target="_blank">Configuration Help</a></p>
+            
+            <% ["config", "help", "locale", "templates", "views"].each do |section| %>
+            <b><%= section %></b>
+                <ul>
+                <% @plugin_config[p][section].each do |f| %>
+                  <li><a href="/admin/config/edit?path=<%= f %>&plugin=<%= p %>"><%= File.basename(f) %></a> <span class="tinyhint"><%= f %></span></li>
+                <% end %>
+                </ul>
+            <% end %>
+    <% end %>

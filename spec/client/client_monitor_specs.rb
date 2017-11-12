@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
 require "aresmush"
 
@@ -21,18 +21,22 @@ module AresMUSH
     end
     
     describe :emit_all do
-      it "should notify all the clients" do
-        @client1.should_receive(:emit).with("Hi")
+      it "should notify all the clients matching the specified trigger block" do
+        @client1.should_not_receive(:emit)
         @client2.should_receive(:emit).with("Hi")
-        @client_monitor.emit_all "Hi"
+        @client_monitor.emit_all "Hi" do |c|
+          c == @client2
+        end
       end
     end
     
     describe :emit_all_ooc do
-      it "should emit ooc to all the clients" do
+      it "should emit ooc to all the clients matching the specified trigger block" do
         @client1.should_receive(:emit_ooc).with("Hi")
-        @client2.should_receive(:emit_ooc).with("Hi")
-        @client_monitor.emit_all_ooc "Hi"
+        @client2.should_not_receive(:emit_ooc)
+        @client_monitor.emit_all_ooc "Hi" do |c|
+          c == @client1
+        end
       end
     end
 

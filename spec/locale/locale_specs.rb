@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
 require "aresmush"
 
@@ -118,7 +118,8 @@ module AresMUSH
       end
 
       it "should tell the loader to load the main locale" do
-        LocaleLoader.should_receive(:load_dir).with(File.join(@game_path, "locales"))
+        @locale.stub(:locale_order) { [ "en" ]}
+        LocaleLoader.should_receive(:load_file).with(File.join(@game_path, "locales", "locale_en.yml"))
         @locale.reset_load_path
       end
       
