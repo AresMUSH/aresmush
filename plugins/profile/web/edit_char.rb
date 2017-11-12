@@ -33,7 +33,7 @@ module AresMUSH
       profile = {}
       relationships = {}
       hooks = {}
-      
+            
       params.each do |k, v|
         if (k.start_with?('profiletitle-') && !v.blank?)
           name = k.after('-')

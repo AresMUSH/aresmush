@@ -6,13 +6,13 @@
     <p>
     <label for="title" class="col-xs-2 col-form-label">Title:</label>
     
-    <input type="text" name="title" size="100" value="<%= @scene.title %>"/>
+    <input type="text" name="title" size="100" value="<%= format_input_for_html @scene.title %>"/>
     </p>
     
     <p>
     <label for="location" class="col-xs-2 col-form-label">Location:</label>
     
-    <input type="text" name="location" size="100" value="<%= @scene.location %>"/>
+    <input type="text" name="location" size="100" value="<%= format_input_for_html @scene.location %>"/>
     </p>
     
     

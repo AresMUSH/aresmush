@@ -54,7 +54,7 @@ module AresMUSH
       end
       
       @page_title = "#{@char.name} - #{game_name}"
-      
+          
       case @char.idle_state
       when "Roster"
         @idle_message = "This character is on the roster.<br/>#{@char.roster_notes}"

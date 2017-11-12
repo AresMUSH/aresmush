@@ -7,8 +7,8 @@
 
         <% @hooks.each_with_index do |(name, desc), i| %>
         <div class="form-group row">
-            <input type="text" name="hook-name-<%= i %>" size="20" class="col-xs-2 col-form-label" value="<%= name %>" />
-            <input type="text" name="hook-desc-<%= i %>" size="100" value="<%= desc %>" />
+            <input type="text" name="hook-name-<%= i %>" size="20" class="col-xs-2 col-form-label" value="<%= format_input_for_html name %>" />
+            <input type="text" name="hook-desc-<%= i %>" size="100" value="<%= format_input_for_html desc %>" />
         </div>
         <% end %>
         

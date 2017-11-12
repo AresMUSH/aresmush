@@ -5,7 +5,7 @@
 
     <form method="POST" action="/event/<%= @event.id %>/edit">
         <p><b>Title:</b></p>
-        <p><input type="text" name="title" value="<%= @event.title %>"></p>
+        <p><input type="text" name="title" value="<%= format_input_for_html @event.title %>"></p>
 
         <p><b>Date:</b></p>
         <p><input type="text" id="datepicker" name="date" value="<%= @event.date_str %>"></p>

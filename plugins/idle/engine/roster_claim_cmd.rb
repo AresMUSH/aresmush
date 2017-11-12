@@ -35,6 +35,7 @@ module AresMUSH
           password = Login.set_random_password(model)
           model.update(idle_state: nil)
           model.update(terms_of_service_acknowledged: nil)
+          model.update(roster_played: true)
           
           client.emit_success t('idle.roster_claimed', :name => model.name, :password => password)
           

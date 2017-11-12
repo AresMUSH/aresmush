@@ -10,7 +10,7 @@
         
         <div class="row">
             <label for="hookname-<%=i%>" class="col-xs-2 col-form-label">Name:</label> 
-            <input type="text" name="hookname-<%=i%>" class="col-xs-2" size="50" value="<%= hook.name %>"/>
+            <input type="text" name="hookname-<%=i%>" class="col-xs-2" size="50" value="<%= format_input_for_html hook.name %>"/>
         
             <label for="hookdesc-<%=i%>" class="col-xs-2 col-form-label">Description:</label>     
             <input type="text" name="hookdesc-<%=i%>"  class="col-xs-2" size="50" value="<%= format_input_for_html(hook.description) %>"/>

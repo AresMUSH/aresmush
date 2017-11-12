@@ -4,25 +4,25 @@
 <p>
     <label for="demo-fullname" class="col-xs-2 col-form-label">Full Name:</label>
     
-    <input type="text" name="demo-fullname" size="100" value="<%= @char.demographic('fullname') %>"/>
+    <input type="text" name="demo-fullname" size="100" value="<%= format_input_for_html @char.demographic('fullname') %>"/>
 </p>
 
 <p>
     <label for="demo-callsign" class="col-xs-2 col-form-label">Callsign:</label>
     
-    <input type="text" name="demo-callsign" size="100" value="<%= @char.demographic('callsign') %>"/>
+    <input type="text" name="demo-callsign" size="100" value="<%= format_input_for_html @char.demographic('callsign') %>"/>
 </p>
     
 <p>
     <label for="demo-hair" class="col-xs-2 col-form-label">Hair:</label>
     
-    <input type="text" name="demo-hair" size="100" value="<%= @char.demographic('hair') %>"/>
+    <input type="text" name="demo-hair" size="100" value="<%= format_input_for_html @char.demographic('hair') %>"/>
 </p>
     
 <p>
     <label for="demo-eyes" class="col-xs-2 col-form-label">Eyes:</label>
     
-    <input type="text" name="demo-eyes" size="100" value="<%= @char.demographic('eyes') %>"/>
+    <input type="text" name="demo-eyes" size="100" value="<%= format_input_for_html @char.demographic('eyes') %>"/>
 </p>
 
 <p>

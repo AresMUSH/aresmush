@@ -18,7 +18,7 @@
         <div class="row">
         <% @attrs.each_with_index do |att, i| %>
         <input name="attr-name-<%= i %>" type="text" size="20" class="col-xs-2 col-form-label" value="<%= att['name'] %>" />
-        <input name="attr-desc-<%= i %>" type="text" size="50" class="col-xs-10 col-form-label" value="<%= att['desc'] %>" />
+        <input name="attr-desc-<%= i %>" type="text" size="50" class="col-xs-10 col-form-label" value="<%= format_input_for_html att['desc'] %>" />
         
         <% end %>
         </div>
@@ -53,7 +53,7 @@
         <input name="action-name-<%= i %>" type="text" size="20" class="col-xs-2 col-form-label" value="<%= skill['name'] %>" />
         <input name="action-linked-<%= i %>" type="text" size="20" class="col-xs-2 col-form-label" value="<%= skill['linked_attr'] %>" />
         <input name="action-spec-<%= i %>" type="text" size="20" class="col-xs-2 col-form-label" value="<%= skill['specialties'] ? skill['specialties'].join(',') : '' %>" />
-        <input name="action-desc-<%= i %>" type="text" size="50" class="col-xs-6 col-form-label" value="<%= skill['desc'] %>" />
+        <input name="action-desc-<%= i %>" type="text" size="50" class="col-xs-6 col-form-label" value="<%= format_input_for_html skill['desc'] %>" />
         
         <% end %>
         </div>

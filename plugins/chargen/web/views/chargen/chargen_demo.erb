@@ -7,7 +7,7 @@
         <div class="form-group row">
     
             <label for="<%= demo %>" class="col-xs-2 col-form-label"><%= demo.to_s.titlecase %>:</label> 
-            <input type="text" name="<%= demo %>" size="100" value="<%= @user.demographic(demo) %>"/>
+            <input type="text" name="<%= demo %>" size="100" value="<%= format_input_for_html @user.demographic(demo) %>"/>
 
         </div>
         <% end %>
