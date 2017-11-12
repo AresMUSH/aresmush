@@ -49,8 +49,20 @@ module AresMUSH
             obj.delete
           end
       
-          obj = bucket.object("#{timestamp}-dump.rdb")
-          obj.upload_file(db_path)
+      
+          backup_filename = "#{timestamp}-backup.zip"
+          backup_path = File.join(AresMUSH.root_path, backup_filename)
+          
+            Zip::File.open(backup_path, 'w') do |zipfile|
+              Dir["#{AresMUSH.game_path}/**/**"].each do |file|
+                zipfile.add(file.sub(AresMUSH.game_path+'/',''),file)
+              end
+              zipfile.add('dump.rdb', db_path)
+            end
+          
+          obj = bucket.object(backup_filename)
+          obj.upload_file(backup_path)
+          FileUtils.rm backup_path, :force=>true
       
           Global.logger.info "Backup complete."
           client.emit_success t('manage.backup_complete') if client

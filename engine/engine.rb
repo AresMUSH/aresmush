@@ -1,3 +1,8 @@
+require 'sinatra/base'
+require 'thin'
+require 'rubygems'
+require 'zip'
+
 require_relative '../lib/aresmush.rb'
 
 require 'aresmush/client/client_monitor'
