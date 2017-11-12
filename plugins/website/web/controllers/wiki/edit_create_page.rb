@@ -38,7 +38,6 @@ module AresMUSH
         
         # Reset HTML of any pages that include this one
         WikiPage.all.select { |p| p.text =~ /\[\[include #{@page.name}/i }.each do |ref|
-          puts "Resetting #{ref.name}"
           ref.update(html: nil)
         end
       

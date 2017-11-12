@@ -41,7 +41,6 @@ module AresMUSH
         
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
           
-          puts "#{warn_days} -- #{delete_days} --- #{scene.date_completed} --- #{Time.now}"
           elapsed_days = Time.now - scene.date_completed
           if (elapsed_days > delete_days  && scene.deletion_warned)
             Global.logger.info "Deleting scene #{scene.id} - #{scene.title} completed #{scene.date_completed}"
