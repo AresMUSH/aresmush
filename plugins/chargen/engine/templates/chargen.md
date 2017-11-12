@@ -4,4 +4,4 @@ Please read the chargen primer on the game wiki before you begin:
 
 http://bsgu.aresmush.com/wiki/fs3:chargen
 
-You can go back and forth through the steps of chargen as much as you want using %xccg/next%xn and %xccg/prev%xn.
+You can go back and forth through the steps of chargen using %xccg/next%xn and %xccg/prev%xn.  Going back is always allowed, but when you go forward - the game may check to make sure you've done what you needed to do in that step.

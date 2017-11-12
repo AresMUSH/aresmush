@@ -55,7 +55,6 @@ module AresMUSH
     
     def load_plugin_config(plugin_module)
       config_files(plugin_module).each do |config|
-        puts config
         Global.config_reader.load_config_file config
       end
       

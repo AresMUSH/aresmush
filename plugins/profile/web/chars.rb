@@ -131,7 +131,7 @@ module AresMUSH
       end
       
       @page_title = "#{@char.name} - #{game_name}"
-
+      
       setup_awards(@char)
 
       case @char.idle_state

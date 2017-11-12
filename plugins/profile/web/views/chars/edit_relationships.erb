@@ -11,14 +11,15 @@
         <div class="pull-right"><a id="delete-relation"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
         
         <div class="row">
+            
             <label for="relationname-<%=i%>" class="col-xs-1 col-form-label">Name:</label> 
-            <input type="text" name="relationname-<%=i%>" class="col-xs-2" size="50" value="<%= name %>"/>
+            <input type="text" name="relationname-<%=i%>" class="col-xs-2" size="50" value="<%= format_input_for_html name %>"/>
         
             <label for="relationcat-<%=i%>" class="col-xs-2 col-form-label">Category:</label>     
-            <input type="text" name="relationcat-<%=i%>"  class="col-xs-2" size="50" value="<%= data['category'] %>"/>
+            <input type="text" name="relationcat-<%=i%>"  class="col-xs-2" size="50" value="<%= format_input_for_html data['category'] %>"/>
 
             <label for="relationorder-<%=i%>" class="col-xs-1 col-form-label">Order:</label>     
-            <input type="text" name="relationorder-<%=i%>"  class="col-xs-1" size="25" value="<%= data['order'] %>"/>
+            <input type="text" name="relationorder-<%=i%>"  class="col-xs-1" size="25" value="<%= format_input_for_html data['order'] %>"/>
         </div>
         <p>
             <textarea name="relationdetail-<%=i%>" rows="2"><%= format_input_for_html data['relationship'] %></textarea>

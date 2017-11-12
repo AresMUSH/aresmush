@@ -14,14 +14,25 @@ module AresMUSH
     end
     
     describe :load_plugin_config do
-      it "should load all the plugin config files" do
-        plugin = double
-        plugin.stub(:plugin_dir) { "A" }
+      before do
+        @plugin = double
+        @plugin.stub(:plugin_dir) { "A" }
         Dir.stub(:[]).with("A/config_**.yml") { [ "c1", "c2" ]}
+      end
+      
+      it "should load all the plugin config files" do
+        FileUtils.stub(:touch)
         config_reader.should_receive(:load_config_file).with("c1")
         config_reader.should_receive(:load_config_file).with("c2")
-        @manager.load_plugin_config plugin
+        @manager.load_plugin_config @plugin
       end      
+      
+      it "should touch the restart file" do
+        FileUtils.should_receive(:touch).with(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
+        config_reader.stub(:load_config_file)
+        @manager.load_plugin_config @plugin
+      end
+      
     end
     
     describe :validate_plugin_config do

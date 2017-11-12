@@ -1,6 +1,6 @@
 chargen:
     messages:
-        approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP.  You can also customize your character profile on the web portal to upload a profile image and add supplementary details: http://bsgu.aresmush.com."
+        approval: "Congratulations!  Your application has been approved.  Type %xhonstage%xn to go forth and RP.  You may want to customize your character profile on the web portal."
         rejection: "Sorry, your character could not be approved at the present time for the reasons described below.  Please see %xhhelp app%xn for help making changes and resubmitting, and contact the person handling your application if you have any questions."
         post_approval: "Please make sure they have a profile image for their log icon."
         welcome: "Please welcome %{name}, our latest %{position} to be approved!"

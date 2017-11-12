@@ -66,13 +66,6 @@ require 'pp'
 require 'net/http'
 require 'html2markdown'
 
-require 'sinatra/base'
-require "sinatra/reloader"
-require 'sinatra/flash'
-require 'thin'
-require 'compass'
-require 'redis-rack'
-
 require 'erubis'
 require 'json'
 require 'redcarpet'

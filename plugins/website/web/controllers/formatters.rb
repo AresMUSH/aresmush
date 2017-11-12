@@ -30,7 +30,7 @@ module AresMUSH
       # Takes MUSH text and formats it for a text box with %r's becoming line breaks.      
       def format_input_for_html(input)
         return nil if !input
-        input.gsub(/%r/i, '&#013;&#010;')
+        input.gsub(/%r/i, '&#013;&#010;').gsub("\"", "&quot;")
       end
       
       # Takes MUSH text and formats it for display in a div, with %r's becoming HTML breaks.

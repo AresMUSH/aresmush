@@ -15,7 +15,7 @@
         <div class="form-group row">
     
         <label for="website_tagline" class="col-xs-3 col-form-label">Home Page Tagline:</label> 
-        <input type="text" name="website_tagline" size="100" value="<%= @config['website_tagline'] %>"/>
+        <input type="text" name="website_tagline" size="100" value="<%= format_input_for_html @config['website_tagline'] %>"/>
 
         </div>
 

@@ -53,11 +53,8 @@ module AresMUSH
     def action
       return nil if !self.action_klass
       klass = FS3Combat.const_get(self.action_klass)
-      puts "COW"
       a = klass.new(self, self.action_args)
-      puts "DOG"
       error = a.prepare
-      puts "HORSE"
       
       if (error)
         self.combat.log "Action Reset: #{self.name} #{self.action_klass} #{self.action_args} #{error}"
