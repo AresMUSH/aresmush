@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def handle
-        client.emit_success "Done2!"
+        client.emit_success "Done!"
       end
 
     end
