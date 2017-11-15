@@ -32,6 +32,18 @@
             </select>
     </p>
     
+    <p>
+    <label for="plot" class="col-xs-2 col-form-label">Plot:</label>
+    
+            <select name="scene_type">
+                <option value="">None</option>
+                
+              <% @plots.each do |plot| %>
+              <option value="<%= plot.id %>"><%= plot.title %></option>
+              <% end %>
+            </select>
+    </p>
+    
         
     <p>
     <label for="summary" class="col-xs-2 col-form-label">Summary:</label>

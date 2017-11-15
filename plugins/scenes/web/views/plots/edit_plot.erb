@@ -1,0 +1,24 @@
+<h1>Edit Plot <%= @plot.title %></h1>
+
+    <form method="POST" action="/plot/<%= @plot.id %>/edit">
+        
+
+    <p>
+    <label for="title" class="col-xs-2 col-form-label">Title:</label>
+    
+    <input type="text" name="title" size="100" value="<%= format_input_for_html @plot.title %>"/>
+    </p>
+    
+  
+  
+    <p>
+    <label for="description" class="col-xs-2 col-form-label">Description:</label>
+    <textarea name="description" rows="5"><%= format_input_for_html(@plot.description) %></textarea>
+    </p>
+
+   
+    
+        <p> <a href="/plot/<%= @plot.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
+        
+    </form>
+    

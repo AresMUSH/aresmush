@@ -3,6 +3,7 @@ module AresMUSH
     
     get '/scene/:id/edit/?', :auth => :approved do |id|
       @scene = Scene[id]
+      @plots = Plot.all.to_a.sort_by { |p| p.id }
       @log = @scene.scene_log
       
       if (!@scene.shared)
@@ -27,6 +28,12 @@ module AresMUSH
       @scene.update(scene_type: params[:scene_type])
       @scene.update(title: params[:title])
       @scene.update(icdate: params[:icdate])
+
+      plot = params[:plot]
+      puts "PLOT #{plot}"
+      if (!plot.blank?)
+        @scene.update(plot: Plot[plot])
+      end
       
       tags = params[:tags] || ""
       @scene.update(tags: tags.split(" ").map { |t| t.downcase })

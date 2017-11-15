@@ -1,0 +1,41 @@
+<h1>Plots</h1>
+
+<p>Plots are a way to group related scenes.</p>
+
+<% if is_approved? %>
+
+<div class="row">
+    
+    <div class="col pull-right">
+        <a href="/plot/create" class="btn btn-primary">Create Plot</a>
+    </div>
+    
+</div>
+
+<% end %>
+
+<table class="table table-striped">
+
+
+<thead>
+    <tr>
+        <th>Plot</th>
+        <th>Description</th>
+    </tr>
+</thead>
+
+<tbody>
+
+<% @plots.each do |p| %>
+    <tr>
+        <td>
+        <a href="/plot/<%= p.id %>"><%= p.title %></a>
+        </td>
+        <td class="ansi">
+            <%= format_markdown_for_html p.description %>
+        </td>
+    </tr>
+<% end %>
+
+</tbody>
+</table>

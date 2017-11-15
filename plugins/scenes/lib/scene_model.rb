@@ -11,6 +11,15 @@ module AresMUSH
     end
   end
   
+  class Plot < Ohm::Model
+    include ObjectModel
+    
+    attribute :title
+    attribute :description
+    
+    collection :scenes, "AresMUSH::Scene"
+  end
+  
   class Scene < Ohm::Model
     include ObjectModel
     
@@ -35,8 +44,10 @@ module AresMUSH
     
     collection :scene_poses, "AresMUSH::ScenePose"
     reference :scene_log, "AresMUSH::SceneLog"
+    reference :plot, "AresMUSH::Plot"
     
     set :participants, "AresMUSH::Character"
+    set :likers, "AresMUSH::Character"
     
     before_delete :delete_poses_and_log
     
@@ -95,6 +106,26 @@ module AresMUSH
         link = SceneLink.find(log1_id: other_scene.id).combine(log2_id: self.id).first
       end
       link
+    end
+    
+    def has_liked?(char)
+      self.likers.include?(char)
+    end
+    
+    def like(char)
+      if (!self.has_liked?(char))
+        self.likers.add char
+      end
+    end
+
+    def unlike(char)
+      if (self.has_liked?(char))
+        self.likers.delete char
+      end
+    end
+    
+    def likes
+      self.likers.count
     end
   end
   

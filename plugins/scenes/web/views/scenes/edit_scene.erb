@@ -32,7 +32,17 @@
             </select>
     </p>
     
-
+    <p>
+    <label for="plot" class="col-xs-2 col-form-label">Plot:</label>
+    
+            <select name="plot">
+                <option value="">None</option>
+                
+              <% @plots.each do |plot| %>
+              <option value="<%= plot.id %>"><%= plot.title %></option>
+              <% end %>
+            </select>
+    </p>
     
     <p>
         <label for="tags" class="col-xs-2 col-form-label">Tags:</label>

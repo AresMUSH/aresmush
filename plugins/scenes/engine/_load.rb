@@ -2,7 +2,6 @@ $:.unshift File.dirname(__FILE__)
 
 load "pose_event_handler.rb"
 load "cron_event_handler.rb"
-load "helpers.rb"
 load "scene_addpose_cmd.rb"
 load "scene_char_cmd.rb"
 load "scene_clearlog_cmd.rb"
