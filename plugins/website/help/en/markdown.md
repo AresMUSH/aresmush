@@ -50,6 +50,13 @@ The built-in music player (based on a WikiDot version by @Blu) lets you add the 
 
 `[[musicplayer E5TsA6CHpII Description]]`
 
+## Collapsible Text
+
+Collapsibles let you show and hide text with the click of a button.
+
+`[[collapsible button text]]`
+`Text you want to show and hide.`
+`[[/collapsible]]`
 
 ## Pretty Images
 
@@ -66,9 +73,9 @@ You can display images with some easy formatting options, including height, widt
 
 You can use the extended table syntax for easy tables.
 
-    | Title 1 | Title 2 | 
-    |-----    |-----    | 
-    | Text    | Text    | 
+`| Title 1 | Title 2 | `
+`|-----    |-----    | `
+`| Text    | Text    | `
 
 ## Scene, Page and Character Lists
 

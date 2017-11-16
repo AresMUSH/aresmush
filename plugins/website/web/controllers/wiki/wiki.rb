@@ -103,6 +103,51 @@ module AresMUSH
       erb :"wiki/edit_page"
     end
     
+    get '/wiki/:page/draft/?', :auth => :approved  do |name_or_id|
+      
+      @page = WikiPage.find_by_name_or_id(name_or_id)
+      
+      if (!@page)
+        flash[:error] = "Page not found!"
+        redirect '/wiki'
+      end
+      
+      if (@page.is_special_page? && !is_admin?)
+        flash[:error] = "You are not allowed to do that."
+        redirect '/wiki'
+      end
+      
+      @text = @page.preview['text']
+      @name = @page.preview['name']
+      @title = @page.preview['title']
+      @tags = @page.preview['tags']
+      
+      erb :"wiki/draft_page"
+    end
+    
+    get '/wiki/:page/compare/:version_id/?', :auth => :approved  do |name_or_id, version_id|
+      
+      @page = WikiPage.find_by_name_or_id(name_or_id)
+      @current = WikiPageVersion[version_id]
+      
+      if (!@page || !@current)
+        flash[:error] = "Page not found!"
+        redirect '/wiki'
+      end
+      
+      all_versions = @page.wiki_page_versions.to_a.sort_by { |v| v.id }
+      current_index = all_versions.index { |v| v.id == @current.id }
+      if (!current_index || current_index <= 0)
+        flash[:error] = "Previous version not found!"
+        redirect "/wiki/#{name_or_id}/source/#{version_id}"
+      end
+      
+      @previous = all_versions[current_index - 1]
+      
+      @diff = Diffy::Diff.new(@previous.text, @current.text).to_s(:html_simple)
+      erb :"wiki/compare_page"
+    end
+    
     get '/wiki/:page/edit/?', :auth => :approved  do |name_or_id|
       
       @page = WikiPage.find_by_name_or_id(name_or_id)
@@ -116,6 +161,16 @@ module AresMUSH
         flash[:error] = "You are not allowed to do that."
         redirect '/wiki'
       end
+      
+      expiry_time = @page.locked_time + 60*15
+      
+      if (@page.locked_by && (@page.locked_by != @user) && (Time.now  < expiry_time) )
+        flash[:error] = "That page is locked by #{@page.locked_by.name}.  Their lock will expire at #{OOCTime.local_long_timestr(@user, expiry_time)}."
+        redirect "/wiki/#{name_or_id}"
+      end
+      
+      @page.update(locked_by: @user)
+      @page.update(locked_time: Time.now)
       
       @text = @page.text
       @name = @page.name

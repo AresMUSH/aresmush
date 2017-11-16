@@ -24,6 +24,7 @@ load "controllers/formatters.rb"
 load "controllers/files.rb"
 
 load "helpers/wiki_markdown/tag_match_helper.rb"
+load "helpers/wiki_markdown/collapsible.rb"
 load "helpers/wiki_markdown/char_gallery.rb"
 load "helpers/wiki_markdown/div_block.rb"
 load "helpers/wiki_markdown/image.rb"

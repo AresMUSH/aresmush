@@ -290,6 +290,10 @@ mark {
   color: white;
 }
 
+.pull-right {
+    padding: 10px;
+}
+
 /* -------------------------
 GOOGLE SEARCH OVERRIDES
 ------------------------- */
@@ -694,6 +698,10 @@ SCENES SCREEN
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.badge-likes {
+    background-color: red;
 }
 
 /* -------------------------
