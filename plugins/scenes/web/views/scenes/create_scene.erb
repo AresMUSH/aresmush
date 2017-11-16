@@ -1,3 +1,5 @@
+<script src="/scripts/edit_scene.js"></script>
+
 <h1>Create Scene</h1>
 
     <form method="POST" action="/scenes/create">
@@ -50,11 +52,65 @@
     <textarea name="summary" rows="10"></textarea>
     </p>
 
+    <a name="participants"></a>
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div>
+                <label for="participants" class="col-xs-2 col-form-label">Participants:</label>
+                <input type="text" id="participants" name="participants" value="" />
+                <p class="hint">Enter a list of character names or use the search/selection box below to add them.</p>
+                <hr/>
+            </div>
+            
+            <div>
+            
+                <input type="text" id="searchCharsBox" onkeyup="searchChars()" placeholder="Search for names..." />
+            
+                <select name="character" id="participantsList">
+                    <% @available_chars.each do |c| %>
+                    <option value="<%= c.name %>"><%= c.name %></option>
+                    <% end %>
+                </select>
+                    
+                <a href="#participants" onclick="addChar()"> Add <i class="fa fa-plus" aria-hidden="true"></i></a>
+                    
+            </div>
+        </div>
+    </div>
+    <a name="related"></a>
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div>
+                <label for="related_scenes" class="col-xs-2 col-form-label">Related Scenes:</label>
+                <input type="text" id="relatedScenes" name="related" value="" />
+                <p class="hint">Enter a list of scene numbers or use the search/selection box below to add them.</p>
+                <hr/>
+            </div>
+            
+            <div>
+            
+                <input type="text" id="searchScenesBox" onkeyup="searchScenes()" placeholder="Search for scenes..." />
+            
+                <select name="relatedSelection" id="scenesList">
+                    <% @available_scenes.each do |s| %>
+                    <option value="<%= s.id %>"><%= s.date_title %> (<%= s.id %>)</option>
+                    <% end %>
+                </select>
+                    
+                <a href="#related" onclick="addScene()">Add <i class="fa fa-plus" aria-hidden="true"></i></a>
+                    
+            </div>
+        </div>
+    </div>
+
     <p>
     <label for="log" class="col-xs-2 col-form-label">Log:</label>
     <textarea name="log" rows="20"></textarea>
     </p>
 
-        <p><input type="submit" value="Save"></p>
+ <p> <a href="/scenes/" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
+ 
         
     </form>

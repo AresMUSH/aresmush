@@ -3,6 +3,9 @@ module AresMUSH
     
     get '/scenes/create/?', :auth => :approved do 
       @plots = Plot.all.to_a.sort_by { |p| p.id }
+      @available_chars = AresMUSH::Character.all.select { |c| c.is_approved? }.sort_by { |c| c.name }
+      @available_scenes = Scene.all.to_a.select { |s| s.shared }.sort_by { |s| s.icdate }.reverse
+      
       erb :"scenes/create_scene"
     end
     
@@ -22,7 +25,23 @@ module AresMUSH
       owner: @user
       )
             
-      @scene.participants.add @user
+      participant_names = (params[:participants] || "").split(" ").uniq    
+      participant_names.each do |p|
+        participant = Character.find_one_by_name(p.strip)
+        if (participant)
+          @scene.participants.add participant
+        end
+      end
+      
+      related_scene_ids = (params[:related] || "").split(" ").uniq
+      
+      # New additions
+      (related_scene_ids).each do |s|
+        related = Scene[s]
+        if (related)
+          SceneLink.create(log1: @scene, log2: related)
+        end
+      end      
       
       log = SceneLog.create(scene: @scene, log: params[:log])
       @scene.update(scene_log: log)

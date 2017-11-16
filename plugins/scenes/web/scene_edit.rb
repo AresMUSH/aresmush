@@ -5,6 +5,8 @@ module AresMUSH
       @scene = Scene[id]
       @plots = Plot.all.to_a.sort_by { |p| p.id }
       @log = @scene.scene_log
+      @available_chars = AresMUSH::Character.all.select { |c| c.is_approved? }.sort_by { |c| c.name }
+      @available_scenes = Scene.all.to_a.select { |s| s.shared && s.id != id }.sort_by { |s| s.icdate }.reverse
       
       if (!@scene.shared)
         flash[:error] = "That scene has not been shared."
@@ -30,9 +32,37 @@ module AresMUSH
       @scene.update(icdate: params[:icdate])
 
       plot = params[:plot]
-      puts "PLOT #{plot}"
       if (!plot.blank?)
         @scene.update(plot: Plot[plot])
+      end
+            
+      participant_names = (params[:participants] || "").split(" ").uniq
+      @scene.participants.replace []
+      
+      participant_names.each do |p|
+        participant = Character.find_one_by_name(p.strip)
+        if (participant)
+          @scene.participants.add participant
+        end
+      end
+      
+      related_scene_ids = (params[:related] || "").split(" ").uniq
+      already_related = @scene.related_scenes.map { |s| s.id }
+      
+      # New additions
+      (related_scene_ids - already_related).each do |s|
+        related = Scene[s]
+        if (related)
+          SceneLink.create(log1: @scene, log2: related)
+        end
+      end
+      
+      # Removed
+      (already_related - related_scene_ids).each do |s|
+        link = @scene.find_link(Scene[s])
+        if (link)
+          link.delete
+        end
       end
       
       tags = params[:tags] || ""

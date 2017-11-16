@@ -1,47 +1,49 @@
+<script src="/scripts/edit_scene.js"></script>
+
 <h1>Edit Scene <%= @scene.id %></h1>
 
-    <form method="POST" action="/scene/<%= @scene.id %>/edit">
+<form method="POST" action="/scene/<%= @scene.id %>/edit">
         
 
     <p>
-    <label for="title" class="col-xs-2 col-form-label">Title:</label>
+        <label for="title" class="col-xs-2 col-form-label">Title:</label>
     
-    <input type="text" name="title" size="100" value="<%= format_input_for_html @scene.title %>"/>
+        <input type="text" name="title" size="100" value="<%= format_input_for_html @scene.title %>"/>
     </p>
     
     <p>
-    <label for="location" class="col-xs-2 col-form-label">Location:</label>
+        <label for="location" class="col-xs-2 col-form-label">Location:</label>
     
-    <input type="text" name="location" size="100" value="<%= format_input_for_html @scene.location %>"/>
+        <input type="text" name="location" size="100" value="<%= format_input_for_html @scene.location %>"/>
     </p>
     
     
     <p>
-    <label for="icdate" class="col-xs-2 col-form-label">IC Date:</label>
+        <label for="icdate" class="col-xs-2 col-form-label">IC Date:</label>
     
-    <input type="text" name="icdate" size="100" value="<%= @scene.icdate %>"/>
+        <input type="text" name="icdate" size="100" value="<%= @scene.icdate %>"/>
     </p>
 
     <p>
-    <label for="scene_type" class="col-xs-2 col-form-label">Scene Type:</label>
+        <label for="scene_type" class="col-xs-2 col-form-label">Scene Type:</label>
     
-            <select name="scene_type">
-              <% AresMUSH::Scenes.scene_types. each do |type| %>
-              <option value="<%= type %>" <% if @scene.scene_type == type %> selected <% end %> ><%= type %></option>
-              <% end %>
-            </select>
+        <select name="scene_type">
+            <% AresMUSH::Scenes.scene_types. each do |type| %>
+            <option value="<%= type %>" <% if @scene.scene_type == type %> selected <% end %> ><%= type %></option>
+            <% end %>
+        </select>
     </p>
     
     <p>
-    <label for="plot" class="col-xs-2 col-form-label">Plot:</label>
+        <label for="plot" class="col-xs-2 col-form-label">Plot:</label>
     
-            <select name="plot">
-                <option value="">None</option>
+        <select name="plot">
+            <option value="">None</option>
                 
-              <% @plots.each do |plot| %>
-              <option value="<%= plot.id %>"><%= plot.title %></option>
-              <% end %>
-            </select>
+            <% @plots.each do |plot| %>
+            <option value="<%= plot.id %>"><%= plot.title %></option>
+            <% end %>
+        </select>
     </p>
     
     <p>
@@ -49,18 +51,72 @@
         <input type="text" name="tags" size="100" value="<%= @scene.tags.join(" ") %>"/>
     </p>        
     <p>
-    <label for="summary" class="col-xs-2 col-form-label">Summary:</label>
-    <textarea name="summary" rows="5"><%= format_input_for_html(@scene.summary) %></textarea>
+        <label for="summary" class="col-xs-2 col-form-label">Summary:</label>
+        <textarea name="summary" rows="5"><%= format_input_for_html(@scene.summary) %></textarea>
     </p>
 
-    <div class="hint">Edit participants and related scenes back on the scene page.</div>
-    <br/>
+    <a name="participants"></a>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div>
+                <label for="participants" class="col-xs-2 col-form-label">Participants:</label>
+                <input type="text" id="participants" name="participants" value="<%= @scene.participant_names.join(' ') %>" />
+                <p class="hint">Enter a list of character names or use the search/selection box below to add them.</p>
+                <hr/>
+            </div>
+            
+            <div>
+            
+                <input type="text" id="searchCharsBox" onkeyup="searchChars()" placeholder="Search for names..." />
+            
+                <select name="character" id="participantsList">
+                    <% @available_chars.each do |c| %>
+                    <option value="<%= c.name %>"><%= c.name %></option>
+                    <% end %>
+                </select>
+                    
+                <a href="#participants" onclick="addChar()"> Add <i class="fa fa-plus" aria-hidden="true"></i></a>
+                    
+            </div>
+        </div>
+    </div>
+    
+    <a name="related"></a>
+    
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div>
+                <label for="related_scenes" class="col-xs-2 col-form-label">Related Scenes:</label>
+                <input type="text" id="relatedScenes" name="related" value="<%= @scene.related_scenes.map { |s| s.id }.join(' ') %>" />
+                <p class="hint">Enter a list of scene numbers or use the search/selection box below to add them.</p>
+                <hr/>
+            </div>
+            
+            <div>
+            
+                <input type="text" id="searchScenesBox" onkeyup="searchScenes()" placeholder="Search for scenes..." />
+            
+                <select name="relatedSelection" id="scenesList">
+                    <% @available_scenes.each do |s| %>
+                    <option value="<%= s.id %>"><%= s.date_title %> (<%= s.id %>)</option>
+                    <% end %>
+                </select>
+                    
+                <a href="#related" onclick="addScene()">Add <i class="fa fa-plus" aria-hidden="true"></i></a>
+                    
+            </div>
+        </div>
+    </div>
+
     
     <p>
-    <textarea name="log" rows="25"><%= format_input_for_html(@scene.scene_log.log) %></textarea>
+        <textarea name="log" rows="25"><%= format_input_for_html(@scene.scene_log.log) %></textarea>
     </p>
     
-        <p> <a href="/scene/<%= @scene.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
+    <p> <a href="/scene/<%= @scene.id %>" class="btn btn-default">Cancel</a>  <input class="btn btn-primary" type="submit" value="Save"> </p>
         
-    </form>
+</form>
     
