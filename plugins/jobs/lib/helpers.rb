@@ -1,5 +1,10 @@
 module AresMUSH
   module Jobs    
+      
+    def self.can_access_jobs?(actor)
+      actor.has_permission?("access_jobs")
+    end
+    
     def self.categories
       Global.read_config("jobs", "categories").keys.map { |c| c.upcase }
     end
@@ -10,6 +15,15 @@ module AresMUSH
     
     def self.closed_jobs
       Job.all.select { |j| !j.is_open? }
+    end
+    
+    def self.can_access_category?(actor, category)
+      cats = Global.read_config("jobs", "categories")
+      roles = cats[category.upcase]['roles']
+      return Jobs.can_access_jobs?(actor) if !roles
+      puts "#{roles} #{actor.name}"
+      
+      actor.has_any_role?(roles)
     end
     
     def self.category_color(category)
@@ -44,16 +58,21 @@ module AresMUSH
       end
 
       jobs = jobs || []
+      jobs = jobs.select { |j| Jobs.can_access_category?(char, j.category) }
       jobs.sort_by { |j| j.number }
     end
     
-    def self.with_a_job(client, number, &block)
+    def self.with_a_job(char, client, number, &block)
       job = Job.find(number: number.to_i).first
       if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
       end
       
+      if (!Jobs.can_access_category?(char, job.category))
+        client.emit_failure t('jobs.cant_access_category')
+        return
+      end
       yield job
     end
     
@@ -94,7 +113,7 @@ module AresMUSH
       job.readers.add author
 
       Global.notifier.notify_ooc(:job_update, message) do |char|
-        Jobs.can_access_jobs?(char)
+        char && Jobs.can_access_jobs?(char)
       end      
     end
   end

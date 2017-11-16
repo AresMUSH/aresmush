@@ -36,8 +36,9 @@ en:
         cannot_handle_jobs: "That person cannot be assigned jobs."
         job_assigned: "%{assigner} has assigned job #%{number} \"%{title}\" to %{assignee}."
         job_deleted: "%{name} has deleted job \"%{title}\"."
+        cant_access_category: "You don't have access to the category that job is in."
         
-        jobs_caught_up: "You mark all unread jobs as read."
+        jobs_caught_up: "Jobs marked as read."
         invalid_search_category: "That is not a valid search category."
         unhandled_error_title:  "System Error"
         unhandled_error_message: "There was an unexpected system error.  Check the log files for details.%R%R%{message}"

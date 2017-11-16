@@ -22,7 +22,7 @@ module AresMUSH
       end
   
       def handle
-        Jobs.with_a_job(client, self.number) do |job|
+        Jobs.with_a_job(enactor, client, self.number) do |job|
           Jobs.change_job_status(enactor, job, self.value.upcase)
         end
       end

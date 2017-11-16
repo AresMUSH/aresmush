@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_job(client, self.number) do |job|  
+        Jobs.with_a_job(enactor, client, self.number) do |job|  
           
           reply = job.job_replies.to_a[self.reply_num - 1]
           if (self.reply_num <= 0 || !reply)

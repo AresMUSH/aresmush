@@ -1,4 +1,4 @@
-<h1><%= @job.title %></h1>
+<h1>#<%= @job.id %> - <%= @job.title %></h1>
 <p><a href="/jobs"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Jobs</a></p>
 
      <p><%= erb :"/avatar", :locals => { char: @job.author } %></p>

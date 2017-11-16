@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_job(client, self.number) do |job|  
+        Jobs.with_a_job(enactor, client, self.number) do |job|  
           Mail.send_mail(self.names, t('jobs.mail_job_title', :title => job.title), self.message, client, enactor)
           display_names = self.names.join(" ")
           
