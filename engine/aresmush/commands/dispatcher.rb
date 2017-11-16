@@ -78,7 +78,6 @@ module AresMUSH
           end # with error handling
         end # each
         if (!@handled)
-          Global.logger.info("Unrecognized command: #{cmd}")
           client.emit_ooc t('dispatcher.huh')
         end
       end # with error handling

@@ -58,6 +58,14 @@ module AresMUSH
           client.emit_failure t('channels.cant_talk_when_muted')
           return          
         end
+        
+        if (self.msg =~ /\=/)
+          first_part = self.msg.before('=')
+          if (Character.find_one_by_name(first_part))
+            client.emit_failure t('channels.did_you_mean_page')
+            return
+          end
+        end
           
         title = options.title
         ooc_name = enactor.ooc_name

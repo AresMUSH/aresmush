@@ -8,8 +8,9 @@ module AresMUSH
     attribute :combatant_type
     attribute :weapon_name
     attribute :weapon_specials, :type => DataType::Array
+    attribute :armor_specials, :type => DataType::Array
     attribute :stance, :default => "Normal"
-    attribute :armor
+    attribute :armor_name
     attribute :is_ko, :type => DataType::Boolean
     attribute :idle, :type => DataType::Boolean
     attribute :luck
@@ -38,7 +39,7 @@ module AresMUSH
     attribute :damaged_by, :type => DataType::Array, :default => []
         
     before_delete :cleanup
-    
+        
     def cleanup
       self.clear_mock_damage
       self.npc.delete if self.npc
@@ -48,6 +49,12 @@ module AresMUSH
       specials = self.weapon_specials || []
       special_text = specials.empty? ? nil : "+#{specials.join("+")}"
       "#{self.weapon_name}#{special_text}"
+    end
+    
+    def armor
+      specials = self.armor_specials || []
+      special_text = specials.empty? ? nil : "+#{specials.join("+")}"
+      "#{self.armor_name}#{special_text}"
     end
     
     def action

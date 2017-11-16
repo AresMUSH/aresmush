@@ -11,7 +11,7 @@ logger:
         - stdout
         - engine_file
     - name      : web
-      level     : DEBUG
+      level     : INFO
       trace     : 'true'
       outputters:
         - stdout

@@ -18,6 +18,8 @@ fs3combat:
             protection: 
                 Chest: 7
                 Abdomen: 6
+            allowed_specials: 
+                - Helmet
 
         Centurion:
             description: "Cylon Centurion Armor"
@@ -132,3 +134,9 @@ fs3combat:
                 Body: 7
                 Controls: 7
                 Weapon: 6
+
+    armor specials:
+        Helmet:
+            description: "A helmet"
+            protection:
+                Head: 4

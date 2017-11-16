@@ -37,6 +37,12 @@ module AresMUSH
         Chargen.check_chargen_locked(enactor)
       end
       
+      def check_can_set
+        return nil if enactor_name == self.name
+        return nil if FS3Skills.can_manage_abilities?(enactor)
+        return t('dispatcher.not_allowed')
+      end    
+      
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|        
           ability = FS3Skills.find_ability(model, self.name)

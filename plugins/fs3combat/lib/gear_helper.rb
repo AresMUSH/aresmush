@@ -42,6 +42,10 @@ module AresMUSH
       FS3Combat.weapon_stat(name, "damage_type").titlecase == "Stun"
     end
     
+    def self.armor_specials
+      Global.read_config("fs3combat", "armor specials")
+    end
+    
     def self.armors
       Global.read_config("fs3combat", "armor")
     end
@@ -50,9 +54,34 @@ module AresMUSH
       FS3Combat.armors.select { |k, v| k.upcase == name.upcase}.values.first
     end
 
-    def self.armor_stat(name, stat)
-      a = FS3Combat.armor(name)
-      a ? a[stat] : nil
+    def self.armor_stat(name_with_specials, stat)
+      name = name_with_specials.before("+")
+      armor = FS3Combat.armor(name)
+      return nil if !armor
+      
+      value = armor[stat]
+      return nil if !value
+            
+      # We only worry about specials for protection.
+      if (stat == "protection")
+        special_names = name_with_specials.after("+")
+        special_names = special_names ? special_names.split("+") : []
+        specials = FS3Combat.armor_specials
+      
+        special_names.each do |s|
+          special = specials[s]
+          next if !special
+          special_value = special[stat]
+          next if !special_value
+      
+          areas = value.keys | special_value.keys
+          areas.each do |a|
+            value[a] = (value[a] || 0) + (special_value[a] || 0)
+          end
+        end
+      end
+      
+      value
     end
 
     def self.vehicles
@@ -115,8 +144,9 @@ module AresMUSH
       FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
     
-    def self.set_armor(enactor, combatant, armor)
-      combatant.update(armor: armor ? armor.titlecase : nil)
+    def self.set_armor(enactor, combatant, armor, specials = nil)
+      combatant.update(armor_name: armor ? armor.titlecase : nil)
+      combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase } : [])
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
       FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end

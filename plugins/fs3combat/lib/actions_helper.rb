@@ -342,8 +342,15 @@ module AresMUSH
       hit_mod = [(attacker_net_successes - 1) * 5, 0].max
       hit_mod = [25, hit_mod].min
       
-      total_damage_mod = hit_mod + attack_luck_mod - defense_luck_mod - armor
-      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} defense_luck=#{defense_luck_mod} armor=#{armor} total=#{total_damage_mod}"
+      melee_damage_mod = 0
+      weapon_type = FS3Combat.weapon_stat(weapon, "weapon_type").titlecase
+      if (weapon_type == "Melee")
+        strength_roll = FS3Combat.roll_strength(attacker)
+        melee_damage_mod = [(strength_roll - 1) * 5, 0].max
+      end
+      
+      total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor
+      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} total=#{total_damage_mod}"
       
       
       damage = FS3Combat.determine_damage(target, hitloc, weapon, total_damage_mod, crew_hit)

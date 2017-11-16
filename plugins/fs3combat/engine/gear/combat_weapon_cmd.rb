@@ -28,7 +28,7 @@ module AresMUSH
       
       def check_special_allowed
         return nil if !self.specials
-        allowed_specials = FS3Combat.weapon_stat(self.weapon, "allowed_specials")
+        allowed_specials = FS3Combat.weapon_stat(self.weapon, "allowed_specials") || []
         self.specials.each do |s|
           return t('fs3combat.invalid_weapon_special') if !allowed_specials.include?(s)
         end

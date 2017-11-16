@@ -7,19 +7,30 @@ end
 
 filename_friendly_help_version = help_version.gsub(".", "-")
 
-module AresMUSH
-  module Global
-    def self.read_config(x, y)
-    end
-  end
-end
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[engine]))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'fileutils'
 require 'ansi'
-require_relative 'engine/aresmush/formatters/line.rb'
-require_relative 'engine/aresmush/formatters/ansi_formatter.rb'
-require_relative 'engine/aresmush/formatters/client_formatter.rb'
-require_relative 'engine/aresmush/formatters/substitution_formatter.rb'
+require 'aresmush'
+require 'engine'
+require 'erubis'
+require 'rspec'
+require 'rspec/core/rake_task'
+require 'tempfile'
+#require 'mongoid'
+require_relative 'install/init_db.rb'
+require_relative 'install/configure_game.rb'
+require_relative 'plugins/help/lib/helpers.rb'
+
+def minimal_boot
+  bootstrapper = AresMUSH::Bootstrapper.new
+  AresMUSH::Global.plugin_manager.load_all(:engine)
+  bootstrapper.config_reader.load_game_config
+  bootstrapper.help_reader.load_game_help
+  bootstrapper.db.load_config
+end
+
 
 class String
   def titlecase
@@ -37,7 +48,7 @@ def plugin_title(name)
   name.titlecase
 end
 
-def format_help(msg)
+def format_help(msg, filename_friendly_help_version)
     # Take escaped backslashes out of the equation for a moment because
     # they throw the other formatters off.
     msg = msg.gsub(/%\\/, "~ESCBS~")
@@ -51,8 +62,21 @@ def format_help(msg)
     # Put the escaped backslashes back in.
     msg = msg.gsub("~ESCBS~", "\\")
 
+    if (msg =~ /\]\(\/help\/([^\)]+)\)/)
+      match = $1
+      topic_name = AresMUSH::Help.find_topic(match).first
+      topic = AresMUSH::Help.topic_index[topic_name]
+      if (!topic)
+        raise "Can't find topic #{match} in #{msg}"
+      end
+      
+      msg = msg.gsub(/\]\(\/help\/([^\)]+)\)/, "](/help_#{filename_friendly_help_version}/#{topic['plugin']}/#{topic['topic']})")
+    end
     msg
 end
+
+minimal_boot
+
 
 help_dir = "/Users/lynn/Documents/ares/help_#{filename_friendly_help_version}"
 if (!Dir.exist?(help_dir))
@@ -83,19 +107,34 @@ plugins.each do |p|
     
     puts "Copying files from #{h} to #{new_filename}"
     File.open(new_filename, 'w') do |f|
-      new_lines = orig.map { |o| format_help(o)}
+      new_lines = orig.map { |o| format_help(o, filename_friendly_help_version)}
       f.write new_lines.join
     end
   end
 end
 
 
+toc_topics = {}
+
+AresMUSH::Help.toc.keys.sort.each do |toc|
+  toc_topics[toc] = AresMUSH::Help.toc_section_topic_data(toc)
+end
+
+
 File.open("/Users/lynn/Documents/ares/ares/partials/plugin_list_#{filename_friendly_help_version}.md", 'w') do |file|
   file.puts "*AresMUSH version #{help_version}*"
   file.puts ""
-  plugin_names.each do |p|
-    file.puts "* [#{plugin_title(p)}](/help_#{filename_friendly_help_version}/#{p})"
+  
+  toc_topics.each do |toc, topics|
+    file.puts ""
+    file.puts "## #{toc}"
+    file.puts ""
+    
+    topics.sort_by { |name, data| [ data['order'] || 99, name ] }.each do |name, data|
+      file.puts "* [#{name.titleize}](/help_#{filename_friendly_help_version}/#{data['plugin']}/#{data['topic']})"
+    end
   end
+  
 end
 
 

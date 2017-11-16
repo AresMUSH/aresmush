@@ -191,6 +191,7 @@ en:
         invalid_armor: "That is not a valid armor type."
         armor_title_description: "Description:"
         armor_title_protection: "Protection:"
+        invalid_armor_specials: "Invalid armor specials."
         
         # ----------------------------
         # VEHICLES
