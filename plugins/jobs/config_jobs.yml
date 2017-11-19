@@ -4,7 +4,8 @@ jobs:
             color: "%xm"
         BUILD:
             color: "%xc"
-            roles: builder
+            roles: 
+                - builder
         BUG:
             color: "%xy"
         CODE:

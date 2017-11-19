@@ -44,7 +44,7 @@ module AresMUSH
         redirect "/wiki/#{@page.name}/preview"
       end
       
-      @page.update(tags: tags, title: title, name: name, html: nil, preview_data: {})
+      @page.update(tags: tags, title: title, name: name, html: nil, preview: {})
       WikiPageVersion.create(wiki_page: @page, text: text, character: @user)
       
       # Reset HTML of any pages that include this one
@@ -73,7 +73,7 @@ module AresMUSH
         redirect '/wiki/create'
       end
       
-      new_page = WikiPage.create(title: title, name: name, tags: tags, html: nil, preview_data: {})
+      new_page = WikiPage.create(title: title, name: name, tags: tags, html: nil, preview: {})
       WikiPageVersion.create(wiki_page: new_page, text: text, character: @user)
       
       redirect "/wiki/#{new_page.name}"

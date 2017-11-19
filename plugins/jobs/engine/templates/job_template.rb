@@ -12,7 +12,7 @@ module AresMUSH
       end
      
       def visible_replies
-        Jobs.can_access_jobs?(@enactor) ? job.job_replies.to_a : job.job_replies.select { |r| !r.admin_only}
+        Jobs.visible_replies(@enactor, job)
       end
       
       def submitted_by
