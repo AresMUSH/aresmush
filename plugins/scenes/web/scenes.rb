@@ -23,7 +23,7 @@ module AresMUSH
       if (@tab == "Recent")
         list = list[0..25]
       elsif (@tab == "Popular")
-        list = list.sort_by { |s| s.likes }.reverse[0..25]
+        list = list.sort_by { |s| [s.likes, s.date_shared || s.created_at] }.reverse[0..25]
       else
         list = list.select { |s| s.scene_type == @tab }
       end
