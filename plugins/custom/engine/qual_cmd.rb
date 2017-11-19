@@ -43,7 +43,7 @@ module AresMUSH
           end
           message = "Qualification Results - #{model.name} - #{self.skill} mod:#{self.mod}: \n\nAttempt 1: #{a1[:results]}\nAttempt 2: #{a2[:results]} \nAttempt 3: #{a3[:results]}\n\nFinal Score: #{total}\n\nBadge: #{badge}"
           template = BorderedDisplayTemplate.new message, nil, "%R%ld%RNote: Only qualifications run by staff count for awards."
-          enactor_room.emit template.render
+          Rooms.emit_to_room enactor_room, template.render
         end
       end
       

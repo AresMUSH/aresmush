@@ -1,5 +1,5 @@
 server:
-    hostname: localhost
+    hostname: mush.aresmush.com
 
     port: 7206
     

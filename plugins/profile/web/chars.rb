@@ -79,12 +79,12 @@ module AresMUSH
 
         sac = 0
         if (char.damage.count > 0)
-          last_award_ceremony = "2237-07-27"
+          last_award_ceremony = "2237-11-16"
           prior_damage = char.damage.select { |d| DateTime.strptime(d.ictime_str, '%m/%d/%Y') < DateTime.parse(last_award_ceremony) }
           sac = prior_damage.group_by { |d| d.ictime_str }.count
         end
 
-        award_priorities = [ "Legion Of Kobol", "Phoenix Cross", "Silver Cluster", "Distinguished Marine Medal", "Distinguished Navy Medal", "Distinguished Aerospace Medal" ]
+        award_priorities = [ "Legion Of Kobol", "Phoenix Cross", "Gold Cluster", "Silver Cluster", "Distinguished Marine Medal", "Distinguished Navy Medal", "Distinguished Aerospace Medal" ]
 
         @campaign_images = campaign.map { |c| "#{c.award.downcase.gsub(" ", "-")}.png" }
         @medal_images = medals.group_by { |m| m.award }
@@ -92,6 +92,16 @@ module AresMUSH
            .map { |name, awards| "#{name}#{awards.count > 1 ? awards.count : '' }.png".downcase.gsub(" ", "-") }
         @medal_images << "meritorious-unit-citation.png"
         @badge_images = badge_display.map { |b| "#{b}.png".downcase.gsub(" ", "-") }
+
+        @medal_citations = medals.group_by { |m| m.award }
+           .sort_by { |name, awards| award_priorities.index(name) || 9 }
+           .map { |name, awards| { name: name, citations: awards.select { |a| a.citation }.map { |a| a.citation } } }
+
+        badges.group_by { |m| m.award }
+          .sort_by { |name, awards| name }
+          .each do |name, awards|
+          @medal_citations << { name: name, citations: awards.select { |a| a.citation}.map { |a| a.citation} }
+        end
 
         if ( sac > 0)
           if (sac > 16)
@@ -107,7 +117,7 @@ module AresMUSH
     
     get '/chars/?' do
       group = Global.read_config("website", "character_gallery_group") || "Faction"
-      @npcs = Character.all.select { |c| c.is_npc? && !c.idled_out?}.group_by { |c| c.group(group) || "" }
+      @npcs = Character.all.select { |c| c.profile_tags.include?('dept-head') && !c.idled_out?}.group_by { |c| c.group(group) || "" }
       @groups = Chargen.approved_chars.group_by { |c| c.group(group) || "" }.sort
       @page_title = "Characters - #{game_name}"
       

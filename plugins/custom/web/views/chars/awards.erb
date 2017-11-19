@@ -21,8 +21,15 @@
 
 <br/><br/>
 
-<ul>
-<% @char.awards.select { |a| a.citation }.each do |award| %>
-   <li><b><%= award.award %></b> - <%= award.citation %></li>
+<% @medal_citations.each do |award| %>
+   <b><%= award[:name] %></b>
+   <% if award[:citations].count > 0 %>
+   <ul>
+   <% award[:citations].each do |citation| %>
+    <li><%= citation %></li>
+    <% end %>
+    </ul>
+    <% else %>
+    <br/>
+    <% end %>
 <% end %>
-</ul>
