@@ -16,6 +16,7 @@ module AresMUSH
     
     attribute :title
     attribute :description
+    attribute :summary
     
     collection :scenes, "AresMUSH::Scene"
   end

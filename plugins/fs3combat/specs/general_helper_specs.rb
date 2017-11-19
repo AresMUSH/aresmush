@@ -37,58 +37,6 @@ module AresMUSH
       end
     end
     
-    
-    describe :emit do
-      before do
-        @instance = double
-        @bob = double
-        @harvey = double
-        @bob.stub(:name) { "Bob" }
-        @harvey.stub(:name) { "Harvey" }
-        @harvey.stub(:character) { double }
-        @bob.stub(:character) { double }
-        @instance.stub(:combatants) { [ @bob, @harvey ] }
-        @instance.stub(:log) { }
-        @instance.stub(:organizer) { @harvey }
-        
-        @notifier = double
-        Global.stub(:notifier) { @notifier }
-        @instance.stub(:organizer) { @harvey }
-        
-        AresMUSH::Locale.stub(:translate).with("fs3combat.combat_emit", { :message => "Test" }) { "Test" }        
-        AresMUSH::Locale.stub(:translate).with("fs3combat.combat_emit", { :message => "Test (Master)" }) { "Test (Master)" }
-        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test" }) { "org emit" }        
-        AresMUSH::Locale.stub(:translate).with("fs3combat.organizer_emit", { :message => "Test (Master)" }) { "org (Master)" }        
-      end
-      
-      context "emit" do
-        it "should emit to everyone" do
-          @notifier.should_receive(:notify).with(:combat, "Test")
-          @notifier.should_receive(:notify).with(:combat, "Test")
-          FS3Combat.emit_to_combat(@instance, "Test")
-        end
-      
-        it "should tack on the npcmaster's name if specified" do
-          @notifier.should_receive(:notify).with(:combat, "Test (Master)")
-          @notifier.should_receive(:notify).with(:combat, "Test (Master)")
-          FS3Combat.emit_to_combat(@instance, "Test", " (Master)")
-        end    
-      end
-      
-      context "emit to organizer" do
-        it "should emit to the organizer" do
-          @notifier.should_receive(:notify).with(:combat, "org emit")
-          FS3Combat.emit_to_organizer(@instance, "Test")
-        end
-      
-        it "should tack on the npcmaster's name if specified" do
-          @notifier.should_receive(:notify).with(:combat, "org (Master)")
-          FS3Combat.emit_to_organizer(@instance, "Test", "Master")
-        end
-      end
-      
-    end
-    
     describe :get_initiative_order do
       it "should return combatants in order of initiative roll" do
         @combat = double

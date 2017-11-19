@@ -20,7 +20,7 @@
 <thead>
     <tr>
         <th>Plot</th>
-        <th>Description</th>
+        <th>Summary</th>
     </tr>
 </thead>
 
@@ -32,7 +32,7 @@
         <a href="/plot/<%= p.id %>"><%= p.title %></a>
         </td>
         <td class="ansi">
-            <%= format_markdown_for_html p.description %>
+            <%= format_markdown_for_html p.summary %>
         </td>
     </tr>
 <% end %>

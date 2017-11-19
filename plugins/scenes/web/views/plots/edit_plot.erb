@@ -9,7 +9,10 @@
     <input type="text" name="title" size="100" value="<%= format_input_for_html @plot.title %>"/>
     </p>
     
-  
+  <p>
+  <label for="summary" class="col-xs-2 col-form-label">Summary:</label>
+  <textarea name="summary" rows="5"><%= format_input_for_html(@plot.summary) %></textarea>
+  </p>
   
     <p>
     <label for="description" class="col-xs-2 col-form-label">Description:</label>

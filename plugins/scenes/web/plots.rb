@@ -9,7 +9,8 @@ module AresMUSH
       
       @plot = Plot.create(
       title: params[:title],
-      description: params[:description]
+      description: params[:description],
+      summary: params[:summary]
       )
       
       flash[:info] = "Plot created!"
@@ -37,6 +38,7 @@ module AresMUSH
       
       @plot.update(title: params[:title])
       @plot.update(description: params[:description])
+      @plot.update(summary: params[:summary])
       
       flash[:info] = "Plot updated!"
       redirect "/plot/#{id}"
