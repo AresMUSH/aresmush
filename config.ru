@@ -12,6 +12,7 @@ require "sinatra/reloader"
 require 'sinatra/flash'
 require 'compass'
 require 'redis-rack'
+require 'diff/lcs'
 
 require 'aresmush'
 

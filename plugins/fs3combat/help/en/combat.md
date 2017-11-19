@@ -151,6 +151,8 @@ This is a quick reference for combat organizer commands.   You may also want to 
 `combat/idle <name>` - Sets someone as idle/not idle.  They won't be counted in pose tracking until you use the command on them again.
 
 `combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Miniboss, Boss
+`combat/vehicles` - See a breakdown of who's in what vehicles.
+`combat/targets` - See a breakdown of who's targeting whom.
 
 `combat/team <list of names>=<team#>` - Switches teams. 
 `combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 

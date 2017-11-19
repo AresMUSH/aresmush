@@ -10,3 +10,5 @@ fs3combat:
     composure_skill: Composure
     
     default_defense_skill: Athletics
+    
+    strength_skill: Brawn

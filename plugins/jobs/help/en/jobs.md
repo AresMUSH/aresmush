@@ -21,6 +21,13 @@ By default the jobs list only shows active jobs.  You can look at old ones too:
 
 `jobs/all` - Shows all jobs, even old ones.  Add a number after 'all' to see additional pages (e.g. jobs/all2, jobs/all3, etc.)
 
+You can mark jobs as read with the catchup command:
+
+`jobs/catchup` - Marks all jobs as read.
+`jobs/catchup <number>` - Mark a specific job as read.
+
+> Note:  Some games will have multiple staff roles with limited access to certain categories.  For example - builders may only be able to access the 'BUILD' category.  You can still create jobs in other categories, but they are treated as _requests_ (see [Requests](/help/request)).
+
 ## Filtering  Jobs
 
 You can change what jobs you see in the jobs list.  If you're a coder, you could set your filter to only show jobs in the CODE category.  Or you might set the filter so it only shows jobs that are assigned to you.

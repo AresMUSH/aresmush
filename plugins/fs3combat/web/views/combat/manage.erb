@@ -62,6 +62,13 @@
                   <%= a %></option>
               <% end %>
             </select>
+            
+            <% AresMUSH::FS3Combat.armor_specials.keys.each do |spec| %>
+              <br/>
+              <input type="checkbox" name="<%= c.id %>-armorspec[]" value="<%= spec %>" 
+              <% if c.armor_specials.include?(spec) %> checked <% end %>> <%= spec %> 
+              </input>
+            <% end %>
         </td>
         
         <td>

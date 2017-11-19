@@ -744,6 +744,14 @@ module AresMUSH
           FS3Combat.resolve_attack(@combatant, "A", @target, "Knife", 4)
         end
         
+        it "should add strength to damage if using a melee weapon" do
+          FS3Combat.stub(:weapon_stat).with("Knife", "weapon_type") { "Melee" }
+          FS3Combat.stub(:roll_strength).with(@combatant) { 3 }          
+          FS3Combat.should_receive(:determine_damage).with(@target, "Chest", "Knife", 10, false) { "INCAP" }
+          FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
+        end
+        
+        
         it "should add luck to damage if luck spent on attack" do
           FS3Combat.stub(:determine_armor) { 22 }
           @combatant.stub(:luck) { "Attack" }

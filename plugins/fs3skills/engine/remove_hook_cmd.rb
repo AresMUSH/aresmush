@@ -7,6 +7,7 @@ module AresMUSH
       attr_accessor :name, :char_name
 
       def parse_args
+        # Admin version
         if (cmd.args =~ /\=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.char_name = titlecase_arg(args.arg1)
@@ -20,6 +21,12 @@ module AresMUSH
       def required_args
         [ self.name, self.char_name ]
       end
+      
+      def check_can_set
+        return nil if enactor_name == self.char_name
+        return nil if FS3Skills.can_manage_abilities?(enactor)
+        return t('dispatcher.not_allowed')
+      end    
       
       def handle        
         ClassTargetFinder.with_a_character(self.char_name, client, enactor) do |model|

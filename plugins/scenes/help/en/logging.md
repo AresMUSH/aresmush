@@ -72,10 +72,6 @@ At any point during the scene, you can share the log.  This makes it visible on 
 `scene/share [scene #]` - Shares the log to the web portal.
 `scene/unshare [scene #]` - Unshares a log.
 
-## Posting the Log
-
-If your game uses a wiki, the wiki system will let you either automatically post the log to the wiki (if enabled), or to get the wiki text to copy paste.  See [Wiki](/help/wiki) for more information.
-
 ## Clearing the Log
 
 The log starts automatically when a scene is started.  If for some reason you don't want a scene logged, you can turn logging on and off.  You can also clear all poses from the log.

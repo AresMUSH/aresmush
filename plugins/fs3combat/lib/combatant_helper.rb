@@ -36,6 +36,11 @@ module AresMUSH
       combatant.roll_ability(ability, mod)
     end
     
+    def self.roll_strength(combatant)
+      strength = Global.read_config("fs3combat", "strength_skill")
+      combatant.roll_ability(strength)
+    end
+    
     # Attacker           |  Defender            |  Skill
     # -------------------|----------------------|----------------------------
     # Any weapon         |  In Vehicle          |  Vehicle piloting skill

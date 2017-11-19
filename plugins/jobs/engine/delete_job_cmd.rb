@@ -8,7 +8,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_job(client, self.number) do |job|
+        Jobs.with_a_job(enactor, client, self.number) do |job|
           notification = t('jobs.job_deleted', :title => job.title, :name => enactor_name)
           Jobs.notify(job, notification, enactor)
           job.delete

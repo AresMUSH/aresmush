@@ -47,9 +47,6 @@ module AresMUSH
     def self.system_category
       Global.read_config("jobs", "system_category")
     end
-      
-    def self.can_access_jobs?(actor)
-      actor.has_permission?("access_jobs")
-    end
+
   end
 end

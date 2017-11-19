@@ -18,3 +18,7 @@ The Request system is used to submit requests to the admins. You can track the s
 ## Requests/Jobs and Mail
 
 Job requests are preferred over mail as a means of communicating with the game admin.  The jobs system does not normally send you a mail message when your request is updated.  All activity is logged in the job itself.
+
+However, sometimes you may want to CC people other than admin on request communication.  You can use the request mail command to respond to the job while also sending a mail.
+
+`request/mail <#>=<recipient names>/<message>` - Respond to a job and also send mail. 

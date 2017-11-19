@@ -8,9 +8,13 @@ module AresMUSH
     attribute :title
     attribute :html
     attribute :preview, :type => DataType::Hash, :default => {}
+    attribute :draft, :type => DataType::Hash, :default => {}
     attribute :tags, :type => DataType::Array, :default => []
-
+    attribute :locked_time, :type => DataType::Time
+    
     index :name_upcase
+    
+    reference :locked_by, "AresMUSH::Character"
     
     collection :wiki_page_versions, "AresMUSH::WikiPageVersion"
     before_save :save_upcase

@@ -3,16 +3,32 @@ module AresMUSH
     class JobsCatchupCmd
       include CommandHandler
       
+      attr_accessor :number
+      
+      def parse_args
+        self.number = integer_arg(cmd.args)
+      end
+      
       def check_can_access
         return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
         return nil
       end
       
       def handle
-        unread = enactor.unread_jobs
-        if (unread.empty?)
-          client.emit_success t('jobs.no_new_jobs')
-          return
+        
+        if (self.number)
+          job = Job.find(number: self.number).first
+          if (!job)
+            client.emit_failure t('jobs.invalid_job_number')
+            return
+          end
+          unread = [ job ]
+        else
+          unread = enactor.unread_jobs
+          if (unread.empty?)
+            client.emit_success t('jobs.no_new_jobs')
+            return
+          end
         end
         
         unread.each do |job|

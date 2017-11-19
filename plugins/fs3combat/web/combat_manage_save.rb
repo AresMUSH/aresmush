@@ -13,7 +13,8 @@ module AresMUSH
         team = @params["#{c.id}-team"].to_i
         stance = @params["#{c.id}-stance"]
         weapon = @params["#{c.id}-weapon"]
-        selected_specials = @params["#{c.id}-weaponspec"] || []
+        selected_weapon_specials = @params["#{c.id}-weaponspec"] || []
+        selected_armor_specials = @params["#{c.id}-armorspec"] || []
         armor = @params["#{c.id}-armor"]
         armor = armor == "None" ? nil : armor
         npc = @params["#{c.id}-npc"]
@@ -30,7 +31,7 @@ module AresMUSH
         
         allowed_specials = FS3Combat.weapon_stat(weapon, "allowed_specials") || []
         weapon_specials = []
-        selected_specials.each do |w|
+        selected_weapon_specials.each do |w|
           if (!allowed_specials.include?(w))
             errors << "#{w} is not an allowed special for #{c.name}'s #{weapon}."
           else
@@ -42,9 +43,18 @@ module AresMUSH
           FS3Combat.set_weapon(@user, c, weapon, weapon_specials)
         end
         
-        if (armor != c.armor)
-          c.update(armor: armor)
-          @combat.emit "#{c.name} has changed armor to #{c.armor}. (by #{@user.name})"
+        allowed_specials = FS3Combat.armor_stat(armor, "allowed_specials") || []
+        armor_specials = []
+        selected_armor_specials.each do |a|
+          if (!allowed_specials.include?(a))
+            errors << "#{a} is not an allowed special for #{c.name}'s #{armor}."
+          else
+            armor_specials << a
+          end
+        end
+        
+        if (armor != c.armor || c.armor_specials != armor_specials)
+          FS3Combat.set_armor(@user, c, armor, armor_specials)
         end
         
         if (c.is_npc? && c.npc.level != npc)

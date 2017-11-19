@@ -19,10 +19,33 @@
             <% else %>
                None
             <% end %>
+        </p>
+            
+        <p>
+            <b>Plot: </b>
+            <% if @scene.plot %>
+                <a href="/plot/<%= @scene.plot.id %>"><%= @scene.plot.title %></a>
+            <% else %>
+                None
+            <% end %>
+        </p>
         
         <div>
+          
+            
             <%= erb :"scenes/scene_tag", :locals => { scene: @scene } %>
+         
+             <% if is_approved? %>
+                 <a href="/scene/<%= @scene.id %>/<%= @scene.has_liked?(@user) ? 'unlike' : 'like' %>">
+             <span class="badge badge-likes"> <%= @scene.likes %> 
+                 <i class="fa <%= @scene.has_liked?(@user) ? 'fa-heart' : 'fa-heart-o' %>" aria-hidden="true"></i> </span> 
+             </a>
+             <% else %>
+                 <span class="badge badge-likes"> <%= @scene.likes %> <i class="fa fa-heart-o" aria-hidden="true"></i> </span> 
+             <% end %>
+             
          </div>
+         
     </div>
     
     <div class="log-participants-box">
@@ -54,7 +77,7 @@
       <a href="/wiki/tag/<%= tag %>"><%= tag %></a>
     <% end %>
    </p>
-    
+   
 <p><a href="/scenes"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to Scenes</a></p>
 
 
@@ -67,8 +90,8 @@
         <a href="/scene/<%= @scene.id %>/delete" class="btn btn-warning">Delete Scene</a>
         <% end %>
         <a href="/scene/<%= @scene.id %>/edit" class="btn btn-primary">Edit Scene</a>
-        <a href="/scene/<%= @scene.id %>/related" class="btn btn-default">Edit Related Scenes</a>
-        <a href="/scene/<%= @scene.id %>/participants" class="btn btn-default">Edit Participants</a>
+        
+        
         </div>
     </div>
 </div>

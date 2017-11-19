@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_job(client, self.number) do |job|
+        Jobs.with_a_job(enactor, client, self.number) do |job|
           update_value(job)
           notification = t('jobs.updated_job', :number => job.number, :title => job.title, :name => enactor_name)
           Jobs.notify(job, notification, enactor)

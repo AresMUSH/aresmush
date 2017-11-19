@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_job(client, self.number) do |job|     
+        Jobs.with_a_job(enactor, client, self.number) do |job|     
           Jobs.comment(job, enactor, self.message, self.admin_only)
         end
       end

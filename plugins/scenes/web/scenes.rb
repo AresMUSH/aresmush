@@ -38,6 +38,33 @@ module AresMUSH
       erb :"scenes/scenes_index"
     end
     
+    get '/scene/:id/like' do |id|
+      @scene = Scene[id]
+      
+      if (!@scene || !@scene.shared)
+        flash[:error] = "That scene has not been shared."
+        redirect "/scenes"
+      end
+      
+      @scene.like(@user)
+      flash[:info] = "Scene liked."
+      redirect "/scene/#{id}"
+    end
+
+    get '/scene/:id/unlike' do |id|
+      @scene = Scene[id]
+      
+      if (!@scene || !@scene.shared)
+        flash[:error] = "That scene has not been shared."
+        redirect "/scenes"
+      end
+      
+      @scene.unlike(@user)
+      flash[:info] = "Scene un-liked."
+      redirect "/scene/#{id}"
+    end
+    
+    # MUST BE LAST
     get '/scene/:id/?' do |id|
       @scene = Scene[id]
       
@@ -50,6 +77,6 @@ module AresMUSH
       
       erb :"scenes/scene"
     end
- 
+     
   end
 end

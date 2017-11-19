@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def handle
-        Jobs.with_a_job(client, self.number) do |job|
+        Jobs.with_a_job(enactor, client, self.number) do |job|
           if (job.status == Jobs.closed_status)
             client.emit_failure t('jobs.job_already_closed')
             return

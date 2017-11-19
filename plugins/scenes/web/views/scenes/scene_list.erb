@@ -23,7 +23,9 @@
         <p><%= s.summary %></p>
         </td>
         <td>
-            <%= s.participant_names.join(", ")%>
+            <% s.participant_names.each do |p| %>
+            <a href="/char/<%= p %>"><%= p %></a>
+            <% end %>
         </td>
     </tr>
 <% end %>

@@ -132,6 +132,8 @@ module AresMUSH
            return CombatStopCmd
          when "summary"
            return CombatSummaryCmd
+         when "targets"
+           return CombatTargetsCmd
          when "target"
            return CombatTargetCmd
          when "team"
@@ -142,6 +144,8 @@ module AresMUSH
            return CombatTypesCmd
          when "pilot", "passenger"
            return CombatVehicleCmd
+         when "vehicles"
+           return CombatVehiclesCmd
          when "unko"
            return CombatUnkoCmd
          when nil

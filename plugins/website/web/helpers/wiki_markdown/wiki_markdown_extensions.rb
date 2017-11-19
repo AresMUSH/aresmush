@@ -27,6 +27,8 @@ module AresMUSH
           CharacterGalleryMarkdownExtension,
           ImageMarkdownExtension,
           MusicPlayerMarkdownExtension,
+          StartCollapsibleMarkdownExtension,
+          EndCollapsibleMarkdownExtension,
           PageListMarkdownExtension,
           SceneListMarkdownExtension,
           StartDivBlockMarkdownExtension,

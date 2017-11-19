@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def handle
-        jobs = self.show_all ? Job.all.to_a : Jobs.filtered_jobs(enactor)
+        jobs = self.show_all ? Jobs.filtered_jobs(enactor, "ALL") : Jobs.filtered_jobs(enactor)
         paginator = Paginator.paginate(jobs, cmd.page, 20)
         filter = self.show_all ? "ALL" : enactor.jobs_filter
         template = JobsListTemplate.new(enactor, paginator, filter)

@@ -45,6 +45,8 @@ module AresMUSH
         result = Jobs.create_job(self.category, self.title, self.description, enactor)
         if (!result[:error].nil?)
           client.emit_failure result[:error]
+        else
+          client.emit_success t('jobs.job_created')
         end
       end
     end
