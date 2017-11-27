@@ -28,7 +28,11 @@ module AresMUSH
           end
           
           VictoryKill.create(victory: self.victory, character: model, scene: scene)
-          client.emit_success "Kill recorded. #{model.name} now has #{model.kills.count} kills."
+          if (model.kills.count % 5 == 0)
+            client.emit_success "Kill recorded. #{model.name} now has #{model.kills.count} kills."
+          else
+            client.emit_success "Kill recorded.  #{model.kills.count}"
+          end
         end
       end
     end

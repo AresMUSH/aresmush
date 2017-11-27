@@ -15,10 +15,10 @@ module AresMUSH
            client.emit_failure "Invalid condition."
            return
         end
-        Global.client_monitor.logged_in_clients.each do |c|
-           c.emit "%xhAttention all hands!  The ship is now at %xrCondition #{self.condition}%xn."
-           Game.master.update(ship_condition: self.condition)
-        end
+        Game.master.update(ship_condition: self.condition)
+        #Engine.client_monitor.logged_in_clients.each do |c|
+        #   c.emit "%xhAttention all hands!  The ship is now at %xrCondition #{self.condition}%xn."
+        #end
       end
     end
   end
