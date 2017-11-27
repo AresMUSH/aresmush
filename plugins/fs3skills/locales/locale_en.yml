@@ -150,3 +150,4 @@ en:
         xp_raised_job: "%{name} raised %{ability} to %{rating} with XP."
         must_be_approved: "You must be approved before you can spend XP."
         xp_undone: "You undo %{name}'s XP spend on %{skill} and refund them 1XP."
+        skill_requires_training: "Note: %{name} requires special training to advance beyond Fair.  Make sure your XP expenditure is justified ICly.  If in doubt, contact staff."

@@ -9,7 +9,7 @@
 
     <h2>Scenes</h2>
     
-    <p><%= erb :"scenes/scene_list", :locals => { scenes: @plot.scenes } %></p>
+    <p><%= erb :"scenes/scene_list", :locals => { scenes: @plot.sorted_scenes } %></p>
     
     
 <div class="ansi">

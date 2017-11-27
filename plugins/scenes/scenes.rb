@@ -37,7 +37,7 @@ module AresMUSH
           return SceneAddPoseCmd
         when "join"
           return SceneJoinCmd
-        when "location", "privacy", "summary", "title", "type", "icdate"
+        when "location", "privacy", "summary", "title", "type", "icdate", "plot"
           return SceneInfoCmd
         when "delete"
           return SceneDeleteCmd

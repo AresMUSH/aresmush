@@ -9,29 +9,6 @@ module AresMUSH
         SpecHelpers.stub_translate_for_testing  
       end
 
-      describe :find_destination do
-        before do
-          @room = double
-          @room.stub(:name_upcase) { "SOMEWHERE" }
-          @rooms = [ @room ]
-          Room.stub(:all) { @rooms }
-        end
-        
-        it "should find the room when the destination is a char" do
-          @handler.stub(:destination) { "somewhere" }
-          other_char = double
-          other_char.stub(:room) { @room }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, @enactor) { FindResult.new(other_char, nil) }
-          @handler.find_destination.should eq [@room]
-        end
-        
-        it "should find the room when the destination is a room with an exact name match" do
-          @handler.stub(:destination) { "somewhere" }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, @enactor) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room, @enactor) { FindResult.new(@room, nil) }
-          @handler.find_destination.should eq [@room]
-        end
-      end
       
       describe :find_targets do
         it "should return the client if there's no name" do
@@ -78,7 +55,7 @@ module AresMUSH
         context "teleporting self" do
           before do
             @dest = double
-            @handler.stub(:find_destination) { [@dest] }
+            Rooms.stub(:find_destination) { [@dest] }
             @handler.stub(:find_targets) { [ {:client => @client, :char => @enactor } ] }
           end
           
@@ -100,7 +77,7 @@ module AresMUSH
             @other_char = double
             @other_client = double
             @enactor.stub(:name) { "Bob" }
-            @handler.stub(:find_destination) { [@dest] }
+            Rooms.stub(:find_destination) { [@dest] }
             @handler.stub(:find_targets) { [ {:client => @other_client, :char => @other_char } ] }
           end
           
@@ -121,7 +98,7 @@ module AresMUSH
           before do
             other_char = double
             other_client = double
-            @handler.stub(:find_destination) { [] }
+            Rooms.stub(:find_destination) { [] }
             @handler.stub(:find_targets) { [ {:client => other_client, :char => other_char } ] }
             @client.stub(:emit_failure)
           end  
@@ -140,7 +117,7 @@ module AresMUSH
         context "targets not found" do          
           before do
             @handler.stub(:find_targets) { [] }
-            @handler.stub(:find_destination) { [double] }
+            Rooms.stub(:find_destination) { [double] }
             @client.stub(:emit_failure)
           end  
           
