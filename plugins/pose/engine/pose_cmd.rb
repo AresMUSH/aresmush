@@ -4,6 +4,10 @@ module AresMUSH
       include CommandHandler
       
       def handle
+        if (cmd.args && cmd.args.downcase == "order")
+          client.emit_failure t('pose.pose_order_mistake')
+          return
+        end
         Pose.emit_pose(enactor, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))
       end
       

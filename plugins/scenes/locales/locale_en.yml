@@ -37,6 +37,7 @@ en:
         
         scene_types: "Available scene types are: %{types}."
         invalid_scene_type: "That is not a valid scene type.  Try one of these: %{types}."
+        invalid_plot: "That is not a valid plot name or number."
         invalid_icdate_format: "Please use the form yyyy-mm-dd."
         cant_share_until_completed: "You can't share a scene until it's completed."
         

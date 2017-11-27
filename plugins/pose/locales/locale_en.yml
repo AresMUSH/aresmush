@@ -17,3 +17,4 @@ en:
         pose_nudge_options: "Use on, off or mute."
         not_in_pose_order: "%{name} is not in the pose order."
         pose_order_dropped: "%{name} has removed %{dropped} from the pose order."
+        pose_order_mistake: "It seems like you meant to use pose/order instead."

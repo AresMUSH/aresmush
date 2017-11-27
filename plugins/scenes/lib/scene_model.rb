@@ -19,6 +19,20 @@ module AresMUSH
     attribute :summary
     
     collection :scenes, "AresMUSH::Scene"
+    
+    def sorted_scenes
+      self.scenes.to_a.sort_by { |s| s.icdate }
+    end
+    
+    def start_date
+      first_scene = self.sorted_scenes[0]
+      first_scene ? first_scene.icdate : nil
+    end
+
+    def end_date
+      last_scene = self.sorted_scenes[-1]
+      last_scene ? last_scene.icdate : nil
+    end
   end
   
   class Scene < Ohm::Model
@@ -40,7 +54,6 @@ module AresMUSH
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
-    attribute :log
     attribute :tags, :type => DataType::Array, :default => []
     
     collection :scene_poses, "AresMUSH::ScenePose"

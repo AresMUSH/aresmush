@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp
     
     get '/scenes/create/?', :auth => :approved do 
-      @plots = Plot.all.to_a.sort_by { |p| p.id }
+      @plots = Plot.all.to_a.sort_by { |p| p.id }.reverse
       @available_chars = AresMUSH::Character.all.select { |c| c.is_approved? }.sort_by { |c| c.name }
       @available_scenes = Scene.all.to_a.select { |s| s.shared }.sort_by { |s| s.icdate }.reverse
       

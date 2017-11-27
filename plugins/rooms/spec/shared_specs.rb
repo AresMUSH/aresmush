@@ -23,6 +23,30 @@ module AresMUSH
         end
       end
     
+
+      describe :find_destination do
+        before do
+          @room = double
+          @room.stub(:name_upcase) { "SOMEWHERE" }
+          @rooms = [ @room ]
+          @enactor = double
+          Room.stub(:all) { @rooms }
+        end
+        
+        it "should find the room when the destination is a char" do
+          other_char = double
+          other_char.stub(:room) { @room }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, @enactor) { FindResult.new(other_char, nil) }
+          Rooms.find_destination("somewhere", @enactor, true).should eq [@room]
+        end
+        
+        it "should find the room when the destination is a room with an exact name match" do
+          ClassTargetFinder.should_receive(:find).with("somewhere", Character, @enactor) { FindResult.new(nil, "error") }
+          ClassTargetFinder.should_receive(:find).with("somewhere", Room, @enactor) { FindResult.new(@room, nil) }
+          Rooms.find_destination("somewhere", @enactor, true).should eq [@room]
+        end
+      end
+      
       describe :emit_here_desc do
         it "should emit current room desc" do
           client = double

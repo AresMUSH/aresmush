@@ -10,10 +10,7 @@
 <%= t('scenes.scene_summary') %> <%= @scene.summary %>
 
 <%= divider %>
-<% poses.each do |p| %>
-<%= p.pose %>
-
-<% end %>
+<%= log_text %>
 <% if log_footer %>
 <%= divider %>
 %xh<%= log_footer %>%xn

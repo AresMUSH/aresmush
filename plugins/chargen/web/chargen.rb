@@ -22,6 +22,12 @@ module AresMUSH
         @positions = Demographics.get_group("Position")
         @departments = Demographics.get_group("Department")
         @colonies = Demographics.get_group("Colony")
+        
+        @abilities_app = MushFormatter.format FS3Skills.app_review(@user)
+        @demographics_app = MushFormatter.format Demographics.app_review(@user)
+        @bg_app = MushFormatter.format Chargen.bg_app_review(@user)
+        @desc_app = MushFormatter.format Describe.app_review(@user)
+        @ranks_app = MushFormatter.format Ranks.app_review(@user)
       
         @ranks = []
         @factions['values'].each do |k, v|
@@ -77,8 +83,6 @@ module AresMUSH
           0 => "Everyman", 1 => "Beginner", 2 => "Conversational", 3 => "Fluent"
         }
       
-        template = Chargen::AppTemplate.new(@user, @user)
-        @app = MushFormatter.format template.render, false
       
         @hooks = {}
         @user.fs3_hooks.each do |h|
