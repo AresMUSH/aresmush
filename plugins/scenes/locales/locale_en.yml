@@ -75,3 +75,4 @@ en:
         cant_restart_in_progress_scene: "You can't restart a scene that's already going."
         cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
         scene_restarted: "Scene restarted."
+        scene_not_running: "That scene isn't running.  You'll need to restart it if you want to join it."
