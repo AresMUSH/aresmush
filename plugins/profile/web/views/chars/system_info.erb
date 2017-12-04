@@ -7,9 +7,16 @@
   
   <li><a data-toggle="tab" href="#systemdesc">Description</a></li>
   <li><a data-toggle="tab" href="#systemsheet">Sheet</a></li>
+
   <li><a data-toggle="tab" href="#systemawards">Awards</a></li>
+
+  <% if @char.kills.any? %>
   <li><a data-toggle="tab" href="#systemkills">Kills</a></li>
+  <% end %>
+
+  <% if @char.damage.any? %>
   <li><a data-toggle="tab" href="#systemdamage">Damage</a></li>
+  <% end %>
 </ul>
 
 <div class="tab-content">
