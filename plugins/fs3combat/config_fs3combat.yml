@@ -62,7 +62,7 @@ fs3combat:
         Aa:
             weapon: Missile
             armor: Centurion
-            vehicle: AA Battery
+            vehicle: Aa Battery
             hitloc: Humanoid
             defense_skill: Reflexes
         Cylon:

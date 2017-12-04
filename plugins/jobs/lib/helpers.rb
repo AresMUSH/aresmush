@@ -117,7 +117,12 @@ module AresMUSH
     end
         
     def self.notify(job, message, author, notify_submitter = true)
-      job.readers.each { |r| job.readers.delete r }
+      job.readers.each do |r| 
+        if (r != job.author || notify_submitter)
+          job.readers.delete r
+        end
+      end
+      
       job.readers.add author
 
       Global.notifier.notify_ooc(:job_update, message) do |char|

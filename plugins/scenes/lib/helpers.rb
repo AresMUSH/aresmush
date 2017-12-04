@@ -46,10 +46,10 @@ module AresMUSH
           end
           log << formatted_pose
         elsif (pose.is_setpose?)
-          log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]"
+          log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]\n\n"
         else
           if (div_started)
-            log << "\n[[/div]]"
+            log << "\n[[/div]]\n\n"
             div_started = false
           end
           log << formatted_pose
@@ -57,7 +57,7 @@ module AresMUSH
         log << "\n\n"
       end
       if (div_started)
-        log << "\n[[/div]]"
+        log << "\n[[/div]]\n\n"
       end
       
       log

@@ -17,13 +17,6 @@ module AresMUSH
     def self.unload_plugin
     end
   
-    def self.config_files
-      [ "config_fs3skills.yml", "config_xp.yml", "config_fs3skills_action.yml",
-        "config_fs3skills_attrs.yml", "config_fs3skills_chargen.yml", 
-        "config_fs3skills_langs.yml", "config_fs3skills_bg.yml" ]
-    end
- 
-
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "abilities"

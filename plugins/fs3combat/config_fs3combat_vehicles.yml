@@ -87,12 +87,12 @@ fs3combat:
                - Unarmed
             dodge: 0
             
-        AA Battery:
+        Aa Battery:
             description: "Anti-Aircraft Battery"
             pilot_skill: Piloting
             toughness: -2
-            hitloc_chart: AA Battery
-            armor: AA Battery
+            hitloc_chart: Aa Battery
+            armor: Aa Battery
             weapons:
                 - Missile
             dodge: 0

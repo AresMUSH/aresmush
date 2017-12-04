@@ -100,7 +100,7 @@ fs3combat:
                 - Cabin
 
                                    
-        AA Battery:
+        Aa Battery:
             areas:
                 Weapon: [ 'Crew', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls', 'Weapon', 'Weapon', 'Weapon' ]
                 Controls: [ 'Crew', 'Weapon', 'Weapon', 'Weapon', 'Body', 'Body', 'Body', 'Controls', 'Controls', 'Controls' ]

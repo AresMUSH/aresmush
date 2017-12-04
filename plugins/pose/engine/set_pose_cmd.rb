@@ -10,15 +10,9 @@ module AresMUSH
       end
       
       def handle        
-        enactor.room.characters.each do |char|
-          client = Login.find_client(char)
-          next if !client
-        
-          formatted_pose = Pose.custom_format(self.pose, char, enactor, true, false)
-          line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
-          client.emit "#{line}%R#{formatted_pose}%R#{line}"
-        end
-        Engine.dispatcher.queue_event PoseEvent.new(enactor, self.pose, true, true)          
+        line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
+        message = "#{line}%R#{self.pose}%R#{line}"
+        Pose.emit_pose(enactor, message, true, false)
       end
       
       def log_command

@@ -18,10 +18,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.config_files
-      [ "config_channels.yml" ]
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)      
       case cmd.root
       when "channel"
