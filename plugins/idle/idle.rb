@@ -17,11 +17,6 @@ module AresMUSH
     def self.unload_plugin
     end
  
-    def self.config_files
-      [ "config_idle.yml"]
-    end
-    
-
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "idle"

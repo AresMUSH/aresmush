@@ -128,7 +128,7 @@ fs3combat:
                 Cab: 6
                 Engine: 8
             
-        AA Battery:
+        Aa Battery:
             description: "Anti-Aircraft Battery"
             protection:
                 Body: 7

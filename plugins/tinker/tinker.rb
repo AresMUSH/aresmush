@@ -17,11 +17,6 @@ module AresMUSH
     def self.unload_plugin
     end
     
-    def self.config_files
-      [ ]
-    end
- 
-
     def self.get_cmd_handler(client, cmd, enactor)
       if (cmd.root_is?("tinker"))
         return TinkerCmd
