@@ -12,6 +12,11 @@ module AresMUSH
       { who: who }.to_json
     end
     
+    post '/api/char/created' do
+      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      { status: 'OK', error: '' }.to_json
+    end
+    
     post '/api/notify' do
       if (!check_api_key)
         return { status: 'ERROR', error: 'Invalid authentication token.'}.to_json
