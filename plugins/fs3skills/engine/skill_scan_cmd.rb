@@ -31,6 +31,13 @@ module AresMUSH
         client.emit_ooc chars.join(", ")
       end
       
+      def color(char)
+        char.room == enactor_room ? "%xh%xg" : ""
+      end
+
+      def room_marker(char)
+        char.room == enactor_room ? "*" : ""
+      end   
     end
   end
 end

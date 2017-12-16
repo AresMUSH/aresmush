@@ -2,6 +2,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 bundle install
 nohup bundle exec rake startares > /dev/null 2>errors.txt&
-nohup bundle exec passenger start > /dev/null 2>errors.txt&
 echo kill -9 $! > bin/killares
+nohup bundle exec passenger start > /dev/null 2>errors.txt&
 echo bundle exec passenger stop >> bin/killares
