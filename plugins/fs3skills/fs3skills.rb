@@ -56,6 +56,11 @@ module AresMUSH
         end
       when "sheet"
         return SheetCmd
+      when "skill"
+        case cmd.switch
+        when "scan"
+          return SkillScanCmd
+        end
       when "ability"
         return SetAbilityCmd
       when "xp"

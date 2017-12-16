@@ -70,8 +70,7 @@ module AresMUSH
     # Dice they roll, including related attribute
     def self.dice_rolled(char, ability)
       FS3Skills.dice_to_roll_for_ability(char, RollParams.new(ability))
-    end
-      
+    end    
     
     def self.skills_census(skill_type)
       skills = {}

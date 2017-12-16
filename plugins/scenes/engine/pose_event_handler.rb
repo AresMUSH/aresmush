@@ -5,7 +5,7 @@ module AresMUSH
         enactor = event.enactor
         room = enactor.room
         scene = room.scene
-                
+        puts "Event: #{event.pose} #{event.is_setpose}"
         if (scene)
           Scenes.add_pose(scene, event.pose, enactor, event.is_setpose)
         elsif (room.scene_nag && room.room_type != "OOC")

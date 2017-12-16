@@ -15,10 +15,10 @@ module AresMUSH
       describe :armor_stat do
         before do 
           specials = {
-            "Helmet" => { "protection" => { "Head" => 2 } },
+            "Helmet" => { "defense" => 2, "protection" => { "Head" => 2 } },
             "Cup" => { "protection" => { "Groin" => 2 } } }
           FS3Combat.stub(:armor_specials) { specials }
-          FS3Combat.stub(:armor).with("Military") { { "protection" => { "Head" => 1, "Body" => 4 } } }
+          FS3Combat.stub(:armor).with("Military") { { "defense" => 1, "protection" => { "Head" => 1, "Body" => 4 } } }
         end
         
         it "should return nil if armor not found" do
@@ -26,12 +26,24 @@ module AresMUSH
           FS3Combat.armor_stat("Police", "protection").should be_nil
         end
         
-        it "should add special protection together foooo" do
+        it "should add special protection together" do
           protection = FS3Combat.armor_stat("Military+Helmet+Cup", "protection")
           protection['Head'].should eq 3
           protection['Body'].should eq 4
           protection['Groin'].should eq 2
         end
+        
+        it "should add other stats" do
+          defense = FS3Combat.armor_stat("Military+Helmet", "defense")
+          defense.should eq 3
+        end
+        
+        it "should not add anything if no special stat exists" do
+          defense = FS3Combat.armor_stat("Military+Cup", "defense")
+          defense.should eq 1
+        end
+        
+        
       end      
       
       describe :weapon_stat do

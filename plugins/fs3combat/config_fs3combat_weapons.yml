@@ -19,6 +19,7 @@ fs3combat:
             damage_type: Stun
             accuracy: 5
             has_shrapnel: false
+            init_mod: 0
             
         Frag Grenade:
             description: "Fragmentation Hand Grenade"
@@ -32,6 +33,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
+            init_mod: 0
 
         Grenade Launcher:
             description: "Grenade Launcher"
@@ -45,6 +47,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
+            init_mod: 0
                         
         Mine:
             description: "Mine or other anti-personnel explosive"
@@ -58,6 +61,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
+            init_mod: 0
             
         Missile:
             description: "Guided Anti-Vehicle Missile"
@@ -71,6 +75,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 3
             has_shrapnel: false
+            init_mod: 0
             
         Talons:
             description: "Unguided Anti-Vehicle Rockets"
@@ -84,6 +89,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             
         Rocket:
             description: "Unguided Anti-Personnel Rocket"
@@ -97,6 +103,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
+            init_mod: 0
                         
         Shaped Charge:
             description: "Anti-Vehicle explosive"
@@ -110,6 +117,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: true
+            init_mod: 0
             
         Shrapnel:
             description: "Random Shrapnel"
@@ -123,6 +131,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             
         ## ----------------------------------------------------------------------
         ## FIREARMS
@@ -140,6 +149,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Ap'
                 - 'Bipod'
@@ -157,6 +167,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Ap'
 
@@ -172,6 +183,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Ap'
                 - 'Scope'
@@ -188,6 +200,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 2
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Ap'
                 - 'Scope'
@@ -204,6 +217,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Buckshot'
                         
@@ -219,6 +233,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Ap'
 
@@ -234,6 +249,7 @@ fs3combat:
             damage_type: Stun
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
         
         ## ----------------------------------------------------------------------
         ## MELEE
@@ -252,6 +268,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
 
         Knife:
             description: "Knife"
@@ -265,6 +282,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
 
         Unarmed:
             description: "Unarmed"
@@ -278,6 +296,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Sparring'
 
@@ -298,6 +317,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
 
         Hmg:
             description: "Heavy machinegun."
@@ -311,6 +331,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             allowed_specials: 
                 - 'Ap'
                 - 'Bipod'
@@ -327,6 +348,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
             
         Cannon:
             description: "Tank cannon."
@@ -340,6 +362,7 @@ fs3combat:
             damage_type: Physical
             accuracy: 0
             has_shrapnel: false
+            init_mod: 0
 
     # Special things that can be added to weapons, like special ammunition or
     # accessories.  These can modify any or all of the following weapon stats:

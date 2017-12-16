@@ -26,6 +26,11 @@ module AresMUSH
         return t('scenes.invalid_privacy') if !Scenes.is_valid_privacy?(self.privacy)
         return nil
       end
+      
+      def check_approved
+        return t('scenes.must_be_approved') if !enactor.is_approved?
+        return nil
+      end
             
       def handle
         

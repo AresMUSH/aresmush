@@ -11,7 +11,7 @@ module AresMUSH
       who = Engine.client_monitor.logged_in.map { |client, char| char.name }
       { who: who }.to_json
     end
-    
+      
     post '/api/char/created' do
       Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
       { status: 'OK', error: '' }.to_json

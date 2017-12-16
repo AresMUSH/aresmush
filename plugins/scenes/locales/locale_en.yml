@@ -56,7 +56,8 @@ en:
         scene_info_updated: "You update the scene info."
         scene_char_added: "%{name} has been added to the scene."
         scene_char_removed: "%{name} has been removed from the scene."
-                
+        must_be_approved: "You can't start or join scenes until you're approved."
+        
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."
         

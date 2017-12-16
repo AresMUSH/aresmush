@@ -26,7 +26,7 @@ gem 'sinatra-cross_origin', '~>0.4.0'
 gem 'compass', '~> 1.0.3'
 gem 'aws-sdk', '~> 2.9.11'
 gem "passenger", "~> 5.0.25", require: "phusion_passenger/rack_handler"
-gem 'redis-rack', '~> 2.0.2'
+gem 'redis-rack', '~> 2.0.3'
 gem 'rubyzip',  '~> 1.2.1'
 gem 'diff-lcs', '~> 1.2.5'
 gem 'diffy', '~> 3.2.0'

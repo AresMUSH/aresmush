@@ -2,11 +2,13 @@ fs3combat:
     armor:
         None:
             description: "In case you need to take off armor"
+            defense: 0
             protection:
                 Nowhere: 0
                 
         Tactical:
             description: "Military-Grade Kevlar Vest and Helmet"
+            defense: 0
             protection: 
                 Head: 7
                 Neck: 5
@@ -15,6 +17,7 @@ fs3combat:
 
         Police:
             description: "Police-Grade Kevlar Vest"
+            defense: 0
             protection: 
                 Chest: 7
                 Abdomen: 6
@@ -23,6 +26,7 @@ fs3combat:
 
         Centurion:
             description: "Cylon Centurion Armor"
+            defense: 0
             protection:
                 Head: 9
                 Neck: 9
@@ -39,6 +43,7 @@ fs3combat:
 
         Cylon:
             description: "Cylon (Non-Centurion) Skeleton"
+            defense: 0
             protection:
                 Head: 6
                 Neck: 7
@@ -55,6 +60,7 @@ fs3combat:
                 
         Viper:
             description: "Viper Vehicle Armor"
+            defense: 0
             protection:
                 Body: 8
                 Engine: 8
@@ -67,6 +73,7 @@ fs3combat:
 
         Raider:
             description: "Cylon Raider Vehicle Armor"
+            defense: 0
             protection:
                 Body: 8
                 Engine: 8
@@ -79,6 +86,7 @@ fs3combat:
 
         Raptor:
             description: "Raptor Vehicle Armor"
+            defense: 0
             protection:
                 Body: 10
                 Engine: 10
@@ -91,6 +99,7 @@ fs3combat:
 
         Heavy Raider:
             description: "Cylon Heavy Raider Vehicle Armor"
+            defense: 0
             protection:
                 Body: 10
                 Engine: 10
@@ -103,6 +112,7 @@ fs3combat:
 
         Tank:
             description: "Tank Armor"
+            defense: 0
             protection:
                 Body: 22
                 Engine: 22
@@ -113,6 +123,7 @@ fs3combat:
 
         Apc:
             description: "Light Armored Vehicle Armor"
+            defense: 0
             protection:
                 Body: 12
                 Engine: 12
@@ -123,6 +134,7 @@ fs3combat:
 
         Truck:
             description: "Cylon Heavy Raider Vehicle Armor"
+            defense: 0
             protection:
                 Body: 7
                 Cab: 6
@@ -130,6 +142,7 @@ fs3combat:
             
         Aa Battery:
             description: "Anti-Aircraft Battery"
+            defense: 0
             protection:
                 Body: 7
                 Controls: 7

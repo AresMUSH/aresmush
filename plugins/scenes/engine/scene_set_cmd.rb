@@ -14,13 +14,7 @@ module AresMUSH
         
         if (self.set)
           room.update(scene_set: self.set)
-          
-          if (room.scene)
-            Scenes.add_pose(room.scene, self.set, enactor)
-          end
-          
-          line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
-          Rooms.emit_to_room(room, "#{line}%R#{self.set}%R#{line}")
+          Pose.emit_setpose(enactor, self.set)
         else
           room.update(scene_set: nil)
           client.emit_success t('scenes.scene_set_cleared')

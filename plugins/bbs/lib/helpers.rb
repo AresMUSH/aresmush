@@ -8,8 +8,10 @@ module AresMUSH
 
     def self.can_write_board?(char, board)
       return false if !board
+      return true if can_manage_bbs?(char)
+      return false if !char.is_approved? 
       roles = board.write_roles.to_a
-      !roles || roles.empty? || char.has_any_role?(roles) || can_manage_bbs?(char)
+      !roles || roles.empty? || char.has_any_role?(roles)
     end
     
     def self.can_read_board?(char, board)
