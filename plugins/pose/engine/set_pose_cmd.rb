@@ -10,9 +10,7 @@ module AresMUSH
       end
       
       def handle        
-        line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
-        message = "#{line}%R#{self.pose}%R#{line}"
-        Pose.emit_pose(enactor, message, true, false)
+        Pose.emit_setpose(enactor, self.pose)
       end
       
       def log_command

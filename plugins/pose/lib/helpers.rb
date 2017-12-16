@@ -1,22 +1,27 @@
 module AresMUSH
   module Pose
     
-    def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil)
+    def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil, system_pose = false)
       room = enactor.room
+      formatted_pose = pose
       
       if (is_ooc)
         color = Global.read_config("pose", "ooc_color")
-        pose = "#{color}<OOC>%xn #{pose}"
+        formatted_pose = "#{color}<OOC>%xn #{pose}"
+      end
+      if (system_pose)
+        line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
+        formatted_pose = "#{line}%R#{pose}%R#{line}"
       end
       
       enactor.room.characters.each do |char|
         client = Login.find_client(char)
         next if !client
-        client.emit Pose.custom_format(pose, char, enactor, is_emit, is_ooc, place_name)
+        client.emit Pose.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
       end
       
       if (!is_ooc)
-        Engine.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, false)
+        Engine.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose)
 
         if (room.room_type != "OOC")
           enactor.room.update_pose_order(enactor.name)

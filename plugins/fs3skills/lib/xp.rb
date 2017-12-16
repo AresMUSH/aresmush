@@ -58,11 +58,12 @@ module AresMUSH
         else
           client.emit_success t('fs3skills.xp_spent', :name => name)
         end
+        
+        if (FS3Skills.skill_requires_training(ability))
+          client.emit_ooc t('fs3skills.skill_requires_training', :name => name)
+        end
       end 
       
-      if (FS3Skills.skill_requires_training(ability))
-        client.emit_ooc t('fs3skills.skill_requires_training', :name => name)
-      end
       
       FS3Skills.modify_xp(char, -1)       
     end

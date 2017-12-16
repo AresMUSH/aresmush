@@ -22,6 +22,7 @@ module AresMUSH
     def self.add_to_roster(char, contact = nil)
       char.update(roster_contact: contact || Global.read_config("idle", "default_contact"))
       char.update(idle_state: "Roster")
+      char.update(roster_Played: char.is_approved?)  # Assume played if approved.
       Idle.idle_cleanup(char)
     end
     

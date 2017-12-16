@@ -28,10 +28,11 @@ module AresMUSH
       special_mod = combatant.defense_mod
       dodge_mod = FS3Combat.vehicle_dodge_mod(combatant)
       distraction_mod = combatant.distraction
+      armor_mod = FS3Combat.armor_stat(combatant.armor, 'defense') || 0
       
-      mod = stance_mod + luck_mod + damage_mod + special_mod + dodge_mod - distraction_mod
+      mod = stance_mod + luck_mod + damage_mod + special_mod + dodge_mod + armor_mod - distraction_mod
       
-      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod} dodge=#{dodge_mod} distract=#{distraction_mod}"
+      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod} armor=#{armor_mod} dodge=#{dodge_mod} distract=#{distraction_mod}"
       
       combatant.roll_ability(ability, mod)
     end

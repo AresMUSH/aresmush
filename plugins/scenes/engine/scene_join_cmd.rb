@@ -13,6 +13,11 @@ module AresMUSH
         [ self.scene_num ]
       end
       
+      def check_approved
+        return t('scenes.must_be_approved') if !enactor.is_approved?
+        return nil
+      end
+      
       def handle
         Scenes.with_a_scene(self.scene_num, client) do |scene|
           if (scene.completed)
