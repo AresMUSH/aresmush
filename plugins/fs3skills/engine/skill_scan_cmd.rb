@@ -24,21 +24,13 @@ module AresMUSH
         else
           min_rating = 1
         end
-        chars = Chargen.approved_chars.select { |c| FS3Skills.ability_rating(c, self.name) >= min_rating }
-        list = chars.sort_by { |c| c.name }.map { |c| "#{color(c)}#{c.name}#{room_marker(c)}%xn" }
-        footer = "%R#{t('fs3skills.skill_scan_footer')}"
-        
-        template = BorderedListTemplate.new list, t('fs3skills.skill_scan_title', :name => self.name), footer
-        client.emit template.render
+        chars = Chargen.approved_chars
+        .select { |c| FS3Skills.ability_rating(c, self.name) >= min_rating }
+        .sort_by { |c| c.name }
+        .map { |c| "#{color(c)}#{c.name}#{room_marker(c)}%xn" }
+        client.emit_ooc chars.join(", ")
       end
       
-      def color(char)
-        char.room == enactor_room ? "%xh%xg" : ""
-      end
-      
-      def room_marker(char)
-        char.room == enactor_room ? "*" : ""
-      end
     end
   end
 end
