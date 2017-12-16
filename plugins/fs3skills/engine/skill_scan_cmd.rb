@@ -27,7 +27,7 @@ module AresMUSH
         chars = Chargen.approved_chars
         .select { |c| FS3Skills.ability_rating(c, self.name) >= min_rating }
         .sort_by { |c| c.name }
-        .map { |c| "#{color(c)}#{c.name}#{room_marker(c)}%xn" }
+        .map { |c| "%xn#{color(c)}#{c.name}#{room_marker(c)}%xn" }
         client.emit_ooc chars.join(", ")
       end
       
