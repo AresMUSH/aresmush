@@ -22,6 +22,11 @@ module AresMUSH
       return data['status'] == 'OK' ? nil : data['error']
     end
     
+    def character_created(id)
+      data = post("/api/char/created", { id: id })
+      return data['status'] == 'OK' ? nil : data['error']
+    end
+    
     def reload_tinker
       data = post("/api/tinker/load", {})
       return data['status'] == 'OK' ? nil : data['error']

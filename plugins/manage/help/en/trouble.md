@@ -8,6 +8,7 @@ aliases:
 - harassment
 - harassing
 - harass
+- troll
 ---
 # Dealing With Trouble
 

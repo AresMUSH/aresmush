@@ -49,10 +49,12 @@ module AresMUSH
           char.update(terms_of_service_acknowledged: Time.now)
         end
         char.save
-        
-        Engine.dispatcher.queue_event CharCreatedEvent.new(nil, char.id)
+                
+        connector = AresMUSH::EngineApiConnector.new
+        connector.character_created(char.id)
         
         session[:user_id] = char.id
+        session[:login_token] = char.login_api_token
         flash[:info] = "Welcome, #{char.name}!"
         
         redirect '/'

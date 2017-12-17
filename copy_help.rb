@@ -70,7 +70,7 @@ def format_help(msg, filename_friendly_help_version)
         raise "Can't find topic #{match} in #{msg}"
       end
       
-      msg = msg.gsub(/\]\(\/help\/([^\)]+)\)/, "](/help_#{filename_friendly_help_version}/#{topic['plugin']}/#{topic['topic']})")
+      msg = msg.gsub(/\]\(\/help\/([^\)]+)\)/, "](/help/#{filename_friendly_help_version}/#{topic['plugin']}/#{topic['topic']})")
     end
     msg
 end
@@ -78,7 +78,7 @@ end
 minimal_boot
 
 
-help_dir = "/Users/lynn/Documents/ares/help_#{filename_friendly_help_version}"
+help_dir = "/Users/lynn/Documents/ares/help/#{filename_friendly_help_version}"
 if (!Dir.exist?(help_dir))
   Dir.mkdir help_dir
 end
@@ -121,7 +121,7 @@ AresMUSH::Help.toc.keys.sort.each do |toc|
 end
 
 
-File.open("/Users/lynn/Documents/ares/ares/partials/plugin_list_#{filename_friendly_help_version}.md", 'w') do |file|
+File.open("/Users/lynn/Documents/ares/ares/partials/help_#{filename_friendly_help_version}.md", 'w') do |file|
   file.puts "*AresMUSH version #{help_version}*"
   file.puts ""
   
@@ -131,7 +131,7 @@ File.open("/Users/lynn/Documents/ares/ares/partials/plugin_list_#{filename_frien
     file.puts ""
     
     topics.sort_by { |name, data| [ data['order'] || 99, name ] }.each do |name, data|
-      file.puts "* [#{name.titleize}](/help_#{filename_friendly_help_version}/#{data['plugin']}/#{data['topic']})"
+      file.puts "* [#{name.titleize}](/help/#{filename_friendly_help_version}/#{data['plugin']}/#{data['topic']})"
     end
   end
   
@@ -142,5 +142,5 @@ File.open("#{help_dir}/index.md", 'w') do |file|
   file.puts "# Help Archive - Version #{help_version}"
   file.puts "This is an archive of the AresMUSH online help.  For other versions, see the [Plugins](/plugins) page."
   file.puts ""
-  file.puts "{{>plugin_list_#{filename_friendly_help_version}}}"
+  file.puts "{{>help_#{filename_friendly_help_version}}}"
 end
