@@ -103,6 +103,11 @@ plugins.each do |p|
   puts "Processing #{p}..."
   help_files.each do |h|
     orig = File.readlines h
+    orig.shift
+    orig.unshift "version: #{help_version}\n"
+    orig.unshift "layout: help_#{filename_friendly_help_version}\n"
+    orig.unshift "---\n"
+    
     new_filename =  "#{plugin_help_dir}/#{File.basename(h)}"
     
     puts "Copying files from #{h} to #{new_filename}"
@@ -123,7 +128,7 @@ end
 
 File.open("/Users/lynn/Documents/ares/ares/partials/help_#{filename_friendly_help_version}.md", 'w') do |file|
   file.puts "*AresMUSH version #{help_version}*"
-  file.puts ""
+  file.puts "[Version #{help_version} Home](/help/#{filename_friendly_help_version}/)"
   
   toc_topics.each do |toc, topics|
     file.puts ""
@@ -139,7 +144,14 @@ end
 
 
 File.open("#{help_dir}/index.md", 'w') do |file|
-  file.puts "# Help Archive - Version #{help_version}"
+  file.puts "---"
+  file.puts "title: Help Archive - Version #{help_version}"
+  file.puts "description: Online help archive."
+  file.puts "layout: page"
+  file.puts "tags:"
+  file.puts "- help-#{help_version}"
+  file.puts "---"
+  file.puts ""
   file.puts "This is an archive of the AresMUSH online help.  For other versions, see the [Plugins](/plugins) page."
   file.puts ""
   file.puts "{{>help_#{filename_friendly_help_version}}}"

@@ -25,6 +25,7 @@ module AresMUSH
       @plugin2.stub(:log_command)
       @shortcuts = {}
       @client.stub(:emit_ooc)
+      @enactor.stub(:is_statue?) { false }
       plugin_manager.stub(:shortcuts) { @shortcuts }
       CommandAliasParser.stub(:substitute_aliases)
       SpecHelpers.stub_translate_for_testing
@@ -48,6 +49,12 @@ module AresMUSH
       
         it "should look up the enactor" do
           @client.should_receive(:find_char) { @enactor }
+          @dispatcher.on_command(@client, @command)
+        end
+        
+        it "should do nothing if enactor is a statue" do
+          @enactor.should_receive(:is_statue?) { true }
+          @client.should_receive(:emit_failure).with("dispatcher.you_are_statue")
           @dispatcher.on_command(@client, @command)
         end
         

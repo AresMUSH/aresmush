@@ -48,6 +48,8 @@ module AresMUSH
           return ChannelRecallCmd
         when "rename"
           return ChannelRenameCmd
+        when "report"
+          return ChannelReportCmd
         when "roles"
           return ChannelRolesCmd
         when "title"

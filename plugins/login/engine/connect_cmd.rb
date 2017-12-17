@@ -28,12 +28,17 @@ module AresMUSH
         return t('login.site_blocked') if Login.is_banned?(client)
         return nil
       end
-      
+            
       def handle
         return if self.charname.downcase == "guest"
         
 
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
+  
+          if (char.is_statue?)
+            client.emit_failure t('dispatcher.you_are_statue')
+            return
+          end
   
           if (char.login_failures > 5)
             temp_reset = false

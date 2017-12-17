@@ -8,7 +8,7 @@ module AresMUSH
     attribute :alias
     attribute :alias_upcase
     attribute :fansi_on, :default => true
-    
+    attribute :is_statue
     attribute :password_hash
 
     attribute :shortcuts, :type => DataType::Hash, :default => {}
@@ -22,6 +22,10 @@ module AresMUSH
     set :roles, "AresMUSH::Role"
     
     before_save :save_upcase
+    
+    def is_statue?
+      self.is_statue
+    end
     
     # -----------------------------------
     # CLASS METHODS

@@ -86,7 +86,7 @@ module AresMUSH
       def add_to_monitor(char, monitor_name, message)
         monitor = char.page_monitor
         
-        if (monitor[monitor_name].count > 25)
+        if (monitor[monitor_name].count > 30)
           monitor[monitor_name].shift
         end
         monitor[monitor_name] << "#{Time.now} #{message}"

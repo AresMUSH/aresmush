@@ -8,8 +8,6 @@ login:
         
     allow_web_registration: true
     
-    trouble_category: "MISC"
-
     guest_role: "guest"
     
     use_terms_of_service: true

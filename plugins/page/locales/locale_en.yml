@@ -24,6 +24,6 @@ en:
         monitor_stopped: "You stop monitoring pages to/from %{name}."
         not_monitored: "You are not currently monitoring pages to/from %{name}."
         page_log_title: "Pages to/from %{name}"
-        log_reported: "A report has been created using your page log with %{name} as evidence.  You can check its status via the request system."
+        log_reported: "Thank you.  A report has been created using your page log with %{name} as evidence.  The page log has been reset and you can report this person again if needed."
         page_reported_title: "Pages Reported"
-        page_reported_body: "The following pages with %{name} are being reported.%R%RReason:"
+        page_reported_body: "%{reporter} has reported an issue with the fllowing pages with %{name}.%R%RReason:%R"
