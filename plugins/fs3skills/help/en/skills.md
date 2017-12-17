@@ -54,3 +54,9 @@ Some abilities require specialization.  You can add or remove a specialty:
 RP Hooks are interesting things about your character that others can "hook" into for RP. This could be an odd personality quirk, a reputation your character has, or anything else that might inspire someone to connect with you.  Looking around at other character's sheets can be a good way to get inspiration for RP Hooks.
 
 `hook/add <title>=<description>` and `hook/remove <title>`
+
+## Finding Other People With Skills
+
+If you're looking for a character with a specific skill, you can use the skill scan command.  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.
+
+`skill/scan <name>`

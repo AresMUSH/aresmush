@@ -29,6 +29,12 @@ module AresMUSH
           return PageDoNotDisturbCmd
         when "ignore"
           return PageIgnoreCmd
+        when "log"
+          return PageLogCmd
+        when "monitor"
+          return PageMonitorCmd
+        when "report"
+          return PageReportCmd
         when nil
           # It's a common mistake to type 'p' when you meant '+p' for a channel, but
           # not vice-versa.  So ignore any command that has a prefix. 
