@@ -29,7 +29,7 @@ module AresMUSH
     end
     
     def self.check_for_suspect(char)
-      suspects = Global.read_config("login", "suspect_sites")
+      suspects = Global.read_config("sites", "suspect")
       return false if !suspects
       
       suspects.each do |s|
@@ -52,8 +52,17 @@ module AresMUSH
     end
     
     def self.is_banned?(client)
-      suspects = Global.read_config("login", "banned_sites")
-      return false if !suspects
+      suspects = Global.read_config("sites", "banned") || []
+      
+      if (Global.read_config("sites", "ban_proxies"))
+        blacklist_file = File.join(AresMUSH.game_path, "text", "blacklist.txt")
+        if (File.exists?(blacklist_file))
+          blacklist = File.readlines(blacklist_file)
+          suspects.concat blacklist
+        end
+      end
+            
+      return false if suspects.empty?
       
       ip = client.ip_addr
       hostname = client.hostname ? client.hostname.downcase : ""
@@ -77,6 +86,19 @@ module AresMUSH
     
     def self.announce_connection(client, char)
       Engine.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
+    end
+    
+    # Can take awhile - call from an Engine.spawn
+    def self.update_blacklist
+      return if (!Global.read_config("sites", "ban_proxies"))
+      Global.logger.debug "Updating blacklist from rhost.com."
+      blacklist = Net::HTTP.get('rhostmush.com', '/blacklist.txt')
+      if (blacklist)
+        blacklist = blacklist.split("\n").select { |b| b != "ip" && !b.empty? }.join("\n")
+        File.open(File.join(AresMUSH.game_path, 'text', 'blacklist.txt'), 'w') do |f|
+          f.puts blacklist
+        end
+      end
     end
   end
 end

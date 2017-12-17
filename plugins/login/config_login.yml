@@ -1,11 +1,5 @@
 login:    
     
-    suspect_sites:
-        - "delete me and put a real site here"
-
-    banned_sites:
-        - "delete me and put a real site here"
-        
     allow_web_registration: true
     
     guest_role: "guest"
@@ -15,7 +9,15 @@ login:
     activity_cron:
         minute: 
             - 00
-        
+            
+    blacklist_cron:
+        day:
+            - 15
+        hour: 
+            - 03
+        minute: 
+            - 00
+                    
     shortcuts:
         "logout" : "quit"
         "con" : "connect"

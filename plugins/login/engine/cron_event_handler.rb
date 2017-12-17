@@ -9,8 +9,16 @@ module AresMUSH
           end
         end
         
-        config = Global.read_config("login", "activity_cron")
-        return if !Cron.is_cron_match?(config, event.time)
+        if (Cron.is_cron_match?(Global.read_config("login", "activity_cron"), event.time))
+          do_activity_cron
+        end
+        
+        if (Cron.is_cron_match?(Global.read_config("login", "blacklist_cron"), event.time))
+          do_blacklist_cron
+        end
+      end
+      
+      def do_activity_cron
         
         game = Game.master
 
@@ -36,6 +44,13 @@ module AresMUSH
         
         game.update(login_activity: activity)
       end
+      
+      def do_blacklist_cron
+        Engine.dispatcher.spawn("Getting rhost blacklist", nil) do
+          Login.update_blacklist
+        end
+      end
+      
     end
   end
 end
