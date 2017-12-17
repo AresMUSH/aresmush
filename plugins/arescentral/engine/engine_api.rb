@@ -69,5 +69,11 @@ module AresMUSH
       end
       { status: error ? 'ERROR' : 'OK', error: error }.to_json      
     end
+
+    post '/api/char/created' do
+      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      { status: 'OK', error: '' }.to_json
+    end
+
   end
 end
