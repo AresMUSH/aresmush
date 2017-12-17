@@ -5,6 +5,9 @@ aliases:
 - tell
 - pm
 - pagelock
+- abuse
+- harassment
+- harassed
 ---
 # Pages
 
@@ -33,3 +36,11 @@ If someone is annoying you so much you feel the need to block them, you should r
 If you don't want to be bothered by pages at all, you can mark yourself as 'do not disturb' and incoming pages will be blocked with a message to the sender.
 
 `page/dnd <on or off>`
+
+## Monitoring Pages
+
+If someone is harassing you via pages, you can enable page monitoring.  This will establish an official log of pages to and from that person, which you can use when reporting misconduct.  Unlike The other person will not be notified that you are logging pages.
+
+`page/monitor <name>=<on or off>` - Starts or stops monitoring pages from someone.
+`page/log <name>` - Shows your page log with someone.
+`page/report <name>=<reason>` - Creates a report, including your page log with that person as evidence.
