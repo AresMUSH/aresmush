@@ -15,6 +15,7 @@ calendar.ics
 .sass-cache
 .DS_Store
 tmp/restart.txt
+blacklist.txt
 
 # Process ID scripts
 # -----------------------------
