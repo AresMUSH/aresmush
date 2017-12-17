@@ -25,6 +25,11 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |statue|
           
+          if (statue.is_admin?)
+            client.emit_failure t('manage.cant_statue_admins')
+            return
+          end
+          
           host_and_ip = "IP: #{statue.last_ip}  Host: #{statue.last_hostname}"
 
           if (self.option)

@@ -12,6 +12,7 @@ module AresMUSH
         @client = double
         @client.stub(:ip_addr) { "" }
         @found_char.stub(:login_failures) { 0 }
+        @found_char.stub(:is_statue?) { false }
         @client.stub(:logged_in?) { false }
         
         @handler = ConnectCmd.new(@client, Command.new("connect Bob password"), nil)
@@ -79,6 +80,14 @@ module AresMUSH
             Character.should_receive(:find_any_by_name).with("Bob") { [@found_char] }
             @client.should_receive(:emit_failure).with("login.password_incorrect")
             @found_char.should_receive(:update).with(login_failures: 1)
+            Global.should_not_receive(:queue_event)
+            @handler.handle
+          end
+          
+          it "should fail if char is a statue" do
+            Character.should_receive(:find_any_by_name).with("Bob") { [@found_char] }
+            @found_char.should_receive(:is_statue?) { true }
+            @client.should_receive(:emit_failure).with("dispatcher.you_are_statue")            
             Global.should_not_receive(:queue_event)
             @handler.handle
           end

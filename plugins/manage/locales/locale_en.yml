@@ -60,5 +60,6 @@ en:
         statue_message: "%{statue} from %{host} has been turned to a statue by %{actor}.   Reason:%R%{reason}"
         unstatue_message: "%{actor} has unlocked %{statue} (%{host}) from being a statue.   Reason:%R%{reason}"
         no_longer_statue: "You are no longer a statue.  Please play nice."
+        cant_statue_admins: "You can't statue another admin."
         
         
