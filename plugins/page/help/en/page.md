@@ -39,8 +39,10 @@ If you don't want to be bothered by pages at all, you can mark yourself as 'do n
 
 ## Monitoring Pages
 
-If someone is harassing you via pages, you can enable page monitoring.  This will establish an official log of pages to and from that person, which you can use when reporting misconduct.  Unlike The other person will not be notified that you are logging pages.
+If someone is harassing you via pages, you can enable page monitoring.  This will keep track of the last couple dozen pages to and from that person.  The other person will not be notified that you are logging pages.  
+
+Once you have the pages logged, you can bring the matter to the game admin's attention using the page report feature.  The pages from the log will automatically be included as an official, verifiable log.  You can report someone more than once if the problem happens again.
 
 `page/monitor <name>=<on or off>` - Starts or stops monitoring pages from someone.
-`page/log <name>` - Shows your page log with someone.
+`page/log <name>` - Review your page log with someone.  This is what will be included if you report them.
 `page/report <name>=<reason>` - Creates a report, including your page log with that person as evidence.

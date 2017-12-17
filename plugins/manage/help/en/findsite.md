@@ -1,7 +1,7 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Viewing player site information.
-----
+---
 
 # Finding Player Site Info
 

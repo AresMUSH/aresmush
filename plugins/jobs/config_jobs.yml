@@ -10,6 +10,10 @@ jobs:
             color: "%xy"
         CODE:
             color: "%xy"
+            
+        ALERT:
+            color: "%xr"
+            
         MISC:
             color: "%xh"
         PLOT:
@@ -38,6 +42,8 @@ jobs:
     request_category: "REQ"
     
     system_category: "SYS"
+        
+    trouble_category: "ALERT"
         
     shortcuts:
         # These must come first before the jobs -> job conversion
