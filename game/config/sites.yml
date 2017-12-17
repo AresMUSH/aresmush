@@ -2,4 +2,4 @@
 sites:
   banned: []
   suspect: []
-  ban_proxies: true
+  ban_proxies: false
