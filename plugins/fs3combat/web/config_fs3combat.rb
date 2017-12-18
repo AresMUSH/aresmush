@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp
     get '/admin/fs3_combat/?', :auth => :admin do
       
-      file_path = File.join(AresMUSH.plugin_path, 'fs3combat', 'config_fs3combat_skills.yml')
+      file_path = File.join(AresMUSH.game_path, 'config', 'fs3combat_skills.yml')
       config_yaml = AresMUSH::YamlExtensions.yaml_hash(file_path)
       @skills = config_yaml['fs3combat']
             
@@ -21,7 +21,7 @@ module AresMUSH
         "fs3combat" => skills
         
       }
-      output_path = File.join(AresMUSH.plugin_path, 'fs3combat', 'config_fs3combat_skills.yml')
+      output_path = File.join(AresMUSH.game_path, 'config', 'fs3combat_skills.yml')
       write_config_file output_path, config.to_yaml
       
       

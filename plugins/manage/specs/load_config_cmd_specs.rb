@@ -19,8 +19,6 @@ module AresMUSH
           config_reader.stub(:load_game_config)
           config_reader.stub(:validate_game_config)
           help_reader.stub(:load_game_help)
-          plugin_manager.stub(:load_plugin_config)
-          plugin_manager.stub(:validate_plugin_config)
           @plugin = double
           plugin_manager.stub(:plugins) { [@plugin] }
         end
@@ -32,23 +30,11 @@ module AresMUSH
           @handler.handle
         end
         
-        it "should load the plugins config" do           
-          plugin_manager.should_receive(:load_plugin_config) {}
-          @client.should_receive(:emit_success).with('manage.config_loaded')
-          @handler.handle
-        end
-          
         it "should handle errors from game config" do
           config_reader.should_receive(:validate_game_config).and_raise("error")
           @client.should_receive(:emit_failure).with('manage.error_loading_config')
           @handler.handle
         end    
-        
-        it "should handle errors from plugin config" do
-          plugin_manager.should_receive(:validate_plugin_config).with(@plugin).and_raise("error")
-          @client.should_receive(:emit_failure).with('manage.error_loading_config')
-          @handler.handle
-        end 
         
         it "should send the config updated event" do
           @client.should_receive(:emit_success).with('manage.config_loaded')

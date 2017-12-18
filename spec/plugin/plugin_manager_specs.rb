@@ -13,39 +13,6 @@ module AresMUSH
       @manager = PluginManager.new
     end
     
-    describe :load_plugin_config do
-      before do
-        @plugin = double
-        @plugin.stub(:plugin_dir) { "A" }
-        Dir.stub(:[]).with("A/config_**.yml") { [ "c1", "c2" ]}
-      end
-      
-      it "should load all the plugin config files" do
-        FileUtils.stub(:touch)
-        config_reader.should_receive(:load_config_file).with("c1")
-        config_reader.should_receive(:load_config_file).with("c2")
-        @manager.load_plugin_config @plugin
-      end      
-      
-      it "should touch the restart file" do
-        FileUtils.should_receive(:touch).with(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
-        config_reader.stub(:load_config_file)
-        @manager.load_plugin_config @plugin
-      end
-      
-    end
-    
-    describe :validate_plugin_config do
-      it "should check the plugin config files" do
-        plugin = double
-        plugin.stub(:plugin_dir) { "A" }
-        Dir.stub(:[]).with("A/config_**.yml") { [ "c1", "c2" ]}
-        config_reader.should_receive(:validate_config_file).with("c1").and_raise("error")
-        config_reader.should_not_receive(:validate_config_file).with("c2")
-        expect { @manager.validate_plugin_config plugin }.to raise_error("error")
-      end
-    end
-    
     describe :load_plugin_locale do
       it "should load all the plugin config files for all locales in order" do
         plugin = double

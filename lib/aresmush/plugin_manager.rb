@@ -46,26 +46,10 @@ module AresMUSH
         raise SystemNotFoundException.new("Can't find a module for #{name}.")
       end
       plugin_module = Object.const_get("AresMUSH::#{module_name}")
-      load_plugin_config plugin_module
       load_plugin_locale plugin_module
       load_plugin_help plugin_module
-      
+            
       @plugins << plugin_module.send(:load_plugin)
-    end
-    
-    def load_plugin_config(plugin_module)
-      config_files(plugin_module).each do |config|
-        Global.config_reader.load_config_file config
-      end
-      
-      # Force the website to restart next time
-      FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
-    end
-    
-    def validate_plugin_config(plugin_module)
-      config_files(plugin_module).each do |config|
-        Global.config_reader.validate_config_file config
-      end
     end
     
     def load_plugin_locale(plugin_module)

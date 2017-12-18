@@ -2,7 +2,7 @@
 
 <p>Here you can edit your game's configuration files.</p>
 
-<div class="alert alert-warning">This section contains advanced configuration options.  Please read the AresMUSH.com tutorials before attempting to configure your game here.</div>
+<div class="alert alert-warning">This section contains advanced configuration options.  Please read the AresMUSH.com <a href="https://aresmush.com/tutorials/config/" target="_blank">Configuration Tutorials</a>  before attempting to configure your game here.</div>
 
 <h2>Game Config</h2>
 
@@ -12,7 +12,7 @@
     <% end %>
 </ul>
 
-<h2>Plugin Config</h2>
+<h2>Plugins</h2>
     <blockquote>
         Quick Links:
         <% @plugin_config.keys.sort.each do |p| %>
@@ -24,10 +24,8 @@
         <hr/>
         <a name="<%= p %>"></a>
         <h3><%= p %></h3>
-
-            <p><a href="https://aresmush.com/tutorials/config/" target="_blank">Configuration Help</a></p>
             
-            <% ["config", "help", "locale", "templates", "views"].each do |section| %>
+            <% ["help", "locale", "templates", "views"].each do |section| %>
             <b><%= section %></b>
                 <ul>
                 <% @plugin_config[p][section].each do |f| %>
