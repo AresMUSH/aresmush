@@ -28,9 +28,7 @@ module AresMUSH
 
         locale_files = Dir[File.join(plugin_path, plugin_name, "locales", "*.yml")]
         @plugin_config[plugin_name]["locale"] = locale_files.map { |f| f.gsub(root_path, "") }
-        
-        @plugin_config[plugin_name]["config"] = Global.plugin_manager.config_files(p).map { |f| f.gsub(root_path, "") }
-        
+                
         template_files = Dir[File.join(plugin_path, plugin_name, "engine", "templates", "**", "*")]
         @plugin_config[plugin_name]["templates"] = template_files.map { |f| f.gsub(root_path, "") }
 

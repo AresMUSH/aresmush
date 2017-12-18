@@ -25,6 +25,8 @@ module AresMUSH
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
+          # Make sure everything is valid before we start.
+          Global.config_reader.validate_game_config          
         rescue
           client.emit_failure t('manage.management_config_messed_up')
         end
@@ -39,8 +41,10 @@ module AresMUSH
           end
           Global.plugin_manager.load_plugin(load_target, :engine)
           Help.reload_help
+          Global.config_reader.load_game_config
           Global.locale.reload
           Engine.dispatcher.queue_event ConfigUpdatedEvent.new
+          FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
           client.emit_success t('manage.plugin_loaded', :name => load_target)
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)
