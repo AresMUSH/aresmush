@@ -24,7 +24,6 @@ module AresMUSH
         end
         
         it "should reset and load the game config" do           
-          config_reader.should_receive(:clear_config) {}
           config_reader.should_receive(:load_game_config) {}
           @client.should_receive(:emit_success).with('manage.config_loaded')
           @handler.handle

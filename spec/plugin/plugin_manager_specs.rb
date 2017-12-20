@@ -11,6 +11,7 @@ module AresMUSH
       stub_global_objects
       AresMUSH.stub(:game_path) { "/game" }      
       @manager = PluginManager.new
+      Global.stub(:read_config).with("plugins", "disabled_plugins") { [] }
     end
     
     describe :load_plugin_locale do
