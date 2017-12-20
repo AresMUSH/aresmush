@@ -86,10 +86,55 @@ module AresMUSH
         flash[:error] = "Character not found."
         redirect '/chars'
       end
+
+      @version = @char.last_profile_version
+
+      if (!@version)
+        flash[:error] = "Version not found."
+        redirect '/chars'
+      end
       
+      redirect "/char/#{id}/source/#{@version.id}"
+    end
+    
+    get '/char/:id/source/:version/?' do |id, versionId|
+      @char = Character.find_one_by_name(id)
+      
+      if (!@char)
+        flash[:error] = "Character not found."
+        redirect '/chars'
+      end
+      
+      @version = ProfileVersion[versionId]     
+            
       @page_title = "#{@char.name} - #{game_name}"
       
       erb :"chars/source"
     end
+    
+    get '/char/:id/compare/:version/?' do |id, versionId|
+      @char = Character.find_one_by_name(id)      
+      @current = ProfileVersion[versionId]
+      
+      if (!@char || !@current)
+        flash[:error] = "Character version not found!"
+        redirect '/chars'
+      end
+      
+      all_versions = @char.profile_versions.to_a.sort_by { |v| v.created_at }
+      current_index = all_versions.index { |v| v.id == @current.id }
+      if (!current_index || current_index <= 0)
+        flash[:error] = "Previous version not found!"
+        redirect "/char/#{id}/source/#{versionId}"
+      end
+      
+      @previous = all_versions[current_index - 1]
+      
+      @page_title = "#{@char.name} - #{game_name}"
+      
+      @diff = Diffy::Diff.new(@previous.text, @current.text).to_s(:html_simple)
+      erb :"chars/compare_profile"
+    end
+    
   end
 end

@@ -39,12 +39,11 @@ module AresMUSH
           rescue SystemNotFoundException
             # Swallow this error.  Just means you're loading a plugin for the very first time.
           end
+          Global.config_reader.load_game_config
           Global.plugin_manager.load_plugin(load_target, :engine)
           Help.reload_help
-          Global.config_reader.load_game_config
           Global.locale.reload
           Engine.dispatcher.queue_event ConfigUpdatedEvent.new
-          FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
           client.emit_success t('manage.plugin_loaded', :name => load_target)
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)

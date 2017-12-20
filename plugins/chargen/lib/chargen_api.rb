@@ -1,5 +1,9 @@
 module AresMUSH
   module Chargen
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("chargen")
+    end
+    
     def self.format_review_status(msg, error)
       "#{msg.ljust(50)} #{error}"
     end

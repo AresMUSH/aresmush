@@ -2,9 +2,10 @@
     
     <div class="panel-body">
                     
+<% if AresMUSH::FS3Skills.is_enabled? %>
             <h3>Abilities Review</h3>
             <pre class="ansi app-status"><%= @abilities_app %> </pre>
-
+<% end %>
             <h3>Demographics Review</h3>
             <pre class="ansi app-status"><%= @demographics_app %></pre>
 
@@ -13,7 +14,10 @@
             <pre class="ansi app-status">
 <%= @bg_app %>
 <%= @desc_app %>
+
+<% if AresMUSH::Ranks.is_enabled? %>
 <%= @ranks_app %>
+<% end %>
             </pre>
             
                    

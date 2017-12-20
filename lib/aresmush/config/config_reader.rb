@@ -44,6 +44,7 @@ module AresMUSH
     end
     
     def load_game_config
+      clear_config
       ConfigReader.config_files.each do |file|
         load_config_file(file)
       end

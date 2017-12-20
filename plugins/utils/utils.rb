@@ -1,5 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'dentaku'
+
 module AresMUSH
   module Utils
     def self.plugin_dir

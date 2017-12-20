@@ -1,40 +1,30 @@
 <h1><%= @char.name %> Page Source</h1>
 
-<h2>Profile</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Other Versions
+    </div>
 
-    <% @char.profile.each do |section, data| %>
-        
-        
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <%= section %>
-            </div>
-            
-            <div class="panel-body">
-            
-                <div class="ansi">
-                <%= format_output_for_html data %>
-                </div>
-            </div>
-        </div>
+<ol>
+    <% @char.profile_versions.to_a.reverse.each do |version| %>
+    <li><a href="/char/<%= @char.name %>/source/<%= version.id %>"><%= version.created_at %></a></li>
     <% end %>
+</ol>
 
-<h2>Relationships</h2>
+</div>
 
-    <% @char.relationships.each do |section, data| %>
-        
-        
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <%= section %>
-            </div>
             
-            <div class="panel-body">
-            
-                <div class="ansi">
-                <%= format_output_for_html data['relationship'] %>
-                </div>
-            </div>
-        </div>
-    <% end %>
+<div class="ansi"><%= format_output_for_html @version.text.gsub('\r\n', '<br/>') %></div>
+
+
+<div class="row">
+    <div class="col col-xs-12">
+        <div class="pull-right">
+      
+      <a href="/char/<%= @char.name %>/compare/<%= @version.id %>" class="btn btn-default">Compare to Previous</a>
+
+  </div>
+  </div>
+</div>
+
 

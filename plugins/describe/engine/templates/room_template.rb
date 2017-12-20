@@ -54,8 +54,9 @@ module AresMUSH
       end
       
       def weather
+        return nil if !AresMUSH::Weather.is_enabled? 
         w = Weather.weather_for_area(@room.area)
-        w ? "#{w}%R" : nil
+        w ? "#{w}" : nil
       end
       
       def ooc_time

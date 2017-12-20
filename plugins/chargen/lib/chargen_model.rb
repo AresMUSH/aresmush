@@ -8,7 +8,8 @@ module AresMUSH
     attribute :bg_shared, :type => DataType::Boolean, :default => true
     
     def is_approved?
-      self.is_approved
+      return true if is_admin?
+      Chargen.is_enabled? ? self.is_approved : true
     end
     
     def background

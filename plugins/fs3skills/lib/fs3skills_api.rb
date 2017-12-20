@@ -16,6 +16,11 @@ module AresMUSH
       end
     end
     
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("fs3skills")
+    end
+    
+    
     # Makes an ability roll and returns a hash with the successes and success title.
     # Good for automated systems where you only care about the final result and don't need
     # to know the raw die roll.

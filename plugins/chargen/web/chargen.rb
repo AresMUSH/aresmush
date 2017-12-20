@@ -18,10 +18,10 @@ module AresMUSH
           redirect char_page_url(@user)
         end
       
-        @factions = Demographics.get_group("Faction")
-        @positions = Demographics.get_group("Position")
-        @departments = Demographics.get_group("Department")
-        @colonies = Demographics.get_group("Colony")
+        @groups = Demographics.all_groups        
+        @basic_demographics = Demographics.basic_demographics
+        @basic_demographics.delete 'gender'
+        @basic_demographics << 'fullname'
         
         @abilities_app = MushFormatter.format FS3Skills.app_review(@user)
         @demographics_app = MushFormatter.format Demographics.app_review(@user)
@@ -30,11 +30,9 @@ module AresMUSH
         @ranks_app = MushFormatter.format Ranks.app_review(@user)
       
         @ranks = []
-        @factions['values'].each do |k, v|
+        @groups[Ranks.rank_group]['values'].each do |k, v|
           @ranks.concat Ranks.allowed_ranks_for_group(k)
-        end
-      
-        @allowed_ranks = Ranks.allowed_ranks_for_group(@user.group("Faction"))
+        end      
       
       
         @fs3_attrs = FS3Skills.attrs

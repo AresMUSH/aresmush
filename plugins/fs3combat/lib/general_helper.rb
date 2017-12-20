@@ -1,6 +1,10 @@
 module AresMUSH
   module FS3Combat
     
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("fs3combat")
+    end
+    
     def self.combats
       Combat.all.sort { |c| c.num }.reverse
     end
@@ -36,7 +40,7 @@ module AresMUSH
       combat.combatants.each { |c| FS3Combat.emit_to_combatant(c, message) }
       
       if (add_to_scene && combat.scene)
-        Scenes.add_pose(combat.scene, message)
+        Scenes.add_to_scene(combat.scene, message)
       end
     end
       

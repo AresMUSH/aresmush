@@ -1,7 +1,9 @@
 <%= header %>
 <%= t('chargen.app_title', :name => char.name) %>
+<% if AresMUSH::FS3Skills.is_enabled? %>
 <%= section_title(t('chargen.abilities_review_title')) %>
 <%= abilities %>      
+<% end %>
 
 <%= section_title(t('chargen.demographics_review_title')) %>
 <%= demographics %>
@@ -9,7 +11,9 @@
 <%= section_title(t('chargen.misc_review_title')) %>
 <%= bg %>
 <%= desc %>
+<% if AresMUSH::Ranks.is_enabled? %>
 <%= ranks %>
+<% end %>
 
 <%= section_title(t('chargen.app_review_title')) %>
 <%= job_info %>

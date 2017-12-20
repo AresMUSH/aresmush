@@ -21,7 +21,7 @@ module AresMUSH
     end
     
     def update_demographic(key, value)
-      name = key.to_s
+      name = key.to_s.downcase
       if (name == "birthdate")
         self.update(birthdate: value)
       else

@@ -1,6 +1,6 @@
                            <%= erb :"search" %>
                        
-                       
+                      <% if AresMUSH::Events.is_enabled? %>
                       <div class="sidebar-box">
                           <div class="sidebar-heading">
                               <h2>Upcoming Events <i class="fa fa-calendar" aria-hidden="true"></i></h2>
@@ -13,6 +13,7 @@
                           <p><a href="/events">All Events</a></p>
                           
                       </div>
+                      <% end %>
                        
                        <div class="sidebar-box">
                            <div class="sidebar-heading">
