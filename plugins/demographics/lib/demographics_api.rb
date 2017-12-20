@@ -1,6 +1,14 @@
 module AresMUSH
   module Demographics
     
+    def self.basic_demographics
+      basic_demographics = Demographics.all_demographics
+      basic_demographics.delete 'birthdate'
+      basic_demographics.delete 'fullname'
+      basic_demographics.delete 'actor'
+      basic_demographics
+    end
+            
     def self.app_review(char)
       message = t('demographics.demo_review')
       

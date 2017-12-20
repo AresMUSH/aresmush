@@ -9,7 +9,6 @@ module AresMUSH
     post '/admin/config_sites/update', :auth => :admin do
       
       @sites = Global.read_config("sites")
-      puts @params.inspect
       
       @sites['banned'] = @params[:banned_sites].split("\r\n").map { |n| n.downcase }
       @sites['suspect'] = @params[:suspect_sites].split("\r\n").map { |n| n.downcase }

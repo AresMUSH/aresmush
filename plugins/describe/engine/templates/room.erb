@@ -3,6 +3,10 @@
 <%= ooc_time %> ~ <%= ic_time %>
 <%= divider %>
 <%= room.description %>
+<% if weather %>
+
+<%= weather %>
+<% end %>
 <% if details %>
 
 %xh<%= t('describe.details_available') %>%xn <%= details %>

@@ -20,7 +20,7 @@ module AresMUSH
           template = CompleteCensusTemplate.new(paginator)
         elsif (self.name == "Genders" || self.name == "Gender")
           template = GenderCensusTemplate.new
-        elsif (self.name == "Ranks" || self.name == "Rank")
+        elsif (AresMUSH::Ranks.is_enabled? && (self.name == "Ranks" || self.name == "Rank"))
           template = RankCensusTemplate.new
         elsif (self.name.start_with?("Skill"))
           type = self.name.after(" ").titlecase

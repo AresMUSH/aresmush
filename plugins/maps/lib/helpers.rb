@@ -1,6 +1,9 @@
 module AresMUSH
   module Maps
     
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("maps")
+    end
    
     def self.available_maps
       GameMap.all.map { |m| m.name }

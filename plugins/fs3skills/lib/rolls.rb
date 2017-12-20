@@ -52,7 +52,7 @@ module AresMUSH
         end
         
         if (room.scene)
-          Scenes.add_pose(room.scene, message)
+          Scenes.add_to_scene(room.scene, message)
         end
         
       end

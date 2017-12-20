@@ -1,5 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'timezone'
+
 module AresMUSH
   module OOCTime
     def self.plugin_dir

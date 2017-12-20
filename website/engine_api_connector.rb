@@ -32,6 +32,12 @@ module AresMUSH
       return data['status'] == 'OK' ? nil : data['error']
     end
     
+    def plugins_changed(changed_plugins)
+      args = { :changed_plugins => changed_plugins.join(',') }
+      data = post("/api/plugins/changed", args)
+      return data['status'] == 'OK' ? nil : data['error']
+    end
+    
     def post(url, args)
       args['api_key'] = Game.master.engine_api_key
       @rest.post(url, args)
