@@ -20,7 +20,7 @@
       <p>
           <div class="ansi">
                 <ul>
-                <% @char.fs3_hooks.each do |h| %>
+                <% @char.rp_hooks.each do |h| %>
                 <li><b><%= h.name %></b> - <%= format_output_for_html h.description %></li>
                 <% end %>
                 </ul>

@@ -73,3 +73,11 @@ en:
         idled_out: "Idled Out - %{status}"
         bg_page_title: "Background"
         
+        
+        no_special_characters: "Hook names may not contain special characters."
+        
+        hook_set: "RP hook %{name} added."
+        hook_not_found: "RP hook %{name} not found."
+        hook_removed: "RP hook %{name} removed."
+        hooks_added: "%{num} RP hooks added. (%{min} min)"
+        

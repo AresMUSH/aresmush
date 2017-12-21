@@ -14,7 +14,7 @@ module AresMUSH
         
         if (self.set)
           room.update(scene_set: self.set)
-          Pose.emit_setpose(enactor, self.set)
+          Scenes.emit_setpose(enactor, self.set)
         else
           room.update(scene_set: nil)
           client.emit_success t('scenes.scene_set_cleared')

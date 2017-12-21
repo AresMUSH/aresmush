@@ -4,7 +4,6 @@ fs3skills:
     free_backgrounds: 6
     
     min_backgrounds: 2
-    min_hooks: 1
 
     max_skill_rating: 7
     max_attr_rating: 5

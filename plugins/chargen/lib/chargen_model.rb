@@ -6,6 +6,8 @@ module AresMUSH
     attribute :chargen_stage, :type => DataType::Integer
     reference :approval_job, "AresMUSH::Job"
     attribute :bg_shared, :type => DataType::Boolean, :default => true
+
+    collection :rp_hooks, "AresMUSH::RpHook"
     
     def is_approved?
       return true if is_admin?
@@ -16,4 +18,15 @@ module AresMUSH
       self.cg_background
     end
   end
+  
+  class RpHook < Ohm::Model
+    include ObjectModel
+
+    index :name
+    
+    reference :character, "AresMUSH::Character"
+    attribute :name
+    attribute :description
+  end  
+  
 end

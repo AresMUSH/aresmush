@@ -1,6 +1,6 @@
 module AresMUSH
-  module Pose
-    class AutospaceCmd
+  module Scenes
+    class QuoteColorCmd
       include CommandHandler
       
       attr_accessor :option
@@ -10,13 +10,12 @@ module AresMUSH
       end
 
       def handle
-        
         if (!self.option)
-          enactor.update(pose_autospace: nil)
-          message = t('pose.autospace_cleared')
+          enactor.update(pose_quote_color: nil)
+          message = t('scenes.quote_color_cleared')
         else
-          enactor.update(pose_autospace: self.option)
-          message = t('pose.autospace_set', :option => self.option)
+          enactor.update(pose_quote_color: self.option)
+          message = t('scenes.quote_color_set', :option => self.option)
         end
         
         client.emit_success message

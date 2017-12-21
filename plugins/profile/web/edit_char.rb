@@ -72,10 +72,10 @@ module AresMUSH
       @char.update(profile_tags: tags.split(" ").map { |t| t.downcase })
       
       hooks.each do |name, desc|
-        FS3Skills.set_hook(@char, name, desc)
+        Chargen.set_hook(@char, name, desc)
       end
       
-      @char.fs3_hooks.each do |hook|
+      @char.rp_hooks.each do |hook|
         if (!hooks.any? { |name, desc| name.upcase == hook.name.upcase })
           hook.delete
         end

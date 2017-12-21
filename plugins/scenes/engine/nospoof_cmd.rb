@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     class NospoofCmd
       include CommandHandler
 
@@ -19,7 +19,7 @@ module AresMUSH
       
       def handle
         enactor.update(pose_nospoof: self.option.is_on?)
-        client.emit_success t('pose.nospoof_set', :status => self.option)
+        client.emit_success t('scenes.nospoof_set', :status => self.option)
       end
     end
   end

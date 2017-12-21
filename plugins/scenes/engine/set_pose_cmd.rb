@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     class SetPoseCmd
       include CommandHandler
       
@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def handle        
-        Pose.emit_setpose(enactor, self.pose)
+        Scenes.emit_setpose(enactor, self.pose)
       end
       
       def log_command
