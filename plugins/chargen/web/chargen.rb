@@ -28,7 +28,8 @@ module AresMUSH
         @bg_app = MushFormatter.format Chargen.bg_app_review(@user)
         @desc_app = MushFormatter.format Describe.app_review(@user)
         @ranks_app = MushFormatter.format Ranks.app_review(@user)
-      
+        @hook_app = MushFormatter.format Chargen.hook_app_review(@user)
+        
         @ranks = []
         @groups[Ranks.rank_group]['values'].each do |k, v|
           @ranks.concat Ranks.allowed_ranks_for_group(k)
@@ -83,10 +84,10 @@ module AresMUSH
       
       
         @hooks = {}
-        @user.fs3_hooks.each do |h|
+        @user.rp_hooks.each do |h|
           @hooks[h.name] = h.description
         end
-        count = @user.fs3_hooks.count
+        count = @user.rp_hooks.count
         more = [ 1, 6 - count].max
         more.times.each do |m|
           @hooks["hook slot #{m+1}"] = ''

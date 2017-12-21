@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     class CharConnectedEventHandler
       def on_event(event)
         char = Character[event.char_id]

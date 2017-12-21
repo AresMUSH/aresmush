@@ -1,7 +1,7 @@
 require_relative "../../plugin_test_loader"
 
 module AresMUSH
-  module Pose
+  module Scenes
     describe PoseCmd do
   
       before do
@@ -16,7 +16,7 @@ module AresMUSH
           room = double
           @client.stub(:room) { room }
           @handler.stub(:message) { "a message" }
-          Pose.should_receive(:emit_pose).with(@enactor, "a message", false, false)
+          Scenes.should_receive(:emit_pose).with(@enactor, "a message", false, false)
           @handler.handle
         end
       end

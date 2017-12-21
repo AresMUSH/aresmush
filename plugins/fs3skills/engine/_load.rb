@@ -1,11 +1,9 @@
 $:.unshift File.dirname(__FILE__)
 
 load "abilities_cmd.rb"
-load "add_hook_cmd.rb"
 load "add_spec_cmd.rb"
 load "learn_ability_cmd.rb"
 load "raise_ability_cmd.rb"
-load "remove_hook_cmd.rb"
 load "remove_spec_cmd.rb"
 load "reset_cmd.rb"
 load "roll_cmd.rb"

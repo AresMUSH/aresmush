@@ -23,12 +23,6 @@ module AresMUSH
         return AbilitiesCmd
       when "backup"
         return CharBackupCmd
-      when "hook"
-        if (cmd.switch_is?("add"))
-          return AddHookCmd
-        elsif (cmd.switch_is?("remove"))
-          return RemoveHookCmd
-        end
       when "specialty"
         if (cmd.switch_is?("add"))
           return AddSpecialtyCmd

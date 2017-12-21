@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     class Pemit
       include CommandHandler
       
@@ -20,7 +20,7 @@ module AresMUSH
           results.each do |r|
             nospoof = ""            
             if (r.char.pose_nospoof)
-              nospoof = "%xc%% #{t('pose.pemit_nospoof_from', :name => enactor_name)}%xn%R"
+              nospoof = "%xc%% #{t('scenes.pemit_nospoof_from', :name => enactor_name)}%xn%R"
             end
             r.client.emit "#{r.char.pose_autospace}#{nospoof}#{self.message}"
           end

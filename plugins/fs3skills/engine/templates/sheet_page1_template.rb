@@ -51,7 +51,7 @@ module AresMUSH
       
       def hooks
         list = []
-        @char.fs3_hooks.sort_by(:name, :order => "ALPHA").each do |h|
+        @char.rp_hooks.sort_by(:name, :order => "ALPHA").each do |h|
           list << "%xh#{h.name}:%xn #{h.description}"
         end
         list

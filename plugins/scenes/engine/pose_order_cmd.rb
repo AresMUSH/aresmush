@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     class PoseOrderCmd
       include CommandHandler
       
@@ -7,7 +7,7 @@ module AresMUSH
         poses = enactor_room.sorted_pose_order
         list = poses.map { |name, time| "#{name.ljust(30)} #{last_posed(time)}"}
 
-        template = BorderedListTemplate.new list, t('pose.pose_order_title')
+        template = BorderedListTemplate.new list, t('scenes.pose_order_title')
         client.emit template.render
       end
       

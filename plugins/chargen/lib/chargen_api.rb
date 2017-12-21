@@ -33,8 +33,7 @@ module AresMUSH
       end        
       status
     end
-    
-      
+          
     def self.approval_job_notice(char)
       char.approval_job ? t('chargen.approval_reminder') : nil
     end

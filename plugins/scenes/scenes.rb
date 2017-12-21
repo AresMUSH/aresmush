@@ -20,7 +20,45 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-
+      when "autospace"
+        return AutospaceCmd
+      when "nospoof"
+        return NospoofCmd
+      when "pemit"
+        return Pemit
+      when "ooc"
+        # ooc by itself is an alias for offstage
+        if (cmd.args)
+          return PoseCmd
+        end
+      when "emit"
+        case cmd.switch
+        when "set"
+          return SetPoseCmd
+        else
+          return PoseCmd
+        end
+      when "say"
+        return PoseCmd
+      when "pose"
+        case cmd.switch
+        when nil
+          if (cmd.args)
+            return PoseCmd
+          else
+            return PoseOrderCmd
+          end
+        when "drop"
+          return PoseDropCmd
+        when "nudge"
+          return PoseNudgeCmd
+        when "order"
+          return PoseOrderCmd
+        end
+        
+      when "quotecolor"
+        return QuoteColorCmd
+      
       when "scene"
         case cmd.switch
         when "all"
@@ -69,6 +107,16 @@ module AresMUSH
           return ScenesCmd
         end
       end
+      
+      if (cmd.raw.start_with?("\"") ||
+          cmd.raw.start_with?("\\") ||
+          cmd.raw.start_with?(":") ||
+          cmd.raw.start_with?("'") ||
+          cmd.raw.start_with?(">") ||
+          cmd.raw.start_with?(";"))
+        return PoseCatcherCmd
+      end
+      
       nil
     end
 
@@ -78,6 +126,8 @@ module AresMUSH
         return CronEventHandler
       when "PoseEvent"
         return PoseEventHandler
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
       end
       nil
     end

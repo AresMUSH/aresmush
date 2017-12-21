@@ -45,7 +45,7 @@ module AresMUSH
         message = t('scenes.amended_pose', :name => enactor_name,
                       :pronoun => Demographics.possessive_pronoun(enactor) )
         alert = "%xr*** #{message} ***%xn"
-        formatted_pose = Pose.colorize_quotes enactor, self.pose, char
+        formatted_pose = Scenes.colorize_quotes enactor, self.pose, char
         other_client.emit "#{alert}#{formatted_pose}"
       end
       

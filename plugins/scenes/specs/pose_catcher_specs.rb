@@ -1,5 +1,5 @@
 module AresMUSH
-  module Pose
+  module Scenes
     describe PoseCatcherCmd do
           
       before do
@@ -15,7 +15,7 @@ module AresMUSH
           @enactor.stub(:room) { room }
           @enactor.stub(:name) { "Bob" }
           PoseFormatter.should_receive(:format).with("Bob", ":test") { "Bob test"}
-          Pose.should_receive(:emit_pose).with(@enactor, "Bob test", false, false)
+          Scenes.should_receive(:emit_pose).with(@enactor, "Bob test", false, false)
           @handler.handle
         end
       end

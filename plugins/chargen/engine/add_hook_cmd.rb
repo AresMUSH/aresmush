@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module FS3Skills
+  module Chargen
     class AddHookCmd
       include CommandHandler
       
@@ -27,20 +27,20 @@ module AresMUSH
       end
       
       def check_name_for_dots
-        return t('fs3skills.no_special_characters') if (self.name !~ /^[\w\s]+$/)
+        return t('chargen.no_special_characters') if (self.name !~ /^[\w\s]+$/)
         return nil
       end
       
       def check_can_set
         return nil if enactor_name == self.char_name
-        return nil if FS3Skills.can_manage_abilities?(enactor)
+        return nil if Chargen.can_approve?(enactor)
         return t('dispatcher.not_allowed')
       end    
       
       def handle
         ClassTargetFinder.with_a_character(self.char_name, client, enactor) do |model|
-          FS3Skills.set_hook(model, self.name, self.desc)
-          client.emit_success t('fs3skills.hook_set', :name => self.name)
+          Chargen.set_hook(model, self.name, self.desc)
+          client.emit_success t('chargen.hook_set', :name => self.name)
         end
       end
     end

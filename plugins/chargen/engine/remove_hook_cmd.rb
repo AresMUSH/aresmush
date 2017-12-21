@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module FS3Skills
+  module Chargen
     class RemoveHookCmd
       include CommandHandler
       
@@ -24,18 +24,18 @@ module AresMUSH
       
       def check_can_set
         return nil if enactor_name == self.char_name
-        return nil if FS3Skills.can_manage_abilities?(enactor)
+        return nil if Chargen.can_approve?(enactor)
         return t('dispatcher.not_allowed')
       end    
       
       def handle        
         ClassTargetFinder.with_a_character(self.char_name, client, enactor) do |model|
-          hook = model.fs3_hooks.find(name: self.name).first
+          hook = model.rp_hooks.find(name: self.name).first
           if (!hook)          
-            client.emit_failure t('fs3skills.hook_not_found', :name => self.name)
+            client.emit_failure t('chargen.hook_not_found', :name => self.name)
           else
             hook.delete
-            client.emit_success t('fs3skills.hook_removed', :name => self.name)
+            client.emit_success t('chargen.hook_removed', :name => self.name)
           end
         end
       end

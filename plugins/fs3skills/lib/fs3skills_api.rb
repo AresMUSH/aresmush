@@ -62,8 +62,6 @@ module AresMUSH
       text << FS3Skills.starting_skills_check(char)
       text << "%r"
       text << FS3Skills.unusual_skills_check(char)
-      text << "%r"
-      text << FS3Skills.hook_review(char)
       text
     end
     
