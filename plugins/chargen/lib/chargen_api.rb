@@ -42,7 +42,7 @@ module AresMUSH
       job = char.approval_job
       
       if (!job)
-        result = Jobs.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+        result = Jobs.create_job(Global.read_config("chargen", "app_category"), 
           t('chargen.application_title', :name => char.name), 
           t('chargen.app_job_submitted'), 
           char)
@@ -58,7 +58,7 @@ module AresMUSH
         char.update(chargen_locked: true)
         Jobs.change_job_status(char,
           job,
-          Global.read_config("chargen", "jobs", "app_resubmit_status"),
+          Global.read_config("chargen", "app_resubmit_status"),
           t('chargen.app_job_resubmitted'))
         return t('chargen.app_resubmitted')
       end

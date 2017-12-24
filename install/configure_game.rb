@@ -27,7 +27,7 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
   
-      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/install-ares/basic-config for help with these options."
+      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/basic-config for help with these options."
   
       print "\nServer hostname > "
       server_host = STDIN.gets.chomp

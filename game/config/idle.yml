@@ -1,10 +1,10 @@
 idle:
-    idle_exempt:
+    idle_exempt_roles:
         - admin
         - builder
         - guest
         
-    cron:
+    monthly_reminder_cron:
         date: 
             - 1
         hour: 
@@ -21,9 +21,6 @@ idle:
     idle_board: "Announcements"
     
     days_before_idle: 30
-
-    permissions:
-        - manage_roster
 
     arrivals_board: "New Arrivals"
     

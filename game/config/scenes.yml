@@ -16,9 +16,7 @@ scenes:
             
     unsared_scene_deletion_days: 20
     unshared_scene_warning_days: 13
-    
-    wiki_auto_share: true
-    
+        
     scene_types:
         - Social
         - Event

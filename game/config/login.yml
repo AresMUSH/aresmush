@@ -12,6 +12,7 @@ login:
             
     blacklist_cron:
         day:
+            - 1
             - 15
         hour: 
             - 03

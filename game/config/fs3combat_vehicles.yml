@@ -1,12 +1,4 @@
 fs3combat:
-    # Vehicle stats explained:
-    #   description: Free-form text.  Use double quotes around it.
-    #   pilot_skill:  Skill used for piloting and defense rolls.
-    #   toughness:  Value used for knockout rolls.  2 is wimpy, 4 is average, 8 is super-tough.
-    #   hitloc_chart:  Tells which hit location chart (in config_hitlocs.yml) to use.
-    #   armor:  Which armor type (in config_armor.yml) to use.
-    #   dodge: Dice added to/subtracted from defense rolls.
-
     vehicles:
         Viper:
             description: "Viper space fighter"

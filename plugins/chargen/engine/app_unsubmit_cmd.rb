@@ -18,7 +18,7 @@ module AresMUSH
         
         Jobs.change_job_status(enactor,
           job,
-          Global.read_config("chargen", "jobs", "app_hold_status"),
+          Global.read_config("chargen", "app_hold_status"),
           t('chargen.app_job_unsubmitted'))
           
         enactor.update(chargen_locked: false)

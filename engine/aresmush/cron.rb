@@ -11,6 +11,7 @@ module AresMUSH
     end
     
     def self.is_cron_match?(cron_spec, time)
+      return false if !cron_spec
       return false if !test_match(cron_spec["date"], time.day, :date)
       return false if !test_match(cron_spec["day_of_week"], time.wday, :day_of_week)
       return false if !test_match(cron_spec["hour"], time.hour, :hour)
