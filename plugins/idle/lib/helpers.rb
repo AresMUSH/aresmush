@@ -31,7 +31,7 @@ module AresMUSH
     end
     
     def self.is_exempt?(actor)
-      actor.has_permission?("idle_exempt")
+      actor.has_permission?("idle_exempt_roles")
     end
     
     def self.idle_cleanup(char)

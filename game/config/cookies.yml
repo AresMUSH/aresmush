@@ -1,5 +1,5 @@
 cookies:
-    cron:
+    cookie_award_cron:
         day_of_week: 
             - Fri
         hour: 

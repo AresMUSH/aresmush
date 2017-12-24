@@ -364,11 +364,6 @@ fs3combat:
             has_shrapnel: false
             init_mod: 0
 
-    # Special things that can be added to weapons, like special ammunition or
-    # accessories.  These can modify any or all of the following weapon stats:
-    #    - lethality, penetration, ammo, recoil, accuracy
-    # The number is *added to* the weapon's base stat.  So an armor-piercing
-    # mod with penetration: 3 would add 3 to the base penetration of the weapon.
     weapon specials:
         Ap:
             description: "Armor Piercing Rounds"

@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Skills    
     class XpCronHandler
       def on_event(event)
-        config = Global.read_config("fs3skills", "cron")
+        config = Global.read_config("fs3skills", "xp_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
         periodic_xp = Global.read_config("fs3skills", "periodic_xp")

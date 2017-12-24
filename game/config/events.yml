@@ -7,7 +7,7 @@ events:
         "event/add" : "event/create"
         "event/remove" : "event/delete"
         
-    cron:
+    event_alert_cron:
         minute: 
             - 0
             - 15

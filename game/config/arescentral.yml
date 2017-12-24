@@ -1,5 +1,5 @@
 arescentral:
-    cron:
+    directory_update_cron:
         hour: 
             - 04
         minute: 

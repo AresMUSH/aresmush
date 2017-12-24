@@ -32,14 +32,14 @@ module AresMUSH
             return
           end
           
-          Jobs.close_job(enactor, job, Global.read_config("chargen", "messages", "approval"))
+          Jobs.close_job(enactor, job, Global.read_config("chargen", "approval_message"))
           
           model.update(is_approved: true)
           model.update(approval_job: nil)
           
           client.emit_success t('chargen.app_approved', :name => model.name)
           
-          welcome_message = Global.read_config("chargen", "messages", "welcome")
+          welcome_message = Global.read_config("chargen", "welcome_message")
           bbs_body = welcome_message % { :name => model.name, :position => model.group("Position") }
           
           Bbs.system_post(
@@ -47,9 +47,9 @@ module AresMUSH
             t('chargen.approval_bbs_subject', :name => model.name), 
             bbs_body)
             
-          Jobs.create_job(Global.read_config("chargen", "jobs", "app_category"), 
+          Jobs.create_job(Global.read_config("chargen", "app_category"), 
              t('chargen.approval_bbs_subject', :name => model.name), 
-             Global.read_config("chargen", "messages", "post_approval"), 
+             Global.read_config("chargen", "post_approval_message"), 
              Game.master.system_character)
         end
       end

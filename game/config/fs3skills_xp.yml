@@ -6,7 +6,7 @@ fs3skills:
     
     max_xp_hoard: 4
     
-    cron:
+    xp_cron:
         day_of_week: 
             - Sat
         hour: 

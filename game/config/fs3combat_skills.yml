@@ -3,12 +3,12 @@ fs3combat:
     
     healing_skill: Medicine
     
-    recovery_skill: Athletics
+    recovery_skill: Brawn
     
     initiative_skill: Alertness
     
     composure_skill: Composure
     
-    default_defense_skill: Athletics
+    default_defense_skill: Reflexes
     
     strength_skill: Brawn

@@ -22,19 +22,19 @@ weather:
             spring:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
                 condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
-                stability: 80
+                stability: 70
             summer:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
                 condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
-                stability: 80
+                stability: 70
             fall:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
                 condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
-                stability: 80
+                stability: 70
             winter:
                 temperature: cold cold cold cold cold freezing freezing freezing cool cool
                 condition:  clear clear clear fair fair fair flurrying flurrying overcast snowing
-                stability: 80
+                stability: 70
         temperate:
             summer:
                 temperature: hot hot hot hot hot warm warm warm cool cool
@@ -59,6 +59,6 @@ weather:
         Offstage: none
         North: polar
      
-    cron:
+    weather_cron:
         minute: 
             - 00
