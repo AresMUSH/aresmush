@@ -25,7 +25,7 @@ module AresMUSH
             end
             
             unread.each do |u|
-              Engine.dispatcher.queue_command(client, Command.new("bbs #{self.board_name}/#{u.post_index}"))
+              Global.dispatcher.queue_command(client, Command.new("bbs #{self.board_name}/#{u.post_index}"))
             end
           end
           return

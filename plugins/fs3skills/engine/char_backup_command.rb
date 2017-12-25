@@ -18,9 +18,9 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          Engine.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
-          Engine.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
-          Engine.dispatcher.queue_command(client, Command.new("info #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("info #{model.name}"))
           
           template = Describe.desc_template(model, enactor)
           client.emit template.render

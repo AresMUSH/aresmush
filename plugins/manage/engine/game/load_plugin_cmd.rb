@@ -43,7 +43,7 @@ module AresMUSH
           Global.plugin_manager.load_plugin(load_target, :engine)
           Help.reload_help
           Global.locale.reload
-          Engine.dispatcher.queue_event ConfigUpdatedEvent.new
+          Global.dispatcher.queue_event ConfigUpdatedEvent.new
           client.emit_success t('manage.plugin_loaded', :name => load_target)
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)

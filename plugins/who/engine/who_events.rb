@@ -2,7 +2,7 @@ module AresMUSH
   module Who
     class CharConnectedEventHandler
       def on_event(event)
-        count = Engine.client_monitor.logged_in_clients.count
+        count = Global.client_monitor.logged_in_clients.count
         game = Game.master
         
         if (count > game.online_record)

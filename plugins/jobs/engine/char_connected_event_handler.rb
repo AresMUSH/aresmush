@@ -7,7 +7,7 @@ module AresMUSH
         
         return if !Jobs.can_access_jobs?(char)
         
-        Engine.dispatcher.queue_timer(2, "Jobs", client) do 
+        Global.dispatcher.queue_timer(2, "Jobs", client) do 
           jobs = Jobs.filtered_jobs(char)
           paginator = Paginator.paginate(jobs, 1, 20)
           template = JobsListTemplate.new(char, paginator)

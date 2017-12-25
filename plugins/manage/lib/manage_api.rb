@@ -9,7 +9,7 @@ module AresMUSH
         Global.logger.debug "Loading game config."
         Global.config_reader.load_game_config
         Global.help_reader.load_game_help
-        Engine.dispatcher.queue_event ConfigUpdatedEvent.new
+        Global.dispatcher.queue_event ConfigUpdatedEvent.new
         
         return nil
       rescue Exception => e

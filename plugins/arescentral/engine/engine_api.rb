@@ -85,7 +85,7 @@ module AresMUSH
         port: Global.read_config('server', 'port'),
         website_tagline: Global.read_config('website', 'website_tagline'),
         website_welcome: format_markdown_for_html(Global.read_config('website', 'website_welcome')),
-        onlineCount: Engine.client_monitor.logged_in.count,
+        onlineCount: Global.client_monitor.logged_in.count,
         ictime: ICTime.ic_datestr(ICTime.ictime)
         } ]
       data.to_json
@@ -163,12 +163,12 @@ module AresMUSH
     end
     
     get '/api/who' do 
-      who = Engine.client_monitor.logged_in.map { |client, char| char.name }
+      who = Global.client_monitor.logged_in.map { |client, char| char.name }
       { who: who }.to_json
     end
       
     post '/api/char/created' do
-      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      Global.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
       { status: 'OK', error: '' }.to_json
     end
     
@@ -195,7 +195,7 @@ module AresMUSH
     end
     
     post '/api/char/created' do
-      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      Global.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
       { status: 'OK', error: '' }.to_json
     end
     
@@ -237,7 +237,7 @@ module AresMUSH
         return { status: 'ERROR', error: 'Invalid authentication token.'}.to_json
       end
       
-      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      Global.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
       { status: 'OK', error: '' }.to_json
     end
     
@@ -262,7 +262,7 @@ module AresMUSH
         end      
         Help.reload_help
         Global.locale.reload
-        Engine.dispatcher.queue_event ConfigUpdatedEvent.new
+        Global.dispatcher.queue_event ConfigUpdatedEvent.new
       rescue Exception => ex
         Global.logger.error ex
         error = ex.to_s

@@ -48,17 +48,6 @@ module AresMUSH
        200
      end
     
-     helpers do
-       def find_template(views, name, engine, &block)
-         views = Plugins.all_plugins.map { |p| File.join(AresMUSH.plugin_path, p, "web", "views") }
-         views << AresMUSH.website_views_path
-         views.each { |v| super(v, name, engine, &block) }
-       end
-     end
-    
-    
-    # The actual API methods are defined in the AresCentral plugin.
-    
     
   end
 end

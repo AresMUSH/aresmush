@@ -27,11 +27,11 @@ module AresMUSH
           client.emit template.render
         end
         
-        Engine.dispatcher.queue_timer(2, "Tell guest their name", client) do
+        Global.dispatcher.queue_timer(2, "Tell guest their name", client) do
           client.emit_success t('login.guest_name', :name => guest.name)
         end
         
-        Engine.dispatcher.queue_event CharConnectedEvent.new(client, guest.id)
+        Global.dispatcher.queue_event CharConnectedEvent.new(client, guest.id)
       end
     end
   end

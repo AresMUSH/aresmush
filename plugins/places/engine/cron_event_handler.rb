@@ -3,7 +3,7 @@ module AresMUSH
     class CronEventHandler
       def on_event(event)
         
-        Engine.client_monitor.logged_in do |client, char|
+        Global.client_monitor.logged_in do |client, char|
           if (char.place && char.place.room != char.room)
             char.upate(place: nil)
           end

@@ -44,7 +44,7 @@ module AresMUSH
     end
     
     def self.find_client(char)
-      Engine.client_monitor.find_client(char)
+      Global.client_monitor.find_client(char)
     end
     
     def self.is_online?(char)
@@ -85,7 +85,7 @@ module AresMUSH
     end
     
     def self.announce_connection(client, char)
-      Engine.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
+      Global.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
     end
     
     # Can take awhile - call from an Engine.spawn

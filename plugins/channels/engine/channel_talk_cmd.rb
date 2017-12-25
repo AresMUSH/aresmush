@@ -45,7 +45,7 @@ module AresMUSH
         end
         
         if (cmd)
-          Engine.dispatcher.queue_command(client, cmd)
+          Global.dispatcher.queue_command(client, cmd)
           return
         end
 

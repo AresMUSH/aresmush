@@ -5,7 +5,7 @@ module AresMUSH
         client = event.client
         char = Character[event.char_id]
         Global.logger.info("Character Disconnected: #{char.name}")
-        Engine.client_monitor.logged_in.each do |other_client, other_char|
+        Global.client_monitor.logged_in.each do |other_client, other_char|
           if (other_char.room == char.room)
             other_client.emit_success t('login.announce_char_disconnected_here', :name => char.name)
           elsif (Login.wants_announce(other_char, char))
