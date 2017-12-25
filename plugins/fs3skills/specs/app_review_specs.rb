@@ -4,26 +4,7 @@ module AresMUSH
       
       before do
         SpecHelpers.stub_translate_for_testing
-      end
-      
-      describe :hook_review do
-        before do 
-          Global.stub(:read_config).with("fs3skills", "min_hooks") { 2 }
-          @char = double
-        end
-        
-        it "should error if too few hooks" do
-          @char.stub(:fs3_hooks) { [ FS3RpHook.new() ] }
-          review = FS3Skills.hook_review(@char)
-          review.should eq "fs3skills.hooks_added                              chargen.not_enough"
-        end
-        
-        it "should be OK if enough hooks" do
-          @char.stub(:fs3_hooks) { [ FS3RpHook.new(), FS3RpHook.new() ] }
-          review = FS3Skills.hook_review(@char)
-          review.should eq "fs3skills.hooks_added                              chargen.ok"
-        end
-      end
+      end      
 
       describe :backgrounds do
         before do 

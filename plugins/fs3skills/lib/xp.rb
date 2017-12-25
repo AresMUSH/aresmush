@@ -24,6 +24,11 @@ module AresMUSH
     def self.can_learn_further?(ability_name, rating)
       self.xp_needed(ability_name, rating) != nil
     end
+
+    def self.skill_requires_training(ability)
+      skills_requiring_training = Global.read_config("fs3skills", "skills_requiring_training")
+      return (skills_requiring_training.include?(ability.name) && ability.rating <= 2)
+    end
     
     def self.learn_ability(client, char, name)
       ability = FS3Skills.find_ability(char, name)
@@ -53,7 +58,12 @@ module AresMUSH
         else
           client.emit_success t('fs3skills.xp_spent', :name => name)
         end
+        
+        if (FS3Skills.skill_requires_training(ability))
+          client.emit_ooc t('fs3skills.skill_requires_training', :name => name)
+        end
       end 
+      
       
       FS3Skills.modify_xp(char, -1)       
     end

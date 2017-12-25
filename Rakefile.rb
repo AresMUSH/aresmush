@@ -13,8 +13,8 @@ require_relative 'install/configure_game.rb'
 
 def minimal_boot
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all(:engine)
   bootstrapper.config_reader.load_game_config
+  AresMUSH::Global.plugin_manager.load_all(:engine)
   bootstrapper.db.load_config
 end
 

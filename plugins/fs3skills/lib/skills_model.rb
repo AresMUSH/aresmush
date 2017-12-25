@@ -7,7 +7,6 @@ module AresMUSH
     collection :fs3_action_skills, "AresMUSH::FS3ActionSkill"
     collection :fs3_background_skills, "AresMUSH::FS3BackgroundSkill"
     collection :fs3_languages, "AresMUSH::FS3Language"
-    collection :fs3_hooks, "AresMUSH::FS3RpHook"
     
     def luck
       self.fs3_luck
@@ -234,15 +233,5 @@ module AresMUSH
       end
     end
   end
-  
-  class FS3RpHook < Ohm::Model
-    include ObjectModel
-
-    index :name
-    
-    reference :character, "AresMUSH::Character"
-    attribute :name
-    attribute :description
-  end  
   
 end

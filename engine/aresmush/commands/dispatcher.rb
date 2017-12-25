@@ -65,6 +65,12 @@ module AresMUSH
       @handled = false
       with_error_handling(client, cmd) do
         enactor = client.find_char
+        
+        if (enactor && enactor.is_statue?)
+          client.emit_failure t('dispatcher.you_are_statue')
+          return
+        end
+        
         CommandAliasParser.substitute_aliases(enactor, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
           AresMUSH.with_error_handling(client, cmd) do

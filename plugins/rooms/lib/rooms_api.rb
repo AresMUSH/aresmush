@@ -3,8 +3,10 @@ module AresMUSH
     
     def self.move_to(client, char, room, exit_name = nil?)
       current_room = char.room
-      Status.update_last_ic_location(char)
-      Places.clear_place(char)
+      if (current_room)
+        Status.update_last_ic_location(char)
+        Places.clear_place(char)
+      end
       
       if (exit_name)
         Rooms.emit_ooc_to_room(current_room, t('rooms.char_has_left_through_exit', :name => char.name, :room => room.name, :exit => exit_name))

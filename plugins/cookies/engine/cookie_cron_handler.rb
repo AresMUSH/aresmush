@@ -2,7 +2,7 @@ module AresMUSH
   module Cookies    
     class CronEventHandler
       def on_event(event)
-        config = Global.read_config("cookies", "cron")
+        config = Global.read_config("cookies", "cookie_award_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
         cookies_per_luck = Global.read_config("cookies", "cookies_per_luck")

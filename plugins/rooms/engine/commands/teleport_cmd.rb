@@ -27,7 +27,7 @@ module AresMUSH
       end
       
       def handle
-        matched_rooms = find_destination
+        matched_rooms = Rooms.find_destination(self.destination, enactor, true)
         if (matched_rooms.count == 0)
           client.emit_failure t('rooms.invalid_teleport_destination')
           return
@@ -51,23 +51,7 @@ module AresMUSH
           Rooms.move_to(t[:client], t[:char], room)
         end
       end
-      
-      def find_destination
-        find_result = ClassTargetFinder.find(self.destination, Character, enactor)
-        if (find_result.found?)
-          return [find_result.target.room]
-        end
-        
-        find_result = ClassTargetFinder.find(self.destination, Room, enactor)
-        if (find_result.found?)
-          return [find_result.target]
-        end
-        
-        matches = Room.find_by_name_and_area self.destination                
-        return matches
-      end
-      
-      
+            
       def find_targets
         if (self.names.empty?)
           target = { :client => client, :char => enactor }

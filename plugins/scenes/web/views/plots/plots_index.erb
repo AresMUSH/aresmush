@@ -20,7 +20,8 @@
 <thead>
     <tr>
         <th>Plot</th>
-        <th>Description</th>
+        <th>Dates</th>
+        <th>Summary</th>
     </tr>
 </thead>
 
@@ -31,8 +32,11 @@
         <td>
         <a href="/plot/<%= p.id %>"><%= p.title %></a>
         </td>
+        <td>
+        <%= p.start_date %> - <%= p.end_date %>
+        </td>        
         <td class="ansi">
-            <%= format_markdown_for_html p.description %>
+            <%= format_markdown_for_html p.summary %>
         </td>
     </tr>
 <% end %>

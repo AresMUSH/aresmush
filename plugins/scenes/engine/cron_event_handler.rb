@@ -41,7 +41,7 @@ module AresMUSH
         
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
           
-          elapsed_days = Time.now - scene.date_completed
+          elapsed_days = (Time.now - scene.date_completed) / 86400
           if (elapsed_days > delete_days  && scene.deletion_warned)
             Global.logger.info "Deleting scene #{scene.id} - #{scene.title} completed #{scene.date_completed}"
             scene.delete
@@ -55,8 +55,8 @@ module AresMUSH
       
       def should_stop_empty_scene(room)
         return false if !room.scene
-        return true if room.characters.empty?
-        return room.scene.temp_room
+        return true if !room.scene.temp_room
+        return room.characters.empty?
       end
     end
   end

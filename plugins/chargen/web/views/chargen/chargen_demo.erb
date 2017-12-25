@@ -2,7 +2,8 @@
     
     <div class="panel-body">
 
-        <% [:fullname, :hair, :eyes, :skin, :height, :physique, :callsign, :actor ].each do |demo| %>
+        <% @basic_demographics.sort.each do |demo| %>
+        
         
         <div class="form-group row">
     
@@ -28,6 +29,13 @@
                 <option value="<%= gender %>" <% if @user.demographic(:gender) == gender %> selected <% end %> ><%= gender %></option>
                 <% end %>
             </select>
+        </div>
+        
+        <div class="form-group row">
+    
+            <label for="actor" class="col-xs-2 col-form-label">Played By:</label> 
+            <input type="text" name="actor" size="100" value="<%= @user.demographic(:actor) %>"/>
+
         </div>
 
     </div>

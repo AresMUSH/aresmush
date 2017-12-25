@@ -8,7 +8,7 @@ module AresMUSH
       
       def parse_args
         self.topic = cmd.args
-        self.show_detail = cmd.switch_is?("detail")
+        self.show_detail = !cmd.switch_is?("quick")
       end
 
       def required_args

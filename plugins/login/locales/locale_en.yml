@@ -47,7 +47,7 @@ en:
        unread_requests: "- There is new activity on your %xhrequests%xn. %xh%xx(requests)%xn"
        unread_jobs: "- There are %xh%xmunread jobs%xn. %xh%xx(jobs/new)%xn"
        no_unread_requests: "- No unread requests or jobs."
-       alt_unread_mail: "- %{name} has unread mail."
+       alt_unread_mail: "- %{name} has %xh%xmunread mail%xn."
        upcoming_events_title: "Upcoming Events"
        
        tos_reset: "You have reset everyone's terms of service acknowledgement."
@@ -60,4 +60,4 @@ en:
        cant_boot_admin: "Nice try.  You can't boot an admin character!"
        
        boot_title: "Character Booted"
-       boot_message: "%{booter} has booted %{bootee}.  Check the game log for the troll's IP and host info."
+       boot_message: "%{booter} has booted %{bootee}.  Reason:%R%R%{reason}"

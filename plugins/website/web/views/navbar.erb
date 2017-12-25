@@ -19,7 +19,9 @@
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="playnav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Play <span class="caret"/> </a>
               <ul class="dropdown-menu">
+                  <% if AresMUSH::Chargen.is_enabled? %>
                   <li><a href="/chargen">Character Creation</a></li>
+                  <% end %>
                   <li><a href="/play">Web Client</a></li>
                   <li><a href="/who">Who's Online</a></li> 
               </ul>
@@ -47,25 +49,34 @@
                         <li><a href="/locations">Locations</a></li>
                         <li><hr></li>
                         <li><a href="/bbs">Bulletin Boards</a></li> 
+                        <% if AresMUSH::Events.is_enabled? %>
                         <li><a href="/events">Events</a></li> 
+                        <% end %>
                         <li><hr></li>
                         <li><a href="/files">Files</a></li>
                     </ul>
                 </li>
           
+          <% if AresMUSH::FS3Skills.is_enabled? %>
+          
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="fs3nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> FS3 <span class="caret"/> </a>
               <ul class="dropdown-menu">
                   <li><a href="/fs3/skills">Skills List</a></li>
+                  <% if AresMUSH::FS3Combat.is_enabled? %>
                   <li><a href="/combat/gear">Gear List</a></li>
+                  <% end %>
                   <li><hr></li>
                   <li><a href="http://aresmush.com/fs3/fs3-3" target="_blank">Player's Guide <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                   <li><a href="http://aresmush.com/fs3/fs3-3/roll-quickref" target="_blank">Rolls Quick Reference <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                  <% if AresMUSH::FS3Combat.is_enabled? %>
                   <li><a href="http://aresmush.com/fs3/fs3-3/combat-quickref" target="_blank">Combat Quick Reference <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
                   <li><a href="http://aresmush.com/fs3/fs3-3/combat-walkthrough" target="_blank">Interactive Combat Walkthrough <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+                  <% end %>
                   
               </ul>
           </li>
+          <% end %>
           
           
           <%= erb :"wiki_nav" %>

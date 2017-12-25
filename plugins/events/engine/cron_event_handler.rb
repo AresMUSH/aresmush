@@ -2,7 +2,7 @@ module AresMUSH
   module Events    
     class CronEventHandler
       def on_event(event)
-        config = Global.read_config("events", "cron")
+        config = Global.read_config("events", "event_alert_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
         Event.all.each do |e|

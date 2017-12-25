@@ -162,11 +162,13 @@ module AresMUSH
         redirect '/wiki'
       end
       
-      expiry_time = @page.locked_time + 60*15
       
-      if (@page.locked_by && (@page.locked_by != @user) && (Time.now  < expiry_time) )
-        flash[:error] = "That page is locked by #{@page.locked_by.name}.  Their lock will expire at #{OOCTime.local_long_timestr(@user, expiry_time)}."
-        redirect "/wiki/#{name_or_id}"
+      if (@page.locked_by && (@page.locked_by != @user))
+        expiry_time = @page.locked_time + 60*15
+        if (Time.now  < expiry_time)
+          flash[:error] = "That page is locked by #{@page.locked_by.name}.  Their lock will expire at #{OOCTime.local_long_timestr(@user, expiry_time)}."
+          redirect "/wiki/#{name_or_id}"
+        end
       end
       
       @page.update(locked_by: @user)

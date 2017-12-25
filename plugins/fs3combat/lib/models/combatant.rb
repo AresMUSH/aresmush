@@ -7,8 +7,8 @@ module AresMUSH
     attribute :action_args    
     attribute :combatant_type
     attribute :weapon_name
-    attribute :weapon_specials, :type => DataType::Array
-    attribute :armor_specials, :type => DataType::Array
+    attribute :weapon_specials, :type => DataType::Array, :default => []
+    attribute :armor_specials, :type => DataType::Array, :default => []
     attribute :stance, :default => "Normal"
     attribute :armor_name
     attribute :is_ko, :type => DataType::Boolean

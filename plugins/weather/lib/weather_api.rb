@@ -1,11 +1,15 @@
 module AresMUSH
   module Weather
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("weather")
+    end
+    
     def self.weather_for_area(area)
       # Get the weather for the current area if there is one.
       weather = Weather.current_weather[area] || Weather.current_weather["default"]
 
       # This handles the 'no weather' case, returning nil.
-      return nil if weather.empty?
+      return nil if !weather || weather.empty?
 
       season = Weather.season_for_area(area)
       time_of_day = ICTime.time_of_day(ICTime.ictime)

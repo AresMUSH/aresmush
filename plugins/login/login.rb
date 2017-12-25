@@ -86,7 +86,9 @@ module AresMUSH
       when "CharConnectedEvent"
         return CharConnectedEventHandler
       when "CharDisconnectedEvent"
-        return CharDisconnectedEventHandler      
+        return CharDisconnectedEventHandler
+      when "ConfigUpdatedEvent", "GameStartedEvent"
+        return ConfigUpdatedEventHandler
       when "CronEvent"
         return CronEventHandler
       end

@@ -1,0 +1,7 @@
+<%= header %>
+%xh<%= t('fs3combat.targets_title') %>%xn
+
+<% combat.active_combatants.each do |c| %>
+<%= left( c.name, 16 ) %> <%= left( target(c), 30 ) %> <%= targeted_by(c) %>
+<% end %>
+<%= footer %>

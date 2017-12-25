@@ -18,17 +18,22 @@ module AresMUSH
           redirect char_page_url(@user)
         end
       
-        @factions = Demographics.get_group("Faction")
-        @positions = Demographics.get_group("Position")
-        @departments = Demographics.get_group("Department")
-        @colonies = Demographics.get_group("Colony")
-      
+        @groups = Demographics.all_groups        
+        @basic_demographics = Demographics.basic_demographics
+        @basic_demographics.delete 'gender'
+        @basic_demographics << 'fullname'
+        
+        @abilities_app = MushFormatter.format FS3Skills.app_review(@user)
+        @demographics_app = MushFormatter.format Demographics.app_review(@user)
+        @bg_app = MushFormatter.format Chargen.bg_app_review(@user)
+        @desc_app = MushFormatter.format Describe.app_review(@user)
+        @ranks_app = MushFormatter.format Ranks.app_review(@user)
+        @hook_app = MushFormatter.format Chargen.hook_app_review(@user)
+        
         @ranks = []
-        @factions['values'].each do |k, v|
+        @groups[Ranks.rank_group]['values'].each do |k, v|
           @ranks.concat Ranks.allowed_ranks_for_group(k)
-        end
-      
-        @allowed_ranks = Ranks.allowed_ranks_for_group(@user.group("Faction"))
+        end      
       
       
         @fs3_attrs = FS3Skills.attrs
@@ -77,14 +82,12 @@ module AresMUSH
           0 => "Everyman", 1 => "Beginner", 2 => "Conversational", 3 => "Fluent"
         }
       
-        template = Chargen::AppTemplate.new(@user, @user)
-        @app = MushFormatter.format template.render, false
       
         @hooks = {}
-        @user.fs3_hooks.each do |h|
+        @user.rp_hooks.each do |h|
           @hooks[h.name] = h.description
         end
-        count = @user.fs3_hooks.count
+        count = @user.rp_hooks.count
         more = [ 1, 6 - count].max
         more.times.each do |m|
           @hooks["hook slot #{m+1}"] = ''

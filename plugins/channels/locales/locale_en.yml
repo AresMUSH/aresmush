@@ -39,6 +39,7 @@ en:
 
         recall_history: "Chat History For %{name}"
         invalid_recall_limit: "Please specify a number between 1 and 25."
+        recall_not_enabled: "Recall is not enabled on that channel."
         
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
         channel_alias_hint: "%{alias} <msg>"
@@ -48,3 +49,7 @@ en:
         channel_command_hint: "Type 'channels' to see the commands to talk on different channels."
         cant_use_channel: "You do not have permission to use that channel."
         did_you_mean_page: "It looks like you're trying to do a page but used the channel command accidentally."
+        
+        channel_reported_body: "%{reporter} has reported the following conversation on the %{name} channel.%R%RReason:%R"
+        channel_reported_title: "Channel Reported"
+        channel_reported: "Thank you.  A report has been created using the channel log as evidence."

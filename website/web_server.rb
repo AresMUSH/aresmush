@@ -78,7 +78,7 @@ module AresMUSH
     
     helpers do
       def find_template(views, name, engine, &block)
-        views = Plugins.all_plugins.map { |p| File.join(AresMUSH.plugin_path, p, "web", "views") }
+        views = Global.plugin_manager.all_plugin_folders.map { |p| File.join(AresMUSH.plugin_path, p, "web", "views") }
         views << AresMUSH.website_views_path
         views.each { |v| super(v, name, engine, &block) }
       end

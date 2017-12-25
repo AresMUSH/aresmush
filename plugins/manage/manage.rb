@@ -66,6 +66,8 @@ module AresMUSH
         return RenameCmd
       when "shutdown"
         return ShutdownCmd
+      when "statue", "unstatue"
+        return StatueCmd
       when "unload"
         return UnloadPluginCmd
       when "version"

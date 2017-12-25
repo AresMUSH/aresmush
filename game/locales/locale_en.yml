@@ -21,6 +21,7 @@ en:
         invalid_syntax: "That is not the right command format. See `help %{cmd}`."
         invalid_on_off_option: "Please use 'on' or 'off'."
         stale_object_error: "Someone else changed that object at the same time.  Please try again."
+        you_are_statue: "You have been turned into a statue and are locked out of all game commands."
     
     db:
         object_not_found: Nothing found with that name.

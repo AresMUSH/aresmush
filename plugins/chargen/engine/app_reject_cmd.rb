@@ -38,8 +38,8 @@ module AresMUSH
           
           Jobs.change_job_status(enactor,
             job,
-            Global.read_config("chargen", "jobs", "app_hold_status"),
-            "#{Global.read_config("chargen", "messages", "rejection")}%R%R#{self.message}")
+            Global.read_config("chargen", "app_hold_status"),
+            "#{Global.read_config("chargen", "rejection_message")}%R%R#{self.message}")
                       
           client.emit_success t('chargen.app_rejected', :name => model.name)
         end

@@ -29,8 +29,9 @@ module AresMUSH
       end
       
       def resolve
+        message = FS3Combat.treat(self.target.associated_model, self.combatant.associated_model)
         FS3Combat.check_for_unko(self.target)        
-        [FS3Combat.treat(self.target.associated_model, self.combatant.associated_model)]
+        [message]
       end
     end
   end

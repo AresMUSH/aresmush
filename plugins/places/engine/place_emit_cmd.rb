@@ -24,7 +24,7 @@ module AresMUSH
         end
         
         
-        Pose.emit(enactor, self.emit, place.name)
+        Scenes.emit(enactor, self.emit, place.name)
       end
     end
   end

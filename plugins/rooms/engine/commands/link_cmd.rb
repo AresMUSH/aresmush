@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       def handle
-        matched_rooms = Room.find_by_name_and_area self.room_name
+        matched_rooms = Rooms.find_destination(self.room_name, enactor)
         if (matched_rooms.count != 1)
           client.emit_failure matched_rooms.count == 0 ? t('db.object_not_found') : t('db.object_ambiguous')
           return

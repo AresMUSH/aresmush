@@ -3,7 +3,7 @@ module AresMUSH
     
     get '/scene/:id/edit/?', :auth => :approved do |id|
       @scene = Scene[id]
-      @plots = Plot.all.to_a.sort_by { |p| p.id }
+      @plots = Plot.all.to_a.sort_by { |p| p.id }.reverse
       @log = @scene.scene_log
       @available_chars = AresMUSH::Character.all.select { |c| c.is_approved? }.sort_by { |c| c.name }
       @available_scenes = Scene.all.to_a.select { |s| s.shared && s.id != id }.sort_by { |s| s.icdate }.reverse

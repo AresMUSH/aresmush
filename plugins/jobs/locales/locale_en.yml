@@ -19,6 +19,7 @@ en:
         handled_by_title: "Handled By"
         description: "Description:"
         replies: "Replies:"
+        too_many_jobs_open: "Unapproved characters are limited in how many requests they can have open at once.  Please try again once some of your jobs have been handled."
         
         job_created: "Job created."
         announce_new_job:  "New Job! #%{number} \"%{title}\" submitted by %{name}."

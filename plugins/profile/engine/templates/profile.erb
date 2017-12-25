@@ -1,24 +1,22 @@
 <%= header %>
 <%= char.name %><%= center( approval_status, 23 ) %><%= right( t('profile.profile_title'), 28 ) %>
 <%= divider %>
-%xh<%= left( t('profile.fullname_title'), 12 ) %>%xn <%= fullname %>
-%xh<%= left( t('profile.actor_title'), 12 ) %>%xn <%= played_by %>
-%xh<%= left( t('profile.gender_title'), 12 ) %>%xn <%= left( gender, 25 ) -%>
-%xh<%= left( t('profile.skin_title'), 12 ) %>%xn <%= left( skin, 25 ) %>
-%xh<%= left( t('profile.height_title'), 12 ) %>%xn <%= left( height, 25 ) -%>
-%xh<%= left( t('profile.physique_title'), 12 ) %>%xn <%= left( physique, 25 ) %>
-%xh<%= left( t('profile.hair_title'), 12 ) %>%xn <%= left( hair, 25 ) -%>
-%xh<%= left( t('profile.eyes_title'), 12 ) %>%xn <%= left( eyes, 25 ) %>
+%xh<%= left( t('profile.fullname_title'), 12 ) %>%xn <%= left( demographic(:fullname), 25 ) -%>
+%xh<%= left( t('profile.actor_title'), 12 ) %>%xn <%= left( demographic(:actor), 25 ) -%>
+<% basic_demographics.each_with_index do |d, i| %>
+<% if i % 2 == 0 %>%R<% end %>%xh<%= left( "#{d.titlecase}:", 12 ) %>%xn <%= left( demographic(d), 25 ) -%>
+<% end %>
+
 %xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) -%>
 %xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( birthdate, 25 ) %>
 %xh<%= left( t('profile.wiki_title'), 12) %>%xn <%= wiki %>
-<%= divider %>
-%xh<%= left( t('profile.colony_title'), 12 ) %>%xn <%= left( colony, 25 ) -%>
-%xh<%= left( t('profile.position_title'), 12 ) %>%xn <%= left( position, 25 ) %>
-%xh<%= left( t('profile.faction_title'), 12 ) %>%xn <%= left( faction, 25 ) -%>
-%xh<%= left( t('profile.department_title'), 12 ) %>%xn <%= left( department, 25 ) %>
+<%= divider -%>
+<% groups.each_with_index do |g, i| %>
+<% if i % 2 == 0 %>%R<% end %>%xh<%= left( "#{g.titlecase}:", 12 ) %>%xn <%= left( group(g), 25 ) -%>
+<% end %>
+<% if AresMUSH::Ranks.is_enabled? %>
 %xh<%= left( t('profile.rank_title'), 12 ) %>%xn <%= left( rank, 25 ) -%>
-%xh<%= left( t('profile.callsign_title'), 12 ) %>%xn <%= left( callsign, 25 ) %>
+<% end %>
 <%= divider %>
 %xh<%= left( t('profile.timezone'), 12 ) %>%xn <%= left( timezone, 25 ) -%>
 %xh<%= left( t('profile.unread_mail'), 12 ) %>%xn <%= unread_mail %>

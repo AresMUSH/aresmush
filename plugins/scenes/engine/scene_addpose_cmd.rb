@@ -25,7 +25,7 @@ module AresMUSH
             return
           end
           
-          Scenes.add_pose(scene, self.pose, enactor)
+          Scenes.add_to_scene(scene, self.pose, enactor)
           client.emit_success t('scenes.pose_added', :pose => self.pose )          
         end
       end

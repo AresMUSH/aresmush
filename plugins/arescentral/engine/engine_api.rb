@@ -166,6 +166,11 @@ module AresMUSH
       who = Engine.client_monitor.logged_in.map { |client, char| char.name }
       { who: who }.to_json
     end
+      
+    post '/api/char/created' do
+      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      { status: 'OK', error: '' }.to_json
+    end
     
     post '/api/notify' do
       if (!check_api_key)
@@ -216,13 +221,54 @@ module AresMUSH
         rescue SystemNotFoundException
           # Swallow this error.  Just means you're loading a plugin for the very first time.
         end
+        # Make sure everything is valid before we start.
+        Global.config_reader.validate_game_config          
         Global.plugin_manager.load_plugin("tinker", :engine)
-        { status: 'OK' }.to_json
+        Global.config_reader.load_game_config        
       rescue Exception => ex
         Global.logger.error ex
         error = ex.to_s
       end
       { status: error ? 'ERROR' : 'OK', error: error }.to_json      
     end
+
+    post '/api/char/created' do
+      if (!check_api_key)
+        return { status: 'ERROR', error: 'Invalid authentication token.'}.to_json
+      end
+      
+      Engine.dispatcher.queue_event CharCreatedEvent.new(nil, params['id'])
+      { status: 'OK', error: '' }.to_json
+    end
+    
+    post '/api/plugins/changed' do
+      if (!check_api_key)
+        return { status: 'ERROR', error: 'Invalid authentication token.'}.to_json
+      end
+
+      changed = params['changed_plugins'].split(",")
+      
+      begin
+        # Make sure everything is valid before we start.
+        Global.config_reader.validate_game_config          
+        Global.config_reader.load_game_config   
+        changed.each do |p|
+          begin
+            Global.plugin_manager.unload_plugin(p)
+          rescue SystemNotFoundException
+            # Swallow this error.  Just means you're loading a plugin for the very first time.
+          end
+          Global.plugin_manager.load_plugin(p, :engine)
+        end      
+        Help.reload_help
+        Global.locale.reload
+        Engine.dispatcher.queue_event ConfigUpdatedEvent.new
+      rescue Exception => ex
+        Global.logger.error ex
+        error = ex.to_s
+      end
+      { status: error ? 'ERROR' : 'OK', error: error }.to_json   
+    end
+
   end
 end

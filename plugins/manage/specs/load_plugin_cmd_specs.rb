@@ -21,6 +21,8 @@ module AresMUSH
           @client.stub(:emit_ooc)
           plugin_manager.stub(:load_plugin)
           plugin_manager.stub(:unload_plugin)
+          config_reader.stub(:validate_game_config)
+          config_reader.stub(:load_game_config)
           Help.stub(:reload_help)
           locale.stub(:reload)
           Manage.stub(:can_manage_game?) { true }
@@ -44,6 +46,12 @@ module AresMUSH
           
         it "should reload the help" do
           Help.should_receive(:reload_help)
+          @handler.handle
+        end
+        
+        it "should reload the config" do
+          config_reader.should_receive(:validate_game_config)
+          config_reader.should_receive(:load_game_config)
           @handler.handle
         end
           
