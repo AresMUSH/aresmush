@@ -2,7 +2,7 @@ module AresMUSH
   module Idle
     class CronEventHandler
       def on_event(event)
-        config = Global.read_config("idle", "cron")
+        config = Global.read_config("idle", "monthly_reminder_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
         category = Global.read_config('idle', 'reminder_category')

@@ -72,8 +72,27 @@ module AresMUSH
             :message => message)
           send_afk_message(other_client, other_char)
         end
+        
+        
+        if (other_char.is_monitoring?(enactor))
+          add_to_monitor(other_char, enactor.name, message)
+        end
+        
+        if (enactor.is_monitoring?(other_char))
+          add_to_monitor(enactor, other_char.name, message)
+        end
       end
       
+      def add_to_monitor(char, monitor_name, message)
+        monitor = char.page_monitor
+        
+        if (monitor[monitor_name].count > 30)
+          monitor[monitor_name].shift
+        end
+        monitor[monitor_name] << "#{Time.now} #{message}"
+        char.update(page_monitor: monitor)
+      end
+            
       def send_afk_message(other_client, other_char)
         if (other_char.is_afk)
           afk_message = ""

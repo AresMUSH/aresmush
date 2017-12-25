@@ -34,11 +34,7 @@ en:
         max_rating_is: "You can't raise that ability any higher."
         min_rating_is: "You can't lower that ability any lower."
         invalid_rating: That is not a valid ability rating.
-        no_special_characters: "Ability and hook names may not contain special characters."
-        
-        hook_set: "RP hook %{name} added."
-        hook_not_found: "RP hook %{name} not found."
-        hook_removed: "RP hook %{name} removed."
+        no_special_characters: "Ability names may not contain special characters."
         
         ability_not_found: "Ability not found."
         invalid_specialty_skill: "That skill cannot have a specialty."
@@ -80,7 +76,6 @@ en:
         # Review
         total_points_spent: "%{total} total points spent. (%{max} max)"
         backgrounds_added: "%{num} background skills added. (%{min} min)"
-        hooks_added: "%{num} RP hooks added. (%{min} min)"
         ability_ratings_check: "Checking your ability ratings."
         action_skills_above: "%xh%xr< %{num} action skills at %{high_rating} or higher.  (%{max} max) >%xn"
         attributes_above: "%xh%xr< %{num} attributes at %{high_rating} or higher.  (%{max} max) >%xn"
@@ -150,3 +145,4 @@ en:
         xp_raised_job: "%{name} raised %{ability} to %{rating} with XP."
         must_be_approved: "You must be approved before you can spend XP."
         xp_undone: "You undo %{name}'s XP spend on %{skill} and refund them 1XP."
+        skill_requires_training: "Note: %{name} requires special training to advance beyond Fair.  Make sure your XP expenditure is justified ICly.  If in doubt, contact staff."

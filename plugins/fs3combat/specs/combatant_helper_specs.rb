@@ -118,8 +118,10 @@ module AresMUSH
           @combatant.stub(:defense_mod) { 0 }
           @combatant.stub(:distraction) { 0 }
           @combatant.stub(:luck)
+          @combatant.stub(:armor) { "armor" }
           FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
           FS3Combat.stub(:vehicle_dodge_mod) { 0 }
+          FS3Combat.stub(:armor_stat) { 0 }
         end
         
         it "should roll the weapon defense stat" do
@@ -161,6 +163,12 @@ module AresMUSH
         it "should ignore luck spent on something else" do
           @combatant.stub(:luck) { "Attack" }
           @combatant.should_receive(:roll_ability).with("Reaction", 0)
+          FS3Combat.roll_defense(@combatant, "Knife")
+        end
+
+        it "should account for armor defense stat" do
+          FS3Combat.should_receive(:armor_stat).with("armor", "defense") { 1 }
+          @combatant.should_receive(:roll_ability).with("Reaction", 1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         

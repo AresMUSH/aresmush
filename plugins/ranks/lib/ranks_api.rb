@@ -1,5 +1,9 @@
 module AresMUSH
   module Ranks
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("ranks")
+    end
+    
     def self.app_review(char)
       message = t('ranks.app_review')
       

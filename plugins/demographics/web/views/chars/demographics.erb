@@ -11,16 +11,18 @@
                     <%= AresMUSH::Ranks.military_name(@char) %>
         </div>
         
+        <% AresMUSH::Demographics.basic_demographics.sort.each do |d| %>
         <div class="row">
             <div class="col-sm-3">
-                    <b>Fullname:</b> 
+                    <b><%= d.titlecase %>:</b> 
             </div>
             <div class="col-sm-9">
-                    <%= @char.demographic(:fullname) %>
+                    <%= @char.demographic(d) %>
             </div>
         </div>
+        <% end %>
         
-
+        <% if AresMUSH::Ranks.is_enabled? %>
         <div class="row">
             <div class="col-sm-3">
                     <b>Rank:</b> 
@@ -29,67 +31,9 @@
                     <%= @char.rank %>
             </div>
         </div>
-        
+        <% end %>
 
 
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Position:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Position") %>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Faction:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Faction") %>
-            </div>
-        </div>
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Department:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Department") %>
-            </div>
-        </div>
-        
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Callsign:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:callsign) %>
-            </div>
-        </div>
-        
-
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Colony:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.group("Colony") %>
-            </div>
-        </div>
-        
-        
-        
-        <div class="profile-divider">
-        </div>
-        
 
         <div class="row">
             <div class="col-sm-3">
@@ -111,58 +55,31 @@
 
         <div class="row">
             <div class="col-sm-3">
-                    <b>Gender:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:gender) %>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Height:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:height) %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Physique:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:physique) %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Hair:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:hair) %>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-3">
-                    <b>Eyes:</b> 
-            </div>
-            <div class="col-sm-9">
-                    <%= @char.demographic(:eyes) %>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
                     <b>Played By:</b> 
             </div>
             <div class="col-sm-9">
-                    <%= @char.actor %>
+                    <%= @char.demographic(:actor) %>
             </div>
         </div>
         
+
+        
+        <div class="profile-divider">
+        </div>
+        
+        
+        <% AresMUSH::Demographics.all_groups.keys.sort.each do |g| %>
+        <div class="row">
+            <div class="col-sm-3">
+                    <b><%= g.titlecase %>:</b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= @char.group(g) %>
+            </div>
+        </div>
+        <% end %>
+
+
         <% if @char.handle %>
         
         <div class="row">

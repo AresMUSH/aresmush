@@ -20,9 +20,9 @@ module AresMUSH
           template = CompleteCensusTemplate.new(paginator)
         elsif (self.name == "Genders" || self.name == "Gender")
           template = GenderCensusTemplate.new
-        elsif (self.name == "Ranks" || self.name == "Rank")
+        elsif (Ranks.is_enabled? && (self.name == "Ranks" || self.name == "Rank"))
           template = RankCensusTemplate.new
-        elsif (self.name.start_with?("Skill"))
+        elsif (FS3Skills.is_enabled? && self.name.start_with?("Skill"))
           type = self.name.after(" ").titlecase
           types = [ 'Action', 'Background', 'Language' ]
           if (!types.include?(type))

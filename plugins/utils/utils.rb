@@ -1,5 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'dentaku'
+
 module AresMUSH
   module Utils
     def self.plugin_dir
@@ -15,14 +17,6 @@ module AresMUSH
     end
  
     def self.unload_plugin
-    end
- 
-    def self.config_files
-      [ "config_utils.yml" ]
-    end
- 
-    def self.locale_files
-      [ "locale/locale_en.yml" ]
     end
  
     def self.get_cmd_handler(client, cmd, enactor)

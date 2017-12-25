@@ -29,7 +29,7 @@ module AresMUSH
           
           scene.update(shared: false)
           if (scene.scene_log)
-            Scenes.add_pose(scene, scene.scene_log.log, scene.owner)
+            Scenes.add_to_scene(scene, scene.scene_log.log, scene.owner)
             scene.scene_log.delete
           end
           client.emit_success t('scenes.log_unshared', :name => enactor_name)

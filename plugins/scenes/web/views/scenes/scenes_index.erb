@@ -21,6 +21,9 @@
   <% @scene_types.each do |type| %>
       <li class="<%= 'active' if @tab == type %>"><a href="/scenes?tab=<%= type %>"><%= type %></a></li>
   <% end %>
+  
+  <li class="<%= 'active' if @tab == "Popular" %>"><a href="/scenes?tab=Popular">Popular</a></li>
+  
 </ul>
 
     <p><%= erb :"scenes/scene_list", :locals => { scenes: @scenes } %></p>

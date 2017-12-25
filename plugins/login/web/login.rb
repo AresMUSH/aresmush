@@ -22,6 +22,9 @@ module AresMUSH
       elsif (char.is_guest?)
         flash[:error] = "Guests do not have a web portal account.  You can still use the 'Play' screen to play with the web client as a guest."
         redirect '/login'
+      elsif (char.is_statue?)
+        flash[:error] = "You have been turned into a statue and are locked out of the game."
+        redirect '/login'        
       else
         char.update(login_api_token: "#{SecureRandom.uuid}")
         char.update(login_api_token_expiry: Time.now + 86400)

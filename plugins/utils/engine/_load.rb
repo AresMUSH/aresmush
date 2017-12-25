@@ -1,6 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-load "autospace_cmd.rb"
 load "colors_cmd.rb"
 load "dice_cmd.rb"
 load "echo_cmd.rb"

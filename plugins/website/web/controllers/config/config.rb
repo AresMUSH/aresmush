@@ -28,13 +28,11 @@ module AresMUSH
 
         locale_files = Dir[File.join(plugin_path, plugin_name, "locales", "*.yml")]
         @plugin_config[plugin_name]["locale"] = locale_files.map { |f| f.gsub(root_path, "") }
-        
-        @plugin_config[plugin_name]["config"] = p.config_files.map { |f| File.join("plugins", plugin_name, f) }
-        
+                
         template_files = Dir[File.join(plugin_path, plugin_name, "engine", "templates", "**", "*")]
         @plugin_config[plugin_name]["templates"] = template_files.map { |f| f.gsub(root_path, "") }
 
-        view_files = Dir[File.join(plugin_path, plugin_name, "web", "views", "**", "*")]
+        view_files = Dir[File.join(plugin_path, plugin_name, "web", "views", "**", "*")].select { |f| !File.directory?(f) }
         @plugin_config[plugin_name]["views"] = view_files.map { |f| f.gsub(root_path, "") }
         
       end

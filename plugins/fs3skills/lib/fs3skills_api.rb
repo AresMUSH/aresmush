@@ -16,6 +16,11 @@ module AresMUSH
       end
     end
     
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("fs3skills")
+    end
+    
+    
     # Makes an ability roll and returns a hash with the successes and success title.
     # Good for automated systems where you only care about the final result and don't need
     # to know the raw die roll.
@@ -57,8 +62,6 @@ module AresMUSH
       text << FS3Skills.starting_skills_check(char)
       text << "%r"
       text << FS3Skills.unusual_skills_check(char)
-      text << "%r"
-      text << FS3Skills.hook_review(char)
       text
     end
     
@@ -70,8 +73,7 @@ module AresMUSH
     # Dice they roll, including related attribute
     def self.dice_rolled(char, ability)
       FS3Skills.dice_to_roll_for_ability(char, RollParams.new(ability))
-    end
-      
+    end    
     
     def self.skills_census(skill_type)
       skills = {}

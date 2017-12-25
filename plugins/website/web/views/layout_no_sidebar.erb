@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= erb :"header"%>
+
+</head>
+
+<body>
+
+
+<!-- Bootstrap CSS local fallback.  Must live in body tag.  -->
+<div class="hidden" id="bootstrapCssTest"></div>
+    <script type="text/javascript">
+
+    if ($('#bootstrapCssTest').is(':visible') === true) {
+        $('<link href="/styles/bootstrap.css" rel="stylesheet" type="text/css" />').prependTo('head');
+    }
+</script>
+    
+<!-- JQuery UI CSS fallback. Must live in body tag. -->
+<div class="ui-helper-hidden"></div>
+  <script>
+      $(function () {
+          if ($('.ui-helper-hidden:first').is(':visible') === true) {
+              $('<link rel="stylesheet" type="text/css" href="/styles/jquery-ui.css" />').prependTo('head');
+          }
+      });
+  </script>  
+    
+   <div class="header-wrap">
+       <div class="title-wrap">
+       
+               <div class="row">
+           <div class="col-md-6 col-sm-4 col-xs-4">
+               <div class="site-title"><a href="/"><%= game_name %></a></div>
+               <div class="site-subtitle"><%= game_address %></div>
+           </div>
+           <div class="col-md-6 col-sm-8 col-xs-8">
+               <div class="text-right user-bar">
+                   <% if @user %>
+                   <p>Welcome, <%= @user.name %>.</p>
+                   <p><a href="/mail">Mail 
+               
+               <span class="label label-pill label-primary" id="mailBadge"><%= unread_mail %></span>
+           
+           </a> 
+           | <a href="<%= char_page_url(@user) %>">Profile</a>
+           | <a href="/logout">Logout</a> </p>
+           <% else %>
+           <p><a href="/login?redirect=<%= request.path %>">Login</a> 
+               <% if enable_registration %>
+               | <a href="/register">Register</a>  
+               <% end %>
+           </p>
+               
+           <% end %>
+               </div>
+           </div>
+       </div>
+       
+        </div>
+
+    <%= erb :"navbar" %>
+
+    </div>
+    
+    <div class="container">
+        
+        <div class="body-wrap">
+             
+            <div class="row">
+          
+                <div class="col-md-12 body-container">
+              
+                        
+                        
+                
+
+                    <% if flash[:info] %>
+                    <div class="alert alert-info">                
+                        <%= styled_flash %>      
+                    </div>
+                    <% end %>
+
+                    
+                    <% if flash[:error] %>
+                    <div class="alert alert-danger">                
+                        <%= styled_flash %>      
+                    </div>
+                    <% end %>
+                  
+                    <%= yield %>
+              
+                </div>                   
+        </div>
+    
+      <div class="row">
+          <div class="col-md-12 footer">
+              Running <a href="http://www.aresmush.com">AresMUSH</a> version <%= AresMUSH.version %>.
+              
+              <input type="hidden" id="charId" name="charId" value="<%= session[:user_id] %>">
+              <input type="hidden" id="charToken" name="charToken" value="<%= session[:login_token] %>">
+              
+           </div>
+      </div>
+          
+    </div>
+    
+</body>
+</html>
+

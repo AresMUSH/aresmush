@@ -51,5 +51,22 @@ module AresMUSH
     def self.emit_ooc_to_room(room, message)
       Rooms.clients_in_room(room).each { |c| c.emit_ooc message }
     end
+    
+    def self.find_destination(destination, enactor, allow_char_names = false)
+      if (allow_char_names)
+        find_result = ClassTargetFinder.find(destination, Character, enactor)
+        if (find_result.found?)
+          return [find_result.target.room]
+        end
+      end
+        
+      find_result = ClassTargetFinder.find(destination, Room, enactor)
+      if (find_result.found?)
+        return [find_result.target]
+      end
+      
+      matches = Room.find_by_name_and_area destination                
+      matches
+    end
   end
 end

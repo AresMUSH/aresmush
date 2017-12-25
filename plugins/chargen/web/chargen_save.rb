@@ -65,10 +65,10 @@ module AresMUSH
         desc = params["hook-desc-#{i}".to_sym]  
         if (!desc.empty?)
           remaining_hooks << name
-          FS3Skills.set_hook(@user, name, desc)
+          Chargen.set_hook(@user, name, desc)
         end
       end
-      @user.fs3_hooks.each do |h|
+      @user.rp_hooks.each do |h|
         if (!remaining_hooks.include?(h.name))
           h.delete
         end

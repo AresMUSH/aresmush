@@ -8,10 +8,9 @@
 <% teams.each do |team, members| %>
 %xg<%= t('fs3combat.team_header', :team => team) %>%xn
 <% members.each do |combatant| %>
-<%= left( combatant.name, 15 ) -%>
-<%= left( format_damage(combatant), 8 ) -%>
-<%= left( format_weapon(combatant), 19 ) -%>
-<%= left( format_vehicle(combatant), 16 ) -%>
+<%= left( combatant.name, 20 ) -%>
+<%= left( format_damage(combatant), 10 ) -%>
+<%= left( format_weapon(combatant), 25 ) -%>
 <%= format_action(combatant) %>
 <% end %>
 <% end %>

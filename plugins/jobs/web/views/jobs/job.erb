@@ -15,7 +15,7 @@
 
 <hr/>
 
-<% @job.job_replies.each do |r| %>
+<% AresMUSH::Jobs.visible_replies(@user, @job).each do |r| %>
  <div>
      
      <p><%= erb :"/avatar", :locals => { char: r.author } %></p>

@@ -55,7 +55,7 @@ module AresMUSH
     end  
     
     get "/play/?" do
-      erb :"play"
+      erb :"play", :layout => :"layout_no_sidebar"
     end
     
     get '/styles/:name.css' do |name|

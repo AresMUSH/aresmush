@@ -2,47 +2,19 @@
     
     <div class="panel-body">
 
+        <% @groups.each do |k, v| %>
         <div class="form-group row">
-            <label for="faction" class="col-xs-2 col-form-label">Faction:</label> 
-            <select name="faction">
-                <% @factions['values'].each do |k, v| %>
-                <option value="<%= k %>" <% if @user.group("Faction") == k %> selected <% end %> ><%= k %> - <%= v %></option>
+            <label for="<%= k %>" class="col-xs-2 col-form-label"><%= k %>:</label> 
+            <select name="<%= k.downcase %>">
+                <% v['values'].each do |name, desc| %>
+                <option value="<%= name %>" <% if @user.group(k) == name %> selected <% end %> ><%= name %> - <%= desc %></option>
                 <% end %>
             </select>
-            <p class="cg-tip"><%= @factions['desc']%></p>
+            <p class="cg-tip"><%= v['desc']%></p>
         </div>
+        <% end %>
 
-        <div class="form-group row">
-            <label for="position" class="col-xs-2 col-form-label">Position:</label> 
-            <select name="position">
-                <% @positions['values'].each do |k, v| %>
-                <option value="<%= k %>" <% if @user.group("Position") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                <% end %>
-            </select>
-            <p class="cg-tip"><%= @positions['desc']%></p>
-        
-        </div>
-        
-        <div class="form-group row">
-            <label for="department" class="col-xs-2 col-form-label">Department:</label> 
-            <select name="department">
-                <% @departments['values'].each do |k, v| %>
-                <option value="<%= k %>" <% if @user.group("Department") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                <% end %>
-            </select>
-            <p class="cg-tip"><%= @departments['desc']%></p>
-        </div>
-
-        <div class="form-group row">
-            <label for="colony" class="col-xs-2 col-form-label">Colony:</label> 
-            <select name="colony">
-                <% @colonies['values'].each do |k, v| %>
-                <option value="<%= k %>" <% if @user.group("Colony") == k %> selected <% end %> ><%= k %> - <%= v %></option>
-                <% end %>
-            </select>
-            <p class="cg-tip"><%= @colonies['desc']%></p>
-        </div>
-        
+        <% if AresMUSH::Ranks.is_enabled? %>
         <div class="form-group row">
             <label for="rank" class="col-xs-2 col-form-label">Rank:</label> 
             <select name="rank">
@@ -53,6 +25,7 @@
             
             <p class="cg-tip">Available ranks vary by faction.  See the wiki for details.</p>
         </div>
+        <% end %>
 
     </div>
 </div>

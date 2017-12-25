@@ -13,11 +13,13 @@
 
 %xh%xM<%= approval_notice %>%xn
 <% end %>
+<% if AresMUSH::Events.is_enabled? %>
 
 %ld
 %xh<%= center( t('login.upcoming_events_title'), 78 ) %>%xn
 %ld
 <% events.each do |ev| %>
 <%= ev.color -%><%= left( ev.title, 30 ) %> <%= start_time_local(ev) %> (<%= start_time_standard(ev) %>)%xn
+<% end %>
 <% end %>
 <%= footer %>

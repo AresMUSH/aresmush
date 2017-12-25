@@ -100,21 +100,12 @@ module AresMUSH
       return nil
     end
     
-    def self.set_hook(char, name, description)
-      hook = char.fs3_hooks.find(name: name).first
-      if (hook)          
-        hook.update(description: description)
-      else
-        FS3RpHook.create(name: name, description: description, character: char)
-      end
-    end
-    
     def self.reset_char(client, char)
       char.fs3_action_skills.each { |s| s.delete }
       char.fs3_attributes.each { |s| s.delete }
       char.fs3_background_skills.each { |s| s.delete }
       char.fs3_languages.each { |s| s.delete }
-      char.fs3_hooks.each { |s| s.delete }
+      char.rp_hooks.each { |s| s.delete }
         
       languages = Global.read_config("fs3skills", "starting_languages")
       if (languages)

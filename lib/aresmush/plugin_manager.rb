@@ -9,12 +9,22 @@ module AresMUSH
     end
     
     attr_reader :plugins
-        
+      
+    def all_plugin_folders
+      Dir[File.join(AresMUSH.plugin_path, '*')]
+         .select { |f| File.directory?(f) }
+        .map{ |f| File.basename(f) }
+    end 
+     
     def load_all(web_or_engine)
-      load File.join(AresMUSH.plugin_path, "plugins.rb")
-      Plugins.all_plugins.each do |p|
+      self.all_plugin_folders.each do |p|
         load_plugin p, web_or_engine
       end
+    end
+    
+    def is_disabled?(name)
+      disabled_plugins = Global.read_config('plugins', 'disabled_plugins').map { |p| p.downcase }
+      disabled_plugins.include?(name.downcase)
     end
     
     def load_plugin(name, web_or_engine)
@@ -41,31 +51,21 @@ module AresMUSH
         Global.logger.debug "Plugin web file for #{name} does not exist."
       end
       
+      if (is_disabled?(name))
+        return
+      end
+      
       module_name = find_plugin_const(name)
       if (!module_name)
         raise SystemNotFoundException.new("Can't find a module for #{name}.")
       end
       plugin_module = Object.const_get("AresMUSH::#{module_name}")
-      load_plugin_config plugin_module
       load_plugin_locale plugin_module
       load_plugin_help plugin_module
-      
-      @plugins << plugin_module.send(:load_plugin)
-    end
-    
-    def load_plugin_config(plugin_module)
-      config_files(plugin_module).each do |config|
-        Global.config_reader.load_config_file config
-      end
-      
-      # Force the website to restart next time
+
       FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
-    end
-    
-    def validate_plugin_config(plugin_module)
-      config_files(plugin_module).each do |config|
-        Global.config_reader.validate_config_file config
-      end
+                  
+      @plugins << plugin_module.send(:load_plugin)
     end
     
     def load_plugin_locale(plugin_module)
@@ -97,6 +97,11 @@ module AresMUSH
     
     def load_plugin_help(plugin_module)
       plugin_name = plugin_module.to_s.after("::")
+      
+      if (is_disabled?(plugin_name))
+        return
+      end
+      
       Global.locale.locale_order.each do |locale|
         help_files = self.help_files(plugin_module, locale)
         help_files.each do |path|              

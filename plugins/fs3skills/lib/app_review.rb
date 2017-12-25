@@ -1,10 +1,6 @@
 module AresMUSH
   module FS3Skills
     
-    def self.hook_review(char)
-      FS3Skills.min_item_review(char.fs3_hooks.count, "min_hooks", "fs3skills.hooks_added")      
-    end
-    
     def self.backgrounds_review(char)
       FS3Skills.min_item_review(char.fs3_background_skills.count, "min_backgrounds", "fs3skills.backgrounds_added")
     end

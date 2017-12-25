@@ -22,7 +22,7 @@ Some games may have multiple pages of the character sheet, and some pages might 
 
 Anyone with the `receives_roll_results` permission will see a message whenever someone rolls an ability.  This allows you to judge situations even without being in the room.
 
-## Adjusting Skills and Hooks
+## Adjusting Skills
 
 You can adjust skill levels:
 
@@ -30,10 +30,7 @@ You can adjust skill levels:
 
 To remove a skill, just set its rating to 0.
 
-You can also adjust hooks and specialties:
-
-`hook/add <name>=<hook name>/<description>`
-`hook/remove <name>=<hook name>`
+You can also adjust specialties:
 
 `specialty/add <name>=<ability name>/<specialty>`
 `specialty/remove <name>=<ability name>/<specialty>`

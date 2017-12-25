@@ -14,8 +14,9 @@ module AresMUSH
     end
     
     def self.weapon_stat(name_with_specials, stat)
-      specials = FS3Combat.weapon_specials
+      return nil if !name_with_specials
       
+      specials = FS3Combat.weapon_specials
       name = name_with_specials.before("+")
       weapon = FS3Combat.weapon(name)
       return nil if !weapon
@@ -55,6 +56,7 @@ module AresMUSH
     end
 
     def self.armor_stat(name_with_specials, stat)
+      return nil if !name_with_specials
       name = name_with_specials.before("+")
       armor = FS3Combat.armor(name)
       return nil if !armor
@@ -62,22 +64,24 @@ module AresMUSH
       value = armor[stat]
       return nil if !value
             
-      # We only worry about specials for protection.
-      if (stat == "protection")
-        special_names = name_with_specials.after("+")
-        special_names = special_names ? special_names.split("+") : []
-        specials = FS3Combat.armor_specials
-      
-        special_names.each do |s|
-          special = specials[s]
-          next if !special
-          special_value = special[stat]
-          next if !special_value
-      
+      # Special handling for protection because it's a hash itself
+      special_names = name_with_specials.after("+")
+      special_names = special_names ? special_names.split("+") : []
+      specials = FS3Combat.armor_specials
+    
+      special_names.each do |s|
+        special = specials[s]
+        next if !special
+        special_value = special[stat]
+        next if !special_value
+
+        if (stat == "protection")
           areas = value.keys | special_value.keys
           areas.each do |a|
             value[a] = (value[a] || 0) + (special_value[a] || 0)
           end
+        else
+          value = value + special_value
         end
       end
       

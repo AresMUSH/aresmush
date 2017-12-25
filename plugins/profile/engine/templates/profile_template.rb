@@ -14,36 +14,12 @@ module AresMUSH
         Chargen.approval_status(@char)
       end
       
-      def fullname
-        @char.demographic(:fullname)
+      def basic_demographics
+        Demographics.basic_demographics.sort
       end
-
-      def callsign
-        @char.demographic(:callsign)
-      end
-
-      def gender
-        @char.demographic(:gender)
-      end
-
-      def height
-        @char.demographic(:height)
-      end
-
-      def physique
-        @char.demographic(:physique)
-      end
-
-      def hair
-        @char.demographic(:hair)
-      end
-
-      def eyes
-        @char.demographic(:eyes)
-      end
-
-      def skin
-        @char.demographic(:skin)
+      
+      def demographic(d)
+        @char.demographic(d)
       end
 
       def age
@@ -56,20 +32,12 @@ module AresMUSH
         !dob ? "" : ICTime.ic_datestr(dob)
       end
 
-      def faction
-        @char.group("Faction")
+      def groups
+        Demographics.all_groups.keys
       end
 
-      def position
-        @char.group("Position")
-      end
-
-      def colony
-        @char.group("Colony")
-      end
-
-      def department
-        @char.group("Department")
+      def group(g)
+        @char.group(g)
       end
 
       def rank

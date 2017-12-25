@@ -9,7 +9,7 @@ module AresMUSH
           end
         end
         
-        config = Global.read_config("places", "cron")
+        config = Global.read_config("places", "places_cleanup_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
         Place.all.each do |p|

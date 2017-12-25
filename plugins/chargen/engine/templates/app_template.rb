@@ -34,6 +34,11 @@ module AresMUSH
       def ranks
         Ranks.app_review(@char)
       end
+      
+      def hooks
+        Chargen.hook_app_review(@char)
+      end
+      
      
       def job_info
         job = @char.approval_job

@@ -22,6 +22,11 @@ module AresMUSH
           return
         end
         
+        if (!enactor.is_approved? && enactor.jobs.select { |j| j.is_open? }.count >= 5)
+          client.emit_failure t('jobs.too_many_jobs_open')
+          return
+        end
+        
         result = Jobs.create_job(Jobs.request_category, self.title, self.description, enactor)
         if (result[:error].nil?)
           client.emit_success t('jobs.request_submitted')

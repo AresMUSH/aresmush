@@ -44,6 +44,10 @@ module AresMUSH
       Global.read_config("jobs", "request_category")
     end
 
+    def self.trouble_category
+      Global.read_config("jobs", "trouble_category")
+    end
+
     def self.system_category
       Global.read_config("jobs", "system_category")
     end

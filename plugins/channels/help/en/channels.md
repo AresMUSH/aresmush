@@ -100,3 +100,9 @@ By default, the game will show you who has connected and disconnected from a cha
 Channels save a history of the last twenty-five messages.  You can review them using the recall command.  Specifying the number of messages to review is optional.
 
 `channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
+
+## Reporting Abuse
+
+If someone is behaving badly on channel, you can bring it to the game admin's attention - along with an automatic, verified log of the channel recall buffer.  
+
+`channel/report <channel>=<explanation>`

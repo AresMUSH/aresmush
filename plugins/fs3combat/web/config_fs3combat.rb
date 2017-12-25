@@ -2,14 +2,9 @@ module AresMUSH
   class WebApp
     get '/admin/fs3_combat/?', :auth => :admin do
       
-      @skills = {
-        "treat_skill" => Global.read_config("fs3combat", "treat_skill"),
-        "healing_skill" => Global.read_config("fs3combat", "healing_skill"),
-        "recovery_skill" => Global.read_config("fs3combat", "recovery_skill"),
-        "initiative_skill" => Global.read_config("fs3combat", "initiative_skill"),
-        "composure_skill" => Global.read_config("fs3combat", "composure_skill"),
-        "default_defense_skill" => Global.read_config("fs3combat", "default_defense_skill")
-      }
+      file_path = File.join(AresMUSH.game_path, 'config', 'fs3combat_skills.yml')
+      config_yaml = AresMUSH::YamlExtensions.yaml_hash(file_path)
+      @skills = config_yaml['fs3combat']
             
       erb :"combat/config_combat"
     end
@@ -26,7 +21,7 @@ module AresMUSH
         "fs3combat" => skills
         
       }
-      output_path = File.join(AresMUSH.plugin_path, 'fs3combat', 'config_fs3combat_skills.yml')
+      output_path = File.join(AresMUSH.game_path, 'config', 'fs3combat_skills.yml')
       write_config_file output_path, config.to_yaml
       
       

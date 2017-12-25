@@ -3,7 +3,12 @@ module AresMUSH
     
     helpers do
       def census_types
-        [ 'gender', 'colony', 'faction', 'position', 'department', 'rank' ]
+        types = Demographics.all_groups.keys
+        types << 'gender'
+        if (Ranks.is_enabled?)
+          types << 'rank'
+        end
+        types
       end
     end
     
@@ -13,41 +18,18 @@ module AresMUSH
     end
 
 
-    get '/census/gender/?' do
-      @groups = Chargen.approved_chars.group_by { |c| c.demographic(:gender)}
-      @title = "Characters by Gender"
+    get '/census/group/:group/?' do |group|
+      if (group == 'Gender')
+        @groups = Chargen.approved_chars.group_by { |c| c.demographic(:gender)}
+      elsif (group == 'Rank')
+        @groups = Chargen.approved_chars.group_by { |c| c.rank}
+      else
+        @groups = Chargen.approved_chars.group_by { |c| c.group(group)}
+      end
+      @title = "Characters by #{group.titlecase}"
       erb :"census/group"
-    end
+    end    
 
-    get '/census/colony/?' do
-      @groups = Chargen.approved_chars.group_by { |c| c.group('Colony')}
-      @title = "Characters by Colony"
-      erb :"census/group"
-    end
-    
-    get '/census/faction/?' do
-      @groups = Chargen.approved_chars.group_by { |c| c.group('Faction')}
-      @title = "Characters by Faction"
-      erb :"census/group"
-    end
-    
-    get '/census/position/?' do
-      @groups = Chargen.approved_chars.group_by { |c| c.group('Position')}
-      @title = "Characters by Position"
-      erb :"census/group"
-    end
-
-    get '/census/department/?' do
-      @groups = Chargen.approved_chars.group_by { |c| c.group('Department')}
-      @title = "Characters by Department"
-      erb :"census/group"
-    end
-
-    get '/census/rank/?' do
-      @groups = Chargen.approved_chars.group_by { |c| c.rank}
-      @title = "Characters by Rank"
-      erb :"census/group"
-    end
     
     
   end
