@@ -32,8 +32,33 @@ module AresMUSH
     #            True:  Will queue request for background thread
     configure do
       set :threaded, true #false
+      enable :cross_origin
+      register Sinatra::Reloader
     end    
     
+    before do
+       response.headers['Access-Control-Allow-Origin'] = '*'
+     end
+  
+     # routes...
+     options "*" do
+       response.headers["Allow"] = "GET, POST, OPTIONS"
+       response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+       response.headers["Access-Control-Allow-Origin"] = "*"
+       200
+     end
+    
+     helpers do
+       def find_template(views, name, engine, &block)
+         views = Plugins.all_plugins.map { |p| File.join(AresMUSH.plugin_path, p, "web", "views") }
+         views << AresMUSH.website_views_path
+         views.each { |v| super(v, name, engine, &block) }
+       end
+     end
+    
+    
     # The actual API methods are defined in the AresCentral plugin.
+    
+    
   end
 end
