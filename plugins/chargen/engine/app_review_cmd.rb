@@ -32,10 +32,10 @@ module AresMUSH
             return
           end
           
-          Engine.dispatcher.queue_command(client, Command.new("app #{model.name}"))
-          Engine.dispatcher.queue_command(client, Command.new("profile #{model.name}"))
-          Engine.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
-          Engine.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("app #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("profile #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
+          Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
           
           desc = Describe.desc_template(model, enactor)
           client.emit desc.render

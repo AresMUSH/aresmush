@@ -13,7 +13,7 @@ module AresMUSH
           true
         end
         
-        Engine.client_monitor.clients.each do |c|
+        Global.client_monitor.clients.each do |c|
           c.disconnect
         end
         

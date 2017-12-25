@@ -22,7 +22,7 @@ module AresMUSH
  
         backup.each_with_index do |(key, delivery), i| 
           
-          Engine.dispatcher.queue_timer(i, "Mail Backup #{enactor.name}", client) do
+          Global.dispatcher.queue_timer(i, "Mail Backup #{enactor.name}", client) do
             title = delivery.tags.join(", ")
             template = MessageTemplate.new(enactor, delivery)
             if (title != old_title)
@@ -32,7 +32,7 @@ module AresMUSH
             client.emit template.render
           end
         end
-        Engine.dispatcher.queue_timer(backup.count + 2, "Mail archive", client) do
+        Global.dispatcher.queue_timer(backup.count + 2, "Mail archive", client) do
           client.emit_success t('global.done')
         end
       end

@@ -3,7 +3,7 @@ module AresMUSH
     class CronEventHandler
       def on_event(event)
         # Ping on every cron event
-        Engine.client_monitor.logged_in.each do |client, char| 
+        Global.client_monitor.logged_in.each do |client, char| 
           if (char.login_keepalive)
             client.ping
           end
@@ -37,7 +37,7 @@ module AresMUSH
           activity[day_of_week][hour] = []
         end
         
-        activity[day_of_week][hour] << Engine.client_monitor.logged_in.count
+        activity[day_of_week][hour] << Global.client_monitor.logged_in.count
         if (activity[day_of_week][hour].count > 6)
           activity[day_of_week][hour].shift
         end
@@ -46,7 +46,7 @@ module AresMUSH
       end
       
       def do_blacklist_cron
-        Engine.dispatcher.spawn("Getting rhost blacklist", nil) do
+        Global.dispatcher.spawn("Getting rhost blacklist", nil) do
           Login.update_blacklist
         end
       end

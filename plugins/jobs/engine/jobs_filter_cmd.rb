@@ -26,7 +26,7 @@ module AresMUSH
       
       def handle
         enactor.update(jobs_filter: self.filter)
-        Engine.dispatcher.queue_command(client, Command.new("jobs"))
+        Global.dispatcher.queue_command(client, Command.new("jobs"))
       end
     end
   end

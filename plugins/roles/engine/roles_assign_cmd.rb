@@ -34,7 +34,7 @@ module AresMUSH
             char.roles.add Role.find_one_by_name(self.role)
           end
           client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role.downcase)
-          Engine.dispatcher.queue_event RoleChangedEvent.new(char)
+          Global.dispatcher.queue_event RoleChangedEvent.new(char)
         end
       end
     end

@@ -5,7 +5,7 @@ module AresMUSH
     def self.raise_event
       tick = Time.now
       if (!Cron.last_tick || Cron.last_tick.min != tick.min)
-        Engine.dispatcher.on_event CronEvent.new(tick)
+        Global.dispatcher.on_event CronEvent.new(tick)
         Cron.last_tick = tick
       end
     end

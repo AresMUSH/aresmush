@@ -7,7 +7,7 @@ module AresMUSH
         config = Global.read_config("status")
         return if !Cron.is_cron_match?(config['afk_cron'], event.time)
         
-        Engine.client_monitor.logged_in_clients.each do |client|
+        Global.client_monitor.logged_in_clients.each do |client|
           minutes_before_idle_disconnect = config['minutes_before_idle_disconnect']
           if (minutes_before_idle_disconnect &&
             (client.idle_secs > minutes_before_idle_disconnect * 60))

@@ -23,8 +23,8 @@ module AresMUSH
       Global.help_reader = help_reader
       Global.database = @db
       Global.notifier = EngineNotifier.new      
-      Engine.client_monitor = client_monitor
-      Engine.dispatcher = dispatcher
+      Global.client_monitor = client_monitor
+      Global.dispatcher = dispatcher
     end
     
     def start

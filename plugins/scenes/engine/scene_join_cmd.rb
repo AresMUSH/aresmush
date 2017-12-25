@@ -34,7 +34,7 @@ module AresMUSH
         
           Rooms.emit_ooc_to_room(scene.room, t('scenes.scene_pending_join', :name => enactor_name))
         
-          Engine.dispatcher.queue_timer(3, "Join scene", client) do
+          Global.dispatcher.queue_timer(3, "Join scene", client) do
             Rooms.move_to(client, enactor, scene.room)
           end
         end
