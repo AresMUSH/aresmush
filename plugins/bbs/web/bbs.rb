@@ -1,4 +1,12 @@
 module AresMUSH
+  class EngineApiServer
+    get '/bar/' do 
+      {
+        b: 'ddd'
+      }.to_json
+    end
+  end
+    
   class WebApp
     helpers do
       def can_read_bbs?(board)

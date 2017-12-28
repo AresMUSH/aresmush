@@ -38,6 +38,75 @@ module AresMUSH
         text = html_formatter.to_html text
         text
       end
+      
+      def icon_for_char(char)
+        if (char)
+          icon = char.profile_icon
+          if (icon.blank?)
+            icon = char.profile_image
+          end
+        else
+          icon = nil
+        end
+        
+        icon.blank? ? nil : icon
+      end
+    end
+    
+    
+    post '/query/?' do 
+      content_type :json
+      
+      if (params[:cmd] == "sceneTypes")
+        data = Scenes.scene_types.each_with_index.map { |s, i| { type: "sceneType", id: i + 1, name: s }}
+        
+      elsif (params[:cmd] == "game")
+        data = {
+          type: 'game',
+          id: 1,
+          name: Global.read_config('game', 'name'),
+          host: Global.read_config('server', 'hostname'),
+          port: Global.read_config('server', 'port'),
+          website_tagline: Global.read_config('website', 'website_tagline'),
+          website_welcome: format_markdown_for_html(Global.read_config('website', 'website_welcome')),
+          onlineCount: Global.client_monitor.logged_in.count,
+          ictime: ICTime.ic_datestr(ICTime.ictime)
+        } 
+        
+      elsif (params[:cmd] == "scenes")
+        data = Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse.map { |s| {
+          type: 'scene',
+          id: s.id,
+          title: s.title,
+          summary: s.summary,
+          location: s.location,
+          icdate: s.icdate,
+          participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: icon_for_char(p) }},
+          scene_type: s.scene_type ? s.scene_type.downcase : 'unknown',
+        
+        }}
+      elsif (params[:cmd] == "scene")
+        scene = Scene[params[:args][:id]]
+        data = {
+          type: 'scene',
+          id: scene.id,
+          title: scene.title,
+          location: scene.location,
+          summary: scene.summary,
+          tags: scene.tags,
+          icdate: scene.icdate,
+          participants: scene.participants.to_a.sort_by {|p| p.name }.map { |p| { name: p.name, id: p.id, icon: icon_for_char(p) }},
+          scene_type: scene.scene_type ? scene.scene_type.downcase : 'unknown',
+          log: format_markdown_for_html(scene.scene_log.log),
+          plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,
+          related_scenes: scene.related_scenes.map { |r| { title: r.title, id: r.id }}
+        }
+      else
+        data = { error: "No such command." }
+      end
+      
+      data.to_json
+        
     end
     
     get '/wikis/?' do
@@ -75,21 +144,6 @@ module AresMUSH
       }.to_json
     end
     
-    get '/games/:id/?' do |id|
-      content_type :json
-      data = [ {
-        type: 'game',
-        id: 1,
-        name: Global.read_config('game', 'name'),
-        host: Global.read_config('server', 'hostname'),
-        port: Global.read_config('server', 'port'),
-        website_tagline: Global.read_config('website', 'website_tagline'),
-        website_welcome: format_markdown_for_html(Global.read_config('website', 'website_welcome')),
-        onlineCount: Global.client_monitor.logged_in.count,
-        ictime: ICTime.ic_datestr(ICTime.ictime)
-        } ]
-      data.to_json
-    end
     
     get '/characters/?' do
       content_type :json
