@@ -31,6 +31,52 @@ require 'thin'
 require 'rubygems'
 require 'zip'
 
+
+
+
+module AresMUSH
+    
+  def self.version
+    File.read(File.join(game_path, "version.txt"))
+  end
+
+  def self.root_path
+    File.expand_path(File.join(File.dirname(__FILE__), ".."))
+  end
+
+  def self.plugin_path
+    File.join(AresMUSH.root_path, "plugins")
+  end
+
+  def self.game_path
+    File.join(AresMUSH.root_path, "game")
+  end
+
+  def self.website_path
+    File.join(AresMUSH.root_path, 'website')
+  end
+
+  def self.website_public_path
+    AresMUSH.game_path
+  end
+
+  def self.website_views_path
+    File.join(AresMUSH.website_path, 'views')
+  end
+
+  def self.website_files_path
+    File.join(AresMUSH.website_public_path, 'files')
+  end
+
+  def self.website_theme_image_path
+    File.join(AresMUSH.website_public_path, 'theme_images')
+  end
+
+  def self.website_scripts_path
+    File.join(AresMUSH.website_public_path, 'scripts')
+  end
+end
+
 require 'aresmush/client/client_monitor'
 require 'aresmush/client/client.rb'
 require 'aresmush/client/client_factory.rb'
@@ -99,46 +145,3 @@ require 'aresmush/templates/template_formatters.rb'
 require 'aresmush/templates/template_renderer.rb'
 require 'aresmush/web/web_connection.rb'
 require 'aresmush/web/engine_api_server.rb'
-
-module AresMUSH
-    
-  def self.version
-    File.read(File.join(game_path, "version.txt"))
-  end
-
-  def self.root_path
-    File.expand_path(File.join(File.dirname(__FILE__), ".."))
-  end
-
-  def self.plugin_path
-    File.join(AresMUSH.root_path, "plugins")
-  end
-
-  def self.game_path
-    File.join(AresMUSH.root_path, "game")
-  end
-
-  def self.website_path
-    File.join(AresMUSH.root_path, 'website')
-  end
-
-  def self.website_public_path
-    AresMUSH.game_path
-  end
-
-  def self.website_views_path
-    File.join(AresMUSH.website_path, 'views')
-  end
-
-  def self.website_files_path
-    File.join(AresMUSH.website_public_path, 'files')
-  end
-
-  def self.website_theme_image_path
-    File.join(AresMUSH.website_public_path, 'theme_images')
-  end
-
-  def self.website_scripts_path
-    File.join(AresMUSH.website_public_path, 'scripts')
-  end
-end

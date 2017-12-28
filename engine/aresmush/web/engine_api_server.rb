@@ -1,7 +1,7 @@
 module AresMUSH
 
   class EngineApiLoader
-
+    
     # Start he reactor
     def run(opts = {})
 
@@ -28,12 +28,13 @@ module AresMUSH
   end
 
   class EngineApiServer < Sinatra::Base
+
+    
     # threaded - False: Will take requests on the reactor thread
     #            True:  Will queue request for background thread
     configure do
-      set :threaded, true #false
+      set :threaded, false #false
       enable :cross_origin
-      register Sinatra::Reloader
     end    
     
     before do
