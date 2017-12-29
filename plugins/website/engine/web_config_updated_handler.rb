@@ -9,7 +9,8 @@ module AresMUSH
           "mu_name" => Global.read_config("game", "name"),
           "host" => Global.read_config("server", "hostname"),
           "api_port" => Global.read_config("server", "engine_api_port"),
-          "api_key" => Game.master.engine_api_key
+          "api_key" => Game.master.engine_api_key,
+          "version" => AresMUSH.version
         }
         
         File.open(file_path, 'w') do |f|

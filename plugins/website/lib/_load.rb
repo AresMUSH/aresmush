@@ -2,7 +2,7 @@ $:.unshift File.dirname(__FILE__)
 
 load "filename_sanitizer.rb"
 load "get_game_info_handler.rb"
-
+load "get_wiki_handler.rb"
 
 load "helpers/wiki_markdown/tag_match_helper.rb"
 load "helpers/wiki_markdown/collapsible.rb"
