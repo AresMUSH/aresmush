@@ -131,5 +131,17 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "scene"
+        return GetSceneRequestHandler
+      when "scenes"
+        return GetScenesRequestHandler
+      when "sceneTypes"
+        return GetSceneTypesRequestHandler
+      end
+      nil
+    end
   end
 end
