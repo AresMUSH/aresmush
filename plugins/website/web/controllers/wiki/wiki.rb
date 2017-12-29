@@ -11,42 +11,6 @@ module AresMUSH
       end  
     end
     
-    get '/wiki/?' do 
-      redirect '/wiki/home'
-    end
-    
-    get '/wiki/all/?' do
-      @title = "All Pages"
-      @pages = WikiPage.all.to_a.sort_by { |p| p.display_title }
-      erb :"wiki/all_pages"
-    end
-    
-    get '/wiki/tag/:tag/?' do |tag|
-      @tag = tag.titlecase
-      @pages = WikiPage.all.select { |p| p.tags.include?(tag.downcase) }.sort_by { |p| p.display_title }
-      @chars = Character.all.select { |c| c.profile_tags.include?(tag.downcase) }.sort_by { |c| c.name }
-      @scenes = Scene.all.select { |s| s.tags.include?(tag.downcase) }.sort_by { |s| s.date_title }
-  
-      erb :"wiki/tag"
-    end
-
-    get '/wiki/tags/?' do 
-      @tags = []
-      WikiPage.all.each do |p|
-        @tags = @tags.concat p.tags
-      end
-      Character.all.each do |c|
-        @tags = @tags.concat c.profile_tags
-      end
-      Scene.all.each do |s|
-        @tags = @tags.concat s.tags
-      end
-      
-      @tags = @tags.uniq
-  
-      erb :"wiki/tags"
-    end
-    
     get '/wiki/recent_changes/?' do
       @recent = recent_changes
       
