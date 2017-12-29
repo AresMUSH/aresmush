@@ -124,9 +124,7 @@ module AresMUSH
           end # if
         end # each
       end # with error handling
-      if (!handled)
-        return { error: "Invalid command." }
-      end
+      return { error: "Error handling web request." }
     end
             
     private

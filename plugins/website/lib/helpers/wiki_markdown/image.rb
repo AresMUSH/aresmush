@@ -11,7 +11,7 @@ module AresMUSH
         
         style = ""
         source = ""
-        align = nil
+        align = ""
         options = input.split(' ')
         options.each do |opt|
           option_name = opt.before('=') || ""
@@ -32,15 +32,17 @@ module AresMUSH
         end
       
         source = source.downcase.strip
-        if (!source.start_with?('/files'))
-          source = "/files/#{source}"
+        if (!source.start_with?('/uploads'))
+          source = "/uploads/#{source}"
         end
         
-        sinatra.erb :"image", :locals => {
-          source: source,
-          style: style, 
-          align: align
-          }, :layout => false
+        template = ErbTemplateRenderer.new(File.join(File.dirname(__FILE__), 'image.erb'))
+        data = {
+          "source" => source,
+          "style" => style, 
+          "align" => align
+        }
+        template.render_local data
       end
     end
   end

@@ -36,42 +36,6 @@ module AresMUSH
       end
     end
     
-    get '/wikis/?' do
-      content_type :json
-
-      name_or_id = params[:name]
-      if (!name_or_id)
-        name_or_id = 'home'
-      end
-      
-      if (name_or_id =~ / /)
-        name = "/wiki/#{name_or_id.gsub(' ', '-').downcase}"
-      end
-      
-      page = WikiPage.find_by_name_or_id(name_or_id)
-      if (!page)
-        return { error: 'Page not found.'}.to_json
-      end
-              
-      dynamic_page = Website::WikiMarkdownExtensions.is_dynamic_page?(page.text)
-         
-      # Update cached version.      
-      #if (page.html && !dynamic_page)
-      #  page_html = page.html
-      #else
-        page_html = format_markdown_for_html page.text
-        page.update(html: page_html)
-        #end
-            
-      {
-        id: page.id,
-        title: page.title,
-        name: page.name,
-        html: page_html
-      }.to_json
-    end
-    
-    
     get '/characters/?' do
       content_type :json
       data = Idle.active_chars.map { |c| {

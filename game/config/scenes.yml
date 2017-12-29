@@ -48,6 +48,7 @@ scenes:
         "pose/notify" : "pose/nudge"
         "pose/remove" : "pose/drop"
         "po" : "pose"
+        "me" : "pose"
         
         "whisper": "pemit"
         "whisp": "pemit"
