@@ -1,8 +1,8 @@
 module AresMUSH
   module Website
-    class GetWikiRequestHandler
+    class GetWikiPageRequestHandler
       def handle(request)
-        name_or_id = request.args[:name]
+        name_or_id = request.args[:id]
         if (!name_or_id || name_or_id.blank?)
           name_or_id = 'home'
         end

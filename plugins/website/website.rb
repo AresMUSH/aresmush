@@ -45,8 +45,14 @@ module AresMUSH
       case request.cmd
       when "game"
         return GetGameInfoRequestHandler
-      when "wiki"
-        return GetWikiRequestHandler
+      when "wikiPage"
+        return GetWikiPageRequestHandler
+      when "wikiTagList"
+        return GetWikiTagListRequestHandler
+      when "wikiPageList"
+        return GetWikiPageListRequestHandler
+      when "wikiTag"
+        return GetWikiTagRequestHandler
       end
       nil
     end
