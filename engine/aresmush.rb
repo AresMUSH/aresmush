@@ -73,7 +73,7 @@ module AresMUSH
   end
 
   def self.website_scripts_path
-    File.join(AresMUSH.website_public_path, 'scripts')
+    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'scripts')
   end
 end
 
@@ -145,3 +145,4 @@ require 'aresmush/templates/template_formatters.rb'
 require 'aresmush/templates/template_renderer.rb'
 require 'aresmush/web/web_connection.rb'
 require 'aresmush/web/engine_api_server.rb'
+require 'aresmush/web/web_request.rb'

@@ -45,10 +45,28 @@ module AresMUSH
      options "*" do
        response.headers["Allow"] = "GET, POST, OPTIONS"
        response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
-       response.headers["Access-Control-Allow-Origin"] = "*"
+       response.headers["Access-Control-Allow-Origin"] = "#{Global.read_config("server", "hostname")}:#{Global.read_config("server", "web_portal_port")}"
        200
      end
-    
+     
+     get '/api-key/?' do 
+       { key: Game.master.engine_api_key }.to_json
+     end
+     
+     post '/request/?' do
+       content_type :json
+       AresMUSH.with_error_handling(nil, "Web Request") do
+         request = WebRequest.new(params)
+         if (!request.check_api_key)
+           return { error: "Invalid authentication key." }.to_json
+         end
+         
+         response = Global.dispatcher.on_web_request(request)
+         return response.to_json
+       end
+       return { error: "Sorry, something went wrong with the web request." }.to_json
+     end
+     
     
   end
 end

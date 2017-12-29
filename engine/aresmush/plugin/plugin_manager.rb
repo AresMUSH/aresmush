@@ -62,8 +62,6 @@ module AresMUSH
       plugin_module = Object.const_get("AresMUSH::#{module_name}")
       load_plugin_locale plugin_module
       load_plugin_help plugin_module
-
-      FileUtils.touch(File.join(AresMUSH.root_path, "tmp", "restart.txt"))
                   
       @plugins << plugin_module.send(:load_plugin)
     end

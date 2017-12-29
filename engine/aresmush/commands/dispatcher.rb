@@ -109,7 +109,26 @@ module AresMUSH
         Global.logger.error("Error handling event: event=#{event} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
     end
-        
+
+    ### IMPORTANT!!!  Do not call from outside of the event machine reactor loop!
+    def on_web_request(request)
+      handled = false
+      AresMUSH.with_error_handling(nil, "Web Request") do
+        Global.plugin_manager.plugins.each do |p|
+          next if !p.respond_to?(:get_web_request_handler)
+          handler_class = p.get_web_request_handler(request)
+          if (handler_class)
+            handled = true
+            handler = handler_class.new
+            return handler.handle(request)
+          end # if
+        end # each
+      end # with error handling
+      if (!handled)
+        return { error: "Invalid command." }
+      end
+    end
+            
     private
     
     def with_error_handling(client, cmd, &block)
