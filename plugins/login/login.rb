@@ -99,6 +99,8 @@ module AresMUSH
       case request.cmd
       when "login"
         return LoginRequestHandler
+      when "loginInfo"
+        return LoginInfoRequestHandler
       when "register"
         return RegisterRequestHandler
       end
