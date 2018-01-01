@@ -3,26 +3,21 @@ module AresMUSH
     class AddReplyRequestHandler
       def handle(request)
                 
-        char_id = request.args[:char_id]
         topic_id = request.args[:topic_id]
         message = request.args[:reply]
+        enactor = request.enactor
         
         topic = BbsPost[topic_id.to_i]
         if (!topic)
           return { error: "Topic not found." }
         end
         
-        if (char_id)
-          char = Character.find_one_by_name(char_id)
-          if (!char)
-            return { error: "Character not found." }
-          end
-        else
-          char = nil
-        end
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
 
         category = topic.bbs_board
-        if (!Bbs.can_write_board?(char, category))
+        if (!Bbs.can_write_board?(enactor, category))
           return { error: "You don't have access to that board." }
         end
         
@@ -31,7 +26,7 @@ module AresMUSH
         end
       
         formatted_message = WebHelpers.format_input_for_mush(message)
-        Bbs.reply(category, topic, char, formatted_message)
+        Bbs.reply(category, topic, enactor, formatted_message)
         {}
       end
     end
