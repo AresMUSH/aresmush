@@ -8,11 +8,11 @@ module AresMUSH
         if (!enable_registration)
           return { message: "Web registration is disabled.  Please create a character in the game." }
         end
-      
+              
         name = request.args[:name]
         pw = request.args[:password]
         confirm_pw = request.args[:confirm_password]
-        recaptcha_response = request.args["g-recaptcha-response"]
+        recaptcha_response = request.args[:recaptcha]
       
         if (recaptcha.is_enabled? && !recaptcha.verify(recaptcha_response))
           return { error: "Please prove you're human first." }

@@ -77,5 +77,21 @@ module AresMUSH
       
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "addPost"
+        return AddPostRequestHandler
+      when "addReply"
+        return AddReplyRequestHandler
+      when "forumCategory"
+        return ForumCategoryRequestHandler
+      when "forumList"
+        return ForumListRequestHandler
+      when "forumTopic"
+        return ForumTopicRequestHandler
+      end
+    end
+    
   end
 end

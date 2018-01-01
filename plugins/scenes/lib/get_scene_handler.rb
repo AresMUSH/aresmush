@@ -8,6 +8,10 @@ module AresMUSH
           return { error: "Scene not found." }
         end
         
+        if (!scene.shared)
+          return { error: "That scene has not been shared." }
+        end
+        
         {
           type: 'scene',
           id: scene.id,

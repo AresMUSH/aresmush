@@ -124,6 +124,7 @@ module AresMUSH
           end # if
         end # each
       end # with error handling
+      Global.logger.error("Error handling web request: #{request.json}.")
       return { error: "Error handling web request." }
     end
             

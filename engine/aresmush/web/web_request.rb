@@ -11,7 +11,7 @@ module AresMUSH
     end
     
     def args
-      @json[:args]
+      @json[:args] || {}
     end
     
     def check_api_key

@@ -97,6 +97,8 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "checkToken"
+        return CheckTokenRequestHandler
       when "login"
         return LoginRequestHandler
       when "loginInfo"
