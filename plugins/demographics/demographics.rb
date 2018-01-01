@@ -65,5 +65,20 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "actors"
+        return ActorsRequestHandler
+      when "censusFull"
+        return FullCensusRequestHandler
+      when "censusGroup"
+        return GroupCensusRequestHandler
+      when "censusTypes"
+        return CensusTypesRequestHandler
+      end
+      nil
+    end
+    
   end
 end

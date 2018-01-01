@@ -1,9 +1,9 @@
 manage:
-    backups_to_keep: 5
+    backups_to_keep: 1
     
     backup_cron:
         hour: 
-            - 06
+            - 05
         minute: 
             - 00
         
