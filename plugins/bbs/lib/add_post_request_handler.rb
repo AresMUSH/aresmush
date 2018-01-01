@@ -3,26 +3,20 @@ module AresMUSH
     class AddPostRequestHandler
       def handle(request)
                 
-        char_id = request.args[:char_id]
         category_id = request.args[:category_id]
         message = request.args[:message]
         subject = request.args[:subject]
+        enactor = request.enactor
+
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
         
         category = BbsBoard[category_id.to_i]
         if (!category)
           return { error: "Category not found." }
         end
-        
-        if (char_id)
-          char = Character.find_one_by_name(char_id)
-          if (!char)
-            return { error: "Character not found." }
-          end
-        else
-          char = nil
-        end
 
-        if (!Bbs.can_write_board?(char, category))
+        if (!Bbs.can_write_board?(enactor, category))
           return { error: "You don't have access to that board." }
         end
         
@@ -31,7 +25,7 @@ module AresMUSH
         end
       
         formatted_message = WebHelpers.format_input_for_mush(message)
-        post = Bbs.post(category.name, subject, message, char)
+        post = Bbs.post(category.name, subject, message, enactor)
         
         if (!post)
           return { error: "Something went wrong posting the message." }

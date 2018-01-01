@@ -5,7 +5,7 @@ module AresMUSH
         
       allow_html = Global.read_config('website', 'allow_html_in_markdown')
       text = AresMUSH::MushFormatter.format output, false
-      text = AnsiFormatter.strip_ansi(text)
+      #text = AnsiFormatter.strip_ansi(text)
       html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, self)
       text = html_formatter.to_html text
       text
@@ -39,6 +39,15 @@ module AresMUSH
     def self.format_mush(text)
       text = MushFormatter.format(text, false)
       return AnsiFormatter.strip_ansi(text)
+    end
+    
+    def self.validate_auth_token(request)
+      return { error: "You are not logged in." } if !request.enactor
+      token = request.auth[:token]
+      if request.enactor.is_valid_api_token?(token)
+        return nil
+      end
+      return { error: "Your session has expired.  Please log in again." } 
     end
   end
 end

@@ -3,22 +3,14 @@ module AresMUSH
     class ForumListRequestHandler
       def handle(request)
                 
-        char_id = request.args[:char_id]
-        if (char_id)
-          char = Character.find_one_by_name(char_id)
-          if (!char)
-            return { error: "Character not found." }
-          end
-        else
-          char = nil
-        end
+        enactor = request.enactor
         
         BbsBoard.all_sorted
-           .select { |b| Bbs.can_read_board?(char, b) }
+           .select { |b| Bbs.can_read_board?(enactor, b) }
            .map { |b| {
              id: b.id,
              name: b.name,
-             unread: char && b.has_unread?(char)
+             unread: enactor && b.has_unread?(enactor)
            }}
         
       end
