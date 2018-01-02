@@ -48,5 +48,25 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.get_web_request_handler(request)
+       case request.cmd
+       when "events"
+         return EventsRequestHandler
+       when "event"
+         return EventRequestHandler
+       when "createEvent"
+         return CreateEventRequestHandler
+       when "editEvent"
+         return EditEventRequestHandler
+       when "deleteEvent"
+         return DeleteEventRequestHandler
+       when "getEventForEdit"
+         return GetEventForEditingRequestHandler
+       when "upcomingEvents"
+         return UpcomingEventsRequestHandler
+       end
+       nil
+    end
   end
 end

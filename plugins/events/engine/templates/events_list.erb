@@ -4,7 +4,7 @@
 <% events.each_with_index do |ev, i| %>
 <%= left(i + 1, 4) %><%= ev.color -%>
 <%= left( ev.title, 30 ) -%>
- <%= start_time_local(ev) -%>
+ <%= start_datetime_local(ev) -%>
  (<%= start_time_standard(ev) %>)%xn
 <% end %>
 %lf

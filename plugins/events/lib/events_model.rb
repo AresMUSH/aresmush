@@ -61,7 +61,7 @@ module AresMUSH
       end
     end
     
-    def start_time_local(enactor)
+    def start_datetime_local(enactor)
       local_time = OOCTime.local_long_timestr(enactor, starts)
       "#{local_time}"
     end
@@ -74,7 +74,8 @@ module AresMUSH
     end
     
     def start_datetime_standard
-      formatted_time = starts.strftime "%a %b %d, %Y %l:%M%P"
+      time_format = Global.read_config("date_and_time", "time_format")
+      formatted_time = starts.strftime "%a %b %d, %Y #{time_format}"
       timezone = Global.read_config("events", "calendar_timezone")
       "#{formatted_time}#{timezone}"
     end
