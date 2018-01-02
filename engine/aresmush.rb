@@ -57,7 +57,7 @@ module AresMUSH
   end
 
   def self.website_public_path
-    AresMUSH.game_path
+    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public')
   end
 
   def self.website_views_path
@@ -65,11 +65,11 @@ module AresMUSH
   end
 
   def self.website_files_path
-    File.join(AresMUSH.website_public_path, 'files')
+    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'uploads')
   end
 
   def self.website_theme_image_path
-    File.join(AresMUSH.website_public_path, 'theme_images')
+    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'theme_images')
   end
 
   def self.website_scripts_path

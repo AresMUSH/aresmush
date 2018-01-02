@@ -10,8 +10,8 @@ module AresMUSH
         super File.dirname(__FILE__) + "/events_list.erb"        
       end
       
-      def start_time_local(event)
-        event.start_time_local(@enactor)
+      def start_datetime_local(event)
+        event.start_datetime_local(@enactor)
       end
       
       def start_time_standard(event)

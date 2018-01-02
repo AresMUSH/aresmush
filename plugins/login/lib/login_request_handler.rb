@@ -20,7 +20,9 @@ module AresMUSH
         {
           token: char.login_api_token,
           name: char.name,
-          id: char.id
+          id: char.id,
+          is_approved: char.is_approved?,
+          is_admin: char.is_admin?
         }
       end
     end

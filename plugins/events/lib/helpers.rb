@@ -4,7 +4,7 @@ module AresMUSH
       actor.has_permission?("manage_events")
     end
     def self.ical_path
-      File.join(AresMUSH.game_path, 'calendar.ics')
+      File.join(AresMUSH.website_public_path, 'calendar.ics')
     end
         
     def self.parse_date_time_desc(str)

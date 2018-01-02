@@ -14,7 +14,7 @@ module AresMUSH
     # Takes something from a text box and replaces carriage returns with %r's for MUSH.
     def self.format_input_for_mush(input)
       return nil if !input
-      input.gsub(/\r\n/, '%r')
+      input.gsub(/\r\n/, '%r').gsub(/\n/, '%r')
     end
 
     # Takes MUSH text and formats it for a text box with %r's becoming line breaks.      

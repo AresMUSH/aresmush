@@ -39,8 +39,8 @@ module AresMUSH
         Events.upcoming_events
       end
       
-      def start_time_local(event)
-        event.start_time_local(@char)
+      def start_datetime_local(event)
+        event.start_datetime_local(@char)
       end
       
       def start_time_standard(event)
