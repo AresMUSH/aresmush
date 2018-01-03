@@ -5,6 +5,9 @@ module AresMUSH
                 
         enactor = request.enactor
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         BbsBoard.all_sorted
            .select { |b| Bbs.can_read_board?(enactor, b) }
            .map { |b| {

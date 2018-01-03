@@ -19,7 +19,9 @@ module AresMUSH
           ictime: ICTime.ic_datestr(ICTime.ictime),
           config: Global.config_reader.config,
           date_entry_format: Global.read_config('date_and_time', 'date_entry_format_help').upcase,
-          disabled_plugins: disabled
+          disabled_plugins: disabled,
+          who_count: Global.client_monitor.logged_in.count,
+          scene_count: Scene.all.select { |s| !s.completed }.count
         } 
       end
     end

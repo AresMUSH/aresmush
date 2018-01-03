@@ -1,7 +1,0 @@
-<h1>Combat Log <%= @combat.id %></h1>
-
-<div class="ansi">
-    <% @combat.debug_log.combat_log_messages.sort_by(:timestamp).each do |m| %>
-    <p><%= m.created_at %> <%= format_output_for_html m.message %></p>
-    <% end %>
-</div>

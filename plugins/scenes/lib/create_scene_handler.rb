@@ -5,6 +5,9 @@ module AresMUSH
         enactor = request.enactor
         plot = request.args[:plot_id]
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         if (!enactor.is_approved?)
           return { error: "You are not allowed to create scenes until you're approved." }
         end

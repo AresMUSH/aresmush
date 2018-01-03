@@ -10,6 +10,9 @@ module AresMUSH
           return { error: "Plot not found." }
         end
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         if (edit_mode)
           description = plot.description
         else

@@ -15,7 +15,7 @@ module AresMUSH
     
     def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil)
       return if !scene.logging_enabled
-      scene_pose = SceneScenes.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose)
+      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose)
       if (!scene_pose.is_gm_pose? && !scene_pose.is_system_pose?)
         scene.participants.add character
       end

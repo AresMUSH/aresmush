@@ -11,6 +11,9 @@ module AresMUSH
           return { error: "Event not found!" }
         end
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         datetime = OOCTime.format_date_time_for_entry(event.starts)
         
         if (edit_mode)

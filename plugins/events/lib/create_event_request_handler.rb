@@ -8,6 +8,9 @@ module AresMUSH
         desc = request.args[:description]
         enactor = request.enactor
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         can_create = enactor && enactor.is_approved?
         if (!can_create)
           return { error: "You are not allowed to create events." }
