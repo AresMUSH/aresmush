@@ -9,6 +9,9 @@ module AresMUSH
           return { error: "Scene not found." }
         end
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         if (!Scenes.can_access_scene?(enactor, scene))
           return { error: "You are not allowed to edit that scene." }
         end

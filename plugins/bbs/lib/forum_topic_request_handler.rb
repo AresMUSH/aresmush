@@ -6,6 +6,9 @@ module AresMUSH
         topic_id = request.args[:topic_id]
         enactor = request.enactor
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         topic = BbsPost[topic_id.to_i]
         if (!topic)
           return { error: "Topic not found." }

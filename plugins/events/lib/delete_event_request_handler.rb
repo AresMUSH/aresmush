@@ -10,6 +10,9 @@ module AresMUSH
           return { error: "Event not found!" }
         end
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         can_manage = enactor && Events.can_manage_event(enactor, event)
         if (!can_manage)
           return { error: "You are not allowed to edit that event." }

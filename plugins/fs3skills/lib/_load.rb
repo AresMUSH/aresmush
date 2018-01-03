@@ -1,5 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
+load "abilities_request_handler.rb"
 load "app_review.rb"
 load "starting_skills.rb"
 load "ability_point_counter.rb"

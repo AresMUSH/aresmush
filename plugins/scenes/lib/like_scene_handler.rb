@@ -10,6 +10,9 @@ module AresMUSH
           return { error: "Scene not found." }
         end
         
+        error = WebHelpers.validate_auth_token(request)
+        return error if error
+        
         if (!enactor.is_approved?)
           return { error: "You are not allowed to like scenes until you're approved." }
         end
