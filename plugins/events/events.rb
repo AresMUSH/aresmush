@@ -61,8 +61,6 @@ module AresMUSH
          return EditEventRequestHandler
        when "deleteEvent"
          return DeleteEventRequestHandler
-       when "getEventForEdit"
-         return GetEventForEditingRequestHandler
        when "upcomingEvents"
          return UpcomingEventsRequestHandler
        end

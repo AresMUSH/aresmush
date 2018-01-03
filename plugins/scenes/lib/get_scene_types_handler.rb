@@ -2,7 +2,7 @@ module AresMUSH
   module Scenes
     class GetSceneTypesRequestHandler
       def handle(request)
-        Scenes.scene_types.each_with_index.map { |s, i| { type: "sceneType", id: i + 1, name: s }}
+        Scenes.scene_types.each_with_index.map { |s, i| { type: "sceneType", id: i + 1, name: s.titlecase }}
       end
     end
   end

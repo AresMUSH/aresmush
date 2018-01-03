@@ -39,6 +39,11 @@ module AresMUSH
       scene.participants.include?(actor)
     end
     
+    def self.can_edit_scene?(actor, scene)
+      return false if !actor
+      return true if Scenes.can_manage_scene?(actor, scene)
+      scene.participants.include?(actor)
+    end
     
     def self.stop_scene(scene)
       return if scene.completed

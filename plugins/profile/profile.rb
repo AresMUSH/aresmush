@@ -50,5 +50,13 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "characters"
+        return CharactersRequestHandler
+      end
+      nil
+    end
   end
 end

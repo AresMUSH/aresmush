@@ -134,12 +134,32 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "createPlot"
+        return CreatePlotRequestHandler
+      when "createScene"
+        return CreateSceneRequestHandler
+      when "deletePlot"
+        return DeletePlotRequestHandler
+      when "deleteScene"
+        return DeleteSceneRequestHandler
+      when "editPlot"
+        return EditPlotRequestHandler
+      when "editScene"
+        return EditSceneRequestHandler
+      when "likeScene"
+        return LikeSceneRequestHandler
+      when "plots"
+        return PlotsRequestHandler
+      when "plot"
+        return PlotRequestHandler
       when "scene"
         return GetSceneRequestHandler
       when "scenes"
         return GetScenesRequestHandler
       when "sceneTypes"
         return GetSceneTypesRequestHandler
+      when "recentScenes"
+        return RecentScenesRequestHandler
       end
       nil
     end
