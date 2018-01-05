@@ -1,6 +1,6 @@
 ---
 plugins:
-  disabled_plugins: [fs3skills]
+  disabled_plugins: []
   optional_plugins:
   - chargen
   - cookies

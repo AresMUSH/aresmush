@@ -48,3 +48,6 @@ chargen:
         "bg/reject" : "app/reject"
         "bg/submit" : "app/submit"
         "bg/unsubmit" : "app/unsubmit"
+        "hooks": "hook"
+        "hook/delete": "hook/remove"
+        "hook/set" : "hook/add"
