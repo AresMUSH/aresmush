@@ -5,7 +5,6 @@ module AresMUSH
         
       allow_html = Global.read_config('website', 'allow_html_in_markdown')
       text = AresMUSH::MushFormatter.format output, false
-      #text = AnsiFormatter.strip_ansi(text)
       html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, self)
       text = html_formatter.to_html text
       text
@@ -35,10 +34,10 @@ module AresMUSH
         
       icon.blank? ? nil : icon
     end
-            
-    def self.format_mush(text)
-      text = MushFormatter.format(text, false)
-      return AnsiFormatter.strip_ansi(text)
+    
+    def self.icon_for_name(name)
+      char = Character.find_one_by_name(name)
+      WebHelpers.icon_for_char(char)
     end
     
     def self.validate_auth_token(request)

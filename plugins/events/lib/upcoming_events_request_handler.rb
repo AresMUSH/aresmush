@@ -4,9 +4,6 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.validate_auth_token(request)
-        return error if error
-        
         Events.upcoming_events[0..5].map { |e| {
           id: e.id,
           title: e.title,

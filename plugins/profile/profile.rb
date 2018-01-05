@@ -55,6 +55,10 @@ module AresMUSH
       case request.cmd
       when "characters"
         return CharactersRequestHandler
+      when "characterGroups"
+        return CharacterGroupsRequestHandler
+      when "character"
+        return CharacterRequestHandler
       end
       nil
     end
