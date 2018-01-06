@@ -20,6 +20,11 @@ module AresMUSH
     before_save :save_upcase
     before_delete :delete_versions
     
+    def self.sanitize_page_name(name)
+      new_name = AresMUSH::Website::FilenameSanitizer.sanitize(name)
+      new_name.gsub(' ', '-').downcase
+    end
+    
     def self.find_by_name_or_id(name_or_id)
       name_or_id = name_or_id.gsub(' ', '-').downcase
       page = WikiPage[name_or_id]
@@ -33,12 +38,16 @@ module AresMUSH
       self.tags.join(" ")
     end
     
-    def display_title
+    def heading
       self.title ? self.title : self.name.titleize
     end
     
     def current_version
-      self.wiki_page_versions.to_a.reverse.first
+      sorted_versions.reverse.first
+    end
+    
+    def sorted_versions
+      self.wiki_page_versions.to_a.sort_by { |v| v.created_at }
     end
     
     def text
@@ -54,14 +63,26 @@ module AresMUSH
       ['home']
     end
     
-    
     def save_upcase
-      self.name = AresMUSH::Website::FilenameSanitizer.sanitize(self.name)
+      self.name = WikiPage.sanitize_page_name(self.name)
       self.name_upcase = self.name ? self.name.upcase : nil
     end
     
     def delete_versions
       self.wiki_page_versions.each { |v| v.delete }
     end
+    
+    def get_lock_info(enactor)
+      if (self.locked_by && (self.locked_by != enactor))
+        expiry_time = self.locked_time + 60*15
+        if (Time.now  < expiry_time)
+          return { locked_by: self.locked_by.name, 
+                   time: OOCTime.local_long_timestr(enactor, expiry_time) }
+        end
+      else
+        return nil
+      end
+    end
+    
   end
 end

@@ -64,7 +64,7 @@ module AresMUSH
     File.join(AresMUSH.website_path, 'views')
   end
 
-  def self.website_files_path
+  def self.website_uploads_path
     File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'uploads')
   end
 

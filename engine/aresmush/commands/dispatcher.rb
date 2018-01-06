@@ -125,7 +125,7 @@ module AresMUSH
         end # each
       end # with error handling
       Global.logger.error("Error handling web request: #{request.json}.")
-      return { error: "Error handling web request." }
+      return { error: "Oops!  Something went wrong when the website talked to the game.  Please try again and alert staff is the problem persists." }
     end
             
     private

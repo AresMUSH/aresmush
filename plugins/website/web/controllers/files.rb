@@ -2,7 +2,7 @@ module AresMUSH
   class WebApp 
     helpers do
       def upload_path
-        AresMUSH.website_files_path
+        AresMUSH.website_uploads_path
       end
       
       def file_size_kb(file)

@@ -40,7 +40,7 @@ module AresMUSH
         redirect '/wiki'
       end
       
-      @page_title = "#{@page.display_title} - #{game_name}"
+      @page_title = "#{@page.heading} - #{game_name}"
             
       erb :"wiki/page_source"
     end
@@ -140,7 +140,7 @@ module AresMUSH
       
       @text = @page.text
       @name = @page.name
-      @title = @page.display_title
+      @title = @page.heading
       @tags = @page.tags_text
       
       erb :"wiki/edit_page"
@@ -210,7 +210,7 @@ module AresMUSH
         redirect "/wiki/create?name=#{name_or_id}"
       end
             
-      @page_title = "#{@page.display_title} - #{game_name}"
+      @page_title = "#{@page.heading} - #{game_name}"
       
       dynamic_page = Website::WikiMarkdownExtensions.is_dynamic_page?(@page.text)
                   
