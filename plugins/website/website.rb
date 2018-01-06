@@ -1,6 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
-
+require 'diffy'
 
 module AresMUSH
   module Website
@@ -43,6 +43,12 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "createWiki"
+        return CreateWikiPageRequestHandler
+      when "editWiki"
+        return EditWikiPageRequestHandler
+      when "files"
+        return GetFilesRequestHandler
       when "game"
         return GetGameInfoRequestHandler
       when "wikiPage"
@@ -51,8 +57,14 @@ module AresMUSH
         return GetWikiTagListRequestHandler
       when "wikiPageList"
         return GetWikiPageListRequestHandler
+      when "wikiPageSource"
+        return GetWikiPageSourceRequestHandler
+      when "wikiPreview"
+        return WikiPreviewRequestHandler
       when "wikiTag"
         return GetWikiTagRequestHandler
+      when "sidebarInfo"
+        return GetSidebarInfoRequestHandler
       end
       nil
     end

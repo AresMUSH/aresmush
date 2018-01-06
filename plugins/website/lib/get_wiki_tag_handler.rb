@@ -5,10 +5,10 @@ module AresMUSH
         tag = request.args[:id] || ''
         tag = tag.titlecase
         pages = WikiPage.all.select { |p| p.tags.include?(tag.downcase) }
-           .sort_by { |p| p.display_title }
+           .sort_by { |p| p.heading }
            .map { |p| {
              id: p.name,
-             heading: p.display_title
+             heading: p.heading
            }}
            
         chars = Character.all.select { |c| c.profile_tags.include?(tag.downcase) }

@@ -3,9 +3,9 @@ module AresMUSH
     class GetWikiPageListRequestHandler
       def handle(request)
         WikiPage.all.to_a
-        .sort_by { |p| p.display_title }
+        .sort_by { |p| p.heading }
         .map{ |p| {
-          heading: p.display_title,
+          heading: p.heading,
           id: p.name
         }}
       end
