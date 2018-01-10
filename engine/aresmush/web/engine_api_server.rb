@@ -43,9 +43,21 @@ module AresMUSH
   
      # routes...
      options "*" do
+       
+       website_url = "#{Global.read_config("server", "hostname")}:#{Global.read_config("server", "web_portal_port")}"
        response.headers["Allow"] = "GET, POST, OPTIONS"
        response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
-       response.headers["Access-Control-Allow-Origin"] = "#{Global.read_config("server", "hostname")}:#{Global.read_config("server", "web_portal_port")}"
+       response.headers["Access-Control-Allow-Origin"] = website_url
+       
+       pp request
+       puts request.env['HTTP_ORIGIN']
+       puts "http://#{website_url}"
+       
+       if (request.env['HTTP_ORIGIN'] == "http://#{website_url}" ||
+           request.env['HTTP_ORIGIN'] == "https://#{website_url}")
+           response.headers["Access-Control-Allow-Origin"] =  request.env['HTTP_ORIGIN']
+         end
+           
        200
      end
      
@@ -67,6 +79,9 @@ module AresMUSH
        return { error: "Sorry, something went wrong with the web request." }.to_json
      end
      
+     post '/upload/?' do 
+       puts params.inspect
+     end
     
   end
 end

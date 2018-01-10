@@ -3,6 +3,7 @@ $:.unshift File.dirname(__FILE__)
 load "filename_sanitizer.rb"
 load "create_wiki_page_handler.rb"
 load "edit_wiki_page_handler.rb"
+load "file_upload_request_handler.rb"
 load "get_files_request_handler.rb"
 load "get_game_info_handler.rb"
 load "get_sidebar_info_handler.rb"
