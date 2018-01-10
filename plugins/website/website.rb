@@ -65,6 +65,8 @@ module AresMUSH
         return GetWikiTagRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
+      when "uploadFile"
+        return FileUploadRequestHandler
       end
       nil
     end
