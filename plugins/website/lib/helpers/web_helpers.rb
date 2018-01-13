@@ -3,11 +3,17 @@ module AresMUSH
     def self.format_markdown_for_html(output)
       return nil if !output
         
+      text = format_output_for_html(output)
       allow_html = Global.read_config('website', 'allow_html_in_markdown')
-      text = AresMUSH::MushFormatter.format output, false
       html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, self)
       text = html_formatter.to_html text
       text
+    end
+    
+    def self.format_output_for_html(output)
+      return nil if !output
+        
+      AresMUSH::MushFormatter.format output, false
     end
       
     # Takes something from a text box and replaces carriage returns with %r's for MUSH.

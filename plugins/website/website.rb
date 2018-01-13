@@ -43,14 +43,12 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+        
+      ## WIKI
       when "createWiki"
         return CreateWikiPageRequestHandler
       when "editWiki"
         return EditWikiPageRequestHandler
-      when "files"
-        return GetFilesRequestHandler
-      when "game"
-        return GetGameInfoRequestHandler
       when "wikiPage"
         return GetWikiPageRequestHandler
       when "wikiTagList"
@@ -63,10 +61,22 @@ module AresMUSH
         return WikiPreviewRequestHandler
       when "wikiTag"
         return GetWikiTagRequestHandler
-      when "sidebarInfo"
-        return GetSidebarInfoRequestHandler
+
+      ## FILES
+      when "deleteFile"
+        return FileDeleteRequestHandler
+      when "files"
+        return GetFilesRequestHandler
+      when "updateFile"
+        return FileUpdateRequestHandler
       when "uploadFile"
         return FileUploadRequestHandler
+
+      ## MISC
+      when "game"
+        return GetGameInfoRequestHandler
+      when "sidebarInfo"
+        return GetSidebarInfoRequestHandler
       end
       nil
     end

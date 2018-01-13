@@ -21,7 +21,6 @@ module AresMUSH
         end
       
         begin
-          puts "#{date} #{time}"
           datetime = OOCTime.parse_datetime("#{date} #{time}".strip.downcase)
         rescue Exception => ex
           return { error: "Invalid date or time: #{ex}" }

@@ -159,6 +159,10 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "combat"
+        return CombatSummaryRequestHandler
+      when "combats"
+        return CombatsRequestHandler
       when "gear"
         return GearListRequestHandler
       when "gearDetail"

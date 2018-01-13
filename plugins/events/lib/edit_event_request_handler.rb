@@ -31,9 +31,7 @@ module AresMUSH
         rescue Exception => ex
           return { error: "Invalid date or time: #{ex}" }
         end
-      
-        puts WebHelpers.format_input_for_mush(desc).inspect
-        
+              
         Events.update_event(event, enactor, title, datetime, WebHelpers.format_input_for_mush(desc))
         
         {}
