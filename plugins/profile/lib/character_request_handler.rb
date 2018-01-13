@@ -56,12 +56,14 @@ module AresMUSH
            }
         }}
         
+        
         scenes_starring = char.scenes_starring
-        scenes = Scenes.scene_types.map { |type| {
-          name: type,
-          key: type.parameterize('_'),
-          scenes: scenes_starring.select { |s| s.shared && s.scene_type == type }
-             .sort_by { |s| s.date_shared || s.created_at }.reverse
+        #scenes = Scenes.scene_types.map { |type| {
+        #  name: type,
+        #  key: type.parameterize('_'),
+        #  scenes: scenes_starring.select { |s| s.shared && s.scene_type == type }
+        
+        scenes = scenes_starring.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse
              .map { |s| {
                       id: s.id,
                       title: s.title,
@@ -74,8 +76,8 @@ module AresMUSH
         
                     }
                   }
-                }
-              }
+        #        }
+        #      }
         
         show_background = (char.on_roster? || char.bg_shared) && !char.background.blank?
         hooks = char.rp_hooks.map { |h| 
@@ -91,6 +93,9 @@ module AresMUSH
           severity: WebHelpers.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity))
           }          
         }
+        
+        files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
+        files = files.map { |f| { name: File.basename(f), path: f.gsub(AresMUSH.website_uploads_path, '') }}
         
         {
           id: char.id,
@@ -115,7 +120,8 @@ module AresMUSH
           fs3_action_skills: get_ability_list(char.fs3_action_skills),
           fs3_backgrounds: get_ability_list(char.fs3_background_skills),
           fs3_languages: get_ability_list(char.fs3_languages),
-          fs3_damage: damage
+          fs3_damage: damage,
+          files: files
         }
       end
       

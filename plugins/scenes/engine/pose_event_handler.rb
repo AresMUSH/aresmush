@@ -2,7 +2,6 @@ module AresMUSH
   module Scenes
     class PoseEventHandler
       def on_event(event)
-        puts "GOT POSE"
         enactor = event.enactor
         room = enactor.room
         scene = room.scene

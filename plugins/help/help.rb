@@ -33,5 +33,15 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "help"
+        return HelpIndexRequestHandler
+      when "helpTopic"
+        return HelpTopicRequestHandler
+      end
+      nil
+    end
   end
 end

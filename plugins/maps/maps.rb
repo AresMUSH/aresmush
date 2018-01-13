@@ -39,5 +39,15 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "maps"
+        return MapsRequestHandler
+      when "map"
+        return MapRequestHandler
+      end
+    end
+    
   end
 end

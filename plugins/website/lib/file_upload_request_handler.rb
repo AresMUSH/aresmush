@@ -1,5 +1,3 @@
-require 'open-uri'
-
 module AresMUSH
   module Website
     

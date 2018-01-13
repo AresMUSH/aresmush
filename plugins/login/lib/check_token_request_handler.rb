@@ -12,7 +12,7 @@ module AresMUSH
         end
         
         if (char.is_valid_api_token?(token))
-          return { tokenIsValid: true }
+          return { token_valid: true }
         end
         
         { error: "Your session has expired.  Please log in again." }        
