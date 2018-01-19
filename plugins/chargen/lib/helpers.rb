@@ -60,6 +60,68 @@ module AresMUSH
     def self.stage_name(char)
       stage = char.chargen_stage
       stage ? Chargen.stages.keys[stage] : nil
-    end    
+    end 
+    
+    def self.save_char(char, chargen_data)
+      alerts = []
+      
+      chargen_data[:demographics].each do |k, v|
+        char.update_demographic(k, v[:value])
+      end
+      char.update_demographic(:fullname, chargen_data[:fullname])
+      
+      age = chargen_data[:demographics][:age][:value].to_i
+      age_error = Demographics.check_age(age)
+      if (age_error)
+        alerts << age_error
+      else
+        bday = Date.new ICTime.ictime.year - age, ICTime.ictime.month, ICTime.ictime.day
+        bday = bday - rand(364)
+        char.update_demographic :birthdate, bday
+      end
+      
+      chargen_data[:groups].each do |k, v|
+        Demographics.set_group(char, k, v[:value])
+      end
+      
+      if (Ranks.is_enabled?)
+        rank_error = Ranks.set_rank(char, chargen_data[:groups][:rank][:value])
+        if (rank_error)
+          alerts << rank_error
+        end
+      end
+      
+      char.update(cg_background: WebHelpers.format_input_for_mush(chargen_data[:background]))
+      
+      Describe.update_current_desc(char, WebHelpers.format_input_for_mush(chargen_data[:desc]))
+      shortdesc = chargen_data[:shortdesc]
+      if (!shortdesc.blank?)
+        Describe.create_or_update_desc(char, shortdesc, :short)
+      end
+      
+      chargen_data[:fs3_attributes].each do |k, v|
+        FS3Skills.set_ability(nil, char, k, v.to_i)
+      end
+
+      chargen_data[:fs3_action_skills].each do |k, v|
+        FS3Skills.set_ability(nil, char, k, v.to_i)
+        ability = FS3Skills.find_ability(char, k)
+        puts ability.inspect
+        specs = chargen_data[:fs3_specialties][k] || []
+        puts specs
+        ability.update(specialties: specs)
+      end
+      
+      chargen_data[:fs3_backgrounds].each do |k, v|
+        FS3Skills.set_ability(nil, char, k, v.to_i)
+      end
+      
+      chargen_data[:fs3_languages].each do |k, v|
+        FS3Skills.set_ability(nil, char, k, v.to_i)
+      end
+      
+      return alerts
+    end
+       
   end
 end

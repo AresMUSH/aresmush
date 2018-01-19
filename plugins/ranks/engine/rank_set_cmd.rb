@@ -34,14 +34,12 @@ module AresMUSH
             enactor.update(ranks_rank: rank)
             client.emit_success t('ranks.rank_cleared')
           else
-            error = Ranks.check_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
+            error = Ranks.set_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
             if (error)
               client.emit_failure error
-              return
+            else
+              client.emit_success t('ranks.rank_set', :rank => rank)
             end
-          
-            model.update(ranks_rank: rank)
-            client.emit_success t('ranks.rank_set', :rank => rank)
           end
         end
       end

@@ -28,6 +28,16 @@ module AresMUSH
       Global.read_config("fs3skills", "background_skills")
     end
     
+    def self.get_ability_desc(metadata_list, name)
+      entry = metadata_list.select { |m| m['name'] == name }.first
+      entry ? entry['desc'] : nil
+    end
+    
+    def self.get_ability_specialties(metadata_list, name)
+      entry = metadata_list.select { |m| m['name'] == name }.first
+      entry ? entry['specialties'] : nil
+    end
+    
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }
     end

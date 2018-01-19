@@ -67,5 +67,19 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "chargenChar"
+        return ChargenCharRequestHandler
+      when "chargenInfo"
+        return ChargenInfoRequestHandler
+      when "resetChargen"
+        return ChargenResetRequestHandler
+      when "saveChargen"
+        return ChargenSaveRequestHandler
+      end
+      nil
+    end
   end
 end
