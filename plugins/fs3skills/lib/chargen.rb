@@ -100,7 +100,7 @@ module AresMUSH
       return nil
     end
     
-    def self.reset_char(client, char)
+    def self.reset_char(client, char) # Client may be null
       char.fs3_action_skills.each { |s| s.delete }
       char.fs3_attributes.each { |s| s.delete }
       char.fs3_background_skills.each { |s| s.delete }

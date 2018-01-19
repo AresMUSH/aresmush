@@ -85,6 +85,7 @@ module AresMUSH
       when "abilities"
         return AbilitiesRequestHandler
       end
+      nil
     end
   end
 end

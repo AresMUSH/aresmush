@@ -15,6 +15,7 @@
 <% if i % 2 == 0 %>%R<% end %>%xh<%= left( "#{g.titlecase}:", 12 ) %>%xn <%= left( group(g), 25 ) -%>
 <% end %>
 <% if AresMUSH::Ranks.is_enabled? %>
+
 %xh<%= left( t('profile.rank_title'), 12 ) %>%xn <%= left( rank, 25 ) -%>
 <% end %>
 <%= divider %>

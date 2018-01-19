@@ -27,5 +27,12 @@ module AresMUSH
       callsign_str =  callsign.blank? ? "" : "\"#{callsign}\" "
       "#{rank_str}#{first_name} #{callsign_str}#{last_name}"
     end
+    
+    def self.set_rank(char, rank, allow_all = false)
+      error = Ranks.check_rank(char, rank, allow_all)
+      return error if error
+      char.update(ranks_rank: rank)
+      return nil
+    end
   end
 end

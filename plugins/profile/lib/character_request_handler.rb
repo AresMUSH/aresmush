@@ -19,10 +19,7 @@ module AresMUSH
             }
           }
         
-        if (Ranks.is_enabled?)
-          demographics << { name: "Rank", value: char.rank }
-        end
-          
+        
         demographics << { name: "Age", value: char.age }
         demographics << { name: "Birthdate", value: char.demographic(:birthdate)}
         demographics << { name: "Played By", value: char.demographic(:actor)}
@@ -34,6 +31,11 @@ module AresMUSH
           }
         }
         
+        if (Ranks.is_enabled?)
+          groups << { name: "Rank", value: char.rank }
+        end
+          
+          
         profile = char.profile.each_with_index.map { |(section, data), index| 
           {
             name: section.titlecase,
@@ -58,10 +60,6 @@ module AresMUSH
         
         
         scenes_starring = char.scenes_starring
-        #scenes = Scenes.scene_types.map { |type| {
-        #  name: type,
-        #  key: type.parameterize('_'),
-        #  scenes: scenes_starring.select { |s| s.shared && s.scene_type == type }
         
         scenes = scenes_starring.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse
              .map { |s| {
@@ -100,6 +98,8 @@ module AresMUSH
         {
           id: char.id,
           name: char.name,
+          fullname: char.demographic(:fullname),
+          military_name: Ranks.military_name(char),
           icon: WebHelpers.icon_for_char(char),
           profile_image: char.profile_image,
           demographics: demographics,
@@ -116,7 +116,7 @@ module AresMUSH
           rp_hooks: hooks.any? ? hooks : nil,
           desc: char.description,
           playerbit: char.is_playerbit?,
-          fs3_attrs: get_ability_list(char.fs3_attributes),
+          fs3_attributes: get_ability_list(char.fs3_attributes),
           fs3_action_skills: get_ability_list(char.fs3_action_skills),
           fs3_backgrounds: get_ability_list(char.fs3_background_skills),
           fs3_languages: get_ability_list(char.fs3_languages),
@@ -125,8 +125,13 @@ module AresMUSH
         }
       end
       
-      def get_ability_list(list)
-        list.to_a.sort_by { |a| a.name }.map { |a| { name: a.name, rating: a.rating_name }}
+      def get_ability_list(list)        
+        list.to_a.sort_by { |a| a.name }.map { |a| 
+          { 
+            name: a.name, 
+            rating: a.rating, 
+            rating_name: a.rating_name
+          }}
       end
       
       def get_status_message(char)

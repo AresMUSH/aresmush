@@ -40,7 +40,8 @@ module AresMUSH
         
           {
             name: char.name,
-            fullname: Ranks.military_name(char),
+            fullname: char.demographic(:fullname),
+            military_name: Ranks.military_name(char),
             icon: WebHelpers.icon_for_char(char),
             roster_notes: WebHelpers.format_markdown_for_html(char.roster_notes || ""),
             previously_played: char.roster_played,

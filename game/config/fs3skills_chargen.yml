@@ -6,6 +6,7 @@ fs3skills:
     min_backgrounds: 2
 
     max_skill_rating: 7
+    min_skill_rating: 1
     max_attr_rating: 5
     
     max_ap: 45
@@ -113,7 +114,6 @@ fs3skills:
             Deck Crew:
                 skills:
                     Technician: 3
-            Other:
 
         Colony:
             Tauron:
