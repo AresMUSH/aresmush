@@ -5,7 +5,7 @@ module AresMUSH
         enactor = request.enactor
         plot = request.args[:plot_id]
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request)
         return error if error
         
         if (!enactor.is_approved?)

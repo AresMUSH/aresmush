@@ -1,9 +1,8 @@
 module AresMUSH
   module Chargen
-    class ChargenSaveRequestHandler
+    class ChargenUnsubmitRequestHandler
       def handle(request)
         char = request.enactor
-        chargen_data = request.args[:char]
                 
         if (!char)
           return { error: "You must log in first." }
@@ -16,14 +15,13 @@ module AresMUSH
           return { error: "You have already completed character creation." }
         end
         
-        if (char.chargen_locked)
-          return { error: "Your character is locked from changes while your application is being reviewed." }
+        if (!char.chargen_locked)
+          return { error: "Your character is not submitted." }
         end
-                
-        alerts = Chargen.save_char(char, chargen_data)
         
+        Chargen.unsubmit_app(char)
+                
         {    
-          alerts: alerts
         }
       end
     end

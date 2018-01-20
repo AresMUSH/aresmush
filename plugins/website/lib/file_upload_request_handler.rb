@@ -11,7 +11,7 @@ module AresMUSH
         data = request.args[:data]
         
         if (enactor)
-          error = WebHelpers.validate_auth_token(request)
+          error = WebHelpers.check_login(request)
           return error if error
         end
         

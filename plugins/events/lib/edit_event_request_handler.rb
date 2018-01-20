@@ -14,7 +14,7 @@ module AresMUSH
           return { error: "Event not found!" }
         end
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request)
         return error if error
         
         can_manage = enactor && Events.can_manage_event(enactor, event)

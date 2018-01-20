@@ -14,7 +14,7 @@ module AresMUSH
           return { error: "That scene has not been shared." }
         end
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request, true)
         return error if error
         
         if (edit_mode)

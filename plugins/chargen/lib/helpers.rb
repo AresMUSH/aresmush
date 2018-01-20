@@ -47,6 +47,18 @@ module AresMUSH
       return true
     end
     
+    def self.unsubmit_app(char)
+      char.update(chargen_locked: false)
+
+      job = char.approval_job
+      return if !job
+      
+      Jobs.change_job_status(char,
+        job,
+        Global.read_config("chargen", "app_hold_status"),
+        t('chargen.app_job_unsubmitted'))
+    end
+    
     def self.read_tutorial(name)
       dir = File.dirname(__FILE__) + "/../engine/templates/"
       filename = File.join(dir, name)
@@ -106,9 +118,7 @@ module AresMUSH
       chargen_data[:fs3_action_skills].each do |k, v|
         FS3Skills.set_ability(nil, char, k, v.to_i)
         ability = FS3Skills.find_ability(char, k)
-        puts ability.inspect
         specs = chargen_data[:fs3_specialties][k] || []
-        puts specs
         ability.update(specialties: specs)
       end
       

@@ -9,7 +9,7 @@ module AresMUSH
           return { error: "Character not found!" }
         end
 
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request, true)
         return error if error
         
         demographics = Demographics.basic_demographics.sort.each.map { |d| 

@@ -8,7 +8,7 @@ module AresMUSH
         enactor = request.enactor
         path = request.args[:path]
 
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request)
         return error if error
         
         if (!enactor.is_admin?)

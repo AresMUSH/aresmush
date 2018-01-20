@@ -4,10 +4,8 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        if (enactor)
-          error = WebHelpers.validate_auth_token(request)
-          return error if error
-        end
+        error = WebHelpers.check_login(request, true)
+        return error if error
         
         dirs = Dir[File.join(AresMUSH.website_uploads_path, "**/**")].group_by { |f| File.dirname(f) }         
                 
