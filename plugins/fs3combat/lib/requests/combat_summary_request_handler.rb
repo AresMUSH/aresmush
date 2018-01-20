@@ -5,10 +5,8 @@ module AresMUSH
         id = request.args[:id]
         enactor = request.enactor
         
-        if (enactor)
-          error = WebHelpers.validate_auth_token(request)
-          return error if error
-        end
+        error = WebHelpers.check_login(request, true)
+        return error if error
         
         combat = Combat[id]
         if (!combat)

@@ -11,7 +11,7 @@ module AresMUSH
           return { error: "Invalid category."}
         end
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request, true)
         return error if error
 
         if (!Bbs.can_read_board?(enactor, category))

@@ -1,9 +1,8 @@
 module AresMUSH
   module Chargen
-    class ChargenSaveRequestHandler
+    class ChargenSubmitRequestHandler
       def handle(request)
         char = request.enactor
-        chargen_data = request.args[:char]
                 
         if (!char)
           return { error: "You must log in first." }
@@ -19,11 +18,10 @@ module AresMUSH
         if (char.chargen_locked)
           return { error: "Your character is locked from changes while your application is being reviewed." }
         end
-                
-        alerts = Chargen.save_char(char, chargen_data)
         
+        Chargen.submit_app(char)
+                
         {    
-          alerts: alerts
         }
       end
     end

@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request, true)
         return error if error
         
         events = Event.all.map { |e| {

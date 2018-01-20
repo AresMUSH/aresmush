@@ -7,10 +7,8 @@ module AresMUSH
         
         enactor = request.enactor
         
-        if (enactor)
-          error = WebHelpers.validate_auth_token(request)
-          return error if error
-        end
+        error = WebHelpers.check_login(request, true)
+        return error if error
         
         if (!name_or_id || name_or_id.blank?)
           name_or_id = 'home'

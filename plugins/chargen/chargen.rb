@@ -74,10 +74,16 @@ module AresMUSH
         return ChargenCharRequestHandler
       when "chargenInfo"
         return ChargenInfoRequestHandler
-      when "resetChargen"
+      when "chargenReset"
         return ChargenResetRequestHandler
-      when "saveChargen"
+      when "chargenReview"
+        return ChargenReviewRequestHandler
+      when "chargenSave"
         return ChargenSaveRequestHandler
+      when "chargenSubmit"
+        return ChargenSubmitRequestHandler
+      when "chargenUnsubmit"
+        return ChargenUnsubmitRequestHandler
       end
       nil
     end

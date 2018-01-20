@@ -12,7 +12,7 @@ module AresMUSH
           return { error: "Topic not found." }
         end
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request)
         return error if error
         
 

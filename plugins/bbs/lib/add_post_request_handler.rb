@@ -8,7 +8,7 @@ module AresMUSH
         subject = request.args[:subject]
         enactor = request.enactor
 
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request)
         return error if error
         
         category = BbsBoard[category_id.to_i]

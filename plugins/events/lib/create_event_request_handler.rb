@@ -8,7 +8,7 @@ module AresMUSH
         desc = request.args[:description]
         enactor = request.enactor
         
-        error = WebHelpers.validate_auth_token(request)
+        error = WebHelpers.check_login(request)
         return error if error
         
         can_create = enactor && enactor.is_approved?

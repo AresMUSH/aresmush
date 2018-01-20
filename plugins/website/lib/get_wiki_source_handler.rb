@@ -6,10 +6,8 @@ module AresMUSH
         version_id = request.args[:version_id]
         enactor = request.enactor
         
-        if (enactor)
-          error = WebHelpers.validate_auth_token(request)
-          return error if error
-        end
+        error = WebHelpers.check_login(request, true)
+        return error if error
               
         page = WikiPage.find_by_name_or_id(page_id)
         if (!page)

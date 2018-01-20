@@ -46,8 +46,9 @@ module AresMUSH
       WebHelpers.icon_for_char(char)
     end
     
-    def self.validate_auth_token(request)
-      return { error: "You are not logged in." } if !request.enactor
+    def self.check_login(request, allow_anonymous = false)
+      return nil if allow_anonymous
+      return { error: "You need to log in first." } if !request.enactor
       token = request.auth[:token]
       if request.enactor.is_valid_api_token?(token)
         return nil
