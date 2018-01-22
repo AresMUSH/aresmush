@@ -20,6 +20,10 @@ module AresMUSH
           return { error: "Invalid gear type." }
         end
 
+        if (!data)
+          return { error: "Invalid gear type." }
+        end
+        
         values = data.map { |key, value|  {
           title: key.titleize,
           detail: WebHelpers.format_markdown_for_html(FS3Combat.gear_detail(value).to_s)

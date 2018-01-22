@@ -53,11 +53,12 @@ module AresMUSH
         when "start"
           return ChargenStartCmd        
         end
-      when "hook"
-        if (cmd.switch_is?("add"))
-          return AddHookCmd
-        elsif (cmd.switch_is?("remove"))
-          return RemoveHookCmd
+      when "hooks"
+        case cmd.switch
+        when "edit"
+          return HooksEditCmd
+        else
+          return HooksSetCmd
         end
       end
       

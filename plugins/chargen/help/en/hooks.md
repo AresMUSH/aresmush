@@ -8,11 +8,14 @@ aliases:
 
 # Setting Roleplay Hooks 
 
-RP Hooks are interesting things about your character that others can "hook" into for RP. This could be an odd personality quirk, a reputation your character has, or anything else that might inspire someone to connect with you.  Looking around at other character's sheets can be a good way to get inspiration for RP Hooks.
+RP Hooks are interesting things about your character that others can "hook" into for RP. This could be an odd personality quirk, a reputation your character has, or anything else that might inspire someone to connect with you.  Looking around at other character's sheets can be a good way to get inspiration for RP Hooks.  RP hooks are a freeform text field.  You view them on your character sheet.
 
-`hook/add <title>=<description>` and `hook/remove <title>`
+`hooks <hooks>`
+
+If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab your background text into the input buffer.
+
+`hooks/edit` - Grabs the existing RP Hook text into your input buffer.
 
 Admins with the `manage\_apps` permission can set other peoples' hooks:
 
-`hook/add <name>=<hook name>/<description>`
-`hook/remove <name>=<hook name>`
+`hooks/set <name>=<hooks>` and `hooks/edit <name>`

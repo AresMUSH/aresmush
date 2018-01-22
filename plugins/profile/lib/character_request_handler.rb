@@ -78,13 +78,6 @@ module AresMUSH
         #      }
         
         show_background = (char.on_roster? || char.bg_shared) && !char.background.blank?
-        hooks = char.rp_hooks.map { |h| 
-          { 
-            name: h.name, 
-            description: h.description
-          }
-        }
-        
         damage = char.damage.map { |d| {
           date: d.ictime_str,
           description: d.description,
@@ -111,9 +104,9 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           scenes: scenes,
-          profile_gallery: char.profile_gallery ? char.profile_gallery.split(/[\n ]/) : nil,
+          profile_gallery: char.profile_gallery.map { |g| {path: g, name: File.basename(g)} },
           background: show_background ? WebHelpers.format_markdown_for_html(char.background) : nil,
-          rp_hooks: hooks.any? ? hooks : nil,
+          rp_hooks: WebHelpers.format_markdown_for_html(char.rp_hooks),
           desc: char.description,
           playerbit: char.is_playerbit?,
           fs3_attributes: get_ability_list(char.fs3_attributes),

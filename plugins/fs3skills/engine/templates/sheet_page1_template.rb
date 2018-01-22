@@ -49,12 +49,8 @@ module AresMUSH
         list
       end
       
-      def hooks
-        list = []
-        @char.rp_hooks.sort_by(:name, :order => "ALPHA").each do |h|
-          list << "%xh#{h.name}:%xn #{h.description}"
-        end
-        list
+      def hooks        
+        @char.rp_hooks
       end
       
       def specialties

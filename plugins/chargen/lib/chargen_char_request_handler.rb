@@ -44,12 +44,7 @@ module AresMUSH
         end
           
           
-        hooks = char.rp_hooks.map { |h| 
-          { 
-            name: h.name, 
-            description: h.description
-          }
-        }
+        hooks = WebHelpers.format_input_for_html(char.rp_hooks)
         
         {
           id: char.id,

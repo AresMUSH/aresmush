@@ -105,7 +105,6 @@ module AresMUSH
       char.fs3_attributes.each { |s| s.delete }
       char.fs3_background_skills.each { |s| s.delete }
       char.fs3_languages.each { |s| s.delete }
-      char.rp_hooks.each { |s| s.delete }
         
       languages = Global.read_config("fs3skills", "starting_languages")
       if (languages)

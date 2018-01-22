@@ -17,7 +17,6 @@ demographics:
         - fullname
         - hair
         - physique
-        - fullname
 
     demographics:
         - actor

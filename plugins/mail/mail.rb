@@ -94,5 +94,17 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "mailIndex"
+        return MailIndexRequestHandler
+      when "mailMessage"
+        return MailMessageRequestHandler
+      when "sendMail"
+        return MailSendRequestHandler
+      end
+      nil
+    end
   end
 end
