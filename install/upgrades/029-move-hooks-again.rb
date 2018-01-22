@@ -1,10 +1,10 @@
 module AresMUSH
   
   puts "======================================================================="
-  puts "Moving RP hooks to chargen module."
+  puts "Moving RP hooks to freeform text field."
   puts "======================================================================="
   
-  class FS3RpHook < Ohm::Model
+  class RpHook < Ohm::Model
     include ObjectModel
 
     index :name
@@ -15,12 +15,12 @@ module AresMUSH
   end  
   
   class Character
-    collection :fs3_hooks, "AresMUSH::FS3RpHook"
+    collection :old_rp_hooks, "AresMUSH::RpHook"
   end
   
-  FS3RpHook.all.each do |h|
-    RpHook.create(character: h.character, name: h.name, description: h.description)
-    h.delete
+  Character.all.each do |c|
+    new_hooks = c.old_rp_hooks.to_a.map { |h| "* **#{h.name}** - #{h.description}" }.join("%R")
+    c.update(rp_hooks: new_hooks)
   end
   
   puts "Upgrade complete!"

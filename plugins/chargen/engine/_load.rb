@@ -1,6 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-load "add_hook_cmd.rb"
 load "app_approve_cmd.rb"
 load "app_cmd.rb"
 load "app_reject_cmd.rb"
@@ -13,7 +12,7 @@ load "bg_set_cmd.rb"
 load "bg_view_cmd.rb"
 load "chargen_next_prev_cmd.rb"
 load "chargen_start_cmd.rb"
-load "remove_hook_cmd.rb"
+load "hooks_set_cmd.rb"
 load "templates/bg_template.rb"
 load "templates/chargen_template.rb"
 load "templates/app_template.rb"

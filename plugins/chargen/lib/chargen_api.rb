@@ -9,6 +9,7 @@ module AresMUSH
     end
     
     def self.check_chargen_locked(char)
+      return false if char.is_admin?
       return t('chargen.cant_be_changed') if char.is_approved?
       return t('chargen.app_in_progress') if char.chargen_locked
       return nil

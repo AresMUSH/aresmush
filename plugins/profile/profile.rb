@@ -59,6 +59,10 @@ module AresMUSH
         return CharacterGroupsRequestHandler
       when "character"
         return CharacterRequestHandler
+      when "profileEdit"
+        return ProfileEditRequestHandler
+      when "profileSave"
+        return ProfileSaveRequestHandler
       end
       nil
     end
