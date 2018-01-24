@@ -6,8 +6,9 @@ module AresMUSH
     class FileDeleteRequestHandler
       def handle(request)
         enactor = request.enactor
-        path = request.args[:path]
-
+        name = request.args[:name]
+        folder = request.args[:folder]
+        
         error = WebHelpers.check_login(request)
         return error if error
         
@@ -15,7 +16,7 @@ module AresMUSH
           return { error: "Only admins can delete files." }
         end
         
-        path = File.join(AresMUSH.website_uploads_path, path)
+        path = File.join(AresMUSH.website_uploads_path, folder, name)
         
         if (!File.exists?(path))
           return { error: "That file does not exist." }

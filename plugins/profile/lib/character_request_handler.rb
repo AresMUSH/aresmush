@@ -86,7 +86,7 @@ module AresMUSH
         }
         
         files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
-        files = files.map { |f| { name: File.basename(f), path: f.gsub(AresMUSH.website_uploads_path, '') }}
+        files = files.map { |f| WebHelpers.get_file_info(f) }
         
         {
           id: char.id,
@@ -94,7 +94,7 @@ module AresMUSH
           fullname: char.demographic(:fullname),
           military_name: Ranks.military_name(char),
           icon: WebHelpers.icon_for_char(char),
-          profile_image: char.profile_image,
+          profile_image: WebHelpers.get_file_info(char.profile_image),
           demographics: demographics,
           groups: groups,
           handle: char.handle ? char.handle.name : nil,
@@ -104,7 +104,7 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           scenes: scenes,
-          profile_gallery: char.profile_gallery.map { |g| {path: g, name: File.basename(g)} },
+          profile_gallery: (char.profile_gallery || {}).map { |g| WebHelpers.get_file_info(g) },
           background: show_background ? WebHelpers.format_markdown_for_html(char.background) : nil,
           rp_hooks: WebHelpers.format_markdown_for_html(char.rp_hooks),
           desc: char.description,
@@ -115,7 +115,7 @@ module AresMUSH
           fs3_languages: get_ability_list(char.fs3_languages),
           fs3_damage: damage,
           files: files,
-          last_profile_version: char.last_profile_version.id
+          last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil
         }
       end
       

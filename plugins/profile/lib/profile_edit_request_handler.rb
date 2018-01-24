@@ -53,7 +53,7 @@ module AresMUSH
         }}
         
         files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
-        files = files.sort.map { |f| { name: File.basename(f), path: f.gsub(AresMUSH.website_uploads_path, '') }}
+        files = files.sort.map { |f| WebHelpers.get_file_info(f) }
         
         {
           id: char.id,
@@ -66,7 +66,7 @@ module AresMUSH
           shortdesc: char.shortdesc ? char.shortdesc.description : '',
           relationships: relationships,
           profile: profile,
-          gallery: char.profile_gallery.map { |f| { name: File.basename(f), path: f }},
+          gallery: (char.profile_gallery || {}).map { |f| WebHelpers.get_file_info(f) },
           tags: char.profile_tags,
           files: files, 
           profile_image: { name: char.profile_image.after('/') },
