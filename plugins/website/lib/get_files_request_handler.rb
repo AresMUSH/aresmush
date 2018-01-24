@@ -15,6 +15,7 @@ module AresMUSH
             {
              name: File.basename(f),
              size: File.size(f)/ 1024,
+             folder: dir,
              path: f.gsub(AresMUSH.website_uploads_path, '')
             }
           }

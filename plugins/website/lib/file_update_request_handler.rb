@@ -7,7 +7,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         path = request.args[:path]
-        name = request.args[:new_name]
+        name = (request.args[:new_name] || "").downcase
         folder = request.args[:new_folder]
         
         error = WebHelpers.check_login(request)
@@ -30,6 +30,10 @@ module AresMUSH
         
         if (File.exists?(new_path))
           return { error: "That folder/file name is already used." }
+        end
+        
+        if (folder && folder.downcase == "theme_images" && !enactor.is_admin?)
+          return { error: "Only admins can update the theme images folder." }
         end
         
         if (!Dir.exist?(new_folder_path))

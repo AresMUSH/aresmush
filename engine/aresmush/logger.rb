@@ -3,14 +3,11 @@ module AresMUSH
     
     attr_accessor :logger
     
-    def start(logger_name)
+    def start
       config = Global.read_config("logger")
       configurator = Log4r::YamlConfigurator
       configurator.decode_yaml config
-      outputter = config['outputters'].select { |o| o['name'] == "#{logger_name}_file" }.first
-      log_dir = outputter['filename'].gsub("log.txt", "")
-      create_log_dir(log_dir)
-      @logger = Log4r::Logger[logger_name]
+      @logger = Log4r::Logger['ares']
     end
     
     def create_log_dir(dirname)

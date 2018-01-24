@@ -101,5 +101,19 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "jobs"
+        return JobsRequestHandler
+      when "job"
+        return JobRequestHandler
+      when "jobReply"
+        return JobReplyRequestHandler
+      when "jobClose"
+        return JobCloseRequestHandler
+      end
+      nil
+    end
   end
 end

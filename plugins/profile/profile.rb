@@ -63,6 +63,8 @@ module AresMUSH
         return ProfileEditRequestHandler
       when "profileSave"
         return ProfileSaveRequestHandler
+      when "profileSource"
+        return ProfileSourceRequestHandler
       end
       nil
     end

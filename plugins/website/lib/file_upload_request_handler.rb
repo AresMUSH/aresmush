@@ -4,16 +4,14 @@ module AresMUSH
     class FileUploadRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
+        name = (request.args[:name] || "").downcase
         allow_overwrite = request.args[:allow_overwrite] ? request.args[:allow_overwrite] : false
         folder = request.args[:folder] || ""
         size_kb = (request.args[:size_kb] || "").to_i
         data = request.args[:data]
         
-        if (enactor)
-          error = WebHelpers.check_login(request)
-          return error if error
-        end
+        error = WebHelpers.check_login(request)
+        return error if error
         
         if (!enactor.is_approved?)
           return { error: "You are not allowed to upload files until you're approved." }
@@ -22,6 +20,10 @@ module AresMUSH
         if (name.blank?)
           return { error: "Missing file or filename." }
           redirect redirect_url
+        end
+        
+        if (folder && folder.downcase == "theme_images" && !enactor.is_admin?)
+          return { error: "Only admins can update the theme images folder." }
         end
         
         max_upload_kb = Global.read_config("website", "max_upload_size_kb")

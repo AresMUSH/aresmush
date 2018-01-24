@@ -49,10 +49,6 @@ module AresMUSH
        response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
        response.headers["Access-Control-Allow-Origin"] = website_url
        
-       pp request
-       puts request.env['HTTP_ORIGIN']
-       puts "http://#{website_url}"
-       
        if (request.env['HTTP_ORIGIN'] == "http://#{website_url}" ||
            request.env['HTTP_ORIGIN'] == "https://#{website_url}")
            response.headers["Access-Control-Allow-Origin"] =  request.env['HTTP_ORIGIN']

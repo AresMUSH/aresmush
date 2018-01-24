@@ -71,6 +71,11 @@ module AresMUSH
     def created_date_str(char)
       OOCTime.local_long_timestr(char, self.created_at)
     end
+    
+    def author_name
+      !self.author ? t('jobs.deleted_author') : self.author.name
+    end
+    
   end
   
   class JobReply < Ohm::Model
@@ -89,5 +94,10 @@ module AresMUSH
     def created_date_str(char)
       OOCTime.local_long_timestr(char, self.created_at)
     end
+    
+    def author_name
+      !self.author ? t('jobs.deleted_author') : self.author.name
+    end
+    
   end
 end

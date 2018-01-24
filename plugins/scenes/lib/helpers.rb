@@ -139,6 +139,6 @@ module AresMUSH
       end
       
       "#{char.pose_autospace}#{nospoof}#{place_title}#{colored_pose}"
-    end    
+    end   
   end
 end

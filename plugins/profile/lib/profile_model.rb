@@ -11,11 +11,17 @@ module AresMUSH
     
     collection :profile_versions, "AresMUSH::ProfileVersion"
     
+    before_delete :delete_versions
+    
+    def delete_versions
+      self.profile_versions.each { |v| v.delete }
+    end
+    
     def last_profile_version
       self.profile_versions.to_a.sort_by { |p| p.created_at }.reverse.first
     end
     
-    def set_profile(new_profile)
+    def set_profile(new_profile, enactor)
       self.update(profile: new_profile)
       self.update(profile_last_edited: Time.now)
       
@@ -24,7 +30,7 @@ module AresMUSH
       self.groups.each { |k, v| profile_text << "\n#{k}: #{v}"}
       self.profile.each { |k, v| profile_text << "\n\n#{k}\n------\n#{v}"}
       self.relationships.each { |k, v| profile_text << "\n\n#{k}: #{v['category']}\n------\n#{v['relationship']}"}
-      ProfileVersion.create(character: self, text: profile_text)
+      ProfileVersion.create(character: self, text: profile_text, author: enactor)
     end
   end
   
@@ -33,6 +39,11 @@ module AresMUSH
     
     attribute :text    
     reference :character, "AresMUSH::Character"
+    reference :author, "AresMUSH::Character"
+    
+    def author_name
+      self.author ? self.author.name : "--"
+    end
   end
   
 end

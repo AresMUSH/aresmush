@@ -6,7 +6,6 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :title
-    attribute :html
     attribute :preview, :type => DataType::Hash, :default => {}
     attribute :draft, :type => DataType::Hash, :default => {}
     attribute :tags, :type => DataType::Array, :default => []

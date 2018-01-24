@@ -80,9 +80,9 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
-      when "addPost"
+      when "forumPost"
         return AddPostRequestHandler
-      when "addReply"
+      when "forumReply"
         return AddReplyRequestHandler
       when "forumCategory"
         return ForumCategoryRequestHandler
