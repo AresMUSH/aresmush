@@ -6,10 +6,11 @@ module AresMUSH
     class FileUpdateRequestHandler
       def handle(request)
         enactor = request.enactor
-        path = request.args[:path]
-        name = (request.args[:new_name] || "").downcase
-        folder = request.args[:new_folder]
-        
+        name = request.args[:name]
+        folder = request.args[:folder]
+        new_name = (request.args[:new_name] || "").downcase
+        new_folder = (request.args[:new_folder] || "").downcase
+
         error = WebHelpers.check_login(request)
         return error if error
         
@@ -17,22 +18,26 @@ module AresMUSH
           return { error: "You must be approved to update files." }
         end
         
-        name = AresMUSH::Website::FilenameSanitizer.sanitize name
-        folder = AresMUSH::Website::FilenameSanitizer.sanitize folder
+        new_name = AresMUSH::Website::FilenameSanitizer.sanitize new_name
+        new_folder = AresMUSH::Website::FilenameSanitizer.sanitize new_folder
         
-        path = File.join(AresMUSH.website_uploads_path, path)
-        new_folder_path = File.join(AresMUSH.website_uploads_path, folder)
-        new_path = File.join(new_folder_path, name)
+        path = File.join(AresMUSH.website_uploads_path, folder, name)
+        new_folder_path = File.join(AresMUSH.website_uploads_path, new_folder)
+        new_path = File.join(new_folder_path, new_name)
         
         if (!File.exists?(path))
           return { error: "That file does not exist." }
+        end
+        
+        if (new_name.blank? || new_folder.blank?)
+          return { error: "Missing file or folder name." }
         end
         
         if (File.exists?(new_path))
           return { error: "That folder/file name is already used." }
         end
         
-        if (folder && folder.downcase == "theme_images" && !enactor.is_admin?)
+        if (folder == "theme_images" && !enactor.is_admin?)
           return { error: "Only admins can update the theme images folder." }
         end
         
@@ -44,7 +49,8 @@ module AresMUSH
         
         {
           path: new_path.gsub(AresMUSH.website_uploads_path, ''),
-          name: name
+          folder: new_folder,
+          name: new_name
         }
       end
     end

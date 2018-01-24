@@ -38,7 +38,7 @@ module AresMUSH
         char.update(profile_tags: request.args[:tags])
         
         relationships = {}
-        request.args[:relationships].each do |name, data|
+        (request.args[:relationships] || {}).each do |name, data|
           relationships[name.titleize] = {
             relationship: WebHelpers.format_input_for_mush(data['text']),
             order: data['order'].blank? ? nil : data['order'].to_i,
@@ -53,7 +53,7 @@ module AresMUSH
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}
-        request.args[:profile].each do |name, text|
+        (request.args[:profile] || {}).each do |name, text|
           profile[name.titleize] = WebHelpers.format_input_for_mush(text)
         end
         char.set_profile(profile, enactor)

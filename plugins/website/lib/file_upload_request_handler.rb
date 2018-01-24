@@ -17,9 +17,8 @@ module AresMUSH
           return { error: "You are not allowed to upload files until you're approved." }
         end
       
-        if (name.blank?)
-          return { error: "Missing file or filename." }
-          redirect redirect_url
+        if (name.blank? || folder.blank?)
+          return { error: "Missing file or folder name." }
         end
         
         if (folder && folder.downcase == "theme_images" && !enactor.is_admin?)
