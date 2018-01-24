@@ -17,9 +17,13 @@ module AresMUSH
           (helper.required_tags & p.tags == helper.required_tags) 
         }
 
-        sinatra.erb :"wiki/page_list", :locals => {
-          pages: matches
-        }, :layout => false
+        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'page_list.hbs'))
+
+        data = {
+          "pages" => matches.map { |m| {heading: m.heading, name: m.name} }
+        }
+        
+        template.render(data)
       end
     end
   end

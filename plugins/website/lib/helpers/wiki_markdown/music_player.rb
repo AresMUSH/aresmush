@@ -9,14 +9,15 @@ module AresMUSH
         input = matches[1]
         return "" if !input
 
+        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'music_player.hbs'))
 
-        template = ErbTemplateRenderer.new(File.join(File.dirname(__FILE__), 'music_player.erb'))
         data = {
           "youtubecode" => input.before(' '),
           "description" => input.after(' '), 
           "id" => SecureRandom.uuid.gsub('-','')
         }
-        template.render_local data
+        
+        template.render(data)
       end
     end
   end

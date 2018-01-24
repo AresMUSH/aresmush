@@ -17,9 +17,13 @@ module AresMUSH
           (helper.required_tags & p.tags == helper.required_tags) 
         }
           
-        sinatra.erb :"scenes/scene_list", :locals => {
-          scenes: matches
-        }, :layout => false
+        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'scene_list.hbs'))
+
+        data = {
+          "scenes" => matches.map { |m| {id: m.id, title: m.date_title, summary: m.summary, participant_names: m.participant_names} }
+        }
+        
+        template.render(data)
       end
     end
   end

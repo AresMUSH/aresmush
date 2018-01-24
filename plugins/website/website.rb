@@ -72,9 +72,26 @@ module AresMUSH
       when "uploadFile"
         return FileUploadRequestHandler
 
+      ## LOGS
+      when "logs"
+        return GetLogsRequestHandler
+      when "log"
+        return GetLogRequestHandler
+      
+      ## TINKER
+      when "getTinker"
+        return GetTinkerRequestHandler
+      when "saveTinker"
+        return SaveTinkerRequestHandler
+      
+        
       ## MISC
+      when "config"
+        return GetConfigRequestHandler
       when "game"
         return GetGameInfoRequestHandler
+      when "recentChanges"
+        return GetRecentChangesRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
       end

@@ -114,7 +114,8 @@ module AresMUSH
           fs3_backgrounds: get_ability_list(char.fs3_background_skills),
           fs3_languages: get_ability_list(char.fs3_languages),
           fs3_damage: damage,
-          files: files
+          files: files,
+          last_profile_version: char.last_profile_version.id
         }
       end
       

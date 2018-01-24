@@ -36,13 +36,15 @@ module AresMUSH
           source = "/uploads/#{source}"
         end
         
-        template = ErbTemplateRenderer.new(File.join(File.dirname(__FILE__), 'image.erb'))
+        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image.hbs'))
+        
         data = {
           "source" => source,
           "style" => style, 
           "align" => align
         }
-        template.render_local data
+        
+        template.render(data)        
       end
     end
   end

@@ -17,10 +17,14 @@ module AresMUSH
           (helper.required_tags & c.profile_tags == helper.required_tags)
         }
       
-        sinatra.erb :"chars/group_list", :locals => {
-          chars: matches,
-          title: ""
-        }, :layout => false
+        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'char_gallery.hbs'))
+
+        data = {
+          "chars" => matches.sort_by { |c| c.name }.map { |c| { name: c.name, icon: WebHelpers.icon_for_char(c) }},
+          "title" => ""
+        }
+        
+        template.render(data)        
       end
     end
   end

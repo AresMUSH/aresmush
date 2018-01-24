@@ -9,10 +9,8 @@ module AresMUSH
         title = request.args[:title]
         name = request.args[:name]
       
-        if (enactor)
-          error = WebHelpers.check_login(request)
-          return error if error
-        end
+        error = WebHelpers.check_login(request)
+        return error if error
         
         name = WikiPage.sanitize_page_name(name)
         page = WikiPage.find_by_name_or_id(name_or_id)

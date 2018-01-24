@@ -36,7 +36,7 @@ module AresMUSH
       
       # Order here is important!
       @config_reader.load_game_config      
-      @ares_logger.start("engine")
+      @ares_logger.start
 
       Global.ares_logger = @ares_logger
 

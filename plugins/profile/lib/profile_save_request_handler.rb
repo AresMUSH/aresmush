@@ -36,12 +36,6 @@ module AresMUSH
         char.update(profile_image: request.args[:profile_image])
         char.update(profile_icon: request.args[:profile_icon])
         char.update(profile_tags: request.args[:tags])
-
-        profile = {}
-        request.args[:profile].each do |name, text|
-          profile[name.titleize] = WebHelpers.format_input_for_mush(text)
-        end
-        char.update(profile: profile)
         
         relationships = {}
         request.args[:relationships].each do |name, data|
@@ -54,8 +48,16 @@ module AresMUSH
         
         char.update(rp_hooks: WebHelpers.format_input_for_mush(request.args[:rp_hooks]))
         char.update(relationships: relationships)
-        char.update(profile: profile)
         char.update(bg_shared: request.args[:bg_shared].to_bool)
+        
+        
+        ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
+        profile = {}
+        request.args[:profile].each do |name, text|
+          profile[name.titleize] = WebHelpers.format_input_for_mush(text)
+        end
+        char.set_profile(profile, enactor)
+        
         
         {    
         }

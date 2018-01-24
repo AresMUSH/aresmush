@@ -29,7 +29,7 @@ module AresMUSH
             return error_message
           end
                     
-          text = page.current_version.text % vars
+          page.current_version.text % vars
 
         rescue Exception => ex
           Global.logger.debug "Error loading include #{input} : #{ex}"

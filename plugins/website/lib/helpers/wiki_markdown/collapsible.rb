@@ -9,12 +9,15 @@ module AresMUSH
         button_text = matches[1]
         
         return "" if !button_text 
-
+       
+        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'collapsible.hbs'))
         
-        sinatra.erb :"collapsible", :locals => {
-          button_text: button_text, 
-          id: SecureRandom.uuid.gsub('-','')  
-        }, :layout => false
+        data = {
+          "button_text" => button_text,
+          "id" => SecureRandom.uuid.gsub('-','')
+        }
+        
+        template.render(data)        
       end
     end
 

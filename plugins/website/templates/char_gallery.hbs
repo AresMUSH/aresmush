@@ -1,0 +1,35 @@
+       <div>
+
+          <h3>{{title}}</h3>
+          
+         
+          {{#each chars as |c| }}
+    
+          <div class="profile-gallery">
+              <div class="char-icon-container">
+    
+              <div class="log-icon-container">
+                  <a href="/char/{{c.name}}">
+                     {{#if c.icon}}
+                      <img class="log-icon" src="/uploads/{{c.icon}}" />
+                     {{else}}
+                     <img class="log-icon" src="/theme_images/noicon.png" />
+                     {{/if}}
+                  </a>
+              </div>
+
+              <div class="log-icon-title-container">
+                  <div class="log-icon-title">
+                   {{c.name}}
+                  </div>
+              </div>
+
+              </div>
+              
+          </div>
+          
+          {{/each}}
+      
+       </div>
+
+     <div class="clearfix"> </div>
