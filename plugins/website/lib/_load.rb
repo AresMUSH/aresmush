@@ -21,6 +21,7 @@ load "get_log_request_handler.rb"
 load "get_logs_request_handler.rb"
 load "get_tinker_request_handler.rb"
 load "save_tinker_request_handler.rb"
+load "save_config_request_handler.rb"
 
 load "helpers/wiki_markdown/tag_match_helper.rb"
 load "helpers/wiki_markdown/collapsible.rb"

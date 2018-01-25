@@ -83,11 +83,14 @@ module AresMUSH
         return GetTinkerRequestHandler
       when "saveTinker"
         return SaveTinkerRequestHandler
-      
+
+      ## SETUP
+      when "getConfig"
+        return GetConfigRequestHandler
+      when "saveConfig"
+        return SaveConfigRequestHandler
         
       ## MISC
-      when "config"
-        return GetConfigRequestHandler
       when "game"
         return GetGameInfoRequestHandler
       when "recentChanges"

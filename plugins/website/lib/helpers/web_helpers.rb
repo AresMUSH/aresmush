@@ -58,13 +58,11 @@ module AresMUSH
     
     def self.get_file_info(file_path)
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
-      data = {
+      {
       path: relative_path,
       name: File.basename(relative_path),
       folder: File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
       }
-      puts data
-      data
     end
     
     def self.get_recent_changes(unique_only = false, limit = nil)
