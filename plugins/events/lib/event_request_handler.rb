@@ -30,7 +30,7 @@ module AresMUSH
           date: datetime.before(' '),
           time: datetime.after( ' '),
           can_manage: enactor && Events.can_manage_event(enactor, event),
-          date_entry_format: Global.read_config('date_and_time', 'date_entry_format_help').upcase,
+          date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           start_datetime_local: event.start_datetime_local(request.enactor),
           start_time_standard: event.start_time_standard,
         }

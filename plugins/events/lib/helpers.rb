@@ -17,7 +17,7 @@ module AresMUSH
         return date_time, desc, nil
       rescue Exception => e
         error = t('events.invalid_event_date', 
-        :format_str => Global.read_config("date_and_time", "date_and_time_entry_format_help"))        
+        :format_str => Global.read_config("datetime", "date_and_time_entry_format_help"))        
         return nil, nil, error
       end
     end

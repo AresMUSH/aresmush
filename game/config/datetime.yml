@@ -1,4 +1,4 @@
-date_and_time:
+datetime:
     
     short_date_format: "%m/%d/%Y"
     # European style:

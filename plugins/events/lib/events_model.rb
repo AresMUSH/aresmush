@@ -68,13 +68,13 @@ module AresMUSH
     
     def start_time_standard
       timezone = Global.read_config("events", "calendar_timezone")
-      format = Global.read_config("date_and_time", "time_format")
+      format = Global.read_config("datetime", "time_format")
       formatted_time = self.starts.strftime(format).strip
       "#{formatted_time} #{timezone}"
     end
     
     def start_datetime_standard
-      time_format = Global.read_config("date_and_time", "time_format")
+      time_format = Global.read_config("datetime", "time_format")
       formatted_time = starts.strftime "%a %b %d, %Y #{time_format}"
       timezone = Global.read_config("events", "calendar_timezone")
       "#{formatted_time}#{timezone}"
@@ -82,7 +82,7 @@ module AresMUSH
     
     
     def date_str
-      self.starts.strftime(Global.read_config("date_and_time", "short_date_format"))
+      self.starts.strftime(Global.read_config("datetime", "short_date_format"))
     end
   end
 end

@@ -54,11 +54,15 @@ module AresMUSH
   end
 
   def self.website_path
-    File.join(AresMUSH.root_path, 'website')
+    File.join(AresMUSH.root_path, '..', 'ares-webclient')
   end
 
   def self.website_public_path
-    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public')
+    File.join(AresMUSH.website_path,  'public')
+  end
+
+  def self.website_styles_path
+    File.join(AresMUSH.website_path, 'app', 'styles')
   end
 
   def self.website_views_path
@@ -66,15 +70,11 @@ module AresMUSH
   end
 
   def self.website_uploads_path
-    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'uploads')
+    File.join(AresMUSH.website_public_path, 'uploads')
   end
-
-  def self.website_theme_image_path
-    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'theme_images')
-  end
-
+  
   def self.website_scripts_path
-    File.join(AresMUSH.root_path, '..', 'ares-webclient', 'public', 'scripts')
+    File.join(AresMUSH.website_public_path, 'scripts')
   end
 end
 

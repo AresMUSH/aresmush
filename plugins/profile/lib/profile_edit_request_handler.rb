@@ -69,8 +69,8 @@ module AresMUSH
           gallery: (char.profile_gallery || {}).map { |f| WebHelpers.get_file_info(f) },
           tags: char.profile_tags,
           files: files, 
-          profile_image: { name: char.profile_image.after('/') },
-          profile_icon: { name: char.profile_icon.after('/') },
+          profile_image: char.profile_image ? WebHelpers.get_file_info(char.profile_image) : nil,
+          profile_icon: char.profile_icon ? WebHelpers.get_file_info(char.profile_icon) : nil,
           bg_shared: char.bg_shared
           
         }

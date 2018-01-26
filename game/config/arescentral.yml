@@ -1,8 +1,8 @@
+---
 arescentral:
-    directory_update_cron:
-        hour: 
-            - 04
-        minute: 
-            - 00
-        
-    arescentral_url: "http://arescentral.aresmush.com"
+  arescentral_url: http://arescentral.aresmush.com
+  directory_update_cron:
+    hour:
+    - 4
+    minute:
+    - 0

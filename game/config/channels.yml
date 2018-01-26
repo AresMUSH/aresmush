@@ -1,24 +1,23 @@
+---
 channels:
-    start_marker: '<'
-    end_marker: '>'
-
-    default_channels:
-        - Questions
-        - Chat
-        - RP Requests
-
-    shortcuts:
-        "chan": "channel"
-        "channels": "channel"
-        "comlist": "channel"
-        "clist": "channel"
-        "channel/describe": "channel/desc"
-        "channel/gag": "channel/mute"
-        "channel/ungag": "channel/unmute"
-        "channel/add" : "channel/create"
-        "channel/on" : "channel/join"
-        "channel/off" : "channel/leave"
-        "addcom": "channel/join"
-        "delcom": "channel/leave"
-        "comtitle": "channel/title"
-        "channel/name": "channel/rename"
+  default_channels:
+  - Questions
+  - Chat
+  - RP Requests
+  end_marker: ">"
+  shortcuts:
+    chan: channel
+    channels: channel
+    comlist: channel
+    clist: channel
+    channel/describe: channel/desc
+    channel/gag: channel/mute
+    channel/ungag: channel/unmute
+    channel/add: channel/create
+    channel/on: channel/join
+    channel/off: channel/leave
+    addcom: channel/join
+    delcom: channel/leave
+    comtitle: channel/title
+    channel/name: channel/rename
+  start_marker: "<"
