@@ -28,11 +28,11 @@ module AresMUSH
       
       def check_date
         begin
-          day = Date.strptime(self.ictime_str, Global.read_config("date_and_time", "short_date_format"))
+          day = Date.strptime(self.ictime_str, Global.read_config("datetime", "short_date_format"))
           return nil
         rescue
           return t('fs3combat.invalid_damage_date', 
-          :format_str => Global.read_config("date_and_time", "date_entry_format_help"))
+          :format_str => Global.read_config("datetime", "date_entry_format_help"))
         end
       end
       

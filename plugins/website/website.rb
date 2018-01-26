@@ -89,6 +89,12 @@ module AresMUSH
         return GetConfigRequestHandler
       when "saveConfig"
         return SaveConfigRequestHandler
+      when "getTextFile"
+        return GetTextFileRequestHandler
+      when "saveTextFile"
+        return SaveTextFileRequestHandler
+      when "getSetupIndex"
+        return SetupIndexRequestHandler
         
       ## MISC
       when "game"
@@ -97,6 +103,8 @@ module AresMUSH
         return GetRecentChangesRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
+      when "shutdown"
+        return ShutdownRequestHandler
       end
       nil
     end
