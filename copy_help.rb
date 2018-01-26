@@ -25,7 +25,7 @@ require_relative 'plugins/help/lib/helpers.rb'
 
 def minimal_boot
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all(:engine)
+  AresMUSH::Global.plugin_manager.load_all
   bootstrapper.config_reader.load_game_config
   bootstrapper.help_reader.load_game_help
   bootstrapper.db.load_config

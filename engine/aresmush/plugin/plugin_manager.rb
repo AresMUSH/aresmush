@@ -16,9 +16,9 @@ module AresMUSH
         .map{ |f| File.basename(f) }
     end 
      
-    def load_all(web_or_engine)
+    def load_all
       self.all_plugin_folders.each do |p|
-        load_plugin p, web_or_engine
+        load_plugin p
       end
     end
     
@@ -27,28 +27,24 @@ module AresMUSH
       disabled_plugins.include?(name.downcase)
     end
     
-    def load_plugin(name, web_or_engine)
-      Global.logger.info "Loading #{name} for #{web_or_engine}"
+    def load_plugin(name)
+      Global.logger.info "Loading #{name}"
 
-      plugin_file = File.join(AresMUSH.plugin_path, name, "#{name}.rb")
+      plugin_path = File.join(AresMUSH.plugin_path, name)
+      plugin_file = File.join(plugin_path, "#{name}.rb")
       if (File.exists?(plugin_file))
         load plugin_file
       else
         Global.logger.debug "Plugin loader file #{name} does not exist."
       end
       
-      library_file = File.join(AresMUSH.plugin_path, name, "lib", "_load.rb")
-      if (File.exists?(library_file))
-        load library_file
+      load_file = File.join(plugin_path, "_load.rb")
+      if (File.exists?(load_file))
+        load load_file
       else
-        Global.logger.debug "Plugin library file for #{name} does not exist."
-      end
-      
-      target_file = File.join(AresMUSH.plugin_path, name, web_or_engine.to_s, "_load.rb")
-      if (File.exists?(target_file))
-        load target_file
-      else
-        Global.logger.debug "Plugin web file for #{name} does not exist."
+        code_files(plugin_path).each do |f|
+          load f
+        end
       end
       
       if (is_disabled?(name))
@@ -84,6 +80,19 @@ module AresMUSH
     def help_files(plugin_module, locale)
       search = File.join(plugin_module.plugin_dir, "help", locale, "**.md")
       Dir[search]
+    end
+    
+    def code_files(path)
+      files = []
+      skip_dirs = [ 'spec', 'specs' ]
+      dirs = Dir[File.join(path, '*')].select{ |f| File.directory?(f) }.select { |f| !skip_dirs.include?(File.basename(f))}
+      
+      files = files.concat(Dir[File.join(path, "*.rb")])
+      dirs.each do |d| 
+        files = files.concat(Dir[File.join(d, '**', "*.rb")])
+      end
+
+      files
     end
 
     def load_plugin_help_by_name(name)
