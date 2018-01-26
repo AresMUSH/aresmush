@@ -12,7 +12,7 @@ module AresMUSH
         @client2 = double
         @char1 = double
         @char2 = double
-        Engine.stub(:client_monitor) { @client_monitor }
+        Global.stub(:client_monitor) { @client_monitor }
         SpecHelpers.stub_translate_for_testing
       end
      

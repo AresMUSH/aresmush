@@ -30,7 +30,7 @@ module AresMUSH
         end
           
         it "should load the plugin" do
-          plugin_manager.should_receive(:load_plugin).with("foo", :engine)
+          plugin_manager.should_receive(:load_plugin).with("foo")
           @handler.handle
         end
           
@@ -83,13 +83,13 @@ module AresMUSH
         it "should succeed and alert permissions are mis-configured" do
           Manage.stub(:can_manage_game?).with(@enactor) { raise "Error" }
           @client.should_receive(:emit_failure).with('manage.management_config_messed_up')
-          plugin_manager.should_receive(:load_plugin).with("foo", :engine)
+          plugin_manager.should_receive(:load_plugin).with("foo")
           @handler.handle
         end
         
         it "should still load even if the unload failed" do
           plugin_manager.stub(:unload_plugin) { raise SystemNotFoundException }
-          plugin_manager.should_receive(:load_plugin).with("foo", :engine)
+          plugin_manager.should_receive(:load_plugin).with("foo")
           @handler.handle
         end
         

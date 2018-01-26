@@ -6,7 +6,7 @@ require "aresmush"
 
 module AresMUSH
   
-bootstrapper = EngineBootstrapper.new
+bootstrapper = Bootstrapper.new
 bootstrapper.command_line.start
 
 end

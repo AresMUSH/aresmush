@@ -59,7 +59,10 @@ module AresMUSH
       load_plugin_locale plugin_module
       load_plugin_help plugin_module
                   
-      @plugins << plugin_module.send(:load_plugin)
+      if (plugin_module.respond_to?(:init_plugin))
+        plugin_module.send(:init_plugin)
+      end
+      @plugins << plugin_module
     end
     
     def load_plugin_locale(plugin_module)

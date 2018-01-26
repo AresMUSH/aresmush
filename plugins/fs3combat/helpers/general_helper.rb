@@ -47,15 +47,9 @@ module AresMUSH
     def self.emit_to_organizer(combat, message, npcmaster = nil)
       message = message + " (#{npcmaster})" if npcmaster
         
-      if (defined? Engine)
-        client = Login.find_client(combat.organizer)
-        if (client)
-          client.emit t('fs3combat.organizer_emit', :message => message)
-        end
-      else
-        Global.notifier.notify(:combat, t('fs3combat.organizer_emit', :message => message)) do |char|
-          char == combat.organizer
-        end
+      client = Login.find_client(combat.organizer)
+      if (client)
+        client.emit t('fs3combat.organizer_emit', :message => message)
       end
     end
     
@@ -64,15 +58,9 @@ module AresMUSH
       return if !char
       
       client_message = message.gsub(/#{combatant.name}/, "%xh%xc#{combatant.name}%xn")  
-      if (defined? Engine)
-        client = Login.find_client(char)
-        if (client)
-          client.emit t('fs3combat.combat_emit', :message => client_message)
-        end
-      else
-        Global.notifier.notify(:combat, t('fs3combat.combat_emit', :message => client_message)) do |char|
-          char == combatant.character
-        end
+      client = Login.find_client(char)
+      if (client)
+        client.emit t('fs3combat.combat_emit', :message => client_message)
       end
     end
     

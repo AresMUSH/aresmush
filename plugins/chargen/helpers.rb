@@ -44,8 +44,7 @@ module AresMUSH
     end
     
     def self.read_tutorial(name)
-      dir = File.dirname(__FILE__) + "/../engine/templates/"
-      filename = File.join(dir, name)
+      filename = File.join(File.dirname(__FILE__), 'templates', name)
       File.read(filename, :encoding => "UTF-8")
     end
     

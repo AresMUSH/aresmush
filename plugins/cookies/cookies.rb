@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("cookies", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       return nil if !cmd.root_is?("cookie")
       

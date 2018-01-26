@@ -11,13 +11,6 @@ module AresMUSH
       Global.read_config("chargen", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
-  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "app"
@@ -63,10 +56,6 @@ module AresMUSH
       end
       
       return nil    
-    end
-
-    def self.get_event_handler(event_name) 
-      nil
     end
     
     def self.get_web_request_handler(request)

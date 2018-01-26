@@ -74,10 +74,6 @@ module AresMUSH
        end
        return { error: "Sorry, something went wrong with the web request." }.to_json
      end
-     
-     post '/upload/?' do 
-       puts params.inspect
-     end
     
   end
 end

@@ -11,7 +11,7 @@ module AresMUSH
           return { error: "You are not an admin." }
         end
 
-        text = File.read(File.join(AresMUSH.plugin_path, 'tinker', 'engine', 'tinker_cmd.rb'))
+        text = File.read(File.join(AresMUSH.plugin_path, 'tinker', 'commands', 'tinker_cmd.rb'))
         default = File.read(File.join(AresMUSH.plugin_path, 'tinker', 'default_tinker.txt'))
         
         {
