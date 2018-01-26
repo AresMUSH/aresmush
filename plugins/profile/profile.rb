@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("profile", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
-    
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "profile"
@@ -44,10 +37,6 @@ module AresMUSH
           return RelationshipsCmd
         end
       end
-      nil
-    end
-
-    def self.get_event_handler(event_name) 
       nil
     end
     

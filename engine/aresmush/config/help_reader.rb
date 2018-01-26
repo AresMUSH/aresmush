@@ -22,9 +22,7 @@ module AresMUSH
       end
     end
     
-    def load_help_file(file, plugin)
-      Global.logger.debug "Loading help from #{file}."
-      
+    def load_help_file(file, plugin)      
       plugin_title = plugin ? plugin.downcase : ""
       
       md = MarkdownFile.new(file)

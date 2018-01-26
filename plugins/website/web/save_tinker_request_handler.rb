@@ -11,7 +11,7 @@ module AresMUSH
           return { error: "You are not an admin." }
         end
         
-        path = File.join(AresMUSH.plugin_path, 'tinker', 'engine', 'tinker_cmd.rb')
+        path = File.join(AresMUSH.plugin_path, 'tinker', 'commands', 'tinker_cmd.rb')
         begin
       
           File.open(path, 'w') do |f|

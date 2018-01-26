@@ -73,6 +73,7 @@ module AresMUSH
         
         CommandAliasParser.substitute_aliases(enactor, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
+          next if !p.respond_to?(:get_cmd_handler)
           AresMUSH.with_error_handling(client, cmd) do
             handler_class = p.get_cmd_handler(client, cmd, enactor)
             if (handler_class)
@@ -95,6 +96,7 @@ module AresMUSH
       begin
         event_name = event.class.to_s.gsub("AresMUSH::", "")
         Global.plugin_manager.plugins.each do |p|
+          next if !p.respond_to?(:get_event_handler)
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
             if (handler_class)

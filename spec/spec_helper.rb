@@ -55,8 +55,8 @@ module AresMUSH
       
       Global.stub(:notifier) { @notifier }
       Global.stub(:config_reader) { @config_reader }
-      Engine.stub(:client_monitor) { @client_monitor }
-      Engine.stub(:dispatcher) { @dispatcher }
+      Global.stub(:client_monitor) { @client_monitor }
+      Global.stub(:dispatcher) { @dispatcher }
       Global.stub(:plugin_manager) { @plugin_manager }
       Global.stub(:locale) { @locale }
       Global.stub(:help_reader) { @help_reader }

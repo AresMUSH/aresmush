@@ -10,12 +10,8 @@ module AresMUSH
       Global.read_config("help", "shortcuts")
     end
  
-    def self.load_plugin
+    def self.init_plugin
       Help.reload_help
-      self
-    end
- 
-    def self.unload_plugin
     end
  
     def self.get_cmd_handler(client, cmd, enactor)
@@ -28,10 +24,6 @@ module AresMUSH
        end
        
        nil
-    end
-
-    def self.get_event_handler(event_name) 
-      nil
     end
     
     def self.get_web_request_handler(request)
