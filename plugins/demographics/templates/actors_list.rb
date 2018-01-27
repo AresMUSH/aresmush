@@ -1,6 +1,5 @@
 module AresMUSH
   module Demographics
-    # Template for the list of all bulletin boards.
     class ActorsListTemplate < ErbTemplateRenderer      
       attr_accessor :paginator
       

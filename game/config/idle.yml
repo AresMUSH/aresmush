@@ -18,11 +18,11 @@ idle:
     
     use_roster: true
     
-    idle_board: "Announcements"
+    idle_category: "Announcements"
     
     days_before_idle: 30
 
-    arrivals_board: "New Arrivals"
+    arrivals_category: "New Arrivals"
     
     default_contact: "Admin"
 

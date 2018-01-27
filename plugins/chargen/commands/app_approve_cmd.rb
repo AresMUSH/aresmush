@@ -40,15 +40,15 @@ module AresMUSH
           client.emit_success t('chargen.app_approved', :name => model.name)
           
           welcome_message = Global.read_config("chargen", "welcome_message")
-          bbs_body = welcome_message % { :name => model.name, :position => model.group("Position") }
+          post_body = welcome_message % { :name => model.name, :position => model.group("Position") }
           
-          Bbs.system_post(
-            Global.read_config("chargen", "arrivals_board"),
-            t('chargen.approval_bbs_subject', :name => model.name), 
-            bbs_body)
+          Forum.system_post(
+            Global.read_config("chargen", "arrivals_category"),
+            t('chargen.approval_post_subject', :name => model.name), 
+            post_body)
             
           Jobs.create_job(Global.read_config("chargen", "app_category"), 
-             t('chargen.approval_bbs_subject', :name => model.name), 
+             t('chargen.approval_post_subject', :name => model.name), 
              Global.read_config("chargen", "post_approval_message"), 
              Game.master.system_character)
         end

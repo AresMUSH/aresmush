@@ -30,14 +30,14 @@ module AresMUSH
     end
     
     def self.find_topic(topic)
-      search = strip_prefix(topic).downcase.gsub("/", " ")
+      search = strip_prefix(topic).downcase.gsub(/[\/ ]/, "_")
             
       # Match exact topic
       matches = Help.topic_keys.select { |k, v| k == search }
       return matches.values.uniq if matches.count > 0
 
-      # Match first part - 'help bbs edit' matches 'help bbs'
-      matches = Help.topic_keys.select { |k, v| k == search.first(' ') }
+      # Match first part - 'help forum edit' matches 'help forum'
+      matches = Help.topic_keys.select { |k, v| k == search.first('_') }
       return matches.values.uniq if matches.count > 0
 
       # Match partial topic - 'help comb' finds 'help combat'
@@ -48,6 +48,19 @@ module AresMUSH
       matches = Help.topic_keys.select { |k, v| k == "#{search}s" }
       return matches.values.uniq if matches.count > 0
       
+      # Match both 'help manage combat' and 'help combat manage'
+      if (search.end_with?("_manage"))
+        manage_topic = search.gsub("_manage", "")
+        manage_topic = "manage_#{manage_topic}"
+        matches = Help.topic_keys.select { |k, v| k == "#{manage_topic}" }
+        return matches.values.uniq if matches.count > 0
+      end
+      if (search.start_with?("manage_"))
+        manage_topic = search.gsub("manage_", "")
+        manage_topic = "#{manage_topic}_manage"
+        matches = Help.topic_keys.select { |k, v| k == "#{manage_topic}" }
+        return matches.values.uniq if matches.count > 0
+      end
       return []
     end
    

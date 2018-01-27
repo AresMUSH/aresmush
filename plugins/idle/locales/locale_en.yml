@@ -15,8 +15,8 @@ en:
         idle_npc: "Turned into NPC"
 
         previously_warned: "Previously idle warned."
-        idle_bbs_subject: "Idle-Out Characters"
-        idle_bbs_body: "The following characters have idled out or are in danger of doing so.%{report}"
+        idle_post_subject: "Idle-Out Characters"
+        idle_post_body: "The following characters have idled out or are in danger of doing so.%{report}"
         
         lastwill_set: "Last will instructions set."
         lastwill: "Your last will instructions are: %{will}."
@@ -41,7 +41,7 @@ en:
         star_means_contact_required: "Unless marked with a (*), chars can be claimed simply by using %xcroster/claim <name>%xn."
         roster_claim: "Use %xcroster/claim %{name}%xn to claim this character."
         roster_claimed: "You have claimed %{name}.  Their new password is: %{password}"
-        roster_bbs_subject: "Roster Character Claimed"
-        roster_bbs_body: "%{name} has been claimed off the roster."
+        roster_post_subject: "Roster Character Claimed"
+        roster_post_body: "%{name} has been claimed off the roster."
         roster_welcome_msg_subject: "Welcome!"
         roster_url_hint: "The roster can be viewed more easily on the web portal: %{url}."

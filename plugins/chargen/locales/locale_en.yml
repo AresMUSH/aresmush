@@ -26,15 +26,16 @@ en:
         
         abilities_review_title:  "Abilities (help abilities)"
         demographics_review_title: "Demographics (help demographics)"
-        misc_review_title: "Miscellaneous (help bg, help desc, help rank)"
+        misc_review_title: "Miscellaneous (help bg, help desc, help rank, help hooks)"
         groups_review_title: "Groups (help groups)"
         app_review_title: "Review (help apps)"
         goals_review_title: "Goals (help goals)"
+        hook_review: "Checking for RP Hooks."
         
         app_request: "Approval under review.  See %xhrequest %{job}%xn."
         app_job: "Approval under review.  See %xhjob %{job}%xn."
         
-        approval_bbs_subject: "Welcome %{name}"
+        approval_post_subject: "Welcome %{name}"
         
         application_title: "App - %{name}"
         app_not_started: "Application not yet started."

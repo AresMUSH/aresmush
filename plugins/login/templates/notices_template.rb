@@ -21,8 +21,8 @@ module AresMUSH
         alt.has_unread_mail?
       end
       
-      def bbs
-        Bbs.has_unread_bbs?(@char) ? t('login.unread_bbs') : t('login.no_unread_bbs')
+      def forum
+        Forum.has_unread_forum_posts?(@char) ? t('login.unread_forum') : t('login.no_unread_forum')
       end
       
       def jobs_or_requests

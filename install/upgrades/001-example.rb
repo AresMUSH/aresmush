@@ -1,7 +1,7 @@
 module AresMUSH
   
   puts "======================================================================="
-  puts "An example that creates a new bulletin board."
+  puts "An example that creates a new forum category."
   puts "======================================================================="
   
   BbsBoard.create(name: "Example Upgrade Test", order: 99)
