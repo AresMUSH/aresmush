@@ -34,7 +34,6 @@ fs3skills:
   - name: Piloting
     desc: Flying air and spacecraft.
     linked_attr: Reflexes
-    allow_unskilled: true
     specialties:
     - Viper
     - Raptor

@@ -66,7 +66,11 @@ module AresMUSH
     def self.get_min_rating(ability_type)
       case ability_type
       when :action
-        min_rating = 1
+        if (Global.read_config('fs3skills', 'allow_unskilled_action_skills'))
+          min_rating = 0
+        else
+          min_rating = 1
+        end
       when :background
         min_rating = 0
       when :language

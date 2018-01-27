@@ -9,6 +9,8 @@ fs3skills:
     min_skill_rating: 1
     max_attr_rating: 5
     
+    allow_unskilled_action_skills: false
+    
     max_ap: 45
     
     max_skills_at_or_above:
