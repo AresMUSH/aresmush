@@ -19,6 +19,12 @@ module AresMUSH
       Chargen.stage_name(char) == stage_name
     end
     
+    def self.hook_app_review(char)
+      message = t('chargen.hook_review')
+      status = char.rp_hooks.blank? ?  t('chargen.not_set') : t('chargen.ok')
+      
+      Chargen.format_review_status(message, status)
+    end
     
     def self.approval_status(char)
       if (char.on_roster?)

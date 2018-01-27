@@ -7,7 +7,7 @@ cookies:
         minute: 
             - 00
     
-    cookie_board: "Cookie Awards"
+    cookie_category: "Cookie Awards"
     
     cookies_per_luck: 10
     

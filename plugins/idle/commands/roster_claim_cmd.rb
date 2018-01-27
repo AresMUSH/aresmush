@@ -42,13 +42,13 @@ module AresMUSH
           welcome_message = Global.read_config("idle", "roster_welcome_msg")
           Mail.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)          
           
-          bbs = Global.read_config("idle", "arrivals_board")
-          return if !bbs
-          return if bbs.blank?
+          forum_category = Global.read_config("idle", "arrivals_category")
+          return if !forum_category
+          return if forum_category.blank?
         
-          Bbs.post(bbs, 
-            t('idle.roster_bbs_subject'), 
-            t('idle.roster_bbs_body', :name => model.name), 
+          Forum.post(forum_category, 
+            t('idle.roster_post_subject'), 
+            t('idle.roster_post_body', :name => model.name), 
             Game.master.system_character)
         end
       end
