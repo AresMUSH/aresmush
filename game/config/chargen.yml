@@ -33,8 +33,6 @@ chargen:
             help: descriptions
         handles:
             help: handles
-        wiki:
-            help: wiki
         profile:
             help: profile
         lastwill:

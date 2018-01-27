@@ -7,6 +7,7 @@ module AresMUSH
         FS3Skills.stub(:attr_names) { [ "Brawn", "Mind" ] }
         FS3Skills.stub(:action_skill_names) { [ "Firearms", "Demolitions" ] }
         FS3Skills.stub(:language_names) { [ "English", "Spanish" ] }
+        Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { false }
         SpecHelpers.stub_translate_for_testing
       end
       
@@ -34,6 +35,11 @@ module AresMUSH
           FS3Skills.check_rating("Firearms", -1).should eq "fs3skills.min_rating_is"
           FS3Skills.check_rating("English", -1).should eq "fs3skills.min_rating_is"
           FS3Skills.check_rating("Basketweaving", -1).should eq "fs3skills.min_rating_is"
+        end
+        
+        it "should allow unskilled for min rating if configured" do
+          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
+          FS3Skills.check_rating("Brawn", 0).should eq "fs3skills.min_rating_is"
         end
         
         it "should allow min ratings" do
