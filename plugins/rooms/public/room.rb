@@ -1,33 +1,4 @@
 module AresMUSH
-  class Character
-    reference :room_home, "AresMUSH::Room"
-    reference :room_work, "AresMUSH::Room"
-    
-    before_save :check_for_nil_room
-    
-    def check_for_nil_room
-      # Characters should never ever be allowed to have a nil room.
-      if (!self.room)
-        reset_room = Game.master.ic_start_room || Room.all.first
-        self.update(room: reset_room)
-      end
-    end
-  end
-  
-  class Game
-    reference :welcome_room, "AresMUSH::Room"
-    reference :ooc_room, "AresMUSH::Room"
-    reference :ic_start_room, "AresMUSH::Room"
-    
-    def is_special_room?(room)
-      return true if room == welcome_room
-      return true if room == ic_start_room
-      return true if room == ooc_room
-      return false
-    end
-  end
-  
-  
   class Room
     attribute :room_grid_x
     attribute :room_grid_y
@@ -72,15 +43,6 @@ module AresMUSH
       else
         return self.name.upcase
       end
-    end
-  end
-  
-  class Exit    
-    attribute :lock_keys, :type => DataType::Array, :default => []
-    
-    def allow_passage?(char)
-      return false if (self.lock_keys == Rooms.interior_lock)
-      return (self.lock_keys.empty? || char.has_any_role?(self.lock_keys))
     end
   end
 end

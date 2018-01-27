@@ -28,11 +28,4 @@ module AresMUSH
       self.combatant ? self.combatant.combat : nil
     end
   end
-  
-  class Room
-    attribute :is_hospital, :type => DataType::Boolean
-    
-    index :is_hospital
-  end
-  
 end
