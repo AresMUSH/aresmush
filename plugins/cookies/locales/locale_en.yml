@@ -11,3 +11,5 @@ en:
         weekly_award_title: "Top Cookie Earners"
         cookies_total_inv: "You have the crumbs of %{cookies} cookies in your pocket.  (There is no inventory system here.)"
         cookies_total: "You have received %{cookies} cookies since joining the game."
+        invalid_scene: "Scene not found."
+        giving_cookies_to_scene: "You give cookies to everyone in %{scene}."

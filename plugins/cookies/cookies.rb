@@ -16,6 +16,8 @@ module AresMUSH
       case cmd.switch
       when "here"
         return CookieHereCmd
+      when "scene"
+        return CookieSceneCmd
       when "total"
         return CookiesTotalCmd
       when nil
