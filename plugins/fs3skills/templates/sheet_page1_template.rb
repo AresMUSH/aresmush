@@ -1,12 +1,12 @@
 module AresMUSH
   module FS3Skills
-    class SheetPage1Template < ErbTemplateRenderer
+    class SheetTemplate < ErbTemplateRenderer
       
       attr_accessor :char
       
       def initialize(char, client)
         @char = char
-        super File.dirname(__FILE__) + "/sheet_page1.erb"
+        super File.dirname(__FILE__) + "/sheet.erb"
       end
      
       def approval_status
