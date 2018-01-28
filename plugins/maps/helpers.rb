@@ -14,7 +14,7 @@ module AresMUSH
     end
     
     def self.get_map_for_area(area)
-      GameMap.all.select { |m| m.areas.include?(area) }.first
+      GameMap.all.select { |m| m.areas.include?(area) || m.name.titlecase == area }.first
     end
   end
 end

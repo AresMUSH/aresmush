@@ -121,6 +121,9 @@ module AresMUSH
         
         if (scene.room)
           Rooms.emit_to_room(scene.room, message)
+          if (!scene.temp_room)
+            client.emit_error t('scenes.grid_location_change_warning')
+          end
         end
         
         if (scene.room != enactor_room)
