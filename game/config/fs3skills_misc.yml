@@ -2,9 +2,6 @@ fs3skills:
 
     max_luck: 3
 
-    public_pages:
-        - 1
-        
     roll_channel: "FS3 Rolls"
 
     shortcuts:
