@@ -47,6 +47,10 @@ module AresMUSH
         return t('ranks.no_ranks_for_group', :group => group)
       end
       
+      if (rank.blank?)
+        return nil
+      end
+      
       found = ranks.find { |r| r.downcase == rank.downcase }
       if (!found)
         return t('ranks.invalid_rank_for_group', :group => group)

@@ -41,7 +41,8 @@ module AresMUSH
           recent_scenes: Scenes::RecentScenesRequestHandler.new.handle(request),
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
-          recent_changes: WebHelpers.get_recent_changes(true, 10)
+          recent_changes: WebHelpers.get_recent_changes(true, 10),
+          registration_required: Global.read_config("website", "portal_requires_registration")
         }
       end
     end

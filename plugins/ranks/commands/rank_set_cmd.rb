@@ -6,13 +6,13 @@ module AresMUSH
       attr_accessor :name, :rank
 
       def parse_args
-        if (cmd.args =~ /[^\/]+\=.+/)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-          self.name = trim_arg(args.arg1)
-          self.rank = titlecase_arg(args.arg2)
+        # Admin version 
+        if (cmd.args =~ /[^\=]+\=(.+)?/)
+          self.name = trim_arg(cmd.args.before("="))
+          self.rank = titlecase_arg(cmd.args.after("=") || "")
         else
           self.name = enactor_name
-          self.rank = titlecase_arg(cmd.args)
+          self.rank = titlecase_arg(cmd.args || "")
         end
       end
       
@@ -30,8 +30,8 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
           
-          if (!self.rank)
-            enactor.update(ranks_rank: rank)
+          if (self.rank.blank?)
+            enactor.update(ranks_rank: nil)
             client.emit_success t('ranks.rank_cleared')
           else
             error = Ranks.set_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
