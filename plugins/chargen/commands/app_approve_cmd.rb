@@ -36,6 +36,10 @@ module AresMUSH
           
           model.update(is_approved: true)
           model.update(approval_job: nil)
+          role = Role.find_one(name: "approved")
+          if (role)
+            model.roles.add role
+          end
           
           client.emit_success t('chargen.app_approved', :name => model.name)
           

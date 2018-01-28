@@ -26,7 +26,11 @@ module AresMUSH
       end
       
       def handle
-        BbsBoard.create(name: self.name, order: BbsBoard.all.count + 1)
+        approved_role = Role.find_one_by_name('approved')
+        forum = BbsBoard.create(name: self.name, order: BbsBoard.all.count + 1)
+        if (approved_role)
+          forum.write_roles.add approved_role
+        end
         client.emit_success t('forum.category_created')
       end
     end
