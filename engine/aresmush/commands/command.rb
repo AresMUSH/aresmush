@@ -8,7 +8,7 @@ module AresMUSH
     attr_accessor :raw, :prefix, :root, :page, :switch, :args
     
     def initialize(input)
-      @raw = input.chomp || nil
+      @raw = input ? input.chomp.lstrip : nil
       crack!         
     end    
     
