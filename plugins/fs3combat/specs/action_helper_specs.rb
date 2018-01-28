@@ -584,11 +584,43 @@ module AresMUSH
           FS3Combat.determine_attack_margin(@combatant, @target, 0)
         end
         
-        it "should be a dodege if the defender wins" do
+        it "should be a dodge if the defender wins when attacked by melee" do
+          @combatant.stub(:weapon) { "Knife" }
+          FS3Combat.stub(:weapon_stat).with("Knife", "weapon_type") { "Melee" }
           FS3Combat.stub(:roll_attack) { 1 }
           FS3Combat.stub(:roll_defense) { 2 }
           result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
           result[:message].should eq "fs3combat.attack_dodged"
+          result[:hit].should eq false
+        end
+        
+        it "should be a dodge easily if defender wins by a lot vs melee" do
+          FS3Combat.stub(:weapon_stat).with("Rifle", "weapon_type") { "Ranged" }
+          FS3Combat.stub(:roll_attack) { 1 }
+          FS3Combat.stub(:roll_defense) { 4 }
+          @target.stub(:is_in_vehicle?) { true }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_dodged_easily"
+          result[:hit].should eq false
+        end
+        
+        it "should be a dodge if the defender wins when in vehicle" do
+          FS3Combat.stub(:weapon_stat).with("Rifle", "weapon_type") { "Ranged" }
+          FS3Combat.stub(:roll_attack) { 1 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          @target.stub(:is_in_vehicle?) { true }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_dodged"
+          result[:hit].should eq false
+        end
+        
+        it "should be a near miss if defender wins vs ranged" do
+          FS3Combat.stub(:weapon_stat).with("Rifle", "weapon_type") { "Ranged" }
+          FS3Combat.stub(:roll_attack) { 1 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          @target.stub(:is_in_vehicle?) { false }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_near_miss"
           result[:hit].should eq false
         end
         

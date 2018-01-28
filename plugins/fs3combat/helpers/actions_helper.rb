@@ -219,7 +219,7 @@ module AresMUSH
       end
       
       # Not wearing armor at all.
-      return 0 if !armor
+      return 0 if armor.blank?
       
       pen = FS3Combat.weapon_stat(weapon, "penetration")
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
@@ -275,20 +275,29 @@ module AresMUSH
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
+      weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (attacker_net_successes < -2)
-        message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (attacker_net_successes < 0)
-        message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (stopped_by_cover)
-        message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (called_shot && (attacker_net_successes < 2))
         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (stopped_by_cover)
+        message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (attacker_net_successes < 0)
+        # Only can evade when being attacked by melee or when in a vehicle.
+        if (weapon_type == 'Melee' || target.is_in_vehicle?)
+          if (attacker_net_successes < -2)
+            message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
+          else
+            message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
+          end
+        else
+            message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+        end
       else
         hit = true
       end
+      
       
       combatant.log "Attack Margin: mod=#{mod} called=#{called_shot} " +
       " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} result=#{message}"
