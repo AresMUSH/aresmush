@@ -47,9 +47,10 @@ task :init do
   AresMUSH::Install.init_db
 end
 
-task :upgrade, [:scriptname] do |t, args|
+task :upgrade, [:scriptname, :param] do |t, args|
   minimal_boot
   scriptname = args[:scriptname]
+  ENV['ares_rake_param'] = args[:param]
   require_relative "install/upgrades/#{scriptname}.rb"
 end
 
