@@ -26,8 +26,7 @@ module AresMUSH
     def notify_web_clients(type, msg, &trigger_block)
       @clients.each do |c|        
         if ( yield Character[c.web_char_id] )
-          formatted_msg = MushFormatter.format(msg, false)
-          c.web_notify type, formatted_msg
+          c.web_notify type, msg
         end
       end
     end
