@@ -103,7 +103,7 @@ module AresMUSH
         it "should suppress a single target successfully" do
           @action = SuppressAction.new(@combatant, "target1")
           @action.prepare
-          FS3Combat.should_receive(:roll_attack).with(@combatant) { 2 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target1) { 2 }
           @target1.should_receive(:roll_ability).with("Composure") { 0 }
           @target1.should_receive(:add_stress).with(4)
           resolutions = @action.resolve
@@ -113,7 +113,7 @@ module AresMUSH
         it "should suppress a single target unsuccessfully" do
           @action = SuppressAction.new(@combatant, "target1")
           @action.prepare
-          FS3Combat.should_receive(:roll_attack).with(@combatant) { 0 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target1) { 0 }
           @target1.should_receive(:roll_ability).with("Composure") { 1 }
           @target1.should_not_receive(:add_stress)
           resolutions = @action.resolve
@@ -124,8 +124,8 @@ module AresMUSH
         it "should suppress multiple targets with separate rolls" do
           @action = SuppressAction.new(@combatant, "target1 target2")
           @action.prepare
-          FS3Combat.should_receive(:roll_attack).with(@combatant) { 2 }
-          FS3Combat.should_receive(:roll_attack).with(@combatant) { 1 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target1) { 2 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target2) { 1 }
           @target1.should_receive(:roll_ability).with("Composure") { 0 }
           @target2.should_receive(:roll_ability).with("Composure") { 3 }
           @target1.should_receive(:add_stress).with(4)

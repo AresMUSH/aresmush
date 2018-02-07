@@ -23,83 +23,107 @@ module AresMUSH
           @combatant.stub(:is_aiming?) { false }
           @combatant.stub(:weapon) { "Knife" }
           @combatant.stub(:luck)
+          @target = double
+          @target.stub(:mount_type) { nil }
+          @combatant.stub(:mount_type) { nil }
         end
         
         it "should roll the weapon attack stat" do
           @combatant.should_receive(:roll_ability).with("Knives", 0)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for aim modifier if aimed at the same target" do
-          target = double
           @combatant.stub(:is_aiming?) { true }
-          @combatant.stub(:aim_target) { target }
+          @combatant.stub(:aim_target) { @target }
           action = double
-          action.stub(:target) { target }
+          action.stub(:target) { @target }
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 3)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should not apply aim modifier if aimed at a different target" do
-          target = double
           @combatant.stub(:is_aiming?) { true }
-          @combatant.stub(:aim_target) { target }
+          @combatant.stub(:aim_target) { @target }
           action = double
           action.stub(:target) { double }
           @combatant.stub(:action) { action }
           
           @combatant.should_receive(:roll_ability).with("Knives", 0)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         
         it "should account for wound modifiers" do
           @combatant.stub(:total_damage_mod) { -1 }
           @combatant.should_receive(:roll_ability).with("Knives", -1)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for distract modifiers" do
           @combatant.stub(:distraction) { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", -2)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for stance modifiers" do
           @combatant.stub(:attack_stance_mod) { 1 }
           @combatant.should_receive(:roll_ability).with("Knives", 1)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
+        end
+        
+        it "should give a bonus when mounted vs unmounted target" do
+          @target.stub(:mount_type) { nil }
+          @combatant.stub(:mount_type) { "Horse" }
+          FS3Combat.stub(:mount_stat).with("Horse", "mod_vs_unmounted") { 2 } 
+          @combatant.should_receive(:roll_ability).with("Knives", 2)
+          FS3Combat.roll_attack(@combatant, @target)
+        end
+
+        it "should not give a bonus when mounted vs mounted target" do
+          @target.stub(:mount_type) { "Horse" }
+          @combatant.stub(:mount_type) { "War Horse" }
+          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          FS3Combat.roll_attack(@combatant, @target)
+        end
+        
+        it "should give penalty when unmounted vs mounted target" do
+          @target.stub(:mount_type) { "Horse" }
+          FS3Combat.stub(:mount_stat).with("Horse", "mod_vs_unmounted") { 2 } 
+          @combatant.stub(:mount_type) { nil }
+          @combatant.should_receive(:roll_ability).with("Knives", -2)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for accuracy modifiers" do
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for stress modifiers" do
           @combatant.stub(:stress) { 1 }
           @combatant.should_receive(:roll_ability).with("Knives", -1)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
 
         it "should account for luck spent on attack" do
           @combatant.stub(:luck) { "Attack" }
           @combatant.should_receive(:roll_ability).with("Knives", 3)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
 
         it "should ignore luck spent on something else" do
           @combatant.stub(:luck) { "Defense" }
           @combatant.should_receive(:roll_ability).with("Knives", 0)
-          FS3Combat.roll_attack(@combatant)
+          FS3Combat.roll_attack(@combatant, @target)
         end
                 
         it "should account for passed-in modifiers" do
           @combatant.should_receive(:roll_ability).with("Knives", -2)
-          FS3Combat.roll_attack(@combatant, -2)
+          FS3Combat.roll_attack(@combatant, @target, -2)
         end
         
         it "should account for multiple modifiers" do
@@ -107,7 +131,7 @@ module AresMUSH
           @combatant.stub(:attack_stance_mod) { 1 }
           FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
           @combatant.should_receive(:roll_ability).with("Knives", 2)
-          FS3Combat.roll_attack(@combatant, 1)
+          FS3Combat.roll_attack(@combatant, @target, 1)
         end
       end
       

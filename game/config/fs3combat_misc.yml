@@ -1,6 +1,9 @@
 fs3combat:
     default_type: Soldier
     
+    allow_vehicles: true
+    allow_mounts: true
+    
     stances:
         Aggressive:
             attack_mod: 2
@@ -102,3 +105,4 @@ fs3combat:
         "hospitals": "hospital/list"
         "healing": "heal/list"
         "weapons": "weapon"
+        "mounts" : "mount"

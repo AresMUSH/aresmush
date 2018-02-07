@@ -49,6 +49,12 @@ module AresMUSH
          when "on", "off"
            return HospitalSetCmd
          end
+       when "mount"
+         if (cmd.args)
+           return MountDetailCmd
+         else
+           return MountsListCmd
+         end
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd
@@ -93,6 +99,10 @@ module AresMUSH
            return CombatLogCmd
          when "luck"
            return CombatLuckCmd
+         when "mount"
+           return CombatMountCmd
+         when "dismount"
+           return CombatDismountCmd
          when "npc"
            return CombatNpcCmd
          when "newturn"
@@ -152,6 +162,12 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "addCombatant"
+        return AddCombatantRequestHandler
+      when "combatant"
+        return GetCombatantRequestHandler
+      when "updateCombatant"
+        return UpdateCombatantRequestHandler
       when "combat"
         return CombatSummaryRequestHandler
       when "combats"

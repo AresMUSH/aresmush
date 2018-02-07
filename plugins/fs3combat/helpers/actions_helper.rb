@@ -266,21 +266,66 @@ module AresMUSH
       result
     end
     
+    def self.hit_mount?(attacker, defender, attacker_net_successes, mount_hit)
+      return false if !defender.mount_type
+
+      # Bigger chance of hitting mount if you're on the ground.  Less chance if you rolled well - unless
+      # of course you were aiming for the mount deliberately.
+      if (attacker_net_successes > 0 && mount_hit)
+        hit_chance = 90
+      elsif (attacker_net_successes > 2)
+        hit_chance = 0
+      elsif (attacker.mount_type)
+        hit_chance = 20
+      else
+        hit_chance = 40
+      end
+      
+      roll = rand(100) 
+      result = roll < hit_chance
+            
+      attacker.log "Determined mount hit: chance=#{hit_chance} roll=#{roll} result=#{result}"
+      
+      result
+    end
+    
+    def self.resolve_mount_ko(target)
+      toughness = FS3Combat.mount_stat(target.mount_type, 'toughness').to_i
+      roll = FS3Skills.one_shot_die_roll(toughness)[:successes]
+      
+      target.log "Determined mount damage: tough=#{toughness} roll=#{roll}"
+      
+      roll <= 0
+    end
+    
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }
-    def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil)
+    def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false)
       weapon = combatant.weapon
-      attack_roll = FS3Combat.roll_attack(combatant, mod - combatant.recoil)
+      attack_roll = FS3Combat.roll_attack(combatant, target, mod - combatant.recoil)
       defense_roll = FS3Combat.roll_defense(target, weapon)
       
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
+      hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
       
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (called_shot && (attacker_net_successes < 2))
         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (hit_mount)
+        mount_ko = FS3Combat.resolve_mount_ko(target)
+        if (mount_ko)
+          
+          mount_effect = t('fs3combat.mount_ko')
+          target.inflict_damage('IMPAIR', 'Fall Damage', true, false)
+          target.update(mount_type: nil)
+        else
+          mount_effect =  t('fs3combat.mount_injured')
+        end
+
+        message = t('fs3combat.attack_hits_mount', :name => combatant.name, :target => target.name, :weapon => weapon, :effect => mount_effect)
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (attacker_net_successes < 0)
@@ -310,13 +355,13 @@ module AresMUSH
       }
     end
       
-    def self.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false)
+    def self.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false, mount_hit = false)
       # If targeting a passenger, adjust target to the pilot instead.  Unless of course there isn't one.
       if (target.riding_in && target.riding_in.pilot)
         target = target.riding_in.pilot
       end
       
-      margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot, mount_hit)
 
       # Update recoil after determining the attack success but before returning out for a miss
       recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")

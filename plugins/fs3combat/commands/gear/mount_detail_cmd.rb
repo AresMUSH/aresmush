@@ -1,6 +1,6 @@
 module AresMUSH
   module FS3Combat
-    class VehicleDetailCmd
+    class MountDetailCmd
       include CommandHandler
       
       attr_accessor :name
@@ -13,18 +13,18 @@ module AresMUSH
         [ self.name ]
       end
       
-      def check_vehicles_allowed
-        return t('fs3combat.vehicles_disabled') if !FS3Combat.vehicles_allowed?
+      def check_mounts_allowed
+        return t('fs3combat.mounts_disabled') if !FS3Combat.mounts_allowed?
         return nil
       end
       
-      def check_vehicle_exists
-        return t('fs3combat.invalid_vehicle') if !FS3Combat.vehicle(self.name)
+      def check_valid_mount
+        return t('fs3combat.invalid_mount') if !FS3Combat.mount(self.name)
         return nil
       end
       
       def handle
-        template = GearDetailTemplate.new(FS3Combat.vehicle(self.name), self.name, :vehicle)
+        template = GearDetailTemplate.new(FS3Combat.mount(self.name), self.name, :mount)
         client.emit template.render
       end
     end

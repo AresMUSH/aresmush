@@ -183,6 +183,7 @@ en:
         use_explode_command: "Use the combat/explode command for this weapon."
         use_suppress_command: "Use the combat/suppress command for this weapon."
         weapon_specials:  "Available Weapon Specials"
+        invalid_gear_type: "Invalid gear type."
         
         # ----------------------------
         # ARMOR
@@ -206,8 +207,24 @@ en:
         vehicle_title_armor: "Armor:"
         vehicle_title_hitloc_chart: "Hit Locations:"
         vehicle_title_toughness: "Toughness:"
-        vehicles_title: "Vehicle         Pilot               Passengers"
+        vehicles_summary_title: "Vehicle         Pilot               Passengers"
+        vehicles_disabled: "Vehicles are disabled here."
         
+        # ----------------------------
+        # MOUNTS
+        # ----------------------------
+        
+        dismounted: "%{name} has dismounted."
+        mounted: "%{name} has mounted a %{mount}."
+        invalid_mount: "That is not a valid mount type."
+        not_mounted: "You are not mounted."
+        cant_be_in_both_vehicle_and_mount: "You can't be in both a vehicle and on a mount at the same time."
+        mounts_disabled: "Mounts are disabled here."
+        mounts_title: "Mounts List"
+        mount_title_description: "Description:"
+        mount_title_toughness: "Toughness:"
+        mount_title_mod_vs_unmounted: "Mod vs Unmounted:"
+            
         # ----------------------------
         # HITLOCS
         # ----------------------------
@@ -269,6 +286,8 @@ en:
         attack_special_fullauto: "(fullauto)"
         attack_special_called: "(called shot to the %{location})"
         attack_special_mod: "(modifier: %{mod})"
+        attack_special_crew: "(aiming for crew)"
+        attack_special_mount: "(aiming for mount)"
         invalid_attack_special: "That is not a valid attack special."
         attack_missed: "%{name} attacks %{target} with %{weapon} but MISSES!"
         attack_dodged: "%{name} attacks %{target} with %{weapon} but %{target} EVADES!"
@@ -276,6 +295,10 @@ en:
         attack_near_miss: "%{name} attacks %{target} with %{weapon} and NARROWLY MISSES!"
         attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc}. %{armor}"
         attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
+        attack_hits_mount: "%{name} attacks %{target} with %{weapon} and hits their MOUNT. %{effect}"
+        
+        mount_ko: "(Mount %xrKOed%xn - %xyImpaired%xn wound from fall damage)"
+        mount_injured: "(Mount INJURED)"
         
         burst_fire_not_allowed: "You need an automatic weapon to do burst or fullauto fire."
         invalid_called_shot_loc: "That is not a valid called shot location.  See combat/hitlocs <target>."

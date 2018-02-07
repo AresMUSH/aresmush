@@ -6,7 +6,7 @@ module AresMUSH
         name = request.args[:name]
 
         if (name.blank?)
-          return { error: "Invalid gear type." }
+          return { error: t('fs3combat.invalid_gear_type') }
         end
 
         case (type || "").downcase
@@ -16,12 +16,14 @@ module AresMUSH
           data = FS3Combat.armor(name)
         when "vehicle"
           data = FS3Combat.vehicle(name)
+        when "mount"
+          data = FS3Combat.mount(name)
         else
-          return { error: "Invalid gear type." }
+          return { error: t('fs3combat.invalid_gear_type') }
         end
 
         if (!data)
-          return { error: "Invalid gear type." }
+          return { error: t('fs3combat.invalid_gear_type') }
         end
         
         values = data.map { |key, value|  {

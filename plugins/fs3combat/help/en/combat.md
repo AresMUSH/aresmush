@@ -37,6 +37,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
     * called:<location> - Perform a called shot to a particular hit location. 
        Use `combat/hitlocs <target>` to see a list of valid hit locations. 
     * crew - Attack a vehicle crewperson directly instead of the vehicle itself.
+    * mount - Attack a mount directly instead of the rider.
 
 `combat/aim <target>` - Takes careful aim.
 
@@ -108,12 +109,22 @@ There are various kinds of gear that can be used in combat.  You should only use
 
 `weapons` - List all weapons.
 `weapon <name>` - See details for a particular weapon.
+`combat/weapon <name+specials>` - Sets your weapon.
 
 `armor` - List all types of armor.
 `armor <name>` - See details for a particular armor type.
+`combat/armor <name+specials>` - Sets your armor.
 
 `vehicles` - List all types of vehicles.
 `vehicle <name>` - See details for a particular vehicle type.
+`combat/pilot <vehicle type or name>` - Pilots a vehicle.
+`combat/passenger <vehicle type or name>` - Becomes a passenger in a vehicle.
+`combat/disembark` - Leaves a vehicle.
+
+`mounts` - Lists all types of mounts.
+`mount <name>` - See details for a particular mount type.
+`combat/mount <name>` - Mounts an animal.
+`combat/dismount` - Dismounts an animal.
 
 ## Luck
 
