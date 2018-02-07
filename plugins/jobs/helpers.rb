@@ -67,11 +67,11 @@ module AresMUSH
 
       jobs = jobs || []
       jobs = jobs.select { |j| Jobs.can_access_category?(char, j.category) }
-      jobs.sort_by { |j| j.number }
+      jobs.sort_by { |j| j.id }
     end
     
     def self.with_a_job(char, client, number, &block)
-      job = Job.find(number: number.to_i).first
+      job = Job[number]
       if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
@@ -100,10 +100,10 @@ module AresMUSH
         :admin_only => admin_only,
         :message => message)
       if (admin_only)
-        notification = t('jobs.discussed_job', :name => author.name, :number => job.number, :title => job.title)
+        notification = t('jobs.discussed_job', :name => author.name, :number => job.id, :title => job.title)
         Jobs.notify(job, notification, author, false)
       else
-        notification = t('jobs.responded_to_job', :name => author.name, :number => job.number, :title => job.title)
+        notification = t('jobs.responded_to_job', :name => author.name, :number => job.id, :title => job.title)
         Jobs.notify(job, notification, author)
       end
     end

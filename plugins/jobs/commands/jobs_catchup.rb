@@ -17,7 +17,7 @@ module AresMUSH
       def handle
         
         if (self.number)
-          job = Job.find(number: self.number).first
+          job = Job[self.number]
           if (!job)
             client.emit_failure t('jobs.invalid_job_number')
             return

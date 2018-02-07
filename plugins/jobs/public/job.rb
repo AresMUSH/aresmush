@@ -7,7 +7,6 @@ module AresMUSH
     attribute :description
     attribute :category
     attribute :status
-    attribute :number, :type => DataType::Integer
     
     reference :author, "AresMUSH::Character"
     reference :assigned_to, "AresMUSH::Character"
