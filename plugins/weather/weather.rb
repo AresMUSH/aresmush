@@ -10,11 +10,6 @@ module AresMUSH
       Global.read_config("weather", "shortcuts")
     end
  
-    def self.init_plugin
-      Weather.current_weather = {}
-      Weather.change_all_weathers
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       return nil if !cmd.root_is?("weather")
       case cmd.switch

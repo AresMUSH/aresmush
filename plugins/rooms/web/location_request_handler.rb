@@ -6,7 +6,7 @@ module AresMUSH
         
         room = Room[id]
         if (!room)
-          return { error: "Location not found." }
+          return { error: t('webportal.not_found') }
         end
         
         {

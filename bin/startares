@@ -3,3 +3,6 @@ export LANG=en_US.UTF-8
 bundle install
 nohup bundle exec rake startares > /dev/null 2>errors.txt&
 echo kill -9 $! > bin/killares
+chmod +x bin/killares
+cd ../ares-webportal
+bin/deploy

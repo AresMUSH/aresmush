@@ -9,12 +9,12 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
       
         path = File.join(AresMUSH.game_path, 'config', file)
         if (!File.exists?(path))
-          return { error: "Config file does not exist."}
+          return { error: t('webportal.not_found') }
         end
         
         begin
@@ -28,8 +28,8 @@ module AresMUSH
         
           { file: file, config:  config }
         rescue Exception => ex
-          return { error: "There was a problem loading your config YAML for #{file}.  See http://aresmush.com/tutorials for troubleshooting help: #{ex}" }
           Global.logger.warn "Trouble loading YAML config; #{ex}"
+          return { error: t('webportal.config_error', :error => ex ) }
         end
         
       end

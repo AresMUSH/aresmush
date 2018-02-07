@@ -7,27 +7,27 @@ module AresMUSH
         char = Character[request.args[:id]]
 
         if (!enactor)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!char)
-          return { error: "Character not found." }
+          return { error: t('webportal.not_found') }
         end
         
         if (!Profile.can_manage_char_profile?(enactor, char))
-          return { error: "You are not allowed to do that." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         if (!char.is_approved?)
-          return { error: "You have to finish character creation first." }
+          return { error: t('profile.not_yet_approved') }
         end
-        
+        pp request.args[:demographics]
         request.args[:demographics].each do |name, value|
           if (value.blank?)
-            return { error: "#{name} cannot be blank." }
+            return { error: t('webportal.missing_required_fields') }
           end
           char.update_demographic name, value
         end

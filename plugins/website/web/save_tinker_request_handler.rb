@@ -8,7 +8,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         path = File.join(AresMUSH.plugin_path, 'tinker', 'commands', 'tinker_cmd.rb')
@@ -29,7 +29,7 @@ module AresMUSH
                   
         
         rescue Exception => ex
-          return { error: "There was a problem with the tinker code: #{ex}" }
+          return { error: t('webportal.tinker_error', :error => ex ) }
         end
         
         {}

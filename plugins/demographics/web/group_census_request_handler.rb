@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
                 
         filter = (request.args[:filter] || "").titlecase
-        title = "Characters by #{filter}"
+        title = t('demographics.group_census_title', :name => filter)
 
         if (filter == 'Gender')
           groups = Chargen.approved_chars.group_by { |c| c.demographic(:gender)}

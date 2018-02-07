@@ -95,7 +95,7 @@ module AresMUSH
       
   
       def self.clean_anchor(text)
-        anchor = (text || "").parameterize('_').downcase
+        anchor = (text || "").parameterize().downcase
         URI.escape(anchor)
       end
     end

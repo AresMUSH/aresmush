@@ -26,7 +26,7 @@ module AresMUSH
           if (last_mail)
             reply_to last_mail
           else
-            client.emit_failure t('dispatcher.invalid_syntax', :command => 'mail')
+            client.emit_failure t('dispatcher.invalid_syntax', :cmd => 'mail')
           end
         else
           Mail.with_a_delivery(client, enactor, self.num) do |delivery|

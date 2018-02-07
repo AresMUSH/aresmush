@@ -6,22 +6,22 @@ module AresMUSH
         char = Character[request.args[:id]]
         
         if (!enactor)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!char)
-          return { error: "Character not found." }
+          return { error: t('webportal.not_found') }
         end
         
         if (!Profile.can_manage_char_profile?(enactor, char))
-          return { error: "You are not allowed to do that." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         if (!char.is_approved?)
-          return { error: "You have to finish character creation first." }
+          return { error: t('profile.not_yet_approved') }
         end
         
         demographics = {}
@@ -31,7 +31,7 @@ module AresMUSH
         Global.read_config('demographics')['editable_properties'].sort.each do |d| 
           demographics[d.downcase] = 
             {
-              name: d.titleize,
+              name: t("profile.#{d.downcase}_title"),
               value: char.demographic(d)
             }
         end

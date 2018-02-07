@@ -6,7 +6,7 @@ module AresMUSH
         game_map = GameMap[id]
         
         if (!game_map)
-          return { error: "Map not found." }
+          return { error: t('webportal.not_found') }
         end
         
         {

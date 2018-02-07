@@ -33,4 +33,5 @@ module AresMUSH
       ProfileVersion.create(character: self, text: profile_text, author: enactor)
     end
   end
+  
 end

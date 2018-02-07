@@ -11,18 +11,18 @@ module AresMUSH
         return error if error
 
         if (!enactor.is_approved?)
-          return { error: "You are not approved." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         if (subject.blank? || message.blank? || to_list.blank?)
-          return { error: "Subject, to list and message required." }
+          return { error: t('webportal.missing_required_fields') }
         end
         
         message = WebHelpers.format_input_for_mush(message)
         
         sent = Mail.send_mail(to_list.split(" "), subject, message, nil, enactor)
         if (!sent)
-          return { error: "Something went wrong sending the message.  Check your 'to' list and try again." }
+          return { error: "website.unexpected_error" }
         end
         
         {

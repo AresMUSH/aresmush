@@ -8,14 +8,18 @@ module AresMUSH
         
         char = Character.find_one_by_name(id)
         if (!char)
-          return { error: "Character not found." }
+          return { error: t('webportal.not_found') }
+        end
+        
+        if (char.is_statue?)
+          return { error: t('dispatcher.you_are_statue') }
         end
         
         if (char.is_valid_api_token?(token))
           return { token_valid: true }
         end
         
-        { error: "Your session has expired.  Please log in again." }        
+        { error: t('webportal.session_expired') }        
       end
     end
   end

@@ -5,7 +5,7 @@ module AresMUSH
   
   # First you have to re-define the fields you deleted.
   class Character
-    attribute :chargen_stage
+    attribute :traits
   end
   
   
@@ -15,7 +15,7 @@ module AresMUSH
 
   # Then wipe out the field on all affected objects.
   Character.all.each do |c|
-    c.chargen_stage = nil
+    c.traits = nil
     c.save
   end
   

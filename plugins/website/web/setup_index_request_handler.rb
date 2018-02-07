@@ -9,7 +9,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
         textfiles = Dir[File.join(AresMUSH.game_path, 'text', '**')]
         textfiles = textfiles.select { |f| File.basename(f) != "blacklist.txt" }.sort.map { |f| { name: File.basename(f), file_type: 'text' }}

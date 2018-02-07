@@ -111,5 +111,13 @@ module AresMUSH
       end
       
     end 
+    
+    def self.rebuild_css
+      
+      scss_path = File.join(AresMUSH.website_styles_path, 'ares.scss')
+      css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
+      css = Sass::Engine.for_file(scss_path, {}).render
+      File.open(css_path, "wb") {|f| f.write(css) }
+    end
   end
 end

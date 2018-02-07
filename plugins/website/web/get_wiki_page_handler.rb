@@ -14,19 +14,20 @@ module AresMUSH
           name_or_id = 'home'
         end
         
+        name_or_id = WikiPage.sanitize_page_name(name_or_id)
         page = WikiPage.find_by_name_or_id(name_or_id)
         if (!page)
-          return { error: 'Page not found.'}
+          return { error: t('webportal.not_found') }
         end
         
         lock_info = page.get_lock_info(enactor)
         
         if (edit_mode)
           if (page.is_special_page? && !enactor.is_admin?)
-            return { error: "You are not allowed to do that." }
+            return { error: t('dispatcher.not_allowed') }
           end
           if (lock_info)
-            return { error: "That page is locked by #{lock_info.locked_by}.  Their lock will expire at #{time} or when they're done editing." }
+            return { error: t('webportal.page_locked', :name => lock_info.locked_by, :time => time) }
           end
           page.update(locked_by: enactor)
           page.update(locked_time: Time.now)

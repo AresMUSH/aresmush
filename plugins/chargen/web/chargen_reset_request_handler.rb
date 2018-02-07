@@ -6,19 +6,14 @@ module AresMUSH
         chargen_data = request.args[:char]
                 
         if (!char)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
-        if (char.is_approved?)
-          return { error: "You have already completed character creation." }
-        end
-        
-        if (char.chargen_locked)
-          return { error: "Your character is locked from changes while your application is being reviewed.  Unsubmit your app in-game if you want to make changes." }
-        end
+        error = Chargen.check_chargen_locked(enactor)
+        return error if error
         
         Chargen.save_char(char, chargen_data)
         FS3Skills.reset_char(nil, char)

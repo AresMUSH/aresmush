@@ -16,7 +16,7 @@ en:
         profile_set: "You set your profile."
         handle: "Handle:"
         handle_profile: "Profile:"
-        
+        not_yet_approved: "You have to be approved first."
         
         custom_profile_set: "Custom profile field %{field} set."
         custom_profile_cleared: "Custom profile field %{field} cleared."
@@ -56,3 +56,11 @@ en:
         relationships_use_commas: "You need to use commas between the relationship categories."
         
         none: "None"
+        
+        char_on_roster: "This character is on the roster."
+        char_gone: "This character is retired."
+        char_dead: "This character is deceased."
+        char_is_npc: "This character is a NPC."
+        char_is_admin: "This character is a game administrator."
+        char_is_playerbit: "This character is a player bit."
+        char_not_approved: "This character is not yet approved."

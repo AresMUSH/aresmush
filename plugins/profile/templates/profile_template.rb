@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def approval_status
-        Chargen.approval_status(@char)
+        Profile.get_profile_status_message(@char)
       end
       
       def basic_demographics

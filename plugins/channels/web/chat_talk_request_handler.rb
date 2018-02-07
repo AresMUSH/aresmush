@@ -7,14 +7,14 @@ module AresMUSH
         message = request.args[:message]
         
         if (!enactor)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
                 
         if (!channel)
-          return { error: "Channel not found!" }
+          return { error: t('webportal.not_found') }
         end
         
         message = Channels.pose_to_channel channel, enactor.name, message    

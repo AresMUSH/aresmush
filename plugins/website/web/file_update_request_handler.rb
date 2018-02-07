@@ -15,7 +15,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_approved?)
-          return { error: "You must be approved to update files." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         new_name = AresMUSH::Website::FilenameSanitizer.sanitize new_name
@@ -26,19 +26,19 @@ module AresMUSH
         new_path = File.join(new_folder_path, new_name)
         
         if (!File.exists?(path))
-          return { error: "That file does not exist." }
+          return { error: t('webportal.not_found') }
         end
         
         if (new_name.blank? || new_folder.blank?)
-          return { error: "Missing file or folder name." }
+          return { error: t('webportal.missing_required_fields') }
         end
         
         if (File.exists?(new_path))
-          return { error: "That folder/file name is already used." }
+          return { error: t('webportal.file_already_exists')  }
         end
         
         if (folder == "theme_images" && !enactor.is_admin?)
-          return { error: "Only admins can update the theme images folder." }
+          return { error: t('webportal.theme_locked_to_admin') }
         end
         
         if (!Dir.exist?(new_folder_path))

@@ -43,11 +43,11 @@ module AresMUSH
       def job_info
         job = @char.approval_job
         if (job)
-          number =job.number
+          id =job.id
           if (@enactor == @char)
-            return t('chargen.app_request', :job => number)
+            return t('chargen.app_request', :job => id)
           else
-            return t('chargen.app_job', :job => number)
+            return t('chargen.app_job', :job => id)
           end
         else
           return t('chargen.app_not_started')
