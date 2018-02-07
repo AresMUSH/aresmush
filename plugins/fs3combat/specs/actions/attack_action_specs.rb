@@ -137,16 +137,16 @@ module AresMUSH
         end
           
         it "should attack in single fire" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
           resolutions = @action.resolve
           resolutions[0].should eq "result1"
           resolutions.count.should eq 1
         end
         
         it "should attack in burst fire" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result2"] }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result3"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result3"] }
           @action.is_burst = true
           resolutions = @action.resolve
           resolutions[0].should eq "fs3combat.fires_burst"
@@ -158,8 +158,8 @@ module AresMUSH
         
         it "should limit burst fire to the number of bullets" do
           @combatant.stub(:ammo) { 2 }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result2"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result2"] }
           @action.is_burst = true
           resolutions = @action.resolve
           resolutions[0].should eq "fs3combat.fires_burst"
@@ -189,7 +189,7 @@ module AresMUSH
         end
         
         it "should add an out of ammo message" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false) { ["result1"] }
+          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
           FS3Combat.should_receive(:update_ammo).with(@combatant, 1) { "out of ammo" }
           resolutions = @action.resolve
           resolutions[0].should eq "result1"

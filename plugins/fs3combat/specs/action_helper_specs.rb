@@ -407,6 +407,54 @@ module AresMUSH
         end
       end
       
+      describe :hit_mount? do
+        before do 
+          @combatant = double
+          @target = double
+          @combatant.stub(:log)
+        end
+        
+        it "should not hit mount if there's no mount" do
+          @target.stub(:mount_type) { nil }
+          FS3Combat.should_not_receive(:rand) { 0 }
+          FS3Combat.hit_mount?(@combatant, @target, 0, false).should be false
+        end
+        
+        it "should have 0% for a good attack roll" do
+          @target.stub(:mount_type) { "Horse" }
+          FS3Combat.stub(:rand) { 1 }
+          FS3Combat.hit_mount?(@combatant, @target, 3, false).should be false
+        end
+        
+        it "should have 20% when attacker mounted" do
+          @target.stub(:mount_type) { "Horse" }
+          @combatant.stub(:mount_type) { "Horse" }
+          FS3Combat.stub(:rand) { 19 }
+          FS3Combat.hit_mount?(@combatant, @target, 0, false).should be true
+          FS3Combat.stub(:rand) { 21 }
+          FS3Combat.hit_mount?(@combatant, @target, 0, false).should be false
+        end        
+        
+        it "should have 40% when attacker dismounted" do
+          @target.stub(:mount_type) { "Horse" }
+          @combatant.stub(:mount_type) { nil }
+          FS3Combat.stub(:rand) { 39 }
+          FS3Combat.hit_mount?(@combatant, @target, 0, false).should be true
+          FS3Combat.stub(:rand) { 41 }
+          FS3Combat.hit_mount?(@combatant, @target, 0, false).should be false
+        end
+        
+        it "should have 90% when mount hit on purpose" do
+          @target.stub(:mount_type) { "Horse" }
+          FS3Combat.stub(:rand) { 89 }
+          FS3Combat.hit_mount?(@combatant, @target, 3, true).should be true
+          FS3Combat.stub(:rand) { 91 }
+          FS3Combat.hit_mount?(@combatant, @target, 3, true).should be false          
+        end
+        
+      end
+      
+      
       describe :determine_damage do
         before do 
           @combatant = double
@@ -563,23 +611,25 @@ module AresMUSH
           @combatant.stub(:recoil) { 0 }
           @combatant.stub(:weapon) { "Rifle" }
           @target.stub(:stance) { "Normal" }
+          
+          FS3Combat.stub(:hit_mount?) { false }
         end
         
         it "should roll attack and defense" do
-          FS3Combat.should_receive(:roll_attack).with(@combatant, 0) { 0 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target, 0) { 0 }
           FS3Combat.should_receive(:roll_defense).with(@target, "Rifle") { 0 }
           FS3Combat.determine_attack_margin(@combatant, @target, 0)
         end
         
         it "should add in an attacker modifier" do
-          FS3Combat.should_receive(:roll_attack).with(@combatant, 1) { 0 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target, 1) { 0 }
           FS3Combat.should_receive(:roll_defense).with(@target, "Rifle") { 0 }
           FS3Combat.determine_attack_margin(@combatant, @target, 1)
         end
         
         it "should subtract recoil" do
           @combatant.stub(:recoil) { 2 }
-          FS3Combat.should_receive(:roll_attack).with(@combatant, -2) { 0 }
+          FS3Combat.should_receive(:roll_attack).with(@combatant, @target, -2) { 0 }
           FS3Combat.should_receive(:roll_defense).with(@target, "Rifle") { 0 }
           FS3Combat.determine_attack_margin(@combatant, @target, 0)
         end
@@ -642,6 +692,28 @@ module AresMUSH
           result[:attacker_net_successes].should eq 0
           result[:hit].should eq true
         end
+        
+        it "should have a chance to hit mount" do
+          FS3Combat.should_receive(:hit_mount?).with(@combatant, @target, 1, false) { true }
+          FS3Combat.should_receive(:resolve_mount_ko).with(@target) { false }
+          FS3Combat.stub(:roll_attack) { 3 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_hits_mount"
+          result[:hit].should eq false
+        end
+        
+        it "should ko mount if hit badly" do
+          FS3Combat.should_receive(:hit_mount?).with(@combatant, @target, 1, false) { true }
+          FS3Combat.should_receive(:resolve_mount_ko).with(@target) { true }
+          FS3Combat.stub(:roll_attack) { 3 }
+          FS3Combat.stub(:roll_defense) { 2 }
+          @target.should_receive(:inflict_damage).with("IMPAIR", "Fall Damage", true, false)
+          @target.should_receive(:update).with(:mount_type => nil)
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0)
+          result[:message].should eq "fs3combat.attack_hits_mount"
+          result[:hit].should eq false
+        end
 
         it "should be hit if the attacker wins" do
           FS3Combat.stub(:roll_attack) { 4 }
@@ -670,12 +742,12 @@ module AresMUSH
         end
         
         it "should return margin message if a miss" do
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, 0, nil) { { hit: false, message: "dodged" }}
+          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, 0, nil, false) { { hit: false, message: "dodged" }}
           FS3Combat.attack_target(@combatant, @target).should eq ["dodged"]
         end
         
         it "should pass along the attack mod" do
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, -1, nil) { { hit: false, message: "dodged" }}
+          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target, -1, nil, false) { { hit: false, message: "dodged" }}
           FS3Combat.attack_target(@combatant, @target, -1)
         end
         
@@ -869,6 +941,33 @@ module AresMUSH
           FS3Combat.should_receive(:resolve_attack).with(nil, t('fs3combat.crew_hit'), p2, "Shrapnel", 0, nil, true) { ["a3"]}
 
           FS3Combat.resolve_possible_crew_hit(@target, "Cockpit", "IMPAIR").should eq ["a1", "a2", "a3"]
+        end
+        
+      end
+      
+      describe :resolve_mount_ko do
+        before do
+          @target = double
+          @target.stub(:mount_type) { "Horse" }
+          @target.stub(:log)
+        end
+        
+        it "should factor in mount toughness" do
+          FS3Combat.stub(:mount_stat).with("Horse", "toughness") { 2 }
+          FS3Skills.should_receive(:one_shot_die_roll).with(2) { { successes: 0 } }
+          FS3Combat.resolve_mount_ko(@target)
+        end
+        
+        it "should be KOed with a bad roll" do
+          FS3Combat.stub(:mount_stat).with("Horse", "toughness") { 2 }
+          FS3Skills.should_receive(:one_shot_die_roll).with(2) { { successes: 0 } }
+          FS3Combat.resolve_mount_ko(@target).should eq true
+        end
+        
+        it "should not be KOed with a good roll" do
+          FS3Combat.stub(:mount_stat).with("Horse", "toughness") { 2 }
+          FS3Skills.should_receive(:one_shot_die_roll).with(2) { { successes: 3 } }
+          FS3Combat.resolve_mount_ko(@target).should eq false
         end
         
       end

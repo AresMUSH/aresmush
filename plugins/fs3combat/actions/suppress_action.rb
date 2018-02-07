@@ -35,7 +35,7 @@ module AresMUSH
         
         self.targets.each do |target, num|
           composure = Global.read_config("fs3combat", "composure_skill")
-          attack_roll = FS3Combat.roll_attack(self.combatant)
+          attack_roll = FS3Combat.roll_attack(self.combatant, target)
           defense_roll = target.roll_ability(composure)
           margin = attack_roll - defense_roll
           

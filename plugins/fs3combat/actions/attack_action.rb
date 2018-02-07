@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class AttackAction < CombatAction
       
-      attr_accessor :mod, :is_burst, :called_shot, :crew_hit
+      attr_accessor :mod, :is_burst, :called_shot, :crew_hit, :mount_hit
       
       def prepare
         if (self.action_args =~ /\//)
@@ -26,6 +26,7 @@ module AresMUSH
         self.called_shot = nil
         self.mod = 0
         self.crew_hit = false
+        self.mount_hit = false
                 
         error = self.parse_specials(specials)
         return error if error
@@ -56,6 +57,8 @@ module AresMUSH
             self.is_burst = true
           when "Crew"
             self.crew_hit = true
+          when "Mount"
+            self.mount_hit = true
           else
             return t('fs3combat.invalid_attack_special')
           end
@@ -74,6 +77,13 @@ module AresMUSH
         if (self.mod != 0)
           msg << " #{t('fs3combat.attack_special_mod', :mod => self.mod)}"
         end
+        if (self.crew_hit)
+          msg << " #{t('fs3combat.attack_special_crew')}"
+        end
+        if (self.mount_hit)
+          msg << " #{t('fs3combat.attack_special_mount')}"
+        end
+        
         msg
       end
       
@@ -91,7 +101,7 @@ module AresMUSH
         
         bullets = self.is_burst ? [3, self.combatant.ammo].min : 1
         bullets.times.each do |b|
-          messages.concat FS3Combat.attack_target(combatant, target, self.mod, self.called_shot, self.crew_hit)
+          messages.concat FS3Combat.attack_target(combatant, target, self.mod, self.called_shot, self.crew_hit, self.mount_hit)
         end
 
         ammo_message = FS3Combat.update_ammo(combatant, bullets)

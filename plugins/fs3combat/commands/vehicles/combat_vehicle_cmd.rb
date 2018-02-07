@@ -30,10 +30,21 @@ module AresMUSH
         return nil
       end
       
+      def check_vehicles_allowed
+        return t('fs3combat.vehicles_disabled') if !FS3Combat.vehicles_allowed?
+        return nil
+      end
+      
       def handle
         combat = enactor.combat
         
         combatant = combat.find_combatant(self.vehicle)
+        
+        if (combatant.mount_type)
+          client.emit_failure t('fs3combat.cant_be_in_both_vehicle_and_mount')
+          return
+        end
+        
         if (combatant && combatant.vehicle)
           self.vehicle = combatant.vehicle.name
         end

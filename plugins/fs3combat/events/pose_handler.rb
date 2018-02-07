@@ -5,6 +5,7 @@ module AresMUSH
         enactor = event.enactor
         combatant = enactor.combatant
         return if !combatant
+        return if event.is_ooc
         
         combatant.update(posed: true)
         combat = combatant.combat
