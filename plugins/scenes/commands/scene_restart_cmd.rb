@@ -30,12 +30,10 @@ module AresMUSH
             return
           end
           
-          room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{scene.location}")
-          ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
-          scene.update(room: room)
-          scene.update(temp_room: true)
-          scene.update(completed: false)
+          room = Scenes.create_scene_temproom(scene)
           Rooms.move_to(client, enactor, room)
+          Scenes.restart_scene(scene)
+          
           client.emit_success t('scenes.scene_restarted')
         end        
       end

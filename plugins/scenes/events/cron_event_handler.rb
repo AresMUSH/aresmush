@@ -7,10 +7,12 @@ module AresMUSH
           clear_rooms
         end
         
-        config = Global.read_config("scenes", "unshared_scene_cleanup_cron")
-         if Cron.is_cron_match?(config, event.time)
-          delete_unshared_scenes
-         end
+        if (Global.read_config("scenes", "delete_unshared_scenes"))
+          config = Global.read_config("scenes", "unshared_scene_cleanup_cron")
+          if Cron.is_cron_match?(config, event.time)
+             delete_unshared_scenes
+          end
+        end
       end
 
       def clear_rooms

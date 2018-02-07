@@ -28,6 +28,8 @@ module AresMUSH
             return
           end
           
+          scene.mark_read(enactor)
+          
           template = SceneLogTemplate.new scene, !self.all
           client.emit template.render
         end

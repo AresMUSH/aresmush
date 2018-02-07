@@ -8,12 +8,12 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_approved?)
-          return { error: "You are not allowed to create scenes until you're approved." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         [ :title, :summary, :description ].each do |field|
           if (request.args[field].blank?)
-            return { error: "#{field.to_s.titlecase} is required."}
+            return { error: t('webportal.missing_required_fields') }
           end
         end
         

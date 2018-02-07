@@ -19,7 +19,7 @@ en:
         scene_not_found: "Scene not found."
         pose_added: "Pose added to scene."
         invalid_privacy: "Invalid privacy setting.  Please use 'public' or 'private'."
-        scene_is_private: "That scene is private.  You must request a meetme from one of the participants to join."
+        scene_is_private: "That scene is private.  You must get an invitation/meetme from one of the participants to join."
         scene_pending_join: "%{name} is about to join the scene."
         scene_about_to_join: "You will join the scene in a moment."
         access_not_allowed: "You do not have access to that scene."
@@ -61,7 +61,7 @@ en:
         
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."
-        
+        no_scene_room: "That scene doesn't have a room to join.  That can happen if it's created from the web portal."
         log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
         scene_active_footer: "Only active scenes are shown.  For completed scenes, use `scenes/all`."
 

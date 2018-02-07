@@ -20,5 +20,9 @@ module AresMUSH
     def sorted_pose_order
       pose_order.sort_by { |name, time| Time.parse(time) }
     end
+    
+    def logging_enabled?
+      self.scene && self.scene.logging_enabled
+    end
   end
 end

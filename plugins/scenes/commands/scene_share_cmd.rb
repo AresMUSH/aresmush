@@ -32,19 +32,16 @@ module AresMUSH
             return
           end
           
-          if (!scene.all_info_set?)
+          success = Scenes.share_scene(scene)
+          
+          if (!success)
             client.emit_failure t('scenes.scene_info_missing', :title => scene.title || "??", 
                :summary => scene.summary || "??", 
                :type => scene.scene_type || "??", 
                :location => scene.location || "??")
-            return
+          else
+            client.emit_success t('scenes.log_shared', :name => enactor_name)
           end
-          
-          scene.update(shared: true)
-          scene.update(date_shared: Time.now)
-          Scenes.create_log(scene)
-          
-          client.emit_success t('scenes.log_shared', :name => enactor_name)
         end
       end
     end

@@ -4,17 +4,21 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         plot = request.args[:plot_id]
+        completed = (request.args[:completed] || "").to_bool
+        privacy = request.args[:privacy]
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!enactor.is_approved?)
-          return { error: "You are not allowed to create scenes until you're approved." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
-        [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
-          if (request.args[field].blank?)
-            return { error: "#{field.to_s.titlecase} is required."}
+        if (completed)
+          [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
+            if (request.args[field].blank?)
+              return { error: t('webportal.missing_required_fields') }
+            end
           end
         end
         
@@ -24,9 +28,10 @@ module AresMUSH
         scene_type: request.args[:scene_type],
         title: request.args[:title],
         icdate: request.args[:icdate],
-        shared: true,
-        completed: true,
+        shared: completed,
+        completed: completed,
         plot: plot.blank? ? nil : Plot[plot],
+        private_scene: completed ? false : (privacy == "Private"),
         owner: enactor
         )
             
@@ -52,8 +57,10 @@ module AresMUSH
         tags = request.args[:tags] || []
         scene.update(tags: tags.map { |t| t.downcase })
       
-        log = SceneLog.create(scene: scene, log: request.args[:log])
-        scene.update(scene_log: log)
+        if (completed)
+          log = SceneLog.create(scene: scene, log: request.args[:log])
+          scene.update(scene_log: log)
+        end
       
         { id: scene.id }
       end

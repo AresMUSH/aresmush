@@ -23,6 +23,11 @@ module AresMUSH
       
       def handle
         Scenes.with_a_scene(self.scene_num, client) do |scene|
+          if (!Scenes.can_access_scene?(enactor, scene))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+
           if (self.setting != "summary")
             self.value = self.value.titlecase
           end

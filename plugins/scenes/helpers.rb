@@ -1,6 +1,108 @@
 module AresMUSH
   module Scenes
-   
+    
+    def self.new_scene_activity(scene)
+      Global.client_monitor.notify_web_clients(:new_scene_activity, "#{scene.id}") do |char|
+        char && Scenes.can_access_scene?(char, scene)
+      end
+    end
+    
+    def self.can_manage_scene?(actor, scene)
+      return false if !actor
+      (scene.owner == actor) || 
+      actor.has_permission?("manage_scenes")
+    end
+    
+    
+    def self.scene_types
+      AresMUSH::Global.read_config('scenes', 'scene_types' )      
+    end
+    
+    def self.can_access_scene?(actor, scene)
+      return !scene.is_private? if !actor
+      return true if Scenes.can_manage_scene?(actor, scene)
+      return true if !scene.is_private?
+      scene.participants.include?(actor)
+    end
+    
+    def self.can_edit_scene?(actor, scene)
+      return false if !actor
+      return true if Scenes.can_manage_scene?(actor, scene)
+      scene.participants.include?(actor)
+    end
+    
+    def self.restart_scene(scene)
+      scene.update(completed: false)
+      Scenes.new_scene_activity(scene)
+    end
+    
+    def self.share_scene(scene)
+      if (!scene.all_info_set?)
+        return false
+      end
+      
+      scene.update(shared: true)
+      scene.update(date_shared: Time.now)
+      Scenes.create_log(scene)
+      Scenes.new_scene_activity(scene)
+      
+      return true
+    end
+      
+    def self.stop_scene(scene)
+      return if scene.completed
+      
+      if (scene.room)
+        scene.room.characters.each do |c|
+          connected_client = Login.find_client(c)
+          if (connected_client)
+            connected_client.emit_ooc t('scenes.scene_ending')
+          end
+        
+          if (scene.temp_room)
+            Rooms.send_to_ooc_room(connected_client, c)
+          end
+        end
+        
+        if (scene.temp_room)
+          scene.room.delete
+        else
+          scene.room.update(scene: nil)
+          scene.update(room: nil)
+        end
+        
+      end
+
+      scene.update(completed: true)
+      scene.update(date_completed: Time.now)
+      Scenes.new_scene_activity(scene)
+    end    
+    
+    def self.set_scene_location(scene, location)
+      matched_rooms = Room.find_by_name_and_area location
+      
+      if (matched_rooms.count == 1)
+        room = matched_rooms.first
+        if (room.scene && room.scene.temp_room)
+          description = location
+        else
+          description = "%xh#{room.name}%xn%R#{room.description}"
+        end
+      else
+        description = location
+      end
+      
+      scene.update(location: location)
+
+      message = t('scenes.location_set', :description => description)
+      if (scene.temp_room && scene.room)
+        scene.room.update(name: "Scene #{scene.id} - #{location}")
+        Describe.update_current_desc(scene.room, description)
+      end
+      
+      return message
+    end
+    
     def self.is_valid_privacy?(privacy)
       ["Public", "Private"].include?(privacy)
     end
@@ -30,6 +132,14 @@ module AresMUSH
       scene.scene_poses.each { |p| p.delete }  
     end
     
+    def self.create_scene_temproom(scene)
+      room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{scene.location}")
+      ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
+      scene.update(room: room)
+      scene.update(temp_room: true)
+      room
+    end
+    
     def self.build_log_text(scene)
       log = ""
       div_started = false
@@ -47,6 +157,8 @@ module AresMUSH
           log << formatted_pose
         elsif (pose.is_setpose?)
           log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]\n\n"
+        elsif (pose.is_ooc)
+          # Strip OOC from log
         else
           if (div_started)
             log << "\n[[/div]]\n\n"
@@ -81,10 +193,10 @@ module AresMUSH
         next if !client
         client.emit Scenes.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
       end
+
+      Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose)
       
       if (!is_ooc)
-        Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose)
-
         if (room.room_type != "OOC")
           enactor.room.update_pose_order(enactor.name)
           Scenes.notify_next_person(enactor.room)
