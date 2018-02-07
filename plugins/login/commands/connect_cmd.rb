@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def check_for_guest_or_password
-        return t('dispatcher.invalid_syntax', :command => 'connect') if !self.password || !self.charname
+        return t('dispatcher.invalid_syntax', :cmd => 'connect') if !self.password || !self.charname
         return nil
       end
       

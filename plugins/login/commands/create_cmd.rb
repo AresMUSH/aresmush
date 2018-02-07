@@ -24,12 +24,12 @@ module AresMUSH
       end      
       
       def check_name
-        return t('dispatcher.invalid_syntax', :command => 'create') if !charname
+        return t('dispatcher.invalid_syntax', :cmd => 'create') if !charname
         return Character.check_name(charname)
       end
       
       def check_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if !password
+        return t('dispatcher.invalid_syntax', :cmd => 'passsword') if !password
         return Character.check_password(password)
       end
       

@@ -23,6 +23,7 @@ module AresMUSH
         client_monitor.stub(:logged_in) { { @room_client => @room_char } }
         notifier.stub(:notify_ooc)
         Login.stub(:wants_announce) { false }
+        Login.stub(:is_online?) { true }
         
         @event_char = double
         @event_client = double

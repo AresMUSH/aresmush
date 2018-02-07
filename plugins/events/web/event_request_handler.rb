@@ -8,7 +8,7 @@ module AresMUSH
         
         event = Event[event_id.to_i]
         if (!event)
-          return { error: "Event not found!" }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request, true)

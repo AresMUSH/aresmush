@@ -14,20 +14,20 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_approved?)
-          return { error: "You are not allowed to upload files until you're approved." }
+          return { error: t('dispatcher.not_allowed') }
         end
       
         if (name.blank? || folder.blank?)
-          return { error: "Missing file or folder name." }
+          return { error: t('webportal.missing_required_fields') }
         end
         
         if (folder && folder.downcase == "theme_images" && !enactor.is_admin?)
-          return { error: "Only admins can update the theme images folder." }
+          return { error: t('webportal.theme_locked_to_admin') }
         end
         
         max_upload_kb = Global.read_config("website", "max_upload_size_kb")
         if (size_kb > max_upload_kb)
-          return { error: "Max file size is #{max_upload_kb}."}
+          return { error: t('webportal.max_upload_size', :kb => max_upload_kb) }
         end
         
         name = AresMUSH::Website::FilenameSanitizer.sanitize name
@@ -41,7 +41,7 @@ module AresMUSH
         path = File.join(folder_path, name)
         
         if (File.exists?(path) && !allow_overwrite)
-          return { error: "That file already exists." }
+          return { error: t('webportal.file_already_exists')  }
         end
         
         

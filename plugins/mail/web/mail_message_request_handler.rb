@@ -9,7 +9,7 @@ module AresMUSH
         return error if error
 
         if (!message)
-          return { error: "Invalid message." }
+          return { error: t('webportal.missing_required_fields') }
         end
         
         message.mark_read

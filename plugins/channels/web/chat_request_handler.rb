@@ -5,7 +5,7 @@ module AresMUSH
         enactor = request.enactor
         
         if (!enactor)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)

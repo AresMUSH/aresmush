@@ -11,8 +11,7 @@ module AresMUSH
           bucket_name = Global.read_config("secrets", "aws", "bucket")
           key_id = Global.read_config("secrets", "aws", "key_id")
           key = Global.read_config("secrets", "aws", "secret_key")
-          db_path = Global.read_config("database", "path")
-          num_backups = Global.read_config("manage", "backups_to_keep")
+          num_backups = Global.read_config("backup", "backups_to_keep")
       
           if (!num_backups || !bucket_name || bucket_name.blank?)
             Global.logger.warn "Backups not enabled."
@@ -49,15 +48,8 @@ module AresMUSH
           end
       
       
-          backup_filename = "#{timestamp}-backup.zip"
-          backup_path = File.join(AresMUSH.root_path, backup_filename)
-          
-            Zip::File.open(backup_path, 'w') do |zipfile|
-              Dir["#{AresMUSH.game_path}/**/**"].each do |file|
-                zipfile.add(file.sub(AresMUSH.game_path+'/',''),file)
-              end
-              zipfile.add('dump.rdb', db_path)
-            end
+          backup_path = Manage.create_backup_file
+          backup_filename = File.basename(backup_path)
           
           obj = bucket.object(backup_filename)
           obj.upload_file(backup_path)

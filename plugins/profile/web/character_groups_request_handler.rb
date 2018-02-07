@@ -13,7 +13,7 @@ module AresMUSH
         char_group_names = char_groups.keys
         npc_group_names = npc_groups.keys
         group_names = char_group_names.concat(npc_group_names).uniq
-        
+                
         group_names.each_with_index do |group_name, index|
           npcs_in_group = (npc_groups[group_name] || []).sort_by { |n| n.name }.map { |c| {
               name: c.name,
@@ -36,10 +36,10 @@ module AresMUSH
                     }
             }
           end
-                              
+                                        
           groups << {
             name: group_name,
-            key: group_name.parameterize('_'),
+            key: group_name.parameterize(),
             subgroups: subgroups,
             has_npcs: npcs_in_group.any?,
             npcs: npcs_in_group,
@@ -50,7 +50,7 @@ module AresMUSH
         {
           group_names: group_names.each_with_index.map { |g, index| {
             name: g,
-            key: g.parameterize('_'),
+            key: g.parameterize,
             active_class: index == 0 ? 'active' : ''   # Stupid bootstrap hack
           }},
           groups: groups

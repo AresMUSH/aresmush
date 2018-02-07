@@ -8,18 +8,10 @@ module AresMUSH
           icon: WebHelpers.icon_for_char(char)
           }
         }
-        
-        scenes = Scene.all.select { |s| !s.completed }.map { |s| {
-          location: s.location,
-          people: s.participant_names.join(", ")
-          }
-        }
-        
+                       
         {
           who_count: who.count,
-          who: who,
-          scenes_count: scenes.count,
-          scenes: scenes
+          who: who
         }
       end
     end

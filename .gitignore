@@ -17,6 +17,7 @@ calendar.ics
 tmp/restart.txt
 *.zip
 blacklist.txt
+*.css
 
 # Process ID scripts
 # -----------------------------
@@ -27,4 +28,4 @@ killares
 
 # Website file storage
 # -----------------------------
-game/files
+game/uploads

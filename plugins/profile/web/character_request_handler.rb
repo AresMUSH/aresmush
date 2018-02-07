@@ -6,7 +6,7 @@ module AresMUSH
         enactor = request.enactor
         
         if (!char)
-          return { error: "Character not found!" }
+          return { error: t('webportal.not_found') }
         end
 
         error = WebHelpers.check_login(request, true)
@@ -14,15 +14,16 @@ module AresMUSH
         
         demographics = Demographics.basic_demographics.sort.each.map { |d| 
             {
-              name: d.titleize,
+              name: t("profile.#{d.downcase}_title"),
+              key: d.titleize,
               value: char.demographic(d)
             }
           }
         
         
-        demographics << { name: "Age", value: char.age }
-        demographics << { name: "Birthdate", value: char.demographic(:birthdate)}
-        demographics << { name: "Played By", value: char.demographic(:actor)}
+        demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
+        demographics << { name: t('profile.birthdate_title'), key: 'Birthdate', value: char.demographic(:birthdate)}
+        demographics << { name: t('profile.actor_title'), key: 'Actor', value: char.demographic(:actor)}
         
         groups = Demographics.all_groups.keys.sort.map { |g| 
           {
@@ -32,14 +33,14 @@ module AresMUSH
         }
         
         if (Ranks.is_enabled?)
-          groups << { name: "Rank", value: char.rank }
+          groups << { name: t('profile.rank_title'), key: 'Rank', value: char.rank }
         end
           
           
         profile = char.profile.each_with_index.map { |(section, data), index| 
           {
             name: section.titlecase,
-            key: section.parameterize('_'),
+            key: section.parameterize(),
             text: WebHelpers.format_markdown_for_html(data),
             active_class: index == 0 ? 'active' : ''  # Stupid bootstrap hack
           }
@@ -48,7 +49,7 @@ module AresMUSH
         relationships_by_category = Profile.relationships_by_category(char)
         relationships = relationships_by_category.map { |category, relationships| {
           name: category,
-          key: category.parameterize('_'),
+          key: category.parameterize(),
           relationships: relationships.sort_by { |name, data| [ data['order'] || 99, name ] }
              .map { |name, data| {
                name: name,
@@ -97,8 +98,9 @@ module AresMUSH
           profile_image: WebHelpers.get_file_info(char.profile_image),
           demographics: demographics,
           groups: groups,
+          roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
           handle: char.handle ? char.handle.name : nil,
-          status_message: get_status_message(char),
+          status_message: Profile.get_profile_status_message(char),
           tags: char.profile_tags,
           can_manage: enactor && Profile.can_manage_char_profile?(enactor, char),
           profile: profile,
@@ -127,29 +129,7 @@ module AresMUSH
             rating_name: a.rating_name
           }}
       end
-      
-      def get_status_message(char)
-        case char.idle_state
-        when "Roster"
-          return "This character is on the roster.<br/>#{char.roster_notes}"
-        when "Gone"
-          return "This character is retired."
-        when "Dead"
-          return "This character is deceased."
-        else
-          if (char.is_npc?)
-            return "This character is a NPC."
-          elsif (char.is_admin?)
-            return"This character is a game administrator."
-          elsif (char.is_playerbit?)
-            return "This character is a player bit."
-          elsif (!char.is_approved?)
-            return "This character is not yet approved."
-          else
-            return nil
-          end
-        end
-      end
+            
     end
   end
 end

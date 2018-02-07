@@ -3,16 +3,22 @@ if [[ $EUID == 0 ]]; then
    exit 1
 fi
 
+if [[ $# -lt 2 ]] ; then
+    echo 'You need to specify the GitHub clone URL for the game code.'
+    exit 1
+fi
+
+export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
+
+echo -e "${ARES_INSTALL_TEXT} Restart game when server restarts."
+
 echo "cd aresmush" > onboot.sh
 echo "bin/startares&" >> onboot.sh
 chmod +x onboot.sh
 
-if [[ $# -eq 0 ]] ; then
-    echo 'You need to specify the GitHub clone URL.'
-    exit 1
-fi
-
 echo "(setq make-backup-files nil)" > ~/.emacs
+
+echo -e "${ARES_INSTALL_TEXT} Install RVM."
 
 command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 
@@ -20,16 +26,61 @@ command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 
 source /home/ares/.rvm/scripts/rvm
 
-rvm use ruby-2.3.0
+echo -e "${ARES_INSTALL_TEXT} Install Ruby version."
+
+rvm install ruby-2.4.1
+
+echo -e "${ARES_INSTALL_TEXT} Use Ruby version."
+
+rvm use ruby-2.4.1
+
+echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
 
 gem install bundler
 
 git clone $1
 
+git clone $2
+
+echo -e "${ARES_INSTALL_TEXT} Install default web config."
+
+sudo cp aresmush/install/nginx.default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+
+echo -e "${ARES_INSTALL_TEXT} Setup the game."
+
 cd aresmush
+
+mkdir game/logs
+
+chmod +x bin/*
 
 bin/configure
 
 bin/wipedb
 
-bin/startares
+echo -e "${ARES_INSTALL_TEXT} Setup the web portal."
+
+cd ../ares-webportal
+
+chmod +x bin/*
+
+echo -e "${ARES_INSTALL_TEXT} Node for Ember"
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install node
+
+echo -e "${ARES_INSTALL_TEXT} Ember CLI"
+npm install -g ember-cli
+
+echo -e "${ARES_INSTALL_TEXT} Bower for web dependencies"
+npm install -g bower
+
+echo -e "${ARES_INSTALL_TEXT} Get the code."
+
+bin/deploy
+
+cd /var/www/html/
+
+ln -s /home/ares/aresmush/game game

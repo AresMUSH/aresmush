@@ -6,18 +6,18 @@ module AresMUSH
         version = ProfileVersion[request.args[:version_id]]
         
         if (!char)
-          return { error: "Character not found!" }
+          return { error: t('webportal.not_found') }
         end
         
         if (!version)
-          return { error: "Version not found!" }
+          return { error: t('webportal.not_found') }
         end
         
         all_versions = char.profile_versions.to_a.sort_by { |v| v.created_at }
         
         current_index = all_versions.index { |v| v.id == version.id }
         if (!current_index || current_index < 0)
-          return { error: "Version index not found!" }
+          return { error: t('webportal.not_found') }
         end
       
         previous_index = current_index - 1

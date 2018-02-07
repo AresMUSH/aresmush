@@ -13,13 +13,13 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "Only admins can delete files." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         path = File.join(AresMUSH.website_uploads_path, folder, name)
         
         if (!File.exists?(path))
-          return { error: "That file does not exist." }
+          return { error: t('webportal.not_found') }
         end
         
         File.delete(path)

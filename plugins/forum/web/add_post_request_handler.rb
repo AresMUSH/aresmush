@@ -13,22 +13,22 @@ module AresMUSH
         
         category = BbsBoard[category_id.to_i]
         if (!category)
-          return { error: "Category not found." }
+          return { error: t('webportal.not_found') }
         end
 
         if (!Forum.can_write_to_category?(enactor, category))
-          return { error: "You don't have access to that category." }
+          return { error: t('forum.cannot_access_category') }
         end
         
         if (message.blank? || subject.blank?)
-          return { error: "Subject and message are required."}
+          return { error: t('webportal.missing_required_fields' )}
         end
       
         formatted_message = WebHelpers.format_input_for_mush(message)
         post = Forum.post(category.name, subject, message, enactor)
         
         if (!post)
-          return { error: "Something went wrong posting the message." }
+          return { error: t('webportal.unexpected_error') }
         end
         
         { id: post.id }

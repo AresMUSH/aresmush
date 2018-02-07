@@ -1,5 +1,7 @@
 <%= header %>
-<%= char.name %><%= center( approval_status, 23 ) %><%= right( t('profile.profile_title'), 28 ) %>
+<%= center(char.name, 78) %>
+<% if approval_status %>%xg<%= center(approval_status, 78) %>%xn
+<% end -%>
 <%= divider %>
 %xh<%= left( t('profile.fullname_title'), 12 ) %>%xn <%= left( demographic(:fullname), 25 ) -%>
 %xh<%= left( t('profile.actor_title'), 12 ) %>%xn <%= left( demographic(:actor), 25 ) -%>

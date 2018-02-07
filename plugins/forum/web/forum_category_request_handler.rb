@@ -8,14 +8,14 @@ module AresMUSH
         
         category = BbsBoard[category_id.to_i]
         if (!category)
-          return { error: "Invalid category."}
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request, true)
         return error if error
 
         if (!Forum.can_read_category?(enactor, category))
-          return { error: "You don't have access to that category." }
+          return { error: t('forum.cannot_access_category') }
         end
 
         posts = category.bbs_posts

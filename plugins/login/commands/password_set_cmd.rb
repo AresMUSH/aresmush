@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def check_new_password
-        return t('dispatcher.invalid_syntax', :command => 'passsword') if !self.new_password
+        return t('dispatcher.invalid_syntax', :cmd => 'passsword') if !self.new_password
         return Character.check_password(self.new_password)
       end
       
