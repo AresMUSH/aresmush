@@ -4,6 +4,7 @@ module AresMUSH
     attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager, :help_reader
     
     def initialize
+
       @config_reader = ConfigReader.new
       @ares_logger = AresLogger.new
       @locale = Locale.new

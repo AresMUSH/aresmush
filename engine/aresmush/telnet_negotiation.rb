@@ -5,18 +5,18 @@ module AresMUSH
       @connection = connection
     end
     
-    INTERPRET_AS_CONTROL = 255
-    DO = 253
-    DONT = 254
-    WILL = 251
-    WONT = 252
-    NOP = 241
-    START_SUB_NEGOTIATION = 250
-    END_SUB_NEGOTIATION = 240
+    INTERPRET_AS_CONTROL = 255  # xFF
+    DO = 253   # xFD
+    DONT = 254 # xFE
+    WILL = 251 # xFB
+    WONT = 252 # xFC
+    NOP = 241  # xF1
+    START_SUB_NEGOTIATION = 250 # xFA
+    END_SUB_NEGOTIATION = 240 # xF0
     REQUEST = 1
     
-    CHARSET = 42
-    NAWS = 31
+    CHARSET = 42  # x2A
+    NAWS = 31     # x1f
     
     def handle_input(data)
       chars = data.split("")
