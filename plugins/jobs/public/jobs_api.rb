@@ -11,13 +11,9 @@ module AresMUSH
         :title => title, 
         :description => description, 
         :category => category,
-        :number => Game.master.next_job_number,
         :status => Global.read_config("jobs", "default_status"))
         
-      game = Game.master
-      game.update(next_job_number: game.next_job_number + 1)
-      
-      message = t('jobs.announce_new_job', :number => job.number, :title => job.title, :name => author.name)
+      message = t('jobs.announce_new_job', :number => job.id, :title => job.title, :name => author.name)
       Jobs.notify(job, message, author, false)
 
       return { :job => job, :error => nil }

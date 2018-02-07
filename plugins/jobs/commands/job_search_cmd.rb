@@ -23,7 +23,7 @@ module AresMUSH
   
       def handle
         if (self.category == "title")
-          jobs = Job.all.select { |j| j.title =~ /#{self.value}/i }.sort_by { |j| j.number }
+          jobs = Job.all.select { |j| j.title =~ /#{self.value}/i }.sort_by { |j| j.id }
         elsif (self.category == "submitter")
           result = ClassTargetFinder.find(self.value, Character, enactor)
           if (result.found?)

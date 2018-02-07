@@ -28,7 +28,7 @@ module AresMUSH
       end
             
       def title
-        "#{@job.number} - #{@job.title}"
+        "#{@job.id} - #{@job.title}"
       end
       
       # Title above each reply showing the reply author and date

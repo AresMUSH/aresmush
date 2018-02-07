@@ -29,7 +29,7 @@ module AresMUSH
             end
             job.update(assigned_to: target)
             job.update(status: "OPEN")
-            notification = t('jobs.job_assigned', :number => job.number, :title => job.title, :assigner => enactor_name, :assignee => target.name)
+            notification = t('jobs.job_assigned', :number => job.id, :title => job.title, :assigner => enactor_name, :assignee => target.name)
             Jobs.notify(job, notification, enactor)
           end
         end
