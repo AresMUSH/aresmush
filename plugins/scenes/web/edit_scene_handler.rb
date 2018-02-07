@@ -6,23 +6,25 @@ module AresMUSH
         enactor = request.enactor
         
         if (!scene)
-          return { error: "Scene not found." }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!Scenes.can_access_scene?(enactor, scene))
-          return { error: "You are not allowed to edit that scene." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
-        [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
-          if (request.args[field].blank?)
-            return { error: "#{field.to_s.titlecase} is required."}
+        if (scene.shared)
+          [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
+            if (request.args[field].blank?)
+              return { error: t('webportal.missing_required_fields') }
+            end
           end
+          scene.scene_log.update(log: request.args[:log])
         end
-      
-        scene.scene_log.update(log: request.args[:log])
+        
         scene.update(location: request.args[:location])
         scene.update(summary: request.args[:summary])
         scene.update(scene_type: request.args[:scene_type])

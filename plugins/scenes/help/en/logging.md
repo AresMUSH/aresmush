@@ -20,7 +20,7 @@ aliases:
 ---
 # Scene Logging
 
-The scenes system can capture a RP log automatically for you.  The log will contain poses, skill rolls and combat results but not OOC spam.
+The scenes system captures a RP log automatically for you.  The log will contain poses, skill rolls and combat results.  OOC remarks will be captured while the scene is in progress but deleted once it's over.  Other OOC spam (pages, channels, help text) will not be included.
 
 > **Tip:** All scene log commands can accept a scene number, or be used on your current scene if you don't specify a number.
 

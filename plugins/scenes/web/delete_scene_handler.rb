@@ -6,14 +6,14 @@ module AresMUSH
         enactor = request.enactor
         
         if (!scene)
-          return { error: "Scene not found." }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not allowed to delete that scene." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         scene.delete

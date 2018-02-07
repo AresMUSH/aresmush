@@ -6,7 +6,9 @@ module AresMUSH
     reference :scene, "AresMUSH::Scene"
     attribute :pose
     attribute :is_setpose, :type => DataType::Boolean
+    attribute :is_ooc, :type => DataType::Boolean
     attribute :order
+    attribute :pose_type
     
     def sort_order
       self.order ? self.order.to_i : self.id.to_i

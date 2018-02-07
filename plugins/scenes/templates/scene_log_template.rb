@@ -30,6 +30,8 @@ module AresMUSH
       def format_pose(pose)
         if (pose.is_system_pose?)
           "   #{pose.pose}"
+        elsif (pose.is_ooc)
+          "<OOC> #{pose.pose}"
         else
           pose.pose
         end
