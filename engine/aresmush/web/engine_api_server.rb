@@ -22,7 +22,7 @@ module AresMUSH
         server: server,
         Host:   host,
         Port:   port,
-        signals: false,
+        signals: false        
       })
     end
   end
