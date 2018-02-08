@@ -1,7 +1,7 @@
 module AresMUSH
 
   class EngineApiLoader
-
+    
     # Start he reactor
     def run(opts = {})
 
@@ -28,12 +28,52 @@ module AresMUSH
   end
 
   class EngineApiServer < Sinatra::Base
+
+    
     # threaded - False: Will take requests on the reactor thread
     #            True:  Will queue request for background thread
     configure do
-      set :threaded, true #false
+      set :threaded, false #false
+      enable :cross_origin
     end    
     
-    # The actual API methods are defined in the AresCentral plugin.
+    before do
+       response.headers['Access-Control-Allow-Origin'] = '*'
+     end
+  
+     # routes...
+     options "*" do
+       
+       website_url = "#{Global.read_config("server", "hostname")}:#{Global.read_config("server", "web_portal_port")}"
+       response.headers["Allow"] = "GET, POST, OPTIONS"
+       response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+       response.headers["Access-Control-Allow-Origin"] = website_url
+       
+       if (request.env['HTTP_ORIGIN'] == "http://#{website_url}" ||
+           request.env['HTTP_ORIGIN'] == "https://#{website_url}")
+           response.headers["Access-Control-Allow-Origin"] =  request.env['HTTP_ORIGIN']
+         end
+           
+       200
+     end
+     
+     get '/api-key/?' do 
+       { key: Game.master.engine_api_key }.to_json
+     end
+     
+     post '/request/?' do
+       content_type :json
+       AresMUSH.with_error_handling(nil, "Web Request") do
+         request = WebRequest.new(params)
+         if (!request.check_api_key)
+           return { error: "Invalid authentication key." }.to_json
+         end
+         
+         response = Global.dispatcher.on_web_request(request)
+         return response.to_json
+       end
+       return { error: "Sorry, something went wrong with the web request." }.to_json
+     end
+    
   end
 end

@@ -1,8 +1,6 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[engine]))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'aresmush'
-require 'engine'
 require 'erubis'
 require 'rspec'
 require 'rspec/core/rake_task'
@@ -13,8 +11,8 @@ require_relative 'install/configure_game.rb'
 
 def minimal_boot
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all(:engine)
   bootstrapper.config_reader.load_game_config
+  AresMUSH::Global.plugin_manager.load_all
   bootstrapper.db.load_config
 end
 

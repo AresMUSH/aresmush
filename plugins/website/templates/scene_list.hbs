@@ -1,0 +1,31 @@
+<table class="table table-striped">
+
+
+<thead>
+    <tr>
+        <th>Scene</th>
+        <th>Participants</th>
+    </tr>
+</thead>
+
+<tbody>
+
+{{#each scenes as |scene|}}
+       <tr>
+        <td>
+        <a href="/scene/{{scene.id}}">{{scene.title}}</a>
+        
+      
+        
+        <p>{{scene.summary}}</p>
+        </td>
+        <td>
+            {{#each scene.participant_names as |p|}}
+            <a href="/char/{{p}}">{{p}}</a>
+            {{/each}}
+        </td>
+    </tr>
+{{/each}}
+
+</tbody>
+</table>

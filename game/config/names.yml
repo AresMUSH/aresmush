@@ -1,5 +1,4 @@
 names:
-    # Note: Use ALL LOWERCASE names.
-    restricted:
-        - me
-        - here
+  restricted:
+  - me
+  - here

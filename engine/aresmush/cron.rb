@@ -5,12 +5,13 @@ module AresMUSH
     def self.raise_event
       tick = Time.now
       if (!Cron.last_tick || Cron.last_tick.min != tick.min)
-        Engine.dispatcher.on_event CronEvent.new(tick)
+        Global.dispatcher.on_event CronEvent.new(tick)
         Cron.last_tick = tick
       end
     end
     
     def self.is_cron_match?(cron_spec, time)
+      return false if !cron_spec
       return false if !test_match(cron_spec["date"], time.day, :date)
       return false if !test_match(cron_spec["day_of_week"], time.wday, :day_of_week)
       return false if !test_match(cron_spec["hour"], time.hour, :hour)

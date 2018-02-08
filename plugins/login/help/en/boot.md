@@ -10,6 +10,8 @@ aliases:
 
 Because Ares allows anyone to connect or even create a new character from the login screen, sometimes you'll have trolls who stop by just to spam or harass everyone.  If that happens on your game, you can kick them off using the `boot` command.
 
-By default, all approved characters can use the boot command.  However, all uses are logged and will generate a staff job.  You can add comments to that job if you need to explain why you had to boot someone.  You can paste in any offensive statements that were made so they're on record.  See [Requests](help/jobs/requests) for more information.  
+> It is preferable to let the game admin deal with problem players.  However, the default Ares configuration allows all approved characters to use the boot command.  This helps players protect each other even when an admin is not available. 
 
-`boot <name>`
+All uses are logged and will generate a staff job including the reason.  For the reason, you can include any offensive statements that were made so they're on record.  You can also add additional comments to the staff jobs using the  [Requests](help/jobs/requests) commands.  
+
+`boot <name>=<reason>`

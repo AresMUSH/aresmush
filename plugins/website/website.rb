@@ -1,6 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
-
+require 'diffy'
 
 module AresMUSH
   module Website
@@ -11,21 +11,6 @@ module AresMUSH
  
     def self.shortcuts
       {}
-    end
- 
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
-    def self.config_files
-      [ "config_website.yml" ]
-    end
- 
-    def self.locale_files
-      [ "locales/locale_en.yml"]
     end
  
     def self.get_cmd_handler(client, cmd, enactor)       
@@ -47,5 +32,75 @@ module AresMUSH
       
       nil
     end
+    
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+        
+      ## WIKI
+      when "createWiki"
+        return CreateWikiPageRequestHandler
+      when "editWiki"
+        return EditWikiPageRequestHandler
+      when "wikiPage"
+        return GetWikiPageRequestHandler
+      when "wikiTagList"
+        return GetWikiTagListRequestHandler
+      when "wikiPageList"
+        return GetWikiPageListRequestHandler
+      when "wikiPageSource"
+        return GetWikiPageSourceRequestHandler
+      when "wikiPreview"
+        return WikiPreviewRequestHandler
+      when "wikiTag"
+        return GetWikiTagRequestHandler
+
+      ## FILES
+      when "deleteFile"
+        return FileDeleteRequestHandler
+      when "files"
+        return GetFilesRequestHandler
+      when "updateFile"
+        return FileUpdateRequestHandler
+      when "uploadFile"
+        return FileUploadRequestHandler
+
+      ## LOGS
+      when "logs"
+        return GetLogsRequestHandler
+      when "log"
+        return GetLogRequestHandler
+      
+      ## TINKER
+      when "getTinker"
+        return GetTinkerRequestHandler
+      when "saveTinker"
+        return SaveTinkerRequestHandler
+
+      ## SETUP
+      when "getConfig"
+        return GetConfigRequestHandler
+      when "saveConfig"
+        return SaveConfigRequestHandler
+      when "getTextFile"
+        return GetTextFileRequestHandler
+      when "saveTextFile"
+        return SaveTextFileRequestHandler
+      when "getSetupIndex"
+        return SetupIndexRequestHandler
+        
+      ## MISC
+      when "game"
+        return GetGameInfoRequestHandler
+      when "recentChanges"
+        return GetRecentChangesRequestHandler
+      when "sidebarInfo"
+        return GetSidebarInfoRequestHandler
+      when "shutdown"
+        return ShutdownRequestHandler
+      end
+      nil
+    end
+    
   end
 end

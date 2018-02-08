@@ -25,8 +25,10 @@ module AresMUSH
     
     def notify_web_clients(type, msg, &trigger_block)
       @clients.each do |c|        
+        puts "Checking #{c.web_char_id}"
         if ( yield Character[c.web_char_id] )
           formatted_msg = MushFormatter.format(msg, false)
+          puts "Notifying #{c.web_char_id} #{formatted_msg}"
           c.web_notify type, formatted_msg
         end
       end
@@ -37,7 +39,7 @@ module AresMUSH
         client = @client_factory.create_client(connection)
         @clients << client
         client.connected
-        Engine.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
+        Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
       rescue Exception => e
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
@@ -45,9 +47,9 @@ module AresMUSH
     
     def connection_closed(client)
       @clients.delete client
-      Engine.dispatcher.queue_event ConnectionClosedEvent.new(client)
+      Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (client.logged_in?)
-        Engine.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char.id)
+        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char.id)
       end        
     end
     

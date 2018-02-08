@@ -1,11 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-# Models must come first
-
-
-
-
-
 module AresMUSH
   module FS3Combat
     def self.plugin_dir
@@ -16,21 +10,6 @@ module AresMUSH
       Global.read_config("fs3combat", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
-    def self.config_files
-      [ "config_fs3combat.yml", "config_fs3combat_armor.yml", "config_fs3combat_damage.yml", 
-        "config_fs3combat_hitloc.yml", "config_fs3combat_vehicles.yml", "config_fs3combat_weapons.yml",
-        "config_fs3combat_npcs.yml", "config_fs3combat_skills.yml" 
-      ]
-    end
- 
-
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when"damage"
@@ -169,6 +148,19 @@ module AresMUSH
         return DamageCronHandler
       end
       nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "combat"
+        return CombatSummaryRequestHandler
+      when "combats"
+        return CombatsRequestHandler
+      when "gear"
+        return GearListRequestHandler
+      when "gearDetail"
+        return GearDetailRequestHandler
+      end
     end
   end
 end

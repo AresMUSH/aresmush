@@ -46,7 +46,7 @@ module AresMUSH
     # For example, this will emit "Task complete!" after doing the long task.
     #
     #     callback = Proc.new { |text| client.emit text }
-    #     Engine.dispatcher.spawn("Doing something", client, callback) do
+    #     Global.dispatcher.spawn("Doing something", client, callback) do
     #         do_some_long_task
     #         "Task complete!"
     #     end
@@ -65,8 +65,15 @@ module AresMUSH
       @handled = false
       with_error_handling(client, cmd) do
         enactor = client.find_char
+        
+        if (enactor && enactor.is_statue?)
+          client.emit_failure t('dispatcher.you_are_statue')
+          return
+        end
+        
         CommandAliasParser.substitute_aliases(enactor, cmd, Global.plugin_manager.shortcuts)
         Global.plugin_manager.plugins.each do |p|
+          next if !p.respond_to?(:get_cmd_handler)
           AresMUSH.with_error_handling(client, cmd) do
             handler_class = p.get_cmd_handler(client, cmd, enactor)
             if (handler_class)
@@ -89,6 +96,7 @@ module AresMUSH
       begin
         event_name = event.class.to_s.gsub("AresMUSH::", "")
         Global.plugin_manager.plugins.each do |p|
+          next if !p.respond_to?(:get_event_handler)
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
             if (handler_class)
@@ -103,7 +111,25 @@ module AresMUSH
         Global.logger.error("Error handling event: event=#{event} error=#{e} backtrace=#{e.backtrace[0,10]}")
       end
     end
-        
+
+    ### IMPORTANT!!!  Do not call from outside of the event machine reactor loop!
+    def on_web_request(request)
+      handled = false
+      AresMUSH.with_error_handling(nil, "Web Request") do
+        Global.plugin_manager.plugins.each do |p|
+          next if !p.respond_to?(:get_web_request_handler)
+          handler_class = p.get_web_request_handler(request)
+          if (handler_class)
+            handled = true
+            handler = handler_class.new
+            return handler.handle(request)
+          end # if
+        end # each
+      end # with error handling
+      Global.logger.error("Unhandled web request: #{request.json}.")
+      return { error: "Oops!  Something went wrong when the website talked to the game.  Please try again and alert staff is the problem persists." }
+    end
+            
     private
     
     def with_error_handling(client, cmd, &block)

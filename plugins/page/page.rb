@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("page", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "page"
@@ -29,6 +22,12 @@ module AresMUSH
           return PageDoNotDisturbCmd
         when "ignore"
           return PageIgnoreCmd
+        when "log"
+          return PageLogCmd
+        when "monitor"
+          return PageMonitorCmd
+        when "report"
+          return PageReportCmd
         when nil
           # It's a common mistake to type 'p' when you meant '+p' for a channel, but
           # not vice-versa.  So ignore any command that has a prefix. 
@@ -39,10 +38,6 @@ module AresMUSH
       end 
           
        nil
-    end
-
-    def self.get_event_handler(event_name) 
-      nil
     end
   end
 end

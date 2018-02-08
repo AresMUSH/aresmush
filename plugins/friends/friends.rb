@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("friends", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
-  
     def self.get_cmd_handler(client, cmd, enactor)
       return nil if !cmd.root_is?("friend")
       
@@ -31,10 +24,6 @@ module AresMUSH
         return FriendsCmd
       end
       
-      nil
-    end
-
-    def self.get_event_handler(event_name) 
       nil
     end
   end

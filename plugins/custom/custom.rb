@@ -10,13 +10,7 @@ module AresMUSH
     def self.shortcuts
       Global.read_config("custom", "shortcuts")
     end
- 
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end     
+   
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root

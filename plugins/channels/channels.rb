@@ -11,17 +11,6 @@ module AresMUSH
       Global.read_config("channels", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
-    def self.config_files
-      [ "config_channels.yml" ]
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)      
       case cmd.root
       when "channel"
@@ -52,6 +41,8 @@ module AresMUSH
           return ChannelRecallCmd
         when "rename"
           return ChannelRenameCmd
+        when "report"
+          return ChannelReportCmd
         when "roles"
           return ChannelRolesCmd
         when "title"

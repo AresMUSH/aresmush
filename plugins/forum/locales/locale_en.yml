@@ -1,0 +1,54 @@
+en:
+    forum:
+        categories_list_title: "  #       Name                        Description                        R/W"
+        category_title: "  #       Subject                        Author                    Posted"
+        unread_marker: "(U)"
+
+        category_already_exists: "That category already exists."
+        category_doesnt_exist: "Can't find a category with that name."
+        invalid_post_number: "Invalid post number."
+        invalid_category_number: "That is not a valid category number."
+        
+        roles_set: "Roles set."
+        desc_set: "Description set."
+        order_set: "Order set."
+        invalid_category_role: "%{name} is not a valid category role."
+
+        can_read: "Can read:" 
+        can_post: "Can post:"
+        everyone: Everyone
+
+        cannot_access_category: "You are not allowed to access that category."
+        cannot_post: "You are not allowed to post in that category."
+
+        category_created: "Category created."
+        category_deleted: "Category %{category} deleted."
+        category_confirm_delete: "Deleting the %{category} category will also delete all posts and other data.%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhforum/confirmdelete%xn"
+        no_delete_in_progress: "You were not trying to delete a category."
+        post_deleted: "Post %{num} deleted from %{category}."
+        post_moved: "Post moved."
+        category_renamed: "Category renamed."
+        scan_title: "Unread Posts"
+        
+        new_post: "%xnNew Forum post %xh%{subject}%xn %{reference} posted to %xh%{category}%xn by %{author}. %xh%xx(forum/new)%xn" 
+        web_new_post: "New Forum post: %{subject} by %{author}."
+
+        new_reply: "%xn%{author} replied to Forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(forum/new)%xn"
+        web_new_reply: "New Forum reply: %{subject} by %{author}."
+
+        new_edit: "%xn%{author} edited Forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(frum/new)%xn"
+        caught_up: "All posts on %{category} marked as read."
+        caught_up_all: "All posts marked as read."
+        no_new_posts: "There are no new posts to read."
+        reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"
+        reply_title: "%xh%{name}%xn replied on %{date}"
+        
+        deleted_author: "(Author Deleted)"
+        system_author: "AresMUSH"
+        
+        reply_deleted: "Reply deleted."
+        invalid_reply_number: "That is not a valid reply number."
+        
+        starting_archive: "Starting Forum archive.  Your posts will print out one by one with a short delay in-between to avoid spamming your client."
+        too_much_for_archive: "That forum has too many posts for the automatic archive feature.  30 is the limit.  You'll have to read them manually or move some to another category temporarily and do the archive in stages.  Sorry."
+        

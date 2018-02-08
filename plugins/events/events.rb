@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("events", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "event"
@@ -47,6 +40,24 @@ module AresMUSH
         return CronEventHandler
       end
       nil
+    end
+    
+    def self.get_web_request_handler(request)
+       case request.cmd
+       when "events"
+         return EventsRequestHandler
+       when "event"
+         return EventRequestHandler
+       when "createEvent"
+         return CreateEventRequestHandler
+       when "editEvent"
+         return EditEventRequestHandler
+       when "deleteEvent"
+         return DeleteEventRequestHandler
+       when "upcomingEvents"
+         return UpcomingEventsRequestHandler
+       end
+       nil
     end
   end
 end

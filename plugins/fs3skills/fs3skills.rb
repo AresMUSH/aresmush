@@ -10,32 +10,12 @@ module AresMUSH
       Global.read_config("fs3skills", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
-  
-    def self.config_files
-      [ "config_fs3skills.yml", "config_xp.yml", "config_fs3skills_action.yml",
-        "config_fs3skills_attrs.yml", "config_fs3skills_chargen.yml", 
-        "config_fs3skills_langs.yml", "config_fs3skills_bg.yml" ]
-    end
- 
-
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "abilities"
         return AbilitiesCmd
       when "backup"
         return CharBackupCmd
-      when "hook"
-        if (cmd.switch_is?("add"))
-          return AddHookCmd
-        elsif (cmd.switch_is?("remove"))
-          return RemoveHookCmd
-        end
       when "specialty"
         if (cmd.switch_is?("add"))
           return AddSpecialtyCmd
@@ -63,6 +43,11 @@ module AresMUSH
         end
       when "sheet"
         return SheetCmd
+      when "skill"
+        case cmd.switch
+        when "scan"
+          return SkillScanCmd
+        end
       when "ability"
         return SetAbilityCmd
       when "xp"
@@ -85,6 +70,14 @@ module AresMUSH
         return XpCronHandler
       end
       
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "abilities"
+        return AbilitiesRequestHandler
+      end
       nil
     end
   end

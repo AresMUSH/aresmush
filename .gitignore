@@ -15,6 +15,8 @@ calendar.ics
 .sass-cache
 .DS_Store
 tmp/restart.txt
+*.zip
+blacklist.txt
 
 # Process ID scripts
 # -----------------------------
@@ -26,4 +28,3 @@ killares
 # Website file storage
 # -----------------------------
 game/files
-*.zip

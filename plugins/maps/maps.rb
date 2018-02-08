@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("maps", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
-    
     def self.get_cmd_handler(client, cmd, enactor)
        case cmd.root
        when "map"
@@ -35,9 +28,15 @@ module AresMUSH
        end
        nil
     end
-
-    def self.get_event_handler(event_name) 
-      nil
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "maps"
+        return MapsRequestHandler
+      when "map"
+        return MapRequestHandler
+      end
     end
+    
   end
 end

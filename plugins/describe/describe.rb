@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("describe", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "describe", "shortdesc"
@@ -62,10 +55,6 @@ module AresMUSH
         return WearCmd
       end
       
-      nil
-    end
-
-    def self.get_event_handler(event_name) 
       nil
     end
   end

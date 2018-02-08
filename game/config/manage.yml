@@ -1,0 +1,14 @@
+manage:
+    backups_to_keep: 1
+    
+    backup_cron:
+        hour: 
+            - 05
+        minute: 
+            - 00
+        
+    shortcuts:
+        "ex": "examine"
+        "search": "find"
+        "name" : "rename"
+        "nuke" : "destroy"

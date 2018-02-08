@@ -19,3 +19,11 @@ en:
         ignore_added: "%{name} has been added to your page ignore list."
         ignore_removed: "%{name} has been removed from your page ignore list."
         cant_page_ignored: "You can't page %{names} because you're on their ignore list."
+
+        monitor_started: "You start monitoring pages to/from %{name}."
+        monitor_stopped: "You stop monitoring pages to/from %{name}."
+        not_monitored: "You are not currently monitoring pages to/from %{name}."
+        page_log_title: "Pages to/from %{name}"
+        log_reported: "Thank you.  A report has been created using your page log with %{name} as evidence.  The page log has been reset and you can report this person again if needed."
+        page_reported_title: "Pages Reported"
+        page_reported_body: "%{reporter} has reported an issue with the fllowing pages with %{name}.%R%RReason:%R"
