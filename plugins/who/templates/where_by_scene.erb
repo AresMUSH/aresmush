@@ -1,0 +1,14 @@
+<%= header %>
+<%= center( mush_name, 78 ) %>
+%xh%x!<%= t('who.where_public_scene_header') %>%xn
+<% scene_groups['public'].each do |room, people| %>
+%xh<%= left( room, 35 ) %>%xn <%= people.sort.join(", ") %>
+<% end %>
+
+%xh%x!<%= t('who.where_private_scene_header') %>%xn
+<% scene_groups['private'].each do |room, people| %>
+%xh<%= left( room, 35 ) %>%xn <%= people.sort.join(", ") %>
+<% end %>
+<%= divider %>
+%xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
+<%= footer %>

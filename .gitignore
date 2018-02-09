@@ -18,6 +18,7 @@ tmp/restart.txt
 *.zip
 blacklist.txt
 *.css
+aresconfig.js
 
 # Process ID scripts
 # -----------------------------
