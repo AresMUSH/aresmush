@@ -58,6 +58,10 @@ en:
         scene_char_added: "%{name} has been added to the scene."
         scene_char_removed: "%{name} has been removed from the scene."
         must_be_approved: "You can't start or join scenes until you're approved."
+        cant_join_unlogged_scene: "Someone turned off the scene log for that scene, so you can't play from the web portal."
+        
+        started_watching: "%{name} has joined the scene via the web portal."
+        stopped_watching: "%{name} is no longer watching via the web portal."
         
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."

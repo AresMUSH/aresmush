@@ -161,6 +161,8 @@ module AresMUSH
         return RecentScenesRequestHandler
       when "changeSceneStatus"
         return ChangeSceneStatusRequestHandler
+      when "watchScene"
+        return WatchSceneRequestHandler
       end
       nil
     end

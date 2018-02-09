@@ -53,6 +53,11 @@ module AresMUSH
         "(#{@room.grid_x},#{@room.grid_y})"
       end
       
+      def web_watchers
+        return nil if !@room.scene || @room.scene.watchers.empty?
+        @room.scene.watchers.map { |c| c.name }.join(", ")
+      end
+      
       def weather
         return nil if !AresMUSH::Weather.is_enabled? 
         w = Weather.weather_for_area(@room.area)

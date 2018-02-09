@@ -20,6 +20,10 @@ module AresMUSH
           return { error: t('scenes.scene_already_shared') }
         end
         
+        if (!scene.logging_enabled)
+          return { error: t('scenes.cant_join_unlogged_scene')}
+        end
+        
         if (enactor)
           scene.mark_read(enactor)
         end

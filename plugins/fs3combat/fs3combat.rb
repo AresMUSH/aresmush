@@ -79,7 +79,7 @@ module AresMUSH
            return CombatModCmd
          when "armor"
            return CombatArmorCmd
-         when "hitlocs"
+         when "hitloc"
            return CombatHitlocsCmd
          when "weapon"
            return CombatWeaponCmd

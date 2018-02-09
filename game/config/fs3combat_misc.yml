@@ -101,6 +101,7 @@ fs3combat:
         "combat/slackers": "combat/summary"
         "combat/add" : "combat/join"
         "combat/remove" : "combat/leave"
+        "combat/hitlocs" : "combat/hitloc"
         "vehicles": "vehicle"
         "hospitals": "hospital/list"
         "healing": "heal/list"

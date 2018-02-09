@@ -8,7 +8,7 @@ module AresMUSH
         return error if error
         
         
-        Scene.all.select { |s| !s.completed }.sort_by { |s| s.updated_at }.reverse.map { |s| {
+        Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2) }.reverse.map { |s| {
                   id: s.id,
                   title: s.title,
                   summary: s.summary,
@@ -23,6 +23,27 @@ module AresMUSH
                   updated: OOCTime.local_long_timestr(enactor, s.updated_at)
         
                 }}
+      end
+      
+      def sort_scene(s1, s2)
+        if (!s1.private_scene && s2.private_scene)
+          return 1
+        end
+        
+        if (s1.private_scene && !s2.private_scene)
+          return -1
+        end
+        
+        if (s1.updated_at < s2.updated_at)
+          return 1
+        end
+        
+        if (s2.updated_at < s1.updated_at)
+          return -1
+        end
+        
+        return 0
+        
       end
     end
   end
