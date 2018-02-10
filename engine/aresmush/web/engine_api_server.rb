@@ -57,10 +57,6 @@ module AresMUSH
        200
      end
      
-     get '/api-key/?' do 
-       { key: Game.master.engine_api_key }.to_json
-     end
-     
      post '/request/?' do
        content_type :json
        AresMUSH.with_error_handling(nil, "Web Request") do
