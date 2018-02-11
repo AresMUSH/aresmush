@@ -16,7 +16,7 @@
 %xr                  |__| | \| | |--- | |___ |--|  |  | [__] | \|%xn
 ==============================================================================
                            %xhmush.aresmush.com:7206%xn
-                    %xhhttp://bsgunificationmush.wikidot.com/%xn
+                    %xhhttp://bsgu.aresmush.com/%xn
        Running FS3 3rd Ediion and AresMUSH 0.4 BETA (www.aresmush.com)
 --------------------------------------------------------------------------------
        This game is not for minors. Please 'QUIT' if you are under 18.        
