@@ -6,7 +6,7 @@ module AresMUSH
         topics = Help.find_topic(topic_id)
       
         if (topics.empty?)
-          return { error: "Help topic not found." }
+          return { error: t('help.not_found', :topic => topic_id) }
         end
       
         topic = topics.first

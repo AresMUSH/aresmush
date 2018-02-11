@@ -6,7 +6,7 @@ module AresMUSH
         enable_registration = Global.read_config("login", "allow_web_registration")
         
         if (!enable_registration)
-          return { message: "Web registration is disabled.  Please create a character in the game." }
+          return { message: t('login.web_registration_disabled') }
         end
               
         name = request.args[:name]
@@ -15,14 +15,14 @@ module AresMUSH
         recaptcha_response = request.args[:recaptcha]
       
         if (recaptcha.is_enabled? && !recaptcha.verify(recaptcha_response))
-          return { error: "Please prove you're human first." }
+          return { error: t('login.recaptcha_failed') }
         end
       
         name_error = Character.check_name(name)
         password_error = Character.check_password(pw)
       
         if (pw != confirm_pw)
-          return { error: "Passwords don't match." }
+          return { error: t('login.passwords_dont_match') }
         elsif name_error
           return { error: name_error }
         elsif password_error

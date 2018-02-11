@@ -21,6 +21,14 @@ module AresMUSH
       Global.read_config("fs3combat", "default_type")
     end
     
+    def self.vehicles_allowed?
+      Global.read_config("fs3combat", "allow_vehicles")
+    end
+    
+    def self.mounts_allowed?
+      Global.read_config("fs3combat", "allow_mounts")
+    end
+      
     def self.passenger_types
       [ "Pilot", "Passenger" ]
     end

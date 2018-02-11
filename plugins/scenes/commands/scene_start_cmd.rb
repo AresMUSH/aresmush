@@ -52,10 +52,7 @@ module AresMUSH
             icdate: ICTime.ictime.strftime("%Y-%m-%d"))
             
         if (self.temp)
-          room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{self.location}")
-          ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
-          scene.update(room: room)
-          Scenes.set_scene_location(scene, self.location)
+          room = Scenes.create_scene_temproom(scene)
           Rooms.move_to(client, enactor, room)
         else
           room = enactor_room

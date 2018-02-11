@@ -8,7 +8,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
 
         text = File.read(File.join(AresMUSH.plugin_path, 'tinker', 'commands', 'tinker_cmd.rb'))

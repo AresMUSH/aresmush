@@ -7,7 +7,7 @@ module AresMUSH
         
         event = Event[event_id.to_i]
         if (!event)
-          return { error: "Event not found!" }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request)
@@ -15,7 +15,7 @@ module AresMUSH
         
         can_manage = enactor && Events.can_manage_event(enactor, event)
         if (!can_manage)
-          return { error: "You are not allowed to edit that event." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         Events.delete_event(event, enactor)

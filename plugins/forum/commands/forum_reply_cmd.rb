@@ -32,7 +32,7 @@ module AresMUSH
           Forum.reply(category, post, enactor, self.reply, client)
         else
           if (!self.category_name || !self.num)
-            client.emit_failure t('dispatcher.invalid_syntax', :command => 'forum')
+            client.emit_failure t('dispatcher.invalid_syntax', :cmd => 'forum')
             return
           end
           Forum.with_a_post(self.category_name, self.num, client, enactor) do |category, post|

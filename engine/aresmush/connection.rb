@@ -12,6 +12,7 @@ module AresMUSH
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
         @window_width = 78
         @window_height = 24
+        @input_buf = ""
         @negotiator = TelnetNegotiation.new(self)
 
         @negotiator.send_naws_request
@@ -58,7 +59,22 @@ module AresMUSH
       begin
         return if !data
                 
-
+        if (!@input_buf.blank?)
+          data = "#{@input_buf}#{data}"
+          @input_buf = ""
+        end
+           
+        data_terminated = data.end_with?("\n") || data.end_with?("\r")
+         
+        if (!data_terminated)
+          if (!@input_buf)
+            @input_buf = ""
+          end
+          @input_buf << data
+          return
+        end
+         
+        
         if (data =~ /.+[\r|\n].+/)
           parts = data.split(/\r|\n/).map { |p| "#{p}\n"}
         else
@@ -66,6 +82,8 @@ module AresMUSH
         end
         
         parts.each do |part|
+          next if !part
+          part = "#{part.chomp}\n"
           input = @negotiator.handle_input(part)
           if (!input)
             return
@@ -107,20 +125,20 @@ module AresMUSH
       chars = part.split("").map { |c| c.ord }
       
       special = {
-      255 => "IOC",
-      253 => "DO",
-      254 => "DON'T",
-      251 => "WILL",
-      252 => "WON'T",
-      241 => "NOP",
-      250 => "SUBNEG",
-      240 => "ENDSUB",
-      1 => "REQ",
-      42 => "CHARSET",
-      31 => "NAWS",
-      '\r'.ord => "CR",
-      '\n'.ord => "LF",
-      20 => "_"
+        255 => "IOC",
+        253 => "DO",
+        254 => "DON'T",
+        251 => "WILL",
+        252 => "WON'T",
+        241 => "NOP",
+        250 => "SUBNEG",
+        240 => "ENDSUB",
+        1 => "REQ",
+        42 => "CHARSET",
+        31 => "NAWS",
+        '\r'.ord => "CR",
+        '\n'.ord => "LF",
+        20 => "_"
       }
 
 
@@ -129,9 +147,9 @@ module AresMUSH
         val = c.to_i
 
         if (special[val])
-           txt = special[val]
+          txt = special[val]
         else
-           txt = val.chr
+          txt = val.chr
         end
 
         if (val == 0 || val == 255)

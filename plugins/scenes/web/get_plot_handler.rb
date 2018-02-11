@@ -7,7 +7,7 @@ module AresMUSH
         enactor = request.enactor
         
         if (!plot)
-          return { error: "Plot not found." }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request, true)

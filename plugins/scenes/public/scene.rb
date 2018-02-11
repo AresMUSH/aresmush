@@ -25,8 +25,10 @@ module AresMUSH
     reference :scene_log, "AresMUSH::SceneLog"
     reference :plot, "AresMUSH::Plot"
     
+    set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
+    set :readers, "AresMUSH::Character"
     
     before_delete :delete_poses_and_log
     
@@ -38,16 +40,22 @@ module AresMUSH
       OOCTime.local_short_timestr(char, self.created_at)
     end
     
+    def mark_read(char)
+      self.readers.add char
+    end
+    
+    def is_unread?(char)
+      !self.readers.include?(char)
+    end
+    
+    def mark_unread(except_for_char = nil)
+      self.readers.replace( except_for_char ? [ except_for_char ] : [] )
+    end
+    
     def poses_in_order
       scene_poses.to_a.sort_by { |p| p.sort_order }
     end
-        
-    def all_participant_names
-      scene_poses.select { |s| !s.is_system_pose? }
-          .map { |s| s.character.name }
-          .uniq
-    end
-        
+
     def delete_poses_and_log
       scene_poses.each { |p| p.delete }
       if (self.scene_log)

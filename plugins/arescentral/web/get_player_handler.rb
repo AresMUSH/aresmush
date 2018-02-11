@@ -7,7 +7,7 @@ module AresMUSH
         enactor = request.enactor
               
         if (!player)
-          return { error: "Not found!"}
+          return { error: t('webportal.not_found')}
         end
 
         error = WebHelpers.check_login(request, true)

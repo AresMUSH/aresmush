@@ -6,19 +6,19 @@ module AresMUSH
         enactor = request.enactor
         
         if (!plot)
-          return { error: "Plot not found." }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!enactor.is_approved?)
-          return { error: "You are not allowed to edit plots until you're approved." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         [ :title, :summary, :description ].each do |field|
           if (request.args[field].blank?)
-            return { error: "#{field.to_s.titlecase} is required."}
+            return { error: t('webportal.missing_required_fields') }
           end
         end
         

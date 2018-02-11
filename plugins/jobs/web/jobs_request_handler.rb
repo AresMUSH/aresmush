@@ -9,7 +9,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         jobs = Jobs.filtered_jobs(enactor, "ACTIVE").sort_by { |j| j.created_at }.reverse

@@ -127,6 +127,8 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "addScenePose"
+        return AddScenePoseRequestHandler
       when "createPlot"
         return CreatePlotRequestHandler
       when "createScene"
@@ -151,8 +153,16 @@ module AresMUSH
         return GetScenesRequestHandler
       when "sceneTypes"
         return GetSceneTypesRequestHandler
+      when "liveScenes"
+        return LiveScenesRequestHandler        
+      when "liveScene"
+        return LiveSceneRequestHandler        
       when "recentScenes"
         return RecentScenesRequestHandler
+      when "changeSceneStatus"
+        return ChangeSceneStatusRequestHandler
+      when "watchScene"
+        return WatchSceneRequestHandler
       end
       nil
     end

@@ -31,7 +31,7 @@ require 'sinatra/reloader'
 require 'thin'
 require 'rubygems'
 require 'zip'
-
+require 'sass'
 
 
 
@@ -53,28 +53,12 @@ module AresMUSH
     File.join(AresMUSH.root_path, "game")
   end
 
-  def self.website_path
-    File.join(AresMUSH.root_path, '..', 'ares-webclient')
-  end
-
-  def self.website_public_path
-    File.join(AresMUSH.website_path,  'public')
-  end
-
   def self.website_styles_path
-    File.join(AresMUSH.website_path, 'app', 'styles')
-  end
-
-  def self.website_views_path
-    File.join(AresMUSH.website_path, 'views')
-  end
-
-  def self.website_uploads_path
-    File.join(AresMUSH.website_public_path, 'uploads')
+    File.join(AresMUSH.game_path, 'styles')
   end
   
-  def self.website_scripts_path
-    File.join(AresMUSH.website_public_path, 'scripts')
+  def self.website_uploads_path
+    File.join(AresMUSH.game_path, 'uploads')
   end
 end
 
@@ -143,7 +127,7 @@ require 'aresmush/server.rb'
 require 'aresmush/single_result_selector.rb'
 require 'aresmush/telnet_negotiation.rb'
 require 'aresmush/templates/template_formatters.rb'
-require 'aresmush/templates/template_renderer.rb'
+require 'aresmush/templates/erb_template_renderer.rb'
 require 'aresmush/templates/handlebars_template.rb'
 require 'aresmush/web/web_connection.rb'
 require 'aresmush/web/engine_api_server.rb'

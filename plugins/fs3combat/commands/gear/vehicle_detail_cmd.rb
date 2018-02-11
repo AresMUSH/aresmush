@@ -13,6 +13,11 @@ module AresMUSH
         [ self.name ]
       end
       
+      def check_vehicles_allowed
+        return t('fs3combat.vehicles_disabled') if !FS3Combat.vehicles_allowed?
+        return nil
+      end
+      
       def check_vehicle_exists
         return t('fs3combat.invalid_vehicle') if !FS3Combat.vehicle(self.name)
         return nil

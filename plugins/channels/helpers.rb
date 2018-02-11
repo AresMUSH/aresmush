@@ -59,7 +59,7 @@ module AresMUSH
     
     def self.emit_to_channel(channel, msg)
       message_with_title = "#{channel.display_name} #{msg}"
-      channel.add_to_history message_with_title
+      channel.add_to_history msg
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
           client = Login.find_client(c)
@@ -68,11 +68,17 @@ module AresMUSH
           end
         end
       end
+      
+      web_message = "#{channel.name.downcase}|#{WebHelpers.format_markdown_for_html(msg)}"
+      Global.client_monitor.notify_web_clients(:new_chat, web_message) do |char|
+        char && Channels.is_on_channel?(char, channel)
+      end
     end
     
     def self.pose_to_channel(channel, name, msg)
       formatted_msg = PoseFormatter.format(name, msg)
       Channels.emit_to_channel channel, formatted_msg
+      return formatted_msg
     end
     
     def self.mute_text(char, channel)

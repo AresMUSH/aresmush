@@ -10,3 +10,5 @@ website:
   max_upload_size_kb: 5000
   character_gallery_group: Department
   character_gallery_subgroup: Position
+    
+  portal_requires_registration: false

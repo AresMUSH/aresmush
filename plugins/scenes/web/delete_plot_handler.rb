@@ -6,14 +6,14 @@ module AresMUSH
         enactor = request.enactor
         
         if (!plot)
-          return { error: "Plot not found." }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not allowed to delete that scene." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         plot.delete

@@ -32,8 +32,8 @@ module AresMUSH
         end
       
         source = source.downcase.strip
-        if (!source.start_with?('/uploads'))
-          source = "/uploads/#{source}"
+        if (!source.start_with?('/game/uploads'))
+          source = "/game/uploads/#{source}"
         end
         
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image.hbs'))

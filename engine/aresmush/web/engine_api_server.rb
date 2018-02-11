@@ -22,7 +22,7 @@ module AresMUSH
         server: server,
         Host:   host,
         Port:   port,
-        signals: false,
+        signals: false        
       })
     end
   end
@@ -57,16 +57,12 @@ module AresMUSH
        200
      end
      
-     get '/api-key/?' do 
-       { key: Game.master.engine_api_key }.to_json
-     end
-     
      post '/request/?' do
        content_type :json
        AresMUSH.with_error_handling(nil, "Web Request") do
          request = WebRequest.new(params)
          if (!request.check_api_key)
-           return { error: "Invalid authentication key." }.to_json
+           return { error: "Invalid authentication key.  Try refreshing the page." }.to_json
          end
          
          response = Global.dispatcher.on_web_request(request)

@@ -14,15 +14,15 @@ module AresMUSH
         name = WikiPage.sanitize_page_name(name)
         page = WikiPage.find_by_name_or_id(name)
         if (page)
-          return { error: 'That page already exists.'}
+          return { error: t('webportal.page_already_exists')}
         end
         
         if (name.blank?)
-          return { error: "Page name cannot be empty." }
+          return { error: t('webportal.missing_required_fields') }
         end
       
         if (!enactor.is_approved?)
-          return { error: "You are not allowed to do that." }
+          return { error: t('dispatcher.not_allowed') }
         end
       
         page = WikiPage.create(tags: tags, title: title, name: name)

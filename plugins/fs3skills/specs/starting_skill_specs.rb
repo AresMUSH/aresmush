@@ -15,6 +15,11 @@ module AresMUSH
             "Faction" => { "Navy" => { "skills" => { "C" => 2 } } }
           }
           Global.stub(:read_config).with("fs3skills", "starting_skills") { starting_skills }
+          Global.stub(:read_config).with("fs3skills", "attributes") { [ ] }
+          Global.stub(:read_config).with("fs3skills", "action_skills") { [ ] }
+          
+          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
+          
           @char = double
         end
         
@@ -39,6 +44,31 @@ module AresMUSH
           StartingSkills.get_skills_for_char(@char).should eq skills
         end
         
+        it "should include default attributes" do
+          @char.stub(:group).with("Position") { "Other" }
+          @char.stub(:group).with("Faction") { "Other" }
+          Global.stub(:read_config).with("fs3skills", "attributes") { [ { 'name' => 'Brawn' }, { 'name' => 'Presence' } ] }
+          skills = { "A" => 2, "B" => 3, "Brawn" => 1, "Presence" => 1 }
+          StartingSkills.get_skills_for_char(@char).should eq skills        
+        end
+        
+        it "should include default action skills when unskilled allowed" do
+          @char.stub(:group).with("Position") { "Other" }
+          @char.stub(:group).with("Faction") { "Other" }
+          Global.stub(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
+          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
+          skills = { "A" => 2, "B" => 3, "Melee" => 0 }
+          StartingSkills.get_skills_for_char(@char).should eq skills        
+        end
+
+        it "should include default action skills when unskilled not allowed" do
+          @char.stub(:group).with("Position") { "Other" }
+          @char.stub(:group).with("Faction") { "Other" }
+          Global.stub(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
+          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { false }
+          skills = { "A" => 2, "B" => 3, "Melee" => 1 }
+          StartingSkills.get_skills_for_char(@char).should eq skills        
+        end
       end
       
       describe :get_specialties_for_char do

@@ -83,6 +83,8 @@ module AresMUSH
         return ForumListRequestHandler
       when "forumTopic"
         return ForumTopicRequestHandler
+      when "forumUnread"
+        return ForumUnreadRequestHandler
       end
     end
     

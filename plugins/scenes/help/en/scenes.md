@@ -84,5 +84,4 @@ You should stop a scene when it's over.  Scenes with empty rooms will be stopped
 
 ## Logging and Poses
 
-For help with scene logs, including the pose editing commands, see [Scene Logging](/help/logging).
-
+The scene system starts a scene log automatically.  To disable this, or for more help with scene logs, including the pose editing commands, see [Scene Logging](/help/logging).

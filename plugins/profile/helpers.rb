@@ -16,5 +16,28 @@ module AresMUSH
       
       return AresCentral.is_alt?(actor, char)
     end
+    
+    def self.get_profile_status_message(char)
+      case char.idle_state
+      when "Roster"
+        return t('profile.char_on_roster')
+      when "Gone"
+        return t('profile.char_gone')
+      when "Dead"
+        return t('profile.char_dead')
+      else
+        if (char.is_npc?)
+          return t('profile.char_is_npc')
+        elsif (char.is_admin?)
+          return t('profile.char_is_admin')
+        elsif (char.is_playerbit?)
+          return t('profile.char_is_playerbit')
+        elsif (!char.is_approved?)
+          return t('profile.char_not_approved')
+        else
+          return nil
+        end
+      end
+    end
   end
 end

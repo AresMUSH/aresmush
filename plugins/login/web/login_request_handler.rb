@@ -8,12 +8,11 @@ module AresMUSH
         char = Character.find_one_by_name(name)
             
         if (!char || !char.compare_password(pw))
-          return { error: "Invalid name or password." }
+          return { error: t('login.invalid_name_or_password') }
         elsif (char.is_guest?)
-          return { error: "Guests do not have a web portal account.  You can still use the 'Play' screen to play with the web client as a guest." }
-          redirect '/login'
+          return { error: t('login.no_guest_webportal') }
         elsif (char.is_statue?)
-          return { error: "You have been turned into a statue and are locked out of the game." }
+          return { error: t('dispatcher.you_are_statue') }
         end
         char.update(login_api_token: "#{SecureRandom.uuid}")
         char.update(login_api_token_expiry: Time.now + 86400)

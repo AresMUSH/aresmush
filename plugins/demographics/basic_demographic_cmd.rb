@@ -20,7 +20,7 @@ module AresMUSH
             self.value = titlecase_arg(args.arg3)
           else
             args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-            self.name = enactor.name
+            self.name = enactor_name
             self.property = downcase_arg(args.arg1)
             self.value = titlecase_arg(args.arg2)
           end
@@ -28,7 +28,7 @@ module AresMUSH
         # Self version
         else
           args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
-          self.name = enactor.name
+          self.name = enactor_name
           self.property = downcase_arg(args.arg1)
           self.value = titlecase_arg(args.arg2)
         end

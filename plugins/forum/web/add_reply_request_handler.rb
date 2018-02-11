@@ -9,7 +9,7 @@ module AresMUSH
         
         topic = BbsPost[topic_id.to_i]
         if (!topic)
-          return { error: "Topic not found." }
+          return { error: t('webportal.not_found') }
         end
         
         error = WebHelpers.check_login(request)
@@ -18,11 +18,11 @@ module AresMUSH
 
         category = topic.bbs_board
         if (!Forum.can_write_to_category?(enactor, category))
-          return { error: "You don't have access to that category." }
+          return { error: t('forum.cannot_access_category') }
         end
         
         if (message.blank?)
-          return { error: "Message is required."}
+          return { error: t('webportal.missing_required_fields' )}
         end
       
         formatted_message = WebHelpers.format_input_for_mush(message)

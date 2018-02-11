@@ -11,11 +11,11 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         if (!job)
-          return { error: "Invalid job." }
+          return { error: t('webportal.not_found') }
         end
         
         reply = WebHelpers.format_input_for_mush(reply)

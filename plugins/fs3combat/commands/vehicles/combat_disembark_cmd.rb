@@ -18,6 +18,11 @@ module AresMUSH
         [ self.name ]
       end
       
+      def check_vehicles_allowed
+        return t('fs3combat.vehicles_disabled') if !FS3Combat.vehicles_allowed?
+        return nil
+      end
+      
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|   
           if (!combatant.is_in_vehicle?)

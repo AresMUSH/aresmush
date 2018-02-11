@@ -38,24 +38,30 @@ module AresMUSH
       end
       
       it "should send data to the client" do
-        @client.should_receive(:handle_input).with("test")
-        @connection.receive_data("test")        
+        @client.should_receive(:handle_input).with("test\n")
+        @connection.receive_data("test\n")        
       end
       
       it "should strip null control codes" do
-        @client.should_receive(:handle_input).with("test")
-        @connection.receive_data("test^@\0")
+        @client.should_receive(:handle_input).with("test\n")
+        @connection.receive_data("test^@\0\n")
       end
       
       it "should handle multiple commands" do
         @client.should_receive(:handle_input).with("test1\n")
         @client.should_receive(:handle_input).with("test2\n")
-        @connection.receive_data("test1\ntest2")
+        @connection.receive_data("test1\ntest2\n")
+      end
+      
+      it "should accumulate partial commands" do
+        @client.should_receive(:handle_input).with("test\n")
+        @connection.receive_data("te")
+        @connection.receive_data("st\n")
       end
       
       it "should convert control code newline to newline" do
-        @client.should_receive(:handle_input).with("test\n")
-        @connection.receive_data("test^M")    
+        @client.should_receive(:handle_input).with("test\nfoo\n")
+        @connection.receive_data("test^Mfoo\n")    
       end
     end
     

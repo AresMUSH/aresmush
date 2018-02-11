@@ -36,6 +36,18 @@ module AresMUSH
         else          
           text = "(#{c.stance[0,3].upcase})"
         end
+        
+        if (c.is_in_vehicle?)
+          if (c.piloting)
+            text << "(plt)"
+          else
+            text << "(pas)"
+          end
+        end
+        if (c.mount_type)
+          text << "(mnt)"
+        end
+        
         text
       end
       

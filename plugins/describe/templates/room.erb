@@ -22,13 +22,16 @@
 <% end %>
 <% if logging_enabled %>
 
-%xy<%= center( t('describe.repose_active'), 78 )%>%xn
+%xy<%= center( t('describe.scene_log_active'), 78 )%>%xn
 <% end %>
 <%= divider %>
 %xg<%= t('describe.players_title') %>%xn
 <% online_chars.each do |c| -%>
 %xh<%= c.name %>%xn <%= char_shortdesc(c)%> <%= char_afk(c) %>
 <% end %> 
+<% if web_watchers %>
+%xn<%= t('describe.watching_from_web') %>%xn <%= web_watchers %>
+<% end %>
 
 <%= "%xg#{t('describe.exits_title')}%xn" -%>
 <% exits.each_with_index do |e, i| %>

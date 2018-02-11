@@ -60,6 +60,8 @@ module AresMUSH
     def self.save_char(char, chargen_data)
       alerts = []
       
+      pp chargen_data
+      
       chargen_data[:demographics].each do |k, v|
         char.update_demographic(k, v[:value])
       end
@@ -94,22 +96,24 @@ module AresMUSH
         Describe.create_or_update_desc(char, shortdesc, :short)
       end
       
-      chargen_data[:fs3_attributes].each do |k, v|
+      (chargen_data[:fs3_attributes] || []).each do |k, v|
         FS3Skills.set_ability(nil, char, k, v.to_i)
       end
 
-      chargen_data[:fs3_action_skills].each do |k, v|
+      (chargen_data[:fs3_action_skills] || []).each do |k, v|
         FS3Skills.set_ability(nil, char, k, v.to_i)
         ability = FS3Skills.find_ability(char, k)
-        specs = chargen_data[:fs3_specialties][k] || []
-        ability.update(specialties: specs)
+        if (ability)
+          specs = (chargen_data[:fs3_specialties] || {})[k] || []
+          ability.update(specialties: specs)
+        end
       end
       
-      chargen_data[:fs3_backgrounds].each do |k, v|
+      (chargen_data[:fs3_backgrounds] || []).each do |k, v|
         FS3Skills.set_ability(nil, char, k, v.to_i)
       end
       
-      chargen_data[:fs3_languages].each do |k, v|
+      (chargen_data[:fs3_languages] || []).each do |k, v|
         FS3Skills.set_ability(nil, char, k, v.to_i)
       end
       

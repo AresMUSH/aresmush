@@ -5,7 +5,7 @@ module AresMUSH
             
       def handle
         
-        client.emit_ooc t('website.website_address', 
+        client.emit_ooc t('webportal.website_address', 
            :portal => Game.web_portal_url)
       end
     end

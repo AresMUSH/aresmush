@@ -11,12 +11,12 @@ module AresMUSH
               
         page = WikiPage.find_by_name_or_id(page_id)
         if (!page)
-          return { error: 'Page not found.'}
+          return { error: t('webportal.not_found') }
         end
         
         version = WikiPageVersion[version_id]
         if (!version)
-          return { error: "Version not found." }
+          return { error: t('webportal.not_found') }
         end
         
         all_versions = page.sorted_versions

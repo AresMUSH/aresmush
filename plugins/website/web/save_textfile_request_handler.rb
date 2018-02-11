@@ -11,7 +11,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.is_admin?)
-          return { error: "You are not an admin." }
+          return { error: t('dispatcher.not_allowed') }
         end
         
         case file_type
@@ -20,16 +20,18 @@ module AresMUSH
         when "style"
           path = File.join(AresMUSH.website_styles_path, file)
         end
-        
-        pp path
-        
+                
         if (!File.exists?(path))
-          return { error: "Config file not found." }
+          return { error: t('webportal.not_found') }
         end
         
         File.open(path, 'w') do |f|
-            f.write(text)
-          end
+          f.write(text)
+        end
+        
+        if (file_type == "style")
+          WebHelpers.rebuild_css
+        end
         {}
         
       end

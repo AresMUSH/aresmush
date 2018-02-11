@@ -11,12 +11,12 @@ module AresMUSH
         
         topic = BbsPost[topic_id.to_i]
         if (!topic)
-          return { error: "Topic not found." }
+          return { error: t('webportal.not_found') }
         end
         
         category = topic.bbs_board
         if (!Forum.can_read_category?(enactor, category))
-          return { error: "You don't have access to that category." }
+          return { error: t('webportal.missing_required_fields' )}
         end
         
         if (enactor)

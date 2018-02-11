@@ -101,6 +101,19 @@ module AresMUSH
       v ? v[stat] : nil
     end
     
+    def self.mounts
+      Global.read_config("fs3combat", "mounts")
+    end
+    
+    def self.mount(name)
+      FS3Combat.mounts.select { |k, v| k.upcase == name.upcase}.values.first
+    end
+    
+    def self.mount_stat(name, stat)
+      m = FS3Combat.mount(name)
+      m ? m[stat] : nil
+    end
+    
     def self.hitloc_charts
       Global.read_config("fs3combat", "hitloc")
     end

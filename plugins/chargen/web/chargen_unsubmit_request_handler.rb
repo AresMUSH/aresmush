@@ -5,18 +5,18 @@ module AresMUSH
         char = request.enactor
                 
         if (!char)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
         if (char.is_approved?)
-          return { error: "You have already completed character creation." }
+          return { error: t('chargen.you_are_already_approved')}
         end
         
         if (!char.chargen_locked)
-          return { error: "Your character is not submitted." }
+          return { error: t('chargen.you_have_not_submitted_app') }
         end
         
         Chargen.unsubmit_app(char)

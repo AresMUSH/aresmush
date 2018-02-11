@@ -5,28 +5,27 @@ module AresMUSH
         char = request.enactor
         
         if (!char)
-          return { error: "You must log in first." }
+          return { error: t('webportal.login_required') }
         end
         
         error = WebHelpers.check_login(request)
         return error if error
         
-        if (char.is_approved?)
-          return { error: "You have already completed character creation." }
-        end
+        error = Chargen.check_chargen_locked(char)
+        return error if error
         
         demographics = {}
         
         Demographics.basic_demographics.sort.each do |d| 
           demographics[d.downcase] = 
             {
-              name: d.titleize,
+              name: t("profile.#{d.downcase}_title"),
               value: char.demographic(d)
             }
         end
         
-        demographics['age'] = { name: "Age", value: char.age }
-        demographics['actor'] = { name: "Played By", value: char.demographic(:actor)}
+        demographics['age'] = { name: t('profile.age_title'), value: char.age }
+        demographics['actor'] = { name: t('profile.actor_title'), value: char.demographic(:actor)}
         
         groups = {}
         
@@ -40,7 +39,7 @@ module AresMUSH
         end
         
         if (Ranks.is_enabled?)
-          groups['rank'] = { name: "Rank", value: char.rank }
+          groups['rank'] = { name: t("profile.rank_title"), key: 'Rank', value: char.rank }
         end
           
           
@@ -70,15 +69,15 @@ module AresMUSH
         when :attribute
           metadata = FS3Skills.attrs
           starting_rating = 1
-          starting_rating_name = "Poor"
+          starting_rating_name = t('poor_rating')
         when :action
           metadata = FS3Skills.action_skills
           starting_rating = 1
-          starting_rating_name = "Everyman"
+          starting_rating_name = t('everyman_rating')
         when :language
           metadata = FS3Skills.languages
           starting_rating = 0
-          starting_rating_name = "Unskilled"
+          starting_rating_name = t('unskilled_rating')
         else
           metadata = nil
         end

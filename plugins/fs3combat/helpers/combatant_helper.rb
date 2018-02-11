@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Combat
     
-    def self.roll_attack(combatant, mod = 0)
+    def self.roll_attack(combatant, target, mod = 0)
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       special_mod = combatant.attack_mod
@@ -12,9 +12,17 @@ module AresMUSH
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       distraction_mod = combatant.distraction
 
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+      if (combatant.mount_type && !target.mount_type)
+        mount_mod = FS3Combat.mount_stat(combatant.mount_type, "mod_vs_unmounted")
+      elsif (!combatant.mount_type && target.mount_type)
+        mount_mod = 0 - FS3Combat.mount_stat(target.mount_type, "mod_vs_unmounted")
+      else
+        mount_mod = 0
+      end
 
-      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod - distraction_mod
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+
+      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod - distraction_mod + mount_mod
       
       
       combatant.roll_ability(ability, mod)
