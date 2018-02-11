@@ -1,8 +1,0 @@
-<div class="panel panel-info">
-<% if @char.profile_gallery %>
-<% @char.profile_gallery.split(/[\n ]/).each do |p| %>
-<a href="/files/<%= p %>"><img src="/files/<%= p %>" class="profile-gallery"></a>
-<% end %>
-<% end %>
-<div class="clearfix"></div>
-</div>

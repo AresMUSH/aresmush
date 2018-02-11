@@ -3,50 +3,82 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-# Need to let the redis service update its own config files so we can use the 
-# redis config commands.
-sudo chown redis /etc/redis/redis.conf
-sudo chgrp redis /etc/redis/redis.conf
+export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
 
-# Make sure we have the latest packages.
+echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
+
+# Need yarn to manage web client dependencies.  Add its source.
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 apt-get update
+apt-get -y upgrade
 
-# SSL package needs this
+echo -e "${ARES_INSTALL_TEXT} Installing SSL utils."
 apt-get install -y binutils
 
-# We need git to manage the source code.
+echo -e "${ARES_INSTALL_TEXT} Installing Git"
 apt-get install -y git
 
-# I like emacs for text editing.
-apt-get install -y emacs
+echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
+apt-get install -y ruby-bundler
 
-# Protect SSH from multiple failed logins.
+echo -e "${ARES_INSTALL_TEXT} Need ruby dev for local gems."
+apt-get install -y ruby-all-dev
+
+echo -e "${ARES_INSTALL_TEXT} Nginx for web server."
+apt-get install -y nginx
+
+echo -e "${ARES_INSTALL_TEXT} Emacs text editor."
+apt-get install -y emacs
+echo "(setq make-backup-files nil)" > .emacs
+
+echo -e "${ARES_INSTALL_TEXT} Dependency mgmt for ember cli"
+apt-get install -y nodejs
+apt-get install -y npm
+apt-get install -y yarn
+
+echo -e "${ARES_INSTALL_TEXT} Redis database"
+apt-get install -y redis-server
+
+echo -e "${ARES_INSTALL_TEXT} Redis needs Transparent Huge Pages kernel feature disabled."
+apt-get install -y hugepages
+hugeadm --thp-never
+
+echo -e "${ARES_INSTALL_TEXT} Protect SSH from multiple failed logins."
 apt-get install -y fail2ban
 
-# Allow unattended upgrades
+echo -e "${ARES_INSTALL_TEXT} Allow unattended upgrades"
 apt-get install -y unattended-upgrades
 
-# Turn unatteded upgrades on.
+
+echo -e "${ARES_INSTALL_TEXT} Turn unatteded upgrades on."
 dpkg-reconfigure -plow unattended-upgrades
 
-# Create a random password and encrypt it (we'll need that when setting it later)
-PASSWD=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
-ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
+echo -e "${ARES_INSTALL_TEXT} Start the database server."
+service redis start
 
-# Create an ares user
+echo -e "${ARES_INSTALL_TEXT} Create an ares user"
 adduser --disabled-password --gecos "" ares
 
-# Set the ares user's password
+echo -e "${ARES_INSTALL_TEXT} Set the ares user's password"
+PASSWD=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
+ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
 usermod -p "$ENCRYPTEDPW" ares
 
-# Add them to the web and ares groups
+echo -e "${ARES_INSTALL_TEXT} Add ares user to groups"
 addgroup www
 usermod -a -G sudo,www,redis ares
 
-# Have the game server start when the server reboots
+echo -e "${ARES_INSTALL_TEXT} Give ares user access to www directory"
+sudo chown ares /var/www/html
+
+echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots"
 echo "sudo -u ares -i '/home/ares/onboot.sh'" > /root/onboot.sh
+echo "sudo hugeadm --thp-never" >> /root/onboot.sh
 chmod +x /root/onboot.sh
 
-echo "User ares created with password $PASSWD.  You will need it in a minute.  Please refer back to the installation instructions for the next steps."
+echo -e "${ARES_INSTALL_TEXT} User ares created with password $PASSWD  You will need it in a minute.  Please refer back to the installation instructions for the next steps."
 
-echo "Done!"
+echo -e "${ARES_INSTALL_TEXT} Done!"

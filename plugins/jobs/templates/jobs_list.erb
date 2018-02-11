@@ -1,0 +1,19 @@
+<%= header %>
+%xh<%= t('jobs.jobs_list_title') %>%xn
+<%= divider %>
+<% if !paginator.out_of_bounds? %>
+<% paginator.items.each do |job| %>
+<%= right( job.id.to_s, 4) -%>
+    %xh<%= left( unread_status(job), 4 ) %><%= "%xn" -%>
+<%= category_color(job) %><%= left( job.category, 7) %><%= "%xn" -%>
+<%= status_color(job) %><%= left( job.status, 9) %><%= "%xn" -%>
+<%= left( job.title, 19) -%>
+<%= left( submitter(job), 17) -%>
+<%= left( handler(job), 18) %>
+<% end %>
+%ld
+<% end %>
+<%= jobs_footer %>
+%ld
+<%= t('jobs.job_filter_tip') %>
+<%= footer %>

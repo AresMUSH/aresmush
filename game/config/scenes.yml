@@ -1,0 +1,65 @@
+scenes:
+    room_cleanup_cron:
+        minute: 
+         - 15
+         - 45
+
+    ooc_color: "%xc"
+
+    unshared_scene_cleanup_cron:
+        day_of_week:
+            - Fri
+        hour: 
+            - 22
+        minute: 
+            - 02
+            
+    delete_unshared_scenes: false
+    unsared_scene_deletion_days: 20
+    unshared_scene_warning_days: 13
+    
+    notify_of_web_watching: false
+        
+    scene_types:
+        - Social
+        - Event
+        - Vignette
+                     
+    shortcuts:
+        "scenes": "scene"
+        "scene/close" : "scene/stop"
+        "scene/end" : "scene/stop"
+        "scene/name" : "scene/title"
+        "scene/info" : "scene"
+        "scene/rename" : "scene/title"
+        "repose/notify" : "repose/nudge"
+        "repose/log" : "repose/all"
+        "repose/reset": "repose/clear"
+        "repose/gag": "repose/nudge mute"
+        "logs": "scene"
+        "log/on": "scene/startlog"
+        "log/off": "scene/stoplog"
+        "log/clear": "scene/clearlog"
+        "log/undo" : "scene/undo"
+        "scene/emit" : "emit/set"
+        "scene/proxy" : "scene/spoof"
+        "scene/amend" : "scene/replace"
+        "pose/undo": "scene/undo"
+        "pose/replace" : "scene/replace"
+        "scene/deletechar" : "scene/removechar"
+        
+        "pose/notify" : "pose/nudge"
+        "pose/remove" : "pose/drop"
+        "po" : "pose"
+        "me" : "pose"
+        
+        "whisper": "pemit"
+        "whisp": "pemit"
+        "mutter": "pemit"
+        
+        # Some cross-over with the old repose system.
+        "repose/nudge" : "pose/nudge"
+        "repose/notify" : "pose/notify"
+        "repose/drop" : "pose/drop"
+        "repose/order" : "pose/order"
+        "repose": "scene/repose"

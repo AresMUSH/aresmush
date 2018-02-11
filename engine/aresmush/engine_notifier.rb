@@ -18,13 +18,17 @@ module AresMUSH
     #    end
     
     def notify(type, msg, &trigger_block)
-      Engine.client_monitor.emit_all msg, &trigger_block
-      Engine.client_monitor.notify_web_clients type, msg, &trigger_block
+      Global.client_monitor.emit_all msg, &trigger_block
+      
+      formatted_msg = MushFormatter.format(msg, false)
+      Global.client_monitor.notify_web_clients type, formatted_msg, &trigger_block
     end
     
     def notify_ooc(type, msg, &trigger_block)
-      Engine.client_monitor.emit_all_ooc msg, &trigger_block
-      Engine.client_monitor.notify_web_clients type, msg, &trigger_block
+      Global.client_monitor.emit_all_ooc msg, &trigger_block
+      
+      formatted_msg = MushFormatter.format(msg, false)      
+      Global.client_monitor.notify_web_clients type, formatted_msg, &trigger_block
     end
   end
 end

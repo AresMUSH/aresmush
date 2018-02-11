@@ -10,5 +10,9 @@ en:
         where_header: "Status Name                   Location                            Conn   Idle"
         who_header:   "Status Name                   Department          Position        Conn   Idle"
         where_by_room_header: "Location                            People"
-        public: "Public"
-        private: "Private Scene"
+        public_scene: "#%{scene} Public"
+        private_scene: "Private Scene"
+        
+        where_public_scene_header: "------[ Open Scenes ] --------------------------------------------------------"
+        where_private_scene_header: "------[ Other ] --------------------------------------------------------------"
+        

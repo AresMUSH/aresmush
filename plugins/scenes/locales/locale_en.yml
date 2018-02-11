@@ -19,7 +19,7 @@ en:
         scene_not_found: "Scene not found."
         pose_added: "Pose added to scene."
         invalid_privacy: "Invalid privacy setting.  Please use 'public' or 'private'."
-        scene_is_private: "That scene is private.  You must request a meetme from one of the participants to join."
+        scene_is_private: "That scene is private.  You must get an invitation/meetme from one of the participants to join."
         scene_pending_join: "%{name} is about to join the scene."
         scene_about_to_join: "You will join the scene in a moment."
         access_not_allowed: "You do not have access to that scene."
@@ -40,6 +40,7 @@ en:
         invalid_plot: "That is not a valid plot name or number."
         invalid_icdate_format: "Please use the form yyyy-mm-dd."
         cant_share_until_completed: "You can't share a scene until it's completed."
+        grid_location_change_warning: "This is a grid room.  You can note a location change in the scene log, but new arrivals may think you're still in the original location.  It may be better to stop the scene and restart it in a temp room."
         
         scene_delete_warn: "Your scene %{id} (title: %{title}) will be deleted in a few days if it it remains unshared."
         scene_delete_warn_subject: "Unshared Scene Deletion"
@@ -57,10 +58,14 @@ en:
         scene_char_added: "%{name} has been added to the scene."
         scene_char_removed: "%{name} has been removed from the scene."
         must_be_approved: "You can't start or join scenes until you're approved."
+        cant_join_unlogged_scene: "Someone turned off the scene log for that scene, so you can't play from the web portal."
+        
+        started_watching: "%{name} has joined the scene via the web portal."
+        stopped_watching: "%{name} is no longer watching via the web portal."
         
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."
-        
+        no_scene_room: "That scene doesn't have a room to join.  That can happen if it's created from the web portal."
         log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
         scene_active_footer: "Only active scenes are shown.  For completed scenes, use `scenes/all`."
 
@@ -77,3 +82,22 @@ en:
         cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
         scene_restarted: "Scene restarted."
         scene_not_running: "That scene isn't running.  You'll need to restart it if you want to join it."
+        
+        nospoof_set: "You turn your 'nospoof' setting %{status}."
+        pemit_nospoof_from: "Private emit from %{name}:"
+        emit_nospoof_from: "Emit from %{name}:"
+        autospace_set: "Poses will now look like this:%xn%RA pose.%r%{option}Another pose."
+        autospace_cleared: "You will no longer see anything between poses."
+
+        quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
+        quote_color_cleared: "Quotation color cleared."
+        
+        pose_order_title: "Name                        Last Posed"
+        pose_your_turn: "It's your turn to pose."        
+        pose_nudge_on: "You will now be notified when it's your turn to pose.  Note: This only functions when the repose system is turned on in a room and there are more than two characters posing."
+        pose_nudge_off: "You will no longer be notified when it's your turn to pose."
+        pose_nudge_muted: "Pose notifications are muted until your next login."
+        pose_nudge_options: "Use on, off or mute."
+        not_in_pose_order: "%{name} is not in the pose order."
+        pose_order_dropped: "%{name} has removed %{dropped} from the pose order."
+        pose_order_mistake: "It seems like you meant to use pose/order instead."

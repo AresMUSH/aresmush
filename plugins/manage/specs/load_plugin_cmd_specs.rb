@@ -21,6 +21,8 @@ module AresMUSH
           @client.stub(:emit_ooc)
           plugin_manager.stub(:load_plugin)
           plugin_manager.stub(:unload_plugin)
+          config_reader.stub(:validate_game_config)
+          config_reader.stub(:load_game_config)
           Help.stub(:reload_help)
           locale.stub(:reload)
           Manage.stub(:can_manage_game?) { true }
@@ -28,7 +30,7 @@ module AresMUSH
         end
           
         it "should load the plugin" do
-          plugin_manager.should_receive(:load_plugin).with("foo", :engine)
+          plugin_manager.should_receive(:load_plugin).with("foo")
           @handler.handle
         end
           
@@ -44,6 +46,12 @@ module AresMUSH
           
         it "should reload the help" do
           Help.should_receive(:reload_help)
+          @handler.handle
+        end
+        
+        it "should reload the config" do
+          config_reader.should_receive(:validate_game_config)
+          config_reader.should_receive(:load_game_config)
           @handler.handle
         end
           
@@ -75,13 +83,13 @@ module AresMUSH
         it "should succeed and alert permissions are mis-configured" do
           Manage.stub(:can_manage_game?).with(@enactor) { raise "Error" }
           @client.should_receive(:emit_failure).with('manage.management_config_messed_up')
-          plugin_manager.should_receive(:load_plugin).with("foo", :engine)
+          plugin_manager.should_receive(:load_plugin).with("foo")
           @handler.handle
         end
         
         it "should still load even if the unload failed" do
           plugin_manager.stub(:unload_plugin) { raise SystemNotFoundException }
-          plugin_manager.should_receive(:load_plugin).with("foo", :engine)
+          plugin_manager.should_receive(:load_plugin).with("foo")
           @handler.handle
         end
         

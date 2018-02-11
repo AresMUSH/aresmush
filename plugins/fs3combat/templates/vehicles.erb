@@ -1,0 +1,9 @@
+<%= header %>
+%xh<%= t('fs3combat.vehicles_summary_title') %>%xn
+
+<% vehicles.each do |v| %>
+<%= left( v.name, 16 ) -%>
+<%= left( pilot(v), 20 ) -%>
+<%= passengers(v) %>
+<% end %>
+<%= footer %>

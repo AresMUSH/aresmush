@@ -11,16 +11,47 @@ module AresMUSH
       Global.read_config("scenes", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-
+      when "autospace"
+        return AutospaceCmd
+      when "nospoof"
+        return NospoofCmd
+      when "pemit"
+        return Pemit
+      when "ooc"
+        # ooc by itself is an alias for offstage
+        if (cmd.args)
+          return PoseCmd
+        end
+      when "emit"
+        case cmd.switch
+        when "set"
+          return SetPoseCmd
+        else
+          return PoseCmd
+        end
+      when "say"
+        return PoseCmd
+      when "pose"
+        case cmd.switch
+        when nil
+          if (cmd.args)
+            return PoseCmd
+          else
+            return PoseOrderCmd
+          end
+        when "drop"
+          return PoseDropCmd
+        when "nudge"
+          return PoseNudgeCmd
+        when "order"
+          return PoseOrderCmd
+        end
+        
+      when "quotecolor"
+        return QuoteColorCmd
+      
       when "scene"
         case cmd.switch
         when "all"
@@ -69,6 +100,16 @@ module AresMUSH
           return ScenesCmd
         end
       end
+      
+      if (cmd.raw.start_with?("\"") ||
+          cmd.raw.start_with?("\\") ||
+          cmd.raw.start_with?(":") ||
+          cmd.raw.start_with?("'") ||
+          cmd.raw.start_with?(">") ||
+          cmd.raw.start_with?(";"))
+        return PoseCatcherCmd
+      end
+      
       nil
     end
 
@@ -78,6 +119,50 @@ module AresMUSH
         return CronEventHandler
       when "PoseEvent"
         return PoseEventHandler
+      when "CharConnectedEvent"
+        return CharConnectedEventHandler
+      end
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "addScenePose"
+        return AddScenePoseRequestHandler
+      when "createPlot"
+        return CreatePlotRequestHandler
+      when "createScene"
+        return CreateSceneRequestHandler
+      when "deletePlot"
+        return DeletePlotRequestHandler
+      when "deleteScene"
+        return DeleteSceneRequestHandler
+      when "editPlot"
+        return EditPlotRequestHandler
+      when "editScene"
+        return EditSceneRequestHandler
+      when "likeScene"
+        return LikeSceneRequestHandler
+      when "plots"
+        return PlotsRequestHandler
+      when "plot"
+        return PlotRequestHandler
+      when "scene"
+        return GetSceneRequestHandler
+      when "scenes"
+        return GetScenesRequestHandler
+      when "sceneTypes"
+        return GetSceneTypesRequestHandler
+      when "liveScenes"
+        return LiveScenesRequestHandler        
+      when "liveScene"
+        return LiveSceneRequestHandler        
+      when "recentScenes"
+        return RecentScenesRequestHandler
+      when "changeSceneStatus"
+        return ChangeSceneStatusRequestHandler
+      when "watchScene"
+        return WatchSceneRequestHandler
       end
       nil
     end

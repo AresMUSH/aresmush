@@ -1,0 +1,25 @@
+<%= header %>
+%xh<%= center( t('login.notices_title'), 78 ) %>%xn
+%ld
+<%= mail %>
+<% alts.each do |a| %>
+<% if has_alt_mail(a) %>
+<%= t('login.alt_unread_mail', :name => a.name) %>
+<% end %>
+<% end %>
+<%= forum %>
+<%= jobs_or_requests %>
+<% if approval_notice %>
+
+%xh%xM<%= approval_notice %>%xn
+<% end %>
+<% if AresMUSH::Events.is_enabled? %>
+
+%ld
+%xh<%= center( t('login.upcoming_events_title'), 78 ) %>%xn
+%ld
+<% events.each do |ev| %>
+<%= ev.color -%><%= left( ev.title, 30 ) %> <%= start_datetime_local(ev) %> (<%= start_time_standard(ev) %>)%xn
+<% end %>
+<% end %>
+<%= footer %>

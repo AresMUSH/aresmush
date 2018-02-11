@@ -1,0 +1,31 @@
+<%= header %>
+<%= center(char.name, 78) %>
+<% if approval_status %>%xg<%= center(approval_status, 78) %>%xn
+<% end -%>
+<%= divider %>
+%xh<%= left( t('profile.fullname_title'), 12 ) %>%xn <%= left( demographic(:fullname), 25 ) -%>
+%xh<%= left( t('profile.actor_title'), 12 ) %>%xn <%= left( demographic(:actor), 25 ) -%>
+<% basic_demographics.each_with_index do |d, i| %>
+<% if i % 2 == 0 %>%R<% end %>%xh<%= left( "#{d.titlecase}:", 12 ) %>%xn <%= left( demographic(d), 25 ) -%>
+<% end %>
+
+%xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) -%>
+%xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( birthdate, 25 ) %>
+%xh<%= left( t('profile.wiki_title'), 12) %>%xn <%= wiki %>
+<%= divider -%>
+<% groups.each_with_index do |g, i| %>
+<% if i % 2 == 0 %>%R<% end %>%xh<%= left( "#{g.titlecase}:", 12 ) %>%xn <%= left( group(g), 25 ) -%>
+<% end %>
+<% if AresMUSH::Ranks.is_enabled? %>
+
+%xh<%= left( t('profile.rank_title'), 12 ) %>%xn <%= left( rank, 25 ) -%>
+<% end %>
+<%= divider %>
+%xh<%= left( t('profile.timezone'), 12 ) %>%xn <%= left( timezone, 25 ) -%>
+%xh<%= left( t('profile.unread_mail'), 12 ) %>%xn <%= unread_mail %>
+%xh<%= left( t('profile.last_on'), 12 ) %>%xn <%= last_on %>
+<% if char.handle %>
+<%= divider %>
+%xh<%= left( t('profile.handle'), 12 ) %>%xn @<%= handle_name %> - <%= handle_profile %>
+<% end %>
+<%= footer %>

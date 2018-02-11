@@ -10,25 +10,12 @@ module AresMUSH
       Global.read_config("fs3skills", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
-  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "abilities"
         return AbilitiesCmd
       when "backup"
         return CharBackupCmd
-      when "hook"
-        if (cmd.switch_is?("add"))
-          return AddHookCmd
-        elsif (cmd.switch_is?("remove"))
-          return RemoveHookCmd
-        end
       when "specialty"
         if (cmd.switch_is?("add"))
           return AddSpecialtyCmd
@@ -83,6 +70,14 @@ module AresMUSH
         return XpCronHandler
       end
       
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "abilities"
+        return AbilitiesRequestHandler
+      end
       nil
     end
   end

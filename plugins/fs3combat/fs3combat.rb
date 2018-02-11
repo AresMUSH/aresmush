@@ -10,13 +10,6 @@ module AresMUSH
       Global.read_config("fs3combat", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when"damage"
@@ -56,6 +49,12 @@ module AresMUSH
          when "on", "off"
            return HospitalSetCmd
          end
+       when "mount"
+         if (cmd.args)
+           return MountDetailCmd
+         else
+           return MountsListCmd
+         end
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd
@@ -80,7 +79,7 @@ module AresMUSH
            return CombatModCmd
          when "armor"
            return CombatArmorCmd
-         when "hitlocs"
+         when "hitloc"
            return CombatHitlocsCmd
          when "weapon"
            return CombatWeaponCmd
@@ -100,6 +99,10 @@ module AresMUSH
            return CombatLogCmd
          when "luck"
            return CombatLuckCmd
+         when "mount"
+           return CombatMountCmd
+         when "dismount"
+           return CombatDismountCmd
          when "npc"
            return CombatNpcCmd
          when "newturn"
@@ -155,6 +158,25 @@ module AresMUSH
         return DamageCronHandler
       end
       nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "addCombatant"
+        return AddCombatantRequestHandler
+      when "combatant"
+        return GetCombatantRequestHandler
+      when "updateCombatant"
+        return UpdateCombatantRequestHandler
+      when "combat"
+        return CombatSummaryRequestHandler
+      when "combats"
+        return CombatsRequestHandler
+      when "gear"
+        return GearListRequestHandler
+      when "gearDetail"
+        return GearDetailRequestHandler
+      end
     end
   end
 end

@@ -26,7 +26,9 @@ module AresMUSH
 
       welcome_room.current_desc = "Welcome!%R%R" + 
         "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
-        "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players"
+        "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players.%R%R" +
+        "You may need to configure your MUSH client to take full advantage of Ares' features.  See https://aresmush.com/clients/ for details.%R%R" +
+        "Type %xcchannels%xn for a list of available chat channels and the commands to speak on them."
 
       ic_start_room = Room.create(
         :name => "Onstage", 
@@ -68,14 +70,11 @@ module AresMUSH
       game.save
   
       admin_role = Role.create(name: "admin", is_restricted: true)
-      admin_role.save
       everyone_role = Role.create(name: "everyone")
       everyone_role.update(permissions: ["go_home", "boot", "announce"] )
-      everyone_role.save
       builder_role = Role.create(name: "builder")
-      builder_role.save
       guest_role = Role.create(name: "guest")
-      guest_role.save
+      approved_role = Role.create(name: "approved")
       
       puts "Creating OOC chars."
       
@@ -123,8 +122,13 @@ module AresMUSH
       board.write_roles.add admin_role
       board.save
       
-      BbsBoard.create(name: "Cookie Awards", order: 3)
-      BbsBoard.create(name: "New Arrivals", order: 4)
+      board = BbsBoard.create(name: "Cookie Awards", order: 3)
+      board.write_roles.add approved_role
+      board.save
+      
+      board = BbsBoard.create(name: "New Arrivals", order: 4)
+      board.write_roles.add approved_role
+      board.save
   
       channel = AresMUSH::Channel.create(name: "Chat", 
           announce: false, 

@@ -1,15 +1,27 @@
 module AresMUSH
   module Install
+    def self.default_if_blank(current, default)
+      current.blank? ? default : current
+    end
+    
+    def self.error_if_blank(current, name)
+      if (current.blank?)
+        raise "#{name} may not be blank!"
+      end
+    end
+    
     def self.configure_game
       template_path = File.join(File.dirname(__FILE__), 'templates')
     
       puts "\nLet's set up your database.  Please enter the requested information."
 
-      print "Database url > "
+      print "Database url (default 127.0.0.1:6379)> "
       db_url = STDIN.gets.chomp
-
+      db_url = default_if_blank(db_url, '127.0.0.1:6379')
+      
       print "\nCreate a database password > "
       db_password = STDIN.gets.chomp
+      error_if_blank(db_password, "DB Password")
       
       template_data =
       {
@@ -27,25 +39,31 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
   
-      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/install-ares/basic-config for help with these options."
+      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/basic-config for help with these options."
   
-      print "\nServer hostname > "
+      print "\nServer hostname (ex: yourmush.aresmush.com or an IP)> "
       server_host = STDIN.gets.chomp
+      error_if_blank(server_host, "Hostname")
 
-      print "\nServer telnet port> "
+      print "\nServer telnet port (default 4201)> "
       server_port = STDIN.gets.chomp
+      server_port = default_if_blank(server_port, '4201')
 
-      print "\nServer web socket port> "
+      print "\nServer web socket port (default 4202)> "
       websocket_port = STDIN.gets.chomp
+      websocket_port = default_if_blank(websocket_port, '4202')
       
-      print "\nServer engine API port> "      
+      print "\nServer engine API port (default 4203)> "      
       engine_api_port = STDIN.gets.chomp
+      engine_api_port = default_if_blank(engine_api_port, '4203')
 
-      print "\nServer website port> "
+      print "\nServer website port (default 80)> "
       web_portal_port = STDIN.gets.chomp
+      web_portal_port = default_if_blank(web_portal_port, '80')
 
       print "\nMUSH Name > "
       mush_name = STDIN.gets.chomp
+      error_if_blank(mush_name, "MUSH Name")
 
       print "\nMUSH Description > "
       game_desc = STDIN.gets.chomp

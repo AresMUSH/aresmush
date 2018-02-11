@@ -50,7 +50,17 @@ module AresMUSH
     
     def send_formatted(msg, enable_fansi = false)
       # Strip out < and > - may need to strip other things in the future
-      send_data MushFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
+      formatted = MushFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
+      
+      data = {
+        type: "notification",
+        args: {
+          notification_type: "webclient_output",
+          message: formatted
+        }
+      }
+      
+      send_data data.to_json.to_s
     end
     
     # Just announces that the websocket was closed.
@@ -71,12 +81,12 @@ module AresMUSH
         json_input = JSON.parse(data)
         
         if (json_input["type"] == "input")
-          @client.handle_input(json_input["message"] + "\r\n")
+          @client.handle_input(json_input["message"] + "\r\n")        
         elsif (json_input["type"] == "identify")
           data = json_input["data"]
           @web_char_id = data ? data["id"] : nil
         elsif (json_input["type"] == "cmd")
-          Engine.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
+          Global.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
         else
           Global.logger.warn "Unexpected input from web client: #{data}"
         end

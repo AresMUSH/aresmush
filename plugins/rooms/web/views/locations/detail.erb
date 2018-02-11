@@ -1,9 +1,0 @@
-<h1><%= @room.area %> - <%= @room.name %></h1>
-
-<div class="ansi">
-    <%= format_markdown_for_html @room.description %>
-</div>
-
-<blockquote>
-    To start a scene here, use <code>scene/start <%= @room.area %>/<%= @room.name %></code> in the game.
-</blockquote>

@@ -8,12 +8,10 @@ end
 filename_friendly_help_version = help_version.gsub(".", "-")
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[engine]))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
 require 'fileutils'
 require 'ansi'
 require 'aresmush'
-require 'engine'
 require 'erubis'
 require 'rspec'
 require 'rspec/core/rake_task'
@@ -21,12 +19,12 @@ require 'tempfile'
 #require 'mongoid'
 require_relative 'install/init_db.rb'
 require_relative 'install/configure_game.rb'
-require_relative 'plugins/help/lib/helpers.rb'
+require_relative 'plugins/help/helpers.rb'
 
 def minimal_boot
   bootstrapper = AresMUSH::Bootstrapper.new
-  AresMUSH::Global.plugin_manager.load_all(:engine)
   bootstrapper.config_reader.load_game_config
+  AresMUSH::Global.plugin_manager.load_all
   bootstrapper.help_reader.load_game_help
   bootstrapper.db.load_config
 end

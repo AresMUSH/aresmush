@@ -13,13 +13,6 @@ module AresMUSH
       Global.read_config("jobs", "shortcuts")
     end
  
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
-    end
- 
     def self.get_cmd_handler(client, cmd, enactor)
        case cmd.root
        when "job"
@@ -98,6 +91,20 @@ module AresMUSH
       case event_name
       when "CharConnectedEvent"
         return CharConnectedEventHandler
+      end
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "jobs"
+        return JobsRequestHandler
+      when "job"
+        return JobRequestHandler
+      when "jobReply"
+        return JobReplyRequestHandler
+      when "jobClose"
+        return JobCloseRequestHandler
       end
       nil
     end

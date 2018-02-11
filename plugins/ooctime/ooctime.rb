@@ -1,5 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'timezone'
+
 module AresMUSH
   module OOCTime
     def self.plugin_dir
@@ -8,13 +10,6 @@ module AresMUSH
  
     def self.shortcuts
       Global.read_config("ooctime", "shortcuts")
-    end
- 
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
     end
  
     def self.get_cmd_handler(client, cmd, enactor)

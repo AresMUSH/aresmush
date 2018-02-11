@@ -1,5 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'dentaku'
+
 module AresMUSH
   module Utils
     def self.plugin_dir
@@ -8,13 +10,6 @@ module AresMUSH
  
     def self.shortcuts
       Global.read_config("utils", "shortcuts")
-    end
- 
-    def self.load_plugin
-      self
-    end
- 
-    def self.unload_plugin
     end
  
     def self.get_cmd_handler(client, cmd, enactor)
@@ -66,10 +61,6 @@ module AresMUSH
         end
       end
       
-      nil
-    end
-
-    def self.get_event_handler(event_name) 
       nil
     end
   end

@@ -2,6 +2,8 @@
 toc: Character Creation
 summary: Creating your character.
 order: 1
+aliases:
+- cg
 ---
 # Character Creation
 

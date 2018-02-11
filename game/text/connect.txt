@@ -23,4 +23,3 @@
 --------------------------------------------------------------------------------
 Type %xctour%xn to connect a guest to have a look around.
 Type %xchelp login%xn for help creating a character and logging in.
---------------------------------------------------------------------------------
