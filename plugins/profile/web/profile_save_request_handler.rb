@@ -32,9 +32,12 @@ module AresMUSH
           char.update_demographic name, value
         end
         
-        char.update(profile_gallery: request.args[:gallery])
-        char.update(profile_image: request.args[:profile_image])
-        char.update(profile_icon: request.args[:profile_icon])
+        gallery = (request.args[:gallery] || []).map { |g| g.downcase }
+        profile_image = request.args[:profile_image] ? request.args[:profile_image].downcase : nil
+        profile_icon = request.args[:profile_icon] ? request.args[:profile_icon].downcase : nil
+        char.update(profile_gallery: gallery)
+        char.update(profile_image: profile_image)
+        char.update(profile_icon: profile_icon)
         char.update(profile_tags: request.args[:tags])
         
         relationships = {}

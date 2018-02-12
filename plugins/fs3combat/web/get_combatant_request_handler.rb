@@ -37,7 +37,7 @@ module AresMUSH
           }},
           stance: combatant.stance,
           team: combatant.team,
-          npc_skill: combatant.is_npc? ? combatant.npcombatant.level : nil,
+          npc_skill: combatant.is_npc? ? combatant.npc.level : nil,
           combat: combatant.combat.id,
           options: {
             weapons: AresMUSH::FS3Combat.weapons.keys,

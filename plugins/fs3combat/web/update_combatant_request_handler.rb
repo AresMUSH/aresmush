@@ -62,8 +62,8 @@ module AresMUSH
         end
         
         npc = request.args[:npc_skill]
-        if (combatant.is_npc? && combatant.npcombatant.level != npc)
-          combatant.npcombatant.update(level: npc)
+        if (combatant.is_npc? && combatant.npc.level != npc)
+          combatant.npc.update(level: npc)
         end
         
         {

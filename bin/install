@@ -49,7 +49,7 @@ sudo service nginx restart
 
 echo -e "${ARES_INSTALL_TEXT} Setup the game."
 
-cd aresmush
+cd /home/ares/aresmush
 
 mkdir game/logs
 
@@ -61,7 +61,7 @@ bin/wipedb
 
 echo -e "${ARES_INSTALL_TEXT} Setup the web portal."
 
-cd ../ares-webportal
+cd /home/ares/ares-webportal
 
 chmod +x bin/*
 
@@ -77,10 +77,15 @@ npm install -g ember-cli
 echo -e "${ARES_INSTALL_TEXT} Bower for web dependencies"
 npm install -g bower
 
-echo -e "${ARES_INSTALL_TEXT} Get the code."
-
-bin/deploy
+echo -e "${ARES_INSTALL_TEXT} Creating game dir link."
 
 cd /var/www/html/
 
 ln -s /home/ares/aresmush/game game
+
+echo -e "${ARES_INSTALL_TEXT} Starting game"
+
+cd /home/ares/aresmush
+
+bin/startares
+

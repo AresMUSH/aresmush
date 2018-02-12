@@ -9,15 +9,22 @@ module AresMUSH
     
     def self.can_manage_scene?(actor, scene)
       return false if !actor
-      (scene.owner == actor) || 
-      actor.has_permission?("manage_scenes")
+      (scene.owner == actor) || actor.has_permission?("manage_scenes")
     end
     
     
     def self.scene_types
       AresMUSH::Global.read_config('scenes', 'scene_types' )      
     end
-    
+
+    def self.can_read_scene?(actor, scene)
+      return !scene.is_private? if !actor
+      return true if scene.owner == actor
+      return true if !scene.is_private?
+      return true if actor.room == scene.room
+      scene.participants.include?(actor)
+    end
+        
     def self.can_access_scene?(actor, scene)
       return !scene.is_private? if !actor
       return true if Scenes.can_manage_scene?(actor, scene)
