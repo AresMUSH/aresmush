@@ -14,7 +14,7 @@ module AresMUSH
                   summary: s.summary,
                   location: s.location,
                   icdate: s.icdate,
-                  can_view: enactor && Scenes.can_access_scene?(enactor, s),
+                  can_view: enactor && Scenes.can_read_scene?(enactor, s),
                   is_private: s.private_scene,
                   participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
