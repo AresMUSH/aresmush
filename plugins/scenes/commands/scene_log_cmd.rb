@@ -21,7 +21,7 @@ module AresMUSH
             return
           end
           
-          can_access = Scenes.can_access_scene?(enactor, scene) || 
+          can_access = Scenes.can_read_scene?(enactor, scene) || 
             ((enactor.room == scene.room ) && !scene.completed)
           if (!can_access)
             client.emit_failure t('dispatcher.not_allowed')

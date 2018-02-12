@@ -21,7 +21,7 @@ module AresMUSH
           end
         end
         
-        players.map { |name, alts| { name: name, alts: alts }}
+        players.sort.map { |name, alts| { name: name, alts: alts }}
       end
       
       def alt_char_data(char)

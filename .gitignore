@@ -19,6 +19,7 @@ tmp/restart.txt
 blacklist.txt
 *.css
 aresconfig.js
+_last_install.txt
 
 # Process ID scripts
 # -----------------------------

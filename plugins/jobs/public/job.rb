@@ -16,7 +16,6 @@ module AresMUSH
     
     set :readers, "AresMUSH::Character"
     
-    index :number
     index :category
 
     before_delete :delete_replies
