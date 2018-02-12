@@ -92,6 +92,10 @@ module AresMUSH
       ## MISC
       when "game"
         return GetGameInfoRequestHandler
+      when "editGame"
+        return EditGameRequestHandler
+      when "saveGame"
+        return SaveGameRequestHandler
       when "recentChanges"
         return GetRecentChangesRequestHandler
       when "sidebarInfo"

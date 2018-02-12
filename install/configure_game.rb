@@ -111,7 +111,8 @@ module AresMUSH
         "category" => category,
         "game_desc" => game_desc,
         "website" => website,
-        "public_game" => false
+        "public_game" => false,
+        "game_status" => 'In Development'
       }
   
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'server.yml.erb'), :encoding => "UTF-8"))
