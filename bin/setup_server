@@ -3,7 +3,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 

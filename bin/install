@@ -3,12 +3,13 @@ if [[ $EUID == 0 ]]; then
    exit 1
 fi
 
-GAME_CLONE_URL=${$1:-'https://github.com/lynnfaraday/aresmush.git'}
-WEBPORTAL_CLONE_URL=${$2:-'https://github.com/aresmush/ares-webportal.git'}
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
-exit 1
+GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
+WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
 
-export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
+echo -e "${ARES_INSTALL_TEXT} Getting game code from ${GAME_CLONE_URL}."
+echo -e "${ARES_INSTALL_TEXT} Getting web portal code from ${WEBPORTAL_CLONE_URL}."
 
 echo -e "${ARES_INSTALL_TEXT} Restart game when server restarts."
 
@@ -38,9 +39,9 @@ echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
 
 gem install bundler
 
-git clone $1
+git clone ${GAME_CLONE_URL}
 
-git clone $2
+git clone ${WEBPORTAL_CLONE_URL}
 
 echo -e "${ARES_INSTALL_TEXT} Install default web config."
 
