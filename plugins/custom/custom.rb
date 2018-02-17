@@ -28,8 +28,11 @@ module AresMUSH
       nil     
     end
 
-    def self.get_event_handler(event_name) 
-      nil
+    def self.get_web_request_handler(request) 
+      case request.cmd
+      when "kills"
+        return GetKillsCmdHandler
+      end
     end
   end
 end
