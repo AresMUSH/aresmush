@@ -62,7 +62,7 @@ module AresMUSH
        AresMUSH.with_error_handling(nil, "Web Request") do
          request = WebRequest.new(params)
          if (!request.check_api_key)
-           return { error: "Invalid authentication key.  Try refreshing the page." }.to_json
+           return { error: "Invalid authentication key.  This can happen when the game restarts.  Try refreshing the page." }.to_json
          end
          
          response = Global.dispatcher.on_web_request(request)

@@ -85,6 +85,18 @@ module AresMUSH
       Scenes.new_scene_activity(scene)
     end    
     
+    def self.participants_and_room_chars(scene)
+      participants = scene.participants.to_a
+      if (scene.room)
+        Rooms.online_chars_in_room(scene.room).each do |c|
+          if (!participants.include?(c))
+            participants << c
+          end
+        end
+      end
+      participants
+    end
+    
     def self.set_scene_location(scene, location)
       matched_rooms = Room.find_by_name_and_area location
       
@@ -103,6 +115,7 @@ module AresMUSH
 
       message = t('scenes.location_set', :description => description)
       if (scene.temp_room && scene.room)
+        location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         Describe.update_current_desc(scene.room, description)
       end
@@ -140,10 +153,11 @@ module AresMUSH
     end
     
     def self.create_scene_temproom(scene)
-      room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{scene.location}")
+      room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id}")
       ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
       scene.update(room: room)
       scene.update(temp_room: true)
+      Scenes.set_scene_location(scene, scene.location)
       room
     end
     

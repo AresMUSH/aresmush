@@ -36,6 +36,7 @@ module AresMUSH
         recent_changes = recent_changes.sort_by { |r| r[:created] }[0..10]
         
         {
+          timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
           upcoming_events: Events::UpcomingEventsRequestHandler.new.handle(request),
           recent_scenes: Scenes::RecentScenesRequestHandler.new.handle(request),

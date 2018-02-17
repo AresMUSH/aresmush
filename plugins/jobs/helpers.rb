@@ -85,8 +85,8 @@ module AresMUSH
     end
     
     def self.with_a_request(client, enactor, number, &block)
-      job = enactor.jobs.find(number: number.to_i).first
-      if (!job)
+      job = Job[number]
+      if (!job || job.author != enactor)
         client.emit_failure t('jobs.invalid_job_number')
         return
       end
