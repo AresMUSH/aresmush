@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       section = self.config[section_name]
-      raise "Config section #{section_name} not found." if !section
+      return nil if !section
         
       subsection = section[key]
       
@@ -29,7 +29,7 @@ module AresMUSH
         return subsection
       end
           
-      raise "Config section #{section_name}/#{key} not found." if !subsection
+      return nil if !subsection
       return subsection[subkey]
     end
     
