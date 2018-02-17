@@ -50,8 +50,6 @@ module AresMUSH
         return GetWikiPageListRequestHandler
       when "wikiPageSource"
         return GetWikiPageSourceRequestHandler
-      when "wikiPreview"
-        return WikiPreviewRequestHandler
       when "wikiTag"
         return GetWikiTagRequestHandler
 
@@ -96,12 +94,20 @@ module AresMUSH
         return EditGameRequestHandler
       when "saveGame"
         return SaveGameRequestHandler
+      when "editPlugins"
+        return EditPluginsRequestHandler
+      when "savePlugins"
+        return SavePluginsRequestHandler
+      when "markdownPreview"
+        return MarkdownPreviewRequestHandler
       when "recentChanges"
         return GetRecentChangesRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
       when "shutdown"
         return ShutdownRequestHandler
+      when "deployWebsite"
+        return DeployWebsiteRequestHandler
       end
       nil
     end

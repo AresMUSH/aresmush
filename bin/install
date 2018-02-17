@@ -3,10 +3,10 @@ if [[ $EUID == 0 ]]; then
    exit 1
 fi
 
-if [[ $# -lt 2 ]] ; then
-    echo 'You need to specify the GitHub clone URL for the game code.'
-    exit 1
-fi
+GAME_CLONE_URL=${$1:-'https://github.com/lynnfaraday/aresmush.git'}
+WEBPORTAL_CLONE_URL=${$2:-'https://github.com/aresmush/ares-webportal.git'}
+
+exit 1
 
 export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
 

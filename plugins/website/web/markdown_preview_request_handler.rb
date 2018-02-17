@@ -1,6 +1,6 @@
 module AresMUSH
   module Website
-    class WikiPreviewRequestHandler
+    class MarkdownPreviewRequestHandler
       def handle(request)
         text = request.args[:text]
         

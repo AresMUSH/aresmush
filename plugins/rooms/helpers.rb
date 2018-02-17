@@ -33,6 +33,10 @@ module AresMUSH
       [ "INTERIOR_LOCK" ]
     end
     
+    def self.online_chars_in_room(room)
+      room.characters.select { |c| Login.is_online?(c) }
+    end
+    
     def self.clients_in_room(room)
       clients = []
       Global.client_monitor.clients.each do |c|

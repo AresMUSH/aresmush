@@ -59,9 +59,7 @@ module AresMUSH
     
     def self.save_char(char, chargen_data)
       alerts = []
-      
-      pp chargen_data
-      
+            
       chargen_data[:demographics].each do |k, v|
         char.update_demographic(k, v[:value])
       end

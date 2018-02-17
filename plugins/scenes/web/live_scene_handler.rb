@@ -28,7 +28,7 @@ module AresMUSH
           scene.mark_read(enactor)
         end
         
-        participants = scene.participants.to_a
+        participants = Scenes.participants_and_room_chars(scene)
             .sort_by {|p| p.name }
             .map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }}
             
@@ -38,6 +38,7 @@ module AresMUSH
           location: scene.location,
           completed: scene.completed,
           summary: scene.summary,
+          description: scene.room ? WebHelpers.format_markdown_for_html(scene.room.description) : nil,
           tags: scene.tags,
           icdate: scene.icdate,
           is_private: scene.private_scene,
