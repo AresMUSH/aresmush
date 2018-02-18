@@ -272,6 +272,12 @@ module AresMUSH
       end
       
       "#{char.pose_autospace}#{nospoof}#{place_title}#{colored_pose}"
-    end   
+    end  
+    
+    def self.find_all_scene_links(scene)
+      links1 = SceneLink.find(log1_id: scene.id)
+      links2 = SceneLink.find(log2_id: scene.id)
+      links1.to_a.concat(links2.to_a)
+    end 
   end
 end

@@ -13,7 +13,7 @@ module AresMUSH
         return error if error
         
         error = Chargen.check_chargen_locked(char)
-        return error if error
+        return { error: error } if error
                 
         alerts = Chargen.save_char(char, chargen_data)
         

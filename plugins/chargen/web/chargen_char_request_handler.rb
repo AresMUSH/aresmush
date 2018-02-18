@@ -10,9 +10,12 @@ module AresMUSH
         
         error = WebHelpers.check_login(request)
         return error if error
-        
-        error = Chargen.check_chargen_locked(char)
-        return error if error
+
+        if (char.is_approved?)
+          return { error: t('chargen.you_are_already_approved')}
+        end
+                
+        return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
         
         demographics = {}
         
@@ -60,7 +63,7 @@ module AresMUSH
           fs3_action_skills: get_ability_list(char, char.fs3_action_skills, :action),
           fs3_backgrounds: get_ability_list(char, char.fs3_background_skills, :background),
           fs3_languages: get_ability_list(char, char.fs3_languages, :language),
-          reset_needed: !char.fs3_attributes.any?
+          reset_needed: !char.fs3_attributes.map { |a| a.rating > 1 }.any?
         }
       end
       
@@ -69,15 +72,15 @@ module AresMUSH
         when :attribute
           metadata = FS3Skills.attrs
           starting_rating = 1
-          starting_rating_name = t('poor_rating')
+          starting_rating_name = t('fs3skills.poor_rating')
         when :action
           metadata = FS3Skills.action_skills
           starting_rating = 1
-          starting_rating_name = t('everyman_rating')
+          starting_rating_name = t('fs3skills.everyman_rating')
         when :language
           metadata = FS3Skills.languages
           starting_rating = 0
-          starting_rating_name = t('unskilled_rating')
+          starting_rating_name = t('fs3skills.unskilled_rating')
         else
           metadata = nil
         end

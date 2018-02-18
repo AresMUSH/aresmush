@@ -12,9 +12,9 @@ module AresMUSH
         error = WebHelpers.check_login(request)
         return error if error
         
-        error = Chargen.check_chargen_locked(enactor)
-        return error if error
-        
+        error = Chargen.check_chargen_locked(char)
+        return { error: error } if error
+                
         abilities_app = FS3Skills.is_enabled? ? MushFormatter.format(FS3Skills.app_review(char)) : nil
         demographics_app = MushFormatter.format Demographics.app_review(char)
         bg_app = MushFormatter.format Chargen.bg_app_review(char)

@@ -2,6 +2,7 @@ en:
     fs3skills:
         
         # Attribute / Action Skill Ratings
+        unskilled_rating: "Unskilled"
         poor_rating: "Poor"
         average_rating: "Average"
         good_rating: "Good"
