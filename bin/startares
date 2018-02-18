@@ -5,5 +5,5 @@ nohup bundle exec rake startares > /dev/null 2>errors.txt&
 echo kill -9 $! > bin/killares
 chmod +x bin/killares
 cd ~/ares-webportal
-bin/build
+bin/install
 bin/deploy
