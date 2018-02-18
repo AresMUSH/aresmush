@@ -71,8 +71,10 @@ echo -e "${ARES_INSTALL_TEXT} Add ares user to groups"
 addgroup www
 usermod -a -G sudo,www,redis ares
 
-echo -e "${ARES_INSTALL_TEXT} Give ares user access to www directory"
+echo -e "${ARES_INSTALL_TEXT} Give ares user access to www and redis directory"
 sudo chown ares /var/www/html
+sudo chgrp www /etc/redis/redis.conf 
+sudo chmod g+rwx /etc/redis/redis.conf  
 
 echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots"
 echo "sudo -u ares -i '/home/ares/onboot.sh'" > /root/onboot.sh

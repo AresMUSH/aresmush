@@ -17,6 +17,10 @@ module AresMUSH
           "game_name" => Global.read_config("game", "name")
         }
         
+        if (!Dir.exist?(AresMUSH.website_scripts_path))
+          Dir.mkdir AresMUSH.website_scripts_path
+        end
+        
         File.open(file_path, 'w') do |f|
           f.write "var aresconfig = #{config.to_json};"
         end

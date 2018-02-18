@@ -57,6 +57,7 @@ module AresMUSH
     end
     
     def self.get_file_info(file_path)
+      return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
       {
       path: relative_path,

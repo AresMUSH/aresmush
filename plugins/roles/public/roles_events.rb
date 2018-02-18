@@ -1,8 +1,8 @@
 module AresMUSH
   class RoleChangedEvent
-    attr_accessor :char
+    attr_accessor :char_id
     def initialize(char)
-      self.char = char
+      self.char_id = char.id
     end
   end
   

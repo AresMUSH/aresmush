@@ -19,9 +19,8 @@ module AresMUSH
       db_url = STDIN.gets.chomp
       db_url = default_if_blank(db_url, '127.0.0.1:6379')
       
-      print "\nCreate a database password > "
-      db_password = STDIN.gets.chomp
-      error_if_blank(db_password, "DB Password")
+      db_password = ('a'..'z').to_a.shuffle[0,20].join
+      puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
       
       template_data =
       {
