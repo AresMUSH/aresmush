@@ -76,7 +76,7 @@ module AresMUSH
       end
       
       chargen_data[:groups].each do |k, v|
-        Demographics.set_group(char, k, v[:value])
+        Demographics.set_group(char, v[:name], v[:value])
       end
       
       if (Ranks.is_enabled?)

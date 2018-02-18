@@ -13,6 +13,10 @@ module AresMUSH
       {}
     end
  
+    def self.load
+      WebHelpers.rebuild_css
+    end
+    
     def self.get_cmd_handler(client, cmd, enactor)       
       case cmd.root      
       when "website"

@@ -46,7 +46,7 @@ module AresMUSH
         when "start"
           return ChargenStartCmd        
         end
-      when "hooks"
+      when "hook"
         case cmd.switch
         when "edit"
           return HooksEditCmd

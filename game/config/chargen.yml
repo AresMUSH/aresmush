@@ -31,6 +31,8 @@ chargen:
             help: skills
         desc:
             help: descriptions
+        hooks:
+            help: hooks
         handles:
             help: handles
         profile:
