@@ -2,7 +2,8 @@ module AresMUSH
   module Demographics
     
     def self.basic_demographics
-      basic_demographics = Demographics.all_demographics
+      # Use map here to clone it.
+      basic_demographics = Demographics.all_demographics.map { |d| d }
       basic_demographics.delete 'birthdate'
       basic_demographics.delete 'fullname'
       basic_demographics.delete 'actor'

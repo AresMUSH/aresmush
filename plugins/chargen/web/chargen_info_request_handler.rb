@@ -36,7 +36,7 @@ module AresMUSH
           skill_limits: Global.read_config('fs3skills', 'max_skills_at_or_above'),
           attr_limits: Global.read_config('fs3skills', 'max_attrs_at_or_above'),
           max_attrs: Global.read_config('fs3skills', 'max_attributes'),
-          min_skill_rating: Global.read_config('fs3skills', 'min_skill_rating'),
+          min_action_skill_rating: Global.read_config('fs3skills', 'allow_unskilled_action_skills') ? 0 : 1,
           max_skill_rating: Global.read_config('fs3skills', 'max_skill_rating'),
           max_attr_rating: Global.read_config('fs3skills', 'max_attr_rating'),
           min_backgrounds: Global.read_config('fs3skills', 'min_backgrounds'),
