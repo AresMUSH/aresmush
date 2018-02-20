@@ -32,6 +32,10 @@ module AresMUSH
         scene.update(icdate: request.args[:icdate])
         scene.update(plot: Plot[request.args[:plot_id]])
             
+        if (!scene.completed)
+          scene.update(private_scene: request.args[:privacy] == "Private")
+        end
+        
         participant_names = request.args[:participants] || []
         scene.participants.replace []
       

@@ -88,6 +88,7 @@ module AresMUSH
       
       char.update(cg_background: WebHelpers.format_input_for_mush(chargen_data[:background]))
       
+      char.update(rp_hooks: WebHelpers.format_input_for_mush(chargen_data[:rp_hooks]))
       Describe.update_current_desc(char, WebHelpers.format_input_for_mush(chargen_data[:desc]))
       shortdesc = chargen_data[:shortdesc]
       if (!shortdesc.blank?)

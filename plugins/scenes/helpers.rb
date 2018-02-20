@@ -3,7 +3,7 @@ module AresMUSH
     
     def self.new_scene_activity(scene)
       Global.client_monitor.notify_web_clients(:new_scene_activity, "#{scene.id}") do |char|
-        char && Scenes.can_access_scene?(char, scene)
+        char && (!scene.private_scene || Scenes.participants_and_room_chars(scene).include?(char))
       end
     end
     
