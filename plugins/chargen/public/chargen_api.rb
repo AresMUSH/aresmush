@@ -24,6 +24,10 @@ module AresMUSH
     end
     
     def self.hook_app_review(char)
+      if !Global.read_config('chargen', 'hooks_required')
+        return ""
+      end
+        
       message = t('chargen.hook_review')
       status = char.rp_hooks.blank? ?  t('chargen.not_set') : t('chargen.ok')
       

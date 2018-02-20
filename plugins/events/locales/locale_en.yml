@@ -16,3 +16,5 @@ en:
         event_starting_soon:  "Reminder: Event %{title} is starting at %{starts}."
         events_updated: "Events have been updated."
         
+        no_past_events: "You can't schedule events in the past."
+        

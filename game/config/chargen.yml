@@ -4,7 +4,7 @@ chargen:
     post_approval_message: "Please make sure they have a profile image for their log icon."
     welcome_message: "Please welcome %{name}, our latest %{position} to be approved!"
     
-    min_hooks: 1
+    hooks_required: true
     
     arrivals_board: "New Arrivals"
     

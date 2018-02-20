@@ -44,6 +44,8 @@ module AresMUSH
       ## WIKI
       when "createWiki"
         return CreateWikiPageRequestHandler
+      when "deleteWiki"
+        return DeleteWikiPageRequestHandler
       when "editWiki"
         return EditWikiPageRequestHandler
       when "wikiPage"
