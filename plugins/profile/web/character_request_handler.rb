@@ -12,6 +12,18 @@ module AresMUSH
         error = WebHelpers.check_login(request, true)
         return error if error
         
+        # Generic demographic/group field list for those who want custom displays.
+        all_fields = {}
+        Demographics.all_demographics.each do |d|
+          all_fields[d] = char.demographic(d)
+        end
+        Demographics.all_groups.each do |k, v|
+          all_fields[k.downcase] = char.group(k)
+        end
+        all_fields['rank'] = char.rank
+        all_fields['age'] = char.age
+
+
         demographics = Demographics.basic_demographics.sort.each.map { |d| 
             {
               name: t("profile.#{d.downcase}_title"),
@@ -103,6 +115,7 @@ module AresMUSH
         {
           id: char.id,
           name: char.name,
+          all_fields: all_fields,
           fullname: char.demographic(:fullname),
           military_name: Ranks.military_name(char),
           icon: WebHelpers.icon_for_char(char),

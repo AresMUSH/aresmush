@@ -21,7 +21,10 @@ module AresMUSH
         end
       
         begin
-          datetime = OOCTime.parse_datetime("#{date} #{time}".strip.downcase)
+          datetime, notused, error = Events.parse_date_time_desc("#{date} #{time}/notused".strip.downcase)
+          if (error)
+            return { error: error }
+          end
         rescue Exception => ex
           format_help = Global.read_config("datetime", "date_and_time_entry_format_help")
           return { error: t('events.invalid_event_date', :format_str => format_help ) }

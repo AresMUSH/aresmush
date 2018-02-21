@@ -38,7 +38,7 @@ module AresMUSH
         char.update(profile_gallery: gallery)
         char.update(profile_image: profile_image)
         char.update(profile_icon: profile_icon)
-        char.update(profile_tags: request.args[:tags])
+        char.update(profile_tags: request.args[:tags] || [])
         
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|
