@@ -5,7 +5,7 @@ summary: Editing your character profile on the web.
 
 # Editing Your Character Profile on the Web
 
-Once you're approved, you can edit your character's web portal profile.  To edit your profile, log in to the web portal and and click the 'Profile' link at the top.  Then go to the bottom of the page and click 'Edit'.
+Once you're approved, you can edit your character's web portal profile.  Log in to the web portal and and click the 'Profile' link at the top.  Then go to the bottom of the page and click 'Edit'.
 
 > **Tip:** You may only edit your own character's profile.  If you are using a player handle, you may also edit alts linked to your handle.
 
@@ -17,7 +17,7 @@ See [Setting Your Web Portal Icon](/help/web_icon).
 
 ## Adding Profile Sections
 
-You can set up your own custom profile sections.  Each section can contain [markdown  text](/help/website/markdown) with links and other formatting.  You can also edit your profile sections in the game (see [Profile](/help/profile)).
+You can set up your own custom profile sections.  Each section can contain MUSH ansi codes and [markdown  text](/help/website/markdown) with links and other formatting.  You can also edit your profile sections in the game (see [Profile](/help/profile)).
 
 ## Adding Relationships
 
@@ -33,7 +33,7 @@ You can also edit relationships in the game (see [Relationships](/help/relations
 
 ## Adding Images to Your Gallery
 
-Your character profile includes an image gallery.  All images must first be uploaded to the [File Repository](/files).  Once they're there, just add the filenames, one per line, to the gallery list.
+Your character profile includes an image gallery.  Upload the files to a folder matching your character's name and then select them from the list.
 
 ## Applying Tags
 
