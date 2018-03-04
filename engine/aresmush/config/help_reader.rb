@@ -33,7 +33,7 @@ module AresMUSH
         meta["path"] = file
         meta["plugin"] = plugin_title
         meta["topic"] = topic
-        toc = meta["toc"]
+        toc = meta["toc"] || "Miscellaneous"
         
         if self.help_file_index.has_key?(topic)
           Global.logger.warn "Skipping help file #{file} - topic already exists."

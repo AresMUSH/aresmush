@@ -35,7 +35,7 @@ module AresMUSH
       it "should send the message to the connection with fansi enabled if char has it turned on" do
         char = double
         @client.char_id = 5
-        @client.stub(:find_char) { char }
+        @client.stub(:char) { char }
         char.stub(:fansi_on) { true }
         @connection.should_receive(:send_formatted).with("Hi", true)
         @client.emit "Hi"
@@ -157,17 +157,17 @@ module AresMUSH
       end
    end 
    
-   describe :find_char do
+   describe :char do
      it "should look up the char if there is one" do
        @client.char_id = 15
        found_char = double
        Character.stub(:[]).with(15) { found_char }
-       @client.find_char.should eq found_char
+       @client.char.should eq found_char
      end
      
      it "should return nil if not logged in" do
        @client.char_id = nil
-       @client.find_char.should eq nil
+       @client.char.should eq nil
      end
    end
   end

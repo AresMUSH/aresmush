@@ -19,9 +19,7 @@ module AresMUSH
           @main_client = double
           @main_char = double
           SpecHelpers.setup_mock_client(@main_client, @main_char)
-              
-          FS3Skills.stub(:receives_roll_results?).with(@main_char) { true }
-    
+                  
           @room = double
           @main_char.stub(:room) { @room }
           @main_client.stub(:emit)

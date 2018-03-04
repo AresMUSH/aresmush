@@ -127,7 +127,7 @@ module AresMUSH
       InputFormatter.trim_arg(arg)
     end
     
-    # Returns leading/trailing spaces from and arg and capitalizes its words (like a title)
+    # Removes leading/trailing spaces from and arg and capitalizes its words (like a title)
     # Returns nil if 'arg' is nil.
     def titlecase_arg(arg)
       InputFormatter.titlecase_arg(arg)
@@ -150,19 +150,19 @@ module AresMUSH
     
     # Splits an argument into an array.  Returns nil if 'arg' is nil.  By default, splits at
     # spaces but you can pass something else (like to split at a comma)
-    def split_arg(arg, split = " ")
+    def list_arg(arg, split = " ")
       arg ? arg.split(split) : nil
     end
     
     # Splits an argument into an array and trims each item in the list.  Returns nil if 'arg' is nil.  
     # By default, splits at spaces but you can pass something else (like to split at a comma)
-    def split_and_trim_arg(arg, split = " ")
+    def trimmed_list_arg(arg, split = " ")
       arg ? arg.split(split).map { |a| trim_arg(a) } : nil
     end
 
     # Splits an argument into an array and trims//help/s each item in the list.  Returns nil if 'arg' is nil.  
     # By default, splits at spaces but you can pass something else (like to split at a comma)
-    def split_and_titlecase_arg(arg, split = " ")
+    def titlecase_list_arg(arg, split = " ")
       arg ? arg.split(split).map { |a| titlecase_arg(a) } : nil
     end
   end

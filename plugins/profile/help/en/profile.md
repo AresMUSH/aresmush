@@ -1,6 +1,9 @@
 ---
 toc: Community
 summary: Using character profiles.
+aliases:
+- finger
+- info
 ---
 # Character Profile
 

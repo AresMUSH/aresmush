@@ -8,23 +8,13 @@ aliases:
 
 > **Permission Required:** These commands require the Admin role.
 
-Game admins can manage what roles are available in the game and what people have those roles.
+Game admins can manage what roles are available in the game and what people have those roles.  Some systems, like channels and forums, can be limited to people with certain roles.
 
-## Roles vs Permissions
+Roles control what permissions a character has.  Individual commands are limited to people with certain permissions. 
 
-There are two levels to the Roles system:  roles and permissions.
+See the [roles tutorial](http://aresmush.com/tutorials/manage/roles) for more details about how to use roles.
 
-Roles are assigned to characters.  You could have a 'builder' role or a 'pilot' role.  Some things - like channels or bulletin boards - can be locked so that only people with certain roles can use them.
-
-Permissions are assigned to roles, and allow you to further refine what people with a given role can do.  
-
-### Using Permissions
-
-> **Tip:** Characters with the Admin role have all permissions automatically.  If you don't want to fuss with multiple levels of staff, you don't need to worry about permissions.
-
-Each plugin defines its own permissions and what commands require them.  The help files tell you what permissions are needed.  For example - at the top of this file it tells you that the manage_roles permissions is needed to access these commands.
-
-For example:  You might create a 'builder' role and assign it the 'build' and 'teleport' permissions.  Then all builders would be able to build rooms/exits and teleport around without having access to all other admin commands.  You might also create an 'app_staff' role that had application permissions but not building permissions.  It's completely flexible.
+> **Tip:**  You can't assign individual permissions to characters.  Permissions are assigned to roles, which in turn are assigned to characters.
 
 ### The Everyone Role
 

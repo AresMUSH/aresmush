@@ -44,6 +44,7 @@ chargen:
     shortcuts:
         "chargen" : "cg"
         "cg/back": "cg/prev"
+        "cg/previous" : "cg/prev"
         "bg/approve": "app/approve"
         "bg/reject" : "app/reject"
         "bg/submit" : "app/submit"

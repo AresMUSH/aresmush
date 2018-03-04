@@ -39,7 +39,7 @@ module AresMUSH
       end
       
       Global.notifier.notify_ooc(:new_mail, t('mail.new_mail', :from => author.name, :subject => subject)) do |char|
-        recipients.include?(char) && char != author
+         char && recipients.include?(char) && char != author
       end
       
       return true

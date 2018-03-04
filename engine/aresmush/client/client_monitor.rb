@@ -9,7 +9,7 @@ module AresMUSH
 
     def emit_all(msg, &trigger_block)
       @clients.each do |c|
-        if ( yield c.find_char )
+        if ( yield c.char )
           c.emit msg
         end
       end
@@ -17,9 +17,23 @@ module AresMUSH
     
     def emit_all_ooc(msg, &trigger_block)
       @clients.each do |c|
-        if ( yield c.find_char )
+        if ( yield c.char )
           c.emit_ooc msg
         end
+      end
+    end
+    
+    def emit_if_logged_in(char, message)
+      client = find_client(char)
+      if (client)
+        client.emit message
+      end
+    end
+    
+    def emit_ooc_if_logged_in(char, message)
+      client = find_client(char)
+      if (client)
+        client.emit_ooc message
       end
     end
     
@@ -46,7 +60,7 @@ module AresMUSH
       @clients.delete client
       Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (client.logged_in?)
-        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.find_char.id)
+        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.char.id)
       end        
     end
     
@@ -57,7 +71,7 @@ module AresMUSH
     def logged_in
       players = {}
       @clients.each do |c|
-        char = c.find_char
+        char = c.char
         next if !char
         players[c] = char
       end

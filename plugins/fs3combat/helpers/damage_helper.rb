@@ -7,11 +7,11 @@ module AresMUSH
     end
     
     def self.can_manage_damage?(actor)
-      actor.has_permission?("manage_damage")
+      actor.has_permission?("manage_combat")
     end
 
     def self.can_setup_hospitals?(actor)
-      actor.has_permission?("setup_hospitals")
+      actor.has_permission?("build")
     end
     
     def self.display_severity(value)

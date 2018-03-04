@@ -21,7 +21,8 @@ module AresMUSH
           name: char.name,
           id: char.id,
           is_approved: char.is_approved?,
-          is_admin: char.is_admin?
+          is_admin: char.is_admin?,
+          is_coder: char.is_coder?
         }
       end
     end

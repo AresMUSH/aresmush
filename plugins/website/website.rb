@@ -20,7 +20,11 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)       
       case cmd.root      
       when "website"
-        return WebsiteCmd
+        if (cmd.switch_is?("deploy"))
+          return WebsiteDeployCmd
+        else
+          return WebsiteCmd
+        end
       end
       
       nil

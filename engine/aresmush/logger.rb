@@ -4,6 +4,7 @@ module AresMUSH
     attr_accessor :logger
     
     def start
+      create_log_dir(File.join(AresMUSH.game_path, "logs"))
       config = Global.read_config("logger")
       configurator = Log4r::YamlConfigurator
       configurator.decode_yaml config

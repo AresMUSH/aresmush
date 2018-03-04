@@ -4,7 +4,7 @@ summary: Idle sweeping old characters.
 ---
 # Idle Sweeping Old Characters
 
-> **Permission Required:** These commands require the Admin role or the permission: idle\_sweep
+> **Permission Required:** These commands require the Admin role or the permission: manage\_idle.
 
 The idle system lets you sweep the database for players who haven't logged in for awhile, so you can decide what to do with them.
 

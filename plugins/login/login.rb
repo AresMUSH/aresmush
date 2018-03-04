@@ -84,6 +84,8 @@ module AresMUSH
         return ConfigUpdatedEventHandler
       when "CronEvent"
         return CronEventHandler
+      when "RoleChangedEvent"
+        return RoleChangedEventHandler
       end
       nil
     end

@@ -9,7 +9,7 @@ module AresMUSH
   
   class OnlineCharFinder
     def self.find(name, client, allow_handles = false)
-      return FindResult.new(OnlineCharResult.new(client, client.find_char), nil) if (name.downcase == "me")
+      return FindResult.new(OnlineCharResult.new(client, client.char), nil) if (name.downcase == "me")
       online = Global.client_monitor.logged_in
           .select { |other_client, other_char| exact_match?(other_char, name, allow_handles, client)}
           .map { |other_client, other_char| OnlineCharResult.new(other_client, other_char )}

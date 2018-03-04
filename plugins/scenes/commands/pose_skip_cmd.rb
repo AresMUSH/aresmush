@@ -1,6 +1,6 @@
 module AresMUSH
   module Scenes
-    class PoseDropCmd
+    class PoseSkipCmd
       include CommandHandler
       
       attr_accessor :name
@@ -21,7 +21,7 @@ module AresMUSH
         end
         
         enactor_room.remove_from_pose_order(self.name)        
-        Rooms.emit_ooc_to_room(enactor_room, t('scenes.pose_order_dropped', :name => enactor_name, :dropped => self.name))
+        Rooms.emit_ooc_to_room(enactor_room, t('scenes.pose_order_skipped', :name => enactor_name, :skipped => self.name))
         Scenes.notify_next_person(enactor_room)
       end
     end

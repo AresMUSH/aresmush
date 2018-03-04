@@ -16,7 +16,7 @@ module AresMUSH
       @client = double
       @client.stub(:id) { "1" }
       @client.stub(:room) { nil }
-      @client.stub(:find_char) { @enactor }
+      @client.stub(:char) { @enactor }
       @command = Command.new("x")
       @dispatcher = Dispatcher.new
       @plugin1 = double
@@ -48,7 +48,7 @@ module AresMUSH
         end
       
         it "should look up the enactor" do
-          @client.should_receive(:find_char) { @enactor }
+          @client.should_receive(:char) { @enactor }
           @dispatcher.on_command(@client, @command)
         end
         

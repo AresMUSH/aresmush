@@ -29,12 +29,13 @@ module AresMUSH
       
       def handle  
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
-          if (!char.has_role?(self.role))
-            Global.logger.info "#{enactor_name} added role #{self.role} to #{self.name}."     
-            char.roles.add Role.find_one_by_name(self.role)
+          error = Roles.add_role(char, self.role)
+          if (error)
+            client.emit_failure error
+          else
+            Global.logger.info "#{enactor_name} added role #{self.role} to #{char.name}."     
+            client.emit_success t('roles.role_assigned', :name => char.name, :role => self.role.downcase)
           end
-          client.emit_success t('roles.role_assigned', :name => self.name, :role => self.role.downcase)
-          Global.dispatcher.queue_event RoleChangedEvent.new(char)
         end
       end
     end

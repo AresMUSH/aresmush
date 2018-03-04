@@ -40,7 +40,7 @@ module AresMUSH
     def self.clients_in_room(room)
       clients = []
       Global.client_monitor.clients.each do |c|
-        char = c.find_char
+        char = c.char
         if (char && char.room == room)
           clients << c
         end
