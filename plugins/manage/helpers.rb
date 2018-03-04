@@ -26,7 +26,7 @@ module AresMUSH
     
     def self.perform_backup(client = nil)
       type = Global.read_config("backup", "backup_type")
-      case (type)
+      case (type.downcase)
       when "aws"
         backup = AwsBackup.new
         backup.backup(client)

@@ -8,8 +8,12 @@ jobs:
                 - builder
         BUG:
             color: "%xy"
+            roles:
+                - coder
         CODE:
             color: "%xy"
+            roles:
+                - coder
             
         ALERT:
             color: "%xr"

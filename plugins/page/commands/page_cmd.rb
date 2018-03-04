@@ -19,7 +19,7 @@ module AresMUSH
             self.names = enactor.last_paged
             self.message = "#{args.arg1}=#{args.arg2}"
           else
-            self.names = split_arg(args.arg1)
+            self.names = list_arg(args.arg1)
             self.message = trim_arg(args.arg2)
           end
         else

@@ -2,9 +2,10 @@ en:
     roles:
         role_does_not_exist: "That is not a valid role."
         assigned_roles: "Roles for %{name}"
+        already_has_role: "%{name} already has that role."
+        doesnt_have_role: "%{name} doesn't have that role."
         role_assigned: "You assign the %{role} role to %{name}."
         role_removed: "You remove the %{role} role from %{name}."
-        role_not_assigned: "That role is not assigned to that character."   
         role_restricted: "Only the master admin (%{name}) can assign or remove restricted roles."
         game_admin: "Game Admin"
         connected_on_duty: "%xh%xg<On Duty>%xn"

@@ -64,7 +64,7 @@ module AresMUSH
     def on_command(client, cmd)
       @handled = false
       with_error_handling(client, cmd) do
-        enactor = client.find_char
+        enactor = client.char
         
         if (enactor && enactor.is_statue?)
           client.emit_failure t('dispatcher.you_are_statue')

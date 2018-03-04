@@ -20,7 +20,7 @@ Some games may have multiple pages of the character sheet, and some pages might 
 
 ## Roll Results
 
-Anyone with the `receives_roll_results` permission will see a message whenever someone rolls an ability.  This allows you to judge situations even without being in the room.
+Roll results can be sent to a channel, configured in the FS3Skills settings.  Storytellers can join that channel in order to judge situations even without being in the room.  The roll command will also let you roll for other people, if storytellers prefer to roll something privately.
 
 ## Adjusting Skills
 

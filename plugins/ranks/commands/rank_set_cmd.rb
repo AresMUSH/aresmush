@@ -7,7 +7,7 @@ module AresMUSH
 
       def parse_args
         # Admin version 
-        if (cmd.args =~ /[^\=]+\=(.+)?/)
+        if (Ranks.can_manage_ranks?(enactor) && cmd.args =~ /[^\=]+\=(.+)?/)
           self.name = trim_arg(cmd.args.before("="))
           self.rank = titlecase_arg(cmd.args.after("=") || "")
         else

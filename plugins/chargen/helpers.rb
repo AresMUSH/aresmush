@@ -10,7 +10,7 @@ module AresMUSH
     end
     
     def self.can_manage_bgs?(actor)
-      actor.has_permission?("can_approve")
+      actor.has_permission?("manage_apps")
     end     
     
     def self.can_view_bgs?(actor)

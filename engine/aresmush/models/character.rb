@@ -96,6 +96,7 @@ module AresMUSH
       else
         role = Role.find_one_by_name(name_or_role)
       end
+      return false if !role
       self.roles.include?(role)
     end
         

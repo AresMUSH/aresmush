@@ -219,7 +219,7 @@ module AresMUSH
       
       if (!is_ooc)
         if (room.room_type != "OOC")
-          enactor.room.update_pose_order(enactor.name)
+          enactor.room.update_pose_order(enactor.name.titlecase)
           Scenes.notify_next_person(enactor.room)
         end
       end

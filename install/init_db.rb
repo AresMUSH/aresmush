@@ -71,16 +71,20 @@ module AresMUSH
   
       admin_role = Role.create(name: "admin", is_restricted: true)
       everyone_role = Role.create(name: "everyone")
-      everyone_role.update(permissions: ["go_home", "boot", "announce"] )
       builder_role = Role.create(name: "builder")
+      builder_role.update(permissions: ["build", "teleport", "desc_places", "access_jobs" ] )
       guest_role = Role.create(name: "guest")
       approved_role = Role.create(name: "approved")
+      approved_role.update(permissions: ["go_home", "boot", "announce"] )
+      coder_role = Role.create("coder")
+      coder_role.update(permissions: ["manage_game", "access_jobs"])
       
       puts "Creating OOC chars."
       
       headwiz = Character.create(name: "Headwiz")
       headwiz.change_password("change_me!")
       headwiz.roles.add admin_role
+      headwiz.roles.add coder_role
       headwiz.roles.add everyone_role
       headwiz.room = welcome_room
       headwiz.save

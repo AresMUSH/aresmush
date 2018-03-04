@@ -42,8 +42,7 @@ module AresMUSH
 
     def enable_fansi
       return false if !@char_id
-      char = find_char
-      char.fansi_on
+      self.char.fansi_on
     end
     
     def emit(msg)
@@ -108,6 +107,11 @@ module AresMUSH
       Global.client_monitor.connection_closed self
     end
 
+    # Do not cache the character object!  It will get stale and out of date.
+    def char
+      find_char
+    end
+    
     def find_char
       @char_id ? Character[@char_id] : nil
     end
@@ -122,21 +126,6 @@ module AresMUSH
 
     def web_char_id
       @connection.web_char_id
-    end
-
-    # -------------------------------
-    # Deprecated methods.  Do not use
-    # -------------------------------
-    def char
-      raise "Someone still trying to use client.char"
-    end  
-    
-    def name
-      raise "Someone still trying to use client.name"
-    end
-    
-    def room
-      raise "Someone still trying to use client.room"
     end
     
   end

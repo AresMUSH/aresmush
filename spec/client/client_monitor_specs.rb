@@ -39,6 +39,43 @@ module AresMUSH
         end
       end
     end
+    
+    describe :emit_ooc_if_logged_in do
+      before do
+        @char = double
+      end
+      
+      it "should emit ooc if logged in" do
+        @client_monitor.stub(:find_client).with(@char) { @client1 }
+        @client1.should_receive(:emit_ooc).with("Hi")
+        @client_monitor.emit_ooc_if_logged_in(@char, "Hi")
+      end
+      
+      it "should not emit if not logged in" do
+        @client_monitor.stub(:find_client).with(@char) { nil }
+        @client1.should_not_receive(:emit_ooc)
+        @client_monitor.emit_ooc_if_logged_in(@char, "Hi")
+      end
+    end
+
+    
+    describe :emit_if_logged_in do
+      before do
+        @char = double
+      end
+      
+      it "should emit if logged in" do
+        @client_monitor.stub(:find_client).with(@char) { @client1 }
+        @client1.should_receive(:emit).with("Hi")
+        @client_monitor.emit_if_logged_in(@char, "Hi")
+      end
+      
+      it "should not emit if not logged in" do
+        @client_monitor.stub(:find_client).with(@char) { nil }
+        @client1.should_not_receive(:emit)
+        @client_monitor.emit_if_logged_in(@char, "Hi")
+      end
+    end
 
     describe :connection_closed do
       it "should remove the client from the list" do
