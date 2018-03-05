@@ -11,6 +11,7 @@ logs/
 
 # Generated files
 # -----------------------------
+wiki_export
 calendar.ics
 .sass-cache
 .DS_Store
