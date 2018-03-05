@@ -165,11 +165,13 @@ module AresMUSH
       log = ""
       div_started = false
       scene.poses_in_order.to_a.each do |pose|
+        next if pose.is_ooc
+        
         formatted_pose = pose.pose || ""
         formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
         
         formatted_pose = formatted_pose.split("\n").map { |line| line.strip }.join("\n")
-        
+                
         if (pose.is_system_pose?)
           if (!div_started)
             log << "[[div class=\"scene-system-pose\"]]\n"
@@ -178,8 +180,6 @@ module AresMUSH
           log << formatted_pose
         elsif (pose.is_setpose?)
           log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]\n\n"
-        elsif (pose.is_ooc)
-          # Strip OOC from log
         else
           if (div_started)
             log << "\n[[/div]]\n\n"

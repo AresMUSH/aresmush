@@ -34,7 +34,7 @@ module AresMUSH
       end
         
       def check_timezone
-        valid_zones = Timezone::Zone.names
+        valid_zones = Timezone.names
         return t('time.invalid_timezone') if !valid_zones.include?(self.zone)
         return nil
       end
