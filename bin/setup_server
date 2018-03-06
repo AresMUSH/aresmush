@@ -12,6 +12,10 @@ echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+# Set up redis PPA so we get a recent version
+
+add-apt-repository -y ppa:chris-lea/redis-server
+
 apt-get update
 apt-get -y upgrade
 
