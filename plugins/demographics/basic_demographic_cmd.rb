@@ -8,7 +8,7 @@ module AresMUSH
 
       def parse_args
         # Admin version
-        if (cmd.args =~ /\//)
+        if (Demographics.can_set_demographics?(enactor) && cmd.args =~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
           
           self.property = downcase_arg(args.arg2)

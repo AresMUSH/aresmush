@@ -18,6 +18,10 @@ module AresMUSH
       self.has_any_role?(Login.guest_role)
     end
     
+    def is_coder?
+      self.has_role?("coder")
+    end
+
     def is_site_match?(ip, hostname)
       Login.is_site_match?(self.last_ip, self.last_hostname, ip, hostname)
     end

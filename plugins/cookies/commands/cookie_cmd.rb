@@ -13,10 +13,6 @@ module AresMUSH
         end
       end
       
-      def required_args
-        [ self.names ]
-      end
-      
       def handle
         names.each do |name|
           result = ClassTargetFinder.find(name, Character, enactor)
@@ -30,3 +26,4 @@ module AresMUSH
     end
   end
 end
+

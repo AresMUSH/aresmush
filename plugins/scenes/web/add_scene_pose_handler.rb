@@ -41,9 +41,8 @@ module AresMUSH
         Scenes.add_to_scene(scene, pose, enactor, is_setpose, is_ooc)
         if (scene.room)
           scene.room.characters.each do |char|
-            client = Login.find_client(char)
-            next if !client
-            client.emit Scenes.custom_format(formatted_pose, char, enactor, true, false, nil)
+            message = Scenes.custom_format(formatted_pose, char, enactor, true, false, nil)
+            Global.client_monitor.emit_ooc_if_logged_in(char, message)
           end
         end
         

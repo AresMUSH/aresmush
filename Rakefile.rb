@@ -25,6 +25,15 @@ task :configure do
   AresMUSH::Install.configure_game
 end
 
+
+task :webexport do
+  minimal_boot
+  load File.join(AresMUSH.root_path, "plugins/website/public/filename_sanitizer.rb")
+  load File.join(AresMUSH.root_path, "plugins/website/wiki_exporter.rb")
+  
+  AresMUSH::Website::WikiExporter.export
+end
+
 task :dumpdb do
   minimal_boot
   AresMUSH::Channel.all.each do |c|

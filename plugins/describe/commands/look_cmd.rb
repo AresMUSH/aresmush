@@ -37,11 +37,8 @@ module AresMUSH
       def show_desc(model)
         template = Describe.desc_template(model, enactor)
         client.emit template.render
-        if (model.class == Character)
-          looked_at_client = Login.find_client(model)
-          if (looked_at_client && model.desc_notify)
-            looked_at_client.emit_ooc t('describe.looked_at_you', :name => enactor_name)
-          end
+        if (model.class == Character && model.desc_notify)
+           Global.client_monitor.emit_ooc_if_logged_in(model,  t('describe.looked_at_you', :name => enactor_name))
         end
       end
       

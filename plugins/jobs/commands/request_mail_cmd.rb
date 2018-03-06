@@ -8,7 +8,7 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.number = trim_arg(args.arg1)
-        self.names = split_and_titlecase_arg(args.arg2)
+        self.names = titlecase_list_arg(args.arg2)
         self.message = args.arg3
       end
       

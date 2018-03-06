@@ -28,6 +28,7 @@ scenes:
     shortcuts:
         "scenes": "scene"
         "scene/close" : "scene/stop"
+        "scene/date" : "scene/icdate"
         "scene/end" : "scene/stop"
         "scene/name" : "scene/title"
         "scene/info" : "scene"

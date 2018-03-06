@@ -24,7 +24,7 @@ module AresMUSH
 
       def can_view_xp(char)
         return true if self.target == enactor_name
-        return true if enactor.has_permission?("can_view_sheets")
+        return true if enactor.has_permission?("view_sheets")
         AresCentral.is_alt?(enactor, char)
       end
     end

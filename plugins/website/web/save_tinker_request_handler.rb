@@ -7,7 +7,7 @@ module AresMUSH
         error = WebHelpers.check_login(request)
         return error if error
         
-        if (!enactor.is_admin?)
+        if (!enactor.has_role?("coder"))
           return { error: t('dispatcher.not_allowed') }
         end
         

@@ -9,7 +9,7 @@ module AresMUSH
       def parse_args
         
         # Admin version
-        if (cmd.args =~ /\//)          
+        if (FS3Skills.can_manage_abilities?(enactor) && cmd.args =~ /\//)          
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
           self.target = trim_arg(args.arg1)
           self.name = titlecase_arg(args.arg2)

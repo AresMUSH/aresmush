@@ -12,7 +12,7 @@ module AresMUSH
           self.names = []
           self.destination = trim_arg(args.arg1)
         else
-          self.names = split_arg(args.arg1)
+          self.names = list_arg(args.arg1)
           self.destination = trim_arg(args.arg2)
         end
       end
