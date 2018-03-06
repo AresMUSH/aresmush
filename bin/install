@@ -90,3 +90,4 @@ cd /home/ares/aresmush
 
 bin/startares
 
+echo -e "${ARES_INSTALL_TEXT} Done!"

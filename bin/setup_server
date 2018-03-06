@@ -12,6 +12,10 @@ echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+# Set up redis PPA so we get a recent version
+
+add-apt-repository -y ppa:chris-lea/redis-server
+
 apt-get update
 apt-get -y upgrade
 
@@ -75,8 +79,9 @@ echo -e "${ARES_INSTALL_TEXT} Give ares user access to www and redis directory"
 sudo chown ares /var/www/html
 sudo chgrp redis /etc/redis/redis.conf 
 sudo chmod g+rwx /etc/redis/redis.conf  
-sudo chgrp redis /etc/redis/redis.conf 
+sudo chgrp redis /var/lib/redis
 sudo chmod g+rwx /var/lib/redis
+sudo chgrp redis /var/lib/redis/dump.rdb
 sudo chmod g+rwx /var/lib/redis/dump.rdb
 
 echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots"
