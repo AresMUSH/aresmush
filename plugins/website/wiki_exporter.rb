@@ -7,8 +7,16 @@ module AresMUSH
           FileUtils.mkdir_p(export_path)
         end
   
-        WikiPage.all.each do |p|
-          File.open(File.join(export_path, "#{p.name}.html"), 'w') do |f|
+        index = {}
+        index["Characters"] = {}
+        index["Scenes"] = {}
+        index["Wiki"] = {}
+        
+        WikiPage.all.to_a.sort_by { |p| p.heading }.each do |p|
+          page_name = "#{p.name}.html"
+          index["Wiki"][page_name] = p.heading
+          
+          File.open(File.join(export_path, page_name), 'w') do |f|
             text = WebHelpers.format_markdown_for_html(p.current_version.text)
             text = text.gsub("src=\"/", "src=\"")
             text = text.gsub(/href\=\"\/wiki\/([^\"]+)\/?/) { "href=\"#{FilenameSanitizer.sanitize($1)}.html" }
@@ -17,9 +25,12 @@ module AresMUSH
           end
         end
   
-        Scene.all.select { |s| s.shared }.each do |s|
+        Scene.all.select { |s| s.shared }.sort_by { |s| s.icdate }.each do |s|
           filename = FilenameSanitizer.sanitize(s.title)
-          File.open(File.join(export_path, "#{s.icdate}-#{filename}.html"), 'w') do |f|
+          page_name = "#{s.icdate}-#{filename}.html"
+          index["Scenes"][page_name] = "#{s.icdate} - #{s.title}"
+          
+          File.open(File.join(export_path, page_name), 'w') do |f|
 
             heading = "<p><b>Participants:</b> #{s.participant_names.join(',')}</p>"
             heading << "<p><b>Location:</b> #{s.location}</p>"
@@ -33,8 +44,11 @@ module AresMUSH
         end
         
         
-        Character.all.each do |c|
-          File.open(File.join(export_path, "#{c.name}.html"), 'w') do |f|
+        Character.all.select { |c| !c.is_admin? && c.is_approved? }.sort_by { |c| c.name }.each do |c|
+          page_name = "#{c.name}.html"
+          index["Characters"][page_name] = "#{c.name} (#{Ranks.military_name(c)})"
+          
+          File.open(File.join(export_path, page_name), 'w') do |f|
             icon = WebHelpers.icon_for_char(c)
             text = "<img style=\"max-height: 200px\" src=\"game/uploads/#{icon}\">"
             text << c.demographics.sort.map { |k, v| "<p><b>#{k}:</b> #{v}</p>"}.join
@@ -54,6 +68,17 @@ module AresMUSH
           end
         end
         
+        File.open(File.join(export_path, "index.html"), 'w') do |f|
+          index.each do |section, data|
+            f.puts "<h1>#{section}</h1>"
+            
+            f.puts "<ul>"
+            data.each do |page, title|
+              f.puts "<li><a href=\"#{page}\">#{title}</a>"
+            end
+            f.puts "</ul>"
+          end
+        end
         
         path = File.join(export_path, "game")
         unless File.directory?(path)
