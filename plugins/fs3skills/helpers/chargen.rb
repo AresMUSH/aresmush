@@ -13,14 +13,6 @@ module AresMUSH
       
       ability_type = get_ability_type(ability_name)
       
-      error = FS3Skills.check_rating(ability_name, rating)
-      if (error)
-        if (client)
-          client.emit_failure error
-        end
-        return false
-      end
-      
       min_rating = FS3Skills.get_min_rating(ability_type)
       ability = FS3Skills.find_ability(char, ability_name)
       
