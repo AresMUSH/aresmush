@@ -10,15 +10,22 @@ module AresMUSH
     attribute :ical_uid
     
     reference :character, "AresMUSH::Character"
+    collection :signups, "AresMUSH::EventSignup"
     
     before_save :set_uid
+    before_delete :delete_signups
     
     def set_uid
+      # Need a unique identifier for ical
       if (!self.ical_uid)
-        host = Global.read_config('server', 'hostname' )
+        host = Global.read_config('server', 'hostname')
         game = Global.read_config('game', 'name' )
         self.ical_uid = "#{SecureRandom.uuid}@#{game}-#{host}"
       end
+    end
+    
+    def delete_signups
+      self.signups.each { |s| s.delete }
     end
     
     def organizer_name
@@ -59,6 +66,10 @@ module AresMUSH
       else
         ""
       end
+    end
+    
+    def ordered_signups
+      self.signups.to_a.sort_by { |s| s.created_at }
     end
     
     def start_datetime_local(enactor)

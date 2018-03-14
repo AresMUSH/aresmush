@@ -26,3 +26,10 @@ You can create and edit your own events.  Characters with the `manage_events` pe
 `event/update <#>=<title>/<date and time>/<description>`
 `event/delete <#>`
 
+## Signing Up For Events
+
+You can indicate your interest in an event by signing up for it.  Ultimately it is up to the event organizer how to handle signups: first-come-first-served, etc.  It's best to set expectations in the events description.
+
+`event/signup <#>=<comment>` - Sign up for an event.  If already signed up, this command can be used to change your comment.
+`event/cancel <#>` - Removes your signup.
+
