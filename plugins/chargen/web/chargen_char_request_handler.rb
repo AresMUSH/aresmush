@@ -37,7 +37,7 @@ module AresMUSH
           groups[k.downcase] = {
             name: k.titleize,
             value: group_val,
-            desc: v['values'][group_val]
+            desc: (v['values'] || {})[group_val]
           }
         end
         
