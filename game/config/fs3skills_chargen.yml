@@ -6,7 +6,7 @@ fs3skills:
     min_backgrounds: 2
 
     max_skill_rating: 7
-    max_attr_rating: 5
+    max_attr_rating: 4
     
     allow_unskilled_action_skills: false
     
@@ -19,9 +19,8 @@ fs3skills:
     
     max_attrs_at_or_above: 
         4: 2
-        5: 1
 
-    max_attributes: 16
+    max_attributes: 14
     
     unusual_skills:
         - Celtan
