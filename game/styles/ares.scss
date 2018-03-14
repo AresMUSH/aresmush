@@ -26,7 +26,7 @@ BASIC CONTAINERS
 
 .header-wrap
 {
-    background: url('/game/uploads/theme_images/background.png');
+    background-image: url('/game/uploads/theme_images/background.png');
     background-size: cover;
     min-height: 200px;   
     background-position: center; 
@@ -731,6 +731,12 @@ SCENES SCREEN
     background-color: red;
 }
 
+.pose-divider {
+    margin: 20px 20% 20px 20%;
+    border: 1px solid #eee;
+    align: center;
+}
+    
 /* -------------------------
 CHARACTERS SCREEN
 ------------------------- */
