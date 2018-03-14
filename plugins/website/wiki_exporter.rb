@@ -34,7 +34,7 @@ module AresMUSH
       end
       
       def self.template_path
-        File.join(AresMUSH.root_path, "..", "ares-webportal", "app", "templates")
+        File.join(Global.read_config("website", "website_code_path"), "app", "templates")
       end
       
       def self.export_index
