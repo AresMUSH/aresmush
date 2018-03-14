@@ -21,7 +21,16 @@ module AresMUSH
         else
           description = WebHelpers.format_markdown_for_html(event.description)
         end
-          
+        
+        signups = event.ordered_signups.map { |s| 
+          {
+            char: {
+                    name: s.char_name,
+                    icon: s.character ? WebHelpers.icon_for_char(s.character) : nil
+                  },
+            comment: s.comment
+            }}
+                  
         {
           id: event.id,
           title: event.title,
@@ -29,6 +38,7 @@ module AresMUSH
           description: description,
           date: datetime.before(' '),
           time: datetime.after( ' '),
+          signups: signups,
           can_manage: enactor && Events.can_manage_event(enactor, event),
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           start_datetime_local: event.start_datetime_local(request.enactor),
