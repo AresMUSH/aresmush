@@ -1,10 +1,10 @@
 <%= header %>
 %xh%x![ <%= message.subject %> ]%xn
 <%= divider %>
-<%= left( t('mail.to'), 6 ) %> <%= to %>
+<%= left( t('mail.to'), 6 ) %> <%= message.to_list %>
 <%= left( t('mail.from'), 6 ) %> <%= author %>
 <%= left( t('mail.sent'), 6 ) %> <%= date %>
 <%= left( t('mail.tags'), 6 ) %> <%= tags %>
 <%= divider %>
-<%= body %>
+<%= message.body %>
 <%= footer %>
