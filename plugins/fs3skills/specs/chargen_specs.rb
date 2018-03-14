@@ -4,6 +4,7 @@ module AresMUSH
 
       before do
         Global.stub(:read_config).with("fs3skills", "max_skill_rating") { 7 }
+        Global.stub(:read_config).with("fs3skills", "max_attr_rating") { 4 }
         FS3Skills.stub(:attr_names) { [ "Brawn", "Mind" ] }
         FS3Skills.stub(:action_skill_names) { [ "Firearms", "Demolitions" ] }
         FS3Skills.stub(:language_names) { [ "English", "Spanish" ] }
@@ -50,14 +51,14 @@ module AresMUSH
         end
 
         it "should allow max ratings" do
-          FS3Skills.check_rating("Brawn", 5).should be_nil
+          FS3Skills.check_rating("Brawn", 4).should be_nil
           FS3Skills.check_rating("Firearms", 7).should be_nil
           FS3Skills.check_rating("English", 3).should be_nil
           FS3Skills.check_rating("Basketweaving", 3).should be_nil
         end
         
         it "should error if above max ratings" do
-          FS3Skills.check_rating("Brawn", 6).should eq "fs3skills.max_rating_is"
+          FS3Skills.check_rating("Brawn", 5).should eq "fs3skills.max_rating_is"
           FS3Skills.check_rating("Firearms", 8).should eq "fs3skills.max_rating_is"
           FS3Skills.check_rating("English", 4).should eq "fs3skills.max_rating_is"
           FS3Skills.check_rating("Basketweaving", 4).should eq "fs3skills.max_rating_is"
