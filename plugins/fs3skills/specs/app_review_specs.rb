@@ -30,6 +30,7 @@ module AresMUSH
           Global.stub(:read_config).with("fs3skills", "max_skills_at_or_above") { { 5 => 2, 7 => 1 } }
           Global.stub(:read_config).with("fs3skills", "max_attrs_at_or_above") { { 4 => 2, 5 => 1 } }
           Global.stub(:read_config).with("fs3skills", "max_attributes") { 14 }
+          Global.stub(:read_config).with("fs3skills", "max_action_skills") { 20 }
           @char = double
         end
         
@@ -60,6 +61,18 @@ module AresMUSH
                                              FS3Attribute.new(rating: 3) ] }
           review = FS3Skills.ability_rating_review(@char)
           review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.too_many_attributes"
+        end
+        
+        it "should error if too many points on action skills" do
+          @char.stub(:fs3_attributes) { [] }
+          @char.stub(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7),
+                                             FS3ActionSkill.new(rating: 5),
+                                             FS3ActionSkill.new(rating: 4),
+                                             FS3ActionSkill.new(rating: 4),
+                                             FS3ActionSkill.new(rating: 4),
+                                             FS3ActionSkill.new(rating: 4) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          review.should eq "fs3skills.ability_ratings_check%r%Tfs3skills.too_many_action_skills"
         end
         
         it "should error if too many attrs above 3" do
