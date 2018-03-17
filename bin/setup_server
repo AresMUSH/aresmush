@@ -34,10 +34,6 @@ apt-get install -y ruby-all-dev
 echo -e "${ARES_INSTALL_TEXT} Nginx for web server."
 apt-get install -y nginx
 
-echo -e "${ARES_INSTALL_TEXT} Emacs text editor."
-apt-get install -y emacs
-echo "(setq make-backup-files nil)" > .emacs
-
 echo -e "${ARES_INSTALL_TEXT} Dependency mgmt for ember cli"
 apt-get install -y nodejs
 apt-get install -y npm
