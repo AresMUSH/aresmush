@@ -10,7 +10,7 @@ fs3skills:
     
     allow_unskilled_action_skills: false
     
-    max_ap: 45
+    max_ap: 40
     
     max_skills_at_or_above:
         5: 3
@@ -19,8 +19,10 @@ fs3skills:
     
     max_attrs_at_or_above: 
         4: 2
+        3: 4
 
-    max_attributes: 14
+    max_attributes: 12
+    max_action_skills: 25
     
     unusual_skills:
         - Celtan
