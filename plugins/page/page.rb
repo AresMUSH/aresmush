@@ -25,7 +25,11 @@ module AresMUSH
         when "log"
           return PageLogCmd
         when "monitor"
-          return PageMonitorCmd
+          if (cmd.args)
+            return PageMonitorCmd
+          else
+            return PageListMonitorCmd
+          end
         when "report"
           return PageReportCmd
         when nil

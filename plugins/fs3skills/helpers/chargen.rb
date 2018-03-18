@@ -82,7 +82,7 @@ module AresMUSH
       when :language
         max_rating = 3
       when :attribute
-        max_rating = 5
+        max_rating = Global.read_config("fs3skills", "max_attr_rating")
       end
     end
     

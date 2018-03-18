@@ -21,8 +21,26 @@ module AresMUSH
       costs[ability_type.to_s][rating] || nil
     end
     
-    def self.can_learn_further?(ability_name, rating)
-      self.xp_needed(ability_name, rating) != nil
+    def self.check_can_learn(char, ability_name, rating)
+      return t('fs3skills.cant_raise_further_with_xp') if self.xp_needed(ability_name, rating) == nil
+
+      ability_type = FS3Skills.get_ability_type(ability_name)
+      dots_beyond_chargen = Global.read_config("fs3skills", "dots_beyond_chargen_max")
+      
+      if (ability_type == :attribute)
+        # Attrs cost 2 points per dot
+        points = AbilityPointCounter.points_on_attrs(char)
+        max = Global.read_config("fs3skills", "max_points_on_attrs") + (dots_beyond_chargen * 2)
+        new_total = points + 2
+      elsif (ability_type == :action)
+        points = AbilityPointCounter.points_on_action(char)
+        max = Global.read_config("fs3skills", "max_points_on_action") + dots_beyond_chargen
+        new_total = points + 1
+      else
+        return nil
+      end
+      
+      return max >= new_total ? nil : t('fs3skills.max_ability_points_reached')
     end
 
     def self.skill_requires_training(ability)
@@ -37,8 +55,9 @@ module AresMUSH
         FS3Skills.set_ability(client, char, name, 1)
       else
         
-        if (!FS3Skills.can_learn_further?(name, ability.rating))
-          client.emit_failure t('fs3skills.cant_raise_further_with_xp')
+        error = FS3Skills.check_can_learn(char, name, ability.rating)
+        if (error)
+          client.emit_failure error
           return
         end
 

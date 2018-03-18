@@ -1,9 +1,8 @@
 <%= comment %>
 
-%xh---- <%= t('mail.original_message') %> %xn
-
-<%= left( t('mail.from'), 6 ) %> <%= original.author %>
-<%= left( t('mail.to'), 6 ) %> <%= original.to %>
-<%= left( t('mail.sent'), 6 ) %> <%= original.date %>
+%xh---- <%= t('mail.original_message') %> #<%= original.id %> %xn
+<%= left( t('mail.from'), 6 ) %> <%= author %>
+<%= left( t('mail.to'), 6 ) %> <%= original.to_list %>
+<%= left( t('mail.sent'), 6 ) %> <%= date %>
 
 <%= original.body %>

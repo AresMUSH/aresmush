@@ -13,6 +13,8 @@ fs3skills:
             - 21
         minute: 
             - 00
+    
+    dots_beyond_chargen_max: 3
             
     skills_requiring_training:
         - Demolitions
@@ -22,23 +24,25 @@ fs3skills:
         
     xp_costs:
         language:
+            0: 1
             1: 4
             2: 12
         action:
+            0: 1
             1: 1
             2: 2
             3: 3
-            4: 4
-            5: 12
-            6: 12
+            4: 6
+            5: 8
+            6: 8
             7: 12
         background:
+            0: 1
             1: 4
-            2: 12
+            2: 8
         attribute:
             1: 1
-            2: 3
-            3: 6
-            4: 12
+            2: 4
+            3: 8
             
             

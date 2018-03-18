@@ -26,4 +26,6 @@ en:
         page_log_title: "Pages to/from %{name}"
         log_reported: "Thank you.  A report has been created using your page log with %{name} as evidence.  The page log has been reset and you can report this person again if needed."
         page_reported_title: "Pages Reported"
-        page_reported_body: "%{reporter} has reported an issue with the fllowing pages with %{name}.%R%RReason:%R"
+        page_reported_body: "%{reporter} has reported an issue with the following pages from %{name}.%R%RReason:%R"
+        
+        page_monitoring: "Page Monitoring"
