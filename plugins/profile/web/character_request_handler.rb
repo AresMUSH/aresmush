@@ -210,7 +210,7 @@ module AresMUSH
         
         sac = 0
         if (char.damage.count > 0)
-          last_award_ceremony = "2237-11-16"
+          last_award_ceremony =  "2238-03-17"
           prior_damage = char.damage.select { |d| DateTime.strptime(d.ictime_str, '%m/%d/%Y') < DateTime.parse(last_award_ceremony) }
           sac = prior_damage.group_by { |d| d.ictime_str }.count
         end
