@@ -85,11 +85,6 @@ module AresMUSH
           FS3Skills.set_ability(@client, @char, "Firearms", 4)
         end
         
-        it "should error if abiliy rating invalid" do 
-          FS3Skills.stub(:check_rating) { "an error" }
-          @client.should_receive(:emit_failure).with("an error")
-          FS3Skills.set_ability(@client, @char, "Firearms", 4)
-        end
         
         context "success" do
           before do

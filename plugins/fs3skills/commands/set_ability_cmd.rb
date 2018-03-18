@@ -43,7 +43,14 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
-          FS3Skills.set_ability(client, model, self.ability_name, self.rating.to_i)
+          new_rating = self.rating.to_i
+          error = FS3Skills.check_rating(self.ability_name, new_rating)
+          if (error)
+            client.emit_failure error
+            return
+          end
+          
+          FS3Skills.set_ability(client, model, self.ability_name, new_rating)
         end
       end
     end
