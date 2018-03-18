@@ -9,7 +9,9 @@ module AresMUSH
   FS3Attribute.all.each do |a| 
     if (a.rating > 4)
       a.update(rating: 4)
-      chars << a.character.name
+      if (a.character)
+        chars << a.character.name
+      end
     end
   end
   
