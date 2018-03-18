@@ -193,6 +193,8 @@ module AresMUSH
         log << "\n[[/div]]\n\n"
       end
       
+      log << "\n<hr class=\"pose-divider\"/>\n"
+      
       log
     end
 

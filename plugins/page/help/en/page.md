@@ -43,6 +43,7 @@ If someone is harassing you via pages, you can enable page monitoring.  This wil
 
 Once you have the pages logged, you can bring the matter to the game admin's attention using the page report feature.  The pages from the log will automatically be included as an official, verifiable log.  You can report someone more than once if the problem happens again.
 
+`page/monitor` - Shows who you're monitoring.
 `page/monitor <name>=<on or off>` - Starts or stops monitoring pages from someone.
 `page/log <name>` - Review your page log with someone.  This is what will be included if you report them.
 `page/report <name>=<reason>` - Creates a report, including your page log with that person as evidence.

@@ -36,7 +36,7 @@ en:
         new_reply: "%xn%{author} replied to Forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(forum/new)%xn"
         web_new_reply: "New Forum reply: %{subject} by %{author}."
 
-        new_edit: "%xn%{author} edited Forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(frum/new)%xn"
+        new_edit: "%xn%{author} edited Forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(forum/new)%xn"
         caught_up: "All posts on %{category} marked as read."
         caught_up_all: "All posts marked as read."
         no_new_posts: "There are no new posts to read."
