@@ -29,8 +29,8 @@ module AresMUSH
         before do 
           Global.stub(:read_config).with("fs3skills", "max_skills_at_or_above") { { 5 => 2, 7 => 1 } }
           Global.stub(:read_config).with("fs3skills", "max_attrs_at_or_above") { { 4 => 2, 5 => 1 } }
-          Global.stub(:read_config).with("fs3skills", "max_attributes") { 14 }
-          Global.stub(:read_config).with("fs3skills", "max_action_skills") { 20 }
+          Global.stub(:read_config).with("fs3skills", "max_points_on_attrs") { 14 }
+          Global.stub(:read_config).with("fs3skills", "max_points_on_action") { 20 }
           @char = double
         end
         

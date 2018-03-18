@@ -21,8 +21,8 @@ fs3skills:
         4: 2
         3: 4
 
-    max_attributes: 12
-    max_action_skills: 25
+    max_points_on_attrs: 12
+    max_points_on_action: 25
     
     unusual_skills:
         - Celtan
