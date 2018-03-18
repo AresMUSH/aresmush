@@ -20,7 +20,7 @@ module AresMUSH
     
     def self.allowed_ranks_for_group(group)
       config = Ranks.group_rank_config(group)
-      return nil if !config
+      return [] if !config
       ranks = []
       config.values.each do |t|
         ranks << t.select { |t, v| v }

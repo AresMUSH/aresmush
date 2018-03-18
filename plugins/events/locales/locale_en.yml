@@ -17,4 +17,9 @@ en:
         events_updated: "Events have been updated."
         
         no_past_events: "You can't schedule events in the past."
+        signups: "Signups"
+        signed_up: "You sign up for the event."
+        not_signed_up: "You're not signed up for that event."
+        signup_cancelled: "You cancel your signup for the event."
+        
         

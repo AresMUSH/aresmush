@@ -24,6 +24,9 @@ module AresMUSH
       error = FS3Skills.check_attr_points(char)
       too_high << error if error
       
+      error = FS3Skills.check_action_points(char)
+      too_high << error if error
+      
       
       if (too_high.count == 0)
         Chargen.format_review_status(message, t('chargen.ok'))
@@ -64,8 +67,14 @@ module AresMUSH
       
     def self.check_attr_points(char)
       points = AbilityPointCounter.points_on_attrs(char)
-      max = Global.read_config("fs3skills", "max_attributes")
+      max = Global.read_config("fs3skills", "max_points_on_attrs")
       points > max ? t('fs3skills.too_many_attributes', :max => max) : nil
+    end
+    
+    def self.check_action_points(char)
+      points = AbilityPointCounter.points_on_action(char)
+      max = Global.read_config("fs3skills", "max_points_on_action")
+      points > max ? t('fs3skills.too_many_action_skills', :max => max) : nil
     end
         
     def self.total_point_review(char)

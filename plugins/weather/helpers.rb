@@ -8,6 +8,7 @@ module AresMUSH
     
     def self.change_all_weathers
       # Set an initial weather for each area and the default one
+      Weather.current_weather = {}
       areas = Global.read_config("weather", "climate_for_area").keys + ["default"]
       areas.each do |a|
         Weather.change_weather(a)

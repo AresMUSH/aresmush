@@ -14,15 +14,6 @@ module AresMUSH
         OOCTime.local_long_timestr(@enactor, @message.created_at)
       end
       
-      # Some of these fields are redundant, but the forward template needs them.
-      def body
-        @message.body
-      end
-      
-      def to
-        @message.to_list
-      end
-      
       def tags
         @message.tags.join(", ")
       end

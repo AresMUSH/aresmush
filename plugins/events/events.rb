@@ -28,6 +28,10 @@ module AresMUSH
           return EventDeleteCmd
         when "update"
           return EventUpdateCmd
+        when "signup"
+          return EventSignupCmd
+        when "cancel"
+          return EventCancelCmd
         end
       end
       
