@@ -2,6 +2,12 @@ module AresMUSH
   module Weather
     class WeatherCronEventHandler
       def on_event(event)
+        
+        if (!Weather.current_weather)
+          Weather.change_all_weathers
+          return
+        end
+        
         config = Global.read_config("weather", "weather_cron")
         return if !Cron.is_cron_match?(config, event.time)
 
