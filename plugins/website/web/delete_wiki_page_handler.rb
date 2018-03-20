@@ -8,7 +8,6 @@ module AresMUSH
         error = WebHelpers.check_login(request)
         return error if error
         
-        name = WikiPage.sanitize_page_name(name)
         page = WikiPage.find_by_name_or_id(name_or_id)
         if (!page)
           return { error: t('webportal.not_found') }
