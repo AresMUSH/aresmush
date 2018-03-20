@@ -1,8 +1,13 @@
 module AresMUSH  
+  mattr_accessor :handlebars_context
+  
   class HandlebarsTemplate
     def initialize(file)
       template = File.read(file)
-      @handlebars = Handlebars::Context.new
+      if (!AresMUSH.handlebars_context)
+        AresMUSH.handlebars_context = Handlebars::Context.new
+      end
+      @handlebars = AresMUSH.handlebars_context
       template_contents = File.read(file)
       @template = @handlebars.compile(template_contents)
       
