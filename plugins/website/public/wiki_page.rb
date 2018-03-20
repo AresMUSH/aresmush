@@ -20,12 +20,11 @@ module AresMUSH
     before_delete :delete_versions
     
     def self.sanitize_page_name(name)
-      new_name = AresMUSH::Website::FilenameSanitizer.sanitize(name)
-      new_name.gsub(' ', '-').downcase
+      AresMUSH::Website::FilenameSanitizer.sanitize(name)
     end
     
     def self.find_by_name_or_id(name_or_id)
-      name_or_id = name_or_id.gsub(' ', '-').downcase
+      name_or_id = WikiPage.sanitize_page_name(name_or_id)
       page = WikiPage[name_or_id]
       if (!page)
         page = find_one_by_name(name_or_id)

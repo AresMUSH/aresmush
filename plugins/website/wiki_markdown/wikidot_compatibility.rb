@@ -46,10 +46,10 @@ module AresMUSH
           link = link.after(":")
         end
         
-        url = url.downcase.gsub(' ', '-')
         if (url.start_with?("char:"))
           "<a href=\"/char/#{url.after(':')}\">#{link}</a>"
         else
+          url = WikiPage.sanitize_page_name(url)
           "<a href=\"/wiki/#{url}\">#{link}</a>"
         end
       end
