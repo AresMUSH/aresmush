@@ -16,7 +16,9 @@ Each character has a **character profile** showing various information.  Any IC 
 
 ## Managing Your Profile
 
-The basic fields in your profile will be set up as part of character creation (see [Demographics](/help/demographics)).  You can also set custom profile fields for extra things like notes, quotes, etc.  These custom fields can display standard MUSH formatting codes (like ansi and linebreaks).  See [Formatting](/help/formatting).
+The basic fields in your profile will be set up as part of character creation (see [Demographics](/help/demographics)).  You can also set custom profile fields for extra things like notes, quotes, etc.  These will show up on your web page profile; they're too spammy to show in-game.
+
+Custom profile fields can use [Markdown](/help/markdown), including images and links.
 
 `profile/add <field>=<value>` - Adds or updates a custom profile field
 `profile/delete <field>` - Deletes a custom profile field
@@ -27,4 +29,4 @@ If you have a handle, people viewing your character profile will also see a link
 
 ## Setting Relationships
 
-You can also track IC relationships in your profile.  See [ Relationships](/help/relationships).
+You can also track IC relationships in your profile.  See [Relationships](/help/relationships).
