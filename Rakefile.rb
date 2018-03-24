@@ -25,6 +25,15 @@ task :configure do
   AresMUSH::Install.configure_game
 end
 
+
+task :webexport do
+  minimal_boot
+  load File.join(AresMUSH.root_path, "plugins/website/public/filename_sanitizer.rb")
+  load File.join(AresMUSH.root_path, "plugins/website/wiki_exporter.rb")
+  
+  AresMUSH::Website::WikiExporter.export
+end
+
 task :dumpdb do
   minimal_boot
   AresMUSH::Channel.all.each do |c|
@@ -51,7 +60,12 @@ task :upgrade, [:scriptname, :param] do |t, args|
   minimal_boot
   scriptname = args[:scriptname]
   ENV['ares_rake_param'] = args[:param]
+  install_folder = File.join('install', 'upgrades')
   require_relative "install/upgrades/#{scriptname}.rb"
+  File.open(File.join(install_folder, "_last_install.txt"), 'w') do |f|
+    f.puts scriptname
+  end
+  
 end
 
 desc "Run all specs."

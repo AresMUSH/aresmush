@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class WebConfigUpdatedEventHandler
       def on_event(event)
-        file_path = File.join(AresMUSH.game_path, 'aresconfig.js')
+        file_path = File.join(AresMUSH.website_scripts_path, 'aresconfig.js')
 
         config = {
           "mush_port" => Global.read_config("server", "port"),
@@ -16,6 +16,10 @@ module AresMUSH
           "uploads_path" => AresMUSH.website_uploads_path,
           "game_name" => Global.read_config("game", "name")
         }
+        
+        if (!Dir.exist?(AresMUSH.website_scripts_path))
+          Dir.mkdir AresMUSH.website_scripts_path
+        end
         
         File.open(file_path, 'w') do |f|
           f.write "var aresconfig = #{config.to_json};"

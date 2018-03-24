@@ -3,7 +3,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
@@ -11,6 +11,10 @@ echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+# Set up redis PPA so we get a recent version
+
+add-apt-repository -y ppa:chris-lea/redis-server
 
 apt-get update
 apt-get -y upgrade
@@ -29,10 +33,6 @@ apt-get install -y ruby-all-dev
 
 echo -e "${ARES_INSTALL_TEXT} Nginx for web server."
 apt-get install -y nginx
-
-echo -e "${ARES_INSTALL_TEXT} Emacs text editor."
-apt-get install -y emacs
-echo "(setq make-backup-files nil)" > .emacs
 
 echo -e "${ARES_INSTALL_TEXT} Dependency mgmt for ember cli"
 apt-get install -y nodejs
@@ -56,8 +56,9 @@ apt-get install -y unattended-upgrades
 echo -e "${ARES_INSTALL_TEXT} Turn unatteded upgrades on."
 dpkg-reconfigure -plow unattended-upgrades
 
-echo -e "${ARES_INSTALL_TEXT} Start the database server."
+echo -e "${ARES_INSTALL_TEXT} Start the database server, then restart it to ensure that a dump file is immediately generated."
 service redis start
+service redis restart
 
 echo -e "${ARES_INSTALL_TEXT} Create an ares user"
 adduser --disabled-password --gecos "" ares
@@ -71,13 +72,19 @@ echo -e "${ARES_INSTALL_TEXT} Add ares user to groups"
 addgroup www
 usermod -a -G sudo,www,redis ares
 
-echo -e "${ARES_INSTALL_TEXT} Give ares user access to www directory"
-sudo chown ares /var/www/html
-
 echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots"
 echo "sudo -u ares -i '/home/ares/onboot.sh'" > /root/onboot.sh
 echo "sudo hugeadm --thp-never" >> /root/onboot.sh
 chmod +x /root/onboot.sh
+
+echo -e "${ARES_INSTALL_TEXT} Give ares user access to www and redis directory"
+sudo chown ares /var/www/html
+sudo chgrp redis /etc/redis/redis.conf 
+sudo chmod g+rwx /etc/redis/redis.conf  
+sudo chgrp redis /var/lib/redis
+sudo chmod g+rwx /var/lib/redis
+sudo chgrp redis /var/lib/redis/dump.rdb
+sudo chmod g+rwx /var/lib/redis/dump.rdb
 
 echo -e "${ARES_INSTALL_TEXT} User ares created with password $PASSWD  You will need it in a minute.  Please refer back to the installation instructions for the next steps."
 

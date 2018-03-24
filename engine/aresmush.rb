@@ -56,6 +56,10 @@ module AresMUSH
   def self.website_styles_path
     File.join(AresMUSH.game_path, 'styles')
   end
+
+  def self.website_scripts_path
+    File.join(AresMUSH.game_path, 'scripts')
+  end
   
   def self.website_uploads_path
     File.join(AresMUSH.game_path, 'uploads')

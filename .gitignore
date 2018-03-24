@@ -11,6 +11,7 @@ logs/
 
 # Generated files
 # -----------------------------
+wiki_export
 calendar.ics
 .sass-cache
 .DS_Store
@@ -19,6 +20,7 @@ tmp/restart.txt
 blacklist.txt
 *.css
 aresconfig.js
+_last_install.txt
 
 # Process ID scripts
 # -----------------------------

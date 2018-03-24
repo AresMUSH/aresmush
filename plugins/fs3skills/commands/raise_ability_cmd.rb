@@ -21,7 +21,15 @@ module AresMUSH
       def handle
         current_rating = FS3Skills.ability_rating(enactor, self.name)
         mod = cmd.root_is?("raise") ? 1 : -1
-        FS3Skills.set_ability(client, enactor, self.name, current_rating + mod)
+        new_rating = current_rating + mod
+        
+        error = FS3Skills.check_rating(self.name, new_rating)
+        if (error)
+          client.emit_failure error
+          return
+        end
+      
+        FS3Skills.set_ability(client, enactor, self.name, new_rating)
       end
     end
   end

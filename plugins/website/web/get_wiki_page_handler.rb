@@ -17,7 +17,7 @@ module AresMUSH
         name_or_id = WikiPage.sanitize_page_name(name_or_id)
         page = WikiPage.find_by_name_or_id(name_or_id)
         if (!page)
-          return { error: t('webportal.not_found') }
+          return { not_found: true }
         end
         
         lock_info = page.get_lock_info(enactor)

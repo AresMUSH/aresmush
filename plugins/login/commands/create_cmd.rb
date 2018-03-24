@@ -6,12 +6,9 @@ module AresMUSH
       attr_accessor :charname, :password
       
       def parse_args
-        # After agreeing to TOS, this is already cracked.
-        if (cmd.args.class != AresMUSH::HashReader)
-          args = cmd.parse_args(ArgParser.arg1_space_arg2)
-        end
-        self.charname = trim_arg(args.arg1)
-        self.password = args.arg2
+        return if !cmd.args
+        self.charname = cmd.args.before(" ")
+        self.password = cmd.args.after(" ")
       end
       
       def allow_without_login

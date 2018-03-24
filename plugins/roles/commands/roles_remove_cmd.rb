@@ -25,15 +25,13 @@ module AresMUSH
       def handle        
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |char|
 
-          if (!char.has_role?(self.role))
-            client.emit_failure(t('roles.role_not_assigned'))
-            return  
+          error = Roles.remove_role(char, self.role)
+          if (error)
+            client.emit_failure error
+          else
+            Global.logger.info "#{enactor_name} removed role #{self.role} from #{char.name}."     
+            client.emit_success t('roles.role_removed', :name => self.name, :role => self.role.downcase)
           end
-        
-          role = Role.find_one_by_name(self.role)
-          char.roles.delete role
-          client.emit_success t('roles.role_removed', :name => self.name, :role => self.role.downcase)
-          Global.dispatcher.queue_event RoleChangedEvent.new(char)
         end
       end
     end

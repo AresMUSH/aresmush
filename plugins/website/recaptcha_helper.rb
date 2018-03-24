@@ -11,7 +11,7 @@ module AresMUSH
       end
   
       def is_enabled?
-        !!Global.read_config("secrets", "recaptcha")
+        !site_key.blank? && !secret.blank?
       end
   
       def verify(response)

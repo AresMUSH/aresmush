@@ -36,20 +36,21 @@ module AresMUSH
             .sort_by {|p| p.name }
             .map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }}
 
-            
         {
           id: scene.id,
           title: scene.title,
           location: scene.location,
+          completed: scene.completed,
           shared: scene.shared,
           summary: scene.summary,
           tags: scene.tags,
           icdate: scene.icdate,
           participants: participants,
+          privacy: scene.completed ? "Public" : (scene.private_scene ? "Private" : "Public"),
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           log: log,
           plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,
-          related_scenes: scene.related_scenes.map { |r| { title: r.title, id: r.id }},
+          related_scenes: scene.related_scenes.map { |r| { title: r.date_title, id: r.id }},
           can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
           can_delete: enactor && enactor.is_admin?,
           has_liked: enactor && scene.has_liked?(enactor),

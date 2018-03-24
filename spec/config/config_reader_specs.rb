@@ -36,8 +36,8 @@ module AresMUSH
         @config_reader.get_config("a", "b").should eq "c"
       end
       
-      it "should raise error if the section for the requested subsection doesn't exist" do
-        expect { @config_reader.get_config("d", "e") }.to raise_error(RuntimeError)
+      it "should return nil if the section for the requested subsection doesn't exist" do
+        @config_reader.get_config("d", "e").should be_nil
       end
       
       it "should return sub-subsection if it exists" do

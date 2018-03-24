@@ -19,9 +19,8 @@ module AresMUSH
       db_url = STDIN.gets.chomp
       db_url = default_if_blank(db_url, '127.0.0.1:6379')
       
-      print "\nCreate a database password > "
-      db_password = STDIN.gets.chomp
-      error_if_blank(db_password, "DB Password")
+      db_password = ('a'..'z').to_a.shuffle[0,30].join
+      puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
       
       template_data =
       {
@@ -111,7 +110,8 @@ module AresMUSH
         "category" => category,
         "game_desc" => game_desc,
         "website" => website,
-        "public_game" => false
+        "public_game" => false,
+        "game_status" => 'In Development'
       }
   
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'server.yml.erb'), :encoding => "UTF-8"))

@@ -24,7 +24,6 @@ module AresMUSH
         if (!char.is_approved?)
           return { error: t('profile.not_yet_approved') }
         end
-        pp request.args[:demographics]
         request.args[:demographics].each do |name, value|
           if (value.blank?)
             return { error: t('webportal.missing_required_fields') }
@@ -32,10 +31,13 @@ module AresMUSH
           char.update_demographic name, value
         end
         
-        char.update(profile_gallery: request.args[:gallery])
-        char.update(profile_image: request.args[:profile_image])
-        char.update(profile_icon: request.args[:profile_icon])
-        char.update(profile_tags: request.args[:tags])
+        gallery = (request.args[:gallery] || []).map { |g| g.downcase }
+        profile_image = request.args[:profile_image] ? request.args[:profile_image].downcase : nil
+        profile_icon = request.args[:profile_icon] ? request.args[:profile_icon].downcase : nil
+        char.update(profile_gallery: gallery)
+        char.update(profile_image: profile_image)
+        char.update(profile_icon: profile_icon)
+        char.update(profile_tags: request.args[:tags] || [])
         
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|

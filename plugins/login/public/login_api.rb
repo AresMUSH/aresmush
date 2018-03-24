@@ -21,6 +21,14 @@ module AresMUSH
       return true if !host_search.blank? && host.include?(host_search)
       return false
     end
+    
+    def self.is_online?(char)
+      !!Login.find_client(char)
+    end
+    
+    def self.find_client(char)
+      Global.client_monitor.find_client(char)
+    end
       
     def self.login_char(char, client)
       # Handle reconnect

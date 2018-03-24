@@ -25,13 +25,9 @@ module AresMUSH
             return
           end
 
-          model.update(is_approved: false)
           model.update(approval_job: nil)
           model.update(chargen_locked: false)
-          role = Role.find_one(name: "approved")
-          if (role)
-            model.roles.delete role
-          end
+          Roles.remove_role(model, "approved")
           client.emit_success t('chargen.app_unapproved', :name => model.name)
         end
       end

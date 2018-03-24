@@ -19,7 +19,6 @@ module AresMUSH
 
             if (response.is_success?)
               if (response.data["linked"])
-                Global.logger.debug response
                 char.update(pose_quote_color: response.data["quote_color"])
                 char.update(page_autospace: response.data["page_autospace"])
                 char.update(page_color: response.data["page_color"])

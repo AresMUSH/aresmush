@@ -10,7 +10,7 @@ module AresMUSH
   end
   
   builder = Role.find_one_by_name("builder")
-  builder.update(permissions: ["desc_places", "setup_hospitals", "manage_rooms", "build", "teleport"])
+  builder.update(permissions: ["desc_places", "manage_rooms", "build", "teleport"])
   
   everyone = Role.find_one_by_name("everyone")
   everyone.update(permissions: ["go_home"] )

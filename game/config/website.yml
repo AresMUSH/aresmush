@@ -12,3 +12,4 @@ website:
   character_gallery_subgroup: Position
     
   portal_requires_registration: false
+  website_code_path: '~/ares-webportal'

@@ -26,7 +26,7 @@ module AresMUSH
     
     def self.perform_backup(client = nil)
       type = Global.read_config("backup", "backup_type")
-      case (type)
+      case (type.downcase)
       when "aws"
         backup = AwsBackup.new
         backup.backup(client)
@@ -43,7 +43,12 @@ module AresMUSH
       db_path = Global.read_config("database", "path")
       timestamp = Time.now.strftime("%Y%m%d%k%M%S")        
       backup_filename = "#{timestamp}-backup.zip"
-      backup_path = File.join(AresMUSH.root_path, "backups", backup_filename)
+      backup_dir = File.join(AresMUSH.root_path, "backups")
+      backup_path = File.join(backup_dir, backup_filename)
+      
+      if (!Dir.exist?(backup_dir))
+        Dir.mkdir(backup_dir)
+      end
       
       Zip::File.open(backup_path, 'w') do |zipfile|
         Dir["#{AresMUSH.game_path}/**/**"].each do |file|

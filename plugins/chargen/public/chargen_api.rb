@@ -8,6 +8,10 @@ module AresMUSH
       "#{msg.ljust(50)} #{error}"
     end
     
+    def self.is_chargen_locked?(char)
+      char.is_approved? || char.chargen_locked
+    end
+    
     def self.check_chargen_locked(char)
       return false if char.is_admin?
       return t('chargen.cant_be_changed') if char.is_approved?
@@ -20,6 +24,10 @@ module AresMUSH
     end
     
     def self.hook_app_review(char)
+      if !Global.read_config('chargen', 'hooks_required')
+        return ""
+      end
+        
       message = t('chargen.hook_review')
       status = char.rp_hooks.blank? ?  t('chargen.not_set') : t('chargen.ok')
       
@@ -45,7 +53,7 @@ module AresMUSH
       char.approval_job ? t('chargen.approval_reminder') : nil
     end
     
-    def self.submit_app(char)
+    def self.submit_app(char, app_notes = nil)
       job = char.approval_job
       
       if (!job)
@@ -60,13 +68,15 @@ module AresMUSH
         job = result[:job]
         char.update(chargen_locked: true)
         char.update(approval_job: job)
-        return t('chargen.app_submitted')
+        
+        return t('chargen.app_submitted', :notes => app_notes)
       else
         char.update(chargen_locked: true)
         Jobs.change_job_status(char,
           job,
           Global.read_config("chargen", "app_resubmit_status"),
-          t('chargen.app_job_resubmitted'))
+          t('chargen.app_job_resubmitted', :notes => app_notes))
+          
         return t('chargen.app_resubmitted')
       end
     end    

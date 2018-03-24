@@ -15,11 +15,18 @@ module AresMUSH
           return { error: t('dispatcher.you_are_statue') }
         end
         
-        if (char.is_valid_api_token?(token))
-          return { token_valid: true }
+        if (!char.is_valid_api_token?(token))
+          return { error: t('webportal.session_expired') }    
         end
         
-        { error: t('webportal.session_expired') }        
+        {
+          token: char.login_api_token,
+          name: char.name,
+          id: char.id,
+          is_approved: char.is_approved?,
+          is_admin: char.is_admin?,
+          is_coder: char.is_coder?
+        }
       end
     end
   end

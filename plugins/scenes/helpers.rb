@@ -3,21 +3,28 @@ module AresMUSH
     
     def self.new_scene_activity(scene)
       Global.client_monitor.notify_web_clients(:new_scene_activity, "#{scene.id}") do |char|
-        char && Scenes.can_access_scene?(char, scene)
+        char && (!scene.private_scene || Scenes.participants_and_room_chars(scene).include?(char))
       end
     end
     
     def self.can_manage_scene?(actor, scene)
       return false if !actor
-      (scene.owner == actor) || 
-      actor.has_permission?("manage_scenes")
+      (scene.owner == actor) || actor.has_permission?("manage_scenes")
     end
     
     
     def self.scene_types
       AresMUSH::Global.read_config('scenes', 'scene_types' )      
     end
-    
+
+    def self.can_read_scene?(actor, scene)
+      return !scene.is_private? if !actor
+      return true if scene.owner == actor
+      return true if !scene.is_private?
+      return true if actor.room == scene.room
+      scene.participants.include?(actor)
+    end
+        
     def self.can_access_scene?(actor, scene)
       return !scene.is_private? if !actor
       return true if Scenes.can_manage_scene?(actor, scene)
@@ -78,6 +85,18 @@ module AresMUSH
       Scenes.new_scene_activity(scene)
     end    
     
+    def self.participants_and_room_chars(scene)
+      participants = scene.participants.to_a
+      if (scene.room)
+        Rooms.online_chars_in_room(scene.room).each do |c|
+          if (!participants.include?(c))
+            participants << c
+          end
+        end
+      end
+      participants
+    end
+    
     def self.set_scene_location(scene, location)
       matched_rooms = Room.find_by_name_and_area location
       
@@ -96,6 +115,7 @@ module AresMUSH
 
       message = t('scenes.location_set', :description => description)
       if (scene.temp_room && scene.room)
+        location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         Describe.update_current_desc(scene.room, description)
       end
@@ -133,10 +153,11 @@ module AresMUSH
     end
     
     def self.create_scene_temproom(scene)
-      room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id} - #{scene.location}")
+      room = Room.create(scene: scene, room_type: "RPR", name: "Scene #{scene.id}")
       ex = Exit.create(name: "O", source: room, dest: Game.master.ooc_room)
       scene.update(room: room)
       scene.update(temp_room: true)
+      Scenes.set_scene_location(scene, scene.location)
       room
     end
     
@@ -144,11 +165,13 @@ module AresMUSH
       log = ""
       div_started = false
       scene.poses_in_order.to_a.each do |pose|
+        next if pose.is_ooc
+        
         formatted_pose = pose.pose || ""
         formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
         
         formatted_pose = formatted_pose.split("\n").map { |line| line.strip }.join("\n")
-        
+                
         if (pose.is_system_pose?)
           if (!div_started)
             log << "[[div class=\"scene-system-pose\"]]\n"
@@ -157,8 +180,6 @@ module AresMUSH
           log << formatted_pose
         elsif (pose.is_setpose?)
           log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]\n\n"
-        elsif (pose.is_ooc)
-          # Strip OOC from log
         else
           if (div_started)
             log << "\n[[/div]]\n\n"
@@ -171,6 +192,8 @@ module AresMUSH
       if (div_started)
         log << "\n[[/div]]\n\n"
       end
+      
+      log << "\n<hr class=\"pose-divider\"/>\n"
       
       log
     end
@@ -198,7 +221,7 @@ module AresMUSH
       
       if (!is_ooc)
         if (room.room_type != "OOC")
-          enactor.room.update_pose_order(enactor.name)
+          enactor.room.update_pose_order(enactor.name.titlecase)
           Scenes.notify_next_person(enactor.room)
         end
       end
@@ -251,6 +274,12 @@ module AresMUSH
       end
       
       "#{char.pose_autospace}#{nospoof}#{place_title}#{colored_pose}"
-    end   
+    end  
+    
+    def self.find_all_scene_links(scene)
+      links1 = SceneLink.find(log1_id: scene.id)
+      links2 = SceneLink.find(log2_id: scene.id)
+      links1.to_a.concat(links2.to_a)
+    end 
   end
 end

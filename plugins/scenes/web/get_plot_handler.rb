@@ -16,7 +16,7 @@ module AresMUSH
         if (edit_mode)
           description = plot.description
         else
-          description = WebHelpers.format_markdown_for_html(plot.description)
+          description = plot.description.blank? ? nil : WebHelpers.format_markdown_for_html(plot.description)
         end
         
         scenes = plot.scenes.select { |s| s.shared }

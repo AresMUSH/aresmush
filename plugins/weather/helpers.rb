@@ -3,11 +3,12 @@ module AresMUSH
     mattr_accessor :current_weather
    
     def self.can_change_weather?(actor)
-      actor.has_permission?("change_weather")
+      actor.has_permission?("manage_weather")
     end
     
     def self.change_all_weathers
       # Set an initial weather for each area and the default one
+      Weather.current_weather = {}
       areas = Global.read_config("weather", "climate_for_area").keys + ["default"]
       areas.each do |a|
         Weather.change_weather(a)

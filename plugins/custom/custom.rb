@@ -10,8 +10,6 @@ module AresMUSH
     def self.shortcuts
       Global.read_config("custom", "shortcuts")
     end
-   
- 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "award"
@@ -30,8 +28,11 @@ module AresMUSH
       nil     
     end
 
-    def self.get_event_handler(event_name) 
-      nil
+    def self.get_web_request_handler(request) 
+      case request.cmd
+      when "kills"
+        return GetKillsCmdHandler
+      end
     end
   end
 end

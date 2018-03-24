@@ -3,12 +3,13 @@ if [[ $EUID == 0 ]]; then
    exit 1
 fi
 
-if [[ $# -lt 2 ]] ; then
-    echo 'You need to specify the GitHub clone URL for the game code.'
-    exit 1
-fi
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
-export ARES_INSTALL_TEXT="<\033[0;32m\e[1mINSTALL\033[0m>"
+GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
+WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
+
+echo -e "${ARES_INSTALL_TEXT} Getting game code from ${GAME_CLONE_URL}."
+echo -e "${ARES_INSTALL_TEXT} Getting web portal code from ${WEBPORTAL_CLONE_URL}."
 
 echo -e "${ARES_INSTALL_TEXT} Restart game when server restarts."
 
@@ -38,9 +39,9 @@ echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
 
 gem install bundler
 
-git clone $1
+git clone ${GAME_CLONE_URL}
 
-git clone $2
+git clone ${WEBPORTAL_CLONE_URL}
 
 echo -e "${ARES_INSTALL_TEXT} Install default web config."
 
@@ -49,7 +50,7 @@ sudo service nginx restart
 
 echo -e "${ARES_INSTALL_TEXT} Setup the game."
 
-cd aresmush
+cd /home/ares/aresmush
 
 mkdir game/logs
 
@@ -61,7 +62,7 @@ bin/wipedb
 
 echo -e "${ARES_INSTALL_TEXT} Setup the web portal."
 
-cd ../ares-webportal
+cd /home/ares/ares-webportal
 
 chmod +x bin/*
 
@@ -77,10 +78,16 @@ npm install -g ember-cli
 echo -e "${ARES_INSTALL_TEXT} Bower for web dependencies"
 npm install -g bower
 
-echo -e "${ARES_INSTALL_TEXT} Get the code."
-
-bin/deploy
+echo -e "${ARES_INSTALL_TEXT} Creating game dir link."
 
 cd /var/www/html/
 
 ln -s /home/ares/aresmush/game game
+
+echo -e "${ARES_INSTALL_TEXT} Starting game"
+
+cd /home/ares/aresmush
+
+bin/startares
+
+echo -e "${ARES_INSTALL_TEXT} Done!"

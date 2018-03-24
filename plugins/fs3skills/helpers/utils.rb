@@ -1,9 +1,5 @@
 module AresMUSH
   module FS3Skills
-    def self.receives_roll_results?(actor)
-      actor.has_permission?("receives_roll_results")
-    end
-    
     def self.can_manage_abilities?(actor)
       actor.has_permission?("manage_abilities")
     end

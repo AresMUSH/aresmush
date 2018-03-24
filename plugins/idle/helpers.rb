@@ -1,7 +1,7 @@
 module AresMUSH
   module Idle
     def self.can_idle_sweep?(actor)
-      actor.has_permission?("idle_sweep")
+      actor.has_permission?("manage_idle")
     end
     
     def self.can_manage_roster?(actor)
@@ -31,7 +31,7 @@ module AresMUSH
     end
     
     def self.is_exempt?(actor)
-      actor.has_permission?("idle_exempt_roles")
+      actor.has_any_role?(Global.read_config("idle", "idle_exempt_roles"))
     end
     
     def self.idle_cleanup(char)

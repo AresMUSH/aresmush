@@ -57,6 +57,7 @@ module AresMUSH
     end
     
     def self.get_file_info(file_path)
+      return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
       {
       path: relative_path,
@@ -118,6 +119,17 @@ module AresMUSH
       css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
       css = Sass::Engine.for_file(scss_path, {}).render
       File.open(css_path, "wb") {|f| f.write(css) }
+    end
+    
+    def self.deploy_portal(client = nil)
+      Global.dispatcher.spawn("Deploying website", nil) do
+        install_path = Global.read_config('website', 'website_code_path')
+        path = File.join( install_path, "bin", "deploy" )
+        output = `#{path} #{install_path} 2>&1`
+      
+        Global.logger.info "Deployed web portal: #{output}"
+        client.emit_ooc t('webportal.portal_deployed', :output => output) if client
+      end
     end
   end
 end

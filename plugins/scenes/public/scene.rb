@@ -61,6 +61,7 @@ module AresMUSH
       if (self.scene_log)
         self.scene_log.delete
       end
+      Scenes.find_all_scene_links(self).each { |s| s.delete }
     end
     
     def all_info_set?

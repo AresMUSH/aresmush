@@ -48,8 +48,8 @@ en:
         no_permission_to_view_bg: "You don't have permission to view that background."
         accidental_view_bg: "Pretty sure you meant to use bg/set."
         
-        app_job_submitted: "App submitted."
-        app_job_resubmitted: "App re-submitted."
+        app_job_submitted: "App submitted.%RNotes: %{notes}"
+        app_job_resubmitted: "App re-submitted.%RNotes: %{notes}"
         app_job_unsubmitted: "App un-submitted."
         
         app_confirm: "We suggest you review your app one final time using the 'app' command to check for issues before you submit.  Use 'app/confirm' if you're sure you're ready."
@@ -77,7 +77,7 @@ en:
         
         no_special_characters: "Hook names may not contain special characters."
         
-        hook_set: "RP hook %{name} added."
+        hooks_set: "RP hooks set."
         hook_not_found: "RP hook %{name} not found."
         hook_removed: "RP hook %{name} removed."
         hooks_added: "%{num} RP hooks added. (%{min} min)"

@@ -13,10 +13,18 @@ module AresMUSH
       {}
     end
  
+    def self.load
+      WebHelpers.rebuild_css
+    end
+    
     def self.get_cmd_handler(client, cmd, enactor)       
       case cmd.root      
       when "website"
-        return WebsiteCmd
+        if (cmd.switch_is?("deploy"))
+          return WebsiteDeployCmd
+        else
+          return WebsiteCmd
+        end
       end
       
       nil
@@ -40,6 +48,8 @@ module AresMUSH
       ## WIKI
       when "createWiki"
         return CreateWikiPageRequestHandler
+      when "deleteWiki"
+        return DeleteWikiPageRequestHandler
       when "editWiki"
         return EditWikiPageRequestHandler
       when "wikiPage"
@@ -50,8 +60,6 @@ module AresMUSH
         return GetWikiPageListRequestHandler
       when "wikiPageSource"
         return GetWikiPageSourceRequestHandler
-      when "wikiPreview"
-        return WikiPreviewRequestHandler
       when "wikiTag"
         return GetWikiTagRequestHandler
 
@@ -92,12 +100,24 @@ module AresMUSH
       ## MISC
       when "game"
         return GetGameInfoRequestHandler
+      when "editGame"
+        return EditGameRequestHandler
+      when "saveGame"
+        return SaveGameRequestHandler
+      when "editPlugins"
+        return EditPluginsRequestHandler
+      when "savePlugins"
+        return SavePluginsRequestHandler
+      when "markdownPreview"
+        return MarkdownPreviewRequestHandler
       when "recentChanges"
         return GetRecentChangesRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
       when "shutdown"
         return ShutdownRequestHandler
+      when "deployWebsite"
+        return DeployWebsiteRequestHandler
       end
       nil
     end

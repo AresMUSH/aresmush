@@ -12,8 +12,8 @@ module AresMUSH
         error = WebHelpers.check_login(request)
         return error if error
         
-        error = Chargen.check_chargen_locked(enactor)
-        return error if error
+        error = Chargen.check_chargen_locked(char)
+        return { error: error } if error
         
         Chargen.save_char(char, chargen_data)
         FS3Skills.reset_char(nil, char)

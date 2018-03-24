@@ -32,8 +32,12 @@ module AresMUSH
       def scene_room_name(char)
         name = Who.who_room_name(char)
         scene = char.room.scene
-        if (scene && scene.private_scene)
-          name = t('who.private_scene')
+        if (scene)
+          if (scene.private_scene)
+            name = t('who.private_scene')
+          else
+            name = name.after('- ')
+          end
         end
         scene_name = scene ? left("\##{scene.id}", 6) : "      "
         "#{scene_name}#{name}"

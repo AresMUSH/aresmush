@@ -42,6 +42,7 @@ module AresMUSH
         description: game_config['description'],
         website: game_config["website"],
         public_game: game_config["public_game"],
+        status: game_config["status"],
         activity: Game.master.login_activity
       }
             

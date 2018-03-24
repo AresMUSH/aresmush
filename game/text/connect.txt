@@ -16,11 +16,10 @@
 %xr                  |__| | \| | |--- | |___ |--|  |  | [__] | \|%xn
 ==============================================================================
                            %xhmush.aresmush.com:7206%xn
-                    %xhhttp://bsgunificationmush.wikidot.com/%xn
+                    %xhhttp://bsgu.aresmush.com/%xn
        Running FS3 3rd Ediion and AresMUSH 0.4 BETA (www.aresmush.com)
 --------------------------------------------------------------------------------
        This game is not for minors. Please 'QUIT' if you are under 18.        
 --------------------------------------------------------------------------------
 Type %xctour%xn to connect a guest to have a look around.
 Type %xchelp login%xn for help creating a character and logging in.
---------------------------------------------------------------------------------

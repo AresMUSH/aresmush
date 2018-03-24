@@ -10,7 +10,7 @@ module AresMUSH
     end
     
     def self.can_manage_bgs?(actor)
-      actor.has_permission?("can_approve")
+      actor.has_permission?("manage_apps")
     end     
     
     def self.can_view_bgs?(actor)
@@ -59,9 +59,7 @@ module AresMUSH
     
     def self.save_char(char, chargen_data)
       alerts = []
-      
-      pp chargen_data
-      
+            
       chargen_data[:demographics].each do |k, v|
         char.update_demographic(k, v[:value])
       end
@@ -78,7 +76,7 @@ module AresMUSH
       end
       
       chargen_data[:groups].each do |k, v|
-        Demographics.set_group(char, k, v[:value])
+        Demographics.set_group(char, v[:name], v[:value])
       end
       
       if (Ranks.is_enabled?)
@@ -90,6 +88,7 @@ module AresMUSH
       
       char.update(cg_background: WebHelpers.format_input_for_mush(chargen_data[:background]))
       
+      char.update(rp_hooks: WebHelpers.format_input_for_mush(chargen_data[:rp_hooks]))
       Describe.update_current_desc(char, WebHelpers.format_input_for_mush(chargen_data[:desc]))
       shortdesc = chargen_data[:shortdesc]
       if (!shortdesc.blank?)

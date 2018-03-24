@@ -14,6 +14,10 @@ module AresMUSH
         desc = split[3..-1].join("/")
         date_time = OOCTime.parse_datetime(date.strip.downcase)
         
+        if (date_time < DateTime.now)
+          return nil, nil, t('events.no_past_events')
+        end
+        
         return date_time, desc, nil
       rescue Exception => e
         error = t('events.invalid_event_date', 

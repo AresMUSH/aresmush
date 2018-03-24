@@ -16,7 +16,7 @@ module AresMUSH
     def self.localtime(viewer, datetime)
       return "" if !datetime
       setting = viewer ? viewer.timezone : nil
-      timezone = Timezone::Zone.new :zone => setting || "America/New_York"
+      timezone = Timezone[setting || "America/New_York"]
       timezone.time datetime      
     end
     

@@ -17,10 +17,7 @@ module AresMUSH
       
       client.emit_success t('cookies.cookie_given', :name => recipient.name)
 
-      other_client = Login.find_client(recipient)
-      if (other_client)
-        other_client.emit_ooc t('cookies.cookie_received', :name => giver.name)
-      end
+      Global.client_monitor.emit_ooc_if_logged_in(recipient,  t('cookies.cookie_received', :name => giver.name))
       
       Global.logger.info "#{giver.name} gave #{recipient.name} a cookie."
     end

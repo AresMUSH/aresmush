@@ -91,13 +91,13 @@ When a room is marked as a hospital, people who are there heal faster.
 
 `hospitals` - Finds hospitals.
 
-Admins or builders with the `setup_hospitals` permission can designate rooms as hospitals.
+Admins or builders with the `build` permission can designate rooms as hospitals.
 
 `hospital/on` or `hospital/off`- Makes the current room a hospital or not.
 
 ## Adjusting Damage
 
-Admins, combat organizers, and characters with the manage_damage permission can add or modify damage.
+Admins, combat organizers, and characters with the manage_combat permission can add or modify damage.
 
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
 `damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.

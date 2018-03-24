@@ -2,6 +2,7 @@ idle:
     idle_exempt_roles:
         - admin
         - builder
+        - coder
         - guest
         
     monthly_reminder_cron:

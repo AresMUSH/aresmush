@@ -4,6 +4,7 @@ roles:
 
     restricted_roles:
         - admin
+        - coder
     
     admin_list_roles:
         - admin
