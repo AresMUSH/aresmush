@@ -60,6 +60,18 @@ bin/configure
 
 bin/wipedb
 
+echo -e "${ARES_INSTALL_TEXT} Creating game dir link."
+
+cd /var/www/html/
+
+ln -s /home/ares/aresmush/game game
+
+echo -e "${ARES_INSTALL_TEXT} Starting game"
+
+cd /home/ares/aresmush
+
+bin/startares
+
 echo -e "${ARES_INSTALL_TEXT} Setup the web portal."
 
 cd /home/ares/ares-webportal
@@ -75,16 +87,7 @@ nvm install node
 echo -e "${ARES_INSTALL_TEXT} Ember CLI"
 npm install -g ember-cli
 
-echo -e "${ARES_INSTALL_TEXT} Creating game dir link."
-
-cd /var/www/html/
-
-ln -s /home/ares/aresmush/game game
-
-echo -e "${ARES_INSTALL_TEXT} Starting game"
-
-cd /home/ares/aresmush
-
-bin/startares
+bin/install
+bin/deploy
 
 echo -e "${ARES_INSTALL_TEXT} Done!"
