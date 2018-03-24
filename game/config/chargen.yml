@@ -35,6 +35,10 @@ chargen:
             help: hooks
         handles:
             help: handles
+        alts:
+            tutorial: 'alts.md'
+        wiki:
+            help: wiki
         profile:
             help: profile
         lastwill:
