@@ -22,6 +22,14 @@ module AresMUSH
       char == author
     end
     
+    def last_updated
+      if (bbs_replies.empty?)
+        return self.updated_at
+      else
+        return bbs_replies.to_a[-1].updated_at
+      end
+    end
+    
     def author_name
       !self.author ? t('forum.deleted_author') : self.author.name
     end

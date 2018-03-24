@@ -71,23 +71,25 @@ module AresMUSH
       
       recent_profiles = ProfileVersion.all.select { |p| Time.now - p.created_at < sixty_days_in_seconds }
       recent_wiki = WikiPageVersion.all.select { |w| Time.now - w.created_at < sixty_days_in_seconds}
+           
       
       if (unique_only)
          recent_profiles =  recent_profiles.sort_by { |p| p.created_at }
-            .reverse
-            .uniq { |p| p.character }
+           .reverse
+           .uniq { |p| p.character }
           recent_wiki = recent_wiki.sort_by { |w| w.created_at }
-            .reverse
-            .uniq { |w| w.wiki_page }
+           .reverse
+           .uniq { |w| w.wiki_page }
       end
-          
+                
       recent_changes = []
       recent_profiles.each do |p|
         recent_changes << {
           title: p.character.name,
           id: p.id,
           change_type: 'char',
-          created: p.created_at,
+          created_at: p.created_at,
+          created: OOCTime.local_long_timestr(nil, p.created_at),
           name: p.character.name,
           author: p.author_name
         }
@@ -97,13 +99,14 @@ module AresMUSH
           title: w.wiki_page.heading,
           id: w.id,
           change_type: 'wiki',
-          created: w.created_at,
+          created_at: w.created_at,
+          created: OOCTime.local_long_timestr(nil, w.created_at),
           name: w.wiki_page.name,
           author: w.author_name
         }
       end
         
-      recent_changes = recent_changes.sort_by { |r| r[:created] }.reverse
+      recent_changes = recent_changes.sort_by { |r| r[:created_at] }.reverse
       
       if (limit)
         recent_changes[0..limit]

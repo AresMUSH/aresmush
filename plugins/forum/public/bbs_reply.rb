@@ -18,5 +18,9 @@ module AresMUSH
     def created_date_str(char)
       OOCTime.local_long_timestr(char, self.created_at)
     end    
+
+    def created_date_str_short(char)
+      OOCTime.local_short_timestr(char, self.created_at)
+    end    
   end
 end
