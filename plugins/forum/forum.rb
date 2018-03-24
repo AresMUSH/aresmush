@@ -85,6 +85,8 @@ module AresMUSH
         return ForumTopicRequestHandler
       when "forumUnread"
         return ForumUnreadRequestHandler
+      when "forumRecent"
+        return RecentForumPostsRequestHandler
       end
     end
     
