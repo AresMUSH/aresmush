@@ -28,6 +28,8 @@ module AresMUSH
           template = Describe.desc_template(model, enactor)
           client.emit template.render
         end
+        
+        
       end
     end
   end
