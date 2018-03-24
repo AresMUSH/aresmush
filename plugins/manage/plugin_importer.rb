@@ -20,18 +20,19 @@ module AresMUSH
           return
         end
   
-        import_engine
+        import_plugin
+        import_game
         import_portal
         
         puts "Plugin #{@plugin_name} added."
       end
       
-      def import_engine
+      def import_plugin
         
-        engine_dir = File.join(@source_dir, "plugin")
+        plugin_dir = File.join(@source_dir, "plugin")
         dest_path = File.join(AresMUSH.root_path, "plugins", @plugin_name)  
         
-        if (!Dir.exist?(engine_dir))
+        if (!Dir.exist?(plugin_dir))
           return
         end
         
@@ -39,22 +40,31 @@ module AresMUSH
           Dir.mkdir dest_path
         end
         
-        if (!File.exists?(File.join(engine_dir, "#{@plugin_name}.rb")))
+        if (!File.exists?(File.join(plugin_dir, "#{@plugin_name}.rb")))
           puts "ERROR! Plugin module file #{@plugin_name}.rb not found."
           return
         end
-  
-        puts "Copying game engine files to #{dest_path}."  
-        plugin_files = Dir["#{engine_dir}/*"]
+        
+        puts "Copying plugin files to #{dest_path}."  
+        plugin_files = Dir["#{plugin_dir}/*"]
         plugin_files.each do |f|
           FileUtils.cp_r(f, dest_path)
         end
+      end
+      
+      def import_game
+  
+        game_dir = File.join(@source_dir, "game")
+        dest_path = AresMUSH.game_path
         
-        config_files = Dir["#{dest_path}/*.yml"]
-        config_files.each do |c|
-          dest_path = File.join(AresMUSH.game_path, "config", File.basename(c))
-          puts "Copying config file #{c} to #{dest_path}."
-          FileUtils.mv(c, dest_path)
+        if (!Dir.exist?(game_dir))
+          return
+        end
+        
+        puts "Copying game files to #{dest_path}."  
+        game_files = Dir["#{game_dir}/*"]
+        game_files.each do |f|
+          FileUtils.cp_r(f, dest_path)
         end
       end
       
