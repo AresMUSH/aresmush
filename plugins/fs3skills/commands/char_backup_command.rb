@@ -18,13 +18,18 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
-          Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
-          Global.dispatcher.queue_command(client, Command.new("info #{model.name}"))
+          
+          ["sheet", "bg", "profile", "damage", "relationships"].each_with_index do |cmd, seconds|
+            Global.dispatcher.queue_timer(seconds, "Character backup #{model.name}", client) do
+              Global.dispatcher.queue_command(client, Command.new("#{cmd} #{model.name}"))
+            end
+          end
           
           template = Describe.desc_template(model, enactor)
           client.emit template.render
         end
+        
+        
       end
     end
   end

@@ -13,7 +13,7 @@ module AresMUSH
     def self.configure_game
       template_path = File.join(File.dirname(__FILE__), 'templates')
     
-      puts "\nLet's set up your database.  Please enter the requested information."
+      puts "\nLet's set up your database.  The default options should suffice unless you've done something unusual with your Redis installation."
 
       print "Database url (default 127.0.0.1:6379)> "
       db_url = STDIN.gets.chomp

@@ -2,6 +2,7 @@ require 'open-uri'
 
 module AresMUSH
   module Website
+   
     module WikiExporter
       def self.export
         begin
@@ -197,7 +198,10 @@ module AresMUSH
     class ExportHandlebarsTemplate
       def initialize(file)
         template = File.read(file)
-        @handlebars = Handlebars::Context.new
+        if (!AresMUSH.handlebars_context)
+          AresMUSH.handlebars_context = Handlebars::Context.new
+        end
+        @handlebars = AresMUSH.handlebars_context
         template_contents = File.read(file)
         
         @handlebars.register_helper("link-to") do |this, page, param1, param2, block |

@@ -1,0 +1,11 @@
+choco install git
+choco install yarn
+choco install redis-64
+choco install github
+choco install nodejs.install
+choco install ruby --version 2.4.3.1
+choco install ruby2.devkit
+ 
+gem install bundler
+
+npm install -g ember-cli
