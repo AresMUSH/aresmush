@@ -41,7 +41,7 @@ module AresMUSH
         end
         
         if (!File.exists?(File.join(plugin_dir, "#{@plugin_name}.rb")))
-          puts "ERROR! Plugin module file #{@plugin_name}.rb not found."
+          puts "ERROR! Plugin module file #{@plugin_name}.rb not found.  This plugin can't be automatically imported."
           return
         end
         

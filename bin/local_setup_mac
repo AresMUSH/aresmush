@@ -13,5 +13,3 @@ rvm use ruby-2.4.1
 gem install bundler
 
 npm install -g ember-cli
-npm install -g bower
-

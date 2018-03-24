@@ -9,5 +9,3 @@ choco install ruby2.devkit
 gem install bundler
 
 npm install -g ember-cli
-npm install -g bower
-

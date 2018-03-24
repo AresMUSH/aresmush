@@ -75,9 +75,6 @@ nvm install node
 echo -e "${ARES_INSTALL_TEXT} Ember CLI"
 npm install -g ember-cli
 
-echo -e "${ARES_INSTALL_TEXT} Bower for web dependencies"
-npm install -g bower
-
 echo -e "${ARES_INSTALL_TEXT} Creating game dir link."
 
 cd /var/www/html/
