@@ -13,4 +13,4 @@ website:
     
     portal_requires_registration: false
     
-    website_code_path: '~/ares-webportal'
+    website_code_path: '/home/ares/ares-webportal'

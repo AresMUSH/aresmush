@@ -25,6 +25,12 @@ task :configure do
   AresMUSH::Install.configure_game
 end
 
+task :add_plugin, [:plugin_name] do |t, args|
+  minimal_boot
+  plugin_name = args[:plugin_name]
+  importer = AresMUSH::Manage::PluginImporter.new(plugin_name)
+  importer.import
+end
 
 task :webexport do
   minimal_boot
