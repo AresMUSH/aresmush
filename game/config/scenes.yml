@@ -33,7 +33,6 @@ scenes:
         "scene/name" : "scene/title"
         "scene/info" : "scene"
         "scene/rename" : "scene/title"
-        "repose/notify" : "repose/nudge"
         "repose/log" : "repose/all"
         "repose/reset": "repose/clear"
         "repose/gag": "repose/nudge mute"
