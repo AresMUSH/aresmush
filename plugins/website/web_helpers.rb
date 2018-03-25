@@ -127,11 +127,11 @@ module AresMUSH
     def self.deploy_portal(client = nil)
       Global.dispatcher.spawn("Deploying website", nil) do
         install_path = Global.read_config('website', 'website_code_path')
-        path = File.join( install_path, "bin", "deploy" )
-        output = `#{path} #{install_path} 2>&1`
-      
-        Global.logger.info "Deployed web portal: #{output}"
-        client.emit_ooc t('webportal.portal_deployed', :output => output) if client
+        Dir.chdir(install_path) do
+          output = `bin/deploy 2>&1`
+          Global.logger.info "Deployed web portal: #{output}"
+          client.emit_ooc t('webportal.portal_deployed', :output => output) if client
+        end
       end
     end
   end

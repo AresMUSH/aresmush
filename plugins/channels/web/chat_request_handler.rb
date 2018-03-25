@@ -18,7 +18,15 @@ module AresMUSH
           name: c.name,
           enabled: Channels.is_on_channel?(enactor, c),
           allowed: Channels.can_use_channel(enactor, c),
-          messages: Channels.is_on_channel?(enactor, c) ? c.messages.map { |m| WebHelpers.format_markdown_for_html(m) } : nil
+          who: Channels.channel_who(c).map { |w| {
+           name: w.name,
+           ooc_name: w.ooc_name,
+           icon: WebHelpers.icon_for_char(w),
+           muted: Channels.is_muted?(w, c)  
+          }},
+          messages: Channels.is_on_channel?(enactor, c) ? c.messages.map { |m| {
+            message: WebHelpers.format_markdown_for_html(m['message']),
+            timestamp: OOCTime.local_long_timestr(enactor, m['timestamp']) }} : nil
           }}
         
         {
