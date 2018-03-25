@@ -95,7 +95,6 @@ fs3combat:
            defense_skill: None
             
     shortcuts:
-        "weapons": "weapon"
         "combat/skill": "combat/summary"
         "combat/skills": "combat/summary"
         "combat/slackers": "combat/summary"

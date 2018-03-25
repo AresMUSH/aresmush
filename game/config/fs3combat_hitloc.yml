@@ -13,7 +13,6 @@ fs3combat:
                 Right Hand: [ 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Right Arm', 'Right Arm', 'Right Arm', 'Left Hand', 'Left Hand', 'Left Hand' ]
                 Left Arm:  [ 'Head', 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Left Hand', 'Left Hand', 'Left Arm', 'Left Arm', 'Left Hand' ]
                 Right Arm:  [ 'Head', 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Right Hand', 'Right Hand', 'Right Arm', 'Right Arm', 'Right Hand' ]
-                Abdomen: [ 'Head', 'Chest', 'Chest', 'Left Leg', 'Left Leg', 'Right Leg', 'Right Leg', 'Abdomen', 'Abdomen', 'Abdomen' ]
                 Head: [ 'Right Arm', 'Right Arm', 'Left Arm', 'Chest', 'Chest', 'Neck', 'Neck', 'Head', 'Head', 'Head' ]
                 Neck: [ 'Right Arm', 'Right Arm', 'Left Arm', 'Chest', 'Chest', 'Head', 'Head', 'Neck', 'Neck', 'Neck' ]
                 Abdomen: [ 'Left Leg', 'Right Leg',  'Left Leg', 'Right Leg', 'Chest', 'Chest', 'Chest', 'Abdomen', 'Abdomen', 'Abdomen' ]

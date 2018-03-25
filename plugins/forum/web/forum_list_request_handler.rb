@@ -13,6 +13,7 @@ module AresMUSH
            .map { |b| {
              id: b.id,
              name: b.name,
+             description: b.description,
              unread: enactor && b.has_unread?(enactor)
            }}
         
