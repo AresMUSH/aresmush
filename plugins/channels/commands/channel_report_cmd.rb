@@ -17,12 +17,13 @@ module AresMUSH
       
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
-          total_messages = channel.messages.count
+          messages = channel.messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m['timestamp'])}] #{channel.display_name} #{m['message']}"}.join("%R")
 
           body = t('channels.channel_reported_body', :name => channel.name, :reporter => enactor_name)
           body << self.reason
           body << "%R-------%R"
-          body << channel.messages.map { |m| " #{m}" }.join('%R')
+          body << messages
+
           Jobs.create_job(Jobs.trouble_category, t('channels.channel_reported_title'), body, Game.master.system_character)
           client.emit_success t('channels.channel_reported')
           

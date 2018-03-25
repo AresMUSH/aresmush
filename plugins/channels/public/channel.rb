@@ -41,7 +41,7 @@ module AresMUSH
     
     def add_to_history(msg)
       return if !self.recall_enabled
-      new_messages = (self.messages << msg)
+      new_messages = (self.messages << { message: msg, timestamp: DateTime.now })
       if (new_messages.count > 25)
         new_messages.shift
       end

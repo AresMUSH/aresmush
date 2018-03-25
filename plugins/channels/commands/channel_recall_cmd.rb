@@ -25,9 +25,9 @@ module AresMUSH
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           total_messages = channel.messages.count
           start_message = [ (total_messages - self.num_messages), 0 ].max
-          messages = channel.messages[start_message, total_messages].map { |m| " #{channel.display_name} #{m}" }
-
-          template = BorderedListTemplate.new messages, t('channels.recall_history', :name => channel.display_name(false))
+          messages = channel.messages[start_message, total_messages]
+          list = messages.map { |m| " [#{OOCTime.local_long_timestr(enactor, m['timestamp'])}] #{channel.display_name}  #{m['message']}"}
+          template = BorderedListTemplate.new list, t('channels.recall_history', :name => channel.display_name(false))
           client.emit template.render
         end
       end
