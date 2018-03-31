@@ -1,8 +1,4 @@
 website:
-    website_tagline: "A New Breed of MUSH Server"
-    
-    website_welcome: "Welcome to AresMUSH."
-    
     allow_html_in_markdown: true
     
     max_upload_size_kb: 5000

@@ -42,10 +42,7 @@ module AresMUSH
         File.open(File.join(export_path, "index.html"), 'w') do |f|
           text = '<div class="jumbotron">'
           text << "<img src=\"game/uploads/theme_images/jumbotron.png\" />"
-          tagline = Global.read_config("website", "website_tagline")
-          text << "<div class=\"jumbotron-tagline\">#{tagline}</div>"
-          welcome = Global.read_config("website", "website_welcome")
-          welcome = WebHelpers.format_markdown_for_html(welcome)
+          welcome = WebHelpers.welcome_text
           text << "<p>#{welcome}</p>"
           text << "</div>"
           f.puts format_wiki_template(text, "Home")
