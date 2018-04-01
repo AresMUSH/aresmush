@@ -12,6 +12,6 @@ module AresMUSH
     game = Game.master
     game.update(api_key, new_key)
   
-    puts "Upgrade complete!"
+    puts "Script complete!"
   end
 end

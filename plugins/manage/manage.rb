@@ -53,6 +53,8 @@ module AresMUSH
         else
           return LoadPluginCmd
         end
+      when "migrate"
+        return MigrateCmd
       when "plugins"
         return PluginListCmd
       when "rename"

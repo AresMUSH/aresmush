@@ -17,5 +17,11 @@ module AresMUSH
         return e
       end
     end
+    
+    def self.announce(msg)
+      Global.notifier.notify(:announcement, t('manage.announce', :message => msg)) do |char|
+        true
+      end
+    end
   end
 end

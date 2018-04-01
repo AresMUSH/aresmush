@@ -62,16 +62,11 @@ task :init do
   AresMUSH::Install.init_db
 end
 
-task :upgrade, [:scriptname, :param] do |t, args|
+task :dbscript, [:scriptname, :param] do |t, args|
   minimal_boot
   scriptname = args[:scriptname]
   ENV['ares_rake_param'] = args[:param]
-  install_folder = File.join('install', 'upgrades')
-  require_relative "install/upgrades/#{scriptname}.rb"
-  File.open(File.join(install_folder, "_last_install.txt"), 'w') do |f|
-    f.puts scriptname
-  end
-  
+  require_relative "install/scripts/#{scriptname}.rb"
 end
 
 desc "Run all specs."
