@@ -25,6 +25,11 @@ module AresMUSH
           FileUtils.cp_r(File.join(AresMUSH.game_path, "styles"), path)
           FileUtils.cp_r(File.join(AresMUSH.game_path, "scripts"), path)
           
+          # Copy music player script
+          src = File.join(Global.read_config("website", "website_code_path"), "public", "scripts", "music_player.js")
+          dest = File.join(AresMUSH.game_path, "scripts", "music_player.js")
+          FileUtils.cp src, dest
+          
         rescue Exception => ex
           puts "Error doing web export: #{ex} #{ex.backtrace[0,10]}"
         end
