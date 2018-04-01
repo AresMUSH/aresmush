@@ -33,8 +33,6 @@ require 'rubygems'
 require 'zip'
 require 'sass'
 
-
-
 module AresMUSH
     
   def self.version
@@ -51,6 +49,10 @@ module AresMUSH
 
   def self.game_path
     File.join(AresMUSH.root_path, "game")
+  end
+  
+  def self.engine_path
+    File.join(AresMUSH.root_path, "engine")
   end
 
   def self.website_styles_path
