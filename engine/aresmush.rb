@@ -36,7 +36,7 @@ require 'sass'
 module AresMUSH
     
   def self.version
-    File.read(File.join(game_path, "version.txt"))
+    File.read(File.join(root_path, "version.txt"))
   end
 
   def self.root_path

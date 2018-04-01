@@ -24,8 +24,6 @@ module AresMUSH
         File.open(file_path, 'w') do |f|
           f.write "var aresconfig = #{config.to_json};"
         end
-        
-        WebHelpers.rebuild_css
       end
     end
   end
