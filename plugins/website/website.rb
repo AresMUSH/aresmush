@@ -13,7 +13,7 @@ module AresMUSH
       {}
     end
  
-    def self.load
+    def self.init_plugin
       WebHelpers.rebuild_css
     end
     

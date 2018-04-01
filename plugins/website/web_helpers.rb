@@ -117,15 +117,17 @@ module AresMUSH
     end 
     
     def self.rebuild_css
-      
-      scss_path = File.join(AresMUSH.website_styles_path, 'ares.scss')
+      engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
+      scss_path = File.join(engine_styles_path, 'ares.scss')
       css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
-      css = Sass::Engine.for_file(scss_path, {}).render
+      load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
+      css = Sass::Engine.for_file(scss_path, { load_paths: load_paths }).render
       File.open(css_path, "wb") {|f| f.write(css) }
     end
     
     def self.deploy_portal(client = nil)
       Global.dispatcher.spawn("Deploying website", nil) do
+        WebHelpers.rebuild_css
         install_path = Global.read_config('website', 'website_code_path')
         Dir.chdir(install_path) do
           output = `bin/deploy 2>&1`
