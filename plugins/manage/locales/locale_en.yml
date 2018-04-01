@@ -62,4 +62,8 @@ en:
         no_longer_statue: "You are no longer a statue.  Please play nice."
         cant_statue_admins: "You can't statue another admin."
         
-        
+        migrations_in_progress: "Database update in progress.  The game may experience a short lag."
+        migrations_complete: "Database update complete."
+        migration_already_applied: "Migration %{name} already applied.  Skipping it."
+        applying_migration: "Applying migration %{name}."
+        migration_applied: "Migration %{name} complete."
