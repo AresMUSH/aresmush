@@ -16,6 +16,8 @@ module AresMUSH
         case file_type
         when "text"
           path = File.join(AresMUSH.game_path, 'text', file)
+        when "config"
+          path = File.join(AresMUSH.game_path, 'config', file)
         when "style"
           path = File.join(AresMUSH.website_styles_path, file)
         end
