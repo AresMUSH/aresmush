@@ -69,6 +69,12 @@ task :dbscript, [:scriptname, :param] do |t, args|
   require_relative "install/scripts/#{scriptname}.rb"
 end
 
+task :migrate do
+  minimal_boot
+  migrator = AresMUSH::DatabaseMigrator.new
+  migrator.migrate
+end
+
 desc "Run all specs."
 begin
   require 'rspec/core/rake_task'

@@ -15,8 +15,10 @@ module AresMUSH
       end
 
       def handle
-        output = `git #{self.args} 2>&1`
-        client.emit_success t('manage.git_output', :output => output)
+        Global.dispatcher.spawn("Doing git query", client) do
+          output = `git #{self.args} 2>&1`
+          client.emit_success t('manage.git_output', :output => output)
+        end
       end
     end
   end
