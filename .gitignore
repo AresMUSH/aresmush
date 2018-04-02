@@ -16,6 +16,7 @@ calendar.ics
 .sass-cache
 .DS_Store
 tmp/restart.txt
+applied.txt
 *.zip
 blacklist.txt
 *.css

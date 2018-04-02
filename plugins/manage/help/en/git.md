@@ -8,4 +8,7 @@ summary: Using server-side version control.
 
 The "git" command is used to access the server's version control commands.  See the aresmush.com tutorial on "Using GitHub" for more information about how this can work.
 
+> Note: You won't be able to use any git commands that require a password, like pushing to the server.
+
 `git <command>` - Issues a git command to the server.
+

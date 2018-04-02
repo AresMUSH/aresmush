@@ -1,11 +1,10 @@
 module AresMUSH
   module Migrations
     class Test1
-      def migrate(client)
-        client.emit_ooc "Test1."
+      def migrate
+        puts "Test1."
         game = Game.master
-        game.update(m1_test: "A")
-        client.emit game.inspect
+        game.update(m1_test: "A")        
       end
     end
   end
