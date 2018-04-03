@@ -1,0 +1,9 @@
+---
+website:
+  allow_html_in_markdown: true
+  max_upload_size_kb: 5000
+  character_gallery_group: Faction
+  character_gallery_subgroup: Position
+  portal_requires_registration: false
+  website_code_path: "/home/ares/ares-webportal"
+  left_sidebar: false

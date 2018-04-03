@@ -1,0 +1,91 @@
+---
+fs3combat:
+  default_type: Soldier
+  allow_vehicles: true
+  allow_mounts: true
+  stances:
+    Aggressive:
+      attack_mod: 2
+      defense_mod: -2
+    Reckless:
+      attack_mod: 4
+      defense_mod: -4
+    Normal:
+      attack_mod: 0
+      defense_mod: 0
+    Defensive:
+      attack_mod: -2
+      defense_mod: 2
+    Evasive:
+      attack_mod: -4
+      defense_mod: 4
+    Cover:
+      attack_mod: 0
+      defense_mod: 0
+    Hidden:
+      attack_mod: 0
+      defense_mod: 0
+  combatant_types:
+    Observer:
+      hitloc: Humanoid
+    Soldier:
+      weapon: Rifle
+      weapon_specials:
+      - Ap
+      armor: Tactical
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Unarmed:
+      weapon: Unarmed
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Centurion:
+      weapon: LMG
+      weapon_specials:
+      - Bipod
+      armor: Centurion
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Aa:
+      weapon: Missile
+      armor: Centurion
+      vehicle: Aa Battery
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Cylon:
+      weapon: Pistol
+      armor: Cylon
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Viper:
+      vehicle: Viper
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Raptor:
+      vehicle: Raptor
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Raider:
+      vehicle: Raider
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Heavy:
+      vehicle: Heavy Raider
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Target:
+      hitloc: Target
+      weapon: Unarmed
+      defense_skill: None
+  shortcuts:
+    combat/skill: combat/summary
+    combat/skills: combat/summary
+    combat/slackers: combat/summary
+    combat/add: combat/join
+    combat/remove: combat/leave
+    combat/hitlocs: combat/hitloc
+    vehicles: vehicle
+    hospitals: hospital/list
+    healing: heal/list
+    weapons: weapon
+    mounts: mount

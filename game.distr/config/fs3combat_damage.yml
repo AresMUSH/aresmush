@@ -1,0 +1,22 @@
+---
+fs3combat:
+  healing_cron:
+    hour:
+    - 0
+    minute:
+    - 47
+  damage_mods:
+    HEAL: 0.0
+    FLESH: 0.25
+    IMPAIR: 2.0
+    INCAP: 7.0
+  healing_points:
+    HEAL: 0
+    FLESH: 7
+    IMPAIR: 10
+    INCAP: 7
+  pc_knockout_bonus: 1
+  damage_table:
+    GRAZE: 20
+    FLESH: 70
+    IMPAIR: 95

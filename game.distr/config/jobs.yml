@@ -1,0 +1,56 @@
+---
+jobs:
+  categories:
+    APP:
+      color: "%xm"
+    BUILD:
+      color: "%xc"
+      roles:
+      - builder
+    BUG:
+      color: "%xy"
+      roles:
+      - coder
+    CODE:
+      color: "%xy"
+      roles:
+      - coder
+    ALERT:
+      color: "%xr"
+    MISC:
+      color: "%xh"
+    PLOT:
+      color: "%xc"
+    REQ:
+      color: "%xm"
+    RP:
+      color: "%xc"
+    SYS:
+      color: "%xh"
+  status:
+    NEW:
+      color: "%xg"
+    OPEN:
+      color: "%xb"
+    HOLD:
+      color: "%xx%xh"
+    DONE:
+      color: "%xy"
+  default_status: NEW
+  closed_status: DONE
+  request_category: REQ
+  system_category: SYS
+  trouble_category: ALERT
+  shortcuts:
+    jobs/mine: job/filter mine
+    jobs/active: job/filter active
+    jobs: job
+    requests: request
+    request/comment: request/respond
+    job/comment: job/discuss
+    job/submit: job/create
+    job/reply: job/respond
+    job/open: job/handle
+    job/mine: job/filter mine
+    job/active: job/filter active
+    job/deletecomment: job/deletereply

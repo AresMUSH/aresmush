@@ -1,0 +1,11 @@
+---
+fs3combat:
+  mounts:
+    Horse:
+      description: A horse
+      toughness: 4
+      mod_vs_unmounted: 1
+    War Horse:
+      description: An armored war horse
+      toughness: 7
+      mod_vs_unmounted: 2
