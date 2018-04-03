@@ -1,0 +1,7 @@
+---
+server:
+  hostname: localhost
+  port: 4201
+  websocket_port: 4202
+  engine_api_port: 4203
+  web_portal_port: 4200

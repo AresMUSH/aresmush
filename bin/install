@@ -52,6 +52,8 @@ echo -e "${ARES_INSTALL_TEXT} Setup the game."
 
 cd /home/ares/aresmush
 
+cp -r game.distr game
+
 mkdir game/logs
 
 chmod +x bin/*

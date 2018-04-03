@@ -33,3 +33,7 @@ killares
 # Website file storage
 # -----------------------------
 game/uploads
+
+# Game directory
+# -----------------------------
+game/

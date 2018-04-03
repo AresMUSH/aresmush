@@ -1,0 +1,13 @@
+---
+events:
+  calendar_timezone: EST
+  shortcuts:
+    events: event
+    event/add: event/create
+    event/remove: event/delete
+  event_alert_cron:
+    minute:
+    - 0
+    - 15
+    - 30
+    - 45

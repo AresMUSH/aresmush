@@ -1,0 +1,15 @@
+---
+cookies:
+  cookie_award_cron:
+    day_of_week:
+    - Fri
+    hour:
+    - 22
+    minute:
+    - 0
+  cookie_category: Cookie Awards
+  cookies_per_luck: 10
+  shortcuts:
+    cookies: cookie
+    i: cookie/total
+    inv: cookie/total
