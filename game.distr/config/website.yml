@@ -7,3 +7,8 @@ website:
   portal_requires_registration: false
   website_code_path: "/home/ares/ares-webportal"
   left_sidebar: false
+  wiki_nav:
+      - Home
+      - 'theme:timber wolves'
+      - 'getting started'
+          
