@@ -76,6 +76,7 @@ echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots
 echo "sudo -u ares -i '/home/ares/onboot.sh'" > /root/onboot.sh
 echo "sudo hugeadm --thp-never" >> /root/onboot.sh
 chmod +x /root/onboot.sh
+sed -i -e '$i \/root/onboot.sh &\n' /etc/rc.local
 
 echo -e "${ARES_INSTALL_TEXT} Give ares user access to www and redis directory"
 sudo chown ares /var/www/html
