@@ -12,7 +12,7 @@ module AresMUSH
   class Locale
         
     def self.locale_path
-      File.join(AresMUSH.game_path, "locales")
+      File.join(AresMUSH.engine_path, "locales")
     end
     
     def locale

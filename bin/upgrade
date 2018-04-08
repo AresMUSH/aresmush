@@ -1,2 +1,19 @@
-bundle install
-bundle exec rake upgrade[$*]
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
+
+echo -e "${ARES_INSTALL_TEXT} Updating game."
+
+cd /home/ares/aresmush
+git add -A .
+git commit -am "Saving before upgrade."
+git pull -s recursive -X ours
+
+echo -e "${ARES_INSTALL_TEXT} Updating web portal."
+
+cd /home/ares/ares-webportal
+git add -A .
+git commit -am "Saving before upgrade."
+git pull -s recursive -X ours
+
+cd /home/ares/aresmush
+
+echo -e "${ARES_INSTALL_TEXT} Resolve any conflicts (if there were any) then run `bin/migrate` next."

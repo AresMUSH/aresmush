@@ -1,0 +1,12 @@
+---
+plugins:
+  disabled_plugins: []
+  optional_plugins:
+  - chargen
+  - cookies
+  - events
+  - fs3combat
+  - fs3skills
+  - maps
+  - ranks
+  - weather

@@ -33,12 +33,10 @@ require 'rubygems'
 require 'zip'
 require 'sass'
 
-
-
 module AresMUSH
     
   def self.version
-    File.read(File.join(game_path, "version.txt"))
+    File.read(File.join(root_path, "version.txt"))
   end
 
   def self.root_path
@@ -51,6 +49,10 @@ module AresMUSH
 
   def self.game_path
     File.join(AresMUSH.root_path, "game")
+  end
+  
+  def self.engine_path
+    File.join(AresMUSH.root_path, "engine")
   end
 
   def self.website_styles_path
@@ -87,6 +89,7 @@ require 'aresmush/core_ext/hash_ext.rb'
 require 'aresmush/core_ext/match_data_ext.rb'
 require 'aresmush/cron.rb'
 require 'aresmush/database.rb'
+require 'aresmush/db_migrator.rb'
 require 'aresmush/engine_notifier.rb'
 require 'aresmush/error_block.rb'
 require 'aresmush/find_result.rb'

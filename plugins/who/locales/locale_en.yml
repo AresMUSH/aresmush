@@ -13,6 +13,6 @@ en:
         public_scene: "#%{scene} Public"
         private_scene: "Private Scene"
         
-        where_public_scene_header: "------[ Open Scenes ] --------------------------------------------------------"
-        where_private_scene_header: "------[ Other ] --------------------------------------------------------------"
+        where_public_scene_header: "Open Scenes"
+        where_private_scene_header: "Other"
         

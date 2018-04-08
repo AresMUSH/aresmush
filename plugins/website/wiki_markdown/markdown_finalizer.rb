@@ -75,8 +75,8 @@ module AresMUSH
         
         toc_links = ""
         if (toc.any?)
-          toc_links << "<p><b>Table of Contents</b></p>"
-          toc_links << "<ul class=\"toc\">"
+          toc_links << "<div class=\"toc\">\n<h4>Table of Contents</h4>"
+          toc_links << "<ul>"
           toc.each do |heading, sub_headings|
             toc_links << "<li><a href=\"\##{heading}\">#{heading.titleize}</a></li>"
             if (sub_headings.any?)
@@ -87,7 +87,7 @@ module AresMUSH
               toc_links << "</ul>"
             end
           end
-          toc_links << "</ul>"
+          toc_links << "</ul></div>"
         end
                 
         html.gsub("$TOC_GOES_HERE_MARKER$", toc_links)

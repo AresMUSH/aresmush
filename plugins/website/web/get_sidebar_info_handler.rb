@@ -7,6 +7,12 @@ module AresMUSH
         error = WebHelpers.check_login(request, true)
         return error if error
                 
+        wiki_nav = []
+        nav_list = Global.read_config('website', 'wiki_nav') || [ "Home" ]
+        nav_list.each do |page_name|
+          page = WikiPage.find_one_by_name(WikiPage.sanitize_page_name(page_name))
+          wiki_nav << { url: page.name, heading: page.heading }
+        end
         {
           timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
@@ -16,7 +22,9 @@ module AresMUSH
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
           recent_changes: WebHelpers.get_recent_changes(true, 10),
-          registration_required: Global.read_config("website", "portal_requires_registration")
+          left_sidebar: Global.read_config('website', 'left_sidebar'),
+          registration_required: Global.read_config("website", "portal_requires_registration"),
+          wiki_nav: wiki_nav
         }
       end
     end

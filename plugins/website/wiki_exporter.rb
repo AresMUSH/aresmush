@@ -25,6 +25,11 @@ module AresMUSH
           FileUtils.cp_r(File.join(AresMUSH.game_path, "styles"), path)
           FileUtils.cp_r(File.join(AresMUSH.game_path, "scripts"), path)
           
+          # Copy music player script
+          src = File.join(Global.read_config("website", "website_code_path"), "public", "scripts", "music_player.js")
+          dest = File.join(AresMUSH.game_path, "scripts", "music_player.js")
+          FileUtils.cp src, dest
+          
         rescue Exception => ex
           puts "Error doing web export: #{ex} #{ex.backtrace[0,10]}"
         end
@@ -42,10 +47,7 @@ module AresMUSH
         File.open(File.join(export_path, "index.html"), 'w') do |f|
           text = '<div class="jumbotron">'
           text << "<img src=\"game/uploads/theme_images/jumbotron.png\" />"
-          tagline = Global.read_config("website", "website_tagline")
-          text << "<div class=\"jumbotron-tagline\">#{tagline}</div>"
-          welcome = Global.read_config("website", "website_welcome")
-          welcome = WebHelpers.format_markdown_for_html(welcome)
+          welcome = WebHelpers.welcome_text
           text << "<p>#{welcome}</p>"
           text << "</div>"
           f.puts format_wiki_template(text, "Home")

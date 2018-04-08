@@ -1,0 +1,11 @@
+module AresMUSH
+  module Migrations
+    class Test1
+      def migrate
+        puts "Test1."
+        game = Game.master
+        game.update(m1_test: "A")        
+      end
+    end
+  end
+end

@@ -12,3 +12,6 @@ website:
     have only just recently united under a common banner, and the humans are losing
     the war.\r\n\r\n<a href=\"/wiki/getting-started\" class=\"btn btn-primary\">Get
     Started</a>"
+  left_sidebar: false
+  wiki_nav:
+  - Home
