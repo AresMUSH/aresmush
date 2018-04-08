@@ -39,7 +39,8 @@ module AresMUSH
     end
       
     def find_migrator_class(migration_name)
-      search = migration_name.after("_")
+      search = migration_name.after("_").camelize
+      search = "Migration#{search}"
       class_name = AresMUSH::Migrations.constants.select { |c| c.upcase == search.to_sym.upcase }.first
       if (!class_name)
         raise "Migration #{migration_name} appears to be misnamed.  The migrator class can't be found."
