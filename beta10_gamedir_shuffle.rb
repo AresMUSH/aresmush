@@ -10,9 +10,14 @@ module AresMUSH
   puts "Put the game dir back where it belongs."
   puts "======================================================================="
 
+  secrets_path = File.join(AresMUSH.game_path, "config", "secrets.yml")
+  FileUtils.mv secrets_path, File.join(AresMUSH.root_path, "game.backup", "secrets.yml")
+  
   src = File.join(AresMUSH.root_path, "game.backup")
   if (Dir.exist?(src) && !Dir.exist?(AresMUSH.game_path))
     FileUtils.mv src, AresMUSH.game_path
+  else
+    puts "The game directory already exists.  Either you've already run this script or there are some leftover files you need to get rid of first.  Log files, aresconfig.js and ares.css can be safely deleted.  If you aren't sure what to do, ask for help on the forums."
   end
   
   puts "======================================================================="
