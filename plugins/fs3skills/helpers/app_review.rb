@@ -129,11 +129,13 @@ module AresMUSH
       end
     end
     
-    def self.check_high_abilities(abilities, top_rating, num_abiliies_max, prompt)
+    def self.check_high_abilities(abilities, top_rating, num_abilities_max, prompt)
       ratings = abilities.map { |a| a.rating }
+      # Goofiness needed because the config keys could be strings or ints.
+      top_rating = top_rating.to_i
       count = ratings.inject(0) { |count, a| count + (a >= top_rating ? 1 : 0) }
-      if (count > num_abiliies_max)
-        prompt = t(prompt, :num => count, :max => num_abiliies_max, :high_rating => top_rating)
+      if (count > num_abilities_max)
+        prompt = t(prompt, :num => count, :max => num_abilities_max, :high_rating => top_rating)
         return prompt
       else
         return nil

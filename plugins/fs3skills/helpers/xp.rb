@@ -18,7 +18,10 @@ module AresMUSH
     def self.xp_needed(ability_name, rating)
       ability_type = FS3Skills.get_ability_type(ability_name)
       costs = Global.read_config("fs3skills", "xp_costs")
-      costs[ability_type.to_s][rating] || nil
+      costs = costs[ability_type.to_s]
+      # Goofiness needed because XP keys could be either strings or integers.
+      key = costs.keys.select { |r| r.to_s == rating.to_s }.first
+      key ? costs[key] : nil
     end
     
     def self.check_can_learn(char, ability_name, rating)
