@@ -47,7 +47,11 @@ module AresMUSH
     end
 
     def self.action_skill_config(name)
-      FS3Skills.action_skills.find { |s| s["name"].upcase == name.upcase }
+      config = FS3Skills.action_skills.find { |s| s["name"].upcase == name.upcase }
+      if (!config)
+        raise "Error in skills configuration -- action skill #{name} not found."
+      end
+      config
     end
     
     def self.attr_blurb
