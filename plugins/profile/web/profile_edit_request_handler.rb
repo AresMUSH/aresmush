@@ -31,7 +31,7 @@ module AresMUSH
         Global.read_config('demographics')['editable_properties'].sort.each do |d| 
           demographics[d.downcase] = 
             {
-              name: t("profile.#{d.downcase}_title"),
+              name: d.titlecase,
               value: char.demographic(d)
             }
         end

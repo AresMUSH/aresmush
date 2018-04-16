@@ -26,7 +26,7 @@ module AresMUSH
 
         demographics = Demographics.basic_demographics.sort.each.map { |d| 
             {
-              name: t("profile.#{d.downcase}_title"),
+              name: d.titleize,
               key: d.titleize,
               value: char.demographic(d)
             }

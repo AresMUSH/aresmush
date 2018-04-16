@@ -22,7 +22,7 @@ module AresMUSH
         Demographics.basic_demographics.sort.each do |d| 
           demographics[d.downcase] = 
             {
-              name: t("profile.#{d.downcase}_title"),
+              name: d.titleize,
               value: char.demographic(d)
             }
         end
