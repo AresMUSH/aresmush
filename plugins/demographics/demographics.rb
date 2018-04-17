@@ -7,7 +7,20 @@ module AresMUSH
     end
  
     def self.shortcuts
-      Global.read_config("demographics", "shortcuts")
+      sc = {}
+      Global.read_config("demographics", "demographics").each do |d|
+        if (d != 'birthdate')
+          sc[d] = "demographic/set #{d}="
+        end
+      end
+      Demographics.all_groups.keys.map { |g| g.downcase}.each do |g|
+        sc[g] = "group/set #{g}="
+        sc["#{g}s"] = "group #{g}"
+      end
+      Global.read_config("demographics", "shortcuts").each do |k, v|
+        sc[k] = v
+      end
+      sc
     end
  
     def self.get_cmd_handler(client, cmd, enactor)
@@ -36,7 +49,11 @@ module AresMUSH
       when "birthdate"
         return BirthdateCmd       
       when "demographic"
-        return BasicDemographicCmd
+        if (cmd.args)
+          return BasicDemographicCmd
+        else
+          return DemographicsListCmd
+        end
       when "census"
         return CensusCmd
       when "group"

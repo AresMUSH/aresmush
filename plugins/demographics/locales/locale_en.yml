@@ -52,3 +52,7 @@ en:
         app_review: "Checking groups are set."
         
         try_actor_search_or_set: "Maybe you meant actor/set or actor/search?"
+        
+        demographics_list_header: "Available Demographics"
+        demographics_ediable: "Editable after chargen."
+        demographics_list_footer: "Use %xc<demographic name> <value>%xn to set a demographic - e.g. %xchair <hair color>%xn"
