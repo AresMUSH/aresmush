@@ -10,8 +10,24 @@ module AresMUSH
       end
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
+        return t('dispatcher.not_allowed') if !enactor.is_coder?
         return nil
+      end
+      
+      def check_command
+        commands = [
+          "git commit -m ",
+          "git add",
+          "git pull",
+          "git status",
+          "git diff"
+        ]
+        commands.each do |c|
+          if (cmd.raw.downcase.start_with?(c))
+            return nil
+          end
+        end
+        return t('manage.invalid_git_command', :commands => commands.join(', '))
       end
 
       def handle
