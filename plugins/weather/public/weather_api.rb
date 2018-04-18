@@ -5,6 +5,8 @@ module AresMUSH
     end
     
     def self.weather_for_area(area)
+      Weather.load_weather_if_needed
+      
       # Get the weather for the current area if there is one.
       weather = Weather.current_weather[area] || Weather.current_weather["default"]
 
@@ -17,8 +19,8 @@ module AresMUSH
       condition = weather[:condition]
       
       # Use the weather name in the translation file - like weather.snow 
-      weather_desc = t("weather.#{condition}")
-      temp_and_time_desc = t("weather.#{temperature}_#{season}_#{time_of_day}")
+      weather_desc = Global.read_config("weather", "descriptions", condition)
+      temp_and_time_desc = Global.read_config("weather", "descriptions", "#{temperature}_#{season}_#{time_of_day}")
       
       "#{temp_and_time_desc} #{weather_desc}"
     end
