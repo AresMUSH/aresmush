@@ -28,6 +28,7 @@ en:
         
         objects_reloaded: "Database objects refreshed."
         git_output: "Git command: %{output}"
+        invalid_git_command: "Invalid git command.  Only a limited subset of commands are supported: %{commands}"
         
         object_destroyed: "%{name} destroyed."
         confirm_object_destroy: "You want to delete %{type} %xg%{name} (%{dbref}).%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn"

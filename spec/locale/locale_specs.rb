@@ -6,14 +6,14 @@ module AresMUSH
 
   describe Locale do
     before do
-      @game_path = Dir.pwd
-      AresMUSH.stub(:game_path) { @game_path }
+      @root_path = Dir.pwd
+      AresMUSH.stub(:root_path) { @root_path }
       @locale = Locale.new
     end
     
     describe :locale_path do
       it "should be the game dir plus the locale dir" do
-        Locale.locale_path.should eq File.join(@game_path, "locales")
+        Locale.locale_path.should eq File.join(@root_path, "engine", "locales")
       end
     end
 
@@ -119,7 +119,7 @@ module AresMUSH
 
       it "should tell the loader to load the main locale" do
         @locale.stub(:locale_order) { [ "en" ]}
-        LocaleLoader.should_receive(:load_file).with(File.join(@game_path, "locales", "locale_en.yml"))
+        LocaleLoader.should_receive(:load_file).with(File.join(@root_path, "engine", "locales", "locale_en.yml"))
         @locale.reset_load_path
       end
       

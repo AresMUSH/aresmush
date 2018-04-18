@@ -57,6 +57,8 @@ module AresMUSH
         return PluginListCmd
       when "rename"
         return RenameCmd
+      when "ruby"
+        return RubyCmd
       when "shutdown"
         return ShutdownCmd
       when "statue", "unstatue"
