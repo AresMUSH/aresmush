@@ -6,6 +6,8 @@ module AresMUSH
       
       def handle
         list = []
+
+        Weather.load_weather_if_needed
         Weather.current_weather.each do |k, v| 
           weather = Weather.weather_for_area(k)
           name = k == "default" ? t('weather.default') : k

@@ -1,6 +1,6 @@
 module AresMUSH
   module Migrations
-    class Test1
+    class MigrationTest1
       def migrate
         puts "Test1."
         game = Game.master

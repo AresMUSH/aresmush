@@ -6,6 +6,12 @@ module AresMUSH
       actor.has_permission?("manage_weather")
     end
     
+    def self.load_weather_if_needed
+      if (Weather.current_weather == {})
+        Weather.change_all_weathers
+      end
+    end
+
     def self.change_all_weathers
       # Set an initial weather for each area and the default one
       Weather.current_weather = {}
