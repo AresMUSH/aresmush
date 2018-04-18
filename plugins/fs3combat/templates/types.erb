@@ -1,11 +1,15 @@
 <%= header %>
 %xh<%= t('fs3combat.combatant_types') %>%xn
 
+<% if use_vehicles %>
 %xh<%= t('fs3combat.combatant_types_titlebar') %>%xn
+<% else %>
+%xh<%= t('fs3combat.combatant_types_titlebar_no_vehicle') %>%xn
+<% end %>
 <% list.each do |name, info| %>
 <%= left( name, 20 ) -%> 
 <%= left( field(info, 'weapon' ), 20 ) -%> 
 <%= left( field(info, 'armor'), 20 ) -%>
-<%= left( field(info, 'vehicle'), 20 ) %>
+<% if use_vehicles %><%= left( field(info, 'vehicle'), 20 ) %><% end %>
 <% end %>
 <%= footer %>
