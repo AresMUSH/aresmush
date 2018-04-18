@@ -13,6 +13,10 @@ module AresMUSH
       def field(info, name)
         info[name] || "---"
       end
+      
+      def use_vehicles
+        Global.read_config("fs3combat", "allow_vehicles")
+      end
     end
   end
 end

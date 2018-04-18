@@ -150,6 +150,7 @@ en:
         
         combatant_types: "Combatant Types"
         combatant_types_titlebar: "Type                Weapon              Armor               Vehicle"
+        combatant_types_titlebar_no_vehicle: "Type                Weapon              Armor"
 
         # ----------------------------
         # LUCK
