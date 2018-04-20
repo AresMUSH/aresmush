@@ -30,7 +30,7 @@ module AresMUSH
         return nil if !self.specials
         allowed_specials = FS3Combat.weapon_stat(self.weapon, "allowed_specials") || []
         self.specials.each do |s|
-          return t('fs3combat.invalid_weapon_special') if !allowed_specials.include?(s)
+          return t('fs3combat.invalid_weapon_special', :special => s) if !allowed_specials.include?(s)
         end
         return nil
       end
