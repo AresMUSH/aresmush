@@ -7,7 +7,7 @@ module AresMUSH
         error = WebHelpers.check_login(request, true)
         return error if error
         
-        events = Event.all.map { |e| {
+        events = Event.sorted_events.map { |e| {
           id: e.id,
           title: e.title,
           organizer: e.organizer_name,
