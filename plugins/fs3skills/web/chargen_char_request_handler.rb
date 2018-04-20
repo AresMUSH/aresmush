@@ -57,9 +57,9 @@ module AresMUSH
           
           if (metadata)
             metadata.each do |m|
-              existing = abilities.select { |a| a[:name] == m['name'] }.first
+              existing = abilities.select { |a| a[:name].titlecase == m['name'].titlecase }.first
               if (!existing)
-                abilities << { name: m['name'], desc: m['desc'], rating_name: starting_rating_name, rating: starting_rating}
+                abilities << { name: m['name'].titlecase, desc: m['desc'], rating_name: starting_rating_name, rating: starting_rating}
               end
             end
           end

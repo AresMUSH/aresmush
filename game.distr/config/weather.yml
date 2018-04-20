@@ -59,17 +59,15 @@ weather:
     minute:
     - 0
   descriptions:
-    clear: "The skies are clear."
-    fair: "The weather is fair."
-    misty: "There's a mist in the air."
-    overcast: "The skies are overcast."
-    drizzling: "It's drizzling."
-    raining: "It's raining."
-    storming: "It's raining really hard."
-    flurrying: "It's flurrying."
-    snowing: "It's snowing."
-
-    # Hot weather
+    clear: The skies are clear.
+    fair: The weather is fair.
+    misty: There's a mist in the air.
+    overcast: The skies are overcast.
+    drizzling: It's drizzling.
+    raining: It's raining.
+    storming: It's raining really hard.
+    flurrying: It's flurrying.
+    snowing: It's snowing.
     hot_spring_morning: It is a hot spring morning.
     hot_spring_day: It is a hot spring day.
     hot_spring_evening: It is a hot spring evening.
@@ -86,8 +84,6 @@ weather:
     hot_winter_day: It is a hot winter day.
     hot_winter_evening: It is a hot winter evening.
     hot_winter_night: It is a hot winter night.
-
-    # Warm weather
     warm_spring_morning: It is a warm spring morning.
     warm_spring_day: It is a warm spring day.
     warm_spring_evening: It is a warm spring evening.
@@ -104,8 +100,6 @@ weather:
     warm_winter_day: It is a warm winter day.
     warm_winter_evening: It is a warm winter evening.
     warm_winter_night: It is a warm winter night.
-
-    # Cool weather
     cool_spring_morning: It is a cool spring morning.
     cool_spring_day: It is a cool spring day.
     cool_spring_evening: It is a cool spring evening.
@@ -122,8 +116,6 @@ weather:
     cool_winter_day: It is a cool winter day.
     cool_winter_evening: It is a cool winter evening.
     cool_winter_night: It is a cool winter night.
-
-    # Cold weather
     cold_spring_morning: It is a cold spring morning.
     cold_spring_day: It is a cold spring day.
     cold_spring_evening: It is a cold spring evening.
@@ -140,8 +132,6 @@ weather:
     cold_winter_day: It is a cold winter day.
     cold_winter_evening: It is a cold winter evening.
     cold_winter_night: It is a cold winter night.
-
-    # Freezing weather
     freezing_spring_morning: It is a freezing spring morning.
     freezing_spring_day: It is a freezing spring day.
     freezing_spring_evening: It is a freezing spring evening.
