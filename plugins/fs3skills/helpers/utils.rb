@@ -25,12 +25,12 @@ module AresMUSH
     end
     
     def self.get_ability_desc(metadata_list, name)
-      entry = metadata_list.select { |m| m['name'] == name }.first
+      entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['desc'] : nil
     end
     
     def self.get_ability_specialties(metadata_list, name)
-      entry = metadata_list.select { |m| m['name'] == name }.first
+      entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['specialties'] : nil
     end
     

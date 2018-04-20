@@ -75,21 +75,14 @@ demographics:
         Other: Any other position.
   shortcuts:
     groups: group
-    faction: group/set faction=
-    position: group/set position=
-    department: group/set department=
-    colony: group/set colony=
-    factions: group faction
-    positions: group position
-    departments: group department
     colonies: group colony
     demographics: demographic
-    hair: demographic/set hair=
-    eyes: demographic/set eyes=
-    skin: demographic/set skin=
-    height: demographic/set height=
-    physique: demographic/set physique=
-    fullname: demographic/set fullname=
-    callsign: demographic/set callsign=
-    gender: demographic/set gender=
-    birthday: birthdate
+  help_text:
+    actor: See 'help actors'.
+    physique: Build/body type - athletic, wiry, slim, pudgy, etc.
+    gender: Male/Female/Other
+    hair: Hair color
+    eyes: Eye color
+    skin: Complexion
+    birthdate: Specify a date mm/dd/yyyy or use %xcage <years>.%xn
+    callsign: Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
