@@ -62,7 +62,7 @@ task :init do
   AresMUSH::Install.init_db
 end
 
-task :dbscript, [:scriptname, :param] do |t, args|
+task :script, [:scriptname, :param] do |t, args|
   minimal_boot
   scriptname = args[:scriptname]
   ENV['ares_rake_param'] = args[:param]
