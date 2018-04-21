@@ -14,6 +14,8 @@ aliases:
 
 Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server.  To make changes to these things, you need to edit them on disk and then tell the game to reload them using one of these management commands.
 
+Reloading doesn't affect the game engine, which can only be updated by shutting down and restarting the game.  However, game engine updates are very rare.
+
 ## Loading Plugin Code
 
 Plugin code can be loaded and unloaded dynamically without restarting the server.
@@ -38,3 +40,9 @@ You can also view and load the plugin configuration files.
 The plugin translation files must be loaded separately.
 
 `load locale` - Reloads translation files (locale) from disk.
+
+## Loading Everything
+
+If you aren't sure what all you need to load, you can reload all the plugins, the config and the translations all at once.
+
+`load all` - Reloads everything.

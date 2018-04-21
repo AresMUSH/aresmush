@@ -15,6 +15,8 @@ en:
         invalid_config_section: "That config section does not exist."
         loading_plugin_please_wait: "Plugin '%{name}' loading.  Please wait..."
         invalid_plugin_name: "Plugin names may not contain spaces or special characters."
+        load_all: "Loading all plugins.  Please wait..."
+        load_all_complete: "Load complete."
         
         plugins: "Plugins"
         

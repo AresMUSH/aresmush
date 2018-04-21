@@ -7,7 +7,7 @@ real_database.yml
 # -----------------------------
 *.log
 errors.txt
-logs/
+/game/logs/
 
 # Generated files
 # -----------------------------
@@ -32,8 +32,8 @@ killares
 
 # Website file storage
 # -----------------------------
-game/uploads
+/game/uploads
 
 # Game directory
 # -----------------------------
-game/
+/game/

@@ -18,23 +18,23 @@ module AresMUSH
         return nil
       end
       
+      def check_can_manage
+        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
+        return nil
+      end
+      
       def handle
         begin
-          can_manage = Manage.can_manage_game?(enactor)
-          if (!can_manage)
-            client.emit_failure t('dispatcher.not_allowed')
-            return
-          end
           # Make sure everything is valid before we start.
           Global.config_reader.validate_game_config          
         rescue
           client.emit_failure t('manage.management_config_messed_up')
+          return
         end
         
         client.emit_ooc t('manage.loading_plugin_please_wait', :name => load_target)
         begin
           begin
-            
             Global.plugin_manager.unload_plugin(load_target)
           rescue SystemNotFoundException
             # Swallow this error.  Just means you're loading a plugin for the very first time.
