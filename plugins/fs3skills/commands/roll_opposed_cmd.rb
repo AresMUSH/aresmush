@@ -27,11 +27,6 @@ module AresMUSH
           return
         end
                                 
-        if (!model2 && !self.roll_str2.is_integer?)
-          client.emit_failure t('fs3skills.numbers_only_for_npc_skills')
-          return
-        end
-                  
         if (self.name2)
           result = ClassTargetFinder.find(self.name2, Character, enactor)
           model2 = result.target

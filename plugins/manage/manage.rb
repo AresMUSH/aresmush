@@ -50,6 +50,8 @@ module AresMUSH
           return LoadConfigCmd
         when "locale"
           return LoadLocaleCmd
+        when "all"
+          return LoadAllCmd
         else
           return LoadPluginCmd
         end
@@ -57,6 +59,8 @@ module AresMUSH
         return PluginListCmd
       when "rename"
         return RenameCmd
+      when "ruby"
+        return RubyCmd
       when "shutdown"
         return ShutdownCmd
       when "statue", "unstatue"

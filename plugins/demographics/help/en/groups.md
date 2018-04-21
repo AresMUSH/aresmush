@@ -1,17 +1,6 @@
 ---
 toc: Character Creation
 summary: Viewing and setting character groups/affiliations.
-aliases:
-- org
-- orgs
-- position
-- positions
-- faction
-- factions
-- department
-- departments
-- colony
-- colonies
 ---
 # Groups
 

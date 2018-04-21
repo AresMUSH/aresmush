@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def handle
-        client.emit_success "Done!"
+        client.emit_success t('global.done')
       end
 
     end

@@ -37,8 +37,12 @@ module AresMUSH
         allowed_specials = FS3Combat.weapon_stat(weapon, "allowed_specials") || []
         weapon_specials = []
         selected_weapon_specials.each do |k, w|
-          if (w[:selected] && allowed_specials.include?(w[:name]))
-            weapon_specials << w[:name]
+          if (w[:selected].to_bool)
+            if (allowed_specials.include?(w[:name]))
+              weapon_specials << w[:name]
+            else
+              return { error: t('fs3combat.invalid_weapon_special', :special => w[:name]) }
+            end
           end
         end
 
@@ -52,8 +56,12 @@ module AresMUSH
         allowed_specials = FS3Combat.armor_stat(armor, "allowed_specials") || []
         armor_specials = []
         selected_armor_specials.each do |k, a|
-          if (a[:selected] && allowed_specials.include?(a[:name]))
-            armor_specials << a[:name]
+          if (a[:selected].to_bool)
+            if (allowed_specials.include?(a[:name]))
+              armor_specials << a[:name]
+            else
+              return { error: t('fs3combat.invalid_armor_special', :special => a[:name]) }
+            end
           end
         end
         

@@ -25,12 +25,12 @@ module AresMUSH
     end
     
     def self.get_ability_desc(metadata_list, name)
-      entry = metadata_list.select { |m| m['name'] == name }.first
+      entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['desc'] : nil
     end
     
     def self.get_ability_specialties(metadata_list, name)
-      entry = metadata_list.select { |m| m['name'] == name }.first
+      entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['specialties'] : nil
     end
     
@@ -47,7 +47,11 @@ module AresMUSH
     end
 
     def self.action_skill_config(name)
-      FS3Skills.action_skills.find { |s| s["name"].upcase == name.upcase }
+      config = FS3Skills.action_skills.find { |s| s["name"].upcase == name.upcase }
+      if (!config)
+        raise "Error in skills configuration -- action skill #{name} not found."
+      end
+      config
     end
     
     def self.attr_blurb
