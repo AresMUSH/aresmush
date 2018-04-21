@@ -35,7 +35,7 @@ module AresMUSH
         file.write applied_migrations.join("\n")
       end
       
-      puts "Migrations complete.  You can now restart the game using `bin/startares`."
+      puts "Migrations complete."
     end
       
     def find_migrator_class(migration_name)
