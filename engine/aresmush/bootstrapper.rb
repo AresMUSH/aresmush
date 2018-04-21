@@ -53,8 +53,6 @@ module AresMUSH
       rescue Exception => e
         raise "Error connecting to database. Check your database configuration."
       end
-            
-      Global.logger.debug Global.config_reader.config
       
       @server.start
       sleep

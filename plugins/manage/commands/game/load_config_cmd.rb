@@ -9,6 +9,14 @@ module AresMUSH
       end
 
       def handle
+        begin
+          # Make sure everything is valid before we start.
+          Global.config_reader.validate_game_config          
+        rescue
+          client.emit_failure t('manage.management_config_messed_up')
+          return
+        end
+        
         error = Manage.reload_config
         if (error)
           client.emit_failure t('manage.error_loading_config', :error => error)
