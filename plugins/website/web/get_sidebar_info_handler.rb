@@ -11,7 +11,11 @@ module AresMUSH
         nav_list = Global.read_config('website', 'wiki_nav') || [ "Home" ]
         nav_list.each do |page_name|
           page = WikiPage.find_one_by_name(WikiPage.sanitize_page_name(page_name))
+          if (page)
           wiki_nav << { url: page.name, heading: page.heading }
+          else
+            Global.logger.warn "Can't find wiki page #{page_name}."
+          end
         end
         {
           timestamp: Time.now.getutc,
