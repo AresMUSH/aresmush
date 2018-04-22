@@ -19,6 +19,7 @@ module AresMUSH
         
         demo_file = File.join(AresMUSH.root_path, "game", "config", "demographics.yml")
         custom_demo = YAML::load( File.read( demo_file ))
+        custom_demo["demographics"]["disable_auto_shortcuts"] = false
         custom_demo["demographics"]["help_text"] = {
           "actor" => "See 'help actors'.",
           "physique" => "Build/body type - athletic, wiry, slim, pudgy, etc.",

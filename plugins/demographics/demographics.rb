@@ -7,6 +7,10 @@ module AresMUSH
     end
  
     def self.shortcuts
+      if Global.read_config("demographics", "disable_auto_shortcuts")
+        return Global.read_config("demographics", "shortcuts")
+      end
+      
       sc = {}
       Global.read_config("demographics", "demographics").each do |d|
         if (d != 'birthdate')
