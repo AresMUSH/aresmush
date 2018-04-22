@@ -4,3 +4,5 @@ en:
         invalid_condition: "That is not a valid condition.  Try one of these: %{conditions}"
         weather_set: "You set the weather for the %{area} area."
         default: "Everywhere Else"
+        condition: "The weather is %{condition}."
+        temperature: "It is a %{temperature} %{season} %{time_of_day}."
