@@ -1,12 +1,12 @@
 en:
     profile:
-        last_on: "Last On:"
-        location: "Location:" 
+        last_on: "Last On"
+        location: "Location" 
         currently_connected: "Connected!"
-        played_by: "Played By:"
-        timezone: "Timezone:"
-        status: "Status:"
-        alts: "Alts: "
+        played_by: "Played By"
+        timezone: "Timezone"
+        status: "Status"
+        alts: "Alts"
         
         profile_title: "Profile"
         profile_char_list_title: "Alts"
