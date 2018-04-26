@@ -10,6 +10,11 @@ module AresMUSH
       text
     end
     
+    def self.is_restricted_wiki_page?(page)
+      restricted_pages = Global.read_config("website", "restricted_pages") || ['home']
+      restricted_pages.map { |p| WikiPage.sanitize_page_name(p.downcase) }.include?(page.name.downcase)
+    end
+      
     def self.format_output_for_html(output)
       return nil if !output
         

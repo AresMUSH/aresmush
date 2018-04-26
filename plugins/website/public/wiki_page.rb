@@ -25,6 +25,17 @@ module AresMUSH
     
     def self.find_by_name_or_id(name_or_id)
       name_or_id = WikiPage.sanitize_page_name(name_or_id)
+      
+      alias_config = Global.read_config("website", "wiki_aliases") || {}
+      aliases = {}
+      alias_config.each do |k, v|
+        aliases[WikiPage.sanitize_page_name(k.downcase)] = WikiPage.sanitize_page_name(v.downcase)
+      end
+      
+      if (aliases[name_or_id.downcase])
+        name_or_id = aliases[name_or_id.downcase]
+      end
+      
       page = WikiPage[name_or_id]
       if (!page)
         page = find_one_by_name(name_or_id)
@@ -52,15 +63,8 @@ module AresMUSH
       latest = self.current_version
       latest ? latest.text : ""
     end
-    
-    def is_special_page?
-      WikiPage.special_page_names.include?(self.name)
-    end
-    
-    def self.special_page_names
-      ['home']
-    end
-    
+        
+
     def save_upcase
       self.name = WikiPage.sanitize_page_name(self.name)
       self.name_upcase = self.name ? self.name.upcase : nil
