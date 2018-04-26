@@ -37,7 +37,7 @@ module AresMUSH
           text: version.text,
           diff: diff,
           created: OOCTime.local_long_timestr(enactor, version.created_at),
-          can_edit: enactor && enactor.is_approved? && ( enactor.is_admin? || !page.is_special_page? ),
+          can_edit: enactor && enactor.is_approved? && ( enactor.is_admin? || !WebHelpers.is_restricted_wiki_page?(page) ),
           versions: page.sorted_versions.reverse.map { |v| {
             author: v.author_name,
             id: v.id,

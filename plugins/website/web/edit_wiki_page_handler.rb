@@ -18,7 +18,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        if ((page.is_special_page? && !enactor.is_admin?) ||
+        if ((WebHelpers.is_restricted_wiki_page?(page) && !enactor.is_admin?) ||
           !enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }
         end
