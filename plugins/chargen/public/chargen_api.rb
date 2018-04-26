@@ -59,7 +59,7 @@ module AresMUSH
       if (!job)
         result = Jobs.create_job(Global.read_config("chargen", "app_category"), 
           t('chargen.application_title', :name => char.name), 
-          t('chargen.app_job_submitted'), 
+          t('chargen.app_job_submitted', :notes => app_notes), 
           char)
       
         if (result[:error])
