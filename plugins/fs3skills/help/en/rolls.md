@@ -19,11 +19,15 @@ Except for private rolls, all rolls may be emitted to a special roll results cha
 
 ## Types of Rolls
 
-Typically you will roll a skill.  The attribute value is factored in automatically based on the ruling attribute.  (e.g. roll Firearms)
+Typically you will roll a skill.  (e.g. roll Firearms)
 
-You may specify an attribute directly if you want to use a different ruling attribute.  (e.g. roll Firearms+Mind)
+The attribute dice are automatically added in based on the ability's configured related attribute.   For action skills, this is shown on your sheet.
 
-You may roll an attribute by itself if you are defaulting to the "Everyman" ability for common knowledge (e.g. roll Mind)
+You can specify a different attribute when the default one doesn't make sense (e.g. roll Firearms+Mind for a knowledge-based challenge), or for background skills/languages/advantages, which all default to Wits (e.g. roll Acting+Presence).
+
+## Defaulting
+
+You may roll an attribute by itself if you are defaulting to the "Everyman" ability for common knowledge (e.g. roll Wits will roll Wits + 1 die for the Everyman ability)
 
 ## Modifiers
 
