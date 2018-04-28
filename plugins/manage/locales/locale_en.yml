@@ -9,7 +9,8 @@ en:
         error_loading_config: "Problem loading configuration: %{error}"
         locale_loaded: "Locale reloaded."
         error_loading_locale: "Problem loading locale: %{error}"
-        management_config_messed_up: "Something is wrong with your configuration.  If this problem persists, check the logs and fix your config files."
+        management_config_messed_up: "Your permissions for who can manage the game aren't working right.  This is a security issue.  Please check your role configuration."
+        game_config_invalid: "Something is wrong with your configuration.  If this problem persists, check the logs and fix your config files."
         config_sections: "Config Sections"
         config_section: "Config Section: %{name}"
         invalid_config_section: "That config section does not exist."
@@ -29,8 +30,12 @@ en:
         invalid_search_class: "The Ares find command requires that you specify a database object type.  For example: find room=Welcome."
         
         objects_reloaded: "Database objects refreshed."
-        git_output: "Git command: %{output}"
+        git_output: "Git command output: %{output}"
+        upgrade_output: "Upgrade command output: %{output}"
         invalid_git_command: "Invalid git command.  Only a limited subset of commands are supported: %{commands}"
+        database_upgrade_in_progress: "Database upgrade in progress.  Please stand by."
+        database_upgrade_complete: "Database upgrade complete.  Carry on."
+        error_running_migrations: "Error running database migration: %{error}"
         
         object_destroyed: "%{name} destroyed."
         confirm_object_destroy: "You want to delete %{type} %xg%{name} (%{dbref}).%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn"
