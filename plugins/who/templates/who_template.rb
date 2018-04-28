@@ -14,6 +14,26 @@ module AresMUSH
         super File.dirname(__FILE__) + "/who.erb"
       end
       
+      def fields
+        Global.read_config("who", "who_fields")
+      end
+      
+      def who_header
+        Global.read_config("who", "who_header")
+      end
+      
+      def show_field(char, field_config)
+        field = field_config["field"]
+        value = field_config["value"]
+        width = field_config["width"]
+        
+        if (value)
+          field_eval = send(field.to_sym, char, value)
+        else
+          field_eval = send(field.to_sym, char)
+        end
+        left(field_eval, width)
+      end
     end 
   end
 end
