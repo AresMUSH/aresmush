@@ -15,6 +15,7 @@ module AresMUSH
           min_backgrounds: Global.read_config('fs3skills', 'min_backgrounds'),
           free_languages:  Global.read_config('fs3skills', 'free_languages'),
           free_backgrounds:  Global.read_config('fs3skills', 'free_backgrounds'),
+          advantages_cost: Global.read_config("fs3skills", "advantages_cost"),
           max_ap: Global.read_config('fs3skills', 'max_ap'),
           
         } 

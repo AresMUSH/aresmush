@@ -26,6 +26,8 @@ module AresMUSH
           ability = FS3BackgroundSkill.create(character: char, name: ability_name, rating: rating)
         when :language
           ability = FS3Language.create(character: char, name: ability_name, rating: rating)
+        when :advantage
+          ability = FS3Advantage.create(character: char, name: ability_name, rating: rating)
         when :attribute
           ability = FS3Attribute.create(character: char, name: ability_name, rating: rating)
         end
@@ -34,7 +36,7 @@ module AresMUSH
       rating_name = ability.rating_name
       
       if (rating == min_rating)
-        if (ability && (ability_type == :background || ability_type == :language))
+        if (ability && (ability_type == :background || ability_type == :language || ability_type == :advantage))
           ability.delete
         end
       end
@@ -63,9 +65,7 @@ module AresMUSH
         else
           min_rating = 1
         end
-      when :background
-        min_rating = 0
-      when :language
+      when :background, :language, :advantage
         min_rating = 0
       when :attribute
         min_rating = 1
@@ -77,9 +77,7 @@ module AresMUSH
       case ability_type
       when :action
         max_rating = Global.read_config("fs3skills", "max_skill_rating")
-      when :background
-        max_rating = 3
-      when :language
+      when :background, :language, :advantage
         max_rating = 3
       when :attribute
         max_rating = Global.read_config("fs3skills", "max_attr_rating")
@@ -101,6 +99,7 @@ module AresMUSH
       char.fs3_attributes.each { |s| s.delete }
       char.fs3_background_skills.each { |s| s.delete }
       char.fs3_languages.each { |s| s.delete }
+      char.fs3_advantages.each { |s| s.delete }
         
       languages = Global.read_config("fs3skills", "starting_languages")
       if (languages)

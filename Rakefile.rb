@@ -12,6 +12,9 @@ require_relative 'install/configure_game.rb'
 def minimal_boot
   bootstrapper = AresMUSH::Bootstrapper.new
   bootstrapper.config_reader.load_game_config
+  ares_logger = AresMUSH::AresLogger.new
+  ares_logger.start
+  AresMUSH::Global.ares_logger = ares_logger
   AresMUSH::Global.plugin_manager.load_all
   bootstrapper.db.load_config
 end
@@ -72,7 +75,7 @@ end
 task :migrate do
   minimal_boot
   migrator = AresMUSH::DatabaseMigrator.new
-  migrator.migrate
+  migrator.migrate(:offline)
 end
 
 desc "Run all specs."

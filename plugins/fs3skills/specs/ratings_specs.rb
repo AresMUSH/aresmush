@@ -6,6 +6,7 @@ module AresMUSH
         FS3Skills.stub(:attr_names) { [ "Brawn", "Mind" ] }
         FS3Skills.stub(:action_skill_names) { [ "Firearms", "Demolitions" ] }
         FS3Skills.stub(:language_names) { [ "English", "Spanish" ] }
+        FS3Skills.stub(:advantage_names) { [ "Rank", "Resources" ] }
       end
       
       describe :ability_rating do
@@ -15,6 +16,10 @@ module AresMUSH
           @action_skills = double
           @bg_skills = double
           @attrs = double
+          @advantages = double
+          
+          @advantages.stub(:find).with(name: "Resources") { [] }
+          @advantages.stub(:find).with(name: "Rank") { [ FS3Advantage.new(name: "Rank", rating: 3 ) ]}
           
           @languages.stub(:find).with(name: "Spanish") { [] }
           @languages.stub(:find).with(name: "English") { [ FS3Language.new(name: "English", rating: 1 ) ] }
@@ -32,6 +37,7 @@ module AresMUSH
           @char.stub(:fs3_attributes) { @attrs }
           @char.stub(:fs3_action_skills) { @action_skills }
           @char.stub(:fs3_background_skills) { @bg_skills }
+          @char.stub(:fs3_advantages) { @advantages }
         end
         
         it "should get skills that exist" do
@@ -39,6 +45,7 @@ module AresMUSH
           FS3Skills.ability_rating(@char, "Firearms").should eq 2
           FS3Skills.ability_rating(@char, "Basketweaving").should eq 3
           FS3Skills.ability_rating(@char, "Brawn").should eq 4
+          FS3Skills.ability_rating(@char, "Rank").should eq 3
         end
         
         it "should get skills that don't exit" do
@@ -46,6 +53,7 @@ module AresMUSH
           FS3Skills.ability_rating(@char, "Demolitions").should eq 0
           FS3Skills.ability_rating(@char, "Mind").should eq 0
           FS3Skills.ability_rating(@char, "Art").should eq 0
+          FS3Skills.ability_rating(@char, "Resources").should eq 0
         end
         
         it "should not search background skills for an action skill" do
@@ -78,6 +86,10 @@ module AresMUSH
         it "should default for langs and background skills" do
           FS3Skills.get_linked_attr("Basketweaving").should eq "Wits"
           FS3Skills.get_linked_attr("Spanish").should eq "Wits"
+        end
+        
+        it "should default for advantages" do
+          FS3Skills.get_linked_attr("Rank").should eq "Wits"
         end
         
       end

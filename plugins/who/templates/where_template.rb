@@ -14,11 +14,16 @@ module AresMUSH
         @scene_groups = build_scene_groups
         
         
-        # There are a couple built-in templates - one that shows people grouped by room,
-        # and the other that shows a list similar to 'who', and a third grouped by scene. 
-        super File.dirname(__FILE__) + "/where_by_scene.erb"
-        #super File.dirname(__FILE__) + "/where_by_room.erb"
-        #super File.dirname(__FILE__) + "/where.erb"
+        case (Global.read_config("who", "where_style"))
+        when "scene"
+          template_file = "/where_by_scene.erb"
+        when "room"
+          template_file = "/where_by_room.erb"
+        else
+          template_file = "/where.erb"
+        end
+        
+        super File.dirname(__FILE__) + template_file
       end    
       
       def append_to_group(groups, key, value)

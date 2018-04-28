@@ -1,24 +1,26 @@
 module AresMUSH
   module Migrations
     class MigrationBeta11Update
+      def require_restart
+        false
+      end
+      
       def migrate
-        puts "Adding weather configuration."
+        Global.logger.debug "Adding weather configuration."
         
-        default_weather = YAML::load( File.read(File.join(AresMUSH.root_path, "game.distr", "config", "weather.yml")))
+        default_weather = DatabaseMigrator.read_distr_config_file("weather.yml")
         descriptions = default_weather["weather"]["descriptions"]
         
-        weather_file = File.join(AresMUSH.root_path, "game", "config", "weather.yml")
-        custom_weather = YAML::load( File.read( weather_file ))
+        custom_weather = DatabaseMigrator.read_config_file("weather.yml")
         custom_weather["weather"]["descriptions"] = descriptions
         
-        File.open(weather_file, 'w') do |f|
-          f.write(custom_weather.to_yaml)
-        end
+        DatabaseMigrator.write_config_file("weather.yml", custom_weather)
         
-        puts "Adding demographics help text."
+        Global.logger.debug "Adding demographics help text."
         
-        demo_file = File.join(AresMUSH.root_path, "game", "config", "demographics.yml")
-        custom_demo = YAML::load( File.read( demo_file ))
+        custom_demo = DatabaseMigrator.read_config_file("demographics.yml")
+        
+        custom_demo["demographics"]["disable_auto_shortcuts"] = false
         custom_demo["demographics"]["help_text"] = {
           "actor" => "See 'help actors'.",
           "physique" => "Build/body type - athletic, wiry, slim, pudgy, etc.",
@@ -34,10 +36,7 @@ module AresMUSH
           "colonies" => "group colony",
           "demographics" => "demographic"
         }
-        File.open(demo_file, 'w') do |f|
-          f.write(custom_demo.to_yaml)
-        end
-        
+        DatabaseMigrator.write_config_file("demographics.yml", custom_demo)
       end
     end
   end

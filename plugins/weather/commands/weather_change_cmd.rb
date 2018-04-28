@@ -36,7 +36,7 @@ module AresMUSH
       
       def handle
         Weather.current_weather[self.area] = { :condition => self.condition, :temperature => self.temp }
-        client.emit t('weather.weather_set', :area => self.area)
+        client.emit_success t('weather.weather_set', :area => self.area)
       end
         
     end

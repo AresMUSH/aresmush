@@ -102,15 +102,16 @@ module AresMUSH
         #      }
         
         show_background = (char.on_roster? || char.bg_shared) && !char.background.blank?
-        damage = char.damage.map { |d| {
-          date: d.ictime_str,
-          description: d.description,
-          severity: WebHelpers.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity))
-          }          
-        }
+
         
         files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
         files = files.map { |f| WebHelpers.get_file_info(f) }
+        
+        if (FS3Skills.is_enabled?)
+          fs3 = FS3Skills::CharProfileRequestHandler.new.handle(request)
+        else
+          fs3 = nil
+        end
         
         {
           id: char.id,
@@ -135,11 +136,7 @@ module AresMUSH
           rp_hooks: WebHelpers.format_markdown_for_html(char.rp_hooks),
           desc: char.description,
           playerbit: char.is_playerbit?,
-          fs3_attributes: get_ability_list(char.fs3_attributes),
-          fs3_action_skills: get_ability_list(char.fs3_action_skills),
-          fs3_backgrounds: get_ability_list(char.fs3_background_skills),
-          fs3_languages: get_ability_list(char.fs3_languages),
-          fs3_damage: damage,
+          fs3: fs3,
           files: files,
           kills: kills,
           awards: setup_awards(char),
@@ -147,14 +144,6 @@ module AresMUSH
         }
       end
       
-      def get_ability_list(list)        
-        list.to_a.sort_by { |a| a.name }.map { |a| 
-          { 
-            name: a.name, 
-            rating: a.rating, 
-            rating_name: a.rating_name
-          }}
-      end
 
 
 
@@ -240,7 +229,7 @@ module AresMUSH
             n.times.each { |x| medal_images << "sacrifice16.png" }
             sac = sac - (n * 16)
           end
-          
+            
           medal_images << "sacrifice#{sac}.png"
       end
       

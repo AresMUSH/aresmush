@@ -1,12 +1,12 @@
 en:
     profile:
-        last_on: "Last On:"
-        location: "Location:" 
+        last_on: "Last On"
+        location: "Location" 
         currently_connected: "Connected!"
-        played_by: "Played By:"
-        timezone: "Timezone:"
-        status: "Status:"
-        alts: "Alts: "
+        played_by: "Played By"
+        timezone: "Timezone"
+        status: "Status"
+        alts: "Alts"
         
         profile_title: "Profile"
         profile_char_list_title: "Alts"
@@ -17,6 +17,7 @@ en:
         handle: "Handle:"
         handle_profile: "Profile:"
         not_yet_approved: "You have to be approved first."
+        hooks_title: "Roleplay Hooks"
         
         custom_profile_set: "Custom profile field %{field} set."
         custom_profile_cleared: "Custom profile field %{field} cleared."

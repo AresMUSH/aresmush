@@ -8,4 +8,8 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   left_sidebar: false
   wiki_nav:
-      - Home
+  - Home
+  wiki_aliases:
+    main: home
+  restricted_pages:
+  - home

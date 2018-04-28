@@ -13,7 +13,7 @@ module AresMUSH
           # Make sure everything is valid before we start.
           Global.config_reader.validate_game_config          
         rescue
-          client.emit_failure t('manage.management_config_messed_up')
+          client.emit_failure t('manage.game_config_invalid')
           return
         end
         

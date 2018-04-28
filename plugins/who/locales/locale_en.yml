@@ -8,7 +8,6 @@ en:
         players_ic: "%{count} IC"
         players_online: "%{count} Online"
         where_header: "Status Name                   Location                            Conn   Idle"
-        who_header:   "Status Name                   Department          Position        Conn   Idle"
         where_by_room_header: "Location                            People"
         public_scene: "#%{scene} Public"
         private_scene: "Private Scene"

@@ -49,8 +49,15 @@ module AresMUSH
         if (url.start_with?("char:"))
           "<a href=\"/char/#{url.after(':')}\">#{link}</a>"
         else
-          url = WikiPage.sanitize_page_name(url)
-          "<a href=\"/wiki/#{url}\">#{link}</a>"
+          if (url =~ /\#/)
+            anchor = url.after("#")
+            url = url.before("#")
+            url = WikiPage.sanitize_page_name(url)
+            "<a href=\"/wiki/#{url}##{anchor}\">#{link}</a>"
+          else
+            url = WikiPage.sanitize_page_name(url)
+            "<a href=\"/wiki/#{url}\">#{link}</a>"
+          end
         end
       end
     end

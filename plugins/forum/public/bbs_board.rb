@@ -27,6 +27,10 @@ module AresMUSH
       self.name_upcase = self.name.upcase
     end
     
+    def last_post
+      bbs_posts.to_a[-1]
+    end
+    
     def unread_posts(char)
       return [] if !Forum.can_read_category?(char, self)
       bbs_posts.select { |p| p.is_unread?(char) }

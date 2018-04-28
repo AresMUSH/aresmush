@@ -12,10 +12,12 @@ demographics:
   - fullname
   - gender
   - birthdate
+  disable_auto_shortcuts: false
   editable_properties:
   - fullname
   - hair
   - physique
+  - callsign
   demographics:
   - actor
   - hair
@@ -78,11 +80,11 @@ demographics:
     colonies: group colony
     demographics: demographic
   help_text:
-    actor: See 'help actors'.
-    physique: Build/body type - athletic, wiry, slim, pudgy, etc.
-    gender: Male/Female/Other
-    hair: Hair color
-    eyes: Eye color
-    skin: Complexion
-    birthdate: Specify a date mm/dd/yyyy or use %xcage <years>.%xn
-    callsign: Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
+    actor: "%xcactor <actor>%xn - See 'help actors'."
+    physique: '%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc.'
+    gender: '%xcgender <male/female/other>%xn'
+    hair: '%xchair <hair color>%xn'
+    eyes: '%xceyes <eye color>%xn'
+    skin: '%xcskin <complexion>%xn'
+    birthdate: '%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn'
+    callsign: '%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname.'

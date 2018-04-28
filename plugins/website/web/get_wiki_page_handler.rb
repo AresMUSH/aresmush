@@ -17,20 +17,19 @@ module AresMUSH
         name_or_id = WikiPage.sanitize_page_name(name_or_id)
         page = WikiPage.find_by_name_or_id(name_or_id)
         if (!page)
-          return { not_found: true }
+          return { not_found: true, title: name_or_id.titleize }
         end
         
         lock_info = page.get_lock_info(enactor)
-        
+        restricted_page = WebHelpers.is_restricted_wiki_page?(page)
         if (edit_mode)
-          if (page.is_special_page? && !enactor.is_admin?)
+          if (restricted_page && !enactor.is_admin?)
             return { error: t('dispatcher.not_allowed') }
           end
-          if (lock_info)
-            return { error: t('webportal.page_locked', :name => lock_info.locked_by, :time => time) }
+          if (!lock_info)
+            page.update(locked_by: enactor)
+            page.update(locked_time: Time.now)
           end
-          page.update(locked_by: enactor)
-          page.update(locked_time: Time.now)
           text = page.text
         else
           text = WebHelpers.format_markdown_for_html page.text
@@ -44,10 +43,10 @@ module AresMUSH
           text: text,
           tags: page.tags,
           lock_info: lock_info,
-          can_delete: enactor && enactor.is_admin? && !page.is_special_page?,
-          can_edit: enactor && enactor.is_approved? && ( enactor.is_admin? || !page.is_special_page? ),
+          can_delete: enactor && enactor.is_admin? && !restricted_page,
+          can_edit: enactor && enactor.is_approved? && !lock_info && ( enactor.is_admin? || !restricted_page ),
           current_version_id: page.current_version.id,
-          can_change_name: !page.is_special_page?
+          can_change_name: !WebHelpers.is_restricted_wiki_page?(page)
         }
       end
     end

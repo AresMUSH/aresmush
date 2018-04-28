@@ -10,8 +10,8 @@ module AresMUSH
       skill_rating = FS3Skills.ability_rating(char, ability)
       ability_type = FS3Skills.get_ability_type(ability)
       
-      # Language doubles dice except 0 = 0
-      if (ability_type == :language)
+      # Language and advantage doubles dice except 0 = 0
+      if (ability_type == :language || ability_type == :advantage)
         skill_rating = skill_rating == 0 ? 0 : skill_rating * 2
       # Background doubles dice, but an untrained one defaults to everyman (1)
       elsif (ability_type == :background)

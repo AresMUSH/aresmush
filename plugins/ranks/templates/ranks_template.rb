@@ -10,8 +10,13 @@ module AresMUSH
         
         # There are two built-in rank templates - a generic one and one that shows 
         # officer/enlisted ranks side by side
-        super File.dirname(__FILE__) + "/military_ranks.erb"
-        #super File.dirname(__FILE__) + "/ranks.erb"
+        if (Global.read_config("ranks", "rank_style") == "military")
+          template_file = "/military_ranks.erb"
+        else
+          template_file = "/ranks.erb"
+        end
+        
+        super File.dirname(__FILE__) + template_file
       end
       
       def officer_ranks

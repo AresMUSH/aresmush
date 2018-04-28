@@ -49,3 +49,4 @@ ranks:
         Sergeant Major: false
   shortcuts:
     rank/clear: rank/set
+  rank_style: military

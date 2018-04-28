@@ -20,6 +20,15 @@ module AresMUSH
       Global.read_config("fs3skills", "languages")
     end
     
+    def self.advantages
+      return {} if !FS3Skills.use_advantages?
+      Global.read_config("fs3skills", "advantages")
+    end
+    
+    def self.use_advantages?
+      Global.read_config("fs3skills", "use_advantages")
+    end
+    
     def self.background_skills
       Global.read_config("fs3skills", "background_skills")
     end
@@ -36,6 +45,10 @@ module AresMUSH
     
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }
+    end
+    
+    def self.advantage_names
+      advantages.map { |a| a['name'].titlecase }
     end
     
     def self.action_skill_names
@@ -70,6 +83,10 @@ module AresMUSH
       Global.read_config("fs3skills", "language_blurb")
     end
     
+    def self.advantages_blurb
+      Global.read_config("fs3skills", "advantages_blurb")
+    end
+    
     # Returns the type (attribute, action, etc) for a skill being rolled.
     def self.get_ability_type(ability)
       ability = ability.titlecase
@@ -79,6 +96,8 @@ module AresMUSH
         return :action
       elsif (language_names.include?(ability))
         return :language
+      elsif (advantage_names.include?(ability))
+        return :advantage
       else
         return :background
       end        

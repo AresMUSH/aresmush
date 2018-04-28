@@ -62,6 +62,10 @@ module AresMUSH
         @char.actor
       end
       
+      def hooks        
+        @char.rp_hooks
+      end
+      
       def last_on
         if (Login.is_online?(@char))
           t('profile.currently_connected')
