@@ -6,15 +6,15 @@ who:
     width: 7
     title: Status
   - field: name
-    width: 23
+    width: 20
     title: Name
   - field: group
     value: department
-    width: 20
+    width: 16
     title: Department
   - field: group
     value: position
-    width: 16
+    width: 18
     title: Position
   - field: connected
     width: 7
