@@ -31,7 +31,7 @@ module AresMUSH
         
         it "should handle errors from game config" do
           config_reader.should_receive(:validate_game_config).and_raise("error")
-          @client.should_receive(:emit_failure).with('manage.error_loading_config')
+          @client.should_receive(:emit_failure).with('manage.game_config_invalid')
           @handler.handle
         end    
         

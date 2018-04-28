@@ -18,19 +18,22 @@ module AresMUSH
         return nil
       end
       
-      def check_can_manage
-        return t('dispatcher.not_allowed') if !Manage.can_manage_game?(enactor)
-        return nil
-      end
-      
-      def handle
+      def handle        
         begin
+          # NOTE!!! This is intentionally done here instead of in a check method so that a failure in
+          # the can_manage_game config won't completely tank your game by preventing you from loading anything.
+          can_manage = Manage.can_manage_game?(enactor)
+          if (!can_manage)
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
           # Make sure everything is valid before we start.
           Global.config_reader.validate_game_config          
         rescue
           client.emit_failure t('manage.management_config_messed_up')
-          return
+          # DO NOT RETURN
         end
+        
         
         client.emit_ooc t('manage.loading_plugin_please_wait', :name => load_target)
         begin

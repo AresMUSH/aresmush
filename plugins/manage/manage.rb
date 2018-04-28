@@ -55,6 +55,8 @@ module AresMUSH
         else
           return LoadPluginCmd
         end
+      when "migrate"
+        return MigrateCmd
       when "plugins"
         return PluginListCmd
       when "rename"
@@ -67,6 +69,8 @@ module AresMUSH
         return StatueCmd
       when "unload"
         return UnloadPluginCmd
+      when "upgrade"
+        return UpgradeCmd
       when "version"
         return VersionCmd
       end
