@@ -1,12 +1,9 @@
 <%= header %>
 <%= center( mush_name, 78 ) %>
 <%= divider %>
-%xh<%= who_header %>%xn
+%xh<% fields.each do |f| %><%= show_title(f) %> <% end %>%xn
 <% chars_by_handle.each do |c| %>
-<% fields.each do |f| %>
-<%= show_field(c, f) -%>
-<% end %>
-
+<% fields.each do |f| %><%= show_field(c, f)%> <% end %>
 <% end %>
 <%= divider %>
 %xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
