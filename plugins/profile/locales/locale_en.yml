@@ -17,6 +17,7 @@ en:
         handle: "Handle:"
         handle_profile: "Profile:"
         not_yet_approved: "You have to be approved first."
+        hooks_title: "Roleplay Hooks"
         
         custom_profile_set: "Custom profile field %{field} set."
         custom_profile_cleared: "Custom profile field %{field} cleared."

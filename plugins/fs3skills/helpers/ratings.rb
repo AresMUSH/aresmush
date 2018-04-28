@@ -11,6 +11,8 @@ module AresMUSH
         char.fs3_action_skills.find(name: ability_name).first
       when :background
         char.fs3_background_skills.find(name: ability_name).first
+      when :advantage
+        char.fs3_advantages.find(name: ability_name).first
       when :language
         char.fs3_languages.find(name: ability_name).first
       else

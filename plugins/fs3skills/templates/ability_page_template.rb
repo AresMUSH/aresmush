@@ -20,6 +20,10 @@ module AresMUSH
         FS3Skills.attr_blurb
       end
       
+      def advantages_blurb
+        FS3Skills.advantages_blurb
+      end
+      
       def action_blurb
         FS3Skills.action_blurb
       end

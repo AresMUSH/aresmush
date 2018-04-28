@@ -49,8 +49,16 @@ module AresMUSH
         list
       end
       
-      def hooks        
-        @char.rp_hooks
+      def advantages
+        list = []
+        @char.fs3_advantages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
+          list << format_skill(l, i)
+        end
+        list
+      end
+      
+      def use_advantages
+        FS3Skills.use_advantages?
       end
       
       def specialties

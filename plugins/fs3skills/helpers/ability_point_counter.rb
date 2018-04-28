@@ -4,7 +4,7 @@ module AresMUSH
       def self.total_points(char)
         return self.points_on_attrs(char) + self.points_on_action(char) + 
            self.points_on_background(char) + self.points_on_language(char) +
-           self.points_on_specialties(char)
+           self.points_on_specialties(char) + self.points_on_advantages(char)
       end
       
       def self.points_on_attrs(char)
@@ -30,6 +30,11 @@ module AresMUSH
         free = Global.read_config("fs3skills", "free_languages")
         count = char.fs3_languages.inject(0) { |count, a| count + a.rating }
         count > free ? count - free : 0
+      end
+      
+      def self.points_on_advantages(char)
+        cost = Global.read_config("fs3skills", "advantages_cost")
+        char.fs3_advantages.inject(0) { |count, a| count + (a.rating * cost) }
       end
 
     end

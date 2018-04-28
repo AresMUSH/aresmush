@@ -7,6 +7,7 @@ module AresMUSH
     collection :fs3_action_skills, "AresMUSH::FS3ActionSkill"
     collection :fs3_background_skills, "AresMUSH::FS3BackgroundSkill"
     collection :fs3_languages, "AresMUSH::FS3Language"
+    collection :fs3_advantages, "AresMUSH::FS3Advantage"    
     
     def luck
       self.fs3_luck
