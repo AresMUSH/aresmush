@@ -14,6 +14,10 @@ module AresMUSH
       restricted_pages = Global.read_config("website", "restricted_pages") || ['home']
       restricted_pages.map { |p| WikiPage.sanitize_page_name(p.downcase) }.include?(page.name.downcase)
     end
+    
+    def self.can_manage_wiki?(actor)
+      actor && actor.has_permission?("manage_wiki")
+    end
       
     def self.format_output_for_html(output)
       return nil if !output

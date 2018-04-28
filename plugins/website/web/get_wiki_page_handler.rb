@@ -23,7 +23,7 @@ module AresMUSH
         lock_info = page.get_lock_info(enactor)
         restricted_page = WebHelpers.is_restricted_wiki_page?(page)
         if (edit_mode)
-          if (restricted_page && !enactor.is_admin?)
+          if (restricted_page && !WebHelpers.can_manage_wiki?(enactor))
             return { error: t('dispatcher.not_allowed') }
           end
           if (!lock_info)
@@ -34,7 +34,9 @@ module AresMUSH
         else
           text = WebHelpers.format_markdown_for_html page.text
         end
-            
+        
+        can_edit = enactor && enactor.is_approved? && !lock_info && ( WebHelpers.can_manage_wiki?(enactor) || !restricted_page )
+                    
         {
           id: page.id,
           heading: page.heading,
@@ -44,9 +46,9 @@ module AresMUSH
           tags: page.tags,
           lock_info: lock_info,
           can_delete: enactor && enactor.is_admin? && !restricted_page,
-          can_edit: enactor && enactor.is_approved? && !lock_info && ( enactor.is_admin? || !restricted_page ),
+          can_edit: can_edit,
           current_version_id: page.current_version.id,
-          can_change_name: !WebHelpers.is_restricted_wiki_page?(page)
+          can_change_name: can_edit
         }
       end
     end
