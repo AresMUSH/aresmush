@@ -4,28 +4,28 @@ module AresMUSH
     # a particular character's info
     module WhoCharacterFields
      
-      def position(char)
-        char.group("Position")
+      def demographic(char, value)
+        char.demographic(value)
       end
     
       def status_color(char)
-        Status.status_color(status(char))
+        Status.status_color(char.status)
+      end
+      
+      def name(char)
+        char.name
+      end
+      
+      def rank(char)
+        char.rank
       end
       
       def status(char)
-        char.status
+        "#{status_color(char)}#{char.status}%xn"
       end
    
-      def faction(char)
-        char.group("Faction")
-      end
-
-      def position(char)
-        char.group("Position")
-      end
-
-      def department(char)
-        char.group("Department")
+      def group(char, value)
+        char.group(value)
       end
       
       def idle(char)
