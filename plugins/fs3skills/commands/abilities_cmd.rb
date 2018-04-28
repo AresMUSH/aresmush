@@ -6,7 +6,7 @@ module AresMUSH
       
       def handle
         
-        num_pages = 4
+        num_pages = FS3Skills.use_advantages? ? 5 : 4
         
         case cmd.page
         when 1
@@ -21,6 +21,14 @@ module AresMUSH
         when 4
           template = AbilityPageTemplate.new("/languages.erb", 
               { skills: FS3Skills.languages, num_pages: num_pages, page: cmd.page })
+        when 5 
+          if (FS3Skills.use_advantages?)
+            template = AbilityPageTemplate.new("/advantages.erb",
+               { advantages: FS3Skills.advantages, num_pages: num_pages, page: cmd.page })
+           else
+             client.emit_failure t('pages.not_that_many_pages')
+             return
+           end
         else
           client.emit_failure t('pages.not_that_many_pages')
           return

@@ -1,0 +1,9 @@
+<%= header %>
+<%= advantages_blurb %>
+
+<% data[:advantages].each do |a| %>
+<%= left( a['name'], 14 ) %> <%= a['desc'] %>
+<% end %>
+
+<%= page_footer %>
+<%= footer %>

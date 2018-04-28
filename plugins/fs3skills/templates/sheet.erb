@@ -27,9 +27,13 @@
 <%= l -%>
 <% end %> 
 
+<% if use_advantages %>
+<%= line_with_text t('fs3skills.advantages_title') -%>
+<% advantages.each do |a| -%>
+<%= a -%>
+<% end %>
 
-<%= line_with_text t('fs3skills.hooks_title') %>
-<%= hooks %> 
+<% end %>
 
 %xh<%= t('fs3skills.xp_title') %>%xn <%= left( char.xp, 30 ) %> %xh<%= t('fs3skills.luck_title') %>%xn <%= luck %>
 %lf

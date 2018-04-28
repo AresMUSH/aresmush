@@ -23,7 +23,9 @@ module AresMUSH
           fs3_action_skills: get_ability_list(char, char.fs3_action_skills, :action),
           fs3_backgrounds: get_ability_list(char, char.fs3_background_skills, :background),
           fs3_languages: get_ability_list(char, char.fs3_languages, :language),
-          reset_needed: !char.fs3_attributes.map { |a| a.rating > 1 }.any?
+          fs3_advantages: get_ability_list(char, char.fs3_advantages, :advantage),
+          reset_needed: !char.fs3_attributes.map { |a| a.rating > 1 }.any?,
+          use_advantages: FS3Skills.use_advantages?
         } 
       end
       
@@ -42,6 +44,10 @@ module AresMUSH
           metadata = FS3Skills.languages
           starting_rating = 0
           starting_rating_name = t('fs3skills.unskilled_rating')
+        when :advantage
+          metadata = FS3Skills.advantages
+          starting_rating = 0
+          starting_rating_name = t('fs3skills.everyman_rating')
         else
           metadata = nil
         end

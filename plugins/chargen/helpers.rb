@@ -116,6 +116,10 @@ module AresMUSH
         FS3Skills.set_ability(nil, char, k, v.to_i)
       end
       
+      (chargen_data[:fs3_advantages] || []).each do |k, v|
+        FS3Skills.set_ability(nil, char, k, v.to_i)
+      end
+      
       return alerts
     end
        

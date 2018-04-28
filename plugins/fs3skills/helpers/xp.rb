@@ -54,6 +54,12 @@ module AresMUSH
     def self.learn_ability(client, char, name)
       ability = FS3Skills.find_ability(char, name)
       
+      ability_type = FS3Skills.get_ability_type(name)
+      if (ability_type == :advantage && !Global.read_config("fs3skills", "allow_advantages_xp"))
+        client.emit_failure t('fs3skills.cant_learn_advantages_xp')
+        return
+      end
+      
       if (!ability)
         FS3Skills.set_ability(client, char, name, 1)
       else

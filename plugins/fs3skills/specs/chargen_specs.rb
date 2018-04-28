@@ -7,6 +7,7 @@ module AresMUSH
         Global.stub(:read_config).with("fs3skills", "max_attr_rating") { 4 }
         FS3Skills.stub(:attr_names) { [ "Brawn", "Mind" ] }
         FS3Skills.stub(:action_skill_names) { [ "Firearms", "Demolitions" ] }
+        FS3Skills.stub(:advantage_names) { [ "Rank" ] }
         FS3Skills.stub(:language_names) { [ "English", "Spanish" ] }
         Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { false }
         SpecHelpers.stub_translate_for_testing
