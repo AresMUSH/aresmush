@@ -1,19 +1,24 @@
 ---
 who:
   where_style: scene
-  who_header: Status Name                   Department          Position        Conn   Idle
   who_fields:
   - field: status
     width: 7
+    title: Status
   - field: name
     width: 23
-  - field: demographic
-    value: callsign
+    title: Name
+  - field: group
+    value: department
     width: 20
+    title: Department
   - field: group
     value: position
     width: 16
+    title: Position
   - field: connected
     width: 7
+    title: Conn
   - field: idle
     width: 4
+    title: Idle
