@@ -34,6 +34,13 @@ module AresMUSH
         end
         left(field_eval, width)
       end
+      
+      def show_title(field_config)
+        title = field_config["title"]
+        width = field_config["width"]
+        
+        left(title, width)
+      end
     end 
   end
 end
