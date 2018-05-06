@@ -50,8 +50,10 @@ module AresMUSH
         case cmd.switch
         when "edit"
           return HooksEditCmd
-        else
+        when "set"
           return HooksSetCmd
+        else
+          return HooksViewCmd
         end
       end
       

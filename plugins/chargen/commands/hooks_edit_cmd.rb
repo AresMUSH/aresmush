@@ -17,9 +17,9 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           if (enactor.name == model.name || Chargen.can_approve?(enactor))
             if (self.target == enactor_name)
-              Utils.grab client, enactor, "hooks #{model.rp_hooks}"
+              Utils.grab client, enactor, "hooks/set #{model.rp_hooks}"
             else
-              Utils.grab client, enactor, "hooks #{target}=#{model.rp_hooks}"
+              Utils.grab client, enactor, "hooks/set #{target}=#{model.rp_hooks}"
             end
           else
             client.emit_failure t('dispatcher.not_allowed')

@@ -54,4 +54,4 @@ chargen:
     bg/unsubmit: app/unsubmit
     hooks: hook
     hook/delete: hook/remove
-    hook/set: hook/add
+    hook/add: hook/set

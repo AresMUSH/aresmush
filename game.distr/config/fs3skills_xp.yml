@@ -1,8 +1,8 @@
 ---
 fs3skills:
   periodic_xp: 1
-  allow_advantages_xp: false
   days_between_learning: 30
+  allow_advantages_xp: false
   max_xp_hoard: 4
   xp_cron:
     day_of_week:
