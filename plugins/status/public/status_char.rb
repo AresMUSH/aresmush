@@ -39,7 +39,7 @@ module AresMUSH
       # NPCs are always NPC
       return "NPC" if self.is_npc
       # New trumps room type
-      return "NEW" if !self.is_approved?
+      return "NEW" if !self.is_approved? || self.is_beginner?
       # RP rooms show up as IC
       return "IC" if self.room.room_type == "RPR"
       # Otherwise use room type

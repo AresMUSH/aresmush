@@ -1,5 +1,8 @@
 ---
 describe:
+  tag_colors: 
+      admin: "%xb"
+      beginner: "%xg"
   shortcuts:
     l: look
     desc: describe

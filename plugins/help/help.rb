@@ -15,12 +15,15 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd, enactor)
-       return nil if !cmd.root.end_with?("help")
-       
-       if (cmd.args)
-         return HelpViewCmd
-       else
-         return HelpListCmd
+       case cmd.root
+       when "beginner"
+         return BeginnerCmd
+       when "help"
+         if (cmd.args)
+           return HelpViewCmd
+         else
+           return HelpListCmd
+         end
        end
        
        nil

@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def section_topics(section)
-        Help.toc_section_topic_data(section)
+        Help.toc_section_topic_data(section).sort_by { |name, data| [ data['order'] || 99, name ] }
       end            
       
       def web_portal_url
