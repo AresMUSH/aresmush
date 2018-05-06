@@ -18,7 +18,7 @@ aliases:
 While you can always do free-form RP on the grid or in the RP room, there are a variety of features available to you if you use the **Scenes** system to manage your RP scene.  Some features that the scenes system provides:
 
 * Creating temprooms for private scenes or places not on the grid.
-* Advertising your scene as public so others know they're welcome to join.
+* Advertising your scene as open so others know they're welcome to join.
 * Capture a log of poses, skill rolls and combat messages without the OOC spam.
 * Share a log to the game's web portal and/or wiki (if enabled).
 
@@ -29,21 +29,21 @@ The scene system automatically maintains a log of the scene, including combat an
 When you start a scene, you can create a temporary room or start one in the room you're in.  Temp rooms are automatically recycled when the scene ends.
 
 `scene/start` - Starts a scene in your current room.
-`scene/start [<area>/]<location name>=<private/public>` - Starts a scene in a temp room.
+`scene/start [<area>/]<location name>=<private/open>` - Starts a scene in a temp room.
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
 
 ## Scene Privacy
 
-A scene can either be public (anyone's invited) or private.  Scenes on the grid are public by default.  Scenes in RP rooms are private.  The scene's organizer can change the privacy setting. 
+A scene can either be open (anyone's invited) or private.  Scenes on the grid are open by default.  Scenes in RP rooms are private.  The scene's organizer can change the privacy setting. 
 
-`scene/privacy [<#>=]<private/public>` - Changes the privacy level.
+`scene/privacy [<#>=]<private/open>` - Changes the privacy level.
 
 > **Tip:** It's rude to create a private scene in a public room on the main grid. Use a RP room or temp room instead.
 
 ## Joining Scenes
 
-To join a public scene, you can use the scene/join command.  To join a private scene, you'll need a meetme (see [Meetme](/help/meetme).
+To join an open scene, you can use the scene/join command.  To join a private scene, you'll need a meetme invitation (see [Meetme](/help/meetme).
 
 `scenes` - Lists active scenes.
 `scene/join <#>` - Joins a scene.

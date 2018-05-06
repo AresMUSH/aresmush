@@ -124,7 +124,7 @@ module AresMUSH
     end
     
     def self.is_valid_privacy?(privacy)
-      ["Public", "Private"].include?(privacy)
+      ["Public", "Open", "Private"].include?(privacy)
     end
     
     def self.with_a_scene(scene_id, client, &block)
