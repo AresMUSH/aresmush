@@ -9,10 +9,10 @@ module AresMUSH
         
       def import
         
-        #if (Dir.exist?(@tmp_dir))
-        #  FileUtils.rm_rf @tmp_dir
-        # end
-        #`git clone https://github.com/AresMUSH/ares-extras.git /tmp/ares-extras`
+        if (Dir.exist?(@tmp_dir))
+          FileUtils.rm_rf @tmp_dir
+         end
+        `git clone https://github.com/AresMUSH/ares-extras.git /tmp/ares-extras`
   
   
         if (!Dir.exist?(@source_dir))

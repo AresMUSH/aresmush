@@ -27,13 +27,18 @@ module AresMUSH
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
-          # Make sure everything is valid before we start.
-          Global.config_reader.validate_game_config          
         rescue
           client.emit_failure t('manage.management_config_messed_up')
           # DO NOT RETURN
         end
-        
+
+        begin
+          # Make sure everything is valid before we start.
+          Global.config_reader.validate_game_config          
+        rescue
+          client.emit_failure t('manage.game_config_invalid')
+          # DO NOT RETURN
+        end        
         
         client.emit_ooc t('manage.loading_plugin_please_wait', :name => load_target)
         begin

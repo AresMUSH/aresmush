@@ -5,14 +5,14 @@ echo -e "${ARES_INSTALL_TEXT} Updating game."
 cd /home/ares/aresmush
 git add -A .
 git commit -am "Saving before upgrade."
-git pull -s recursive -X ours
+git pull -s recursive -X ours --no-edit
 
 echo -e "${ARES_INSTALL_TEXT} Updating web portal."
 
 cd /home/ares/ares-webportal
 git add -A .
 git commit -am "Saving before upgrade."
-git pull -s recursive -X ours
+git pull -s recursive -X ours --no-edit
 
 cd /home/ares/aresmush
 

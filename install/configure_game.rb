@@ -123,7 +123,23 @@ module AresMUSH
       File.open(File.join(AresMUSH.game_path, 'config', 'game.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
-  
+      
+      print "\nNext we'll set up some information that will be used when you interact with the version control system GitHub for code updates."
+      
+      print "\nGitHub Email > "
+      git_email = STDIN.gets.chomp
+      
+      if (!git_email.blank?)
+        `git config --global user.email "#{git_email}"`
+      end
+      
+      print "\nGitHub Name > "
+      git_name = STDIN.gets.chomp
+      
+      if (!git_name.blank?)
+        `git config --global user.name "#{git_name}"`
+      end
+      
       puts "\nYour game has been configured!  You can edit these and other game options through the files in game/config."
       
     end
