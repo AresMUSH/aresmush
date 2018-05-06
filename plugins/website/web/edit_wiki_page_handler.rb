@@ -32,7 +32,7 @@ module AresMUSH
           return { error: t('webportal.page_locked', :name => lock_info.locked_by, :time => time) }
         end
 
-        page.update(tags: tags, title: title, name: name)
+        page.update(tags: tags, title: title, name: name, locked_by: nil)
         WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
         
         {

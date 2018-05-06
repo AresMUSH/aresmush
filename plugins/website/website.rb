@@ -52,6 +52,8 @@ module AresMUSH
         return DeleteWikiPageRequestHandler
       when "editWiki"
         return EditWikiPageRequestHandler
+      when "editWikiCancel"
+        return CancelEditWikiPageRequestHandler
       when "wikiPage"
         return GetWikiPageRequestHandler
       when "wikiTagList"
