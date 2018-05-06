@@ -97,6 +97,13 @@ module AresMUSH
         char.shortdesc ? " - #{char.shortdesc.description}" : ""
       end
       
+      def char_tag(char)
+        colors = Global.read_config("describe", "tag_colors") || {}
+        return "#{colors['admin']}[#{t('describe.admin_tag')}]%xn" if char.is_admin?
+        return "#{colors['beginner']}[#{t('describe.beginner_tag')}]%xn" if char.is_beginner?
+        return nil
+      end
+      
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)
