@@ -13,7 +13,7 @@ module AresMUSH
           self.temp = true
         else
           self.location = enactor_room.name
-          self.privacy = enactor_room.room_type == "IC" ? "Public" : "Private"
+          self.privacy = enactor_room.room_type == "IC" ? "Open" : "Private"
           self.temp = false
         end
       end

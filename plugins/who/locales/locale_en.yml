@@ -9,9 +9,9 @@ en:
         players_online: "%{count} Online"
         where_header: "Status Name                   Location                            Conn   Idle"
         where_by_room_header: "Location                            People"
-        public_scene: "#%{scene} Public"
+        open_scene: "#%{scene} Open"
         private_scene: "Private Scene"
         
-        where_public_scene_header: "Open Scenes"
+        where_open_scene_header: "Open Scenes"
         where_private_scene_header: "Other"
         

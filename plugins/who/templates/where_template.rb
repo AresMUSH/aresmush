@@ -51,7 +51,7 @@ module AresMUSH
       def build_scene_groups
         groups = {}
         groups['private'] = {}
-        groups['public'] = {}
+        groups['open'] = {}
         
         self.online_chars.each do |c|
           scene = c.room.scene
@@ -63,7 +63,7 @@ module AresMUSH
             if (scene.private_scene)
               append_to_group(groups['private'], room, name)
             else
-              append_to_group(groups['public'], room, name)
+              append_to_group(groups['open'], room, name)
             end
           else
             append_to_group(groups['private'], room, name)
@@ -80,13 +80,13 @@ module AresMUSH
             if (room.scene.private_scene)
               return t('who.private_scene')
             else
-              return "#{name.after('- ')} %xg<#{t('who.public_scene', :scene => room.scene.id)}>%xn"
+              return "#{name.after('- ')} %xg<#{t('who.open_scene', :scene => room.scene.id)}>%xn"
             end
           else
             if (room.scene.private_scene)
               return name
             else
-              return "#{name}  %xg<#{t('who.public_scene', :scene => room.scene.id)}>%xn"
+              return "#{name}  %xg<#{t('who.open_scene', :scene => room.scene.id)}>%xn"
             end
           end
         else
