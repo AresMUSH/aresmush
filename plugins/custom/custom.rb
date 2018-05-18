@@ -10,8 +10,8 @@ module AresMUSH
       Global.read_config("custom", "shortcuts")
     end
  
-    def self.get_cmd_handler(client, cmd, enactor)
-      nil     
+    def self.get_cmd_handler(client, cmd, enactor)      
+      return nil
     end
   end
 end

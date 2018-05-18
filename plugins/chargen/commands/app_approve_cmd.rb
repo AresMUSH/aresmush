@@ -34,6 +34,8 @@ module AresMUSH
           
           Jobs.close_job(enactor, job, Global.read_config("chargen", "approval_message"))
           Roles.add_role(model, "approved")
+
+          model.update(approval_job: nil)
                     
           client.emit_success t('chargen.app_approved', :name => model.name)
           
