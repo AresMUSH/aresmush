@@ -30,6 +30,8 @@ module AresMUSH
           end          
         elsif (self.msg == "off")
           cmd = Command.new("channel/leave #{self.channel.name}")
+        elsif (self.msg == "help")
+          cmd = Command.new("channels")
         elsif (self.msg == "gag" || self.msg == "mute")
           cmd = Command.new("channel/mute #{self.channel.name}")
         elsif (self.msg == "ungag" || self.msg == "unmute")

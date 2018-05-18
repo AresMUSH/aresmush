@@ -7,7 +7,7 @@ module AresMUSH
       client.emit !filename ? nil : File.read(filename, :encoding => "UTF-8")
 
       # Ares welcome text
-      client.emit_ooc t('client.welcome')
+      client.emit_ooc t('client.welcome', :version => AresMUSH.version ? AresMUSH.version.chomp : "")
     end
   end
 end
