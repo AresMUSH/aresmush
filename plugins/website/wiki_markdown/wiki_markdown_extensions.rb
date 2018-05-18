@@ -19,7 +19,7 @@ module AresMUSH
       
       def self.postprocess_tags
         [
-          # Most of these be post tags because otherwise the text inside them ends up 
+          # Most of these are post tags because otherwise the text inside them ends up 
           # beng marked as HTML instead of markdown.
           
           WikidotInternalLinkMarkdownExtension,
@@ -30,6 +30,7 @@ module AresMUSH
           StartCollapsibleMarkdownExtension,
           EndCollapsibleMarkdownExtension,
           PageListMarkdownExtension,
+          CategoryListMarkdownExtension,
           SceneListMarkdownExtension,
           StartDivBlockMarkdownExtension,
           StartSpanBlockMarkdownExtension,

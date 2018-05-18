@@ -43,11 +43,6 @@ git clone ${GAME_CLONE_URL}
 
 git clone ${WEBPORTAL_CLONE_URL}
 
-echo -e "${ARES_INSTALL_TEXT} Install default web config."
-
-sudo cp aresmush/install/nginx.default /etc/nginx/sites-enabled/default
-sudo service nginx restart
-
 echo -e "${ARES_INSTALL_TEXT} Setup the game."
 
 cd /home/ares/aresmush
@@ -67,6 +62,12 @@ echo -e "${ARES_INSTALL_TEXT} Creating game dir link."
 cd /var/www/html/
 
 ln -s /home/ares/aresmush/game game
+
+
+echo -e "${ARES_INSTALL_TEXT} Install default web config."
+
+sudo cp aresmush/install/nginx.default /etc/nginx/sites-enabled/default
+sudo service nginx restart
 
 echo -e "${ARES_INSTALL_TEXT} Setup the web portal."
 

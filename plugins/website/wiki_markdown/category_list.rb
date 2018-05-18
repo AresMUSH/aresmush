@@ -1,22 +1,15 @@
 module AresMUSH
   module Website
-    class PageListMarkdownExtension
+    class CategoryListMarkdownExtension
       def self.regex
-        /\[\[pagelist ([^\]]*)\]\]/i
+        /\[\[categoryList ([^\]]*)\]\]/i
       end
       
       def self.parse(matches)
-        input = matches[1]
-        return "" if !input
+        category = matches[1]
+        return "" if !category
 
-        helper = TagMatchHelper.new(input)
-
-        matches = WikiPage.all.select { |p| 
-          ((p.tags & helper.or_tags).any? && 
-          (p.tags & helper.exclude_tags).empty?) &&
-          (helper.required_tags & p.tags == helper.required_tags) 
-        }
-
+        matches = WikiPage.all.select { |p| p.category && (p.category.downcase == category.downcase) }
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'page_list.hbs'))
 
         data = {

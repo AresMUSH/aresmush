@@ -4,7 +4,7 @@ module AresMUSH
       /<<([^<]+)>>/i
     end
       
-    def self.parse(matches, sinatra)
+    def self.parse(matches)
       text = matches[1]
       "_&lt;&lt;#{text}&gt;&gt;_"
     end

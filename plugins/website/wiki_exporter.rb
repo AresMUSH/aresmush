@@ -56,7 +56,7 @@ module AresMUSH
       
       def self.export_scenes
         index = {}
-        scenes = Scene.all.select { |s| s.shared }.sort_by { |s| s.icdate }
+        scenes = Scene.shared_scenes.sort_by { |s| s.icdate }
         scenes.each do |s|
           puts "Parsing scene #{s.id} #{s.title}"
         
