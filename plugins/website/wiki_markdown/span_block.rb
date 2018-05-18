@@ -5,7 +5,7 @@ module AresMUSH
         /\[\[span([^\]]*)\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         input = matches[1]
         return "" if !input
 
@@ -18,7 +18,7 @@ module AresMUSH
         /\[\[\/span\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         "</span>"
       end
     end

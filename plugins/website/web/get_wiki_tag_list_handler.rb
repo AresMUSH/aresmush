@@ -9,7 +9,7 @@ module AresMUSH
         Character.all.each do |c|
           tags = tags.concat c.profile_tags
         end
-        Scene.all.each do |s|
+        Scene.shared_scenes.each do |s|
           tags = tags.concat s.tags
         end
       

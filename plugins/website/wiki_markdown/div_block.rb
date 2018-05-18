@@ -5,7 +5,7 @@ module AresMUSH
         /(<p>)?(<br>)?\[\[div([^\]]*)\]\](<\/?br\/?>)?(<\/p>)?/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         input = matches[3]
         "<div #{input}>"
       end
@@ -16,7 +16,7 @@ module AresMUSH
         /(<p>)?(<br>)?\[\[\/div\]\](<\/?br\/?>)?(<\/p>)?/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         "</div>"
       end
     end

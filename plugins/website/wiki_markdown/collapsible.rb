@@ -5,7 +5,7 @@ module AresMUSH
         /\[\[collapsible ([^\]]*)\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         button_text = matches[1]
         
         return "" if !button_text 
@@ -26,7 +26,7 @@ module AresMUSH
         /\[\[\/collapsible\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         "</div>"
       end
     end

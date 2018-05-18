@@ -21,7 +21,7 @@ module AresMUSH
     end
     
     def scenes_starring
-      Scene.all.select { |s| s.participants.include?(self) }
+      Scene.scenes_starring(self)
     end
   end
 end

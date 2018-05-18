@@ -14,7 +14,8 @@ module AresMUSH
           "api_key" => Game.master.engine_api_key,
           "styles_path" => AresMUSH.website_styles_path,
           "uploads_path" => AresMUSH.website_uploads_path,
-          "game_name" => Global.read_config("game", "name")
+          "game_name" => Global.read_config("game", "name"),
+          "use_api_proxy" => Global.read_config("website", "use_api_proxy")
         }
         
         if (!Dir.exist?(AresMUSH.website_scripts_path))

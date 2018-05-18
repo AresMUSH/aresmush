@@ -5,7 +5,7 @@ module AresMUSH
         /\[http([^\] ]*) ([^\]]*)\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         url = matches[1]
         link_text = matches[2]
 
@@ -20,7 +20,7 @@ module AresMUSH
         /\[\[\/?html\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         ""
       end
     end
@@ -30,7 +30,7 @@ module AresMUSH
         /\[\[\[([^\]]*)\]\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         text = matches[1]
         return "" if !text
 
@@ -67,7 +67,7 @@ module AresMUSH
        /\/\/([^\/\r\n]+)\/\//
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         text = matches[1]
         return "" if !text
 
@@ -80,7 +80,7 @@ module AresMUSH
        /^([\+]+) /
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         heading = matches[1]
         return "" if !heading
 
@@ -93,7 +93,7 @@ module AresMUSH
         /\[\[=\]\]/
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         "[[div class=\"centered\"]]"
       end
     end
@@ -103,7 +103,7 @@ module AresMUSH
        /\[\[\/=\]\]/
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         "[[/div]]"
       end
     end
@@ -113,7 +113,7 @@ module AresMUSH
         /^\[\[#(.+)\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         url = matches[1]
         return "" if !url
 

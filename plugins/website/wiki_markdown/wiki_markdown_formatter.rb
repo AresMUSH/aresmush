@@ -15,7 +15,7 @@ module AresMUSH
         return text if text =~ /^`/
         
         @pre_tag_blocks.each do |tag|
-          text = text.gsub(tag.regex) { tag.parse(Regexp.last_match, @sinatra) }
+          text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
         end
         text
       end
@@ -30,7 +30,7 @@ module AresMUSH
         text = text.gsub(/\&quot\;/i, '"')
         
         @post_tag_blocks.each do |tag|
-          text = text.gsub(tag.regex) { tag.parse(Regexp.last_match, @sinatra) }
+          text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
         end
         
         text

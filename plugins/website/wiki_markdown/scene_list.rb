@@ -5,22 +5,22 @@ module AresMUSH
         /\[\[scenelist ([^\]]*)\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         input = matches[1]
         return "" if !input
 
         helper = TagMatchHelper.new(input)
           
-        matches = Scene.all.select { |p| 
+        matches = Scene.shared_scenes.select { |p| 
           ((p.tags & helper.or_tags).any? && 
           (p.tags & helper.exclude_tags).empty?) &&
-          (helper.required_tags & p.tags == helper.required_tags) 
+          (helper.required_tags & p.tags == helper.required_tags)
         }
           
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'scene_list.hbs'))
 
         data = {
-          "scenes" => matches.map { |m| {id: m.id, title: m.date_title, summary: m.summary, participant_names: m.participant_names} }
+          "scenes" => matches.sort_by { |m| m.date_shared || m.created_at }.map { |m| {id: m.id, title: m.date_title, summary: m.summary, participant_names: m.participant_names} }
         }
         
         template.render(data)

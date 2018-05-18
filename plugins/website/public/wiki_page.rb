@@ -20,7 +20,10 @@ module AresMUSH
     before_delete :delete_versions
     
     def self.sanitize_page_name(name)
-      AresMUSH::Website::FilenameSanitizer.sanitize(name)
+      name = name || ""
+      name = name.strip
+      name = name.gsub(/[^0-9A-Za-z.:\-]/, '_')
+      name.downcase
     end
     
     def self.find_by_name_or_id(name_or_id)
@@ -64,7 +67,10 @@ module AresMUSH
       latest ? latest.text : ""
     end
         
-
+    def category
+      self.name.before(":")
+    end
+    
     def save_upcase
       self.name = WikiPage.sanitize_page_name(self.name)
       self.name_upcase = self.name ? self.name.upcase : nil
