@@ -13,7 +13,7 @@ scenes:
     minute:
     - 2
   delete_unshared_scenes: false
-  unhsared_scene_deletion_days: 20
+  unshared_scene_deletion_days: 20
   unshared_scene_warning_days: 13
   notify_of_web_watching: false
   scene_types:
