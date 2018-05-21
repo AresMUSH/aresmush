@@ -1,3 +1,3 @@
 bundle install
 ember build
-bundle exec rake startares
+bundle exec rake startares[disableproxy]

@@ -3,7 +3,7 @@ module AresMUSH
     
     attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager, :help_reader
     
-    def initialize
+    def initialize(use_api_proxy = true)
 
       @config_reader = ConfigReader.new
       @ares_logger = AresLogger.new
@@ -15,6 +15,8 @@ module AresMUSH
       client_monitor = ClientMonitor.new(client_factory)
       @server = Server.new
       @db = Database.new
+      
+      Global.use_api_proxy = use_api_proxy
       
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.

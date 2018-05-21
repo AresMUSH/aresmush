@@ -14,12 +14,6 @@ module AresMUSH
         end
         config['scenes'].delete 'unsared_scene_deletion_days'
         DatabaseMigrator.write_config_file("scenes.yml", config)
-
-        Global.logger.debug "Adding engine api proxy setting."
-        config = DatabaseMigrator.read_config_file("website.yml")
-        config['website']['use_api_proxy'] = false
-        DatabaseMigrator.write_config_file("website.yml", config)
-        
         
         Global.logger.debug "Adding desc tag colors."
         config = DatabaseMigrator.read_config_file("describe.yml")
@@ -35,7 +29,10 @@ module AresMUSH
         config['chargen']['shortcuts'] = shortcuts
         DatabaseMigrator.write_config_file("chargen.yml", config)
         
-                     
+        Global.logger.debug "Adding skin random colors."
+        config = DatabaseMigrator.read_config_file("skin.yml")
+        config['skin']['random_colors'] = [ '%xc', '%xb', '%xg', '%xr' ]
+        DatabaseMigrator.write_config_file("skin.yml", config)
       end
     end
   end

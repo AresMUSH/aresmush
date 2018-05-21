@@ -7,7 +7,6 @@ website:
   portal_requires_registration: false
   website_code_path: "/home/ares/ares-webportal"
   left_sidebar: false
-  use_api_proxy: true
   wiki_nav:
   - Home
   wiki_aliases:
