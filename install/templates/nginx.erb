@@ -3,14 +3,14 @@ upstream api_upstream {
 }
 
 server {
-	listen <%= web_portal_port %> default_server;
-	listen [::]:<%= web_portal_port %> default_server;
+	listen <%= @web_portal_port %> default_server;
+	listen [::]:<%= @web_portal_port %> default_server;
 
 	root /var/www/html;
 
 	index index.html;
 
-	server_name <% @host_name %>;
+	server_name <%= @host_name %>;
 
 	location / {
 		# First attempt to serve request as file, then

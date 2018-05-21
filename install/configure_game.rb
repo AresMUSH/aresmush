@@ -38,7 +38,7 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
   
-      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/basic-config for help with these options."
+      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/install-game for help with these options."
   
       print "\nServer hostname (ex: yourmush.aresmush.com or an IP)> "
       server_host = STDIN.gets.chomp
@@ -125,7 +125,7 @@ module AresMUSH
       end
       
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'nginx.erb'), :encoding => "UTF-8"))
-      File.open(File.join(AresMUSH.game_path, 'install', 'nginx.default'), 'w') do |f|
+      File.open(File.join(AresMUSH.root_path, 'install', 'nginx.default'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
       
