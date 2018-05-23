@@ -14,6 +14,8 @@ module AresMUSH
     attribute :last_hostname
     attribute :last_on, :type => DataType::Time
   
+    attribute :onconnect_commands, :type => DataType::Array, :default => []
+  
     def is_guest?
       self.has_any_role?(Login.guest_role)
     end

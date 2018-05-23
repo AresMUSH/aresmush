@@ -18,6 +18,8 @@ module AresMUSH
         return AliasCmd
       when "boot"
         return BootCmd
+      when "connect"
+        return ConnectCmd
       when "create"
         return CreateCmd
       when "email"
@@ -35,6 +37,8 @@ module AresMUSH
         end
       when "last"
         return LastCmd
+      when "onconnect"
+        return OnConnectCmd
       when "password"
         case cmd.switch
         when "reset"
@@ -53,8 +57,6 @@ module AresMUSH
         end
       when "tour"
         return TourCmd
-      when "connect"
-        return ConnectCmd
       when "watch"
         return WatchCmd
       end
