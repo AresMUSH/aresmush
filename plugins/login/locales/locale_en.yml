@@ -66,3 +66,7 @@ en:
        
        boot_title: "Character Booted"
        boot_message: "%{booter} has booted %{bootee}.  Reason:%R%R%{reason}"
+       
+       onconnect_commands_set: "Commands to run on connect set."
+       onconnect_commands_cleared: "Commands to run on connect cleared."
+       too_many_onconnect_commands: "You can only set five startup commands."
