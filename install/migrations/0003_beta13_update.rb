@@ -33,6 +33,10 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("skin.yml")
         config['skin']['random_colors'] = [ '%xc', '%xb', '%xg', '%xr' ]
         DatabaseMigrator.write_config_file("skin.yml", config)
+
+        Global.logger.debug "Clearing all web watchers."
+        Scene.all.each { |s| s.watchers.replace [] }
+
       end
     end
   end
