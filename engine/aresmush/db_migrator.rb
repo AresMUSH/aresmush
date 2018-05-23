@@ -62,7 +62,7 @@ module AresMUSH
     end
     
     def self.read_distr_config_file(file)
-      YAML::load( File.read(File.join(AresMUSH.root_path, "game.distr", "config", file)))
+      YAML::load( File.read(File.join(AresMUSH.root_path, "install", "game.distr", "config", file)))
     end
     
     def self.write_config_file(file, config_hash)

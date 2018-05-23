@@ -15,7 +15,7 @@ File.open('version.txt', 'w') do |file|
   file.puts release_version
 end
 
-dest = File.join(AresMUSH.root_path, 'game.distr')
+dest = File.join(AresMUSH.root_path, 'install', 'game.distr')
 
 FileUtils.cp_r File.join(AresMUSH.game_path, 'config'), dest
 FileUtils.cp_r File.join(AresMUSH.game_path, 'styles'), dest
