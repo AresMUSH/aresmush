@@ -9,6 +9,16 @@ module AresMUSH
     collection :fs3_languages, "AresMUSH::FS3Language"
     collection :fs3_advantages, "AresMUSH::FS3Advantage"    
     
+    before_delete :delete_abilities
+    
+    def delete_abilities
+      [ self.fs3_attributes, self.fs3_action_skills, self.fs3_background_skills, self.fs3_languages, self.fs3_advantages].each do |list|
+        list.each do |a|
+          a.delete
+        end
+      end
+    end
+    
     def luck
       self.fs3_luck
     end
