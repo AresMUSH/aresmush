@@ -16,4 +16,4 @@ git pull -s recursive -X ours --no-edit
 
 cd /home/ares/aresmush
 
-echo -e "${ARES_INSTALL_TEXT} Resolve any conflicts (if there were any) then run `bin/migrate` next."
+echo -e "${ARES_INSTALL_TEXT} Resolve any conflicts (if there were any) then run 'bin/migrate' next."
