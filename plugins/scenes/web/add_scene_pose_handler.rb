@@ -34,6 +34,7 @@ module AresMUSH
           line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
           formatted_pose = "#{line}%R#{pose}%R#{line}"
         else
+          orig_pose = pose
           pose = PoseFormatter.format(enactor.name, pose)
           formatted_pose = pose
         end
@@ -42,7 +43,7 @@ module AresMUSH
         if (scene.room)
           scene.room.characters.each do |char|
             message = Scenes.custom_format(formatted_pose, char, enactor, true, false, nil)
-            Global.client_monitor.emit_ooc_if_logged_in(char, message)
+            Global.client_monitor.emit_if_logged_in(char, message)
           end
         end
         
