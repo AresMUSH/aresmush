@@ -44,5 +44,24 @@ module AresMUSH
         return self.name.upcase
       end
     end
+    
+    def clients
+      list = []
+      Global.client_monitor.clients.each do |c|
+        char = c.char
+        if (char && char.room == self)
+          list << c
+        end
+      end
+      list
+    end
+    
+    def emit(message)
+      self.clients.each { |c| c.emit message }
+    end
+
+    def emit_ooc(message)
+      self.clients.each { |c| c.emit_ooc message }
+    end
   end
 end

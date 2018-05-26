@@ -22,7 +22,7 @@ module AresMUSH
         end
         
         enactor.update(place: place)
-        Rooms.emit_ooc_to_room(enactor_room, t('places.place_joined', :name => enactor.name, :place_name => place.name))
+        enactor_room.emit_ooc t('places.place_joined', :name => enactor.name, :place_name => place.name)
       end
     end
   end

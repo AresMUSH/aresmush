@@ -13,8 +13,8 @@ module AresMUSH
         icloc = get_icloc(enactor)
         enactor.update(is_afk: false)
         # No need to save because move will do it.
-        Rooms.emit_ooc_to_room(enactor.room, t('status.go_ic', :name => enactor.name))
-        Rooms.emit_ooc_to_room(icloc, t('status.go_ic', :name => enactor.name))
+        enactor.room.emit_ooc t('status.go_ic', :name => enactor.name)
+        icloc.emit_ooc t('status.go_ic', :name => enactor.name)
         Rooms.move_to(client, enactor, icloc)
       end
       

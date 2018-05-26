@@ -21,7 +21,7 @@ module AresMUSH
         end
         
         enactor_room.remove_from_pose_order(self.name)        
-        Rooms.emit_ooc_to_room(enactor_room, t('scenes.pose_order_skipped', :name => enactor_name, :skipped => self.name))
+        enactor_room.emit_ooc t('scenes.pose_order_skipped', :name => enactor_name, :skipped => self.name)
         Scenes.notify_next_person(enactor_room)
       end
     end

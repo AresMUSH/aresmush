@@ -26,7 +26,7 @@ module AresMUSH
             return
           end
                     
-          Rooms.emit_ooc_to_room(enactor_room, FS3Combat.treat(model, enactor))
+          enactor_room.emit_ooc FS3Combat.treat(model, enactor)
         end
       end
     end

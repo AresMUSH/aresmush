@@ -23,7 +23,7 @@ module AresMUSH
           @room = double
           @main_char.stub(:room) { @room }
           @main_client.stub(:emit)
-          Rooms.stub(:emit_to_room)
+          @room.stub(:emit)
         end
   
         context "private roll" do
@@ -33,7 +33,7 @@ module AresMUSH
           end
     
           it "should not emit to the room" do
-            Rooms.should_not_receive(:emit_to_room).with("test")
+            @room.should_not_receive(:emit).with("test")
             FS3Skills.emit_results("test", @main_client, @room, true)
           end
           
@@ -50,7 +50,7 @@ module AresMUSH
           end
           
           it "should emit to the room" do
-            Rooms.should_receive(:emit_to_room).with(@room, "test")
+            @room.should_receive(:emit).with("test")
             FS3Skills.emit_results("test", @main_client, @room, false)
           end
     

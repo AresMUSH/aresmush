@@ -23,7 +23,7 @@ module AresMUSH
         damage = nil
       end
         
-      show_sheet = FS3Skills.can_view_sheets?(enactor) || enactor.id == char.id
+      show_sheet = FS3Skills.can_view_sheets?(enactor) || (enactor && enactor.id == char.id)
         
       if (show_sheet)
         {

@@ -36,7 +36,7 @@ module AresMUSH
         if (self.private_roll)
           client.emit_ooc message
         else
-          Rooms.emit_ooc_to_room(enactor_room, message)
+          enactor_room.emit_ooc message
         end
       end
       

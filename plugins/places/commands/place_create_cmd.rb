@@ -23,7 +23,7 @@ module AresMUSH
           
         place = Place.create(name: self.name, room: enactor_room)
         enactor.update(place: place)
-        Rooms.emit_ooc_to_room(enactor_room, t('places.place_created', :name => enactor.name, :place_name => self.name))
+        enactor_room.emit_ooc t('places.place_created', :name => enactor.name, :place_name => self.name)
       end
     end
   end
