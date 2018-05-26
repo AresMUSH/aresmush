@@ -58,7 +58,7 @@ module AresMUSH
           room = enactor_room
           room.update(scene: scene)
           scene.update(room: room)
-          Rooms.emit_ooc_to_room(room, t('scenes.announce_scene_start', :privacy => self.privacy, :name => enactor_name))
+          room.emit_ooc t('scenes.announce_scene_start', :privacy => self.privacy, :name => enactor_name)
         end
       end
     end

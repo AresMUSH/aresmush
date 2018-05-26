@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def handle
-        Rooms.emit_ooc_to_room(enactor_room, t('rooms.char_has_gone_home', :name => enactor.name))
+        enactor_room.emit_ooc t('rooms.char_has_gone_home', :name => enactor.name)
         Rooms.move_to(client, enactor, enactor.room_home)
       end
     end

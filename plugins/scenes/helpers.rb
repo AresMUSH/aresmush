@@ -271,7 +271,7 @@ module AresMUSH
             colored_pose << "#{quote_color}#{m[1]}%xn"
           end
         end
-      end
+      end      
       
       "#{char.pose_autospace}#{nospoof}#{place_title}#{colored_pose}"
     end  

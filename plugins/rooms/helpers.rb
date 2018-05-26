@@ -37,25 +37,6 @@ module AresMUSH
       room.characters.select { |c| Login.is_online?(c) }
     end
     
-    def self.clients_in_room(room)
-      clients = []
-      Global.client_monitor.clients.each do |c|
-        char = c.char
-        if (char && char.room == room)
-          clients << c
-        end
-      end
-      clients
-    end
-    
-    def self.emit_to_room(room, message)
-      Rooms.clients_in_room(room).each { |c| c.emit message }
-    end
-
-    def self.emit_ooc_to_room(room, message)
-      Rooms.clients_in_room(room).each { |c| c.emit_ooc message }
-    end
-    
     def self.find_destination(destination, enactor, allow_char_names = false)
       if (allow_char_names)
         find_result = ClassTargetFinder.find(destination, Character, enactor)

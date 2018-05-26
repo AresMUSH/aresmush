@@ -45,7 +45,7 @@ module AresMUSH
       if (is_private)
         client.emit message
       else
-        Rooms.emit_to_room(room, message)
+        room.emit message
         channel = Global.read_config("fs3skills", "roll_channel")
         if (channel)
           Channels.send_to_channel(channel, message)
