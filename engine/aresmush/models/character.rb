@@ -132,7 +132,7 @@ module AresMUSH
     end    
     
     def self.random_link_code
-      (0...8).map { (65 + rand(26)).chr }.join
+      (0...8).map { (33 + rand(94)).chr }.join
     end 
   end
 end
