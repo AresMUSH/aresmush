@@ -5,6 +5,7 @@ module AresMUSH
         config = Global.read_config("scenes", "room_cleanup_cron")
         if Cron.is_cron_match?(config, event.time)
           clear_rooms
+          clear_watchers
         end
         
         if (Global.read_config("scenes", "delete_unshared_scenes"))
@@ -15,10 +16,14 @@ module AresMUSH
         end
       end
 
+      def clear_watchers
+        Scene.all.each { |s| s.watchers.replace([]) }
+      end
+      
       def clear_rooms
         rooms = Room.all.select { |r| !!r.scene_set || !!r.scene || !r.scene_nag}
         rooms.each do |r|
-          if (Rooms.clients_in_room(r).empty?)
+          if (r.clients.empty?)
             if (r.scene_set)
               r.update(scene_set: nil)
             end
