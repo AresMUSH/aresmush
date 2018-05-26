@@ -12,6 +12,8 @@ server {
 
 	server_name <%= @host_name %>;
 
+    client_max_body_size 100M;
+
 	location / {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
