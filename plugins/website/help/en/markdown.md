@@ -62,11 +62,11 @@ Collapsibles let you show and hide text with the click of a button.
 
 For a basic image, the regular markdown syntax will suffice:
 
-`![Image Alt Text](/files/pic.jpg)`
+`![Image Alt Text](/misc/pic.jpg)`
 
 You can display images with some easy formatting options, including height, width and alignment (left, right or center).  All of the formatting options can be omitted.
 
-`[[image /files/pic.jpg height=50px width=100px center]]`
+`[[image /misc/pic.jpg height=50px width=100px center]]`
 
 
 ## Tables
