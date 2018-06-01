@@ -24,6 +24,10 @@ module AresMUSH
         t('time.timezone', :timezone => @enactor.timezone)
       end
       
+      def ratio
+        ICTime.ratio_str
+      end
+      
     end
   end
 end

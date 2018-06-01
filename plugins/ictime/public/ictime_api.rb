@@ -2,15 +2,7 @@ module AresMUSH
   module ICTime
     def self.ictime
       t = DateTime.now
-      year = t.year + Global.read_config("ictime", "year_offset")
-      
-      begin
-        DateTime.new(year, t.month, t.day, t.hour, t.minute, t.sec) +  Global.read_config("ictime", "day_offset")
-      rescue Exception => ex
-        Global.logger.error "Error converting RL time to IC time.  Using RL time instead.  Error=#{ex}"
-        return t
-      end
-        
+      ICTime.convert_to_ictime(t)
     end
     
     # Used in certain places where you don't want to display the full date and time

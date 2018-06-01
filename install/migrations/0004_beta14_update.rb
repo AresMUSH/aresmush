@@ -11,6 +11,8 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("ictime.yml")
         config['ictime']['month_names'] = []
         config['ictime']['day_names'] = []
+        config['ictime']['game_start_date'] = ''
+        config['ictime']['time_ratio'] = 1
         DatabaseMigrator.write_config_file("ictime.yml", config)
       end
     end

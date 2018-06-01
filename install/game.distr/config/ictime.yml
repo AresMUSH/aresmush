@@ -4,5 +4,7 @@ ictime:
   day_offset: 0
   day_names: []
   month_names: []
+  time_ratio: 1
+  game_start_date: ''
 
 
