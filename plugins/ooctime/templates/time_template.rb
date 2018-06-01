@@ -9,7 +9,7 @@ module AresMUSH
       end
             
       def server_time
-        DateTime.now.strftime("%a %b %d, %Y %l:%M%P")
+        l(DateTime.now, format: Global.read_config("datetime", "long_date_format"))
       end
       
       def local_time
