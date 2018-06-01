@@ -1,5 +1,49 @@
 module AresMUSH
   module ICTime
+    def self.ratio_str
+      ratio = Global.read_config("ictime", "time_ratio")
+      if (ratio >= 1)
+        "#{ratio}:1"
+      else
+        ratio = 1/ratio
+        "#{1}:#{ratio.round(1)}"
+      end
+    end
+    
+    def self.convert_to_ictime(t)
+      year = t.year + Global.read_config("ictime", "year_offset")
+      ratio = Global.read_config("ictime", "time_ratio")
+      day_offset = Global.read_config("ictime", "day_offset")
+      
+      begin
+        if (ratio != 1)
+          start_date = Global.read_config("ictime", "game_start_date")
+          if (start_date.blank?)
+            raise "Can't specify custom ratio without a start date."
+          end
+
+          start = DateTime.strptime(start_date, "%m/%d/%Y")
+          delta = t - start
+                    
+          elapsed = delta * ratio
+          t = start + elapsed
+          
+        end
+        return DateTime.new(year, t.month, t.day, t.hour, t.minute, t.sec) +  day_offset
+        
+      rescue Exception => ex
+        begin
+          # In case we land on an invalid day - like a leap day that doesn't exist - try the next day
+          if (t.day > 28)
+            return DateTime.new(year, t.month + 1, 1, t.hour, t.minute, t.sec) +  day_offset
+          end
+        rescue
+        end
+        Global.logger.error "Error converting RL time to IC time.  Using RL time instead.  Error=#{ex}"
+        return t
+      end
+    end
+    
     def self.substitute_ic_names(format, time)
       month_names = Global.read_config("ictime", "month_names") 
       day_names = Global.read_config("ictime", "day_names")

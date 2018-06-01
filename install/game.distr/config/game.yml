@@ -1,5 +1,5 @@
 ---
-game: !ruby/hash:Sinatra::IndifferentHash
+game:
   name: Ares Local Test
   category: Other
   description: AresMUSH test site.
