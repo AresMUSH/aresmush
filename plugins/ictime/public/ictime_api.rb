@@ -20,11 +20,15 @@ module AresMUSH
     end
         
     def self.ic_short_timestr(time)
-      time.strftime Global.read_config("datetime", "short_date_format")
+      format = Global.read_config("datetime", "short_date_format")
+      format = substitute_ic_names(format, time)
+      l(time, format: format)
     end
   
     def self.ic_long_timestr(time)
-      time.strftime Global.read_config("datetime", "long_date_format")
+      format = Global.read_config("datetime", "long_date_format")
+      format = substitute_ic_names(format, time)
+      l(time, format: format)
     end
     
     def self.time_of_day(time)

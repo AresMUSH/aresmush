@@ -25,8 +25,8 @@ module AresMUSH
     
     # Returns the current locale first, followed by the default locale if it's different.
     def locale_order
-      current_locale = locale.to_s
-      default = default_locale.to_s
+      current_locale = Global.read_config("locale", "locale")
+      default = Global.read_config("locale", "default_locale")
       locales = [current_locale]
       if (current_locale != default)
         locales << default
@@ -35,8 +35,8 @@ module AresMUSH
     end
     
     def setup
-      set_locale
       reset_load_path
+      set_locale
       reload
     end
     
