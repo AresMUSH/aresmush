@@ -14,8 +14,6 @@ module AresMUSH
       case cmd.root
       when "activity"
         return ActivityCmd
-      when "alias"
-        return AliasCmd
       when "boot"
         return BootCmd
       when "connect"

@@ -16,6 +16,7 @@ module AresMUSH
           @char.stub(:room) { @old_room }
         
           @old_room.stub(:emit_ooc)
+          @new_room.stub(:emit_ooc)
           @char.stub(:update)
           @char.stub(:name) { "Char" }
           Rooms.stub(:emit_here_desc)

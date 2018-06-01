@@ -41,6 +41,7 @@ module AresMUSH
           Login.stub(:update_site_info) {}
           @login_events = CharConnectedEventHandler.new
           @room_client.stub(:emit_success)
+          @event_char.stub(:onconnect_commands) { [] }
           dispatcher.stub(:queue_timer)
         end
         

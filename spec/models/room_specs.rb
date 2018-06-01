@@ -30,6 +30,20 @@ module AresMUSH
         @room.get_exit("B").name_upcase.should eq "B"
         @room.get_exit("C").should eq nil
       end
+      
+      it "should return exit if exit exists even when alias exists" do
+        exit1 = Exit.new(:name_upcase => "A", :alias_upcase => "B")
+        exit2 = Exit.new(:name_upcase => "B")
+        @room.stub(:exits) { [ exit1, exit2 ]}
+        @room.get_exit("B").name_upcase.should eq "B"
+      end
+
+      it "should return exit if alias exists" do
+        exit1 = Exit.new(:name_upcase => "A", :alias_upcase => "C")
+        exit2 = Exit.new(:name_upcase => "B")
+        @room.stub(:exits) { [ exit1, exit2 ]}
+        @room.get_exit("C").name_upcase.should eq "A"
+      end
     end
     
     describe :way_out do 

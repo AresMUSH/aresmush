@@ -34,8 +34,6 @@ en:
        site_blocked: "Your site has been blocked from this game."
        suspect_login_title: "Suspicious Login"
        suspect_login: "%{name} was just created and their site appeared to match something on your suspects list.%R%RIP: %{ip}%RHostname: %{host}%RMatched suspect entry %{match}."
-       alias_set: "Alias set to %{alias}."
-       alias_cleared: "Alias cleared."
        currently_online: "%{name} is currently online."
        last_online: "%{name} was last online at %{time}."
        keepalive_set: "You turn your keepalive ping %{option}."

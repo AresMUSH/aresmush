@@ -5,6 +5,9 @@ module AresMUSH
     
     attribute :name
     attribute :name_upcase
+
+    attribute :alias
+    attribute :alias_upcase
   
     index :name_upcase
     
@@ -17,7 +20,8 @@ module AresMUSH
     # CLASS METHODS
     # -----------------------------------
   
-    # Derived classes may implement name checking
+    # The engine doesn't enforce name checking, but the a plugin can override this.
+    # Just be sure not to have multiple plugins trying to redefine this same method.
     def self.check_name(name)
       nil
     end
@@ -32,6 +36,7 @@ module AresMUSH
     
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
+      self.alias_upcase = self.alias ? self.alias.upcase : nil
     end
     
   end

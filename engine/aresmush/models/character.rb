@@ -52,7 +52,8 @@ module AresMUSH
       !!find_one_by_name(name)
     end
   
-    # Derived classes may implement name checking
+    # The engine doesn't enforce name checking, but the a plugin can override this.
+    # Just be sure not to have multiple plugins trying to redefine this same method.
     def self.check_name(name)
       nil
     end
