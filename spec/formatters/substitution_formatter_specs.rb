@@ -52,7 +52,7 @@ module AresMUSH
       end    
       
       it "should replace %x! with a random color" do
-        AresMUSH::RandomColorizer.should_receive(:random_color) { "b" }
+        AresMUSH::RandomColorizer.should_receive(:random_color) { "%xb" }
         SubstitutionFormatter.format("A%x!B").should eq "A" + ANSI.blue + "B"
       end
 

@@ -17,7 +17,8 @@ module AresMUSH
     # CLASS METHODS
     # -----------------------------------
     
-    # Derived classes may implement name checking
+    # The engine doesn't enforce name checking, but the a plugin can override this.
+    # Just be sure not to have multiple plugins trying to redefine this same method.
     def self.check_name(name)
       nil
     end
@@ -56,6 +57,10 @@ module AresMUSH
     
     def get_exit(name)
       match = exits.select { |e| e.name_upcase == name.upcase }.first
+      if (!match)
+        match = exits.select { |e| e.alias_upcase == name.upcase }.first
+      end
+      match
     end
     
     # The way out; will be one named "O" or "Out" OR the first exit
