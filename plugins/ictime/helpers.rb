@@ -11,12 +11,12 @@ module AresMUSH
     end
     
     def self.convert_to_ictime(t)
+      day_offset = Global.read_config("ictime", "day_offset")
       year = t.year + Global.read_config("ictime", "year_offset")
       ratio = Global.read_config("ictime", "time_ratio")
-      day_offset = Global.read_config("ictime", "day_offset")
       
       begin
-        if (ratio != 1)
+        if (ratio && ratio != 1)
           start_date = Global.read_config("ictime", "game_start_date")
           if (start_date.blank?)
             raise "Can't specify custom ratio without a start date."
