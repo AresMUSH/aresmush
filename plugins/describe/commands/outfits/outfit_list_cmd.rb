@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       def handle
-        outfits = enactor.outfits.map { |d| d.name }
+        outfits = enactor.outfits.keys
         template = BorderedListTemplate.new outfits, t('describe.your_outfits')
         client.emit template.render
       end

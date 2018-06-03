@@ -1,13 +1,11 @@
 module AresMUSH
   
   class Character
-    include Describable
-    
     attribute :desc_notify, :type => DataType::Boolean, :default => true
-    
-    def shortdesc
-      descs_of_type("short").first
-    end
+    attribute :description
+    attribute :shortdesc
+    attribute :outfits, :type => DataType::Hash, :default => {}
+    attribute :details, :type => DataType::Hash, :default => {}
     
     # -------------------------------
     # Outfits
@@ -18,11 +16,7 @@ module AresMUSH
     end
     
     def outfit(name)
-      outfits.find(name: name).first
-    end
-    
-    def outfits
-      descs_of_type(:outfit)
+      outfits[name]
     end
   end
 end

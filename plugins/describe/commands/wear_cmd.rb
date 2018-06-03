@@ -22,12 +22,11 @@ module AresMUSH
       def handle
         text = ""
         self.names.each do |n|
-          text << enactor.outfit(n).description
+          text << enactor.outfit(n)
           text << " "
         end
         
-        Describe.update_current_desc(enactor, text)
-        
+        enactor.update(description: text)
         client.emit_success t('describe.outfits_worn')
       end
     end

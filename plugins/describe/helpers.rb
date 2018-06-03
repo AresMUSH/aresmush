@@ -20,6 +20,10 @@ module AresMUSH
         desc.update(description: description)
       end
     end
+    
+    def self.is_reserved_desc_type?(type)
+      [ 'current', 'short', 'outfit' ].include?(type)
+    end
         
   end
 end

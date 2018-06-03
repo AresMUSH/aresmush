@@ -12,7 +12,7 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when "describe", "shortdesc"
+      when "describe"
         case cmd.switch
         when "edit"
           return DescEditCmd
@@ -21,6 +21,8 @@ module AresMUSH
         when nil
           return DescCmd
         end
+      when "shortdesc"
+        return ShortdescCmd
       when "detail"
         case cmd.switch
         when "delete"

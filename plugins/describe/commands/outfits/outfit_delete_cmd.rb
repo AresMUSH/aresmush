@@ -10,13 +10,15 @@ module AresMUSH
       end
       
       def handle
-        outfit = enactor.outfit(self.name)
-        if (!outfit)
+        if (!enactor.has_outfit?(self.name))
           client.emit_failure t('describe.outfit_does_not_exist', :name => self.name)
           return
         end
         
-        outfit.delete
+        new_outfits = enactor.outfits
+        new_outfits.delete(self.name)
+        enactor.update(outfits: new_outfits)
+        
         client.emit_success t('describe.outfit_deleted')
       end
     end

@@ -17,7 +17,7 @@ module AresMUSH
       
       def handle
         VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
-          detail = model.detail(self.name)
+          detail = model.details[self.name]
           
           if (!detail)
             client.emit_failure t('describe.no_such_detail', :name => self.name)
@@ -29,7 +29,7 @@ module AresMUSH
             return
           end
           
-          Utils.grab client, enactor, "detail/set #{self.target}/#{self.name}=#{detail.description}"
+          Utils.grab client, enactor, "detail/set #{self.target}/#{self.name}=#{detail}"
         end
       end
       
