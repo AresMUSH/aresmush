@@ -27,7 +27,7 @@
 <%= divider %>
 %xg<%= t('describe.players_title') %>%xn
 <% online_chars.each do |c| -%>
-%xh<%= c.name %>%xn <%= char_shortdesc(c)%> <%= char_afk(c) %>
+%xh<%= c.name %>%xn <%= char_tag(c)%><%= char_shortdesc(c)%> <%= char_afk(c) %>
 <% end %> 
 <% if web_watchers %>
 %xn<%= t('describe.watching_from_web') %>%xn <%= web_watchers %>

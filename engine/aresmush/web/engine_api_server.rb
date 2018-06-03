@@ -29,7 +29,6 @@ module AresMUSH
 
   class EngineApiServer < Sinatra::Base
 
-    
     # threaded - False: Will take requests on the reactor thread
     #            True:  Will queue request for background thread
     configure do
@@ -59,17 +58,28 @@ module AresMUSH
      
      post '/request/?' do
        content_type :json
+       handle_request
+     end
+
+     post '/api/request/?' do
+       content_type :json
+       handle_request
+     end
+     
+
+     def handle_request
        AresMUSH.with_error_handling(nil, "Web Request") do
          request = WebRequest.new(params)
          if (!request.check_api_key)
            return { error: "Invalid authentication key.  This can happen when the game restarts.  Try refreshing the page." }.to_json
          end
-         
+        
          response = Global.dispatcher.on_web_request(request)
          return response.to_json
        end
        return { error: "Sorry, something went wrong with the web request." }.to_json
      end
+    
     
   end
 end

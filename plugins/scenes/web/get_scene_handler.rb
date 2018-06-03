@@ -46,7 +46,7 @@ module AresMUSH
           tags: scene.tags,
           icdate: scene.icdate,
           participants: participants,
-          privacy: scene.completed ? "Public" : (scene.private_scene ? "Private" : "Public"),
+          privacy: scene.completed ? "Open" : (scene.private_scene ? "Private" : "Open"),
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           log: log,
           plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,

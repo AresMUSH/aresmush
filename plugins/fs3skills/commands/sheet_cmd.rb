@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :target
       
       def parse_args
-        self.target = !cmd.args ? enactor_name : trim_arg(cmd.args)
+        self.target = !cmd.args ? enactor_name : titlecase_arg(cmd.args)
       end
       
       def check_permission

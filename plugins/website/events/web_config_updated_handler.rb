@@ -4,6 +4,12 @@ module AresMUSH
       def on_event(event)
         file_path = File.join(AresMUSH.website_scripts_path, 'aresconfig.js')
 
+        begin
+          use_api_proxy = Global.use_api_proxy
+        rescue
+          use_api_proxy = false
+        end
+        
         config = {
           "mush_port" => Global.read_config("server", "port"),
           "web_portal_port" => Global.read_config("server", "web_portal_port"),
@@ -14,7 +20,8 @@ module AresMUSH
           "api_key" => Game.master.engine_api_key,
           "styles_path" => AresMUSH.website_styles_path,
           "uploads_path" => AresMUSH.website_uploads_path,
-          "game_name" => Global.read_config("game", "name")
+          "game_name" => Global.read_config("game", "name"),
+          "use_api_proxy" => use_api_proxy
         }
         
         if (!Dir.exist?(AresMUSH.website_scripts_path))

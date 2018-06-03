@@ -9,7 +9,7 @@ module AresMUSH
       def parse_args
         # Starts with a character name and equals - since names can't have
         # spaces we can check for that.  This allows the hooks themselves to contain ='s.
-        if (cmd.args =~ /^[\S]+\=/)
+        if (Chargen.can_approve?(enactor) && cmd.args =~ /^[\S]+\=/)
           self.target = cmd.args.before("=")
           self.hooks = cmd.args.after("=")
         else

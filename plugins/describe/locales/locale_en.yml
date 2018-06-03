@@ -20,6 +20,9 @@ en:
        afk: AFK
        idle: Idle
        
+       beginner_tag: Beginner
+       admin_tag: Admin
+       
        description_review: "Checking you have a description set."
        locked: "LOCKED"
        

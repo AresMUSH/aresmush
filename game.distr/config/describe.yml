@@ -14,3 +14,6 @@ describe:
     view/create: detail/set
     view/remove: detail/delete
     view: look
+  tag_colors:
+    admin: "%xb"
+    beginner: "%xg"

@@ -32,6 +32,14 @@ module AresMUSH
     
     before_delete :delete_poses_and_log
     
+    def self.shared_scenes
+      Scene.all.select { |s| s.shared }
+    end
+    
+    def self.scenes_starring(char)
+      Scene.all.select { |s| s.shared && s.participants.include?(char) }
+    end
+    
     def is_private?
       self.private_scene
     end

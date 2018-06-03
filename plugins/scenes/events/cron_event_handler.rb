@@ -39,7 +39,7 @@ module AresMUSH
         # Completed scenes that haven't been shared are deleted after a few days.
 
         warn_days = Global.read_config('scenes', 'unshared_scene_warning_days')
-        delete_days = Global.read_config('scenes', 'unsared_scene_deletion_days')
+        delete_days = Global.read_config('scenes', 'unshared_scene_deletion_days')
         
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
           

@@ -5,6 +5,8 @@ module AresMUSH
     end
     
     def self.can_view_sheets?(actor)
+      return true if Global.read_config("fs3skills", "public_sheets")
+      return false if !actor
       actor.has_permission?("view_sheets")
     end
 

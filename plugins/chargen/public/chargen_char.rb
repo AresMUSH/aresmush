@@ -4,7 +4,7 @@ module AresMUSH
     attribute :chargen_locked, :type => DataType::Boolean
     attribute :chargen_stage, :type => DataType::Integer
     reference :approval_job, "AresMUSH::Job"
-    attribute :bg_shared, :type => DataType::Boolean, :default => true
+    attribute :bg_shared, :type => DataType::Boolean
     attribute :rp_hooks
     
     def is_approved?

@@ -15,3 +15,4 @@ en:
         view_help_online: "AresMUSH help files are best viewed online at the web portal: %{url}.  To see the in-game help, use 'help %{topic}'."
         command_help_title: "Command Quick Reference"
         command_help_footer: "For more help, use %xchelp %{topic}%xn or visit the web portal: %{url}."
+        beginner_set: "You set your beginner flag to %{option}."

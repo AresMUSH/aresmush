@@ -5,7 +5,7 @@ module AresMUSH
         /\[\[pagelist ([^\]]*)\]\]/i
       end
       
-      def self.parse(matches, sinatra)
+      def self.parse(matches)
         input = matches[1]
         return "" if !input
 
@@ -20,7 +20,7 @@ module AresMUSH
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'page_list.hbs'))
 
         data = {
-          "pages" => matches.map { |m| {heading: m.heading, name: m.name} }
+          "pages" => matches.sort_by { |m| m.title }.map { |m| {heading: m.heading, name: m.name} }
         }
         
         template.render(data)

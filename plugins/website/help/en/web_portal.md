@@ -11,7 +11,7 @@ aliases:
 
 The game's Web Portal provides an interface to the game that you can access from any browser. Using the Web Portal, you can play the game from a browser, browse characters and scenes, manage your character's profile, check mail and bulletin board posts, view the online help and more.
 
-> Note: Chrome is the only browser officially supported, and the web portal is optimized for viewing in Chrome.  It will probably work in other browsers, but the quality of the experience may vary.
+> Note: AresMUSH is supported on Chrome, Safari and Edge.  It will probably work fine in other browsers too, but fixing minor layout issues or other oddities will not be a priority.
 
 Type `website` to get the address to the Web Portal.
 

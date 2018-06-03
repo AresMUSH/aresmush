@@ -19,8 +19,11 @@ def minimal_boot
   bootstrapper.db.load_config
 end
 
-task :startares do
-  bootstrapper = AresMUSH::Bootstrapper.new
+task :startares, [:options] do |t, args|
+  options = args[:options] || ""
+  options = options.split
+  
+  bootstrapper = AresMUSH::Bootstrapper.new(!options.include?("disableproxy"))
   bootstrapper.start
 end
   

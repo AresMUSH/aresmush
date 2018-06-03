@@ -3,7 +3,7 @@ module AresMUSH
     class GetScenesRequestHandler
       def handle(request)
                 
-        Scene.all.select { |s| s.shared }.sort_by { |s| s.date_shared || s.created_at }.reverse.map { |s| {
+        Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse.map { |s| {
                   id: s.id,
                   title: s.title,
                   summary: s.summary,

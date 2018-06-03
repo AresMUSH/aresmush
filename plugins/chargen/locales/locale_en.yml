@@ -73,12 +73,10 @@ en:
         rostered: "On Roster"
         idled_out: "Idled Out - %{status}"
         bg_page_title: "Background"
-        
-        
-        no_special_characters: "Hook names may not contain special characters."
-        
+                
         hooks_set: "RP hooks set."
         hook_not_found: "RP hook %{name} not found."
         hook_removed: "RP hook %{name} removed."
         hooks_added: "%{num} RP hooks added. (%{min} min)"
+        hooks_title: "RP Hooks for %{name}"
         

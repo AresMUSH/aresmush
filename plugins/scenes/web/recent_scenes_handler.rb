@@ -3,7 +3,7 @@ module AresMUSH
     class RecentScenesRequestHandler
       def handle(request)
         
-      recent = Scene.all.select { |s| s.shared }
+      recent = Scene.shared_scenes
       .sort_by { |s| s.date_shared || s.created_at }.reverse[0..9] || []
       
       recent.map { |s| {

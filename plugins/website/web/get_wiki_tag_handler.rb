@@ -17,7 +17,7 @@ module AresMUSH
              id: c.id,
              name: c.name
            }}
-        scenes = Scene.all.select { |s| s.tags.include?(tag.downcase) }
+        scenes = Scene.shared_scenes.select { |s| s.tags.include?(tag.downcase) }
            .sort_by { |s| s.date_title }
            .map { |s| {
              id: s.id,

@@ -38,7 +38,7 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
   
-      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/basic-config for help with these options."
+      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/install-game for help with these options."
   
       print "\nServer hostname (ex: yourmush.aresmush.com or an IP)> "
       server_host = STDIN.gets.chomp
@@ -123,7 +123,28 @@ module AresMUSH
       File.open(File.join(AresMUSH.game_path, 'config', 'game.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
-  
+      
+      template = Erubis::Eruby.new(File.read(File.join(template_path, 'nginx.erb'), :encoding => "UTF-8"))
+      File.open(File.join(AresMUSH.root_path, 'install', 'nginx.default'), 'w') do |f|
+        f.write(template.evaluate(template_data))
+      end
+      
+      print "\nNext we'll set up some information that will be used when you interact with the version control system GitHub for code updates."
+      
+      print "\nGitHub Email > "
+      git_email = STDIN.gets.chomp
+      
+      if (!git_email.blank?)
+        `git config --global user.email "#{git_email}"`
+      end
+      
+      print "\nGitHub Name > "
+      git_name = STDIN.gets.chomp
+      
+      if (!git_name.blank?)
+        `git config --global user.name "#{git_name}"`
+      end
+      
       puts "\nYour game has been configured!  You can edit these and other game options through the files in game/config."
       
     end

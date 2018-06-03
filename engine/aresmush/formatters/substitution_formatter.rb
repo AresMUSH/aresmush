@@ -127,7 +127,7 @@ module AresMUSH
       when "%\\"
         return { :len => 1, :str => "\\", :raw => str }
       when "%x!", "%X!", "%c!", "%C!"
-        ansi = "%x#{RandomColorizer.random_color}"
+        ansi = "#{RandomColorizer.random_color}"
         return { :len => 0, :str => AnsiFormatter.get_code(ansi, enable_fansi), :raw => str }
       end
 

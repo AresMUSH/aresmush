@@ -13,7 +13,7 @@ All characters have a one-word moniker called their "name".  This can be their f
 
 Up until the point when you're approved, you can change your name.
 
-`name <new name>` - Changes your name.
+`name me=<new name>` - Changes your name.
 
 After you're approved, only admins can change your name.  This is because changing your identity may confuse people, and may mess up thinks like wiki page references.
 

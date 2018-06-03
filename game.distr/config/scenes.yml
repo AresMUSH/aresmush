@@ -13,7 +13,6 @@ scenes:
     minute:
     - 2
   delete_unshared_scenes: false
-  unsared_scene_deletion_days: 20
   unshared_scene_warning_days: 13
   notify_of_web_watching: false
   scene_types:
@@ -54,3 +53,4 @@ scenes:
     repose/drop: pose/drop
     repose/order: pose/order
     repose: scene/repose
+  unshared_scene_deletion_days: 20
