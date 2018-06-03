@@ -41,5 +41,21 @@ module AresMUSH
     def self.ooc_room
       Game.master.ooc_room
     end
+    
+    # Deprecated - use room.clients instead
+    def self.clients_in_room(room)	
+      room.clients
+    end	
+    
+    # Deprecated - use room.emit instead
+    def self.emit_to_room(room, message)	
+       room.emit(message)
+    end	
+    
+    # Deprecated - use room.emit_ooc instead
+    def self.emit_ooc_to_room(room, message)	
+       room.emit_ooc(message)
+    end
+    
   end
 end
