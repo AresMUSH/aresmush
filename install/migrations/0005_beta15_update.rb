@@ -12,7 +12,10 @@ module AresMUSH
           c.update(details: {})
         end
         Exit.all.each { |e| e.update(details: {} )}
-        Room.all.each { |e| e.update(details: {} )}
+        Room.all.each do |r|
+          r.update(details: {})
+          r.update(vistas: {})
+        end
         
         Description.all.each do |d|
           if (d.parent_type == "AresMUSH::Character")

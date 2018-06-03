@@ -14,17 +14,8 @@ module AresMUSH
       template
     end
     
-    def self.update_current_desc(char, text)
-      desc = char.current_desc
-    
-      if (!desc)
-        desc = char.create_desc(:current, text)
-      end
-      desc.update(description: text)
-    end
-    
     def self.app_review(char)
-      has_desc = char.current_desc && !char.current_desc.description.to_s.empty?
+      has_desc = char.description && !char.description.blank?
       error = has_desc ? t('chargen.ok') : t('chargen.not_set')
       Chargen.format_review_status t('describe.description_review'), error
     end

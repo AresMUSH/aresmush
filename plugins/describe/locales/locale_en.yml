@@ -46,6 +46,12 @@ en:
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
        
+       vistas_only_rooms: "Vistas are only for rooms."
+       no_such_vista: "No such vista available."
+       vista_deleted: "Vista deleted."
+       vista_set: "Vista set."
+       vistas_title: "Vistas for %{name}"
+       
        notify_set: "You turn the notifications when someone looks at you %{status}."
        
        glance: "%{height} height, %{age} year-old %{gender} with %{hair} hair and %{eyes} eyes."

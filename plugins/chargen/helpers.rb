@@ -89,11 +89,8 @@ module AresMUSH
       char.update(cg_background: WebHelpers.format_input_for_mush(chargen_data[:background]))
       
       char.update(rp_hooks: WebHelpers.format_input_for_mush(chargen_data[:rp_hooks]))
-      Describe.update_current_desc(char, WebHelpers.format_input_for_mush(chargen_data[:desc]))
-      shortdesc = chargen_data[:shortdesc]
-      if (!shortdesc.blank?)
-        Describe.create_or_update_desc(char, shortdesc, :short)
-      end
+      char.update(description: WebHelpers.format_input_for_mush(chargen_data[:desc]))
+      char.update(shortdesc: WebHelpers.format_input_for_mush(chargen_data[:shortdesc]))
       
       (chargen_data[:fs3_attributes] || []).each do |k, v|
         FS3Skills.set_ability(nil, char, k, v.to_i)

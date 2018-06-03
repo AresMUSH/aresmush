@@ -11,19 +11,8 @@ module AresMUSH
       return false
     end
     
-    def self.create_or_update_desc(model, description, type = :current)
-      desc = model.descs_of_type(type).first
-    
-      if (!desc)
-        desc = model.create_desc(type,  description)
-      else
-        desc.update(description: description)
-      end
-    end
-    
     def self.is_reserved_desc_type?(type)
       [ 'current', 'short', 'outfit' ].include?(type)
     end
-        
   end
 end

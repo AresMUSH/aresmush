@@ -34,6 +34,17 @@ module AresMUSH
         when nil
           return LookCmd
         end
+      when "vista"
+        case cmd.switch
+        when "delete"
+          return VistaDeleteCmd
+        when "edit"
+          return VistaEditCmd
+        when "set"
+          return VistaSetCmd
+        when nil
+          return VistaListCmd
+        end
       when "glance"
         return GlanceCmd
       when "look"

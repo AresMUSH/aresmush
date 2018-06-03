@@ -13,8 +13,8 @@ module AresMUSH
       # This handles the 'no weather' case, returning nil.
       return nil if !weather || weather.empty?
 
-      season = Weather.season_for_area(area)
-      time_of_day = ICTime.time_of_day(ICTime.ictime)
+      season = ICTime.season(area)
+      time_of_day = ICTime.time_of_day(area)
       temperature = weather[:temperature]
       condition = weather[:condition]
       

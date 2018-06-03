@@ -3,6 +3,7 @@ module AresMUSH
     attribute :description
     attribute :shortdesc
     attribute :details, :type => DataType::Hash, :default => {}
+    attribute :vistas, :type => DataType::Hash, :default => {}
   end
   
   class Exit
