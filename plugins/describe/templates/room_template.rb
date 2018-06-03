@@ -57,10 +57,8 @@ module AresMUSH
         @room.scene.watchers.map { |c| c.name }.join(", ")
       end
       
-      def weather
-        return nil if !AresMUSH::Weather.is_enabled? 
-        w = Weather.weather_for_area(@room.area)
-        w ? "#{w}" : nil
+      def description
+        Describe::RoomDescBuilder.build(@room)
       end
       
       def ooc_time

@@ -2,11 +2,7 @@
 <%= left(room.name, 40) %> <%= right(area, 37) %>
 <%= ooc_time %> ~ <%= ic_time %>
 <%= divider %>
-<%= room.description %>
-<% if weather %>
-
-<%= weather %>
-<% end %>
+<%= description %>
 <% if details %>
 
 %xh<%= t('describe.details_available') %>%xn <%= details %>
