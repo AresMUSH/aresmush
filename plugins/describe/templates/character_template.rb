@@ -12,8 +12,8 @@ module AresMUSH
       end
             
       def details
-        names = @char.details.map { |d| d.name }
-        names.empty? ? nil : names.sort.join(", ")
+        names = @char.details.keys.sort
+        names.empty? ? nil : names.join(", ")
       end
     end
   end

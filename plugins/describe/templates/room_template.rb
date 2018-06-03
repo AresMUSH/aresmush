@@ -31,8 +31,7 @@ module AresMUSH
       
       # Available detail views.
       def details
-        @room.details.empty? ? nil : @room.details.sort_by(:name, :order => "ALPHA")
-        .map { |d| d.name }.join(", ")
+        @room.details.empty? ? nil : @room.details.keys.sort.join(", ")
       end
       
       def logging_enabled
@@ -94,7 +93,7 @@ module AresMUSH
       end
       
       def char_shortdesc(char)
-        char.shortdesc ? " - #{char.shortdesc.description}" : ""
+        char.shortdesc ? " - #{char.shortdesc}" : ""
       end
       
       def char_tag(char)
@@ -129,7 +128,7 @@ module AresMUSH
       def exit_destination(e)
         locked =  e.allow_passage?(@enactor) ? "" : "%xr*#{t('describe.locked')}*%xn "
         if (e.dest)
-          name = e.description ? e.description : e.dest.name
+          name = e.shortdesc ? e.shortdesc : e.dest.name
         else
           name = t('describe.nowhere')
         end

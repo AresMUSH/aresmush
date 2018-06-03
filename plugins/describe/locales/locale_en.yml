@@ -1,7 +1,7 @@
 en:
     describe:
        desc_set: "You set the description on %{name}."
-       shortdesc_set: "You set your short description."
+       shortdesc_set: "You set the short description on %{name}."
        
        nowhere: Nowhere
        empty: "Empty!"
