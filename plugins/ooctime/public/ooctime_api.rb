@@ -4,13 +4,13 @@ module AresMUSH
     def self.local_short_timestr(viewer, datetime)
       return "" if !datetime
       lt = localtime(viewer, datetime)
-      lt.strftime Global.read_config("datetime", "short_date_format")
+      l(lt, format: Global.read_config("datetime", "short_date_format"))
     end
 
     def self.local_long_timestr(viewer, datetime)
       return "" if !datetime
       lt = localtime(viewer, datetime)
-      lt.strftime Global.read_config("datetime", "long_date_format")
+      l(lt, format: Global.read_config("datetime", "long_date_format"))
     end
     
     def self.localtime(viewer, datetime)

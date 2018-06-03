@@ -13,7 +13,7 @@ module AresMUSH
       
       sc = {}
       Global.read_config("demographics", "demographics").each do |d|
-        if (d != 'birthdate')
+        if (d != 'birthdate' && d != 'actor')
           sc[d] = "demographic/set #{d}="
         end
       end

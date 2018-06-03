@@ -23,7 +23,7 @@ module AresMUSH
           end
         
           scene.delete_poses_and_log
-          Rooms.emit_ooc_to_room(scene.room, t('scenes.log_cleared'))
+          scene.room.emit_ooc t('scenes.log_cleared')
         end
       end
     end

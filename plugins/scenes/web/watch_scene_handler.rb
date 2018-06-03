@@ -25,13 +25,13 @@ module AresMUSH
         
         if (watch)
           if (notify_of_watch && scene.room && !scene.watchers.include?(enactor))
-            Rooms.emit_ooc_to_room scene.room, t('scenes.started_watching', :name => enactor.name)
+            scene.room.emit_ooc t('scenes.started_watching', :name => enactor.name)
           end
           scene.watchers.add enactor
         else
           scene.watchers.delete enactor
           if (notify_of_watch && scene.room)
-            Rooms.emit_ooc_to_room scene.room, t('scenes.stopped_watching', :name => enactor.name)
+            scene.room.emit_ooc t('scenes.stopped_watching', :name => enactor.name)
           end
         end
         

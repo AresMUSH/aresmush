@@ -3,5 +3,5 @@ game:
   name: Ares Local Test
   category: Other
   description: AresMUSH test site.
-  website: http://aresmush.com
-  public_game: false
+  website: ''
+  public_game: 'false'

@@ -24,7 +24,22 @@ module AresMUSH
     end
     
     def self.web_portal_url
-      Global.read_config("game", "website")
+      host = Global.read_config('server', 'hostname')
+      port = Global.read_config('server', 'web_portal_port')
+      
+      if (port.to_s == '80')
+        port_str = ""
+      else
+        port_str = ":#{port}"
+      end
+      
+      website = Global.read_config("game", "website") 
+      
+      if (website.blank?)
+        return "http://#{host}#{port_str}"
+      else
+        return website
+      end
     end    
   end
 end

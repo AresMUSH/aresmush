@@ -11,7 +11,7 @@ module AresMUSH
       def handle
         place_name = enactor.place.name
         enactor.update(place: nil)
-        Rooms.emit_ooc_to_room(enactor_room, t('places.left_place', :name => enactor.name, :place_name => place_name))
+        enactor_room.emit_ooc t('places.left_place', :name => enactor.name, :place_name => place_name)
       end
     end
   end

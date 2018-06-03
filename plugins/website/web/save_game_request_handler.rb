@@ -20,7 +20,12 @@ module AresMUSH
         File.open(path, 'w') do |f|
             f.write(yaml_hash.to_yaml)
         end
-        AresCentral.update_game
+        
+        if (Game.master.api_key)
+          AresCentral.update_game
+        else
+          AresCentral.register_game
+        end
         {
         }
       end

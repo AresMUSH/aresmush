@@ -1,13 +1,25 @@
 module AresMUSH
   module Install
-    def self.default_if_blank(current, default)
-      current.blank? ? default : current
+    
+    def self.get_required_field(prompt)
+      print "\n#{prompt} > "
+      input = STDIN.gets.chomp
+      while (input.blank?)
+        puts "\nERROR: Value required!"
+        print "\n#{prompt} > "
+        input = STDIN.gets.chomp
+      end
+      input
     end
     
-    def self.error_if_blank(current, name)
-      if (current.blank?)
-        raise "#{name} may not be blank!"
+    def self.get_optional_field(prompt, default = nil)
+      print "\n#{prompt} (default #{default || 'none' }) > "
+      
+      input = STDIN.gets.chomp
+      if (input.blank?)
+        input = default || ""
       end
+      input
     end
     
     def self.configure_game
@@ -15,17 +27,11 @@ module AresMUSH
     
       puts "\nLet's set up your database.  The default options should suffice unless you've done something unusual with your Redis installation."
 
-      print "Database url (default 127.0.0.1:6379)> "
-      db_url = STDIN.gets.chomp
-      db_url = default_if_blank(db_url, '127.0.0.1:6379')
-      
-      db_password = ('a'..'z').to_a.shuffle[0,30].join
-      puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
+      db_url = get_optional_field "Database url", '127.0.0.1:6379'
       
       template_data =
       {
         "db_url" => db_url,
-        "db_password" => db_password
       }
   
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'database.yml.erb'), :encoding => "UTF-8"))
@@ -33,43 +39,36 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
       
-      template = Erubis::Eruby.new(File.read(File.join(template_path, 'secrets.yml.erb'), :encoding => "UTF-8"))
-      File.open(File.join(AresMUSH.game_path, 'config', 'secrets.yml'), 'w') do |f|
-        f.write(template.evaluate(template_data))
+      if (File.exists?(File.join(AresMUSH.game_path, "config", "secrets.yml")))
+        db_password = nil
+      else
+        db_password = ('a'..'z').to_a.shuffle[0,30].join
+        template_data =
+        {
+          "db_url" => db_url,
+        }
+        puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
+        
+        template = Erubis::Eruby.new(File.read(File.join(template_path, 'secrets.yml.erb'), :encoding => "UTF-8"))
+        File.open(File.join(AresMUSH.game_path, 'config', 'secrets.yml'), 'w') do |f|
+          f.write(template.evaluate(template_data))
+        end
       end
+      
+    
   
       puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/install-game for help with these options."
   
-      print "\nServer hostname (ex: yourmush.aresmush.com or an IP)> "
-      server_host = STDIN.gets.chomp
-      error_if_blank(server_host, "Hostname")
+      server_host = get_required_field "Server hostname (ex: yourmush.aresmush.com or an IP)"
+      server_port = get_optional_field "Server telnet port", "4201"
+      websocket_port = get_optional_field "Server web socket port", "4202"
+      engine_api_port = get_optional_field "Server engine API port", "4203"
+      web_portal_port = get_optional_field "Server website port", "80"
 
-      print "\nServer telnet port (default 4201)> "
-      server_port = STDIN.gets.chomp
-      server_port = default_if_blank(server_port, '4201')
-
-      print "\nServer web socket port (default 4202)> "
-      websocket_port = STDIN.gets.chomp
-      websocket_port = default_if_blank(websocket_port, '4202')
+      mush_name = get_required_field "MUSH Name"
+      game_desc = get_required_field "Game Description"
+      website = get_optional_field "Website"
       
-      print "\nServer engine API port (default 4203)> "      
-      engine_api_port = STDIN.gets.chomp
-      engine_api_port = default_if_blank(engine_api_port, '4203')
-
-      print "\nServer website port (default 80)> "
-      web_portal_port = STDIN.gets.chomp
-      web_portal_port = default_if_blank(web_portal_port, '80')
-
-      print "\nMUSH Name > "
-      mush_name = STDIN.gets.chomp
-      error_if_blank(mush_name, "MUSH Name")
-
-      print "\nMUSH Description > "
-      game_desc = STDIN.gets.chomp
-
-      print "\nWebsite > "
-      website = STDIN.gets.chomp
-  
       print "\nMUSH Category > "
       print "\nPick one:"
       print "\n[1] Social"
@@ -131,15 +130,12 @@ module AresMUSH
       
       print "\nNext we'll set up some information that will be used when you interact with the version control system GitHub for code updates."
       
-      print "\nGitHub Email > "
-      git_email = STDIN.gets.chomp
+      git_email = get_optional_field "GitHub Email", "admin@#{server_host}"
+      git_name = get_optional_field "GitHub Name", "#{mush_name} Admin"
       
       if (!git_email.blank?)
         `git config --global user.email "#{git_email}"`
       end
-      
-      print "\nGitHub Name > "
-      git_name = STDIN.gets.chomp
       
       if (!git_name.blank?)
         `git config --global user.name "#{git_name}"`

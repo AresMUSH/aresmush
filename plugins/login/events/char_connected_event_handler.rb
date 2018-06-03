@@ -26,6 +26,14 @@ module AresMUSH
           template = NoticesTemplate.new(char)
           client.emit template.render
         end
+        
+        if (char.onconnect_commands)
+          char.onconnect_commands.each_with_index do |cmd, i|
+            Global.dispatcher.queue_timer(2 + i, "Login commands", client) do 
+              Global.dispatcher.queue_command(client, Command.new(cmd))
+            end
+          end
+        end
       end
     end
   end

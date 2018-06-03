@@ -7,7 +7,7 @@ module AresMUSH
 
         locked_exits = Exit.all.select { |e| !e.lock_keys.empty?}
         locked_exits.each do |e|
-          if (Rooms.clients_in_room(e.dest).count == 0)
+          if (e.dest.clients.count == 0)
             Global.logger.debug "Unlocking #{e.name} automatically."
             e.update(lock_keys: [])
           end

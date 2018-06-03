@@ -18,3 +18,5 @@ The room description shows available exits and their destinations.  For example:
 You can use the `go` command to move through an exit, or just use the exit name as a shortcut.  For example:  "go n" or simply "n".
 
 `go <exit name>` or `<exit name>` - Move through an exit
+
+For help with building rooms and exits, see [Building](/help/building).

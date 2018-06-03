@@ -52,7 +52,8 @@ module AresMUSH
       !!find_one_by_name(name)
     end
   
-    # Derived classes may implement name checking
+    # The engine doesn't enforce name checking, but the a plugin can override this.
+    # Just be sure not to have multiple plugins trying to redefine this same method.
     def self.check_name(name)
       nil
     end
@@ -132,7 +133,7 @@ module AresMUSH
     end    
     
     def self.random_link_code
-      (0...8).map { (65 + rand(26)).chr }.join
+      (0...8).map { (33 + rand(94)).chr }.join
     end 
   end
 end

@@ -67,3 +67,7 @@ The game knows about three special rooms:
 Never mess with the first two.  If you do, you'll have to fiddle with code to tell the game where the new rooms are.
 
 The IC Start room can be changed to any room with the command:  `icstart/set <room>`
+
+## Advanced Room Setup
+
+See [Room Setup](/help/room_setup) for some more advanced room commands.
