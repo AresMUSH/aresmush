@@ -14,3 +14,8 @@ All vistas are optional.  Think of them like building blocks.  If your room only
 * Any other time:  `[base desc]`
 
 > The weather condition is also appended to the description if the weather system is enabled.
+
+`vistas <name>` - Shows vistas.
+`vista/set <name>=<vista title>/<description>` - Creates or updates a vista.
+`vista/delete <name>/<vista title>` - Deletes a vista.
+`vista/edit <name>/<vista title>` - Grabs the existing detail into your input buffer.
