@@ -1,5 +1,6 @@
 module AresMUSH
-  
+
+  # Deprecated - do not use.  
   class Description < Ohm::Model
     include ObjectModel
 

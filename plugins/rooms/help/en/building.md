@@ -68,6 +68,14 @@ Never mess with the first two.  If you do, you'll have to fiddle with code to te
 
 The IC Start room can be changed to any room with the command:  `icstart/set <room>`
 
+## Describing Rooms
+
+Use the [describe](/help/describe) command to give the room a description.  You can also give exits a description in case somebody looks at them.
+
+Normally a room will show the destination name for exits (e.g. `[O] Town Square`), but you can override the destination name by setting a [shortdesc](/help/describe) for the exit.
+
+[Vistas](/help/vistas) allow you to set up different pieces of the room description to be shown based on the time of day and season.
+
 ## Advanced Room Setup
 
 See [Room Setup](/help/room_setup) for some more advanced room commands.
