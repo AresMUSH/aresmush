@@ -37,7 +37,7 @@ module AresMUSH
       ooc_room = Room.create(
         :name => "Offstage", 
         :room_type => "OOC", 
-        :room_area => "Offstage"
+        :room_area => "Offstage",
         :description => "This is a backstage area where you can hang out when not RPing.")
 
       quiet_room = Room.create(

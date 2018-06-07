@@ -41,6 +41,10 @@ module AresMUSH
           else
             Global.logger.warn "Unrecognized description: #{d.inspect}"
           end
+          
+          Global.logger.debug "Notice settings."
+          Character.all.each { |c| c.update(notices_events: true) }
+          
         end
       end
     end
