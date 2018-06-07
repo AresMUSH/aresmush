@@ -21,6 +21,8 @@ module AresMUSH
             f.write(yaml_hash.to_yaml)
         end
         
+        Manage.reload_config
+        
         if (Game.master.api_key)
           AresCentral.update_game
         else
