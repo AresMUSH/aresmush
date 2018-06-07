@@ -14,8 +14,6 @@ aliases:
 - specialties
 - advantages
 - abilities
-- hooks
-- hook
 ---
 # FS3 Skills
 

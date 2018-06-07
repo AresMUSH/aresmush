@@ -18,6 +18,6 @@ If your client supports the [Edit Feature](/help/edit), you can use the edit com
 
 `hooks/edit` - Grabs the existing RP Hook text into your input buffer.
 
-Admins with the `manage\_apps` permission can set other peoples' hooks:
+Admins with the `manage_apps` permission can set other peoples' hooks:
 
 `hooks/set <name>=<hooks>` and `hooks/edit <name>`
