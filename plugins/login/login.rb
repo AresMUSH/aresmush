@@ -35,6 +35,8 @@ module AresMUSH
         end
       when "last"
         return LastCmd
+      when "notices"
+        return NoticesCmd
       when "onconnect"
         return OnConnectCmd
       when "password"

@@ -13,7 +13,7 @@
 
 %xh%xM<%= approval_notice %>%xn
 <% end %>
-<% if AresMUSH::Events.is_enabled? %>
+<% if AresMUSH::Events.is_enabled? && show_events %>
 
 %ld
 %xh<%= center( t('login.upcoming_events_title'), 78 ) %>%xn
