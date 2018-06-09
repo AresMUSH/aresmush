@@ -11,11 +11,14 @@ module AresMUSH
         if (!enactor.is_admin?)
           return { error: t('dispatcher.not_allowed') }
         end
+       
         
         path = File.join(AresMUSH.game_path, 'config', 'game.yml')
         yaml_hash = { 
           'game' => config
         }
+        
+        yaml_hash['game']['public_game'] = config['public_game'].to_bool
         
         File.open(path, 'w') do |f|
             f.write(yaml_hash.to_yaml)

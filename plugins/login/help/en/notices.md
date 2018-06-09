@@ -3,7 +3,6 @@ toc: Miscellaneous
 summary: Notices and commands on login.
 aliases:
 - aconnect
-- @aconnect
 - onstartup
 - motd
 ---
