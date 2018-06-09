@@ -1,9 +1,14 @@
 module AresMUSH
   class Room
-    include Describable
+    attribute :description
+    attribute :shortdesc
+    attribute :details, :type => DataType::Hash, :default => {}
+    attribute :vistas, :type => DataType::Hash, :default => {}
   end
   
   class Exit
-    include Describable
+    attribute :description
+    attribute :shortdesc
+    attribute :details, :type => DataType::Hash, :default => {}
   end    
 end

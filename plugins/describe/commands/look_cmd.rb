@@ -28,8 +28,7 @@ module AresMUSH
            if (search.found?)
              show_desc(search.target)
            else
-             search = VisibleTargetFinder.find("here", enactor)
-             show_detail(search.target, self.target)
+             show_detail(enactor_room, self.target)
            end
         end
       end   
@@ -44,12 +43,12 @@ module AresMUSH
       
       def show_detail(model, detail_name)
         detail_name = titlecase_arg(detail_name)
-        if (!model.has_detail?(detail_name))
+        if (!model.details.has_key?(detail_name))
           client.emit_failure t("db.object_not_found")
           return
         end
         title = t('describe.detail_title', :name => model.name, :detail => detail_name)
-        desc = model.detail(detail_name).description
+        desc = model.details[detail_name]
         
         template = BorderedDisplayTemplate.new desc, title
         client.emit template.render

@@ -117,7 +117,7 @@ module AresMUSH
       if (scene.temp_room && scene.room)
         location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
-        Describe.update_current_desc(scene.room, description)
+        scene.room.update(description: description)
       end
       
       return message

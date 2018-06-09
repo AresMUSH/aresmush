@@ -1,7 +1,7 @@
 module AresMUSH
 
   module Describe
-    class DetailSetCmd
+    class VistaSetCmd
       include CommandHandler
             
       attr_accessor :name, :target, :desc
@@ -18,18 +18,23 @@ module AresMUSH
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
-                    
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
+
+          if (model.class != AresMUSH::Room)
+            client.emit t('describe.vistas_only_rooms')
+            return
+          end
+                              
           if (!Describe.can_describe?(enactor, model))
             client.emit_failure(t('dispatcher.not_allowed'))
             return
           end
           
-          details = model.details
-          details[self.name] = self.desc
-          model.update(details: details)
+          vistas = model.vistas
+          vistas[self.name] = self.desc
+          model.update(vistas: vistas)
 
-          client.emit_success t('describe.detail_set')
+          client.emit_success t('describe.vista_set')
         end
       end
     end

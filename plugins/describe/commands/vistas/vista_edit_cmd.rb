@@ -1,9 +1,9 @@
 module AresMUSH
   module Describe
-    class DetailDeleteCmd
+    class VistaEditCmd
       include CommandHandler
-           
-      attr_accessor :target, :name
+      
+      attr_accessor :name, :target
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_slash_arg2)
@@ -16,10 +16,17 @@ module AresMUSH
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
+          if (model.class != AresMUSH::Room)
+            client.emit t('describe.vistas_only_rooms')
+            return
+          end
           
-          if (!model.details.has_key?(self.name))
-            client.emit_failure t('describe.no_such_detail', :name => self.name)
+          vista = model.vistas[self.name]
+          
+          
+          if (!vista)
+            client.emit_failure t('describe.no_such_vista', :name => self.name)
             return
           end
           
@@ -28,12 +35,10 @@ module AresMUSH
             return
           end
           
-          details = model.details
-          details.delete self.name
-          model.update(details: details)
-          client.emit_success t('describe.detail_deleted')
+          Utils.grab client, enactor, "vista/set #{self.target}/#{self.name}=#{vista}"
         end
       end
-    end
+      
+    end    
   end
 end

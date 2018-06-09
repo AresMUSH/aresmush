@@ -22,12 +22,10 @@ module AresMUSH
       end
       
       def handle
-        outfit = enactor.outfit(self.name)
-        if (!outfit)
-          outfit = enactor.create_desc(:outfit, desc, self.name)
-        else
-           outfit.update(description: desc)
-        end
+        new_outfits = enactor.outfits
+        new_outfits[self.name] = self.desc
+        enactor.update(outfits: new_outfits)
+        
         client.emit_success t('describe.outfit_set')
       end
     end

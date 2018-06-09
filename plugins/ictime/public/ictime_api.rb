@@ -23,7 +23,18 @@ module AresMUSH
       l(time, format: format)
     end
     
-    def self.time_of_day(time)
+    def self.is_night?(area)
+      ICTime.time_of_day(area) == "night"
+    end
+    
+    def self.is_day?(area)
+      ICTime.time_of_day(area) != "night"
+    end
+    
+    def self.time_of_day(area)
+      # Area is not currently used; all areas assumed to be on same day/night cycle.
+      # You can change this with custom code.
+      time = ICTime.ictime
       case time.hour
       when 6, 7, 8, 9, 10, 11
         "morning"
@@ -33,6 +44,17 @@ module AresMUSH
         "evening"
       else
         "night"
+      end
+    end
+    
+    def self.season(area)
+      time = ICTime.ictime
+      day_hash = time.month * 100 + time.mday
+      case day_hash
+        when 101..401 then 'winter'
+        when 402..630 then 'spring'
+        when 701..930 then 'summer'
+        when 1001..1231 then 'fall'
       end
     end
   end

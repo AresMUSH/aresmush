@@ -45,7 +45,7 @@ module AresMUSH
         db_password = ('a'..'z').to_a.shuffle[0,30].join
         template_data =
         {
-          "db_url" => db_url,
+          "db_password" => db_password,
         }
         puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
         

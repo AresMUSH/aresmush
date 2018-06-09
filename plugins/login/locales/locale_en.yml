@@ -68,3 +68,7 @@ en:
        onconnect_commands_set: "Commands to run on connect set."
        onconnect_commands_cleared: "Commands to run on connect cleared."
        too_many_onconnect_commands: "You can only set five startup commands."
+       
+       notice_config_on: "%{config} notices on."
+       notice_config_off: "%{config} notices off."
+       unrecognized_notice_config: "That is not a valid notices setting."

@@ -28,7 +28,7 @@ module AresMUSH
       end
       
       def shortdesc(char)
-        char.shortdesc ? "#{char.shortdesc.description}" : ""
+        char.shortdesc ? "#{char.shortdesc}" : ""
       end
     end
   end

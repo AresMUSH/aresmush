@@ -1,7 +1,7 @@
 module AresMUSH
 
   module Describe
-    class DescCmd
+    class ShortdescCmd
       include CommandHandler
       
       attr_accessor :target, :description
@@ -24,8 +24,8 @@ module AresMUSH
             return
           end
           
-          model.update(description: self.description)
-          client.emit_success(t('describe.desc_set', :name => model.name))
+          model.update(shortdesc: self.description)
+          client.emit_success(t('describe.shortdesc_set', :name => model.name))
         end
       end
     end

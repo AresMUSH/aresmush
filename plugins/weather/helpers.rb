@@ -31,7 +31,7 @@ module AresMUSH
         return
       end
 
-      season = Weather.season_for_area(area)
+      season = ICTime.season(area)
       
       climate_config = Global.read_config("weather", "climates", climate)
       season_config = climate_config[season]
@@ -58,21 +58,6 @@ module AresMUSH
     
     def self.climate_for_area(area)
       Global.read_config("weather", "climate_for_area", area) || Global.read_config("weather", "default_climate")
-    end
-
-    # You can make this fancier to account for months like March which are
-    # split across seasons.
-    def self.season_for_area(area)
-      case ICTime.ictime.month
-      when 12, 1, 2
-        'winter'
-      when 3, 4, 5
-        'spring'
-      when 6, 7, 8
-        'summer'
-      when 9, 10, 11
-        'fall'
-      end
     end
   end
 end

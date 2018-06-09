@@ -34,6 +34,8 @@ module AresMUSH
       server_config = Global.read_config("server")
       game_config = Global.read_config("game")
     
+      is_public = "#{game_config['public_game']}".to_bool
+      
       params = {
         host: server_config['hostname'], 
         port: server_config['port'], 
@@ -41,7 +43,7 @@ module AresMUSH
         category: game_config['category'],
         description: game_config['description'],
         website: game_config["website"],
-        public_game: game_config["public_game"],
+        public_game: is_public,
         status: game_config["status"],
         activity: Game.master.login_activity
       }

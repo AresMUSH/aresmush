@@ -1,6 +1,6 @@
 module AresMUSH
   module Describe
-    class DetailDeleteCmd
+    class VistaDeleteCmd
       include CommandHandler
            
       attr_accessor :target, :name
@@ -16,10 +16,15 @@ module AresMUSH
       end
       
       def handle
-        VisibleTargetFinder.with_something_visible(self.target, client, enactor) do |model|
+        AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
+
+          if (model.class != AresMUSH::Room)
+            client.emit t('describe.vistas_only_rooms')
+            return
+          end
           
           if (!model.details.has_key?(self.name))
-            client.emit_failure t('describe.no_such_detail', :name => self.name)
+            client.emit_failure t('describe.no_such_vista', :name => self.name)
             return
           end
           
@@ -28,10 +33,10 @@ module AresMUSH
             return
           end
           
-          details = model.details
-          details.delete self.name
-          model.update(details: details)
-          client.emit_success t('describe.detail_deleted')
+          vistas = model.vistas
+          vistas.delete self.name
+          model.update(vistas: vistas)
+          client.emit_success t('describe.vista_deleted')
         end
       end
     end

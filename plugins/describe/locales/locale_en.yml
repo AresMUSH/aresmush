@@ -1,7 +1,7 @@
 en:
     describe:
        desc_set: "You set the description on %{name}."
-       shortdesc_set: "You set your short description."
+       shortdesc_set: "You set the short description on %{name}."
        
        nowhere: Nowhere
        empty: "Empty!"
@@ -45,6 +45,12 @@ en:
        foyer_room_free: "%xgOpen%xn"
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
+       
+       vistas_only_rooms: "Vistas are only for rooms."
+       no_such_vista: "No such vista available."
+       vista_deleted: "Vista deleted."
+       vista_set: "Vista set."
+       vistas_title: "Vistas for %{name}"
        
        notify_set: "You turn the notifications when someone looks at you %{status}."
        

@@ -64,7 +64,7 @@ module AresMUSH
           background: WebHelpers.format_input_for_html(char.background),
           rp_hooks: hooks,
           desc: WebHelpers.format_input_for_html(char.description),
-          shortdesc: char.shortdesc ? char.shortdesc.description : '',
+          shortdesc: WebHelpers.format_input_for_html(char.shortdesc),
           fs3: fs3
         }
       end

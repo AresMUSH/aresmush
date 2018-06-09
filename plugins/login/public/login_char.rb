@@ -13,6 +13,8 @@ module AresMUSH
     attribute :last_ip
     attribute :last_hostname
     attribute :last_on, :type => DataType::Time
+    
+    attribute :notices_events, :type => DataType::Boolean, :default => true
   
     attribute :onconnect_commands, :type => DataType::Array, :default => []
   
