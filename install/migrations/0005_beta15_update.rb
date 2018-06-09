@@ -41,11 +41,16 @@ module AresMUSH
           else
             Global.logger.warn "Unrecognized description: #{d.inspect}"
           end
-          
-          Global.logger.debug "Notice settings."
-          Character.all.each { |c| c.update(notices_events: true) }
-          
         end
+        
+        Global.logger.debug "Notice settings."
+        Character.all.each { |c| c.update(notices_events: true) }
+        
+        Global.logger.debug "Game setting."
+        config = DatabaseMigrator.read_config_file("game.yml")
+        config['game']['public_game'] = config['game']['public_game'].to_bool
+        DatabaseMigrator.write_config_file("game.yml", config)
+        
       end
     end
   end
