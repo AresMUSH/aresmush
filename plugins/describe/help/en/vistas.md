@@ -1,6 +1,6 @@
 ---
-toc: Vistas
-summary: Expanding room descriptions.
+toc: Descriptions
+summary: Expanding room descriptions by time and season.
 ---
 # Vistas
 
