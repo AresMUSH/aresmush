@@ -38,6 +38,10 @@ module AresMUSH
       !readers.include?(char)
     end
     
+    def is_public?
+      Forum.can_read_category?(nil, self.bbs_board)
+    end
+    
     def mark_read(char)
       readers.add char
     end

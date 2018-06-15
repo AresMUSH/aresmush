@@ -23,6 +23,7 @@ module AresMUSH
     end
     
     def self.configure_game
+      
       template_path = File.join(File.dirname(__FILE__), 'templates')
     
       puts "\nLet's set up your database.  The default options should suffice unless you've done something unusual with your Redis installation."
@@ -141,6 +142,29 @@ module AresMUSH
         `git config --global user.name "#{git_name}"`
       end
       
+      begin
+        webportal_dir = DatabaseMigrator.read_config_file("website.yml")['website']['website_code_path']
+        if (webportal_dir && Dir.exist?(webportal_dir))
+          if (web_portal_port.to_s == '80')
+            port_str = ""
+          else
+            port_str = ":#{web_portal_port}"
+          end
+        
+          File.open(File.join(webportal_dir, "public", "robots.txt"), "a") do |f| 
+            f.write("\nSitemap: #{server_host}#{port_str}")
+          end
+        else
+          raise "Directory doesn't exist."
+        end
+      rescue Exception => ex
+        puts "!!!!!!!"
+        puts "Your Ares web portal directory can't be found, or there's a problem accessing it."
+        puts "In order to set up your search engine, you'll need to manually edit the robots file."
+        puts "See https://aresmush.com/tutorials/config/website/ for details."
+        puts "!!!!!!!"
+      end
+     
       puts "\nYour game has been configured!  You can edit these and other game options through the files in game/config."
       
     end
