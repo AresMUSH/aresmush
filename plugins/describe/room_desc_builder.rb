@@ -2,16 +2,16 @@ module AresMUSH
   module Describe
     class RoomDescBuilder
       def self.build(room)
-        desc = room.description
+        desc = room.description || ""
 
         time_of_day = ICTime.time_of_day(room.area).titleize
-        if (room.vistas.has_key?(time_of_day))
+        if (room.vistas && room.vistas.has_key?(time_of_day))
           desc << " "
           desc << room.vistas[time_of_day]
         end
         
         season = ICTime.season(room.area).titleize
-        if (room.vistas.has_key?(season))
+        if (room.vistas && room.vistas.has_key?(season))
           desc << " "
           desc << room.vistas[season]
         end
