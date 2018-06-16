@@ -7,41 +7,41 @@ module AresMUSH
           @enactor = double
           @client = double
           
-          FS3Combat.stub(:emit_to_combat) {}
-          FS3Combat.stub(:is_in_combat?) { false }
-          ClassTargetFinder.stub(:find) { FindResult.new(nil, "error") }
-          FS3Combat.stub(:combatant_type_stat) { nil }
-          FS3Combat.stub(:set_default_gear)
-          SpecHelpers.stub_translate_for_testing
+          allow(FS3Combat).to receive(:emit_to_combat) {}
+          allow(FS3Combat).to receive(:is_in_combat?) { false }
+          allow(ClassTargetFinder).to receive(:find) { FindResult.new(nil, "error") }
+          allow(FS3Combat).to receive(:combatant_type_stat) { nil }
+          allow(FS3Combat).to receive(:set_default_gear)
+          stub_translate_for_testing
         end
   
         it "should fail if already in combat" do
-          FS3Combat.should_receive(:is_in_combat?).with("Bob") { true }
-          @client.should_receive(:emit_failure).with("fs3combat.already_in_combat")
+          expect(FS3Combat).to receive(:is_in_combat?).with("Bob") { true }
+          expect(@client).to receive(:emit_failure).with("fs3combat.already_in_combat")
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
         
         it "should create a NPC if char not found" do
-          ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(nil, "error") }
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(nil, "error") }
           npc = double
-          Npc.should_receive(:create).with(name: "Bob", combat: @combat) { npc }
-          Combatant.should_receive(:create) do |params|
-            params[:combatant_type].should eq "soldier"
-            params[:team].should eq 9
-            params[:npc].should eq npc
-            params[:combat].should eq @combat
+          expect(Npc).to receive(:create).with(name: "Bob", combat: @combat) { npc }
+          expect(Combatant).to receive(:create) do |params|
+            expect(params[:combatant_type]).to eq "soldier"
+            expect(params[:team]).to eq 9
+            expect(params[:npc]).to eq npc
+            expect(params[:combat]).to eq @combat
           end
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
         
         it "should create a combatant for a character if found" do
           char = double
-          ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
-          Combatant.should_receive(:create) do |params|
-            params[:combatant_type].should eq "soldier"
-            params[:team].should eq 1
-            params[:character].should eq char
-            params[:combat].should eq @combat
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
+          expect(Combatant).to receive(:create) do |params|
+            expect(params[:combatant_type]).to eq "soldier"
+            expect(params[:team]).to eq 1
+            expect(params[:character]).to eq char
+            expect(params[:combat]).to eq @combat
           end
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
@@ -51,28 +51,28 @@ module AresMUSH
           char = double
           combatant = double
           vehicle = double
-          ClassTargetFinder.should_receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
-          Combatant.stub(:create) { combatant }
-          FS3Combat.should_receive(:combatant_type_stat).with("viper", "vehicle") { "Viper" }
-          FS3Combat.should_receive(:find_or_create_vehicle).with(@combat, "Viper") { vehicle }
-          FS3Combat.should_receive(:join_vehicle).with(@combat, combatant, vehicle, "Pilot")
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
+          allow(Combatant).to receive(:create) { combatant }
+          expect(FS3Combat).to receive(:combatant_type_stat).with("viper", "vehicle") { "Viper" }
+          expect(FS3Combat).to receive(:find_or_create_vehicle).with(@combat, "Viper") { vehicle }
+          expect(FS3Combat).to receive(:join_vehicle).with(@combat, combatant, vehicle, "Pilot")
           FS3Combat.join_combat(@combat, "Bob", "viper", @enactor, @client)
         end
         
         
         it "should emit join message to combat" do
           combatant = double
-          Npc.stub(:create)
-          Combatant.stub(:create) { combatant }
-          FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.has_joined")
+          allow(Npc).to receive(:create)
+          allow(Combatant).to receive(:create) { combatant }
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat, "fs3combat.has_joined")
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
         
         it "should set default gear" do
           combatant = double
-          Npc.stub(:create)
-          Combatant.stub(:create) { combatant }
-          FS3Combat.should_receive(:set_default_gear).with(@enactor, combatant, "soldier")
+          allow(Npc).to receive(:create)
+          allow(Combatant).to receive(:create) { combatant }
+          expect(FS3Combat).to receive(:set_default_gear).with(@enactor, combatant, "soldier")
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
       end

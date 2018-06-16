@@ -6,18 +6,18 @@ module AresMUSH
 
   describe Character do
     before do
-      SpecHelpers.stub_translate_for_testing
+      stub_translate_for_testing
     end
     
     describe :found? do
       it "should return true if there is an existing char" do
-        Character.stub(:find_one_by_name).with("Bob") { double }
-        Character.found?("Bob").should be true
+        allow(Character).to receive(:find_one_by_name).with("Bob") { double }
+        expect(Character.found?("Bob")).to be true
       end
       
       it "should return false if no char exists" do
-        Character.stub(:find_one_by_name).with("Bob") { false }
-        Character.found?("Bob").should be false
+        allow(Character).to receive(:find_one_by_name).with("Bob") { false }
+        expect(Character.found?("Bob")).to be false
       end
     end 
 
@@ -28,46 +28,46 @@ module AresMUSH
         @role_a = Role.new(name: "A")
         @role_b = Role.new(name: "B")
         
-        Role.stub(:find_one_by_name).with("A") { @role_a }
-        Role.stub(:find_one_by_name).with("B") { @role_b }
-        Role.stub(:find_one_by_name).with("C") { double }
-        Role.stub(:find_one_by_name).with("D") { double }
+        allow(Role).to receive(:find_one_by_name).with("A") { @role_a }
+        allow(Role).to receive(:find_one_by_name).with("B") { @role_b }
+        allow(Role).to receive(:find_one_by_name).with("C") { double }
+        allow(Role).to receive(:find_one_by_name).with("D") { double }
       end
     
       describe :has_role? do
         before do
-          @char.stub(:roles) { [@role_a] }
+          allow(@char).to receive(:roles) { [@role_a] }
         end
         
         it "should return true if the character has the role" do
-          @char.has_role?("A").should be true
+          expect(@char.has_role?("A")).to be true
         end
 
         it "should return false if they don't" do
-          @char.has_role?("B").should be false
+          expect(@char.has_role?("B")).to be false
         end
 
         it "should search by role class as well as name" do
-          @char.has_role?(@role_a).should be true
-          @char.has_role?(@role_b).should be false
+          expect(@char.has_role?(@role_a)).to be true
+          expect(@char.has_role?(@role_b)).to be false
         end
         
       end
     
       describe :has_any_role? do
         before do
-          @char.stub(:roles) { [ @role_a, @role_b ] }
+          allow(@char).to receive(:roles) { [ @role_a, @role_b ] }
         end
         it "should return true if the character has a role in the list" do
-          @char.has_any_role?([ "B", "C" ]).should be true
+          expect(@char.has_any_role?([ "B", "C" ])).to be true
         end
       
         it "should return false if they don't" do
-          @char.has_any_role?([ "C", "D" ]).should be false
+          expect(@char.has_any_role?([ "C", "D" ])).to be false
         end
       
         it "should accept a single role" do
-          @char.has_any_role?( "B" ).should be true        
+          expect(@char.has_any_role?( "B" )).to be true        
         end
       end
     
@@ -80,26 +80,26 @@ module AresMUSH
       end
       
       it "should display the name by itself" do
-        @char.ooc_name.should eq "Bob"
+        expect(@char.ooc_name).to eq "Bob"
       end
       
 
       it "should display a char with a public handle" do
-        @char.stub(:handle) {@handle}
-        @char.ooc_name.should eq "Bob (@Star)"
+        allow(@char).to receive(:handle) {@handle}
+        expect(@char.ooc_name).to eq "Bob (@Star)"
       end
       
       it "should display a char with a public handle and alias" do
-        @char.stub(:handle) {@handle}
+        allow(@char).to receive(:handle) {@handle}
         @char.alias = "B"
-        @char.ooc_name.should eq "Bob (@Star)"
+        expect(@char.ooc_name).to eq "Bob (@Star)"
       end
       
       it "should display public handle matching name" do
-        @char.stub(:handle) {@handle}
+        allow(@char).to receive(:handle) {@handle}
         @char.name = "Star"
         @char.alias = "B"
-        @char.ooc_name.should eq "Star (@Star)"
+        expect(@char.ooc_name).to eq "Star (@Star)"
       end
     end
      

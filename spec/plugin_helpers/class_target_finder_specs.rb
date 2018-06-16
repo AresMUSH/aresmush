@@ -10,7 +10,7 @@ module AresMUSH
       include SpecHelpers
 
       before do
-        SpecHelpers.stub_translate_for_testing
+        stub_translate_for_testing
       end
     
       describe :find do
@@ -20,56 +20,56 @@ module AresMUSH
         
         it "should find the specified class by name" do
           room = double
-          Room.stub(:find_any_by_name).with("foo") { [room] }
+          allow(Room).to receive(:find_any_by_name).with("foo") { [room] }
           result = ClassTargetFinder.find("foo", Room, @viewer)
-          result.target.should eq room
-          result.error.should be_nil
+          expect(result.target).to eq room
+          expect(result.error).to be_nil
         end
     
         it "should return ambiguous if multiple results" do
-          Room.stub(:find_any_by_name).with("foo") { [double, double] }
+          allow(Room).to receive(:find_any_by_name).with("foo") { [double, double] }
           result = ClassTargetFinder.find("foo", Room, @viewer)
-          result.target.should eq nil
-          result.error.should eq 'db.object_ambiguous'
+          expect(result.target).to eq nil
+          expect(result.error).to eq 'db.object_ambiguous'
         end
 
         it "should return not found if no results" do
-          Room.stub(:find_any_by_name).with("bar") { [] }
+          allow(Room).to receive(:find_any_by_name).with("bar") { [] }
           result = ClassTargetFinder.find("bar", Room, @viewer)
-          result.target.should eq nil
-          result.error.should eq 'db.object_not_found'
+          expect(result.target).to eq nil
+          expect(result.error).to eq 'db.object_not_found'
         end
       
         it "should return the char for the me keword" do
           result = ClassTargetFinder.find("me", Character, @viewer)
-          result.target.should eq @viewer
-          result.error.should be_nil
+          expect(result.target).to eq @viewer
+          expect(result.error).to be_nil
         end
 
         it "should not return the char for another kind of object" do
           char = double
-          @viewer.stub(:char) { char }
-          Room.stub(:find_any_by_name).with("me") { [] }
+          allow(@viewer).to receive(:char) { char }
+          allow(Room).to receive(:find_any_by_name).with("me") { [] }
           result = ClassTargetFinder.find("me", Room, @viewer)
-          result.target.should eq nil
-          result.error.should eq 'db.object_not_found'
+          expect(result.target).to eq nil
+          expect(result.error).to eq 'db.object_not_found'
         end
       
         it "should return the char's location for the here keyword" do
           room = double
-          @viewer.stub(:room) { room }
+          allow(@viewer).to receive(:room) { room }
           result = ClassTargetFinder.find("here", Room, @viewer)
-          result.target.should eq room
-          result.error.should be_nil
+          expect(result.target).to eq room
+          expect(result.error).to be_nil
         end
       
         it "should not find here for another kind of object" do
           room = double
-          @viewer.stub(:room) { room }
-          Character.stub(:find_any_by_name).with("here") { [] }
+          allow(@viewer).to receive(:room) { room }
+          allow(Character).to receive(:find_any_by_name).with("here") { [] }
           result = ClassTargetFinder.find("here", Character, @viewer)
-          result.target.should eq nil
-          result.error.should eq 'db.object_not_found'
+          expect(result.target).to eq nil
+          expect(result.error).to eq 'db.object_not_found'
         end
       end
 
@@ -78,30 +78,30 @@ module AresMUSH
           @viewer = double
           @client = double
           @char = double
-          @char.stub(:name) { "char name" }
+          allow(@char).to receive(:name) { "char name" }
         end
       
         it "should emit failure if the char doesn't exist" do
           result = FindResult.new(nil, "error msg")
-          ClassTargetFinder.should_receive(:find).with("name", Character, @viewer) { result }
-          @client.should_receive(:emit_failure).with("error msg")
+          expect(ClassTargetFinder).to receive(:find).with("name", Character, @viewer) { result }
+          expect(@client).to receive(:emit_failure).with("error msg")
           ClassTargetFinder.with_a_character("name", @client, @viewer) do |char|
             raise "Should not get here."
           end
         end
       
         it "should not call the block with the char if it doesn't exist" do
-          ClassTargetFinder.stub(:find) { FindResult.new(nil, nil) }
-          @client.stub(:emit_failure)
+          allow(ClassTargetFinder).to receive(:find) { FindResult.new(nil, nil) }
+          allow(@client).to receive(:emit_failure)
           ClassTargetFinder.with_a_character("name", @client, @viewer) do |char|
             raise "Should not get here."
           end
         end
             
         it "should call the block with the char if it exists" do
-          ClassTargetFinder.stub(:find) { FindResult.new(@char, nil) }
+          allow(ClassTargetFinder).to receive(:find) { FindResult.new(@char, nil) }
           ClassTargetFinder.with_a_character("name", @client, @viewer) do |char|
-            char.name.should eq "char name"
+            expect(char.name).to eq "char name"
           end
         end
       end

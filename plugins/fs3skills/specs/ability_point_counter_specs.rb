@@ -3,7 +3,7 @@ module AresMUSH
     describe FS3Skills do
 
       before do
-        Global.stub(:read_config).with("fs3skills", "free_languages") { 3 }
+        allow(Global).to receive(:read_config).with("fs3skills", "free_languages") { 3 }
       end
       
       describe :points_on_attrs do
@@ -16,8 +16,8 @@ module AresMUSH
                     FS3Attribute.new(rating: 2), 
                     FS3Attribute.new(rating: 3),
                     FS3Attribute.new(rating: 4) ]
-          @char.stub(:fs3_attributes) { attrs }
-          AbilityPointCounter.points_on_attrs(@char).should eq 12
+          allow(@char).to receive(:fs3_attributes) { attrs }
+          expect(AbilityPointCounter.points_on_attrs(@char)).to eq 12
         end
         
         it "should not count average or below average" do
@@ -25,8 +25,8 @@ module AresMUSH
                     FS3Attribute.new(rating: 2), 
                     FS3Attribute.new(rating: 2),
                     FS3Attribute.new(rating: 2) ]
-          @char.stub(:fs3_attributes) { attrs }
-          AbilityPointCounter.points_on_attrs(@char).should eq 0
+          allow(@char).to receive(:fs3_attributes) { attrs }
+          expect(AbilityPointCounter.points_on_attrs(@char)).to eq 0
         end
       end
       
@@ -40,8 +40,8 @@ module AresMUSH
                      FS3ActionSkill.new(rating: 3), 
                      FS3ActionSkill.new(rating: 4),
                      FS3ActionSkill.new(rating: 5) ]
-          @char.stub(:fs3_action_skills) { action }
-          AbilityPointCounter.points_on_action(@char).should eq 10
+          allow(@char).to receive(:fs3_action_skills) { action }
+          expect(AbilityPointCounter.points_on_action(@char)).to eq 10
         end
         
         it "should not count everyman or poor" do
@@ -49,53 +49,53 @@ module AresMUSH
                      FS3ActionSkill.new(rating: 1), 
                      FS3ActionSkill.new(rating: 1),
                      FS3ActionSkill.new(rating: 0) ]
-          @char.stub(:fs3_action_skills) { action }
-          AbilityPointCounter.points_on_action(@char).should eq 0
+          allow(@char).to receive(:fs3_action_skills) { action }
+          expect(AbilityPointCounter.points_on_action(@char)).to eq 0
         end
       end
 
       describe :points_on_background do
         before do
           @char = double
-          Global.stub(:read_config).with("fs3skills", "free_backgrounds") { 5 }
+          allow(Global).to receive(:read_config).with("fs3skills", "free_backgrounds") { 5 }
         end
         
         it "should count past the free ones" do
           bg = [ FS3BackgroundSkill.new(rating: 3), 
                  FS3BackgroundSkill.new(rating: 3), 
                  FS3BackgroundSkill.new(rating: 2) ]
-          @char.stub(:fs3_background_skills) { bg }
-          AbilityPointCounter.points_on_background(@char).should eq 3
+          allow(@char).to receive(:fs3_background_skills) { bg }
+          expect(AbilityPointCounter.points_on_background(@char)).to eq 3
         end
         
         it "should not count if below free ones" do
           bg = [ FS3BackgroundSkill.new(rating: 2), 
                  FS3BackgroundSkill.new(rating: 1), 
                  FS3BackgroundSkill.new(rating: 1) ]
-          @char.stub(:fs3_background_skills) { bg }
-          AbilityPointCounter.points_on_background(@char).should eq 0
+          allow(@char).to receive(:fs3_background_skills) { bg }
+          expect(AbilityPointCounter.points_on_background(@char)).to eq 0
         end
       end
       
       describe :points_on_language do
         before do
           @char = double
-          Global.stub(:read_config).with("fs3skills", "free_languages") { 4 }
+          allow(Global).to receive(:read_config).with("fs3skills", "free_languages") { 4 }
         end
         
         it "should count past the free ones" do
           lang = [ FS3Language.new(rating: 3), 
                    FS3Language.new(rating: 3), 
                    FS3Language.new(rating: 2) ]
-          @char.stub(:fs3_languages) { lang }
-          AbilityPointCounter.points_on_language(@char).should eq 4
+          allow(@char).to receive(:fs3_languages) { lang }
+          expect(AbilityPointCounter.points_on_language(@char)).to eq 4
         end
         
         it "should not count if below free ones" do
           lang = [ FS3Language.new(rating: 2), 
                    FS3Language.new(rating: 1) ]
-          @char.stub(:fs3_languages) { lang }
-          AbilityPointCounter.points_on_language(@char).should eq 0
+          allow(@char).to receive(:fs3_languages) { lang }
+          expect(AbilityPointCounter.points_on_language(@char)).to eq 0
         end
       end
       
@@ -107,15 +107,15 @@ module AresMUSH
         it "should count abilities with more than one specialty" do
           action = [ FS3ActionSkill.new(specialties: [ "A", "B" ]), 
                      FS3ActionSkill.new(specialties: ["C", "D", "E"] ) ]
-          @char.stub(:fs3_action_skills) { action }
-          AbilityPointCounter.points_on_specialties(@char).should eq 3
+          allow(@char).to receive(:fs3_action_skills) { action }
+          expect(AbilityPointCounter.points_on_specialties(@char)).to eq 3
         end
         
         it "should not count first specialties" do
           action = [ FS3ActionSkill.new(specialties: [ "A" ]), 
                      FS3ActionSkill.new(specialties: [ "C" ] ) ]
-          @char.stub(:fs3_action_skills) { action }
-          AbilityPointCounter.points_on_specialties(@char).should eq 0
+          allow(@char).to receive(:fs3_action_skills) { action }
+          expect(AbilityPointCounter.points_on_specialties(@char)).to eq 0
         end
       end
       

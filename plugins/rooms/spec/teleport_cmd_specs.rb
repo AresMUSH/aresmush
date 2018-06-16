@@ -6,67 +6,67 @@ module AresMUSH
         @client = double
         @enactor = double
         @handler = TeleportCmd.new(@client, nil, @enactor)
-        SpecHelpers.stub_translate_for_testing  
+        stub_translate_for_testing  
       end
 
       
       describe :find_targets do
         it "should return the client if there's no name" do
-          @handler.stub(:names) { [] }
+          allow(@handler).to receive(:names) { [] }
           result = { :client => @client, :char => @enactor }
           targets = @handler.find_targets
-          targets.should eq [ result ]
+          expect(targets).to eq [ result ]
         end
 
         it "should return the matching char if there is one" do
-          @handler.stub(:names) { [ "someone", "someone else" ] }
+          allow(@handler).to receive(:names) { [ "someone", "someone else" ] }
           other_char1 = double
           other_client1 = double
           other_char2 = double
           other_client2 = nil
-          ClassTargetFinder.should_receive(:find).with("someone", Character, @enactor) { FindResult.new(other_char1, nil) }
-          ClassTargetFinder.should_receive(:find).with("someone else", Character, @enactor) { FindResult.new(other_char2, nil) }
+          expect(ClassTargetFinder).to receive(:find).with("someone", Character, @enactor) { FindResult.new(other_char1, nil) }
+          expect(ClassTargetFinder).to receive(:find).with("someone else", Character, @enactor) { FindResult.new(other_char2, nil) }
           
-          Login.stub(:is_online?).with(other_char1) { true }
-          Login.stub(:is_online?).with(other_char2) { false }
-          Login.stub(:find_client).with(other_char1) { other_client1 }
-          Login.stub(:find_client).with(other_char2) { nil }
-          other_char1.stub(:client) { other_client1 }
-          other_char2.stub(:client) { nil }
+          allow(Login).to receive(:is_online?).with(other_char1) { true }
+          allow(Login).to receive(:is_online?).with(other_char2) { false }
+          allow(Login).to receive(:find_client).with(other_char1) { other_client1 }
+          allow(Login).to receive(:find_client).with(other_char2) { nil }
+          allow(other_char1).to receive(:client) { other_client1 }
+          allow(other_char2).to receive(:client) { nil }
           result =  
             [ { :client => other_client1, :char => other_char1 },
               { :client => nil, :char => other_char2 } ]
-          @handler.find_targets.should eq result
+          expect(@handler.find_targets).to eq result
         end
 
         it "should return nil if nothing found" do
-          @handler.stub(:names) { [ "someone" ] }
-          ClassTargetFinder.should_receive(:find).with("someone", Character, @enactor) { FindResult.new(nil, "error") }
-          @client.should_receive(:emit_failure).with('rooms.cant_find_that_to_teleport')
-          @handler.find_targets.should eq []
+          allow(@handler).to receive(:names) { [ "someone" ] }
+          expect(ClassTargetFinder).to receive(:find).with("someone", Character, @enactor) { FindResult.new(nil, "error") }
+          expect(@client).to receive(:emit_failure).with('rooms.cant_find_that_to_teleport')
+          expect(@handler.find_targets).to eq []
         end
       end
       
       describe :handle do
         before do
-          @handler.stub(:destination) { "Somewhere" }
+          allow(@handler).to receive(:destination) { "Somewhere" }
         end
         
         context "teleporting self" do
           before do
             @dest = double
-            Rooms.stub(:find_destination) { [@dest] }
-            @handler.stub(:find_targets) { [ {:client => @client, :char => @enactor } ] }
+            allow(Rooms).to receive(:find_destination) { [@dest] }
+            allow(@handler).to receive(:find_targets) { [ {:client => @client, :char => @enactor } ] }
           end
           
           it "should go to the room" do
-            Rooms.should_receive(:move_to).with(@client, @enactor, @dest)
+            expect(Rooms).to receive(:move_to).with(@client, @enactor, @dest)
             @handler.handle
           end
           
           it "should not emit to the client" do
-            Rooms.stub(:move_to)
-            @client.should_not_receive(:emit_ooc)
+            allow(Rooms).to receive(:move_to)
+            expect(@client).to_not receive(:emit_ooc)
             @handler.handle
           end
         end  
@@ -76,20 +76,20 @@ module AresMUSH
             @dest = double
             @other_char = double
             @other_client = double
-            @enactor.stub(:name) { "Bob" }
-            Rooms.stub(:find_destination) { [@dest] }
-            @handler.stub(:find_targets) { [ {:client => @other_client, :char => @other_char } ] }
+            allow(@enactor).to receive(:name) { "Bob" }
+            allow(Rooms).to receive(:find_destination) { [@dest] }
+            allow(@handler).to receive(:find_targets) { [ {:client => @other_client, :char => @other_char } ] }
           end
           
           it "should go to the room" do
-            Rooms.should_receive(:move_to).with(@other_client, @other_char, @dest)
-            @other_client.stub(:emit_ooc)
+            expect(Rooms).to receive(:move_to).with(@other_client, @other_char, @dest)
+            allow(@other_client).to receive(:emit_ooc)
             @handler.handle
           end
           
           it "should tell the person they're being teleported" do
-            Rooms.stub(:move_to)
-            @other_client.should_receive(:emit_ooc).with('rooms.you_are_teleported')
+            allow(Rooms).to receive(:move_to)
+            expect(@other_client).to receive(:emit_ooc).with('rooms.you_are_teleported')
             @handler.handle
           end
         end        
@@ -98,31 +98,31 @@ module AresMUSH
           before do
             other_char = double
             other_client = double
-            Rooms.stub(:find_destination) { [] }
-            @handler.stub(:find_targets) { [ {:client => other_client, :char => other_char } ] }
-            @client.stub(:emit_failure)
+            allow(Rooms).to receive(:find_destination) { [] }
+            allow(@handler).to receive(:find_targets) { [ {:client => other_client, :char => other_char } ] }
+            allow(@client).to receive(:emit_failure)
           end  
           
           it "should emit failure" do
-            @client.should_receive(:emit_failure).with("rooms.invalid_teleport_destination")          
+            expect(@client).to receive(:emit_failure).with("rooms.invalid_teleport_destination")          
             @handler.handle
           end
           
           it "should not go anywhere" do
-            Rooms.should_not_receive(:move_to)
+            expect(Rooms).to_not receive(:move_to)
             @handler.handle
           end
         end
         
         context "targets not found" do          
           before do
-            @handler.stub(:find_targets) { [] }
-            Rooms.stub(:find_destination) { [double] }
-            @client.stub(:emit_failure)
+            allow(@handler).to receive(:find_targets) { [] }
+            allow(Rooms).to receive(:find_destination) { [double] }
+            allow(@client).to receive(:emit_failure)
           end  
           
           it "should not go anywhere" do
-            Rooms.should_not_receive(:move_to)
+            expect(Rooms).to_not receive(:move_to)
             @handler.handle
           end
         end

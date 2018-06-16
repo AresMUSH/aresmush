@@ -8,8 +8,8 @@ module AresMUSH
 
     before do
       @client = double.as_null_object
-      SpecHelpers.stub_translate_for_testing
-      File.stub(:read)      
+      stub_translate_for_testing
+      allow(File).to receive(:read)      
     end
 
     describe :connected do
@@ -18,12 +18,12 @@ module AresMUSH
       end
 
       it "should send the welcome screen" do
-        File.should_receive(:read).with("game/text/connect.txt", :encoding => "UTF-8") { "Ascii Art" }
-        @client.should_receive(:emit).with("Ascii Art")
+        expect(File).to receive(:read).with("game/text/connect.txt", :encoding => "UTF-8") { "Ascii Art" }
+        expect(@client).to receive(:emit).with("Ascii Art")
       end
 
       it "should send the ares welcome text" do
-        @client.should_receive(:emit_ooc).with("client.welcome")
+        expect(@client).to receive(:emit_ooc).with("client.welcome")
       end
 
     end

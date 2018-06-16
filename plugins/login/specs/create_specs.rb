@@ -8,57 +8,57 @@ module AresMUSH
       before do
         @client = double
         @handler = CreateCmd.new(@client, "create Bob bobpassword", nil)
-        SpecHelpers.stub_translate_for_testing    
+        stub_translate_for_testing    
         stub_global_objects    
       end
       
       describe :check_not_already_logged_in do
         it "should reject command if already logged in" do
-          @client.stub(:logged_in?) { true }
-          @handler.check_not_already_logged_in .should eq "login.already_logged_in"
+          allow(@client).to receive(:logged_in?) { true }
+          expect(@handler.check_not_already_logged_in ).to eq "login.already_logged_in"
         end
 
         it "should allow command if not logged in" do
-          @client.stub(:logged_in?) { false }
-          @handler.check_not_already_logged_in .should be_nil
+          allow(@client).to receive(:logged_in?) { false }
+          expect(@handler.check_not_already_logged_in ).to be_nil
         end
       end
       
       describe :check_name do
         it "should fail if the name is missing" do
-          @handler.stub(:charname) { nil }
-          @handler.check_name.should eq "dispatcher.invalid_syntax"
+          allow(@handler).to receive(:charname) { nil }
+          expect(@handler.check_name).to eq "dispatcher.invalid_syntax"
         end
 
         it "should fail if the name is invalid" do
-          @handler.stub(:charname) { "Bob" }
-          Character.should_receive(:check_name).with("Bob") { "invalid name"}
-          @handler.check_name.should eq "invalid name"          
+          allow(@handler).to receive(:charname) { "Bob" }
+          expect(Character).to receive(:check_name).with("Bob") { "invalid name"}
+          expect(@handler.check_name).to eq "invalid name"          
         end
           
         it "should allow the comand if the name is ok" do
-          @handler.stub(:charname) { "Bob" }
-          Character.should_receive(:check_name) { nil }
-          @handler.check_name.should be_nil
+          allow(@handler).to receive(:charname) { "Bob" }
+          expect(Character).to receive(:check_name) { nil }
+          expect(@handler.check_name).to be_nil
         end
       end
         
       describe :check_password do
         it "should fail if the password is missing" do
-          @handler.stub(:password) { nil }
-          @handler.check_password.should eq "dispatcher.invalid_syntax"
+          allow(@handler).to receive(:password) { nil }
+          expect(@handler.check_password).to eq "dispatcher.invalid_syntax"
         end
 
         it "should fail if the password is invalid" do
-          @handler.stub(:password) { "passwd" }
-          Character.should_receive(:check_password).with("passwd") { "invalid password"}
-          @handler.check_password.should eq "invalid password"          
+          allow(@handler).to receive(:password) { "passwd" }
+          expect(Character).to receive(:check_password).with("passwd") { "invalid password"}
+          expect(@handler.check_password).to eq "invalid password"          
         end
           
         it "should allow the comand if the password is ok" do
-          @handler.stub(:password) { "passwd" }
-          Character.should_receive(:check_password) { nil }
-          @handler.check_password.should be_nil
+          allow(@handler).to receive(:password) { "passwd" }
+          expect(Character).to receive(:check_password) { nil }
+          expect(@handler.check_password).to be_nil
         end
       end
       
@@ -68,66 +68,66 @@ module AresMUSH
           @handler.charname = "charname"
           @handler.password = "password"
           
-          dispatcher.stub(:queue_event)
+          allow(dispatcher).to receive(:queue_event)
 
-          Login.stub(:terms_of_service) { nil }
+          allow(Login).to receive(:terms_of_service) { nil }
           
           @char = double.as_null_object
-          @char.stub(:id) { 33 }
-          Character.stub(:new) { @char }
+          allow(@char).to receive(:id) { 33 }
+          allow(Character).to receive(:new) { @char }
 
-          @client.stub(:emit_success)
-          @client.stub(:char_id=) 
-          @client.stub(:program) { {} }       
+          allow(@client).to receive(:emit_success)
+          allow(@client).to receive(:char_id=) 
+          allow(@client).to receive(:program) { {} }       
         
           game = double
-          Game.stub(:master) { game }
-          game.stub(:welcome_room) { double }
-          SpecHelpers.stub_translate_for_testing        
+          allow(Game).to receive(:master) { game }
+          allow(game).to receive(:welcome_room) { double }
+          stub_translate_for_testing        
         end
         
         it "should set the character's name" do          
-          @char.should_receive(:name=).with("charname")
+          expect(@char).to receive(:name=).with("charname")
           @handler.handle
         end
 
         it "should set the character's password" do          
-          @char.should_receive(:change_password).with("password")
+          expect(@char).to receive(:change_password).with("password")
           @handler.handle
         end
 
         it "should save the character" do          
-          @char.should_receive(:save)
+          expect(@char).to receive(:save)
           @handler.handle
         end
 
         it "should tell the char they're created" do
-          @client.should_receive(:emit_success).with("login.created_and_logged_in")
+          expect(@client).to receive(:emit_success).with("login.created_and_logged_in")
           @handler.handle
         end
 
         it "should set the char on the @client" do
-          @client.should_receive(:char_id=).with(33)
+          expect(@client).to receive(:char_id=).with(33)
           @handler.handle
         end
 
         it "should dispatch the created and connected event" do
-          dispatcher.should_receive(:queue_event) do |event|
-            event.class.should eq CharCreatedEvent
-            event.client.should eq @client
+          expect(dispatcher).to receive(:queue_event) do |event|
+            expect(event.class).to eq CharCreatedEvent
+            expect(event.client).to eq @client
           end
          
-          dispatcher.should_receive(:queue_event) do |event|
-            event.class.should eq CharConnectedEvent
-            event.client.should eq @client
+          expect(dispatcher).to receive(:queue_event) do |event|
+            expect(event.class).to eq CharConnectedEvent
+            expect(event.client).to eq @client
           end
           @handler.handle
         end
         
         it "should prompt with the terms of service if defined" do
-          Login.stub(:terms_of_service) { "tos text" }
-          @client.should_receive(:emit).with("%lh\ntos text%rlogin.tos_agree\n%lf")
-          @client.should_not_receive(:char=)
+          allow(Login).to receive(:terms_of_service) { "tos text" }
+          expect(@client).to receive(:emit).with("%lh\ntos text%rlogin.tos_agree\n%lf")
+          expect(@client).to_not receive(:char=)
           @handler.handle
         end
       end
