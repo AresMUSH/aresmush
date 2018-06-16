@@ -13,7 +13,7 @@ module AresMUSH
       }
 
       host = Global.read_config("server", "hostname")
-
+      
       EventMachine::run do
         port = Global.read_config("server", "port")
         EventMachine::add_periodic_timer(45) do
