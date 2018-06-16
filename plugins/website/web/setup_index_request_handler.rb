@@ -8,7 +8,7 @@ module AresMUSH
         error = WebHelpers.check_login(request)
         return error if error
         
-        if (!enactor.is_admin?)
+        if (!Manage.can_manage_game?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
         textfiles = Dir[File.join(AresMUSH.game_path, 'text', '**')]
