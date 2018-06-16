@@ -27,6 +27,8 @@ module AresMUSH
             return ConfigListCmd
           end
         end
+      when "server"
+        return ServerInfoCmd
       when "destroy"
         case cmd.switch
         when "confirm"

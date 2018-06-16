@@ -1,9 +1,9 @@
 module AresMUSH  
   class Bootstrapper 
     
-    attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager, :help_reader
+    attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager, :help_reader, :boot_options
     
-    def initialize(use_api_proxy = true)
+    def initialize(boot_options = nil)
 
       @config_reader = ConfigReader.new
       @ares_logger = AresLogger.new
@@ -15,8 +15,7 @@ module AresMUSH
       client_monitor = ClientMonitor.new(client_factory)
       @server = Server.new
       @db = Database.new
-      
-      Global.use_api_proxy = use_api_proxy
+      @boot_options = boot_options || []
       
       # Set up global access to the system objects - primarily so that the plugins can 
       # tell them to do things.
@@ -37,11 +36,24 @@ module AresMUSH
         handle_exit($!)
       end
       
+      Global.server_start = Time.now
+      
       # Order here is important!
       @config_reader.load_game_config      
       @ares_logger.start
-
       Global.ares_logger = @ares_logger
+
+      Global.use_api_proxy = true
+      @boot_options.each do |opt|
+        if (opt == 'disableproxy')
+          Global.use_api_proxy = false
+        else
+          Global.logger.error "Invalid boot option: #{opt}."
+          raise "Invalid boot option."
+        end
+      end
+      
+      Global.logger.info "AresMUSH version #{AresMUSH.version}.  Boot Options: #{self.boot_options}.  API Proxy: #{Global.use_api_proxy}"
 
       @db.load_config
       @locale.setup
@@ -55,6 +67,7 @@ module AresMUSH
       rescue Exception => e
         raise "Error connecting to database. Check your database configuration."
       end
+      
       
       @server.start
       sleep

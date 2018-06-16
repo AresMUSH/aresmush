@@ -18,6 +18,6 @@ bin/deploy
 sleep 3s
 
 if ps -p ${ARES_PID}  > /dev/null
-then echo -e "\033[0;32mAresMUSH started!\e[0m"
-else echo -e "\e[31mAresMUSH failed to start.  Check the highest-numbered log in game/logs for more information.\e[0m"
+then echo -e "\033[32mAresMUSH started!  \033[0m"
+else echo -e "\033[31mAresMUSH failed to start.  Check the highest-numbered log in game/logs for more information.\033[0m"
 fi

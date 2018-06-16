@@ -58,6 +58,14 @@ en:
         announce: "%xh%xg%%%% Game Announcement:%xn %{message}"
         
         version: "AresMUSH version %{version}%rhttp://www.aresmush.com"
+        migrations: "Applied Migrations:"
+        server_info: "Server Information"
+        version_title: "Version:"
+        characters_title: "Characters:"
+        rooms_title: "Rooms:"
+        exits_title: "Exits:"
+        server_started: "Server Started:"
+        server_uptime: "Uptime:"
         
         cant_rename_handle_with_links: "Cannot rename a handle that has characters linked to it.  The player needs to unlink their characters first."
         

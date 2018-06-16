@@ -21,9 +21,9 @@ end
 
 task :startares, [:options] do |t, args|
   options = args[:options] || ""
-  options = options.split
+  options = options.split.map { |o| o.downcase }
   
-  bootstrapper = AresMUSH::Bootstrapper.new(!options.include?("disableproxy"))
+  bootstrapper = AresMUSH::Bootstrapper.new(options)
   bootstrapper.start
 end
   
