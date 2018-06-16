@@ -8,12 +8,16 @@ module AresMUSH
         error = WebHelpers.check_login(request)
         return error if error
         
-        if (!enactor.is_admin?)
+        if (!Jobs.can_access_jobs?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
         
         if (!job)
           return { error: t('webportal.not_found') }
+        end
+        
+        if (!Jobs.can_access_category?(enactor, job.category))
+          return { error: t('jobs.cant_access_category') }
         end
         
         Jobs.mark_read(job, enactor)
