@@ -9,31 +9,31 @@ module AresMUSH
     describe :format do
 
       it "should parse a say for a string starting with a quote" do
-        Locale.stub(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
-        PoseFormatter.format("Bob", "\"Hello.").should eq "hi"
+        allow(Locale).to receive(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
+        expect(PoseFormatter.format("Bob", "\"Hello.")).to eq "hi"
       end
 
       it "should parse a pose for a string starting with a colon" do
-        Locale.stub(:translate).with("object.pose", :name => "Bob", :msg => "waves.") { "waves" }
-        PoseFormatter.format("Bob", ":waves.").should eq "waves"
+        allow(Locale).to receive(:translate).with("object.pose", :name => "Bob", :msg => "waves.") { "waves" }
+        expect(PoseFormatter.format("Bob", ":waves.")).to eq "waves"
       end
 
       it "should parse a semipose for a string starting with a semicolon" do
-        Locale.stub(:translate).with("object.semipose", :name => "Bob", :msg => "'s cat.") { "cat" }
-        PoseFormatter.format("Bob", ";'s cat.").should eq "cat"
+        allow(Locale).to receive(:translate).with("object.semipose", :name => "Bob", :msg => "'s cat.") { "cat" }
+        expect(PoseFormatter.format("Bob", ";'s cat.")).to eq "cat"
       end
 
       it "should parse an emit for a string starting with a backslash" do
-        PoseFormatter.format("Bob", "\\Whee").should eq "Whee"
+        expect(PoseFormatter.format("Bob", "\\Whee")).to eq "Whee"
       end
 
       it "should parse an emit for a string starting with a backslash and space" do
-        PoseFormatter.format("Bob", "\\ Whee").should eq "Whee"
+        expect(PoseFormatter.format("Bob", "\\ Whee")).to eq "Whee"
       end
       
       it "should default to a say" do
-        Locale.stub(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
-        PoseFormatter.format("Bob", "Hello.").should eq "hi"
+        allow(Locale).to receive(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
+        expect(PoseFormatter.format("Bob", "Hello.")).to eq "hi"
       end
 
     end

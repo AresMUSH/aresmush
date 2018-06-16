@@ -1,8 +1,23 @@
+echo "Exporting default language settings."
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+echo "Starting game engine."
 bundle install
 nohup bundle exec rake startares[$*] > /dev/null 2>errors.txt&
-echo kill -9 $! > bin/killares
+export ARES_PID=$!
+
+echo "Creating kill script."
+echo kill -9 ${ARES_PID}  > bin/killares
 chmod +x bin/killares
+
+echo "Deploying website."
 cd ~/ares-webportal
 bin/deploy
+
+sleep 3s
+
+if ps -p ${ARES_PID}  > /dev/null
+then echo -e "\033[32mAresMUSH started!  \033[0m"
+else echo -e "\033[31mAresMUSH failed to start.  Check the highest-numbered log in game/logs for more information.\033[0m"
+fi

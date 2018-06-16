@@ -22,8 +22,8 @@ module AresMUSH
     
     describe :emit_all do
       it "should notify all the clients matching the specified trigger block" do
-        @client1.should_not_receive(:emit)
-        @client2.should_receive(:emit).with("Hi")
+        expect(@client1).to_not receive(:emit)
+        expect(@client2).to receive(:emit).with("Hi")
         @client_monitor.emit_all "Hi" do |c|
           c == @client2
         end
@@ -32,8 +32,8 @@ module AresMUSH
     
     describe :emit_all_ooc do
       it "should emit ooc to all the clients matching the specified trigger block" do
-        @client1.should_receive(:emit_ooc).with("Hi")
-        @client2.should_not_receive(:emit_ooc)
+        expect(@client1).to receive(:emit_ooc).with("Hi")
+        expect(@client2).to_not receive(:emit_ooc)
         @client_monitor.emit_all_ooc "Hi" do |c|
           c == @client1
         end
@@ -46,14 +46,14 @@ module AresMUSH
       end
       
       it "should emit ooc if logged in" do
-        @client_monitor.stub(:find_client).with(@char) { @client1 }
-        @client1.should_receive(:emit_ooc).with("Hi")
+        allow(@client_monitor).to receive(:find_client).with(@char) { @client1 }
+        expect(@client1).to receive(:emit_ooc).with("Hi")
         @client_monitor.emit_ooc_if_logged_in(@char, "Hi")
       end
       
       it "should not emit if not logged in" do
-        @client_monitor.stub(:find_client).with(@char) { nil }
-        @client1.should_not_receive(:emit_ooc)
+        allow(@client_monitor).to receive(:find_client).with(@char) { nil }
+        expect(@client1).to_not receive(:emit_ooc)
         @client_monitor.emit_ooc_if_logged_in(@char, "Hi")
       end
     end
@@ -65,43 +65,43 @@ module AresMUSH
       end
       
       it "should emit if logged in" do
-        @client_monitor.stub(:find_client).with(@char) { @client1 }
-        @client1.should_receive(:emit).with("Hi")
+        allow(@client_monitor).to receive(:find_client).with(@char) { @client1 }
+        expect(@client1).to receive(:emit).with("Hi")
         @client_monitor.emit_if_logged_in(@char, "Hi")
       end
       
       it "should not emit if not logged in" do
-        @client_monitor.stub(:find_client).with(@char) { nil }
-        @client1.should_not_receive(:emit)
+        allow(@client_monitor).to receive(:find_client).with(@char) { nil }
+        expect(@client1).to_not receive(:emit)
         @client_monitor.emit_if_logged_in(@char, "Hi")
       end
     end
 
     describe :connection_closed do
       it "should remove the client from the list" do
-        dispatcher.stub(:queue_event)
+        allow(dispatcher).to receive(:queue_event)
         @client_monitor.connection_closed(@client1)
-        @client_monitor.clients.should eq [@client2]
+        expect(@client_monitor.clients).to eq [@client2]
       end
       
       it "should notify the dispatcher of an anonymous client disconnected" do
-        @client1.stub(:logged_in?) { false }
-        dispatcher.should_receive(:queue_event) do |event|
-          event.class.should eq ConnectionClosedEvent
-          event.client.should eq @client1
+        allow(@client1).to receive(:logged_in?) { false }
+        expect(dispatcher).to receive(:queue_event) do |event|
+          expect(event.class).to eq ConnectionClosedEvent
+          expect(event.client).to eq @client1
         end
         @client_monitor.connection_closed(@client1)
       end
 
       it "should notify the dispatcher of a client disconnected with a char logged in" do
-        @client1.stub(:logged_in?) { true }
-        dispatcher.should_receive(:queue_event) do |event|
-          event.class.should eq ConnectionClosedEvent
-          event.client.should eq @client1
+        allow(@client1).to receive(:logged_in?) { true }
+        expect(dispatcher).to receive(:queue_event) do |event|
+          expect(event.class).to eq ConnectionClosedEvent
+          expect(event.client).to eq @client1
         end
-        dispatcher.should_receive(:queue_event) do |event|
-          event.class.should eq CharDisconnectedEvent
-          event.client.should eq @client1
+        expect(dispatcher).to receive(:queue_event) do |event|
+          expect(event.class).to eq CharDisconnectedEvent
+          expect(event.client).to eq @client1
         end
         @client_monitor.connection_closed(@client1)
       end
@@ -114,29 +114,29 @@ module AresMUSH
       end
 
       it "should create a client" do
-        @factory.should_receive(:create_client).with(@connection) { @client3 }
+        expect(@factory).to receive(:create_client).with(@connection) { @client3 }
         @client_monitor.connection_established(@connection)
       end
 
       it "should add the client to the list" do
-        @factory.stub(:create_client) { @client3 }
+        allow(@factory).to receive(:create_client) { @client3 }
         @client_monitor.connection_established(@connection)
-        @client_monitor.clients.should include @client3
+        expect(@client_monitor.clients).to include @client3
       end
 
       it "should tell the client it has connected" do
-        @factory.stub(:create_client) { @client3 }
-        @client3.should_receive(:connected)
+        allow(@factory).to receive(:create_client) { @client3 }
+        expect(@client3).to receive(:connected)
         @client_monitor.connection_established(@connection)
       end
       
       it "should notify the dispatcher" do
-        @factory.stub(:create_client) { @client3 }
-        dispatcher.should_receive(:queue_event) do |event|
-          event.class.should eq ConnectionEstablishedEvent
-          event.client.should eq @client3
+        allow(@factory).to receive(:create_client) { @client3 }
+        expect(dispatcher).to receive(:queue_event) do |event|
+          expect(event.class).to eq ConnectionEstablishedEvent
+          expect(event.client).to eq @client3
         end
-        Global.logger.should_not_receive(:debug)
+        expect(Global.logger).to_not receive(:debug)
         @client_monitor.connection_established(@connection)
       end
     end
@@ -144,27 +144,27 @@ module AresMUSH
     describe :logged_in_clients do
       it "should count logged in people" do
         client3 = double
-        @client1.stub(:logged_in?) { false }
-        @client2.stub(:logged_in?) { true }
-        client3.stub(:logged_in?) { true }
+        allow(@client1).to receive(:logged_in?) { false }
+        allow(@client2).to receive(:logged_in?) { true }
+        allow(client3).to receive(:logged_in?) { true }
         @client_monitor.clients << client3
-        @client_monitor.logged_in_clients.should eq [@client2, client3]
+        expect(@client_monitor.logged_in_clients).to eq [@client2, client3]
       end
     end
     
     describe :find_client do
       it "should find a client with a matching character" do
         char = double
-        char.stub(:id) { 123 }
-        @client1.stub(:char_id) { 123 }
-        @client_monitor.find_client(char).should eq @client1
+        allow(char).to receive(:id) { 123 }
+        allow(@client1).to receive(:char_id) { 123 }
+        expect(@client_monitor.find_client(char)).to eq @client1
       end
       
       it "should return nil if no client found" do
         char = double
-        char.stub(:id) { 123 }
-        @client1.stub(:char_id) { 456 }
-        @client_monitor.find_client(char).should eq nil
+        allow(char).to receive(:id) { 123 }
+        allow(@client1).to receive(:char_id) { 456 }
+        expect(@client_monitor.find_client(char)).to eq nil
       end
     end
   end

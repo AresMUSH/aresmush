@@ -1,0 +1,18 @@
+%lh
+%xh<%= t('manage.server_info') %>%xn
+
+%xh<%= t('manage.version_title') %>%xn <%= version %>
+
+%xh<%= t('manage.migrations') %>%xn<%= -%>
+<% migrations.each_with_index do |mig, i| %>
+<% if i % 3 == 0 %>%R<% end %> <%= mig -%>
+<% end %>
+
+
+%xh<%= t('manage.characters_title') %> <%= num_characters %>
+%xh<%= t('manage.rooms_title') %> <%= num_rooms %>
+%xh<%= t('manage.exits_title') %> <%= num_exits %>
+
+%xh<%= t('manage.server_started') %> <%= server_started %>
+%xh<%= t('manage.server_uptime') %> <%= server_uptime %>
+%lf

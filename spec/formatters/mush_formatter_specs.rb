@@ -6,18 +6,18 @@ module AresMUSH
 
   describe MushFormatter do
    def expect_msg(expected, actual)
-     actual.should eq expected + ANSI.reset + "\r\n"
+     expect(actual).to eq expected + ANSI.reset + "\r\n"
    end
    
     describe :format do
       before do
-        SubstitutionFormatter.stub(:format) do |msg|
+        allow(SubstitutionFormatter).to receive(:format) do |msg|
           msg
         end
       end
       
       it "should do MUSH substitutions" do
-        SubstitutionFormatter.should_receive(:format).with("msg", true) { "xmsg" }
+        expect(SubstitutionFormatter).to receive(:format).with("msg", true) { "xmsg" }
         msg = MushFormatter.format("msg")
         expect_msg("xmsg", msg)
       end

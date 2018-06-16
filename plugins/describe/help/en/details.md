@@ -1,6 +1,6 @@
 ---
 toc: Descriptions
-summary: Expanding your description with separate details.
+summary: Expanding descriptions with separate details.
 ---
 # Details
 

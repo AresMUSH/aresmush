@@ -69,9 +69,9 @@ module AresMUSH
       return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
       {
-      path: relative_path,
-      name: File.basename(relative_path),
-      folder: File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
+        path: relative_path,
+        name: File.basename(relative_path),
+        folder: File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
       }
     end
     
@@ -150,6 +150,29 @@ module AresMUSH
       welcome_filename = File.join(AresMUSH.game_path, "text", "website.txt")
       text = File.read(welcome_filename, :encoding => "UTF-8")
       WebHelpers.format_markdown_for_html(text)
+    end
+    
+    def self.build_sitemap
+      list = []
+      list << Game.web_portal_url
+      Scene.shared_scenes.each { |s| list << "#{Game.web_portal_url}/scene/#{s.id}" }
+      Character.all.each { |c| list << "#{Game.web_portal_url}/char/#{c.name}" }
+      WikiPage.all.each { |w| list << "#{Game.web_portal_url}/wiki/#{w.name}" }
+      Plot.all.each { |p| list << "#{Game.web_portal_url}/plot/#{p.id}" }
+      Room.all.each { |r| list << "#{Game.web_portal_url}/location/#{r.id}" }
+      list << "#{Game.web_portal_url}/help"
+      list << "#{Game.web_portal_url}/actors"
+      list << "#{Game.web_portal_url}/roster"
+      list << "#{Game.web_portal_url}/census"
+      list << "#{Game.web_portal_url}/fs3combat/gear"
+      list << "#{Game.web_portal_url}/fs3skills/abilities"
+
+      topics = Help.topic_keys.map { |k, v| v }.uniq
+      topics.each { |h| list << "#{Game.web_portal_url}/help/#{h}" }
+      
+      BbsPost.all.select{ |b| b.is_public? }.each { |b| list << "#{Game.web_portal_url}/forum/#{b.bbs_board.id}/#{b.id}" }
+      
+      topics
     end
   end
 end

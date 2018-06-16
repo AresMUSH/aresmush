@@ -10,7 +10,7 @@ module AresMUSH
         str = "a b"
         m = /(?<foo>.+) (?<bar>.+)/.match(str)
         data = { :foo => "a", :bar => "b" }
-        m.names_hash.should eq data
+        expect(m.names_hash).to eq data
       end
     end
   end

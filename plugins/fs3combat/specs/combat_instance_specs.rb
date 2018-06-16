@@ -4,38 +4,38 @@ module AresMUSH
       
       before do
         @instance = Combat.new
-        @instance.stub(:save) { }
-        @instance.stub(:log) { }
+        allow(@instance).to receive(:save) { }
+        allow(@instance).to receive(:log) { }
         @bob = double
-        @bob.stub(:name) { "Bob" }
+        allow(@bob).to receive(:name) { "Bob" }
         
         @harvey = double
-        @harvey.stub(:name) { "Harvey" }
+        allow(@harvey).to receive(:name) { "Harvey" }
         
-        @instance.stub(:combatants) { [ @bob, @harvey ] }
+        allow(@instance).to receive(:combatants) { [ @bob, @harvey ] }
         
-        SpecHelpers.stub_translate_for_testing
+        stub_translate_for_testing
       end
       
             
       describe :has_combatant? do
         it "should return true if there is someone with the name" do
-          @instance.has_combatant?("Bob").should be true
-          @instance.has_combatant?("bOb").should be true
+          expect(@instance.has_combatant?("Bob")).to be true
+          expect(@instance.has_combatant?("bOb")).to be true
         end
         
         it "should return false if there is not someone with the name" do
-          @instance.has_combatant?("Jane").should be false
+          expect(@instance.has_combatant?("Jane")).to be false
         end
       end
       
       describe :find_combatant do
         it "should find combatant is someone with the name" do
-          @instance.find_combatant("Bob").should eq @bob
+          expect(@instance.find_combatant("Bob")).to eq @bob
         end
         
         it "should return nil if there is not someone with the name" do
-          @instance.find_combatant("Jane").should be_nil
+          expect(@instance.find_combatant("Jane")).to be_nil
         end
       end
     end

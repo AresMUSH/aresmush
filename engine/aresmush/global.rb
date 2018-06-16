@@ -13,6 +13,6 @@ module AresMUSH
       help_reader.help
     end
     
-    mattr_accessor :client_monitor, :config_reader, :dispatcher, :plugin_manager, :locale, :help_reader, :database, :ares_logger, :notifier, :use_api_proxy
+    mattr_accessor :client_monitor, :config_reader, :dispatcher, :plugin_manager, :locale, :help_reader, :database, :ares_logger, :notifier, :use_api_proxy, :server_start
   end
 end

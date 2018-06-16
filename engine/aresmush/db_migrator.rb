@@ -2,18 +2,31 @@ module AresMUSH
   class DatabaseMigrator
     attr_accessor :messages
     
-    def migrate(mode)
-      path = File.join(AresMUSH.root_path, "install", "migrations")
-      migrations = Dir["#{path}/*.rb"].sort
-      applied_migrations_path = File.join(path, 'applied.txt')
-      self.messages = []
-      if (File.exist?(applied_migrations_path))
-        applied_migrations = File.readlines(applied_migrations_path).map { |l| l.chomp }
+    def migrations_path
+      File.join(AresMUSH.root_path, "install", "migrations")
+    end
+    
+    def available_migrations
+      Dir["#{self.migrations_path}/*.rb"].sort
+    end
+    
+    def applied_migrations_path
+      File.join(self.migrations_path, 'applied.txt')
+    end
+    
+    def read_applied_migrations
+      if (File.exist?(self.applied_migrations_path))
+        return File.readlines(applied_migrations_path).map { |l| l.chomp }
       else
-        applied_migrations = []
+        return []
       end
+    end
+    
+    def migrate(mode)
+      self.messages = []
+      applied_migrations = self.read_applied_migrations
       
-      migrations.each do |file|
+      self.available_migrations.each do |file|
         migration_name = File.basename(file, ".rb")
         if applied_migrations.include?(migration_name)
           Global.logger.info "Migration #{migration_name} already applied."
@@ -38,7 +51,7 @@ module AresMUSH
         Global.logger.info "Migration #{migration_name} applied."
       end
 
-      File.open(applied_migrations_path, 'w') do |file|
+      File.open(self.applied_migrations_path, 'w') do |file|
         file.write applied_migrations.join("\n")
       end
       

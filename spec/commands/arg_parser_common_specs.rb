@@ -8,121 +8,121 @@ module AresMUSH
     describe "arg1_slash_arg2" do
       it "should crack a matching command" do
         args = ArgParser.parse(ArgParser.arg1_slash_arg2, "a/b")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
       end
       
       it "should set values to nil if not matched" do
         args = ArgParser.parse(ArgParser.arg1_slash_arg2, "a b")
-        args.arg1.should be_nil
-        args.arg2.should be_nil
+        expect(args.arg1).to be_nil
+        expect(args.arg2).to be_nil
       end
     end
     
     describe "arg1_equals_arg2" do
       it "should crack a matching command" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2, "a=b")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
       end
       
       it "should set values to nil if not matched" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2, "a b")
-        args.arg1.should be_nil
-        args.arg2.should be_nil
+        expect(args.arg1).to be_nil
+        expect(args.arg2).to be_nil
       end
     end
     
     describe "arg1_slash_optional_arg2" do
       it "should crack a matching command" do
         args = ArgParser.parse(ArgParser.arg1_slash_optional_arg2, "a/b")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
       end
       
       it "should crack a matching command with missing optional arg" do
         args = ArgParser.parse(ArgParser.arg1_slash_optional_arg2, "a")
-        args.arg1.should eq "a"
-        args.arg2.should be_nil
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to be_nil
       end
       
       it "should set values to nil if not matched" do
         args = ArgParser.parse(ArgParser.arg1_slash_optional_arg2, "a=b")
-        args.arg1.should eq "a=b"
-        args.arg2.should be_nil
+        expect(args.arg1).to eq "a=b"
+        expect(args.arg2).to be_nil
       end
     end
     
     describe "arg1_equals_optional_arg2" do
       it "should crack a matching command" do
         args = ArgParser.parse(ArgParser.arg1_equals_optional_arg2, "a=b")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
       end
       
       it "should accept only the first arg" do
         args = ArgParser.parse(ArgParser.arg1_equals_optional_arg2, "a b")
-        args.arg1.should eq "a b"
-        args.arg2.should be_nil
+        expect(args.arg1).to eq "a b"
+        expect(args.arg2).to be_nil
       end
       
       it "should set values to nil if empty" do
         args = ArgParser.parse(ArgParser.arg1_equals_optional_arg2, "")
-        args.arg1.should be_nil
-        args.arg2.should be_nil
+        expect(args.arg1).to be_nil
+        expect(args.arg2).to be_nil
       end
     end
     
     describe "arg1_equals_arg2_slash_arg3" do
       it "should crack a matching command" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2_slash_arg3, "a=b/c")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
-        args.arg3.should eq "c"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to eq "c"
       end
       
       it "should set values to nil if not matched" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2, "a b")
-        args.arg1.should be_nil
-        args.arg2.should be_nil
-        args.arg3.should be_nil
+        expect(args.arg1).to be_nil
+        expect(args.arg2).to be_nil
+        expect(args.arg3).to be_nil
       end
       
       it "should match an arg3 with equals or slashes" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2_slash_arg3, "a=b/c = d/e")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
-        args.arg3.should eq "c = d/e"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to eq "c = d/e"
       end
     end
     
     describe "arg1_equals_arg2_slash_optional_arg3" do
       it "should crack a matching command" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2_slash_optional_arg3, "a=b/c")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
-        args.arg3.should eq "c"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to eq "c"
       end
       
       it "should crack a command without the optional arg" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2_slash_optional_arg3, "a=b")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
-        args.arg3.should be_nil
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to be_nil
       end
       
       it "should set values to nil if not matched" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2_slash_optional_arg3, "a b")
-        args.arg1.should be_nil
-        args.arg2.should be_nil
-        args.arg3.should be_nil
+        expect(args.arg1).to be_nil
+        expect(args.arg2).to be_nil
+        expect(args.arg3).to be_nil
       end
       
       it "should match an arg3 with equals or slashes" do
         args = ArgParser.parse(ArgParser.arg1_equals_arg2_slash_optional_arg3, "a=b/c = d/e")
-        args.arg1.should eq "a"
-        args.arg2.should eq "b"
-        args.arg3.should eq "c = d/e"
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to eq "c = d/e"
       end
     end
   end

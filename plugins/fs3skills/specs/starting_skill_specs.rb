@@ -3,7 +3,7 @@ module AresMUSH
     describe FS3Skills do 
       
       before do
-        SpecHelpers.stub_translate_for_testing
+        stub_translate_for_testing
       end
       
       describe :get_skills_for_char do
@@ -14,60 +14,60 @@ module AresMUSH
             "Position" => { "Pilot" => { "skills" => { "C" => 4 } } },
             "Faction" => { "Navy" => { "skills" => { "C" => 2 } } }
           }
-          Global.stub(:read_config).with("fs3skills", "starting_skills") { starting_skills }
-          Global.stub(:read_config).with("fs3skills", "attributes") { [ ] }
-          Global.stub(:read_config).with("fs3skills", "action_skills") { [ ] }
+          allow(Global).to receive(:read_config).with("fs3skills", "starting_skills") { starting_skills }
+          allow(Global).to receive(:read_config).with("fs3skills", "attributes") { [ ] }
+          allow(Global).to receive(:read_config).with("fs3skills", "action_skills") { [ ] }
           
-          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
+          allow(Global).to receive(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
           
           @char = double
         end
         
         it "should include Everyone skills" do
-          @char.stub(:group).with("Position") { "Other" }
-          @char.stub(:group).with("Faction") { "Other" }
+          allow(@char).to receive(:group).with("Position") { "Other" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
           skills = { "A" => 2, "B" => 3 }
-          StartingSkills.get_skills_for_char(@char).should eq skills
+          expect(StartingSkills.get_skills_for_char(@char)).to eq skills
         end
         
         it "should include matching group skills" do
-          @char.stub(:group).with("Position") { "Pilot" }
-          @char.stub(:group).with("Faction") { "Other" }
+          allow(@char).to receive(:group).with("Position") { "Pilot" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
           skills = { "A" => 2, "B" => 3, "C" => 4 }
-          StartingSkills.get_skills_for_char(@char).should eq skills
+          expect(StartingSkills.get_skills_for_char(@char)).to eq skills
         end
 
         it "should include the higher skill if multiple matches" do
-          @char.stub(:group).with("Position") { "Pilot" }
-          @char.stub(:group).with("Faction") { "Navy" }
+          allow(@char).to receive(:group).with("Position") { "Pilot" }
+          allow(@char).to receive(:group).with("Faction") { "Navy" }
           skills = { "A" => 2, "B" => 3, "C" => 4 }
-          StartingSkills.get_skills_for_char(@char).should eq skills
+          expect(StartingSkills.get_skills_for_char(@char)).to eq skills
         end
         
         it "should include default attributes" do
-          @char.stub(:group).with("Position") { "Other" }
-          @char.stub(:group).with("Faction") { "Other" }
-          Global.stub(:read_config).with("fs3skills", "attributes") { [ { 'name' => 'Brawn' }, { 'name' => 'Presence' } ] }
+          allow(@char).to receive(:group).with("Position") { "Other" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
+          allow(Global).to receive(:read_config).with("fs3skills", "attributes") { [ { 'name' => 'Brawn' }, { 'name' => 'Presence' } ] }
           skills = { "A" => 2, "B" => 3, "Brawn" => 1, "Presence" => 1 }
-          StartingSkills.get_skills_for_char(@char).should eq skills        
+          expect(StartingSkills.get_skills_for_char(@char)).to eq skills        
         end
         
         it "should include default action skills when unskilled allowed" do
-          @char.stub(:group).with("Position") { "Other" }
-          @char.stub(:group).with("Faction") { "Other" }
-          Global.stub(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
-          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
+          allow(@char).to receive(:group).with("Position") { "Other" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
+          allow(Global).to receive(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
+          allow(Global).to receive(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
           skills = { "A" => 2, "B" => 3, "Melee" => 0 }
-          StartingSkills.get_skills_for_char(@char).should eq skills        
+          expect(StartingSkills.get_skills_for_char(@char)).to eq skills        
         end
 
         it "should include default action skills when unskilled not allowed" do
-          @char.stub(:group).with("Position") { "Other" }
-          @char.stub(:group).with("Faction") { "Other" }
-          Global.stub(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
-          Global.stub(:read_config).with("fs3skills", "allow_unskilled_action_skills") { false }
+          allow(@char).to receive(:group).with("Position") { "Other" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
+          allow(Global).to receive(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
+          allow(Global).to receive(:read_config).with("fs3skills", "allow_unskilled_action_skills") { false }
           skills = { "A" => 2, "B" => 3, "Melee" => 1 }
-          StartingSkills.get_skills_for_char(@char).should eq skills        
+          expect(StartingSkills.get_skills_for_char(@char)).to eq skills        
         end
       end
       
@@ -79,29 +79,29 @@ module AresMUSH
             "Position" => { "Pilot" => { "skills" => { "C" => 4 }, "specialties" => { "A" => [ "X", "U" ] } } },
             "Faction" => { "Navy" => { "skills" => { "C" => 2 }, "specialties" => { "B" => [ "W" ] } } }
           }
-          Global.stub(:read_config).with("fs3skills", "starting_skills") { starting_skills }
+          allow(Global).to receive(:read_config).with("fs3skills", "starting_skills") { starting_skills }
           @char = double
         end
         
         it "should include Everyone skills" do
-          @char.stub(:group).with("Position") { "Other" }
-          @char.stub(:group).with("Faction") { "Other" }
+          allow(@char).to receive(:group).with("Position") { "Other" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
           specs = { "A" => [ "X", "Y" ], "B" => [ "Z" ] }
-          StartingSkills.get_specialties_for_char(@char).should eq specs
+          expect(StartingSkills.get_specialties_for_char(@char)).to eq specs
         end
         
         it "should include matching group skills" do
-          @char.stub(:group).with("Position") { "Pilot" }
-          @char.stub(:group).with("Faction") { "Other" }
+          allow(@char).to receive(:group).with("Position") { "Pilot" }
+          allow(@char).to receive(:group).with("Faction") { "Other" }
           specs = { "A" => [ "X", "Y", "U" ], "B" => [ "Z" ] }
-          StartingSkills.get_specialties_for_char(@char).should eq specs
+          expect(StartingSkills.get_specialties_for_char(@char)).to eq specs
         end
 
         it "should include the higher skill if multiple matches" do
-          @char.stub(:group).with("Position") { "Pilot" }
-          @char.stub(:group).with("Faction") { "Navy" }
+          allow(@char).to receive(:group).with("Position") { "Pilot" }
+          allow(@char).to receive(:group).with("Faction") { "Navy" }
           specs = { "A" => [ "X", "Y", "U" ], "B" => [ "Z", "W" ] }
-          StartingSkills.get_specialties_for_char(@char).should eq specs
+          expect(StartingSkills.get_specialties_for_char(@char)).to eq specs
         end
         
       end

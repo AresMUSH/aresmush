@@ -8,8 +8,8 @@ module AresMUSH
     describe :master do
       it "should return the master game object" do
         model = double
-        Game.stub(:[]).with(1) { model }
-        Game.master.should eq model
+        allow(Game).to receive(:[]).with(1) { model }
+        expect(Game.master).to eq model
       end
     end
 
