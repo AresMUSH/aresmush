@@ -7,52 +7,52 @@ module AresMUSH
     describe :find do
       before do
         @char = double
-        Exit.stub(:where) { [] }
-        Character.stub(:where) { [] }
+        allow(Exit).to receive(:where) { [] }
+        allow(Character).to receive(:where) { [] }
       end
 
       it "should return the char for the me keword" do
         result = VisibleTargetFinder.find("me", @char)
-        result.target.should eq @char
-        result.error.should be_nil
+        expect(result.target).to eq @char
+        expect(result.error).to be_nil
       end
 
       it "should return the char's location for the here keyword" do
         room = double
-        @char.stub(:room) { room }
+        allow(@char).to receive(:room) { room }
         result = VisibleTargetFinder.find("here", @char)
-        result.target.should eq room
-        result.error.should be_nil
+        expect(result.target).to eq room
+        expect(result.error).to be_nil
       end
       
       it "should ensure only a single result" do
         room = double
-        room.stub(:id) { 1 }
-        @char.stub(:room) { room }
+        allow(room).to receive(:id) { 1 }
+        allow(@char).to receive(:room) { room }
         char1 = double
         char2 = double
         exit = double
-        char1.stub(:room) { room }
-        char2.stub(:room) { room }
-        exit.stub(:source) { room }
-        Character.should_receive(:find_any_by_name).with("A") { [char1, char2] }
-        Exit.should_receive(:find_any_by_name).with("A") { [exit] }
+        allow(char1).to receive(:room) { room }
+        allow(char2).to receive(:room) { room }
+        allow(exit).to receive(:source) { room }
+        expect(Character).to receive(:find_any_by_name).with("A") { [char1, char2] }
+        expect(Exit).to receive(:find_any_by_name).with("A") { [exit] }
         result = FindResult.new(nil, "an error")
-        SingleResultSelector.should_receive(:select).with([char1, char2, exit]) { result }
-        VisibleTargetFinder.find("A", @char).should eq result      
+        expect(SingleResultSelector).to receive(:select).with([char1, char2, exit]) { result }
+        expect(VisibleTargetFinder.find("A", @char)).to eq result      
       end
 
       it "should remove nil results before selecting single target" do
         room = double
-        room.stub(:id) { 1 }
-        @char.stub(:room) { room }
+        allow(room).to receive(:id) { 1 }
+        allow(@char).to receive(:room) { room }
         char1 = double
-        char1.stub(:room) { room }
-        Character.stub(:find_any_by_name) { [char1] }
-        Exit.stub(:find_any_by_name) { [] }
+        allow(char1).to receive(:room) { room }
+        allow(Character).to receive(:find_any_by_name) { [char1] }
+        allow(Exit).to receive(:find_any_by_name) { [] }
         result = FindResult.new(char1, nil)
-        SingleResultSelector.should_receive(:select).with([char1]) { result }
-        VisibleTargetFinder.find("A", @char).should eq result      
+        expect(SingleResultSelector).to receive(:select).with([char1]) { result }
+        expect(VisibleTargetFinder.find("A", @char)).to eq result      
       end
     end
     
@@ -60,30 +60,30 @@ module AresMUSH
       before do
         @client = double
         @object = double
-        @object.stub(:name) { "obj name" }
+        allow(@object).to receive(:name) { "obj name" }
       end
       
       it "should emit failure if the object isn't visible" do
         result = FindResult.new(nil, "error msg")
-        VisibleTargetFinder.should_receive(:find).with("name", @char) { result }
-        @client.should_receive(:emit_failure).with("error msg")
+        expect(VisibleTargetFinder).to receive(:find).with("name", @char) { result }
+        expect(@client).to receive(:emit_failure).with("error msg")
         VisibleTargetFinder.with_something_visible("name", @client, @char) do |obj|
           raise "Should not get here."
         end
       end
       
       it "should not call the block with the object if it doesn't exist" do
-        VisibleTargetFinder.stub(:find) { FindResult.new(nil, nil) }
-        @client.stub(:emit_failure)
+        allow(VisibleTargetFinder).to receive(:find) { FindResult.new(nil, nil) }
+        allow(@client).to receive(:emit_failure)
         VisibleTargetFinder.with_something_visible("name", @client, @char) do |obj|
           raise "Should not get here."
         end
       end
             
       it "should call the block with the char if it exists" do
-        VisibleTargetFinder.stub(:find) { FindResult.new(@object, nil) }
+        allow(VisibleTargetFinder).to receive(:find) { FindResult.new(@object, nil) }
         VisibleTargetFinder.with_something_visible("name", @client, @char) do |obj|
-          @object.name.should eq "obj name"
+          expect(@object.name).to eq "obj name"
         end
       end
     end

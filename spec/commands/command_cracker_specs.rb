@@ -10,202 +10,202 @@ module AresMUSH
       
       it "should be able to crack a root-only command" do
         cracked = CommandCracker.crack("test")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq nil
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq nil
       end
 
       it "should be able to crack a root that's just a number" do
         cracked = CommandCracker.crack("1")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "1"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq nil
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "1"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq nil
       end
       
       it "should be able to crack a root with a page" do
         cracked = CommandCracker.crack("test1")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq nil
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq nil
       end
 
       it "should be able to crack a root with a page and an arg" do
         cracked = CommandCracker.crack("test2 foo")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 2
-        cracked[:switch].should eq nil
-        cracked[:args].should eq "foo"        
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 2
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq "foo"        
       end
       
       it "should be able to crack a root followed by a space and arg" do
         cracked = CommandCracker.crack("test abc")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq "abc"        
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq "abc"        
       end
 
       it "should be able to crack a root followed by a space and number" do
         cracked = CommandCracker.crack("test 2")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq "2"
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq "2"
       end
 
       it "should be able to crack a root followed by a slash and switch" do
         cracked = CommandCracker.crack("test/sw")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "sw"
-        cracked[:args].should eq nil        
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "sw"
+        expect(cracked[:args]).to eq nil        
       end
       
       it "should be able to crack a root with page followed by a slash and switch" do
         cracked = CommandCracker.crack("test2/sw")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 2
-        cracked[:switch].should eq "sw"
-        cracked[:args].should eq nil        
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 2
+        expect(cracked[:switch]).to eq "sw"
+        expect(cracked[:args]).to eq nil        
       end
       
       it "should be able to crack a root with page after the switch xxx" do
         cracked = CommandCracker.crack("test/sw2")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 2
-        cracked[:switch].should eq "sw"
-        cracked[:args].should eq nil        
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 2
+        expect(cracked[:switch]).to eq "sw"
+        expect(cracked[:args]).to eq nil        
       end
 
       it "should be able to crack a root followed by a slash and switch and arg" do
         cracked = CommandCracker.crack("test/sw arg")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "sw"
-        cracked[:args].should eq "arg"        
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "sw"
+        expect(cracked[:args]).to eq "arg"        
       end
       
       it "should be able to crack a root followed by a space and switch and number" do
         cracked = CommandCracker.crack("test/sw 2")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "sw"
-        cracked[:args].should eq "2"
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "sw"
+        expect(cracked[:args]).to eq "2"
       end
 
       it "should be able to strip off crazy spaces" do
         cracked = CommandCracker.crack("   test/sw    2   ")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "sw"
-        cracked[:args].should eq "2"
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "sw"
+        expect(cracked[:args]).to eq "2"
       end
 
       it "should not recognize a switch that's spaced out" do
         cracked = CommandCracker.crack("   test  /  sw    2   ")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq "/  sw    2"
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq "/  sw    2"
       end
       
     
       it "should handle a + prefix" do
         cracked = CommandCracker.crack("+test/foo bar")
-        cracked[:prefix].should eq "+"
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq "+"
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end  
       
       it "should handle a / prefix" do
         cracked = CommandCracker.crack("/test/foo bar")
-        cracked[:prefix].should eq "/"
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq "/"
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end
       
       it "should handle an @ prefix" do
         cracked = CommandCracker.crack("@test/foo bar")
-        cracked[:prefix].should eq "@"
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq "@"
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end
       
       it "should handle an = prefix" do
         cracked = CommandCracker.crack("=test/foo bar")
-        cracked[:prefix].should eq "="
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq "="
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end
 
       it "should handle an & prefix" do
         cracked = CommandCracker.crack("&test/foo bar")
-        cracked[:prefix].should eq "&"
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq "&"
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end
       
       it "should handle no prefix" do
         cracked = CommandCracker.crack("test/foo bar")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end
       
       it "should handle a weird prefix" do
         cracked = CommandCracker.crack("~test/foo bar")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq "~test"
-        cracked[:page].should eq 1
-        cracked[:switch].should eq "foo"
-        cracked[:args].should eq "bar"
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq "~test"
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq "foo"
+        expect(cracked[:args]).to eq "bar"
       end
       
       it "should be able to crack an empty string" do
         cracked = CommandCracker.crack("")
-        cracked[:prefix].should eq nil
-        cracked[:root].should eq ""
-        cracked[:page].should eq 1
-        cracked[:switch].should eq nil
-        cracked[:args].should eq nil
+        expect(cracked[:prefix]).to eq nil
+        expect(cracked[:root]).to eq ""
+        expect(cracked[:page]).to eq 1
+        expect(cracked[:switch]).to eq nil
+        expect(cracked[:args]).to eq nil
       end
     end
   
     describe :strip_prefix do
       it "should remove prefixes" do
-        CommandCracker.strip_prefix("+xyz").should eq "xyz"
-        CommandCracker.strip_prefix("@xyz").should eq "xyz"
-        CommandCracker.strip_prefix("=xyz").should eq "xyz"
-        CommandCracker.strip_prefix("&xyz").should eq "xyz"
-        CommandCracker.strip_prefix("xyz").should eq "xyz"
+        expect(CommandCracker.strip_prefix("+xyz")).to eq "xyz"
+        expect(CommandCracker.strip_prefix("@xyz")).to eq "xyz"
+        expect(CommandCracker.strip_prefix("=xyz")).to eq "xyz"
+        expect(CommandCracker.strip_prefix("&xyz")).to eq "xyz"
+        expect(CommandCracker.strip_prefix("xyz")).to eq "xyz"
       end
     end
     

@@ -5,21 +5,21 @@ module AresMUSH
         before do
           @source = double
           @dest = double
-          @source.stub(:name) { "source" }
-          @dest.stub(:name) { "dest" }
-          SpecHelpers.stub_translate_for_testing
+          allow(@source).to receive(:name) { "source" }
+          allow(@dest).to receive(:name) { "dest" }
+          stub_translate_for_testing
         end
       
         it "should return error if exit already exists." do
-          @source.should_receive(:has_exit?).with("AE") { true }
-          Exit.should_not_receive(:create)
-          Rooms.open_exit("AE", @source, @dest).should eq "rooms.exit_already_exists"
+          expect(@source).to receive(:has_exit?).with("AE") { true }
+          expect(Exit).to_not receive(:create)
+          expect(Rooms.open_exit("AE", @source, @dest)).to eq "rooms.exit_already_exists"
         end
       
         it "should create the exit" do
-          @source.stub(:has_exit?) { false }
-          Exit.should_receive(:create).with( { :name => "AE", :source => @source, :dest => @dest } )
-          Rooms.open_exit("AE", @source, @dest).should eq "rooms.exit_created"
+          allow(@source).to receive(:has_exit?) { false }
+          expect(Exit).to receive(:create).with( { :name => "AE", :source => @source, :dest => @dest } )
+          expect(Rooms.open_exit("AE", @source, @dest)).to eq "rooms.exit_created"
         end
       end
     
@@ -27,23 +27,23 @@ module AresMUSH
       describe :find_destination do
         before do
           @room = double
-          @room.stub(:name_upcase) { "SOMEWHERE" }
+          allow(@room).to receive(:name_upcase) { "SOMEWHERE" }
           @rooms = [ @room ]
           @enactor = double
-          Room.stub(:all) { @rooms }
+          allow(Room).to receive(:all) { @rooms }
         end
         
         it "should find the room when the destination is a char" do
           other_char = double
-          other_char.stub(:room) { @room }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, @enactor) { FindResult.new(other_char, nil) }
-          Rooms.find_destination("somewhere", @enactor, true).should eq [@room]
+          allow(other_char).to receive(:room) { @room }
+          expect(ClassTargetFinder).to receive(:find).with("somewhere", Character, @enactor) { FindResult.new(other_char, nil) }
+          expect(Rooms.find_destination("somewhere", @enactor, true)).to eq [@room]
         end
         
         it "should find the room when the destination is a room with an exact name match" do
-          ClassTargetFinder.should_receive(:find).with("somewhere", Character, @enactor) { FindResult.new(nil, "error") }
-          ClassTargetFinder.should_receive(:find).with("somewhere", Room, @enactor) { FindResult.new(@room, nil) }
-          Rooms.find_destination("somewhere", @enactor, true).should eq [@room]
+          expect(ClassTargetFinder).to receive(:find).with("somewhere", Character, @enactor) { FindResult.new(nil, "error") }
+          expect(ClassTargetFinder).to receive(:find).with("somewhere", Room, @enactor) { FindResult.new(@room, nil) }
+          expect(Rooms.find_destination("somewhere", @enactor, true)).to eq [@room]
         end
       end
       
@@ -53,10 +53,10 @@ module AresMUSH
           char = double
           room = double
           template = double
-          Describe.should_receive(:desc_template).with(room, char) { template }
-          template.should_receive(:render) { "room desc" }
-          char.stub(:room) { room }
-          client.should_receive(:emit).with("room desc")
+          expect(Describe).to receive(:desc_template).with(room, char) { template }
+          expect(template).to receive(:render) { "room desc" }
+          allow(char).to receive(:room) { room }
+          expect(client).to receive(:emit).with("room desc")
           Rooms.emit_here_desc(client, char)
         end
       end   

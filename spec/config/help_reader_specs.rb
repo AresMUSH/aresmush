@@ -9,39 +9,39 @@ module AresMUSH
     before do
       @markdown = double
       @help_data = { "toc" => "c", "aliases" => [ "x" ] }
-      @markdown.stub(:metadata) { @help_data } 
-      @markdown.stub(:contents) { "contents" }
-      @markdown.stub(:load_file)
-      MarkdownFile.stub(:new) { @markdown }
+      allow(@markdown).to receive(:metadata) { @help_data } 
+      allow(@markdown).to receive(:contents) { "contents" }
+      allow(@markdown).to receive(:load_file)
+      allow(MarkdownFile).to receive(:new) { @markdown }
       @reader = HelpReader.new     
     end
     
     describe :load_help_file do 
       it "should load the metadata" do
-        MarkdownFile.should_receive(:new).with("file") { @markdown }
+        expect(MarkdownFile).to receive(:new).with("file") { @markdown }
         @reader.load_help_file("file", "Plugin")
-        @reader.help_file_index["file"]["toc"].should eq "c"
+        expect(@reader.help_file_index["file"]["toc"]).to eq "c"
       end
       
       it "should set the plugin and path" do
-        MarkdownFile.stub(:new).with("file") { @markdown }
+        allow(MarkdownFile).to receive(:new).with("file") { @markdown }
         @reader.load_help_file("file", "Plugin")
-        @reader.help_file_index["file"]["path"].should eq "file"
-        @reader.help_file_index["file"]["plugin"].should eq "plugin"
+        expect(@reader.help_file_index["file"]["path"]).to eq "file"
+        expect(@reader.help_file_index["file"]["plugin"]).to eq "plugin"
       end
       
       it "should set the toc" do
-        MarkdownFile.should_receive(:new).with("file") { @markdown }
+        expect(MarkdownFile).to receive(:new).with("file") { @markdown }
         @reader.load_help_file("file", "Plugin")
-        @reader.help_toc["c"].should eq [ "file" ]
+        expect(@reader.help_toc["c"]).to eq [ "file" ]
       end
       
       it "should set the keys" do
-        MarkdownFile.should_receive(:new).with("file") { @markdown }
+        expect(MarkdownFile).to receive(:new).with("file") { @markdown }
         @reader.load_help_file("file", "Plugin")
-        @reader.help_keys["x"].should eq "file"
-        @reader.help_keys["file"].should eq "file"
-        @reader.help_keys["files"].should eq "file"
+        expect(@reader.help_keys["x"]).to eq "file"
+        expect(@reader.help_keys["file"]).to eq "file"
+        expect(@reader.help_keys["files"]).to eq "file"
       end
     end
     
@@ -53,8 +53,8 @@ module AresMUSH
         @reader.help_file_index["b"] = yhelp
         
         @reader.unload_help("x")
-        @reader.help_file_index["a"].should be_nil
-        @reader.help_file_index["b"].should eq yhelp
+        expect(@reader.help_file_index["a"]).to be_nil
+        expect(@reader.help_file_index["b"]).to eq yhelp
       end
       
     end

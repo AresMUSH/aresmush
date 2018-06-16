@@ -27,17 +27,17 @@ module AresMUSH
   
   module SpecHelpers
         
-    def self.stub_translate_for_testing
+    def stub_translate_for_testing
       # Simple helper to stub out translations.  Only works well if you 
       # have a simple string because it doesn't do anything with the args
-      AresMUSH::Locale.stub(:translate) do |str|
+      allow(AresMUSH::Locale).to receive(:translate) do |str|
         "#{str}"
       end
     end    
     
-    def self.setup_mock_client(client, char)
-      client.stub(:char) { char }
-      char.stub(:client) { client }
+    def setup_mock_client(client, char)
+      allow(client).to receive(:char) { char }
+      allow(char).to receive(:client) { client }
     end
   end  
   
@@ -53,13 +53,13 @@ module AresMUSH
       @help_reader = double
       @notifier = double
       
-      Global.stub(:notifier) { @notifier }
-      Global.stub(:config_reader) { @config_reader }
-      Global.stub(:client_monitor) { @client_monitor }
-      Global.stub(:dispatcher) { @dispatcher }
-      Global.stub(:plugin_manager) { @plugin_manager }
-      Global.stub(:locale) { @locale }
-      Global.stub(:help_reader) { @help_reader }
+      allow(Global).to receive(:notifier) { @notifier }
+      allow(Global).to receive(:config_reader) { @config_reader }
+      allow(Global).to receive(:client_monitor) { @client_monitor }
+      allow(Global).to receive(:dispatcher) { @dispatcher }
+      allow(Global).to receive(:plugin_manager) { @plugin_manager }
+      allow(Global).to receive(:locale) { @locale }
+      allow(Global).to receive(:help_reader) { @help_reader }
     end
   end  
 end
