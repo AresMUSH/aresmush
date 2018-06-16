@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     describe FS3Combat do
       before do
-        SpecHelpers.stub_translate_for_testing
+        stub_translate_for_testing
       end
       
       describe :find_or_create_vehicle do
@@ -12,34 +12,34 @@ module AresMUSH
       
         it "should return a vehicle that already exists" do
           v = double
-          @instance.stub(:find_vehicle_by_name).with("abc") { v }
-          FS3Combat.find_or_create_vehicle(@instance, "abc").should eq v
+          allow(@instance).to receive(:find_vehicle_by_name).with("abc") { v }
+          expect(FS3Combat.find_or_create_vehicle(@instance, "abc")).to eq v
         end
   
         it "should return nil for invalid vehicle type" do
-          Global.stub(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
-          @instance.stub(:find_vehicle_by_name).with("abc") { nil }
-          FS3Combat.find_or_create_vehicle(@instance, "abc").should eq nil
+          allow(Global).to receive(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
+          allow(@instance).to receive(:find_vehicle_by_name).with("abc") { nil }
+          expect(FS3Combat.find_or_create_vehicle(@instance, "abc")).to eq nil
         end
   
         it "should add a new vehicle" do
-          Global.stub(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
-          @instance.stub(:find_vehicle_by_name).with("Viper") { nil }
+          allow(Global).to receive(:read_config).with("fs3combat", "vehicles") { { "Viper" => {} } }
+          allow(@instance).to receive(:find_vehicle_by_name).with("Viper") { nil }
           v = double
-          Vehicle.stub(:create) do |args|
-            args[:combat].should eq @instance
-            args[:vehicle_type].should eq "Viper"
+          allow(Vehicle).to receive(:create) do |args|
+            expect(args[:combat]).to eq @instance
+            expect(args[:vehicle_type]).to eq "Viper"
             v
           end
-          FS3Combat.find_or_create_vehicle(@instance, "Viper").should eq v
+          expect(FS3Combat.find_or_create_vehicle(@instance, "Viper")).to eq v
         end
         
         it "should find a vehicle with a case-insensitive name" do
-          Global.stub(:read_config).with("fs3combat", "vehicles") { { "AA Battery" => {} } }
-          @instance.stub(:find_vehicle_by_name).with("aa battery") { nil }
+          allow(Global).to receive(:read_config).with("fs3combat", "vehicles") { { "AA Battery" => {} } }
+          allow(@instance).to receive(:find_vehicle_by_name).with("aa battery") { nil }
           v = double
-          Vehicle.stub(:create) { v }
-          FS3Combat.find_or_create_vehicle(@instance, "aa battery").should eq v
+          allow(Vehicle).to receive(:create) { v }
+          expect(FS3Combat.find_or_create_vehicle(@instance, "aa battery")).to eq v
         end
       end
       
@@ -49,60 +49,60 @@ module AresMUSH
           @combat = double
           @combatant = double
           
-          @vehicle.stub(:name) { "Viper-1" }
-          @combatant.stub(:name) { "Bob" }
-          @combatant.stub(:update)
-          @vehicle.stub(:pilot) { nil }
-          @vehicle.stub(:vehicle_type) { "Viper" }
-          FS3Combat.stub(:emit_to_combat)
-          @vehicle.stub(:update)
+          allow(@vehicle).to receive(:name) { "Viper-1" }
+          allow(@combatant).to receive(:name) { "Bob" }
+          allow(@combatant).to receive(:update)
+          allow(@vehicle).to receive(:pilot) { nil }
+          allow(@vehicle).to receive(:vehicle_type) { "Viper" }
+          allow(FS3Combat).to receive(:emit_to_combat)
+          allow(@vehicle).to receive(:update)
 
-          FS3Combat.stub(:set_weapon)
-          FS3Combat.stub(:vehicle_stat) { [] }
+          allow(FS3Combat).to receive(:set_weapon)
+          allow(FS3Combat).to receive(:vehicle_stat) { [] }
         end
         
         describe "pilot" do
           it "should move the existing pilot to the passenger list if someone else takes over" do
             old_pilot = double
-            @vehicle.stub(:pilot) { old_pilot }
+            allow(@vehicle).to receive(:pilot) { old_pilot }
             
-            old_pilot.should_receive(:update).with(piloting: nil)
-            old_pilot.should_receive(:update).with(riding_in: @vehicle)
-            @vehicle.should_receive(:update).with(pilot: @combatant)
+            expect(old_pilot).to receive(:update).with(piloting: nil)
+            expect(old_pilot).to receive(:update).with(riding_in: @vehicle)
+            expect(@vehicle).to receive(:update).with(pilot: @combatant)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
           
           it "should not move pilot if they're the same as the old pilot" do
-            @vehicle.stub(:pilot) { @combatant }
-            @vehicle.should_receive(:update).with(pilot: @combatant)
+            allow(@vehicle).to receive(:pilot) { @combatant }
+            expect(@vehicle).to receive(:update).with(pilot: @combatant)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
           
           it "should update the pilot's vehicle stat" do
-            @combatant.should_receive(:update).with(piloting: @vehicle)
+            expect(@combatant).to receive(:update).with(piloting: @vehicle)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
           
           it "should set up default vehicle weapon" do
-            FS3Combat.should_receive(:vehicle_stat).with("Viper", "weapons") { ["KEW", "Missile"]}
-            FS3Combat.should_receive(:set_weapon).with(nil, @combatant, "KEW")
+            expect(FS3Combat).to receive(:vehicle_stat).with("Viper", "weapons") { ["KEW", "Missile"]}
+            expect(FS3Combat).to receive(:set_weapon).with(nil, @combatant, "KEW")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
         
           it "should emit to combat" do
-            FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.new_pilot")
+            expect(FS3Combat).to receive(:emit_to_combat).with(@combat, "fs3combat.new_pilot")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Pilot")
           end
         end
         
         describe "passenger" do
           it "should update the pilot's vehicle stat" do
-            @combatant.should_receive(:update).with(riding_in: @vehicle)
+            expect(@combatant).to receive(:update).with(riding_in: @vehicle)
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
           
           it "should emit to combat" do
-            FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.new_passenger")
+            expect(FS3Combat).to receive(:emit_to_combat).with(@combat, "fs3combat.new_passenger")
             FS3Combat.join_vehicle(@combat, @combatant, @vehicle, "Passenger")
           end
         end
@@ -114,39 +114,39 @@ module AresMUSH
           @combat = double
           @combatant = double
         
-          @vehicle.stub(:name) { "Viper-1" }
-          @combatant.stub(:name) { "Bob" }
-          FS3Combat.stub(:emit_to_combat)
-          @combatant.stub(:update)
-          @vehicle.stub(:update)
+          allow(@vehicle).to receive(:name) { "Viper-1" }
+          allow(@combatant).to receive(:name) { "Bob" }
+          allow(FS3Combat).to receive(:emit_to_combat)
+          allow(@combatant).to receive(:update)
+          allow(@vehicle).to receive(:update)
           
-          FS3Combat.stub(:set_default_gear) {}
-          Global.stub(:read_config).with("fs3combat", "default_type") { "soldier" }
+          allow(FS3Combat).to receive(:set_default_gear) {}
+          allow(Global).to receive(:read_config).with("fs3combat", "default_type") { "soldier" }
         end
       
         it "should remove a pilot" do
-          @combatant.stub(:piloting) { @vehicle }
-          @combatant.should_receive(:update).with(piloting: nil)
-          @vehicle.should_receive(:update).with(pilot: nil)
+          allow(@combatant).to receive(:piloting) { @vehicle }
+          expect(@combatant).to receive(:update).with(piloting: nil)
+          expect(@vehicle).to receive(:update).with(pilot: nil)
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
         
         it "should emit to combat" do
-          @combatant.stub(:piloting) { @vehicle }
-          FS3Combat.should_receive(:emit_to_combat).with(@combat, "fs3combat.disembarks_vehicle")
+          allow(@combatant).to receive(:piloting) { @vehicle }
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat, "fs3combat.disembarks_vehicle")
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
       
         it "should remove a passenger" do
-          @combatant.stub(:piloting) { nil }
-          @combatant.stub(:riding_in) { @vehicle }
-          @combatant.should_receive(:update).with(riding_in: nil)
+          allow(@combatant).to receive(:piloting) { nil }
+          allow(@combatant).to receive(:riding_in) { @vehicle }
+          expect(@combatant).to receive(:update).with(riding_in: nil)
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
         
         it "should reset gear" do
-          @combatant.stub(:piloting) { @vehicle }
-          FS3Combat.should_receive(:set_default_gear).with(nil, @combatant, "soldier")
+          allow(@combatant).to receive(:piloting) { @vehicle }
+          expect(FS3Combat).to receive(:set_default_gear).with(nil, @combatant, "soldier")
           FS3Combat.leave_vehicle(@combat, @combatant)
         end
         

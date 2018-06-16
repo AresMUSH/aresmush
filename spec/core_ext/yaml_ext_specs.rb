@@ -14,15 +14,15 @@ module AresMUSH
       end
       
       it "should read in the contents of the file" do
-        YAML.stub(:load) { @yaml }
-        File.should_receive(:open).with("file.yml") { @io }
+        allow(YAML).to receive(:load) { @yaml }
+        expect(File).to receive(:open).with("file.yml") { @io }
         YamlExtensions.yaml_hash("file.yml")
       end
       
       it "should load the YAML from the file" do
-        File.stub(:open).with("file.yml") { @io }
-        YAML.should_receive(:load).with(@io) { @yaml }
-        YamlExtensions.yaml_hash("file.yml").should eq @yaml
+        allow(File).to receive(:open).with("file.yml") { @io }
+        expect(YAML).to receive(:load).with(@io) { @yaml }
+        expect(YamlExtensions.yaml_hash("file.yml")).to eq @yaml
       end
     end
   end

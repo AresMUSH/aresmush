@@ -10,7 +10,7 @@ module AresMUSH
         
         context "describing self" do
           it "should always let you describe yourself" do
-            Describe.can_describe?(@char, @char).should be true
+            expect(Describe.can_describe?(@char, @char)).to be true
           end
         end
         
@@ -20,13 +20,13 @@ module AresMUSH
           end
           
           it "should let someone with desc-anything power describe any object" do
-            @char.stub(:has_permission?).with("desc_anything") { true }
-            Describe.can_describe?(@char, @target).should be true
+            allow(@char).to receive(:has_permission?).with("desc_anything") { true }
+            expect(Describe.can_describe?(@char, @target)).to be true
           end
 
           it "should not let random people describe any object" do
-            @char.stub(:has_permission?).with("desc_anything") { false }
-            Describe.can_describe?(@char, @target).should be false
+            allow(@char).to receive(:has_permission?).with("desc_anything") { false }
+            expect(Describe.can_describe?(@char, @target)).to be false
           end
         end
         
@@ -36,31 +36,31 @@ module AresMUSH
           end
           
           it "should allow a builder to describe a room" do
-            @char.stub(:has_permission?).with("desc_anything") { false }
-            @char.stub(:has_permission?).with("desc_places") { true }
-            @room.stub(:owned_by?).with(@char) { false }
-            Describe.can_describe?(@char, @room).should be true
+            allow(@char).to receive(:has_permission?).with("desc_anything") { false }
+            allow(@char).to receive(:has_permission?).with("desc_places") { true }
+            allow(@room).to receive(:owned_by?).with(@char) { false }
+            expect(Describe.can_describe?(@char, @room)).to be true
           end
           
           it "should allow someone with desc-anything power to describe a room" do
-            @char.stub(:has_permission?).with("desc_anything") { true }
-            @char.stub(:has_permission?).with("desc_places") { false }
-            @room.stub(:owned_by?).with(@char) { false }
-            Describe.can_describe?(@char, @room).should be true
+            allow(@char).to receive(:has_permission?).with("desc_anything") { true }
+            allow(@char).to receive(:has_permission?).with("desc_places") { false }
+            allow(@room).to receive(:owned_by?).with(@char) { false }
+            expect(Describe.can_describe?(@char, @room)).to be true
           end
           
           it "should allow a room owner to describe a room" do
-            @char.stub(:has_permission?).with("desc_anything") { false }
-            @char.stub(:has_permission?).with("desc_places") { false }
-            @room.stub(:owned_by?).with(@char) { true }
-            Describe.can_describe?(@char, @room).should be true
+            allow(@char).to receive(:has_permission?).with("desc_anything") { false }
+            allow(@char).to receive(:has_permission?).with("desc_places") { false }
+            allow(@room).to receive(:owned_by?).with(@char) { true }
+            expect(Describe.can_describe?(@char, @room)).to be true
           end
           
           it "should not allow someone without permission to describe a room" do
-            @char.stub(:has_permission?).with("desc_anything") { false }
-            @char.stub(:has_permission?).with("desc_places") { false }
-            @room.stub(:owned_by?).with(@char) { false }
-            Describe.can_describe?(@char, @room).should be false
+            allow(@char).to receive(:has_permission?).with("desc_anything") { false }
+            allow(@char).to receive(:has_permission?).with("desc_places") { false }
+            allow(@room).to receive(:owned_by?).with(@char) { false }
+            expect(Describe.can_describe?(@char, @room)).to be false
           end
         end
       end

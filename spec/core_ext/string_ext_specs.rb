@@ -8,132 +8,132 @@ module AresMUSH
 
     describe :first do
       it "returns the first part if there is a separator" do
-        "A:B".first(":").should eq "A"
+        expect("A:B".first(":")).to eq "A"
       end
 
       it "returns the whole string if there is no separator" do
-        "AB-C".first(":").should eq "AB-C"
+        expect("AB-C".first(":")).to eq "AB-C"
       end
 
       it "returns an empty string if the separator is at the front" do
-        ":AB".first(":").should eq ""
+        expect(":AB".first(":")).to eq ""
       end
     end
 
     describe :rest do
       it "returns the first part if there is a separator" do
-        "A:B:C:D".rest(":").should eq "B:C:D"
+        expect("A:B:C:D".rest(":")).to eq "B:C:D"
       end
 
       it "returns empty if there is no separator" do
-        "AB-C".rest(":").should eq ""
+        expect("AB-C".rest(":")).to eq ""
       end
 
       it "returns the rest of the string even if the separator is at the front" do
-        ":AB".rest(":").should eq "AB"
+        expect(":AB".rest(":")).to eq "AB"
       end
 
       it "returns an empty string if the only separator is at the end" do
-        "AB:".rest(":").should eq ""
+        expect("AB:".rest(":")).to eq ""
       end
 
       it "returns a properly joined string an extra seprator is at the end" do
-        "AB:C:".rest(":").should eq "C:"
+        expect("AB:C:".rest(":")).to eq "C:"
       end
     end
 
     describe :titlecase do
       it "should capitalize every word in the title" do
-        "a very long engagement".titlecase.should eq "A Very Long Engagement"
+        expect("a very long engagement".titlecase).to eq "A Very Long Engagement"
       end
     end
 
     describe :titlecase do
       it "should clean up funky spacing and capitalization" do
-        "    a VERY long ENgagEMent    ".titlecase.should eq "A Very Long Engagement"
+        expect("    a VERY long ENgagEMent    ".titlecase).to eq "A Very Long Engagement"
       end
     end
 
     describe :code_gsub do
       it "should replace a code" do
-        "A%rB".code_gsub("%r", "Z").should eq "AZB"
+        expect("A%rB".code_gsub("%r", "Z")).to eq "AZB"
       end
       
        it "should replace multiple instances of a code" do
-          "A%rB%r".code_gsub("%r", "Z").should eq "AZBZ"
+          expect("A%rB%r".code_gsub("%r", "Z")).to eq "AZBZ"
         end
         
       it "should be case-sensitive in its replacements" do
-          "A%R".code_gsub("%r", "Z").should eq "A%R"
+          expect("A%R".code_gsub("%r", "Z")).to eq "A%R"
        end
       
       it "should put in the raw code when preceeded by a single backslash" do
-        "A\\%rB".code_gsub("%r", "Z").should eq "A\\%rB"
+        expect("A\\%rB".code_gsub("%r", "Z")).to eq "A\\%rB"
       end
 
       it "should put in the raw code when preceeded by two backslashes" do
         x = "A\\\\%rB".code_gsub("%r", "Z")
-        x.should eq "A\\\\%rB" 
+        expect(x).to eq "A\\\\%rB" 
       end
 
       it "should put in the raw code when preceeded by two backslashes" do
-        "A\\\\%rB".code_gsub("%r", "Z").should eq "A\\\\%rB" 
+        expect("A\\\\%rB".code_gsub("%r", "Z")).to eq "A\\\\%rB" 
       end
     end
     
     describe :truncate do
       it "should truncate a string that is too long" do
-        "FOOBARBAZ".truncate(4).should eq "FOOB"
+        expect("FOOBARBAZ".truncate(4)).to eq "FOOB"
       end
       
       it "should do nothing to a string that is not too long" do
-        "FOOBARBAZ".truncate(10).should eq "FOOBARBAZ"
+        expect("FOOBARBAZ".truncate(10)).to eq "FOOBARBAZ"
       end
       
       it "should return empty if the string is empty" do
-        "".truncate(10).should eq ""
+        expect("".truncate(10)).to eq ""
       end      
     end
     
     describe :underscore do
       it "should translate CamelCase into undescores" do
-        "CamelCase".underscore.should eq "camel_case"
+        expect("CamelCase".underscore).to eq "camel_case"
       end
     end
     
     describe :is_integer? do
       it "should return true for a number" do
-        "1".is_integer?.should be true
+        expect("1".is_integer?).to be true
       end
       
       it "should return true for a multi-digit number" do
-        "123".is_integer?.should be true
+        expect("123".is_integer?).to be true
       end
       
       it "should return false for not a number" do
-        "x".is_integer?.should be false
+        expect("x".is_integer?).to be false
       end
       
       it "should return false for empty string" do
-        "".is_integer?.should be false
+        expect("".is_integer?).to be false
       end
       
       it "should return false for a float" do
-        "1.2".is_integer?.should be false
+        expect("1.2".is_integer?).to be false
       end
 
       it "should return false for a number mixed with string" do
-        "12ABC".is_integer?.should be false
+        expect("12ABC".is_integer?).to be false
       end
     end
     
     describe :repeat do
       it "should repeat the string x times" do
-        "x".repeat(5).should eq "xxxxx"
+        expect("x".repeat(5)).to eq "xxxxx"
       end
       
       it "should work with multiple chars" do
-        "ab".repeat(3).should eq "ababab"
+        expect("ab".repeat(3)).to eq "ababab"
       end
     end
     

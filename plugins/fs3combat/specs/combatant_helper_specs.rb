@@ -4,202 +4,202 @@ module AresMUSH
       before do
         @combatant = double
         @char = double
-        @combatant.stub(:log)
-        @combatant.stub(:name) { "Trooper" }
-        @combatant.stub(:character) { @char }
-        SpecHelpers.stub_translate_for_testing
+        allow(@combatant).to receive(:log)
+        allow(@combatant).to receive(:name) { "Trooper" }
+        allow(@combatant).to receive(:character) { @char }
+        stub_translate_for_testing
       end
       
       
       describe :roll_attack do
         before do
-          FS3Combat.stub(:weapon_stat).with("Knife", "skill") { "Knives" }
-          FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 0 }
-          @combatant.stub(:total_damage_mod) { 0 }
-          @combatant.stub(:attack_stance_mod) { 0 }
-          @combatant.stub(:stress) { 0 }
-          @combatant.stub(:distraction) { 0 }
-          @combatant.stub(:attack_mod) { 0 }
-          @combatant.stub(:is_aiming?) { false }
-          @combatant.stub(:weapon) { "Knife" }
-          @combatant.stub(:luck)
+          allow(FS3Combat).to receive(:weapon_stat).with("Knife", "skill") { "Knives" }
+          allow(FS3Combat).to receive(:weapon_stat).with("Knife", "accuracy") { 0 }
+          allow(@combatant).to receive(:total_damage_mod) { 0 }
+          allow(@combatant).to receive(:attack_stance_mod) { 0 }
+          allow(@combatant).to receive(:stress) { 0 }
+          allow(@combatant).to receive(:distraction) { 0 }
+          allow(@combatant).to receive(:attack_mod) { 0 }
+          allow(@combatant).to receive(:is_aiming?) { false }
+          allow(@combatant).to receive(:weapon) { "Knife" }
+          allow(@combatant).to receive(:luck)
           @target = double
-          @target.stub(:mount_type) { nil }
-          @combatant.stub(:mount_type) { nil }
+          allow(@target).to receive(:mount_type) { nil }
+          allow(@combatant).to receive(:mount_type) { nil }
         end
         
         it "should roll the weapon attack stat" do
-          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          expect(@combatant).to receive(:roll_ability).with("Knives", 0)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for aim modifier if aimed at the same target" do
-          @combatant.stub(:is_aiming?) { true }
-          @combatant.stub(:aim_target) { @target }
+          allow(@combatant).to receive(:is_aiming?) { true }
+          allow(@combatant).to receive(:aim_target) { @target }
           action = double
-          action.stub(:target) { @target }
-          @combatant.stub(:action) { action }
+          allow(action).to receive(:target) { @target }
+          allow(@combatant).to receive(:action) { action }
           
-          @combatant.should_receive(:roll_ability).with("Knives", 3)
+          expect(@combatant).to receive(:roll_ability).with("Knives", 3)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should not apply aim modifier if aimed at a different target" do
-          @combatant.stub(:is_aiming?) { true }
-          @combatant.stub(:aim_target) { @target }
+          allow(@combatant).to receive(:is_aiming?) { true }
+          allow(@combatant).to receive(:aim_target) { @target }
           action = double
-          action.stub(:target) { double }
-          @combatant.stub(:action) { action }
+          allow(action).to receive(:target) { double }
+          allow(@combatant).to receive(:action) { action }
           
-          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          expect(@combatant).to receive(:roll_ability).with("Knives", 0)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         
         it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { -1 }
-          @combatant.should_receive(:roll_ability).with("Knives", -1)
+          allow(@combatant).to receive(:total_damage_mod) { -1 }
+          expect(@combatant).to receive(:roll_ability).with("Knives", -1)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for distract modifiers" do
-          @combatant.stub(:distraction) { 2 }
-          @combatant.should_receive(:roll_ability).with("Knives", -2)
+          allow(@combatant).to receive(:distraction) { 2 }
+          expect(@combatant).to receive(:roll_ability).with("Knives", -2)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for stance modifiers" do
-          @combatant.stub(:attack_stance_mod) { 1 }
-          @combatant.should_receive(:roll_ability).with("Knives", 1)
+          allow(@combatant).to receive(:attack_stance_mod) { 1 }
+          expect(@combatant).to receive(:roll_ability).with("Knives", 1)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should give a bonus when mounted vs unmounted target" do
-          @target.stub(:mount_type) { nil }
-          @combatant.stub(:mount_type) { "Horse" }
-          FS3Combat.stub(:mount_stat).with("Horse", "mod_vs_unmounted") { 2 } 
-          @combatant.should_receive(:roll_ability).with("Knives", 2)
+          allow(@target).to receive(:mount_type) { nil }
+          allow(@combatant).to receive(:mount_type) { "Horse" }
+          allow(FS3Combat).to receive(:mount_stat).with("Horse", "mod_vs_unmounted") { 2 } 
+          expect(@combatant).to receive(:roll_ability).with("Knives", 2)
           FS3Combat.roll_attack(@combatant, @target)
         end
 
         it "should not give a bonus when mounted vs mounted target" do
-          @target.stub(:mount_type) { "Horse" }
-          @combatant.stub(:mount_type) { "War Horse" }
-          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          allow(@target).to receive(:mount_type) { "Horse" }
+          allow(@combatant).to receive(:mount_type) { "War Horse" }
+          expect(@combatant).to receive(:roll_ability).with("Knives", 0)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should give penalty when unmounted vs mounted target" do
-          @target.stub(:mount_type) { "Horse" }
-          FS3Combat.stub(:mount_stat).with("Horse", "mod_vs_unmounted") { 2 } 
-          @combatant.stub(:mount_type) { nil }
-          @combatant.should_receive(:roll_ability).with("Knives", -2)
+          allow(@target).to receive(:mount_type) { "Horse" }
+          allow(FS3Combat).to receive(:mount_stat).with("Horse", "mod_vs_unmounted") { 2 } 
+          allow(@combatant).to receive(:mount_type) { nil }
+          expect(@combatant).to receive(:roll_ability).with("Knives", -2)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for accuracy modifiers" do
-          FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
-          @combatant.should_receive(:roll_ability).with("Knives", 2)
+          allow(FS3Combat).to receive(:weapon_stat).with("Knife", "accuracy") { 2 }
+          expect(@combatant).to receive(:roll_ability).with("Knives", 2)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
         it "should account for stress modifiers" do
-          @combatant.stub(:stress) { 1 }
-          @combatant.should_receive(:roll_ability).with("Knives", -1)
+          allow(@combatant).to receive(:stress) { 1 }
+          expect(@combatant).to receive(:roll_ability).with("Knives", -1)
           FS3Combat.roll_attack(@combatant, @target)
         end
 
         it "should account for luck spent on attack" do
-          @combatant.stub(:luck) { "Attack" }
-          @combatant.should_receive(:roll_ability).with("Knives", 3)
+          allow(@combatant).to receive(:luck) { "Attack" }
+          expect(@combatant).to receive(:roll_ability).with("Knives", 3)
           FS3Combat.roll_attack(@combatant, @target)
         end
 
         it "should ignore luck spent on something else" do
-          @combatant.stub(:luck) { "Defense" }
-          @combatant.should_receive(:roll_ability).with("Knives", 0)
+          allow(@combatant).to receive(:luck) { "Defense" }
+          expect(@combatant).to receive(:roll_ability).with("Knives", 0)
           FS3Combat.roll_attack(@combatant, @target)
         end
                 
         it "should account for passed-in modifiers" do
-          @combatant.should_receive(:roll_ability).with("Knives", -2)
+          expect(@combatant).to receive(:roll_ability).with("Knives", -2)
           FS3Combat.roll_attack(@combatant, @target, -2)
         end
         
         it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { -2 }
-          @combatant.stub(:attack_stance_mod) { 1 }
-          FS3Combat.stub(:weapon_stat).with("Knife", "accuracy") { 2 }
-          @combatant.should_receive(:roll_ability).with("Knives", 2)
+          allow(@combatant).to receive(:total_damage_mod) { -2 }
+          allow(@combatant).to receive(:attack_stance_mod) { 1 }
+          allow(FS3Combat).to receive(:weapon_stat).with("Knife", "accuracy") { 2 }
+          expect(@combatant).to receive(:roll_ability).with("Knives", 2)
           FS3Combat.roll_attack(@combatant, @target, 1)
         end
       end
       
       describe :roll_defense do
         before do
-          @combatant.stub(:total_damage_mod) { 0 }
-          @combatant.stub(:defense_stance_mod) { 0 }
-          @combatant.stub(:defense_mod) { 0 }
-          @combatant.stub(:distraction) { 0 }
-          @combatant.stub(:luck)
-          @combatant.stub(:armor) { "armor" }
-          FS3Combat.stub(:weapon_defense_skill) { "Reaction" }
-          FS3Combat.stub(:vehicle_dodge_mod) { 0 }
-          FS3Combat.stub(:armor_stat) { 0 }
+          allow(@combatant).to receive(:total_damage_mod) { 0 }
+          allow(@combatant).to receive(:defense_stance_mod) { 0 }
+          allow(@combatant).to receive(:defense_mod) { 0 }
+          allow(@combatant).to receive(:distraction) { 0 }
+          allow(@combatant).to receive(:luck)
+          allow(@combatant).to receive(:armor) { "armor" }
+          allow(FS3Combat).to receive(:weapon_defense_skill) { "Reaction" }
+          allow(FS3Combat).to receive(:vehicle_dodge_mod) { 0 }
+          allow(FS3Combat).to receive(:armor_stat) { 0 }
         end
         
         it "should roll the weapon defense stat" do
-          FS3Combat.should_receive(:weapon_defense_skill).with(@combatant, "Knife") { "Reaction" }
-          @combatant.should_receive(:roll_ability).with("Reaction", 0)
+          expect(FS3Combat).to receive(:weapon_defense_skill).with(@combatant, "Knife") { "Reaction" }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", 0)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
         it "should account for wound modifiers" do
-          @combatant.stub(:total_damage_mod) { -1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", -1)
+          allow(@combatant).to receive(:total_damage_mod) { -1 }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", -1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
         it "should account for distract modifiers" do
-          @combatant.stub(:distraction) { 2 }
-          @combatant.should_receive(:roll_ability).with("Reaction", -2)
+          allow(@combatant).to receive(:distraction) { 2 }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", -2)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
                 
         it "should account for stance modifiers" do
-          @combatant.stub(:defense_stance_mod) { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", 1)
+          allow(@combatant).to receive(:defense_stance_mod) { 1 }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", 1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
         it "should account for vehicle dodge modifiers" do
-          FS3Combat.should_receive(:vehicle_dodge_mod).with(@combatant) { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", 1)
+          expect(FS3Combat).to receive(:vehicle_dodge_mod).with(@combatant) { 1 }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", 1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
         it "should account for luck spent on defense" do
-          @combatant.stub(:luck) { "Defense" }
-          @combatant.should_receive(:roll_ability).with("Reaction", 3)
+          allow(@combatant).to receive(:luck) { "Defense" }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", 3)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
 
         it "should ignore luck spent on something else" do
-          @combatant.stub(:luck) { "Attack" }
-          @combatant.should_receive(:roll_ability).with("Reaction", 0)
+          allow(@combatant).to receive(:luck) { "Attack" }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", 0)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
 
         it "should account for armor defense stat" do
-          FS3Combat.should_receive(:armor_stat).with("armor", "defense") { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", 1)
+          expect(FS3Combat).to receive(:armor_stat).with("armor", "defense") { 1 }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", 1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
         it "should account for multiple modifiers" do
-          @combatant.stub(:total_damage_mod) { -2 }
-          @combatant.stub(:defense_stance_mod) { 1 }
-          @combatant.should_receive(:roll_ability).with("Reaction", -1)
+          allow(@combatant).to receive(:total_damage_mod) { -2 }
+          allow(@combatant).to receive(:defense_stance_mod) { 1 }
+          expect(@combatant).to receive(:roll_ability).with("Reaction", -1)
           FS3Combat.roll_defense(@combatant, "Knife")
         end
       end
@@ -208,48 +208,48 @@ module AresMUSH
       describe :weapon_defense_skill do
         describe "soldiers" do
           before do
-            FS3Combat.stub(:weapon_stat).with("Sword", "weapon_type") { "Melee" }
-            FS3Combat.stub(:weapon_stat).with("Sword", "skill") { "Swords" }
-            FS3Combat.stub(:weapon_stat).with("Knife", "weapon_type") { "Melee" }
-            FS3Combat.stub(:weapon_stat).with("Knife", "skill") { "Knives" }
-            FS3Combat.stub(:weapon_stat).with("Pistol", "weapon_type") { "Ranged" }
-            FS3Combat.stub(:weapon_stat).with("Pistol", "skill") { "Firearms" }
-            FS3Combat.stub(:combatant_type_stat).with("Soldier", "defense_skill") { "Reaction" }
-            @combatant.stub(:combatant_type) { "Soldier" }
-            @combatant.stub(:is_in_vehicle?) { false }
+            allow(FS3Combat).to receive(:weapon_stat).with("Sword", "weapon_type") { "Melee" }
+            allow(FS3Combat).to receive(:weapon_stat).with("Sword", "skill") { "Swords" }
+            allow(FS3Combat).to receive(:weapon_stat).with("Knife", "weapon_type") { "Melee" }
+            allow(FS3Combat).to receive(:weapon_stat).with("Knife", "skill") { "Knives" }
+            allow(FS3Combat).to receive(:weapon_stat).with("Pistol", "weapon_type") { "Ranged" }
+            allow(FS3Combat).to receive(:weapon_stat).with("Pistol", "skill") { "Firearms" }
+            allow(FS3Combat).to receive(:combatant_type_stat).with("Soldier", "defense_skill") { "Reaction" }
+            allow(@combatant).to receive(:combatant_type) { "Soldier" }
+            allow(@combatant).to receive(:is_in_vehicle?) { false }
           end
         
           it "should use defender melee skill for melee vs melee" do
-            @combatant.stub(:weapon) { "Knife" }
-            FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Knives"
+            allow(@combatant).to receive(:weapon) { "Knife" }
+            expect(FS3Combat.weapon_defense_skill(@combatant, "Sword")).to eq "Knives"
           end
         
           it "should use defender type default for melee vs ranged" do
-            @combatant.stub(:weapon) { "Pistol" }
-            FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Reaction"
+            allow(@combatant).to receive(:weapon) { "Pistol" }
+            expect(FS3Combat.weapon_defense_skill(@combatant, "Sword")).to eq "Reaction"
           end
           
           it "should use defender type default for ranged vs melee" do
-            @combatant.stub(:weapon) { "Knife" }
-            FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Reaction"
+            allow(@combatant).to receive(:weapon) { "Knife" }
+            expect(FS3Combat.weapon_defense_skill(@combatant, "Pistol")).to eq "Reaction"
           end
           
           
           it "should use the global default if no defender type specified" do
-            @combatant.stub(:combatant_type) { "NoDefense" }
-            FS3Combat.stub(:combatant_type_stat).with("NoDefense", "defense_skill") { nil }
-            Global.stub(:read_config).with("fs3combat", "default_defense_skill") { "Other" }
-            @combatant.stub(:weapon) { "Pistol" }
-            FS3Combat.weapon_defense_skill(@combatant, "Sword").should eq "Other"
+            allow(@combatant).to receive(:combatant_type) { "NoDefense" }
+            allow(FS3Combat).to receive(:combatant_type_stat).with("NoDefense", "defense_skill") { nil }
+            allow(Global).to receive(:read_config).with("fs3combat", "default_defense_skill") { "Other" }
+            allow(@combatant).to receive(:weapon) { "Pistol" }
+            expect(FS3Combat.weapon_defense_skill(@combatant, "Sword")).to eq "Other"
           end
           
           it "should use piloting skill if in a vehicle" do
             vehicle = double
-            @combatant.stub(:is_in_vehicle?) { true }
-            @combatant.stub(:vehicle) { vehicle }
-            vehicle.stub(:vehicle_type) { "Viper" }
-            FS3Combat.stub(:vehicle_stat).with("Viper", "pilot_skill") { "Piloting" }
-            FS3Combat.weapon_defense_skill(@combatant, "Pistol").should eq "Piloting"
+            allow(@combatant).to receive(:is_in_vehicle?) { true }
+            allow(@combatant).to receive(:vehicle) { vehicle }
+            allow(vehicle).to receive(:vehicle_type) { "Viper" }
+            allow(FS3Combat).to receive(:vehicle_stat).with("Viper", "pilot_skill") { "Piloting" }
+            expect(FS3Combat.weapon_defense_skill(@combatant, "Pistol")).to eq "Piloting"
           end
         end            
         
@@ -258,219 +258,219 @@ module AresMUSH
       describe :hitloc_chart do
         before do 
           @vehicle = double
-          @combatant.stub(:combatant_type) { "soldier" }
-          @combatant.stub(:vehicle) { nil }
+          allow(@combatant).to receive(:combatant_type) { "soldier" }
+          allow(@combatant).to receive(:vehicle) { nil }
           @hitloc = { "areas" => "x" }
         end
           
         it "should use a soldier's hitloc chart" do
-          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
-          FS3Combat.should_receive(:hitloc_chart_for_type).with("human") { @hitloc }
-          FS3Combat.hitloc_chart(@combatant).should eq @hitloc
+          expect(FS3Combat).to receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
+          expect(FS3Combat).to receive(:hitloc_chart_for_type).with("human") { @hitloc }
+          expect(FS3Combat.hitloc_chart(@combatant)).to eq @hitloc
         end
         
         it "should use a pilot's vehicle's hitloc chart if not a crew hit" do
-          @combatant.stub(:vehicle) { @vehicle }
-          @vehicle.stub(:hitloc_type) { "fighter" }
-          FS3Combat.should_receive(:hitloc_chart_for_type).with("fighter") { @hitloc }
-          FS3Combat.hitloc_chart(@combatant).should eq @hitloc
+          allow(@combatant).to receive(:vehicle) { @vehicle }
+          allow(@vehicle).to receive(:hitloc_type) { "fighter" }
+          expect(FS3Combat).to receive(:hitloc_chart_for_type).with("fighter") { @hitloc }
+          expect(FS3Combat.hitloc_chart(@combatant)).to eq @hitloc
         end
         
         it "should use the pilot's hitloc chart if a crew hit" do
-          @combatant.stub(:vehicle) { @vehicle }
-          FS3Combat.should_receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
-          FS3Combat.should_receive(:hitloc_chart_for_type).with("human") { @hitloc }
-          FS3Combat.hitloc_chart(@combatant, true).should eq @hitloc
+          allow(@combatant).to receive(:vehicle) { @vehicle }
+          expect(FS3Combat).to receive(:combatant_type_stat).with("soldier", "hitloc") { "human" }
+          expect(FS3Combat).to receive(:hitloc_chart_for_type).with("human") { @hitloc }
+          expect(FS3Combat.hitloc_chart(@combatant, true)).to eq @hitloc
         end
       end
       
       describe :hitloc_areas do
         it "should extract areas from the hitloc chart" do
-          FS3Combat.should_receive(:hitloc_chart).with(@combatant, true) { { "areas" => "x" } }
-          FS3Combat.hitloc_areas(@combatant, true).should eq "x"
+          expect(FS3Combat).to receive(:hitloc_chart).with(@combatant, true) { { "areas" => "x" } }
+          expect(FS3Combat.hitloc_areas(@combatant, true)).to eq "x"
         end
       end
     
       describe :hitloc_severity do
         before do 
-          FS3Combat.stub(:hitloc_chart).with(@combatant, false) { 
+          allow(FS3Combat).to receive(:hitloc_chart).with(@combatant, false) { 
             { "vital_areas" => [ "Abdomen" ], 
               "critical_areas" => ["head"] }}
             
-          @combatant.stub(:combatant_type) { "soldier"}
+          allow(@combatant).to receive(:combatant_type) { "soldier"}
         end
         
         it "should determine severity for a critical area" do
-          FS3Combat.hitloc_severity(@combatant, "Head").should eq "Critical"
+          expect(FS3Combat.hitloc_severity(@combatant, "Head")).to eq "Critical"
         end
 
         it "should determine severity for a vital area" do
-          FS3Combat.hitloc_severity(@combatant, "ABDOMEN").should eq "Vital"
+          expect(FS3Combat.hitloc_severity(@combatant, "ABDOMEN")).to eq "Vital"
         end
 
         it "should determine severity for a regular area" do
-          FS3Combat.hitloc_severity(@combatant, "Arm").should eq "Normal"
+          expect(FS3Combat.hitloc_severity(@combatant, "Arm")).to eq "Normal"
         end
       end
       
       describe :determine_hitloc do 
         before do 
-          FS3Combat.stub(:hitloc_areas) { {
+          allow(FS3Combat).to receive(:hitloc_areas) { {
             "Chest" => [ "A", "B", "C" ],
             "Head" => [ "D", "E", "F", "G" ]
           }}
         end
         
         it "should work with random lowest value" do
-          FS3Combat.should_receive(:rand).with(3) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 0).should eq "A"
+          expect(FS3Combat).to receive(:rand).with(3) { 0 }
+          expect(FS3Combat.determine_hitloc(@combatant, 0)).to eq "A"
         end
         
         it "should work with random highest value" do
-          FS3Combat.should_receive(:rand).with(3) { 2 }
-          FS3Combat.determine_hitloc(@combatant, 0).should eq "C"
+          expect(FS3Combat).to receive(:rand).with(3) { 2 }
+          expect(FS3Combat.determine_hitloc(@combatant, 0)).to eq "C"
         end
         
         it "should add in successes with lowest random value" do
-          FS3Combat.should_receive(:rand).with(3) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 1).should eq "B"
+          expect(FS3Combat).to receive(:rand).with(3) { 0 }
+          expect(FS3Combat.determine_hitloc(@combatant, 1)).to eq "B"
         end
         
         it "should add in successes with highest random value" do
-          FS3Combat.should_receive(:rand).with(3) { 2 }
-          FS3Combat.determine_hitloc(@combatant, 1).should eq "C"
+          expect(FS3Combat).to receive(:rand).with(3) { 2 }
+          expect(FS3Combat.determine_hitloc(@combatant, 1)).to eq "C"
         end
         
         it "should work with lowest value and negative modifier" do
-          FS3Combat.should_receive(:rand).with(3) { 0 }
-          FS3Combat.determine_hitloc(@combatant, -2).should eq "A"
+          expect(FS3Combat).to receive(:rand).with(3) { 0 }
+          expect(FS3Combat.determine_hitloc(@combatant, -2)).to eq "A"
         end
         
         it "should return the exact hit location if called shot and net >= 3" do
-          FS3Combat.determine_hitloc(@combatant, 3, "Head").should eq "Head"
+          expect(FS3Combat.determine_hitloc(@combatant, 3, "Head")).to eq "Head"
         end
         
         it "should use the called shot hitloc chart if called shot and net < 3" do
-          FS3Combat.should_receive(:rand).with(4) { 0 }
-          FS3Combat.determine_hitloc(@combatant, 2, "Head").should eq "F"
+          expect(FS3Combat).to receive(:rand).with(4) { 0 }
+          expect(FS3Combat.determine_hitloc(@combatant, 2, "Head")).to eq "F"
         end
       end
       
       describe :roll_initiative do
         before do
-          @combatant.stub(:roll_ability) { 2 }
-          @combatant.stub(:total_damage_mod) { 0 } 
-          @combatant.stub(:luck)
-          @combatant.stub(:action_klass) { "" }
-          @combatant.stub(:weapon) { "" }
-          FS3Combat.stub(:weapon_stat) { 0 }
+          allow(@combatant).to receive(:roll_ability) { 2 }
+          allow(@combatant).to receive(:total_damage_mod) { 0 } 
+          allow(@combatant).to receive(:luck)
+          allow(@combatant).to receive(:action_klass) { "" }
+          allow(@combatant).to receive(:weapon) { "" }
+          allow(FS3Combat).to receive(:weapon_stat) { 0 }
         end
         
         it "should roll the init ability" do
-          @combatant.should_receive(:roll_ability).with("init", 0) { 3 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+          expect(@combatant).to receive(:roll_ability).with("init", 0) { 3 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 3
         end
         
         it "should subtract damage modifiers" do
-          @combatant.should_receive(:roll_ability).with("init", -1) { 3 }
-          @combatant.stub(:total_damage_mod) { -1 } 
-          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+          expect(@combatant).to receive(:roll_ability).with("init", -1) { 3 }
+          allow(@combatant).to receive(:total_damage_mod) { -1 } 
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 3
         end
         
         it "should account for luck spent on initiative" do
-          @combatant.stub(:luck) {"Initiative"}
-          @combatant.should_receive(:roll_ability).with("init", 3) { 3 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+          allow(@combatant).to receive(:luck) {"Initiative"}
+          expect(@combatant).to receive(:roll_ability).with("init", 3) { 3 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 3
         end
 
         it "should ignore luck spent on something else" do
-          @combatant.stub(:luck) {"Attack"}
-          @combatant.should_receive(:roll_ability).with("init", 0) { 1 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 1
+          allow(@combatant).to receive(:luck) {"Attack"}
+          expect(@combatant).to receive(:roll_ability).with("init", 0) { 1 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 1
         end
         
         it "should add in a weapon modifier" do 
-          @combatant.stub(:weapon) { "Rapier" }
-          FS3Combat.should_receive(:weapon_stat).with("Rapier", "init_mod") { 2 }
-          @combatant.should_receive(:roll_ability).with("init", 2) { 3 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 3
+          allow(@combatant).to receive(:weapon) { "Rapier" }
+          expect(FS3Combat).to receive(:weapon_stat).with("Rapier", "init_mod") { 2 }
+          expect(@combatant).to receive(:roll_ability).with("init", 2) { 3 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 3
         end
         
         it "should default to 0 for weapon mod" do
-          @combatant.stub(:weapon) { "Rapier" }
-          FS3Combat.should_receive(:weapon_stat).with("Rapier", "init_mod") { nil }
-          @combatant.should_receive(:roll_ability).with("init", 0) { 1 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 1
+          allow(@combatant).to receive(:weapon) { "Rapier" }
+          expect(FS3Combat).to receive(:weapon_stat).with("Rapier", "init_mod") { nil }
+          expect(@combatant).to receive(:roll_ability).with("init", 0) { 1 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 1
         end
 
         it "should apply mod for subdue action" do
-          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::SubdueAction" }
-          @combatant.should_receive(:roll_ability).with("init", 3) { 4 }                  
-          FS3Combat.roll_initiative(@combatant, "init").should eq 4
+          allow(@combatant).to receive(:action_klass) { "AresMUSH::FS3Combat::SubdueAction" }
+          expect(@combatant).to receive(:roll_ability).with("init", 3) { 4 }                  
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 4
         end
                 
         it "should apply mod for suppress action" do
-          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::SuppressAction" }
-          @combatant.should_receive(:roll_ability).with("init", 3) { 4 }                  
-          FS3Combat.roll_initiative(@combatant, "init").should eq 4
+          allow(@combatant).to receive(:action_klass) { "AresMUSH::FS3Combat::SuppressAction" }
+          expect(@combatant).to receive(:roll_ability).with("init", 3) { 4 }                  
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 4
         end
         
         it "should apply mod for distract action" do
-          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::DistractAction" }
-          @combatant.should_receive(:roll_ability).with("init", 3) { 4 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 4
+          allow(@combatant).to receive(:action_klass) { "AresMUSH::FS3Combat::DistractAction" }
+          expect(@combatant).to receive(:roll_ability).with("init", 3) { 4 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 4
         end
         
         it "should not apply mod for regular actions" do
-          @combatant.stub(:action_klass) { "AresMUSH::FS3Combat::AttackAction" }
-          @combatant.should_receive(:roll_ability).with("init", 0) { 2 }
-          FS3Combat.roll_initiative(@combatant, "init").should eq 2
+          allow(@combatant).to receive(:action_klass) { "AresMUSH::FS3Combat::AttackAction" }
+          expect(@combatant).to receive(:roll_ability).with("init", 0) { 2 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 2
         end
       end
       
       describe :check_ammo do
         before do
-          @combatant.stub(:max_ammo) { 10 }
+          allow(@combatant).to receive(:max_ammo) { 10 }
         end
         
         it "should return true if the weapon doesn't use ammo" do
-          @combatant.stub(:max_ammo) { 0 }
-          FS3Combat.check_ammo(@combatant, 22).should be true          
+          allow(@combatant).to receive(:max_ammo) { 0 }
+          expect(FS3Combat.check_ammo(@combatant, 22)).to be true          
         end
          
         it "should return true if enough bullets" do
-          @combatant.stub(:ammo) { 10 }
-          FS3Combat.check_ammo(@combatant, 2).should be true
+          allow(@combatant).to receive(:ammo) { 10 }
+          expect(FS3Combat.check_ammo(@combatant, 2)).to be true
         end
         
         it "should return false if not enough bullets" do
-          @combatant.stub(:ammo) { 10 }
-          FS3Combat.check_ammo(@combatant, 22).should be false
+          allow(@combatant).to receive(:ammo) { 10 }
+          expect(FS3Combat.check_ammo(@combatant, 22)).to be false
         end
       end
         
       
       describe :update_ammo do
         before do
-          @combatant.stub(:max_ammo) { 10 }
+          allow(@combatant).to receive(:max_ammo) { 10 }
         end
           
         it "should not do anything if the weapon doesn't use ammo" do
-          @combatant.stub(:max_ammo) { 0 }
-          @combatant.should_not_receive(:update)
-          FS3Combat.update_ammo(@combatant, 1).should be_nil
+          allow(@combatant).to receive(:max_ammo) { 0 }
+          expect(@combatant).to_not receive(:update)
+          expect(FS3Combat.update_ammo(@combatant, 1)).to be_nil
         end
       
         it "should adjust ammo by the number of bullets" do
-          @combatant.stub(:ammo) { 15 }
-          @combatant.should_receive(:update).with(ammo: 12)
-          FS3Combat.update_ammo(@combatant, 3).should be_nil
+          allow(@combatant).to receive(:ammo) { 15 }
+          expect(@combatant).to receive(:update).with(ammo: 12)
+          expect(FS3Combat.update_ammo(@combatant, 3)).to be_nil
         end
       
         it "should warn if out of ammo" do
-          @combatant.stub(:ammo) { 4 }
-          @combatant.should_receive(:update).with(ammo: 0)
-          FS3Combat.update_ammo(@combatant, 4).should eq "fs3combat.weapon_clicks_empty"
+          allow(@combatant).to receive(:ammo) { 4 }
+          expect(@combatant).to receive(:update).with(ammo: 0)
+          expect(FS3Combat.update_ammo(@combatant, 4)).to eq "fs3combat.weapon_clicks_empty"
         end
       end
     end

@@ -7,55 +7,55 @@ module AresMUSH
   describe Locale do
     before do
       @root_path = Dir.pwd
-      AresMUSH.stub(:root_path) { @root_path }
+      allow(AresMUSH).to receive(:root_path) { @root_path }
       @locale = Locale.new
     end
     
     describe :locale_path do
       it "should be the game dir plus the locale dir" do
-        Locale.locale_path.should eq File.join(@root_path, "engine", "locales")
+        expect(Locale.locale_path).to eq File.join(@root_path, "engine", "locales")
       end
     end
 
     describe :locale do
       it "should return the I18 locale" do
-        I18n.stub(:locale) { 'hu' }
-        @locale.locale.should eq 'hu'
+        allow(I18n).to receive(:locale) { 'hu' }
+        expect(@locale.locale).to eq 'hu'
       end
     end
     
     describe :default_locale do
       it "should return the I18 default locale" do
-        I18n.stub(:default_locale) { 'hu' }
-        @locale.default_locale.should eq 'hu'
+        allow(I18n).to receive(:default_locale) { 'hu' }
+        expect(@locale.default_locale).to eq 'hu'
       end
     end
     
     describe :setup do
       before do
-        Global.stub(:read_config).with("locale", "locale") { "de" } 
-        Global.stub(:read_config).with("locale", "default_locale") { "en" } 
-        I18n.stub(:locale=)
-        I18n.stub(:default_locale=)
+        allow(Global).to receive(:read_config).with("locale", "locale") { "de" } 
+        allow(Global).to receive(:read_config).with("locale", "default_locale") { "en" } 
+        allow(I18n).to receive(:locale=)
+        allow(I18n).to receive(:default_locale=)
       end
 
       it "should trigger a load" do
-        I18n.should_receive(:reload!)
+        expect(I18n).to receive(:reload!)
         @locale.setup
       end
       
       it "should set the locale from the config file" do
-        I18n.should_receive(:locale=).with("de")
+        expect(I18n).to receive(:locale=).with("de")
         @locale.setup
       end
       
       it "should set the fallback locale from the config file" do
-        I18n.should_receive(:default_locale=).with("en")
+        expect(I18n).to receive(:default_locale=).with("en")
         @locale.setup
       end   
       
       it "should extend the I18n library with the fallback code" do
-        I18n::Backend::Simple.should_receive(:send).with(:include, I18n::Backend::Fallbacks)
+        expect(I18n::Backend::Simple).to receive(:send).with(:include, I18n::Backend::Fallbacks)
         @locale.setup
       end
       
@@ -63,63 +63,63 @@ module AresMUSH
     
     describe :t do
       it "should return the backend's translation" do
-        I18n.should_receive(:t).with('hello world') { "Hello World!" }
-        t('hello world').should eq "Hello World!"
+        expect(I18n).to receive(:t).with('hello world') { "Hello World!" }
+        expect(t('hello world')).to eq "Hello World!"
       end
       
       it "should pass along variables in the string" do
         args = { :arg => "the arg" }
-        I18n.should_receive(:t).with('hello arg', args) { "Hello World with the arg!" }
+        expect(I18n).to receive(:t).with('hello arg', args) { "Hello World with the arg!" }
         t('hello arg', args )
       end      
     end
     
     describe :l do
       it "should replace . with the number format separator" do
-        I18n.should_receive(:t).with('number.format.separator') { "," }
-        l("100.3").should eq "100,3"  
+        expect(I18n).to receive(:t).with('number.format.separator') { "," }
+        expect(l("100.3")).to eq "100,3"  
       end
       
       it "should return the I18n localization of a date" do
         date = Date.new
-        I18n.should_receive(:l).with(date, {}) { "abc" }
-        l(date).should eq "abc"
+        expect(I18n).to receive(:l).with(date, {}) { "abc" }
+        expect(l(date)).to eq "abc"
       end
       
       it "should return the I18n localization of a time" do
         time = Time.new
-        I18n.should_receive(:l).with(time, {}) { "abc" }
-        l(time).should eq "abc"
+        expect(I18n).to receive(:l).with(time, {}) { "abc" }
+        expect(l(time)).to eq "abc"
       end
     end
     
     describe :delocalize do
      it "should delocalize a number" do
-        I18n.should_receive(:t).with('number.format.separator') { "," }
-        @locale.delocalize("100,23").should eq "100.23"
+        expect(I18n).to receive(:t).with('number.format.separator') { "," }
+        expect(@locale.delocalize("100,23")).to eq "100.23"
       end
       
       it "should delocalize a date to the same value" do
         date = Date.new
-        @locale.delocalize(date).should eq date.to_s
+        expect(@locale.delocalize(date)).to eq date.to_s
       end
 
       it "should delocalize a time to the same value" do
         time = Time.new
-        @locale.delocalize(time).should eq time.to_s
+        expect(@locale.delocalize(time)).to eq time.to_s
       end
       
     end
     
     describe :reset_load_path do
       it "should tell the backend to clear the load path" do
-        I18n.should_receive(:load_path=).with([])
+        expect(I18n).to receive(:load_path=).with([])
         @locale.reset_load_path
       end
 
       it "should tell the loader to load the main locale" do
-        @locale.stub(:locale_order) { [ "en" ]}
-        LocaleLoader.should_receive(:load_file).with(File.join(@root_path, "engine", "locales", "locale_en.yml"))
+        allow(@locale).to receive(:locale_order) { [ "en" ]}
+        expect(LocaleLoader).to receive(:load_file).with(File.join(@root_path, "engine", "locales", "locale_en.yml"))
         @locale.reset_load_path
       end
       
@@ -127,7 +127,7 @@ module AresMUSH
     
     describe :reload do
       it "should tell the backend to reload" do
-        I18n.should_receive(:reload!)
+        expect(I18n).to receive(:reload!)
         @locale.reload
       end
     end

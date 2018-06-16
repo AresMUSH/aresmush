@@ -6,194 +6,194 @@ module AresMUSH
         @target = double
         @combat = double
 
-        @combat.stub(:find_combatant) { @target }
-        @combatant.stub(:combat) { @combat }
-        @combatant.stub(:weapon) { "Rifle" }
-        @combatant.stub(:name) { "A" }
-        FS3Combat.stub(:hitloc_areas) { [] }
-        @target.stub(:name) { "Target" }
-        @target.stub(:is_noncombatant?) { false }
-        FS3Combat.stub(:weapon_stat) { "" }
-        FS3Combat.stub(:check_ammo) { true }
-        FS3Combat.stub(:update_ammo) { nil }
-        SpecHelpers.stub_translate_for_testing
+        allow(@combat).to receive(:find_combatant) { @target }
+        allow(@combatant).to receive(:combat) { @combat }
+        allow(@combatant).to receive(:weapon) { "Rifle" }
+        allow(@combatant).to receive(:name) { "A" }
+        allow(FS3Combat).to receive(:hitloc_areas) { [] }
+        allow(@target).to receive(:name) { "Target" }
+        allow(@target).to receive(:is_noncombatant?) { false }
+        allow(FS3Combat).to receive(:weapon_stat) { "" }
+        allow(FS3Combat).to receive(:check_ammo) { true }
+        allow(FS3Combat).to receive(:update_ammo) { nil }
+        stub_translate_for_testing
       end
       
       describe :prepare do
         it "should parse simple taget" do
           @action = AttackAction.new(@combatant, " target ")
-          @action.prepare.should be_nil
-          @action.is_burst.should be false
-          @action.called_shot.should be_nil
-          @action.crew_hit.should eq false
-          @action.mod.should eq 0
+          expect(@action.prepare).to be_nil
+          expect(@action.is_burst).to be false
+          expect(@action.called_shot).to be_nil
+          expect(@action.crew_hit).to eq false
+          expect(@action.mod).to eq 0
         end
         
         it "should parse target plus mod" do
           @action = AttackAction.new(@combatant, "target/mod:3")
-          @action.prepare.should be_nil
-          @action.is_burst.should be false
-          @action.called_shot.should be_nil
-          @action.crew_hit.should eq false
-          @action.mod.should eq 3
+          expect(@action.prepare).to be_nil
+          expect(@action.is_burst).to be false
+          expect(@action.called_shot).to be_nil
+          expect(@action.crew_hit).to eq false
+          expect(@action.mod).to eq 3
         end
         
         it "should parse target plus called" do
           @action = AttackAction.new(@combatant, "target/called:head")
-          FS3Combat.stub(:has_hitloc?).with(@target, "Head") { true }
-          @action.prepare.should be_nil
-          @action.is_burst.should be false
-          @action.called_shot.should eq "Head"
-          @action.crew_hit.should eq false
-          @action.mod.should eq 0
+          allow(FS3Combat).to receive(:has_hitloc?).with(@target, "Head") { true }
+          expect(@action.prepare).to be_nil
+          expect(@action.is_burst).to be false
+          expect(@action.called_shot).to eq "Head"
+          expect(@action.crew_hit).to eq false
+          expect(@action.mod).to eq 0
         end
         
         it "should parse target plus called and crew" do
-          FS3Combat.stub(:has_hitloc?).with(@target, "Head") { true }
+          allow(FS3Combat).to receive(:has_hitloc?).with(@target, "Head") { true }
           @action = AttackAction.new(@combatant, "target/called:head,crew")
-          @action.prepare.should be_nil
-          @action.is_burst.should be false
-          @action.called_shot.should eq "Head"
-          @action.crew_hit.should eq true
-          @action.mod.should eq 0
+          expect(@action.prepare).to be_nil
+          expect(@action.is_burst).to be false
+          expect(@action.called_shot).to eq "Head"
+          expect(@action.crew_hit).to eq true
+          expect(@action.mod).to eq 0
         end
         
         it "should parse mod plus burst" do
           @action = AttackAction.new(@combatant, "target/burst,mod:3")
-          @target.stub(:hitloc_areas) { ["Head"] }
-          @action.prepare.should be_nil
-          @action.is_burst.should be true
-          @action.called_shot.should be_nil
-          @action.crew_hit.should eq false
-          @action.mod.should eq 3
+          allow(@target).to receive(:hitloc_areas) { ["Head"] }
+          expect(@action.prepare).to be_nil
+          expect(@action.is_burst).to be true
+          expect(@action.called_shot).to be_nil
+          expect(@action.crew_hit).to eq false
+          expect(@action.mod).to eq 3
         end
         
         it "should raise error for invalid called shot location" do
-          FS3Combat.stub(:has_hitloc?).with(@target, "Head") { false }
+          allow(FS3Combat).to receive(:has_hitloc?).with(@target, "Head") { false }
           @action = AttackAction.new(@combatant, "target/called:head")
-          @action.prepare.should eq "fs3combat.invalid_called_shot_loc"
+          expect(@action.prepare).to eq "fs3combat.invalid_called_shot_loc"
         end
         
         it "should raise error for invalid special" do
           @action = AttackAction.new(@combatant, "target/foo:3")
-          @action.prepare.should eq "fs3combat.invalid_attack_special"
+          expect(@action.prepare).to eq "fs3combat.invalid_attack_special"
         end
         
         it "should fail if multiple targets" do
           @action = AttackAction.new(@combatant, "target1 target2")
-          @action.prepare.should eq "fs3combat.only_one_target"
+          expect(@action.prepare).to eq "fs3combat.only_one_target"
         end
         
         it "should fail if out of ammo" do
-          FS3Combat.should_receive(:check_ammo).with(@combatant, 1) { false }
+          expect(FS3Combat).to receive(:check_ammo).with(@combatant, 1) { false }
           @action = AttackAction.new(@combatant, "target")
-          @action.prepare.should eq "fs3combat.out_of_ammo"
+          expect(@action.prepare).to eq "fs3combat.out_of_ammo"
         end
 
         it "should fail if not enough ammo for a burst" do
-          FS3Combat.should_receive(:check_ammo).with(@combatant, 2) { false }
+          expect(FS3Combat).to receive(:check_ammo).with(@combatant, 2) { false }
           @action = AttackAction.new(@combatant, "target/burst")
-          @action.prepare.should eq "fs3combat.not_enough_ammo_for_burst"
+          expect(@action.prepare).to eq "fs3combat.not_enough_ammo_for_burst"
         end
 
         it "should fail if trying to burst with non-auto weapon" do
-          FS3Combat.should_receive(:weapon_stat).with("Rifle", "is_automatic") { false }
+          expect(FS3Combat).to receive(:weapon_stat).with("Rifle", "is_automatic") { false }
           @action = AttackAction.new(@combatant, "target/burst")
-          @action.prepare.should eq "fs3combat.burst_fire_not_allowed"
+          expect(@action.prepare).to eq "fs3combat.burst_fire_not_allowed"
         end
 
         it "should fail if trying to burst with called shot" do
-          @target.stub(:hitloc_areas) { ["Head"] }
+          allow(@target).to receive(:hitloc_areas) { ["Head"] }
           @action = AttackAction.new(@combatant, "target/called:head , burst")
-          @action.prepare.should eq "fs3combat.no_fullauto_called_shots"
+          expect(@action.prepare).to eq "fs3combat.no_fullauto_called_shots"
         end
 
         it "should warn if using an explosive weapon" do
-          FS3Combat.should_receive(:weapon_stat).with("Rifle", "weapon_type") { "Explosive" }
+          expect(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Explosive" }
           @action = AttackAction.new(@combatant, "target1 target2")
-          @action.prepare.should eq "fs3combat.use_explode_command"
+          expect(@action.prepare).to eq "fs3combat.use_explode_command"
         end
 
         it "should warn if using a suppressive weapon" do
-          FS3Combat.should_receive(:weapon_stat).with("Rifle", "weapon_type") { "Suppressive" }
+          expect(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Suppressive" }
           @action = AttackAction.new(@combatant, "target1 target2")
-          @action.prepare.should eq "fs3combat.use_suppress_command"
+          expect(@action.prepare).to eq "fs3combat.use_suppress_command"
         end
 
         it "should succeed" do
           @action = AttackAction.new(@combatant, "target")
-          @action.prepare.should be_nil
-          @action.targets.should eq [ @target ]
+          expect(@action.prepare).to be_nil
+          expect(@action.targets).to eq [ @target ]
         end
       end
       
       describe :resolve do
         before do
-          @combatant.stub(:update)
+          allow(@combatant).to receive(:update)
           @action = AttackAction.new(@combatant, "target")
           @action.prepare
-          @combatant.stub(:ammo) { 5 }
-          FS3Combat.stub(:attack_target) { ["resultx"] }
+          allow(@combatant).to receive(:ammo) { 5 }
+          allow(FS3Combat).to receive(:attack_target) { ["resultx"] }
         end
           
         it "should attack in single fire" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
           resolutions = @action.resolve
-          resolutions[0].should eq "result1"
-          resolutions.count.should eq 1
+          expect(resolutions[0]).to eq "result1"
+          expect(resolutions.count).to eq 1
         end
         
         it "should attack in burst fire" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result2"] }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result3"] }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result2"] }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result3"] }
           @action.is_burst = true
           resolutions = @action.resolve
-          resolutions[0].should eq "fs3combat.fires_burst"
-          resolutions[1].should eq "result1"
-          resolutions[2].should eq "result2"
-          resolutions[3].should eq "result3"
-          resolutions.count.should eq 4
+          expect(resolutions[0]).to eq "fs3combat.fires_burst"
+          expect(resolutions[1]).to eq "result1"
+          expect(resolutions[2]).to eq "result2"
+          expect(resolutions[3]).to eq "result3"
+          expect(resolutions.count).to eq 4
         end
         
         it "should limit burst fire to the number of bullets" do
-          @combatant.stub(:ammo) { 2 }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result2"] }
+          allow(@combatant).to receive(:ammo) { 2 }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result2"] }
           @action.is_burst = true
           resolutions = @action.resolve
-          resolutions[0].should eq "fs3combat.fires_burst"
-          resolutions[1].should eq "result1"
-          resolutions[2].should eq "result2"
-          resolutions.count.should eq 3
+          expect(resolutions[0]).to eq "fs3combat.fires_burst"
+          expect(resolutions[1]).to eq "result1"
+          expect(resolutions[2]).to eq "result2"
+          expect(resolutions.count).to eq 3
         end
         
         it "should update ammo for a single shot" do
-          FS3Combat.should_receive(:update_ammo).with(@combatant, 1)
+          expect(FS3Combat).to receive(:update_ammo).with(@combatant, 1)
           @action.resolve
         end
 
         it "should update ammo for a burst" do
           @action.is_burst = true
-          @combatant.stub(:attack_target) { "result" }
-          FS3Combat.should_receive(:update_ammo).with(@combatant, 3)
+          allow(@combatant).to receive(:attack_target) { "result" }
+          expect(FS3Combat).to receive(:update_ammo).with(@combatant, 3)
           @action.resolve
         end
         
         it "should update ammo for a burst with limited ammo" do
-          @combatant.stub(:ammo) { 2 }
+          allow(@combatant).to receive(:ammo) { 2 }
           @action.is_burst = true
-          @combatant.stub(:attack_target) { "result" }
-          FS3Combat.should_receive(:update_ammo).with(@combatant, 2)
+          allow(@combatant).to receive(:attack_target) { "result" }
+          expect(FS3Combat).to receive(:update_ammo).with(@combatant, 2)
           @action.resolve
         end
         
         it "should add an out of ammo message" do
-          FS3Combat.should_receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
-          FS3Combat.should_receive(:update_ammo).with(@combatant, 1) { "out of ammo" }
+          expect(FS3Combat).to receive(:attack_target).with(@combatant, @target, 0, nil, false, false) { ["result1"] }
+          expect(FS3Combat).to receive(:update_ammo).with(@combatant, 1) { "out of ammo" }
           resolutions = @action.resolve
-          resolutions[0].should eq "result1"
-          resolutions[1].should eq "out of ammo"
+          expect(resolutions[0]).to eq "result1"
+          expect(resolutions[1]).to eq "out of ammo"
         end
       end
     end

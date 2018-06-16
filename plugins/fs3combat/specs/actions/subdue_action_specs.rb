@@ -5,67 +5,67 @@ module AresMUSH
         @combatant = double
         @combat = double
 
-        @combatant.stub(:combat) { @combat }
-        @combatant.stub(:weapon) { "Unarmed" }
-        @combatant.stub(:name) { "A" }
-        FS3Combat.stub(:weapon_stat).with("Unarmed", "weapon_type") { "Melee" }
-        SpecHelpers.stub_translate_for_testing
+        allow(@combatant).to receive(:combat) { @combat }
+        allow(@combatant).to receive(:weapon) { "Unarmed" }
+        allow(@combatant).to receive(:name) { "A" }
+        allow(FS3Combat).to receive(:weapon_stat).with("Unarmed", "weapon_type") { "Melee" }
+        stub_translate_for_testing
       end
       
       describe :prepare do
         before do
-          @combat.stub(:find_combatant) { @target }
+          allow(@combat).to receive(:find_combatant) { @target }
           @target = double
-          @target.stub(:name) { "Target" }
-          @target.stub(:is_noncombatant?) { false }
+          allow(@target).to receive(:name) { "Target" }
+          allow(@target).to receive(:is_noncombatant?) { false }
         end
         
         it "should fail if too many targets" do
           @action = SubdueAction.new(@combatant, "target1 target2")
-          @action.prepare.should eq "fs3combat.only_one_target"
+          expect(@action.prepare).to eq "fs3combat.only_one_target"
         end
         
         it "should fail if not a melee weapon" do
-          FS3Combat.should_receive(:weapon_stat).with("Unarmed", "weapon_type") { "Explosive" }
+          expect(FS3Combat).to receive(:weapon_stat).with("Unarmed", "weapon_type") { "Explosive" }
           @action = SubdueAction.new(@combatant, "target1")
-          @action.prepare.should eq "fs3combat.subdue_uses_melee"
+          expect(@action.prepare).to eq "fs3combat.subdue_uses_melee"
         end
         
         it "should allow a single target" do
           @action = SubdueAction.new(@combatant, "target")
-          @action.prepare.should be_nil
-          @action.targets.should eq [ @target ]
+          expect(@action.prepare).to be_nil
+          expect(@action.targets).to eq [ @target ]
         end
       end
       
       describe :resolve do
         before do
           @target1 = double
-          @target1.stub(:name) { "T1" }
-          @target1.stub(:is_noncombatant?) { false }
+          allow(@target1).to receive(:name) { "T1" }
+          allow(@target1).to receive(:is_noncombatant?) { false }
 
-          @combat.stub(:find_combatant).with("Target1") { @target1 }
+          allow(@combat).to receive(:find_combatant).with("Target1") { @target1 }
         end
           
         it "should subdue successfully" do
           @action = SubdueAction.new(@combatant, "target1")
           @action.prepare
           results = { hit: true, attacker_net_successes: 3 }
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target1) { results }
-          @target1.should_receive(:update).with(subdued_by: @combatant)
-          @target1.should_receive(:update).with(action_klass: nil)
-          @target1.should_receive(:update).with(action_args: nil)
+          expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target1) { results }
+          expect(@target1).to receive(:update).with(subdued_by: @combatant)
+          expect(@target1).to receive(:update).with(action_klass: nil)
+          expect(@target1).to receive(:update).with(action_args: nil)
           resolutions = @action.resolve
-          resolutions.should eq [ "fs3combat.subdue_action_success" ]
+          expect(resolutions).to eq [ "fs3combat.subdue_action_success" ]
         end
 
         it "should subdue unsuccessfully" do
           @action = SubdueAction.new(@combatant, "target1")
           @action.prepare
-          FS3Combat.should_receive(:determine_attack_margin).with(@combatant, @target1) { { hit: false } }
-          @target1.should_not_receive(:update)
+          expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target1) { { hit: false } }
+          expect(@target1).to_not receive(:update)
           resolutions = @action.resolve
-          resolutions.should eq [ "fs3combat.subdue_action_failed" ]
+          expect(resolutions).to eq [ "fs3combat.subdue_action_failed" ]
         end
       end
     end
