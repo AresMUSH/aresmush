@@ -5,21 +5,21 @@ module AresMUSH
         before do
           @actor = double
           @other_char = double
-          Global.stub(:read_config).with("login", "manage_login") { ['admin'] }
+          allow(Global).to receive(:read_config).with("login", "manage_login") { ['admin'] }
         end
           
         it "should allow you to see your own email" do
-          Login.can_access_email?(@actor, @actor).should be true
+          expect(Login.can_access_email?(@actor, @actor)).to be true
         end
         
         it "should allow someone with the required role to see email" do
-          @actor.stub(:has_permission?).with("manage_login") { true }
-          Login.can_access_email?(@actor, @other_char).should be true
+          allow(@actor).to receive(:has_permission?).with("manage_login") { true }
+          expect(Login.can_access_email?(@actor, @other_char)).to be true
         end
         
         it "should not allow you to access someone else's email" do
-          @actor.stub(:has_permission?).with("manage_login") { false }
-          Login.can_access_email?(@actor, @other_char).should be false
+          allow(@actor).to receive(:has_permission?).with("manage_login") { false }
+          expect(Login.can_access_email?(@actor, @other_char)).to be false
         end
       end
       
@@ -29,13 +29,13 @@ module AresMUSH
         end
           
         it "should allow someone with the required role to reset a password" do
-          @actor.stub(:has_permission?).with("manage_login") { true }
-          Login.can_manage_login?(@actor).should be true
+          allow(@actor).to receive(:has_permission?).with("manage_login") { true }
+          expect(Login.can_manage_login?(@actor)).to be true
         end
         
         it "should not allow you to reset a password" do
-          @actor.stub(:has_permission?).with("manage_login") { false }
-          Login.can_manage_login?(@actor).should be false
+          allow(@actor).to receive(:has_permission?).with("manage_login") { false }
+          expect(Login.can_manage_login?(@actor)).to be false
         end
       end
       
@@ -46,25 +46,25 @@ module AresMUSH
         end
         
         it "should want announce if you're listening for everybody" do
-          @listener.stub(:login_watch) { "all" }
-          Login.wants_announce(@listener, @connector).should eq true
+          allow(@listener).to receive(:login_watch) { "all" }
+          expect(Login.wants_announce(@listener, @connector)).to eq true
         end 
         
         it "should not want announce if you've disabled it" do
-          @listener.stub(:login_watch) { "none" }
-          Login.wants_announce(@listener, @connector).should eq false
+          allow(@listener).to receive(:login_watch) { "none" }
+          expect(Login.wants_announce(@listener, @connector)).to eq false
         end
         
         it "should not want announce if friends-only and have not friended a char" do
-          @listener.stub(:login_watch) { "friends" }
-          @listener.stub(:is_friend?).with(@connector) { false }
-          Login.wants_announce(@listener, @connector).should eq false
+          allow(@listener).to receive(:login_watch) { "friends" }
+          allow(@listener).to receive(:is_friend?).with(@connector) { false }
+          expect(Login.wants_announce(@listener, @connector)).to eq false
         end
         
         it "should want announce if friends-only and have friended a  handle" do
-          @listener.stub(:login_watch) { "friends" }
-          @listener.stub(:is_friend?).with(@connector) { true }
-          Login.wants_announce(@listener, @connector).should eq true
+          allow(@listener).to receive(:login_watch) { "friends" }
+          allow(@listener).to receive(:is_friend?).with(@connector) { true }
+          expect(Login.wants_announce(@listener, @connector)).to eq true
         end
         
       end

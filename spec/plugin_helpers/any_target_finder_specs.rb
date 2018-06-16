@@ -7,45 +7,45 @@ module AresMUSH
     describe :find do
       before do
         @client = double
-        Exit.stub(:find_any_by_name) { [] }
-        Room.stub(:find_any_by_name) { [] }
-        Character.stub(:find_any_by_name) { [] }
-        VisibleTargetFinder.stub(:find) { FindResult.new(nil, "Error") }
+        allow(Exit).to receive(:find_any_by_name) { [] }
+        allow(Room).to receive(:find_any_by_name) { [] }
+        allow(Character).to receive(:find_any_by_name) { [] }
+        allow(VisibleTargetFinder).to receive(:find) { FindResult.new(nil, "Error") }
       end
 
       it "should give preference to visible targets" do
         result = FindResult.new(double, nil)
-        VisibleTargetFinder.should_receive(:find).with("A", @client) { result }
-        AnyTargetFinder.find("A", @client).should eq result
+        expect(VisibleTargetFinder).to receive(:find).with("A", @client) { result }
+        expect(AnyTargetFinder.find("A", @client)).to eq result
       end
       
       it "should ensure only a single result" do
         room = double
-        room.stub(:id) { 1 }
-        @client.stub(:room) { room }
+        allow(room).to receive(:id) { 1 }
+        allow(@client).to receive(:room) { room }
         char1 = double
         char2 = double
         exit = double
         room = double
-        Character.should_receive(:find_any_by_name).with("A") { [char1, char2] }
-        Exit.should_receive(:find_any_by_name).with("A") { [exit] }
-        Room.should_receive(:find_any_by_name).with("A") { [room] }
+        expect(Character).to receive(:find_any_by_name).with("A") { [char1, char2] }
+        expect(Exit).to receive(:find_any_by_name).with("A") { [exit] }
+        expect(Room).to receive(:find_any_by_name).with("A") { [room] }
         result = FindResult.new(nil, "an error")
-        SingleResultSelector.should_receive(:select).with([char1, char2, exit, room]) { result }
-        AnyTargetFinder.find("A", @client).should eq result
+        expect(SingleResultSelector).to receive(:select).with([char1, char2, exit, room]) { result }
+        expect(AnyTargetFinder.find("A", @client)).to eq result
       end
 
       it "should remove nil results before selecting single target" do
         room = double
-        room.stub(:id) { 1 }
-        @client.stub(:room) { room }
+        allow(room).to receive(:id) { 1 }
+        allow(@client).to receive(:room) { room }
         char = double
-        Character.stub(:find_any_by_name) { [char] }
-        Exit.stub(:find_any_by_name) { [nil] }
-        Room.stub(:find_any_by_name) { [] }
+        allow(Character).to receive(:find_any_by_name) { [char] }
+        allow(Exit).to receive(:find_any_by_name) { [nil] }
+        allow(Room).to receive(:find_any_by_name) { [] }
         result = FindResult.new(char, nil)
-        SingleResultSelector.should_receive(:select).with([char]) { result }
-        AnyTargetFinder.find("A", @client).should eq result      
+        expect(SingleResultSelector).to receive(:select).with([char]) { result }
+        expect(AnyTargetFinder.find("A", @client)).to eq result      
       end
     end
   end

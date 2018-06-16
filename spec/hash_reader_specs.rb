@@ -12,8 +12,8 @@ module AresMUSH
         "b" => "2"
       }
       reader = HashReader.new(hash)
-      reader.a.should eq "1"
-      reader.b.should eq "2"
+      expect(reader.a).to eq "1"
+      expect(reader.b).to eq "2"
     end
     
     it "should provide method accessors for nested hashes" do
@@ -30,21 +30,21 @@ module AresMUSH
         "b" => "2"
       }
       reader = HashReader.new(hash)
-      reader.a.c.should eq 1
-      reader.a.d.e.should eq [1, 2]
-      reader.b.should eq "2"
+      expect(reader.a.c).to eq 1
+      expect(reader.a.d.e).to eq [1, 2]
+      expect(reader.b).to eq "2"
     end
     
     it "should return nil if the accessor is not found" do
       reader = HashReader.new({"a" => "b"})
-      reader.x.should eq nil
+      expect(reader.x).to eq nil
     end
     
     describe :raw_hash do
       it "should provide access to the raw hash" do
         hash = {"a" => "b"}
         reader = HashReader.new(hash)
-        reader.raw_hash.should eq hash
+        expect(reader.raw_hash).to eq hash
       end
     end
   end

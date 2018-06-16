@@ -10,61 +10,61 @@ module AresMUSH
         @char = double
         @client = double
         @options = double
-        SpecHelpers.stub_translate_for_testing
+        stub_translate_for_testing
       end
         
       describe :join_channel do
         before do
-          Channel.stub(:find_one_by_name).with("pub") { @channel }
-          Channels.stub(:is_on_channel?) { false }
-          Channels.stub(:can_use_channel) { true }
-          Channels.stub(:get_channel_options) { @options }
+          allow(Channel).to receive(:find_one_by_name).with("pub") { @channel }
+          allow(Channels).to receive(:is_on_channel?) { false }
+          allow(Channels).to receive(:can_use_channel) { true }
+          allow(Channels).to receive(:get_channel_options) { @options }
         end
         
         it "should fail if already on channel" do
-          Channels.should_receive(:is_on_channel?).with(@char, @channel) { true }
-          @client.should_receive(:emit_failure).with('channels.already_on_channel')
+          expect(Channels).to receive(:is_on_channel?).with(@char, @channel) { true }
+          expect(@client).to receive(:emit_failure).with('channels.already_on_channel')
           Channels.join_channel("pub", @client, @char, nil)
         end
         
         it "should fail if can't access channel" do
-          Channels.should_receive(:can_use_channel).with(@char, @channel) { false }
-          @client.should_receive(:emit_failure).with('channels.cant_use_channel')
+          expect(Channels).to receive(:can_use_channel).with(@char, @channel) { false }
+          expect(@client).to receive(:emit_failure).with('channels.cant_use_channel')
           Channels.join_channel("pub", @client, @char, nil)
         end
         
         it "should fail if alias already in use" do
-          Channels.should_receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { false }
-          @client.should_receive(:emit_failure).with('channels.unable_to_determine_auto_alias')
+          expect(Channels).to receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { false }
+          expect(@client).to receive(:emit_failure).with('channels.unable_to_determine_auto_alias')
           Channels.join_channel("pub", @client, @char, "pub")
         end
         
         context "success" do
           before do
-            Channels.stub(:set_channel_alias) { true }
-            @options.stub(:alias_hint) { "Hint" }
+            allow(Channels).to receive(:set_channel_alias) { true }
+            allow(@options).to receive(:alias_hint) { "Hint" }
             @chars_stub = double
-            @chars_stub.stub(:<<) {}
-            @channel.stub(:characters) { @chars_stub }
-            @channel.stub(:save)
-            Channels.stub(:emit_to_channel) {}
-            @char.stub(:name) { "Bob" }
+            allow(@chars_stub).to receive(:<<) {}
+            allow(@channel).to receive(:characters) { @chars_stub }
+            allow(@channel).to receive(:save)
+            allow(Channels).to receive(:emit_to_channel) {}
+            allow(@char).to receive(:name) { "Bob" }
           end
           
           it "should use default alias if none specified" do
-            @channel.stub(:default_alias) { [ "pub" ]}
-            Channels.should_receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { true }
+            allow(@channel).to receive(:default_alias) { [ "pub" ]}
+            expect(Channels).to receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { true }
             Channels.join_channel("pub", @client, @char, nil)
           end
         
           it "should use alias if specified" do
-            @channel.stub(:default_alias) { [ "pub" ]}
-            Channels.should_receive(:set_channel_alias).with(@client, @char, @channel, "p2", false) { true }
+            allow(@channel).to receive(:default_alias) { [ "pub" ]}
+            expect(Channels).to receive(:set_channel_alias).with(@client, @char, @channel, "p2", false) { true }
             Channels.join_channel("pub", @client, @char, "p2")
           end
         
           it "should add the char to the channel" do
-            @chars_stub.should_receive(:<<).with(@char) {}
+            expect(@chars_stub).to receive(:<<).with(@char) {}
             Channels.join_channel("pub", @client, @char, "p")
           end
         end

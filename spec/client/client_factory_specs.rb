@@ -9,26 +9,26 @@ module AresMUSH
     before do
       @factory = ClientFactory.new
       @connection = double.as_null_object
-      Resolv.stub(:getname) { "fakehost" }
+      allow(Resolv).to receive(:getname) { "fakehost" }
     end
       
     it "should initialize and return a client" do
       client = double
-      Client.should_receive(:new).with(1, @connection) { client }
-      @factory.create_client(@connection).should eq client
+      expect(Client).to receive(:new).with(1, @connection) { client }
+      expect(@factory.create_client(@connection)).to eq client
     end
     
     it "should create clients with incremental ids" do
       client1 = @factory.create_client(@connection)
       client2 = @factory.create_client(@connection)
-      client1.id.should eq 1
-      client2.id.should eq 2
+      expect(client1.id).to eq 1
+      expect(client2.id).to eq 2
     end 
 
     it "should tell the connection what its client is" do
       client = double
-      Client.stub(:new) { client }
-      @connection.should_receive(:connect_client).with(client)
+      allow(Client).to receive(:new) { client }
+      expect(@connection).to receive(:connect_client).with(client)
       @factory.create_client(@connection)
     end
 

@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     describe CombatAction do
       before do
-        SpecHelpers.stub_translate_for_testing
+        stub_translate_for_testing
       end
 
       describe :parse_targets do
@@ -11,35 +11,35 @@ module AresMUSH
           @target1 = double
           @target2 = double
           @combatant = double
-          @combatant.stub(:combat) { @combat }
-          @target1.stub(:is_noncombatant?) { false }
-          @target2.stub(:is_noncombatant?) { false }
+          allow(@combatant).to receive(:combat) { @combat }
+          allow(@target1).to receive(:is_noncombatant?) { false }
+          allow(@target2).to receive(:is_noncombatant?) { false }
         end
   
         it "should return error if combatant not found" do
-          @combat.stub(:find_combatant).with("A") { @target1 }
-          @combat.stub(:find_combatant).with("B") { nil }
+          allow(@combat).to receive(:find_combatant).with("A") { @target1 }
+          allow(@combat).to receive(:find_combatant).with("B") { nil }
           action = CombatAction.new(@combatant, "a b")
-          action.parse_targets("a b").should eq "fs3combat.not_in_combat"
-          action.targets.should eq []
+          expect(action.parse_targets("a b")).to eq "fs3combat.not_in_combat"
+          expect(action.targets).to eq []
         end
   
         it "should return error if targeting a non-combatant" do
-          @combat.stub(:find_combatant).with("A") { @target1 }
-          @combat.stub(:find_combatant).with("B") { @target2 }
-          @target2.stub(:is_noncombatant?) { true }
+          allow(@combat).to receive(:find_combatant).with("A") { @target1 }
+          allow(@combat).to receive(:find_combatant).with("B") { @target2 }
+          allow(@target2).to receive(:is_noncombatant?) { true }
           action = CombatAction.new(@combatant, "a b")
-          action.parse_targets("a b").should eq "fs3combat.cant_target_noncombatant"
-          action.targets.should eq []
+          expect(action.parse_targets("a b")).to eq "fs3combat.cant_target_noncombatant"
+          expect(action.targets).to eq []
         end
   
         it "should return names and list of targets" do
-          @combat.stub(:find_combatant).with("A") { @target1 }
-          @combat.stub(:find_combatant).with("B") { @target2 }
+          allow(@combat).to receive(:find_combatant).with("A") { @target1 }
+          allow(@combat).to receive(:find_combatant).with("B") { @target2 }
 
           action = CombatAction.new(@combatant, "a b")
-          action.parse_targets("a b").should be_nil
-          action.targets.should eq [ @target1, @target2 ]
+          expect(action.parse_targets("a b")).to be_nil
+          expect(action.targets).to eq [ @target1, @target2 ]
         end
       end
     end

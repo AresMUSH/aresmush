@@ -48,7 +48,7 @@ module AresMUSH
         end
       end
       
-      SpecHelpers.stub_translate_for_testing 
+      stub_translate_for_testing 
     end
     
     after do
@@ -60,11 +60,11 @@ module AresMUSH
         cmd = double
         char = double
         client = double
-        client.should_receive(:to_s) { "client" }
-        cmd.should_receive(:to_s) { "Cmd" }
-        char.stub(:name) { "Bob" }
+        expect(client).to receive(:to_s) { "client" }
+        expect(cmd).to receive(:to_s) { "Cmd" }
+        allow(char).to receive(:name) { "Bob" }
         @handler = PluginSpecTest.new(client, cmd, char)
-        Global.logger.should_receive(:debug).with("AresMUSH::PluginSpecTest: client Enactor=Bob Cmd=Cmd")
+        expect(Global.logger).to receive(:debug).with("AresMUSH::PluginSpecTest: client Enactor=Bob Cmd=Cmd")
         @handler.log_command
       end
     end
@@ -75,39 +75,39 @@ module AresMUSH
         @cmd = double
         @char = double
         @room = double
-        @client.stub(:char_id) { 22 }
-        Character.stub(:find) { @char }
-        @char.stub(:room) { @room }
-        @cmd.stub(:raw) { "raw" }
-        @cmd.stub(:switch) { nil }
-        @cmd.stub(:root) { "root" }
-        @char.stub(:name) { "Bob" }
-        @cmd.stub(:root_plus_switch) { "root/switch" }
-        @client.stub(:logged_in?) { true }
+        allow(@client).to receive(:char_id) { 22 }
+        allow(Character).to receive(:find) { @char }
+        allow(@char).to receive(:room) { @room }
+        allow(@cmd).to receive(:raw) { "raw" }
+        allow(@cmd).to receive(:switch) { nil }
+        allow(@cmd).to receive(:root) { "root" }
+        allow(@char).to receive(:name) { "Bob" }
+        allow(@cmd).to receive(:root_plus_switch) { "root/switch" }
+        allow(@client).to receive(:logged_in?) { true }
         @handler = PluginSpecTest.new(@client, @cmd, @char)
       end
       
       it "should parse the args" do
-        @handler.should_receive(:parse_args)
+        expect(@handler).to receive(:parse_args)
         @handler.on_command
       end
       
       it "should log the command" do
-        @handler.stub(:check) { nil }
-        @handler.should_receive(:log_command)
+        allow(@handler).to receive(:check) { nil }
+        expect(@handler).to receive(:log_command)
         @handler.on_command
       end
         
       it "should fail if not logged in" do
-        @client.stub(:logged_in?) { false }
-        @client.should_receive(:emit_failure).with("dispatcher.must_be_logged_in")
+        allow(@client).to receive(:logged_in?) { false }
+        expect(@client).to receive(:emit_failure).with("dispatcher.must_be_logged_in")
         @handler.on_command
       end
         
       it "should not fail if not logged in when the command allows it" do
         @handler = PluginSpecTestAllowWithoutLogin.new(@client, @cmd, @char)
-        @client.stub(:logged_in?) { false }
-        @client.should_not_receive(:emit_failure)
+        allow(@client).to receive(:logged_in?) { false }
+        expect(@client).to_not receive(:emit_failure)
         @handler.on_command
       end
       
@@ -115,7 +115,7 @@ module AresMUSH
         @handler = PluginSpecTestRequiredArgs.new(@client, @cmd, @char)
         @handler.foo = nil
         @handler.bar = "here"
-        @client.should_receive(:emit_failure).with("dispatcher.invalid_syntax")
+        expect(@client).to receive(:emit_failure).with("dispatcher.invalid_syntax")
         @handler.on_command
       end
       
@@ -123,7 +123,7 @@ module AresMUSH
         @handler = PluginSpecTestRequiredArgs.new(@client, @cmd, @char)
         @handler.foo = "here"
         @handler.bar = "    "
-        @client.should_receive(:emit_failure).with("dispatcher.invalid_syntax")
+        expect(@client).to receive(:emit_failure).with("dispatcher.invalid_syntax")
         @handler.on_command
       end
       
@@ -131,43 +131,43 @@ module AresMUSH
         @handler = PluginSpecTestRequiredArgs.new(@client, @cmd, @char)
         @handler.foo = "here"
         @handler.bar = "there"
-        @client.should_not_receive(:emit_failure)
+        expect(@client).to_not receive(:emit_failure)
         @handler.on_command
       end
       
       it "should not care about required args if none are specified" do
         @handler.x = nil
         @handler.y = "     "
-        @client.should_not_receive(:emit_failure)
+        expect(@client).to_not receive(:emit_failure)
         @handler.on_command
       end
       
       
       it "should call all check methods but do nothing if they return nil" do
-        @handler.should_receive(:check_x) { nil }
-        @handler.should_receive(:check_y) { nil }
-        @client.should_not_receive(:emit_failure)
+        expect(@handler).to receive(:check_x) { nil }
+        expect(@handler).to receive(:check_y) { nil }
+        expect(@client).to_not receive(:emit_failure)
         @handler.on_command
       end
       
       it "should emit an error and stop if any validator fails" do
         @handler.x = "x marks the spot"
-        @client.should_receive(:emit_failure).with("error_x")
-        @handler.should_not_receive(:handle)
+        expect(@client).to receive(:emit_failure).with("error_x")
+        expect(@handler).to_not receive(:handle)
         @handler.on_command
       end
       
       it "should emit an error and stop if any validator fails" do
         @handler.y = "y marks the spot"
-        @client.should_receive(:emit_failure).with("error_y")
-        @handler.should_not_receive(:handle)
+        expect(@client).to receive(:emit_failure).with("error_y")
+        expect(@handler).to_not receive(:handle)
         @handler.on_command
       end
       
       it "should handle the command if it's valid" do
-        @handler.stub(:check) { nil }
-        @client.should_not_receive(:emit_failure)
-        @handler.should_receive(:handle)
+        allow(@handler).to receive(:check) { nil }
+        expect(@client).to_not receive(:emit_failure)
+        expect(@handler).to receive(:handle)
         @handler.on_command
       end    
     end  
@@ -178,11 +178,11 @@ module AresMUSH
       end
       
       it "should return nil for nil" do
-        @handler.trim_arg(nil).should eq nil
+        expect(@handler.trim_arg(nil)).to eq nil
       end
       
       it "should return a /help/d string" do
-        @handler.trim_arg("   someTHING   ").should eq "someTHING"
+        expect(@handler.trim_arg("   someTHING   ")).to eq "someTHING"
       end
     end
     
@@ -192,11 +192,11 @@ module AresMUSH
       end
       
       it "should return nil for nil" do
-        @handler.titlecase_arg(nil).should eq nil
+        expect(@handler.titlecase_arg(nil)).to eq nil
       end
       
       it "should return a /help/d string" do
-        @handler.titlecase_arg("   someTHING   ").should eq "Something"
+        expect(@handler.titlecase_arg("   someTHING   ")).to eq "Something"
       end
     end
   end

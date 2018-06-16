@@ -9,33 +9,33 @@ module AresMUSH
     include TemplateFormatters
     
     before do 
-      Line.stub(:show) { "" }
+      allow(Line).to receive(:show) { "" }
     end
     
     describe :right do
       it "should right justify a string" do
-        right("FOO", 5).should eq "  FOO"
+        expect(right("FOO", 5)).to eq "  FOO"
       end
       it "should trim a string that's too long" do
-        right("FOOBAR", 5).should eq "FOOBA"
+        expect(right("FOOBAR", 5)).to eq "FOOBA"
       end
     end
   
     describe :left do
       it "should left justify a string" do
-        left("FOO", 5).should eq "FOO  "
+        expect(left("FOO", 5)).to eq "FOO  "
       end
       it "should trim a string that's too long" do
-        left("FOOBAR", 5).should eq "FOOBA"
+        expect(left("FOOBAR", 5)).to eq "FOOBA"
       end
     end
   
     describe :center do
       it "should center a string" do
-        center("FOO", 5).should eq " FOO "
+        expect(center("FOO", 5)).to eq " FOO "
       end
       it "should trim a string that's too long" do
-        center("FOOBAR", 5).should eq "FOOBA"
+        expect(center("FOOBAR", 5)).to eq "FOOBA"
       end
     end    
   end

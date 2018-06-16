@@ -7,22 +7,22 @@ module AresMUSH
       before do
         @char = double
         @client = double
-        SpecHelpers.setup_mock_client(@client, @char)
-        SpecHelpers.stub_translate_for_testing
+        setup_mock_client(@client, @char)
+        stub_translate_for_testing
         @connector = double
         @handler = CharConnectedEventHandler.new
         
         @char_id = 111
-        Character.stub(:[]).with(@char_id) { @char }
+        allow(Character).to receive(:[]).with(@char_id) { @char }
         
         @event = CharConnectedEvent.new(@client, @char_id)
-        AresCentral::AresConnector.stub(:new) { @connector }
+        allow(AresCentral::AresConnector).to receive(:new) { @connector }
       end
       
       context "no handle" do
         it "should do nothing" do
-          @char.stub(:handle) { nil }
-          @connector.should_not_receive(:sync_handle)
+          allow(@char).to receive(:handle) { nil }
+          expect(@connector).to_not receive(:sync_handle)
           @handler.on_event(@event)
         end
       end
@@ -30,21 +30,21 @@ module AresMUSH
       context "linked" do       
         it "should set the preferences" do
           @handle = double
-          @handle.stub(:handle_id) { 123 }
-          @char.stub(:handle) { @handle }
-          @char.stub(:name) { "Bob" }
-          @char.stub(:id) { 111 }
+          allow(@handle).to receive(:handle_id) { 123 }
+          allow(@char).to receive(:handle) { @handle }
+          allow(@char).to receive(:name) { "Bob" }
+          allow(@char).to receive(:id) { 111 }
           response = { "status" => "success", "data" => { "linked" => true, "autospace" => "x", "timezone" => "t", "friends" => "f", "quote_color" => "q", "page_color" => "pc", "page_autospace" => "ps" }}
           
           
-          @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
-          @char.should_receive(:update).with({:pose_quote_color => "q"})
-          @char.should_receive(:update).with({:pose_autospace => "x"})
-          @char.should_receive(:update).with({:page_autospace => "ps"})
-          @char.should_receive(:update).with({:page_color => "pc"})
-          @char.should_receive(:update).with({:timezone => "t"})
-          @handle.should_receive(:update).with(friends: "f")
-          @client.should_receive(:emit_success).with("arescentral.handle_synced")
+          expect(@connector).to receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
+          expect(@char).to receive(:update).with({:pose_quote_color => "q"})
+          expect(@char).to receive(:update).with({:pose_autospace => "x"})
+          expect(@char).to receive(:update).with({:page_autospace => "ps"})
+          expect(@char).to receive(:update).with({:page_color => "pc"})
+          expect(@char).to receive(:update).with({:timezone => "t"})
+          expect(@handle).to receive(:update).with(friends: "f")
+          expect(@client).to receive(:emit_success).with("arescentral.handle_synced")
           @handler.on_event(@event)
         end
       end
@@ -52,16 +52,16 @@ module AresMUSH
       context "not linked" do
         it "should unlink the handle" do
           @handle = double
-          @handle.stub(:handle_id) { 123 }
-          @char.stub(:handle) { @handle }
-          @char.stub(:name) { "Bob" }
-          @char.stub(:id) { 111 }
+          allow(@handle).to receive(:handle_id) { 123 }
+          allow(@char).to receive(:handle) { @handle }
+          allow(@char).to receive(:name) { "Bob" }
+          allow(@char).to receive(:id) { 111 }
           response = { "status" => "success", "data" => { "linked" => false }}
           
-          @connector.should_receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
-          @char.should_not_receive(:autospace=)
-          @handle.should_receive(:delete)
-          @client.should_receive(:emit_failure).with("arescentral.handle_no_longer_linked")
+          expect(@connector).to receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
+          expect(@char).to_not receive(:autospace=)
+          expect(@handle).to receive(:delete)
+          expect(@client).to receive(:emit_failure).with("arescentral.handle_no_longer_linked")
           @handler.on_event(@event)
         end
       end
