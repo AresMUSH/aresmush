@@ -5,7 +5,7 @@ module Ohm
         begin
           send(:"#{att}=", val) 
         rescue NoMethodError => ex
-          AresMUSH::Global.logger.warn "Model failed to respond to #{att} #{ex}"
+          AresMUSH::Global.logger.warn "Model #{self.class} failed to respond to #{att} #{ex}"
         end
       end
     end
