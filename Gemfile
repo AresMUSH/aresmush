@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 gem 'ansi', '~> 1.5'
 
-gem 'bson', '~> 4.3'
+#gem 'bson', '~> 4.3'
 gem 'activesupport', '> 5' 
 gem 'ohm', '~> 3.1.1'
 
@@ -29,5 +29,5 @@ gem 'rubyzip',  '~> 1.2.1'
 gem 'diff-lcs', '~> 1.3'
 gem 'diffy', '~> 3.2.0'
 gem 'nokogiri', '~> 1.8.2'
-gem 'handlebars', '~>0.8.0'
+gem 'ruby-handlebars', '~>0.0.6'
 gem 'sass', '~>3.5.5'

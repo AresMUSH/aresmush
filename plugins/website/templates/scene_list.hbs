@@ -10,19 +10,21 @@
 
 <tbody>
 
-{{#each scenes as |scene|}}
+{{#each scenes}}
        <tr>
         <td>
-        <a href="/scene/{{scene.id}}">{{scene.title}}</a>
+        <a href="/scene/{{this.id}}">{{this.title}}</a>
         
       
         
-        <p>{{scene.summary}}</p>
+        <p>{{this.summary}}</p>
         </td>
         <td>
-            {{#each scene.participant_names as |p|}}
-            <a href="/char/{{p}}">{{p}}</a>
+            {{#each this.participant_names}}
+            <a href="/char/{{this}}">{{this}}</a>
             {{/each}}
+            
+            
         </td>
     </tr>
 {{/each}}

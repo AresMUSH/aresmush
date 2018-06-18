@@ -19,7 +19,7 @@ require 'rspec/core/rake_task'
 require 'pp'
 require 'net/http'
 require 'html2markdown'
-require 'handlebars'
+require 'ruby-handlebars'
 
 require 'erubis'
 require 'json'
