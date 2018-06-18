@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 gem 'ansi', '~> 1.5'
 
-#gem 'bson', '~> 4.3'
 gem 'activesupport', '> 5' 
 gem 'ohm', '~> 3.1.1'
 
