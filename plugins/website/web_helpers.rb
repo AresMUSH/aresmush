@@ -172,7 +172,7 @@ module AresMUSH
       
       BbsPost.all.select{ |b| b.is_public? }.each { |b| list << "#{Game.web_portal_url}/forum/#{b.bbs_board.id}/#{b.id}" }
       
-      topics
+      list
     end
   end
 end

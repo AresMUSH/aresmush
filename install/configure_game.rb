@@ -152,7 +152,7 @@ module AresMUSH
           end
         
           File.open(File.join(webportal_dir, "public", "robots.txt"), "a") do |f| 
-            f.write("\nSitemap: #{server_host}#{port_str}")
+            f.write("\nSitemap: #{server_host}#{port_str}/game/sitemap.xml")
           end
         else
           raise "Directory doesn't exist."
