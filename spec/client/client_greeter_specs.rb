@@ -17,7 +17,8 @@ module AresMUSH
         ClientGreeter.greet(@client)  
       end
 
-      it "should send the welcome screen" do
+      it "should send a randomly selected welcome screen" do
+        expect(ClientGreeter::CONNECT_FILES).to receive(:sample).and_return("game/text/connect.txt")
         expect(File).to receive(:read).with("game/text/connect.txt", :encoding => "UTF-8") { "Ascii Art" }
         expect(@client).to receive(:emit).with("Ascii Art")
       end
