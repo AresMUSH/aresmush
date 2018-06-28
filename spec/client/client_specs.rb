@@ -16,14 +16,6 @@ module AresMUSH
       stub_global_objects
     end
 
-    describe :connected do
-      it "should greet the client with the connect config" do
-        connect_config = { 'welcome_text' => "Hi", 'welcome_screen' => "Ascii Art" }
-        expect(ClientGreeter).to receive(:greet).with(@client)
-        @client.connected
-      end
-    end
-    
     describe :ping do
       it "should ping the connection" do
         expect(@connection).to receive(:ping)

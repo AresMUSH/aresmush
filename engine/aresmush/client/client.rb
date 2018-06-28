@@ -25,7 +25,6 @@ module AresMUSH
     end
     
     def connected
-      ClientGreeter.greet(self)
     end
 
     def ping
