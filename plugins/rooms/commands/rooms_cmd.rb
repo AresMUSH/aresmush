@@ -22,7 +22,7 @@ module AresMUSH
         end
         
         objects = objects.sort { |a,b| a.name_upcase <=> b.name_upcase}
-        objects = objects.map { |r| "#{r.dbref} - #{r.room_type.ljust(3)} - #{r.name} (#{r.area})"}
+        objects = objects.map { |r| "#{r.dbref} - #{r.room_type.ljust(3)} - #{r.name} (#{r.area_name})"}
         template = BorderedListTemplate.new objects, t('rooms.room_directory')
         client.emit template.render
       end

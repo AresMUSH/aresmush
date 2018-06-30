@@ -14,7 +14,7 @@ RP Hooks are interesting things about your character that others can "hook" into
 `hooks/set <hooks>` - Set your hooks.
 `hooks <name>` - View someone else's hooks.
 
-If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab your background text into the input buffer.
+If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab a RP hook into the input buffer.
 
 `hooks/edit` - Grabs the existing RP Hook text into your input buffer.
 

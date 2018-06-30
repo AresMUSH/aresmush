@@ -1,25 +1,22 @@
 module AresMUSH
   module Maps
-    class MapAreasCmd
+    class MapEditCmd
       include CommandHandler
       
-      attr_accessor :name, :areas
+      attr_accessor :name
       
       def parse_args
-        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        self.name = titlecase_arg(args.arg1)
-        self.areas = titlecase_list_arg(args.arg2, ',')
+        self.name = titlecase_arg(cmd.args)
       end
       
       def required_args
-        [ self.name, self.areas ]
+        [ self.name ]
       end
       
       def handle
         map = GameMap.find_one_by_name(self.name)
         if (map)
-          map.update(areas: self.areas)
-          client.emit_success t('maps.map_updated', :name => self.name)
+          Utils.grab client, enactor, "map/update #{self.name}=#{map.map_text}"
         else
           client.emit_failure t('maps.map_not_available', :name => self.name)
         end

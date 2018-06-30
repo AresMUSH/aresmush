@@ -8,12 +8,12 @@ module AresMUSH
         if (!game_map)
           return { error: t('webportal.not_found') }
         end
-        
+
         {
           id: game_map.id,
-          areas: game_map.areas,
+          areas: game_map.area_names,
           name: game_map.name,
-          map_text: WebHelpers.format_output_for_html(game_map.map_text)
+          map_text: WebHelpers.format_markdown_for_html(game_map.map_text)
         }
       end
     end

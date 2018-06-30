@@ -19,10 +19,12 @@ module AresMUSH
 
       puts "Creating start rooms."
   
+      offstage = Area.create(name: "Offstage")
+      
       welcome_room = Room.create(
         :name => "Welcome Room", 
         :room_type => "OOC", 
-        :room_area => "Offstage",
+        :area => offstage,
         :description => "Welcome!%R%R" + 
         "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
         "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players.%R%R" +
@@ -31,25 +33,24 @@ module AresMUSH
 
       ic_start_room = Room.create(
         :name => "Onstage", 
-        :room_area => "Onstage",
         :description => "This is the room where all characters start out.")
       
       ooc_room = Room.create(
         :name => "Offstage", 
         :room_type => "OOC", 
-        :room_area => "Offstage",
+        :area => offstage,
         :description => "This is a backstage area where you can hang out when not RPing.")
 
       quiet_room = Room.create(
         :name => "Quiet Room", 
         :room_type => "OOC", 
-        :room_area => "Offstage",
+        :area => offstage,
         :description => "This is a quiet retreat, usually for those who are AFK and don't want to be spammed by conversations while they're away. If you want to chit-chat, please take it outside.")
         
       rp_room_hub = Room.create(
         :name => "RP Annex", 
         :room_type => "OOC", 
-        :room_area => "Offstage",
+        :area => offstage,
         :room_is_foyer => true,
         :description => "This game does not have RP/TP Rooms, but you can accomplish the same thing with the scenes system.")
 

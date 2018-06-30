@@ -19,7 +19,9 @@ module AresMUSH
          when "delete"
            return MapDeleteCmd
          when "area"
-           return MapAreasCmd
+           return MapAreaCmd
+         when "edit"
+           return MapEditCmd
          when nil
            return MapCmd
          end

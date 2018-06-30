@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        maps = GameMap.all.map { |m| "#{m.name.ljust(20)} #{m.areas.join(',')}" }
+        maps = GameMap.all.map { |m| "#{m.name.ljust(20)} #{m.area_names.join(',')}" }
         template = BorderedListTemplate.new maps, t('maps.maps_title')
         client.emit template.render
       end
