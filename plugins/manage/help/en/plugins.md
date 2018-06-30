@@ -41,6 +41,12 @@ The plugin translation files must be loaded separately.
 
 `load locale` - Reloads translation files (locale) from disk.
 
+## Loading Styles
+
+When you've made changes to the web portal CSS files, you can update just the styles without re-deploying the entire website.
+
+`load styles` - Reloads the CSS files.
+
 ## Loading Everything
 
 If you aren't sure what all you need to load, you can reload all the plugins, the config and the translations all at once.
