@@ -40,6 +40,7 @@ module AresMUSH
           end
           Help.reload_help
           Global.locale.reload
+          WebHelpers.rebuild_css
           Global.dispatcher.queue_event ConfigUpdatedEvent.new
         
         end

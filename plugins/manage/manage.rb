@@ -56,6 +56,8 @@ module AresMUSH
           return LoadLocaleCmd
         when "all"
           return LoadAllCmd
+        when "styles"
+          return LoadStylesCmd
         else
           return LoadPluginCmd
         end
