@@ -92,6 +92,12 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "area"
+        return AreaRequestHandler
+      when "deleteArea"
+        return AreaDeleteRequestHandler
+      when "editArea"
+        return AreaEditRequestHandler
       when "locations"
         return LocationsRequestHandler
       when "location"

@@ -12,6 +12,8 @@ module AresMUSH
          
     index :room_type
     
+    reference :area, "AresMUSH::Area"
+    
     def grid_x
       self.room_grid_x
     end
@@ -20,8 +22,8 @@ module AresMUSH
       self.room_grid_y
     end
     
-    def area
-      self.room_area
+    def area_name
+      self.area ? self.area.name : nil
     end
     
     def is_foyer?
@@ -39,7 +41,7 @@ module AresMUSH
     
     def format_room_name_for_area_match(search)
       if (search =~ /\//)
-        return "#{self.area}/#{self.name}".upcase
+        return "#{self.area_name}/#{self.name}".upcase
       else
         return self.name.upcase
       end

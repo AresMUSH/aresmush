@@ -14,15 +14,15 @@ module AresMUSH
     end
     
     def self.can_build?(actor)
-      actor.has_permission?("build")
+      actor && actor.has_permission?("build")
     end
 
     def self.can_teleport?(actor)
-      actor.has_permission?("teleport")
+      actor && actor.has_permission?("teleport")
     end
     
     def self.can_go_home?(actor)
-      actor.has_permission?("go_home")
+      actor && actor.has_permission?("go_home")
     end    
     
     def self.room_types

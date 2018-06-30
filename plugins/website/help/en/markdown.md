@@ -134,3 +134,10 @@ You can include an auto-generated table of contents with level 2 and 3 headers. 
 
 `[[toc]]`
 
+## Spans, Divs, and Pre-Formatted Blocks
+
+Using the raw `<div></div>`, `<span></span>` and `<pre></pre>` block tags often doesn't work the way you want for a variety of technical reasons.  Instead you can use the div/span/pre wiki extensions.
+
+``[[div class="someClass"]]
+Some text
+[[/div]]``

@@ -13,7 +13,10 @@ module AresMUSH
           WikidotCenter,
           WikidotEndCenter,
           WikidotHtml,
-          SpeechBracketExtension
+          SpeechBracketExtension,
+          StartPreBlockMarkdownExtension,
+          EndPreBlockMarkdownExtension
+          
         ]
       end
       

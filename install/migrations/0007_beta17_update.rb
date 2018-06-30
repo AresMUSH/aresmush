@@ -17,6 +17,15 @@ module AresMUSH
         config['website']['sitemap_update_cron'] = { 'hour' => [02], 'minute' => [17] }
         DatabaseMigrator.write_config_file("website.yml", config)
         
+        Global.logger.debug "Creating room areas."
+        Room.all.each do |r|
+          area = Area.find_one_by_name(r.room_area)
+          if (!area)
+            area = Area.create(name: r.room_area)
+          end
+          r.update(area: area)
+        end
+        
       end
     end
   end

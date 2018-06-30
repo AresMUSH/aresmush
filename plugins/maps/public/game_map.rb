@@ -7,11 +7,15 @@ module AresMUSH
     attribute :name_upcase
     attribute :map_text
 
-    attribute :areas, :type => DataType::Array
+    collection :areas, "AresMUSH::Area", :map
     
     index :name_upcase
     
     before_save :save_upcase
+    
+    def area_names
+      areas.map { |a| a.name }
+    end
     
     def save_upcase
       self.name_upcase = self.name.upcase
