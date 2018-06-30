@@ -12,6 +12,11 @@ module AresMUSH
         config['scenes']['include_pose_separator'] = false
         DatabaseMigrator.write_config_file("scenes.yml", config)
         
+        Global.logger.debug "Sitemap update."
+        config = DatabaseMigrator.read_config_file("website.yml")
+        config['website']['sitemap_update_cron'] = { 'hour' => [02], 'minute' => [17] }
+        DatabaseMigrator.write_config_file("website.yml", config)
+        
       end
     end
   end
