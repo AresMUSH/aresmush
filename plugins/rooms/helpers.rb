@@ -53,5 +53,9 @@ module AresMUSH
       matches = Room.find_by_name_and_area destination                
       matches
     end
+    
+    def self.top_level_areas
+      Area.all.select { |a| !a.parent }.sort_by { |a| a.name }
+    end
   end
 end

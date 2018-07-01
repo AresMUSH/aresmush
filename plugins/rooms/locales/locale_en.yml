@@ -68,3 +68,4 @@ en:
        area_already_exists: "Area %{name} already exists."
        area_title: "Area %{area}"
        area_locations_title: "Locations in %{area}"
+       area_parent_set: "You set the parent for %{name} to %{parent}."

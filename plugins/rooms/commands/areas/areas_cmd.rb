@@ -4,8 +4,7 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        areas = Area.all.map { |a| a.name }
-        template = BorderedListTemplate.new areas, t('rooms.areas_title')
+        template = AreasTemplate.new
         client.emit template.render
       end
     end
