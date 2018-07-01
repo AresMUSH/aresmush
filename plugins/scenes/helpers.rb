@@ -212,6 +212,7 @@ module AresMUSH
       if (system_pose)
         line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
         formatted_pose = "#{line}%R#{pose}%R#{line}"
+        enactor.room.update(scene_set: pose)
       end
       
       enactor.room.characters.each do |char|

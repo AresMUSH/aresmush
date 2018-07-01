@@ -33,6 +33,8 @@ module AresMUSH
         
         if (file_type == "style")
           WebHelpers.rebuild_css
+        else
+          Manage.reload_config
         end
         {}
         

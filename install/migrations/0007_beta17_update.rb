@@ -7,9 +7,10 @@ module AresMUSH
       
       def migrate
         
-        Global.logger.debug "Scene pose divider."
+        Global.logger.debug "Scene pose divider and set shortcut."
         config = DatabaseMigrator.read_config_file("scenes.yml")
         config['scenes']['include_pose_separator'] = false
+        config['scenes']['shortcuts']['scene/set'] = 'emit/set'
         DatabaseMigrator.write_config_file("scenes.yml", config)
         
         Global.logger.debug "Sitemap update."
