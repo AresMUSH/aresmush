@@ -22,7 +22,17 @@ module AresMUSH
       end
       
       scene.mark_unread(character)
-      Scenes.new_scene_activity(scene)
+      
+      data = { 
+                char: { name: scene_pose.character.name, icon: WebHelpers.icon_for_char(scene_pose.character) }, 
+                order: scene_pose.order, 
+                is_setpose: scene_pose.is_setpose,
+                is_system_pose: scene_pose.is_system_pose?,
+                is_ooc: scene_pose.is_ooc,
+                pose: WebHelpers.format_markdown_for_html(scene_pose.pose) 
+              }
+                  
+      Scenes.new_scene_activity(scene, data)
     end
     
   end
