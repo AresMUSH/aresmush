@@ -40,7 +40,6 @@ module AresMUSH
         
         config = DatabaseMigrator.read_config_file("rooms.yml")
         config['rooms']['shortcuts']['room/area'] = 'area/set'
-        config['rooms']['shortcuts']['areas'] = 'area'
         config['rooms']['shortcuts']['map'] = 'area'
         DatabaseMigrator.write_config_file("rooms.yml", config)
         

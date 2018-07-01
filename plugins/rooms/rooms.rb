@@ -12,14 +12,12 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "areas"
+        return AreasCmd
       when "area"
         case cmd.switch
         when nil
-          if (cmd.args)
-            return AreaCmd
-          else
-            return AreasCmd
-          end
+          return AreaCmd
         when "create"
           return AreaCreateCmd
         when "update"
