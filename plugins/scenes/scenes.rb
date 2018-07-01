@@ -78,8 +78,6 @@ module AresMUSH
           return SceneReplaceCmd
         when "restart"
           return SceneRestartCmd
-        when "set"
-          return SceneSetCmd
         when "start"
           return SceneStartCmd
         when "stop"

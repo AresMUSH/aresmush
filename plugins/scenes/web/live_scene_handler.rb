@@ -30,12 +30,15 @@ module AresMUSH
         
         participants = Scenes.participants_and_room_chars(scene)
             .sort_by {|p| p.name }
-            .map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }}
+            .map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
             
         {
           id: scene.id,
           title: scene.title,
-          location: scene.location,
+          location: {
+            name: scene.location,
+            description: scene.room ? scene.room.description : nil,
+            scene_set: scene.room ? scene.room.scene_set : nil },
           completed: scene.completed,
           summary: scene.summary,
           description: scene.room ? WebHelpers.format_markdown_for_html(scene.room.description) : nil,
