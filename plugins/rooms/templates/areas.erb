@@ -1,0 +1,7 @@
+<%= header %>
+%xh<%= t('rooms.areas_title') %>%xn
+
+<% top_level_areas.each do |a| %>
+- <%= a.name %> <%= children(a, '  ') %>
+<% end %>
+<%= footer %>
