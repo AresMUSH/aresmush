@@ -1,6 +1,6 @@
 module AresMUSH
   module Rooms
-    class AreaCmd
+    class RoomAreaCmd
       include CommandHandler
 
       attr_accessor :room_name, :area_name
@@ -40,10 +40,10 @@ module AresMUSH
           area = Area.find_one_by_name(self.area_name)
           if (!area)
             client.emit_ooc t('rooms.area_not_found_creating', :area => self.area_name)
-            area = Area.create(self.area_name)
+            area = Area.create(name: self.area_name)
           end
           
-          room.update(room_area: area)
+          room.update(area: area)
           message = t('rooms.area_set', :area => self.area_name)
         end
         client.emit_success message

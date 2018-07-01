@@ -19,12 +19,31 @@ module AresMUSH
         
         Global.logger.debug "Creating room areas."
         Room.all.each do |r|
+          next if !r.room_area
           area = Area.find_one_by_name(r.room_area)
           if (!area)
             area = Area.create(name: r.room_area)
           end
           r.update(area: area)
         end
+        
+        GameMap.all.each do |map|
+          areas = map.areas ? map.areas.to_a : []
+          areas << map.name
+          areas.each do |area_name|
+            area = Area.find_one_by_name(area_name)
+            if (area)
+              area.update(description: map.map_text)
+            end
+          end
+        end
+        
+        config = DatabaseMigrator.read_config_file("rooms.yml")
+        config['rooms']['shortcuts']['room/area'] = 'area/set'
+        config['rooms']['shortcuts']['areas'] = 'area'
+        config['rooms']['shortcuts']['map'] = 'area'
+        DatabaseMigrator.write_config_file("rooms.yml", config)
+        
         
       end
     end

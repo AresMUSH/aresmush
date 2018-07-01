@@ -16,9 +16,10 @@ Once a room is built, there are several properties you may wish to set.  All of 
 
 ## Areas
 
-The room area shows up on the 'where' list to show you which part of the grid someone is in.
+Areas are used to group rooms together to represent different regions of the game.
 
-`area [<room name>=]<name>` - Sets the room area.  Leave name blank to clear.
+`area/set [<room name>=]<area name>` - Sets the room area.  Leave area name blank to clear.  Omitting
+    the room name will set the area in your current room.
 
 ## Grid Coordinates
 

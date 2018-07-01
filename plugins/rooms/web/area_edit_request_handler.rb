@@ -5,7 +5,6 @@ module AresMUSH
         id = request.args[:id]
         name = request.args[:name]
         desc = request.args[:description]
-        map = request.args[:map]
         enactor = request.enactor
         
         area = Area[id]
@@ -24,13 +23,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields') }
         end
 
-        if (map)
-          map = GameMap[map]
-        else
-          map = nil
-        end
-        
-        area.update(name: name, description: WebHelpers.format_input_for_mush(desc), map: map)
+        area.update(name: name, description: WebHelpers.format_input_for_mush(desc))
         
         {}
       end

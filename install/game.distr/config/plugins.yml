@@ -7,6 +7,5 @@ plugins:
   - events
   - fs3combat
   - fs3skills
-  - maps
   - ranks
   - weather
