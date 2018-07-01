@@ -35,7 +35,7 @@ module AresMUSH
           formatted_pose = "#{line}%R#{pose}%R#{line}"
         else
           orig_pose = pose
-          pose = PoseFormatter.format(enactor.name, pose)
+          pose = pose
           formatted_pose = pose
         end
         

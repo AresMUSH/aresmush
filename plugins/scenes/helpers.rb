@@ -1,8 +1,9 @@
 module AresMUSH
   module Scenes
     
-    def self.new_scene_activity(scene)
-      Global.client_monitor.notify_web_clients(:new_scene_activity, "#{scene.id}") do |char|
+    def self.new_scene_activity(scene, data = nil)
+      web_message = "#{scene.id}|#{data.to_json}"
+      Global.client_monitor.notify_web_clients(:new_scene_activity, web_message) do |char|
         char && (!scene.private_scene || Scenes.participants_and_room_chars(scene).include?(char))
       end
     end
