@@ -14,5 +14,4 @@ rooms:
     msummon: meetme/bring
     room/type: roomtype
     room/area: area/set
-    areas: area
     map: area
