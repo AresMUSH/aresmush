@@ -37,11 +37,10 @@ module AresMUSH
           title: scene.title,
           location: {
             name: scene.location,
-            description: scene.room ? scene.room.description : nil,
-            scene_set: scene.room ? scene.room.scene_set : nil },
+            description: scene.room ? WebHelpers.format_markdown_for_html(scene.room.description) : nil,
+            scene_set: scene.room ? WebHelpers.format_markdown_for_html(scene.room.scene_set) : nil },
           completed: scene.completed,
           summary: scene.summary,
-          description: scene.room ? WebHelpers.format_markdown_for_html(scene.room.description) : nil,
           tags: scene.tags,
           icdate: scene.icdate,
           is_private: scene.private_scene,
