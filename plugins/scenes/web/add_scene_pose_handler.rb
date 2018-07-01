@@ -33,6 +33,9 @@ module AresMUSH
         elsif (is_setpose)
           line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
           formatted_pose = "#{line}%R#{pose}%R#{line}"
+          if (scene.room)
+            scene.room.update(scene_set: pose)
+          end
         else
           orig_pose = pose
           pose = pose
