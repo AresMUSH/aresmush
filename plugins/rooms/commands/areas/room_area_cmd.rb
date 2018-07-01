@@ -1,23 +1,23 @@
 module AresMUSH
   module Rooms
-    class AreaCmd
+    class RoomAreaCmd
       include CommandHandler
 
-      attr_accessor :name, :area
+      attr_accessor :room_name, :area_name
       
       def parse_args
         if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
-          self.name = args.arg1
-          self.area = titlecase_arg(args.arg2)
+          self.room_name = args.arg1
+          self.area_name = titlecase_arg(args.arg2)
         else
-          self.name = "here"
-          self.area = !cmd.args ? nil : titlecase_arg(cmd.args)
+          self.room_name = "here"
+          self.area_name = !cmd.args ? nil : titlecase_arg(cmd.args)
         end
       end
 
       def required_args
-        [ self.name ]
+        [ self.room_name ]
       end
       
       def check_can_build
@@ -26,19 +26,25 @@ module AresMUSH
       end
       
       def handle
-        matched_rooms = Room.find_by_name_and_area self.name, enactor_room
+        matched_rooms = Room.find_by_name_and_area self.room_name, enactor_room
         if (matched_rooms.count != 1)
           client.emit_failure matched_rooms.count == 0 ? t('db.object_not_found') : t('db.object_ambiguous')
           return
         end
         room = matched_rooms.first
         
-        if (!self.area)
-          room.update(room_area: nil)
+        if (!self.area_name)
+          room.update(area: nil)
           message = t('rooms.area_cleared')
         else
-          room.update(room_area: self.area)
-          message = t('rooms.area_set', :area => self.area)
+          area = Area.find_one_by_name(self.area_name)
+          if (!area)
+            client.emit_ooc t('rooms.area_not_found_creating', :area => self.area_name)
+            area = Area.create(name: self.area_name)
+          end
+          
+          room.update(area: area)
+          message = t('rooms.area_set', :area => self.area_name)
         end
         client.emit_success message
       end

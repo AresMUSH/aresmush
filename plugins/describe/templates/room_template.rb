@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       def area
-        @room.area
+        @room.area_name
       end
       
       # Room grid coordinates, e.g. (1,2)

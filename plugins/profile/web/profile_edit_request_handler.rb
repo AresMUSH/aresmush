@@ -63,7 +63,7 @@ module AresMUSH
           background: WebHelpers.format_input_for_html(char.background),
           rp_hooks: WebHelpers.format_input_for_html(char.rp_hooks),
           desc: WebHelpers.format_input_for_html(char.description),
-          shortdesc: char.shortdesc ? char.shortdesc.description : '',
+          shortdesc: char.shortdesc ? char.shortdesc : '',
           relationships: relationships,
           profile: profile,
           gallery: (char.profile_gallery || {}).map { |f| WebHelpers.get_file_info(f) },

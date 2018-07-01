@@ -1,4 +1,5 @@
 module AresMUSH
+  # DEPRECATED!  DO NOT USE
   class GameMap < Ohm::Model
     include ObjectModel
     include FindByName

@@ -4,13 +4,13 @@ module AresMUSH
       def self.build(room)
         desc = room.description || ""
 
-        time_of_day = ICTime.time_of_day(room.area).titleize
+        time_of_day = ICTime.time_of_day(room.area_name).titleize
         if (room.vistas && room.vistas.has_key?(time_of_day))
           desc << " "
           desc << room.vistas[time_of_day]
         end
         
-        season = ICTime.season(room.area).titleize
+        season = ICTime.season(room.area_name).titleize
         if (room.vistas && room.vistas.has_key?(season))
           desc << " "
           desc << room.vistas[season]
@@ -27,7 +27,7 @@ module AresMUSH
     
       def self.weather(room)
         return nil if !AresMUSH::Weather.is_enabled? 
-        w = Weather.weather_for_area(room.area)
+        w = Weather.weather_for_area(room.area_name)
         w ? "%R%R#{w}" : nil
       end
     end

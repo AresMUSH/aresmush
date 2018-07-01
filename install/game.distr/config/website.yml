@@ -1,10 +1,10 @@
 ---
 website:
   sitemap_update_cron:
-    hour:
-    - 11
-    minute:
-    - 00
+    hour: 
+    - 2
+    minute: 
+    - 17
   allow_html_in_markdown: true
   max_upload_size_kb: 5000
   character_gallery_group: Faction

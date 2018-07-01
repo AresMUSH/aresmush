@@ -12,8 +12,25 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "areas"
+        return AreasCmd
       when "area"
-        return AreaCmd
+        case cmd.switch
+        when nil
+          return AreaCmd
+        when "create"
+          return AreaCreateCmd
+        when "update"
+          return AreaUpdateCmd
+        when "delete"
+          return AreaDeleteCmd
+        when "edit"
+          return AreaEditCmd
+        when "set"
+          return RoomAreaCmd
+        when "parent"
+          return AreaParentCmd
+        end
       when "build"
         return BuildCmd
       when "foyer"
@@ -92,6 +109,12 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
+      when "area"
+        return AreaRequestHandler
+      when "deleteArea"
+        return AreaDeleteRequestHandler
+      when "editArea"
+        return AreaEditRequestHandler
       when "locations"
         return LocationsRequestHandler
       when "location"

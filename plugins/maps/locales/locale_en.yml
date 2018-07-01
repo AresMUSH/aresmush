@@ -1,8 +1,0 @@
-en:
-    maps:
-        maps_title: "Available Maps"
-        map_title: "%{area} Map"
-        no_such_map: "Map %{name} not available."
-        map_updated: "Map %{name} updated."
-        map_created: "Map %{name} created."
-        map_deleted: "Map %{name} deleted."

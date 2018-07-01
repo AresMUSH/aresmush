@@ -8,7 +8,7 @@ module AresMUSH
         return t('who.hidden')
       end
 
-      room_area = char.room.area
+      room_area = char.room.area_name
       area = !room_area ? "" : "#{room_area} - "
       "#{area}#{char.room.name}"
     end

@@ -2,14 +2,41 @@ module AresMUSH
   module Rooms
     class LocationsRequestHandler
       def handle(request)
-        Room.all.group_by { |r| r.area }.sort_by { |area, rooms| area || "" }.map { |area, rooms| {
-          area: area,
-          map: AresMUSH::Maps.is_enabled? ? AresMUSH::Maps.get_map_for_area(area) : nil,
-          locations: rooms.sort_by { |r| r.name || "" }.map { |r| {
+        enactor = request.enactor
+        
+        error = WebHelpers.check_login(request, true)
+        return error if error
+        
+        {
+          can_manage: Rooms.can_build?(enactor),
+          directory: Rooms.top_level_areas.map { |a| build_directory(a) },
+          areas: Area.all.to_a.sort_by { |a| a.name }.map { |a| build_area_definition(a) },
+          orphan_rooms: Room.all.select { |r| !r.area }.sort_by { |r| r.name }.map { |r| 
+             { 
+               name: r.name,
+               id: r.id
+             }}
+          }
+      end
+      
+      def build_directory(area)
+        {
+          name: area.name,
+          children: area.children.map { |a| build_directory(a) }
+        }
+      end
+      
+      def build_area_definition(area)
+        {
+          name: area.name,
+          id: area.id,
+          description: area.description ? WebHelpers.format_markdown_for_html(area.description) : "",
+          locations: area.rooms.to_a.sort_by { |r| r.name }.map { |r| {
             name: r.name,
             id: r.id
-          }}
-        }}
+          }},
+          children: area.children.map { |a| build_area_definition(a) }
+         }
       end
     end
   end

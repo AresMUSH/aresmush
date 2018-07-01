@@ -1,8 +1,9 @@
 module AresMUSH
   module Scenes
     
-    def self.new_scene_activity(scene)
-      Global.client_monitor.notify_web_clients(:new_scene_activity, "#{scene.id}") do |char|
+    def self.new_scene_activity(scene, data = nil)
+      web_message = "#{scene.id}|#{data.to_json}"
+      Global.client_monitor.notify_web_clients(:new_scene_activity, web_message) do |char|
         char && (!scene.private_scene || Scenes.participants_and_room_chars(scene).include?(char))
       end
     end
@@ -169,7 +170,7 @@ module AresMUSH
         
         formatted_pose = pose.pose || ""
         formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
-        
+                
         formatted_pose = formatted_pose.split("\n").map { |line| line.strip }.join("\n")
                 
         if (pose.is_system_pose?)
@@ -187,13 +188,16 @@ module AresMUSH
           end
           log << formatted_pose
         end
+        
+        if (Global.read_config("scenes", "include_pose_separator"))
+          log << "\n[[div class=\"pose-divider\"]][[/div]]\n"
+        end
+        
         log << "\n\n"
       end
       if (div_started)
         log << "\n[[/div]]\n\n"
       end
-      
-      log << "\n<hr class=\"pose-divider\"/>\n"
       
       log
     end

@@ -88,6 +88,8 @@ module AresMUSH
         return CronEventHandler
       when "RoleChangedEvent"
         return RoleChangedEventHandler
+      when "ConnectionEstablishedEvent"
+        return ConnectionEstablishedEventHandler
       end
       nil
     end

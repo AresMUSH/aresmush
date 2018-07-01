@@ -23,6 +23,7 @@ blacklist.txt
 aresconfig.js
 _last_install.txt
 nginx.default
+sitemap.xml
 
 # Process ID scripts
 # -----------------------------

@@ -8,6 +8,7 @@ en:
         config_loaded: "Configuration reloaded."
         error_loading_config: "Problem loading configuration: %{error}"
         locale_loaded: "Locale reloaded."
+        styles_loaded: "Website styles reloaded."
         error_loading_locale: "Problem loading locale: %{error}"
         management_config_messed_up: "Your permissions for who can manage the game aren't working right.  This is a security issue.  Please check your role configuration."
         game_config_invalid: "Something is wrong with your configuration.  If this problem persists, check the logs and fix your config files."

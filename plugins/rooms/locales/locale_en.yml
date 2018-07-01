@@ -28,8 +28,6 @@ en:
        owner_set: "You set the room's owner."
        owner_cleared: "You remove the room's owner."
        
-       area_set: "You set the room's area to %{area}."
-       area_cleared: "You clear the room's area."
        grid_set: "You set the room's grid coordinates."
        grid_cleared: "You clear the room's grid coordinates."
        
@@ -58,3 +56,16 @@ en:
        foyer_cleared: This room is no longer marked as a foyer.
        
        ic_start_set: "New characters will now start in %{name}."
+       
+       area_set: "You set the room's area to %{area}."
+       area_cleared: "You clear the room's area."
+       area_not_found_creating: "Area %{area} not found - creating it."
+       area_not_found: "Area not found."
+       area_updated: "Area %{name} updated."
+       area_created: "Area %{name} created."
+       area_deleted: "Area %{name} deleted."
+       areas_title: "Areas"
+       area_already_exists: "Area %{name} already exists."
+       area_title: "Area %{area}"
+       area_locations_title: "Locations in %{area}"
+       area_parent_set: "You set the parent for %{name} to %{parent}."

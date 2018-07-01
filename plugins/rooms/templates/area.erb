@@ -1,0 +1,12 @@
+<%= header %>
+%xh<%= t('rooms.area_title', :area => area.name) %>%xn
+
+<%= area.description %>
+<%= divider %>
+
+%xh<%= t('rooms.area_locations_title', :area => area.name) %>%xn
+
+<% locations.each do |l| %>
+- <%= l.name %>
+<% end %>
+<%= footer %>

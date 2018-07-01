@@ -4,7 +4,7 @@ module AresMUSH
       def initialize(plugin_name)
         @tmp_dir = "/tmp/ares-extras"
         @plugin_name = plugin_name
-        @source_dir = File.join(@tmp_dir, @plugin_name)
+        @source_dir = File.join(@tmp_dir, "plugins", @plugin_name)
       end
         
       def import

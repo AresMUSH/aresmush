@@ -14,15 +14,15 @@ module AresMUSH
     end
     
     def self.can_build?(actor)
-      actor.has_permission?("build")
+      actor && actor.has_permission?("build")
     end
 
     def self.can_teleport?(actor)
-      actor.has_permission?("teleport")
+      actor && actor.has_permission?("teleport")
     end
     
     def self.can_go_home?(actor)
-      actor.has_permission?("go_home")
+      actor && actor.has_permission?("go_home")
     end    
     
     def self.room_types
@@ -52,6 +52,10 @@ module AresMUSH
       
       matches = Room.find_by_name_and_area destination                
       matches
+    end
+    
+    def self.top_level_areas
+      Area.all.select { |a| !a.parent }.sort_by { |a| a.name }
     end
   end
 end

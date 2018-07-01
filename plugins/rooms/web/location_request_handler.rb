@@ -12,7 +12,7 @@ module AresMUSH
         {
           id: id,
           name: room.name,
-          area: room.area,
+          area: room.area_name,
           description: WebHelpers.format_markdown_for_html(room.description || "No description set." )
         }
       end

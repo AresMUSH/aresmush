@@ -19,8 +19,9 @@ add-apt-repository -y ppa:chris-lea/redis-server
 apt-get update
 apt-get -y upgrade
 
-echo -e "${ARES_INSTALL_TEXT} Installing SSL utils."
+echo -e "${ARES_INSTALL_TEXT} Installing SSL/HTTPS utils."
 apt-get install -y binutils
+apt-get install apt-transport-https
 
 echo -e "${ARES_INSTALL_TEXT} Installing Git"
 apt-get install -y git

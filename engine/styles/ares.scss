@@ -80,7 +80,14 @@ BASIC CONTAINERS
     color: white;
     font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
     font-size: 14px; 
+    padding: 10px;
+    line-height: .5em;
     
+}
+
+
+.map pre, .map code {
+    color: white;
 }
 
 code {
@@ -746,9 +753,9 @@ SCENES SCREEN
 }
 
 .pose-divider {
-    margin: 20px 20% 20px 20%;
-    border: 1px solid $border-color;
-    align: center;
+    margin: 20px 25px 20px 25px;
+    border: 1px solid #eee;
+    align: center; 
 }
     
 /* -------------------------
