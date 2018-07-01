@@ -1,6 +1,6 @@
 module AresMUSH
-  module Maps
-    class MapDeleteCmd
+  module Rooms
+    class AreaDeleteCmd
       include CommandHandler
       
       attr_accessor :name
@@ -14,12 +14,12 @@ module AresMUSH
       end
       
       def handle
-        map = GameMap.find_one_by_name(self.name)
-        if (map)
-          map.delete
-          client.emit_success t('maps.map_deleted', :name => self.name)
+        area = Area.find_one_by_name(self.name)
+        if (area)
+          area.delete
+          client.emit_success t('rooms.area_deleted', :name => self.name)
         else
-          client.emit_failure t('maps.map_not_available', :name => self.name)
+          client.emit_failure t('rooms.area_not_found')
         end
       end
     end

@@ -21,12 +21,7 @@ module AresMUSH
         {
           id: id,
           name: area.name,
-          description: edit_mode ? WebHelpers.format_input_for_html(area.description) : WebHelpers.format_markdown_for_html(area.description),
-          map: area.map ? { id: area.map.id, name: area.map.name } : nil,
-          maps: Global.plugin_manager.is_disabled?("maps") ? nil : GameMap.all.to_a.sort_by { |m| m.name }.map { |m| {
-            id: m.id,
-            name: m.name
-          }}
+          description: edit_mode ? WebHelpers.format_input_for_html(area.description) : WebHelpers.format_markdown_for_html(area.description)
         }
       end
     end

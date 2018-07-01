@@ -12,8 +12,6 @@ module AresMUSH
             name: a.name,
             id: a.id,
             description: a.description ? WebHelpers.format_markdown_for_html(a.description) : "",
-            show_map: !Global.plugin_manager.is_disabled?("maps"),
-            map: get_map(a),
             locations: a.rooms.to_a.sort_by { |r| r.name }.map { |r| {
               name: r.name,
               id: r.id
@@ -27,17 +25,6 @@ module AresMUSH
                id: r.id
              }}
           }
-      end
-      
-      def get_map(area)
-        map = Maps.get_map_for_area(area.name)
-        
-        return nil if !map
-        
-        { 
-          id: map.id,
-          text: WebHelpers.format_markdown_for_html(map.map_text)
-        }
       end
     end
   end

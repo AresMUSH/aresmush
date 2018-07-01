@@ -13,4 +13,6 @@ rooms:
     mjoin: meetme/join
     msummon: meetme/bring
     room/type: roomtype
-    room/area: area
+    room/area: area/set
+    areas: area
+    map: area
