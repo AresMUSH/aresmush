@@ -30,12 +30,13 @@ module AresMUSH
         {
           name: area.name,
           id: area.id,
+          parent: area.parent ? area.parent.name : nil,
           description: area.description ? WebHelpers.format_markdown_for_html(area.description) : "",
           locations: area.rooms.to_a.sort_by { |r| r.name }.map { |r| {
             name: r.name,
             id: r.id
           }},
-          children: area.children.map { |a| build_area_definition(a) }
+          children: area.sorted_children.map { |a| build_area_definition(a) }
          }
       end
     end
