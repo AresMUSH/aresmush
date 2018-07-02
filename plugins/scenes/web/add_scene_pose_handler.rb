@@ -37,8 +37,10 @@ module AresMUSH
             scene.room.update(scene_set: pose)
           end
         else
+          if (pose.start_with?(*PoseFormatter.pose_markers))
+            pose = PoseFormatter.format(enactor.name, pose)
+          end
           orig_pose = pose
-          pose = pose
           formatted_pose = pose
         end
         
