@@ -54,4 +54,5 @@ scenes:
     repose/drop: pose/drop
     repose/order: pose/order
     repose: scene/repose
+    scene/set: emit/set
   unshared_scene_deletion_days: 20
