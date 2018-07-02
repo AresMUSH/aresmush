@@ -74,20 +74,13 @@ BASIC CONTAINERS
     
 }
 
-.map, .app-status, #console, #console pre, code, #sendMsg, #sendMsg2 { 
-    white-space: pre;
+.app-status, #console, #console pre, code, #sendMsg, #sendMsg2 { 
+    white-space: pre-wrap;
     background-color: black;
     color: white;
     font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
     font-size: 14px; 
     padding: 10px;
-    line-height: .5em;
-    
-}
-
-
-.map pre, .map code {
-    color: white;
 }
 
 code {
@@ -669,6 +662,12 @@ SCENES SCREEN
     padding: 10px;
 }
 
+#live-scene-log {
+    max-height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .log-icon-container {
     width: 150px;
     height: 150px;
@@ -898,10 +897,11 @@ input[type='file'] {
 }
 
 #chat-window {
-    max-height: 400px;
+    max-height: 600px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
 .job-status-DONE {
     background-color: gray;
     color: white;
