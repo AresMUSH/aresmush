@@ -28,3 +28,11 @@ Areas are automatically created when you assign an area to a room using `area/se
 If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab an area description into the input buffer.
 
 `area/edit <name>` - Grabs an area description into your edit buffer.
+
+## Area Parents
+
+You can create a hierarchy of areas by assigning a 'parent' to each area.
+
+For example, you might have an area "New York" as the parent of areas named "Harlem" and "Brooklyn".  Individual rooms would then be assigned to either Harlem, Brooklyn, or (for rooms that are in neither) New York.
+
+`area/parent <area>=<parent area>` - Sets the parent for an area.  Leave blank to clear it.

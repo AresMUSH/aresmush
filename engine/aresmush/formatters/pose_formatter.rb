@@ -1,6 +1,10 @@
 module AresMUSH
   module PoseFormatter
 
+    def self.pose_markers
+      [ '"', ':', ';', '\\', "'", ">" ]
+    end
+    
     def self.format(name, msg)
       msg = msg.chomp
       if msg.start_with?("\"")
