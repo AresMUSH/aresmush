@@ -63,7 +63,7 @@ module AresMUSH
       def should_stop_empty_scene(room)
         return false if !room.scene
         return true if !room.scene.temp_room
-        return room.characters.empty?
+        return false
       end
     end
   end
