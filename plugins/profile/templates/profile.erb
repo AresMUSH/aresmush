@@ -18,8 +18,9 @@
 <% end %>
 <% if AresMUSH::Ranks.is_enabled? %>
 
-%xh<%= left( t('profile.rank_title'), 12 ) %>%xn <%= left( rank, 25 ) %>
+%xh<%= left( t('profile.rank_title'), 12 ) %>%xn <%= left( rank, 25 ) -%>
 <% end %>
+
 <%= divider %>
 %xh<%= left( t('profile.timezone'), 12 ) %>%xn <%= left( timezone, 25 ) -%>
 %xh<%= left( t('profile.unread_mail'), 12 ) %>%xn <%= unread_mail %>

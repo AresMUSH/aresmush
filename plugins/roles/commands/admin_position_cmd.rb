@@ -1,6 +1,6 @@
 module AresMUSH
   module Roles
-    class AdminNoteCmd
+    class AdminPositionCmd
       include CommandHandler
       
       attr_accessor :note
@@ -15,7 +15,7 @@ module AresMUSH
       
       def handle
         enactor.update(role_admin_note: self.note)
-        client.emit_success t('roles.admin_note_set')
+        client.emit_success t('roles.admin_position_set')
       end
     end
   end

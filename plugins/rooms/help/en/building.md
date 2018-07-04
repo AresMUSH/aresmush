@@ -64,9 +64,9 @@ The game knows about three special rooms:
 * The Offstage (or OOC) Room, where all characters go when they go offstage/ooc.
 * The IC Start room, where characters go the very first time they go onstage/ic.
 
-Never mess with the first two.  If you do, you'll have to fiddle with code to tell the game where the new rooms are.
+The room where players go when they on onstage can be changed to any room with the command:  `icstart/set <room>`
 
-The IC Start room can be changed to any room with the command:  `icstart/set <room>`
+The welcome and offstage rooms cannot be moved or deleted, but you can rename them or update their descriptions as you see fit.
 
 ## Describing Rooms
 
