@@ -11,6 +11,7 @@ module AresMUSH
     def self.is_talk_cmd(enactor, cmd)
       return false if !enactor
       return false if !cmd.args    
+      return false if cmd.switch
       channel = Channels.channel_for_alias(enactor, cmd.root)
       channel
     end

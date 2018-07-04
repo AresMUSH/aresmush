@@ -45,10 +45,10 @@ Once a role exists, you can add and remove permissions to it.
 `role/addpermission <role>=<permission>` - Adds a permission to a role.
 `role/removepermission <role>=<permission>` - Removes a permission from a role.
 
-## Admin Notes
+## Admin Positions
 
 The `admin` command lists all game admins.  It automatically finds people based on whether they have one of the roles you have defined as an admin role in your game config.  
 
-You can also set a note to appear next to your name on the admins list, describing your role.
+You can also set a position to appear next to your name on the admins list, describing your role/position.
 
-`adminnote <note>` - Sets your note.
+`admin/position <position>` - Sets your position.

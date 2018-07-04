@@ -7,7 +7,12 @@ module AresMUSH
         admins_by_role = {}
         roles = Global.read_config("roles", "admin_list_roles")
         roles.each do |r|
-          admins_by_role[r] = Roles.chars_with_role(r)
+          chars = Roles.chars_with_role(r)
+          
+          # Omit the special system chars.
+          chars.delete Game.master.system_character
+          chars.delete Game.master.master_admin
+          admins_by_role[r] = chars
         end
         template = AdminTemplate.new(admins_by_role)
         client.emit template.render
