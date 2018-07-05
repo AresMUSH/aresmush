@@ -45,8 +45,7 @@ module AresMUSH
           disabled_plugins: disabled,
           who_count: Global.client_monitor.logged_in.count,
           scene_count: active_scenes.count,
-          roster_enabled: Idle.roster_enabled?,
-          reboot_required: File.exist?('/var/run/reboot-required')
+          roster_enabled: Idle.roster_enabled?
         } 
       end
     end
