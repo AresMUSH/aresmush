@@ -159,7 +159,7 @@ module AresMUSH
       Character.all.each { |c| list << "#{Game.web_portal_url}/char/#{c.name}" }
       WikiPage.all.each { |w| list << "#{Game.web_portal_url}/wiki/#{w.name}" }
       Plot.all.each { |p| list << "#{Game.web_portal_url}/plot/#{p.id}" }
-      Room.all.each { |r| list << "#{Game.web_portal_url}/location/#{r.id}" }
+      Area.all.each { |r| list << "#{Game.web_portal_url}/location/#{r.id}" }
       list << "#{Game.web_portal_url}/help"
       list << "#{Game.web_portal_url}/actors"
       list << "#{Game.web_portal_url}/roster"
