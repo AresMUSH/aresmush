@@ -21,18 +21,11 @@ module AresMUSH
           return { error: t('scenes.scene_is_private') }
         end
         
-        notify_of_watch = Global.read_config("scenes", "notify_of_web_watching")
         
         if (watch)
-          if (notify_of_watch && scene.room && !scene.watchers.include?(enactor))
-            scene.room.emit_ooc t('scenes.started_watching', :name => enactor.name)
-          end
           scene.watchers.add enactor
         else
           scene.watchers.delete enactor
-          if (notify_of_watch && scene.room)
-            scene.room.emit_ooc t('scenes.stopped_watching', :name => enactor.name)
-          end
         end
         
         {}
