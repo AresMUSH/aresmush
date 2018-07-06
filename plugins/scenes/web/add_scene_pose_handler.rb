@@ -26,6 +26,17 @@ module AresMUSH
         
         pose = WebHelpers.format_input_for_mush(pose)
         
+        command = ((pose.split(" ").first) || "").downcase
+        if (command == "ooc")
+          is_ooc = true
+          pose = pose.after(" ")
+        elsif (command == "scene/set" || command == "emit/set")
+          is_setpose = true
+          pose = pose.after(" ")
+        elsif (command == "emit")
+          pose = pose.after(" ")
+        end
+        
         if (is_ooc)
           pose = PoseFormatter.format(enactor.name, pose)
           color = Global.read_config("scenes", "ooc_color")

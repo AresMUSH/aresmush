@@ -21,7 +21,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
-        pose_text = scene_pose.text
+        pose_text = scene_pose.pose
         scene_pose.delete
         
         message = t('scenes.deleted_scene_pose', :name => enactor.name, :pose => pose_text)
