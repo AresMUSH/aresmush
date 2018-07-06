@@ -47,7 +47,6 @@ module AresMUSH
           participants: participants,
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           can_edit: enactor && Scenes.can_access_scene?(enactor, scene),
-          notify_watch: Global.read_config("scenes", "notify_of_web_watching"),
           poses: scene.poses_in_order.map { |p| { 
             char: { name: p.character.name, icon: WebHelpers.icon_for_char(p.character) }, 
             order: p.order, 
