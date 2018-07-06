@@ -101,3 +101,6 @@ en:
         not_in_pose_order: "%{name} is not in the pose order."
         pose_order_skipped: "Skipping %{skipped}'s turn in pose order. (by %{name})"
         pose_order_mistake: "It seems like you meant to use pose/order instead."
+        
+        edited_scene_pose: "%{name} has edited their pose: %{pose}."
+        deleted_scene_pose: "%{name} has deleted their pose: %{pose}."
