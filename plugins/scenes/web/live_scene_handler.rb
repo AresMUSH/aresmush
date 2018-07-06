@@ -51,9 +51,12 @@ module AresMUSH
           poses: scene.poses_in_order.map { |p| { 
             char: { name: p.character.name, icon: WebHelpers.icon_for_char(p.character) }, 
             order: p.order, 
+            id: p.id,
             is_setpose: p.is_setpose,
             is_system_pose: p.is_system_pose?,
             is_ooc: p.is_ooc,
+            raw_pose: p.pose,
+            can_edit: !p.is_system_pose? && p.can_edit?(enactor),
             pose: WebHelpers.format_markdown_for_html(p.pose) }}
         }
       end

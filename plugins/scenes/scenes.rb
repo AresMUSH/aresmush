@@ -127,6 +127,10 @@ module AresMUSH
       case request.cmd
       when "addScenePose"
         return AddScenePoseRequestHandler
+      when "editScenePose"
+        return EditScenePoseRequestHandler
+      when "deleteScenePose"
+        return DeleteScenePoseRequestHandler
       when "createPlot"
         return CreatePlotRequestHandler
       when "createScene"
