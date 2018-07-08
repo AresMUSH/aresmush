@@ -107,7 +107,7 @@ module AresMUSH
        
        ability = Global.read_config("fs3combat", "recovery_skill")
        roll_params = FS3Skills::RollParams.new(ability)
-       recovery_roll = FS3Skills.one_shot_roll(nil, char, roll_params)
+       recovery_roll = FS3Skills.one_shot_roll(char, roll_params)
        in_hospital = FS3Combat.is_in_hospital?(char)
        doctors = char.doctors.map { |d| d.name }
        

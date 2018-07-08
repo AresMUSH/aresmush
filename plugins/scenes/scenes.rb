@@ -127,14 +127,18 @@ module AresMUSH
       case request.cmd
       when "addScenePose"
         return AddScenePoseRequestHandler
-      when "editScenePose"
-        return EditScenePoseRequestHandler
-      when "deleteScenePose"
-        return DeleteScenePoseRequestHandler
+      when "changeSceneLocation"
+        return ChangeSceneLocationHandler
+      when "changeSceneStatus"
+        return ChangeSceneStatusRequestHandler
       when "createPlot"
         return CreatePlotRequestHandler
       when "createScene"
         return CreateSceneRequestHandler
+      when "editScenePose"
+        return EditScenePoseRequestHandler
+      when "deleteScenePose"
+        return DeleteScenePoseRequestHandler
       when "deletePlot"
         return DeletePlotRequestHandler
       when "deleteScene"
@@ -145,26 +149,26 @@ module AresMUSH
         return EditSceneRequestHandler
       when "likeScene"
         return LikeSceneRequestHandler
+      when "liveScenes"
+        return LiveScenesRequestHandler        
+      when "liveScene"
+        return LiveSceneRequestHandler   
+      when "myScenes"
+        return MyScenesRequestHandler     
       when "plots"
         return PlotsRequestHandler
       when "plot"
         return PlotRequestHandler
+      when "recentScenes"
+        return RecentScenesRequestHandler
       when "scene"
         return GetSceneRequestHandler
       when "scenes"
         return GetScenesRequestHandler
       when "sceneTypes"
         return GetSceneTypesRequestHandler
-      when "liveScenes"
-        return LiveScenesRequestHandler        
-      when "liveScene"
-        return LiveSceneRequestHandler        
-      when "recentScenes"
-        return RecentScenesRequestHandler
-      when "changeSceneStatus"
-        return ChangeSceneStatusRequestHandler
-      when "watchScene"
-        return WatchSceneRequestHandler
+      when "sceneLocations"
+        return GetSceneLocationsHandler
       end
       nil
     end

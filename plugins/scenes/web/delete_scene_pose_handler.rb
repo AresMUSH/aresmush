@@ -17,6 +17,10 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        if (scene.completed)
+          return { error: t('scenes.scene_already_completed') }
+        end
+        
         if (!scene_pose.can_edit?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
@@ -30,7 +34,11 @@ module AresMUSH
           scene.room.emit_ooc message
         end
         
-        Scenes.add_to_scene(scene, WebHelpers.format_markdown_for_html(message), Game.master.system_character, is_setpose = false, is_ooc = true)
+        Scenes.add_to_scene(scene, WebHelpers.format_markdown_for_html(message), Game.master.system_character)
+        
+        if (scene.room)
+          scene.room.emit message
+        end
         {}
       end
     end
