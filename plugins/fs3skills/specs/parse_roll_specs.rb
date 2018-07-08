@@ -9,26 +9,24 @@ module AresMUSH
 
       describe :parse_and_roll do
         before do
-          @client = double
           @char = double
         end
   
         it "should emit failure and return nil if it can't parse the roll" do
           allow(FS3Skills).to receive(:parse_roll_params) { nil }
-          expect(@client).to receive(:emit_failure).with 'fs3skills.unknown_roll_params'
-          expect(FS3Skills.parse_and_roll(@client, @char, "x")).to be_nil
+          expect(FS3Skills.parse_and_roll(@char, "x")).to be_nil
         end
   
         it "should return a die result for a plain number" do
           # Note - automatically factors in a default linked attr
           allow(FS3Skills).to receive(:roll_dice).with(4) { [1, 2, 3, 4, 5] }
-          expect(FS3Skills.parse_and_roll(@client, @char, "2")).to eq [1, 2, 3, 4, 5]
+          expect(FS3Skills.parse_and_roll(@char, "2")).to eq [1, 2, 3, 4, 5]
         end
   
         it "should parse results and roll the ability for any other string" do
           allow(FS3Skills).to receive(:parse_roll_params) { "x" }
-          allow(FS3Skills).to receive(:roll_ability).with(@client, @char, "x") { [1, 2, 3]}
-          expect(FS3Skills.parse_and_roll(@client, @char, "abc")).to eq [1, 2, 3]
+          allow(FS3Skills).to receive(:roll_ability).with(@char, "x") { [1, 2, 3]}
+          expect(FS3Skills.parse_and_roll(@char, "abc")).to eq [1, 2, 3]
         end
       end
 

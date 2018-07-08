@@ -24,8 +24,8 @@ module AresMUSH
     # Makes an ability roll and returns a hash with the successes and success title.
     # Good for automated systems where you only care about the final result and don't need
     # to know the raw die roll.
-    def self.one_shot_roll(client, char, roll_params)
-      roll = FS3Skills.roll_ability(client, char, roll_params)
+    def self.one_shot_roll(char, roll_params)
+      roll = FS3Skills.roll_ability(char, roll_params)
       roll_result = FS3Skills.get_success_level(roll)
       success_title = FS3Skills.get_success_title(roll_result)
       

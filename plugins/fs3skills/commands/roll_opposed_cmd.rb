@@ -38,11 +38,13 @@ module AresMUSH
           return
         end
           
-        die_result1 = FS3Skills.parse_and_roll(client, model1, self.roll_str1)
-        die_result2 = FS3Skills.parse_and_roll(client, model2, self.roll_str2)
+        die_result1 = FS3Skills.parse_and_roll(model1, self.roll_str1)
+        die_result2 = FS3Skills.parse_and_roll(model2, self.roll_str2)
           
-        return if !die_result1
-        return if !die_result2
+        if (!die_result1 || !die_result2)
+          client.emit_failure t('fs3skills.unknown_roll_params')
+          return
+        end
           
         successes1 = FS3Skills.get_success_level(die_result1)
         successes2 = FS3Skills.get_success_level(die_result2)

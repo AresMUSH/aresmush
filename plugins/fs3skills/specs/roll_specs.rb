@@ -79,7 +79,7 @@ module AresMUSH
         it "should roll ability" do
           roll_params = RollParams.new("Firearms")
           expect(FS3Skills).to receive(:dice_to_roll_for_ability).with(@char, roll_params) { 5 }
-          expect(FS3Skills.roll_ability(@client, @char, roll_params)).to eq [6, 5, 5, 1, 5]
+          expect(FS3Skills.roll_ability(@char, roll_params)).to eq [6, 5, 5, 1, 5]
         end
       end
     

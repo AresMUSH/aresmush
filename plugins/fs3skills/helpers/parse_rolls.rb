@@ -32,17 +32,16 @@ module AresMUSH
     
     # Takes a roll string, like Athletics+Body+2, or just Athletics, parses it to figure
     # out the pieces, and then makes the roll.
-    def self.parse_and_roll(client, char, roll_str)
+    def self.parse_and_roll(char, roll_str)
       if (roll_str.is_integer?)
         dice = (roll_str.to_i) + 2
         die_result = FS3Skills.roll_dice(dice)
       else
         roll_params = FS3Skills.parse_roll_params roll_str
         if (!roll_params)
-          client.emit_failure t('fs3skills.unknown_roll_params')
           return nil
         end
-        die_result = FS3Skills.roll_ability(client, char, roll_params)
+        die_result = FS3Skills.roll_ability(char, roll_params)
       end
       die_result
     end
