@@ -174,5 +174,9 @@ module AresMUSH
       
       list
     end
+    
+    def self.engine_api_keys
+      Global.read_config("secrets", "engine_api_keys") || []
+    end
   end
 end

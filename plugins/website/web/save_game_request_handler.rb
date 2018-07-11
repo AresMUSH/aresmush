@@ -26,9 +26,9 @@ module AresMUSH
         
         Manage.reload_config
         
-        if (Game.master.api_key)
+        if (AresCentral.is_registered?)
           AresCentral.update_game
-        else
+        elsif (AresCentral.is_public_game?)
           AresCentral.register_game
         end
         {

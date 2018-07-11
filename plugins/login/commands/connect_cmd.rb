@@ -43,7 +43,7 @@ module AresMUSH
           if (char.login_failures > 5)
             temp_reset = false
             
-            if (char.handle)
+            if (char.handle && AresCentral.is_registered?)
               AresMUSH.with_error_handling(client, "AresCentral forgotten password.") do
                 Global.logger.info "Checking AresCentral for forgotten password."
       
