@@ -1,6 +1,13 @@
 module AresMUSH
   module AresCentral
+    def self.is_public_game?
+      is_public = Global.read_config("game", "public_game")
+      return "#{is_public}".to_bool      
+    end
+    
     def self.update_game
+      return if !AresCentral.is_registered?
+      
       Global.logger.info "Updating game registration."
       params = AresCentral.build_game_params
       
@@ -15,8 +22,11 @@ module AresMUSH
     end
     
     def self.register_game
+      return if !AresCentral.is_registered?
+      
       Global.logger.info "Creating game registration."
       params = AresCentral.build_game_params
+      
       connector = AresCentral::AresConnector.new    
       response = connector.register_game(params)
       
@@ -33,9 +43,7 @@ module AresMUSH
     def self.build_game_params
       server_config = Global.read_config("server")
       game_config = Global.read_config("game")
-    
-      is_public = "#{game_config['public_game']}".to_bool
-      
+          
       params = {
         host: server_config['hostname'], 
         port: server_config['port'], 
@@ -43,7 +51,7 @@ module AresMUSH
         category: game_config['category'],
         description: game_config['description'],
         website: game_config["website"],
-        public_game: is_public,
+        public_game: AresCentral.is_public_game?,
         status: game_config["status"],
         activity: Game.master.login_activity
       }

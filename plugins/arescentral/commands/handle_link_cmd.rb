@@ -26,6 +26,12 @@ module AresMUSH
         return nil
       end
       
+      def check_is_registered
+        return t('arescentral.game_not_registered') if !AresCentral.is_registered?
+        return nil
+      end
+
+      
       def handle
         # Strip off the @ a thte front if they made one.
         self.handle_name.sub!(/^@/, '')

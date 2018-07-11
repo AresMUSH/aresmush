@@ -14,6 +14,11 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)      
       case cmd.root
+      when "game"
+        case cmd.switch
+        when "register"
+          return RegisterGameCmdHandler
+        end
       when "handle"
         case cmd.switch
         when "link"

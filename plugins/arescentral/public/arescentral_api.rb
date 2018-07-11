@@ -24,5 +24,9 @@ module AresMUSH
       return false if !char2.handle
       char1.handle.name == char2.handle.name
     end
+    
+    def self.is_registered?
+      !!Game.master.api_game_id
+    end
   end
 end

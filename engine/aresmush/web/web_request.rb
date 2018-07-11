@@ -15,7 +15,7 @@ module AresMUSH
     end
     
     def check_api_key
-      @json[:api_key] == Game.master.engine_api_key
+      WebHelpers.engine_api_keys.include?(@json[:api_key])
     end
     
     def auth
