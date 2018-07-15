@@ -10,6 +10,10 @@ module AresMUSH
       basic_demographics
     end
             
+    def self.required_demographics
+      Global.read_config("demographics", "required_properties")
+    end
+    
     def self.app_review(char)
       message = t('demographics.demo_review')
       

@@ -129,5 +129,10 @@ module AresMUSH
         char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
       end      
     end
+    
+    def self.reboot_required_notice
+      return t('jobs.reboot_required')
+      #File.exist?('/var/run/reboot-required')
+    end
   end
 end

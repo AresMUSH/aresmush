@@ -77,6 +77,10 @@ module AresMUSH
       case request.cmd
       when "abilities"
         return AbilitiesRequestHandler
+      when "addSceneRoll"
+        return AddSceneRollRequestHandler
+      when "charAbilities"
+        return CharAbilitiesRequestHandler
       end
       nil
     end

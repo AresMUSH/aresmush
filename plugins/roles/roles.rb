@@ -13,11 +13,15 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "admin"
-        if (!cmd.args)
-          return AdminListCmd
+        case cmd.switch
+        when nil
+          # Check args because they might be trying to talk on the admin channel.
+          if (!cmd.args)
+            return AdminListCmd
+          end
+        when "position"
+          return AdminPositionCmd
         end
-      when "adminnote"
-        return AdminNoteCmd
       when "role"
         case cmd.switch
         when "assign"

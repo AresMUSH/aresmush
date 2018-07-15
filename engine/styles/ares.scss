@@ -386,7 +386,6 @@ YOUTUBE MUSIC PLAYER
     width:1px;
     height:1px;
     overflow:hidden;
-    visibility:hidden;
     position:absolute;
     display:inline 
 }
@@ -922,7 +921,7 @@ input[type='file'] {
     color: white;
 }
 
-.chat-who-icon {
+.small-who-icon {
     float:left;
     padding:15px;
 }

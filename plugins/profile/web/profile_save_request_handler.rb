@@ -24,8 +24,9 @@ module AresMUSH
         if (!char.is_approved?)
           return { error: t('profile.not_yet_approved') }
         end
+              
         request.args[:demographics].each do |name, value|
-          if (value.blank?)
+          if (value.blank? && Demographics.required_demographics.include?(name))
             return { error: t('webportal.missing_required_fields') }
           end
           char.update_demographic name, value

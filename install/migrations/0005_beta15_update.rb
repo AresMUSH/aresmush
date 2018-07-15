@@ -48,7 +48,7 @@ module AresMUSH
         
         Global.logger.debug "Game setting."
         config = DatabaseMigrator.read_config_file("game.yml")
-        config['game']['public_game'] = config['game']['public_game'].to_bool
+        config['game']['public_game'] = (config['game']['public_game'] || "").to_s.to_bool
         DatabaseMigrator.write_config_file("game.yml", config)
         
       end

@@ -17,7 +17,11 @@ module AresMUSH
       when "boot"
         return BootCmd
       when "connect"
-        return ConnectCmd
+        if (cmd.args.start_with?("guest"))
+          return TourCmd
+        else
+          return ConnectCmd
+        end
       when "create"
         return CreateCmd
       when "email"

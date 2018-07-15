@@ -24,6 +24,8 @@ module AresMUSH
     
     def self.configure_game
       
+      engine_api_key = SecureRandom.uuid
+      
       template_path = File.join(File.dirname(__FILE__), 'templates')
       puts "\nYou can press 'enter' for any option to accept the default."
       puts "\nLet's set up your database.  The default options should suffice unless you've done something unusual with your Redis installation."
@@ -46,7 +48,8 @@ module AresMUSH
         db_password = ('a'..'z').to_a.shuffle[0,30].join
         template_data =
         {
-          "db_password" => db_password,
+          "engine_api_key" => engine_api_key,
+          "db_password" => db_password
         }
         puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
         

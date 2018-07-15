@@ -63,7 +63,6 @@ module AresMUSH
                 
       begin
         game = Game.master
-        game.update(engine_api_key: SecureRandom.uuid)
       rescue Exception => e
         raise "Error connecting to database. Check your database configuration."
       end

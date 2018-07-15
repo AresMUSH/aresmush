@@ -4,9 +4,9 @@ module AresMUSH
       def on_event(event)
         AresMUSH.with_error_handling(nil, "Updating game info with AresCentral.") do
         
-          if (Game.master.api_key)
+          if (AresCentral.is_registered?)
             AresCentral.update_game
-          else
+          elsif (AresCentral.is_public_game?)
             AresCentral.register_game
           end
         end

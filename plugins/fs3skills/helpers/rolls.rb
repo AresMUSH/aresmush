@@ -8,7 +8,7 @@ module AresMUSH
     # Makes an ability roll and returns the raw dice results.
     # Good for when you're doing a regular roll because you can show the raw dice and
     # use the other methods in this class to get the success level and title to display.
-    def self.roll_ability(client, char, roll_params)
+    def self.roll_ability(char, roll_params)
       dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
       roll = FS3Skills.roll_dice(dice)
       Global.logger.info "#{char.name} rolling #{roll_params} dice=#{dice} result=#{roll}"

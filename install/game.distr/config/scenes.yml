@@ -14,7 +14,6 @@ scenes:
     - 2
   delete_unshared_scenes: false
   unshared_scene_warning_days: 13
-  notify_of_web_watching: false
   include_pose_separator: false
   scene_types:
   - Social
@@ -54,4 +53,5 @@ scenes:
     repose/drop: pose/drop
     repose/order: pose/order
     repose: scene/repose
+    scene/set: emit/set
   unshared_scene_deletion_days: 20

@@ -29,6 +29,7 @@ module AresMUSH
           locations: area.rooms.to_a.sort_by { |r| r.name }.map { |r| {
             name: r.name,
             id: r.id,
+            name_and_area: r.name_and_area,
             description: r.description ? WebHelpers.format_markdown_for_html(r.description) : ""
             }},
           children: area.sorted_children.map { |a| build_area_definition(a) }

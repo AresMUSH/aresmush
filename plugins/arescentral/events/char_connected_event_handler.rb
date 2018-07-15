@@ -5,6 +5,7 @@ module AresMUSH
       def on_event(event)
         char = Character[event.char_id]
         return if !char.handle
+        return if !AresCentral.is_registered?
         
          AresMUSH.with_error_handling(event.client, "Syncing handle with AresCentral.") do
           connector = AresCentral::AresConnector.new

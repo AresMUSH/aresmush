@@ -61,8 +61,7 @@ module AresMUSH
         end
         
         it "should add a recovery roll to the healing points" do
-          expect(FS3Skills).to receive(:one_shot_roll) do |client, char, roll_params|
-            expect(client).to be_nil
+          expect(FS3Skills).to receive(:one_shot_roll) do |char, roll_params|
             expect(char).to eq @char
             expect(roll_params.ability).to eq "Body"
             { :successes => 4 }

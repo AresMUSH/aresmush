@@ -9,9 +9,6 @@ module AresMUSH
     attribute :api_game_id
     attribute :api_key
     
-    # This is used when the web portal communicates with the engine
-    attribute :engine_api_key
-    
     # There's only one game document and this is it!
     def self.master
       Game[1]

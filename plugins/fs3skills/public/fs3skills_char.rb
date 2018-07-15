@@ -48,7 +48,7 @@ module AresMUSH
     end
     
     def roll_ability(ability, mod = 0)
-      FS3Skills.one_shot_roll(nil, self, FS3Skills::RollParams.new(ability, mod))
+      FS3Skills.one_shot_roll(self, FS3Skills::RollParams.new(ability, mod))
     end
   end
 end
