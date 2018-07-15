@@ -10,8 +10,7 @@ module AresMUSH
       end
       
       def handle
-        # Test
-        client.emit_success t('global.done')
+        # Test2
       end
 
     end
