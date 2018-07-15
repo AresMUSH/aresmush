@@ -10,6 +10,7 @@ module AresMUSH
       
       def handle
         client.emit_success "Done!"
+        # Test
       end
 
     end
