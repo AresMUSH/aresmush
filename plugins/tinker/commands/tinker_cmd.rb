@@ -9,6 +9,7 @@ module AresMUSH
       end
       
       def handle
+        client.emit "Hello world take 2!"
         client.emit_success "Done!"
       end
 
