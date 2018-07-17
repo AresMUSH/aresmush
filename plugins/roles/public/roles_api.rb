@@ -22,7 +22,7 @@ module AresMUSH
       end
       
       if (!char.has_role?(role_name))
-        return t('roles.doesnt_has_role', :name => char.name)
+        return t('roles.doesnt_have_role', :name => char.name)
       end
     
       char.roles.delete role
