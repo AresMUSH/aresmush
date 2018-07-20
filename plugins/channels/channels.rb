@@ -70,6 +70,8 @@ module AresMUSH
         return RoleChangedEventHandler
       when "RoleDeletedEvent"
         return RoleDeletedEventHandler
+      when "CronEvent"
+        return CronEventHandler
       end
       nil
     end
@@ -80,6 +82,12 @@ module AresMUSH
         return ChatRequestHandler
       when "chatTalk"
         return ChatTalkRequestHandler
+      when "joinChannel"
+        return JoinChannelRequestHandler
+      when "leaveChannel"
+        return LeaveChannelRequestHandler
+      when "muteChannel"
+        return MuteChannelRequestHandler
       end
     end
     

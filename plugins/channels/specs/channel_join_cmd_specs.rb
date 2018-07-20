@@ -8,7 +8,6 @@ module AresMUSH
       before do
         @channel = double
         @char = double
-        @client = double
         @options = double
         stub_translate_for_testing
       end
@@ -23,20 +22,17 @@ module AresMUSH
         
         it "should fail if already on channel" do
           expect(Channels).to receive(:is_on_channel?).with(@char, @channel) { true }
-          expect(@client).to receive(:emit_failure).with('channels.already_on_channel')
-          Channels.join_channel("pub", @client, @char, nil)
+          expect(Channels.join_channel(@channel, @char, nil)).to eq 'channels.already_on_channel'
         end
         
         it "should fail if can't access channel" do
           expect(Channels).to receive(:can_use_channel).with(@char, @channel) { false }
-          expect(@client).to receive(:emit_failure).with('channels.cant_use_channel')
-          Channels.join_channel("pub", @client, @char, nil)
+          expect(Channels.join_channel(@channel, @char, nil)).to eq 'channels.cant_use_channel'
         end
         
         it "should fail if alias already in use" do
-          expect(Channels).to receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { false }
-          expect(@client).to receive(:emit_failure).with('channels.unable_to_determine_auto_alias')
-          Channels.join_channel("pub", @client, @char, "pub")
+          expect(Channels).to receive(:set_channel_alias).with(nil, @char, @channel, "pub", false) { 'channels.unable_to_determine_auto_alias' }
+          expect(Channels.join_channel(@channel, @char, "pub")).to eq 'channels.unable_to_determine_auto_alias'
         end
         
         context "success" do
@@ -48,24 +44,24 @@ module AresMUSH
             allow(@channel).to receive(:characters) { @chars_stub }
             allow(@channel).to receive(:save)
             allow(Channels).to receive(:emit_to_channel) {}
+            allow(@channel).to receive(:default_alias) { [ "pub" ]}
             allow(@char).to receive(:name) { "Bob" }
           end
           
           it "should use default alias if none specified" do
-            allow(@channel).to receive(:default_alias) { [ "pub" ]}
-            expect(Channels).to receive(:set_channel_alias).with(@client, @char, @channel, "pub", false) { true }
-            Channels.join_channel("pub", @client, @char, nil)
+            expect(Channels).to receive(:set_channel_alias).with(nil, @char, @channel, "pub", false) { nil }
+            Channels.join_channel(@channel, @char, nil)
           end
         
           it "should use alias if specified" do
-            allow(@channel).to receive(:default_alias) { [ "pub" ]}
-            expect(Channels).to receive(:set_channel_alias).with(@client, @char, @channel, "p2", false) { true }
-            Channels.join_channel("pub", @client, @char, "p2")
+            expect(Channels).to receive(:set_channel_alias).with(nil, @char, @channel, "p2", false) { nil }
+            Channels.join_channel(@channel, @char, "p2")
           end
         
           it "should add the char to the channel" do
+            expect(Channels).to receive(:set_channel_alias).with(nil, @char, @channel, "p", false) { nil }
             expect(@chars_stub).to receive(:<<).with(@char) {}
-            Channels.join_channel("pub", @client, @char, "p")
+            Channels.join_channel(@channel, @char, "p")
           end
         end
       end  

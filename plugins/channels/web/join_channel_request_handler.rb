@@ -1,0 +1,32 @@
+module AresMUSH
+  module Channels
+    class JoinChannelRequestHandler
+      def handle(request)
+        enactor = request.enactor
+        channel_name = request.args[:channel]
+        channel = Channel.find_one_by_name(channel_name)
+        
+        if (!enactor)
+          return { error: t('webportal.login_required') }
+        end
+        
+        error = WebHelpers.check_login(request)
+        return error if error
+                
+        if (!channel)
+          return { error: t('webportal.not_found') }
+        end
+        
+        error = Channels.join_channel(channel, enactor, nil)
+        if (error)
+          return { error: error }
+        end
+                 
+        {
+        }
+      end
+    end
+  end
+end
+
+

@@ -69,7 +69,7 @@ module AresMUSH
       
       web_message = "#{channel.name.downcase}|#{WebHelpers.format_markdown_for_html(msg)}"
       Global.client_monitor.notify_web_clients(:new_chat, web_message) do |char|
-        char && Channels.is_on_channel?(char, channel)
+        char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end
     end
     
@@ -168,16 +168,16 @@ module AresMUSH
       end
     end
     
+    # Client may be nil for web requests
     def self.set_channel_alias(client, char, channel, chan_alias, warn = true)
       aliases = chan_alias.split(/[, ]/).map { |a| CommandCracker.strip_prefix(a).downcase }
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
         if (existing_channel && existing_channel != channel)
-          client.emit_failure t('channels.alias_in_use', :channel_alias => a)
-          return false
+          return t('channels.alias_in_use', :channel_alias => a)
         end
         
-        if (warn && (!a || a.length < 2))
+        if (warn && client && (!a || a.length < 2))
           client.emit_failure t('channels.short_alias_warning')
         end
       end
@@ -185,22 +185,16 @@ module AresMUSH
       options = Channels.get_channel_options(char, channel)
       options.update(aliases: aliases)
       
-      client.emit_ooc options.alias_hint
-      
-      return true
+      return nil
     end
     
-    def self.join_channel(name, client, char, chan_alias)
-      Channels.with_a_channel(name, client) do |channel|
-                
+    def self.join_channel(channel, char, chan_alias)
         if (Channels.is_on_channel?(char, channel))
-          client.emit_failure t('channels.already_on_channel')
-          return
+          return t('channels.already_on_channel')
         end
         
         if (!Channels.can_use_channel(char, channel))
-          client.emit_failure t('channels.cant_use_channel')
-          return
+          return t('channels.cant_use_channel')
         end
         
         if (!chan_alias)
@@ -212,14 +206,15 @@ module AresMUSH
           ChannelOptions.create(character: char, channel: channel)
         end
             
-        if (!Channels.set_channel_alias(client, char, channel, chan_alias, false))
-          client.emit_failure t('channels.unable_to_determine_auto_alias')
-          return
+        error = Channels.set_channel_alias(nil, char, channel, chan_alias, false)
+        if (error)
+          return t('channels.unable_to_determine_auto_alias')
         end
 
         channel.characters << char
         Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
-      end
+        
+        return nil
     end
   end
 end
