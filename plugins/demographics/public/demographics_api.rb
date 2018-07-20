@@ -17,9 +17,11 @@ module AresMUSH
     def self.name_and_nickname(char)
       return nil if !char
       nickname_field = Global.read_config("demographics", "nickname_field") || ""
+      nickname_format = Global.read_config("demographics", "nickname_format") || "%{name} (%{nickname})"
+      
       if (!nickname_field.blank?)
         if (char.demographic(nickname_field))
-          "#{char.name} (\"#{char.demographic(nickname_field)}\")"
+          nickname_format % { :name => char.name, :nickname => char.demographic(nickname_field) }
         else
           char.name
         end

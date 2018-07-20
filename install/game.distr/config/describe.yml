@@ -1,5 +1,6 @@
 ---
 describe:
+  always_show_idle_in_rooms: false
   shortcuts:
     l: look
     desc: describe
