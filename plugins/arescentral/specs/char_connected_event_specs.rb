@@ -11,7 +11,7 @@ module AresMUSH
         stub_translate_for_testing
         @connector = double
         @handler = CharConnectedEventHandler.new
-        
+        allow(AresCentral).to receive(:is_registered?) { true }
         @char_id = 111
         allow(Character).to receive(:[]).with(@char_id) { @char }
         

@@ -13,3 +13,5 @@ rvm use ruby-2.4.1
 gem install bundler
 
 npm install -g ember-cli
+
+echo "Now you can set up your game.  Run bin/configure and bin/wipedb."
