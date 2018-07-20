@@ -100,6 +100,10 @@ module AresMUSH
         return SaveTextFileRequestHandler
       when "getSetupIndex"
         return SetupIndexRequestHandler
+      when "getColors"
+        return GetColorsRequestHandler
+      when "saveColors"
+        return SaveColorsRequestHandler
         
       ## MISC
       when "game"
