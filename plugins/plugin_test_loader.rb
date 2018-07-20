@@ -1,5 +1,7 @@
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
+puts "Loading plugin test helper."
+
 require "aresmush"
 
 bootstrapper = AresMUSH::Bootstrapper.new
