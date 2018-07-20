@@ -12,7 +12,8 @@ demographics:
   - fullname
   - gender
   - birthdate
-  nickname_field: ''
+  nickname_field: 'callsign'
+  nickname_format: "%{name} (%{nickname})"
   disable_auto_shortcuts: false
   editable_properties:
   - fullname

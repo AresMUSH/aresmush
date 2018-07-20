@@ -109,15 +109,19 @@ module AresMUSH
       # if the character has been idle for a really long time.
       def char_afk(char)
         client = Login.find_client(char)
+        idle_secs = Login.find_client(char).idle_secs
+        idle_str = TimeFormatter.format(idle_secs)
         if (char.is_afk?)
-          msg = "%xy%xh<#{t('describe.afk')}>%xn"
           afk_message = char.afk_display
           if (afk_message)
-            msg = "#{msg} %xy#{afk_message}%xn"
+            "%xr[#{t('describe.afk')}:#{idle_str}%xH #{afk_message}]%xn"
+          else
+            "%xr[#{t('describe.afk')}:#{idle_str}]%xn"
           end
-          msg
         elsif (client && Status.is_idle?(client))
-          "%xy%xh<#{t('describe.idle')}>%xn"
+          "%xy%xh[#{t('describe.idle')}:#{idle_str}]%xn"
+        elsif (Global.read_config('describe', 'always_show_idle_in_rooms'))
+          "%xh%xx[#{idle_str}]%xn"
         else
           ""
         end
