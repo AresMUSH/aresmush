@@ -37,6 +37,6 @@ You can also search who and where for characters whose name starts with or match
 
 ## Who Is Someone?
 
-The whois command lets you quickly look up a person's fullname and other info based on part of their full name, MU* character name, or callsign. 
+The whois command lets you quickly look up a person's fullname and other info based on part of their full name, MU* character name or a nickname such as a callsign (if enabled).
 
 `whois <name>`

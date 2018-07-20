@@ -13,7 +13,7 @@ module AresMUSH
       end
       
       def name(char)
-        char.name
+        Demographics.name_and_nickname(char)
       end
       
       def rank(char)
