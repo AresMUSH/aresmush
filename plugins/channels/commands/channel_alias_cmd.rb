@@ -17,7 +17,13 @@ module AresMUSH
       
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
-          Channels.set_channel_alias(client, enactor, channel, self.alias)
+          error = Channels.set_channel_alias(client, enactor, channel, self.alias)
+          if (error)
+            client.emit_failure error
+          else
+            options = Channels.get_channel_options(enactor, channel)
+            client.emit_ooc options.alias_hint
+          end
         end
       end
     end  
