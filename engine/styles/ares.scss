@@ -74,6 +74,15 @@ BASIC CONTAINERS
     
 }
 
+.markdown-editor {
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+.markdown-controls {
+    padding: 5px;
+}
+
 .app-status, #console, #console pre, code, #sendMsg, #sendMsg2 { 
     white-space: pre-wrap;
     background-color: black;
@@ -662,7 +671,7 @@ SCENES SCREEN
 }
 
 #live-scene-log {
-    max-height: 600px;
+    max-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -896,7 +905,7 @@ input[type='file'] {
 }
 
 #chat-window {
-    max-height: 600px;
+    max-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
 }

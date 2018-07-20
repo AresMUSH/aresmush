@@ -21,3 +21,8 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "<"
+  clear_history_cron:
+    hour:
+    - 4
+    minute:
+    - 47

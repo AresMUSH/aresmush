@@ -12,6 +12,10 @@ module AresMUSH
         eval(cmd.args)
         client.emit_success t('global.done')
       end
+      
+      def log_command
+        # Don't log Ruby tinkering
+      end
 
     end
   end
