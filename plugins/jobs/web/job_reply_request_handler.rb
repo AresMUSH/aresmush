@@ -9,13 +9,15 @@ module AresMUSH
         
         error = WebHelpers.check_login(request)
         return error if error
-        
-        if (!enactor.is_admin?)
-          return { error: t('dispatcher.not_allowed') }
-        end
-        
+
         if (!job)
           return { error: t('webportal.not_found') }
+        end
+                
+        if (job.author != enactor)
+          if (!enactor.is_admin?)
+            return { error: t('dispatcher.not_allowed') }
+          end
         end
         
         reply = WebHelpers.format_input_for_mush(reply)
