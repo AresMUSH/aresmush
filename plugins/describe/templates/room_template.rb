@@ -101,6 +101,10 @@ module AresMUSH
         return nil
       end
       
+      def char_name(char)
+        Demographics.name_and_nickname(char)
+      end
+      
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)

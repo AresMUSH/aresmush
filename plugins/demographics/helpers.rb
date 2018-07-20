@@ -10,11 +10,11 @@ module AresMUSH
     end
 
     def self.all_demographics
-      Global.read_config("demographics", "demographics")
+      Global.read_config("demographics", "demographics") || []
     end
     
     def self.all_groups
-      Global.read_config("demographics", "groups")
+      Global.read_config("demographics", "groups") || {}
     end
     
     def self.get_group(name)
