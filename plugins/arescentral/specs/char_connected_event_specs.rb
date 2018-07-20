@@ -50,7 +50,7 @@ module AresMUSH
       end
       
       context "not linked" do
-        it "should unlink the handle" do
+        it "should unlink the handle foobar" do
           @handle = double
           allow(@handle).to receive(:handle_id) { 123 }
           allow(@char).to receive(:handle) { @handle }
