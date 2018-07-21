@@ -11,7 +11,7 @@ module AresMUSH
         stub_translate_for_testing
         @connector = double
         @handler = CharConnectedEventHandler.new
-        
+        allow(AresCentral).to receive(:is_registered?) { true }
         @char_id = 111
         allow(Character).to receive(:[]).with(@char_id) { @char }
         
@@ -50,7 +50,7 @@ module AresMUSH
       end
       
       context "not linked" do
-        it "should unlink the handle" do
+        it "should unlink the handle foobar" do
           @handle = double
           allow(@handle).to receive(:handle_id) { 123 }
           allow(@char).to receive(:handle) { @handle }

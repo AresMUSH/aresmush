@@ -14,6 +14,22 @@ module AresMUSH
       Global.read_config("demographics", "required_properties")
     end
     
+    def self.name_and_nickname(char)
+      return nil if !char
+      nickname_field = Global.read_config("demographics", "nickname_field") || ""
+      nickname_format = Global.read_config("demographics", "nickname_format") || "%{name} (%{nickname})"
+      
+      if (!nickname_field.blank?)
+        if (char.demographic(nickname_field))
+          nickname_format % { :name => char.name, :nickname => char.demographic(nickname_field) }
+        else
+          char.name
+        end
+      else
+        char.name
+      end
+    end
+    
     def self.app_review(char)
       message = t('demographics.demo_review')
       

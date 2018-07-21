@@ -92,29 +92,31 @@ module AresMUSH
       char.update(description: WebHelpers.format_input_for_mush(chargen_data[:desc]))
       char.update(shortdesc: WebHelpers.format_input_for_mush(chargen_data[:shortdesc]))
       
-      (chargen_data[:fs3_attributes] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
-      end
-
-      (chargen_data[:fs3_action_skills] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
-        ability = FS3Skills.find_ability(char, k)
-        if (ability)
-          specs = (chargen_data[:fs3_specialties] || {})[k] || []
-          ability.update(specialties: specs)
+      if FS3Skills.is_enabled?
+        (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|
+          FS3Skills.set_ability(nil, char, k, v.to_i)
         end
-      end
+
+        (chargen_data[:fs3][:fs3_action_skills] || []).each do |k, v|
+          FS3Skills.set_ability(nil, char, k, v.to_i)
+          ability = FS3Skills.find_ability(char, k)
+          if (ability)
+            specs = (chargen_data[:fs3][:fs3_specialties] || {})[k] || []
+            ability.update(specialties: specs)
+          end
+        end
       
-      (chargen_data[:fs3_backgrounds] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
-      end
+        (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
+          FS3Skills.set_ability(nil, char, k, v.to_i)
+        end
       
-      (chargen_data[:fs3_languages] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
-      end
+        (chargen_data[:fs3][:fs3_languages] || []).each do |k, v|
+          FS3Skills.set_ability(nil, char, k, v.to_i)
+        end
       
-      (chargen_data[:fs3_advantages] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
+        (chargen_data[:fs3][:fs3_advantages] || []).each do |k, v|
+          FS3Skills.set_ability(nil, char, k, v.to_i)
+        end
       end
       
       return alerts

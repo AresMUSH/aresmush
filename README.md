@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/lynnfaraday/aresmush.svg?branch=master)
+![Build Status](https://travis-ci.org/AresMUSH/aresmush.svg?branch=master)
 
 AresMUSH
 ========

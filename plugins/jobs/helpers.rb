@@ -112,6 +112,10 @@ module AresMUSH
       job.readers.add char
     end
     
+    def self.open_requests(char)
+      char.jobs.select { |r| r.is_open? || r.is_unread?(char) }
+    end
+    
     def self.closed_status
       Global.read_config("jobs", "closed_status")
     end

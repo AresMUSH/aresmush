@@ -1,8 +1,9 @@
 language: ruby
 rvm:
-  - 2.2.2
+  - 2.2.7
 before_install:
   - gem install bundler
+  - cp -r install/game.distr game
 cache: bundler
 notifications:
    email:

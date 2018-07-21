@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       sc = {}
-      Global.read_config("demographics", "demographics").each do |d|
+      Demographics.all_demographics.each do |d|
         if (d != 'birthdate' && d != 'actor')
           sc[d] = "demographic/set #{d}="
         end
@@ -21,7 +21,8 @@ module AresMUSH
         sc[g] = "group/set #{g}="
         sc["#{g}s"] = "group #{g}"
       end
-      Global.read_config("demographics", "shortcuts").each do |k, v|
+      shortcuts = Global.read_config("demographics", "shortcuts") || []
+      shortcuts.each do |k, v|
         sc[k] = v
       end
       sc

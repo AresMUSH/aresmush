@@ -16,7 +16,15 @@ module AresMUSH
       end
         
       def handle
-        Channels.join_channel(self.name, client, enactor, self.alias)
+        Channels.with_a_channel(self.name, client) do |channel|
+          error = Channels.join_channel(channel, enactor, self.alias)
+          if (error)
+            client.emit_failure error
+          else
+            options = Channels.get_channel_options(enactor, channel)
+            client.emit_ooc options.alias_hint
+          end
+        end
       end
     end
   end

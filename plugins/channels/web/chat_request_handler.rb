@@ -18,6 +18,7 @@ module AresMUSH
           name: c.name,
           enabled: Channels.is_on_channel?(enactor, c),
           allowed: Channels.can_use_channel(enactor, c),
+          muted: Channels.is_muted?(enactor, c),
           who: Channels.channel_who(c).map { |w| {
            name: w.name,
            ooc_name: w.ooc_name,

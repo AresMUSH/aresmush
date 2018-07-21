@@ -6,7 +6,7 @@ module AresMUSH
       def handle
         requests = cmd.switch_is?("all") ? 
           enactor.jobs.to_a : 
-          enactor.jobs.select { |r| r.is_open? || r.is_unread?(enactor) }
+          Jobs.open_requests(enactor)
 
         requests = requests.sort_by { |r| r.id }
         paginator = Paginator.paginate(requests, cmd.page, 20)

@@ -57,7 +57,7 @@ module AresMUSH
           scene = c.room.scene
           room = scene_room_name(c)
           idle = c.is_afk? || Status.is_idle?(Login.find_client(c))
-          name = idle ? "%xh%xx#{c.name}%xn" : c.name
+          name = idle ? "%xh%xx#{name(c)}%xn" : name(c)
 
           if (scene)
             if (scene.private_scene)

@@ -16,7 +16,12 @@ module AresMUSH
       def handle
         chars = Character.find_any_by_name(self.name)
         chars.concat Character.all.select { |c|( c.demographic('fullname') || "").upcase =~ /#{self.name}/ }
-        chars.concat Character.all.select { |c| (c.demographic('callsign') || "").upcase == self.name }
+
+
+        nickname_field = Global.read_config("demographics", "nickname_field") || ""
+        if (!nickname_field.blank?)
+          chars.concat Character.all.select { |c| (c.demographic(nickname_field) || "").upcase == self.name }
+        end
         
         if (chars.empty?)
           client.emit_failure t('db.object_not_found')

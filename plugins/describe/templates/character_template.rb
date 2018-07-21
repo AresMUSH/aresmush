@@ -15,6 +15,10 @@ module AresMUSH
         names = @char.details.keys.sort
         names.empty? ? nil : names.join(", ")
       end
+      
+      def char_name
+        Demographics.name_and_nickname(@char)
+      end
     end
   end
 end

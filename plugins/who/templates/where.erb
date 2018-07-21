@@ -4,7 +4,7 @@
 %xh<%= t('who.where_header') %>%xn
 <% chars_by_room.each do |c| %>
 <%= status_color(c) %><%= left( status(c), 7 ) %><%= "%xn" -%>
-<%= left( c.name, 23 ) -%>
+<%= left( name(c), 23 ) -%>
 <%= left( room_name(c), 36 ) -%>
 <%= left( connected(c), 7 ) -%>
 <%= idle(c) %>

@@ -1,6 +1,6 @@
 ---
 plugins:
-  disabled_plugins: []
+  disabled_plugins: [ ]
   optional_plugins:
   - chargen
   - cookies
