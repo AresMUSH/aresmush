@@ -5,7 +5,7 @@ module AresMUSH
         config = Global.read_config("channels", "clear_history_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
-        Channels.all.each do |c|
+        Channel.all.each do |c|
           messages = c.messages.select { |m| m['timestamp'] && (Time.now - Time.parse(m['timestamp']) < 86400 ) }
           c.update(messages: messages)
         end
