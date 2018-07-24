@@ -8,7 +8,7 @@ module AresMUSH
           return { error: t('webportal.login_required') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         if (char.is_approved?)
@@ -52,7 +52,7 @@ module AresMUSH
         end
         
           
-        hooks = WebHelpers.format_input_for_html(char.rp_hooks)
+        hooks = Website.format_input_for_html(char.rp_hooks)
         
         {
           id: char.id,
@@ -61,10 +61,10 @@ module AresMUSH
           fullname: char.demographic(:fullname),
           demographics: demographics,
           groups: groups,
-          background: WebHelpers.format_input_for_html(char.background),
+          background: Website.format_input_for_html(char.background),
           rp_hooks: hooks,
-          desc: WebHelpers.format_input_for_html(char.description),
-          shortdesc: WebHelpers.format_input_for_html(char.shortdesc),
+          desc: Website.format_input_for_html(char.description),
+          shortdesc: Website.format_input_for_html(char.shortdesc),
           fs3: fs3
         }
       end

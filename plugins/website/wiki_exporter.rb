@@ -47,7 +47,7 @@ module AresMUSH
         File.open(File.join(export_path, "index.html"), 'w') do |f|
           text = '<div class="jumbotron">'
           text << "<img src=\"game/uploads/theme_images/jumbotron.png\" />"
-          welcome = WebHelpers.welcome_text
+          welcome = Website.welcome_text
           text << "<p>#{welcome}</p>"
           text << "</div>"
           f.puts format_wiki_template(text, "Home")
@@ -166,7 +166,7 @@ module AresMUSH
           data = approved_chars.map { |c| 
             {
               name: c.name,
-              icon: WebHelpers.icon_for_char(c)
+              icon: Website.icon_for_char(c)
             }
           }
           text = render_partial(File.join(template_path, 'components', 'char-group-list.hbs'), { chars: data } )

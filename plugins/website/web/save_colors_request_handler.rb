@@ -5,7 +5,7 @@ module AresMUSH
         colors = request.args[:colors]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Manage.can_manage_game?(enactor))
@@ -17,7 +17,7 @@ module AresMUSH
           colors.each { |name, value| file.puts "$#{name}:#{value};"}
         end
         
-        WebHelpers.rebuild_css
+        Website.rebuild_css
         
         {}
       end

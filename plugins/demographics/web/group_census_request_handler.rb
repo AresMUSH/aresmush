@@ -22,7 +22,7 @@ module AresMUSH
           group[:chars] = chars.sort_by { |c| c.name}
             .map { |c| {
              name: c.name,
-             icon: WebHelpers.icon_for_char(c),
+             icon: Website.icon_for_char(c),
              groups: c.groups,
              rank: c.rank
           }}

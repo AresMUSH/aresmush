@@ -20,7 +20,7 @@ module AresMUSH
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'char_gallery.hbs'))
 
         data = {
-          "chars" => matches.sort_by { |c| c.name }.map { |c| { name: c.name, icon: WebHelpers.icon_for_char(c) }},
+          "chars" => matches.sort_by { |c| c.name }.map { |c| { name: c.name, icon: Website.icon_for_char(c) }},
           "title" => ""
         }
         

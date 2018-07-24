@@ -5,7 +5,7 @@ module AresMUSH
         enactor = request.enactor
         job = Job[request.args[:id]]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!job)

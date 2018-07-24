@@ -9,7 +9,7 @@ module AresMUSH
           return { error: t('webportal.login_required') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         error = Chargen.check_chargen_locked(char)

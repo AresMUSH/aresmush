@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         tags = Mail.all_tags(enactor).select { |t| t != Mail.inbox_tag }.sort
@@ -17,7 +17,7 @@ module AresMUSH
             tags: m.tags,
             can_reply: m.author,
             unread: !m.read,
-            body: WebHelpers.format_markdown_for_html(m.body)
+            body: Website.format_markdown_for_html(m.body)
             }}
         
         { 

@@ -9,7 +9,7 @@ module AresMUSH
           return []
         end
 
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         

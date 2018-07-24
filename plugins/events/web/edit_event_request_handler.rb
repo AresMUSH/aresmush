@@ -14,7 +14,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         can_manage = enactor && Events.can_manage_event(enactor, event)
@@ -38,7 +38,7 @@ module AresMUSH
           return { error: t('events.invalid_event_date', :format_str => format_help ) }
         end
               
-        Events.update_event(event, enactor, title, datetime, WebHelpers.format_input_for_mush(desc))
+        Events.update_event(event, enactor, title, datetime, Website.format_input_for_mush(desc))
         
         {}
       end

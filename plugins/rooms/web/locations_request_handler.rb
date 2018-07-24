@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         {
@@ -15,7 +15,7 @@ module AresMUSH
                name: r.name,
                id: r.id,
                name_and_area: r.name_and_area,
-               description: r.description ? WebHelpers.format_markdown_for_html(r.description) : ""
+               description: r.description ? Website.format_markdown_for_html(r.description) : ""
              }}
           }
       end

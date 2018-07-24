@@ -28,7 +28,7 @@ module AresMUSH
         
         values = data.map { |key, value|  {
           title: key.titleize,
-          detail: WebHelpers.format_markdown_for_html(FS3Combat.gear_detail(value).to_s)
+          detail: Website.format_markdown_for_html(FS3Combat.gear_detail(value).to_s)
           }
         }
         

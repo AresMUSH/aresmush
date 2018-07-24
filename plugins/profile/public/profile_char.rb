@@ -21,16 +21,35 @@ module AresMUSH
       self.profile_versions.to_a.sort_by { |p| p.created_at }.reverse.first
     end
     
-    def set_profile(new_profile, enactor)
-      self.update(profile: new_profile)
-      self.update(profile_last_edited: Time.now)
-      
+    def build_profile_version
       profile_text = ""
       self.demographics.each { |k, v| profile_text << "\n#{k}: #{v}"}
       self.groups.each { |k, v| profile_text << "\n#{k}: #{v}"}
       self.profile.each { |k, v| profile_text << "\n\n#{k}\n------\n#{v}"}
       self.relationships.each { |k, v| profile_text << "\n\n#{k}: #{v['category']}\n------\n#{v['relationship']}"}
-      ProfileVersion.create(character: self, text: profile_text, author: enactor)
+      profile_text
+    end
+    
+    def set_profile(new_profile, enactor)
+      self.update(profile: new_profile)
+      self.update(profile_last_edited: Time.now)
+      ProfileVersion.create(character: self, text: build_profile_version, author: enactor)
+    end
+        
+    def search_blob
+      "#{self.name} #{build_profile_version} #{self.profile_tags.join(' ')}"
+    end
+    
+    def searchable?
+      is_approved?
+    end
+    
+    def search_name
+      self.name
+    end
+    
+    def search_summary
+      nil
     end
   end
   

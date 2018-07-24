@@ -5,7 +5,7 @@ module AresMUSH
                 
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         posts = BbsPost.all.select { |p| Forum.can_read_category?(enactor, p.bbs_board ) }
@@ -20,7 +20,7 @@ module AresMUSH
               category_id: p.bbs_board.id,
               author: {
                 name: p.author_name,
-                icon: p.author ? WebHelpers.icon_for_char(p.author) : nil
+                icon: p.author ? Website.icon_for_char(p.author) : nil
                },
               date: p.created_date_str_short(enactor),
               subject: p.subject,
@@ -33,7 +33,7 @@ module AresMUSH
               category_id: p.bbs_board.id,
               author: {
                 name: last_reply.author_name,
-                icon: last_reply.author ? WebHelpers.icon_for_char(last_reply.author) : nil
+                icon: last_reply.author ? Website.icon_for_char(last_reply.author) : nil
                },
               date: last_reply.created_date_str_short(enactor),
               subject: p.subject,

@@ -5,7 +5,7 @@ module AresMUSH
         id = request.args[:id]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         combat = Combat[id]

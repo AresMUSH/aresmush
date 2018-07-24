@@ -5,7 +5,7 @@ module AresMUSH
         enactor = request.enactor
         filename = request.args[:file]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Manage.can_manage_game?(enactor))
@@ -13,6 +13,11 @@ module AresMUSH
         end
         
         path = File.join(AresMUSH.game_path, "logs", filename)
+        
+        if (!File.exists?(path))
+          return { error: t('webportal.not_found') }
+        end
+        
         lines = File.readlines(path).reverse
               
               

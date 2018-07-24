@@ -7,7 +7,7 @@ module AresMUSH
         reply = request.args[:reply]
         admin_only = request.args[:admin_only].to_bool
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         if (!job)
@@ -20,7 +20,7 @@ module AresMUSH
           end
         end
         
-        reply = WebHelpers.format_input_for_mush(reply)
+        reply = Website.format_input_for_mush(reply)
         Jobs.comment(job, enactor, reply, admin_only)
         
         {

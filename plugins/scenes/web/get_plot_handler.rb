@@ -10,13 +10,13 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         if (edit_mode)
           description = plot.description
         else
-          description = plot.description.blank? ? nil : WebHelpers.format_markdown_for_html(plot.description)
+          description = plot.description.blank? ? nil : Website.format_markdown_for_html(plot.description)
         end
         
         scenes = plot.scenes.select { |s| s.shared }
@@ -26,7 +26,7 @@ module AresMUSH
             summary: s.summary,
             location: s.location,
             icdate: s.icdate,
-            participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }},
+            participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
             scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
             }}
         {

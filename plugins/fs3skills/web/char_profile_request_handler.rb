@@ -9,14 +9,14 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
 
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         if (FS3Combat.is_enabled?)
           damage = char.damage.map { |d| {
             date: d.ictime_str,
             description: d.description,
-            severity: WebHelpers.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity))
+            severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity))
           }          
         }
       else

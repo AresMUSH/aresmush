@@ -5,7 +5,7 @@ module AresMUSH
         enactor = request.enactor
         message = MailMessage[request.args[:id]]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         if (!message)
@@ -23,7 +23,7 @@ module AresMUSH
             tags: message.tags,
             can_reply: !!message.author,
             unread: !message.read,
-            body: WebHelpers.format_markdown_for_html(message.body)
+            body: Website.format_markdown_for_html(message.body)
         }
       end
     end

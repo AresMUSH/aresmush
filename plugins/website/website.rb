@@ -14,7 +14,7 @@ module AresMUSH
     end
  
     def self.init_plugin
-      WebHelpers.rebuild_css
+      Website.rebuild_css
     end
     
     def self.get_cmd_handler(client, cmd, enactor)       
@@ -120,6 +120,8 @@ module AresMUSH
         return MarkdownPreviewRequestHandler
       when "recentChanges"
         return GetRecentChangesRequestHandler
+      when "searchSite"
+        return SiteSearchRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
       when "shutdown"

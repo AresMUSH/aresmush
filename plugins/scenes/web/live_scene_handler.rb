@@ -9,7 +9,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
 
         if (!Scenes.can_read_scene?(enactor, scene))
@@ -30,15 +30,15 @@ module AresMUSH
         
         participants = Scenes.participants_and_room_chars(scene)
             .sort_by {|p| p.name }
-            .map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
+            .map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
             
         {
           id: scene.id,
           title: scene.title,
           location: {
             name: scene.location,
-            description: scene.room ? WebHelpers.format_markdown_for_html(scene.room.description) : nil,
-            scene_set: scene.room ? WebHelpers.format_markdown_for_html(scene.room.scene_set) : nil },
+            description: scene.room ? Website.format_markdown_for_html(scene.room.description) : nil,
+            scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil },
           completed: scene.completed,
           summary: scene.summary,
           tags: scene.tags,
@@ -48,7 +48,7 @@ module AresMUSH
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           can_edit: enactor && Scenes.can_access_scene?(enactor, scene),
           poses: scene.poses_in_order.map { |p| { 
-            char: { name: p.character.name, icon: WebHelpers.icon_for_char(p.character) }, 
+            char: { name: p.character.name, icon: Website.icon_for_char(p.character) }, 
             order: p.order, 
             id: p.id,
             is_setpose: p.is_setpose,
@@ -56,7 +56,7 @@ module AresMUSH
             is_ooc: p.is_ooc,
             raw_pose: p.pose,
             can_edit: !p.is_system_pose? && p.can_edit?(enactor),
-            pose: WebHelpers.format_markdown_for_html(p.pose) }}
+            pose: Website.format_markdown_for_html(p.pose) }}
         }
       end
     end

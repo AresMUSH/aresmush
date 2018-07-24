@@ -7,7 +7,7 @@ module AresMUSH
         subject = request.args[:subject]
         to_list = request.args[:to_list]
        
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         if (!enactor.is_approved?)
@@ -18,7 +18,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields') }
         end
         
-        message = WebHelpers.format_input_for_mush(message)
+        message = Website.format_input_for_mush(message)
         
         sent = Mail.send_mail(to_list.split(" "), subject, message, nil, enactor)
         if (!sent)

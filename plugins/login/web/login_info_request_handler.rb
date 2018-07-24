@@ -3,7 +3,7 @@ module AresMUSH
     class LoginInfoRequestHandler
       def handle(request)      
         tos = Login.terms_of_service
-        tos_md = tos ? WebHelpers.format_markdown_for_html(tos) : nil
+        tos_md = tos ? Website.format_markdown_for_html(tos) : nil
         recaptcha = AresMUSH::Website::RecaptchaHelper.new
         
           
