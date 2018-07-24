@@ -5,7 +5,7 @@ module AresMUSH
         text = request.args[:text]
         
         {
-          text: WebHelpers.format_markdown_for_html(text)
+          text: Website.format_markdown_for_html(text)
         }
       end
     end

@@ -5,7 +5,7 @@ module AresMUSH
         enactor = request.enactor
         job = Job[request.args[:id]]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         if (!job)
@@ -37,12 +37,12 @@ module AresMUSH
           created: job.created_date_str(enactor),
           is_open: job.is_open?,
           job_admin: job_admin,
-          author: { name: job.author_name, icon: WebHelpers.icon_for_char(job.author) },
+          author: { name: job.author_name, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? job.assigned_to.name : "--",
-          description: WebHelpers.format_markdown_for_html(job.description),
+          description: Website.format_markdown_for_html(job.description),
           replies: Jobs.visible_replies(enactor, job).map { |r| {
-            author: { name: r.author_name, icon: WebHelpers.icon_for_char(r.author) },
-            message: WebHelpers.format_markdown_for_html(r.message),
+            author: { name: r.author_name, icon: Website.icon_for_char(r.author) },
+            message: Website.format_markdown_for_html(r.message),
             created: r.created_date_str(enactor),
             admin_only: r.admin_only
           }}

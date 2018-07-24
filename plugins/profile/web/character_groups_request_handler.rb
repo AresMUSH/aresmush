@@ -17,7 +17,7 @@ module AresMUSH
         group_names.each_with_index do |group_name, index|
           npcs_in_group = (npc_groups[group_name] || []).sort_by { |n| n.name }.map { |c| {
               name: c.name,
-              icon: WebHelpers.icon_for_char(c)
+              icon: Website.icon_for_char(c)
               }
             }
           chars_in_group = char_groups[group_name] || []
@@ -31,7 +31,7 @@ module AresMUSH
               name: subgroup_name,
               chars: chars_in_subgroup.sort_by { |c| c.name }.map { |c| {
                       name: c.name,
-                      icon: WebHelpers.icon_for_char(c)
+                      icon: Website.icon_for_char(c)
                       }
                     }
             }

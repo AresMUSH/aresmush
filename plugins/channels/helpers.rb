@@ -67,7 +67,7 @@ module AresMUSH
         end
       end
       
-      web_message = "#{channel.name.downcase}|#{WebHelpers.format_markdown_for_html(msg)}"
+      web_message = "#{channel.name.downcase}|#{Website.format_markdown_for_html(msg)}"
       Global.client_monitor.notify_web_clients(:new_chat, web_message) do |char|
         char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end

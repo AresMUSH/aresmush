@@ -14,11 +14,11 @@ module AresMUSH
         advantages = FS3Skills.advantages.map { |a| { name: a['name'], description: a['desc'] } }
         
         {
-          attrs_blurb: WebHelpers.format_markdown_for_html(FS3Skills.attr_blurb),
-          action_blurb: WebHelpers.format_markdown_for_html(FS3Skills.action_blurb),
-          background_blurb: WebHelpers.format_markdown_for_html(FS3Skills.bg_blurb),
-          language_blurb: WebHelpers.format_markdown_for_html(FS3Skills.language_blurb),
-          advantages_blurb:  WebHelpers.format_markdown_for_html(FS3Skills.advantages_blurb),          
+          attrs_blurb: Website.format_markdown_for_html(FS3Skills.attr_blurb),
+          action_blurb: Website.format_markdown_for_html(FS3Skills.action_blurb),
+          background_blurb: Website.format_markdown_for_html(FS3Skills.bg_blurb),
+          language_blurb: Website.format_markdown_for_html(FS3Skills.language_blurb),
+          advantages_blurb:  Website.format_markdown_for_html(FS3Skills.advantages_blurb),          
           
           attrs: attrs,
           action_skills: action_skills,

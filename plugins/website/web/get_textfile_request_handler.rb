@@ -6,7 +6,7 @@ module AresMUSH
         file_type = request.args[:file_type]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Manage.can_manage_game?(enactor))
@@ -28,7 +28,7 @@ module AresMUSH
         
         text = File.read(path)
         
-          { file: file, text: WebHelpers.format_input_for_html(text), file_type: file_type }
+          { file: file, text: Website.format_input_for_html(text), file_type: file_type }
 
       end
     end

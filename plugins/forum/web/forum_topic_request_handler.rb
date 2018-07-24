@@ -6,7 +6,7 @@ module AresMUSH
         topic_id = request.args[:topic_id]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         topic = BbsPost[topic_id.to_i]
@@ -27,8 +27,8 @@ module AresMUSH
           { id: r.id,
             author: {
             name: r.author_name,
-            icon: r.author ? WebHelpers.icon_for_char(r.author) : nil },
-            message: WebHelpers.format_markdown_for_html(r.message),
+            icon: r.author ? Website.icon_for_char(r.author) : nil },
+            message: Website.format_markdown_for_html(r.message),
             date: r.created_date_str(enactor)
           }
         }
@@ -42,8 +42,8 @@ module AresMUSH
              date: topic.created_date_str(enactor),
              author: {
                name: topic.author_name,
-               icon: topic.author ? WebHelpers.icon_for_char(topic.author) : nil },
-             message: WebHelpers.format_markdown_for_html(topic.message),
+               icon: topic.author ? Website.icon_for_char(topic.author) : nil },
+             message: Website.format_markdown_for_html(topic.message),
              replies: replies,
              can_reply: Forum.can_write_to_category?(enactor, category)
              

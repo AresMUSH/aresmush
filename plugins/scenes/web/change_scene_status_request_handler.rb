@@ -10,7 +10,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Scenes.can_access_scene?(enactor, scene))

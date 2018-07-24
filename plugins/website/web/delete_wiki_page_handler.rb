@@ -5,7 +5,7 @@ module AresMUSH
         name_or_id = request.args[:id]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         page = WikiPage.find_by_name_or_id(name_or_id)

@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Manage.can_manage_game?(enactor))
@@ -13,7 +13,7 @@ module AresMUSH
 
         config = Global.read_config("game")
 
-        config['description'] = WebHelpers.format_input_for_html(config['description'])
+        config['description'] = Website.format_input_for_html(config['description'])
         {
           config: config,
           status_options: [ 'In Development', 'Beta', 'Open', 'Closed', 'Sandbox' ],

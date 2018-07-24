@@ -86,11 +86,11 @@ module AresMUSH
         end
       end
       
-      char.update(cg_background: WebHelpers.format_input_for_mush(chargen_data[:background]))
+      char.update(cg_background: Website.format_input_for_mush(chargen_data[:background]))
       
-      char.update(rp_hooks: WebHelpers.format_input_for_mush(chargen_data[:rp_hooks]))
-      char.update(description: WebHelpers.format_input_for_mush(chargen_data[:desc]))
-      char.update(shortdesc: WebHelpers.format_input_for_mush(chargen_data[:shortdesc]))
+      char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
+      char.update(description: Website.format_input_for_mush(chargen_data[:desc]))
+      char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
       
       if FS3Skills.is_enabled?
         (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|

@@ -11,7 +11,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
 
         if (!Forum.can_read_category?(enactor, category))

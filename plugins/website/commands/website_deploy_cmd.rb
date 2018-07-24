@@ -5,7 +5,7 @@ module AresMUSH
             
       def handle
         client.emit_ooc t('webportal.redeploying_website')
-        WebHelpers.deploy_portal(client)
+        Website.deploy_portal(client)
         
       end
     end

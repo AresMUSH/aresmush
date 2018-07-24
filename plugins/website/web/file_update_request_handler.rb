@@ -11,7 +11,7 @@ module AresMUSH
         new_name = (request.args[:new_name] || "").downcase
         new_folder = (request.args[:new_folder] || "").downcase
 
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!enactor.is_approved?)

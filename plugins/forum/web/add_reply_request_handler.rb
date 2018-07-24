@@ -12,7 +12,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
 
@@ -25,7 +25,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields' )}
         end
       
-        formatted_message = WebHelpers.format_input_for_mush(message)
+        formatted_message = Website.format_input_for_mush(message)
         Forum.reply(category, topic, enactor, formatted_message)
         {}
       end

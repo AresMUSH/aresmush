@@ -13,7 +13,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
 
         if (!Scenes.can_access_scene?(enactor, scene))
@@ -24,7 +24,7 @@ module AresMUSH
           return { error: t('scenes.scene_already_completed') }
         end
         
-        pose = WebHelpers.format_input_for_mush(pose)
+        pose = Website.format_input_for_mush(pose)
         
         command = ((pose.split(" ").first) || "").downcase
         if (command == "ooc")

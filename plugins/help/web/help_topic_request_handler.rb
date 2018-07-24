@@ -14,7 +14,7 @@ module AresMUSH
 
         {
           name: topic.titleize,
-          help: WebHelpers.format_markdown_for_html(contents)
+          help: Website.format_markdown_for_html(contents)
         }
       end
     end

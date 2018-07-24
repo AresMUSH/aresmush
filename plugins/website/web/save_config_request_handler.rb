@@ -6,7 +6,7 @@ module AresMUSH
         config = request.args[:config]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Manage.can_manage_game?(enactor))

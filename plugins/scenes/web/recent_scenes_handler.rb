@@ -12,7 +12,7 @@ module AresMUSH
                 summary: s.summary,
                 location: s.location,
                 icdate: s.icdate,
-                participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }},
+                participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                 scene_type: s.scene_type ? s.scene_type.titlecase : 'unknown',
       
               }}

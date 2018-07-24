@@ -7,7 +7,7 @@ module AresMUSH
         combatant_type = request.args[:combatant_type] || FS3Combat.default_combatant_type
         name = request.args[:name]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         combat = Combat[id]

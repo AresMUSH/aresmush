@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
 
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         
@@ -35,7 +35,7 @@ module AresMUSH
           name: Global.read_config('game', 'name'),
           host: Global.read_config('server', 'hostname'),
           port: Global.read_config('server', 'port'),
-          website_welcome: WebHelpers.welcome_text,
+          website_welcome: Website.welcome_text,
           onlineCount: Global.client_monitor.logged_in.count,
           ictime: ICTime.ic_datestr(ICTime.ictime),
           gcse_search_id: search_id,

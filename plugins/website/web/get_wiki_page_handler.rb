@@ -7,7 +7,7 @@ module AresMUSH
         
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         if (!name_or_id || name_or_id.blank?)
@@ -21,9 +21,9 @@ module AresMUSH
         end
         
         lock_info = page.get_lock_info(enactor)
-        restricted_page = WebHelpers.is_restricted_wiki_page?(page)
+        restricted_page = Website.is_restricted_wiki_page?(page)
         if (edit_mode)
-          if (restricted_page && !WebHelpers.can_manage_wiki?(enactor))
+          if (restricted_page && !Website.can_manage_wiki?(enactor))
             return { error: t('dispatcher.not_allowed') }
           end
           if (!lock_info)
@@ -32,10 +32,10 @@ module AresMUSH
           end
           text = page.text
         else
-          text = WebHelpers.format_markdown_for_html page.text
+          text = Website.format_markdown_for_html page.text
         end
         
-        can_edit = enactor && enactor.is_approved? && !lock_info && ( WebHelpers.can_manage_wiki?(enactor) || !restricted_page )
+        can_edit = enactor && enactor.is_approved? && !lock_info && ( Website.can_manage_wiki?(enactor) || !restricted_page )
                     
         {
           id: page.id,

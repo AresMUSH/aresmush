@@ -10,15 +10,15 @@ module AresMUSH
           return { error: t('webportal.not_found')}
         end
 
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
          {
            id: player.id,
            handle: player.handle ? player.handle.name : nil,
            name: player.name,
-           icon: WebHelpers.icon_for_char(player),
-           alts: player.alts.map { |a| {name: a.name, icon: WebHelpers.icon_for_char(a)} },
+           icon: Website.icon_for_char(player),
+           alts: player.alts.map { |a| {name: a.name, icon: Website.icon_for_char(a)} },
            can_manage: enactor && Profile.can_manage_char_profile?(enactor, player)
          }
       end

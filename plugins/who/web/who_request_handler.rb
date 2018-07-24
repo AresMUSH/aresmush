@@ -5,7 +5,7 @@ module AresMUSH
         who =  Global.client_monitor.logged_in.sort_by { |client, char| char.name}
           .map { |client, char| {
           name: char.name,
-          icon: WebHelpers.icon_for_char(char)
+          icon: Website.icon_for_char(char)
           }
         }
                        

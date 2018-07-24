@@ -11,7 +11,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Scenes.can_access_scene?(enactor, scene))
@@ -33,14 +33,14 @@ module AresMUSH
           scene.room.emit_ooc message
         end
           
-        Scenes.add_to_scene(scene, WebHelpers.format_markdown_for_html(message), Game.master.system_character)
+        Scenes.add_to_scene(scene, Website.format_markdown_for_html(message), Game.master.system_character)
         
         if (scene.room)
           scene.room.emit message
         end
         
         
-        { pose: WebHelpers.format_markdown_for_html(pose_text) }
+        { pose: Website.format_markdown_for_html(pose_text) }
       end
     end
   end

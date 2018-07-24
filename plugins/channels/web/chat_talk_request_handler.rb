@@ -10,7 +10,7 @@ module AresMUSH
           return { error: t('webportal.login_required') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
                 
         if (!channel)
@@ -20,7 +20,7 @@ module AresMUSH
         message = Channels.pose_to_channel channel, enactor.name, message    
         
         {
-          message: WebHelpers.format_markdown_for_html(message)
+          message: Website.format_markdown_for_html(message)
         }
       end
     end
