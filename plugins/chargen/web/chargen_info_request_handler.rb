@@ -40,6 +40,7 @@ module AresMUSH
         {
           fs3: fs3,
           group_options: groups,
+          date_format: Global.read_config("datetime", "date_entry_format_help")
         }
       end
     end

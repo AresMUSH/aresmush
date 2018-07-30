@@ -119,7 +119,7 @@ module AresMUSH
             "%xr[#{t('describe.afk')}:#{idle_str}]%xn"
           end
         elsif (client && Status.is_idle?(client))
-          "%xy%xh[#{t('describe.idle')}:#{idle_str}]%xn"
+          "%xy%xh[#{idle_str}]%xn"
         elsif (Global.read_config('describe', 'always_show_idle_in_rooms'))
           "%xh%xx[#{idle_str}]%xn"
         else

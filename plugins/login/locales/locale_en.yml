@@ -19,7 +19,7 @@ en:
        web_registration_disabled: "Web registration is disabled.  Please create a character in the game."
        invalid_email_format:  "That is not a valid email format."
        password_changed: "You change your password."
-       password_reset: "%{name}'s password has been reset to %{password}."
+       password_reset: "%{name}'s password has been reset to %{password}"
        cant_reset_master_admin_password: "You can't reset the master admin's password."
        tos_agreement_not_pending: "You aren't looking at the terms of service."
        tos_agree: "Type %xctos/agree%xn to agree to these terms of service."

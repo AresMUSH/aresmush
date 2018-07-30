@@ -27,11 +27,8 @@ module AresMUSH
             return
           end
           
-          scene.update(shared: false)
-          if (scene.scene_log)
-            Scenes.add_to_scene(scene, scene.scene_log.log, scene.owner)
-            scene.scene_log.delete
-          end
+          Scenes.unshare_scene(enactor, scene)
+          
           client.emit_success t('scenes.log_unshared', :name => enactor_name)
         end
       end
