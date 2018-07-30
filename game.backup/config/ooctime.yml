@@ -1,6 +1,0 @@
-ooctime:
-    
-    default_timezone: "America/New_York"
-    
-    shortcuts:
-       "ooctime": "time"
