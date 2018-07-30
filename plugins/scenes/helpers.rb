@@ -44,6 +44,14 @@ module AresMUSH
       Scenes.new_scene_activity(scene)
     end
     
+    def self.unshare_scene(enactor, scene)
+      scene.update(shared: false)
+      if (scene.scene_log)
+        Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
+        scene.scene_log.delete
+      end
+    end
+    
     def self.share_scene(scene)
       if (!scene.all_info_set?)
         return false

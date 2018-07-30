@@ -43,6 +43,13 @@ module AresMUSH
           
           Scenes.share_scene(scene)
           
+        when "unshare"
+          if (!scene.shared)
+            return { error: t('scenes.scene_not_shared')}
+          end
+          
+          Scenes.unshare_scene(enactor, scene)
+          
         else
           return { error: t('webportal.unexpected_error') }
         end

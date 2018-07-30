@@ -48,7 +48,7 @@ module AresMUSH
             scene.room.update(scene_set: pose)
           end
         else
-          if (pose.start_with?(*PoseFormatter.pose_markers))
+          if (pose.start_with?(*PoseFormatter.pose_markers) && !pose.start_with?("\""))
             pose = PoseFormatter.format(enactor.name, pose)
           end
           orig_pose = pose

@@ -5,7 +5,7 @@ module AresMUSH
     attribute :pose_quote_color
     attribute :pose_nudge, :type => DataType::Boolean, :default => true
     attribute :pose_nudge_muted, :type => DataType::Boolean
-    
+
     def autospace
       self.pose_autospace
     end

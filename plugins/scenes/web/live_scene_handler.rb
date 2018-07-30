@@ -11,7 +11,7 @@ module AresMUSH
         
         error = Website.check_login(request, true)
         return error if error
-
+        
         if (!Scenes.can_read_scene?(enactor, scene))
           return { error: t('scenes.scene_is_private') }
         end

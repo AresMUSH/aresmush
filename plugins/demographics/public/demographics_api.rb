@@ -89,5 +89,46 @@ module AresMUSH
     def self.gender_noun(char)
       t("demographics.#{gender(char)}_noun")
     end
+    
+    
+    def self.check_age(age)
+      min_age = Global.read_config("demographics", "min_age")
+      max_age = Global.read_config("demographics", "max_age")
+      if (age > max_age || age < min_age)
+        return t('demographics.age_outside_limits', :min => min_age, :max => max_age) 
+      end
+      return nil
+    end
+    
+    def self.calculate_age(dob)
+      return 0 if !dob
+      now = ICTime.ictime
+      now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    end
+    
+    def self.set_birthday(model, date_str)
+      begin
+        bday = Date.strptime(date_str, Global.read_config("datetime", "short_date_format"))
+      rescue
+        return { error: t('demographics.invalid_birthdate', 
+           :format_str => Global.read_config("datetime", "date_entry_format_help")) }
+      end
+    
+      age = Demographics.calculate_age(bday)
+      age_error = Demographics.check_age(age)
+      if (age_error)
+        return { error: age_error }
+      end
+      
+      model.update_demographic(:birthdate, bday)
+      return { bday: bday }
+    end
+    
+    def self.set_random_birthdate(model, age)
+      bday = Date.new ICTime.ictime.year - age, ICTime.ictime.month, ICTime.ictime.day
+      bday = bday - rand(364)
+      model.update_demographic :birthdate, bday
+      return bday
+    end
   end  
 end
