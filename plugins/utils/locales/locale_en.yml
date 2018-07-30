@@ -30,5 +30,7 @@ en:
     notes:
         note_added: "Note added."
         note_deleted: "Note deleted."
-        notes_title: "Player Notes"
+        notes_admin_title: "Admin Notes for %{name}"
+        notes_title: "Player Notes for %{name}"
         note_does_not_exist: "That note does not exist."
+        note_added_by: "Added by %{name} on %{date}."
