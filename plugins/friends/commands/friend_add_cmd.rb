@@ -27,6 +27,7 @@ module AresMUSH
         end
         Friendship.create(:character => enactor, :friend => friend)
         client.emit_success t('friends.friend_added', :name => self.name)
+        Achievements.award_achievement(enactor, "friend_added", :community, "Added a friend.")
       end
     end
   end

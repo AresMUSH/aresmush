@@ -12,6 +12,7 @@ module AresMUSH
           allow(ClassTargetFinder).to receive(:find) { FindResult.new(nil, "error") }
           allow(FS3Combat).to receive(:combatant_type_stat) { nil }
           allow(FS3Combat).to receive(:set_default_gear)
+          allow(FS3Combat).to receive(:handle_combat_join_achievement) {}
           stub_translate_for_testing
         end
   

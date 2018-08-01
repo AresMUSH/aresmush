@@ -2,6 +2,7 @@
 plugins:
   disabled_plugins: [ ]
   optional_plugins:
+  - achievements
   - chargen
   - cookies
   - events

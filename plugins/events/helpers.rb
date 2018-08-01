@@ -55,7 +55,7 @@ module AresMUSH
       end
 
       Events.events_updated
-
+      Events.handle_event_achievement(enactor)
       return event
     end
    
@@ -105,6 +105,10 @@ module AresMUSH
         
         f.puts "END:VCALENDAR"
       end
+    end
+    
+    def self.handle_event_achievement(char)
+        Achievements.award_achievement(char, "event_created", :community, "Scheduled an event.")
     end
   end
 end
