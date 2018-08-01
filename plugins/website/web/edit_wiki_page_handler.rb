@@ -35,6 +35,8 @@ module AresMUSH
         page.update(tags: tags, title: title, name: name, locked_by: nil)
         WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
         
+        Achievements.award_achievement(enactor, "wiki_edit", :portal, "Edited a wiki page.")
+        
         {
           id: page.id,
           name: page.name

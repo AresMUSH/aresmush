@@ -32,7 +32,9 @@ module AresMUSH
           pose: Website.format_markdown_for_html(scene_pose.pose) 
         }.to_json
       Scenes.new_scene_activity(scene, data)
-      
+      if (!is_ooc)
+        Scenes.handle_word_count_achievements(character, pose)
+      end
     end
   end
 end

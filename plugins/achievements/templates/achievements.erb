@@ -1,0 +1,7 @@
+%lh
+%xh<%= t('achievements.achievements_title', :name => name) %>%xn
+
+<% list.each do |name, data| %>
+<%= data[:message] %> <% if data[:count] > 1 %>(<%= data[:count] %>)<% end %>
+<% end %>
+%lf

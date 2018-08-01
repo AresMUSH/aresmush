@@ -19,8 +19,19 @@ module AresMUSH
            name: player.name,
            icon: Website.icon_for_char(player),
            alts: player.alts.map { |a| {name: a.name, icon: Website.icon_for_char(a)} },
-           can_manage: enactor && Profile.can_manage_char_profile?(enactor, player)
+           can_manage: enactor && Profile.can_manage_char_profile?(enactor, player),
+           achievements: build_achievements(player)
          }
+      end
+      
+      def build_achievements(player)
+        return {} if !Achievements.is_enabled? 
+        
+        Achievements.achievements_list(player).map { |name, data| {
+          name: name,
+          type: data[:type],
+          message: data[:message]
+        }}
       end
     end
   end

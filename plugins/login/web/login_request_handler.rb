@@ -16,6 +16,7 @@ module AresMUSH
         end
         char.update(login_api_token: "#{SecureRandom.uuid}")
         char.update(login_api_token_expiry: Time.now + 86400)
+        
         {
           token: char.login_api_token,
           name: char.name,
