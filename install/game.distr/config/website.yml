@@ -1,9 +1,9 @@
 ---
 website:
   sitemap_update_cron:
-    hour: 
+    hour:
     - 2
-    minute: 
+    minute:
     - 17
   allow_html_in_markdown: true
   max_upload_size_kb: 5000
