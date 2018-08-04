@@ -20,8 +20,13 @@ module AresMUSH
           return
         end
   
-        import_plugin
-        import_game
+        existing = import_plugin
+        if (existing)
+          puts "Plugin previously installed - skipping game directory."
+          puts "If want to overwrite your configuration, you'll have to copy the game files manually from #{@source_dir} to your aresmush/game directory."
+        else
+          import_game
+        end
         import_portal
         
         puts "Plugin #{@plugin_name} added."
@@ -31,18 +36,20 @@ module AresMUSH
         
         plugin_dir = File.join(@source_dir, "plugin")
         dest_path = File.join(AresMUSH.root_path, "plugins", @plugin_name)  
+        exists = Dir.exist?(dest_path)
         
         if (!Dir.exist?(plugin_dir))
-          return
-        end
-        
-        if (!Dir.exist?(dest_path))
-          Dir.mkdir dest_path
+          puts "No plugin files to import."
+          return false
         end
         
         if (!File.exists?(File.join(plugin_dir, "#{@plugin_name}.rb")))
           puts "ERROR! Plugin module file #{@plugin_name}.rb not found.  This plugin can't be automatically imported."
-          return
+          return false
+        end
+        
+        if !exists
+          Dir.mkdir dest_path
         end
         
         puts "Copying plugin files to #{dest_path}."  
@@ -50,6 +57,8 @@ module AresMUSH
         plugin_files.each do |f|
           FileUtils.cp_r(f, dest_path)
         end
+        
+        return exists
       end
       
       def import_game
@@ -58,11 +67,13 @@ module AresMUSH
         dest_path = AresMUSH.game_path
         
         if (!Dir.exist?(game_dir))
+          puts "No game files to import."
           return
         end
         
         puts "Copying game files to #{dest_path}."  
         game_files = Dir["#{game_dir}/*"]
+        
         game_files.each do |f|
           FileUtils.cp_r(f, dest_path)
         end
@@ -73,6 +84,7 @@ module AresMUSH
         dest_path = File.join( Global.read_config("website", "website_code_path"), "app" )
 
         if (!Dir.exist?(web_source_dir))
+          puts "No web files to import."
           return
         end
         

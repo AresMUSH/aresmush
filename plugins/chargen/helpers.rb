@@ -68,7 +68,7 @@ module AresMUSH
       age_or_bday = chargen_data[:demographics][:age][:value]
 
       # See if it's just an age.
-      if (age_or_bday =~ /^\d+$/)
+      if (age_or_bday.is_integer?)
         age = age_or_bday.to_i
         if (age != char.age)
           age_error = Demographics.check_age(age)
