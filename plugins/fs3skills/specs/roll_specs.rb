@@ -5,7 +5,7 @@ module AresMUSH
       before do
         allow(Global).to receive(:read_config).with("fs3skills", "max_luck") { 3 }
         allow(Global).to receive(:read_config).with("fs3skills", "roll_channel") { "FS3 Chan" }
-
+        allow(Achievements).to receive(:award_achievement) {}
         # Note:  By seeding the random number generator, we can avoid the randomness.
         #   If you use Kernel.srand(22), the first 10 die rolls in tests will always be:  
         #      [6, 5, 5, 1, 5, 7, 7, 4, 5, 1]
