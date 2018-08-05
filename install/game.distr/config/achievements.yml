@@ -1,10 +1,7 @@
 ---
 achievements:
-    achievements_cron:
-      day_of_week:
-      hour:
-      - 20
-      minute:
-      - 0
-
-         
+  types:
+      community: fa-users
+      portal: fa-globe
+      fs3: fa-cubes
+      story: fa-book

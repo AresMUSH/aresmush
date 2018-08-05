@@ -21,7 +21,7 @@ module AresMUSH
       
       Global.logger.info "#{giver.name} gave #{recipient.name} a cookie."
 
-      Achievements.award_achievement(giver, "cookie_given", :community, "Gave a cookie.")
+      Achievements.award_achievement(giver, "cookie_given", 'community', "Gave a cookie.")
     end
   end
 end

@@ -38,7 +38,6 @@ module AresMUSH
     end
     
     def switch_is?(switch)
-      return false if !@switch
       @switch == switch
     end
   

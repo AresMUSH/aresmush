@@ -90,9 +90,14 @@ module AresMUSH
         expect(cmd.switch_is?("foo")).to be true
       end      
       
-      it "should return false for a nil root" do
+      it "should return false for a nil switch" do
         cmd = Command.new("test bar")
         expect(cmd.switch_is?("foo")).to be false
+      end
+
+      it "should true if asking about nil" do
+        cmd = Command.new("test bar")
+        expect(cmd.switch_is?(nil)).to be true
       end
     end
     
