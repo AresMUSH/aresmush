@@ -127,7 +127,8 @@ module AresMUSH
           playerbit: char.is_playerbit?,
           fs3: fs3,
           files: files,
-          last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil
+          last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil,
+          achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil
         }
       end
       
