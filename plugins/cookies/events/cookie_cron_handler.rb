@@ -35,7 +35,7 @@ module AresMUSH
           
           [1, 10, 25, 50, 100, 200, 500, 1000].each do |count|
             if (char.total_cookies >= count)
-              Achievements.award_achievement(char, "cookie_received_#{count}", :community, "Received #{count} cookies.")
+              Achievements.award_achievement(char, "cookie_received_#{count}", 'community', "Received #{count} cookies.")
             end
           end
 

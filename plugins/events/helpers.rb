@@ -108,7 +108,7 @@ module AresMUSH
     end
     
     def self.handle_event_achievement(char)
-        Achievements.award_achievement(char, "event_created", :community, "Scheduled an event.")
+        Achievements.award_achievement(char, "event_created", 'community', "Scheduled an event.")
     end
   end
 end

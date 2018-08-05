@@ -171,7 +171,7 @@ module AresMUSH
         type = "forum_post"
       end
       
-      Achievements.award_achievement(char, type, :community, message)
+      Achievements.award_achievement(char, type, 'community', message)
     end
   end
 end

@@ -5,11 +5,6 @@ module AresMUSH
       !Global.plugin_manager.is_disabled?("achievements")
     end
     
-    
-    def self.achievement_types
-      [ :community, :story, :portal, :fs3 ]
-    end
-    
     def self.award_achievement(char, name, type, message)
       return if char.is_admin? || char.is_npc? || char.is_guest?
       
@@ -49,10 +44,13 @@ module AresMUSH
     def self.build_achievements(player)
       return {} if !Achievements.is_enabled? 
       
+      icon_types = Global.read_config('achievements', 'types')
+      
       Achievements.achievements_list(player).map { |name, data| {
         name: name,
         type: data[:type],
-        message: data[:message]
+        message: data[:message],
+        type_icon: icon_types["#{data[:type]}"] || "fa-question"
       }}
     end
   end

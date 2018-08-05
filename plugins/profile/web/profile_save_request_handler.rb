@@ -61,7 +61,7 @@ module AresMUSH
         end
         char.set_profile(profile, enactor)
         
-        Achievements.award_achievement(enactor, "profile_edit", :portal, "Edited your character profile.")
+        Achievements.award_achievement(enactor, "profile_edit", 'portal', "Edited your character profile.")
         
         
         {    

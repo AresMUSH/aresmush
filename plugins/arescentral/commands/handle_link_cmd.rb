@@ -49,7 +49,7 @@ module AresMUSH
             enactor.update(handle: handle)
             client.emit_success t('arescentral.link_successful', :handle => self.handle_name)
             
-            Achievements.award_achievement(enactor, "handle_linked", :community, "Linked a character to a player handle.")
+            Achievements.award_achievement(enactor, "handle_linked", 'community', "Linked a character to a player handle.")
           else
             client.emit_failure t('arescentral.link_failed', :error => response.error_str)
           end   
