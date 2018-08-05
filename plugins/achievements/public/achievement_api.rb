@@ -1,6 +1,11 @@
 module AresMUSH
   module Achievements
     
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("achievements")
+    end
+    
+    
     def self.achievement_types
       [ :community, :story, :portal, :fs3 ]
     end
@@ -24,7 +29,10 @@ module AresMUSH
       end
 
       if (char.is_playerbit?)
-        AresCentral.alts_of(char).each do |c|
+        alts = AresCentral.alts_of(char)
+        alts = alts.concat Character.all.select { |c| c.profile_tags.include?("player:#{char.name}".downcase)}
+        
+        alts.each do |c|
           c.achievements.each do |a|
             if (data[a.name])
               count = data[a.name][:count]
@@ -37,6 +45,15 @@ module AresMUSH
       end
       data.sort_by { |name, data| data[:type] }
     end
-    
+   
+    def self.build_achievements(player)
+      return {} if !Achievements.is_enabled? 
+      
+      Achievements.achievements_list(player).map { |name, data| {
+        name: name,
+        type: data[:type],
+        message: data[:message]
+      }}
+    end
   end
 end
