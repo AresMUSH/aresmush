@@ -22,7 +22,7 @@ module AresMUSH
         
         enactor.spend_luck(1)
         enactor_room.emit_ooc t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
-        Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3' "Spent a luck point.")
+        Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
           
         Global.logger.info "#{enactor_name} spent luck on #{reason}."
       end
