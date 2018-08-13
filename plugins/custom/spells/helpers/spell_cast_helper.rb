@@ -1,5 +1,5 @@
 module AresMUSH
-  module Spells
+  module Custom
 
     def self.cast_equip_armor(caster, spell)
       succeeds = Custom.roll_spell_success(caster, spell)
