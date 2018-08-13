@@ -32,6 +32,16 @@ module AresMUSH
           return GMSecretsCmd
         end
       end
+      #Schools
+      case cmd.root
+      when "school"
+        case cmd.switch
+        when "set"
+          return SetSchoolsCmd
+        else
+          return SchoolsCmd
+        end
+      end
 
       return nil
     end

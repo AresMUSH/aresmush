@@ -2,11 +2,25 @@
 <%= action_blurb %>
 
 <% data[:skills].each do |s| %>
+<% if s['is_school'] == false %>
+<%= left( s['name'], 14) %> <%= s['desc'] %> (<%= s['linked_attr'] %>)
+<% if s['specialties'] %>
+  %xh<%= t('fs3skills.specialty_required') %>%xn <%= s['specialties'].join(", ") %>
+<% end %>
+<% end %>
+<% end %>
+
+<%= t('custom.schools_blurb') %>
+
+<% data[:skills].each do |s| %>
+<% if s['is_school'] == true %>
 <%= left( s['name'], 14) %> <%= s['desc'] %> (<%= s['linked_attr'] %>)
 <% if s['specialties'] %>
                    %xh<%= t('fs3skills.specialty_required') %>%xn <%= s['specialties'].join(", ") %>
 <% end %>
 <% end %>
+<% end %>
+
 
 <%= page_footer %>
 <%= footer %>
