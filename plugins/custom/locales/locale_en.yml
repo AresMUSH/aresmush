@@ -1,7 +1,7 @@
 ---
 en:
   custom:
-
+      invalid_name: "%xrCharacter not found.%xn"
         # ----------------------------
         # SCHOOLS
         # ----------------------------
