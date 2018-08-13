@@ -1,6 +1,12 @@
 ---
 en:
   custom:
+      invalid_name: "%xrCharacter not found.%xn"
+        # ----------------------------
+        # SCHOOLS
+        # ----------------------------
+      schools_title: "Schools"
+      schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
         # ----------------------------
         # POTIONS
         # ----------------------------
@@ -42,18 +48,4 @@ en:
       spell_ko: "You cannot cast a spell while Knocked Out."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
 
-      # ----------------------------
-      # FS3 COMBAT SPELL
-      # ----------------------------
-
-      spell_action_msg_long: "%{name} will cast a spell this turn."
-      spell_action_msg_short: "Spell"
-      spell_resolution_msg: "%{name} casts a spell."
-
-      # ----------------------------
-      # FS3 COMBAT POTION
-      # ----------------------------
-
-      potion_action_msg_long: "%{name} will use a potion this turn."
-      potion_action_msg_short: "Potion"
-      potion_resolution_msg: "%{name} uses a potion"
+    
