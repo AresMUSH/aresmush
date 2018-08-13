@@ -9,5 +9,5 @@ There are eight schools: Air, Corpus, Earth, Fire, Nature, Spirit, Water, Will
 
  See [Schools](http://spiritlakemu.com/wiki/magic) for more info.
 
-`school/set <name>=<major/minor>/<school>` - Set a school on a character and sets their matching skill to 1 (minor) or 2(major).
+`school/set <name>=<major/minor>/<school>` - Admin-only command to set a school on a character and sets their matching skill to 1 (minor) or 2(major). Players can set their school on the web portal.
 `schools <name>` - Show schools for a character.
