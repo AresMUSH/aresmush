@@ -6,6 +6,7 @@ en:
         # SCHOOLS
         # ----------------------------
       schools_title: "Schools"
+      schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
         # ----------------------------
         # POTIONS
         # ----------------------------
