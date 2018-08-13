@@ -1,5 +1,5 @@
 module AresMUSH
-  module Spells
+  module Custom
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
@@ -12,9 +12,9 @@ module AresMUSH
 
       def check_errors
         require_target = Global.read_config("spells", self.spell, "require_target")
-        return t('Spells.not_spell') if !self.spell_list.include?(self.spell)
-        # return t('Spells.already_cast') if Spells.already_cast(enactor)
-        return t('Spells.needs_target') if require_target
+        return t('custom.not_spell') if !self.spell_list.include?(self.spell)
+        return t('custom.already_cast') if Custom.already_cast(enactor)
+        return t('custom.needs_target') if require_target
         return nil
       end
 
@@ -41,54 +41,54 @@ module AresMUSH
 
         if enactor.combatant
           if enactor.combatant.is_ko
-            client.emit_failure t('Spells.spell_ko')
+            client.emit_failure t('custom.spell_ko')
           else
             #Roll for success
-            succeeds = Spells.roll_spell_success(caster, self.spell)
+            succeeds = Custom.roll_spell_success(caster, self.spell)
             client.emit "#{succeeds}"
 
             #Roll Spell in Combat
             if roll == true
-              Spells.cast_roll_spell(caster, self.spell)
+              Custom.cast_roll_spell(caster, self.spell)
             end
 
             #Equip Weapon
             if weapon
-              Spells.cast_equip_weapon(caster, self.spell)
+              Custom.cast_equip_weapon(caster, self.spell)
             end
 
             #Equip Weapon Specials
             if weapon_specials
               if succeeds == "%xgSUCCEEDS%xn"
                 caster.combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase } : [])
-                FS3Combat.emit_to_combat enactor.combat, t('Spells.casts_spell', :name => enactor.name, :spell => self.spell)
+                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => self.spell)
               else
-                FS3Combat.emit_to_combat enactor.combat, t('Spells.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
+                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
               end
               FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
             end
 
             #Equip Armor
             if armor
-              Spells.cast_equip_armor(caster, self.spell)
+              Custom.cast_equip_armor(caster, self.spell)
             end
 
             #Equip Armor Specials
             if armor_specials
-              Spells.cast_equip_armor_specials(caster, self.spell)
+              Custom.cast_equip_armor_specials(caster, self.spell)
             end
 
             #Stun
             if is_stun
-              Spells.cast_stun_spell(caster, self.spell)
+              Custom.cast_stun_spell(caster, self.spell)
             end
             FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
-        enactor.update(has_cast: true)
+        enactor.combatant.update(has_cast: true)
         elsif
           #Roll NonCombat
           if roll
-            Rooms.emit_to_room(enactor.room, t('Spells.casts_noncombat_spell', :name => enactor.name, :spell => self.spell))
+            Rooms.emit_to_room(enactor.room, t('custom.casts_noncombat_spell', :name => enactor.name, :spell => self.spell))
             die_result = FS3Skills.parse_and_roll(client, enactor, school)
               success_level = FS3Skills.get_success_level(die_result)
               success_title = FS3Skills.get_success_title(success_level)
@@ -100,7 +100,7 @@ module AresMUSH
               )
               FS3Skills.emit_results message, client, enactor_room, false
           else
-            client.emit_failure t('Spells.not_in_combat')
+            client.emit_failure t('custom.not_in_combat')
           end
 
         end

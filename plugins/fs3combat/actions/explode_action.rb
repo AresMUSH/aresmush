@@ -8,7 +8,7 @@ module AresMUSH
         error = self.parse_targets(self.action_args)
         return error if error
       
-        return t('fs3combat.too_many_targets') if (self.targets.count > 3)
+        return t('fs3combat.too_many_targets') if (self.targets.count > 6)
       
         return t('fs3combat.out_of_ammo') if !FS3Combat.check_ammo(self.combatant, 1)
         

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Spells
+  module Custom
     class SpellModCmd
     #spell/mod <name>=<mod>
       include CommandHandler
