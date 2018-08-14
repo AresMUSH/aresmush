@@ -29,7 +29,7 @@ module AresMUSH
 
       mod = spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
 
-      school_dice = FS3Skills.ability_rating(char, school) * 3
+      school_dice = FS3Skills.ability_rating(char, school)
       dice = mod + school_dice
 
 
