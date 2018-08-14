@@ -12,7 +12,9 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
 
-      #Secrets
+
+    #Secrets
+
       case cmd.root
       when "secrets"
         case cmd.switch
@@ -71,7 +73,6 @@ module AresMUSH
         end
       end
     #Schools
-
       case cmd.root
       when "school"
         case cmd.switch
