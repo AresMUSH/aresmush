@@ -12,6 +12,14 @@ module AresMUSH
         enactor.combatant.update(has_cast: false)
       end
 
+      def handle
+        school = cmd.args
+        successes = Custom.roll_combat_spell(enactor, enactor.combatant, cmd.args)
+        client.emit successes
+        # client.emit die_result
+        client.emit school
+      end
+
     end
   end
 end
