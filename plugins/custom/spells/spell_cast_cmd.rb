@@ -42,7 +42,7 @@ module AresMUSH
           if enactor.combatant.is_ko
             client.emit_failure t('custom.spell_ko')
           elsif Custom.already_cast(enactor)
-            client.emit_failure t('custom.already_cast') 
+            client.emit_failure t('custom.already_cast')
           else
             #Roll for success
             succeeds = Custom.roll_spell_success(caster, self.spell)
@@ -90,7 +90,7 @@ module AresMUSH
           #Roll NonCombat
           if roll
             Rooms.emit_to_room(enactor.room, t('custom.casts_noncombat_spell', :name => enactor.name, :spell => self.spell))
-            die_result = FS3Skills.parse_and_roll(client, enactor, school)
+            die_result = FS3Skills.parse_and_roll(enactor, school)
               success_level = FS3Skills.get_success_level(die_result)
               success_title = FS3Skills.get_success_title(success_level)
               message = t('fs3skills.simple_roll_result',
