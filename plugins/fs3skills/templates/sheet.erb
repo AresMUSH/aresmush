@@ -3,13 +3,18 @@
 <%= line_with_text t('fs3skills.attributes_title') -%>
 <% attrs.each do |a| -%>
 <%= a -%>
-<% end %> 
+<% end %>
 
+
+<%= line_with_text t('custom.schools_title') -%>
+<% schools.each do |a| -%>
+<%= a -%>
+<% end %>
 
 <%= line_with_text t('fs3skills.action_skills_title') -%>
 <% action_skills.each do |a| -%>
 <%= a -%>
-<% end %> 
+<% end %>
 
 <% if specialties %>
 
@@ -19,13 +24,13 @@
 <%= line_with_text t('fs3skills.background_skills_title') -%>
 <% background_skills.each do |b| -%>
 <%= b -%>
-<% end %> 
+<% end %>
 
 
 <%= line_with_text t('fs3skills.languages_title') -%>
 <% languages.each do |l| -%>
 <%= l -%>
-<% end %> 
+<% end %>
 
 <% if use_advantages %>
 <%= line_with_text t('fs3skills.advantages_title') -%>
