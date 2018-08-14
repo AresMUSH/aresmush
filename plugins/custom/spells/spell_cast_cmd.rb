@@ -60,7 +60,7 @@ module AresMUSH
             #Equip Weapon Specials
             if weapon_specials
               if succeeds == "%xgSUCCEEDS%xn"
-                caster.combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase } : [])
+                caster.combatant.update(weapon_specials: weapon_specials ? weapon_specials.map { |s| s.titlecase } : [])
                 FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => self.spell)
               else
                 FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
