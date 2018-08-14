@@ -63,4 +63,3 @@ en:
       potion_action_msg_long: "%{name} will use a potion this turn."
       potion_action_msg_short: "Potion"
       potion_resolution_msg: "%{name} uses a potion"
-
