@@ -16,6 +16,10 @@ module AresMUSH
         FullautoAction
       when "pass"
         PassAction
+      when "spell"
+        SpellAction
+      when "potion"
+        PotionAction
       when "rally"
         RallyAction
       when "reload"
@@ -45,7 +49,7 @@ module AresMUSH
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      
+      combatant.update(has_cast:false)
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
