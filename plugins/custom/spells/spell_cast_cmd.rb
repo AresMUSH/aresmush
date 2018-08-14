@@ -13,7 +13,6 @@ module AresMUSH
       def check_errors
         require_target = Global.read_config("spells", self.spell, "require_target")
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
-        return t('custom.already_cast') if Custom.already_cast(enactor)
         return t('custom.needs_target') if require_target
         return nil
       end
@@ -42,6 +41,8 @@ module AresMUSH
         if enactor.combatant
           if enactor.combatant.is_ko
             client.emit_failure t('custom.spell_ko')
+          elsif Custom.already_cast(enactor)
+            client.emit_failure t('custom.already_cast') 
           else
             #Roll for success
             succeeds = Custom.roll_spell_success(caster, self.spell)
