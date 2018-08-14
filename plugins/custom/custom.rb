@@ -11,6 +11,7 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
+
       #Secrets
       case cmd.root
       when "secrets"
@@ -32,7 +33,45 @@ module AresMUSH
           return GMSecretsCmd
         end
       end
-      #Schools
+    #Potions
+      case cmd.root
+      when "potion"
+        case cmd.switch
+        when "create"
+          return CreatePotionCmd
+        when "update"
+          return UpdatePotionCmd
+        when "give"
+          return GivePotionCmd
+        when "use"
+          return PotionUseCmd
+        end
+      end
+      case cmd.root
+      when "potions"
+        return PotionsCmd
+      end
+    #Spells
+      case cmd.root
+      when "spell"
+        case cmd.switch
+        when "request"
+          return SpellRequestCmd
+        when "mod"
+          return SpellModCmd
+        when "modis"
+          return SpellModIsCmd
+        when "cast"
+          if cmd.args.include?("=")
+            return SpellCastWithTargetCmd
+            client.emit "With target."
+          else
+            return SpellCastCmd
+          end
+        end
+      end
+    #Schools
+
       case cmd.root
       when "school"
         case cmd.switch
