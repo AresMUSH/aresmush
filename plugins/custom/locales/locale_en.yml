@@ -48,6 +48,7 @@ en:
       spell_ko: "You cannot cast a spell while Knocked Out."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
 
+
       # ----------------------------
       # FS3 COMBAT SPELL
       # ----------------------------
