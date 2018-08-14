@@ -48,6 +48,7 @@ en:
       spell_ko: "You cannot cast a spell while Knocked Out."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
 
+
       # ----------------------------
       # FS3 COMBAT SPELL
       # ----------------------------
@@ -62,3 +63,4 @@ en:
       potion_action_msg_long: "%{name} will use a potion this turn."
       potion_action_msg_short: "Potion"
       potion_resolution_msg: "%{name} uses a potion"
+

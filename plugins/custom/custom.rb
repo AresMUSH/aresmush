@@ -12,12 +12,16 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
 
+
     #Secrets
+
       case cmd.root
       when "secrets"
         case cmd.switch
         when "set"
           return SetSecretsCmd
+        when "preference"
+          return SetSecretPrefCmd
         else
           return SecretsCmd
         end
@@ -78,7 +82,6 @@ module AresMUSH
           return SchoolsCmd
         end
       end
-
 
       return nil
     end
