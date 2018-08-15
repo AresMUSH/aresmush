@@ -50,12 +50,12 @@ module AresMUSH
       end
     end
 
-    def self.equip_weapon_specials(caster, spell)
+    def self.cast_equip_weapon_specials(caster, spell)
       weapon_specials = Global.read_config("spells", spell, "weapon_specials")
       succeeds = Custom.roll_spell_success(caster, spell)
       client = Login.find_client(caster)
       if succeeds == "%xgSUCCEEDS%xn"
-        caster.combatant.update(weapon_specials: weapon_specials ? weapon_specials.map { |s| s.titlecase } : [])
+        caster.combatant.update(weapon_specials: weapon_specials)
         FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell)
       else
         FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
