@@ -37,6 +37,9 @@ module AresMUSH
           spell_mod = Global.read_config("spells", self.spell, "spell_mod")
           stance = Global.read_config("spells", self.spell, "stance")
 
+          #Roll spell successes
+          succeeds = Custom.roll_spell_success(caster, self.spell)
+
           #Inflict damage
           if damage_inflicted
             Custom.cast_inflict_damage(caster, target, self.spell)
@@ -57,52 +60,35 @@ module AresMUSH
           #Set Lethal Mod
           if lethal_mod
             if succeeds == "%xgSUCCEEDS%xn"
-              current_mod = target.combatant.damage_lethality_mod
-              new_mod = current_mod + lethal_mod
-              target.combatant.update(damage_lethality_mod: new_mod)
-              FS3Combat.emit_to_combat enactor.combat, t('cast_mod', :name => enactor.name, :spell => self.spell, :succeeds => succeeds, :target => target, :mod => lethal_mod, :type => "lethality", :total_mod => target.combatant.damage_lethality_mod)
+              Custom.cast_lethal_mod(caster, target, self.spell)
             else
-              FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
+              FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
 
           #Set defense mod
           if defense_mod
             if succeeds == "%xgSUCCEEDS%xn"
-              current_mod = target.combatant.defense_mod
-              new_mod = current_mod + defense_mod
-              client.emit "WTF"
-              target.combatant.update(defense_mod: new_mod)
-              FS3Combat.emit_to_combat enactor.combat, t('custom.cast_mod', :name => enactor.name, :target => target.name, :spell => self.spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => target.combatant.defense_mod)
+              Custom.cast_defense_mod(caster, target, self.spell)
             else
-              FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
+              FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
           #Set attack mod
           if attack_mod
             if succeeds == "%xgSUCCEEDS%xn"
-              current_mod = target.combatant.attack_mod
-              new_mod = current_mod + attack_mod
-              target.combatant.update(attack_mod: new_mod)
-              FS3Combat.emit_to_combat enactor.combat, t('custom.cast_mod', :name => enactor.name, :target => target.name, :spell => self.spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => target.combatant.attack_mod)
+              Custom.cast_attack_mod(caster, target, self.spell)
             else
-              FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
+              FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
           #Set spell mod
           if spell_mod
             if succeeds == "%xgSUCCEEDS%xn"
-              current_mod = target.combatant.spell_mod.to_i
-              new_mod = current_mod + spell_mod
-              target.combatant.update(spell_mod: new_mod)
-              FS3Combat.emit_to_combat enactor.combat, t('custom.cast_mod', :name => enactor.name, :target => target.name, :spell => self.spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => target.combatant.spell_mod)
+              Custom.cast_spell_mod(caster, target, self.spell)
             else
-              FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
+              FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
           #Change stance
           if stance
