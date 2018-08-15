@@ -89,17 +89,7 @@ module AresMUSH
         elsif
           #Roll NonCombat
           if roll
-            Rooms.emit_to_room(enactor.room, t('custom.casts_noncombat_spell', :name => enactor.name, :spell => self.spell))
-            die_result = FS3Skills.parse_and_roll(enactor, school)
-              success_level = FS3Skills.get_success_level(die_result)
-              success_title = FS3Skills.get_success_title(success_level)
-              message = t('fs3skills.simple_roll_result',
-                :name => enactor.name,
-                :roll => school,
-                :dice => FS3Skills.print_dice(die_result),
-                :success => success_title
-              )
-              FS3Skills.emit_results message, client, enactor_room, false
+            Custom.cast_noncombat_spell(caster, self.spell)
           else
             client.emit_failure t('custom.not_in_combat')
           end

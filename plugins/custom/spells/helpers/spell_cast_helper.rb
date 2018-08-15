@@ -74,6 +74,22 @@ module AresMUSH
       FS3Combat.set_action(client, caster, caster.combat, caster.combatant, FS3Combat::SpellAction, "")
     end
 
+    def self.cast_noncombat_spell(caster, spell)
+      school = Global.read_config("spells", spell, "school")
+      client = Login.find_client(caster)
+      Rooms.emit_to_room(caster.room, t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell))
+      die_result = FS3Skills.parse_and_roll(caster, school)
+        success_level = FS3Skills.get_success_level(die_result)
+        success_title = FS3Skills.get_success_title(success_level)
+        message = t('fs3skills.simple_roll_result',
+          :name => caster.name,
+          :roll => school,
+          :dice => FS3Skills.print_dice(die_result),
+          :success => success_title
+        )
+        FS3Skills.emit_results message, client, caster.room, false
+    end
+
     def self.cast_stun_spell(caster, spell)
       client = Login.find_client(caster)
       FS3Combat.emit_to_combat caster.combat, t('custom.will_cast_spell', :name => caster.name, :spell => spell)
