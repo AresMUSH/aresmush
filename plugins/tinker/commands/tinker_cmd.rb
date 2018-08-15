@@ -13,7 +13,8 @@ module AresMUSH
 
       def handle
         type = FS3Skills.get_ability_type(cmd.args)
-        client.emit type
+        ability = FS3Skills.find_ability(enactor, cmd.args)
+        client.emit "#{type} - #{ability.rating}"
       end
 
 
