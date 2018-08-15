@@ -52,13 +52,13 @@ en:
       # FS3 COMBAT SPELL
       # ----------------------------
 
-      spell_action_msg_long: "%{name} will cast a spell this turn."
+      spell_action_msg_long: "%{name} casts a spell this turn."
       spell_action_msg_short: "Spell"
-      spell_resolution_msg: "%{name} casts a spell."
+      spell_resolution_msg: "%{name} cast a spell."
       # ----------------------------
       # FS3 COMBAT POTION
       # ----------------------------
 
-      potion_action_msg_long: "%{name} will use a potion this turn."
+      potion_action_msg_long: "%{name} uses a potion this turn."
       potion_action_msg_short: "Potion"
-      potion_resolution_msg: "%{name} uses a potion"
+      potion_resolution_msg: "%{name} used a potion"
