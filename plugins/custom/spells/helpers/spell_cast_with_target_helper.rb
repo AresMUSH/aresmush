@@ -32,8 +32,10 @@ module AresMUSH
     def self.cast_revive(caster, target, spell)
       succeeds = Custom.roll_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
-
-        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell)
+        target.combatant.update(is_ko: false)
+        FS3Combat.emit_to_combat caster.combat, t('custom.cast_revive', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+        target.combatant.update(has_cast: true)
+        FS3Combat.emit_to_combatant target.combatant, t('custom.been_revived', :name => caster.name)
       else
         FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
       end

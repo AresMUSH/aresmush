@@ -48,15 +48,10 @@ module AresMUSH
           #Revive
           if is_revive
             if (!target.combatant.is_ko)
-                  client.emit_failure "#{target.name} is not knocked out."
-            elsif succeeds == "%xgSUCCEEDS%xn"
-              target.combatant.update(is_ko: false)
-              FS3Combat.emit_to_combat enactor.combat, t('custom.cast_revive', :name => enactor.name, :spell => self.spell, :succeeds => succeeds, :target => target.name)
-              FS3Combat.emit_to_combatant target.combatant, t('custom.been_revived', :name => enactor.name)
+                  client.emit_failure t('custom.not_ko', :target => target.name)
             else
-              FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
+              Custom.cast_revive(caster, target, self.spell)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
 
           #Set Lethal Mod
