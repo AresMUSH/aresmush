@@ -3,15 +3,30 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type, :caster
 
       def parse_args
-       self.spell = titlecase_arg(cmd.args)
        self.spell_list = Global.read_config("spells")
+       if (cmd.args =~ /\//)
+         args = cmd.parse_args(/(?<arg1>[^\/]+)\/(?<arg2>[^\+]+)/)
+         combat = enactor.combat
+         name = titlecase_arg(args.arg1)
+         self.caster = combat.find_combatant(name)
+         self.spell = titlecase_arg(args.arg2)
+       else
+          args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+          if enactor.combatant
+            self.caster = enactor.combatant
+          else
+            self.caster = enactor
+          end
+          self.spell = titlecase_arg(args.arg1)
+        end
       end
 
       def check_errors
         require_target = Global.read_config("spells", self.spell, "require_target")
+        return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.needs_target') if require_target
         return nil
@@ -34,72 +49,50 @@ module AresMUSH
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         school = Global.read_config("spells", self.spell, "school")
-        caster = enactor
 
-
-
-        if enactor.combatant
-          if enactor.combatant.is_ko
+        if self.enactor.combatant
+          if self.caster.is_ko
             client.emit_failure t('custom.spell_ko')
-          elsif Custom.already_cast(enactor)
+          elsif Custom.already_cast(self.caster)
             client.emit_failure t('custom.already_cast')
           else
-            #Roll for success
-            succeeds = Custom.roll_spell_success(caster, self.spell)
-            client.emit "#{succeeds}"
 
             #Roll Spell in Combat
             if roll == true
-              Custom.cast_roll_spell(caster, self.spell)
+              Custom.cast_roll_spell(self.caster, self.spell)
             end
 
             #Equip Weapon
             if weapon
-              Custom.cast_equip_weapon(caster, self.spell)
+              Custom.cast_equip_weapon(self.caster, self.spell)
             end
 
             #Equip Weapon Specials
             if weapon_specials
-              if succeeds == "%xgSUCCEEDS%xn"
-                caster.combatant.update(weapon_specials: weapon_specials ? weapon_specials.map { |s| s.titlecase } : [])
-                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => self.spell)
-              else
-                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
-              end
-              FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
+              Custom.cast_equip_weapon_specials(self.caster, self.spell)
             end
 
             #Equip Armor
             if armor
-              Custom.cast_equip_armor(caster, self.spell)
+              Custom.cast_equip_armor(self.caster, self.spell)
             end
 
             #Equip Armor Specials
             if armor_specials
-              Custom.cast_equip_armor_specials(caster, self.spell)
+              Custom.cast_equip_armor_specials(self.caster, self.spell)
             end
 
             #Stun
             if is_stun
-              Custom.cast_stun_spell(caster, self.spell)
+              Custom.cast_stun_spell(self.caster, self.spell)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
+
           end
-        enactor.combatant.update(has_cast: true)
+        self.caster.update(has_cast: true)
         elsif
           #Roll NonCombat
           if roll
-            Rooms.emit_to_room(enactor.room, t('custom.casts_noncombat_spell', :name => enactor.name, :spell => self.spell))
-            die_result = FS3Skills.parse_and_roll(enactor, school)
-              success_level = FS3Skills.get_success_level(die_result)
-              success_title = FS3Skills.get_success_title(success_level)
-              message = t('fs3skills.simple_roll_result',
-                :name => enactor.name,
-                :roll => school,
-                :dice => FS3Skills.print_dice(die_result),
-                :success => success_title
-              )
-              FS3Skills.emit_results message, client, enactor_room, false
+            Custom.cast_noncombat_spell(self.caster, self.spell)
           else
             client.emit_failure t('custom.not_in_combat')
           end
