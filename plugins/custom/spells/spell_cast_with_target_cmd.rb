@@ -43,18 +43,7 @@ module AresMUSH
           end
           #Healing
           if heal_points
-            if succeeds == "%xgSUCCEEDS%xn"
-              wound = FS3Combat.worst_treatable_wound(target)
-              if (wound)
-                FS3Combat.heal(wound, heal_points)
-                FS3Combat.emit_to_combat enactor.combat, t('custom.cast_heal', :name => enactor.name, :spell => self.spell, :succeeds => succeeds, :target => target.name, :points => heal_points)
-              else
-                FS3Combat.emit_to_combat enactor.combat, t('custom.cast_heal_no_effect', :name => enactor.name, :spell => self.spell, :succeeds => succeeds, :target => target.name)
-              end
-            else
-                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
-            end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
+            Custom.cast_heal(caster, target, self.spell)
           end
           #Revive
           if is_revive
