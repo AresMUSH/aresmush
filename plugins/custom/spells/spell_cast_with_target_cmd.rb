@@ -25,6 +25,8 @@ module AresMUSH
           client.emit_failure t('custom.spell_ko')
         else
         #Reading Config Files
+          caster = enactor
+          target = FS3Combat.find_named_thing(self.target_name, enactor)
           damage_desc = Global.read_config("spells", self.spell, "damage_desc")
           damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
           heal_points = Global.read_config("spells", self.spell, "heal_points")
@@ -34,23 +36,10 @@ module AresMUSH
           defense_mod = Global.read_config("spells", self.spell, "defense_mod")
           spell_mod = Global.read_config("spells", self.spell, "spell_mod")
           stance = Global.read_config("spells", self.spell, "stance")
-          school = Global.read_config("spells", self.spell, "school")
-          target = FS3Combat.find_named_thing(self.target_name, enactor)
-
-          #Roll for success          
-          die_result = Custom.roll_combat_spell(enactor, enactor.combatant, school)
-          spell = self.spell
-          succeeds = Custom.combat_spell_success(spell, die_result)
 
           #Inflict damage
           if damage_inflicted
-            if succeeds == "%xgSUCCEEDS%xn"
-              FS3Combat.inflict_damage(target, damage_inflicted, damage_desc)
-              FS3Combat.emit_to_combat enactor.combat, t('custom.cast_damage', :name => enactor.name, :spell => self.spell, :succeeds => succeeds, :target => target.name, :damage_desc => self.spell.downcase)
-            else
-                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
-            end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
+            Custom.cast_inflict_damage(caster, target, self.spell)
           end
           #Healing
           if heal_points
@@ -142,7 +131,7 @@ module AresMUSH
             FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
           end
         enactor.combatant.update(has_cast: true)
-
+        FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
         end
 
       end

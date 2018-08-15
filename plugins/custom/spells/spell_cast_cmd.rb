@@ -44,8 +44,6 @@ module AresMUSH
           elsif Custom.already_cast(enactor)
             client.emit_failure t('custom.already_cast')
           else
-            #Roll for success
-            succeeds = Custom.roll_spell_success(caster, self.spell)
 
             #Roll Spell in Combat
             if roll == true
@@ -76,7 +74,7 @@ module AresMUSH
             if is_stun
               Custom.cast_stun_spell(caster, self.spell)
             end
-            
+
           end
         enactor.combatant.update(has_cast: true)
         elsif
