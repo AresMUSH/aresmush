@@ -3,15 +3,26 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type, :caster
 
       def parse_args
-       self.spell = titlecase_arg(cmd.args)
        self.spell_list = Global.read_config("spells")
+       if (cmd.args =~ /\//)
+         args = cmd.parse_args(/(?<arg1>[^\/]+)\/(?<arg2>[^\+]+)/)
+         combat = enactor.combat
+         name = titlecase_arg(args.arg1)
+         self.caster = combat.find_combatant(name)
+         self.spell = titlecase_arg(args.arg2)
+       else
+         args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+         self.caster = enactor
+         self.spell = titlecase_arg(args.arg1)
+       end
       end
 
       def check_errors
         require_target = Global.read_config("spells", self.spell, "require_target")
+        return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.needs_target') if require_target
         return nil
@@ -34,53 +45,50 @@ module AresMUSH
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         school = Global.read_config("spells", self.spell, "school")
-        caster = enactor
 
-
-
-        if enactor.combatant
-          if enactor.combatant.is_ko
+        if self.caster.combatant
+          if self.caster.combatant.is_ko
             client.emit_failure t('custom.spell_ko')
-          elsif Custom.already_cast(enactor)
+          elsif Custom.already_cast(self.caster)
             client.emit_failure t('custom.already_cast')
           else
 
             #Roll Spell in Combat
             if roll == true
-              Custom.cast_roll_spell(caster, self.spell)
+              Custom.cast_roll_spell(self.caster, self.spell)
             end
 
             #Equip Weapon
             if weapon
-              Custom.cast_equip_weapon(caster, self.spell)
+              Custom.cast_equip_weapon(self.caster, self.spell)
             end
 
             #Equip Weapon Specials
             if weapon_specials
-              Custom.cast_equip_weapon_specials(caster, self.spell)
+              Custom.cast_equip_weapon_specials(self.caster, self.spell)
             end
 
             #Equip Armor
             if armor
-              Custom.cast_equip_armor(caster, self.spell)
+              Custom.cast_equip_armor(self.caster, self.spell)
             end
 
             #Equip Armor Specials
             if armor_specials
-              Custom.cast_equip_armor_specials(caster, self.spell)
+              Custom.cast_equip_armor_specials(self.caster, self.spell)
             end
 
             #Stun
             if is_stun
-              Custom.cast_stun_spell(caster, self.spell)
+              Custom.cast_stun_spell(self.caster, self.spell)
             end
 
           end
-        enactor.combatant.update(has_cast: true)
+        self.caster.combatant.update(has_cast: true)
         elsif
           #Roll NonCombat
           if roll
-            Custom.cast_noncombat_spell(caster, self.spell)
+            Custom.cast_noncombat_spell(self.caster, self.spell)
           else
             client.emit_failure t('custom.not_in_combat')
           end
