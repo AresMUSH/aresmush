@@ -2,7 +2,7 @@ module AresMUSH
   module Tinker
     class TinkerCmd
       include CommandHandler
-        attr_accessor :name, :armor, :specials
+        attr_accessor :name, :armor, :specials, :caster, :spell, :target
       def check_can_manage
         return t('dispatcher.not_allowed') if !enactor.has_permission?("tinker")
         return nil
@@ -10,10 +10,28 @@ module AresMUSH
 
 
 
+
       def handle
-        mod = 0
-        successes = FS3Skills.roll_ability(enactor, "Air")
-        client.emit successes
+
+        if (cmd.args =~ /\//)
+          args = cmd.parse_args( /(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=?(?<arg3>.+)?/)
+          combat = enactor.combat
+          caster_name = titlecase_arg(args.arg1)
+          self.spell = titlecase_arg(args.arg2)
+          target_name = titlecase_arg(args.arg3)
+          self.caster = combat.find_combatant(caster_name)
+          self.target = combat.find_combatant(target_name)
+        else
+          args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
+          self.caster = enactor.combatant
+          self.spell = titlecase_arg(args.arg1)
+          target_name = titlecase_arg(args.arg2)
+          self.target = FS3Combat.find_named_thing(target_name, self.caster)
+        end
+        client.emit self.caster.name
+        client.emit self.spell
+        client.emit self.target.name
+
       end
 
 
