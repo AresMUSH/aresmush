@@ -12,9 +12,8 @@ module AresMUSH
 
 
       def handle
-        spell = "Gust"
-        emit = Global.read_config("spells", spell, "level")
-        client.emit emit
+        type = FS3Skills.get_ability_type(cmd.args)
+        client.emit type
       end
 
 
