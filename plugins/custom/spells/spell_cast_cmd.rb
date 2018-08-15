@@ -46,7 +46,6 @@ module AresMUSH
           else
             #Roll for success
             succeeds = Custom.roll_spell_success(caster, self.spell)
-            client.emit "#{succeeds}"
 
             #Roll Spell in Combat
             if roll == true
@@ -60,13 +59,7 @@ module AresMUSH
 
             #Equip Weapon Specials
             if weapon_specials
-              if succeeds == "%xgSUCCEEDS%xn"
-                caster.combatant.update(weapon_specials: weapon_specials ? weapon_specials.map { |s| s.titlecase } : [])
-                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => self.spell)
-              else
-                FS3Combat.emit_to_combat enactor.combat, t('custom.casts_spell', :name => enactor.name, :spell => spell, :succeeds => succeeds)
-              end
-              FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
+              Custom.cast_equip_weapon_specials(caster, self.spell)
             end
 
             #Equip Armor
@@ -83,7 +76,7 @@ module AresMUSH
             if is_stun
               Custom.cast_stun_spell(caster, self.spell)
             end
-            FS3Combat.set_action(client, enactor, enactor.combat, enactor.combatant, FS3Combat::SpellAction, "")
+            
           end
         enactor.combatant.update(has_cast: true)
         elsif
