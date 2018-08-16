@@ -15,6 +15,12 @@ module AresMUSH
       char.spells_learned.select { |a| a.name == spell_name }.first
     end
 
+    def self.previous_level_spell? (char, level)
+      level_below = level.to_i - 1
+      spell = char.spells_learned.select { |a| a.level == level_below }.first
+      return false if !spell
+    end
+
     def self.already_learned(spell)
     end
 
