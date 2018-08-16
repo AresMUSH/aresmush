@@ -1,0 +1,20 @@
+%lh
+<%= t('custom.spells_title', :name => char.name.upcase) %>
+
+<% spells_learned.each_with_index do |a, index| -%>
+<% if a.learning_complete %>
+<%= a.name -%>
+<%=  " (Level " -%>
+<%= a.level -%>
+<%=  " spell)" %>
+<% else %>
+<%= "LEARNING" %>
+<%= a.name  -%>
+<%=  " (Level " -%>
+<%= a.level -%>
+<%=  " spell)" -%>
+<%= a.xp_needed %>
+<% end %>
+<% end %>
+
+%lf

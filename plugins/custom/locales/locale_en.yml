@@ -48,6 +48,17 @@ en:
       spell_ko: "You cannot cast a spell while Knocked Out."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
 
+      # ----------------------------
+      # LEARNING SPELLS
+      # ----------------------------
+      wrong_school: "That spell does not belong to one of your schools."
+      spells_title: "%{name}'S SPELLS"
+      start_learning: "You start learning the %{spell} spell."
+      already_know_spell: "You already know the %{spell} spell."
+      complete_learning: "Congratulations! You have finished learning the %{spell} spell."
+      additional_learning: "You put in additional work to learn the %{spell} spell."
+      xp_learned_spell: "%{name} has learned %{spell}, a level %{level} %{school} spell."
+      xp_learned_spell_title: "%{name} learned %{spell}"
 
       # ----------------------------
       # FS3 COMBAT SPELL
