@@ -59,6 +59,7 @@ en:
       additional_learning: "You put in additional work to learn the %{spell} spell."
       xp_learned_spell: "%{name} has learned %{spell}, a level %{level} %{school} spell."
       xp_learned_spell_title: "%{name} learned %{spell}"
+      need_previous_level: "You must have a spell at the previous level before you can learn this spell."
 
       # ----------------------------
       # FS3 COMBAT SPELL

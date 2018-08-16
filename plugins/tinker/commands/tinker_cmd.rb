@@ -8,9 +8,14 @@ module AresMUSH
         return nil
       end
 
+      # def handle
+      #   spell = Custom.find_spell_learned(enactor, cmd.args)
+      #   spell.delete
+      # end
+
       def handle
-        spell = Custom.find_spell_learned(enactor, cmd.args)
-        spell.delete
+        level = Custom.previous_level_spell?(enactor,2)
+        client.emit level
       end
 
 
