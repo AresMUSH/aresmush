@@ -1,5 +1,5 @@
 module AresMUSH
-  module Spells
+  module Custom
 
     def self.is_spell?(spell)
       spell_list = Global.read_config("spells")
