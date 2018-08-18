@@ -93,7 +93,7 @@ module AresMUSH
         show_background = (char.on_roster? || char.bg_shared) && !char.background.blank?
 
         
-        files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
+        files = Profile.character_page_files(char)
         files = files.map { |f| Website.get_file_info(f) }
         
         if (FS3Skills.is_enabled?)
