@@ -11,8 +11,9 @@ class SpellsLearned < Ohm::Model
   index :name
   attribute :last_learned
   reference :character, "AresMUSH::Character"
-  attribute :level
-  attribute :xp_needed
-  attribute :learning_complete
+  attribute :level, :type => DataType::Integer
+  attribute :xp_needed, :type => DataType::Integer
+  attribute :learning_complete, :type => DataType::Boolean
+  attribute :school
 
 end

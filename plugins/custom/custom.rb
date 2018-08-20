@@ -68,6 +68,8 @@ module AresMUSH
           end
         when "learn"
           return SpellLearnCmd
+        when "discard"
+          return SpellDiscardCmd
         end
       end
       case cmd.root

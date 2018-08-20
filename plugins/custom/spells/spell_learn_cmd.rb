@@ -13,6 +13,7 @@ module AresMUSH
 
       def check_errors
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
+        return t('custom.need_previous_level') if Custom.previous_level_spell?(enactor, self.spell) == false
 
         major_school = enactor.major_school
         minor_school = enactor.minor_school
@@ -21,21 +22,18 @@ module AresMUSH
         else
           return t('custom.wrong_school')
         end
-        if !Custom.previous_level_spell?(enactor, self.spell_level) == false
-          return t('custom.need_previous_level')
-        end
 
-        #Error if no spell at previous Level
         #Error if learned too recently
-        # if can_learn_spell(char, spell)
-        #   time_left = ability.time_to_next_learn / 86400
-        #   client.emit_failure t('custom.cant_learn_yet', :days => time_left.ceil)
-        #   return
-        # end
+        if can_learn_spell(char, spell)
+          time_left = ability.time_to_next_learn / 86400
+          client.emit_failure t('custom.cant_learn_yet', :days => time_left.ceil)
+          return
+        end
         return nil
       end
 
       def handle
+        client.emit self.school
         spell_learned = Custom.find_spell_learned(enactor, self.spell)
         if spell_learned
           if spell_learned.learning_complete
@@ -54,7 +52,7 @@ module AresMUSH
           end
         else
           xp_needed = Custom.spell_xp_needed(self.spell)
-          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, character: enactor, xp_needed: xp_needed, learning_complete: false)
+          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: false)
           client.emit_success t('custom.start_learning', :spell => self.spell)
         end
 

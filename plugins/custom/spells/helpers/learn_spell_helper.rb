@@ -10,15 +10,32 @@ module AresMUSH
       [time_left, 0].max
     end
 
-    def self.find_spell_learned (char, spell)
+    def self.find_spell_learned(char, spell)
       spell_name = spell.titlecase
       char.spells_learned.select { |a| a.name == spell_name }.first
     end
 
-    def self.previous_level_spell? (char, level)
-      level_below = level.to_i - 1
-      spell = char.spells_learned.select { |a| a.level == level_below }.first
-      return false if !spell
+    def self.find_spell_school(char, spell_name)
+      Global.read_config("spells", spell_name.titlecase, "school")
+    end
+
+    def self.find_spell_level(char, spell_name)
+      Global.read_config("spells", spell_name.titlecase, "level")
+    end
+
+    def self.previous_level_spell?(char, spell_name)
+      spell_name = spell_name.titlecase
+      spell_level = Custom.find_spell_level(char, spell_name)
+      school = Custom.find_spell_school(char, spell_name)
+      level_below = spell_level.to_i - 1
+      spells_learned =  char.spells_learned.to_a
+      if spells_learned.any? {|s| s.level == level_below && s.school == school && s.learning_complete == true}
+        return true
+      elsif spell_level == 1
+        return true
+      else
+        return false
+      end
     end
 
     def self.already_learned(spell)
