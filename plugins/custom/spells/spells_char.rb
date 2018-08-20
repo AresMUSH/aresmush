@@ -9,7 +9,7 @@ class SpellsLearned < Ohm::Model
 
   attribute :name
   index :name
-  attribute :last_learned
+  attribute :last_learned, :type => Ohm::DataTypes::DataType::Time, :default => Time.now
   reference :character, "AresMUSH::Character"
   attribute :level, :type => DataType::Integer
   attribute :xp_needed, :type => DataType::Integer
