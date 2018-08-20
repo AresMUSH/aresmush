@@ -24,7 +24,8 @@ module AresMUSH
         end
 
         #Error if learned too recently
-        if can_learn_spell(char, spell)
+        if can_learn_spell(enactor, self.spell)
+          #time left = days / seconds
           time_left = ability.time_to_next_learn / 86400
           client.emit_failure t('custom.cant_learn_yet', :days => time_left.ceil)
           return

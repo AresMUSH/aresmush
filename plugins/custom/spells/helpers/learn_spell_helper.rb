@@ -6,7 +6,7 @@ module AresMUSH
 
     def self.time_to_next_learn_spell(char, spell)
       return 0 if !spell.last_learned
-      time_left = (FS3Skills.days_between_learning * 86400) - (Time.now - spell.last_learned)
+      time_left = (FS3Skills.days_between_learning * 86400) - (Time.now.to_i - spell.last_learned.to_i)
       [time_left, 0].max
     end
 

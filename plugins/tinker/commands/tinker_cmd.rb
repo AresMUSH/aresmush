@@ -8,15 +8,44 @@ module AresMUSH
         return nil
       end
 
-      # def handle
-      #   spell = Custom.find_spell_learned(enactor, cmd.args)
-      #   spell.delete
-      # end
+      attr_accessor :spells_learned
+
+
+
+
 
       def handle
-        level = Custom.previous_level_spell?(enactor,2)
-        client.emit level
+        spell_name = cmd.args
+        spell = Custom.find_spell_learned(enactor, spell_name)
+        spell_list = enactor.spells_learned.to_a
+        time_since = Time.now - spell.last_learned
+
+        # time_left = Custom.time_to_next_learn_spell(enactor, spell)
+        # days = time_left.to_i / 86400
+        client.emit time_since
+        
+
+
+        # if time_left.to_i > 0
+        #   #time left = days / seconds
+        #   days = time_left.to_i / 86400
+        #   client.emit_failure t('custom.cant_learn_yet', :days => days.ceil)
+        # else
+        #   client.emit "Okay"
+        # end
+
+
+
+
       end
+
+
+
+
+
+
+
+
 
 
 
