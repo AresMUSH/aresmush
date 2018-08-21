@@ -1,14 +1,9 @@
 module AresMUSH
   module Custom
-    def self.can_learn_spell?(char, spell)
-      self.time_to_next_learn <= 0
-    end
 
-    def self.time_to_next_learn_spell(char, spell)
-      return 0 if !spell.last_learned
-      time_left = (FS3Skills.days_between_learning * 86400) - (Time.now.to_i - spell.last_learned.to_i)
-      [time_left, 0].max
-    end
+    #Gives time in seconds
+    def self.time_to_next_learn_spell(spell)
+      (FS3Skills.days_between_learning * 86400) - (Time.now - spell.last_learned)    end
 
     def self.find_spell_learned(char, spell)
       spell_name = spell.titlecase
@@ -35,6 +30,21 @@ module AresMUSH
         return true
       else
         return false
+      end
+    end
+
+    def self.can_discard?(char, spell)
+      level = spell.level
+      school = spell.school
+      spells_learned =  char.spells_learned.to_a
+      if spells_learned.any? {|s| s.level > level && s.school == school}
+        if spells_learned.any? {|s| s.level == level && s.school == school}
+          return true
+        else
+          return false
+        end
+      else
+        return true
       end
     end
 
