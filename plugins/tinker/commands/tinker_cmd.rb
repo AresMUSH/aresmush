@@ -15,9 +15,16 @@ module AresMUSH
 
 
       def handle
-        spells_learned = enactor.spells_learned.to_a
-        number = spells_learned.count {|x| x.learning_complete == true}
-        client.emit number
+        spell_name = cmd.args
+        char = enactor
+        spell = Custom.find_spell_learned(enactor, spell_name)
+        know = Custom.knows_spell?(enactor, spell_name)
+        return t('dispatcher.not_allowed') if know == false
+        client.emit spell_name
+        client.emit know
+
+
+
 
 
         # time_left = Custom.time_to_next_learn_spell(enactor, spell)
