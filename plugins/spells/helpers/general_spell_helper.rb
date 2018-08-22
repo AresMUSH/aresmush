@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Spells
 
     def self.is_spell?(spell)
       spell_list = Global.read_config("spells")
@@ -7,8 +7,8 @@ module AresMUSH
       spell_list.include?(spell_name)
     end
 
-    def self.already_cast(caster)
-      has_cast = caster.has_cast
+    def self.already_cast(char)
+      has_cast = char.combatant.has_cast
       return true if has_cast
     end
 
@@ -25,9 +25,18 @@ module AresMUSH
 
       combatant.log "Attack roll for #{combatant.name} school=#{school} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
 
+
+
       mod = spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
 
-      successes = combatant.roll_ability(school, mod)
+      school_dice = FS3Skills.ability_rating(char, school) * 3
+      dice = mod + school_dice
+
+
+      die_result = FS3Skills.roll_dice(dice)
+      successes = die_result.count { |d| d >= FS3Skills.success_target_number }
+      botches = die_result.count { |d| d == 1 }
+
       return successes
 
     end
@@ -65,9 +74,10 @@ module AresMUSH
       end
     end
 
-    def self.roll_combat_spell_success(caster, spell)
+    def self.roll_spell_success(caster, spell)
+      # mod = caster.spell_mod
       school = Global.read_config("spells", spell, "school")
-      die_result = Custom.roll_combat_spell(caster, caster, school)
+      die_result = Custom.roll_combat_spell(caster, caster.combatant, school)
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
