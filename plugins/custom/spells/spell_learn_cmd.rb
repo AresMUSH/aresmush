@@ -13,8 +13,8 @@ module AresMUSH
 
       def check_errors
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('custom.need_previous_level') if Custom.previous_level_spell?(enactor, self.spell) == false
+
         major_school = enactor.major_school
         minor_school = enactor.minor_school
         if [enactor.major_school, enactor.minor_school].include? self.school
@@ -26,19 +26,20 @@ module AresMUSH
       end
 
       def handle
+        client.emit self.school
         spell_learned = Custom.find_spell_learned(enactor, self.spell)
         if spell_learned
           #Gives time in days, if less than 24 hours left, it's learnable
           time_left = (Custom.time_to_next_learn_spell(spell_learned) / 86400)
+          client.emit time_left
           if spell_learned.learning_complete
             client.emit_failure t('custom.already_know_spell', :spell => self.spell)
           elsif time_left > 0
-            client.emit_failure t('custom.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
+            client.emit_failure t('custom.cant_learn_yet', :spell => self.spell, :days => time_left)
           else
             client.emit_success t('custom.additional_learning', :spell => self.spell)
             xp_needed = spell_learned.xp_needed.to_i - 1
             spell_learned.update(xp_needed: xp_needed)
-            FS3Skills.modify_xp(enactor, -1)
             if xp_needed < 1
               spell_learned.update(learning_complete: true)
               client.emit_success t('custom.complete_learning', :spell => self.spell)
@@ -49,12 +50,30 @@ module AresMUSH
           end
         else
           xp_needed = Custom.spell_xp_needed(self.spell)
-          FS3Skills.modify_xp(enactor, -1)
           SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: false)
           client.emit_success t('custom.start_learning', :spell => self.spell)
         end
 
       end
+
+
+      #     ability.learn
+      #     if (ability.learning_complete)
+      #       ability.update(xp: 0)
+      #       FS3Skills.set_ability(client, char, name, ability.rating + 1)
+            # message = t('fs3skills.xp_raised_job', :name => char.name, :ability => name, :rating => ability.rating + 1)
+            # category = Jobs.system_category
+            # Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)
+      #     else
+      #       client.emit_success t('fs3skills.xp_spent', :name => name)
+      #     end
+      #
+      #     if (FS3Skills.skill_requires_training(ability))
+      #       client.emit_ooc t('fs3skills.skill_requires_training', :name => name)
+      #     end
+      #   end
+      # end
+
 
     end
   end
