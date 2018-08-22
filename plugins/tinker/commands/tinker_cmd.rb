@@ -15,12 +15,9 @@ module AresMUSH
 
 
       def handle
-        spell_name = cmd.args
-        char = enactor
-        spell = Custom.find_spell_learned(enactor, spell_name)
-        discard = Custom.can_discard?(char, spell)
-        client.emit discard
-
+        spells_learned = enactor.spells_learned.to_a
+        number = spells_learned.count {|x| x.learning_complete == true}
+        client.emit number
 
 
         # time_left = Custom.time_to_next_learn_spell(enactor, spell)
