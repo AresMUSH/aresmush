@@ -46,6 +46,14 @@ module AresMUSH
         combatant.update(aim_target: nil)
       end
 
+      if combatant.action_klass == "AresMUSH::FS3Combat::PotionAction"
+        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
+      end
+
+      if combatant.action_klass == "AresMUSH::FS3Combat::SpellAction" 
+        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
+      end
+
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
