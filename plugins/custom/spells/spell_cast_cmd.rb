@@ -14,10 +14,14 @@ module AresMUSH
          self.caster = combat.find_combatant(name)
          self.spell = titlecase_arg(args.arg2)
        else
-         args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
-         self.caster = enactor
-         self.spell = titlecase_arg(args.arg1)
-       end
+          args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+          if enactor.combatant
+            self.caster = enactor.combatant
+          else
+            self.caster = enactor
+          end
+          self.spell = titlecase_arg(args.arg1)
+        end
       end
 
       def check_errors
@@ -46,8 +50,8 @@ module AresMUSH
         stance = Global.read_config("spells", self.spell, "stance")
         school = Global.read_config("spells", self.spell, "school")
 
-        if self.caster.combatant
-          if self.caster.combatant.is_ko
+        if self.enactor.combatant
+          if self.caster.is_ko
             client.emit_failure t('custom.spell_ko')
           elsif Custom.already_cast(self.caster)
             client.emit_failure t('custom.already_cast')
@@ -84,7 +88,7 @@ module AresMUSH
             end
 
           end
-        self.caster.combatant.update(has_cast: true)
+        self.caster.update(has_cast: true)
         elsif
           #Roll NonCombat
           if roll
