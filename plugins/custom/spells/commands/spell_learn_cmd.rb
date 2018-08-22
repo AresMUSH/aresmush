@@ -15,8 +15,6 @@ module AresMUSH
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('custom.need_previous_level') if Custom.previous_level_spell?(enactor, self.spell) == false
-        major_school = enactor.major_school
-        minor_school = enactor.minor_school
         if [enactor.major_school, enactor.minor_school].include? self.school
           return nil
         else

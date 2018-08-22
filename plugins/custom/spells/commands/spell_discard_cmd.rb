@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :spell, :spell_learned
       def parse_args
         self.spell = titlecase_arg(cmd.args)
-        self.spell_learned = Custom.find_spell_learned(enactor, cmd.args)
+        self.spell_learned = Custom.find_spell_learned(enactor, self.spell)
 
       end
 
@@ -20,7 +20,7 @@ module AresMUSH
 
       def handle
         self.spell_learned.delete
-        client.emit_success "You have discarded the #{self.spell_learned.name} spell."
+        client.emit_success t('custom.discarded_spell', :spell => self.spell)
       end
 
     end

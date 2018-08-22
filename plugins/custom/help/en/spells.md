@@ -16,5 +16,5 @@ summary: Learning & casting spells
 
 ## Admin commands
 `spell/mod <name>=<mod>` - Set someone's spell mod to affect their spell rolls.
-`spell/add <name>=<spell>` - Add a spell to someone's spell list.
+`spell/add <name>=<spell>` - Add a spell to someone's spell list without spending XP.
 `spell/remove <name>=<spell>` - Remove a spell from someone's spell list.
