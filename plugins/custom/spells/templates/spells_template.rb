@@ -8,6 +8,9 @@ module AresMUSH
         super File.dirname(__FILE__) + "/spells.erb"
       end
 
+      def spell_count
+        Custom.count_spells_total(char)
+      end
 
       def spells_learned
         @char.spells_learned.to_a

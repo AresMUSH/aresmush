@@ -1,12 +1,17 @@
 module AresMUSH
   module Custom
 
+    def self.count_spells_total(char)
+      spells_learned = char.spells_learned.to_a
+      spells_learned.count
+    end
+
     #Gives time in seconds
     def self.time_to_next_learn_spell(spell)
       (FS3Skills.days_between_learning * 86400) - (Time.now - spell.last_learned)    end
 
-    def self.find_spell_learned(char, spell)
-      spell_name = spell.titlecase
+    def self.find_spell_learned(char, spell_name)
+      spell_name = spell_name.titlecase
       char.spells_learned.select { |a| a.name == spell_name }.first
     end
 

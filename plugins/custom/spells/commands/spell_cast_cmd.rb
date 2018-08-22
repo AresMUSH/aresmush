@@ -21,6 +21,7 @@ module AresMUSH
             self.caster = enactor
           end
           self.spell = titlecase_arg(args.arg1)
+          return t('custom.dont_know_spell') if Custom.find_spell_learned(enactor, self.spell)
         end
       end
 
