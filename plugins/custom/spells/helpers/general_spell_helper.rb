@@ -7,8 +7,8 @@ module AresMUSH
       spell_list.include?(spell_name)
     end
 
-    def self.already_cast(caster)
-      has_cast = caster.has_cast
+    def self.already_cast(caster_combat)
+      has_cast = caster_combat.has_cast
       return true if has_cast
     end
 

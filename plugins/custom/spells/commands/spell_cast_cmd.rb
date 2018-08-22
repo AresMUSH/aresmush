@@ -31,16 +31,15 @@ module AresMUSH
       end
 
       def check_errors
-        require_target = Global.read_config("spells", self.spell, "require_target")
+        return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         if caster.is_npc?
           return nil
         else
-          return t('custom.not_spell') if !self.spell_list.include?(self.spell)
+          return t('custom.dont_know_spell') if Custom.knows_spell?(char, self.spell) == false
         end
-        return t('custom.dont_know_spell') if Custom.knows_spell?(char, self.spell) == false
+        require_target = Global.read_config("spells", self.spell, "require_target")
         return t('custom.needs_target') if require_target
-
         return nil
       end
 
