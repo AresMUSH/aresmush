@@ -3,15 +3,17 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type, :caster
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type, :caster, :char
 
       def parse_args
        self.spell_list = Global.read_config("spells")
        if (cmd.args =~ /\//)
+         #Forcing NPC or PC to cast
          args = cmd.parse_args(/(?<arg1>[^\/]+)\/(?<arg2>[^\+]+)/)
          combat = enactor.combat
          name = titlecase_arg(args.arg1)
          self.caster = combat.find_combatant(name)
+         self.char = Character.find_one_by_name(name)
          self.spell = titlecase_arg(args.arg2)
        else
           args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
@@ -21,7 +23,10 @@ module AresMUSH
             self.caster = enactor
           end
           self.spell = titlecase_arg(args.arg1)
-          return t('custom.dont_know_spell') if Custom.find_spell_learned(enactor, self.spell)
+          self.char = enactor
+
+
+
         end
       end
 
@@ -29,7 +34,9 @@ module AresMUSH
         require_target = Global.read_config("spells", self.spell, "require_target")
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
+        return t('custom.dont_know_spell') if Custom.knows_spell?(char, self.spell) == false
         return t('custom.needs_target') if require_target
+
         return nil
       end
 

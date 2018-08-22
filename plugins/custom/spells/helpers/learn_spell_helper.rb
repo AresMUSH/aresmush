@@ -15,6 +15,16 @@ module AresMUSH
       char.spells_learned.select { |a| a.name == spell_name }.first
     end
 
+    def self.knows_spell?(char, spell_name)
+      spell_name = spell_name.titlecase
+      if char.spells_learned.select { |a| a.name == spell_name }.first
+        return true
+      else
+        return false
+      end
+    end
+
+
     def self.find_spell_school(char, spell_name)
       Global.read_config("spells", spell_name.titlecase, "school")
     end
@@ -54,8 +64,6 @@ module AresMUSH
       end
     end
 
-    def self.already_learned(spell)
-    end
 
     def self.spell_xp_needed(spell)
       level = Global.read_config("spells", spell, "level")

@@ -15,7 +15,7 @@ module AresMUSH
 
       def check_errors
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        if [enactor.major_school, enactor.minor_school].include? self.school
+        if [self.target.major_school, self.target.minor_school].include? self.school
           return nil
         else
           return t('custom.wrong_school')
@@ -26,7 +26,7 @@ module AresMUSH
       end
 
       def handle
-        SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: 0, learning_complete: true)
+        SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: target, xp_needed: 0, learning_complete: true)
         client.emit_success t('custom.added_spell', :spell => self.spell, :name => self.target.name)
       end
 
