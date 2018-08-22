@@ -37,6 +37,7 @@ module AresMUSH
       level = spell.level
       school = spell.school
       spells_learned =  char.spells_learned.to_a
+      if_discard = spells_learned.delete(spell)
       if spells_learned.any? {|s| s.level > level && s.school == school}
         if spells_learned.any? {|s| s.level == level && s.school == school}
           return true

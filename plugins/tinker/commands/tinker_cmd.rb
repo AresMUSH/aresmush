@@ -18,22 +18,8 @@ module AresMUSH
         spell_name = cmd.args
         char = enactor
         spell = Custom.find_spell_learned(enactor, spell_name)
-        level = spell.level
-        school = spell.school
-        spells_learned =  char.spells_learned.to_a
-        if_discard = spells_learned.delete(spell)        
-
-        if spells_learned.any? {|s| s.level > level && s.school == school}
-          client.emit "there is a spell with a level  greater than the level of the spell I'm discarding"
-          if spells_learned.any? {|s| s.level == level && s.school == school}
-            client.emit "there is another spell with the same level as the level of the spell I'm discarding"
-            client.emit "true"
-          else
-            client.emit "false"
-          end
-        else
-          client.emit true
-        end
+        discard = Custom.can_discard?(char, spell)
+        client.emit discard
 
 
 
