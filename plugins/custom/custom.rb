@@ -66,7 +66,20 @@ module AresMUSH
           else
             return SpellCastCmd
           end
+        when "learn"
+          return SpellLearnCmd
+        when "discard"
+          return SpellDiscardCmd
+        when "add"
+          return SpellAddCmd
+        when "remove"
+          return SpellRemoveCmd
         end
+
+      end
+      case cmd.root
+      when "spells"
+        return SpellsCmd
       end
     #Schools
       case cmd.root
