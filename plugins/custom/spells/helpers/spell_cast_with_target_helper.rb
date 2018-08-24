@@ -79,6 +79,7 @@ module AresMUSH
     def self.cast_stance(caster, target_combat, spell)
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
+        stance = Global.read_config("spells", spell, "stance")
         target_combat.update(stance: stance)
         FS3Combat.emit_to_combat caster.combat, t('custom.cast_stance', :name => caster.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :stance => stance)
       else
