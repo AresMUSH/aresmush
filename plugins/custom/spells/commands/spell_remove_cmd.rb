@@ -13,6 +13,8 @@ module AresMUSH
       end
 
       def check_errors
+        return nil if FS3Skills.can_manage_abilities?(enactor)
+        return t('dispatcher.not_allowed')
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
         return t('custom.dont_know_spell') if !Custom.find_spell_learned(self.target, self.spell)
         return nil

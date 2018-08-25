@@ -64,7 +64,7 @@ module AresMUSH
 
 
       if (combatant.is_ko && combatant.is_npc?)
-        # FS3Combat.leave_combat(combatant.combat, combatant)
+        FS3Combat.leave_combat(combatant.combat, combatant)
       else
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])

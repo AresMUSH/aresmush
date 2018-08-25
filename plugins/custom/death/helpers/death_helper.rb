@@ -12,8 +12,16 @@ module AresMUSH
       elsif death_count == 3
         combatant.update(death_count: 4  )
         FS3Combat.emit_to_combat combatant.combat, t('custom.died', :name => combatant.name)
-        combatant.update(dead: true )
+        combatant.character.update(dead: true )
       end
+    end
+
+    def self.undead(character)
+      if character.combatant
+        character.combatant.update(death_count: 0  )
+        character.combatant.update(is_ko: false)
+      end
+      character.update(dead: false )
     end
 
 
