@@ -9,7 +9,11 @@ module AresMUSH
         skills = {}
 
         FS3Skills.attrs.map { |a| a['name'] }.each do |a|
-          skills[a] = 1
+          if a == "Magic"
+            skills[a] = 0
+          else
+            skills[a] = 1
+          end
         end
 
         FS3Skills.action_skills.map { |a| a['name'] }.each do |a|

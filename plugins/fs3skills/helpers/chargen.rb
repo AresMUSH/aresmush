@@ -111,23 +111,25 @@ module AresMUSH
 
       client.emit_ooc t('fs3skills.reset_attributes') if client
       FS3Skills.attr_names.each do |a|
-        FS3Skills.set_ability(client, char, a, 2)
+        if a == "Magic"
+
+        else
+          FS3Skills.set_ability(client, char, a, 2)
+        end
       end
 
-      magic = find_ability(char, "Magic")
-      magic.delete
-      client.emit_success "Magic has been deleted."
 
       FS3Skills.action_skill_names.each do |a|
         schools = Global.read_config("schools")
         if schools.include? a
-          return nil
+
         else
           FS3Skills.set_ability(client, char, a, 1)
         end
       end
 
       starting_skills = StartingSkills.get_groups_for_char(char)
+
 
       starting_skills.each do |k, v|
         set_starting_skills(client, char, k, v)

@@ -30,7 +30,7 @@ module AresMUSH
         @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
           schools = Global.read_config("schools")
           if schools.include? a.name
-            return nil
+            
           else
             list << format_attr(a, i)
           end

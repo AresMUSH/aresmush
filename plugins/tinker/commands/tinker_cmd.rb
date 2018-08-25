@@ -13,13 +13,10 @@ module AresMUSH
 
 
       def handle
-        char_name = cmd.args
-        char = Character.find_one_by_name(char_name)
-        client.emit char
-        skills = char.fs3_action_skills.to_a
-        skills.each do |s|
-          client.emit s.name
-          client.emit s.rating
+        skills = {}
+        FS3Skills.attrs.map { |a| a['name'] }.each do |a|
+          skills[a] = 0
+          client.emit a
         end
 
 
