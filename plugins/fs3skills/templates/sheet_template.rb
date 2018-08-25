@@ -28,25 +28,10 @@ module AresMUSH
       def action_skills
         list = []
         @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
-          if a.name.include?("Alertness")
-            list << format_attr(a, i)
-          elsif a.name.include?("Archery")
-            list << format_attr(a, i)
-          elsif a.name.include?("Athletics")
-            list << format_attr(a, i)
-          elsif a.name.include?("Brawl")
-            list << format_attr(a, i)
-          elsif a.name.include?("Composure")
-            list << format_attr(a, i)
-          elsif a.name.include?("Firearms")
-            list << format_attr(a, i)
-          elsif a.name.include?("Medicine")
-            list << format_attr(a, i)
-          elsif a.name.include?("Melee")
-            list << format_attr(a, i)
-          elsif a.name.include?("Stealth")
-            list << format_attr(a, i)
-          elsif a.name.include?("Survival")
+          schools = Global.read_config("schools")
+          if schools.include? a.name
+            return nil
+          else
             list << format_attr(a, i)
           end
         end
@@ -56,21 +41,21 @@ module AresMUSH
       def schools
        list = []
         @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
-          if a.name.include?("Air")
+          if a.name == ("Air")
             list << format_attr(a, i)
-          elsif a.name.include?("Corpus")
+          elsif a.name == ("Corpus")
             list << format_attr(a, i)
-          elsif a.name.include?("Earth")
+          elsif a.name == ("Earth")
             list << format_attr(a, i)
-          elsif a.name.include?("Fire")
+          elsif a.name == ("Fire")
             list << format_attr(a, i)
-            elsif a.name.include?("Nature")
+            elsif a.name == ("Nature")
             list << format_attr(a, i)
-          elsif a.name.include?("Spirit")
+          elsif a.name == ("Spirit")
             list << format_attr(a, i)
-          elsif a.name.include?("Water")
+          elsif a.name == ("Water")
             list << format_attr(a, i)
-          elsif a.name.include?("Will")
+          elsif a.name == ("Will")
             list << format_attr(a, i)
             else
             nil
