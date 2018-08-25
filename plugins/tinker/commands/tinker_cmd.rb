@@ -13,10 +13,13 @@ module AresMUSH
 
 
       def handle
-        skills = {}
-        FS3Skills.attrs.map { |a| a['name'] }.each do |a|
-          skills[a] = 0
-          client.emit a
+        school = titlecase_arg(cmd.args)
+        client.emit enactor.groups.values
+
+        if enactor.groups.values.include? school
+          client.emit "yes"
+        else
+         client.emit t('custom.wrong_school')
         end
 
 
