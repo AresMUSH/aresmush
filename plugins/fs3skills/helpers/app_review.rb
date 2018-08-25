@@ -92,12 +92,11 @@ module AresMUSH
       Chargen.format_review_status(t('fs3skills.language_check'), error)
     end
 
-    #Error that's breaking app
+
     def self.starting_skills_check(char)
       message = t('fs3skills.starting_skills_check')
       missing = []
       starting_skills = StartingSkills.get_skills_for_char(char)
-      
       starting_skills.each do |skill, rating|
         if (FS3Skills.ability_rating(char, skill)) < rating
           missing << t('fs3skills.missing_starting_skill', :skill => skill, :rating => rating)
