@@ -36,7 +36,7 @@ module AresMUSH
       end
     end
 
-    #This one erroring
+
     def self.unusual_skills_check(char)
       too_high = []
       message = t('fs3skills.unusual_abilities_check')
@@ -96,41 +96,40 @@ module AresMUSH
     def self.starting_skills_check(char)
       message = t('fs3skills.starting_skills_check')
       missing = []
-      #This helper is where something is broken, I think
       starting_skills = StartingSkills.get_skills_for_char(char)
-      client.emit starting_skills
-      # starting_skills.each do |skill, rating|
-      #   if (FS3Skills.ability_rating(char, skill)) < rating
-      #     missing << t('fs3skills.missing_starting_skill', :skill => skill, :rating => rating)
-      #   end
-      # end
+      
+      starting_skills.each do |skill, rating|
+        if (FS3Skills.ability_rating(char, skill)) < rating
+          missing << t('fs3skills.missing_starting_skill', :skill => skill, :rating => rating)
+        end
+      end
 
-      # starting_specs = StartingSkills.get_specialties_for_char(char)
-      # char.fs3_action_skills.each do |a|
-      #   specs_for_skill = starting_specs[a.name]
-      #   if (specs_for_skill)
-      #     specs_for_skill.each do |s|
-      #       if (!a.specialties.include?(s))
-      #         missing << t('fs3skills.missing_group_specialty', :spec => s, :skill => a.name)
-      #       end
-      #     end
-      #   end
-      # end
-      #
-      # char.fs3_action_skills.each do |a|
-      #   config = FS3Skills.action_skill_config(a.name)
-      #   if (config['specialties'] && a.specialties.empty? && a.rating > 2)
-      #     missing << t('fs3skills.missing_specialty', :skill => a.name)
-      #   end
-      # end
-      #
-      #
-      # if (missing.count == 0)
-      #   Chargen.format_review_status(message, t('chargen.ok'))
-      # else
-      #   error = missing.collect { |m| "%T#{m}" }.join("%R")
-      #   "#{message}%r#{error}"
-      # end
+      starting_specs = StartingSkills.get_specialties_for_char(char)
+      char.fs3_action_skills.each do |a|
+        specs_for_skill = starting_specs[a.name]
+        if (specs_for_skill)
+          specs_for_skill.each do |s|
+            if (!a.specialties.include?(s))
+              missing << t('fs3skills.missing_group_specialty', :spec => s, :skill => a.name)
+            end
+          end
+        end
+      end
+
+      char.fs3_action_skills.each do |a|
+        config = FS3Skills.action_skill_config(a.name)
+        if (config['specialties'] && a.specialties.empty? && a.rating > 2)
+          missing << t('fs3skills.missing_specialty', :skill => a.name)
+        end
+      end
+
+
+      if (missing.count == 0)
+        Chargen.format_review_status(message, t('chargen.ok'))
+      else
+        error = missing.collect { |m| "%T#{m}" }.join("%R")
+        "#{message}%r#{error}"
+      end
     end
 
     def self.check_high_abilities(abilities, top_rating, num_abilities_max, prompt)
