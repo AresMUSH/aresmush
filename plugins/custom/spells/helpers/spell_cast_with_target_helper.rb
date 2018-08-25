@@ -20,8 +20,10 @@ module AresMUSH
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
+          target.combatant.update(death_count: 0  )
           FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)
         else
+          target.combatant.update(death_count: 0  )
           FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
         end
       else
@@ -33,6 +35,7 @@ module AresMUSH
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
         target_combat.update(is_ko: false)
+        target_combat.update(death_count: 0  )
         FS3Combat.emit_to_combat caster.combat, t('custom.cast_revive', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name)
         FS3Combat.emit_to_combatant target_combat, t('custom.been_revived', :name => caster.name)
       else
