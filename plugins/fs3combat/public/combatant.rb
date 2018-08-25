@@ -5,7 +5,9 @@ module AresMUSH
     #SPELLS
     attribute :spell_mod, :type => DataType::Integer, :default => 0
     attribute :has_cast, :type => DataType::Boolean, :default => false
-    
+    attribute :death_count, :type => DataType::Integer, :default => 0
+    attribute :dead, :type => DataType::Boolean, :default => false
+
     attribute :action_klass
     attribute :action_args
     attribute :combatant_type

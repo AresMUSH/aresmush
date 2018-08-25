@@ -46,28 +46,25 @@ module AresMUSH
         combatant.update(aim_target: nil)
       end
 
-      if combatant.action_klass == "AresMUSH::FS3Combat::PotionAction"
-        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
-      end
-
-      if combatant.action_klass == "AresMUSH::FS3Combat::SpellAction" 
-        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
-      end
-
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      combatant.update(has_cast:false)
+      combatant.update(has_cast: false)
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)
 
+      if (combatant.is_ko && !combatant.is_npc?)
+        Custom.death_counter(combatant)
+      end
+
       FS3Combat.check_for_ko(combatant)
       combatant.update(freshly_damaged: false)
 
+
       if (combatant.is_ko && combatant.is_npc?)
-        FS3Combat.leave_combat(combatant.combat, combatant)
+        # FS3Combat.leave_combat(combatant.combat, combatant)
       else
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])
@@ -101,6 +98,7 @@ module AresMUSH
 
       if (roll <= 0)
         combatant.update(is_ko: true)
+        combatant.update(death_count: 1)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")

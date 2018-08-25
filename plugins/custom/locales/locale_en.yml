@@ -27,7 +27,6 @@ en:
         # ----------------------------
         # SPELL CASTING
         # ----------------------------
-      cant_force_cast: "You can't force someone to cast a spell outside of combat."
       already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
       casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn."
@@ -39,16 +38,19 @@ en:
       target_stun: "Choose your target by doing stun <target>."
       cast_heal: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
       cast_heal_no_effect: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, but they have no healable wounds. The spell has no effect."
-      not_ko: "%{target} is not knocked out."
       cast_revive: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
       been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %{damage_desc}."
-      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xB%{mod} %{type} modification%xn for a total of %{total_mod}."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %{mod} %{type} modification for a total of %{total_mod}."
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
       no_target: "This spell does not use a target. Do spell/cast <spell>."
       spell_ko: "You cannot cast a spell while Knocked Out."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
+      one_death: "%xR%{name} has been knocked out for one round.%xn"
+      two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived or treated this round, they will die.%xn"
+      died: "%xR%{name} has died.%xn"
+
 
       # ----------------------------
       # LEARNING SPELLS
@@ -77,13 +79,13 @@ en:
       # FS3 COMBAT SPELL
       # ----------------------------
 
-      spell_action_msg_long: "%{name} casts a spell this turn."
+      spell_action_msg_long: "%{name} will cast a spell this turn."
       spell_action_msg_short: "Spell"
-      spell_resolution_msg: "%{name} cast a spell."
+      spell_resolution_msg: "%{name} casts a spell."
       # ----------------------------
       # FS3 COMBAT POTION
       # ----------------------------
 
-      potion_action_msg_long: "%{name} uses a potion this turn."
+      potion_action_msg_long: "%{name} will use a potion this turn."
       potion_action_msg_short: "Potion"
-      potion_resolution_msg: "%{name} used a potion"
+      potion_resolution_msg: "%{name} uses a potion"
