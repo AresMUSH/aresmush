@@ -48,8 +48,9 @@ en:
       spell_ko: "You cannot cast a spell while Knocked Out."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
       one_death: "%xR%{name} has been knocked out for one round.%xn"
-      two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived or treated this round, they will die.%xn"
+      two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived, healed, or treated this round, they will die.%xn"
       died: "%xR%{name} has died.%xn"
+      raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
 
 
       # ----------------------------
