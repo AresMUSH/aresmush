@@ -13,14 +13,11 @@ module AresMUSH
 
 
       def handle
-        school = titlecase_arg(cmd.args)
-        client.emit enactor.groups.values
+        name_string = "test1 test2 testing1"
+        targets = Custom.parse_spell_targets(enactor, name_string)
+        client.emit targets
 
-        if enactor.groups.values.include? school
-          client.emit "yes"
-        else
-         client.emit t('custom.wrong_school')
-        end
+
 
 
       end
