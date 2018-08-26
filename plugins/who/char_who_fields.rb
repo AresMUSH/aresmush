@@ -17,11 +17,11 @@ module AresMUSH
       end
 
       def major_school(char)
-        char.major_school
+        char.group("Major School")
       end
 
       def minor_school(char)
-        char.minor_school
+        char.group("Minor School")
       end
 
       def rank(char)
