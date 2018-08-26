@@ -21,11 +21,11 @@ module AresMUSH
       end
 
       def major_school
-        char.major_school
+        char.group("Major School")
       end
 
       def minor_school
-        char.minor_school
+        char.group("Minor School")
       end
 
 
