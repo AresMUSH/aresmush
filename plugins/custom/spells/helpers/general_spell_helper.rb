@@ -37,19 +37,19 @@ module AresMUSH
       if die_result < 1
         return "%xrFAILS%xn"
       elsif spell_level == 1
-        return "%xrFAILS%xn" if die_result == 1
+        return "%xrFAILS%xn" if die_result == 0
         return "%xgSUCCEEDS%xn"
       elsif spell_level == 2
         return "%xrFAILS%xn" if die_result <= 1
         return "%xgSUCCEEDS%xn"
       elsif spell_level == 3
-        return "%xrFAILS%xn" if die_result <= 2
+        return "%xrFAILS%xn" if die_result <= 1
         return "%xgSUCCEEDS%xn"
       elsif spell_level == 4
         return "%xrFAILS%xn" if die_result <= 2
         return "%xgSUCCEEDS%xn"
       elsif spell_level == 5
-        return "%xrFAILS%xn" if die_result <= 3
+        return "%xrFAILS%xn" if die_result <= 2
         return "%xgSUCCEEDS%xn"
       elsif spell_level == 6
         return "%xrFAILS%xn" if die_result <= 3
@@ -69,6 +69,21 @@ module AresMUSH
       school = Global.read_config("spells", spell, "school")
       die_result = Custom.roll_combat_spell(caster, caster, school)
       succeeds = Custom.combat_spell_success(spell, die_result)
+    end
+
+    def self.parse_spell_targets(enactor, name_string)
+      return t('fs3combat.no_targets_specified') if (!name_string)
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      targets = []
+      combat = enactor.combat
+      target_names.each do |name|
+        target = combat.find_combatant(name)
+        return t('fs3combat.not_in_combat', :name => name) if !target
+        return t('fs3combat.cant_target_noncombatant', :name => name) if target.is_noncombatant?
+        targets << target
+      end
+      self.targets = targets
+      return nil
     end
 
   end
