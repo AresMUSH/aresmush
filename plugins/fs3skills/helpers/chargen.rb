@@ -10,12 +10,12 @@ module AresMUSH
         end
         return false
       end
-      
+
       ability_type = get_ability_type(ability_name)
-      
+
       min_rating = FS3Skills.get_min_rating(ability_type)
       ability = FS3Skills.find_ability(char, ability_name)
-      
+
       if (ability)
         ability.update(rating: rating)
       else
@@ -32,15 +32,15 @@ module AresMUSH
           ability = FS3Attribute.create(character: char, name: ability_name, rating: rating)
         end
       end
-      
+
       rating_name = ability.rating_name
-      
+
       if (rating == min_rating)
         if (ability && (ability_type == :background || ability_type == :language || ability_type == :advantage))
           ability.delete
         end
       end
-      
+
       if (client)
         if (client.char_id == char.id)
           client.emit_success t("fs3skills.#{ability_type}_set", :name => ability_name, :rating => rating_name)
@@ -50,13 +50,13 @@ module AresMUSH
       end
       return true
     end
-    
+
     # Checks to make sure an ability name doesn't have any funky characters in it.
     def self.check_ability_name(ability)
       return t('fs3skills.no_special_characters') if (ability !~ /^[\w\s]+$/)
       return nil
     end
-    
+
     def self.get_min_rating(ability_type)
       case ability_type
       when :action
@@ -72,7 +72,7 @@ module AresMUSH
       end
       min_rating
     end
-    
+
     def self.get_max_rating(ability_type)
       case ability_type
       when :action
@@ -83,7 +83,7 @@ module AresMUSH
         max_rating = Global.read_config("fs3skills", "max_attr_rating")
       end
     end
-    
+
     def self.check_rating(ability_name, rating)
       ability_type = FS3Skills.get_ability_type(ability_name)
       min_rating = FS3Skills.get_min_rating(ability_type)
@@ -93,14 +93,14 @@ module AresMUSH
       return t('fs3skills.min_rating_is', :rating => min_rating) if (rating < min_rating)
       return nil
     end
-    
+
     def self.reset_char(client, char) # Client may be null
       char.fs3_action_skills.each { |s| s.delete }
       char.fs3_attributes.each { |s| s.delete }
       char.fs3_background_skills.each { |s| s.delete }
       char.fs3_languages.each { |s| s.delete }
       char.fs3_advantages.each { |s| s.delete }
-        
+
       languages = Global.read_config("fs3skills", "starting_languages")
       if (languages)
         client.emit_ooc t('fs3skills.reset_languages') if client
@@ -108,26 +108,37 @@ module AresMUSH
           FS3Skills.set_ability(client, char, l, 3)
         end
       end
-        
+
       client.emit_ooc t('fs3skills.reset_attributes') if client
       FS3Skills.attr_names.each do |a|
-        FS3Skills.set_ability(client, char, a, 2)
+        if a == "Magic"
+
+        else
+          FS3Skills.set_ability(client, char, a, 2)
+        end
       end
-        
+
+
       FS3Skills.action_skill_names.each do |a|
-        FS3Skills.set_ability(client, char, a, 1)
+        schools = Global.read_config("schools")
+        if schools.include? a
+
+        else
+          FS3Skills.set_ability(client, char, a, 1)
+        end
       end
-        
+
       starting_skills = StartingSkills.get_groups_for_char(char)
-        
+
+
       starting_skills.each do |k, v|
         set_starting_skills(client, char, k, v)
       end
     end
-      
+
     def self.set_starting_skills(client, char, group, skill_config)
       return if !skill_config
-        
+
       notes = skill_config["notes"]
       if (notes)
         client.emit_ooc t('fs3skills.reset_group_notes', :group => group, :notes => notes) if client
@@ -135,7 +146,7 @@ module AresMUSH
 
       skills = skill_config["skills"]
       return if !skills
-        
+
       client.emit_ooc t('fs3skills.reset_for_group', :group => group) if client
       skills.each do |k, v|
         FS3Skills.set_ability(client, char, k, v)

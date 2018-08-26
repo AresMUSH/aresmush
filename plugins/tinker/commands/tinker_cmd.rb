@@ -13,9 +13,12 @@ module AresMUSH
 
 
       def handle
+        name_string = "test1 test2 testing1"
+        targets = Custom.parse_spell_targets(enactor, name_string)
+        client.emit targets
 
-        combatant = enactor.combatant
-        client.emit combatant.character.name
+
+
 
 
       end
