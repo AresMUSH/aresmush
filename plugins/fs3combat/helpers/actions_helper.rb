@@ -50,6 +50,10 @@ module AresMUSH
         combatant.update(subdued_by: nil)
       end
       combatant.update(has_cast: false)
+      combatant.update(damage_lethality_mod: 0)
+      combatant.update(defense_mod: 0)
+      combatant.update(attack_mod: 0)
+      combatant.update(spell_mod: 0)
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
@@ -260,9 +264,13 @@ module AresMUSH
     def self.stopped_by_cover?(attacker_net_successes, combatant)
       case attacker_net_successes
       when 0, 1
-        cover_chance = 50
+        cover_chance = 75
       when 2
+        cover_chance = 50
+      when 3
         cover_chance = 25
+      when 4
+        cover_chance = 10
       else
         cover_chance = 0
       end

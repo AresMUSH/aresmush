@@ -40,6 +40,7 @@ en:
       target_suppress: "Choose your targets by doing suppress <target>."
       target_attack: "Choose your target by doing attack <target>."
       target_stun: "Choose your target by doing stun <target>."
+      cant_heal_dead: "You can't heal someone who has died."
       cast_heal: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       cast_heal_no_effect: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, but they have no healable wounds. %{target} is no longer dying."
       cast_revive: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
