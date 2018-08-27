@@ -17,7 +17,7 @@ module AresMUSH
         return nil if FS3Skills.can_manage_abilities?(enactor)
         return t('dispatcher.not_allowed')
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        if [self.target.major_school, self.target.minor_school].include? self.school
+        if self.target.groups.values.include? self.school
           return nil
         else
           return t('custom.wrong_school')
