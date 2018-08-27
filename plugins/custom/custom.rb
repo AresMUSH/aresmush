@@ -74,6 +74,8 @@ module AresMUSH
           return SpellAddCmd
         when "remove"
           return SpellRemoveCmd
+        when "hascast"
+          return SpellHascastCmd
         end
 
       end
@@ -89,6 +91,14 @@ module AresMUSH
           return SetSchoolsCmd
         else
           return SchoolsCmd
+        end
+      end
+    #Death
+      case cmd.root
+      when "death"
+        case cmd.switch
+        when "undo"
+          return DeathUndoCmd
         end
       end
 
