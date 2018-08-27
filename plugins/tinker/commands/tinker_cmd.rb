@@ -13,27 +13,12 @@ module AresMUSH
 
 
       def handle
-
-        if (cmd.args =~ /\//)
-          args = cmd.parse_args( /(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=?(?<arg3>.+)?/)
-          combat = enactor.combat
-          caster_name = titlecase_arg(args.arg1)
-          self.spell = titlecase_arg(args.arg2)
-          target_name = titlecase_arg(args.arg3)
-          self.caster = combat.find_combatant(caster_name)
-          self.target = combat.find_combatant(target_name)
-        else
-          args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
-          self.caster = enactor.combatant
-          self.spell = titlecase_arg(args.arg1)
-          target_name = titlecase_arg(args.arg2)
-          self.target = FS3Combat.find_named_thing(target_name, self.caster)
+        name_string = cmd.args
+        combat = enactor.combat
+        targets = Custom.parse_spell_targets(name_string, combat)
+        targets.each do |t|
+          client.emit t
         end
-        client.emit self.caster.name
-        client.emit self.spell
-        client.emit self.target.name
-
-
       end
 
 
