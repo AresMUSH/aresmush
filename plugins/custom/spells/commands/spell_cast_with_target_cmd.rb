@@ -23,12 +23,15 @@ module AresMUSH
           args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
           self.spell = titlecase_arg(args.arg1)
           target_name = titlecase_arg(args.arg2)
+          client.emit target_name
           #Returns char or NPC
           self.target = FS3Combat.find_named_thing(target_name, self.caster)
           self.caster = enactor
+          client.emit target
+          client.emit caster
           #Returns combatant
           self.caster_combat = enactor.combatant
-          self.target_combat = combat.find_combatant(target_name)
+          self.target_combat = target.combatant
 
         end
         client.emit self.caster
