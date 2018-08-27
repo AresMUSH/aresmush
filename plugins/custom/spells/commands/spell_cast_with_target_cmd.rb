@@ -2,17 +2,17 @@ module AresMUSH
   module Custom
     class SpellCastWithTargetCmd
       include CommandHandler
-      attr_accessor :name, :target, :target_combat, :spell, :spell_list, :caster, :caster_combat
+      attr_accessor :name, :target_name, :target, :target_combat, :spell, :spell_list, :caster, :caster_combat
 
       def parse_args
         self.spell_list = Global.read_config("spells")
+        combat = enactor.combat
         if (cmd.args =~ /\//)
           #Forcing NPC or PC to cast
           args = cmd.parse_args( /(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=?(?<arg3>.+)?/)
-          combat = enactor.combat
           caster_name = titlecase_arg(args.arg1)
           self.spell = titlecase_arg(args.arg2)
-          target_name = titlecase_arg(args.arg3)
+          self.target_name = titlecase_arg(args.arg3)
           #Returns char or NPC
           self.caster = FS3Combat.find_named_thing(caster_name, enactor)
           self.target = FS3Combat.find_named_thing(target_name, enactor)
@@ -22,20 +22,16 @@ module AresMUSH
         else
           args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
           self.spell = titlecase_arg(args.arg1)
-          target_name = titlecase_arg(args.arg2)
+          self.target_name = titlecase_arg(args.arg2)
           #Returns char or NPC
-          self.target = FS3Combat.find_named_thing(target_name, self.caster)
           self.caster = enactor
+          self.target = FS3Combat.find_named_thing(target_name, self.caster)
           #Returns combatant
           self.caster_combat = enactor.combatant
           self.target_combat = combat.find_combatant(target_name)
 
         end
-        client.emit self.caster
-        client.emit self.caster_combat
-        client.emit self.spell
-        client.emit self.target
-        client.emit self.target_combat
+
       end
 
       def check_errors
@@ -47,7 +43,7 @@ module AresMUSH
         else
           return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
         end
-        return t('custom.no_target') if !require_target
+
 
         return nil
       end
@@ -67,6 +63,7 @@ module AresMUSH
             defense_mod = Global.read_config("spells", self.spell, "defense_mod")
             spell_mod = Global.read_config("spells", self.spell, "spell_mod")
             stance = Global.read_config("spells", self.spell, "stance")
+            multi_target = Global.read_config("spells", self.spell, "multi_target")
 
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
@@ -76,8 +73,12 @@ module AresMUSH
               Custom.cast_inflict_damage(self.caster_combat, self.target, self.spell)
             end
             #Healing
-            if heal_points
+            if (heal_points && !multi_target)
               Custom.cast_heal(self.caster_combat, self.target, self.spell)
+            end
+
+            if (heal_points && multi_target)
+              Custom.cast_multi_heal(self.caster, self.target_name, self.spell)
             end
             #Revive
             if is_revive
