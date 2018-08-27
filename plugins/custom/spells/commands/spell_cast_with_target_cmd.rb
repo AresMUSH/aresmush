@@ -23,19 +23,17 @@ module AresMUSH
           args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
           self.spell = titlecase_arg(args.arg1)
           target_name = titlecase_arg(args.arg2)
+
           #Returns char or NPC
           self.target = FS3Combat.find_named_thing(target_name, self.caster)
           self.caster = enactor
+
           #Returns combatant
           self.caster_combat = enactor.combatant
-          self.target_combat = combat.find_combatant(target_name)
+          self.target_combat = target.combatant
 
         end
-        client.emit self.caster
-        client.emit self.caster_combat
-        client.emit self.spell
-        client.emit self.target
-        client.emit self.target_combat
+
       end
 
       def check_errors
@@ -48,6 +46,8 @@ module AresMUSH
           return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
         end
         return t('custom.no_target') if !require_target
+        heal_points = Global.read_config("spells", self.spell, "heal_points")
+        return t('custom.cant_heal_dead') if (heal_points && target.dead)
 
         return nil
       end
@@ -67,6 +67,8 @@ module AresMUSH
             defense_mod = Global.read_config("spells", self.spell, "defense_mod")
             spell_mod = Global.read_config("spells", self.spell, "spell_mod")
             stance = Global.read_config("spells", self.spell, "stance")
+
+
 
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
