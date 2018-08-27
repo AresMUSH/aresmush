@@ -12,6 +12,19 @@ module AresMUSH
       return true if has_cast
     end
 
+    def self.parse_spell_targets(name_string, combat)
+      return t('fs3combat.no_targets_specified') if (!name_string)
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      targets = []
+      target_names.each do |name|
+        target = combat.find_combatant(name)
+        return t('fs3combat.not_in_combat', :name => name) if !target
+        return t('fs3combat.cant_target_noncombatant', :name => name) if target.is_noncombatant?
+        targets << target
+      end
+      
+    end
+
     def self.roll_combat_spell(char, combatant, school)
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       special_mod = combatant.attack_mod
@@ -71,20 +84,7 @@ module AresMUSH
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
-    def self.parse_spell_targets(enactor, name_string)
-      return t('fs3combat.no_targets_specified') if (!name_string)
-      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
-      targets = []
-      combat = enactor.combat
-      target_names.each do |name|
-        target = combat.find_combatant(name)
-        return t('fs3combat.not_in_combat', :name => name) if !target
-        return t('fs3combat.cant_target_noncombatant', :name => name) if target.is_noncombatant?
-        targets << target
-      end
-      self.targets = targets
-      return nil
-    end
+
 
   end
 end
