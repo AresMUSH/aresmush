@@ -46,6 +46,8 @@ module AresMUSH
           return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
         end
         return t('custom.no_target') if !require_target
+        heal_points = Global.read_config("spells", self.spell, "heal_points")
+        return t('custom.cant_heal_dead') if (heal_points && target.dead)
 
         return nil
       end
@@ -65,6 +67,8 @@ module AresMUSH
             defense_mod = Global.read_config("spells", self.spell, "defense_mod")
             spell_mod = Global.read_config("spells", self.spell, "spell_mod")
             stance = Global.read_config("spells", self.spell, "stance")
+
+
 
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
