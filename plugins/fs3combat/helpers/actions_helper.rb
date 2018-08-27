@@ -260,9 +260,13 @@ module AresMUSH
     def self.stopped_by_cover?(attacker_net_successes, combatant)
       case attacker_net_successes
       when 0, 1
-        cover_chance = 50
+        cover_chance = 75
       when 2
+        cover_chance = 50
+      when 3
         cover_chance = 25
+      when 4
+        cover_chance = 10
       else
         cover_chance = 0
       end
