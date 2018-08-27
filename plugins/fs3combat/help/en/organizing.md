@@ -16,8 +16,8 @@ This is a quick reference for combat organizer commands. Also  check out the [Ru
 
 ## Running Combat
 `combat/start [<mock or real>]` - Starts a combat (default real).
-`combat/stop <combat #>` - Stops a combat. 
-`combats` - Shows all combats going on. 
+`combat/stop <combat #>` - Stops a combat.
+`combats` - Shows all combats going on.
 `combat/newturn` - Starts the first turn.
 
 `combat/join <list of names>=<combat #>[/<type>]` - Adds characters or NPCs to combats.
@@ -36,9 +36,9 @@ This is a quick reference for combat organizer commands. Also  check out the [Ru
 `combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Miniboss, Boss
 `combat/targets` - See a breakdown of who's targeting whom.
 
-`combat/team <list of names>=<team#>` - Switches teams. 
-`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 
-    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target 
+`combat/team <list of names>=<team#>` - Switches teams.
+`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only
+    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target
     people on teams 1 and 4.
 
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.
@@ -57,12 +57,11 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
+`spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
+> **Tip:** Mods only last for one round.
 
 ## Housekeeping
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
 
-`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
+`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.
     This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
-
-
-

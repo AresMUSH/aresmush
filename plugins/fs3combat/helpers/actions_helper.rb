@@ -50,6 +50,10 @@ module AresMUSH
         combatant.update(subdued_by: nil)
       end
       combatant.update(has_cast: false)
+      combatant.update(damage_lethality_mod: 0)
+      combatant.update(defense_mod: 0)
+      combatant.update(attack_mod: 0)
+      combatant.update(spell_mod: 0)
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
