@@ -16,5 +16,6 @@ summary: Learning & casting spells
 
 ## Admin commands
 `spell/mod <name>=<mod>` - Set someone's spell mod to affect their spell rolls.
+`spell/hascast <name>=<true/false>` - Changes a character or NPC's 'has cast' value so that they can cast again if they spend luck.
 `spell/add <name>=<spell>` - Add a spell to someone's spell list without spending XP.
 `spell/remove <name>=<spell>` - Remove a spell from someone's spell list.
