@@ -20,6 +20,7 @@ require 'pp'
 require 'net/http'
 require 'html2markdown'
 require 'ruby-handlebars'
+require 'htmlentities'
 
 require 'erubis'
 require 'json'
