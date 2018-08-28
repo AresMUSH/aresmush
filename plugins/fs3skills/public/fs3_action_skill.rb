@@ -2,13 +2,14 @@ module AresMUSH
   class FS3ActionSkill < Ohm::Model
     include ObjectModel
     include LearnableAbility
-    
+
     reference :character, "AresMUSH::Character"
     attribute :name
     attribute :rating, :type => DataType::Integer, :default => 0
     attribute :specialties, :type => DataType::Array, :default => []
+    attribute :is_school
     index :name
-    
+
     def print_rating
       case rating
       when 0
@@ -31,7 +32,7 @@ module AresMUSH
         return "%xg@@%xy@@%xr@@%xb@@%xn"
       end
     end
-    
+
     def rating_name
       case rating
       when 0
