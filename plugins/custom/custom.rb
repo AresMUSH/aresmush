@@ -74,6 +74,8 @@ module AresMUSH
           return SpellAddCmd
         when "remove"
           return SpellRemoveCmd
+        when "hascast"
+          return SpellHascastCmd
         end
 
       end
@@ -97,6 +99,14 @@ module AresMUSH
         case cmd.switch
         when "undo"
           return DeathUndoCmd
+        end
+      end
+      #Luck request
+      case cmd.root
+      when "luck"
+        case cmd.switch
+        when "request"
+          return LuckRequestCmd
         end
       end
 
