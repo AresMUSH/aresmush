@@ -2,14 +2,14 @@ module AresMUSH
   module Custom
     class SpellCastWithTargetCmd
       include CommandHandler
-      attr_accessor :name, :target_name, :target, :target_combat, :spell, :spell_list, :caster, :caster_combat
+      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat
 
       def parse_args
         self.spell_list = Global.read_config("spells")
-        combat = enactor.combat
         if (cmd.args =~ /\//)
           #Forcing NPC or PC to cast
           args = cmd.parse_args( /(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=?(?<arg3>.+)?/)
+          combat = enactor.combat
           caster_name = titlecase_arg(args.arg1)
           self.spell = titlecase_arg(args.arg2)
           self.target_name = titlecase_arg(args.arg3)
@@ -23,9 +23,11 @@ module AresMUSH
           args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
           self.spell = titlecase_arg(args.arg1)
           self.target_name = titlecase_arg(args.arg2)
+
           #Returns char or NPC
-          self.caster = enactor
           self.target = FS3Combat.find_named_thing(target_name, self.caster)
+          self.caster = enactor
+
           #Returns combatant
           self.caster_combat = enactor.combatant
           self.target_combat = combat.find_combatant(target_name)
@@ -43,7 +45,11 @@ module AresMUSH
         else
           return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
         end
-
+        return t('custom.no_target') if !require_target
+        heal_points = Global.read_config("spells", self.spell, "heal_points")
+        return t('custom.cant_heal_dead') if (heal_points && target.dead)
+        is_res = Global.read_config("spells", self.spell, "is_res")
+        return t('custom.not_dead', :target => target.name) if (is_res && !target.dead)
 
         return nil
       end
@@ -54,16 +60,19 @@ module AresMUSH
             client.emit_failure t('custom.spell_ko')
           else
           #Reading Config Files
+            multi_target = Global.read_config("spells", self.spell, "multi_target")
             damage_desc = Global.read_config("spells", self.spell, "damage_desc")
             damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
             heal_points = Global.read_config("spells", self.spell, "heal_points")
             is_revive = Global.read_config("spells", self.spell, "is_revive")
+            is_res = Global.read_config("spells", self.spell, "is_res")
             lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
             attack_mod = Global.read_config("spells", self.spell, "attack_mod")
             defense_mod = Global.read_config("spells", self.spell, "defense_mod")
             spell_mod = Global.read_config("spells", self.spell, "spell_mod")
             stance = Global.read_config("spells", self.spell, "stance")
-            multi_target = Global.read_config("spells", self.spell, "multi_target")
+
+
 
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
@@ -77,15 +86,32 @@ module AresMUSH
               Custom.cast_heal(self.caster_combat, self.target, self.spell)
             end
 
+            #Healing Multiple Targets
             if (heal_points && multi_target)
               Custom.cast_multi_heal(self.caster, self.target_name, self.spell)
             end
+
             #Revive
             if is_revive
               if (!self.target_combat.is_ko)
                     client.emit_failure t('custom.not_ko', :target => self.target.name)
               else
                 Custom.cast_revive(self.caster_combat, self.target_combat, self.spell)
+              end
+            end
+
+            #Resurrect
+            if is_res
+              succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+              if self.target_combat.npc
+                if succeeds == "%xgSUCCEEDS%xn"
+                  FS3Combat.emit_to_combat caster.combat, t('custom.cast_res', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+                  client.emit_success t('custom.npc_rejoin', :target => target.name)
+                else
+                  FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+                end
+              else
+                Custom.cast_revive(self.caster_combat, self.target, self.target_combat, self.spell)
               end
             end
 
