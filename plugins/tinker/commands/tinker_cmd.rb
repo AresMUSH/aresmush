@@ -13,12 +13,26 @@ module AresMUSH
 
 
       def handle
+        char = enactor
+        school = "Fire"
+        mod = 0
 
-        target_string = cmd.args
-        caster = enactor
-        spell = "Minor Heal"
-        Custom.cast_multi_heal(caster, target_string, spell )
+        roll = char.roll_ability(school, mod)
+        client.emit roll[:successes]
+        target_name = cmd.args
+        target = FS3Combat.find_named_thing(target_name, enactor)
+      
+
+        Custom.cast_non_combat_heal(enactor, target, "Minor Heal")
+
+
+        # target_string = cmd.args
+        # caster = enactor
+        # spell = "Minor Heal"
+        # Custom.cast_multi_heal(caster, target_string, spell )
       end
+
+
 
 
 
