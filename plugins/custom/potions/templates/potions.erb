@@ -1,0 +1,19 @@
+%lh
+<%= t('custom.potions_title', :name => char.name.upcase) %>
+<%= line_with_text t('custom.potions_has_title') -%>
+<% potions_has.each do |a| -%>
+<%= a -%>
+<% end %>
+
+<%= line_with_text t('custom.potions_creating_title') -%>
+<% potions_creating.each_with_index do |a, index| -%>
+
+<%= left(index + 1, 3) -%><%= a.name -%> <%= "-" -%>
+ <% if a.hours_to_creation.to_i < 24 %>
+ <%= a.hours_to_creation -%> <%= "hours until ready" -%>
+<% else %>
+ <%= a.hours_to_creation.to_i / 24 -%> <%= "days until ready" -%>
+<% end %>
+<% end %>
+
+%lf

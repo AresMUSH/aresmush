@@ -3,10 +3,13 @@ toc: FS3
 summary: Using luck points.
 ---
 # FS3 - Luck
+Luck Points are special points that you can spend in various ways to perform better in combat, avoid death, increase your chance in rolls, create potions, increase your chance to stumble on plot points, and more.
 
-Luck Points in FS3 can be used to generate various lucky breaks.  Luck points are earned through cookies (see [Cookies](/help/cookies)).  You can view your available luck points on your character sheet.
+They can be earned via [cookies](/help/cookies) for RP, as well as through various OOC work such as GMing scenes or updating the wiki. Players can bank up to 4 Luck Points at a time.
 
-You can use luck points for combat, ability rolls, or other plot points at the storyteller's discretion.  See [FS3 Player's Guide](http://aresmush.com/fs3/fs3-3/luck/) for more information.
-
+`luck/request <reason>` - Requests earned luck be awarded.
 `luck/spend <reason>` - Spends luck outside of combat.
     See [Combat Luck](/help/combat) for combat-related luck commands.
+`potion/create <potion>` - Spends luck to create a potion.
+
+See [Luck](http://spiritlakemu.com/wiki/luck) for more information on how to earn Luck Points and how you can spend them.
