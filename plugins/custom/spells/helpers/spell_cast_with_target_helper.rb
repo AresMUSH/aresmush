@@ -63,6 +63,17 @@ module AresMUSH
       end
     end
 
+    def self.cast_revive(caster, target, target_combat, spell)
+      succeeds = Custom.roll_combat_spell_success(caster, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        Custom.undead(target)
+        FS3Combat.emit_to_combat caster.combat, t('custom.cast_res', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+        FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster.name)
+      else
+        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+      end
+    end
+
     def self.cast_lethal_mod(caster, target_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       lethal_mod = Global.read_config("spells", spell, "lethal_mod")
