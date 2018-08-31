@@ -46,6 +46,7 @@ module AresMUSH
     end
 
     def self.roll_noncombat_spell(char, school)
+      mod = 0
       roll = char.roll_ability(school, mod)
       successes = roll[:successes]
       return successes
@@ -93,7 +94,7 @@ module AresMUSH
 
     def self.roll_noncombat_spell_success(caster, spell)
       school = Global.read_config("spells", spell, "school")
-      die_result = Custom.roll_noncombat_spell(caster, caster, school)
+      die_result = Custom.roll_noncombat_spell(caster, school)
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
