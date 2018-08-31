@@ -21,8 +21,9 @@ module AresMUSH
         client.emit roll[:successes]
         target_name = cmd.args
         target = FS3Combat.find_named_thing(target_name, enactor)
-      
 
+        success = Custom.roll_noncombat_spell(enactor, school)
+        client.emit success
         Custom.cast_non_combat_heal(enactor, target, "Minor Heal")
 
 

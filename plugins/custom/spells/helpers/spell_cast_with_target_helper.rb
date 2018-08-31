@@ -31,20 +31,20 @@ module AresMUSH
     end
 
     def self.cast_non_combat_heal(caster, target, spell)
-      # succeeds = Custom.roll_noncombat_spell_success(caster, spell)
-      succeeds = succeeds
-      # if succeeds == "%xgSUCCEEDS%xn"
+      succeeds = Custom.roll_noncombat_spell_success(caster, spell)
+      client = Login.find_client(caster)
+      if succeeds == "%xgSUCCEEDS%xn"
         wound = FS3Combat.worst_treatable_wound(target)
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
-          FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)
+          client.emit t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)
         else
-          FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+          client.emit t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
         end
-      # else
-      #   FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
-      # end
+      else
+        client.emit t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+      end
     end
 
     def self.cast_multi_heal(caster, target_string, spell)
