@@ -90,7 +90,7 @@ service redis restart
 
 echo -e "${ARES_INSTALL_TEXT} Create an ares user"
 
-ARES_USERNAME = "ares"
+export ARES_USERNAME="ares"
 
 adduser --disabled-password --gecos "" ${ARES_USERNAME}
 

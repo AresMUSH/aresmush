@@ -9,7 +9,7 @@ export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
 GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
 WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
-HOME_DIR = "/home/ares"
+export HOME_DIR="/home/ares"
 
 # #########################################################################################
 
@@ -30,7 +30,7 @@ echo -e "${ARES_INSTALL_TEXT} Install RVM."
 
 command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 \curl -sSL https://get.rvm.io | bash -s stable --rails
-source "#{HOME_DIR}/.rvm/scripts/rvm"
+source "${HOME_DIR}/.rvm/scripts/rvm"
 
 # #########################################################################################
 
@@ -48,7 +48,7 @@ rvm use ruby-2.5.1
 
 echo -e "${ARES_INSTALL_TEXT} Ensure proper Ruby version used at startup."
 
-echo "rvm use 2.5.1" >> "#{HOME_DIR}/.profile"
+echo "rvm use 2.5.1" >> "${HOME_DIR}/.profile"
 
 # #########################################################################################
 
@@ -72,7 +72,7 @@ git clone ${WEBPORTAL_CLONE_URL}
 
 echo -e "${ARES_INSTALL_TEXT} Copy over the initial game configuration."
 
-cd "#{HOME_DIR}/aresmush"
+cd "${HOME_DIR}/aresmush"
 
 cp -r install/game.distr game
 
@@ -106,20 +106,20 @@ echo -e "${ARES_INSTALL_TEXT} Create a symbolic link so the web portal can easil
 
 cd /var/www/html/
 
-ln -s "#{HOME_DIR}/aresmush/game" game
+ln -s "${HOME_DIR}/aresmush/game" game
 
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Install default web configuration."
 
-sudo cp "#{HOME_DIR}/aresmush/install/nginx.default" /etc/nginx/sites-enabled/default
+sudo cp "${HOME_DIR}/aresmush/install/nginx.default" /etc/nginx/sites-enabled/default
 sudo service nginx restart
 
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Make the web portal bin scripts executable."
 
-cd "#{HOME_DIR}/ares-webportal"
+cd "${HOME_DIR}/ares-webportal"
 
 chmod +x bin/*
 
@@ -141,7 +141,7 @@ npm install -g ember-cli
 
 echo -e "${ARES_INSTALL_TEXT} Starting the game."
 
-cd "#{HOME_DIR}/aresmush"
+cd "${HOME_DIR}/aresmush"
 
 bin/startares
 
