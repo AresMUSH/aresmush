@@ -11,6 +11,7 @@ module AresMUSH
         tab_name = nil
         toc = {}
         current_toc_level = nil
+        coder = HTMLEntities.new
         
         markdown.split(/[\r\n]/).each do |line|
           if ( line =~ /^(<p>)?(<br>)?`/)
@@ -48,18 +49,20 @@ module AresMUSH
             html << "$TOC_GOES_HERE_MARKER$"
           else
             if (line =~ /<h2>(.+)<\/h2>/)
-              anchor = clean_anchor($1)
-              toc[anchor] = []
-              current_toc_level = anchor
+              heading = coder.decode $1
+              anchor = clean_anchor(heading)
+              toc[heading] = []
+              current_toc_level = heading
               html << "\n<a name=\"#{anchor}\"></a>"
             end
 
             if (line =~ /<h3>(.+)<\/h3>/)
-              anchor = clean_anchor($1)
+              heading = coder.decode $1
+              anchor = clean_anchor(heading)
               if (current_toc_level)
-                toc[current_toc_level] << anchor
+                toc[current_toc_level] << heading
               else
-                toc[anchor] = []
+                toc[heading] = []
               end
               html << "\n<a name=\"#{anchor}\"></a>"
             end

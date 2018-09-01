@@ -28,7 +28,7 @@ module AresMUSH
         page = WikiPage.create(tags: tags, title: title, name: name)
         WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
         
-        Achievements.award_achievement(enactor, "wiki_create", :portal, "Created a wiki page.")
+        Achievements.award_achievement(enactor, "wiki_create", 'portal', "Created a wiki page.")
         
         {
           id: page.id,

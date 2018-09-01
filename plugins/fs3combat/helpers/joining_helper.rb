@@ -69,7 +69,7 @@ module AresMUSH
           else
             message = "Joined #{count} combats."
           end
-          Achievements.award_achievement(char, "fs3_joined_combat_#{count}", :fs3, message)
+          Achievements.award_achievement(char, "fs3_joined_combat_#{count}", 'fs3', message)
         end
       end
     end

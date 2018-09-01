@@ -19,6 +19,7 @@ en:
         invalid_plugin_name: "Plugin names may not contain spaces or special characters."
         load_all: "Loading all plugins.  Please wait..."
         load_all_complete: "Load complete."
+        log_file_title: "Log File"
         
         plugins: "Plugins"
         

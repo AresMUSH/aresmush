@@ -37,6 +37,7 @@ GEM
     hiredis (0.6.1)
     html2markdown (0.0.3)
       nokogiri
+    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -138,6 +139,7 @@ DEPENDENCIES
   erubis (~> 2.7.0)
   eventmachine (~> 1.2.5)
   html2markdown (= 0.0.3)
+  htmlentities (~> 4.3.4)
   i18n (~> 0.7)
   json (~> 2.1.0)
   log4r (~> 1.1.10)
