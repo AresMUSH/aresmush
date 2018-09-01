@@ -1,6 +1,6 @@
 module AresMUSH
   module Manage
-    class ViewLogCmd
+    class DebugLogCmd
       include CommandHandler
            
       def check_is_allowed
