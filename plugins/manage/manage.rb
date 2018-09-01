@@ -27,8 +27,8 @@ module AresMUSH
             return ConfigListCmd
           end
         end
-      when "log"
-        return ViewLogCmd
+      when "debuglog"
+        return DebugLogCmd
       when "server"
         return ServerInfoCmd
       when "destroy"
