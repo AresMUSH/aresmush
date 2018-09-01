@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def alt_char_data(char)
-         {name: char.name, icon: WebHelpers.icon_for_char(char) }
+         {name: char.name, icon: Website.icon_for_char(char) }
       end
     end
   end

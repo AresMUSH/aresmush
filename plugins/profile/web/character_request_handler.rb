@@ -9,7 +9,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
 
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         # Generic demographic/group field list for those who want custom displays.
@@ -64,7 +64,7 @@ module AresMUSH
           {
             name: section.titlecase,
             key: section.parameterize(),
-            text: WebHelpers.format_markdown_for_html(data),
+            text: Website.format_markdown_for_html(data),
             active_class: index == 0 ? 'active' : ''  # Stupid bootstrap hack
           }
         }
@@ -76,8 +76,8 @@ module AresMUSH
           relationships: relationships.sort_by { |name, data| [ data['order'] || 99, name ] }
              .map { |name, data| {
                name: name,
-               icon: WebHelpers.icon_for_name(name),
-               text: WebHelpers.format_markdown_for_html(data['relationship'])
+               icon: Website.icon_for_name(name),
+               text: Website.format_markdown_for_html(data['relationship'])
              }
            }
         }}
@@ -92,7 +92,7 @@ module AresMUSH
                       summary: s.summary,
                       location: s.location,
                       icdate: s.icdate,
-                      participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: WebHelpers.icon_for_char(p) }},
+                      participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                       scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                       likes: s.likes
         
@@ -105,7 +105,7 @@ module AresMUSH
 
         
         files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
-        files = files.map { |f| WebHelpers.get_file_info(f) }
+        files = files.map { |f| Website.get_file_info(f) }
         
         if (FS3Skills.is_enabled?)
           fs3 = FS3Skills::CharProfileRequestHandler.new.handle(request)
@@ -119,8 +119,8 @@ module AresMUSH
           all_fields: all_fields,
           fullname: char.demographic(:fullname),
           military_name: Ranks.military_name(char),
-          icon: WebHelpers.icon_for_char(char),
-          profile_image: WebHelpers.get_file_info(char.profile_image),
+          icon: Website.icon_for_char(char),
+          profile_image: Website.get_file_info(char.profile_image),
           demographics: demographics,
           groups: groups,
           roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
@@ -131,9 +131,9 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           scenes: scenes,
-          profile_gallery: (char.profile_gallery || {}).map { |g| WebHelpers.get_file_info(g) },
-          background: show_background ? WebHelpers.format_markdown_for_html(char.background) : nil,
-          rp_hooks: WebHelpers.format_markdown_for_html(char.rp_hooks),
+          profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
+          background: show_background ? Website.format_markdown_for_html(char.background) : nil,
+          rp_hooks: Website.format_markdown_for_html(char.rp_hooks),
           desc: char.description,
           playerbit: char.is_playerbit?,
           fs3: fs3,

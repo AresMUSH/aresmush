@@ -16,8 +16,8 @@ module AresMUSH
     reference :locked_by, "AresMUSH::Character"
     
     collection :wiki_page_versions, "AresMUSH::WikiPageVersion"
-    before_save :save_upcase
     before_delete :delete_versions
+    before_save :save_upcase
     
     def self.sanitize_page_name(name)
       name = name || ""
@@ -92,5 +92,21 @@ module AresMUSH
       end
     end
     
+    def search_name
+      self.heading
+    end
+    
+    def searchable?
+      true
+    end
+    
+    def search_blob
+      text = self.current_version ? self.current_version.text : ''
+      "#{self.search_name} #{text} #{tags.join(' ')}"
+    end
+    
+    def search_summary
+      nil
+    end
   end
 end

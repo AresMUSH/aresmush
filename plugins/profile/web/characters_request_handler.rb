@@ -5,7 +5,7 @@ module AresMUSH
         Chargen.approved_chars.sort_by { |c| c.name }.map { |c| {
                   id: c.id,
                   name: c.name,
-                  icon: WebHelpers.icon_for_char(c)
+                  icon: Website.icon_for_char(c)
                 }}
       end
     end

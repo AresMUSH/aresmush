@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def handle
-        WebHelpers.rebuild_css
+        Website.rebuild_css
         client.emit_success t('manage.styles_loaded')
       end
       

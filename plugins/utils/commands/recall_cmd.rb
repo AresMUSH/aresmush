@@ -17,7 +17,7 @@ module AresMUSH
           return
         end
         
-        if (num !~ /^[\d]+$/)
+        if (!num.is_integer?)
           client.emit_failure t('save.invalid_recall_number')
           return
         end

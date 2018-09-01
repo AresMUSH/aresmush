@@ -17,7 +17,7 @@ module AresMUSH
         chars.each do |c|
           char_data = {}
           char_data['Name'] = c.name
-          char_data['icon'] = WebHelpers.icon_for_char(c)
+          char_data['icon'] = Website.icon_for_char(c)
           Demographics.all_demographics.each do |demographic|
             char_data[demographic.titlecase] = c.demographic(demographic)
           end

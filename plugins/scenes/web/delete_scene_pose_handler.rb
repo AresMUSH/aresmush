@@ -10,15 +10,11 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Scenes.can_access_scene?(enactor, scene))
           return { error: t('dispatcher.not_allowed') }
-        end
-        
-        if (scene.completed)
-          return { error: t('scenes.scene_already_completed') }
         end
         
         if (!scene_pose.can_edit?(enactor))
@@ -34,11 +30,8 @@ module AresMUSH
           scene.room.emit_ooc message
         end
         
-        Scenes.add_to_scene(scene, WebHelpers.format_markdown_for_html(message), Game.master.system_character)
+        Scenes.add_to_scene(scene, Website.format_markdown_for_html(message), Game.master.system_character, false, true)
         
-        if (scene.room)
-          scene.room.emit message
-        end
         {}
       end
     end

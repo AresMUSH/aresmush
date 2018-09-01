@@ -20,6 +20,8 @@ module AresMUSH
       Global.client_monitor.emit_ooc_if_logged_in(recipient,  t('cookies.cookie_received', :name => giver.name))
       
       Global.logger.info "#{giver.name} gave #{recipient.name} a cookie."
+
+      Achievements.award_achievement(giver, "cookie_given", :community, "Gave a cookie.")
     end
   end
 end

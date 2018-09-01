@@ -71,6 +71,8 @@ module AresMUSH
           Forum.can_read_category?(char, category)
         end
 
+        Forum.handle_forum_achievement(author, :post)
+        
         new_post
       end
     end
@@ -94,6 +96,8 @@ module AresMUSH
         :category => category.name, 
         :reference => post.reference_str,
         :author => author.name)
+      
+      Forum.handle_forum_achievement(author, :reply)
       
       Global.notifier.notify_ooc(:new_forum_post, message) do |char|
         Forum.can_read_category?(char, category)
@@ -156,6 +160,18 @@ module AresMUSH
         
         yield category, post
       end
+    end
+    
+    def self.handle_forum_achievement(char, type)
+      if (type == :reply)
+        message = "Replied to a forum post."
+        type = "forum_reply"
+      else
+        message = "Created a forum post."
+        type = "forum_post"
+      end
+      
+      Achievements.award_achievement(char, type, :community, message)
     end
   end
 end

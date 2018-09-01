@@ -9,7 +9,7 @@ module AresMUSH
           return { error: t('webportal.login_required') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!char)
@@ -39,7 +39,7 @@ module AresMUSH
         profile = char.profile.sort.each_with_index.map { |(section, data), index| 
           {
             name: section.titlecase,
-            text: WebHelpers.format_input_for_html(data),
+            text: Website.format_input_for_html(data),
             key: index
           }
         }
@@ -49,28 +49,28 @@ module AresMUSH
           category: data['category'],
           key: index,
           order: data['order'],
-          text: WebHelpers.format_input_for_html(data['relationship'])
+          text: Website.format_input_for_html(data['relationship'])
         }}
         
         files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
-        files = files.sort.map { |f| WebHelpers.get_file_info(f) }
+        files = files.sort.map { |f| Website.get_file_info(f) }
         
         {
           id: char.id,
           name: char.name,
           fullname: char.demographic(:fullname),
           demographics: demographics,
-          background: WebHelpers.format_input_for_html(char.background),
-          rp_hooks: WebHelpers.format_input_for_html(char.rp_hooks),
-          desc: WebHelpers.format_input_for_html(char.description),
+          background: Website.format_input_for_html(char.background),
+          rp_hooks: Website.format_input_for_html(char.rp_hooks),
+          desc: Website.format_input_for_html(char.description),
           shortdesc: char.shortdesc ? char.shortdesc : '',
           relationships: relationships,
           profile: profile,
-          gallery: (char.profile_gallery || {}).map { |f| WebHelpers.get_file_info(f) },
+          gallery: (char.profile_gallery || {}).map { |f| Website.get_file_info(f) },
           tags: char.profile_tags,
           files: files, 
-          profile_image: char.profile_image ? WebHelpers.get_file_info(char.profile_image) : nil,
-          profile_icon: char.profile_icon ? WebHelpers.get_file_info(char.profile_icon) : nil,
+          profile_image: char.profile_image ? Website.get_file_info(char.profile_image) : nil,
+          profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,
           bg_shared: char.bg_shared
           
         }

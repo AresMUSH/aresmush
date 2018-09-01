@@ -8,7 +8,7 @@ module AresMUSH
         title = request.args[:title]
         name = request.args[:title]
     
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         name = WikiPage.sanitize_page_name(name)
@@ -27,6 +27,8 @@ module AresMUSH
       
         page = WikiPage.create(tags: tags, title: title, name: name)
         WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
+        
+        Achievements.award_achievement(enactor, "wiki_create", :portal, "Created a wiki page.")
         
         {
           id: page.id,

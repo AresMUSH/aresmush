@@ -7,7 +7,7 @@ module AresMUSH
         file_type = request.args[:file_type]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Manage.can_manage_game?(enactor))
@@ -32,7 +32,7 @@ module AresMUSH
         end
         
         if (file_type == "style")
-          WebHelpers.rebuild_css
+          Website.rebuild_css
         else
           Manage.reload_config
         end

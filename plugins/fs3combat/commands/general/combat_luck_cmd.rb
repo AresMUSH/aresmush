@@ -22,12 +22,11 @@ module AresMUSH
       
       def handle
         FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
-          
-          client.emit combatant.luck
-          
+                    
           if (!combatant.luck)
             if (enactor.luck >= 1)
               enactor.spend_luck(1)
+              Achievements.award_achievement(enactor, "fs3_luck_spent", :fs3, "Spent a luck point.")
             else
               client.emit_failure t('fs3combat.no_luck')
               return

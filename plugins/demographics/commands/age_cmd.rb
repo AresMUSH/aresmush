@@ -15,15 +15,18 @@ module AresMUSH
       end
       
       def parse_args
-        self.age = trim_arg(cmd.args)
+        self.age = integer_arg(cmd.args)
       end
       
       def handle
-        bday = Date.new ICTime.ictime.year - self.age.to_i, ICTime.ictime.month, ICTime.ictime.day
-        bday = bday - rand(364)
+        error = Demographics.check_age(self.age)
+        if (error)
+          client.emit_failure error
+          return
+        end
         
-        enactor.update_demographic(:birthdate, bday)
-
+        bday = Demographics.set_random_birthdate(enactor, self.age)
+        
         client.emit_success t('demographics.birthdate_set', 
           :birthdate => ICTime.ic_datestr(bday), 
           :age => enactor.age)

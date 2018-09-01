@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def handle
-        eval(cmd.args)
+        client.emit eval(cmd.args)
         client.emit_success t('global.done')
       end
       

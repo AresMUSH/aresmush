@@ -5,7 +5,7 @@ module AresMUSH
                 
         enactor = request.enactor
 
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         BbsBoard.all_sorted

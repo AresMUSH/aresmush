@@ -10,7 +10,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Scenes.can_access_scene?(enactor, scene))
@@ -42,6 +42,13 @@ module AresMUSH
           end
           
           Scenes.share_scene(scene)
+          
+        when "unshare"
+          if (!scene.shared)
+            return { error: t('scenes.scene_not_shared')}
+          end
+          
+          Scenes.unshare_scene(enactor, scene)
           
         else
           return { error: t('webportal.unexpected_error') }

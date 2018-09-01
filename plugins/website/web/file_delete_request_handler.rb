@@ -9,7 +9,7 @@ module AresMUSH
         name = request.args[:name]
         folder = request.args[:folder]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!enactor.is_admin?)

@@ -39,6 +39,8 @@ module AresMUSH
                     
           client.emit_success t('chargen.app_approved', :name => model.name)
           
+          Achievements.award_achievement(model, "created_character", :story, "Created a character.")
+          
           welcome_message = Global.read_config("chargen", "welcome_message")
           post_body = welcome_message % { :name => model.name, :position => model.group("Position") }
           

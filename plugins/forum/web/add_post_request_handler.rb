@@ -8,7 +8,7 @@ module AresMUSH
         subject = request.args[:subject]
         enactor = request.enactor
 
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         category = BbsBoard[category_id.to_i]
@@ -24,7 +24,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields' )}
         end
       
-        formatted_message = WebHelpers.format_input_for_mush(message)
+        formatted_message = Website.format_input_for_mush(message)
         post = Forum.post(category.name, subject, message, enactor)
         
         if (!post)

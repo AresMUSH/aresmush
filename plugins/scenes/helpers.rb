@@ -44,6 +44,14 @@ module AresMUSH
       Scenes.new_scene_activity(scene)
     end
     
+    def self.unshare_scene(enactor, scene)
+      scene.update(shared: false)
+      if (scene.scene_log)
+        Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
+        scene.scene_log.delete
+      end
+    end
+    
     def self.share_scene(scene)
       if (!scene.all_info_set?)
         return false
@@ -84,6 +92,7 @@ module AresMUSH
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
       Scenes.new_scene_activity(scene)
+      Scenes.handle_scene_participation_achievement(scene)
     end    
     
     def self.participants_and_room_chars(scene)
@@ -290,5 +299,37 @@ module AresMUSH
       links2 = SceneLink.find(log2_id: scene.id)
       links1.to_a.concat(links2.to_a)
     end 
+    
+    def self.handle_word_count_achievements(char, pose)
+      [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].each do |count|
+        pretty_count = count.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+        message = "Wrote #{pretty_count} words in scenes."
+        if (char.pose_word_count >= count)
+          Achievements.award_achievement(char, "word_count_#{count}", :story, message)
+        end
+      end
+    end
+    
+    def self.handle_scene_participation_achievement(scene)
+      scene.participants.each do |char|
+        scenes = char.scenes_starring
+        count = scenes.count
+        
+        Scenes.scene_types.each do |type|
+          if (scenes.any? { |s| s.scene_type == type })
+            message = "Participated in a #{type} scene."
+            Achievements.award_achievement(char, "scene_participant_#{type}", :story, message)
+          end
+        end
+        
+        
+        [ 1, 10, 20, 50, 100 ].each do |level|
+          if ( count >= level )
+            message = "Participated in #{level} #{level == 1 ? 'scene' : 'scenes'}."
+            Achievements.award_achievement(char, "scene_participant_#{count}", :story, message)
+          end
+        end
+      end
+    end
   end
 end

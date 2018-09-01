@@ -7,7 +7,7 @@ module AresMUSH
         completed = (request.args[:completed] || "").to_bool
         privacy = request.args[:privacy]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!enactor.is_approved?)

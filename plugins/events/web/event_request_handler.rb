@@ -11,22 +11,22 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         datetime = OOCTime.format_date_time_for_entry(event.starts)
         
         if (edit_mode)
-          description = WebHelpers.format_input_for_html(event.description)
+          description = Website.format_input_for_html(event.description)
         else
-          description = WebHelpers.format_markdown_for_html(event.description)
+          description = Website.format_markdown_for_html(event.description)
         end
         
         signups = event.ordered_signups.map { |s| 
           {
             char: {
                     name: s.char_name,
-                    icon: s.character ? WebHelpers.icon_for_char(s.character) : nil
+                    icon: s.character ? Website.icon_for_char(s.character) : nil
                   },
             comment: s.comment
             }}

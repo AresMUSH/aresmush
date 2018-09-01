@@ -9,7 +9,7 @@ module AresMUSH
         title = request.args[:title]
         name = request.args[:name]
       
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         name = WikiPage.sanitize_page_name(name)
@@ -18,7 +18,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        if ((WebHelpers.is_restricted_wiki_page?(page) && !WebHelpers.can_manage_wiki?(enactor)) ||
+        if ((Website.is_restricted_wiki_page?(page) && !Website.can_manage_wiki?(enactor)) ||
           !enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }
         end
@@ -34,6 +34,8 @@ module AresMUSH
 
         page.update(tags: tags, title: title, name: name, locked_by: nil)
         WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
+        
+        Achievements.award_achievement(enactor, "wiki_edit", :portal, "Edited a wiki page.")
         
         {
           id: page.id,

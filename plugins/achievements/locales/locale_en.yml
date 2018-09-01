@@ -1,0 +1,11 @@
+---
+en:
+  achievements:
+      achievement_earned: "%{name} has earned the achievement: %{message}"
+
+      achieve_forum_post: "Posted to the forums."
+      achieve_forum_reply: "Replied to a post on the forums."
+      
+      achievements_title: "Achievements for %{name}"
+      
+      

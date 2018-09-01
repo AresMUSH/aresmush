@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
                 
         wiki_nav = []
@@ -25,7 +25,7 @@ module AresMUSH
           recent_forum: Forum::RecentForumPostsRequestHandler.new.handle(request),
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
-          recent_changes: WebHelpers.get_recent_changes(true, 10),
+          recent_changes: Website.get_recent_changes(true, 10),
           left_sidebar: Global.read_config('website', 'left_sidebar'),
           registration_required: Global.read_config("website", "portal_requires_registration"),
           wiki_nav: wiki_nav

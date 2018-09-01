@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         dirs = Dir[File.join(AresMUSH.website_uploads_path, "**/**")].group_by { |f| File.dirname(f) }         

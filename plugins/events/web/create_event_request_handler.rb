@@ -8,7 +8,7 @@ module AresMUSH
         desc = request.args[:description]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         can_create = enactor && enactor.is_approved?
@@ -30,7 +30,7 @@ module AresMUSH
           return { error: t('events.invalid_event_date', :format_str => format_help ) }
         end
       
-        event = Events.create_event(enactor, title, datetime, WebHelpers.format_input_for_mush(desc))
+        event = Events.create_event(enactor, title, datetime, Website.format_input_for_mush(desc))
         if (!event)
           return { error: t('webportal.unexpected_error') }
         end

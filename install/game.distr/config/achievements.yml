@@ -1,0 +1,10 @@
+---
+achievements:
+    achievements_cron:
+      day_of_week:
+      hour:
+      - 20
+      minute:
+      - 0
+
+         

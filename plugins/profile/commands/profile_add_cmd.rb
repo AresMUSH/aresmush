@@ -19,6 +19,9 @@ module AresMUSH
         profile = enactor.profile
         profile[self.field] = self.value
         enactor.set_profile(profile, enactor)
+        
+        Achievements.award_achievement(enactor, "profile_edit", :portal, "Edited your character profile.")
+        
         client.emit_success t('profile.custom_profile_set', :field => self.field)
       end
     end

@@ -17,7 +17,7 @@ module AresMUSH
           "version" => AresMUSH.version,
           "host" => Global.read_config("server", "hostname"),
           "api_port" => Global.read_config("server", "engine_api_port"),
-          "api_key" => WebHelpers.engine_api_keys[0],
+          "api_key" => Website.engine_api_keys[0],
           "styles_path" => AresMUSH.website_styles_path,
           "uploads_path" => AresMUSH.website_uploads_path,
           "game_name" => Global.read_config("game", "name"),

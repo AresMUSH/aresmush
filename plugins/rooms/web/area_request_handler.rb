@@ -6,7 +6,7 @@ module AresMUSH
         id = request.args[:id]
         edit_mode = request.args[:edit_mode].to_bool
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
         
         area = Area[id]
@@ -21,7 +21,7 @@ module AresMUSH
         {
           id: id,
           name: area.name,
-          description: edit_mode ? WebHelpers.format_input_for_html(area.description) : WebHelpers.format_markdown_for_html(area.description)
+          description: edit_mode ? Website.format_input_for_html(area.description) : Website.format_markdown_for_html(area.description)
         }
       end
     end

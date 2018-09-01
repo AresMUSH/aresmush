@@ -65,14 +65,25 @@ module AresMUSH
       end
       char.update_demographic(:fullname, chargen_data[:fullname])
       
-      age = chargen_data[:demographics][:age][:value].to_i
-      age_error = Demographics.check_age(age)
-      if (age_error)
-        alerts << age_error
+      age_or_bday = chargen_data[:demographics][:age][:value]
+
+      # See if it's just an age.
+      if (age_or_bday.is_integer?)
+        age = age_or_bday.to_i
+        if (age != char.age)
+          age_error = Demographics.check_age(age)
+          if (age_error)
+            alerts << age_error
+          else
+            Demographics.set_random_birthdate(char, age)
+          end
+        end
+      # Assume it's a birthdate string
       else
-        bday = Date.new ICTime.ictime.year - age, ICTime.ictime.month, ICTime.ictime.day
-        bday = bday - rand(364)
-        char.update_demographic :birthdate, bday
+        result = Demographics.set_birthday(char, age_or_bday)
+        if (result[:error])
+          alerts << result[:error]
+        end
       end
       
       chargen_data[:groups].each do |k, v|
@@ -86,11 +97,11 @@ module AresMUSH
         end
       end
       
-      char.update(cg_background: WebHelpers.format_input_for_mush(chargen_data[:background]))
+      char.update(cg_background: Website.format_input_for_mush(chargen_data[:background]))
       
-      char.update(rp_hooks: WebHelpers.format_input_for_mush(chargen_data[:rp_hooks]))
-      char.update(description: WebHelpers.format_input_for_mush(chargen_data[:desc]))
-      char.update(shortdesc: WebHelpers.format_input_for_mush(chargen_data[:shortdesc]))
+      char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
+      char.update(description: Website.format_input_for_mush(chargen_data[:desc]))
+      char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
       
       if FS3Skills.is_enabled?
         (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|

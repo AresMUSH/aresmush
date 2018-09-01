@@ -6,7 +6,7 @@ module AresMUSH
         version_id = request.args[:version_id]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request, true)
+        error = Website.check_login(request, true)
         return error if error
               
         page = WikiPage.find_by_name_or_id(page_id)
@@ -37,7 +37,7 @@ module AresMUSH
           text: version.text,
           diff: diff,
           created: OOCTime.local_long_timestr(enactor, version.created_at),
-          can_edit: enactor && enactor.is_approved? && ( enactor.is_admin? || !WebHelpers.is_restricted_wiki_page?(page) ),
+          can_edit: enactor && enactor.is_approved? && ( enactor.is_admin? || !Website.is_restricted_wiki_page?(page) ),
           versions: page.sorted_versions.reverse.map { |v| {
             author: v.author_name,
             id: v.id,

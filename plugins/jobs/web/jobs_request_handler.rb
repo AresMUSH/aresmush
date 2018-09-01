@@ -5,7 +5,7 @@ module AresMUSH
         topic = request.args[:topic]
         enactor = request.enactor
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         job_admin = Jobs.can_access_jobs?(enactor)

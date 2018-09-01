@@ -28,10 +28,10 @@ module AresMUSH
         return FansiCmd
       when "math"
         return MathCmd
-      when "notes"
-        return NotesCmd
       when "note"
         case cmd.switch
+        when nil
+          return NotesCmd
         when "add"
           return NoteAddCmd
         when "delete"

@@ -25,6 +25,9 @@ module AresMUSH
         return QualCmd
       when "kill"
         return KillCmd
+      when "goals"
+        return GoalsCmd
+       
       end
       nil     
     end

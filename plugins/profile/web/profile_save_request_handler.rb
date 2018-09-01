@@ -10,7 +10,7 @@ module AresMUSH
           return { error: t('webportal.login_required') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!char)
@@ -43,13 +43,13 @@ module AresMUSH
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|
           relationships[name.titleize] = {
-            relationship: WebHelpers.format_input_for_mush(data['text']),
+            relationship: Website.format_input_for_mush(data['text']),
             order: data['order'].blank? ? nil : data['order'].to_i,
             category: data['category'].blank? ? "Associates" : data['category'].titleize
             }
         end
         
-        char.update(rp_hooks: WebHelpers.format_input_for_mush(request.args[:rp_hooks]))
+        char.update(rp_hooks: Website.format_input_for_mush(request.args[:rp_hooks]))
         char.update(relationships: relationships)
         char.update(bg_shared: request.args[:bg_shared].to_bool)
         
@@ -57,9 +57,11 @@ module AresMUSH
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}
         (request.args[:profile] || {}).each do |name, text|
-          profile[name.titleize] = WebHelpers.format_input_for_mush(text)
+          profile[name.titleize] = Website.format_input_for_mush(text)
         end
         char.set_profile(profile, enactor)
+        
+        Achievements.award_achievement(enactor, "profile_edit", :portal, "Edited your character profile.")
         
         
         {    

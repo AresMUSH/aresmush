@@ -28,10 +28,12 @@ module AresMUSH
       
       result = ClassTargetFinder.find(name, Character, enactor)
       if (result.found?)
+        char = result.target
         combatant = Combatant.create(:combatant_type => combatant_type, 
-          :character => result.target,
+          :character => char,
           :team => 1,
           :combat => combat)
+          FS3Combat.handle_combat_join_achievement(char)
       else
         npc = Npc.create(name: name, combat: combat)
         combatant = Combatant.create(:combatant_type => combatant_type, 
@@ -56,6 +58,20 @@ module AresMUSH
     def self.leave_combat(combat, combatant)
       FS3Combat.emit_to_combat combat, t('fs3combat.has_left', :name => combatant.name)
       combatant.delete
+    end
+    
+    def self.handle_combat_join_achievement(char)
+      char.update(combats_participated_in: char.combats_participated_in + 1)
+      [ 1, 10, 20, 50, 100 ].each do |count|
+        if (char.combats_participated_in >= count)
+          if (count == 1)
+            message = "Joined a combat."
+          else
+            message = "Joined #{count} combats."
+          end
+          Achievements.award_achievement(char, "fs3_joined_combat_#{count}", :fs3, message)
+        end
+      end
     end
   end
 end

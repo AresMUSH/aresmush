@@ -10,7 +10,7 @@ module AresMUSH
         size_kb = (request.args[:size_kb] || "").to_i
         data = request.args[:data]
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!enactor.is_approved?)

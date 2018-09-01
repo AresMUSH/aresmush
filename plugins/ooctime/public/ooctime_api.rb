@@ -27,6 +27,10 @@ module AresMUSH
     def self.format_date_time_for_entry(datetime)
       datetime.strftime OOCTime.date_and_time_entry_format
     end
+
+    def self.format_date_for_entry(datetime)
+      datetime.strftime Global.read_config("datetime", "short_date_format")
+    end
     
     def self.date_and_time_entry_format
       date_format = Global.read_config("datetime", "short_date_format")

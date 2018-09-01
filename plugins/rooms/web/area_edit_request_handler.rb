@@ -12,7 +12,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        error = WebHelpers.check_login(request)
+        error = Website.check_login(request)
         return error if error
         
         if (!Rooms.can_build?(enactor))
@@ -23,7 +23,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields') }
         end
 
-        area.update(name: name, description: WebHelpers.format_input_for_mush(desc))
+        area.update(name: name, description: Website.format_input_for_mush(desc))
         
         {}
       end
