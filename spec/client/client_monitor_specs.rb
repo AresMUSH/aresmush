@@ -21,61 +21,40 @@ module AresMUSH
     end
     
     describe :emit_all do
+      it "should notify all the clients" do
+        expect(@client1).to receive(:emit).with("Hi")
+        expect(@client2).to receive(:emit).with("Hi")
+        @client_monitor.emit_all "Hi"
+      end
+    end
+    
+    describe :emit_all_ooc do
+      it "should emit ooc to all the clients" do
+        expect(@client1).to receive(:emit_ooc).with("Hi")
+        expect(@client2).to receive(:emit_ooc).with("Hi")
+        @client_monitor.emit_all_ooc "Hi" 
+      end
+    end
+    
+    describe :emit do
       it "should notify all the clients matching the specified trigger block" do
         expect(@client1).to_not receive(:emit)
         expect(@client2).to receive(:emit).with("Hi")
-        @client_monitor.emit_all "Hi" do |c|
+        @client_monitor.emit "Hi" do |c|
           c == @client2
         end
       end
     end
     
-    describe :emit_all_ooc do
+    describe :emit_ooc do
       it "should emit ooc to all the clients matching the specified trigger block" do
         expect(@client1).to receive(:emit_ooc).with("Hi")
         expect(@client2).to_not receive(:emit_ooc)
-        @client_monitor.emit_all_ooc "Hi" do |c|
+        @client_monitor.emit_ooc "Hi" do |c|
           c == @client1
         end
       end
-    end
-    
-    describe :emit_ooc_if_logged_in do
-      before do
-        @char = double
-      end
-      
-      it "should emit ooc if logged in" do
-        allow(@client_monitor).to receive(:find_client).with(@char) { @client1 }
-        expect(@client1).to receive(:emit_ooc).with("Hi")
-        @client_monitor.emit_ooc_if_logged_in(@char, "Hi")
-      end
-      
-      it "should not emit if not logged in" do
-        allow(@client_monitor).to receive(:find_client).with(@char) { nil }
-        expect(@client1).to_not receive(:emit_ooc)
-        @client_monitor.emit_ooc_if_logged_in(@char, "Hi")
-      end
-    end
-
-    
-    describe :emit_if_logged_in do
-      before do
-        @char = double
-      end
-      
-      it "should emit if logged in" do
-        allow(@client_monitor).to receive(:find_client).with(@char) { @client1 }
-        expect(@client1).to receive(:emit).with("Hi")
-        @client_monitor.emit_if_logged_in(@char, "Hi")
-      end
-      
-      it "should not emit if not logged in" do
-        allow(@client_monitor).to receive(:find_client).with(@char) { nil }
-        expect(@client1).to_not receive(:emit)
-        @client_monitor.emit_if_logged_in(@char, "Hi")
-      end
-    end
+    end    
 
     describe :connection_closed do
       it "should remove the client from the list" do

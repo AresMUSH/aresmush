@@ -63,7 +63,7 @@ module AresMUSH
       channel.add_to_history msg
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
-          Global.client_monitor.emit_if_logged_in(c, message_with_title)
+          Login.emit_if_logged_in(c, message_with_title)
         end
       end
       
