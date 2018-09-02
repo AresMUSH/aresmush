@@ -85,7 +85,6 @@ module AresMUSH
         before do
           allow(Login).to receive(:update_site_info) {}
           allow(Login).to receive(:check_for_suspect) {}
-          allow(client_monitor).to receive(:emit_all_ooc)          
           @login_events = CharCreatedEventHandler.new
         end
         
