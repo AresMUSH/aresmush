@@ -29,6 +29,20 @@ module AresMUSH
     def self.find_client(char)
       Global.client_monitor.find_client(char)
     end
+        
+    def self.emit_if_logged_in(char, message)
+      client = find_client(char)
+      if (client)
+        client.emit message
+      end
+    end
+    
+    def self.emit_ooc_if_logged_in(char, message)
+      client = find_client(char)
+      if (client)
+        client.emit_ooc message
+      end
+    end
       
     def self.login_char(char, client)
       # Handle reconnect

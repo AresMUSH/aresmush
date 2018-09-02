@@ -10,9 +10,7 @@ module AresMUSH
       
       if (Achievements.is_enabled? && !Achievements.has_achievement?(char, name))
         Achievement.create(character: char, type: type, name: name, message: message)
-        Global.client_monitor.emit_all_ooc t('achievements.achievement_earned', :name => char.name, :message => message) do
-          true
-        end
+        Global.client_monitor.emit_all_ooc t('achievements.achievement_earned', :name => char.name, :message => message)
       end
     end
     
