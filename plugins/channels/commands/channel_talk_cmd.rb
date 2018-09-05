@@ -69,10 +69,7 @@ module AresMUSH
           end
         end
           
-        title = options.title
-        ooc_name = enactor.ooc_name
-        name = !title ? ooc_name : "#{title} #{ooc_name}"
-        Channels.pose_to_channel channel, name, self.msg
+        Channels.pose_to_channel channel, enactor.ooc_name, self.msg, options.title
       end
     end  
   end

@@ -16,8 +16,9 @@ module AresMUSH
         if (!channel)
           return { error: t('webportal.not_found') }
         end
-        
-        message = Channels.pose_to_channel channel, enactor.name, message    
+
+        options = Channels.get_channel_options(enactor, channel)
+        message = Channels.pose_to_channel channel, enactor.name, message, options.title   
         
         {
           message: Website.format_markdown_for_html(message)
