@@ -1,17 +1,13 @@
 ---
-toc: FS3
-summary: Managing combat scenes.
+toc: FS3 Combat
+summary: Participating in combat scenes.
 aliases:
 - combat
 - vehicles
 - weapons
 - weapon
 - vehicle
-- treat
-- heal
-- healing
-- hospitals
-- damage
+order: 1
 ---
 # FS3 Combat
 
@@ -63,46 +59,6 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 `combat/randtarget <number of targets>` - Suggests a couple potential targets at random.
 
-## Damage
-
-`damage` - Views your damage. 
-`damage <name>` - Views someone else's damage.
-
-Note that the healing progress bar on the damage display just shows how close you are to reducing the wound by one level. 
-
-## Treating
-
-For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound.  Inside combat, you use `combat/treat <name>` instead.
-
-`treat <name>` - Treats someone's wounds with immediate first aid.
-
-## Healing
-
-For more longer-term healing, doctors/healers can use the heal command.  You will continue healing someone until they are well.  
-
-`heal/start <name>` - Takes someone as a patient.
-`heal/stop <name>` - Removes a patient.
-`heal/list` - Shows your patients.
-`heal/scan` - Find injured patients who might need your services.
-
-## Hospitals
-
-When a room is marked as a hospital, people who are there heal faster.  
-
-`hospitals` - Finds hospitals.
-
-Admins or builders with the `build` permission can designate rooms as hospitals.
-
-`hospital/on` or `hospital/off`- Makes the current room a hospital or not.
-
-## Adjusting Damage
-
-Admins, combat organizers, and characters with the manage_combat permission can add or modify damage.
-
-`damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
-`damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.
-`damage/delete <name>/<damage #>` - Deletes damage.
-
 ## Gear
 
 There are various kinds of gear that can be used in combat.  You should only use gear that is appropriate to the IC situation.  Just because the code will let you pick a rocket launcher doesn't mean you have a rocket launcher.  RP appropriately.
@@ -115,10 +71,15 @@ There are various kinds of gear that can be used in combat.  You should only use
 `armor <name>` - See details for a particular armor type.
 `combat/armor <name+specials>` - Sets your armor.
 
+## Vehicles and Mounts
+
+On some games, you can use vehicles or mounts in combat.
+
 `vehicles` - List all types of vehicles.
 `vehicle <name>` - See details for a particular vehicle type.
 `combat/pilot <vehicle type or name>` - Pilots a vehicle.
 `combat/passenger <vehicle type or name>` - Becomes a passenger in a vehicle.
+        You can also use a person's name to join them in a vehicle.
 `combat/disembark` - Leaves a vehicle.
 
 `mounts` - Lists all types of mounts.
@@ -128,61 +89,12 @@ There are various kinds of gear that can be used in combat.  You should only use
 
 ## Luck
 
-Luck points (see [Luck](/help/luck)) have special effects in combat.
-
-### Bonus Dice
-
-Each turn, you can spend a luck point to get +3 bonus dice to either attack, defense or initiative.  You can only spend luck on one of them per turn, so make sure it's something relevant to what you're going to do that turn.
+Each turn, you can spend a [Luck Point](/help/luck) to get +3 bonus dice to either attack, defense or initiative.  You can only spend luck on one of them per turn, so make sure it's something relevant to what you're going to do that turn.
 
 `combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
 
-> **Tip:** Spending luck on attack affects special attacks like explosions or suppression.  It also conveys a bonus to damage.
-
-### Avoiding Knockout
-
-You can also spend luck to avoid a knockout.  This doesn't erase the damage, it just lets you soldier on in spite of it.
+You can also spend a luck to avoid a knockout.  This doesn't erase the damage, it just lets you soldier on in spite of it.
 
 `combat/hero` - Spends a luck point to un-KO yourself.
 
 > **Tip:** Before spending luck, remember that in some situations another play may be able to revive you with a rally or treat.  You might want to give them a chance first and save your luck for a more dire situation.
-
-## Organizing
-
-This is a quick reference for combat organizer commands.   You may also want to check out the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat) tutorial on AresMUSH.com.
-
-`combat/start [<mock or real>]` - Starts a combat (default real).
-`combat/stop <combat #>` - Stops a combat. 
-`combats` - Shows all combats going on. 
-`combat/newturn` - Starts the first turn.
-
-`combat/join <list of names>=<combat #>[/<type>]` - Adds people to combats.
-  Use `combat/types` to see available types and their associated gear.
-
-`combat/summary` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
-`combat/idle <name>` - Sets someone as idle/not idle.  They won't be counted in pose tracking until you use the command on them again.
-
-`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Miniboss, Boss
-`combat/vehicles` - See a breakdown of who's in what vehicles.
-`combat/targets` - See a breakdown of who's targeting whom.
-
-`combat/team <list of names>=<team#>` - Switches teams. 
-`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 
-    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target 
-    people on teams 1 and 4.
-
-`combat/ai` - Auto-targets any NPCs who don't have actions yet.
-`combat/ai force` - Auto-targets NPCs even if they have an action set.
-
-`combat/unko` - Un-KO's someone who shouldn't have been
-
-`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
-`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
-`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
-
-`combat/transfer <name>` - Transfer organizer powers to another person in combat.
-
-`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
-    This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
-
-`combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
-
