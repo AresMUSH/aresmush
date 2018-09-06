@@ -34,7 +34,7 @@ module AresMUSH
       def handle
         FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|     
           if (combatant.is_in_vehicle?)
-            client.emit_failure t('fs3combat.cant_be_in_both_vehicle_and_mount')
+            client.emit_failure t('fs3combat.cant_be_in_both_vehicle_and_mount', :name => combatant.name)
             return
           end
              
