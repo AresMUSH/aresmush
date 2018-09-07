@@ -17,6 +17,15 @@ module AresMUSH
       return AresCentral.is_alt?(actor, char)
     end
     
+    def self.character_page_folder(char)
+      Website::FilenameSanitizer.sanitize(char.name.downcase)
+    end
+    
+    def self.character_page_files(char)
+      name = Profile.character_page_folder(char)
+      Dir[File.join(AresMUSH.website_uploads_path, "#{name}/**")]
+    end
+    
     def self.get_profile_status_message(char)
       case char.idle_state
       when "Roster"

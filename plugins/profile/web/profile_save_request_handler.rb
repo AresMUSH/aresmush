@@ -33,8 +33,8 @@ module AresMUSH
         end
         
         gallery = (request.args[:gallery] || []).map { |g| g.downcase }
-        profile_image = request.args[:profile_image] ? request.args[:profile_image].downcase : nil
-        profile_icon = request.args[:profile_icon] ? request.args[:profile_icon].downcase : nil
+        profile_image = build_image_path(char, request.args[:profile_image])
+        profile_icon = build_image_path(char, request.args[:profile_icon])
         char.update(profile_gallery: gallery)
         char.update(profile_image: profile_image)
         char.update(profile_icon: profile_icon)
@@ -66,6 +66,12 @@ module AresMUSH
         
         {    
         }
+      end
+      
+      def build_image_path(char, arg)
+        return nil if !arg
+        folder = Profile.character_page_folder(char)
+        File.join folder, arg.downcase
       end
     end
   end

@@ -7,7 +7,19 @@ module AresMUSH
 
     attr_reader :clients, :client_id
 
-    def emit_all(msg, &trigger_block)
+    def emit_all(msg)
+      @clients.each do |c|
+        c.emit msg
+      end
+    end
+    
+    def emit_all_ooc(msg)
+      @clients.each do |c|
+        c.emit_ooc msg
+      end
+    end
+    
+    def emit(msg, &trigger_block)
       @clients.each do |c|
         if ( yield c.char )
           c.emit msg
@@ -15,25 +27,11 @@ module AresMUSH
       end
     end
     
-    def emit_all_ooc(msg, &trigger_block)
+    def emit_ooc(msg)
       @clients.each do |c|
         if ( yield c.char )
           c.emit_ooc msg
         end
-      end
-    end
-    
-    def emit_if_logged_in(char, message)
-      client = find_client(char)
-      if (client)
-        client.emit message
-      end
-    end
-    
-    def emit_ooc_if_logged_in(char, message)
-      client = find_client(char)
-      if (client)
-        client.emit_ooc message
       end
     end
     
