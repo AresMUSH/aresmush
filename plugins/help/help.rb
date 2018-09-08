@@ -20,7 +20,11 @@ module AresMUSH
          return BeginnerCmd
        when "help"
          if (cmd.args)
-           return HelpViewCmd
+           if (cmd.switch_is?("quick"))
+             return HelpQuickrefCmd
+           else
+             return HelpViewCmd
+           end
          else
            return HelpListCmd
          end
