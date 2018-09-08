@@ -118,7 +118,7 @@ module AresMUSH
         end
       
         (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
-          FS3Skills.set_ability(nil, char, k, v.to_i)
+ 	  FS3Skills.set_ability(nil, char, k.titlecase, v.to_i)
         end
       
         (chargen_data[:fs3][:fs3_languages] || []).each do |k, v|
@@ -129,7 +129,8 @@ module AresMUSH
           FS3Skills.set_ability(nil, char, k, v.to_i)
         end
       end
-      
+     
+      char.update(secretpref: chargen_data[:secretpref][:value]) 
       return alerts
     end
        
