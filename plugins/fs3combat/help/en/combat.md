@@ -2,7 +2,6 @@
 toc: FS3 Combat
 summary: Participating in combat scenes.
 aliases:
-- combat
 - vehicles
 - weapons
 - weapon
@@ -89,12 +88,8 @@ On some games, you can use vehicles or mounts in combat.
 
 ## Luck
 
-Each turn, you can spend a [Luck Point](/help/luck) to get +3 bonus dice to either attack, defense or initiative.  You can only spend luck on one of them per turn, so make sure it's something relevant to what you're going to do that turn.
+See [Luck in Combat](/help/combat_luck)
 
-`combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
+## Organizing
 
-You can also spend a luck to avoid a knockout.  This doesn't erase the damage, it just lets you soldier on in spite of it.
-
-`combat/hero` - Spends a luck point to un-KO yourself.
-
-> **Tip:** Before spending luck, remember that in some situations another play may be able to revive you with a rally or treat.  You might want to give them a chance first and save your luck for a more dire situation.
+See [Organizing Combat](/help/combat_org)
