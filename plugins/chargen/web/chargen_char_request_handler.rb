@@ -51,7 +51,6 @@ module AresMUSH
           fs3 = nil
         end
         
-          
         hooks = Website.format_input_for_html(char.rp_hooks)
         
         {
