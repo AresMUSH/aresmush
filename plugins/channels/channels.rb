@@ -47,10 +47,16 @@ module AresMUSH
           return ChannelRolesCmd
         when "title"
           return ChannelTitleCmd
+        when "showtitles"
+          return ChannelShowTitlesCmd
         when "who"
           return ChannelWhoCmd
         end
       else
+        if (cmd.root_is?("chat") && !cmd.args)
+          return ChannelListCmd
+        end
+        
         if (is_talk_cmd(enactor, cmd))
           return ChannelTalkCmd
         end

@@ -1,8 +1,12 @@
 ---
-toc: FS3
-summary: All combat commands in one giant place.
+toc: FS3 Combat
+summary: Participating in combat scenes.
 aliases:
-- combat
+- vehicles
+- weapons
+- weapon
+- vehicle
+order: 1
 ---
 # FS3 Combat
 
@@ -65,6 +69,7 @@ Luck points (see [Luck](/help/luck)) have special effects in combat.
 
 ### Avoiding Knockout
 
+<<<<<<< HEAD
 `combat/hero` - Spends a luck point to un-KO yourself. This doesn't erase the damage, it just lets you soldier on in spite of it.
 
 ## Damage
@@ -138,3 +143,40 @@ This is a quick reference for combat organizer commands.   You may also want to 
 
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
 
+=======
+## Gear
+
+There are various kinds of gear that can be used in combat.  You should only use gear that is appropriate to the IC situation.  Just because the code will let you pick a rocket launcher doesn't mean you have a rocket launcher.  RP appropriately.
+
+`weapons` - List all weapons.
+`weapon <name>` - See details for a particular weapon.
+`combat/weapon <name+specials>` - Sets your weapon.
+
+`armor` - List all types of armor.
+`armor <name>` - See details for a particular armor type.
+`combat/armor <name+specials>` - Sets your armor.
+
+## Vehicles and Mounts
+
+On some games, you can use vehicles or mounts in combat.
+
+`vehicles` - List all types of vehicles.
+`vehicle <name>` - See details for a particular vehicle type.
+`combat/pilot <vehicle type or name>` - Pilots a vehicle.
+`combat/passenger <vehicle type or name>` - Becomes a passenger in a vehicle.
+        You can also use a person's name to join them in a vehicle.
+`combat/disembark` - Leaves a vehicle.
+
+`mounts` - Lists all types of mounts.
+`mount <name>` - See details for a particular mount type.
+`combat/mount <name>` - Mounts an animal.
+`combat/dismount` - Dismounts an animal.
+
+## Luck
+
+See [Luck in Combat](/help/combat_luck)
+
+## Organizing
+
+See [Organizing Combat](/help/combat_org)
+>>>>>>> daec0b324a608d7452492467120899af0c5eb0f1

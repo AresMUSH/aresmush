@@ -219,7 +219,7 @@ en:
         mounted: "%{name} has mounted a %{mount}."
         invalid_mount: "That is not a valid mount type."
         not_mounted: "You are not mounted."
-        cant_be_in_both_vehicle_and_mount: "You can't be in both a vehicle and on a mount at the same time."
+        cant_be_in_both_vehicle_and_mount: "%{name} can't be in both a vehicle and on a mount at the same time."
         mounts_disabled: "Mounts are disabled here."
         mounts_title: "Mounts List"
         mount_title_description: "Description:"
@@ -231,7 +231,6 @@ en:
         # ----------------------------
 
         hitlocs_for: "Hit Locations for %{name}"
-
         # ----------------------------
         # GEAR COMMANDS
         # ----------------------------

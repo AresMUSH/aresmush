@@ -3,13 +3,15 @@ module AresMUSH
     def self.find(name, viewer)
       return FindResult.new(viewer, nil) if (name.downcase == "me")
 
+      name = name.downcase
       viewer_room = viewer.room
-      return FindResult.new(viewer_room, nil) if (name.downcase == "here")
+      return FindResult.new(viewer_room, nil) if (name == "here")
+      return FindResult.new(viewer_room, nil) if (viewer_room.name.downcase.start_with?(name))
 
-      chars = Character.find_any_by_name(name).select { |c| c.room == viewer_room }
-      exits = Exit.find_any_by_name(name).select { |c| c.source == viewer_room }
-      contents = [chars, exits].flatten(1).select { |c| c }   
-            
+      exits = viewer_room.exits.select { |e| e.name.downcase.start_with?(name) }
+      chars = viewer_room.characters.select { |c| c.name.downcase.start_with?(name) }
+      contents = [chars, exits].flatten(1)
+                  
       SingleResultSelector.select(contents)
     end
     

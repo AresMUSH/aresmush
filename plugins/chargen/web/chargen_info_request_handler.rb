@@ -46,7 +46,10 @@ module AresMUSH
           fs3: fs3,
           group_options: groups,
 	  secret_prefs: secret_prefs,
-          date_format: Global.read_config("datetime", "date_entry_format_help")
+          date_format: Global.read_config("datetime", "date_entry_format_help"),
+          bg_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "bg_blurb")),
+          hooks_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "hooks_blurb")),
+          desc_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "desc_blurb"))
         }
       end
     end
