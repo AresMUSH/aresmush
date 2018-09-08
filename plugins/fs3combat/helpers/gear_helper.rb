@@ -3,7 +3,11 @@ module AresMUSH
     def self.weapons
       Global.read_config("fs3combat", "weapons")
     end
-    
+
+    def self.mundane_weapons
+      Global.read_config("fs3combat", "weapons").select { |k, w| !w['is_magic'] }
+    end
+
     def self.weapon(name)
       name_upcase = name ? name.upcase : nil
       FS3Combat.weapons.select { |k, v| k.upcase == name_upcase}.values.first
@@ -50,7 +54,11 @@ module AresMUSH
     def self.armors
       Global.read_config("fs3combat", "armor")
     end
-    
+   
+    def self.mundane_armors
+      Global.read_config("fs3combat", "armor").select{ |k, a| !a['is_magic'] }
+    end
+
     def self.armor(name)
       FS3Combat.armors.select { |k, v| k.upcase == name.upcase}.values.first
     end
