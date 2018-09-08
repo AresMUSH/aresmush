@@ -15,7 +15,7 @@ module AresMUSH
 
       min_rating = FS3Skills.get_min_rating(ability_type)
       ability = FS3Skills.find_ability(char, ability_name)
-
+      
       if (ability)
         ability.update(rating: rating)
       else
@@ -111,9 +111,7 @@ module AresMUSH
 
       client.emit_ooc t('fs3skills.reset_attributes') if client
       FS3Skills.attr_names.each do |a|
-        if a == "Magic"
-
-        else
+        if a != "Magic"
           FS3Skills.set_ability(client, char, a, 2)
         end
       end
@@ -122,7 +120,7 @@ module AresMUSH
       FS3Skills.action_skill_names.each do |a|
         schools = Global.read_config("schools")
         if schools.include? a
-
+	  FS3Skills.set_ability(client, char, a, 0)
         else
           FS3Skills.set_ability(client, char, a, 1)
         end

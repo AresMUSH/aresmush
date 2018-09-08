@@ -65,7 +65,8 @@ module AresMUSH
           rp_hooks: hooks,
           desc: Website.format_input_for_html(char.description),
           shortdesc: Website.format_input_for_html(char.shortdesc),
-          fs3: fs3
+          fs3: fs3,
+	  secretpref: { value: char.secretpref, desc: Global.read_config('demographics', 'secret_prefs').fetch(char.secretpref) }
         }
       end
     end
