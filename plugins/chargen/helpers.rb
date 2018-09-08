@@ -14,6 +14,7 @@ module AresMUSH
     end     
     
     def self.can_view_bgs?(actor)
+      return false if !actor
       Chargen.can_manage_bgs?(actor) || actor.has_permission?("view_bgs")
     end      
     
@@ -132,6 +133,59 @@ module AresMUSH
       
       return alerts
     end
+    
+    def self.approve_char(enactor, model, notes)
+      if (model.is_approved?)
+        return t('chargen.already_approved', :name => model.name) 
+      end
+
+      job = model.approval_job
+
+      if (!job)
+        return t('chargen.no_app_submitted', :name => model.name)
+      end
+      
+      Jobs.close_job(enactor, job, "#{Global.read_config("chargen", "approval_message")}%R%R#{notes}")
+      Roles.add_role(model, "approved")
+
+      model.update(approval_job: nil)
+                      
+      Achievements.award_achievement(model, "created_character", 'story', "Created a character.")
+      
+      welcome_message = Global.read_config("chargen", "welcome_message")
+      post_body = welcome_message % { :name => model.name, :position => model.group("Position") }
+      
+      Forum.system_post(
+        Global.read_config("chargen", "arrivals_category"),
+        t('chargen.approval_post_subject', :name => model.name), 
+        post_body)
+        
+      Jobs.create_job(Global.read_config("chargen", "app_category"), 
+         t('chargen.approval_post_subject', :name => model.name), 
+         Global.read_config("chargen", "post_approval_message"), 
+         Game.master.system_character)
+         
+       return nil
+     end
+     
+     def self.reject_char(enactor, model, notes)
+       if (model.is_approved?)
+         return t('chargen.already_approved', :name => model.name) 
+       end
        
+       job = model.approval_job
+       if (!job)
+         return t('chargen.no_app_submitted', :name => model.name)
+       end
+       
+       model.update(chargen_locked: false)
+       
+       Jobs.change_job_status(enactor,
+         job,
+         Global.read_config("chargen", "app_hold_status"),
+         "#{Global.read_config("chargen", "rejection_message")}%R%R#{notes}")
+                   
+       return nil
+     end
   end
 end

@@ -101,7 +101,7 @@ module AresMUSH
         #        }
         #      }
         
-        show_background = (char.on_roster? || char.bg_shared) && !char.background.blank?
+        show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
 
         
         files = Profile.character_page_files(char)
@@ -133,6 +133,7 @@ module AresMUSH
           scenes: scenes,
           profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
+          description: Website.format_markdown_for_html(char.description),
           rp_hooks: Website.format_markdown_for_html(char.rp_hooks),
           desc: char.description,
           playerbit: char.is_playerbit?,

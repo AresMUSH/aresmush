@@ -74,6 +74,10 @@ You can configure an optional title to appear in front of your name when you tal
 
 `channel/title <channel>=<title>`.
 
+If you don't like seeing other peoples' channel titles, you can turn them off on a per-channel basis.  This only works in your main MU client output, and doesn't affect the 'Chat' tab on the web portal or channel recall.
+
+`channel/showtitles <channel>=<on or off>`
+
 ## Mute
 
 Channels sometimes get spammy, or distract you when you're RPing.  You can temporarily mute a channel without actually leaving it.  Mute is cleared when you disconnect.  You can use 'all' for the channel name to mute/unmute all channels at once.

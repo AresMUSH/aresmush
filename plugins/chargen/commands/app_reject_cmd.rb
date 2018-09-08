@@ -22,26 +22,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          if (model.is_approved?)
-            client.emit_failure t('chargen.already_approved', :name => model.name) 
-            return
+          error = Chargen.reject_char(enactor, model, self.message)
+          if (error)
+            client.emit_failure error
+          else
+            client.emit_success t('chargen.app_rejected', :name => model.name)
           end
-          
-          
-          job = model.approval_job
-          if (!job)
-            client.emit_failure t('chargen.no_app_submitted', :name => model.name)
-            return
-          end
-          
-          model.update(chargen_locked: false)
-          
-          Jobs.change_job_status(enactor,
-            job,
-            Global.read_config("chargen", "app_hold_status"),
-            "#{Global.read_config("chargen", "rejection_message")}%R%R#{self.message}")
-                      
-          client.emit_success t('chargen.app_rejected', :name => model.name)
         end
       end
     end

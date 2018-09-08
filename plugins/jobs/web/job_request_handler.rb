@@ -37,7 +37,8 @@ module AresMUSH
           created: job.created_date_str(enactor),
           is_open: job.is_open?,
           job_admin: job_admin,
-          author: { name: job.author_name, icon: Website.icon_for_char(job.author) },
+          is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
+          author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? job.assigned_to.name : "--",
           description: Website.format_markdown_for_html(job.description),
           replies: Jobs.visible_replies(enactor, job).map { |r| {
