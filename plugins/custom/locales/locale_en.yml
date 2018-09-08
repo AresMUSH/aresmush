@@ -1,0 +1,95 @@
+---
+en:
+  custom:
+      invalid_name: "%xrCharacter not found.%xn"
+        # ----------------------------
+        # SCHOOLS
+        # ----------------------------
+      schools_title: "Schools"
+      schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
+        # ----------------------------
+        # POTIONS
+        # ----------------------------
+      potions_title: "%{name}'S POTIONS"
+      potions_creating_title: "Potions Currently Creating"
+      potions_has_title: "Potions Inventory"
+      not_potion: "That spell cannot be made into a potion."
+      dont_have_potion: "You don't have that potion. Type 'potions' to see what potions you have."
+      potion_not_in_combat: "You must be in combat to use that potion."
+      potion_ko: "You cannot use a potion while Knocked Out."
+      use_potion: "%{name} uses a %xM%{potion}%xn potion."
+      potion_heal: "%{name} uses a %xM%{potion}%xn potion. They receive up to %{points} points of healing to a wound."
+      potion_heal_no_effect: "%{name} uses a %xM%{potion}%xn potion, but they have no healable wounds. The potion has no effect."
+      potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
+      potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification for a total of %{total_mod}."
+      not_character: "%xrThat is not a character.%xn"
+
+        # ----------------------------
+        # SPELL CASTING
+        # ----------------------------
+      cant_force_cast: "You can't force someone to cast a spell outside of combat."
+      already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
+      casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
+      casts_noncombat_spell: "%{name} casts %xB%{spell}%xn."
+      will_cast_spell: "%{name} will cast %xB%{spell}%xn."
+      not_in_combat: "You must be in combat to cast this spell."
+      target_aoe: "Choose your targets by doing aoe <target> <target> <target>."
+      target_suppress: "Choose your targets by doing suppress <target>."
+      target_attack: "Choose your target by doing attack <target>."
+      target_stun: "Choose your target by doing stun <target>."
+      cast_heal: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
+      cast_heal_no_effect: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, but they have no healable wounds. The spell has no effect."
+      not_ko: "%{target} is not knocked out."
+      cast_revive: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
+      been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
+      cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
+      been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
+      npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
+
+      not_dead: "%{target} is not dead."
+      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %{damage_desc}."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xB%{mod} %{type} modification%xn for a total of %{total_mod}."
+      cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
+      not_spell: "That is not a spell."
+      no_target: "This spell does not use a target. Do spell/cast <spell>."
+      spell_ko: "You cannot cast a spell while Knocked Out."
+      needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
+
+      # ----------------------------
+      # LEARNING SPELLS
+      # ----------------------------
+      wrong_school: "That spell does not belong to one of your schools."
+      wrong_school_check: "That spell does not belong to one of %{name}'s' schools and should only be added if they are gaining it through special means."
+      spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
+      learning_spells_title: "%xhSPELLS %{name} IS LEARNING%xn"
+      spells_header: "SPELL              LEVEL"
+      spells_learning_header: "SPELL              LEVEL   XP NEEDED"
+      start_learning: "You start learning the %{spell} spell."
+      already_know_spell: "You already know the %{spell} spell."
+      complete_learning: "Congratulations! You have finished learning the %{spell} spell."
+      additional_learning: "You put in additional work to learn the %{spell} spell."
+      xp_learned_spell: "%{name} has learned %{spell}, a level %{level} %{school} spell."
+      xp_learned_spell_title: "%{name} learned %{spell}"
+      need_previous_level: "You must have a spell at the previous level in the same school before you can learn this spell."
+      cant_learn_yet: "You have %{days} days before you can learn the %{spell} spell again."
+      too_many_spells: "You can only learn up to 16 spells. Discard a spell before learning a new one."
+      dont_know_spell: "You don't know that spell. Type 'spells' to see the spells you know."
+      cant_discard: "You can't discard that spell. You must have one spell at each prior level in the same school in order to discard a spell."
+      discarded_spell: "You have discarded the %{spell} spell."
+      added_spell: "You have added the %{spell} spell to %{name}."
+      removed_spell: "You have removed the %{spell} spell from %{name}."
+
+      # ----------------------------
+      # FS3 COMBAT SPELL
+      # ----------------------------
+
+      spell_action_msg_long: "%{name} casts a spell this turn."
+      spell_action_msg_short: "Spell"
+      spell_resolution_msg: "%{name} cast a spell."
+      # ----------------------------
+      # FS3 COMBAT POTION
+      # ----------------------------
+
+      potion_action_msg_long: "%{name} uses a potion this turn."
+      potion_action_msg_short: "Potion"
+      potion_resolution_msg: "%{name} used a potion"
