@@ -135,8 +135,7 @@ module AresMUSH
     end
     
     def self.reboot_required_notice
-      return t('jobs.reboot_required')
-      #File.exist?('/var/run/reboot-required')
+      File.exist?('/var/run/reboot-required')
     end
   end
 end
