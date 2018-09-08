@@ -30,7 +30,12 @@ module AresMUSH
           }
         end
         
-        
+	secret_config = Global.read_config('demographics', 'secret_prefs')
+	secret_prefs = []
+	secret_config.each do |k, v|
+ 	  secret_prefs << { desc: v, value: k }
+        end
+      
         if (FS3Skills.is_enabled?)
           fs3 = FS3Skills::ChargenInfoRequestHandler.new.handle(request)
         else
@@ -40,6 +45,7 @@ module AresMUSH
         {
           fs3: fs3,
           group_options: groups,
+	  secret_prefs: secret_prefs,
           date_format: Global.read_config("datetime", "date_entry_format_help")
         }
       end
