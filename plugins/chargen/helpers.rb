@@ -14,6 +14,7 @@ module AresMUSH
     end     
     
     def self.can_view_bgs?(actor)
+      return false if !actor
       Chargen.can_manage_bgs?(actor) || actor.has_permission?("view_bgs")
     end      
     
