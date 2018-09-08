@@ -8,8 +8,21 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
+        if (!char)
+          return { error: t('webportal.not_found') }
+        end
+        
         if (!Chargen.can_approve?(enactor))
           return { error: t('dispatcher.not_allowed') }
+        end
+
+        if (char.is_approved?)
+          return { error: t('chargen.already_approved') }
+        end
+        
+        job = char.approval_job
+        if (!job)
+          return { error: t('chargen.no_app_submitted') }
         end
 
         abilities_app = FS3Skills.is_enabled? ? MushFormatter.format(FS3Skills.app_review(char)) : nil
@@ -27,7 +40,8 @@ module AresMUSH
           ranks: ranks_app,
           hooks: hooks_app,
           name: char.name,
-          id: char.id
+          id: char.id,
+          job: job.id
         }
       end
     end
