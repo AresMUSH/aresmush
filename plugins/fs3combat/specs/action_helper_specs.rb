@@ -972,5 +972,54 @@ module AresMUSH
         
       end
     end
+    
+    
+    describe :resolve_explosion do
+      before do
+        @combatant = double
+        @target = double
+        allow(@combatant).to receive(:name) { "Bob" }
+        allow(@combatant).to receive(:weapon) { "Grenade" }
+        allow(FS3Combat).to receive(:rand) { 0 }
+      end
+      
+      it "should resolve attack if hit" do
+        expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target) { { margin: 1, hit: true, attacker_net_successes: 3 }}
+        expect(FS3Combat).to receive(:resolve_attack).with(@combatant, "Bob", @target, "Grenade", 3) { [ 'result' ]}
+        expect(FS3Combat.resolve_explosion(@combatant, @target)).to eq [ 'result' ]
+      end
+      
+      it "should not resolve attack if miss" do
+        expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target) { { margin: 0, hit: false, message: "Missed!" }}
+        expect(FS3Combat).to_not receive(:resolve_attack)
+        expect(FS3Combat.resolve_explosion(@combatant, @target)).to eq [ 'Missed!' ]
+      end
+      
+      it "should allow max shrapnel if multiple succ" do
+        expect(FS3Combat).to receive(:weapon_stat).with("Grenade", "has_shrapnel") { true }
+        expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target) { { margin: 1, hit: true, attacker_net_successes: 3 }}
+        expect(FS3Combat).to receive(:rand).with(5) { 2 }        
+        expect(FS3Combat).to receive(:resolve_attack).with(@combatant, "Bob", @target, "Grenade", 3) { [ 'result1' ]}
+        expect(FS3Combat).to receive(:resolve_attack).with(nil, "Bob", @target, "Shrapnel") { [ 'result2' ]}
+        expect(FS3Combat).to receive(:resolve_attack).with(nil, "Bob", @target, "Shrapnel") { [ 'result3' ]}
+        expect(FS3Combat.resolve_explosion(@combatant, @target)).to eq [ 'result1', 'result2', 'result3' ]
+      end
+      
+      it "should allow min shrapnel if missed" do
+        expect(FS3Combat).to receive(:weapon_stat).with("Grenade", "has_shrapnel") { true }
+        expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target) { { margin: 0, hit: false, message: "Missed!" }}
+        expect(FS3Combat).to receive(:rand).with(2) { 1 }        
+        expect(FS3Combat).to receive(:resolve_attack).with(nil, "Bob", @target, "Shrapnel") { [ 'result2' ]}
+        expect(FS3Combat.resolve_explosion(@combatant, @target)).to eq [ 'Missed!', 'result2' ]
+      end
+      
+      it "should have no shrapnel if weapon doesn't allow it" do
+        expect(FS3Combat).to receive(:weapon_stat).with("Grenade", "has_shrapnel") { false }
+        expect(FS3Combat).to receive(:determine_attack_margin).with(@combatant, @target) { { margin: 0, hit: false, message: "Missed!" }}
+        expect(FS3Combat).to_not receive(:rand)
+        expect(FS3Combat.resolve_explosion(@combatant, @target)).to eq [ 'Missed!' ]
+      end
+      
+    end
   end
 end
