@@ -68,8 +68,6 @@ Luck points (see [Luck](/help/luck)) have special effects in combat.
 > **Tip:** Spending luck on attack affects special attacks like explosions or suppression.  It also conveys a bonus to damage.
 
 ### Avoiding Knockout
-
-<<<<<<< HEAD
 `combat/hero` - Spends a luck point to un-KO yourself. This doesn't erase the damage, it just lets you soldier on in spite of it.
 
 ## Damage
@@ -179,4 +177,3 @@ See [Luck in Combat](/help/combat_luck)
 ## Organizing
 
 See [Organizing Combat](/help/combat_org)
->>>>>>> daec0b324a608d7452492467120899af0c5eb0f1

@@ -3,8 +3,8 @@ module AresMUSH
     class GearListRequestHandler
       def handle(request)
         {
-          weapons: build_list(FS3Combat.weapons),
-          armor: build_list(FS3Combat.armors),
+          weapons: build_list(FS3Combat.mundane_weapons),
+          armor: build_list(FS3Combat.mundane_armors),
           vehicles: build_list(FS3Combat.vehicles),
           mounts: build_list(FS3Combat.mounts),
           allow_vehicles: FS3Combat.vehicles_allowed?,
