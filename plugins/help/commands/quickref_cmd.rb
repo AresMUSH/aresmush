@@ -1,10 +1,10 @@
 module AresMUSH
   module Help
     
-    class HelpViewCmd
+    class HelpQuickrefCmd
       include CommandHandler
 
-      attr_accessor :topic, :show_detail
+      attr_accessor :topic
       
       def parse_args
         self.topic = cmd.args
@@ -21,10 +21,9 @@ module AresMUSH
       def handle
         self.topic = Help.strip_prefix(self.topic)
         search_topic = self.topic.gsub('/', ' ')
+        match_topic = self.topic.gsub(' ', '/')
         
         topics = Help.find_topic(search_topic)
-        
-        pp "#{self.topic} -- #{search_topic} -- #{topics}"
         if (topics.count == 1)
           found_topic = topics.first
           formatter = MarkdownFormatter.new
@@ -32,10 +31,18 @@ module AresMUSH
           help_url = Help.topic_url(found_topic, search_topic.rest(' '))
           
           lines = md_contents.split("\n")            
+          matching_lines = lines.select { |l| l.start_with?("`#{match_topic}")}
           
-          footer = "%ld%R#{t('help.help_topic_footer', :url => help_url)}"
-          template = BorderedDisplayTemplate.new formatter.to_mush(md_contents), nil, footer
-          client.emit template.render
+          if (matching_lines.empty?)
+            footer = "%ld%R#{t('help.help_topic_footer', :url => help_url)}"
+            template = BorderedDisplayTemplate.new formatter.to_mush(md_contents), nil, footer
+            client.emit template.render
+          else            
+            list = matching_lines.map { |l| formatter.to_mush(l).strip }
+            footer = "%ld%R#{t('help.command_help_footer', :url => help_url, :topic => search_topic)}"
+           template = BorderedListTemplate.new list, t('help.command_help_title'), footer
+           client.emit template.render
+          end    
           
         elsif (topics.count == 0)
           client.emit_failure t('help.not_found', :topic => self.topic)          

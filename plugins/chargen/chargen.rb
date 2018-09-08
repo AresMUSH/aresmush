@@ -76,6 +76,12 @@ module AresMUSH
         return ChargenSubmitRequestHandler
       when "chargenUnsubmit"
         return ChargenUnsubmitRequestHandler
+      when "appApprove"
+        return AppApproveRequestHandler
+      when "appReject"
+        return AppRejectRequestHandler
+      when "appReview"
+        return AppReviewRequestHandler
       end
       nil
     end

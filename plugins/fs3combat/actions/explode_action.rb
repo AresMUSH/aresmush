@@ -29,13 +29,7 @@ module AresMUSH
         messages << t('fs3combat.explode_resolution_message', :name => self.name, :weapon => self.combatant.weapon)
         
         self.targets.each do |target, num|
-          messages.concat FS3Combat.attack_target(combatant, target)
-          if (FS3Combat.weapon_stat(self.combatant.weapon, "has_shrapnel"))      
-            shrapnel = rand(5)
-            shrapnel.times.each do |s|
-              messages.concat FS3Combat.resolve_attack(nil, self.combatant.name, target, "Shrapnel")
-            end
-          end
+          messages.concat FS3Combat.resolve_explosion(combatant, target)
         end
 
         ammo_message = FS3Combat.update_ammo(@combatant, 1)

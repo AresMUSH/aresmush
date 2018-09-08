@@ -496,5 +496,26 @@ module AresMUSH
 
       messages
     end
+    
+    def self.resolve_explosion(combatant, target)
+      messages = []
+      margin = FS3Combat.determine_attack_margin(combatant, target)
+      if (margin[:hit])
+        attacker_net_successes = margin[:attacker_net_successes]
+        messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
+        max_shrapnel = [ 5, attacker_net_successes + 2 ].min
+      else
+        messages << margin[:message]
+        max_shrapnel = 2
+      end
+      
+      if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))      
+        shrapnel = rand(max_shrapnel)
+        shrapnel.times.each do |s|
+          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
+        end
+      end
+      messages
+    end
   end
 end
