@@ -16,11 +16,6 @@ en:
         amazing_rating: "Amazing"
         legendary_rating: "Legendary"
         
-        # Background Skill Ratings
-        interest_rating: "Interest"
-        proficiency_rating: "Proficiency"
-        expertise_rating: "Expertise"
-        
         # Language Skill Ratings
         beginner_rating: "Beginner"
         conversational_rating: "Conversational"
