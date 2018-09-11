@@ -30,7 +30,11 @@ module AresMUSH
       def check_errors
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
-
+        if caster_combat.is_npc?
+          return nil
+        else
+          return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
+        end
         require_target = Global.read_config("spells", self.spell, "require_target")
         return t('custom.needs_target') if require_target
         return nil
@@ -56,11 +60,6 @@ module AresMUSH
 
 
         if self.enactor.combatant
-          if caster_combat.is_npc?
-            return nil
-          else
-            return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
-          end
           if self.caster_combat.is_ko
             client.emit_failure t('custom.spell_ko')
           elsif Custom.already_cast(self.caster_combat) == true
@@ -99,18 +98,13 @@ module AresMUSH
 
           end
         self.caster_combat.update(has_cast: true)
-      else
-
-        #Roll NonCombat
-        if roll
-          if Custom.knows_spell?(caster, self.spell)
+        elsif
+          #Roll NonCombat
+          if roll
             Custom.cast_noncombat_spell(self.caster, self.spell)
           else
-            client.emit_failure t('custom.dont_know_spell')
-          end          
-        else
-          client.emit_failure t('custom.not_in_combat')
-        end
+            client.emit_failure t('custom.not_in_combat')
+          end
 
         end
 

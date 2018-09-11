@@ -21,7 +21,9 @@ module AresMUSH
             self.target_combat = combat.find_combatant(target_name)
             self.caster_combat = combat.find_combatant(caster_name)
           end
+
         else
+          #Enactor casts
           args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
           self.spell = titlecase_arg(args.arg1)
           self.target_name = titlecase_arg(args.arg2)
@@ -32,6 +34,7 @@ module AresMUSH
 
           #Returns combatant
           if enactor.combat
+            combat = enactor.combat
             self.caster_combat = enactor.combatant
             self.target_combat = combat.find_combatant(target_name)
           end
@@ -41,7 +44,6 @@ module AresMUSH
       end
 
       def check_errors
-
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
         require_target = Global.read_config("spells", self.spell, "require_target")
@@ -71,17 +73,14 @@ module AresMUSH
         stance = Global.read_config("spells", self.spell, "stance")
 
         if self.caster.combat
-          if caster_combat.is_npc?
-            return nil
-          else
-            return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
-          end
           if self.caster_combat.is_ko
             client.emit_failure t('custom.spell_ko')
+          elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false)
+              client.emit_failure t('custom.dont_know_spell')
           else
+
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
-
             #Inflict damage
             if damage_inflicted
               Custom.cast_inflict_damage(self.caster_combat, self.target, self.spell)
@@ -156,9 +155,11 @@ module AresMUSH
             if stance
               Custom.cast_stance(self.caster_combat, self.target_combat, self.spell)
             end
-
             self.caster_combat.update(has_cast: true)
             FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
+
+
+
           end
 
         else

@@ -43,12 +43,13 @@ en:
       not_ko: "%{target} is not knocked out."
       cast_revive: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
       been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
-      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %{damage_desc}."
+      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
       cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xB%{mod} %{type} modification%xn for a total of %{total_mod}."
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
       no_target: "This spell does not use a target. Do spell/cast <spell>."
-      needs_multi_target: "This spell can take multiple targets. Do spell/castmulti=<target>."
+      needs_multi_target: "This spell can take multiple targets. Do spell/castmulti <spell>=<target>."
+      not_multi_target: "This spell can only take one target. Do spell/cast <spell>=<target>"
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
 
       # ----------------------------

@@ -66,6 +66,8 @@ module AresMUSH
           else
             return SpellCastCmd
           end
+        when "castmulti"
+          return SpellCastWithMultiTargetCmd
         when "learn"
           return SpellLearnCmd
         when "discard"
@@ -99,6 +101,14 @@ module AresMUSH
         case cmd.switch
         when "undo"
           return DeathUndoCmd
+        end
+      end
+      #Luck request
+      case cmd.root
+      when "luck"
+        case cmd.switch
+        when "request"
+          return LuckRequestCmd
         end
       end
 
