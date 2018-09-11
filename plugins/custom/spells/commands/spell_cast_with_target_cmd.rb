@@ -41,11 +41,13 @@ module AresMUSH
       end
 
       def check_errors
-        require_target = Global.read_config("spells", self.spell, "require_target")
+
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
-
+        require_target = Global.read_config("spells", self.spell, "require_target")
         return t('custom.no_target') if !require_target
+        multi_target = Global.read_config("spells", self.spell, "multi_target")
+        return t('custom.needs_multi_target') if multi_target
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         return t('custom.cant_heal_dead') if (heal_points && target.dead)
         is_res = Global.read_config("spells", self.spell, "is_res")
@@ -86,13 +88,8 @@ module AresMUSH
             end
 
             #Healing
-            if (heal_points && !multi_target)
+            if heal_points
               Custom.cast_heal(self.caster_combat, self.target, self.spell)
-            end
-
-            #Healing Multiple Targets
-            if (heal_points && multi_target)
-              Custom.cast_multi_heal(self.caster, self.target_name, self.spell)
             end
 
             #Revive
@@ -170,7 +167,7 @@ module AresMUSH
               Custom.cast_non_combat_heal(self.caster, self.target, self.spell)
             else
               client.emit_failure t('custom.dont_know_spell')
-            end             
+            end
           else
             client.emit_failure t('custom.not_in_combat')
           end

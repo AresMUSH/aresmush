@@ -29,6 +29,7 @@ en:
         # ----------------------------
       cant_force_cast: "You can't force someone to cast a spell outside of combat."
       already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
+      spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn."
       will_cast_spell: "%{name} will cast %xB%{spell}%xn."
@@ -47,7 +48,7 @@ en:
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
       no_target: "This spell does not use a target. Do spell/cast <spell>."
-      spell_ko: "You cannot cast a spell while Knocked Out."
+      needs_multi_target: "This spell can take multiple targets. Do spell/castmulti=<target>."
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
 
       # ----------------------------
