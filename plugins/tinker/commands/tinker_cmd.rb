@@ -13,9 +13,16 @@ module AresMUSH
 
 
       def handle
-        name_string = "test1 test2 testing1"
-        targets = Custom.parse_spell_targets(enactor, name_string)
-        client.emit targets
+        spell = titlecase_arg(cmd.args)
+        caster_combat = enactor.combatant
+        weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
+        weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
+        client.emit weapon_specials
+        FS3Combat.set_weapon(enactor, caster_combat, caster_combat.weapon, weapon_specials)
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "succeeds")
+        FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+
+
 
 
 
