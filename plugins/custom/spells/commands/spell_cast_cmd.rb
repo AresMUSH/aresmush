@@ -87,11 +87,6 @@ module AresMUSH
               Custom.cast_equip_armor(self.caster_combat, self.spell)
             end
 
-            #Equip Armor Specials
-            if armor_specials
-              Custom.cast_equip_armor_specials(self.caster_combat, self.spell)
-            end
-
             #Stun
             if is_stun
               Custom.cast_stun_spell(enactor, self.caster_combat, self.spell)

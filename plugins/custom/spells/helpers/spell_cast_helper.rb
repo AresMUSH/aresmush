@@ -1,36 +1,24 @@
 module AresMUSH
   module Custom
 
-    def self.cast_equip_armor(caster_combat, spell)
+    def self.cast_equip_armor(enactor, caster_combat, target_combat, spell)
       succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
       armor = Global.read_config("spells", spell, "armor")
       client = Login.find_client(caster_combat)
       if succeeds == "%xgSUCCEEDS%xn"
-        caster_combat.update(armor_name: armor)
+        target_combat.update(armor_name: armor)
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
+        FS3Combat.set_armor(enactor, caster_combat, caster_combat.armor)
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
       end
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
-    def self.cast_equip_armor_specials(caster_combat, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      armor_specials = Global.read_config("spells", spell, "armor_specials")
-      client = Login.find_client(caster)
-      if succeeds == "%xgSUCCEEDS%xn"
-        caster_combat.update(armor_specials: armor_specials)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell)
-        FS3Combat.set_action(client, caster_combat, caster.combat, caster_combat, FS3Combat::SpellAction, "")
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
-      end
-    end
-
-    def self.cast_equip_weapon(enactor, caster_combat, spell)
+    def self.cast_equip_weapon(enactor, caster_combat, target_combat, spell)
       weapon = Global.read_config("spells", spell, "weapon")
-      caster_combat.update(weapon_name: weapon)
-        weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
+      FS3Combat.set_weapon(enactor, target_combat, target_combat.weapon)
+      weapon_type = FS3Combat.weapon_stat(target_combat.weapon, "weapon_type")
       armor = Global.read_config("spells", spell, "armor")
       is_stun = Global.read_config("spells", spell, "is_stun")
       if armor
@@ -49,18 +37,6 @@ module AresMUSH
       end
     end
 
-    def self.cast_equip_weapon_specials(caster_combat, spell)
-      weapon_specials = Global.read_config("spells", spell, "weapon_specials")
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      client = Login.find_client(caster_combat)
-      if succeeds == "%xgSUCCEEDS%xn"
-        caster_combat.update(weapon_specials: weapon_specials)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell)
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
-      end
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
 
     def self.cast_roll_spell(caster_combat, spell)
       succeeds = Custom.roll_combat_spell_success(caster_combat, spell)

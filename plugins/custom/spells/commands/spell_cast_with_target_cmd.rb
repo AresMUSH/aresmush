@@ -72,6 +72,10 @@ module AresMUSH
         defense_mod = Global.read_config("spells", self.spell, "defense_mod")
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
+        weapon = Global.read_config("spells", self.spell, "weapon")
+        weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
+        armor = Global.read_config("spells", self.spell, "armor")
+        armor_specials = Global.read_config("spells", self.spell, "armor_specials")
 
         if self.caster.combat
           if self.caster_combat.is_ko
@@ -159,7 +163,25 @@ module AresMUSH
             self.caster_combat.update(has_cast: true)
             FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
 
+            #Equip Weapon
+            if weapon
+              Custom.cast_equip_weapon(enactor, self.caster_combat, self.target_combat, self.spell)
+            end
 
+            #Equip Weapon Specials
+            if weapon_specials
+              Custom.cast_equip_weapon_specials(enactor, self.caster_combat, self.spell)
+            end
+
+            #Equip Armor
+            if armor
+              Custom.cast_equip_armor(enactor, self.caster_combat, self.target_combat, self.spell)
+            end
+
+            #Equip Armor Specials
+            if armor_specials
+              Custom.cast_equip_armor_specials(enactor, self.caster_combat, self.spell)
+            end
 
           end
 
