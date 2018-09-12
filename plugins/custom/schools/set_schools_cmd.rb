@@ -28,20 +28,23 @@ module AresMUSH
 
       def handle
         school_list = Global.read_config("schools")
+        group = Demographics.get_group(self.school)
         if school_list.include?(self.school)
           client.emit "Name: #{self.char.name} Type: #{school_type} School: #{self.school}"
           if school_type == "Major"
             self.char.update(major_school: self.school)
-            client.emit_success "You set #{self.char.name}'s major school to #{self.school}. "
+            Demographics.set_group(self.char, self.school, group)
+            client.emit_success t('custom.set_major_school', :name => self.char.name, :school => self.school)
             FS3Skills.set_ability(client, self.char, self.school, 2)
           elsif school_type == "Minor"
             self.char.update(minor_school: self.school)
-            client.emit_success "You set #{self.char.name}'s minor school to #{self.school}."
+            Demographics.set_group(self.char, self.school, group)
+            client.emit_success t('custom.set_minor_school', :name => self.char.name, :school => self.school)
             FS3Skills.set_ability(client, self.char, self.school, 1)
-          else client.emit_failure "That is not a type of school. Choose major or minor."
+          else client.emit_failure t('custom.not_school_type')
           end
         else
-          client.emit_failure "That is not a school of magic. Type 'schools' to see the list of schools."
+          client.emit_failure t('custom.not_school')
         end
        end
 

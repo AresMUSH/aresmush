@@ -58,6 +58,9 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
 `spell/hascast <name>=<true/false>` - Changes a character or NPC's 'has cast' value so that they can cast again if they spend luck.
+`spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
+**Tip:** Mods only last for one round.
+
 
 ## Housekeeping
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.

@@ -13,11 +13,13 @@ module AresMUSH
 
 
       def handle
-        target_string = cmd.args
-        caster = enactor
-        spell = "Minor Heal"
-        Custom.cast_multi_heal(caster, target_string, spell )
-      end
+
+        name_string = "test1 test2 testing1"
+        targets = Custom.parse_spell_targets(enactor, name_string)
+        client.emit targets
+
+
+
 
 
 

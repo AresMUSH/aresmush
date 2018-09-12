@@ -46,25 +46,26 @@ module AresMUSH
         combatant.update(aim_target: nil)
       end
 
-      if combatant.action_klass == "AresMUSH::FS3Combat::PotionAction"
-        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
-      end
-
-      if combatant.action_klass == "AresMUSH::FS3Combat::SpellAction" 
-        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
-      end
-
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      combatant.update(has_cast:false)
+      combatant.update(has_cast: false)
+      combatant.update(damage_lethality_mod: 0)
+      combatant.update(defense_mod: 0)
+      combatant.update(attack_mod: 0)
+      combatant.update(spell_mod: 0)
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)
 
+      if (combatant.is_ko && !combatant.is_npc?)
+        Custom.death_counter(combatant)
+      end
+
       FS3Combat.check_for_ko(combatant)
       combatant.update(freshly_damaged: false)
+
 
       if (combatant.is_ko && combatant.is_npc?)
         FS3Combat.leave_combat(combatant.combat, combatant)
@@ -101,6 +102,7 @@ module AresMUSH
 
       if (roll <= 0)
         combatant.update(is_ko: true)
+        combatant.update(death_count: 1)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")
@@ -262,9 +264,13 @@ module AresMUSH
     def self.stopped_by_cover?(attacker_net_successes, combatant)
       case attacker_net_successes
       when 0, 1
-        cover_chance = 50
+        cover_chance = 75
       when 2
+        cover_chance = 50
+      when 3
         cover_chance = 25
+      when 4
+        cover_chance = 10
       else
         cover_chance = 0
       end
@@ -488,6 +494,27 @@ module AresMUSH
         end
       end
 
+      messages
+    end
+    
+    def self.resolve_explosion(combatant, target)
+      messages = []
+      margin = FS3Combat.determine_attack_margin(combatant, target)
+      if (margin[:hit])
+        attacker_net_successes = margin[:attacker_net_successes]
+        messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
+        max_shrapnel = [ 5, attacker_net_successes + 2 ].min
+      else
+        messages << margin[:message]
+        max_shrapnel = 2
+      end
+      
+      if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))      
+        shrapnel = rand(max_shrapnel)
+        shrapnel.times.each do |s|
+          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
+        end
+      end
       messages
     end
   end

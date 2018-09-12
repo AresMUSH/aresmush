@@ -24,30 +24,35 @@ module AresMUSH
           return
         end
 
+        client.emit_success t('fs3combat.choosing_ai_actions')
+
         if (self.force)
           npcs = combat.active_combatants.select { |c| c.is_npc? }
+          
         elsif (self.names)
           npcs = []
-          self.names.each do |name|
+          self.names.each do |raw_name|
+            name = raw_name.before(":")
+            target = raw_name.after(":")
+            
             combatant = combat.find_combatant(name)
       
             if (!combatant)
               client.emit_failure t('fs3combat.not_in_combat', :name => name)
-              return
+              next
             end
-            npcs << combatant
+            
+            if (!target.blank?)
+              FS3Combat.set_action(client, enactor, combat, combatant, FS3Combat::AttackAction, target)
+            else
+              npcs << combatant
+            end
           end
+          
         else
           npcs = combat.active_combatants.select { |c| c.is_npc? && !c.action }
         end
-        
-        if (npcs.empty?)
-          client.emit_failure t('fs3combat.no_ai_actions_to_set')
-          return
-        end
-        
-        client.emit_success t('fs3combat.choosing_ai_actions')
-        
+                
         npcs.each_with_index do |c, i|
           FS3Combat.ai_action(combat, client, c, enactor)
         end
