@@ -263,7 +263,7 @@ en:
         only_organizer_can_do: "Only the organizer can do that."
         you_are_a_noncombatant: "Noncombatants can't fight."
         cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
-        new_turn: "%{name} has started a new turn!  Pose and pick your actions."
+        new_turn: "%xh%{name} has started a new turn!  Pose and pick your actions.%xn"
         starting_turn_resolution: "Starting turn resolution..."
         turn_in_progress: "Turn in progress.  Please wait."
         resetting_action: "Resetting %{name}'s action because it is no longer valid: %{error}"
