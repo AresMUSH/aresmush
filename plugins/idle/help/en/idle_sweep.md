@@ -19,8 +19,7 @@ There are several idle actions available:
     Roster - Put them on the roster.
     Warn - Notify them they're in danger of idling out.  This is the default for approved characters.
 
-> **Tip:** We recommend that you **not** destroy idled-out players once they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used could mess up the game wiki references.  Database space should not be an issue unless your game is ginormous. (If it becomes a problem, you can always purge people at that point.)
-
+> **Tip:** We recommend that you **not** destroy idled-out players once they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used can cause confusion.  Database space should really not be an issue.  You could have thousands of PCs and barely make a dent in disk space on modern servers.
 
 `idle/start` - Builds up a list of idle players.
 `idle` - Review everyone's actions.
