@@ -29,7 +29,7 @@ module AresMUSH
             return
           end
           
-          if (target.class == "AresMUSH::Character")
+          if (target.class == Character)
             name_validation_msg = Character.check_name(self.alias)
           else
             existing_exit = enactor_room.has_exit?(self.alias)
@@ -51,11 +51,11 @@ module AresMUSH
       def can_manage?(target)
         return true if Manage.can_manage_game?(enactor)
         
-        if (target.class == "AresMUSH::Character")
+        if (target.class == Character)
           return target == enactor
         end
         
-        if (target.class == "AresMUSH::Room")
+        if (target.class == Room)
           return false
         end
         
