@@ -37,27 +37,29 @@ module AresMUSH
       
       def handle
         combat = enactor.combat
-        
+
+        # Allow joining someone who's already in a vehicle by name.  It's not
+        # actually the vehicle name, it's their name.
         combatant = combat.find_combatant(self.vehicle)
-        
-        if (combatant.mount_type)
-          client.emit_failure t('fs3combat.cant_be_in_both_vehicle_and_mount')
-          return
-        end
-        
         if (combatant && combatant.vehicle)
           self.vehicle = combatant.vehicle.name
         end
         
+        vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
+            
+        if (!vehicle)
+          client.emit_failure t('fs3combat.invalid_vehicle_name')
+          return
+        end
+        
         self.names.each do |name|
-          vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
-              
-          if (!vehicle)
-            client.emit_failure t('fs3combat.invalid_vehicle_name')
-            return
-          end
-
           FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
+
+            if (combatant.mount_type)
+              client.emit_failure t('fs3combat.cant_be_in_both_vehicle_and_mount', :name => combatant.name)
+              return
+            end
+            
             if (combatant.is_in_vehicle?)
               FS3Combat.leave_vehicle(combat, combatant)
             end

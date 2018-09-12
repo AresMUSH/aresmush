@@ -54,7 +54,8 @@ module AresMUSH
         
         abilities = list.to_a.sort_by { |a| a.name }.map { |a| 
           { 
-            name: a.name, 
+            name: a.name,
+	    is_school: ability_type == :action ? a.is_school : nil, 
             rating: a.rating, 
             rating_name: a.rating_name,
             desc: (metadata) ? FS3Skills.get_ability_desc(metadata, a.name) : nil,
@@ -65,8 +66,11 @@ module AresMUSH
             metadata.each do |m|
               existing = abilities.select { |a| a[:name].titlecase == m['name'].titlecase }.first
               if (!existing)
-                abilities << { name: m['name'].titlecase, desc: m['desc'], rating_name: starting_rating_name, rating: starting_rating}
+                abilities << { name: m['name'].titlecase, desc: m['desc'], rating_name: starting_rating_name, rating: starting_rating }
               end
+	      if ability_type == :action
+		abilities.select { |a| a[:name].titlecase == m['name'].titlecase}.first['is_school'] = m['is_school']
+	      end
             end
           end
                     

@@ -38,6 +38,11 @@ module AresMUSH
       "#{start_marker}#{name}%xn#{end_marker}"
     end
     
+    def self.show_titles?(char, channel)
+      options = Channels.get_channel_options(char, channel)
+      options ? options.show_titles : false
+    end
+      
     def self.is_muted?(char, channel)
       options = Channels.get_channel_options(char, channel)
       options ? options.muted : false
@@ -58,24 +63,28 @@ module AresMUSH
       online_chars
     end
     
-    def self.emit_to_channel(channel, msg)
-      message_with_title = "#{channel.display_name} #{msg}"
-      channel.add_to_history msg
+    def self.emit_to_channel(channel, original_msg, title = nil)
+      channel.add_to_history "#{title} #{original_msg}"
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
-          Global.client_monitor.emit_if_logged_in(c, message_with_title)
+          
+          title_display = (title && Channels.show_titles?(c, channel)) ? "#{title} " : ""
+          formatted_msg = "#{channel.display_name} #{title_display}#{original_msg}"
+          
+          Login.emit_if_logged_in(c, formatted_msg)
         end
       end
       
-      web_message = "#{channel.name.downcase}|#{Website.format_markdown_for_html(msg)}"
+      formatted_msg = "#{title} #{original_msg}"
+      web_message = "#{channel.name.downcase}|#{Website.format_markdown_for_html(formatted_msg)}"
       Global.client_monitor.notify_web_clients(:new_chat, web_message) do |char|
         char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end
     end
     
-    def self.pose_to_channel(channel, name, msg)
+    def self.pose_to_channel(channel, name, msg, title)
       formatted_msg = PoseFormatter.format(name, msg)
-      Channels.emit_to_channel channel, formatted_msg
+      Channels.emit_to_channel channel, formatted_msg, title
       return formatted_msg
     end
     

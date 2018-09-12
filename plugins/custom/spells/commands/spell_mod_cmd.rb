@@ -11,7 +11,9 @@ module AresMUSH
         self.spell_mod = trim_arg(args.arg2)
       end
 
-
+      def check_can_set
+        return t('dispatcher.not_allowed') if !enactor.has_permission?("manage_combat")
+      end
 
       def handle
         self.target.combatant.update(spell_mod: self.spell_mod)

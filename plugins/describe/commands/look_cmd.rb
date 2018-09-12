@@ -37,7 +37,7 @@ module AresMUSH
         template = Describe.desc_template(model, enactor)
         client.emit template.render
         if (model.class == Character && model.desc_notify)
-           Global.client_monitor.emit_ooc_if_logged_in(model,  t('describe.looked_at_you', :name => enactor_name))
+           Login.emit_ooc_if_logged_in(model,  t('describe.looked_at_you', :name => enactor_name))
         end
       end
       

@@ -60,7 +60,7 @@ module AresMUSH
         if (scene.room)
           scene.room.characters.each do |char|
             message = Scenes.custom_format(formatted_pose, char, enactor, true, false, nil)
-            Global.client_monitor.emit_if_logged_in(char, message)
+            Login.emit_if_logged_in(char, message)
           end
         end
         

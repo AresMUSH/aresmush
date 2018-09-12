@@ -52,7 +52,7 @@ module AresMUSH
           text: Website.format_input_for_html(data['relationship'])
         }}
         
-        files = Dir[File.join(AresMUSH.website_uploads_path, "#{char.name.downcase}/**")]
+        files = Profile.character_page_files(char)
         files = files.sort.map { |f| Website.get_file_info(f) }
         
         {

@@ -44,6 +44,10 @@ en:
       cast_revive: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
       been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
+      cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
+      been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
+      npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
+      not_dead: "%{target} is not dead."
       cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xB%{mod} %{type} modification%xn for a total of %{total_mod}."
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
@@ -56,6 +60,7 @@ en:
       # LEARNING SPELLS
       # ----------------------------
       wrong_school: "That spell does not belong to one of your schools."
+      wrong_school_check: "That spell does not belong to one of %{name}'s' schools and should only be added if they are gaining it through special means."
       spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
       learning_spells_title: "%xhSPELLS %{name} IS LEARNING%xn"
       spells_header: "SPELL              LEVEL"

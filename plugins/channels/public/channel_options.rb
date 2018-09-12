@@ -8,6 +8,7 @@ module AresMUSH
     attribute :title
     attribute :aliases, :type => DataType::Array
     attribute :muted, :type => DataType::Boolean
+    attribute :show_titles, :type => DataType::Boolean, :default => true
     attribute :announce, :type => DataType::Boolean, :default => true
     
     def match_alias(a)

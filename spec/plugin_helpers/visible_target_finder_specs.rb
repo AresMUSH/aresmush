@@ -25,34 +25,71 @@ module AresMUSH
         expect(result.error).to be_nil
       end
       
-      it "should ensure only a single result" do
+      it "should return the char's location if the name matches the room name" do
         room = double
-        allow(room).to receive(:id) { 1 }
+        expect(room).to receive(:name) { "My Room" }
         allow(@char).to receive(:room) { room }
-        char1 = double
-        char2 = double
-        exit = double
-        allow(char1).to receive(:room) { room }
-        allow(char2).to receive(:room) { room }
-        allow(exit).to receive(:source) { room }
-        expect(Character).to receive(:find_any_by_name).with("A") { [char1, char2] }
-        expect(Exit).to receive(:find_any_by_name).with("A") { [exit] }
-        result = FindResult.new(nil, "an error")
-        expect(SingleResultSelector).to receive(:select).with([char1, char2, exit]) { result }
-        expect(VisibleTargetFinder.find("A", @char)).to eq result      
+        result = VisibleTargetFinder.find("My Room", @char)
+        expect(result.target).to eq room
+        expect(result.error).to be_nil
       end
-
-      it "should remove nil results before selecting single target" do
+      
+      it "should return the char's location if the name matches the room name" do
         room = double
-        allow(room).to receive(:id) { 1 }
+        expect(room).to receive(:name) { "My Room" }
         allow(@char).to receive(:room) { room }
-        char1 = double
-        allow(char1).to receive(:room) { room }
-        allow(Character).to receive(:find_any_by_name) { [char1] }
-        allow(Exit).to receive(:find_any_by_name) { [] }
-        result = FindResult.new(char1, nil)
-        expect(SingleResultSelector).to receive(:select).with([char1]) { result }
-        expect(VisibleTargetFinder.find("A", @char)).to eq result      
+        result = VisibleTargetFinder.find("My", @char)
+        expect(result.target).to eq room
+        expect(result.error).to be_nil
+      end
+      
+      describe :single_target do
+        before do
+          @room = double
+          @char1 = double
+          @char2 = double
+          @exit = double
+          
+          allow(@room).to receive(:name) { "My Room" }
+          expect(@char1).to receive(:room) { @room }
+          expect(@room).to receive(:exits) { [@exit] }
+          expect(@room).to receive(:characters) { [@char1, @char2] }
+        end
+        
+        it "should ensure only a single result" do
+          result = FindResult.new(nil, "An error")
+          
+          allow(@char1).to receive(:name) { "Cal" }
+          allow(@char2).to receive(:name) { "California" }
+          allow(@exit).to receive(:name) { "CA" }
+          
+          expect(SingleResultSelector).to receive(:select).with([@char1, @char2, @exit]) { result }
+          expect(VisibleTargetFinder.find("Ca", @char1)).to eq result      
+        end
+        
+        it "should match an exit name" do
+          result = FindResult.new(nil, "An error")
+          
+          allow(@char1).to receive(:name) { "Eli" }
+          allow(@char2).to receive(:name) { "Torres" }
+          allow(@exit).to receive(:name) { "CA" }
+          
+          result = VisibleTargetFinder.find("Ca", @char1)
+          expect(result.target).to eq @exit
+        end
+        
+        it "should match a char name" do
+          result = FindResult.new(nil, "An error")
+          
+          allow(@char1).to receive(:name) { "Eli" }
+          allow(@char2).to receive(:name) { "Torres" }
+          allow(@exit).to receive(:name) { "CA" }
+          
+          result = VisibleTargetFinder.find("Eli", @char1)
+          expect(result.target).to eq @char1
+        end
+
+        
       end
     end
     

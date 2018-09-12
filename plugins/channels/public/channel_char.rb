@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     collection :channel_options, "AresMUSH::ChannelOptions"
-
+    
     before_delete :delete_channel_options
     
     def delete_channel_options

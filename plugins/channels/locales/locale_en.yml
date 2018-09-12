@@ -41,6 +41,9 @@ en:
         invalid_recall_limit: "Please specify a number between 1 and 25."
         recall_not_enabled: "Recall is not enabled on that channel."
         
+        channel_titles_enabled: "You will now see channel titles on %{name}."
+        channel_titles_disabled: "You will no longer see channel titles on %{name}."
+        
         alias_in_use: "The alias %{channel_alias} is already in use for another channel."
         channel_alias_hint: "%{alias} <msg>"
         channel_alias_set: "You can use %{channel_alias} to talk on the %{name} channel. "
