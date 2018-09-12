@@ -19,7 +19,6 @@ module AresMUSH
           if enactor.combat
             self.caster_combat = combat.find_combatant(caster_name)
           end
-          client.emit caster_combat
 
         else
           #Enactor casts
