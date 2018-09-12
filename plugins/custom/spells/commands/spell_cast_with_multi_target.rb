@@ -19,6 +19,7 @@ module AresMUSH
           if enactor.combat
             self.caster_combat = combat.find_combatant(caster_name)
           end
+          client.emit caster_combat
 
         else
           #Enactor casts
@@ -64,20 +65,18 @@ module AresMUSH
         stance = Global.read_config("spells", self.spell, "stance")
 
         if self.caster.combat
-          if caster_combat.is_npc?
-            return nil
-          else
-            return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
-          end
           if self.caster_combat.is_ko
             client.emit_failure t('custom.spell_ko')
+          elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false)
+              client.emit_failure t('custom.dont_know_spell')
           else
+
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
 
             #Healing Multiple Targets
             if heal_points
-              Custom.cast_multi_heal(self.caster, self.target_name, self.spell)
+              Custom.cast_multi_heal(self.caster, self.caster_combat, self.target_name, self.spell)
             end
 
 

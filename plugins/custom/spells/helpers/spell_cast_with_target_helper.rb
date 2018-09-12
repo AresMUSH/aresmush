@@ -47,8 +47,8 @@ module AresMUSH
       end
     end
 
-    def self.cast_multi_heal(caster, target_string, spell)
-      succeeds = Custom.roll_combat_spell_success(caster.combatant, spell)
+    def self.cast_multi_heal(caster, caster_combat, target_string, spell)
+      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
       if succeeds == "%xgSUCCEEDS%xn"
         targets = Custom.parse_spell_targets(target_string, caster.combat)
         targets.each do |t|
