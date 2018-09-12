@@ -12,8 +12,9 @@ module AresMUSH
 
       def check_errors
         require_target = Global.read_config("spells", self.spell, "require_target")
+        client.emit require_target
         return t('Spells.not_spell') if !self.spell_list.include?(self.spell)
-        # return t('Spells.already_cast') if Spells.already_cast(enactor)
+        return t('Spells.already_cast') if Spells.already_cast(enactor)
         return t('Spells.needs_target') if require_target
         return nil
       end

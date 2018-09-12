@@ -14,15 +14,19 @@ module AresMUSH
          #Returns char or NPC
          self.caster = FS3Combat.find_named_thing(caster_name, enactor)
          #Returns combatant
-         self.caster_combat = combat.find_combatant(caster_name)
-         self.spell = titlecase_arg(args.arg2)
+         if enactor.combat
+           self.caster_combat = combat.find_combatant(caster_name)
+           self.spell = titlecase_arg(args.arg2)
+         end
        else
           args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
           #Returns char or NPC
           self.caster = enactor
           #Returns combatant
-          self.caster_combat = enactor.combatant
-          self.spell = titlecase_arg(args.arg1)
+          if enactor.combat
+            self.caster_combat = enactor.combatant
+            self.spell = titlecase_arg(args.arg1)
+          end
 
         end
       end
@@ -30,12 +34,9 @@ module AresMUSH
       def check_errors
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
-        if caster_combat.is_npc?
-          return nil
-        else
-          return t('custom.dont_know_spell') if Custom.knows_spell?(caster, self.spell) == false
-        end
+        return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
         require_target = Global.read_config("spells", self.spell, "require_target")
+        client.emit require_target
         return t('custom.needs_target') if require_target
         return nil
       end
@@ -59,11 +60,11 @@ module AresMUSH
         school = Global.read_config("spells", self.spell, "school")
 
 
-        if self.enactor.combatant
+        if self.caster.combat
           if self.caster_combat.is_ko
             client.emit_failure t('custom.spell_ko')
-          elsif Custom.already_cast(self.caster_combat) == true
-            client.emit_failure t('custom.already_cast')
+          elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false)
+              client.emit_failure t('custom.dont_know_spell')
           else
 
             #Roll Spell in Combat

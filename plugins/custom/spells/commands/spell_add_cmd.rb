@@ -12,10 +12,10 @@ module AresMUSH
         self.spell_level = Global.read_config("spells", self.spell, "level")
         self.school = Global.read_config("spells", self.spell, "school")
       end
-      
-      def check_can_set
-        return t('dispatcher.not_allowed') if !FS3Skills.can_manage_abilities?(enactor)
-      end
+
+      # def check_can_set
+      #   return t('dispatcher.not_allowed') if !FS3Skills.can_manage_abilities?(enactor)
+      # end
 
       def check_errors
         return t('db.object_not_found') if !self.target
