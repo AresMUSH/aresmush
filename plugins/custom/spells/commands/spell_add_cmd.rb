@@ -13,14 +13,17 @@ module AresMUSH
         self.school = Global.read_config("spells", self.spell, "school")
       end
 
+      # def check_can_set
+      #   return t('dispatcher.not_allowed') if !FS3Skills.can_manage_abilities?(enactor)
+      # end
+
       def check_errors
-        return nil if FS3Skills.can_manage_abilities?(enactor)
-        return t('dispatcher.not_allowed')
+        return t('db.object_not_found') if !self.target
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
         if self.target.groups.values.include? self.school
           return nil
         else
-          return t('custom.wrong_school')
+          client.emit t('custom.wrong_school_check', :name => self.target.name)
         end
         return t('custom.already_know_spell') if Custom.find_spell_learned(self.target, self.spell)
         return nil
