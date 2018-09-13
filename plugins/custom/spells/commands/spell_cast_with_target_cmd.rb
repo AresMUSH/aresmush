@@ -160,30 +160,49 @@ module AresMUSH
             if stance
               Custom.cast_stance(self.caster_combat, self.target_combat, self.spell)
             end
-            self.caster_combat.update(has_cast: true)
-            FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
-
-            #Equip Weapon
-            if weapon
-              Custom.cast_equip_weapon(enactor, self.caster_combat, self.target_combat, self.spell)
-            end
-
-            #Equip Weapon Specials
-            if weapon_specials
-              Custom.cast_equip_weapon_specials(enactor, self.caster_combat, self.spell)
-            end
 
             #Equip Armor
             if armor
-              Custom.cast_equip_armor(enactor, self.caster_combat, self.target_combat, self.spell)
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_equip_armor_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+
             end
 
             #Equip Armor Specials
             if armor_specials
-              Custom.cast_equip_armor_specials(enactor, self.caster_combat, self.spell)
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_equip_armor_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
             end
 
+            #Equip Weapon
+            if weapon
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_equip_weapon_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+            end
+
+            #Equip Weapon Specials
+            if weapon_specials
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_equip_weapon_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+            end
+            # For some reason, both of these break setting weapons and armor. I have no idea why.
+
+            # self.caster_combat.update(has_cast: true)
+            # FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
           end
+
 
         else
           if heal_points
