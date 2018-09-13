@@ -1,6 +1,10 @@
 module AresMUSH
   module Custom
 
+    def has_cast(caster_combat)
+      caster_combat.update(has_cast: true)
+    end
+
     def self.is_spell?(spell)
       spell_list = Global.read_config("spells")
       spell_name = spell.titlecase
