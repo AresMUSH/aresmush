@@ -59,7 +59,7 @@ en:
       # LEARNING SPELLS
       # ----------------------------
       wrong_school: "That spell does not belong to one of your schools."
-      wrong_school_check: "That spell does not belong to one of %{name}'s' schools and should only be added if they are gaining it through special means."
+      wrong_school_check: "%xh%That spell does not belong to one of %{name}'s schools and should only be added if they are gaining it through special means.%xn"
       spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
       learning_spells_title: "%xhSPELLS %{name} IS LEARNING%xn"
       spells_header: "SPELL              LEVEL"
