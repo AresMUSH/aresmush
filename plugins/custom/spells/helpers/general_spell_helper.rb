@@ -22,7 +22,6 @@ module AresMUSH
         return t('fs3combat.cant_target_noncombatant', :name => name) if target.is_noncombatant?
         targets << target
       end
-      
     end
 
     def self.roll_combat_spell(char, combatant, school)
@@ -45,6 +44,14 @@ module AresMUSH
 
     end
 
+    def self.roll_noncombat_spell(char, school)
+      mod = 0
+      roll = char.roll_ability(school, mod)
+      successes = roll[:successes]
+      return successes
+    end
+
+    #Really just all spell successes, but i'm too lazy to change it everywhere
     def self.combat_spell_success(spell, die_result)
       spell_level = Global.read_config("spells", spell, "level")
       if die_result < 1
@@ -81,6 +88,13 @@ module AresMUSH
     def self.roll_combat_spell_success(caster, spell)
       school = Global.read_config("spells", spell, "school")
       die_result = Custom.roll_combat_spell(caster, caster, school)
+      succeeds = Custom.combat_spell_success(spell, die_result)
+    end
+
+
+    def self.roll_noncombat_spell_success(caster, spell)
+      school = Global.read_config("spells", spell, "school")
+      die_result = Custom.roll_noncombat_spell(caster, school)
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
