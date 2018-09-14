@@ -36,7 +36,6 @@ module AresMUSH
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat)) == true
         require_target = Global.read_config("spells", self.spell, "require_target")
-        client.emit require_target
         return t('custom.needs_target') if require_target
         return nil
       end
@@ -72,6 +71,11 @@ module AresMUSH
               Custom.cast_roll_spell(self.caster_combat, self.spell)
             end
 
+            #Equip Armor
+            if armor
+              Custom.cast_equip_armor(enactor, self.caster_combat, self.spell)
+            end
+
             #Equip Weapon
             if weapon
               Custom.cast_equip_weapon(enactor, self.caster_combat, self.spell)
@@ -80,11 +84,6 @@ module AresMUSH
             #Equip Weapon Specials
             if weapon_specials
               Custom.cast_equip_weapon_specials(enactor, self.caster_combat, self.spell)
-            end
-
-            #Equip Armor
-            if armor
-              Custom.cast_equip_armor(self.caster_combat, self.spell)
             end
 
             #Stun
