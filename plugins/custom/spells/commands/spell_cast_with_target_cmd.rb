@@ -56,6 +56,7 @@ module AresMUSH
         return t('custom.cant_heal_dead') if (heal_points && target.dead)
         is_res = Global.read_config("spells", self.spell, "is_res")
         return t('custom.not_dead', :target => target.name) if (is_res && !target.dead)
+        return t('custom.caster_should_not_equal_target') if self.caster_combat == self.target_combat
 
         return nil
       end
@@ -94,7 +95,7 @@ module AresMUSH
 
             #Healing
             if heal_points
-              Custom.cast_heal(self.caster_combat, self.target, self.spell)
+              Custom.cast_heal_with_target(self.caster_combat, self.target, self.spell)
             end
 
             #Revive
@@ -124,7 +125,7 @@ module AresMUSH
             #Set Lethal Mod
             if lethal_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_lethal_mod(self.caster, self.target_combat, self.spell)
+                Custom.cast_lethal_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
               end
@@ -133,7 +134,7 @@ module AresMUSH
             #Set defense mod
             if defense_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_defense_mod(self.caster, self.target_combat, self.spell)
+                Custom.cast_defense_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
               end
@@ -142,7 +143,7 @@ module AresMUSH
             #Set attack mod
             if attack_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_attack_mod(self.caster, self.target_combat, self.spell)
+                Custom.cast_attack_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
               end
@@ -151,7 +152,7 @@ module AresMUSH
             #Set spell mod
             if spell_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_spell_mod(self.caster, self.target_combat, self.spell)
+                Custom.cast_spell_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
               end
@@ -159,7 +160,7 @@ module AresMUSH
 
             #Change stance
             if stance
-              Custom.cast_stance(self.caster_combat, self.target_combat, self.spell)
+              Custom.cast_stance_with_target(self.caster_combat, self.target_combat, self.spell)
             end
 
             #Equip Armor
@@ -210,7 +211,7 @@ module AresMUSH
         else
           if heal_points
             if Custom.knows_spell?(caster, self.spell)
-              Custom.cast_non_combat_heal(self.caster, self.target, self.spell)
+              Custom.cast_non_combat_heal_with_target(self.caster, self.target, self.spell)
             else
               client.emit_failure t('custom.dont_know_spell')
             end
