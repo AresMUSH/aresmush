@@ -86,8 +86,6 @@ module AresMUSH
               Custom.cast_equip_weapon_specials(enactor, self.caster_combat, self.spell)
             end
 
-
-
             #Stun
             if is_stun
               Custom.cast_stun_spell(enactor, self.caster_combat, self.spell)
