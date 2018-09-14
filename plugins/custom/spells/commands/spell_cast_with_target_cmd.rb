@@ -46,7 +46,7 @@ module AresMUSH
 
       def check_errors
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
-        # return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
+        return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
         require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
         return t('custom.no_target') if (!require_target && !target_optional)
@@ -165,7 +165,6 @@ module AresMUSH
             #Equip Armor
             if armor
               if succeeds == "%xgSUCCEEDS%xn"
-                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 Custom.cast_equip_armor_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
@@ -186,7 +185,6 @@ module AresMUSH
             #Equip Weapon
             if weapon
               if succeeds == "%xgSUCCEEDS%xn"
-                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 Custom.cast_equip_weapon_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
@@ -204,8 +202,8 @@ module AresMUSH
             end
             # For some reason, both of these break setting weapons and armor. I have no idea why.
 
-            # self.caster_combat.update(has_cast: true)
-            # FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
+            self.caster_combat.update(has_cast: true)
+            FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
           end
 
 
