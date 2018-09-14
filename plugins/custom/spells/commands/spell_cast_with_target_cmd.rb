@@ -165,6 +165,7 @@ module AresMUSH
             #Equip Armor
             if armor
               if succeeds == "%xgSUCCEEDS%xn"
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 Custom.cast_equip_armor_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
@@ -175,6 +176,7 @@ module AresMUSH
             #Equip Armor Specials
             if armor_specials
               if succeeds == "%xgSUCCEEDS%xn"
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 Custom.cast_equip_armor_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
@@ -184,6 +186,7 @@ module AresMUSH
             #Equip Weapon
             if weapon
               if succeeds == "%xgSUCCEEDS%xn"
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 Custom.cast_equip_weapon_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
@@ -193,6 +196,7 @@ module AresMUSH
             #Equip Weapon Specials
             if weapon_specials
               if succeeds == "%xgSUCCEEDS%xn"
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 Custom.cast_equip_weapon_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
