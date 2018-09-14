@@ -91,6 +91,49 @@ module AresMUSH
               Custom.cast_stun_spell(enactor, self.caster_combat, self.spell)
             end
 
+            #Change stance
+            if stance
+              Custom.cast_stance(self.caster_combat, self.spell)
+            end
+
+            #Set Lethal Mod
+            if lethal_mod
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_lethal_mod_with_target(self.caster_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+            end
+
+            #Set defense mod
+            if defense_mod
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_defense_mod(self.caster_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+            end
+
+            #Set attack mod
+            if attack_mod
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_attack_mod(self.caster_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+            end
+
+
+            #Set spell mod
+            if spell_mod
+              if succeeds == "%xgSUCCEEDS%xn"
+                Custom.cast_spell_mod(self.caster_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
+            end
+
+
           end
         self.caster_combat.update(has_cast: true)
         elsif
