@@ -12,7 +12,7 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
-
+      
     end
 
     def self.get_event_handler(event_name)
