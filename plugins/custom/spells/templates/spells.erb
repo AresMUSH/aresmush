@@ -1,0 +1,71 @@
+%lh
+<%= t('custom.spells_title', :name => char.name.upcase) -%>
+<%= right( spell_count, 45) -%><%= "/16 spells" %>
+<%= t('custom.spells_header') %>
+<% if major_school %>
+<%= line_with_text major_school %>
+<% spell_list.each_with_index do |a, index| -%>
+<% if a.learning_complete %>
+<% if a.school == major_school %>
+<%= left( a.name, 20 ) -%>
+<%= left( a.level, 40 ) %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+
+<% if minor_school %>
+<%= line_with_text minor_school %>
+<% spell_list.each_with_index do |a, index| -%>
+<% if a.learning_complete %>
+<% if a.school == minor_school %>
+<%= left( a.name, 20 ) -%>
+<%= left( a.level, 40 ) %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+
+<%= line_with_text "Other Spells" %>
+<% spell_list.each_with_index do |a, index| -%>
+<% if a.learning_complete %>
+<% if a.school != minor_school %>
+<% if a.school != major_school %>
+<%= left( a.name, 20 ) -%>
+<%= left( a.level, 40 ) %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+
+
+<% if spells_learned.any? {|s| s.learning_complete == false}  %>
+<%=  t('custom.learning_spells_title', :name => char.name.upcase) %>
+
+<%= t('custom.spells_learning_header') %>
+<% if spells_learned.any? {|s| s.school == major_school && s.learning_complete == false}  %>
+<%= line_with_text major_school %>
+<% end %>
+<% spell_list.each_with_index do |a, index| -%>
+<% if a.learning_complete == false %>
+<% if a.school == major_school %>
+<%= left( a.name, 20 ) -%>
+<%= left( a.level, 10) -%>
+<%=  a.xp_needed %>
+    <% end %>
+  <% end %>
+<% end %>
+<% if spells_learned.any? {|s| s.school == minor_school  && s.learning_complete == false}  %>
+<%= line_with_text minor_school %>
+<% end %>
+<% spell_list.each_with_index do |a, index| -%>
+<% if a.learning_complete == false %>
+<% if a.school == minor_school %>
+<%= left( a.name, 20 ) -%>
+<%= left( a.level, 10) -%>
+<%=  a.xp_needed %>
+    <% end %>
+  <% end %>
+<% end %>
+<% end %>
+%lf
