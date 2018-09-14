@@ -48,7 +48,8 @@ module AresMUSH
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         # return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
         require_target = Global.read_config("spells", self.spell, "require_target")
-        return t('custom.no_target') if !require_target
+        target_optional = Global.read_config("spells", self.spell, "target_optional")
+        return t('custom.no_target') if (!require_target && !target_optional)
         multi_target = Global.read_config("spells", self.spell, "multi_target")
         return t('custom.needs_multi_target') if multi_target
         heal_points = Global.read_config("spells", self.spell, "heal_points")
