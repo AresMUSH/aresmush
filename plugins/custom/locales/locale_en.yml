@@ -55,12 +55,13 @@ en:
       needs_multi_target: "This spell can take multiple targets. Do spell/castmulti <spell>=<target>."
       not_multi_target: "This spell can only take one target. Do spell/cast <spell>=<target>"
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
+      caster_should_not_equal_target: "You cannot target yourself. Do spell/cast <spell> instead."
 
       # ----------------------------
       # LEARNING SPELLS
       # ----------------------------
       wrong_school: "That spell does not belong to one of your schools."
-      wrong_school_check: "%xh%That spell does not belong to one of %{name}'s schools and should only be added if they are gaining it through special means.%xn"
+      wrong_school_check: "%xhThat spell does not belong to one of %{name}'s schools and should only be added if they are gaining it through special means.%xn"
       spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
       learning_spells_title: "%xhSPELLS %{name} IS LEARNING%xn"
       spells_header: "SPELL              LEVEL"
