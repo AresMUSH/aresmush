@@ -46,21 +46,23 @@ en:
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
       cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
       been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
+      raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
       npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
       not_dead: "%{target} is not dead."
-      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xB%{mod} %{type} modification%xn for a total of %{total_mod}."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn for a total of %{total_mod}."
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
       no_target: "This spell does not use a target. Do spell/cast <spell>."
       needs_multi_target: "This spell can take multiple targets. Do spell/castmulti <spell>=<target>."
       not_multi_target: "This spell can only take one target. Do spell/cast <spell>=<target>"
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
+      caster_should_not_equal_target: "You cannot target yourself. Do spell/cast <spell> instead."
 
       # ----------------------------
       # LEARNING SPELLS
       # ----------------------------
       wrong_school: "That spell does not belong to one of your schools."
-      wrong_school_check: "That spell does not belong to one of %{name}'s' schools and should only be added if they are gaining it through special means."
+      wrong_school_check: "%xhThat spell does not belong to one of %{name}'s schools and should only be added if they are gaining it through special means.%xn"
       spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
       learning_spells_title: "%xhSPELLS %{name} IS LEARNING%xn"
       spells_header: "SPELL              LEVEL"
@@ -94,3 +96,10 @@ en:
       potion_action_msg_long: "%{name} uses a potion this turn."
       potion_action_msg_short: "Potion"
       potion_resolution_msg: "%{name} used a potion"
+
+      # ----------------------------
+      # FS3 COMBAT POTION
+      # ----------------------------
+      one_death: "%xR%{name} has been knocked out for one round.%xn"
+      two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived, healed, or treated this round, they will die.%xn"
+      died: "%xR%{name} has died.%xn"
