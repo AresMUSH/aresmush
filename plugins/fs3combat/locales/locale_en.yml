@@ -340,9 +340,9 @@ en:
         # ----------------------------
 
         not_explosive_weapon: "You do not have an explosive weapon."
-        explode_action_msg_long: "%{name} will attack up %{targets}."
+        explode_action_msg_long: "%{name} will attack %{targets}."
         explode_action_msg_short: "Attack %{targets}"
-        explode_resolution_message: "%{name} uses %{weapon}.  EXPLOSION!"
+        explode_resolution_message: "%{name} uses %{weapon}."
         concussion_from: "%{weapon}"
         # ----------------------------
         # PASS

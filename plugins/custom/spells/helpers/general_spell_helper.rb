@@ -12,6 +12,12 @@ module AresMUSH
       return true if has_cast
     end
 
+    #Can read armor or weapon
+    def self.is_magic_gear(gear)
+      FS3Combat.weapon_stat(gear, "is_magic")
+    end
+
+
     def self.parse_spell_targets(name_string, combat)
       return t('fs3combat.no_targets_specified') if (!name_string)
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
