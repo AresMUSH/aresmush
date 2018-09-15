@@ -66,6 +66,8 @@ module AresMUSH
           else
             return SpellCastCmd
           end
+        when "castmulti"
+          return SpellCastWithMultiTargetCmd
         when "learn"
           return SpellLearnCmd
         when "discard"

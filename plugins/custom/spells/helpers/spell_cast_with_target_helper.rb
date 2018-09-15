@@ -30,6 +30,7 @@ module AresMUSH
       end
     end
 
+
     def self.cast_non_combat_heal_with_target(caster, target, spell)
       succeeds = Custom.roll_noncombat_spell_success(caster, spell)
       client = Login.find_client(caster)
