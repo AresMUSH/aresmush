@@ -1,7 +1,7 @@
 module AresMUSH
   module Custom
 
-    def self.cast_inflict_damage_with_target(caster, target, spell)
+    def self.cast_inflict_damage(caster, target, spell)
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       damage_desc = Global.read_config("spells", spell, "damage_desc")
       damage_inflicted = Global.read_config("spells", spell, "damage_inflicted")
@@ -14,7 +14,7 @@ module AresMUSH
       end
     end
 
-    def self.cast_heal_with_target(caster, target, spell)
+    def self.cast_heal(caster, target, spell)
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
         wound = FS3Combat.worst_treatable_wound(target)
@@ -30,7 +30,7 @@ module AresMUSH
       end
     end
 
-    def self.cast_non_combat_heal_with_target(caster, target, spell)
+    def self.cast_non_combat_heal(caster, target, spell)
       succeeds = Custom.roll_noncombat_spell_success(caster, spell)
       client = Login.find_client(caster)
       if succeeds == "%xgSUCCEEDS%xn"
@@ -69,29 +69,29 @@ module AresMUSH
       end
     end
 
-    def self.cast_revive(caster_combat, target_combat, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+    def self.cast_revive(caster, target_combat, spell)
+      succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
         target_combat.update(is_ko: false)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_res', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name)
-        FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster_combat.name)
+        FS3Combat.emit_to_combat caster.combat, t('custom.cast_revive', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name)
+        FS3Combat.emit_to_combatant target_combat, t('custom.been_revived', :name => caster.name)
       else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
+        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
       end
     end
 
-    # def self.cast_revive(caster, target, target_combat, spell)
-    #   succeeds = Custom.roll_combat_spell_success(caster, spell)
-    #   if succeeds == "%xgSUCCEEDS%xn"
-    #     Custom.undead(target)
-    #     FS3Combat.emit_to_combat caster.combat, t('custom.cast_res', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
-    #     FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster.name)
-    #   else
-    #     FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
-    #   end
-    # end
+    def self.cast_revive(caster, target, target_combat, spell)
+      succeeds = Custom.roll_combat_spell_success(caster, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        Custom.undead(target)
+        FS3Combat.emit_to_combat caster.combat, t('custom.cast_res', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+        FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster.name)
+      else
+        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+      end
+    end
 
-    def self.cast_lethal_mod_with_target(caster, target_combat, spell)
+    def self.cast_lethal_mod(caster, target_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       lethal_mod = Global.read_config("spells", spell, "lethal_mod")
       current_mod = target_combat.damage_lethality_mod
@@ -100,7 +100,7 @@ module AresMUSH
       FS3Combat.emit_to_combat caster.combat, t('cast_mod', :name => caster.name, :spell => spell, :succeeds => succeeds, :target =>  target_combat.name, :mod => lethal_mod, :type => "lethality", :total_mod => target_combat.damage_lethality_mod)
     end
 
-    def self.cast_defense_mod_with_target(caster,  target_combat, spell)
+    def self.cast_defense_mod(caster,  target_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       defense_mod = Global.read_config("spells", spell, "defense_mod")
       current_mod =  target_combat.defense_mod
@@ -109,7 +109,7 @@ module AresMUSH
       FS3Combat.emit_to_combat caster.combat, t('custom.cast_mod', :name => caster.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => target_combat.defense_mod)
     end
 
-    def self.cast_attack_mod_with_target(caster, target_combat, spell)
+    def self.cast_attack_mod(caster, target_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       attack_mod = Global.read_config("spells", spell, "attack_mod")
       current_mod = target_combat.attack_mod
@@ -118,7 +118,7 @@ module AresMUSH
       FS3Combat.emit_to_combat caster.combat, t('custom.cast_mod', :name => caster.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => target_combat.attack_mod)
     end
 
-    def self.cast_spell_mod_with_target(caster, target_combat, spell)
+    def self.cast_spell_mod(caster, target_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       spell_mod = Global.read_config("spells", spell, "spell_mod")
       current_mod = target_combat.spell_mod.to_i
@@ -127,7 +127,7 @@ module AresMUSH
       FS3Combat.emit_to_combat caster.combat, t('custom.cast_mod', :name => caster.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => target_combat.spell_mod)
     end
 
-    def self.cast_stance_with_target(caster, target_combat, spell)
+    def self.cast_stance(caster, target_combat, spell)
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
         stance = Global.read_config("spells", spell, "stance")
@@ -138,37 +138,6 @@ module AresMUSH
       end
     end
 
-    def self.cast_equip_weapon_with_target(enactor, caster_combat, target_combat, spell)
-      weapon = Global.read_config("spells", spell, "weapon")
-      armor = Global.read_config("spells", spell, "armor")
-      if armor
-
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn")
-      end
-      FS3Combat.set_weapon(enactor, target_combat, weapon)
-
-    end
-
-    def self.cast_equip_weapon_specials_with_target(enactor, caster_combat, target_combat, spell)
-      weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
-      weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
-      FS3Combat.set_weapon(enactor, target_combat, target_combat.weapon, weapon_specials)
-
-    end
-
-    def self.cast_equip_armor_with_target(enactor, caster_combat, target_combat, spell)
-      FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn")
-      armor = Global.read_config("spells", spell, "armor")
-      FS3Combat.set_armor(enactor, target_combat, armor)
-    end
-
-
-    def self.cast_equip_armor_specials_with_target(enactor, caster_combat, target_combat, spell)
-      armor_specials_str = Global.read_config("spells", spell, "armor_specials")
-      armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-      FS3Combat.set_armor(enactor, target_combat, target_combat.armor, armor_specials)
-    end
 
   end
 end
