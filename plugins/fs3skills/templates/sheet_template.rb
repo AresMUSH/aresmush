@@ -27,12 +27,12 @@ module AresMUSH
 
       def action_skills
         list = []
-        @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
+        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
           schools = Global.read_config("schools")
-          if schools.include? a.name
-            
-          else
-            list << format_attr(a, i)
+          if !schools.include? a.name
+            if a.rating_name != "Unskilled"
+              list << format_attr(a, i)
+            end
           end
         end
         list
@@ -40,25 +40,11 @@ module AresMUSH
 
       def schools
        list = []
-        @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
-          if a.name == ("Air")
-            list << format_attr(a, i)
-          elsif a.name == ("Corpus")
-            list << format_attr(a, i)
-          elsif a.name == ("Earth")
-            list << format_attr(a, i)
-          elsif a.name == ("Fire")
-            list << format_attr(a, i)
-            elsif a.name == ("Nature")
-            list << format_attr(a, i)
-          elsif a.name == ("Spirit")
-            list << format_attr(a, i)
-          elsif a.name == ("Water")
-            list << format_attr(a, i)
-          elsif a.name == ("Will")
-            list << format_attr(a, i)
-            else
-            nil
+        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
+          if (a.name == "Air") || (a.name == "Corpus") || (a.name == "Earth") || (a.name =="Fire") || (a.name == "Nature") || (a.name == "Spirit") || (a.name == "Water") || (a.name == "Will")
+            if a.rating_name != "Unskilled"
+              list << format_attr(a, i)
+            end
           end
         end
         list
