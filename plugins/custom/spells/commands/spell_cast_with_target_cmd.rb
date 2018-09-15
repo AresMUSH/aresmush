@@ -118,7 +118,7 @@ module AresMUSH
                   FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
                 end
               else
-                Custom.cast_revive(self.caster_combat, self.target, self.target_combat, self.spell)
+                Custom.cast_revive(self.caster_combat,  self.target_combat, self.spell)
               end
             end
 
