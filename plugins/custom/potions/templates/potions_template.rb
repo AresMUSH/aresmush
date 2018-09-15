@@ -26,7 +26,7 @@ module AresMUSH
       def potions_creating
         @char.potions_creating.to_a
       end
-      
+
       def time_to_creation
         potions_creating each_with_index do |a, index|
           hours = a.hours_to_creation
