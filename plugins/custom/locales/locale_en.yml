@@ -46,6 +46,7 @@ en:
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
       cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
       been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
+      raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
       npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
       not_dead: "%{target} is not dead."
       cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn for a total of %{total_mod}."
@@ -95,3 +96,10 @@ en:
       potion_action_msg_long: "%{name} uses a potion this turn."
       potion_action_msg_short: "Potion"
       potion_resolution_msg: "%{name} used a potion"
+
+      # ----------------------------
+      # FS3 COMBAT POTION
+      # ----------------------------
+      one_death: "%xR%{name} has been knocked out for one round.%xn"
+      two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived, healed, or treated this round, they will die.%xn"
+      died: "%xR%{name} has died.%xn"
