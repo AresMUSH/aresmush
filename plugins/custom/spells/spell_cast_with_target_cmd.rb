@@ -21,9 +21,6 @@ module AresMUSH
           target_name = titlecase_arg(args.arg2)
           self.target = FS3Combat.find_named_thing(target_name, self.caster)
         end
-        client.emit self.caster.name
-        client.emit self.spell
-        client.emit self.target.name
       end
 
       def check_errors
