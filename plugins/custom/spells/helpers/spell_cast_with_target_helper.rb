@@ -30,7 +30,6 @@ module AresMUSH
       end
     end
 
-
     def self.cast_non_combat_heal_with_target(caster, target, spell)
       succeeds = Custom.roll_noncombat_spell_success(caster, spell)
       client = Login.find_client(caster)
@@ -74,8 +73,8 @@ module AresMUSH
       succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
       if succeeds == "%xgSUCCEEDS%xn"
         target_combat.update(is_ko: false)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_revive', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name)
-        FS3Combat.emit_to_combatant target_combat, t('custom.been_revived', :name => caster_combat.name)
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_res', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name)
+        FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster_combat.name)
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
       end
