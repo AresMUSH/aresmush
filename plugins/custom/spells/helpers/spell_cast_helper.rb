@@ -108,7 +108,7 @@ module AresMUSH
         caster_combat.update(stance: stance)
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_stance', :name => caster_combat.name, :target => "themself", :spell => spell, :succeeds => succeeds, :stance => stance)
       else
-        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
       end
     end
 
@@ -118,25 +118,25 @@ module AresMUSH
       current_mod = caster_combat.damage_lethality_mod
       new_mod = current_mod + lethal_mod
       caster_combat.update(damage_lethality_mod: new_mod)
-      FS3Combat.emit_to_combat caster.combat, t('cast_mod', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => "themself", :mod => lethal_mod, :type => "lethality", :total_mod => caster_combat.damage_lethality_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('cast_mod', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => "themself", :mod => lethal_mod, :type => "lethality", :total_mod => caster_combat.damage_lethality_mod)
     end
 
     def self.cast_defense_mod(caster_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       defense_mod = Global.read_config("spells", spell, "defense_mod")
-      current_mod =  caster_combat.defense_mod
+      current_mod = caster_combat.defense_mod
       new_mod = current_mod + defense_mod
       caster_combat.update(defense_mod: new_mod)
-      FS3Combat.emit_to_combat caster.combat, t('custom.cast_mod', :name => caster.name, :target => "themself", :spell => spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => caster_combat.defense_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => "themself", :spell => spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => caster_combat.defense_mod)
     end
 
-    def self.cast_spell_mod(caster, caster_combat, spell)
+    def self.cast_spell_mod(caster_combat, spell)
       succeeds = "%xgSUCCEEDS%xn"
       spell_mod = Global.read_config("spells", spell, "spell_mod")
       current_mod = caster_combat.spell_mod.to_i
       new_mod = current_mod + spell_mod
       caster_combat.update(spell_mod: new_mod)
-      FS3Combat.emit_to_combat caster.combat, t('custom.cast_mod', :name => caster.name, :target => "themself", :spell => spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => caster_combat.spell_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => "themself", :spell => spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => caster_combat.spell_mod)
     end
 
     def self.cast_attack_mod(caster_combat, spell)
@@ -145,7 +145,7 @@ module AresMUSH
       current_mod = caster_combat.attack_mod
       new_mod = current_mod + attack_mod
       caster_combat.update(attack_mod: new_mod)
-      FS3Combat.emit_to_combat caster.combat, t('custom.cast_mod', :name => caster.name, :target => "themself", :spell => spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => caster_combat.attack_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => "themself", :spell => spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => caster_combat.attack_mod)
     end
 
 

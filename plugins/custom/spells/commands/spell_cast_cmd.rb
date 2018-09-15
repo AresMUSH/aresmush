@@ -65,6 +65,8 @@ module AresMUSH
           elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false)
               client.emit_failure t('custom.dont_know_spell')
           else
+            #Roll spell successes
+            succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
 
             #Roll Spell in Combat
             if roll == true
