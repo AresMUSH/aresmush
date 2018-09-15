@@ -231,6 +231,7 @@ en:
         # ----------------------------
 
         hitlocs_for: "Hit Locations for %{name}"
+
         # ----------------------------
         # GEAR COMMANDS
         # ----------------------------
@@ -263,7 +264,7 @@ en:
         only_organizer_can_do: "Only the organizer can do that."
         you_are_a_noncombatant: "Noncombatants can't fight."
         cannot_act_while_koed: "You cannot act when KO-ed.  Use a luck point with combat/hero or wait for someone to treat or rally you."
-        new_turn: "%xh%{name} has started a new turn!  Pose and pick your actions.%xn"
+        new_turn: "%{name} has started a new turn!  Pose and pick your actions."
         starting_turn_resolution: "Starting turn resolution..."
         turn_in_progress: "Turn in progress.  Please wait."
         resetting_action: "Resetting %{name}'s action because it is no longer valid: %{error}"
@@ -340,9 +341,9 @@ en:
 
         not_explosive_weapon: "You do not have an explosive weapon."
         explode_action_msg_long: "%{name} will attack %{targets}."
-        explode_action_msg_short: "Explode %{targets}"
-        explode_resolution_message: "%{name} uses %{weapon}.  EXPLOSION!"
-        concussion_from: "%{weapon}(Concussion)"
+        explode_action_msg_short: "Attack %{targets}"
+        explode_resolution_message: "%{name} uses %{weapon}."
+        concussion_from: "%{weapon}"
         # ----------------------------
         # PASS
         # ----------------------------
