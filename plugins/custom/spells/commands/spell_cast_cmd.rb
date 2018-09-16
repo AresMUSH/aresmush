@@ -22,16 +22,17 @@ module AresMUSH
           args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
           #Returns char or NPC
           self.caster = enactor
+          self.spell = titlecase_arg(args.arg1)
           #Returns combatant
           if enactor.combat
             self.caster_combat = enactor.combatant
-            self.spell = titlecase_arg(args.arg1)
           end
 
         end
       end
 
       def check_errors
+
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat)) == true
@@ -146,7 +147,10 @@ module AresMUSH
         elsif
           #Roll NonCombat
           if roll
+
             Custom.cast_noncombat_spell(self.caster, self.spell)
+          elsif heal_points
+            Custom.cast_non_combat_heal(self.caster, self.spell)
           else
             client.emit_failure t('custom.not_in_combat')
           end
