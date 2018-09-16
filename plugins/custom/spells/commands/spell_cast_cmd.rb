@@ -78,6 +78,11 @@ module AresMUSH
               Custom.cast_equip_armor(enactor, self.caster_combat, self.spell)
             end
 
+            #Healing
+            if heal_points
+              Custom.cast_heal(self.caster_combat, self.caster, self.spell)
+            end
+
             #Equip Weapon
             if weapon
               Custom.cast_equip_weapon(enactor, self.caster_combat, self.spell)
