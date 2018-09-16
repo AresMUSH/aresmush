@@ -24,7 +24,6 @@ module AresMUSH
         
         topics = Help.find_topic(search_topic)
         
-        pp "#{self.topic} -- #{search_topic} -- #{topics}"
         if (topics.count == 1)
           found_topic = topics.first
           formatter = MarkdownFormatter.new

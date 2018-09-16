@@ -53,6 +53,7 @@ echo -e "${ARES_INSTALL_TEXT} Dependency mgmt for ember cli"
 apt-get install -y nodejs
 apt-get install -y npm
 apt-get install -y yarn
+apt-get install python
 
 # #########################################################################################
 

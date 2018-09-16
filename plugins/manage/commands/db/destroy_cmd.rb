@@ -30,7 +30,7 @@ module AresMUSH
             return
           end
           
-          if (target.class == "AresMUSH::Character" && FS3Combat.is_in_combat?(target))
+          if (target.class == Character && FS3Combat.is_in_combat?(target.name))
             client.emit_failure t('manage.cannot_destroy_in_combat')
             return
           end

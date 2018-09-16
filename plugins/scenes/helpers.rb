@@ -4,7 +4,7 @@ module AresMUSH
     def self.new_scene_activity(scene, data = nil)
       web_msg = "#{scene.id}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        char && (!scene.private_scene || Scenes.participants_and_room_chars(scene).include?(char))
+        !scene.private_scene || ( char && Scenes.participants_and_room_chars(scene).include?(char))
       end
     end
     
@@ -41,6 +41,7 @@ module AresMUSH
     
     def self.restart_scene(scene)
       scene.update(completed: false)
+      Scenes.set_scene_location(scene, scene.location)
       Scenes.new_scene_activity(scene)
     end
     
@@ -129,7 +130,7 @@ module AresMUSH
 
       message = t('scenes.location_set', :description => description)
       if (scene.temp_room && scene.room)
-        location = (location =~ /\//) ? location.after("/") : location
+        #location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         scene.room.update(description: description)
       end
