@@ -3,7 +3,7 @@ module AresMUSH
     class PotionUseCmd
     #potion/use <potion>
       include CommandHandler
-      attr_accessor :potion, :potion_name, :spell, :roll, :caster, :caster_combat
+      attr_accessor :potion, :potion_name, :spell, :roll, :caster, :caster_combat, :caster_name
 
       # Using 'caster' even though it should probably be user or something just for variable consistency with helpers.
       def parse_args
@@ -33,6 +33,12 @@ module AresMUSH
            end
           end
           self.potion = Custom.find_potion_has(enactor, self.potion_name)
+      end
+
+      def check_errors
+        return t('custom.not_character') if !caster
+        return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
+
       end
 
       def handle
