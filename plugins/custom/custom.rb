@@ -42,7 +42,11 @@ module AresMUSH
         when "give"
           return GivePotionCmd
         when "use"
-          return PotionUseCmd
+          if cmd.args.include?("=")
+            return PotionUseWithTargetCmd
+          else
+            return PotionUseCmd
+          end
         end
       end
       case cmd.root
@@ -62,7 +66,6 @@ module AresMUSH
         when "cast"
           if cmd.args.include?("=")
             return SpellCastWithTargetCmd
-            client.emit "With target."
           else
             return SpellCastCmd
           end
