@@ -45,6 +45,7 @@ module AresMUSH
       end
 
       def check_errors
+        return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
         return t('custom.invalid_name') if !self.target

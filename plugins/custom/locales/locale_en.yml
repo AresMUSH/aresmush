@@ -28,7 +28,6 @@ en:
       potion_stance_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance}."
       potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification for a total of %{total_mod}."
       potion_mod_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification for a total of %{total_mod}."
-
       not_character: "%xrThat is not a character.%xn"
       potion_damage: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving %{target} a wound."
 
