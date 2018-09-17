@@ -19,11 +19,18 @@ en:
       potion_not_in_combat: "You must be in combat to use that potion."
       potion_ko: "You cannot use a potion while Knocked Out."
       use_potion: "%{name} uses a %xM%{potion}%xn potion."
+      use_potion_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
       potion_heal: "%{name} uses a %xM%{potion}%xn potion. They receive up to %{points} points of healing to a wound."
       potion_heal_no_effect: "%{name} uses a %xM%{potion}%xn potion, but they have no healable wounds. The potion has no effect."
+      potion_heal_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target}. They receive up to %{points} points of healing to a wound."
+      potion_heal_no_effect_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target, but they have no healable wounds. The potion has no effect."
       potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
+      potion_stance_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance}."
       potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification for a total of %{total_mod}."
+      potion_mod_with_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification for a total of %{total_mod}."
+
       not_character: "%xrThat is not a character.%xn"
+      potion_damage: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving %{target} a wound."
 
         # ----------------------------
         # SPELL CASTING

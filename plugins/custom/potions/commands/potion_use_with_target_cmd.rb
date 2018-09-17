@@ -127,7 +127,7 @@ module AresMUSH
 
             #Equip Armor Specials
             if armor_specials
-              FS3Combat.emit_to_combat self.caster.combat, t('custom.use_potion', :name => self.caster.name, :potion => spell)
+              FS3Combat.emit_to_combat self.caster.combat, t('custom.use_potion_with_target', :name => self.caster.name, :potion => spell, :target => self.target.name)
                 Custom.potion_equip_armor_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
             end
 
@@ -138,7 +138,7 @@ module AresMUSH
 
             #Equip Weapon Specials
             if weapon_specials
-              FS3Combat.emit_to_combat self.caster.combat, t('custom.use_potion', :name => self.caster.name, :potion => spell)
+              FS3Combat.emit_to_combat self.caster.combat, t('custom.use_potion_with_target', :name => self.caster.name, :potion => spell)
               Custom.potion_equip_weapon_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
             end
             # For some reason, both of these break setting weapons and armor. I have no idea why.
