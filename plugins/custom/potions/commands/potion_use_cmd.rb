@@ -36,7 +36,6 @@ module AresMUSH
       end
 
       def handle
-        client.emit "No target"
       #Reading Config
         require_target = Global.read_config("spells", self.spell, "require_target")
         weapon = Global.read_config("spells", self.spell, "weapon")
@@ -130,7 +129,9 @@ module AresMUSH
           end
 
         end
-        self.potion.delete
+        if caster == enactor
+          self.potion.delete
+        end
 
       end
 

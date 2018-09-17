@@ -159,7 +159,9 @@ module AresMUSH
             client.emit_failure t('custom.not_in_combat')
           end
         end
-        self.potion.delete
+        if caster == enactor
+          self.potion.delete
+        end
 
       end
 
