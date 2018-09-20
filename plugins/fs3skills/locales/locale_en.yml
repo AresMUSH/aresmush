@@ -83,6 +83,7 @@ en:
         missing_group_specialty: "%xh%xy< Missing %{spec} specialty for %{skill}. >%xn"
         too_many_attributes: "%xh%xr< Too many points on attributes. (%{max} max) >%xn"
         too_many_action_skills: "%xh%xr< Too many points on action skills. (%{max} max) >%xn"
+        magic_attribute_too_high: "%xh%xr< Magic attribute is too high. (%{max} max) >%xn"
         unusual_abilities_check: "Checking for unusual skills."
         unusual_skill: "%xh%xy< %{skill} is an unusual skill.  Be sure there's good reason for it. >%xn"
         high_bg: "%xh%xy< %{skill} is pretty high for a hobby.  Be sure there's good reason for it. >%xn"
