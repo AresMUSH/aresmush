@@ -21,14 +21,14 @@ module AresMUSH
           return { error: t('scenes.scene_already_completed') }
         end
       
-        area = nil
-        if (scene.room && scene.room.area)
-          area = scene.room.area
+        area_name = nil
+        if (scene.room)
+          area_name = scene.room.area_name
         end
         
-        Room.all.select { |r| r.room_type == "IC" }.sort_by { |r| [ r.area == area, r.name ] }.map { |r|
-          r.name_and_area
-        }
+        Room.all.select { |r| r.room_type == "IC" }
+          .sort_by { |r| [(r.area_name == area_name) ? 0 : 1, r.name] }
+          .map { |r| r.name_and_area }
         
       end
     end

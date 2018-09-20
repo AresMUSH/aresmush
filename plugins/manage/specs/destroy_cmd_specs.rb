@@ -51,9 +51,10 @@ module AresMUSH
         
         it "should emit failure if trying to destroy a char in combat" do
           target = double
-          allow(target).to receive(:class) { "AresMUSH::Character"}
+          allow(target).to receive(:name) { "Bob" }
+          allow(target).to receive(:class) { Character }
           allow(AnyTargetFinder).to receive(:find) { FindResult.new(target, nil) }
-          allow(FS3Combat).to receive(:is_in_combat?).with(target) { true }
+          allow(FS3Combat).to receive(:is_in_combat?).with("Bob") { true }
           expect(@client).to receive(:emit_failure).with("manage.cannot_destroy_in_combat")
           @handler.handle
         end
