@@ -8,7 +8,8 @@ module AresMUSH
 
     #Gives time in seconds
     def self.time_to_next_learn_spell(spell)
-      (1 * 86400) - (Time.now - spell.last_learned)
+      0
+      # (1 * 86400) - (Time.now - spell.last_learned)
     end
 
     def self.find_spell_learned(char, spell_name)
