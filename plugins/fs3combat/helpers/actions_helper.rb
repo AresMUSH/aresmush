@@ -49,6 +49,9 @@ module AresMUSH
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
+      if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
+        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
+      end
       combatant.update(has_cast: false)
       combatant.update(damage_lethality_mod: 0)
       combatant.update(defense_mod: 0)
@@ -496,7 +499,7 @@ module AresMUSH
 
       messages
     end
-    
+
     def self.resolve_explosion(combatant, target)
       messages = []
       margin = FS3Combat.determine_attack_margin(combatant, target)
@@ -508,8 +511,8 @@ module AresMUSH
         messages << margin[:message]
         max_shrapnel = 2
       end
-      
-      if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))      
+
+      if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
         shrapnel = rand(max_shrapnel)
         shrapnel.times.each do |s|
           messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
