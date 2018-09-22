@@ -23,7 +23,7 @@ module AresMUSH
 
       max_magic = Global.read_config('fs3skills', 'max_magic_rating')
       if (FS3Skills.find_ability(char, 'magic').rating > max_magic) 
-        too_high << t('fs3skills.magic_attribute_too_high', :max => max_magic) 
+       too_high << t('fs3skills.magic_attribute_too_high', :max => max_magic) 
       end
 
       error = FS3Skills.check_attr_points(char)
