@@ -80,6 +80,7 @@ module AresMUSH
         weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials = Global.read_config("spells", self.spell, "armor_specials")
+        roll = Global.read_config("spells", self.spell, "roll")
 
         if self.caster.combat
           if self.caster_combat.is_ko
@@ -90,6 +91,12 @@ module AresMUSH
 
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
+
+            #Roll Spell in Combat
+            if roll == true
+              Custom.cast_roll_spell_with_target(self.caster_combat, self.target, self.spell)
+            end
+
             #Inflict damage
             if damage_inflicted
               Custom.cast_inflict_damage(self.caster_combat, self.target, self.spell)
