@@ -14,6 +14,16 @@ module AresMUSH
       end
     end
 
+    def self.cast_roll_spell_with_target(caster_combat, target, spell)
+      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+      client = Login.find_client(caster_combat)
+      if succeeds == "%xgSUCCEEDS%xn"
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => target.name, :succeeds => succeeds)
+      else
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
+      end
+    end
+
     def self.cast_heal_with_target(caster, target, spell)
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"

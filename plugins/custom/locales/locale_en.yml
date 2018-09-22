@@ -32,6 +32,7 @@ en:
       already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
+      casts_spell_on_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn."
       will_cast_spell: "%{name} will cast %xB%{spell}%xn."
       not_in_combat: "You must be in combat to cast this spell."
