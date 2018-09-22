@@ -16,6 +16,8 @@ module AresMUSH
           #Returns char or NPC
           self.caster = FS3Combat.find_named_thing(caster_name, enactor)
           self.target = FS3Combat.find_named_thing(target_name, enactor)
+          client.emit self.target
+          client.emit self.caster
 
           #Returns combatant
           if enactor.combat
@@ -58,7 +60,7 @@ module AresMUSH
         return t('custom.cant_heal_dead') if (heal_points && target.dead)
         is_res = Global.read_config("spells", self.spell, "is_res")
         return t('custom.not_dead', :target => target.name) if (is_res && !target.dead)
-        return t('custom.caster_should_not_equal_target') if self.caster_combat == self.target_combat
+        return t('custom.caster_should_not_equal_target') if (self.caster.combat && self.caster_combat == self.target_combat)
 
         return nil
       end
@@ -80,6 +82,7 @@ module AresMUSH
         weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials = Global.read_config("spells", self.spell, "armor_specials")
+        roll = Global.read_config("spells", self.spell, "roll")
 
         if self.caster.combat
           if self.caster_combat.is_ko
@@ -90,6 +93,12 @@ module AresMUSH
 
             #Roll spell successes
             succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
+
+            #Roll Spell in Combat
+            if roll == true
+              Custom.cast_roll_spell_with_target(self.caster_combat, self.target, self.spell)
+            end
+
             #Inflict damage
             if damage_inflicted
               Custom.cast_inflict_damage(self.caster_combat, self.target, self.spell)
@@ -214,6 +223,12 @@ module AresMUSH
           if heal_points
             if Custom.knows_spell?(caster, self.spell)
               Custom.cast_non_combat_heal_with_target(self.caster, self.target, self.spell)
+            else
+              client.emit_failure t('custom.dont_know_spell')
+            end
+          elsif roll
+            if Custom.knows_spell?(caster, self.spell)
+              Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target, self.spell)
             else
               client.emit_failure t('custom.dont_know_spell')
             end
