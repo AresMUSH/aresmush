@@ -14,6 +14,32 @@ module AresMUSH
       end
     end
 
+    def self.cast_roll_spell_with_target(caster_combat, target, spell)
+      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+      client = Login.find_client(caster_combat)
+      if succeeds == "%xgSUCCEEDS%xn"
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => target.name, :succeeds => succeeds)
+      else
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
+      end
+    end
+
+    def self.cast_noncombat_roll_spell_with_target(caster, target, spell)
+      school = Global.read_config("spells", spell, "school")
+      client = Login.find_client(caster)
+      Rooms.emit_to_room(caster.room, t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => target.name, :spell => spell))
+      die_result = FS3Skills.parse_and_roll(caster, school)
+        success_level = FS3Skills.get_success_level(die_result)
+        success_title = FS3Skills.get_success_title(success_level)
+        message = t('fs3skills.simple_roll_result',
+          :name => caster.name,
+          :roll => school,
+          :dice => FS3Skills.print_dice(die_result),
+          :success => success_title
+        )
+        FS3Skills.emit_results message, client, caster.room, false
+    end
+
     def self.cast_heal_with_target(caster, target, spell)
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       if succeeds == "%xgSUCCEEDS%xn"
