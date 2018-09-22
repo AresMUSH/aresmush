@@ -34,6 +34,7 @@ en:
       casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn."
+      casts_noncombat_spell_with_target: "%{name} casts %xB%{spell}%xn on %{target}."
       will_cast_spell: "%{name} will cast %xB%{spell}%xn."
       not_in_combat: "You must be in combat to cast this spell."
       target_aoe: "Choose your targets by doing aoe <target> <target> <target>."
