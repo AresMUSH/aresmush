@@ -180,6 +180,9 @@ en:
         weapon_title_reload_turns: "Reload Time:"
         weapon_title_allowed_specials: "Allowed Specials:"
         weapon_title_skill: "Skill:"
+        weapon_title_is_magic: "Magic?"
+        weapon_title_special_group: "Group for specials:"
+        weapon_title_init_mod: "Initiative Mod:"
         invalid_weapon_special: "%{special} is not a valid special for that weapon."
         use_explode_command: "Use the combat/explode command for this weapon."
         use_suppress_command: "Use the combat/suppress command for this weapon."
@@ -194,6 +197,8 @@ en:
         invalid_armor: "That is not a valid armor type."
         armor_title_description: "Description:"
         armor_title_protection: "Protection:"
+        armor_title_is_magic: "Magic?"
+        armor_title_defense: "Defense:"
         invalid_armor_specials: "%{special} is not a valid special for that armor."
 
         # ----------------------------
