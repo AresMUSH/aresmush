@@ -63,6 +63,7 @@ en:
       # ----------------------------
       # LEARNING SPELLS
       # ----------------------------
+      spell_requested: "Your spell has been requested. You can view all your active requests by typing 'requests'"
       wrong_school: "That spell does not belong to one of your schools."
       wrong_school_check: "%xhThat spell does not belong to one of %{name}'s schools and should only be added if they are gaining it through special means.%xn"
       spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
