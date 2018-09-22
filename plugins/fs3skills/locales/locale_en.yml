@@ -1,6 +1,6 @@
 en:
     fs3skills:
-        
+
         # Attribute / Action Skill Ratings
         unskilled_rating: "Unskilled"
         poor_rating: "Poor"
@@ -8,21 +8,21 @@ en:
         good_rating: "Good"
         great_rating: "Great"
         exceptional_rating: "Exceptional"
-        
-        
+
+
         everyman_rating: "Everyman"
         fair_rating: "Fair"
         competent_rating: "Competent"
         amazing_rating: "Amazing"
         legendary_rating: "Legendary"
-        
+
         # Language Skill Ratings
         beginner_rating: "Beginner"
         conversational_rating: "Conversational"
         fluent_rating: "Fluent"
-        
+
         # Chargen Values Set
-        attribute_set: "Attribute '%{name} is now %{rating}."
+        attribute_set: "Attribute '%{name}' is now %{rating}."
         action_set: "Action Skill '%{name}' is now %{rating}."
         language_set: "Language '%{name}' is now %{rating}."
         advantage_set: "Advantage '%{name}' is now %{rating}."
@@ -32,7 +32,7 @@ en:
         min_rating_is: "You can't lower that ability any lower."
         invalid_rating: That is not a valid ability rating.
         no_special_characters: "Ability names may not contain special characters."
-        
+
         ability_not_found: "Ability not found."
         invalid_specialty_skill: "That skill cannot have a specialty."
         invalid_specialty: "That is not a valid specialty for that skill.  Try one of these: %{names}."
@@ -40,14 +40,14 @@ en:
         specialty_not_found: "%{name} doesn't have that specialty."
         specialty_removed: "Specialty %{name} removed."
         specialty_already_exists: "%{name} already has that specialty."
-        
+
         # Reset
         reset_complete: "Reset complete.  Note that nothing comes for free, so even default items cost character points."
         reset_for_group: "Setting default skills for %{group}."
         reset_languages: "Setting default languages."
         reset_group_notes: "Notes for %{group}: %{notes}"
         reset_attributes: "Setting attributes to default values."
-        
+
         # Rolls
         embarrassing_failure: "%xREmbarassing Failure%xn"
         failure: "%xrFailure%xn"
@@ -55,16 +55,16 @@ en:
         good_success: "%xh%xgGood Success%xn"
         great_success: "%xh%xGGreat Success%xn"
         amazing_success: "%xh%xyAmazing Success%xn"
-        
+
         opposed_both_fail: "%xrEveryone failed!%xn"
         opposed_draw: "%xbDRAW!%xn"
         opposed_marginal_victory: "%xgMarginal Victory for %{name}.%xn"
         opposed_victory: "%xh%xgVictory for %{name}.%xn"
         opposed_crushing_victory: "%xh%xyCrushing Victory for %{name}.%xn"
-        
+
         simple_roll_result: "%xb<FS3>%xn %{name} rolls %{roll}: %{success} (%{dice})"
         opposed_roll_result: "%xb<FS3>%xn %{name1} rolls %{roll1} (%{dice1}) vs %{name2}'s %{roll2} (%{dice2})%R%xb<FS3>%xn%T%T%{result}"
-                
+
         unknown_roll_params: "Unable to figure out what you're trying to roll."
 
         npc: "%{name} (a NPC)"
@@ -85,38 +85,38 @@ en:
         too_many_action_skills: "%xh%xr< Too many points on action skills. (%{max} max) >%xn"
         magic_attribute_too_high: "%xh%xr< Magic attribute is too high. (%{max} max) >%xn"
         unusual_abilities_check: "Checking for unusual skills."
-        unusual_skill: "%xh%xy< %{skill} is an unusual skill.  Be sure there's good reason for it. >%xn"
-        high_bg: "%xh%xy< %{skill} is pretty high for a hobby.  Be sure there's good reason for it. >%xn"
+        unusual_skill: "%xh%xy< %{skill} is an unusual skill.  It's probably fine, but be sure there's good reason for it. >%xn"
+        high_bg: "%xh%xy< %{skill} is pretty high.  It's probably fine, but be sure there's good reason for it. >%xn"
 
 
         # ------------------------------------------------------
         # LUCK
         # ------------------------------------------------------
-        
+
         invalid_luck_points: "That is not a valid number of luck points."
         luck_awarded: "%{luck} luck points awarded to %{name} for %{reason}."
         luck_award_mail_subject: "Luck Points Awarded"
         not_enough_points: "You don't have that many luck points."
-        #luck_point_spent: 
+        #luck_point_spent:
         #    one: "%{name} spends a luck point!"
         #    other: "%{name} spends %{count} luck points!"
         luck_point_spent: "%{name} spends a luck point on %{reason}."
         luck_job_title: "Luck Spent"
-            
+
         # ------------------------------------------------------
         # SHEET
         # ------------------------------------------------------
-            
+
         no_permission_to_view_sheet: "You are not allowed to view that sheet."
         no_permission_to_backup: "You are not allowed to backup somebody else."
         invalid_page_number: "That is not a valid page number."
         not_that_many_pages: "There aren't that many character sheet pages."
-                
+
         abilities_page_title: "Abilities"
-        
+
         xp_title: "XP:"
         luck_title: "Luck Points:"
-        
+
         attributes_title: "Attributes"
         action_skills_title: "Action Skills"
         background_skills_title: "Background Skills"
@@ -125,11 +125,11 @@ en:
         specialties_title: "Specialties:"
         specialty_required: "Specialty Required:"
         advantages_title: "Advantages"
-        
+
         # ------------------------------------------------------
         # XP
         # ------------------------------------------------------
-        
+
         not_approved: "You can't spend XP until you're approved."
         cant_raise_further_with_xp: "You can't raise that ability further with XP."
         cant_raise_yet: "You must wait %{days} days to raise that ability again."
