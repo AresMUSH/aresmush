@@ -18,7 +18,7 @@ module AresMUSH
       end
 
       def check_errors
-        return t('db.object_not_found') if !self.target
+        return t('custom.invalid_name') if !self.target
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
         if self.target.groups.values.include? self.school
           return nil
