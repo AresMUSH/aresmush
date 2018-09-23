@@ -78,6 +78,10 @@ module AresMUSH
               Custom.cast_multi_heal(self.caster, self.caster_combat, self.target_name, self.spell)
             end
 
+            #Reviving Multiple Targets
+            if is_revive
+              Custom.cast_multi_revive(self.caster, self.caster_combat, self.target_name, self.spell)
+            end
 
 
             self.caster_combat.update(has_cast: true)
