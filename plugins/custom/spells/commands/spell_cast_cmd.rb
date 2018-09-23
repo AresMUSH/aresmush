@@ -37,6 +37,8 @@ module AresMUSH
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
         require_target = Global.read_config("spells", self.spell, "require_target")
+        multi_target = Global.read_config("spells", self.spell, "multi_target")
+        return t('custom.needs_multi_target') if (require_target && multi_target)
         return t('custom.needs_target') if require_target
         return nil
       end
