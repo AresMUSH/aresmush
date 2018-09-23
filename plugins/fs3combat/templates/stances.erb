@@ -1,0 +1,8 @@
+<%= header %>
+%xh<%= t('fs3combat.stances_title') %>%xn
+
+%xh<%= t('fs3combat.stance_subtitle') %>%xn
+<% stances.each do |name, value| %>
+<%= left( name_and_abbr(name), 20) %><%= attack_mod(value) %>     <%= defense_mod(value) %>
+<% end %>
+<%= footer %>

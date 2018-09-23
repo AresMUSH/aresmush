@@ -22,7 +22,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 >
 > Most commands support multiple names as well, so you can do: combat/attack A B=C
 
-`combat/stance <stance>` - Sets stance for your actions.
+`combat/stance <stance>` - Sets stance for your actions.  You can use `combat/stances` to see a list of possible stances.
 
 `combat/attack <target>[/<specials, see below>]`
 
