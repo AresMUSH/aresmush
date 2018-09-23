@@ -501,6 +501,11 @@ GENERAL UTILITIES
     margin: 2px;
 }
 
+.faded {
+  background-color: gray;
+  opacity: 0.4;
+  filter: alpha(opacity=40);  
+}
 
 .inline-response {
     border: 1px solid $border-color;
