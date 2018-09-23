@@ -22,7 +22,7 @@ module AresMUSH
     end
     
     def self.register_game
-      return if !AresCentral.is_registered?
+      return if AresCentral.is_registered?
       
       Global.logger.info "Creating game registration."
       params = AresCentral.build_game_params
