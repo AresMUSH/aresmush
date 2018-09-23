@@ -101,7 +101,7 @@ module AresMUSH
 
             #Inflict damage
             if damage_inflicted
-              Custom.cast_inflict_damage(self.caster_combat, self.target, self.spell)
+              Custom.cast_inflict_damage_with_target(self.caster_combat, self.target, self.spell)
             end
 
             #Healing
