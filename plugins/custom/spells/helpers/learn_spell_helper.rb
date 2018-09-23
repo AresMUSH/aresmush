@@ -8,9 +8,7 @@ module AresMUSH
 
     #Gives time in seconds
     def self.time_to_next_learn_spell(spell)
-      0
-      # (1 * 86400) - (Time.now - spell.last_learned)
-    end
+      (FS3Skills.days_between_learning * 86400) - (Time.now - spell.last_learned)    end
 
     def self.find_spell_learned(char, spell_name)
       spell_name = spell_name.titlecase
@@ -70,11 +68,19 @@ module AresMUSH
     def self.spell_xp_needed(spell)
       level = Global.read_config("spells", spell, "level")
       if level <= 2
-        xp_needed = 1
+        xp_needed = 2
       elsif level == 3
-        xp_needed = 3
-      else
         xp_needed = 4
+      elsif level == 4
+        xp_needed = 4
+      elsif level == 5
+        xp_needed = 6
+      elsif level == 6
+        xp_needed = 8
+      elsif level == 7
+        xp_needed = 10
+      elsif level == 8
+        xp_needed = 12
       end
     end
 
