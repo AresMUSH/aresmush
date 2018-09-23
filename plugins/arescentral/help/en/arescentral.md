@@ -1,6 +1,9 @@
 ---
 toc: Community
 summary: Connecting to the AresCentral social hub.
+aliases:
+- game
+- register
 ---
 # AresCentral
 
