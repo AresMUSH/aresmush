@@ -42,7 +42,15 @@ module AresMUSH
       
       def handle
         Forum.with_a_category(name, client, enactor) do |category|        
-          category.update(order: self.attribute.to_i)
+          order = self.attribute.to_i
+          category.update(order: order)
+          
+          BbsBoard.all.each do |other_cat|
+            if (other_cat.order >= order && other_cat != category)
+              other_cat.update(order: other_cat.order + 1)
+            end
+          end
+            
           client.emit_success t('forum.order_set')
         end
       end
