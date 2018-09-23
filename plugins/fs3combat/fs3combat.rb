@@ -115,6 +115,8 @@ module AresMUSH
            return CombatNpcSkillCmd
          when "stance"
            return CombatStanceCmd
+         when "stances"
+           return CombatStancesCmd
          when "start"
            return CombatStartCmd
          when "stop"
