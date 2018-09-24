@@ -48,6 +48,38 @@ module AresMUSH
       end
     end
 
+    def self.cast_multi_roll_spell(caster, caster_combat, target_string, spell)
+      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+      client = Login.find_client(caster_combat)
+      if succeeds == "%xgSUCCEEDS%xn"
+        targets = Custom.parse_spell_targets(target_string, caster.combat)
+        targets.each do |t|
+          FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => t.name, :succeeds => succeeds)
+        end
+      else
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
+      end
+    end
+
+    def self.cast_multi_noncombat_roll_spell(caster, target_string, spell)
+      school = Global.read_config("spells", spell, "school")
+      client = Login.find_client(caster)
+      targets = Custom.parse_spell_targets(target_string, caster.combat)
+      targets.each do |t|
+        Rooms.emit_to_room(caster.room, t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => t.name, :spell => spell))
+        die_result = FS3Skills.parse_and_roll(caster, school)
+          success_level = FS3Skills.get_success_level(die_result)
+          success_title = FS3Skills.get_success_title(success_level)
+          message = t('fs3skills.simple_roll_result',
+            :name => caster.name,
+            :roll => school,
+            :dice => FS3Skills.print_dice(die_result),
+            :success => success_title
+          )
+          FS3Skills.emit_results message, client, caster.room, false
+        end
+    end
+
 
   end
 end
