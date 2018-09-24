@@ -41,6 +41,8 @@ module AresMUSH
           return UpdatePotionCmd
         when "give"
           return GivePotionCmd
+        when "add"
+          return PotionAddCmd
         when "use"
           if cmd.args.include?("=")
             return PotionUseWithTargetCmd

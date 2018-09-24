@@ -18,17 +18,17 @@ module AresMUSH
 
       def check_errors
         return t('custom.invalid_name') if !self.target
-        return t('custom.not_spell') if !Custom.is_spell?(cmd.args)
-        return t('custom.not_potion') if !Custom.is_potion?(cmd.args)
+        return t('custom.not_spell') if !Custom.is_spell?(self.potion_name)
+        return t('custom.not_potion') if !Custom.is_potion?(self.potion_name)
         return nil
       end
 
       def handle
 
-        PotionsHas.create(name: potion.name, character: self.target)
+        PotionsHas.create(name: potion_name, character: self.target)
         client.emit_success t('custom.added_potion', :potion_name => potion_name, :target => target.name)
-        other_client = Login.find_client(self.target)
-        other_client.emit_success t('custom.potion_has_been_added', :name => enactor.name, :potion_name => potion_name)
+        # other_client = Login.find_client(self.target)
+        # other_client.emit t('custom.potion_has_been_added', :name => enactor.name, :potion_name => potion_name)
 
       end
 
