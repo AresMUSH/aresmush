@@ -8,24 +8,24 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.char = titlecase_arg(args.arg1)
-        self.potion_name = titlecase_arg(args.arg2) 
+        self.potion_name = titlecase_arg(args.arg2)
         self.potion = Custom.find_potion_has(enactor, self.potion_name)
         self.target = Character.find_one_by_name(self.char)
-        
+
       end
 
       def check_errors
         return t('custom.dont_have_potion') if !Custom.find_potion_has(enactor, self.potion_name)
         return t('custom.not_character') if !self.target
-        return nil        
+        return nil
       end
-      
+
       def handle
         self.other_client = Login.find_client(target)
         PotionsHas.create(name: self.potion.name, character: self.target)
         self.potion.delete
-        client.emit_success "You have given #{target.name} a #{potion.name} potion."
-        self.other_client.emit_success "#{enactor.name} has given you a #{potion.name} potion."
+        client.emit_success t('custom.give_potion', :target => target.name, :potion_name => potion.name)
+        self.other_client.emit_success t('custom.potion_has_been_given', :name => enactor.name, :potion_name => potion.name)
       end
 
     end
