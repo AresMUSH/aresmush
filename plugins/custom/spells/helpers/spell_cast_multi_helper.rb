@@ -54,19 +54,29 @@ module AresMUSH
       if succeeds == "%xgSUCCEEDS%xn"
         targets = Custom.parse_spell_targets(target_string, caster.combat)
         targets.each do |t|
-          FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => t.name, :succeeds => succeeds)
+          target = FS3Combat.find_named_thing(t, caster)
+          FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => target.name, :succeeds => succeeds)
         end
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
       end
     end
 
-    def self.cast_multi_noncombat_roll_spell(caster, target_string, spell)
+    def self.cast_multi_noncombat_roll_spell(caster, target_name, spell)
       school = Global.read_config("spells", spell, "school")
       client = Login.find_client(caster)
-      targets = Custom.parse_spell_targets(target_string, caster.combat)
-      targets.each do |t|
-        Rooms.emit_to_room(caster.room, t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => t.name, :spell => spell))
+      names_array = target_name.split(" ")
+      names = []
+      names_array.each do |name|
+        target = FS3Combat.find_named_thing(name, caster)
+         if !target
+           client.emit_failure t('custom.invalid_name')
+         else
+           names = names.push target.name
+         end
+      end
+      targets = names.join(", ")
+        Rooms.emit_to_room(caster.room, t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => targets, :spell => spell))
         die_result = FS3Skills.parse_and_roll(caster, school)
           success_level = FS3Skills.get_success_level(die_result)
           success_title = FS3Skills.get_success_title(success_level)
@@ -77,7 +87,7 @@ module AresMUSH
             :success => success_title
           )
           FS3Skills.emit_results message, client, caster.room, false
-        end
+
     end
 
 
