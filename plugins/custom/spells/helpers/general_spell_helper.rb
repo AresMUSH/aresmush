@@ -4,7 +4,11 @@ module AresMUSH
     def self.is_spell?(spell)
       spell_list = Global.read_config("spells")
       spell_name = spell.titlecase
-      spell_list.include?(spell_name)
+      if (spell_name == "Potions" || spell_name == "Familiar")
+        return false
+      else
+        spell_list.include?(spell_name)
+      end
     end
 
     def self.already_cast(caster_combat)
