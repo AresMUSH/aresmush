@@ -378,17 +378,17 @@ en:
         # SUBDUE AND ESCAPE
         # ----------------------------
 
-        subdue_uses_melee: "You must use a melee weapon to subdue."
-        subdue_action_msg_long: "%{name} will subdue %{target} this turn."
-        subdue_action_msg_short: "Subdue %{target}"
-        subdue_action_success: "%{name} successfully subdues %{target}."
-        subdue_action_failed: "%{name} tries to subdue %{target} but FAILS."
-        not_subdued: "You are not subdued."
+        subdue_uses_melee: "You must use a melee weapon to subdue or stun."
+        subdue_action_msg_long: "%{name} will stun %{target} this turn."
+        subdue_action_msg_short: "Stun %{target}"
+        subdue_action_success: "%{name} successfully stuns %{target}."
+        subdue_action_failed: "%{name} tries to stun %{target} but FAILS."
+        not_subdued: "You are not subdued or stunned."
         escape_action_msg_long: "%{name} will try to escape from %{target} this turn."
         escape_action_msg_short: "Escape %{target}"
         escape_action_success: "%{name} escapes from %{target}."
-        escape_action_failed: "%{name} tries to escape from %{target} but is still subdued."
-        must_escape_first: "Subdued characters must escape first."
+        escape_action_failed: "%{name} tries to escape from %{target} but is still subdued or stunned."
+        must_escape_first: "Subdued or stunned characters must escape first."
 
 
         # ----------------------------
