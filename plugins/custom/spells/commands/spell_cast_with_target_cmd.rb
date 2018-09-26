@@ -50,7 +50,7 @@ module AresMUSH
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
-        return t('custom.invalid_name') if !self.target
+        # return t('custom.invalid_name') if !self.target
         require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
         return t('custom.no_target') if (!require_target && !target_optional)
@@ -82,7 +82,9 @@ module AresMUSH
         weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials = Global.read_config("spells", self.spell, "armor_specials")
+        fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
         roll = Global.read_config("spells", self.spell, "roll")
+        is_stun = Global.read_config("spells", self.spell, "is_stun")
 
         if self.caster.combat
           if self.caster_combat.is_ko
@@ -196,10 +198,30 @@ module AresMUSH
 
             #Equip Weapon
             if weapon
-              if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_equip_weapon_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
+              if fs3_attack
+                weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
+                FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name)
+                FS3Combat.set_weapon(enactor, caster_combat, weapon)
+                if is_stun
+                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SubdueAction, target_name)
+                elsif weapon_type == "Explosive"
+                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::ExplodeAction, target_name)
+                elsif weapon_type == "Suppressive"
+                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SuppressAction, target_name)
+                else
+                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::AttackAction, target_name)
+                end
+              elsif succeeds == "%xgSUCCEEDS%xn"
+                if armor
+
+                else
+                  FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn")
+                end
+                FS3Combat.set_weapon(enactor, target_combat, weapon)
+                FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+                FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
               end
             end
 
@@ -215,7 +237,7 @@ module AresMUSH
             # For some reason, both of these break setting weapons and armor. I have no idea why.
 
             self.caster_combat.update(has_cast: true)
-            FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
+
           end
 
 
