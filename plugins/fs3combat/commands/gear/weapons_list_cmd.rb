@@ -2,10 +2,10 @@ module AresMUSH
   module FS3Combat
     class WeaponsListCmd
       include CommandHandler
-      include TemplateFormatters      
-      
+      include TemplateFormatters
+
       def handle
-        template = GearListTemplate.new FS3Combat.weapons, t('fs3combat.weapons_title')
+        template = GearListTemplate.new FS3Combat.mundane_weapons, t('fs3combat.weapons_title')
         client.emit template.render
       end
     end

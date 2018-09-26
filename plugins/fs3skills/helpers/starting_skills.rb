@@ -4,18 +4,22 @@ module AresMUSH
       def self.config
         Global.read_config("fs3skills", "starting_skills")
       end
-      
+
       def self.get_skills_for_char(char)
         skills = {}
-        
+
         FS3Skills.attrs.map { |a| a['name'] }.each do |a|
-          skills[a] = 1
+          if a == "Magic"
+            skills[a] = 0
+          else
+            skills[a] = 1
+          end
         end
-        
+
         FS3Skills.action_skills.map { |a| a['name'] }.each do |a|
           skills[a] = Global.read_config('fs3skills', 'allow_unskilled_action_skills') ? 0 : 1
         end
-        
+
         groups = get_groups_for_char(char)
         groups.each do |k, v|
           group_skills = v["skills"]
@@ -27,8 +31,8 @@ module AresMUSH
           end
         end
         skills
-      end 
-      
+      end
+
       def self.get_specialties_for_char(char)
         specs = {}
         groups = get_groups_for_char(char)
@@ -39,7 +43,7 @@ module AresMUSH
             if (!specs.has_key?(skill))
               specs[skill] = []
             end
-            
+
             skill_specs.each do |s|
               specs[skill] << s
               specs[skill].uniq!
@@ -47,8 +51,8 @@ module AresMUSH
           end
         end
         specs
-      end 
-      
+      end
+
       def self.get_groups_for_char(char)
         groups = {}
         config.each do |group, group_config|
@@ -64,7 +68,7 @@ module AresMUSH
           end
         end
         groups
-      end 
+      end
     end
   end
 end
