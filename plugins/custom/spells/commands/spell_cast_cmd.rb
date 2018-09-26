@@ -3,7 +3,7 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type, :caster, :caster_combat
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :caster, :caster_combat
       def parse_args
        self.spell_list = Global.read_config("spells")
        if (cmd.args =~ /\//)
