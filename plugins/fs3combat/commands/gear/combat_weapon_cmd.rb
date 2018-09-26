@@ -7,13 +7,13 @@ module AresMUSH
       attr_accessor :name, :weapon, :specials
 
       def parse_args
-        if (cmd.args =~ /=/)
-          args = cmd.parse_args( /(?<arg1>[^\=]+)\=(?<arg2>[^\+]+)\+?(?<arg3>.+)?/)
+        if (cmd.args =~ /\//)
+          args = cmd.parse_args( /(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=?(?<arg3>.+)?/)
           self.name = titlecase_arg(args.arg1)
           self.weapon = titlecase_arg(args.arg2)
           specials_str = titlecase_arg(args.arg3)
         else
-          args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+          args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
           self.name = enactor.name
           self.weapon = titlecase_arg(args.arg1)
           specials_str = titlecase_arg(args.arg2)
