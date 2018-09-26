@@ -93,6 +93,7 @@ en:
       discarded_spell: "You have discarded the %{spell} spell."
       added_spell: "You have added the %{spell} spell to %{name}."
       removed_spell: "You have removed the %{spell} spell from %{name}."
+      use_school_version: "Be sure to specify the school for this spell. IE, spell/learn Potions (Fire) or Familiar (Air)"
 
       # ----------------------------
       # FS3 COMBAT SPELL
