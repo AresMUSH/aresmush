@@ -63,19 +63,9 @@ module AresMUSH
     end
 
     def self.cast_noncombat_spell(caster, spell)
-      school = Global.read_config("spells", spell, "school")
-      client = Login.find_client(caster)
-      Rooms.emit_to_room(caster.room, t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell))
-      die_result = FS3Skills.parse_and_roll(caster, school)
-        success_level = FS3Skills.get_success_level(die_result)
-        success_title = FS3Skills.get_success_title(success_level)
-        message = t('fs3skills.simple_roll_result',
-          :name => caster.name,
-          :roll => school,
-          :dice => FS3Skills.print_dice(die_result),
-          :success => success_title
-        )
-        FS3Skills.emit_results message, client, caster.room, false
+      enactor_room = caster.room
+      success = Custom.roll_noncombat_spell_success(caster, spell)
+      enactor_room.emit t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :succeeds => success)
     end
 
     def self.cast_heal(caster_combat, caster, spell)
