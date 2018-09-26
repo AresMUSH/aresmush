@@ -12,6 +12,7 @@ module AresMUSH
       end
 
       def check_errors
+        return t('custom.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('custom.too_many_spells') if Custom.count_spells_total(enactor) >= 16
