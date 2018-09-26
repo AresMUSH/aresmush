@@ -2,7 +2,7 @@ module AresMUSH
   module Custom
     class SpellCastWithMultiTargetCmd
       include CommandHandler
-      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat
+      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat, :names
 
       def parse_args
         self.spell_list = Global.read_config("spells")
@@ -95,12 +95,13 @@ module AresMUSH
           end
 
         else
+
           if !Custom.knows_spell?(caster, self.spell)
             client.emit_failure t('custom.dont_know_spell')
           elsif heal_points
             Custom.cast_non_combat_heal(self.caster, self.target, self.spell)
           elsif roll
-            Custom.cast_multi_noncombat_roll_spell(self.caster, self.target, self.spell)
+            Custom.cast_multi_noncombat_roll_spell(self.caster, self.target_name, self.spell)
           else
             client.emit_failure t('custom.not_in_combat')
           end
