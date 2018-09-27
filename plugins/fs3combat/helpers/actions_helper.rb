@@ -62,7 +62,7 @@ module AresMUSH
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)
 
-      if (!combatant.combat.is_real && combatant.is_ko && !combatant.is_npc?)
+      if (combatant.combat.is_real && combatant.is_ko && !combatant.is_npc?)
         Custom.death_counter(combatant)
       end
 
