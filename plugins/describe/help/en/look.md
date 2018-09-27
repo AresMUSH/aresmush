@@ -14,14 +14,10 @@ The `look` command is used to look around.  You can also look at a particular ob
 `look`  (shortcut for looking at 'here')
 `look <name>/<detail>` - Looks at a detail on something.
 
-## Glancing
-
-The `glance` command gives you a quick summary of everyone in your room.  This will show some of your demographic information and your short description.
-
-`glance` - Takes a quick look at everyone in your room.
+`glance` - Get a quick summary of everyone in your room, including some demographics.
 
 ## Description Notifications
 
-By default, the game will notify you if someone looks at you. (the @adesc feature from other MU servers.) If you don't like that, you can turn it off:
+By default, the game will not notify you if someone looks at you. (the @adesc feature from other MU servers.) You can turn it on:
 
 `desc/notify <on or off>` - Turn the 'looked at you' notification on or off.
