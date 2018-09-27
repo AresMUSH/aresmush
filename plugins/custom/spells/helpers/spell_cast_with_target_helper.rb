@@ -5,7 +5,6 @@ module AresMUSH
       succeeds = Custom.roll_combat_spell_success(caster, spell)
       damage_desc = Global.read_config("spells", spell, "damage_desc")
       damage_inflicted = Global.read_config("spells", spell, "damage_inflicted")
-      return t('custom.cant_heal_dead') if (target.dead)
       if succeeds == "%xgSUCCEEDS%xn"
         FS3Combat.inflict_damage(target, damage_inflicted, damage_desc)
         FS3Combat.emit_to_combat caster.combat, t('custom.cast_damage', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name, :damage_desc => spell.downcase)
