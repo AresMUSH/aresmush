@@ -14,6 +14,14 @@ module AresMUSH
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
+    def self.cast_equip_armor_specials(enactor, caster_combat, spell)
+      armor_specials_str = Global.read_config("spells", spell, "armor_specials")
+      armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
+      client = Login.find_client(caster_combat)
+      FS3Combat.set_armor(enactor, caster_combat, caster_combat.armor, armor_specials)      
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    end
+
     def self.cast_equip_weapon_specials(enactor, caster_combat, spell)
       weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
       weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
