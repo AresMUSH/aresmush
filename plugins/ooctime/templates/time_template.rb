@@ -28,6 +28,10 @@ module AresMUSH
         ICTime.ratio_str
       end
       
+      def server_timezone
+        Global.read_config("datetime", "server_timezone")
+      end
+      
     end
   end
 end
