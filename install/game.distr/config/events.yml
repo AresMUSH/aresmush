@@ -1,6 +1,5 @@
 ---
 events:
-  calendar_timezone: EST
   shortcuts:
     events: event
     event/add: event/create
