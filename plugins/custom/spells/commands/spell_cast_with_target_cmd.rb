@@ -16,8 +16,6 @@ module AresMUSH
           #Returns char or NPC
           self.caster = FS3Combat.find_named_thing(caster_name, enactor)
           self.target = FS3Combat.find_named_thing(target_name, enactor)
-          client.emit self.target
-          client.emit self.caster
 
           #Returns combatant
           if enactor.combat
@@ -217,8 +215,7 @@ module AresMUSH
                 else
                   FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn")
                 end
-                FS3Combat.set_weapon(enactor, target_combat, weapon)
-                FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
+                FS3Combat.set_weapon(enactor, caster_combat, weapon)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
                 FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, "")
