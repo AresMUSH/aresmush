@@ -26,6 +26,11 @@ module AresMUSH
         
         if (enactor)
           scene.mark_read(enactor)
+            
+          if (!Scenes.is_watching?(scene, enactor))
+            scene.watchers.add enactor
+          end
+
         end
         
         participants = Scenes.participants_and_room_chars(scene)

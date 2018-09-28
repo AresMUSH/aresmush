@@ -105,6 +105,8 @@ module AresMUSH
            return CombatDismountCmd
          when "npc"
            return CombatNpcCmd
+         when "npcs"
+           return CombatNpcsCmd
          when "newturn"
            return CombatNewTurnCmd
          when "randtarget"

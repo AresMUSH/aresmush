@@ -56,7 +56,6 @@ module AresMUSH
         end
         
         Scenes.add_to_scene(scene, pose, enactor, is_setpose, is_ooc)
-        scene.watchers.add enactor
         if (scene.room)
           scene.room.characters.each do |char|
             message = Scenes.custom_format(formatted_pose, char, enactor, true, false, nil)
