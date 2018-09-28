@@ -18,7 +18,7 @@ module AresMUSH
       armor_specials_str = Global.read_config("spells", spell, "armor_specials")
       armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
       client = Login.find_client(caster_combat)
-      FS3Combat.set_armor(enactor, caster_combat, caster_combat.armor, armor_specials)      
+      FS3Combat.set_armor(enactor, caster_combat, caster_combat.armor, armor_specials)
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
@@ -88,7 +88,7 @@ module AresMUSH
           FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => "themself")
         end
       else
-        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => "themself", :spell => spell, :succeeds => succeeds)
+        FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
       end
     end
 
