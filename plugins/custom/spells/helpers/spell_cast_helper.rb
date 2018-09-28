@@ -83,9 +83,9 @@ module AresMUSH
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
-          FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => "themself", :points => heal_points)
+          FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
         else
-          FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => "themself")
+          FS3Combat.emit_to_combat caster.combat, t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
         end
       else
         FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
@@ -100,9 +100,9 @@ module AresMUSH
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
-          client.emit t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => "themself", :points => heal_points)
+          client.emit t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
         else
-          client.emit t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => "themself")
+          client.emit t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
         end
       else
         client.emit t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
