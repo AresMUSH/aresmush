@@ -20,8 +20,9 @@ module AresMUSH
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                   likes: s.likes,
                   is_unread: enactor && Scenes.can_access_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
-                  updated: OOCTime.local_long_timestr(enactor, s.updated_at)
-        
+                  updated: OOCTime.local_long_timestr(enactor, s.updated_at),
+                  watching: Scenes.is_watching?(s, enactor),
+                  participating: Scenes.is_participant?(s, enactor)        
                 }}
       end
       

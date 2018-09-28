@@ -105,18 +105,14 @@ en:
         npcmaster_text: " %xh%xx(by %{name})%xn"
         invalid_combat_number: "That is not a valid combat number.  See combats for a list."
         organizer_only: "Only the organizer may do this."
-        
-        
-        invalid_npc_skill: "NPC skill ratings must be from 1 to 12."
-        npc_skill_set: "You set %{name}'s NPC skill rating to %{skill}."
-        skill_set_only_for_npcs: "You can only set skills for NPCs."
-        
+                
         choosing_ai_actions: "Choosing NPC AI actions."
         no_ai_actions_to_set: "All NPCs have actions already."
         
         npc_skill_set: "%{name} skill level set to %{level}."
         invalid_npc_level: "Invalid NPC skill level.  Try one of these: %{levels}."
         not_a_npc: "You can only set NPC skill levels."
+        npcs_title: "NPC Levels"
         
         mod_applied: "You apply a %{type} modifier to %{name}."
         log_title: "Combat Log"
