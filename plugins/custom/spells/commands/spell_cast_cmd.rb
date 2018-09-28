@@ -3,7 +3,7 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :weapon_type, :caster, :caster_combat
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :caster, :caster_combat
       def parse_args
        self.spell_list = Global.read_config("spells")
        if (cmd.args =~ /\//)
@@ -79,6 +79,16 @@ module AresMUSH
             #Equip Armor
             if armor
               Custom.cast_equip_armor(enactor, self.caster_combat, self.spell)
+            end
+
+            #Equip Armor Specials
+            if armor_specials
+              if succeeds == "%xgSUCCEEDS%xn"
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+                Custom.cast_equip_armor_specials(enactor, self.caster_combat, self.spell)
+              else
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
+              end
             end
 
             #Healing
