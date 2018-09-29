@@ -47,6 +47,8 @@ module AresMUSH
           return PoseNudgeCmd
         when "order"
           return PoseOrderCmd
+        when "ordertype"
+          return PoseOrderTypeCmd
         end
         
       when "quotecolor"
