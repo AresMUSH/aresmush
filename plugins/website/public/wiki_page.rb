@@ -96,6 +96,11 @@ module AresMUSH
       self.heading
     end
     
+    def search_id
+      pp "Getting sid for #{self.name} -- #{WikiPage.sanitize_page_name(self.name)}"
+      WikiPage.sanitize_page_name(self.name)
+    end
+    
     def searchable?
       true
     end
