@@ -145,6 +145,8 @@ module AresMUSH
         return DeletePlotRequestHandler
       when "deleteScene"
         return DeleteSceneRequestHandler
+      when "downloadScene"
+        return DownloadSceneRequestHandler
       when "editPlot"
         return EditPlotRequestHandler
       when "editScene"
