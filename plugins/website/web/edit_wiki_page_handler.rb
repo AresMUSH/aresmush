@@ -5,7 +5,7 @@ module AresMUSH
         name_or_id = request.args[:id]
         enactor = request.enactor
         text = request.args[:text]
-        tags = (request.args[:tags] || []).map { |t| t.downcase }
+	tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| t != "" }
         title = request.args[:title]
         name = request.args[:name]
       
