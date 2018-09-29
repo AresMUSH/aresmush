@@ -35,7 +35,7 @@ module AresMUSH
           :combat => combat)
           FS3Combat.handle_combat_join_achievement(char)
       else
-        npc = Npc.create(name: name, combat: combat)
+        npc = Npc.create(name: name, combat: combat, level: FS3Combat.default_npc_type)
         combatant = Combatant.create(:combatant_type => combatant_type, 
         :npc => npc,
         :team =>  9,
