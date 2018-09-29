@@ -33,6 +33,7 @@ en:
         closed_job: "%{name} has closed this job."
         changed_job_status: "%{name} has changed the job status to \"%{status}\"."
         job_already_closed: "That job is already closed."
+        job_status_changed: "%{name} has changed the status of job #%{number} \"%{title}\" to %{status}."
 
         cannot_handle_jobs: "That person cannot be assigned jobs."
         job_assigned: "%{assigner} has assigned job #%{number} \"%{title}\" to %{assignee}."
