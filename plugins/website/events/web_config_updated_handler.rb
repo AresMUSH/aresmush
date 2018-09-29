@@ -22,7 +22,7 @@ module AresMUSH
           "uploads_path" => AresMUSH.website_uploads_path,
           "game_name" => Global.read_config("game", "name"),
           "use_api_proxy" => use_api_proxy,
-	  "ssl" => Global.read_config("server", "ssl")
+          "ssl" => Global.read_config("server", "ssl")
         }
         
         if (!Dir.exist?(AresMUSH.website_scripts_path))
