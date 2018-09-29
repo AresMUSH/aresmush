@@ -22,7 +22,11 @@ module AresMUSH
         
         config = DatabaseMigrator.read_config_file("datetime.yml")
         config['datetime']['server_timezone'] = timezone
-        DatabaseMigrator.write_config_file("datetime.yml", config)           
+        DatabaseMigrator.write_config_file("datetime.yml", config)    
+        
+        config = DatabaseMigrator.read_config_file("fs3combat_npcs.yml")
+        config['fs3combat']['default_npc_type'] = 'Goon'
+        DatabaseMigrator.write_config_file("fs3combat_npcs.yml", config)           
 
       end
     end

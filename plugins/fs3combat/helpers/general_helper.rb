@@ -86,6 +86,9 @@ module AresMUSH
       Global.read_config("fs3combat", "npc_types").keys.map { |n| n.titlecase }
     end
     
+    def self.default_npc_type
+      Global.read_config('fs3combat', 'default_npc_type') || 'Goon'
+    end
     
     # Finds a character, vehicle or NPC by name
     def self.find_named_thing(name, enactor)
