@@ -6,3 +6,4 @@ ictime:
   month_names: []
   time_ratio: 1
   game_start_date: ''
+  hour_offset: 0

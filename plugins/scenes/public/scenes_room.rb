@@ -3,6 +3,8 @@ module AresMUSH
     attribute :pose_order, :type => DataType::Hash, :default => {}
     attribute :scene_set
     attribute :scene_nag, :type => DataType::Boolean, :default => true
+    attribute :pose_order_type, :default => "normal"
+    
     reference :scene, "AresMUSH::Scene"
     
     def update_pose_order(name)

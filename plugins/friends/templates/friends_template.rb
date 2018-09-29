@@ -16,6 +16,11 @@ module AresMUSH
         friendship.friend.name
       end
       
+      def friend_loc(friendship)
+        char = friendship.friend
+        Who.who_room_name(char)
+      end
+      
       def handle_friends
         return [] if !@enactor.handle
         @enactor.handle.friends ? @enactor.handle.friends.sort : []

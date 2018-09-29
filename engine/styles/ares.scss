@@ -483,6 +483,10 @@ SIDEBAR
     color: $faded-text-color;
 }
 
+.search-bar {
+  padding: 10px;
+}
+
 /* -------------------------
 GENERAL UTILITIES
 ------------------------- */
@@ -501,6 +505,15 @@ GENERAL UTILITIES
     margin: 2px;
 }
 
+.icon-row img {
+  margin-left: 20px;
+}
+
+.faded {
+  background-color: gray;
+  opacity: 0.4;
+  filter: alpha(opacity=40);  
+}
 
 .inline-response {
     border: 1px solid $border-color;

@@ -4,7 +4,7 @@ module AresMUSH
     def self.new_scene_activity(scene, data = nil)
       web_msg = "#{scene.id}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        !scene.private_scene || ( char && Scenes.participants_and_room_chars(scene).include?(char))
+        Scenes.is_watching?(scene, char)
       end
     end
     
@@ -106,6 +106,12 @@ module AresMUSH
         end
       end
       participants
+    end
+    
+    def self.is_watching?(scene, char)
+      return false if !char
+      return true if char == scene.owner
+      return Scenes.is_participant?(scene, char) || scene.watchers.include?(char)
     end
     
     def self.is_participant?(scene, char)
@@ -247,19 +253,34 @@ module AresMUSH
     end
 
     def self.notify_next_person(room)
-      return if room.pose_order.count < 3
+      return if room.pose_order.count < 2
         
       poses = room.sorted_pose_order
-            
-      next_up_name = poses.first[0]
-      next_up_char = Character.find_one_by_name(next_up_name)
-      next_up_client = Login.find_client(next_up_char)
-      
-      if ((next_up_char.room != room) || !next_up_client)
-        room.remove_from_pose_order(next_up_name)
-        Scenes.notify_next_person(room)
-      elsif (next_up_char.pose_nudge && !next_up_char.pose_nudge_muted)
-        next_up_client.emit_ooc t('scenes.pose_your_turn')      
+      poses.each do |name, time|
+        char = Character.find_one_by_name(name)
+        client = Login.find_client(char)
+        if (!char || !client || char.room != room)
+          room.remove_from_pose_order(name)
+        end
+      end
+          
+      poses = room.sorted_pose_order
+ 
+      if (room.pose_order_type == '3-per')
+        poses.reverse.each_with_index do |(name, time), i|
+          next if i < 3
+          char = Character.find_one_by_name(name)
+          if (char.pose_nudge && !char.pose_nudge_muted)
+            Login.emit_ooc_if_logged_in char, t('scenes.pose_threeper_nudge')
+          end
+        end
+      else
+        next_up_name = poses.first[0]
+        char = Character.find_one_by_name(next_up_name)
+
+        if (char.pose_nudge && !char.pose_nudge_muted)
+          Login.emit_ooc_if_logged_in char, t('scenes.pose_your_turn')      
+        end
       end
     end
     

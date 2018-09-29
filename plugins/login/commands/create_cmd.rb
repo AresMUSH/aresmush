@@ -6,9 +6,8 @@ module AresMUSH
       attr_accessor :charname, :password
       
       def parse_args
-        return if !cmd.args
-        self.charname = cmd.args.before(" ")
-        self.password = cmd.args.after(" ")
+        self.charname = cmd.args ? titlecase_arg(cmd.args.before(" ")) : nil
+        self.password = cmd.args ? cmd.args.after(" ") : nil
       end
       
       def allow_without_login

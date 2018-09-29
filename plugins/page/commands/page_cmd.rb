@@ -86,6 +86,10 @@ module AresMUSH
       def add_to_monitor(char, monitor_name, message)
         monitor = char.page_monitor
         
+        if (!monitor[monitor_name])
+          monitor[monitor_name] = []
+        end
+        
         if (monitor[monitor_name].count > 30)
           monitor[monitor_name].shift
         end

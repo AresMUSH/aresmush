@@ -105,6 +105,8 @@ module AresMUSH
            return CombatDismountCmd
          when "npc"
            return CombatNpcCmd
+         when "npcs"
+           return CombatNpcsCmd
          when "newturn"
            return CombatNewTurnCmd
          when "randtarget"
@@ -115,6 +117,8 @@ module AresMUSH
            return CombatNpcSkillCmd
          when "stance"
            return CombatStanceCmd
+         when "stances"
+           return CombatStancesCmd
          when "start"
            return CombatStartCmd
          when "stop"
