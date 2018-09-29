@@ -17,6 +17,14 @@ module AresMUSH
             Global.logger.warn "Can't find wiki page #{page_name}."
           end
         end
+
+	if enactor
+	  if Jobs.can_access_jobs?(enactor)
+            job_count = Job.all.select { |j| j.is_unread?(enactor) }.count 
+          else 
+            job_count = enactor.jobs.select { |r| r.is_unread?(enactor) }.count
+	  end
+        end
         {
           timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
@@ -26,7 +34,8 @@ module AresMUSH
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
           recent_changes: Website.get_recent_changes(true, 10),
-          left_sidebar: Global.read_config('website', 'left_sidebar'),
+          job_activity: enactor ? job_count : nil,
+	  left_sidebar: Global.read_config('website', 'left_sidebar'),
           registration_required: Global.read_config("website", "portal_requires_registration"),
           wiki_nav: wiki_nav
         }
