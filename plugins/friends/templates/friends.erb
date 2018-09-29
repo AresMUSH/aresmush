@@ -1,7 +1,7 @@
 <%= header %>
 %xh<%= t('friends.friends_header') %>%xn
 <% friendships.each do |f| %>
-<%= left(friend_name(f), 25) %> <%= friend_last_on(f) %> 
+<%= left(friend_name(f), 20) %> <%= left(friend_loc(f), 30) %> <%= friend_last_on(f) %> 
 <% if f.note %>
      %xc<%= f.note %>%xn
 <% end %>
