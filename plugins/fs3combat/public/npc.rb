@@ -4,7 +4,7 @@ module AresMUSH
     
     attribute :name
     attribute :name_upcase
-    attribute :level, :default => "Goon"
+    attribute :level
 
     collection :damage, "AresMUSH::Damage"
     reference :combat, "AresMUSH::Combat"

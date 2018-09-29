@@ -25,7 +25,8 @@ module AresMUSH
         it "should create a NPC if char not found" do
           expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(nil, "error") }
           npc = double
-          expect(Npc).to receive(:create).with(name: "Bob", combat: @combat) { npc }
+          expect(Npc).to receive(:create).with(name: "Bob", combat: @combat, level: "Boss") { npc }
+          expect(FS3Combat).to receive(:default_npc_type) { "Boss" }
           expect(Combatant).to receive(:create) do |params|
             expect(params[:combatant_type]).to eq "soldier"
             expect(params[:team]).to eq 9
