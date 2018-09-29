@@ -6,8 +6,8 @@ module AresMUSH
       armor = Global.read_config("spells", spell, "armor")
       client = Login.find_client(caster_combat)
       if succeeds == "%xgSUCCEEDS%xn"
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
-        FS3Combat.set_armor(enactor, caster_combat, armor), nil, true
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+        FS3Combat.set_armor(enactor, caster_combat, armor)
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
@@ -28,8 +28,8 @@ module AresMUSH
       succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
       client = Login.find_client(caster_combat)
       if succeeds == "%xgSUCCEEDS%xn"
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds)
-        FS3Combat.set_weapon(enactor, caster_combat, caster_combat.weapon, weapon_specials), nil, true
+        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+        FS3Combat.set_weapon(enactor, caster_combat, caster_combat.weapon, weapon_specials)
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
@@ -73,7 +73,9 @@ module AresMUSH
     def self.cast_noncombat_spell(caster, spell)
       enactor_room = caster.room
       success = Custom.roll_noncombat_spell_success(caster, spell)
-      enactor_room.emit t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :succeeds => success)
+      message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :succeeds => success)
+      enactor_room.emit message
+      Scenes.add_to_scene(enactor_room.scene, message)
     end
 
     def self.cast_heal(caster_combat, caster, spell)
@@ -100,12 +102,18 @@ module AresMUSH
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
-          client.emit t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
+          message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
+          client.emit message
+          Scenes.add_to_scene(caster.room.scene, message)
         else
-          client.emit t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
+          message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
+          client.emit message
+          Scenes.add_to_scene(caster.room.scene, message)
         end
       else
-        client.emit t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+        message = t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+        client.emit message
+        Scenes.add_to_scene(caster.room.scene, message)
       end
     end
 
