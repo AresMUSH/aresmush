@@ -33,23 +33,33 @@ module AresMUSH
         web.run(port: engine_api_port)
         
 	websocket_port = Global.read_config("server", "websocket_port")
-        EventMachine::WebSocket.start(
-	  :host => host, 
- 	  :port => websocket_port, 
-  	  :secure => true,
-            :tls_options => {
-              :private_key_file => "/home/ares/ssl-cert/privkey.pem",
-    	      :cert_chain_file => "/home/ares/ssl-cert/fullchain.pem"
-            }
-	  ) do |websocket|
+
+	if (Global.read_config("server", "ssl"))
+	  EventMachine::WebSocket.start(
+	    :host => host, 
+ 	    :port => websocket_port, 
+  	    :secure => true,
+              :tls_options => {
+                :private_key_file => "/home/ares/ssl-cert/privkey.pem",
+      	        :cert_chain_file => "/home/ares/ssl-cert/fullchain.pem"
+              }) do |websocket|
+	    AresMUSH.with_error_handling(nil, "Web connection established") do
+              WebConnection.new(websocket) do |connection|
+                Global.client_monitor.connection_established(connection)
+              end
+            end
+	   end
+	else
+	  EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
             AresMUSH.with_error_handling(nil, "Web connection established") do
               WebConnection.new(websocket) do |connection|
                 Global.client_monitor.connection_established(connection)
               end
             end
           end
-           
-        Global.logger.info "Websocket started on #{host}:#{websocket_port}."
+	end
+        
+	Global.logger.info "Websocket started on #{host}:#{websocket_port}."
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end
