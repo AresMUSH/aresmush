@@ -76,7 +76,7 @@ module AresMUSH
     
     def self.search(term)
       return [] if term.blank?
-      term = term.downcase.gsub(/[^0-9A-Za-z ]/, '')
+      term = term.downcase #.gsub(/[^0-9A-Za-z ]/, '')
       results = []
       [ Area, Character, WikiPage, Scene ].each do |klass|
         category = klass.name.downcase
@@ -87,7 +87,6 @@ module AresMUSH
           end
         end
       end
-      pp results
       results
     end
     
