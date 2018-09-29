@@ -97,6 +97,10 @@ module AresMUSH
         return JobsRequestHandler
       when "job"
         return JobRequestHandler
+      when "jobAssign"
+	return JobAssignRequestHandler
+      when "jobChangeStatus"
+	return JobChangeStatusRequestHandler
       when "jobReply"
         return JobReplyRequestHandler
       when "jobClose"

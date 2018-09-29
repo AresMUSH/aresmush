@@ -40,7 +40,9 @@ module AresMUSH
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? job.assigned_to.name : "--",
-          description: Website.format_markdown_for_html(job.description),
+	  job_staff: get_job_staff,
+	  statuses: Jobs.status_vals.map { |s| s.titlecase },
+	  description: Website.format_markdown_for_html(job.description),
           replies: Jobs.visible_replies(enactor, job).map { |r| {
             author: { name: r.author_name, icon: Website.icon_for_char(r.author) },
             message: Website.format_markdown_for_html(r.message),
@@ -48,6 +50,12 @@ module AresMUSH
             admin_only: r.admin_only
           }}
         }
+      end
+
+      def get_job_staff
+        Character.all.select { |c| Jobs.can_access_jobs?(c) && c.id.to_i > 3 }.map do |c| 
+	  { id: c.id, name: c.name }
+        end
       end
     end
   end

@@ -10,9 +10,9 @@ module AresMUSH
         
         job_admin = Jobs.can_access_jobs?(enactor)
         if (job_admin)
-	  jobs = Jobs.filtered_jobs(enactor, "ACTIVE").sort_by { |j| j.id }.reverse
+          jobs = Jobs.filtered_jobs(enactor, "ACTIVE").sort_by { |j| j.id.to_i }.reverse
         else
-	  jobs = Jobs.open_requests(enactor).sort_by { |j| j.id }.reverse
+          jobs = Jobs.open_requests(enactor).sort_by { |j| j.id.to_i }.reverse
         end
         
         { 
