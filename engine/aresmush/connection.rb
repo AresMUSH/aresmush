@@ -28,6 +28,10 @@ module AresMUSH
       send_data ANSI.reset
     end
     
+    def beep
+      send_data "\a\n"
+    end
+    
     def connect_client(client)
       Global.logger.info("Client connected from #{@ip_addr}. ID=#{client.id}.")
       @client = client
