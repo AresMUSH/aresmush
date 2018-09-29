@@ -21,9 +21,6 @@
 <% online_chars.each do |c| -%>
 %xh<%= char_name(c) %>%xn <%= char_tag(c)%> <%= char_afk(c) %><%= char_shortdesc(c)%>
 <% end %> 
-<% if web_watchers %>
-%xn<%= t('describe.watching_from_web') %>%xn <%= web_watchers %>
-<% end %>
 
 <%= "%xg#{t('describe.exits_title')}%xn" -%>
 <% exits.each_with_index do |e, i| %>

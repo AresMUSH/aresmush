@@ -34,7 +34,7 @@ This is a quick reference for combat organizer commands.   You may also want to 
 `combat/summary` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
 `combat/idle <name>` - Sets someone as idle/not idle.  They won't be counted in pose tracking until you use the command on them again.
 
-`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Miniboss, Boss
+`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  See `combat/npcs` for a list of options.
 `combat/vehicles` - See a breakdown of who's in what vehicles.
 
 `combat/unko` - Un-KO's someone who shouldn't have been

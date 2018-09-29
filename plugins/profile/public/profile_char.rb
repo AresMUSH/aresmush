@@ -48,6 +48,10 @@ module AresMUSH
       self.name
     end
     
+    def search_id
+      self.name
+    end
+    
     def search_summary
       nil
     end

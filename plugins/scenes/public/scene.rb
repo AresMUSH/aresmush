@@ -128,6 +128,10 @@ module AresMUSH
       self.title.blank? ? "Untitled Scene #{self.id}" : self.title
     end
     
+    def search_id
+      self.id
+    end
+    
     def searchable?
       self.shared
     end

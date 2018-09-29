@@ -23,7 +23,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 `combat/pass` - Take no action this turn.
 
-`combat/stance <stance>` - Sets stance for your actions.
+`combat/stance <stance>` - Sets stance for your actions.  You can use `combat/stances` to see a list of possible stances.
 
 `combat/attack <target>[/<specials, see below>]`
     Specials are optional. Use commas to separate multiple options.

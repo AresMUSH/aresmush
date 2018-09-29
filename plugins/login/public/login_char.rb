@@ -33,7 +33,6 @@ module AresMUSH
     # Overrides the default engine name checking behavior.  Be sure not to have multiple
     # plugins trying to override this same method.
     def self.check_name(name)
-      return t('validation.name_must_be_capitalized') if (name[0].downcase == name[0])
       return t('validation.name_too_short') if (name.length < 2)
       return t('validation.name_contains_invalid_chars') if (name !~ /^[A-Za-z0-9\'\-]+$/)
       return t('validation.name_is_restricted') if (Global.read_config("names", "restricted").include?(name.downcase))

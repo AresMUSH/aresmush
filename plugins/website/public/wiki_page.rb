@@ -96,6 +96,10 @@ module AresMUSH
       self.heading
     end
     
+    def search_id
+      WikiPage.sanitize_page_name(self.name)
+    end
+    
     def searchable?
       true
     end
