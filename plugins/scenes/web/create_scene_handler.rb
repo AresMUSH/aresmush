@@ -54,8 +54,8 @@ module AresMUSH
           end
         end      
       
-        tags = request.args[:tags] || []
-        scene.update(tags: tags.map { |t| t.downcase })
+        tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
+        scene.update(tags: tags)
       
         if (completed)
           log = SceneLog.create(scene: scene, log: request.args[:log])

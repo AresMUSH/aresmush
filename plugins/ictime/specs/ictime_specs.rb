@@ -8,6 +8,7 @@ module AresMUSH
       end
       
       it "should subtract a year offset" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { -300 } 
         
@@ -16,6 +17,7 @@ module AresMUSH
       end      
 
       it "should add a year offset" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 300 } 
 
@@ -24,14 +26,25 @@ module AresMUSH
       end      
       
       it "should handle a day offset" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 2 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
 
         allow(DateTime).to receive(:now) { DateTime.new(2014, 01, 27) }
         expect(ICTime.ictime).to eq DateTime.new(2114, 01, 29)
       end
+      
+      it "should handle a hour offset" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 5 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 2 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2014, 01, 27, 7, 9) }
+        expect(ICTime.ictime).to eq DateTime.new(2114, 01, 29, 12, 9)
+      end
 
       it "should handle a day offset across month boundaries" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { -2 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
 
@@ -39,7 +52,17 @@ module AresMUSH
         expect(ICTime.ictime).to eq DateTime.new(2113, 12, 30)
       end
       
+      it "should handle a hour offset across day boundaries" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 2 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2014, 01, 01, 23, 15) }
+        expect(ICTime.ictime).to eq DateTime.new(2114, 01, 02, 01, 15)
+      end
+      
       it "should handle a day offset that causes an invalid date" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 2 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
 
@@ -48,6 +71,7 @@ module AresMUSH
       end
       
       it "should show time too" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 2 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
 
@@ -56,6 +80,7 @@ module AresMUSH
       end
       
       it "should handle a slow time ratio" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
         allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 0.5 } 
@@ -66,6 +91,7 @@ module AresMUSH
       end
 
       it "should handle a fast time ratio" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
         allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 2 } 

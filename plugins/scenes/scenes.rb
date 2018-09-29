@@ -47,6 +47,8 @@ module AresMUSH
           return PoseNudgeCmd
         when "order"
           return PoseOrderCmd
+        when "ordertype"
+          return PoseOrderTypeCmd
         end
         
       when "quotecolor"
@@ -143,6 +145,8 @@ module AresMUSH
         return DeletePlotRequestHandler
       when "deleteScene"
         return DeleteSceneRequestHandler
+      when "downloadScene"
+        return DownloadSceneRequestHandler
       when "editPlot"
         return EditPlotRequestHandler
       when "editScene"
@@ -169,6 +173,8 @@ module AresMUSH
         return GetSceneTypesRequestHandler
       when "sceneLocations"
         return GetSceneLocationsHandler
+      when "unwatchScene"
+        return UnwatchSceneRequestHandler
       end
       nil
     end

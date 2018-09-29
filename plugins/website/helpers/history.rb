@@ -76,38 +76,19 @@ module AresMUSH
     
     def self.search(term)
       return [] if term.blank?
-      term = term.downcase.gsub(/[^0-9A-Za-z ]/, '')
+      term = term.downcase #.gsub(/[^0-9A-Za-z ]/, '')
       results = []
       [ Area, Character, WikiPage, Scene ].each do |klass|
         category = klass.name.downcase
         klass.all.select { |m| m.searchable? }.each do |model|
           
           if (model.search_blob  =~ /\b#{term}\b/i)
-            results << { category: category, name: model.search_name, id: model.id, summary: model.search_summary }
+            results << { category: category, name: model.search_name, id: model.search_id, summary: model.search_summary }
           end
         end
       end
       results
     end
     
-    def self.rebuild_search_index
-      new_index = {}
-      [ Area, Character, WikiPage, Scene ].each do |klass|
-        category = klass.name.downcase
-        klass.all.each do |model|
-          search_terms = model.search_terms.select { |t| t && t.length > 3 }.map { |t| t.downcase }.uniq
-        
-          search_terms.each do |t|
-            entry = { category: category, name: model.search_name, id: model.id }
-            if !new_index[t]
-              new_index[t] = [ entry ]
-            else
-              new_index[t] << entry
-            end
-          end
-        end
-      end
-      SearchIndex.master.update(index: new_index)
-    end
   end
 end

@@ -16,12 +16,19 @@ module AresMUSH
                   icdate: s.icdate,
                   can_view: enactor && Scenes.can_read_scene?(enactor, s),
                   is_private: s.private_scene,
-                  participants: Scenes.participants_and_room_chars(s).sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+                  participants: Scenes.participants_and_room_chars(s)
+                      .sort_by { |p| p.name }
+                      .map { |p| { 
+                         name: p.name, 
+                         id: p.id, 
+                         icon: Website.icon_for_char(p), 
+                         online: Login.is_online?(p) }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                   likes: s.likes,
                   is_unread: enactor && Scenes.can_access_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
-                  updated: OOCTime.local_long_timestr(enactor, s.updated_at)
-        
+                  updated: OOCTime.local_long_timestr(enactor, s.updated_at),
+                  watching: Scenes.is_watching?(s, enactor),
+                  participating: Scenes.is_participant?(s, enactor)        
                 }}
       end
       

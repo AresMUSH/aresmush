@@ -201,7 +201,7 @@ module AresMUSH
       def initialize(file)
         template = File.read(file)
         if (!AresMUSH.handlebars_context)
-          AresMUSH.handlebars_context = Handlebars::Handlebars.new
+          AresMUSH.handlebars_context = Handlebars::Context.new
         end
         @handlebars = AresMUSH.handlebars_context
         template_contents = File.read(file)
@@ -229,6 +229,10 @@ module AresMUSH
         end
         
         @handlebars.register_helper("not-eq") do |this, context, block|
+          ""
+        end
+        
+        @handlebars.register_helper("title") do |this, context, block|
           ""
         end
         
