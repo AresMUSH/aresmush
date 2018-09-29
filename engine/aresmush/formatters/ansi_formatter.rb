@@ -30,7 +30,7 @@ module AresMUSH
 
         "n" => ANSI.reset,
         "N" => ANSI.reset
-
+        
         # No, I did not forget 'blink'.  Blink is evil. :)
       }
     end

@@ -44,6 +44,10 @@ module AresMUSH
       self.char.fansi_on
     end
     
+    def beep
+      @connection.beep
+    end
+    
     def emit(msg)
       @connection.send_formatted "#{msg}", enable_fansi
     end 
