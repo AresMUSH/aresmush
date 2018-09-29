@@ -84,8 +84,8 @@ module AresMUSH
             #Equip Armor Specials
             if armor_specials
               if succeeds == "%xgSUCCEEDS%xn"
-                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
-                Custom.cast_equip_armor_specials(enactor, self.caster_combat, self.spell), nil, true
+                FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
+                Custom.cast_equip_armor_specials(enactor, self.caster_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
               end
