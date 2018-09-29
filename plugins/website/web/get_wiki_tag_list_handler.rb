@@ -12,8 +12,8 @@ module AresMUSH
         Scene.shared_scenes.each do |s|
           tags = tags.concat s.tags
         end
-      
-        tags.uniq
+
+        tags.uniq.select { |t| t != "" }
       end
     end
   end
