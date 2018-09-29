@@ -59,7 +59,7 @@ module AresMUSH
           end
 	end
         
-	Global.logger.info "Websocket started on #{host}:#{websocket_port}."
+        Global.logger.info "Websocket started on #{host}:#{websocket_port}."
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end
