@@ -25,6 +25,10 @@ module AresMUSH
           return { error: t('scenes.scene_already_completed') }
         end
         
+        if (!scene.room)
+          raise "Trying to pose to a scene that doesn't have a room."
+        end
+        
         pose = Website.format_input_for_mush(pose)
         
         command = ((pose.split(" ").first) || "").downcase
@@ -44,7 +48,7 @@ module AresMUSH
         end
         
 
-        Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose)
+        Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose, scene.room)
         
         {
         }
