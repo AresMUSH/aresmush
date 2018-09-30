@@ -8,6 +8,7 @@ module AresMUSH
         pose_type = request.args[:pose_type]
         is_setpose = pose_type == 'setpose'
         is_ooc = pose_type == 'ooc'
+        is_emit = pose_type == 'emit'
         
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -30,38 +31,20 @@ module AresMUSH
         if (command == "ooc")
           is_ooc = true
           pose = pose.after(" ")
+          pose = PoseFormatter.format(enactor.name, pose)
         elsif (command == "scene/set" || command == "emit/set")
           is_setpose = true
           pose = pose.after(" ")
         elsif (command == "emit")
           pose = pose.after(" ")
-        end
-        
-        if (is_ooc)
-          pose = PoseFormatter.format(enactor.name, pose)
-          color = Global.read_config("scenes", "ooc_color")
-          formatted_pose = "#{color}<OOC>%xn #{pose}"
-        elsif (is_setpose)
-          line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
-          formatted_pose = "#{line}%R#{pose}%R#{line}"
-          if (scene.room)
-            scene.room.update(scene_set: pose)
-          end
         else
           if (pose.start_with?(*PoseFormatter.pose_markers) && !pose.start_with?("\""))
             pose = PoseFormatter.format(enactor.name, pose)
           end
-          orig_pose = pose
-          formatted_pose = pose
         end
         
-        Scenes.add_to_scene(scene, pose, enactor, is_setpose, is_ooc)
-        if (scene.room)
-          scene.room.characters.each do |char|
-            message = Scenes.custom_format(formatted_pose, char, enactor, true, false, nil)
-            Login.emit_if_logged_in(char, message)
-          end
-        end
+
+        Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose)
         
         {
         }
