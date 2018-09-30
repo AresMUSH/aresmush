@@ -222,8 +222,8 @@ module AresMUSH
       log
     end
 
-    def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil, system_pose = false)
-      room = enactor.room
+    def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil, system_pose = false, room = nil)
+      room = room || enactor.room
       formatted_pose = pose
       
       if (is_ooc)
@@ -233,10 +233,10 @@ module AresMUSH
       if (system_pose)
         line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
         formatted_pose = "#{line}%R#{pose}%R#{line}"
-        enactor.room.update(scene_set: pose)
+        room.update(scene_set: pose)
       end
       
-      enactor.room.characters.each do |char|
+      room.characters.each do |char|
         client = Login.find_client(char)
         next if !client
         client.emit Scenes.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
@@ -246,8 +246,8 @@ module AresMUSH
       
       if (!is_ooc)
         if (room.room_type != "OOC")
-          enactor.room.update_pose_order(enactor.name.titlecase)
-          Scenes.notify_next_person(enactor.room)
+          room.update_pose_order(enactor.name.titlecase)
+          Scenes.notify_next_person(room)
         end
       end
     end
