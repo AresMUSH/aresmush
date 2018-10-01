@@ -75,7 +75,9 @@ module AresMUSH
       success = Custom.roll_noncombat_spell_success(caster, spell)
       message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :succeeds => success)
       enactor_room.emit message
-      Scenes.add_to_scene(enactor_room.scene, message)
+      if enactor_room.scene
+        Scenes.add_to_scene(enactor_room.scene, message)
+      end
     end
 
     def self.cast_heal(caster_combat, caster, spell)
@@ -104,16 +106,22 @@ module AresMUSH
           FS3Combat.heal(wound, heal_points)
           message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
           client.emit message
-          Scenes.add_to_scene(caster.room.scene, message)
+          if caster.room.scene
+            Scenes.add_to_scene(caster.room.scene, message)
+          end
         else
           message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
           client.emit message
-          Scenes.add_to_scene(caster.room.scene, message)
+          if caster.room.scene
+            Scenes.add_to_scene(caster.room.scene, message)
+          end
         end
       else
         message = t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
         client.emit message
-        Scenes.add_to_scene(caster.room.scene, message)
+        if caster.room.scene
+          Scenes.add_to_scene(caster.room.scene, message)
+        end
       end
     end
 
