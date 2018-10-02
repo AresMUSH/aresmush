@@ -24,6 +24,13 @@ module AresMUSH
       end
     end
 
+    def self.knows_potion?(char)
+      spell_names = char.spells_learned.map { |s| s.name }
+      list = spell_names.join " "
+      potion = list.include?("Potions")
+      return potion
+    end
+
 
     def self.find_spell_school(char, spell_name)
       Global.read_config("spells", spell_name.titlecase, "school")
