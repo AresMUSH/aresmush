@@ -11,7 +11,10 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.no_potions_spell') if !Custom.knows_spell?(enactor, "Potions")
+        client.emit "Working"
+        client.emit Custom.knows_potion?(enactor)
+        return t('custom.no_potions_spell') if !Custom.knows_potion?(enactor)
+
         return t('fs3skills.not_enough_points') if enactor.luck < 1
         return t('custom.not_spell') if !Custom.is_spell?(cmd.args)
         return t('custom.not_potion') if !Custom.is_potion?(cmd.args)

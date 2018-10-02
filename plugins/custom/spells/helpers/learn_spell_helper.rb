@@ -24,6 +24,12 @@ module AresMUSH
       end
     end
 
+    def self.knows_potion?(char)
+      spell_names = char.spells_learned.select { |s| s.name }
+      return true if (spell_names.include?("Potions (Air)") || spell_names.include?("Potions (Corpus)") || spell_names.include?("Potions (Earth)") ||
+spell_names.include?("Potions (Fire)") || spell_names.include?("Potions (Nature)") || spell_names.include?("Potions (Spirit)") || spell_names.include?("Potions (Water)") || spell_names.include?("Potions (Will)"))      
+    end
+
 
     def self.find_spell_school(char, spell_name)
       Global.read_config("spells", spell_name.titlecase, "school")
