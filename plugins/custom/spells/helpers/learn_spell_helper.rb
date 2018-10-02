@@ -2,7 +2,7 @@ module AresMUSH
   module Custom
 
     def self.count_spells_total(char)
-      spells_learned = char.spells_learned.to_a
+      spells_learned = char.spells_learned.select { |l| l.learning_complete }
       spells_learned.count
     end
 
