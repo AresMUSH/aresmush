@@ -4,9 +4,7 @@ summary: Managing the roster.
 ---
 # Managing the Roster
 
-> **Permission Required:** These commands require the Admin role or the permission: manage\_roster
-
-Players with the necessary permissions can add and remove people from the roster.  You can optionally include a contact person and notes about the roster character.
+**These commands require the Admin role or the permission: manage\_roster**
 
 `roster/add <name>=<contact>` - Adds someone to the roster.  Contact is optional.
 `roster/remove <name>` - Removes someone from the roster.

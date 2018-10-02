@@ -4,17 +4,11 @@ summary: Tracking IC relationships.
 ---
 # Tracking IC Relationships
 
-The relationships command lets you keep track of IC relationships your character has.  (For OOC friends, see [Friends](/help/friends).) You can provide a category for each relationship, like "Acquaintances", "Friends", etc.   You can also track relationships with NPCs too - just make sure their name doesn't overlap with a PC name.
-
-> **Note:**  All relationships are public and can be seen by anyone.  Please don't get bent out of shape if someone has an unflattering or inaccurate opinion of your character.  It's just IC.
-
-## Managing Relationships on the Web Portal
-
-You can add and edit relationships on the web portal.  See [Editing Your Web Profile](/help/web_profile) for details.
+The relationships command lets you keep track of IC relationships your character has.  (For OOC friends, see [Friends](/help/friends).) You can provide a category for each relationship, like "Acquaintances", "Friends", etc.   You can track relationships with NPCs too - just make sure their name doesn't overlap with a PC name.
 
 ## Adding and Editing Relationships
 
-If you prefer to manage your relationships in-game, you can do so.
+You can add and edit relationships on the web portal or in-game.  See [Editing Your Web Profile](/help/web_profile) for more.
 
 `relationships` - Sees your relationships.
 `relationships <name>` - Sees someone else's relationships.
