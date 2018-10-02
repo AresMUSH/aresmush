@@ -1,10 +1,7 @@
 <%= header %>
-%xh<%= t('demographics.full_census_title') %>%xn
+%xh<% fields.each do |f| %><%= show_title(f) %> <% end %>%xn
 <% paginator.items.each do |char| %>
-<%= left( char.name, 21 ) -%>
-<%= left( gender(char), 10 ) -%>
-<%= left( position(char), 22) -%>
-<%= callsign(char) %>
+<% fields.each do |f| %><%= show_field(char, f)%> <% end %>
 <% end %>
 <%= paginator.page_footer %>
 <%= footer %>

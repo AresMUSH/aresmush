@@ -1,6 +1,6 @@
 ---
 fs3combat:
-  default_npc_type: 'Henchman'
+  default_npc_type: 'Goon'
   npc_types:
     Goon:
       Default: 4
