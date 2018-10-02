@@ -18,10 +18,10 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("demographics.yml")
         config['demographics']['census_fields'] = 
         [
-          { 'field' => 'name', 'width' => 20, 'title' => 'Name' },
+          { 'field' => 'name', 'width' => 28, 'title' => 'Name' },
           { 'field' => 'demographic', 'width' => 10, 'title' => 'Gender', 'value' => 'gender' },
-          { 'field' => 'group', 'width' => 22, 'title' => 'Faction', 'value' => 'Faction' },
-          { 'field' => 'group', 'width' => 22, 'title' => 'Position', 'value' => 'Position' }
+          { 'field' => 'group', 'width' => 20, 'title' => 'Faction', 'value' => 'Faction' },
+          { 'field' => 'group', 'width' => 20, 'title' => 'Position', 'value' => 'Position' }
         ]
         DatabaseMigrator.write_config_file("demographics.yml", config)    
         
