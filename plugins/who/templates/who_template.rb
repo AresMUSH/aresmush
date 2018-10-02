@@ -3,8 +3,7 @@ module AresMUSH
     class WhoTemplate < ErbTemplateRenderer
       
       # NOTE!  Because so many fields are shared between the who and where templates,
-      # they are defined in these two modules, found in other files in this directory.
-      include WhoCharacterFields
+      # some are defined in a common file.
       include CommonWhoFields
     
       attr_accessor :online_chars
@@ -27,11 +26,7 @@ module AresMUSH
         value = field_config["value"]
         width = field_config["width"]
         
-        if (value)
-          field_eval = send(field.to_sym, char, value)
-        else
-          field_eval = send(field.to_sym, char)
-        end
+        field_eval = Profile.general_field(char, field, value)
         left(field_eval, width)
       end
       
