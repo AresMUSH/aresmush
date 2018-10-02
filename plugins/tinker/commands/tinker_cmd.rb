@@ -14,11 +14,15 @@ module AresMUSH
 
 
       def handle
-        roll = enactor.combatant.roll_ability("Fire")
-        client.emit roll
-        roll2 = enactor.roll_ability("Fire")
-        client.emit roll2[:successes]
-        client.emit roll2
+        char = enactor
+        spell_names = char.spells_learned
+        values = spell_names.map {|x| x.name}
+        names = values.to_s
+        potions = values.any?("Potions")
+
+
+        client.emit values.to_s
+        client.emit potions
       end
 
 
