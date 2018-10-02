@@ -9,9 +9,9 @@ You can set your secret preferences to let admin know whether you're interested 
 
 `secrets/preference <preference>` - Set your secret preference.
 Preferences are:
-- None - No secrets at all
-- Known - You know the secret about your character
-- GM - Only GMs know the secret about your character until it comes out in play.
+* None - No secrets at all
+* Known - You know the secret about your character
+* GM - Only GMs know the secret about your character until it comes out in play.
 
 `secrets` - View known secrets.
 
