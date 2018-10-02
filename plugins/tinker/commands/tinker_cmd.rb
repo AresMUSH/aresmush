@@ -15,15 +15,14 @@ module AresMUSH
 
       def handle
         char = enactor
-        spell_names = char.spells_learned
-        values = spell_names.map {|x| x.name}
-        names = values.to_s
-        potions = values.any?("Potions")
-
-
-        client.emit values.to_s
-        client.emit potions
+        spell_names = char.spells_learned.map { |s| s.name }
+        list = spell_names.join " "
+        potion = list.include?("Potions")
+        client.emit spell_names
+        client.emit list
+        client.emit potion
       end
+
 
 
 
