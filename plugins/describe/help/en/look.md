@@ -5,6 +5,7 @@ order: 1
 aliases:
 - adesc
 - glance
+- here
 ---
 # Looking Around
 
