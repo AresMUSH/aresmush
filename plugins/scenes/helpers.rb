@@ -93,7 +93,9 @@ module AresMUSH
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
       Scenes.new_scene_activity(scene)
-      Scenes.handle_scene_participation_achievement(scene)
+      scene.participants.each do |char|
+        Scenes.handle_scene_participation_achievement(char)
+      end
     end    
     
     def self.participants_and_room_chars(scene)
@@ -332,24 +334,21 @@ module AresMUSH
       end
     end
     
-    def self.handle_scene_participation_achievement(scene)
-      scene.participants.each do |char|
-        scenes = char.scenes_starring
-        count = scenes.count
+    def self.handle_scene_participation_achievement(char)
+      scenes = char.scenes_starring
+      count = scenes.count
         
-        Scenes.scene_types.each do |type|
-          if (scenes.any? { |s| s.scene_type == type })
-            message = "Participated in a #{type} scene."
-            Achievements.award_achievement(char, "scene_participant_#{type}", 'story', message)
-          end
+      Scenes.scene_types.each do |type|
+        if (scenes.any? { |s| s.scene_type == type })
+          message = "Participated in a #{type} scene."
+          Achievements.award_achievement(char, "scene_participant_#{type.downcase}", 'story', message)
         end
+      end
         
-        
-        [ 1, 10, 20, 50, 100 ].each do |level|
-          if ( count >= level )
-            message = "Participated in #{level} #{level == 1 ? 'scene' : 'scenes'}."
-            Achievements.award_achievement(char, "scene_participant_#{count}", 'story', message)
-          end
+      [ 1, 10, 20, 50, 100 ].each do |level|
+        if ( count >= level )
+          message = "Participated in #{level} #{level == 1 ? 'scene' : 'scenes'}."
+          Achievements.award_achievement(char, "scene_participant_#{level}", 'story', message)
         end
       end
     end
