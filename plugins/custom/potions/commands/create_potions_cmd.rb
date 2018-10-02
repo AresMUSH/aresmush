@@ -11,8 +11,6 @@ module AresMUSH
       end
 
       def check_errors
-        client.emit "Working"
-        client.emit Custom.knows_potion?(enactor)
         return t('custom.no_potions_spell') if !Custom.knows_potion?(enactor)
 
         return t('fs3skills.not_enough_points') if enactor.luck < 1
