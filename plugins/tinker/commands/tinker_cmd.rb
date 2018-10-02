@@ -15,7 +15,12 @@ module AresMUSH
 
       def handle
         char = enactor
-        client.emit char.fs3_luck
+        spell_names = char.spells_learned.map { |s| s.name }
+        list = spell_names.join " "
+        potion = list.include?("Potions")
+        client.emit spell_names
+        client.emit list
+        client.emit potion
       end
 
 
