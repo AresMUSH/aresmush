@@ -14,12 +14,10 @@ module AresMUSH
 
 
       def handle
-        roll = enactor.combatant.roll_ability("Fire")
-        client.emit roll
-        roll2 = enactor.roll_ability("Fire")
-        client.emit roll2[:successes]
-        client.emit roll2
+        char = enactor
+        client.emit char.fs3_luck
       end
+
 
 
 
