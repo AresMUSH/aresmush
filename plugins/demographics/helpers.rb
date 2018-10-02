@@ -24,11 +24,20 @@ module AresMUSH
       return all_groups[key]
     end
     
+    def self.census_types
+      types = Demographics.all_groups.keys.map { |t| t.titlecase }
+      types << 'Gender'
+      if (Ranks.is_enabled?)
+        types << 'Rank'
+      end
+      types.sort
+    end
+    
     def self.census_by(&block)
       counts = {}
       Chargen.approved_chars.each do |c|
         val = yield(c)
-        if (val)
+        if (!val.blank?)
           count = counts.has_key?(val) ? counts[val] : 0
           counts[val] = count + 1
         end
