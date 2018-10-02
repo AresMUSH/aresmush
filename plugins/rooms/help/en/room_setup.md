@@ -10,9 +10,9 @@ aliases:
 ---
 # Room Setup
 
-> **Permission Required:** These commands require the Admin role or the build permission.
+> **These commands require the Admin role or the build permission.**
 
-Once a room is built, there are several properties you may wish to set.  All of these properties are optional.
+All of these properties are optional.
 
 ## Areas
 
@@ -32,7 +32,6 @@ Grid coordinates can help people navigate the grid.  You can use whatever coordi
 The `roomtype` property ties in with the 'status' system, to tell whether someone is in the IC or OOC zone.  RPR is for roleplay rooms, which are counted as IC but are technically not on the grid.
 
 `roomtype [<room name>=]<IC, OOC or RPR>` - Sets a room as part of the IC, OOC or RPR (Roleplay Room) zone.
-
 
 `foyer <on or off` - Marks whether a room is a foyer, like an apartment or the
         RP room hub.  Numbered exits will be shown in a special way.

@@ -11,7 +11,7 @@ aliases:
 ---
 # The Grid
 
-The MUSH grid consists of **Rooms** connected by **Exits**.  This is called the Grid.
+The MUSH grid consists of **Rooms** connected by **Exits**.  This is called the grid.
 
 The room description shows available exits and their destinations.  For example:
       [N] Green Hills

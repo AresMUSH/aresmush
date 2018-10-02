@@ -23,15 +23,13 @@ There are a number of 'guest' characters available that you can borrow just to l
 
 When you connect, the game will tell you your character name:
 
-> %% Your temporary guest character name is Guest-1.
+> %% Your temporary guest character name is Trout-Guest.
 
-That way, if you see someone addressing 'Guest-1' you'll know they're talking to you.
+That way, if you see someone addressing 'Trout-Guest' you'll know they're talking to you.
 
 ## Creating a Character
 
-When you're ready, you'll want to create your own character.  Your character name can be your first name, last name, or a nickname.  Some games have traditions for how they prefer to name characters.  Multi-word names are not permitted.  
-
-You should take care to consider the game's setting when choosing your name.  'Starkiller' is probably not an appropriate name for a modern-day MUSH, for instance, and you should avoid well-known fictional character names unless the game expressly allows them.
+When you're ready, you'll want to create your own character.  Your character name can be your first name, last name, or a nickname.  Multi-word names are not permitted.  
 
 `create <name> <password>` - Creates a character.
 

@@ -14,17 +14,16 @@ aliases:
 - scene set
 ---
 # Scenes
+**Do `qr scene` to see a quick reference of all scene commands.**
 
-While you can always do free-form RP on the grid or in the RP room, there are a variety of features available to you if you use the **Scenes** system to manage your RP scene.  Some features that the scenes system provides:
+The scenes system:
 
-* Creating temprooms for private scenes or places not on the grid.
-* Advertising your scene as open so others know they're welcome to join.
-* Capture a log of poses, skill rolls and combat messages without the OOC spam.
-* Share a log to the game's web portal and/or wiki (if enabled).
+* Creates temprooms for places not on the grid.
+* Advertises your scene as open so others know they're welcome to join.
+* Captures a log of poses, skill rolls and combat messages without the OOC spam.
+* Shares a log to the game's web portal. See [Scene Logging](/help/logging) for more.
 
-The scene system automatically maintains a log of the scene, including combat and skill roll messages.   See [Scene Logging](/help/logging) for more information.
-
-## Starting  a Scene
+## Starting a Scene
 
 When you start a scene, you can create a temporary room or start one in the room you're in.  Temp rooms are automatically recycled when the scene ends.
 
@@ -33,44 +32,27 @@ When you start a scene, you can create a temporary room or start one in the room
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
 
-## Scene Privacy
-
-A scene can either be open (anyone's invited) or private.  Scenes on the grid are open by default.  Scenes in RP rooms are private.  The scene's organizer can change the privacy setting. 
+A scene can either be open (anyone's invited) or private (only those invited should join). Open scenes are visible on the web portal while active, and private scenes are not. You can set a scene private and still share the log afterwards.
 
 `scene/privacy [<#>=]<private/open>` - Changes the privacy level.
 
-> **Tip:** It's rude to create a private scene in a public room on the main grid. Use a RP room or temp room instead.
-
-## Joining Scenes
-
-To join an open scene, you can use the scene/join command.  To join a private scene, you'll need a meetme invitation (see [Meetme](/help/meetme).
+## Finding & Joining Scenes
 
 `scenes` - Lists active scenes.
-`scene/join <#>` - Joins a scene.
+`scene <#>.` - See a scene's information.
+`scene/join <#>` - Joins an open scene.
+`meetme <list of names>` - Invites others to join your private scene.
 
 ## Setting Scene Info
 
 You can control several properties about the scene.  These are used for [Scene Logging](/help/logging) and to advise the participants about what's going on.
 
-* Location - Setting the scene's location copies over the description from another room.
-* Title - Scene title.
-* Summary - A summary of the scene.
-* Scene Type - What kind of scene it is.
-* IC Date - When it happened.  (defaults to the date when the scene started)
-* Scene Set - (Optional) A temporary description added to the base room desc.
-
-> **Tip:** You can also use scene/emit to emit a highlighted set pose that isn't saved to the room desc.  Scene sets on empty rooms will be cleared periodically.
-
-You can see the current scene info by typing `scene <#>.`
-
 `scene/title [<#>=]<title>` - Sets the scene title.
 `scene/summary [<#>=]<summary>` - Sets the scene summary.
-`scene/icdate [<#>=]<icdate>` - Sets the scene date.
-`scene/location [<#>=]=[<area>/]<location>` - Sets the scene location.
-`scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types.
-`scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
-
-> **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
+`scene/icdate [<#>=]<icdate>` - Sets the scene IC date. Defaults to today's date.
+`scene/location [<#>=]=[<area>/]<location>` - Sets the scene location. Defaults to the room you are in.
+`scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types. Defaults to social.
+`scene/set <desc>` - Sets the scene in the current room and adds a temporary message to the desc, so that new players can refer to it.  Leave blank to clear.
 
 ## Stopping a Scene
 

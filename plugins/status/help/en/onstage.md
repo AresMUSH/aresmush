@@ -12,7 +12,7 @@ aliases:
 
 The game is divided into an "onstage" area and an "offstage" area, like an imaginary theater.  These areas are also known as the IC (In Character) or OOC (Out of Character) areas.
 
-Onstage areas are where the game scenes happen.  Offstage areas are for administration and socializing.  You can get back and forth from these areas using the onstage/offstage commands.  
+Onstage areas are where the game scenes happen.  Offstage areas are for administration.  You can get back and forth from these areas using the onstage/offstage commands.  
 
 `onstage` - Travels to the IC area.
 `offstage` - Goes OOC to the offstage area.
