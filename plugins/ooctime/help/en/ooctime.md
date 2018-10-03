@@ -13,4 +13,4 @@ Ares will display all dates and times according to your local timezone.  If you 
 
 Timezone names come from the world standard [timezone database](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Just enter the name - for instance, "Pacific/Fiji".   Ares also recognizes some of the common abbreviations (EST, CST, MST, PST, GMT, AST) and tries to map them to the closest available timezone option.  EST for example maps to "America/New_York".
 
-The `time` command shows you a few bits of time-related information, including your local time.  You can compare this to your wall clock to make sure your timezone is set correctly.
+`time` - Shows you your local time, the game's IC time, and server time. 

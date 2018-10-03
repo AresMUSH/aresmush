@@ -5,9 +5,9 @@ summary: Creating a character with the web portal.
 
 # Creating a Character with the Web Portal
 
-Once you have a character, you can perform the rest of [Character Creation](/help/chargen) on the web.  To get a character, you can create one from the [connect screen](/help/connect) or  [register](/help/website/web_login) on the web portal.
+To get a character, you can create one from the [connect screen](/help/connect) or  [register](/help/website/web_login) on the web portal.
 
-The web chargen is far easier than the in-game one.  All the stages are together on the same page, and there are visual cues and links to all the information you'll need.
+All character generation is done on the web portal, where all the stages are together on the same page and there are visual cues and links to all the information you'll need.
 
 ## Setting Character Information
 

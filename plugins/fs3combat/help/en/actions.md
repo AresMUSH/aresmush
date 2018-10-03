@@ -6,6 +6,9 @@ aliases:
 - attacks
 - stance
 - actions
+- combat_actions
+- combat_attack
+- combat_attacks
 
 ---
 # FS3 Combat Actions

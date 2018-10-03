@@ -7,12 +7,6 @@ aliases:
 ---
 # Character Creation
 
-Character creation (aka chargen) here works a little differently than what you might be used to from other games.  
+This game uses a web-based applications system for character approvals.
 
-You can do chargen either on the [Web Portal](/help/web_portal) or in-game.  They both have the same information - it's just a matter of preference.
- 
-You can access the chargen commands from anywhere on the game.  The chargen tutorial will prompt you step by step.
-
-`cg/start` - Starts chargen.
-`cg/next` and `cg/prev` - Navigates the stages in chargen.
-`cg` - View the current chargen page again.
+Log in to the web portal with your character name and password, then visit [Chargen](spiritlakemu.com/chargen) to complete your application online. As you are going through character creation, you can save and review your application.  The system will flag common issues.
