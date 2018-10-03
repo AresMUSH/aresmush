@@ -13,7 +13,7 @@ aliases:
 
 `spell/cast[multi] <npc>/<spell>[=<target>]` - Make NPCs and other combatants cast in combat.
 
-**Shortcuts:** cast, castmulti, castm
+**Shortcuts:** `cast`, `castmulti`, `castm`
 
 `spell/learn` <spell> - Spends 1 XP to work toward learning a spell.
 `spell/discard` <spell> - Discard a spell. You do not recover any XP, so be sure before doing this.
