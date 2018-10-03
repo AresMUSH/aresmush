@@ -17,6 +17,18 @@ aliases:
 - organizing_combat
 - start_combat
 - stop_combat
+- combat_start
+- combat_npc
+- combat_mod
+- combat_modifier
+- combat_attackmod
+- combat_defensemod
+- combat_lethalmod
+- combat_team
+- combat_stop
+- combat_newturn
+- combat_log
+- combat_target
 ---
 # Organizing FS3 Combat
 
@@ -26,7 +38,7 @@ This is a quick reference for combat organizer commands. Also  check out the [Ru
 `combat/start [<mock or real>]` - Starts a combat (default real).
 `combat/stop <combat #>` - Stops a combat.
 `combats` - Shows all combats going on.
-`combat/newturn` - Starts the first turn.
+`combat/newturn` - Starts the first turn. Alias newturn.
 
 `combat/join <list of names>=<combat #>[/<type>]` - Adds characters or NPCs to combats.
   Use `combat/types` to see available types and their associated gear.
@@ -42,7 +54,7 @@ Most commands support multiple names as well, so you can do: combat/attack A B/C
 **See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
 
 `combat/join <list of names>=<combat #>[/<type>]` - Creates temporary NPCs and adds them to the combat. 'Type' affects their available hitlocs. See `combat/types` for a list.
-`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be One, Two, Three, Four, Five, Six, Seven, Eight, Nine, or Ten. Levels Seven-Ten are Miniboss to Boss levels.
+`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be One, Two, Three, Four, Five, Six, Seven, Eight, Nine, or Ten. Levels Seven-Ten are Miniboss to Boss levels. See `combat/npcs` for more info.
 `combat/targets` - See a breakdown of who's targeting whom.
 
 `combat/team <list of names>=<team#>` - Switches teams.
@@ -53,7 +65,7 @@ Most commands support multiple names as well, so you can do: combat/attack A B/C
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.
 `combat/ai force` - Auto-targets NPCs even if they have an action set.
 
-## Damage and KOs
+## Damage, KOs, and death
 Admins, combat organizers, and characters with the manage_combat permission can add or modify damage.
 
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
