@@ -7,8 +7,6 @@ aliases:
 - mod
 - mods
 - modifier
-- combat/start
-- combat/stop
 - combat_organizing
 - combat_organize
 - combat_organizer
