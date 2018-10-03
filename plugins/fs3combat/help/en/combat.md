@@ -13,7 +13,7 @@ To learn how FS3 combat works, see the [Combat Guide](/wiki/combat_guide).
 >**Tip:** You can use **qr <command>** to see the correct syntax for a command.
 
 * [Combat All](/help/combat_all) - All combat commands in one huge spammy place
-* [Combat Joining](/help/joining) - Joining and leaving a combat
+* [Combat Join](/help/joining) - Joining and leaving a combat
 * [Combat Actions](/help/actions) - Preparing for combat and taking actions
 * [Combat Gear](/help/gear) - Weapons and armor
 * [Combat Luck](/help/combat_luck) - Using luck in combat

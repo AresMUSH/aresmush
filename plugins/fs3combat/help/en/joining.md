@@ -3,6 +3,7 @@ toc: FS3 Combat
 summary: Joining and leaving a combat
 alias:
 - combat_join
+- combat_joining
 - combat_leave
 - combat_type
 ---
