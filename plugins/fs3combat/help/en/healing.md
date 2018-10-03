@@ -17,22 +17,21 @@ aliases:
 
 ## Damage
 
-`damage` - Views your damage. 
+`damage` - Views your damage.
 `damage <name>` - Views someone else's damage.
 
-The healing progress bar on the damage display shows how close you are to reducing the wound by one level. 
+The healing progress bar on the damage display shows how close you are to reducing the wound by one level.
 
 ## Treating
 
 For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound. Requires Medicine.
 
-`combat/treat <name>` - In combat, treats someone's wounds with immediate first aid. 
+`combat/treat <name>` - In combat, treats someone's wounds with immediate first aid.
 `treat <name>` - Treats someone's wounds with immediate first aid.
 
 ## Reviving
 `combat/rally <name>` - Rally a knocked out person (without first aid).
 `combat/hero` - Spends a luck point to un-KO yourself. This doesn't erase the damage, it just lets you soldier on in spite of it.
-
 
 ## Healing
 
@@ -45,7 +44,7 @@ For more longer-term healing, doctors can use the heal command. You will continu
 
 ## Hospitals
 
-When a room is marked as a hospital, people who are there heal faster. 
+When a room is marked as a hospital, people who are there heal faster.
 
 `hospitals` - Finds hospitals.
 `hospital/on` or `hospital/off`- Toggles whether the current room is a hospital.
