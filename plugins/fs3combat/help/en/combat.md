@@ -13,10 +13,10 @@ To learn how FS3 combat works, see the [Combat Guide](/wiki/combat_guide).
 >**Tip:** You can use **qr <command>** to see the correct syntax for a command.
 
 * [Combat All](/help/combat_all) - All combat commands in one huge spammy place
-* [Combat Join](/help/joining) - Joining and leaving a combat
-* [Combat Actions](/help/actions) - Preparing for combat and taking actions
-* [Combat Gear](/help/gear) - Weapons and armor
+* [Combat Joining](/help/combat_joining) - Joining and leaving a combat
+* [Combat Actions](/help/combat_actions) - Preparing for combat and taking actions
+* [Combat Gear](/help/combat_gear) - Weapons and armor
 * [Combat Luck](/help/combat_luck) - Using luck in combat
-* [Combat Organizing](/help/organizing) - Starting, stopping, and running combat_attack
+* [Combat Organizing](/help/combat_organizing) - Starting, stopping, and running combat_attack
 * [NPC](/help/npc) - Using NPCs
 * [Healing](help/healing) - Damage and healing
