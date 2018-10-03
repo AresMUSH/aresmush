@@ -8,42 +8,22 @@ aliases:
 ---
 # Managing FS3
 
-> **Permission Required:** These commands require the Admin role or the permission: manage\_abilities
-
-Those with the proper permissions can adjust skills, luck and XP.
-
-## Viewing Sheets
-
-Some games may have multiple pages of the character sheet, and some pages might be configured to be private.  Private sheets can only be viewed by people with the `view_sheets` permission.
-
-`sheet <name>`
+> **These commands require the Admin role or the permission: manage\_abilities**
 
 ## Roll Results
 
-Roll results can be sent to a channel, configured in the FS3Skills settings.  Storytellers can join that channel in order to judge situations even without being in the room.  The roll command will also let you roll for other people, if storytellers prefer to roll something privately.
+Roll results can be sent to a channel.  Storytellers can join that channel in order to judge situations even without being in the room.  The roll command will also let you roll for other people, if storytellers prefer to roll something privately.
 
 ## Adjusting Skills
 
-You can adjust skill levels:
+`ability <name>=<ability>/<rating>` - Adjust a skill level. To remove a skill, set its rating to 0.
 
-`ability <name>=<ability>/<rating>`
+`specialty/add <name>=<ability name>/<specialty>` - Add a specialty.
+`specialty/remove <name>=<ability name>/<specialty>` - Remove a specialty.
 
-To remove a skill, just set its rating to 0.
+## Awarding Luck & XP
 
-You can also adjust specialties:
-
-`specialty/add <name>=<ability name>/<specialty>`
-`specialty/remove <name>=<ability name>/<specialty>`
-
-## Awarding Luck
-
-You can award luck points.
-
-`luck/award <name>=<number of luck points>/<reason>`
-
-## Managing XP
-
-You can award XP and view someone's XP display.
+`luck/award <name>=<number of luck points>/<reason>` - Award luck points. This will take decimals (.5), but not fractions (1\/2).
 
 `xp/award <name>=<# of XP>/<reason>` - Awards XP.
 `xp <name>` - Views someone's XP progress.

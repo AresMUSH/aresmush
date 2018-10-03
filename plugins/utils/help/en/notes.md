@@ -6,7 +6,7 @@ aliases:
 ---
 # Notes
 
-You cannot set attributes in AresMUSH the way you can on other MU* servers.  The database works completely differently.  But you can record notes using the in-game notes system.
+You can record notes using the in-game notes system.
 
 `notes` - Shows your notes.
 `note/add <name>=<text>` - Create or update a note.
