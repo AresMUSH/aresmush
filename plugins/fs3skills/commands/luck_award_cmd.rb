@@ -33,8 +33,8 @@ module AresMUSH
           Global.logger.info "#{self.luck} Luck Points Awarded by #{enactor_name} to #{model.name} for #{self.reason}"
 
 
-          job_message = t('custom.award_luck', :name => enactor.name, :target => model.name, :luck => self.luck, :reason => self.reason)
-          category = Jobs.system_category
+          job_message = t('custom.awarded_luck', :name => enactor.name, :target => model.name, :luck => self.luck, :reason => self.reason)
+          category = Global.read_config("jobs", "luck_category")
           Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, Game.master.system_character)
 
 
