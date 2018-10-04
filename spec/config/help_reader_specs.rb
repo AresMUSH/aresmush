@@ -43,6 +43,12 @@ module AresMUSH
         expect(@reader.help_keys["file"]).to eq "file"
         expect(@reader.help_keys["files"]).to eq "file"
       end
+      
+      it "should set the contents" do
+        expect(MarkdownFile).to receive(:new).with("file") { @markdown }
+        @reader.load_help_file("file", "Plugin")
+        expect(@reader.help_text["file"]).to eq "contents"
+      end
     end
     
     describe :unload_help do

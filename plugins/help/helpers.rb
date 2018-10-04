@@ -72,12 +72,9 @@ module AresMUSH
     end
    
     def self.topic_contents(topic_key)
-      Global.logger.debug "Reading help file #{topic_key}"
-      topic = Help.topic_index[topic_key]
+      topic = Global.help_reader.help_text[topic_key]
       raise "Help topic #{topic_key} not found!" if !topic
-      path = topic["path"]
-      md = MarkdownFile.new(path)
-      md.contents
+      topic
     end
     
     def self.strip_prefix(arg)
