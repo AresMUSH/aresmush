@@ -12,7 +12,7 @@ module AresMUSH
 
         combat = enactor.combat
 
-        if (combat.organizer != enactor)
+        if (combat.organizer != enactor && !enactor.is_admin?)
           client.emit_failure t('fs3combat.only_organizer_can_do')
           return
         end
