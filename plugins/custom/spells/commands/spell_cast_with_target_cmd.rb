@@ -197,9 +197,9 @@ module AresMUSH
             #Equip Weapon
             if weapon
               if fs3_attack
-                weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
                 FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
                 FS3Combat.set_weapon(enactor, caster_combat, weapon)
+                weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
                 if is_stun
                   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SubdueAction, target_name)
                 elsif weapon_type == "Explosive"
