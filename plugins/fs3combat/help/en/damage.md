@@ -6,7 +6,7 @@ aliases:
 - heal
 - healing
 - hospitals
-- damage
+- combat_damage
 ---
 
 # Damage
