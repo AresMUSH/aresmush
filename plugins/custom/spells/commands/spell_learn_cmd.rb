@@ -46,7 +46,7 @@ module AresMUSH
               client.emit_success t('custom.complete_learning', :spell => self.spell)
               message = t('custom.xp_learned_spell', :name => enactor.name, :spell => self.spell, :level => self.spell_level, :school => self.school)
               category = Jobs.system_category
-              #Jobs.create_job(category, t('custom.xp_learned_spell_title', :name => enactor.name, :spell => self.spell), message, Game.master.system_character)
+              Jobs.create_job(category, t('custom.xp_learned_spell_title', :name => enactor.name, :spell => self.spell), message, Game.master.system_character)
             end
           end
         else

@@ -31,7 +31,7 @@ Valid filters are:
 ## Creating Jobs
 
 `job/create <category>=<title>/<description>` - Creates a new job
-        Categories are APP (Applications), BUILD (Building), CODE, MISC, RP, SPELL and REQ (Request).
+        Categories are APP (Applications), BUILD (Building), CODE, MISC, PLOT, SPELL, and REQ (Request).
 
 ## Changing Job Status
 
