@@ -29,6 +29,13 @@ module AresMUSH
       topics
     end
     
+    def self.find_quickref(topic)
+      search = strip_prefix(topic).downcase.gsub(/[\/ ]/, "_")
+      search = search.split("_").first
+      return Help.topic_keys.select { |k, v| k =~ /#{search}/ }
+    end
+        
+    
     def self.find_topic(topic)
       search = strip_prefix(topic).downcase.gsub(/[\/ ]/, "_")
             
