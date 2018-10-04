@@ -123,3 +123,5 @@ en:
       # ----------------------------
       awarded_luck: "%{name} has awarded %{target} %{luck} luck points. %R%RReason: %{reason}"
       awarded_luck_title: "%{target} awarded %{luck} luck."
+      spent_luck: "%{name} has spent 1 luck point. %R%RReason: %{reason}"
+      spent_luck_title: "%{name} spent luck."
