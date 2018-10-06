@@ -16,7 +16,4 @@ Potions can only be made from certain spells marked in the database. They take 1
 `potion/use <potion>` - Use a potion on yourself.
 `potion/use <potion>=<name>` - Use a potion on someone else.
 
-**Admin only**
-`potion/add <name>=<potion>` - Adds a potion to a character.
-`potion/update <name>=<#>/<hours left>` - Adjust the hours left in potion creating.
-`luck/award <name>=<num>/<reason>` - Adds a luck point to a character so they can create a potion for someone else.
+`potion/update <name>=<#>/<hours left>` - Admin-only command to adjust the hours left in potion creating.
