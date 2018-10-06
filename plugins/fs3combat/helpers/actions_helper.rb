@@ -50,7 +50,7 @@ module AresMUSH
         combatant.update(subdued_by: nil)
       end
       if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
-        combatant.update(action_klass: "AresMUSH::FS3Combat::PassAction")
+        combatant.update(action_klass: nil)
       end
       combatant.update(has_cast: false)
       combatant.update(damage_lethality_mod: 0)
