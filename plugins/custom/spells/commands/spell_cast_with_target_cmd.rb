@@ -136,7 +136,7 @@ module AresMUSH
             #Set Lethal Mod
             if lethal_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_lethal_mod_with_target(self.caster_combat, self.target_combat, self.spell)
+                Custom.cast_lethal_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
               end
@@ -145,7 +145,7 @@ module AresMUSH
             #Set defense mod
             if defense_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_defense_mod_with_target(self.caster_combat, self.target_combat, self.spell)
+                Custom.cast_defense_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
               end
@@ -154,7 +154,7 @@ module AresMUSH
             #Set attack mod
             if attack_mod
               if succeeds == "%xgSUCCEEDS%xn"
-                Custom.cast_attack_mod_with_target(self.caster_combat, self.target_combat, self.spell)
+                Custom.cast_attack_mod_with_target(self.caster, self.target_combat, self.spell)
               else
                 FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
               end
@@ -196,7 +196,7 @@ module AresMUSH
 
             #Equip Weapon
             if weapon
-              if fs3_attack
+              if fs3_attack                
                 FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
                 FS3Combat.set_weapon(enactor, caster_combat, weapon)
                 weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
