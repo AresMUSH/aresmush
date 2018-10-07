@@ -5,13 +5,14 @@ module AresMUSH
       succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
       damage_desc = Global.read_config("spells", spell, "damage_desc")
       damage_inflicted = Global.read_config("spells", spell, "damage_inflicted")
+      client = Login.find_client(caster_combat)
       if succeeds == "%xgSUCCEEDS%xn"
         FS3Combat.inflict_damage(target, damage_inflicted, damage_desc)
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_damage', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name, :damage_desc => spell.downcase), nil, true
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_roll_spell_with_target(caster_combat, target, spell)
@@ -22,7 +23,7 @@ module AresMUSH
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_noncombat_roll_spell_with_target(caster, target, spell)
@@ -45,7 +46,7 @@ module AresMUSH
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_non_combat_heal_with_target(caster, target, spell)
@@ -75,10 +76,10 @@ module AresMUSH
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
-    # def self.cast_revive(caster, target, target_combat, spell)
+    # def cast_revive(caster, target, target_combat, spell)
     #   succeeds = Custom.roll_combat_spell_success(caster, spell)
     #   if succeeds == "%xgSUCCEEDS%xn"
     #     Custom.undead(target)
@@ -96,7 +97,7 @@ module AresMUSH
       new_mod = current_mod + lethal_mod
       target_combat.update(damage_lethality_mod: new_mod)
       FS3Combat.emit_to_combat caster_combat.combat, t('cast_mod', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target =>  target_combat.name, :mod => lethal_mod, :type => "lethality", :total_mod => target_combat.damage_lethality_mod), nil, true
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_defense_mod_with_target(caster_combat,  target_combat, spell)
@@ -106,7 +107,7 @@ module AresMUSH
       new_mod = current_mod + defense_mod
       target_combat.update(defense_mod: new_mod)
       FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => target_combat.defense_mod), nil, true
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_attack_mod_with_target(caster_combat, target_combat, spell)
@@ -116,7 +117,7 @@ module AresMUSH
       new_mod = current_mod + attack_mod
       target_combat.update(attack_mod: new_mod)
       FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => target_combat.attack_mod), nil, true
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_spell_mod_with_target(caster_combat, target_combat, spell)
@@ -126,7 +127,7 @@ module AresMUSH
       new_mod = current_mod + spell_mod
       target_combat.update(spell_mod: new_mod)
       FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => target_combat.spell_mod), nil, true
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_stance_with_target(caster_combat, target_combat, spell)
@@ -138,7 +139,7 @@ module AresMUSH
       else
         FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
       end
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_equip_weapon_with_target(enactor, caster_combat, target_combat, spell)
@@ -157,14 +158,14 @@ module AresMUSH
       weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
       weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
       FS3Combat.set_weapon(enactor, target_combat, target_combat.weapon, weapon_specials)
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
     def self.cast_equip_armor_with_target(enactor, caster_combat, target_combat, spell)
       FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn"), nil, true
       armor = Global.read_config("spells", spell, "armor")
       FS3Combat.set_armor(enactor, target_combat, armor)
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
 
@@ -172,7 +173,7 @@ module AresMUSH
       armor_specials_str = Global.read_config("spells", spell, "armor_specials")
       armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
       FS3Combat.set_armor(enactor, target_combat, target_combat.armor, armor_specials)
-      FS3Combat.set_action(client, self.caster_combat, self.caster_combat.combat, self.caster_combat, FS3Combat::SpellAction, "")
+      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
   end
