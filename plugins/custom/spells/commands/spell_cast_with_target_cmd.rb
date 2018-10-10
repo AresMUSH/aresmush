@@ -96,7 +96,7 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              Custom.cast_roll_spell_with_target(self.caster_combat, self.target, self.spell)
+              Custom.set_spell_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::RollSpellAction, spell, target_name)
             end
 
             #Inflict damage
@@ -196,7 +196,7 @@ module AresMUSH
 
             #Equip Weapon
             if weapon
-              if fs3_attack                
+              if fs3_attack
                 FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
                 FS3Combat.set_weapon(enactor, caster_combat, weapon)
                 weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")

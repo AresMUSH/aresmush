@@ -16,6 +16,20 @@ module AresMUSH
       return true if has_cast
     end
 
+    def self.set_spell_action(client, enactor, combat, caster_combat, action_klass, spell, args)
+         action = action_klass.new(caster_combat, args)
+         error = action.prepare
+         spell = spell
+         caster_combat = caster_combat
+         if (error)
+           client.emit_failure error
+           return
+         end
+         caster_combat.update(action_klass: action_klass)
+         caster_combat.update(action_args: args)
+         FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(caster_combat.name, enactor)
+       end
+
     #Can read armor or weapon
     def self.is_magic_gear(gear)
       FS3Combat.weapon_stat(gear, "is_magic")
