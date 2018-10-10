@@ -100,9 +100,9 @@ en:
       # FS3 COMBAT SPELL
       # ----------------------------
 
-      spell_action_msg_long: "%{name} casts a spell this turn."
+      spell_action_msg_long: "%{name} will cast a spell this turn."
       spell_action_msg_short: "Spell"
-      spell_resolution_msg: "%{name} cast a spell."
+      spell_resolution_msg: "%{name} casts %{spell} on %{target}."
       # ----------------------------
       # FS3 COMBAT POTION
       # ----------------------------
