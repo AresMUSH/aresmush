@@ -4,6 +4,7 @@ module AresMUSH
       def on_event(event)
         enactor = event.enactor
         combatant = enactor.combatant
+        room = event.room
         return if !combatant
         return if event.is_ooc
         
@@ -11,8 +12,8 @@ module AresMUSH
         combat = combatant.combat
         
         set_scene = !combat.scene || combat.scene.completed
-        if (set_scene && enactor.room.scene)
-          combat.update(scene: enactor.room.scene)
+        if (set_scene && room.scene)
+          combat.update(scene: room.scene)
         end
 
         slackers = combat.active_combatants.select { |c| !c.is_npc? && !c.posed && !c.is_ko && !c.idle }

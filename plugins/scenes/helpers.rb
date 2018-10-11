@@ -235,6 +235,7 @@ module AresMUSH
       if (system_pose)
         line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
         formatted_pose = "#{line}%R#{pose}%R#{line}"
+        is_emit = true
         room.update(scene_set: pose)
       end
       
@@ -244,14 +245,16 @@ module AresMUSH
         client.emit Scenes.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
       end
 
-      Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose)
+      Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose, room)
       
-      if (!is_ooc)
-        if (room.room_type != "OOC")
-          room.update_pose_order(enactor.name.titlecase)
-          Scenes.notify_next_person(room)
-        end
+      if (!is_ooc && room.room_type != "OOC")
+          Scenes.update_pose_order(enactor, room)
       end
+    end
+    
+    def self.update_pose_order(enactor, room)
+      room.update_pose_order(enactor.name.titlecase)
+      Scenes.notify_next_person(room)
     end
 
     def self.notify_next_person(room)
