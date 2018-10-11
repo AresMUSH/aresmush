@@ -73,7 +73,7 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              Custom.cast_roll_spell(self.caster_combat, self.spell)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellAction, self.spell)
             end
 
             #Equip Armor
