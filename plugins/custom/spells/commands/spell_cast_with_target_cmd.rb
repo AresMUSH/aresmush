@@ -96,7 +96,7 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              Custom.set_spell_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::RollSpellAction, spell, target_name)
+              Custom.set_spell_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellAction, self.spell, target_name)
             end
 
             #Inflict damage
