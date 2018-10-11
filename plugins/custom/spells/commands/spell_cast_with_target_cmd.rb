@@ -53,10 +53,10 @@ module AresMUSH
         require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
         return t('custom.no_target') if (!require_target && !target_optional)
-        multi_target = Global.read_config("spells", self.spell, "multi_target")
-        return t('custom.needs_multi_target') if multi_target
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         return t('custom.cant_heal_dead') if (heal_points && target.dead)
+        multi_target = Global.read_config("spells", self.spell, "multi_target")
+        return t('custom.needs_multi_target') if multi_target
         is_res = Global.read_config("spells", self.spell, "is_res")
         return t('custom.not_dead', :target => target.name) if (is_res && !target.dead)
         return t('custom.caster_should_not_equal_target') if (self.caster.combat && self.caster_combat == self.target_combat)
@@ -97,7 +97,6 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              client.emit args
               FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellTargetAction, self.args)
             end
 
@@ -108,7 +107,7 @@ module AresMUSH
 
             #Healing
             if heal_points
-              Custom.cast_heal_with_target(self.caster_combat, self.target, self.spell)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellHealAction, self.args)
             end
 
             #Revive
@@ -173,7 +172,7 @@ module AresMUSH
 
             #Change stance
             if stance
-              Custom.cast_stance_with_target(self.caster_combat, self.target_combat, self.spell)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellStanceAction, self.args)
             end
 
             #Equip Armor

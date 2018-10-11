@@ -24,6 +24,10 @@ module AresMUSH
         RollSpellTargetAction
       when "rollspell"
         RollSpellAction
+      when "spellstance"
+        SpellStanceAction
+      when "spellheal"
+        SpellHealAction
       when "rally"
         RallyAction
       when "reload"

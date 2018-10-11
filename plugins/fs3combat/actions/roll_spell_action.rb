@@ -20,7 +20,7 @@ attr_accessor  :spell, :args, :action, :target, :names
       end
 
       def resolve
-        succeeds = Custom.roll_combat_spell_success(self.combatant, "Create Bloom")
+        succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
         [t('custom.roll_spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
       end
     end
