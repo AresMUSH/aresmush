@@ -130,17 +130,17 @@ module AresMUSH
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     end
 
-    def self.cast_stance_with_target(caster_combat, target_combat, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      if succeeds == "%xgSUCCEEDS%xn"
-        stance = Global.read_config("spells", spell, "stance")
-        target_combat.update(stance: stance)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_stance', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :stance => stance), nil, true
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
-      end
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_stance_with_target(caster_combat, target_combat, spell)
+    #   succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+    #   if succeeds == "%xgSUCCEEDS%xn"
+    #     stance = Global.read_config("spells", spell, "stance")
+    #     target_combat.update(stance: stance)
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_stance', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :stance => stance), nil, true
+    #   else
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+    #   end
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
     def self.cast_equip_weapon_with_target(enactor, caster_combat, target_combat, spell)
       weapon = Global.read_config("spells", spell, "weapon")
