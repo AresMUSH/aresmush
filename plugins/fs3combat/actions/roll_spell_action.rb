@@ -2,23 +2,26 @@ module AresMUSH
   module FS3Combat
     class RollSpellAction < CombatAction
 
-attr_accessor  :spell, :args, :action
+attr_accessor  :spell, :args, :action, :target, :names
 
       def prepare
-        target = self.action_args
+        self.spell = self.action_args
+        return nil
+
       end
 
       def print_action
-        msg = t('custom.spell_action_msg_long', :name => self.name)
+        msg = t('custom.roll_spell_action_msg_long', :name => self.name, :spell => self.spell)
+        msg
       end
 
       def print_action_short
-        t('custom.spell_action_msg_short', :spell => "Create Bloom", :target => target)
+        t('custom.spell_action_msg_short')
       end
 
       def resolve
         succeeds = Custom.roll_combat_spell_success(self.combatant, "Create Bloom")
-        [t('custom.spell_resolution_msg', :name => self.name, :spell => "Create Bloom", :target => print_target_names, :succeeds => succeeds)]
+        [t('custom.roll_spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
       end
     end
   end
