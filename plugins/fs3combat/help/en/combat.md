@@ -6,6 +6,8 @@ aliases:
 - weapons
 - weapon
 - vehicle
+- gear
+- mount
 order: 1
 ---
 # FS3 Combat
@@ -88,7 +90,10 @@ On some games, you can use vehicles or mounts in combat.
 
 ## Luck
 
-See [Luck in Combat](/help/combat_luck)
+You can spend luck to get a bonus on attack, defense or initiative, or undo a knockout.
+
+`combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
+`combat/hero` - Spends a luck point to un-KO yourself.
 
 ## Organizing
 
