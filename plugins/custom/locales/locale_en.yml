@@ -102,7 +102,7 @@ en:
 
       spell_action_msg_long: "%{name} will cast a spell this turn."
       spell_action_msg_short: "Spell"
-      spell_resolution_msg: "%{name} casts %{spell} on %{target}."
+      spell_resolution_msg: "%{name} casts %{spell} on %{target} and %{succeeds}."
       # ----------------------------
       # FS3 COMBAT POTION
       # ----------------------------
