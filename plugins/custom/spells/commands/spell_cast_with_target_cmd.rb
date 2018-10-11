@@ -2,7 +2,7 @@ module AresMUSH
   module Custom
     class SpellCastWithTargetCmd
       include CommandHandler
-      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat
+      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat, :args
 
       def parse_args
         self.spell_list = Global.read_config("spells")
@@ -39,7 +39,8 @@ module AresMUSH
             self.caster_combat = enactor.combatant
             self.target_combat = combat.find_combatant(target_name)
           end
-
+          arg_array = [target_name, spell]
+          self.args = arg_array.join("/")
         end
 
       end
@@ -96,7 +97,8 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              Custom.set_spell_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellAction, self.spell, target_name)
+              client.emit args
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellTargetAction, self.args)
             end
 
             #Inflict damage

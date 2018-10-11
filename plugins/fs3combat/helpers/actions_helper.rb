@@ -20,6 +20,8 @@ module AresMUSH
         SpellAction
       when "potion"
         PotionAction
+      when "rollspelltarget"
+        RollSpellTargetAction
       when "rollspell"
         RollSpellAction
       when "rally"
