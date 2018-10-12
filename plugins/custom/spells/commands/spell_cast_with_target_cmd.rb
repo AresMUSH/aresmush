@@ -92,8 +92,8 @@ module AresMUSH
               client.emit_failure t('custom.dont_know_spell')
           else
 
-            #Roll spell successes
-            succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
+            # #Roll spell successes
+            # succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
 
             #Roll Spell in Combat
             if roll == true
@@ -215,7 +215,7 @@ module AresMUSH
             #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
             #   end
             # end
-            
+
             # For some reason, both of these break setting weapons and armor. I have no idea why.
 
             self.caster_combat.update(has_cast: true)
