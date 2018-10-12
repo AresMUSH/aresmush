@@ -43,7 +43,7 @@ Luck points have special effects in combat. (see [Luck](/help/luck))
 `potion/use <potion>` - Uses a potion.
 
 ### Attacks
-`combat/attack <target>[/<specials, see below>]`
+`combat/attack <target>[>mod:<mod>] OR [>called:<hitloc>]`
     Specials are optional. Use commas to separate multiple options.
     * mod:<special modifiers> - Dice to add or subtract to the roll.
     * called:<location> - Perform a called shot to a particular hit location.

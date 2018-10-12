@@ -4,7 +4,7 @@ summary: All combat commands in one giant place.
 order: 1
 ---
 # FS3 Combat
-This is a list of ALL combat commands and is super spammy. See [Combat Index](/help/combat_index) for a list of smaller files or use **qr <command>** to see the correct syntax for a command. 
+This is a list of ALL combat commands and is super spammy. See [Combat Index](/help/combat_index) for a list of smaller files or use **qr <command>** to see the correct syntax for a command.
 
 The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion.
 
@@ -23,7 +23,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 `combat/stance <stance>` - Sets stance for your actions.  You can use `combat/stances` to see a list of possible stances.
 
-`combat/attack <target>[/<specials, see below>]`
+`combat/attack <target>[>mod:<mod>] OR [>called:<hitloc>]`
     Specials are optional. Use commas to separate multiple options.
     * mod:<special modifiers> - Dice to add or subtract to the roll.
     * called:<location> - Perform a called shot to a particular hit location.
