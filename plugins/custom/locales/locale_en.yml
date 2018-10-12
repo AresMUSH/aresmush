@@ -36,8 +36,8 @@ en:
       cant_force_cast: "You can't force someone to cast a spell outside of combat."
       already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
       spell_ko: "You cannot cast a spell while Knocked Out."
-      # casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
-      # casts_spell_on_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
+      casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
+      casts_spell_on_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       casts_noncombat_spell_with_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       # will_cast_spell: "%{name} will cast %xB%{spell}%xn."
@@ -100,7 +100,7 @@ en:
       # FS3 COMBAT SPELL
       # ----------------------------
       spell_action_msg_short: "Spell"
-      roll_spell_target_action_msg_long: "%{name} will cast  %xB%{spell}%xn on %{target} this turn."
+      roll_spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
       roll_spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       roll_spell_action_msg_long: "%{name} will cast %xB%{spell}%xn."
       roll_spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
