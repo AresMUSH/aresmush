@@ -90,45 +90,45 @@ module AresMUSH
     #   end
     # end
 
-    def self.cast_lethal_mod_with_target(caster_combat, target_combat, spell)
-      succeeds = "%xgSUCCEEDS%xn"
-      lethal_mod = Global.read_config("spells", spell, "lethal_mod")
-      current_mod = target_combat.damage_lethality_mod
-      new_mod = current_mod + lethal_mod
-      target_combat.update(damage_lethality_mod: new_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('cast_mod', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target =>  target_combat.name, :mod => lethal_mod, :type => "lethality", :total_mod => target_combat.damage_lethality_mod), nil, true
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_lethal_mod_with_target(caster_combat, target_combat, spell)
+    #   succeeds = "%xgSUCCEEDS%xn"
+    #   lethal_mod = Global.read_config("spells", spell, "lethal_mod")
+    #   current_mod = target_combat.damage_lethality_mod
+    #   new_mod = current_mod + lethal_mod
+    #   target_combat.update(damage_lethality_mod: new_mod)
+    #   FS3Combat.emit_to_combat caster_combat.combat, t('cast_mod', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target =>  target_combat.name, :mod => lethal_mod, :type => "lethality", :total_mod => target_combat.damage_lethality_mod), nil, true
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
-    def self.cast_defense_mod_with_target(caster_combat,  target_combat, spell)
-      succeeds = "%xgSUCCEEDS%xn"
-      defense_mod = Global.read_config("spells", spell, "defense_mod")
-      current_mod =  target_combat.defense_mod
-      new_mod = current_mod + defense_mod
-      target_combat.update(defense_mod: new_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => target_combat.defense_mod), nil, true
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
-
-    def self.cast_attack_mod_with_target(caster_combat, target_combat, spell)
-      succeeds = "%xgSUCCEEDS%xn"
-      attack_mod = Global.read_config("spells", spell, "attack_mod")
-      current_mod = target_combat.attack_mod
-      new_mod = current_mod + attack_mod
-      target_combat.update(attack_mod: new_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => target_combat.attack_mod), nil, true
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
-
-    def self.cast_spell_mod_with_target(caster_combat, target_combat, spell)
-      succeeds = "%xgSUCCEEDS%xn"
-      spell_mod = Global.read_config("spells", spell, "spell_mod")
-      current_mod = target_combat.spell_mod.to_i
-      new_mod = current_mod + spell_mod
-      target_combat.update(spell_mod: new_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => target_combat.spell_mod), nil, true
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_defense_mod_with_target(caster_combat,  target_combat, spell)
+    #   succeeds = "%xgSUCCEEDS%xn"
+    #   defense_mod = Global.read_config("spells", spell, "defense_mod")
+    #   current_mod =  target_combat.defense_mod
+    #   new_mod = current_mod + defense_mod
+    #   target_combat.update(defense_mod: new_mod)
+    #   FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => defense_mod, :type => "defense", :total_mod => target_combat.defense_mod), nil, true
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
+    #
+    # def self.cast_attack_mod_with_target(caster_combat, target_combat, spell)
+    #   succeeds = "%xgSUCCEEDS%xn"
+    #   attack_mod = Global.read_config("spells", spell, "attack_mod")
+    #   current_mod = target_combat.attack_mod
+    #   new_mod = current_mod + attack_mod
+    #   target_combat.update(attack_mod: new_mod)
+    #   FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => attack_mod, :type => "attack", :total_mod => target_combat.attack_mod), nil, true
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
+    #
+    # def self.cast_spell_mod_with_target(caster_combat, target_combat, spell)
+    #   succeeds = "%xgSUCCEEDS%xn"
+    #   spell_mod = Global.read_config("spells", spell, "spell_mod")
+    #   current_mod = target_combat.spell_mod.to_i
+    #   new_mod = current_mod + spell_mod
+    #   target_combat.update(spell_mod: new_mod)
+    #   FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_mod', :name => caster_combat.name, :target => target_combat.name, :spell => spell, :succeeds => succeeds, :mod => spell_mod, :type => "spell", :total_mod => target_combat.spell_mod), nil, true
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
     # def self.cast_stance_with_target(caster_combat, target_combat, spell)
     #   succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
