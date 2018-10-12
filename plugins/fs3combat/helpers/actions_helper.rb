@@ -26,6 +26,8 @@ module AresMUSH
         RollSpellAction
       when "spellstance"
         SpellStanceAction
+      when "spellmod"
+        SpellModAction
       when "spellheal"
         SpellHealAction
       when "spellinflictdamage"
