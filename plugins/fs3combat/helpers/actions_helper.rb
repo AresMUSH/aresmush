@@ -28,6 +28,8 @@ module AresMUSH
         SpellStanceAction
       when "spellmod"
         SpellModAction
+      when "spellequipgear"
+        SpellEquipGearAction
       when "spellheal"
         SpellHealAction
       when "spellinflictdamage"

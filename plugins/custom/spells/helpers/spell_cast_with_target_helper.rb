@@ -142,39 +142,39 @@ module AresMUSH
     #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     # end
 
-    def self.cast_equip_weapon_with_target(enactor, caster_combat, target_combat, spell)
-      weapon = Global.read_config("spells", spell, "weapon")
-      armor = Global.read_config("spells", spell, "armor")
-      if armor
+    # def self.cast_equip_weapon_with_target(enactor, caster_combat, target_combat, spell)
+    #   weapon = Global.read_config("spells", spell, "weapon")
+    #   armor = Global.read_config("spells", spell, "armor")
+    #   if armor
+    #
+    #   else
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn"), nil, true
+    #   end
+    #   FS3Combat.set_weapon(enactor, target_combat, weapon)
+    #
+    # end
 
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn"), nil, true
-      end
-      FS3Combat.set_weapon(enactor, target_combat, weapon)
+    # def self.cast_equip_weapon_specials_with_target(enactor, caster_combat, target_combat, spell)
+    #   weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
+    #   weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
+    #   FS3Combat.set_weapon(enactor, target_combat, target_combat.weapon, weapon_specials)
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
-    end
-
-    def self.cast_equip_weapon_specials_with_target(enactor, caster_combat, target_combat, spell)
-      weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
-      weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
-      FS3Combat.set_weapon(enactor, target_combat, target_combat.weapon, weapon_specials)
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
-
-    def self.cast_equip_armor_with_target(enactor, caster_combat, target_combat, spell)
-      FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn"), nil, true
-      armor = Global.read_config("spells", spell, "armor")
-      FS3Combat.set_armor(enactor, target_combat, armor)
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_equip_armor_with_target(enactor, caster_combat, target_combat, spell)
+    #   FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn"), nil, true
+    #   armor = Global.read_config("spells", spell, "armor")
+    #   FS3Combat.set_armor(enactor, target_combat, armor)
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
 
-    def self.cast_equip_armor_specials_with_target(enactor, caster_combat, target_combat, spell)
-      armor_specials_str = Global.read_config("spells", spell, "armor_specials")
-      armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-      FS3Combat.set_armor(enactor, target_combat, target_combat.armor, armor_specials)
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_equip_armor_specials_with_target(enactor, caster_combat, target_combat, spell)
+    #   armor_specials_str = Global.read_config("spells", spell, "armor_specials")
+    #   armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
+    #   FS3Combat.set_armor(enactor, target_combat, target_combat.armor, armor_specials)
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
   end
 end
