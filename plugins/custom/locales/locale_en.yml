@@ -40,7 +40,7 @@ en:
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       casts_noncombat_spell_with_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
-      will_cast_spell: "%{name} will cast %xB%{spell}%xn."
+      # will_cast_spell: "%{name} will cast %xB%{spell}%xn."
       will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target}."
       not_in_combat: "You must be in combat to cast this spell."
       target_aoe: "Choose your targets by doing aoe <target> <target> <target>."
@@ -99,10 +99,11 @@ en:
       # ----------------------------
       # FS3 COMBAT SPELL
       # ----------------------------
-
-      spell_action_msg_long: "%{name} casts a spell this turn."
       spell_action_msg_short: "Spell"
-      spell_resolution_msg: "%{name} cast a spell."
+      roll_spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
+      roll_spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
+      roll_spell_action_msg_long: "%{name} will cast %xB%{spell}%xn."
+      roll_spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       # ----------------------------
       # FS3 COMBAT POTION
       # ----------------------------
