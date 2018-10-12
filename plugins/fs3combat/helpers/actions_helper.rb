@@ -20,6 +20,24 @@ module AresMUSH
         SpellAction
       when "potion"
         PotionAction
+      when "rollspelltarget"
+        RollSpellTargetAction
+      when "rollspell"
+        RollSpellAction
+      when "spellstance"
+        SpellStanceAction
+      when "spellmod"
+        SpellModAction
+      when "spellequipgear"
+        SpellEquipGearAction
+      when "spellheal"
+        SpellHealAction
+      when "spellinflictdamage"
+        SpellInflictDamageAction
+      when "spellrevive"
+        SpellReviveAction
+      when "spellres"
+        SpellResAction
       when "rally"
         RallyAction
       when "reload"
