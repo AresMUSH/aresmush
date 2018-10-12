@@ -1,30 +1,30 @@
 module AresMUSH
   module Custom
 
-    def self.cast_inflict_damage_with_target(caster_combat, target, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      damage_desc = Global.read_config("spells", spell, "damage_desc")
-      damage_inflicted = Global.read_config("spells", spell, "damage_inflicted")
-      client = Login.find_client(caster_combat)
-      if succeeds == "%xgSUCCEEDS%xn"
-        FS3Combat.inflict_damage(target, damage_inflicted, damage_desc)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_damage', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name, :damage_desc => spell.downcase), nil, true
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
-      end
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_inflict_damage_with_target(caster_combat, target, spell)
+    #   succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+    #   damage_desc = Global.read_config("spells", spell, "damage_desc")
+    #   damage_inflicted = Global.read_config("spells", spell, "damage_inflicted")
+    #   client = Login.find_client(caster_combat)
+    #   if succeeds == "%xgSUCCEEDS%xn"
+    #     FS3Combat.inflict_damage(target, damage_inflicted, damage_desc)
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_damage', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name, :damage_desc => spell.downcase), nil, true
+    #   else
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+    #   end
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
-    def self.cast_roll_spell_with_target(caster_combat, target, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      client = Login.find_client(caster_combat)
-      if succeeds == "%xgSUCCEEDS%xn"
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => target.name, :succeeds => succeeds), nil, true
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
-      end
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_roll_spell_with_target(caster_combat, target, spell)
+    #   succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+    #   client = Login.find_client(caster_combat)
+    #   if succeeds == "%xgSUCCEEDS%xn"
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell_on_target', :name => caster_combat.name, :spell => spell, :target => target.name, :succeeds => succeeds), nil, true
+    #   else
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+    #   end
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
     def self.cast_noncombat_roll_spell_with_target(caster, target, spell)
       enactor_room = caster.room
@@ -32,22 +32,22 @@ module AresMUSH
       enactor_room.emit t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => target.name, :spell => spell, :succeeds => success)
     end
 
-    def self.cast_heal_with_target(caster_combat, target, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      if succeeds == "%xgSUCCEEDS%xn"
-        wound = FS3Combat.worst_treatable_wound(target)
-        heal_points = Global.read_config("spells", spell, "heal_points")
-        if (wound)
-          FS3Combat.heal(wound, heal_points)
-          FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_heal', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points), nil, true
-        else
-          FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_heal_no_effect', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name), nil, true
-        end
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
-      end
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_heal_with_target(caster_combat, target, spell)
+    #   succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+    #   if succeeds == "%xgSUCCEEDS%xn"
+    #     wound = FS3Combat.worst_treatable_wound(target)
+    #     heal_points = Global.read_config("spells", spell, "heal_points")
+    #     if (wound)
+    #       FS3Combat.heal(wound, heal_points)
+    #       FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_heal', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points), nil, true
+    #     else
+    #       FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_heal_no_effect', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target.name), nil, true
+    #     end
+    #   else
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+    #   end
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
     def self.cast_non_combat_heal_with_target(caster, target, spell)
       succeeds = Custom.roll_noncombat_spell_success(caster, spell)
@@ -67,19 +67,19 @@ module AresMUSH
     end
 
 
-    def self.cast_revive(caster_combat, target_combat, spell)
-      succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
-      if succeeds == "%xgSUCCEEDS%xn"
-        target_combat.update(is_ko: false)
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_res', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name), nil, true
-        FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster_combat.name), nil, true
-      else
-        FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
-      end
-      FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
-    end
+    # def self.cast_revive(caster_combat, target_combat, spell)
+    #   succeeds = Custom.roll_combat_spell_success(caster_combat, spell)
+    #   if succeeds == "%xgSUCCEEDS%xn"
+    #     target_combat.update(is_ko: false)
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.cast_res', :name => caster_combat.name, :spell => spell, :succeeds => succeeds, :target => target_combat.name), nil, true
+    #     FS3Combat.emit_to_combatant target_combat, t('custom.been_resed', :name => caster_combat.name), nil, true
+    #   else
+    #     FS3Combat.emit_to_combat caster_combat.combat, t('custom.casts_spell', :name => caster_combat.name, :spell => spell, :succeeds => succeeds), nil, true
+    #   end
+    #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
+    # end
 
-    # def cast_revive(caster, target, target_combat, spell)
+    # def cast_res(caster, target, target_combat, spell)
     #   succeeds = Custom.roll_combat_spell_success(caster, spell)
     #   if succeeds == "%xgSUCCEEDS%xn"
     #     Custom.undead(target)
