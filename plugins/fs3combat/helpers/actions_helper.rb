@@ -28,6 +28,8 @@ module AresMUSH
         SpellStanceAction
       when "spellheal"
         SpellHealAction
+      when "spellinflictdamage"
+        SpellInflictDamageAction
       when "rally"
         RallyAction
       when "reload"

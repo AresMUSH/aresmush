@@ -102,7 +102,7 @@ module AresMUSH
 
             #Inflict damage
             if damage_inflicted
-              Custom.cast_inflict_damage_with_target(self.caster_combat, self.target, self.spell)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellInflictDamageAction, self.args)
             end
 
             #Healing
