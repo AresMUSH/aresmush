@@ -115,7 +115,7 @@ module AresMUSH
               if (!self.target_combat.is_ko)
                     client.emit_failure t('custom.not_ko', :target => self.target.name)
               else
-                Custom.cast_revive(self.caster_combat, self.target_combat, self.spell)
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellReviveAction, self.args)
               end
             end
 
@@ -130,7 +130,7 @@ module AresMUSH
                   FS3Combat.emit_to_combat caster.combat, t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds), nil, true
                 end
               else
-                Custom.cast_revive(self.caster_combat,  self.target_combat, self.spell)
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellResAction, self.args)
               end
             end
 
