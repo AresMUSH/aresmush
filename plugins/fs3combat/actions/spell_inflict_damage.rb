@@ -1,6 +1,6 @@
 module AresMUSH
   module FS3Combat
-    class SpellHealAction < CombatAction
+    class SpellInflictDamageAction < CombatAction
 
 attr_accessor  :spell, :target, :names
 
@@ -34,15 +34,11 @@ attr_accessor  :spell, :target, :names
         succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
         messages = []
         if succeeds == "%xgSUCCEEDS%xn"
-          heal_points = Global.read_config("spells", self.spell, "heal_points")
+          damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
+          damage_desc = Global.read_config("spells", spell, "damage_desc")
           targets.each do |target|
-            wound = FS3Combat.worst_treatable_wound(target.associated_model)
-            if (wound)
-              FS3Combat.heal(wound, heal_points)
-              messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names, :points => heal_points)]
-            else
-               messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names)]
-            end
+            FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
+            messages.concat [t('custom.cast_damage', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target => print_target_names, :damage_desc => spell.downcase)]
           end
         else
           messages.concat [t('custom.roll_spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
