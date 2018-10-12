@@ -5,9 +5,9 @@ module AresMUSH
       attr_accessor :mod, :is_burst, :called_shot, :crew_hit, :mount_hit
 
       def prepare
-        if (self.action_args =~ /=/)
-          names = self.action_args.before("=")
-          specials = self.action_args.after("=").split(",")
+        if (self.action_args =~ />/)
+          names = self.action_args.before(">")
+          specials = self.action_args.after(">").split(",")
         else
           names = self.action_args
           specials = []

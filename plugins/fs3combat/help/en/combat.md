@@ -10,7 +10,7 @@ order: 1
 ---
 # FS3 Combat
 
-The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. 
+The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion.
 
 To learn how FS3 combat works, you should read the [FS3 Combat Player's Guide](http://aresmush.com/fs3/fs3-3/combat) and try out the [Interacive Combat Walkthrough](http://aresmush.com/fs3/fs3-3/combat-walkthrough).
 
@@ -25,11 +25,11 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 `combat/stance <stance>` - Sets stance for your actions.  You can use `combat/stances` to see a list of possible stances.
 
-`combat/attack <target>[/<specials, see below>]`
+`combat/attack <target>[>mod:<mod>] OR [>called:<hitloc>]`
     Specials are optional. Use commas to separate multiple options.
     * mod:<special modifiers> - Dice to add or subtract to the roll.
-    * called:<location> - Perform a called shot to a particular hit location. 
-       Use `combat/hitlocs <target>` to see a list of valid hit locations. 
+    * called:<location> - Perform a called shot to a particular hit location.
+       Use `combat/hitlocs <target>` to see a list of valid hit locations.
 
 
 `combat/explode <list of targets>` - Use an explosive weapon.
@@ -39,7 +39,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 `potion/use <potion>` - Uses a potion.
 
 `combat/distract <target>` - Distracts a target
-`combat/subdue <target>` - Subdues or disarms a target. 
+`combat/subdue <target>` - Subdues or disarms a target.
 `combat/escape` – Attempts to escape while subdued.
 `combat/aim <target>` - Takes careful aim.
 
@@ -47,7 +47,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 `combat/rally <name>` - Rally a knocked out person (without first aid). (requires medicine)
 
 ## Gear
-There are various kinds of gear that can be used in combat.  You should only use gear that is appropriate to the IC situation. 
+There are various kinds of gear that can be used in combat.  You should only use gear that is appropriate to the IC situation.
 
 `weapons` - List all weapons.
 `weapon <name>` - See details for a particular weapon.
@@ -63,7 +63,7 @@ Luck points (see [Luck](/help/luck)) have special effects in combat.
 
 ### Bonus Dice
 
-`combat/luck <attack, defense or initiative>` - Spend a luck point to get +3 bonus dice this turn. 
+`combat/luck <attack, defense or initiative>` - Spend a luck point to get +3 bonus dice this turn.
 
 > **Tip:** Spending luck on attack affects special attacks like explosions or suppression.  It also conveys a bonus to damage.
 
@@ -71,10 +71,10 @@ Luck points (see [Luck](/help/luck)) have special effects in combat.
 `combat/hero` - Spends a luck point to un-KO yourself. This doesn't erase the damage, it just lets you soldier on in spite of it.
 
 ## Damage
-`damage` - Views your damage. 
+`damage` - Views your damage.
 `damage <name>` - Views someone else's damage.
 
-The healing progress bar on the damage display shows how close you are to reducing the wound by one level. 
+The healing progress bar on the damage display shows how close you are to reducing the wound by one level.
 
 ## Treating
 For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound. Requires Medicine.
@@ -90,7 +90,7 @@ For more longer-term healing, doctors can use the heal command.  You will contin
 `heal/scan` - Find injured patients who might need your services.
 
 ## Hospitals
-When a room is marked as a hospital, people who are there heal faster. 
+When a room is marked as a hospital, people who are there heal faster.
 
 `hospitals` - Finds hospitals.
 `hospital/on` or `hospital/off`- Toggles whether the current room is a hospital.
@@ -107,8 +107,8 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 This is a quick reference for combat organizer commands.   You may also want to check out the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat) tutorial on AresMUSH.com.
 
 `combat/start [<mock or real>]` - Starts a combat (default real).
-`combat/stop <combat #>` - Stops a combat. 
-`combats` - Shows all combats going on. 
+`combat/stop <combat #>` - Stops a combat.
+`combats` - Shows all combats going on.
 `combat/newturn` - Starts the first turn.
 
 `combat/join <list of names>=<combat #>[/<type>]` - Adds characters or NPCs to combats.
@@ -120,9 +120,9 @@ This is a quick reference for combat organizer commands.   You may also want to 
 `combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be Goon, Henchman, Miniboss, Boss
 `combat/targets` - See a breakdown of who's targeting whom.
 
-`combat/team <list of names>=<team#>` - Switches teams. 
-`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 
-    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target 
+`combat/team <list of names>=<team#>` - Switches teams.
+`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only
+    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target
     people on teams 1 and 4.
 
 `combat/ai` - Auto-targets any NPCs who don't have actions yet.
