@@ -30,6 +30,10 @@ module AresMUSH
         SpellHealAction
       when "spellinflictdamage"
         SpellInflictDamageAction
+      when "spellrevive"
+        SpellReviveAction
+      when "spellres"
+        SpellResAction
       when "rally"
         RallyAction
       when "reload"
