@@ -20,7 +20,8 @@ en:
         load_all: "Loading all plugins.  Please wait..."
         load_all_complete: "Load complete."
         log_file_title: "Log File"
-        
+        plugin_installed: "Plugin %{name} has been installed.  Please check the readme file at %{url} for any additional instructions."
+        error_installing_plugin: "Error installing plugin %{name}.  Please check the log file for details."
         plugins: "Plugins"
         
         shutdown: "Shutdown by %{name}."
@@ -59,7 +60,7 @@ en:
         
         announce: "%xh%xg%%%% Game Announcement:%xn %{message}"
         
-        version: "AresMUSH version %{version}%rhttp://www.aresmush.com"
+        version: "AresMUSH version %{version}%rCopyright 2013 Linda Naughton%Rhttp://www.aresmush.com"
         migrations: "Applied Migrations:"
         server_info: "Server Information"
         version_title: "Version:"

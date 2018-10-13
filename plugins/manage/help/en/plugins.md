@@ -6,6 +6,7 @@ aliases:
 - unload
 - plugin
 - config
+- install
 - reload
 ---
 # Managing Plugins
@@ -52,3 +53,11 @@ When you've made changes to the web portal CSS files, you can update just the st
 If you aren't sure what all you need to load, you can reload all the plugins, the config and the translations all at once.
 
 `load all` - Reloads everything.
+
+## Installing New Plugins
+
+Several plugins are available in the [Ares Extras](https://github.com/AresMUSH/ares-extras/) repository, including officially-supported extensions and community contributions.  You can install them directly from the game:
+
+`plugin/install <name>`
+  
+> **Note:!** Many plugins require some additional manual install steps.  Be sure to check the README file associated with each plugin for detailed information on installation and configuration.

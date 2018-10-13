@@ -34,3 +34,5 @@ en:
         notes_title: "Player Notes for %{name}"
         note_does_not_exist: "That note does not exist."
         note_added_by: "Added by %{name} on %{date}."
+    echo:
+        echo_to_room: "%%%% %{name} shows: %{message}"
