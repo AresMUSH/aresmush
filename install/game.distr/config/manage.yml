@@ -5,3 +5,4 @@ manage:
     search: find
     name: rename
     nuke: destroy
+    wall: announce
