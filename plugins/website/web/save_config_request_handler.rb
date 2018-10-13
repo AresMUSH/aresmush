@@ -35,7 +35,7 @@ module AresMUSH
                     
         rescue Exception => ex
           Global.logger.warn "Trouble loading YAML config; #{ex}"
-          return { error: t('webportal.config_error', :error => ex ) }
+          return { error: t('webportal.config_error', :error => ex, :file => file ) }
         end
         
         {}
