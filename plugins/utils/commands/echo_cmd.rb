@@ -3,10 +3,11 @@ module AresMUSH
     class EchoCmd
       include CommandHandler
       
-      attr_accessor :message
+      attr_accessor :message, :to_room
       
       def parse_args
         self.message = cmd.args
+        self.to_room = cmd.switch_is?("room")
       end
       
       def allow_without_login
@@ -18,7 +19,13 @@ module AresMUSH
       end
       
       def handle
-        client.emit self.message
+        if (self.to_room)
+          enactor_room.clients.each do |c|
+             c.emit_raw t('echo.echo_to_room', :name => enactor_name, :message => self.message)
+           end
+        else
+          client.emit self.message
+        end
       end
       
       def log_command
